@@ -31,7 +31,7 @@ Django posts to `{WIZARD_GATEWAY_URL}/v1/tokens` with
 | `allowed_efforts` | Reasoning efforts this token may declare                           |
 | `system_prompt`   | The operator prompt text, sent only when the prompt flag is usable |
 
-The pins come from two flags in the PostHog internal project,
+The pins come from two flags in the Flind internal project,
 read once per mint request after authentication.
 
 - `wizard-ai-gateway-system-prompt` is read from local evaluation only, so the read adds no network time to the mint.
@@ -53,7 +53,7 @@ A policy flag never refuses a mint:
   `system_prompt`. The operator kill switch is turning the flag off, clearing the payload, or deleting the flag.
 - An allowlist flag that is unreadable or out of contract falls back to `WIZARD_DEFAULT_MODELS`,
   `WIZARD_DEFAULT_EFFORTS` and `WIZARD_DEFAULT_PROGRAMS` in `wizard_gateway_token.py`.
-- Unreadable payloads, flags that return no payload, and out-of-contract payloads log a warning. The PostHog SDK
+- Unreadable payloads, flags that return no payload, and out-of-contract payloads log a warning. The Flind SDK
   swallows its own errors and returns no payload, so an outage reads the same as a flag with no payload.
   Out-of-contract ones also count on
   `posthog_wizard_gateway_config_rejects_total{field="system_prompt"|"allowlist"}`.

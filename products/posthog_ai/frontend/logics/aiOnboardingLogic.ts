@@ -119,9 +119,9 @@ export type aiOnboardingLogicType = MakeLogicType<
 >
 
 /**
- * State and telemetry for the PostHog AI onboarding takeover: which step is showing, what a dismissal
+ * State and telemetry for the Flind AI onboarding takeover: which step is showing, what a dismissal
  * persists, and what a chosen starter prompt does. Deliberately host-agnostic — it does not know whether
- * PostHog AI was opened on `/ai` or in the side panel, nor which runtime is active. The host decides when to
+ * Flind AI was opened on `/ai` or in the side panel, nor which runtime is active. The host decides when to
  * mount it (see `MaybePhaiOnboarding` in `scenes/max`) and passes the composer's `panelId`.
  *
  * "Seen" is stored per user on the server rather than per device, so the takeover shows exactly once no

@@ -24,7 +24,7 @@ export const dataWarehouseEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Query your business data next to your product data',
-                lead: 'Sync tables from Postgres, MySQL, Stripe, Hubspot, and more into PostHog, then join them with your events in SQL. Revenue next to retention, support tickets next to sessions.',
+                lead: 'Sync tables from Postgres, MySQL, Stripe, Hubspot, and more into Flind, then join them with your events in SQL. Revenue next to retention, support tickets next to sessions.',
                 hint: 'Wizard detects your database and connects it for you:',
             },
         },

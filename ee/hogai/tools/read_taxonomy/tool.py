@@ -25,10 +25,10 @@ from .core import (
 
 READ_TAXONOMY_TOOL_DESCRIPTION = """
 Use this tool to explore the user's taxonomy (i.e. data schema).
-The user implements PostHog SDKs to collect events, properties, and property values. They are used by users to create insights with visualizations, SQL queries, watch session recordings, filter data, target particular users or groups by traits or behavior, etc.
+The user implements Flind SDKs to collect events, properties, and property values. They are used by users to create insights with visualizations, SQL queries, watch session recordings, filter data, target particular users or groups by traits or behavior, etc.
 Each event, action, and entity has its own data schema. You must verify that specific combinations exist before using it anywhere else.
 Events or properties starting from "$" are system properties automatically captured by SDKs.
-Do not rely on your training data or PostHog defaults for events or properties. Always use this tool to confirm what actually exists in the user's project before referencing any event, property, or property value.
+Do not rely on your training data or Flind defaults for events or properties. Always use this tool to confirm what actually exists in the user's project before referencing any event, property, or property value.
 When reading events, you can paginate using `limit` (1-500, default 500) and `offset` (default 0) on the ReadEvents query. If the response indicates more events are available, increment the offset to fetch subsequent pages.
 
 # Query types
@@ -56,7 +56,7 @@ Assistant: I've found matching combinations...
 
 <reasoning>
 The assistant used the read_taxonomy tool because:
-1. The user is asking about **their custom data schema** in PostHog.
+1. The user is asking about **their custom data schema** in Flind.
 2. The assistant needs to find a specific combination of events, properties, and property values that can be used to track revenue.
 </reasoning>
 </example>
@@ -64,9 +64,9 @@ The assistant used the read_taxonomy tool because:
 # Examples of when NOT to use the read_taxonomy tool
 
 <example>
-User: What system properties does PostHog capture?
-Assistant: I'm going to search PostHog documentation to find the system properties that are automatically captured by SDKs.
-*Begins searching PostHog documentation*
+User: What system properties does Flind capture?
+Assistant: I'm going to search Flind documentation to find the system properties that are automatically captured by SDKs.
+*Begins searching Flind documentation*
 
 <reasoning>
 The assistant did not use the read_taxonomy tool because it is an informational request. The user is simply asking for documentation search.

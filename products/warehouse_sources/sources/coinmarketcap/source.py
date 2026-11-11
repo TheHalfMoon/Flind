@@ -49,7 +49,7 @@ class CoinMarketCapSource(ResumableSource[CoinMarketCapSourceConfig, CoinMarketC
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="CoinMarketCap",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your CoinMarketCap Pro API key to sync cryptocurrency and market data into the PostHog Data warehouse.
+            caption="""Enter your CoinMarketCap Pro API key to sync cryptocurrency and market data into the Flind Data warehouse.
 
 Create a key from your [CoinMarketCap developer dashboard](https://pro.coinmarketcap.com/account). The key grants read access to every endpoint listed below; some (e.g. exchanges and historical data) require a higher plan tier.""",
             iconPath="/static/services/coinmarketcap.png",

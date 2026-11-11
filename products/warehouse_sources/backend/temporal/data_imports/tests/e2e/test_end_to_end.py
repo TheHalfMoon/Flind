@@ -4581,7 +4581,7 @@ async def test_postgres_switch_to_xmin_rebuilds_table(team, postgres_config, pos
 
 # --- Destinations ------------------------------------------------------------------------
 #
-# A source can sync to destinations besides the PostHog warehouse. These run the whole
+# A source can sync to destinations besides the Flind warehouse. These run the whole
 # pipeline and then read the rows back out of a real Postgres, because the parts that break
 # are the joins between pieces: the ids reaching the batch, the batch reaching the consumer,
 # and the consumer resolving a writer. Each of those looks fine in isolation.
@@ -4642,7 +4642,7 @@ async def _postgres_destination(team: Team, postgres_config: dict) -> ExternalDa
     return await sync_to_async(create)()
 
 
-# The destination names its table the way the PostHog warehouse does, so a Stripe charge resource
+# The destination names its table the way the Flind warehouse does, so a Stripe charge resource
 # lands as `stripe_charge` on both sides rather than as the connector's raw `Charge`.
 DESTINATION_TABLE_NAME = f"stripe_{STRIPE_CHARGE_RESOURCE_NAME}".lower()
 
@@ -4744,9 +4744,9 @@ async def test_a_source_can_sync_to_a_destination_and_not_to_posthog(
     """Selecting destinations replaces the default rather than adding to it.
 
     A source linked only to Postgres does not write Delta at all, so nothing is queryable in
-    PostHog. That is the point: a customer can ask us to move their data without keeping a
+    Flind. That is the point: a customer can ask us to move their data without keeping a
     copy. It is also the trap, since selecting a destination and expecting to keep the
-    warehouse would silently stop the PostHog side.
+    warehouse would silently stop the Flind side.
     """
     destination = await _postgres_destination(team, postgres_config)
 
@@ -4765,7 +4765,7 @@ async def test_a_source_can_sync_to_a_destination_and_not_to_posthog(
     rows = await _destination_rows(postgres_config, DESTINATION_TABLE_NAME)
     assert len(rows) > 0
 
-    # Nothing was registered in PostHog, so there is no table to query.
+    # Nothing was registered in Flind, so there is no table to query.
     exists = await sync_to_async(DataWarehouseTable.objects.filter(team_id=team.pk, name="stripe_charge").exists)()
     assert not exists
 

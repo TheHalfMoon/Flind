@@ -2,7 +2,7 @@
 
 Every SQL source decomposes into two concerns:
 
-- A PostHog-layer wrapper (config schema, credentials validation,
+- A Flind-layer wrapper (config schema, credentials validation,
   error-to-message mapping, registry registration). That's *this* class.
 - A driver-layer implementation (connection lifecycle, metadata
   queries, dlt pipeline build). That's `SQLSourceImplementation`, held

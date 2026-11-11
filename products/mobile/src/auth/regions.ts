@@ -141,7 +141,7 @@ export const DEFAULT_CUSTOM_CLIENT_ID = isInternalBuild ? DEV_CLIENT_ID : ''
 export function validateHost(input: string, allowLoopbackHttp: boolean = isInternalBuild): HostValidation {
     const trimmed = input.trim().replace(/\/+$/, '')
     if (!trimmed) {
-        return { ok: false, error: 'Enter the address of your PostHog instance.' }
+        return { ok: false, error: 'Enter the address of your Flind instance.' }
     }
     const withScheme = /^[a-z][a-z\d+.-]*:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`
     let url: URL

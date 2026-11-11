@@ -1,4 +1,4 @@
-"""PostHog client for acceptance tests using the official SDK and direct ClickHouse queries."""
+"""Flind client for acceptance tests using the official SDK and direct ClickHouse queries."""
 
 import json
 import time
@@ -49,7 +49,7 @@ def _person_has_min_version(person: "Person | None", min_version: int | None) ->
 
 @dataclass
 class CapturedEvent:
-    """An event retrieved from the PostHog API."""
+    """An event retrieved from the Flind API."""
 
     uuid: str
     event: str
@@ -60,7 +60,7 @@ class CapturedEvent:
 
 @dataclass
 class Person:
-    """A person retrieved from the PostHog API."""
+    """A person retrieved from the Flind API."""
 
     id: str
     properties: dict[str, Any]
@@ -68,7 +68,7 @@ class Person:
 
 
 class PostHogClient:
-    """Client for acceptance tests using the official PostHog SDK for capture
+    """Client for acceptance tests using the official Flind SDK for capture
     and direct ClickHouse queries for verification.
     """
 
@@ -136,7 +136,7 @@ class PostHogClient:
         distinct_id: str,
         properties: dict[str, Any] | None = None,
     ) -> str:
-        """Send an event using the official PostHog SDK."""
+        """Send an event using the official Flind SDK."""
         event_uuid = str(uuid.uuid4())
 
         logger.info(

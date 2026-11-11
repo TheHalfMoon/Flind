@@ -59,11 +59,11 @@ class HookdeckSource(ResumableSource[HookdeckSourceConfig, HookdeckResumeConfig]
             label="Hookdeck",
             releaseStatus=ReleaseStatus.GA,
             keywords=["webhooks", "event gateway"],
-            caption="""Enter your Hookdeck project API key to pull your webhook delivery history into the PostHog Data warehouse.
+            caption="""Enter your Hookdeck project API key to pull your webhook delivery history into the Flind Data warehouse.
 
 You can find the key in Hookdeck under **Settings** → **Project** → **Secrets**.
 
-API keys are scoped to a single Hookdeck project, so connect one PostHog source per project. Hookdeck deletes events, requests and attempts once your plan's retention window passes, so the first sync only reaches as far back as that window.
+API keys are scoped to a single Hookdeck project, so connect one Flind source per project. Hookdeck deletes events, requests and attempts once your plan's retention window passes, so the first sync only reaches as far back as that window.
 """,
             iconPath="/static/services/hookdeck.png",
             docsUrl="https://posthog.com/docs/cdp/sources/hookdeck",
@@ -147,7 +147,7 @@ API keys are scoped to a single Hookdeck project, so connect one PostHog source 
                 )
             return True, None
         return False, (
-            "PostHog could not reach Hookdeck to check your API key. Wait a moment and try again, or "
+            "Flind could not reach Hookdeck to check your API key. Wait a moment and try again, or "
             "check Hookdeck's status page."
         )
 

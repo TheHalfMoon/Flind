@@ -81,24 +81,24 @@ TRINO_ACCESS_CONTROL_UNAVAILABLE_ERROR = (
     "Try again, or ask your Trino administrator to check that service."
 )
 TRINO_TLS_CERTIFICATE_ERROR = (
-    "PostHog could not verify the Trino server's TLS certificate. "
+    "Flind could not verify the Trino server's TLS certificate. "
     "Check the certificate or turn off certificate verification."
 )
-TRINO_CONNECTION_ERROR = "PostHog could not connect to Trino."
+TRINO_CONNECTION_ERROR = "Flind could not connect to Trino."
 TRINO_NOT_A_TRINO_ENDPOINT_ERROR = (
     "The host and port you entered didn't answer as a Trino server. "
     "Check that they point to your Trino coordinator and that the HTTPS setting is right."
 )
 TRINO_CONNECTION_DESTINATION_ERROR = "Trino returned an unsupported connection destination. Check the connection host."
 TRINO_CONNECT_TIMEOUT_ERROR = (
-    "Connection to Trino timed out. Check the host and port, and that PostHog's egress IP addresses are "
+    "Connection to Trino timed out. Check the host and port, and that Flind's egress IP addresses are "
     "allowed through your firewall."
 )
 TRINO_READ_TIMEOUT_ERROR = (
     "Trino didn't answer in time. Check that your Trino cluster isn't overloaded, then try again."
 )
 TRINO_DISCOVERY_TIMEOUT_ERROR = (
-    "Trino took too long to list your tables. If you left the schema blank, enter one so PostHog lists "
+    "Trino took too long to list your tables. If you left the schema blank, enter one so Flind lists "
     "fewer tables, then try again."
 )
 TRINO_TABLE_NOT_FOUND_ERROR = (
@@ -109,7 +109,7 @@ TRINO_SCHEMA_NOT_FOUND_ERROR = (
     "Trino could not find the schema for this table. Check that it still exists, then refresh the schemas."
 )
 TRINO_COLUMN_NOT_FOUND_ERROR = (
-    "A column this table syncs no longer exists in Trino. Refresh the schemas so PostHog picks up the new "
+    "A column this table syncs no longer exists in Trino. Refresh the schemas so Flind picks up the new "
     "columns, then resync."
 )
 # The incremental read orders by its watermark column so a resumed sync never skips a row, which
@@ -132,14 +132,14 @@ TRINO_QUERY_MEMORY_LIMIT_ERROR = (
 # The Trino coordinator's own fixed wording when it gives up on a worker node after repeatedly
 # failing to reach it mid-query. The coordinator already retried internally before raising this, so
 # by the time it reaches us the worker has likely crashed or is overloaded — a vendor-side blip a
-# fresh query normally clears, not a PostHog or customer problem.
+# fresh query normally clears, not a Flind or customer problem.
 TRINO_WORKER_NODE_ERROR = "too many errors talking to a worker node"
 # The coordinator's own fixed wording when a later page fetch names a query ID it no longer holds —
 # the query already finished and was purged, a coordinator restart/failover dropped its in-memory
 # state, or a load balancer sent the follow-up request to a coordinator that never saw the query.
 # `trino.dbapi.Cursor.fetchone()` wraps the driver's `HttpError` for this response into an
 # `OperationalError`. A fresh query on the next sync attempt gets a new query ID, so this clears on
-# its own — not a PostHog or customer problem.
+# its own — not a Flind or customer problem.
 TRINO_QUERY_NOT_FOUND_ERROR = "Query not found"
 # Trino's error name when no worker has free or healthy spill disk left. The customer's cluster ran out
 # of a resource it controls, so only the cluster owner can fix it, and a later query can succeed.
@@ -210,14 +210,14 @@ class DiscoveredTrinoTable:
 
 
 class TrinoSchemaDiscoveryError(Exception):
-    """A failure Trino reported while PostHog listed the catalog's tables.
+    """A failure Trino reported while Flind listed the catalog's tables.
 
     The message is already worded for the person who connects the source.
     """
 
 
 class TrinoConfigurationError(ValueError):
-    """A connection setting or server response that PostHog cannot use safely."""
+    """A connection setting or server response that Flind cannot use safely."""
 
 
 class _TrinoOriginAdapter(BaseAdapter):
@@ -277,7 +277,7 @@ def _timeout_in_chain(error: BaseException) -> Timeout | None:
 def trino_failures_as_discovery_error() -> Iterator[None]:
     """Word a failed trip to Trino for the person who connects the source.
 
-    A failure of PostHog's own code keeps its type, so error tracking still sees it.
+    A failure of Flind's own code keeps its type, so error tracking still sees it.
     """
     from trino.exceptions import Error, HttpError  # noqa: PLC0415 — keeps the optional driver off startup paths
 
@@ -318,7 +318,7 @@ def trino_error_to_message(error: Exception) -> str:
     if "privilege to use cluster" in lowered:
         return TRINO_CLUSTER_ACCESS_DENIED_ERROR
     # Trino gives permission checks to an access control plugin. That plugin can fail on its own, for
-    # example when it cannot reach its policy service, which nobody can fix from PostHog.
+    # example when it cannot reach its policy service, which nobody can fix from Flind.
     if "opa backend" in lowered or "access control" in lowered:
         return TRINO_ACCESS_CONTROL_UNAVAILABLE_ERROR
     if (

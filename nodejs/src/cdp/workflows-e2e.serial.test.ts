@@ -1368,7 +1368,7 @@ describe('Workflows E2E (postgres-v2)', () => {
             await createWaitUntilWorkflow({
                 // Property condition never matches the trigger event, so the job parks.
                 condition: { filters: HOG_FILTERS_EXAMPLES.elements_text_filter.filters },
-                // "Events to wait for" entry targets a PostHog Action: filters.events is empty,
+                // "Events to wait for" entry targets a Flind Action: filters.events is empty,
                 // filters.actions is set, and the compiled bytecode matches the action's event.
                 events: [actionFilter('action_wakeup_event', 3)],
                 max_wait_duration: '5m',

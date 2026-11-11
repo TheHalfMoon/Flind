@@ -50,7 +50,7 @@ class SmartreachSource(ResumableSource[SmartreachSourceConfig, SmartreachResumeC
             category=DataWarehouseSourceCategory.SALES,
             label="Smartreach",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your SmartReach API key to pull your SmartReach data into the PostHog Data warehouse.
+            caption="""Enter your SmartReach API key to pull your SmartReach data into the Flind Data warehouse.
 
 You can find your API key under **Settings → Integrations** in the [SmartReach app](https://app.smartreach.io/). The key is scoped to your user and grants read access to your prospects and campaigns.
 

@@ -20,7 +20,7 @@ export const getInstructorSteps = (ctx: OnboardingComponentsContext): StepDefini
                             [Node.js](https://github.com/PostHog/posthog-js/tree/main/examples/example-ai-instructor)
                             and
                             [Python](https://github.com/PostHog/posthog-python/tree/master/examples/example-ai-instructor)
-                            examples on GitHub. If you use the PostHog SDK wrapper instead of OpenTelemetry: see the
+                            examples on GitHub. If you use the Flind SDK wrapper instead of OpenTelemetry: see the
                             [Node.js
                             wrapper](https://github.com/PostHog/posthog-js/tree/e08ff1be/examples/example-ai-instructor)
                             and [Python
@@ -58,8 +58,8 @@ export const getInstructorSteps = (ctx: OnboardingComponentsContext): StepDefini
             content: (
                 <>
                     <Markdown>
-                        Configure OpenTelemetry to auto-instrument OpenAI SDK calls and export traces to PostHog.
-                        PostHog converts `gen_ai.*` spans into `$ai_generation` events automatically.
+                        Configure OpenTelemetry to auto-instrument OpenAI SDK calls and export traces to Flind.
+                        Flind converts `gen_ai.*` spans into `$ai_generation` events automatically.
                     </Markdown>
 
                     <CodeBlock
@@ -76,7 +76,7 @@ export const getInstructorSteps = (ctx: OnboardingComponentsContext): StepDefini
 
                                     resource = Resource(attributes={
                                         SERVICE_NAME: "my-app",
-                                        "posthog.distinct_id": "user_123", # optional: identifies the user in PostHog
+                                        "posthog.distinct_id": "user_123", # optional: identifies the user in Flind
                                         "foo": "bar", # custom properties are passed through
                                     })
 
@@ -104,7 +104,7 @@ export const getInstructorSteps = (ctx: OnboardingComponentsContext): StepDefini
                                     const sdk = new NodeSDK({
                                       resource: resourceFromAttributes({
                                         'service.name': 'my-app',
-                                        'posthog.distinct_id': 'user_123', // optional: identifies the user in PostHog
+                                        'posthog.distinct_id': 'user_123', // optional: identifies the user in Flind
                                         foo: 'bar', // custom properties are passed through
                                       }),
                                       spanProcessors: [
@@ -129,7 +129,7 @@ export const getInstructorSteps = (ctx: OnboardingComponentsContext): StepDefini
             content: (
                 <>
                     <Markdown>
-                        Use Instructor to extract structured data from LLM responses. PostHog automatically captures an
+                        Use Instructor to extract structured data from LLM responses. Flind automatically captures an
                         `$ai_generation` event for each call made through the OpenAI SDK that Instructor wraps.
                     </Markdown>
 
@@ -189,7 +189,7 @@ export const getInstructorSteps = (ctx: OnboardingComponentsContext): StepDefini
                     <Blockquote>
                         <Markdown>
                             **Note:** To capture LLM events anonymously, omit the `posthog.distinct_id` resource
-                            attribute and don't set a distinct ID in the PostHog context. See our docs on [anonymous vs
+                            attribute and don't set a distinct ID in the Flind context. See our docs on [anonymous vs
                             identified events](https://posthog.com/docs/data/anonymous-vs-identified-events) to learn
                             more.
                         </Markdown>

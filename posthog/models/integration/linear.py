@@ -142,7 +142,7 @@ class LinearIntegration:
         return {"id": linear_issue_id}
 
     def create_attachment(self, issue_id: str, url: str) -> None:
-        """Attach a PostHog issue link to a Linear issue (shows as a back-link in Linear).
+        """Attach a Flind issue link to a Linear issue (shows as a back-link in Linear).
 
         Raises on failure: Linear reports errors in the GraphQL body with HTTP 200,
         and the mutation itself can report success=false.
@@ -156,7 +156,7 @@ class LinearIntegration:
         """
         body = self.query(
             link_attachment_query,
-            variables={"issueId": issue_id, "title": "PostHog issue", "url": url},
+            variables={"issueId": issue_id, "title": "Flind issue", "url": url},
         )
         if body.get("errors") or not common.dot_get(body, "data.attachmentCreate.success"):
             raise ValidationError("Failed to attach the Flind link to the Linear issue")

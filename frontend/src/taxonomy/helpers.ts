@@ -5,7 +5,7 @@ import { CoreFilterDefinition, PropertyDefinition, PropertyType } from '~/types'
 
 import { CORE_FILTER_DEFINITIONS_BY_GROUP, CoreFilterDefinitionsGroup } from './taxonomy'
 
-/** Return whether a given filter key is part of PostHog's core (marked by the PostHog logo). */
+/** Return whether a given filter key is part of Flind's core (marked by the Flind logo). */
 
 const hasCoreFilterDefinitionsForGroup = (
     type: TaxonomicFilterGroupType

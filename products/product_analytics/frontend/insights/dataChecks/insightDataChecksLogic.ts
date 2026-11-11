@@ -641,7 +641,7 @@ export const insightDataChecksLogic: LogicWrapper<insightDataChecksLogicType> = 
             }
         },
         fixWithPostHogAI: ({ check }) => {
-            // A second request while PostHog AI is open would start another run for the same finding.
+            // A second request while Flind AI is open would start another run for the same finding.
             if (values.postHogAIOpen) {
                 return
             }

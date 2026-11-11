@@ -62,7 +62,7 @@ class OutbrainSource(ResumableSource[OutbrainSourceConfig, OutbrainResumeConfig]
             name=ExternalDataSourceType.OUTBRAIN,
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="Outbrain",
-            caption="""Connect your Outbrain Amplify account to pull your advertising data into the PostHog Data warehouse.
+            caption="""Connect your Outbrain Amplify account to pull your advertising data into the Flind Data warehouse.
 
 Uses your Outbrain login credentials. Amplify API access must be enabled for your account — request it through your Outbrain account manager if API calls are rejected.""",
             iconPath="/static/services/outbrain.png",

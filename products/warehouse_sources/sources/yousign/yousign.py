@@ -383,7 +383,7 @@ def create_webhook(
     try:
         body = {
             "endpoint": webhook_url,
-            "description": "PostHog data warehouse",
+            "description": "Flind data warehouse",
             "sandbox": environment == SANDBOX_ENVIRONMENT,
             "subscribed_events": all_webhook_events(),
             "scopes": ["*"],

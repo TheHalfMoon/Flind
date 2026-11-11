@@ -116,7 +116,7 @@ class TestLinearIntegrationModel(BaseTest):
         }
         assert 'issue-id" } mutation {' not in attachment_query
         assert attachment_variables["issueId"] == "LIN-123"
-        assert attachment_variables["title"] == "PostHog issue"
+        assert attachment_variables["title"] == "Flind issue"
         assert attachment_variables["url"].endswith(f'/project/{self.team.id}/error_tracking/issue-id" }} mutation {{')
 
     def test_create_issue_sends_assignee_as_graphql_variable(self):

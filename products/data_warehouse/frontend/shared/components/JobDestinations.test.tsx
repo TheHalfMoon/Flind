@@ -9,7 +9,7 @@ import { JobDestinations } from './JobDestinations'
 const WAREHOUSE = {
     id: '01a03e9c-1b76-0000-9079-2a0ee2186dea',
     type: 'PostHogWarehouse',
-    name: 'PostHog warehouse',
+    name: 'Flind warehouse',
     config: {},
     integration: null,
     is_posthog_warehouse: true,
@@ -37,14 +37,14 @@ describe('JobDestinations', () => {
     ])('shows the warehouse for a run that recorded no destinations when %s', (_, destinationsById) => {
         render(<JobDestinations destinationIds={[]} destinationsById={destinationsById} />)
 
-        expect(screen.getByAltText('PostHog warehouse')).toBeInTheDocument()
+        expect(screen.getByAltText('Flind warehouse')).toBeInTheDocument()
         expect(screen.queryByText('—')).not.toBeInTheDocument()
     })
 
     it('shows a logo for each destination a run recorded', () => {
         render(<JobDestinations destinationIds={[WAREHOUSE.id, POSTGRES.id]} destinationsById={BY_ID} />)
 
-        expect(screen.getByAltText('PostHog warehouse')).toBeInTheDocument()
+        expect(screen.getByAltText('Flind warehouse')).toBeInTheDocument()
         expect(screen.getByAltText('Postgres')).toBeInTheDocument()
     })
 

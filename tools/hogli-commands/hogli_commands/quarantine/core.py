@@ -68,7 +68,7 @@ When several entries match the same test, the most specific (longest)
 selector wins — so a narrow ``mode: skip`` entry overrides a broad
 ``mode: run`` one.
 
-Nodeids are repo-root-relative in every PostHog pytest invocation (product
+Nodeids are repo-root-relative in every Flind pytest invocation (product
 suites pass ``--rootdir ../..``), so one id format works everywhere.
 
 Expiry: an entry is ACTIVE while ``today (UTC) <= expires``; past that it is

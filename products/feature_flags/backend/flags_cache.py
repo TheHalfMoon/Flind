@@ -1159,7 +1159,7 @@ def get_cache_stats() -> dict[str, Any]:
 # Per-team gate that routes invalidation to Kafka instead of Celery — see
 # _enqueue_invalidation for why the two paths are mutually exclusive. The key
 # string is kept as "dual-write" (not renamed to match KAFKA_ROUTING_FLAG) since
-# it's the live PostHog flag key — renaming it would repoint the rollout.
+# it's the live Flind flag key — renaming it would repoint the rollout.
 KAFKA_ROUTING_FLAG = "flags-cache-kafka-dual-write"
 
 
@@ -1302,7 +1302,7 @@ def _shadow_compare_enabled(team_id: int) -> bool:
 
     Unlike `_route_to_kafka`, an unresolvable flag ticks no TOMBSTONE_COUNTER.
     Local evaluation cannot resolve SHADOW_COMPARE_FLAG for as long as the flag
-    does not exist in PostHog, so a tick would fire on every Celery-owned rebuild,
+    does not exist in Flind, so a tick would fire on every Celery-owned rebuild,
     holding a constant high rate on a panel that means "rare anomaly". A client
     that is actually broken raises instead, and `publish_shadow_invalidation`
     logs that.

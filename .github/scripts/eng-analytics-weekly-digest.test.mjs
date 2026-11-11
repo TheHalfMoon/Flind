@@ -49,7 +49,7 @@ const DEPOT_USAGE = {
 }
 // $12,200 left as of the last invoice, less October's $2,200: $50,000 of $60,000 used.
 const DEPOT_CREDIT = { remainingCreditMinor: '1220000', currency: 'USD', observedAt: '2026-10-01T06:00:00Z' }
-const REPO = { provider: 'github', owner: 'PostHog', name: 'posthog' }
+const REPO = { provider: 'github', owner: 'Flind', name: 'posthog' }
 const WORKFLOW_HEALTH = {
     [WEEK]: [
         { repo: REPO, workflow_name: 'Frontend CI', percentile_run_count: 500, p95_seconds: 1000 },

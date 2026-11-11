@@ -222,9 +222,9 @@ class Migration(migrations.Migration):
                     models.CharField(
                         blank=True,
                         choices=[
-                            ("posthog_health_check", "PostHog health check"),
-                            ("posthog_onboarding", "PostHog onboarding"),
-                            ("posthog_system", "PostHog system"),
+                            ("posthog_health_check", "Flind health check"),
+                            ("posthog_onboarding", "Flind onboarding"),
+                            ("posthog_system", "Flind system"),
                         ],
                         max_length=30,
                         null=True,

@@ -43,7 +43,7 @@ _CLIENT_CERTIFICATE_REJECTED_ERROR = (
 # on every attempt until the user changes the source.
 CERTIFICATE_ERRORS: dict[str, str] = {
     "certificate verify failed": (
-        "PostHog could not verify your database's TLS certificate. Either an authority PostHog trusts did not "
+        "Flind could not verify your database's TLS certificate. Either an authority Flind trusts did not "
         "sign it, or it does not match the host. Add the authority that signed it, check the host, or turn "
         "off certificate verification and remove the certificate authority."
     ),
@@ -235,7 +235,7 @@ def client_certificate_fields() -> list[SourceFieldInputConfig]:
             type=SourceFieldInputConfigType.TEXTAREA,
             required=False,
             placeholder="-----BEGIN CERTIFICATE-----",
-            caption="A PEM certificate that PostHog presents to your database. Add it when your database requires one.",
+            caption="A PEM certificate that Flind presents to your database. Add it when your database requires one.",
             secret=False,
         ),
         SourceFieldInputConfig(

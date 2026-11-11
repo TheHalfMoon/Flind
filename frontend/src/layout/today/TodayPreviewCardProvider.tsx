@@ -38,7 +38,7 @@ function TodayPreviewPositioner({ below, children }: { below: boolean; children:
 }
 
 /**
- * One hover card for every row in the sidebar, like PostHog Desktop. The rows are only triggers on a shared handle,
+ * One hover card for every row in the sidebar, like Flind Desktop. The rows are only triggers on a shared handle,
  * and Base UI skips the open delay when the pointer moves to another trigger of an open card,
  * so sliding down the list swaps the card's contents instead of waiting again on every row.
  */

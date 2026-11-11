@@ -1,7 +1,7 @@
 ATTENTIVE_API_ORIGIN = "https://api.attentivemobile.com"
 ATTENTIVE_V1_BASE_URL = f"{ATTENTIVE_API_ORIGIN}/v1"
 
-# Maps PostHog webhook-backed schema name -> Attentive webhook event `type`
+# Maps Flind webhook-backed schema name -> Attentive webhook event `type`
 # value. The webhook payload's top-level `type` field is matched against this
 # map's values (via `webhook_resource_map` on the source) to route incoming
 # events into the right warehouse table. Attentive's public REST API is

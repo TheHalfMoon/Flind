@@ -1,6 +1,6 @@
 """The org-wide MCP read-only policy.
 
-`Organization.read_only_mcp_access` caps what any member can do through the PostHog MCP
+`Organization.read_only_mcp_access` caps what any member can do through the Flind MCP
 server. Reads work. Writes are denied. The cap applies to every member, including admins.
 Access through the app and direct API use are not affected.
 

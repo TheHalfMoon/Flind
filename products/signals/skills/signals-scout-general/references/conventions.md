@@ -1,7 +1,7 @@
 # Conventions
 
 How to decide what to do with a candidate observation, how to write durable
-scratchpad entries, and noise patterns common across PostHog projects.
+scratchpad entries, and noise patterns common across Flind projects.
 
 ## The four states
 
@@ -101,7 +101,7 @@ or act on it.
 
 ## Cross-project noise patterns
 
-These are noise across all PostHog projects. Skip them unless you see a real
+These are noise across all Flind projects. Skip them unless you see a real
 escalation:
 
 - **Single-user, single-session errors** — one user, one occurrence, no other

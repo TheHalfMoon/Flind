@@ -5,7 +5,7 @@ from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 _CONNECT_REDIRECT_ALLOWED_KINDS = {"github", "slack", "linear"}
 # Surfaces allowed to start a connect flow and be returned to afterwards (see
 # posthog/api/github_callback/types.py APP_CONNECT_FROM_VALUES, plus Slack). `mcp` is the
-# link the PostHog MCP hands to a person chatting with an assistant.
+# link the Flind MCP hands to a person chatting with an assistant.
 _CONNECT_REDIRECT_ALLOWED_SURFACES = {"posthog_code", "posthog_mobile", "slack", "mcp"}
 
 

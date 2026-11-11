@@ -73,7 +73,7 @@ function isWithinColdStart(config: SignalScoutConfig, now: Date): boolean {
 export function scoutPausedByLine(config: SignalScoutConfig): string | null {
     const on = config.status_changed_at ? dayjs(config.status_changed_at).format('MMM D, YYYY') : null
     if (config.status === 'paused_by_system') {
-        return on ? `Paused by PostHog · ${on}` : 'Paused by PostHog'
+        return on ? `Paused by Flind · ${on}` : 'Paused by Flind'
     }
     if (config.status === 'paused_by_user' || !config.enabled) {
         const actor = config.status_changed_by

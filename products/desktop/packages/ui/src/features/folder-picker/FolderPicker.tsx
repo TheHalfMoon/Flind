@@ -311,7 +311,7 @@ export function FolderPicker({
           <AlertDialogHeader>
             <AlertDialogTitle>Remove folder</AlertDialogTitle>
             <AlertDialogDescription>
-              "{pendingRemoval?.name}" will be removed from PostHog, including
+              "{pendingRemoval?.name}" will be removed from Flind, including
               all of its tasks and their workspaces. This can't be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>

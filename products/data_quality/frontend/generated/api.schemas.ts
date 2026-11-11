@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -149,7 +149,7 @@ export interface DataQualityOverviewCheckApi {
      * * `posthog_table` - posthog_table */
     readonly subject_type: SubjectTypeEnumApi
     /**
-     * Id of the table, view, metric, or PostHog table being checked. Null once the subject is deleted.
+     * Id of the table, view, metric, or Flind table being checked. Null once the subject is deleted.
      * @nullable
      */
     readonly subject_uuid: string | null
@@ -232,7 +232,7 @@ export interface DataQualityOverviewCheckApi {
     /** @nullable */
     readonly updated_at: string | null
     /**
-     * Data modeling node of the view or PostHog table this check audits, or null when it is on no DAG or the subject is a warehouse table.
+     * Data modeling node of the view or Flind table this check audits, or null when it is on no DAG or the subject is a warehouse table.
      * @nullable
      */
     readonly subject_node_id: string | null
@@ -283,7 +283,7 @@ export interface DataQualityCheckCreateApi {
      * * `metric` - metric
      * * `posthog_table` - posthog_table */
     subject_type: SubjectTypeEnumApi
-    /** Id of the table, view, metric, or PostHog table to check. */
+    /** Id of the table, view, metric, or Flind table to check. */
     subject_uuid: string
     /** Queryable name of the subject, refreshed on every run. */
     readonly subject_name: string
@@ -389,7 +389,7 @@ export interface DataQualityCheckApi {
      * * `posthog_table` - posthog_table */
     readonly subject_type: SubjectTypeEnumApi
     /**
-     * Id of the table, view, metric, or PostHog table being checked. Null once the subject is deleted.
+     * Id of the table, view, metric, or Flind table being checked. Null once the subject is deleted.
      * @nullable
      */
     readonly subject_uuid: string | null
@@ -497,7 +497,7 @@ export interface PatchedDataQualityCheckApi {
      * * `posthog_table` - posthog_table */
     readonly subject_type?: SubjectTypeEnumApi
     /**
-     * Id of the table, view, metric, or PostHog table being checked. Null once the subject is deleted.
+     * Id of the table, view, metric, or Flind table being checked. Null once the subject is deleted.
      * @nullable
      */
     readonly subject_uuid?: string | null
@@ -706,7 +706,7 @@ export interface DataQualityCheckTypeApi {
 export interface DataQualitySubjectHealthApi {
     /** 'table', 'view', 'metric', or 'posthog_table'. */
     subject_type: string
-    /** Id of the table, view, metric, or PostHog table. */
+    /** Id of the table, view, metric, or Flind table. */
     subject_uuid: string
     /** failing (an error-severity check failed), erroring (a check could not run), warn (only warn-severity failures), healthy, or unknown (nothing has run yet). */
     health: string
@@ -799,7 +799,7 @@ export interface PatchedDataQualityCheckScheduleUpdateApi {
      * * `metric` - metric
      * * `posthog_table` - posthog_table */
     subject_type?: SubjectTypeEnumApi
-    /** Id of the table, view, metric, or PostHog table. */
+    /** Id of the table, view, metric, or Flind table. */
     subject_uuid?: string
     /** How often all enabled checks on the subject run.
      *
@@ -851,7 +851,7 @@ export interface DataQualitySubjectScheduleApi {
      * * `metric` - metric
      * * `posthog_table` - posthog_table */
     readonly subject_type: SubjectTypeEnumApi
-    /** Id of the metric or PostHog table. */
+    /** Id of the metric or Flind table. */
     readonly subject_uuid: string
 }
 
@@ -929,7 +929,7 @@ export type DataQualityChecksListParams = {
      */
     subject_type?: DataQualityChecksListSubjectType
     /**
-     * Id of the table, view, metric, or PostHog table.
+     * Id of the table, view, metric, or Flind table.
      */
     subject_uuid?: string
 }
@@ -980,7 +980,7 @@ export type DataQualityChecksHealthListParams = {
      */
     subject_type?: DataQualityChecksHealthListSubjectType
     /**
-     * Id of the table, view, metric, or PostHog table.
+     * Id of the table, view, metric, or Flind table.
      */
     subject_uuid?: string
 }
@@ -1001,7 +1001,7 @@ export type DataQualityChecksOutputSchemaRetrieveParams = {
      */
     subject_type?: DataQualityChecksOutputSchemaRetrieveSubjectType
     /**
-     * Id of the table, view, metric, or PostHog table.
+     * Id of the table, view, metric, or Flind table.
      */
     subject_uuid?: string
 }
@@ -1022,7 +1022,7 @@ export type DataQualityChecksScheduleRetrieveParams = {
      */
     subject_type?: DataQualityChecksScheduleRetrieveSubjectType
     /**
-     * Id of the table, view, metric, or PostHog table.
+     * Id of the table, view, metric, or Flind table.
      */
     subject_uuid?: string
 }
@@ -1093,7 +1093,7 @@ export type DataQualityRunsListParams = {
      */
     subject_type?: DataQualityRunsListSubjectType
     /**
-     * Id of the table, view, metric, or PostHog table.
+     * Id of the table, view, metric, or Flind table.
      */
     subject_uuid?: string
 }

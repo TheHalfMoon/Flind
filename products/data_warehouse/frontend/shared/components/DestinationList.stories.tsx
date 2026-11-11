@@ -7,7 +7,7 @@ import { DestinationList, DestinationListProps } from './DestinationList'
 const WAREHOUSE: ExternalDataDestinationApi = {
     id: '01a03e9c-1b76-0000-9079-2a0ee2186dea',
     type: 'PostHogWarehouse',
-    name: 'PostHog warehouse',
+    name: 'Flind warehouse',
     config: {},
     integration: null,
     is_posthog_warehouse: true,

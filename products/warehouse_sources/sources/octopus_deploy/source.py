@@ -48,7 +48,7 @@ class OctopusDeploySource(ResumableSource[OctopusDeploySourceConfig, OctopusDepl
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Octopus Deploy",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Octopus Deploy server URL and an API key to pull your deployment data into the PostHog Data warehouse.
+            caption="""Enter your Octopus Deploy server URL and an API key to pull your deployment data into the Flind Data warehouse.
 
 Use your Octopus Cloud URL (like `https://your-org.octopus.app`) or your self-hosted server's public URL.
 

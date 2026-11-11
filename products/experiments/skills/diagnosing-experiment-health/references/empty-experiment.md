@@ -133,7 +133,7 @@ Two shapes break the join or the assignment:
   The exception is a project that keeps each event's person id as it was written: there a merge of two persons that both existed does not move the exposure sent before it.
   The risk is a second evaluation under the identified id that lands in another variant (A3 in `bias-and-skew.md`).
 - **The ids are never linked.**
-  The exposure is sent under one id and the metric events under another that PostHog never joins to it: a second pipeline (a customer data platform, a backend) that sends events under its own anonymous id, or anonymous events sent without a person profile in a project that keeps each event's person id as it was written.
+  The exposure is sent under one id and the metric events under another that Flind never joins to it: a second pipeline (a customer data platform, a backend) that sends events under its own anonymous id, or anonymous events sent without a person profile in a project that keeps each event's person id as it was written.
   The experiment then shows exposures and almost no conversions.
 
 **Evidence.** Take one person who converted.
@@ -152,7 +152,7 @@ Give every pipeline that sends events for one visitor the same id from the first
 
 ## B3 — `$feature_flag_called` deduplication per identity [MEDIUM]
 
-PostHog SDKs deduplicate `$feature_flag_called` to avoid flooding ingestion with identical exposure
+Flind SDKs deduplicate `$feature_flag_called` to avoid flooding ingestion with identical exposure
 events. The _scope_ of "duplicate" varies by SDK:
 
 - **posthog-js** dedupes per identity across sessions by default. Returning users who evaluated the
@@ -215,7 +215,7 @@ An event that arrives another way carries it only when the sender adds it: a ser
 
 **Placebo / variant-less experiments still need the property.** A "no UX impact" experiment
 (common for instrumentation-only or breakdown-driven analyses) requires `$feature/<flag-key>` on
-the custom exposure event just like any other experiment. PostHog uses the property for _variant
+the custom exposure event just like any other experiment. Flind uses the property for _variant
 attribution_, not for product behavior.
 
 ## B5 — Required properties on `$feature_flag_called` [HIGH]
@@ -236,7 +236,7 @@ Rows whose response is no variant key are not counted.
 
 ## B6 — Ad-blockers / network drops [MEDIUM]
 
-Common cause of partial or zero data. The SDK call goes out, but the request never reaches PostHog.
+Common cause of partial or zero data. The SDK call goes out, but the request never reaches Flind.
 
 A consent step has the same effect `[LOW]`: nothing is captured before the visitor opts in, and when flags load only after consent, every read before it returns no variant.
 With posthog-js opted out by default (`opt_out_capturing_by_default: true`) and persistence left on, a read before opt-in returns the variant and records the exposure as sent, while the event itself is dropped.
@@ -332,7 +332,7 @@ Almost always one of:
 
 - B1 (wrong evaluation method), when the code reads a payload: `getFeatureFlagPayload()` returns the payload, which is empty for a flag without one
 - B2 (`identify()` timing), on a flag whose release conditions read person properties that are set at `identify()`: a read before it gets no variant
-- `posthog is not defined` (SDK init order — initialize PostHog before any flag call)
+- `posthog is not defined` (SDK init order — initialize Flind before any flag call)
 - The code reads the flag before the SDK has loaded the flags.
   posthog-js then returns `undefined` and sends no `$feature_flag_called`, unless the browser holds flags from an earlier visit
 - The flag is genuinely off — `feature_flag.active === false` (`status` is `paused`), or rollout `0%`, or the user is outside
@@ -340,7 +340,7 @@ Almost always one of:
 - The flag buckets on the device id, and the call carries none (A10 in `bias-and-skew.md`)
 - The code reads the multivariate flag as a boolean and gets `true`, or replaces "no variant" with a default of its own
 
-**Fix:** walk the user through their SDK setup. Verify in this order: (a) is PostHog initialized?
+**Fix:** walk the user through their SDK setup. Verify in this order: (a) is Flind initialized?
 (b) is the flag active and rolled out? (c) is the right variant key being requested?
 
 When only a part of the audience gets no variant, the question is who: A10 in `bias-and-skew.md`.
@@ -431,7 +431,7 @@ Then check where the project keeps its flag calls: `project-get` returns `flag_e
 At 2, `$feature_flag_called` no longer arrives in `events` for the projects that setting covers.
 The default exposure keeps counting from the `$experiment_exposure` copies ("Which event, which property" in `diagnostic-snapshot.md`).
 An exposure or activation config that is an action with a `$feature_flag_called` step can stop gaining exposures, without a warning.
-That is no fault of the SDK or of the application: say so, and point the user to PostHog support.
+That is no fault of the SDK or of the application: say so, and point the user to Flind support.
 
 Then read the flag's change history, before any conclusion about the application:
 

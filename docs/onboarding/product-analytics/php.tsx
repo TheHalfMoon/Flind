@@ -11,7 +11,7 @@ export const getPHPInstallSteps = (ctx: OnboardingComponentsContext): StepDefini
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog PHP library using Composer:</Markdown>
+                    <Markdown>Install the Flind PHP library using Composer:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -27,18 +27,18 @@ export const getPHPInstallSteps = (ctx: OnboardingComponentsContext): StepDefini
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Initialize the PostHog client with your project token and host:</Markdown>
+                    <Markdown>Initialize the Flind client with your project token and host:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
                                 language: 'php',
                                 file: 'PHP',
                                 code: dedent`
-                                PostHog\\PostHog::init(
+                                Flind\\Flind::init(
                                     '<ph_project_token>',
                                     ['host' => '<ph_client_api_host>']
                                 );
@@ -67,7 +67,7 @@ export const getPHPEventStep = (ctx: OnboardingComponentsContext): StepDefinitio
                             language: 'php',
                             file: 'PHP',
                             code: dedent`
-                                PostHog::capture([
+                                Flind::capture([
                                     'distinctId' => 'test-user',
                                     'event' => 'test-event',
                                 ]);

@@ -30,9 +30,9 @@ After a rebuild, click the reload icon on the extension card, then close and ope
 
 | Permission                  | Why                                                                                                                                                                                                  |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `http://*/*`, `https://*/*` | The side panel reads the URL of the active tab and runs scripts in it when the user switches tabs. The same grant calls the PostHog API with your PostHog login, on Cloud and on a self-hosted host. |
+| `http://*/*`, `https://*/*` | The side panel reads the URL of the active tab and runs scripts in it when the user switches tabs. The same grant calls the Flind API with your Flind login, on Cloud and on a self-hosted host. |
 | `scripting`                 | Injects the content script, and reads the page's posthog-js settings in the page's world.                                                                                                            |
-| `storage`                   | Saves the PostHog host and the toolbar's OAuth tokens for each project.                                                                                                                              |
+| `storage`                   | Saves the Flind host and the toolbar's OAuth tokens for each project.                                                                                                                              |
 | `sidePanel`                 | Shows the side panel.                                                                                                                                                                                |
 
 The manifest also lists `content.css` and its fonts in `web_accessible_resources`, because the content script links them into its shadow root on the page.
@@ -40,7 +40,7 @@ The manifest also lists `content.css` and its fonts in `web_accessible_resources
 ### Site access
 
 Chrome lets the user take site access back from an extension.
-When the extension can't reach the PostHog host, the panel asks for access to it.
+When the extension can't reach the Flind host, the panel asks for access to it.
 When it can't reach the site, the panel asks the user to reload the page and try again.
 
 ## Data collection
@@ -50,10 +50,10 @@ Update the answers there when the extension starts to send new data.
 
 | Category                   | What the extension sends                                                                                                                       | Where                     |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
-| Authentication information | The PostHog session cookie, and the OAuth code, PKCE verifier and access and refresh tokens of the toolbar sign-in.                            | The user's PostHog host   |
-| Web history                | The active tab's URL, when the panel connects the toolbar to a project and when it loads heatmap and web vitals data for the page.             | The user's PostHog host   |
-| Website content            | Element selectors and text in a saved action, variant HTML in a saved experiment, and page screenshots in a saved heatmap or event screenshot. | The user's PostHog host   |
-| User activity              | Usage events from the panel, such as the tools the user opens, with the user's PostHog distinct ID.                                            | PostHog's usage analytics |
+| Authentication information | The Flind session cookie, and the OAuth code, PKCE verifier and access and refresh tokens of the toolbar sign-in.                            | The user's Flind host   |
+| Web history                | The active tab's URL, when the panel connects the toolbar to a project and when it loads heatmap and web vitals data for the page.             | The user's Flind host   |
+| Website content            | Element selectors and text in a saved action, variant HTML in a saved experiment, and page screenshots in a saved heatmap or event screenshot. | The user's Flind host   |
+| User activity              | Usage events from the panel, such as the tools the user opens, with the user's Flind distinct ID.                                            | Flind's usage analytics |
 
 The content script never sends usage events or logs, because it mounts the toolbar without `instrument`.
 
@@ -122,7 +122,7 @@ node src/toolbar/extension/store-listing/generate.mjs [path/to/unpacked/extensio
 The path defaults to `dist/toolbar-extension/chrome`. Point it at the unzipped release build to show exactly what the store item ships.
 
 The first screenshot is the marquee design at 1280×800.
-Each of the other four shows the PostHog logo and a headline above a browser window, with a website on the left and the side panel on the right:
+Each of the other four shows the Flind logo and a headline above a browser window, with a website on the left and the side panel on the right:
 
 - The website comes from a capture of an invented site with the page tools running. The script downloads each capture from the `PostHog/pr-assets` repository and hides the old panel in it.
 - The panel is a fresh render of the built `panel.html` with a fake `browser` API, like `ExtensionPanel.stories.tsx`. `store-listing/panelStates.mjs` holds the state of each tool, and it matches what the capture shows.
@@ -162,11 +162,11 @@ flowchart LR
     agent -- posthog-js --> page
 ```
 
-- **Sign-in.** The panel calls PostHog with the PostHog session cookie for the checks it runs before the page tools.
+- **Sign-in.** The panel calls Flind with the Flind session cookie for the checks it runs before the page tools.
   A session cookie sent from an extension page fails Django's CSRF origin check on writes, so the page tools use the toolbar's OAuth flow instead.
   When the panel first shows the tools for a project, it opens `/toolbar_oauth/authorize/` in a background tab with the page as the redirect.
   It reads the code from that tab's URL hash, closes the tab, and exchanges the code with its own PKCE verifier.
-  The tokens are stored per PostHog host and project.
+  The tokens are stored per Flind host and project.
   If that fails, or the tokens expire again, the panel shows **Connect**, which runs the same flow in a tab the user can see.
 - **Refresh.** The content script refreshes the tokens on a 401 like the floating toolbar does, and sends the new tokens to the panel to store.
 - **Storage.** In extension mode `toolbarConfigLogic` doesn't read the page's URL hash or write the page's `localStorage`, so it leaves the floating toolbar's session on the page alone.
@@ -196,7 +196,7 @@ Use a site in the project's authorized URLs.
 
 1. Open the panel on the site. The panel connects the toolbar to the project: a tab opens and closes by itself.
 2. Click the Inspect icon and hover an element. The panel shows its selector and actions. Click the element to keep it selected.
-3. Click **Heatmap**. Check the clickmap counts, the heatmap canvas, the scroll depth type, **Filter to area**, **Load all**, and **Save to PostHog**.
+3. Click **Heatmap**. Check the clickmap counts, the heatmap canvas, the scroll depth type, **Filter to area**, **Load all**, and **Save to Flind**.
 4. Reload the page. The heatmap comes back.
 5. In Inspect, select an element and click **Create action from this element**. Name the action, check the match count, and save it.
 6. Click **Actions**, open an action, add an element with **Select Element**, and save.
@@ -211,7 +211,7 @@ Use a site in the project's authorized URLs.
 15. Create an experiment, pick an element for a transformation with **Select element**, edit it, and save it. Open a page whose snippet sets `disable_web_experiments`: **Experiments** shows a warning.
 16. Switch the browser to dark mode. The panel follows it.
 17. Open a new tab, or a site that isn't an authorized URL. The panel lists the project's authorized URLs. Click one: it opens in a new tab, and the panel stays open on it.
-18. Open the PostHog app. The panel asks you to open your website, not to add the PostHog app to the authorized URLs.
+18. Open the Flind app. The panel asks you to open your website, not to add the Flind app to the authorized URLs.
 
 ## Future: Firefox
 

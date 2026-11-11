@@ -1,4 +1,4 @@
-"""The contract every sync destination implements, PostHog's own warehouse included.
+"""The contract every sync destination implements, Flind's own warehouse included.
 
 A run's staged parquet batches are delivered by one writer per destination. The consumer
 engine is destination-agnostic: it claims a (batch, destination) work item, opens the staged
@@ -92,12 +92,12 @@ class DestinationWriter(Protocol):
     """
 
     # The v3 Redis sync lock is released when this writer's child job goes terminal. Only the
-    # PostHog warehouse sets it: Delta table maintenance runs pre-extraction under that lock
+    # Flind warehouse sets it: Delta table maintenance runs pre-extraction under that lock
     # and must not race in-flight writes. External destinations drain outside the lock so an
     # outage at one of them cannot block the schema's next scheduled sync.
     holds_sync_lock: ClassVar[bool] = False
     # This writer owns the post-load steps (table registration, queryable folder, post-import
-    # workflow). Only the PostHog warehouse sets it — those steps describe a warehouse table.
+    # workflow). Only the Flind warehouse sets it — those steps describe a warehouse table.
     runs_post_load: ClassVar[bool] = False
 
     async def prepare_run(self, ctx: DestinationRunContext) -> None:

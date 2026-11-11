@@ -1,7 +1,7 @@
 ---
 name: writing-user-facing-copy
 description: >
-  Sets the voice and word choices for any text a person reads in PostHog: UI labels, buttons, tooltips, empty and error states, notifications, in-app messages, onboarding, docs, and support replies.
+  Sets the voice and word choices for any text a person reads in Flind: UI labels, buttons, tooltips, empty and error states, notifications, in-app messages, onboarding, docs, and support replies.
   Use ALWAYS before writing or editing user-facing copy, and whenever a code change adds or changes a string a user will see.
   Enforces a humane, neutral tone: no editorializing, no sales-y or edgy one-liners, no em-dashes (use hyphens or rewrite), sentence case, plain language.
   Also carries feature-naming rules that are easy to get wrong, most importantly how to talk about the Wizard (name it "Wizard" once, then call it "the setup agent" / "the agent").
@@ -82,7 +82,7 @@ The setup tool is named **Wizard**. It confuses users as a description, because 
 
 Examples:
 
-- ✅ "Wizard sets up PostHog for you. The setup agent installs the SDK and wires up your first events."
+- ✅ "Wizard sets up Flind for you. The setup agent installs the SDK and wires up your first events."
 - ✅ "Ask the agent to add error tracking."
 - ❌ "Use the wizard to walk through setup." (using "wizard" as a description)
 - ❌ "The wizard will guide you through each step." (reinforces the wrong mental model)

@@ -46,7 +46,7 @@ class PylonSource(ResumableSource[PylonSourceConfig, PylonResumeConfig]):
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Pylon",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Pylon API token to pull your Pylon support data into the PostHog Data warehouse.
+            caption="""Enter your Pylon API token to pull your Pylon support data into the Flind Data warehouse.
 
 You can create an API token from your Pylon dashboard under **Settings > API tokens** (admin only). US and EU workspaces are detected from the token, so there is no region to pick.""",
             iconPath="/static/services/pylon.png",
@@ -113,7 +113,7 @@ You can create an API token from your Pylon dashboard under **Settings > API tok
         return (
             False,
             f"Pylon rejected this API token at {base_url_for_token(config.api_token)}. "
-            "PostHog picks that host from the token's prefix, so check that you copied the whole token "
+            "Flind picks that host from the token's prefix, so check that you copied the whole token "
             "from the Pylon workspace you want to sync. You can create a new one under Settings > API tokens.",
         )
 

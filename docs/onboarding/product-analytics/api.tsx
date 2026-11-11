@@ -12,7 +12,7 @@ export const getAPISteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             content: (
                 <>
                     <Markdown>
-                        You can send events directly to the PostHog API from any programming language or platform that
+                        You can send events directly to the Flind API from any programming language or platform that
                         can make HTTP requests:
                     </Markdown>
                     <CodeBlock

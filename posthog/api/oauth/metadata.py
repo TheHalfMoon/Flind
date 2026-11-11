@@ -102,7 +102,7 @@ def protected_resource_metadata(base_url: str) -> Document:
     return {
         # Required by RFC 9728
         "resource": base_url,
-        # The same PostHog instance is its own authorization server
+        # The same Flind instance is its own authorization server
         "authorization_servers": [base_url],
         "scopes_supported": get_oauth_scopes_supported(),
         "bearer_methods_supported": ["header"],

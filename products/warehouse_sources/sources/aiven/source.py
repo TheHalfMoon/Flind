@@ -51,7 +51,7 @@ class AivenSource(SimpleSource[AivenSourceConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Aiven",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter an Aiven API token to pull your Aiven projects, services and billing data into the PostHog Data warehouse.
+            caption="""Enter an Aiven API token to pull your Aiven projects, services and billing data into the Flind Data warehouse.
 
 You can create a personal token from your [Aiven profile authentication page](https://console.aiven.io/profile/auth).
 

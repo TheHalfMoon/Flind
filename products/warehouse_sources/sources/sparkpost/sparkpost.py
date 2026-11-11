@@ -476,7 +476,7 @@ def create_webhook(region: Optional[str], api_key: str, webhook_url: str) -> Web
     """Register an event webhook pointing at ``webhook_url``.
 
     SparkPost authenticates deliveries with credentials we choose at registration time
-    (``auth_type: "basic"``), so PostHog generates a random password and stores the exact
+    (``auth_type: "basic"``), so Flind generates a random password and stores the exact
     ``Authorization`` header SparkPost will send. The Hog template rejects any delivery whose
     header doesn't match, which is what keeps the ingest endpoint from being open to the world.
     """

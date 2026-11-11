@@ -74,7 +74,7 @@ const recapMock: WebAnalyticsRecapResponseApi = {
     period_label: 'Last 7 days',
     period_start: '2023-01-25',
     period_end: '2023-02-01',
-    project_name: 'PostHog App + Website',
+    project_name: 'Flind App + Website',
     recap_url: '/project/1/web/recap?utm_source=web_analytics_recap',
 }
 

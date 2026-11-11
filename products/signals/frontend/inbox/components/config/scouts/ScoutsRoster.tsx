@@ -126,7 +126,7 @@ export function ScoutsRoster(): JSX.Element {
                         </span>
                     </FlaggedFeature>
                     Each scout's run strip shows its {SCOUT_RUNS_PER_SCOUT_LABEL}, so scouts on different schedules stay
-                    comparable. New scouts are created as skills in your PostHog project, under the name you give them.{' '}
+                    comparable. New scouts are created as skills in your Flind project, under the name you give them.{' '}
                     <Link to={urls.inboxRuns()} data-attr="inbox-open-runs">
                         See every recent run
                     </Link>{' '}

@@ -1,6 +1,6 @@
 ---
 name: adding-activity-logging
-description: Adds or changes activity logging (the audit trail) for a Django model in PostHog. Use when a model's writes must show in the Activity side panel or the advanced activity logs, when adding ModelActivityMixin, an ActivityScope, a model_activity_signal receiver, an activity describer, or field exclusions, when auditing which write paths of a model are logged, or when a change is missing from the activity log. Covers the receiver-module convention, writes the signal cannot see (QuerySet.update, bulk_create), the actor outside requests, and product models on a separate database. Trigger terms - activity log, audit log, audit trail, ModelActivityMixin, log_activity, changes_between, activity describer, who changed this.
+description: Adds or changes activity logging (the audit trail) for a Django model in Flind. Use when a model's writes must show in the Activity side panel or the advanced activity logs, when adding ModelActivityMixin, an ActivityScope, a model_activity_signal receiver, an activity describer, or field exclusions, when auditing which write paths of a model are logged, or when a change is missing from the activity log. Covers the receiver-module convention, writes the signal cannot see (QuerySet.update, bulk_create), the actor outside requests, and product models on a separate database. Trigger terms - activity log, audit log, audit trail, ModelActivityMixin, log_activity, changes_between, activity describer, who changed this.
 ---
 
 # Adding activity logging

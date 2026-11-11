@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 56 enabled ops
+ * Flind API - MCP 56 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -677,7 +677,7 @@ export const VisionObservationsRetrieveQueryParams = () => zod.object({
 })
 
 /**
- * Create a PostHog Task from this observation's finding so it can be triaged and fixed. Title and description are derived from the scanner and its result. Record-only: this does not start the coding agent. Idempotent per observation: once a task exists, repeat calls return its id with a 200 instead of creating a duplicate.
+ * Create a Flind Task from this observation's finding so it can be triaged and fixed. Title and description are derived from the scanner and its result. Record-only: this does not start the coding agent. Idempotent per observation: once a task exists, repeat calls return its id with a 200 instead of creating a duplicate.
  */
 export const VisionObservationsCreateTaskCreateParams = () => zod.object({
     id: zod.string().describe('A UUID string identifying this replay observation.'),
@@ -875,7 +875,7 @@ export const VisionRequestsCreateBody = () => zod
                     .describe('\* `summarize_recording` - Summarize recording')
                     .optional()
                     .describe(
-                        'Run a scan PostHog defines instead of your own prompt. `summarize_recording` is the AI summary the Summarize button in the replay player runs, so its results are shared with that button. Leave out `prompt`, `scanner_type` and `scanner_config` when this is set.\n\n\* `summarize_recording` - Summarize recording'
+                        'Run a scan Flind defines instead of your own prompt. `summarize_recording` is the AI summary the Summarize button in the replay player runs, so its results are shared with that button. Leave out `prompt`, `scanner_type` and `scanner_config` when this is set.\n\n\* `summarize_recording` - Summarize recording'
                     ),
                 prompt: zod
                     .string()
@@ -1125,7 +1125,7 @@ export const VisionScannersCreateBody = () => zod
             .boolean()
             .optional()
             .describe(
-                'When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals.'
+                'When true, the prompt is augmented with the Signal side mission and the scanner emits Flind Signals.'
             ),
         experiment_targeting: zod
             .union([
@@ -1305,7 +1305,7 @@ export const VisionScannersPartialUpdateBody = () => zod
             .boolean()
             .optional()
             .describe(
-                'When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals.'
+                'When true, the prompt is augmented with the Signal side mission and the scanner emits Flind Signals.'
             ),
         experiment_targeting: zod
             .union([
@@ -2224,7 +2224,7 @@ export const VisionScannersScoutsCreateBody = () => zod
                                         )
                                         .nullish()
                                         .describe(
-                                            'Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the PostHog app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel.'
+                                            'Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the Flind app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel.'
                                         ),
                                     thread_reports: zod
                                         .boolean()
@@ -2270,7 +2270,7 @@ export const VisionScannersScoutsCreateBody = () => zod
                     .describe('\* `trusted` - Trusted domains only\n\* `full` - Full')
                     .optional()
                     .describe(
-                        "What the scout's sandbox can reach over the network while it runs. Defaults to `trusted`, the platform's trusted-domain allowlist (PostHog, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers.\n\n\* `trusted` - Trusted domains only\n\* `full` - Full"
+                        "What the scout's sandbox can reach over the network while it runs. Defaults to `trusted`, the platform's trusted-domain allowlist (Flind, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers.\n\n\* `trusted` - Trusted domains only\n\* `full` - Full"
                     ),
                 auto_pause_exempt: zod
                     .boolean()
@@ -2584,7 +2584,7 @@ export const VisionScannersHighlightFeedRetrieveQueryParams = () => zod.object({
  * The config resolves to a scanner minted on first use, so asking the same question twice reuses
  * the observations it already has, while a different question about the same session gets its own.
  *
- * With `scanner_type` set to `summarizer`, this is how you get PostHog's own AI summary for a
+ * With `scanner_type` set to `summarizer`, this is how you get Flind's own AI summary for a
  * recording ID. It resolves to the Summarize button's own scanner only when the prompt and
  * `scanner_config` match what the button sends, since the config is what the key fingerprints.
  */
@@ -2610,7 +2610,7 @@ export const VisionScannersInlineScanCreateBody = () => zod
             .describe('\* `summarize_recording` - Summarize recording')
             .optional()
             .describe(
-                'Run a scan PostHog defines instead of your own prompt. `summarize_recording` is the AI summary the Summarize button in the replay player runs, so its results are shared with that button. Leave out `prompt`, `scanner_type` and `scanner_config` when this is set.\n\n\* `summarize_recording` - Summarize recording'
+                'Run a scan Flind defines instead of your own prompt. `summarize_recording` is the AI summary the Summarize button in the replay player runs, so its results are shared with that button. Leave out `prompt`, `scanner_type` and `scanner_config` when this is set.\n\n\* `summarize_recording` - Summarize recording'
             ),
         prompt: zod
             .string()

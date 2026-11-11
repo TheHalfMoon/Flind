@@ -6,8 +6,8 @@ REGISTRY_FEATURE_FLAG = "wizard-program-registry"
 
 POSTHOG_INTEGRATION_PROGRAM = WizardProgram(
     id="posthog-integration",
-    name="PostHog integration",
-    description="Set up PostHog SDK integration",
+    name="Flind integration",
+    description="Set up Flind SDK integration",
     wizard_version=DEFAULT_WIZARD_VERSION,
     command=(),
     tags=(),

@@ -227,7 +227,7 @@ def _with_issue_permalink(body: str, permalink: str) -> str:
     # The body is free text the user can clear, so the back-link is enforced here to keep every created issue traceable.
     if permalink in body:
         return body
-    link = f"**PostHog issue:** {permalink}"
+    link = f"**Flind issue:** {permalink}"
     return f"{body.rstrip()}\n\n{link}" if body.strip() else link
 
 
@@ -276,7 +276,7 @@ def create_external_reference(
                 existing.save(update_fields=["external_context"])
             return existing, False
         if integration.kind == IntegrationKind.LINEAR:
-            # Linked issues get the same PostHog back-link attachment as created ones.
+            # Linked issues get the same Flind back-link attachment as created ones.
             attachment_url = get_issue_permalink_by_fingerprint(team_id=team_id, issue_id=issue.id)
             LinearIntegration(integration).create_attachment(stored_context["id"], attachment_url)
         return ErrorTrackingExternalReference.objects.create(

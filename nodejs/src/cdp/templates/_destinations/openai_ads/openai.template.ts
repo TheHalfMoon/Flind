@@ -22,8 +22,8 @@ const EVENT_TYPES: { value: string; label: string; dataType: string }[] = [
 
 const DATA_TYPE_BY_EVENT_TYPE = EVENT_TYPES.map((e) => `'${e.value}': '${e.dataType}'`).join(', ')
 
-// PostHog events with a default mapping to an OpenAI standard event type. The other
-// standard types (lead_created, trial_started, ...) have no standard PostHog
+// Flind events with a default mapping to an OpenAI standard event type. The other
+// standard types (lead_created, trial_started, ...) have no standard Flind
 // counterpart, so users map those themselves via the event type choice.
 const DEFAULT_MAPPINGS: {
     name: string
@@ -126,7 +126,7 @@ const build_inputs = (defaults: { eventType?: string; actionSource?: string } = 
             type: 'string',
             label: 'OpenAI click identifier (oppref)',
             description:
-                'The privacy-preserving identifier (oppref) OpenAI appends to ad click-through URLs. PostHog does not capture it automatically, so send it as an event or person property yourself. It gives the most accurate attribution, but conversions can also match on the obref cookie, hashed email, or hashed external ID when it is not available.',
+                'The privacy-preserving identifier (oppref) OpenAI appends to ad click-through URLs. Flind does not capture it automatically, so send it as an event or person property yourself. It gives the most accurate attribution, but conversions can also match on the obref cookie, hashed email, or hashed external ID when it is not available.',
             default: '{event.properties.oppref ?? person.properties.oppref ?? person.properties.$initial_oppref}',
             secret: false,
             required: false,
@@ -136,7 +136,7 @@ const build_inputs = (defaults: { eventType?: string; actionSource?: string } = 
             type: 'string',
             label: 'OpenAI browser identifier (obref)',
             description:
-                'The value of the __obref first-party cookie set by the OpenAI pixel, sent unhashed. PostHog does not read the cookie automatically, so send it as a person property yourself. Only send it for users who have consented to measurement.',
+                'The value of the __obref first-party cookie set by the OpenAI pixel, sent unhashed. Flind does not read the cookie automatically, so send it as a person property yourself. Only send it for users who have consented to measurement.',
             default: '{person.properties.$obref}',
             secret: false,
             required: false,
@@ -184,7 +184,7 @@ const build_inputs = (defaults: { eventType?: string; actionSource?: string } = 
             type: 'string',
             label: 'Amount (minor currency units)',
             description:
-                'The monetary value of the conversion as an integer in ISO 4217 minor units, e.g. 2599 for $25.99. Note this differs from most PostHog revenue properties, which are in major units.',
+                'The monetary value of the conversion as an integer in ISO 4217 minor units, e.g. 2599 for $25.99. Note this differs from most Flind revenue properties, which are in major units.',
             default: '',
             secret: false,
             required: false,
@@ -247,7 +247,7 @@ if (inputs.eventType == 'custom') {
         throw Error('\`customEventName\` is required when the event type is \`custom\`')
     }
     // OpenAI only accepts [a-z0-9_-]{1,64}; normalize the common offenders (spaces, capitals)
-    // so the {event.event} default works for typical PostHog event names
+    // so the {event.event} default works for typical Flind event names
     let customEventName := lower(replaceAll(trim(inputs.customEventName), ' ', '-'))
     if (not match(customEventName, '^[a-z0-9_-]{1,64}$')) {
         throw Error(f'\`customEventName\` \`{customEventName}\` is invalid: it must be 1-64 characters of lowercase letters, numbers, underscores, or dashes')

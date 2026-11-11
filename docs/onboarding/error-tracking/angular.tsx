@@ -15,7 +15,7 @@ export const getAngularSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             <>
                 <Markdown>
                     {dedent`
-                        Exception autocapture can be enabled during initialization of the PostHog client to automatically capture any exception thrown by your Angular application.
+                        Exception autocapture can be enabled during initialization of the Flind client to automatically capture any exception thrown by your Angular application.
 
                         This requires overriding Angular's default \`ErrorHandler\` provider:
                     `}
@@ -163,9 +163,9 @@ export const getAngularSteps = (ctx: OnboardingComponentsContext): StepDefinitio
         content: (
             <Markdown>
                 {dedent`
-                    Confirm exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Confirm exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),

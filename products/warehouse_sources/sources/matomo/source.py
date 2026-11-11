@@ -100,15 +100,15 @@ class MatomoSource(ResumableSource[MatomoSourceConfig, MatomoResumeConfig], Vali
             "401 Client Error: Unauthorized for url": "Matomo authentication failed. Please check your API token.",
             "403 Client Error: Forbidden for url": "Matomo denied access. Please check your API token's permissions for this site.",
             # The instance's own HTTPS certificate has expired. This is a problem with the
-            # customer's Matomo host, not PostHog's request, and every retry hits the same
+            # customer's Matomo host, not Flind's request, and every retry hits the same
             # expired cert until they renew it.
-            "certificate has expired": "PostHog could not connect to your Matomo instance because its SSL certificate has expired. Renew the certificate on your Matomo host, then try again.",
+            "certificate has expired": "Flind could not connect to your Matomo instance because its SSL certificate has expired. Renew the certificate on your Matomo host, then try again.",
             # Every call goes to the one reporting endpoint, and Matomo answers a method it does
             # not know with a 200 error envelope, so a 404 means the instance URL points at
             # something that is not a Matomo instance, or at one that is gone. The URL is fixed
             # until the customer edits it, so every retry replays the same 404.
             "404 Client Error: Not Found for url": (
-                "PostHog couldn't find a Matomo instance at the URL configured for this source. "
+                "Flind couldn't find a Matomo instance at the URL configured for this source. "
                 "Check the instance URL, then reconnect."
             ),
             "Matomo API error:": None,
@@ -136,7 +136,7 @@ class MatomoSource(ResumableSource[MatomoSourceConfig, MatomoResumeConfig], Vali
             name=ExternalDataSourceType.MATOMO,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Matomo",
-            caption="""Connect your Matomo instance to pull your web analytics data into the PostHog Data warehouse.
+            caption="""Connect your Matomo instance to pull your web analytics data into the Flind Data warehouse.
 
 Works with Matomo Cloud and self-hosted instances. Enter your instance URL (e.g. `https://myorg.matomo.cloud`), the numeric site ID, and an API token created under Administration > Personal > Security > Auth tokens.""",
             iconPath="/static/services/matomo.png",

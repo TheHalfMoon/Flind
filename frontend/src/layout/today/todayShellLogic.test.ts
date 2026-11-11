@@ -194,7 +194,7 @@ describe('todayShellLogic', () => {
             urls.customerAnalyticsDashboard(),
         ],
     ] as const)(
-        'a rail pick on %s with the %s PostHog AI view and flags %o opens %s',
+        'a rail pick on %s with the %s Flind AI view and flags %o opens %s',
         (pane, phaiView, flags, href) => {
             expect(railPaneHref(pane, phaiView, flags)).toBe(href)
         }

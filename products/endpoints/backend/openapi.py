@@ -45,7 +45,7 @@ def generate_openapi_spec(
         "openapi": "3.0.3",
         "info": {
             "title": endpoint.name,
-            "description": description or f"PostHog Endpoint: {endpoint.name}",
+            "description": description or f"Flind Endpoint: {endpoint.name}",
             "version": str(target_version.version),
         },
         "servers": [{"url": base_url}],
@@ -120,7 +120,7 @@ def generate_openapi_spec(
                 "PersonalAPIKey": {
                     "type": "http",
                     "scheme": "bearer",
-                    "description": "Personal API Key from PostHog. Get one at /settings/user-api-keys",
+                    "description": "Personal API Key from Flind. Get one at /settings/user-api-keys",
                 }
             },
             "schemas": schemas,

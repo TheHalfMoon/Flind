@@ -1930,7 +1930,7 @@ describe('runStreamLogic', () => {
         it.each([
             [
                 'legacy posthog_context',
-                '<posthog_context>\nThe user attached the following PostHog entities.\n- Insight #1\n</posthog_context>\n\nWhy did signups drop?',
+                '<posthog_context>\nThe user attached the following Flind entities.\n- Insight #1\n</posthog_context>\n\nWhy did signups drop?',
             ],
             [
                 'slack thread context on a task started from Slack',
@@ -5162,11 +5162,11 @@ describe('runStreamLogic', () => {
                         sessionId: 's',
                         step: 'wizard',
                         status: 'in_progress',
-                        label: 'Running PostHog setup wizard',
+                        label: 'Running Flind setup wizard',
                         group: 'setup:run-1',
                     })
                 )
-            }).toMatchValues({ currentProgress: 'Running PostHog setup wizard' })
+            }).toMatchValues({ currentProgress: 'Running Flind setup wizard' })
 
             expect(logic.values.threadItems).toEqual([
                 {
@@ -5177,7 +5177,7 @@ describe('runStreamLogic', () => {
                         {
                             key: 'wizard',
                             status: 'in_progress',
-                            label: 'Running PostHog setup wizard',
+                            label: 'Running Flind setup wizard',
                         },
                     ],
                 },
@@ -6790,7 +6790,7 @@ describe('runStreamLogic', () => {
             )
         })
 
-        it('auto-approves a PostHog MCP operation without showing a card', async () => {
+        it('auto-approves a Flind MCP operation without showing a card', async () => {
             const captureSpy = jest.spyOn(posthog, 'capture').mockImplementation(() => undefined as any)
             logic.actions.openSseForRun({ taskId: 'task-1', runId: 'run-1' })
             // Resolving the proxy stream target mints a token before `openStream`, so the connection

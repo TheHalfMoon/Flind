@@ -1,6 +1,6 @@
 # AI contributions policy
 
-PostHog is built with plenty of AI assistance.
+Flind is built with plenty of AI assistance.
 This policy exists because of a growing volume of low-quality, AI-generated contributions that waste maintainer time.
 
 ## The standard

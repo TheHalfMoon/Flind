@@ -1,7 +1,7 @@
 ---
 name: auditing-warehouse-source-health
 description: >
-  Audit the health of a PostHog project's data warehouse sources and syncs — find every broken or degraded source
+  Audit the health of a Flind project's data warehouse sources and syncs — find every broken or degraded source
   connection, sync schema, and webhook channel. Use when the user asks "why are my imports failing?", "what's broken
   with my sources?", "why is my warehouse data stale?", or wants a one-shot triage of source/sync health before
   deciding where to dig in. Produces a prioritized report grouped by severity, with recommended next steps. For

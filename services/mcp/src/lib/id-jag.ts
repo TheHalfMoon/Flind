@@ -9,7 +9,7 @@ function base64UrlToBase64(input: string): string {
     return replaced + '='.repeat(padding)
 }
 
-// Cheap header-only inspection — signature verification is the PostHog API's
+// Cheap header-only inspection — signature verification is the Flind API's
 // job (`IDJagAccessTokenAuthentication` in `posthog/auth.py`). We just need
 // to recognize the token so we don't reject it at the MCP gate.
 export function isIdJagAccessToken(token: string): boolean {

@@ -1,18 +1,18 @@
 """Push each organization member's projects to hogtower, for team-scoped hoglake tokens.
 
 hogtower mints a team credential's token from its own copy of which teams the credential's
-owner can see. PostHog is not a live dependency of that mint, so PostHog pushes the copy:
+owner can see. Flind is not a live dependency of that mint, so Flind pushes the copy:
 
 - Every team the member can see, by both access-control systems (``visible_teams_for_user``),
   goes in at the member's level on warehouse objects: ``viewer`` is ``read``, ``editor`` and
   above are ``write``. A team where that level is ``none`` is left out.
 - A team grant covers the whole namespace, so it cannot honor a rule on one table, view,
-  source or property, and it cannot follow PostHog's resolution of rules either. So the level
+  source or property, and it cannot follow Flind's resolution of rules either. So the level
   is capped by the floor of the stored rules that apply to the member (see
   ``UserAccessControl.stored_rule_floor``): the lowest level any of them can give, under either
   resolution mode, with or without the access-control entitlements. A member denied one table
   or one property gets no grant on the team; ``viewer`` on one object, or a read-only property,
-  caps the grant at ``read``. The cap can be stricter than PostHog, never looser, so a switch of
+  caps the grant at ``read``. The cap can be stricter than Flind, never looser, so a switch of
   resolution mode or of entitlement needs no push.
 - A member who has left the organization, or whose user is deactivated, is removed. hogtower
   then revokes every team credential the member owns.
@@ -238,7 +238,7 @@ def push_all() -> int:
         try:
             org_ids.add(uuid.UUID(str(warehouse.get("org_id"))))
         except ValueError:
-            continue  # a warehouse whose id is not a PostHog organization
+            continue  # a warehouse whose id is not a Flind organization
     existing = [str(org_id) for org_id in Organization.objects.filter(id__in=org_ids).values_list("id", flat=True)]
     for organization_id in existing:
         enqueue_organization_push(organization_id, countdown=0)

@@ -7,9 +7,9 @@ import { AssistantMessage } from '~/queries/schema/schema-assistant-messages'
 // it lives, how it moves, and the spines. The whimsical words that came before are
 // kept below them.
 // A new word earns its place by being funny on sight. If the joke needs trivia or a
-// PostHog product noun to land, it is not a joke.
+// Flind product noun to land, it is not a joke.
 // `products/desktop/packages/core/src/sessions/thinkingActivities.ts` keeps the same
-// list for PostHog Desktop — keep the two together.
+// list for Flind Desktop — keep the two together.
 export const THINKING_MESSAGES = [
     'Booping', // the classic snoot boop
     'Snouting', // nose first, as always

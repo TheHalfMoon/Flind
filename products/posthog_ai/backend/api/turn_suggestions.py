@@ -15,7 +15,7 @@ from products.tasks.backend.facade.api import task_visible
 
 class ResolveTurnSuggestionSerializer(serializers.Serializer):
     task_id = serializers.UUIDField(
-        help_text="ID of the PostHog AI conversation (task) the suggestion card belongs to."
+        help_text="ID of the Flind AI conversation (task) the suggestion card belongs to."
     )
     turn_index = serializers.IntegerField(
         min_value=0, help_text="Zero-based index of the conversation turn the suggestion card was shown under."
@@ -34,7 +34,7 @@ class ResolveTurnSuggestionResponseSerializer(serializers.Serializer):
 
 class TurnSuggestionStateQuerySerializer(serializers.Serializer):
     task_id = serializers.UUIDField(
-        help_text="ID of the PostHog AI conversation (task) to read suggestion outcomes for."
+        help_text="ID of the Flind AI conversation (task) to read suggestion outcomes for."
     )
 
 
@@ -54,7 +54,7 @@ class TurnSuggestionsViewSet(TeamAndOrgViewSetMixin, GenericViewSet):
     @validated_request(
         query_serializer=TurnSuggestionStateQuerySerializer,
         responses={200: OpenApiResponse(response=TurnSuggestionStateSerializer)},
-        summary="Read which PostHog AI turn suggestion cards the user already resolved",
+        summary="Read which Flind AI turn suggestion cards the user already resolved",
     )
     @action(detail=False, methods=["get"], required_scopes=["task:read"])
     def state(self, request: ValidatedRequest, *args, **kwargs) -> Response:
@@ -69,7 +69,7 @@ class TurnSuggestionsViewSet(TeamAndOrgViewSetMixin, GenericViewSet):
     @validated_request(
         request_serializer=ResolveTurnSuggestionSerializer,
         responses={200: OpenApiResponse(response=ResolveTurnSuggestionResponseSerializer)},
-        summary="Record what the user did with a PostHog AI turn suggestion card",
+        summary="Record what the user did with a Flind AI turn suggestion card",
     )
     @action(detail=False, methods=["post"], required_scopes=["task:write"])
     def resolve(self, request: ValidatedRequest, *args, **kwargs) -> Response:

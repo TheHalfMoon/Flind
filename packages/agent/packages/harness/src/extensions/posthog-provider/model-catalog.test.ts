@@ -11,7 +11,7 @@ describe("resolvePosthogPiModelCatalog", () => {
     vi.unstubAllGlobals();
   });
 
-  it("uses the PostHog provider model configuration for gateway models", () => {
+  it("uses the Flind provider model configuration for gateway models", () => {
     const models = resolvePosthogPiModelCatalog(
       [
         {

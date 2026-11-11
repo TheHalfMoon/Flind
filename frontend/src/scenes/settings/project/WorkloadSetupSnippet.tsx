@@ -41,7 +41,7 @@ export function WorkloadSetupSnippet({
             <p className="mb-0 text-secondary">
                 {jobSettings.host_in_posthog_json
                     ? `Or, instead of posthog.json, set HOG_HOST=${jobSettings.host} and HOG_PROJECT_ID=${jobSettings.project_id} in the job.`
-                    : `This PostHog isn't PostHog Cloud, so the job also needs HOG_HOST=${jobSettings.host}.`}
+                    : `This Flind isn't Flind Cloud, so the job also needs HOG_HOST=${jobSettings.host}.`}
             </p>
             <Link to={provider.docs_url} target="_blank">
                 Read the {provider.name} setup guide

@@ -30,7 +30,7 @@ let res := fetch(f'https://api.onesignal.com/apps/{inputs.appId}/custom_events',
   'headers': {
     'Authorization': f'Key {inputs.apiKey}',
     'Content-Type': 'application/json',
-    'OneSignal-Usage': 'PostHog | Partner Integration'
+    'OneSignal-Usage': 'Flind | Partner Integration'
   },
   'body': {'events':[payload]}
 })
@@ -64,7 +64,7 @@ if (res.status >= 200 and res.status < 300) {
             "key": "externalId",
             "type": "string",
             "label": "External ID",
-            "description": "A unique identifier that is used to identify this person across OneSignal, PostHog, and other external systems.",
+            "description": "A unique identifier that is used to identify this person across OneSignal, Flind, and other external systems.",
             "default": "{person.id}",
             "secret": False,
             "required": True,

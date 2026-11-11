@@ -111,7 +111,7 @@ class LambdaLabsSource(ResumableSource[LambdaLabsSourceConfig, LambdaLabsResumeC
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Lambda",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Lambda API key to pull your Lambda (Lambda Labs) GPU cloud data into the PostHog Data warehouse.
+            caption="""Enter your Lambda API key to pull your Lambda (Lambda Labs) GPU cloud data into the Flind Data warehouse.
 
 You can create an API key in the [API keys section](https://cloud.lambda.ai/api-keys) of your Lambda dashboard. The key has account-wide access.""",
             iconPath="/static/services/lambda_labs.svg",

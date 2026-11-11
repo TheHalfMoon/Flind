@@ -72,7 +72,7 @@ class TestLLMModelsViewSet(APIBaseTest):
         self.assertEqual([model for model in body["models"] if model["provider"] in needs_key], [])
         self.assertTrue(
             {entry["provider"] for entry in body["providers"] if not entry["requires_provider_key"]},
-            "expected at least one provider PostHog funds models for",
+            "expected at least one provider Flind funds models for",
         )
 
     @patch("products.ai_observability.backend.api.models.LLMModelConfiguration")

@@ -1,5 +1,5 @@
 // Shared machinery for the weekly report scripts (weekly-flaky-report.mjs,
-// weekly-slow-tests-report.mjs, weekly-mcp-tool-health-report.mjs): PostHog API plumbing,
+// weekly-slow-tests-report.mjs, weekly-mcp-tool-health-report.mjs): Flind API plumbing,
 // HogQL, repo path and owner resolution, Slack table cells, the Slack post, and the per-team
 // delivery. Everything here reads the same environment every workflow sets, so each report owns
 // only its signal and its table.

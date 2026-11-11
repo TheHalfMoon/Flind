@@ -40,7 +40,7 @@ const EMAIL_TEMPLATE: HogFunctionTemplateType = {
 }
 
 const EMAIL_PREVIEW_HTML =
-    '<html><body style="margin:0;font-family:sans-serif"><div style="background:#1d1f27;color:#fff;padding:24px">PostHog</div><div style="padding:24px"><h1 style="margin:0 0 8px">Welcome aboard</h1><p>Your account is ready to go.</p></div></body></html>'
+    '<html><body style="margin:0;font-family:sans-serif"><div style="background:#1d1f27;color:#fff;padding:24px">Flind</div><div style="padding:24px"><h1 style="margin:0 0 8px">Welcome aboard</h1><p>Your account is ready to go.</p></div></body></html>'
 
 const PANEL_WORKFLOW: HogFlow = {
     ...NEW_WORKFLOW,

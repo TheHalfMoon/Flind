@@ -243,7 +243,7 @@ export function demoSessionRunId(taskId: string): string {
 export const DEMO_REPLY = [
     "This is the demo, so I can't look at your data.",
     '',
-    'When you sign in, PostHog AI can:',
+    'When you sign in, Flind AI can:',
     '',
     '- explain what **caused** a report',
     '- check **who is affected** with a quick query',

@@ -268,7 +268,7 @@ function ScoutTableRowInner({
                   }}
                 >
                   <ArrowSquareOutIcon size={13} />
-                  Open skill in PostHog
+                  Open skill in Flind
                 </DropdownMenuItem>
               </>
             ) : null}

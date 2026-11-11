@@ -60,7 +60,7 @@
 # ---
 # name: test_get_system_prompt
   '''
-  HogQL is PostHog's variant of SQL. HogQL is based on Clickhouse SQL with a few small adjustments.
+  HogQL is Flind's variant of SQL. HogQL is based on Clickhouse SQL with a few small adjustments.
   
   HogQL defines what functions are available with most (but not all) having a 1:1 mapping to ClickHouse functions.
   These are the non-aggregated HogQL functions:

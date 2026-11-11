@@ -78,7 +78,7 @@ _ANY_EVENT_MATHS: frozenset[str] = frozenset(
     }
 )
 
-# Every other kind belongs to a PostHog screen that shows no advice and has nothing to edit.
+# Every other kind belongs to a Flind screen that shows no advice and has nothing to edit.
 _KINDS_A_PERSON_BUILDS: frozenset[str] = frozenset(
     {
         NodeKind.HOG_QL_QUERY,
@@ -90,7 +90,7 @@ _KINDS_A_PERSON_BUILDS: frozenset[str] = frozenset(
         NodeKind.STICKINESS_QUERY,
     }
 )
-# PostHog's own screens run SQL too, so the kind alone does not say a person wrote it.
+# Flind's own screens run SQL too, so the kind alone does not say a person wrote it.
 _SQL_SCENES_WITH_ADVICE: frozenset[str] = frozenset({"SQLEditor", "Insight"})
 
 SkipReason = Literal[
@@ -114,7 +114,7 @@ SkipReason = Literal[
 
 
 def _is_mcp_run() -> bool:
-    """Whether an MCP agent made the run. A PostHog AI tool the MCP server invokes carries the
+    """Whether an MCP agent made the run. A Flind AI tool the MCP server invokes carries the
     feature. A call the server proxies to the query endpoint carries the source the request
     middleware set, whichever key or token the agent authenticates with."""
     return get_query_tag_value("feature") == Feature.MCP or get_query_tag_value("source") == EventSource.MCP

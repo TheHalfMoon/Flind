@@ -17,8 +17,8 @@ from products.tasks.backend.logic.model_access import SubscriptionAdapter
 def can_bill_plan_unattended(user: User, adapter: SubscriptionAdapter) -> bool:
     """Whether the user's plan for this adapter can pay for a run while the user is not at a client.
 
-    A Claude plan cannot, because PostHog stores no Claude token: the owner's Desktop must answer
-    the token request each time an agent session starts. A ChatGPT plan can, because PostHog
+    A Claude plan cannot, because Flind stores no Claude token: the owner's Desktop must answer
+    the token request each time an agent session starts. A ChatGPT plan can, because Flind
     holds the token and refreshes it for the sandbox.
     """
     if adapter != "codex":
@@ -28,7 +28,7 @@ def can_bill_plan_unattended(user: User, adapter: SubscriptionAdapter) -> bool:
 
 
 def unattended_model_access_state(user: User, *, runtime_adapter: str | None) -> dict[str, str]:
-    """The run-state keys that put a new run on the user's plan, or none to keep it on PostHog credits.
+    """The run-state keys that put a new run on the user's plan, or none to keep it on Flind credits.
 
     The plan must match the run's harness, because `resolve_model_access` refuses a ChatGPT plan
     on a Claude run. `Task.create_run` then records the plan owner.

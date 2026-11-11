@@ -54,7 +54,7 @@ class K6CloudSource(ResumableSource[K6CloudSourceConfig, K6CloudResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Grafana Cloud k6",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Grafana Cloud k6 API token and stack ID to pull your load testing data into the PostHog Data warehouse.
+            caption="""Enter your Grafana Cloud k6 API token and stack ID to pull your load testing data into the Flind Data warehouse.
 
 Create a Personal API token (or use a Grafana Stack API token) and find your stack ID under **Testing & synthetics → Performance → Settings** in Grafana Cloud.""",
             iconPath="/static/services/k6_cloud.png",

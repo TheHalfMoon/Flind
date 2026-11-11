@@ -17,7 +17,7 @@ from posthog.dags.common.resources import (
 
 # Default loggers for every code location's jobs. Overrides Dagster's
 # colored_console_logger so `context.log` emits structlog JSON to stdout (like
-# Django) and reaches the PostHog Logs product. Shared as a single instance —
+# Django) and reaches the Flind Logs product. Shared as a single instance —
 # Dagster errors if the same logger key maps to different objects across
 # merged definitions.
 loggers = {"console": structlog_console_logger}

@@ -12,7 +12,7 @@ The email steps only matter for workflows that send email.
 An SMS or push workflow sends through its own channel, so do not ask for the email channel or domain when the workflow has no email step.
 
 Check `email_sending_paused` first, even when every step is done.
-When it is true and the workflow sends email, tell the user that email sending is paused for the project and that they need to contact PostHog support. The workflow can still be drafted, but its emails will not send.
+When it is true and the workflow sends email, tell the user that email sending is paused for the project and that they need to contact Flind support. The workflow can still be drafted, but its emails will not send.
 
 If every step is done and sending is not paused, skip to the lifecycle in [SKILL.md](../SKILL.md).
 
@@ -58,5 +58,5 @@ When there are no suggestions, ask what the workflow should do and build it from
 
 A draft can exist before the domain is verified.
 If the workflow has an email step and `ready_to_send_email` is false, say clearly that its emails will not send yet, and share the `app_url` again.
-When `email_sending_paused` is true, the domain is fine but sending is paused for the project, so tell the user to contact PostHog support instead.
+When `email_sending_paused` is true, the domain is fine but sending is paused for the project, so tell the user to contact Flind support instead.
 Call `workflows-setup-status` again when the user says they finished a step.

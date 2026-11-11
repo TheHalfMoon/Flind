@@ -32,7 +32,7 @@ Use this file as a backlog. Check things off as they land.
 
 - [ ] **4. `ROOT_FONT_SIZE: 14 → 16` is a silent breaking change**
       The rem base flip was correct in isolation but I shipped it without
-      verifying: - Does `apps/storybook` set `html { font-size: 14px }`? - Does `apps/web` (the main PostHog frontend) rely on the old values? - Do any stories visually regress in light + dark?
+      verifying: - Does `apps/storybook` set `html { font-size: 14px }`? - Does `apps/web` (the main Flind frontend) rely on the old values? - Do any stories visually regress in light + dark?
 
       **Fix:** audit every internal consumer, run Storybook in both themes,
       screenshot-diff the primitives stories, and only then keep the

@@ -1,10 +1,10 @@
-"""BigQuery driver for PostHog's data-warehouse import pipeline.
+"""BigQuery driver for Flind's data-warehouse import pipeline.
 
 Everything BigQuery-specific — client lifecycle (service account auth,
 optional custom region), schema / primary-key / clustering listing, the
 dlt pipeline build (temp-table dance for incremental syncs and views) —
 lives on `BigQueryImplementation`. The source-class `BigQuerySource` is
-a thin PostHog-layer wrapper that just holds an instance and validates
+a thin Flind-layer wrapper that just holds an instance and validates
 credentials.
 """
 
@@ -252,7 +252,7 @@ BIGQUERY_INTEGRATION_NOT_FOUND_ERROR = (
 )
 
 BIGQUERY_IMPERSONATION_UNAVAILABLE_ERROR = (
-    "This PostHog instance cannot impersonate Google Cloud service accounts. Upload a service "
+    "This Flind instance cannot impersonate Google Cloud service accounts. Upload a service "
     "account JSON key file instead."
 )
 
@@ -262,18 +262,18 @@ BIGQUERY_SERVICE_ACCOUNT_NOT_FOUND_ERROR = (
 )
 
 BIGQUERY_IMPERSONATION_PERMISSION_ERROR = (
-    "PostHog cannot read your Google Cloud service account. Grant the PostHog service account the "
+    "Flind cannot read your Google Cloud service account. Grant the Flind service account the "
     "iam.serviceAccounts.get and Service Account Token Creator permissions on it, then reconnect "
     "the source."
 )
 
-# Raised when the PostHog worker cannot get PostHog's own Google Cloud credentials, the first hop of
+# Raised when the Flind worker cannot get Flind's own Google Cloud credentials, the first hop of
 # the impersonation chain. The customer's service account is never contacted, so no change on their
 # side can fix it. Deliberately absent from `get_non_retryable_errors`, so the sync retries and the
 # failure still reaches error tracking.
 BIGQUERY_POSTHOG_CREDENTIALS_ERROR = (
-    "PostHog could not get its own Google Cloud credentials, so it could not connect to your "
-    "service account. This is a problem on PostHog's side, and you don't need to change your service "
+    "Flind could not get its own Google Cloud credentials, so it could not connect to your "
+    "service account. This is a problem on Flind's side, and you don't need to change your service "
     "account. Syncs retry automatically. If you are setting up the source, try again in a few minutes."
 )
 
@@ -290,7 +290,7 @@ BIGQUERY_OWNERSHIP_UNVERIFIED_ERROR_PREFIX = "Could not verify that service acco
 # `BigQuerySource.get_non_retryable_errors`, so the two stay in lockstep.
 BIGQUERY_VPC_SERVICE_CONTROLS_ERROR = (
     "A VPC Service Controls policy in your Google Cloud organization is blocking this request to "
-    "BigQuery. Add an access level for PostHog to the perimeter around this project (or the "
+    "BigQuery. Add an access level for Flind to the perimeter around this project (or the "
     "dataset's project), or exempt BigQuery from the perimeter, then reconnect the source."
 )
 
@@ -404,14 +404,14 @@ class BigQueryJobTimeoutError(Exception):
     """A query job was not done at its limit. A later attempt can succeed."""
 
     def __init__(self, timeout_seconds: float) -> None:
-        super().__init__(f"{BIGQUERY_JOB_TIMEOUT_ERROR} within {timeout_seconds:g} seconds, so PostHog ended it")
+        super().__init__(f"{BIGQUERY_JOB_TIMEOUT_ERROR} within {timeout_seconds:g} seconds, so Flind ended it")
 
 
 class BigQueryReadTimeoutError(Exception):
     """The Storage Read API stream sent no page before the limit. A later attempt can succeed."""
 
     def __init__(self, timeout_seconds: float) -> None:
-        super().__init__(f"{BIGQUERY_READ_TIMEOUT_ERROR} for {timeout_seconds:g} seconds, so PostHog ended the read")
+        super().__init__(f"{BIGQUERY_READ_TIMEOUT_ERROR} for {timeout_seconds:g} seconds, so Flind ended the read")
 
 
 class _DeadlineAuthorizedSession(AuthorizedSession):
@@ -666,10 +666,10 @@ def _service_account_key_credentials(
 
 
 def _impersonated_credentials(service_account_email: str, team_id: int) -> google_auth_credentials.Credentials:
-    """Credentials for a service account PostHog impersonates rather than holds a key for.
+    """Credentials for a service account Flind impersonates rather than holds a key for.
 
-    Chains off the same PostHog identity BigQuery batch exports impersonate with, so a customer
-    grants one PostHog principal the token-creator role and both imports and exports work.
+    Chains off the same Flind identity BigQuery batch exports impersonate with, so a customer
+    grants one Flind principal the token-creator role and both imports and exports work.
     """
     # Imported here so the source registry — which the API imports on every request path — does not
     # pull in the batch-export Temporal module.
@@ -686,7 +686,7 @@ def _impersonated_credentials(service_account_email: str, team_id: int) -> googl
     if not settings.BATCH_EXPORT_BIGQUERY_STS_AUDIENCE_FIELD or not get_secret("BATCH_EXPORT_BIGQUERY_SERVICE_ACCOUNT"):
         raise BigQueryAuthResolutionError(BIGQUERY_IMPERSONATION_UNAVAILABLE_ERROR)
 
-    # The ownership check below authenticates with PostHog's own credentials. If this worker cannot
+    # The ownership check below authenticates with Flind's own credentials. If this worker cannot
     # get them, the check fails with the same "getAccessToken denied" text that a missing grant on
     # the customer's service account produces, and the sync tells the customer to fix IAM they
     # already set up. Batch exports run the same check first for the same reason.
@@ -696,7 +696,7 @@ def _impersonated_credentials(service_account_email: str, team_id: int) -> googl
         raise BigQueryAuthResolutionError(BIGQUERY_POSTHOG_CREDENTIALS_ERROR) from e
 
     # Confirm the team owns the account before impersonating it, or a team that merely knows another
-    # org's service account email could have PostHog read that org's data on its behalf. Batch
+    # org's service account email could have Flind read that org's data on its behalf. Batch
     # exports and the BigQuery destination writer guard the same way at the same point.
     try:
         async_to_sync(verify_impersonated_service_account_ownership)(service_account_email, team_id)
@@ -1698,7 +1698,7 @@ class BigQueryImplementation(SQLSourceImplementation[BigQuerySourceConfig, bigqu
         for row in rows:
             schema_list[row.table_name].append((row.column_name, row.data_type, row.is_nullable == "YES"))
 
-        # Filter out PostHog's own temp destination tables — they live in
+        # Filter out Flind's own temp destination tables — they live in
         # the user's dataset only because BigQuery's Storage API can't
         # stream views/materialized views without copying to a real table
         # first.

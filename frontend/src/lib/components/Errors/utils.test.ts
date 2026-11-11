@@ -37,8 +37,8 @@ describe('Error Display', () => {
             $sentry_exception_message: 'There was an error creating the support ticket with zendesk.',
             $exception_message: 'There was an error creating the support ticket with zendesk.',
             $sentry_tags: {
-                'PostHog Person URL': 'https://app.posthog.com/person/f6kW3HXaha6dAvHZiOmgrcAXK09682P6nNPxvfjqM9c',
-                'PostHog Recording URL': 'https://app.posthog.com/replay/018dc30d-a8a5-7257-9faf-dcd97c0e19cf?t=2294',
+                'Flind Person URL': 'https://app.posthog.com/person/f6kW3HXaha6dAvHZiOmgrcAXK09682P6nNPxvfjqM9c',
+                'Flind Recording URL': 'https://app.posthog.com/replay/018dc30d-a8a5-7257-9faf-dcd97c0e19cf?t=2294',
             },
             $sentry_exception: {
                 values: [
@@ -105,8 +105,8 @@ describe('Error Display', () => {
             $os: 'Windows',
             $os_version: '10',
             $sentry_tags: {
-                'PostHog Person URL': 'https://app.posthog.com/person/f6kW3HXaha6dAvHZiOmgrcAXK09682P6nNPxvfjqM9c',
-                'PostHog Recording URL': 'https://app.posthog.com/replay/018dc30d-a8a5-7257-9faf-dcd97c0e19cf?t=2294',
+                'Flind Person URL': 'https://app.posthog.com/person/f6kW3HXaha6dAvHZiOmgrcAXK09682P6nNPxvfjqM9c',
+                'Flind Recording URL': 'https://app.posthog.com/replay/018dc30d-a8a5-7257-9faf-dcd97c0e19cf?t=2294',
             },
             $sentry_exception: undefined,
             $sentry_url:
@@ -344,7 +344,7 @@ describe('Error Display', () => {
 
     it.each([
         ['a frame that used no symbol set', {}, [UNRESOLVED_FRAME], false],
-        ['a symbol set PostHog fetched from the web', {}, [FETCHED_SET], false],
+        ['a symbol set Flind fetched from the web', {}, [FETCHED_SET], false],
         ['a symbol set uploaded with a release', {}, [UPLOADED_SET_WITH_RELEASE], false],
         ['a release id reported by the SDK', { $release_id: 'release-id' }, [UPLOADED_SET], false],
         [

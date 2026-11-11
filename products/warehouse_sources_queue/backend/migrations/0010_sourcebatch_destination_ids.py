@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                         blank=True,
                         db_default=[],
                         default=list,
-                        help_text="ExternalDataDestination ids this batch is delivered to. Empty means the PostHog warehouse only.",
+                        help_text="ExternalDataDestination ids this batch is delivered to. Empty means the Flind warehouse only.",
                     ),
                 ),
             ],

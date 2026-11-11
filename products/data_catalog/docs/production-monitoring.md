@@ -2,13 +2,13 @@
 
 How we validate, on live hosted-MCP traffic, that agents honor the data catalog: checking `system.information_schema.metrics` before hand-writing SQL for a metric, running canonical metrics instead of re-deriving them, proposing metrics/certifications when appropriate, and preferring certified sources and accepted relationships.
 
-All of this lives in PostHog's internal telemetry project (US project 2), where the hosted MCP server captures its analytics. The monitoring has three layers: keyword-gated dashboard tiles for free volume and trend, LLM-judge online evaluations for semantic verdicts, and the `services/mcp` instrumentation both depend on.
+All of this lives in Flind's internal telemetry project (US project 2), where the hosted MCP server captures its analytics. The monitoring has three layers: keyword-gated dashboard tiles for free volume and trend, LLM-judge online evaluations for semantic verdicts, and the `services/mcp` instrumentation both depend on.
 
 The division of labor follows one rule: **the judges decide what a session was trying to do; deterministic code only measures what mechanically happened.** A keyword list can never enumerate every way a person asks a metric question (measured coverage of the tile keywords: ~6.5% of SQL sessions), so any check that starts with "was this a metric question?" belongs to a judge. The tiles keep the keyword heuristic as a cheap trend signal, and the judges measure what it misses.
 
 ## Local semantic-layer canary
 
-The first canary dispatcher is the local [`semantic_layer_canary.py`](../scripts/semantic_layer_canary.py) runner. A local ChatGPT session invokes it on demand against a versioned LLM Analytics dataset through the task-backed Conversations API. It deliberately has no Dagster schedule or event publishing. A separate Signals Scout reads the resulting PostHog AI task runs and ACP session logs to score routing and answer quality. See the [scripts runbook](../scripts/README.md) for the dataset contract, browser authentication, smoke command, and task/run correlation output.
+The first canary dispatcher is the local [`semantic_layer_canary.py`](../scripts/semantic_layer_canary.py) runner. A local ChatGPT session invokes it on demand against a versioned LLM Analytics dataset through the task-backed Conversations API. It deliberately has no Dagster schedule or event publishing. A separate Signals Scout reads the resulting Flind AI task runs and ACP session logs to score routing and answer quality. See the [scripts runbook](../scripts/README.md) for the dataset contract, browser authentication, smoke command, and task/run correlation output.
 
 ## 1. Dashboard tiles (HogQL over existing telemetry)
 
@@ -129,7 +129,7 @@ sum by (surface) (increase(posthog_data_catalog_read_failures_total[15m])) > 5
 
 A rate threshold rather than `> 0`: one team with a poisoned metric definition increments on every read until someone fixes it, and a `> 0` page could never resolve. During triage, divide by `posthog_data_catalog_reads_total` for blast radius and read the `team_id` from the logs.
 
-**Metric runs are hitting system faults** (page). `internal_error` is the only outcome that means PostHog broke rather than a definition, a cost guardrail, or a user.
+**Metric runs are hitting system faults** (page). `internal_error` is the only outcome that means Flind broke rather than a definition, a cost guardrail, or a user.
 
 ```promql
 sum(increase(posthog_data_catalog_metric_runs_total{outcome="internal_error"}[15m])) > 0
@@ -166,7 +166,7 @@ There is deliberately no alert on `concurrency_limited`. That condition already 
 ### Follow-ups
 
 - A p95 duration alert on `posthog_data_catalog_metric_run_duration_seconds`. Deferred because the product is still low-volume, so the alert would flap. The expression is `histogram_quantile(0.95, sum by (le, kind) (rate(posthog_data_catalog_metric_run_duration_seconds_bucket[30m])))`, validatable today against the pre-created series.
-- OTLP twins through `OtelInstrumentFactory`, so the same series also land in the PostHog Metrics product.
+- OTLP twins through `OtelInstrumentFactory`, so the same series also land in the Flind Metrics product.
 - A counter on the scout harness's fail-silent catalog context injection (`products/signals/backend/scout_harness/runner.py`), exported through the data catalog facade.
 - The backlog gauges described above.
 

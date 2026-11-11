@@ -71,7 +71,7 @@ class ManagedWarehouseSourceTableStatusSerializer(serializers.Serializer):
         help_text="When a copy or register workflow most recently applied this table, or null if no workflow completed.",
     )
     last_synced_at = serializers.DateTimeField(
-        allow_null=True, help_text="When PostHog most recently completed the upstream source import."
+        allow_null=True, help_text="When Flind most recently completed the upstream source import."
     )
 
 

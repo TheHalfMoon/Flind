@@ -1538,7 +1538,7 @@ export const eventUsageLogic = kea<eventUsageLogicType>([
         reportSessionTableVersionUpdated: (version: string) => ({ version }),
         reportCustomChannelTypeRulesUpdated: (numRules: number) => ({ numRules }),
         reportCreatedDashboardFromModal: true,
-        /** Dashboard created via PostHog web app from a template (new dashboard modal / template chooser). */
+        /** Dashboard created via Flind web app from a template (new dashboard modal / template chooser). */
         reportSavedInsightToDashboard: (insight: Partial<InsightModel> | null, dashboardId: number | null) => ({
             insight,
             dashboardId,
@@ -1913,7 +1913,7 @@ export const eventUsageLogic = kea<eventUsageLogicType>([
                 error,
             })
         },
-        // A provider can grant fewer scopes than PostHog asked for, e.g. when a workspace admin has to
+        // A provider can grant fewer scopes than Flind asked for, e.g. when a workspace admin has to
         // approve the app. The connect still succeeds, so this is the only record of the shortfall.
         reportIntegrationScopeShortfallShown: ({ kind, missingScopes }) => {
             posthog.capture('integration_scope_shortfall_shown', {

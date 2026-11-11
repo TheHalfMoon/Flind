@@ -118,7 +118,7 @@ class RKICovidSource(SimpleSource[RKICovidSourceConfig]):
             label="RKI COVID-19",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["covid", "corona", "coronavirus", "rki", "germany", "public health"],
-            caption="""Pull German COVID-19 statistics (nationwide, per state, and per district) into the PostHog Data warehouse from the public RKI COVID-19 API at [api.corona-zahlen.org](https://api.corona-zahlen.org).
+            caption="""Pull German COVID-19 statistics (nationwide, per state, and per district) into the Flind Data warehouse from the public RKI COVID-19 API at [api.corona-zahlen.org](https://api.corona-zahlen.org).
 
 No credentials are needed. The API is a community-maintained wrapper (by Marlon Lückert) over published Robert Koch-Institut figures, not an official RKI service.
 

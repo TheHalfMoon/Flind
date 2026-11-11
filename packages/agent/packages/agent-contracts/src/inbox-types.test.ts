@@ -26,7 +26,7 @@ describe("filterInboxSourceOptions", () => {
       expected: ["replay_vision", "signals_scout", "github"],
     },
     {
-      name: "keeps PostHog's own products when nothing is enabled",
+      name: "keeps Flind's own products when nothing is enabled",
       enabled: new Set<string>(),
       selected: [] as SourceProduct[],
       expected: ["replay_vision", "signals_scout"],

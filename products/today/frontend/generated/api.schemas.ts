@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface ExcerptChoiceRequestApi {
@@ -462,7 +462,7 @@ export interface RecordingTargetApi {
 }
 
 export interface PageLinkApi {
-    /** Where the link goes, outside PostHog. */
+    /** Where the link goes, outside Flind. */
     url: string
     /** The link text. */
     text: string
@@ -535,7 +535,7 @@ export interface SignalViewApi {
     cited: CitedSourceEnumApi | null
     /** The recording the signal plays, if any. */
     recording: RecordingTargetApi | null
-    /** Where a scout finding links outside PostHog, if anywhere. */
+    /** Where a scout finding links outside Flind, if anywhere. */
     link: PageLinkApi | null
     /** What expanding the signal shows, if anything. */
     preview: SignalPreviewApi | null

@@ -111,8 +111,8 @@ export function ScoutConfigForm({
         title="Instructions"
         help={
           canonical
-            ? "What this agent looks for. PostHog maintains built-in agents. To change one, ask PostHog to create a custom agent based on it."
-            : "What this agent looks for. Edit the skill in PostHog to change what it watches and when it sends a signal."
+            ? "What this agent looks for. Flind maintains built-in agents. To change one, ask Flind to create a custom agent based on it."
+            : "What this agent looks for. Edit the skill in Flind to change what it watches and when it sends a signal."
         }
       >
         <div className="flex flex-col rounded-(--radius-md) border border-border bg-(--color-panel-solid)">
@@ -148,7 +148,7 @@ export function ScoutConfigForm({
                 }}
               >
                 <ArrowSquareOutIcon size={13} />
-                {canonical ? "Open in PostHog" : "Edit in PostHog"}
+                {canonical ? "Open in Flind" : "Edit in Flind"}
               </Button>
             ) : null}
           </div>
@@ -268,7 +268,7 @@ export function ScoutConfigForm({
       {lifecycle.autoPauseExempt !== null ? (
         <SettingBlock
           title="Auto-pause"
-          help="PostHog can pause agents when nobody acts on their signals. Silence alone does not cause a pause. Repeated failures can pause an agent in either mode."
+          help="Flind can pause agents when nobody acts on their signals. Silence alone does not cause a pause. Repeated failures can pause an agent in either mode."
         >
           <div className="flex items-center justify-between gap-4 rounded-(--radius-md) border border-border bg-(--color-panel-solid) px-3.5 py-3">
             <span className="flex min-w-0 flex-col">

@@ -128,7 +128,7 @@ class TwentySource(ResumableSource[TwentySourceConfig, TwentyResumeConfig]):
             label="Twenty",
             releaseStatus=ReleaseStatus.GA,
             keywords=["crm", "sales", "open source", "salesforce"],
-            caption="""Enter your Twenty API key to pull your CRM data into the PostHog Data warehouse.
+            caption="""Enter your Twenty API key to pull your CRM data into the Flind Data warehouse.
 
 Generate an API key in Twenty under **Settings > API & Webhooks > + Create key**. Copy it immediately, it's only shown once.
 

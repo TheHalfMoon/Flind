@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -23,7 +23,7 @@ export const SlackSetupStepKeyEnumApi = {
 export interface SlackAppProjectOptionApi {
     /** ID of the Slack integration that connects this project. */
     integration_id: number
-    /** Name of the PostHog project. */
+    /** Name of the Flind project. */
     project_name: string
     /** Name of the organization that owns the project. */
     organization_name: string
@@ -38,7 +38,7 @@ export interface SlackAppWorkspaceSetupApi {
      */
     slack_workspace_name: string | null
     /**
-     * Link that opens the PostHog app's direct message in this Slack workspace. Null when the install has no app ID.
+     * Link that opens the Flind app's direct message in this Slack workspace. Null when the install has no app ID.
      * @nullable
      */
     open_slack_url: string | null
@@ -55,12 +55,12 @@ export interface SlackAppChannelOptionApi {
     id: string
     /** Channel name, without the leading #. */
     name: string
-    /** Whether PostHog is already in the channel. */
+    /** Whether Flind is already in the channel. */
     is_member: boolean
 }
 
 export interface SlackAppChannelOptionsApi {
-    /** Public channels that PostHog can join. Shared channels are left out. */
+    /** Public channels that Flind can join. Shared channels are left out. */
     channels: SlackAppChannelOptionApi[]
 }
 
@@ -71,12 +71,12 @@ export interface SlackAppDefaultProjectApi {
 
 export interface SlackAppJoinChannelsApi {
     /**
-     * IDs of the public channels that PostHog joins.
+     * IDs of the public channels that Flind joins.
      * @minItems 1
      * @maxItems 20
      */
     channel_ids: string[]
-    /** Whether PostHog posts its welcome message in each channel it joins. When false, it joins quietly. */
+    /** Whether Flind posts its welcome message in each channel it joins. When false, it joins quietly. */
     post_welcome?: boolean
 }
 
@@ -84,7 +84,7 @@ export interface SlackAppChannelJoinResultApi {
     /** Slack channel ID. */
     channel_id: string
     /**
-     * Slack's error code when PostHog could not join, or null when it joined.
+     * Slack's error code when Flind could not join, or null when it joined.
      * @nullable
      */
     error: string | null
@@ -99,7 +99,7 @@ export type SlackAppWorkspaceSetupRetrieveParams = {
     /**
      * Where the Slack install started. slack_page adds the steps for a person who sets up Slack on purpose.
      *
-     * * `slack_page` - The Slack page in PostHog
+     * * `slack_page` - The Slack page in Flind
      * * `other` - Another place, such as a channel picker
      * @minLength 1
      */

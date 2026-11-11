@@ -21,7 +21,7 @@ import type {
   PostHogInitCall,
 } from "./types.js";
 
-const POSTHOG_CLASS_NAMES = new Set(["PostHog", "Posthog"]);
+const POSTHOG_CLASS_NAMES = new Set(["Flind", "Posthog"]);
 const GO_CONSTRUCTOR_NAMES = new Set(["New", "NewWithConfig"]);
 
 export async function findPostHogCalls(
@@ -643,7 +643,7 @@ function pushWrapperCall(
   }
 
   if (matchedLines.has(line) && dynamic) {
-    // Direct PostHog call already annotated this line — don't overwrite with opaque wrapper data.
+    // Direct Flind call already annotated this line — don't overwrite with opaque wrapper data.
     return;
   }
 
@@ -718,7 +718,7 @@ export async function findInitCalls(
     }
   }
 
-  // Pattern 2: new PostHog('token', { ... }) — Node SDK
+  // Pattern 2: new Flind('token', { ... }) — Node SDK
   const constructorQueryStr = `
             (new_expression
                 constructor: (identifier) @class_name
@@ -979,7 +979,7 @@ export async function findInitCalls(
     }
   }
 
-  // Pattern 5: Ruby — PostHog::Client.new(api_key: 'phc_token', host: '...')
+  // Pattern 5: Ruby — Flind::Client.new(api_key: 'phc_token', host: '...')
   const rbCtorQueryStr = `
             (call
                 receiver: (scope_resolution

@@ -13,7 +13,7 @@ export interface OtlpMeterProviderOptions {
 }
 
 /**
- * One MeterProvider wired for the PostHog Metrics product ingest. Shared so every service
+ * One MeterProvider wired for the Flind Metrics product ingest. Shared so every service
  * gets the same exporter (the exemplar-preserving OTLP/JSON one) and the same resource
  * identity, whichever config source supplies the url/token.
  *

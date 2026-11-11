@@ -118,7 +118,7 @@ class VultrSource(SimpleSource[VultrSourceConfig]):
             caption=(
                 "Import your Vultr cloud infrastructure and billing data. Generate a personal access token "
                 "under **Account > API** in the [Vultr customer portal](https://my.vultr.com/settings/#settingsapi). "
-                "The token grants full account access; if API access is restricted, add PostHog's egress IPs to the "
+                "The token grants full account access; if API access is restricted, add Flind's egress IPs to the "
                 "API key's access control list."
             ),
             docsUrl="https://posthog.com/docs/cdp/sources/vultr",

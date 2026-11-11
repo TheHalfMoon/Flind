@@ -63,7 +63,7 @@ describe('featureRequestGithubLogic', () => {
                         {
                             id: 12,
                             kind: 'github',
-                            display_name: 'PostHog GitHub',
+                            display_name: 'Flind GitHub',
                             icon_url: '',
                             config: {},
                             created_at: '2026-01-01T00:00:00Z',

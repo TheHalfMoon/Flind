@@ -189,7 +189,7 @@ TEMPLATES: dict[str, AutoresearchTemplate] = {
 
 
 def _is_activity_candidate(event: str) -> bool:
-    # PostHog's own events carry a `$` prefix. Outside the preferred activity events they are
+    # Flind's own events carry a `$` prefix. Outside the preferred activity events they are
     # SDK bookkeeping ($identify, $feature_flag_called, $groupidentify, ...), not user behavior.
     if event in _PREFERRED_ACTIVITY_EVENTS:
         return True

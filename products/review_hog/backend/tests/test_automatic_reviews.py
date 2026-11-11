@@ -307,7 +307,7 @@ class TestAuthoredPRReviewTask(BaseTest):
             team=self.team,
             kind="github",
             integration_id=_INSTALLATION_ID,
-            config={"installation_id": _INSTALLATION_ID, "account": {"name": "PostHog"}},
+            config={"installation_id": _INSTALLATION_ID, "account": {"name": "Flind"}},
             created_by=self.user,
         )
         self.github_identity = UserSocialAuth.objects.create(
@@ -505,7 +505,7 @@ class TestStamphogHandoffTask(BaseTest):
             team=self.team,
             kind="github",
             integration_id=_INSTALLATION_ID,
-            config={"installation_id": _INSTALLATION_ID, "account": {"name": "PostHog"}},
+            config={"installation_id": _INSTALLATION_ID, "account": {"name": "Flind"}},
             created_by=self.connector,
         )
         UserSocialAuth.objects.create(

@@ -88,7 +88,7 @@ export function CustomPropertiesConfig(): JSX.Element {
             render: (_, definition) => (
                 <span className="flex items-center gap-1 font-semibold">
                     {definition.is_canonical && (
-                        <Tooltip title="PostHog sets this property automatically">
+                        <Tooltip title="Flind sets this property automatically">
                             <IconLogomark className="text-lg shrink-0" />
                         </Tooltip>
                     )}
@@ -189,7 +189,7 @@ export function CustomPropertiesConfig(): JSX.Element {
             width: 0,
             render: (_, definition) => {
                 const canonicalReason = definition.is_canonical
-                    ? "PostHog sets this property automatically, so it can't be edited or deleted."
+                    ? "Flind sets this property automatically, so it can't be edited or deleted."
                     : undefined
                 return (
                     <div className="flex gap-1 justify-end">

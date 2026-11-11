@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -55,7 +55,7 @@ export const RoleExternalReferencesCreateBody = /* @__PURE__ */ zod.object({
         .string()
         .max(roleExternalReferencesCreateBodyProviderRoleNameMax)
         .describe('Display name of the provider role.'),
-    role: zod.uuid().describe('PostHog role UUID this external role maps to.'),
+    role: zod.uuid().describe('Flind role UUID this external role maps to.'),
 })
 
 export const IntegrationsCreateBody = /* @__PURE__ */ zod
@@ -132,7 +132,7 @@ export const IntegrationsEmailPartialUpdateBody = /* @__PURE__ */ zod
             .max(integrationsEmailPartialUpdateBodyKindMax)
             .optional()
             .describe(
-                "The provider of the integration, for example 'slack' or 'github'. A create accepts only the kinds that PostHog connects here. Data warehouse sources also store their typed-in credentials as integrations, under a kind per source type."
+                "The provider of the integration, for example 'slack' or 'github'. A create accepts only the kinds that Flind connects here. Data warehouse sources also store their typed-in credentials as integrations, under a kind per source type."
             ),
         config: zod.unknown().optional(),
     })
@@ -201,7 +201,7 @@ export const IntegrationsDomainConnectApplyUrlCreateBody = /* @__PURE__ */ zod
             .string()
             .max(integrationsDomainConnectApplyUrlCreateBodyKindMax)
             .describe(
-                "The provider of the integration, for example 'slack' or 'github'. A create accepts only the kinds that PostHog connects here. Data warehouse sources also store their typed-in credentials as integrations, under a kind per source type."
+                "The provider of the integration, for example 'slack' or 'github'. A create accepts only the kinds that Flind connects here. Data warehouse sources also store their typed-in credentials as integrations, under a kind per source type."
             ),
         config: zod.unknown().optional(),
     })
@@ -240,7 +240,7 @@ export const IntegrationsGithubOauthAuthorizeCreateBody = /* @__PURE__ */ zod.ob
 /**
  * Seed GitHub setup callback state without redirecting to GitHub.
  *
- * Used when the user opens an existing installation's settings on github.com (e.g. PostHog
+ * Used when the user opens an existing installation's settings on github.com (e.g. Flind
  * Code "Update in GitHub") so the subsequent Setup URL redirect can be validated.
  */
 export const IntegrationsGithubPrepareCallbackCreateBody = /* @__PURE__ */ zod.object({
@@ -248,7 +248,7 @@ export const IntegrationsGithubPrepareCallbackCreateBody = /* @__PURE__ */ zod.o
         .string()
         .optional()
         .describe(
-            'Relative URL to redirect to after GitHub setup completes (e.g. account-connected for PostHog Desktop).'
+            'Relative URL to redirect to after GitHub setup completes (e.g. account-connected for Flind Desktop).'
         ),
     installation_id: zod
         .string()
@@ -332,8 +332,8 @@ export const IntegrationsRequestAccessCreateBody = /* @__PURE__ */ zod.object({
 })
 
 /**
- * Replay an API request against the connected PostHog project. The server injects the connection's token; the response is passed through.
- * @summary Forward a request through a PostHog connection
+ * Replay an API request against the connected Flind project. The server injects the connection's token; the response is passed through.
+ * @summary Forward a request through a Flind connection
  */
 export const PosthogConnectionsForwardCreateBody = /* @__PURE__ */ zod.object({
     method: zod

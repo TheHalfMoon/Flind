@@ -41,7 +41,7 @@ class WorkflowCustomerTaskCreateSerializer(serializers.Serializer):
         allow_null=True,
         min_value=1,
         max_value=INTEGER_FIELD_MAX,
-        help_text="PostHog user ID of the assigned project member.",
+        help_text="Flind user ID of the assigned project member.",
     )
     due_at = serializers.DateTimeField(required=False, allow_null=True, help_text="ISO 8601 task deadline.")
     idempotency_key = serializers.CharField(

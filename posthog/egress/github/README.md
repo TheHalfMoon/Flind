@@ -6,7 +6,7 @@ Every GitHub API call in the codebase goes through it.
 ## Identity
 
 The GitHub App **installation id**, because GitHub meters the rate limit per installation.
-Several PostHog integration rows can share one installation, and they all draw on its one budget.
+Several Flind integration rows can share one installation, and they all draw on its one budget.
 The limiter keys are `github:installation:<id>`, `github_search:installation:<id>`, and `github_code_search:installation:<id>`.
 
 ## Budget
@@ -37,7 +37,7 @@ The GitHub-optional Self-driving pilot checks implementation repository access (
 The ownership file reader (`posthog/ownership/`, source `ownership_github_api`) runs on `NORMAL` where a person waits for a board or a snapshot list, and on `BATCH` for the scheduled digests and report generation. Its GraphQL reads charge `core`, as every GraphQL call does, and so does the one compare call per new head commit that lets it reuse cached files.
 The repository cache behind repository selection (`posthog/models/integration_repository_cache.py`) runs on `BATCH` for Signals reports and on `NORMAL` when a person waits in Slack. It reads each repository's `pushed_at` from the installation's repository listing, refreshed when older than ten minutes, and calls GitHub only for repositories pushed since their last sync. A shed call waits for the limiter's pace and tries again.
 The branch picker serves its cached branch list at once. When the list is older than ten minutes, a background task lists the branches again on `BATCH`, waiting for the limiter's pace before each page. Only a repository with no cached list is listed inside the request.
-Workload identity looks up a repository's ID and exact name (source `workload_identity`) on `NORMAL`, because a person waits in the trusted workload settings or `hog ci setup`. It asks through the team's installation first, then identity-blind with PostHog's shared token, and reports a public repository only.
+Workload identity looks up a repository's ID and exact name (source `workload_identity`) on `NORMAL`, because a person waits in the trusted workload settings or `hog ci setup`. It asks through the team's installation first, then identity-blind with Flind's shared token, and reports a public repository only.
 Engineering analytics downloads one job's log (source `job_logs`) on `NORMAL` when a person opens that job in the CI explorer, and on `BATCH` in the scheduled failed-job log collection.
 Stamphog reads the author-familiarity blame and history (GraphQL) and the pull request's commit messages on `BATCH`, because both signals are advisory: a shed call leaves them out of that review.
 Its merge base read (compare) stays on `CRITICAL`, because the review checkout needs it.
@@ -58,7 +58,7 @@ Endpoint labels template out owner/repo, numeric ids, commit SHAs, and free-form
 
 ## Auth
 
-`github_request` is token-agnostic (installation token, user token, PAT, or PostHog's shared token) and stateless:
+`github_request` is token-agnostic (installation token, user token, PAT, or Flind's shared token) and stateless:
 
 ```python
 from posthog.egress.github.transport import github_request
@@ -81,7 +81,7 @@ The `github-api-calls-go-through-egress` semgrep rule reads the URL argument onl
 ## Identity-blind callers and the PAT scope decision
 
 Some callers have no installation in scope.
-The important one is a warehouse source authenticated with a **personal access token (PAT)**: a customer's own token on the customer's own budget, disconnected from any PostHog installation (error tracking's public-repo path is the other).
+The important one is a warehouse source authenticated with a **personal access token (PAT)**: a customer's own token on the customer's own budget, disconnected from any Flind installation (error tracking's public-repo path is the other).
 These record the counter only, under an empty `installation_id`, and skip both the limiter and the gauges.
 The counter still sums correctly, but identity-blind callers are **not distinguishable from one another**: every PAT lands on the same empty series, and writing headroom to a shared empty gauge would let unrelated tokens clobber each other.
 

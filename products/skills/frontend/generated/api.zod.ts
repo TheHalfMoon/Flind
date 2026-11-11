@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -61,7 +61,7 @@ export const LlmSkillsCreateBody = /* @__PURE__ */ zod
             .string()
             .max(llmSkillsCreateBodyNameMax)
             .describe(
-                'Unique skill name. Lowercase letters, numbers, and hyphens only. Max 64 characters. Cannot be the name of a skill PostHog ships.'
+                'Unique skill name. Lowercase letters, numbers, and hyphens only. Max 64 characters. Cannot be the name of a skill Flind ships.'
             ),
         description: zod
             .string()
@@ -264,7 +264,7 @@ export const LlmSkillsNameDuplicateCreateBody = /* @__PURE__ */ zod.object({
     new_name: zod
         .string()
         .max(llmSkillsNameDuplicateCreateBodyNewNameMax)
-        .describe('Name for the duplicated skill. Must be unique, and cannot be the name of a skill PostHog ships.'),
+        .describe('Name for the duplicated skill. Must be unique, and cannot be the name of a skill Flind ships.'),
 })
 
 export const llmSkillsNameFilesCreateBodyPathMax = 500
@@ -407,7 +407,7 @@ export const LlmSkillsNamePublishCommunityCreateBody = /* @__PURE__ */ zod.objec
         ])
         .optional()
         .describe(
-            "The publisher's GitHub username, used for public attribution on the listing and PR. Optional, and self-reported: it is not verified against the publisher's PostHog account."
+            "The publisher's GitHub username, used for public attribution on the listing and PR. Optional, and self-reported: it is not verified against the publisher's Flind account."
         ),
 })
 
@@ -418,6 +418,6 @@ export const LlmSkillsNameRenameCreateBody = /* @__PURE__ */ zod.object({
         .string()
         .max(llmSkillsNameRenameCreateBodyNewNameMax)
         .describe(
-            "New name for the skill. Must be unique in the project, cannot be the name of a skill PostHog ships, and must not start with 'signals-scout-' or 'review-hog-'."
+            "New name for the skill. Must be unique in the project, cannot be the name of a skill Flind ships, and must not start with 'signals-scout-' or 'review-hog-'."
         ),
 })

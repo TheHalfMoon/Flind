@@ -24,7 +24,7 @@ usage_router = APIRouter(prefix="/v1/usage", tags=["Usage"])
 
 class CostLimitStatus(BaseModel):
     used_percent: float
-    # Kept on the wire for older PostHog Desktop clients whose zod schema still
+    # Kept on the wire for older Flind Desktop clients whose zod schema still
     # requires it. Newer clients anchor to `reset_at`; drop in a follow-up once
     # the long tail of pinned clients has rolled forward.
     resets_in_seconds: int
@@ -146,7 +146,7 @@ async def get_usage(
         ),
         is_rate_limited=burst_status.exceeded or sustained_status.exceeded or credits_exhausted,
         # The seat product is retired. No caller holds a Pro seat.
-        # Older PostHog Desktop builds require this field, so it stays.
+        # Older Flind Desktop builds require this field, so it stays.
         is_pro=False,
         code_usage_subscribed=quota_status.code_usage_billing_active,
         billing_period_end=billing_period_end,

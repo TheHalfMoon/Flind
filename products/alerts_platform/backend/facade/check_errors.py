@@ -33,7 +33,7 @@ class ClassifiedAlertError:
 
 _UNKNOWN = ClassifiedAlertError(
     code="unknown",
-    user_message="Alert check failed unexpectedly. PostHog has been notified.",
+    user_message="Alert check failed unexpectedly. Flind has been notified.",
 )
 
 
@@ -43,7 +43,7 @@ def classify_check_error(exc: Exception) -> ClassifiedAlertError:
     if category == QueryErrorCategory.RATE_LIMITED:
         return ClassifiedAlertError(
             code="server_busy",
-            user_message="PostHog is temporarily busy. The alert check will retry automatically.",
+            user_message="Flind is temporarily busy. The alert check will retry automatically.",
         )
 
     if category == QueryErrorCategory.QUERY_PERFORMANCE_ERROR:

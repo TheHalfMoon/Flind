@@ -52,14 +52,14 @@ export {
  * order is not load-bearing — but keep richer/more-specific variants first as a safety net.
  */
 export const SIGNAL_CARD_REGISTRY: SignalCardEntry[] = [
-    // PostHog products with live embeds
+    // Flind products with live embeds
     errorTrackingSignalCardEntry,
     sessionReplaySignalCardEntry,
     scannerFindingSignalCardEntry,
     // LLM analytics: report variant first (mutually exclusive guards, but explicit)
     llmEvalReportSignalCardEntry,
     llmEvalTraceSignalCardEntry,
-    // Other PostHog-native products
+    // Other Flind-native products
     healthCheckSignalCardEntry,
     conversationsTicketSignalCardEntry,
     endpointExecutionFailedSignalCardEntry,

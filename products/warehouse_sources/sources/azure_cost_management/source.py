@@ -68,7 +68,7 @@ class AzureCostManagementSource(ResumableSource[AzureCostManagementSourceConfig,
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="Microsoft Azure Cost Management",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Pull your daily Azure spend into the PostHog Data warehouse, broken down by service, resource group, and resource.
+            caption="""Pull your daily Azure spend into the Flind Data warehouse, broken down by service, resource group, and resource.
 
 Register an app in Microsoft Entra ID, create a client secret for it, and give its service principal the `Cost Management Reader` role on the scope you want to sync. Then enter the directory (tenant) ID, the application (client) ID, and the secret value.
 

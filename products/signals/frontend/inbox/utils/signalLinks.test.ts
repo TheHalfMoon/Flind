@@ -4,7 +4,7 @@ describe('signalLinks', () => {
     describe('genericSignalLink', () => {
         it.each([
             {
-                name: 'links a PostHog entity from source_product + source_id before any URL on extra',
+                name: 'links a Flind entity from source_product + source_id before any URL on extra',
                 signal: {
                     source_product: 'error_tracking',
                     source_id: 'issue-1',

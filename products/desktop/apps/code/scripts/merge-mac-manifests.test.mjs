@@ -5,11 +5,11 @@ import { mergeManifests, stringifyManifest } from "./merge-mac-manifests.mjs";
 const arm64Manifest = () => ({
   version: "1.2.3",
   releaseDate: "2026-06-20T00:00:00.000Z",
-  path: "PostHog-Desktop-1.2.3-arm64-mac.zip",
+  path: "Flind-Desktop-1.2.3-arm64-mac.zip",
   sha512: "arm64-sha",
   files: [
     {
-      url: "PostHog-Desktop-1.2.3-arm64-mac.zip",
+      url: "Flind-Desktop-1.2.3-arm64-mac.zip",
       sha512: "arm64-sha",
       size: 1,
     },
@@ -19,10 +19,10 @@ const arm64Manifest = () => ({
 const x64Manifest = () => ({
   version: "1.2.3",
   releaseDate: "2026-06-20T00:00:01.000Z",
-  path: "PostHog-Desktop-1.2.3-x64-mac.zip",
+  path: "Flind-Desktop-1.2.3-x64-mac.zip",
   sha512: "x64-sha",
   files: [
-    { url: "PostHog-Desktop-1.2.3-x64-mac.zip", sha512: "x64-sha", size: 2 },
+    { url: "Flind-Desktop-1.2.3-x64-mac.zip", sha512: "x64-sha", size: 2 },
   ],
 });
 
@@ -31,8 +31,8 @@ describe("mergeManifests", () => {
     const merged = mergeManifests(arm64Manifest(), x64Manifest());
 
     expect(merged.files.map((f) => f.url)).toEqual([
-      "PostHog-Desktop-1.2.3-arm64-mac.zip",
-      "PostHog-Desktop-1.2.3-x64-mac.zip",
+      "Flind-Desktop-1.2.3-arm64-mac.zip",
+      "Flind-Desktop-1.2.3-x64-mac.zip",
     ]);
   });
 
@@ -76,7 +76,7 @@ describe("mergeManifests", () => {
     const merged = mergeManifests(arm64, x64Manifest());
 
     expect(merged.files.map((f) => f.url)).toEqual([
-      "PostHog-Desktop-1.2.3-x64-mac.zip",
+      "Flind-Desktop-1.2.3-x64-mac.zip",
     ]);
   });
 

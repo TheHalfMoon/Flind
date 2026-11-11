@@ -1,7 +1,7 @@
 ---
 name: turning-engineering-analytics-into-insights
 description: >
-  Converts engineering analytics (PR / CI) data into saved PostHog insights, dashboards, and subscriptions, and
+  Converts engineering analytics (PR / CI) data into saved Flind insights, dashboards, and subscriptions, and
   explains how to query the product data directly with SQL. Covers discovering per-team GitHub warehouse tables via
   engineering-analytics-sources, replicating curated column semantics in HogQL, reading exposed
   engineering_analytics_* warehouse views where product logic is involved (CI cost, fingerprinted failure lines,

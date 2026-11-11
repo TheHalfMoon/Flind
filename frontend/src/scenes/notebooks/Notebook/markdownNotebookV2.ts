@@ -194,7 +194,7 @@ const REPLAY_SINGLE_PATH_REGEX = /^\/replay\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4
 const PERSON_BY_UUID_PATH_REGEX = /^\/persons\/([^/]+)$/
 const PERSON_BY_DISTINCT_ID_PATH_REGEX = /^\/person\/([^/]+)$/
 
-/** Maps a dropped PostHog resource URL to its markdown component block, or null when the URL isn't
+/** Maps a dropped Flind resource URL to its markdown component block, or null when the URL isn't
  * a recognized resource. Entity links (`Link`) drag with only their href, so this is what turns a
  * dragged feature flag, experiment, insight, etc. into its special node rather than a plain link. */
 export function convertDroppedPostHogUrlToMarkdownNode(url: string): NotebookBlockNode | null {
@@ -258,7 +258,7 @@ export function convertDroppedPostHogUrlToMarkdownNode(url: string): NotebookBlo
 }
 
 /** A paragraph holding the dropped URL as a link — the fallback when a dragged URL isn't a
- * recognized PostHog resource. */
+ * recognized Flind resource. */
 export function buildDroppedLinkParagraphNode(url: string): NotebookBlockNode {
     const href = sanitizeNotebookLinkHref(url)
     return {

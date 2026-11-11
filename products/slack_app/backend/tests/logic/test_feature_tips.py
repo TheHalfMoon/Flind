@@ -32,7 +32,7 @@ class TestOfferFeatureTip:
     def setup(self):
         organization = Organization.objects.create(name="Org")
         self.team = Team.objects.create(organization=organization, name="Team")
-        # No linked PostHog user and no optional scopes, so the thread follow-up tip ranks first.
+        # No linked Flind user and no optional scopes, so the thread follow-up tip ranks first.
         self.integration = Integration.objects.create(
             team=self.team, kind="slack", integration_id=WORKSPACE, sensitive_config={"access_token": "xoxb-test"}
         )

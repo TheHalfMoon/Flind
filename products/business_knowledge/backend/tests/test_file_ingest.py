@@ -354,7 +354,7 @@ class TestFileSourceAPIIntegration(APIBaseTest):
         assert body["chunk_count"] >= 1
 
     def test_upload_markdown_file(self, _ff: MagicMock) -> None:
-        content = b"# FAQ\n\n## What is PostHog?\n\nPostHog is a product analytics platform."
+        content = b"# FAQ\n\n## What is Flind?\n\nPostHog is a product analytics platform."
         uploaded = io.BytesIO(content)
         uploaded.name = "faq.md"
         response = self.client.post(

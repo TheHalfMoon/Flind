@@ -138,11 +138,11 @@ def test_first_open_starts_a_thread_with_the_first_step_and_later_refreshes_post
 
     root, step = _posts(slack_client)
     assert root["channel"] == SLACK_USER_ID and "thread_ts" not in root
-    assert f"Hey <@{SLACK_USER_ID}>, I'm PostHog" in all_block_text(root["blocks"])
+    assert f"Hey <@{SLACK_USER_ID}>, I'm Flind" in all_block_text(root["blocks"])
     assert "▱▱▱  0/3 done" in all_block_text(root["blocks"])
     assert (step["channel"], step["thread_ts"]) == ("D1", "100.1")
     assert f"<@{SLACK_USER_ID}> Step 1/3" in all_block_text(step["blocks"])
-    assert "Link your PostHog account" in all_block_text(step["blocks"])
+    assert "Link your Flind account" in all_block_text(step["blocks"])
     # The second refresh only renders the shown step again, which keeps its link fresh.
     assert list(_edits(slack_client)) == ["100.2"]
     assert [call.args[1] for call in capture.call_args_list] == [
@@ -190,7 +190,7 @@ def test_each_step_is_a_new_reply_and_done_steps_shrink_to_one_line(
     finished = _refresh(integration)
 
     assert "Step 2/3" in all_block_text(model_step["blocks"]) and model_step["thread_ts"] == "100.1"
-    assert ":white_check_mark: PostHog account linked" in edits_after_link["100.2"]
+    assert ":white_check_mark: Flind account linked" in edits_after_link["100.2"]
     assert "Link account" not in edits_after_link["100.2"]
     assert "▰▱▱  1/3 done" in edits_after_link["100.1"]
     ready = _posts(slack_client)[-1]
@@ -281,7 +281,7 @@ def test_a_model_that_cannot_be_saved_tells_the_person_why(org_team_user) -> Non
 
     with (
         patch(f"{MODEL_STEP}.offered_model_choices", return_value=[MagicMock(model=model)]),
-        patch(f"{MODEL_STEP}.set_personal_model", side_effect=ValidationError("Link your PostHog account first.")),
+        patch(f"{MODEL_STEP}.set_personal_model", side_effect=ValidationError("Link your Flind account first.")),
         patch(f"{CLICKS}.request_onboarding") as refresh,
         patch(f"{CLICKS}.post_response_url") as reply,
     ):
@@ -289,7 +289,7 @@ def test_a_model_that_cannot_be_saved_tells_the_person_why(org_team_user) -> Non
         assert onboarding_integration_hint(payload) == integration.id
         handle_onboarding_action(payload)
 
-    assert reply.call_args.args[1]["text"] == "Link your PostHog account first."
+    assert reply.call_args.args[1]["text"] == "Link your Flind account first."
     assert reply.call_args.args[1]["response_type"] == "ephemeral"
     refresh.assert_not_called()
 
@@ -419,7 +419,7 @@ def test_a_step_set_elsewhere_keeps_its_number_and_shows_as_checked_in_the_threa
     assert f"<@{SLACK_USER_ID}> Step 3/3" in all_block_text(_posts(slack_client)[-1]["blocks"])
     edits = _edits(slack_client)
     # The link reply shrinks to one line and keeps the model step under it, so both stay in the thread.
-    assert ":white_check_mark: PostHog account linked" in edits["100.2"]
+    assert ":white_check_mark: Flind account linked" in edits["100.2"]
     assert ":white_check_mark: Your model: already set" in edits["100.2"]
     assert "▰▰▱  2/3 done" in edits["100.1"]
 
@@ -441,7 +441,7 @@ def test_a_stalled_thread_gets_one_reminder_that_names_the_waiting_step(
     assert slack_client.chat_postMessage.call_count == posts_before + 1
     reminder = _posts(slack_client)[-1]
     assert reminder["thread_ts"] == "100.1"
-    assert reminder["text"].startswith(f"<@{SLACK_USER_ID}> Your PostHog setup is waiting at step 2 of 3, Your model.")
+    assert reminder["text"].startswith(f"<@{SLACK_USER_ID}> Your Flind setup is waiting at step 2 of 3, Your model.")
 
 
 @pytest.mark.django_db

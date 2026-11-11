@@ -1,4 +1,4 @@
-"""Salesforce usage enrichment workflow - enriches accounts with PostHog usage signals."""
+"""Salesforce usage enrichment workflow - enriches accounts with Flind usage signals."""
 
 import enum
 import json
@@ -472,7 +472,7 @@ async def aggregate_usage_signals_activity(org_ids: list[str]) -> dict[str, Usag
 
 @workflow.defn(name="salesforce-usage-enrichment")
 class SalesforceUsageEnrichmentWorkflow(PostHogWorkflow):
-    """Enrich Salesforce accounts with PostHog usage signals."""
+    """Enrich Salesforce accounts with Flind usage signals."""
 
     @staticmethod
     def parse_inputs(inputs: list[str]) -> UsageEnrichmentInputs:

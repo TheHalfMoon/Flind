@@ -71,6 +71,6 @@ Mixing them up makes reachable groups look unused.
 
 ## Before changing telemetry
 
-1. Search dashboards and insights for the event and property (`system.insights` via the PostHog MCP).
+1. Search dashboards and insights for the event and property (`system.insights` via the Flind MCP).
 2. Check the replay scanners' prompts if they mention the behavior.
 3. Update [refreshing-product-reality](refreshing-product-reality.md) if a query uses it.

@@ -13,7 +13,7 @@ export const showActionsSchema = {
 };
 
 const SHOW_ACTIONS_TOOL_DESCRIPTION =
-  "Show the user a card of clickable buttons in PostHog Desktop, so they can " +
+  "Show the user a card of clickable buttons in Flind Desktop, so they can " +
   "act on what you just told them without retyping it. Pass 1 to 4 actions. " +
   "Each action is a typed verb, never a URL: there is no URL parameter and " +
   "free-form URLs are not accepted. " +
@@ -28,7 +28,7 @@ const SHOW_ACTIONS_TOOL_DESCRIPTION =
   "on what the prefilled task will do, never a restatement of the label. " +
   "`open_space` opens a channel's feed. `open_canvas` opens a canvas inside a " +
   "channel, and needs both `channel_id` and `canvas_id`. " +
-  "`open_inbox` opens Self-driving, where PostHog files the reports it writes " +
+  "`open_inbox` opens Self-driving, where Flind files the reports it writes " +
   "on its own. Pass `report_id` to open one report instead of the whole inbox. " +
   "Offer only what the person actually wants to do next, in the order they " +
   "would want it. Buttons that decorate an answer are noise, so skip the call " +

@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     underlying ``mcp_store_mcpserver`` table and both ``server_id`` columns
     in the database.
 
-    Rationale: at PostHog's scale, physical ``DROP COLUMN`` / ``DROP TABLE``
+    Rationale: at Flind's scale, physical ``DROP COLUMN`` / ``DROP TABLE``
     briefly hold an ``ACCESS EXCLUSIVE`` lock, which can queue traffic on
     hot tables. These objects are already orphaned — nothing reads or writes
     them — so leaving them in place is harmless. A separate PR can reclaim

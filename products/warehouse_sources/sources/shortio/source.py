@@ -46,7 +46,7 @@ class ShortioSource(ResumableSource[ShortioSourceConfig, ShortioResumeConfig]):
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="Shortio",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Short.io API key to sync domains, links, and click statistics to the PostHog Data warehouse.
+            caption="""Enter your Short.io API key to sync domains, links, and click statistics to the Flind Data warehouse.
 
 Create an API key under **Integrations & API** in your [Short.io dashboard](https://app.short.io/settings/integrations/api-key). Paste the secret key value.
 

@@ -226,7 +226,7 @@ def build_code_analysis_prompt(flag: FeatureFlag, repository: str) -> TaskPrompt
     title = f"Analyze the code paths of feature flag {flag.key}"
     description = "\n".join(
         [
-            f'Find every place this repository checks the PostHog feature flag "{flag.key}", and report what code runs for each outcome.',
+            f'Find every place this repository checks the Flind feature flag "{flag.key}", and report what code runs for each outcome.',
             "",
             f"Repository: {repository}",
             f'Feature flag key: "{flag.key}"',
@@ -235,7 +235,7 @@ def build_code_analysis_prompt(flag: FeatureFlag, repository: str) -> TaskPrompt
             "## How to find the references",
             f'- Start with the exact key "{flag.key}", then follow every constant, enum, or config entry that holds it to the places that use it.',
             "- Inspect local flag helpers and wrapper components, such as a `useFlag('...')` hook or a `Flags.SOME_KEY` registry.",
-            f"- Also search for PostHog SDK calls that read flags, e.g.: {FLAG_SDK_CALLS}.",
+            f"- Also search for Flind SDK calls that read flags, e.g.: {FLAG_SDK_CALLS}.",
             "- Cover every directory that deploys on its own (server, browser, mobile, workers) and every language in the repository.",
             "- Report runtime checks only. Skip analytics properties, event payloads, tests, and documentation that mention the key.",
             "",
@@ -254,7 +254,7 @@ def build_code_analysis_prompt(flag: FeatureFlag, repository: str) -> TaskPrompt
             "",
             "## Rules",
             "- Read only. Do not edit files, create branches, commit, or open a pull request.",
-            "- Do not change the flag in PostHog.",
+            "- Do not change the flag in Flind.",
         ]
     )
     return TaskPrompt(title=title, description=description)

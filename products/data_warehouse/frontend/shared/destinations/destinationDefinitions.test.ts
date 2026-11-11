@@ -135,7 +135,7 @@ describe('warehouse destination definitions', () => {
         })
     })
 
-    it('does not offer the managed PostHog warehouse as a type', () => {
+    it('does not offer the managed Flind warehouse as a type', () => {
         expect(CREATABLE_DESTINATION_TYPES).not.toContain('PostHogWarehouse' as CreatableDestinationType)
     })
 })

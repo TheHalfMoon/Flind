@@ -9,7 +9,7 @@ Every call draws from one budget under the key `harmonic:account:default`.
 
 A single per-second ceiling read from settings at acquire time: `HARMONIC_EGRESS_PER_SECOND_BUDGET` (default 15).
 Harmonic documents a limit of 10 requests per second for most endpoints, with a 429 above it.
-Search agent and Scout task creation have lower limits of their own, and PostHog calls neither.
+Search agent and Scout task creation have lower limits of their own, and Flind calls neither.
 The default sits above that on purpose. The `BATCH` reserve floors to 4 of 15 units, so the bulk lane is admitted up to 11 calls a second, next to the documented rate.
 
 ## Lanes and callers

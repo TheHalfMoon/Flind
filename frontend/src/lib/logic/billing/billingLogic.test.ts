@@ -428,7 +428,7 @@ describe('billingLogic', () => {
             },
         },
         {
-            name: 'PostHog with no active subscription',
+            name: 'Flind with no active subscription',
             answer: [
                 200,
                 { ...billingJson, billing_provider: BillingProvider.PostHog, has_active_subscription: false },
@@ -771,7 +771,7 @@ describe('billingLogic', () => {
             expectedLabel: 'View invoices',
         },
         {
-            name: 'the hosted invoice when PostHog bills the organization',
+            name: 'the hosted invoice when Flind bills the organization',
             billingProvider: BillingProvider.PostHog,
             openInvoices: { count: 1, link: HOSTED_INVOICE_URL },
             billingLoadsFirst: true,

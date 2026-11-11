@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -56,7 +56,7 @@ export const getDesktopFeedbackCreateUrl = (projectId: string) => {
 }
 
 /**
- * Stores selected attachments and submits one response to the PostHog Desktop feedback survey.
+ * Stores selected attachments and submits one response to the Flind Desktop feedback survey.
  * @summary Submit Desktop feedback
  */
 export const desktopFeedbackCreate = async (

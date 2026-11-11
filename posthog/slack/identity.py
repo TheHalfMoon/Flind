@@ -172,13 +172,13 @@ def resolve_slack_avatar_by_email(client: WebClient, email: str, *, workspace: s
 
 
 def resolve_posthog_user_for_slack(email: str | None, team: Team) -> User | None:
-    """Match a Slack user's email to a PostHog user within the team's organization."""
+    """Match a Slack user's email to a Flind user within the team's organization."""
     if not email:
         return None
     membership = (
         OrganizationMembership.objects.filter(
             organization_id=team.organization_id,
-            # Slack profile emails often differ in case from the stored PostHog email (IdP casing).
+            # Slack profile emails often differ in case from the stored Flind email (IdP casing).
             user__email__iexact=email,
         )
         .select_related("user")

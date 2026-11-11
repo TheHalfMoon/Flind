@@ -72,7 +72,7 @@ class SuggestedRepliesFit(JudgedScorer):
         super().__init__(
             name="suggested_replies_fit",
             prompt_template="""
-You are evaluating reply buttons in a Slack thread. The PostHog agent posted the answer below. A person who reads it can send one of the replies to the agent with one click.
+You are evaluating reply buttons in a Slack thread. The Flind agent posted the answer below. A person who reads it can send one of the replies to the agent with one click.
 
 The person's last message before the answer:
 <person_message>

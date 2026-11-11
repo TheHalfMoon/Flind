@@ -94,7 +94,7 @@ async def eval_empty_experiment(ctx: EvalContext) -> None:
             expected={
                 "diagnosis_group": (
                     "The custom exposure event is missing the property the experiment reads the "
-                    "variant from. On a custom exposure event PostHog reads `$feature/<flag-key>`, "
+                    "variant from. On a custom exposure event Flind reads `$feature/<flag-key>`, "
                     "and it must hold one of the flag's variant keys (e.g. 'control', 'test'). "
                     "`$feature_flag` and `$feature_flag_response` are only read on the default "
                     "exposure event, so they do not help here. Without `$feature/<flag-key>` the "
@@ -125,7 +125,7 @@ async def eval_empty_experiment(ctx: EvalContext) -> None:
             expected={
                 "diagnosis_group": (
                     "The agent identifies that the project's test-account filter is excluding "
-                    "the internal teammates. PostHog's experiments apply "
+                    "the internal teammates. Flind's experiments apply "
                     "`exposure_criteria.filterTestAccounts` which defaults to `true` — when on, "
                     "events from users matching the project-level `test_account_filters` (e.g. "
                     "an internal email domain like `@hedgebox.com` or similar) are excluded "

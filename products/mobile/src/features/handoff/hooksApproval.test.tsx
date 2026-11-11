@@ -221,7 +221,7 @@ test.each(['offline', 'disconnect'] as const)(
         await waitFor(() => expect(hook.result.current.handOff.pending).toBe(false))
         await pending
         expect(hook.result.current.handOff.pending).toBe(false)
-        expect(handoffEntry(REPORT).notice).toBe("Couldn't reach PostHog. Check your connection and try again.")
+        expect(handoffEntry(REPORT).notice).toBe("Couldn't reach Flind. Check your connection and try again.")
         await act(async () => {
             useConnectivity.setState({ status: 'connected' })
             finish({ resolved_ai_run_defaults: {} } as TaskUserConfigApi)

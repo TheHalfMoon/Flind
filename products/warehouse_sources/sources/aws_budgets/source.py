@@ -129,11 +129,11 @@ class AwsBudgetsSource(ResumableSource[AwsBudgetsSourceConfig, AwsBudgetsResumeC
             name=ExternalDataSourceType.AWSBUDGETS,
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="AWS Budgets",
-            caption="""Sync your AWS budgets, their spend history, and their alert thresholds into the PostHog Data warehouse.
+            caption="""Sync your AWS budgets, their spend history, and their alert thresholds into the Flind Data warehouse.
 
 Create an IAM user or role with the `budgets:DescribeBudgets`, `budgets:DescribeBudgetPerformanceHistory` and `budgets:DescribeNotificationsForBudget` permissions, then paste its access key ID and secret access key. Add a session token too if you are using temporary credentials.
 
-AWS Budgets is a global service, so there is no region to pick. PostHog looks up which account the credentials belong to and reads that account's budgets.""",
+AWS Budgets is a global service, so there is no region to pick. Flind looks up which account the credentials belong to and reads that account's budgets.""",
             iconPath="/static/services/aws_budgets.png",
             docsUrl="https://posthog.com/docs/cdp/sources/aws-budgets",
             releaseStatus=ReleaseStatus.BETA,

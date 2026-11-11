@@ -54,7 +54,7 @@ describe('pagerduty template', () => {
                 class: 'firing',
                 custom_details: { threshold: 100 },
             },
-            client: 'PostHog',
+            client: 'Flind',
             links: [{ href: 'https://example.com/alert', text: 'View alert' }],
         })
 
@@ -121,7 +121,7 @@ describe('pagerduty template', () => {
     it.each(['', null])('sends a fallback source when the source renders as %p', async (source) => {
         const response = await tester.invoke(inputs({ source }))
 
-        expect(sentBody(response).payload.source).toBe('PostHog')
+        expect(sentBody(response).payload.source).toBe('Flind')
     })
 
     it.each([

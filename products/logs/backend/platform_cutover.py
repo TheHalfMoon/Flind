@@ -255,7 +255,7 @@ def creates_native_alert(team_id: int) -> bool:
         groups={"organization": str(team.organization_id), "project": str(team.id)},
         group_properties={
             "organization": {"id": str(team.organization_id)},
-            # Both regions read flags from one PostHog project, and project ids repeat across regions.
+            # Both regions read flags from one Flind project, and project ids repeat across regions.
             "project": {"id": str(team.id), "uuid": str(team.uuid)},
         },
         send_feature_flag_events=False,

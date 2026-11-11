@@ -130,7 +130,7 @@ def normalize_host(host: str) -> str:
     if parsed.scheme not in ("http", "https") or not parsed.hostname:
         raise ValueError(f"Invalid Nexus host: {host}")
     # Credentials ride in the Authorization header on every request, so plaintext
-    # http would leak them to any network observer. On PostHog Cloud the request
+    # http would leak them to any network observer. On Flind Cloud the request
     # egresses over the public internet, so require https. Self-hosted operators
     # control their own network path (e.g. an internal Nexus reachable only over
     # http), so http stays allowed there — mirroring how host IP safety is only

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface WarehouseSuggestionCertifyPayloadApi {
@@ -75,7 +75,7 @@ export const WarehouseSuggestionMainSavingEnumApi = {
 } as const
 
 export interface WarehouseSuggestionMaterializePayloadApi {
-    /** Sources that are always current, such as PostHog tables and direct connections. */
+    /** Sources that are always current, such as Flind tables and direct connections. */
     live_sources: WarehouseSuggestionVisibleSourcesApi
     /** Sources with no sync schedule, so their freshness is unknown. */
     unknown_sources: WarehouseSuggestionVisibleSourcesApi
@@ -84,7 +84,7 @@ export interface WarehouseSuggestionMaterializePayloadApi {
      * * `full` - Full
      * * `incremental` - Incremental */
     refresh_mode: WarehouseSuggestionRefreshModeEnumApi
-    /** Why the interval is not shorter. source_sync: the view's sources sync no faster. fastest_schedule: PostHog refreshes views no more often. read_rate: people read the view no more often. consumer_refresh: the materialized views that read it refresh no more often. savings: a shorter interval would cost more than it saves. Null on suggestions made before this was recorded.
+    /** Why the interval is not shorter. source_sync: the view's sources sync no faster. fastest_schedule: Flind refreshes views no more often. read_rate: people read the view no more often. consumer_refresh: the materialized views that read it refresh no more often. savings: a shorter interval would cost more than it saves. Null on suggestions made before this was recorded.
      *
      * * `source_sync` - Source sync
      * * `fastest_schedule` - Fastest schedule
@@ -168,7 +168,7 @@ export type WarehouseSuggestionPayloadApi =
 export type WarehouseSuggestionEvidenceApiRequestsBySurface = { [key: string]: number }
 
 export interface WarehouseSuggestionEvidenceApi {
-    /** Days of the 30-day usage window that PostHog has read history for. It counts days with reads in any project, so it shows how much history exists, not how active this project is. */
+    /** Days of the 30-day usage window that Flind has read history for. It counts days with reads in any project, so it shows how much history exists, not how active this project is. */
     days_with_data?: number
     /** Queries people ran that read the subject in the usage window. */
     human_requests?: number
@@ -176,11 +176,11 @@ export interface WarehouseSuggestionEvidenceApi {
     human_users?: number
     /** Days on which people read the subject. */
     human_days?: number
-    /** Queries PostHog ran on its own that read the subject, such as cache warming and alerts. */
+    /** Queries Flind ran on its own that read the subject, such as cache warming and alerts. */
     background_requests?: number
     /** Queries people ran per place they ran them, such as sql_editor, dashboard, insight or mcp. */
     requests_by_surface?: WarehouseSuggestionEvidenceApiRequestsBySurface
-    /** When any query last read the subject, including queries PostHog ran on its own. */
+    /** When any query last read the subject, including queries Flind ran on its own. */
     last_read_at?: string
 }
 

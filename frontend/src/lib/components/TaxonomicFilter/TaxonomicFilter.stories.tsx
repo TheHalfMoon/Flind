@@ -32,7 +32,7 @@ const meta: Meta<TaxonomicFilterProps> = {
         docs: {
             description: {
                 component:
-                    'Taxonomic Filter allows users to select from various categories of data in PostHog, like events, actions, properties, etc.',
+                    'Taxonomic Filter allows users to select from various categories of data in Flind, like events, actions, properties, etc.',
             },
         },
     },
@@ -101,7 +101,7 @@ export const EventsFree: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Basic TaxonomicFilter with Events and Actions tabs in the free version of PostHog.',
+                story: 'Basic TaxonomicFilter with Events and Actions tabs in the free version of Flind.',
             },
         },
     },
@@ -141,7 +141,7 @@ export const EventsPremium: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'TaxonomicFilter with Events and Actions tabs in the premium version of PostHog with INGESTION_TAXONOMY feature enabled.',
+                story: 'TaxonomicFilter with Events and Actions tabs in the premium version of Flind with INGESTION_TAXONOMY feature enabled.',
             },
         },
     },

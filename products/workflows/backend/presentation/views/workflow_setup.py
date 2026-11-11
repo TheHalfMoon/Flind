@@ -81,7 +81,7 @@ class WorkflowSetupStatusSerializer(serializers.Serializer):
     )
     email_sending_paused = serializers.BooleanField(
         help_text="Whether email sending is paused for the project, so no email sends even with a verified "
-        "domain. The person contacts PostHog support to resume it."
+        "domain. The person contacts Flind support to resume it."
     )
     next_open_step = serializers.ChoiceField(
         choices=SetupStepKey.choices,

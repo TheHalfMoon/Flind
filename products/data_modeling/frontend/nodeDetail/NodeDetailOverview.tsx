@@ -96,7 +96,7 @@ export function NodeDetailOverview({ id, metadata }: { id: string; metadata?: Re
         : node.type === 'endpoint'
           ? 'Managed by endpoint'
           : modeDisabledReason(savedQuery?.sync_frequency_bounds)
-            ? 'Managed by PostHog'
+            ? 'Managed by Flind'
             : !savedQuery
               ? savedQueryError
                   ? 'Schedule unavailable'

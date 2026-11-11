@@ -282,7 +282,7 @@ def _render_extra_to_text(extra: dict) -> list[str]:
 
 def _render_remediation_to_text(remediation: dict) -> list[str]:
     """Render a remediation (SignalRemediation shape) to text lines for LLM consumption."""
-    lines = ["- Remediation (authoritative guidance — follow it, then verify via the PostHog MCP):"]
+    lines = ["- Remediation (authoritative guidance — follow it, then verify via the Flind MCP):"]
     if agent := remediation.get("agent"):
         lines.append(f"  - Guidance: {agent}")
     if priority := remediation.get("priority"):

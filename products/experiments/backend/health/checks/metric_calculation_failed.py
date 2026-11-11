@@ -3,7 +3,7 @@ Metrics whose latest calculation failed, so the results page shows an error in p
 functions, no I/O.
 
 The page shows the stored error text, which is often the raw text of an exception. The finding says in words what
-kind of failure it was and what to do next. It repeats a message only when PostHog's query builder wrote it for
+kind of failure it was and what to do next. It repeats a message only when Flind's query builder wrote it for
 users, as the message of a validation error. It doesn't repeat HogQL's text, which the calculation writes without the
 reader's warehouse access, or the text of other exceptions, which is written for engineers.
 """
@@ -89,7 +89,7 @@ _QUERY_SIZE_LIMIT = "query_size"
 # A failure stored before calculations stored the class of the error has only its message, and some classes are too
 # wide, so these rules read the message. They follow the messages of `ClickHouseAtCapacity`, of the ClickHouse
 # limits, of the calculation's own time limit and of the friendly texts in `ERROR_TYPE_MESSAGES`.
-# A socket timeout is stored as a timeout, but PostHog words it as a temporary problem of the database, so it counts as
+# A socket timeout is stored as a timeout, but Flind words it as a temporary problem of the database, so it counts as
 # busy.
 _BUSY_MESSAGE = re.compile(
     r"too busy|Too many queries|maximum concurrency|temporary problem|while (?:reading from|writing to) socket",
@@ -123,7 +123,7 @@ class _Wording:
     error: str | None
     # What went wrong and what to do, after the sentence that names the metric.
     explanation: str
-    # The message, when PostHog wrote it for users.
+    # The message, when Flind wrote it for users.
     message: str | None = None
     # Whether a setting of the experiment causes the failure, which then fails every metric, so the finding says the
     # explanation once and names no metric in it.
@@ -142,12 +142,12 @@ _UNEXPECTED = _Wording(
 _BUSY = _Wording(
     kind=MetricCalculationFailureKind.BUSY,
     error=None,
-    explanation="PostHog was too busy to run its query. Try again in a few minutes.",
+    explanation="Flind was too busy to run its query. Try again in a few minutes.",
 )
 # The words of the kinds above when the page has no button to try again: after the end the page shows no "Refresh
 # results" button, and only an error stored as retriable gets a "Try again" button.
 _WITHOUT_RETRY_AFTER_END = {
-    MetricCalculationFailureKind.BUSY: "PostHog was too busy to run its query. Contact support to calculate it again.",
+    MetricCalculationFailureKind.BUSY: "Flind was too busy to run its query. Contact support to calculate it again.",
     MetricCalculationFailureKind.UNEXPECTED_ERROR: "Its query failed with an unexpected error. Contact support for "
     "help.",
 }
@@ -311,11 +311,11 @@ def _limit(error_type: str | None, message: str) -> str | None:
 def _limit_explanation(limit: str, failure: MetricCalculationFailure) -> str:
     if limit == _QUERY_SIZE_LIMIT:
         return (
-            "Its query is longer than PostHog allows. A filter with a long list of values can cause this. Shorten "
+            "Its query is longer than Flind allows. A filter with a long list of values can cause this. Shorten "
             "the filters of the metric or of the exposure criteria, or contact support for help."
         )
     return (
-        f"Its query {_LIMIT_NEEDS[limit]} than PostHog allows for one calculation. A query reads more data the longer "
+        f"Its query {_LIMIT_NEEDS[limit]} than Flind allows for one calculation. A query reads more data the longer "
         f"an experiment runs and the more traffic it gets. Simplify the metric, for example with {_simpler(failure)}, "
         "or contact support for help."
     )
@@ -388,7 +388,7 @@ def _metric_cause(failure: MetricCalculationFailure, limit: str, completed_count
     return _Wording(
         kind=MetricCalculationFailureKind.QUERY_LIMIT,
         error=limit,
-        explanation=f"Its query {_LIMIT_NEEDS[limit]} than PostHog allows for one calculation, while {others} of the "
+        explanation=f"Its query {_LIMIT_NEEDS[limit]} than Flind allows for one calculation, while {others} of the "
         f"experiment returned results. Simplify this metric, for example with {_simpler(failure)}, or contact support "
         "for help.",
         reason=QueryLimitCause.METRIC.value,
@@ -416,7 +416,7 @@ def _exposure_explanation(
         else f"Remove or change {the_filters}"
     )
     return (
-        f"{query} {needs} than PostHog allows for one calculation. The likely cause is {named}, which "
+        f"{query} {needs} than Flind allows for one calculation. The likely cause is {named}, which "
         f"{'makes' if one else 'make'} {each_query} read all {read} properties. {fix}, or contact support for help."
     )
 
@@ -478,7 +478,7 @@ def _validation_error(failure: MetricCalculationFailure, text: str, code: str) -
         return _Wording(kind=MetricCalculationFailureKind.NOT_ENOUGH_DATA, error=None, explanation=text, message=text)
     if text in _NOT_ENOUGH_DATA_TEXTS:
         return _NOT_ENOUGH_DATA
-    # The query runner gives these texts to errors of PostHog, not of the metric.
+    # The query runner gives these texts to errors of Flind, not of the metric.
     if text in ERROR_TYPE_MESSAGES.values():
         return _UNEXPECTED
     wording = word_compile_error(ExperimentHealthMetricCompileErrorKind.REJECTED, text, failure.definition)

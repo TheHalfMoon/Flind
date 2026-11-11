@@ -99,7 +99,7 @@ def resolve_check_skill_name(config: AgentCheckConfig, canonical_team_id: int | 
     all — the scout was retired, held back, or has no live skill row. Without it the check is
     dispatched at a lane that no longer exists, refused as `skill_withheld` or `scout_missing`, and
     lands on the report as an errored check result: a reader is told their follow-up failed when
-    what actually happened is that PostHog stopped shipping the scout. The fallback scout re-
+    what actually happened is that Flind stopped shipping the scout. The fallback scout re-
     measures resolved reports for a living, so it is the right lane for a question whose original
     one is gone.
 
@@ -117,7 +117,7 @@ def _resolve_lane(skill_name: str | None, canonical_team_id: int | None) -> str:
 
 
 def _lane_still_exists(canonical_team_id: int, skill_name: str) -> bool:
-    """Whether this project still has a scout of this name that PostHog has not retired."""
+    """Whether this project still has a scout of this name that Flind has not retired."""
     if skill_name in withheld_skills_for_team(canonical_team_id):
         return False
     if not LLMSkill.objects.filter(team_id=canonical_team_id, name=skill_name, is_latest=True, deleted=False).exists():

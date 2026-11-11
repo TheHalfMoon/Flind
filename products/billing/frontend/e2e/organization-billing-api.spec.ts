@@ -2,9 +2,9 @@ import { expect, test } from '@playwright-utils/workspace-test-base'
 import { APIRequestContext, APIResponse } from '@playwright/test'
 
 /**
- * The organization billing API through a running PostHog with a billing service behind it.
+ * The organization billing API through a running Flind with a billing service behind it.
  *
- * Billing's own routes have their own live suite in the billing repo. This one covers what PostHog
+ * Billing's own routes have their own live suite in the billing repo. This one covers what Flind
  * adds on top: the token it mints for a real organization, the shapes it serves, the parameters it
  * validates, the links it builds and the access it computes from roles and flags.
  *
@@ -35,7 +35,7 @@ function billing(request: APIRequestContext, organizationId: string, key: string
 }
 
 test.describe('Organization billing API', () => {
-    test.skip(!process.env.RUN_BILLING_E2E, 'needs a billing service behind PostHog; set RUN_BILLING_E2E=1')
+    test.skip(!process.env.RUN_BILLING_E2E, 'needs a billing service behind Flind; set RUN_BILLING_E2E=1')
 
     test.describe('a fresh organization', () => {
         test('every read answers for a customer billing has never seen', async ({ request, playwrightSetup }) => {

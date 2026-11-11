@@ -22,5 +22,5 @@ type Story = StoryObj<typeof HomeTabEmptyDashboard>
 export const Default: Story = {}
 
 export const AIUnavailable: Story = {
-    args: { aiDisabledReason: 'Approve AI data processing to use PostHog AI' },
+    args: { aiDisabledReason: 'Approve AI data processing to use Flind AI' },
 }

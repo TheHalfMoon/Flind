@@ -268,7 +268,7 @@ class TestProjectSecretAPIKeysAPI(APIBaseTest):
                 {"scopes": ["endpoint:read", "llm_gateway:read"]},
             )
         assert create.status_code == 403, create.json()
-        assert "blocked from the PostHog AI gateway" in create.json()["detail"]
+        assert "blocked from the Flind AI gateway" in create.json()["detail"]
         assert update.status_code == 403, update.json()
         assert not ProjectSecretAPIKey.objects.filter(team=self.team, label="my key").exists()
 

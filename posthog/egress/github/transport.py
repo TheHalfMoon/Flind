@@ -3,7 +3,7 @@
 ``github_request`` is the one way to call GitHub from anywhere in the codebase: it gates on the shared
 per-installation budget and records telemetry by construction, so a caller physically can't forget
 either. It is *token-agnostic* — pass whatever ``Authorization`` header the caller holds (installation
-token, user token, PAT, or PostHog's shared token) and the ``installation_id`` as ``scope`` when known.
+token, user token, PAT, or Flind's shared token) and the ``installation_id`` as ``scope`` when known.
 
 This module lives in ``egress`` (not the model layer) and imports nothing from ``posthog.models`` — the
 model-coupled ``GitHubIntegrationBase`` is a *consumer* of this, not the other way round. ``GITHUB_API_VERSION``
@@ -147,7 +147,7 @@ def github_request(
 ) -> requests.Response:
     """Make a gated, recorded GitHub API request. ``installation_id`` is the shared budget owner — pass
     it when known so the call is gated (at ``priority``) and the rate-limit gauges are set; leave it
-    ``None`` for identity-blind callers (raw PATs, PostHog's public token), which record volume only.
+    ``None`` for identity-blind callers (raw PATs, Flind's public token), which record volume only.
     ``source`` attributes the call to a subsystem. ``headers`` must carry the caller's ``Authorization``."""
     return _github_client.request(
         method,

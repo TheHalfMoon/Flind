@@ -516,7 +516,7 @@ export type taskTrackerSceneLogicType = MakeLogicType<
 
 /**
  * The server refused 2.0 to a page that still shows it, such as one rendered before a flag outage.
- * Classic PostHog AI takes over for the rest of the session, with the user's message as its draft.
+ * Classic Flind AI takes over for the rest of the session, with the user's message as its draft.
  */
 function moveToClassicPostHogAI(featureFlags: FeatureFlagsSet, message: string, panelId: string | undefined): void {
     revokePostHogAIAccess()
@@ -1158,7 +1158,7 @@ export const taskTrackerSceneLogic = kea<taskTrackerSceneLogicType>([
                     title: '',
                     description,
                     origin_product: TaskOriginProductEnumApi.PosthogAi,
-                    // PostHog AI can run without a repo; null means the task is not scoped to any repository.
+                    // Flind AI can run without a repo; null means the task is not scoped to any repository.
                     repository: repositoryConfig.repository ?? null,
                     github_integration: repositoryConfig.integrationId ?? null,
                     // Warm-reuse hints. The backend matches these against an idling warm Run and, on a hit,
@@ -1451,7 +1451,7 @@ export const taskTrackerSceneLogic = kea<taskTrackerSceneLogicType>([
                 actions.clearActiveCreation()
             }
         }
-        // Only the list and composer fall back to classic PostHog AI. Inbox task links need no 2.0 access.
+        // Only the list and composer fall back to classic Flind AI. Inbox task links need no 2.0 access.
         const redirectedWithoutAccess = (taskId?: string): boolean => {
             if (props.panelId || values.featureFlags[FEATURE_FLAGS.PHAI_SANDBOX_MODE] || (taskId && taskId !== 'new')) {
                 return false

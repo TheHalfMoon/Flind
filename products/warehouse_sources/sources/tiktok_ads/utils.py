@@ -145,7 +145,7 @@ TIKTOK_CREATIVE_PERMISSION_DENIED_FRAGMENTS = (
 # permission is granted per-advertiser on TikTok's side and we can't widen it after the fact.
 TIKTOK_CREATIVE_PERMISSION_DENIED_MESSAGE = (
     "TikTok denied access to your creative library: the authorized advertiser account has not granted "
-    "PostHog permission to read creative assets. This only affects the creative_videos and creative_images "
+    "Flind permission to read creative assets. This only affects the creative_videos and creative_images "
     "tables, which have been disabled. Your campaign, ad and report tables keep syncing. If your TikTok "
     "admin can grant creative asset access, reconnect the TikTok Ads integration and grant it when TikTok "
     "asks. Otherwise leave these two tables unselected."
@@ -154,7 +154,7 @@ TIKTOK_CREATIVE_PERMISSION_DENIED_MESSAGE = (
 
 # TikTok's 40001 wording for a token issued without a scope one endpoint needs. Its own text tells an
 # app developer to reauthorize their API app, which a customer can't act on and which names the
-# endpoint and error code. Reconnecting issues a new token with the scopes PostHog's app holds.
+# endpoint and error code. Reconnecting issues a new token with the scopes Flind's app holds.
 TIKTOK_MISSING_SCOPE_FRAGMENT = "The access token lacks the required scope"
 
 TIKTOK_MISSING_SCOPE_MESSAGE = (
@@ -169,7 +169,7 @@ class TikTokAdsAPIError(Exception):
     code sets above to actionable messages and lets the rest surface as bugs.
 
     Deliberately not named `status_code`: drf-exceptions-hog reads that attribute off any escaping
-    exception and would render it as PostHog's HTTP response status.
+    exception and would render it as Flind's HTTP response status.
     """
 
     def __init__(self, message: str, api_code: int | None = None, response: Optional[Response] = None):

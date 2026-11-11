@@ -160,9 +160,9 @@ export function GitHubSourceRepositoriesDialog({
                   : "No repositories selected"}
               </Text>
               <Text size="xs" variant="muted">
-                This source connects with a personal access token, so PostHog
+                This source connects with a personal access token, so Flind
                 can't tell which repositories the token reaches. Change them
-                from Data pipelines in PostHog.
+                from Data pipelines in Flind.
               </Text>
             </div>
           ) : (

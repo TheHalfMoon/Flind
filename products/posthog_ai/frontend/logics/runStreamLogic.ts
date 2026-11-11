@@ -168,12 +168,12 @@ export type RunStatus = 'queued' | 'in_progress' | 'completed' | 'failed' | 'can
 
 export interface RunStreamLogicProps {
     /**
-     * Stable logic key. PostHog AI passes the conversation id; a generic task viewer (no conversation)
+     * Stable logic key. Flind AI passes the conversation id; a generic task viewer (no conversation)
      * passes the task id. The logic operates on `(taskId, runId)` internally, so it never needs the
      * conversation beyond this key and the optional telemetry tag below.
      */
     streamKey: string
-    /** Optional telemetry tag — present for PostHog AI conversations, absent for a generic task viewer. */
+    /** Optional telemetry tag — present for Flind AI conversations, absent for a generic task viewer. */
     conversationId?: string
     /**
      * Read-only/replay mode for a generic run viewer: bootstrap replays the persisted `logs/` snapshot
@@ -3099,7 +3099,7 @@ export type runStreamLogicType = MakeLogicType<
  * log the projection folds, HTTP-status error mapping, and the `bootstrapRun`
  * connect-first/buffer/snapshot/drain helper.
  *
- * Keyed by `streamKey` (the conversation id for PostHog AI, the task id for a generic task viewer)
+ * Keyed by `streamKey` (the conversation id for Flind AI, the task id for a generic task viewer)
  * so concurrent streams keep independent stream state and connections.
  */
 export const runStreamLogic = kea<runStreamLogicType>([
@@ -3214,7 +3214,7 @@ export const runStreamLogic = kea<runStreamLogicType>([
         }),
         /**
          * Entry point for every parsed permission request. Applies the default tool policy
-         * (`toolPolicy`): auto-approve built-in tools and PostHog exec in the task's project, but
+         * (`toolPolicy`): auto-approve built-in tools and Flind exec in the task's project, but
          * prompt for connected-project calls and other MCP. Replayed-from-history requests are
          * never auto-approved because the run may already be terminal.
          */
@@ -5523,7 +5523,7 @@ export const runStreamLogic = kea<runStreamLogicType>([
                 actions.cancelPermissionDelivery()
             },
             cancelRun: async ({ run }) => {
-                // Cancel a run through the generic tasks relay — the same command PostHog Desktop issues. The
+                // Cancel a run through the generic tasks relay — the same command Flind Desktop issues. The
                 // SSE then receives a terminal task_run_state; cancellation telemetry is emitted server-side
                 // by the relay. `run` defaults to the streamed run; a warm Run (not streamed) is passed in.
                 // Fire-and-forget: a failure leaves the run alive for a retry.

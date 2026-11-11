@@ -25,7 +25,7 @@ async function main(): Promise<void> {
         })
     )
 
-    console.info(`Built PostHog API CLI release bundle -> ${releaseOutfile}`)
+    console.info(`Built Flind API CLI release bundle -> ${releaseOutfile}`)
 }
 
 main().catch((err: unknown) => {

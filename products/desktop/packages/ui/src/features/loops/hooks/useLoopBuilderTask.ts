@@ -19,7 +19,7 @@ interface UseLoopBuilderTaskReturn {
 /**
  * The loops prompt box: start a cloud sandbox agent whose job is to build a Loop
  * with the user (ask clarifying questions, confirm, then create it through the
- * PostHog MCP `workflows-*` tools). Mirrors `useScoutChatTask`: a repo-less, auto-mode cloud
+ * Flind MCP `workflows-*` tools). Mirrors `useScoutChatTask`: a repo-less, auto-mode cloud
  * task seeded with a canned instruction prompt. The user's typed text rides in
  * through a ref so the fixed `buildInput` closure reads the latest submission.
  */
@@ -49,7 +49,7 @@ export function useLoopBuilderTask(context?: {
           ? `Loop builder: ${userPrompt}`
           : "Loop builder",
         customInstructions: systemInstructions,
-        // Building a loop is pure PostHog-MCP work (listing, then creating the
+        // Building a loop is pure Flind-MCP work (listing, then creating the
         // workflow); it never touches a working tree. Run repo-less so the
         // sandbox skips the clone and isn't tied to some arbitrary default repo.
         repository: undefined,

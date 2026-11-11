@@ -65,7 +65,7 @@ class LLMSkillMarketplaceViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet
     scope_object = "llm_skill"
     # git clients can't complete a Bearer/OAuth flow — make the 401 advertise Basic so the
     # credential helper (or token-in-URL) supplies the Personal API Key.
-    www_authenticate_challenge = 'Basic realm="PostHog Skills Marketplace"'
+    www_authenticate_challenge = 'Basic realm="Flind Skills Marketplace"'
     # Git fetch is a read even though upload-pack is a POST — force read scope for both actions.
     required_scopes = ["llm_skill:read"]
     authentication_classes = [MarketplaceGitBasicAuthentication]

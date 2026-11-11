@@ -54,13 +54,13 @@ export const getManualSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                                 <Markdown>### 1. Install</Markdown>
                                                 <CodeBlock language="bash" code="npm install posthog-node" />
 
-                                                <Markdown>### 2. Initialize PostHog</Markdown>
+                                                <Markdown>### 2. Initialize Flind</Markdown>
                                                 <CodeBlock
                                                     language="javascript"
                                                     code={dedent`
-                                                        import { PostHog } from 'posthog-node'
+                                                        import { Flind } from 'posthog-node'
 
-                                                        const client = new PostHog('<ph_project_token>', {
+                                                        const client = new Flind('<ph_project_token>', {
                                                             host: '<ph_client_api_host>'
                                                         })
                                                     `}
@@ -101,7 +101,7 @@ export const getManualSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                                 <Markdown>### 1. Install</Markdown>
                                                 <CodeBlock language="bash" code="pip install posthog" />
 
-                                                <Markdown>### 2. Initialize PostHog</Markdown>
+                                                <Markdown>### 2. Initialize Flind</Markdown>
                                                 <CodeBlock
                                                     language="python"
                                                     code={dedent`
@@ -147,7 +147,7 @@ export const getManualSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                                     code="go get github.com/posthog/posthog-go"
                                                 />
 
-                                                <Markdown>### 2. Initialize PostHog</Markdown>
+                                                <Markdown>### 2. Initialize Flind</Markdown>
                                                 <CodeBlock
                                                     language="go"
                                                     code={dedent`
@@ -192,13 +192,13 @@ export const getManualSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                                 <Markdown>### 1. Install</Markdown>
                                                 <CodeBlock language="bash" code="gem install posthog-ruby" />
 
-                                                <Markdown>### 2. Initialize PostHog</Markdown>
+                                                <Markdown>### 2. Initialize Flind</Markdown>
                                                 <CodeBlock
                                                     language="ruby"
                                                     code={dedent`
                                                         require 'posthog'
 
-                                                        posthog = PostHog::Client.new({
+                                                        posthog = Flind::Client.new({
                                                             api_key: '<ph_project_token>',
                                                             host: '<ph_client_api_host>'
                                                         })
@@ -239,15 +239,15 @@ export const getManualSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                                     code="composer require posthog/posthog-php"
                                                 />
 
-                                                <Markdown>### 2. Initialize PostHog</Markdown>
+                                                <Markdown>### 2. Initialize Flind</Markdown>
                                                 <CodeBlock
                                                     language="php"
                                                     code={dedent`
                                                         <?php
                                                         require_once __DIR__ . '/vendor/autoload.php';
-                                                        use PostHog\\PostHog;
+                                                        use Flind\\Flind;
 
-                                                        PostHog::init('<ph_project_token>', [
+                                                        Flind::init('<ph_project_token>', [
                                                             'host' => '<ph_client_api_host>'
                                                         ]);
                                                     `}
@@ -258,7 +258,7 @@ export const getManualSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                                     language="php"
                                                     code={dedent`
                                                         // After your LLM call
-                                                        PostHog::capture([
+                                                        Flind::capture([
                                                             'distinctId' => 'user_123',
                                                             'event' => '$ai_generation',
                                                             'properties' => [

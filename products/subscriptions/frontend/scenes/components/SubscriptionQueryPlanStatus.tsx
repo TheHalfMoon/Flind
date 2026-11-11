@@ -27,17 +27,17 @@ export function SubscriptionQueryPlanStatus({
     switch (status) {
         case AIQueryPlanStatusEnumApi.Frozen:
             copy =
-                'Query plan locked for reuse. PostHog will reuse these queries until the prompt or query planner changes. Date ranges, results, and the written report still update.'
+                'Query plan locked for reuse. Flind will reuse these queries until the prompt or query planner changes. Date ranges, results, and the written report still update.'
             icon = <IconLock aria-hidden="true" className="size-4" />
             break
         case AIQueryPlanStatusEnumApi.NotFrozen:
             copy =
-                'Query plan not locked. PostHog will generate a new plan for the next delivery and automatically lock it once all queries succeed and it can be safely reused.'
+                'Query plan not locked. Flind will generate a new plan for the next delivery and automatically lock it once all queries succeed and it can be safely reused.'
             icon = <IconUnlock aria-hidden="true" className="size-4" />
             break
         case AIQueryPlanStatusEnumApi.PlannerUpdated:
             copy =
-                'The query planner changed, so PostHog generated a new plan. The new plan was locked for future deliveries.'
+                'The query planner changed, so Flind generated a new plan. The new plan was locked for future deliveries.'
             icon = <IconRefresh aria-hidden="true" className="size-4" />
             break
     }

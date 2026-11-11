@@ -510,7 +510,7 @@ class TestFormatEventsPrompt(BaseTest):
 
         self.assertIn(f"Counts cover the last {LOOKBACK_DAYS} days", result)
         self.assertIn("2023-01-01T00:00:00+00:00", result)
-        self.assertIn("PostHog system events that are not useful for analysis are left out", result)
+        self.assertIn("Flind system events that are not useful for analysis are left out", result)
 
     @parameterized.expand(
         [

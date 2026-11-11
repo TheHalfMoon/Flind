@@ -45,7 +45,7 @@ class BunnySource(ResumableSource[BunnySourceConfig, BunnyResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Bunny.net",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your bunny.net account API key to pull your bunny.net data into the PostHog Data warehouse.
+            caption="""Enter your bunny.net account API key to pull your bunny.net data into the Flind Data warehouse.
 
 You can find your account API key under **Account Settings → API** in the [bunny.net dashboard](https://dash.bunny.net/account/settings). This single key grants read access to the Core API (pull zones, storage zones, DNS zones, and Stream video libraries).
 """,

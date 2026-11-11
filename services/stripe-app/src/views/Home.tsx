@@ -9,7 +9,7 @@ const APP_ID = 'com.posthog.stripe'
 const Home = ({ environment }: ExtensionContextValue): JSX.Element => {
     return (
         <ContextView
-            title="PostHog"
+            title="Flind"
             brandColor={BRAND_COLOR}
             brandIcon={BrandIcon}
             footerContent={

@@ -237,7 +237,7 @@ Wrong nullability can change filtering semantics, especially in `WHERE`, `HAVING
 
 ### Query-Level Settings Coupling
 
-Some type-driven decisions are only correct under the ClickHouse settings PostHog pins for every HogQL query via `HogQLGlobalSettings` (`posthog/hogql/constants.py`), most notably `transform_null_in=1`.
+Some type-driven decisions are only correct under the ClickHouse settings Flind pins for every HogQL query via `HogQLGlobalSettings` (`posthog/hogql/constants.py`), most notably `transform_null_in=1`.
 The nullable-comparison rewrites, the planner's IN/has handling, and the skip-index expectations all assume those defaults, and the skip-index tests deliberately run `EXPLAIN` under the same settings.
 Today this coupling is consistent because the settings are applied unconditionally; if a setting like `transform_null_in` ever becomes configurable per-query, the rewrites that assume it must be re-audited.
 

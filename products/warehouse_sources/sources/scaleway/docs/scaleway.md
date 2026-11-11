@@ -10,7 +10,7 @@ import SourceSetupIntro from "../\_snippets/source-setup-intro.mdx"
 import SyncModes from "../\_snippets/sync-modes.mdx"
 import TroubleshootingLink from "../\_snippets/dw-troubleshooting-link.mdx"
 
-Sync your [Scaleway](https://www.scaleway.com) organization data — billing invoices and consumption, IAM identities, projects, audit trail events, compute instances and their volumes, images, snapshots and IPs, Kubernetes clusters, and managed databases — into PostHog to build cost, security, and infrastructure reporting alongside your product data.
+Sync your [Scaleway](https://www.scaleway.com) organization data — billing invoices and consumption, IAM identities, projects, audit trail events, compute instances and their volumes, images, snapshots and IPs, Kubernetes clusters, and managed databases — into Flind to build cost, security, and infrastructure reporting alongside your product data.
 
 ## Prerequisites
 

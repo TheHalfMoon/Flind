@@ -42,7 +42,7 @@ export function DestinationStep(): JSX.Element {
     const { openForCreate, openForEdit } = useActions(destinationModalLogic(modalProps))
 
     // A team with no destination rows yet has nothing to turn on, and its source writes to the
-    // PostHog warehouse, so that case reads as warehouse-only rather than as nowhere to sync.
+    // Flind warehouse, so that case reads as warehouse-only rather than as nowhere to sync.
     const nothingSelected = destinations.length > 0 && selectedIds.length === 0
     const warehouseOnly =
         destinations.length === 0 ||
@@ -81,7 +81,7 @@ export function DestinationStep(): JSX.Element {
                 ) : (
                     warehouseOnly && (
                         <LemonBanner type="info">
-                            This source will sync into PostHog only. Turn on another destination to also send its tables
+                            This source will sync into Flind only. Turn on another destination to also send its tables
                             to your own database.
                         </LemonBanner>
                     )

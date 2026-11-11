@@ -1,5 +1,5 @@
 """End-to-end integration test: spin up a local fixture page with a stub
-PostHog snippet, run check-loading against it, and assert the snippet was
+Flind snippet, run check-loading against it, and assert the snippet was
 detected. Skipped automatically when Playwright isn't installed.
 """
 

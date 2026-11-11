@@ -166,7 +166,7 @@ class CommercetoolsSource(ResumableSource[CommercetoolsSourceConfig, Commercetoo
             name=ExternalDataSourceType.COMMERCETOOLS,
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="commercetools",
-            caption="""Enter your commercetools API client credentials to pull your commerce data into the PostHog Data warehouse.
+            caption="""Enter your commercetools API client credentials to pull your commerce data into the Flind Data warehouse.
 
 Create an API client in the Merchant Center under Settings > Developer settings with the view scopes for the datasets you want to sync (`view_orders`, `view_customers`, `view_payments`, `view_shopping_lists`, `view_products`, `view_product_types`, `view_categories`, `view_discount_codes`, `view_standalone_prices`, `view_stores`, `view_channels`, `view_customer_groups`, `view_states`, `view_messages`). Your project key and region are shown alongside the generated credentials.
 

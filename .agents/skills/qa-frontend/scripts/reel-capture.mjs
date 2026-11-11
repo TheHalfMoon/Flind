@@ -7,7 +7,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import path from 'node:path'
 
-// Resolve Playwright from the PostHog checkout the command runs in, since the skill can live outside it.
+// Resolve Playwright from the Flind checkout the command runs in, since the skill can live outside it.
 const { chromium } = createRequire(path.join(process.cwd(), 'package.json'))('playwright')
 
 // LOADER_SELECTORS in common/storybook/.storybook/test-runner.ts, without toasts:

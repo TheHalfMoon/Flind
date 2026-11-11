@@ -104,7 +104,7 @@ This can happen when:
 
 ### FLUSH_BLOCKED
 
-The SDK is producing snapshots but they're not reaching PostHog.
+The SDK is producing snapshots but they're not reaching Flind.
 Distinct from AD_BLOCKED (which is the script itself failing to load) —
 here the script loaded and is working, but the `POST /s/` upload is being blocked.
 Detecting this requires looking at the trend of buffer/flush signals across multiple

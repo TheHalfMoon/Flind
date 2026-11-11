@@ -95,7 +95,7 @@ export interface UseInboxCloudTaskRunnerOptions {
    * When true, a missing repository is not an error: the task is created
    * repo-less (no clone, no GitHub identity). The backend provisions a bare
    * sandbox in that case. Use for flows that only need the cloud sandbox plus
-   * PostHog MCP — e.g. scout chats — never for flows that author a PR. Defaults
+   * Flind MCP — e.g. scout chats — never for flows that author a PR. Defaults
    * to false, preserving the repo + integration gate for Create-PR / Discuss.
    */
   allowMissingRepository?: boolean;

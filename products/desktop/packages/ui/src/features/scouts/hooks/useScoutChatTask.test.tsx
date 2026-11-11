@@ -103,7 +103,7 @@ describe("useScoutChatTask", () => {
 
   it("creates a repo-less cloud task when no personal repo is resolvable", async () => {
     // The PR #2986 scenario: team integration only, no personal install, so no
-    // user-level repo resolves. Scout authoring is pure PostHog-MCP work, so it
+    // user-level repo resolves. Scout authoring is pure Flind-MCP work, so it
     // must still run rather than failing with a "connect GitHub" toast.
     resolveDefaultCloudRepository.mockReturnValue(null);
 

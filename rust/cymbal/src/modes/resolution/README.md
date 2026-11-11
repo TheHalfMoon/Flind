@@ -1,6 +1,6 @@
 # Resolution mode (`CYMBAL_MODE=resolution`)
 
-gRPC service that owns exception-level symbol resolution for PostHog error tracking.
+gRPC service that owns exception-level symbol resolution for Flind error tracking.
 It is a run mode of the `cymbal` binary, selected with `CYMBAL_MODE=resolution`.
 It speaks `cymbal.resolution.v1` and is used by cymbal's processing mode (the client lives in
 [`stages/resolution/remote`](../../stages/resolution/remote)).

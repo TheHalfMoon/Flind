@@ -28,7 +28,7 @@ export function PlaygroundThread(): JSX.Element {
     const lastRun = turns.at(-1)?.run
     const isEmpty = !chatLoading && !chatError && turns.length === 0 && pendingQuestion === null
 
-    // Follow the newest turn the way the PostHog AI thread sticks to the bottom.
+    // Follow the newest turn the way the Flind AI thread sticks to the bottom.
     useEffect(() => {
         const node = scrollRef.current
         if (node) {

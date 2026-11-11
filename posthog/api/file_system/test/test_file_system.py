@@ -1476,7 +1476,7 @@ class TestFileSystemAPI(APIBaseTest):
         Plain-text searches such as 'go/revenue', 'banana/go', or the full
         'banana/go/revenue' must still find the item.
         """
-        # This is the path PostHog generates for   Banana   /   go/revenue
+        # This is the path Flind generates for   Banana   /   go/revenue
         FileSystem.objects.create(
             team=self.team,
             path="Banana/go\\/revenue",  # ← stored form, depth = 2

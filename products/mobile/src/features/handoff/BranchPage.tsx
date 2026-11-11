@@ -52,7 +52,7 @@ export function BranchPage({ branch, onChange, onDone }: BranchPageProps): React
                 />
             </View>
             <Text style={styles.note}>
-                PostHog picks the repository from the report. Leave this empty to use the base branch set for that
+                Flind picks the repository from the report. Leave this empty to use the base branch set for that
                 repository in Inbox settings, or its default branch if none is set.
             </Text>
             <Pressable44

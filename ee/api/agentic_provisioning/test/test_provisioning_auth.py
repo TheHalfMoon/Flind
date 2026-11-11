@@ -36,7 +36,7 @@ class TestProvisioningAuthentication(ProvisioningTestBase):
         OAuthApplication.objects.filter(client_id=WIZARD_CLIENT_ID).delete()
         self.wizard_app = OAuthApplication.objects.create(
             client_id=WIZARD_CLIENT_ID,
-            name="PostHog Wizard",
+            name="Flind Wizard",
             client_secret="",
             client_type=OAuthApplication.CLIENT_CONFIDENTIAL,
             jwks_uri=TEST_PARTNER_JWKS_URI,
@@ -299,7 +299,7 @@ class TestProvisioningAuthentication(ProvisioningTestBase):
         membership = user.organization_memberships.first()
         assert membership is not None
         org = membership.organization
-        assert org.name == f"PostHog Wizard ({email})"
+        assert org.name == f"Flind Wizard ({email})"
 
     # --- PAT scopes ---
 

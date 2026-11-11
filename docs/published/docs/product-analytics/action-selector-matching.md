@@ -29,7 +29,7 @@ If one of your insights uses one of these actions, the insight shows a notice na
 
 ## Why past dates changed too
 
-PostHog stores the elements of every autocapture event as they were when the event happened, and works out which actions match when you run a query. It does not store the match itself.
+Flind stores the elements of every autocapture event as they were when the event happened, and works out which actions match when you run a query. It does not store the match itself.
 
 So correcting how selectors are matched changes the answer for every date, not only for events captured after the fix. An insight you looked at last month can show a lower number today.
 

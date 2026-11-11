@@ -1,6 +1,6 @@
 """Bearer tokens for the Apple Ads service provider OAuth path.
 
-The customer grants PostHog access from the connect form, and the grant is stored as an
+The customer grants Flind access from the connect form, and the grant is stored as an
 `apple-ads` integration. Apple's access tokens live one hour, which a backfill routinely outlives,
 so the token is resolved per authentication rather than once per run.
 """

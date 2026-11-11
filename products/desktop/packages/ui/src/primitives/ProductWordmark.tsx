@@ -13,7 +13,7 @@ export function ProductWordmark() {
         <Logo wordmark={false} />
       </span>
       <Text className="font-bold text-foreground text-md leading-none tracking-[-0.05em]">
-        PostHog Desktop
+        Flind Desktop
       </Text>
     </div>
   );

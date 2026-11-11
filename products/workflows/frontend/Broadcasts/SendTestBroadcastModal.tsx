@@ -51,7 +51,7 @@ export function SendTestBroadcastModal(): JSX.Element {
             <div className="flex flex-col gap-3 max-w-160">
                 {isPush ? (
                     <div className="flex flex-col gap-1">
-                        <LemonLabel info="Starts as your own PostHog user's distinct ID. Use the ID your app identifies you with.">
+                        <LemonLabel info="Starts as your own Flind user's distinct ID. Use the ID your app identifies you with.">
                             Send to distinct ID
                         </LemonLabel>
                         <LemonInput

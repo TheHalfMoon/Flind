@@ -36,7 +36,7 @@ GROUPS_TABLE_FIELDS: dict[str, FieldOrTable] = {
         description="Unique key for the group within its group type; join target for `events.$group_N`.",
     ),
     "created_at": DateTimeDatabaseField(
-        name="created_at", nullable=False, description="When the group was first created in PostHog."
+        name="created_at", nullable=False, description="When the group was first created in Flind."
     ),
     "updated_at": DateTimeDatabaseField(
         name="_timestamp",

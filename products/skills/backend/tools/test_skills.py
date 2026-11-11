@@ -203,7 +203,7 @@ class TestCreateLLMSkillTool(BaseTest):
     @parameterized.expand(
         [
             ("route_name", "community", "reserved name"),
-            # A name PostHog bundles: the tool writes through create_skill, which runs no name
+            # A name Flind bundles: the tool writes through create_skill, which runs no name
             # validation of its own, so the check has to sit on the tool.
             ("bundled_skill_name", "signals-scout-logs", "already ships a skill"),
         ]

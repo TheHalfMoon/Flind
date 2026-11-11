@@ -102,7 +102,7 @@ describe("createPiEnrichmentExtension", () => {
         {
           type: "text",
           text: expect.stringContaining(
-            '[PostHog] Event: "checkout" — (verified) — 120 events — 40 users',
+            '[Flind] Event: "checkout" — (verified) — 120 events — 40 users',
           ),
         },
       ]);

@@ -140,7 +140,7 @@ describe('SkillCatalog and exec learn', () => {
             makeArchive({
                 'instrument-logs/SKILL.md': makeSkill(
                     'instrument-logs',
-                    'Add PostHog log capture to an app.',
+                    'Add Flind log capture to an app.',
                     '# Add logs\n\nInstall the SDK and ship logs.'
                 ),
                 'instrument-logs/references/go.md': '# Go\n\nConfigure the zerolog adapter.',
@@ -217,14 +217,14 @@ describe('SkillCatalog and exec learn', () => {
         )
     })
 
-    it('merges PostHog and project search results by relevance and supports Unicode and quoted paths', async () => {
+    it('merges Flind and project search results by relevance and supports Unicode and quoted paths', async () => {
         const projectSkills = makeProjectSkills({
             searchResults: vi.fn(async (query: string) => [
                 {
                     identifier: 'project:conversion-playbook',
                     description: 'Team conversion playbook.',
                     snippets: [{ path: 'SKILL.md', line: 4, text: 'Our conversion funnel.' }],
-                    // A name match on "conversion" must outrank a PostHog body-only match.
+                    // A name match on "conversion" must outrank a Flind body-only match.
                     score: query.includes('conversion') ? 3300 : 900,
                 },
             ]),
@@ -242,8 +242,8 @@ describe('SkillCatalog and exec learn', () => {
             truncated: false,
             skills: ['project:team-conventions'],
         })
-        // Regression guard: the name-matching project skill outranks PostHog's `funnels`,
-        // which only matches on description/body — the old code always ordered PostHog first.
+        // Regression guard: the name-matching project skill outranks Flind's `funnels`,
+        // which only matches on description/body — the old code always ordered Flind first.
         expect(ranked.indexOf('## project:conversion-playbook')).toBeLessThan(ranked.indexOf('## posthog:funnels'))
         expect(ranked.indexOf('## posthog:funnels')).toBeGreaterThan(-1)
         expect(unicodeResult).toContain('## posthog:retention-analysis')

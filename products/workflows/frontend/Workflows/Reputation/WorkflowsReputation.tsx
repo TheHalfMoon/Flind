@@ -384,7 +384,7 @@ function SendingAllowanceCard({ allowance }: { allowance: EmailSendingAllowanceA
         <div className="border rounded p-4 bg-surface-primary" data-attr="workflows-sending-allowance">
             <div className="flex items-center gap-2">
                 <h3 className="mb-0">Sending allowance</h3>
-                <Tooltip title="Every project shares PostHog's sending infrastructure, so allowances start small and grow with a clean sending record.">
+                <Tooltip title="Every project shares Flind's sending infrastructure, so allowances start small and grow with a clean sending record.">
                     <LemonTag type="muted">
                         Tier {allowance.tier} of {allowance.max_tier}
                     </LemonTag>

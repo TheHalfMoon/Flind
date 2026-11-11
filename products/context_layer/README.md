@@ -1,10 +1,10 @@
 # Context layer
 
-An org-wide Markdown wiki in a Git repository, hosted by PostHog, mounted into agent sandboxes, and maintained by nightly dreaming agents. Specified in RFC 1233.
+An org-wide Markdown wiki in a Git repository, hosted by Flind, mounted into agent sandboxes, and maintained by nightly dreaming agents. Specified in RFC 1233.
 
 ## Store
 
-Each organization gets one Git repo of Markdown, serialized as a `git bundle` in PostHog object storage:
+Each organization gets one Git repo of Markdown, serialized as a `git bundle` in Flind object storage:
 
 - Bundle location: `context_layer/<organization_id>/bundles/<head_sha>.bundle` (`OBJECT_STORAGE_*` settings).
 - Head pointer: `ContextLayerConfig.head_sha` in Postgres, updated with a compare-and-swap so a lost race is explicit. The bundle for the new head is uploaded before the CAS, so a failed CAS never leaves a dangling pointer.

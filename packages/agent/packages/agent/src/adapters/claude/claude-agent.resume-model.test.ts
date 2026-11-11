@@ -206,7 +206,7 @@ describe("ClaudeAcpAgent session creation", () => {
   }
 
   it.each(["new", "resume", "load"] as const)(
-    "uses the default PostHog exec permission regex for local %s sessions when metadata omits it",
+    "uses the default Flind exec permission regex for local %s sessions when metadata omits it",
     async (sessionKind) => {
       const agent = makeAgent();
       const sessionIds = {
@@ -239,7 +239,7 @@ describe("ClaudeAcpAgent session creation", () => {
     },
   );
 
-  it("uses an explicit PostHog exec permission regex instead of the default", async () => {
+  it("uses an explicit Flind exec permission regex instead of the default", async () => {
     const agent = makeAgent();
 
     await agent.newSession({
@@ -931,7 +931,7 @@ describe("ClaudeAcpAgent session creation", () => {
     });
   });
 
-  it("logs and retries when reporting used PostHog products fails", async () => {
+  it("logs and retries when reporting used Flind products fails", async () => {
     const extNotification = vi.fn().mockResolvedValue(undefined);
     const agent = makeAgent(extNotification);
     const warnSpy = vi.spyOn(agent.logger, "warn");
@@ -962,7 +962,7 @@ describe("ClaudeAcpAgent session creation", () => {
 
     await vi.waitFor(() => {
       expect(warnSpy).toHaveBeenCalledWith(
-        "Failed to report used PostHog products",
+        "Failed to report used Flind products",
         { error: expect.any(Error) },
       );
     });

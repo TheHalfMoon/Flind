@@ -53,7 +53,7 @@ class MixMaxSource(ResumableSource[MixMaxSourceConfig, MixmaxResumeConfig]):
             releaseStatus=ReleaseStatus.BETA,
             # Kept hidden while the source lands without live-API credential verification; flip off
             # (delete this) once it has synced end-to-end against a real Mixmax workspace.
-            caption="""Enter your Mixmax API token to sync your Mixmax data into the PostHog Data warehouse.
+            caption="""Enter your Mixmax API token to sync your Mixmax data into the Flind Data warehouse.
 
 Create an API token under **Settings ▸ Integrations ▸ API** in Mixmax. The token is scoped to the user that creates it, so it can only sync data that user can access.
 

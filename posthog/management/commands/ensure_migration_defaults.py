@@ -23,7 +23,7 @@ from products.growth.backend.models import EnrichmentPromptConfig
 # products/streamlit_apps/backend/migrations/0002_seed_streamlit_oauth_app.py.
 # Folded into the squash, so a fresh DB needs this seed to keep the
 # Streamlit Apps token-minting path working.
-_STREAMLIT_OAUTH_APP_NAME = "PostHog Streamlit Apps"
+_STREAMLIT_OAUTH_APP_NAME = "Flind Streamlit Apps"
 _STREAMLIT_OAUTH_CLIENT_ID = "posthog-streamlit-apps-first-party"
 
 # Default theme colors originally seeded by migration 0537. Inlined (not
@@ -52,7 +52,7 @@ _DEFAULT_THEME_COLORS: list[str] = [
 # enrichment commands to run. Iteration happens via new EnrichmentPromptConfig
 # rows in Django admin, never by editing this seed.
 _AI_PILLED_CLAY_V1_PROMPT = """\
-You classify whether a company is an "AI-pilled software team" from a signup email domain, for PostHog onboarding routing.
+You classify whether a company is an "AI-pilled software team" from a signup email domain, for Flind onboarding routing.
 AI-pilled = a company that builds software as its product, ships AI-first, uses modern AI dev tools, and has or is chasing real revenue or venture funding. This INCLUDES startups in any vertical (fintech, ops, healthcare, legal, recruiting, etc.) as long as they build their own software with an engineering team. Think YC-to-IPO startups and dev/AI companies (e.g. Supabase, ElevenLabs, Ramp, Mercury, Vercel).
 NOT ai-pilled = companies that don't build software as their core product: traditional/non-tech businesses, agencies, consultancies, brick-and-mortar, and large non-technical enterprises. Also hobbyists and generic free-email signups (gmail.com, outlook.com, etc.) where the company is unknown.
 Do NOT disqualify a company just because its industry is finance, ops, or recruiting. Judge on "do they build software with engineers," not the vertical.

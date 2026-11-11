@@ -246,7 +246,7 @@ describe("AgentAuthAdapter", () => {
     });
   });
 
-  it("builds the default PostHog MCP server routed through the local proxy", async () => {
+  it("builds the default Flind MCP server routed through the local proxy", async () => {
     const { servers } = await adapter.buildMcpServers(baseCredentials);
 
     expect(deps.mcpProxy.register).toHaveBeenCalledWith(
@@ -268,7 +268,7 @@ describe("AgentAuthAdapter", () => {
   });
 
   it.each(["https://app.dev.posthog.dev", "https://app.dev.posthog.dev."])(
-    "routes %s to the dev PostHog MCP",
+    "routes %s to the dev Flind MCP",
     async (apiHost) => {
       await adapter.buildMcpServers({ ...baseCredentials, apiHost });
 
@@ -279,7 +279,7 @@ describe("AgentAuthAdapter", () => {
     },
   );
 
-  it("gives a custom instance no PostHog MCP server", async () => {
+  it("gives a custom instance no Flind MCP server", async () => {
     configureCustomCloud({
       url: "https://posthog.example.com",
       oauthClientId: "client-id",
@@ -363,7 +363,7 @@ describe("AgentAuthAdapter", () => {
     expect(deps.mcpProxy.register).toHaveBeenCalledWith(
       "installation-inst-2",
       "https://proxy.posthog.com/inst-2/",
-      // An auth failure here is about the vendor's credential, not the user's PostHog token.
+      // An auth failure here is about the vendor's credential, not the user's Flind token.
       { credentialOwner: "installation" },
     );
     expect(servers).toEqual(

@@ -1,6 +1,6 @@
 ---
 name: improving-drf-endpoints
-description: Use when editing, reviewing, or auditing DRF viewsets and serializers in PostHog. Triggers on files in posthog/api/, products/*/backend/api/, products/*/backend/presentation/, or any file importing rest_framework. Covers field typing, schema annotations, enum collision fixes, and OpenAPI spec quality — everything that flows downstream into generated TypeScript types and MCP tools.
+description: Use when editing, reviewing, or auditing DRF viewsets and serializers in Flind. Triggers on files in posthog/api/, products/*/backend/api/, products/*/backend/presentation/, or any file importing rest_framework. Covers field typing, schema annotations, enum collision fixes, and OpenAPI spec quality — everything that flows downstream into generated TypeScript types and MCP tools.
 ---
 
 # Improving DRF Endpoints
@@ -9,7 +9,7 @@ Before you propose a contract test against the generated OpenAPI schema, check [
 
 ## Overview
 
-Serializer fields are the source of truth for PostHog's entire type pipeline:
+Serializer fields are the source of truth for Flind's entire type pipeline:
 
 ```text
 Django serializer → drf-spectacular → OpenAPI JSON → Orval → Zod schemas → MCP tools
@@ -77,7 +77,7 @@ See [viewset-annotations.md](references/viewset-annotations.md) for patterns and
 
 ### URL routing — where to register new team-nested endpoints
 
-PostHog briefly split projects and environments as separate concepts then rolled
+Flind briefly split projects and environments as separate concepts then rolled
 the split back. **`/api/projects/:team_id/...` is the canonical path** for any
 team-nested endpoint. `/api/environments/:team_id/...` is a backward-compat alias
 preserved only for clients that integrated against it during the split.

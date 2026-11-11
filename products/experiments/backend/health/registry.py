@@ -153,7 +153,7 @@ EXPERIMENT_HEALTH_CHECKS: tuple[HealthCheck, ...] = (
         key=ExperimentHealthCheckKey.FLAG_VARIANTS_MISMATCH,
         name="Flag variants not set up",
         description=(
-            "Checks that the feature flag has the experiment's variants, including the baseline. Without them, PostHog "
+            "Checks that the feature flag has the experiment's variants, including the baseline. Without them, Flind "
             "can't assign users to the variants or compare the variants with the baseline."
         ),
         run=flag_variants_mismatch,
@@ -171,7 +171,7 @@ EXPERIMENT_HEALTH_CHECKS: tuple[HealthCheck, ...] = (
         key=ExperimentHealthCheckKey.NEW_FLAG_NO_TRAFFIC,
         name="Flag calls not received yet",
         description=(
-            "Checks before launch that PostHog receives calls to the feature flag. The experiment counts users only "
+            "Checks before launch that Flind receives calls to the feature flag. The experiment counts users only "
             "after your code evaluates the flag, so a launch before then starts the running time without users."
         ),
         run=new_flag_no_traffic,

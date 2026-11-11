@@ -1,7 +1,7 @@
-"""Vendor-neutral shapes for importing a Fivetran (later Airbyte) account into PostHog.
+"""Vendor-neutral shapes for importing a Fivetran (later Airbyte) account into Flind.
 
 A `VendorSnapshot` is what we read from the vendor, with every secret already removed.
-An `ItemProposal` is what we plan to create in PostHog for one vendor connection.
+An `ItemProposal` is what we plan to create in Flind for one vendor connection.
 """
 
 from collections.abc import Mapping
@@ -143,7 +143,7 @@ class ProposedRowFilter:
 class ProposedSchema:
     name: str
     should_sync: bool
-    # None means the PostHog default for the table.
+    # None means the Flind default for the table.
     sync_type: ExternalDataSchemaSyncType | None
     disabled_columns: tuple[str, ...] = ()
     row_filters: tuple[ProposedRowFilter, ...] = ()
@@ -164,7 +164,7 @@ class ProposedDestination:
     # An `ExternalDataDestination.Type` value.
     type: str
     config: Mapping[str, Any]
-    # The schemas Fivetran writes this connection into. The PostHog destination should use another one.
+    # The schemas Fivetran writes this connection into. The Flind destination should use another one.
     vendor_schemas: tuple[str, ...] = ()
 
 
@@ -172,9 +172,9 @@ class ProposedDestination:
 class ItemProposal:
     source_type: ExternalDataSourceType
     prefix: str
-    # Non-secret source config, keyed by PostHog payload field name.
+    # Non-secret source config, keyed by Flind payload field name.
     prefill: Mapping[str, Any]
-    # None means Fivetran gave no table list, so PostHog uses its default tables.
+    # None means Fivetran gave no table list, so Flind uses its default tables.
     # An empty tuple means no Fivetran table moves over, so every table starts off.
     schemas: tuple[ProposedSchema, ...] | None
     sync_frequency: PostHogSyncFrequency
@@ -185,9 +185,9 @@ class ItemProposal:
     start_paused: bool = False
     # Tables a naming rule paired, which the user should confirm.
     inferred_tables: tuple[TablePair, ...] = ()
-    # Fivetran tables with no PostHog table. The user can map one to a PostHog table at apply.
+    # Fivetran tables with no Flind table. The user can map one to a Flind table at apply.
     unmatched_tables: tuple[str, ...] = ()
-    # The source's PostHog tables that no Fivetran table maps to, to choose from for the unmatched ones.
+    # The source's Flind tables that no Fivetran table maps to, to choose from for the unmatched ones.
     unused_posthog_tables: tuple[str, ...] = ()
 
     def to_json(self) -> dict[str, Any]:

@@ -56,7 +56,7 @@ export function SDKInstallReactInstructions({ hideWizard }: { hideWizard?: boole
             <ReactEnvVarsSnippet />
             <h3>Initialize</h3>
             <p>
-                Integrate PostHog at the root of your app (such as <code>main.tsx</code> if you're using Vite).
+                Integrate Flind at the root of your app (such as <code>main.tsx</code> if you're using Vite).
             </p>
             <ReactSetupSnippet />
         </>

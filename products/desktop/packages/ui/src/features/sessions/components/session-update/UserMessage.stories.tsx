@@ -66,14 +66,14 @@ export const Typed: Story = {
 export const OnboardingBrief: Story = {
   args: {
     content:
-      "<onboarding_brief>\nWrite the first message someone sees in PostHog Desktop.\n</onboarding_brief>",
+      "<onboarding_brief>\nWrite the first message someone sees in Flind Desktop.\n</onboarding_brief>",
     timestamp: FIXED_TIMESTAMP,
   },
 };
 
 const POSTHOG_CONTEXT_BLOCKS = [
   "<posthog_trusted_context>",
-  "- You are running alongside the PostHog app the user has open, and your PostHog MCP tool calls are how you act on it.",
+  "- You are running alongside the Flind app the user has open, and your Flind MCP tool calls are how you act on it.",
   "</posthog_trusted_context>",
   "<posthog_untrusted_context>",
   "The user is currently looking at the resources below.",

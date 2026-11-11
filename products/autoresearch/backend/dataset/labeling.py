@@ -334,7 +334,7 @@ def _compile_filter_operator(field_expr: str, operator: str, value: Any, *, key:
 
 def _compile_population_filters(properties: list[dict[str, Any]]) -> _CompiledPopulationFilters:
     """
-    Translate a list of PostHog property filter dicts into HogQL condition
+    Translate a list of Flind property filter dicts into HogQL condition
     strings and a values dict for parameterized binding.
 
     Property types:
@@ -346,7 +346,7 @@ def _compile_population_filters(properties: list[dict[str, Any]]) -> _CompiledPo
 
     The property key is bound as a HogQL value (a parameterized subscript,
     ``properties[{param}]``) rather than interpolated into the query text, so any
-    key — including PostHog system properties like ``$browser`` — is safe without
+    key — including Flind system properties like ``$browser`` — is safe without
     an allowlist. A filter that cannot be compiled (a cohort filter, an unknown
     operator, a missing key or type, a non-numeric threshold) raises ValueError:
     skipping it would silently widen the population, and inference writes person

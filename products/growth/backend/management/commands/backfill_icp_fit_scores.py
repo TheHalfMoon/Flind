@@ -303,7 +303,7 @@ class Command(BaseCommand):
         lists = self._load_lists(options)
         pha_client = get_regional_ph_client()
         if pha_client is None:
-            raise CommandError("no PostHog client for this instance's region; refusing to backfill")
+            raise CommandError("no Flind client for this instance's region; refusing to backfill")
         stats = _Stats()
 
         fetches = recent_latest_fetches_qs().select_related("organization")

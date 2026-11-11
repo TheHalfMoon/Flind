@@ -360,7 +360,7 @@ class TestDestinationTableName(DeliveryTestCase):
 
     @parameterized.expand([("no trailing underscore", "eu"), ("trailing underscore", "eu_")])
     def test_a_source_prefix_sits_between_the_type_and_the_table(self, _name: str, prefix: str) -> None:
-        # Two Stripe accounts are told apart by prefix in PostHog, so they must be told apart in
+        # Two Stripe accounts are told apart by prefix in Flind, so they must be told apart in
         # the customer's database too rather than both landing on `stripe_charge`. The warehouse
         # would glue this into `eu_stripe_charge`; separated, it reads as type, source, table.
         schema = self._schema_for("Stripe", prefix, "Charge")

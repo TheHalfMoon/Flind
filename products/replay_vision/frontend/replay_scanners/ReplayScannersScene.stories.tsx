@@ -2078,7 +2078,7 @@ const summarizeButtonObservationDetail = observation({
 
 export const ObservationDetailSummarizeButton: StoryObj = observationDetailStory(summarizeButtonObservationDetail)
 
-// A one-off scan asked through PostHog AI or MCP: an inline scanner with its own prompt and no written question.
+// A one-off scan asked through Flind AI or MCP: an inline scanner with its own prompt and no written question.
 const inlineScanObservationDetail = observation({
     ...monitorObservationDetail,
     id: '00000000-0000-0000-0000-0000000000db',

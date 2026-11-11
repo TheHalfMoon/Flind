@@ -65,4 +65,4 @@ CANVAS_STATE_SCOPES = CanvasStateScope.values
 CANVAS_BUILD_STATUS_READY = "ready"
 CANVAS_BUILD_STATUS_FAILED = "failed"
 
-TEACHING_CANVAS_NAME = "Explore PostHog Desktop"
+TEACHING_CANVAS_NAME = "Explore Flind Desktop"

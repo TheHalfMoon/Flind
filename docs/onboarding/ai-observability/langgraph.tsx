@@ -22,7 +22,7 @@ export const getLangGraphSteps = (ctx: OnboardingComponentsContext): StepDefinit
                         </Markdown>
                     </CalloutBox>
 
-                    <Markdown>Install the PostHog SDK and LangGraph with OpenAI.</Markdown>
+                    <Markdown>Install the Flind SDK and LangGraph with OpenAI.</Markdown>
 
                     <CodeBlock
                         blocks={[
@@ -46,13 +46,13 @@ export const getLangGraphSteps = (ctx: OnboardingComponentsContext): StepDefinit
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                        Create a PostHog client once, then build a callback handler for each request or
+                        Create a Flind client once, then build a callback handler for each request or
                         conversation. \`distinct_id\` ties each call to a user, and \`$ai_session_id\` groups calls in one conversation.
                     `}
                     </Markdown>
@@ -80,10 +80,10 @@ export const getLangGraphSteps = (ctx: OnboardingComponentsContext): StepDefinit
                                 language: 'typescript',
                                 file: 'Node',
                                 code: dedent`
-                                import { PostHog } from 'posthog-node'
+                                import { Flind } from 'posthog-node'
                                 import { LangChainCallbackHandler } from '@posthog/ai/langchain'
 
-                                const posthog = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' })
+                                const posthog = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' })
 
                                 function createHandler(userId: string, sessionId: string): LangChainCallbackHandler {
                                   return new LangChainCallbackHandler({
@@ -116,7 +116,7 @@ export const getLangGraphSteps = (ctx: OnboardingComponentsContext): StepDefinit
                         {dedent`
                             Attach the handler through \`config\` when you invoke the graph, inside the function
                             that handles a turn. Because \`create_react_agent\` runs the turn as a single root
-                            run, PostHog nests each tool call as an \`$ai_span\` under the trace automatically,
+                            run, Flind nests each tool call as an \`$ai_span\` under the trace automatically,
                             with real latency.
                         `}
                     </Markdown>
@@ -189,7 +189,7 @@ export const getLangGraphSteps = (ctx: OnboardingComponentsContext): StepDefinit
                     />
 
                     <Markdown>
-                        PostHog automatically captures an `$ai_generation` event along with these properties:
+                        Flind automatically captures an `$ai_generation` event along with these properties:
                     </Markdown>
 
                     {NotableGenerationProperties && <NotableGenerationProperties />}
@@ -199,7 +199,7 @@ export const getLangGraphSteps = (ctx: OnboardingComponentsContext): StepDefinit
                             The handler also builds a trace hierarchy automatically based on how you structure
                             your graph. Pass the same \`$ai_session_id\` to every handler you construct for a
                             conversation, to group its calls into one session. Pass \`trace_id\`/\`traceId\`
-                            too, to control the top-level trace ID instead of letting PostHog generate one.
+                            too, to control the top-level trace ID instead of letting Flind generate one.
                         `}
                     </Markdown>
                 </>

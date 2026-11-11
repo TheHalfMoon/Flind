@@ -256,7 +256,7 @@ const WebAnalyticsAIFilters = ({ children }: { children: JSX.Element }): JSX.Ele
         },
     })
 
-    // Register the tool so PostHog AI can still drive web analytics filters, but render no button:
+    // Register the tool so Flind AI can still drive web analytics filters, but render no button:
     // the deprecated floating MaxTool "+" cluttered the filter bar. The scene's other tools
     // (web_analytics_doctor, assess_heatmap, summarize_website_interactions) also register hook-only.
     useMaxTool({

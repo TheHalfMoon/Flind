@@ -145,7 +145,7 @@ export function preparePairs(pairs: SourcePair[], mode: ReleaseMode): PreparedPa
         if (pair.chunkId() === null && pair.debugId() === null) {
             skipped.push({
                 path: pair.sourcePath,
-                reason: 'no PostHog chunk ID or native debug ID. Run `hog error-tracking inject` first.',
+                reason: 'no Flind chunk ID or native debug ID. Run `hog error-tracking inject` first.',
             })
             continue
         }

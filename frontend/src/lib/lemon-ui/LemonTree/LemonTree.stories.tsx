@@ -201,7 +201,7 @@ const meta: Meta<LemonTreeProps> = {
         const ref = useRef<HTMLDivElement>(null)
         return (
             <div className="deprecated-space-y-4">
-                <Link to="https://posthog.com">PostHog</Link>
+                <Link to="https://posthog.com">Flind</Link>
                 <div className="deprecated-space-y-1">
                     <p>
                         Keyboard navigation: when focused inside the tree, try [up] [right] [down] [left] [enter] [home]

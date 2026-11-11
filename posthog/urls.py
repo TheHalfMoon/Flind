@@ -407,7 +407,7 @@ urlpatterns = [
     re_path("organization/confirm-creation", home),
     re_path("login", home),
     re_path("unsubscribe", home),
-    # Public bridges for desktop-app share links — deep-link into PostHog Desktop.
+    # Public bridges for desktop-app share links — deep-link into Flind Desktop.
     re_path(r"code/canvas/[^/]+/[^/]+", home),
     re_path(r"code/task/[^/]+", home),
     re_path("verify_email", home),

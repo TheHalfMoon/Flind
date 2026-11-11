@@ -288,7 +288,7 @@ class SentryPaginator(BasePaginator):
 # wording never interpolates the org, URL, or response body, so it stays safe for error tracking —
 # a raw `raise_for_status()` HTTPError would leak the org slug in its URL.
 SENTRY_RATE_LIMITED_MESSAGE = (
-    "Sentry rate-limited PostHog's API requests (HTTP 429) and the limit did not clear within the "
+    "Sentry rate-limited Flind's API requests (HTTP 429) and the limit did not clear within the "
     "retry window. This is temporary and the next scheduled sync retries automatically."
 )
 
@@ -954,7 +954,7 @@ _NO_PROJECTS_AVAILABLE_DETAIL = "No projects available"
 # org, URL, or response body, and it names no cause: the reason Sentry gives is logged at the
 # raise site instead, because a guess here reads to a support engineer as a finding.
 STATS_SUMMARY_REJECTED_MESSAGE = (
-    "Sentry rejected PostHog's request for your per-project usage stats (the "
+    "Sentry rejected Flind's request for your per-project usage stats (the "
     "organization_stats_summary table) with an HTTP 400. Remove that table from this source's "
     "selected tables, then re-enable the sync."
 )
@@ -969,7 +969,7 @@ class SentryStatsSummaryRejectedError(Exception):
 # still lands outside it and Sentry 400s. The wording never interpolates the org, URL, or response
 # body.
 SESSIONS_REJECTED_MESSAGE = (
-    "Sentry rejected PostHog's request for your release health data (the sessions table) with an "
+    "Sentry rejected Flind's request for your release health data (the sessions table) with an "
     "HTTP 400. This usually means the requested date range is outside your Sentry plan's session "
     "data retention. Remove that table from this source's selected tables, then re-enable the sync."
 )

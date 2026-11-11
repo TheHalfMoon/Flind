@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - core
+ * Flind API - core
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -57,7 +57,7 @@ export const OauthDeviceLookupCreateBody = /* @__PURE__ */ zod.object({
  *
  * A partner embeds the plaintext token in their CIMD metadata document as
  * `verification_token` inside the `com.posthog` object (the legacy top-level
- * `posthog_verification_token` field still works as a fallback). When PostHog fetches
+ * `posthog_verification_token` field still works as a fallback). When Flind fetches
  * the metadata, matching the token links the partner app to this organization and
  * grants a higher default rate limit for account provisioning.
  *
@@ -94,7 +94,7 @@ export const CimdVerificationTokensCreateBody = /* @__PURE__ */ zod
  *
  * A partner embeds the plaintext token in their CIMD metadata document as
  * `verification_token` inside the `com.posthog` object (the legacy top-level
- * `posthog_verification_token` field still works as a fallback). When PostHog fetches
+ * `posthog_verification_token` field still works as a fallback). When Flind fetches
  * the metadata, matching the token links the partner app to this organization and
  * grants a higher default rate limit for account provisioning.
  *
@@ -543,7 +543,7 @@ export const InvitesDelegateCreateBody = /* @__PURE__ */ zod.object({
     target_email: zod
         .email()
         .describe(
-            "Email of the teammate who should complete setup on the inviter's behalf. Receives a PostHog-branded delegation invite granting admin-level membership on accept."
+            "Email of the teammate who should complete setup on the inviter's behalf. Receives a Flind-branded delegation invite granting admin-level membership on accept."
         ),
     message: zod
         .string()
@@ -1513,10 +1513,10 @@ export const WorkloadTrustPolicyRequestsCreateBody = /* @__PURE__ */ zod.object(
 })
 
 /**
- * Public, unauthenticated endpoint for self-service revocation of a leaked PostHog personal API key, project secret API key, legacy feature flags secure API key, or OAuth access/refresh token. If the token matches a real credential, it is revoked immediately and the owner is notified by email. This includes an expired OAuth access token: the paired refresh token it protects may still be live. A legacy feature flags secure API key is matched through its migrated project secret API key row; it cannot be rotated automatically, so its project admins get an email to rotate it.
+ * Public, unauthenticated endpoint for self-service revocation of a leaked Flind personal API key, project secret API key, legacy feature flags secure API key, or OAuth access/refresh token. If the token matches a real credential, it is revoked immediately and the owner is notified by email. This includes an expired OAuth access token: the paired refresh token it protects may still be live. A legacy feature flags secure API key is matched through its migrated project secret API key row; it cannot be rotated automatically, so its project admins get an email to rotate it.
  *
  * This endpoint only checks the region it is running on. `"found": false` does not guarantee the token is safe. If you're not sure which region issued it, check both: https://app.posthog.com/api/revoke_leaked_key and https://eu.posthog.com/api/revoke_leaked_key.
- * @summary Report and revoke a leaked PostHog API key or token
+ * @summary Report and revoke a leaked Flind API key or token
  */
 export const revokeLeakedKeyCreateBodyTokenMax = 200
 
@@ -1525,7 +1525,7 @@ export const RevokeLeakedKeyCreateBody = /* @__PURE__ */ zod.object({
         .string()
         .max(revokeLeakedKeyCreateBodyTokenMax)
         .describe(
-            'The leaked PostHog personal API key, project secret API key, legacy feature flags secure API key, or OAuth access\/refresh token to revoke.'
+            'The leaked Flind personal API key, project secret API key, legacy feature flags secure API key, or OAuth access\/refresh token to revoke.'
         ),
 })
 
@@ -1553,7 +1553,7 @@ export const UsersUpdateBody = /* @__PURE__ */ zod.object({
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -1610,7 +1610,7 @@ export const UsersUpdateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()
@@ -1644,7 +1644,7 @@ export const UsersPartialUpdateBody = /* @__PURE__ */ zod.object({
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -1701,7 +1701,7 @@ export const UsersPartialUpdateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()
@@ -1732,7 +1732,7 @@ export const UsersHedgehogConfigPartialUpdateBody = /* @__PURE__ */ zod.object({
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -1789,7 +1789,7 @@ export const UsersHedgehogConfigPartialUpdateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()
@@ -1800,7 +1800,7 @@ export const UsersHedgehogConfigPartialUpdateBody = /* @__PURE__ */ zod.object({
 })
 
 /**
- * Submit the `tokens` object of the `auth.json` that `codex login` wrote on the user's machine. PostHog refreshes the chain once to prove it works, stores the rotated tokens encrypted, and from then on refreshes them for the user's Codex cloud runs. Only the owning user can connect. No response carries a token.
+ * Submit the `tokens` object of the `auth.json` that `codex login` wrote on the user's machine. Flind refreshes the chain once to prove it works, stores the rotated tokens encrypted, and from then on refreshes them for the user's Codex cloud runs. Only the owning user can connect. No response carries a token.
  * @summary Connect a ChatGPT account for Codex cloud tasks
  */
 export const UsersIntegrationsCodexCreateBody = /* @__PURE__ */ zod.object({
@@ -1818,7 +1818,7 @@ export const UsersIntegrationsCodexCreateBody = /* @__PURE__ */ zod.object({
                 ),
         })
         .describe(
-            'The `tokens` object of the `auth.json` that `codex login` wrote. PostHog refreshes the chain once, stores the rotated tokens, and refreshes them for cloud runs from then on.'
+            'The `tokens` object of the `auth.json` that `codex login` wrote. Flind refreshes the chain once, stores the rotated tokens, and refreshes them for cloud runs from then on.'
         ),
 })
 
@@ -1855,7 +1855,7 @@ export const UsersIntegrationsGithubStartCreateBody = /* @__PURE__ */ zod.object
     team_id: zod
         .number()
         .nullish()
-        .describe("Optional team\/project id (e.g. PostHog Desktop); web UI uses the session's current team."),
+        .describe("Optional team\/project id (e.g. Flind Desktop); web UI uses the session's current team."),
     connect_from: zod
         .string()
         .optional()
@@ -1864,7 +1864,7 @@ export const UsersIntegrationsGithubStartCreateBody = /* @__PURE__ */ zod.object
 
 /**
  * Mint a Sign-in-with-Slack invite URL initiated from settings, without
- * Slack-DM context. The returned URL takes the user through PostHog login
+ * Slack-DM context. The returned URL takes the user through Flind login
  * (already satisfied here), then to Slack OAuth, then back to our callback
  * which writes the ``UserIntegration`` row.
  *
@@ -1892,7 +1892,7 @@ export const UsersIntegrationsSlackStartCreateBody = /* @__PURE__ */ zod
             ),
     })
     .describe(
-        "Settings-initiated link can target a specific PostHog team + Slack workspace.\n\nBoth are optional — when omitted we fall back to the user's ``current_team``\nand that team's first Slack ``Integration`` (mirrors ``github_start`` for\nthe simple case). The frontend passes both explicitly once it has the\nlinkable-workspace list and the user has picked a workspace."
+        "Settings-initiated link can target a specific Flind team + Slack workspace.\n\nBoth are optional — when omitted we fall back to the user's ``current_team``\nand that team's first Slack ``Integration`` (mirrors ``github_start`` for\nthe simple case). The frontend passes both explicitly once it has the\nlinkable-workspace list and the user has picked a workspace."
     )
 
 /**
@@ -2008,7 +2008,7 @@ export const UsersScenePersonalisationCreateBody = /* @__PURE__ */ zod.object({
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -2065,7 +2065,7 @@ export const UsersScenePersonalisationCreateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()
@@ -2099,7 +2099,7 @@ export const UsersTwoFactorBackupCodesCreateBody = /* @__PURE__ */ zod.object({
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -2156,7 +2156,7 @@ export const UsersTwoFactorBackupCodesCreateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()
@@ -2190,7 +2190,7 @@ export const UsersTwoFactorDisableCreateBody = /* @__PURE__ */ zod.object({
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -2247,7 +2247,7 @@ export const UsersTwoFactorDisableCreateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()
@@ -2278,7 +2278,7 @@ export const UsersTwoFactorValidateCreateBody = /* @__PURE__ */ zod.object({
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -2335,7 +2335,7 @@ export const UsersTwoFactorValidateCreateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()
@@ -2366,7 +2366,7 @@ export const UsersValidate2faCreateBody = /* @__PURE__ */ zod.object({
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -2423,7 +2423,7 @@ export const UsersValidate2faCreateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()
@@ -2454,7 +2454,7 @@ export const UsersCancelEmailChangeRequestPartialUpdateBody = /* @__PURE__ */ zo
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -2511,7 +2511,7 @@ export const UsersCancelEmailChangeRequestPartialUpdateBody = /* @__PURE__ */ zo
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()
@@ -2542,7 +2542,7 @@ export const UsersRequestEmailVerificationCreateBody = /* @__PURE__ */ zod.objec
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -2599,7 +2599,7 @@ export const UsersRequestEmailVerificationCreateBody = /* @__PURE__ */ zod.objec
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()

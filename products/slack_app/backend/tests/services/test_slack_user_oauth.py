@@ -90,7 +90,7 @@ class TestFindLinkedPosthogUser:
 
     def test_multiple_linked_users_returns_most_recent_accessible(self, org_team_user, link_user):
         org, _, first_user = org_team_user
-        # Two PostHog accounts in the same org, both linked to the same Slack identity.
+        # Two Flind accounts in the same org, both linked to the same Slack identity.
         # The DB allows this; the resolver tiebreaks deterministically on
         # `-created_at` (most recently linked wins).
         second_user = User.objects.create(email="dev2@example.com", distinct_id="user-2")

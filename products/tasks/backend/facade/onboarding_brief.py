@@ -9,7 +9,7 @@ from products.tasks.backend.facade.onboarding_canvas import TEACHING_CANVAS_NAME
 
 TOP_OF_MIND = "Ask what's top of mind."
 
-WELCOME_LINE = "Open with: Welcome to PostHog Desktop."
+WELCOME_LINE = "Open with: Welcome to Flind Desktop."
 
 NO_RESEARCH_QUESTION = (
     "Ask one real question so you can be useful rather than generic: what are they working on right now?"
@@ -17,7 +17,7 @@ NO_RESEARCH_QUESTION = (
 
 NOTHING_YET = (
     "Say nothing has come up yet, then ask what they want to dig into. Their data is already in "
-    "PostHog, so say you can go after most of what they might name."
+    "Flind, so say you can go after most of what they might name."
 )
 
 SAVE_CONTEXT = (
@@ -26,8 +26,8 @@ SAVE_CONTEXT = (
 )
 
 NO_DATA_YET = (
-    "Their project has nothing flowing into PostHog yet, so anything you might look at does not "
-    "exist. Adding PostHog is the only real offer. This app ships a skill for it, so offer a "
+    "Their project has nothing flowing into Flind yet, so anything you might look at does not "
+    "exist. Adding Flind is the only real offer. This app ships a skill for it, so offer a "
     "composer prefilled with `/instrument-product-analytics`. Do not manufacture another offer."
 )
 
@@ -35,7 +35,7 @@ HAS_DATA = "Their project has data flowing, so whatever they name is something y
 
 # This offer ends on its own question, so it is the message's closing ask and nothing follows it.
 INSTRUMENT_OFFER = (
-    "Offer to add PostHog to their codebase and open a pull request for them to review, "
+    "Offer to add Flind to their codebase and open a pull request for them to review, "
     "and ask which repository to add it to. Make it something they accept, not something "
     "you have started. End on that question."
 )
@@ -104,7 +104,7 @@ def _status_line(facts: OnboardingFacts) -> str | None:
     if facts.signal_reports_waiting:
         return _findings_line(facts)
     if not facts.has_events:
-        return "Say plainly that no PostHog data is arriving yet, because nothing is connected to send it."
+        return "Say plainly that no Flind data is arriving yet, because nothing is connected to send it."
     if facts.sources_newly_enabled:
         # Every watch gets named. A count of the tail reads as something withheld, and the product
         # names these sources carry elsewhere ("error tracking") do not tell a first-time reader what
@@ -113,13 +113,13 @@ def _status_line(facts: OnboardingFacts) -> str | None:
         if not watching:
             return None
         return (
-            f"Tell them PostHog is now watching this project for {watching}. Name every one of "
+            f"Tell them Flind is now watching this project for {watching}. Name every one of "
             f"those. Then say anything it finds gets written up in {_WHERE}."
         )
     enabled = prose_list(facts.sources_enabled, limit=_NAMED_SOURCE_LIMIT)
     if not enabled:
         return None
-    return f"Tell them PostHog is already watching {enabled}. Then say the write-ups land in {_WHERE}."
+    return f"Tell them Flind is already watching {enabled}. Then say the write-ups land in {_WHERE}."
 
 
 def _closing_question(facts: OnboardingFacts, *, researched: bool) -> str:

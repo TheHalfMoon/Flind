@@ -888,7 +888,7 @@ class AssistantHogQLQuery(BaseModel):
     query: str = Field(
         ...,
         description=(
-            "SQL SELECT statement to execute. Mostly standard ClickHouse SQL with PostHog-specific additions."
+            "SQL SELECT statement to execute. Mostly standard ClickHouse SQL with Flind-specific additions."
         ),
     )
 
@@ -6158,7 +6158,7 @@ class ExperimentWarehouseNativeExposureConfig(BaseModel):
         ...,
         description=(
             "Read-only SQL in the warehouse's dialect, returning one row per exposure"
-            " with `entity_id`, `variant` and `timestamp` columns. PostHog keeps the"
+            " with `entity_id`, `variant` and `timestamp` columns. Flind keeps the"
             " first exposure per entity and applies the experiment's date range and"
             " multiple-variant handling."
         ),
@@ -27730,7 +27730,7 @@ class WebGoalsQuery(BaseModel):
         default=None,
         description=(
             "Opt this specific query into the web_goals_query precompute path. Requires"
-            " the `web-analytics-precompute-toggle` PostHog feature flag to be on for"
+            " the `web-analytics-precompute-toggle` Flind feature flag to be on for"
             " the team's organization for the gate to pass. *"
         ),
     )
@@ -27819,7 +27819,7 @@ class WebOverviewQuery(BaseModel):
         default=None,
         description=(
             "Opt this specific query into the web_overview_query precompute path."
-            " Requires the `web-analytics-precompute-toggle` PostHog feature flag to be"
+            " Requires the `web-analytics-precompute-toggle` Flind feature flag to be"
             " on for the team's organization for the gate to pass. *"
         ),
     )
@@ -27969,7 +27969,7 @@ class WebStatsTableQuery(BaseModel):
         default=None,
         description=(
             "Opt this specific query into the web stats table precompute path. Requires"
-            " the `web-analytics-precompute-toggle` PostHog feature flag to be on for"
+            " the `web-analytics-precompute-toggle` Flind feature flag to be on for"
             " the team's organization for the gate to pass. *"
         ),
     )
@@ -30016,7 +30016,7 @@ class ExperimentExposureQueryResponse(BaseModel):
         description=(
             "Exposed persons or groups by the SDK library (`$lib`) of their first"
             " exposure. A missing library reads as `$$_posthog_breakdown_null_$$`. Only"
-            " the libraries of PostHog's own SDKs keep their own key; any other value"
+            " the libraries of Flind's own SDKs keep their own key; any other value"
             " counts under `$$_posthog_breakdown_other_$$`. Absent when the exposures"
             " come from the precomputed table or from an activation event, which carry"
             " no library."
@@ -31650,7 +31650,7 @@ class QueryResponseAlternative20(BaseModel):
         description=(
             "Exposed persons or groups by the SDK library (`$lib`) of their first"
             " exposure. A missing library reads as `$$_posthog_breakdown_null_$$`. Only"
-            " the libraries of PostHog's own SDKs keep their own key; any other value"
+            " the libraries of Flind's own SDKs keep their own key; any other value"
             " counts under `$$_posthog_breakdown_other_$$`. Absent when the exposures"
             " come from the precomputed table or from an activation event, which carry"
             " no library."
@@ -32218,7 +32218,7 @@ class WebVitalsPathBreakdownQuery(BaseModel):
         default=None,
         description=(
             "Opt this specific query into the web vitals path breakdown precompute"
-            " path. Requires the `web-analytics-precompute-toggle` PostHog feature flag"
+            " path. Requires the `web-analytics-precompute-toggle` Flind feature flag"
             " to be on for the team's organization for the gate to pass. *"
         ),
     )
@@ -32499,7 +32499,7 @@ class CachedExperimentExposureQueryResponse(BaseModel):
         description=(
             "Exposed persons or groups by the SDK library (`$lib`) of their first"
             " exposure. A missing library reads as `$$_posthog_breakdown_null_$$`. Only"
-            " the libraries of PostHog's own SDKs keep their own key; any other value"
+            " the libraries of Flind's own SDKs keep their own key; any other value"
             " counts under `$$_posthog_breakdown_other_$$`. Absent when the exposures"
             " come from the precomputed table or from an activation event, which carry"
             " no library."
@@ -34578,7 +34578,7 @@ class DatabaseSchemaQuery(BaseModel):
     )
     executionTarget: ExecutionTarget | None = Field(
         default=None,
-        description=("Select the native managed Trino catalog instead of the default PostHog catalog."),
+        description=("Select the native managed Trino catalog instead of the default Flind catalog."),
     )
     includeFields: bool | None = Field(
         default=None,
@@ -36066,10 +36066,10 @@ class QueryRequest(BaseModel):
     ) = Field(
         ...,
         description=(
-            "Submit a JSON string representing a query for PostHog data analysis, for"
+            "Submit a JSON string representing a query for Flind data analysis, for"
             ' example a HogQL query.\n\nExample payload:\n\n```\n\n{"query": {"kind":'
             ' "HogQLQuery", "query": "select * from events limit 100"}}\n\n```\n\nFor'
-            " more details on HogQL queries, see the [PostHog HogQL"
+            " more details on HogQL queries, see the [Flind HogQL"
             " documentation](/docs/hogql#api-access)."
         ),
         discriminator="kind",

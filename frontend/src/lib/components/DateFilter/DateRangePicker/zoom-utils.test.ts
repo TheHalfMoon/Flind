@@ -28,7 +28,7 @@ describe('zoomDateRange', () => {
         })
 
         it('multiplies minute presets while preserving the live-tail (uppercase M)', () => {
-            // PostHog's minute presets use uppercase M (e.g. -5M); these must keep date_to: null
+            // Flind's minute presets use uppercase M (e.g. -5M); these must keep date_to: null
             expect(zoomDateRange({ date_from: '-5M', date_to: null }, 2)).toEqual({
                 date_from: '-10M',
                 date_to: null,

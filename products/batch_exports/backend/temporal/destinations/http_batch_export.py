@@ -259,11 +259,11 @@ async def insert_into_http_activity(inputs: HttpInsertInputs) -> BatchExportResu
         rows_exported = get_rows_exported_metric(model="events")
         bytes_exported = get_bytes_exported_metric(model="events")
 
-        # The HTTP destination currently only supports the PostHog batch capture endpoint. In the
+        # The HTTP destination currently only supports the Flind batch capture endpoint. In the
         # future we may support other endpoints, but we'll need a way to template the request body,
         # headers, etc.
         #
-        # For now, we write the batch out in PostHog capture format, which means each Batch Export
+        # For now, we write the batch out in Flind capture format, which means each Batch Export
         # temporary file starts with a header and ends with a footer.
         #
         # For example:
@@ -306,7 +306,7 @@ async def insert_into_http_activity(inputs: HttpInsertInputs) -> BatchExportResu
             async with aiohttp.ClientSession(trust_env=True) as session:
                 for record_batch in record_iterator:
                     for row in record_batch.select(columns).to_pylist():
-                        # Format result row as PostHog event, write JSON to the batch file.
+                        # Format result row as Flind event, write JSON to the batch file.
 
                         properties = row["properties"]
                         properties = json.loads(properties) if properties else {}

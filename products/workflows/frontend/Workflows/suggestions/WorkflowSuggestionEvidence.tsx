@@ -31,8 +31,8 @@ export function WorkflowSuggestionEvidence({ evidence }: { evidence: Record<stri
                         {measured.target.metric} {measuredValue ?? 'no data'} on {measured.target.n} tracked sends (v
                         {measured.version}, {describeWindow(measured.window)}){target ? `, target ${target}` : ''}
                     </span>
-                    <Tooltip title="PostHog read this step's metrics itself when the suggestion was filed.">
-                        <LemonTag type="success">Measured by PostHog</LemonTag>
+                    <Tooltip title="Flind read this step's metrics itself when the suggestion was filed.">
+                        <LemonTag type="success">Measured by Flind</LemonTag>
                     </Tooltip>
                     {measured.target.below_minimum_sample && (
                         <Tooltip
@@ -56,7 +56,7 @@ export function WorkflowSuggestionEvidence({ evidence }: { evidence: Record<stri
                 {evidenceDisagrees(evidence, measured) && (
                     <span className="text-warning">
                         This suggestion claimed {current ?? 'no value'}
-                        {sample !== null ? ` on ${sample}` : ''}, which is not what PostHog measured. Read its reasoning
+                        {sample !== null ? ` on ${sample}` : ''}, which is not what Flind measured. Read its reasoning
                         with that in mind.
                     </span>
                 )}
@@ -76,7 +76,7 @@ export function WorkflowSuggestionEvidence({ evidence }: { evidence: Record<stri
                     {window ? ` over ${window}` : ''}
                     {sample !== null ? ` (${sample} observations)` : ''}
                 </span>
-                <Tooltip title="These numbers came from the producer. PostHog could not read the step's metrics when this was filed, so check them on the Metrics tab before deciding.">
+                <Tooltip title="These numbers came from the producer. Flind could not read the step's metrics when this was filed, so check them on the Metrics tab before deciding.">
                     <LemonTag type="warning">Unverified</LemonTag>
                 </Tooltip>
                 {sample === null && (

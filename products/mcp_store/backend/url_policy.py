@@ -1,6 +1,6 @@
 """Narrow operator-controlled URL policy for internal MCP dogfooding.
 
-Normal MCP Store URLs must pass PostHog's shared SSRF validation. Cloud operators
+Normal MCP Store URLs must pass Flind's shared SSRF validation. Cloud operators
 may additionally configure complete internal endpoint URLs per team through
 ``MCP_STORE_INTERNAL_ALLOWED_URLS_BY_TEAM``. Matching is deliberately exact:
 this is not a domain, suffix, origin, or CIDR allowlist and cannot authorize

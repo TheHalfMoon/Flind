@@ -535,7 +535,7 @@ export const McpPostHogExecSearch: Story = {
 };
 
 const githubIssueInput = {
-  owner: "PostHog",
+  owner: "Flind",
   repo: "posthog",
   title: "Investigate intermittent flake in foo test",
   body: "Seen on CI runs 12345 and 67890 — appears related to fixture cleanup ordering.",
@@ -565,7 +565,7 @@ const exitPlanModeInput = {
   plan: `# Add Dark Mode Support
 
 ## Overview
-Add dark mode toggle to PostHog app with theme persistence.
+Add dark mode toggle to Flind app with theme persistence.
 
 ## Implementation Steps
 - Create \`useThemeStore\` Zustand store with theme state (\`light\` | \`dark\` | \`system\`)

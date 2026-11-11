@@ -204,7 +204,7 @@ def sso_login(request: HttpRequest, backend: str) -> HttpResponse:
     if not sso_providers[backend]:
         return redirect(sso_failure_redirect_url(request, "improperly_configured_sso", is_reauth=is_reauth))
 
-    # The one known `connect_from` value is "posthog_code" - what PH Code uses when linking GH profile to PostHog user
+    # The one known `connect_from` value is "posthog_code" - what PH Code uses when linking GH profile to Flind user
     connect_from = (request.GET.get("connect_from") or "").strip()
     if connect_from and backend == "github":
         # For linking GitHub, keep the session and set the next URL to /account-connected/github-login

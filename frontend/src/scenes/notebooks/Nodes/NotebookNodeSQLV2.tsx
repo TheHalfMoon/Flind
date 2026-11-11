@@ -53,7 +53,7 @@ export type NotebookNodeSQLV2Attributes = {
     code: string
     // Dataframe name other SQLV2 nodes can reference (inlined as a CTE when they join it).
     returnVariable: string
-    // Where the cell runs: a direct-query data source id, or null/absent for PostHog's ClickHouse.
+    // Where the cell runs: a direct-query data source id, or null/absent for Flind's ClickHouse.
     connectionId?: string | null
     // Send the code to that connection verbatim instead of compiling it from HogQL.
     sendRawQuery?: boolean | null

@@ -166,7 +166,7 @@ class EndpointResponseSerializer(serializers.Serializer):
     )
     ui_url = serializers.CharField(
         allow_null=True,
-        help_text="Absolute URL to view this endpoint in the PostHog UI.",
+        help_text="Absolute URL to view this endpoint in the Flind UI.",
     )
     created_at = serializers.DateTimeField(help_text="When the endpoint was created (ISO 8601).")
     updated_at = serializers.DateTimeField(help_text="When the endpoint was last updated (ISO 8601).")

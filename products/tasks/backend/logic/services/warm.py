@@ -207,7 +207,7 @@ class SandboxWarmer:
     @classmethod
     def _active_session_caps(cls, origin_product: str, signal_report_id: UUID | str | None) -> ActiveSessionCaps | None:
         # Server-only, but a member starts these from a page, one sandbox per flag, so they are capped like
-        # PostHog AI runs.
+        # Flind AI runs.
         if origin_product == Task.OriginProduct.FEATURE_FLAGS:
             return cls.ORIGIN_ACTIVE_SESSION_CAPS[Task.OriginProduct.POSTHOG_AI]
         if origin_product in Task.SERVER_ONLY_ORIGIN_PRODUCTS:
@@ -328,9 +328,9 @@ class SandboxWarmer:
         - Idempotent: if the Task already has a non-terminal Run, return it without provisioning.
         - Fresh: a Task with no Runs gets a new warm Run; a Task whose latest Run is terminal gets a
           successor that resumes from it (snapshot reuse via ``snapshot_external_id``).
-        - ``extra_state`` carries product-specific Run state the generic warmer can't know (e.g. PostHog
+        - ``extra_state`` carries product-specific Run state the generic warmer can't know (e.g. Flind
           AI's ``systemPrompt``, or a target ``branch``); it is merged into the warm Run's initial state.
-        - ``create_pr`` is forwarded to the processing workflow; it defaults to ``False`` (PostHog AI warm
+        - ``create_pr`` is forwarded to the processing workflow; it defaults to ``False`` (Flind AI warm
           runs don't open PRs). The Code-app caller passes ``True`` so the activated run opens a PR.
 
         Raises ``QuotaLimitExceeded`` (402) / ``PermissionDenied`` (403) when gated, and ``Throttled``

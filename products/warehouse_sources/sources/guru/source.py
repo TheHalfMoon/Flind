@@ -60,7 +60,7 @@ class GuruSource(ResumableSource[GuruSourceConfig, GuruResumeConfig]):
             name=ExternalDataSourceType.GURU,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Guru",
-            caption="""Enter your Guru API credentials to pull your Guru knowledge base data into the PostHog Data warehouse.
+            caption="""Enter your Guru API credentials to pull your Guru knowledge base data into the Flind Data warehouse.
 
 You authenticate with your Guru account email and a user API token. A Guru admin can generate user tokens from [Settings > Apps and integrations > API access](https://app.getguru.com/settings/integrations/api-access). Use a user token rather than a collection token — collection tokens are read-only and scoped to a single collection.""",
             iconPath="/static/services/guru.png",

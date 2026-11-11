@@ -85,7 +85,7 @@ def _validated_hostname(base_url: str) -> Optional[str]:
     if parsed.scheme not in ("http", "https") or "@" in parsed.netloc:
         return None
     # The API token rides in a header on every request, so plaintext http would leak it to any
-    # network observer once it egresses over the public internet. Self-hosted PostHog operators
+    # network observer once it egresses over the public internet. Self-hosted Flind operators
     # control their own network path, so http stays allowed there (mirrors Discourse/Flagsmith).
     if parsed.scheme == "http" and is_cloud():
         return None

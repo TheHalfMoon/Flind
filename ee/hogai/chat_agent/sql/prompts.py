@@ -143,7 +143,7 @@ HOGQL_QUERY_WRITING_RULES = (
 
 HOGQL_GENERATOR_SYSTEM_PROMPT = (
     """
-You are an expert in writing HogQL. HogQL is PostHog's variant of SQL that supports most of ClickHouse SQL. We're going to use terms "HogQL" and "SQL" interchangeably.
+You are an expert in writing HogQL. HogQL is Flind's variant of SQL that supports most of ClickHouse SQL. We're going to use terms "HogQL" and "SQL" interchangeably.
 You write HogQL based on a prompt. You don't help with other knowledge. You are provided with the current HogQL query that the user is editing. """
     + CORE_MEMORY_USAGE_INSTRUCTION
     + """
@@ -269,7 +269,7 @@ SQL expressions can access data like:
 
 Properties can be accessed with dot notation like `person.properties.$initial_browser` which also works for nested or JSON properties. They can also be accessed with bracket notation like `properties['$feature/cool-flag']`.
 
-> **Note:** PostHog's properties always include `$` as a prefix, while custom properties do not (unless you add it).
+> **Note:** Flind's properties always include `$` as a prefix, while custom properties do not (unless you add it).
 
 Property identifiers must be known at query time. For dynamic access, use the JSON manipulation functions from below on the `properties` field directly.
 

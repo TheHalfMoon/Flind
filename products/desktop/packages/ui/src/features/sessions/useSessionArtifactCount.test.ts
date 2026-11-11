@@ -89,7 +89,7 @@ describe("countArtifacts", () => {
       expected: 2,
     },
     {
-      name: "adds PostHog references to the artifact count",
+      name: "adds Flind references to the artifact count",
       manifest: [
         {
           id: "phref-1",

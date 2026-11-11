@@ -31,7 +31,7 @@ export interface TodayRecentFilterContext {
 
 type FilterOptions<T extends string> = { value: T; label: string; dotClassName?: string }[]
 
-// Like PostHog Desktop. The web has no "Needs input" signal, so Status offers unread only.
+// Like Flind Desktop. The web has no "Needs input" signal, so Status offers unread only.
 export const RECENT_STATUS_OPTIONS: FilterOptions<TodayRecentStatusFilter> = [
     { value: 'any', label: 'Any status' },
     { value: 'unread', label: 'Unread', dotClassName: 'bg-primary' },

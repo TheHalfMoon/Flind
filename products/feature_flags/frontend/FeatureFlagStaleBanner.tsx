@@ -56,7 +56,7 @@ function rolloutSentence(
 }
 
 /**
- * The internally-gated escalation from "review usage" to "ask PostHog AI to assess this flag for
+ * The internally-gated escalation from "review usage" to "ask Flind AI to assess this flag for
  * cleanup". A separate component so its `featureFlagCleanupAssessmentLogic` mount (and the hooks that
  * come with it) only happens once the parent banner has already decided to render - the banner itself
  * returns null before any flag is confirmed stale, and hooks can't run conditionally in one component.
@@ -83,7 +83,7 @@ function ReviewCleanupWithAiButton({
             size="small"
             icon={<IconSparkles />}
             data-attr="feature-flag-stale-banner-review-cleanup"
-            disabledReason={assessmentStarted ? 'Assessment started. Continue in PostHog AI.' : undefined}
+            disabledReason={assessmentStarted ? 'Assessment started. Continue in Flind AI.' : undefined}
             onClick={() => startAssessment(flagKey, currentProjectId)}
         >
             Review cleanup with AI

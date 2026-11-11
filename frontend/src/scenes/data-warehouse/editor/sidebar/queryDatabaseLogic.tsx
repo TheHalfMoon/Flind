@@ -1448,8 +1448,8 @@ const createSourceFolderNode = (
     }
 
     const sourceFolderId = isSearch
-        ? `search-${sourceType === 'PostHog' ? 'posthog' : sourceType}`
-        : `source-${sourceType === 'PostHog' ? 'posthog' : sourceType}`
+        ? `search-${sourceType === 'Flind' ? 'posthog' : sourceType}`
+        : `source-${sourceType === 'Flind' ? 'posthog' : sourceType}`
 
     // Distinct ExternalDataSources behind this type folder, so it can link each to its edit page.
     // A type can have several sources (e.g. two Postgres connections), distinguished by prefix.
@@ -1480,7 +1480,7 @@ const createSourceFolderNode = (
                                   : (matches[0][0] as DatabaseSchemaDataWarehouseTable).url_pattern) ?? ''
                           )
                         : sourceType === 'Popular'
-                          ? 'PostHog'
+                          ? 'Flind'
                           : sourceType
                 }
                 size="xsmall"
@@ -3256,9 +3256,9 @@ export const queryDatabaseLogic = kea<queryDatabaseLogicType>([
                     loadPropertyDefinitions: actions.loadPropertyDefinitions,
                 }
 
-                for (const category of ['Popular', 'PostHog']) {
+                for (const category of ['Popular', 'Flind']) {
                     const matches = relevantPosthogTables.filter(([table]) =>
-                        category === 'PostHog' ? table.name.startsWith('posthog.') : !table.name.startsWith('posthog.')
+                        category === 'Flind' ? table.name.startsWith('posthog.') : !table.name.startsWith('posthog.')
                     )
                     if (matches.length > 0) {
                         const folder = createSourceFolderNode(
@@ -3532,9 +3532,9 @@ export const queryDatabaseLogic = kea<queryDatabaseLogicType>([
                         type: 'loading-indicator',
                     })
                 } else {
-                    for (const category of ['Popular', 'PostHog']) {
+                    for (const category of ['Popular', 'Flind']) {
                         const tables = posthogTables.filter((table) =>
-                            category === 'PostHog'
+                            category === 'Flind'
                                 ? table.name.startsWith('posthog.')
                                 : !table.name.startsWith('posthog.')
                         )

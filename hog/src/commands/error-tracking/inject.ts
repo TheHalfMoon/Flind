@@ -26,9 +26,9 @@ export default defineCommand({
     },
     scopes: ['error_tracking:write'],
     notes: [
-        'Each bundle gets a snippet that registers its chunk ID at runtime, and its sourcemap gets the same ID, so PostHog can match stack frames to the right map.',
+        'Each bundle gets a snippet that registers its chunk ID at runtime, and its sourcemap gets the same ID, so Flind can match stack frames to the right map.',
         'Chunk IDs come from the bundle content, so the same build gets the same IDs. Running inject again changes nothing unless the release changed.',
-        'In event mode the release comes from the flags, posthog.json or git, and PostHog creates it, which needs credentials.',
+        'In event mode the release comes from the flags, posthog.json or git, and Flind creates it, which needs credentials.',
     ].join('\n'),
     examples: ['hog error-tracking inject dist', 'hog et inject dist --release-name web --release-version 1.4.0'],
 

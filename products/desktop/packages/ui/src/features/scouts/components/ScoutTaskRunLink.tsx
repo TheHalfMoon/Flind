@@ -4,7 +4,7 @@ import { ANALYTICS_EVENTS } from "@flind/shared";
 import { track } from "@flind/ui/shell/analytics";
 
 /**
- * "Open task run" link to a scout run in PostHog Cloud, shared by the scout
+ * "Open task run" link to a scout run in Flind Cloud, shared by the scout
  * detail run list and the signals section. Callers resolve the URL (and decide
  * the no-URL fallback); `runStatus` is included in analytics when known.
  */

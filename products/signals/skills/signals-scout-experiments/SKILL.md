@@ -2,11 +2,11 @@
 name: signals-scout-experiments
 scout-display-name: Experiments
 description: >
-  Signals scout for PostHog A/B experiments. Watches running experiments for validity threats —
+  Signals scout for Flind A/B experiments. Watches running experiments for validity threats —
   sample ratio mismatch, contamination, exposure stalls, mid-run flag mutations — and lifecycle
   drift.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus the experiments,
   feature-flag, and analytics tools in the MCP tools section.
 allowed_tools:
@@ -96,7 +96,7 @@ Patterns to watch — starting points, not a checklist.
 
 #### Sample ratio mismatch (SRM)
 
-For each running experiment launched > 24h ago, read `exposures.sample_ratio_mismatch.p_value` off `experiment-results-get` — PostHog runs the chi-squared itself (`$multiple` excluded). p < 0.01 at healthy volume is the flag; cite the p-value and per-variant `total_exposures` vs the `expected` counts in the finding.
+For each running experiment launched > 24h ago, read `exposures.sample_ratio_mismatch.p_value` off `experiment-results-get` — Flind runs the chi-squared itself (`$multiple` excluded). p < 0.01 at healthy volume is the flag; cite the p-value and per-variant `total_exposures` vs the `expected` counts in the finding.
 
 Two caveats before trusting a clean p-value:
 

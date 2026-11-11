@@ -10,7 +10,7 @@ export interface GatewayAuth {
 }
 
 /**
- * Resolves the PostHog LLM gateway base URL and bearer token for callers that
+ * Resolves the Flind LLM gateway base URL and bearer token for callers that
  * need to hit the gateway directly over `fetch`, outside pi's own
  * model-call machinery (e.g. the `web-access` extension's tools).
  *
@@ -35,7 +35,7 @@ export async function resolveGatewayAuth(
 
   if (!apiKey) {
     throw new Error(
-      'No PostHog gateway credentials available. Run "/login" and choose PostHog, or pass an explicit apiKey.',
+      'No Flind gateway credentials available. Run "/login" and choose Flind, or pass an explicit apiKey.',
     );
   }
 

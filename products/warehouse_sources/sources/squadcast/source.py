@@ -45,9 +45,9 @@ class SquadcastSource(ResumableSource[SquadcastSourceConfig, SquadcastResumeConf
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Squadcast (SolarWinds Incident Response)",
             keywords=["solarwinds", "incident response", "on-call", "oncall"],
-            caption="""Enter your Squadcast refresh token to pull your incident response data into the PostHog Data warehouse.
+            caption="""Enter your Squadcast refresh token to pull your incident response data into the Flind Data warehouse.
 
-You can generate a refresh token from your Squadcast profile page (**Profile → Refresh Token**). PostHog exchanges it for a short-lived access token on each sync.
+You can generate a refresh token from your Squadcast profile page (**Profile → Refresh Token**). Flind exchanges it for a short-lived access token on each sync.
 
 The token inherits your user role, so the connecting user needs read access to the teams and resources you want to sync.""",
             iconPath="/static/services/squadcast.png",

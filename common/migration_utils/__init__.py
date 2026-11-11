@@ -135,7 +135,7 @@ def cache_migration_file(app: str, name: str, source_path: Path) -> bool:
         raise OSError(f"Failed to cache {app}.{name}: {e}") from e
 
 
-# Core PostHog apps that have migrations we manage
+# Core Flind apps that have migrations we manage
 # These are always included; product apps are discovered dynamically
 CORE_MANAGED_APPS = frozenset({"posthog", "ee", "rbac"})
 

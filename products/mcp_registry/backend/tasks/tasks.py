@@ -25,7 +25,7 @@ def is_pipeline_enabled() -> bool:
     """Deployment-level kill switch. Fails closed.
 
     Cloud only. Outside cloud the scheduled task never crawls the public registry, probes
-    third-party hosts or asks PostHog Cloud for the flag. Local dev is off too, because a
+    third-party hosts or asks Flind Cloud for the flag. Local dev is off too, because a
     self-hosted install with DEBUG on resolves to the same run mode as local dev. The
     sync_mcp_registry management command bypasses this gate on purpose.
     """

@@ -24,7 +24,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "Bitrise only returns builds from roughly the last 200 days.",
         "docs_url": "https://api-docs.bitrise.io/#/builds",
         "columns": {
-            "app_slug": "Identifier of the app the build belongs to (added by PostHog during sync).",
+            "app_slug": "Identifier of the app the build belongs to (added by Flind during sync).",
             "slug": "Unique identifier of the build.",
             "build_number": "Sequential build number within the app.",
             "status": "Numeric build status (0 running, 1 successful, 2 failed, 3 aborted with failure, 4 aborted with success).",
@@ -53,7 +53,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "A workflow defined in an app's Bitrise configuration, one row per app and workflow name.",
         "docs_url": "https://api-docs.bitrise.io/#/builds",
         "columns": {
-            "app_slug": "Identifier of the app the workflow belongs to (added by PostHog during sync).",
+            "app_slug": "Identifier of the app the workflow belongs to (added by Flind during sync).",
             "workflow": "Name of the workflow.",
         },
     },
@@ -62,7 +62,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "multi-stage execution unit, running several workflows together.",
         "docs_url": "https://api-docs.bitrise.io/#/pipelines",
         "columns": {
-            "app_slug": "Identifier of the app the pipeline belongs to (added by PostHog during sync).",
+            "app_slug": "Identifier of the app the pipeline belongs to (added by Flind during sync).",
             "slug": "Unique identifier of the pipeline run.",
             "build_number": "Sequential number of the pipeline run within the app.",
             "status": "Numeric run status (0 running, 1 successful, 2 failed, 3 aborted with failure, 4 aborted with success).",
@@ -94,7 +94,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "and branch name. Branches with no builds are not listed.",
         "docs_url": "https://api-docs.bitrise.io/#/application",
         "columns": {
-            "app_slug": "Identifier of the app the branch belongs to (added by PostHog during sync).",
+            "app_slug": "Identifier of the app the branch belongs to (added by Flind during sync).",
             "branch": "Name of the branch.",
         },
     },
@@ -113,7 +113,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "A member of a Bitrise organization, one row per organization and member.",
         "docs_url": "https://api-docs.bitrise.io/#/organization",
         "columns": {
-            "org_slug": "Identifier of the organization the membership belongs to (added by PostHog during sync).",
+            "org_slug": "Identifier of the organization the membership belongs to (added by Flind during sync).",
             "slug": "Unique identifier of the member's Bitrise account.",
             "username": "Username of the member.",
             "email": "Email address of the member.",
@@ -123,9 +123,9 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "A file produced by a build (e.g. an IPA, APK, or log archive).",
         "docs_url": "https://api-docs.bitrise.io/#/build-artifact",
         "columns": {
-            "app_slug": "Identifier of the app the artifact belongs to (added by PostHog during sync).",
-            "build_slug": "Identifier of the build that produced the artifact (added by PostHog during sync).",
-            "build_triggered_at": "When the build that produced the artifact was triggered (added by PostHog during sync).",
+            "app_slug": "Identifier of the app the artifact belongs to (added by Flind during sync).",
+            "build_slug": "Identifier of the build that produced the artifact (added by Flind during sync).",
+            "build_triggered_at": "When the build that produced the artifact was triggered (added by Flind during sync).",
             "slug": "Unique identifier of the artifact within its build.",
             "title": "File name of the artifact.",
             "artifact_type": "Type of the artifact (e.g. android-apk, ios-ipa, file).",
@@ -139,7 +139,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "Bitrise returns at most 1000 archived builds per app.",
         "docs_url": "https://api-docs.bitrise.io/#/builds",
         "columns": {
-            "app_slug": "Identifier of the app the build belongs to (added by PostHog during sync).",
+            "app_slug": "Identifier of the app the build belongs to (added by Flind during sync).",
             "slug": "Unique identifier of the build.",
             "build_number": "Sequential build number within the app.",
             "status": "Numeric build status (0 running, 1 successful, 2 failed, 3 aborted with failure, 4 aborted with success).",
@@ -164,7 +164,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "An open build request of an app that waits for approval before it starts a build.",
         "docs_url": "https://api-docs.bitrise.io/#/build-request",
         "columns": {
-            "app_slug": "Identifier of the app the build request belongs to (added by PostHog during sync).",
+            "app_slug": "Identifier of the app the build request belongs to (added by Flind during sync).",
             "slug": "Unique identifier of the build request.",
             "created_at": "When the build request was created.",
             "build_params": "Parameters the build will start with.",

@@ -1,5 +1,5 @@
 /**
- * Abstract, domain-agnostic attached-context shape for the PostHog AI surface. The surface never
+ * Abstract, domain-agnostic attached-context shape for the Flind AI surface. The surface never
  * enumerates entity types — a provider names an arbitrary `type` (e.g. 'insight', 'dashboard',
  * 'trace', 'text') and the block builder renders it as-is.
  */

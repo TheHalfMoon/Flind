@@ -803,7 +803,7 @@ describe("LlmGatewayService.prompt on the Go gateway", () => {
       route: {
         mode: "blocked",
         reason: "credit_bucket_exhausted",
-        detail: "Your organization has reached its PostHog Desktop usage limit",
+        detail: "Your organization has reached its Flind Desktop usage limit",
         status: 402,
       },
       fetch: goFetch,

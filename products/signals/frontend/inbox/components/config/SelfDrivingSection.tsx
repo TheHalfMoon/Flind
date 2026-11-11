@@ -694,7 +694,7 @@ function PullRequestLabelRow(): JSX.Element {
     return (
         <AutonomySettingRow
             title="Label PRs on GitHub"
-            description="Add a label to every PR agents open, so you can find them in GitHub search and notification rules. PostHog creates the label if your repository does not have it."
+            description="Add a label to every PR agents open, so you can find them in GitHub search and notification rules. Flind creates the label if your repository does not have it."
             control={
                 <LemonSwitch
                     checked={pullRequestLabelEnabled}

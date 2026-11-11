@@ -54,7 +54,7 @@ class CannySource(ResumableSource[CannySourceConfig, CannyResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Canny",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Canny API key to sync your Canny feedback, posts, and roadmap data into the PostHog Data warehouse.
+            caption="""Enter your Canny API key to sync your Canny feedback, posts, and roadmap data into the Flind Data warehouse.
 
 Find your secret API key under **Settings → API** in your Canny dashboard.""",
             iconPath="/static/services/canny.png",

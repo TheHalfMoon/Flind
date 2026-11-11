@@ -39,7 +39,7 @@ class TestCommitStatusChecks:
         assert len(mock_github_api.status_checks) == 1
         check = mock_github_api.status_checks[0]
         assert check["state"] == "pending"
-        assert check["context"] == "PostHog Visual Review / storybook"
+        assert check["context"] == "Flind Visual Review / storybook"
         assert f"/visual-review/runs/{run.id}" in check["target_url"]
 
     @pytest.mark.parametrize(
@@ -92,7 +92,7 @@ class TestCommitStatusChecks:
         assert statuses[-1]["state"] == "success"
         assert statuses[-1]["description"] == description
         # A full run posts to the gating context that branch protection evaluates.
-        assert statuses[-1]["context"] == "PostHog Visual Review / storybook"
+        assert statuses[-1]["context"] == "Flind Visual Review / storybook"
 
     def test_complete_run_partial_annotates_posted_status(self, github_repo, mock_github_api, mocker):
         run, _ = runs.create_run(
@@ -122,9 +122,9 @@ class TestCommitStatusChecks:
         statuses = mock_github_api.status_checks
         assert statuses[-1]["state"] == "success"
         assert statuses[-1]["description"] == "No visual changes (partial run)"
-        assert statuses[-1]["context"] == "PostHog Visual Review / storybook (partial)"
+        assert statuses[-1]["context"] == "Flind Visual Review / storybook (partial)"
         # The gating context is never posted green by a partial run.
-        gating_context = "PostHog Visual Review / storybook"
+        gating_context = "Flind Visual Review / storybook"
         assert all(s["context"] != gating_context for s in statuses)
 
     def test_complete_run_posts_comment_when_changes_detected(self, github_repo, mock_github_api, mocker):
@@ -163,7 +163,7 @@ class TestCommitStatusChecks:
         assert len(mock_github_api.issue_comments) == 1
         assert mock_github_api.issue_comments[0]["action"] == "created"
         comment = mock_github_api.issue_comments[0]["body"]
-        assert "Review and approve in PostHog Visual Review" in comment
+        assert "Review and approve in Flind Visual Review" in comment
         assert f"/visual-review/runs/{run.id}" in comment
         # Verify comment ID stored for future updates
         run.refresh_from_db()
@@ -348,8 +348,8 @@ class TestCommitStatusChecks:
         # Observe runs post to a separate, non-gating context. purpose is client-supplied,
         # so greening the gating context would let an observe run bypass branch protection
         # on a PR head SHA — the gating context must never be touched by an observe run.
-        assert statuses[-1]["context"] == "PostHog Visual Review / storybook (tracking)"
-        assert all(s["context"] != "PostHog Visual Review / storybook" for s in statuses)
+        assert statuses[-1]["context"] == "Flind Visual Review / storybook (tracking)"
+        assert all(s["context"] != "Flind Visual Review / storybook" for s in statuses)
         assert len(mock_github_api.issue_comments) == 0
 
     def test_observe_run_without_changes_posts_green_tracking_status(self, github_repo, mock_github_api, mocker):
@@ -376,7 +376,7 @@ class TestCommitStatusChecks:
         statuses = mock_github_api.status_checks
         assert statuses[-1]["state"] == "success"
         assert statuses[-1]["description"] == "Tracking only: no visual changes"
-        assert statuses[-1]["context"] == "PostHog Visual Review / storybook (tracking)"
+        assert statuses[-1]["context"] == "Flind Visual Review / storybook (tracking)"
 
     def test_approve_run_posts_success(self, github_repo, mock_github_api, user):
         artifact_store.get_or_create_artifact(repo_id=github_repo.id, content_hash="new_h", storage_path="p/new")

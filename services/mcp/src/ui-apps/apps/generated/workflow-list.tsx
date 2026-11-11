@@ -11,7 +11,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function WorkflowListApp(): JSX.Element {
     return (
-        <AppWrapper<WorkflowListData> appName="PostHog Workflow List">
+        <AppWrapper<WorkflowListData> appName="Flind Workflow List">
             {({ data, app }) => <WorkflowListContent data={data!} app={app} />}
         </AppWrapper>
     )

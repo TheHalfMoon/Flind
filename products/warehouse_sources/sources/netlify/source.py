@@ -54,7 +54,7 @@ class NetlifySource(ResumableSource[NetlifySourceConfig, NetlifyResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Netlify",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Netlify personal access token to sync your Netlify data into the PostHog Data warehouse.
+            caption="""Enter your Netlify personal access token to sync your Netlify data into the Flind Data warehouse.
 
 Create a personal access token under **User settings > Applications > Personal access tokens** in the [Netlify UI](https://app.netlify.com/user/applications). The token has full access to the resources your account can reach, so no extra scopes are needed.
 """,

@@ -6,7 +6,7 @@ started the run. The backend writes that section itself, below the Problem secti
 agent cannot paraphrase it.
 
 Pull requests are often public. So the section carries only allowlisted facts: source types,
-entity links that need a PostHog login, dates, a commit hash, and the priority. It never carries
+entity links that need a Flind login, dates, a commit hash, and the priority. It never carries
 signal content, ticket text, or volumes.
 """
 
@@ -53,7 +53,7 @@ _SOURCE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,128}$")
 _SOURCE_PRODUCT_RE = re.compile(r"^[a-z0-9_]{1,40}$")
 _COMMIT_SHA_RE = re.compile(r"^[0-9a-f]{7,40}$")
 _PROBLEM_HEADING_RE = re.compile(r"^##[ \t]+Problem[ \t]*$", re.MULTILINE | re.IGNORECASE)
-# A section ends at the next level-two heading, a horizontal rule, or a PostHog Origin block.
+# A section ends at the next level-two heading, a horizontal rule, or a Flind Origin block.
 _SECTION_END_RE = re.compile(rf"^(##[ \t]|---[ \t]*$|<!-- {ORIGIN_MARKER_PREFIX}:)", re.MULTILINE)
 
 # Linear and GitHub signals come from `fetch_source_references_for_report`, which already
@@ -197,7 +197,7 @@ def _run_start(team_id: int, report_id: str, task_id: str) -> RunStart | None:
 
 
 def _scout_label(sources: list[OriginSource]) -> str | None:
-    """Name a scout only when it ships with PostHog. A custom scout's name comes from its creator and can be private."""
+    """Name a scout only when it ships with Flind. A custom scout's name comes from its creator and can be private."""
     scout_name = next((source.scout_name for source in sources if source.scout_name), None)
     if scout_name is None:
         return None

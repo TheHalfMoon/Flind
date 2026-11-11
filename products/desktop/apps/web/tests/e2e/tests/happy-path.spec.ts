@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 // Hermetic happy path for the cloud-only web host, up to the OAuth wall. Real
-// login needs PostHog cloud + a popup IdP, so these stop at the sign-in card;
+// login needs Flind cloud + a popup IdP, so these stop at the sign-in card;
 // they prove the bundle loads, the DI container wires (a missing host-capability
 // binding would throw at boot), lazy routes resolve, and the app renders in a
 // real browser — the "portability smoke test" the README describes.
@@ -25,7 +25,7 @@ test.describe("web host happy path", () => {
       .catch(() => {});
 
     await expect(
-      page.getByRole("button", { name: "Sign in with PostHog" }),
+      page.getByRole("button", { name: "Sign in with Flind" }),
     ).toBeVisible({ timeout: 30_000 });
     await expect(page.getByRole("button", { name: "Back" })).toHaveCount(0);
 

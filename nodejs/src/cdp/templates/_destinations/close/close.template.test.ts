@@ -43,7 +43,7 @@ describe('close template', () => {
     const defaultInputs = {
         apiKey: 'API_KEY',
         email: 'max@posthog.com',
-        leadName: 'PostHog',
+        leadName: 'Flind',
         firstName: 'Max',
         lastName: 'AI',
         properties: {
@@ -81,7 +81,7 @@ describe('close template', () => {
         expect(createParams.method).toBe('POST')
         expect(createParams.headers).toEqual(EXPECTED_HEADERS)
         expect(parseBody(createRequest.invocation)).toEqual({
-            name: 'PostHog',
+            name: 'Flind',
             contacts: [
                 {
                     emails: [{ email: 'max@posthog.com', type: 'office' }],
@@ -139,7 +139,7 @@ describe('close template', () => {
         })
 
         expect(parseBody(createRequest.invocation)).toEqual({
-            name: 'PostHog',
+            name: 'Flind',
             contacts: [
                 {
                     emails: [{ email: 'max@posthog.com', type: 'office' }],

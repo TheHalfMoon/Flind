@@ -896,12 +896,12 @@ class CSVConfig:
 
     @staticmethod
     def normalize_header(header: str) -> str:
-        # PostHog exports have written the person column as both "Person.id" and "Person .id". Dropping all whitespace lets both spellings match.
+        # Flind exports have written the person column as both "Person.id" and "Person .id". Dropping all whitespace lets both spellings match.
         return "".join(header.split()).lower()
 
     class ErrorMessages:
         EMPTY_FILE = "CSV file is empty. Please upload a CSV file with at least one row of data."
-        MISSING_ID_COLUMN = "Multi-column CSV must contain at least one column with a supported ID header: 'person_id', 'Person.id' (PostHog export format), 'distinct_id', 'distinct-id', or 'email'. Found columns: {columns}"
+        MISSING_ID_COLUMN = "Multi-column CSV must contain at least one column with a supported ID header: 'person_id', 'Person.id' (Flind export format), 'distinct_id', 'distinct-id', or 'email'. Found columns: {columns}"
         NO_VALID_IDS = "CSV file contains no valid person IDs, distinct IDs, or email addresses. Please ensure your file has data rows with person IDs, distinct IDs, or email addresses."
         ENCODING_ERROR = "CSV file encoding is not supported. Please save your file as UTF-8 and try again."
         FORMAT_ERROR = "CSV file format is invalid. Please check your file format and try again."
@@ -1023,7 +1023,7 @@ _FLAG_CALL_CRITERION_TYPE_REASON = (
     'Only "Completed event", "Did not complete event" and "Completed an event multiple times" can use this event.'
 )
 _FLAG_CALL_WINDOW_REASON = (
-    f"PostHog keeps this event for {FLAG_EVALUATIONS_RETENTION_DAYS} days, so pick a range relative to today that goes back "
+    f"Flind keeps this event for {FLAG_EVALUATIONS_RETENTION_DAYS} days, so pick a range relative to today that goes back "
     f'{_MAX_FLAG_CALL_LOOKBACK_HOURS // 24} days or less, such as "Last 30 days".'
 )
 _FLAG_CALL_KEY_REASON = (
@@ -1034,10 +1034,10 @@ _FLAG_CALL_REALTIME_REASON = (
     "Real-time cohorts can't use this event on your organization yet. "
     "To see who called a flag, open the flag and check its Usage tab."
 )
-_FLAG_CALL_COMPILE_REASON = "PostHog can't calculate this criterion. Check its count and its event property filters."
+_FLAG_CALL_COMPILE_REASON = "Flind can't calculate this criterion. Check its count and its event property filters."
 _FLAG_CALL_FILTER_REASON = "Use event property filters on this event instead of a SQL expression."
 _FLAG_CALL_SQL_EXPRESSION_REASON = (
-    "A SQL expression filter on another criterion in this cohort reads this event in a way PostHog can't "
+    "A SQL expression filter on another criterion in this cohort reads this event in a way Flind can't "
     "calculate. Change that filter, or filter on event properties instead."
 )
 

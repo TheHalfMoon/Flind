@@ -63,14 +63,14 @@ const PostHogConnect = ({ constants, mode }: PostHogConnectProps): JSX.Element =
             <Box css={{ stack: 'y', rowGap: 'medium' }}>
                 <Banner
                     type="default"
-                    title="Connected to PostHog"
+                    title="Connected to Flind"
                     description={`Region: ${connectionState.region.toUpperCase()}`}
                 />
                 <Banner
                     type="default"
                     description={
                         <Inline>
-                            This app connects your Stripe data to PostHog's Data warehouse for analysis.{' '}
+                            This app connects your Stripe data to Flind's Data warehouse for analysis.{' '}
                             <Link href="https://posthog.com/docs/cdp/sources/stripe" target="_blank">
                                 Learn more
                             </Link>
@@ -82,7 +82,7 @@ const PostHogConnect = ({ constants, mode }: PostHogConnectProps): JSX.Element =
                     href={`${constants.POSTHOG_DASHBOARD_URL}/settings/project-integrations`}
                     target="_blank"
                 >
-                    Manage in PostHog
+                    Manage in Flind
                 </Button>
                 {mode === 'test' && (
                     <Button type="destructive" onPress={handleDisconnect}>
@@ -97,11 +97,11 @@ const PostHogConnect = ({ constants, mode }: PostHogConnectProps): JSX.Element =
         <Box css={{ stack: 'y', rowGap: 'medium' }}>
             <Banner
                 type="caution"
-                title="Not connected to PostHog"
-                description="Connect this Stripe account from your PostHog dashboard to see product analytics data here."
+                title="Not connected to Flind"
+                description="Connect this Stripe account from your Flind dashboard to see product analytics data here."
             />
             <Button type="primary" href={constants.POSTHOG_NEW_SOURCE_URL} target="_blank">
-                Connect in PostHog
+                Connect in Flind
             </Button>
             <Button onPress={checkCredentials}>Refresh connection status</Button>
             {mode === 'test' && <DevTokenEntry onSaved={checkCredentials} />}
@@ -156,7 +156,7 @@ export const DevTokenEntry = ({ onSaved }: { onSaved: () => void }): JSX.Element
             <Banner
                 type="default"
                 title="Dev mode"
-                description="Paste values from `python manage.py generate_stripe_app_tokens --team-id 1` to connect to PostHog in development."
+                description="Paste values from `python manage.py generate_stripe_app_tokens --team-id 1` to connect to Flind in development."
             />
             <Select label="Region" value={region} onChange={(e): void => setRegion(e.target.value as Region)}>
                 <option value="us">US</option>

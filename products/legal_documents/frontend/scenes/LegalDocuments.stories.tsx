@@ -215,7 +215,7 @@ export const NewBAAStartupProgram: Story = {
 
 /**
  * New-document page for a DPA in the default "pretty" mode (legally binding,
- * rendered with a color PostHog logo at the top).
+ * rendered with a color Flind logo at the top).
  */
 export const NewDPAPretty: Story = {
     parameters: {

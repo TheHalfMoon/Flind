@@ -36,7 +36,7 @@ Use a single workspace at:
 
 The branch is the campaign boundary. The workspace is just the artifact layout.
 
-If `autoresearch.config.json` exists in the current working directory, read its `workingDir` field and use that path as the workspace instead of the default above. Automated orchestrators (for example PostHog's `run_campaign.py`) initialize the workspace at `/tmp/autoresearch-campaign/` and write the config alongside it.
+If `autoresearch.config.json` exists in the current working directory, read its `workingDir` field and use that path as the workspace instead of the default above. Automated orchestrators (for example Flind's `run_campaign.py`) initialize the workspace at `/tmp/autoresearch-campaign/` and write the config alongside it.
 
 ## Pre-initialized workspace detection
 

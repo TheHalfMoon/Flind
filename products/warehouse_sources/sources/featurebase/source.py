@@ -67,7 +67,7 @@ class FeaturebaseSource(
             releaseStatus=ReleaseStatus.GA,
             caption=(
                 "Enter your Featurebase API key to pull your feedback posts, boards, comments, "
-                "upvoters, changelogs, and users into the PostHog Data warehouse.\n\n"
+                "upvoters, changelogs, and users into the Flind Data warehouse.\n\n"
                 "You can create an API key in your Featurebase dashboard under "
                 "**Settings** > **API**."
             ),
@@ -88,7 +88,7 @@ class FeaturebaseSource(
                 ],
             ),
             webhookSetupCaption=(
-                "PostHog registers the Featurebase webhook for you using your API key, including "
+                "Flind registers the Featurebase webhook for you using your API key, including "
                 "the signing secret — no manual steps needed.\n\n"
                 "**Manual setup** (only needed if auto-registration failed, e.g. your organization "
                 "hit Featurebase's webhook limit):\n\n"

@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name="is_first_party",
             field=models.BooleanField(
                 default=False,
-                help_text="True if this is a first-party PostHog application that skips OAuth consent",
+                help_text="True if this is a first-party Flind application that skips OAuth consent",
             ),
         ),
     ]

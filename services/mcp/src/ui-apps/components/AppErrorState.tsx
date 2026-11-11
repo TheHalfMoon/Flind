@@ -4,7 +4,7 @@ import { PostHogLogo } from './PostHogLogo'
 
 export function AppErrorState({ message }: { message: string }): ReactElement {
     useEffect(() => {
-        console.error('[PostHog MCP App] AppErrorState:', message)
+        console.error('[Flind MCP App] AppErrorState:', message)
     }, [message])
 
     return (

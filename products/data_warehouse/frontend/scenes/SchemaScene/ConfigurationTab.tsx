@@ -252,7 +252,7 @@ function DetailsSection({
                             <span>Enabled</span>
                             <span className="text-xs text-muted max-w-md">
                                 When enabled, this schema runs on the configured schedule and data is imported into
-                                PostHog. Disabling pauses all syncs — existing data stays in place but is not updated
+                                Flind. Disabling pauses all syncs — existing data stays in place but is not updated
                                 until you re-enable.
                             </span>
                         </div>
@@ -1264,8 +1264,8 @@ function ScheduleSection({
                     <span>Sync frequency</span>
                     <span className="text-xs text-muted max-w-md">
                         {isCdc
-                            ? 'How often PostHog loads the changes it captured for this table. Shorter intervals mean fresher data.'
-                            : 'How often PostHog pulls new data from the source. Shorter intervals mean fresher data but more load on the source database.'}
+                            ? 'How often Flind loads the changes it captured for this table. Shorter intervals mean fresher data.'
+                            : 'How often Flind pulls new data from the source. Shorter intervals mean fresher data but more load on the source database.'}
                     </span>
                     <LemonSelect
                         fullWidth
@@ -1618,7 +1618,7 @@ function DangerZoneSection({
                             )}
                             {canDeleteTable && (
                                 <Tooltip
-                                    title={`Delete this table from PostHog. ${
+                                    title={`Delete this table from Flind. ${
                                         source?.source_type
                                             ? `This will not delete the data in ${source.source_type}`
                                             : ''
@@ -1629,7 +1629,7 @@ function DangerZoneSection({
                                         status="danger"
                                         onClick={() => {
                                             LemonDialog.open({
-                                                title: `Delete ${schema.table?.name ?? schema.name} from PostHog?`,
+                                                title: `Delete ${schema.table?.name ?? schema.name} from Flind?`,
                                                 description: `This also turns off syncing for the table.${
                                                     source?.source_type
                                                         ? ` The data in ${source.source_type} will not be touched.`
@@ -1645,7 +1645,7 @@ function DangerZoneSection({
                                         }}
                                         disabledReason={disabledReason}
                                     >
-                                        Delete table from PostHog
+                                        Delete table from Flind
                                     </LemonButton>
                                 </Tooltip>
                             )}
@@ -1795,7 +1795,7 @@ function DescriptionsSectionContent({
         <div>
             <SectionHeader
                 title="Descriptions"
-                description="Describe what this table and its columns mean. These descriptions help PostHog AI write correct queries against your data. Descriptions are generated automatically (from the source's documentation or AI) and anything you edit here is preserved."
+                description="Describe what this table and its columns mean. These descriptions help Flind AI write correct queries against your data. Descriptions are generated automatically (from the source's documentation or AI) and anything you edit here is preserved."
             />
             <div className="border rounded p-4 bg-surface-primary">
                 <DescriptionRow

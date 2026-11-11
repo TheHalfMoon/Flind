@@ -241,7 +241,7 @@ class TestMCPHarnessBreakdownQueryRunner(_MCPAnalyticsTeamScopedTestMixin, Click
         [
             # The vendor header resolves from both wire keys it is captured under
             # ($mcp_vendor_client from the SDKs, unprefixed mcp_vendor_client from
-            # PostHog's own server) and in both value spellings.
+            # Flind's own server) and in both value spellings.
             ("sdk_vendor_cowork", {"$mcp_vendor_client": "Cowork"}, "Cowork"),
             ("sdk_vendor_claudecode", {"$mcp_vendor_client": "ClaudeCode"}, "Claude Code"),
             ("sdk_vendor_hyphenated", {"$mcp_vendor_client": "claude-code"}, "Claude Code"),

@@ -19,7 +19,7 @@ import SourceSetupIntro from '../_snippets/source-setup-intro.mdx'
 import SyncModes from '../_snippets/sync-modes.mdx'
 import TroubleshootingLink from '../_snippets/dw-troubleshooting-link.mdx'
 
-[Unstructured](https://unstructured.io) is a document ETL platform that turns raw files (PDFs, Office documents, emails, and more) into RAG-ready structured data. This source pulls the metadata from your Unstructured platform account, its workflows, job runs, per-job processing details and failed files, notifications, and source/destination connectors, into the PostHog data warehouse so you can monitor the health of your document pipelines alongside the rest of your data.
+[Unstructured](https://unstructured.io) is a document ETL platform that turns raw files (PDFs, Office documents, emails, and more) into RAG-ready structured data. This source pulls the metadata from your Unstructured platform account, its workflows, job runs, per-job processing details and failed files, notifications, and source/destination connectors, into the Flind data warehouse so you can monitor the health of your document pipelines alongside the rest of your data.
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ You need an Unstructured API key:
 
 1. Sign in to the [Unstructured platform dashboard](https://platform.unstructuredapp.io).
 2. Open **API Keys** and generate a new key.
-3. Copy the key and paste it into the **API key** field in PostHog.
+3. Copy the key and paste it into the **API key** field in Flind.
 
 Leave **API host** blank unless Unstructured provisioned your account with a custom API URL, in which case enter that origin (for example `https://platform.unstructuredapp.io`).
 

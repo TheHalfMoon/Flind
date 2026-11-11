@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -1192,7 +1192,7 @@ export interface NotebookSQLV2RunRequestApi {
     /** Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch. */
     variables?: NotebookVariableApi[]
     /**
-     * SQL nodes only: id of a direct-query-capable external data source to run against instead of PostHog's ClickHouse. Omit to query PostHog.
+     * SQL nodes only: id of a direct-query-capable external data source to run against instead of Flind's ClickHouse. Omit to query Flind.
      * @nullable
      */
     connection_id?: string | null

@@ -11,7 +11,7 @@ export interface PullRequestStateMeta {
     iconClassName: string
 }
 
-// The icon carries the state, like PostHog Desktop: the chip itself stays neutral.
+// The icon carries the state, like Flind Desktop: the chip itself stays neutral.
 const PR_STATES: Record<Exclude<PrStateEnumApi, 'unknown'>, PullRequestStateMeta> = {
     open: { label: 'Open', iconClassName: 'text-success-foreground' },
     draft: { label: 'Draft', iconClassName: 'text-muted-foreground' },
@@ -31,7 +31,7 @@ export function pullRequestLinkLabel(pullRequest: TaskPullRequest, state: PrStat
 }
 
 /**
- * A chip in the feed card footer, like PostHog Desktop's. `relative` lifts it above the card's full-card link.
+ * A chip in the feed card footer, like Flind Desktop's. `relative` lifts it above the card's full-card link.
  * Regular weight, because RoundHog's medium "4" leaves a gap after it that reads as "#4 21".
  */
 export const TASK_CHIP_CLASS = 'relative h-6 max-w-full shrink-0 gap-1.5 rounded-md px-2 text-xs font-normal'

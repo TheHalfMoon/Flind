@@ -66,7 +66,7 @@ class FormbricksSource(ResumableSource[FormbricksSourceConfig, FormbricksResumeC
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Formbricks",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Sync surveys, responses, contacts, and more from Formbricks into the PostHog Data warehouse.
+            caption="""Sync surveys, responses, contacts, and more from Formbricks into the Flind Data warehouse.
 
 Create an API key under **Organization settings → API keys** in Formbricks. API keys are scoped to a single environment, so the connector imports that environment's data.
 For self-hosted Formbricks, set your instance URL (for example `https://formbricks.example.com`); leave it empty for Formbricks Cloud.""",

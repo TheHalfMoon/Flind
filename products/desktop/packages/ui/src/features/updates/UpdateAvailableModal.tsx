@@ -113,7 +113,7 @@ export function UpdateAvailableModal(): ReactElement {
           </DialogTitle>
           <DialogDescription>
             {targetVersion
-              ? `PostHog ${targetVersion}${sizeLabel ? ` · ${sizeLabel}` : ""}`
+              ? `Flind ${targetVersion}${sizeLabel ? ` · ${sizeLabel}` : ""}`
               : "A new version is available"}
           </DialogDescription>
           {showNotes ? (

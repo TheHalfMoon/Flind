@@ -70,7 +70,7 @@ class DatahubSource(ResumableSource[DatahubSourceConfig, DatahubResumeConfig]):
             label="DataHub",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["acryl", "data catalog", "metadata", "lineage"],
-            caption="""Enter your DataHub instance URL and an access token to sync your metadata catalog — datasets, dashboards, charts, pipelines, owners, domains, glossary, and tags — into the PostHog Data warehouse.
+            caption="""Enter your DataHub instance URL and an access token to sync your metadata catalog — datasets, dashboards, charts, pipelines, owners, domains, glossary, and tags — into the Flind Data warehouse.
 
 The instance URL is where your DataHub API is served: for DataHub Cloud (Acryl) that's `https://<your-tenant>.acryl.io/gms`; for self-hosted it's your metadata service (GMS) URL, or the DataHub frontend URL, which proxies the API. Your instance must have [Metadata Service Authentication](https://docs.datahub.com/docs/authentication/introducing-metadata-service-authentication) enabled.
 

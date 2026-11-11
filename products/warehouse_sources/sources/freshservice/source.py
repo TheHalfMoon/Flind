@@ -71,7 +71,7 @@ class FreshserviceSource(ResumableSource[FreshserviceSourceConfig, FreshserviceR
             name=ExternalDataSourceType.FRESHSERVICE,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Freshservice",
-            caption="""Enter your Freshservice domain and API key to pull your Freshservice ITSM data into the PostHog Data warehouse.
+            caption="""Enter your Freshservice domain and API key to pull your Freshservice ITSM data into the Flind Data warehouse.
 
 Your **domain** is the subdomain in your Freshservice URL — e.g. `acme` for `acme.freshservice.com`.
 

@@ -1,1 +1,1 @@
-"""Feature Flags product for PostHog."""
+"""Feature Flags product for Flind."""

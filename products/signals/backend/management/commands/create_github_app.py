@@ -164,13 +164,13 @@ class Command(BaseCommand):
             "--name",
             type=str,
             default=None,
-            help="App name (must be globally unique on GitHub). Defaults to 'PostHog Signals Dev <random>'.",
+            help="App name (must be globally unique on GitHub). Defaults to 'Flind Signals Dev <random>'.",
         )
         parser.add_argument(
             "--base-url",
             type=str,
             default=DEFAULT_BASE_URL,
-            help=f"PostHog base URL for the homepage/callback/setup URLs (default {DEFAULT_BASE_URL}).",
+            help=f"Flind base URL for the homepage/callback/setup URLs (default {DEFAULT_BASE_URL}).",
         )
         parser.add_argument(
             "--port",
@@ -205,7 +205,7 @@ class Command(BaseCommand):
             raise CommandError("This command creates a local-dev GitHub App and can only run with DEBUG=1.")
 
         org: str | None = options["org"]
-        name: str = options["name"] or f"PostHog Signals Dev {secrets.token_hex(3)}"
+        name: str = options["name"] or f"Flind Signals Dev {secrets.token_hex(3)}"
         base_url: str = options["base_url"]
         port: int = options["port"]
         timeout: int = options["timeout"]
@@ -332,7 +332,7 @@ class Command(BaseCommand):
         self.stdout.write("")
         self.stdout.write("Next steps:")
         self.stdout.write(f"  1. Install it on your test repos: https://github.com/apps/{slug}/installations/new")
-        self.stdout.write(f"     (or via PostHog: {base_url.rstrip('/')}/project/1/integrations/github)")
+        self.stdout.write(f"     (or via Flind: {base_url.rstrip('/')}/project/1/integrations/github)")
         self.stdout.write("  2. Restart your dev server so it picks up the new .env values.")
 
     def _verify_key(self, client_id: str, pem: str) -> None:
@@ -379,7 +379,7 @@ def _build_manifest(*, name: str, base_url: str, redirect_url: str) -> dict[str,
     return {
         "name": name,
         "url": f"{base}/",
-        "description": "PostHog local dev GitHub App (Signals / background agents).",
+        "description": "Flind local dev GitHub App (Signals / background agents).",
         "public": False,
         "redirect_url": redirect_url,
         "callback_urls": [

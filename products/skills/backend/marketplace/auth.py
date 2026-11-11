@@ -62,4 +62,4 @@ class MarketplaceGitBasicAuthentication(PersonalAPIKeyAuthentication):
     @classmethod
     def authenticate_header(cls, request) -> str:
         # A Basic challenge makes git retry through its credential helper instead of failing hard.
-        return 'Basic realm="PostHog Skills Marketplace"'
+        return 'Basic realm="Flind Skills Marketplace"'

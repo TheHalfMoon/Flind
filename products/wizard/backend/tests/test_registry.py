@@ -15,8 +15,8 @@ from products.wizard.backend.logic.registry.parser import parse_registry_payload
 
 POSTHOG_INTEGRATION_PROGRAM = WizardProgram(
     id="posthog-integration",
-    name="PostHog integration",
-    description="Set up PostHog SDK integration",
+    name="Flind integration",
+    description="Set up Flind SDK integration",
     wizard_version=DEFAULT_WIZARD_VERSION,
     command=(),
     tags=(),

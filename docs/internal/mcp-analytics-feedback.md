@@ -18,7 +18,7 @@ Feedback is requested in context; the page header has no general Feedback button
 
 `MCP_ANALYTICS_USEFULNESS_SURVEY_ID` selects an API survey with partial responses enabled and an Always schedule.
 Recurring survey iterations are not supported.
-The survey belongs to the project configured for PostHog’s own analytics SDK, not the customer project being viewed.
+The survey belongs to the project configured for Flind’s own analytics SDK, not the customer project being viewed.
 Its questions must be a two-point emoji rating followed by optional open text, both with stable IDs.
 `MCP_ANALYTICS_SESSION_FEEDBACK_PROMPT` and `MCP_ANALYTICS_DASHBOARD_FEEDBACK_PROMPT` supply the displayed copy and placement metadata.
 Incompatible, draft, stopped, or nonmatching surveys do not start a prompt.

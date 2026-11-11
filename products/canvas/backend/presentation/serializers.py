@@ -34,7 +34,7 @@ from products.canvas.backend.facade.enums import (
 _MAX_ASSET_BASE64_LENGTH = (contract_limits()["maxSourceTotalBytes"] + 2) // 3 * 4
 
 _CANVAS_URL_HELP_TEXT = (
-    "Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas — "
+    "Canonical link to the canvas in the Flind app. The only valid way to link to a canvas — "
     "share this when pointing a user at it; never construct a canvas URL."
 )
 
@@ -180,7 +180,7 @@ class CanvasCreateSerializer(serializers.Serializer):
 
     def validate_template_id(self, value: str) -> str:
         if value in RESERVED_TEMPLATE_IDS:
-            raise serializers.ValidationError("This template id is reserved for canvases PostHog seeds.")
+            raise serializers.ValidationError("This template id is reserved for canvases Flind seeds.")
         return value
 
 
@@ -261,7 +261,7 @@ class CanvasPostHogCapabilitiesSerializer(serializers.Serializer):
         default=list,
         max_length=32,
         help_text=(
-            "PostHog MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', "
+            "Flind MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', "
             "'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the "
             "promote review."
         ),
@@ -1138,7 +1138,7 @@ class CanvasCapabilityWideningSerializer(serializers.Serializer):
     )
     tools_added = serializers.ListField(
         child=serializers.CharField(),
-        help_text="PostHog MCP tools the draft newly declares it may run via ph.tools.",
+        help_text="Flind MCP tools the draft newly declares it may run via ph.tools.",
     )
     connectors_added = CanvasConnectorDeclarationSerializer(
         many=True,
@@ -1160,7 +1160,7 @@ class CanvasActionDefinitionSerializer(serializers.Serializer):
 
 
 class CanvasToolDefinitionSerializer(serializers.Serializer):
-    """One PostHog MCP tool a canvas may declare, as the host renders it before running it."""
+    """One Flind MCP tool a canvas may declare, as the host renders it before running it."""
 
     name = serializers.CharField(help_text="MCP tool name, e.g. 'feature-flag-enable'.")
     title = serializers.CharField(help_text="Human-readable tool title.")
@@ -1176,12 +1176,12 @@ class CanvasToolDefinitionSerializer(serializers.Serializer):
 
 
 class CanvasActionsResponseSerializer(serializers.Serializer):
-    """The action registry: every verb and PostHog MCP tool a canvas may declare and invoke."""
+    """The action registry: every verb and Flind MCP tool a canvas may declare and invoke."""
 
     actions = CanvasActionDefinitionSerializer(many=True, help_text="Registered verbs, sorted by name.")
     tools = CanvasToolDefinitionSerializer(
         many=True,
-        help_text="PostHog MCP tools a canvas may declare in capabilities.posthog.tools, sorted by name. Read each "
+        help_text="Flind MCP tools a canvas may declare in capabilities.posthog.tools, sorted by name. Read each "
         "tool's input schema with the MCP `info` command.",
     )
 
@@ -1210,7 +1210,7 @@ class CanvasActionResultSerializer(serializers.Serializer):
 
 
 class CanvasToolInvokeSerializer(serializers.Serializer):
-    """Payload for running one PostHog MCP tool."""
+    """Payload for running one Flind MCP tool."""
 
     # Untrimmed, so the scope check and the dispatch read the same name.
     tool = serializers.CharField(
@@ -1224,7 +1224,7 @@ class CanvasToolInvokeSerializer(serializers.Serializer):
 
 
 class CanvasToolResultSerializer(serializers.Serializer):
-    """Result of one PostHog MCP tool run."""
+    """Result of one Flind MCP tool run."""
 
     tool = serializers.CharField(help_text="The tool that ran.")
     result = serializers.DictField(help_text="The tool's JSON result.")
@@ -1251,7 +1251,7 @@ class CanvasConnectorSerializer(serializers.Serializer):
     display_name = serializers.CharField(source="label", help_text="Display name of the provider.")
     kind = serializers.ChoiceField(
         choices=ConnectorKind.choices,
-        help_text="'native' runs through a PostHog personal integration; 'mcp' through an MCP store installation.",
+        help_text="'native' runs through a Flind personal integration; 'mcp' through an MCP store installation.",
     )
     connected = serializers.BooleanField(
         allow_null=True,

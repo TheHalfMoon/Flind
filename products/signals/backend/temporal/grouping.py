@@ -348,7 +348,7 @@ SPECIFIC — one root cause or one shared fix, so one engineer ships it in a sin
 - "Treat handled 404s as null instead of reporting them" — one interceptor-level fix stops the 404 noise from several endpoints
 - "Fix funnel conversion calculation for time-based bins" — one feature, one issue
 
-Reject the group only when the signals need SEPARATE, unrelated fixes that no single engineer would take on together, such as "Fix various PostHog AI issues" or "Address feature flag and authentication concerns".
+Reject the group only when the signals need SEPARATE, unrelated fixes that no single engineer would take on together, such as "Fix various Flind AI issues" or "Address feature flag and authentication concerns".
 
 None of these are reasons to split:
 - The same fix touches several files, call sites, or components
@@ -1029,7 +1029,7 @@ async def assign_and_emit_signal_activity(input: AssignAndEmitSignalInput) -> As
                     signal_count=1,
                     title=match_result.title,
                     summary=match_result.summary,
-                    # A report born from a PostHog-system signal (e.g. health checks) must never
+                    # A report born from a Flind-system signal (e.g. health checks) must never
                     # bill the customer. Only this founding signal decides: signals that join the
                     # report later (the branch above) leave the exemption unchanged either way.
                     billing_exempt_reason=monitoring_billing_exemption

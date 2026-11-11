@@ -128,7 +128,7 @@ describe("SettingsManager per-repo persistence", () => {
     expect(await fs.promises.readFile(filePath, "utf-8")).toBe(original);
   });
 
-  it("persists PostHog exec approvals and sees them across worktrees", async () => {
+  it("persists Flind exec approvals and sees them across worktrees", async () => {
     const writer = new SettingsManager(worktree);
     await writer.initialize();
     await writer.addPostHogExecApproval("experiment-update");
@@ -145,7 +145,7 @@ describe("SettingsManager per-repo persistence", () => {
     expect(reader.hasPostHogExecApproval("experiment-delete")).toBe(false);
   });
 
-  it("dedupes repeated PostHog exec approvals", async () => {
+  it("dedupes repeated Flind exec approvals", async () => {
     const manager = new SettingsManager(worktree);
     await manager.initialize();
 

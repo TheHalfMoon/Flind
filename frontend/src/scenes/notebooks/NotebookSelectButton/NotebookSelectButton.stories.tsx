@@ -133,7 +133,7 @@ const renderSessionNotebookSelect = (props: any): JSX.Element => {
                         count: 7,
                         results: [
                             {
-                                title: 'Session summaries report - 🎉 PostHog App + Website - Error tracking interactions (last 7 days) (2025-10-28)',
+                                title: 'Session summaries report - 🎉 Flind App + Website - Error tracking interactions (last 7 days) (2025-10-28)',
                                 short_id: 'sss1',
                                 created_at: '2025-11-25T10:00:00Z',
                                 last_modified_at: '2025-11-25T10:00:00Z',

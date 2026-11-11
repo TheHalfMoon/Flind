@@ -119,7 +119,7 @@ class StockDataSource(ResumableSource[StockDataSourceConfig, StockDataResumeConf
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="StockData.org",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your StockData.org API token to pull market news with sentiment, news stats, entity and news source metadata, plus quote, end-of-day, intraday, dividend, and split price data into the PostHog Data warehouse.
+            caption="""Enter your StockData.org API token to pull market news with sentiment, news stats, entity and news source metadata, plus quote, end-of-day, intraday, dividend, and split price data into the Flind Data warehouse.
 
 You can find your API token in your [StockData.org dashboard](https://www.stockdata.org/dashboard).
 

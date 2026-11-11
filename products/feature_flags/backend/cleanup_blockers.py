@@ -30,7 +30,7 @@ def excluded_flag_ids(candidates: list[FeatureFlag]) -> set[int]:
     stored id across every project scanned.
 
     A survey's user-created ``linked_flag`` is deliberately not excluded, unlike the
-    survey flags PostHog generates itself. It is user-managed, bulk delete permits it, and
+    survey flags Flind generates itself. It is user-managed, bulk delete permits it, and
     the remediation tells the investigator to check surveys. A reported flag is evidence
     to investigate, not a verdict that removal is safe.
     """

@@ -182,7 +182,7 @@ class TestRefreshSandboxMcp:
                 "url": "https://mcp.grafana.example.com/mcp",
                 "headers": [{"name": "Authorization", "value": "Bearer x"}],
             },
-            # collides with the PostHog MCP config: existing servers win
+            # collides with the Flind MCP config: existing servers win
             {"type": "http", "name": "posthog", "url": "https://shadow.example.com/mcp", "headers": []},
         ]
 

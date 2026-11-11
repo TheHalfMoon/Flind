@@ -36,7 +36,7 @@ describe("readShowActions", () => {
       actions: [
         {
           kind: "compose",
-          label: "Add PostHog",
+          label: "Add Flind",
           description: "Instruments the app so events start arriving",
           prompt: "/instrument",
         },
@@ -47,7 +47,7 @@ describe("readShowActions", () => {
 
     expect(buttons).toEqual([
       {
-        label: "Add PostHog",
+        label: "Add Flind",
         description: "Instruments the app so events start arriving",
         action: { kind: "compose", prompt: "/instrument" },
       },

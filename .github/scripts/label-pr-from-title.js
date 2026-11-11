@@ -253,7 +253,7 @@ async function removeLabels(labels) {
 // ---------------------------------------------------------------------------
 // Feature flags team only: the `review/low-hanging-fruit` label.
 //
-// PRs that the PostHog AI app opens for the feature flags team get this label
+// PRs that the Flind AI app opens for the feature flags team get this label
 // when they are quick to review, so the team can pick them off the Feature
 // Flags board first. Other teams have not opted in, so everything in this section is scoped to the
 // feature flags team. main() calls only flagsLowHangingFruitLabel().
@@ -261,7 +261,7 @@ async function removeLabels(labels) {
 
 const FLAGS_LOW_HANGING_FRUIT_LABEL = 'review/low-hanging-fruit'
 
-// The PostHog AI app's login. Its PRs carry the `self-driving` label, but the
+// The Flind AI app's login. Its PRs carry the `self-driving` label, but the
 // app adds that label a few seconds after it opens the PR, so the `opened`
 // payload does not have it yet. The author is set when the PR opens.
 const FLAGS_AI_BOT_LOGIN = 'posthog[bot]'

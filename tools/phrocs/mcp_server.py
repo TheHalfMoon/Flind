@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local MCP server for PostHog dev environment process observability.
+"""Local MCP server for Flind dev environment process observability.
 
 Both tools query phrocs directly over a Unix domain socket whose path is
 derived from the workspace root (CWD), matching the socket phrocs binds.
@@ -23,7 +23,7 @@ from mcp.server.fastmcp import FastMCP
 mcp = FastMCP(
     "phrocs",
     instructions=(
-        "Tools for inspecting the local PostHog dev environment. "
+        "Tools for inspecting the local Flind dev environment. "
         "Start the dev environment with `./bin/start` before using these tools."
     ),
 )

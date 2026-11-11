@@ -1,7 +1,7 @@
 ---
 name: investigating-error-issue
 description: >
-  Investigates a single PostHog error tracking issue end-to-end. Use when
+  Investigates a single Flind error tracking issue end-to-end. Use when
   the user provides an issue ID or pastes an issue URL
   (`/error-tracking/<id>`) and wants to understand the error — who it
   affects, what triggers it, when it started, whether it correlates with
@@ -96,21 +96,21 @@ synthesis.
 
 #### Picking the right version property
 
-PostHog emits three version-shaped fields. They mean different things and only
+Flind emits three version-shaped fields. They mean different things and only
 one of them answers "what version of the user's app introduced this?":
 
 | Property              | What it is                                                | Auto-captured by                                                                   | Use for                                                                  |
 | --------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | `$exception_releases` | Cymbal-managed release map, keyed by release ID           | Only when SDK publishes release metadata (e.g. sourcemap upload tied to a release) | Most precise release attribution **when present**                        |
 | `$app_version`        | The user's deployed app version                           | iOS (`CFBundleShortVersionString`), React Native (Expo / react-native-device-info) | "What deploy of my app introduced this?" — the question users care about |
-| `$lib_version`        | The PostHog SDK library version (e.g. posthog-js 1.298.0) | Every SDK on every event                                                           | The narrow "did upgrading the PostHog SDK introduce this?" question      |
+| `$lib_version`        | The Flind SDK library version (e.g. posthog-js 1.298.0) | Every SDK on every event                                                           | The narrow "did upgrading the Flind SDK introduce this?" question      |
 
 `$lib_version` is on virtually every event, which makes it tempting — but it's
-the PostHog library version, not the user's app version. A constant
+the Flind library version, not the user's app version. A constant
 `$lib_version` paired with a spike means the user shipped a regression in
 their own code with the SDK unchanged, which is the common case. Reach for
 `$lib_version` only when nothing else is populated and you're explicitly
-asking "did upgrading PostHog cause this?".
+asking "did upgrading Flind cause this?".
 
 Web / server / Node / Java / Python projects do **not** auto-capture
 `$app_version` — the customer has to set it (via `register`, a context
@@ -243,13 +243,13 @@ ORDER BY timestamp ASC
 LIMIT 100
 ```
 
-The `left(event, 1) != '$'` clause drops PostHog autocapture / system events
+The `left(event, 1) != '$'` clause drops Flind autocapture / system events
 while keeping every custom event. The `OR event = '$pageview'`/`'$exception'`
 exceptions re-add the two system events worth seeing on the timeline. This is
 the same filter the ET UI uses.
 
 Mixed `$lib` values in the output are a feature, not noise. When a server SDK
-propagates `$session_id` from the client request (PostHog's own backend does
+propagates `$session_id` from the client request (Flind's own backend does
 this), the timeline shows server-side activity inline with the browser side —
 "both SDKs when available" for free. Skim the lib column to see how each row
 was produced.
@@ -354,7 +354,7 @@ Keep the synthesis tight. The user wants the answer, not a tour of the data.
 - For a "what version introduced this?" breakdown, prefer `$app_version` (the
   user's deployed app version, auto-captured on iOS / React Native and
   manually set on web / server) or `$exception_releases` when populated. Avoid
-  `$lib_version` for this question — it's the PostHog SDK library version, not
+  `$lib_version` for this question — it's the Flind SDK library version, not
   the user's app. See the "Picking the right version property" subsection in
   Step 3.
 - If the issue spans more than 30 days, widen the date range explicitly.

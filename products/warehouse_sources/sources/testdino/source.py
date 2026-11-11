@@ -95,7 +95,7 @@ class TestDinoSource(ResumableSource[TestDinoSourceConfig, TestDinoResumeConfig]
             "TOKEN_REVOKED": INVALID_TOKEN,
             INVALID_PROJECT: INVALID_PROJECT,
             CASE_LIMIT_ERROR: CASE_LIMIT_ERROR,
-            "TestDino did not return pagination.hasNext.": "TestDino returned unexpected pagination. Contact PostHog support.",
+            "TestDino did not return pagination.hasNext.": "TestDino returned unexpected pagination. Contact Flind support.",
         }
 
     def get_canonical_descriptions(self) -> CanonicalDescriptions:

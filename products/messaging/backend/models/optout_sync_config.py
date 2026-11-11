@@ -19,7 +19,7 @@ class OptOutSyncConfig(models.Model):
     # Step 2: CSV upload
     csv_import_result = models.JSONField(null=True, blank=True)
 
-    # Step 3: Inbound webhook sync (Customer.io → PostHog)
+    # Step 3: Inbound webhook sync (Customer.io → Flind)
     webhook_integration = models.ForeignKey(
         "posthog.Integration",
         on_delete=models.SET_NULL,
@@ -29,7 +29,7 @@ class OptOutSyncConfig(models.Model):
     )
     webhook_enabled = models.BooleanField(default=False)
 
-    # Step 4: Outbound track sync (PostHog → Customer.io)
+    # Step 4: Outbound track sync (Flind → Customer.io)
     track_integration = models.ForeignKey(
         "posthog.Integration",
         on_delete=models.SET_NULL,

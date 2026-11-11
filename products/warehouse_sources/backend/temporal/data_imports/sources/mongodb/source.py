@@ -42,7 +42,7 @@ from products.warehouse_sources.backend.temporal.data_imports.sources.mongodb.mo
 from products.warehouse_sources.backend.types import ExternalDataSourceType
 
 _MONGO_UNREACHABLE_MESSAGE = (
-    "Could not reach your MongoDB cluster. Check that the cluster is running and that PostHog's "
+    "Could not reach your MongoDB cluster. Check that the cluster is running and that Flind's "
     "IP addresses are allowlisted in your database's network access settings."
 )
 
@@ -55,7 +55,7 @@ _MONGO_UNREACHABLE_RETRY_MESSAGE = f"{_MONGO_UNREACHABLE_MESSAGE} The next sync 
 # little to act on, so point at the expected scheme and format instead.
 _MONGO_INVALID_CONNECTION_STRING_MESSAGE = (
     # nosemgrep: trailofbits.generic.mongodb-insecure-transport.mongodb-insecure-transport
-    "PostHog couldn't read your MongoDB connection string. It must start with mongodb:// or "
+    "Flind couldn't read your MongoDB connection string. It must start with mongodb:// or "
     "mongodb+srv:// and follow the standard format, for example "
     "mongodb+srv://user:password@cluster.mongodb.net/database. Check the connection string and try again."
 )
@@ -68,14 +68,14 @@ _MONGO_UNESCAPED_CREDENTIALS_MESSAGE = (
 
 _MONGO_ATLAS_SQL_MESSAGE = (
     "This connection string points at a MongoDB Atlas SQL / Data Federation endpoint "
-    "(its host ends in .query.mongodb.net), which PostHog can't import from — those endpoints "
+    "(its host ends in .query.mongodb.net), which Flind can't import from — those endpoints "
     "are served by a query proxy for the Atlas SQL ODBC/JDBC drivers, not the standard MongoDB "
     "driver. Use your regular cluster connection string (e.g. mongodb+srv://...mongodb.net) instead."
 )
 
 _MONGO_UNSUPPORTED_FILE_OPTION_MESSAGE = (
     "Your connection string sets tlsCertificateKeyFile or tlsCRLFile. These name files on your own "
-    "machine, which PostHog can't read, so client certificate sign-in isn't supported. Remove them, "
+    "machine, which Flind can't read, so client certificate sign-in isn't supported. Remove them, "
     "sign in with a username and password, and try again."
 )
 
@@ -85,7 +85,7 @@ _MONGO_HOST_UNRESOLVED_MESSAGE = (
 )
 
 _MONGO_SERVER_TOO_OLD_MESSAGE = (
-    "This MongoDB server runs a version PostHog no longer supports. Upgrade the cluster to "
+    "This MongoDB server runs a version Flind no longer supports. Upgrade the cluster to "
     "MongoDB 4.2 or newer, then try again."
 )
 
@@ -103,7 +103,7 @@ _MONGO_AUTHENTICATION_FAILED_MESSAGE = (
 )
 
 _MONGO_NOT_AUTHORIZED_MESSAGE = (
-    "PostHog connected to MongoDB, but this user isn't authorized to list collections on the "
+    "Flind connected to MongoDB, but this user isn't authorized to list collections on the "
     "database. Grant the user a read role on the database (e.g. read or readAnyDatabase) and try again."
 )
 
@@ -116,7 +116,7 @@ _MONGO_CONNECT_FAILED_MESSAGE = (
 # removed keys the importer needed). Retrying reads the same cursor against the same cluster and
 # always fails with the same error, so it is non-retryable.
 _MONGO_KEY_NOT_FOUND_MESSAGE = (
-    "PostHog couldn't sync this MongoDB collection because your cluster reported a key management "
+    "Flind couldn't sync this MongoDB collection because your cluster reported a key management "
     "error (MongoDB code 211: KeyNotFound). Your cluster's keystore does not have a valid HMAC key "
     "for the time range being queried. Check your MongoDB cluster's key management configuration "
     "and ensure all replica set members are healthy, then try again."
@@ -139,7 +139,7 @@ _MONGO_CLUSTER_NOT_FOUND_MESSAGE = (
 # permission problem rather than a genuinely empty database: a connection string ending in /admin
 # or /test lands on an empty system database, and a user without read access sees no collections.
 _MONGO_NO_COLLECTIONS_MESSAGE = (
-    "PostHog connected to MongoDB but found no collections in the selected database. Check that "
+    "Flind connected to MongoDB but found no collections in the selected database. Check that "
     "your connection string points at the database that holds your data (a string ending in /admin "
     "or /test connects to an empty system database) or set the Database name field, and make sure "
     "your user has read access to that database's collections."
@@ -351,7 +351,7 @@ class MongoDBSource(ResumableSource[MongoDBSourceConfig, MongoResumeConfig], Val
         # MongoClient constructor, before any of our own connectivity handling runs. dnspython
         # already retries across nameservers for the whole resolution lifetime before giving up
         # with a ConfigurationError wrapping its LifetimeTimeout — a momentary DNS blip on the
-        # resolver PostHog's worker queries, unrelated to the user's cluster hostname — so Temporal
+        # resolver Flind's worker queries, unrelated to the user's cluster hostname — so Temporal
         # retrying the whole activity is self-recovering. Match dnspython's fixed message prefix,
         # not the variable timeout duration or nameserver address it's followed by.
         #
@@ -514,7 +514,7 @@ class MongoDBSource(ResumableSource[MongoDBSourceConfig, MongoResumeConfig], Val
             # markers to a clean message; an authorization failure ("not authorized") means the
             # credentials are valid but lack read access, which is distinct from a bad password.
             # Both are user-side credential/permission problems we already surface an actionable
-            # message for and classify as non-retryable — never a PostHog bug — so don't report
+            # message for and classify as non-retryable — never a Flind bug — so don't report
             # them to error tracking as non-actionable noise.
             message = str(e)
             if "not authorized" in message:
@@ -618,7 +618,7 @@ class MongoDBSource(ResumableSource[MongoDBSourceConfig, MongoResumeConfig], Val
             featured=True,
             keywords=["mongo"],
             label="MongoDB",
-            caption="Enter your MongoDB connection string to automatically pull your MongoDB data into the PostHog Data warehouse.",
+            caption="Enter your MongoDB connection string to automatically pull your MongoDB data into the Flind Data warehouse.",
             releaseStatus=ReleaseStatus.GA,
             iconPath="/static/services/Mongodb.svg",
             docsUrl="https://posthog.com/docs/cdp/sources/mongodb",

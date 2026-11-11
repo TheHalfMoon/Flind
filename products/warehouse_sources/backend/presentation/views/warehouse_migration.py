@@ -40,13 +40,13 @@ class ProposedRowFilterSerializer(serializers.Serializer):
 
 
 class ProposedSchemaSerializer(serializers.Serializer):
-    name = serializers.CharField(help_text="PostHog table name.")
+    name = serializers.CharField(help_text="Flind table name.")
     should_sync = serializers.BooleanField(help_text="Whether the table syncs.")
     sync_type = serializers.CharField(
-        allow_null=True, help_text="Planned sync type. Null means PostHog picks its default for the table."
+        allow_null=True, help_text="Planned sync type. Null means Flind picks its default for the table."
     )
     disabled_columns = serializers.ListField(
-        child=serializers.CharField(), help_text="Columns Fivetran skipped, which PostHog skips too."
+        child=serializers.CharField(), help_text="Columns Fivetran skipped, which Flind skips too."
     )
     row_filters = ProposedRowFilterSerializer(many=True, help_text="Row filters copied from Fivetran.")
     alternative_names = serializers.ListField(
@@ -62,7 +62,7 @@ class ProposedSchemaSerializer(serializers.Serializer):
 
 class TablePairSerializer(serializers.Serializer):
     vendor_table = serializers.CharField(help_text="The Fivetran table.")
-    posthog_table = serializers.CharField(help_text="The PostHog table it was paired with.")
+    posthog_table = serializers.CharField(help_text="The Flind table it was paired with.")
 
 
 class ProposedDestinationSerializer(serializers.Serializer):
@@ -70,12 +70,12 @@ class ProposedDestinationSerializer(serializers.Serializer):
     config = serializers.DictField(help_text="Non-secret destination settings copied from Fivetran.")
     vendor_schemas = serializers.ListField(
         child=serializers.CharField(),
-        help_text="The schemas Fivetran writes this connection into. Use another schema in the PostHog destination.",
+        help_text="The schemas Fivetran writes this connection into. Use another schema in the Flind destination.",
     )
 
 
 class ItemProposalSerializer(serializers.Serializer):
-    source_type = serializers.CharField(help_text="The PostHog source type this connection becomes.")
+    source_type = serializers.CharField(help_text="The Flind source type this connection becomes.")
     prefix = serializers.CharField(
         help_text="Table name prefix for the new source, taken from the Fivetran connection name."
     )
@@ -85,7 +85,7 @@ class ItemProposalSerializer(serializers.Serializer):
     schemas = ProposedSchemaSerializer(
         many=True,
         allow_null=True,
-        help_text="Tables to sync, with their planned sync settings. Null means PostHog uses its default tables.",
+        help_text="Tables to sync, with their planned sync settings. Null means Flind uses its default tables.",
     )
     sync_frequency = serializers.CharField(help_text="Planned sync frequency, matched to the Fivetran schedule.")
     sync_time_of_day = serializers.CharField(
@@ -105,13 +105,13 @@ class ItemProposalSerializer(serializers.Serializer):
     unmatched_tables = serializers.ListField(
         child=serializers.CharField(),
         default=list,
-        help_text="Fivetran tables with no PostHog table. Compare them with the source's PostHog tables and "
+        help_text="Fivetran tables with no Flind table. Compare them with the source's Flind tables and "
         "propose one, or leave them out.",
     )
     unused_posthog_tables = serializers.ListField(
         child=serializers.CharField(),
         default=list,
-        help_text="The source's PostHog tables that no Fivetran table maps to. Choose from these for the unmatched "
+        help_text="The source's Flind tables that no Fivetran table maps to. Choose from these for the unmatched "
         "tables. Empty when every table matched.",
     )
 
@@ -155,7 +155,7 @@ class WarehouseMigrationUploadConnectionsSerializer(serializers.Serializer):
         default=list,
         max_length=MAX_UPLOAD_DESTINATIONS,
         help_text="Fivetran destination details responses, unchanged. Send them before the connections that use "
-        "them, so PostHog reads each connection's sync time in its destination's time zone.",
+        "them, so Flind reads each connection's sync time in its destination's time zone.",
     )
     connections = serializers.ListField(
         child=WarehouseMigrationUploadedConnectionSerializer(),
@@ -163,15 +163,15 @@ class WarehouseMigrationUploadConnectionsSerializer(serializers.Serializer):
         default=list,
         max_length=MAX_UPLOAD_CONNECTIONS,
         help_text=f"At most {MAX_UPLOAD_CONNECTIONS} connections. A connection uploaded again replaces its plan, "
-        "unless it is already created in PostHog or skipped.",
+        "unless it is already created in Flind or skipped.",
     )
 
 
 class WarehouseMigrationItemCountsSerializer(serializers.Serializer):
-    as_is = serializers.IntegerField(help_text="Connections that move to PostHog as they are.")
+    as_is = serializers.IntegerField(help_text="Connections that move to Flind as they are.")
     caveats = serializers.IntegerField(help_text="Connections that move with differences the user should review.")
-    unsupported = serializers.IntegerField(help_text="Connections PostHog cannot create yet.")
-    applied = serializers.IntegerField(help_text="Connections already created as PostHog sources.")
+    unsupported = serializers.IntegerField(help_text="Connections Flind cannot create yet.")
+    applied = serializers.IntegerField(help_text="Connections already created as Flind sources.")
     skipped = serializers.IntegerField(help_text="Connections the user chose not to move.")
 
 
@@ -213,18 +213,18 @@ class WarehouseMigrationItemSerializer(serializers.Serializer):
         help_text="Whether the connection moves as it is, moves with caveats, or is not supported.",
     )
     caveats = serializers.ListField(
-        child=serializers.CharField(), help_text="Differences between Fivetran and PostHog for this connection."
+        child=serializers.CharField(), help_text="Differences between Fivetran and Flind for this connection."
     )
     proposal = ItemProposalSerializer(
         allow_null=True,
-        help_text="What PostHog creates for this connection. Null when the connection is not supported.",
+        help_text="What Flind creates for this connection. Null when the connection is not supported.",
     )
     status = serializers.ChoiceField(
         choices=migrations.ITEM_STATUS_CHOICES,
         help_text="`pending` until the source is created (`applied`) or the user skips it.",
     )
     external_data_source_id = serializers.UUIDField(
-        allow_null=True, help_text="The PostHog source created for this connection, if any."
+        allow_null=True, help_text="The Flind source created for this connection, if any."
     )
     error = serializers.CharField(help_text="Why the last apply attempt failed, if it did.")
     created_by = WarehouseMigrationCreatorSerializer(
@@ -262,7 +262,7 @@ class WarehouseMigrationSkipItemsResponseSerializer(serializers.Serializer):
     )
     not_skipped_item_ids = serializers.ListField(
         child=serializers.UUIDField(),
-        help_text="Items that stay as they are because they are being created or are already PostHog sources.",
+        help_text="Items that stay as they are because they are being created or are already Flind sources.",
     )
 
 
@@ -272,7 +272,7 @@ class WarehouseMigrationConnectLinkQuerySerializer(serializers.Serializer):
 
 class WarehouseMigrationConnectLinkSerializer(serializers.Serializer):
     provider = serializers.ChoiceField(choices=migrations.PROVIDER_CHOICES, help_text="The ETL vendor.")
-    connect_url = serializers.URLField(help_text="Link the user opens to enter their vendor API key in PostHog.")
+    connect_url = serializers.URLField(help_text="Link the user opens to enter their vendor API key in Flind.")
     instructions = serializers.CharField(help_text="What the agent should tell the user and do next.")
 
 
@@ -287,7 +287,7 @@ _ITEM_ID = OpenApiParameter("item_id", str, OpenApiParameter.PATH, description="
 
 
 class WarehouseMigrationViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
-    """Import a team's Fivetran setup and plan the PostHog sources that replace it."""
+    """Import a team's Fivetran setup and plan the Flind sources that replace it."""
 
     scope_object = "external_data_source"
     # Like destinations, a migration spans many sources rather than belonging to one.
@@ -381,7 +381,7 @@ class WarehouseMigrationViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet)
                 ],
             )
         except contracts.WarehouseMigrationHasVendorKeyError:
-            raise exceptions.ValidationError("PostHog reads this migration with an API key. Refresh it instead.")
+            raise exceptions.ValidationError("Flind reads this migration with an API key. Refresh it instead.")
         except contracts.WarehouseMigrationUploadTooLargeError:
             raise exceptions.ValidationError(
                 "This Fivetran account is too large to upload through the chat. Start a migration with an API key."
@@ -459,7 +459,7 @@ class WarehouseMigrationViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet)
         try:
             item = migrations.skip_migration_item(self.team_id, UUID(pk), UUID(item_id))
         except contracts.WarehouseMigrationItemClaimedError:
-            raise exceptions.ValidationError("This connection is already being created or is a PostHog source.")
+            raise exceptions.ValidationError("This connection is already being created or is a Flind source.")
         if item is None:
             raise exceptions.NotFound()
         return Response(WarehouseMigrationItemSerializer(item).data)

@@ -95,7 +95,7 @@ class WhopSource(
             label="Whop",
             caption=(
                 "Connect your Whop company to sync payments, memberships, members, products, promo codes, "
-                "invoices, refunds, and disputes into PostHog. Create a company API key in the "
+                "invoices, refunds, and disputes into Flind. Create a company API key in the "
                 f"[Developer tab]({WHOP_API_KEYS_URL}) of your Whop dashboard."
             ),
             iconPath="/static/services/whop.png",
@@ -115,7 +115,7 @@ class WhopSource(
                             "`company:basic:read`, `member:basic:read`, `payment:basic:read`, "
                             "`access_pass:basic:read`, `plan:basic:read`, `promo_code:basic:read`, "
                             "`invoice:basic:read` and `social_account:read`, plus `developer:manage_webhook` if "
-                            "you want PostHog to register the webhook for you."
+                            "you want Flind to register the webhook for you."
                         ),
                         secret=True,
                     ),
@@ -132,7 +132,7 @@ class WhopSource(
             ),
             releaseStatus=ReleaseStatus.GA,
             webhookSetupCaption=(
-                "PostHog tries to register a Whop webhook for you using your API key, which needs the "
+                "Flind tries to register a Whop webhook for you using your API key, which needs the "
                 "`developer:manage_webhook` permission.\n\n"
                 "**Manual setup** (only needed if automatic registration failed):\n\n"
                 f"1. Go to the [Developer tab]({WHOP_API_KEYS_URL}) in your Whop dashboard\n"
@@ -142,7 +142,7 @@ class WhopSource(
                 f"{WHOP_API_VERSION_2025_01_01}, leave the API version date empty\n"
                 "4. Select the payment, membership, member, product, entry, invoice, refund, dispute, "
                 "setup intent, and shipment events matching the tables you sync\n"
-                "5. Copy the webhook secret into the field below so PostHog can verify deliveries"
+                "5. Copy the webhook secret into the field below so Flind can verify deliveries"
             ),
             webhookFields=cast(
                 list[FieldType],
@@ -154,7 +154,7 @@ class WhopSource(
                         required=True,
                         placeholder="",
                         caption=(
-                            "The webhook secret shown in your Whop dashboard. PostHog uses it to verify the "
+                            "The webhook secret shown in your Whop dashboard. Flind uses it to verify the "
                             "webhook-signature header on every delivery."
                         ),
                         secret=True,

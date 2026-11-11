@@ -104,7 +104,7 @@ describe('TriageCard', () => {
             fireEvent.click(screen.getByLabelText('More implementation options'))
             expect(screen.getByText('Copy prompt for your agent')).toBeInTheDocument()
             if (status === 200) {
-                fireEvent.click(screen.getByText('Implement with PostHog').closest('button')!)
+                fireEvent.click(screen.getByText('Implement with Flind').closest('button')!)
             }
         }
         if (status === 200) {

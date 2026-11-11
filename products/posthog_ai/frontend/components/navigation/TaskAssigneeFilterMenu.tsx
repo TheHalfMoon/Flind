@@ -34,7 +34,7 @@ export function TaskAssigneeFilterMenu(): JSX.Element {
                     onValueChange={(value) => setAssigneeFilter(value as TaskAssigneeFilter)}
                 >
                     <DropdownMenuRadioItem value="for_you">For you</DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="posthog_ai">PostHog AI</DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="posthog_ai">Flind AI</DropdownMenuRadioItem>
                     <DropdownMenuRadioItem value="slack">Slack</DropdownMenuRadioItem>
                     <DropdownMenuRadioItem value="desktop">Desktop</DropdownMenuRadioItem>
                     <DropdownMenuRadioItem value="my_scouts">My scouts</DropdownMenuRadioItem>

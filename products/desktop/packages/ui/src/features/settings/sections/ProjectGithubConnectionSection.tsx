@@ -109,7 +109,7 @@ export function ProjectGithubConnectionSection() {
         ) : isAwaitingApproval ? (
           <SettingsCardRow
             label="No GitHub connection yet"
-            description="A GitHub organization owner still needs to approve the PostHog app"
+            description="A GitHub organization owner still needs to approve the Flind app"
           />
         ) : isAdmin === false && projectId != null ? (
           <div className="px-3.5 py-3">
@@ -122,7 +122,7 @@ export function ProjectGithubConnectionSection() {
         ) : (
           <SettingsCardRow
             label="No GitHub connection yet"
-            description="Connect GitHub so PostHog can use current code context for cloud tasks and investigations"
+            description="Connect GitHub so Flind can use current code context for cloud tasks and investigations"
           >
             <Button
               type="button"
@@ -263,7 +263,7 @@ function ProjectGithubIntegrationRow({
         }
         description={
           status === "unavailable"
-            ? "The PostHog app is no longer installed on GitHub, so this only removes the stale connection from PostHog"
+            ? "The Flind app is no longer installed on GitHub, so this only removes the stale connection from Flind"
             : buildGithubDisconnectDescription(
                 accountLabel,
                 integration.installation_shared === true,

@@ -1,4 +1,4 @@
-# PostHog Development Guide
+# Flind Development Guide
 
 `AGENTS.md` is the source of truth for architecture and development rules. `CLAUDE.md` is a symlink to this file. Edit this file only.
 
@@ -6,7 +6,7 @@ Feature-level guides follow the same convention: the content lives in `<dir>/AGE
 
 ## Architecture
 
-PostHog uses a layered architecture. Business logic and UI live in shared `packages/*`. Each `apps/*` host boots those packages and binds host-specific implementations. `@flind/core` and `@flind/ui` must run unchanged on desktop and web.
+Flind uses a layered architecture. Business logic and UI live in shared `packages/*`. Each `apps/*` host boots those packages and binds host-specific implementations. `@flind/core` and `@flind/ui` must run unchanged on desktop and web.
 
 Principle: logic is portable; hosts are thin.
 
@@ -96,7 +96,7 @@ For each new file or meaningful change:
 
 1. Data source:
    - Git, fs, process, pty, watchers: `workspace-server` procedure, consumed by a `core` service through workspace-client.
-   - PostHog cloud API: `core` service/function using `@flind/api-client`.
+   - Flind cloud API: `core` service/function using `@flind/api-client`.
    - Client-local host capability: `@flind/platform` interface plus per-host adapter.
 2. Logic:
    - Real orchestration, retries, rules, sagas, or decisions: `core` service.
@@ -225,11 +225,11 @@ await boot(container);
 - `pnpm --filter <pkg> typecheck|test|build`: run a scoped task.
 - `pnpm --filter code package|make`: package the Electron app.
 - `node scripts/check-host-boundaries.mjs`: verify host boundary allowlist.
-- `pnpm --filter @flind/api-client generate-client` (or the `@flind/code` alias): regenerate the typed PostHog API client from the local OpenAPI schema. See [API client](#api-client).
+- `pnpm --filter @flind/api-client generate-client` (or the `@flind/code` alias): regenerate the typed Flind API client from the local OpenAPI schema. See [API client](#api-client).
 
 ## API client
 
-`packages/api-client/src/generated.ts` is the typed PostHog API client. It is generated, formatted, and committed; never edit it by hand.
+`packages/api-client/src/generated.ts` is the typed Flind API client. It is generated, formatted, and committed; never edit it by hand.
 
 It contains only what `packages/api-client/endpoint-allowlist.json` names:
 

@@ -1,4 +1,4 @@
-"""A best-effort Redis buffer of the intents that MCP agents state on their PostHog API calls.
+"""A best-effort Redis buffer of the intents that MCP agents state on their Flind API calls.
 
 `record_agent_intent` keeps an intent only when its request writes an activity log row, and most MCP
 calls are reads. This buffer keeps a short list of the intents of each user, team and day, so the

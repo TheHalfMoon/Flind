@@ -67,8 +67,8 @@ class EgressMetrics:
     a gauge that nothing can set only adds an empty series to every dashboard query.
 
     ``<scope>`` is the rate-limit budget owner in the *domain's own* id space — for GitHub the App
-    ``installation_id`` (what GitHub actually meters), never a PostHog DB row id. Keeping the identity in
-    the external API's namespace is what lets one shared budget map to one series: several PostHog
+    ``installation_id`` (what GitHub actually meters), never a Flind DB row id. Keeping the identity in
+    the external API's namespace is what lets one shared budget map to one series: several Flind
     integration rows can share a GitHub installation, and they must all land on the same gauge, otherwise
     one real budget splits into N flip-flopping per-row series. The recorder fills ``<scope>`` from the
     ``scope`` argument; per-caller attribution is the ``source`` label's job, not the identity's.
@@ -99,7 +99,7 @@ class EgressObservability:
     endpoint normaliser. Construct one per domain; the domain's transport records through it.
 
     ``scope`` is the rate-limit budget owner in the domain's own id space (e.g. a GitHub App installation
-    id, which several PostHog integrations can share) — not a PostHog DB row id. The counter is always
+    id, which several Flind integrations can share) — not a Flind DB row id. The counter is always
     incremented; the gauges are only set when a ``scope`` is given, since a last-observed gauge is
     meaningless when many owners alias onto one empty label.
     """

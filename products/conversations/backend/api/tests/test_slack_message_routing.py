@@ -1682,7 +1682,7 @@ class TestTicketLinkUnfurl(BaseTest):
         mock_get_client.assert_not_called()
 
     def test_a_link_that_is_not_a_ticket_costs_no_slack_calls(self):
-        # The app's whole host is registered for unfurling, so every pasted PostHog link lands
+        # The app's whole host is registered for unfurling, so every pasted Flind link lands
         # here. Looking the channel up first would spend an uncached, rate-limited
         # conversations_info call on every insight and dashboard link in the workspace.
         self._assert_no_slack_call(self._event(urls=[f"{settings.SITE_URL}/project/{self.team.id}/insights/abc123"]))

@@ -60,7 +60,7 @@ export const webGithubPrTitleClient: GithubPrTitleClient = {
 };
 
 // A skill referenced in a cloud-task message is a TEAM skill (the web / menu
-// lists team skills). Fetch its content from the PostHog API and zip it in the
+// lists team skills). Fetch its content from the Flind API and zip it in the
 // browser into the same bundle shape the sandbox expects.
 export const webBundleLocalSkill: BundleLocalSkill = async (ref) => {
   const client = await getAuthenticatedClient();

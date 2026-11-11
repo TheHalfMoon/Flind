@@ -591,7 +591,7 @@ const censorProperties = (properties, routes, propertiesToAnonymize) => {
 /**
  * Runs on every event
  *
- * @param event PostHog event
+ * @param event Flind event
  * @param meta metadata defined in the plugin.json
  * @returns modified event
  */

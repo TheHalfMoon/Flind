@@ -8,7 +8,7 @@ import { pinnedTasksApi } from "@flind/ui/features/sidebar/taskMetaApi";
 import { getAppViewSnapshot } from "@flind/ui/router/useAppView";
 import { openTaskInput } from "@flind/ui/router/useOpenTask";
 
-// Task deletion on web: the actual task delete goes through the PostHog API
+// Task deletion on web: the actual task delete goes through the Flind API
 // (client.deleteTask, passed into TaskDeletionService). These clients only
 // cover local-worktree cleanup + host UI. On the cloud-only host there are no
 // local worktrees, so the workspace client is inert (getAll -> {} means the

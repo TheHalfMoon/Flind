@@ -6,7 +6,7 @@ Start with the guide that matches the work you are doing. [AGENTS.md](../AGENTS.
 
 | Guide | Use it for |
 | --- | --- |
-| [Local development](./LOCAL-DEVELOPMENT.md) | Connect the desktop app to a local PostHog instance. |
+| [Local development](./LOCAL-DEVELOPMENT.md) | Connect the desktop app to a local Flind instance. |
 | [Architecture](./ARCHITECTURE.md) | Understand package layers, dependency injection, host boundaries, and feature placement. |
 | [Code conventions](./CONVENTIONS.md) | Follow component, store, hook, styling, logging, and analytics conventions. |
 | [Testing](./TESTING.md) | Choose and run unit, UI, end-to-end, interactive, and visual tests. |

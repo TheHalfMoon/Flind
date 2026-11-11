@@ -116,7 +116,7 @@ export function DiscordPresencePreview({
 
           <Flex direction="column" className="min-w-0 gap-0">
             <Text className="font-bold text-[15px] text-foreground">
-              PostHog
+              Flind
             </Text>
             <Text truncate className="text-[13px] text-foreground">
               {details}

@@ -1,11 +1,11 @@
 # Skill patterns (a cookbook)
 
-A catalog of the shapes that shared skills in the PostHog skills store tend to take.
+A catalog of the shapes that shared skills in the Flind skills store tend to take.
 Most useful skills are a variation on one of these.
 Pick the closest shape, copy its file layout and maintenance contract, and adapt it to the job.
 
 A skill in the store is more than a prompt.
-It is a small, versioned, shared memory that any agent on any surface (a local coding agent, a cloud task, Slack, PostHog Desktop) can load by name, and that agents with write access can update.
+It is a small, versioned, shared memory that any agent on any surface (a local coding agent, a cloud task, Slack, Flind Desktop) can load by name, and that agents with write access can update.
 The patterns below lean on those three properties: **shared**, **versioned**, and **agent-writable**.
 
 This is a living reference.
@@ -33,7 +33,7 @@ Add a pattern when a new shape proves itself over many sessions.
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
 | **Project hub**                   | an area of work runs over many sessions and you are tired of re-explaining where things stand.                              | `project-template` in the community store        |
 | **Big-build hub**                 | one large feature has a spec, a backlog, a PR stack, and reviewers who all need the same context.                           | a project hub plus a design doc and decision log |
-| **Ownership catalog**             | a team owns many PostHog objects (warehouse views, dashboards, alerts, scanners) and the context about them lives in heads. | an index body plus one reference per group       |
+| **Ownership catalog**             | a team owns many Flind objects (warehouse views, dashboards, alerts, scanners) and the context about them lives in heads. | an index body plus one reference per group       |
 | **Learning runbook**              | the same class of problem gets debugged again and again, and each investigation teaches something.                          | rules-first body plus `investigations/`          |
 | **Personal queue / daily driver** | one person wants a daily "what needs me next" view across the inbox, GitHub, or tickets.                                    | `my-inbox` in the community store                |
 | **Handover**                      | work passes to a teammate (holiday, rotation, reorg) and they need both the facts and a way into them.                      | a message whose bullets are skill names          |
@@ -101,7 +101,7 @@ When a reviewer asks "why this way?", the answer is a dated decision-log entry, 
 
 ## Ownership catalog
 
-An index of PostHog objects a team owns, with the context that the objects themselves cannot hold: what each one is for, how it connects to the rest, and the gotchas that bite when you read it.
+An index of Flind objects a team owns, with the context that the objects themselves cannot hold: what each one is for, how it connects to the rest, and the gotchas that bite when you read it.
 Good subjects are warehouse views, dashboards, alerts, Replay Vision scanners, and endpoints.
 
 Shape:
@@ -152,7 +152,7 @@ Each bullet names a skill (the project hub, the runbook, the catalog) and says w
 
 This works because the store is shared.
 The handover reaches the person and their agent at the same time.
-They do not need to paste context into their own agent: they say "use the <name> skill in the PostHog MCP to help here", and their agent gets the same context the author's agent had.
+They do not need to paste context into their own agent: they say "use the <name> skill in the Flind MCP to help here", and their agent gets the same context the author's agent had.
 
 ## Thinking document
 
@@ -184,7 +184,7 @@ The community store has `skills-best-practices` as a starting point, and `skills
 
 If an agent supports local skill files, a tiny local skill can point at the `skills-store` skill so a short command (for example `/phs`) loads the store.
 Keep the bridge thin, so updates to the store skill reach everyone without a local change.
-The PostHog AI plugin already includes `skills-store`, so plugin users do not need a bridge.
+The Flind AI plugin already includes `skills-store`, so plugin users do not need a bridge.
 
 ## Cross-cutting techniques
 

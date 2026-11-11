@@ -29,8 +29,8 @@ export function WorkflowSuggestionCard({ id, proposal }: { id: string; proposal:
                 <div className="flex flex-col gap-1 grow">
                     <div className="flex items-center gap-2 flex-wrap">
                         <span className="font-semibold">{proposal.title}</span>
-                        <Tooltip title="PostHog's scout is the only thing that files a suggestion.">
-                            <LemonTag type="highlight">Suggested by PostHog</LemonTag>
+                        <Tooltip title="Flind's scout is the only thing that files a suggestion.">
+                            <LemonTag type="highlight">Suggested by Flind</LemonTag>
                         </Tooltip>
                         {proposal.is_stale && (
                             <Tooltip title="Someone changed the same step since this was suggested. Approving it would undo their edit. Reject it, and the scout can suggest again from the current version.">

@@ -42,7 +42,7 @@ class TestSetupTasksOAuth(TestCase):
                 POSTHOG_AI_APP_CLIENT_ID_DEV,
                 POSTHOG_AI_APP_ID_DEV,
                 {
-                    "name": "PostHog AI Dev App",
+                    "name": "Flind AI Dev App",
                     "client_type": OAuthApplication.CLIENT_CONFIDENTIAL,
                     "authorization_grant_type": OAuthApplication.GRANT_AUTHORIZATION_CODE,
                     "redirect_uris": "http://localhost:8000/authorize",
@@ -100,7 +100,7 @@ class TestSetupTasksOAuth(TestCase):
     def test_warns_when_an_existing_app_has_the_wrong_id(self) -> None:
         OAuthApplication.objects.create(
             client_id=POSTHOG_AI_APP_CLIENT_ID_DEV,
-            name="PostHog AI Dev App",
+            name="Flind AI Dev App",
             client_type=OAuthApplication.CLIENT_CONFIDENTIAL,
             authorization_grant_type=OAuthApplication.GRANT_AUTHORIZATION_CODE,
             redirect_uris="http://localhost:8000/authorize",

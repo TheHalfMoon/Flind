@@ -74,7 +74,7 @@ class SdkOutdatedCheck(RollupHealthCheck):
             the payload, and use `execute-sql` to see which `properties.$lib` / `properties.$lib_version`
             values still send events (`SELECT properties.$lib, properties.$lib_version, count() FROM events
             WHERE timestamp > now() - INTERVAL 7 DAY GROUP BY 1, 2 ORDER BY 3 DESC`). Then fix it in the
-            user's codebase: update or replace the PostHog SDK dependency in the relevant manifest
+            user's codebase: update or replace the Flind SDK dependency in the relevant manifest
             (package.json, requirements.txt / pyproject.toml, Gemfile, go.mod, etc.), update the lockfile,
             and check the SDK's documentation and changelog for required code changes. The issue clears on
             a later check once old traffic no longer qualifies.

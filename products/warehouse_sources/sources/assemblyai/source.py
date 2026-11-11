@@ -64,7 +64,7 @@ class AssemblyAISource(ResumableSource[AssemblyAISourceConfig, AssemblyAIResumeC
             label="AssemblyAI",
             releaseStatus=ReleaseStatus.GA,
             caption=(
-                "Enter your AssemblyAI API key to sync your speech-to-text transcripts into the PostHog "
+                "Enter your AssemblyAI API key to sync your speech-to-text transcripts into the Flind "
                 "Data warehouse. Find your key in the [AssemblyAI dashboard](https://www.assemblyai.com/app/api-keys).\n\n"
                 "Only transcripts created in the **last 90 days** are retained by AssemblyAI and available to sync."
             ),

@@ -6,5 +6,5 @@ interface PostHogLogomarkProps {
 }
 
 export function PostHogLogomark({ height = 18 }: PostHogLogomarkProps): ReactElement {
-    return <LogomarkShapes height={height} accessibilityRole="image" accessibilityLabel="PostHog" />
+    return <LogomarkShapes height={height} accessibilityRole="image" accessibilityLabel="Flind" />
 }

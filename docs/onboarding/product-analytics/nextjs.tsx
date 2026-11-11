@@ -12,7 +12,7 @@ export const getNextJSSetupSteps = (ctx: OnboardingComponentsContext): StepDefin
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog JavaScript library using your package manager:</Markdown>
+                    <Markdown>Install the Flind JavaScript library using your package manager:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -54,7 +54,7 @@ export const getNextJSSetupSteps = (ctx: OnboardingComponentsContext): StepDefin
             content: (
                 <>
                     <Markdown>
-                        Add your PostHog project token and host to your `.env.local` file and to your hosting provider
+                        Add your Flind project token and host to your `.env.local` file and to your hosting provider
                         (e.g. Vercel, Netlify). These values need to start with `NEXT_PUBLIC_` to be accessible on the
                         client-side.
                     </Markdown>
@@ -74,7 +74,7 @@ export const getNextJSSetupSteps = (ctx: OnboardingComponentsContext): StepDefin
             ),
         },
         {
-            title: 'Initialize PostHog',
+            title: 'Initialize Flind',
             badge: 'required',
             content: (
                 <>
@@ -178,7 +178,7 @@ export const getNextJSSetupSteps = (ctx: OnboardingComponentsContext): StepDefin
                             </Tab.Panel>
                             <Tab.Panel>
                                 <Markdown>
-                                    For the Pages router, integrate PostHog at the root of your app in `pages/_app.tsx`:
+                                    For the Pages router, integrate Flind at the root of your app in `pages/_app.tsx`:
                                 </Markdown>
                                 <CodeBlock
                                     blocks={[
@@ -220,7 +220,7 @@ export const getNextJSSetupSteps = (ctx: OnboardingComponentsContext): StepDefin
 
                     <CalloutBox type="fyi" title="Defaults option">
                         <Markdown>
-                            The `defaults` option automatically configures PostHog with recommended settings for new
+                            The `defaults` option automatically configures Flind with recommended settings for new
                             projects. See [SDK defaults](https://posthog.com/docs/libraries/js#sdk-defaults) for
                             details.
                         </Markdown>
@@ -235,7 +235,7 @@ export const getNextJSClientAccessStep = (ctx: OnboardingComponentsContext): Ste
     const { CodeBlock, Markdown, Tab, dedent } = ctx
 
     return {
-        title: 'Accessing PostHog on the client',
+        title: 'Accessing Flind on the client',
         badge: 'recommended',
         content: (
             <>
@@ -273,7 +273,7 @@ export const getNextJSClientAccessStep = (ctx: OnboardingComponentsContext): Ste
                             />
                         </Tab.Panel>
                         <Tab.Panel>
-                            <Markdown>Use the `usePostHog` hook to access PostHog in client components:</Markdown>
+                            <Markdown>Use the `usePostHog` hook to access Flind in client components:</Markdown>
                             <CodeBlock
                                 blocks={[
                                     {
@@ -353,7 +353,7 @@ export const getNextJSServerSteps = (ctx: OnboardingComponentsContext): StepDefi
                         ]}
                     />
                     <Markdown>
-                        Then, initialize PostHog in your API route or server action. Choose the method based on your
+                        Then, initialize Flind in your API route or server action. Choose the method based on your
                         router type:
                     </Markdown>
 
@@ -365,8 +365,8 @@ export const getNextJSServerSteps = (ctx: OnboardingComponentsContext): StepDefi
                         <Tab.Panels>
                             <Tab.Panel>
                                 <Markdown>
-                                    For the App router, you can use PostHog in API routes or server actions. Create a
-                                    new PostHog client instance for each request, or reuse a singleton instance across
+                                    For the App router, you can use Flind in API routes or server actions. Create a
+                                    new Flind client instance for each request, or reuse a singleton instance across
                                     requests:
                                 </Markdown>
                                 <CodeBlock
@@ -375,10 +375,10 @@ export const getNextJSServerSteps = (ctx: OnboardingComponentsContext): StepDefi
                                             language: 'typescript',
                                             file: 'app/api/example/route.ts',
                                             code: dedent`
-                                                import { PostHog } from 'posthog-node'
+                                                import { Flind } from 'posthog-node'
 
                                                 export async function POST(request: Request) {
-                                                    const posthog = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
+                                                    const posthog = new Flind(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
                                                         host: process.env.NEXT_PUBLIC_POSTHOG_HOST
                                                     })
 
@@ -393,7 +393,7 @@ export const getNextJSServerSteps = (ctx: OnboardingComponentsContext): StepDefi
                                         },
                                     ]}
                                 />
-                                <Markdown>You can also use PostHog in server actions:</Markdown>
+                                <Markdown>You can also use Flind in server actions:</Markdown>
                                 <CodeBlock
                                     blocks={[
                                         {
@@ -402,10 +402,10 @@ export const getNextJSServerSteps = (ctx: OnboardingComponentsContext): StepDefi
                                             code: dedent`
                                                 'use server'
 
-                                                import { PostHog } from 'posthog-node'
+                                                import { Flind } from 'posthog-node'
 
                                                 export async function myServerAction() {
-                                                    const posthog = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
+                                                    const posthog = new Flind(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
                                                         host: process.env.NEXT_PUBLIC_POSTHOG_HOST
                                                     })
 
@@ -422,21 +422,21 @@ export const getNextJSServerSteps = (ctx: OnboardingComponentsContext): StepDefi
                                 />
                             </Tab.Panel>
                             <Tab.Panel>
-                                <Markdown>For the Pages router, use PostHog in your API routes:</Markdown>
+                                <Markdown>For the Pages router, use Flind in your API routes:</Markdown>
                                 <CodeBlock
                                     blocks={[
                                         {
                                             language: 'typescript',
                                             file: 'pages/api/example.ts',
                                             code: dedent`
-                                                import { PostHog } from 'posthog-node'
+                                                import { Flind } from 'posthog-node'
                                                 import type { NextApiRequest, NextApiResponse } from 'next'
 
                                                 export default async function handler(
                                                     req: NextApiRequest,
                                                     res: NextApiResponse
                                                 ) {
-                                                    const posthog = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
+                                                    const posthog = new Flind(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
                                                         host: process.env.NEXT_PUBLIC_POSTHOG_HOST
                                                     })
 
@@ -461,7 +461,7 @@ export const getNextJSServerSteps = (ctx: OnboardingComponentsContext): StepDefi
                         <Markdown>
                             Always call `await posthog.shutdown()` when you're done with the client to ensure all events
                             are flushed before the request completes. For better performance, consider creating a
-                            singleton PostHog instance that you reuse across requests.
+                            singleton Flind instance that you reuse across requests.
                         </Markdown>
                     </CalloutBox>
                 </>

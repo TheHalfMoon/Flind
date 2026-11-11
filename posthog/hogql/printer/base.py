@@ -1171,7 +1171,7 @@ class BasePrinter(Visitor[str]):
         return f"{node.name}({', '.join([self.visit(arg) for arg in node.args])}{order_by_part}){filter_part}"
 
     def _render_posthog_function_call(self, node: "ast.Call", func_meta) -> str:
-        """Render a PostHog-extension function call. Default is HogQL pass-through; CH overrides."""
+        """Render a Flind-extension function call. Default is HogQL pass-through; CH overrides."""
         args = [self.visit(arg) for arg in node.args]
         return f"{node.name}({', '.join(args)})"
 

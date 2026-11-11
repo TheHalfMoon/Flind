@@ -90,7 +90,7 @@ def _tag_team_id_on_current_span(input: ExecuteActivityInput | ExecuteWorkflowIn
     """Tag the active span (the Temporal RunActivity/RunWorkflow span, when OTel tracing is
     enabled on the worker) with team_id read from the activity/workflow input.
 
-    team_id is named consistently across PostHog's Temporal input dataclasses, so a reflective
+    team_id is named consistently across Flind's Temporal input dataclasses, so a reflective
     read covers nearly all of them without per-workflow opt-in. Best-effort: span bookkeeping
     must never break execution, and set_attribute is a non-IO no-op when the span isn't recording."""
     try:
@@ -215,7 +215,7 @@ class _PostHogClientWorkflowInterceptor(WorkflowInboundInterceptor):
 
 
 class PostHogClientInterceptor(Interceptor):
-    """PostHog Interceptor: reports workflow & activity exceptions to PostHog and tags the
+    """Flind Interceptor: reports workflow & activity exceptions to Flind and tags the
     Temporal span of each execution with team_id (read reflectively from the input)."""
 
     task_queue = ALL_TASK_QUEUES

@@ -13,10 +13,10 @@ import type { ViewsAccess } from './useViewsAccess'
 
 interface FeatureCopy {
     unavailableTitle: string
-    /** What the app cannot read, as in "PostHog doesn't let this app read …". */
+    /** What the app cannot read, as in "Flind doesn't let this app read …". */
     reads: string
     reauthTitle: string
-    /** What the new permission shows, as in "PostHog needs a new permission to show …". */
+    /** What the new permission shows, as in "Flind needs a new permission to show …". */
     shows: string
 }
 
@@ -83,7 +83,7 @@ export function ViewsReauthState({
             <StateView
                 icon={icon}
                 title={copy.unavailableTitle}
-                message={`PostHog doesn't let this app read ${copy.reads} yet, so signing in again won't help. ${feature === 'inbox' ? 'Your chats still work.' : 'Your inbox and chats still work.'}`}
+                message={`Flind doesn't let this app read ${copy.reads} yet, so signing in again won't help. ${feature === 'inbox' ? 'Your chats still work.' : 'Your inbox and chats still work.'}`}
                 testID={`${feature}-unavailable`}
             />
         )
@@ -91,7 +91,7 @@ export function ViewsReauthState({
     const message =
         state === 'personal-key-missing-scopes'
             ? `Add ${scopeList(FEATURE_SCOPES[feature])} to your key.`
-            : `PostHog needs a new permission to show ${copy.shows} on this phone.`
+            : `Flind needs a new permission to show ${copy.shows} on this phone.`
     return (
         <StateView
             icon={icon}

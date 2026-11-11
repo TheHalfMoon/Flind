@@ -48,7 +48,7 @@ class LemlistSource(ResumableSource[LemlistSourceConfig, LemlistResumeConfig]):
             category=DataWarehouseSourceCategory.SALES,
             label="Lemlist",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your lemlist API key to sync your lemlist data into the PostHog Data warehouse.
+            caption="""Enter your lemlist API key to sync your lemlist data into the Flind Data warehouse.
 
 You can generate an API key in your lemlist **Settings > Integrations** page.""",
             iconPath="/static/services/lemlist.png",

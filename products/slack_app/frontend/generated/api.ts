@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -57,7 +57,7 @@ export const getSlackAppWorkspaceSetupChannelsRetrieveUrl = (projectId: string, 
 }
 
 /**
- * @summary List the public channels that PostHog can join for a Slack app install
+ * @summary List the public channels that Flind can join for a Slack app install
  */
 export const slackAppWorkspaceSetupChannelsRetrieve = async (
     projectId: string,
@@ -96,7 +96,7 @@ export const getSlackAppWorkspaceSetupJoinChannelsCreateUrl = (projectId: string
 }
 
 /**
- * @summary Add PostHog to public channels of a Slack app install
+ * @summary Add Flind to public channels of a Slack app install
  */
 export const slackAppWorkspaceSetupJoinChannelsCreate = async (
     projectId: string,

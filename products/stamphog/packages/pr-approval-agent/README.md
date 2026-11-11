@@ -366,7 +366,7 @@ The categories the shipped policy defines:
 | **stamphog_policy** | Stamphog's own policy files, engine, and gate inputs |
 
 Some words are absent on purpose, calibrated against deny-listed PRs over 120 days.
-`subscription` means scheduled insight deliveries in the PostHog monorepo, not payments.
+`subscription` means scheduled insight deliveries in the Flind monorepo, not payments.
 `routing` only ever matched app-level DRF routing, never infrastructure.
 The bare word `deploy` matches deploy-timing docs and unrelated code, so narrow literals like `bin/deploy` and `deploy.sh` cover real deployment artifacts instead.
 
@@ -441,7 +441,7 @@ Every run produces a JSON evidence bundle (`--output-json` on `review_pr.py`) co
 
 ## Empirical basis
 
-Tier thresholds and deny categories calibrated against 356 PRs that received quick human approval (stamp) in the PostHog repo over ~90 days:
+Tier thresholds and deny categories calibrated against 356 PRs that received quick human approval (stamp) in the Flind repo over ~90 days:
 
 - 126 tiny (1-10 lines), 102 small (11-50 lines) - most quick approvals are small
 - 284/356 single-area - narrow scope dominates

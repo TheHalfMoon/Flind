@@ -34,7 +34,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "A package (artifact) stored in a repository, with its version, size, download count and synchronisation status.",
         "docs_url": "https://help.cloudsmith.io/reference/packages_list",
         "columns": {
-            "repository_slug": "Slug of the repository the package was listed from. Added by PostHog so packages stay distinguishable across repositories.",
+            "repository_slug": "Slug of the repository the package was listed from. Added by Flind so packages stay distinguishable across repositories.",
             "slug_perm": "Permanent identifier for the package within its repository.",
             "slug": "The public identifier for the package.",
             "identifier_perm": "Unique and permanent identifier for the package.",
@@ -93,7 +93,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "An entitlement token for a repository: a download credential with its own usage limits and counters. The token value itself is never synced.",
         "docs_url": "https://help.cloudsmith.io/reference/entitlements_list",
         "columns": {
-            "repository_slug": "Slug of the repository the entitlement belongs to. Added by PostHog so entitlements stay distinguishable across repositories.",
+            "repository_slug": "Slug of the repository the entitlement belongs to. Added by Flind so entitlements stay distinguishable across repositories.",
             "slug_perm": "Permanent identifier for the entitlement token.",
             "name": "Name of the entitlement token.",
             "created_at": "The time the token was created.",
@@ -125,7 +125,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "A webhook configured on a repository, including the events it fires on and the delivery health of its most recent request. The destination URL and request-body templates are not synced, since either can embed a delivery credential.",
         "docs_url": "https://help.cloudsmith.io/reference/webhooks_list",
         "columns": {
-            "repository_slug": "Slug of the repository the webhook belongs to. Added by PostHog so webhooks stay distinguishable across repositories.",
+            "repository_slug": "Slug of the repository the webhook belongs to. Added by Flind so webhooks stay distinguishable across repositories.",
             "slug_perm": "Permanent identifier for the webhook.",
             "events": "The events the webhook is subscribed to, for example package.created.",
             "package_query": "Package search query that a package must match for the webhook to fire.",
@@ -184,7 +184,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "An audit log entry for a single repository: who did what, to which object, and when. Availability depends on your Cloudsmith plan.",
         "docs_url": "https://help.cloudsmith.io/reference/audit_log_repo_list",
         "columns": {
-            "repository_slug": "Slug of the repository the entry was listed from. Added by PostHog so entries stay distinguishable across repositories.",
+            "repository_slug": "Slug of the repository the entry was listed from. Added by Flind so entries stay distinguishable across repositories.",
             "uuid": "Identifier for the audit log entry.",
             "event": "The event that was recorded.",
             "event_at": "The time the event happened.",
@@ -203,8 +203,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "A dependency declared by a package, including transitive dependencies where the package format supports them.",
         "docs_url": "https://help.cloudsmith.io/reference/packages_dependencies",
         "columns": {
-            "repository_slug": "Slug of the repository the package belongs to. Added by PostHog.",
-            "package_slug_perm": "Permanent identifier of the package that declares the dependency. Added by PostHog.",
+            "repository_slug": "Slug of the repository the package belongs to. Added by Flind.",
+            "package_slug_perm": "Permanent identifier of the package that declares the dependency. Added by Flind.",
             "name": "Name of the package that is depended on.",
             "version": "Version constraint for the dependency, if any.",
             "operator": "Comparison operator that applies to the version constraint, for example = or >=.",

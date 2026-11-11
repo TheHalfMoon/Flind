@@ -250,7 +250,7 @@ class MultiTurnSession:
         regardless of grant scope (a scout's per-scout selection). None leaves them
         unfiltered; an empty list mounts nothing.
 
-        `mcp_tool_allowlist` stamps the PostHog MCP tools the run picked. The API refuses a
+        `mcp_tool_allowlist` stamps the Flind MCP tools the run picked. The API refuses a
         write that no held tool calls. None leaves the run on its token scopes alone.
 
         `files` go into the sandbox before the first turn, and the first prompt lists

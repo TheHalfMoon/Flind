@@ -37,7 +37,7 @@ export function LearnFromPastTicketsSetting(): JSX.Element | null {
                 <h4 className="m-0 font-semibold">Learn from past tickets</h4>
                 <p className="m-0 text-secondary">
                     Learn from support tickets resolved in the last 90 days, not only from new ones. Tickets that were
-                    already read are skipped. PostHog reads them in the background, which can take a few hours.
+                    already read are skipped. Flind reads them in the background, which can take a few hours.
                 </p>
             </div>
             <LemonBanner type="info" className="w-full">

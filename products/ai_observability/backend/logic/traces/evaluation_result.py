@@ -62,7 +62,7 @@ def _result_type(raw: str | None) -> OutputType | None:
 
 def _produced_at(start_time: str | None, timestamp: datetime) -> datetime:
     # A live verdict's event time is its run's start time, but a backfilled verdict takes the time of the step it
-    # grades, so only the start time orders runs. Results from outside PostHog may not send one.
+    # grades, so only the start time orders runs. Results from outside Flind may not send one.
     try:
         parsed = datetime.fromisoformat(start_time) if start_time else None
     except ValueError:

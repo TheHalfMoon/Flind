@@ -51,7 +51,7 @@ class UservoiceSource(ResumableSource[UservoiceSourceConfig, UservoiceResumeConf
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="UserVoice",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your UserVoice account subdomain and API access token to pull your UserVoice data into the PostHog Data warehouse.
+            caption="""Enter your UserVoice account subdomain and API access token to pull your UserVoice data into the Flind Data warehouse.
 
 Create a trusted API client under **Settings → Channels → Add API Client** in your UserVoice Admin Console, then generate an access token to use here. The token has admin-level read access to your account's feedback data.""",
             iconPath="/static/services/uservoice.png",

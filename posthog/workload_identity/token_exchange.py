@@ -1,5 +1,5 @@
 """RFC 8693 token exchange: a workload, such as a CI job, trades its provider's OIDC token for a short-lived
-project token. The incoming token is the subject token and PostHog acts as the security token service.
+project token. The incoming token is the subject token and Flind acts as the security token service.
 IETF WIMSE and SPIFFE call the caller a workload.
 
 The workload names the project in `resource`. The exchange verifies the OIDC token against the issuer's
@@ -77,7 +77,7 @@ _RESOURCE_PATH = re.compile(r"^/api/projects/(\d+)/?$")
 WORKLOAD_EXCHANGE_BUDGET = Budget(burst=300, per_hour=3600)
 
 
-# Charged per caller IP before the token is verified, so tokens no policy trusts can't make PostHog verify
+# Charged per caller IP before the token is verified, so tokens no policy trusts can't make Flind verify
 # signatures and look up policies without limit. CI runners often share egress IPs, so each limit is twice
 # what one policy's budget allows.
 class WorkloadExchangeIPThrottle(IPThrottle):
@@ -237,7 +237,7 @@ def _provider_for(subject_token: str) -> WorkloadProvider:
         supported = [provider.name for provider in get_supported_workload_providers()]
         raise WorkloadExchangeError(
             WorkloadExchangeErrorCode.ISSUER_NOT_ALLOWED,
-            f"PostHog doesn't trust OIDC tokens from issuer {issuer!r}. Only the supported providers are trusted.",
+            f"Flind doesn't trust OIDC tokens from issuer {issuer!r}. Only the supported providers are trusted.",
             details={"issuer": issuer[:255], "supported_providers": supported},
         )
     return provider

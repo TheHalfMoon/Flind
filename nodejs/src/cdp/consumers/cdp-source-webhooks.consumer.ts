@@ -155,7 +155,7 @@ export class CdpSourceWebhooksConsumer extends CdpConsumerBase<PluginsServerConf
             // This route takes no credentials, so a manual run goes through Django, which checks the user's access.
             throw new SourceWebhookError(
                 403,
-                'A manual trigger runs only for a signed-in user. Use the trigger button in PostHog or POST /api/projects/:project_id/hog_flows/:id/run/.'
+                'A manual trigger runs only for a signed-in user. Use the trigger button in Flind or POST /api/projects/:project_id/hog_flows/:id/run/.'
             )
         }
         if (

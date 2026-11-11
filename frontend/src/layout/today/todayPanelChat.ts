@@ -1,6 +1,6 @@
 import type { ActiveCreation } from '~/layout/ai/runnerPanelLogic'
 
-/** A task the PostHog AI panel can show. The panel streams one run, so it needs the run, not only the task. */
+/** A task the Flind AI panel can show. The panel streams one run, so it needs the run, not only the task. */
 export interface TodayPanelChatTask {
     taskId: string
     runId: string

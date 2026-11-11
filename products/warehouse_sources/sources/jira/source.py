@@ -64,7 +64,7 @@ class JiraSource(ResumableSource[JiraSourceConfig, JiraResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Jira",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Atlassian Jira credentials to pull your Jira data into the PostHog Data warehouse.
+            caption="""Enter your Atlassian Jira credentials to pull your Jira data into the Flind Data warehouse.
 
 Create an API token at [id.atlassian.com/manage-profile/security/api-tokens](https://id.atlassian.com/manage-profile/security/api-tokens).
 

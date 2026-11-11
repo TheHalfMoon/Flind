@@ -1,6 +1,6 @@
 ---
 name: writing-clickhouse-queries
-description: Guide for writing performant ClickHouse queries in PostHog product code. Use when writing HogQL query runners, adding or reviewing a ClickHouse call site (`sync_execute`, `execute_hogql_query`, a `QueryRunner`) and choosing its `Workload` (ONLINE, OFFLINE, LOGS, ENDPOINTS), designing a ClickHouse table for a new product, adding materialized columns or skip indexes, or choosing a row ID format. For optimizing an existing query that is already too slow, use `/optimizing-clickhouse-and-hogql-queries` instead.
+description: Guide for writing performant ClickHouse queries in Flind product code. Use when writing HogQL query runners, adding or reviewing a ClickHouse call site (`sync_execute`, `execute_hogql_query`, a `QueryRunner`) and choosing its `Workload` (ONLINE, OFFLINE, LOGS, ENDPOINTS), designing a ClickHouse table for a new product, adding materialized columns or skip indexes, or choosing a row ID format. For optimizing an existing query that is already too slow, use `/optimizing-clickhouse-and-hogql-queries` instead.
 ---
 
 # Writing ClickHouse queries for new products

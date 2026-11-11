@@ -268,7 +268,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Custom tags assigned to monitored entities, one row per tag and entity type. Tags Dynatrace applies automatically, and imported tags, are not included.",
         "docs_url": "https://docs.dynatrace.com/docs/dynatrace-api/environment-api/custom-tags/get-tags",
         "columns": {
-            "entityType": "Entity type the tag was read for (e.g. HOST, SERVICE). Added by PostHog, because Dynatrace reads tags one entity type at a time.",
+            "entityType": "Entity type the tag was read for (e.g. HOST, SERVICE). Added by Flind, because Dynatrace reads tags one entity type at a time.",
             "context": "Origin of the tag, such as AWS or Cloud Foundry. Custom tags use CONTEXTLESS.",
             "key": "Key of the tag.",
             "value": "Value of the tag. Empty for a tag that is just a key.",

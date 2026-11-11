@@ -354,7 +354,7 @@ export function CreateChannelModal({
   };
 
   const aboutTitle = `What's this ${spacesLayout ? "space" : "channel"} about?`;
-  const aboutBlurb = `Tell PostHog about this ${
+  const aboutBlurb = `Tell Flind about this ${
     spacesLayout ? "space" : "channel"
   }. We'll use it to create a CONTEXT.md file with relevant information for future tasks.`;
 

@@ -69,13 +69,13 @@ class CdcStatusSerializer(serializers.Serializer):
     management_mode = serializers.ChoiceField(
         choices=["posthog", "self_managed"],
         required=False,
-        help_text="Who owns the slot and publication: PostHog or the customer.",
+        help_text="Who owns the slot and publication: Flind or the customer.",
     )
     slot_name = serializers.CharField(
-        required=False, help_text="Replication slot PostHog consumes from. Empty when unset."
+        required=False, help_text="Replication slot Flind consumes from. Empty when unset."
     )
     publication_name = serializers.CharField(
-        required=False, help_text="Publication PostHog reads changes from. Empty when unset."
+        required=False, help_text="Publication Flind reads changes from. Empty when unset."
     )
     lag_warning_threshold_mb = serializers.IntegerField(required=False, help_text="Lag in MB above which the UI warns.")
     lag_critical_threshold_mb = serializers.IntegerField(

@@ -40,7 +40,7 @@ export type todayPanelChatSessionLogicType = MakeLogicType<
 >
 
 /**
- * Keeps the PostHog AI panel's chat across a reload of this tab. Mounted for the whole session, so it also keeps the
+ * Keeps the Flind AI panel's chat across a reload of this tab. Mounted for the whole session, so it also keeps the
  * panel's runner state alive while a chat moves off /ai and the page changes.
  */
 export const todayPanelChatSessionLogic = kea<todayPanelChatSessionLogicType>([

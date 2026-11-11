@@ -73,7 +73,7 @@ export function endpointYaml(path: string, item: PullItem, types: ReadonlyMap<st
 }
 
 export default defineCommand({
-    description: 'Write PostHog endpoints to local YAML files',
+    description: 'Write Flind endpoints to local YAML files',
     args: { names: { description: 'The endpoints to pull', variadic: true, optional: true } },
     options: {
         all: { type: 'boolean', description: 'Pull every endpoint in the project' },
@@ -123,11 +123,11 @@ export default defineCommand({
             if (missing.length === args.names.length) {
                 throw new HogError(
                     'endpoint_not_found',
-                    `PostHog has no endpoint named ${missing.join(', ')}.`,
+                    `Flind has no endpoint named ${missing.join(', ')}.`,
                     'Run `hog endpoints list` to see the names.'
                 )
             }
-            problems.push(...missing.map((name) => ({ path: name, message: 'PostHog has no endpoint with this name' })))
+            problems.push(...missing.map((name) => ({ path: name, message: 'Flind has no endpoint with this name' })))
             selected = [...found.values()]
         }
         if (fileTarget && selected.length > 1) {
@@ -209,7 +209,7 @@ export default defineCommand({
         const messages = {
             preview: 'Dry run: no files written.',
             cancelled: 'Cancelled: no files written.',
-            nothing_to_do: 'The local files already match PostHog.',
+            nothing_to_do: 'The local files already match Flind.',
         }
         out.line(out.style(messages[result.status], 'dim'))
     },

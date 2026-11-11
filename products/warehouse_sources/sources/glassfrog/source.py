@@ -45,7 +45,7 @@ class GlassfrogSource(SimpleSource[GlassfrogSourceConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="GlassFrog",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your GlassFrog API key to sync your organization's circles, roles, people, projects, actions, tensions, proposals, governance meetings, metrics, and checklist items into the PostHog Data warehouse.
+            caption="""Enter your GlassFrog API key to sync your organization's circles, roles, people, projects, actions, tensions, proposals, governance meetings, metrics, and checklist items into the Flind Data warehouse.
 
 You can create a v3 API key in GlassFrog under [Profile & Settings > API](https://app.glassfrog.com/). The key grants access at your user's permission level.""",
             iconPath="/static/services/glassfrog.png",

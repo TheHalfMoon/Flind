@@ -53,7 +53,7 @@ class AhaIdeasSource(ResumableSource[AhaIdeasSourceConfig, AhaIdeasResumeConfig]
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Aha! Ideas",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Aha! account domain and API key to pull your Aha! Ideas portal data — ideas, votes, comments, submitters, and portals — into the PostHog Data warehouse.
+            caption="""Enter your Aha! account domain and API key to pull your Aha! Ideas portal data — ideas, votes, comments, submitters, and portals — into the Flind Data warehouse.
 
 Create an API key under **Settings → Personal → Developer → API keys** in your Aha! account. The key inherits your account permissions, so it can read every record you can see.""",
             iconPath="/static/services/aha_ideas.png",

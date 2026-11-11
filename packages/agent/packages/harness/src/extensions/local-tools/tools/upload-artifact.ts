@@ -67,7 +67,7 @@ export const uploadArtifactTool = defineLocalTool({
       const client = createSandboxPosthogClient();
       if (!client) {
         return errorResult(
-          "PostHog artifact storage is not configured in this sandbox.",
+          "Flind artifact storage is not configured in this sandbox.",
         );
       }
 

@@ -18,7 +18,7 @@ export function LoginSignupLink(): JSX.Element | null {
     if (accountExists === null) {
         return (
             <p className="mt-4 mb-0 text-sm text-secondary text-center">
-                <span>New to PostHog?</span>{' '}
+                <span>New to Flind?</span>{' '}
                 <Link
                     onClick={() => chooseAccountPath('signup', null)}
                     data-attr="auth-unknown-account-signup"

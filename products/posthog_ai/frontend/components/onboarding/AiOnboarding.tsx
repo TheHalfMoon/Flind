@@ -13,7 +13,7 @@ export type { AiOnboardingProps } from './AiOnboardingImpl'
 const Lazy = lazyWithRetry(() => import('./AiOnboardingImpl').then((m) => ({ default: m.AiOnboarding })))
 
 /**
- * The PostHog AI onboarding takeover, code-split. Renders nothing until the host marks the user eligible
+ * The Flind AI onboarding takeover, code-split. Renders nothing until the host marks the user eligible
  * (`autoOpen`) or the replay button opens it.
  */
 export function AiOnboarding(props: AiOnboardingProps): JSX.Element {

@@ -473,7 +473,7 @@ def _append_debug_column_to_pyarrows_table(table: pa.Table, load_id: int) -> pa.
     debug_info = f'{{"load_id": {load_id}}}'
 
     column = pa.array([debug_info] * table.num_rows, type=pa.string())
-    # Source data can already carry `_ph_debug`, e.g. files written by an earlier PostHog sync.
+    # Source data can already carry `_ph_debug`, e.g. files written by an earlier Flind sync.
     if "_ph_debug" in table.column_names:
         return table.set_column(table.schema.get_field_index("_ph_debug"), "_ph_debug", column)
     return table.append_column("_ph_debug", column)
@@ -506,7 +506,7 @@ INTERNAL_COLUMN_NAMES = frozenset({"_ph_debug", PARTITION_KEY, "_dlt_id", "_dlt_
 def drop_internal_columns(table: pa.Table) -> pa.Table:
     """Drop the columns the pipeline adds itself from a source batch.
 
-    A source can return them when it reads a table PostHog wrote, such as a Delta table in a bucket.
+    A source can return them when it reads a table Flind wrote, such as a Delta table in a bucket.
     Kept, they would exist twice in the batch once the pipeline adds its own.
     """
     internal = [name for name in table.column_names if name in INTERNAL_COLUMN_NAMES]

@@ -66,7 +66,7 @@ class AppStoreConnectSource(ResumableSource[AppStoreConnectSourceConfig, AppStor
     def get_source_config(self) -> SourceConfig:
         from products.warehouse_sources.sources.app_store_connect.restatements import restatement_caption
 
-        caption = """Pull your App Store apps, versions, builds, reviews and sales reports into the PostHog Data warehouse.
+        caption = """Pull your App Store apps, versions, builds, reviews and sales reports into the Flind Data warehouse.
 
 An **Account Holder** or **Admin** creates an API key under **Users and Access → Integrations → App Store Connect API** in App Store Connect. Set the key's access role there — it decides which tables sync. Copy the issuer ID and key ID from that page, then paste the contents of the `.p8` private key file you download. Apple only lets you download that file once, so keep a copy.
 

@@ -430,7 +430,7 @@ export class HogExecutorAsyncService {
                         selfLoopGuardCounter.inc({ mode: 'enforce', action: 'blocked' })
                         addLog(
                             'error',
-                            `Refusing to fetch a PostHog ingestion endpoint using this project's own API key - this destination's event-forwarding loop has already repeated ${SELF_LOOP_MAX_DEPTH} times. To capture an event back into this project use the 'postHogCapture' helper, or to enrich incoming events use a transformation.`
+                            `Refusing to fetch a Flind ingestion endpoint using this project's own API key - this destination's event-forwarding loop has already repeated ${SELF_LOOP_MAX_DEPTH} times. To capture an event back into this project use the 'postHogCapture' helper, or to enrich incoming events use a transformation.`
                         )
                         result.error = new Error('Self-referential event-forwarding loop blocked at max depth')
                         result.finished = true

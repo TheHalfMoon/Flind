@@ -100,7 +100,7 @@ export function GatewayTeamAndAgents({ onOpenAgent, onOpenMember }: GatewayTeamA
         <div className="flex flex-col gap-6 min-w-0">
             <div className="flex flex-col gap-1">
                 <h2 className="mb-0">Team & agents</h2>
-                <p className="mb-0 text-secondary">Control access for your team members and PostHog agents.</p>
+                <p className="mb-0 text-secondary">Control access for your team members and Flind agents.</p>
             </div>
 
             <div className="flex flex-col gap-2">
@@ -118,7 +118,7 @@ export function GatewayTeamAndAgents({ onOpenAgent, onOpenMember }: GatewayTeamA
                         </div>
                     ) : serviceAccounts.length === 0 ? (
                         <div className="p-4 text-sm text-secondary">
-                            No PostHog agents are available for this project.
+                            No Flind agents are available for this project.
                         </div>
                     ) : (
                         serviceAccounts.map((account) => {

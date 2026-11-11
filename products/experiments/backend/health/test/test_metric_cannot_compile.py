@@ -247,7 +247,7 @@ class TestMetricCannotCompile(BaseTest):
             (finding.subcode, finding.detail, finding.evidence["metric_1_message"]),
             (
                 "other",
-                "PostHog can't calculate the primary metric \"Revenue\". Building its query fails. Check the metric's "
+                "Flind can't calculate the primary metric \"Revenue\". Building its query fails. Check the metric's "
                 "settings, or contact support if they look right.",
                 None,
             ),

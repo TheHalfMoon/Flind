@@ -2,7 +2,7 @@
 
 Shared helper used across products. Injected/hallucinated URLs become inert code spans before reaching a
 surface (e.g. Slack) that would auto-unfurl or linkify them. Callers can opt named links into the
-configured instance origin so self-hosted PostHog works without trusting report-supplied hosts.
+configured instance origin so self-hosted Flind works without trusting report-supplied hosts.
 """
 
 import re

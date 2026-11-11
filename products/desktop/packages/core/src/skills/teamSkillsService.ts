@@ -166,7 +166,7 @@ export class TeamSkillsService {
       detail.body.length !== detail.body_total_length
     ) {
       throw new Error(
-        `Only part of "${name}" arrived from PostHog, so it was not installed. Try again.`,
+        `Only part of "${name}" arrived from Flind, so it was not installed. Try again.`,
       );
     }
     // Ignored entries in legacy-published skills are dropped downstream

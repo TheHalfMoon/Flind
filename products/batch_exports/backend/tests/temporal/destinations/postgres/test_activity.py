@@ -274,7 +274,7 @@ async def test_insert_into_postgres_activity_inserts_data_into_postgres_table(
     Once we have these events, we pass them to the assert_events_in_postgres function to check
     that they appear in the expected PostgreSQL table. This function utilizes the local
     development postgres instance for testing. But we setup and manage our own database
-    to avoid conflicting with PostHog itself.
+    to avoid conflicting with Flind itself.
     """
     if (
         isinstance(model, AnyBatchExportModel)

@@ -27,7 +27,7 @@ class TestSyncUserSettingsCommand(BaseTest):
         self.user.save()
 
     def _mock_cloud_api_responses(self, mock_get):
-        """Configure mock responses for PostHog cloud API"""
+        """Configure mock responses for Flind cloud API"""
         # Mock user settings response
         user_response = MagicMock()
         user_response.status_code = 200
@@ -245,7 +245,7 @@ class TestSyncUserSettingsCommand(BaseTest):
 
     @patch("posthog.management.commands.sync_user_settings.requests.get")
     def test_sync_with_custom_host(self, mock_get):
-        """Test syncing from a custom PostHog host"""
+        """Test syncing from a custom Flind host"""
         self._mock_cloud_api_responses(mock_get)
 
         call_command("sync_user_settings", api_key="test_key", host="https://eu.posthog.com")

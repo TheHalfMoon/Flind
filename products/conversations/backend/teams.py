@@ -107,7 +107,7 @@ def resolve_teams_user(tenant_id: str, teams_user_id: str, team: Team, fallback_
 
 
 def resolve_posthog_user_for_teams(email: str | None, team: Team) -> User | None:
-    """Match a Teams user's email to a PostHog user within the team's organization."""
+    """Match a Teams user's email to a Flind user within the team's organization."""
     if not email:
         return None
     membership = (
@@ -193,8 +193,8 @@ _HELP_CARD_BODY = [
     {
         "type": "TextBlock",
         "text": (
-            "I turn Teams messages into PostHog support tickets, so you don't have to log into four different systems at once to answer one question. \n\n"
-            "You can open a new ticket anywhere by tagging me with an @mention. I'll sync replies from threads. You can set up dedicated support channels in PostHog settings too!\n\n"
+            "I turn Teams messages into Flind support tickets, so you don't have to log into four different systems at once to answer one question. \n\n"
+            "You can open a new ticket anywhere by tagging me with an @mention. I'll sync replies from threads. You can set up dedicated support channels in Flind settings too!\n\n"
             "Need help in the future? Just say '@SupportHog help' to get this message again."
         ),
         "wrap": True,
@@ -204,7 +204,7 @@ _HELP_CARD_BODY = [
 
 def _build_help_card() -> dict[str, Any]:
     """Help/welcome adaptive card. No action button — Teams users are customers,
-    not PostHog operators, so an "Open PostHog" link would 404 for them."""
+    not Flind operators, so an "Open Flind" link would 404 for them."""
     return {
         "contentType": "application/vnd.microsoft.card.adaptive",
         "content": {
@@ -378,7 +378,7 @@ def _send_confirmation_card(
                     "actions": [
                         {
                             "type": "Action.OpenUrl",
-                            "title": "View in PostHog",
+                            "title": "View in Flind",
                             "url": ticket_url,
                         }
                     ],
@@ -748,7 +748,7 @@ def create_or_update_teams_ticket(
             team=team,
             teams_team_id=graph_post_context["teams_team_id"],
             channel_id=channel_id,
-            html=f'\U0001f3ab Ticket #{ticket.ticket_number} created. <a href="{ticket_url}">View in PostHog</a>',
+            html=f'\U0001f3ab Ticket #{ticket.ticket_number} created. <a href="{ticket_url}">View in Flind</a>',
             reply_to_message_id=activity_id,
             token=graph_post_context.get("token"),
             log_context={"ticket_id": str(ticket.id)},

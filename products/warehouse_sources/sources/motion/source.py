@@ -53,7 +53,7 @@ class MotionSource(ResumableSource[MotionSourceConfig, MotionResumeConfig]):
             name=ExternalDataSourceType.MOTION,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Motion",
-            caption="""Enter your Motion API key to sync your workspaces, users, projects, tasks, recurring tasks, comments, and custom fields into the PostHog Data warehouse.
+            caption="""Enter your Motion API key to sync your workspaces, users, projects, tasks, recurring tasks, comments, and custom fields into the Flind Data warehouse.
 
 Create an API key in Motion under Settings, then API. Motion shows the key once, so copy it before closing the dialog.
 

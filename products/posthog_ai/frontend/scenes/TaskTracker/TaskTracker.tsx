@@ -35,7 +35,7 @@ export function TaskTracker({ taskId, titleActions }: TaskTrackerProps): JSX.Ele
     if (selectedTaskId || activeCreation) {
         return (
             <div className="flex flex-col h-full min-h-0">
-                <AllowTrainingCallout featureName={selectedTaskId ? 'PostHog Desktop' : 'Tasks'} />
+                <AllowTrainingCallout featureName={selectedTaskId ? 'Flind Desktop' : 'Tasks'} />
                 <div className="flex flex-1 min-h-0 flex-col overflow-hidden">
                     {selectedTaskId ? (
                         <TaskDetailPage taskId={selectedTaskId} isMobile={isMobile} titleActions={titleActions} />

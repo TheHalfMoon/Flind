@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Summarize JavaScript source maps and emitted JS chunks for PostHog symbolication debugging.
+"""Summarize JavaScript source maps and emitted JS chunks for Flind symbolication debugging.
 
 JavaScript-only. Hermes, Proguard, and dSYM symbolication are handled by other tools — see the
 parent skill (../SKILL.md) and the per-platform references for those.
 
-Operates on plain `.js` / `.map` files only. To inspect a PostHog symbol-data container downloaded
+Operates on plain `.js` / `.map` files only. To inspect a Flind symbol-data container downloaded
 from the API, extract it first with `posthog-cli symbol-sets extract <file> -o <dir>` (or
 `npx @posthog/cli ...` / `bunx @posthog/cli ...`) and point this script at the resulting directory.
 """
@@ -92,7 +92,7 @@ def inspect_path(path: Path) -> list[dict[str, Any]]:
             {
                 **base,
                 "error": (
-                    "PostHog symbol-data container — extract first with "
+                    "Flind symbol-data container — extract first with "
                     "`posthog-cli symbol-sets extract <file> -o <dir>` "
                     "(or `npx @posthog/cli ...` / `bunx @posthog/cli ...`), "
                     "then re-run this script against the extracted .js / .js.map files."

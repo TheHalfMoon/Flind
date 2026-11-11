@@ -38,7 +38,7 @@ export type AcpConnectionConfig = {
   codexModels?: ReadonlyArray<ModelInfo>;
   /** Callback invoked when the agent calls the create_output tool for structured output */
   onStructuredOutput?: (output: Record<string, unknown>) => Promise<void>;
-  /** PostHog API config; when set, enables file-read enrichment unless disabled. */
+  /** Flind API config; when set, enables file-read enrichment unless disabled. */
   posthogApiConfig?: PostHogAPIConfig;
   /** Defaults to true when posthogApiConfig is set. Set to false to disable enrichment. */
   enricherEnabled?: boolean;
@@ -207,7 +207,7 @@ function createClaudeConnection(config: AcpConnectionConfig): AcpConnection {
  * Creates an ACP connection to the native codex app-server via an in-process
  * proxy agent. CodexAppServerAgent implements the ACP Agent interface and
  * delegates to `codex app-server` over JSON-RPC, giving us interception
- * points for PostHog-specific features.
+ * points for Flind-specific features.
  */
 function createCodexConnection(config: AcpConnectionConfig): AcpConnection {
   const logger =

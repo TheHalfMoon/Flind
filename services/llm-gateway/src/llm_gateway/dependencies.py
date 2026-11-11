@@ -183,7 +183,7 @@ async def enforce_desktop_access(request: Request, user: AuthenticatedUser, prod
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail={
                 "error": {
-                    "message": "We couldn't verify PostHog Desktop access. Try again.",
+                    "message": "We couldn't verify Flind Desktop access. Try again.",
                     "type": "service_unavailable",
                     "code": "desktop_access_unavailable",
                 }
@@ -200,7 +200,7 @@ async def enforce_desktop_access(request: Request, user: AuthenticatedUser, prod
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail={
                 "error": {
-                    "message": "We couldn't verify PostHog Desktop access. Try again.",
+                    "message": "We couldn't verify Flind Desktop access. Try again.",
                     "type": "service_unavailable",
                     "code": "desktop_access_unavailable",
                 }
@@ -209,7 +209,7 @@ async def enforce_desktop_access(request: Request, user: AuthenticatedUser, prod
 
     logger.warning("desktop_access_denied", user_id=user.user_id, team_id=user.team_id, reason=decision.reason)
     error: dict[str, object] = {
-        "message": "PostHog Desktop access is required to use this product.",
+        "message": "Flind Desktop access is required to use this product.",
         "type": "permission_error",
         "code": "code_access_required",
     }

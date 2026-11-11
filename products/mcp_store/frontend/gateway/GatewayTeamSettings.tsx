@@ -137,7 +137,7 @@ export function GatewayTeamSettings({ onOpenServer }: GatewayTeamSettingsProps =
                     <div>
                         <div className="font-semibold">Allow members to manage agent access</div>
                         <div className="text-sm text-secondary">
-                            Members can share connections with PostHog agents and choose which tools those agents may
+                            Members can share connections with Flind agents and choose which tools those agents may
                             call. Turn this off to make those controls admin-only.
                         </div>
                     </div>

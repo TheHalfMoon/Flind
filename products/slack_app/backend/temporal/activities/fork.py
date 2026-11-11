@@ -19,7 +19,7 @@ logger = structlog.get_logger(__name__)
 _TITLE_LIMIT = 120
 
 _SEED_UNAVAILABLE = (
-    "I couldn't set that up — you don't seem to have a PostHog account matching your Slack email, "
+    "I couldn't set that up — you don't seem to have a Flind account matching your Slack email, "
     "or your projects have no connected repo."
 )
 
@@ -158,7 +158,7 @@ def process_slack_app_fork_thread_payload(payload: dict[str, Any]) -> None:
         logger.info("slack_app_fork_refused", reason="ext_shared_unapproved", slack_team_id=slack_team_id)
         _ephemeral(
             slack,
-            "This is a Slack Connect channel that hasn't been approved for PostHog yet. "
+            "This is a Slack Connect channel that hasn't been approved for Flind yet. "
             "`@PostHog` in the channel to approve it first, then fork.",
             **reply_to,
         )
@@ -251,7 +251,7 @@ def process_slack_app_fork_thread_payload(payload: dict[str, Any]) -> None:
     )
     _ephemeral(
         slack,
-        ":envelope_with_arrow: Forked to your DMs — check your messages with PostHog. Only you can see this.",
+        ":envelope_with_arrow: Forked to your DMs — check your messages with Flind. Only you can see this.",
         **reply_to,
     )
 

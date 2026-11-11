@@ -24,7 +24,7 @@ export interface AudienceCohort {
     calculatedBefore: boolean
     failed: boolean
     count: number | null
-    // Set for a cohort made from a list: how many people were on it and how many of them PostHog didn't find.
+    // Set for a cohort made from a list: how many people were on it and how many of them Flind didn't find.
     importTotal: number | null
     importUnmatched: number | null
 }

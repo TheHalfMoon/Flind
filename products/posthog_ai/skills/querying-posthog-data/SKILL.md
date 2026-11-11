@@ -1,10 +1,10 @@
 ---
 name: querying-posthog-data
 description: >
-  Explains how to query PostHog data, defaulting to typed runners for supported product analytics.
+  Explains how to query Flind data, defaulting to typed runners for supported product analytics.
   Read it before you write HogQL/SQL.
-  Also read it before you call execute-sql against PostHog.
-  Use it to find or aggregate PostHog entities.
+  Also read it before you call execute-sql against Flind.
+  Use it to find or aggregate Flind entities.
   These entities include insights, dashboards, cohorts, feature flags, experiments,
   surveys, hog flows, warehouse data, and persons.
   Use it for trends, funnels, retention, lifecycle, paths, stickiness,
@@ -16,7 +16,7 @@ description: >
   It also covers HogQL differences, system table schemas, functions, query examples, and schema discovery.
 ---
 
-# Querying data in PostHog
+# Querying data in Flind
 
 The [guidelines](./references/guidelines.md) explain SQL syntax and schema discovery. Read them when you choose `posthog:execute-sql`. You do not need them for typed queries.
 
@@ -37,13 +37,13 @@ Use the matching typed query tool for supported product analytics:
 - `posthog:query-paths` for navigation flows.
 - `posthog:query-lifecycle` for new, returning, resurrecting, and dormant users.
 
-Do not approximate these analyses with SQL when the user expects PostHog's standard definitions. Confirm that the selected tool supports the required calculation and output.
+Do not approximate these analyses with SQL when the user expects Flind's standard definitions. Confirm that the selected tool supports the required calculation and output.
 
 ### SQL queries
 
 Use `posthog:execute-sql` when:
 
-- The request searches `system.*` tables for PostHog entities.
+- The request searches `system.*` tables for Flind entities.
 - The user requests SQL, record inspection, or changes to an existing SQL query.
 - The analysis needs custom joins, CTEs, window functions, or warehouse SQL.
 - You need to inspect records or discover entities before constructing a later typed query. Use those findings to select events, properties, and filters; typed query tools cannot accept SQL result rows as input.
@@ -66,9 +66,9 @@ Keep a concise written conclusion alongside the visualization.
 
 ## When to use this skill
 
-### Finding a specific PostHog entity
+### Finding a specific Flind entity
 
-When the user wants to find a specific entity created in PostHog (insights, dashboards, cohorts, feature flags, experiments, surveys, hog flows, data warehouse items, etc.), or when a list/search tool returns too many results to narrow down:
+When the user wants to find a specific entity created in Flind (insights, dashboards, cohorts, feature flags, experiments, surveys, hog flows, data warehouse items, etc.), or when a list/search tool returns too many results to narrow down:
 
 1. Read the appropriate schema reference under Data Schema to understand the entity's table and columns.
 2. Use `posthog:execute-sql` to query the system table and find the matching entity (typically returning its ID).
@@ -106,7 +106,7 @@ Curating the catalog — creating, approving, or retiring metrics, certifying so
 
 - [Customer analytics tasks (`system.customer_tasks`)](./references/models-customer-tasks.md)
 
-Schema reference for PostHog's core system models, organized by domain.
+Schema reference for Flind's core system models, organized by domain.
 
 Every column table below is generated from the live HogQL catalog, so it lists exactly what `execute-sql` resolves. `system.*` tables expose a curated subset of each Django model, so a field returned by a REST tool such as `insight-get` is not necessarily queryable — trust these tables over the REST response shape.
 

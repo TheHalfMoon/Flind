@@ -50,7 +50,7 @@ class WizardInstallStartSerializer(serializers.Serializer):
         choices=WizardRunStatus.choices,
         help_text="Current lifecycle status of the setup run.",
     )
-    url = serializers.URLField(read_only=True, help_text="PostHog page where the user can follow their setup runs.")
+    url = serializers.URLField(read_only=True, help_text="Flind page where the user can follow their setup runs.")
 
 
 class WizardInstallTaskSerializer(serializers.Serializer):

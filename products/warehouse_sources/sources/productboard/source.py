@@ -134,7 +134,7 @@ class ProductboardSource(ResumableSource[ProductboardSourceConfig, ProductboardR
             name=ExternalDataSourceType.PRODUCTBOARD,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Productboard",
-            caption="""Enter your Productboard public API access token to sync your Productboard data into the PostHog Data warehouse.
+            caption="""Enter your Productboard public API access token to sync your Productboard data into the Flind Data warehouse.
 
 You can create an access token in your Productboard [workspace settings](https://app.productboard.com/) under **Integrations → Public API**. A Pro plan or higher is required.
 

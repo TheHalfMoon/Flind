@@ -67,7 +67,7 @@ class SurveySparrowSource(ResumableSource[SurveySparrowSourceConfig, SurveySparr
             name=ExternalDataSourceType.SURVEYSPARROW,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="SurveySparrow",
-            caption="""Enter a SurveySparrow access token to pull your surveys, responses, questions, and contacts into the PostHog Data warehouse.
+            caption="""Enter a SurveySparrow access token to pull your surveys, responses, questions, and contacts into the Flind Data warehouse.
 
 Create a private app and generate an access token under **Settings → Apps & Integrations** in [SurveySparrow](https://surveysparrow.com). The token is displayed only once, so copy it when it's created.
 

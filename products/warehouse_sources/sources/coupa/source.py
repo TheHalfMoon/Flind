@@ -64,7 +64,7 @@ class CoupaSource(ResumableSource[CoupaSourceConfig, CoupaResumeConfig], Validat
             name=ExternalDataSourceType.COUPA,
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="Coupa",
-            caption="""Connect your Coupa instance to pull your spend management data into the PostHog Data warehouse.
+            caption="""Connect your Coupa instance to pull your spend management data into the Flind Data warehouse.
 
 A Coupa admin can create an OIDC client under Setup > Integrations > OAuth2/OpenID Connect Clients with the client credentials grant. Grant it the read scopes for the objects you want to sync (e.g. `core.invoice.read`, `core.purchase_order.read`). The instance URL is your Coupa host, e.g. `https://myorg.coupahost.com`.""",
             iconPath="/static/services/coupa.png",

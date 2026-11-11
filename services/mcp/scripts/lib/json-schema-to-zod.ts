@@ -4,7 +4,7 @@
  * This is a build-time code generator — it produces static TypeScript strings,
  * not runtime Zod objects. The output is written into generated tool files.
  *
- * Supports the subset of JSON Schema used by PostHog's query schemas:
+ * Supports the subset of JSON Schema used by Flind's query schemas:
  * - $ref, type, const, enum, properties, required, items
  * - anyOf/oneOf (→ z.union), allOf (→ z.intersection)
  * - type arrays like ["string", "null"] (→ z.string().nullable())

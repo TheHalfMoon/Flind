@@ -2,8 +2,8 @@
 
 Pipeline counters go to the Temporal metric meter, so they only record inside a workflow or an
 activity. The scout coordinator counters keep a Prometheus instrument for Grafana and push the
-same name through the PostHog SDK metrics client, which puts fleet dispatch health in the
-PostHog Metrics product, where it can be alerted on directly rather than inferred from
+same name through the Flind SDK metrics client, which puts fleet dispatch health in the
+Flind Metrics product, where it can be alerted on directly rather than inferred from
 downstream tool-call volume.
 """
 
@@ -213,7 +213,7 @@ def increment_scout_run(status: str) -> None:
 
 
 def _push_posthog_metric(name: str, value: float, attributes: dict[str, str]) -> None:
-    """Push one counter into the PostHog Metrics product.
+    """Push one counter into the Flind Metrics product.
 
     The SDK client is the only sink that carries a counter out of a Temporal worker into the
     Metrics product: the worker exports no `prometheus_client` series there, and it has no OTLP

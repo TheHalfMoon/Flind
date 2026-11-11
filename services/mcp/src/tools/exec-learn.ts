@@ -74,7 +74,7 @@ export interface SkillInvocation {
     readKind: 'skill' | 'file' | 'file_search' | 'file_lines'
 }
 
-/** Combines small bundled guides with PostHog and current-project skills. */
+/** Combines small bundled guides with Flind and current-project skills. */
 export class ExecLearnCatalog {
     private readonly guidesById: Map<string, ExecLearnGuide>
 
@@ -243,7 +243,7 @@ export class ExecLearnCatalog {
             }
             if (skill.source === 'posthog') {
                 if (!this.skillSources?.posthog) {
-                    return '[posthog skills unavailable: PostHog skills are temporarily unavailable.]'
+                    return '[posthog skills unavailable: Flind skills are temporarily unavailable.]'
                 }
                 const description = this.skillSources.posthog.describe(skill.name)
                 return description !== undefined
@@ -303,7 +303,7 @@ export class ExecLearnCatalog {
         const results: LearnSearchResult[] = this.skillSources?.posthog?.searchResults(query, 'posthog:') ?? []
         const warnings: string[] = []
         if (!this.skillSources?.posthog) {
-            warnings.push('PostHog skills are temporarily unavailable.')
+            warnings.push('Flind skills are temporarily unavailable.')
         }
 
         if (!this.skillSources?.project) {
@@ -316,7 +316,7 @@ export class ExecLearnCatalog {
             }
         }
 
-        // Merge both sources by relevance so an exact project match can outrank a weak PostHog one.
+        // Merge both sources by relevance so an exact project match can outrank a weak Flind one.
         const merged = results
             .sort(
                 (left, right) =>
@@ -335,7 +335,7 @@ export class ExecLearnCatalog {
             `No skills matched "${query}".\n` +
             (projectSearched
                 ? 'None of the query words appear in any skill.'
-                : 'None of the query words appear in any PostHog skill; project skills were not searched.') +
+                : 'None of the query words appear in any Flind skill; project skills were not searched.') +
             ' Try fewer or broader keywords (single words match best).'
 
         const posthogNames = this.skillSources?.posthog?.listNames() ?? []
@@ -465,7 +465,7 @@ export class ExecLearnCatalog {
     private requirePostHogSkills(): SkillCatalog {
         if (!this.skillSources?.posthog) {
             throw new SkillsUnavailableError(
-                'PostHog skills are temporarily unavailable. Core exec commands are still available.'
+                'Flind skills are temporarily unavailable. Core exec commands are still available.'
             )
         }
         return this.skillSources.posthog

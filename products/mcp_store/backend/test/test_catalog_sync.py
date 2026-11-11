@@ -104,7 +104,7 @@ class TestSyncMCPCatalog(TestCase):
         with self.settings(MCP_STORE_SLACK_DEV_ALLOWED_TEAM_IDS=["42"]):
             counts = sync_mcp_catalog(entries=[entry])
             template = MCPServerTemplate.objects.get(url=entry.url)
-            assert template.name == "Slack via PostHog (dev)"
+            assert template.name == "Slack via Flind (dev)"
             assert template.description == (
                 "Search Slack channels, direct messages, and group messages, and read messages, user profiles, "
                 "and canvases you can access."

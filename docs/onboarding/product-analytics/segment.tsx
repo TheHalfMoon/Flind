@@ -7,13 +7,13 @@ export const getSegmentSteps = (ctx: OnboardingComponentsContext): StepDefinitio
 
     return [
         {
-            title: 'Add PostHog destination',
+            title: 'Add Flind destination',
             badge: 'required',
             content: (
                 <Markdown>
-                    Segment is a customer data platform that can route your analytics data to PostHog and other
+                    Segment is a customer data platform that can route your analytics data to Flind and other
                     destinations. In your Segment workspace, go to **Connections** &gt; **Catalog** and search for
-                    **PostHog**. Click **Add Destination** and select the source you want to connect.
+                    **Flind**. Click **Add Destination** and select the source you want to connect.
                 </Markdown>
             ),
         },
@@ -22,7 +22,7 @@ export const getSegmentSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Enter your PostHog project token:</Markdown>
+                    <Markdown>Enter your Flind project token:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -34,7 +34,7 @@ export const getSegmentSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                             },
                         ]}
                     />
-                    <Markdown>Enter your PostHog host:</Markdown>
+                    <Markdown>Enter your Flind host:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -55,7 +55,7 @@ export const getSegmentSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             content: (
                 <>
                     <Markdown>
-                        Segment will now forward `track`, `identify`, `page`, and `group` calls to PostHog.
+                        Segment will now forward `track`, `identify`, `page`, and `group` calls to Flind.
                     </Markdown>
                     <CalloutBox type="fyi" title="Learn more">
                         <Markdown>

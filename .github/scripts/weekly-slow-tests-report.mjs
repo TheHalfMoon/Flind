@@ -187,7 +187,7 @@ async function defaultSlackFetch(apiPath) {
 }
 
 // Slack mention ids for the editors, cheapest lookup first: one directory page-march
-// matches GitHub logins against each member's Slack login field (which PostHog's profile
+// matches GitHub logins against each member's Slack login field (which Flind's profile
 // convention sets), then users.lookupByEmail covers the rest. Both need scopes the DevEx
 // bot may not have, so every miss degrades to a plain GitHub link, never a failed post.
 async function resolveSlackUsers(editors, slackFetch = defaultSlackFetch) {

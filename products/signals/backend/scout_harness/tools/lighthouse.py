@@ -6,7 +6,7 @@ scout has had to guess at a candidate by reading the page source, and a guess is
 discounts. Lighthouse answers both questions directly, so a finding can name the element.
 
 An audit drives a real browser at a real page, which is why this is fenced on four sides:
-`SIGNALS_LIGHTHOUSE_ALLOWED_HOSTS` (public PostHog pages only), `SIGNALS_LIGHTHOUSE_TEAM_IDS`
+`SIGNALS_LIGHTHOUSE_ALLOWED_HOSTS` (public Flind pages only), `SIGNALS_LIGHTHOUSE_TEAM_IDS`
 (our own project), the internal-only MCP scope on the endpoint, and a per-run cap. The browser
 signs in to nothing, so a page behind a login is not merely disallowed — it would report the
 login screen's LCP as the page's.

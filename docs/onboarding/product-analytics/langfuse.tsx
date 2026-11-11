@@ -12,12 +12,12 @@ export const getLangfuseSteps = (ctx: OnboardingComponentsContext): StepDefiniti
             content: (
                 <>
                     <Markdown>
-                        Langfuse supports most popular LLM models and you can bring your Langfuse data into PostHog for
+                        Langfuse supports most popular LLM models and you can bring your Langfuse data into Flind for
                         analysis.
                     </Markdown>
                     <Markdown>
                         {`1. First add [Langfuse Tracing](https://langfuse.com/docs/tracing) to your LLM app.
-2. In your [Langfuse dashboard](https://cloud.langfuse.com/), click on **Settings** and scroll down to the **Integrations** section to find the PostHog integration.`}
+2. In your [Langfuse dashboard](https://cloud.langfuse.com/), click on **Settings** and scroll down to the **Integrations** section to find the Flind integration.`}
                     </Markdown>
                 </>
             ),
@@ -27,7 +27,7 @@ export const getLangfuseSteps = (ctx: OnboardingComponentsContext): StepDefiniti
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Click **Configure** and paste in your PostHog project token:</Markdown>
+                    <Markdown>Click **Configure** and paste in your Flind project token:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -39,7 +39,7 @@ export const getLangfuseSteps = (ctx: OnboardingComponentsContext): StepDefiniti
                             },
                         ]}
                     />
-                    <Markdown>Paste in your PostHog host:</Markdown>
+                    <Markdown>Paste in your Flind host:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -54,8 +54,8 @@ export const getLangfuseSteps = (ctx: OnboardingComponentsContext): StepDefiniti
                     <Markdown>Click **Enable** and then **Save**.</Markdown>
                     <CalloutBox type="fyi" title="Data sync timing">
                         <Markdown>
-                            Langfuse batch exports your data into PostHog once a day, so it can take up to 24 hours for
-                            your Langfuse data to appear in PostHog.
+                            Langfuse batch exports your data into Flind once a day, so it can take up to 24 hours for
+                            your Langfuse data to appear in Flind.
                         </Markdown>
                     </CalloutBox>
                 </>

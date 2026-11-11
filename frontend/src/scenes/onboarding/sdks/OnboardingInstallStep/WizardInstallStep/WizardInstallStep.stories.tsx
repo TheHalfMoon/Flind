@@ -29,8 +29,8 @@ const cloudRun: WizardRunApi = {
     workspace: { type: 'git_repository', repository: 'example/sample-project' },
     program: {
         id: 'posthog-integration',
-        name: 'PostHog integration',
-        description: 'Install PostHog',
+        name: 'Flind integration',
+        description: 'Install Flind',
         wizard_version: '2.67.0',
         command: [],
         tags: [],

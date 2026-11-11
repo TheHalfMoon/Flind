@@ -52,7 +52,7 @@ Supported operators:
 
 The `value` field accepts a string, number, or array of strings depending on the operator. Omit `value` for `is_set`/`is_not_set`.
 
-## Filtering logs by a PostHog person
+## Filtering logs by a Flind person
 
 When the user references a person — by `distinct_id`, name, email, or via a prior `persons-retrieve` call — filter logs to that person via `log_attribute` filters. The attribute keys are configurable per project (they default to `["posthogDistinctId"]`); read `logs_distinct_id_attribute_keys` from the `/api/projects/:id/logs_config/` endpoint and use those as the filter `key`s.
 

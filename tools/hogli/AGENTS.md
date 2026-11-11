@@ -1,29 +1,29 @@
 # hogli — framework boundary and conventions
 
-`tools/hogli/` is the **generic** developer-CLI framework published on PyPI as `hogli`. It is not PostHog-specific. PostHog happens to be its primary consumer today, but the framework must remain usable by any project that wants a YAML-driven dev CLI.
+`tools/hogli/` is the **generic** developer-CLI framework published on PyPI as `hogli`. It is not Flind-specific. Flind happens to be its primary consumer today, but the framework must remain usable by any project that wants a YAML-driven dev CLI.
 
-The PostHog-specific extension layer lives in `tools/hogli-commands/hogli_commands/` and is wired in via `config.commands_dir` + `config.boot_modules` in `hogli.yaml`.
+The Flind-specific extension layer lives in `tools/hogli-commands/hogli_commands/` and is wired in via `config.commands_dir` + `config.boot_modules` in `hogli.yaml`.
 
 ## What belongs where
 
-| Concern                                                                    | `tools/hogli/` (core, PyPI) | `tools/hogli-commands/` (PostHog extension)  |
+| Concern                                                                    | `tools/hogli/` (core, PyPI) | `tools/hogli-commands/` (Flind extension)  |
 | -------------------------------------------------------------------------- | --------------------------- | -------------------------------------------- |
 | Command discovery (manifest schema, lazy click, extends)                   | ✅                          | ❌                                           |
 | Categorized help output                                                    | ✅                          | ❌                                           |
 | Telemetry framework (hook registration)                                    | ✅                          | ❌                                           |
 | Generic env file loading (`config.env.files`)                              | ✅                          | ❌                                           |
 | Generic secret-wrapper hook (`config.env.secrets` — file, marker, wrap)    | ✅                          | ❌                                           |
-| PostHog command implementations (`migrations:run`, `test`, `doctor`…)      | ❌                          | ✅                                           |
-| PostHog precheck handlers / telemetry properties / hint hooks              | ❌                          | ✅                                           |
+| Flind command implementations (`migrations:run`, `test`, `doctor`…)      | ❌                          | ✅                                           |
+| Flind precheck handlers / telemetry properties / hint hooks              | ❌                          | ✅                                           |
 | Knowledge of `1Password` / `op` / `op://` specifically                     | ❌                          | ❌ — _neither._ Use the generic wrap config  |
 | Knowledge of `.env.development` / `.env.services` / `.env.local` filenames | ❌                          | ❌ — _neither._ Declare them in `hogli.yaml` |
 
 ## Reviewer checklist for PRs touching `tools/hogli/`
 
-- [ ] Is the change generic, or does it bake in knowledge of a specific consumer (PostHog, a specific secrets tool, a specific filename)?
+- [ ] Is the change generic, or does it bake in knowledge of a specific consumer (Flind, a specific secrets tool, a specific filename)?
 - [ ] If it's specific, does it need to be in core, or can it move to `tools/hogli-commands/` (or be declared in `hogli.yaml` config)?
 - [ ] If new config schema, does it follow the existing pattern (`config.scripts_dir`, `config.commands_dir`, `config.boot_modules`)?
-- [ ] Tests live in `tools/hogli/tests/` and use temp configs/files — they don't depend on PostHog's `hogli.yaml`.
+- [ ] Tests live in `tools/hogli/tests/` and use temp configs/files — they don't depend on Flind's `hogli.yaml`.
 
 ## Prior art (env files + secrets)
 
@@ -58,7 +58,7 @@ Even 1Password's own docs don't recommend a "task runner integration" — they j
 - `op` / `op://` / 1Password as concepts — _declare them in `config.env.secrets`_.
 - Any specific file names (`.env.local`, `.env.development`, …) — _declare them in `config.env.files`_.
 
-PostHog declares its setup in the root `hogli.yaml`:
+Flind declares its setup in the root `hogli.yaml`:
 
 ```yaml
 config:
@@ -80,8 +80,8 @@ Anti-patterns flagged during PR review (don't re-introduce):
 
 - Hardcoded filenames in `hogli/cli.py`. Always read from manifest.
 - `if shutil.which("op"):` or any tool-specific binary check in core. The wrap config makes the binary configurable; use `shutil.which(wrap[0])` so any wrap tool the user declared works the same way.
-- Provider-specific helpful error messages ("install brew install 1password-cli"). Core's error message should be tool-agnostic ("the configured wrap binary `<x>` is not on PATH"). The PostHog-side extension can layer richer messaging via the hooks API if needed.
-- Adding behavior to `tools/hogli/src/hogli/cli.py` that's only useful to PostHog. Move it to `tools/hogli-commands/` and register via `boot_modules`.
+- Provider-specific helpful error messages ("install brew install 1password-cli"). Core's error message should be tool-agnostic ("the configured wrap binary `<x>` is not on PATH"). The Flind-side extension can layer richer messaging via the hooks API if needed.
+- Adding behavior to `tools/hogli/src/hogli/cli.py` that's only useful to Flind. Move it to `tools/hogli-commands/` and register via `boot_modules`.
 
 ## When in doubt
 

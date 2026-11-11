@@ -2,7 +2,7 @@
 
 Internal web tool for the ingestion team. Single binary serving an embedded UI, with a sidebar of tools that is meant to grow over time.
 
-> **⚠️ Purely internal service — never expose publicly.** This tool has no authentication of its own and its analysis results contain cross-customer data (team tokens, distinct_ids, event names). It must only be deployed behind the internal ingress (VPN/SSO), reachable by PostHog employees exclusively. It is an operational tool, not a product surface.
+> **⚠️ Purely internal service — never expose publicly.** This tool has no authentication of its own and its analysis results contain cross-customer data (team tokens, distinct_ids, event names). It must only be deployed behind the internal ingress (VPN/SSO), reachable by Flind employees exclusively. It is an operational tool, not a product surface.
 
 ## Tools
 

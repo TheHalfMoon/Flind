@@ -1,4 +1,4 @@
-# PostHog numbers don't match the user's SQL / raw count
+# Flind numbers don't match the user's SQL / raw count
 
 The experiment page applies a specific scope that ad-hoc SQL almost never replicates.
 A common pattern: SQL is written "to verify" experiment numbers and the results don't match — most of
@@ -34,7 +34,7 @@ Check the age of the number before its scope: `query_to` in the stored results s
 
 ## D1 — Scope mismatch checklist (the eleven sources) [HIGH]
 
-When the user reports "PostHog says X, my SQL says Y", walk this checklist.
+When the user reports "Flind says X, my SQL says Y", walk this checklist.
 Every item is readable from `experiment-get`, with two exceptions: the rows of the project's test-account filter are in `project-get`, and CUPED falls back to the project default when the experiment does not set it (C13 in `interpretation.md`):
 
 1. **Exposure scope.** The experiment counts only events that occur at or after the user's first exposure.
@@ -175,7 +175,7 @@ step (exposure) and the final step**. Intermediate steps are shown for analysis 
 but **do not affect the significance calculation nor win probability** — a user can read a significant intermediate
 step and incorrectly conclude the whole funnel is significant.
 
-**Implication:** comparing PostHog's funnel conversion rate to a SQL query that counts intermediate
+**Implication:** comparing Flind's funnel conversion rate to a SQL query that counts intermediate
 conversions will not match — and that's expected.
 A difference in the rate of one step after the split is not a result either: that step's rate counts only the people who reached the step before it, and those groups are no longer comparable between the arms.
 
@@ -210,10 +210,10 @@ either:
 ## D4 — "Sum of revenue" = mean of per-user totals (not raw total) [HIGH]
 
 Common confusion: adding "sum of revenue" expecting the **raw total** of all revenue events across
-exposed users. PostHog instead returns the **mean of per-user totals** — for each exposed user, sum
+exposed users. Flind instead returns the **mean of per-user totals** — for each exposed user, sum
 their revenue events, then average across users in the variant.
 
-**Worked example:** user A spent $50, user B spent $10. PostHog reports `($50 + $10) / 2 = $30`, not
+**Worked example:** user A spent $50, user B spent $10. Flind reports `($50 + $10) / 2 = $30`, not
 `$60`. The number looks much smaller than a raw SQL `SUM(revenue)` over the same time window
 because it isn't a sum at all — it's the unit on which the statistical comparison runs.
 
@@ -289,10 +289,10 @@ timestamp of the first step); build_start_after_exposure_predicate in experiment
 **Implication for SQL reconciliation:**
 
 - Mean/ratio reconciliation: gate with one window from the first exposure.
-  A query that extends the window from the last exposure counts more than PostHog does.
+  A query that extends the window from the last exposure counts more than Flind does.
 - Funnel reconciliation: every step within one window from the exposure.
   A user who is re-exposed gets a fresh chance to complete the funnel — your SQL must allow this or
-  PostHog's numbers will look larger than yours.
+  Flind's numbers will look larger than yours.
 
 Part of the public docs still describes the window of mean metrics as extended by a later exposure.
 The rule above is the one the results use.
@@ -423,7 +423,7 @@ When each arm reports its conversion with its own event and the metric names one
 The lift is enormous or undefined.
 _Fix:_ one action that covers both events, used as the metric.
 
-**Validation signals from PostHog.** A `validation_failures` entry of `"baseline-mean-is-zero"`
+**Validation signals from Flind.** A `validation_failures` entry of `"baseline-mean-is-zero"`
 is the system's tell that the baseline variant's values sum to 0 (for a ratio, its numerator).
 For a metric whose values cannot be negative, _every_ person in the baseline variant contributed 0 to the metric — almost
 always one of the traps above.

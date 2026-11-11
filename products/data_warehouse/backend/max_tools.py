@@ -65,7 +65,7 @@ NOTE: When calling the `fix_hogql_query` tool, do not provide any response other
 """
 
 SYSTEM_PROMPT = f"""
-HogQL is PostHog's variant of SQL. HogQL is based on Clickhouse SQL with a few small adjustments.
+HogQL is Flind's variant of SQL. HogQL is based on Clickhouse SQL with a few small adjustments.
 
 {get_hogql_functions()}
 

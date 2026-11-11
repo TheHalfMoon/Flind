@@ -18,7 +18,7 @@ const SWITCH_DATA_ATTR: Record<OtherRegionReason, string> = {
 }
 
 /**
- * A person who already uses PostHog in the other cloud region gets "no account" or "wrong
+ * A person who already uses Flind in the other cloud region gets "no account" or "wrong
  * password" here, and could otherwise create a second, empty account. Most new people are in the
  * right region, so before signup this is one small line. After a rejected password it is a banner.
  * A pending OAuth connection is pinned to this region, so the notice stays hidden for it.

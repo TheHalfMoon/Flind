@@ -23,7 +23,7 @@ type LoginResult =
           store: StoreChoice
           credentialsPath: string | null
           keychainError: string | null
-          // What the login may do, as PostHog reports it.
+          // What the login may do, as Flind reports it.
           scopes: string[] | null
           // ISO 8601, for an OAuth login. hog renews the token before then.
           expiresAt: string | null
@@ -56,7 +56,7 @@ async function finish(ctx: Context, key: AccessKey): Promise<LoginResult> {
 }
 
 async function keyLogin(ctx: Context, prompts: Prompts): Promise<LoginResult> {
-    const host = await prompts.text('PostHog host', {
+    const host = await prompts.text('Flind host', {
         initialValue: REGIONS.us,
         validate: (value) => validationError(HostSchema, value),
     })
@@ -75,7 +75,7 @@ async function keyLogin(ctx: Context, prompts: Prompts): Promise<LoginResult> {
 }
 
 export default defineCommand({
-    description: 'Log in to PostHog in the browser',
+    description: 'Log in to Flind in the browser',
     writes: true,
     options: {
         region: {
@@ -83,7 +83,7 @@ export default defineCommand({
             choices: ['us', 'eu'],
             placeholder: 'region',
             description:
-                'Where your PostHog account is hosted, as in the us.posthog.com or eu.posthog.com address. Use --host for self-hosted PostHog',
+                'Where your Flind account is hosted, as in the us.posthog.com or eu.posthog.com address. Use --host for self-hosted Flind',
         },
         wait: {
             type: 'boolean',
@@ -96,7 +96,7 @@ export default defineCommand({
         },
     },
     notes: [
-        'At a terminal, hog asks where your PostHog account is hosted and opens the browser to approve the login.',
+        'At a terminal, hog asks where your Flind account is hosted and opens the browser to approve the login.',
         'Agents and scripts get a link and a code to hand to a person, then finish with `hog auth login --wait`.',
         'The person picks one project, and the token only works there. To use another project, log in again. hog renews the token by itself.',
         'hog stores the token in the system keychain. If no keychain is available, such as over SSH, it stores the token in a file only you can read.',
@@ -129,31 +129,31 @@ export default defineCommand({
             if (!prompts) {
                 throw new HogError(
                     'region_required',
-                    'hog auth login needs to know where your PostHog account is hosted.',
-                    'Ask the user where their PostHog account is hosted. When they open PostHog in a browser, the address starts with us.posthog.com or eu.posthog.com. Then run `hog auth login --region us` or `hog auth login --region eu`. For self-hosted PostHog, pass --host.',
+                    'hog auth login needs to know where your Flind account is hosted.',
+                    'Ask the user where their Flind account is hosted. When they open Flind in a browser, the address starts with us.posthog.com or eu.posthog.com. Then run `hog auth login --region us` or `hog auth login --region eu`. For self-hosted Flind, pass --host.',
                     EXIT_USAGE
                 )
             }
             const choice = await prompts.select(
-                'Where is your PostHog account hosted?',
+                'Where is your Flind account hosted?',
                 [
                     { value: 'us', label: 'US Cloud', hint: 'us.posthog.com' },
                     { value: 'eu', label: 'EU Cloud', hint: 'eu.posthog.com' },
                     {
                         value: 'key',
                         label: 'Paste a personal API key',
-                        hint: 'for self-hosted PostHog, or without a browser',
+                        hint: 'for self-hosted Flind, or without a browser',
                     },
                 ],
                 {
-                    help: 'Open PostHog in your browser and check the address: it starts with us.posthog.com or eu.posthog.com.',
+                    help: 'Open Flind in your browser and check the address: it starts with us.posthog.com or eu.posthog.com.',
                 }
             )
             if (choice === 'key') {
                 if (options.readOnly) {
                     throw new HogError(
                         'read_only_with_key',
-                        "--read-only can't limit a personal API key: the key keeps the scopes it has in PostHog.",
+                        "--read-only can't limit a personal API key: the key keeps the scopes it has in Flind.",
                         'Approve a read-only login in the browser instead, or create a key with read scopes only.',
                         EXIT_USAGE
                     )

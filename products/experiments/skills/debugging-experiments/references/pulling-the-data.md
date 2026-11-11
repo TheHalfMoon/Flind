@@ -117,7 +117,7 @@ shortfall (see the holdout note in §1).
 
 Ignore `$feature_flag_response = false / None / null` rows: `$feature_flag_called` fires on
 every evaluation, including users who didn't bucket into the test. They aren't a balance
-signal (PostHog's own analysis filters them out). The exception is when _every_ row is
+signal (Flind's own analysis filters them out). The exception is when _every_ row is
 `None`/`false` — that's a missing-exposures symptom (a flag dependency failing closed lands users
 here too). **Second exception — a capture-side SRM:**
 when one arm is short, this bucket's _volume_ (broken down by `$lib`/surface, and checked against
@@ -167,7 +167,7 @@ z-test is `z = (O₁ − E₁) / sqrt(N·p₁·(1−p₁))`; |z| ≳ 6 is the ~4
 shorthand. With 3+ arms, read _which_ arm carries the χ² by comparing each `(Oᵢ − Eᵢ)² / Eᵢ` term,
 then localize that arm.
 
-**Back-check the split you're testing against.** PostHog's SRM check reads the expected
+**Back-check the split you're testing against.** Flind's SRM check reads the expected
 proportions from the _live_ flag's `multivariate.variants`, not a stored copy on the experiment.
 If in doubt, ask which configured split reproduces the observed p — only one will (e.g.
 832 vs 1,123 gives p ≈ 4.7e-11 under 50/50, but p ≈ 0.03 under 45/55 and no SRM at all under
@@ -212,7 +212,7 @@ selection is carrying the entire gap. The share of the gap each component explai
 routes; `srm_check.py` prints both, each with its own significance test, and refuses to name a side
 when neither dominates.
 
-**The algorithm** — verified byte-exact against PostHog's implementation in
+**The algorithm** — verified byte-exact against Flind's implementation in
 `rust/feature-flags/src/flags/flag_matching.rs` (`get_matching_variant`) and `flag_matching_utils.rs`
 (`calculate_hash`). Don't eyeball it — the salt is easy to get wrong:
 
@@ -239,7 +239,7 @@ stored order and keeps the variant keys out of the shell:
 ```
 
 **Never interpolate variant keys into the command line.** Variant keys are charset-validated in the
-PostHog UI but _not_ by the API, so a key on a flag that reached you through a ticket can contain
+Flind UI but _not_ by the API, so a key on a flag that reached you through a ticket can contain
 shell metacharacters or quote characters. `--variants-file` reads them as JSON, so they stay data.
 The `--variants control=50,test=50` form is a convenience for keys you have already read and
 eyeballed; don't build it by substituting values you haven't looked at.

@@ -257,7 +257,7 @@ export function DataCatalogMetricScene({ name }: DataCatalogMetricSceneLogicProp
                   label: 'Run with AI',
                   icon: <IconSparkles />,
                   onClick: runMarkdownMetricWithAI,
-                  disabledReason: isMaxAvailable ? undefined : 'PostHog AI is not available on this instance',
+                  disabledReason: isMaxAvailable ? undefined : 'Flind AI is not available on this instance',
               }
             : {
                   key: 'run',
@@ -419,7 +419,7 @@ export function DataCatalogMetricScene({ name }: DataCatalogMetricSceneLogicProp
                             onRun={loadRunResult}
                             onRunWithAI={runMarkdownMetricWithAI}
                             runWithAIDisabledReason={
-                                isMaxAvailable ? undefined : 'PostHog AI is not available on this instance'
+                                isMaxAvailable ? undefined : 'Flind AI is not available on this instance'
                             }
                         />
                     </div>

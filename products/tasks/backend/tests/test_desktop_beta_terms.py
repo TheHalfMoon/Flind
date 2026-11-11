@@ -52,7 +52,7 @@ class TestDesktopBetaTermsAPI(APIBaseTest):
 
     def _authenticate_with_project_scoped_token(self, scope: str = "organization:read organization:write") -> None:
         application = OAuthApplication.objects.create(
-            name="PostHog Desktop",
+            name="Flind Desktop",
             client_type=OAuthApplication.CLIENT_PUBLIC,
             authorization_grant_type=OAuthApplication.GRANT_AUTHORIZATION_CODE,
             redirect_uris="http://localhost:8237/callback",

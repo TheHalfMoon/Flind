@@ -91,7 +91,7 @@ def schedule_open_pull_request_ready(
 
 
 def _resolved_reviewer_users(*, team_id: int, report_id: str) -> list[User]:
-    """The report's current suggested reviewers that resolve to a PostHog user in this team's org.
+    """The report's current suggested reviewers that resolve to a Flind user in this team's org.
 
     Reads only the latest `suggested_reviewers` row, which is the live reviewer set, so a reviewer
     removed from the list no longer decides anything.
@@ -114,7 +114,7 @@ def _resolved_reviewer_users(*, team_id: int, report_id: str) -> list[User]:
         return []
     reviewer_rows = [row for row in payloads if isinstance(row, dict)]
 
-    # A reviewer is a PostHog user, not a GitHub account: an org member who never connected GitHub is
+    # A reviewer is a Flind user, not a GitHub account: an org member who never connected GitHub is
     # stored by uuid with a null login, and reviewer identity gives the uuid precedence over a login
     # that could since have been reassigned. Resolving logins alone would drop the first group and
     # silently fall back to the team default for them.
@@ -138,7 +138,7 @@ def should_open_pull_request_ready(*, team_id: int, report_id: str) -> bool:
     Resolved per suggested reviewer, using their own setting and falling back to the team default,
     then unioned, since one reviewer wanting the full CI matrix is not in conflict with another
     reviewer's preference. A team that turned the default on gets it for reports whose reviewers
-    resolve to no PostHog user either, because that setting means "our self-driving pull requests
+    resolve to no Flind user either, because that setting means "our self-driving pull requests
     open ready".
     """
     team_default = bool(

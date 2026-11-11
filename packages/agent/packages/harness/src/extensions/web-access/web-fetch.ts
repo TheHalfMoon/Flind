@@ -192,7 +192,7 @@ async function fetchWithRedirects(
     redirect: "manual",
     headers: {
       Accept: "text/markdown, text/html, */*",
-      "User-Agent": "PostHog-Harness/1.0 (web-fetch)",
+      "User-Agent": "Flind-Harness/1.0 (web-fetch)",
     },
   });
 

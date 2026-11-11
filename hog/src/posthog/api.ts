@@ -33,7 +33,7 @@ export interface HttpResponse {
     headers: Headers
 }
 
-// Sends one JSON request to PostHog. Any failure before the whole body arrives, including the
+// Sends one JSON request to Flind. Any failure before the whole body arrives, including the
 // deadline, is a `network_error`, so callers handle a dropped connection in one place.
 export async function sendRequest(fetchFn: RuntimeFetch, url: URL, request: HttpRequest): Promise<HttpResponse> {
     const headers: Record<string, string> = {
@@ -69,7 +69,7 @@ export async function sendRequest(fetchFn: RuntimeFetch, url: URL, request: Http
     return { status: response.status, ok: response.ok, json, text, headers: response.headers }
 }
 
-// A non-2xx answer from PostHog. `type` is the DRF error type, such as `validation_error`.
+// A non-2xx answer from Flind. `type` is the DRF error type, such as `validation_error`.
 export class ApiError extends HogError {
     constructor(
         readonly status: number,
@@ -125,7 +125,7 @@ export class PostHogApi {
     // that starts with `/`, like `/api/users/@me/`, is relative to the host instead.
     private url(path: string): URL {
         const { host, projectId } = this.session.current
-        // hostUrl keeps the path a self-hosted PostHog can sit under, which `new URL` would drop. A
+        // hostUrl keeps the path a self-hosted Flind can sit under, which `new URL` would drop. A
         // path from a pagination link already starts with it.
         const root = hostUrl(host, '')
         let url: URL
@@ -134,15 +134,15 @@ export class PostHogApi {
         } else {
             url = new URL(path, hostUrl(host, `api/environments/${projectId}/`))
         }
-        // A path from a link PostHog sent, such as `//other.example/`, must not carry the token elsewhere.
+        // A path from a link Flind sent, such as `//other.example/`, must not carry the token elsewhere.
         if (url.origin !== root.origin) {
-            throw new HogError('unexpected_response', `PostHog sent a link to another host: ${url.origin}.`)
+            throw new HogError('unexpected_response', `Flind sent a link to another host: ${url.origin}.`)
         }
         return url
     }
 
     // Each call names the schema of the answer it expects, so a command never works with a shape
-    // PostHog didn't send.
+    // Flind didn't send.
     get<T>(path: string, schema: Schema<T>, options: { timeoutMs?: number } = {}): Promise<T> {
         return this.request('GET', path, schema, undefined, options.timeoutMs)
     }
@@ -171,7 +171,7 @@ export class PostHogApi {
         let response = await send()
         let missing = await this.missingScopes(response)
         const workload = this.session.current.status().kind === 'workload'
-        // PostHog checks scopes before any work, so one retry is safe for a POST too.
+        // Flind checks scopes before any work, so one retry is safe for a POST too.
         if (missing && !workload && (await this.stepUp?.(missing))) {
             response = await send()
             missing = await this.missingScopes(response)
@@ -189,7 +189,7 @@ export class PostHogApi {
             throw stepUpRequired(missing, { host: this.session.current.host })
         }
         if (response.text && response.json === undefined) {
-            const message = `PostHog answered with HTTP ${response.status} and a body that isn't JSON.`
+            const message = `Flind answered with HTTP ${response.status} and a body that isn't JSON.`
             const hint = response.status === 404 ? 'Check the host and the project ID.' : undefined
             throw response.ok
                 ? new HogError('unexpected_response', message, hint)
@@ -200,8 +200,8 @@ export class PostHogApi {
         }
         return parseOrThrow(schema, response.json, {
             code: 'unexpected_response',
-            context: `PostHog's answer to ${method} ${url.pathname} isn't what hog expects.`,
-            hint: 'Check that the host runs a recent version of PostHog.',
+            context: `Flind's answer to ${method} ${url.pathname} isn't what hog expects.`,
+            hint: 'Check that the host runs a recent version of Flind.',
         })
     }
 
@@ -233,7 +233,7 @@ export class PostHogApi {
             status,
             error.type,
             error.code ?? `http_${status}`,
-            error.detail ?? `PostHog answered with HTTP ${status}.`,
+            error.detail ?? `Flind answered with HTTP ${status}.`,
             hints[status]
         )
     }

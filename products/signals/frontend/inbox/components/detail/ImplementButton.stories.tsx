@@ -61,7 +61,7 @@ export const ConnectGithub: Story = {
             if (!reportGithubAccessLogic({ report }).values.repairNeeded) {
                 throw new Error('GitHub connection requirement has not resolved')
             }
-            const button = within(document.body).getByText('Implement with PostHog').closest('button')!
+            const button = within(document.body).getByText('Implement with Flind').closest('button')!
             if (button.getAttribute('aria-disabled') === 'true') {
                 throw new Error('GitHub check has not finished')
             }

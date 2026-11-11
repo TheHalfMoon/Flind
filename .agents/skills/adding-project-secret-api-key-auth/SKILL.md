@@ -1,6 +1,6 @@
 ---
 name: adding-project-secret-api-key-auth
-description: 'How to gate a PostHog API endpoint with project secret API key (PSAK) auth — a project-scoped, user-less service credential. Use when adding PSAK support to a viewset action, allowing a new scope for PSAKs, handling synthetic users (ProjectSecretAPIKeyUser), or choosing PSAK-aware rate throttles. Trigger terms: PSAK, ProjectSecretAPIKey, project secret API key, phs_ token, service auth, programmatic endpoint auth.'
+description: 'How to gate a Flind API endpoint with project secret API key (PSAK) auth — a project-scoped, user-less service credential. Use when adding PSAK support to a viewset action, allowing a new scope for PSAKs, handling synthetic users (ProjectSecretAPIKeyUser), or choosing PSAK-aware rate throttles. Trigger terms: PSAK, ProjectSecretAPIKey, project secret API key, phs_ token, service auth, programmatic endpoint auth.'
 ---
 
 # Adding project secret API key (PSAK) auth to an endpoint

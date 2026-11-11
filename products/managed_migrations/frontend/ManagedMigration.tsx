@@ -103,10 +103,10 @@ function IamRoleSetupInstructions({
 
     return (
         <div className="border rounded p-4 space-y-3 bg-surface-secondary">
-            <div className="font-semibold">Set up an IAM role for PostHog</div>
+            <div className="font-semibold">Set up an IAM role for Flind</div>
             <ol className="list-decimal list-inside space-y-3 text-sm">
                 <li>
-                    In the AWS console, create an IAM role with the following trust policy (it lets PostHog's import
+                    In the AWS console, create an IAM role with the following trust policy (it lets Flind's import
                     role read from your bucket, and no one else):
                     <CodeSnippet language={Language.JSON} compact>
                         {awsIamSetup.trust_policy}
@@ -127,7 +127,7 @@ function IamRoleSetupInstructions({
                             ? 'Enter your bucket above to replace <YOUR_BUCKET> in the policy.'
                             : prefix
                               ? `This grants read access to objects under ${prefix} only - nothing else in the bucket.`
-                              : 'No prefix is set, so this grants read access to the whole bucket. Set a prefix above to narrow what PostHog can read.'}
+                              : 'No prefix is set, so this grants read access to the whole bucket. Set a prefix above to narrow what Flind can read.'}
                     </div>
                 </li>
                 <li>
@@ -223,7 +223,7 @@ export function ManagedMigration(): JSX.Element {
                                 value={managedMigration.content_type}
                                 onChange={(value) => setManagedMigrationValue('content_type', value)}
                                 options={[
-                                    { value: 'captured', label: 'PostHog Events' },
+                                    { value: 'captured', label: 'Flind Events' },
                                     { value: 'mixpanel', label: 'Mixpanel Events' },
                                     { value: 'amplitude', label: 'Amplitude Events' },
                                 ]}
@@ -594,7 +594,7 @@ export function ManagedMigrations(): JSX.Element {
                                     const contentTypeConfig = {
                                         captured: {
                                             icon: '/static/icons/favicon.ico?v=2023-07-07',
-                                            alt: 'PostHog',
+                                            alt: 'Flind',
                                         },
                                         mixpanel: {
                                             icon: 'https://mixpanel.com/favicon.ico',

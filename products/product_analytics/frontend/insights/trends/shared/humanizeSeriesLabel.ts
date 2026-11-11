@@ -1,4 +1,4 @@
-// Display names for PostHog built-in event names.
+// Display names for Flind built-in event names.
 // Keep in sync with frontend/src/taxonomy/core-filter-definitions-by-group.json (events section).
 const POSTHOG_EVENT_DISPLAY_NAMES: Record<string, string> = {
     $$heatmap: 'Heatmap',
@@ -80,7 +80,7 @@ const POSTHOG_EVENT_DISPLAY_NAMES: Record<string, string> = {
 }
 
 /** Returns the human-friendly display name for a series label.
- *  Resolves PostHog built-in event names ($pageview → Pageview); passes
+ *  Resolves Flind built-in event names ($pageview → Pageview); passes
  *  everything else through unchanged. Safe to call with null/undefined. */
 export function humanizeSeriesLabel(label: string | null | undefined): string {
     if (!label) {

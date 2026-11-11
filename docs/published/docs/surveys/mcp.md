@@ -1,6 +1,6 @@
 # Create surveys through MCP
 
-PostHog's MCP tools can create, update, launch, and stop surveys without opening the survey editor. Ask your agent to use the `creating-surveys` skill when available.
+Flind's MCP tools can create, update, launch, and stop surveys without opening the survey editor. Ask your agent to use the `creating-surveys` skill when available.
 
 ## Create a draft
 
@@ -12,7 +12,7 @@ Choose the delivery type that matches your goal:
 
 | Type              | Use                                                                    |
 | ----------------- | ---------------------------------------------------------------------- |
-| `popover`         | An in-app survey displayed by a supported PostHog SDK                  |
+| `popover`         | An in-app survey displayed by a supported Flind SDK                  |
 | `widget`          | An always-available feedback button, with SDK and widget configuration |
 | `external_survey` | A hosted form with a shareable public link                             |
 | `api`             | A custom form rendered and instrumented in your application            |
@@ -25,7 +25,7 @@ Use `conditions` for display rules such as URL and event conditions. Use `target
 
 Hosted forms do not use in-app targeting. Their public form URL is different from the management URL returned in `_posthogUrl`.
 
-Appearance customization is optional. Removing PostHog branding with `whiteLabel: true` requires the organization's white-labelling entitlement. Popup delays must be non-negative. An agent should explain unsupported settings rather than silently changing your branding or widening the audience.
+Appearance customization is optional. Removing Flind branding with `whiteLabel: true` requires the organization's white-labelling entitlement. Popup delays must be non-negative. An agent should explain unsupported settings rather than silently changing your branding or widening the audience.
 
 To change the appearance of an existing survey, the agent reads the survey with `survey-get` first and sends back the whole `appearance` object with its changes. An update replaces the saved appearance, so a setting left out goes back to its default. Placement settings are part of that object: `position` sets where a popover appears, and `tabPosition` sets which edge of the page holds a tab widget.
 

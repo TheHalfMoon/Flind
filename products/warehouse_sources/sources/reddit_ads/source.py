@@ -65,7 +65,7 @@ class RedditAdsSource(ResumableSource[RedditAdsSourceConfig, RedditAdsResumeConf
             # Reddit returns 403 when the connected account lacks permission to read the
             # configured ad account's reports (access revoked or insufficient scope). The
             # request can never succeed without the user reconnecting, so stop retrying.
-            "403 Client Error": "PostHog is not authorized to access this Reddit Ads account. Please make sure the connected Reddit account has access to the ad account, then reconnect.",
+            "403 Client Error": "Flind is not authorized to access this Reddit Ads account. Please make sure the connected Reddit account has access to the ad account, then reconnect.",
             "404 Client Error": None,
             # `structured_posts` fans out over `profiles` (see REDDIT_ADS_FANOUT in settings.py), so
             # this parent fetch runs for that schema too. Reddit rejects it with 400 for ad accounts
@@ -84,7 +84,7 @@ class RedditAdsSource(ResumableSource[RedditAdsSourceConfig, RedditAdsResumeConf
             name=ExternalDataSourceType.REDDITADS,
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="Reddit Ads",
-            caption="Collect campaign data, ad performance, and advertising metrics from Reddit Ads. Ensure you have granted PostHog access to your Reddit Ads account, learn how to do this in [the documentation](https://posthog.com/docs/cdp/sources/reddit-ads).",
+            caption="Collect campaign data, ad performance, and advertising metrics from Reddit Ads. Ensure you have granted Flind access to your Reddit Ads account, learn how to do this in [the documentation](https://posthog.com/docs/cdp/sources/reddit-ads).",
             releaseStatus=ReleaseStatus.GA,
             iconPath="/static/services/reddit.png",
             docsUrl="https://posthog.com/docs/cdp/sources/reddit-ads",

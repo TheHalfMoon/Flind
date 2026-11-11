@@ -97,7 +97,7 @@ export type OnLogCallback = (
  * existing consumers keep compiling; will be removed in a future major.
  */
 export interface OtelTransportConfig {
-  /** PostHog ingest host, e.g., "https://us.i.posthog.com" */
+  /** Flind ingest host, e.g., "https://us.i.posthog.com" */
   host: string;
   /** Project API key */
   apiKey: string;
@@ -114,7 +114,7 @@ export interface AgentConfig {
   /** Local cache path for instant log loading (e.g., ~/.posthog-code) */
   localCachePath?: string;
   /**
-   * Annotate files the agent reads with PostHog enrichment (event volume,
+   * Annotate files the agent reads with Flind enrichment (event volume,
    * flag rollout/staleness, experiment links). Defaults to enabled when
    * `posthog` config is present; set `{ enabled: false }` to opt out.
    */

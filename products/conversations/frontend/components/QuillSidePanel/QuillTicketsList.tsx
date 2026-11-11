@@ -47,7 +47,7 @@ export function QuillTicketsList(): JSX.Element {
                     </IconStack>
                     <EmptyTitle>Support chat isn't available right now</EmptyTitle>
                     <EmptyDescription>
-                        An ad blocker or network policy can stop it from loading. You can still ask PostHog AI or the
+                        An ad blocker or network policy can stop it from loading. You can still ask Flind AI or the
                         community.
                     </EmptyDescription>
                 </EmptyHeader>

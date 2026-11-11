@@ -126,7 +126,7 @@ export const WIZARD_STEP_COPY: Record<WizardStepKey, WizardStepCopy> = {
         label: 'Push',
         title: 'Set up push notifications',
         description:
-            'Connect the service that delivers to your app, then turn on push in the PostHog SDK. Devices register themselves when your app starts.',
+            'Connect the service that delivers to your app, then turn on push in the Flind SDK. Devices register themselves when your app starts.',
         optional: false,
     },
     journey: {

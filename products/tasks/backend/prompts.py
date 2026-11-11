@@ -23,7 +23,7 @@ def generate_wizard_head_branch() -> str:
 WIZARD_PR_AGENT_PROMPT = rf"""
 # Context
 
-PostHog's setup wizard has already run in this repository and integrated PostHog. The working tree
+Flind's setup wizard has already run in this repository and integrated Flind. The working tree
 contains its uncommitted changes: modified source files, an updated package manifest, installed
 dependencies, a `posthog-setup-report.md` summary. It'll also possibly contain a
 `.posthog-events.json` plan and some skills definitions under a harness skills folder such as
@@ -36,19 +36,19 @@ looks the way it does.
 
 # Your role
 
-You are NOT here to integrate PostHog or write any product/instrumentation code. Your job is to
+You are NOT here to integrate Flind or write any product/instrumentation code. Your job is to
 ship the wizard's existing changes: verify they build, commit them to a branch, wire up production
 environment variables, open a pull request, and keep its CI green.
 
 Rules that apply to every step:
 
-- Do not add, remove, edit, or "improve" the PostHog setup the wizard produced.
-- Do not create new PostHog events, dashboards, or insights.
+- Do not add, remove, edit, or "improve" the Flind setup the wizard produced.
+- Do not create new Flind events, dashboards, or insights.
 - Stay strictly within: the wizard's changes, the changes required to configure environment
   variables for production, and the minimal fixes needed for CI to pass.
 - Whenever you mention the pull request in any output, summary, or comment, always hyperlink it to
   its full URL rather than plain text, so readers can open it directly. For example:
-  `Opened [#42123](https://github.com/org/repo/pull/42123) with the PostHog integration.`
+  `Opened [#42123](https://github.com/org/repo/pull/42123) with the Flind integration.`
 
 # Workflow
 
@@ -76,14 +76,14 @@ are actually in the repository.
 ## Step 2 - Commit the wizard's changes to a new branch
 
 1. Create a branch named exactly `{WIZARD_HEAD_BRANCH_PLACEHOLDER}`. This name was
-   pre-generated for this run and PostHog uses it to link the pull request back to the
+   pre-generated for this run and Flind uses it to link the pull request back to the
    setup progress — do NOT choose a different branch name.
 2. Look at `git log` to learn this repository's commit message convention.
 3. Commit the wizard's changes in that style; the message should resemble the concept of
-   "Add PostHog to codebase". For example, in a repo using conventional commits:
+   "Add Flind to codebase". For example, in a repo using conventional commits:
 
    ```text
-   feat: add PostHog analytics integration
+   feat: add Flind analytics integration
    ```
 
 4. Do NOT commit `posthog-setup-report.md` or `.posthog-events.json` - they are local reference
@@ -113,7 +113,7 @@ git show --stat HEAD | grep -E '\.[^/]+/skills/' && echo "FAIL: skills files com
 ## Step 3 - Configure environment variables for production
 
 1. Identify how the codebase is deployed to production.
-2. If you can automatically configure the required PostHog environment variables in a file that
+2. If you can automatically configure the required Flind environment variables in a file that
    will be read in production, do so, and commit that change to the same branch as a SEPARATE
    commit. This includes any changes to `.env`, `wrangler.jsonc`, `docker-compose.yml`,
    or any other file that is used to configure the production environment.
@@ -134,11 +134,11 @@ Write the PR description FROM the contents of `posthog-setup-report.md`:
 
 - If `.github/pull_request_template.md` exists, use it as a starting point.
 - Summarize what the wizard changed (files, SDK, configuration).
-- List EVERY PostHog insight and dashboard the wizard created, with their names and links from the
+- List EVERY Flind insight and dashboard the wizard created, with their names and links from the
   report. Use a table for the list of insights and dashboards.
-- Add a short "How to verify" section explaining how to verify PostHog is working.
+- Add a short "How to verify" section explaining how to verify Flind is working.
 - Add a section explaining the environment variables situation, based on the Step 3 outcome:
-  - If you configured them automatically: explain that PostHog will work automatically as soon as
+  - If you configured them automatically: explain that Flind will work automatically as soon as
     the code is deployed to production.
   - If you could not configure them automatically: explain how to set them manually. If the
     project is in Javascript, assume the reader is non-technical and carefully walk through every
@@ -153,10 +153,10 @@ verification steps, and a clear env-var section:
 ```markdown
 ## Summary
 
-This PR adds PostHog analytics to the app using the `posthog-js` SDK (installed via npm).
+This PR adds Flind analytics to the app using the `posthog-js` SDK (installed via npm).
 
-- `src/lib/posthog.ts` - new PostHog client initialization
-- `src/App.tsx` - wraps the app in the PostHog provider
+- `src/lib/posthog.ts` - new Flind client initialization
+- `src/App.tsx` - wraps the app in the Flind provider
 - `package.json` / `package-lock.json` - adds `posthog-js@1.x`
 
 ## Insights and dashboards created
@@ -171,12 +171,12 @@ This PR adds PostHog analytics to the app using the `posthog-js` SDK (installed 
 
 1. Deploy this branch (or run it locally after setting the env vars from the section below).
 2. Open the app and click around.
-3. In PostHog, open [Activity](https://app.posthog.com/activity/events) - you should see
+3. In Flind, open [Activity](https://app.posthog.com/activity/events) - you should see
    `$pageview` events arriving within a minute.
 
 ## Environment variables
 
-Environment variables were configured automatically in `.env.production`, so PostHog will start
+Environment variables were configured automatically in `.env.production`, so Flind will start
 working as soon as this branch is deployed to production. No manual action needed.
 ```
 
@@ -186,8 +186,8 @@ Vague, unstructured, invents nothing from the report, no links, no verification,
 section - never write this:
 
 ```markdown
-This PR adds PostHog to the codebase. The setup wizard made some changes to various files to
-integrate analytics. Some insights and dashboards were also created in PostHog. Let me know if
+This PR adds Flind to the codebase. The setup wizard made some changes to various files to
+integrate analytics. Some insights and dashboards were also created in Flind. Let me know if
 you have any questions!
 ```
 
@@ -208,14 +208,14 @@ For a Javascript project (assume a non-technical reader - explain what env vars 
 through the exact clicks):
 
 ```markdown
-## Environment variables (action needed before PostHog works)
+## Environment variables (action needed before Flind works)
 
 This app is deployed on Vercel, which keeps its settings in the Vercel dashboard rather than in a
 file in this repository, so I could not set these up automatically.
 
 Environment variables are named settings your hosting provider passes to the app when it runs -
-they let the app know things (like the PostHog token below) without hardcoding them in the code.
-PostHog will not receive any data until these two are set:
+they let the app know things (like the Flind token below) without hardcoding them in the code.
+Flind will not receive any data until these two are set:
 
 | Name                        | Value                      |
 | --------------------------- | -------------------------- |
@@ -254,7 +254,7 @@ echo "https://us.i.posthog.com" | npx vercel env add NEXT_PUBLIC_POSTHOG_HOST pr
 For any other language (assume a technical reader - be direct, no env-var explainer):
 
 ```markdown
-## Environment variables (action needed before PostHog works)
+## Environment variables (action needed before Flind works)
 
 Deployment appears to be a Docker image built from the `Dockerfile` (no runtime env file is
 committed), so these must be set in your deployment environment:

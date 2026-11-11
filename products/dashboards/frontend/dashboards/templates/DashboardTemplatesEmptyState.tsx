@@ -52,7 +52,7 @@ export function DashboardTemplatesEmptyState({
         <EmptyMessage
             title={searchText ? `No templates match "${searchText}"` : 'No templates match this filter'}
             description={
-                // A customer's search can't match PostHog's templates here, so point them to where those live.
+                // A customer's search can't match Flind's templates here, so point them to where those live.
                 searchText && !isStaff
                     ? "Flind's templates are under New dashboard."
                     : 'Clear the filters to see every template.'

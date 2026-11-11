@@ -32,7 +32,7 @@ REQUEST_TIMEOUT_SECONDS = 60
 # The lower bound of the one query that finds the oldest spend log on a full refresh.
 SPEND_LOGS_EARLIEST = datetime(2000, 1, 1, tzinfo=UTC)
 _DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
-_REDACTED = "[redacted by PostHog]"
+_REDACTED = "[redacted by Flind]"
 
 SPEND_LOGS_UNAVAILABLE_MESSAGE = (
     "This LiteLLM proxy's /spend/logs/v2 endpoint is missing or too old. "

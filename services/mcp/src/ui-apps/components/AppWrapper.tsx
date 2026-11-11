@@ -76,7 +76,7 @@ export function AppWrapper<T>({ children, ...options }: AppWrapperProps<T>): Rea
 
     useEffect(() => {
         if (error) {
-            console.error('[PostHog MCP App] AppWrapper error:', error.message, error)
+            console.error('[Flind MCP App] AppWrapper error:', error.message, error)
         }
     }, [error])
 
@@ -131,7 +131,7 @@ export function AppWrapper<T>({ children, ...options }: AppWrapperProps<T>): Rea
                             className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
                         >
                             <PostHogLogo size={16} />
-                            <span>View in PostHog</span>
+                            <span>View in Flind</span>
                         </a>
                     ) : (
                         <PostHogLogo size={16} />

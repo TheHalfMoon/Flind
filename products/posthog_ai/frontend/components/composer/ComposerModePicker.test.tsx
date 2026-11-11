@@ -27,7 +27,7 @@ describe('ComposerModePicker', () => {
 
         // The strip renders twice (top and bottom edge, CSS picks one by open direction).
         const strips = screen.getAllByText(
-            'Accepts file edits and shell commands automatically. Always asks before PostHog tools that change live data. Creating or publishing content asks only while you watch the run.'
+            'Accepts file edits and shell commands automatically. Always asks before Flind tools that change live data. Creating or publishing content asks only while you watch the run.'
         )
         expect(strips).not.toHaveLength(0)
         // Inside the popup, its overflow and scroll mask hide the strips entirely.
@@ -48,7 +48,7 @@ describe('ComposerModePicker', () => {
         )
         expect(
             screen.queryByText(
-                'Accepts file edits and shell commands automatically. Always asks before PostHog tools that change live data. Creating or publishing content asks only while you watch the run.'
+                'Accepts file edits and shell commands automatically. Always asks before Flind tools that change live data. Creating or publishing content asks only while you watch the run.'
             )
         ).not.toBeInTheDocument()
 
@@ -75,7 +75,7 @@ describe('ComposerModePicker', () => {
         )
         expect(
             screen.queryByText(
-                'Accepts file edits and shell commands automatically. Always asks before PostHog tools that change live data. Creating or publishing content asks only while you watch the run.'
+                'Accepts file edits and shell commands automatically. Always asks before Flind tools that change live data. Creating or publishing content asks only while you watch the run.'
             )
         ).not.toBeInTheDocument()
     })

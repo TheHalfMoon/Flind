@@ -66,7 +66,7 @@ class DeepsourceSource(ResumableSource[DeepsourceSourceConfig, DeepsourceResumeC
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="DeepSource",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Import your DeepSource static-analysis data — repositories, analysis runs, issues, code-quality metrics, and reports — into the PostHog Data warehouse.
+            caption="""Import your DeepSource static-analysis data — repositories, analysis runs, issues, code-quality metrics, and reports — into the Flind Data warehouse.
 
 Generate a personal access token from the **Tokens** tab in your [DeepSource user settings](https://app.deepsource.com/). The token is scoped to your account, so it can read every account and repository you have access to.
 

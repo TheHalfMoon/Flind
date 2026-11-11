@@ -6,7 +6,7 @@ import {
 } from 'products/signals/frontend/inbox/inboxTaskKickoffLogic'
 import { SignalReport } from 'products/signals/frontend/inbox/types'
 
-/** What the Today page showed when the person asked, so PostHog AI can read the same reports. */
+/** What the Today page showed when the person asked, so Flind AI can read the same reports. */
 export type TodayAskContext =
     | { kind: 'reports'; reports: SignalReport[] }
     /** `canAct` comes from the report's current server state. It is false when that state is unknown. */
@@ -17,7 +17,7 @@ function markdownLink(text: string, href: string): string {
     return `[${text.replace(/[[\]]/g, '\\$&')}](${urls.absolute(urls.currentProject(href))})`
 }
 
-// `link_source` tells the report page that a PostHog AI answer wrote the link.
+// `link_source` tells the report page that a Flind AI answer wrote the link.
 function todayReportHref(reportId: string): string {
     return `${urls.todayReport(reportId)}?link_source=today`
 }
@@ -75,11 +75,11 @@ function contextLines(context: Exclude<TodayAskContext, { kind: 'none' }>): stri
 }
 
 /**
- * The question with the Today page's context under it, as Markdown. PostHog AI reads the reports
+ * The question with the Today page's context under it, as Markdown. Flind AI reads the reports
  * through the MCP tools the context names, so the context holds ids rather than the full report text.
  *
  * The context goes in a `<posthog_context>` block. The chat hides that block from the person's message
- * (`INJECTED_TAGS` in spaceFeedPreview, and `injectedBlocks` in PostHog Desktop), so the chat shows only the question,
+ * (`INJECTED_TAGS` in spaceFeedPreview, and `injectedBlocks` in Flind Desktop), so the chat shows only the question,
  * but the agent and the run log keep the full prompt.
  */
 export function todayAskPrompt(question: string, context: TodayAskContext): string {

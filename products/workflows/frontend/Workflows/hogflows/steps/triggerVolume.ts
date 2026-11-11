@@ -79,7 +79,7 @@ export function exceedsAiTaskLimit(peakPerDay: number, taskSteps: number): boole
 /**
  * The filters to estimate a trigger's volume from, or null when no estimate is possible.
  *
- * Only triggers that match real PostHog events can be counted. Internal events are not stored, and
+ * Only triggers that match real Flind events can be counted. Internal events are not stored, and
  * a trigger with nothing configured yet would count every event in the project.
  */
 export function eventTriggerVolumeFilters(action: HogFlowAction): EventTriggerFilters | null {

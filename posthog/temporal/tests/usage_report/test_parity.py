@@ -247,7 +247,7 @@ def test_end_to_end_parity_celery_task_vs_temporal_activity(
     sqs_messages = _install_fake_sqs_producer(monkeypatch)
 
     # Don't let the Celery task short-circuit on the kill-switch flag,
-    # and silence the start/end PostHog `capture` calls.
+    # and silence the start/end Flind `capture` calls.
     monkeypatch.setattr("posthoganalytics.feature_enabled", lambda *a, **kw: False)
     monkeypatch.setattr("django.conf.settings.CLOUD_DEPLOYMENT", "US")
     monkeypatch.setattr("django.conf.settings.USAGE_COUNTER_REALTIME_MODES", f"workflow-emails:{mode}")

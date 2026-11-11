@@ -510,7 +510,7 @@ async function handleDefaultPermissionFlow(
 
   // Tag MCP tool calls so the renderer routes them through McpPermission,
   // which knows how to show `serverName - toolName (MCP)` plus the unwrapped
-  // PostHog exec body. Without this, the dialog falls back to DefaultPermission
+  // Flind exec body. Without this, the dialog falls back to DefaultPermission
   // and just shows the bare tool name (e.g. "exec") with no context.
   const isMcpTool = toolName.startsWith("mcp__");
 
@@ -667,13 +667,13 @@ async function handlePostHogExecApprovalFlow(
     sessionId,
     toolCall: {
       toolCallId: toolUseID,
-      title: `The agent wants to run \`${subTool}\` on PostHog`,
+      title: `The agent wants to run \`${subTool}\` on Flind`,
       kind: "other",
       content: [
         {
           type: "content" as const,
           content: text(
-            "This will modify live PostHog data. Approve to run this sub-tool.",
+            "This will modify live Flind data. Approve to run this sub-tool.",
           ),
         },
       ],
@@ -696,7 +696,7 @@ async function handlePostHogExecApprovalFlow(
         await session.settingsManager.addPostHogExecApproval(subTool);
       } catch (error) {
         context.logger.warn(
-          "[canUseTool] Failed to persist PostHog exec approval",
+          "[canUseTool] Failed to persist Flind exec approval",
           { error: error instanceof Error ? error.message : String(error) },
         );
       }
@@ -830,7 +830,7 @@ export async function canUseTool(
 
     if (approvalState === "do_not_use") {
       const message =
-        "This tool has been blocked. To re-enable it, go to Settings > MCP Servers in PostHog.";
+        "This tool has been blocked. To re-enable it, go to Settings > MCP Servers in Flind.";
       await emitToolDenial(context, message);
       return { behavior: "deny", message, interrupt: false };
     }
@@ -844,7 +844,7 @@ export async function canUseTool(
     }
 
     // An explicit needs_approval setting always prompts — it must precede the
-    // PostHog exec gate so a remembered sub-tool approval or a local hands-off
+    // Flind exec gate so a remembered sub-tool approval or a local hands-off
     // mode cannot silently allow a tool the user asked to be asked about.
     if (approvalState === "needs_approval") {
       return handleMcpApprovalFlow(context);

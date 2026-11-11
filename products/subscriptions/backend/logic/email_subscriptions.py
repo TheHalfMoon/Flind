@@ -52,14 +52,14 @@ def send_email_subscription_report(
     is_invite = invite_message is not None
     self_invite = inviter and inviter.email == email
 
-    subject = "PostHog Report"
+    subject = "Flind Report"
     invite_summary = None
 
     resource_info = subscription.resource_info
     if not resource_info:
         raise NotImplementedError("This type of subscription resource is not supported")
 
-    subject = f"PostHog {resource_info.kind} report - {resource_info.name}"
+    subject = f"Flind {resource_info.kind} report - {resource_info.name}"
     delivery_key = "unscheduled"
     if subscription.next_delivery_date is not None:
         delivery_key = subscription.next_delivery_date.isoformat()
@@ -75,10 +75,10 @@ def send_email_subscription_report(
             f"The next subscription will be sent on {next_delivery_date_display(subscription)}"
         )
         if self_invite:
-            subject = f"You have been subscribed to a PostHog {resource_info.kind}"
+            subject = f"You have been subscribed to a Flind {resource_info.kind}"
         else:
             inviter_name = (inviter.first_name if inviter else None) or "Someone"
-            subject = f"{inviter_name} subscribed you to a PostHog {resource_info.kind}"
+            subject = f"{inviter_name} subscribed you to a Flind {resource_info.kind}"
         invite_delivery_key = str(delivery_id) if delivery_id is not None else str(uuid.uuid4())
         campaign_key = f"{resource_info.kind.lower()}_subscription_new_{subscription.pk}_{invite_delivery_key}"
 

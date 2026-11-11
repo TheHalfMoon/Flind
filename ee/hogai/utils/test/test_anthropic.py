@@ -147,7 +147,7 @@ class TestAnthropicUtils(SimpleTestCase):
             assert isinstance(provenance_content[0], dict)
             provenance_text = provenance_content[0]["text"]
             self.assertIn(f"/{expected_command} slash command", provenance_text)
-            self.assertIn("deterministic PostHog code", provenance_text)
+            self.assertIn("deterministic Flind code", provenance_text)
         else:
             self.assertEqual(len(result), 1)
 

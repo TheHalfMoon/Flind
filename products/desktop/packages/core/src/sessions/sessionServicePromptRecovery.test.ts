@@ -231,13 +231,13 @@ describe("SessionService gateway billing denials", () => {
     {
       case: "a model-gate 403",
       message:
-        'Internal error: API Error: 403 {"error":{"message":"Model \'claude-fable-5\' needs a paid PostHog plan. Models available on the free tier: @cf/zai-org/glm-5.2. Add a payment method to your organization to unlock all models. (rate_limit)","type":"permission_error","code":"model_gate"}}',
+        'Internal error: API Error: 403 {"error":{"message":"Model \'claude-fable-5\' needs a paid Flind plan. Models available on the free tier: @cf/zai-org/glm-5.2. Add a payment method to your organization to unlock all models. (rate_limit)","type":"permission_error","code":"model_gate"}}',
       expectedShow: { cause: "model_gate" },
     },
     {
       case: "an org-limit 429",
       message:
-        "Rate limit exceeded: Your team has reached its PostHog Code usage limit for this billing period.",
+        "Rate limit exceeded: Your team has reached its Flind Code usage limit for this billing period.",
       expectedShow: { cause: "org_limit" },
     },
     // The classified cause alone must open the modal — the org-limit prose
@@ -245,7 +245,7 @@ describe("SessionService gateway billing denials", () => {
     {
       case: "an org-limit message without rate-limit wording",
       message:
-        "Your team has reached its PostHog Code usage limit for this billing period.",
+        "Your team has reached its Flind Code usage limit for this billing period.",
       expectedShow: { cause: "org_limit" },
     },
     {

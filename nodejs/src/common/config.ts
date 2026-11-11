@@ -241,7 +241,7 @@ export type CommonConfig = BaseServerConfig & {
     // everyone else's requests, '*' for all.
     EXTERNAL_REQUEST_PROXY_TEAMS: string
 
-    // PostHog analytics
+    // Flind analytics
     POSTHOG_API_KEY: string
     POSTHOG_HOST_URL: string
     OTEL_SERVICE_NAME: string | null
@@ -456,7 +456,7 @@ export function getDefaultCommonConfig(): CommonConfig {
         EXTERNAL_REQUEST_H2_CONNECTIONS: 8,
         EXTERNAL_REQUEST_PROXY_TEAMS: '',
 
-        // PostHog analytics
+        // Flind analytics
         POSTHOG_API_KEY: '',
         POSTHOG_HOST_URL: 'http://localhost:8010',
         OTEL_SERVICE_NAME: null,

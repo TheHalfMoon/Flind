@@ -127,7 +127,7 @@ class InvoiceninjaSource(ResumableSource[InvoiceninjaSourceConfig, InvoiceNinjaR
             label="Invoice Ninja",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["invoice ninja", "invoicing", "billing"],
-            caption="""Enter your Invoice Ninja API token to pull your invoicing data into the PostHog Data warehouse.
+            caption="""Enter your Invoice Ninja API token to pull your invoicing data into the Flind Data warehouse.
 
 You can create an API token in Invoice Ninja under **Settings > Account Management > Integrations > API tokens**.
 

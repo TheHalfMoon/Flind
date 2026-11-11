@@ -67,11 +67,11 @@ describe('ImplementButton', () => {
         const user = userEvent.setup()
         render(<ImplementButton report={makeReport()} />)
         await user.click(screen.getByTestId('inbox-report-create-pr-steer'))
-        await waitFor(() => expect(screen.getByText('Implement with PostHog')).toBeInTheDocument())
+        await waitFor(() => expect(screen.getByText('Implement with Flind')).toBeInTheDocument())
         return user
     }
 
-    it('starts a PostHog agent from the main button without opening the options', async () => {
+    it('starts a Flind agent from the main button without opening the options', async () => {
         const user = userEvent.setup()
         render(<ImplementButton report={makeReport()} />)
 
@@ -96,7 +96,7 @@ describe('ImplementButton', () => {
             />
         )
 
-        await waitFor(() => expect(screen.getByText('Implement with PostHog')).toBeInTheDocument())
+        await waitFor(() => expect(screen.getByText('Implement with Flind')).toBeInTheDocument())
         expect(onChoicesOpenedFromLink).toHaveBeenCalled()
         expect(createPrFromReport).not.toHaveBeenCalled()
 
@@ -186,7 +186,7 @@ describe('ImplementButton', () => {
 
     it.each([
         [
-            'the PostHog button',
+            'the Flind button',
             (user: ReturnType<typeof userEvent.setup>) =>
                 user.click(screen.getByTestId('inbox-report-create-pr-submit')),
         ],
@@ -195,7 +195,7 @@ describe('ImplementButton', () => {
         const user = await openMenu()
 
         await user.type(
-            screen.getByPlaceholderText('Add instructions for the PostHog agent (optional)'),
+            screen.getByPlaceholderText('Add instructions for the Flind agent (optional)'),
             '  Keep the existing API  '
         )
         await submit(user)
@@ -236,7 +236,7 @@ describe('ImplementButton', () => {
 
         await user.click(screen.getByLabelText('Open prompt in an agent'))
 
-        expect(screen.queryByText('PostHog AI')).not.toBeInTheDocument()
+        expect(screen.queryByText('Flind AI')).not.toBeInTheDocument()
         await user.click(screen.getByText('Claude Code CLI'))
 
         expect(open).toHaveBeenCalledWith(expect.stringMatching(/^claude-cli:\/\/open\?q=/), '_blank')

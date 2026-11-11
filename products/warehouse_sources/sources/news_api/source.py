@@ -50,7 +50,7 @@ class NewsApiSource(ResumableSource[NewsApiSourceConfig, NewsApiResumeConfig]):
             label="NewsAPI",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["newsapi", "news api"],
-            caption="""Enter your NewsAPI key to pull live and historical news articles into the PostHog Data warehouse.
+            caption="""Enter your NewsAPI key to pull live and historical news articles into the Flind Data warehouse.
 
 Create a free API key at [newsapi.org](https://newsapi.org/register). The search query drives the `everything` and `top_headlines` tables; the `sources` table lists available publishers.
 

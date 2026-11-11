@@ -164,7 +164,7 @@ class S3BatchWriter:
         except Exception as e:
             if activity.in_activity():
                 get_s3_write_errors_metric(type(e).__name__).add(1)
-            # The data warehouse bucket is PostHog's own, so a refusal here is never the
+            # The data warehouse bucket is Flind's own, so a refusal here is never the
             # customer's source or credentials. Raise the typed error so the run's error text
             # doesn't read like a problem with their data, and error tracking groups every
             # occurrence on one title instead of the raw per-key s3fs message.

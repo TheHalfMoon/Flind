@@ -1,7 +1,7 @@
 """Who owns a pull request: the person whose opt-ins decide what ReviewHog may do to it.
 
 1. The author, when the GitHub login maps to an active member of the project's organization.
-2. A self-driving pull request, which the PostHog GitHub App authors for an Inbox report: the report's
+2. A self-driving pull request, which the Flind GitHub App authors for an Inbox report: the report's
    canonical reviewer among the active members (`receivers.pick_reviewer`).
 3. Else nobody. A pull request without an owner never gets writes, because nobody opted in to them.
 

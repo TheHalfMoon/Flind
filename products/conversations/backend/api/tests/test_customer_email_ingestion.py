@@ -173,11 +173,11 @@ class TestCustomerEmailIngestion(MailgunWebhookTestMixin, BaseTest):
             setup_id=setup.id,
         )
         payload: dict[str, str] = {
-            "from": "PostHog <noreply@posthog.com>",
+            "from": "Flind <noreply@posthog.com>",
             "sender": "noreply@posthog.com",
-            "subject": "Verify email forwarding to PostHog",
-            "body-plain": "PostHog is checking email forwarding.",
-            "stripped-text": "PostHog is checking email forwarding.",
+            "subject": "Verify email forwarding to Flind",
+            "body-plain": "Flind is checking email forwarding.",
+            "stripped-text": "Flind is checking email forwarding.",
         }
         if transport == "message_headers":
             payload["message-headers"] = json.dumps([[FORWARDING_CHALLENGE_HEADER, challenge.token]])
@@ -270,7 +270,7 @@ class TestCustomerEmailIngestion(MailgunWebhookTestMixin, BaseTest):
     def test_pending_channel_accepts_live_mailgun_confirmation_shape(self) -> None:
         setup = self._start_google_setup()
         payload = self._valid_google_confirmation()
-        payload["subject"] = "(PostHog Forwarding Confirmation - Receive Mail from csm@example.com"
+        payload["subject"] = "(Flind Forwarding Confirmation - Receive Mail from csm@example.com"
         payload["body-plain"] = (
             "Confirm forwarding at https://mail.google.com/mail/vf-%5Blive_token%5D-value or reject it at "
             "https://mail.google.com/mail/uf-live-token"

@@ -202,7 +202,7 @@ test.describe('Quick create survey from feature flag', () => {
         const ffLink = page.getByRole('link', { name, exact: true })
         await expect(ffLink).toBeVisible()
         const ffUrl = await ffLink.getAttribute('href')
-        // Don't wait for networkidle — PostHog polls continuously, so it rarely settles. goto
+        // Don't wait for networkidle — Flind polls continuously, so it rarely settles. goto
         // already waits for the navigation to load.
         await page.goto(ffUrl!)
 
@@ -228,7 +228,7 @@ test.describe('Quick create survey from feature flag', () => {
         const ffLink = page.getByRole('link', { name, exact: true })
         await expect(ffLink).toBeVisible()
         const ffUrl = await ffLink.getAttribute('href')
-        // Don't wait for networkidle — PostHog polls continuously, so it rarely settles. goto
+        // Don't wait for networkidle — Flind polls continuously, so it rarely settles. goto
         // already waits for the navigation to load.
         await page.goto(ffUrl!)
 

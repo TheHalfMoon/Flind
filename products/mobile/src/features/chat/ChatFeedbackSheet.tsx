@@ -48,7 +48,7 @@ export function ChatFeedbackSheet({ onClose, onSubmit }: ChatFeedbackSheetProps)
                             </Text>
                             <TextInput
                                 accessibilityLabel="Feedback about this answer"
-                                placeholder="Help us improve PostHog AI"
+                                placeholder="Help us improve Flind AI"
                                 placeholderTextColor={colors.tertiary}
                                 multiline
                                 value={text}

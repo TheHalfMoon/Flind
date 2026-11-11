@@ -143,7 +143,7 @@ class RepositoryOwnership:
 
     @staticmethod
     def installation_ids_for_account(account_login: str) -> list[str]:
-        """The installations of the PostHog GitHub App on one GitHub account, from any project."""
+        """The installations of the Flind GitHub App on one GitHub account, from any project."""
         installation_ids = (
             Integration.objects.filter(kind="github", config__account__name__iexact=account_login)
             .values_list("integration_id", flat=True)

@@ -5,7 +5,7 @@ import { activityClientLabel, isWorkloadClient, isScoutClient } from 'lib/compon
 const SELF_REPORTED_TOOLTIP = 'Self-reported by the API client in the x-posthog-client request header'
 const SCOUT_TOOLTIP = 'Flind recognized this scout from the token its run used, so it is not self-reported'
 const WORKLOAD_TOOLTIP =
-    'PostHog recognized this workload from the trust policy token it used, so it is not self-reported'
+    'Flind recognized this workload from the trust policy token it used, so it is not self-reported'
 
 export interface ActivityClientTagProps {
     client: string

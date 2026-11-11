@@ -46,7 +46,7 @@ interface AutoresearchComposerControlsProps {
 }
 
 const AUTORESEARCH_FEEDBACK_MAILTO =
-  "mailto:autoresearch@posthog.com?subject=PostHog%20Code%20Autoresearch%20feedback";
+  "mailto:autoresearch@posthog.com?subject=Flind%20Code%20Autoresearch%20feedback";
 
 /**
  * Compact autoresearch setup inside the new task composer. The prompt remains

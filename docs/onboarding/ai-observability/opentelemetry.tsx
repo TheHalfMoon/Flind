@@ -25,7 +25,7 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
                     </CalloutBox>
 
                     <Markdown>
-                        Install the OpenTelemetry SDK, PostHog's OpenTelemetry helper, and an OpenTelemetry
+                        Install the OpenTelemetry SDK, Flind's OpenTelemetry helper, and an OpenTelemetry
                         instrumentation for the provider you want to trace. The examples below use the OpenAI
                         instrumentation, but any library that emits `gen_ai.*` spans will work.
                     </Markdown>
@@ -64,10 +64,10 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
             content: (
                 <>
                     <Markdown>
-                        Configure OpenTelemetry to export spans to PostHog via the `PostHogSpanProcessor`
+                        Configure OpenTelemetry to export spans to Flind via the `PostHogSpanProcessor`
                         (`posthogotel.NewSpanProcessor` in Go). The processor only forwards AI-related spans — spans
                         whose name or attribute keys start with `gen_ai.`, `llm.`, `ai.`, or `traceloop.` — and drops
-                        everything else. PostHog converts `gen_ai.*` spans into `$ai_generation` events automatically.
+                        everything else. Flind converts `gen_ai.*` spans into `$ai_generation` events automatically.
                     </Markdown>
 
                     <CodeBlock
@@ -84,7 +84,7 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
 
                                     resource = Resource(attributes={
                                         SERVICE_NAME: "my-app",
-                                        "posthog.distinct_id": "user_123", # optional: identifies the user in PostHog
+                                        "posthog.distinct_id": "user_123", # optional: identifies the user in Flind
                                         "foo": "bar", # custom properties are passed through
                                     })
 
@@ -112,7 +112,7 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
                                     const sdk = new NodeSDK({
                                       resource: resourceFromAttributes({
                                         'service.name': 'my-app',
-                                        'posthog.distinct_id': 'user_123', // optional: identifies the user in PostHog
+                                        'posthog.distinct_id': 'user_123', // optional: identifies the user in Flind
                                         foo: 'bar', // custom properties are passed through
                                       }),
                                       spanProcessors: [
@@ -150,7 +150,7 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
 
                                         resource := sdkresource.NewWithAttributes("",
                                             attribute.String("service.name", "my-app"),
-                                            attribute.String("posthog.distinct_id", "user_123"), // optional: identifies the user in PostHog
+                                            attribute.String("posthog.distinct_id", "user_123"), // optional: identifies the user in Flind
                                             attribute.String("foo", "bar"), // custom properties are passed through
                                         )
                                         provider := sdktrace.NewTracerProvider(
@@ -182,7 +182,7 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
                 <>
                     <Markdown>
                         With the processor and instrumentation wired up, any LLM call made through the instrumented SDK
-                        is captured. PostHog receives the emitted `gen_ai.*` span and converts it into an
+                        is captured. Flind receives the emitted `gen_ai.*` span and converts it into an
                         `$ai_generation` event.
                     </Markdown>
 
@@ -245,7 +245,7 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
                                     tracer := otel.Tracer("my-app")
                                     _, span := tracer.Start(ctx, "chat gpt-5-mini")
                                     // Set the request attributes before the call so a failed call still
-                                    // carries the gen_ai.* keys the PostHog span filter looks for
+                                    // carries the gen_ai.* keys the Flind span filter looks for
                                     span.SetAttributes(
                                         attribute.String("gen_ai.operation.name", "chat"),
                                         attribute.String("gen_ai.provider.name", "openai"),
@@ -258,7 +258,7 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
                                     resp, err := client.Chat.Completions.New(ctx, params) // your existing LLM call
                                     if err != nil {
                                         span.RecordError(err)
-                                        // Status Error is what marks the event as a failed generation in PostHog
+                                        // Status Error is what marks the event as a failed generation in Flind
                                         span.SetStatus(codes.Error, err.Error())
                                         span.End()
                                         return err
@@ -278,7 +278,7 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
                     <Blockquote>
                         <Markdown>
                             {dedent`
-                            **Note:** To capture LLM events anonymously, omit the \`posthog.distinct_id\` resource attribute and don't set a distinct ID in the PostHog context. See our docs on [anonymous vs identified events](https://posthog.com/docs/data/anonymous-vs-identified-events) to learn more.
+                            **Note:** To capture LLM events anonymously, omit the \`posthog.distinct_id\` resource attribute and don't set a distinct ID in the Flind context. See our docs on [anonymous vs identified events](https://posthog.com/docs/data/anonymous-vs-identified-events) to learn more.
                             `}
                         </Markdown>
                     </Blockquote>
@@ -299,14 +299,14 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
             content: (
                 <>
                     <Markdown>
-                        PostHog translates standard OpenTelemetry GenAI semantic convention attributes into the same
-                        `$ai_*` event properties our native SDK wrappers emit, so traces look the same in PostHog
+                        Flind translates standard OpenTelemetry GenAI semantic convention attributes into the same
+                        `$ai_*` event properties our native SDK wrappers emit, so traces look the same in Flind
                         whether they arrive through OpenTelemetry or a native wrapper. The most common mappings:
                     </Markdown>
 
                     <Markdown>
                         {dedent`
-                            | OpenTelemetry attribute | PostHog event property |
+                            | OpenTelemetry attribute | Flind event property |
                             | --- | --- |
                             | \`gen_ai.response.model\` (or \`gen_ai.request.model\`) | \`$ai_model\` |
                             | \`gen_ai.provider.name\` (or \`gen_ai.system\`) | \`$ai_provider\` |
@@ -325,10 +325,10 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
 
                     <Markdown>
                         {dedent`
-                            - **Custom attributes pass through.** Any Resource or span attribute that isn't part of the known mapping is forwarded onto the event as-is, so you can add dimensions like \`conversation_id\` or \`tenant_id\` and filter on them in PostHog.
+                            - **Custom attributes pass through.** Any Resource or span attribute that isn't part of the known mapping is forwarded onto the event as-is, so you can add dimensions like \`conversation_id\` or \`tenant_id\` and filter on them in Flind.
                             - **Trace and span IDs are preserved** as \`$ai_trace_id\`, \`$ai_span_id\`, and \`$ai_parent_id\`, so multi-step traces reconstruct correctly.
                             - **Events are classified by operation.** \`gen_ai.operation.name=chat\` becomes an \`$ai_generation\` event; \`embeddings\` becomes \`$ai_embedding\`. Spans without a recognized operation become \`$ai_span\` (or \`$ai_trace\` if they're the root of a trace).
-                            - **Vercel AI SDK, Pydantic AI, and Traceloop/OpenLLMetry** emit their own namespaces (\`ai.*\`, \`pydantic_ai.*\`, \`traceloop.*\`) and PostHog normalizes those to the same \`$ai_*\` properties.
+                            - **Vercel AI SDK, Pydantic AI, and Traceloop/OpenLLMetry** emit their own namespaces (\`ai.*\`, \`pydantic_ai.*\`, \`traceloop.*\`) and Flind normalizes those to the same \`$ai_*\` properties.
                             - **Noisy resource attributes are dropped.** OpenTelemetry auto-detected attributes under \`host.*\`, \`process.*\`, \`os.*\`, and \`telemetry.*\` (except \`telemetry.sdk.name\` / \`telemetry.sdk.version\`) don't pollute event properties.
                         `}
                     </Markdown>
@@ -354,7 +354,7 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
 
                     <Markdown>
                         {dedent`
-                            **Direct OTLP export.** If you run an OpenTelemetry Collector, or want to export from a language other than Python, Node.js, or Go, point any OTLP/HTTP exporter directly at PostHog's AI ingestion endpoint. PostHog accepts OTLP over HTTP in both \`application/x-protobuf\` and \`application/json\`, authenticated with a \`Bearer\` token. The endpoint is signal-specific (traces only), so use the \`OTEL_EXPORTER_OTLP_TRACES_*\` variants rather than the general \`OTEL_EXPORTER_OTLP_*\` ones (the SDK appends \`/v1/traces\` to the latter and would 404).
+                            **Direct OTLP export.** If you run an OpenTelemetry Collector, or want to export from a language other than Python, Node.js, or Go, point any OTLP/HTTP exporter directly at Flind's AI ingestion endpoint. Flind accepts OTLP over HTTP in both \`application/x-protobuf\` and \`application/json\`, authenticated with a \`Bearer\` token. The endpoint is signal-specific (traces only), so use the \`OTEL_EXPORTER_OTLP_TRACES_*\` variants rather than the general \`OTEL_EXPORTER_OTLP_*\` ones (the SDK appends \`/v1/traces\` to the latter and would 404).
                         `}
                     </Markdown>
 

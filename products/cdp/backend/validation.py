@@ -95,7 +95,7 @@ def _sender_integration_ids(from_value: dict) -> set[int]:
 
 
 def _validate_not_posthog_connection(integration_ids: list[int], context: dict) -> None:
-    # A PostHog connection acts as the user who created it, so only that user may use it. A function
+    # A Flind connection acts as the user who created it, so only that user may use it. A function
     # runs for the whole team and the runtime never resolves one, so reject it where the author sees why.
     get_team = context.get("get_team")
     if get_team is None or not integration_ids:
@@ -104,7 +104,7 @@ def _validate_not_posthog_connection(integration_ids: list[int], context: dict) 
     rows = IntegrationManager.any.with_source_rows().get_many(get_team().id, integration_ids).values()
     if any(row.kind == POSTHOG_CONNECT_KIND for row in rows):
         raise serializers.ValidationError(
-            {"input": "A PostHog connection can't be used as a function input. Choose a different integration."}
+            {"input": "A Flind connection can't be used as a function input. Choose a different integration."}
         )
     # A row that a data warehouse source created holds the source's typed-in credentials (passwords,
     # keys). The runtime passes an input's secrets to the function code, so no function may use it.

@@ -146,7 +146,7 @@ def test_fetch_page_rejects_off_origin_urls_without_sending_credentials(poisoned
 
 def test_fetch_page_exhausted_5xx_is_classified_retryable(monkeypatch):
     # The raised message and BitbucketSource.get_retryable_errors are two halves of one contract:
-    # a rewording on either side sends a Bitbucket outage to error tracking as a PostHog exception.
+    # a rewording on either side sends a Bitbucket outage to error tracking as a Flind exception.
     monkeypatch.setattr(cast(Any, bitbucket._fetch_page).retry, "wait", lambda _: 0)
     session = Mock()
     session.get.return_value = Mock(status_code=503)

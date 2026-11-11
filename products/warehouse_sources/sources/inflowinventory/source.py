@@ -65,7 +65,7 @@ class InflowinventorySource(ResumableSource[InflowinventorySourceConfig, InflowI
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="Inflowinventory",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your inFlow Inventory company ID and API key to pull your inventory and order data into the PostHog Data warehouse.
+            caption="""Enter your inFlow Inventory company ID and API key to pull your inventory and order data into the Flind Data warehouse.
 
 Find your company ID and create an API key on the **Integrations** page in [inFlow](https://www.inflowinventory.com/). API access requires a paid plan with the API add-on, and the key is only shown once — copy it before leaving the page.
 """,

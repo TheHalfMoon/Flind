@@ -1,6 +1,6 @@
 # ClickHouse utility UDFs
 
-This module contains the executable ClickHouse UDFs used by PostHog:
+This module contains the executable ClickHouse UDFs used by Flind:
 
 - `JSONDropKeys` and `JSONDropKeysPool`
 - `JSONCleanPostHogEvent`

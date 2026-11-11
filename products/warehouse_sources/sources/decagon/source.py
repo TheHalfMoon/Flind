@@ -45,7 +45,7 @@ class DecagonSource(ResumableSource[DecagonSourceConfig, DecagonResumeConfig]):
             name=ExternalDataSourceType.DECAGON,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Decagon",
-            caption="""Enter a Decagon API key to pull your Decagon conversations into the PostHog Data warehouse.
+            caption="""Enter a Decagon API key to pull your Decagon conversations into the Flind Data warehouse.
 
 You can find your API key on the **Developer** page of the [Decagon dashboard](https://decagon.ai/).
 """,
@@ -103,7 +103,7 @@ You can find your API key on the **Developer** page of the [Decagon dashboard](h
             # the same request and fails the same way, so retrying only multiplies the reports
             # and leaves the schema enabled to repeat it on the next schedule.
             CONTRACT_MISMATCH_ERROR: (
-                "Decagon reports rows for this table, but PostHog could not read any of them. This "
+                "Decagon reports rows for this table, but Flind could not read any of them. This "
                 "is not a problem with your API key. Contact support so we can update the sync to "
                 "match what Decagon now sends."
             ),
@@ -112,7 +112,7 @@ You can find your API key on the **Developer** page of the [Decagon dashboard](h
             # for the guard above to read, so this failure is what stops an empty full refresh from
             # replacing the table.
             UNREADABLE_ENVELOPE_ERROR: (
-                "PostHog could not find this table's rows in Decagon's response. This is not a "
+                "Flind could not find this table's rows in Decagon's response. This is not a "
                 "problem with your API key. Contact support so we can update the sync to match "
                 "what Decagon now sends."
             ),

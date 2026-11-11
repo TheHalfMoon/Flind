@@ -28,7 +28,7 @@
  *    precision), and downstream consumers — including Anthropic's tool-schema
  *    validator, which parses bounds as i64 — then reject the overflowed value.
  *    We clamp any integer schema's min/max/exclusiveMin/exclusiveMax to int32
- *    range, which is far more than enough for every PostHog identifier.
+ *    range, which is far more than enough for every Flind identifier.
  *
  * 4. `default: null` on null-permitting schemas (stripNullDefaults)
  *    Pydantic emits `default: null` for every `Optional[...] = None` field.

@@ -26,7 +26,7 @@ export interface McpToolPresentation {
 }
 
 /**
- * The shared MCP tool-card presentation: PostHog `exec` inner tools read `Call <tool>`; other MCP
+ * The shared MCP tool-card presentation: Flind `exec` inner tools read `Call <tool>`; other MCP
  * tools read `Call <server> – <tool> (MCP)`; non-MCP built-ins show their friendly title. The
  * body shows the input and text output on demand.
  * Used by the generic card and by `DataToolRow`, so data-tool widgets keep the same header/accordion.
@@ -54,7 +54,7 @@ export function getMcpToolPresentation(
           : message.proxiedToolName
             ? `Call ${message.proxiedToolName} (MCP)`
             : message.title || displayName || toolLabel || (message.kind && KIND_LABELS[message.kind]) || ''
-    // The PostHog MCP asks the agent for a one-sentence `context` on every call. It is the only
+    // The Flind MCP asks the agent for a one-sentence `context` on every call. It is the only
     // harness-independent description of intent, so it reads better in the row than the command.
     const context = typeof message.rawInput.context === 'string' ? message.rawInput.context.trim() : ''
     const title = (
@@ -99,7 +99,7 @@ export function getMcpToolPresentation(
 }
 
 /**
- * The catch-all tool card — user-installed MCP tools, unmapped PostHog `exec` inner tools, and Claude
+ * The catch-all tool card — user-installed MCP tools, unmapped Flind `exec` inner tools, and Claude
  * built-ins without a bespoke renderer. Renders the shared MCP presentation with no always-visible
  * content. Replaces the old `FallbackMcpToolRenderer`.
  */

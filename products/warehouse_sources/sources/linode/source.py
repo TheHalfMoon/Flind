@@ -64,7 +64,7 @@ class LinodeSource(ResumableSource[LinodeSourceConfig, LinodeResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Linode",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Linode (Akamai Connected Cloud) personal access token to pull your account data into the PostHog Data warehouse.
+            caption="""Enter your Linode (Akamai Connected Cloud) personal access token to pull your account data into the Flind Data warehouse.
 
 Create a personal access token in the [Linode Cloud Manager](https://cloud.linode.com/profile/tokens). Grant **read-only** access to the resources you want to sync:
 - Account (invoices, invoice items, payments, network transfer, events, users)

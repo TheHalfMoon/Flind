@@ -75,13 +75,13 @@ export const PostHogConfig = z
         host: HostSchema.meta({ format: 'uri' })
             .optional()
             .describe(
-                'The PostHog host for this project, like https://eu.posthog.com. `hog auth login` uses it, and other commands stop when your credentials are for another host. --host and HOG_HOST override it.'
+                'The Flind host for this project, like https://eu.posthog.com. `hog auth login` uses it, and other commands stop when your credentials are for another host. --host and HOG_HOST override it.'
             ),
         projectId: z
             .union([z.int().positive(), z.string().regex(/^\d+$/)])
             .optional()
             .describe(
-                'The PostHog project ID, like the 2 in https://us.posthog.com/project/2. HOG_PROJECT_ID overrides it. Never put a personal API key here.'
+                'The Flind project ID, like the 2 in https://us.posthog.com/project/2. HOG_PROJECT_ID overrides it. Never put a personal API key here.'
             ),
         errorTracking: ErrorTracking.optional(),
         cli: z
@@ -94,7 +94,7 @@ export const PostHogConfig = z
                     .boolean()
                     .optional()
                     .describe(
-                        'false stops hog from sending anonymous usage data to PostHog for everyone working in this folder.'
+                        'false stops hog from sending anonymous usage data to Flind for everyone working in this folder.'
                     ),
                 rateLimit: z
                     .number()
@@ -124,7 +124,7 @@ export const PostHogConfig = z
             .optional()
             .describe('The typed SDKs `hog schema pull` generates, by language. posthog-cli reads the same entries.'),
     })
-    .describe('Settings for the PostHog CLI. Never put API keys here: use `hog auth login` or environment variables.')
+    .describe('Settings for the Flind CLI. Never put API keys here: use `hog auth login` or environment variables.')
 
 export type PostHogConfig = z.infer<typeof PostHogConfig>
 

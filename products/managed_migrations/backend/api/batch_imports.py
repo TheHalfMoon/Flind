@@ -201,7 +201,7 @@ class BatchImportS3SourceCreateSerializer(BatchImportTrialOptionsMixin, BatchImp
         required=False,
         allow_blank=True,
         help_text=(
-            "ARN of an IAM role in your AWS account that trusts PostHog's import role. "
+            "ARN of an IAM role in your AWS account that trusts Flind's import role. "
             "Recommended alternative to access keys; only works with AWS S3 (no custom endpoint_url). "
             "Fetch the trust policy to configure from the aws_iam_setup endpoint."
         ),
@@ -307,7 +307,7 @@ class BatchImportS3SourceCreateSerializer(BatchImportTrialOptionsMixin, BatchImp
                 DurationSeconds=900,
             )["Credentials"]
         except (ClientError, BotoCoreError) as err:
-            # PostHog-side failure (our role grant or STS), not the customer's setup: skip
+            # Flind-side failure (our role grant or STS), not the customer's setup: skip
             # validation rather than block the create. The worker re-validates the full
             # chain and pauses the job with an actionable message if the role is broken.
             logger.exception("managed_migrations_import_role_assume_failed")
@@ -330,8 +330,8 @@ class BatchImportS3SourceCreateSerializer(BatchImportTrialOptionsMixin, BatchImp
             )["Credentials"]
         except (ClientError, BotoCoreError):
             raise serializers.ValidationError(
-                "PostHog could not assume this IAM role. Verify the role exists, its trust policy "
-                "allows PostHog's import role, and the External ID matches the one shown in setup."
+                "Flind could not assume this IAM role. Verify the role exists, its trust policy "
+                "allows Flind's import role, and the External ID matches the one shown in setup."
             )
 
         s3 = boto3.client(
@@ -665,13 +665,13 @@ class BatchImportAWSIAMSetupSerializer(serializers.Serializer):
     """Values a customer needs to configure cross-account IAM role access for S3 imports."""
 
     available = serializers.BooleanField(
-        help_text="Whether IAM role authentication is available on this PostHog deployment."
+        help_text="Whether IAM role authentication is available on this Flind deployment."
     )
     external_id = serializers.CharField(
         help_text="External ID to pin in the role trust policy's sts:ExternalId condition. Stable per project."
     )
     posthog_role_arn = serializers.CharField(
-        allow_blank=True, help_text="ARN of PostHog's import role -- the principal your role must trust."
+        allow_blank=True, help_text="ARN of Flind's import role -- the principal your role must trust."
     )
     trust_policy = serializers.CharField(
         allow_blank=True, help_text="Ready-to-paste IAM trust policy JSON for the role in your AWS account."
@@ -807,7 +807,7 @@ class BatchImportViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet):
         responses={200: BatchImportAWSIAMSetupSerializer},
         description=(
             "Values needed to set up cross-account IAM role access for S3 imports: the external ID, "
-            "PostHog's import role ARN, and ready-to-paste trust/permission policy JSON."
+            "Flind's import role ARN, and ready-to-paste trust/permission policy JSON."
         ),
     )
     @action(methods=["GET"], detail=False)

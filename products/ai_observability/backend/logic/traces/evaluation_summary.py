@@ -17,7 +17,7 @@ _ROLLUP_OUTCOMES: dict[EvaluationOutcome, EvaluationRollupOutcome] = {
 
 @frozen
 class _EvaluationOnNode:
-    # Results from outside PostHog carry no evaluation id, so their name stands in for it.
+    # Results from outside Flind carry no evaluation id, so their name stands in for it.
     evaluation: str
     node_id: str
 

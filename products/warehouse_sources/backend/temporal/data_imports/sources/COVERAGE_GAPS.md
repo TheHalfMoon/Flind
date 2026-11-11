@@ -305,7 +305,7 @@ Have: `accounts`, `campaigns`, `campaign_groups`, `creatives`, `conversions`, `c
 `member_seniority_stats`. The only ad platform that ships `creatives`.
 
 - [x] Member-demographic pivots: `MEMBER_COMPANY`, `MEMBER_INDUSTRY`, `MEMBER_SENIORITY`, `MEMBER_JOB_TITLE`, `MEMBER_COUNTRY_V2`, `MEMBER_COMPANY_SIZE`. This is the reason people advertise on LinkedIn and none of it is available.
-- [ ] Lead gen forms and form responses. (skipped: the Lead Sync API needs `r_marketing_leadgen_automation`, which is not in PostHog's LinkedIn OAuth app and belongs to a separate approval program)
+- [ ] Lead gen forms and form responses. (skipped: the Lead Sync API needs `r_marketing_leadgen_automation`, which is not in Flind's LinkedIn OAuth app and belongs to a separate approval program)
 - [x] Conversions and conversion events. (conversion rules ship as `conversions`; the conversion-tracking reference documents no read finder for individual conversion events, so conversion counts stay available through the `externalWebsiteConversions` metric on the stats tables)
 - [ ] Audiences / DMP segments. (skipped: `dmpSegments` needs `rw_dmp_segments`, part of the Audiences program and not granted with the Marketing API program)
 - [ ] Budget and bid data on campaigns. (skipped: `dailyBudget`, `unitCost` and `costType` already sync on `campaigns` and `totalBudget` on `campaign_groups`; the remainder would mean adding columns to live tables)
@@ -454,7 +454,7 @@ Have: `campaigns`, `ad_groups`, `ads`, `campaign_report`, `ad_group_report`, `ad
 
 - [x] Creative metadata — `creative_videos` (`/file/video/ad/search/`) and `creative_images` (`/file/image/ad/search/`) decode the `video_id` / `image_ids` already synced on `ads`.
 - [x] Breakdown dimensions on the report tables — nine `report_type=AUDIENCE` tables covering gender + age, country, and operating system at campaign, ad group, and ad level. All default to off.
-- [ ] Ad account table (skipped: `/advertiser/info/` is not readable with the scope the PostHog TikTok app holds, so the table would fail for every connection. Report tables already carry `currency`; timezone stays missing).
+- [ ] Ad account table (skipped: `/advertiser/info/` is not readable with the scope the Flind TikTok app holds, so the table would fail for every connection. Report tables already carry `currency`; timezone stays missing).
 - [ ] Audiences (skipped: `/dmp/custom_audience/list/` needs the audience-management scope, which the app does not hold today).
 - [ ] Pixel / conversion event definitions (skipped: `/pixel/list/` needs the events-manager scope, which the app does not hold today).
 - [ ] Province-level breakdown (skipped: TikTok only offers `province_id` at ad level, so it does not fit the symmetric set above).

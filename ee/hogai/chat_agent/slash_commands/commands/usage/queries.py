@@ -31,7 +31,7 @@ if TYPE_CHECKING:
 # Default free tier limit in credits
 DEFAULT_FREE_TIER_CREDITS = 2000
 
-POSTHOG_AI_USAGE_REPORT_ASSISTANT_MESSAGE_TITLE = "PostHog AI usage"
+POSTHOG_AI_USAGE_REPORT_ASSISTANT_MESSAGE_TITLE = "Flind AI usage"
 
 # Default GA launch date - don't count usage before this date
 DEFAULT_GA_LAUNCH_DATE = datetime(2025, 11, 17, tzinfo=UTC)
@@ -255,7 +255,7 @@ def get_ai_credits(
                     AND timestamp >= %(begin)s
                     AND timestamp < %(end)s
                     AND event = '$ai_generation'
-                    -- Only products that bill into the PostHog AI credit bucket; other billable
+                    -- Only products that bill into the Flind AI credit bucket; other billable
                     -- products (e.g. posthog_code) have their own credit counters.
                     AND JSONExtractString(properties, 'ai_product') IN %(ai_products)s
                     {session_filter_prewhere}
@@ -478,7 +478,7 @@ def format_usage_message(
     # Add GA cap explanation if active
     if ga_cap_active:
         lines.append(
-            f"\n_{usage_period.label} usage is calculated from PostHog AI general availability date ({ga_launch_date.strftime('%b %d, %Y')}) "
+            f"\n_{usage_period.label} usage is calculated from Flind AI general availability date ({ga_launch_date.strftime('%b %d, %Y')}) "
             "as usage before this date is not counted._"
         )
 

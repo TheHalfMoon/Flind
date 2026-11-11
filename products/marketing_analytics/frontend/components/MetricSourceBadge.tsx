@@ -7,7 +7,7 @@ import type { OverviewMetricSource } from '../overview/overviewMetricConfigurati
 
 const SOURCE_DESCRIPTIONS: Record<OverviewMetricSource, string> = {
     platforms: 'Reported directly by your ad platforms and added together',
-    posthog: 'Calculated from your PostHog event data',
+    posthog: 'Calculated from your Flind event data',
 }
 
 export function MetricSourceBadge({ source }: { source: OverviewMetricSource }): JSX.Element {

@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 19 enabled ops
+ * Flind API - MCP 19 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -67,7 +67,7 @@ export const DashboardsListQueryParams = () => zod.object({
         .string()
         .optional()
         .describe('Optional. Return only dashboards created by the user with this UUID.'),
-    exclude_generated: zod.boolean().optional().describe('Optional. Exclude dashboards that PostHog generated.'),
+    exclude_generated: zod.boolean().optional().describe('Optional. Exclude dashboards that Flind generated.'),
     folder: zod
         .string()
         .optional()
@@ -337,7 +337,7 @@ export const DashboardsPartialUpdateBody = () => zod
                     .unknown()
                     .optional()
                     .describe(
-                        'Dashboard-level property filters applied to every tile (PostHog property filter group).'
+                        'Dashboard-level property filters applied to every tile (Flind property filter group).'
                     ),
                 breakdown_filter: zod
                     .union([
@@ -747,7 +747,7 @@ export const DashboardsCreateTextTileCreateBody = () => zod.object({
         .max(dashboardsCreateTextTileCreateBodyAgentContextMax)
         .nullish()
         .describe(
-            "Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. PostHog's Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters."
+            "Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. Flind's Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters."
         ),
     layouts: zod
         .object({
@@ -960,7 +960,7 @@ export const DashboardsUpdateTextTileCreateBody = () => zod.object({
         .max(dashboardsUpdateTextTileCreateBodyAgentContextMax)
         .nullish()
         .describe(
-            "Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. PostHog's Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters."
+            "Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. Flind's Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters."
         ),
     layouts: zod
         .object({

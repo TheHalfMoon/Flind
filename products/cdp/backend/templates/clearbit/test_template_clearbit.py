@@ -9,7 +9,7 @@ EXAMPLE_RESPONSE = {
     },
     "company": {
         "id": "1234",
-        "name": "PostHog",
+        "name": "Flind",
         "legalName": "PostHog Inc.",
         "domain": "posthog.com",
     },
@@ -58,7 +58,7 @@ class TestTemplateClearbit(BaseHogFunctionTemplateTest):
             {"method": "GET", "headers": {"Authorization": "Bearer API_KEY"}},
         )
 
-        assert self.get_mock_print_calls() == [("Clearbit data found - sending event to PostHog",)]
+        assert self.get_mock_print_calls() == [("Clearbit data found - sending event to Flind",)]
         assert self.get_mock_posthog_capture_calls() == [
             (
                 {
@@ -79,7 +79,7 @@ class TestTemplateClearbit(BaseHogFunctionTemplateTest):
                             },
                             "company": {
                                 "id": "1234",
-                                "name": "PostHog",
+                                "name": "Flind",
                                 "legalName": "PostHog Inc.",
                                 "domain": "posthog.com",
                             },

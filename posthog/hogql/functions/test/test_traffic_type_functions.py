@@ -824,11 +824,11 @@ class TestCustomBotDefinitions(ClickhouseTestMixin, BaseTest):
 
     @parameterized.expand(
         [
-            # Someone who writes a rule for a bot PostHog already knows means to relabel it, so
+            # Someone who writes a rule for a bot Flind already knows means to relabel it, so
             # their rule takes both the name and the category.
             ("a rule that matches", "GPTBot", ("Mine", "monitoring")),
             # Rules extend the built-in list rather than replacing it, so an event no rule claims
-            # keeps the name PostHog gives it.
+            # keeps the name Flind gives it.
             ("a rule that does not match", "AcmeBot", ("GPTBot", "ai_crawler")),
         ]
     )

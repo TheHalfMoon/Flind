@@ -35,14 +35,14 @@ export function QuillDashboardTemplateDetailActions({
                         : !previewDashboardId
                           ? 'Open the preview first'
                           : !dataProcessingAccepted
-                            ? (dataProcessingApprovalDisabledReason ?? 'Approve AI data processing to use PostHog AI')
+                            ? (dataProcessingApprovalDisabledReason ?? 'Approve AI data processing to use Flind AI')
                             : undefined
                 }
                 data-attr="metrics-dashboard-review-edit-with-ai"
             >
                 <IconSparkles className="text-ai" />
                 <span className={cn('rainbow-text font-semibold', !inStorybook() && 'rainbow-text-animating')}>
-                    Edit with PostHog AI
+                    Edit with Flind AI
                 </span>
             </Button>
             {regenerable && (

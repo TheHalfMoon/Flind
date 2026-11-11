@@ -52,7 +52,7 @@ export function mapAppServerNotification(
       // Context indicator: renderer reads `used`/`size`; detailed breakdown comes via `_posthog/usage_update`.
       const usage = readTokenUsage(params);
       if (!usage) return null;
-      // `usage_update` is a PostHog-convention update, not in the ACP union.
+      // `usage_update` is a Flind-convention update, not in the ACP union.
       return {
         sessionId,
         update: {

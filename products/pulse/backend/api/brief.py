@@ -197,7 +197,7 @@ class BriefSectionSerializer(serializers.Serializer):
     kind = serializers.CharField(help_text="Section kind, e.g. what_happened or what_to_build_next.")
     title = serializers.CharField(help_text="Short section heading.")
     markdown = serializers.CharField(help_text="Section body rendered as markdown.")
-    citations = BriefSectionCitationSerializer(many=True, help_text="PostHog resources this section cites as evidence.")
+    citations = BriefSectionCitationSerializer(many=True, help_text="Flind resources this section cites as evidence.")
     confidence = serializers.FloatField(help_text="Model confidence in this section, 0.0-1.0.")
 
 

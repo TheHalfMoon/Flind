@@ -1,6 +1,6 @@
 # Side panel agent guide (`frontend/src/layout/navigation-3000/sidepanel`)
 
-The side panel is the right-hand panel with tabs for PostHog AI, Info, Notebooks, Discussion, Activity, Access control and Support.
+The side panel is the right-hand panel with tabs for Flind AI, Info, Notebooks, Discussion, Activity, Access control and Support.
 `sidePanelLogic.tsx` decides which tabs a scene gets.
 
 ## Under `today-rail-nav`, several tabs are on their way out

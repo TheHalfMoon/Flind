@@ -2,8 +2,8 @@
 
 A destination with bad settings (wrong password, unknown database, unreachable host) fails every
 run that delivers to it. After `DATA_WAREHOUSE_DESTINATION_PAUSE_AFTER_CONFIGURATION_FAILURES`
-such failures in a row, PostHog turns off every link to it and tells the project once. The schemas
-themselves stay on, so a table that also syncs to the PostHog warehouse or another destination
+such failures in a row, Flind turns off every link to it and tells the project once. The schemas
+themselves stay on, so a table that also syncs to the Flind warehouse or another destination
 keeps syncing there.
 
 Every write here is best effort. A health record that cannot be saved must never fail a delivery.
@@ -32,7 +32,7 @@ logger = structlog.get_logger(__name__)
 
 # Shown for a failure that is not a configuration error. The raw error can name hosts or carry
 # driver output, so it stays in the logs and the user sees this instead.
-TRANSIENT_DELIVERY_ERROR = "PostHog could not deliver data to this destination. The next sync will try again."
+TRANSIENT_DELIVERY_ERROR = "Flind could not deliver data to this destination. The next sync will try again."
 
 
 def record_delivery_failure(destination: ExternalDataDestination, error: BaseException) -> None:
@@ -77,7 +77,7 @@ def record_delivery_success(destination: ExternalDataDestination) -> None:
 def resume_destination(destination: ExternalDataDestination) -> None:
     """Turn a destination back on after a user edits it or selects it again.
 
-    Turns its links back on only when PostHog paused it. Nothing else turns a link off, so every
+    Turns its links back on only when Flind paused it. Nothing else turns a link off, so every
     link that is off on a paused destination is one the pause turned off.
     """
     with transaction.atomic():

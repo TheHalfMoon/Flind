@@ -434,11 +434,11 @@ function ConfigureStep(): JSX.Element {
                             <div className="flex-1 space-y-1">
                                 <div className="text-sm font-medium">Self-driving</div>
                                 <div className="text-xs text-muted">
-                                    Don't just find problems, fix them. Issues this scanner spots flow into PostHog
+                                    Don't just find problems, fix them. Issues this scanner spots flow into Flind
                                     Signals, where agents dig into the root cause and draft a pull request. You stay in
                                     control of what ships.{' '}
                                     <Link to="https://posthog.com/self-driving" target="_blank">
-                                        Learn more about PostHog self-driving
+                                        Learn more about Flind self-driving
                                     </Link>
                                     .
                                 </div>

@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunSQL(
-            # at the point of this migration, the only team that has templates is the PostHog team in cloud
+            # at the point of this migration, the only team that has templates is the Flind team in cloud
             """
             UPDATE posthog_dashboardtemplate
             SET team_id = NULL

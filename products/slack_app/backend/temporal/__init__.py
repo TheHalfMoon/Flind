@@ -1,4 +1,4 @@
-"""Temporal activities for the PostHog Slack App.
+"""Temporal activities for the Flind Slack App.
 
 Activities living here run on ``settings.TASKS_TASK_QUEUE`` and are imported by
 ``slack_app_mention_processing.py`` and ``posthog_code_slack_mention_command.py``

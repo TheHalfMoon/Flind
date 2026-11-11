@@ -44,7 +44,7 @@ function runTitle(run: ScoutRun, now: Date): string {
 
 /**
  * One small box per run in the visible window, oldest on the left. Each box
- * opens the backing task run in PostHog cloud; runs without a task link carry
+ * opens the backing task run in Flind cloud; runs without a task link carry
  * their label only.
  */
 export function ScoutRunBoxes({
@@ -83,14 +83,14 @@ export function ScoutRunBoxes({
                         target="_blank"
                         rel="noreferrer"
                         className={boxClass}
-                        title={`${label} · open task run in PostHog`}
+                        title={`${label} · open task run in Flind`}
                       >
                         <span className="sr-only">Run {label}</span>
                       </a>
                     }
                   />
                   <TooltipContent>
-                    {label} · open task run in PostHog
+                    {label} · open task run in Flind
                   </TooltipContent>
                 </Tooltip>
               );

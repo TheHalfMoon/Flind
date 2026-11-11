@@ -24,8 +24,8 @@ export function WorkflowSuggestionsNotice({ id }: { id: string }): JSX.Element |
             }}
         >
             {pendingProposals.length === 1
-                ? 'PostHog suggests a change to this workflow.'
-                : `PostHog suggests ${pendingProposals.length} changes to this workflow.`}
+                ? 'Flind suggests a change to this workflow.'
+                : `Flind suggests ${pendingProposals.length} changes to this workflow.`}
         </LemonBanner>
     )
 }

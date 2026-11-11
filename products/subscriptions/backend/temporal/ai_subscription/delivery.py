@@ -528,7 +528,7 @@ def send_email_ai_subscription_report(
 ) -> None:
     utm_tags = f"{UTM_TAGS_BASE}&utm_medium=email"
     html = render_ai_email_html(markdown)
-    title = subscription.title or "Your PostHog AI report"
+    title = subscription.title or "Your Flind AI report"
     subscription_url = subscription.url or absolute_uri(
         f"/project/{subscription.team_id}/subscriptions/{subscription.id}"
     )
@@ -538,7 +538,7 @@ def send_email_ai_subscription_report(
 
     message = EmailMessage(
         campaign_key=campaign_key,
-        subject=f"PostHog AI report - {title}",
+        subject=f"Flind AI report - {title}",
         template_name="ai_subscription_report",
         template_context={
             "title": title,
@@ -571,7 +571,7 @@ def send_email_ai_subscription_credit_limited(
     `billing_period_key` keys the campaign so MessagingRecord dedups to one notice per
     credit-reset cycle even if the skip path runs more than once."""
     utm_tags = f"{UTM_TAGS_BASE}&utm_medium=email"
-    title = subscription.title or "Your PostHog AI report"
+    title = subscription.title or "Your Flind AI report"
     subscription_url = subscription.url or absolute_uri(
         f"/project/{subscription.team_id}/subscriptions/{subscription.id}"
     )
@@ -579,7 +579,7 @@ def send_email_ai_subscription_credit_limited(
 
     message = EmailMessage(
         campaign_key=f"ai_subscription_credit_limited_{subscription.id}_{billing_period_key}",
-        subject=f"PostHog AI report skipped - {title}",
+        subject=f"Flind AI report skipped - {title}",
         template_name="ai_subscription_credit_limited",
         template_context={
             "title": title,
@@ -612,7 +612,7 @@ def _build_ai_slack_message(
     if tokens and tokens[0].type == "heading_open" and tokens[0].tag == "h1" and tokens[0].map:
         markdown = "".join(markdown.splitlines(keepends=True)[tokens[0].map[1] :]).lstrip("\r\n")
     sections = _safe_slack_markdown_sections(markdown)
-    title = subscription.title or "Your PostHog AI report"
+    title = subscription.title or "Your Flind AI report"
     first_section = sections[0] if sections else "_No report content was generated._"
     heading = f'Your report "{title}" is ready! 🎉'
 
@@ -753,7 +753,7 @@ def build_ai_teams_card(
 ) -> dict[str, Any]:
     """Adaptive Card for an AI report. Adaptive Cards render a restricted markdown subset in a
     TextBlock, so the report goes through mostly as written and a table degrades to plain text."""
-    title = strip_external_links_markdown(subscription.title or "Your PostHog AI report")
+    title = strip_external_links_markdown(subscription.title or "Your Flind AI report")
     subscription_url = subscription.url or absolute_uri(
         f"/project/{subscription.team_id}/subscriptions/{subscription.id}"
     )
@@ -766,7 +766,7 @@ def build_ai_teams_card(
     include_feedback = subscription.includes_delivery_part("include_feedback")
     shortened_notice = "This report was shortened to fit."
     if include_manage_link:
-        shortened_notice += f" [Read all of it in PostHog]({subscription_url}?{TEAMS_UTM_TAGS})"
+        shortened_notice += f" [Read all of it in Flind]({subscription_url}?{TEAMS_UTM_TAGS})"
     feedback_positive_url = _build_feedback_url(subscription_url, delivery_id, "positive", "teams")
     feedback_negative_url = _build_feedback_url(subscription_url, delivery_id, "negative", "teams")
     feedback = f"Was this report useful? [👍 Yes]({feedback_positive_url}) · [👎 No]({feedback_negative_url})"

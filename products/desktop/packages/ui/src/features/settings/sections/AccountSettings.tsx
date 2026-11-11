@@ -170,8 +170,8 @@ export function AccountSettingsView({
       <SettingsCard>
         <ProfilePictureRow {...pictureProps} />
         <SettingsCardRow
-          label="PostHog account"
-          description="Account and billing details are managed on PostHog"
+          label="Flind account"
+          description="Account and billing details are managed on Flind"
         >
           <Button
             type="button"

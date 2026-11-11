@@ -119,9 +119,9 @@ describe('DeletedFlagBanner', () => {
         {
             who: 'support while impersonating',
             entry: { was_impersonated: true },
-            name: 'PostHog Support (as Max Smith)',
+            name: 'Flind Support (as Max Smith)',
         },
-        { who: 'the system', entry: { is_system: true, user: null }, name: 'PostHog' },
+        { who: 'the system', entry: { is_system: true, user: null }, name: 'Flind' },
     ])('names $who as the activity log does', async ({ entry, name }) => {
         useMocks({
             get: {

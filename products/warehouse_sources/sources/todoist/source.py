@@ -48,7 +48,7 @@ class TodoistSource(ResumableSource[TodoistSourceConfig, TodoistResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Todoist",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Todoist API token to automatically pull your Todoist data into the PostHog Data warehouse.
+            caption="""Enter your Todoist API token to automatically pull your Todoist data into the Flind Data warehouse.
 
 You can find your personal API token in [Todoist's integration settings](https://app.todoist.com/app/settings/integrations/developer).""",
             iconPath="/static/services/todoist.png",

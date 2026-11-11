@@ -738,7 +738,7 @@ class TestUuidRegex(SimpleTestCase):
         self.assertIsNotNone(_UUID_RE.fullmatch("12345678-1234-1234-1234-123456789abc"))
 
     def test_rejects_uppercase(self):
-        # Our pattern is strict lowercase — matches the format PostHog emits.
+        # Our pattern is strict lowercase — matches the format Flind emits.
         self.assertIsNone(_UUID_RE.fullmatch("12345678-1234-1234-1234-123456789ABC"))
 
     def test_rejects_too_short(self):

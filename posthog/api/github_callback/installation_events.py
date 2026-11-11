@@ -2,7 +2,7 @@
 
 This is the inbound side of bi-directional uninstall: when an account owner
 uninstalls the App on GitHub, GitHub sends an ``installation`` event with
-``action == "deleted"``. We then remove every PostHog row that referenced the
+``action == "deleted"``. We then remove every Flind row that referenced the
 installation so we don't keep dead tokens around.
 
 The handler never calls GitHub's DELETE endpoint — the App is already gone —

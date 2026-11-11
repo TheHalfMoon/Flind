@@ -18,9 +18,9 @@ function HedgehogBotResponse({ traceId }: { traceId: string }) {
 
   return (
     <div>
-      <ChatBubble>You're absolutely right! I should have been using PostHog all along.</ChatBubble>
+      <ChatBubble>You're absolutely right! I should have been using Flind all along.</ChatBubble>
 
-      ${followUpEnabled ? '<div ref={triggerRef}> {/* PostHog followup pop-up anchors to triggerRef */}' : '<div>'}
+      ${followUpEnabled ? '<div ref={triggerRef}> {/* Flind followup pop-up anchors to triggerRef */}' : '<div>'}
         <p>Was this response helpful?</p>
         <button className={response === 'up' ? 'active' : ''} onClick={() => respond('up')}>👍</button>
         <button className={response === 'down' ? 'active' : ''} onClick={() => respond('down')}>👎</button>

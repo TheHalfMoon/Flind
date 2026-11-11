@@ -97,7 +97,7 @@ def _http_status(error: BaseException) -> int | None:
 
 def validate_store_location(config: StoreConfig) -> None:
     """Apply the checks a self-managed warehouse table URL gets: https, no internal hosts, and no
-    bucket that PostHog itself owns."""
+    bucket that Flind itself owns."""
     is_valid, error = validate_warehouse_table_url_pattern(config.location_url)
     if not is_valid:
         raise ObjectStorageError(f"{BLOCKED_LOCATION_ERROR}: {error}")
@@ -233,7 +233,7 @@ class ObjectStorageSource(SimpleSource[ConfigType], CursorSource[ObjectStorageDe
             return False, message
         if not tables:
             return False, (
-                f"{NO_IMPORTABLE_FILES_ERROR} in '{store_config.display_location}'. PostHog can read the bucket but "
+                f"{NO_IMPORTABLE_FILES_ERROR} in '{store_config.display_location}'. Flind can read the bucket but "
                 "found nothing to import there. Check the URL and the file format."
             )
         return True, None

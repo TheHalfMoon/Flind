@@ -24,7 +24,7 @@ from products.warehouse_sources.sources.zonka_feedback.settings import (
 )
 
 # Vendor API version labels — opaque strings, never parsed or ordered. v2.1 is Zonka's current
-# stable API; v1 is the legacy label PostHog first shipped against.
+# stable API; v1 is the legacy label Flind first shipped against.
 ZONKA_API_VERSION_V1 = "v1"
 ZONKA_API_VERSION_V2_1 = "v2.1"
 

@@ -47,7 +47,7 @@ def integration(db):
         team=team,
         kind="github",
         integration_id=str(INSTALLATION_ID),
-        config={"account": {"name": "PostHog"}},
+        config={"account": {"name": "Flind"}},
     )
 
 

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { BRAND_MARKS, type BrandMarkName, type IconMarkName } from '../brandMarks'
 import { BrandMark } from './BrandMark'
 
-const ICON_MARK_NAMES: IconMarkName[] = ['PostHog', 'Unbranded model', 'Other harnesses', 'Unidentified client']
+const ICON_MARK_NAMES: IconMarkName[] = ['Flind', 'Unbranded model', 'Other harnesses', 'Unidentified client']
 const MARK_NAMES: BrandMarkName[] = [...(Object.keys(BRAND_MARKS) as (keyof typeof BRAND_MARKS)[]), ...ICON_MARK_NAMES]
 
 const meta: Meta<typeof BrandMark> = {

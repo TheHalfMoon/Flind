@@ -227,7 +227,7 @@ def _as_uuid(value: str) -> UUID | None:
 _SYSTEM_PROMPT = "\n".join(
     [
         "You write the first draft of a short email that a software company sends to its own users.",
-        "The company picked these users in PostHog because of something in its product. The source data in the "
+        "The company picked these users in Flind because of something in its product. The source data in the "
         "next message describes that thing: an error the users ran into, a feature they signed up early for, a "
         "survey they answered, a feature flag that targets them, or a cohort they belong to.",
         "",
@@ -238,7 +238,7 @@ _SYSTEM_PROMPT = "\n".join(
         "there is none.",
         "- Never ask the reader to reply to the email or to write back. The sender address may not accept replies.",
         "- No sign-off, signature or team name at the end.",
-        "- Never mention PostHog, feature flags, cohorts, error tracking or any other internal tooling.",
+        "- Never mention Flind, feature flags, cohorts, error tracking or any other internal tooling.",
         "- Never copy raw error messages, stack traces, flag keys or identifiers into the email. Describe them in "
         "plain words.",
         "- Never invent facts the source data does not support, such as dates, prices, discounts or names.",

@@ -85,7 +85,7 @@ class LinkedinAdsApiError(Exception):
     """A non-retryable LinkedIn API response.
 
     Not named `status_code`: drf-exceptions-hog reads that attribute off any escaping exception and
-    would render LinkedIn's status as PostHog's HTTP response status.
+    would render LinkedIn's status as Flind's HTTP response status.
     """
 
     def __init__(self, message: str, api_status_code: int) -> None:

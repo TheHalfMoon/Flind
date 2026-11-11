@@ -2,7 +2,7 @@ import type { MetricAttributes } from 'posthog-js'
 import posthog from 'posthog-js'
 
 /**
- * Operational metrics into the PostHog Metrics product via the SDK's aggregated
+ * Operational metrics into the Flind Metrics product via the SDK's aggregated
  * `posthog.metrics` API (samples are batched to one data point per series every 10s).
  *
  * Attributes must stay low-cardinality: no user ids, session ids, or URLs. Every distinct

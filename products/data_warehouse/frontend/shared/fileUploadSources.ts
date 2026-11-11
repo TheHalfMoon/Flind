@@ -6,7 +6,7 @@ export const FILE_UPLOAD_SOURCE_LABEL = 'File upload'
 
 /**
  * A file upload source imports one file a user uploaded. It has no schedule and no incremental
- * sync: PostHog starts each import itself, and the user refreshes the data by replacing the file.
+ * sync: Flind starts each import itself, and the user refreshes the data by replacing the file.
  */
 export function isFileUploadSource(source: Pick<ExternalDataSource, 'source_type'> | null | undefined): boolean {
     return source?.source_type === 'FileUpload'

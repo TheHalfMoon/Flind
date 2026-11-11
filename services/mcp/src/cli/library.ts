@@ -33,7 +33,7 @@ import { getCliTools } from './tools'
 const COMMAND_REFERENCE = 'CLI-style command string: search, schema or call.'
 
 function staticExec(tools: Tool<ZodObjectAny>[]): Tool<ZodObjectAny> {
-    return createExecTool(tools, undefined, 'PostHog tools', COMMAND_REFERENCE, undefined, undefined, [], {
+    return createExecTool(tools, undefined, 'Flind tools', COMMAND_REFERENCE, undefined, undefined, [], {
         requireDestructiveConfirmation: true,
     })
 }
@@ -256,7 +256,7 @@ export function createApiToolLibrary(): ApiToolLibrary {
                 const callExec = createExecTool(
                     getCliTools({ aiConsentGiven }),
                     context,
-                    'PostHog tools',
+                    'Flind tools',
                     COMMAND_REFERENCE,
                     connection.clientName,
                     (toolName, properties) => trackCliToolCall(context, toolName, properties),

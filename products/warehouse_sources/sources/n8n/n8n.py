@@ -67,7 +67,7 @@ def normalize_host(host: str) -> str:
     if parsed.scheme not in ("http", "https") or not parsed.hostname:
         raise ValueError(f"Invalid n8n host: {host}")
     # The API key rides in the X-N8N-API-KEY header on every request, so plaintext http
-    # would leak it to any network observer. On PostHog Cloud the request egresses over the
+    # would leak it to any network observer. On Flind Cloud the request egresses over the
     # public internet, so require https. Self-hosted operators control their own network path
     # (e.g. an internal n8n reachable only over http), so http stays allowed there — mirroring
     # how host IP safety is only enforced on cloud.

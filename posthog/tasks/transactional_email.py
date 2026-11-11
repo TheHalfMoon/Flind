@@ -24,7 +24,7 @@ def send_transactional_email_task(
     distinct_id: str | None = None,
     message_data: dict[str, object] | None = None,
 ) -> str:
-    """Send a transactional email with PostHog."""
+    """Send a transactional email with Flind."""
     try:
         return send_transactional_email(template_id, to=to, distinct_id=distinct_id, message_data=message_data)
     except TransactionalEmailRetryableError as error:

@@ -1,4 +1,4 @@
-"""Builds the end-of-turn suggestion for a sandbox PostHog AI conversation.
+"""Builds the end-of-turn suggestion for a sandbox Flind AI conversation.
 
 Runs off the request path once a turn completes. It checks the cheap gates first, reads the run's
 stream, asks the classifier, and publishes a ``_posthog/turn_suggestion`` frame into the same
@@ -92,8 +92,8 @@ def load_web_conversation_run(run_id: str, team_id: int, *, flag: str) -> WebCon
     task = task_run.task
     if task.origin_product != Task.OriginProduct.POSTHOG_AI or task_run.mode != "interactive":
         return "not_posthog_ai_conversation"
-    # Cards render only in the PostHog AI web app. Slack conversations carry the Slack origin and
-    # fail the check above; PostHog Desktop ones carry the Desktop client provenance.
+    # Cards render only in the Flind AI web app. Slack conversations carry the Slack origin and
+    # fail the check above; Flind Desktop ones carry the Desktop client provenance.
     if task.client_provenance == TaskClientProvenance.POSTHOG_DESKTOP:
         return "not_started_in_web"
     user = task.created_by

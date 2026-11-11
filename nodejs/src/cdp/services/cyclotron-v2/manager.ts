@@ -26,7 +26,7 @@ import {
  *
  *     dequeue_seq = counter * EMAIL_DEQUEUE_BLOCK_SIZE + team_id
  *
- * 2^24 (16,777,216) — supports team_ids up to ~16M (PostHog is well under
+ * 2^24 (16,777,216) — supports team_ids up to ~16M (Flind is well under
  * that). Keeps headroom for ~5 × 10^11 jobs per team before the BIGINT
  * sort key overflows, which is centuries at any realistic email volume.
  *

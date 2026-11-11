@@ -58,7 +58,7 @@ class MCPToolResponse(MCPToolResult):
 class DocsSearchRequestSerializer(serializers.Serializer):
     query = serializers.CharField(
         help_text=(
-            "Natural-language description of what to find in the PostHog documentation. "
+            "Natural-language description of what to find in the Flind documentation. "
             "Inkeep performs hybrid (semantic + full-text) RAG, so phrase the query the way "
             "a user would ask the question."
         )
@@ -101,9 +101,9 @@ class MCPToolsViewSet(TeamAndOrgViewSetMixin, GenericViewSet):
                 description="Markdown-formatted documentation results.",
             ),
         },
-        summary="Search PostHog documentation",
+        summary="Search Flind documentation",
         description=(
-            "Run a hybrid (semantic + full-text) RAG search over the PostHog documentation via "
+            "Run a hybrid (semantic + full-text) RAG search over the Flind documentation via "
             "Inkeep. Returns a markdown body with title, URL, and excerpt for each match for the "
             "agent to cite back to the user."
         ),

@@ -62,7 +62,7 @@ LEGACY_SYNC_TYPE_ALIASES: dict[str, ExternalDataSchemaSyncType] = {
 # Matched by `Any_Source_Errors`, so the exception text must keep this prefix.
 UNSUPPORTED_SYNC_TYPE_ERROR = "Unsupported sync type"
 UNSUPPORTED_SYNC_TYPE_DISABLED_MESSAGE = (
-    "This table has a sync type that PostHog does not support. Choose a sync type in the table's "
+    "This table has a sync type that Flind does not support. Choose a sync type in the table's "
     "sync settings, then re-enable the sync."
 )
 
@@ -84,7 +84,7 @@ def resolve_sync_type(value: str | None) -> ExternalDataSchemaSyncType | None:
 SYNC_DISABLED_JOB_ERROR = "Sync stopped because syncing was turned off"
 SCHEMA_DELETED_JOB_ERROR = "Sync stopped because the table was deleted"
 WORKER_RESTART_ERROR_MESSAGE = (
-    "This sync run was interrupted too many times by restarts on PostHog's side, so it did not finish. "
+    "This sync run was interrupted too many times by restarts on Flind's side, so it did not finish. "
     "It will run again automatically. No action is needed."
 )
 AUTO_DISABLED_JOB_ERROR = "Sync stopped because of an error that retrying would not fix"
@@ -308,7 +308,7 @@ class ExternalDataSchema(  # nosemgrep: semgrep.rules.security.prefer-uuid7-djan
     auto_disabled_at = models.DateTimeField(
         null=True,
         blank=True,
-        help_text="When PostHog stopped syncing this schema itself, after an error that retrying would not fix. "
+        help_text="When Flind stopped syncing this schema itself, after an error that retrying would not fix. "
         "Null while syncing is on, and while syncing is off because the user turned it off.",
     )
     latest_error = models.TextField(
@@ -411,9 +411,9 @@ class ExternalDataSchema(  # nosemgrep: semgrep.rules.security.prefer-uuid7-djan
         return None
 
     def _apply_auto_disabled_marker(self, teardown_kind: str | None, update_fields: Iterable[str] | None) -> bool:
-        """Record whether PostHog stopped this schema itself. Returns whether the value changed.
+        """Record whether Flind stopped this schema itself. Returns whether the value changed.
 
-        The failure digest emails a team about a schema PostHog halted, and stays quiet about one
+        The failure digest emails a team about a schema Flind halted, and stays quiet about one
         the user switched off, so which of the two happened must outlive the write that stopped
         the schema. Only the auto-disable path supplies an error message through
         ``sync_disable_context``, and that is what tells the two apart. A save that leaves
@@ -2364,7 +2364,7 @@ def get_schemas_for_direct_reconciliation(
 # offering the new name as a separate one.
 SCHEMA_RESOURCE_ID_METADATA_KEY = "source_resource_id"
 
-# Set to True in a schema's `schema_metadata` when the schema reads a definition PostHog stored on it,
+# Set to True in a schema's `schema_metadata` when the schema reads a definition Flind stored on it,
 # not one that discovery reports (a self-managed table moved into an object storage source reads the
 # exact files of its old URL pattern). Discovery can't report such a schema, so it must not disable it.
 SCHEMA_PINNED_METADATA_KEY = "pinned"

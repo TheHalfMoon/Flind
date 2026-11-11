@@ -1,4 +1,4 @@
-"""In-app delivery, to the PostHog notification inbox of the people subscribed to an alert.
+"""In-app delivery, to the Flind notification inbox of the people subscribed to an alert.
 
 The user ids arrive resolved, like an email destination's addresses. The product that owns the
 subscriptions applies its access rules before the platform sees an id. Each notification carries

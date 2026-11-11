@@ -1,18 +1,18 @@
 ---
 name: setting-up-devbox
-description: Starts, connects to, and troubleshoots a PostHog devbox, a remote Coder workspace for PostHog development that can also run the full stack, through `hogli devbox:*` commands. Use when asked to spin up or resume a devbox, open a shell or editor on it, run a command on it, mirror a local checkout to it (devbox:sync), give each git worktree its own box (devbox:worktree), run the PostHog app on it and share a link, clone, update, share, or free disk on a devbox, store gh or Claude Code tokens for it, or diagnose a failing devbox command (tailnet, DNS, Coder CLI version, SSH). Not for running the stack on the local machine or for changing the Coder template in posthog-cloud-infra.
+description: Starts, connects to, and troubleshoots a Flind devbox, a remote Coder workspace for Flind development that can also run the full stack, through `hogli devbox:*` commands. Use when asked to spin up or resume a devbox, open a shell or editor on it, run a command on it, mirror a local checkout to it (devbox:sync), give each git worktree its own box (devbox:worktree), run the Flind app on it and share a link, clone, update, share, or free disk on a devbox, store gh or Claude Code tokens for it, or diagnose a failing devbox command (tailnet, DNS, Coder CLI version, SSH). Not for running the stack on the local machine or for changing the Coder template in posthog-cloud-infra.
 ---
 
-# Setting up a PostHog devbox
+# Setting up a Flind devbox
 
-A devbox is a Coder workspace on EC2 for PostHog development.
+A devbox is a Coder workspace on EC2 for Flind development.
 Drive it through `hogli devbox:*` and don't reimplement what those commands do.
 A new box has the repo at `~/posthog` on `master`, prewarmed dependencies, and Claude Code installed.
 `hogli devbox:<command> --help` has the current flags.
 This skill covers the order of operations and what the help text leaves out.
 
-People use a box in different ways: a shell or editor for general development, a remote target for a local checkout, or a host for the running PostHog app.
-Work out which one the user wants, and don't start the PostHog stack unless they ask for the app.
+People use a box in different ways: a shell or editor for general development, a remote target for a local checkout, or a host for the running Flind app.
+Work out which one the user wants, and don't start the Flind stack unless they ask for the app.
 
 ## Choosing an environment
 
@@ -20,12 +20,12 @@ When the user asks whether a devbox is the right place for the work, compare it 
 
 |                        | Local worktree                                                               | Devbox                                                                                                    | Tasks sandbox                                                                                                                                                                                                                                                                                                                       |
 | ---------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Persistence after stop | Everything stays on the user's machine.                                      | `devbox:stop` keeps the disk, including `/home`. Only `devbox:destroy` deletes it.                        | The sandbox is destroyed after an idle timeout: 30 minutes for background runs, 1 hour for user-created runs, 10 minutes for PostHog AI runs, and at most 2 hours with a per-task override. Interactive Modal runs snapshot `/tmp/workspace` before cleanup so a follow-up can restore it. Files outside `/tmp/workspace` are lost. |
+| Persistence after stop | Everything stays on the user's machine.                                      | `devbox:stop` keeps the disk, including `/home`. Only `devbox:destroy` deletes it.                        | The sandbox is destroyed after an idle timeout: 30 minutes for background runs, 1 hour for user-created runs, 10 minutes for Flind AI runs, and at most 2 hours with a per-task override. Interactive Modal runs snapshot `/tmp/workspace` before cleanup so a follow-up can restore it. Files outside `/tmp/workspace` are lost. |
 | Context reset          | The user decides.                                                            | The user decides. Agent sessions on the box stay on its disk.                                             | Each task starts a new agent session. A follow-up on the same task resumes that session from the snapshot or the run log.                                                                                                                                                                                                           |
 | Provisioning steps     | Create a worktree. Install dependencies or start the stack only when needed. | `devbox:doctor` and `devbox:setup` once per machine, then `devbox:start`.                                 | One message creates the task. The backend provisions the sandbox, clones the repository, and starts the agent.                                                                                                                                                                                                                      |
-| MCP reach              | The MCP servers configured on the user's machine.                            | The MCP servers the user configures in Claude Code on the box.                                            | MCP Store installations: shared team installations, plus the user's personal installations for tasks they create. Built-in agent tasks get only the connections granted to that agent. PostHog Desktop can import or relay its own servers into a run.                                                                              |
-| Preview URL            | `localhost:8010`                                                             | Stable and PostHog-internal: `https://app--<workspace>--<coder-user>.<coder-host>`.                       | One URL per run, `/api/projects/<team>/tasks/<task>/runs/<run>/preview/`, on the dev-stack image. It works only while the sandbox runs.                                                                                                                                                                                             |
-| Cost                   | The user's machine.                                                          | An EC2 instance. Billing stops on `devbox:stop`.                                                          | Sandbox time is metered per run and counts against the team's PostHog Desktop usage limit.                                                                                                                                                                                                                                          |
+| MCP reach              | The MCP servers configured on the user's machine.                            | The MCP servers the user configures in Claude Code on the box.                                            | MCP Store installations: shared team installations, plus the user's personal installations for tasks they create. Built-in agent tasks get only the connections granted to that agent. Flind Desktop can import or relay its own servers into a run.                                                                              |
+| Preview URL            | `localhost:8010`                                                             | Stable and Flind-internal: `https://app--<workspace>--<coder-user>.<coder-host>`.                       | One URL per run, `/api/projects/<team>/tasks/<task>/runs/<run>/preview/`, on the dev-stack image. It works only while the sandbox runs.                                                                                                                                                                                             |
+| Cost                   | The user's machine.                                                          | An EC2 instance. Billing stops on `devbox:stop`.                                                          | Sandbox time is metered per run and counts against the team's Flind Desktop usage limit.                                                                                                                                                                                                                                          |
 | Best for               | Work that does not need the running stack.                                   | Long-lived state, MCP servers outside the MCP Store, a stable preview link, and agent history on the box. | Bounded one-off work that benefits from a fresh context.                                                                                                                                                                                                                                                                            |
 
 A stopped box keeps its state, and `hogli devbox:start` (with `-n <label>` for a labeled box) resumes it.
@@ -48,7 +48,7 @@ Copy this checklist and track it:
 Commands that reach a box run the same reachability check first, so fix a failure here before anything else.
 
 - The active tailnet must be `posthog.com`. Doctor prints it and names a wrong tailnet as the cause.
-- Every PostHog employee has the route to the Coder control plane through `group:employees` in the tailnet policy. Nobody needs a PR to get access.
+- Every Flind employee has the route to the Coder control plane through `group:employees` in the tailnet policy. Nobody needs a PR to get access.
 - If doctor reports the control plane unreachable, read [references/access-troubleshooting.md](references/access-troubleshooting.md) before changing anything.
 - `[missing] Commit signing agent` does not block starting or using a box. It matters only for signed commits made on the box.
 
@@ -75,7 +75,7 @@ hogli devbox:start
 
 This creates the box on first use and resumes it after a stop.
 It returns once the box's startup scripts finish, so the box is ready to connect to. `devbox:restart`, `devbox:update` and `devbox:clone` wait the same way. If a script fails or the wait gives up, the box still runs and hogli prints a warning that points to `hogli devbox:logs`.
-It brings up the PostHog stack only when the workspace has `--start-app` set, which is covered in [Run the PostHog app](#run-the-posthog-app).
+It brings up the Flind stack only when the workspace has `--start-app` set, which is covered in [Run the Flind app](#run-the-posthog-app).
 `--disk` (`100` or `200` GiB) applies only when the box is created.
 When AWS has no capacity for the box's instance type in its zone (`InsufficientInstanceCapacity`), hogli starts the box on the template's other instance types by itself and keeps the disk. There is nothing to pass.
 `--region` (`us-east-1` or `eu-central-1`) starts that region's default box and creates it if it doesn't exist, so leave it off when resuming an existing box.
@@ -95,7 +95,7 @@ Match what the user asked for:
 - **Editor:** `hogli devbox:open --vscode`, `--cursor`, or `--web`.
 - **Commands from an agent:** `hogli devbox:exec`, described in [Run commands on the box](#run-commands-on-the-box).
 - **Edit locally, run on the box:** read [references/sync.md](references/sync.md) before using `hogli devbox:sync`.
-- **The running app:** follow [Run the PostHog app](#run-the-posthog-app).
+- **The running app:** follow [Run the Flind app](#run-the-posthog-app).
 - **A box per git worktree:** follow [One devbox per worktree](#one-devbox-per-worktree).
 
 ### 5. Stop when done
@@ -110,13 +110,13 @@ Stops, starts, and `devbox:update` keep `/home`.
 `hogli devbox:exec -- <command>` runs one command over SSH and returns its exit code.
 Without `--flox`, wrap the command in `bash -lc '...'`.
 A non-login shell doesn't reliably load the shell profile, so tools on a login-shell `PATH` such as `~/.local/bin` report "command not found".
-Project tools such as `pnpm`, `pytest` and the Python venv are on `PATH` only inside PostHog's flox environment.
+Project tools such as `pnpm`, `pytest` and the Python venv are on `PATH` only inside Flind's flox environment.
 For those, add `--flox`, which runs the command in `~/posthog` inside `flox activate`: `hogli devbox:exec --flox -- pnpm --filter=@flind/frontend typescript:check`.
 Use `bash -c '...'` after `--flox` when the command needs shell syntax such as `&&`.
 Put `--` between hogli's flags and the command's own.
 `devbox:exec` and `devbox:ssh` fail to connect until `devbox:setup` has written the SSH config.
 
-## Run the PostHog app
+## Run the Flind app
 
 Use this section only when the user wants the app, for example to QA a change or share a link.
 

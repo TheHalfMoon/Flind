@@ -42,7 +42,7 @@ export function RegionSelect({
 
   return (
     <div className="flex items-center justify-center gap-2">
-      <Tooltip content="Where your PostHog data is stored. You can migrate later.">
+      <Tooltip content="Where your Flind data is stored. You can migrate later.">
         <Text className="text-(--gray-11) text-xs">Data region</Text>
       </Tooltip>
       <Select

@@ -29,7 +29,7 @@ The decisive question: **which layer dropped?**
 1. Pull the raw daily series (`count()` on events by day for their team, via `querying-production-databases`). If raw counts dropped, no query-time change (bot classification, exclusions, materialization) can be the cause — those never alter stored counts.
 2. Sanity checks that kill false leads fast: `$lib` + SDK version split (pinned version = no SDK regression), duplicate-UUID counts (dedup), day-of-week matched comparison (seasonality), hour-of-day spread (region/outage).
 3. The bot fingerprint: only `$pageview` drops while `$pageleave` stays flat, loss concentrated in a few UA strings collapsing 10-50x week over week, ~2 pageviews/session with no pageleave. That is non-human traffic that stopped executing the JS SDK — typically the customer's edge (WAF, bot-fight mode, JS challenge) changed, or the scraper stopped. Their server logs still count those requests, which is why "our logs look unchanged".
-4. Reply framing: PostHog stored what it received; identify the segment that vanished; ask what changed at their edge on the exact step dates; note the new lower level is closer to true human traffic.
+4. Reply framing: Flind stored what it received; identify the segment that vanished; ask what changed at their edge on the exact step dates; note the new lower level is closer to true human traffic.
 
 ## Tracker not loading / undercounting vs a competitor
 
@@ -45,7 +45,7 @@ Run a runtime loading audit (see [loading-audit.md](loading-audit.md)) against t
 - OAuth reconnect failures are the top re-add blocker; Microsoft AADSTS650052 (missing tenant admin consent / service principal) surfaces as a bare `invalid_client` toast. Ask for the exact error text and _where_ it appears (sign-in popup vs field vs create toast) — each maps to a different code path.
 - Account pickers may be project-admin-gated; a member sees a permission error where an admin sees accounts.
 - Marketing analytics attribution: conversion events attribute via their own UTMs, else fall back to the last prior pageview carrying **both** `utm_campaign` and `utm_source` in the window, then LEFT JOIN on **exact case-sensitive campaign name** plus normalized source. Any miss lands in "organic". Zero paid conversions with a fat organic row means the join keys or the both-UTMs requirement failed, not the goals.
-- Native ad sources need only their stats tables synced for spend metrics; PostHog events matter only for conversion goals.
+- Native ad sources need only their stats tables synced for spend metrics; Flind events matter only for conversion goals.
 
 ## Channel type misclassification
 

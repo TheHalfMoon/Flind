@@ -68,13 +68,13 @@ describe("buildPullRequestFooter", () => {
       "desktop",
       {},
       {},
-      "*Created with [PostHog Desktop](https://posthog.com/desktop?ref=pr)*",
+      "*Created with [Flind Desktop](https://posthog.com/desktop?ref=pr)*",
     ],
     [
       "mobile overrides automated",
       { client_platform: "mobile" },
       { automated: true },
-      "*Created with [PostHog Mobile](https://posthog.com?ref=pr)*",
+      "*Created with [Flind Mobile](https://posthog.com?ref=pr)*",
     ],
     [
       "automated with an inbox report",
@@ -83,7 +83,7 @@ describe("buildPullRequestFooter", () => {
         automated: true,
         sources: [{ label: "inbox report", url: "https://example.com/r" }],
       },
-      "*Created with [PostHog](https://posthog.com?ref=pr) from an [inbox report](https://example.com/r)*",
+      "*Created with [Flind](https://posthog.com?ref=pr) from an [inbox report](https://example.com/r)*",
     ],
     [
       "Slack thread",
@@ -92,18 +92,18 @@ describe("buildPullRequestFooter", () => {
         automated: true,
         sources: [{ label: "Slack thread", url: "https://example.com/t" }],
       },
-      "*Created with [PostHog](https://posthog.com?ref=pr) from a [Slack thread](https://example.com/t)*",
+      "*Created with [Flind](https://posthog.com?ref=pr) from a [Slack thread](https://example.com/t)*",
     ],
   ] as const)("formats the %s footer", (_name, options, footer, expected) => {
     expect(buildPullRequestFooter(launch(options), footer)).toBe(expected);
   });
 
-  it("credits PostHog for a task from the web chat", () => {
+  it("credits Flind for a task from the web chat", () => {
     const webLaunch = { ...launch(), clientProvenance: "posthog_web" };
-    const source = { label: "PostHog AI chat", url: "https://example.com/c" };
+    const source = { label: "Flind AI chat", url: "https://example.com/c" };
 
     expect(buildPullRequestFooter(webLaunch, { sources: [source] })).toBe(
-      "*Created with [PostHog](https://posthog.com?ref=pr) from a [PostHog AI chat](https://example.com/c)*",
+      "*Created with [Flind](https://posthog.com?ref=pr) from a [Flind AI chat](https://example.com/c)*",
     );
   });
 });

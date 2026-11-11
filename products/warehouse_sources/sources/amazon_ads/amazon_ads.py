@@ -59,7 +59,7 @@ PROFILES_DENIED_MESSAGE = (
     "Your credentials can't read Amazon Ads profiles. "
     "Check that your LWA app has Advertising API access and the region matches your account, then reconnect."
 )
-UNAVAILABLE_MESSAGE = "PostHog couldn't check your Amazon Ads credentials. Try again in a few minutes."
+UNAVAILABLE_MESSAGE = "Flind couldn't check your Amazon Ads credentials. Try again in a few minutes."
 
 
 class AmazonAdsRetryableError(Exception):
@@ -189,7 +189,7 @@ def report_windows(start: dt.date, end: dt.date, max_window_days: int) -> Iterat
 
 def report_request_body(report: AmazonAdsReportConfig, start: dt.date, end: dt.date) -> dict[str, Any]:
     return {
-        "name": f"PostHog {report.report_type_id} {start.isoformat()} to {end.isoformat()}",
+        "name": f"Flind {report.report_type_id} {start.isoformat()} to {end.isoformat()}",
         "startDate": start.isoformat(),
         "endDate": end.isoformat(),
         "configuration": {

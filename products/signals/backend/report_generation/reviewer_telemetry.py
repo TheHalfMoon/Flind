@@ -48,7 +48,7 @@ def split_reviewer_linkability(
 ) -> ReviewerLinkability:
     """Split suggested reviewers by whether they resolve to an active org member.
 
-    `user_uuids` are the reviewers stored by PostHog user alone. Only the write paths that resolve
+    `user_uuids` are the reviewers stored by Flind user alone. Only the write paths that resolve
     membership before writing can vouch for them; the generic artefact API stores any well-formed
     uuid, so they are resolved here the same way logins are rather than trusted.
     """
@@ -84,13 +84,13 @@ def capture_suggested_reviewers_resolved(
 ) -> None:
     """Emit `signals_suggested_reviewers_resolved` when a report's suggested reviewers are persisted.
 
-    A reviewer stored by GitHub login is only linked to a PostHog user downstream (Slack routing,
+    A reviewer stored by GitHub login is only linked to a Flind user downstream (Slack routing,
     autostart, API read), where an unmapped login falls through silently. A report whose logins map
     to nobody cannot be routed to a person, yet still counts as "assigned" in
     `suggested_reviewers`-based metrics. This event records the linkable/unlinkable split at
     suggestion time so that bucket is measurable.
 
-    `user_uuids` are the reviewers identified by PostHog user alone, with no GitHub login. One that
+    `user_uuids` are the reviewers identified by Flind user alone, with no GitHub login. One that
     resolves to an active org member is linkable and is reported in `user_uuid_only_count`, kept
     separate because autostart still needs a login to run as someone. One that does not resolve is
     unlinkable like an unknown login: nothing downstream will route it to a person.
@@ -115,7 +115,7 @@ def capture_suggested_reviewers_resolved(
             # GitHub logins are member PII, so logs carry counts only; the logins themselves go in
             # the event properties, the same internal-analytics surface the artefact already feeds.
             logger.info(
-                "suggested reviewers for report %s (team %d): %d of %d reviewer(s) have no PostHog user",
+                "suggested reviewers for report %s (team %d): %d of %d reviewer(s) have no Flind user",
                 report_id,
                 team_id,
                 linkability.unlinkable_count,

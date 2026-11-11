@@ -314,7 +314,7 @@ describe('ActionFilterRow', () => {
 
             it.each([
                 { tableType: 'data_warehouse', tableName: 'events_table', seriesName: 'events_table' },
-                // A flag calls series reads a PostHog table, which the warehouse table map leaves out.
+                // A flag calls series reads a Flind table, which the warehouse table map leaves out.
                 { tableType: 'posthog', tableName: 'posthog.flag_evaluations', seriesName: 'Feature flag called' },
             ])(
                 'offers only numeric columns of a $tableType table in the box plot property selector',

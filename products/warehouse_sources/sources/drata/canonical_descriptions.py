@@ -121,7 +121,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Controls in each workspace, with readiness, monitoring, and framework mappings.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Controls/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the control belongs to (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the control belongs to (added by Flind).",
             "id": "Unique identifier for the control.",
             "name": "Name of the control.",
             "code": "Short code of the control, e.g. DCF-1001.",
@@ -135,8 +135,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "The requirements each control satisfies, one row per control-requirement pair. This is the junction that makes framework coverage queryable: join it to controls and framework_requirements to see which requirements a control covers and which requirements no control covers yet.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Controls/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the control belongs to (added by PostHog).",
-            "controlId": "Identifier of the control this requirement is mapped to (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the control belongs to (added by Flind).",
+            "controlId": "Identifier of the control this requirement is mapped to (added by Flind).",
             "id": "Unique identifier for the requirement.",
             "name": "Name of the requirement.",
             "description": "Description of the requirement.",
@@ -159,8 +159,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "The users who own each control, one row per control-owner pair. Join it to controls to see who is accountable for a control, and to users to group ownership by person.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Control-Owners/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the control belongs to (added by PostHog).",
-            "controlId": "Identifier of the control this person owns (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the control belongs to (added by Flind).",
+            "controlId": "Identifier of the control this person owns (added by Flind).",
             "id": "Identifier of the owning user.",
             "email": "Email address of the owning user.",
             "firstName": "First name of the owning user.",
@@ -173,7 +173,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Automated monitoring tests in each workspace, with pass/fail status and check state.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Monitoring-Tests/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the test belongs to (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the test belongs to (added by Flind).",
             "id": "Account-wide unique identifier for the monitoring test instance.",
             "testId": "Workspace-scoped identifier of the test, used in Drata API paths.",
             "name": "Name of the monitoring test.",
@@ -190,8 +190,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Findings behind each failing monitoring test: one row per cloud resource that failed a test, including findings excluded from the test result.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Monitoring-Tests/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the monitoring test belongs to (added by PostHog).",
-            "monitoringTestId": "Identifier of the monitoring test that flagged the resource (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the monitoring test belongs to (added by Flind).",
+            "monitoringTestId": "Identifier of the monitoring test that flagged the resource (added by Flind).",
             "id": "Identifier of the cloud resource that failed the test, as reported by the provider.",
             "status": "Whether the finding still counts against the test (OPEN) or is excluded from it (EXCLUDED).",
             "providerName": "Cloud provider the failing resource belongs to, e.g. Amazon Web Services.",
@@ -209,7 +209,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Evidence library items in each workspace, tracking artifacts collected for audits and their renewal status.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Evidence-Library/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the evidence belongs to (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the evidence belongs to (added by Flind).",
             "id": "Unique identifier for the evidence library item.",
             "name": "Name of the evidence item.",
             "description": "Description of the evidence item.",
@@ -221,7 +221,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Audit engagements run in each workspace, internal or with an external auditor. An audit scopes a framework over a date range and is what audit_requests hang off.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Audits/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the audit belongs to (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the audit belongs to (added by Flind).",
             "id": "Unique identifier for the audit.",
             "frameworkType": "Framework the audit covers, e.g. SOC_2.",
             "auditType": "Type of the audit.",
@@ -238,7 +238,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Evidence requests raised by an auditor during an audit, with their fulfillment status. This is the audit work queue: what the auditor asked for and whether it has been answered.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Audit-Requests/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the audit belongs to (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the audit belongs to (added by Flind).",
             "auditId": "Identifier of the audit the request belongs to.",
             "id": "Unique identifier for the request.",
             "code": "Short identifier code the auditor refers to the request by.",
@@ -253,7 +253,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Compliance frameworks enabled in each workspace (SOC 2, ISO 27001, HIPAA, ...), with readiness counts.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Frameworks/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the framework belongs to (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the framework belongs to (added by Flind).",
             "id": "Unique identifier for the framework.",
             "name": "Name of the framework.",
             "tag": "Framework tag, e.g. SOC_2, ISO27001.",
@@ -269,7 +269,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "The requirement catalogue behind each framework enabled in a workspace, so framework rows resolve to the individual requirements they are made of.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Frameworks/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the requirement belongs to (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the requirement belongs to (added by Flind).",
             "id": "Unique identifier for the requirement.",
             "name": "Name of the requirement.",
             "description": "Description of the requirement.",
@@ -293,7 +293,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Remediation tasks in each workspace, with owner, status, and due date. This is the compliance work queue.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Tasks/",
         "columns": {
-            "workspaceId": "Identifier of the workspace the task belongs to (added by PostHog).",
+            "workspaceId": "Identifier of the workspace the task belongs to (added by Flind).",
             "id": "Unique identifier for the task.",
             "title": "Title of the task.",
             "description": "Description of the task.",
@@ -311,7 +311,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Policy versions assigned to each user and whether they accepted them. This is the policy attestation record auditors ask for.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/User's-Assigned-Policies/",
         "columns": {
-            "userId": "Identifier of the user the policy is assigned to (added by PostHog).",
+            "userId": "Identifier of the user the policy is assigned to (added by Flind).",
             "id": "Unique identifier for the user's assigned policy version.",
             "policyId": "Identifier of the assigned policy.",
             "policyVersionId": "Identifier of the assigned policy version.",
@@ -337,7 +337,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Risks in each risk register, with scoring and treatment plans. Requires Drata's Risk Management Pro feature.",
         "docs_url": "https://developers.drata.com/openapi/reference/v2/tag/Risks/",
         "columns": {
-            "riskRegisterId": "Identifier of the risk register the risk belongs to (added by PostHog).",
+            "riskRegisterId": "Identifier of the risk register the risk belongs to (added by Flind).",
             "id": "Unique identifier for the risk within its register.",
             "riskId": "Human-readable risk code, e.g. RISK-001.",
             "title": "Title of the risk.",

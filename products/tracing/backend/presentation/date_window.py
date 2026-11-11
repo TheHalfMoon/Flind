@@ -2,7 +2,7 @@
 
 Tracing is a short-window product — trace retention is measured in hours and days,
 not months or years — so the relative-window shorthand it accepts is intentionally
-different from PostHog's global ``relative_date_parse`` grammar in one place: here a
+different from Flind's global ``relative_date_parse`` grammar in one place: here a
 bare lowercase ``m`` means **minutes**, whereas the global parser reads ``m`` as
 months (and only an uppercase ``M`` as minutes). ``-30m`` meaning "30 minutes ago"
 is what an APM user expects, and anything coarser than a few weeks is meaningless

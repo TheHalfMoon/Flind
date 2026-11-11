@@ -73,7 +73,7 @@ Tuning and gating:
 - CDC tables are excluded for now.
 - Append tables are never split. The budget bounds the working set of a merge, and an append sync never merges, so a split only rewrites every row. Coarsening still applies to them. A split that detection queued for an append table is dropped by the next run, with the temp table of its rewrite (`reason=append_never_merges`). An operator target still runs. The next run also drops a size split that is queued for a keyed-merge table when the recorded largest partition is within the merge budget (`reason=under_merge_split_budget`). Other triggers still run.
 
-Observability: `warehouse_repartition_flagged` / `started` / `completed` / `failed` / `skipped` PostHog events (with full team/schema/source/table context, before→after scheme, sizes, durations, and trigger reason) plus `DELTA_REPARTITION_*` Prometheus metrics.
+Observability: `warehouse_repartition_flagged` / `started` / `completed` / `failed` / `skipped` Flind events (with full team/schema/source/table context, before→after scheme, sizes, durations, and trigger reason) plus `DELTA_REPARTITION_*` Prometheus metrics.
 
 The existing admin repartition action now stages a `repartition_pending` target and triggers this cheap in-place path (no reset, no source re-pull) instead of a reset + resync.
 

@@ -7,7 +7,7 @@ from posthog.temporal.common.errors import resolve_failure_type
 
 
 class PostHogWorkflow:
-    """Base class for Temporal Workflows that can be executed in PostHog."""
+    """Base class for Temporal Workflows that can be executed in Flind."""
 
     # Set on subclasses to enable the default JSON-decoding parse_inputs.
     inputs_cls: typing.ClassVar[type | None] = None

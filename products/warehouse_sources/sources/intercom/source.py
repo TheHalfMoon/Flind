@@ -151,7 +151,7 @@ class IntercomSource(
         return SourceConfig(
             name=ExternalDataSourceType.INTERCOM,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
-            caption="Select an existing Intercom workspace to link to PostHog or create a new connection",
+            caption="Select an existing Intercom workspace to link to Flind or create a new connection",
             iconPath="/static/services/intercom.png",
             docsUrl="https://posthog.com/docs/cdp/sources/intercom",
             fields=cast(

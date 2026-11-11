@@ -22,7 +22,7 @@ Use these queries to judge merge rate, and use the ledger to judge cost.
 They count pull requests on reports created since `{yield_from}` and age them from the report, so do not present the counts as pull requests opened in a period.
 Scout reports appear under the `signals_scout` source, and the by-scout query splits them by scout.
 
-A pull request on a report does not always have an implementation receipt. A person can start the fix, which is metered as PostHog AI, and some links are imports of older work.
+A pull request on a report does not always have an implementation receipt. A person can start the fix, which is metered as Flind AI, and some links are imports of older work.
 So a missing receipt does not show missing spend, and pull request counts do not show what fixes cost.
 
 By source:

@@ -74,7 +74,7 @@ Set these optional fields in `delivery_config`:
 - `include_images`: Include generated chart images. The default is `true`.
 - `include_feedback`: Include report feedback links. The default is `true`.
 - `include_manage_link`: Include a subscription management link. The default is `true`.
-- `include_posthog_hint`: Include PostHog guidance in Slack. The default is `true`.
+- `include_posthog_hint`: Include Flind guidance in Slack. The default is `true`.
 
 `include_posthog_hint` does not apply to email or Teams.
 
@@ -90,7 +90,7 @@ Ask for approval before you enable it.
 The snapshot remains the source for exact chart results.
 The model-written summary can contain an incorrect number.
 
-If AI credits run out, PostHog skips the summary and still sends the snapshot.
+If AI credits run out, Flind skips the summary and still sends the snapshot.
 
 ## Source changes after creation
 

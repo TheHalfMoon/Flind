@@ -18,7 +18,7 @@ def refresh_stale_sandbox_custom_images_task() -> None:
 
 @shared_task(ignore_result=True, name="products.tasks.backend.facade.tasks.bake_dev_stack_image_task")
 def bake_dev_stack_image_task() -> None:
-    """Dispatch the nightly rebake of the prebaked PostHog dev-stack VM image."""
+    """Dispatch the nightly rebake of the prebaked Flind dev-stack VM image."""
     from products.tasks.backend.feature_flags import (
         is_dev_stack_image_bake_enabled,  # noqa: PLC0415 — keeps posthoganalytics off the import path
     )

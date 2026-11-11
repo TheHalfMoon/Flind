@@ -71,7 +71,7 @@ class TaboolaSource(ResumableSource[TaboolaSourceConfig, TaboolaResumeConfig]):
             name=ExternalDataSourceType.TABOOLA,
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="Taboola",
-            caption="""Connect your Taboola account to pull your advertising data into the PostHog Data warehouse.
+            caption="""Connect your Taboola account to pull your advertising data into the Flind Data warehouse.
 
 Backstage API credentials (client ID and secret) are issued by your Taboola account manager — they can't be self-served. Your account ID is the alphabetic account identifier shown in Taboola Ads (also called the account name).""",
             iconPath="/static/services/taboola.png",

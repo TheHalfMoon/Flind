@@ -30,7 +30,7 @@ _UUID_REGEX = r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-
 
 @dataclass
 class ConversationsSlackSignals:
-    """Slack support signals for a single PostHog organization."""
+    """Slack support signals for a single Flind organization."""
 
     posthog_organization_id: str
     slack_channel_url: str | None
@@ -58,7 +58,7 @@ def _get_slack_bot_token(slack_team_id: str | None, team_id: int | None) -> tupl
 
     The bot lives in the channel's Slack workspace, so match the config by
     ``slack_team_id`` (unique per workspace) first and fall back to the
-    representative PostHog team only when the workspace id is unknown.
+    representative Flind team only when the workspace id is unknown.
 
     The returned workspace id comes from the resolved config rather than the
     requested ``slack_team_id`` so that a team fallback attributes egress to the
@@ -270,7 +270,7 @@ def _fetch_latest_support_ticket_rows(org_ids: list[str]) -> list[dict[str, obje
     )
 
 
-# PostHog's own analytics project on US cloud; every region's internal analytics
+# Flind's own analytics project on US cloud; every region's internal analytics
 # (posthoganalytics.capture) reports into it.
 INTERNAL_ANALYTICS_TEAM_ID = 2
 _BOT_JOINED_CHANNEL_EVENT = "support slack bot joined channel"
@@ -407,7 +407,7 @@ def aggregate_conversations_slack_signals_for_orgs(
     Channels and issue counts come from tickets with verified org attribution
     (see ``_tickets_with_verified_org``). Once a channel is trusted that way,
     ``last_slack_activity`` reflects every identity-verified ticket in it, so
-    replies attributed to another org (e.g. PostHog employees) still count as
+    replies attributed to another org (e.g. Flind employees) still count as
     recency. If an organization has multiple Slack channels, choose the most
     recently active one, then tie-break by ticket count and channel ID.
     Salesforce exposes a single Slack channel field, so the stats are for that

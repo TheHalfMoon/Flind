@@ -212,7 +212,7 @@ def execute_review_pr_workflow(
     `team_id` / `user_id` are explicit identity (the team the review persists under; the user the
     sandbox tasks run as). `publish` defaults off so a CLI run never posts unless asked.
     `acting_user_id` pins whose enabled perspectives drive the review (the eval passes the run user
-    so it doesn't depend on the PR author being a PostHog user).
+    so it doesn't depend on the PR author being a Flind user).
     """
     inputs, workflow_id = _build_inputs(
         team_id=team_id,

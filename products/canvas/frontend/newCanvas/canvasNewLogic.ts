@@ -20,7 +20,7 @@ import { canvasesCreate, canvasesPublishCreate, canvasesSourceRetrieve } from '.
 import type { CanvasApi, CanvasCapabilitiesApi } from '../generated/api.schemas'
 import { startCanvasGeneration } from '../startCanvasGeneration'
 
-// pinned: `starter_id` of the create event for a canvas started without a prompt, shared with PostHog Desktop's starters
+// pinned: `starter_id` of the create event for a canvas started without a prompt, shared with Flind Desktop's starters
 const BLANK_STARTER_ID = 'blank'
 
 /** A prompt whose canvas exists but whose build did not start. The canvas page picks it up. */

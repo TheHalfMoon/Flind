@@ -59,7 +59,7 @@ class AbnormalSecuritySource(ResumableSource[AbnormalSecuritySourceConfig, Abnor
             caption=(
                 "Create an API token in [Abnormal Settings > Integrations > Abnormal REST API]"
                 "(https://portal.abnormalsecurity.com/home/settings/integrations). "
-                "Select your account region. Allow PostHog's outbound IP addresses if your account restricts API access. "
+                "Select your account region. Allow Flind's outbound IP addresses if your account restricts API access. "
                 "Cases require an Account Takeover license. "
                 "Threat rows contain campaign details and the API's limited message sample."
             ),

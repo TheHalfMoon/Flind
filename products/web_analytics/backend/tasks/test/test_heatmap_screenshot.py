@@ -66,7 +66,7 @@ class TestHeatmapScreenshotTask(APIBaseTest):
     def setUp(self) -> None:
         super().setUp()
         self.enterContext(mock_anti_ssrf_dns_lookup())
-        # Stub ph_scoped_capture so tests don't spin up a real PostHog client, and record the events.
+        # Stub ph_scoped_capture so tests don't spin up a real Flind client, and record the events.
         self.captured_events: list[dict] = []
 
         @contextmanager

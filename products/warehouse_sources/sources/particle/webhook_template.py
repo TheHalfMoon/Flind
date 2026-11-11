@@ -4,7 +4,7 @@ from products.warehouse_sources.sources.sdk import HogFunctionTemplateDC
 # x-posthog-webhook-secret header of every hook it creates, and this template rejects a delivery
 # without it. A manually created hook has to set the same header.
 #
-# Each delivery is captured as a PostHog event on the device (person profiles off), and the raw
+# Each delivery is captured as a Flind event on the device (person profiles off), and the raw
 # event is also written to the `events` table when that table is enabled.
 template: HogFunctionTemplateDC = HogFunctionTemplateDC(
     status="alpha",
@@ -12,7 +12,7 @@ template: HogFunctionTemplateDC = HogFunctionTemplateDC(
     type="warehouse_source_webhook",
     id="template-warehouse-source-particle",
     name="Particle warehouse source webhook",
-    description="Receive Particle device events as PostHog events and data warehouse rows",
+    description="Receive Particle device events as Flind events and data warehouse rows",
     icon_url="/static/services/particle.png",
     category=["Data warehouse"],
     code_language="hog",

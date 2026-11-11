@@ -20,7 +20,7 @@ export interface TodayContextPanelOffset {
 }
 
 /**
- * Where the PostHog AI button sits along the bottom edge of the scene. The user drags it between these, like the
+ * Where the Flind AI button sits along the bottom edge of the scene. The user drags it between these, like the
  * toolbar. The top edge is left out because the scene header and its actions sit there. The values double as the
  * floating card's alignment to the button.
  */
@@ -166,7 +166,7 @@ export type todayContextPanelLogicType = MakeLogicType<
 
 /**
  * The context panel outside the scene: a floating card over the main content, or docked in the side panel.
- * Both show the same panel, so only one of them is open at a time. PostHog AI is the panel's home tab.
+ * Both show the same panel, so only one of them is open at a time. Flind AI is the panel's home tab.
  */
 export const todayContextPanelLogic = kea<todayContextPanelLogicType>([
     path(['layout', 'today', 'todayContextPanelLogic']),
@@ -274,7 +274,7 @@ export const todayContextPanelLogic = kea<todayContextPanelLogicType>([
                 floatingOpen ? { tab: floatingActiveTab, offset: floatingOffset } : null,
         ],
         /**
-         * The button sinks away while docked, until the user undocks, and where the scene has no PostHog AI. The
+         * The button sinks away while docked, until the user undocks, and where the scene has no Flind AI. The
          * open card hangs off it, so it shows for as long as the card is open.
          */
         launcherHidden: [
@@ -284,14 +284,14 @@ export const todayContextPanelLogic = kea<todayContextPanelLogicType>([
         ],
         panelTabs: [
             (s) => [s.enabledTabs],
-            // PostHog AI goes last, and only where the scene offers it. Canvas scenes bring their own chat.
+            // Flind AI goes last, and only where the scene offers it. Canvas scenes bring their own chat.
             (enabledTabs: SidePanelTab[]): SidePanelTab[] => [
                 ...enabledTabs.filter((tab) => tab !== SidePanelTab.Max && !TABS_LEFT_OUT.includes(tab)),
                 ...(enabledTabs.includes(SidePanelTab.Max) ? [SidePanelTab.Max] : []),
             ],
         ],
         /**
-         * A tab the scene no longer offers falls back to PostHog AI, like the docked panel closing on navigation.
+         * A tab the scene no longer offers falls back to Flind AI, like the docked panel closing on navigation.
          * Checked against every enabled tab, so an undocked tab the top bar leaves out stays open.
          */
         floatingActiveTab: [
@@ -316,7 +316,7 @@ export const todayContextPanelLogic = kea<todayContextPanelLogicType>([
                 docked && selectedTab ? selectedTab : floatingActiveTab,
         ],
         fullScreenUrl: [
-            // PostHog AI's URL comes from the chat logic, which the header reads only while the panel is open.
+            // Flind AI's URL comes from the chat logic, which the header reads only while the panel is open.
             (s) => [s.activeTab, s.selectedNotebook, s.canAccessTickets, s.myTicketsUrl],
             (
                 activeTab: SidePanelTab,

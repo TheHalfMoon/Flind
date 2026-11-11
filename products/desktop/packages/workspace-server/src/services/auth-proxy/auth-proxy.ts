@@ -346,7 +346,7 @@ export class AuthProxyService {
         });
         jsonError(res, 502, {
           type: "api_error",
-          message: "Unexpected redirect from the PostHog gateway",
+          message: "Unexpected redirect from the Flind gateway",
         });
         return;
       }
@@ -371,7 +371,7 @@ export class AuthProxyService {
         });
         jsonError(res, 504, {
           type: "timeout_error",
-          message: "PostHog gateway did not respond",
+          message: "Flind gateway did not respond",
         });
         return;
       }

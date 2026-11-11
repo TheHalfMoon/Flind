@@ -15,7 +15,7 @@ import { track } from "@flind/ui/shell/analytics";
 import type { ScoutConfigUpdate } from "../hooks/useScoutConfigMutations";
 
 /**
- * What PostHog thinks should watch this project, with the evidence it found.
+ * What Flind thinks should watch this project, with the evidence it found.
  * A canonical pick turns an agent that already exists back on; a custom draft
  * hands its brief to the authoring chat. Both leave the list once acted on.
  */

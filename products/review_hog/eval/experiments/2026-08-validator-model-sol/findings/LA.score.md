@@ -22,7 +22,7 @@
 - LA11 keep REAL sev=must_fix prio=must_fix Verify trusted PR provenance before enabling approval bypass
 - LA12 drop not sev=- prio=must_fix Revoke approval authority when the reviewer loses project ac
 - LA13 keep REAL sev=must_fix prio=must_fix Validate the PR before granting self-driving privileges
-- LA14 keep REAL sev=must_fix prio=must_fix Verify the PostHog Code bot identity
+- LA14 keep REAL sev=must_fix prio=must_fix Verify the Flind Code bot identity
 - LA15 keep REAL sev=must_fix prio=must_fix Do not use mutable task attribution as authorization
 - LA16 keep not sev=- prio=must_fix Apply the team scope before selecting a run
 - LA17 drop REAL sev=should_fix prio=must_fix Stamphog ignores opt-ins from secondary assigned reviewers

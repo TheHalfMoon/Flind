@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import migrations
 from django.utils import timezone
 
-INTERNAL_TEAM_ID = 2  # PostHog's dogfooding team on US Cloud; the id means nothing on other instances.
+INTERNAL_TEAM_ID = 2  # Flind's dogfooding team on US Cloud; the id means nothing on other instances.
 _BATCH_SIZE = 2000
 
 

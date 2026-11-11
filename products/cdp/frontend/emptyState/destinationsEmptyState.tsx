@@ -24,7 +24,7 @@ export const destinationsEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Send your events where your team already works',
-                lead: 'A destination forwards events from PostHog to another tool as they arrive, or in scheduled batches to a warehouse. Start from a template for Slack, webhooks, Salesforce, BigQuery, S3, and dozens more, filter which events it gets, and watch every delivery and failure from one list.',
+                lead: 'A destination forwards events from Flind to another tool as they arrive, or in scheduled batches to a warehouse. Start from a template for Slack, webhooks, Salesforce, BigQuery, S3, and dozens more, filter which events it gets, and watch every delivery and failure from one list.',
             },
         },
         primaryAction: {

@@ -51,7 +51,7 @@ Present the result with [references/report-template.md](references/report-templa
 - Report `unsettled_credits`, `untracked_scout_run_count`, and any row with `incomplete` true. Unsettled credits cover work created in the requested month, exclude finalized totals, and are not the outstanding balance across all months. Missing receipts mean unknown cost.
 - Explain the two summary flags by their cause. `incomplete` is true when any work is unsettled, any scout run is untracked, or any row is incomplete, so it is usually true while Self-driving is running. `attribution_incomplete` is true when any spend has no source, which is the null-source row.
 - Preserve unattributed costs, including implementation for deleted reports. Implementation is attributed to the report's current triggering signal, which can change.
-- Implementation usage covers automatic runs only. A fix that a person starts from a report is metered as PostHog AI, so it has no receipt here. Do not present implementation usage as the total cost of fixing reports, and do not estimate fix cost from pull request counts.
+- Implementation usage covers automatic runs only. A fix that a person starts from a report is metered as Flind AI, so it has no receipt here. Do not present implementation usage as the total cost of fixing reports, and do not estimate fix cost from pull request counts.
 - Use latest signal metadata only for attribution, with one embedding model and rendering. Do not filter metadata by signal arrival date when attributing period spend.
 - Reports need about 14 days to resolve, so measure yield on settled reports: reports first shown at least 14 days ago.
   Take them from the last 60 days, even when the spend period is shorter.

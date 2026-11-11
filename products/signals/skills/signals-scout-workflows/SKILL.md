@@ -2,13 +2,13 @@
 name: signals-scout-workflows
 scout-display-name: Workflows
 description: >
-  Signals scout for PostHog workflows.
+  Signals scout for Flind workflows.
   Looks at the workflows whose owner asked for
   suggestions, reads each email step's per-version delivery metrics, and proposes one
   concrete change a person can approve, filed through the workflows suggestions API. It
   files no report and emits no signal: the suggestion on the workflow page is the output.
 compatibility: >
-  PostHog Signals agent (Claude sandbox).
+  Flind Signals agent (Claude sandbox).
   Read-only analytics + signal_scout_internal:write
   (scratchpad) + hog_flow_proposal:write (declared below, granted to this scout only), plus the
   workflows tools in the MCP tools section.
@@ -164,7 +164,7 @@ The panel reads your evidence back by name, and the API refuses anything it cann
 `metric`, `current_value`, `unit`, `n` and `guardrails` are required, and every guardrail needs its own `unit`.
 Rates are fractions, never strings: `0.0865`, not `"8.65%"`.
 `window` is the interval you read, as `start/end` in UTC, the same closed days your numbers come from.
-PostHog reads that interval back when you file and shows its own numbers next to yours.
+Flind reads that interval back when you file and shows its own numbers next to yours.
 A relative window such as `-7d` reaches up to now, so it counts sends you left out and the page tells the person your numbers are wrong.
 `unit` is `rate` or `count`, and it is not decoration: a value of 1.0 is either every message or one of them, and the panel shows a count of 1 as `1` only because you said so.
 A number under a key of your own naming (`current_open_rate`) is refused, because a person would otherwise read a well-evidenced suggestion as having no evidence at all.
@@ -194,7 +194,7 @@ This one does not, and that is deliberate.
 
 A report carries an actionability the model sets and nothing judges.
 Set it to immediately actionable, with a priority and a reviewer that resolve, and Signals can dispatch an implementation run against the customer's own repository and open a pull request — which is also the moment Signals bills a flat charge.
-A workflow subject line is PostHog configuration; there is no code to change, so such a pull request would be wrong work at a real cost, and the only thing standing between here and there would be the model remembering to label its own report correctly.
+A workflow subject line is Flind configuration; there is no code to change, so such a pull request would be wrong work at a real cost, and the only thing standing between here and there would be the model remembering to label its own report correctly.
 
 So the suggestion is the notification.
 It lands on the workflow page for the person who turned suggestions on, and this scout stays off the report channel until a report can be pinned as non-implementable by the harness rather than by the model's word.

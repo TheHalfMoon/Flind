@@ -368,7 +368,7 @@ export class PostHogAPIClient {
       throw new CodexSubscriptionTokenError(
         "request_failed",
         0,
-        "Could not reach PostHog to get a ChatGPT token. Try the task again.",
+        "Could not reach Flind to get a ChatGPT token. Try the task again.",
       );
     });
     if (response.ok) {
@@ -448,7 +448,7 @@ export class PostHogAPIClient {
 
   /**
    * Download artifact content by storage path
-   * Streams the file through the PostHog backend so the sandbox does not need
+   * Streams the file through the Flind backend so the sandbox does not need
    * direct access to object storage.
    */
   async downloadArtifact(

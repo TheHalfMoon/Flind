@@ -30,7 +30,7 @@ function StartupSidebar({ narrow = true, queued = false }: { narrow?: boolean; q
     }, [setActiveCreation, startOptimisticRun, enqueueMessage, queued])
     return (
         <div className={`flex h-160 flex-col border rounded bg-surface-primary ${narrow ? 'w-100' : 'w-180'}`}>
-            <div className="px-4 py-3 font-semibold">PostHog AI</div>
+            <div className="px-4 py-3 font-semibold">Flind AI</div>
             <div className="flex-1 min-h-0">
                 <SidePanelRunner panelId="startup-story" />
             </div>

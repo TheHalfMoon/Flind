@@ -5,7 +5,7 @@ import type { ExternalDataSourceType } from '~/types'
 import { SourceConfigResponseApi } from 'products/warehouse_sources/frontend/generated/api.schemas'
 
 // File upload is a client-only catalog entry. The backend FileUpload source isn't listed in the
-// catalog, because PostHog creates it after the uploaded file becomes a table. This synthetic config
+// catalog, because Flind creates it after the uploaded file becomes a table. This synthetic config
 // reuses the shared source-config shape and the wizard's connector-selection plumbing. It drives the
 // wizard's second step and the tile icon; the three tiles below (one per format) all point back at
 // it, since users look for "CSV", not "File upload".
@@ -16,7 +16,7 @@ export type FileUploadFormat = 'csv' | 'json' | 'parquet'
 export const FILE_UPLOAD_SOURCE_CONFIG: SourceConfigResponseApi = {
     name: FILE_UPLOAD_SOURCE_NAME,
     label: 'File upload',
-    caption: 'Upload a CSV, JSON, or Parquet file to query it in the PostHog data warehouse.',
+    caption: 'Upload a CSV, JSON, or Parquet file to query it in the Flind data warehouse.',
     iconPath: '/static/services/file-upload.svg',
     // The upload form is bespoke (`FileUploadSourceForm`), so no generic connection fields.
     fields: [],

@@ -110,7 +110,7 @@ export const ContentAutopilotPrompts = (): JSX.Element => {
     return (
         <section className="flex flex-col gap-3">
             <p className="m-0 text-muted max-w-3xl">
-                PostHog sends each active prompt to AI assistants once a day and records whether the answer cites your
+                Flind sends each active prompt to AI assistants once a day and records whether the answer cites your
                 site. Open a prompt to see the answers, edit it, or archive it.
             </p>
             <div className="flex flex-wrap items-center gap-2">
@@ -197,7 +197,7 @@ export const ContentAutopilotPrompts = (): JSX.Element => {
                     <p className="m-0 mt-2 text-muted max-w-xl mx-auto">
                         Add the questions your buyers ask AI assistants. Claude can suggest them from your site, or you
                         can write your own. You can also import prompts with the API (
-                        <code>POST /api/projects/:project_id/aeo_prompts/bulk_import/</code>) or the PostHog MCP tools.
+                        <code>POST /api/projects/:project_id/aeo_prompts/bulk_import/</code>) or the Flind MCP tools.
                     </p>
                     <div className="mt-4 flex justify-center">
                         <ContentAutopilotPromptSuggestButton type="primary" />

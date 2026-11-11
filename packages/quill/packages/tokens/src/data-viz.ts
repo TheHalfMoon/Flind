@@ -1,5 +1,5 @@
 /**
- * PostHog Design System — Data-visualization tokens
+ * Flind Design System — Data-visualization tokens
  *
  * Two kinds of token live here, both consumed by `@flind/quill-charts`
  * (charts ship no CSS — they read these vars into a `ChartTheme` at runtime):
@@ -15,7 +15,7 @@
  *     existing semantic tokens so they flip with light/dark automatically and
  *     need no separate dark block.
  *
- * Var names match the PostHog app's historical `--data-color-*` /
+ * Var names match the Flind app's historical `--data-color-*` /
  * `--color-graph-*` so the app can drop its local definitions and inherit
  * these instead.
  */

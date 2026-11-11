@@ -315,7 +315,7 @@ def test_select_repository_reports_a_usage_limit_refusal() -> None:
         await kwargs["on_task_run_created"](MagicMock(task_id="example-task", id="example-run"))
         # The runner swallows a raising fallback and raises its own parse error instead.
         with pytest.raises(ValueError):
-            kwargs["fallback_from_text"]("API Error: 402 Your team has used its monthly PostHog AI credits.")
+            kwargs["fallback_from_text"]("API Error: 402 Your team has used its monthly Flind AI credits.")
         raise ValueError("No JSON in initial turn")
 
     with (

@@ -59,7 +59,7 @@ class ExternalDataJobSerializers(serializers.ModelSerializer):
         read_only=True,
         help_text=(
             "Destinations this run delivered to, snapshotted when it started. Empty on runs that "
-            "predate destinations, which wrote to the PostHog warehouse alone. `rows_synced` counts "
+            "predate destinations, which wrote to the Flind warehouse alone. `rows_synced` counts "
             "the rows read from the source once, not once per destination."
         ),
     )

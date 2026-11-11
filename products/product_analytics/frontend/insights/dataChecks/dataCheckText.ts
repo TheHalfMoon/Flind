@@ -198,12 +198,12 @@ export function repeatedEventsTextOf(check: InsightDataCheckApi): { found: strin
         found: `${names ? `${names} events are` : 'Some events are'} sent twice by the same person, less than ${REPEAT_WINDOW_MILLISECONDS} ms apart.`,
         causes:
             "This could be because your event is set up twice, you're re-firing an event that's sent automatically, " +
-            "or there's a bug in your code. It could even be that PostHog is initialized twice.",
+            "or there's a bug in your code. It could even be that Flind is initialized twice.",
     }
 }
 
 // The prompt holds only counts. Event names, hosts and emails come from captured events, which anyone with the
-// project token can send, so PostHog AI reads them through its tools instead of as part of the request.
+// project token can send, so Flind AI reads them through its tools instead of as part of the request.
 export function postHogAIPromptOf(check: InsightDataCheckApi): string {
     const percent = percentOf(check.share)
     const share = percent ? ` (${percent} of them)` : ''
@@ -212,7 +212,7 @@ export function postHogAIPromptOf(check: InsightDataCheckApi): string {
             return (
                 `The data checks on this insight found ${eventCount(check)} events${share} sent twice by the same ` +
                 `person less than ${REPEAT_WINDOW_MILLISECONDS} ms apart. Find which events they are and why, for example the event being set ` +
-                'up twice, my code re-firing an event PostHog sends automatically, a bug in my code, or PostHog being ' +
+                'up twice, my code re-firing an event Flind sends automatically, a bug in my code, or Flind being ' +
                 'initialized twice, and tell me how to fix it.'
             )
         case 'local_development':

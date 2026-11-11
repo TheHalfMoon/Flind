@@ -91,7 +91,7 @@ function runtimeSelection(fields: ChatRunFieldsApi): Partial<RunRuntimeSelection
 
 /**
  * The `POST tasks/` and `POST tasks/{id}/run/` bodies for a new chat. Exactly one attached report makes it an Inbox
- * "Discuss" task, which the server exempts from the PostHog Desktop gate. Anything else is a PostHog AI chat,
+ * "Discuss" task, which the server exempts from the Flind Desktop gate. Anything else is a Flind AI chat,
  * which the server names from the bare question.
  */
 export function chatStartRequests(question: string, context: ChatContext, options: ChatRunOptions): ChatStartRequests {

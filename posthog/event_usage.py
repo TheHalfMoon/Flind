@@ -43,7 +43,7 @@ def report_user_signed_up(
     org_analytics_metadata: Optional[dict] = None,  # analytics metadata taken from the Organization object
     role_at_organization: str = "",  # select input to ask what the user role is at the org
     referral_source: str = "",  # free text input to ask users where did they hear about us
-    referral_source_ai_prompt: str = "",  # prompt they used when discovering PostHog via AI
+    referral_source_ai_prompt: str = "",  # prompt they used when discovering Flind via AI
     referral_source_influencer: str = "",  # account or person that referred them via a social or creator channel
     oauth_connection: Optional[PendingOAuthConnection] = None,  # the app whose OAuth request sent them to sign up
 ) -> None:
@@ -152,7 +152,7 @@ def report_user_logged_in(
     social_provider: str = "",  # which third-party provider processed the login (empty = no third-party)
 ) -> None:
     """
-    Reports that a user has logged in to PostHog.
+    Reports that a user has logged in to Flind.
     """
     if not user.distinct_id:
         return
@@ -340,9 +340,9 @@ def report_user_organization_membership_level_changed(
 
 
 class EventSource(StrEnum):
-    """Which PostHog surface a request came from.
+    """Which Flind surface a request came from.
 
-    `mcp` means a third-party agent. A PostHog surface that reaches the backend through the
+    `mcp` means a third-party agent. A Flind surface that reaches the backend through the
     MCP server reports itself instead, so "MCP adoption" measures other people's agents.
     """
 
@@ -459,8 +459,8 @@ _DESKTOP_UA_TOKEN = "posthog/desktop.hog.dev"
 _MOBILE_UA_TOKEN = "posthog/mobile.hog.dev"
 
 # The MCP server's catch-all consumer, declared by every first-party caller that is neither Slack
-# nor PostHog AI: the cloud coding agent, signals scouts, signal_report, experiments, image_builder,
-# and the local agent PostHog Desktop hosts. That local agent forwards the user's own consented
+# nor Flind AI: the cloud coding agent, signals scouts, signal_report, experiments, image_builder,
+# and the local agent Flind Desktop hosts. That local agent forwards the user's own consented
 # Desktop token, so the OAuth grant cannot separate it from the app it runs inside. The declaration
 # is the only signal that can, which is why it outranks the grant below. The agents are not
 # separable from each other by header alone, so they share POSTHOG_CODE.
@@ -468,7 +468,7 @@ _POSTHOG_CODE_MCP_CONSUMER = "posthog-code"
 
 # Surfaces a caller can declare in `X-Posthog-Mcp-Consumer` when it wraps the MCP server.
 # Honored only when a first-party OAuth application backs the request: the header is set by the
-# caller, so without that gate a third party could declare itself as one of PostHog's own.
+# caller, so without that gate a third party could declare itself as one of Flind's own.
 _FIRST_PARTY_MCP_CONSUMER_TO_SOURCE = {
     "slack": EventSource.SLACK,
     "posthog_ai": EventSource.POSTHOG_AI,
@@ -487,7 +487,7 @@ def _resolve_mcp_surface(request) -> EventSource:
     Ends at MCP, meaning a third-party agent, unless a first-party OAuth application vouches for
     the request, which is the only signal here a caller can't set for itself.
 
-    A declared consumer outranks the grant, because the agents PostHog Desktop hosts authenticate
+    A declared consumer outranks the grant, because the agents Flind Desktop hosts authenticate
     with the same interactive token the app itself uses. Only a request that declares nothing is
     resolved from the grant.
     """
@@ -501,7 +501,7 @@ def _resolve_mcp_surface(request) -> EventSource:
 
 def get_event_source(request) -> EventSource:
     """Determine the source of an API request for analytics."""
-    # A token minted against the PostHog AI OAuth app is authoritative — the auth
+    # A token minted against the Flind AI OAuth app is authoritative — the auth
     # credential can't be spoofed the way UA tokens and X-PostHog-Client can, so it
     # wins over every header-based branch below.
     client_id = get_oauth_client_id(request)
@@ -565,7 +565,7 @@ def is_wizard_self_driving_program(request) -> bool:
     UA with a `program: self-driving` marker, letting callers attribute its work apart
     from other wizard runs.
 
-    When the request is proxied through the PostHog MCP server, that server overwrites
+    When the request is proxied through the Flind MCP server, that server overwrites
     `User-Agent` with its own token and forwards the wizard's original UA — marker
     included — in `X-Posthog-Mcp-User-Agent`. Inspect both so the marker is found whether
     the wizard called us directly or via the MCP server.
@@ -823,7 +823,7 @@ def report_organization_action(
 
 def exclude_internal_organization_from_crm(organization: Organization, creator: Optional[User]) -> None:
     """
-    Organizations created by PostHog staff are internal demo or test workspaces, which must never
+    Organizations created by Flind staff are internal demo or test workspaces, which must never
     be synced to customer-facing CRM tooling. The `exclude_from_crm` organization group property
     gates the CDP destinations that push organizations and their members to those tools.
     """

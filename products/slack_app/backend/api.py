@@ -216,7 +216,7 @@ SLACK_PLACEHOLDER_USER_ID = "U00"
 ONBOARDING_DEDUPE_TTL_SECONDS = 60 * 10
 
 # Shown when the alerts platform owns an insight alert and refuses a snooze from Slack.
-NOT_SNOOZABLE_FROM_SLACK = "This alert couldn't be snoozed from Slack. Snooze it in PostHog instead."
+NOT_SNOOZABLE_FROM_SLACK = "This alert couldn't be snoozed from Slack. Snooze it in Flind instead."
 
 EDITED_MENTION_WINDOW_SECONDS = 60 * 60
 # Outlives the window, because an expired marker would let an edit start a second run.
@@ -318,7 +318,7 @@ def _clear_pending_repo_picker(*, integration_id: int, channel: str, thread_ts: 
 class SlackUserContext:
     user: User
     # `None` on the linked-user path: the OAuth link binds slack_user_id to a
-    # PostHog user without ever consulting Slack's email, so no value is
+    # Flind user without ever consulting Slack's email, so no value is
     # available. The email-matching path still always populates this.
     slack_email: str | None
 
@@ -350,12 +350,12 @@ class RulesCommand:
 
 
 QUOTA_EXHAUSTED_MESSAGE = (
-    "Your team has used its monthly PostHog AI credits. "
+    "Your team has used its monthly Flind AI credits. "
     "Top up at https://us.posthog.com/organization/billing to continue."
 )
 
 AI_PROCESSING_NOT_APPROVED_MESSAGE = (
-    ":lock: *PostHog AI is turned off for your organization*\n"
+    ":lock: *Flind AI is turned off for your organization*\n"
     "I can't work on this request until AI analysis is on. "
     "Ask an organization admin to turn it on in <{settings_url}|organization settings>."
 )
@@ -502,7 +502,7 @@ def resolve_slack_user(
     *,
     post_feedback: bool = True,
 ) -> SlackUserContext | None:
-    """Resolve a Slack user to a PostHog user. Posts an ephemeral error message and returns None on failure (unless post_feedback is False)."""
+    """Resolve a Slack user to a Flind user. Posts an ephemeral error message and returns None on failure (unless post_feedback is False)."""
     if slack_user_id == SLACK_PLACEHOLDER_USER_ID:
         # There is no real user behind the placeholder, so there is nobody to
         # resolve or to post feedback to.
@@ -512,7 +512,7 @@ def resolve_slack_user(
         slack_team_id = integration.integration_id
 
         # Linked-user path: when the user has bound their Slack identity to a
-        # PostHog account via the OAuth link flow, we resolve directly without
+        # Flind account via the OAuth link flow, we resolve directly without
         # paying for users.info / email matching. Falls through to the email
         # path on miss so this stays additive — a workspace with no links
         # behaves exactly like before.
@@ -539,8 +539,8 @@ def resolve_slack_user(
                         slack_user_id,
                         thread_ts,
                         (
-                            "Sorry, you don't have access to the PostHog project connected to this Slack workspace. "
-                            "Please ask an admin of your PostHog organization to grant you access."
+                            "Sorry, you don't have access to the Flind project connected to this Slack workspace. "
+                            "Please ask an admin of your Flind organization to grant you access."
                         ),
                     )
                 return None
@@ -566,7 +566,7 @@ def resolve_slack_user(
                     (
                         "Sorry, I couldn't find your email address in Slack. "
                         "Please make sure your email is visible in your Slack profile, "
-                        "and contact the PostHog team if the issue persists."
+                        "and contact the Flind team if the issue persists."
                     ),
                     prefer_thread_message=True,
                 )
@@ -602,7 +602,7 @@ def resolve_slack_user(
                     thread_ts,
                     (
                         f"Sorry, I couldn't find {slack_email} in the {organization_name} organization. "
-                        f"Please make sure you're a member of that PostHog organization."
+                        f"Please make sure you're a member of that Flind organization."
                     ),
                     prefer_thread_message=True,
                 )
@@ -641,8 +641,8 @@ def resolve_slack_user(
                     slack_user_id,
                     thread_ts,
                     (
-                        "Sorry, you don't have access to the PostHog project connected to this Slack workspace. "
-                        "Please ask an admin of your PostHog organization to grant you access."
+                        "Sorry, you don't have access to the Flind project connected to this Slack workspace. "
+                        "Please ask an admin of your Flind organization to grant you access."
                     ),
                 )
             return None
@@ -661,7 +661,7 @@ def resolve_slack_user(
         return None
 
 
-# Slack delivers a single webhook URL per app, but the workspace's PostHog Integration may live
+# Slack delivers a single webhook URL per app, but the workspace's Flind Integration may live
 # in either Cloud region. Whichever region Slack hits, we route the event to the region that
 # owns the workspace. US is the primary; when both regions hold a row for the same workspace
 # (only possible during cutover or migration), US wins. This means:
@@ -697,7 +697,7 @@ WORKSPACE_CLAIMS_CACHE_TTL_SECONDS = 60
 
 
 def cross_region_routing_enabled() -> bool:
-    # Cross-region routing only makes sense between PostHog Cloud US and EU — they share the
+    # Cross-region routing only makes sense between Flind Cloud US and EU — they share the
     # Slack app's signing secret and split workspace ownership between them. The hosted dev
     # environment (CLOUD_DEPLOYMENT="DEV"), local dev, E2E, and self-hosted deployments all run
     # as a single region; proxying their Slack events to us.posthog.com targets a different
@@ -957,7 +957,7 @@ _VALID_WORKSPACE_CLAIM_KINDS = frozenset(SLACK_INTEGRATION_KINDS)
 def slack_workspace_claims_view(request: HttpRequest) -> HttpResponse:
     """Cross-region probe: does this region hold an Integration row for the given Slack workspace?
 
-    Both Cloud regions provision the PostHog Desktop Slack signing secret, so a region can HMAC-sign
+    Both Cloud regions provision the Flind Desktop Slack signing secret, so a region can HMAC-sign
     a small JSON body and the receiver can verify it with the same routine that validates real
     Slack webhooks. The signed body covers every filter, so a captured signature cannot be replayed
     against a different workspace.
@@ -1361,7 +1361,7 @@ def _resolve_pending_repo_picker_from_followup(event: dict[str, Any], integratio
 
     mentioning_user_id = pending_picker.get("mentioning_user_id")
     if not isinstance(mentioning_user_id, int):
-        # Without a known PostHog user we can't scope the picker to a personal install;
+        # Without a known Flind user we can't scope the picker to a personal install;
         # let the message fall through to the standard flow, which will re-resolve and re-post.
         return False
 
@@ -1797,7 +1797,7 @@ def _notify_missing_slack_scopes(
 
     settings_url = f"{settings.SITE_URL}/integrations/slack"
     text = (
-        ":warning: PostHog can't reply because the Slack integration is missing required "
+        ":warning: Flind can't reply because the Slack integration is missing required "
         f"permissions: `{', '.join(sorted(missing))}`.\n"
         f"A project admin needs to reconnect Slack from project settings: {settings_url}"
     )
@@ -1884,7 +1884,7 @@ def resolve_posthog_user_from_event(
     candidate_integrations: Sequence[WorkspaceIntegration],
     slack_email: str | None = None,
 ) -> User | None:
-    """Resolve the acting Slack user to a PostHog ``User`` who is a member of
+    """Resolve the acting Slack user to a Flind ``User`` who is a member of
     at least one organization connected to this Slack workspace.
 
     The probe is used to call Slack's ``users.info``; the candidate list scopes
@@ -1902,7 +1902,7 @@ def resolve_posthog_user_from_event(
         return None
 
     # Linked-user path: short-circuit the email match when the user has bound
-    # their Slack identity to a PostHog account.
+    # their Slack identity to a Flind account.
     slack_team_id = probe_integration.integration_id
     linked_user = find_linked_posthog_user(
         slack_user_id=slack_user_id,
@@ -1943,7 +1943,7 @@ def _post_pick_a_project_hint(
     candidates: Sequence[WorkspaceIntegration],
     event: dict[str, Any],
 ) -> bool:
-    """Tell the user that this workspace is connected to multiple PostHog
+    """Tell the user that this workspace is connected to multiple Flind
     projects, list the ones they can reach, and point at the two ways to pick one.
 
     The slash command reads the same on both surfaces this runs on: a channel mention, and a DM,
@@ -1958,7 +1958,7 @@ def _post_pick_a_project_hint(
     if not isinstance(slack_user_id, str) or not isinstance(channel, str) or not isinstance(thread_ts, str):
         return False
     text = pick_a_project_message(
-        "This Slack workspace is connected to multiple PostHog projects. You can work in any of these:",
+        "This Slack workspace is connected to multiple Flind projects. You can work in any of these:",
         candidates,
         set_command=SLASH_COMMAND_PREFIX,
         home_tab_url=app_home_url(probe.integration),
@@ -2004,7 +2004,7 @@ def _post_project_picker(
             user=slack_user_id,
             # Slack renders an ephemeral only on the surface the person is viewing.
             thread_ts=thread_ts if mention_is_threaded and isinstance(thread_ts, str) else None,
-            text="Which PostHog project should I use?",
+            text="Which Flind project should I use?",
             blocks=project_picker.build_project_picker_blocks(
                 candidates,
                 context_token=context_token,
@@ -2121,13 +2121,13 @@ def _post_user_resolution_failure_reply(
     ephemeral_only: bool = False,
     mention_is_threaded: bool = True,
 ) -> bool:
-    """Tell a Slack user when we can't route their mention to a PostHog project.
+    """Tell a Slack user when we can't route their mention to a Flind project.
 
     Posts in-thread (with the established ephemeral fallback in
     ``_post_slack_user_feedback``) so the message lands in the place the
     mention happened. ``failure_reason`` is mapped to the user-facing text by
     ``user_resolution_failure_reply``; ``slack_email`` is woven in when known
-    so the user sees which address PostHog tried to match.
+    so the user sees which address Flind tried to match.
 
     ``ephemeral_only`` restricts the reply to a message only the mentioner sees and
     drops the invite button, for channels where a channel-visible post would expose
@@ -2227,8 +2227,8 @@ _ASSISTANT_SUGGESTED_PROMPTS = [
     {"title": "Work an inbox item", "message": "Pick up a signals inbox item that needs a code fix"},
 ]
 _ASSISTANT_UNAVAILABLE = (
-    "I can only help PostHog org members whose project has a connected repo. Make sure your Slack "
-    "email matches your PostHog account and that a repo is connected, then try again."
+    "I can only help Flind org members whose project has a connected repo. Make sure your Slack "
+    "email matches your Flind account and that a repo is connected, then try again."
 )
 
 
@@ -2406,7 +2406,7 @@ def _route_assistant_event(
     )
 
     # Share the mention path's user resolution + access filter, so the DM only ever sees and runs
-    # against projects the resolved PostHog user can actually access (no cross-org metadata leak).
+    # against projects the resolved Flind user can actually access (no cross-org metadata leak).
     resolution = resolve_user_for_workspace(
         workspace_result=result,
         slack_team_id=slack_team_id,
@@ -2599,8 +2599,8 @@ def _route_untagged_question(
 ) -> str:
     """Start the classifier workflow for a top-level channel post nobody tagged the app in.
 
-    Every drop here is silent: nobody asked PostHog anything, so nobody waits for an answer.
-    An author without a PostHog account is a normal drop, not a failure.
+    Every drop here is silent: nobody asked Flind anything, so nobody waits for an answer.
+    An author without a Flind account is a normal drop, not a failure.
     Externally shared channels are out, because people outside the organization would see the reply.
     """
     if is_ext_shared_channel or not is_untagged_question_candidate(event):
@@ -2980,7 +2980,7 @@ def route_posthog_code_event_to_relevant_region(
                 _report_slack_mention_dropped(event, slack_team_id, reason="no_integration", replied=False)
             return region_route
 
-        # A reply on a thread that mirrors a PostHog discussion becomes a comment, not agent work.
+        # A reply on a thread that mirrors a Flind discussion becomes a comment, not agent work.
         if event_type == "message":
             try:
                 ingested = try_ingest_discussion_reply(
@@ -3067,7 +3067,7 @@ def route_posthog_code_event_to_relevant_region(
             # mention analytics-side so the unknown-user funnel keeps reporting (it
             # ran on every mention before this PR moved resolution up).
             probe = workspace_result.candidates[0]
-            # ``no_team_access`` means the Slack user *did* map to a PostHog user, just
+            # ``no_team_access`` means the Slack user *did* map to a Flind user, just
             # one without access here. Reusing whoever mention-received attributed to
             # keeps the two halves of the funnel joinable on the same actor.
             attributed_user = _report_slack_mention_received(event, probe, slack_team_id, posthog_user=None)
@@ -3445,7 +3445,7 @@ def _hand_off_command(
     # Nearly every mention is free text for the agent, and this keeps their path free of queries.
     if not commands_api.may_hold_command(text):
         return False
-    # The answer is visible in the thread, which would announce PostHog in a shared channel that has
+    # The answer is visible in the thread, which would announce Flind in a shared channel that has
     # not approved it yet. The agent path has the approval gate for that.
     if is_ext_shared_channel and not _channel_is_approved(slack_team_id, channel):
         return False
@@ -3804,7 +3804,7 @@ def _post_team_join_welcome(integration: WorkspaceIntegration, slack_user_id: st
 
 
 def _channel_is_approved(slack_workspace_id: str, channel_id: str) -> bool:
-    """True iff a user in this channel has already granted PostHog approval.
+    """True iff a user in this channel has already granted Flind approval.
 
     The ``is_ext_shared_channel`` flag that gates whether approval is required
     at all lives on the Slack event envelope — see ``posthog_code_event_handler``
@@ -3861,7 +3861,7 @@ def _post_channel_approval_prompt(
     org_label = _org_label(integration)
     text = (
         f":wave: This is an externally-shared Slack channel. My answers can pull from {org_label}'s "
-        "PostHog project — including data about users, customers, and other internal metrics that aren't "
+        "Flind project — including data about users, customers, and other internal metrics that aren't "
         "otherwise visible in this channel — and anything I post will be seen by every member here, "
         f"including people outside {org_label}'s workspace. A member of {org_label} can enable me below."
     )
@@ -3880,7 +3880,7 @@ def _post_channel_approval_prompt(
                     "type": "button",
                     "action_id": CHANNEL_APPROVAL_ACTION_APPROVE,
                     "style": "primary",
-                    "text": {"type": "plain_text", "text": "✅ Allow PostHog in this channel"},
+                    "text": {"type": "plain_text", "text": "✅ Allow Flind in this channel"},
                     "value": context_token,
                 },
                 {
@@ -3905,7 +3905,7 @@ def _post_channel_approval_prompt(
         slack.client.chat_postEphemeral(
             channel=channel,
             user=slack_user_id,
-            text="The PostHog Slack app needs approval before answering in this externally-shared channel.",
+            text="The Flind Slack app needs approval before answering in this externally-shared channel.",
             blocks=blocks,
         )
     except Exception:
@@ -3927,7 +3927,7 @@ def _post_untagged_followup_prompt(
     *,
     is_ext_shared_channel: bool,
 ) -> bool:
-    """Ask the replier whether their message should go to PostHog.
+    """Ask the replier whether their message should go to Flind.
 
     Posted when the thread creator's mode is ``ask``. The whole event is stashed
     behind a one-off token so a click can dispatch the original message rather
@@ -3967,7 +3967,7 @@ def _post_untagged_followup_prompt(
     )
 
     home_tab_url = app_home_url(integration)
-    home_tab_label = f"<{home_tab_url}|PostHog app Home tab>" if home_tab_url else "PostHog app Home tab"
+    home_tab_label = f"<{home_tab_url}|Flind app Home tab>" if home_tab_url else "Flind app Home tab"
     blocks: list[dict[str, Any]] = [
         {
             "type": "section",
@@ -4012,7 +4012,7 @@ def _post_untagged_followup_prompt(
             channel=channel,
             user=slack_user_id,
             thread_ts=thread_ts,
-            text="Want PostHog to pick up your message in this thread?",
+            text="Want Flind to pick up your message in this thread?",
             blocks=blocks,
         )
     except Exception:
@@ -4062,7 +4062,7 @@ def _post_untagged_question_prompt(
     )
 
     home_tab_url = app_home_url(integration)
-    home_tab_label = f"<{home_tab_url}|PostHog app Home tab>" if home_tab_url else "PostHog app Home tab"
+    home_tab_label = f"<{home_tab_url}|Flind app Home tab>" if home_tab_url else "Flind app Home tab"
     blocks: list[dict[str, Any]] = [
         {
             "type": "section",
@@ -4070,7 +4070,7 @@ def _post_untagged_question_prompt(
             "text": {
                 "type": "mrkdwn",
                 "text": (
-                    "I think I can answer your question from your PostHog data. Want me to reply in a thread? "
+                    "I think I can answer your question from your Flind data. Want me to reply in a thread? "
                     "Only you can see this."
                 ),
             },
@@ -4110,7 +4110,7 @@ def _post_untagged_question_prompt(
         slack.client.chat_postEphemeral(
             channel=channel,
             user=slack_user_id,
-            text="PostHog can answer your question. Want a reply?",
+            text="Flind can answer your question. Want a reply?",
             blocks=blocks,
         )
     except Exception:
@@ -4231,7 +4231,7 @@ def _handle_untagged_question_turn_off(payload: dict) -> HttpResponse:
             "replace_original": True,
             "text": (
                 "Got it. I'll only answer your questions in channels when you tag me. "
-                "You can change this in the PostHog app Home tab."
+                "You can change this in the Flind app Home tab."
             ),
         },
     )
@@ -4291,7 +4291,7 @@ def post_thread_join_prompt(
         timeout=THREAD_JOIN_PROMPT_MAX_AGE_SECONDS,
     )
     home_tab_url = app_home_url(integration)
-    home_tab_label = f"<{home_tab_url}|PostHog app Home tab>" if home_tab_url else "PostHog app Home tab"
+    home_tab_label = f"<{home_tab_url}|Flind app Home tab>" if home_tab_url else "Flind app Home tab"
     thread_url = _thread_permalink(slack, channel, thread_ts)
     thread_label = f"<{thread_url}|your thread>" if thread_url else "your thread"
     blocks: list[dict[str, Any]] = [
@@ -4337,7 +4337,7 @@ def post_thread_join_prompt(
         # A DM notifies the creator. An ephemeral message in the thread does not, so they often miss it.
         slack.client.chat_postMessage(
             channel=owner_slack_user_id,
-            text="Someone wants to join your PostHog thread.",
+            text="Someone wants to join your Flind thread.",
             blocks=blocks,
         )
         slack.client.chat_postEphemeral(
@@ -4689,8 +4689,8 @@ def _work_focus_click(payload: dict, action_id: str) -> _WorkFocusClick | None:
     if posthog_user is None or not _can_access_team(posthog_user, integration):
         client.chat_postMessage(
             channel=slack_user_id,
-            text="You need access to the PostHog project connected to this Slack workspace to start a task. "
-            "Ask an admin of your PostHog organization for access.",
+            text="You need access to the Flind project connected to this Slack workspace to start a task. "
+            "Ask an admin of your Flind organization for access.",
         )
         return None
     return _WorkFocusClick(integration=integration, posthog_user=posthog_user, choice=choice, action=action)
@@ -4848,7 +4848,7 @@ def _handle_reply_suggestion_click(payload: dict, clicked: reply_suggestions.Cli
             channel,
             clicker_slack_user_id,
             thread_ts,
-            "Only members of this PostHog project can reply to the agent. Ask a project member to reply instead.",
+            "Only members of this Flind project can reply to the agent. Ask a project member to reply instead.",
         )
         return HttpResponse(status=200)
 
@@ -4861,7 +4861,7 @@ def _handle_reply_suggestion_click(payload: dict, clicked: reply_suggestions.Cli
             channel,
             clicker_slack_user_id,
             thread_ts,
-            "This channel is shared with another organization, so PostHog needs approval here first. "
+            "This channel is shared with another organization, so Flind needs approval here first. "
             "Mention @PostHog in the channel to approve it.",
         )
         return HttpResponse(status=200)
@@ -4895,7 +4895,7 @@ def _handle_reply_suggestion_click(payload: dict, clicked: reply_suggestions.Cli
                 channel,
                 clicker_slack_user_id,
                 thread_ts,
-                "This report is no longer linked to this Slack thread. Open it in PostHog to start implementation.",
+                "This report is no longer linked to this Slack thread. Open it in Flind to start implementation.",
             )
             return HttpResponse(status=200)
 
@@ -4977,16 +4977,16 @@ def _report_slack_mention_received(
 ) -> User | None:
     """Capture a product-analytics event each time the @PostHog bot is mentioned.
 
-    Returns the PostHog user the event was attributed to (``None`` when the Slack user
+    Returns the Flind user the event was attributed to (``None`` when the Slack user
     maps to nobody), so a caller that goes on to report a drop for the same mention
     attributes both events to the same person instead of re-resolving.
 
     A Slack thread is treated as the session: ``thread_ts`` identifies it, and a mention whose
     ``thread_ts`` is absent or equal to its own ``ts`` is the session's first message. The acting
-    Slack user is resolved to a PostHog ``User`` so the event is attributed to a real person where
+    Slack user is resolved to a Flind ``User`` so the event is attributed to a real person where
     one exists; otherwise it falls back to a stable Slack-derived distinct id.
 
-    When the caller has already resolved the PostHog user at routing time it passes ``posthog_user``
+    When the caller has already resolved the Flind user at routing time it passes ``posthog_user``
     so we skip the redundant Slack ``users.info`` + ``OrganizationMembership`` roundtrip.
     """
     try:
@@ -5003,7 +5003,7 @@ def _report_slack_mention_received(
                 probe_integration=integration,
                 candidate_integrations=[integration],
             )
-        # Prefer the resolved PostHog user's distinct id so the event attributes to a real person;
+        # Prefer the resolved Flind user's distinct id so the event attributes to a real person;
         # fall back to a stable Slack-derived id so anonymous-but-valid mentions are still captured.
         identified_distinct_id = posthog_user.distinct_id if posthog_user else None
         distinct_id = identified_distinct_id or f"slack:{slack_team_id}:{slack_user_id or 'unknown'}"
@@ -5124,7 +5124,7 @@ def _report_slack_mention_dropped(
 
 
 def _start_onboarding_on_mention(event: dict, slack_team_id: str, workspace_result: ResolutionResult) -> None:
-    """Someone who only tags PostHog in channels may never open its DM, so their mention starts the onboarding.
+    """Someone who only tags Flind in channels may never open its DM, so their mention starts the onboarding.
     It runs after the mention is handled, so a slow onboarding start never delays the answer. A guest from
     another workspace in a shared channel gets no onboarding, because it would come from this workspace's app."""
     slack_user_id = event.get("user")
@@ -5626,7 +5626,7 @@ def _handle_repo_picker_options(payload: dict) -> JsonResponse:
 
     mentioning_user_id = ctx.get("mentioning_user_id") if ctx else None
     if not isinstance(mentioning_user_id, int):
-        # Without a known PostHog user we can't scope the options to a personal install;
+        # Without a known Flind user we can't scope the options to a personal install;
         # return empty rather than falling back to the team install — the user can re-mention.
         logger.info("slack_app_repo_picker_options_missing_user_id", context_token=context_token)
         return JsonResponse({"options": []})
@@ -5709,7 +5709,7 @@ def _handle_repo_picker_submit(payload: dict) -> HttpResponse:
                 SlackIntegration(integration).client,
                 channel=channel,
                 thread_ts=thread_ts,
-                text="Repository selection expired. Please mention PostHog again to retry.",
+                text="Repository selection expired. Please mention Flind again to retry.",
             )
         except Exception:
             logger.warning(
@@ -5880,7 +5880,7 @@ def _resolve_channel_approval_context(payload: dict) -> tuple[WorkspaceIntegrati
 
 
 def _is_org_member(integration: WorkspaceIntegration, clicker_slack_user_id: str) -> User | None:
-    """Resolve the clicker to a PostHog ``User`` belonging to the integration's
+    """Resolve the clicker to a Flind ``User`` belonging to the integration's
     organization, or ``None`` if no such membership exists.
     """
     return resolve_posthog_user_from_event(
@@ -5895,7 +5895,7 @@ def _org_label(integration: WorkspaceIntegration) -> str:
         org_name = integration.team.organization.name
     except Exception:
         org_name = ""
-    return f"*{org_name}*" if org_name else "this PostHog organization"
+    return f"*{org_name}*" if org_name else "this Flind organization"
 
 
 def _reject_non_member_click(
@@ -5913,14 +5913,14 @@ def _reject_non_member_click(
         integration,
         channel_id,
         thread_ts,
-        f":warning: Only members of {_org_label(integration)} can manage the PostHog Slack app in this channel.",
+        f":warning: Only members of {_org_label(integration)} can manage the Flind Slack app in this channel.",
     )
     _delete_ephemeral_via_response_url(response_url)
 
 
 def _handle_channel_approval_submit(payload: dict) -> HttpResponse:
     """Approve the bot for this Slack channel after verifying the clicker is a
-    member of the integration's PostHog organization.
+    member of the integration's Flind organization.
 
     The prompt is ephemeral to the mentioner; every outcome (approve, deny,
     non-member rejection) is posted as a public threaded reply so the whole
@@ -5955,7 +5955,7 @@ def _handle_channel_approval_submit(payload: dict) -> HttpResponse:
         integration,
         channel_id,
         thread_ts,
-        f"✅ <@{clicker_slack_user_id}> enabled the PostHog Slack app in this channel.",
+        f"✅ <@{clicker_slack_user_id}> enabled the Flind Slack app in this channel.",
     )
     _delete_ephemeral_via_response_url(response_url)
     return HttpResponse(status=200)
@@ -5988,7 +5988,7 @@ def _handle_channel_approval_deny(payload: dict) -> HttpResponse:
         integration,
         channel_id,
         thread_ts,
-        f"✋ <@{clicker_slack_user_id}> dismissed the PostHog Slack app for this channel. Mention me again to retry.",
+        f"✋ <@{clicker_slack_user_id}> dismissed the Flind Slack app for this channel. Mention me again to retry.",
     )
     _delete_ephemeral_via_response_url(response_url)
     return HttpResponse(status=200)
@@ -6053,7 +6053,7 @@ def _handle_signals_dismiss_report(payload: dict) -> HttpResponse:
         return HttpResponse(status=200)
 
     slack_user_id = payload.get("user", {}).get("id", "")
-    # Only PostHog org members may dismiss — a non-member in a shared channel must not suppress reports.
+    # Only Flind org members may dismiss — a non-member in a shared channel must not suppress reports.
     org_member = _is_org_member(integration, slack_user_id)
     if org_member is None:
         logger.warning(
@@ -6077,7 +6077,7 @@ def _replace_message_stripping_actions(
     """Best-effort: replace the original message's interactive buttons with a context line.
 
     When keep_link_buttons is True, link buttons (elements with a "url" key, e.g. "View in
-    PostHog") are preserved instead of being dropped along with the interactive ones.
+    Flind") are preserved instead of being dropped along with the interactive ones.
     """
     response_url = payload.get("response_url")
     if not response_url:
@@ -6117,7 +6117,7 @@ def _post_signals_dismiss_feedback(payload: dict, *, dismissed: bool, slack_user
         text = "This report could not be dismissed — it may already be resolved or removed."
 
     # keep_link_buttons=False: historical dismiss-capable messages carried "Review PR"/"Open in
-    # PostHog" link buttons in the same actions block as Dismiss (see the pre-removal
+    # Flind" link buttons in the same actions block as Dismiss (see the pre-removal
     # slack_inbox_notifications.py block construction), so dropping the whole block here matches
     # existing behavior rather than the default.
     _replace_message_stripping_actions(payload, text, keep_link_buttons=False)

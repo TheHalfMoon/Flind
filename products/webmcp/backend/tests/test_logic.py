@@ -19,7 +19,7 @@ from products.webmcp.backend.logic.tokens import WebMCPTokenIssuer
 
 def create_webmcp_app(scopes: list[str] | None = None) -> OAuthApplication:
     return OAuthApplication.objects.create(
-        name="PostHog WebMCP",
+        name="Flind WebMCP",
         client_id=WEBMCP_APP_CLIENT_ID,
         client_type=OAuthApplication.CLIENT_PUBLIC,
         authorization_grant_type=OAuthApplication.GRANT_AUTHORIZATION_CODE,

@@ -49,7 +49,7 @@ class DeelSource(ResumableSource[DeelSourceConfig, DeelResumeConfig]):
         return {
             "401 Client Error: Unauthorized for url: https://api.letsdeel.com": "Deel authentication failed. Please check your API token.",
             "403 Client Error: Forbidden for url: https://api.letsdeel.com": "Deel denied access. Please check that your API token has the read scope for this dataset.",
-            "410 Client Error: Gone for url: https://api.letsdeel.com": "Deel has retired the API version this source uses. Contact PostHog support to move the source to a supported version.",
+            "410 Client Error: Gone for url: https://api.letsdeel.com": "Deel has retired the API version this source uses. Contact Flind support to move the source to a supported version.",
         }
 
     @property
@@ -58,7 +58,7 @@ class DeelSource(ResumableSource[DeelSourceConfig, DeelResumeConfig]):
             name=ExternalDataSourceType.DEEL,
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="Deel",
-            caption="""Enter your Deel API token to pull your Deel workforce and payroll data into the PostHog Data warehouse.
+            caption="""Enter your Deel API token to pull your Deel workforce and payroll data into the Flind Data warehouse.
 
 Create an organization token in [Deel](https://app.deel.com/developer-center) under More > Developer with read scopes for the data you want to sync (`people:read`, `contracts:read`, `accounting:read`, `timesheets:read`, `time-off:read`, `legal-entity:read`, `organizations:read`, `groups:read`, `global-payroll:read`, `payslips:read`, `it-seats:read`, `it-service-requests:read`, `equities:read`). Prefer an organization token over a personal token — personal tokens stop working when the user leaves the organization.""",
             iconPath="/static/services/deel.png",

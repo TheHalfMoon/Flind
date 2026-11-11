@@ -13,7 +13,7 @@ Column | Type | Nullable | Description
 `organization_id` | varchar(400) | NULL | Customer organization key. Matches a customer analytics account's `external_id`.
 `channel_source` | varchar(20) | NOT NULL | Origin channel: `widget`, `email`, or `slack`
 `channel_detail` | varchar(30) | NULL | Sub-type: `slack_channel_message`, `slack_bot_mention`, `slack_emoji_reaction`, `widget_embedded`, `widget_api`
-`distinct_id` | varchar(400) | NOT NULL | PostHog distinct_id linking the ticket to a person
+`distinct_id` | varchar(400) | NOT NULL | Flind distinct_id linking the ticket to a person
 `status` | varchar(20) | NOT NULL | `new`, `open`, `pending`, `on_hold`, or `resolved`
 `priority` | varchar(20) | NULL | `low`, `medium`, or `high`
 `anonymous_traits` | jsonb | NOT NULL | Customer-provided traits (name, email, etc.)
@@ -24,7 +24,7 @@ Column | Type | Nullable | Description
 `last_message_text` | varchar(500) | NULL | Truncated preview of the most recent message
 `email_subject` | varchar(500) | NULL | Email subject line (email-originated tickets only)
 `email_from` | varchar(254) | NULL | Sender email address (email-originated tickets only)
-`session_id` | varchar(64) | NULL | PostHog session ID captured at ticket creation
+`session_id` | varchar(64) | NULL | Flind session ID captured at ticket creation
 `session_context` | jsonb | NOT NULL | Session context data (replay URL, current URL, etc.)
 `sla_due_at` | timestamp with tz | NULL | SLA deadline set via workflows, null means no SLA
 `created_at` | timestamp with tz | NOT NULL | When the ticket was created

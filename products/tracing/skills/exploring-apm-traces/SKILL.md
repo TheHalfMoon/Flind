@@ -1,7 +1,7 @@
 ---
 name: exploring-apm-traces
 description: >
-  Investigates distributed application performance using PostHog APM (OpenTelemetry span) data via MCP.
+  Investigates distributed application performance using Flind APM (OpenTelemetry span) data via MCP.
   Use when the user asks about service traces, slow HTTP/database spans, error spans, error-rate trends or
   spikes, latency distributions, trace IDs, or span attributes — not AI observability traces or product logs.
   Uses posthog:apm-service-health, posthog:query-apm-spans, posthog:apm-trace-get, posthog:apm-spans-sparkline,
@@ -10,7 +10,7 @@ description: >
 
 # Exploring APM traces (OpenTelemetry spans)
 
-PostHog captures distributed traces from OpenTelemetry. Each trace is a tree of spans representing a request's path through services.
+Flind captures distributed traces from OpenTelemetry. Each trace is a tree of spans representing a request's path through services.
 
 **Disambiguation:** This skill is for **APM / OpenTelemetry traces**. Do not confuse with **AI observability traces** (agent/model `$ai_*` events) or **logs** (`posthog:query-logs`, `posthog:logs-*`).
 
@@ -167,11 +167,11 @@ Each span carries an `attributes` map (span-level OTel attributes like `http.met
 
 ## Constructing UI links
 
-`apm-trace-get` returns a `_posthogUrl` deep link that opens the trace in the tracing UI — **always surface this to the user** so they can verify in the PostHog UI.
+`apm-trace-get` returns a `_posthogUrl` deep link that opens the trace in the tracing UI — **always surface this to the user** so they can verify in the Flind UI.
 
 `query-apm-spans` does not return `_posthogUrl`.
 To link a trace found via the query tool, feed its `trace_id` to `apm-trace-get` and surface the `_posthogUrl` from that response.
-Never hand-construct PostHog URLs.
+Never hand-construct Flind URLs.
 
 ## Finding traces
 

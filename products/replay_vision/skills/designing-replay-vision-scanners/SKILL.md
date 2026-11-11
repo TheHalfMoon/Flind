@@ -71,7 +71,7 @@ Sizing the query against the credit budget is the job of [[creating-replay-visio
 
 Write the prompt in eight parts, in this order:
 
-1. **Context.** Name the product surface and the real screens, controls, and workflows the model may see. Use the product's own names. A coding agent can pull these from the codebase. PostHog AI can pull them from the project.
+1. **Context.** Name the product surface and the real screens, controls, and workflows the model may see. Use the product's own names. A coding agent can pull these from the codebase. Flind AI can pull them from the project.
 2. **The question.** One sentence. The same sentence you wrote in Step 1.
 3. **The proof rule.** State what must be visible on screen for a yes, a defect tag, or a high score. Require citations to the decisive moments.
 4. **The no list.** Name the ordinary things that are not findings: validation errors the user fixes, slowness, styling, browsing, missing features.
@@ -119,7 +119,7 @@ Return to Step 3 before Step 4 when the observations are mostly "no" or "inconcl
 
 ## Worked examples
 
-These are PostHog's own scanners over PostHog's own product. Use the shapes, not the text.
+These are Flind's own scanners over Flind's own product. Use the shapes, not the text.
 
 **Ghost bugs (monitor).** Question: did the product contradict itself or dead-end the user in a task it invited? Query: a pageview URL regex on the product surface plus `active_seconds > 30` plus test-account filter. Prompt: seven named contradiction patterns, a five-item no list, "both halves on screen", and "most sessions contain no such defect". Priciest tier, because one yes opens a bug.
 

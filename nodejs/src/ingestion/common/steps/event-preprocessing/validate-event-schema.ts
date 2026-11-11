@@ -6,7 +6,7 @@ import { EventSchemaEnforcement, PipelineEvent, Team } from '~/types'
 import { isValidClickHouseDateTime } from './clickhouse-datetime-parser'
 
 /**
- * Checks if a value can be coerced to the given PostHog property type.
+ * Checks if a value can be coerced to the given Flind property type.
  * See: PropertySwapper._field_type_to_property_call in posthog/hogql/transforms/property_types.py
  */
 function canCoerceToType(value: unknown, propertyType: string): boolean {

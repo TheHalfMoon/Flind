@@ -399,7 +399,7 @@ async def eval_governed_metrics(ctx: EvalContext) -> None:
         # catalog listing, not an insight search — the trap this case guards against.
         SandboxedEvalCase(
             name="metric_listing",
-            prompt="What are the metrics that I have available in PostHog?",
+            prompt="What are the metrics that I have available in Flind?",
             expected={
                 "metrics_catalog_queried": {},
                 "governed_behavior_correctness": {

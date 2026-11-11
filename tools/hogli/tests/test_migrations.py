@@ -12,7 +12,7 @@ class TestPathTraversalValidation:
 
     @parameterized.expand(
         [
-            # Valid cases - standard PostHog apps
+            # Valid cases - standard Flind apps
             ("posthog", "0001_initial"),
             ("ee", "0952_add_sync_test_branch_two"),
             ("rbac", "0123_some_migration_name"),

@@ -1,7 +1,7 @@
 ---
 name: building-html-canvases
 description: >
-  Author a PostHog canvas with semantic HTML, CSS, and direct browser APIs — documents, articles,
+  Author a Flind canvas with semantic HTML, CSS, and direct browser APIs — documents, articles,
   generative graphics, 2D canvas and WebGL experiences, and focused experiments where React
   components add no useful structure. Use after building-canvases has routed a canvas request to a
   plain-HTML/browser-API implementation. Covers the thin component wrapper the current runtime
@@ -42,7 +42,7 @@ build pipeline's dependency admission ships.
   Do not use `h-full` or `height: 100%` on that root either: a published canvas's artifact shell gives its `html`, `body`, and `#root` elements no explicit height, so percentage height collapses to the content height.
   A `min-height` root is not a definite height, so a descendant's percentage height still collapses; give an intermediate wrapper an explicit height when a child must fill a box.
 - Use Tailwind utilities and/or a `<style>` block (keyframes and complex selectors are fine).
-- The host toggles a `.dark` class on the document root when the user's PostHog theme changes.
+- The host toggles a `.dark` class on the document root when the user's Flind theme changes.
   Define your colors as CSS variables under `:root { … }` with overrides under `html.dark { … }`,
   or use theme token utilities (`bg-background`, `text-foreground`, `border-border`) — never a
   light-only hardcoded color.
@@ -58,11 +58,11 @@ build pipeline's dependency admission ships.
 
 ## Rules that still apply
 
-- PostHog data comes only through the `ph` bridge (see `querying-canvas-data`), including
+- Flind data comes only through the `ph` bridge (see `querying-canvas-data`), including
   `ph.capture` for interaction analytics. Other requests and external styles, images, fonts, media,
   or frames require their exact public HTTPS origins in `capabilities.network.origins` and work only
   after publishing. Remote scripts and dynamic imports remain blocked.
-- A document that states PostHog numbers must make each one verifiable: an insight-backed number
+- A document that states Flind numbers must make each one verifiable: an insight-backed number
   links its saved insight through `ph.openExternal` (URL from the `generate-app-url` MCP tool,
   from a click); an ad-hoc `ph.query` number discloses the exact query that ran in a `<details>`
   element beside the claim — see "Verifiability" in `querying-canvas-data`.

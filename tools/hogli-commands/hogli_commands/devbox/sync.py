@@ -1,6 +1,6 @@
 """`hogli devbox:sync` -- one-way-safe local->remote file sync for Coder devboxes.
 
-Lets engineers edit code locally while running the full PostHog dev stack
+Lets engineers edit code locally while running the full Flind dev stack
 on a Coder devbox. Local is the source of truth; nothing flows back to local
 automatically. Sessions are addressed by mutagen label, not name, so multiple
 workspaces stay independently controllable.
@@ -136,7 +136,7 @@ def decide_box_checkout(local: GitHead, box: BoxGitState, requested: bool | None
 
 
 def _detect_local_posthog_checkout() -> Path:
-    """Find the local PostHog checkout root by walking up from cwd.
+    """Find the local Flind checkout root by walking up from cwd.
 
     A checkout is identified by a co-located ``hogli.yaml`` and ``.git``
     directory at the same level. Bails with a hint if we can't find one --
@@ -148,7 +148,7 @@ def _detect_local_posthog_checkout() -> Path:
         if (candidate / "hogli.yaml").is_file() and (candidate / ".git").exists():
             return candidate
     _fail(
-        "Could not find a PostHog checkout above the current directory.\n"
+        "Could not find a Flind checkout above the current directory.\n"
         "Run `hogli devbox:sync` from inside a `posthog` clone."
     )
     raise SystemExit(1)  # unreachable; helps the type checker see no fall-through
@@ -325,7 +325,7 @@ def _session_summary(session: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-@click.command(name="devbox:sync", help="Mirror your local PostHog checkout to a devbox")
+@click.command(name="devbox:sync", help="Mirror your local Flind checkout to a devbox")
 @workspace_argument
 @click.option("--status", "show_status", is_flag=True, help="Show the current sync state")
 @click.option(

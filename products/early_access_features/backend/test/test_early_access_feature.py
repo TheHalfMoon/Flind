@@ -181,7 +181,7 @@ class TestEarlyAccessFeature(APIBaseTest):
         ]
     )
     def test_team_id_2_does_not_require_description_outside_us_cloud(self, _name, cloud_deployment):
-        # project id 2 is PostHog's own team only on US cloud — elsewhere it's an unrelated customer.
+        # project id 2 is Flind's own team only on US cloud — elsewhere it's an unrelated customer.
         with (
             self.settings(CLOUD_DEPLOYMENT=cloud_deployment),
             patch("products.early_access_features.backend.api.POSTHOG_TEAM_ID", self.team.id),
@@ -1488,7 +1488,7 @@ class TestPreviewList(BaseTest, QueryMatchingTest):
             self.assertEqual(response.status_code, 401)
             self.assertEqual(
                 response.json()["detail"],
-                "Project token invalid. You can find your project token in PostHog project settings.",
+                "Project token invalid. You can find your project token in Flind project settings.",
             )
 
     def test_early_access_features_errors_out_on_no_token(self):
@@ -1499,7 +1499,7 @@ class TestPreviewList(BaseTest, QueryMatchingTest):
             self.assertEqual(response.status_code, 401)
             self.assertEqual(
                 response.json()["detail"],
-                "Project token not provided. You can find your project token in PostHog project settings.",
+                "Project token not provided. You can find your project token in Flind project settings.",
             )
 
     def test_early_access_features_preserves_documentation_url(self):

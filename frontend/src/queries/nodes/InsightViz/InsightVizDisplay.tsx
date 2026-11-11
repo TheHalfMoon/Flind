@@ -142,9 +142,9 @@ export function hasResultRows(insightData: Record<string, any> | null | undefine
 }
 
 /**
- * The "PostHog AI" section offers to explain the insight, so it only belongs next to results worth explaining.
+ * The "Flind AI" section offers to explain the insight, so it only belongs next to results worth explaining.
  * It stays up while the query is in flight so it doesn't appear only once the chart draws. A query that
- * returned rows keeps it, even when the chart reads as empty, since that is what people ask PostHog AI about.
+ * returned rows keeps it, even when the chart reads as empty, since that is what people ask Flind AI about.
  */
 export function shouldShowAIAnalysisSection({
     editMode,

@@ -60,7 +60,7 @@ export function getWarehouseNativeBinding(metric: ExperimentMetric): WarehouseNa
 
 export type MetricDataSources = { warehouseNative: boolean; posthog: boolean }
 
-/** Which data sources the metric queries read. A query of another kind than `ExperimentMetric` reads PostHog data. */
+/** Which data sources the metric queries read. A query of another kind than `ExperimentMetric` reads Flind data. */
 export function getMetricDataSources(queries: ({ kind: NodeKind } | null | undefined)[]): MetricDataSources {
     const present = queries.filter((query): query is { kind: NodeKind } => !!query)
     const warehouseNative = present.filter(

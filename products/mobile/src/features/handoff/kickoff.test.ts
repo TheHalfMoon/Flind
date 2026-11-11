@@ -244,11 +244,11 @@ describe('kickoff', () => {
             new ApiError(429, { code: 'signal_report_task_cap' }),
             'Task limit reached for this report. Try again later.',
         ],
-        ['another server error', new ApiError(500, {}), "Couldn't hand off to PostHog. Try again."],
+        ['another server error', new ApiError(500, {}), "Couldn't hand off to Flind. Try again."],
         [
             'a network failure',
             new TypeError('Network request failed'),
-            "Couldn't reach PostHog. Check your connection and try again.",
+            "Couldn't reach Flind. Check your connection and try again.",
         ],
     ])('handoffErrorMessage: %s', (_name, error, expected) => {
         expect(handoffErrorMessage(error)).toBe(expected)

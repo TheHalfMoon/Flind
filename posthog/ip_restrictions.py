@@ -94,7 +94,7 @@ def is_ip_restriction_exempt(request: HttpRequest, credential_type: str | None =
     return bool(exemption)
 
 
-# Credentials PostHog's own infrastructure uses to serve a request on the user's behalf. They
+# Credentials Flind's own infrastructure uses to serve a request on the user's behalf. They
 # originate from our network, not the member's, so an organization's allowlist cannot judge them and
 # blocking them would break the feature without adding security. Delegated credentials still
 # enforce the policy, using the signed end-user IP when MCP forwards it.

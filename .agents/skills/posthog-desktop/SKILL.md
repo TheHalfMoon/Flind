@@ -13,7 +13,7 @@ description: >
 
 # Working in products/desktop
 
-`products/desktop/` is the PostHog desktop app (Electron + agent framework), imported from the
+`products/desktop/` is the Flind desktop app (Electron + agent framework), imported from the
 now-archived PostHog/code repo and kept as a **nested standalone workspace**: own
 `pnpm-workspace.yaml`, own lockfile, own Biome config, Node 22. It is excluded from the root
 `pnpm-workspace.yaml`, from ruff/mypy, from root Jest, from oxlint/oxfmt, from stylelint and

@@ -60,7 +60,7 @@ A browser-style tab strip across the top of the Channels space, rendered in the 
 
 ### Tab + window domain model (durable)
 - New core service **`TabsService`** (`@injectable`, host-neutral, domain state in `zustand/vanilla`) owns the set of open tabs and the window registry. It is the single source of truth.
-- Persistence is reached through an **injected workspace-client slice**, never directly. On desktop that slice is backed by a workspace-server SQLite table via Drizzle; on web it is backed by a remote workspace-server / PostHog API behind the same interface.
+- Persistence is reached through an **injected workspace-client slice**, never directly. On desktop that slice is backed by a workspace-server SQLite table via Drizzle; on web it is backed by a remote workspace-server / Flind API behind the same interface.
 - Two tables:
   - `browser_tabs`: `id`, `dashboard_id`, `channel_id` (nullable), `window_id` (FK), `position`, `scroll_state` (JSON, nullable, **reserved/unwired**), `created_at`, `last_active_at`.
   - `browser_windows`: `id`, `bounds` (JSON), `is_primary`, plus ordering/active-tab pointer.

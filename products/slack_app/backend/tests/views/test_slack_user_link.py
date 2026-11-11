@@ -131,7 +131,7 @@ class TestAuthorizeView:
         assert state is not None and state.search_scopes is True
 
     def test_unauthenticated_user_is_bounced_through_login(self, db):
-        # `db` fixture: PostHog's `login_required` consults `User.objects.exists()`
+        # `db` fixture: Flind's `login_required` consults `User.objects.exists()`
         # before deciding what to do for anonymous traffic, so an empty test DB
         # is the minimum requirement even though this case never touches the
         # view body.
@@ -271,7 +271,7 @@ class TestCallbackView:
     def test_session_mismatch_refuses_to_link(self, org_team_user, workspace_integration):
         # CSRF guard: the attacker starts the OAuth dance themselves so
         # `state.posthog_user_id` points at the attacker, but the callback
-        # fires in a *different* PostHog user's browser session (the victim,
+        # fires in a *different* Flind user's browser session (the victim,
         # who clicked a forwarded URL). The link MUST NOT be written against
         # the victim's account. Without this check, the attacker's Slack id
         # would be bound to the victim and every future @mention from the
@@ -295,7 +295,7 @@ class TestCallbackView:
         assert not UserIntegration.objects.filter(kind=UserIntegration.IntegrationKind.SLACK).exists()
 
     def test_org_mismatch_refuses_to_link(self, workspace_integration, db):
-        # A user logged into PostHog but NOT a member of the workspace's org —
+        # A user logged into Flind but NOT a member of the workspace's org —
         # e.g. someone who got hold of a forwarded invite URL. The OAuth dance
         # itself can complete (they have a valid session, Slack auth works),
         # but we refuse the write so orphan rows can't accumulate.

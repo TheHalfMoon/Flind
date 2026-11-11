@@ -45,7 +45,7 @@ def sandbox_ai_gateway(settings: "Settings", organization: Organization) -> Iter
     settings.SANDBOX_AI_GATEWAY_PRODUCTS = "posthog_code"
     settings.SANDBOX_AI_GATEWAY_MINT_KEY = "phs_test_mint"
     organization.available_product_features = [
-        {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "PostHog Code usage"}
+        {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "Flind Code usage"}
     ]
     organization.save(update_fields=["available_product_features"])
 

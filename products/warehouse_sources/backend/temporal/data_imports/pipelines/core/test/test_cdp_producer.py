@@ -345,7 +345,7 @@ async def test_should_run_with_both_hog_function_and_flow(team):
 async def test_should_run_posthog_database_connection_failure_stays_retryable(
     error_cls: type[Exception], message: str, team
 ):
-    # `should_run` queries PostHog's own database (HogFunction/HogFlow), not the
+    # `should_run` queries Flind's own database (HogFunction/HogFlow), not the
     # source being synced. A transient connection failure there (e.g. a DNS blip resolving our
     # host) surfaces the same "Name or service not known" wording a customer's misconfigured
     # source host would, so it must be re-raised as PostHogInternalDatabaseError to avoid being
@@ -372,7 +372,7 @@ async def test_should_run_posthog_database_connection_failure_stays_retryable(
     non_retryable = PostgresSource().get_non_retryable_errors()
     error_msg = str(exc_info.value)
     is_non_retryable = any(pattern in error_msg for pattern in non_retryable.keys())
-    assert not is_non_retryable, f"A PostHog-side DB connection failure must stay retryable: {error_msg}"
+    assert not is_non_retryable, f"A Flind-side DB connection failure must stay retryable: {error_msg}"
 
 
 @pytest.mark.django_db(transaction=True)

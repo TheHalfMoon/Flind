@@ -19,7 +19,7 @@ def assert_debug_not_in_production(*, debug: bool, cloud_deployment: Optional[st
     """Refuse to boot with DEBUG enabled on a deployed cloud environment (US/EU/DEV).
 
     DEBUG relaxes authentication (e.g. the dev OAuth login bypass in posthog/views.py) and exposes
-    debugging surfaces, so it must never run on PostHog Cloud US/EU or the hosted dev/staging env.
+    debugging surfaces, so it must never run on Flind Cloud US/EU or the hosted dev/staging env.
     TEST is excluded because the suite runs with DEBUG=1 (see posthog/settings/overrides.py). E2E is
     not listed: it runs only in automated tests and never sets DEBUG, so the guard can't fire there.
     """
@@ -62,7 +62,7 @@ def get_from_env(
         if default is not None:
             return default
         else:
-            raise ImproperlyConfigured(f'The environment variable "{key}" is required to run PostHog!')
+            raise ImproperlyConfigured(f'The environment variable "{key}" is required to run Flind!')
     if type_cast is not None:
         return type_cast(value)
     return value

@@ -1,7 +1,7 @@
 ---
 name: developing-subscriptions
 description: >
-  Guides PostHog engineers through subscription product changes. Use when changing
+  Guides Flind engineers through subscription product changes. Use when changing
   subscription resource types, destinations, schedules, delivery workflows, retry or
   automatic disable behavior, permissions, limits, AI summaries, AI prompt reports,
   delivery history, subscription APIs, MCP tools, or subscription management UI.

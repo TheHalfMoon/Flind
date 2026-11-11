@@ -117,7 +117,7 @@ Unlike the other sync types, `webhook` needs a second API call after source crea
    the HogFunction that processes incoming events.
 
 If step 2 is skipped, webhook-type schemas sit there with no data flowing. If the external service doesn't allow
-PostHog to auto-register (usually because the stored API key lacks webhook permissions), fall back to manual setup:
+Flind to auto-register (usually because the stored API key lacks webhook permissions), fall back to manual setup:
 register the webhook in the source's dashboard, then submit the signing secret via
 `external-data-sources-update-webhook-inputs-create`.
 

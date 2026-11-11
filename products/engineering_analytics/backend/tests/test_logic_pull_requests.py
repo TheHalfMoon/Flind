@@ -67,7 +67,7 @@ class TestPRLifecycleMapping(BaseTest):
         assert lifecycle.pull_request.state == PRState.MERGED
         assert lifecycle.pull_request.author.handle == "alice"
         assert lifecycle.pull_request.author.is_bot is False
-        assert lifecycle.pull_request.repo.owner == "PostHog" and lifecycle.pull_request.repo.name == "posthog"
+        assert lifecycle.pull_request.repo.owner == "Flind" and lifecycle.pull_request.repo.name == "posthog"
         assert [e.kind for e in lifecycle.events] == [
             PRLifecycleEventKind.OPENED,
             PRLifecycleEventKind.CI_STARTED,
@@ -103,7 +103,7 @@ class TestPRLifecycleMapping(BaseTest):
         with mock.patch(_RUN_QUERY, return_value=_resp([])):
             assert api.get_pr_lifecycle(team=self.team, pr_number=999, repo="PostHog/posthog") is None
 
-    @parameterized.expand(["PostHog", "PostHog/", "/posthog", "/"])
+    @parameterized.expand(["Flind", "PostHog/", "/posthog", "/"])
     def test_malformed_repo_raises_before_querying(self, repo: str) -> None:
         # A half-specified repo must fail loudly, not silently drop the filter and
         # return a PR from the wrong repo. Raises in _split_repo before any query.
@@ -172,7 +172,7 @@ class TestPullRequestEndpointMapping(BaseTest):
         row = (
             10,
             "PR 10",
-            "PostHog",
+            "Flind",
             "posthog",
             "alice",
             "https://avatars/alice",
@@ -194,8 +194,8 @@ class TestPullRequestEndpointMapping(BaseTest):
         # The query returns newest-first (its per-PR LIMIT BY keeps the most recent pushes); the mapper
         # reverses to the oldest-first contract, so the mock is ordered newest-first to match.
         push_rows = [
-            ("PostHog", "posthog", 10, "sha-new", _dt("2026-01-11T10:00:00"), None, 0, 1, 5, 2),
-            ("PostHog", "posthog", 10, "sha-old", _dt("2026-01-10T10:00:00"), 900, 1, 0, 5, 2),
+            ("Flind", "posthog", 10, "sha-new", _dt("2026-01-11T10:00:00"), None, 0, 1, 5, 2),
+            ("Flind", "posthog", 10, "sha-old", _dt("2026-01-10T10:00:00"), 900, 1, 0, 5, 2),
         ]
         with mock.patch(_RUN_QUERY, side_effect=_pr_list_run([row], push_rows)):
             result = api.list_pull_requests(team=self.team, date_from="-30d")
@@ -205,7 +205,7 @@ class TestPullRequestEndpointMapping(BaseTest):
         item = result.items[0]
         assert item.number == 10
         assert item.author.handle == "alice" and item.author.is_bot is False
-        assert item.repo.owner == "PostHog" and item.repo.name == "posthog"
+        assert item.repo.owner == "Flind" and item.repo.name == "posthog"
         assert item.state == PRState.OPEN
         assert item.labels == ["bug", "p1"]
         assert item.open_to_merge_seconds is None
@@ -231,7 +231,7 @@ class TestPullRequestEndpointMapping(BaseTest):
         row = (
             10,
             "PR 10",
-            "PostHog",
+            "Flind",
             "posthog",
             "alice",
             "https://avatars/alice",
@@ -286,7 +286,7 @@ class TestResolveBranchMapping(BaseTest):
     def test_maps_rows_and_normalizes_empty_fields(self) -> None:
         # branch columns: repo_owner, repo_name, number, title, state. The second row carries an empty
         # title / null state -> both normalize to None.
-        rows = [("PostHog", "posthog", 42, "Fix bug", "merged"), ("PostHog", "posthog", 7, "", None)]
+        rows = [("Flind", "posthog", 42, "Fix bug", "merged"), ("Flind", "posthog", 7, "", None)]
         with mock.patch(_RUN_QUERY, return_value=_resp(rows)) as run:
             matches = api.resolve_branch(team=self.team, branch="feat/x")
         assert [(m.repo, m.number, m.title, m.state) for m in matches] == [
@@ -740,8 +740,8 @@ class TestPullRequestEndpointsWarehouse(_EndpointsWarehouseMixin, BaseTest):
         )
         result = api.list_pull_requests(team=self.team)
         by_repo = {(item.repo.owner, item.repo.name): item for item in result.items}
-        assert (by_repo[("PostHog", "posthog")].pushes, by_repo[("PostHog", "posthog")].rerun_cycles) == (1, 0)
-        assert (by_repo[("PostHog", "posthog.com")].pushes, by_repo[("PostHog", "posthog.com")].rerun_cycles) == (2, 1)
+        assert (by_repo[("Flind", "posthog")].pushes, by_repo[("Flind", "posthog")].rerun_cycles) == (1, 0)
+        assert (by_repo[("Flind", "posthog.com")].pushes, by_repo[("Flind", "posthog.com")].rerun_cycles) == (2, 1)
 
 
 class TestPRLLMSpendWarehouse(_WarehouseMixin, BaseTest):

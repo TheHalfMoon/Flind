@@ -63,7 +63,7 @@ class LookerSource(ResumableSource[LookerSourceConfig, LookerResumeConfig]):
             "401 Client Error": "Looker rejected the access token. Check your API credentials and reconnect.",
             "403 Client Error": "Your Looker user cannot read this table. Check the user's permissions.",
             OAUTH2_PERMANENT_ERROR_MARKER: "Looker rejected the login. Check your API credentials and instance URL.",
-            "Looker host not allowed": "Use a Looker instance that PostHog can reach over the public internet.",
+            "Looker host not allowed": "Use a Looker instance that Flind can reach over the public internet.",
         }
 
     def get_schemas(
@@ -100,7 +100,7 @@ class LookerSource(ResumableSource[LookerSourceConfig, LookerResumeConfig]):
                 return False, "Your Looker user cannot read this table. Check the user's permissions."
             return False, "Looker rejected the request. Check your API credentials and instance URL."
         except RequestException:
-            return False, "PostHog could not connect to Looker. Check the instance URL and its TLS certificate."
+            return False, "Flind could not connect to Looker. Check the instance URL and its TLS certificate."
         except ValueError as error:
             return False, str(error)
         return True, None

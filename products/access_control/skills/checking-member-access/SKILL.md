@@ -1,7 +1,7 @@
 ---
 name: checking-member-access
 description: >
-  Explains what a member or a role can do in a PostHog project, using the access control MCP tools.
+  Explains what a member or a role can do in a Flind project, using the access control MCP tools.
   Use when the user asks what someone can see or edit, who can edit dashboards or feature flags, why a
   member can or cannot open a dashboard, notebook or table, what a role grants, which properties are hidden
   from someone, or how the project's default access is set. Covers what each level means, how the stored
@@ -124,8 +124,8 @@ All access control tools take an optional project id and default to the active p
 | `access_level`                    | The subject's own stored rule for this scope. `null` means no rule of its own.                                                                                                                                                                                                   |
 | `effective_access_level`          | What is enforced. `null` means nothing resolves for this scope. It is not "no access".                                                                                                                                                                                           |
 | `inherited_access`                | The level the subject falls back to without a rule of its own, and where it comes from. `null` when nothing supplies one.                                                                                                                                                        |
-| `inherited_access.source`         | `resource` or `parent_resource` for a tool rule, `object` or `parent_object` for an object rule, `system_default` for the PostHog default. `org_admin` and `creator` are the bypasses described above. `org_membership` appears only when the object is the organization itself. |
-| `inherited_access.source_subject` | `member`, `role` or `default`: whose rule supplied it. `null` when a bypass or the PostHog default did.                                                                                                                                                                          |
+| `inherited_access.source`         | `resource` or `parent_resource` for a tool rule, `object` or `parent_object` for an object rule, `system_default` for the Flind default. `org_admin` and `creator` are the bypasses described above. `org_membership` appears only when the object is the organization itself. |
+| `inherited_access.source_subject` | `member`, `role` or `default`: whose rule supplied it. `null` when a bypass or the Flind default did.                                                                                                                                                                          |
 
 How to phrase the answer:
 
@@ -136,7 +136,7 @@ How to phrase the answer:
   The role's name is not in the entry; `roles-list` has it if the user wants it.
 - `access_level` is `null` and `source_subject` is `default`: "This member has viewer access, based on the
   project default."
-- `source` is `system_default`: "No rule is set anywhere, so the PostHog default applies."
+- `source` is `system_default`: "No rule is set anywhere, so the Flind default applies."
 - `effective_access_level` is `null`: "Nothing resolves for this tool here." Do not read it as no access.
 
 ## Gotchas

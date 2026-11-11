@@ -14,7 +14,7 @@ ACCOUNT_ACCESS_DENIED = (
     "The connected X account cannot access this ad account. Check its ad-account permissions, then reconnect."
 )
 MISSING_INTEGRATION = "The connected X Ads integration is missing or disconnected. Reconnect your X account."
-MISSING_APP = "The PostHog X Ads app is not configured. Contact support."
+MISSING_APP = "The Flind X Ads app is not configured. Contact support."
 
 PRIMARY_KEYS = {
     **{table: ["id"] for table in ENTITY_TABLES},

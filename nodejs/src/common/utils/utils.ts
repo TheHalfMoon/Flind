@@ -214,7 +214,7 @@ export function normalizeSessionId(sessionId: string): string {
  *
  * Loosely based on [Segment's KSUID](https://github.com/segmentio/ksuid) and
  * on [Twitter's snowflake ID](https://blog.twitter.com/engineering/en_us/a/2010/announcing-snowflake.html).
- * Ported from the PostHog Django app.
+ * Ported from the Flind Django app.
  */
 export class UUIDT extends UUID {
     static currentSeriesPerMs: Map<number, number> = new Map()

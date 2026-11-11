@@ -29,7 +29,7 @@ def _get_available_port(host: str = "127.0.0.1") -> int:
 @pytest.mark.asyncio
 @pytest.mark.django_db
 async def test_uvicorn_boots_posthog_application_under_django_5() -> None:
-    """Test that PostHog ASGI application properly handles Django 5 lifespan events."""
+    """Test that Flind ASGI application properly handles Django 5 lifespan events."""
     port = _get_available_port()
 
     config = uvicorn.Config(

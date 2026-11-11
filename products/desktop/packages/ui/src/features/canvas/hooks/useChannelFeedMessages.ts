@@ -18,7 +18,7 @@ export interface ChannelFeedSystemMessage {
   createdAt: string;
   text: string;
   /** When set, the row renders as this user (avatar + name) instead of the
-   * "PostHog / Agent" chrome — e.g. the "joined" row. */
+   * "Flind / Agent" chrome — e.g. the "joined" row. */
   author?: UserBasic | null;
 }
 
@@ -46,7 +46,7 @@ function messageText(message: ChannelFeedMessage): string {
 }
 
 /**
- * A channel's durable "PostHog agent" announcements (context created, CONTEXT.md
+ * A channel's durable "Flind agent" announcements (context created, CONTEXT.md
  * being built), oldest first, flattened to display text.
  */
 export function useChannelFeedMessages(channelId: string | undefined): {

@@ -80,7 +80,7 @@ def _replace_actions_with_context(blocks: list[dict], action_ids: set[str], text
 def _resolve_onboarding_user(
     slack: SlackIntegration, integration: WorkspaceIntegration, slack_user_id: str
 ) -> int | None:
-    """Resolve the Slack user to a PostHog user id (org-member email match), or None."""
+    """Resolve the Slack user to a Flind user id (org-member email match), or None."""
     from products.slack_app.backend.api import (
         resolve_slack_user,  # noqa: PLC0415 — api.py imports this module; defer to break the cycle
     )

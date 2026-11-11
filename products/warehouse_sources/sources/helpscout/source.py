@@ -68,9 +68,9 @@ class HelpScoutSource(OAuthMixin, ResumableSource[HelpScoutSourceConfig, HelpSco
             # The linked OAuth integration was deleted while the source still references it.
             # Retrying can never resolve this, so ask the user to reconnect.
             "Integration not found": "The linked Help Scout integration no longer exists. Please reconnect your Help Scout account.",
-            # The Help Scout app isn't configured on this PostHog instance, so the source can't
+            # The Help Scout app isn't configured on this Flind instance, so the source can't
             # refresh its access token. Deterministic, so retrying never resolves it.
-            "Help Scout app not configured": "The Help Scout app is not configured on this PostHog instance. Please contact support.",
+            "Help Scout app not configured": "The Help Scout app is not configured on this Flind instance. Please contact support.",
         }
 
     @property
@@ -80,7 +80,7 @@ class HelpScoutSource(OAuthMixin, ResumableSource[HelpScoutSourceConfig, HelpSco
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             keywords=["helpscout", "helpdesk"],
             label="Help Scout",
-            caption="Sync your Help Scout conversations, customers, and mailboxes into the PostHog Data warehouse.",
+            caption="Sync your Help Scout conversations, customers, and mailboxes into the Flind Data warehouse.",
             iconPath="/static/services/helpscout.png",
             docsUrl="https://posthog.com/docs/cdp/sources/helpscout",
             releaseStatus=ReleaseStatus.GA,

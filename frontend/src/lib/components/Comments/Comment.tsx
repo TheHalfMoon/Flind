@@ -27,7 +27,7 @@ import { CommentsLogicProps, CommentWithRepliesType, commentsLogic } from './com
 import { getCommentText, getRecordingLinkInfo, isViewingRecording, scopeSyncsToSlack } from './commentUtils'
 import { sendCommentToSlackLogic } from './sendCommentToSlackLogic'
 
-// Comments that came in from a synced Slack thread have no PostHog author; their Slack identity
+// Comments that came in from a synced Slack thread have no Flind author; their Slack identity
 // rides in item_context.
 export function getCommentAuthorName(comment: CommentType): string {
     if (comment.created_by) {

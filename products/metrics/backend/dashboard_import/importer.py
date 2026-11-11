@@ -7,9 +7,9 @@ and the status endpoint both call `finalize`. It checks every query that the age
 the user, and creates the dashboard in the same transaction that records the result. So the dashboard
 exists once, whichever caller gets there first.
 
-A screenshot import also checks the layout. The agent run stays open after the agent answers. PostHog
+A screenshot import also checks the layout. The agent run stays open after the agent answers. Flind
 builds the dashboard, renders a picture of it, and sends the picture to the agent, which compares it with
-the screenshot and answers again with corrected boxes. PostHog moves the tiles and repeats this for a few
+the screenshot and answers again with corrected boxes. Flind moves the tiles and repeats this for a few
 rounds, then ends the run.
 
 The agent only reads data and answers. It has read-only scopes and no network, so instructions planted
@@ -456,7 +456,7 @@ class DashboardImporter:
             raise DashboardImportError(str(error)) from None
         except (ValueError, TypeError, OverflowError):
             logger.warning("metrics_dashboard_import_grafana_unreadable", exc_info=True)
-            raise DashboardImportError("The dashboard JSON has a value that PostHog cannot read.") from None
+            raise DashboardImportError("The dashboard JSON has a value that Flind cannot read.") from None
 
     @staticmethod
     def _prepare_image(image: bytes | None) -> bytes:
@@ -473,7 +473,7 @@ class DashboardImporter:
                 picture = opened.convert("RGB")
         except (UnidentifiedImageError, OSError, Image.DecompressionBombError):
             raise DashboardImportError(
-                "PostHog cannot read this file as an image. Use a PNG or JPEG screenshot."
+                "Flind cannot read this file as an image. Use a PNG or JPEG screenshot."
             ) from None
         longest = max(picture.size)
         if longest > MAX_IMAGE_EDGE:
@@ -812,7 +812,7 @@ class DashboardImporter:
             latest = _parse_state(current)
             if latest is None or latest.result is not None:
                 return current, None
-            # A screenshot has no title that PostHog can read, so the agent names the dashboard unless the user did.
+            # A screenshot has no title that Flind can read, so the agent names the dashboard unless the user did.
             agent_name = " ".join(agent_dashboard_name.split())[:400]
             if latest.source == "screenshot" and not latest.named_by_user and agent_name:
                 latest = latest.model_copy(update={"dashboard_name": agent_name})
@@ -966,7 +966,7 @@ def finalize_import(*, team_id: int, task_id: str, background: bool) -> bool:
             agent_dashboard_name = output.dashboard_name
         except ValidationError:
             logger.warning("metrics_dashboard_import_output_invalid", team_id=team_id)
-            error = "The import agent returned an answer that PostHog cannot read. Try again."
+            error = "The import agent returned an answer that Flind cannot read. Try again."
         except Exception:
             logger.exception("metrics_dashboard_import_finalize_failed", team_id=team_id)
             error = "The import failed while it built the dashboard. Try again."

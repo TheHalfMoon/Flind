@@ -51,7 +51,7 @@ class NewYorkTimesSource(ResumableSource[NewYorkTimesSourceConfig, NewYorkTimesR
             label="New York Times",
             releaseStatus=ReleaseStatus.BETA,
             caption=(
-                "Enter your New York Times API key to pull New York Times content into the PostHog Data warehouse.\n\n"
+                "Enter your New York Times API key to pull New York Times content into the Flind Data warehouse.\n\n"
                 "Create a free developer account and register an app at the "
                 "[NYT Developer Network](https://developer.nytimes.com/), then enable the APIs you want to sync "
                 "(Article Search, Archive, Most Popular, Top Stories, Times Newswire, Books) on your app to get an API key.\n\n"

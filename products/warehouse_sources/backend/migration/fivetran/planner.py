@@ -1,6 +1,6 @@
-"""Turn a Fivetran snapshot into one PostHog proposal per Fivetran connection.
+"""Turn a Fivetran snapshot into one Flind proposal per Fivetran connection.
 
-Every difference between what Fivetran did and what PostHog will do becomes a caveat
+Every difference between what Fivetran did and what Flind will do becomes a caveat
 the user sees. Nothing is dropped silently.
 """
 
@@ -35,7 +35,7 @@ from products.warehouse_sources.backend.types import ExternalDataSourceType
 
 
 class CatalogLookup(Protocol):
-    """The connector catalog: which PostHog source, tables and settings a vendor connection maps to."""
+    """The connector catalog: which Flind source, tables and settings a vendor connection maps to."""
 
     def match_source(self, provider: str, vendor_service: str) -> ExternalDataSourceType | None: ...
     def match_destination(self, provider: str, vendor_service: str) -> str | None: ...
@@ -44,7 +44,7 @@ class CatalogLookup(Protocol):
     def match_tables(
         self, provider: str, vendor_tables: Iterable[str], posthog_table_names: Collection[str]
     ) -> Sequence[TableMatch]: ...
-    # Keys are PostHog payload paths, where a dot is a nested field.
+    # Keys are Flind payload paths, where a dot is a nested field.
     def prefill_config(
         self, provider: str, source_type: ExternalDataSourceType, vendor_config: Mapping[str, Any]
     ) -> Mapping[str, Any]: ...
@@ -66,7 +66,7 @@ class PlannedItem:
     name: str
     verdict: Verdict
     caveats: tuple[str, ...]
-    # None when the connection cannot move to PostHog.
+    # None when the connection cannot move to Flind.
     proposal: ItemProposal | None
 
 
@@ -136,7 +136,7 @@ def with_unique_prefixes(
     items: Iterable[PlannedItem], reserved: Collection[tuple[ExternalDataSourceType, str]] = ()
 ) -> tuple[PlannedItem, ...]:
     """Rename prefixes that clash with an earlier item or a `reserved` (source type, prefix) pair."""
-    # Fivetran names are unique only within a destination, but a PostHog prefix must be unique per source type.
+    # Fivetran names are unique only within a destination, but a Flind prefix must be unique per source type.
     items = list(items)
     taken = {(item.proposal.source_type, item.proposal.prefix) for item in items if item.proposal is not None}
     used: set[tuple[ExternalDataSourceType, str]] = set(reserved)
@@ -190,29 +190,29 @@ def _plan_connection(
 
     source_type = catalog.match_source(provider, connection.service)
     if source_type is None:
-        return unsupported(f"PostHog has no source for the Fivetran connector `{connection.service}` yet.")
+        return unsupported(f"Flind has no source for the Fivetran connector `{connection.service}` yet.")
     caps = capabilities(source_type)
     if caps.unreleased:
-        return unsupported(f"The PostHog {source_type} source is not released yet.")
+        return unsupported(f"The Flind {source_type} source is not released yet.")
     if not all(flag_enabled(flag) for flag in caps.feature_flags):
-        return unsupported(f"The PostHog {source_type} source is not available to this project yet.")
+        return unsupported(f"The Flind {source_type} source is not available to this project yet.")
 
     caveats: list[str] = []
     if caps.release_status == ReleaseStatus.ALPHA:
-        caveats.append(f"The PostHog {source_type} source is in alpha.")
+        caveats.append(f"The Flind {source_type} source is in alpha.")
     if connection.setup_state and connection.setup_state != "connected":
         caveats.append(f"This connection is `{connection.setup_state}` in Fivetran, so check its settings first.")
     if connection.networking_method in _UNSUPPORTED_NETWORKING:
         caveats.append(
-            f"Fivetran reaches this source through `{connection.networking_method}`. PostHog connects directly or through an SSH tunnel."
+            f"Fivetran reaches this source through `{connection.networking_method}`. Flind connects directly or through an SSH tunnel."
         )
     if connection.config.get("update_method") in _CHANGE_LOG_UPDATE_METHODS:
         caveats.append(
-            "Fivetran reads this database from its change log. PostHog starts with standard syncs. "
+            "Fivetran reads this database from its change log. Flind starts with standard syncs. "
             "Turn on change data capture in the source settings to read the change log."
         )
     if connection.schema_change_handling == "BLOCK_ALL":
-        caveats.append("Fivetran blocks new tables and columns for this connection. PostHog may add new columns.")
+        caveats.append("Fivetran blocks new tables and columns for this connection. Flind may add new columns.")
 
     tables = _plan_tables(provider, connection, source_type, catalog, caps, caveats)
     sync_frequency, sync_time_of_day = _plan_frequency(connection, caveats)
@@ -242,7 +242,7 @@ def _plan_connection(
 
 
 def _plan_prefill(flat_config: Mapping[str, Any], caps: SourceCapabilities) -> dict[str, Any]:
-    """Nest the catalog's prefill into the source payload. A dot in a PostHog key is a nested field."""
+    """Nest the catalog's prefill into the source payload. A dot in a Flind key is a nested field."""
     prefill: dict[str, Any] = {}
     for posthog_key, value in flat_config.items():
         *parents, leaf = posthog_key.split(".")
@@ -265,7 +265,7 @@ def _plan_tables(
     caveats: list[str],
 ) -> _PlannedTables:
     if not connection.tables_available or not connection.tables:
-        caveats.append("Fivetran did not return a table list. PostHog will use its default tables.")
+        caveats.append("Fivetran did not return a table list. Flind will use its default tables.")
         return _PlannedTables(schemas=None)
 
     enabled = [table for table in connection.tables if table.enabled]
@@ -296,7 +296,7 @@ def _plan_tables(
             # The source can discover more tables than it lists, so apply checks this one by name.
             name = table.name
         if name in planned_names:
-            caveats.append(f"The Fivetran table `{table.name}` lands in the same PostHog table as another one.")
+            caveats.append(f"The Fivetran table `{table.name}` lands in the same Flind table as another one.")
             if known is not None:
                 # Listed, so the user can pick this table over the other one, or map it elsewhere.
                 unmatched.append(table.name)
@@ -305,7 +305,7 @@ def _plan_tables(
             inferred.append(TablePair(vendor_table=table.name, posthog_table=name))
         if table.sync_mode == "HISTORY":
             caveats.append(
-                f"`{table.name}` keeps history in Fivetran. PostHog keeps only the latest version of each row."
+                f"`{table.name}` keeps history in Fivetran. Flind keeps only the latest version of each row."
             )
         _plan_hashing(table, caveats)
         planned_names.add(name)
@@ -322,12 +322,12 @@ def _plan_tables(
         )
     if inferred:
         pairs = ", ".join(f"`{pair.vendor_table}` as `{pair.posthog_table}`" for pair in inferred)
-        caveats.append(f"PostHog paired some tables by a naming rule: {pairs}. Confirm them before applying.")
+        caveats.append(f"Flind paired some tables by a naming rule: {pairs}. Confirm them before applying.")
     if unmatched:
         names = ", ".join(f"`{name}`" for name in unmatched)
-        caveats.append(f"These Fivetran tables are not planned, because no free PostHog table matched them: {names}.")
+        caveats.append(f"These Fivetran tables are not planned, because no free Flind table matched them: {names}.")
     if not schemas:
-        caveats.append("No Fivetran table of this connection moves to PostHog, so every table starts with syncing off.")
+        caveats.append("No Fivetran table of this connection moves to Flind, so every table starts with syncing off.")
     # Only needed to place the unmatched tables, so the payload stays small otherwise.
     unused = sorted(known.names - planned_names) if known is not None and unmatched else []
     return _PlannedTables(
@@ -344,7 +344,7 @@ def _without_shared_alternative_names(schemas: list[ProposedSchema], caveats: li
     shared = {name for name, count in counts.items() if count > 1}
     for name in sorted(shared):
         caveats.append(
-            f"More than one Fivetran schema has a table called `{name}`, so PostHog matches them only by schema and name."
+            f"More than one Fivetran schema has a table called `{name}`, so Flind matches them only by schema and name."
         )
     return tuple(
         dataclasses.replace(
@@ -361,11 +361,11 @@ def _plan_disabled_columns(table: VendorTable, caps: SourceCapabilities, caveats
     if disabled and not caps.supports_column_selection:
         if caps.fixed_columns:
             caveats.append(
-                f"`{table.name}` skips some columns in Fivetran. PostHog always syncs every column of this table."
+                f"`{table.name}` skips some columns in Fivetran. Flind always syncs every column of this table."
             )
         else:
             caveats.append(
-                f"`{table.name}` skips some columns in Fivetran. PostHog syncs every column of this table at first. "
+                f"`{table.name}` skips some columns in Fivetran. Flind syncs every column of this table at first. "
                 "You can turn columns off after the first sync."
             )
         return ()
@@ -375,14 +375,14 @@ def _plan_disabled_columns(table: VendorTable, caps: SourceCapabilities, caveats
 def plan_table_restrictions(
     table: VendorTable, posthog_name: str, caps: SourceCapabilities, caveats: list[str]
 ) -> tuple[tuple[str, ...], tuple[ProposedRowFilter, ...]]:
-    """The column exclusions and row filters PostHog keeps when it syncs `table` as `posthog_name`."""
+    """The column exclusions and row filters Flind keeps when it syncs `table` as `posthog_name`."""
     _plan_hashing(table, caveats)
     return _plan_disabled_columns(table, caps, caveats), _plan_row_filters(table, posthog_name, caps, caveats)
 
 
 def _plan_hashing(table: VendorTable, caveats: list[str]) -> None:
     if any(column.hashed for column in table.columns):
-        caveats.append(f"`{table.name}` hashes some columns in Fivetran. PostHog syncs them unhashed.")
+        caveats.append(f"`{table.name}` hashes some columns in Fivetran. Flind syncs them unhashed.")
 
 
 def _plan_row_filters(
@@ -391,7 +391,7 @@ def _plan_row_filters(
     row_filter = table.row_filter
     if row_filter is None:
         return ()
-    dropped = f"`{table.name}` has a row filter in Fivetran that PostHog cannot apply. PostHog syncs every row."
+    dropped = f"`{table.name}` has a row filter in Fivetran that Flind cannot apply. Flind syncs every row."
     if not caps.supports_row_filters or (row_filter.combinator == "OR" and len(row_filter.clauses) > 1):
         caveats.append(dropped)
         return ()
@@ -419,10 +419,10 @@ def _plan_row_filters(
 
 def _plan_paused(connection: VendorConnection, caveats: list[str]) -> bool:
     if connection.paused:
-        caveats.append("This connection is paused in Fivetran, so PostHog creates it with syncing off.")
+        caveats.append("This connection is paused in Fivetran, so Flind creates it with syncing off.")
         return True
     if connection.schedule.kind == ScheduleKind.MANUAL:
-        caveats.append("This connection syncs only on demand in Fivetran, so PostHog creates it with syncing off.")
+        caveats.append("This connection syncs only on demand in Fivetran, so Flind creates it with syncing off.")
         return True
     return False
 
@@ -432,7 +432,7 @@ def _plan_frequency(connection: VendorConnection, caveats: list[str]) -> tuple[P
     if schedule.kind == ScheduleKind.MANUAL:
         return _DEFAULT_FREQUENCY, None
     if schedule.days_of_week:
-        caveats.append("Fivetran syncs this connection on some weekdays only. PostHog syncs every day.")
+        caveats.append("Fivetran syncs this connection on some weekdays only. Flind syncs every day.")
     if schedule.kind == ScheduleKind.TIME_OF_DAY:
         return "24hour", _to_posthog_time(schedule.time_of_day_utc)
     if schedule.kind == ScheduleKind.CRON:
@@ -441,21 +441,21 @@ def _plan_frequency(connection: VendorConnection, caveats: list[str]) -> tuple[P
     interval = schedule.interval_minutes
     if interval is None:
         caveats.append(
-            f"PostHog cannot match this Fivetran schedule, so it syncs every {_FREQUENCY_LABELS[_DEFAULT_FREQUENCY]}."
+            f"Flind cannot match this Fivetran schedule, so it syncs every {_FREQUENCY_LABELS[_DEFAULT_FREQUENCY]}."
         )
         return _DEFAULT_FREQUENCY, None
     frequency = _nearest_frequency(interval)
     if interval != _FREQUENCY_MINUTES[frequency]:
         fivetran_every = "minute" if interval == 1 else f"{interval} minutes"
         caveats.append(
-            f"Fivetran syncs every {fivetran_every}. PostHog will sync every {_FREQUENCY_LABELS[frequency]}."
+            f"Fivetran syncs every {fivetran_every}. Flind will sync every {_FREQUENCY_LABELS[frequency]}."
         )
     time_of_day = _to_posthog_time(schedule.time_of_day_utc) if frequency == "24hour" else None
     return frequency, time_of_day
 
 
 def _plan_cron(schedule: VendorSchedule, caveats: list[str]) -> tuple[PostHogSyncFrequency, str | None]:
-    caveats.append(f"Fivetran uses the cron schedule `{schedule.cron}`. PostHog uses the nearest fixed interval.")
+    caveats.append(f"Fivetran uses the cron schedule `{schedule.cron}`. Flind uses the nearest fixed interval.")
     fields = (schedule.cron or "").split()
     if len(fields) != 5:
         return _DEFAULT_FREQUENCY, None
@@ -499,14 +499,14 @@ def _plan_destination(
         if connection.destination_id:
             # An agent upload can leave the destination out.
             caveats.append(
-                "PostHog did not get this connection's Fivetran destination, so it suggests no destination "
+                "Flind did not get this connection's Fivetran destination, so it suggests no destination "
                 "and reads a Fivetran time of day as UTC."
             )
         return None
     destination_type = catalog.match_destination(provider, destination.service)
     if destination_type is None:
         caveats.append(
-            f"PostHog cannot write to the Fivetran destination `{destination.service}`. The data lands in the PostHog warehouse."
+            f"Flind cannot write to the Fivetran destination `{destination.service}`. The data lands in the Flind warehouse."
         )
         return None
     # Fivetran names a database connection's schemas `<name>_<source schema>`, and any other connection's

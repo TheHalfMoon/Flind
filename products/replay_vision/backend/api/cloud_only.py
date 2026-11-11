@@ -15,7 +15,7 @@ class ReplayVisionCloudOnly(BasePermission):
     `isHobby` in the frontend's preflightLogic, which hides the product on the same installs.
     """
 
-    message = "Replay vision is only available on PostHog Cloud."
+    message = "Replay vision is only available on Flind Cloud."
 
     def has_permission(self, request: Request, view: APIView) -> bool:
         return not (is_hobby() and not settings.TEST)

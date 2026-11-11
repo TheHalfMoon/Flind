@@ -233,7 +233,7 @@ key((props) => props.fooId),
 path(['scenes', 'foo', 'fooLogic']),       // key not visible in path
 ```
 
-Instance identity is handled by `key`, but PostHog convention is to also append the
+Instance identity is handled by `key`, but Flind convention is to also append the
 key to `path` so the key shows up in redux devtools, in typegen output, and in any
 log lines that include the logic path. Use `path((key) => ['...', key])`.
 

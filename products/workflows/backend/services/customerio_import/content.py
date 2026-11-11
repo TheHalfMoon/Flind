@@ -1,7 +1,7 @@
 """What an import needs beyond the automation graph: message content, senders, categories and segment names.
 
 The caller can pass all of it. When it leaves out message content and the team stored a Customer.io App API key
-(the opt-out import saves one), PostHog reads the content itself, so an agent passes only the graph.
+(the opt-out import saves one), Flind reads the content itself, so an agent passes only the graph.
 """
 
 import json
@@ -74,7 +74,7 @@ def import_content(
                 fetch_notes[str(source.campaign.get("id"))] = (
                     ImportNote(
                         level=WorkflowImportNoteLevel.NEEDS_INPUT,
-                        message=f"PostHog could not read this automation's messages from Customer.io: {error} "
+                        message=f"Flind could not read this automation's messages from Customer.io: {error} "
                         "Import again with its templates.",
                     ),
                 )

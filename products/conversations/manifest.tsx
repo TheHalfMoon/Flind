@@ -38,7 +38,7 @@ export const manifest: ProductManifest = {
             projectBased: true,
             layout: 'app-container',
         },
-        // The user's own tickets with PostHog support — unrelated to the Support product's
+        // The user's own tickets with Flind support — unrelated to the Support product's
         // agent inbox above, which shows tickets from *their* customers
         MyTickets: {
             name: 'Your tickets',

@@ -13,7 +13,7 @@ def _tool_call(team: Any, session_id: str, **properties: Any) -> None:
         distinct_id="agent-user",
         properties={
             "$mcp_source": "posthog_mcp_analytics",
-            "$mcp_server_name": "PostHog",
+            "$mcp_server_name": "Flind",
             "$mcp_session_id": session_id,
             "$mcp_client_name": "Claude Code",
             "$mcp_is_error": False,
@@ -25,7 +25,7 @@ def _tool_call(team: Any, session_id: str, **properties: Any) -> None:
 class TestAggregation(ClickhouseTestMixin, BaseTest):
     def test_aggregate_team_rolls_up_stats_and_resolves_effective_tools(self) -> None:
         official = MCPRegistryServer.objects.create(
-            registry_name="io.github.PostHog/mcp", display_name="PostHog MCP Server", listed_in_registry=True
+            registry_name="io.github.PostHog/mcp", display_name="Flind MCP Server", listed_in_registry=True
         )
         _tool_call(self.team, "s1", **{"$mcp_tool_name": "execute-sql", "$mcp_intent": "check error volume"})
         # Single-exec call: must roll up under the inner tool, not under "exec".
@@ -42,7 +42,7 @@ class TestAggregation(ClickhouseTestMixin, BaseTest):
         processed = aggregate_team(self.team)
 
         assert processed == 1
-        stats = MCPMeasuredStats.objects.unscoped().get(team_id=self.team.id, server_name="PostHog")
+        stats = MCPMeasuredStats.objects.unscoped().get(team_id=self.team.id, server_name="Flind")
         assert stats.server == official
         assert stats.link_method == "override"
         assert (stats.calls, stats.sessions, stats.errors) == (3, 2, 1)

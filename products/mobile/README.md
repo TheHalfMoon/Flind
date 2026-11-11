@@ -1,12 +1,12 @@
-# PostHog mobile
+# Flind mobile
 
-A standalone Expo + React Native app for iOS and Android, named **PostHog** on the stores.
-It is a quick-triage companion to the PostHog home page:
-open your latest reports, hand them to the PostHog agent, answer its questions,
-review the PR it opens, reassign, resolve, dismiss, mark read, or chat with PostHog AI about a report.
+A standalone Expo + React Native app for iOS and Android, named **Flind** on the stores.
+It is a quick-triage companion to the Flind home page:
+open your latest reports, hand them to the Flind agent, answer its questions,
+review the PR it opens, reassign, resolve, dismiss, mark read, or chat with Flind AI about a report.
 
 Demo mode renders the whole design from fixture data with no network.
-Signed in, the same screens read the PostHog API.
+Signed in, the same screens read the Flind API.
 
 This directory is its own pnpm workspace with its own lockfile.
 The repo root workspace excludes it, so run everything from here.
@@ -29,7 +29,7 @@ If the app says it cannot load the project from your network address, see [Troub
 
 ### Demo mode
 
-Demo mode shows fixture reports and needs no PostHog account or network.
+Demo mode shows fixture reports and needs no Flind account or network.
 It is available in every build, including preview and store builds, so app reviewers can try the app without an account.
 To start it, tap **Try the demo** on the sign-in screen. This is the only way to start demo mode in a release build.
 To leave it, tap **Exit demo** in Settings.
@@ -58,7 +58,7 @@ A build made with `APP_VARIANT=development` or `preview` uses the `posthog-dev:/
 
 ### Sign in to the local backend
 
-Until the backend setup changes merge, run the PostHog stack from the paired `codex/mobile-dev-environment` branch and the mobile app from `codex/mobile-app`.
+Until the backend setup changes merge, run the Flind stack from the paired `codex/mobile-dev-environment` branch and the mobile app from `codex/mobile-app`.
 The backend branch contains the setup commands and shared seed data; it does not contain this mobile workspace yet.
 Use the normal [local development setup](../../docs/published/handbook/engineering/developing-locally.md), wait for migrations, then run from that backend checkout:
 
@@ -124,9 +124,9 @@ It does not compare newer patch metadata from a remote service.
 
 ## Assets
 
-The app icon, adaptive icon and favicon use the PostHog Desktop mobile host's logomark assets.
+The app icon, adaptive icon and favicon use the Flind Desktop mobile host's logomark assets.
 The iOS `app.icon` bundle uses the transparent color logomark from MobileHog and the
-monochrome logomark from PostHog Desktop for Clear and Tinted. Its Dark layer uses the white
+monochrome logomark from Flind Desktop for Clear and Tinted. Its Dark layer uses the white
 logomark from `@posthog/brand` on the official square canvas. With `rsvg-convert` installed,
 run `pnpm brand:generate icon` from `products/mobile` to refresh the production Dark layer.
 `splash-icon.png` is the gradient logomark from [brand.posthog.com](https://brand.posthog.com/logo),

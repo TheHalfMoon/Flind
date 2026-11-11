@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -288,7 +288,7 @@ export const getMetricsDashboardTemplatesRetrieveUrl = (projectId: string, id: s
 }
 
 /**
- * The metrics dashboard bank, for the PostHog staff review. The bank is instance-wide.
+ * The metrics dashboard bank, for the Flind staff review. The bank is instance-wide.
  */
 export const metricsDashboardTemplatesRetrieve = async (
     projectId: string,
@@ -360,7 +360,7 @@ export const getMetricsDashboardTemplatesPreviewCreateUrl = (projectId: string, 
 
 /**
  * The unlisted dashboard that shows the template with this project's data. Built when it does not exist.
- * Changes on it, by hand or with PostHog AI, become the template when it is approved.
+ * Changes on it, by hand or with Flind AI, become the template when it is approved.
  */
 export const metricsDashboardTemplatesPreviewCreate = async (
     projectId: string,

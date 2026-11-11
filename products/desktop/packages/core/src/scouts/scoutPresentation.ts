@@ -73,27 +73,27 @@ function warnedCopy(
       return {
         label: "Pausing soon",
         explanation:
-          "Nobody acted on its signals, so PostHog pauses this agent soon. Act on a signal, or exempt it from inactivity pauses, to keep it running.",
+          "Nobody acted on its signals, so Flind pauses this agent soon. Act on a signal, or exempt it from inactivity pauses, to keep it running.",
         willPause: true,
       };
     case "no_output":
       return {
         label: "Quiet",
         explanation:
-          "This agent has sent nothing lately, so PostHog flagged it for a look. Staying quiet never pauses an agent on its own.",
+          "This agent has sent nothing lately, so Flind flagged it for a look. Staying quiet never pauses an agent on its own.",
         willPause: false,
       };
     case "repeated_failures":
       return {
         label: "Pausing soon",
-        explanation: `PostHog pauses this agent soon because ${failureCountClause(failureCount)}. Fix the skill to keep it running.`,
+        explanation: `Flind pauses this agent soon because ${failureCountClause(failureCount)}. Fix the skill to keep it running.`,
         willPause: true,
       };
     default:
       return {
         label: "Pausing soon",
         explanation:
-          "PostHog is about to pause this agent. Exempt it from inactivity pauses to keep it running.",
+          "Flind is about to pause this agent. Exempt it from inactivity pauses to keep it running.",
         willPause: true,
       };
   }
@@ -105,15 +105,15 @@ function systemPausedExplanation(
 ): string {
   switch (reason) {
     case "ignored":
-      return "PostHog paused this agent because nobody acted on its signals. Switch it back on to resume. It can pause again if nobody acts on its signals. Enable Never pause for inactivity to prevent inactivity pauses.";
+      return "Flind paused this agent because nobody acted on its signals. Switch it back on to resume. It can pause again if nobody acts on its signals. Enable Never pause for inactivity to prevent inactivity pauses.";
     case "no_output":
-      return "PostHog paused this agent because it stopped sending signals. Switch it back on to resume.";
+      return "Flind paused this agent because it stopped sending signals. Switch it back on to resume.";
     case "repeated_failures":
       // The breaker keeps a half-open probe on this reason, so this one recovers
       // without anyone touching it. Say so, or the badge reads as terminal.
-      return `PostHog paused this agent because ${failureCountClause(failureCount)}. It retries about once a day and resumes when a run succeeds. Fix the skill, or switch it back on to retry now.`;
+      return `Flind paused this agent because ${failureCountClause(failureCount)}. It retries about once a day and resumes when a run succeeds. Fix the skill, or switch it back on to retry now.`;
     default:
-      return "PostHog paused this agent. Switch it back on to resume.";
+      return "Flind paused this agent. Switch it back on to resume.";
   }
 }
 
@@ -194,28 +194,28 @@ export function scoutHealthNotice(
     switch (lifecycle.reason) {
       case "ignored":
         return {
-          text: "PostHog paused this agent because nobody acted on its signals. Resume starts a new grace period. Enable Never pause for inactivity to prevent another inactivity pause.",
+          text: "Flind paused this agent because nobody acted on its signals. Resume starts a new grace period. Enable Never pause for inactivity to prevent another inactivity pause.",
           tone: "destructive",
           action: "resume",
           link: "output",
         };
       case "no_output":
         return {
-          text: "PostHog paused this agent because it stopped sending signals.",
+          text: "Flind paused this agent because it stopped sending signals.",
           tone: "destructive",
           action: "resume",
           link: "activity",
         };
       case "repeated_failures":
         return {
-          text: `PostHog paused this agent because ${failures}. It retries about once a day.`,
+          text: `Flind paused this agent because ${failures}. It retries about once a day.`,
           tone: "destructive",
           action: "resume",
           link: "activity",
         };
       default:
         return {
-          text: "PostHog paused this agent.",
+          text: "Flind paused this agent.",
           tone: "destructive",
           action: "resume",
           link: null,
@@ -227,7 +227,7 @@ export function scoutHealthNotice(
   switch (lifecycle.reason) {
     case "ignored":
       return {
-        text: "Nobody acted on its signals. PostHog pauses this agent soon.",
+        text: "Nobody acted on its signals. Flind pauses this agent soon.",
         tone: "warning",
         action: canExempt ? "keep_running" : null,
         link: "output",
@@ -241,14 +241,14 @@ export function scoutHealthNotice(
       };
     case "repeated_failures":
       return {
-        text: `${failures.charAt(0).toUpperCase()}${failures.slice(1)}. PostHog pauses this agent soon.`,
+        text: `${failures.charAt(0).toUpperCase()}${failures.slice(1)}. Flind pauses this agent soon.`,
         tone: "warning",
         action: null,
         link: "activity",
       };
     default:
       return {
-        text: "PostHog pauses this agent soon.",
+        text: "Flind pauses this agent soon.",
         tone: "warning",
         action: canExempt ? "keep_running" : null,
         link: null,
@@ -1109,7 +1109,7 @@ function attentionReason(
     case "repeated_failures":
       return `${failureCount > 1 ? `${failureCount} runs` : "Its runs"} in a row failed.`;
     default:
-      return "PostHog flagged it.";
+      return "Flind flagged it.";
   }
 }
 
@@ -1143,7 +1143,7 @@ export function listScoutsNeedingAttention(
       out.push({
         kind: "pausing_soon",
         config,
-        detail: `${attentionReason(lifecycle.reason, lifecycle.consecutiveFailureCount)} PostHog pauses it soon.`,
+        detail: `${attentionReason(lifecycle.reason, lifecycle.consecutiveFailureCount)} Flind pauses it soon.`,
       });
       continue;
     }
@@ -1160,7 +1160,7 @@ export function listScoutsNeedingAttention(
       out.push({
         kind: "failing",
         config,
-        detail: `${streak} runs in a row ${kind === "timed_out" ? "timed out" : "failed"}. PostHog pauses it after a few more.`,
+        detail: `${streak} runs in a row ${kind === "timed_out" ? "timed out" : "failed"}. Flind pauses it after a few more.`,
       });
     }
   }

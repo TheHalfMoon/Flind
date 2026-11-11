@@ -1813,9 +1813,9 @@ class TestNotifyAlert:
         )
         assert "boom. This can happen" in notification.body
         assert "boom.." not in notification.body
-        assert "when PostHog has a temporary problem" in notification.body
+        assert "when Flind has a temporary problem" in notification.body
         assert "Review the alert settings" in notification.body
-        assert "PostHog will try again on August 12, 2026 at 2:30 PM UTC" in notification.body
+        assert "Flind will try again on August 12, 2026 at 2:30 PM UTC" in notification.body
         assert "contact support" in notification.body
 
         refreshed = await sync_to_async(AlertCheck.objects.get)(pk=check.id)
@@ -1877,7 +1877,7 @@ class TestNotifyAlert:
         assert "there is nothing to change" not in notification.body
         assert "Review the alert settings" not in notification.body
         assert "settings need attention" not in notification.body
-        assert "PostHog will try again on August 12, 2026 at 2:30 PM UTC" in notification.body
+        assert "Flind will try again on August 12, 2026 at 2:30 PM UTC" in notification.body
 
     @pytest.mark.parametrize("message", [None, "", "   "])
     async def test_error_notification_uses_fallback_for_missing_reason(self, alert_with_user, message) -> None:

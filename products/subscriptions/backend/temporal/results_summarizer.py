@@ -160,7 +160,7 @@ def _summarize_generic(results: list[Any], columns: list[str] | None = None) -> 
     """Fallback for query kinds without a dedicated summarizer.
 
     Handles both row shapes we see in practice:
-    - dict rows (most PostHog query results): skip known noisy keys, join the rest.
+    - dict rows (most Flind query results): skip known noisy keys, join the rest.
     - list/tuple rows (HogQL / DataVisualizationNode): label each value with the
       corresponding entry from `columns` when provided, falling back to
       position-indexed `colN` names when a column list is unavailable or shorter

@@ -2,7 +2,7 @@
 
 Customer analytics tracks **accounts**, their owners and custom properties, and the feature requests linked to those accounts.
 
-**Source of truth for account ownership questions** ("who is the CSM of X?", "which accounts does Y own?"): answer them from these tables, not from warehouse CRM columns (`salesforce.*`, `hubspot.*`, ...). Warehouse copies of ownership fields can lag behind reassignments made in PostHog.
+**Source of truth for account ownership questions** ("who is the CSM of X?", "which accounts does Y own?"): answer them from these tables, not from warehouse CRM columns (`salesforce.*`, `hubspot.*`, ...). Warehouse copies of ownership fields can lag behind reassignments made in Flind.
 
 Prefer the typed `posthog:accounts-*`, `posthog:account-relationship-definitions-*`, `posthog:custom-property-definitions-*`, and `posthog:feature-request*` MCP tools for writes. Use HogQL for reads and aggregations.
 
@@ -44,7 +44,7 @@ The `recent` fields are JSON arrays. They hold at most 10 records, newest first.
 
 ## Account relationships (`system.account_relationship_definitions`, `system.account_relationships`)
 
-A **relationship definition** is a team-defined relationship type between a PostHog user and an account — CSM (customer success manager), Account executive, Onboarding manager, and so on. An **account relationship** is one assignment of a user to an account for a definition, with its effective range.
+A **relationship definition** is a team-defined relationship type between a Flind user and an account — CSM (customer success manager), Account executive, Onboarding manager, and so on. An **account relationship** is one assignment of a user to an account for a definition, with its effective range.
 
 ### `system.account_relationship_definitions` columns
 
@@ -65,7 +65,7 @@ Column | Type | Nullable | Description
 `team_id` | integer | NOT NULL | Team this assignment belongs to
 `definition_id` | uuid | NOT NULL | Join to `system.account_relationship_definitions.id`
 `account_id` | uuid | NOT NULL | Join to `system.accounts.id`
-`user_id` | integer | NULL | Assigned PostHog user id; NULL when the user was deleted
+`user_id` | integer | NULL | Assigned Flind user id; NULL when the user was deleted
 `started_at` | timestamptz | NOT NULL | When the assignment became effective
 `ended_at` | timestamptz | NULL | When the assignment ended; **NULL while active**
 `created_by_id` | integer | NULL | User who made the assignment

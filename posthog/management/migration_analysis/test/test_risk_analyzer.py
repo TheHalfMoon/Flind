@@ -1442,9 +1442,9 @@ class TestCreateModelOperations:
         assert len(migration_risk.policy_violations) == 0
 
     def test_create_model_with_autofield(self):
-        """CreateModel with AutoField violates UUID policy (for PostHog apps only)."""
+        """CreateModel with AutoField violates UUID policy (for Flind apps only)."""
         mock_migration = MagicMock()
-        mock_migration.app_label = "posthog"  # Use PostHog app to trigger policy
+        mock_migration.app_label = "posthog"  # Use Flind app to trigger policy
         mock_migration.name = "0001_test"
         mock_migration.operations = [
             create_mock_operation(
@@ -1465,9 +1465,9 @@ class TestCreateModelOperations:
         assert "AutoField" in migration_risk.policy_violations[0]
 
     def test_create_model_with_bigautofield(self):
-        """CreateModel with BigAutoField violates UUID policy (for PostHog apps only)."""
+        """CreateModel with BigAutoField violates UUID policy (for Flind apps only)."""
         mock_migration = MagicMock()
-        mock_migration.app_label = "posthog"  # Use PostHog app to trigger policy
+        mock_migration.app_label = "posthog"  # Use Flind app to trigger policy
         mock_migration.name = "0001_test"
         mock_migration.operations = [
             create_mock_operation(
@@ -2140,7 +2140,7 @@ class TestAtomicFalsePolicy:
 
         migration_risk = self.analyzer.analyze_migration(mock_migration, "some_third_party_app/migrations/0001_test.py")
 
-        # Should not have atomic-related warnings (not a PostHog app)
+        # Should not have atomic-related warnings (not a Flind app)
         assert not any("atomic=False" in v for v in migration_risk.policy_violations)
 
     def test_atomic_default_true_no_warning(self):
@@ -2208,7 +2208,7 @@ class TestAtomicFalsePolicy:
         ]
     )
     def test_posthog_helpers_recognized_as_concurrent(self, op_name):
-        """The PostHog helpers must register as concurrent ops in
+        """The Flind helpers must register as concurrent ops in
         CONCURRENT_OP_TYPES, otherwise atomic=False migrations using them
         would trip the `atomic=False without CONCURRENTLY` warning.
         """
@@ -2421,7 +2421,7 @@ class TestConcurrentIndexIdempotencyPolicy:
         ]
     )
     def test_posthog_helper_ops_pass_through(self, op_name):
-        """The PostHog migration helpers encode the idempotency guarantee internally
+        """The Flind migration helpers encode the idempotency guarantee internally
         (indisvalid recovery + IF [NOT] EXISTS + timeout disabling), so the static
         check must not flag them — even though they inherit from RunSQL and their
         display SQL contains a CONCURRENTLY index statement.

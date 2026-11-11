@@ -1,4 +1,4 @@
-"""The PostHog tables a check can be authored on, each with a deterministic id from its name."""
+"""The Flind tables a check can be authored on, each with a deterministic id from its name."""
 
 from collections.abc import Callable, Collection
 from uuid import NAMESPACE_URL, UUID, uuid5

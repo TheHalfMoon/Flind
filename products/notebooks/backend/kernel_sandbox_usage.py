@@ -36,8 +36,8 @@ def estimated_runtime_seconds(
     ttl_expires_at: datetime,
     sandbox_still_running: bool,
 ) -> float:
-    # The provider kills a sandbox at its TTL at the latest, whatever PostHog does. A sandbox that
-    # PostHog stopped tracking without destroying it keeps running until that deadline.
+    # The provider kills a sandbox at its TTL at the latest, whatever Flind does. A sandbox that
+    # Flind stopped tracking without destroying it keeps running until that deadline.
     end = ttl_expires_at if sandbox_still_running else min(ended_at, ttl_expires_at)
     return max((end - created_at).total_seconds(), 0.0)
 

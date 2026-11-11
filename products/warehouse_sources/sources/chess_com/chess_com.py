@@ -18,7 +18,7 @@ REQUEST_TIMEOUT_SECONDS = 30
 # Every username costs one request per month of history, sent one at a time.
 MAX_USERNAMES = 50
 # Chess.com asks every client to identify itself, and blocks clients that do not.
-HEADERS = {"User-Agent": "PostHog data warehouse (https://posthog.com)"}
+HEADERS = {"User-Agent": "Flind data warehouse (https://posthog.com)"}
 
 _USERNAME_RE = re.compile(r"^[A-Za-z0-9_-]{3,25}$")
 _ARCHIVE_MONTH_RE = re.compile(r"/games/(\d{4})/(\d{2})$")

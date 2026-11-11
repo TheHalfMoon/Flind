@@ -38,7 +38,7 @@ class TestReviewTeamRequest(BaseTest):
             team=self.team,
             kind="github",
             integration_id=_INSTALLATION_ID,
-            config={"installation_id": _INSTALLATION_ID, "account": {"name": "PostHog"}},
+            config={"installation_id": _INSTALLATION_ID, "account": {"name": "Flind"}},
             created_by=self.user,
         )
         ReviewInstallationClaim.objects.for_team(self.team.id).create(
@@ -79,8 +79,8 @@ class TestReviewTeamRequest(BaseTest):
     @parameterized.expand(
         [
             ("no_write_access", "You need write access to this repository"),
-            ("unlinked", "isn't linked to a PostHog account"),
-            ("already_reviewed", "PostHog Review already reviewed the current commit."),
+            ("unlinked", "isn't linked to a Flind account"),
+            ("already_reviewed", "Flind Review already reviewed the current commit."),
         ]
     )
     def test_a_request_that_starts_no_review_answers_and_clears_the_request(

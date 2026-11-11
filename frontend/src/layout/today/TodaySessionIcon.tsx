@@ -5,8 +5,8 @@ import { TodaySessionStatusDot } from './TodaySessionStatusDot'
 import { TodayWorkItem } from './todayWorkItems'
 
 /**
- * The one icon for a PostHog AI session or chat, wherever it shows: a chat bubble for a chat, and for a session
- * the status dot from PostHog Desktop's task rows.
+ * The one icon for a Flind AI session or chat, wherever it shows: a chat bubble for a chat, and for a session
+ * the status dot from Flind Desktop's task rows.
  */
 export function TodaySessionIcon({
     item,

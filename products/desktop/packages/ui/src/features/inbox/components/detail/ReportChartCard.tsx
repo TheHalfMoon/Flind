@@ -320,7 +320,7 @@ function ReportChartCard({
           ? {
               kind: "error",
               message:
-                "Couldn't run the query behind this chart. Open it in PostHog to investigate.",
+                "Couldn't run the query behind this chart. Open it in Flind to investigate.",
             }
           : { kind: "data", data: query.data };
 

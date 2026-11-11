@@ -154,7 +154,7 @@ def get_teams_app_id() -> str | None:
 def _allowed_jwks_uri(jwks_uri: str) -> str | None:
     """The URI, once it passes the SSRF allowlist, or None when it does not.
 
-    The value comes out of a document Microsoft serves rather than out of PostHog's own
+    The value comes out of a document Microsoft serves rather than out of Flind's own
     configuration, so it is checked before anything fetches it, the same way
     ``posthog/api/id_jag.py`` checks the JWKS URI it discovers.
     """

@@ -50,7 +50,7 @@ class FrontSource(ResumableSource[FrontSourceConfig, FrontResumeConfig]):
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Front",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Front API token to sync your Front data into the PostHog Data warehouse.
+            caption="""Enter your Front API token to sync your Front data into the Flind Data warehouse.
 
 You can create an API token in your [Front settings](https://app.frontapp.com/settings/tools/api) under **Developers > API tokens**.
 

@@ -534,7 +534,7 @@ EMIT_SKIP_REMEDIATION: dict[str, str | None] = {
     ),
     "ai_processing_not_approved": (
         "This organization has not approved AI data processing, so no scout finding can reach the "
-        "inbox. An org admin must turn on the 'Enable PostHog features that use third-party AI "
+        "inbox. An org admin must turn on the 'Enable Flind features that use third-party AI "
         "services' toggle in Organization settings → AI service providers."
     ),
     "source_disabled": (

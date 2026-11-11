@@ -10,7 +10,7 @@ These tests should verify that the API works as intended.
    cp .env.test.example .env.test
    ```
 
-   Edit `.env.test` and set an api token and base url for your local PostHog instance
+   Edit `.env.test` and set an api token and base url for your local Flind instance
 
 ## Running Tests
 

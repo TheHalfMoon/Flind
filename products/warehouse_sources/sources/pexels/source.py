@@ -47,7 +47,7 @@ class PexelsSource(ResumableSource[PexelsSourceConfig, PexelsResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Pexels",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Pexels API key to pull Pexels stock photo and video catalog data into the PostHog Data warehouse.
+            caption="""Enter your Pexels API key to pull Pexels stock photo and video catalog data into the Flind Data warehouse.
 
 Generate an API key from your [Pexels API dashboard](https://www.pexels.com/api/).
 

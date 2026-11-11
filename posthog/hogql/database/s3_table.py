@@ -306,7 +306,7 @@ def build_function_call(
 
     if _reads_brotli_files(url):
         raise ExposedHogQLError(
-            "PostHog can't read Brotli-compressed (.br) files. Compress the files with gzip or zstd instead."
+            "Flind can't read Brotli-compressed (.br) files. Compress the files with gzip or zstd instead."
         )
 
     if is_azure_blob_url(url):

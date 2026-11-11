@@ -161,7 +161,7 @@ describe('url utils', () => {
         })
 
         it('preserves percent-encoded characters in nested query params', () => {
-            // e.g. docs "Run in PostHog" links: ?next=/sql?open_query=SELECT%0A... — decoding
+            // e.g. docs "Run in Flind" links: ?next=/sql?open_query=SELECT%0A... — decoding
             // again would turn %0A into a raw newline that new URL() strips, corrupting the SQL
             expect(getRelativeNextPath('/sql?open_query=SELECT%0A++properties.%24mcp+AS+tool', location)).toBe(
                 '/sql?open_query=SELECT%0A++properties.%24mcp+AS+tool'

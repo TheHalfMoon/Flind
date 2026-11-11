@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -17,7 +17,7 @@ export const stamphogRepoConfigsCreateBodyRoutingForkLabelsMaxOne = 50
 export const StamphogRepoConfigsCreateBody = /* @__PURE__ */ zod
     .object({
         provider: zod.string().optional().describe("SCM provider this config talks to. Defaults to 'github'."),
-        repository: zod.string().describe("Repository full name, e.g. 'PostHog\/posthog'."),
+        repository: zod.string().describe("Repository full name, e.g. 'Flind\/posthog'."),
         enabled: zod.boolean().optional().describe('Whether stamphog actively reviews pull requests for this repo.'),
         digest_enabled: zod
             .boolean()
@@ -60,7 +60,7 @@ export const stamphogRepoConfigsUpdateBodyRoutingForkLabelsMaxOne = 50
 export const StamphogRepoConfigsUpdateBody = /* @__PURE__ */ zod
     .object({
         provider: zod.string().optional().describe("SCM provider this config talks to. Defaults to 'github'."),
-        repository: zod.string().describe("Repository full name, e.g. 'PostHog\/posthog'."),
+        repository: zod.string().describe("Repository full name, e.g. 'Flind\/posthog'."),
         enabled: zod.boolean().optional().describe('Whether stamphog actively reviews pull requests for this repo.'),
         digest_enabled: zod
             .boolean()
@@ -103,7 +103,7 @@ export const stamphogRepoConfigsPartialUpdateBodyRoutingForkLabelsMaxOne = 50
 export const StamphogRepoConfigsPartialUpdateBody = /* @__PURE__ */ zod
     .object({
         provider: zod.string().optional().describe("SCM provider this config talks to. Defaults to 'github'."),
-        repository: zod.string().optional().describe("Repository full name, e.g. 'PostHog\/posthog'."),
+        repository: zod.string().optional().describe("Repository full name, e.g. 'Flind\/posthog'."),
         enabled: zod.boolean().optional().describe('Whether stamphog actively reviews pull requests for this repo.'),
         digest_enabled: zod
             .boolean()
@@ -146,7 +146,7 @@ export const StamphogRepoConfigsAddRepositoryCreateBody = /* @__PURE__ */ zod
         repository: zod
             .string()
             .describe(
-                "Repository full name, e.g. 'PostHog\/posthog'. It must be in one of the project's connected GitHub installations, as available_repositories lists them. A repository the project already has is turned back on."
+                "Repository full name, e.g. 'Flind\/posthog'. It must be in one of the project's connected GitHub installations, as available_repositories lists them. A repository the project already has is turned back on."
             ),
     })
     .describe('Request body for turning reviews on for a repository from a connected installation.')
@@ -188,7 +188,7 @@ export const StamphogReviewRunsCreateBody = /* @__PURE__ */ zod
         repository: zod
             .string()
             .describe(
-                "Full name of the GitHub repository, e.g. 'PostHog\/posthog'. It must be connected and enabled in Stamphog."
+                "Full name of the GitHub repository, e.g. 'Flind\/posthog'. It must be connected and enabled in Stamphog."
             ),
         pr_number: zod.number().min(1).describe('Pull request number on GitHub.'),
     })

@@ -57,10 +57,10 @@ from products.warehouse_sources.backend.types import ExternalDataSourceType
 # embed OAuth tokens, ids, or an HTML error body, so we capture it for debugging and show generic
 # guidance instead of surfacing `str(e)` to the user.
 _LOAD_CONNECTION_ERROR = (
-    "PostHog couldn't load your Google Search Console connection. Please reconnect your Google account and try again."
+    "Flind couldn't load your Google Search Console connection. Please reconnect your Google account and try again."
 )
 _LIST_SITES_ERROR = (
-    "PostHog couldn't reach Google Search Console to list your properties. Please try again in a few minutes."
+    "Flind couldn't reach Google Search Console to list your properties. Please try again in a few minutes."
 )
 
 # Listing properties fails three ways that need three different next steps, and Google reports the
@@ -116,7 +116,7 @@ class GoogleSearchConsoleSource(
     def get_non_retryable_errors(self) -> dict[str, str | None]:
         return {
             "401 Client Error": "Your Google Search Console connection is invalid or expired. Please reconnect your account.",
-            "403 Client Error": "PostHog is not authorized to read this Search Console property. Please make sure the connected Google account has access to the property.",
+            "403 Client Error": "Flind is not authorized to read this Search Console property. Please make sure the connected Google account has access to the property.",
             "ACCESS_TOKEN_SCOPE_INSUFFICIENT": "Insufficient permissions. Please reconnect your Google Search Console account with the required scopes.",
             # `Integration.DoesNotExist` is raised by `_get_integration` when the source config still
             # references an OAuth integration row that has since been deleted (account disconnected).
@@ -329,7 +329,7 @@ class GoogleSearchConsoleSource(
             # users, so guide them to reconnect.
             return (
                 False,
-                "PostHog could not authenticate with Google Search Console. Your connection may have "
+                "Flind could not authenticate with Google Search Console. Your connection may have "
                 "expired or is missing the required permissions. Please reconnect your Google account "
                 "and grant access to Search Console.",
             )

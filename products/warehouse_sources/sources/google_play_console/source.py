@@ -80,7 +80,7 @@ class GooglePlayConsoleSource(ResumableSource[GooglePlayConsoleSourceConfig, Goo
             # so retrying replays the identical rejection until the activity budget runs out.
             "400 Client Error": (
                 "Google rejected a Play Console report query as invalid. "
-                "Contact PostHog support if this happens again on the next sync."
+                "Contact Flind support if this happens again on the next sync."
             ),
             "401 Client Error": "Google rejected the service account credentials. Please upload a current JSON key file.",
             "403 Client Error": (

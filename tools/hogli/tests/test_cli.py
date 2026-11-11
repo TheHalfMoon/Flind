@@ -70,7 +70,7 @@ class TestQuickstartCommand:
         """Verify quickstart command displays getting started info."""
         result = runner.invoke(cli, ["quickstart"])
         assert result.exit_code == 0
-        assert "PostHog Development Quickstart" in result.output
+        assert "Flind Development Quickstart" in result.output
         assert "hogli" in result.output
         assert "hogli start -d" not in result.output
 
@@ -243,8 +243,8 @@ class TestApplyEnvConfig:
     """End-to-end behavior of _apply_env_config against mocked manifest config.
 
     Patches `get_manifest` so each test can declare its own env_files /
-    secrets_config and we don't depend on PostHog's hogli.yaml. The mocked
-    manifest also keeps existing PostHog tests in the same file unaffected.
+    secrets_config and we don't depend on Flind's hogli.yaml. The mocked
+    manifest also keeps existing Flind tests in the same file unaffected.
     """
 
     def _make_manifest(

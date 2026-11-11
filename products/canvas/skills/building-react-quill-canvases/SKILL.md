@@ -1,11 +1,11 @@
 ---
 name: building-react-quill-canvases
 description: >
-  Author the React + Quill implementation of a PostHog canvas: the single-component contract, the
-  allowed imports, Quill (PostHog's design system) component and composition rules, theme-aware
+  Author the React + Quill implementation of a Flind canvas: the single-component contract, the
+  allowed imports, Quill (Flind's design system) component and composition rules, theme-aware
   design tokens, loading skeletons, and the in-canvas date picker. Use after building-canvases has
   routed a canvas request to a React implementation — dashboards, data boards, forms, tools, or any
-  canvas that should look native to PostHog.
+  canvas that should look native to Flind.
 ---
 
 # Building React + Quill canvases
@@ -26,7 +26,7 @@ Use React, Quill, Recharts, Lucide, and Day.js for the standard application shel
 also admits ten optional libraries for specialized work. Read
 [references/platform-libraries.md](references/platform-libraries.md) before choosing one.
 
-PostHog data comes through `import { ph } from "@posthog/canvas-sdk"` — a platform-provided
+Flind data comes through `import { ph } from "@posthog/canvas-sdk"` — a platform-provided
 module, so it needs no `dependencies` entry. The same object exists as the `window.ph` global
 (how existing canvases reach it); prefer the import in new code.
 
@@ -38,7 +38,7 @@ origins are allowed; remote scripts remain blocked, so bundle code with the canv
 
 ## Quill component rules
 
-A PostHog data board must be built entirely from `@flind/quill` components — never a native
+A Flind data board must be built entirely from `@flind/quill` components — never a native
 control or a styled `<div>` standing in for one:
 
 - Dropdown/picker → `Select` (never a native `<select>`); button → `Button` (never `<button>`);
@@ -69,7 +69,7 @@ control or a styled `<div>` standing in for one:
 - Style with Tailwind utilities and Quill components; reserve inline `style` for genuinely dynamic
   runtime values (fixed sizes use arbitrary-value utilities like `h-[280px]`).
 - Write specific interface copy. Never use lorem ipsum or placeholder labels in a finished canvas.
-- The canvas follows the user's PostHog theme; a `.dark` class on the document root flips at runtime.
+- The canvas follows the user's Flind theme; a `.dark` class on the document root flips at runtime.
   Color only from the design-token utilities — surfaces `bg-background bg-card bg-muted bg-primary
 bg-success bg-warning bg-info bg-destructive`; text `text-foreground text-muted-foreground
 text-card-foreground`; borders `border-border`. Never a hardcoded hex or light-only color.
@@ -121,14 +121,14 @@ Treat these as starting shapes and adapt them to the request and available data.
 
 ### Product dashboard
 
-- Build a live board from verified PostHog data, never a static mockup.
+- Build a live board from verified Flind data, never a static mockup.
 - Start with a `Heading`, then a responsive grid of compact `Card` KPIs, trend charts, and useful
   breakdown tables.
 - Show a `Badge` delta for KPIs when a meaningful comparison period exists.
 - Use a `LineChart` for time series and a `BarChart` for discrete categories. Do not turn every
   result into a table.
 - Give every KPI, chart, and table its own loading, empty, and error state.
-- Make every figure verifiable: an insight-backed card gets a "View in PostHog" affordance opening
+- Make every figure verifiable: an insight-backed card gets a "View in Flind" affordance opening
   its saved insight (`ph.openExternal` with a URL minted by `generate-app-url`); an ad-hoc
   `ph.query` card gets a "View query" `Dialog` or `Collapsible` showing the exact query that ran —
   see "Verifiability" in `querying-canvas-data`.
@@ -173,10 +173,10 @@ when the window changes — see the `querying-canvas-data` skill for feeding it 
 
 ## State and actions
 
-Persisting values across reloads (`ph.state`, with user/shared scopes) and writing into PostHog
+Persisting values across reloads (`ph.state`, with user/shared scopes) and writing into Flind
 from a button (`ph.actions.invoke`, e.g. filing a task or an annotation, or `ph.tools.call`, e.g.
 changing a feature flag rollout) have their own API contracts, capability declarations, and
-gesture rules — read the "Runtime memory", "PostHog writes" and "PostHog MCP tools" sections of
+gesture rules — read the "Runtime memory", "Flind writes" and "Flind MCP tools" sections of
 the `querying-canvas-data` skill before using them. Wire actions to a
 `Button` `onClick` that disables itself while the call is in flight, and render the returned
-error (they are real PostHog writes, throttled server-side).
+error (they are real Flind writes, throttled server-side).

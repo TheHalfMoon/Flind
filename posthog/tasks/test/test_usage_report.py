@@ -2048,7 +2048,7 @@ class TestFeatureFlagsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickh
         return super().setUp()
 
     def _setup_teams(self) -> None:
-        self.analytics_org = Organization.objects.create(name="PostHog")
+        self.analytics_org = Organization.objects.create(name="Flind")
         self.org_1 = Organization.objects.create(name="Org 1")
         self.org_2 = Organization.objects.create(name="Org 2")
 
@@ -2324,7 +2324,7 @@ class TestSurveysUsageReport(ClickhouseDestroyTablesMixin, TestCase, ClickhouseT
         return super().setUp()
 
     def _setup_teams(self) -> None:
-        self.analytics_org = Organization.objects.create(name="PostHog")
+        self.analytics_org = Organization.objects.create(name="Flind")
         self.org_1 = Organization.objects.create(name="Org 1")
         self.org_2 = Organization.objects.create(name="Org 2")
 
@@ -2607,7 +2607,7 @@ class TestExternalDataSyncUsageReport(ClickhouseDestroyTablesMixin, TestCase, Cl
         return super().setUp()
 
     def _setup_teams(self) -> None:
-        self.analytics_org = Organization.objects.create(name="PostHog")
+        self.analytics_org = Organization.objects.create(name="Flind")
         self.org_1 = Organization.objects.create(name="Org 1")
         self.org_2 = Organization.objects.create(name="Org 2")
 
@@ -3260,7 +3260,7 @@ class TestDWHStorageUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhou
         return super().setUp()
 
     def _setup_teams(self) -> None:
-        self.analytics_org = Organization.objects.create(name="PostHog")
+        self.analytics_org = Organization.objects.create(name="Flind")
         self.org_1 = Organization.objects.create(name="Org 1")
         self.org_2 = Organization.objects.create(name="Org 2")
 
@@ -4101,7 +4101,7 @@ class TestErrorTrackingUsageReport(ClickhouseDestroyTablesMixin, TestCase, Click
         return super().setUp()
 
     def _setup_teams(self) -> None:
-        self.analytics_org = Organization.objects.create(name="PostHog")
+        self.analytics_org = Organization.objects.create(name="Flind")
         self.org_1 = Organization.objects.create(name="Org 1")
         self.org_2 = Organization.objects.create(name="Org 2")
 
@@ -4324,7 +4324,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
         mock_region.return_value = "US"
         self._setup_teams()
         # Create analytics team (team_id=2 for billing)
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -4385,7 +4385,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
         mock_region.return_value = "US"
         self._setup_teams()
         # Create analytics team (team_id=2 for billing)
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -4443,7 +4443,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
         mock_region.return_value = "US"
         self._setup_teams()
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -4503,7 +4503,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
         mock_region.return_value = "US"
         self._setup_teams()
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -4563,7 +4563,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
         mock_region.return_value = "US"
         self._setup_teams()
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -4630,7 +4630,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
         mock_region.return_value = "US"
         self._setup_teams()
         # Create analytics team (team_id=2 for billing)
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -4696,7 +4696,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
         mock_region.return_value = "US"
         self._setup_teams()
         # Create analytics team (team_id=2 for billing)
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -4770,7 +4770,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
         mock_region.return_value = "US"
         self._setup_teams()
         # Create analytics team (team_id=2 for billing)
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -4869,7 +4869,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
         mock_region.return_value = "US"
         self._setup_teams()
         # Create analytics team (team_id=2 for billing)
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -4956,7 +4956,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
         self._setup_teams()
         # Create analytics team for US (team_id=2)
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team_us = Team.objects.create(pk=2, organization=analytics_org, name="Analytics US")
 
         period = get_previous_day(at=now() + relativedelta(days=1))
@@ -5046,7 +5046,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
         self._setup_teams()
         # Create analytics team for EU (team_id=1)
-        analytics_org = Organization.objects.create(name="PostHog Analytics EU")
+        analytics_org = Organization.objects.create(name="Flind Analytics EU")
         analytics_team_eu = Team.objects.create(pk=1, organization=analytics_org, name="Analytics EU")
 
         period = get_previous_day(at=now() + relativedelta(days=1))
@@ -5125,12 +5125,12 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
     @patch("posthog.tasks.usage_report.get_instance_region")
     def test_signals_ai_product_excluded_from_ai_credits(self, mock_region: MagicMock) -> None:
-        """Generations tagged ai_product='signals' must not count toward PostHog AI credits."""
+        """Generations tagged ai_product='signals' must not count toward Flind AI credits."""
         from posthog.tasks.usage_report import get_teams_with_ai_credits_used_in_period
 
         mock_region.return_value = "US"
         self._setup_teams()
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -5165,7 +5165,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
         mock_region.return_value = "US"
         self._setup_teams()
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -5299,7 +5299,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
         mock_region.return_value = "US"
         self._setup_teams()
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -5344,7 +5344,7 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
         mock_region.return_value = "US"
         self._setup_teams()
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -5375,18 +5375,18 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
     @patch("posthog.tasks.usage_report.get_instance_region")
     def test_posthog_code_ai_product_excluded_from_ai_credits(self, mock_region: MagicMock) -> None:
-        """Generations tagged ai_product='posthog_code' must not count toward PostHog AI credits."""
+        """Generations tagged ai_product='posthog_code' must not count toward Flind AI credits."""
         from posthog.tasks.usage_report import get_teams_with_ai_credits_used_in_period
 
         mock_region.return_value = "US"
         self._setup_teams()
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
         period = get_previous_day(at=now() + relativedelta(days=1))
 
-        # Billable generation tagged as posthog_code — should be excluded from PostHog AI credits.
+        # Billable generation tagged as posthog_code — should be excluded from Flind AI credits.
         _create_event(
             event="$ai_generation",
             team=analytics_team,
@@ -5415,13 +5415,13 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
 
         mock_region.return_value = "US"
         self._setup_teams()
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
         period = get_previous_day(at=now() + relativedelta(days=1))
 
-        # PostHog Desktop event — should appear only in posthog_code credits
+        # Flind Desktop event — should appear only in posthog_code credits
         _create_event(
             event="$ai_generation",
             team=analytics_team,
@@ -5504,14 +5504,14 @@ class TestAIEventsUsageReport(ClickhouseDestroyTablesMixin, TestCase, Clickhouse
     ) -> None:
         """A traceless posthog_code generation bills via the empty-trace fallback only when billable.
 
-        PostHog Desktop never emits a matching $ai_trace event, so the LEFT JOIN never matches and the
+        Flind Desktop never emits a matching $ai_trace event, so the LEFT JOIN never matches and the
         empty-trace fallback is what makes posthog_code billable at all — but only for $ai_billable=true.
         """
         from posthog.tasks.usage_report import get_teams_with_posthog_code_credits_used_in_period
 
         mock_region.return_value = "US"
         self._setup_teams()
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         analytics_team = Team.objects.create(pk=2, organization=analytics_org, name="Analytics")
         self._setup_instance_group_mapping(analytics_team)
 
@@ -6324,7 +6324,7 @@ class TestQuerySplitting(ClickhouseDestroyTablesMixin, ClickhouseTestMixin, Test
         # Create analytics team for AI credits tests (team 2 for US region). The explicit
         # pk doesn't advance the id sequence, so bump it past the max to keep the auto-pk
         # team below from being handed id 2 and colliding.
-        analytics_org = Organization.objects.create(name="PostHog Analytics")
+        analytics_org = Organization.objects.create(name="Flind Analytics")
         self.analytics_team = Team.objects.create(id=2, organization=analytics_org, name="Analytics")
         with connection.cursor() as cursor:
             cursor.execute(

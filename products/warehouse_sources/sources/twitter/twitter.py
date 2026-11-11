@@ -132,7 +132,7 @@ def validate_credentials(bearer_token: str, username: str) -> tuple[bool, str | 
             "Your X developer project has run out of API credits. Add credits in the X developer portal, then try again.",
         )
     if response.status_code == 429 or response.status_code >= 500:
-        return False, "PostHog couldn't reach X to check your handle. Try again in a few minutes."
+        return False, "Flind couldn't reach X to check your handle. Try again in a few minutes."
     if response.status_code != 200:
         return False, "X couldn't look up that handle. Check the handle and bearer token, then try again."
 

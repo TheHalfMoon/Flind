@@ -211,7 +211,7 @@ export class TemporalService {
         // Self-hosted runs with NODE_ENV=production and no TEMPORAL_SECRET_KEY, so only Cloud fails closed.
         if (isCloud() && !config.TEMPORAL_SECRET_KEY) {
             throw new Error(
-                'TEMPORAL_SECRET_KEY is required on PostHog Cloud. Without it, evaluation workflow payloads reach Temporal unencrypted.'
+                'TEMPORAL_SECRET_KEY is required on Flind Cloud. Without it, evaluation workflow payloads reach Temporal unencrypted.'
             )
         }
     }

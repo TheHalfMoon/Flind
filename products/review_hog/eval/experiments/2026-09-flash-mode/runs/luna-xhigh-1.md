@@ -63,14 +63,14 @@
 
 ### [✅ VALID] must_fix · security — products/stamphog/backend/tasks/tasks.py:124-127,169-177
 
-**Restrict the webhook carve-out to the PostHog Code bot**
+**Restrict the webhook carve-out to the Flind Code bot**
 
 _perspective: review-hog-perspective-contracts-security · directly-related: True_
 
 - **Problem:** \_is_bot_authored returns true for every GitHub Bot and for any login containing [bot]. The inbox carve-out uses this result before it skips the author write-permission gate. A linked Dependabot, Renovate, or other bot PR can therefore receive the self-driving approval path. The code comments claim that these bots remain refused, but the predicate does not enforce that rule.
-- **Suggestion:** Keep the generic predicate for the normal skip path. Add a separate predicate for inbox reviews that requires type == Bot and the configured PostHog Code bot login, using a case-insensitive comparison. Fail closed when that identity is not configured.
+- **Suggestion:** Keep the generic predicate for the normal skip path. Add a separate predicate for inbox reviews that requires type == Bot and the configured Flind Code bot login, using a case-insensitive comparison. Fail closed when that identity is not configured.
 - **Validator:** - **Checked:** Traced `_inbox_rereview_carve_out`, `find_signal_implementation_run`, and the webhook caller.
-- **Found:** `products/stamphog/backend/tasks/tasks.py:124-127` accepts every GitHub Bot. The carve-out at `products/stamphog/backend/tasks/tasks.py:169-215` never compares the author login with a PostHog Code identity.
+- **Found:** `products/stamphog/backend/tasks/tasks.py:124-127` accepts every GitHub Bot. The carve-out at `products/stamphog/backend/tasks/tasks.py:169-215` never compares the author login with a Flind Code identity.
 - **Found:** `products/tasks/backend/facade/api.py:484-516` verifies only team scope, repository linkage, and a signal report. `products/tasks/backend/webhooks.py:36-78` matches by `output.pr_url` or repository and branch. Task controllers can write `output.pr_url` through `products/tasks/backend/facade/api.py:2139-2154`.
 - **Found:** A matched carve-out bypasses review-mode and author-permission checks at `products/stamphog/backend/tasks/tasks.py:941-969`. It sets `self_driving_review` at `products/stamphog/backend/temporal/activities.py:448-451`, which lets bot and draft PRs pass the engine gates at `tools/pr-approval-agent/review_local.py:321-330` and `tools/pr-approval-agent/review_pr.py:584-591`.
 - **Impact:** Task linkage does not prove the PR author identity. A non-PostHog bot PR that reaches this linkage can receive an automated approval without the normal author-trust gate. This is a real authorization gap that can affect branch protection and should be fixed.
@@ -184,7 +184,7 @@ _perspective: review-hog-blind-spots-general · directly-related: True_
 _perspective: review-hog-perspective-contracts-security · directly-related: True_
 
 - **Problem:** This task treats its Celery arguments as proof that the PR came from the linked Signals task. It does not load task_run_id, verify signal_report_id or team ownership, or validate the fetched PR's author and head repository. A user with task write access can set output.pr_url to another open PR in a connected repository. The task then sets inbox_review, which enables self_driving_review and bypasses normal author checks. This can create an approval for unrelated code.
-- **Suggestion:** Resolve task_run_id through a team-scoped task lookup before creating a run. Require the task, signal report, canonical PR URL, and head branch to match. Validate the fetched PR's number, exact PostHog Code bot identity, and head.repo.full_name against repo_config.repository. Set inbox_review only after all checks pass.
+- **Suggestion:** Resolve task_run_id through a team-scoped task lookup before creating a run. Require the task, signal report, canonical PR URL, and head branch to match. Validate the fetched PR's number, exact Flind Code bot identity, and head.repo.full_name against repo_config.repository. Set inbox_review only after all checks pass.
 - **Validator:** - **Checked:** Traced the ReviewHog receiver, the Stamphog facade dispatch, `process_inbox_pr_review`, and the task-run output write endpoint.
 - **Found:** `products/review_hog/backend/receivers.py:126-138` forwards `pr_url`, `signal_report_id`, and `task_run_id` directly to `queue_inbox_pr_review`. `products/stamphog/backend/facade/api.py:128-155` forwards those values to Celery without resolving the task or report.
 - **Found:** `products/stamphog/backend/tasks/tasks.py:1110-1128` documents the arguments as trusted provenance. The worker checks only that the config exists, the fetched PR is open, and the fetched head has a SHA at `products/stamphog/backend/tasks/tasks.py:1140-1174`. It then stamps the supplied values into `inbox_review` at `products/stamphog/backend/tasks/tasks.py:1176-1180` and creates the run at `products/stamphog/backend/tasks/tasks.py:1222-1230`.

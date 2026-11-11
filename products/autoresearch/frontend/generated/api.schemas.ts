@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -217,7 +217,7 @@ export interface AutoresearchPipelineApi {
     /** Optional free-text description. */
     description?: string
     /**
-     * PostHog event name to predict, e.g. '$pageview' or 'signed_up'.
+     * Flind event name to predict, e.g. '$pageview' or 'signed_up'.
      * @maxLength 255
      */
     target_event: string
@@ -394,7 +394,7 @@ export interface PaginatedAutoresearchPipelineListApi {
 }
 
 /**
- * Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted.
+ * Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a Flind action. No other shapes are accepted.
  */
 export type AutoresearchPipelineCreateApiTargetDefinition =
     | {
@@ -428,11 +428,11 @@ export interface AutoresearchPipelineCreateApi {
     /** Optional free-text description. */
     description?: string
     /**
-     * PostHog event name to predict, e.g. '$pageview' or 'signed_up'. Omit when predicting an action target (pass target_definition instead).
+     * Flind event name to predict, e.g. '$pageview' or 'signed_up'. Omit when predicting an action target (pass target_definition instead).
      * @maxLength 255
      */
     target_event?: string
-    /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted. */
+    /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a Flind action. No other shapes are accepted. */
     target_definition?: AutoresearchPipelineCreateApiTargetDefinition
     /**
      * Prediction horizon in days (1-365). The model predicts whether the target event occurs within this window.
@@ -477,7 +477,7 @@ export interface AutoresearchPipelineCreateApi {
      * * `90` - 90 */
     research_interval_days?: ResearchIntervalDaysEnumApi | null
     /**
-     * Model the training agent runs on, a model id from the PostHog Tasks catalogue such as 'claude-opus-5-5', 'claude-sonnet-5-5' or 'gpt-6.1-sol'. Null or omitted uses the autoresearch default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it.
+     * Model the training agent runs on, a model id from the Flind Tasks catalogue such as 'claude-opus-5-5', 'claude-sonnet-5-5' or 'gpt-6.1-sol'. Null or omitted uses the autoresearch default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it.
      * @maxLength 100
      * @nullable
      */
@@ -502,7 +502,7 @@ export interface AutoresearchPipelineCreateApi {
      */
     plateau_iterations?: number
     /**
-     * Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines.
+     * Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for Flind's own properties); must be unique among this project's non-archived pipelines.
      * @maxLength 255
      */
     output_person_property?: string
@@ -1611,7 +1611,7 @@ export interface TrainingRunHistoryApi {
 }
 
 /**
- * Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted.
+ * Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a Flind action. No other shapes are accepted.
  */
 export type PatchedAutoresearchPipelineCreateApiTargetDefinition =
     | {
@@ -1645,11 +1645,11 @@ export interface PatchedAutoresearchPipelineCreateApi {
     /** Optional free-text description. */
     description?: string
     /**
-     * PostHog event name to predict, e.g. '$pageview' or 'signed_up'. Omit when predicting an action target (pass target_definition instead).
+     * Flind event name to predict, e.g. '$pageview' or 'signed_up'. Omit when predicting an action target (pass target_definition instead).
      * @maxLength 255
      */
     target_event?: string
-    /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted. */
+    /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a Flind action. No other shapes are accepted. */
     target_definition?: PatchedAutoresearchPipelineCreateApiTargetDefinition
     /**
      * Prediction horizon in days (1-365). The model predicts whether the target event occurs within this window.
@@ -1694,7 +1694,7 @@ export interface PatchedAutoresearchPipelineCreateApi {
      * * `90` - 90 */
     research_interval_days?: ResearchIntervalDaysEnumApi | null
     /**
-     * Model the training agent runs on, a model id from the PostHog Tasks catalogue such as 'claude-opus-5-5', 'claude-sonnet-5-5' or 'gpt-6.1-sol'. Null or omitted uses the autoresearch default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it.
+     * Model the training agent runs on, a model id from the Flind Tasks catalogue such as 'claude-opus-5-5', 'claude-sonnet-5-5' or 'gpt-6.1-sol'. Null or omitted uses the autoresearch default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it.
      * @maxLength 100
      * @nullable
      */
@@ -1719,7 +1719,7 @@ export interface PatchedAutoresearchPipelineCreateApi {
      */
     plateau_iterations?: number
     /**
-     * Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines.
+     * Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for Flind's own properties); must be unique among this project's non-archived pipelines.
      * @maxLength 255
      */
     output_person_property?: string
@@ -2098,7 +2098,7 @@ export interface TemplateInfoApi {
 }
 
 /**
- * Optional target definition. Pass {"type": "action", "action_id": N} to predict a PostHog action (multi-step / property / autocapture matcher) instead of a single event.
+ * Optional target definition. Pass {"type": "action", "action_id": N} to predict a Flind action (multi-step / property / autocapture matcher) instead of a single event.
  */
 export type ValidatePipelineRequestApiTargetDefinition =
     | {
@@ -2126,7 +2126,7 @@ export type ValidatePipelineRequestApiInferencePopulation = { [key: string]: unk
 export interface ValidatePipelineRequestApi {
     /** Event name to predict, e.g. '$pageview'. Must exist in the team's event schema. Omit when predicting an action target (pass target_definition instead). */
     target_event?: string
-    /** Optional target definition. Pass {"type": "action", "action_id": N} to predict a PostHog action (multi-step / property / autocapture matcher) instead of a single event. */
+    /** Optional target definition. Pass {"type": "action", "action_id": N} to predict a Flind action (multi-step / property / autocapture matcher) instead of a single event. */
     target_definition?: ValidatePipelineRequestApiTargetDefinition
     /**
      * Predict whether the target event occurs within this many days.

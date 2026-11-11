@@ -40,7 +40,7 @@ export function InboxSetupGithubStep(): JSX.Element {
                         showPersonalConnectionHelp={false}
                         showManageButton={false}
                         integrationSuffix={<></>}
-                        connectDescription="Choose which repositories PostHog can access when you connect GitHub."
+                        connectDescription="Choose which repositories Flind can access when you connect GitHub."
                     />
                 )}
             </GuidedWizardSection>

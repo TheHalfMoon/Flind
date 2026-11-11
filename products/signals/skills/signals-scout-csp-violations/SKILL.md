@@ -6,7 +6,7 @@ description: >
   blocked-URL clusters, per-directive bursts, post-deploy regressions, and suspicious third-
   party domains.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus the analytics tools in the
   MCP tools section (execute-sql over `$csp_violation` events, read-data-schema,
   advanced-activity-logs-list).
@@ -88,7 +88,7 @@ Four cheap reads cold-start a run:
 
 ### Explore
 
-Patterns to watch — starting points, not a checklist. Group violations along four dimensions and look for clusters worth a finding. PostHog's push-based CSP emission already deduplicates _individual_ violations at `sha1(violated_directive | blocked_url | document_url | source_file)` granularity with a 24h Redis TTL; your job is to _aggregate_ across that grain into higher-confidence findings the inbox wouldn't surface on its own.
+Patterns to watch — starting points, not a checklist. Group violations along four dimensions and look for clusters worth a finding. Flind's push-based CSP emission already deduplicates _individual_ violations at `sha1(violated_directive | blocked_url | document_url | source_file)` granularity with a 24h Redis TTL; your job is to _aggregate_ across that grain into higher-confidence findings the inbox wouldn't surface on its own.
 
 #### Fresh blocked-URL domain
 

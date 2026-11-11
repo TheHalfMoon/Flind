@@ -24,7 +24,7 @@ class OrganizationProvisioning(models.Model):
         db_constraint=False,
     )
     partner = models.CharField(max_length=32, choices=Partner.choices)
-    # Vercel calls PostHog with Vercel-signed tokens, not through a PostHog OAuth application,
+    # Vercel calls Flind with Vercel-signed tokens, not through a Flind OAuth application,
     # so a Vercel row has no application to reference.
     application = models.ForeignKey(
         "posthog.OAuthApplication",

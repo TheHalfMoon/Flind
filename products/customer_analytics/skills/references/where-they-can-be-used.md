@@ -29,7 +29,7 @@ These are the differences a user will otherwise discover as a surprise.
 
 **A person must already exist.** The sync never creates people or groups. A warehouse row whose key does not
 resolve is dropped and counted as `skipped_missing_person`. So a customer in the warehouse who has never been
-seen by PostHog gets no property, and will not match a flag or cohort until they are.
+seen by Flind gets no property, and will not match a flag or cohort until they are.
 
 **Values arrive on a sync cadence, not in real time.** The property changes when the underlying warehouse
 table next syncs. For a flag rollout keyed on a warehouse value, that lag is the worst-case delay between the

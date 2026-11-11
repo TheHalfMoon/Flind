@@ -1,4 +1,4 @@
-"""Resolves a team's quota state via the PostHog API quota_limits endpoint.
+"""Resolves a team's quota state via the Flind API quota_limits endpoint.
 
 Forwards the caller's
 credentials to ``GET /api/projects/{team_id}/quota_limits/`` and

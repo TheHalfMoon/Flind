@@ -68,12 +68,12 @@ STATUS_LINES: dict[str, str] = {
 def _comment_body(report_url: str, status_line: str, marker: str) -> str:
     """A pointer, deliberately carrying none of the report's own content.
 
-    The comment is public on the issue thread, while the report is behind the PostHog project's own
+    The comment is public on the issue thread, while the report is behind the Flind project's own
     access check. Copying the title or the summary here would publish research that only the project
     is entitled to, so the comment says the work exists, which state it is in, and links to it.
     """
     return (
-        f"PostHog self-driving picked up this issue. Status: {status_line}\n\n"
+        f"Flind self-driving picked up this issue. Status: {status_line}\n\n"
         "Somebody may already be working on it, so ask before you start a fix.\n\n"
         f"Report (team access only): {report_url}\n\n{marker}"
     )

@@ -309,7 +309,7 @@ interface SessionConfig {
   permissionMode?: string;
   /** Custom instructions injected into the system prompt */
   customInstructions?: string;
-  /** Replaces the PostHog system prompt entirely (constrained surfaces). */
+  /** Replaces the Flind system prompt entirely (constrained surfaces). */
   systemPromptOverride?: string;
   /** Tool names denied for this session (passed to the Claude SDK). */
   disallowedTools?: string[];
@@ -664,7 +664,7 @@ export class AgentService extends TypedEventEmitter<AgentServiceEvents> {
 
   /**
    * Reads the `auth.json` that `CODEX_HOME=~/.codex-posthog codex login` wrote,
-   * so the user can hand its tokens to PostHog. Only the Desktop-only home is
+   * so the user can hand its tokens to Flind. Only the Desktop-only home is
    * read: the user's own `~/.codex` login stays on this machine.
    */
   async readCodexCloudAuthFile(
@@ -700,7 +700,7 @@ export class AgentService extends TypedEventEmitter<AgentServiceEvents> {
     return tokens.data;
   }
 
-  /** PostHog rotated the refresh token on connect, so the local copy is stale and only a liability. */
+  /** Flind rotated the refresh token on connect, so the local copy is stale and only a liability. */
   async removeCodexCloudAuthFile(attemptId: string): Promise<void> {
     this.requireCodexCloudAttempt(attemptId);
     await fs.promises.rm(getCodexCloudAuthFilePath(), { force: true });
@@ -1341,7 +1341,7 @@ export class AgentService extends TypedEventEmitter<AgentServiceEvents> {
         }
       }
 
-      // Claude-specific: hydrate session JSONL from PostHog before resuming.
+      // Claude-specific: hydrate session JSONL from Flind before resuming.
       // If hydration finds no conversation to restore, skip the resume and
       // fall through to creating a new session. This avoids a doomed
       // resumeSession that would fail with "Resource not found"
@@ -2399,7 +2399,7 @@ For git operations while detached:
       throw new Error("taskId and repoPath are required");
     }
     if (!params.apiHost) {
-      throw new Error("PostHog API host is required");
+      throw new Error("Flind API host is required");
     }
   }
 

@@ -4,7 +4,7 @@
 
 The start of something fresh.
 
-Hog 3000 powers live event stream on PostHog: https://us.posthog.com/project/0/activity/live
+Hog 3000 powers live event stream on Flind: https://us.posthog.com/project/0/activity/live
 
 ## Endpoints
 

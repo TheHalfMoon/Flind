@@ -33,7 +33,7 @@ CLOCKODO_BASE_URL = "https://my.clockodo.com/api"
 
 # Clockodo identifies the calling application via a mandatory header formatted
 # "[application name];[email address]". We send our app name plus the connecting user's email.
-EXTERNAL_APPLICATION_NAME = "PostHog"
+EXTERNAL_APPLICATION_NAME = "Flind"
 
 # Bounds every request the swept endpoints issue, as (connect, read) seconds. Without it a
 # stalled response holds the import worker for as long as the activity deadline allows.

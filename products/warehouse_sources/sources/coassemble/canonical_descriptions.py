@@ -76,7 +76,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://developers.coassemble.com/api/tracking",
         "columns": {
             "id": "The unique ID of the tracking record.",
-            "course_id": "The ID of the course the tracking belongs to (injected by PostHog; trackings are listed per course).",
+            "course_id": "The ID of the course the tracking belongs to (injected by Flind; trackings are listed per course).",
             "identifier": "The identifier of the user the tracking belongs to.",
             "email": "The learner's email address, if captured.",
             "commenced": "When the learner started the course (ISO 8601).",
@@ -94,7 +94,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://developers.coassemble.com/api/tracking",
         "columns": {
             "id": "The unique ID of the tracking record.",
-            "course_id": "The ID of the course the tracking belongs to (injected by PostHog; screen trackings are listed per course).",
+            "course_id": "The ID of the course the tracking belongs to (injected by Flind; screen trackings are listed per course).",
             "identifier": "The identifier of the user the tracking belongs to.",
             "clientIdentifier": "The identifier of the client the user belongs to, if any.",
             "name": "The learner's display name.",
@@ -111,7 +111,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://developers.coassemble.com/api/tracking",
         "columns": {
             "id": "The unique ID of the collection tracking record.",
-            "collection_id": "The ID of the collection the tracking belongs to (injected by PostHog; collection trackings are listed per collection).",
+            "collection_id": "The ID of the collection the tracking belongs to (injected by Flind; collection trackings are listed per collection).",
             "identifier": "The identifier of the user the tracking belongs to.",
             "name": "The learner's display name.",
             "commenced": "When the learner started the collection (ISO 8601).",
@@ -126,7 +126,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://developers.coassemble.com/api/tracking",
         "columns": {
             "id": "The unique ID of the tracking record.",
-            "user_identifier": "The identifier of the learner the trackings were listed for (injected by PostHog).",
+            "user_identifier": "The identifier of the learner the trackings were listed for (injected by Flind).",
             "identifier": "The identifier of the user the tracking belongs to.",
             "clientIdentifier": "The identifier of the client the user belongs to, if any.",
             "courseId": "The ID of the course the tracking belongs to.",
@@ -162,7 +162,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "The monthly allowance behind a client's usage, one row per usage metric — the denominator for client_usage.",
         "docs_url": "https://developers.coassemble.com/api/usage",
         "columns": {
-            "clientIdentifier": "The identifier of the client the allowance belongs to (injected by PostHog; allowances are read one client at a time).",
+            "clientIdentifier": "The identifier of the client the allowance belongs to (injected by Flind; allowances are read one client at a time).",
             "metric": "The usage metric the allowance applies to.",
             "limit": "The monthly cap for the metric; unset means unlimited.",
             "topUp": "Extra allowance added on top of the cap for the period.",

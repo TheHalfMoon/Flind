@@ -34,9 +34,9 @@ function truncateRequestBody(body: RequestInit["body"]): string | undefined {
 /**
  * Whose credential an auth failure from a target is about.
  *
- * `posthog` targets answer for the user's PostHog token, so a stale one is worth
+ * `posthog` targets answer for the user's Flind token, so a stale one is worth
  * refreshing and retrying. An `installation` target proxies a connected third-party
- * server, and its auth failures are about that vendor's token — refreshing the PostHog
+ * server, and its auth failures are about that vendor's token — refreshing the Flind
  * token cannot fix one, and retrying buries the real reason.
  */
 export type McpProxyCredentialOwner = "posthog" | "installation";
@@ -241,7 +241,7 @@ export class McpProxyService {
         if (this.isAuthErrorBody(bodyText, response.status)) {
           if (target.credentialOwner === "installation") {
             this.log.warn(
-              "Connected MCP server rejected the request; its stored credential needs reconnecting in PostHog",
+              "Connected MCP server rejected the request; its stored credential needs reconnecting in Flind",
               {
                 id,
                 url,

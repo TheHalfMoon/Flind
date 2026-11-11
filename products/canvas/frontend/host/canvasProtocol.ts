@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-// The host side of the canvas postMessage protocol. It mirrors PostHog Desktop's
+// The host side of the canvas postMessage protocol. It mirrors Flind Desktop's
 // freeformSchemas.ts, because the sandbox document and the built artifact runtime
 // speak one protocol to both hosts. A canvas runs untrusted code in an opaque-origin
 // iframe, so the schemas below are the allowlist of what it may ask the host to do.

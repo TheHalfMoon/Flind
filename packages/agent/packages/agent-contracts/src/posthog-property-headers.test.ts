@@ -15,7 +15,7 @@ import {
   collapsePropertyHeadersForAiGateway,
 } from "./posthog-property-headers";
 
-describe("PostHog project headers", () => {
+describe("Flind project headers", () => {
   it("builds record and line forms from the same header contract", () => {
     expect(buildPosthogProjectHeaderRecord(42)).toEqual({
       "X-PostHog-Project-Id": "42",
@@ -36,7 +36,7 @@ describe("PostHog project headers", () => {
   });
 });
 
-describe("PostHog session headers", () => {
+describe("Flind session headers", () => {
   it("builds record and line forms with sanitized values", () => {
     expect(
       buildPosthogSessionHeaderRecord("session-1\r\nmalicious: true"),

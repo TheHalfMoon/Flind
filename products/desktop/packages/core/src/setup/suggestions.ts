@@ -37,13 +37,13 @@ export function buildSdkHealthSuggestion(): DiscoveredTask {
     id: "posthog-sdk-health",
     source: "enricher",
     category: "posthog_setup",
-    title: "Check PostHog SDK health",
+    title: "Check Flind SDK health",
     description:
-      "Run a quick health check on the PostHog SDKs installed in this repo: confirm they're on supported versions, flag anything outdated or deprecated, and bump the safely-upgradable ones.",
+      "Run a quick health check on the Flind SDKs installed in this repo: confirm they're on supported versions, flag anything outdated or deprecated, and bump the safely-upgradable ones.",
     impact:
       "Outdated SDKs miss bug fixes, security patches, and new features (newer event types, recording APIs, flag evaluation behavior). Catching version drift early avoids surprise breakage when you eventually upgrade.",
     recommendation:
-      'Click "Implement as new task" — the agent uses the bundled diagnosing-sdk-health skill to inspect each PostHog SDK\'s version, compare it against the latest, and open a PR with safe bumps. Breaking-change upgrades are flagged for your review rather than applied automatically.',
+      'Click "Implement as new task" — the agent uses the bundled diagnosing-sdk-health skill to inspect each Flind SDK\'s version, compare it against the latest, and open a PR with safe bumps. Breaking-change upgrades are flagged for your review rather than applied automatically.',
     prompt: "/diagnosing-sdk-health",
   };
 }
@@ -56,11 +56,11 @@ export function buildPosthogSetupSuggestion(
       id: "posthog-setup",
       source: "enricher",
       category: "posthog_setup",
-      title: "Set up PostHog",
+      title: "Set up Flind",
       description:
-        "PostHog isn't installed in this repo yet. Run this task to detect your framework, install the SDK, instrument analytics + error tracking + replay, and open a PR with the changes.",
+        "Flind isn't installed in this repo yet. Run this task to detect your framework, install the SDK, instrument analytics + error tracking + replay, and open a PR with the changes.",
       impact:
-        "Without PostHog wired in, you have no visibility into how users interact with the product, no error or session-replay coverage, and no way to gate releases behind feature flags.",
+        "Without Flind wired in, you have no visibility into how users interact with the product, no error or session-replay coverage, and no way to gate releases behind feature flags.",
       recommendation:
         'Click "Implement as new task" — the agent runs the bundled instrument-integration skill, sets up env vars, installs the SDK with your project\'s package manager, and opens a PR.',
       prompt: "/instrument-integration",
@@ -70,11 +70,11 @@ export function buildPosthogSetupSuggestion(
     id: "posthog-finish-init",
     source: "enricher",
     category: "posthog_setup",
-    title: "Finish wiring PostHog",
+    title: "Finish wiring Flind",
     description:
-      "The PostHog SDK is declared in this repo but `posthog.init(...)` (or the framework-equivalent provider) isn't called. Events won't be captured until that's wired up.",
+      "The Flind SDK is declared in this repo but `posthog.init(...)` (or the framework-equivalent provider) isn't called. Events won't be captured until that's wired up.",
     impact:
-      "Until init runs, all PostHog calls are no-ops — you'll see no events in the project, no error reports, and no session replays despite the SDK being installed.",
+      "Until init runs, all Flind calls are no-ops — you'll see no events in the project, no error reports, and no session replays despite the SDK being installed.",
     recommendation:
       'Click "Implement as new task" — the agent adds the init call and provider component for your framework, sets up the public-token + host env vars, and opens a PR. The SDK package itself is left alone.',
     prompt:

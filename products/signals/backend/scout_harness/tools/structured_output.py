@@ -7,7 +7,7 @@ filtered and charted per record. This channel gives that shape a contract: the s
 `SignalScoutConfig.structured_output_schema` (a JSON Schema describing ONE record) is the
 opt-in, every submitted record is validated against it, and each accepted record becomes a
 customer-facing `$scout_structured_output` event in the team's own project, so the records
-are chartable in PostHog — trend a `verdict` breakdown, alert on a rate — with no export
+are chartable in Flind — trend a `verdict` breakdown, alert on a rate — with no export
 step. The events ARE the record: there is no parallel Postgres copy, so past records are
 read back the way any event is (insights, HogQL over `events`), and retention follows the
 project's event retention.
@@ -69,7 +69,7 @@ MAX_SUBJECT_LENGTH = 200
 MAX_SCHEMA_BYTES = 20_000
 
 # Customer-facing per-record event (see `tools/report.py` for the `$`-prefix convention:
-# a PostHog-generated event kept out of the customer's own custom-event namespace).
+# a Flind-generated event kept out of the customer's own custom-event namespace).
 CUSTOMER_STRUCTURED_OUTPUT_EVENT = "$scout_structured_output"
 _STRUCTURED_OUTPUT_EVENT_SOURCE = "signals_scout_structured_output"
 
@@ -387,7 +387,7 @@ def _reserve_capacity(*, team: Team, run: SignalScoutRun, count: int) -> None:
         if not team.organization.is_ai_data_processing_approved:
             raise InvalidStructuredOutputError(
                 "This organization has not approved AI data processing, so structured-output records "
-                "cannot be recorded. An org admin must turn on the 'Enable PostHog features that use "
+                "cannot be recorded. An org admin must turn on the 'Enable Flind features that use "
                 "third-party AI services' toggle in Organization settings → AI service providers."
             )
         if not SignalSourceConfig.is_source_enabled(run.team_id, SOURCE_PRODUCT, SOURCE_TYPE):
@@ -409,7 +409,7 @@ def _reserve_capacity(*, team: Team, run: SignalScoutRun, count: int) -> None:
 
 
 def _capture_recorded(*, team: Team, run: SignalScoutRun, recorded_count: int) -> None:
-    """Internal (PostHog-side) telemetry: one event per accepted call, mirroring the
+    """Internal (Flind-side) telemetry: one event per accepted call, mirroring the
     other scout lifecycle events' shape so it joins on `run_id`. Best-effort."""
     try:
         posthoganalytics.capture(

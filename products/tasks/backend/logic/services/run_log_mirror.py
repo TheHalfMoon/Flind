@@ -1,15 +1,15 @@
-"""Mirror persisted task-run log entries into the PostHog Logs product via stdout.
+"""Mirror persisted task-run log entries into the Flind Logs product via stdout.
 
 Task-run logs are appended to object storage as one ACP notification envelope per line.
-In every PostHog cluster an OTel collector daemonset already tails container stdout and
-ships JSON log lines into the region's internal PostHog project's Logs product, parsing
+In every Flind cluster an OTel collector daemonset already tails container stdout and
+ships JSON log lines into the region's internal Flind project's Logs product, parsing
 each JSON key into a queryable log attribute, `level` into severity, and `request_id`
 into a trace id (see `argocd/otel-collector` in the charts repo). So in production
 dogfooding scout-run logs needs no transport of its own: emitting one structured stdout
 line per persisted entry is enough.
 
 A direct OTLP leg (`TASK_RUN_LOGS_MIRROR_OTLP_URL` + `_TOKEN`) additionally ships each
-batch straight to a logs ingest endpoint. The token pins the destination to PostHog's own
+batch straight to a logs ingest endpoint. The token pins the destination to Flind's own
 internal logs project: scout runs execute for customer teams, and their mirrored
 transcripts must never land in — or bill — a customer's project. It is also the only
 delivery path in local dev, where `append_log` runs in the host Django process whose

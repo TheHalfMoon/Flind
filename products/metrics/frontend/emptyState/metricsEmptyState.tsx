@@ -27,7 +27,7 @@ export const metricsEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Watch your counters, gauges, and histograms live',
-                lead: 'Send metrics from the PostHog SDK you already have, from any OpenTelemetry-compatible client over OTLP, or by scraping the Prometheus endpoints you already expose. Chart them next to your product data and query them with SQL.',
+                lead: 'Send metrics from the Flind SDK you already have, from any OpenTelemetry-compatible client over OTLP, or by scraping the Prometheus endpoints you already expose. Chart them next to your product data and query them with SQL.',
                 hint: 'Starting fresh? Wizard wires up metrics in your app:',
             },
         },

@@ -337,7 +337,7 @@ export function useTaskCreation({
           if (!claudeSubscription.cloudFlagEnabled) {
             toast.error("Claude plan billing is unavailable for cloud tasks", {
               description:
-                "Try again later, or select PostHog in the Billing menu.",
+                "Try again later, or select Flind in the Billing menu.",
             });
             return false;
           }

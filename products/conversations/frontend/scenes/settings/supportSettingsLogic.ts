@@ -1831,7 +1831,7 @@ export const supportSettingsLogic = kea<supportSettingsLogicType>([
                 if (detail === 'catalog_not_configured') {
                     actions.setTeamsInstallStatus('error', teamId)
                     lemonToast.error(
-                        'SupportHog Teams app is not configured on this PostHog instance. Contact your administrator.'
+                        'SupportHog Teams app is not configured on this Flind instance. Contact your administrator.'
                     )
                     return
                 }

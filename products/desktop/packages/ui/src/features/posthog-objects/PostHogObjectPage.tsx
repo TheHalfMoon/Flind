@@ -44,7 +44,7 @@ import { FlagAudienceCard } from "./FlagAudienceCard";
 import { PostHogObjectDetails } from "./PostHogObjectDetails";
 
 const CHART_ERROR_MESSAGE =
-  "Couldn't run the query behind this chart. Open it in PostHog to investigate.";
+  "Couldn't run the query behind this chart. Open it in Flind to investigate.";
 
 function StatStrip({
   stats,
@@ -72,7 +72,7 @@ function StatStrip({
 
 /**
  * The object's identifier as a labeled chip; clicking copies it. A quill
- * Button in the same variant and size as "Open in PostHog" beside it, so the
+ * Button in the same variant and size as "Open in Flind" beside it, so the
  * two read as one control row.
  */
 function IdChip({ id }: { id: string }) {
@@ -235,8 +235,8 @@ function UnavailableObject({
         </EmptyTitle>
         <EmptyDescription>
           {isError
-            ? "Try again, or open PostHog to review it."
-            : "Check the identifier or open PostHog to review access."}
+            ? "Try again, or open Flind to review it."
+            : "Check the identifier or open Flind to review access."}
         </EmptyDescription>
       </EmptyHeader>
     </Empty>
@@ -331,7 +331,7 @@ export function PostHogObjectPageView({
                 data-attr="posthog-object-open-in-posthog"
                 onClick={() => openExternalUrl(url)}
               >
-                Open in PostHog ↗
+                Open in Flind ↗
               </Button>
             )}
           </div>

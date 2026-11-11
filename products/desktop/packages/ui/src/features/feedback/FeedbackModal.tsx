@@ -58,13 +58,13 @@ const MODAL_COPY: Record<
   { title: string; description?: string; placeholder: string }
 > = {
   feedback: {
-    title: "What should we improve in PostHog Desktop?",
+    title: "What should we improve in Flind Desktop?",
     placeholder: "What happened, and what did you expect?",
   },
   "posthog-web": {
-    title: "Before you head to PostHog web",
-    description: "Why are you going back to PostHog web?",
-    placeholder: "What are you looking for in PostHog web?",
+    title: "Before you head to Flind web",
+    description: "Why are you going back to Flind web?",
+    placeholder: "What are you looking for in Flind web?",
   },
 };
 

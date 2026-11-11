@@ -21,7 +21,7 @@ from products.warehouse_sources.sources.sdk import SourceResponse, make_tracked_
 
 REQUEST_TIMEOUT = 60
 # CIMIS sits behind a WAF that rejects requests without a browser-like User-Agent.
-_USER_AGENT = "PostHog-DataWarehouse/1.0 (+https://posthog.com)"
+_USER_AGENT = "Flind-DataWarehouse/1.0 (+https://posthog.com)"
 # CIMIS rejects future dates relative to California local time, so the request upper bound is computed
 # in the station network's timezone rather than UTC.
 _CALIFORNIA_TZ = ZoneInfo("America/Los_Angeles")

@@ -223,7 +223,7 @@ class _UtmRow:
     raw_utm_source: str
     event_count: int
     last_seen_at: datetime | None
-    # A cost-bearing utm_medium, per PostHog's own channel-type rule
+    # A cost-bearing utm_medium, per Flind's own channel-type rule
     # (posthog.com/docs/data/channel-type). Platform-agnostic: any source can be paid.
     paid_event_count: int = 0
     # Each platform count is the union of paid medium and its own ad signals.

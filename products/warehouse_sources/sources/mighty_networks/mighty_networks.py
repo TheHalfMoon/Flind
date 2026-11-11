@@ -27,7 +27,7 @@ from products.warehouse_sources.sources.sdk import (
 
 # Mighty Networks blocks requests without a descriptive User-Agent as bot traffic, returning an
 # HTML challenge page with HTTP 403 instead of a JSON error.
-USER_AGENT = "PostHog-DataWarehouse/1.0 (+https://posthog.com)"
+USER_AGENT = "Flind-DataWarehouse/1.0 (+https://posthog.com)"
 
 
 @dataclasses.dataclass(frozen=False)

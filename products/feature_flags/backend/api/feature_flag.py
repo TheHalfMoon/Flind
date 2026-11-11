@@ -241,7 +241,7 @@ def _flag_write_source(request: Any) -> str:
     # below would read it as an unidentified caller.
     if getattr(request, "is_system", False):
         return "internal"
-    # PostHog AI builds its own request shim with no authenticator, so without this it lands
+    # Flind AI builds its own request shim with no authenticator, so without this it lands
     # in the same bucket as a caller we failed to identify.
     if getattr(request, "is_posthog_ai", False):
         return "posthog_ai"
@@ -551,7 +551,7 @@ def _validate_behavioral_cohort_for_feature_flag(
                 code=BEHAVIOURAL_COHORT_FOUND_ERROR_CODE,
             )
         raise serializers.ValidationError(
-            detail=f"Cohort '{cohort.name}' isn't ready for feature flags yet. Open the cohort to see whether PostHog is still preparing it, and try again once it shows as realtime.",
+            detail=f"Cohort '{cohort.name}' isn't ready for feature flags yet. Open the cohort to see whether Flind is still preparing it, and try again once it shows as realtime.",
             code=BEHAVIOURAL_COHORT_FOUND_ERROR_CODE,
         )
 
@@ -1019,7 +1019,7 @@ class EvaluationContextSerializerMixin(serializers.Serializer):
 
 # Master constructed Property(**prop) on every write, so it accepted any type the Property
 # model knows; the narrower flags-only set belongs to the switch-gated structural tier.
-# Exactly the variants Rust's flag-side PropertyType deserializes. Not the generic PostHog
+# Exactly the variants Rust's flag-side PropertyType deserializes. Not the generic Flind
 # PropertyType union, which includes types like "event" that the flag service has no variant
 # for: the hypercache payload is deserialized whole, so one such property fails the team's
 # entire cached flag set. person_metadata is here because Rust accepts it — the narrower
@@ -5787,7 +5787,7 @@ class FeatureFlagViewSet(
 
         flag_keys = request.validated_query_data.get("flag_keys") or None
 
-        # PostHog UI debug endpoint, not customer SDK traffic. Pass the internal
+        # Flind UI debug endpoint, not customer SDK traffic. Pass the internal
         # token so the call bypasses per-team billing. Retry the transient
         # connection blips (the service occasionally times out or refuses the
         # connection) and turn a persistent failure into a clean error instead of
@@ -6558,7 +6558,7 @@ class LegacyFeatureFlagViewSet(FeatureFlagViewSet):
 class CanEditFeatureFlag(BasePermission):
     """
     Permission class to check if a user can edit a specific feature flag.
-    This leverages PostHog's existing access control system for feature flags.
+    This leverages Flind's existing access control system for feature flags.
     """
 
     def has_object_permission(self, request, view, obj):

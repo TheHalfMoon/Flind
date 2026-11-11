@@ -50,7 +50,7 @@ INACTIVE_FLAG_EXPERIMENT_NAME = "pricing page redesign"
 ENDED_EXPERIMENT_NAME = "checkout cta v2"
 
 
-# Verbatim description of the catch-all release condition that PostHog adds to a feature flag
+# Verbatim description of the catch-all release condition that Flind adds to a feature flag
 # when a variant is shipped to all users, see the `ship_flag_variant` call in the experiments
 # product's experiment service
 SHIP_VARIANT_FLIP_SIGNATURE = "Added automatically when the experiment was ended to keep only one variant."
@@ -308,7 +308,7 @@ def seed_ended_experiment_with_flag_flip(context: CustomPromptSandboxContext) ->
 
     Carrier scenario for diagnostic group E (mid-run changes / E7) — after an
     experiment is ended via `experiment-ship-variant` in the "all users" mode,
-    PostHog rewrites the flag's `multivariate.variants` rollout to 0/100
+    Flind rewrites the flag's `multivariate.variants` rollout to 0/100
     favouring the shipped variant AND prepends a catch-all release condition
     that carries a verbatim description string ([SHIP_VARIANT_FLIP_SIGNATURE]).
 

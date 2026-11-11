@@ -164,7 +164,7 @@ export const flagComparisonLogic = kea<flagComparisonLogicType>([
                 compareFlag: async ({ flag }): Promise<FlagComparison> => {
                     const posthog = values.posthog
                     if (!posthog) {
-                        throw new Error('The page has no PostHog client to override flags with')
+                        throw new Error('The page has no Flind client to override flags with')
                     }
                     // Checked before any override is written, so a refused run leaves the page as it is.
                     if (isCaptureRunning()) {

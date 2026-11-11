@@ -28,7 +28,7 @@ def validate_credentials(api_token: str, endpoint: str, api_version: str) -> Non
     client = RESTClient(
         base_url=f"{BASE_URL}/{api_version}",
         auth=APIKeyAuth(api_key=api_token, name="Authorization", location="header"),
-        headers={"Accept": "application/json", "User-Agent": "PostHog warehouse source"},
+        headers={"Accept": "application/json", "User-Agent": "Flind warehouse source"},
         request_timeout=REQUEST_TIMEOUT_SECONDS,
     )
     try:
@@ -73,7 +73,7 @@ def sevdesk_source(
         "client": {
             "base_url": f"{BASE_URL}/{api_version}",
             "auth": {"type": "api_key", "api_key": api_token, "name": "Authorization", "location": "header"},
-            "headers": {"Accept": "application/json", "User-Agent": "PostHog warehouse source"},
+            "headers": {"Accept": "application/json", "User-Agent": "Flind warehouse source"},
             "request_timeout": REQUEST_TIMEOUT_SECONDS,
         },
         "resources": [resource],

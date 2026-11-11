@@ -18,7 +18,7 @@ export const getReactNativeInstallSteps = (
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog React Native library and its dependencies:</Markdown>
+                    <Markdown>Install the Flind React Native library and its dependencies:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -54,12 +54,12 @@ export const getReactNativeInstallSteps = (
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        PostHog is most easily used via the `PostHogProvider` component. Wrap your app with the
+                        Flind is most easily used via the `PostHogProvider` component. Wrap your app with the
                         provider:
                     </Markdown>
                     <CodeBlock
@@ -101,7 +101,7 @@ export const getReactNativeEventStep = (ctx: OnboardingComponentsContext): StepD
         content: (
             <>
                 <Markdown>
-                    Once installed, PostHog will automatically start capturing events. You can also manually send events
+                    Once installed, Flind will automatically start capturing events. You can also manually send events
                     using the `usePostHog` hook:
                 </Markdown>
                 <CodeBlock

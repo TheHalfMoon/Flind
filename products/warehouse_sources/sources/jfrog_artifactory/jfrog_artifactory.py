@@ -146,7 +146,7 @@ def normalize_base_url(base_url: str) -> str:
         # means the input wasn't a platform URL (or tried to smuggle one past the host checks).
         raise ValueError(f"Invalid JFrog platform URL (must not contain a path): {base_url}")
     # The access token rides in the Authorization header on every request, so plaintext http would
-    # leak it to any network observer. On PostHog Cloud the request egresses over the public
+    # leak it to any network observer. On Flind Cloud the request egresses over the public
     # internet, so require https. Self-hosted operators control their own network path, so http
     # stays allowed there — mirroring how host IP safety is only enforced on cloud.
     if parsed.scheme == "http" and is_cloud():

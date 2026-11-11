@@ -57,7 +57,7 @@ class HuggingFaceSource(ResumableSource[HuggingFaceSourceConfig, HuggingFaceResu
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Hugging Face",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Hugging Face access token to pull your Hub repositories into the PostHog Data warehouse.
+            caption="""Enter your Hugging Face access token to pull your Hub repositories into the Flind Data warehouse.
 
 Create a token in your [Hugging Face access token settings](https://huggingface.co/settings/tokens). A read token is enough for public repos; grant read access to your namespace's repo contents (and `read-org` if you're syncing an organization) to include private repos.
 

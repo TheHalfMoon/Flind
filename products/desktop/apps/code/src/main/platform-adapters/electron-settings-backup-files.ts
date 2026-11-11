@@ -38,7 +38,7 @@ export class ElectronSettingsBackupFiles implements ISettingsBackupFiles {
     const parent = resolveDialogParent();
     const options = {
       title: "Import settings and sounds",
-      filters: [{ name: "PostHog backup", extensions: ["json"] }],
+      filters: [{ name: "Flind backup", extensions: ["json"] }],
       properties: ["openFile" as const],
     };
     const result = parent
@@ -62,7 +62,7 @@ export class ElectronSettingsBackupFiles implements ISettingsBackupFiles {
       const stat = await file.stat();
       if (!stat.isFile() || stat.size > MAX_SETTINGS_BACKUP_BYTES)
         throw new BackupFileError(
-          "Choose a PostHog backup file of 64 MB or less.",
+          "Choose a Flind backup file of 64 MB or less.",
         );
       // Bound the read even if another process grows the file after stat().
       const buffer = Buffer.alloc(stat.size + 1);
@@ -99,7 +99,7 @@ export class ElectronSettingsBackupFiles implements ISettingsBackupFiles {
     const options = {
       title: "Export settings and sounds",
       defaultPath: input.defaultName,
-      filters: [{ name: "PostHog backup", extensions: ["json"] }],
+      filters: [{ name: "Flind backup", extensions: ["json"] }],
       // Without this, the Linux dialog can replace the chosen file with no prompt.
       properties: ["showOverwriteConfirmation" as const],
     };

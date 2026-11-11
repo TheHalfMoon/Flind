@@ -2,7 +2,7 @@ export type GitHubDisconnectScope = 'project' | 'account'
 
 /**
  * Backend rule: disconnecting the last reference to a GitHub App installation also uninstalls the
- * App on GitHub and removes every other PostHog link to it, so the dialog has to say which case
+ * App on GitHub and removes every other Flind link to it, so the dialog has to say which case
  * the user is in rather than the generic "this cannot be undone".
  */
 export function buildGithubDisconnectDescription(

@@ -60,7 +60,7 @@ class TMDbSource(ResumableSource[TMDbSourceConfig, TMDbResumeConfig]):
             name=ExternalDataSourceType.TMDB,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="TMDb",
-            caption="""Enter your TMDB API key to pull movie, TV, and people catalog data into the PostHog Data warehouse.
+            caption="""Enter your TMDB API key to pull movie, TV, and people catalog data into the Flind Data warehouse.
 
 Create a free API key (v3 auth) in your [TMDB account settings](https://www.themoviedb.org/settings/api). Commercial use requires a separate license from TMDB.""",
             iconPath="/static/services/tmdb.png",

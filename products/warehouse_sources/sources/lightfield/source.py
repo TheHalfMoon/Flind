@@ -125,7 +125,7 @@ class LightfieldSource(SimpleSource[LightfieldSourceConfig]):
             name=ExternalDataSourceType.LIGHTFIELD,
             category=DataWarehouseSourceCategory.CRM,
             label="Lightfield",
-            caption="""Enter your Lightfield API key to pull your Lightfield CRM data into the PostHog Data warehouse.
+            caption="""Enter your Lightfield API key to pull your Lightfield CRM data into the Flind Data warehouse.
 
 You can create an API key in your Lightfield settings (admin access required). Grant the read scope for each table you want to sync:
 

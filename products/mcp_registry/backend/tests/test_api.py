@@ -42,7 +42,7 @@ class TestMCPRegistryAPI(APIBaseTest):
         MCPMeasuredStats.objects.unscoped().create(
             server=measured,
             team_id=self.team.id,
-            server_name="PostHog",
+            server_name="Flind",
             window_days=30,
             calls=50_000,
             errors=1_000,
@@ -223,7 +223,7 @@ class TestMCPRegistryAPI(APIBaseTest):
         MCPMeasuredStats.objects.unscoped().create(
             server=server,
             team_id=self.team.id + 1,
-            server_name="PostHog",
+            server_name="Flind",
             window_days=30,
             calls=999_999,
             errors=0,

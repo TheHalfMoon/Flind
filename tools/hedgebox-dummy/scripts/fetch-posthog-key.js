@@ -29,7 +29,7 @@ async function fetchPostHogKey() {
             console.warn(
                 `⚠ ${process.env.DEMO_TEAM_ID ? `No team found with ID ${process.env.DEMO_TEAM_ID}` : 'No team found'}`
             )
-            console.warn('  Continuing without PostHog API key...\n')
+            console.warn('  Continuing without Flind API key...\n')
             return
         }
 
@@ -37,8 +37,8 @@ async function fetchPostHogKey() {
         teamApiToken = result.rows[0].api_token
         teamCreatedAt = result.rows[0].created_at
     } catch (error) {
-        console.warn('⚠ Error fetching PostHog key:', error.message)
-        console.warn('  Continuing without PostHog API key...\n')
+        console.warn('⚠ Error fetching Flind key:', error.message)
+        console.warn('  Continuing without Flind API key...\n')
         return
     } finally {
         await client.end()
@@ -52,7 +52,7 @@ async function fetchPostHogKey() {
         const keyMatch = envContent.match(/NEXT_PUBLIC_POSTHOG_KEY=(.+) # (.+)/)
         if (keyMatch && keyMatch[1] && keyMatch[1].trim() && keyMatch[2].trim() === teamCreatedAt.toISOString()) {
             console.info(
-                `✓ PostHog API key already exists in .env.local for team created at ${teamCreatedAt.toISOString()}`
+                `✓ Flind API key already exists in .env.local for team created at ${teamCreatedAt.toISOString()}`
             )
             console.info('  `rm tools/hedgebox-dummy/.env.local` or `export FORCE_FETCH_KEY=1` to fetch anew\n')
             return
@@ -64,7 +64,7 @@ async function fetchPostHogKey() {
         path.join(__dirname, '..', '.env.local'),
         `NEXT_PUBLIC_POSTHOG_KEY=${teamApiToken} # ${teamCreatedAt.toISOString()}\n`
     )
-    console.info(`✓ PostHog API key fetched and written to .env.local`)
+    console.info(`✓ Flind API key fetched and written to .env.local`)
     console.info(`  Team ID: ${teamId}`)
     console.info(`  API token: ${teamApiToken}\n`)
 }

@@ -29,7 +29,7 @@ export const webAnalyticsEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'See where your visitors come from',
-                lead: 'Visitors, top pages, channels, and bounce rate on one dashboard. It fills in from the pageviews posthog-js captures, so once PostHog is installed there is nothing else to configure.',
+                lead: 'Visitors, top pages, channels, and bounce rate on one dashboard. It fills in from the pageviews posthog-js captures, so once Flind is installed there is nothing else to configure.',
             },
         },
         primaryAction: {

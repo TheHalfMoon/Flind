@@ -17,7 +17,7 @@ const MOCK_APPS = [
     },
     {
         id: 'app-2',
-        name: 'PostHog Toolbar',
+        name: 'Flind Toolbar',
         client_id: 'client_xyz',
         redirect_uris_list: ['https://app.posthog.com/toolbar'],
         is_verified: false,

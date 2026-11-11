@@ -7,7 +7,7 @@ from ee.hogai.tool import MaxTool, ToolMessagesArtifact
 from ee.hogai.utils.prompt import format_prompt_string
 
 LIST_DATA_TOOL_PROMPT = """
-Use this tool to browse/search PostHog entities with pagination, sorted by name.
+Use this tool to browse/search Flind entities with pagination, sorted by name.
 
 # Use this when:
 - The user wants to browse their saved work
@@ -59,7 +59,7 @@ class ListDataToolArgs(BaseModel):
 class ListDataTool(MaxTool):
     name: Literal["list_data"] = "list_data"
     description: str = LIST_DATA_TOOL_PROMPT
-    context_prompt_template: str = "Lists PostHog entities with pagination"
+    context_prompt_template: str = "Lists Flind entities with pagination"
     args_schema: type[BaseModel] = ListDataToolArgs
 
     async def _arun_impl(

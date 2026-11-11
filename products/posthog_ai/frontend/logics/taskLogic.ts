@@ -141,7 +141,7 @@ export const taskLogic = kea<taskLogicType>([
                         ...(values.task?.description ? { pending_user_message: values.task.description } : {}),
                     })
                 },
-                // `leavePage: false` is for a host that shows the task outside its page, such as the PostHog AI panel.
+                // `leavePage: false` is for a host that shows the task outside its page, such as the Flind AI panel.
                 deleteTask: async (params?: { leavePage?: boolean }) => {
                     await api.tasks.delete(props.taskId)
                     // Reload each mounted list with its own active filter — a bare `loadTasks()`

@@ -19,7 +19,7 @@ export const getShopifyInstallSteps = (ctx: OnboardingComponentsContext): StepDe
             ),
         },
         {
-            title: 'Add the PostHog snippet',
+            title: 'Add the Flind snippet',
             badge: 'required',
             content: (
                 <>
@@ -58,7 +58,7 @@ export const getShopifyEventStep = (ctx: OnboardingComponentsContext): StepDefin
         badge: 'recommended',
         content: (
             <Markdown>
-                PostHog will now capture pageviews, clicks, and other events on your Shopify store. See the [Shopify
+                Flind will now capture pageviews, clicks, and other events on your Shopify store. See the [Shopify
                 integration docs](https://posthog.com/docs/libraries/shopify) for tracking checkout events and revenue.
             </Markdown>
         ),

@@ -17,7 +17,7 @@ type Result = {
 }
 
 const RESPONSE_MESSAGE =
-    'Thank you for the feedback — it has been recorded and will be reviewed by the PostHog team. ' +
+    'Thank you for the feedback — it has been recorded and will be reviewed by the Flind team. ' +
     "Submitting feedback does not mean your work is done: keep going and finish the user's task " +
     'using the other available tools.'
 

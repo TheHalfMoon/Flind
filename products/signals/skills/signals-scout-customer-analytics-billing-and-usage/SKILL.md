@@ -6,7 +6,7 @@ description: >
   forecasted MRR per product for one product dropping or spiking against its own baseline while
   the account total holds.
 compatibility: >
-  Designed for the PostHog Signals agent in a Claude sandbox with PostHog MCP scopes:
+  Designed for the Flind Signals agent in a Claude sandbox with Flind MCP scopes:
   read-only analytics plus signal_scout_internal:write (scratchpad) +
   signal_scout_report:write (report channel). Assumes the signals-scout MCP tool family plus
   execute-sql over `system.accounts` and the billing warehouse sources named in Orient, the
@@ -38,8 +38,8 @@ Note that the `account_owner` property is NOT staking — it names the champion 
 
 **Two data planes — never confuse them:**
 
-- **Billed usage** (your target): the traffic the account's own customers generate through the account's PostHog SDKs, pre-aggregated in the billing views. This is what you score.
-- **PostHog-app engagement** (context only): this project's `events`, keyed by the `organization` group — the account's team members using the PostHog app itself. It can tell you whether humans are still logging in; it can never confirm or deny a billed-usage move, because billed traffic does not flow through this project's event stream.
+- **Billed usage** (your target): the traffic the account's own customers generate through the account's Flind SDKs, pre-aggregated in the billing views. This is what you score.
+- **Flind-app engagement** (context only): this project's `events`, keyed by the `organization` group — the account's team members using the Flind app itself. It can tell you whether humans are still logging in; it can never confirm or deny a billed-usage move, because billed traffic does not flow through this project's event stream.
 
 The linchpin is therefore the **account→billing join**: `system.accounts.external_id` must match `organization_id` in the billing views.
 Verify it before trusting any per-account number (see Orient).
@@ -92,7 +92,7 @@ Coverage builds across runs instead of restarting cold.
 
 - **The account grain for app-engagement context is configured, not discovered.**
   It lives in `TeamCustomerAnalyticsConfig.account_group_type_index`; on this project that is the `organization` group type, so `system.accounts.external_id` = `$group_0` on `events`.
-  Use it only for the PostHog-app engagement context reads — never as a billed-usage source.
+  Use it only for the Flind-app engagement context reads — never as a billed-usage source.
 
 ### Profile shape — what's worth a look?
 
@@ -176,7 +176,7 @@ For an upward move, decide which story the **daily billing series** tells before
 - **Real adoption:** a gradual ramp across days, following the account's weekday/weekend rhythm; related products often tick up too, since more end-user traffic lifts several meters at once.
 - **Instrumentation loop:** a step function — flat, then N× overnight and pinned there; runs flat through weekends (machines don't rest); one product moving alone while everything else holds.
 
-PostHog-app engagement is the supporting witness, not the scorer: if the account's team activity (`$group_0`-keyed `events`) is unchanged while their billed volume doubled, nobody is rolling out a feature — lean loop.
+Flind-app engagement is the supporting witness, not the scorer: if the account's team activity (`$group_0`-keyed `events`) is unchanged while their billed volume doubled, nobody is rolling out a feature — lean loop.
 If you have access to GitHub in the sandbox (`gh`), try to correlate the spike's onset with a release or commit in the account's public repositories.
 An unexplained loop that inflates the bill is severity-ranked with drops.
 
@@ -228,7 +228,7 @@ The product-mix judgment on top:
   ```
 
   Pass each as a reviewer entry with `user_uuid` and a `reason` naming the relationship ("active account manager on Acme").
-  Never route from the account's CRM `properties` fields — `account_owner` names the champion inside the customer's own org, never a notification target; only relationship rows are PostHog-side assignments, and the emit path validates each `user_uuid` is a project member anyway.
+  Never route from the account's CRM `properties` fields — `account_owner` names the champion inside the customer's own org, never a notification target; only relationship rows are Flind-side assignments, and the emit path validates each `user_uuid` is a project member anyway.
   If no active account manager exists, fall back to a cached `reviewer:customer_analytics_billing_and_usage:` pointer or `scout-members-list` precedent, or file unrouted.
   Action prose, verbatim shape:
   - Drop: "Check if [product] was removed from their stack or a deploy broke instrumentation. Reach out referencing [product]."

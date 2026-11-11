@@ -838,7 +838,7 @@ export const reportListLogic = kea<reportListLogicType>([
     }),
 
     selectors({
-        // The PostHog user the reviewer scope narrows the list to. Undefined for Entire project.
+        // The Flind user the reviewer scope narrows the list to. Undefined for Entire project.
         scopeReviewerUuid: [
             (s) => [s.scope, s.user],
             (scope: InboxScope, user: UserType | null): string | undefined =>

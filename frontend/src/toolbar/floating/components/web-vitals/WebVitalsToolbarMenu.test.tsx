@@ -22,7 +22,7 @@ describe('WebVitalsToolbarMenu', () => {
             .mount()
     })
 
-    it('uses the PostHog ui host for the settings link', async () => {
+    it('uses the Flind ui host for the settings link', async () => {
         render(<WebVitalsToolbarMenu />)
 
         const settingsLink = screen.getByText('settings page').closest('a')

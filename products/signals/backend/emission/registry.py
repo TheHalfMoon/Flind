@@ -12,7 +12,7 @@ from products.warehouse_sources.backend.facade.types import ExternalDataSourceTy
 
 
 class InternalSourceType(str, enum.Enum):
-    """Source types for internal PostHog products (not data warehouse imports)."""
+    """Source types for internal Flind products (not data warehouse imports)."""
 
     CONVERSATIONS = "conversations"
 

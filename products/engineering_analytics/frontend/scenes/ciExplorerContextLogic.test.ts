@@ -34,13 +34,13 @@ const mockContext = engineeringAnalyticsCiTimingContext as jest.MockedFunction<
 const mockRuns = engineeringAnalyticsPrRuns as jest.MockedFunction<typeof engineeringAnalyticsPrRuns>
 const mockJobs = engineeringAnalyticsWorkflowJobs as jest.MockedFunction<typeof engineeringAnalyticsWorkflowJobs>
 
-const PROPS = { repoOwner: 'PostHog', repoName: 'posthog', number: 10, sourceId: null }
+const PROPS = { repoOwner: 'Flind', repoName: 'posthog', number: 10, sourceId: null }
 const WORKFLOW = 'github_actions:42:1'
 const LINT = `${WORKFLOW}/Lint`
 const BUILD = `${WORKFLOW}/Build`
 
 const RUN: WorkflowRunDetailApi = {
-    repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+    repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
     id: 42,
     workflow_name: 'CI',
     workflow_id: 7,

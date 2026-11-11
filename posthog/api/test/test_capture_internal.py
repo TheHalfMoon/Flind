@@ -118,21 +118,21 @@ class TestBuildV1Headers(SimpleTestCase):
         assert headers["Authorization"] == "Bearer phc_test123"
         assert headers["Content-Type"] == "application/json"
         assert "flind-capture-v1-internal" in headers["User-Agent"]
-        assert headers["PostHog-Sdk-Info"] == "flind-capture-v1-internal/1.0"
-        assert headers["PostHog-Attempt"] == "1"
-        assert len(headers["PostHog-Request-Id"]) == 36
-        assert "T" in headers["PostHog-Request-Timestamp"]
+        assert headers["Flind-Sdk-Info"] == "flind-capture-v1-internal/1.0"
+        assert headers["Flind-Attempt"] == "1"
+        assert len(headers["Flind-Request-Id"]) == 36
+        assert "T" in headers["Flind-Request-Timestamp"]
 
     def test_attempt_increments(self) -> None:
         h1 = _build_v1_headers("tok", attempt=1)
         h2 = _build_v1_headers("tok", attempt=3)
-        assert h1["PostHog-Attempt"] == "1"
-        assert h2["PostHog-Attempt"] == "3"
+        assert h1["Flind-Attempt"] == "1"
+        assert h2["Flind-Attempt"] == "3"
 
     def test_request_id_unique_per_call(self) -> None:
         h1 = _build_v1_headers("tok", attempt=1)
         h2 = _build_v1_headers("tok", attempt=1)
-        assert h1["PostHog-Request-Id"] != h2["PostHog-Request-Id"]
+        assert h1["Flind-Request-Id"] != h2["Flind-Request-Id"]
 
 
 class TestNormalizeOptionsAndProperties(SimpleTestCase):
@@ -491,10 +491,10 @@ class TestCaptureBatchInternal(SimpleTestCase):
         headers = spy.calls[0]["headers"]
         assert headers["Authorization"] == "Bearer phc_abc"
         assert headers["Content-Type"] == "application/json"
-        assert headers["PostHog-Sdk-Info"] == "flind-capture-v1-internal/1.0"
-        assert headers["PostHog-Attempt"] == "1"
-        assert len(headers["PostHog-Request-Id"]) == 36
-        assert "T" in headers["PostHog-Request-Timestamp"]
+        assert headers["Flind-Sdk-Info"] == "flind-capture-v1-internal/1.0"
+        assert headers["Flind-Attempt"] == "1"
+        assert len(headers["Flind-Request-Id"]) == 36
+        assert "T" in headers["Flind-Request-Timestamp"]
 
     @patch("posthog.api.capture.internal_requests_session")
     def test_envelope_shape_on_wire(self, mock_session_fn: MagicMock) -> None:
@@ -648,8 +648,8 @@ class TestCaptureBatchInternal(SimpleTestCase):
 
         # Second request should have incremented attempt and only retry uuid.
         second_headers = spy.calls[1]["headers"]
-        assert second_headers["PostHog-Attempt"] == "2"
-        assert second_headers["PostHog-Request-Id"] != spy.calls[0]["headers"]["PostHog-Request-Id"]
+        assert second_headers["Flind-Attempt"] == "2"
+        assert second_headers["Flind-Request-Id"] != spy.calls[0]["headers"]["Flind-Request-Id"]
         second_batch = spy.calls[1]["json"]["batch"]
         assert len(second_batch) == 1
         assert second_batch[0]["uuid"] == u_retry
@@ -703,13 +703,13 @@ class TestCaptureBatchInternal(SimpleTestCase):
 
         h1 = spy.calls[0]["headers"]
         h2 = spy.calls[1]["headers"]
-        assert h1["PostHog-Attempt"] == "1"
-        assert h2["PostHog-Attempt"] == "2"
-        assert h1["PostHog-Request-Id"] != h2["PostHog-Request-Id"]
+        assert h1["Flind-Attempt"] == "1"
+        assert h2["Flind-Attempt"] == "2"
+        assert h1["Flind-Request-Id"] != h2["Flind-Request-Id"]
         for h in (h1, h2):
             assert "Authorization" in h
-            assert "PostHog-Sdk-Info" in h
-            assert "PostHog-Request-Timestamp" in h
+            assert "Flind-Sdk-Info" in h
+            assert "Flind-Request-Timestamp" in h
 
     @patch("posthog.api.capture.internal_requests_session")
     def test_transport_retry_adapter_mounted(self, mock_session_fn: MagicMock) -> None:

@@ -120,7 +120,7 @@ export type scoutAiLogicType = MakeLogicType<
 >
 
 /**
- * Sends a question from a scout page to the PostHog AI side panel. The question goes to the panel's
+ * Sends a question from a scout page to the Flind AI side panel. The question goes to the panel's
  * own composer as an auto-submitted seed, so the run, its follow-ups, and its history are the panel's
  * normal task flow. The scout rides along as attached context (see `scoutAiContextItems`).
  */
@@ -195,7 +195,7 @@ export const scoutAiLogic = kea<scoutAiLogicType>([
                 lemonToast.error(values.aiConsentDisabledReason)
                 return
             }
-            // The panel is shared with the PostHog AI side panel. Start from its composer, so this
+            // The panel is shared with the Flind AI side panel. Start from its composer, so this
             // question never appends to a run or a history list left open there.
             actions.clearActiveCreation()
             actions.setHistoryExpanded(false)

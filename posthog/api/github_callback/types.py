@@ -156,8 +156,8 @@ def github_oauth_redirect_uri() -> str:
 
 
 def github_app_install_url_shareable() -> str:
-    """The App's install page with no PostHog state attached, safe to hand to a GitHub org owner
-    who has no PostHog session to resume."""
+    """The App's install page with no Flind state attached, safe to hand to a GitHub org owner
+    who has no Flind session to resume."""
     instance_settings = get_instance_settings(["GITHUB_APP_SLUG"])
     app_slug = instance_settings.get("GITHUB_APP_SLUG")
     if not app_slug:

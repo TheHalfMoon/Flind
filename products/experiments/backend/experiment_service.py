@@ -195,7 +195,7 @@ BACKDATED_LAUNCH_THRESHOLD = timedelta(days=1)
 
 
 def _is_imported_concluded(experiment: Experiment) -> bool:
-    """An experiment whose end_date has passed at create or launch never ran in PostHog: it is an import."""
+    """An experiment whose end_date has passed at create or launch never ran in Flind: it is an import."""
     return experiment.end_date is not None and experiment.end_date <= timezone.now()
 
 
@@ -3708,7 +3708,7 @@ class ExperimentService:
 
         # --- validate updated fields (BEFORE any mutation) --------------------
         # Run the pure payload validations that can raise 400 *before* the flag
-        # write below. PostHog has no ATOMIC_REQUESTS, so _sync_feature_flag_on_update
+        # write below. Flind has no ATOMIC_REQUESTS, so _sync_feature_flag_on_update
         # autocommits; validating after it would let an invalid payload persist a
         # flag change while the request still 400s, leaving the flag and experiment
         # inconsistent. These checks read update_data + the experiment only (no DB

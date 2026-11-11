@@ -45,7 +45,7 @@ export type messageRatingsLogicType = MakeLogicType<
 >
 
 /**
- * Persists PostHog AI answer ratings ("good"/"bad") in localStorage.
+ * Persists Flind AI answer ratings ("good"/"bad") in localStorage.
  *
  * Keys are trace ids. A sandbox turn without a trace id uses `<conversationId>:turn-<n>`.
  */

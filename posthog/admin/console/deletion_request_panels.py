@@ -143,7 +143,7 @@ class DeletionRequestOverviewPanel(Panel):
             Fact(label="Attempts", value=str(obj.attempt_count)),
         ]
         if obj.last_dagster_run_id:
-            # Facts link within PostHog only. The Django admin page links to the run in Dagster.
+            # Facts link within Flind only. The Django admin page links to the run in Dagster.
             facts.append(Fact(label="Last Dagster run", value=obj.last_dagster_run_id, mono=True))
         return facts
 

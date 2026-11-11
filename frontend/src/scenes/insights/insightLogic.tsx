@@ -1344,7 +1344,7 @@ export const insightLogic: LogicWrapper<insightLogicType> = kea<insightLogicType
             })
             const insightName = savedInsight.name || savedInsight.derived_name
             // An MCP-titled insight suggests a hand-rolled MCP server tracker, so offer MCP analytics
-            // instead of the PostHog MCP hint. Two MCP toasts about different products would confuse.
+            // instead of the Flind MCP hint. Two MCP toasts about different products would confuse.
             if (insightNumericId === undefined && titleMentionsMCP(insightName)) {
                 tryShowMCPAnalyticsNudge('insight')
             } else {

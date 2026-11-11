@@ -111,7 +111,7 @@ class SpotlerCRMSource(ResumableSource[SpotlerCRMSourceConfig, SpotlerCRMResumeC
             name=ExternalDataSourceType.SPOTLERCRM,
             category=DataWarehouseSourceCategory.CRM,
             label="Spotler CRM",
-            caption="""Enter your Spotler CRM API access token to pull your CRM data into the PostHog Data warehouse.
+            caption="""Enter your Spotler CRM API access token to pull your CRM data into the Flind Data warehouse.
 
 Generate a token in Spotler CRM under **Settings / Integrations / API V4** — it's shown only once, so copy it when you create it.
 

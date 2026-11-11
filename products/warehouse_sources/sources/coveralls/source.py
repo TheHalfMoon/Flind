@@ -61,7 +61,7 @@ class CoverallsSource(ResumableSource[CoverallsSourceConfig, CoverallsResumeConf
             label="Coveralls",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["code coverage", "coverage", "coveralls.io"],
-            caption="""Pull per-build code coverage history from [Coveralls](https://coveralls.io) into the PostHog Data warehouse to track coverage trends and catch regressions across repositories.
+            caption="""Pull per-build code coverage history from [Coveralls](https://coveralls.io) into the Flind Data warehouse to track coverage trends and catch regressions across repositories.
 
 Enter the repositories you want to track, one per line (or comma-separated), in `owner/repo` form. For example:
 

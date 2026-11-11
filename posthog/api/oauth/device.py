@@ -76,8 +76,8 @@ MAX_POLL_INTERVAL = 60
 
 # `OAuthApplication.allows_grant_type` refuses an unverified device client. This says why.
 UNVERIFIED_CLIENT_DESCRIPTION = (
-    "PostHog hasn't verified this app. Device login only works for apps PostHog has verified, "
-    "which are PostHog's own apps."
+    "Flind hasn't verified this app. Device login only works for apps Flind has verified, "
+    "which are Flind's own apps."
 )
 
 
@@ -271,7 +271,7 @@ class OAuthDeviceAuthorizationView(DeviceAuthorizationView):
         from posthog.api.oauth.views import cimd_creation_throttled  # noqa: PLC0415
 
         # This endpoint needs no login and writes a row per call, so it is limited per IP. A CIMD
-        # client_id also makes PostHog fetch a document, so new CIMD clients get the same per-IP
+        # client_id also makes Flind fetch a document, so new CIMD clients get the same per-IP
         # limit as on /oauth/authorize.
         # The IP throttles read only `request.META`, which a Django request has too.
         drf_request = cast(Request, request)
@@ -400,7 +400,7 @@ class DeviceGrantDetailsSerializer(serializers.Serializer):
     client_id = serializers.CharField(help_text="The client that started the device grant.")
     client_name = serializers.CharField(help_text="The client's display name.")
     logo_uri = serializers.CharField(allow_null=True, help_text="The client's logo, if it declared one.")
-    is_verified = serializers.BooleanField(help_text="Whether PostHog has verified the client.")
+    is_verified = serializers.BooleanField(help_text="Whether Flind has verified the client.")
     scopes = serializers.ListField(
         child=serializers.CharField(), help_text="The scopes the token will carry if the person approves."
     )

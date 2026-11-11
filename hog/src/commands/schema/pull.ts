@@ -15,7 +15,7 @@ interface PulledLanguage {
 }
 
 export default defineCommand({
-    description: 'Generate a typed PostHog SDK from your event definitions',
+    description: 'Generate a typed Flind SDK from your event definitions',
     writes: true,
     options: {
         language: {
@@ -89,7 +89,7 @@ export default defineCommand({
                 const fallback = LANGUAGE_INFO[language].defaultFile
                 const answer = ctx.prompts
                     ? await ctx.prompts.text(
-                          `Where should hog write the ${LANGUAGE_INFO[language].name} module? Your app imports PostHog from it.`,
+                          `Where should hog write the ${LANGUAGE_INFO[language].name} module? Your app imports Flind from it.`,
                           { initialValue: fallback }
                       )
                     : fallback
@@ -98,7 +98,7 @@ export default defineCommand({
 
             const definitions = await fetchDefinitions(ctx, language)
             const outputPath = storedPath(root, file)
-            // The module carries the time PostHog generated it, so only the hash says whether the events changed.
+            // The module carries the time Flind generated it, so only the hash says whether the events changed.
             const unchanged =
                 saved?.output_path === outputPath &&
                 saved.schema_hash === definitions.schema_hash &&

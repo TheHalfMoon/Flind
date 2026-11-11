@@ -10,7 +10,7 @@ from products.customer_analytics.backend.facade.enums import OwnershipRoleDiagno
 
 
 class ExternalAccountOwnershipHolderSerializer(serializers.Serializer):
-    user_id = serializers.IntegerField(help_text="PostHog user id of the holder.")
+    user_id = serializers.IntegerField(help_text="Flind user id of the holder.")
     email = serializers.CharField(
         allow_null=True, help_text="Current email address of the holder; null for a holder outside the organization."
     )
@@ -20,7 +20,7 @@ class ExternalAccountOwnershipHolderSerializer(serializers.Serializer):
     is_organization_member = serializers.BooleanField(
         help_text="Whether the holder is currently a member of the project's organization."
     )
-    is_active = serializers.BooleanField(help_text="Whether the holder's PostHog user account is active.")
+    is_active = serializers.BooleanField(help_text="Whether the holder's Flind user account is active.")
 
 
 class ExternalAccountRoleOwnershipSerializer(serializers.Serializer):
@@ -57,7 +57,7 @@ class ExternalAccountOwnershipSerializer(serializers.Serializer):
         allow_null=True, help_text="External account key: the group key the account is linked to."
     )
     region = serializers.CharField(
-        allow_null=True, help_text="Region of this PostHog instance (`us`, `eu`), or null when self-hosted."
+        allow_null=True, help_text="Region of this Flind instance (`us`, `eu`), or null when self-hosted."
     )
     roles = ExternalAccountRoleOwnershipSerializer(
         many=True,

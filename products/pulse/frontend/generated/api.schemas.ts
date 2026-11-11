@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface BriefAnchorsApi {
@@ -292,7 +292,7 @@ export interface BriefSectionApi {
     title: string
     /** Section body rendered as markdown. */
     markdown: string
-    /** PostHog resources this section cites as evidence. */
+    /** Flind resources this section cites as evidence. */
     citations: BriefSectionCitationApi[]
     /** Model confidence in this section, 0.0-1.0. */
     confidence: number

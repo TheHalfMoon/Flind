@@ -31,7 +31,7 @@ function toastDuplicateNameConflict(error: string, errorObject: unknown): void {
 
 export function isPathOpenWhileProjectPendingDeletion(pathname: string): boolean {
     // projectBased scenes are served under a /project/:id prefix, so match the lockout path by suffix.
-    // Tickets load from PostHog's support project, not this one, and reply emails link to them.
+    // Tickets load from Flind's support project, not this one, and reply emails link to them.
     return pathname.endsWith(urls.projectPendingDeletion()) || removeProjectIdIfPresent(pathname) === urls.myTickets()
 }
 

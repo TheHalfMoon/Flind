@@ -160,7 +160,7 @@ function SourceMigrationPrefillConfirm({ sourceName }: { sourceName: string }): 
             confirmed={prefillConfirmed}
             onConfirmedChange={setPrefillConfirmed}
             noun="source"
-            trustNote="PostHog checks the credentials you enter against this server, so only continue if you trust it."
+            trustNote="Flind checks the credentials you enter against this server, so only continue if you trust it."
             newSetupUrl={urls.dataWarehouseSourceConnect(sourceName)}
         />
     )

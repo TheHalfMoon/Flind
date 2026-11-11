@@ -139,7 +139,7 @@ class CleanupResult:
 
 @click.command(
     name="doctor:disk",
-    help="Interactive disk space cleanup for common PostHog dev bloat",
+    help="Interactive disk space cleanup for common Flind dev bloat",
 )
 @click.option("--dry-run", is_flag=True, help="Show what would be cleaned without deleting")
 @click.option("--yes", "-y", is_flag=True, help="Auto-confirm all cleanup operations")
@@ -198,7 +198,7 @@ def doctor_disk(
     prompts.
     """
 
-    click.echo("🔍 PostHog Disk Space Cleanup\n")
+    click.echo("🔍 Flind Disk Space Cleanup\n")
 
     if dry_run:
         click.echo("🚀 Running in DRY-RUN mode - no files will be deleted\n")
@@ -1701,10 +1701,10 @@ def _format_size(bytes_size: float) -> str:
 
 
 # ---------------------------------------------------------------------------
-# doctor:zombies — find and kill orphaned PostHog dev processes
+# doctor:zombies — find and kill orphaned Flind dev processes
 # ---------------------------------------------------------------------------
 
-# Executable basenames that should never be reported as PostHog dev processes.
+# Executable basenames that should never be reported as Flind dev processes.
 # Matched against the first token's basename only (not the full args string)
 # to avoid false positives from directory names like "/Users/x/code/github/...".
 _EXCLUDED_EXECUTABLES: frozenset[str] = frozenset(
@@ -1743,7 +1743,7 @@ _EXCLUDED_EXECUTABLES: frozenset[str] = frozenset(
 
 @dataclass
 class DevProcess:
-    """A detected PostHog dev process."""
+    """A detected Flind dev process."""
 
     pid: int
     ppid: int
@@ -1759,24 +1759,24 @@ class DevProcess:
 
 @click.command(
     name="doctor:zombies",
-    help="Find and kill orphaned PostHog dev processes",
+    help="Find and kill orphaned Flind dev processes",
 )
 @click.option("--dry-run", is_flag=True, help="Show what would be killed without killing")
 @click.option("--yes", "-y", is_flag=True, help="Auto-confirm kill of all orphaned processes")
 @click.option("--all", "include_all", is_flag=True, help="Include processes under an active phrocs, not just orphans")
 def doctor_zombies(dry_run: bool, yes: bool, include_all: bool) -> None:
-    """Find and kill orphaned PostHog dev processes left behind after an unclean shutdown."""
+    """Find and kill orphaned Flind dev processes left behind after an unclean shutdown."""
 
     def _record() -> None:
         if not dry_run:
             hints.record_check_run("doctor:zombies")
 
-    click.echo("Scanning for orphaned PostHog dev processes...\n")
+    click.echo("Scanning for orphaned Flind dev processes...\n")
 
     processes = _scan_posthog_processes(REPO_ROOT)
 
     if not processes:
-        click.echo("No PostHog dev processes found. Nothing to clean up.")
+        click.echo("No Flind dev processes found. Nothing to clean up.")
         _record()
         return
 
@@ -1843,7 +1843,7 @@ def doctor_zombies(dry_run: bool, yes: bool, include_all: bool) -> None:
 
 
 def _scan_posthog_processes(repo_root: Path) -> list[DevProcess]:
-    """Find all processes related to the PostHog repo."""
+    """Find all processes related to the Flind repo."""
 
     result = subprocess.run(
         ["ps", "-eo", "pid=,ppid=,pcpu=,rss=,lstart=,args="],
@@ -2048,7 +2048,7 @@ def _is_excluded(args: str) -> bool:
 
 
 def _has_known_executable(args: str) -> bool:
-    """Check if the command starts with a known PostHog dev executable."""
+    """Check if the command starts with a known Flind dev executable."""
 
     known = ("python", "node", "celery", "granian", "uvicorn", "dagster", "cargo", "air", "tsx", "esbuild", "pnpm")
     first_word = args.split()[0].rsplit("/", 1)[-1] if args else ""
@@ -2353,7 +2353,7 @@ def _scan_unheld_via_lsof(unheld: Sequence[tuple[int, str]]) -> list[PortHolder]
     """One lsof pass for plain-process listeners on ports with no docker holder.
 
     Report only — killing arbitrary pids from a startup check is out of
-    bounds (`doctor:zombies` already handles orphaned PostHog processes).
+    bounds (`doctor:zombies` already handles orphaned Flind processes).
     """
     if shutil.which("lsof") is None:
         return [PortHolder(port=p, name=n) for p, n in unheld]
@@ -2409,7 +2409,7 @@ def _containers_for_service(service: str) -> list[tuple[str, str]]:
 
 def _posthog_shaped_projects(candidates: set[str]) -> set[str]:
     """Of the candidate foreign projects, keep only ones that look like a
-    PostHog dev stack: a clickhouse container in any state (a partial stack
+    Flind dev stack: a clickhouse container in any state (a partial stack
     may hold ports while its clickhouse is stopped). An unrelated project
     that happens to hold postgres/redis ports gets reported, not torn down.
     """
@@ -2437,11 +2437,11 @@ def _confirm_stack_teardown(stack: str, timeout: float = 30.0) -> bool:
     help="Pre-flight check for host ports the dev stack needs",
 )
 @click.option(
-    "--yes", "-y", is_flag=True, help="Auto-confirm teardown of any foreign PostHog stack found holding a port"
+    "--yes", "-y", is_flag=True, help="Auto-confirm teardown of any foreign Flind stack found holding a port"
 )
 def doctor_ports(yes: bool) -> None:
     """Report what's holding the dev stack's host ports, and in a TTY, offer
-    to tear down a stale foreign PostHog stack. Fail-open: never blocks
+    to tear down a stale foreign Flind stack. Fail-open: never blocks
     `bin/start`, non-interactive callers only ever see suggested commands.
     """
     if shutil.which("docker") is None:

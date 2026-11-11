@@ -44,7 +44,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Tags defined on each alert, used to organize mentions. One row per tag per alert.",
         "docs_url": "https://dev.mention.com/current/src/account/alert/tag/GetTags.html",
         "columns": {
-            "alert_id": "Identifier of the alert the tag belongs to (added by PostHog during sync).",
+            "alert_id": "Identifier of the alert the tag belongs to (added by Flind during sync).",
             "id": "Unique identifier of the tag; mentions stay linked to the tag by id when it is renamed.",
             "name": "Human-readable label of the tag.",
             "mention_count": "Number of mentions carrying the tag.",
@@ -56,7 +56,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://dev.mention.com/current/src/account/alert/mention/GetMentions.html",
         "columns": {
             "id": "Unique identifier of the mention.",
-            "alert_id": "Identifier of the alert that found the mention (normalized to a string by PostHog during sync).",
+            "alert_id": "Identifier of the alert that found the mention (normalized to a string by Flind during sync).",
             "title": "Title of the mentioned content. Not provided for Twitter, Facebook, or Instagram mentions.",
             "description": "Excerpt of the mentioned content. Not provided for Twitter, Facebook, or Instagram mentions.",
             "original_url": "Original URL of the mention, usable for automated lookups.",
@@ -85,7 +85,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Authors (influencers) who published mentions found by each alert, with their influence scores. One row per author per alert.",
         "docs_url": "https://dev.mention.com/current/src/account/alert/author/GetAuthors.html",
         "columns": {
-            "alert_id": "Identifier of the alert the author was found by (added by PostHog during sync).",
+            "alert_id": "Identifier of the alert the author was found by (added by Flind during sync).",
             "id": "Identifier of the author.",
             "type": "Kind of author, such as people.",
             "name": "Display name of the author.",
@@ -103,7 +103,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Tasks assigned to team members on the mentions of each alert. One row per task per alert.",
         "docs_url": "https://dev.mention.com/current/src/account/alert/GetTasks.html",
         "columns": {
-            "alert_id": "Identifier of the alert the task's mention belongs to (added by PostHog during sync).",
+            "alert_id": "Identifier of the alert the task's mention belongs to (added by Flind during sync).",
             "id": "Identifier of the task.",
             "assigned_to_account": "Account the task is assigned to.",
             "assigned_by_account": "Account that assigned the task.",

@@ -21,8 +21,8 @@ const FIELDS: {
     key: "url",
     type: "url",
     placeholder: "https://posthog.example.com",
-    label: "PostHog instance URL",
-    help: "The address of your PostHog instance. Sign-in, the API, and links use it.",
+    label: "Flind instance URL",
+    help: "The address of your Flind instance. Sign-in, the API, and links use it.",
   },
   {
     key: "oauthClientId",
@@ -36,7 +36,7 @@ const FIELDS: {
     type: "url",
     placeholder: "LLM gateway URL (optional)",
     label: "LLM gateway URL",
-    help: "The LLM gateway for agent runs. Your instance needs its own gateway, because a PostHog Cloud gateway cannot read a token from your instance.",
+    help: "The LLM gateway for agent runs. Your instance needs its own gateway, because a Flind Cloud gateway cannot read a token from your instance.",
   },
 ];
 

@@ -64,11 +64,11 @@ _VALIDATE_CONNECTION_HINTS: list[tuple[str, str]] = [
     *CERTIFICATE_ERRORS.items(),
     (
         "Name or service not known",
-        "Host could not be resolved. Check the host is spelled correctly and reachable from PostHog.",
+        "Host could not be resolved. Check the host is spelled correctly and reachable from Flind.",
     ),
     (
         "nodename nor servname provided",
-        "Host could not be resolved. Check the host is spelled correctly and reachable from PostHog.",
+        "Host could not be resolved. Check the host is spelled correctly and reachable from Flind.",
     ),
     (
         "Connection refused",
@@ -76,15 +76,15 @@ _VALIDATE_CONNECTION_HINTS: list[tuple[str, str]] = [
     ),
     (
         "timed out",
-        "Connection timed out. Check that your database is reachable from the public internet and that PostHog's egress IP addresses are allowed through your firewall (see the docs). For a database that can't be exposed publicly, use the SSH tunnel option.",
+        "Connection timed out. Check that your database is reachable from the public internet and that Flind's egress IP addresses are allowed through your firewall (see the docs). For a database that can't be exposed publicly, use the SSH tunnel option.",
     ),
     (
         "No route to host",
-        "Could not reach the host. Check the host is correct and that PostHog's IP addresses are allowed through your firewall.",
+        "Could not reach the host. Check the host is correct and that Flind's IP addresses are allowed through your firewall.",
     ),
     (
         "Network is unreachable",
-        "Could not reach the host. Check the host is correct and that PostHog's IP addresses are allowed through your firewall.",
+        "Could not reach the host. Check the host is correct and that Flind's IP addresses are allowed through your firewall.",
     ),
     ("Unknown database", "Database does not exist. Check the database name is correct."),
 ]
@@ -102,15 +102,15 @@ _UNREACHABLE_HOST_CONNECT_DETAILS = (
 )
 
 _UNREACHABLE_HOST_ERROR = (
-    "PostHog couldn't connect to your MySQL server. Check that the host and port are "
-    "correct and that the database is reachable from the public internet, with PostHog's "
+    "Flind couldn't connect to your MySQL server. Check that the host and port are "
+    "correct and that the database is reachable from the public internet, with Flind's "
     "egress IP addresses allowed through your firewall. For a database that can't be "
     "exposed publicly, use the SSH tunnel option, then re-enable the sync."
 )
 
 _CANT_CONNECT_EXHAUSTED_MESSAGE = (
-    "PostHog couldn't connect to your MySQL server, and it kept failing on every retry. Check that "
-    "the server is running and reachable from the public internet, and that PostHog's egress IP "
+    "Flind couldn't connect to your MySQL server, and it kept failing on every retry. Check that "
+    "the server is running and reachable from the public internet, and that Flind's egress IP "
     "addresses are allowed through your firewall. For a database that can't be exposed publicly, "
     "use the SSH tunnel option. This sync is still enabled and will run again on its next schedule."
 )
@@ -234,7 +234,7 @@ class MySQLSource(
             category=DataWarehouseSourceCategory.DATABASES,
             featured=True,
             keywords=["sql", "mariadb", "rds", "aws rds", "amazon rds", "aurora"],
-            caption="Enter your MySQL/MariaDB credentials to automatically pull your MySQL data into the PostHog Data warehouse.",
+            caption="Enter your MySQL/MariaDB credentials to automatically pull your MySQL data into the Flind Data warehouse.",
             iconPath="/static/services/mysql.png",
             docsUrl="https://posthog.com/docs/cdp/sources/mysql",
             fields=cast(
@@ -247,7 +247,7 @@ class MySQLSource(
                         required=True,
                         placeholder="db.example.com",
                         caption=(
-                            "Must be reachable from the public internet. Add PostHog's egress IP addresses to your "
+                            "Must be reachable from the public internet. Add Flind's egress IP addresses to your "
                             "firewall allowlist (see the docs above) and use a public host. `localhost` and private "
                             "IPs (10.x, 172.16-31.x, 192.168.x) can't be reached. For a database that can't be "
                             "exposed publicly, enable the SSH tunnel below."
@@ -404,19 +404,19 @@ class MySQLSource(
             "Bad handshake": None,
             # Raised by the `sshtunnel` library (via the shared `open_ssh_tunnel` helper) when the
             # SSH tunnel can't be brought up — the bastion host is unreachable, the host/port is
-            # wrong, the SSH key/credentials are rejected, or a firewall blocks PostHog's IPs. The
+            # wrong, the SSH key/credentials are rejected, or a firewall blocks Flind's IPs. The
             # main streaming path already classifies this via `Any_Source_Errors`, but the schema-
             # discovery activity only checks the per-source dict, so without this entry it keeps
             # retrying and reporting the customer's gateway misconfig as error-tracking noise.
             # Postgres and MSSQL already treat this identical error as non-retryable.
-            "Could not establish session to SSH gateway": "Could not connect to your SSH tunnel. Check that the SSH host, port, and credentials are correct, the bastion host is running and reachable, and that PostHog's IP addresses are allowed through its firewall.",
+            "Could not establish session to SSH gateway": "Could not connect to your SSH tunnel. Check that the SSH host, port, and credentials are correct, the bastion host is running and reachable, and that Flind's IP addresses are allowed through its firewall.",
             # paramiko raises a bare, message-less EOFError when the SSH gateway accepts the TCP
             # connection but drops it mid-handshake (a non-SSH service on the port, the bastion
-            # refusing PostHog's IPs, a proxy resetting the stream). sshtunnel doesn't wrap it, so
+            # refusing Flind's IPs, a proxy resetting the stream). sshtunnel doesn't wrap it, so
             # without translation it surfaces as an empty-message crash that matches no rule and
             # retries forever. `connect` re-raises it as `_SSH_HANDSHAKE_EOF_ERROR` — same
             # gateway-configuration class as "Could not establish session to SSH gateway" above.
-            _SSH_HANDSHAKE_EOF_ERROR: "Could not connect to your SSH tunnel — the gateway accepted the connection but closed it during the SSH handshake. Check that the SSH host and port point to an SSH server (not the database port), that the bastion is running and reachable, and that PostHog's IP addresses are allowed through its firewall, then re-enable the sync.",
+            _SSH_HANDSHAKE_EOF_ERROR: "Could not connect to your SSH tunnel — the gateway accepted the connection but closed it during the SSH handshake. Check that the SSH host and port point to an SSH server (not the database port), that the bastion is running and reachable, and that Flind's IP addresses are allowed through its firewall, then re-enable the sync.",
             # `_pinned_ssh_host` (common/mixins.py) re-checks the SSH tunnel host on every connect,
             # since a host that resolved to a public address at setup can drift (DNS change, or a
             # short-TTL record). It rejects the host if it doesn't resolve or resolves to a
@@ -424,7 +424,7 @@ class MySQLSource(
             # retrying just re-hits the same rejection. Match the stable prefix and exclude the
             # volatile host/IP details that follow it in `resolution.error`.
             "SSH tunnel host not allowed": (
-                "PostHog rejected the SSH tunnel host for this source because it either couldn't "
+                "Flind rejected the SSH tunnel host for this source because it either couldn't "
                 "be resolved, or resolves to a private/internal address. Check that the SSH tunnel "
                 "host is spelled correctly and reachable from the public internet, then re-enable "
                 "the sync."
@@ -435,7 +435,7 @@ class MySQLSource(
             # `mysqladmin flush-hosts`, a restart, or raising `max_connect_errors`) — retrying just
             # adds more failed connections and keeps the host blocked. Match only the stable phrase,
             # not the volatile host IP or the `mysqladmin`/`mariadb-admin` wording that varies by server.
-            "is blocked because of many connection errors": "Your MySQL/MariaDB server has blocked PostHog's host after too many interrupted connections (error 1129). Ask your database admin to run 'FLUSH HOSTS' (or 'mysqladmin flush-hosts') and consider raising 'max_connect_errors', then retry the sync.",
+            "is blocked because of many connection errors": "Your MySQL/MariaDB server has blocked Flind's host after too many interrupted connections (error 1129). Ask your database admin to run 'FLUSH HOSTS' (or 'mysqladmin flush-hosts') and consider raising 'max_connect_errors', then retry the sync.",
             # OpenSSL's signature for "tried to speak TLS to an endpoint that replied with
             # non-TLS bytes" — the source has SSL enabled but the server (or a proxy in front
             # of it, e.g. a plain TCP proxy) doesn't speak TLS, or the host/port is wrong. This
@@ -479,14 +479,14 @@ class MySQLSource(
             # behind a single quote rather than the double quote pymysql itself uses.
             "Unknown column": "A column referenced during sync no longer exists in your source table (MySQL error 1054). This usually means a column was renamed or dropped — if it's the table's incremental field, update it to a column that exists (or switch to a full re-sync), then resync.",
             # MySQL/MariaDB error 1130 (ER_HOST_NOT_PRIVILEGED): the server has no grant permitting
-            # PostHog's connecting host, so the handshake is rejected before any credentials are
+            # Flind's connecting host, so the handshake is rejected before any credentials are
             # checked. Only a DB admin can fix this server-side (GRANT for the host, or allow our
             # egress / SSH-tunnel host) — retrying connects from the same host fails identically.
             # Match the stable tail phrase, not the volatile host in the message prefix, and not the
             # vendor name that follows it: MariaDB renders this same error as "...this MariaDB
             # server", not "...this MySQL server", so anchoring on the vendor name missed every
             # MariaDB server.
-            "is not allowed to connect to this": "Your MySQL/MariaDB server isn't allowing connections from PostHog's host (error 1130). Ask your database admin to grant access for the connecting host (or allow our IP / SSH-tunnel host), then retry the sync.",
+            "is not allowed to connect to this": "Your MySQL/MariaDB server isn't allowing connections from Flind's host (error 1130). Ask your database admin to grant access for the connecting host (or allow our IP / SSH-tunnel host), then retry the sync.",
             # MySQL/MariaDB error 1226 (ER_USER_LIMIT_REACHED): the connecting user account has a
             # `MAX_CONNECTIONS_PER_HOUR` resource limit set (via `CREATE USER`/`GRANT ... WITH
             # MAX_CONNECTIONS_PER_HOUR`), and this hour's quota is used up. The counter only resets
@@ -494,14 +494,14 @@ class MySQLSource(
             # and just spends more of the next hour's quota re-attempting — only a DB admin raising
             # or removing the limit fixes it. Match the locale-independent error code (the username
             # and current-value count are volatile).
-            "(1226,": "Your MySQL/MariaDB user account has a 'max_connections_per_hour' resource limit configured, and PostHog has used it up for this hour (error 1226). The limit resets at the top of the next hour, but retrying now only spends more of that quota. Ask your database admin to raise or remove the limit on the connecting user, then resync.",
+            "(1226,": "Your MySQL/MariaDB user account has a 'max_connections_per_hour' resource limit configured, and Flind has used it up for this hour (error 1226). The limit resets at the top of the next hour, but retrying now only spends more of that quota. Ask your database admin to raise or remove the limit on the connecting user, then resync.",
             # MySQL/MariaDB error 1142 (ER_TABLEACCESS_DENIED_ERROR): the connecting user authenticated
             # fine but lacks the SELECT privilege on a table the sync reads — distinct from the 1045
             # login failure already handled above. Only a DB admin can GRANT it, and the streaming query
             # reissues the same statement every attempt, so it fails identically forever. Match the
             # locale-independent error code (the user, host, and table are volatile and the message text
             # is translated on non-English servers), consistent with the other code-prefixed entries.
-            "(1142,": "PostHog's database user doesn't have SELECT permission on a table this sync reads (MySQL error 1142). Ask your database admin to grant SELECT on it, or remove that table from the sync, then resync.",
+            "(1142,": "Flind's database user doesn't have SELECT permission on a table this sync reads (MySQL error 1142). Ask your database admin to grant SELECT on it, or remove that table from the sync, then resync.",
             # MySQL/MariaDB error 1038 (ER_OUT_OF_SORTMEMORY): the server's `sort_buffer_size` is too
             # small to filesort the `ORDER BY <incremental_field>` the incremental query requires. We
             # already try to dodge the sort with the in-activity FORCE INDEX fallback (see
@@ -703,7 +703,7 @@ class MySQLSource(
             self.get_schemas(config, team_id, api_version=api_version)
         except (HostNotAllowedError, TemporaryHostResolutionError, TLSConfigurationError) as e:
             # The host policy refused the host, its lookup never answered, or the TLS fields contradict
-            # each other. Each carries its own user-facing wording and none is a PostHog defect, so they
+            # each other. Each carries its own user-facing wording and none is a Flind defect, so they
             # are not captured.
             return False, str(e)
         except BaseSSHTunnelForwarderError as e:

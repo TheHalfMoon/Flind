@@ -103,7 +103,7 @@ function TeamChannelCard({ integrations }: { integrations: IntegrationType[] }):
                     description={
                         <>
                             Post reports that meet the minimum priority to one channel for this project, whether or not
-                            a reviewer is suggested. PostHog must be in the channel. Invite it with{' '}
+                            a reviewer is suggested. Flind must be in the channel. Invite it with{' '}
                             <code>/invite @PostHog</code>.
                         </>
                     }
@@ -188,7 +188,7 @@ function readSlackTarget(
 }
 
 /**
- * A workspace connected before PostHog requested `users:read`, or one that records no scopes at
+ * A workspace connected before Flind requested `users:read`, or one that records no scopes at
  * all, cannot resolve anyone's account, so the save that asks Slack for it fails. Saying so here,
  * with the reconnect, is what the failed save could not do: the API answers it as a validation
  * error on a setting the user already turned on, so the only recovery left was to guess that Slack
@@ -212,7 +212,7 @@ function DirectMessageUnavailable({ integration }: { integration: IntegrationTyp
                       }
             }
         >
-            PostHog cannot look up members in this Slack workspace without the users:read permission, so it cannot find
+            Flind cannot look up members in this Slack workspace without the users:read permission, so it cannot find
             your account. Reconnect Slack to grant it, or post to a channel instead.
             {reconnectRestrictionReason ? ' Ask a project admin to reconnect it.' : ''}
         </LemonBanner>
@@ -229,7 +229,7 @@ function DirectMessageTarget({
     onEnable: () => void
 }): JSX.Element {
     if (recipient) {
-        return <span className="text-xs text-secondary">PostHog sends these to {recipient} in Slack.</span>
+        return <span className="text-xs text-secondary">Flind sends these to {recipient} in Slack.</span>
     }
     return (
         <>
@@ -243,7 +243,7 @@ function DirectMessageTarget({
                 Send me a direct message
             </LemonButton>
             <span className="text-xs text-secondary">
-                PostHog finds you in the workspace and messages you there. There is no channel to create.
+                Flind finds you in the workspace and messages you there. There is no channel to create.
             </span>
         </>
     )
@@ -262,7 +262,7 @@ function ChannelTarget({
         <>
             <SlackChannelPicker integration={integration} value={value} onChange={onChange} />
             <span className="text-xs text-secondary">
-                PostHog must be in the channel. Invite it with <code>/invite @PostHog</code>.
+                Flind must be in the channel. Invite it with <code>/invite @PostHog</code>.
             </span>
         </>
     )
@@ -356,7 +356,7 @@ function PerUserNotificationCard({ integrations }: { integrations: IntegrationTy
             <div className="flex items-start justify-between gap-4">
                 <SlackCardHeader
                     title="Notify me directly"
-                    description="Get pinged when you're a suggested reviewer. PostHog can send you a direct message, or post in a channel you pick."
+                    description="Get pinged when you're a suggested reviewer. Flind can send you a direct message, or post in a channel you pick."
                 />
                 <LemonSwitch
                     checked={showPickers}

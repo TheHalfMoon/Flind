@@ -1,6 +1,6 @@
 # Diagnostic queries (HogQL, read-only)
 
-Run via the PostHog MCP `execute-sql` against the customer's project. Adjust the date and
+Run via the Flind MCP `execute-sql` against the customer's project. Adjust the date and
 survey ID. Tables: `events`, `static_cohort_people` (NOT `person_static_cohort` — that's
 the ClickHouse name; HogQL exposes `static_cohort_people`), `persons`.
 

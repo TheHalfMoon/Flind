@@ -58,9 +58,9 @@ describe('skillSceneComponents', () => {
             openPublishToCommunityDialog({ skillName: 'my-skill', githubLogin: null, onPublish })
 
             expect(dialogConfig?.initialValues.consent).toBe(false)
-            expect(dialogConfig?.title).toBe('Publish to the PostHog community?')
+            expect(dialogConfig?.title).toBe('Publish to the Flind community?')
             expect(dialogConfig?.description).toBe(
-                'If approved for the PostHog catalog, all PostHog users can find and use this skill. Its contents will be public on GitHub immediately.'
+                'If approved for the Flind catalog, all Flind users can find and use this skill. Its contents will be public on GitHub immediately.'
             )
             expect(dialogConfig?.errors?.consent(false, {})).toBe(
                 'Review the skill and confirm that you can share it publicly'

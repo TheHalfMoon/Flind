@@ -18,7 +18,7 @@ from posthog.dags.common.resources import ClayWebhookResource
 from posthog.models import Team
 from posthog.models.organization import OrganizationMembership
 
-# The PostHog internal team used for executing HogQL queries against the ProductLed_Outbound saved query.
+# The Flind internal team used for executing HogQL queries against the ProductLed_Outbound saved query.
 PLO_TEAM_ID = 2
 
 # Array fields to progressively truncate when a record exceeds Clay's batch

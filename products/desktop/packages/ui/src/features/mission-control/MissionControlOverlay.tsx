@@ -46,7 +46,7 @@ export function MissionControlOverlay() {
         <LogosLandscape wordmark={false} />
       </div>
       <p className="font-semibold text-(--gray-12) text-[clamp(16px,2.2vw,28px)] leading-none tracking-tight">
-        PostHog Desktop
+        Flind Desktop
       </p>
       {import.meta.env.DEV && (
         // Sized off the viewport like the rest of the overlay so it stays

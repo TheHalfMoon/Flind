@@ -2,7 +2,7 @@
 
 ## Terms
 
-**PostHog Review** is the product name on every outward surface: GitHub comments, MCP tools, API docs, and UI prose.
+**Flind Review** is the product name on every outward surface: GitHub comments, MCP tools, API docs, and UI prose.
 **Code review** is the name of the in-app page and its nav entry only.
 **ReviewHog** is the internal codename. Code, logs, metric names, keys, and developer docs use it.
 An `@posthog review` comment starts a Standard review, and `@posthog review --deep` starts a Deep review. No label starts a review.
@@ -13,14 +13,14 @@ The team has no members, and ReviewHog removes its request afterwards, so reques
 GitHub offers the team in the reviewer picker only on repositories it can access, so each repository needs that access granted.
 The shortcut is internal until an explicit per-repository or per-installation opt-in exists, because the team slug matches on every installation.
 
-The UI and the text PostHog Review posts use the user-facing names. Code, API values, and stored data use the internal names.
+The UI and the text Flind Review posts use the user-facing names. Code, API values, and stored data use the internal names.
 
 - **Standard** (internal name **Flash**, `flash`): the automatic review every push gets. A fixed set of reviewers on a lower-cost model. It never pushes to the branch.
 - **Deep** (internal name **Full**, `full`): the review someone asks for with the Review button, the `@posthog review --deep` comment, or an Inbox report. It uses the requester's perspectives, validator, and threshold.
 - **Resolve**: the stage after a Deep review that fixes review comments on the PR branch, only when the PR owner opted in (`resolve_comments`).
-- **Inbox review**: a Deep review of a PR the PostHog agent opened for an Inbox report. The report's assigned reviewer counts as the PR owner.
+- **Inbox review**: a Deep review of a PR the Flind agent opened for an Inbox report. The report's assigned reviewer counts as the PR owner.
 - **Perspective**: one angle a Deep review reads the code from, such as logic and correctness. Each one is a review skill.
-- **Threshold**: the lowest finding priority a Deep review posts to GitHub (`urgency_threshold`). Findings below it stay in the report in PostHog.
+- **Threshold**: the lowest finding priority a Deep review posts to GitHub (`urgency_threshold`). Findings below it stay in the report in Flind.
 
 ## Overview
 
@@ -81,7 +81,7 @@ reply text: the driver posts the verdict's `verification` under it as a collapse
 wrote directly under its verdict (`_normalize_reply_divider`). A reply past the shape (more than 5 support lines or
 150 visible words) is folded, not cut: the verdict and the first lines stay visible and the rest lands under a
 collapsed "More detail" block, with a warning logged (`_fold_overlong_reply`). The whole posted body is scrubbed of
-credential shapes last (`tools/redaction.py::redact_secrets`: PostHog secret key prefixes, GitHub token shapes, and
+credential shapes last (`tools/redaction.py::redact_secrets`: Flind secret key prefixes, GitHub token shapes, and
 `x-access-token` clone URLs), because the sandbox holds live tokens and the agent may paste command output into
 `verification`; the review stage runs the same scrub over the review body and every inline finding comment in
 `publish_review.py::_post_github_review`. A FIXED verdict's echoed commit SHA is verified
@@ -121,7 +121,7 @@ and MUST land before public release or resolution on untrusted PRs or repositori
 **Full reviews can include resolving**: a published Full review chains into the stage when the **PR owner**
 opted in (`resolve_comments`, default off), whoever triggered the review
 (`review_request_rules.ResolutionGate`). The owner (`backend/pr_owner.py`) is the
-author when the GitHub login maps to an active member; for a self-driving PR that the PostHog GitHub App opened, it
+author when the GitHub login maps to an active member; for a self-driving PR that the Flind GitHub App opened, it
 is the Inbox report's canonical reviewer; otherwise nobody, and a PR without an owner never gets writes. Flash never
 resolves. The chained run applies the owner's resolution criteria. Standalone entry: the `run_resolution` command or
 the UI / MCP resolve-only action, which answers 409 `resolution_not_opted_in` unless the owner opted in;
@@ -210,7 +210,7 @@ Check these four things before a local `run_review`; don't re-derive them from c
    the tunnel itself is fine.
 3. **Target PR is reviewable** — non-fork (fork PRs are rejected at fetch) and open. Drafts ARE
    reviewed and published (there is no draft gate) — warn the user before publishing on someone's
-   draft. Private repos outside PostHog work: fetch, clone, and publish all resolve the team's
+   draft. Private repos outside Flind work: fetch, clone, and publish all resolve the team's
    GitHub App installation token per repo server-side, so any repo the integration's installation
    can access is reviewable. The PR's reviewable additions count picks the chunking path: ≤400 single chunk (no
    chunking LLM), ≤5000 one-shot LLM chunking, above that sandbox chunking (slowest).
@@ -389,7 +389,7 @@ time loop, and most of what a late round flags was already there in the first. A
 a clean turn) reads from the events.
 
 The first review that posts findings on a pull request ends with one more note (`first_review_note` in
-`backend/review_notes.py`). It links the report in the PostHog Review UI (`report_deep_link`). On a Standard review,
+`backend/review_notes.py`). It links the report in the Flind Review UI (`report_deep_link`). On a Standard review,
 where comment commands run, it also offers `@posthog review --deep`. Later reviews do not repeat the note: the published watermark is set after the first post.
 
 Every finding the turn drops after scope cleaning persists as a `dropped_finding` artefact (`DroppedFindingArtefact`,
@@ -511,7 +511,7 @@ pr_metadata.head_branch` is threaded (as explicit kwargs, alongside `team_id` / 
     suppress the publish or clobber a stranger's comment.
     **Reactions:** once a publishing turn passes every gate, the workflow puts a 👀 on the PR (`add_review_reaction_activity`) and removes it by the returned reaction id when the turn ends, on success, failure, or cancellation (the `finally` around the review stages).
     Both calls are fail-open and gated by the `reviewhog-pr-reactions-2026-10` patch.
-    The 👀 is a cue for people only. The per-head review state is review_hog's public read API, `facade/review_status.py::review_status_for_head` (contract `HeadReviewStatus` in `facade/contracts.py`, implemented by `head_review_status.py`). Stamphog cannot import it (ReviewHog depends on stamphog, never the reverse), so `receivers.connect()` registers `review_evidence_for_stamphog`, a thin adapter onto stamphog's `facade/review_evidence.py` registry, with the reviewer named "PostHog Review".
+    The 👀 is a cue for people only. The per-head review state is review_hog's public read API, `facade/review_status.py::review_status_for_head` (contract `HeadReviewStatus` in `facade/contracts.py`, implemented by `head_review_status.py`). Stamphog cannot import it (ReviewHog depends on stamphog, never the reverse), so `receivers.connect()` registers `review_evidence_for_stamphog`, a thin adapter onto stamphog's `facade/review_evidence.py` registry, with the reviewer named "Flind Review".
     It answers per head: pending while a request for the head waits in the queue (the queue workflow's `requested_heads` query) or a turn on the head runs, through its publish; completed with the kind, the valid findings count, the published flag, the merge base the diff was taken against and the skipped files (filtered files, files GitHub sent without a patch, and the files of every pipeline chunk that no review unit finished, because a turn completes when only some of its units fail); failed when the turn for the head failed; None for any other head or a repository no project owns.
     When a publishing turn ends, after publish or after the failure is recorded, `nudge_stamphog_activity` calls stamphog's `request_rereview_after_external_review` (behind the `reviewhog-nudge-stamphog-2026-10` patch, fail-open). Stamphog decides whether a WAIT at that head runs again.
     After the completed or failed analytics event, the same activity calls every callback in `facade/finished_review_hooks.py` with the turn's outcome, the valid findings count and the review's deep link. The commands product registers one to post the result in the Slack thread that asked for the review. A product that depends on review_hog registers there instead of being imported, and a callback that raises is logged and never fails the turn.
@@ -524,7 +524,7 @@ pr_metadata.head_branch` is threaded (as explicit kwargs, alongside `team_id` / 
     edited as the steps fill in, and rewritten with the
     outcome: the full found counts, what was published, and — when the urgency threshold held findings back —
     whose threshold it was (the author's / the requester's / the default, from `resolved_from`) plus a
-    "View them in PostHog" deep link to the exact report (`/project/<team>/code-review?review=<report id>`,
+    "View them in Flind" deep link to the exact report (`/project/<team>/code-review?review=<report id>`,
     a **permanent public contract** — the frontend URL sync and `report_deep_link` must keep agreeing on it).
     The status comment header of a **flash** turn, in each of its states, names `PostHog Review (flash)` instead of `PostHog Review`.
     A single-agent turn shows its own three steps (preparing, reviewing, finalizing) on the status comment and the in-app row, not the pipeline's six: the fetch records the design on the turn's `pr_snapshot`, and `progress_payload` reads it from there.
@@ -538,7 +538,7 @@ pr_metadata.head_branch` is threaded (as explicit kwargs, alongside `team_id` / 
     A reply or reaction counts as engagement unless ReviewHog's own app left it (`engagement_method`), so the resolution stage's 👀 queue marker never marks a finding `reacted`.
     The validator's argumentation stays out of GitHub; the reviews API returns it as `validator_note`.
     When every publishable finding posts inline, a Deep review body is only the hidden publish marker, because the tally repeats the comments.
-    A Standard review body then carries one summary line instead (`render_review_summary`, "PostHog Review · Standard · reviewed `abc1234`: 1 Must fix."), because Standard has no status comment.
+    A Standard review body then carries one summary line instead (`render_review_summary`, "Flind Review · Standard · reviewed `abc1234`: 1 Must fix."), because Standard has no status comment.
     The body-only fallback always posts the full body.
     The workflow captures one **`reviewhog_review_started`** product-analytics event per turn that passed every
     gate (`track_review_started_activity`) and, after the publish stage, one **`reviewhog_review_completed`** per
@@ -949,7 +949,7 @@ See [DECISIONS.md](./DECISIONS.md) for the "reuse the leaf, own the model" bound
 **Customer setup path.** Nothing in ReviewHog's behavior depends on a per-deploy team id, so any project can enable it:
 
 1. Turn on the `review-hog` flag for the project.
-2. Connect GitHub through the core GitHub integration (the PostHog GitHub App installation).
+2. Connect GitHub through the core GitHub integration (the Flind GitHub App installation).
 3. In the Code review settings, claim the installation: all repositories (at most one project per installation) or
    only selected repositories.
 4. Set the project rule (automatic Flash for everyone, for listed people, or opt-in only) and the bot rule.
@@ -994,7 +994,7 @@ An explicit Full request remains pending during an active Flash turn and runs if
 Automatic pushes coalesce to the latest head; a rule change that stops the author's automatic review prevents pending automatic reviews from starting without canceling a running turn.
 `automatic_reviewed_head_sha` advances only after publication succeeds or finds nothing to publish, so a failed publication can retry and an empty review does not repeat.
 An automatic follow-up turn (one with an `automatic_reviewed_head_sha`) first runs the push gate (`reviewer/push_gate.py`) on the PR's own commits since that head.
-Its rules, in order: `no_new_commits` (the PR gained no commit and its full diff is unchanged; a force-push that drops commits runs the review), `reviewhog_commits_only` (the ReviewHog app authored every new commit, such as resolution fixes; this includes the PostHog app's commits on self-driving PRs, which share the app identity), `merge_only` (the PR's full diff against its base is unchanged, as after a base merge or a rebase), `draft` (the PR is a draft and no earlier rule skips the push), `late_follow_up` (the push would start review number `LATE_FOLLOW_UP_RUN_INDEX` or a later one), `small_pr` (the PR has fewer than `SMALL_PR_REVIEWABLE_LINES_BELOW` reviewable lines, the size the lens parts use), `quiet_small_push` (the last review kept no finding and the push changes at most `QUIET_PUSH_MAX_OWN_CODE_LINES` own code lines; skipped pushes add up until one crosses the limit), and `throttled` (the PR spent its review budget).
+Its rules, in order: `no_new_commits` (the PR gained no commit and its full diff is unchanged; a force-push that drops commits runs the review), `reviewhog_commits_only` (the ReviewHog app authored every new commit, such as resolution fixes; this includes the Flind app's commits on self-driving PRs, which share the app identity), `merge_only` (the PR's full diff against its base is unchanged, as after a base merge or a rebase), `draft` (the PR is a draft and no earlier rule skips the push), `late_follow_up` (the push would start review number `LATE_FOLLOW_UP_RUN_INDEX` or a later one), `small_pr` (the PR has fewer than `SMALL_PR_REVIEWABLE_LINES_BELOW` reviewable lines, the size the lens parts use), `quiet_small_push` (the last review kept no finding and the push changes at most `QUIET_PUSH_MAX_OWN_CODE_LINES` own code lines; skipped pushes add up until one crosses the limit), and `throttled` (the PR spent its review budget).
 The `draft` rule reads the draft state from the turn's own PR snapshot: every turn fetches the PR before the gate and the snapshot load is latest-wins, so a PR marked ready at an unchanged head reads as ready. A draft skip reads the PR from GitHub again after the gate's other reads: a PR marked ready while the turn runs sends a ready request that the queue drops, because it asks for the head the running turn gates. If the PR is ready by then, the gate uses the decision of the rules before `draft`. A failed read reviews the push. Only a PR marked ready between that read and the end of the turn keeps its changes unreviewed until the next trigger. A draft decision keeps the `own_code_lines` of the rules that ran before it.
 The `throttled` rule keeps a token bucket per PR in Redis (`PUSH_BUDGET`): it holds two reviews and gets one back every 30 minutes. Only a push that every earlier rule lets through takes a token, so a draft push or a merge from the base costs nothing. A push that finds the bucket empty waits for the next trigger like any other skip. A Redis failure reviews the push. A head pays once: a turn that runs again at the same head, as an activity retry or a retried `review-pr` child, does not take a second token. A retry after a denial asks the bucket again, so it cannot get past the budget. The first review and human triggers never reach the gate, so they neither take nor need a token.
 Two per-PR splits run on top of these rules. Their flags are keyed like the coordinator flag, and a flag that is off puts every PR in the control arm.

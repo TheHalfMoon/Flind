@@ -46,7 +46,7 @@ from products.access_control.backend.models.role import Role, RoleMembership
 
 pytestmark = pytest.mark.ee
 
-# PostHog CI runs the backend suite with pytest-rerunfailures (--reruns 2). A rerun
+# Flind CI runs the backend suite with pytest-rerunfailures (--reruns 2). A rerun
 # re-instantiates the TestCase, so a genuinely-failing @given method is re-invoked
 # from a fresh instance, which trips hypothesis's differing_executors health check
 # and masks the real falsifying example. Each example already runs in its own

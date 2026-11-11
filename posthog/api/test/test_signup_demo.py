@@ -39,11 +39,11 @@ class TestDemoSignupAPI(APIBaseTest):
         user_organization = Organization.objects.filter(name="Tech R Us").first()
 
         assert response.status_code == status.HTTP_201_CREATED
-        assert Organization.objects.count() == 2  # Master organization "PostHog" & "Tech R Us"
+        assert Organization.objects.count() == 2  # Master organization "Flind" & "Tech R Us"
         assert User.objects.count() == 1
         assert isinstance(user, User)
         assert master_organization is not None
-        assert master_organization.name == "PostHog"
+        assert master_organization.name == "Flind"
         assert user_organization is not None
         assert user.organization == user_organization
         assert user.first_name == "Charlie"

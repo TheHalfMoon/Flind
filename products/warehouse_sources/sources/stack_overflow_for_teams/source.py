@@ -56,7 +56,7 @@ class StackOverflowForTeamsSource(
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Stack Overflow (Prosus/Stack Exchange)",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Stack Overflow for Teams team name and a Personal access token to pull your internal Q&A knowledge base — questions, answers, articles, tags, users, and collections — into the PostHog Data warehouse.
+            caption="""Enter your Stack Overflow for Teams team name and a Personal access token to pull your internal Q&A knowledge base — questions, answers, articles, tags, users, and collections — into the Flind Data warehouse.
 
 Create a token under **Account Settings → Personal access tokens**, scoped to this team. Read-only (Basic) access is sufficient — you don't need to grant write access.""",
             iconPath="/static/services/stack_overflow_for_teams.png",

@@ -555,7 +555,7 @@ class TestLivingArtifacts(TestCase):
         self,
         mock_integration_for_mapping,
     ):
-        # Chart images deliver as image blocks pointing at a PostHog-hosted url — no upload,
+        # Chart images deliver as image blocks pointing at a Flind-hosted url — no upload,
         # no files:write.
         self._create_scopeless_mapping(mock_integration_for_mapping)
         asset = ExportedAsset.objects.create(team=self.team, export_format=ExportedAsset.ExportFormat.PNG)
@@ -700,7 +700,7 @@ class TestChartCardBlockBuilders(SimpleTestCase):
                 ["section", "image"],
             ),
             # Artifact metadata is caller-writable, so an off-origin url must not become a button
-            # the PostHog bot appears to vouch for.
+            # the Flind bot appears to vouch for.
             ("url_off_posthog_origin", "https://phishing.example/project/1/insights/abc", ["section", "image"]),
         ]
     )
@@ -776,7 +776,7 @@ class TestChartCardBlockBuilders(SimpleTestCase):
     )
     def test_mention_shaped_artifact_name_is_escaped_in_message_text(self, _name, card_count):
         # Artifact names are task-controlled and Slack parses a message's top-level text as
-        # mrkdwn, so an unescaped name could notify a channel as the PostHog bot.
+        # mrkdwn, so an unescaped name could notify a channel as the Flind bot.
         slack = MagicMock()
         slack.chat_postMessage.return_value = {"ok": True, "ts": "1111.2"}
         cards = [

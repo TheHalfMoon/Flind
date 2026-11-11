@@ -56,7 +56,7 @@ class JenkinsSource(ResumableSource[JenkinsSourceConfig, JenkinsResumeConfig], V
             label="Jenkins",
             releaseStatus=ReleaseStatus.BETA,
             docsUrl="https://posthog.com/docs/cdp/sources/jenkins",
-            caption="""Enter your Jenkins URL, username, and API token to sync your CI/CD data into the PostHog Data warehouse.
+            caption="""Enter your Jenkins URL, username, and API token to sync your CI/CD data into the Flind Data warehouse.
 
 Jenkins is self-hosted, so enter the base URL of your own instance (for example `https://jenkins.example.com`).
 
@@ -146,7 +146,7 @@ Create an API token from your Jenkins user page under **Configure > API Token**.
         if not host_valid:
             return False, host_error
         # On Cloud the API token would otherwise be sent in cleartext to a customer-supplied http://
-        # host. Self-hosted PostHog may still reach a Jenkins instance over http on its own network.
+        # host. Self-hosted Flind may still reach a Jenkins instance over http on its own network.
         if is_cloud() and scheme != "https":
             return False, "Jenkins URL must use https"
         return True, None

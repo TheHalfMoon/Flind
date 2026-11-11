@@ -49,7 +49,7 @@ describe(`${template.name} template`, () => {
               },
               {
                 "level": "debug",
-                "message": "fetchOptions, {"method":"POST","headers":{"User-Agent":"PostHog.com/1.0","Content-Type":"application/json"},"body":"{\\"event\\":{\\"uuid\\":\\"event-id\\",\\"event\\":\\"event-name\\",\\"distinct_id\\":\\"distinct-id\\",\\"properties\\":{\\"$current_url\\":\\"https://example.com\\"},\\"timestamp\\":\\"2024-01-01T00:00:00Z\\",\\"elements_chain\\":\\"\\",\\"url\\":\\"https://us.posthog.com/projects/1/events/1234\\"},\\"person\\":{\\"id\\":\\"person-id\\",\\"name\\":\\"person-name\\",\\"properties\\":{\\"email\\":\\"example@posthog.com\\"},\\"url\\":\\"https://us.posthog.com/projects/1/persons/1234\\"}}"}",
+                "message": "fetchOptions, {"method":"POST","headers":{"User-Agent":"Flind.com/1.0","Content-Type":"application/json"},"body":"{\\"event\\":{\\"uuid\\":\\"event-id\\",\\"event\\":\\"event-name\\",\\"distinct_id\\":\\"distinct-id\\",\\"properties\\":{\\"$current_url\\":\\"https://example.com\\"},\\"timestamp\\":\\"2024-01-01T00:00:00Z\\",\\"elements_chain\\":\\"\\",\\"url\\":\\"https://us.posthog.com/projects/1/events/1234\\"},\\"person\\":{\\"id\\":\\"person-id\\",\\"name\\":\\"person-name\\",\\"properties\\":{\\"email\\":\\"example@posthog.com\\"},\\"url\\":\\"https://us.posthog.com/projects/1/persons/1234\\"}}"}",
                 "timestamp": "2025-01-01T00:00:00.000Z",
               },
               {
@@ -96,7 +96,7 @@ describe(`${template.name} template`, () => {
               },
               {
                 "level": "debug",
-                "message": "fetchOptions, {"method":"POST","headers":{"User-Agent":"PostHog.com/1.0","Content-Type":"application/json"},"body":"{\\"event\\":{\\"uuid\\":\\"event-id\\",\\"event\\":\\"event-name\\",\\"distinct_id\\":\\"distinct-id\\",\\"properties\\":{\\"$current_url\\":\\"https://example.com\\"},\\"timestamp\\":\\"2024-01-01T00:00:00Z\\",\\"elements_chain\\":\\"\\",\\"url\\":\\"https://us.posthog.com/projects/1/events/1234\\"},\\"person\\":{\\"id\\":\\"person-id\\",\\"name\\":\\"person-name\\",\\"properties\\":{\\"email\\":\\"example@posthog.com\\"},\\"url\\":\\"https://us.posthog.com/projects/1/persons/1234\\"}}"}",
+                "message": "fetchOptions, {"method":"POST","headers":{"User-Agent":"Flind.com/1.0","Content-Type":"application/json"},"body":"{\\"event\\":{\\"uuid\\":\\"event-id\\",\\"event\\":\\"event-name\\",\\"distinct_id\\":\\"distinct-id\\",\\"properties\\":{\\"$current_url\\":\\"https://example.com\\"},\\"timestamp\\":\\"2024-01-01T00:00:00Z\\",\\"elements_chain\\":\\"\\",\\"url\\":\\"https://us.posthog.com/projects/1/events/1234\\"},\\"person\\":{\\"id\\":\\"person-id\\",\\"name\\":\\"person-name\\",\\"properties\\":{\\"email\\":\\"example@posthog.com\\"},\\"url\\":\\"https://us.posthog.com/projects/1/persons/1234\\"}}"}",
                 "timestamp": "2025-01-01T00:00:00.000Z",
               },
               {

@@ -53,7 +53,7 @@ class EventbriteSource(ResumableSource[EventbriteSourceConfig, EventbriteResumeC
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Eventbrite",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Eventbrite private token to automatically pull your Eventbrite data into the PostHog Data warehouse.
+            caption="""Enter your Eventbrite private token to automatically pull your Eventbrite data into the Flind Data warehouse.
 
 You can create a private token under your [Eventbrite account settings](https://www.eventbrite.com/account-settings/apps) on the **API Keys** page (the **Private token** field of your API key).
 

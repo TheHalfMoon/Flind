@@ -154,7 +154,7 @@ class FlagEvaluationsTable(EventsRetentionTable):
         "created_at": DateTimeDatabaseField(
             name="created_at",
             nullable=False,
-            description="When PostHog ingested the event (server timestamp); differs from `timestamp`.",
+            description="When Flind ingested the event (server timestamp); differs from `timestamp`.",
         ),
         "inserted_at": DateTimeDatabaseField(
             name="inserted_at",

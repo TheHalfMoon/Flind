@@ -14,7 +14,7 @@ interface TeamSkillsTabProps {
   loading?: boolean;
 }
 
-/** Skills your team published to PostHog cloud; install to use locally. */
+/** Skills your team published to Flind cloud; install to use locally. */
 export function TeamSkillsTab({ skills, loading }: TeamSkillsTabProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selected, setSelected] = useState<TeamSkillInfo | null>(null);

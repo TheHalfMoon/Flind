@@ -183,7 +183,7 @@ class TestClientRegistration(ProvisioningTestBase):
         assert body["capabilities"] == {"account_requests": False, "unsigned_requests": False}
 
     def test_brand_new_partner_is_confidential_on_its_first_registration(self):
-        # No pre-existing row: this is the client_id's first ever contact with PostHog, so the
+        # No pre-existing row: this is the client_id's first ever contact with Flind, so the
         # promotion has to happen inline with _create_cimd_application, not wait for the next
         # hourly refresh to notice is_provisioning_partner has since flipped.
         assert not OAuthApplication.objects.filter(client_id=CIMD_URL).exists()
@@ -349,7 +349,7 @@ class TestClientRegistration(ProvisioningTestBase):
             res = self._register({"client_id": CIMD_URL})
 
         # Registration itself is fine, the keys are not: reporting both separately is what
-        # lets a partner tell "PostHog doesn't know me" from "my key server is down".
+        # lets a partner tell "Flind doesn't know me" from "my key server is down".
         assert res.status_code == 200, res.json()
         checks = {check["name"]: check for check in res.json()["checks"]}
         assert checks["metadata_document"]["ok"] is True

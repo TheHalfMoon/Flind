@@ -735,7 +735,7 @@ function deepEqual(val1: any, val2: any): boolean {
 
 /**
  * Resolve a query's modifiers the way the backend does: explicit query modifiers win, then the
- * team overrides, then the PostHog defaults. Absent and default-equal modifiers both resolve to
+ * team overrides, then the Flind defaults. Absent and default-equal modifiers both resolve to
  * the team's effective set, so comparing resolved modifiers skips changes nobody made.
  */
 function resolveModifiersForComparison(

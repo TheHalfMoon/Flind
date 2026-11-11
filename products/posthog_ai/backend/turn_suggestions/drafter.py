@@ -32,7 +32,7 @@ logger = structlog.get_logger(__name__)
 
 DRAFT_MODEL = "gpt-6-luna"
 
-# PostHog pays for drafts, not the customer's AI credits. The Go gateway bills the wallet of the team
+# Flind pays for drafts, not the customer's AI credits. The Go gateway bills the wallet of the team
 # that owns its key.
 DRAFT_AI_PRODUCT = "posthog_ai_turn_suggestions"
 
@@ -73,13 +73,13 @@ _SCOUT_MODE_GUIDES = {
     ScoutMode.DIGEST: "Cover every metric the conversation asked about, including the earlier turns, in one post.",
 }
 
-SCOUT_SYSTEM_PROMPT = """You write the configuration of a scout from one PostHog AI conversation. A scout is a scheduled agent with the same PostHog tools the assistant used. It posts a short report to Slack and the inbox. The mode and cadence are already chosen; write the text.
+SCOUT_SYSTEM_PROMPT = """You write the configuration of a scout from one Flind AI conversation. A scout is a scheduled agent with the same Flind tools the assistant used. It posts a short report to Slack and the inbox. The mode and cadence are already chosen; write the text.
 
 prompt is the complete markdown the scout runs on every run. It must stand alone: name the exact events, properties, filters, breakdowns and cohorts, restate the analysis with a relative window that matches the cadence, tell the scout to compare with the previous period, and say what to post and when to stay silent. Tell it to say plainly when the project has no matching data instead of guessing. Do not mention the user or this conversation. When the latest question refines an earlier one, the scout runs the refined version.
 
 display_name is at most 60 characters in sentence case. description is one sentence, at most 200 characters. Reply with the JSON object only."""
 
-NOTEBOOK_SYSTEM_PROMPT = """You write the title and summary of a notebook that saves one PostHog AI conversation with its queries as live cells. The layout is already chosen; write the text.
+NOTEBOOK_SYSTEM_PROMPT = """You write the title and summary of a notebook that saves one Flind AI conversation with its queries as live cells. The layout is already chosen; write the text.
 
 title is at most 80 characters in sentence case. summary is one or two sentences, at most 300 characters, saying what the investigation found.
 

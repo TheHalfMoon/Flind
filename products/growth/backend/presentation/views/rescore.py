@@ -1,4 +1,4 @@
-"""Webhook for the wizard-stamp ICP re-score, called by a PostHog realtime destination the instant the setup wizard's AI-SDK stamp lands on an org.
+"""Webhook for the wizard-stamp ICP re-score, called by a Flind realtime destination the instant the setup wizard's AI-SDK stamp lands on an org.
 
 Authenticated by a shared secret header instead of session or personal-API-key auth, since the caller is our own destination, not a user.
 """
@@ -56,7 +56,7 @@ class GrowthEnrichmentViewSet(viewsets.ViewSet):
             503: OpenApiResponse(description="No webhook secret is configured on this instance."),
         },
         summary="Re-score an organization's ICP fit after its wizard AI-SDK stamp lands.",
-        description="Called by a PostHog realtime destination, not by API clients. Requires the "
+        description="Called by a Flind realtime destination, not by API clients. Requires the "
         f"{WEBHOOK_SECRET_HEADER} header to match the GROWTH_RESCORE_WEBHOOK_SECRET instance setting.",
     )
     @action(methods=["POST"], detail=False, throttle_classes=[GrowthRescoreWebhookThrottle])

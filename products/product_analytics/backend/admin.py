@@ -116,7 +116,7 @@ class InsightAdmin(admin.ModelAdmin):
         skipped = queryset.count() - len(insights)
         user = cast(User, request.user)
         # Mirrors the bulk_restore endpoint. Atomic so a mid-batch failure can't leave insights
-        # restored without their tiles or activity entries (PostHog has no ATOMIC_REQUESTS).
+        # restored without their tiles or activity entries (Flind has no ATOMIC_REQUESTS).
         with transaction.atomic():
             for insight in insights:
                 insight.deleted = False

@@ -1,7 +1,7 @@
 ---
 name: grouping-noisy-errors
 description: >
-  Consolidate PostHog error tracking issues that are the same actual
+  Consolidate Flind error tracking issues that are the same actual
   error reported under different fingerprints. Use when the user asks
   "why do I have so many TypeError issues that look the same?", "merge
   these duplicates", "stop splitting this error into new issues", or
@@ -186,7 +186,7 @@ A grouping rule is worth creating when both are true:
 
 The canonical exception properties (`$exception_types`, `$exception_values`
 for messages, `$exception_sources` for file paths, `$exception_functions` for
-function names) are arrays at capture time. PostHog's property filters
+function names) are arrays at capture time. Flind's property filters
 special-case them — each filter matches against the individual array
 elements, so all the standard operators (`exact`, `is_not`, `icontains`,
 `not_icontains`, `regex`, `not_regex`) work with the bare value:

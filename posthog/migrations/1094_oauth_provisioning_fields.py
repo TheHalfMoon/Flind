@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             name="provisioning_can_create_accounts",
             field=models.BooleanField(
                 default=False,
-                help_text="Can this app create PostHog accounts on behalf of users",
+                help_text="Can this app create Flind accounts on behalf of users",
             ),
         ),
         migrations.AddField(

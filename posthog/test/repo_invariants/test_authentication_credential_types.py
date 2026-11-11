@@ -136,8 +136,8 @@ def test_routes_use_only_authentication_classes_that_declare_a_credential_type()
     )
 
     assert not unowned, (
-        "Routes use authentication classes that no PostHog module defines, so they declare no credential "
-        "type. Wrap each one in a PostHog subclass:\n" + "\n".join(unowned)
+        "Routes use authentication classes that no Flind module defines, so they declare no credential "
+        "type. Wrap each one in a Flind subclass:\n" + "\n".join(unowned)
     )
 
 

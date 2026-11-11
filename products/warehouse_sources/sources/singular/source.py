@@ -44,7 +44,7 @@ from products.warehouse_sources.sources.singular.singular import (
     validate_credentials as validate_singular_credentials,
 )
 
-SOURCE_CAPTION = """Enter your Singular API key to sync campaign reports into the PostHog Data warehouse. You can find the key in Singular under **Developer Tools > API Keys**.
+SOURCE_CAPTION = """Enter your Singular API key to sync campaign reports into the Flind Data warehouse. You can find the key in Singular under **Developer Tools > API Keys**.
 
 The `daily_report` table has one row per day for each combination of the dimensions you choose. Leave the dimensions and metrics empty to sync network campaign data: cost, impressions, clicks, and installs by app, source, OS, country, and campaign.
 
@@ -123,7 +123,7 @@ class SingularSource(ResumableSource[SingularSourceConfig, SingularResumeConfig]
                         type=SourceFieldInputConfigType.PASSWORD,
                         required=True,
                         placeholder="",
-                        caption="Copy your Reporting API key from **Developer Tools > API Keys** in Singular. A PostHog API key does not work here.",
+                        caption="Copy your Reporting API key from **Developer Tools > API Keys** in Singular. A Flind API key does not work here.",
                         secret=True,
                     ),
                     SourceFieldInputConfig(

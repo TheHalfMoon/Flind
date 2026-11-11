@@ -41,7 +41,7 @@ describe('StripePortalButton', () => {
 
     it.each([
         {
-            name: 'the Stripe portal when PostHog bills the organization',
+            name: 'the Stripe portal when Flind bills the organization',
             billing: { billing_provider: BillingProvider.PostHog },
             expectedLabel: 'Manage card details and invoices',
             expectedHref: billingJson.stripe_portal_url,

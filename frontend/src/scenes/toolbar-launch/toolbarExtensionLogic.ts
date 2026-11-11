@@ -115,7 +115,7 @@ export const toolbarExtensionLogic = kea<toolbarExtensionLogicType>([
                 return
             }
             if (!response.panelOpened) {
-                lemonToast.info(`Click the PostHog extension in Chrome's toolbar to use it on ${new URL(url).host}.`)
+                lemonToast.info(`Click the Flind extension in Chrome's toolbar to use it on ${new URL(url).host}.`)
             }
         },
     }),

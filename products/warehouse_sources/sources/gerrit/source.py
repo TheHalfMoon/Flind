@@ -45,7 +45,7 @@ class GerritSource(ResumableSource[GerritSourceConfig, GerritResumeConfig]):
             label="Gerrit",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["code review"],
-            caption="""Enter your Gerrit instance URL and credentials to pull your code review data into the PostHog Data warehouse.
+            caption="""Enter your Gerrit instance URL and credentials to pull your code review data into the Flind Data warehouse.
 
 Generate an HTTP password in your Gerrit account under **Settings > HTTP Credentials** (or **HTTP Password** on older versions) and enter it together with your Gerrit username. On public instances you can leave both blank to sync with anonymous read access — you'll only see the changes, accounts, and projects that are publicly visible, and group listing requires an authenticated account.""",
             iconPath="/static/services/gerrit.png",

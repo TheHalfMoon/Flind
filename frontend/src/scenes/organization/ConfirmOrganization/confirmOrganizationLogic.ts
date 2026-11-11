@@ -146,7 +146,7 @@ export const confirmOrganizationLogic = kea<confirmOrganizationLogicType>([
                 organization_name: '',
                 first_name: '',
                 role_at_organization: '',
-                // The partner that started the OAuth connection is where this person heard about PostHog
+                // The partner that started the OAuth connection is where this person heard about Flind
                 referral_source: readPendingOAuthConnection()?.clientName ?? '',
                 referral_source_ai_prompt: '',
                 referral_source_influencer: '',

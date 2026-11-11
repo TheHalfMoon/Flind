@@ -160,7 +160,7 @@ class MetricsSuggestedDashboardViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet)
 
 
 class MetricsDashboardTemplateViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
-    """The metrics dashboard bank, for the PostHog staff review. The bank is instance-wide."""
+    """The metrics dashboard bank, for the Flind staff review. The bank is instance-wide."""
 
     scope_object = "INTERNAL"
     serializer_class = _FallbackSerializer
@@ -205,7 +205,7 @@ class MetricsDashboardTemplateViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
     @action(detail=True, methods=["POST"])
     def preview(self, request: Request, pk: str | None = None, *args: Any, **kwargs: Any) -> Response:
         """The unlisted dashboard that shows the template with this project's data. Built when it does not exist.
-        Changes on it, by hand or with PostHog AI, become the template when it is approved."""
+        Changes on it, by hand or with Flind AI, become the template when it is approved."""
         tag_queries(product=Product.METRICS, feature=Feature.QUERY)
         try:
             dashboard_id = open_dashboard_template_preview(

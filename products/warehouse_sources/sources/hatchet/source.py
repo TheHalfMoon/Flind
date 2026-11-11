@@ -56,7 +56,7 @@ class HatchetSource(ResumableSource[HatchetSourceConfig, HatchetResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Hatchet",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter a Hatchet API token to sync your workflow runs, tasks, and events into the PostHog Data warehouse.
+            caption="""Enter a Hatchet API token to sync your workflow runs, tasks, and events into the Flind Data warehouse.
 
 Create a tenant-scoped API token in your Hatchet dashboard under **Settings > API Tokens**. The token encodes your tenant and server URL, so that's usually all you need.
 

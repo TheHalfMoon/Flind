@@ -14,7 +14,7 @@
  * This is automatically added to structuredContent for tools with UI resources.
  */
 export interface AnalyticsMetadata {
-    /** The user's PostHog distinct ID */
+    /** The user's Flind distinct ID */
     distinctId: string
     /** The name of the tool that generated this result */
     toolName?: string
@@ -25,7 +25,7 @@ export interface AnalyticsMetadata {
 /**
  * Result `_meta` key that carries a UI app's data payload when the top-level
  * `structuredContent` is suppressed from the model. Coding-agent hosts (e.g.
- * PostHog Desktop) surface `structuredContent` to the model, so when a compact
+ * Flind Desktop) surface `structuredContent` to the model, so when a compact
  * formatted table is returned we drop `structuredContent` to keep the model's
  * context lean. The UI app still needs the data to render, and `_meta` is host-
  * and app-only (never shown to the model), so the app hydrates from here.

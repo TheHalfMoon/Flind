@@ -1,7 +1,7 @@
 ---
 name: exploring-endpoint-execution-logs
 description: >
-  Explore and diagnose a PostHog endpoint's execution logs — error messages, failed runs, cache
+  Explore and diagnose a Flind endpoint's execution logs — error messages, failed runs, cache
   misses, slow runs, or unexpected row counts during endpoint invocations. Use when the user says
   "my endpoint is failing", "show me the logs for endpoint X", "what error did endpoint Y produce",
   "why did endpoint Z return no rows", "is this endpoint hitting cache", or "check the last N runs".
@@ -11,7 +11,7 @@ description: >
 
 # Exploring endpoint execution logs
 
-Every endpoint run emits one execution log entry to PostHog's `log_entries` store. This skill
+Every endpoint run emits one execution log entry to Flind's `log_entries` store. This skill
 reads those entries for a specific endpoint to answer "what happened when it ran?". It is the
 log-level counterpart to `diagnosing-endpoint-performance` (which reasons about cache/materialisation
 strategy from config and `query_log`).

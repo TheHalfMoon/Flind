@@ -175,7 +175,7 @@ def _has_embeddable_text(model_output: object) -> bool:
     return isinstance(model_output, BaseScannerOutput) and model_output.embedding_document() is not None
 
 
-# Provider-facing activities whose Temporal timeout means "provider slow", not a PostHog bug.
+# Provider-facing activities whose Temporal timeout means "provider slow", not a Flind bug.
 _PROVIDER_TIMEOUT_ACTIVITY_TYPES = frozenset(
     {"replay_vision_upload_video_to_gemini_activity", "call_scanner_provider_activity"}
 )
@@ -190,7 +190,7 @@ _RASTERIZER_NO_SNAPSHOTS_TYPE = "NO_SNAPSHOTS"
 # walking the pod into its memory limit. That size is a fixed property of the recording, so no retry helps.
 _RASTERIZER_TOO_LARGE_TYPE = "RECORDING_TOO_LARGE"
 
-# Rasterizer codes that mean a PostHog-side dependency the renderer talks to was unreachable or slow — the
+# Rasterizer codes that mean a Flind-side dependency the renderer talks to was unreachable or slow — the
 # recording-api it fetches the block listing and data from, or the object storage it uploads the video to — not
 # that the recording itself can't render. They belong in the same transient bucket as an activity timeout against
 # those dependencies (see `_activity_timeout_kind`), so the user gets a retry prompt, not a "known issue" label.
@@ -245,7 +245,7 @@ def _normalized_rasterizer_infra_message(code: str) -> str:
     occurrence, so copying it verbatim mints a fresh error-tracking issue for one root cause. Keying
     the message on the code collapses those variants back into a single issue.
     """
-    return f"rasterizer could not reach a PostHog dependency ({code})"
+    return f"rasterizer could not reach a Flind dependency ({code})"
 
 
 def _encode_reason(kind: str, message: str) -> str:
@@ -544,7 +544,7 @@ class ApplyScannerWorkflow(PostHogWorkflow):
             # "dependency was slow" story; a non-retryable leaf keeps the RASTERIZATION_FAILED path below, so
             # it gets neither a false retry prompt nor a message that merges it into the transient-outage issue.
             if rasterizer_type in _RASTERIZER_INFRA_TRANSIENT_TYPES and not _failure_non_retryable(e):
-                # A PostHog dependency blip, not a broken recording. Classify transient so the observation
+                # A Flind dependency blip, not a broken recording. Classify transient so the observation
                 # stays retryable, and keep the raw errno and pod address in the worker log only: `from None`
                 # drops the volatile cause so error tracking groups the outage by the stable message alone
                 # instead of minting a fresh issue per errno and pod address.

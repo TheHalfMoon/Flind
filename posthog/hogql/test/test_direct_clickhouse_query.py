@@ -86,7 +86,7 @@ class TestDirectClickHouseQuery(APIBaseTest):
                 "flips_to_an_internal_address",
                 _answers_with("10.0.0.5"),
                 "Database host not allowed: This host points to an internal or private IP address, "
-                "which PostHog can't reach. Use a host that's reachable from the public internet.",
+                "which Flind can't reach. Use a host that's reachable from the public internet.",
             ),
             (
                 "resolver_asks_to_try_again",

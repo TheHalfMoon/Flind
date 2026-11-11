@@ -39,7 +39,7 @@ export function EventsRetentionSupportPeriodModal({
         <LemonModal
             isOpen
             onClose={onClose}
-            title="Change the period PostHog support set?"
+            title="Change the period Flind support set?"
             maxWidth="32rem"
             footer={
                 <>
@@ -62,7 +62,7 @@ export function EventsRetentionSupportPeriodModal({
         >
             <div className="flex flex-col gap-4">
                 <p className="mb-0">
-                    {`PostHog support set ${owner} to keep events for ${supportPeriod}. If you change it, you can only pick one of the standard periods, and you'll need to contact support to get ${supportPeriod} back.`}
+                    {`Flind support set ${owner} to keep events for ${supportPeriod}. If you change it, you can only pick one of the standard periods, and you'll need to contact support to get ${supportPeriod} back.`}
                 </p>
                 <div className="flex flex-col gap-1">
                     <LemonLabel>New retention period</LemonLabel>

@@ -1,7 +1,7 @@
 ---
 name: managing-subscriptions
 description: >
-  Create and manage scheduled PostHog subscriptions for insight snapshots,
+  Create and manage scheduled Flind subscriptions for insight snapshots,
   dashboard snapshots, and AI prompt reports. Use when a user wants recurring
   email, Slack, or Microsoft Teams delivery; an AI summary; delivery history;
   schedule or recipient changes; a test delivery; pause, resume, or deletion;
@@ -175,4 +175,4 @@ Create a new subscription if the user needs it again.
 - `building-a-dashboard`: Create a dashboard before you subscribe to it.
 - `adding-product-alerting`: Notify users when data meets a condition.
 - `managing-reminders`: Schedule a private prompt to inspect a resource.
-- `understanding-billing-usage`: Investigate PostHog AI credit use.
+- `understanding-billing-usage`: Investigate Flind AI credit use.

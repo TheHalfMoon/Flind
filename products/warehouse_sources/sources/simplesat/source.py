@@ -48,7 +48,7 @@ class SimplesatSource(ResumableSource[SimplesatSourceConfig, SimplesatResumeConf
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Simplesat",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Simplesat API key to pull your customer satisfaction survey data into the PostHog Data warehouse.
+            caption="""Enter your Simplesat API key to pull your customer satisfaction survey data into the Flind Data warehouse.
 
 You can create an API key under **Settings → API keys** in [Simplesat](https://app.simplesat.io/). The key must include read scopes for each resource you want to sync — surveys, questions, answers, responses, and customers.
 """,

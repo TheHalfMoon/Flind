@@ -48,7 +48,7 @@ class AlgunaSource(ResumableSource[AlgunaSourceConfig, AlgunaResumeConfig]):
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Alguna",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Alguna API key to automatically pull your Alguna billing data into the PostHog Data warehouse.
+            caption="""Enter your Alguna API key to automatically pull your Alguna billing data into the Flind Data warehouse.
 
 You can create an API key in your Alguna dashboard under Settings > Credentials.
 """,

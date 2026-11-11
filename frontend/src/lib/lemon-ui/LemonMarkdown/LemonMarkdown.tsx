@@ -86,7 +86,7 @@ export interface LemonMarkdownProps {
      * Whether to treat images as untrusted. Use for content we don't control (e.g. LLM/agent or
      * externally-sourced output), where auto-loading an image would fire a request to an arbitrary
      * URL — leaking the viewer's IP, acting as a tracking pixel, or probing internal addresses.
-     * When set, only images served from PostHog (same-origin or a `posthog.com` host) render inline
+     * When set, only images served from Flind (same-origin or a `posthog.com` host) render inline
      * as <img>; every other image is rendered as a plain click-to-open link instead.
      * `'all'` emits no <img> at all: a same-origin `src` is still a credentialed GET on this host.
      */

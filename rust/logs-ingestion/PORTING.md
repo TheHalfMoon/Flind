@@ -273,7 +273,7 @@ A parsed `FilterGroupNode` implements `metric_rules::FilterGroupMatcher` with `f
 
 ### Service gaps
 
-- **`first team event ingested`.** `setTeamIngestedEvent` captures a PostHog analytics event to every organization member after the first `ingested_event` write. `PgTeamManager` writes the flag and refreshes the cache, but captures nothing.
+- **`first team event ingested`.** `setTeamIngestedEvent` captures a Flind analytics event to every organization member after the first `ingested_event` write. `PgTeamManager` writes the flag and refreshes the cache, but captures nothing.
 - **Hog transformations in primary mode.** No `LogsTransformer` exists, so primary mode refuses to start when `LOGS_TRANSFORMATIONS_ENABLED_TEAMS` is not empty.
 - **Offsets after a failed background task.** Node's default consumer (`consumer-v1.ts`, `CONSUMER_USE_V2=false`) stores a batch's offsets in a `finally`, so a failed task's offsets can still commit before the process exits. The port follows `consumer-v2.ts`: a failed task stores nothing from it or any later batch.
 - **Drain on revoke.** `consumer-v2.ts` waits for in-flight tasks inside the revoke callback. The port fences their offset stores by the same per-partition epoch, but does not wait, so the new owner can process a revoked partition while an old task still runs. That costs duplicates, not data.

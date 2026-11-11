@@ -13,8 +13,8 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
                 <>
                     <Markdown>
                         {dedent`
-                            If your services already expose a Prometheus \`/metrics\` endpoint, run the PostHog
-                            metrics agent. It scrapes those endpoints and forwards them to PostHog, so your
+                            If your services already expose a Prometheus \`/metrics\` endpoint, run the Flind
+                            metrics agent. It scrapes those endpoints and forwards them to Flind, so your
                             application code does not change.
                         `}
                     </Markdown>
@@ -55,8 +55,8 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
                 <>
                     <Markdown>
                         {dedent`
-                            If you instrument your application directly, PostHog accepts metrics from any
-                            OpenTelemetry client over OTLP HTTP. There is no PostHog-specific package to install,
+                            If you instrument your application directly, Flind accepts metrics from any
+                            OpenTelemetry client over OTLP HTTP. There is no Flind-specific package to install,
                             use the standard OpenTelemetry libraries for your language.
                         `}
                     </Markdown>

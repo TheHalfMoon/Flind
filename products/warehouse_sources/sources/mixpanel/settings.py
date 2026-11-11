@@ -10,7 +10,7 @@ from products.warehouse_sources.sources.sdk import (
     frozen,
 )
 
-# Mixpanel vendor API version labels. `v1` is PostHog's legacy placeholder — the source
+# Mixpanel vendor API version labels. `v1` is Flind's legacy placeholder — the source
 # predates explicit versioning — and `2.0` is Mixpanel's current published API version.
 MIXPANEL_API_VERSION_V1 = UNVERSIONED_API_VERSION
 MIXPANEL_API_VERSION_2_0 = "2.0"

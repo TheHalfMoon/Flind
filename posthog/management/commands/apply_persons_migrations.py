@@ -144,7 +144,7 @@ def _invalid_indexes_named(cursor, index_name: str) -> list[str]:
     """Return the qualified names of invalid indexes that carry ``index_name``.
 
     The connected database can hold indexes this runner does not own: hobby deploys keep the
-    persons tables in the main PostHog database. Match the one name the migration is about to
+    persons tables in the main Flind database. Match the one name the migration is about to
     build, so an unrelated interrupted build does not stop the queue.
     """
     cursor.execute(

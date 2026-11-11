@@ -52,8 +52,8 @@ export const kindToLabel = (kind: string): string => {
         .join(' ')
 }
 
-// Helpers below build the prompts that the "Ask PostHog AI" entry points send to the AI side panel.
-// PostHog AI receives a snapshot of the issue(s) embedded in the prompt — it does not re-run the checks.
+// Helpers below build the prompts that the "Ask Flind AI" entry points send to the AI side panel.
+// Flind AI receives a snapshot of the issue(s) embedded in the prompt — it does not re-run the checks.
 
 const truncate = (value: string, max: number): string => (value.length > max ? `${value.slice(0, max)}…` : value)
 
@@ -102,7 +102,7 @@ const summarizeSeverityCounts = (issues: HealthIssue[]): string =>
         .map(({ severity, count }) => `${count} ${severity}`)
         .join(', ')
 
-/** Preset questions surfaced as a dropdown next to the overview-level "Ask PostHog AI" button. */
+/** Preset questions surfaced as a dropdown next to the overview-level "Ask Flind AI" button. */
 export const HEALTH_OVERVIEW_QUESTIONS = [
     "What's wrong with my project's health?",
     'Which health issues should I fix first?',
@@ -112,12 +112,12 @@ export const HEALTH_OVERVIEW_QUESTIONS = [
 const DEFAULT_OVERVIEW_QUESTION = "What's wrong with my project's health, and how do I fix it?"
 
 // Cap how many issues are inlined into the overview prompt. A large production project can have many
-// active health issues, and listing every one would waste — or exceed — PostHog AI's token budget. The
+// active health issues, and listing every one would waste — or exceed — Flind AI's token budget. The
 // list is severity-sorted, so the most actionable issues are always included; the rest are summarized
 // by count below.
 const MAX_OVERVIEW_ISSUES = 25
 
-/** Build the prompt for asking PostHog AI about a single health issue. */
+/** Build the prompt for asking Flind AI about a single health issue. */
 export const buildHealthIssuePrompt = (issue: HealthIssue): string => {
     const category = categoryLabel(issue.kind)
     const lines = [
@@ -135,7 +135,7 @@ export const buildHealthIssuePrompt = (issue: HealthIssue): string => {
     return lines.join('\n')
 }
 
-/** Build the prompt for asking PostHog AI about every active issue on the Health overview. */
+/** Build the prompt for asking Flind AI about every active issue on the Health overview. */
 export const buildHealthOverviewPrompt = (
     issues: HealthIssue[],
     question: string = DEFAULT_OVERVIEW_QUESTION

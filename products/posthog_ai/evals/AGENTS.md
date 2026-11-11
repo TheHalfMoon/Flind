@@ -8,7 +8,7 @@ Before writing cases from support conversations, list only the properties each c
 Use invented names, identifiers, and tokens, and reserved domains such as `example.com`.
 Read the [public repository guidance](../../../AGENTS.md#public-open-source-repo-guidance) before adding case data.
 
-Use [`hogli evals`](../eval_harness/README.md) to run PostHog AI evals.
+Use [`hogli evals`](../eval_harness/README.md) to run Flind AI evals.
 Add suites under `products/posthog_ai/evals/` or `products/<product>/evals/` and follow [`/writing-evals`](../../../.agents/skills/writing-evals/SKILL.md).
 
 Source of truth (read these if anything below looks stale):

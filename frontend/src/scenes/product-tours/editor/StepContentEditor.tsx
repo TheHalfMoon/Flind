@@ -40,7 +40,7 @@ export interface StepContentEditorProps {
     tourId: string
     placeholder?: string
     autoFocus?: boolean
-    /** Custom image upload function. If not provided, uses the default PostHog API upload. Used for Toolbar uploads. */
+    /** Custom image upload function. If not provided, uses the default Flind API upload. Used for Toolbar uploads. */
     uploadImage?: (file: File) => Promise<{ url: string; fileName: string }>
 }
 

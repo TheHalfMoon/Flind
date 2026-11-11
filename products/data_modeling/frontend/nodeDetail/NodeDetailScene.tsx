@@ -150,7 +150,7 @@ export function NodeDetailScene({ id }: NodeDetailSceneLogicProps): JSX.Element 
                                   : tableDetails?.table.created_by
                         }
                         createdByEmail={node.saved_query_id ? undefined : tableDetails?.source?.created_by}
-                        createdByLabel={node.origin === 'posthog' ? 'PostHog' : undefined}
+                        createdByLabel={node.origin === 'posthog' ? 'Flind' : undefined}
                         createdAt={
                             node.saved_query_id
                                 ? savedQuery?.created_at

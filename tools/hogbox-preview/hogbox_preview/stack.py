@@ -1,6 +1,6 @@
 """The preview *stack* — provider-agnostic.
 
-``PostHogPreviewStack`` knows how to bring PostHog up inside any
+``PostHogPreviewStack`` knows how to bring Flind up inside any
 ``PreviewBackend``: build from the checkout, migrate, seed demo data, wait for
 health. It talks to the box only through ``backend.exec`` / ``write_file`` /
 ``run_long`` / ``wait_http_ok`` — it never knows or cares whether the box is a
@@ -190,7 +190,7 @@ _OTEL_ENV = [
 _DEMO_EMAIL = "test@posthog.com"
 _DEMO_PASSWORD = "12345678"
 
-# PostHog's prod settings refuse to boot on the default SECRET_KEY, so the
+# Flind's prod settings refuse to boot on the default SECRET_KEY, so the
 # override must supply one (the migrate `run --rm web` one-off needs it too).
 #
 # It MUST be random per preview, NOT a shared constant. Previews are served on
@@ -307,7 +307,7 @@ class PostHogPreviewStack:
 
     # --- public API ----------------------------------------------------------
     def bring_up(self) -> str:
-        """Provision the box and bring PostHog up; return the public URL."""
+        """Provision the box and bring Flind up; return the public URL."""
         self.backend.provision()
         self.start_runtime()
         url = self.backend.web_url
@@ -404,9 +404,9 @@ class PostHogPreviewStack:
     def _ensure_oidc_private_key(self) -> None:
         """Give the box an RSA key for OAuth token signing, once per box.
 
-        PostHog signs OAuth tokens with RS256 and refuses to save an OAuth
+        Flind signs OAuth tokens with RS256 and refuses to save an OAuth
         application without OIDC_RSA_PRIVATE_KEY, so a preview cannot host an
-        OAuth client (PostHog Desktop, for one) until this is set. Adopted from
+        OAuth client (Flind Desktop, for one) until this is set. Adopted from
         the override when the box already has one, because rotating it would
         invalidate every token the preview already issued. Left empty when the
         box cannot mint one, which serves everything except OAuth.
@@ -516,7 +516,7 @@ class PostHogPreviewStack:
             f"      - EXTRA_CSRF_TRUSTED_ORIGINS={_CSRF_TRUSTED_ORIGINS}",
             "      - DISABLE_SECURE_SSL_REDIRECT=1",
             "      - DEBUG=0",
-            # Random per-preview key (see self.secret_key) — PostHog's prod
+            # Random per-preview key (see self.secret_key) — Flind's prod
             # settings refuse to boot on the default, and the migrate one-off
             # (compose run --rm web) needs it too. Not shared across previews, so
             # a public preview URL can't be used to forge sessions on another.
@@ -927,7 +927,7 @@ class PostHogPreviewStack:
         self.backend.run_long(self._compose(f"up -d --no-build {services}"), name="up-web", timeout=1800)
 
     def migrate(self) -> None:
-        # PostHog needs both: Postgres (schema) and ClickHouse (events DB +
+        # Flind needs both: Postgres (schema) and ClickHouse (events DB +
         # tables). ClickHouse must be migrated before demo-data generation,
         # which writes events to it.
         timing.stage("migrate start (postgres + clickhouse)")

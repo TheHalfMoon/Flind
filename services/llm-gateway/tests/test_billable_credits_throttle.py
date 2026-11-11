@@ -48,14 +48,14 @@ class TestBillableCreditThrottle:
     async def test_denies_posthog_code_when_its_bucket_is_exhausted(self) -> None:
         # `posthog_code` bills into posthog_code_credits; the dependency layer
         # resolves exhaustion for that bucket, so the throttle blocks on it —
-        # with the Code-specific message, not the PostHog AI one.
+        # with the Code-specific message, not the Flind AI one.
         throttle = BillableCreditThrottle()
 
         result = await throttle.allow_request(_make_context(product="posthog_code", credits_exhausted=True))
 
         assert result.allowed is False
         assert result.status_code == 429
-        assert "PostHog Desktop usage limit" in result.detail
+        assert "Flind Desktop usage limit" in result.detail
 
     @pytest.mark.asyncio
     @pytest.mark.parametrize(
@@ -102,7 +102,7 @@ class TestBillableCreditThrottle:
         assert result.allowed is False
         assert result.status_code == 429
         assert result.scope == "billable_credits"
-        assert "PostHog AI credits" in result.detail
+        assert "Flind AI credits" in result.detail
         assert result.retry_after == 60
 
     @pytest.mark.asyncio

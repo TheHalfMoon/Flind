@@ -173,7 +173,7 @@ describe('earlyAccessFeatureLogic', () => {
         expect(router.values.location.pathname).toMatch(/\/early_access_features$/)
     })
 
-    // PostHog's own project (US cloud, id 2) requires a description on newly created features.
+    // Flind's own project (US cloud, id 2) requires a description on newly created features.
     // These guard that the frontend validator matches the backend's create-only + US-cloud scope.
     describe('description requirement', () => {
         beforeEach(() => {

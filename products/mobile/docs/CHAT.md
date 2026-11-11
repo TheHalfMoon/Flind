@@ -3,7 +3,7 @@
 ## Choosing the chat version
 
 New general chats use the Tasks agent only in project 2 on `https://us.posthog.com`.
-Every other project uses classic PostHog AI through the existing `conversations/` API.
+Every other project uses classic Flind AI through the existing `conversations/` API.
 This temporary routing rule is local to the mobile app. It does not evaluate rollout flags
 or request an AI access field from the server. Organization approval and personal consent
 still apply before sending messages.
@@ -20,7 +20,7 @@ The Chats list combines unlinked conversations and tasks. Conversations with a l
 conversation links use `conversationId`; Tasks links continue to use `taskId` and `runId`.
 Only task rows offer Archive, because classic conversations have no reversible archive API.
 
-The Tasks chat screen talks to PostHog AI on the task runtime.
+The Tasks chat screen talks to Flind AI on the task runtime.
 Each Tasks chat has interactive runs in a sandbox.
 A new chat creates the task on its first message; the Chats list reopens one by its task id.
 New and existing chats open as full-screen stack pages. Back returns to the previous screen or the
@@ -29,8 +29,8 @@ The labeled Back chip matches Settings in style and position.
 Saved chats show New chat and the ellipsis in a matching bordered pill; unsaved chats show only Back.
 The composer clears the keyboard and safe area and receives focus after the page finishes its opening transition.
 
-An active incident affecting PostHog AI in the selected cloud region appears below the header in new and existing chats.
-The notice shows the published incident title and phase. Tap it to read the update. For other services, open **PostHog status** below the project name in the
+An active incident affecting Flind AI in the selected cloud region appears below the header in new and existing chats.
+The notice shows the published incident title and phase. Tap it to read the update. For other services, open **Flind status** below the project name in the
 main tabs’ ellipsis menu. An indicator on that menu signals a regional incident or in-progress maintenance. The menu shows the highest current impact and the number of concurrent incidents. The status row has a green dot for a healthy region, yellow for degraded performance or maintenance, and red for partial or major outages. Chat warnings use the impact on the regional AI component.
 
 The ellipsis menu offers **Copy link to chat** and **Archive chat**. Copy uses the current project's
@@ -60,7 +60,7 @@ The protocol below follows the web's `taskTrackerSceneLogic.ts`, `runInteraction
 | `src/features/chat/contextPrompt.ts`                 | The leading context blocks, `bareQuestion`, `stripInjectedContext`                                                                                                                                                                      |
 | `src/features/chat/objectContext.ts`                 | The issue and recording item types, `objectContextFromParams`, their trusted lines (see [Object context](#object-context))                                                                                                              |
 | `src/features/chat/attachments/`                     | Files in the composer: the limits and content types (`attachmentRules.ts`), the pickers, the three-step upload (`uploadAttachments.ts`), `useComposerAttachments`, the Attach sheet and the file chip (see [Attachments](#attachments)) |
-| `src/features/chat/chatErrors.ts`                    | Maps HTTP and network failures to copy, including the PostHog Desktop gate                                                                                                                                                              |
+| `src/features/chat/chatErrors.ts`                    | Maps HTTP and network failures to copy, including the Flind Desktop gate                                                                                                                                                              |
 | `src/features/chat/*.tsx`                            | `Composer`, `ContextChip`, `MentionPopover`, `ChatEmptyState`, `ChatMarkdown`, `ChatErrorBubble`, `ChatProgressLine`, `UserBubble`                                                                                                      |
 | `src/features/chats/`                                | The Chats screen: list, search, day groups and `useChatList()` (see [DESIGN.md](DESIGN.md))                                                                                                                                             |
 | `src/demo/sessionThreads.ts`                         | Demo run logs keyed by the demo task ids in `src/demo/chats.ts`, and the demo replies                                                                                                                                                   |
@@ -73,7 +73,7 @@ Every request carries `X-PostHog-Client-Platform: mobile`, so `run/` never reuse
 The same approval rules cover Chat, Create PR/task handoff, and replay summarization. Pending access checks keep the chat composer available without a loading indicator. Known organization restrictions and personal consent still gate the composer; every AI action checks current approval before sending.
 
 - **Organization approval.** The selected project's organization must have `is_ai_data_processing_approved: true`. The app reads the requesting user's `membership_level` from `OrganizationSerializer` in `/api/users/@me/` and `/api/organizations/{id}/`: 8 is an administrator and 15 is an owner. Only those confirmed roles see Open settings; other members and unknown roles see instructions to ask an admin or owner. The settings link opens the organization's existing web approval control; mobile never changes that setting itself.
-- **Personal consent.** The shared sheet explains that messages, reports, attached files and photos, selected recordings, and project data used by the agent can go to PostHog AI and third-party model providers. It links to the privacy policy. Continue records the disclosure on this device for this host and user; Not now sends nothing. The broader disclosure invalidates consent saved by older versions of the chat-only sheet. Sign-out and session expiry clear consent.
+- **Personal consent.** The shared sheet explains that messages, reports, attached files and photos, selected recordings, and project data used by the agent can go to Flind AI and third-party model providers. It links to the privacy policy. Continue records the disclosure on this device for this host and user; Not now sends nothing. The broader disclosure invalidates consent saved by older versions of the chat-only sheet. Sign-out and session expiry clear consent.
 - **Fresh checks.** Every submitted message (including queue delivery), handoff, decision answer, and replay summary first reads the organization's current approval. The chat also rechecks on foreground without replacing the composer during the read. Unknown approval, a failed read, and removed project access stop the action. Changing host, user, project or session, or leaving the originating screen while the sheet is open, cancels its pending action.
 - Demo mode skips approval and sends no live requests.
 
@@ -126,7 +126,7 @@ Ratings persist on the device, scoped to the account and project, and clear on s
 The app uses the web's `$ai_metric` quality ratings and `$ai_feedback` comment events, with the answer's trace, task, run and turn identifiers where available, through its configured mobile analytics project.
 Demo mode keeps ratings on the device.
 
-PostHog object tags render as inline links to the selected host and project. Standalone
+Flind object tags render as inline links to the selected host and project. Standalone
 `display="block"` insight tags show the saved name and description; SQL tags show a three-line
 preview with Show all. Insight summaries use `refresh=force_cache`, so opening a reply does not
 run its insight queries. A reply renders at most ten cards, then uses inline links. Unknown
@@ -156,7 +156,7 @@ The bubble shows at once and is taken back if the start fails.
 
 Two create shapes (`chatStartRequests` in `sessionRun.ts`):
 
-- **PostHog AI chat** (no report, or more than one report attached). `POST tasks/`:
+- **Flind AI chat** (no report, or more than one report attached). `POST tasks/`:
 
   ```json
   {
@@ -185,7 +185,7 @@ Two create shapes (`chatStartRequests` in `sessionRun.ts`):
   }
   ```
 
-  The server exempts a repo-less report discussion from the PostHog Desktop gate.
+  The server exempts a repo-less report discussion from the Flind Desktop gate.
   `signal_report_discussion_question` is the trimmed question as typed, without the prompt's tag escaping, cut at 4000 code points.
   Every later fresh run of a task with a `signal_report` carries `run_source: "signal_report"` and `signal_report_id`, also when the Chats list opens it.
   It counts toward the report's discussion task limit (see [Errors](#errors)).
@@ -316,7 +316,7 @@ Files upload when the message sends, in three steps per batch, as the web's `art
 1. `POST .../prepare_upload/` with `{ "artifacts": [{ "name", "type": "user_attachment", "source": "posthog_ai", "size", "content_type" }] }`.
    The answer keeps the request's order, and each entry has an `id`, a `storage_path` and a `presigned_post`.
 2. A `multipart/form-data` `POST` to each `presigned_post.url`, all files at once.
-   Every `presigned_post.fields` entry goes first, then the file as `file`. It is a plain `fetch`, so the PostHog token never goes to S3.
+   Every `presigned_post.fields` entry goes first, then the file as `file`. It is a plain `fetch`, so the Flind token never goes to S3.
 3. `POST .../finalize_upload/` with each `id`, `name`, `type`, `source`, `storage_path` and the extension's `content_type`.
 
 One failed file fails the send, so a message never arrives with fewer files than the person attached.
@@ -376,7 +376,7 @@ A JSON-RPC `error` in the answer shows "Couldn't stop this run. Try again."
 ## Decisions
 
 Permission requests go through the hand-off tool policy (`toolPolicy.ts`, see [HANDOFF.md](HANDOFF.md#tool-policy)):
-the app allows built-in tools and PostHog `exec` calls on the person's behalf and asks about the rest.
+the app allows built-in tools and Flind `exec` calls on the person's behalf and asks about the rest.
 A question, plan approval or permission shows in `SessionDecisionPanel` and replaces the composer while it waits.
 The answer goes as a `permission_response` command and shows in the thread as the person's bubble.
 `mobile_decision_shown` is captured once per request with `kind` (`question`, `plan` or `permission`), `surface: chat` and `replayed` (the request was in the stored log).
@@ -391,9 +391,9 @@ Tapping a suggestion still fills the draft in one tap.
 
 - A send, answer or stop that fails shows a bordered notice above the composer, wrapping to fit its full text.
   A failed send also sets `unsentText`; the sheet puts it back into an empty input once.
-- **PostHog Desktop gate.** `run/` and `user_message` answer 403 `code_access_required` for a user the gate refuses.
+- **Flind Desktop gate.** `run/` and `user_message` answer 403 `code_access_required` for a user the gate refuses.
   The message is under `error`, and the app shows it as is, because it names the reason (Startup plan, prepaid credits).
-  A 503 `desktop_access_unavailable` says "We couldn't verify PostHog Desktop access. Try again."
+  A 503 `desktop_access_unavailable` says "We couldn't verify Flind Desktop access. Try again."
   A 429 `usage_limit_exceeded` or `billing_limit` shows the server copy.
   `cancel` and `set_config_option` are not gated. Only the Inbox "Discuss" shape is exempt.
 - **Report discussion limit.** A one-report chat counts toward the report's discussion task limit.
@@ -423,8 +423,8 @@ The web thread strips only leading blocks, so the blocks lead and the question f
 ```
 
 - The trusted block goes only with attached reports. Its first line names the report by the web URL the app builds from the signed-in host, as the web's `discussReportInstructions` does.
-  When the report cannot be acted on, the first line becomes "Answer this question about the PostHog Inbox report at {report url}. The question is the message after this block." and the state instructions drop out.
-- The web has no framing for several reports. The app names them all ("these PostHog Inbox reports: {url}, {url}") and adds "The instructions below speak of one report. Apply them to each of these reports on its own."
+  When the report cannot be acted on, the first line becomes "Answer this question about the Flind Inbox report at {report url}. The question is the message after this block." and the state instructions drop out.
+- The web has no framing for several reports. The app names them all ("these Flind Inbox reports: {url}, {url}") and adds "The instructions below speak of one report. Apply them to each of these reports on its own."
 - With no report attached, the first message of a new chat lists up to 20 inbox rows as `signal_report` lines in the untrusted block.
   Follow-ups and opened chats send no inbox list.
 - The agent reads report details through the inbox MCP tools, so the prompt carries no summaries.
@@ -482,7 +482,7 @@ A send waiting for encrypted draft storage is cancelled by New chat or closing t
 
 Chat pauses streams while offline. Task and history reads resume when the connection returns. When the connection returns or the app enters the foreground, chat resumes the same run with its saved cursor and transcript. The Reconnect button also restarts streams after the retry limit. Authentication, permission and missing-run errors prevent automatic recovery. Recovery does not resend messages, answers or run creation requests.
 
-A connected device can still fail to reach PostHog. Stream retries and the idle timeout handle these failures. Repeated connected events do not reset the retry limit.
+A connected device can still fail to reach Flind. Stream retries and the idle timeout handle these failures. Repeated connected events do not reset the retry limit.
 
 The page opens from the bottom bar's compose button, a report's Chat button, a report's task status, an inbox row's menu and the Chats tab.
 The route takes an optional `entry` param; `chatSheetSource` falls back on `report` with a `reportId`, `task` with only a `taskId`, else `compose`.
@@ -513,7 +513,7 @@ The route takes an optional `entry` param; `chatSheetSource` falls back on `repo
   Archive and Undo update linked conversations in the cached history too, so they cannot recreate a hidden task row.
   Repeated archive submissions share the pending request. A failed archive puts the row back and shows "Couldn't archive this chat. Try again."
   A failed Undo hides the row again and shows "Couldn't restore this chat. Try again."
-  There is no archived list in the app: the web app and PostHog Desktop show archived tasks.
+  There is no archived list in the app: the web app and Flind Desktop show archived tasks.
 - `mobile_chat_row_menu_opened`, `mobile_chat_archived` and `mobile_chat_archive_undone` carry the row's `origin` and `status`;
   `mobile_chat_archive_failed` carries `action` (`archive` or `restore`) and `code` (the `ChatError` kind).
 - Regaining focus (closing the sheet) invalidates the list, so a new chat appears with its title.

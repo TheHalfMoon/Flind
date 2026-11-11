@@ -43,7 +43,7 @@ _SOL_NOTE = "A general coding model. Good for most code changes and debugging."
 # the capability ladder must match one, or the router picks it blind.
 _MODEL_NOTES: dict[str, str] = {
     "claude-sonnet": (
-        "A balanced model. Good for most code changes, bug fixes with a clear cause, and PostHog data questions."
+        "A balanced model. Good for most code changes, bug fixes with a clear cause, and Flind data questions."
     ),
     "claude-opus": (
         "A strong model for deep work. Good for large or unclear code changes, hard bugs, "
@@ -66,8 +66,8 @@ _MODEL_NOTES: dict[str, str] = {
 # become an instruction.
 MODEL_ROUTER_INSTRUCTIONS: dict[str, JsonValue] = {
     "task": (
-        "Pick the model for a new task that the PostHog agent runs. "
-        "The agent can change code in a repository, open pull requests, query PostHog data and change PostHog settings."
+        "Pick the model for a new task that the Flind agent runs. "
+        "The agent can change code in a repository, open pull requests, query Flind data and change Flind settings."
     ),
     "input": (
         "state.request is the Slack message that starts the task. "
@@ -86,7 +86,7 @@ MODEL_ROUTER_INSTRUCTIONS: dict[str, JsonValue] = {
     ],
     "pick_a_faster_option_when": [
         "The request asks a direct question with a short answer, for example a count, a definition or a link.",
-        "The request asks for one PostHog query, one insight or a summary of data.",
+        "The request asks for one Flind query, one insight or a summary of data.",
         "The request asks for a small, clear edit, for example a typo, a copy change or a version bump.",
         "state.repository is null and the request does not ask for code.",
     ],

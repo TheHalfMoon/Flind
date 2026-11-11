@@ -899,7 +899,7 @@ def _schema_discovery_timeout_error() -> QueryTimeoutException:
     """
     return QueryTimeoutException(
         "Timed out listing table columns while discovering the database schema. There are enough "
-        "tables in scope that PostHog could not enumerate their columns within the timeout. Narrow "
+        "tables in scope that Flind could not enumerate their columns within the timeout. Narrow "
         "the schema selected for this source, or reduce the number of tables synced, then re-enable "
         "the sync."
     )
@@ -917,9 +917,9 @@ def _pk_uniqueness_probe_timeout_error() -> QueryTimeoutException:
     """
     return QueryTimeoutException(
         'Timed out verifying that the "id" column is unique. This table has no primary key, so '
-        'PostHog assumed "id" was unique to sync incrementally but could not confirm it within the '
+        'Flind assumed "id" was unique to sync incrementally but could not confirm it within the '
         'timeout. Add a primary key, or ensure the "id" column has an appropriate index created, so '
-        "PostHog can sync this table incrementally."
+        "Flind can sync this table incrementally."
     )
 
 

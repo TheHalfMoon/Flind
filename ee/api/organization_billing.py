@@ -1,8 +1,8 @@
 """The organization billing API: /api/organizations/{organization_id}/billing/.
 
 Each action reads one resource from billing's /api/v2/billing/ routes with the access token
-PostHog mints for the caller (ee.billing.access_token) and reshapes billing's payload into the
-organization API contract: bare objects, ISO 8601 timestamps, its own field names. PostHog decides what
+Flind mints for the caller (ee.billing.access_token) and reshapes billing's payload into the
+organization API contract: bare objects, ISO 8601 timestamps, its own field names. Flind decides what
 the caller may read (ee.billing.grants); billing checks the token and returns the data.
 """
 
@@ -79,7 +79,7 @@ ORGANIZATION_BILLING_PROVIDER = {"posthog": "stripe", "vercel": "vercel"}
 
 def _with_todays_usage(products: list[dict[str, Any]], organization_usage: dict[str, Any]) -> list[dict[str, Any]]:
     """Product and add-on rows with today's usage added to the count and the ratio, as the root
-    billing read does. Billing's figures stop at the last report; PostHog holds today's."""
+    billing read does. Billing's figures stop at the last report; Flind holds today's."""
 
     def add(item: dict[str, Any]) -> dict[str, Any]:
         own = organization_usage.get(item.get("usage_key") or "")
@@ -1081,7 +1081,7 @@ class OrganizationBillingViewSet(BillingReadViewSet):
     def invoice_content(
         self, request: Request, *args: Any, invoice_id: str = "", **kwargs: Any
     ) -> StreamingHttpResponse:
-        """The invoice document, streamed from the billing provider by PostHog under the same access
+        """The invoice document, streamed from the billing provider by Flind under the same access
         check as the list. The provider's own link never reaches the client."""
         organization = self.organization
         grants = self._grants(request, organization)

@@ -14,8 +14,8 @@ const run: WizardRunApi = {
     workspace: { type: 'local_folder', project_name: 'example-project' },
     program: {
         id: 'posthog-integration',
-        name: 'PostHog integration',
-        description: 'Set up PostHog',
+        name: 'Flind integration',
+        description: 'Set up Flind',
         wizard_version: '2.78.0',
         command: [],
         tags: [],
@@ -92,7 +92,7 @@ const meta: Meta<typeof WizardInstallSyncView> = {
         run,
         now: NOW,
         tasks: [
-            task('Install the PostHog SDK', 'completed'),
+            task('Install the Flind SDK', 'completed'),
             task('Add your project token', 'running'),
             task('Verify events', 'created'),
         ],
@@ -142,7 +142,7 @@ export const ManyTasks: Story = {
     args: {
         tasks: [
             task('Detect your framework', 'completed'),
-            task('Install the PostHog SDK', 'completed'),
+            task('Install the Flind SDK', 'completed'),
             task('Add your project token', 'running'),
             task('Verify events', 'created'),
             task('Open a pull request', 'created'),
@@ -167,6 +167,6 @@ export const Failed: Story = {
             error_message: 'Could not install posthog-js: the package manager exited with code 1.',
             finished_at: '2026-09-23T10:03:00Z',
         },
-        tasks: [task('Install the PostHog SDK', 'completed'), task('Add your project token', 'failed')],
+        tasks: [task('Install the Flind SDK', 'completed'), task('Add your project token', 'failed')],
     },
 }

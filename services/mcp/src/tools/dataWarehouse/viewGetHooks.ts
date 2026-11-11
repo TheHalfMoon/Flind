@@ -5,9 +5,9 @@ import type { Context } from '@/tools/types'
 export const SUGGESTIONS_TIMEOUT_MS = 2000
 const OPEN_STATUS = 'proposed'
 const ACTIONABLE_NOTE =
-    'PostHog suggests these changes to this view. Accept one with warehouse-suggestions-accept-prepare, or dismiss it with warehouse-suggestions-dismiss.'
+    'Flind suggests these changes to this view. Accept one with warehouse-suggestions-accept-prepare, or dismiss it with warehouse-suggestions-dismiss.'
 const READ_ONLY_NOTE =
-    'PostHog suggests these changes to this view. Accepting or dismissing them needs edit access to the view and an API key with write scope, so share them with someone who has both.'
+    'Flind suggests these changes to this view. Accepting or dismissing them needs edit access to the view and an API key with write scope, so share them with someone who has both.'
 
 type ViewGetParams = { id: string }
 type OpenSuggestion = Pick<Schemas.WarehouseSuggestion, 'id' | 'kind' | 'payload' | 'can_act'>

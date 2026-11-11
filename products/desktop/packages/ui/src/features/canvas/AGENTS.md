@@ -327,7 +327,7 @@ changing breadcrumbs, canvas naming, or the canvas generation harness. The root
 
 ## Storage
 
-- Canvases are **first-class PostHog rows** (the `canvases` API), not local
+- Canvases are **first-class Flind rows** (the `canvases` API), not local
   files. Each canvas belongs to a backend channel (`channelId`), and its
   agent-authored source lives in **server-side versions**: every publish
   appends an immutable source version, guarded by `expected_current_version_id`

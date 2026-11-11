@@ -38,7 +38,7 @@ const ORIGIN_PRODUCT_META: Partial<Record<TaskOriginProductEnumApi, OriginProduc
     [TaskOriginProductEnumApi.ErrorTracking]: { icon: <IconBug />, label: 'Error tracking' },
     [TaskOriginProductEnumApi.EvalClusters]: { icon: <IconFlask />, label: 'Evals' },
     [TaskOriginProductEnumApi.TaskAnalysis]: { icon: <IconSearch />, label: 'Task analysis' },
-    [TaskOriginProductEnumApi.PosthogAi]: { icon: <IconSparkles />, label: 'PostHog AI' },
+    [TaskOriginProductEnumApi.PosthogAi]: { icon: <IconSparkles />, label: 'Flind AI' },
     [TaskOriginProductEnumApi.Experiments]: { icon: <IconTestTube />, label: 'Experiments' },
     [TaskOriginProductEnumApi.Onboarding]: { icon: <IconHandwave />, label: 'Onboarding' },
     [TaskOriginProductEnumApi.Hogdesk]: { icon: <IconHeadset />, label: 'HogDesk' },

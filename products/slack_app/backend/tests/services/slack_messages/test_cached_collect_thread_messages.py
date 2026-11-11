@@ -85,7 +85,7 @@ class TestCachedCollectThreadMessages:
 
     def test_distinct_integrations_have_distinct_cache_entries(self):
         # Same channel + thread_ts across two installations of the app must not
-        # collide — a Slack workspace can host multiple PostHog integrations.
+        # collide — a Slack workspace can host multiple Flind integrations.
         other_integration = Integration.objects.create(
             team=self.team,
             kind="slack",

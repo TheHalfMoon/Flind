@@ -51,7 +51,7 @@ class MailerSendSource(ResumableSource[MailerSendSourceConfig, MailerSendResumeC
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="MailerSend",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your MailerSend API token to automatically pull your MailerSend data into the PostHog Data warehouse.
+            caption="""Enter your MailerSend API token to automatically pull your MailerSend data into the Flind Data warehouse.
 
 You can create an API token in your [MailerSend domain settings](https://app.mailersend.com/api-tokens).
 

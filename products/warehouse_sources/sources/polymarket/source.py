@@ -67,8 +67,8 @@ It syncs events, markets, series, tags, and the all-time biggest wins board. Ord
     def get_non_retryable_errors(self) -> dict[str, str | None]:
         return {
             # There is no credential to fix, so a 403 means Gamma is refusing this caller.
-            "403 Client Error: Forbidden for url: https://gamma-api.polymarket.com": "Polymarket refused the request. Access is restricted from some regions, so this source may not be usable from where PostHog runs.",
-            "403 Client Error: Forbidden for url: https://data-api.polymarket.com": "Polymarket refused the request. Access is restricted from some regions, so this source may not be usable from where PostHog runs.",
+            "403 Client Error: Forbidden for url: https://gamma-api.polymarket.com": "Polymarket refused the request. Access is restricted from some regions, so this source may not be usable from where Flind runs.",
+            "403 Client Error: Forbidden for url: https://data-api.polymarket.com": "Polymarket refused the request. Access is restricted from some regions, so this source may not be usable from where Flind runs.",
         }
 
     def get_schemas(

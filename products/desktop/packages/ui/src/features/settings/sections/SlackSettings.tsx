@@ -76,7 +76,7 @@ export function SlackSettings() {
           description={
             <>
               New Self-driving reports are posted to Slack with the suggested
-              reviewers @mentioned. PostHog must be in the channel, so invite it
+              reviewers @mentioned. Flind must be in the channel, so invite it
               with <code className="text-[12px]">/invite @PostHog</code>.
             </>
           }
@@ -100,7 +100,7 @@ export function SlackSettings() {
             onClick={() => void openUrlInBrowser(slackSettingsUrl)}
           >
             <ArrowSquareOutIcon size={12} />
-            Advanced settings in PostHog
+            Advanced settings in Flind
           </Button>
         ) : null}
         <button

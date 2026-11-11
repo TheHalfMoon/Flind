@@ -200,7 +200,7 @@ export function DefinitionView(rawProps: DefinitionLogicProps): JSX.Element {
         }
     }
 
-    // `hidden` is only on the enterprise definition, which the drop also needs. Dropping a PostHog
+    // `hidden` is only on the enterprise definition, which the drop also needs. Dropping a Flind
     // event such as $pageview breaks other products, so the API refuses those too.
     const canStopIngesting = isEvent && 'hidden' in definition && !definition.name.startsWith('$')
 

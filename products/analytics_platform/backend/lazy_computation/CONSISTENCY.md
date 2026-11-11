@@ -2,7 +2,7 @@
 
 ## The problem
 
-The lazy computation system INSERTs data into ClickHouse and immediately SELECTs it back. In PostHog's self-hosted distributed+replicated ClickHouse cluster, this is unreliable at two levels:
+The lazy computation system INSERTs data into ClickHouse and immediately SELECTs it back. In Flind's self-hosted distributed+replicated ClickHouse cluster, this is unreliable at two levels:
 
 1. **Distributed table layer**: INSERT into `preaggregation_results` (distributed table) routes to `sharded_preaggregation_results` (sharded `ReplicatedAggregatingMergeTree`) via `sipHash64(job_id)`. By default this is **async** — data is written to the initiator node's local filesystem and sent to the target shard in the background. The INSERT returns before the data is queryable.
 
@@ -161,7 +161,7 @@ Sources:
 
 Controls which replica the Distributed table picks for SELECT queries within each shard.
 
-- **`random`** (default, PostHog's current config in `docker/clickhouse/users.xml`): random healthy replica
+- **`random`** (default, Flind's current config in `docker/clickhouse/users.xml`): random healthy replica
 - **`in_order`**: always prefers the first replica in the config; deterministic routing. Both INSERT and SELECT will pick the same replica as long as it's healthy.
 - **`first_or_random`**: tries first replica, random fallback if it has more errors
 - **`nearest_hostname`**: picks by hostname similarity to the querying server
@@ -185,10 +185,10 @@ An alternative to `select_sequential_consistency`. Waits for the local replica t
 
 - Only syncs the **local replica** on the node where the command runs. The caller's SELECT may go through a different node via the Distributed table, hitting an unsynced replica.
 - `ON CLUSTER` variant syncs all nodes but adds latency proportional to cluster size.
-- Blocked by `readonly=2` (PostHog's HogQL default). Requires `SYSTEM SYNC REPLICA` privilege. Would need a separate `sync_execute` call with `readonly=False`.
+- Blocked by `readonly=2` (Flind's HogQL default). Requires `SYSTEM SYNC REPLICA` privilege. Would need a separate `sync_execute` call with `readonly=False`.
 - `select_sequential_consistency` is simpler — 1 ZK read, works as a per-query `SETTINGS` clause, compatible with `readonly=2`.
 
-PostHog already uses `SYSTEM SYNC REPLICA STRICT` in `posthog/dags/common/overrides_manager.py` and `posthog/dags/deletes.py` for cases where consistency matters, but those use direct `Client` connections rather than the `sync_execute` path.
+Flind already uses `SYSTEM SYNC REPLICA STRICT` in `posthog/dags/common/overrides_manager.py` and `posthog/dags/deletes.py` for cases where consistency matters, but those use direct `Client` connections rather than the `sync_execute` path.
 
 Sources:
 
@@ -323,7 +323,7 @@ We're A/B-ing this in a parallel table — `web_stats_paths_preaggregated_pathke
 
 ## ClickHouse Cloud / SharedMergeTree
 
-Not applicable to PostHog (fully self-hosted), but for reference:
+Not applicable to Flind (fully self-hosted), but for reference:
 
 - SharedMergeTree writes to shared object storage (S3/GCS) — quorum is inherent
 - `insert_quorum` / `insert_quorum_parallel` are effectively no-ops

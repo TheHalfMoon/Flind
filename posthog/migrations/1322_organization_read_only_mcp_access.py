@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
             field=models.BooleanField(
                 blank=True,
                 default=False,
-                help_text="When True, requests through the PostHog MCP server can read but not change this organization's data.",
+                help_text="When True, requests through the Flind MCP server can read but not change this organization's data.",
                 null=True,
             ),
         ),

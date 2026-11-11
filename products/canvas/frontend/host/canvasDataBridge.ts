@@ -36,7 +36,7 @@ const CONNECTOR_READ_TTL_SECONDS = 60
 const MAX_STATE_PAGES = 20
 const canvasQuerySchema = z.object({ kind: z.nativeEnum(NodeKind) }).passthrough()
 const CANVAS_QUERY_TAGS = { productKey: 'canvas', scene: 'Canvas' }
-// pinned: `$lib` value on events a canvas captures, shared with PostHog Desktop
+// pinned: `$lib` value on events a canvas captures, shared with Flind Desktop
 const CANVAS_CAPTURE_LIB = 'posthog-canvas'
 
 export interface CanvasConnectorPermissionRequest {
@@ -288,7 +288,7 @@ export class CanvasDataBridge {
     }
 
     // Sends to the current project with its public token, never through the web app's
-    // own analytics client, which reports into PostHog's project rather than the user's.
+    // own analytics client, which reports into Flind's project rather than the user's.
     private async capture(input: Record<string, unknown>): Promise<{ ok: boolean }> {
         const event = input.event
         if (typeof event !== 'string' || !event) {

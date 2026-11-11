@@ -35,7 +35,7 @@ MAX_FEEDBACK_IMAGE_BYTES = 512 * 1024
 
 class DesktopFeedbackSource(models.TextChoices):
     LEAVE_FEEDBACK = "Generic (Leave feedback button)"
-    POSTHOG_WEB = "Visiting PostHog web"
+    POSTHOG_WEB = "Visiting Flind web"
 
 
 class DesktopFeedbackType(models.TextChoices):
@@ -110,11 +110,11 @@ class DesktopFeedbackRequestSerializer(serializers.Serializer):
     app_version = serializers.CharField(
         required=False,
         max_length=100,
-        help_text="Version of PostHog Desktop that submitted the feedback.",
+        help_text="Version of Flind Desktop that submitted the feedback.",
     )
     session_id = serializers.UUIDField(
         required=False,
-        help_text="PostHog session recording identifier for the Desktop session.",
+        help_text="Flind session recording identifier for the Desktop session.",
     )
     screenshot = DesktopFeedbackImageField(
         required=False,
@@ -219,7 +219,7 @@ class DesktopFeedbackViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             ),
         },
         summary="Submit Desktop feedback",
-        description="Stores selected attachments and submits one response to the PostHog Desktop feedback survey.",
+        description="Stores selected attachments and submits one response to the Flind Desktop feedback survey.",
     )
     def create(self, request: ValidatedRequest, *args: Any, **kwargs: Any) -> Response:
         data = request.validated_data

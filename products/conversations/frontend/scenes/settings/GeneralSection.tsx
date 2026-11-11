@@ -46,7 +46,7 @@ export function GeneralSection(): JSX.Element {
                                     anonymous visitors.
                                 </li>
                                 <li>
-                                    <strong>Email</strong> — forward customer emails to PostHog and reply directly from
+                                    <strong>Email</strong> — forward customer emails to Flind and reply directly from
                                     the inbox.
                                 </li>
                                 <li>

@@ -46,7 +46,7 @@ class LivestormSource(ResumableSource[LivestormSourceConfig, LivestormResumeConf
             name=ExternalDataSourceType.LIVESTORM,
             category=DataWarehouseSourceCategory.COMMUNICATION,
             label="Livestorm",
-            caption="""Sync your Livestorm events, sessions, people and session registrants into PostHog.
+            caption="""Sync your Livestorm events, sessions, people and session registrants into Flind.
 
 Create an API token in Livestorm under **Account settings > Integrations > Public API**. Give it read access to the **Events** scope.
 

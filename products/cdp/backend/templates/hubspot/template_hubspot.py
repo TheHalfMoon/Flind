@@ -180,28 +180,28 @@ fun getPropValueTypeDefinition(name, propValue) {
                 'name': name,
                 'label': name,
                 'type': 'datetime',
-                'description': f'{name} - (created by PostHog)'
+                'description': f'{name} - (created by Flind)'
             }
         }
         return {
             'name': name,
             'label': name,
             'type': 'string',
-            'description': f'{name} - (created by PostHog)'
+            'description': f'{name} - (created by Flind)'
         }
     } else if (propType == 'integer' or propType == 'float') {
         return {
             'name': name,
             'label': name,
             'type': 'number',
-            'description': f'{name} - (created by PostHog)'
+            'description': f'{name} - (created by Flind)'
         }
     } else if (propType == 'boolean') {
         return {
             'name': name,
             'label': name,
             'type': 'enumeration',
-            'description': f'{name} - (created by PostHog)',
+            'description': f'{name} - (created by Flind)',
             'options': [
                 {
                     'label': 'true',
@@ -231,7 +231,7 @@ if (eventSchema.status >= 400) {
     let body := {
         'label': eventName,
         'name': eventName,
-        'description': f'{eventName} - (created by PostHog)',
+        'description': f'{eventName} - (created by Flind)',
         'primaryObject': 'CONTACT',
         'propertyDefinitions': []
     }

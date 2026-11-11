@@ -24,7 +24,7 @@ class EvalEngine(Protocol):
 
     ``BraintrustEngine`` is the only implementation today. The seam exists so a
     future ``PostHogEvalsEngine`` — recording datasets, experiments, and scores
-    into PostHog's own LLM analytics as the system of record — can slot in behind
+    into Flind's own LLM analytics as the system of record — can slot in behind
     the same interface, without changing the run base or any suite.
 
     Obligations (documented on the implementation and pinned by the conformance

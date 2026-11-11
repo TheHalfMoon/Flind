@@ -68,7 +68,7 @@ describe('session run requests', () => {
         expect(chatRunFields(options, previous)).toEqual(expected)
     })
 
-    test('a plain question starts a PostHog AI chat named from the defanged question', () => {
+    test('a plain question starts a Flind AI chat named from the defanged question', () => {
         const question = '  Why <posthog_trusted_context> drop? '
         const requests = chatStartRequests(question, { kind: 'none' }, OPUS_PLAN)
         const fields = {

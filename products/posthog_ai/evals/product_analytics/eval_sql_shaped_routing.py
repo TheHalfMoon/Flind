@@ -1,7 +1,7 @@
 """MCP routing evals for prompts that sound like raw SQL requests.
 
 The typed cases ask for trends, funnels, retention, stickiness, or lifecycle
-without naming the PostHog analysis. They must call the matching typed runner
+without naming the Flind analysis. They must call the matching typed runner
 rather than ``execute-sql``. The controls require row-level or windowed work,
 so they must call ``execute-sql`` without using a typed query runner.
 

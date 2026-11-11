@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Best-effort usage telemetry for the toolbox CLI.
 
-Sends a single event per invocation via the PostHog Python SDK (``posthog``, see
+Sends a single event per invocation via the Flind Python SDK (``posthog``, see
 https://posthog.com/docs/libraries/python). The SDK is a declared dependency of
 this tool (see ``requirements.txt``); if it isn't installed the capture degrades
 to a no-op. Every failure is swallowed — telemetry must never delay or break
@@ -20,9 +20,9 @@ DEFAULT_HOST = "https://us.i.posthog.com"
 
 EVENT_NAME = "toolbox cli used"
 
-# The free-text reason is also submitted as a PostHog API-type survey response so
+# The free-text reason is also submitted as a Flind API-type survey response so
 # it lands in the Surveys UI (response browsing + AI summary). Create an API-type
-# survey with one open-text question in PostHog, then set SURVEY_ID (or the env var
+# survey with one open-text question in Flind, then set SURVEY_ID (or the env var
 # below). For a single-question survey the `$survey_response` shorthand binds to the
 # first question, so no per-question id is needed. Left empty, the survey submission
 # is skipped and only EVENT_NAME fires.
@@ -47,7 +47,7 @@ def prompt_for_reason() -> str:
 
 
 def _capture_survey_response(client, distinct_id: str, answer: str) -> None:
-    """Submit the free-text reason as a PostHog API-type survey response.
+    """Submit the free-text reason as a Flind API-type survey response.
 
     No-op unless the survey id is configured and the user gave an answer, so an
     unconfigured survey or a skipped prompt never emits a half-formed event.
@@ -70,12 +70,12 @@ def _capture_survey_response(client, distinct_id: str, answer: str) -> None:
 
 
 def capture_invocation(distinct_id: str, properties: dict) -> None:
-    """Fire a single best-effort capture event via the PostHog SDK. Never raises."""
+    """Fire a single best-effort capture event via the Flind SDK. Never raises."""
     api_key = os.environ.get("TOOLBOX_POSTHOG_API_KEY", DEFAULT_API_KEY)
     host = os.environ.get("TOOLBOX_POSTHOG_HOST", DEFAULT_HOST)
     if not api_key or api_key == "phc_REPLACE_ME":
         # No real key configured — stay silent rather than spamming a dead endpoint.
-        print("📊 Telemetry skipped: no PostHog API key configured.")  # noqa: T201
+        print("📊 Telemetry skipped: no Flind API key configured.")  # noqa: T201
         return
 
     try:

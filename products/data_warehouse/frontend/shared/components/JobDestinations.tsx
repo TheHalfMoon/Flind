@@ -49,13 +49,13 @@ export function JobDestinations({
         )
     }
 
-    // A run records no ids when it wrote to the PostHog warehouse alone: that is what every run
+    // A run records no ids when it wrote to the Flind warehouse alone: that is what every run
     // did before destinations existed, and what the backend still snapshots for a table nobody
     // has pointed elsewhere. Read from the type rather than a looked-up row, because a project
     // that has never configured a destination has no warehouse row to look up.
     const logos: Logo[] =
         destinationIds.length === 0
-            ? [{ key: 'posthog-warehouse', type: 'PostHogWarehouse', title: 'PostHog warehouse' }]
+            ? [{ key: 'posthog-warehouse', type: 'PostHogWarehouse', title: 'Flind warehouse' }]
             : known.map((destination) => ({
                   key: destination.id,
                   type: destination.type,

@@ -57,7 +57,7 @@ class LovableSource(ResumableSource[LovableSourceConfig, LovableResumeConfig]):
             "401 Client Error": "Your Lovable API key is invalid or has been revoked. Create a new key in Lovable and reconnect.",
             "402 Client Error": "This table needs a higher Lovable plan. Turn it off in the sync settings, or upgrade the workspace in Lovable.",
             "403 Client Error": "Your Lovable API key does not have permission to read this data. Use a key from an account with access, or turn this table off in the sync settings.",
-            "410 Client Error": "Lovable has retired the API version this source uses. Contact PostHog support to move the source to a supported version.",
+            "410 Client Error": "Lovable has retired the API version this source uses. Contact Flind support to move the source to a supported version.",
         }
 
     def get_canonical_descriptions(self) -> CanonicalDescriptions:

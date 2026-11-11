@@ -28,7 +28,7 @@ class SourceItemKind(StrEnum):
 
 @dataclass(frozen=True)
 class EvidenceRef:
-    """A cited PostHog resource. Owns its type-dispatch logic — its citation key, the ResourceLink
+    """A cited Flind resource. Owns its type-dispatch logic — its citation key, the ResourceLink
     resource_type and FK field it maps to — so callers never branch on `type` themselves."""
 
     type: EvidenceType

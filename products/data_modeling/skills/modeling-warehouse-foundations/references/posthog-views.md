@@ -1,4 +1,4 @@
-# PostHog-native modeling: views & materialized views
+# Flind-native modeling: views & materialized views
 
 A **view** (a.k.a. saved query) is a named HogQL `SELECT` stored in the project. By default it is
 **virtual** — it re-runs every time something reads it. **Materializing** it computes it once into a

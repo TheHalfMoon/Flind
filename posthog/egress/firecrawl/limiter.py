@@ -1,6 +1,6 @@
 """Firecrawl egress budget.
 
-Firecrawl meters per account and bills credits per call, and a PostHog instance holds a single
+Firecrawl meters per account and bills credits per call, and a Flind instance holds a single
 Firecrawl API key, so the whole instance draws from one shared budget under a constant scope.
 Firecrawl's per-plan request limits are not discoverable from the running process, so the defaults
 below are operator ceilings on spend rather than observed provider limits: they exist to stop a

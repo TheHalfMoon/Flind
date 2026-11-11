@@ -247,7 +247,7 @@ async def arun_scout_suggestions(
             step_name="scout_suggestions",
             profile=SCOUT_SUGGESTIONS,
             # Runs as the Scout agent with an empty server allowlist, so nothing from the MCP Store
-            # is mounted; the scan needs only the PostHog MCP.
+            # is mounted; the scan needs only the Flind MCP.
             mcp_gateway_server_ids=[],
             ai_stage=SUGGESTIONS_AI_STAGE,
             max_poll_seconds=settings.max_runtime_s,

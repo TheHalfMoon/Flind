@@ -279,7 +279,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "trace_id": "Identifier for the entire trace.",
             "span_id": "Identifier for this span.",
             "parent_span_id": "Span ID of the parent span, empty for root spans.",
-            "trace_time": "Timestamp of the parent trace, added by PostHog so spans partition and sync by their trace.",
+            "trace_time": "Timestamp of the parent trace, added by Flind so spans partition and sync by their trace.",
             "start_time": "Time the span started.",
             "end_time": "Time the span ended.",
             "duration": "Duration of the span in milliseconds.",

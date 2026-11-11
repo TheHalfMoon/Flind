@@ -2,7 +2,7 @@
  * Resume - Restore agent state from persisted log
  *
  * Handles resuming a task from any point:
- * - Fetches log via the PostHog API
+ * - Fetches log via the Flind API
  * - Rebuilds conversation from log events
  *
  * Uses Saga pattern for atomic operations with clear success/failure tracking.

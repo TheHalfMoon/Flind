@@ -15,7 +15,7 @@ function requiredUpdate(
     kind: "required-update",
     id: "storybook-required-update",
     title: "Update required",
-    body: "This version can no longer talk to the PostHog backend. Update to keep your tasks and loops running.",
+    body: "This version can no longer talk to the Flind backend. Update to keep your tasks and loops running.",
     minVersion: "9.9.9",
     ...overrides,
   });

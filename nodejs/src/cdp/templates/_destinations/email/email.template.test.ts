@@ -23,7 +23,7 @@ describe('email template', () => {
                     from: {
                         integrationId: 1,
                     },
-                    subject: 'PostHog Notification',
+                    subject: 'Flind Notification',
                     text: '',
                     html: '',
                 },
@@ -46,7 +46,7 @@ describe('email template', () => {
                 "integrationId": 1,
               },
               "html": "",
-              "subject": "PostHog Notification",
+              "subject": "Flind Notification",
               "text": "",
               "to": {
                 "email": "example@posthog.com",

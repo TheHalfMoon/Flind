@@ -152,7 +152,7 @@ describe('session thread reducer', () => {
 
     test.each<[string, Record<string, unknown>, string, string | undefined]>([
         [
-            'a PostHog call by its inner tool',
+            'a Flind call by its inner tool',
             {
                 title: 'exec',
                 rawInput: {
@@ -165,7 +165,7 @@ describe('session thread reducer', () => {
             'Look up the newest report created today',
         ],
         [
-            'a PostHog discovery command by its verb',
+            'a Flind discovery command by its verb',
             {
                 title: 'exec',
                 rawInput: { command: 'tools', context: 'See which tools can read reports' },
@@ -194,7 +194,7 @@ describe('session thread reducer', () => {
         expect(state.invocations.get('tc-1')?.detail).toBe(expectedDetail)
     })
 
-    test('names a PostHog call once its command streams in on an update', () => {
+    test('names a Flind call once its command streams in on an update', () => {
         const meta = { claudeCode: { toolName: 'mcp__posthog__exec' } }
         const started = play([
             update({

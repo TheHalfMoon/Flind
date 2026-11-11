@@ -31,8 +31,8 @@ class CheckFailure(StrEnum):
 # the host and parts of the connection string.
 FAILURE_MESSAGES: dict[CheckFailure, str] = {
     CheckFailure.UNREACHABLE: (
-        "PostHog could not connect to this server. Check the host and port. Then check that the "
-        "server accepts connections from PostHog's IP addresses and has an IPv4 address."
+        "Flind could not connect to this server. Check the host and port. Then check that the "
+        "server accepts connections from Flind's IP addresses and has an IPv4 address."
     ),
     CheckFailure.AUTHENTICATION: "The server rejected the user name or password. Check them and try again.",
     CheckFailure.UNKNOWN_DATABASE: "The database does not exist on this server. Check the database name and try again.",

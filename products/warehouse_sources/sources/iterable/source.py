@@ -144,7 +144,7 @@ class IterableSource(ResumableSource[IterableSourceConfig, IterableResumeConfig]
             name=ExternalDataSourceType.ITERABLE,
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Iterable",
-            caption="""Enter your Iterable API key to pull your Iterable data into the PostHog Data warehouse.
+            caption="""Enter your Iterable API key to pull your Iterable data into the Flind Data warehouse.
 
 Create a **server-side** API key with read permissions in your [Iterable integrations settings](https://app.iterable.com/settings/apiKeys). Client-side (Mobile/Browser/JWT) keys are not supported.
 

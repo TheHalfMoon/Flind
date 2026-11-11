@@ -132,7 +132,7 @@ class KafkaSource(SimpleSource[KafkaSourceConfig], CursorSource[KafkaCursor]):
             caption=(
                 "Import the messages of your Kafka topics. Each topic becomes a table, and each sync "
                 "reads the messages written since the last one. Message values must be JSON or plain "
-                "text. PostHog connects to every broker your cluster advertises, so each one must be "
+                "text. Flind connects to every broker your cluster advertises, so each one must be "
                 "reachable from the internet."
             ),
             releaseStatus=ReleaseStatus.BETA,

@@ -6,7 +6,7 @@ description: >
   page against the reach of where it lives, gives each barely used one a likely cause, and reports
   the ones that are reachable and still not used.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus project-get, read-data-schema,
   execute-sql, feature-flag-get-all, and the inbox tools in the MCP tools section. Reads a pinned
   repository checkout when the scout config lists one.

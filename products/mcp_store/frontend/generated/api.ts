@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -651,7 +651,7 @@ export const getMcpGatewayServiceAccountsListUrl = (
 }
 
 /**
- * PostHog's built-in agents and their MCP access grants.
+ * Flind's built-in agents and their MCP access grants.
  *
  * The catalog is fixed. Projects can pause an agent's MCP access and grant or
  * revoke servers, but cannot create, rename, rotate, or delete agents.
@@ -672,7 +672,7 @@ export const getMcpGatewayServiceAccountsRetrieveUrl = (projectId: string, id: s
 }
 
 /**
- * PostHog's built-in agents and their MCP access grants.
+ * Flind's built-in agents and their MCP access grants.
  *
  * The catalog is fixed. Projects can pause an agent's MCP access and grant or
  * revoke servers, but cannot create, rename, rotate, or delete agents.
@@ -693,7 +693,7 @@ export const getMcpGatewayServiceAccountsUpdateUrl = (projectId: string, id: str
 }
 
 /**
- * PostHog's built-in agents and their MCP access grants.
+ * Flind's built-in agents and their MCP access grants.
  *
  * The catalog is fixed. Projects can pause an agent's MCP access and grant or
  * revoke servers, but cannot create, rename, rotate, or delete agents.
@@ -717,7 +717,7 @@ export const getMcpGatewayServiceAccountsPartialUpdateUrl = (projectId: string, 
 }
 
 /**
- * PostHog's built-in agents and their MCP access grants.
+ * Flind's built-in agents and their MCP access grants.
  *
  * The catalog is fixed. Projects can pause an agent's MCP access and grant or
  * revoke servers, but cannot create, rename, rotate, or delete agents.
@@ -888,7 +888,7 @@ export const getMcpServerInstallationsCallToolCreateUrl = (projectId: string, id
  * Invoke one tool on a connected MCP server.
  *
  * The request/response shape is plain REST rather than the JSON-RPC envelope
- * `proxy` speaks, because the caller here is an agent surface (the PostHog MCP's
+ * `proxy` speaks, because the caller here is an agent surface (the Flind MCP's
  * `exec`) that wants one tool result, not an MCP transport of its own.
  */
 export const mcpServerInstallationsCallToolCreate = async (
@@ -1148,7 +1148,7 @@ export const getMcpServersListUrl = (projectId: string, params?: McpServersListP
 /**
  * Lists curated MCP server templates that users can install with one click.
  *
- * Templates are seeded by PostHog operators and carry shared, encrypted
+ * Templates are seeded by Flind operators and carry shared, encrypted
  * OAuth client credentials. Inactive templates are hidden from the catalog.
  */
 export const mcpServersList = async (

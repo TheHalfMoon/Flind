@@ -225,8 +225,8 @@ def classify_request_source(request: Request) -> tuple[str, dict[str, str | None
     """Classify a notebook request as a browser action (``ui``) vs a programmatic client (``mcp``/API).
 
     Session-cookie requests are the browser; anything else (personal API key, OAuth app) is a
-    programmatic client. ``mcp_consumer`` is the wrapping app the PostHog MCP server forwards
-    (``posthog-code``/``posthog-cli`` for first-party PostHog Desktop), which tells it apart from a
+    programmatic client. ``mcp_consumer`` is the wrapping app the Flind MCP server forwards
+    (``posthog-code``/``posthog-cli`` for first-party Flind Desktop), which tells it apart from a
     customer's own MCP client. The third-party OAuth app name (e.g. Claude) rides along on every
     request-bound event as ``mcp_oauth_client_name`` via ``get_request_analytics_properties``, so it
     isn't repeated here. Shared by the create and read events."""
@@ -2025,7 +2025,7 @@ class NotebookViewSet(TeamAndOrgViewSetMixin, AccessControlViewSetMixin, ForbidD
         self._require_query_access()
 
         node_type = serializer.validated_data["node_type"]
-        # Only SQL nodes carry a connection; python always runs in the kernel against PostHog.
+        # Only SQL nodes carry a connection; python always runs in the kernel against Flind.
         connection_id = serializer.validated_data["connection_id"] if node_type != "python" else None
         run_request = NodeRunRequest(
             node_id=serializer.validated_data["node_id"],

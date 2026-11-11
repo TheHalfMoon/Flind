@@ -62,9 +62,9 @@ const componentCatalogNotebook = `# Component catalog
 
 const embedsNotebook = `# Embeds
 
-![PostHog engineering](https://res.cloudinary.com/dmukukwp6/image/upload/data_warehouse_2c3928e9ad)
+![Flind engineering](https://res.cloudinary.com/dmukukwp6/image/upload/data_warehouse_2c3928e9ad)
 
-<Embed src="${window.location.origin}/mock-page.html" title="PostHog demo page" />
+<Embed src="${window.location.origin}/mock-page.html" title="Flind demo page" />
 
 <Latex content="E=mc^2" />`
 
@@ -233,7 +233,7 @@ export const ListsAndLinks: Story = {
 - [ ] Review session recordings
   - [ ] Share findings with the team
 
-[Open PostHog](https://posthog.com)`,
+[Open Flind](https://posthog.com)`,
     },
 }
 

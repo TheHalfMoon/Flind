@@ -29,7 +29,7 @@ ORDER BY day, kind
 ```
 
 This includes signal processing, research, repository selection, scout execution, and automatic implementation exactly once.
-A fix that a person starts from a report is metered as PostHog AI, so it has no record here.
+A fix that a person starts from a report is metered as Flind AI, so it has no record here.
 For individual work, select `id`, `signal_id`, `scout_run_id`, `report_id`, `kind`, `credits`, and `billing_exempt` with the same bounds.
 For unsettled work created in the period, use `finalized_at IS NULL AND created_at >= {date_from} AND created_at < {date_to}` instead. Keep its credits separate; `accounting_failed` can describe running work.
 

@@ -104,7 +104,7 @@ RESTRICTED_ACCOUNT_ERROR = (
     "Rates dashboard, then reconnect."
 )
 VALIDATION_UNAVAILABLE_ERROR = (
-    "PostHog couldn't reach Open Exchange Rates to check your App ID. Wait a few minutes, then try again."
+    "Flind couldn't reach Open Exchange Rates to check your App ID. Wait a few minutes, then try again."
 )
 
 

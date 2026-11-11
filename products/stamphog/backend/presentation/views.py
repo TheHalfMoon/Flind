@@ -440,7 +440,7 @@ class StamphogRepoConfigViewSet(_StamphogTeamScopedViewSet, viewsets.GenericView
             state_payload = signing.loads(state, salt=_INSTALL_STATE_SALT, max_age=_INSTALL_STATE_MAX_AGE_SECONDS)
         except signing.BadSignature:
             raise ValidationError(
-                {"state": "Invalid or expired install session. Restart the installation from PostHog."}
+                {"state": "Invalid or expired install session. Restart the installation from Flind."}
             )
         if state_payload.get("team_id") != self.team_id:
             logger.warning(

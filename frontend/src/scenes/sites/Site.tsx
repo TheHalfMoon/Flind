@@ -35,7 +35,7 @@ export function Site({ url }: SiteLogicProps): JSX.Element {
     }
 
     // The iframe runs with `allow-scripts allow-same-origin`, so anything loaded into it can reach
-    // the PostHog app. Only render URLs the team has authorized, and never non-http(s) schemes.
+    // the Flind app. Only render URLs the team has authorized, and never non-http(s) schemes.
     if (!checkUrlIsSafeToFrame(decodedUrl)) {
         return (
             <NotFound
@@ -52,7 +52,7 @@ export function Site({ url }: SiteLogicProps): JSX.Element {
             src={launchUrl(decodedUrl)}
             // allow-same-origin is particularly important here, because otherwise redirect_to_site cannot work
             // Note that combining allow-scripts and allow-same-origin effectively allows the iframe access to the
-            // PostHog app, which is why it's important that users only add sites that they control here
+            // Flind app, which is why it's important that users only add sites that they control here
             sandbox="allow-downloads allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
         />
     )

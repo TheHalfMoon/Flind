@@ -1,4 +1,4 @@
-"""Inline scans PostHog defines itself, run by name rather than by a caller's prompt.
+"""Inline scans Flind defines itself, run by name rather than by a caller's prompt.
 
 The app's Summarize button is one. Because the backend owns its prompt and question, every caller that
 asks for it by name lands on the same inline scanner and sees the same written question.

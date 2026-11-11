@@ -310,7 +310,7 @@ class GeminiVideoUnderstandingProvider:
         api_key = settings.GEMINI_API_KEY
         if not api_key:
             raise ValueError("GEMINI_API_KEY is not set in environment or settings")
-        # Using default Gemini client as workaround, as PostHog wrapper doesn't support async yet
+        # Using default Gemini client as workaround, as Flind wrapper doesn't support async yet
         self.client = Client(api_key=api_key)
 
     async def understand_video(
@@ -352,7 +352,7 @@ class GeminiVideoUnderstandingProvider:
             response = await self.client.aio.models.generate_content(
                 model=self.model_id,
                 contents=contents,
-                # Add trace ID, when PostHog wrapper supports async
+                # Add trace ID, when Flind wrapper supports async
             )
             return response.text
         except APIError as e:

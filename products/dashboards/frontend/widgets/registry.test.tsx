@@ -55,7 +55,7 @@ describe('dashboard widget registry', () => {
         expect(parseDashboardWidgetConfigApiError('unknown_widget_type', error, invalidConfig)).toBeNull()
     })
 
-    it('reports unknown widget types to PostHog once per canonical type', () => {
+    it('reports unknown widget types to Flind once per canonical type', () => {
         expect(getDashboardWidgetDefinition('unknown_widget_type')).toBeUndefined()
         expect(getDashboardWidgetDefinition('unknown_widget_type')).toBeUndefined()
 

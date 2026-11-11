@@ -36,7 +36,7 @@ export function MigrationConnectScene(): JSX.Element {
                 description={
                     startedMigration
                         ? undefined
-                        : 'Enter a read-only Fivetran API key. PostHog reads your connectors, destinations, and sync settings to plan the matching PostHog sources. The key is stored encrypted and is never shown again, including to the assistant that sent you here.'
+                        : 'Enter a read-only Fivetran API key. Flind reads your connectors, destinations, and sync settings to plan the matching Flind sources. The key is stored encrypted and is never shown again, including to the assistant that sent you here.'
                 }
             />
             <div className="max-w-200">
@@ -44,7 +44,7 @@ export function MigrationConnectScene(): JSX.Element {
                     <LemonBanner type="success">
                         <p className="font-semibold mb-1">Fivetran key saved. You can close this tab.</p>
                         <p className="m-0 text-sm">
-                            PostHog is reading your Fivetran account now. Return to your chat and let the assistant know
+                            Flind is reading your Fivetran account now. Return to your chat and let the assistant know
                             you're done, and it will show you what can move.
                         </p>
                     </LemonBanner>

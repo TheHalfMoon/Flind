@@ -81,7 +81,7 @@ return {'channel': res.body.channel, 'ts': res.body.ts};
             requiredScopes: 'channels:read groups:read',
             label: 'Channel to post to',
             description:
-                'Select the channel to post to. Channel IDs (e.g. C0123ABC, returned by integrations-channels-retrieve) are preferred; #channel-name (e.g. #general) is also accepted. The PostHog app must be installed in the workspace. For private channels, the PostHog app must be a member of the channel.',
+                'Select the channel to post to. Channel IDs (e.g. C0123ABC, returned by integrations-channels-retrieve) are preferred; #channel-name (e.g. #general) is also accepted. The Flind app must be installed in the workspace. For private channels, the Flind app must be a member of the channel.',
             secret: false,
             hidden: false,
             required: true,
@@ -103,7 +103,7 @@ return {'channel': res.body.channel, 'ts': res.body.ts};
             label: 'Bot name',
             integration_key: 'slack_workspace',
             requiredScopes: 'chat:write.customize',
-            default: 'PostHog',
+            default: 'Flind',
             required: false,
             secret: false,
             hidden: false,
@@ -126,7 +126,7 @@ return {'channel': res.body.channel, 'ts': res.body.ts};
                     elements: [
                         {
                             url: '{person.url}',
-                            text: { text: 'View Person in PostHog', type: 'plain_text' },
+                            text: { text: 'View Person in Flind', type: 'plain_text' },
                             type: 'button',
                         },
                         {

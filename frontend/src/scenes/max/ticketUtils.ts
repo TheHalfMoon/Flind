@@ -171,7 +171,7 @@ export function getTicketSummaryData(
 }
 
 /**
- * Builds the ticket body from the user's own note and, when present, PostHog AI's summary.
+ * Builds the ticket body from the user's own note and, when present, Flind AI's summary.
  * The user's note leads so a human framing is always on top; the AI summary is attached as
  * supporting context. Returns an empty string when there is nothing to send.
  */

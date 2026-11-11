@@ -16,18 +16,18 @@ This is a living reference — add a pattern when a genuinely new shape proves i
 
 ## What a scout can watch
 
-The single most useful thing to internalize: **a scout is not limited to PostHog analytics events.** It can watch anything the project can see, and the report / dedupe / memory contract is identical regardless of where the data comes from.
+The single most useful thing to internalize: **a scout is not limited to Flind analytics events.** It can watch anything the project can see, and the report / dedupe / memory contract is identical regardless of where the data comes from.
 
 | Source                       | How the scout reads it                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Collected events**         | `read-data-schema` to confirm the event + properties, then `query-*` tools or `execute-sql`. The common case.                                                                                                                                                                                                                                                                                                                 |
-| **The data warehouse**       | `execute-sql` over `system.information_schema.*` to confirm columns, then `execute-sql`. **Any source PostHog ingests becomes a queryable table** — see the warehouse-backed pattern below.                                                                                                                                                                                                                                   |
-| **PostHog product entities** | dedicated list/get tools (insights, dashboards, surveys, error issues, experiments, flags) plus `execute-sql` over `system.*`.                                                                                                                                                                                                                                                                                                |
+| **The data warehouse**       | `execute-sql` over `system.information_schema.*` to confirm columns, then `execute-sql`. **Any source Flind ingests becomes a queryable table** — see the warehouse-backed pattern below.                                                                                                                                                                                                                                   |
+| **Flind product entities** | dedicated list/get tools (insights, dashboards, surveys, error issues, experiments, flags) plus `execute-sql` over `system.*`.                                                                                                                                                                                                                                                                                                |
 | **External systems**         | from inside the sandbox — a CLI tool, a public git repo, an HTTP API. The default TRUSTED network covers the platform allowlist (GitHub, package registries); set `network_access=full` on the scout's config for anything outside it. See the external-tool pattern.                                                                                                                                                         |
-| **Other agents' output**     | Replay Vision observations (`$recording_observed`), PostHog AI conversations, the report pipeline's own verdicts and research notes, sibling scouts' reports and scratchpad. Ordinary events and tools, but a different kind of evidence: a judgment somebody else's model already made, which a scout can corroborate with, aggregate over, or audit. See the owner-scoped, judge-of-a-judge, and fleet meta-scout patterns. |
+| **Other agents' output**     | Replay Vision observations (`$recording_observed`), Flind AI conversations, the report pipeline's own verdicts and research notes, sibling scouts' reports and scratchpad. Ordinary events and tools, but a different kind of evidence: a judgment somebody else's model already made, which a scout can corroborate with, aggregate over, or audit. See the owner-scoped, judge-of-a-judge, and fleet meta-scout patterns. |
 | **The scout fleet itself**   | `scout-config-list`, `scout-runs-list` / `-retrieve`, `scout-scratchpad-search`, and `inbox-reports-list` filtered by `scout`. A scout can watch how the other scouts are doing. See the fleet meta-scout pattern.                                                                                                                                                                                                            |
 
-The warehouse row is the big unlock: once a Slack channel, a Stripe account, a CRM, a billing system, a support inbox, a social-listening feed, or an app database (via CDC) is synced into the warehouse, a scout queries it with `execute-sql` exactly like it queries events — and the watched surface need not be PostHog analytics at all.
+The warehouse row is the big unlock: once a Slack channel, a Stripe account, a CRM, a billing system, a support inbox, a social-listening feed, or an app database (via CDC) is synced into the warehouse, a scout queries it with `execute-sql` exactly like it queries events — and the watched surface need not be Flind analytics at all.
 
 ## The patterns
 
@@ -44,13 +44,13 @@ The warehouse row is the big unlock: once a Slack channel, a Stripe account, a C
 | **Open-text theme**                         | the data is free text and the value is in recurring themes, not individual rows.                                                                                 | `signals-scout-surveys` (open-text); brand/feedback scouts                        |
 | **Adversarial / abuse concentration**       | the watched party benefits from not being caught — incentive farming, scraping, spam, multi-accounting.                                                          | a trial-credit-farming scout (below)                                              |
 | **External-tool / code**                    | the judgement comes from running a tool or reading code, not from analytics.                                                                                     | a static-analysis CLI scout (below)                                               |
-| **State ∩ code intersection**               | the signal is the _overlap_ of a PostHog entity's state and what's in the source repo.                                                                           | a feature-flag-cleanup scout (below)                                              |
+| **State ∩ code intersection**               | the signal is the _overlap_ of a Flind entity's state and what's in the source repo.                                                                           | a feature-flag-cleanup scout (below)                                              |
 | **Custom issue-tracker / work-queue**       | a built-in signals source (GitHub, Linear) already ingests the tracker, but you need scoping or judgment its config can't express.                               | a GitHub-issue readiness scout (below)                                            |
 | **Daily digest / roll-up**                  | the team wants a scheduled, human-readable synthesis of a surface — one report a day, quiet or not.                                                              | an AI-observability daily-digest scout (below)                                    |
 | **Triage over a pre-detected stream**       | a detector already exists (spikes, alerts, health checks, a bot-run triage channel) and the job is judgment, not detection.                                      | `signals-scout-health-checks`, `-insight-alerts`; a spike-triage scout (below)    |
 | **First-person dogfooding / probe**         | the watched surface is something an agent can _use_, and the freshest signal is friction experienced first-hand.                                                 | an MCP-surface dogfooding scout (below)                                           |
 | **Recurring measurement / LLM-judge**       | the deliverable is a **data series**, not a report — a recurring judgment, extraction, or snapshot no deterministic query can compute.                           | a content-quality judge scout (below)                                             |
-| **Maintainer / steward**                    | the scout **owns a set of PostHog objects** (dashboards, alerts, warehouse views, scanner prompts, a skill) and should fix what rots, not only describe the fix. | a dashboard steward, an alert-fleet steward, a warehouse-view steward (below)     |
+| **Maintainer / steward**                    | the scout **owns a set of Flind objects** (dashboards, alerts, warehouse views, scanner prompts, a skill) and should fix what rots, not only describe the fix. | a dashboard steward, an alert-fleet steward, a warehouse-view steward (below)     |
 | **Owner-scoped book / queue**               | one person's accounts, tickets, pull requests, or issues, watched for the few things _that person_ should act on next.                                           | an account-book scout, a personal PR sensor (below)                               |
 | **Trigger-to-brief enrichment**             | an upstream rule already names a new entity (a signup, an eligible account, a new arrival) and the value is the **assembled, ranked brief** for its owner.       | a lead-brief scout (below)                                                        |
 | **Dispatcher / campaign**                   | detection already exists and the job is **arming one finding per run for implementation**, with a contract a coding agent can execute.                           | an improve-my-tool campaign scout (below)                                         |
@@ -65,7 +65,7 @@ The default specialist shape, and the one most surfaces fit.
   Name the discriminator at the top; it's the whole game.
 - **Dedupe + memory:** `dedupe:<domain>:<entity>` gates re-filing per entity; `pattern:<domain>:baseline` records what normal looks like so the next run doesn't re-derive it.
 - **Gotcha:** score the **latest complete** bucket, not the in-progress one — a partial current hour/day always looks like a drop.
-- **Don't reinvent the scoring.** When the metric is a **saved time-series insight**, score it with PostHog's own detectors via `alert-simulate` rather than hand-rolling anomaly math — it already handles seasonality and the team's own alert thresholds.
+- **Don't reinvent the scoring.** When the metric is a **saved time-series insight**, score it with Flind's own detectors via `alert-simulate` rather than hand-rolling anomaly math — it already handles seasonality and the team's own alert thresholds.
   Fall back to a hand-computed robust z-score (`|value − median| / (1.4826 × MAD)`) only when the series isn't a saved insight.
 - **Score the rate, not the raw total.** Normalize by the relevant denominator — cost _per unit_, conversion _%_ per funnel stage, error _share_ — so a legitimate volume change doesn't read as an anomaly (more traffic raises total spend but not cost-per-unit).
   The "raw total moved" false positive is the most common one here.
@@ -112,11 +112,11 @@ This is one of the most common genuinely-new shapes users author for themselves,
     Each run re-checks the signal and reports only **movement**: a commitment that landed (with whatever it opens up next) or one that has gone a soak window with a flat signal (with a suggested nudge).
     A periodic scoreboard of the open ledger is the digest form.
     The memory is the ledger itself, `ledger:<domain>:<account>:<commitment>` with the mapped signal, the baseline, and the capture date, and the disqualifier is a commitment with no measurable signal, which stays a note rather than a ledger row.
-  - **Automation liveness** — the watched entity is a PostHog automation (a workflow, a CDP destination): configured-active with zero successes _and_ zero failures while the trigger has volume is the silently-dark shape a delivery-failure watcher misses.
+  - **Automation liveness** — the watched entity is a Flind automation (a workflow, a CDP destination): configured-active with zero successes _and_ zero failures while the trigger has volume is the silently-dark shape a delivery-failure watcher misses.
   - **Capture / instrumentation liveness (meta-observability)** — the watched surface is the project's own event volume: a cliff means the SDK, a consent flow, or a deploy silently stopped collection, and every other scout is now flying blind.
     Cheap, product-agnostic, and worth considering for any project whose capture is consent-gated.
     **A cliff detector only catches the abrupt case.** Under-capture that arrives gradually — adblocker share creeping up, a consent banner change, an SPA route that stopped firing pageviews — never produces a cliff, and the resulting series looks like a real traffic decline to every other scout in the fleet.
-    Catching that needs a **second, independent yardstick**: a count of the same thing measured somewhere PostHog's SDK isn't in the path (a CDN or edge analytics visitor count, server access logs, an order count from the app database synced into the warehouse).
+    Catching that needs a **second, independent yardstick**: a count of the same thing measured somewhere Flind's SDK isn't in the path (a CDN or edge analytics visitor count, server access logs, an order count from the app database synced into the warehouse).
     Score the **ratio** of the two rather than either alone, and treat a persistent drift in that ratio as an instrumentation finding rather than a product one.
     Three things make this work: hold both sides to the same window and the same definition (a CDN "visit" is not a `$pageview`), decide up front how you separate a real capture regression from your own comparison job breaking, and expect ratios above 100% on SPAs and other client-side-routing surfaces rather than treating them as failures.
     Recording the ratio itself each run as a structured-output measurement (below) turns it into a chartable series instead of a judgment repeated from scratch every run.
@@ -201,7 +201,7 @@ Files P3 recommendations rather than P0–P2 anomalies.
 
 ### Warehouse-backed source scout
 
-**The pattern that lets a scout watch anything PostHog can ingest.** A non-PostHog source (a Slack channel, a billing system, a CRM, a support tool, a social-listening feed) is synced into the data warehouse on a schedule; the scout reads the resulting table with `execute-sql` and turns it into signals.
+**The pattern that lets a scout watch anything Flind can ingest.** A non-PostHog source (a Slack channel, a billing system, a CRM, a support tool, a social-listening feed) is synced into the data warehouse on a schedule; the scout reads the resulting table with `execute-sql` and turns it into signals.
 The watched surface is not analytics data at all — it's whatever that upstream system produces.
 
 - **Watched data:** one (or a few) warehouse tables.
@@ -232,7 +232,7 @@ The watched surface is not analytics data at all — it's whatever that upstream
 
 ### Custom / single-event scout
 
-When one bespoke event captured into PostHog carries the whole signal (a product's own telemetry, a feedback event, a domain-specific action).
+When one bespoke event captured into Flind carries the whole signal (a product's own telemetry, a feedback event, a domain-specific action).
 The event doesn't have to come from a web or mobile app: CI pipelines, server-side jobs, third-party callbacks, and even physical hardware (a device fleet's heartbeat or fault events) all land as ordinary events, and a scout watches them identically.
 
 - **Watched data:** one event, confirmed via `read-data-schema` (the event **and** the properties you'll filter on — both are team-specific and may be absent).
@@ -331,11 +331,11 @@ Both share the same skeleton:
 
 ### State ∩ code-intersection scout
 
-A composition of the external-tool/code pattern with a PostHog-entity read, where **neither source alone is the signal — the overlap is.** The scout reads an entity's state from PostHog (via the normal MCP tools) and reads the source repo (via the clone-and-grep machinery of the external-tool pattern), and reports only where the two intersect in an actionable way.
+A composition of the external-tool/code pattern with a Flind-entity read, where **neither source alone is the signal — the overlap is.** The scout reads an entity's state from Flind (via the normal MCP tools) and reads the source repo (via the clone-and-grep machinery of the external-tool pattern), and reports only where the two intersect in an actionable way.
 
 - **Canonical example — feature-flag cleanup.** A fully-rolled-out-for-a-long-time flag is dead weight _only if its key is still referenced in code_; a flag that's gone from code is already cleaned up, and a flag still doing targeting work isn't a candidate.
   So the discriminator is the **intersection**: `PostHog says STALE/fully-rolled-out` **AND** `the key still appears at a real SDK call site in non-test source`.
-  PostHog does the staleness detection server-side (`feature-flag-get-all` `active:"STALE"`), the clone-and-grep half confirms the code reference, and the finding is a P3 cleanup recommendation with the exact file:line call sites and a ready-to-paste cleanup prompt.
+  Flind does the staleness detection server-side (`feature-flag-get-all` `active:"STALE"`), the clone-and-grep half confirms the code reference, and the finding is a P3 cleanup recommendation with the exact file:line call sites and a ready-to-paste cleanup prompt.
   Everything else — the rollout-state classification, the dependency/experiment caveats — is reused from the `cleaning-up-stale-feature-flags` skill the sandbox bakes in.
 - **Discriminator:** the overlap, not either side.
   Name both reads and the condition that makes their intersection actionable.
@@ -347,10 +347,10 @@ A composition of the external-tool/code pattern with a PostHog-entity read, wher
 - **Repo discovery is the open problem.** A per-team scout can name its repos directly (or read them from a `config:` scratchpad entry).
   A truly canonical version needs to discover the repo without hardcoding — the connected GitHub integration already caches the org's repository list, so the graduation path is to read it from there (or surface it into the project profile) rather than bake a repo name into the skill.
   Until that's wired, keep the repo list out of the canonical body and in per-team config.
-- This shape generalizes past feature flags: any "PostHog entity whose code footprint determines whether its state is a problem" fits it — a cohort/insight referencing an event that the code stopped emitting, a deprecated SDK method still called, a tracked event with no capture call left in source.
-- **And it generalizes past "PostHog state ∩ code": the two halves can be any two independently-readable sources whose overlap is the signal.** Proven variations:
+- This shape generalizes past feature flags: any "Flind entity whose code footprint determines whether its state is a problem" fits it — a cohort/insight referencing an event that the code stopped emitting, a deprecated SDK method still called, a tracked event with no capture call left in source.
+- **And it generalizes past "Flind state ∩ code": the two halves can be any two independently-readable sources whose overlap is the signal.** Proven variations:
   - **code ∩ data (the inverse direction)** — a newly-shipped user-facing surface in the repo **AND** no matching capture event in the project's stream: an instrumentation gap.
-    Here the code half _should_ produce PostHog state and doesn't; confirm the gap on the data side with `read-data-schema` / a stream query before reporting.
+    Here the code half _should_ produce Flind state and doesn't; confirm the gap on the data side with `read-data-schema` / a stream query before reporting.
   - **code ∩ docs (cross-repo)** — a public docs repo claiming beta / coming soon **AND** the product repo showing the feature went GA (or a doc pinned to an anchor — endpoint, setting, command — a recent PR renamed or removed).
     Corroborate the "it's GA now" half across several signals (flag removed from code, live flag fully rolled out, early-access graduation) before trusting it; a doc that says beta for a still-gated feature is correct, not stale.
   - **code ∩ the outside world** — a third-party API version pinned in shipped code **AND** that provider's published deprecation/sunset schedule, fetched from the web.
@@ -364,7 +364,7 @@ A composition of the external-tool/code pattern with a PostHog-entity read, wher
 
 ### Custom issue-tracker / work-queue scout
 
-PostHog already ships **built-in signals sources for GitHub and Linear**: connect the tracker as a data warehouse source, toggle the source on in the inbox, and every new open issue becomes a signal that the grouping pipeline turns into reports.
+Flind already ships **built-in signals sources for GitHub and Linear**: connect the tracker as a data warehouse source, toggle the source on in the inbox, and every new open issue becomes a signal that the grouping pipeline turns into reports.
 Reach for that first — it is one toggle and it needs no skill.
 This pattern is what you write when you have outgrown it, which happens sooner than you would expect on a busy tracker.
 
@@ -389,7 +389,7 @@ So the trigger for this pattern is any of: **a judgment with more than one axis*
   That distinction should drive **routing** — actionable versus needs-a-product-call — and it is a reasonable tiebreaker.
   Don't let it drive priority on its own, though: priority is what the report contract says it is, an impact judgment, and tier-as-priority quietly ranks an internal chore above a severe external bug and changes which reports clear the autostart threshold.
   For the classification itself, prefer the tracker's own membership data — GitHub's `author_association` is on the issue and is authoritative.
-  `scout-members-list` returns the **PostHog project's** roster, not the repo's or the workspace's, so matching a tracker handle against it is a heuristic that fails wherever the two memberships differ; cache what you learn in `pattern:<domain>:team-roster` and say in the summary when you were unsure.
+  `scout-members-list` returns the **Flind project's** roster, not the repo's or the workspace's, so matching a tracker handle against it is a heuristic that fails wherever the two memberships differ; cache what you learn in `pattern:<domain>:team-roster` and say in the summary when you were unsure.
 - **Three read paths, and the credential scope decides which — check it, don't assume it.**
   - **`gh`, authenticated.** A report-channel scout on a team with a mintable GitHub App installation gets an **ephemeral read-only installation token** in its sandbox, and the harness prompt says so when it does.
     Its scope is the catch: the token is minted with `contents`, `metadata`, and `pull_requests` read — **`issues` is not in it**.
@@ -469,12 +469,12 @@ Proven shapes: a daily LLM-analytics digest (latency / errors / clusters / cost 
 
 ### Triage over a pre-detected stream
 
-For a surface where **detection already exists** — a billing system's per-customer spike detector, an incident/alerting pipeline that already pages humans, PostHog's own health checks, a support or triage channel where a bot already classifies every item.
+For a surface where **detection already exists** — a billing system's per-customer spike detector, an incident/alerting pipeline that already pages humans, Flind's own health checks, a support or triage channel where a bot already classifies every item.
 Re-detecting is wasted work, and re-forwarding items 1:1 is noise (usually something already forwards the raw firehose).
 The scout is the **judgment layer**: given that the upstream path already did its job per item, which items (or patterns across items) does a human still need to hear about?
 
 - **Watched data:** the detector's own output — pre-detected spike events, alert/escalation rows, tickets carrying pre-classified priority/severity.
-  Often reached via the warehouse-backed pattern when the detector lives outside PostHog.
+  Often reached via the warehouse-backed pattern when the detector lives outside Flind.
 - **Discriminator — meta-dimensions the detector can't weigh per item:**
   - **Ownership / materiality.** Gate on who cares: e.g. only spikes on accounts with an assigned owner, ranked by magnitude — and read the _direction_ (a usage **drop** on an owned account is a churn / broken-integration tell, usually more important than a surge).
   - **Persistence / recurrence.** The same monitor firing repeatedly, escalations staying open, flapping, the same entity spiking days running — the shape a per-item pager hides.
@@ -486,7 +486,7 @@ The scout is the **judgment layer**: given that the upstream path already did it
 - **Dedupe + memory:** key on the upstream system's own stable ids — the spike id, the monitor slug, the ticket number — never the event/row.
   `noise:<domain>:<entity>` allowlists internal / load-test / expected-ramp sources the detector keeps flagging.
 - **Corroborate outward:** the detector only sees its own stream; cross-check blast radius against a second source (is the org's overall event volume down too? does error tracking corroborate the ticket cluster?) before escalating.
-- The canonical in-repo relatives are `signals-scout-health-checks` (judgment over PostHog's health issues) and `signals-scout-insight-alerts` (missed firings of alerts the team already configured) — this pattern is the same shape pointed at _any_ detector, in or out of PostHog.
+- The canonical in-repo relatives are `signals-scout-health-checks` (judgment over Flind's health issues) and `signals-scout-insight-alerts` (missed firings of alerts the team already configured) — this pattern is the same shape pointed at _any_ detector, in or out of Flind.
 
 ### First-person dogfooding / probe scout
 
@@ -527,7 +527,7 @@ The scout is that instrument, run on a schedule.
   Only one of the two gates is readable that way: `inbox-source-configs-list` verifies the `signals_scout` source toggle, while the org's AI-processing consent has no MCP read at all (`organization-get` filters the field out), so ask an org admin to confirm it in Organization settings → AI service providers rather than pretending to check it.
 - **Close the schema, and name its fields distinctively.** Draft 2020-12 admits unlisted keys by default, and every scalar top-level key is flattened to an `output_<key>` property — so an open schema lets a typo'd or hallucinated field mint a new property and fragment the series.
   Set `additionalProperties: false` on the root and on every nested object.
-  The `output_<key>` namespace is also **shared across every scout in the project**, and PostHog infers a property's type project-wide from whichever value lands first: a generic `score` or `verdict` field collides with the next measurement scout's, and a numeric-vs-string clash leaves one of them without numeric aggregation even when you filter on `skill_name`.
+  The `output_<key>` namespace is also **shared across every scout in the project**, and Flind infers a property's type project-wide from whichever value lands first: a generic `score` or `verdict` field collides with the next measurement scout's, and a numeric-vs-string clash leaves one of them without numeric aggregation even when you filter on `skill_name`.
   Prefix the record's fields with the measurement (`reply_helpfulness_score`, not `score`).
   List every field the series or a downstream action depends on in the root `required` array: JSON Schema validates only what it is told to, so a field named in `properties` alone lets `{}` through, and a run that omits the verdict still records a point nothing can chart or route.
   **A record's payload is capped at 16 KiB serialized**, checked separately from schema validation and all-or-nothing per batch, so one oversized record rejects every valid judgment beside it.
@@ -627,7 +627,7 @@ The scout is that instrument, run on a schedule.
 ### Maintainer / steward scout
 
 Every pattern above ends in a report a human acts on.
-A steward **acts itself**: it holds one or more `write_scopes` on its config (see Run posture in `SKILL.md`) and owns a bounded set of PostHog objects — a family of dashboards, a fleet of anomaly alerts, a layer of warehouse views, a set of Replay Vision scanner prompts, the catalog skill that documents any of those — keeping them honest as the code and data move underneath them.
+A steward **acts itself**: it holds one or more `write_scopes` on its config (see Run posture in `SKILL.md`) and owns a bounded set of Flind objects — a family of dashboards, a fleet of anomaly alerts, a layer of warehouse views, a set of Replay Vision scanner prompts, the catalog skill that documents any of those — keeping them honest as the code and data move underneath them.
 Dashboards rot, alerts go quiet or get noisy, views stop materializing, scanner prompts name UI that has been renamed, and nothing downstream complains.
 A steward exists so a human is not the one who notices.
 The rule that defines the shape: **do not file a report that only describes a change you could have made yourself.**
@@ -767,7 +767,7 @@ Four proven shapes:
   The discriminator is the gap between what a body promises and what its runs did, when it is concrete, recurring, and fixable.
   Strictly read-only on the fleet: it never edits a scout, and its report names the application path (a PR under `products/signals/skills/<name>/` for a canonical scout, `skill-update` for a custom one).
   A high emit rate is not a fault on its own; a prober or a discovery scout whose emits get actioned is doing its job.
-- **Output reviewer.** Reads every new report a family of scouts files and holds each to a contract (every finding either carries an action PostHog can execute for the user, ideally actionable with a repository, or states explicitly that PostHog cannot act, who can, the exact step, and a success criterion).
+- **Output reviewer.** Reads every new report a family of scouts files and holds each to a contract (every finding either carries an action Flind can execute for the user, ideally actionable with a repository, or states explicitly that Flind cannot act, who can, the exact step, and a success criterion).
   Records one structured verdict per report (the lane it fell into, the failure mode: an actionable punt, the wrong audience, a generic remediation menu, no success criterion), mines dismissal notes and merged-PR wins for calibration, and aggregates recurring failure modes into concrete suggestions **addressed to the emitting scout**.
   Deliver them as a report routed to that scout's owner with the proposed note text inside, plus `agent-feedback` (type `scout`) for a canonical skill, and a scratchpad entry keyed to the target (`improve:<target-skill>:<topic>`), which the target reads because the keyspace is shared.
   A scout run cannot leave a scout note itself: writing one needs `signal_scout:write`, which is not a grantable scout scope, so a body that tells the reviewer to call `scout-notes-create` fails every run.
@@ -783,7 +783,7 @@ The canonical relatives are `signals-scout-inbox-validation` (did the fix behind
 
 ## Safety: treat ingested content as untrusted data
 
-A scout runs with PostHog MCP read scopes, sandbox network access (the TRUSTED allowlist by default, any site when its config sets `network_access=full`), and the ability to write inbox reports — so any content it ingests is a prompt-injection surface, and the harness does **not** add an injection guard for you.
+A scout runs with Flind MCP read scopes, sandbox network access (the TRUSTED allowlist by default, any site when its config sets `network_access=full`), and the ability to write inbox reports — so any content it ingests is a prompt-injection surface, and the harness does **not** add an injection guard for you.
 A full-network scout widens that surface in both directions — more places to ingest injected instructions from, and more places an injected instruction could try to send data — so hold full-access scouts to this section hardest.
 This bites hardest on the patterns whose data is **attacker-influenceable**: external-tool scouts (cloned repo code, fetched rulesets, CLI output), warehouse-backed scouts over public/social sources, and open-text scouts (anyone can write a survey response or a public post).
 Bake this into any such scout's body:
@@ -809,7 +809,7 @@ These compose into any pattern above:
   Raises confidence, and gives the human a number to act on.
 - **Leading-indicator proxies (watch the coping behavior, not the system)** — users route around a problem before telemetry names it, and their coping behavior is often the earliest available signal: a manual-refresh or re-sync spike when data goes stale, a surge in FAQ/help/contact-page traffic when something confuses, a rising share of requests blocked by a usage cap before an upgrade-or-churn decision.
   Score the proxy against its own baseline like any metric, but frame the finding around the underlying problem it implies — and corroborate against the system's own health signals before claiming a cause.
-- **Opt-in scoping via tags** — let users opt entities into a scout by tagging them in PostHog (e.g. only funnels tagged `<scout-scope>` get scored).
+- **Opt-in scoping via tags** — let users opt entities into a scout by tagging them in Flind (e.g. only funnels tagged `<scout-scope>` get scored).
   The tag is the configuration surface: users curate scope in the UI without touching the skill body, the quick close-out is "are any entities tagged?", and untagging is the off switch.
 - **Ready-to-paste handoff** — end a recommendation finding with the exact next action: a paste-able coding-agent prompt carrying the file:line references and the fix shape, or the name of the skill/command that applies it.
   A finding a human can act on in one paste converts far better than a description of a problem.

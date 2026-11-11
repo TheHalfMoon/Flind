@@ -1,7 +1,7 @@
 ---
 name: adding-inbound-webhooks
 description: >
-  Use when adding a webhook endpoint for a third party that sends to PostHog, adding an inbound webhook consumer for a provider that already has an endpoint, or migrating a hand-rolled hmac verifier that the `inbound-webhooks-go-through-ingress` semgrep rule flags.
+  Use when adding a webhook endpoint for a third party that sends to Flind, adding an inbound webhook consumer for a provider that already has an endpoint, or migrating a hand-rolled hmac verifier that the `inbound-webhooks-go-through-ingress` semgrep rule flags.
   Covers the two jobs separately: a consumer in `products/<product>/backend/webhook_consumers.py`, and a provider incarnation under `posthog/ingress/<provider>/` wired with `build_webhook_view()`.
   Carries the rules that are easy to get wrong: a consumer name is a dedup cache key, event types must be declared by the provider app or the registry raises, and the module stays cheap to import.
   Trigger terms: add a webhook, webhook consumer, inbound webhook, hand-rolled hmac, inbound-webhooks-go-through-ingress.
@@ -9,7 +9,7 @@ description: >
 
 # Adding an inbound webhook
 
-Every webhook a third party sends to PostHog goes through `posthog/ingress/`.
+Every webhook a third party sends to Flind goes through `posthog/ingress/`.
 Read [posthog/ingress/README.md](../../../posthog/ingress/README.md) for the transport contract and the package reference.
 This skill is the decision tree and the checklists.
 

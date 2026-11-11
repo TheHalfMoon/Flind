@@ -107,7 +107,7 @@ def _capture_post_write_failure(exc: Exception) -> None:
 
 def _ai_create_gate_reason(organization: Organization, distinct_id: str) -> Optional[str]:
     if not settings.DEBUG and not is_cloud():
-        return "AI subscriptions are only available in PostHog Cloud."
+        return "AI subscriptions are only available in Flind Cloud."
     if not organization.is_ai_data_processing_approved:
         return "Your organization must approve AI data processing before creating AI subscriptions."
     # Per-user gate so people can self-enable via feature previews (early access) — the flag is

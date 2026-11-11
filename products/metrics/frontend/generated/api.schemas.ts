@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface AppMetricSeriesApi {
@@ -349,7 +349,7 @@ export interface DashboardImportPanelProgressApi {
     key: string
     /** Panel title. */
     title: string
-    /** 'waiting' before the agent checked the panel, 'working' while its checks fail, 'done' once a check passed, 'skipped' when PostHog has no equivalent.
+    /** 'waiting' before the agent checked the panel, 'working' while its checks fail, 'done' once a check passed, 'skipped' when Flind has no equivalent.
      *
      * * `waiting` - Waiting
      * * `working` - Working
@@ -367,7 +367,7 @@ export interface DashboardImportSummaryApi {
     approximated: number
     /** Panels that have no working query. */
     failed: number
-    /** Panels with no PostHog equivalent. */
+    /** Panels with no Flind equivalent. */
     skipped: number
 }
 

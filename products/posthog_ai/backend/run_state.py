@@ -1,4 +1,4 @@
-"""PostHog AI extension of the products/tasks per-Run state bag.
+"""Flind AI extension of the products/tasks per-Run state bag.
 
 Lives outside ``wire_types.py`` on purpose: that module stays importable without Django,
 while this one pulls in products/tasks run configuration (already a transitive dependency
@@ -14,7 +14,7 @@ from products.tasks.backend.facade.run_config import RunState
 
 class PostHogAIRunState(RunState):
     """The base ``RunState`` already covers ``pending_user_message`` and
-    ``initial_permission_mode``; this adds the PostHog AI-only keys. The bag is persisted
+    ``initial_permission_mode``; this adds the Flind AI-only keys. The bag is persisted
     with the wire's casing (``systemPrompt``), so dump with ``by_alias=True`` and merge with
     ``exclude_unset=True`` to write exactly the keys that were set."""
 

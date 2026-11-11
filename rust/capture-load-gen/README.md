@@ -1,6 +1,6 @@
 # capture-load-gen
 
-High-throughput load generator for the PostHog [capture](../capture) `/batch`
+High-throughput load generator for the Flind [capture](../capture) `/batch`
 endpoint. Generates synthetic events shaped like real traffic (via
 `common_types::RawEvent`) and drives capture at a target rate, sharding cleanly
 across pods so a fleet can sum to a single cluster-wide target.

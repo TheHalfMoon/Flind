@@ -28,7 +28,7 @@ export { Welcome } from '../components/welcome/Welcome'
 export type { WelcomeProps } from '../components/welcome/Welcome'
 export { DEFAULT_HEADLINES, pickHeadline } from '../components/welcome/welcomeDefaults'
 
-// Suggestions compound (the "Try PostHog AI for…" button row + in-input dropdown) and its default content.
+// Suggestions compound (the "Try Flind AI for…" button row + in-input dropdown) and its default content.
 export { Suggestions } from '../components/suggestions/Suggestions'
 export type {
     SuggestionItem,
@@ -90,7 +90,7 @@ export { TaskRunLivenessDot } from '../components/TaskRunLivenessDot'
 export { TaskListItem } from '../components/navigation/TaskListItem'
 export { TaskAssigneeFilterMenu } from '../components/navigation/TaskAssigneeFilterMenu'
 
-// Debug-logs overflow menu for hosts with no scene chrome (the PostHog AI scene and side panel).
+// Debug-logs overflow menu for hosts with no scene chrome (the Flind AI scene and side panel).
 export { DebugLogsMenu } from '../components/DebugLogsMenu'
 export type { DebugLogsMenuProps } from '../components/DebugLogsMenu'
 

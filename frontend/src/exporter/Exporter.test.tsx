@@ -26,18 +26,18 @@ function makeDashboardExport(overrides: Partial<ExportedData> = {}): ExportedDat
 }
 
 describe('Exporter (shared dashboard)', () => {
-    it('sets document title with PostHog suffix by default', () => {
+    it('sets document title with Flind suffix by default', () => {
         const initialTitle = document.title
 
         render(<Exporter {...makeDashboardExport()} />)
 
-        expect(document.title).toBe('My shared dashboard • PostHog')
+        expect(document.title).toBe('My shared dashboard • Flind')
 
         // restore to avoid leaking between tests
         document.title = initialTitle
     })
 
-    it('omits PostHog suffix from title when whitelabel is enabled', () => {
+    it('omits Flind suffix from title when whitelabel is enabled', () => {
         const initialTitle = document.title
 
         render(<Exporter {...makeDashboardExport({ whitelabel: true })} />)

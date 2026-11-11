@@ -8,8 +8,8 @@ export class CredentialRelayError extends Error {
       code === "cancelled"
         ? "Session is shutting down."
         : code === "timeout"
-          ? "The credential request timed out waiting for PostHog Desktop."
-          : "PostHog Desktop could not provide the Claude token.",
+          ? "The credential request timed out waiting for Flind Desktop."
+          : "Flind Desktop could not provide the Claude token.",
     );
     this.name = "CredentialRelayError";
   }

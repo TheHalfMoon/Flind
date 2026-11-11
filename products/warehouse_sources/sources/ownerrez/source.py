@@ -50,7 +50,7 @@ class OwnerrezSource(ResumableSource[OwnerrezSourceConfig, OwnerRezResumeConfig]
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="OwnerRez",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your OwnerRez account email and personal access token to pull your bookings, guests, payments, and property data into the PostHog Data warehouse.
+            caption="""Enter your OwnerRez account email and personal access token to pull your bookings, guests, payments, and property data into the Flind Data warehouse.
 
 Create a personal access token under **Settings → Advanced Tools → Developer/API Settings** in your OwnerRez account. OwnerRez rate limits personal access tokens per IP address to two accounts every 24 hours, so this connection method suits a single OwnerRez account rather than many.""",
             iconPath="/static/services/ownerrez.png",

@@ -1,6 +1,6 @@
 # Checklist: new dashboard widget type
 
-**Audience:** PostHog engineers shipping a type that does not exist yet.
+**Audience:** Flind engineers shipping a type that does not exist yet.
 
 1. Complete [widget-intake.md](widget-intake.md) — infer, batched questions, **spec confirmation** (mandatory).
 2. Work **§1 → §8 below in order**. Do not skip step 2 (permissions).

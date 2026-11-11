@@ -568,7 +568,7 @@ If no relevant private candidate exists, or the relevant candidate's visibility 
 ## The cache (your source of truth — query it before answering)
 
 A Postgres-backed cache of every candidate repo's README, full file-tree paths, and metadata lives
-in `system.integration_repository_cache`. Use the PostHog `execute-sql` tool to query it.
+in `system.integration_repository_cache`. Use the Flind `execute-sql` tool to query it.
 
 Schema:
 
@@ -641,8 +641,8 @@ pick it.
 
 ### Example 1 — same-domain ambiguity (cache query required)
 
-Request: "Session replay is crashing on mobile after upgrading PostHog Android 4.2.0 → 4.3.0 and
-PostHog iOS 3.18.0 → 3.19.0."
+Request: "Session replay is crashing on mobile after upgrading Flind Android 4.2.0 → 4.3.0 and
+Flind iOS 3.18.0 → 3.19.0."
 Candidates include `posthog/posthog-android` and `posthog/posthog-ios`.
 
 Both repos plausibly match — running on prior knowledge of "Android replay is more actively
@@ -661,7 +661,7 @@ paths in each tree and which one shows the regression surface.
 
 ### Example 2 — same-product split (cache query required)
 
-Request: "I'm running self-hosted PostHog FOSS edition and need MP4 export for session replays.
+Request: "I'm running self-hosted Flind FOSS edition and need MP4 export for session replays.
 Is this in the open-source build?"
 Candidates include `posthog/posthog` and `posthog/posthog-foss`.
 
@@ -850,7 +850,7 @@ async def select_repository(
         user_id=user_id,
         repository=REPO_SELECTION_DUMMY_REPOSITORY,
         sandbox_environment_id=sandbox_environment_id,
-        # Read-only PostHog scopes so the agent can call `execute-sql` against `system.integration_repository_cache`.
+        # Read-only Flind scopes so the agent can call `execute-sql` against `system.integration_repository_cache`.
         posthog_mcp_scopes="read_only",
         github_read_access=True,
         disable_skills=True,

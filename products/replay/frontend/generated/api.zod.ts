@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -44,7 +44,7 @@ export const SessionRecordingPlaylistsCreateBody = /* @__PURE__ */ zod.object({
         .describe('\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate')
         .optional()
         .describe(
-            'How the PostHog app created the playlist, for product analytics. Not stored.\n\n\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate'
+            'How the Flind app created the playlist, for product analytics. Not stored.\n\n\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate'
         ),
 })
 
@@ -83,7 +83,7 @@ export const SessionRecordingPlaylistsUpdateBody = /* @__PURE__ */ zod.object({
         .describe('\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate')
         .optional()
         .describe(
-            'How the PostHog app created the playlist, for product analytics. Not stored.\n\n\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate'
+            'How the Flind app created the playlist, for product analytics. Not stored.\n\n\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate'
         ),
 })
 
@@ -122,7 +122,7 @@ export const SessionRecordingPlaylistsPartialUpdateBody = /* @__PURE__ */ zod.ob
         .describe('\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate')
         .optional()
         .describe(
-            'How the PostHog app created the playlist, for product analytics. Not stored.\n\n\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate'
+            'How the Flind app created the playlist, for product analytics. Not stored.\n\n\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate'
         ),
 })
 
@@ -161,7 +161,7 @@ export const SessionRecordingPlaylistsRecordingsCreateBody = /* @__PURE__ */ zod
         .describe('\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate')
         .optional()
         .describe(
-            'How the PostHog app created the playlist, for product analytics. Not stored.\n\n\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate'
+            'How the Flind app created the playlist, for product analytics. Not stored.\n\n\* `new` - new\n\* `pin` - pin\n\* `duplicate` - duplicate'
         ),
 })
 

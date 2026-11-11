@@ -38,7 +38,7 @@ from products.warehouse_sources.sources.sdk.internals import table_from_py_list
 
 MAILERLITE_BASE_URL = "https://connect.mailerlite.com/api"
 
-WEBHOOK_NAME = "PostHog Data warehouse"
+WEBHOOK_NAME = "Flind Data warehouse"
 
 
 @dataclasses.dataclass(frozen=True)

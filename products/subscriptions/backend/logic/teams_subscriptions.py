@@ -123,7 +123,7 @@ def build_teams_subscription_card(
 
     if is_new_subscription:
         title = (
-            f"This channel has been subscribed to {display_name} on PostHog! 🎉\n\n"
+            f"This channel has been subscribed to {display_name} on Flind! 🎉\n\n"
             f"This subscription is {subscription.summary}. "
             f"The next one will be sent on {next_delivery_date_display(subscription)}"
         )
@@ -161,13 +161,13 @@ def build_teams_subscription_card(
         body.append(
             teams_text_block(
                 f"Showing {shown} of {total_asset_count} insights. "
-                f"[View the rest in PostHog]({resource_info.url}?{TEAMS_UTM_TAGS})",
+                f"[View the rest in Flind]({resource_info.url}?{TEAMS_UTM_TAGS})",
                 is_subtle=True,
             )
         )
 
     actions = [
-        teams_open_url_action("View in PostHog", f"{resource_info.url}?{TEAMS_UTM_TAGS}"),
+        teams_open_url_action("View in Flind", f"{resource_info.url}?{TEAMS_UTM_TAGS}"),
         teams_open_url_action("Manage subscription", f"{subscription.url}?{TEAMS_UTM_TAGS}"),
     ]
     return teams_card_message(body, actions)

@@ -251,7 +251,7 @@ const parseRelativeHours = (value: string | undefined): number | null => {
         return null
     }
     const n = parseInt(match[1], 10)
-    // PostHog convention: uppercase `M` = minutes (lowercase `m` = month). See
+    // Flind convention: uppercase `M` = minutes (lowercase `m` = month). See
     // `frontend/src/lib/utils.tsx` for the master mapping.
     const hoursPerUnit: Record<string, number> = {
         s: 1 / 3600,

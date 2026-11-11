@@ -34,7 +34,7 @@ WORKFLOW_RUN_IDLE_TIMEOUT_SECONDS = 2 * 60  # 2 minutes
 # so a short idle window only applies once the agent's turn has ended.
 IN_FLIGHT_TURN_IDLE_TIMEOUT_SECONDS = 10 * 60  # 10 minutes
 
-# PostHog AI runs are chat-shaped: a human sends a message, reads the reply, and either
+# Flind AI runs are chat-shaped: a human sends a message, reads the reply, and either
 # follows up within a couple of minutes or walks away. Holding the sandbox for the full
 # background window bills idle compute for the walk-away case, and a follow-up that lands
 # after the window is cheap now that a fresh sandbox rebuilds the prior session from the
@@ -65,7 +65,7 @@ def resolve_inactivity_timeout(
     3. The test default (short, so orphaned runs don't pin a worker).
     4. The task profile's `idle_minutes`, when the task has a profile.
     5. The origin-aware production default (longer for user-driven runs, shorter for
-       PostHog AI's chat-shaped ones).
+       Flind AI's chat-shaped ones).
 
     `origin_product` narrows step 5 only. It stays a plain string so callers can pass
     `task.origin_product` straight through without this module importing Django models.

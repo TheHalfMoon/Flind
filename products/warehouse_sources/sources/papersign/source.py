@@ -47,7 +47,7 @@ class PapersignSource(ResumableSource[PapersignSourceConfig, PapersignResumeConf
             category=DataWarehouseSourceCategory.SALES,
             label="Papersign",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Paperform API key to sync your Papersign documents, folders, and spaces into the PostHog Data warehouse.
+            caption="""Enter your Paperform API key to sync your Papersign documents, folders, and spaces into the Flind Data warehouse.
 
 Create an API key on your [Paperform account page](https://paperform.co/account/developer/api-keys). The key has full account access — Paperform does not offer per-resource scopes.
 

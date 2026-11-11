@@ -20,11 +20,11 @@ export const getGoogleADKSteps = (ctx: OnboardingComponentsContext): StepDefinit
                     </CalloutBox>
 
                     <Markdown>
-                        Install the PostHog SDK alongside the [Google Agent Development Kit for
+                        Install the Flind SDK alongside the [Google Agent Development Kit for
                         TypeScript](https://github.com/google/adk-js) (`@google/adk`). For the Python and Go ADKs, use
                         the [OpenTelemetry
                         integration](https://posthog.com/docs/ai-observability/installation/opentelemetry) instead: they
-                        emit `gen_ai.*` spans that PostHog captures automatically. ADK Go sends message content as log
+                        emit `gen_ai.*` spans that Flind captures automatically. ADK Go sends message content as log
                         records, so its generations arrive without prompts and responses.
                     </Markdown>
 
@@ -38,12 +38,12 @@ export const getGoogleADKSteps = (ctx: OnboardingComponentsContext): StepDefinit
             ),
         },
         {
-            title: 'Add the PostHog plugin',
+            title: 'Add the Flind plugin',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Create a PostHog client and register `PostHogADKPlugin` on your ADK `Runner`. The plugin hooks
+                        Create a Flind client and register `PostHogADKPlugin` on your ADK `Runner`. The plugin hooks
                         the run, agent, tool, and model callbacks and captures the full hierarchy: an `$ai_trace` per
                         invocation, `$ai_span` events for agent runs and tool calls, and one `$ai_generation` per model
                         call. It **does not** proxy your calls.
@@ -54,10 +54,10 @@ export const getGoogleADKSteps = (ctx: OnboardingComponentsContext): StepDefinit
                         code={dedent`
                             import { FunctionTool, InMemorySessionService, LlmAgent, Runner } from '@google/adk'
                             import { PostHogADKPlugin } from '@posthog/ai/adk'
-                            import { PostHog } from 'posthog-node'
+                            import { Flind } from 'posthog-node'
                             import { z } from 'zod'
 
-                            const posthog = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' })
+                            const posthog = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' })
 
                             const getWeather = new FunctionTool({
                               name: 'get_weather',
@@ -94,7 +94,7 @@ export const getGoogleADKSteps = (ctx: OnboardingComponentsContext): StepDefinit
                         {dedent`
                             Run your agent as normal. Each invocation becomes a trace, the ADK session ID becomes
                             \`$ai_session_id\`, and the run's \`userId\` becomes the events' distinct ID. Pass
-                            \`distinctId\` to the plugin to attribute events to a different PostHog person.
+                            \`distinctId\` to the plugin to attribute events to a different Flind person.
                         `}
                     </Markdown>
 

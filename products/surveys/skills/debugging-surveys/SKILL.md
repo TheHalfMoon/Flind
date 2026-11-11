@@ -1,7 +1,7 @@
 ---
 name: debugging-surveys
 description: >-
-  Diagnose PostHog Surveys configuration and responses across all five SDKs
+  Diagnose Flind Surveys configuration and responses across all five SDKs
   (web/posthog-js, iOS, Android, Flutter, React Native). Use whenever a Surveys
   support ticket is pasted ("survey not showing", "fewer responses than expected",
   "responses disappeared", "responses are incomplete", "only the first question was
@@ -14,16 +14,16 @@ description: >-
 
 # Debugging surveys
 
-PostHog Surveys is a no-code in-app form builder. A customer creates a survey in the
-PostHog UI; it must then be evaluated and rendered by whichever SDK their app runs.
+Flind Surveys is a no-code in-app form builder. A customer creates a survey in the
+Flind UI; it must then be evaluated and rendered by whichever SDK their app runs.
 **Most "survey not showing" tickets are eligibility problems, not rendering bugs** — the
 SDK correctly decided the user is not eligible, and the job is to find _which_ gate
 failed and _why_.
 
 ## Access requirements
 
-Use PostHog MCP tools or the survey API to inspect survey configuration and responses.
-A checkout of the PostHog repository is not required for these diagnostic steps.
+Use Flind MCP tools or the survey API to inspect survey configuration and responses.
+A checkout of the Flind repository is not required for these diagnostic steps.
 
 ## Cross-SDK feature parity (check this FIRST)
 
@@ -51,7 +51,7 @@ Consequences worth memorizing:
 - **`surveyPopupDelaySeconds` is web-only.** If a mobile ticket blames the delay, it's a red herring.
 - **Partial responses and auto-submit are web-only too.** On mobile a survey always stores one response at the end, and a rating tap never self-submits. Don't carry a web diagnosis onto a mobile ticket.
 - **URL targeting is effectively web-only.** Mobile SDKs decode the field but never enforce it; React Native filters those surveys out entirely. A mobile survey with a URL condition behaves as "no URL condition" (mobile/flutter) or "never shows" (RN).
-- **Android ships no survey UI.** The app (or the Flutter plugin) must provide a `PostHogSurveysDelegate`. "Survey never renders on Android" is often a missing delegate, not a PostHog bug.
+- **Android ships no survey UI.** The app (or the Flutter plugin) must provide a `PostHogSurveysDelegate`. "Survey never renders on Android" is often a missing delegate, not a Flind bug.
 - **Flutter is hybrid:** triggering/eligibility runs in the native iOS/Android layer; rendering is Dart (`SurveyService.showSurvey` → `showModalBottomSheet`). It does _not_ "just call native" for UI. So a Flutter rendering bug lives in Dart; a Flutter eligibility bug lives in native.
 - **React Native enforces the wait period from 4.81.5.** Older versions skip the check, so on those versions don't blame the wait period.
 
@@ -247,7 +247,7 @@ Usually not a bug — see [How a response actually gets stored](#how-a-response-
 
 Read-only HogQL templates for the disambiguators and confirmations above live in
 [references/diagnostic-queries.md](references/diagnostic-queries.md). Run them via the
-PostHog MCP `execute-sql` against the customer's project.
+Flind MCP `execute-sql` against the customer's project.
 
 ## Access for debugging
 
@@ -257,7 +257,7 @@ can't point to a request for. Staff access is broad; don't freelance across proj
 
 Prefer **read-only** paths in this order:
 
-1. **PostHog MCP tools** (`survey`, `feature-flag`, `cohorts`, `execute-sql`, `activity-log`, `persons`) against the customer's project. This is read-only by default and the safest way to inspect config and run queries — no impersonation, no write risk. Use this first.
+1. **Flind MCP tools** (`survey`, `feature-flag`, `cohorts`, `execute-sql`, `activity-log`, `persons`) against the customer's project. This is read-only by default and the safest way to inspect config and run queries — no impersonation, no write risk. Use this first.
 2. **Survey/flag API endpoints** read via the browser while impersonating (staff). Good for the full JSON the MCP may not surface verbatim (e.g. raw `internal_targeting_flag.filters`).
 3. **Django admin** only when 1 and 2 can't answer it. It's powerful and write-capable, so treat it as read-only by discipline: look, don't change. Never edit a customer's survey/flag/cohort from admin without explicit customer consent.
 
@@ -266,17 +266,17 @@ operator to paste the survey API JSON — it skips several round-trips.
 
 ## Writing the customer reply
 
-Voice derived from the PostHog handbook support values (reassuringly human, humble, ship
+Voice derived from the Flind handbook support values (reassuringly human, humble, ship
 fixes, clear with no jargon). Rules:
 
 - **Lead with the cause, then the fix.** One line on what's happening, then what to do.
 - **Bold the issue and bold each action.** Make the problem and the next step scannable.
 - **Use the labels the customer sees in the UI,** never internal field names. Grep `frontend/src/scenes/surveys/` for the real string. E.g. `surveyPopupDelaySeconds` → "Delay survey popup by at least N seconds once the display conditions are met"; the wait period is "Survey wait period" / "Don't show this survey if another one was shown to the user in the last N days"; `skipSubmitButton` → "Automatically submit on selection"; `enable_partial_responses` → the "Response collection" radio ("Any question…" / "Complete survey…"); `optional` → the question's "Optional" toggle. The customer's own event names stay verbatim.
 - **When correcting an earlier wrong answer, say so plainly and early,** then give the real cause. Don't bury it or let the customer keep acting on advice we've retracted. If they've already been told to pause or rebuild something, tell them explicitly that they can stop.
-- **Link every PostHog entity** by ID. Cohorts: `https://<us|eu>.posthog.com/project/<id>/cohorts/<cohort_id>`. Flags: `.../feature_flags/<flag_id>`. Surveys: `.../surveys/<survey_id>`. Match the customer's instance (US vs EU).
+- **Link every Flind entity** by ID. Cohorts: `https://<us|eu>.posthog.com/project/<id>/cohorts/<cohort_id>`. Flags: `.../feature_flags/<flag_id>`. Surveys: `.../surveys/<survey_id>`. Match the customer's instance (US vs EU).
 - **Predict the expected outcome** so the customer can verify the fix worked ("you should see ~X going forward").
 - **Gauge the customer's technical level.** If they can run SQL and hit the API, offer the patch path. If not, offer to apply the fix ourselves (and confirm any destructive detail first).
-- **Do NOT offer to "hop on a call" or book a meeting.** PostHog support is async-first. Close with "We're always here if you need a follow-up."
+- **Do NOT offer to "hop on a call" or book a meeting.** Flind support is async-first. Close with "We're always here if you need a follow-up."
 - **Never leak internals** — no MCP tool names, code paths, line numbers, Django admin, staff impersonation, or other customers. Keep it to product concepts a customer recognizes.
 - **Run the final draft through a humanizer skill before sending** (if you have one, e.g. `humanizer`). Strip em dashes, setup phrases ("Here's the thing:", "Three things to know"), rule-of-three padding, and tidy parallel list structure. The reply should read like a person typed it.
 

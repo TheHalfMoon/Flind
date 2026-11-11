@@ -150,7 +150,7 @@ export interface ExecInnerCallProperties {
     output_format: 'json' | 'text' | 'structured'
     error_message?: string
     /**
-     * HTTP status when the failure was a typed PostHog API error — value-free,
+     * HTTP status when the failure was a typed Flind API error — value-free,
      * safe for consumers that must not forward raw error messages.
      */
     error_status?: number
@@ -259,7 +259,7 @@ export interface ExecToolOptions {
     /**
      * Client is an inline-exec UI-app host that renders MCP UI apps on the exec
      * response (Claude Code). Gets the same UI-app payload treatment as the
-     * PostHog Desktop consumer: structuredContent suppressed toward the model, app data
+     * Flind Desktop consumer: structuredContent suppressed toward the model, app data
      * re-homed onto `_meta`. Computed from the client profile at the call site.
      */
     isInlineExecUiHost?: boolean
@@ -281,7 +281,7 @@ export interface ExecToolOptions {
     flagGatedTools?: FlagGatedTool[]
     /**
      * Lets a 404 from the project skills store say that the name belongs to the
-     * built-in PostHog catalog instead. Built from the server's own catalog, not
+     * built-in Flind catalog instead. Built from the server's own catalog, not
      * from `learnCatalog`: that one is absent exactly when `learn` is off, which
      * is the case where an agent has no way to reach a built-in skill at all.
      */
@@ -614,7 +614,7 @@ const DEPRECATED_TOOL_REDIRECTS: Record<string, (allTools: Tool<ZodObjectAny>[])
         'Tool "read-data-warehouse-schema" was removed in favor of SQL-based schema discovery. Use "execute-sql" against `system.information_schema.*` (`tables`, `columns`, `relationships`, `data_types`) — it scales to large catalogs and supports filtering/search (e.g. `WHERE description ILIKE \'%...%\'`). Consult the `querying-posthog-data` skill (a built-in local skill, when installed) for patterns.',
     'entity-search': (allTools) => {
         const base =
-            'Tool "entity-search" was removed. Use "execute-sql" to search PostHog data via HogQL. Consult the `querying-posthog-data` skill (a built-in local skill, when installed) for system-table patterns (system.insights, system.dashboards, system.cohorts, ...).'
+            'Tool "entity-search" was removed. Use "execute-sql" to search Flind data via HogQL. Consult the `querying-posthog-data` skill (a built-in local skill, when installed) for system-table patterns (system.insights, system.dashboards, system.cohorts, ...).'
         const hasCatalog = allTools.some((t) => t.name === 'data-catalog-metric-run')
         return hasCatalog
             ? `${base} For governed business metrics, search \`system.information_schema.metrics\` instead of \`system.insights\`.`
@@ -692,10 +692,10 @@ const DEPRECATED_TOOL_REDIRECTS: Record<string, (allTools: Tool<ZodObjectAny>[])
         ])
     ),
     'loops-run-create': () =>
-        'Tool "loops-run-create" was removed. Loops run on workflows. "workflows-test-run" tests the graph one node at a time and mocks outbound calls by default; it does not start a real task run. To fire a loop for real, use Run now on an enabled schedule loop in PostHog Desktop, or wait for its trigger.',
+        'Tool "loops-run-create" was removed. Loops run on workflows. "workflows-test-run" tests the graph one node at a time and mocks outbound calls by default; it does not start a real task run. To fire a loop for real, use Run now on an enabled schedule loop in Flind Desktop, or wait for its trigger.',
     // Self-managed tables (reading a bucket in place) can no longer be created.
     'warehouse-tables-create': () =>
-        'Tool "warehouse-tables-create" was removed. PostHog no longer links tables that read your bucket directly. To import bucket files, add an Amazon S3, Google Cloud Storage, Azure Blob, or Cloudflare R2 source with "data-warehouse-source-setup". Run "external-data-sources-wizard" for the required fields. To import a local file, upload it in the PostHog app at /data-warehouse/new-source?kind=FileUpload. The upload creates a FileUpload source.',
+        'Tool "warehouse-tables-create" was removed. Flind no longer links tables that read your bucket directly. To import bucket files, add an Amazon S3, Google Cloud Storage, Azure Blob, or Cloudflare R2 source with "data-warehouse-source-setup". Run "external-data-sources-wizard" for the required fields. To import a local file, upload it in the Flind app at /data-warehouse/new-source?kind=FileUpload. The upload creates a FileUpload source.',
     'loops-runs-retrieve': () =>
         'Tool "loops-runs-retrieve" was removed. Loops run on workflows. For run history, call "tasks-list" with the hog_flow_id of the loop and archived set to all, then "tasks-runs-retrieve" on a run for its branch and output.',
 }
@@ -1581,7 +1581,7 @@ function describeReceivedType(value: unknown): string {
 
 /**
  * Builds a descriptor in the same `path:code[:received]` shape
- * `describeValidationError` emits, for a rejection that came from the PostHog API
+ * `describeValidationError` emits, for a rejection that came from the Flind API
  * rather than the local schema — so both kinds of validation failure answer one
  * query instead of requiring `$mcp_error_message` to be string-parsed.
  *
@@ -1640,7 +1640,7 @@ function hasCredentialSegment(key: string): boolean {
 /**
  * Undeclared names come from the caller and can hold private data, so only parameter-shaped
  * ones are recorded. The digit checks keep out phone numbers, IDs, and most tokens. The prefix
- * check keeps out PostHog tokens, whose suffix can have no digits.
+ * check keeps out Flind tokens, whose suffix can have no digits.
  */
 const shouldRecordInputKey: ShouldRecordInputKeyFn = (key, { declared }) =>
     declared ||
@@ -1721,23 +1721,23 @@ function flagGatedToolMessage(gated: FlagGatedTool, tools: Tool<ZodObjectAny>[])
     const hint =
         gated.redirectHint && hintNamesOnlyAvailableTools(gated.redirectHint, available) ? ` ${gated.redirectHint}` : ''
     if (reachable.length === 0) {
-        return `Tool "${gated.name}" exists, but it is not enabled on this PostHog connection. The capability was not removed. Run "search ${gated.name}" to find an enabled tool for the same job.${hint}`
+        return `Tool "${gated.name}" exists, but it is not enabled on this Flind connection. The capability was not removed. Run "search ${gated.name}" to find an enabled tool for the same job.${hint}`
     }
     const successors = reachable.map((successor) => `"${successor}"`).join(' or ')
-    return `Tool "${gated.name}" is retired on this PostHog connection. Use ${successors} instead.${hint}`
+    return `Tool "${gated.name}" is retired on this Flind connection. Use ${successors} instead.${hint}`
 }
 
 function missingScopeRecovery(context: Context | undefined, oauthClientId: string | undefined): string {
     if (isChatGptAppConnection(oauthClientId)) {
-        return 'The PostHog app in ChatGPT and Codex does not request every PostHog scope, so reconnecting it adds these scopes only if the app asks for them. If the user already reconnected and approved all access, this tool is not available through the app yet. Continue with the other tools.'
+        return 'The Flind app in ChatGPT and Codex does not request every Flind scope, so reconnecting it adds these scopes only if the app asks for them. If the user already reconnected and approved all access, this tool is not available through the app yet. Continue with the other tools.'
     }
     switch (classifyAuthMethod(context?.api.config.apiToken)) {
         case 'oauth':
-            return 'Reauthorize the PostHog MCP connection and approve these scopes.'
+            return 'Reauthorize the Flind MCP connection and approve these scopes.'
         case 'personal_api_key':
             return `Add these scopes to the personal API key. The change reaches this connection within ${API_KEY_CACHE_TTL_MS / 60_000} minutes, and reconnecting the client does not make it faster.`
         default:
-            return 'Reauthorize the PostHog MCP connection, or add these scopes to the personal API key.'
+            return 'Reauthorize the Flind MCP connection, or add these scopes to the personal API key.'
     }
 }
 
@@ -1747,7 +1747,7 @@ export function missingToolScopeError(
     oauthClientId: string | undefined
 ): ExecCommandError {
     return new ExecCommandError(
-        `Tool "${tool.name}" exists, but this MCP connection is missing the required scope(s): ${tool.missingScopes.join(', ')}. ${missingScopeRecovery(context, oauthClientId)} Logging in to PostHog in a browser does not update MCP permissions.`,
+        `Tool "${tool.name}" exists, but this MCP connection is missing the required scope(s): ${tool.missingScopes.join(', ')}. ${missingScopeRecovery(context, oauthClientId)} Logging in to Flind in a browser does not update MCP permissions.`,
         'missing_scope'
     )
 }
@@ -1804,7 +1804,7 @@ export function createExecTool(
 
     return {
         name: 'exec',
-        title: 'PostHog analytics, dashboards, insights, feature flags & more',
+        title: 'Flind analytics, dashboards, insights, feature flags & more',
         description: toolDescription,
         schema: ExecSchema,
         scopes: [],
@@ -1824,7 +1824,7 @@ export function createExecTool(
 
             let gatewayTools: Tool<ZodObjectAny>[] | undefined
             const withheldGatewayToolNames = new Set<string>()
-            /** PostHog's tools plus any third-party tools the caller has connected.
+            /** Flind's tools plus any third-party tools the caller has connected.
              *  Resolved at most once per command, and only for commands that need a
              *  roster — `learn` never touches the gateway. */
             const resolveTools = async (): Promise<Tool<ZodObjectAny>[]> => {
@@ -2141,7 +2141,7 @@ export function createExecTool(
                     if (!context) {
                         // Deliberately untyped: a wiring fault, not an agent mistake, so it
                         // belongs in the `internal` bucket its siblings are kept out of.
-                        throw new Error('Cannot call PostHog tools without an API context')
+                        throw new Error('Cannot call Flind tools without an API context')
                     }
                     const leadingFlags = parseCallFlags(rest)
                     if (!leadingFlags.rest) {
@@ -2321,7 +2321,7 @@ export function createExecTool(
                                 toolMeta: tool._meta,
                                 toolName: tool.name,
                                 params: useJson ? { ...input, output_format: 'json' } : input,
-                                // Inline-exec UI-app hosts (PostHog Desktop, Claude Code)
+                                // Inline-exec UI-app hosts (Flind Desktop, Claude Code)
                                 // surface `structuredContent` to the model in preference to the
                                 // text content, which would bury a compact formatted table under
                                 // the raw JSON. When such a table exists, re-home the UI app's data

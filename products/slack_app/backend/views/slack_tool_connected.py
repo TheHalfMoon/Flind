@@ -14,7 +14,7 @@ from products.slack_app.backend.logic.connect_tool import (
 @require_GET
 @login_required
 def slack_tool_connect(request: HttpRequest) -> HttpResponse:
-    """The Connect button in Slack lands here, so a browser without a PostHog session logs in first, then goes on to
+    """The Connect button in Slack lands here, so a browser without a Flind session logs in first, then goes on to
     the MCP store's OAuth start for the offered tool."""
     state_token = request.GET.get("state", "")
     state = read_connected_state(state_token)

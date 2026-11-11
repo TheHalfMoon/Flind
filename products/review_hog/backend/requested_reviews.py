@@ -1,4 +1,4 @@
-"""Start a review of a pull request because a PostHog user asked for it.
+"""Start a review of a pull request because a Flind user asked for it.
 
 The review trigger in the Code review UI, the `@posthog review` pull request command and a review
 request for the `posthog-review` team all come here, so one place decides which requests start a run. The caller has already authenticated the
@@ -116,7 +116,7 @@ def request_pr_review(
     if github is None:
         return PRReviewRequestOutcome(
             status=PRReviewRequestStatus.INVALID,
-            error=f"PostHog Review's GitHub App can't access {repository}. It reviews repositories covered by this project's GitHub integration.",
+            error=f"Flind Review's GitHub App can't access {repository}. It reviews repositories covered by this project's GitHub integration.",
         )
     # One PR fetch so the answer is honest: without it a typo'd number or fork dies async (before
     # the report row exists — nothing appears), and an already-reviewed head silently no-ops while
@@ -133,12 +133,12 @@ def request_pr_review(
     if pr_meta.is_fork:
         return PRReviewRequestOutcome(
             status=PRReviewRequestStatus.INVALID,
-            error="PostHog Review doesn't review fork pull requests (a fork's head can't be trusted)",
+            error="Flind Review doesn't review fork pull requests (a fork's head can't be trusted)",
         )
     if pr_meta.state != "open":
         return PRReviewRequestOutcome(
             status=PRReviewRequestStatus.INVALID,
-            error=f"Pull request #{pr_number} is {pr_meta.state}; PostHog Review only reviews open pull requests",
+            error=f"Pull request #{pr_number} is {pr_meta.state}; Flind Review only reviews open pull requests",
         )
     # The busy-guard (CONTEXT.md): Temporal joins same-id starts on its own, but a review and
     # this PR's resolution run under different workflow ids, so the cross-stage check is
@@ -165,7 +165,7 @@ def request_pr_review(
             return PRReviewRequestOutcome(
                 status=PRReviewRequestStatus.REFUSED,
                 error="Comments are resolved only on pull requests whose owner turned on resolving comments "
-                "in their PostHog Review settings.",
+                "in their Flind Review settings.",
                 refusal=ReviewRequestRefusal.RESOLUTION_NOT_OPTED_IN,
             )
         # No already-reviewed early-return here: an already-reviewed head is exactly when a
@@ -281,7 +281,7 @@ def request_member_review(
         REVIEW_HOG_FLAG, str(requester.distinct_id), organization_id=organization_id, team_id=team_id
     ):
         return PRReviewRequestOutcome(
-            status=PRReviewRequestStatus.NOT_ALLOWED, error="PostHog Review isn't enabled for this project."
+            status=PRReviewRequestStatus.NOT_ALLOWED, error="Flind Review isn't enabled for this project."
         )
     owner, _, repo = repository.partition("/")
     return request_pr_review(

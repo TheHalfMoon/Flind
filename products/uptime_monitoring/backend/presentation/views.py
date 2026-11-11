@@ -28,7 +28,7 @@ def _parse_id(pk: str) -> UUID:
 
 
 class UptimeMonitorViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
-    """URLs that PostHog checks on a schedule."""
+    """URLs that Flind checks on a schedule."""
 
     # Session access only until the product is released and has its own API scope.
     scope_object = "INTERNAL"

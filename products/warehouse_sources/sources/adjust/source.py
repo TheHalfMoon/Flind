@@ -91,7 +91,7 @@ class AdjustSource(ResumableSource[AdjustSourceConfig, AdjustResumeConfig]):
             name=ExternalDataSourceType.ADJUST,
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="Adjust",
-            caption="""Enter your Adjust API token to pull aggregated attribution and performance reports into the PostHog Data warehouse.
+            caption="""Enter your Adjust API token to pull aggregated attribution and performance reports into the Flind Data warehouse.
 
 Find your API token in the Adjust dashboard under your account menu > Account settings. The token needs reporting access to the apps you want to import. Leave app tokens blank to import every app the token can read, or enter a comma-separated list to narrow it down.
 

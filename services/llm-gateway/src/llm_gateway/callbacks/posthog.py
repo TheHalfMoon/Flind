@@ -29,7 +29,7 @@ logger = structlog.get_logger(__name__)
 
 def _replace_binary_content(data: Any) -> Any:
     """
-    Replace binary content with metadata before storing in PostHog.
+    Replace binary content with metadata before storing in Flind.
     Handles both raw bytes/tuples and their stringified repr() forms.
     """
     match data:
@@ -173,7 +173,7 @@ def _truncate_for_capture(properties: dict[str, Any]) -> dict[str, Any]:
 
 
 class PostHogCallback(InstrumentedCallback):
-    """Custom PostHog callback for AI observability."""
+    """Custom Flind callback for AI observability."""
 
     callback_name = "posthog"
 
@@ -223,7 +223,7 @@ class PostHogCallback(InstrumentedCallback):
         team_id = auth_user.team_id if auth_user and auth_user.team_id else None
 
         logger.debug(
-            "PostHog callback _on_success",
+            "Flind callback _on_success",
             end_user_id=end_user_id,
             distinct_id=distinct_id,
             team_id=team_id,
@@ -332,7 +332,7 @@ class PostHogCallback(InstrumentedCallback):
         }
 
         logger.debug(
-            "PostHog capturing event",
+            "Flind capturing event",
             distinct_id=distinct_id,
             posthog_event="$ai_generation",
             properties=properties,
@@ -356,7 +356,7 @@ class PostHogCallback(InstrumentedCallback):
         team_id = auth_user.team_id if auth_user and auth_user.team_id else None
 
         logger.debug(
-            "PostHog callback _on_failure",
+            "Flind callback _on_failure",
             end_user_id=end_user_id,
             distinct_id=distinct_id,
             team_id=team_id,
@@ -397,7 +397,7 @@ class PostHogCallback(InstrumentedCallback):
         }
 
         logger.debug(
-            "PostHog capturing error event",
+            "Flind capturing error event",
             distinct_id=distinct_id,
             posthog_event="$ai_generation",
             properties=properties,
@@ -430,7 +430,7 @@ class PostHogCallback(InstrumentedCallback):
         # No outer try/except: the destinations feed regional billing
         # aggregations, so we want them to succeed or fail together. If the
         # primary raises, the secondary intentionally does not run so the two
-        # PostHog instances stay in sync rather than diverging on billing state.
+        # Flind instances stay in sync rather than diverging on billing state.
         self._capture_to_destination(self._api_key, self._host, **capture_kwargs)
         if self._secondary_api_key and self._secondary_host:
             self._capture_to_destination(
@@ -440,7 +440,7 @@ class PostHogCallback(InstrumentedCallback):
             )
 
     def _capture_to_destination(self, api_key: str, host: str, **capture_kwargs: Any) -> None:
-        """Fire a single capture against one PostHog instance.
+        """Fire a single capture against one Flind instance.
 
         Each call uses a fresh client so a slow shutdown on one destination
         doesn't pin a pooled client and to avoid cross-destination state

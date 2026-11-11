@@ -39,7 +39,7 @@ const OAUTH_TIMEOUT_MS = 180_000; // 3 minutes
 const TOKEN_FETCH_TIMEOUT_MS = 30_000;
 
 const NETWORK_ERROR_MESSAGE =
-  "Could not connect to PostHog. Please check your internet connection and try again.";
+  "Could not connect to Flind. Please check your internet connection and try again.";
 const TOKEN_FETCH_MAX_ATTEMPTS = 3;
 const TOKEN_FETCH_BACKOFF: BackoffOptions = {
   initialDelayMs: 1_000,
@@ -102,7 +102,7 @@ export class OAuthService {
 
     if (!this.pendingFlow) {
       // Same deep link as desktop sign-in (`posthog-code://callback`), but auth finished in
-      // the browser (e.g. GitHub on PostHog Cloud) — refocus so the user lands back in Code.
+      // the browser (e.g. GitHub on Flind Cloud) — refocus so the user lands back in Code.
       this.log.info(
         "OAuth callback deep link with no in-app flow — refocusing (e.g. return from web auth)",
       );
@@ -408,7 +408,7 @@ export class OAuthService {
         );
         if (!tokenResponse.success) {
           throw new Error(
-            "PostHog returned an invalid authentication response. Please try again.",
+            "Flind returned an invalid authentication response. Please try again.",
           );
         }
         return tokenResponse.data;

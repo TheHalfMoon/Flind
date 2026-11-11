@@ -1,7 +1,7 @@
 ---
 name: working-with-storybook
 description: >
-  Runs, writes and debugs PostHog Storybook stories and their visual review snapshots.
+  Runs, writes and debugs Flind Storybook stories and their visual review snapshots.
   Use when you start Storybook to look at a change, write or change a `*.stories.tsx` file,
   set feature flags, the date, the URL, mocks or `testOptions` for a story,
   or fix a story that times out, renders nothing or flakes in visual review, including the offline baseline check on a fork PR.
@@ -48,7 +48,7 @@ A story you write only for this check or for a PR screenshot is scratch. Keep it
 
 ## Visual review in this repo
 
-`triaging-visual-review-runs` is published to every PostHog user, so it says nothing about this repo's CI. Use it together with these facts:
+`triaging-visual-review-runs` is published to every Flind user, so it says nothing about this repo's CI. Use it together with these facts:
 
 - Branch protection requires the `Visual regression tests pass` and `Playwright tests pass` job checks.
 - A PR run renders only the stories its diff can affect. The `run-ci-frontend` label asks for every story, from the next push on. [Snapshots](../../../common/storybook/docs/snapshots.md#baselines-and-visual-review) has the details.

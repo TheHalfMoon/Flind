@@ -151,12 +151,12 @@ export const missingLinkInvestigateLogic = kea<missingLinkInvestigateLogicType>(
             closeHost()
             actions.closeLogsViewerModal()
             if (route === 'ai-scene') {
-                // The rail keeps legacy PostHog AI in the /ai scene, in the same tab.
+                // The rail keeps legacy Flind AI in the /ai scene, in the same tab.
                 router.actions.push(urls.ai(undefined, prompt))
                 return
             }
             if (route === 'legacy-ask') {
-                // The shared ask path opens the question in a new PostHog AI tab.
+                // The shared ask path opens the question in a new Flind AI tab.
                 actions.askSidePanelMax(prompt)
                 return
             }

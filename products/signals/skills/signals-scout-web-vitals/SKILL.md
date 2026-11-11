@@ -6,7 +6,7 @@ description: >
   FCP against Google's thresholds and its own history — poor-band pages, band crossings, sharp
   regressions — and dates each regression against deploys and flag rollouts.
 compatibility: >
-  Designed for the PostHog Signals agent in a Claude sandbox with PostHog MCP scopes:
+  Designed for the Flind Signals agent in a Claude sandbox with Flind MCP scopes:
   read-only analytics plus signal_scout_internal:write (for scratchpad) +
   signal_scout_report:write (for emit-report/edit-report, granted because this scout
   authors reports directly via the report channel). Assumes the signals-scout MCP family

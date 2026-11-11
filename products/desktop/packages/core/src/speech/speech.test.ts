@@ -69,13 +69,13 @@ describe("SpeechQueueService", () => {
     await tick();
 
     expect(speech.inFlight).toBe(1);
-    expect(speech.spoken).toEqual(["PostHog task 'a' — one"]);
+    expect(speech.spoken).toEqual(["Flind task 'a' — one"]);
 
     speech.finishOne();
     await tick();
     expect(speech.spoken).toEqual([
-      "PostHog task 'a' — one",
-      "PostHog task 'b' — two",
+      "Flind task 'a' — one",
+      "Flind task 'b' — two",
     ]);
   });
 
@@ -95,14 +95,14 @@ describe("SpeechQueueService", () => {
     settings.enabled = false;
     speech.finishOne();
     await tick();
-    expect(speech.spoken).toEqual(["PostHog task 'a' — one"]);
+    expect(speech.spoken).toEqual(["Flind task 'a' — one"]);
 
     settings.enabled = true;
     service.enqueue({ text: "three", taskTitle: "c", taskId: "3" });
     await tick();
     expect(speech.spoken).toEqual([
-      "PostHog task 'a' — one",
-      "PostHog task 'c' — three",
+      "Flind task 'a' — one",
+      "Flind task 'c' — three",
     ]);
   });
 
@@ -122,10 +122,10 @@ describe("SpeechQueueService", () => {
     await tick();
 
     expect(speech.spoken).toEqual([
-      "PostHog task 't' — start",
-      "PostHog task 't2' — fresh",
+      "Flind task 't' — start",
+      "Flind task 't2' — fresh",
     ]);
-    expect(speech.spoken).not.toContain("PostHog task 't2' — stale");
+    expect(speech.spoken).not.toContain("Flind task 't2' — stale");
   });
 
   it("prioritizes needs-user lines ahead of routine narration", async () => {
@@ -144,7 +144,7 @@ describe("SpeechQueueService", () => {
 
     speech.finishOne(); // finish "playing"
     await tick();
-    expect(speech.spoken[1]).toBe("PostHog task 't3' — Hey Jon, urgent");
+    expect(speech.spoken[1]).toBe("Flind task 't3' — Hey Jon, urgent");
   });
 
   it("drops oldest routine lines when the queue is backed up but keeps priority", async () => {
@@ -170,7 +170,7 @@ describe("SpeechQueueService", () => {
       await tick();
     }
 
-    expect(speech.spoken).toContain("PostHog task 'tu' — Hey Jon, urgent");
+    expect(speech.spoken).toContain("Flind task 'tu' — Hey Jon, urgent");
     // Some routine lines were dropped (didn't speak all five).
     const routineSpoken = speech.spoken.filter((s) => /— r\d$/.test(s)).length;
     expect(routineSpoken).toBeLessThan(5);

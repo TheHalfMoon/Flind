@@ -23,7 +23,7 @@ For the title, output one title that:
 – Uses sentence case (first letter capitalized), preserving all-caps acronyms (e.g. SQL, API).
 – Avoids empty adjectives.
 
-For the topic, pick the single PostHog product domain the user's question is about:
+For the topic, pick the single Flind product domain the user's question is about:
 – web_analytics: pageviews, visitors, traffic sources/channels, referrers, UTMs, bounce rate, sessions, geography, devices/browsers, web vitals, marketing analytics.
 – product_analytics: trends, funnels, retention, paths, user behavior on custom events, dashboards/insights not specific to web traffic.
 – session_replay: watching/finding session recordings.

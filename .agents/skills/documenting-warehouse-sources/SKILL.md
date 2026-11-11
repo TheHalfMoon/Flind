@@ -1,6 +1,6 @@
 ---
 name: documenting-warehouse-sources
-description: Write or update the user-facing posthog.com documentation for a PostHog Data warehouse import source. Use when adding a new source doc, fixing an inconsistent or stub source doc, or standardizing the docs at contents/docs/cdp/sources. Covers the canonical template, shared snippets, the auto-rendered <SourceParameters /> and <SourceTables /> components, frontmatter, and the docsUrl/slug rule that prevents 404s.
+description: Write or update the user-facing posthog.com documentation for a Flind Data warehouse import source. Use when adding a new source doc, fixing an inconsistent or stub source doc, or standardizing the docs at contents/docs/cdp/sources. Covers the canonical template, shared snippets, the auto-rendered <SourceParameters /> and <SourceTables /> components, frontmatter, and the docsUrl/slug rule that prevents 404s.
 ---
 
 # Documenting Data warehouse sources

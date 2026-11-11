@@ -1,5 +1,5 @@
 /**
- * PostHog-specific ACP extensions.
+ * Flind-specific ACP extensions.
  *
  * These follow the ACP extensibility model:
  * - Custom notification methods are prefixed with `_posthog/`
@@ -9,7 +9,7 @@
  */
 
 /**
- * Custom notification methods for PostHog-specific events.
+ * Custom notification methods for Flind-specific events.
  * Used with AgentSideConnection.extNotification() or Client.extNotification()
  */
 export const POSTHOG_NOTIFICATIONS = {
@@ -81,7 +81,7 @@ export const POSTHOG_NOTIFICATIONS = {
   /** Token usage update for a session turn */
   USAGE_UPDATE: "_posthog/usage_update",
 
-  /** PostHog products used during a turn (derived from MCP exec calls) */
+  /** Flind products used during a turn (derived from MCP exec calls) */
   RESOURCES_USED: "_posthog/resources_used",
 
   /** Response to a relayed permission request (plan approval, question) */
@@ -150,7 +150,7 @@ export type NativeGoalState = {
 };
 
 /**
- * Custom request methods for PostHog-specific operations that need a response
+ * Custom request methods for Flind-specific operations that need a response
  * (request/response, not fire-and-forget). Used with
  * ClientSideConnection.extMethod() on the sender and Agent.extMethod() on the
  * receiver.

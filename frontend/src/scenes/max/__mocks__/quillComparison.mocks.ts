@@ -1,5 +1,5 @@
 /**
- * Invented data for the PostHog AI quill comparison story: one investigation told twice, once as the
+ * Invented data for the Flind AI quill comparison story: one investigation told twice, once as the
  * LangGraph conversation the legacy chat renders, once as the ACP log the sandbox runner renders.
  * Nothing here comes from a real conversation.
  */
@@ -247,7 +247,7 @@ export function comparisonConversationMessages(): RootAssistantMessage[] {
         {
             id: 'cmp-failure-1',
             type: AssistantMessageType.Failure,
-            content: 'PostHog AI could not reach the alerts service. Please try again.',
+            content: 'Flind AI could not reach the alerts service. Please try again.',
         },
         {
             id: 'cmp-human-3',

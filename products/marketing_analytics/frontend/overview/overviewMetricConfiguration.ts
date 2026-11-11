@@ -10,7 +10,7 @@ const DEFAULT_POSTHOG_METRICS = 2
 
 export const OVERVIEW_METRIC_SOURCES: { key: OverviewMetricSource; label: string }[] = [
     { key: 'platforms', label: 'Ad platforms' },
-    { key: 'posthog', label: 'PostHog' },
+    { key: 'posthog', label: 'Flind' },
 ]
 
 export function overviewMetricSource(key: string): OverviewMetricSource {

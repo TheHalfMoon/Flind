@@ -51,7 +51,7 @@ class GainsightCsObjectConfig:
     incremental_fields: tuple[IncrementalField, ...] = ()
 
 
-# Standard objects, keyed by the schema name PostHog shows in the picker. Every object name here is
+# Standard objects, keyed by the schema name Flind shows in the picker. Every object name here is
 # taken from Gainsight's own API documentation rather than inferred from the product UI, because a
 # wrong name is a 404 at sync time. Tenants routinely add custom objects on top of these — the
 # `custom_objects` form field lets a user sync those without a code change.

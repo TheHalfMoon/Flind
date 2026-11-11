@@ -102,7 +102,7 @@ def _frame_ancestors_verdict(directive: str, scheme: str, host: str, port: int |
 
 
 def analyze_framing_headers(headers: dict[str, str]) -> tuple[Framing, BlockedBy | None]:
-    """Decide whether the PostHog app may embed a page in an iframe, from its response headers."""
+    """Decide whether the Flind app may embed a page in an iframe, from its response headers."""
     scheme, host, port = _origin_parts(settings.SITE_URL)
     lowered = {k.lower(): v for k, v in headers.items()}
 

@@ -18,8 +18,8 @@ logger = logging.getLogger(__name__)
 
 class PostHogSCIMGroup(SCIMGroup):
     """
-    Adapter to map SCIM Group schema to PostHog RBAC Role model.
-    SCIM Groups are mapped to PostHog Roles for organization-level permissions.
+    Adapter to map SCIM Group schema to Flind RBAC Role model.
+    SCIM Groups are mapped to Flind Roles for organization-level permissions.
     """
 
     resource_type = "Group"

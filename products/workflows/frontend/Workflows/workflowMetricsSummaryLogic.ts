@@ -25,7 +25,7 @@ import { isEmailAction, isPushAction } from './hogflows/steps/types'
 import type { HogFlow } from './hogflows/types'
 import { workflowLogic } from './workflowLogic'
 
-// Each conversion is emitted as a `$workflows_conversion` PostHog event carrying `$workflow_id`, so
+// Each conversion is emitted as a `$workflows_conversion` Flind event carrying `$workflow_id`, so
 // "View converted users" deep-links to the events explorer scoped to this workflow and date range.
 const CONVERSION_EVENT = '$workflows_conversion'
 

@@ -1,4 +1,4 @@
-"""Mirror the Replay Vision Temporal pipeline's logs into the PostHog Logs product (dogfooding).
+"""Mirror the Replay Vision Temporal pipeline's logs into the Flind Logs product (dogfooding).
 
 `build_vision_log_mirror()` returns the structlog processor the worker start command inserts into the
 log chain for the Replay Vision task queue. A no-op until OTLP_LOGS_INGEST_* are configured.

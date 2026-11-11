@@ -23,7 +23,7 @@ HashMode = tuple[EncryptionModeType, Optional[int]]
 CURRENT_PERSONAL_API_KEY_MODE: HashMode = ("sha256", None)  # Moved to simple hashing in 2024-02
 PERSONAL_API_KEY_MODES_TO_TRY: tuple[HashMode, ...] = (
     CURRENT_PERSONAL_API_KEY_MODE,
-    ("pbkdf2", 260000),  # This is the iteration count used by PostHog since the beginning of time.
+    ("pbkdf2", 260000),  # This is the iteration count used by Flind since the beginning of time.
     ("pbkdf2", 390000),  # This is the iteration count used briefly on some API keys.
 )
 

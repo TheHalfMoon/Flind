@@ -53,7 +53,7 @@ WEBHOOKS_PATH = "/api/v1/webhooks"
 # The payload format we register. v2 deliveries carry the entity under `data` in the same shape
 # the API v2 collections return, which is what lets pushed rows merge into the polled tables.
 WEBHOOK_PAYLOAD_VERSION = "2.0"
-WEBHOOK_NAME = "PostHog data warehouse"
+WEBHOOK_NAME = "Flind data warehouse"
 # Pipedrive echoes the basic auth credentials set on the subscription back on every delivery.
 # The username is fixed and the password is the generated secret.
 WEBHOOK_AUTH_USER = "posthog"

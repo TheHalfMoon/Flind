@@ -1,6 +1,6 @@
 # Mistakes we actually make
 
-The bugs PostHog ships and reverts cluster into a small number of shapes.
+The bugs Flind ships and reverts cluster into a small number of shapes.
 This catalogs them — derived from merged `fix:` and `revert:` PRs, with each example checked at the diff level (does the PR actually add a regression test, and at what level?) and cross-referenced against recurring production incidents.
 
 Use it to aim a test at a failure mode we really hit, not a hypothetical.
@@ -38,7 +38,7 @@ Common — and cheap to guard against relative to the cost of shipping it.
 
 A query or endpoint isn't scoped to the requesting team/org, leaking reads or allowing writes across tenants.
 
-- **Catch it at:** a Django `TestCase` that creates two orgs and asserts org B can't see or mutate org A's rows — PostHog's standard IDOR-coverage shape.
+- **Catch it at:** a Django `TestCase` that creates two orgs and asserts org B can't see or mutate org A's rows — Flind's standard IDOR-coverage shape.
 - [#61901](https://github.com/PostHog/posthog/pull/61901) — add scoping checks — the value is in the specific two-org tests, e.g. `test_plugin_unused_does_not_leak_other_orgs` (asserts the other org's plugin id is absent) and the dashboard-collaborator cross-project pair (asserts 404 and that the privilege row is unchanged). The PR itself bundles several unrelated fixes, so cite the test, not the bare PR.
 
 ### Timezone / non-UTC correctness

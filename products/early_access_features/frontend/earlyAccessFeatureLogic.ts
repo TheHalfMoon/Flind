@@ -45,7 +45,7 @@ import { earlyAccessFeaturesLogic } from './earlyAccessFeaturesLogic'
 import { enrolledPeopleAudience } from './enrolledPeopleAudience'
 import { GAPromotionDialogContent } from './GAPromotionDialogContent'
 
-/** PostHog's own dogfooding project on US cloud — mirrors POSTHOG_TEAM_ID in the backend. */
+/** Flind's own dogfooding project on US cloud — mirrors POSTHOG_TEAM_ID in the backend. */
 export const POSTHOG_TEAM_ID = 2
 
 // pinned: the toast offered when a feature reaches general availability
@@ -339,7 +339,7 @@ export const earlyAccessFeatureLogic = kea<earlyAccessFeatureLogicType>([
             errors: ({ name, description, payload }) =>
                 ({
                     name: !name ? 'Feature name must be set' : undefined,
-                    // Mirrors the backend rule: PostHog's own project (US cloud, id 2) requires a description
+                    // Mirrors the backend rule: Flind's own project (US cloud, id 2) requires a description
                     // on newly created features. Create-only and US-only to match the serializer.
                     description:
                         props.id === 'new' &&

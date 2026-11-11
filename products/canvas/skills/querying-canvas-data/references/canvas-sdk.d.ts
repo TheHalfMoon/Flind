@@ -35,7 +35,7 @@ export interface CanvasSeriesResult {
  * - Trends-style (typed insight nodes): series objects, so cast to
  *   `CanvasSeriesResult[]`. `columns` is empty.
  * - SQL: rows, each an array of cell values in `columns` order.
- * Funnels, retention, and paths return their own PostHog-native shapes.
+ * Funnels, retention, and paths return their own Flind-native shapes.
  */
 export interface CanvasDataResult {
     columns: string[]
@@ -87,7 +87,7 @@ export interface CanvasState {
 
 export interface CanvasActions {
     /**
-     * Write into PostHog as the viewer; the result shape depends on the verb.
+     * Write into Flind as the viewer; the result shape depends on the verb.
      * Every verb must be declared in `capabilities.posthog.actions`, and calls
      * belong on an explicit user gesture (a button), never on load or render.
      */
@@ -167,7 +167,7 @@ export interface CanvasSdk {
     loadInsight(shortId: string, options?: CanvasLoadInsightOptions): Promise<CanvasDataResult>
     /**
      * Run a typed query node (`{ kind: "TrendsQuery", … }`, preferred, because numbers
-     * match the PostHog UI) or an inline HogQL string (escape hatch). Requires
+     * match the Flind UI) or an inline HogQL string (escape hatch). Requires
      * `capabilities.posthog.inlineQueries` in a published canvas.
      */
     query(
@@ -180,7 +180,7 @@ export interface CanvasSdk {
      * each event name in `capabilities.posthog.captureEvents`.
      */
     capture(event: string, properties?: Record<string, unknown>, distinctId?: string): Promise<{ ok: boolean }>
-    /** Open a PostHog HTTPS URL or a GitHub PR HTTPS URL from a user click. */
+    /** Open a Flind HTTPS URL or a GitHub PR HTTPS URL from a user click. */
     openExternal(url: string): void
     state: CanvasState
     actions: CanvasActions
@@ -225,7 +225,7 @@ export declare function editable(
 ): Record<string, string>
 
 /**
- * The canvas's PostHog bridge, the same object as the `window.ph` global. Both
+ * The canvas's Flind bridge, the same object as the `window.ph` global. Both
  * are installed on the document, so a `?worker` bundle cannot reach them.
  */
 export declare const ph: CanvasSdk

@@ -20,7 +20,7 @@ from ee.hogai.llm_traces_summaries.constants import LLM_TRACES_SUMMARIES_MODEL_T
 logger = structlog.get_logger(__name__)
 
 GENERATE_STRINGIFIED_TRACE_SUMMARY_PROMPT = """
-- Analyze this conversation between the user and the PostHog AI assistant
+- Analyze this conversation between the user and the Flind AI assistant
 - List all pain points, frustrations, and feature limitations the user experienced.
 - IMPORTANT: Count only specific issues the user experienced when interacting with the assistant, don't guess or suggest.
 - If no issues - return only "No issues found" text, without any additional comments.

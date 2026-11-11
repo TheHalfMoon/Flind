@@ -1,6 +1,6 @@
 """Plain-language progress phases for the Slack agent-design plan block.
 
-A tool call maps to one line per kind of work, never to a tool name or its arguments. A PostHog
+A tool call maps to one line per kind of work, never to a tool name or its arguments. A Flind
 tool gets the title the MCP tool catalogue gives it, because some catalogue categories ("Core",
 "Query wrappers") are internal names.
 """
@@ -22,7 +22,7 @@ class ProgressPhase:
     counter: str | None
 
 
-# Keys of PostHog lines start with this. The rest of the key is the catalogue title of the tool.
+# Keys of Flind lines start with this. The rest of the key is the catalogue title of the tool.
 POSTHOG_PHASE_PREFIX = "posthog:"
 GETTING_CODE = ProgressPhase(key="getting_code", title="Getting the code", counter=None)
 READING_CODE = ProgressPhase(key="reading_code", title="Reading the code", counter="lookups")
@@ -90,7 +90,7 @@ _READ_TOOL_NAMES = frozenset({"read", "grep", "glob", "ls", "notebookread", "vie
 _WEB_TOOL_NAMES = frozenset({"websearch", "webfetch", "web_search", "web_fetch"})
 _SHELL_TOOL_NAMES = frozenset({"bash", "exec_command", "exec", "shell", "terminal"})
 
-# The PostHog MCP server runs its tools through one `exec` tool.
+# The Flind MCP server runs its tools through one `exec` tool.
 _POSTHOG_EXEC_TOOL = "exec"
 _PR_COMMAND = re.compile(r"\b(gh\s+pr\s+(create|edit|ready)|git\s+(commit|push))\b")
 _CHECK_COMMAND = re.compile(
@@ -127,7 +127,7 @@ class ToolCall:
     command: str | None
     # The plain-language description the agent gave a shell command.
     description: str | None = None
-    # The PostHog tool the call runs, or None for a call that is not a PostHog tool call.
+    # The Flind tool the call runs, or None for a call that is not a Flind tool call.
     posthog_tool: str | None = None
 
 
@@ -143,7 +143,7 @@ def _short_activity(description: Any) -> str | None:
 
 
 def posthog_phase(tool_title: str) -> ProgressPhase:
-    """The line for a PostHog tool, titled as the MCP tool catalogue names it."""
+    """The line for a Flind tool, titled as the MCP tool catalogue names it."""
     title = clip_text(" ".join(tool_title.split()), _ACTIVITY_LIMIT)
     return ProgressPhase(key=f"{POSTHOG_PHASE_PREFIX}{title}", title=title, counter="calls")
 
@@ -187,7 +187,7 @@ def phase_for_tool_call(call: ToolCall) -> ProgressPhase | None:
     if "artifact" in name:
         return PREPARING_FILES
     if any(name.startswith(prefix) for prefix in _POSTHOG_MCP_PREFIXES):
-        # A PostHog call that only looks up what the server offers is not work on the user's data.
+        # A Flind call that only looks up what the server offers is not work on the user's data.
         return _phase_for_posthog_tool(call.posthog_tool) if call.posthog_tool else None
     if name in _WEB_TOOL_NAMES or call.kind == "fetch":
         return SEARCHING_WEB
@@ -243,7 +243,7 @@ def intent_from_narrative(text: str) -> str | None:
 
 
 def _posthog_tool(name: str, command: str | None) -> str | None:
-    """The PostHog tool a call runs, or None when it only looks up what the server offers."""
+    """The Flind tool a call runs, or None when it only looks up what the server offers."""
     for prefix in _POSTHOG_MCP_PREFIXES:
         if not name.startswith(prefix):
             continue
@@ -284,7 +284,7 @@ def agent_plan_steps(update: dict[str, Any]) -> list[dict[str, str]] | None:
 def tool_call_from_acp_update(update: dict[str, Any]) -> ToolCall | None:
     """Read the tool name, kind, command and description from an ACP ``tool_call``/``tool_call_update``.
 
-    Returns None while a Claude shell or PostHog ``exec`` call has no command yet: Claude streams
+    Returns None while a Claude shell or Flind ``exec`` call has no command yet: Claude streams
     the call with an empty ``rawInput`` first, and the command decides the phase.
     """
     meta = _dict_or_empty(update.get("_meta"))

@@ -6,7 +6,7 @@ IDENTITY_FIELD_MAX_LENGTH = 255
 
 
 class IdJagIdentity(UUIDModel):
-    """Binds an IdP subject to the PostHog user it was first matched to by email.
+    """Binds an IdP subject to the Flind user it was first matched to by email.
 
     Later ID-JAGs resolve the user by subject, so an IdP-side email change keeps the same
     account, and an email address the IdP gives to a different person reaches no account.

@@ -348,9 +348,9 @@ def _context_texts(call_kwargs: dict) -> list[str]:
 
 
 class TestSlackThreadHandlerWithoutTaskUrl(SimpleTestCase):
-    """A ``task_url=None`` payload signals the recipient does not have PostHog Desktop access.
+    """A ``task_url=None`` payload signals the recipient does not have Flind Desktop access.
 
-    Each renderer must drop the PostHog button (or the entire actions block when
+    Each renderer must drop the Flind button (or the entire actions block when
     that was the only button) so the message stays useful without dangling at a
     URL the recipient can't reach.
     """

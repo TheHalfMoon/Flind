@@ -77,7 +77,7 @@ TEMPORAL_COMBINED_METRICS_SERVER_ENABLED: bool = get_from_env(
     "TEMPORAL_COMBINED_METRICS_SERVER_ENABLED", True, type_cast=str_to_bool
 )
 
-# PostHog project where Temporal worker logs are ingested, used to build logs links
+# Flind project where Temporal worker logs are ingested, used to build logs links
 # in Temporal UI workflow details. Set to 0 to disable the links.
 TEMPORAL_LOGS_PROJECT_ID: int = get_from_env("TEMPORAL_LOGS_PROJECT_ID", 1, type_cast=int)
 
@@ -126,7 +126,7 @@ SANDBOX_AI_GATEWAY_TOKEN_CAP_USD_OVERRIDES: str = get_from_env("SANDBOX_AI_GATEW
 # entry beats the team override and the default: run cost tracks the kind of work, and
 # implementation runs regularly outspend every other stage. Each interactive cap and the
 # workflows cap clear their observed ceiling with room for the holds, because nothing
-# retries behind a cap that binds mid-run. Suggestion runs stay on the default. A PostHog
+# retries behind a cap that binds mid-run. Suggestion runs stay on the default. A Flind
 # Desktop cloud run has no duration cap, so its cap only bounds a runaway run.
 SANDBOX_AI_GATEWAY_TOKEN_CAP_USD_PRODUCT_DEFAULTS: dict[str, str] = {
     "background_agents": "50",
@@ -149,7 +149,7 @@ GATEWAY_COMPUTE_DEBIT_ENABLED: bool = get_from_env("GATEWAY_COMPUTE_DEBIT_ENABLE
 GATEWAY_COMPUTE_SETTLE_SINCE: str | None = get_from_env("GATEWAY_COMPUTE_SETTLE_SINCE", None, optional=True)
 SANDBOX_MCP_URL: str | None = get_from_env("SANDBOX_MCP_URL", None, optional=True)
 
-# OTLP destinations for agent-server run telemetry (PostHog Logs/APM).
+# OTLP destinations for agent-server run telemetry (Flind Logs/APM).
 # Full ingest URLs (e.g. https://us.i.posthog.com/i/v1/logs and .../i/v1/traces)
 # plus the project API key of the telemetry project. Telemetry stays off unless
 # URL + token are set; the traces URL additionally enables APM spans.
@@ -157,7 +157,7 @@ SANDBOX_AGENT_OTEL_LOGS_URL: str | None = get_from_env("SANDBOX_AGENT_OTEL_LOGS_
 SANDBOX_AGENT_OTEL_LOGS_TOKEN: str | None = get_from_env("SANDBOX_AGENT_OTEL_LOGS_TOKEN", None, optional=True)
 SANDBOX_AGENT_OTEL_TRACES_URL: str | None = get_from_env("SANDBOX_AGENT_OTEL_TRACES_URL", None, optional=True)
 
-# client_id of the OAuthApplication used to mint the access token the PostHog setup wizard
+# client_id of the OAuthApplication used to mint the access token the Flind setup wizard
 # uses when it runs inside a task sandbox (the "run the wizard in the cloud" onboarding path).
 # It must be the wizard's own app so the LLM gateway authorizes the token like a normal wizard
 # run and the token carries the wizard's scope ceiling. Empty disables cloud wizard runs.
@@ -226,10 +226,10 @@ TASKS_CREDENTIAL_REFRESH_INITIAL_DELAY_SECONDS: int = get_from_env(
     "TASKS_CREDENTIAL_REFRESH_INITIAL_DELAY_SECONDS", 0, type_cast=int
 )
 
-# Mirror persisted task-run logs into the PostHog Logs product (dogfooding).
+# Mirror persisted task-run logs into the Flind Logs product (dogfooding).
 # Entries appended to a run's S3 JSONL log are also emitted as structured stdout log lines;
 # the per-cluster OTel collector already ships container stdout into the region's internal
-# PostHog project's Logs, so no transport or credentials are needed here. Only runs whose
+# Flind project's Logs, so no transport or credentials are needed here. Only runs whose
 # task origin_product is in this list are mirrored. Set it empty to disable.
 TASK_RUN_LOGS_MIRROR_ORIGIN_PRODUCTS: list[str] = get_list(
     os.getenv("TASK_RUN_LOGS_MIRROR_ORIGIN_PRODUCTS", "signals_scout,user_created")
@@ -237,7 +237,7 @@ TASK_RUN_LOGS_MIRROR_ORIGIN_PRODUCTS: list[str] = get_list(
 
 # Direct OTLP delivery for the mirror above. The token pins the destination: scout runs
 # execute for customer teams, but their mirrored logs must only ever land in (and bill)
-# PostHog's own internal logs project — so this is the internal project's API key, never
+# Flind's own internal logs project — so this is the internal project's API key, never
 # derived from the run's team. Point locally at the dev logs ingest to see mirrored runs
 # in /logs. Unset disables the direct leg (stdout emission for the collector remains).
 TASK_RUN_LOGS_MIRROR_OTLP_URL: str | None = get_from_env("TASK_RUN_LOGS_MIRROR_OTLP_URL", None, optional=True)

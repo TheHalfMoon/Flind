@@ -61,7 +61,7 @@ class MarketingCostsPreaggregatedTable(Table):
         ),
         "reported_conversions": FloatDatabaseField(
             name="reported_conversions",
-            description="Conversions reported by the ad source itself (not PostHog-attributed).",
+            description="Conversions reported by the ad source itself (not Flind-attributed).",
         ),
         "reported_conversion_value": FloatDatabaseField(
             name="reported_conversion_value", description="Conversion value reported by the ad source itself."

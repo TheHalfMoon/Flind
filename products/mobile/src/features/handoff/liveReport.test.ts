@@ -98,7 +98,7 @@ describe('liveReport', () => {
     test('a new local task wins historical work until the canonical claim catches up', () => {
         const started = { taskId: 'new-task', runId: 'new-run' }
         expect(runTarget(report(), { refresh: 0, started })).toEqual(started)
-        const claimed = report({ state: 'working', assignee: { kind: 'task', name: 'PostHog', taskId: 'task-1' } })
+        const claimed = report({ state: 'working', assignee: { kind: 'task', name: 'Flind', taskId: 'task-1' } })
         expect(runTarget(claimed, { refresh: 0, started })).toEqual({ taskId: 'task-1', runId: 'run-1' })
     })
 
@@ -108,7 +108,7 @@ describe('liveReport', () => {
         const entry = { refresh: 0, started, live: live({ phase: 'working', pending: QUESTION }) }
         expect(runTarget(external, entry)).toBeUndefined()
         expect(mergeLiveRun(external, entry).task).toBeUndefined()
-        const canonical = report({ state: 'working', assignee: { kind: 'task', name: 'PostHog', taskId: 'task-1' } })
+        const canonical = report({ state: 'working', assignee: { kind: 'task', name: 'Flind', taskId: 'task-1' } })
         expect(runTarget(canonical, entry)).toEqual({ taskId: 'task-1', runId: 'run-1' })
     })
 

@@ -1,4 +1,4 @@
-"""PostHog API client for acceptance tests."""
+"""Flind API client for acceptance tests."""
 
 import os
 import json
@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 class PostHogTestClient:
-    """Client for interacting with PostHog API during tests."""
+    """Client for interacting with Flind API during tests."""
 
     def __init__(self, base_url: Optional[str] = None, personal_api_key: Optional[str] = None):
         self.base_url = base_url or get_service_url()
@@ -100,9 +100,9 @@ class PostHogTestClient:
         logger.warning("Project %s may not be fully ready after %s seconds", project_id, timeout)
 
     def send_capture_event(self, api_key: str, event_data: dict[str, Any]) -> None:
-        """Send an event using the PostHog Python client.
+        """Send an event using the Flind Python client.
 
-        Uses the official PostHog Python client which handles the capture endpoint.
+        Uses the official Flind Python client which handles the capture endpoint.
         """
         # Extract event details
         event_name = event_data.get("event", "test_event")
@@ -110,20 +110,20 @@ class PostHogTestClient:
         properties = event_data.get("properties", {})
         timestamp = event_data.get("timestamp")
 
-        logger.info("Creating PostHog client instance")
+        logger.info("Creating Flind client instance")
         logger.debug("Host: %s", self.base_url)
 
-        # Create PostHog client instance with the API key
+        # Create Flind client instance with the API key
         posthog_client = Posthog(api_key, host=self.base_url, debug=True)
 
-        logger.info("Sending capture event using PostHog client")
+        logger.info("Sending capture event using Flind client")
         logger.debug("Event: %s", event_name)
         logger.debug("Distinct ID: %s", distinct_id)
         logger.debug("Properties: %s", properties)
         if timestamp:
             logger.debug("Timestamp: %s", timestamp)
 
-        # Send event using PostHog client instance
+        # Send event using Flind client instance
         if timestamp:
             posthog_client.capture(
                 distinct_id=distinct_id, event=event_name, properties=properties, timestamp=timestamp
@@ -131,12 +131,12 @@ class PostHogTestClient:
         else:
             posthog_client.capture(distinct_id=distinct_id, event=event_name, properties=properties)
 
-        logger.info("Event sent via PostHog client")
+        logger.info("Event sent via Flind client")
 
         # Flush to ensure the event is sent immediately
-        logger.debug("Flushing PostHog client")
+        logger.debug("Flushing Flind client")
         posthog_client.flush()
-        logger.debug("PostHog client flushed")
+        logger.debug("Flind client flushed")
 
         # Shutdown the client
         posthog_client.shutdown()

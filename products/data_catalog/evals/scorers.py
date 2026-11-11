@@ -60,7 +60,7 @@ QUESTION_TOOL = "askuserquestion"
 CERTIFICATION_PROPOSE_TOOL = "data-catalog-certification-propose"
 _INFO_SCHEMA = "information_schema"
 _INFO_SYNTHETIC_PREFIX = "__info__:"
-# Matches the PostHog MCP namespace across regional server names —
+# Matches the Flind MCP namespace across regional server names —
 # ``mcp__posthog__``, ``mcp__posthog_us__``, ``mcp__posthog_eu__``, etc.
 _POSTHOG_MCP_RE = re.compile(r"^mcp__posthog(_[a-z0-9]+)*__")
 _TOOL_DISCOVERY_COMMANDS = frozenset({"info", "learn", "schema", "search", "tools"})
@@ -1004,7 +1004,7 @@ class NoncanonicalBadgeShown(Scorer):
     """
 
     def _name(self) -> str:
-        # Both badges report under one name because PostHog upload accepts only registered scorer versions.
+        # Both badges report under one name because Flind upload accepts only registered scorer versions.
         return "proposed_badge"
 
     def _run_eval_sync(self, output: dict | None, expected: dict | None = None, **kwargs) -> Score:

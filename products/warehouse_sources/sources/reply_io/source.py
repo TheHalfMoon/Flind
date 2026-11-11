@@ -48,7 +48,7 @@ class ReplyIoSource(ResumableSource[ReplyIoSourceConfig, ReplyIoResumeConfig]):
             category=DataWarehouseSourceCategory.SALES,
             label="Reply.io",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Reply API key to pull your sales engagement data into the PostHog Data warehouse.
+            caption="""Enter your Reply API key to pull your sales engagement data into the Flind Data warehouse.
 
 You can create an API key under **Settings → API Keys** in [Reply](https://run.reply.io). To sync every table the key needs the `contacts:read`, `sequences:read`, `tasks:read`, `channels:read`, `inbox:read`, and `reporting:read` scopes (or broader scopes that include them) — tables whose scope is missing can be deselected in the table picker.
 """,

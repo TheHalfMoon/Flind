@@ -40,7 +40,7 @@ def resolve_posthog_code_slack_command_user_activity(
             user=slack_user_id,
             thread_ts=thread_ts,
             text=(
-                "I couldn't find your PostHog account in any organization connected to this Slack "
+                "I couldn't find your Flind account in any organization connected to this Slack "
                 "workspace. Ask an admin to invite you, then try again."
             ),
         )

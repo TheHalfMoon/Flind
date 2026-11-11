@@ -34,7 +34,7 @@ const providers = {
             subject_claim: {
                 name: 'repository_id',
                 label: 'Repository ID',
-                help_text: "GitHub's number for the repository. PostHog looks it up from the repository name.",
+                help_text: "GitHub's number for the repository. Flind looks it up from the repository name.",
                 placeholder: '123456789',
             },
             subject_name_claim: {
@@ -73,7 +73,7 @@ const providers = {
             default_presets: ['branch_push'],
             can_resolve_subject: true,
             setup_snippet:
-                'permissions:\n  id-token: write # lets hog get an OIDC token for PostHog\n  contents: read\n',
+                'permissions:\n  id-token: write # lets hog get an OIDC token for Flind\n  contents: read\n',
         },
         {
             key: 'gitlab',
@@ -83,7 +83,7 @@ const providers = {
             subject_claim: {
                 name: 'project_id',
                 label: 'Project ID',
-                help_text: "GitLab's number for the project. PostHog looks it up from the project path.",
+                help_text: "GitLab's number for the project. Flind looks it up from the project path.",
                 placeholder: '12345678',
             },
             subject_name_claim: {
@@ -121,7 +121,7 @@ const providers = {
             subject_claim: {
                 name: 'repository_id',
                 label: 'Repository ID',
-                help_text: "The forge's number for the repository. PostHog looks it up from the repository name.",
+                help_text: "The forge's number for the repository. Flind looks it up from the repository name.",
                 placeholder: '123456789',
             },
             subject_name_claim: {

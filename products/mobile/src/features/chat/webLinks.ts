@@ -2,7 +2,7 @@ import { apiUrl } from '@/api/client'
 import { track } from '@/lib/analytics'
 import { openPostHogUrl } from '@/lib/sessionHandoff'
 
-// PostHog AI writes app links as paths such as `/project/2/insights/abc`. Only http(s) links open.
+// Flind AI writes app links as paths such as `/project/2/insights/abc`. Only http(s) links open.
 export function resolveReplyLink(url: string, projectUrl?: string): string | undefined {
     if (/^https?:\/\//i.test(url)) {
         return url

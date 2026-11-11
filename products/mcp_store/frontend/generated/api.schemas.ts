@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -788,9 +788,9 @@ export interface MCPServiceAccountApi {
     readonly id: string
     readonly name: string
     readonly description: string
-    /** Stable internal identity handle for this PostHog agent. */
+    /** Stable internal identity handle for this Flind agent. */
     readonly handle: string
-    /** Stable PostHog agent identifier. */
+    /** Stable Flind agent identifier. */
     readonly agent_key: AgentKeyEnumApi
     /** active, or paused (all MCP access off).
      *
@@ -1117,14 +1117,14 @@ export interface InstallCustomApi {
     client_secret?: string
     install_source?: InstallSourceEnumApi
     posthog_code_callback_url?: string
-    /** 'personal' is per-user; 'shared' makes the credential available to project members. PostHog agents get access to the connection automatically; see agent_scope.
+    /** 'personal' is per-user; 'shared' makes the credential available to project members. Flind agents get access to the connection automatically; see agent_scope.
      *
      * * `personal` - personal
      * * `shared` - shared */
     scope?: MCPInstallationScopeEnumApi
     /** Whether the server starts enabled for the whole team. Non-default values are admin-only. */
     team_enabled?: boolean
-    /** How far the automatic agent grants for this connection reach. 'personal' (the default) lets PostHog agents use it only on runs for you; 'team' lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.
+    /** How far the automatic agent grants for this connection reach. 'personal' (the default) lets Flind agents use it only on runs for you; 'team' lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.
      *
      * * `personal` - Personal
      * * `team` - Team */
@@ -1142,14 +1142,14 @@ export interface InstallTemplateApi {
     api_key?: string
     install_source?: InstallSourceEnumApi
     posthog_code_callback_url?: string
-    /** 'personal' is per-user; 'shared' makes the credential available to project members. PostHog agents get access to the connection automatically; see agent_scope.
+    /** 'personal' is per-user; 'shared' makes the credential available to project members. Flind agents get access to the connection automatically; see agent_scope.
      *
      * * `personal` - personal
      * * `shared` - shared */
     scope?: MCPInstallationScopeEnumApi
     /** Whether the server starts enabled for the whole team. Non-default values are admin-only. */
     team_enabled?: boolean
-    /** How far the automatic agent grants for this connection reach. 'personal' (the default) lets PostHog agents use it only on runs for you; 'team' lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.
+    /** How far the automatic agent grants for this connection reach. 'personal' (the default) lets Flind agents use it only on runs for you; 'team' lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.
      *
      * * `personal` - Personal
      * * `team` - Team */

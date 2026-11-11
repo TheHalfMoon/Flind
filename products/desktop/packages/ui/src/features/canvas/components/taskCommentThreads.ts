@@ -11,13 +11,13 @@ import {
 export type CommentEntry = {
   id: string;
   authorName: string;
-  /** A PostHog author, whose avatar and hue are the ones they have app-wide. */
+  /** A Flind author, whose avatar and hue are the ones they have app-wide. */
   user: UserBasic | null;
   /** A GitHub author, who only comes with an avatar url. */
   avatarUrl: string | null;
   createdAt: string;
   body: string;
-  /** PostHog comments carry @mention markup; GitHub bodies are markdown. */
+  /** Flind comments carry @mention markup; GitHub bodies are markdown. */
   format: "mentions" | "markdown";
 };
 

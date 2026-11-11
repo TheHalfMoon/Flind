@@ -31,7 +31,7 @@ export const getRemixSteps = (ctx: OnboardingComponentsContext): StepDefinition[
             content: (
                 <>
                     <Markdown>
-                        Use `posthog-node` to evaluate feature flags on the server. Initialize PostHog in your API route
+                        Use `posthog-node` to evaluate feature flags on the server. Initialize Flind in your API route
                         or loader:
                     </Markdown>
                     <CodeBlock
@@ -40,9 +40,9 @@ export const getRemixSteps = (ctx: OnboardingComponentsContext): StepDefinition[
                                 language: 'typescript',
                                 file: 'app/api/example/route.ts',
                                 code: dedent`
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
 
-                                    const posthog = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
+                                    const posthog = new Flind(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
                                         host: process.env.NEXT_PUBLIC_POSTHOG_HOST
                                     })
                                 `,
@@ -62,7 +62,7 @@ export const getRemixSteps = (ctx: OnboardingComponentsContext): StepDefinition[
             content: (
                 <Markdown>
                     Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run
-                    an experiment by creating a new experiment in the PostHog dashboard.
+                    an experiment by creating a new experiment in the Flind dashboard.
                 </Markdown>
             ),
         },

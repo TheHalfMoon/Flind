@@ -1,18 +1,18 @@
 # Anomaly detection methods
 
 How to score the latest bucket of an insight, choose the right cadence, and avoid the two
-false-positive traps (weekly seasonality and low-count noise). Two scorers: PostHog's built-in
+false-positive traps (weekly seasonality and low-count noise). Two scorers: Flind's built-in
 anomaly-detection **simulator** for saved time-series insights (primary), and a hand-rolled
 robust z-score for everything else (fallback).
 
 ## Primary scorer: the alert anomaly-detection simulator
 
 For any watchlist item that is a **saved time-series insight**, score it with `alert-simulate`
-instead of hand-rolling stats. It runs PostHog's production anomaly detectors server-side over
+instead of hand-rolling stats. It runs Flind's production anomaly detectors server-side over
 the insight's series and returns, per point, the anomaly score and the triggered dates. It's a
 stateless preview: it needs only a saved `insight` id, a `detector_config`, and a
 `series_index` — **no alert has to exist**, and nothing is written. This is the same engine
-behind PostHog's shipped anomaly alerts, so lean on it rather than reinvent z-scores in SQL.
+behind Flind's shipped anomaly alerts, so lean on it rather than reinvent z-scores in SQL.
 
 **Pick the detector that fits the series — don't be dogmatic.** The menu: `zscore`, `mad`,
 `iqr`, `copod`, `ecod`, `hbos`, `isolation_forest`, `knn`, `lof`, `ocsvm`, `pca`, and
@@ -155,7 +155,7 @@ the comparison window. Always
 `read-data-schema` to confirm the event/properties first, and `insight-get` to learn which
 event(s)/filters the insight actually uses so your SQL matches it.
 
-PostHog SQL is HogQL (ClickHouse dialect). Its date functions (`toStartOfDay`,
+Flind SQL is HogQL (ClickHouse dialect). Its date functions (`toStartOfDay`,
 `toStartOfHour`, `now()`) already evaluate in the **project timezone** automatically — the
 buckets below come back project-local with no explicit timezone argument needed.
 

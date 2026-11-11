@@ -156,7 +156,7 @@ class MaxioSource(ResumableSource[MaxioSourceConfig, MaxioResumeConfig]):
             label="Maxio",
             caption=(
                 "Connect your Maxio Advanced Billing site to pull customers, subscriptions, "
-                "invoices, products, components, coupons, and billing events into the PostHog "
+                "invoices, products, components, coupons, and billing events into the Flind "
                 "Data warehouse. Generate an API key under **Config** > **Integrations** > "
                 "**API keys** in your Maxio site."
             ),

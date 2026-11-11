@@ -82,11 +82,11 @@ class TestBotDefinitionsDataStructure:
             ("Meta-ExternalFetcher", "Meta Fetcher", "ai_assistant", "AI Agent"),
             ("DuckAssistBot", "DuckDuckGo AI", "ai_assistant", "AI Agent"),
             ("MistralAI-User", "Mistral AI", "ai_assistant", "AI Agent"),
-            # PostHog Desktop clients
-            (r"desktop\.hog\.dev", "PostHog Desktop", "ai_assistant", "AI Agent"),
-            (r"mobile\.hog\.dev", "PostHog Mobile", "ai_assistant", "AI Agent"),
-            (r"agent\.hog\.dev", "PostHog Desktop Agent", "ai_assistant", "AI Agent"),
-            (r"cloud\.hog\.dev", "PostHog Desktop Cloud", "ai_assistant", "AI Agent"),
+            # Flind Desktop clients
+            (r"desktop\.hog\.dev", "Flind Desktop", "ai_assistant", "AI Agent"),
+            (r"mobile\.hog\.dev", "Flind Mobile", "ai_assistant", "AI Agent"),
+            (r"agent\.hog\.dev", "Flind Desktop Agent", "ai_assistant", "AI Agent"),
+            (r"cloud\.hog\.dev", "Flind Desktop Cloud", "ai_assistant", "AI Agent"),
             ("amazon-kendra", "Amazon Kendra", "ai_crawler", "AI Agent"),
             # Search Crawlers
             ("Googlebot", "Googlebot", "search_crawler", "Bot"),

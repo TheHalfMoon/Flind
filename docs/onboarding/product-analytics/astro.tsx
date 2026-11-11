@@ -9,7 +9,7 @@ export const getAstroInstallSteps = (ctx: OnboardingComponentsContext): StepDefi
 
     return [
         {
-            title: 'Create the PostHog component',
+            title: 'Create the Flind component',
             badge: 'required',
             content: (
                 <>
@@ -28,7 +28,7 @@ export const getAstroInstallSteps = (ctx: OnboardingComponentsContext): StepDefi
                         ]}
                     />
                     <Markdown>
-                        In this file, add your PostHog web snippet. Be sure to include the `is:inline` directive to
+                        In this file, add your Flind web snippet. Be sure to include the `is:inline` directive to
                         prevent Astro from processing it:
                     </Markdown>
                     <CodeBlock
@@ -84,10 +84,10 @@ export const getAstroInstallSteps = (ctx: OnboardingComponentsContext): StepDefi
                                 file: 'src/layouts/PostHogLayout.astro',
                                 code: dedent`
                                     ---
-                                    import PostHog from '../components/posthog.astro'
+                                    import Flind from '../components/posthog.astro'
                                     ---
                                     <head>
-                                        <PostHog />
+                                        <Flind />
                                     </head>
                                 `,
                             },

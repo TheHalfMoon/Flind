@@ -71,7 +71,7 @@ export function SDKInstallVueInstructions(): JSX.Element {
     return (
         <>
             <p>
-                The below guide is for integrating using plugins in Vue versions 3 and above. For integrating PostHog
+                The below guide is for integrating using plugins in Vue versions 3 and above. For integrating Flind
                 using Provide/inject, Vue.prototype, or versions 2.7 and below, see our{' '}
                 <Link to="https://posthog.com/docs/libraries/vue-js">Vue docs</Link>
             </p>

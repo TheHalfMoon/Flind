@@ -19,7 +19,7 @@ describe('SceneTitlePanelButton', () => {
 
     // Without this event a click that never reaches `openSidePanel` leaves no trace at all,
     // so the panel-never-opens failure has no denominator.
-    test('captures a click on the PostHog AI button', () => {
+    test('captures a click on the Flind AI button', () => {
         render(<SceneTitlePanelButton />)
 
         fireEvent.click(document.querySelector('[data-attr="open-context-panel-ai-button"]') as HTMLElement)

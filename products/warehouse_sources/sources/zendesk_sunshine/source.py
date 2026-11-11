@@ -80,7 +80,7 @@ class ZendeskSunshineSource(ResumableSource[ZendeskSunshineSourceConfig, Zendesk
             # A pin outside the supported set stops the source from resolving a request path. Retrying
             # the ~6h discovery cadence can never fix a bad pin, so surface it instead of looping.
             "Unsupported Zendesk Sunshine API version": (
-                "This source is pinned to a Zendesk Sunshine API version PostHog no longer supports. Switch it to v2."
+                "This source is pinned to a Zendesk Sunshine API version Flind no longer supports. Switch it to v2."
             ),
         }
 
@@ -153,7 +153,7 @@ class ZendeskSunshineSource(ResumableSource[ZendeskSunshineSourceConfig, Zendesk
             name=ExternalDataSourceType.ZENDESKSUNSHINE,
             category=DataWarehouseSourceCategory.CRM,
             label="Zendesk Sunshine",
-            caption="""Import your Zendesk custom objects into the PostHog Data warehouse: object definitions, their records, and field schemas.
+            caption="""Import your Zendesk custom objects into the Flind Data warehouse: object definitions, their records, and field schemas.
 
 New sources use Zendesk's current custom objects API. The legacy Sunshine API (v1) is still supported for existing sources, but Zendesk is removing it on June 30, 2026. Authenticate with your Zendesk email address and an API token (token access must be enabled for your account).""",
             keywords=["zendesk", "sunshine", "custom objects", "custom data"],

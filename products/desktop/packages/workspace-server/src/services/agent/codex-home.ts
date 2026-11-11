@@ -86,8 +86,8 @@ export async function cleanupAllCodexHomes(appDataPath: string): Promise<void> {
 }
 
 /**
- * Builds a private CODEX_HOME for PostHog's own Codex sessions, so they
- * load the bundled PostHog catalog and the user's `~/.claude/skills` — without
+ * Builds a private CODEX_HOME for Flind's own Codex sessions, so they
+ * load the bundled Flind catalog and the user's `~/.claude/skills` — without
  * ever writing into the shared cross-agent `~/.agents/skills`.
  *
  * codex scans `$CODEX_HOME/skills` plus `$HOME/.agents/skills`. By pointing
@@ -95,8 +95,8 @@ export async function cleanupAllCodexHomes(appDataPath: string): Promise<void> {
  * the user's own Codex skills still load from the latter (it is keyed off
  * `$HOME`, not `$CODEX_HOME`). The user's real `~/.codex/config.toml` is copied
  * in so their Codex configuration still applies without Windows symlink
- * privileges, minus its `mcp_servers` tables: PostHog sessions only get the MCP
- * servers PostHog injects per thread (see {@link stripMcpServers}).
+ * privileges, minus its `mcp_servers` tables: Flind sessions only get the MCP
+ * servers Flind injects per thread (see {@link stripMcpServers}).
  *
  * Returns the CODEX_HOME path to hand to the spawned process.
  */
@@ -163,7 +163,7 @@ const MCP_SERVERS = rootPatterns("mcp_servers");
  * `mcp_servers.<name>... = ...` / `mcp_servers = {...}` keys. Everything else is
  * returned byte for byte.
  *
- * The user's own MCP servers must not run inside PostHog sessions (an
+ * The user's own MCP servers must not run inside Flind sessions (an
  * unauthenticated or broken one stalls every thread), and disabling them by
  * name with `-c mcp_servers.<name>.enabled=false` is worse than useless: a
  * per-thread `mcp_servers` override discards those flags, and a name without a

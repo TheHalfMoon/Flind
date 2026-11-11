@@ -46,7 +46,7 @@ from products.warehouse_sources_queue.backend.sdk import BatchQueue
 
 logger = structlog.get_logger(__name__)
 
-DEFAULT_REASON = "Sync got stuck and was reset by PostHog"
+DEFAULT_REASON = "Sync got stuck and was reset by Flind"
 MAX_JOBS_DEFAULT = 50
 # A pending workflow task at this attempt count or higher means the workflow
 # can't complete any workflow task (e.g. nondeterminism) and will never recover.

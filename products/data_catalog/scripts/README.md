@@ -4,11 +4,11 @@
 
 `semantic_layer_canary.py` is the local runner for the Data Catalog semantic-layer canary. A local ChatGPT session invokes the script on demand or from its daily workflow. The runner itself does not use Dagster or a server-side scheduler; a separate Signals Scout scores the resulting task runs.
 
-The runner reads a pinned revision of a PostHog LLM Analytics dataset, opens each enabled question through the task-backed PostHog Conversations API, waits for the agent turn to finish, and writes task/run correlation metadata for later inspection. It does not evaluate answers or publish PostHog events.
+The runner reads a pinned revision of a Flind LLM Analytics dataset, opens each enabled question through the task-backed Flind Conversations API, waits for the agent turn to finish, and writes task/run correlation metadata for later inspection. It does not evaluate answers or publish Flind events.
 
 ### Access
 
-The runner authenticates through a dedicated PostHog browser session because the task-backed Conversations endpoint uses web-session authentication. It does not use a personal API key.
+The runner authenticates through a dedicated Flind browser session because the task-backed Conversations endpoint uses web-session authentication. It does not use a personal API key.
 
 Create the reusable browser profile once:
 
@@ -16,7 +16,7 @@ Create the reusable browser profile once:
 flox activate -- .venv/bin/python products/data_catalog/scripts/semantic_layer_canary.py --browser-login
 ```
 
-A dedicated Chrome window opens. Sign in to PostHog and leave the window open until the command confirms authentication. The profile is stored at `.context/semantic-layer-canary-browser` by default and is reused by headless runs. That directory holds live session state, so treat it as a credential: keep it inside `.context/`, which the repository ignores, and do not copy it between machines or workspaces. The browser helper returns only the session and CSRF cookies directly to the runner in process memory; they are never included in the command, output, dataset item, or workflow response.
+A dedicated Chrome window opens. Sign in to Flind and leave the window open until the command confirms authentication. The profile is stored at `.context/semantic-layer-canary-browser` by default and is reused by headless runs. That directory holds live session state, so treat it as a credential: keep it inside `.context/`, which the repository ignores, and do not copy it between machines or workspaces. The browser helper returns only the session and CSRF cookies directly to the runner in process memory; they are never included in the command, output, dataset item, or workflow response.
 
 If a run reports `auth_required`, repeat the login command and retry the original run. For an interactive run, `--browser-login-if-needed` can open the login window automatically when the saved session has expired. Do not use that option in an unattended workflow because it waits for a person to complete login.
 
@@ -24,7 +24,7 @@ The defaults target `https://us.posthog.com`, project `2`, and dataset `semantic
 
 ### Trust boundary
 
-The runner sends each dataset question to an agent that runs with the signed-in operator's own PostHog access, under `initial_permission_mode: auto`, with nobody reviewing tool calls. The dataset is therefore a trusted input, not user input: anyone who can edit the selected revision can direct that agent. Two consequences follow.
+The runner sends each dataset question to an agent that runs with the signed-in operator's own Flind access, under `initial_permission_mode: auto`, with nobody reviewing tool calls. The dataset is therefore a trusted input, not user input: anyone who can edit the selected revision can direct that agent. Two consequences follow.
 
 - Treat dataset write access to the canary dataset as equivalent to acting as the operator.
 - Pin a reviewed revision with `--revision N` for an unattended run, rather than taking whichever revision is current.
@@ -56,7 +56,7 @@ Each dataset item must use this shape:
 
 ### Run from local ChatGPT
 
-Ask ChatGPT to run this command from the PostHog repository:
+Ask ChatGPT to run this command from the Flind repository:
 
 ```bash
 flox activate -- .venv/bin/python products/data_catalog/scripts/semantic_layer_canary.py \
@@ -82,7 +82,7 @@ The command exits with zero only when every case completes. It exits with one fo
 
 The JSON output contains the run ID, pinned dataset revision, expected routing metadata, duration, status, conversation/trace correlation IDs, task ID, task-run ID, and direct task URLs. Failed attempts retain their task correlation when the open request succeeded. An agent failure starts a fresh attempt with new correlation and task IDs. An open request that fails before it returns a response is different: the retry reuses the same conversation ID, so a task the server created before the failure is resumed instead of duplicated. Stream rotation or a dropped connection resumes the same task run with `Last-Event-ID` and never resends the question.
 
-A turn completes when the task stream emits `_posthog/turn_complete`, asks a structured clarification question, or reaches a terminal completed state. Other permission requests and terminal failed/cancelled states fail the attempt. PostHog AI tasks remain open briefly for interactive follow-ups after a successful turn; the runner does not cancel them, with one exception.
+A turn completes when the task stream emits `_posthog/turn_complete`, asks a structured clarification question, or reaches a terminal completed state. Other permission requests and terminal failed/cancelled states fail the attempt. Flind AI tasks remain open briefly for interactive follow-ups after a successful turn; the runner does not cancel them, with one exception.
 
 A structured clarification question parks a permission request that stays open with no timeout. Anyone or anything that answers it later resumes the agent, and the run then continues past the question the canary was measuring. So the runner records the question text on the case result and cancels that run immediately. Scoring reads `clarification_questions` on the case; an empty list means the agent never asked.
 
@@ -137,4 +137,4 @@ An unrecognized `expected_routing`, a run without a confirmed terminal status, a
 
 It reads whole logs, paginating at 5000 entries from offset zero. A partial log cannot show what a run did before the slice, so there is no tail-reading mode.
 
-Questions, assistant answers, streamed failure content, and exception messages are deliberately excluded from the output. Inspect the task run and its ACP session logs in PostHog to verify metric routing and answer quality. Keep local output under `.context/`, which is gitignored.
+Questions, assistant answers, streamed failure content, and exception messages are deliberately excluded from the output. Inspect the task run and its ACP session logs in Flind to verify metric routing and answer quality. Keep local output under `.context/`, which is gitignored.

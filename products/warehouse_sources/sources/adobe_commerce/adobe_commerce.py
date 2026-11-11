@@ -79,7 +79,7 @@ INVALID_STORE_CODE_ERROR = (
     "Adobe Commerce admin, not its numeric ID, or leave the field blank."
 )
 UNEXPECTED_RESPONSE_ERROR = (
-    "Your Adobe Commerce store couldn't handle PostHog's request. Check the store URL and store code, then try again."
+    "Your Adobe Commerce store couldn't handle Flind's request. Check the store URL and store code, then try again."
 )
 SERVER_ERROR = "Your Adobe Commerce store returned a server error. Check that the store is online, then try again."
 # Reached only after the tracked session's own transport-level retries for 429/5xx are exhausted

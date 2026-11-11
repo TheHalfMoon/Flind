@@ -10,7 +10,7 @@ Minimal working example of a **custom research agent** on top of `MultiTurnSessi
 
 ## What this agent does
 
-Finds cursed identifiers and stale comments in `PostHog/posthog`, researches each (git blame + required PostHog MCP lookup), emits the Signals shape.
+Finds cursed identifiers and stale comments in `PostHog/posthog`, researches each (git blame + required Flind MCP lookup), emits the Signals shape.
 
 ```text
 discovery → research ×N (up to 10) → actionability → priority? → presentation
@@ -22,7 +22,7 @@ Returns `ReportResearchOutput` from `products.signals.backend.facade.research` �
 
 ## Run it
 
-DEBUG only. Set up local sandboxes + GitHub integration + PostHog MCP OAuth first — see [docs/internal/sandboxes-setup-guide.md](../../../../../docs/internal/sandboxes-setup-guide.md).
+DEBUG only. Set up local sandboxes + GitHub integration + Flind MCP OAuth first — see [docs/internal/sandboxes-setup-guide.md](../../../../../docs/internal/sandboxes-setup-guide.md).
 
 ```bash
 DEBUG=1 python manage.py demo_mts_example --team-id <id> --user-id <id>

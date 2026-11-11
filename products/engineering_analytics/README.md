@@ -10,7 +10,7 @@ Everything else is mechanics.
 
 ## The analogy
 
-If you understand PostHog product analytics, you understand this. Map it one-to-one:
+If you understand Flind product analytics, you understand this. Map it one-to-one:
 
 | Product analytics                        | Engineering analytics                          |
 | ---------------------------------------- | ---------------------------------------------- |
@@ -46,7 +46,7 @@ The product is: **measure every gap in a PR's life, average it, and watch it shr
 
 ## Why this exists
 
-The middle of PostHog's AI-to-prod loop (CI / review / merge / deploy) is invisible to both ends. This product fills it:
+The middle of Flind's AI-to-prod loop (CI / review / merge / deploy) is invisible to both ends. This product fills it:
 
 ```text
 PostHog Desktop              engineering_analytics             PostHog product analytics
@@ -56,7 +56,7 @@ PostHog Desktop              engineering_analytics             PostHog product a
         └───────────  Signals feed back to PostHog Desktop  ───────────┘
 ```
 
-Two consumer classes, one tool set: engineers driving an agent (Claude Code, Cursor, PostHog AI) over their monorepo (we dogfood on `PostHog/posthog`), and PostHog Desktop calling the same tools autonomously on its own PRs.
+Two consumer classes, one tool set: engineers driving an agent (Claude Code, Cursor, Flind AI) over their monorepo (we dogfood on `PostHog/posthog`), and Flind Desktop calling the same tools autonomously on its own PRs.
 Return shapes are typed contracts whose caveats ride in honest field names (`open_to_merge_seconds`, never `cycle_time`): legible to an agent, never free-form prose it might paraphrase wrong.
 
 ## The system
@@ -85,13 +85,13 @@ graph LR
 - The Tests tab is the Trunk quarantine debt scoreboard: every test Trunk currently quarantines, attributed to the team that owns its file in the repository today, aged against a TTL, and rolled up per team. A quarantine masks a failure without fixing it, so the board is the standing work queue of masked tests. The flaky-test queue itself (failures plus same-commit recovery evidence from the pytest and Jest suites, counted per CI run, ranked by blast radius) remains an endpoint and MCP tool; the weekly Slack report requests each runner separately and shows up to 10 pytest tests followed by up to 10 Jest tests; it is informational, so suppressed tests stay listed with their quarantine state. With the `FLAKY_REPORT_TEAM_CHANNELS` repository variable set to `true`, each owning team also gets its rows in its own notifications channel, linked from the report thread; a week without Trunk state keeps those rows in the thread. Logs-based rescue counts and links remain pytest-only.
 - Access control: per-user warehouse RBAC at the source resolver, `engineering_analytics:read` scopes on tools, feature-flag gated. Background work (view sync, the test census, CI failure log collection) runs only for teams that enabled the product, which happens when a user opens it with a GitHub source connected.
 
-## The goal: CI Signals for PostHog Desktop
+## The goal: CI Signals for Flind Desktop
 
 Backend pytest retries retain their failed-attempt diagnostics even when the job passes.
 The job-log collector uses recovered-test spans to include those successful jobs, and keeps their original conclusion.
 See [Backend test retries](../../docs/internal/backend-test-retries.md) for the retry budget and reporting path.
 
-Valuable CI conditions ("this check is flaky", "master went red at SHA X", "this PR is wedged on a failing required check") become [Signals](../signals): grouped, researched against the repository, and handed to PostHog Desktop for autonomous remediation.
+Valuable CI conditions ("this check is flaky", "master went red at SHA X", "this PR is wedged on a failing required check") become [Signals](../signals): grouped, researched against the repository, and handed to Flind Desktop for autonomous remediation.
 Detection is defined once in `logic/` over the read layer, so the emitter and the MCP tools share one definition.
 Shortening ready-for-review-to-merge is the headline metric this serves.
 
@@ -118,15 +118,15 @@ Change failure rate and time-to-restore still lack an incident link, so they shi
 
 Change one only in a separate PR with a written reason. Engineering-level decisions live in [SPEC.md](./SPEC.md) → Locked decisions.
 
-- Two motivations: (A) DevEx dogfood, (B) close the dark middle of PostHog's AI-to-prod loop. Every design decision serves both.
+- Two motivations: (A) DevEx dogfood, (B) close the dark middle of Flind's AI-to-prod loop. Every design decision serves both.
 - Unit of value = the open PR. Phase model: draft (low rigor) vs ready-for-review (high stakes).
-- North star: actionable CI Signals for PostHog Desktop. Ready-for-review-to-merge time is the headline metric, not the end in itself.
+- North star: actionable CI Signals for Flind Desktop. Ready-for-review-to-merge time is the headline metric, not the end in itself.
 - Two first-class surfaces, one endpoint set: the in-app UI and MCP tools. Named typed endpoints run the curated read layer privately (no global HogQL views, core imports only the viewset); keep `mcp/tools.yaml` current whenever endpoints change.
 - One sanctioned write: the test-health sidecar (quarantine, as an issue plus PR through the team's GitHub App). The write now lives behind the API and MCP tool only; the Tests tab became the Trunk quarantine debt scoreboard because Trunk's auto-quarantine outran the file-based flow as the thing teams need to see. No saved views or stateful filters; persisted surfaces are a separate decision.
 - Data path: HogQL over the warehouse, plus reads from Logs and Traces. PR lifecycle event ingestion deferred. Product Postgres DB stays empty.
 - No developer performance rankings, ever. The surveillance risk is a performance scorecard: output or speed turned into an ordered population of people. An engineer inspecting their own friction is not that risk, and neither is a deliberate comparison with a colleague they already know. So author figures may be read one author at a time, and compared on purpose with another author, a GitHub team, or the repository. The product must never rank, sort, score or enumerate authors by delivery performance. Friction is not performance: scoring and ordering the friction developers meet (red CI they did not cause, merge-queue kickouts, review waits, rework) finds the people the dev loop costs most, and a friction figure never counts how much or how fast someone ships. The author page (one author's PRs, CI cost, delivery timing and lead time against the repository) is reached from PR-row author links, and a colleague's page may be opened directly for such a comparison. The author page and the pull request page also set the ready-to-merge time next to the author's own team, as an aggregate. The team page renders the same delivery figures for one GitHub team, as an aggregate and never a per-member figure. It leaves out the author page's per-pull-request day view, which is too long to read at team size.
 - Bots and drafts excluded by default in throughput / cycle-time reads; bot detection = `handle.endswith("[bot]") OR handle in KNOWN_BOT_HANDLES`.
-- Author identity = `Author{handle, display_name, avatar_url, is_bot}`. No PostHog-user mapping.
+- Author identity = `Author{handle, display_name, avatar_url, is_bot}`. No Flind-user mapping.
 - Time to merge = `open_to_merge_seconds` = `merged_at - created_at`: coarse, and named so. `ready_to_merge_seconds` is the precise companion (last observed ready-for-review to merge, from `github_issue_events`); NULL means "not observed", never zero.
 - The GitHub `reviews` endpoint syncs; the author page is its first reader (the approval split and the review states of a PR timeline).
 
@@ -135,5 +135,5 @@ Change one only in a separate PR with a written reason. Engineering-level decisi
 | Term                | Definition                                                                                   |
 | ------------------- | -------------------------------------------------------------------------------------------- |
 | Good / bad friction | Checks that catch real problems (keep, optimize) vs checks engineers ignore (remove)         |
-| Wedge               | End-to-end code visibility, served via MCP to PostHog Desktop and engineers driving agents   |
-| The dark middle     | The CI / review / merge / deploy steps between PostHog Desktop and PostHog product analytics |
+| Wedge               | End-to-end code visibility, served via MCP to Flind Desktop and engineers driving agents   |
+| The dark middle     | The CI / review / merge / deploy steps between Flind Desktop and Flind product analytics |

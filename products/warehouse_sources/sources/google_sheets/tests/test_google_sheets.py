@@ -753,7 +753,7 @@ def test_validate_credentials_handles_malformed_service_account_key():
     is_valid, error_message = GoogleSheetsSource().validate_credentials(config, team_id=1)
 
     assert is_valid is False
-    assert "isn't configured correctly on this PostHog instance" in (error_message or "")
+    assert "isn't configured correctly on this Flind instance" in (error_message or "")
 
 
 @pytest.mark.parametrize(

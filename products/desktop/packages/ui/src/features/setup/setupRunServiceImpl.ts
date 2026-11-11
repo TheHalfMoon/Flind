@@ -24,7 +24,7 @@ import { fetchAuthState } from "../auth/authQueries";
 
 /**
  * Renderer adapter for the setup discovery/enrichment orchestration. Wraps the
- * host tRPC client (agent/enrichment), the authenticated PostHog API client
+ * host tRPC client (agent/enrichment), the authenticated Flind API client
  * (task runs), analytics, and build/env flags. Holds the authenticated client
  * created at getDiscoveryContext() time for the duration of the (one-at-a-time)
  * run. Stays host-agnostic: no electron, no @renderer, host capabilities flow

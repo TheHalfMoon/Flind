@@ -28,7 +28,7 @@ export interface SceneAgentPanelOptions {
 }
 
 /**
- * Scene-level PostHog AI integration: attaches the given context items for the lifetime of the
+ * Scene-level Flind AI integration: attaches the given context items for the lifetime of the
  * scene and auto-opens the AI side panel (subject to `sceneAgentPanelLogic`'s gates, including the
  * user's persisted per-scene dismissal). The whole integration rides
  * `sceneAgentPanelLogic.sceneIntegrationEnabled`, so nothing is attached or overridden for users

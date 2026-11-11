@@ -1108,7 +1108,7 @@ export const PostHogConversionsLoading: Story = {
     },
     play: async ({ canvasElement }) => {
         await showPostHogConversionColumns(canvasElement)
-        await expect(within(canvasElement).findByText('Loading PostHog conversions…')).resolves.toBeVisible()
+        await expect(within(canvasElement).findByText('Loading Flind conversions…')).resolves.toBeVisible()
     },
 }
 
@@ -1129,7 +1129,7 @@ export const PostHogConversionsError: Story = {
     play: async ({ canvasElement }) => {
         await showPostHogConversionColumns(canvasElement)
         await expect(
-            within(canvasElement).findByText('Could not load PostHog conversions. Your search data is still available.')
+            within(canvasElement).findByText('Could not load Flind conversions. Your search data is still available.')
         ).resolves.toBeVisible()
         await expect(within(canvasElement).findByText('00000000-0000-4000-8000-000000000000')).resolves.toBeVisible()
     },

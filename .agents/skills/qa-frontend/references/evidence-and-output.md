@@ -6,7 +6,7 @@ Use this reference after the frontend QA loop completes and findings are settled
 
 PR mode only. Upload is optional and must be explicitly approved before any file leaves the developer's machine. Local mode never uploads evidence.
 
-Use the repo's own uploader, `hogli pr:upload-image --print-markdown`. Without `--print-markdown` it attaches the files to the PR description instead of printing markdown for the comment. With it, it pushes files to the public `PostHog/pr-assets` repo and prints one `![alt](url)` markdown line per file, ready to paste into the PR comment. It accepts png, jpg, gif, and webp up to 10 MB - including the animated `frontend-qa.webp` demo reel - and needs only a GitHub token with write access to a PostHog org repo (the developer's normal `gh` login), no extra secret.
+Use the repo's own uploader, `hogli pr:upload-image --print-markdown`. Without `--print-markdown` it attaches the files to the PR description instead of printing markdown for the comment. With it, it pushes files to the public `PostHog/pr-assets` repo and prints one `![alt](url)` markdown line per file, ready to paste into the PR comment. It accepts png, jpg, gif, and webp up to 10 MB - including the animated `frontend-qa.webp` demo reel - and needs only a GitHub token with write access to a Flind org repo (the developer's normal `gh` login), no extra secret.
 
 Uploads are PUBLIC and PERMANENT: URLs are SHA-pinned and keep serving even after the file is deleted, so an upload cannot be taken back. Before upload, show the user the exact upload set and ask for approval. Upload only reviewed evidence that does not show secrets, private customer data, or unrelated local context. Pick only human-facing evidence:
 

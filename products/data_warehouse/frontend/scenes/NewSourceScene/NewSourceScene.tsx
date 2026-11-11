@@ -376,8 +376,8 @@ function InternalSourcesWizard(props: NewSourcesWizardProps): JSX.Element {
                             <h4 className="text-lg font-semibold mb-0">{modalTitle}</h4>
                             <p className="text-sm text-muted-alt mb-0">
                                 {selectedAccessMethod === 'direct'
-                                    ? `Query selected ${selectedConnector.label ?? selectedConnector.name} tables live from PostHog. Tables stay in the source database and are not synced into the data warehouse.`
-                                    : `Sync data from ${selectedConnector.label ?? selectedConnector.name} into the PostHog data warehouse.`}
+                                    ? `Query selected ${selectedConnector.label ?? selectedConnector.name} tables live from Flind. Tables stay in the source database and are not synced into the data warehouse.`
+                                    : `Sync data from ${selectedConnector.label ?? selectedConnector.name} into the Flind data warehouse.`}
                             </p>
                         </div>
                     </div>
@@ -451,7 +451,7 @@ function CDCSelfManagedSetupDialog(): JSX.Element | null {
     const tableList = qualifiedTables.map(({ schemaName, tableName }) => `"${schemaName}"."${tableName}"`).join(', ')
     const usageSchemas = [...new Set(qualifiedTables.map(({ schemaName }) => schemaName))]
 
-    const sql = `-- 1. Grants for the PostHog user
+    const sql = `-- 1. Grants for the Flind user
 --    Reading a replication slot requires REPLICATION (or rds_replication on RDS).
 --    Run ONE of the lines below, depending on your environment:
 ALTER USER "${dbUser}" WITH REPLICATION;             -- self-hosted / most clouds
@@ -460,7 +460,7 @@ ${usageSchemas.map((schemaName) => `GRANT USAGE ON SCHEMA "${schemaName}" TO "${
 GRANT SELECT ON ${tableList} TO "${dbUser}";
 
 -- 2. Publication covering the ${cdcTableNames.length} selected table${cdcTableNames.length === 1 ? '' : 's'}
---    Run this as the table owner (or a superuser). PostHog will create and manage
+--    Run this as the table owner (or a superuser). Flind will create and manage
 --    the replication slot itself once the source is created.
 CREATE PUBLICATION "${pubName}" FOR TABLE ${tableList}
   WITH (publish_via_partition_root = true);
@@ -484,7 +484,7 @@ CREATE PUBLICATION "${pubName}" FOR TABLE ${tableList}
             isOpen
             onClose={closeCdcSelfManagedSetupDialog}
             title="Create your publication"
-            description={`Self-managed CDC needs the publication to exist before PostHog connects — PostHog will create and manage the replication slot itself. Run the SQL below (covering the ${cdcTableNames.length} table${cdcTableNames.length === 1 ? '' : 's'} you selected for CDC) as the table owner, then click Verify & create.`}
+            description={`Self-managed CDC needs the publication to exist before Flind connects — Flind will create and manage the replication slot itself. Run the SQL below (covering the ${cdcTableNames.length} table${cdcTableNames.length === 1 ? '' : 's'} you selected for CDC) as the table owner, then click Verify & create.`}
             width={720}
             footer={
                 <>
@@ -547,12 +547,12 @@ function FirstStep({ allowedSources }: NewSourcesWizardProps): JSX.Element {
     return <SourceCatalog allowedSources={allowedSources} />
 }
 
-// Connectors in the "Databases" category that PostHog reaches over the provider's public HTTPS API
+// Connectors in the "Databases" category that Flind reaches over the provider's public HTTPS API
 // with a key the provider issues. The customer has no network path in front of them, so the
 // firewall hint would name a setup step that does not exist.
 const SOURCES_WITHOUT_NETWORK_ALLOWLIST: ExternalDataSourceType[] = ['BigQuery', 'CloudflareD1', 'DynamoDB', 'Firebase']
 
-// Firewall allowlisting only applies to self-hosted databases PostHog dials out to, so the hint is
+// Firewall allowlisting only applies to self-hosted databases Flind dials out to, so the hint is
 // scoped to that category rather than shown for OAuth/API connectors.
 function DatabaseFirewallHint(): JSX.Element | null {
     const { preflight } = useValues(preflightLogic)
@@ -565,7 +565,7 @@ function DatabaseFirewallHint(): JSX.Element | null {
     return (
         <LemonBanner type="info">
             <p className="mb-2">
-                If your database is behind a firewall, add PostHog's IP addresses to the allowlist so it can connect:
+                If your database is behind a firewall, add Flind's IP addresses to the allowlist so it can connect:
             </p>
             <CodeSnippet thing="IP addresses">{egressIps.join(' \n')}</CodeSnippet>
         </LemonBanner>

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -109,7 +109,7 @@ export interface ReminderApi {
     /** Optional longer body for the notification. */
     message?: string
     /**
-     * Optional PostHog resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.
+     * Optional Flind resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.
      * @maxLength 50
      * @nullable
      */
@@ -186,7 +186,7 @@ export interface PatchedReminderApi {
     /** Optional longer body for the notification. */
     message?: string
     /**
-     * Optional PostHog resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.
+     * Optional Flind resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.
      * @maxLength 50
      * @nullable
      */

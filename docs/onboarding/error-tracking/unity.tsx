@@ -12,7 +12,7 @@ export const getUnitySteps = (ctx: OnboardingComponentsContext): StepDefinition[
             content: (
                 <Markdown>
                     {dedent`
-                        Install PostHog through the Unity Package Manager:
+                        Install Flind through the Unity Package Manager:
 
                         1. Open **Window > Package Manager**.
                         2. Select **Add package from git URL** from the **+** menu.
@@ -24,13 +24,13 @@ export const getUnitySteps = (ctx: OnboardingComponentsContext): StepDefinition[
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                            Open **Edit > Project Settings > PostHog**, enter your project token and host, and keep **Capture Exceptions** enabled. The Unity SDK captures exceptions automatically by default.
+                            Open **Edit > Project Settings > Flind**, enter your project token and host, and keep **Capture Exceptions** enabled. The Unity SDK captures exceptions automatically by default.
 
                             You can also configure the SDK in code:
                         `}
@@ -40,7 +40,7 @@ export const getUnitySteps = (ctx: OnboardingComponentsContext): StepDefinition[
                         code={dedent`
                             using PostHogUnity;
 
-                            PostHog.Setup(new PostHogConfig
+                            Flind.Setup(new PostHogConfig
                             {
                                 ApiKey = "<ph_project_token>",
                                 Host = "<ph_client_api_host>",
@@ -71,7 +71,7 @@ export const getUnitySteps = (ctx: OnboardingComponentsContext): StepDefinition[
                             }
                             catch (Exception exception)
                             {
-                                PostHog.CaptureException(exception);
+                                Flind.CaptureException(exception);
                             }
                         `}
                     />
@@ -93,7 +93,7 @@ export const getUnitySteps = (ctx: OnboardingComponentsContext): StepDefinition[
                         language="csharp"
                         code={dedent`
                             Debug.LogException(new InvalidOperationException("Automatic test exception from Unity"));
-                            PostHog.Flush();
+                            Flind.Flush();
                         `}
                     />
                 </>

@@ -249,7 +249,7 @@ class TestSubscriptionDeliveryFailureNotification(APIBaseTest):
         with patch("products.subscriptions.backend.logic.failure_notifications.EmailMessage") as email_cls:
             send_subscription_delivery_failure_email(subscription)
 
-        assert email_cls.call_args.kwargs["subject"] == 'PostHog subscription "Weekly report" could not be delivered'
+        assert email_cls.call_args.kwargs["subject"] == 'Flind subscription "Weekly report" could not be delivered'
         assert email_cls.call_args.kwargs["template_name"] == "subscription_delivery_failed"
         assert email_cls.call_args.kwargs["template_context"]["scheduled_at"] == subscription.next_delivery_date
         assert email_cls.return_value.add_recipient.call_args.kwargs == {"email": self.user.email}

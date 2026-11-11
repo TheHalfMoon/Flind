@@ -115,9 +115,9 @@ class TestListGithubSourcesAccessControl(BaseTest):
 
     @parameterized.expand(
         [
-            ("same_repo", {"repo_owner": "PostHog", "repo_name": "posthog"}, True),
+            ("same_repo", {"repo_owner": "Flind", "repo_name": "posthog"}, True),
             ("legacy_without_repo_keys", {}, True),
-            ("other_repo", {"repo_owner": "PostHog", "repo_name": "posthog-js"}, False),
+            ("other_repo", {"repo_owner": "Flind", "repo_name": "posthog-js"}, False),
         ]
     )
     def test_trunk_quarantine_resolver_never_serves_another_repos_source(
@@ -192,7 +192,7 @@ class TestEngineeringAnalyticsViews(ClickhouseTestMixin, BaseTest):
         assert by_number[10][1:] == (
             "alice",
             False,
-            "PostHog",
+            "Flind",
             "posthog",
             ["bug", "p1"],
             "merged",
@@ -260,9 +260,9 @@ class TestEngineeringAnalyticsViews(ClickhouseTestMixin, BaseTest):
         )
 
         # completed runs carry a duration; in-progress run has null duration and null conclusion
-        assert rows[0][:6] == ("CI", "completed", "success", 1800, "PostHog", "posthog")
+        assert rows[0][:6] == ("CI", "completed", "success", 1800, "Flind", "posthog")
         assert rows[1][3] == 2700
-        assert rows[2][:6] == ("Deploy", "in_progress", None, None, "PostHog", "posthog")
+        assert rows[2][:6] == ("Deploy", "in_progress", None, None, "Flind", "posthog")
         assert rows[3][6:] == (44, 1)
         # Spoofed shape without the queue actor: attribution stays on the run's own association.
         assert rows[4][6:] == (9002, 0)
@@ -527,15 +527,15 @@ class TestEngineeringAnalyticsViews(ClickhouseTestMixin, BaseTest):
             "SELECT id, workflow_name, conclusion, pr_number, head_branch, duration_seconds, repo_owner, run_attempt "
             f"FROM ({workflow_runs.build_query(runs)}) AS r ORDER BY id"
         ) == [
-            (902, "Backend CI", "success", 101991, "main", 900, "PostHog", 1),
-            (903, "Backend CI", "success", 101991, "main", 900, "PostHog", 1),
-            (904, "Backend CI", "success", 101992, "main", 900, "PostHog", 1),
-            (905, "Backend CI", "failure", 101991, "main", 900, "PostHog", 1),
-            (906, "Backend CI", "failure", 101991, "main", 900, "PostHog", 2),
-            (907, "Backend CI", "success", 101991, "main", 900, "PostHog", 1),
-            (908, "Backend CI", "success", 101991, "main", 900, "PostHog", 2),
-            (80213453736890, "Backend CI on Depot", "success", 101991, "feature/depot", 600, "PostHog", 2),
-            (101808620689656, "Backend CI on Depot", "failure", 101991, "feature/depot", 600, "PostHog", 1),
+            (902, "Backend CI", "success", 101991, "main", 900, "Flind", 1),
+            (903, "Backend CI", "success", 101991, "main", 900, "Flind", 1),
+            (904, "Backend CI", "success", 101992, "main", 900, "Flind", 1),
+            (905, "Backend CI", "failure", 101991, "main", 900, "Flind", 1),
+            (906, "Backend CI", "failure", 101991, "main", 900, "Flind", 2),
+            (907, "Backend CI", "success", 101991, "main", 900, "Flind", 1),
+            (908, "Backend CI", "success", 101991, "main", 900, "Flind", 2),
+            (80213453736890, "Backend CI on Depot", "success", 101991, "feature/depot", 600, "Flind", 2),
+            (101808620689656, "Backend CI on Depot", "failure", 101991, "feature/depot", 600, "Flind", 1),
             (
                 142532068965517,
                 "Backend CI on Depot",
@@ -543,11 +543,11 @@ class TestEngineeringAnalyticsViews(ClickhouseTestMixin, BaseTest):
                 101991,
                 "trunk-merge/pr-101991/aaaa",
                 600,
-                "PostHog",
+                "Flind",
                 1,
             ),
-            (223978965517241, "Monitor", "success", 0, "master", 600, "PostHog", 1),
-            (244340689655172, "Timing", "failure", 0, "master", 600, "PostHog", 1),
+            (223978965517241, "Monitor", "success", 0, "master", 600, "Flind", 1),
+            (244340689655172, "Timing", "failure", 0, "master", 600, "Flind", 1),
         ]
         assert self._select(
             f"SELECT DISTINCT run_id FROM ({workflow_jobs.build_query(jobs)}) AS j ORDER BY run_id"
@@ -714,7 +714,7 @@ class TestEngineeringAnalyticsViews(ClickhouseTestMixin, BaseTest):
         rows = self._select(
             f"SELECT pr_number, repo_owner, repo_name, is_merge_queue FROM ({workflow_runs.build_query(_github_runs(raw))}) AS r"
         )
-        assert rows[0] == (0, "PostHog", "posthog", 0)
+        assert rows[0] == (0, "Flind", "posthog", 0)
 
     def test_workflow_runs_view_attributes_only_own_repo_prs_and_falls_back_to_the_merge_commit(self) -> None:
         # GitHub's pull_requests association lists every PR in the fork network sharing the run's

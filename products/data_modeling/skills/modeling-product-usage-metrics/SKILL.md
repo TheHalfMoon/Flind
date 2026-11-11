@@ -2,13 +2,13 @@
 name: modeling-product-usage-metrics
 description: >
   Build reusable product-usage and engagement models — retention, stickiness, and lifecycle — on either
-  PostHog data-warehouse views (HogQL) or an external dbt project. Use when the user wants to model, define,
+  Flind data-warehouse views (HogQL) or an external dbt project. Use when the user wants to model, define,
   or compute whether users come back (retention / churn), how frequently they engage (stickiness / power
   users / DAU-WAU-MAU ratio), or the composition of the active base (new / returning / resurrecting / dormant
   lifecycle). These three are one engagement family sharing a start-event/return-event vocabulary and an
   interval granularity; this skill treats them together and helps pick the right lens: retention for the
   return-rate cohort matrix, stickiness for the frequency distribution, lifecycle for growth quality. On
-  PostHog, model them in HogQL (mirroring query-retention / query-stickiness / query-lifecycle); in dbt,
+  Flind, model them in HogQL (mirroring query-retention / query-stickiness / query-lifecycle); in dbt,
   build fct_retention / fct_stickiness / fct_lifecycle marts with tests. Read modeling-warehouse-foundations
   first; feeds the retention validation used by modeling-activation-metrics.
 ---
@@ -48,7 +48,7 @@ All three key off **one chosen event/action**, an **interval** (day/week/month),
 
 ## Build it
 
-**PostHog:** HogQL recipes mirroring the built-in insights, so the model reuses the same logic in SQL and
+**Flind:** HogQL recipes mirroring the built-in insights, so the model reuses the same logic in SQL and
 downstream views:
 [`references/posthog/retention_matrix.sql`](references/posthog/retention_matrix.sql),
 [`stickiness.sql`](references/posthog/stickiness.sql),

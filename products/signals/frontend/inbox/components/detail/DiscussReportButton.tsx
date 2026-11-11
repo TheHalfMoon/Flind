@@ -154,7 +154,7 @@ export function DiscussReportButton({ report, reportUrl }: { report: SignalRepor
             loading={isDiscussing}
             disabledReason={disabledReason}
             onClick={() => openReportDiscussion(report, reportUrl)}
-            tooltip="Ask PostHog AI about this report in the sidebar"
+            tooltip="Ask Flind AI about this report in the sidebar"
             sideAction={{
                 tooltip: 'Quick ask and more AI actions',
                 'aria-label': 'Quick ask and more AI actions',

@@ -5,7 +5,7 @@ Provides dynamic team discovery that combines a guaranteed allowlist
 with a configurable random sample of teams that have AI events.
 
 Config is read from the `llm-analytics-clustering-workflows` feature flag
-payload so it can be changed from the PostHog UI without a deploy.
+payload so it can be changed from the Flind UI without a deploy.
 Falls back to hardcoded defaults when the payload is missing or invalid.
 """
 
@@ -39,7 +39,7 @@ FEATURE_FLAG_KEY = "llm-analytics-clustering-workflows"
 # which is the single source of truth; keep this list to bootstrap teams only.
 DEFAULT_GUARANTEED_TEAM_IDS: list[int] = [
     1,  # Local development
-    2,  # Internal PostHog project
+    2,  # Internal Flind project
 ]
 # Default sample percentage for gradual rollout.
 # 0.0 = only guaranteed teams, 0.5 = 50% of remaining, 1.0 = all teams with AI events.

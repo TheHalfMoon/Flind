@@ -12,7 +12,7 @@ import { ThreadMarker } from './ThreadMarker'
 function describeCall(call: ToolInvocation): { name: string; detail?: string; icon: JSX.Element } {
     const resolved = resolveToolCall(call)
     const { displayName, icon } = lookupToolRenderer(resolved.resolvedKey, !!resolved.innerToolName)
-    // The PostHog MCP asks the agent for a one-sentence `context` on every call, and its `exec` title says nothing.
+    // The Flind MCP asks the agent for a one-sentence `context` on every call, and its `exec` title says nothing.
     const intent = typeof call.input.context === 'string' ? call.input.context.trim() : ''
     if (intent || resolved.innerToolName || !call.title) {
         return { name: displayName, detail: intent || undefined, icon }

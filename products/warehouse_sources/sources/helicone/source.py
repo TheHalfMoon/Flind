@@ -81,7 +81,7 @@ class HeliconeSource(ResumableSource[HeliconeSourceConfig, HeliconeResumeConfig]
             label="Helicone",
             caption=(
                 "Connect Helicone to sync your logged LLM requests, sessions, per-user usage, and prompts "
-                "into the PostHog Data warehouse.\n\n"
+                "into the Flind Data warehouse.\n\n"
                 "Generate an API key in your [Helicone dashboard](https://us.helicone.ai/settings/api-keys) "
                 "(Settings → API Keys). Pick the region that matches where your Helicone organization lives."
             ),

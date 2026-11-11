@@ -7,7 +7,7 @@ from posthog.migration_helpers import SafeAddIndexConcurrently
 
 class Migration(migrations.Migration):
     # growth_organizationenrichmentfetch has production rows; CREATE INDEX CONCURRENTLY cannot
-    # run inside a transaction, and PostHog policy keeps concurrent index builds in their own
+    # run inside a transaction, and Flind policy keeps concurrent index builds in their own
     # migration away from regular DDL.
     atomic = False
 

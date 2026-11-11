@@ -3,7 +3,7 @@
 Before hogland, previews ran on DigitalOcean droplets (see ``bin/hobby-ci.py``
 for the full droplet + DNS + cloud-init logic). Porting that here means
 filling in ``provision`` / ``destroy`` and pointing ``ssh_target`` / ``web_url``
-at the droplet — the PostHog stack recipe in ``stack.py`` runs unchanged. This
+at the droplet — the Flind stack recipe in ``stack.py`` runs unchanged. This
 stub is intentionally not wired up; it exists so the layer boundary is concrete
 and the next swap has an obvious shape to follow.
 """

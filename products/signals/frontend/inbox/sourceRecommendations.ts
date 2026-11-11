@@ -25,7 +25,7 @@ export const DEFAULT_RECOMMENDATIONS: readonly { source: AgentRosterSource; desc
 ]
 
 /**
- * A PostHog product that covers a catalog category. While it is on, external tools in that category
+ * A Flind product that covers a catalog category. While it is on, external tools in that category
  * are not suggested: a team watching Error tracking does not need to hear about Sentry.
  */
 export const POSTHOG_SOURCE_CATEGORIES: Partial<Record<AgentRosterSource, string>> = {

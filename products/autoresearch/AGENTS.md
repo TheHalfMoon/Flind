@@ -2,7 +2,7 @@
 
 Agent-driven predictive modeling.
 A user names a **target event**, a **population**, and a **horizon** ("who will download a file in the next 30 days?").
-An agent then searches for the best model for that question, and once it finds one, the product scores the population on a cadence and writes the result back into PostHog as `autoresearch_prediction` events.
+An agent then searches for the best model for that question, and once it finds one, the product scores the population on a cadence and writes the result back into Flind as `autoresearch_prediction` events.
 
 The framing is Karpathy's `autoresearch` prompt pattern: an agent edits one thing, runs a fixed eval, keeps the change if a single metric improved, reverts otherwise, and loops until a stop rule fires.
 Here the "one thing" is a feature set plus a model spec, the fixed eval is holdout AUC on a labeled training population, and the loop runs inside a Tasks sandbox.

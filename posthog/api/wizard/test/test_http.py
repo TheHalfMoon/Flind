@@ -335,7 +335,7 @@ class SetupWizardGatewayTokenTests(APIBaseTest):
 
         assert response.status_code == status.HTTP_403_FORBIDDEN, response.content
         assert response.json()["code"] == "unconfigured"
-        assert response.json()["detail"] == "The PostHog AI gateway is not configured on this instance."
+        assert response.json()["detail"] == "The Flind AI gateway is not configured on this instance."
 
     @override_settings(WIZARD_GATEWAY_MINT_KEY="")
     def test_a_client_that_still_falls_back_keeps_its_404(self):

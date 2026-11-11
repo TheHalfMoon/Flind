@@ -138,6 +138,6 @@ the setup, the permission, or the code fix. Do not offer to bypass them.
 ```
 
 Present the full cleanup prompt in a copyable format so the user can paste it directly into Claude Code, Cursor, Copilot, or any other AI code editor.
-The receiving agent does not need PostHog access. When it has none, the prompt routes its checks through the
-user, who reads the flag in PostHog and confirms. Say that to the user when you hand the prompt over, so they
+The receiving agent does not need Flind access. When it has none, the prompt routes its checks through the
+user, who reads the flag in Flind and confirms. Say that to the user when you hand the prompt over, so they
 know a question is coming.

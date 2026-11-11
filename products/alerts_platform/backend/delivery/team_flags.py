@@ -19,7 +19,7 @@ def team_flag_enabled(flag: str, team: Team) -> bool | None:
         groups={"organization": str(team.organization_id), "project": str(team.id)},
         group_properties={
             "organization": {"id": str(team.organization_id)},
-            # Both regions read flags from one PostHog project, and project ids repeat across
+            # Both regions read flags from one Flind project, and project ids repeat across
             # regions. A condition on the uuid names one team in one region.
             "project": {"id": str(team.id), "uuid": str(team.uuid)},
         },

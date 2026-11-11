@@ -92,7 +92,7 @@ class PendoSource(ResumableSource[PendoSourceConfig, PendoResumeConfig]):
             name=ExternalDataSourceType.PENDO,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Pendo",
-            caption="""Enter your Pendo integration key to pull your Pendo data into the PostHog Data warehouse.
+            caption="""Enter your Pendo integration key to pull your Pendo data into the Flind Data warehouse.
 
 Create an integration key in Pendo under **Settings > Integrations > Integration Keys** (only Pendo admins can view these). The key is specific to your subscription's data region, so make sure the region below matches the domain you log in with.
 """,

@@ -1,5 +1,5 @@
 """
-Real sandbox training: launches the autoresearch agent loop in a PostHog Task sandbox.
+Real sandbox training: launches the autoresearch agent loop in a Flind Task sandbox.
 
 The agent explores the team's event data with HogQL, iterates on feature sets and models
 in-sandbox, and authors a runnable bundle (features.sql / train.py / predict.py) that it
@@ -270,7 +270,7 @@ def build_agent_description(
         )
 
     prompt = textwrap.dedent(f"""
-        # PostHog Autoresearch Agent
+        # Flind Autoresearch Agent
 
         Your goal is to discover predictive features for a prediction pipeline and author a
         **runnable model bundle** — three files the framework runs in a sandbox to score users
@@ -333,7 +333,7 @@ def build_agent_description(
 
         ## How labeling works (read this carefully — it shapes everything below)
 
-        You do NOT compute labels yourself. PostHog runs a deterministic random-T0
+        You do NOT compute labels yourself. Flind runs a deterministic random-T0
         labeler that produces, for each user in the training population, exactly one
         labeled example:
 
@@ -673,7 +673,7 @@ def build_agent_description(
            - **Caveats & recommended use** — when to rely on it and when not to.
 
            Charts: use ```mermaid``` code fences — they render inline and stay portable. Colors are
-           themed to PostHog automatically, so do NOT set colors or add `%%{{init}}%%` directives
+           themed to Flind automatically, so do NOT set colors or add `%%{{init}}%%` directives
            (they are stripped in strict render mode); your only job is to supply real data.
            **Never emit an empty chart fence** — every chart MUST contain actual values (with a
            title and axis labels), or omit it entirely. An empty `xychart-beta`/`flowchart` renders
@@ -1050,7 +1050,7 @@ def run_training(
                 # of a TaskRun that ends before this function returns.
                 "autoresearch_training_run_id": str(training_run.id),
                 # An empty installation allowlist mounts none of the team's shared MCP
-                # connectors. Training needs only the PostHog MCP server.
+                # connectors. Training needs only the Flind MCP server.
                 "config_snapshot": {"connectors": {"mcp_installation_ids": []}},
             },
         )

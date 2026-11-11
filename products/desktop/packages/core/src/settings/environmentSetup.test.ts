@@ -241,7 +241,7 @@ describe("environmentSetup", () => {
     "POSTHOG_IMAGE_TOOLS",
   ])("rejects the reserved key %s before submit", (key) => {
     const rows = [{ id: "a", key, value: "x" }];
-    expect(envVarError(rows[0], rows)).toContain("reserved by PostHog");
+    expect(envVarError(rows[0], rows)).toContain("reserved by Flind");
   });
 
   it.each([

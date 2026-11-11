@@ -17,7 +17,7 @@ export interface PageToolDefinition {
     label: string
     description: string
     icon: JSX.Element
-    /** The tool's page in PostHog. */
+    /** The tool's page in Flind. */
     feature?: { key: ExtensionFeatureKey; path: string }
     /** The paid feature the floating toolbar gates this tool on. */
     gate?: AvailableFeature

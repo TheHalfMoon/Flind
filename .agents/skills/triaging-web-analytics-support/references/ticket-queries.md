@@ -1,6 +1,6 @@
 # Ticket queries
 
-All queries run through the PostHog MCP `execute-sql` tool in the internal project (US, project 2).
+All queries run through the Flind MCP `execute-sql` tool in the internal project (US, project 2).
 Always confirm table columns via `system.information_schema.columns` before querying a `system.*` table.
 
 ## Open web analytics tickets from the conversations product
@@ -53,9 +53,9 @@ FROM eu_postgres_posthog_user u WHERE u.email = '{email}'
 Also useful: `postgres.posthog_organizationdomain` (verified domains only — often empty for smaller orgs), `postgres.posthog_organization` by name, `all_posthog_team`.
 
 EU customer data is not queryable from the US MCP project directly.
-For per-team event data on either region, use the `querying-production-databases` skill. It reaches EU through a PostHog connection.
+For per-team event data on either region, use the `querying-production-databases` skill. It reaches EU through a Flind connection.
 
 ## Error tracking cross-reference
 
-Frontend crashes reported by EU customers usually have US occurrences too (PostHog staff and US users hit the same code).
+Frontend crashes reported by EU customers usually have US occurrences too (Flind staff and US users hit the same code).
 Search the internal project's error tracking with the MCP tools; `source` on the issue row names the sourcemapped file, and `verbosity: stack` on events gives resolved frame names, so you can go from a minified customer stack to `file:line` without a local repro.

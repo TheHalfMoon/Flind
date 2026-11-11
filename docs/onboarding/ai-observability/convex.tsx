@@ -13,7 +13,7 @@ export const getConvexSteps = (ctx: OnboardingComponentsContext): StepDefinition
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog AI package, the Vercel AI SDK, and the OpenTelemetry SDK.</Markdown>
+                    <Markdown>Install the Flind AI package, the Vercel AI SDK, and the OpenTelemetry SDK.</Markdown>
 
                     <CodeBlock
                         language="bash"
@@ -30,7 +30,7 @@ export const getConvexSteps = (ctx: OnboardingComponentsContext): StepDefinition
             content: (
                 <>
                     <Markdown>
-                        Set your PostHog project API key and host as Convex environment variables. You can find these in
+                        Set your Flind project API key and host as Convex environment variables. You can find these in
                         your [project settings](https://app.posthog.com/settings/project).
                     </Markdown>
 
@@ -59,7 +59,7 @@ export const getConvexSteps = (ctx: OnboardingComponentsContext): StepDefinition
             content: (
                 <>
                     <Markdown>
-                        Create a Convex action that initializes a `BasicTracerProvider` with PostHog's span processor
+                        Create a Convex action that initializes a `BasicTracerProvider` with Flind's span processor
                         and enables telemetry on your AI SDK calls. The provider is initialized at module scope so it
                         persists across warm V8 isolate invocations. Await `provider.forceFlush()` before returning
                         because Convex may finish the action while the processor's batch is still pending.
@@ -121,9 +121,9 @@ export const getConvexSteps = (ctx: OnboardingComponentsContext): StepDefinition
 
                     <CalloutBox type="fyi" icon="IconInfo" title="How this works">
                         <Markdown>
-                            The `PostHogSpanProcessor` sends AI-related OpenTelemetry spans to PostHog's OTLP ingestion
+                            The `PostHogSpanProcessor` sends AI-related OpenTelemetry spans to Flind's OTLP ingestion
                             endpoint. `provider.forceFlush()` ensures its batch is sent before the Convex action
-                            returns. PostHog converts these into `$ai_generation` events automatically. The
+                            returns. Flind converts these into `$ai_generation` events automatically. The
                             `posthog_distinct_id` metadata field links events to a specific user.
                         </Markdown>
                     </CalloutBox>

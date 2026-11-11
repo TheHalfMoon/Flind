@@ -102,7 +102,7 @@ const PROPER_WORDS: Record<string, string> = {
     github: 'GitHub',
     llm: 'LLM',
     mcp: 'MCP',
-    posthog: 'PostHog',
+    posthog: 'Flind',
     pr: 'PR',
     sql: 'SQL',
     ui: 'UI',

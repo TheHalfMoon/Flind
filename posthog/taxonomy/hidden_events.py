@@ -10,7 +10,7 @@ EVENTS_HIDDEN_IN_QUERY_BUILDERS: frozenset[str] = frozenset(
 )
 
 HIDDEN_EVENT_REASON = (
-    "PostHog still collects this event, but its data is moving, so anything new built on it would stop working. "
+    "Flind still collects this event, but its data is moving, so anything new built on it would stop working. "
     "To see how a flag is used, open the flag and check its Usage tab."
 )
 

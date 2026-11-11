@@ -1,4 +1,4 @@
-# PostHog `exec` covers
+# Flind `exec` covers
 
 {tool_domains}
 

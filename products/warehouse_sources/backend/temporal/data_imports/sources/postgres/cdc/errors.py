@@ -35,10 +35,10 @@ _AUTH_MARKERS = (
 )
 
 # Routing failures (ENETUNREACH / EHOSTUNREACH): there is no route to the host's network at all,
-# so the connection never leaves PostHog. Unlike a refused or reset connection — where the host is
+# so the connection never leaves Flind. Unlike a refused or reset connection — where the host is
 # reachable and the failure is plausibly transient — these are deterministic for the configured
 # host (e.g. it resolves to a private or otherwise non-routable address, such as an IPv6 address
-# PostHog can't route to), so retrying re-hits the same wall. Mirrors the non-retryable treatment
+# Flind can't route to), so retrying re-hits the same wall. Mirrors the non-retryable treatment
 # on the batch path (PostgresSource.get_non_retryable_errors). "enetunreach" is Supabase Supavisor's
 # erlang-tuple wording of the same condition ("{:error, :enetunreach}"), which never contains the
 # libpq phrasing above.
@@ -48,7 +48,7 @@ _HOST_UNREACHABLE_MARKERS = (
     "enetunreach",
 )
 
-# A managed provider (observed on Neon) refuses PostHog's IP address, either because it isn't on the
+# A managed provider (observed on Neon) refuses Flind's IP address, either because it isn't on the
 # project's IP allow list or because the project blocks public access. Deterministic until the
 # customer changes that network policy. Mirrors the non-retryable treatment on the batch path
 # (PostgresSource.get_non_retryable_errors).
@@ -80,7 +80,7 @@ _POOLER_TENANT_NOT_FOUND_MARKERS = (
 
 # sshtunnel raises BaseSSHTunnelForwarderError("Could not establish session to SSH gateway") when it
 # can't open a session to the bastion — the SSH host/port is wrong or unreachable, the bastion is
-# down, or its firewall blocks PostHog's IPs. Deterministic for the configured tunnel, so it's
+# down, or its firewall blocks Flind's IPs. Deterministic for the configured tunnel, so it's
 # non-retryable. Mirrors the non-retryable treatment on the batch path
 # (PostgresSource.get_non_retryable_errors's `_SSH_GATEWAY_SESSION_ERROR` entry).
 _SSH_GATEWAY_SESSION_ERROR_MARKER = "could not establish session to ssh gateway"

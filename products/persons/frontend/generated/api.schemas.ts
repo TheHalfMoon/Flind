@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export type PropertyGroupOperatorEnumApi =
@@ -3802,7 +3802,7 @@ export interface WebStatsTableQueryApi {
     samplingFactor?: number | null
     tags?: QueryLogTagsApi | null
     useSessionsTable?: boolean | null
-    /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+    /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. * */
     useWebAnalyticsPrecompute?: boolean | null
     /** version of the node, used for schema migrations */
     version?: number | null
@@ -3889,7 +3889,7 @@ export interface WebOverviewQueryApi {
     samplingFactor?: number | null
     tags?: QueryLogTagsApi | null
     useSessionsTable?: boolean | null
-    /** Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+    /** Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. * */
     useWebAnalyticsPrecompute?: boolean | null
     /** version of the node, used for schema migrations */
     version?: number | null
@@ -3988,7 +3988,7 @@ export interface PersonUpdatePropertyRequestApi {
 }
 
 export interface PersonBulkDeleteRequestApi {
-    /** A list of PostHog person UUIDs to delete (max 1000). */
+    /** A list of Flind person UUIDs to delete (max 1000). */
     ids?: string[]
     /** A list of distinct IDs whose associated persons will be deleted (max 1000). */
     distinct_ids?: string[]

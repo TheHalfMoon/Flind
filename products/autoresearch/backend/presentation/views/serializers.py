@@ -256,7 +256,7 @@ class HeadlineField(serializers.CharField):
             {
                 "type": "object",
                 "title": "ActionTarget",
-                "description": "Predict a PostHog action in this project.",
+                "description": "Predict a Flind action in this project.",
                 "properties": {
                     "type": {"type": "string", "enum": ["action"]},
                     "action_id": {"type": "integer", "minimum": 1, "description": "ID of the action to predict."},
@@ -267,7 +267,7 @@ class HeadlineField(serializers.CharField):
         ],
         "description": (
             'Target definition. Two supported shapes: {"type": "event"} (predict target_event; the default) '
-            'or {"type": "action", "action_id": N} (predict a PostHog action). Event filters are not supported.'
+            'or {"type": "action", "action_id": N} (predict a Flind action). Event filters are not supported.'
         ),
         "example": {"type": "event"},
     }
@@ -637,7 +637,7 @@ class AutoresearchPipelineSerializer(DataclassSerializer):
     name = serializers.CharField(max_length=255, help_text="Display name for the pipeline.")
     description = serializers.CharField(required=False, allow_blank=True, help_text="Optional free-text description.")
     target_event = serializers.CharField(
-        max_length=255, help_text="PostHog event name to predict, e.g. '$pageview' or 'signed_up'."
+        max_length=255, help_text="Flind event name to predict, e.g. '$pageview' or 'signed_up'."
     )
     target_definition = TargetDefinitionField(
         help_text='Resolved target definition: {"type": "event"} or {"type": "action", "action_id": N}.'
@@ -913,7 +913,7 @@ class AutoresearchPipelineCreateSerializer(DataclassSerializer):
         allow_blank=True,
         max_length=255,
         help_text=(
-            "PostHog event name to predict, e.g. '$pageview' or 'signed_up'. "
+            "Flind event name to predict, e.g. '$pageview' or 'signed_up'. "
             "Omit when predicting an action target (pass target_definition instead)."
         ),
     )
@@ -922,7 +922,7 @@ class AutoresearchPipelineCreateSerializer(DataclassSerializer):
         default=dict,
         help_text=(
             'Omit (or pass {"type": "event"}) to predict target_event; pass '
-            '{"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted.'
+            '{"type": "action", "action_id": N} to predict a Flind action. No other shapes are accepted.'
         ),
     )
     horizon_days = serializers.IntegerField(
@@ -983,7 +983,7 @@ class AutoresearchPipelineCreateSerializer(DataclassSerializer):
         allow_null=True,
         max_length=100,
         help_text=(
-            "Model the training agent runs on, a model id from the PostHog Tasks catalogue such as "
+            "Model the training agent runs on, a model id from the Flind Tasks catalogue such as "
             "'claude-opus-5-5', 'claude-sonnet-5-5' or 'gpt-6.1-sol'. Null or omitted uses the autoresearch "
             "default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it."
         ),
@@ -1018,7 +1018,7 @@ class AutoresearchPipelineCreateSerializer(DataclassSerializer):
         help_text=(
             "Person property name for the prediction score, e.g. 'predicted_p_pageview'. "
             "Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot "
-            "start with $ (reserved for PostHog's own properties); must be unique among this project's "
+            "start with $ (reserved for Flind's own properties); must be unique among this project's "
             "non-archived pipelines."
         ),
     )
@@ -1067,7 +1067,7 @@ class AutoresearchPipelineCreateSerializer(DataclassSerializer):
         if value and not _OUTPUT_PERSON_PROPERTY_RE.fullmatch(value):
             raise serializers.ValidationError(
                 "Use only letters, digits, and _ $ . - characters, and do not start with $ (reserved for "
-                "PostHog's own properties), e.g. 'predicted_p_signup_7d'."
+                "Flind's own properties), e.g. 'predicted_p_signup_7d'."
             )
         return value
 
@@ -1959,7 +1959,7 @@ class ValidatePipelineRequestSerializer(serializers.Serializer):
         default=dict,
         help_text=(
             'Optional target definition. Pass {"type": "action", "action_id": N} to predict a '
-            "PostHog action (multi-step / property / autocapture matcher) instead of a single event."
+            "Flind action (multi-step / property / autocapture matcher) instead of a single event."
         ),
     )
     horizon_days = serializers.IntegerField(

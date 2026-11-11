@@ -118,7 +118,7 @@ class ExternalDataSourceConnectionOptionSerializer(serializers.ModelSerializer):
         help_text="Whether HogQL queries compile for this connection. When false, only raw SQL (sendRawQuery) works.",
     )
     is_builtin_managed_warehouse = serializers.SerializerMethodField(
-        help_text="Whether this option is the built-in PostHog managed warehouse connection.",
+        help_text="Whether this option is the built-in Flind managed warehouse connection.",
     )
     description = serializers.CharField(
         read_only=True,
@@ -302,7 +302,7 @@ class ExternalDataSourceConnectionOptionsMixin(base.ExternalDataSourceViewSetBas
                 .exclude(destination__deleted=True)
             ]
             # A source nobody configured has no links but is not syncing nowhere: it syncs to the
-            # PostHog warehouse. Report where it actually goes, or the picker shows every
+            # Flind warehouse. Report where it actually goes, or the picker shows every
             # destination off and saving from that state silently drops the warehouse.
             # Looked up rather than resolved, because `resolve_destinations` creates the
             # warehouse row on demand and a GET must not write.

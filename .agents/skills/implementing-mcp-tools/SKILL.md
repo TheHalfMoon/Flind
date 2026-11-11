@@ -1,6 +1,6 @@
 ---
 name: implementing-mcp-tools
-description: 'Guide for exposing PostHog product endpoints as MCP tools. Use when creating new or updating API endpoints, adding MCP tool definitions, scaffolding YAML configs, or writing serializers with good descriptions. Covers the full pipeline from Django serializer to generated TypeScript tool handler.'
+description: 'Guide for exposing Flind product endpoints as MCP tools. Use when creating new or updating API endpoints, adding MCP tool definitions, scaffolding YAML configs, or writing serializers with good descriptions. Covers the full pipeline from Django serializer to generated TypeScript tool handler.'
 ---
 
 # Implementing MCP tools
@@ -204,7 +204,7 @@ Unknown keys are rejected at build time (Zod `.strict()`).
 
 ### Gating tools with feature flags
 
-Add `feature_flag` to any tool (standard or query wrapper) to gate its exposure on a PostHog feature flag evaluated at MCP init time for the current user.
+Add `feature_flag` to any tool (standard or query wrapper) to gate its exposure on a Flind feature flag evaluated at MCP init time for the current user.
 
 - `feature_flag_behavior: enable` (default) — tool is shown **only when the flag is on**. Use for rolling out new tools.
 - `feature_flag_behavior: disable` — tool is hidden **when the flag is on**. Use for sunsetting old tools.

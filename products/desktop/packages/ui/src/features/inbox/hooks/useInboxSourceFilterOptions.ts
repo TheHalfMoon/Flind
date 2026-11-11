@@ -9,7 +9,7 @@ import { useMemo } from "react";
 
 /**
  * Source options worth offering in the inbox filter: the sources this project
- * has switched on, plus PostHog's own products. See `filterInboxSourceOptions`
+ * has switched on, plus Flind's own products. See `filterInboxSourceOptions`
  * for the rules.
  */
 export function useInboxSourceFilterOptions(

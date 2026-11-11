@@ -1083,7 +1083,7 @@ describe("AuthProxyService gateway sessions", () => {
     source.getRoute.mockResolvedValue({
       mode: "blocked",
       reason: "not_rolled_out",
-      detail: "PostHog AI isn't available for this project right now.",
+      detail: "Flind AI isn't available for this project right now.",
       status: 403,
     });
 
@@ -1097,7 +1097,7 @@ describe("AuthProxyService gateway sessions", () => {
       error: {
         type: "permission_error",
         code: "not_rolled_out",
-        message: "PostHog AI isn't available for this project right now.",
+        message: "Flind AI isn't available for this project right now.",
       },
     });
     expect(goFetch).not.toHaveBeenCalled();
@@ -1146,7 +1146,7 @@ describe("AuthProxyService gateway sessions", () => {
     source.getRoute.mockResolvedValue({
       mode: "blocked",
       reason: "credit_bucket_exhausted",
-      detail: "Your organization has reached its PostHog Desktop usage limit",
+      detail: "Your organization has reached its Flind Desktop usage limit",
       status: 402,
     });
 
@@ -1161,7 +1161,7 @@ describe("AuthProxyService gateway sessions", () => {
     };
     expect(body.error.code).toBe("credit_bucket_exhausted");
     expect(body.error.message).toBe(
-      "Your organization has reached its PostHog Desktop usage limit",
+      "Your organization has reached its Flind Desktop usage limit",
     );
   });
 

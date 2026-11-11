@@ -87,8 +87,8 @@ export function PageReportAiTab(): JSX.Element {
                 </SearchAndAiSectionHeading>
                 {crawlersMeasured === false ? (
                     <LemonBanner type="info">
-                        AI crawlers don't run the PostHog snippet, so they only show up when your server logs are
-                        forwarded to PostHog.{' '}
+                        AI crawlers don't run the Flind snippet, so they only show up when your server logs are
+                        forwarded to Flind.{' '}
                         <Link to={SERVER_LOGS_DOCS_URL} target="_blank">
                             Learn how to forward server logs
                         </Link>

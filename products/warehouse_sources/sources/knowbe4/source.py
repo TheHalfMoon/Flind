@@ -103,7 +103,7 @@ class Knowbe4Source(SimpleSource[Knowbe4SourceConfig]):
             keywords=["security awareness training", "phishing simulation"],
             caption=(
                 "Enter your KnowBe4 Reporting API key to pull your security awareness training and "
-                "phishing simulation data into the PostHog Data warehouse.\n\n"
+                "phishing simulation data into the Flind Data warehouse.\n\n"
                 "Generate a key as an account admin under **Account Settings > API**. Reporting API "
                 "keys are account-wide (no scopes to grant) but are only valid against the region "
                 "your console runs on.\n\n"

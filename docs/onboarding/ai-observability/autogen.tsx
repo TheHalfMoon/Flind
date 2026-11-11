@@ -18,7 +18,7 @@ export const getAutoGenSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                         <Markdown>
                             See the complete [Python
                             example](https://github.com/PostHog/posthog-python/tree/master/examples/example-ai-autogen)
-                            on GitHub. If you use the PostHog SDK wrapper instead of OpenTelemetry, see this example
+                            on GitHub. If you use the Flind SDK wrapper instead of OpenTelemetry, see this example
                             instead: [Python wrapper
                             example](https://github.com/PostHog/posthog-python/tree/7223c52/examples/example-ai-autogen).
                         </Markdown>
@@ -41,8 +41,8 @@ export const getAutoGenSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             content: (
                 <>
                     <Markdown>
-                        Configure OpenTelemetry to auto-instrument OpenAI SDK calls and export traces to PostHog.
-                        PostHog converts `gen_ai.*` spans into `$ai_generation` events automatically.
+                        Configure OpenTelemetry to auto-instrument OpenAI SDK calls and export traces to Flind.
+                        Flind converts `gen_ai.*` spans into `$ai_generation` events automatically.
                     </Markdown>
 
                     <CodeBlock
@@ -56,7 +56,7 @@ export const getAutoGenSteps = (ctx: OnboardingComponentsContext): StepDefinitio
 
                             resource = Resource(attributes={
                                 SERVICE_NAME: "my-app",
-                                "posthog.distinct_id": "user_123", # optional: identifies the user in PostHog
+                                "posthog.distinct_id": "user_123", # optional: identifies the user in Flind
                                 "foo": "bar", # custom properties are passed through
                             })
 
@@ -81,7 +81,7 @@ export const getAutoGenSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             content: (
                 <>
                     <Markdown>
-                        Use AutoGen as normal. PostHog automatically captures an `$ai_generation` event for each LLM
+                        Use AutoGen as normal. Flind automatically captures an `$ai_generation` event for each LLM
                         call made through the OpenAI SDK that AutoGen uses internally.
                     </Markdown>
 
@@ -110,7 +110,7 @@ export const getAutoGenSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                     <Blockquote>
                         <Markdown>
                             **Note:** To capture LLM events anonymously, omit the `posthog.distinct_id` resource
-                            attribute and don't set a distinct ID in the PostHog context. See our docs on [anonymous vs
+                            attribute and don't set a distinct ID in the Flind context. See our docs on [anonymous vs
                             identified events](https://posthog.com/docs/data/anonymous-vs-identified-events) to learn
                             more.
                         </Markdown>

@@ -32,7 +32,7 @@ ADVISORIES_BATCH_SIZE = 100
 
 # Packagist asks API consumers to send a descriptive User-Agent with a contact address.
 _HEADERS = {
-    "User-Agent": "PostHog Data Warehouse (https://posthog.com; mailto:support@posthog.com)",
+    "User-Agent": "Flind Data Warehouse (https://posthog.com; mailto:support@posthog.com)",
     "Accept": "application/json",
 }
 

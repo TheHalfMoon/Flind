@@ -6,7 +6,7 @@ export const template: HogFunctionTemplate = {
     type: 'destination',
     id: 'template-posthog-group-identify',
     name: 'Update group properties',
-    description: 'Updates properties of a PostHog group (requires Group Analytics addon)',
+    description: 'Updates properties of a Flind group (requires Group Analytics addon)',
     icon_url: '/static/posthog-icon.svg',
     category: ['Custom', 'Analytics'],
     code_language: 'hog',

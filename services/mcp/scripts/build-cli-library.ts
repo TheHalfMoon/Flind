@@ -15,7 +15,7 @@ build({
     drop: ['console'],
 })
     .then(() => {
-        console.info(`Built the PostHog CLI tool library -> ${outfile}`)
+        console.info(`Built the Flind CLI tool library -> ${outfile}`)
     })
     .catch((err: unknown) => {
         console.error('Build failed:', err)

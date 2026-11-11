@@ -58,7 +58,7 @@ class MembrainSource(ResumableSource[MembrainSourceConfig, MembrainResumeConfig]
             category=DataWarehouseSourceCategory.CRM,
             label="Membrain",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Membrain API key and account subdomain to sync your CRM data, including companies, contacts, prospects, sales projects, and tickets, into the PostHog Data warehouse.
+            caption="""Enter your Membrain API key and account subdomain to sync your CRM data, including companies, contacts, prospects, sales projects, and tickets, into the Flind Data warehouse.
 
 A Membrain admin can create an API key under **System Setup → Membrain API**. Your subdomain is the first part of your Membrain URL. For `acme.membrain.com` the subdomain is `acme`.""",
             iconPath="/static/services/membrain.png",

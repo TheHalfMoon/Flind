@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -812,7 +812,7 @@ export const getCanvasesToolsInvokeUrl = (projectId: string, id: string) => {
 }
 
 /**
- * Run one PostHog MCP tool as the viewer.
+ * Run one Flind MCP tool as the viewer.
  *
  * The canvas must declare the tool in capabilities.posthog.tools. The
  * tool runs on the MCP server with a token minted for the viewer, so it
@@ -921,7 +921,7 @@ export const getCanvasesActionsRetrieveUrl = (projectId: string) => {
 }
 
 /**
- * List the action registry: every verb and PostHog MCP tool a canvas may declare and invoke.
+ * List the action registry: every verb and Flind MCP tool a canvas may declare and invoke.
  */
 export const canvasesActionsRetrieve = async (
     projectId: string,

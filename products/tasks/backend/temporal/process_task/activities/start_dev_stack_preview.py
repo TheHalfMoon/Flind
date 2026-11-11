@@ -250,7 +250,7 @@ async def start_dev_stack_preview(input: StartDevStackPreviewInput) -> StartDevS
             return output
 
         DEV_STACK_PREVIEW_TOTAL.labels(outcome="attached" if output.attached else "started").inc()
-        await _emit_preview_progress(run_id=ctx.run_id, status="in_progress", label="Starting PostHog preview")
+        await _emit_preview_progress(run_id=ctx.run_id, status="in_progress", label="Starting Flind preview")
         return output
 
 
@@ -297,7 +297,7 @@ async def _report_preview_failure(run_id: str, detail: str, tail: str = "") -> N
     await _emit_preview_progress(run_id=run_id, status="failed", label="Preview didn't start")
     await _emit_preview_warning(
         run_id,
-        f"The PostHog preview did not start ({detail}). The task continues without it." + (f"\n{tail}" if tail else ""),
+        f"The Flind preview did not start ({detail}). The task continues without it." + (f"\n{tail}" if tail else ""),
     )
 
 

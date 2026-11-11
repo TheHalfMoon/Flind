@@ -126,7 +126,7 @@ class OrcaSecuritySource(ResumableSource[OrcaSecuritySourceConfig, OrcaResumeCon
             releaseStatus=ReleaseStatus.BETA,
             caption=(
                 "Enter your Orca Security API token to pull your cloud security posture data into the "
-                "PostHog Data warehouse.\n\n"
+                "Flind Data warehouse.\n\n"
                 "Create an API token in Orca under **Settings → Users & Permissions → API**. A user with the "
                 "**Viewer** role is enough to read alerts, assets, cloud accounts, and vulnerabilities.\n\n"
                 "Pick the **region** that matches the URL you sign in to — the token is only valid for the "

@@ -55,7 +55,7 @@ def rehost_images(
                     level=WorkflowImportNoteLevel.NEEDS_INPUT,
                     message=f"{count} email {_images(count)} still {_load(count)} from Customer.io's servers, "
                     "because this import can't write to the media library. The person importing needs editor "
-                    "access to it, and their API key or PostHog MCP connection needs the uploaded_media:write "
+                    "access to it, and their API key or Flind MCP connection needs the uploaded_media:write "
                     "scope. Reconnect the MCP and allow uploading media, then import again, or upload "
                     f"{_them(count)} before you close your Customer.io account.",
                 ),

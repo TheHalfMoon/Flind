@@ -260,7 +260,7 @@ export const LocalBilling: StoryObj<typeof BillingHarnessLocal> = {
   play: async ({ canvas, canvasElement, userEvent }): Promise<void> => {
     await openBillingSubmenu(canvas, canvasElement, userEvent);
     const body = within(canvasElement.ownerDocument.body);
-    await body.findByRole("menuitemradio", { name: "PostHog" });
+    await body.findByRole("menuitemradio", { name: "Flind" });
     await body.findByRole("menuitemradio", { name: "Anthropic" });
   },
 };

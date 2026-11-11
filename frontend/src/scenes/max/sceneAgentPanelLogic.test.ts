@@ -34,7 +34,7 @@ describe('sceneAgentPanelLogic', () => {
         logic?.unmount()
     })
 
-    it('opens the PostHog AI panel when a scene registers and all gates pass', async () => {
+    it('opens the Flind AI panel when a scene registers and all gates pass', async () => {
         setFlags(allFlags)
 
         await expectLogic(logic, () => {

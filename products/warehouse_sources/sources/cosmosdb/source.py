@@ -72,7 +72,7 @@ class CosmosDBSource(
             keywords=["azure cosmos", "documentdb"],
             label="Azure Cosmos DB",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Sync the containers of an Azure Cosmos DB for NoSQL database into the PostHog Data warehouse. Each container becomes a table, and incremental syncs use the `_ts` system property Cosmos stamps on every write.
+            caption="""Sync the containers of an Azure Cosmos DB for NoSQL database into the Flind Data warehouse. Each container becomes a table, and incremental syncs use the `_ts` system property Cosmos stamps on every write.
 
 Enter the account endpoint (`https://<account>.documents.azure.com`), a read-only or read-write key from the account's **Keys** page, and the database to sync. Only the NoSQL API is supported.""",
             iconPath="/static/services/cosmosdb.png",

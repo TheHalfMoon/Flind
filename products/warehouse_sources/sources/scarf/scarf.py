@@ -42,7 +42,7 @@ RUNS_MESSAGE = "Your Scarf organization has no export runs left. Add runs in Sca
 OWNER_FORMAT_MESSAGE = "Enter the Scarf user or organization name only, without a URL or slashes."
 BACKFILL_MESSAGE = f"Enter between 0 and {MAX_BACKFILL_DAYS} days of event history."
 EXPORT_TOO_LARGE_MESSAGE = (
-    "One day of Scarf events is larger than PostHog can import in one piece. Contact PostHog support."
+    "One day of Scarf events is larger than Flind can import in one piece. Contact Flind support."
 )
 
 

@@ -155,7 +155,7 @@ def stale_oauth_applications(now: datetime) -> QuerySet:
 
     Only self-registered clients qualify. A client that is deleted can register again: a CIMD
     client is created again on its next authorization, and a DCR client calls the registration
-    endpoint again. Apps that PostHog staff or an organization set up, partners, and apps that
+    endpoint again. Apps that Flind staff or an organization set up, partners, and apps that
     other rows still point at are never candidates.
     """
     cutoff = now - timedelta(seconds=settings.OAUTH_STALE_APPLICATION_GRACE_PERIOD)

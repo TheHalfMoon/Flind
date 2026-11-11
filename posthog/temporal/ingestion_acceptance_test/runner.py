@@ -169,7 +169,7 @@ def run_tests(
     Args:
         config: Configuration for the test run.
         tests: List of test cases to run.
-        client: PostHog client for API interactions.
+        client: Flind client for API interactions.
         executor: Executor for running tests in parallel.
         running_tests: Thread-safe tracker for currently running tests.
 

@@ -6,8 +6,8 @@ from products.slack_app.backend.services.slack_user_oauth import build_invite_ur
 
 class LinkAccountStep(OnboardingStep):
     key = OnboardingStepKey.LINK_ACCOUNT
-    title = "Link your PostHog account"
-    done_text = "PostHog account linked"
+    title = "Link your Flind account"
+    done_text = "Flind account linked"
     skippable = False
 
     def applies(self, ctx: OnboardingContext) -> bool:
@@ -24,7 +24,7 @@ class LinkAccountStep(OnboardingStep):
             channel=None,
             thread_ts=None,
         )
-        text = "*Link your PostHog account*\nPostHog answers you in Slack from your projects, with the access you have in PostHog."
+        text = "*Link your Flind account*\nPostHog answers you in Slack from your projects, with the access you have in Flind."
         if is_slack_app_link_search_scopes_enabled(ctx.integration):
             text += (
                 "\nAfter you link, I read your recent Slack messages once to suggest what I can help with. "

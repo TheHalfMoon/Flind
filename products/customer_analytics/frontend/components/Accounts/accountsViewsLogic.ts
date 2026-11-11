@@ -490,13 +490,13 @@ export const accountsViewsLogic = kea<accountsViewsLogicType>([
                     actions.syncViewStateToUrl()
                 }
                 actions.resetViewForm()
-                posthog.capture(AccountsEvents.ViewSaved, { visibility }) // [PostHog] Event: dynamic event name
+                posthog.capture(AccountsEvents.ViewSaved, { visibility }) // [Flind] Event: dynamic event name
             },
         },
     })),
     listeners(({ actions, values, cache }) => ({
         reportColumnResize: () => {
-            posthog.capture(AccountsEvents.ColumnResized) // [PostHog] Event: dynamic event name
+            posthog.capture(AccountsEvents.ColumnResized) // [Flind] Event: dynamic event name
         },
         prepareAccountReturn: () => {
             const session = getAccountsViewSession(values.currentTeamId, values.user?.uuid ?? null)
@@ -535,7 +535,7 @@ export const accountsViewsLogic = kea<accountsViewsLogicType>([
             actions.applyViewState(deserializeAccountsView(view), { source: 'saved_view', columns: 'restore' })
             actions.setAwaitingSavedView(false)
             actions.syncViewStateToUrl()
-            posthog.capture(AccountsEvents.ViewSelected, { visibility: view.visibility }) // [PostHog] Event: dynamic event name
+            posthog.capture(AccountsEvents.ViewSelected, { visibility: view.visibility }) // [Flind] Event: dynamic event name
         },
         setCurrentViewId: ({ id, remember, name }) => {
             const session = getAccountsViewSession(values.currentTeamId, values.user?.uuid ?? null)
@@ -552,7 +552,7 @@ export const accountsViewsLogic = kea<accountsViewsLogicType>([
         },
         updateViewSuccess: ({ payload }) => {
             lemonToast.success('View updated')
-            posthog.capture(AccountsEvents.ViewUpdated) // [PostHog] Event: dynamic event name
+            posthog.capture(AccountsEvents.ViewUpdated) // [Flind] Event: dynamic event name
             if (payload && Object.keys(payload.updates).length > 0) {
                 actions.resetViewForm()
             }
@@ -569,7 +569,7 @@ export const accountsViewsLogic = kea<accountsViewsLogicType>([
                 actions.clearView()
             }
             lemonToast.success('View deleted')
-            posthog.capture(AccountsEvents.ViewDeleted) // [PostHog] Event: dynamic event name
+            posthog.capture(AccountsEvents.ViewDeleted) // [Flind] Event: dynamic event name
         },
         deleteViewFailure: ({ error }) => {
             posthog.captureException(error)

@@ -1,7 +1,7 @@
 """What one Slack user did with the Slack app features: used them, saw a tip, or dismissed it.
 
 The state lives in ``SlackSettings.feature_tips`` on the user's personal row, so it exists before
-the user links a PostHog account.
+the user links a Flind account.
 """
 
 from __future__ import annotations

@@ -8,7 +8,7 @@ Five binary scorers grade the retrieval flow:
   direction the case expects, for suites that pair positive and negative
   trigger cases.
 * ``LookupIdInOutput`` — does the agent's final assistant message contain
-  the seeded lookup insight's ID, proving it actually queried PostHog
+  the seeded lookup insight's ID, proving it actually queried Flind
   rather than hallucinating?
 * ``InformationSchemaBeforeSql`` — did the agent discover the schema via
   ``system.information_schema.*`` before every ``execute-sql`` that hits a

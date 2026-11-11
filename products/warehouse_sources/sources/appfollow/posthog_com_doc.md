@@ -21,7 +21,7 @@ import TroubleshootingLink from "../\_snippets/dw-troubleshooting-link.mdx"
 [AppFollow](https://appfollow.io) aggregates App Store and Google Play data for app analytics, review
 management, and app store optimization. This connector pulls your tracked apps, their reviews, their
 rating history, and their app store optimization data (category ranks, tracked keyword positions,
-release history, and review statistics) into the PostHog Data warehouse, where you can join them with
+release history, and review statistics) into the Flind Data warehouse, where you can join them with
 product analytics, build insights, and monitor review sentiment over time.
 
 ## Prerequisites

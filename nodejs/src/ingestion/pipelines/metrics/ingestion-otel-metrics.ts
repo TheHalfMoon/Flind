@@ -3,7 +3,7 @@ import { Attributes, Counter, metrics as metricsApi } from '@opentelemetry/api'
 import { createCounterWithExemplars, swallowing } from '~/common/metrics/instruments'
 
 /**
- * OTLP-pushed per-team ingestion counters, landing in the PostHog metrics product
+ * OTLP-pushed per-team ingestion counters, landing in the Flind metrics product
  * through the exporter installed by initMetrics (common/metrics/otel-metrics.ts).
  * They answer "which teams are actually ingesting metrics" — a signal neither the
  * aggregate prom counters (no team label) nor the app_metrics2 usage rows (billing

@@ -1,4 +1,4 @@
-# PostHog AI agent-run surface — consumer guide
+# Flind AI agent-run surface — consumer guide
 
 This directory is the **conversation-agnostic agent-run UI**: a library that renders and drives a streamed
 agent run — the thread, tool cards, approvals, the composer. If you're embedding a run, showing a status
@@ -318,7 +318,7 @@ same shape as the context recipe above, calling `registerToolListener(listenerId
 setup and `deregisterToolListener(listenerId)` in cleanup, with `pauseOnPageHidden: false` (tool events fire
 while the tab is hidden and missed live events are not redelivered).
 
-Note: for exec-wrapped PostHog tools the resolved name can be unknown at `phase: 'started'` (the command
+Note: for exec-wrapped Flind tools the resolved name can be unknown at `phase: 'started'` (the command
 streams in later) — match on `completed` when you need certainty.
 
 Editor mutations use `useMcpToolApplyBack` with a stable `targetKey` for the resource being edited. The

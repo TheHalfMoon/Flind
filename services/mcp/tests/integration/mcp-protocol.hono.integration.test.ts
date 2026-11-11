@@ -18,10 +18,10 @@ import {
 
 // End-to-end MCP protocol test against the Hono runtime.
 //   - Real `@hono/node-server` listener (TCP + HTTP semantics, not `app.request`)
-//   - Real PostHog stack at `TEST_POSTHOG_API_BASE_URL` (defaults to localhost:8010)
+//   - Real Flind stack at `TEST_POSTHOG_API_BASE_URL` (defaults to localhost:8010)
 //   - Real personal API key from `TEST_POSTHOG_PERSONAL_API_KEY`
 //
-// Boot the local PostHog stack with `./bin/start` before running this suite.
+// Boot the local Flind stack with `./bin/start` before running this suite.
 // Ensure `.env.test` defines TEST_POSTHOG_PERSONAL_API_KEY / TEST_ORG_ID /
 // TEST_PROJECT_ID — matching the existing `tests/tools/*.integration.test.ts`.
 //
@@ -34,7 +34,7 @@ import {
 //   - `defineJsonRpcEdgeCaseTests`    — raw JSON-RPC (parse errors, batches, notifications, ping)
 //   - `defineSessionLifecycleTests`   — initialize negotiation + repeated init
 //   - `defineResourceCatalogTests`    — both UI and context-mill resources present and readable
-//   - `defineToolBehaviorTests`       — real PostHog tool calls and multi-step interactions
+//   - `defineToolBehaviorTests`       — real Flind tool calls and multi-step interactions
 //   - `defineCatalogFilterTests`      — ?features= and ?tools= query-param filtering
 
 let env: IntegrationEnv

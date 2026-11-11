@@ -326,7 +326,7 @@ def _check_modifiers(chart_modifiers: HogQLQueryModifiers, *, keep_project_bot_r
         "inlineCohortCalculation": InlineCohortCalculation.OFF,
     }
     if not keep_project_bot_rules:
-        # The bot check uses PostHog's definition of a bot, so a project's own bot rules do not apply.
+        # The bot check uses Flind's definition of a bot, so a project's own bot rules do not apply.
         update["customBotDefinitions"] = []
     return chart_modifiers.model_copy(update=update)
 

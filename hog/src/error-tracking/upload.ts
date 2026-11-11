@@ -11,7 +11,7 @@ import type { KeySession } from '@/posthog/key-session'
 import { contentHash } from './container'
 
 // The symbol set upload protocol of posthog-cli (`api/symbol_sets.rs`). Bodies, endpoints, retry
-// counts and the release-mismatch fallback match it, so PostHog sees the same requests from either
+// counts and the release-mismatch fallback match it, so Flind sees the same requests from either
 // CLI. Only the user agent differs.
 
 export interface SymbolSetUpload {
@@ -61,7 +61,7 @@ class ApiFailure extends Error {
         readonly body: string,
         readonly url: string
     ) {
-        super(`PostHog answered ${status} for ${url}: ${body}`)
+        super(`Flind answered ${status} for ${url}: ${body}`)
     }
 
     // posthog-cli matches error codes in the parsed body, or anywhere in the raw text as a fallback.
@@ -130,7 +130,7 @@ const PresignedPost = z.object({ url: z.string(), fields: z.record(z.string(), z
 type PresignedPost = z.output<typeof PresignedPost>
 
 const StartEntry = z.object({
-    // Null when PostHog couldn't sign a POST, in which case it sends a PUT URL.
+    // Null when Flind couldn't sign a POST, in which case it sends a PUT URL.
     presigned_url: PresignedPost.nullish(),
     fallback_presigned_url: PresignedPost.nullish(),
     presigned_put_url: z.string().nullish(),
@@ -158,7 +158,7 @@ export class SymbolSetClient {
         this.throttle = new Throttle(runtime, RATE_LIMIT_PER_MINUTE)
     }
 
-    // Project-scoped API URL. hostUrl keeps the path a self-hosted PostHog sits under, which
+    // Project-scoped API URL. hostUrl keeps the path a self-hosted Flind sits under, which
     // posthog-cli's `Url::join` drops, and gives the same URL for a host without one.
     projectUrl(path: string): URL {
         const { projectId, host } = this.session.current
@@ -177,7 +177,7 @@ export class SymbolSetClient {
         }
         const failure = {
             code: 'unexpected_response',
-            context: `PostHog's answer to ${method} ${url.pathname} isn't what hog expects.`,
+            context: `Flind's answer to ${method} ${url.pathname} isn't what hog expects.`,
         }
         if (response.text && response.json === undefined) {
             throw failWith(failure, "The answer isn't JSON.")
@@ -273,7 +273,7 @@ export class SymbolSetClient {
                 )
                 const response = parseOrThrow(CheckResponse, answer, {
                     code: 'unexpected_response',
-                    context: "PostHog's answer to the upload check isn't what hog expects.",
+                    context: "Flind's answer to the upload check isn't what hog expects.",
                 })
                 for (const chunkId of response.chunk_ids_to_upload) {
                     needed.add(chunkId)
@@ -308,7 +308,7 @@ export class SymbolSetClient {
             idMap =
                 parseOrThrow(StartResponse, answer, {
                     code: 'unexpected_response',
-                    context: "PostHog's answer to the upload start isn't what hog expects.",
+                    context: "Flind's answer to the upload start isn't what hog expects.",
                 }).id_map ?? {}
         } catch (error) {
             throw startFailure(error)
@@ -329,7 +329,7 @@ export class SymbolSetClient {
             if (!byChunk.has(chunkId)) {
                 throw new HogError(
                     'unexpected_response',
-                    `PostHog returned an upload URL for chunk ${chunkId}, which hog didn't send.`
+                    `Flind returned an upload URL for chunk ${chunkId}, which hog didn't send.`
                 )
             }
         }
@@ -352,8 +352,8 @@ export class SymbolSetClient {
         } catch (error) {
             throw new HogError(
                 'upload_not_finished',
-                `PostHog didn't confirm the upload, so the symbol sets aren't attached: ${describe(error)}`,
-                'Run the upload again. Chunks that already reached PostHog are skipped.'
+                `Flind didn't confirm the upload, so the symbol sets aren't attached: ${describe(error)}`,
+                'Run the upload again. Chunks that already reached Flind are skipped.'
             )
         }
         return results
@@ -370,7 +370,7 @@ export class SymbolSetClient {
         if (primary === undefined) {
             throw new HogError(
                 'unexpected_response',
-                `PostHog sent no upload URL for symbol set ${entry.symbol_set_id}.`,
+                `Flind sent no upload URL for symbol set ${entry.symbol_set_id}.`,
                 'Run the upload again.'
             )
         }
@@ -453,11 +453,11 @@ function startFailure(error: unknown): Error {
     if (error instanceof ApiFailure && error.hasCode('content_hash_mismatch')) {
         return new HogError(
             'content_hash_mismatch',
-            'PostHog already has a symbol set with this chunk ID and different content.',
+            'Flind already has a symbol set with this chunk ID and different content.',
             'Pass --force to replace it, or --skip-on-conflict to keep the existing one.'
         )
     }
-    return new HogError('upload_failed', `PostHog didn't start the upload: ${describe(error)}`)
+    return new HogError('upload_failed', `Flind didn't start the upload: ${describe(error)}`)
 }
 
 // Like posthog-cli's thread pool: after the first failure no new item starts, and the call returns

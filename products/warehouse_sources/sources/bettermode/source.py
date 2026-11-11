@@ -73,7 +73,7 @@ class BettermodeSource(ResumableSource[BettermodeSourceConfig, BettermodeResumeC
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Bettermode",
             keywords=["tribe", "community"],
-            caption="""Connect your Bettermode (formerly Tribe) community to pull members, spaces, space members, posts, replies, post reaction participants, post types, tags, collections, roles, and moderation items into the PostHog Data warehouse.
+            caption="""Connect your Bettermode (formerly Tribe) community to pull members, spaces, space members, posts, replies, post reaction participants, post types, tags, collections, roles, and moderation items into the Flind Data warehouse.
 
 Create an app in the [Bettermode developer portal](https://developers.bettermode.com/), then copy its client ID and client secret. The app must be **published and installed on your community** before tokens can be issued.
 

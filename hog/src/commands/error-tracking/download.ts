@@ -11,7 +11,7 @@ import { SymbolSetClient } from '@/error-tracking/upload'
 import { renderExtracted } from './extract'
 
 export default defineCommand({
-    description: 'Download a symbol set from PostHog and unpack it',
+    description: 'Download a symbol set from Flind and unpack it',
     writes: true,
     args: {
         symbolSet: { description: 'The symbol set ID, or its ref, such as static/chunks/app.js.map' },

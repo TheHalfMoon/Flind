@@ -15,7 +15,7 @@ export type FeatureFlagsSet = {
  * `spyOnFeatureFlags` below). On self-hosted, non-debug instances they're discarded in favor of
  * the server-configured `PERSISTED_FEATURE_FLAGS` baseline, so anything that enrolls a user into
  * a flag client-side (e.g. early access feature enrollment) has no visible effect there. A
- * self-capturing instance is the exception: its flags come from its own project, not PostHog's.
+ * self-capturing instance is the exception: its flags come from its own project, not Flind's.
  */
 export function areClientFeatureFlagsHonored(preflight: Pick<PreflightStatus, 'cloud' | 'is_debug'> | null): boolean {
     return !!preflight?.cloud || !!preflight?.is_debug || !!window.JS_POSTHOG_SELF_CAPTURE
@@ -48,7 +48,7 @@ export function getPersistedFeatureFlags(appContext: AppContext | undefined = ge
 }
 
 let cachedFlagsSerialized: string | null = null
-// Set when the server refuses PostHog AI 2.0 to a page that still shows it. It overrides the server-rendered
+// Set when the server refuses Flind AI 2.0 to a page that still shows it. It overrides the server-rendered
 // decision, and it also works in an OAuth session, which never reads that decision.
 let posthogAiAccessRevoked = false
 
@@ -64,7 +64,7 @@ function spyOnFeatureFlags(featureFlags: FeatureFlagsSet): FeatureFlagsSet {
         areClientFeatureFlagsHonored(appContext?.preflight ?? null) || process.env.NODE_ENV === 'test'
             ? { ...persistedFlags, ...featureFlags }
             : persistedFlags
-    // PostHog AI 2.0 follows the server's access gate, which also admits beta orgs, so a denied user never sees 2.0 UI.
+    // Flind AI 2.0 follows the server's access gate, which also admits beta orgs, so a denied user never sees 2.0 UI.
     const posthogAiAccess = posthogAiAccessRevoked ? false : appContext?.posthog_ai_access
     if (posthogAiAccess !== undefined) {
         availableFlags[FEATURE_FLAGS.PHAI_SANDBOX_MODE] = posthogAiAccess

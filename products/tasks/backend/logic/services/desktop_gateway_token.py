@@ -1,4 +1,4 @@
-"""PostHog Desktop (`posthog_code`) tokens on the Go ai-gateway.
+"""Flind Desktop (`posthog_code`) tokens on the Go ai-gateway.
 
 Shared by the desktop app's mint endpoint and the sandbox worker's mint, so it stays free of
 Temporal imports.
@@ -43,7 +43,7 @@ PRODUCT_CREDIT_BUCKET: dict[str, str] = {
 
 # The legacy gateway's refusal for an exhausted Desktop bucket; the app matches on it.
 POSTHOG_CODE_CREDITS_EXHAUSTED_DETAIL = (
-    "Your team has reached its PostHog Desktop usage limit for this billing period. "
+    "Your team has reached its Flind Desktop usage limit for this billing period. "
     "See https://app.posthog.com/organization/billing for your usage and limits."
 )
 CREDIT_BUCKET_EXHAUSTED_DENIAL = "credit_bucket_exhausted:posthog_code_credits"
@@ -70,13 +70,13 @@ _OVERRIDE_TIERS: frozenset[str] = frozenset({"standard", "power", "exempt"})
 
 DESKTOP_GATEWAY_LIMIT_TIERS = Counter(
     "posthog_desktop_gateway_limit_tiers_total",
-    "PostHog Desktop gateway mints by the limit tier sent (provisional/standard/power/exempt)",
+    "Flind Desktop gateway mints by the limit tier sent (provisional/standard/power/exempt)",
     labelnames=["tier"],
 )
 
 DESKTOP_GATEWAY_MINTS = Counter(
     "posthog_desktop_gateway_token_mints_total",
-    "PostHog Desktop gateway token mints, by outcome (ok/rate_limited/refused/unreachable/malformed)",
+    "Flind Desktop gateway token mints, by outcome (ok/rate_limited/refused/unreachable/malformed)",
     labelnames=["outcome"],
 )
 

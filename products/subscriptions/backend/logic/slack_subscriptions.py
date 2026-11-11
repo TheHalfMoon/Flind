@@ -142,7 +142,7 @@ def _subscription_title(
 
     if is_new_subscription:
         return (
-            f"This channel has been subscribed to {display_name} on PostHog! 🎉\n\n"
+            f"This channel has been subscribed to {display_name} on Flind! 🎉\n\n"
             f"The next one will be sent on {next_delivery_date_display(subscription)}"
         )
     return f"Your subscription to {display_name} is ready! 🎉"
@@ -155,7 +155,7 @@ def _ai_summary_text(change_summary: str) -> str:
 
 def _overflow_text(shown_count: int, total_asset_count: int, resource_url: str, utm_tags: str) -> str:
     return (
-        f"Showing {shown_count} of {total_asset_count} Insights. <{resource_url}?{utm_tags}|View the rest in PostHog>"
+        f"Showing {shown_count} of {total_asset_count} Insights. <{resource_url}?{utm_tags}|View the rest in Flind>"
     )
 
 
@@ -201,7 +201,7 @@ def _subscription_footer_blocks(
     action_elements: list[dict] = [
         {
             "type": "button",
-            "text": {"type": "plain_text", "text": "View in PostHog"},
+            "text": {"type": "plain_text", "text": "View in Flind"},
             "url": f"{resource_info.url}?{utm_tags}",
         },
         {
@@ -284,7 +284,7 @@ def _prepare_slack_gallery(
     if total_asset_count > len(assets):
         lines.append(_overflow_text(len(assets), total_asset_count, resource_info.url, utm_tags))
     lines.append(
-        f"<{resource_info.url}?{utm_tags}|View in PostHog> · <{subscription.url}?{utm_tags}|Manage subscription>"
+        f"<{resource_info.url}?{utm_tags}|View in Flind> · <{subscription.url}?{utm_tags}|Manage subscription>"
     )
 
     ai_enabled = _ai_data_processing_approved(subscription, integration)
@@ -357,7 +357,7 @@ def _blocks_for_asset(asset: ExportedAsset, resource_url: str, *, include_insigh
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "*Next steps*\n1. Open the report in PostHog and check the error.\n2. Retry the report. If it still fails, contact support.",
+                    "text": "*Next steps*\n1. Open the report in Flind and check the error.\n2. Retry the report. If it still fails, contact support.",
                 },
             },
             {

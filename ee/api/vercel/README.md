@@ -9,7 +9,7 @@ This guide documents the complete setup process for testing Vercel SSO integrati
 
 ## Step 1: Configure ngrok Tunnels
 
-Follow the [PostHog ngrok setup guide](https://posthog.com/handbook/engineering/setup-ssl-locally) to configure ngrok.
+Follow the [Flind ngrok setup guide](https://posthog.com/handbook/engineering/setup-ssl-locally) to configure ngrok.
 
 **Quick version:**
 
@@ -21,9 +21,9 @@ This will give you an HTTPS URL for port 8000, e.g., `https://abc123.ngrok-free.
 
 **Note**: You only need the Django tunnel. Vite will serve assets locally on port 8234, and the Django tunnel will proxy requests to it.
 
-## Step 2: Configure PostHog Environment Variables
+## Step 2: Configure Flind Environment Variables
 
-Create a `.env.vercel` file in the PostHog root directory with your ngrok URL (copy from `.env.vercel.example` in this directory)
+Create a `.env.vercel` file in the Flind root directory with your ngrok URL (copy from `.env.vercel.example` in this directory)
 
 ```bash
 # Enable HTTPS mode for local development
@@ -66,7 +66,7 @@ In your Vercel integration settings:
 
 ## Step 4: Start Development Servers
 
-Run PostHog with 1Password to load the Vercel credentials:
+Run Flind with 1Password to load the Vercel credentials:
 
 ```bash
 op run --env-file=.env.vercel -- bin/start
@@ -86,14 +86,14 @@ Vercel marketplace integrations have two separate flows:
 
 1. **Installation Flow** (API-based):
    - Endpoint: `/api/vercel/v1/installations/{id}`
-   - Triggered by API calls from Vercel to PostHog
+   - Triggered by API calls from Vercel to Flind
    - No user-facing web page
-   - Creates the integration record in PostHog
+   - Creates the integration record in Flind
 
 2. **SSO Flow** (web-based):
    - Endpoint: `/login/vercel/`
    - Triggered when user clicks "Connect Account" in Vercel
-   - Authenticates the user and links their PostHog account
+   - Authenticates the user and links their Flind account
    - Returns user back to Vercel using the `url` parameter
 
 ### Connectable Account Flow (Link Existing Account)
@@ -101,15 +101,15 @@ Vercel marketplace integrations have two separate flows:
 When a user clicks "Link Existing Account" in the Vercel Marketplace:
 
 1. Vercel opens a popup to our **Redirect URL** (`/connect/vercel/callback`) with an OAuth code
-2. The Marketplace request has no `state`. PostHog exchanges the Marketplace code for an access token via `POST /v2/oauth/access_token` and keeps that grant, encrypted, in the cache for 10 minutes. The resource import must use this grant, because Vercel waits for the import on the Marketplace installation
-3. PostHog sends the popup to Vercel's external install page (`https://vercel.com/integrations/{VERCEL_INTEGRATION_SLUG}/new`) with a random `state`, and stores the same value in a host-only `__Host-` cookie. PostHog keeps the Marketplace's `next` link for the return, and a browser holds at most a few pending `state` cookies
-4. Vercel returns to the Redirect URL with `source=external`, a new code, and the same `state`. PostHog rejects the request when the browser has no matching cookie, or when the request has no `state`. PostHog exchanges the new code only to confirm that it belongs to the same Vercel user as the Marketplace code, and the link session carries the Marketplace grant
+2. The Marketplace request has no `state`. Flind exchanges the Marketplace code for an access token via `POST /v2/oauth/access_token` and keeps that grant, encrypted, in the cache for 10 minutes. The resource import must use this grant, because Vercel waits for the import on the Marketplace installation
+3. Flind sends the popup to Vercel's external install page (`https://vercel.com/integrations/{VERCEL_INTEGRATION_SLUG}/new`) with a random `state`, and stores the same value in a host-only `__Host-` cookie. Flind keeps the Marketplace's `next` link for the return, and a browser holds at most a few pending `state` cookies
+4. Vercel returns to the Redirect URL with `source=external`, a new code, and the same `state`. Flind rejects the request when the browser has no matching cookie, or when the request has no `state`. Flind exchanges the new code only to confirm that it belongs to the same Vercel user as the Marketplace code, and the link session carries the Marketplace grant
 5. If the user isn't logged in, they're redirected to `/login` first
-6. The user selects which PostHog organization to link
+6. The user selects which Flind organization to link
 7. An `OrganizationIntegration` record is created with `type=connectable`
 8. The popup closes and returns the user to Vercel
 
-Billing stays with PostHog for connected accounts - no billing provider migration is needed.
+Billing stays with Flind for connected accounts - no billing provider migration is needed.
 
 ## Troubleshooting
 
@@ -183,7 +183,7 @@ Before releasing changes to the Vercel integration, manually verify the followin
 
 #### Scenario 1: Brand New User Installation
 
-**Setup**: Use an email that doesn't exist in PostHog
+**Setup**: Use an email that doesn't exist in Flind
 
 1. Start ngrok, Django, and Vite as described above
 2. In Vercel, navigate to your integration and click "Install"
@@ -192,16 +192,16 @@ Before releasing changes to the Vercel integration, manually verify the followin
 **Expected**:
 
 - [ ] Installation completes without errors
-- [ ] New organization is created in PostHog
+- [ ] New organization is created in Flind
 - [ ] New user is created with the email from Vercel
 - [ ] User is added as Owner of the organization
 - [ ] Click "Connect Account" → SSO works immediately (no login required)
 
-#### Scenario 2: Existing PostHog User (No Prior Vercel)
+#### Scenario 2: Existing Flind User (No Prior Vercel)
 
-**Setup**: Create a PostHog account manually with an email, then use that email in Vercel
+**Setup**: Create a Flind account manually with an email, then use that email in Vercel
 
-1. Create a user in PostHog: `User.objects.create_user(email="test@example.com", password="test")`
+1. Create a user in Flind: `User.objects.create_user(email="test@example.com", password="test")`
 2. In Vercel, install with the same email
 
 **Expected**:
@@ -210,7 +210,7 @@ Before releasing changes to the Vercel integration, manually verify the followin
 - [ ] New organization is created
 - [ ] Existing user is added as Owner of the new organization
 - [ ] Click "Connect Account" → SSO logs in the existing account when Vercel's signed token has a verified, matching email
-- [ ] Accounts with 2FA or enforced SSO, or without a verified matching email, still require PostHog login
+- [ ] Accounts with 2FA or enforced SSO, or without a verified matching email, still require Flind login
 
 #### Scenario 3: Trusted Vercel User (Second Installation)
 
@@ -241,18 +241,18 @@ Before releasing changes to the Vercel integration, manually verify the followin
 
 #### Scenario 5: Link Existing Account (Connectable Account)
 
-**Setup**: Have an existing PostHog account with admin access to an organization
+**Setup**: Have an existing Flind account with admin access to an organization
 
-1. In the Vercel Marketplace, click "Add" on the PostHog integration
+1. In the Vercel Marketplace, click "Add" on the Flind integration
 2. Choose "Link Existing Account"
-3. A popup opens — log in with your PostHog credentials
+3. A popup opens — log in with your Flind credentials
 4. Select an organization from the dropdown
 5. Click "Connect organization"
 
 **Expected**:
 
 - [ ] Popup passes through Vercel's install page once, then returns to `/connect/vercel/callback` with a `state` parameter
-- [ ] Popup opens to PostHog login page (if not already logged in)
+- [ ] Popup opens to Flind login page (if not already logged in)
 - [ ] After login, org selector is shown with orgs where user is admin/owner
 - [ ] Already-linked orgs are not available for selection
 - [ ] Clicking "Connect organization" shows success message
@@ -288,7 +288,7 @@ for oi in OrganizationIntegration.objects.filter(kind="vercel"):
 2. In Vercel, navigate to your integration and click "Install"
 3. Follow the installation flow
 4. Click "Connect Account" to test SSO
-5. You should be redirected to PostHog, authenticate, and return to Vercel
+5. You should be redirected to Flind, authenticate, and return to Vercel
 
 ## Clean Up
 
@@ -307,6 +307,6 @@ direnv deny
 
 ## References
 
-- [PostHog SSL Setup Documentation](../contents/handbook/engineering/setup-ssl-locally.md)
+- [Flind SSL Setup Documentation](../contents/handbook/engineering/setup-ssl-locally.md)
 - [Vercel Marketplace API Docs](https://vercel.com/docs/integrations/create-integration/marketplace-api)
 - [ngrok Documentation](https://ngrok.com/docs)

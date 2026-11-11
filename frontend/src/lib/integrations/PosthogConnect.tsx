@@ -77,7 +77,7 @@ function PosthogConnectionRow({ integration }: { integration: IntegrationType })
             </div>
             <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
-                    <span className="font-semibold">{integration.display_name || 'PostHog'}</span>
+                    <span className="font-semibold">{integration.display_name || 'Flind'}</span>
                     <span className="text-xs text-muted bg-surface-secondary px-1.5 py-0.5 rounded">
                         {region} region
                     </span>

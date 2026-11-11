@@ -1,6 +1,6 @@
-"""Record a captioned, PostHog-branded walkthrough video of a flow on the local stack.
+"""Record a captioned, Flind-branded walkthrough video of a flow on the local stack.
 
-Run from the root of a PostHog checkout, with the stack up:
+Run from the root of a Flind checkout, with the stack up:
 
     uv run python .agents/skills/recording-demo-videos/scripts/record_demo.py storyboard.json
 
@@ -60,7 +60,7 @@ VOICE_TAIL_SECONDS = 0.35
 SECRET_NAME = re.compile(r"(?:^|_)(?:KEY|TOKEN|SECRET|PASSWORD)$", re.IGNORECASE)
 # Shorter secret values are too common to mask safely by value. The `$NAME` placeholder still hides them.
 MIN_MASKED_LENGTH = 8
-# PostHog's secret key formats, such as a key that a response body returns. `phc_` is public.
+# Flind's secret key formats, such as a key that a response body returns. `phc_` is public.
 SECRET_TOKEN = re.compile(r"\b(ph[xshare])_[A-Za-z0-9_-]{16,}")
 STICKER_POSITIONS = {
     "bottom-right": "right:56px;bottom:120px",
@@ -90,7 +90,7 @@ console.log(JSON.stringify(out))
 
 
 class Brand:
-    """PostHog brand assets from the @posthog/brand package the frontend already depends on."""
+    """Flind brand assets from the @posthog/brand package the frontend already depends on."""
 
     def __init__(self, repo_root: Path) -> None:
         self.package = repo_root / "frontend" / "node_modules" / "@posthog" / "brand" / "dist"

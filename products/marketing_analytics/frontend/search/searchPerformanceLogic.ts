@@ -312,8 +312,8 @@ export const searchPerformanceLogic = kea<searchPerformanceLogicType>([
                     return 'Reported conversions require synced ad platform data. Check your source settings or filters. Google Search Console only reports organic traffic.'
                 }
                 return conversionGoals.length > 0
-                    ? 'Turn on "Include conversion goals" to see PostHog conversions for organic landing pages.'
-                    : 'Configure a conversion goal in marketing analytics settings to see PostHog conversions for organic landing pages.'
+                    ? 'Turn on "Include conversion goals" to see Flind conversions for organic landing pages.'
+                    : 'Configure a conversion goal in marketing analytics settings to see Flind conversions for organic landing pages.'
             },
         ],
         displayMetrics: [

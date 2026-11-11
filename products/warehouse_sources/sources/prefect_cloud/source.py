@@ -56,7 +56,7 @@ class PrefectCloudSource(ResumableSource[PrefectCloudSourceConfig, PrefectCloudR
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Prefect Cloud",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Prefect Cloud account ID, workspace ID, and an API key to pull your flows, runs, logs, artifacts, and events into the PostHog Data warehouse.
+            caption="""Enter your Prefect Cloud account ID, workspace ID, and an API key to pull your flows, runs, logs, artifacts, and events into the Flind Data warehouse.
 
 Both IDs are in your workspace URL: `https://app.prefect.cloud/account/<account ID>/workspace/<workspace ID>`.
 

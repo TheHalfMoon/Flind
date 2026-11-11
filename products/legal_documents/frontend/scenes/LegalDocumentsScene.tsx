@@ -61,11 +61,11 @@ function buildNewMenuItems(existingTypes: Set<LegalDocumentType>, baaBlockedReas
                         <div className="flex flex-col text-sm py-1">
                             <strong>Master Service Agreement (MSA)</strong>
                             <span className="text-xs font-normal text-muted">
-                                Negotiated with sales — contact your TAM or PostHog support to sign one.
+                                Negotiated with sales — contact your TAM or Flind support to sign one.
                             </span>
                         </div>
                     ),
-                    disabledReason: 'MSAs are negotiated by sales. Contact your TAM or PostHog support to sign an MSA.',
+                    disabledReason: 'MSAs are negotiated by sales. Contact your TAM or Flind support to sign an MSA.',
                     'data-attr': 'new-legal-document-menu-msa',
                 },
             ],
@@ -95,7 +95,7 @@ export function LegalDocumentsScene(): JSX.Element {
                     scope={settingsSectionSceneScope('organization-legal-documents')}
                 />
                 <LemonBanner type="info">
-                    <p className="mb-0">Legal documents are only available on PostHog Cloud.</p>
+                    <p className="mb-0">Legal documents are only available on Flind Cloud.</p>
                 </LemonBanner>
             </SceneContent>
         )

@@ -43,7 +43,7 @@ class OncehubSource(ResumableSource[OncehubSourceConfig, OncehubResumeConfig]):
             label="OnceHub",
             releaseStatus=ReleaseStatus.GA,
             keywords=["scheduleonce", "scheduling", "booking"],
-            caption="""Enter your OnceHub API key to pull your scheduling and booking data into the PostHog Data warehouse.
+            caption="""Enter your OnceHub API key to pull your scheduling and booking data into the Flind Data warehouse.
 
 You can generate an API key in [OnceHub](https://app.oncehub.com) under **Settings → API & Webhooks**. The key is shown only once at creation, so copy it right away. It grants read access to your bookings, booking calendars, booking pages, master pages, event types, contacts, users, and teams.
 """,

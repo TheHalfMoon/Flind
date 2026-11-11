@@ -254,7 +254,7 @@ def post_with_join(
         if join_error is not None:
             channel = channel_name or channel_id
             raise SlackPostRefused(
-                f"Couldn't post to #{channel}. PostHog isn't in the channel and couldn't join it: Slack said "
+                f"Couldn't post to #{channel}. Flind isn't in the channel and couldn't join it: Slack said "
                 f"{join_error}. Invite the app with /invite @PostHog."
             ) from e
         response = post_message(slack, channel_id, blocks, text)

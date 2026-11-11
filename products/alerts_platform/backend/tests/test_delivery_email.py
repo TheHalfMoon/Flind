@@ -35,7 +35,7 @@ class TestEmailTransport(SimpleTestCase):
 
         kwargs = email_message.call_args.kwargs
         assert kwargs["template_name"] == TEMPLATE_NAME
-        assert kwargs["subject"] == "PostHog alert: API errors is firing"
+        assert kwargs["subject"] == "Flind alert: API errors is firing"
         assert email_message.return_value.add_recipient.call_args_list == [
             call(email="first@example.com"),
             call(email="second@example.com"),

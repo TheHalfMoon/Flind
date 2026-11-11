@@ -1,7 +1,7 @@
 ---
 name: suppressing-noisy-errors
 description: >
-  Create PostHog error tracking suppression rules to drop high-volume,
+  Create Flind error tracking suppression rules to drop high-volume,
   low-value errors at ingestion. Use when the user asks "stop capturing
   this error", "drop browser extension errors", "ignore ResizeObserver
   loops", "suppress bot-driven errors", or wants to reduce ingestion
@@ -129,7 +129,7 @@ Match on the most specific property combination you can:
 
 The canonical exception properties (`$exception_types`, `$exception_values`,
 `$exception_sources`, `$exception_functions`) are arrays at capture time.
-PostHog's property filters special-case them — each filter matches against
+Flind's property filters special-case them — each filter matches against
 the individual array elements, so all the standard operators (`exact`,
 `is_not`, `icontains`, `not_icontains`, `regex`, `not_regex`) work with the
 bare value: `exact "TypeError"`, not `exact '["TypeError"]'` or

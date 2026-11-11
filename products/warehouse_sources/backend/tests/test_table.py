@@ -821,7 +821,7 @@ class TestGetHogqlFieldForColumn(SimpleTestCase):
 
 class TestUrlPatternChangeGuard(BaseTest):
     # A table with no credential is read by ClickHouse under the node's own S3 role, so its
-    # url_pattern is only safe to trust because PostHog computed it. This guards that invariant at
+    # url_pattern is only safe to trust because Flind computed it. This guards that invariant at
     # the model layer so any writer (not just the REST API) is refused by default.
     def _credential_less_table(
         self, url_pattern: str = "https://posthog-owned.example/team_1/x.csv"

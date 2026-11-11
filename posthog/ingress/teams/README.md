@@ -74,7 +74,7 @@ Checking the audience first also means an instance with no bot registration buys
 
 **Two certification paths must run in this region and must never be forwarded.**
 The Teams Store certification requires a reply to a command message such as "help" even from a tenant that never finished OAuth, and a proactive welcome when the bot is added to a conversation.
-Neither needs a tenant that PostHog knows, so the consumer answers `UNDECIDED` for both and the delivery runs here exactly once.
+Neither needs a tenant that Flind knows, so the consumer answers `UNDECIDED` for both and the delivery runs here exactly once.
 A regular message from a tenant the other region holds answers `ELSEWHERE`, and the local run of that delivery is a no-op.
 
 **The tenant lookup runs under a bounded statement timeout, and a lookup that spends it raises rather than answering.**

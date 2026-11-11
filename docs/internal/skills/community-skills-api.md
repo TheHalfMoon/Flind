@@ -93,12 +93,12 @@ trusting the sync:
 
 - Bundled file paths and sizes are re-checked with the same guards as normal skill creation.
 - The target name is held to the rule a new store skill is held to, which refuses the name of a skill
-  PostHog bundles (`bundled_skill_names()` in `products/skills/backend/bundled_skills.py`). Both sets
+  Flind bundles (`bundled_skill_names()` in `products/skills/backend/bundled_skills.py`). Both sets
   of skills reach an agent host under one name space, so a store skill under a bundled name leaves the
   host unable to tell which skill an agent asked for. Install such an entry under a different
   `new_name`.
 - Installs into auto-running namespaces are refused: the `signals-scout-` and `review-hog-` prefixes,
-  whose skills PostHog registers and runs on its own (Signals scouts run with privileged scopes,
+  whose skills Flind registers and runs on its own (Signals scouts run with privileged scopes,
   ReviewHog skills auto-enable in a team's PR reviews). The whole `review-hog-` prefix is reserved,
   not only ReviewHog's canonical names, because `products.skills` can't import `products.review_hog`
   to read that list — `review_hog` already depends on `skills`, so the import would cycle. Install a
@@ -140,7 +140,7 @@ After a conflict, retrieve the skill again and require new consent before anothe
   with several keys would otherwise get a fresh budget with each of them. The API-shaped
   `BurstRateThrottle` would not fire here at all: it only counts personal-API-key traffic.
 - The slug is held to the same rule ingest applies (`SKILL_NAME_PATTERN`, no reserved name, no name
-  PostHog bundles), and body,
+  Flind bundles), and body,
   file count, and per-file size to the same caps, so a publish that ingest would silently drop is
   refused before the pull request exists. The manifest is also checked for paths that differ only by
   case and for a name used as both a file and a folder, neither of which a git tree can hold.
@@ -157,7 +157,7 @@ After a conflict, retrieve the skill again and require new consent before anothe
 - `display_name` is capped at 64 characters to match `CommunitySkill.name`. A longer name would pass
   review and then be dropped by ingest, so the skill would never appear in the catalog.
 - `author_handle` is validated against GitHub's username shape, and is self-reported. Nothing checks it
-  against the publisher's PostHog account, so the PR body presents it as a handle the publisher gave.
+  against the publisher's Flind account, so the PR body presents it as a handle the publisher gave.
 - Bundled files are text only. `CommunitySkillFile.content` is a `TextField` and the renderer takes
   `str`, so a skill referencing an image or other binary asset cannot round-trip through the catalog.
 - Community publishing also checks the smaller limits in `PostHog/community-skills/scripts/build_registry.py`: at most 256 KiB (262,144 bytes) per bundled file and 1 MiB (1,048,576 bytes) for the body plus bundled files.
@@ -180,7 +180,7 @@ After a conflict, retrieve the skill again and require new consent before anothe
 | `COMMUNITY_SKILLS_GITHUB_REPO`            | Bare repo name to publish into. The owner comes from the installation's account.    |
 
 Publishing runs as its own dedicated GitHub App, installed on the publish repo alone. It does not
-fall back to the core `GITHUB_APP_*` App, which is installed across the whole PostHog org: a
+fall back to the core `GITHUB_APP_*` App, which is installed across the whole Flind org: a
 dedicated App cannot reach another repository whatever the publish path asks it for. One App serves
 every region, so the client id and the installation id hold the same value everywhere and only the
 private key is per-region. Any of the three being empty keeps publishing off.
@@ -199,7 +199,7 @@ three layers, and only the last one is code:
 
 1. **App registration.** The App declares `Contents: write`, `Pull requests: write`, and
    `Metadata: read`, and nothing else. No webhook, no user-authorization flow, so it has no client
-   secret and no webhook secret. Private, owned by the PostHog org. This is the ceiling on anything
+   secret and no webhook secret. Private, owned by the Flind org. This is the ceiling on anything
    the App can ever do.
 2. **Installation.** Installed with "Only select repositories" and the publish repo as the one
    selection. This caps the repo scope, and is why the core `GITHUB_APP_*` App cannot serve here.

@@ -43,7 +43,7 @@ class TeamcitySource(ResumableSource[TeamcitySourceConfig, TeamCityResumeConfig]
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="JetBrains TeamCity",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your TeamCity server URL and an access token to pull your CI/CD data into the PostHog Data warehouse.
+            caption="""Enter your TeamCity server URL and an access token to pull your CI/CD data into the Flind Data warehouse.
 
 Create an access token under **Your profile → Access Tokens** in TeamCity. The token inherits your user's permissions, so it can read every project and build you can see.""",
             iconPath="/static/services/teamcity.png",

@@ -20,7 +20,7 @@ export const DEFAULT_ANALYTICS_SIDEBAR: CustomizationApi = {
             },
             { id: 'pinned', title: 'Pinned', items: [{ type: 'list', source: 'pinned' }] },
             { id: 'recents', title: 'Recents', items: [{ type: 'list', source: 'recents' }] },
-            { id: 'by-posthog', title: 'By PostHog', icon: 'posthog', items: [{ type: 'list', source: 'by_posthog' }] },
+            { id: 'by-posthog', title: 'By Flind', icon: 'posthog', items: [{ type: 'list', source: 'by_posthog' }] },
             {
                 id: 'monitor',
                 title: 'Monitor',

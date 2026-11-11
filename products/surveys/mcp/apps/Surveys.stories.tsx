@@ -37,7 +37,7 @@ const activePopover: SurveyData = {
     questions: [
         {
             type: 'nps',
-            question: 'How likely are you to recommend PostHog to a friend or colleague?',
+            question: 'How likely are you to recommend Flind to a friend or colleague?',
         },
         {
             type: 'open',

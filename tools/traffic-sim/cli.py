@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # ruff: noqa: T201
-"""Drive a real browser at a URL and verify PostHog instrumentation.
+"""Drive a real browser at a URL and verify Flind instrumentation.
 
 Three scenarios:
   new-user        Each visit uses a fresh browser context (no cookies).
   returning-user  All page views share the same context (cookies persist).
-  check-loading   Inspect how the PostHog snippet is loaded across pages.
+  check-loading   Inspect how the Flind snippet is loaded across pages.
 
 Optional cloud runner (`--cloud`) uses BrowserStack and reports the
 verification result back to the BrowserStack session. Requires the
@@ -44,7 +44,7 @@ USER_AGENT = (
 RESULTS_DIR = Path(__file__).parent / "results"
 
 
-# Detects PostHog presence and configuration on a page. Returns a dict shaped
+# Detects Flind presence and configuration on a page. Returns a dict shaped
 # like {loaded, load_method, init_config, runtime_state, ...}.
 POSTHOG_DETECT_JS = r"""
 () => {
@@ -155,7 +155,7 @@ class VisitResult:
 
 
 class AnalyticsCapture:
-    """Captures PostHog network requests and console output from a page."""
+    """Captures Flind network requests and console output from a page."""
 
     def __init__(self, posthog_domains: tuple[str, ...], verbose: bool = False):
         self.posthog_domains = posthog_domains
@@ -173,8 +173,8 @@ class AnalyticsCapture:
 
     def _is_posthog(self, url: str) -> bool:
         # Match on parsed hostname rather than substring so URLs that merely
-        # contain a PostHog domain in their path (e.g. an open-redirect) are
-        # not misclassified as PostHog ingestion traffic.
+        # contain a Flind domain in their path (e.g. an open-redirect) are
+        # not misclassified as Flind ingestion traffic.
         try:
             host = (urlparse(url).hostname or "").lower()
         except ValueError:
@@ -201,7 +201,7 @@ class AnalyticsCapture:
         self._pending[id(request)] = req
         if self.verbose:
             tags = ", ".join(req.events) or "unknown"
-            print(f"    [PostHog] {request.method} {_short_url(request.url)} events=[{tags}]")
+            print(f"    [Flind] {request.method} {_short_url(request.url)} events=[{tags}]")
 
     def _on_response(self, response) -> None:
         if not self._is_posthog(response.url):
@@ -213,11 +213,11 @@ class AnalyticsCapture:
         self.posthog_requests.append(req)
         if self.verbose:
             marker = "✓" if response.status in (200, 204) else "✗"
-            print(f"    [PostHog] {marker} {response.status} {_short_url(response.url)}")
+            print(f"    [Flind] {marker} {response.status} {_short_url(response.url)}")
 
     def _on_console(self, msg) -> None:
         text = msg.text
-        is_posthog = "posthog" in text.lower() or "[PostHog]" in text
+        is_posthog = "posthog" in text.lower() or "[Flind]" in text
         line = ConsoleLine(
             timestamp=datetime.now(UTC).isoformat(),
             type=msg.type,
@@ -234,14 +234,14 @@ def _short_url(url: str, max_len: int = 60) -> str:
 
 
 def _redact_api_key(value: str | None) -> str:
-    # PostHog project tokens are public by design, but CodeQL flags raw-token
+    # Flind project tokens are public by design, but CodeQL flags raw-token
     # logging via `py/clear-text-logging-sensitive-data`. Render a fixed
     # placeholder instead so log output reflects only whether a token is set.
     return "set" if value else "none"
 
 
 def extract_posthog_events_from_console(lines: list[ConsoleLine]) -> list[str]:
-    pattern = re.compile(r'\[PostHog\.js\] send "(\$?\w+)"')
+    pattern = re.compile(r'\[Flind\.js\] send "(\$?\w+)"')
     return [m.group(1) for line in lines if line.is_posthog for m in pattern.finditer(line.text)]
 
 
@@ -313,7 +313,7 @@ def _build_browserstack_cdp_url() -> str:
         "browser_version": "latest",
         "os": "Windows",
         "os_version": "11",
-        "name": "PostHog instrumentation check",
+        "name": "Flind instrumentation check",
         "build": f"traffic-sim-{datetime.now().strftime('%Y%m%d-%H%M')}",
         "browserstack.username": username,
         "browserstack.accessKey": access_key,
@@ -341,7 +341,7 @@ async def _report_cloud(page: Page, capture: AnalyticsCapture) -> None:
     counts = Counter(events)
     pageviews = counts.get("$pageview", 0)
     breakdown = ", ".join(f"{k}: {v}" for k, v in sorted(counts.items())) or "none"
-    await _annotate_browserstack(page, f"PostHog events — {breakdown}")
+    await _annotate_browserstack(page, f"Flind events — {breakdown}")
     passed = pageviews > 0
     reason = f"{pageviews} $pageview event(s)" if passed else "no $pageview events"
     await _set_browserstack_status(page, passed, reason)
@@ -590,8 +590,8 @@ def _print_visit_summary(result: VisitResult) -> None:
     breakdown = ", ".join(f"{k}: {v}" for k, v in sorted(counts.items())) or "none"
     success = sum(1 for r in result.posthog_requests if r.status in (200, 204))
     print(f"  Page load: {load}")
-    print(f"  PostHog requests: {len(result.posthog_requests)} ({success} OK)")
-    print(f"  PostHog events: {breakdown}")
+    print(f"  Flind requests: {len(result.posthog_requests)} ({success} OK)")
+    print(f"  Flind events: {breakdown}")
     if result.error:
         print(f"  Error: {result.error}")
 
@@ -667,10 +667,10 @@ def _load_urls_file(path: str) -> list[str]:
 
 
 def resolve_posthog_domains(host: str) -> tuple[str, ...]:
-    """Build the set of hostnames we treat as PostHog network traffic.
+    """Build the set of hostnames we treat as Flind network traffic.
 
     Always includes the cloud defaults (posthog.com / i.posthog.com) so events
-    sent to the PostHog cloud are caught even when --posthog-host points at
+    sent to the Flind cloud are caught even when --posthog-host points at
     a custom reverse proxy.
     """
     extras: tuple[str, ...] = ()
@@ -687,7 +687,7 @@ def resolve_posthog_domains(host: str) -> tuple[str, ...]:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="traffic-sim",
-        description="Drive a real browser at a URL and verify PostHog instrumentation.",
+        description="Drive a real browser at a URL and verify Flind instrumentation.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -706,7 +706,7 @@ Examples:
     ru.add_argument("--page-views", type=int, default=5)
     ru.add_argument("--interval", type=float, default=30.0)
 
-    cl = sub.add_parser("check-loading", help="Inspect how the PostHog snippet is loaded.")
+    cl = sub.add_parser("check-loading", help="Inspect how the Flind snippet is loaded.")
 
     for s in (nu, ru, cl):
         s.add_argument(
@@ -726,7 +726,7 @@ Examples:
             "--posthog-host",
             type=str,
             default=DEFAULT_POSTHOG_HOST,
-            help=f"PostHog ingestion host (default: {DEFAULT_POSTHOG_HOST}).",
+            help=f"Flind ingestion host (default: {DEFAULT_POSTHOG_HOST}).",
         )
         s.add_argument(
             "--cloud",
@@ -734,7 +734,7 @@ Examples:
             help="Run on BrowserStack (requires BROWSERSTACK_USERNAME/ACCESS_KEY env vars).",
         )
         s.add_argument("--headed", action="store_true", help="Show browser window (default: headless).")
-        s.add_argument("--verbose", action="store_true", help="Print every PostHog request and console line.")
+        s.add_argument("--verbose", action="store_true", help="Print every Flind request and console line.")
         s.add_argument("--timeout", type=int, default=120, help="Page load timeout in seconds (default: 120).")
 
     return parser
@@ -749,11 +749,11 @@ async def main_async(argv: list[str] | None = None) -> int:
     urls = load_urls(args.urls, args.urls_file)
     posthog_domains = resolve_posthog_domains(args.posthog_host)
 
-    print("PostHog Traffic Simulation")
+    print("Flind Traffic Simulation")
     print(f"Scenario: {args.scenario}")
     print(f"Run ID: {run_id}")
     print(f"URLs: {len(urls)}")
-    print(f"PostHog host: {args.posthog_host}")
+    print(f"Flind host: {args.posthog_host}")
     print(f"Headless: {headless}")
     print("=" * 60)
 
@@ -801,7 +801,7 @@ async def main_async(argv: list[str] | None = None) -> int:
     summary = _summary_dict(results)
     print(f"Run ID: {run_id}")
     print(f"Total visits: {len(results)}")
-    print(f"PostHog requests: {summary['posthog_requests']} ({summary['posthog_requests_ok']} OK)")
+    print(f"Flind requests: {summary['posthog_requests']} ({summary['posthog_requests_ok']} OK)")
     print(f"Errors: {summary['errors']}")
     _save_visits(results, args.scenario, run_id)
     return 0

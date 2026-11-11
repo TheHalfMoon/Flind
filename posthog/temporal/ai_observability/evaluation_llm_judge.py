@@ -904,7 +904,7 @@ def call_llm_judge(
                 }
                 logger.warning("judge_attachments_rejected", **context)
                 if not is_byok:
-                    # On a PostHog key this can mean broken presigned links or a refused PDF, so keep it visible.
+                    # On a Flind key this can mean broken presigned links or a refused PDF, so keep it visible.
                     capture_exception(
                         JudgeAttachmentsRejectedError(f"Provider rejected judge attachments ({status})"), context
                     )
@@ -933,7 +933,7 @@ def call_llm_judge(
         retry_delay = timedelta(seconds=e.retry_after) if e.retry_after is not None else None
         last = is_last_attempt(retry_delay) if backfill else _is_last_judge_attempt()
         # Decision endpoints raise this error for outages too (408, 503, 529). Only a 429 on the
-        # customer's own key is a limit that the customer sets and PostHog cannot act on.
+        # customer's own key is a limit that the customer sets and Flind cannot act on.
         customer_limited = is_byok and e.status == 429
         if customer_limited:
             if last and not backfill:
@@ -1042,7 +1042,7 @@ def call_llm_judge(
             is_byok=is_byok,
         )
     except StructuredOutputParseError as e:
-        # Skip rather than raise: non-conforming model output is not a PostHog defect, and raising
+        # Skip rather than raise: non-conforming model output is not a Flind defect, and raising
         # files a new error tracking issue on each deploy, because the fingerprint follows the stack.
         increment_errors("parse_error", provider=provider)
         logger.warning(
@@ -1128,7 +1128,7 @@ def call_llm_judge(
 
     except Exception as e:
         rejected_status = _rejected_request_status(e)
-        # On a PostHog key a rejection is our bug, so it falls through to error tracking below.
+        # On a Flind key a rejection is our bug, so it falls through to error tracking below.
         if rejected_status is not None and is_byok:
             # A single bad input and a bad configuration look the same here, so skip this run and
             # leave the evaluation and its key alone.

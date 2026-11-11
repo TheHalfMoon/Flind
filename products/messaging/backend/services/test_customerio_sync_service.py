@@ -26,7 +26,7 @@ class TestCustomerIOSyncService(BaseTest):
         )
         self.cat_7 = MessageCategory.objects.create(team=self.team, key="customerio_topic_7", name="Product updates")
         self.cat_8 = MessageCategory.objects.create(team=self.team, key="customerio_topic_8", name="Newsletter")
-        # A PostHog-only category — should NOT be synced
+        # A Flind-only category — should NOT be synced
         self.cat_posthog = MessageCategory.objects.create(team=self.team, key="internal_updates", name="Internal")
 
     @patch("products.messaging.backend.services.customerio_sync_service.CustomerIOTrackClient")
@@ -117,7 +117,7 @@ class TestCustomerIOSyncService(BaseTest):
         mock_client = MagicMock()
         mock_client_class.return_value = mock_client
 
-        # Team has only PostHog-native categories, no customerio_* ones
+        # Team has only Flind-native categories, no customerio_* ones
         MessageCategory.objects.filter(team=self.team, key__startswith="customerio_").delete()
 
         prefs = {ALL_MESSAGE_PREFERENCE_CATEGORY_ID: PreferenceStatus.OPTED_OUT.value}

@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 8 enabled ops
+ * Flind API - MCP 8 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -47,7 +47,7 @@ export const DataQualityChecksCreateBody = () => zod
             .describe(
                 "Kind of object to check: 'table', 'view', 'metric', or 'posthog_table'.\n\n\* `table` - table\n\* `view` - view\n\* `metric` - metric\n\* `posthog_table` - posthog_table"
             ),
-        subject_uuid: zod.string().describe('Id of the table, view, metric, or PostHog table to check.'),
+        subject_uuid: zod.string().describe('Id of the table, view, metric, or Flind table to check.'),
         column_name: zod
             .string()
             .max(dataQualityChecksCreateBodyColumnNameMax)
@@ -258,7 +258,7 @@ export const DataQualityChecksSchedulePartialUpdateBody = () => zod
             .describe(
                 "Kind of object: 'table', 'view', 'metric', or 'posthog_table'.\n\n\* `table` - table\n\* `view` - view\n\* `metric` - metric\n\* `posthog_table` - posthog_table"
             ),
-        subject_uuid: zod.string().optional().describe('Id of the table, view, metric, or PostHog table.'),
+        subject_uuid: zod.string().optional().describe('Id of the table, view, metric, or Flind table.'),
         interval: zod
             .enum(['1hour', '6hour', '12hour', '24hour', '7day'])
             .describe(

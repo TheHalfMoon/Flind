@@ -142,7 +142,7 @@ class CdcOpenDataSource(ResumableSource[CdcOpenDataSourceConfig, CdcOpenDataResu
             label="CDC Open Data (data.cdc.gov)",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["cdc", "public health", "socrata", "covid"],
-            caption="""Sync one or more datasets from [data.cdc.gov](https://data.cdc.gov) into the PostHog Data warehouse.
+            caption="""Sync one or more datasets from [data.cdc.gov](https://data.cdc.gov) into the Flind Data warehouse.
 
 Find a dataset's ID in its data.cdc.gov URL — for example `9bhg-hcku` in `https://data.cdc.gov/d/9bhg-hcku`. Browse the full catalog at [data.cdc.gov](https://data.cdc.gov).
 

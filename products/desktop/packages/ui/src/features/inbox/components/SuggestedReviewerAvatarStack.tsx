@@ -62,7 +62,7 @@ export function SuggestedReviewerAvatarStack({
   );
   const allReviewers = reviewerArtefact?.content ?? [];
   // The stack draws GitHub profile avatars, so it can only show reviewers who have a login. A
-  // reviewer identified by PostHog user alone still routes the report and belongs in the list;
+  // reviewer identified by Flind user alone still routes the report and belongs in the list;
   // they just have no avatar to draw here yet.
   const reviewers = allReviewers.filter(
     (reviewer): reviewer is SuggestedReviewer & { github_login: string } =>

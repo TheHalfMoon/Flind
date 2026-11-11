@@ -1,7 +1,7 @@
 ---
 name: working-with-autoresearch
 description: >
-  Use PostHog Autoresearch, agent-driven predictive models: ask "who will do X in the next N days?",
+  Use Flind Autoresearch, agent-driven predictive models: ask "who will do X in the next N days?",
   let an agent train a model, then score people daily into a person property and
   `autoresearch_prediction` events. Use when a user wants to predict churn, activity, return,
   feature adoption, conversion or any event or action per person; create or validate a model from a
@@ -18,8 +18,8 @@ description: >
 Autoresearch answers one standing question per model: **who in a population will do a target within a horizon?**
 For example, "which active users will open a report in the next 7 days?".
 
-1. The user names a **target** (an event or a PostHog action), a **population** and a **horizon** in days.
-2. A training agent runs in a PostHog sandbox. It writes feature SQL and a model, scores each experiment on a holdout set, keeps what improves holdout AUC and discards the rest.
+1. The user names a **target** (an event or a Flind action), a **population** and a **horizon** in days.
+2. A training agent runs in a Flind sandbox. It writes feature SQL and a model, scores each experiment on a holdout set, keeps what improves holdout AUC and discards the rest.
 3. The server picks the **champion** from the kept experiments. The agent proposes; the backend decides.
 4. Every cadence (daily by default, at 02:00 UTC), the champion scores the inference population.
    Each scored person gets an `autoresearch_prediction` event with their probability.
@@ -30,10 +30,10 @@ For example, "which active users will open a report in the next 7 days?".
    With `research_interval_days` null the model trains only when someone asks. A champion that cannot score still gets a short rescue run.
    `training_phase` and `next_research_at` on `posthog:autoresearch-retrieve` say where the model is.
 
-In the PostHog UI the entity is a **model**. The API and tools call it a **pipeline**. Use "model" when you talk to people.
+In the Flind UI the entity is a **model**. The API and tools call it a **pipeline**. Use "model" when you talk to people.
 
 Autoresearch is behind the `autoresearch` feature flag.
-Training runs in a cloud sandbox, so it also needs PostHog Desktop access.
+Training runs in a cloud sandbox, so it also needs Flind Desktop access.
 If the `autoresearch-*` tools are missing, the project probably does not have access yet.
 
 ## Pick the job
@@ -53,7 +53,7 @@ The usual path is short. Each tool's description names its prerequisites and ref
 1. **Resolve or define.** Templates cover the common questions (activity, inactivity risk, return after first use, feature adoption, repeat behavior). A custom definition works when none fits. See [defining-a-question.md](references/defining-a-question.md).
 2. **Validate.** `posthog:autoresearch-validate-create` with the same target, horizon, lookback and populations you will create with. It returns the base rate, positive and negative counts and warnings. Fix anything that sets `can_proceed` to false, and tell the user about the non-blocking warnings.
 3. **Create.** `posthog:autoresearch-create`. The new model is a `draft` until training starts.
-4. **Train.** `posthog:autoresearch-train-create` starts an agent run that takes a while (often tens of minutes). It costs real sandbox and LLM time, so confirm with the user before you start one, and never start a second run while one is live. A 403 means either the call came from inside a sandbox (ask the user to click **Start training** on the model's page) or the user has no PostHog Desktop access (the page will refuse too). Read the error message to tell them apart.
+4. **Train.** `posthog:autoresearch-train-create` starts an agent run that takes a while (often tens of minutes). It costs real sandbox and LLM time, so confirm with the user before you start one, and never start a second run while one is live. A 403 means either the call came from inside a sandbox (ask the user to click **Start training** on the model's page) or the user has no Flind Desktop access (the page will refuse too). Read the error message to tell them apart.
 5. **Wait.** Poll `posthog:autoresearch-training-runs-list` at a relaxed pace. While the first run is in progress the model is `bootstrapping`, and a missing champion is normal.
 6. **Score.** After a champion is promoted, the next daily sweep scores the population. `posthog:autoresearch-score-create` scores today now; call it once, then poll `posthog:autoresearch-runs-list`. A second manual score for the same date can duplicate predictions.
 
@@ -94,8 +94,8 @@ A healthy run can show 0 iterations while its experiments are already recorded, 
 
 ## Bring your own agent
 
-An agent outside PostHog (on a laptop, for example) can train a model for an existing pipeline.
+An agent outside Flind (on a laptop, for example) can train a model for an existing pipeline.
 It opens a run with `posthog:autoresearch-training-runs-create`, records each experiment with `posthog:autoresearch-training-runs-iterations-create`, uploads its bundle with `posthog:autoresearch-training-runs-artifacts-upload-create`, and finishes with `posthog:autoresearch-training-runs-complete-create`.
-It pulls training data with `posthog:execute-sql`, because `posthog:autoresearch-materialize-features` writes only into a PostHog sandbox.
+It pulls training data with `posthog:execute-sql`, because `posthog:autoresearch-materialize-features` writes only into a Flind sandbox.
 Read `posthog:autoresearch-training-runs-history` first to reuse what earlier runs on the same target learned.
 The iteration tool's description is the contract for valid feature SQL: read it in full before the first iteration.

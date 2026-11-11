@@ -13,7 +13,7 @@ class BenchmarkCase(BaseModel, frozen=True):
     case_id: str = Field(pattern=r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
     split: str | None
     domain: str | None
-    # The PostHog team and session: production's scan inputs are fetched by them, and a deletion reaches the case by them.
+    # The Flind team and session: production's scan inputs are fetched by them, and a deletion reaches the case by them.
     team_id: int
     session_id: str
     product_context: str = ""

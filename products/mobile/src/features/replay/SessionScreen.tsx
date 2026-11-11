@@ -90,7 +90,7 @@ function SessionContent({
                 <StateView
                     icon={<RecordingIcon size={iconSizes.empty} color={colors.tertiary} />}
                     title="Sessions aren't in the demo"
-                    message="Sign in to your PostHog project to see its recordings."
+                    message="Sign in to your Flind project to see its recordings."
                     testID="session-demo"
                 />
             </Frame>
@@ -320,7 +320,7 @@ function SessionBody({ recording, t, source, onBack }: SessionBodyProps): ReactE
                         ? [
                               {
                                   key: 'web',
-                                  label: 'Open in PostHog',
+                                  label: 'Open in Flind',
                                   Icon: ExternalLinkIcon,
                                   onPress: openFull,
                                   disabled: !safeWebUrl,

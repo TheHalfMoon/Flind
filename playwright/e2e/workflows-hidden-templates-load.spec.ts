@@ -29,7 +29,7 @@ function buildWorkflowWithCaptureStep(): Record<string, any> {
             {
                 id: CAPTURE_NODE_ID,
                 type: 'function',
-                name: 'Capture a PostHog event',
+                name: 'Capture a Flind event',
                 description: '',
                 created_at: 0,
                 updated_at: 0,
@@ -75,7 +75,7 @@ test.describe('Workflows hidden built-in templates load', () => {
         // class we want to catch (a server-side filter that strips hidden templates).
         await playwrightSetup.seedHogFunctionTemplate({
             template_id: 'template-posthog-capture',
-            name: 'Capture a PostHog event',
+            name: 'Capture a Flind event',
             status: 'hidden',
             template_type: 'destination',
             inputs_schema: [

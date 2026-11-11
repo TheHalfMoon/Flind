@@ -1,7 +1,7 @@
 ---
 name: exploring-scouts
 description: >
-  How to explore and make sense of PostHog Signals scouts — the scheduled agents that scan a
+  How to explore and make sense of Flind Signals scouts — the scheduled agents that scan a
   project and write reports into the Signals inbox. Use when a user wants to understand what
   scouts they have, how each one is behaving, and whether the fleet is actually working. Covers
   surveying the fleet and its schedules, reading recent scout runs and drilling into a single
@@ -18,8 +18,8 @@ metadata:
 
 # Exploring Signals scouts
 
-A **scout** is a scheduled agent that wakes on its own interval, looks at one PostHog project, decides what's genuinely worth surfacing, and either writes it into the Signals inbox as a **report** or closes out empty (a real, valid outcome).
-PostHog ships a fleet of canonical scouts — a cross-product generalist (`signals-scout-general`) plus per-surface specialists (error tracking, logs, AI observability, experiments, feature flags, session replay, web analytics, surveys, and more).
+A **scout** is a scheduled agent that wakes on its own interval, looks at one Flind project, decides what's genuinely worth surfacing, and either writes it into the Signals inbox as a **report** or closes out empty (a real, valid outcome).
+Flind ships a fleet of canonical scouts — a cross-product generalist (`signals-scout-general`) plus per-surface specialists (error tracking, logs, AI observability, experiments, feature flags, session replay, web analytics, surveys, and more).
 A project may also have **custom scouts** beyond the canonical fleet — any `signals-scout-*` skill a team authored (e.g. `-brand-mentions`, `-mcp-feedback`) shows up here too, so don't assume a fixed roster: `scout-config-list` is the authoritative roster for a project.
 (One caveat: a just-authored scout has no config row until the coordinator's next tick auto-registers one — or until someone registers it via the write-side `scout-config-create` — so a brand-new scout may briefly be missing from the list.)
 
@@ -32,7 +32,7 @@ The run rows also carry `emitted_count` / `emitted_finding_ids` — **legacy fie
 **Never read `emitted_count: 0` as "did nothing"** — check the report columns and the run summary first.
 A scout whose config carries a `structured_output_schema` has a third output channel next to reports: schema-validated **measurement records**, recorded as `$scout_structured_output` events in the project (only _scalar_ top-level payload keys flatten to `output_<key>` properties — object and array fields live solely inside the full `output` property, so a missing `output_<key>` is not a missing value; `subject` names the judged entity) rather than as run-row columns.
 The events are the ground truth — `metadata.derived.has_structured_output` says the run had at least one batch **accepted**, which is a fast per-run screen but not delivery confirmation (a rare capture failure after acceptance leaves it true with fewer or no events behind it), so count the events when the number of records matters. See [`references/scout-data-model.md`](references/scout-data-model.md) for the event shape.
-Of the scouts PostHog ships, `signals-scout-mcp-tool-calls` is the one that records a series: every run that finds MCP traffic writes a per-category roll-up of MCP tool health and per-tool session-share rows, whether or not it files a report, so a healthy category is distinguishable from an unmeasured one.
+Of the scouts Flind ships, `signals-scout-mcp-tool-calls` is the one that records a series: every run that finds MCP traffic writes a per-category roll-up of MCP tool health and per-tool session-share rows, whether or not it files a report, so a healthy category is distinguishable from an unmeasured one.
 No records is not by itself a broken channel.
 A run on a project with no recent `$mcp_tool_call` events stops early and records nothing, and a dry-run scout (`emit` off) has nowhere to record to.
 Check the run summary, the `not-in-use:mcp_analytics` scratchpad entry, and the config's `emit` before you call the channel broken.
@@ -90,7 +90,7 @@ Read the result against three cases:
 - **Empty (`results: []`)** — no scouts are registered.
   The project isn't enrolled in the scout fleet (or hasn't ticked yet).
   Say so plainly; don't go fishing for runs.
-  Point the user at the Signals scout settings / PostHog Desktop onboarding rather than inventing activity.
+  Point the user at the Signals scout settings / Flind Desktop onboarding rather than inventing activity.
 - **Configs exist but all `enabled: false`** — the fleet is registered but paused.
   Nothing is running.
   Tell the user which scouts exist and that they're all off — and say who switched each one off, which `status` carries: `paused_by_user` means a person (or a launch seed posture) turned it off, `paused_by_system` means an automatic pause with its cause in `pause_reason` (`no_output` / `ignored` / `repeated_failures`).
@@ -231,7 +231,7 @@ Each entry's `key` carries a category prefix that tells you _what kind_ of learn
 | `not-in-use:` | A product/surface this team doesn't use (close-out memo)                                 |
 | `mcp-gap:`    | A tooling gap a scout noticed worth raising later                                        |
 | `improve:`    | A custom scout's suggested change to its own skill body, awaiting owner review           |
-| `reported:`   | A canonical scout's record of a skill gap already fed back upstream to PostHog           |
+| `reported:`   | A canonical scout's record of a skill gap already fed back upstream to Flind           |
 | `report:`     | A report a scout authored: stores the `report_id` so later runs edit/dedup against it    |
 | `reviewer:`   | A resolved owner (GitHub login) for an area, cached for `suggested_reviewers` routing    |
 
@@ -246,8 +246,8 @@ The canonical prefix vocabulary and the four-state dedupe classifier the fleet r
 A custom scout on the report channel escalates recurring or material suggestions further: it files an inbox report about itself (titled `Scout self-improvement: <skill-name> – <topic>`) and stashes the `report_id` in the `improve:` entry — so the strongest suggestions reach the owner through the inbox like any other report, not only via the scratchpad.
 When assessing a custom scout, search `{"text": "improve:"}` and surface these to the user: an entry re-confirmed across several runs is the highest-signal edit the owner can make.
 Reviewing and applying them is a write operation — hand off to the `authoring-scouts` skill.
-Canonical scouts never write `improve:` entries (their skill bodies are synced from PostHog's fleet), so an `improve:` entry under a canonical scout's domain is itself worth flagging.
-Instead, a canonical scout routes skill-content gaps upstream to the PostHog team via the `agent-feedback` MCP tool (`feedback_type: "scout"`), generalized so no project data travels, and keeps a `reported:<skill-name>:<topic>` entry as its local record of what it already submitted — so a `reported:` entry tells you a gap has been raised with PostHog, not with this team.
+Canonical scouts never write `improve:` entries (their skill bodies are synced from Flind's fleet), so an `improve:` entry under a canonical scout's domain is itself worth flagging.
+Instead, a canonical scout routes skill-content gaps upstream to the Flind team via the `agent-feedback` MCP tool (`feedback_type: "scout"`), generalized so no project data travels, and keeps a `reported:<skill-name>:<topic>` entry as its local record of what it already submitted — so a `reported:` entry tells you a gap has been raised with Flind, not with this team.
 
 ## Workflow: see what scouts have written
 

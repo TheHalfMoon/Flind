@@ -59,7 +59,7 @@ class ZendeskSellSource(ResumableSource[ZendeskSellSourceConfig, ZendeskSellResu
             # Zendesk Sell was formerly Base CRM; long-time users still search by the old name.
             keywords=["base crm", "base"],
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Zendesk Sell access token to pull your Sell (formerly Base CRM) data into the PostHog Data warehouse.
+            caption="""Enter your Zendesk Sell access token to pull your Sell (formerly Base CRM) data into the Flind Data warehouse.
 
 Create a personal access token under **Settings > Integrations > OAuth > Access Tokens** in Zendesk Sell. A read-only token is sufficient.""",
             iconPath="/static/services/zendesk_sell.png",

@@ -152,7 +152,7 @@ def _ensure_django_setup() -> None:
     The sandbox module transitively imports ``products.tasks.backend.models``
     which references Django ORM models, so we *do* have to call
     ``django.setup()``. Side-channel env vars suppress the parts of
-    PostHog's app-init that would otherwise connect to Postgres / Redis:
+    Flind's app-init that would otherwise connect to Postgres / Redis:
 
     - ``OPT_OUT_CAPTURE=1`` disables ``posthoganalytics`` self-capture
       (skips ``initialize_self_capture_api_token`` Postgres call in

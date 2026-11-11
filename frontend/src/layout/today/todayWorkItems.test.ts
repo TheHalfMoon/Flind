@@ -120,7 +120,7 @@ describe('todayWorkItems', () => {
         ['search ignores case', 'LOGIN', {}, ['mine', 'orphan', 'chat']],
         ['created by me keeps your chats', '', { createdBy: 'me' }, ['mine', 'chat']],
         ['created by others skips a deleted creator', '', { createdBy: 'others' }, ['theirs']],
-        ['source matches chats as PostHog AI', '', { sources: ['posthog_ai', 'slack'] }, ['orphan', 'chat']],
+        ['source matches chats as Flind AI', '', { sources: ['posthog_ai', 'slack'] }, ['orphan', 'chat']],
         ['search and filters combine', 'login', { createdBy: 'me', sources: ['user_created'] }, ['mine']],
         ['unread keeps unread sessions only', '', { status: 'unread' }, ['theirs']],
         ['pinned only keeps pinned sessions', '', { pinned: 'pinned' }, ['orphan']],

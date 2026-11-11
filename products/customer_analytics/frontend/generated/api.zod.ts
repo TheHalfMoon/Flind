@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -450,7 +450,7 @@ export const AccountsNotebooksPartialUpdateBody = /* @__PURE__ */ zod
 export const AccountsRelationshipsCreateBody = /* @__PURE__ */ zod
     .object({
         definition: zod.uuid().describe('Id of the relationship definition to assign.'),
-        user: zod.number().describe("PostHog user id of the assignee. Must be a member of the account's organization."),
+        user: zod.number().describe("Flind user id of the assignee. Must be a member of the account's organization."),
     })
     .describe('Input for assigning a user to an account relationship.')
 
@@ -632,7 +632,7 @@ export const AnnouncementsCreateBody = /* @__PURE__ */ zod.object({
         .describe('\* `bot` - SupportHog\n\* `user` - The person who created it')
         .default(announcementsCreateBodySendAsDefault)
         .describe(
-            "Slack identity the message is posted under: 'bot' posts as SupportHog, 'user' posts under the Slack name and avatar of the person sending it (matched by their PostHog email).\n\n\* `bot` - SupportHog\n\* `user` - The person who created it"
+            "Slack identity the message is posted under: 'bot' posts as SupportHog, 'user' posts under the Slack name and avatar of the person sending it (matched by their Flind email).\n\n\* `bot` - SupportHog\n\* `user` - The person who created it"
         ),
     channels: zod
         .array(zod.string())
@@ -1131,7 +1131,7 @@ export const CustomerTasksCreateBody = /* @__PURE__ */ zod.object({
     account_id: zod.uuid().nullish().describe('UUID of a visible account, or null for an accountless task.'),
     name: zod.string().max(customerTasksCreateBodyNameMax).describe('Task name.'),
     description: zod.string().nullish().describe('Task description, or null to leave it empty.'),
-    assigned_to_id: zod.number().nullish().describe('PostHog user ID to assign, or null to leave unassigned.'),
+    assigned_to_id: zod.number().nullish().describe('Flind user ID to assign, or null to leave unassigned.'),
     due_at: zod.iso.datetime({ offset: true }).nullish().describe('ISO 8601 deadline, or null for no deadline.'),
     status: zod
         .enum(['open', 'in_progress', 'completed', 'canceled'])

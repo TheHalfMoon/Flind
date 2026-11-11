@@ -28,7 +28,7 @@ _PSBOUNCER_PORT = 6432
 _HOST_CAPTION = (
     "In the PlanetScale dashboard, open your database and click **Connect** to create a role and "
     "read its connection details. Use the host it shows, which looks like "
-    f"`{_DIRECT_HOST_EXAMPLE}`. PlanetScale always connects over TLS, which PostHog uses by "
+    f"`{_DIRECT_HOST_EXAMPLE}`. PlanetScale always connects over TLS, which Flind uses by "
     "default. A read-only role is enough for syncing."
 )
 
@@ -124,7 +124,7 @@ class PlanetScalePostgresSource(PostgresSource):
             category=DataWarehouseSourceCategory.DATABASES,
             keywords=["sql", "postgresql", "postgres", "planetscale"],
             label="PlanetScale Postgres",
-            caption="Enter your PlanetScale Postgres credentials to pull your data into the PostHog Data warehouse.",
+            caption="Enter your PlanetScale Postgres credentials to pull your data into the Flind Data warehouse.",
             iconPath="/static/services/planetscale.svg",
             docsUrl="https://posthog.com/docs/cdp/sources/planetscale",
             fields=fields,

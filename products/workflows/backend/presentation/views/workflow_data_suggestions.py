@@ -91,7 +91,7 @@ class DataSuggestionSerializer(serializers.Serializer):
         help_text="The main planned step kinds after the trigger, in order.",
     )
     premade = serializers.BooleanField(
-        help_text="Whether PostHog prepared this suggestion ahead of time with its workflow already built. Build it "
+        help_text="Whether Flind prepared this suggestion ahead of time with its workflow already built. Build it "
         "with save_draft to save the draft and stop offering the suggestion."
     )
 

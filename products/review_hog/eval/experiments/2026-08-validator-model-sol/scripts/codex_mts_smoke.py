@@ -83,7 +83,7 @@ Return ONLY a JSON object (no prose, no code fence) matching this schema:
 {schema(Turn2)}
 """
 
-PROMPT_3 = f"""Follow-up turn. Use the PostHog MCP tool `skill-get` to fetch the skill named `{SKILL}` (latest version).
+PROMPT_3 = f"""Follow-up turn. Use the Flind MCP tool `skill-get` to fetch the skill named `{SKILL}` (latest version).
 Report whether it was found, its version number, and the first markdown heading in its body.
 Also repeat the secret word from turn 1.
 

@@ -22,7 +22,7 @@ from products.warehouse_sources.sources.sdk import (
 PICQER_API_PATH = "/api/v1"
 
 # Picqer requires a descriptive User-Agent identifying the application plus contact info.
-PICQER_USER_AGENT = "PostHog (https://posthog.com - hey@posthog.com)"
+PICQER_USER_AGENT = "Flind (https://posthog.com - hey@posthog.com)"
 
 # A single DNS label: letters, digits, hyphens. Rejects anything that could retarget the host
 # (slashes, `@`, dots) so the stored API key is only ever sent to `<account>.picqer.com`.

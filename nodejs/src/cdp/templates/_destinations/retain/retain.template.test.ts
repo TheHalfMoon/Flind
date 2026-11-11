@@ -100,7 +100,7 @@ describe('retain template', () => {
     })
 
     it.each(['$pageview', '$pageleave', '$autocapture', '$feature_flag_called', '$exception'])(
-        'should skip PostHog internal event %s without making a request',
+        'should skip Flind internal event %s without making a request',
         async (eventName) => {
             const response = await tester.invoke(baseInputs, {
                 event: {

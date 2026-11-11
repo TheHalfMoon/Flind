@@ -115,7 +115,7 @@ export type attachedContextLogicType = MakeLogicType<
 >
 
 /**
- * Global, unkeyed store of attached context for the PostHog AI surface. One mechanism only — a
+ * Global, unkeyed store of attached context for the Flind AI surface. One mechanism only — a
  * registry of context providers, so registration and removal are symmetric and trivial. Each
  * provider (a mounted hook/component, or a future @-mention picker) owns a stable `providerId` and
  * upserts its items; `contextItems` flattens and dedupes across providers.

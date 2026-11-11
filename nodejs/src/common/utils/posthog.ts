@@ -85,7 +85,7 @@ export async function isFeatureFlagEnabled(
         return isEnabled ?? false
     } catch (error) {
         // Log errors to aid debugging of feature flag evaluation issues (e.g. SES v1 vs v2 gating).
-        console.error('Error evaluating PostHog feature flag', {
+        console.error('Error evaluating Flind feature flag', {
             key,
             distinctId,
             options,

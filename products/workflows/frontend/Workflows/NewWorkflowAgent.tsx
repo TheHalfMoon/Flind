@@ -17,7 +17,7 @@ export function NewWorkflowAgent(): JSX.Element {
         <>
             <AiFirstCreateScene
                 handoff={NEW_WORKFLOW_HANDOFF}
-                banner="We're trialling building workflows with PostHog AI. Describe what you want and it drafts the workflow for you to refine."
+                banner="We're trialling building workflows with Flind AI. Describe what you want and it drafts the workflow for you to refine."
                 escapeHatchLabel="Use the editor instead"
                 onEscapeHatch={openEditorFromAiComposer}
                 suggestions={NEW_WORKFLOW_SUGGESTIONS}

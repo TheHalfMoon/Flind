@@ -211,7 +211,7 @@ describe('groupsNewLogic', () => {
             logic.actions.setGroupValue('name', 'Valid Name')
             logic.actions.setGroupValue('group_key', 'valid-key')
             logic.actions.setGroupValue('customProperties', [
-                { name: 'company', type: 'string', value: 'PostHog' },
+                { name: 'company', type: 'string', value: 'Flind' },
                 { name: 'industry', type: 'string', value: 'Analytics' },
             ])
 
@@ -303,7 +303,7 @@ describe('flattenProperties', () => {
         const rawProperties = [
             { name: 'count', type: 'string' as const, value: '42' },
             { name: 'price', type: 'string' as const, value: '19.99' },
-            { name: 'name', type: 'string' as const, value: 'PostHog' },
+            { name: 'name', type: 'string' as const, value: 'Flind' },
             { name: 'zero', type: 'string' as const, value: '0' },
         ]
 
@@ -312,7 +312,7 @@ describe('flattenProperties', () => {
         expect(flattenedProperties).toEqual({
             count: 42,
             price: 19.99,
-            name: 'PostHog',
+            name: 'Flind',
             zero: 0,
         })
     })

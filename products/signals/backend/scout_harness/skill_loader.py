@@ -357,7 +357,7 @@ def load_skill_for_run(
         files=[LoadedSkillFile(path=f.path, content_type=f.content_type) for f in file_rows],
         skill_id=str(skill.id),
         origin=origin,
-        # Only a custom scout's prompt renders authorship (canonical bodies are PostHog-owned),
+        # Only a custom scout's prompt renders authorship (canonical bodies are Flind-owned),
         # so skip the extra queries unless the caller builds a prompt and the row is custom.
         authors=resolve_skill_authors(team, skill_name) if include_authors and origin == "custom" else [],
     )

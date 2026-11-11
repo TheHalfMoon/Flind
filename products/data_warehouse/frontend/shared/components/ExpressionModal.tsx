@@ -43,7 +43,7 @@ export function ExpressionModal(): JSX.Element {
                 </Field>
                 {isPostHogTable ? (
                     <LemonBanner type="info">
-                        PostHog sometimes adds new fields to its built-in tables. If a new field takes this name, the
+                        Flind sometimes adds new fields to its built-in tables. If a new field takes this name, the
                         built-in field takes precedence and this expression stops applying. Use a unique prefix for your
                         field name, for example <code>acme_browser</code> instead of <code>browser</code>.
                     </LemonBanner>

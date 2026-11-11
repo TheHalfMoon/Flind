@@ -80,6 +80,6 @@ test.each(['ios', 'android'] as const)('opens the ChatGPT HTTPS prompt route on 
 test('web previews never dispatch links to desktop applications', async () => {
     Platform.OS = 'web'
     const open = jest.spyOn(Linking, 'openURL')
-    await expect(openExternalHandoff('codex', REPORT)).rejects.toThrow('PostHog mobile app')
+    await expect(openExternalHandoff('codex', REPORT)).rejects.toThrow('Flind mobile app')
     expect(open).not.toHaveBeenCalled()
 })

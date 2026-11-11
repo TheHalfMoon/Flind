@@ -32,12 +32,12 @@ const mockInsights = engineeringAnalyticsJobLogInsights as jest.MockedFunction<
     typeof engineeringAnalyticsJobLogInsights
 >
 
-const PROPS = { repoOwner: 'PostHog', repoName: 'posthog', number: 10, sourceId: null }
+const PROPS = { repoOwner: 'Flind', repoName: 'posthog', number: 10, sourceId: null }
 const PAGE = '/engineering-analytics/repos/PostHog/posthog/pull-requests/10/ci-explorer'
 const LINT = 'github_actions:42:1/Lint'
 
 const RUN: WorkflowRunDetailApi = {
-    repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+    repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
     id: 42,
     workflow_name: 'CI',
     workflow_id: 7,

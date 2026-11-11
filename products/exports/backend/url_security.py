@@ -24,6 +24,6 @@ def _is_same_origin(url: str) -> bool:
 def is_heatmap_url_allowed(heatmap_url: str, heatmap_type: object) -> tuple[bool, str | None]:
     if heatmap_type == "screenshot":
         if has_ambiguous_authority(heatmap_url) or not _is_same_origin(heatmap_url):
-            return False, "Screenshot heatmap URL must use the PostHog instance origin"
+            return False, "Screenshot heatmap URL must use the Flind instance origin"
 
     return is_url_allowed(heatmap_url)

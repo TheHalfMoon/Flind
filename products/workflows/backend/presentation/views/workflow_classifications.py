@@ -206,7 +206,7 @@ class WorkflowClassificationViewSet(viewsets.GenericViewSet):
                 timeout_seconds=TIMEOUT_SECONDS,
             )
         except (DecisionsDisabledError, GatewayNotConfiguredError):
-            return _error("The model is not available on this PostHog deployment.", status.HTTP_501_NOT_IMPLEMENTED)
+            return _error("The model is not available on this Flind deployment.", status.HTTP_501_NOT_IMPLEMENTED)
         except DecisionGatewayUnreachableError:
             logger.warning("workflow_classification_unreachable", team_id=team.id)
             return _error("The model is busy or unreachable. Retry later.", status.HTTP_503_SERVICE_UNAVAILABLE)

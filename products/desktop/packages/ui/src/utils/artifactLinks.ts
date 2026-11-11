@@ -1,7 +1,7 @@
 /**
  * Recognizing task-artifact links inside agent messages.
  *
- * New uploads use an authenticated PostHog download URL containing the task,
+ * New uploads use an authenticated Flind download URL containing the task,
  * run, and full artifact id. Existing messages can instead contain a presigned
  * or unsigned object-storage URL. Both forms need to open the artifact tab
  * rather than leave the app, so the parser retains the legacy storage-key path

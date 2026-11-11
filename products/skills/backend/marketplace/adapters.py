@@ -39,8 +39,8 @@ logger = structlog.get_logger(__name__)
 PLUGIN_NAME = "posthog-skill-store"
 MARKETPLACE_NAME = "posthog-skill-store-marketplace"
 
-_MARKETPLACE_AUTHOR = "PostHog"
-_MARKETPLACE_COMMIT_MESSAGE = "PostHog skills marketplace"
+_MARKETPLACE_AUTHOR = "Flind"
+_MARKETPLACE_COMMIT_MESSAGE = "Flind skills marketplace"
 # The cache key already embeds the content-derived plugin version, so a hit is only ever
 # the current content. The TTL just bounds memory for superseded versions.
 _MARKETPLACE_REPO_CACHE_TTL_SECONDS = 300

@@ -23,7 +23,7 @@ const offlineExperimentsEmptyState: ProductEmptyStateConfig = {
     text: {
         'needs-setup': {
             headline: 'Test agent changes before they reach production',
-            lead: 'Compare prompt and model combinations on the same test cases. Run your agent locally or in your CI, then send results to PostHog to compare multiple scores and inspect the responses behind them.',
+            lead: 'Compare prompt and model combinations on the same test cases. Run your agent locally or in your CI, then send results to Flind to compare multiple scores and inspect the responses behind them.',
         },
     },
     primaryAction: {

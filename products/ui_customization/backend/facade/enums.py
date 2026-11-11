@@ -12,7 +12,7 @@ class FragmentIcon(LabeledStrEnum):
     BOX = "box", "Box"
     BELL = "bell", "Bell"
     NOTIFICATION = "notification", "Notification"
-    POSTHOG = "posthog", "PostHog logo"
+    POSTHOG = "posthog", "Flind logo"
     CHART = "chart", "Chart"
     DASHBOARD = "dashboard", "Dashboard"
     NOTEBOOK = "notebook", "Notebook"

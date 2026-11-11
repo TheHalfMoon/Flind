@@ -396,7 +396,7 @@ class TestVitallySourceGetSchemas:
     @patch("products.warehouse_sources.sources.vitally.source.capture_exception")
     @patch("products.warehouse_sources.sources.vitally.source.list_custom_object_definitions")
     def test_transient_egress_proxy_failure_is_not_captured(self, mock_list, mock_capture):
-        # Regression: PostHog's own egress proxy briefly 502ing on the tunnel used to reach
+        # Regression: Flind's own egress proxy briefly 502ing on the tunnel used to reach
         # Vitally was reported as an exception on every discovery run, even though it's not a
         # bug and the next attempt recovers on its own.
         mock_list.side_effect = ConnectionError(

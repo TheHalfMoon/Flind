@@ -49,7 +49,7 @@ export function cssLoaderScript(cssFile, cssFileFallback) {
             }
 
             function report(reason, href, attempt) {
-                console.error('[PostHog] App stylesheet ' + reason + ': ' + href);
+                console.error('[Flind] App stylesheet ' + reason + ': ' + href);
                 try {
                     var apiKey = window.JS_POSTHOG_API_KEY;
                     if (!apiKey) { return; }
@@ -212,7 +212,7 @@ export function stableCssLoaderScript(eagerFiles, fullCssFile, fullCssFileFallba
                     if (!requested[url]) {
                         requested[url] = loadStylesheet(url, rank).then(function (applied) {
                             if (applied) { return true; }
-                            console.error('[PostHog] Stylesheet did not apply, loading the full stylesheet: ' + url);
+                            console.error('[Flind] Stylesheet did not apply, loading the full stylesheet: ' + url);
                             return loadFullStylesheet().then(function (fullApplied) {
                                 if (!fullApplied) { delete requested[url]; }
                                 return fullApplied;

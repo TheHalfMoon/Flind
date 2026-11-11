@@ -7,7 +7,7 @@ import { LemonButton, LemonInput } from '@flind/lemon-ui'
 import { captureScoutAction } from '../../../inboxAnalytics'
 import { SCOUT_AI_STARTER_QUESTIONS, scoutAiLogic } from '../../../logics/scoutAiLogic'
 
-/** A one-line question box under the scout header. The answer runs in the PostHog AI side panel. */
+/** A one-line question box under the scout header. The answer runs in the Flind AI side panel. */
 export function ScoutAskAiComposer({
     scoutId,
     skillName,

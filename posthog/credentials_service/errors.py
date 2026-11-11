@@ -6,7 +6,7 @@ class CredentialsServiceFailure(Exception):
     those properties are the reason the base exists:
 
     1. **It is never the fault of whoever asked for the credential.** These are the OAuth app
-       secrets and API keys PostHog itself owns. A product reading one cannot cause any of
+       secrets and API keys Flind itself owns. A product reading one cannot cause any of
        these states, cannot detect them in advance, and cannot fix them. So a caller must not
        turn one into a user-facing "your configuration is broken", and must not disable work
        the user set up. A rotation or an incident is ours to carry, not theirs.
@@ -79,7 +79,7 @@ class CredentialsServiceUnreachableError(CredentialsServiceFailure):
 
     Not reportable: the service has its own availability alerting, which sees the outage once.
     Capturing here instead would report it once per credential read, which is a measure of how
-    busy PostHog is rather than of what is wrong.
+    busy Flind is rather than of what is wrong.
     """
 
     reportable = False

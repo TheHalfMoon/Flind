@@ -82,7 +82,7 @@ class TestHogqlTypeNameForClickhouseType(SimpleTestCase):
 class TestValidateWarehouseTableUrlPattern(SimpleTestCase):
     @parameterized.expand(
         [
-            # One bucket answers to several names. Each of these reaches PostHog's own storage, so a
+            # One bucket answers to several names. Each of these reaches Flind's own storage, so a
             # check on any single form leaves the rest open.
             ("virtual_hosted_global", "https://ph-warehouse.s3.amazonaws.com/file_uploads/team_2/x.csv"),
             ("virtual_hosted_regional", "https://ph-warehouse.s3.us-east-1.amazonaws.com/file_uploads/x.csv"),
@@ -158,7 +158,7 @@ class TestValidateWarehouseTableUrlPattern(SimpleTestCase):
         [
             ("customer_virtual_hosted", "https://acme-exports.s3.us-east-1.amazonaws.com/warehouse/*.parquet"),
             ("customer_path_style", "https://s3.us-east-1.amazonaws.com/acme-exports/warehouse/*.parquet"),
-            # A PostHog bucket name used as a key prefix in someone else's bucket is theirs, not ours.
+            # A Flind bucket name used as a key prefix in someone else's bucket is theirs, not ours.
             ("our_bucket_name_as_a_key_prefix", "https://acme-exports.s3.amazonaws.com/ph-warehouse/*.csv"),
             ("non_storage_host", "https://files.acme.example/exports/*.csv"),
             # Percent-encoding is fine in the object key, only the bucket segment of a path-style

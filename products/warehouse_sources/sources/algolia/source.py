@@ -139,7 +139,7 @@ class AlgoliaSource(ResumableSource[AlgoliaSourceConfig, AlgoliaResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Algolia",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Algolia Application ID and an API key to pull your Algolia data into the PostHog Data warehouse.
+            caption="""Enter your Algolia Application ID and an API key to pull your Algolia data into the Flind Data warehouse.
 
 You can find your Application ID and create API keys in your [Algolia dashboard](https://dashboard.algolia.com/account/api-keys/all).
 

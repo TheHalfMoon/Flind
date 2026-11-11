@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 97 enabled ops
+ * Flind API - MCP 97 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -36,7 +36,7 @@ export const LlmAnalyticsPersonalSpendListQueryParams = () => zod.object({
         .max(llmAnalyticsPersonalSpendListQueryDateFromMax)
         .default(llmAnalyticsPersonalSpendListQueryDateFromDefault)
         .describe(
-            'Start of the spend window. Accepts absolute dates (`2026-04-23`) or relative strings (`-7d`, `-1m`, etc.) — same parser used elsewhere in PostHog. Defaults to `-30d`. The window between `date_from` and `date_to` cannot exceed 90 days.'
+            'Start of the spend window. Accepts absolute dates (`2026-04-23`) or relative strings (`-7d`, `-1m`, etc.) — same parser used elsewhere in Flind. Defaults to `-30d`. The window between `date_from` and `date_to` cannot exceed 90 days.'
         ),
     date_to: zod
         .string()
@@ -2396,7 +2396,7 @@ export const LlmAnalyticsClusteringConfigSetEventFiltersCreateBody = () => zod.o
     event_filters: zod
         .array(zod.record(zod.string(), zod.unknown()))
         .describe(
-            'PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters.'
+            'Flind property filters to save for automated clustering jobs. Pass an empty array to clear filters.'
         ),
 })
 
@@ -2437,7 +2437,7 @@ export const LlmAnalyticsClusteringJobsCreateBody = () => zod.object({
     event_filters: zod
         .array(zod.record(zod.string(), zod.unknown()))
         .optional()
-        .describe('PostHog property filters that scope this clustering job. Empty array means no filters.'),
+        .describe('Flind property filters that scope this clustering job. Empty array means no filters.'),
     enabled: zod.boolean().optional(),
 })
 
@@ -2476,7 +2476,7 @@ export const LlmAnalyticsClusteringJobsPartialUpdateBody = () => zod.object({
     event_filters: zod
         .array(zod.record(zod.string(), zod.unknown()))
         .optional()
-        .describe('PostHog property filters that scope this clustering job. Empty array means no filters.'),
+        .describe('Flind property filters that scope this clustering job. Empty array means no filters.'),
     enabled: zod.boolean().optional(),
 })
 

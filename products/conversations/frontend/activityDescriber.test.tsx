@@ -52,7 +52,7 @@ describe('ticketActivityDescriber', () => {
         after: 'open',
     }
 
-    it('attributes a workflow-triggered change to the workflow, not PostHog', () => {
+    it('attributes a workflow-triggered change to the workflow, not Flind', () => {
         const result = ticketActivityDescriber(
             ticketLogItem({
                 detail: {

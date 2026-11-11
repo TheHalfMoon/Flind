@@ -3,11 +3,11 @@ import type { CommentApi } from 'products/platform_features/frontend/generated/a
 import type { CommentContext } from '../../utils/commentContext'
 import type { ArtifactPreviewKind, RunArtifact } from './taskRunArtifacts'
 
-// Artifact comments are ordinary PostHog comments with scope "task_artifact" and the artifact version id as
-// item_id. PostHog Desktop writes the same rows with the same item_context shape, so both apps show each
+// Artifact comments are ordinary Flind comments with scope "task_artifact" and the artifact version id as
+// item_id. Flind Desktop writes the same rows with the same item_context shape, so both apps show each
 // other's threads, pins and highlights.
 
-// pinned: comment scope for task artifacts, shared with PostHog Desktop and the comments API
+// pinned: comment scope for task artifacts, shared with Flind Desktop and the comments API
 export const ARTIFACT_COMMENT_SCOPE = 'task_artifact'
 
 // The same limits Desktop uses, so an anchor written here also passes Desktop's schema.

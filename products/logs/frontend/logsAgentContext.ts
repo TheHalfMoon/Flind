@@ -31,7 +31,7 @@ const PREAMBLE_CONTEXT_ITEM: AttachedContextItem = {
     hidden: true,
     dismissGroup: SKILL_DISMISS_GROUP,
     value:
-        `The user has the PostHog logs viewer open. Load the ${INVESTIGATING_LOGS_SKILL} skill before your first ` +
+        `The user has the Flind logs viewer open. Load the ${INVESTIGATING_LOGS_SKILL} skill before your first ` +
         'tool call. Act through the logs MCP tools (the exec `logs-*` commands plus query-logs: query-logs, ' +
         'logs-count, logs-patterns, logs-patterns-diff, logs-anomalies-scan, logs-attributes-list, and the rest). ' +
         'Do not search for tools; use the exec `info <tool>` command when you need a full input schema.',

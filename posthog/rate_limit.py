@@ -445,7 +445,7 @@ class LeakedKeyReportThrottle(IPThrottle):
     """
     Rate limit the public leaked-key revocation endpoint by IP address.
 
-    This isn't an authorization gate — guessing a valid high-entropy PostHog token
+    This isn't an authorization gate — guessing a valid high-entropy Flind token
     is computationally infeasible regardless of rate. It just bounds nuisance load
     (hashing + DB lookups against garbage strings) from a single IP.
     """
@@ -499,7 +499,7 @@ class SignupResendInviteThrottle(UserOrEmailRateThrottle):
     rate = "5/hour"
 
 
-# Requesting PostHog AI access emails the org admins, so cap it per user and per IP
+# Requesting Flind AI access emails the org admins, so cap it per user and per IP
 # to keep a single member (or a shared-IP burst) from spamming admins' inboxes.
 class PostHogAIAccessRequestUserThrottle(UserRateThrottle):
     scope = "posthog_ai_access_request_user"
@@ -1122,7 +1122,7 @@ class AIObservabilityBackfillCreateThrottle(_UserBucketRateThrottle):
 
 # The buckets above ident a personal-API-key request by key hash, so every key a user mints gets a
 # full budget of the counts these two actions run, and each member of the team gets one as well.
-# The query pool they spend is shared PostHog infrastructure, so the total needs a bucket of its own,
+# The query pool they spend is shared Flind infrastructure, so the total needs a bucket of its own,
 # the same pairing ReplayVisionSearch uses. An hour at ten times the per-minute burst leaves a team's
 # worth of concurrent editors untouched while capping a scripted loop across credentials.
 class AIObservabilityBackfillEstimateSustainedThrottle(_TeamBucketRateThrottle):
@@ -1355,7 +1355,7 @@ class UserVerifyEmailThrottle(UserOrEmailRateThrottle):
 
 
 class OnboardingDelegationThrottle(UserRateThrottle):
-    # Delegation sends PostHog-branded emails to caller-supplied recipients, so we cap it tightly
+    # Delegation sends Flind-branded emails to caller-supplied recipients, so we cap it tightly
     # to prevent a compromised admin session (or a misbehaving integration) from using the endpoint
     # as a spam cannon.
     scope = "onboarding_delegation"
@@ -1939,7 +1939,7 @@ class AlertLLMSimulationDailyThrottle(_AlertLLMSimulationThrottle):
 class _OrganizationInviteRateThrottleBase(PersonalApiKeyOrUserRateThrottle):
     # Cap how many organization invites a single organization can create in a
     # given window. A malicious member can otherwise use the invite flow to
-    # spam arbitrary email addresses with PostHog-branded invitations, since
+    # spam arbitrary email addresses with Flind-branded invitations, since
     # the target_email is user-controlled.
     #
     # Keyed per organization (not per user, not per personal API key) so the
@@ -2037,7 +2037,7 @@ class PushTokenImportThrottle(PersonalApiKeyOrUserRateThrottle):
 
 
 class PostHogConnectionForwardThrottle(PersonalApiKeyOrUserRateThrottle):
-    # Rate limit the synchronous PostHog-connection forward proxy. Each forward holds an API worker
+    # Rate limit the synchronous Flind-connection forward proxy. Each forward holds an API worker
     # open while it round-trips to another cell, so a burst of concurrent forwards to a slow target
     # can tie workers up. Inheriting PersonalApiKeyOrUserRateThrottle throttles every auth method this
     # endpoint accepts (session, personal API key, OAuth), not just personal keys. Keyed per

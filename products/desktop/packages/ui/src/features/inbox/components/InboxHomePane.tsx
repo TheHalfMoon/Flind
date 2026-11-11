@@ -59,7 +59,7 @@ export function InboxHomePane(): ReactElement {
           </EmptyTitle>
           <EmptyDescription>
             {needsSetup
-              ? "PostHog watches your session replays, errors, and Slack, then opens a pull request when it finds something worth fixing. Connect a source to get started."
+              ? "Flind watches your session replays, errors, and Slack, then opens a pull request when it finds something worth fixing. Connect a source to get started."
               : "Pick a report from the list to read it here."}
           </EmptyDescription>
         </EmptyHeader>

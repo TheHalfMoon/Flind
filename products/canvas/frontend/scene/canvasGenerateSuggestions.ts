@@ -7,7 +7,7 @@ export interface CanvasGenerateSuggestion {
     prompt: string
 }
 
-// Starter prompts under the composer on an empty canvas. Mirrors PostHog Desktop.
+// Starter prompts under the composer on an empty canvas. Mirrors Flind Desktop.
 export const CANVAS_GENERATE_SUGGESTIONS: CanvasGenerateSuggestion[] = [
     {
         label: 'Weekly active users',

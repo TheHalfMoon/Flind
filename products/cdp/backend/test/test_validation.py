@@ -717,8 +717,8 @@ class TestHogFunctionValidation(ClickhouseTestMixin, APIBaseTest, QueryMatchingT
         [
             ("single_slack", "integration", "slack", None, None),
             ("multi_slack", "integration_multi", "slack", None, None),
-            ("single_posthog_connection", "integration", "posthog", None, "PostHog connection"),
-            ("multi_posthog_connection", "integration_multi", "posthog", None, "PostHog connection"),
+            ("single_posthog_connection", "integration", "posthog", None, "Flind connection"),
+            ("multi_posthog_connection", "integration_multi", "posthog", None, "Flind connection"),
             # Warehouse source rows are blocked by the marker, whatever their kind and auth type.
             ("single_warehouse_default_auth", "integration", "postgresql", None, "can't be used as a function input"),
             ("multi_warehouse_default_auth", "integration_multi", "postgresql", None, "can't be used"),
@@ -730,7 +730,7 @@ class TestHogFunctionValidation(ClickhouseTestMixin, APIBaseTest, QueryMatchingT
         self, _name, item_type, kind, auth_type, expected_error
     ):
         config = (
-            {} if expected_error in (None, "PostHog connection") else {WAREHOUSE_SOURCE_TYPE_CONFIG_KEY: "Postgres"}
+            {} if expected_error in (None, "Flind connection") else {WAREHOUSE_SOURCE_TYPE_CONFIG_KEY: "Postgres"}
         )
         if auth_type:
             config["auth_type"] = auth_type
@@ -1693,7 +1693,7 @@ class TestChoiceInputTemplating(SimpleTestCase):
 
 class TestReservedFunctionsUsed(SimpleTestCase):
     # The worker's async function registry is global, so the save-time check is the only thing
-    # that stops user-authored hog from reaching a handler only PostHog's machinery should call.
+    # that stops user-authored hog from reaching a handler only Flind's machinery should call.
     @parameterized.expand(
         [
             ("direct_call", "let res := sendEmail(inputs.email)", {"sendEmail"}),

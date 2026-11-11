@@ -8,7 +8,7 @@ import { userLogic } from 'scenes/userLogic'
 
 import { ReleaseStage, ReleaseStageProduct, releaseStage } from './releaseStage'
 
-// PostHog's own feature flags live in this project, for every region.
+// Flind's own feature flags live in this project, for every region.
 const POSTHOG_PROJECT_URL = 'https://us.posthog.com/project/2'
 
 const TAG_TYPES: Record<ReleaseStage, LemonTagType> = {

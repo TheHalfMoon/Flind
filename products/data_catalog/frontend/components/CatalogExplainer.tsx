@@ -15,7 +15,7 @@ const HedgehogStampApproved = pngHoggie(stampApprovedPng)
 const STEPS = [
     'Add the metrics you and your team care about, like revenue or active users.',
     'Approve the definition, so it becomes the one your team uses.',
-    'From then on, PostHog AI and every agent compute it from that definition.',
+    'From then on, Flind AI and every agent compute it from that definition.',
 ]
 
 export function CatalogExplainer(): JSX.Element | null {

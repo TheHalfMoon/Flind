@@ -71,7 +71,7 @@ class GoCardlessSource(ResumableSource[GoCardlessSourceConfig, GoCardlessResumeC
             name=ExternalDataSourceType.GOCARDLESS,
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="GoCardless",
-            caption="""Enter your GoCardless access token to pull your GoCardless payments data into the PostHog Data warehouse.
+            caption="""Enter your GoCardless access token to pull your GoCardless payments data into the Flind Data warehouse.
 
 Create a read-only access token in the [GoCardless dashboard](https://manage.gocardless.com/developers) under Developers > Create > Access token. Sandbox and live environments use separate hosts and tokens — make sure the environment matches your token.""",
             iconPath="/static/services/gocardless.png",

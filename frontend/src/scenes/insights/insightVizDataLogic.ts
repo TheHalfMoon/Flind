@@ -2798,7 +2798,7 @@ export const insightVizDataLogic = kea<insightVizDataLogicType>([
                     props.setQuery(query)
                 }
             }
-            // While a PostHog AI suggestion is under review the query is either the suggestion
+            // While a Flind AI suggestion is under review the query is either the suggestion
             // itself or, after a reject, the query from before it. Any other query means the
             // reader edited the suggestion by hand, and a reject from then on would revert
             // their edit together with the suggestion.

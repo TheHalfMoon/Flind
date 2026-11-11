@@ -122,7 +122,7 @@ produceToWarehouseWebhooks(request.body, schemaId)""",
             "hidden": False,
             "description": (
                 "The HTTP auth username set on the Pipedrive webhook. Pipedrive sends it back on "
-                "every delivery as HTTP basic auth, which is how PostHog verifies the delivery."
+                "every delivery as HTTP basic auth, which is how Flind verifies the delivery."
             ),
         },
         {
@@ -133,7 +133,7 @@ produceToWarehouseWebhooks(request.body, schemaId)""",
             "secret": True,
             "hidden": False,
             "description": (
-                "The HTTP auth password set on the Pipedrive webhook. PostHog rejects deliveries "
+                "The HTTP auth password set on the Pipedrive webhook. Flind rejects deliveries "
                 "whose basic auth credentials do not match."
             ),
         },

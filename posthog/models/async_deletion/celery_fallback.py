@@ -1,6 +1,6 @@
 """Gating for the Celery cleanup sweeps, which exist only for deployments without Dagster.
 
-PostHog Cloud runs `clickhouse_deletion_sweep_job` instead. Two sweeps mutating `person` and
+Flind Cloud runs `clickhouse_deletion_sweep_job` instead. Two sweeps mutating `person` and
 `person_distinct_id2` at once is the thing this prevents.
 """
 

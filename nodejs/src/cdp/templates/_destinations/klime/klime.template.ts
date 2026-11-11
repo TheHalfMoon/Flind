@@ -143,7 +143,7 @@ if (res.status >= 400) {
             type: 'choice',
             label: 'Action',
             description:
-                'How to map PostHog events to Klime event types. Automatic converts $identify/$set to identify, $groupidentify to group, and everything else to track.',
+                'How to map Flind events to Klime event types. Automatic converts $identify/$set to identify, $groupidentify to group, and everything else to track.',
             default: 'automatic',
             choices: [
                 { label: 'Automatic', value: 'automatic' },
@@ -168,7 +168,7 @@ if (res.status >= 400) {
             type: 'string',
             label: 'Group ID',
             description:
-                'Organization or account identifier. Required for group events. Defaults to your first PostHog group type ($group_0). If you use multiple group types, change to $group_1, $group_2, etc. You can also use a custom event property.',
+                'Organization or account identifier. Required for group events. Defaults to your first Flind group type ($group_0). If you use multiple group types, change to $group_1, $group_2, etc. You can also use a custom event property.',
             default: '{event.properties.$group_0}',
             secret: false,
             required: false,

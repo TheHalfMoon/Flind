@@ -116,7 +116,7 @@ export function AISection(): JSX.Element {
                     title="Learn from support"
                     titleSize="sm"
                     className="my-8"
-                    description="When on, PostHog learns reusable answers from public human replies on resolved support tickets."
+                    description="When on, Flind learns reusable answers from public human replies on resolved support tickets."
                 >
                     <LearnFromSupportCard />
                 </SceneSection>

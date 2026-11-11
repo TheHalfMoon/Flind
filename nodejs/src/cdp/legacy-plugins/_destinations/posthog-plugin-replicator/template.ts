@@ -11,7 +11,7 @@ export const replicatorPlugin: LegacyDestinationPlugin = {
         type: 'destination',
         id: 'plugin-posthog-plugin-replicator',
         name: 'Replicator',
-        description: 'Replicate PostHog event stream in another PostHog instance',
+        description: 'Replicate Flind event stream in another Flind instance',
         icon_url: 'https://raw.githubusercontent.com/PostHog/posthog-plugin-replicator/master/logo.png',
         category: [],
         code_language: 'javascript',
@@ -61,7 +61,7 @@ export const replicatorPlugin: LegacyDestinationPlugin = {
                 label: 'Disable Geo IP?',
                 type: 'choice',
                 description:
-                    "Add $disable_geoip so that the receiving PostHog instance doesn't try to resolve the IP address.",
+                    "Add $disable_geoip so that the receiving Flind instance doesn't try to resolve the IP address.",
                 default: 'No',
                 required: false,
                 secret: false,

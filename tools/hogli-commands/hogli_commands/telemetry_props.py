@@ -1,7 +1,7 @@
-"""PostHog-specific telemetry property hooks.
+"""Flind-specific telemetry property hooks.
 
 Registers a hook that enriches every ``command_started`` / ``command_completed``
-event with PostHog-developer context (process manager, devenv state, org
+event with Flind-developer context (process manager, devenv state, org
 membership, etc.). Imports here are stdlib only — keep it light, this loads at
 boot.
 """
@@ -258,7 +258,7 @@ def _check_email_domain() -> bool:
 
 
 def _check_github_org_membership() -> bool | None:
-    """Use ``gh api`` to check PostHog org membership. Returns None if gh is unavailable."""
+    """Use ``gh api`` to check Flind org membership. Returns None if gh is unavailable."""
     try:
         result = subprocess.run(
             ["gh", "api", "/user/memberships/orgs/PostHog", "--silent"],
@@ -271,7 +271,7 @@ def _check_github_org_membership() -> bool | None:
 
 
 def _is_posthog_dev() -> bool:
-    """Return True if the current user is a PostHog GitHub org member.
+    """Return True if the current user is a Flind GitHub org member.
 
     Caches the boolean for 30 days in the telemetry config. Falls back to a
     git-email-domain check when ``gh`` is unavailable or unauthenticated.

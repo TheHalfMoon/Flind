@@ -650,7 +650,7 @@ class TestDeliveryReadsOnWarehouse(_WarehouseMixin):
             (
                 "one_pull_request",
                 DeliveryScope(
-                    kind=DeliveryScopeKind.PULL_REQUEST, pr_number=21, repo_owner="PostHog", repo_name="posthog"
+                    kind=DeliveryScopeKind.PULL_REQUEST, pr_number=21, repo_owner="Flind", repo_name="posthog"
                 ),
                 {21},
             ),
@@ -804,7 +804,7 @@ class TestDeliveryReadsOnWarehouse(_WarehouseMixin):
         self._create_table("github_workflow_runs", WORKFLOW_RUNS_COLUMNS, [])
         curated = CuratedGitHubSource.for_team(self.team)
         scope = DeliveryScope(
-            kind=DeliveryScopeKind.PULL_REQUEST, pr_number=31, repo_owner="PostHog", repo_name="posthog"
+            kind=DeliveryScopeKind.PULL_REQUEST, pr_number=31, repo_owner="Flind", repo_name="posthog"
         )
 
         timelines = query_pull_request_timelines(
@@ -840,7 +840,7 @@ class TestDeliveryReadsOnWarehouse(_WarehouseMixin):
             )
         curated = CuratedGitHubSource.for_team(self.team)
         scope = DeliveryScope(
-            kind=DeliveryScopeKind.PULL_REQUEST, pr_number=31, repo_owner="PostHog", repo_name="posthog"
+            kind=DeliveryScopeKind.PULL_REQUEST, pr_number=31, repo_owner="Flind", repo_name="posthog"
         )
 
         timelines = query_pull_request_timelines(
@@ -875,7 +875,7 @@ class TestDeliveryReadsOnWarehouse(_WarehouseMixin):
         self._create_table("github_workflow_runs", WORKFLOW_RUNS_COLUMNS, [])
         curated = CuratedGitHubSource.for_team(self.team)
         scope = DeliveryScope(
-            kind=DeliveryScopeKind.PULL_REQUEST, pr_number=33, repo_owner="PostHog", repo_name="posthog"
+            kind=DeliveryScopeKind.PULL_REQUEST, pr_number=33, repo_owner="Flind", repo_name="posthog"
         )
 
         timelines = query_pull_request_timelines(
@@ -903,7 +903,7 @@ class TestDeliveryReadsOnWarehouse(_WarehouseMixin):
         self._create_table("github_workflow_runs", WORKFLOW_RUNS_COLUMNS, [])
         curated = CuratedGitHubSource.for_team(self.team)
         scope = DeliveryScope(
-            kind=DeliveryScopeKind.PULL_REQUEST, pr_number=32, repo_owner="PostHog", repo_name="posthog"
+            kind=DeliveryScopeKind.PULL_REQUEST, pr_number=32, repo_owner="Flind", repo_name="posthog"
         )
 
         timelines = query_pull_request_timelines(

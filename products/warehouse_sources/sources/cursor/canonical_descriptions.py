@@ -47,7 +47,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Individual Cursor usage events with the model used, token usage, and cost charged.",
         "docs_url": "https://cursor.com/docs/account/teams/admin-api",
         "columns": {
-            "id": "Synthetic identifier computed by PostHog from the event payload (the API does not return an event ID).",
+            "id": "Synthetic identifier computed by Flind from the event payload (the API does not return an event ID).",
             "timestamp": "When the usage event occurred.",
             "userEmail": "Email address of the user who triggered the event.",
             "model": "Model used for the request.",
@@ -132,7 +132,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://cursor.com/docs/account/teams/analytics-api",
         "columns": {
             "date": "Day the metrics are aggregated for.",
-            "model": "Model the row covers. The API returns a map keyed by model name, which PostHog expands into one row per model.",
+            "model": "Model the row covers. The API returns a map keyed by model name, which Flind expands into one row per model.",
             "messages": "Number of messages the team sent to this model on this day.",
             "users": "Number of team members who used this model on this day.",
         },
@@ -198,7 +198,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "userEmail": "Email address of the user the row belongs to. Joins to the members table on email.",
             "userId": "Public (encoded) Cursor user ID for that email, as returned in the response user mappings.",
             "date": "Day the metrics are aggregated for.",
-            "model": "Model the row covers. The API returns a map keyed by model name, which PostHog expands into one row per model.",
+            "model": "Model the row covers. The API returns a map keyed by model name, which Flind expands into one row per model.",
             "messages": "Number of messages the user sent to this model on this day.",
             "users": "Number of users the count covers, which is always 1 in a per-user breakdown.",
         },

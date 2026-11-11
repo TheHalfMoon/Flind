@@ -1330,7 +1330,7 @@ function generateToolCode(
     }
     handlerBody += responseFilter.code
 
-    // Response enrichment — adds _posthogUrl for "View in PostHog" links
+    // Response enrichment — adds _posthogUrl for "View in Flind" links
     const enrichmentVar = responseFilter.code ? 'filtered' : 'result'
     handlerBody += buildEnrichment(config, category, enrichmentVar)
 

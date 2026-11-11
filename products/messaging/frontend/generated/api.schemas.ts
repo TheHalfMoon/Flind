@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -29,7 +29,7 @@ export const EmailDeliveryStatusEnumApi = {
 export interface EmailStatusApi {
     /** The `message_id` that the send returned. */
     id: string
-    /** What happened to the email. `queued` means it waits to go out. `sent` means PostHog handed it to the email provider. `failed` means it was not sent, and `reason` says why. A rerun of the send can still move it to `sent`. `delivered` means the recipient's mail server accepted it. `bounced` and `complained` come later from the recipient's mail provider.
+    /** What happened to the email. `queued` means it waits to go out. `sent` means Flind handed it to the email provider. `failed` means it was not sent, and `reason` says why. A rerun of the send can still move it to `sent`. `delivered` means the recipient's mail server accepted it. `bounced` and `complained` come later from the recipient's mail provider.
      *
      * * `queued` - Queued
      * * `failed` - Failed
@@ -116,7 +116,7 @@ export interface SendEmailApi {
     /** ID of the email template to send. The template must be made transactional first. Send either `template_id` or `template_key`. */
     template_id?: string
     /**
-     * Names an email whose content your code rendered, such as `order-shipped`, so its metrics, logs and status group under it. Letters, numbers, hyphens (-) and underscores (_) only. Send it with `subject` and `html` or `text`. PostHog sends the content as is and never stores it as a template.
+     * Names an email whose content your code rendered, such as `order-shipped`, so its metrics, logs and status group under it. Letters, numbers, hyphens (-) and underscores (_) only. Send it with `subject` and `html` or `text`. Flind sends the content as is and never stores it as a template.
      * @maxLength 400
      * @pattern ^[a-zA-Z0-9_-]+$
      */
@@ -131,7 +131,7 @@ export interface SendEmailApi {
     subject?: string
     /** HTML body of the email your code rendered, at most 5 MiB as UTF-8. */
     html?: string
-    /** Plain text body of the email your code rendered, at most 5 MiB as UTF-8. Without it, PostHog derives the text from `html`. */
+    /** Plain text body of the email your code rendered, at most 5 MiB as UTF-8. Without it, Flind derives the text from `html`. */
     text?: string
     /**
      * Addresses replies to the email your code rendered go to.
@@ -184,7 +184,7 @@ export interface MessageCategoryApi {
      */
     key: string
     /**
-     * Display name of the category, shown in the PostHog app.
+     * Display name of the category, shown in the Flind app.
      * @maxLength 128
      */
     name: string
@@ -228,7 +228,7 @@ export interface PatchedMessageCategoryApi {
      */
     key?: string
     /**
-     * Display name of the category, shown in the PostHog app.
+     * Display name of the category, shown in the Flind app.
      * @maxLength 128
      */
     name?: string
@@ -352,7 +352,7 @@ export interface RemoveOptOutRequestApi {
 }
 
 export interface WebhookUrlApi {
-    /** URL to register in Customer.io so it posts subscription changes to PostHog. */
+    /** URL to register in Customer.io so it posts subscription changes to Flind. */
     url: string
 }
 
@@ -409,7 +409,7 @@ export interface ImportStepProgressApi {
     status: ImportStepStatusEnumApi
     /** How many records the step read from the provider so far. */
     processed: number
-    /** How many records the step added or updated in PostHog so far. Records that already existed and need no change may not count. */
+    /** How many records the step added or updated in Flind so far. Records that already existed and need no change may not count. */
     imported: number
     /** Problems with single records that did not fail the step. */
     warnings: string[]
@@ -470,7 +470,7 @@ export interface ImportStepOptionApi {
     key: string
     /** Display name of the step. */
     label: string
-    /** What the step imports and where it lands in PostHog. */
+    /** What the step imports and where it lands in Flind. */
     description: string
 }
 
@@ -746,7 +746,7 @@ export type EmailTemplateApiDesignBody = {
 }
 
 /**
- * Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill.
+ * Design JSON for Flind's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill.
  */
 export type EmailTemplateApiDesign = {
     /** Highest htmlID suffix per element type, e.g. {"u_row": 1, "u_content_text": 2}. */
@@ -766,7 +766,7 @@ export interface EmailTemplateApi {
     preheader?: string
     /** Rendered email body — derived from the design at save time. The visual editor's save path supplies it directly; omit it otherwise. */
     html?: string
-    /** Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill. */
+    /** Design JSON for Flind's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill. */
     design?: EmailTemplateApiDesign
     /** The sender a transactional template sends from. A template made transactional without one gets the sender it was made transactional with. */
     from?: EmailTemplateSenderApi
@@ -872,7 +872,7 @@ export interface MessageTemplateApi {
     message_category?: string | null
     /** Soft-delete flag. Set true to remove the template from the library. */
     deleted?: boolean
-    /** For emails that carry login codes, reset links or other secrets. PostHog keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time. */
+    /** For emails that carry login codes, reset links or other secrets. Flind keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time. */
     sensitive?: boolean
     /**
      * The workflow that sends this template over the transactional email API. Null until the template is made transactional. Each content save writes a new version of it.
@@ -924,7 +924,7 @@ export interface PatchedMessageTemplateApi {
     message_category?: string | null
     /** Soft-delete flag. Set true to remove the template from the library. */
     deleted?: boolean
-    /** For emails that carry login codes, reset links or other secrets. PostHog keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time. */
+    /** For emails that carry login codes, reset links or other secrets. Flind keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time. */
     sensitive?: boolean
     /**
      * The workflow that sends this template over the transactional email API. Null until the template is made transactional. Each content save writes a new version of it.

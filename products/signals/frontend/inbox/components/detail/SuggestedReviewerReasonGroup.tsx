@@ -74,7 +74,7 @@ export function SuggestedReviewerReasonGroup({
                                     title={
                                         reviewer.user
                                             ? undefined
-                                            : 'This reviewer is not linked to a PostHog member and cannot receive the report.'
+                                            : 'This reviewer is not linked to a Flind member and cannot receive the report.'
                                     }
                                 >
                                     <span className={`min-w-0 ${reviewer.user ? '' : 'opacity-75'}`}>

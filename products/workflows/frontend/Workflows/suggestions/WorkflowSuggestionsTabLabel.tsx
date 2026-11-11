@@ -24,7 +24,7 @@ export function WorkflowSuggestionsTabLabel({ id }: { id: string }): JSX.Element
                 </LemonTag>
             ) : (
                 watching && (
-                    <Tooltip title="PostHog is watching this workflow and will suggest changes here.">
+                    <Tooltip title="Flind is watching this workflow and will suggest changes here.">
                         <LemonTag type="option" size="small">
                             On
                         </LemonTag>

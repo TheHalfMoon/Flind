@@ -161,7 +161,7 @@ class InvalidExportContext(Exception):
 
     def __init__(self, message: str, *, reportable: bool = False):
         super().__init__(message)
-        # Set when PostHog built the context wrong (no target, no handler), not the customer. The SLO
+        # Set when Flind built the context wrong (no target, no handler), not the customer. The SLO
         # still counts it as a user failure, but error tracking must see it.
         self.reportable = reportable
 

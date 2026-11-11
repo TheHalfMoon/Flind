@@ -798,7 +798,7 @@ describe('useSession', () => {
 
     test.each<[string, ChatContext, ChatRunOptions, Record<string, unknown>, Record<string, unknown>]>([
         [
-            'a plain question creates a PostHog AI chat named from the question',
+            'a plain question creates a Flind AI chat named from the question',
             { kind: 'none' },
             OPUS_PLAN,
             {
@@ -878,7 +878,7 @@ describe('useSession', () => {
         mocked.startTaskRun.mockRejectedValue(
             new ApiError(403, {
                 code: 'code_access_required',
-                error: 'PostHog Desktop access is required to run tasks in the cloud.',
+                error: 'Flind Desktop access is required to run tasks in the cloud.',
             })
         )
 
@@ -890,7 +890,7 @@ describe('useSession', () => {
         expect(mocked.deleteTask).toHaveBeenCalledWith(TASK_ID)
         expect(result.current.taskId).toBeNull()
         expect(result.current.items).toEqual([])
-        expect(result.current.notice).toBe('PostHog Desktop access is required to run tasks in the cloud.')
+        expect(result.current.notice).toBe('Flind Desktop access is required to run tasks in the cloud.')
         expect(result.current.unsentText).toBe('Why did signups drop?')
     })
 

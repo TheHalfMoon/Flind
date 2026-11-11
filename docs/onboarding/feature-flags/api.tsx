@@ -147,7 +147,7 @@ export const getAPISteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                 <>
                     <Markdown>
                         {dedent`
-                            To track usage of your feature flag and view related analytics in PostHog, submit the \`$feature_flag_called\` event whenever you check a feature flag value in your code.
+                            To track usage of your feature flag and view related analytics in Flind, submit the \`$feature_flag_called\` event whenever you check a feature flag value in your code.
 
                             You need to include two properties with this event:
                             1. \`$feature_flag_response\`: This is the name of the variant the user has been assigned to e.g., "control" or "test"
@@ -206,7 +206,7 @@ export const getAPISteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             content: (
                 <Markdown>
                     {dedent`
-                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the PostHog dashboard.
+                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the Flind dashboard.
                     `}
                 </Markdown>
             ),

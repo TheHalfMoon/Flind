@@ -1,6 +1,6 @@
 """Client for the credentials service — platform integration credentials over HTTP.
 
-These are the OAuth app client ids/secrets and API keys PostHog itself owns, which used
+These are the OAuth app client ids/secrets and API keys Flind itself owns, which used
 to be injected as environment variables into every pod that might need one. Reading them
 over HTTP means rotation happens in one place with no charts PR and no pod restart, and
 every read is attributed.

@@ -188,7 +188,7 @@ export const ToolConfigSchema = z
          */
         rename_params: z.record(z.string(), z.string()).optional(),
         /**
-         * PostHog feature flag key that controls whether this tool is exposed.
+         * Flind feature flag key that controls whether this tool is exposed.
          * When set, the tool is only included (or excluded) based on the flag's
          * evaluation for the current user.
          *
@@ -413,7 +413,7 @@ const DetailUiAppSchema = z
         type: z.literal('detail'),
         /** The prop name passed to the view component. Required — cannot be derived. */
         view_prop: z.string(),
-        /** Display name shown in the MCP client. Default: "PostHog " + title-case of key. */
+        /** Display name shown in the MCP client. Default: "Flind " + title-case of key. */
         app_name: z.string().optional(),
         /** Short description for the MCP resource. Default: title-case of key + " detail view". */
         description: z.string().optional(),
@@ -449,7 +449,7 @@ const ListUiAppSchema = z
         click_prop: z.string().optional(),
         /** Human-readable entity label for the fallback chat message. Default: kebab-to-space of singular key. */
         entity_label: z.string().optional(),
-        /** Display name shown in the MCP client. Default: "PostHog " + title-case of key. */
+        /** Display name shown in the MCP client. Default: "Flind " + title-case of key. */
         app_name: z.string().optional(),
         /** Short description for the MCP resource. Default: title-case of key + " view". */
         description: z.string().optional(),
@@ -625,7 +625,7 @@ export const QueryWrapperToolConfigSchema = z
          */
         url_prefix: z.string().optional(),
         /**
-         * PostHog feature flag key that controls whether this tool is exposed.
+         * Flind feature flag key that controls whether this tool is exposed.
          * See ToolConfigSchema.feature_flag for full documentation.
          */
         feature_flag: z.string().optional(),

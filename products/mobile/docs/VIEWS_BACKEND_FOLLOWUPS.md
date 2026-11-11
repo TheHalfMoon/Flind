@@ -302,7 +302,7 @@ A new phone starts from the web's order again.
 Recent marks a dashboard that an AI agent built in the last 7 days with a small "New" badge.
 
 **Why it matters to users:**
-People ask an agent, such as PostHog AI or a coding agent through MCP, to build a dashboard.
+People ask an agent, such as Flind AI or a coding agent through MCP, to build a dashboard.
 They check it later on the phone.
 The badge helps them find what the agent made.
 

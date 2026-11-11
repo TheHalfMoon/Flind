@@ -32,7 +32,7 @@ logger = structlog.get_logger(__name__)
 
 @cached(cache={})
 def get_ph_client() -> PostHogClient:
-    """Get a PostHog client instance for capturing events.
+    """Get a Flind client instance for capturing events.
 
     Shares `PH_US_API_KEY` with `internal_reporting_team_id`, which resolves the team the
     already-reported lookup reads. A separate literal here could drift from that key, and the lookup
@@ -1205,7 +1205,7 @@ def capture_ai_observability_report(
     except Exception as err:
         log = logger.error if _is_final_attempt(self) else logger.warning
         log(
-            "[AIO Usage Error] AI observability usage report sent to PostHog for organization failed",
+            "[AIO Usage Error] AI observability usage report sent to Flind for organization failed",
             organization_id=organization_id,
             error=str(err),
             event_source="ai_observability_usage_report",

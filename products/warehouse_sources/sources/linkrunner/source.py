@@ -53,7 +53,7 @@ class LinkrunnerSource(ResumableSource[LinkrunnerSourceConfig, LinkrunnerResumeC
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="Linkrunner",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Linkrunner API key to pull your mobile attribution data into the PostHog Data warehouse.
+            caption="""Enter your Linkrunner API key to pull your mobile attribution data into the Flind Data warehouse.
 
 You can find your API key in your [Linkrunner dashboard](https://www.linkrunner.io/) under settings.
 

@@ -2,11 +2,11 @@
 name: signals-scout-conversations
 scout-display-name: Conversations
 description: >
-  Signals scout for PostHog Conversations (support inbox). Watches `$conversation_*` ticket-
+  Signals scout for Flind Conversations (support inbox). Watches `$conversation_*` ticket-
   lifecycle events for SLA breach steps, first-response latency blowouts, backlog imbalance, and
   channel or assignment concentration.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus `execute-sql` over the
   `events` table and `read-data-schema` (the tools in the MCP tools section).
 allowed_tools:

@@ -97,7 +97,7 @@ class TestOpeningBrief(SimpleTestCase):
     def test_the_first_thing_they_read_says_where_they_are(self) -> None:
         brief = build_opening_brief(_setup_facts())
 
-        assert brief[0] == "Open with: Welcome to PostHog Desktop."
+        assert brief[0] == "Open with: Welcome to Flind Desktop."
 
     def test_a_read_page_is_named_where_it_is_used_rather_than_footnoted(self) -> None:
         brief = build_opening_brief(_setup_facts())
@@ -132,9 +132,9 @@ class TestOpeningBrief(SimpleTestCase):
 
     @parameterized.expand(
         [
-            ("no events offers to instrument, asking which repo", False, False, 0, "add PostHog to their codebase"),
+            ("no events offers to instrument, asking which repo", False, False, 0, "add Flind to their codebase"),
             ("findings waiting offers to walk through one", False, True, 4, "walk them through"),
-            ("joining with no events still offers to instrument", True, False, 0, "add PostHog to their codebase"),
+            ("joining with no events still offers to instrument", True, False, 0, "add Flind to their codebase"),
             ("joining with findings offers to walk through one", True, True, 4, "walk them through"),
         ]
     )
@@ -209,13 +209,13 @@ class TestOpeningBrief(SimpleTestCase):
         brief = build_opening_brief(_setup_facts(has_events=False, sources_enabled=("error tracking",)))
 
         assert not any("findings will start landing" in line for line in brief)
-        assert any("no PostHog data is arriving yet" in line for line in brief)
+        assert any("no Flind data is arriving yet" in line for line in brief)
 
     def test_a_workspace_already_being_watched_is_never_told_we_just_turned_it_on(self) -> None:
         brief = build_opening_brief(_setup_facts(sources_newly_enabled=False))
 
         (status,) = [line for line in brief if "error tracking" in line]
-        assert "PostHog is already watching error tracking" in status
+        assert "Flind is already watching error tracking" in status
         assert "turned on" not in status
 
     def test_every_new_watch_is_named_rather_than_counted(self) -> None:

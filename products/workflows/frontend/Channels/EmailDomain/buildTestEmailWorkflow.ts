@@ -19,7 +19,7 @@ export interface TestEmailInvocation {
 }
 
 const testEmailAction = (integrationId: number, domain: string, recipient: string): HogFlowAction => {
-    const text = `Your sending domain ${domain} is set up. Emails from PostHog Workflows will arrive like this one.`
+    const text = `Your sending domain ${domain} is set up. Emails from Flind Workflows will arrive like this one.`
     return {
         id: TEST_EMAIL_ACTION_ID,
         type: 'function_email',

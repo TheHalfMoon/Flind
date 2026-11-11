@@ -20,7 +20,7 @@ from products.messaging.backend.presentation.views.push_identity_tokens import (
 
 
 # A fresh EC P-256 keypair as (private PEM, public PEM): the customer's signing key and the public
-# half they register with PostHog.
+# half they register with Flind.
 def _es256_keypair() -> tuple[str, str]:
     private_key = ec.generate_private_key(ec.SECP256R1())
     private_pem = private_key.private_bytes(

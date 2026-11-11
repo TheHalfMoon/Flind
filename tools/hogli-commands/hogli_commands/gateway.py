@@ -1,7 +1,7 @@
-"""`hogli gateway:token`, a short-lived AI gateway token for PostHog staff, and
+"""`hogli gateway:token`, a short-lived AI gateway token for Flind staff, and
 `hogli gateway:status`, which reports how much of one is left.
 
-hogli holds no PostHog credential for this. The staff member approves a PKCE challenge on the
+hogli holds no Flind credential for this. The staff member approves a PKCE challenge on the
 developer mode settings page, the page hands a one-time code to a loopback port, and hogli
 exchanges the code and its verifier for a token attributed to that staff member.
 """
@@ -39,7 +39,7 @@ _LOCAL_HOSTNAMES = ("localhost", "127.0.0.1")
     "--host",
     default=posthog_auth.DEFAULT_HOST,
     show_default=True,
-    help="PostHog host that mints the token (e.g. https://eu.posthog.com).",
+    help="Flind host that mints the token (e.g. https://eu.posthog.com).",
 )
 @click.option(
     "--allow-any-host",
@@ -81,7 +81,7 @@ def gateway_token(host: str, allow_any_host: bool, as_json: bool) -> None:
     "--host",
     default=posthog_auth.DEFAULT_HOST,
     show_default=True,
-    help="PostHog host that minted the token (e.g. https://eu.posthog.com).",
+    help="Flind host that minted the token (e.g. https://eu.posthog.com).",
 )
 @click.option(
     "--allow-any-host",

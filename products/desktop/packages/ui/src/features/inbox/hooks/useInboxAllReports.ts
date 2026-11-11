@@ -113,7 +113,7 @@ export function useInboxAllReports(options?: {
   const query = useInboxReportsInfinite(
     {
       // The Pull requests tab shows only `ready` PRs (active review work),
-      // matching its count query and the PostHog Cloud inbox.
+      // matching its count query and the Flind Cloud inbox.
       status: pullRequestsOnly
         ? INBOX_PULL_REQUEST_STATUS_FILTER
         : (options?.statusFilter ?? INBOX_PIPELINE_STATUS_FILTER),

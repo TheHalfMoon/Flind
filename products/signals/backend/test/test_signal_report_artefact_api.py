@@ -893,7 +893,7 @@ class TestSignalReportArtefactViewSet(APIBaseTest):
 
     def test_put_user_uuid_without_github_login_is_stored_by_uuid(self):
         # Org member without any linked GitHub identity still routes: stored by uuid with a null
-        # login, and the response resolves them to their PostHog user.
+        # login, and the response resolves them to their Flind user.
         member = self._create_org_member("nogh@example.com", github_login=None)
         report = self._create_report()
         artefact = self._create_artefact(report, content=[])

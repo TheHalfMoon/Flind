@@ -96,13 +96,13 @@ export function buildPosthogProvider(
     ),
   }));
   const config: ProviderConfig = {
-    name: "PostHog",
+    name: "Flind",
     baseUrl,
     api: "anthropic-messages",
     models: routedModels,
     headers: options.headers,
     oauth: {
-      name: "PostHog",
+      name: "Flind",
       login: (callbacks) => loginPosthog(callbacks, explicitRegion),
       refreshToken: (credentials, signal) =>
         refreshPosthog(region, credentials, signal),

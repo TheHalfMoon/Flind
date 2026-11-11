@@ -919,7 +919,7 @@ class TestEventsForGoal(_VisionAPITestCase):
         assert events[0] == "survey sent"
 
     def test_internal_events_stay_excluded_even_when_the_goal_names_them(self):
-        # `$`-prefixed events are PostHog internals, not product categories, on both paths.
+        # `$`-prefixed events are Flind internals, not product categories, on both paths.
         self._event("$pageview")
 
         assert _events_for_goal(self.team, "watch the pageview funnel") == []
@@ -1271,7 +1271,7 @@ class TestDraftQuery:
         assert query["properties"][0]["value"] == ["/project/[^/]+/replay\\-home/[^/]+"]
 
     def test_a_generic_looking_path_is_still_kept(self):
-        # "/project/:id" reads like a routing container in PostHog, but a scanner watches the
+        # "/project/:id" reads like a routing container in Flind, but a scanner watches the
         # customer's product, where "/project/<id>" may be a real page. So keep it as a wildcarded
         # regex rather than assuming any team's URL shape.
         query = _draft_query(["/project/:id"], [])

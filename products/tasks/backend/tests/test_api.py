@@ -213,7 +213,7 @@ vbMnD1ZQKgL8LHgb02cbTsc=
 
 # A discuss-report kickoff prompt: the report URL line the web app prepends, then the user's question.
 _DISCUSS_PROMPT = (
-    "Answer this question about the PostHog Inbox report at "
+    "Answer this question about the Flind Inbox report at "
     "https://us.posthog.com/project/2/inbox/reports/x:\n\nIs this still happening?"
 )
 
@@ -2972,8 +2972,8 @@ class TestTaskAPI(BaseTaskAPITest):
         response = self.client.post(
             "/api/projects/@current/tasks/",
             {
-                "title": "New PostHog AI task",
-                "description": "Created from the PostHog AI task tracker",
+                "title": "New Flind AI task",
+                "description": "Created from the Flind AI task tracker",
                 "origin_product": Task.OriginProduct.POSTHOG_AI,
                 "repository": "posthog/posthog",
             },
@@ -3513,7 +3513,7 @@ class TestTaskAPI(BaseTaskAPITest):
 
         report = SignalReport.objects.create(team=self.team, title="Checkout errors spiked")
         response = self._post_discussion_task(
-            report.id, description="Let's discuss this PostHog Inbox report: x\n\n   "
+            report.id, description="Let's discuss this Flind Inbox report: x\n\n   "
         )
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -6641,8 +6641,8 @@ class TestTaskAPI(BaseTaskAPITest):
             ("organization", "other", ["posthog/posthog", "other/repo1", "other/repo2"], [1, 2]),
             # Case insensitive tests
             ("repository", "PostHog/PostHog", ["posthog/posthog", "posthog/posthog-js"], [0]),
-            ("repository", "PostHog", ["posthog/posthog", "other/posthog"], [0, 1]),
-            ("organization", "PostHog", ["posthog/posthog", "posthog/posthog-js", "other/repo"], [0, 1]),
+            ("repository", "Flind", ["posthog/posthog", "other/posthog"], [0, 1]),
+            ("organization", "Flind", ["posthog/posthog", "posthog/posthog-js", "other/repo"], [0, 1]),
         ]
     )
     def test_filter_by_repository_and_organization(self, filter_param, filter_value, task_repos, expected_indices):
@@ -8223,8 +8223,8 @@ class TestTaskRunAPI(BaseTaskAPITest):
         task = Task.objects.create(
             team=self.team,
             created_by=self.user,
-            title="Install PostHog",
-            description="Set up PostHog",
+            title="Install Flind",
+            description="Set up Flind",
             origin_product=origin_product,
             repository="posthog/posthog-js",
         )
@@ -16744,7 +16744,7 @@ class TestTaskRunCommandAPI(BaseTaskAPITest):
     def test_command_no_control_verb_telemetry_for_non_posthog_ai(self, mock_post, mock_capture):
         reset_sandbox_jwt_key_cache()
         self._mock_agent_response(mock_post, {"jsonrpc": "2.0", "id": "req-2", "result": {"cancelled": True}})
-        # USER_CREATED task (e.g. PostHog Desktop) — the generic relay must not emit PostHog AI funnels.
+        # USER_CREATED task (e.g. Flind Desktop) — the generic relay must not emit Flind AI funnels.
         task = self.create_task()
         run = self._create_run_with_sandbox(task)
 
@@ -16804,7 +16804,7 @@ class TestTaskRunCommandAPI(BaseTaskAPITest):
         self.assertEqual(self._capture_calls_for_event(mock_capture, "task_run_cancelled"), [])
 
     def test_command_denied_for_other_users_posthog_ai_run(self):
-        # Auth equivalence for the relay cutover: a same-team user who did not create the PostHog AI
+        # Auth equivalence for the relay cutover: a same-team user who did not create the Flind AI
         # task cannot command its run (404 via task_visibility_q), matching the conversation layer's
         # `conversation.user == request.user` check. Removing the conversation-layer check is safe.
         other_user = self.create_organization_user("victim")
@@ -18752,7 +18752,7 @@ class TestCloudUsageGate(BaseTaskAPITest):
         self, _name, origin, gate_return, expected_status, mock_gate, _mock_workflow
     ):
         # Inbox tasks (report "Create PR" / "Discuss", scout chat) are entitled through
-        # self-driving, not PostHog Desktop, so they run while the human Desktop policy denies
+        # self-driving, not Flind Desktop, so they run while the human Desktop policy denies
         # access. A plain task returns 403 in the same state. The usage cost backstop must still
         # fire on the entitlement-bypassed path.
         self.set_tasks_feature_flag(False)
@@ -19719,7 +19719,7 @@ class TestTaskRunAnalyzeAPI(BaseTaskAPITest):
         self.assertEqual(Task.objects.filter(origin_product=Task.OriginProduct.TASK_ANALYSIS).count(), 1)
 
     def test_analyze_copies_target_repository_and_image_into_run_state(self):
-        image = _make_custom_image(team=self.team, user=self.user, name="PostHog Stack")
+        image = _make_custom_image(team=self.team, user=self.user, name="Flind Stack")
         self.target_task.repository = "posthog/posthog"
         self.target_task.save(update_fields=["repository"])
         self.target_run.state = {"custom_image_id": str(image.id)}
@@ -19733,7 +19733,7 @@ class TestTaskRunAnalyzeAPI(BaseTaskAPITest):
         assert run is not None
         self.assertEqual(run.state["analysis_target_repository"], "posthog/posthog")
         self.assertEqual(run.state["analysis_target_custom_image_id"], str(image.id))
-        self.assertEqual(run.state["analysis_target_custom_image_name"], "PostHog Stack")
+        self.assertEqual(run.state["analysis_target_custom_image_name"], "Flind Stack")
 
     def test_analyze_does_not_copy_name_of_another_users_private_image(self):
         other_user = User.objects.create_user(email="other@example.com", first_name="Other", password="password")
@@ -20035,7 +20035,7 @@ class _TaskAnalysisReportingTestBase(BaseTaskAPITest):
             state={
                 "analysis_target_run_id": str(uuid.uuid4()),
                 "analysis_target_repository": "posthog/posthog",
-                "analysis_target_custom_image_name": "PostHog Stack",
+                "analysis_target_custom_image_name": "Flind Stack",
             },
         )
         self.agent_client = self._sandbox_oauth_client(self.analysis_task.id)

@@ -45,7 +45,7 @@ class ShopWiredSource(ResumableSource[ShopWiredSourceConfig, ShopWiredResumeConf
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="ShopWired",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your ShopWired API credentials to pull your store data into the PostHog Data warehouse.
+            caption="""Enter your ShopWired API credentials to pull your store data into the Flind Data warehouse.
 
 You can create an API key and secret under **Account > API keys** in your [ShopWired](https://www.shopwired.co.uk) account. Sync products, product variations, categories, brands, tags, customers, orders, incomplete orders, order statuses, and vouchers. Transactions and payouts require ShopWired Payments.
 """,

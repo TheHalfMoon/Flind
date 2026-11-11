@@ -42,7 +42,7 @@ export const SessionExpiredReImpersonation: Story = {
                             placement: 'top-end',
                             overlay: (
                                 <LemonButton fullWidth onClick={noop}>
-                                    Return to PostHog
+                                    Return to Flind
                                 </LemonButton>
                             ),
                         },

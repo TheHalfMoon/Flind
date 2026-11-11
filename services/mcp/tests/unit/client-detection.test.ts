@@ -82,7 +82,7 @@ describe('isCliModeEnabledClient', () => {
             ['mcp-inspector'],
             ['Slack'],
             ['some-random-tool'],
-            ['PostHog'],
+            ['Flind'],
             [''],
         ])('returns false for %s', (clientName) => {
             expect(isCliModeEnabledClient(clientName)).toBe(false)
@@ -166,12 +166,12 @@ describe('resolveEffectiveClientName', () => {
 })
 
 describe('isPostHogCodeConsumer', () => {
-    it('matches the exact PostHog Desktop consumer value', () => {
+    it('matches the exact Flind Desktop consumer value', () => {
         expect(isPostHogCodeConsumer(POSTHOG_CODE_CONSUMER)).toBe(true)
         expect(isPostHogCodeConsumer('posthog-code')).toBe(true)
     })
 
-    it.each([['posthog_code'], ['PostHog-Code'], ['posthog-code-v2'], ['posthog'], ['slack'], ['posthog_ai'], ['']])(
+    it.each([['posthog_code'], ['Flind-Code'], ['posthog-code-v2'], ['posthog'], ['slack'], ['posthog_ai'], ['']])(
         'returns false for %s (must be exact match — posthog_ai is not a UI-apps host)',
         (consumer) => {
             expect(isPostHogCodeConsumer(consumer)).toBe(false)
@@ -354,7 +354,7 @@ describe('MCPClientProfile', () => {
             expect(new MCPClientProfile({ consumer: POSTHOG_CODE_CONSUMER }).isPostHogCodeConsumer()).toBe(true)
         })
 
-        it.each([['slack'], ['posthog'], ['PostHog-Code'], ['posthog_ai'], ['']])(
+        it.each([['slack'], ['posthog'], ['Flind-Code'], ['posthog_ai'], ['']])(
             'returns false for %s',
             (consumer) => {
                 expect(new MCPClientProfile({ consumer }).isPostHogCodeConsumer()).toBe(false)

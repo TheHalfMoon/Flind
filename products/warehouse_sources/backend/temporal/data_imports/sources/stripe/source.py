@@ -105,7 +105,7 @@ PERMISSIONS = [
     "rak_payment_method_read",
     "rak_webhook_write",
 ]
-STRIPE_API_KEYS_URL = f"{STRIPE_BASE_URL}/apikeys/create?name=PostHog&{'&'.join([f'permissions[{i}]={permission}' for i, permission in enumerate(PERMISSIONS)])}"
+STRIPE_API_KEYS_URL = f"{STRIPE_BASE_URL}/apikeys/create?name=Flind&{'&'.join([f'permissions[{i}]={permission}' for i, permission in enumerate(PERMISSIONS)])}"
 
 
 @SourceRegistry.register
@@ -265,7 +265,7 @@ class StripeSource(
         return SourceConfig(
             name=ExternalDataSourceType.STRIPE,
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
-            caption=f"Connect your Stripe account to automatically sync your Stripe data into PostHog. You can choose between OAuth (recommended) or legacy RAK Stripe keys. If you choose the latter, you will need your [Stripe account ID]({STRIPE_ACCOUNT_URL}), and create a [restricted API key]({STRIPE_API_KEYS_URL})",
+            caption=f"Connect your Stripe account to automatically sync your Stripe data into Flind. You can choose between OAuth (recommended) or legacy RAK Stripe keys. If you choose the latter, you will need your [Stripe account ID]({STRIPE_ACCOUNT_URL}), and create a [restricted API key]({STRIPE_API_KEYS_URL})",
             permissionsCaption="""Currently, **read permissions are required** for the following resources:
             - Under the **Core** resource type, select *read* for **Balance transaction sources**, **Charges**, **Customers**, **Disputes**, **Payment methods**, **Payouts**, and **Products**
             - Under the **Billing** resource type, select *read* for **Credit notes**, **Invoices**, **Prices**, and **Subscriptions**
@@ -401,9 +401,9 @@ If automatic creation failed with a permissions error, the fix depends on how yo
             "Expired API Key provided": "Your Stripe credentials have expired. If you connected with OAuth, reconnect your Stripe account. If you use an API key, create a new key and update the source.",
             "Invalid API Key provided": None,
             # Stripe rejects the request when the restricted key has an IP allowlist that doesn't
-            # include PostHog's egress IPs. This is a customer-side key configuration that retrying
+            # include Flind's egress IPs. This is a customer-side key configuration that retrying
             # can never satisfy, so stop retrying. Match the stable phrase, not the appended IP.
-            "does not allow requests from your IP address": "Your Stripe API key restricts requests by IP address and is blocking PostHog. Remove the IP restriction on your restricted key in Stripe (or allowlist PostHog's IP addresses), then try again.",
+            "does not allow requests from your IP address": "Your Stripe API key restricts requests by IP address and is blocking Flind. Remove the IP restriction on your restricted key in Stripe (or allowlist Flind's IP addresses), then try again.",
             # Restricted key is missing a read scope for the endpoint being synced (e.g. "Prices Read"
             # / 'plan_read'). The customer must add the scope in Stripe — retrying won't help. Surface
             # Stripe's raw message (None) since it names the exact scope to enable.

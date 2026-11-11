@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { DashboardsService } from "./dashboardsService";
 import type { ProjectApiClient } from "./projectApiClient";
 
-// A canvas as the PostHog canvases API returns it.
+// A canvas as the Flind canvases API returns it.
 function apiCanvas(overrides: Record<string, unknown> = {}) {
   return {
     id: "c1",

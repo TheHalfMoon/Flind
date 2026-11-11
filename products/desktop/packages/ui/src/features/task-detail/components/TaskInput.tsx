@@ -1778,7 +1778,7 @@ export function TaskInput({
                 {showClaudeNotConnectedNotice && (
                   <div className="mx-2 mt-1.5 text-[12px] text-gray-10">
                     Claude is set to use your Claude plan, but no account is
-                    logged in. Sessions use PostHog credits.{" "}
+                    logged in. Sessions use Flind credits.{" "}
                     <button
                       type="button"
                       className="underline"
@@ -1791,7 +1791,7 @@ export function TaskInput({
                 {showCodexNotConnectedNotice && (
                   <div className="mx-2 mt-1.5 text-[12px] text-gray-10">
                     Codex is set to use your ChatGPT plan, but no account is
-                    connected. Sessions use PostHog credits.{" "}
+                    connected. Sessions use Flind credits.{" "}
                     <button
                       type="button"
                       className="underline"

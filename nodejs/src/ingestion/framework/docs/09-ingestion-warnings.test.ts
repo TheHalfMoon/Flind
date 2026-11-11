@@ -6,7 +6,7 @@
  * manner. Unlike errors (which send items to DLQ), warnings allow processing
  * to continue while recording the issue for customer visibility.
  *
- * Warnings are displayed to customers in the PostHog UI.
+ * Warnings are displayed to customers in the Flind UI.
  *
  * ## Use Cases
  *

@@ -32,7 +32,7 @@ export function useAutoSendOnce(conversationId: string, ready: boolean, send: ()
     }, [ready])
 }
 
-// Shared meta (decorators + parameters) for the PostHog AI story files. Each story file spreads
+// Shared meta (decorators + parameters) for the Flind AI story files. Each story file spreads
 // this into its own `meta` and sets a distinct `title` — Storybook errors on duplicate titles.
 export const sharedMeta: Meta = {
     decorators: [

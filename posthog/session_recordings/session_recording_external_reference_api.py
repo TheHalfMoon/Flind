@@ -173,7 +173,7 @@ class SessionRecordingExternalReferenceSerializer(serializers.ModelSerializer):
             external_context["title"] = title
         elif integration.kind == Integration.IntegrationKind.GITHUB:
             title = config.get("title", "")
-            config["body"] = f"{config.get('body', '')}\n\n**PostHog recording:** {recording_url}"
+            config["body"] = f"{config.get('body', '')}\n\n**Flind recording:** {recording_url}"
             response = GitHubIntegration(
                 integration, source="replay_external_references", priority=Priority.CRITICAL
             ).create_issue(config)
@@ -184,7 +184,7 @@ class SessionRecordingExternalReferenceSerializer(serializers.ModelSerializer):
             }
         elif integration.kind == Integration.IntegrationKind.GITLAB:
             title = config.get("title", "")
-            config["body"] = f"{config.get('body', '')}\n\n**PostHog recording:** {recording_url}"
+            config["body"] = f"{config.get('body', '')}\n\n**Flind recording:** {recording_url}"
             response = GitLabIntegration(integration).create_issue(config)
             if not response.get("issue_id"):
                 raise ValidationError("Failed to create GitLab issue")

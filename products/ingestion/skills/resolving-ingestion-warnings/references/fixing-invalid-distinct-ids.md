@@ -12,7 +12,7 @@ Both warnings are the same bug class: **something that isn't a user identifier r
 - `posthog.identify(user.id)` where `user` is not yet loaded → `identify(undefined)` → `"undefined"`.
 - `posthog.alias(String(session.userId))` with a missing field → `"undefined"` / `"null"`; an object passed where a string was expected → `"[object Object]"`.
 - A token or payload flowing into the ID argument (dots and base64 → a JWT; braces → serialized JSON).
-- A hardcoded fallback like `"anonymous"` or `"guest"` for logged-out users — don't; PostHog already handles anonymous users with its own IDs.
+- A hardcoded fallback like `"anonymous"` or `"guest"` for logged-out users — don't; Flind already handles anonymous users with its own IDs.
 
 ## Diagnose
 
@@ -30,7 +30,7 @@ if (user?.id) {
 ```
 
 - Call `identify` after authentication resolves (auth callback/effect), not on page load.
-- Never use fallback IDs for logged-out users — leave them anonymous; PostHog links the sessions when `identify` eventually runs.
+- Never use fallback IDs for logged-out users — leave them anonymous; Flind links the sessions when `identify` eventually runs.
 - Type the helper so objects and tokens can't be passed as the ID.
 
 ## Verify

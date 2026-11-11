@@ -48,7 +48,7 @@ class GoogleWebfontsSource(SimpleSource[GoogleWebfontsSourceConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Google Webfonts",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter a Google API key to pull the Google Fonts catalog into the PostHog Data warehouse.
+            caption="""Enter a Google API key to pull the Google Fonts catalog into the Flind Data warehouse.
 
 Create an API key in the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) and enable the **Web Fonts Developer API** for the project. No OAuth or scopes are required — the API is a public, read-only metadata catalog.
 """,

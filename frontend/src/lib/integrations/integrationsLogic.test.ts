@@ -33,9 +33,9 @@ const githubIntegration = (overrides: Partial<IntegrationType> = {}): Integratio
     ({
         id: 42,
         kind: 'github',
-        display_name: 'PostHog',
+        display_name: 'Flind',
         icon_url: '',
-        config: { installation_id: '12345', account: { name: 'PostHog', type: 'Organization' } },
+        config: { installation_id: '12345', account: { name: 'Flind', type: 'Organization' } },
         created_at: '2026-08-18T00:00:00Z',
         errors: '',
         installation_shared: false,
@@ -275,7 +275,7 @@ describe('integrationsLogic', () => {
             [
                 'last team reference',
                 false,
-                'This uninstalls the Flind app from PostHog on GitHub and disconnects it from every Flind project and personal account that uses it.',
+                'This uninstalls the Flind app from Flind on GitHub and disconnects it from every Flind project and personal account that uses it.',
             ],
             [
                 'shared with another project',

@@ -1,6 +1,6 @@
 # Staff support MCP tools: setup guide
 
-The managed migrations support tools let PostHog staff triage customer batch imports (managed migrations) from any MCP client — Claude Code, Claude Desktop, Cursor — instead of Django admin.
+The managed migrations support tools let Flind staff triage customer batch imports (managed migrations) from any MCP client — Claude Code, Claude Desktop, Cursor — instead of Django admin.
 
 - `managed-migrations-support-list` — list batch import jobs across **all** teams, filterable by `team_id`, `status`, or free-text search
 - `managed-migrations-support-get` — one job by UUID, including the raw worker `state` and `import_config` blobs
@@ -11,7 +11,7 @@ Credential values (`secrets`) are never returned by any of these surfaces, and e
 
 ## Who can use this
 
-PostHog staff only (`is_staff = True` on your PostHog cloud user).
+Flind staff only (`is_staff = True` on your Flind cloud user).
 Everything below fails closed for non-staff users: the tools never appear in their MCP clients, and the API returns 403 even with a correctly-scoped key.
 
 ## Step 1: mint the personal API key
@@ -19,13 +19,13 @@ Everything below fails closed for non-staff users: the tools never appear in the
 The `batch_import_support:read` scope is **hidden from the key-creation UI** and can never be granted through OAuth,
 so minting takes two steps — create the key normally, then add the hidden scope via Django admin:
 
-1. In the PostHog UI on the region you want to inspect, go to **Settings → Personal API keys** and create a key with the **User: Read** scope and **no organization/project restriction** (the endpoint rejects scoped keys). Copy the `phx_...` value — it is shown only once.
+1. In the Flind UI on the region you want to inspect, go to **Settings → Personal API keys** and create a key with the **User: Read** scope and **no organization/project restriction** (the endpoint rejects scoped keys). Copy the `phx_...` value — it is shown only once.
 2. In Django admin (`/admin/posthog/personalapikey/`), open your new key and add `batch_import_support:read` to its `scopes` list, then save. Do this **before** first using the key with MCP — the MCP server caches a token's scopes on first use.
 
 <details>
 <summary>Alternative: one-shot mint from the browser console</summary>
 
-While logged in, on any PostHog app page:
+While logged in, on any Flind app page:
 
 ```js
 await fetch('/api/personal_api_keys/', {
@@ -52,7 +52,7 @@ Rules that will bite you if skipped:
 
 ## Step 2: connect your MCP client
 
-Add the PostHog MCP server with the key as a bearer token.
+Add the Flind MCP server with the key as a bearer token.
 The URL is the same for both regions — the server probes US and EU with your token and routes to the region that recognizes it, so the token itself selects the region.
 For Claude Code, one entry per region you support:
 
@@ -74,7 +74,7 @@ For Claude Code, one entry per region you support:
 ```
 
 Keep the tokens in env vars or a secret manager rather than inline.
-Both connections can coexist with your everyday PostHog MCP connection — tools are namespaced per server, so the staff tools stay out of your daily driver's tool list.
+Both connections can coexist with your everyday Flind MCP connection — tools are namespaced per server, so the staff tools stay out of your daily driver's tool list.
 
 Do **not** sign in via the OAuth browser flow — OAuth tokens structurally cannot carry the hidden scope, so the support tools will never appear on an OAuth connection.
 The bearer-header PAT is the only path.

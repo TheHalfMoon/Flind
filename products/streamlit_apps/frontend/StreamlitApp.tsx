@@ -134,7 +134,7 @@ export function StreamlitAppViewer(props: Record<string, any>): JSX.Element {
                     <iframe
                         src={iframeSrc}
                         // allow-same-origin lets Streamlit read its own cookies/sessionStorage.
-                        // PostHog is a different origin, so the proxy's scope check is the real boundary.
+                        // Flind is a different origin, so the proxy's scope check is the real boundary.
                         sandbox="allow-scripts allow-forms allow-popups allow-modals allow-same-origin"
                         referrerPolicy="no-referrer"
                         className="w-full h-full border-0 rounded-lg"

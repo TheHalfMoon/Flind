@@ -16,7 +16,7 @@ function getSurveysReactNativeSteps(ctx: OnboardingComponentsContext): StepDefin
             content: (
                 <>
                     <Markdown>
-                        Other than the PostHog SDK, Surveys requires a few additional dependencies to be installed.
+                        Other than the Flind SDK, Surveys requires a few additional dependencies to be installed.
                     </Markdown>
                     <CodeBlock
                         blocks={[

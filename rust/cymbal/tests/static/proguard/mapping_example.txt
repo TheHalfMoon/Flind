@@ -16127,7 +16127,7 @@ com.google.gson.stream.JsonWriter -> u0.c:
 com.google.gson.stream.MalformedJsonException -> u0.d:
 # {"id":"sourceFile","fileName":"MalformedJsonException.java"}
 com.posthog.PostHog -> v0.c:
-# {"id":"sourceFile","fileName":"PostHog.kt"}
+# {"id":"sourceFile","fileName":"Flind.kt"}
     boolean isPersonProcessingEnabled -> A
     com.posthog.PostHog$Companion Companion -> B
       # {"id":"com.android.tools.r8.residualsignature","signature":"Ld1/b;"}
@@ -16522,9 +16522,9 @@ com.posthog.PostHog$legacyPreferences$lambda$6$$inlined$deserialize$1 -> v0.b:
 # {"id":"sourceFile","fileName":"PostHogSerializer.kt"}
     1:4:void <init>():93:93 -> <init>
 com.posthog.PostHog$setup$1$2 -> R8$$REMOVED$$CLASS$$146:
-# {"id":"sourceFile","fileName":"PostHog.kt"}
+# {"id":"sourceFile","fileName":"Flind.kt"}
 com.posthog.PostHog$setup$1$featureFlags$1 -> R8$$REMOVED$$CLASS$$147:
-# {"id":"sourceFile","fileName":"PostHog.kt"}
+# {"id":"sourceFile","fileName":"Flind.kt"}
 com.posthog.PostHogConfig -> v0.g:
 # {"id":"sourceFile","fileName":"PostHogConfig.kt"}
     com.posthog.internal.PostHogContext context -> A

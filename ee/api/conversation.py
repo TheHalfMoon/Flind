@@ -765,7 +765,7 @@ class ConversationViewSet(
 
         `open` is create-or-resume: a brand-new conversation (first warm or first message) has no row
         yet, so a plain `get_object()` would 404. A brand-new row is only born on the sandbox runtime,
-        and `open` checks PostHog AI 2.0 access first, so a caller outside it can't spam orphaned rows by
+        and `open` checks Flind AI 2.0 access first, so a caller outside it can't spam orphaned rows by
         POSTing random ids. Returns whether the row was created this request so the caller can
         drop it again if nothing ends up being provisioned.
 

@@ -54,7 +54,7 @@ class PipelinerSource(ResumableSource[PipelinerSourceConfig, PipelinerResumeConf
             label="Pipeliner",
             keywords=["coevera", "pipeliner crm"],
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Import data from your Pipeliner CRM (Coevera) team space into the PostHog Data warehouse.
+            caption="""Import data from your Pipeliner CRM (Coevera) team space into the Flind Data warehouse.
 
 To connect, create an API application in Pipeliner under **Administration → Unit, Users & Roles → Applications**, then click **Show API Access** to reveal the space ID, service URL, and API credentials. The username and password are shown only once, so store them safely.
 """,

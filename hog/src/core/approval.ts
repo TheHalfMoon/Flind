@@ -16,7 +16,7 @@ export const PendingApprovalSchema = z.object({
     url: z.string(),
     // The code the approval page shows, so the person can check it is the request they started.
     userCode: z.string().optional(),
-    // Epoch milliseconds after which PostHog forgets the request.
+    // Epoch milliseconds after which Flind forgets the request.
     expiresAt: z.number(),
     intervalSeconds: z.number(),
 })
@@ -131,7 +131,7 @@ async function startPending<Pending extends PendingApproval, Value>(
 }
 
 // Polls until the person approves, rejects or lets the request expire, and forgets the pending item
-// in each case. When hog loses contact with PostHog the item stays, so `--wait` can resume it.
+// in each case. When hog loses contact with Flind the item stays, so `--wait` can resume it.
 async function waitFor<Pending extends PendingApproval, Value>(
     runtime: Runtime,
     flow: ApprovalWait<Pending, Value>,
@@ -140,7 +140,7 @@ async function waitFor<Pending extends PendingApproval, Value>(
     const interrupted = (reason: string): HogError =>
         new HogError(
             `${errorCode(flow.noun)}_interrupted`,
-            `hog lost contact with PostHog while waiting for the ${flow.noun}: ${reason}`,
+            `hog lost contact with Flind while waiting for the ${flow.noun}: ${reason}`,
             `Run \`${flow.command} --wait\` to keep waiting. The link stays the same.`
         )
     const fail = async (error: HogError): Promise<never> => {
@@ -208,7 +208,7 @@ async function waitFor<Pending extends PendingApproval, Value>(
                 return fail(expired(flow, pending))
         }
     }
-    // PostHog keeps an approval given before the deadline.
+    // Flind keeps an approval given before the deadline.
     try {
         const last = await flow.poll(pending, REQUEST_TIMEOUT_MS)
         if (last.state === 'approved') {

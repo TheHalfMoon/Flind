@@ -22,8 +22,8 @@ type ConnectionState =
     | { status: 'connected'; client: PostHogClient; projectId: string | null }
 
 const DISCONNECTED_DESCRIPTION =
-    'PostHog gives you product analytics, session replays, experiments, and feature flags for your Stripe customers. ' +
-    'To get started, connect this Stripe account from your PostHog dashboard.'
+    'Flind gives you product analytics, session replays, experiments, and feature flags for your Stripe customers. ' +
+    'To get started, connect this Stripe account from your Flind dashboard.'
 
 const FullPage = ({ environment }: ExtensionContextValue): JSX.Element => {
     const [state, setState] = useState<ConnectionState>({ status: 'loading' })
@@ -81,7 +81,7 @@ const FullPage = ({ environment }: ExtensionContextValue): JSX.Element => {
                     description={DISCONNECTED_DESCRIPTION}
                     descriptionActionLabel="Learn more"
                     primaryAction={{
-                        label: 'Connect in PostHog',
+                        label: 'Connect in Flind',
                         href: constants.POSTHOG_NEW_SOURCE_URL,
                         target: '_blank',
                     }}

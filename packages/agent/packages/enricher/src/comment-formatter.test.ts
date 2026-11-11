@@ -37,12 +37,12 @@ describe("formatInlineComments", () => {
       events,
     );
     expect(out).toBe(
-      `posthog.capture('a'); // [PostHog] Event: "a" \u2014 (verified)`,
+      `posthog.capture('a'); // [Flind] Event: "a" \u2014 (verified)`,
     );
   });
 
   test("replaces an existing inline annotation", () => {
-    const source = `posthog.capture('a'); // [PostHog] Event: "old"`;
+    const source = `posthog.capture('a'); // [Flind] Event: "old"`;
     const items = [eventItem("a", 0, false)];
     const events = new Map([["a", enrichedEvent("a")]]);
     const out = formatInlineComments(
@@ -70,7 +70,7 @@ describe("formatInlineComments", () => {
       events,
     );
     expect(out).toBe(
-      `<Button onClick={() => track('a')} /> {/* [PostHog] Event: "a" \u2014 (verified) */}`,
+      `<Button onClick={() => track('a')} /> {/* [Flind] Event: "a" \u2014 (verified) */}`,
     );
   });
 
@@ -115,14 +115,14 @@ describe("formatInlineComments", () => {
     const lines = out.split("\n");
     expect(lines).toHaveLength(2);
     expect(lines[0]).toBe(
-      `  {/* [PostHog] Event: "b" \u2014 (verified) | Event: "a" \u2014 (verified) */}`,
+      `  {/* [Flind] Event: "b" \u2014 (verified) | Event: "a" \u2014 (verified) */}`,
     );
     expect(lines[1]).toBe(source);
   });
 
   test("replaces an existing mixed-context leading annotation", () => {
     const source = [
-      `{/* [PostHog] Event: "old" */}`,
+      `{/* [Flind] Event: "old" */}`,
       `<Button onClick={() => track('a')} />; posthog.capture('b');`,
     ].join("\n");
     const items = [eventItem("a", 1, true), eventItem("b", 1, false)];

@@ -1,10 +1,10 @@
-"""Databricks driver for PostHog's data-warehouse import pipeline.
+"""Databricks driver for Flind's data-warehouse import pipeline.
 
 Everything Databricks-specific — connection lifecycle (personal access
 token vs OAuth M2M service principal auth), Unity Catalog
 `information_schema` discovery, and the pipeline build — lives on
 `DatabricksImplementation`. The source-class `DatabricksSource` is a thin
-PostHog-layer wrapper that holds an instance and validates credentials.
+Flind-layer wrapper that holds an instance and validates credentials.
 """
 
 from __future__ import annotations
@@ -109,7 +109,7 @@ class DatabricksMetadataTimeoutError(NonReportableError):
 
     def __init__(self, timeout_seconds: float) -> None:
         super().__init__(
-            f"{DATABRICKS_METADATA_TIMEOUT_ERROR} while PostHog listed tables and columns "
+            f"{DATABRICKS_METADATA_TIMEOUT_ERROR} while Flind listed tables and columns "
             f"(waited {timeout_seconds:g} seconds)"
         )
 
@@ -247,7 +247,7 @@ class DatabricksImplementation(SQLSourceImplementation[DatabricksSourceConfig, A
             # A blank schema (multi-schema import) must reach the connector as None, not "" —
             # `schema=""` would try `USE SCHEMA ""`, an invalid identifier, and fail at connect time.
             schema=normalize_namespace(config.schema),
-            user_agent_entry="PostHog",
+            user_agent_entry="Flind",
             enable_telemetry=False,
             **auth_connect_args,
         )

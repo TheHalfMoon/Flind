@@ -39,7 +39,7 @@ from products.signals.dags.inbox_ranking.training.within_team import (
     team_interval,
 )
 
-# PostHog's own project, where the inbox's builders are its users.
+# Flind's own project, where the inbox's builders are its users.
 DOGFOOD_TEAM_ID = LABELS_TEAM_ID
 # Prior views from which a user counts as having history, read as one slice as well as the buckets.
 WITH_HISTORY_MIN_VIEWS = 10

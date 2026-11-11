@@ -3350,7 +3350,7 @@ class TrinoPrinter(PostgresPrinter):
         return f"CAST({value} AS VARCHAR)"
 
     def _visit_city_hash_64(self, node: ast.Call) -> str:
-        # ch_cityhash64 comes from the trino-posthog-functions plugin in the PostHog Trino fork.
+        # ch_cityhash64 comes from the trino-posthog-functions plugin in the Flind Trino fork.
         # It returns DECIMAL(20,0), so values equal ClickHouse's UInt64.
         # ClickHouse hashes an integer as its unsigned bit pattern at the integer's own width,
         # so the plugin has one overload per Trino integer width.

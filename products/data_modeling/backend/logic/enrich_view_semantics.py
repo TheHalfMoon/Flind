@@ -158,7 +158,7 @@ def _gather_lineage(team: Team, saved_query: DataWarehouseSavedQuery, query_str:
         ):
             descriptions.setdefault(tables[table_annotation.table_id], table_annotation.description)
 
-    # Everything else (PostHog core tables, unresolved names) contributes its name only.
+    # Everything else (Flind core tables, unresolved names) contributes its name only.
     return [{"name": name, "description": descriptions.get(name)} for name in sorted(parent_names)]
 
 

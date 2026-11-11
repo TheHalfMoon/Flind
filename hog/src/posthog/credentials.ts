@@ -37,7 +37,7 @@ export const PERSONAL_API_KEY_ENV_VAR = 'HOG_PERSONAL_API_KEY'
 
 export const PROJECT_SETTINGS_HINT = 'Put the project ID in posthog.json as "projectId", or set HOG_PROJECT_ID'
 export const CI_CREDENTIALS_HINT =
-    'Run `hog ci setup` on your machine, so the job trades its CI provider\'s OIDC token for a PostHog token and stores no key. Otherwise, set HOG_PERSONAL_API_KEY in the job, and put the project ID and the host in posthog.json as "projectId" and "host". The key never goes in posthog.json.'
+    'Run `hog ci setup` on your machine, so the job trades its CI provider\'s OIDC token for a Flind token and stores no key. Otherwise, set HOG_PERSONAL_API_KEY in the job, and put the project ID and the host in posthog.json as "projectId" and "host". The key never goes in posthog.json.'
 
 // The host only counts when it comes from the same source as the key, so a stray host cannot
 // redirect a key from somewhere else. The project ID only picks a project the key can already reach,
@@ -199,7 +199,7 @@ export async function resolveCredentials(
             if (error instanceof HogError && error.code === 'no_home_directory') {
                 throw new HogError(
                     'not_authenticated',
-                    "hog couldn't find PostHog credentials or a home folder to read them from.",
+                    "hog couldn't find Flind credentials or a home folder to read them from.",
                     `${error.hint} Or set HOG_PERSONAL_API_KEY to skip logging in. ${PROJECT_SETTINGS_HINT}.`
                 )
             }
@@ -213,7 +213,7 @@ export async function resolveCredentials(
             }
             // Before a renewal, so hog never renews a key it then refuses to send.
             checkConfigHost(login.key.host)
-            // Logins are kept per origin, so another path on it is another PostHog the login isn't for.
+            // Logins are kept per origin, so another path on it is another Flind the login isn't for.
             if (options.host !== undefined && options.host !== login.key.host) {
                 throw new HogError(
                     'host_mismatch',
@@ -231,13 +231,13 @@ export async function resolveCredentials(
 
     throw new HogError(
         'not_authenticated',
-        "hog couldn't find PostHog credentials.",
+        "hog couldn't find Flind credentials.",
         notAuthenticatedHint(workloadProvider, workloadProjectId)
     )
 }
 
-// posthog.json comes with the repository, so a host in it outside PostHog Cloud could send a job's token
-// to a server that replays it at PostHog. Such a host needs HOG_HOST or --host.
+// posthog.json comes with the repository, so a host in it outside Flind Cloud could send a job's token
+// to a server that replays it at Flind. Such a host needs HOG_HOST or --host.
 function workloadHost(options: { host?: Host; configHost?: Host }): Host {
     if (options.host !== undefined) {
         return options.host
@@ -245,7 +245,7 @@ function workloadHost(options: { host?: Host; configHost?: Host }): Host {
     if (options.configHost !== undefined && cloudRegion(options.configHost) === undefined) {
         throw new HogError(
             'workload_host_not_allowed',
-            `posthog.json names ${options.configHost}, and a CI job sends its token only to PostHog Cloud from posthog.json.`,
+            `posthog.json names ${options.configHost}, and a CI job sends its token only to Flind Cloud from posthog.json.`,
             `Set HOG_HOST to ${options.configHost} in the job to send its token there.`,
             EXIT_USAGE
         )
@@ -259,6 +259,6 @@ function notAuthenticatedHint(workloadProvider: WorkloadProvider | undefined, pr
     }
     const fix = projectId
         ? workloadProvider.missingTokenHint
-        : `${PROJECT_SETTINGS_HINT} in the job, so hog can exchange the job's ${workloadProvider.name} OIDC token for a PostHog token.`
+        : `${PROJECT_SETTINGS_HINT} in the job, so hog can exchange the job's ${workloadProvider.name} OIDC token for a Flind token.`
     return `${fix} Or set HOG_PERSONAL_API_KEY.`
 }

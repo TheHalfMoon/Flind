@@ -154,7 +154,7 @@ class Dynamics365Source(ResumableSource[Dynamics365SourceConfig, Dynamics365Resu
             category=DataWarehouseSourceCategory.CRM,
             keywords=["microsoft dynamics", "dynamics", "dataverse"],
             label="Microsoft Dynamics 365",
-            caption="""Sync your Dynamics 365 (Dataverse) customer data — accounts, contacts, leads, opportunities, cases and activities — into the PostHog Data warehouse.
+            caption="""Sync your Dynamics 365 (Dataverse) customer data — accounts, contacts, leads, opportunities, cases and activities — into the Flind Data warehouse.
 
 To connect, register an app in **Microsoft Entra ID** and add a client secret. Then add that app as an **application user** in your Dynamics 365 environment (Power Platform admin center > Environments > Settings > Users + permissions > Application users) and give it a security role that can read the tables you want to sync. The environment URL is the one you use to open the app, for example `https://contoso.crm.dynamics.com`.""",
             iconPath="/static/services/dynamics365.png",

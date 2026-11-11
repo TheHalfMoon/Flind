@@ -57,7 +57,7 @@ def validate_cdc_prerequisites(
         errors.extend(_check_replication_slot_capacity(conn))
         errors.extend(_check_table_ownership(conn, qualified_tables))
     elif management_mode == "self_managed":
-        # Self-managed: the DBA creates the publication out-of-band, PostHog creates
+        # Self-managed: the DBA creates the publication out-of-band, Flind creates
         # and owns the slot at source-creation time. So we only verify the publication
         # exists post-setup; the slot is ours to manage.
         errors.extend(_check_replication_role(conn))
@@ -182,9 +182,9 @@ def _check_select_permission(conn: psycopg.Connection, tables: list[_QualifiedTa
 
 
 def _check_table_ownership(conn: psycopg.Connection, tables: list[_QualifiedTable]) -> list[str]:
-    """Each target table must be owned by the connecting role (PostHog-managed mode).
+    """Each target table must be owned by the connecting role (Flind-managed mode).
 
-    PostHog builds the publication itself, and PostgreSQL only lets a table's owner put it
+    Flind builds the publication itself, and PostgreSQL only lets a table's owner put it
     in one. A role with REPLICATION and SELECT but no ownership passes every other check
     here and then fails at CREATE PUBLICATION / ALTER PUBLICATION ADD TABLE with
     "must be owner of table". Membership in the owning role counts as ownership, which is
@@ -224,7 +224,7 @@ def _check_table_ownership(conn: psycopg.Connection, tables: list[_QualifiedTabl
 
 
 def _check_replication_role(conn: psycopg.Connection) -> list[str]:
-    """Check if current user can create logical replication slots (PostHog-managed mode).
+    """Check if current user can create logical replication slots (Flind-managed mode).
 
     Any of the following is sufficient:
       - rolsuper: superusers can always create slots

@@ -56,7 +56,7 @@ class ScoutDeprecationParseError(ValueError):
 
 @dataclass(frozen=True)
 class ScoutDeprecation:
-    """PostHog is retiring this canonical scout, and what a person should be told about it.
+    """Flind is retiring this canonical scout, and what a person should be told about it.
 
     `reason` is the sentence every surface shows, so it is required: a retirement a person cannot
     read the reason for is the failure this lifecycle exists to fix. `superseded_by` names the
@@ -205,7 +205,7 @@ def retire_scout_configs(team_id: int, skill_names: Collection[str]) -> tuple[st
         if moved:
             retired.append(config.skill_name)
             logger.info(
-                "signals_scout: retired a scout PostHog no longer ships",
+                "signals_scout: retired a scout Flind no longer ships",
                 team_id=team_id,
                 skill_name=config.skill_name,
             )

@@ -48,7 +48,7 @@ class EasypromosSource(ResumableSource[EasypromosSourceConfig, EasypromosResumeC
             label="Easypromos",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["promotions", "contests", "giveaways"],
-            caption="""Enter your Easypromos access token to sync your promotions data into the PostHog Data warehouse.
+            caption="""Enter your Easypromos access token to sync your promotions data into the Flind Data warehouse.
 
 Get the token from the **Utilities** menu of your Easypromos account. The REST API is only available on **White Label** and **Corporate** plans, and it does not export data from Basic or Premium promotions.""",
             iconPath="/static/services/easypromos.png",

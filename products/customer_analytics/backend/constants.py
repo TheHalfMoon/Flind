@@ -4,7 +4,7 @@ from products.customer_analytics.backend.facade.enums import CustomPropertyOptio
 
 DEFAULT_ACTIVITY_EVENT = {"kind": "EventsNode", "event": "$pageview", "name": "$pageview"}
 
-# Mirrors frontend `SLACK_ARCHIVES_ORIGIN` in accountLinksLogic.ts. PostHog-internal: hardcodes our
+# Mirrors frontend `SLACK_ARCHIVES_ORIGIN` in accountLinksLogic.ts. Flind-internal: hardcodes our
 # own workspace, so Slack links are wrong for any other team. Replace with the per-team workspace
 # URL (from the conversations bot's auth.test) before GA — see COMPROMISES.md.
 SLACK_ARCHIVES_ORIGIN = "https://posthog.slack.com/archives"
@@ -22,8 +22,8 @@ CUSTOMER_ANALYTICS_ACCOUNT_VIEWS_FLAG = "customer-analytics-account-views"
 WAREHOUSE_PERSON_PROPERTIES_FLAG = "warehouse-person-properties"
 
 # Mirrors frontend `BILLING_INSIGHT_SHORT_IDS` in accountBillingLogic.ts. These saved insights read
-# warehouse-synced billing data to report an account's PostHog consumption (events ingested, rows
-# synced, recordings, etc.) and spend (MRR, per-product cost). PostHog-internal: they only resolve
+# warehouse-synced billing data to report an account's Flind consumption (events ingested, rows
+# synced, recordings, etc.) and spend (MRR, per-product cost). Flind-internal: they only resolve
 # in environments where the billing warehouse data exists; elsewhere the agent's lookup falls back.
 BILLING_USAGE_INSIGHT_SHORT_IDS = ["fiJDsKLp"]
 BILLING_SPEND_INSIGHT_SHORT_IDS = ["o4I9sdFE", "Tjo4bsux"]
@@ -50,7 +50,7 @@ CUSTOM_PROPERTY_OPTION_COLORS = CustomPropertyOptionColor.values
 MAX_ANNOUNCEMENT_CHANNELS = 200
 
 # Base URL for constructed Slack message permalinks (<origin>/<channel_id>/p<ts>) in account
-# channel summaries. Hardcodes PostHog's workspace — pre-GA compromise, see COMPROMISES.md.
+# channel summaries. Hardcodes Flind's workspace — pre-GA compromise, see COMPROMISES.md.
 # Mirrors the frontend's SLACK_ARCHIVES_ORIGIN in accountLinksLogic.ts.
 SLACK_ARCHIVES_ORIGIN = "https://posthog.slack.com/archives"
 

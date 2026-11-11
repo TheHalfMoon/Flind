@@ -57,7 +57,7 @@ class WritesonicSource(ResumableSource[WritesonicSourceConfig, WritesonicResumeC
             name=ExternalDataSourceType.WRITESONIC,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Writesonic",
-            caption="""Connect Writesonic to pull your GEO (generative engine optimization) data — brand visibility, rank, and mentions across AI platforms like ChatGPT and Perplexity — into the PostHog Data warehouse.
+            caption="""Connect Writesonic to pull your GEO (generative engine optimization) data — brand visibility, rank, and mentions across AI platforms like ChatGPT and Perplexity — into the Flind Data warehouse.
 
 You'll need:
 

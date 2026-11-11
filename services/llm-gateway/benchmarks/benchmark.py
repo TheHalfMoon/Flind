@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Benchmark script measuring PostHog LLM gateway overhead vs direct provider calls.
+"""Benchmark script measuring Flind LLM gateway overhead vs direct provider calls.
 
 Measures TTFT, TPS, and total latency for streaming and non-streaming requests
 across multiple models, with sequential and concurrent modes.

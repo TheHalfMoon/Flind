@@ -12,7 +12,7 @@ class SlackJoinPublicChannelsConfig(config.Config):
 @config.config
 class SlackSourceConfig(config.Config):
     slack_access_token: str | None = None
-    # Back-compat: legacy sources created before bring-your-own point at PostHog's shared Slack app
+    # Back-compat: legacy sources created before bring-your-own point at Flind's shared Slack app
     # via this Integration id. New sources can't set it (the connect form only offers the token).
     slack_integration_id: int | None = config.value(converter=config.str_to_optional_int, default_factory=lambda: None)
     join_public_channels: SlackJoinPublicChannelsConfig | None = None

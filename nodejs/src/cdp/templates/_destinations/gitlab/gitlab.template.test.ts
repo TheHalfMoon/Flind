@@ -9,7 +9,7 @@ describe('gitlab template', () => {
         await tester.beforeEach()
     })
 
-    it('puts the title in a code span and adds the stack trace and the PostHog link after the description', async () => {
+    it('puts the title in a code span and adds the stack trace and the Flind link after the description', async () => {
         const response = await tester.invoke(
             {
                 gitlab_project: { access_token: 'token', hostname: 'https://gitlab.com', project_id: 1 },
@@ -44,7 +44,7 @@ describe('gitlab template', () => {
         const body = parseJSON((response.invocation.queueParameters as any).body)
         expect(body.title).toEqual("`RangeError: Invalid 'Date' @admin https://example.com`")
         expect(body.description).toEqual(
-            '```\nInvalid \'Date\' @admin https://example.com\n```\n\n\n```\n  File "checkout.ts", line: 42, in: parseDate\n```\n\n[View in PostHog](https://us.posthog.com/projects/1/error-tracking/issue-uuid)'
+            '```\nInvalid \'Date\' @admin https://example.com\n```\n\n\n```\n  File "checkout.ts", line: 42, in: parseDate\n```\n\n[View in Flind](https://us.posthog.com/projects/1/error-tracking/issue-uuid)'
         )
     })
 })

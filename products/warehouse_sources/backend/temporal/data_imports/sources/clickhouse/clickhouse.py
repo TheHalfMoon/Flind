@@ -345,7 +345,7 @@ def _get_client(
     memory.
 
     `bypass_env_proxy` names why the connection may skip the HTTP(S)_PROXY env
-    vars: "internal_team" for PostHog-internal teams
+    vars: "internal_team" for Flind-internal teams
     (`is_team_allowlisted_for_internal_hosts`), "tunnel_loopback" for an
     address that came out of our own SSH tunnel — the proxy blocks the tunnel's
     loopback bind, and no request would reach the forwarded port. For a

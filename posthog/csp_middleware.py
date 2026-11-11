@@ -1,4 +1,4 @@
-"""The Content Security Policy PostHog serves, and the middleware that attaches it.
+"""The Content Security Policy Flind serves, and the middleware that attaches it.
 
 The policy lives apart from the other middleware so that team-security owns the file in
 `.github/CODEOWNERS` and reviews every change to it.
@@ -57,7 +57,7 @@ def object_storage_upload_source() -> str:
 # prefix match would also hand the app document this policy and stop it from starting.
 REPLAY_PLAYER_FRAME_PATH = "/replay_player_frame/index.html"
 
-# The app policy names only PostHog origins in `frame-ancestors`. Enforcing that directive on these
+# The app policy names only Flind origins in `frame-ancestors`. Enforcing that directive on these
 # paths stops every embedded dashboard, shared link and survey from rendering on a customer's site,
 # so these documents get the app policy without it.
 #
@@ -123,7 +123,7 @@ _WILDCARD_SOURCES = frozenset({"https://*.posthog.com", "https://*.i.posthog.com
 # tagged v=3 came from a report-only shadow of the narrowed policy, so reusing 3 would mix the two in one query.
 NARROWED_APP_POLICY_REPORT_VERSION = "4"
 # Reports tagged v=7 come from a report-only policy that holds only img-src, without `https:` and with named
-# PostHog hosts. Reports tagged v=5 came from one that kept `https://*.posthog.com`, so reusing 5 would mix the two.
+# Flind hosts. Reports tagged v=5 came from one that kept `https://*.posthog.com`, so reusing 5 would mix the two.
 # Reports tagged v=6 came from a report-only policy for style-src and font-src, so a new policy must take another
 # version.
 IMG_SRC_SHADOW_REPORT_VERSION = "7"
@@ -133,7 +133,7 @@ def narrowed_app_policy(csp_parts: list[str], replacements: dict[str, list[str]]
     """The app policy with the wildcard hosts of each directive named in `replacements` swapped for
     the sources given there. Every other directive and source passes through unchanged.
 
-    The wildcards admit every PostHog subdomain. The ingestion hosts among them serve any project's
+    The wildcards admit every Flind subdomain. The ingestion hosts among them serve any project's
     remote config as a script, so an injected tag could load code from a project an attacker owns.
     """
     narrowed = []
@@ -194,9 +194,9 @@ def flind_js_cloud_sources() -> tuple[str, str, str]:
 
 def img_src_shadow_policy(csp_parts: list[str]) -> list[str]:
     """The app policy's img-src without its `https:` scheme source and with `https://*.posthog.com` swapped for
-    named PostHog hosts, to send as a report-only policy of its own.
+    named Flind hosts, to send as a report-only policy of its own.
 
-    `https:` admits an image from any host, and the wildcard admits one from any PostHog host, so the named hosts
+    `https:` admits an image from any host, and the wildcard admits one from any Flind host, so the named hosts
     beside them never decide a load. Without them, each image from an unnamed host reports, which lists the hosts
     to name, and the images users supply, before either source can go. The policy names no other directive, so it
     restricts nothing else.
@@ -322,7 +322,7 @@ class CSPMiddleware:
             # Enforced even where the rest of the policy is report-only, because this directive is
             # what admits these origins: a frame-ancestors directive makes browsers ignore
             # X-Frame-Options, which names only our own origin.
-            # `'self'` lets the app show one of its own pages in a frame, such as a PostHog object
+            # `'self'` lets the app show one of its own pages in a frame, such as a Flind object
             # cited in a task's Artifacts tab. It stays out of app_frame_ancestor_sources(), because
             # the canvas sandbox document on the user-content origin shares that list.
             frame_ancestors = "frame-ancestors 'self'"
@@ -403,7 +403,7 @@ class CSPMiddleware:
                 "worker-src 'self' blob:",
                 "child-src 'none'",
                 "object-src 'none'",
-                # `'self'` carries the PostHog AI onboarding videos under /static/. Max hands-free
+                # `'self'` carries the Flind AI onboarding videos under /static/. Max hands-free
                 # needs the other two: it primes playback with a silent `data:` clip, then plays
                 # the TTS response from a blob URL. None of the three can execute, because
                 # media-src governs <audio> and <video> only.
@@ -415,7 +415,7 @@ class CSPMiddleware:
                 # The named origins below are the set we actually load images from, and `https:`
                 # makes them redundant. They stay so that removing `https:` is a one-line change
                 # rather than an archaeology exercise. On cloud, the v=7 report-only policy below
-                # reports each image that only `https:` or the PostHog wildcard admits.
+                # reports each image that only `https:` or the Flind wildcard admits.
                 #
                 # Do not promote this to an enforced header as-is. An open `img-src` is an
                 # exfiltration channel: an attacker who injects markup but cannot run script still
@@ -449,8 +449,8 @@ class CSPMiddleware:
                 # looks the same as a report from an app page that the browser blocks in a frame.
                 csp_parts.remove(frame_ancestors)
 
-            # The hosts and the config token below belong to PostHog Cloud, so self-hosted installs, E2E
-            # runs and the dev environment keep the wildcards. A load from a PostHog host that is not
+            # The hosts and the config token below belong to Flind Cloud, so self-hosted installs, E2E
+            # runs and the dev environment keep the wildcards. A load from a Flind host that is not
             # listed here therefore fails only in production.
             narrowed = is_cloud() and resource_url == "https://*.posthog.com" and not settings.E2E_TESTING
             shadows: dict[str, list[str]] = {}

@@ -193,7 +193,7 @@ describe("resolvePromptRecall", () => {
       content: "fix the bug\n\nAttached files: screenshot.png",
     },
     {
-      name: "PostHog app context blocks",
+      name: "Flind app context blocks",
       content:
         '<posthog_trusted_context>\n- act with tools\n</posthog_trusted_context>\n<posthog_untrusted_context>\n- dashboard 1 ("AARRR")\n</posthog_untrusted_context>\n\nfix the bug',
     },

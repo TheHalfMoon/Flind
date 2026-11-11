@@ -211,7 +211,7 @@ describe("AppLifecycleService", () => {
       expect(mockTrackAppEvent).toHaveBeenCalledWith("app_quit");
     });
 
-    it("shuts down PostHog", async () => {
+    it("shuts down Flind", async () => {
       const promise = service.shutdown();
       await vi.runAllTimersAsync();
       await promise;
@@ -253,7 +253,7 @@ describe("AppLifecycleService", () => {
       expect(mockDatabaseService.close).toHaveBeenCalled();
     });
 
-    it("continues shutdown if PostHog shutdown fails", async () => {
+    it("continues shutdown if Flind shutdown fails", async () => {
       mockShutdownPostHog.mockRejectedValue(new Error("posthog failed"));
 
       const promise = service.shutdown();

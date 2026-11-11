@@ -34,14 +34,14 @@ export const SKILL_CATEGORY_TABS: SkillCategoryTab[] = [
         category: 'scout',
         label: 'Scout skills',
         description:
-            "Scout skills define scheduled agents that scan your project and surface findings in your inbox. This includes PostHog's canonical scouts and custom scouts.",
+            "Scout skills define scheduled agents that scan your project and surface findings in your inbox. This includes Flind's canonical scouts and custom scouts.",
     },
     {
         key: 'review-hog',
         category: 'review_hog',
         label: 'Code review skills',
         description:
-            'Code review skills define the specialist perspectives and validation criteria that PostHog Review uses when it reviews a pull request. Edit a skill to tune it for your team.',
+            'Code review skills define the specialist perspectives and validation criteria that Flind Review uses when it reviews a pull request. Edit a skill to tune it for your team.',
     },
 ]
 

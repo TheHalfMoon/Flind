@@ -137,7 +137,7 @@ export const confirmedActionRuntimeInstalled = new Gauge({
 
 export const clientIpResolutionsTotal = new Counter({
     name: 'mcp_client_ip_resolutions_total',
-    help: 'How the Hono runtime found the end user IP it signs for the PostHog API, by source and edge signature outcome.',
+    help: 'How the Hono runtime found the end user IP it signs for the Flind API, by source and edge signature outcome.',
     labelNames: ['source', 'edge_outcome'] as const,
 })
 

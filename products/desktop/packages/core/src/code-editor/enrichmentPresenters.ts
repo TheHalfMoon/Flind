@@ -28,7 +28,7 @@ type Staleness = NonNullable<SerializedFlag["staleness"]>;
 const STALENESS_LABELS: Record<Staleness, string> = {
   fully_rolled_out: "Fully rolled out",
   inactive: "Inactive",
-  not_in_posthog: "Not in PostHog",
+  not_in_posthog: "Not in Flind",
   experiment_complete: "Experiment complete",
 };
 

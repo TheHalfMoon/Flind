@@ -179,7 +179,7 @@ export function captureRapidUrlChangeWarning(
         sessionReplayUrl,
     })
 
-    // Capture exception to PostHog for monitoring
+    // Capture exception to Flind for monitoring
     const error = new Error('Rapid URL changes detected in kea router')
     posthog.captureException(error, {
         tag: 'web_analytics_rapid_url_changes',

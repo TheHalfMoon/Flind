@@ -1,6 +1,6 @@
 # Channels and threads
 
-A channel is the backend model for a space in PostHog Desktop. Tasks in a channel use that channel's access rules.
+A channel is the backend model for a space in Flind Desktop. Tasks in a channel use that channel's access rules.
 Each task has one thread. A human message reaches the agent only when the task owner forwards it.
 
 ## Models and access
@@ -62,7 +62,7 @@ Making a channel public removes every membership row. The name must be free amon
 
 Space setup runs as one unattended task in the channel, the same way CONTEXT.md generation does.
 `kind` is `goal` or `feature`; `goal` carries `statement`, `period`, `direction`, `target`, `deadline`, and `insight_short_id`; `feature` carries `name`, `description`, and `flag_key`.
-`repository` defaults to the channel's first repository. The task runs on `gpt-5.6-sol` at high reasoning effort with full PostHog MCP scopes and becomes the channel's context generation task.
+`repository` defaults to the channel's first repository. The task runs on `gpt-5.6-sol` at high reasoning effort with full Flind MCP scopes and becomes the channel's context generation task.
 A goal setup also creates a tracking canvas, the first ranked plan, and four workflow-backed loops (Plan daily, Build every six hours, Measure daily, Improve weekly); a feature setup writes the context page only.
 Every loop brief carries three verbatim blocks: GUARDRAILS (what a loop never does), STATE (the canvas keys and their shapes), and AUTONOMY (what the page's `autonomy` level permits).
 The page frontmatter key `autonomy` is `propose` at setup: the loops rank and recommend but open no pull requests, create no experiments, and touch no flags. A person raises it to `ship_drafts` (draft pull requests and draft experiments) or `autopilot` (release a winning variant per its registered decision rule) by editing the page.
@@ -94,7 +94,7 @@ Handoff locks the private channel before the task. It fails if the task moved to
 `POST /tasks/` with `start_run: true` and `POST /tasks/{task_id}/run/` accept `scheduled_at`.
 So do `tasks-create-and-run` and `tasks-run-create` in MCP.
 Use a future ISO 8601 time within 30 days; missing offsets mean UTC. Omit or send null to start immediately. Attached files must remain valid until the scheduled time.
-Scheduled runs require background ACP execution, server-managed credentials, and the PostHog gateway. Dispatch rechecks task access and usage limits.
+Scheduled runs require background ACP execution, server-managed credentials, and the Flind gateway. Dispatch rechecks task access and usage limits.
 Model settings use saved defaults or the previous run on resume. Use `tasks-models-retrieve` for explicit model and effort choices.
 The existing run cancellation endpoint also supports scheduled runs and closes their event streams. Retry a `503` response to complete stream cleanup.
 

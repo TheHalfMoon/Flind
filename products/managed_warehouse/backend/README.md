@@ -11,7 +11,7 @@ identifies the business workflow that still depends on the model. Caller names a
 limited to 160 characters. The metric deliberately excludes model fields,
 organization identifiers, connection details, and other customer data.
 
-Use the PostHog Metrics SQL editor to find active callers over a representative
+Use the Flind Metrics SQL editor to find active callers over a representative
 period:
 
 ```sql
@@ -80,7 +80,7 @@ Trino shadow materialization has a six-hour execution deadline. Its Temporal act
 hogtower mints team-scoped hoglake tokens from its own copy of which projects each organization member can see. With `HOGTOWER_MEMBER_TEAMS_PUSH_ENABLED` and `HOGTOWER_API_URL` set, `member_teams.py` keeps that copy current:
 
 - Each visible project goes in at the member's level on warehouse objects. `viewer` becomes `read`, and `editor` or above becomes `write`. A project where the level is `none` is left out.
-- A team grant covers the whole namespace, so it cannot honor a rule on a single table, view, source or property, and it cannot follow PostHog's resolution of rules either. The level is therefore capped by the floor of the member's stored rules: the lowest level any of them can give, under either resolution mode and with or without the access-control entitlements (`UserAccessControl.stored_rule_floor` and `stored_property_rule_floor`). A member denied one table or property, or a private project, gets no grant. `viewer` on one object, or a read-only property, caps the grant at `read`. The cap can be stricter than PostHog, never looser. For example, a role that shares a hidden table does not lift the floor, because the role rule may not apply. So a switch of resolution mode or entitlement needs no push.
+- A team grant covers the whole namespace, so it cannot honor a rule on a single table, view, source or property, and it cannot follow Flind's resolution of rules either. The level is therefore capped by the floor of the member's stored rules: the lowest level any of them can give, under either resolution mode and with or without the access-control entitlements (`UserAccessControl.stored_rule_floor` and `stored_property_rule_floor`). A member denied one table or property, or a private project, gets no grant. `viewer` on one object, or a read-only property, caps the grant at `read`. The cap can be stricter than Flind, never looser. For example, a role that shares a hidden table does not lift the floor, because the role rule may not apply. So a switch of resolution mode or entitlement needs no push.
 - A member who leaves the organization, or whose user is deactivated, is removed. hogtower then revokes every team credential they own.
 - `signals.py` enqueues a push after a change to a membership, a role membership, or a project (created, deleted, or moved to another organization), or to an access rule on the project, on warehouse data, or on a property. Receivers that read state before a write only record it; the enqueue runs after the write, so a push never reads the old state. The push runs as a Celery task that retries for about ten hours.
 - `push managed warehouse member teams to hogtower` runs every hour and pushes every member of every Trino warehouse that hogtower lists. It catches changes that no signal reports, such as a user's reactivation. It also removes the members that hogtower still holds who have left, so a removal whose own push gave up is still reconciled.
@@ -154,7 +154,7 @@ This covers the SQL editor, the schema browser, and the managed warehouse connec
 These runs never use the canary host:
 
 - Alert runs and cache-warming runs, which carry alert and warming query tags.
-- Runs with the export, SQL alert, or PostHog AI limit context. Exports and subscriptions run as their creator and carry no tag, so the limit context identifies them.
+- Runs with the export, SQL alert, or Flind AI limit context. Exports and subscriptions run as their creator and carry no tag, so the limit context identifies them.
 - Schema discovery, data modeling, and model aliases, which never pass the canary option.
 
 A Dagster backfill uses the canary host only when its run config sets `use_trino_canary: true`.
@@ -222,7 +222,7 @@ The registered objects are permanent DuckLake data files, not staging files. Old
 
 Temporal workers must be able to:
 
-1. Read from the existing PostHog object storage bucket where Delta tables live (already required for the modeling pipeline).
+1. Read from the existing Flind object storage bucket where Delta tables live (already required for the modeling pipeline).
 2. Read/write/delete within the DuckLake data bucket referenced by `DUCKLAKE_BUCKET`.
 
 For AWS S3, grant the worker role at least `s3:ListBucket`, `s3:GetObject`, `s3:PutObject`, and `s3:DeleteObject` on the DuckLake bucket/prefix (plus `s3:CreateBucket` for local auto-creation). Local development uses the configured SeaweedFS object store and the `DUCKLAKE_*` access keys.
@@ -237,7 +237,7 @@ Follow these checklists to exercise the DuckLake copy workflows on a local check
    Run `hogli start` (or `bin/start`) so Postgres, SeaweedFS, Temporal, and all DuckLake defaults are up. Make sure the `ducklake-data-modeling-copy-workflow` feature flag is enabled for the team you plan to use.
 
 2. **Trigger a model materialization from the app**
-   In the PostHog UI, open Data Warehouse → Views, pick (or create) a view, open the Materialization section, enable it if needed, and click **Sync now**. This starts a `data-modeling-materialize-view` workflow for that view's DAG node.
+   In the Flind UI, open Data Warehouse → Views, pick (or create) a view, open the Materialization section, enable it if needed, and click **Sync now**. This starts a `data-modeling-materialize-view` workflow for that view's DAG node.
 
 3. **Observe the data-modeling workflow**
    Visit the Temporal UI at `http://localhost:8081/namespaces/default/workflows` and confirm a `materialize-view-{node_id}` execution appears. Wait for it to finish successfully.
@@ -278,7 +278,7 @@ Follow these checklists to exercise the DuckLake copy workflows on a local check
    Run `hogli start` (or `bin/start`) so Postgres, Duckgres, SeaweedFS, Temporal, and all DuckLake defaults are up. Enable `data-warehouse-scene` for the prepared-Parquet path. Enable `ducklake-data-imports-copy-workflow` only when testing the existing Delta-copy path; both paths run when both flags are enabled.
 
 2. **Trigger a data import sync from the app**
-   In the PostHog UI, open Data Warehouse → Sources, connect a source (e.g., Stripe, Hubspot), select the schemas to sync, and click **Sync**. This schedules the `external-data-job` workflow.
+   In the Flind UI, open Data Warehouse → Sources, connect a source (e.g., Stripe, Hubspot), select the schemas to sync, and click **Sync**. This schedules the `external-data-job` workflow.
 
 3. **Observe the external-data-job workflow**
    Visit the Temporal UI at `http://localhost:8081/namespaces/default/workflows` and confirm an `external-data-job` execution appears. Wait for it to finish successfully.

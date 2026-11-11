@@ -216,7 +216,7 @@ describe('webAnalyticsRecapLogic', () => {
         )
     })
 
-    it('records PostHog AI CTA usage with recap context', async () => {
+    it('records Flind AI CTA usage with recap context', async () => {
         mockRecap.mockResolvedValue(makeRecap())
         logic = webAnalyticsRecapLogic()
         logic.mount()

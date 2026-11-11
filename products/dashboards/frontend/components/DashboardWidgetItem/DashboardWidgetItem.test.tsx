@@ -82,7 +82,7 @@ jest.mock('../../widget_types/catalog', () => ({
         headerMeta: { showWidgetType: true, showDateRange: true },
         sharedPlaceholder: {
             title: 'Top issues',
-            message: 'Log in to PostHog to see which errors are affecting your users.',
+            message: 'Log in to Flind to see which errors are affecting your users.',
         },
     })),
     getUnknownDashboardWidgetCatalogFallback: jest.fn((widgetType: string) => ({
@@ -361,7 +361,7 @@ describe('DashboardWidgetItem', () => {
 
         expect(within(container).getByText('My issues')).toBeInTheDocument()
         expect(screen.getByTestId('shared-dashboard-widget-placeholder')).toBeInTheDocument()
-        expect(screen.getByText('Log in to PostHog to see which errors are affecting your users.')).toBeInTheDocument()
+        expect(screen.getByText('Log in to Flind to see which errors are affecting your users.')).toBeInTheDocument()
         expect(screen.queryByText('Widget body')).not.toBeInTheDocument()
     })
 

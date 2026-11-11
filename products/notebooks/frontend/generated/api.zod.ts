@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -804,7 +804,7 @@ export const NotebooksSqlV2RunCreateBody = /* @__PURE__ */ zod.object({
         .uuid()
         .nullish()
         .describe(
-            "SQL nodes only: id of a direct-query-capable external data source to run against instead of PostHog's ClickHouse. Omit to query PostHog."
+            "SQL nodes only: id of a direct-query-capable external data source to run against instead of Flind's ClickHouse. Omit to query Flind."
         ),
     send_raw_query: zod
         .boolean()

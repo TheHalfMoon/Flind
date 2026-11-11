@@ -478,7 +478,7 @@ export class SettingsManager {
   }
 
   /**
-   * Persists an approved PostHog MCP `exec` sub-tool (e.g. `experiment-update`)
+   * Persists an approved Flind MCP `exec` sub-tool (e.g. `experiment-update`)
    * to the local settings file so future calls skip the prompt. Mirrors
    * `addAllowRules` — serialised via `writeMutex`, atomic temp-file + rename.
    */

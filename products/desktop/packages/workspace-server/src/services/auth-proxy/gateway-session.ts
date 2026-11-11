@@ -315,7 +315,7 @@ export class GatewaySessionHandler {
         void response.body?.cancel().catch(() => {});
         jsonError(res, 502, {
           type: "api_error",
-          message: "Unexpected redirect from the PostHog gateway",
+          message: "Unexpected redirect from the Flind gateway",
         });
         return;
       }

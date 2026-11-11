@@ -7,7 +7,7 @@ from .provider_keys import llm_provider_choices
 
 
 def provider_requires_key(provider: str) -> bool:
-    """Whether this provider's models can only be listed with a BYOK key. PostHog funds no models
+    """Whether this provider's models can only be listed with a BYOK key. Flind funds no models
     for it, so a keyless lookup has nothing to return."""
     from products.ai_observability.backend.llm import (  # noqa: PLC0415 - keeps the provider SDKs off the import path
         PLAYGROUND_MODELS_BY_PROVIDER,
@@ -38,7 +38,7 @@ class LLMModelConfiguration(UUIDTModel):
         ]
 
     def __str__(self) -> str:
-        key_info = f" (key: {self.provider_key.name})" if self.provider_key else " (PostHog default)"
+        key_info = f" (key: {self.provider_key.name})" if self.provider_key else " (Flind default)"
         return f"{self.provider}/{self.model}{key_info}"
 
     def clean(self) -> None:
@@ -55,7 +55,7 @@ class LLMModelConfiguration(UUIDTModel):
 
     def get_available_models(self) -> list[str]:
         """Get available models — delegates to the provider API if a BYOK key is
-        present, otherwise returns the playground model list (PostHog pays)."""
+        present, otherwise returns the playground model list (Flind pays)."""
         if self.provider_key:
             from products.ai_observability.backend.llm.client import Client
 

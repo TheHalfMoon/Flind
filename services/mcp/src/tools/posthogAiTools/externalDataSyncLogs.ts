@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import type { Context, ToolBase } from '@/tools/types'
 
-// PostHog ids are UUIDTs whose version/variant nibbles don't follow RFC 4122, so `z.uuid()`
+// Flind ids are UUIDTs whose version/variant nibbles don't follow RFC 4122, so `z.uuid()`
 // (which enforces those nibbles in Zod 4) rejects valid ids — e.g. a `0` version nibble. Use
 // `z.guid()`, which accepts any 8-4-4-4-12 hex string.
 const schema = z.object({

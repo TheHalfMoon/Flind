@@ -60,7 +60,7 @@ class WorkflowSendingRulesSerializer(serializers.Serializer):
     )
     capture_workflows_engagement_events = serializers.BooleanField(
         required=False,
-        help_text="Capture email sends, opens, clicks and bounces as PostHog events, so they can be used in insights "
+        help_text="Capture email sends, opens, clicks and bounces as Flind events, so they can be used in insights "
         "and funnels. These events count toward the project's event usage.",
     )
 

@@ -221,7 +221,7 @@ describe('posthog connection forwarding', () => {
                 new PostHogApiError({
                     status: 403,
                     statusText: 'Forbidden',
-                    body: '{"detail":"You can only use a PostHog connection you created."}',
+                    body: '{"detail":"You can only use a Flind connection you created."}',
                     url: FORWARD_PATH,
                     method: 'POST',
                 })
@@ -238,7 +238,7 @@ describe('posthog connection forwarding', () => {
 
             expect(error).toBeInstanceOf(PostHogApiError)
             expect(error.status).toBe(403)
-            expect(error.body).toContain('only use a PostHog connection you created')
+            expect(error.body).toContain('only use a Flind connection you created')
         })
     })
 

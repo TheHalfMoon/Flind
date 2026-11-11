@@ -1,5 +1,5 @@
 /**
- * Custom orval mutator that wraps PostHog's api module.
+ * Custom orval mutator that wraps Flind's api module.
  * This allows generated API clients to use the same HTTP client as the rest of the app.
  *
  * Orval calls: apiMutator(url, { method, body, signal, ... })

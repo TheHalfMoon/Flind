@@ -8,7 +8,7 @@ def mark_social_django_migrations_applied(apps, schema_editor):
     Mark social_django migrations 0011-0016 as applied without running them.
 
     Background:
-    - PostHog has had SOCIAL_AUTH_JSONFIELD_ENABLED=True since 2022
+    - Flind has had SOCIAL_AUTH_JSONFIELD_ENABLED=True since 2022
     - This caused social_django to use PostgreSQL jsonb for extra_data/data fields
     - Production database already has: jsonb columns + bigint IDs
     - Migrations 0011-0016 try to migrate TextField→JSONField but columns are already jsonb

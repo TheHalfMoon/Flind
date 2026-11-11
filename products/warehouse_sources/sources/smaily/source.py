@@ -41,7 +41,7 @@ class SmailySource(ResumableSource[SmailySourceConfig, SmailyResumeConfig]):
             label="Smaily",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["sendsmaily", "email marketing"],
-            caption="""Enter your Smaily API credentials to pull your email marketing data into the PostHog Data warehouse.
+            caption="""Enter your Smaily API credentials to pull your email marketing data into the Flind Data warehouse.
 
 Create an API user in [Smaily](https://smaily.com) under **Account preferences → Integrations → API users**. Your subdomain is the first part of your Smaily URL, e.g. `mycompany` for `mycompany.sendsmaily.net`.
 """,

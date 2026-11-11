@@ -3,7 +3,7 @@ import { constants, zstdCompressSync, zstdDecompressSync } from 'node:zlib'
 
 import { HogError } from '@/core/errors'
 
-// The symbol-data container from the posthog-symbol-data crate (0.5.2). Its bytes are what PostHog
+// The symbol-data container from the posthog-symbol-data crate (0.5.2). Its bytes are what Flind
 // stores and what most content hashes cover, so every byte must match what posthog-cli writes.
 export enum SymbolDataType {
     SourceAndMap = 2,
@@ -74,7 +74,7 @@ export function writeSymbolData(type: SymbolDataType, raw: Uint8Array): Buffer {
 export function readSymbolData(bytes: Uint8Array): { type: number; payload: Buffer } {
     const data = Buffer.from(bytes.buffer, bytes.byteOffset, bytes.byteLength)
     if (data.length < MAGIC.length + 4 || !data.subarray(0, MAGIC.length).equals(MAGIC)) {
-        throw new HogError('invalid_symbol_set', "The file isn't a PostHog symbol set: the header doesn't match.")
+        throw new HogError('invalid_symbol_set', "The file isn't a Flind symbol set: the header doesn't match.")
     }
     const version = data.readUInt32LE(MAGIC.length)
     const type = data.readUInt32LE(MAGIC.length + 4)

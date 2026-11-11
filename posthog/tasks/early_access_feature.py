@@ -24,7 +24,7 @@ logger = structlog.get_logger(__name__)
 POSTHOG_TEAM_ID = 2
 
 # Gate for auto-creating a waitlist survey per "Coming Soon" (concept-stage) feature, and
-# for showing the email field in-app. Enable for PostHog's own project first.
+# for showing the email field in-app. Enable for Flind's own project first.
 COMING_SOON_WAITLIST_SURVEYS_FLAG = "coming-soon-waitlist-surveys"
 
 

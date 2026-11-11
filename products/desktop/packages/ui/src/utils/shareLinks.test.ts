@@ -69,7 +69,7 @@ describe("handleShareLinkClick", () => {
     },
   );
 
-  it("leaves a canvas on another PostHog instance to the browser", () => {
+  it("leaves a canvas on another Flind instance to the browser", () => {
     const event = { preventDefault: vi.fn() };
 
     const handled = handleShareLinkClick(

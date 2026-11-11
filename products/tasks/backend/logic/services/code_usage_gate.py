@@ -64,7 +64,7 @@ def get_posthog_code_usage(team_id: int) -> CodeUsageStatus | None:
 
 
 def rate_limit_error_payload(usage: CodeUsageStatus) -> dict[str, Any]:
-    """Structured 429 body the PostHog Desktop client parses into its upgrade prompt.
+    """Structured 429 body the Flind Desktop client parses into its upgrade prompt.
 
     Omits unknown bucket/reset fields so they don't render as null in the shared
     error serializer (which other error responses reuse).
@@ -72,7 +72,7 @@ def rate_limit_error_payload(usage: CodeUsageStatus) -> dict[str, Any]:
     payload: dict[str, Any] = {
         "type": "rate_limited",
         "code": "usage_limit_exceeded",
-        "error": "You've reached your PostHog Desktop usage limit.",
+        "error": "You've reached your Flind Desktop usage limit.",
         "is_pro": usage.is_pro,
     }
     if usage.limit_type is not None:
@@ -92,7 +92,7 @@ def _billing_limit_response(code: str, error: str) -> Response:
 def organization_deactivated_response() -> Response:
     return _billing_limit_response(
         ORGANIZATION_DEACTIVATED_DENIAL_CODE,
-        "Your organization has been deactivated. Contact PostHog support if you think this is a mistake.",
+        "Your organization has been deactivated. Contact Flind support if you think this is a mistake.",
     )
 
 
@@ -101,7 +101,7 @@ def compute_quota_limit_response(reason: str = COMPUTE_QUOTA_DENIAL_CODE) -> Res
         return organization_deactivated_response()
     return _billing_limit_response(
         COMPUTE_QUOTA_DENIAL_CODE,
-        "Your organization reached its PostHog Desktop usage limit.",
+        "Your organization reached its Flind Desktop usage limit.",
     )
 
 
@@ -134,7 +134,7 @@ def code_access_required_response(
     posthog_ai_task_id: str | UUID | None = None,
     fail_open_on_resolution_error: bool = False,
 ) -> Response | None:
-    """PostHog AI tasks take the PostHog AI 2.0 decision in place of the Desktop check. Every other task takes
+    """Flind AI tasks take the Flind AI 2.0 decision in place of the Desktop check. Every other task takes
     the Desktop check. Pass `origin_product` when no task exists yet.
 
     `posthog_ai_task_id` names the task without the sandbox-token exemption that a `task_id` gives, for a
@@ -175,7 +175,7 @@ def _desktop_access_required_response(
                 {
                     "type": "service_unavailable",
                     "code": "desktop_access_unavailable",
-                    "error": "We couldn't verify PostHog Desktop access. Try again.",
+                    "error": "We couldn't verify Flind Desktop access. Try again.",
                 }
             ).data,
             status=status.HTTP_503_SERVICE_UNAVAILABLE,
@@ -186,17 +186,17 @@ def _desktop_access_required_response(
 
     messages = {
         DesktopAccessReason.STARTUP_PLAN: (
-            "PostHog Desktop isn't available for Startup or YC program organizations. "
+            "Flind Desktop isn't available for Startup or YC program organizations. "
             "Select another organization to continue."
         ),
         DesktopAccessReason.PREPAID_CREDITS: (
-            "PostHog Desktop isn't available while this organization has prepaid credits. "
+            "Flind Desktop isn't available while this organization has prepaid credits. "
             "Select another organization to continue."
         ),
     }
     reason = decision.reason
     error_message = (
-        messages[reason] if reason is not None else "PostHog Desktop access is required to run tasks in the cloud."
+        messages[reason] if reason is not None else "Flind Desktop access is required to run tasks in the cloud."
     )
     payload: dict[str, Any] = {
         "type": "permission_denied",
@@ -227,7 +227,7 @@ def _posthog_ai_access_required_response(request: Request, organization: "Organi
 
 
 def usage_limit_response(user, team_id: int) -> Response | None:
-    """Return a 429 when the team is over its PostHog Desktop usage limit, else None.
+    """Return a 429 when the team is over its Flind Desktop usage limit, else None.
 
     The cost backstop on cloud runs, applied on top of the entitlement gate above. Fails
     open when the credit bucket can't be read, so every check is counted by outcome

@@ -413,7 +413,7 @@ class NodeSerializer(serializers.ModelSerializer):
         # maintains them directly via the ORM and bypasses this serializer. Block users from
         # editing those nodes via the API.
         if self.instance is not None and self.instance.belongs_to_managed_viewset:
-            raise serializers.ValidationError("Nodes of views PostHog manages cannot be modified.")
+            raise serializers.ValidationError("Nodes of views Flind manages cannot be modified.")
         if self.instance is not None and self.instance.type == NodeType.METRIC:
             raise serializers.ValidationError("Metric nodes are maintained by the data catalog.")
         if self.writes_cadence(attrs) and (self.instance is None or self.instance.saved_query_id is None):
@@ -714,9 +714,9 @@ class NodeViewSet(
         self._require_warehouse_access(level="editor", message=DELETE_DENIED)
         self._require_view_edit_access(instance.saved_query)
         if instance.belongs_to_managed_viewset:
-            raise serializers.ValidationError("Nodes of views PostHog manages cannot be deleted.")
+            raise serializers.ValidationError("Nodes of views Flind manages cannot be deleted.")
         if _feeds_a_managed_view(instance):
-            raise serializers.ValidationError("A view PostHog manages reads from this node, so it can't be deleted.")
+            raise serializers.ValidationError("A view Flind manages reads from this node, so it can't be deleted.")
         if instance.type == NodeType.METRIC:
             raise serializers.ValidationError("Metric nodes are deleted by deleting their metric.")
         delete_node(instance.team_id, instance.pk)

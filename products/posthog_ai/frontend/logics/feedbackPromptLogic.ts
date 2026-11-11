@@ -145,7 +145,7 @@ export type feedbackPromptLogicType = MakeLogicType<
 >
 
 /**
- * The periodic "how is PostHog AI doing?" prompt for the sandbox runtime. Same trigger rules and flag
+ * The periodic "how is Flind AI doing?" prompt for the sandbox runtime. Same trigger rules and flag
  * config as the legacy Max prompt: every Nth human message, a random sample, or a run of
  * cancelled turns, throttled by a per-browser cooldown. The retry trigger has no sandbox equivalent.
  */

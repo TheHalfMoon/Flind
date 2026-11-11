@@ -274,7 +274,7 @@ Each id is hashed by itself, so each can land in a different variant.
 
 **A note on what's fundamentally fixable vs not.** Stitched-identity issues from `identify()`
 ordering, cross-domain cookies, and bootstrap timing are real bugs that can be fixed. Multi-device
-usage and incognito / stealth browsing are _not_ fixable from PostHog's side — and the users who
+usage and incognito / stealth browsing are _not_ fixable from Flind's side — and the users who
 exhibit them tend to be more engaged on average, so excluding the `$multiple` bucket pulls a
 non-random slice out of the analysis. There is no clean fix; the recommendation is to _contain_ the
 problem (scope exposure to the relevant flow so the denominator stays meaningful) rather than
@@ -382,7 +382,7 @@ Five states exist, checked from `experiment-get` alone:
 The table shows the page's own rules. When the page shows the health findings, it takes the banner from the server's flag-state finding instead. For an ended experiment, the `flag_live_after_end` finding also reads the flag's calls and the other experiments on the flag:
 
 - When another experiment on the flag is running, or launched after this one ended, the flag's state belongs to that experiment, and the finding is absent. Do not advise disabling the flag from this experiment, even when the banner says so. Disabling it stops a running experiment.
-- A draft experiment on the flag, no recorded call of the flag in the last 3 days, or calls that PostHog can't read yet make the finding info, not a warning. A page that shows the health findings shows no banner then.
+- A draft experiment on the flag, no recorded call of the flag in the last 3 days, or calls that Flind can't read yet make the finding info, not a warning. A page that shows the health findings shows no banner then.
 
 For a draft, the server's finding is absent when another experiment on the flag is running, because the flag's state belongs to that experiment.
 The `flag_shared` finding reports the draft instead.
@@ -446,10 +446,10 @@ A rollout change alone needs no repair (E1 and E2 in `mid-run-changes.md`).
 ## A7 — Non-randomized assignment via release conditions [MEDIUM]
 
 If the user is using release conditions to target specific cohorts to specific variants (e.g. iOS
-users see test, Android users see control), the resulting assignment is **not random**. PostHog's
+users see test, Android users see control), the resulting assignment is **not random**. Flind's
 statistics assume randomization, so this invalidates the standard significance interpretation.
 
-PostHog doesn't prevent this in the UI — but the user should understand that significance calculations
+Flind doesn't prevent this in the UI — but the user should understand that significance calculations
 are misleading in this setup.
 Nothing in the analysis leaves the pinned people out.
 
@@ -577,7 +577,7 @@ The migration is a change in the user's code, so no activity log shows it.
 
 ## A9 — Exposure events are lost or sent unevenly between the arms [MEDIUM]
 
-**Symptom (in the user's vocabulary):** "the split is 58/42 and should be 50/50", "one variant gets fewer users every day", "our own analytics show an even split and PostHog does not".
+**Symptom (in the user's vocabulary):** "the split is 58/42 and should be 50/50", "one variant gets fewer users every day", "our own analytics show an even split and Flind does not".
 Often with the mismatch warning, sometimes with a p-value that is low and not yet below the threshold.
 
 **Behavior.** The flag assigns evenly.
@@ -593,7 +593,7 @@ The exposure event does not arrive evenly, because the arms differ in what happe
 - **The code records its fallback value as the variant.**
   A default that the code sends when the flag returns no variant counts as an exposure of that variant, also while the flag is off or gives the variant no share.
   The `unserved_variant_exposures` finding counts the people first exposed after the flag's last save in a variant that the flag's setup can't serve.
-  It is a warning when one variant holds 90% or more of them, and info when they spread over the variants like an assignment outside PostHog.
+  It is a warning when one variant holds 90% or more of them, and info when they spread over the variants like an assignment outside Flind.
 - **One arm is slower or fails more often**, so people leave before the event is sent.
 - **A cached page carries the assignment** `[LOW]`.
   A page that is cached with a variant or an identifier inside hands one assignment to many browsers.

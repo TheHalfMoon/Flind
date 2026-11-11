@@ -224,7 +224,7 @@ function isFirstDiscardInWindow(teamId: number): boolean {
 }
 
 function parseUserAgentSdk(userAgent?: string): { name: string | null; version: string | null } {
-    // PostHog SDKs identify as "posthog-<name>/<version>". Each part is bounded, others ignored.
+    // Flind SDKs identify as "posthog-<name>/<version>". Each part is bounded, others ignored.
     if (!userAgent || !userAgent.startsWith('posthog-')) {
         return { name: null, version: null }
     }

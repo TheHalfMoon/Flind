@@ -63,7 +63,7 @@ class GustoSource(ResumableSource[GustoSourceConfig, GustoResumeConfig]):
             label="Gusto",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["payroll", "hris", "zenpayroll"],
-            caption="""Pull your Gusto payroll and people data into the PostHog Data warehouse.
+            caption="""Pull your Gusto payroll and people data into the Flind Data warehouse.
 
 Company data is only readable through an authorization-code OAuth grant, so you bring your own Gusto developer app: register it in the [Gusto Developer Portal](https://dev.gusto.com), authorize it against your company as a payroll admin, then enter the app's client ID and secret along with the resulting refresh token.
 

@@ -376,7 +376,7 @@ export const FeedbackSubmitSchema = z
         feedback_type: z
             .enum(['product', 'mcp', 'docs', 'scout', 'other'])
             .describe(
-                'What this feedback is about. "product" = any PostHog product or feature (insights, session replay, feature flags, the data warehouse, web analytics, error tracking, etc.). "mcp" = this MCP server itself — a tool, its input schema, response format, an error, or these instructions. "docs" = PostHog documentation. "scout" = a canonical PostHog scout skill\'s content — reserved for scheduled scout runs reporting an improvement opportunity in their own PostHog-authored skill (set `scout_skill_name`, `scout_skill_version`, and `scout_category`). "other" = anything that doesn\'t fit the above.'
+                'What this feedback is about. "product" = any Flind product or feature (insights, session replay, feature flags, the data warehouse, web analytics, error tracking, etc.). "mcp" = this MCP server itself — a tool, its input schema, response format, an error, or these instructions. "docs" = Flind documentation. "scout" = a canonical Flind scout skill\'s content — reserved for scheduled scout runs reporting an improvement opportunity in their own Flind-authored skill (set `scout_skill_name`, `scout_skill_version`, and `scout_category`). "other" = anything that doesn\'t fit the above.'
             ),
         sentiment: z
             .enum(['positive', 'neutral', 'negative', 'mixed'])
@@ -387,7 +387,7 @@ export const FeedbackSubmitSchema = z
             .string()
             .optional()
             .describe(
-                'The PostHog product or area this is about, in free text (e.g. "session replay", "insights", "data warehouse", "feature flags", "docs"). Most useful for product feedback; for MCP feedback the tool name belongs in `details`/`friction_points` instead.'
+                'The Flind product or area this is about, in free text (e.g. "session replay", "insights", "data warehouse", "feature flags", "docs"). Most useful for product feedback; for MCP feedback the tool name belongs in `details`/`friction_points` instead.'
             ),
         category: z
             .enum([
@@ -1001,7 +1001,7 @@ export const DebugMcpUiAppsSchema = z.object({
     message: z.string().optional().describe('Optional message to include in the debug data'),
 })
 
-// PostHog AI tools
+// Flind AI tools
 export const ExecuteSQLSchema = z.object({
     query: z.string().min(1).describe('The final SQL query to be executed.'),
     context: z

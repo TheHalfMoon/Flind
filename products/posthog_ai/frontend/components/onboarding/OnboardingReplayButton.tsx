@@ -11,7 +11,7 @@ export interface OnboardingReplayButtonProps {
 }
 
 /**
- * Reopens the onboarding takeover. Temporary: this exists for the migration to the new PostHog AI, so
+ * Reopens the onboarding takeover. Temporary: this exists for the migration to the new Flind AI, so
  * people who dismissed the takeover can still find what changed. Delete this component and its call site
  * once the migration is done.
  *
@@ -29,7 +29,7 @@ export function OnboardingReplayButton({ panelId }: OnboardingReplayButtonProps)
             onClick={() => openOnboarding(true)}
             data-attr="posthog-ai-onboarding-replay"
         >
-            What's new in PostHog AI
+            What's new in Flind AI
         </LemonButton>
     )
 }

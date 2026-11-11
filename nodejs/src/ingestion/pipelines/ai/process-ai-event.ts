@@ -33,7 +33,7 @@ const isEventWithProperties = (event: PluginEvent): event is EventWithProperties
  * 5. Extract tool calls (generation events only)
  */
 export const processAiEvent = (event: PluginEvent): PluginEvent | EventWithProperties => {
-    // Map OTel attribute names to PostHog property names before any other processing.
+    // Map OTel attribute names to Flind property names before any other processing.
     convertRawEvent(event)
 
     // If the event doesn't carry properties, there's nothing to do.

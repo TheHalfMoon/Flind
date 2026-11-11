@@ -12,14 +12,14 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Add PostHog to your Podfile:</Markdown>
+                    <Markdown>Add Flind to your Podfile:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
                                 language: 'ruby',
                                 file: 'Podfile',
                                 code: dedent`
-                                    pod "PostHog", "~> 3.56"
+                                    pod "Flind", "~> 3.56"
                                 `,
                             },
                         ]}
@@ -40,7 +40,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                     />
                     <CalloutBox type="fyi" title="SDK version">
                         <Markdown>
-                            Session replay requires PostHog iOS SDK version 3.6.0 or higher. We recommend always using
+                            Session replay requires Flind iOS SDK version 3.6.0 or higher. We recommend always using
                             the latest version.
                         </Markdown>
                     </CalloutBox>
@@ -53,19 +53,19 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             content: (
                 <>
                     <Markdown>
-                        Go to your PostHog [Project Settings](https://us.posthog.com/settings/project-replay) and enable
+                        Go to your Flind [Project Settings](https://us.posthog.com/settings/project-replay) and enable
                         **Record user sessions**. Session recordings will not work without this setting enabled.
                     </Markdown>
                 </>
             ),
         },
         {
-            title: 'Configure PostHog with session replay',
+            title: 'Configure Flind with session replay',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Add `sessionReplay = true` to your PostHog configuration. Here are all the available options:
+                        Add `sessionReplay = true` to your Flind configuration. Here are all the available options:
                     </Markdown>
                     <CodeBlock
                         blocks={[
@@ -74,7 +74,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                                 file: 'AppDelegate.swift',
                                 code: dedent`
                                     import Foundation
-                                    import PostHog
+                                    import Flind
                                     import UIKit
 
                                     class AppDelegate: NSObject, UIApplicationDelegate {

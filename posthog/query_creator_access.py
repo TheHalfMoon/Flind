@@ -97,7 +97,7 @@ def report_creator_access_revoked(
     with ph_scoped_capture() as capture:
         capture(
             distinct_id=str(team.uuid),
-            # Name of the PostHog analytics event we emit - not an error or log message.
+            # Name of the Flind analytics event we emit - not an error or log message.
             event="background query creator access revoked",
             properties={
                 "source": source,

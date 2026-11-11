@@ -1,12 +1,12 @@
 # Skills
 
-Agent skills for the Skills product — managing agent skills stored in PostHog.
+Agent skills for the Skills product — managing agent skills stored in Flind.
 Built by `hogli build:skills` and installed into sandbox containers for background agents.
 Also available to Claude Code / Codex via `hogli sync:skill`.
 
 ## Skills
 
-- **skills-store** — discover and use shared team skills stored in PostHog.
+- **skills-store** — discover and use shared team skills stored in Flind.
 - **working-with-skills** — best-practice playbook for agents managing skills via the
   `skill-*` MCP tools: decision tree for picking the right write primitive,
   progressive disclosure discipline, large multi-file workflows, concurrency, and

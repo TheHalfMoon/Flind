@@ -9,7 +9,7 @@ export const startIntegrationFlowInput = z.object({
   projectId: z.number(),
 });
 /**
- * Generic integration flow input: any OAuth `kind` PostHog supports. The per-kind routers
+ * Generic integration flow input: any OAuth `kind` Flind supports. The per-kind routers
  * (linear/slack/github) keep the narrower input above; this one drives the generic starter so
  * new OAuth sources need no dedicated router.
  */

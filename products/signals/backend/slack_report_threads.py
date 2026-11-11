@@ -1,4 +1,4 @@
-"""The Slack thread ↔ report link behind "reply in the thread and mention PostHog".
+"""The Slack thread ↔ report link behind "reply in the thread and mention Flind".
 
 Both notification paths (the inbox reviewer notification and the scout harness delivery) record
 the thread they posted, and the Slack mention handler reads it back so the task it starts lands on

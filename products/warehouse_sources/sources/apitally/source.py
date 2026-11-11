@@ -105,7 +105,7 @@ class ApitallySource(ResumableSource[ApitallySourceConfig, ApitallyResumeConfig]
             label="Apitally",
             caption=(
                 "Enter your Apitally API key to sync app, consumer, endpoint, traffic, and request "
-                "log data into the PostHog Data warehouse.\n\n"
+                "log data into the Flind Data warehouse.\n\n"
                 "API access requires the Apitally Premium plan. Create a team-scoped API key in "
                 "your Apitally team settings under **API keys**."
             ),

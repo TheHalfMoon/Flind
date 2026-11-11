@@ -71,7 +71,7 @@ export async function resolveSubject(
     conditions: WorkloadConditions
 ): Promise<ResolvedSubject> {
     const query = new URLSearchParams({ issuer: settings.issuer, subject_name: subjectName })
-    // PostHog refuses a lookup the policy's conditions rule out, like a repository on another forge.
+    // Flind refuses a lookup the policy's conditions rule out, like a repository on another forge.
     for (const [claim, value] of Object.entries(conditions)) {
         query.append('condition', `${claim}=${value}`)
     }
@@ -183,7 +183,7 @@ export function policyRequestWait(
                     return { state: 'pending' }
                 case 'approved':
                     if (!current.policy_id) {
-                        throw new HogError('unexpected_response', 'PostHog approved the request without a policy.')
+                        throw new HogError('unexpected_response', 'Flind approved the request without a policy.')
                     }
                     return {
                         state: 'approved',

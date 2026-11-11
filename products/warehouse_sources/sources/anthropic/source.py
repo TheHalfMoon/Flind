@@ -122,7 +122,7 @@ class AnthropicSource(ResumableSource[AnthropicSourceConfig, AnthropicResumeConf
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Anthropic",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Anthropic Admin API key to pull your organization's Claude usage, cost, and admin data into the PostHog Data warehouse.
+            caption="""Enter your Anthropic Admin API key to pull your organization's Claude usage, cost, and admin data into the Flind Data warehouse.
 
 Create an Admin API key (prefixed `sk-ant-admin...`) in your [Anthropic Console](https://console.anthropic.com/settings/admin-keys). Only organization admins can create one, and the Admin API is not available for individual accounts.
 
@@ -160,7 +160,7 @@ The group, group membership and custom role tables come from the Claude Enterpri
         # the action the customer has is to stop the other tools that read the same reports.
         return {
             "HTTP 429 for https://api.anthropic.com": (
-                "Your organization's Anthropic report rate limit ran out, and PostHog retries on its own. "
+                "Your organization's Anthropic report rate limit ran out, and Flind retries on its own. "
                 "Pause other tools that read your usage or cost reports to free it up."
             ),
         }
@@ -180,7 +180,7 @@ The group, group membership and custom role tables come from the Claude Enterpri
             f"404 Client Error: Not Found for url: https://api.anthropic.com{RBAC_ROLES_PATH}": rbac_role_denied,
             "401 Client Error: Unauthorized for url: https://api.anthropic.com": "Your Anthropic Admin API key is invalid or has been revoked. Create a new Admin API key in the Anthropic Console, then reconnect.",
             "403 Client Error: Forbidden for url: https://api.anthropic.com": "Your Anthropic API key does not have organization admin access. Use an Admin API key (prefixed sk-ant-admin) created by an organization admin, then reconnect.",
-            ENDPOINT_RETIRED_ERROR: "Anthropic no longer offers this table, so it can't sync. PostHog has turned its sync off for you, and any rows already imported stay in your warehouse.",
+            ENDPOINT_RETIRED_ERROR: "Anthropic no longer offers this table, so it can't sync. Flind has turned its sync off for you, and any rows already imported stay in your warehouse.",
         }
 
     def get_schemas(

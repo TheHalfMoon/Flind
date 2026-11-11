@@ -129,7 +129,7 @@ class NetlifyCappedHeaderLinkPaginator(NetlifyHeaderLinkPaginator):
 def _non_secret_headers() -> dict[str, str]:
     # Auth (Bearer) is supplied via the framework auth config so its value is redacted from logs and
     # raised error messages; only the non-secret headers are set here.
-    return {"Accept": "application/json", "User-Agent": "PostHog"}
+    return {"Accept": "application/json", "User-Agent": "Flind"}
 
 
 def _redact_key(row: dict[str, Any], dotted_key: str) -> dict[str, Any]:

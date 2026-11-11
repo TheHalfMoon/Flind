@@ -1362,7 +1362,7 @@ class SurveySerializerCreateUpdateOnly(serializers.ModelSerializer):
         )
 
         if survey_white_label and not use_survey_white_labelling:
-            raise serializers.ValidationError("You need to upgrade to PostHog Enterprise to use white labelling")
+            raise serializers.ValidationError("You need to upgrade to Flind Enterprise to use white labelling")
 
         return value
 
@@ -2679,7 +2679,7 @@ class SurveyViewSet(ApprovalHandlingMixin, TeamAndOrgViewSetMixin, AccessControl
         related_targeting_flag = instance.targeting_flag
         related_internal_targeting_flag = instance.internal_targeting_flag
         # Only the user-defined targeting flag is gated; the internal targeting flag is a
-        # PostHog-managed implementation detail, so deleting a survey that only has one
+        # Flind-managed implementation detail, so deleting a survey that only has one
         # must not require `feature_flag:write`.
         if related_targeting_flag:
             assert_feature_flag_write_scope(
@@ -3375,7 +3375,7 @@ class SurveyViewSet(ApprovalHandlingMixin, TeamAndOrgViewSetMixin, AccessControl
 
         environment_is_allowed = settings.DEBUG or is_cloud()
         if not environment_is_allowed or not gemini_configured():
-            raise exceptions.ValidationError("survey summary is only supported in PostHog Cloud")
+            raise exceptions.ValidationError("survey summary is only supported in Flind Cloud")
 
         # Same AI-processing gate that summary_headline uses — applies to per-question summaries too.
         if not self.team.organization.is_ai_data_processing_approved:
@@ -3581,7 +3581,7 @@ class SurveyViewSet(ApprovalHandlingMixin, TeamAndOrgViewSetMixin, AccessControl
 
         if not (settings.DEBUG or is_cloud()):
             raise exceptions.ValidationError(
-                "survey translation generation is only supported in PostHog Cloud or DEBUG mode"
+                "survey translation generation is only supported in Flind Cloud or DEBUG mode"
             )
 
         if not gemini_configured():

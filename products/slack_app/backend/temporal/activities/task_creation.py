@@ -81,7 +81,7 @@ def _slack_actor_state_updates(*, user_id: int, slack_user_id: str) -> dict[str,
 
 
 def _own_plan_state(integration: Any, user: Any, *, runtime_adapter: str | None) -> dict[str, Any]:
-    """The run-state keys that bill a new run to this user's own plan, or none to keep PostHog credits.
+    """The run-state keys that bill a new run to this user's own plan, or none to keep Flind credits.
 
     The caller passes the thread creator, whose plan pays for every turn in the thread.
     A failed check keeps the run on credits rather than blocking the mention.
@@ -381,12 +381,12 @@ def _build_posthog_code_task_description(
             # the same author twice. The mentioner role is the load-bearing one — its
             # message is the actual request — so it's the form we keep.
             role_lines[-1] = (
-                f"Thread started by and tagged the PostHog app: {mentioner_entry['author']} "
+                f"Thread started by and tagged the Flind app: {mentioner_entry['author']} "
                 f"(their message {request_location} is the actual request)"
             )
         else:
             role_lines.append(
-                f"Tagged the PostHog app: {mentioner_entry['author']} "
+                f"Tagged the Flind app: {mentioner_entry['author']} "
                 f"(their message {request_location} is the actual request)"
             )
 
@@ -404,9 +404,9 @@ def _build_posthog_code_task_description(
         ]
         if fork_source_task_id:
             origin_lines.append(
-                f"That thread was already being worked on as PostHog task `{fork_source_task_id}`. The "
+                f"That thread was already being worked on as Flind task `{fork_source_task_id}`. The "
                 "messages below are only what was said in Slack — the task itself holds the work: its "
-                "runs, session logs, comments and artifacts. Read it with the PostHog task tools when "
+                "runs, session logs, comments and artifacts. Read it with the Flind task tools when "
                 "the question is about what was actually done, changed, or decided, rather than said."
             )
     else:
@@ -696,7 +696,7 @@ def create_posthog_code_task_for_repo_activity(
     # how a request arrives from a Slack workflow or a client that posts rich text. The
     # thread and fork paths already read every source through this extractor.
     user_text = decode_slack_event_text(slack, integration, extract_message_text(event))
-    # Title is shown in PostHog Desktop's UI (task lists, PR titles) where the
+    # Title is shown in Flind Desktop's UI (task lists, PR titles) where the
     # labeled `<@U…|name>` form would render as literal noise; the description
     # keeps the labeled form so the agent can echo tokens back as real pings.
     title_text = labeled_mentions_to_display_names(user_text)
@@ -770,7 +770,7 @@ def create_posthog_code_task_for_repo_activity(
             ),
         )
 
-    # File into the creator's personal "#me" channel so the task surfaces in PostHog Desktop's
+    # File into the creator's personal "#me" channel so the task surfaces in Flind Desktop's
     # Spaces feed, which is strictly channel-scoped — a NULL-channel task shows up in no space.
     personal_channel_id: uuid.UUID | None = None
     try:
@@ -1048,7 +1048,7 @@ def forward_posthog_code_followup_activity(
             logger.info("slack_app_followup_thread_join_denied", channel=channel, thread_ts=thread_ts)
             return True
         # The follow-up is from a different Slack user than the one who started the
-        # thread. Try to resolve them to a PostHog user with access to the same team
+        # thread. Try to resolve them to a Flind user with access to the same team
         # — if so, let them participate under their own sandbox token, with their
         # name prefixed onto the text so the agent sees who spoke.
         resolved = resolve_slack_user(slack, integration, slack_user_id, channel, thread_ts)
@@ -1062,7 +1062,7 @@ def forward_posthog_code_followup_activity(
             )
             return True
         # `slack_email` is None on the linked-user resolver path; fall through
-        # to the user's PostHog email rather than interpolating literal "None: "
+        # to the user's Flind email rather than interpolating literal "None: "
         # into the LLM-forwarded prefix when both name and slack_email are absent.
         actor_user = resolved.user
         actor_name = resolved.user.get_full_name() or resolved.slack_email or resolved.user.email
@@ -1490,7 +1490,7 @@ def _build_terminal_recovery_prompt(previous_run: Any, user_text: str) -> str:
         _SLACK_RECOVERY_STRATEGY_RECONNECT_GITHUB: (
             "GitHub rejected the acting user's personal credentials on the previous run. Resolve them again "
             "before executing. If the connection now works, re-plan and continue. If it still does not, say so "
-            "and ask the acting user to reconnect their personal GitHub in PostHog settings."
+            "and ask the acting user to reconnect their personal GitHub in Flind settings."
         ),
     }
 
@@ -1570,7 +1570,7 @@ def _resume_task_with_new_run(
 
     extra_state: dict[str, Any] = {
         "interaction_origin": "slack",
-        # PostHog sub-tool gate stays open so the agent doesn't make a permission roundtrip.
+        # Flind sub-tool gate stays open so the agent doesn't make a permission roundtrip.
         "initial_permission_mode": "bypassPermissions",
         **_slack_actor_state_updates(user_id=run_actor.id, slack_user_id=slack_user_id),
         # Resolved again rather than carried over: the flags or the install's scopes can

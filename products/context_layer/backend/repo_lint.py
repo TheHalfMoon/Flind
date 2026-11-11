@@ -568,7 +568,7 @@ PUBLISH_SCRIPT = """\
 set -eu
 cd "$(dirname "$0")/.."
 if [ -z "${POSTHOG_API_URL:-}" ] || [ -z "${POSTHOG_PERSONAL_API_KEY:-}" ] || [ -z "${POSTHOG_CONTEXT_LAYER_COMMITS_PATH:-}" ]; then
-    echo "publish: POSTHOG_API_URL, POSTHOG_PERSONAL_API_KEY, and POSTHOG_CONTEXT_LAYER_COMMITS_PATH must be set (they are inside PostHog sandboxes)" >&2
+    echo "publish: POSTHOG_API_URL, POSTHOG_PERSONAL_API_KEY, and POSTHOG_CONTEXT_LAYER_COMMITS_PATH must be set (they are inside Flind sandboxes)" >&2
     exit 1
 fi
 dream=false
@@ -600,7 +600,7 @@ if [ "$dream" = true ]; then
     fi
     git add --all
     if ! git diff --cached --quiet; then
-        git -c user.name="PostHog Context Layer" -c user.email="context-layer@posthog.com" \\
+        git -c user.name="Flind Context Layer" -c user.email="context-layer@posthog.com" \\
             -c commit.gpgsign=false commit -m "dream: ${branch#dream/}" -m "$summary"
     fi
 elif [ -n "$(git status --porcelain)" ]; then
@@ -648,7 +648,7 @@ def _lint_scripts_directory(root: Path, *, pin_scripts: bool = True) -> list[str
         elif path.parent != base or not path.is_file() or path.name not in canonical:
             errors.append(f"{relative}: scripts/ may only contain {', '.join(sorted(canonical))}")
         elif pin_scripts and path.read_text(encoding="utf-8", errors="replace") != canonical[path.name]:
-            errors.append(f"{relative}: must match the script PostHog ships; restore it from a fresh clone")
+            errors.append(f"{relative}: must match the script Flind ships; restore it from a fresh clone")
     return errors
 
 

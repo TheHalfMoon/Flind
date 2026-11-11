@@ -86,7 +86,7 @@ def subject_filter(subject_type: str, subject_uuid: str | UUID) -> dict[str, Any
     if subject_type == SubjectType.POSTHOG_TABLE:
         entry = posthog_tables.by_id(subject_uuid)
         if entry is None:
-            raise ValueError(f"Unknown PostHog table: {subject_uuid}")
+            raise ValueError(f"Unknown Flind table: {subject_uuid}")
         return {"posthog_table": entry.name}
     raise ValueError(f"Unknown check subject type: {subject_type}")
 

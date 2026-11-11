@@ -1,6 +1,6 @@
 """Daily schedule for the MCP analytics intent clustering coordinator.
 
-Gated behind the ``mcp-analytics-clustering-schedule`` PostHog feature flag.
+Gated behind the ``mcp-analytics-clustering-schedule`` Flind feature flag.
 This is a kill switch: the schedule isn't registered when the flag is off,
 so the daily fan-out only runs once explicitly enabled. Flipping the
 flag off after a deploy also removes the schedule on next init, so we can
@@ -55,7 +55,7 @@ def _schedule_enabled() -> tuple[bool, bool]:
       (kill switch).
     * ``(False, False)`` — FF check raised. **Preserve current state.** Do
       not register a new schedule (fail-closed on registration) and do not
-      delete an existing one (a transient PostHog API outage shouldn't tear
+      delete an existing one (a transient Flind API outage shouldn't tear
       down a properly-enabled production schedule).
     """
     try:
@@ -72,7 +72,7 @@ async def create_intent_clustering_coordinator_schedule(client: Client) -> None:
     When the feature flag is OFF, any existing schedule is deleted so flipping
     the flag off cleanly disables the daily path. The schedule is created
     with ``trigger_immediately=False`` to avoid stampeding a worker on first
-    deploy. If the FF check itself fails (transient PostHog API outage),
+    deploy. If the FF check itself fails (transient Flind API outage),
     the current schedule state is preserved — we don't tear down a valid
     production schedule on a blip.
     """
@@ -84,7 +84,7 @@ async def create_intent_clustering_coordinator_schedule(client: Client) -> None:
     if not enabled:
         if not check_succeeded:
             # FF check raised. Don't touch the existing schedule (if any) —
-            # transient PostHog outages must not silently disable production.
+            # transient Flind outages must not silently disable production.
             logger.info(
                 "mcpa.intent_clustering.schedule.feature_flag_check_failed_preserving_state",
                 schedule_id=COORDINATOR_SCHEDULE_ID,

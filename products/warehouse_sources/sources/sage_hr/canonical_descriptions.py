@@ -156,7 +156,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "An entry in an active employee's compensation history, such as a salary or a bonus.",
         "docs_url": "https://sagehr.docs.apiary.io",
         "columns": {
-            "id": "Identifier PostHog derives from the row content, because Sage HR returns none.",
+            "id": "Identifier Flind derives from the row content, because Sage HR returns none.",
             "employee_id": "The ID of the employee the compensation belongs to.",
             "start_date": "The date the compensation starts.",
             "end_date": "The date the compensation ends, or null when it is current.",

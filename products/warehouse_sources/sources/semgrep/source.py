@@ -28,7 +28,7 @@ from products.warehouse_sources.sources.semgrep.settings import ENDPOINTS, SEMGR
 INVALID_TOKEN_MESSAGE = "Your Semgrep API token is invalid or has been revoked. Create a new token with the Web API scope under Settings → Tokens in Semgrep, then reconnect."
 MISSING_SCOPE_MESSAGE = "Your Semgrep API token does not have permission to read this data. Grant the token the Web API scope (and make sure your plan includes API access), then reconnect."
 UNREACHABLE_MESSAGE = (
-    "PostHog couldn't reach Semgrep to check your API token. This is usually temporary, so wait a moment and try again."
+    "Flind couldn't reach Semgrep to check your API token. This is usually temporary, so wait a moment and try again."
 )
 
 
@@ -50,7 +50,7 @@ class SemgrepSource(ResumableSource[SemgrepSourceConfig, SemgrepResumeConfig]):
             label="Semgrep",
             releaseStatus=ReleaseStatus.GA,
             keywords=["sast", "sca", "appsec"],
-            caption="""Enter your Semgrep API token to sync your static analysis data into the PostHog Data warehouse. This covers deployments, projects, scans, code (SAST) and supply chain (SCA) findings, secrets, and the supply chain dependency inventory.
+            caption="""Enter your Semgrep API token to sync your static analysis data into the Flind Data warehouse. This covers deployments, projects, scans, code (SAST) and supply chain (SCA) findings, secrets, and the supply chain dependency inventory.
 
 Create a token in Semgrep AppSec Platform under **Settings → Tokens** and grant it the **Web API** scope. The API requires a Semgrep Team or Enterprise plan.""",
             iconPath="/static/services/semgrep.png",

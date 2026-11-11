@@ -3,8 +3,8 @@
 from products.warehouse_sources.sources.sdk import CanonicalDescriptions
 
 _FAN_OUT_COLUMNS = {
-    "deployment_id": "Unique numerical identifier of the Semgrep deployment this row belongs to (added by PostHog).",
-    "deployment_slug": "Machine-readable slug of the Semgrep deployment this row belongs to (added by PostHog).",
+    "deployment_id": "Unique numerical identifier of the Semgrep deployment this row belongs to (added by Flind).",
+    "deployment_slug": "Machine-readable slug of the Semgrep deployment this row belongs to (added by Flind).",
 }
 
 _SHARED_FINDING_COLUMNS = {
@@ -137,7 +137,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Supply chain dependency inventory: each package version Semgrep found in a lockfile or manifest of the deployment's repositories. Dependencies of archived repositories are not returned.",
         "docs_url": "https://semgrep.dev/api/v1/docs/#tag/SupplyChainService",
         "columns": {
-            "dependency_key": "Hash of the repository, ecosystem, package, version and lockfile location that identifies this dependency (added by PostHog).",
+            "dependency_key": "Hash of the repository, ecosystem, package, version and lockfile location that identifies this dependency (added by Flind).",
             "repositoryId": "ID of the repository the dependency is found in.",
             "package": "The dependency's package name and version specifier.",
             "ecosystem": "The ecosystem the dependency is in (e.g. npm, pypi, maven).",
@@ -168,8 +168,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "columns": {
             "lockfilePath": "Path to the lockfile (e.g. foo/bar/package-lock.json).",
             "numDependencies": "Total number of dependencies in the lockfile.",
-            "repository_id": "ID of the repository the lockfile belongs to (added by PostHog).",
-            "repository_name": "Name of the repository the lockfile belongs to (added by PostHog).",
+            "repository_id": "ID of the repository the lockfile belongs to (added by Flind).",
+            "repository_name": "Name of the repository the lockfile belongs to (added by Flind).",
             **_FAN_OUT_COLUMNS,
         },
     },

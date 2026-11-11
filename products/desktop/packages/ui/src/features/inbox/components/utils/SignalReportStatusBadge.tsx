@@ -23,7 +23,7 @@ const STATUS_META: Record<
     variant: "default",
   },
   pending_input: {
-    tooltip: "This report needs human input in PostHog before it can proceed.",
+    tooltip: "This report needs human input in Flind before it can proceed.",
     variant: "info",
   },
   in_progress: {

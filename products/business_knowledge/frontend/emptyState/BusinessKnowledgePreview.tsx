@@ -44,7 +44,7 @@ const SOURCES: PreviewSource[] = [
 
 /**
  * Example-data preview for the business knowledge empty state: the source list
- * wired to a mini PostHog AI thread, so picking a source shows an answer that
+ * wired to a mini Flind AI thread, so picking a source shows an answer that
  * cites it. Three hidden radios drive `:checked ~` styles - no timers or state,
  * per the preview rules in the `building-product-empty-states` skill. Per-source
  * messages are stacked in `__swap` grids and crossfaded, so switching never
@@ -93,7 +93,7 @@ export function BusinessKnowledgePreview(): JSX.Element {
                         </label>
                     ))}
                 </div>
-                <div className="BusinessKnowledgePreview__hint">Select a source to see PostHog AI use it.</div>
+                <div className="BusinessKnowledgePreview__hint">Select a source to see Flind AI use it.</div>
             </div>
 
             <div className="BusinessKnowledgePreview__thread">

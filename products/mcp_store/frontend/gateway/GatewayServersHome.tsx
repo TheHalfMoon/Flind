@@ -54,7 +54,7 @@ export function GatewayServersHome({ onOpenServer }: { onOpenServer?: (serverId:
                 <div>
                     <h2 className="mb-1">MCP servers</h2>
                     <p className="mb-0 text-secondary">
-                        Connect tools for yourself, your teammates, and PostHog agents.
+                        Connect tools for yourself, your teammates, and Flind agents.
                     </p>
                 </div>
                 <LemonButton

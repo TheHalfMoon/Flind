@@ -72,7 +72,7 @@ export const getRubyOnRailsSteps = (ctx: OnboardingComponentsContext): StepDefin
                                             language: 'ruby',
                                             file: 'Ruby',
                                             code: dedent`
-                                                PostHog.capture({
+                                                Flind.capture({
                                                     distinct_id: 'distinct_id_of_your_user',
                                                     event: 'event_name',
                                                     send_feature_flags: true,
@@ -94,7 +94,7 @@ export const getRubyOnRailsSteps = (ctx: OnboardingComponentsContext): StepDefin
                                             language: 'ruby',
                                             file: 'Ruby',
                                             code: dedent`
-                                                PostHog.capture({
+                                                Flind.capture({
                                                     distinct_id: 'distinct_id_of_your_user',
                                                     event: 'event_name',
                                                     properties: {
@@ -122,7 +122,7 @@ export const getRubyOnRailsSteps = (ctx: OnboardingComponentsContext): StepDefin
             content: (
                 <Markdown>
                     {dedent`
-                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the PostHog dashboard.
+                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the Flind dashboard.
                     `}
                 </Markdown>
             ),

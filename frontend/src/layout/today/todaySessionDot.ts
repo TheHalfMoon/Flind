@@ -11,7 +11,7 @@ export interface TodaySessionDot {
 const STARTING_LABELS: Record<string, string> = { not_started: 'Starting', queued: 'Queued' }
 
 /**
- * A session's state as one dot, like the PostHog Desktop task rows. The dot shows attention and activity only,
+ * A session's state as one dot, like the Flind Desktop task rows. The dot shows attention and activity only,
  * so every settled state shares the same quiet ring.
  */
 export function todaySessionDot(

@@ -69,7 +69,7 @@ export interface ComponentIncidentAlert {
 
 const REFRESH_INTERVAL = 60 * 1000 * 5 // 5 minutes
 
-// incident.io component name for the PostHog AI service. An incident is treated as affecting AI only
+// incident.io component name for the Flind AI service. An incident is treated as affecting AI only
 // when it tags a component with this exact name under the current region's group (see getRelevantGroupName).
 export const AI_COMPONENT_NAME = 'Flind AI'
 

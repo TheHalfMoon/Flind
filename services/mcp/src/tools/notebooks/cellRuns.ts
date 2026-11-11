@@ -212,7 +212,7 @@ function withUnrunUpstreamHint(error: unknown, cells: CellTagBlock[]): unknown {
 
 /**
  * The run endpoint takes the data source from the request, not from the notebook, so a run that
- * omits it sends an external-source cell to PostHog's ClickHouse.
+ * omits it sends an external-source cell to Flind's ClickHouse.
  */
 function connectionSettings(
     cell: RunnableCell,

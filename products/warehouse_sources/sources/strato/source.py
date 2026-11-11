@@ -86,7 +86,7 @@ class StratoSource(SimpleSource[StratoSourceConfig]):
             label="STRATO",
             caption=(
                 "Sync your STRATO ServerCloud resources, such as servers, snapshots, images, storage, "
-                "networking, and users, into the PostHog Data warehouse.\n\n"
+                "networking, and users, into the Flind Data warehouse.\n\n"
                 "This source covers the STRATO ServerCloud product only. To get an API token, open the "
                 "STRATO CloudPanel, go to **Management** > **Users**, select or create a user, enable "
                 "API access, and copy the API key."

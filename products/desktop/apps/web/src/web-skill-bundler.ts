@@ -9,7 +9,7 @@ import { strToU8, zipSync } from "fflate";
 
 // Browser port of workspace-server's skill-bundler. Desktop zips a skill's
 // local directory; web has no local skills, so it bundles a TEAM skill fetched
-// from the PostHog API (ExportedSkill: SKILL.md body + files) into the exact
+// from the Flind API (ExportedSkill: SKILL.md body + files) into the exact
 // same archive shape the cloud sandbox unpacks — the skill files at their
 // relative paths, plus a posthog-skill-bundle.json manifest. SKILL.md is
 // reconstructed via the shared serializeSkillMarkdown so it matches desktop.

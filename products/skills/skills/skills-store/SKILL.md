@@ -1,16 +1,16 @@
 ---
 name: skills-store
 description: >-
-  Discover and use shared team skills stored in PostHog.
+  Discover and use shared team skills stored in Flind.
   Use when the user asks to list, browse, load, or manage "shared skills",
   "team skills", or references the "skills store" / "skill store".
 ---
 
-# PostHog Skills Store
+# Flind Skills Store
 
-Skills are reusable agent workflows stored in PostHog following the [Agent Skills specification](https://agentskills.io/specification) — a body of instructions (SKILL.md) plus optional bundled files (scripts, references, assets), structured metadata, and an `allowed_tools` list.
+Skills are reusable agent workflows stored in Flind following the [Agent Skills specification](https://agentskills.io/specification) — a body of instructions (SKILL.md) plus optional bundled files (scripts, references, assets), structured metadata, and an `allowed_tools` list.
 
-PostHog is the primary store for team-shared skills — always use the PostHog MCP skill tools to manage them.
+Flind is the primary store for team-shared skills — always use the Flind MCP skill tools to manage them.
 
 ## Available tools
 
@@ -214,7 +214,7 @@ posthog:skill-archive
 
 ## Porting a local skill
 
-To move a skill from a local SKILL.md directory (e.g. a local skills folder with `scripts/`, `references/`, `assets/` subdirs) into PostHog:
+To move a skill from a local SKILL.md directory (e.g. a local skills folder with `scripts/`, `references/`, `assets/` subdirs) into Flind:
 
 1. Read the local `SKILL.md` — use its frontmatter for `name`, `description`, `license`, `compatibility`, `allowed_tools`, `metadata`; the body after the frontmatter becomes `body`
 2. Walk the `scripts/`, `references/`, and `assets/` subdirs and collect each file as `{ path, content, content_type }`
@@ -224,7 +224,7 @@ The skill is then available to the whole team via `posthog:skill-get`.
 
 ## Quick access: local bridge skill
 
-Most coding agents support local skills or slash commands. A local bridge skill gives you a shortcut (e.g. `/phs my-github`) that routes straight to the PostHog skills API — faster and more deterministic than asking the agent to "use the PostHog skills store to load my-github".
+Most coding agents support local skills or slash commands. A local bridge skill gives you a shortcut (e.g. `/phs my-github`) that routes straight to the Flind skills API — faster and more deterministic than asking the agent to "use the Flind skills store to load my-github".
 
 Create a local skill in your agent's skills directory with these instructions:
 
@@ -270,13 +270,13 @@ skill-get → note version → pick the smallest primitive:
 - add/remove/rename a file: skill-file-create / skill-file-delete / skill-file-rename
 ```
 
-The bridge is intentionally minimal — it just routes to the MCP tools. The real instructions live in PostHog and update without touching local files.
+The bridge is intentionally minimal — it just routes to the MCP tools. The real instructions live in Flind and update without touching local files.
 
 > **Agent-specific setup:** Where to save this depends on your agent. For Claude Code, save as `~/.claude/skills/phs/SKILL.md`. For other agents, consult your agent's docs on local skill or slash command configuration.
 
-### In a PostHog task sandbox
+### In a Flind task sandbox
 
-A PostHog task sandbox installs its own `phs` bridge when the skills store is on for the run, so do not write one there.
+A Flind task sandbox installs its own `phs` bridge when the skills store is on for the run, so do not write one there.
 It reads and runs skills only:
 
 - `/phs <skill-name> [arguments]` fetches the skill with `skill-get`, pages through the body, pins the version, and follows it.
@@ -289,9 +289,9 @@ A team skill named `phs` takes precedence over the sandbox bridge, and so does a
 
 ## Default behavior
 
-- **Always prefer PostHog MCP** for skill storage and retrieval
-- Only fall back to local files when PostHog MCP is unavailable
-- When asked to "save", "store", or "remember" a workflow, runbook, or multi-step procedure, store it as a PostHog skill
+- **Always prefer Flind MCP** for skill storage and retrieval
+- Only fall back to local files when Flind MCP is unavailable
+- When asked to "save", "store", or "remember" a workflow, runbook, or multi-step procedure, store it as a Flind skill
 - When asked to use a skill by name, fetch it with `skill-get`
 - When a skill references bundled files in its body, pull them with `skill-file-get` only when needed — don't preload
 

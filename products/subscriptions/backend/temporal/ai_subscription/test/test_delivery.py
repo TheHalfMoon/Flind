@@ -229,7 +229,7 @@ class TestExternalUrlExfilGuard:
         message = _build_message("Open https://app.posthog.com/insights/abc now")
         all_text = " ".join(b["text"] for b in message.blocks if b["type"] == "markdown")
         assert "https://app.posthog.com/insights/abc" in all_text
-        assert "`https://app.posthog.com" not in all_text  # PostHog hosts stay live, not defanged
+        assert "`https://app.posthog.com" not in all_text  # Flind hosts stay live, not defanged
 
     def test_slack_defangs_scheme_less_www_url(self) -> None:
         # Slack also linkifies scheme-less www. URLs — those must be defanged too
@@ -848,7 +848,7 @@ class TestBuildAITeamsCard:
         content = card["attachments"][0]["content"]
 
         assert "This report was shortened to fit." in str(content["body"])
-        assert "Read all of it in PostHog" not in str(content["body"])
+        assert "Read all of it in Flind" not in str(content["body"])
 
 
 def _mock_integration(scopes: frozenset[str]) -> MagicMock:

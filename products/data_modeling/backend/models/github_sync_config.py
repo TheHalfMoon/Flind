@@ -38,7 +38,7 @@ class GitHubSyncConfig(CreatedMetaFields, UpdatedMetaFields):
     )
     last_sync_error = models.TextField(blank=True, default="", help_text="Error message from the last failed sync")
 
-    auto_merge_prs = models.BooleanField(default=False, help_text="Auto-merge PRs created by PostHog for this env")
+    auto_merge_prs = models.BooleanField(default=False, help_text="Auto-merge PRs created by Flind for this env")
 
     def __str__(self) -> str:
         return f"GitHubSyncConfig {self.repository or '(unconfigured)'}"

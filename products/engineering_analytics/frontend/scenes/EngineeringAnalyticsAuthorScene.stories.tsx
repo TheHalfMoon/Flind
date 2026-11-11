@@ -89,7 +89,7 @@ function timeline(
         number,
         title,
         author: { handle: 'jane-dev', display_name: 'jane-dev', avatar_url: '', is_bot: false },
-        repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+        repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
         state: options.merged ? 'merged' : 'open',
         is_draft: !!options.draft,
         created_at: startedAt,
@@ -274,7 +274,7 @@ const FRICTION_DETAIL: AuthorFrictionDetailApi = {
     pull_requests: [
         {
             number: 5101,
-            repo_owner: 'PostHog',
+            repo_owner: 'Flind',
             repo_name: 'posthog',
             title: 'fix(replay): keep the player in sync after a seek',
             score: 4.2,
@@ -287,7 +287,7 @@ const FRICTION_DETAIL: AuthorFrictionDetailApi = {
         },
         {
             number: 5088,
-            repo_owner: 'PostHog',
+            repo_owner: 'Flind',
             repo_name: 'posthog',
             title: 'feat(replay): add a speed control to the player',
             score: 2.1,

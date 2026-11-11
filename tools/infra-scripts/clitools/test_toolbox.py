@@ -47,7 +47,7 @@ class TestToolbox(unittest.TestCase):
         ensure_patcher = patch.object(toolbox_script, "ensure_tailscale_connected")
         self.m_ensure_tailscale = ensure_patcher.start()
         self.addCleanup(ensure_patcher.stop)
-        # The real capture sends events to PostHog whenever an SDK is importable,
+        # The real capture sends events to Flind whenever an SDK is importable,
         # and the SDK registers its own atexit hook that the cleanup tests count.
         telemetry_patcher = patch.object(toolbox_script, "capture_invocation")
         telemetry_patcher.start()

@@ -137,7 +137,7 @@ class SignalScoutSuggestionViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewS
         summary="Get suggested scouts for this project",
         description=(
             "Return the pre-computed scout suggestions for this project: up to five picks, best first, "
-            "each either a PostHog-authored scout to turn on or a drafted custom scout. Dismissed and "
+            "each either a Flind-authored scout to turn on or a drafted custom scout. Dismissed and "
             "already-created suggestions are omitted. An empty `items` with status `empty` means no "
             "batch has been generated yet; the interactive `scout-chat-tasks` path still works."
         ),

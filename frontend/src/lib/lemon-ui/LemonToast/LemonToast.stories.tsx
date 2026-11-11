@@ -81,7 +81,7 @@ export const BillingError: Story = {
             {
                 type: 'error',
                 message:
-                    'Load experiment failed: This feature is part of the premium PostHog offering. To use it, subscribe to PostHog Cloud with a generous free tier: https://app.posthog.com/organization/billing',
+                    'Load experiment failed: This feature is part of the premium Flind offering. To use it, subscribe to Flind Cloud with a generous free tier: https://app.posthog.com/organization/billing',
             },
         ],
     },

@@ -226,7 +226,7 @@ class TestPythonGenerator(APIBaseTest):
         self.assertIn(
             '''class PosthogTyped(Posthog):
     """
-    A type-safe PostHog client with per-event capture methods.
+    A type-safe Flind client with per-event capture methods.
 
     Drop-in replacement for Posthog that provides IDE autocomplete
     and type checking via capture_<event_name>() methods.

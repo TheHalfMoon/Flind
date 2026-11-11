@@ -304,7 +304,7 @@ class TestCommandProperties:
 def _patch_cli_manifest(monkeypatch: pytest.MonkeyPatch, command_config: dict | None) -> None:
     """Point hogli.cli at a fake manifest whose every command has *command_config*.
 
-    Keeps core tests off PostHog's hogli.yaml per the framework boundary.
+    Keeps core tests off Flind's hogli.yaml per the framework boundary.
     """
 
     class _FakeManifest:

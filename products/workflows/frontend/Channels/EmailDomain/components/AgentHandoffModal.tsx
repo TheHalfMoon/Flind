@@ -27,9 +27,9 @@ function AgentSteps({
                 </>
             ) : (
                 <>
-                    <li>Reads the records through the PostHog MCP tools</li>
+                    <li>Reads the records through the Flind MCP tools</li>
                     <li>Adds them at {host} through its API, or hands you an approval link</li>
-                    <li>Polls PostHog until you are ready to send</li>
+                    <li>Polls Flind until you are ready to send</li>
                 </>
             )}
         </ol>

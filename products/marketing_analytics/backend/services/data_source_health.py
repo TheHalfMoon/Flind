@@ -113,7 +113,7 @@ async def get_data_source_health(
     """Check the platform → DW side of marketing integrations: connection state,
     sync recency, row counts, and schema-mapping coverage for every native source.
 
-    This service does NOT look at PostHog events / UTM attribution — that is
+    This service does NOT look at Flind events / UTM attribution — that is
     `attribution_health`. Cross-domain correlation (e.g. "syncing fine but no UTM
     events arrive") lives in the `marketing_diagnostic` aggregator.
 

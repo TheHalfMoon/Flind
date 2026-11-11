@@ -1,7 +1,7 @@
 ---
 name: working-with-skills
 description: >-
-  Best practices for agents managing PostHog skills via the MCP `skill-*` tools —
+  Best practices for agents managing Flind skills via the MCP `skill-*` tools —
   how to discover, read, create, update, and refactor skills efficiently, especially
   large skills with many bundled files. Use whenever you are about to call any
   `skill-*` tool, asked to author or edit a shared skill, or troubleshoot
@@ -11,7 +11,7 @@ description: >-
   decision-tree, efficiency, pattern, and pitfall guidance.
 ---
 
-# Working with PostHog skills
+# Working with Flind skills
 
 This skill teaches agents how to use the `skill-*` MCP tools well — minimum
 context, minimum round-trips, minimum mistakes. If you are not yet familiar with
@@ -370,7 +370,7 @@ first. Archiving is the right tool for retiring a skill entirely; to remove a
 single bundled file use `skill-file-delete`, and to roll back content
 publish a new version rather than archiving.
 
-## Porting a local SKILL.md tree into PostHog
+## Porting a local SKILL.md tree into Flind
 
 When migrating a local skill folder (e.g. `my-skill/SKILL.md` plus
 `scripts/`, `references/`, `assets/`):
@@ -389,7 +389,7 @@ After the create, the skill is live for everyone via `skill-get`.
 ## Patterns: what to use skills for
 
 A skill in the store is a shared, versioned memory that agents with write access can update.
-That makes it useful for much more than instructions: a project hub that agents maintain across sessions, a catalog of the PostHog objects a team owns, a runbook that grows with every investigation, a daily "what needs me" queue, or a handover a teammate's agent can load directly.
+That makes it useful for much more than instructions: a project hub that agents maintain across sessions, a catalog of the Flind objects a team owns, a runbook that grows with every investigation, a daily "what needs me" queue, or a handover a teammate's agent can load directly.
 
 [`references/skill-patterns.md`](references/skill-patterns.md) is a cookbook of these shapes, with a file layout, a maintenance contract, and a starting point for each.
 Read it when a user asks what skills are good for, or before you create a skill that agents will maintain over time.

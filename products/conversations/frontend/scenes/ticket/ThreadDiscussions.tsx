@@ -35,7 +35,7 @@ const MAX_NAMED_SLACK_PARTICIPANTS = 2
  * Who is in the discussion.
  *
  * Split in two because the two kinds of participant can't be shown the same way: `ProfileBubbles` keys
- * on email, and someone replying from the mirrored Slack thread has no PostHog user at all. They can't
+ * on email, and someone replying from the mirrored Slack thread has no Flind user at all. They can't
  * be a bubble — and they can't only be a tooltip either, or a discussion that moved entirely into Slack
  * (the case this whole surface exists for) would show no one. So they get named in the open instead.
  */

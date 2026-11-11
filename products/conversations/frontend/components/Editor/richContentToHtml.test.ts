@@ -77,7 +77,7 @@ describe('richContentToHtml', () => {
         expect(outline(pasteIntoComposer(html as string))).toEqual(expected)
     })
 
-    it('keeps a mention readable outside PostHog and a node inside it', () => {
+    it('keeps a mention readable outside Flind and a node inside it', () => {
         const content: JSONContent = {
             type: 'doc',
             content: [paragraph(text('ask '), { type: RichContentNodeType.Mention, attrs: { id: 5 } })],

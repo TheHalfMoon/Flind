@@ -5,10 +5,10 @@ for its bucket and a turned-off schema that reads exactly the table's files. The
 to the table: it names the table in its pinned `schema_metadata` (see `SelfManagedTableRef`), and the
 table stays as it is, read from the customer bucket and not billed. When the user turns syncing on,
 the first sync is a normal billable sync, and its last step points the existing table row at the copy
-in PostHog storage (see `find_replaced_self_managed_table` and `DataWarehouseTable.adopt_into_source`),
+in Flind storage (see `find_replaced_self_managed_table` and `DataWarehouseTable.adopt_into_source`),
 so the row id and the name stay and existing queries keep working.
 
-A table made from an uploaded file is read in place from PostHog's own bucket. It gets a file upload
+A table made from an uploaded file is read in place from Flind's own bucket. It gets a file upload
 source of its own, with a turned-off schema that names it the same way. That source syncs only when a
 file is uploaded, and it reads no file until then, so the table keeps reading its current file, in either
 upload folder, and nothing is copied. The next upload for the table points the source at the new file
@@ -492,9 +492,9 @@ def _is_live(schema: ExternalDataSchema) -> bool:
 
 
 def _uploaded_table_filter() -> Q:
-    """Credential-less tables that read a file in PostHog's bucket, in either upload folder.
+    """Credential-less tables that read a file in Flind's bucket, in either upload folder.
 
-    Narrowed to the table's own team folder of each upload folder, so tables PostHog writes to the
+    Narrowed to the table's own team folder of each upload folder, so tables Flind writes to the
     bucket itself (materialized views) stay out. `DataWarehouseTable.hosted_upload` then checks the
     exact key.
     """

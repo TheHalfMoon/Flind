@@ -44,7 +44,7 @@ export const InTrendsInsightContainer: Story = {
     ),
 }
 
-/** The wizard's cloud run is still working - no PR yet, so an "Installing PostHog..." tag shows. */
+/** The wizard's cloud run is still working - no PR yet, so an "Installing Flind..." tag shows. */
 export const WizardInstalling: Story = {
     decorators: [
         mswDecorator({

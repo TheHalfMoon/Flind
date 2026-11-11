@@ -4,7 +4,7 @@ sidebar: Handbook
 showTitle: true
 ---
 
-> ❗️ This guide is intended only for development of PostHog itself.
+> ❗️ This guide is intended only for development of Flind itself.
 > If you're looking for documentation on writing HogQL (or SQL) queries, go to the [SQL](https://posthog.com/docs/sql) docs.
 
 HogQL is our layer on top of ClickHouse SQL which provides nice features such as:
@@ -74,7 +74,7 @@ Column counts accept unqualified columns and `properties.<key>` references and e
 Daily groups with no matching rows remain absent, but groups whose counted values are all null remain present with zero.
 An empty ungrouped count remains one row containing zero.
 
-Run it against the existing local PostHog database, from the repository root with the Python environment activated and the development services running:
+Run it against the existing local Flind database, from the repository root with the Python environment activated and the development services running:
 
 ```bash
 set -a
@@ -232,7 +232,7 @@ Explicit aliases work with these names, for example `SELECT p.id FROM posthog.pe
 Trusted internal ASTs can set `JoinExpr.table_schema` to bind a table without adding it to the public catalog.
 User SQL still resolves tables through the catalog. Never bind table names taken from user expressions.
 
-The HogQL database schema is in flux. You will soon be able to explore it in the [PostHog app itself](https://github.com/PostHog/posthog/pull/14591).
+The HogQL database schema is in flux. You will soon be able to explore it in the [Flind app itself](https://github.com/PostHog/posthog/pull/14591).
 
 The most up to date resource is [hogql/database.py](https://github.com/PostHog/posthog/blob/master/posthog/hogql/database.py) on Github. At the time of writing, these tables were available:
 

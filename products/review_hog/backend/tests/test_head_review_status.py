@@ -221,7 +221,7 @@ class TestHeadReviewStatus(BaseTest):
         # A lost registration in AppConfig.ready() would leave stamphog without this reviewer, silently.
         assert review_evidence_for_stamphog in get_review_evidence_providers()
         Integration.objects.create(
-            team=self.team, kind="github", integration_id="1001", config={"account": {"name": "PostHog"}}
+            team=self.team, kind="github", integration_id="1001", config={"account": {"name": "Flind"}}
         )
         if owned:
             ReviewInstallationClaim.objects.for_team(self.team.id).create(
@@ -241,7 +241,7 @@ class TestHeadReviewStatus(BaseTest):
                 evidence.base_ref,
                 evidence.base_sha,
                 evidence.skipped_paths,
-            ) == (ReviewEvidenceState.COMPLETED, "PostHog Review", "Standard", "main", "b" * 40, ("pnpm-lock.yaml",))
+            ) == (ReviewEvidenceState.COMPLETED, "Flind Review", "Standard", "main", "b" * 40, ("pnpm-lock.yaml",))
         else:
             assert evidence is None
 

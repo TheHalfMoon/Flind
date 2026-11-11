@@ -158,7 +158,7 @@ def test_environment_key_ladder(monkeypatch: pytest.MonkeyPatch, env: dict[str, 
 @pytest.mark.parametrize("raw", ['"Bearer phx_quoted"', "'Bearer phx_quoted'", '"phx_quoted"', "Bearer phx_quoted"])
 def test_a_quoted_environment_value_still_yields_the_bare_key(monkeypatch: pytest.MonkeyPatch, raw: str) -> None:
     # hogli's dotenv loader assigns the raw value, so a quoted `.env.local` line arrives with its
-    # quotes attached, the `Bearer ` prefix stops matching, and the key goes out to PostHog quoted.
+    # quotes attached, the `Bearer ` prefix stops matching, and the key goes out to Flind quoted.
     monkeypatch.setenv("POSTHOG_AUTH_HEADER", raw)
     assert posthog_auth.key_from_env() == "phx_quoted"
 
@@ -423,7 +423,7 @@ def test_retrying_a_refused_scope_mints_no_grant_and_leaves_the_cache_alone() ->
 
 
 def test_the_granted_scopes_come_from_the_server_not_the_request() -> None:
-    # PostHog widens some grants. Storing what we asked for would re-authorize forever, or claim a
+    # Flind widens some grants. Storing what we asked for would re-authorize forever, or claim a
     # scope the token does not carry.
     poster = _Poster(token=(200, {"access_token": "pha_new", "scope": f"{_SCOPE} engineering_analytics:write"}))
     with patch.object(posthog_auth.requests, "post", poster), _metadata(), _fake_browser():

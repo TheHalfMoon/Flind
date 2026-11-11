@@ -59,7 +59,7 @@ import {
   useState,
 } from "react";
 
-// Branch search hits a slow remote endpoint (GitHub via PostHog proxy). Debounce
+// Branch search hits a slow remote endpoint (GitHub via Flind proxy). Debounce
 // keystrokes so we fire at most one request per typing burst. Empty searches
 // skip the debounce so closing the picker (which resets search to "") clears
 // stale results immediately.

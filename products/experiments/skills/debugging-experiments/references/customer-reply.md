@@ -1,7 +1,7 @@
 # Writing the customer reply
 
 The deliverable is a reply the customer can act on: what's happening, how to fix it, and the
-numbers that prove it. Voice follows the PostHog support values — reassuringly human, humble,
+numbers that prove it. Voice follows the Flind support values — reassuringly human, humble,
 clear, no jargon.
 
 ## Rules

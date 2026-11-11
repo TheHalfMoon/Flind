@@ -4,16 +4,16 @@ sidebar: Handbook
 showTitle: true
 ---
 
-A reference for understanding how the PostHog + Vercel Marketplace integration works end-to-end. Covers installation, billing, usage reporting, feature flag sync, SSO, and uninstall.
+A reference for understanding how the Flind + Vercel Marketplace integration works end-to-end. Covers installation, billing, usage reporting, feature flag sync, SSO, and uninstall.
 
 ### Key concepts
 
-Before diving in, a few PostHog data model basics:
+Before diving in, a few Flind data model basics:
 
 - **Organization** contains one or more **Teams** (called "Projects" in the UI)
 - **`OrganizationIntegration`** stores Vercel credentials (access tokens, installation ID) scoped to the org. One per Vercel installation.
 - **`Integration`** is a per-team/project record for resource-level config (environment variables, product settings). Created when a Vercel resource is provisioned for a specific project.
-- **`BillingManager`** (`ee/billing/billing_manager.py`) is the intermediary PostHog uses to talk to the Billing service. It handles license validation, org syncing, and the actual HTTP calls.
+- **`BillingManager`** (`ee/billing/billing_manager.py`) is the intermediary Flind uses to talk to the Billing service. It handles license validation, org syncing, and the actual HTTP calls.
 
 ---
 
@@ -51,7 +51,7 @@ graph LR
     Stripe -->|"invoice.finalized\nwebhook"| Billing
 ```
 
-The PostHog repo handles installation, SSO, feature flag sync, and webhooks from Vercel. The Billing repo handles subscription management, usage reporting to Vercel, and invoice submission. They communicate via internal HTTP APIs through `BillingManager`.
+The Flind repo handles installation, SSO, feature flag sync, and webhooks from Vercel. The Billing repo handles subscription management, usage reporting to Vercel, and invoice submission. They communicate via internal HTTP APIs through `BillingManager`.
 
 ---
 
@@ -61,7 +61,7 @@ There are two ways a customer gets the Vercel integration:
 
 ### A. Marketplace install (new customer)
 
-A brand new user clicks "Add" in the Vercel Marketplace. PostHog creates everything from scratch.
+A brand new user clicks "Add" in the Vercel Marketplace. Flind creates everything from scratch.
 
 ```mermaid
 sequenceDiagram
@@ -94,9 +94,9 @@ sequenceDiagram
 
 **Key endpoint:** `PUT /api/vercel/v1/installations/{installation_id}` in `ee/api/vercel/vercel_installation.py`
 
-### B. Connectable account (link existing PostHog org)
+### B. Connectable account (link existing Flind org)
 
-An existing PostHog customer links their org via OAuth. Billing stays with PostHog (no `billing_provider` change).
+An existing Flind customer links their org via OAuth. Billing stays with Flind (no `billing_provider` change).
 
 ```mermaid
 sequenceDiagram
@@ -127,17 +127,17 @@ sequenceDiagram
 - `GET /api/vercel/connect/session` - Available orgs for linking
 - `POST /api/vercel/connect/complete` - Finalize the link
 
-**Note:** Connectable installs do NOT call the billing service. The customer keeps their existing PostHog billing. On uninstall, the `OrganizationIntegration` record is simply deleted with no billing side effects.
+**Note:** Connectable installs do NOT call the billing service. The customer keeps their existing Flind billing. On uninstall, the `OrganizationIntegration` record is simply deleted with no billing side effects.
 
 ### C. Transfer to another Vercel team
 
-A Vercel user can move a Marketplace install, with its resources, to another Vercel team ([Vercel docs](https://vercel.com/docs/integrations/install-an-integration/transferring-an-integration)). The installation ID, its access token, the PostHog organization and its billing stay the same. Vercel enables transfers per integration, so ask in [#posthog-vercel](https://posthog.slack.com/archives/C08LYBQ58N5) before relying on them.
+A Vercel user can move a Marketplace install, with its resources, to another Vercel team ([Vercel docs](https://vercel.com/docs/integrations/install-an-integration/transferring-an-integration)). The installation ID, its access token, the Flind organization and its billing stay the same. Vercel enables transfers per integration, so ask in [#posthog-vercel](https://posthog.slack.com/archives/C08LYBQ58N5) before relying on them.
 
 - Vercel calls `GET /v1/installations/{id}/resources/{resourceId}/plans` during the transfer, and the transfer stalls until that call succeeds.
 - Vercel does not call the installation endpoint. The `integration-configuration.transferred` webhook refreshes `config.account` (team name, dashboard URL, contact) from Vercel's account endpoint instead.
 - Connectable installs cannot be transferred, and the webhook handler leaves them unchanged.
 - The new team's contact becomes an Owner. If they signed in through Vercel before the webhook arrived, the webhook promotes them. If not, they become an Owner when they first sign in.
-- Members of the old team keep their PostHog access. Nothing removes them.
+- Members of the old team keep their Flind access. Nothing removes them.
 
 ---
 
@@ -145,7 +145,7 @@ A Vercel user can move a Marketplace install, with its resources, to another Ver
 
 ### How Vercel billing differs
 
-Vercel acts as the **payment collector**. PostHog still uses Stripe to track usage and generate invoices, but Stripe never charges the customer directly.
+Vercel acts as the **payment collector**. Flind still uses Stripe to track usage and generate invoices, but Stripe never charges the customer directly.
 
 ```mermaid
 graph LR
@@ -165,7 +165,7 @@ graph LR
 
 ### How Vercel customers differ from regular customers
 
-| Aspect                          | Vercel customer                        | Regular PostHog customer |
+| Aspect                          | Vercel customer                        | Regular Flind customer |
 | ------------------------------- | -------------------------------------- | ------------------------ |
 | **Signs up via**                | Vercel Marketplace                     | posthog.com              |
 | **Pays through**                | Vercel                                 | Stripe (card on file)    |
@@ -174,11 +174,11 @@ graph LR
 | **`metadata.billing_provider`** | `"vercel"`                             | Not set                  |
 | **Invoice status**              | "open" until Vercel webhook            | "paid" after card charge |
 | **Customer email**              | `noreply+vercel-{org_id}@posthog.com`  | Real email               |
-| **Communications**              | Vercel handles                         | PostHog sends            |
+| **Communications**              | Vercel handles                         | Flind sends            |
 | **Daily usage**                 | Reported to Vercel + Stripe            | Stripe only              |
 | **Invoice submission**          | Submitted to Vercel after finalization | Not needed               |
-| **Feature flags**               | Synced to Vercel Experimentation       | PostHog only             |
-| **SSO**                         | Via Vercel (`/login/vercel`)           | PostHog login            |
+| **Feature flags**               | Synced to Vercel Experimentation       | Flind only             |
+| **SSO**                         | Via Vercel (`/login/vercel`)           | Flind login            |
 | **Uninstall**                   | Resets to `billing_provider=posthog`   | N/A                      |
 
 The billing page also treats Vercel customers differently:
@@ -198,7 +198,7 @@ The billing service refuses these requests for Vercel customers with a 400 and t
 - card authorization at `POST /api/activate/authorize`
 - `GET /api/billing/portal`
 
-PostHog's `api/billing/activate` and `api/billing/activate/authorize` pass the refusal on as a 400 with billing's message and the same code. `api/billing/portal` redirects to the Vercel invoices page instead, and returns that 400 only when the organization's Vercel integration has no account URL.
+Flind's `api/billing/activate` and `api/billing/activate/authorize` pass the refusal on as a 400 with billing's message and the same code. `api/billing/portal` redirects to the Vercel invoices page instead, and returns that 400 only when the organization's Vercel integration has no account URL.
 
 ### The `billing_provider` field
 
@@ -213,7 +213,7 @@ On the Customer model (`billing/models/customer.py`):
 
 ## 4. Usage reporting
 
-PostHog reports usage to Vercel daily so it appears in the Vercel dashboard.
+Flind reports usage to Vercel daily so it appears in the Vercel dashboard.
 
 ```mermaid
 sequenceDiagram
@@ -351,7 +351,7 @@ The "invoice paid" webhook from Vercel:
 
 ## 6. Payment failure & collections
 
-When a Vercel customer's payment fails, Vercel handles the initial retry and dunning communication. PostHog only needs to act after the retry window expires.
+When a Vercel customer's payment fails, Vercel handles the initial retry and dunning communication. Flind only needs to act after the retry window expires.
 
 ```mermaid
 sequenceDiagram
@@ -430,7 +430,7 @@ Add a notification banner (optional, shown in the Vercel dashboard):
 
 To resume after payment, set `{ "status": "resumed" }`. Valid statuses: `ready`, `pending`, `onboarding`, `suspended`, `resumed`, `uninstalled`, `error`.
 
-Suspension status is for **display only** within Vercel. To actually block access, you must also stop serving the customer on the PostHog side.
+Suspension status is for **display only** within Vercel. To actually block access, you must also stop serving the customer on the Flind side.
 
 ### Tracking unpaid invoices
 
@@ -440,7 +440,7 @@ Track invoice status via the webhook lifecycle events (`notpaid` -> `overdue` ->
 
 ## 7. Feature flag & experiment sync
 
-PostHog automatically syncs feature flags and experiments to Vercel's experimentation platform via Django signals.
+Flind automatically syncs feature flags and experiments to Vercel's experimentation platform via Django signals.
 
 ```mermaid
 sequenceDiagram
@@ -469,10 +469,10 @@ sequenceDiagram
 
 ## 8. SSO (single sign-on)
 
-Vercel users can SSO into PostHog without a separate login.
+Vercel users can SSO into Flind without a separate login.
 
-An existing active PostHog account can link automatically when the signed Vercel SSO token contains a verified, matching email.
-Accounts with two-factor authentication or enforced domain SSO must complete PostHog login.
+An existing active Flind account can link automatically when the signed Vercel SSO token contains a verified, matching email.
+Accounts with two-factor authentication or enforced domain SSO must complete Flind login.
 The installation's verified-domain restrictions also apply before automatic linking.
 A stored mapping keeps its original account, and a removed organization member cannot regain access by retrying SSO.
 
@@ -497,7 +497,7 @@ sequenceDiagram
 - `GET /login/vercel` - SSO entry point (`ee/api/vercel/vercel_sso.py`)
 - `GET /login/vercel/continue` - For already-logged-in users
 
-**Multi-region:** If the resource doesn't exist in the current region (e.g. US), PostHog proactively redirects to the other region (EU). This is a region check, not a failure fallback.
+**Multi-region:** If the resource doesn't exist in the current region (e.g. US), Flind proactively redirects to the other region (EU). This is a region check, not a failure fallback.
 
 ---
 
@@ -544,7 +544,7 @@ sequenceDiagram
 
 ### Connectable uninstall (no billing)
 
-For connectable integrations (linked existing accounts), the webhook handler simply deletes the `OrganizationIntegration` record. No billing service call is made since these customers keep their existing PostHog billing.
+For connectable integrations (linked existing accounts), the webhook handler simply deletes the `OrganizationIntegration` record. No billing service call is made since these customers keep their existing Flind billing.
 
 **Key files:**
 
@@ -557,7 +557,7 @@ For connectable integrations (linked existing accounts), the webhook handler sim
 
 ## 10. Monitoring
 
-PostHog dashboard: [Vercel Billing Integration](https://us.posthog.com/project/2/dashboard/1404045) - covers customer integrity, invoice lifecycle, usage reporting, submission gap tracking, and financial reconciliation.
+Flind dashboard: [Vercel Billing Integration](https://us.posthog.com/project/2/dashboard/1404045) - covers customer integrity, invoice lifecycle, usage reporting, submission gap tracking, and financial reconciliation.
 
 ---
 
@@ -569,7 +569,7 @@ For integration or billing issues that need Vercel's involvement, post in the sh
 
 ## 12. Key files reference
 
-### PostHog repo (`posthog/`)
+### Flind repo (`posthog/`)
 
 | File                                         | Purpose                                                                  |
 | -------------------------------------------- | ------------------------------------------------------------------------ |
@@ -593,7 +593,7 @@ For integration or billing issues that need Vercel's involvement, post in the sh
 | `api/billing.py`                                | Canonical uninstall endpoint (`/api/billing/uninstall`)               |
 | `api/billing_provider_webhook.py`               | Receives "invoice paid" webhook from Vercel                           |
 | `billing_providers/clients/vercel.py`           | `VercelClient` - submits usage & invoices to Vercel                   |
-| `billing_providers/clients/vercel_api.py`       | Low-level API calls via PostHog proxy                                 |
+| `billing_providers/clients/vercel_api.py`       | Low-level API calls via Flind proxy                                 |
 | `billing_providers/clients/vercel_formatter.py` | Formats invoices/usage for Vercel's API                               |
 | `models/customer.py`                            | `billing_provider` field, `cancel_billing_provider_subscription()`    |
 | `tasks/usage.py`                                | `submit_usage_to_vercel()` daily task                                 |

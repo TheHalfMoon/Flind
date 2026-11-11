@@ -51,8 +51,8 @@ export function QuillNewLegalDocumentMenu({
         },
         {
             title: 'Master Service Agreement (MSA)',
-            description: 'Negotiated with sales — contact your TAM or PostHog support to sign one.',
-            disabledReason: 'MSAs are negotiated by sales. Contact your TAM or PostHog support to sign an MSA.',
+            description: 'Negotiated with sales — contact your TAM or Flind support to sign one.',
+            disabledReason: 'MSAs are negotiated by sales. Contact your TAM or Flind support to sign an MSA.',
             dataAttr: 'new-legal-document-menu-msa',
         },
     ]

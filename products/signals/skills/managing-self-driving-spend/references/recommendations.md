@@ -53,7 +53,7 @@ Before you judge a scout, read its description, `output_destinations`, `structur
 ## What to check
 
 - **Spend limit.** Compare the current limit with billed spend from `posthog:billing-limits-get` and with the monthly estimate, keeping recorded usage separate.
-  Billing periods need not match UTC months, so read the period from `posthog:billing-usage-summary-get`. It also shows whether PostHog is limiting the product now.
+  Billing periods need not match UTC months, so read the period from `posthog:billing-usage-summary-get`. It also shows whether Flind is limiting the product now.
   If the limit is below the estimate, put this first and say on which day of the period the limit would be reached.
   If billed spend is far below recorded usage, for example $0.00, do not call the limit reached. Say the day is hypothetical, say that billed spend and recorded usage disagree, and ask whether the limit is meant to apply.
   Otherwise put it last, and suggest about 1.2 times the expected monthly spend after the other changes.
@@ -82,7 +82,7 @@ Before you judge a scout, read its description, `output_destinations`, `structur
 - **Automatic pull requests.** Compare pull requests linked and merged, by source and by scout (see queries-controls.md).
   When an item has many and few merge, suggest a higher priority threshold.
   Use implementation receipts for the affected reports to estimate savings; do not assume all implementation spend would disappear.
-  A person who then starts one of those fixes by hand moves its cost to PostHog AI usage, so say that the saving can be partly offset.
+  A person who then starts one of those fixes by hand moves its cost to Flind AI usage, so say that the saving can be partly offset.
 - **Daily report limit.** Run "Reports shown per day" in queries-controls.md. Recommend a limit only when a few days hold much more than the rest, near the 75th percentile of daily reports.
   Say that signals past the limit are dropped, so a real incident on a spike day can be missed.
 

@@ -411,7 +411,7 @@ def event_timestamp(partition_key: str) -> datetime.datetime:
 
 def capture_allowed() -> bool:
     """Cloud, or a developer's DEBUG stack. A self-hosted instance running this dag must not
-    report into PostHog's own project, which is the gate `ph_client.ScopedCapture` applies; local
+    report into Flind's own project, which is the gate `ph_client.ScopedCapture` applies; local
     dev runs are let through on purpose so laptop experiments land on the same dashboard."""
     return is_cloud() or bool(settings.DEBUG)
 

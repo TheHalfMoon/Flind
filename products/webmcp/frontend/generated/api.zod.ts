@@ -4,13 +4,13 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
 
 /**
- * @summary Run an exec command on the PostHog MCP server
+ * @summary Run an exec command on the Flind MCP server
  */
 export const webmcpExecCreateBodyCommandMax = 100000
 

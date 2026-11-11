@@ -852,7 +852,7 @@ class TestFetchSitePage(SimpleTestCase):
             (
                 "code_block_and_inline_code",
                 "<h2>Create a <code>Next.js</code> app</h2>"
-                "<div><button>JavaScript</button><button>PostHog AI</button></div>"
+                "<div><button>JavaScript</button><button>Flind AI</button></div>"
                 '<pre class="language-jsx"><code><span>export default function Home() {</span>\n'
                 "<span>  return &lt;h1&gt;Next.js A/B tests&lt;/h1&gt;</span>\n<span>}</span></code></pre>",
                 "## Create a `Next.js` app\n"

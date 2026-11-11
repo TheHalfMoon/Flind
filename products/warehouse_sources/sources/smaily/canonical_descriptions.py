@@ -57,7 +57,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Subscribers per segment, including subscription status, engagement timestamps, and any custom data fields. One row per subscriber per segment.",
         "docs_url": "https://smaily.com/help/api/segments/list-subscribers-of-a-segment/",
         "columns": {
-            "segment_id": "ID of the segment the subscriber belongs to (added by PostHog for uniqueness).",
+            "segment_id": "ID of the segment the subscriber belongs to (added by Flind for uniqueness).",
             "email": "Subscriber's email address.",
             "is_unsubscribed": "Subscription status: 0 - subscribed, 1 - unsubscribed.",
             "last_response_code": "Response code of the last failed message.",
@@ -87,8 +87,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Delivery, open, and click statistics for each section (variant) of each A/B test. One row per A/B test section.",
         "docs_url": "https://smaily.com/help/api/a-b-tests/a-b-test-statistics/",
         "columns": {
-            "ab_test_id": "ID of the A/B test (added by PostHog).",
-            "section_index": "Position of the section in the A/B test statistics response, starting at 0 (added by PostHog).",
+            "ab_test_id": "ID of the A/B test (added by Flind).",
+            "section_index": "Position of the section in the A/B test statistics response, starting at 0 (added by Flind).",
             "name": "A/B test name.",
             "from": "Sender address of the section, with email and name.",
             "reply_to": "Reply-To email address.",

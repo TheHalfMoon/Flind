@@ -177,7 +177,7 @@ class NoticeReferences:
 
     ``identities`` are the subjects that resolve to a warehouse object, either pinned by the run or
     resolved from the definition's names. ``unresolved_names`` are the rest: ``system.*`` tables,
-    PostHog tables, and names that no longer reach anything.
+    Flind tables, and names that no longer reach anything.
     """
 
     identities: tuple[SubjectIdentity, ...]

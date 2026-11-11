@@ -42,7 +42,7 @@ class ClusteringJobSerializer(serializers.ModelSerializer):
         # null, so keep the child an untyped DictField to avoid 400ing valid filters.
         child=serializers.DictField(),
         required=False,
-        help_text="PostHog property filters that scope this clustering job. Empty array means no filters.",
+        help_text="Flind property filters that scope this clustering job. Empty array means no filters.",
     )
 
     class Meta:

@@ -146,7 +146,7 @@ function readTaskSource(sources: RunLaunchSources): TaskSource | undefined {
     clientProvenance === "posthog_mobile"
   ) {
     return {
-      label: "PostHog AI chat",
+      label: "Flind AI chat",
       url: `${projectWebUrl}/ai?task=${taskId}`,
     };
   }
@@ -154,5 +154,5 @@ function readTaskSource(sources: RunLaunchSources): TaskSource | undefined {
   const path = task.channel
     ? `code/channel/${encodeURIComponent(task.channel)}/tasks/${taskId}`
     : `code/task/${taskId}`;
-  return { label: "PostHog Desktop task", url: `${appUrl}/${path}` };
+  return { label: "Flind Desktop task", url: `${appUrl}/${path}` };
 }

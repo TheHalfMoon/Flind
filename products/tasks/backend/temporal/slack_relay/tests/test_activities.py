@@ -616,7 +616,7 @@ class TestRelaySlackMessage(TestCase):
         )
         button = actions_block["elements"][0]
         self.assertEqual(button["url"], chart_url)
-        self.assertEqual(button["text"]["text"], "Open in PostHog")
+        self.assertEqual(button["text"]["text"], "Open in Flind")
 
         # The composed message carries the answer text — nothing posted via the handler.
         mock_post.assert_not_called()

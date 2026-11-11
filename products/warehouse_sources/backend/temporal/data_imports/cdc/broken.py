@@ -65,7 +65,7 @@ def mark_cdc_broken(
 
     ``reason`` is a stable machine code (e.g. ``"auto_dropped_critical_lag"``); ``message`` is the
     friendly, credential-safe copy shown to the user. ``pause`` controls whether the extraction
-    schedule is paused — left on for PostHog-managed breakage (the slot is gone, retrying is futile)
+    schedule is paused — left on for Flind-managed breakage (the slot is gone, retrying is futile)
     and turned off for self-managed critical lag, whose customer-owned slot may still recover.
     ``create_visibility_jobs`` is turned off by callers inside a run (the extraction activity),
     which already record their own FAILED job rows. ``extra`` keys (e.g. ``lag_mb``) are merged
@@ -169,7 +169,7 @@ def tables_wait_for_repair(source: ExternalDataSource) -> bool:
 def clear_recovered_self_managed_lag(source: ExternalDataSource) -> int:
     """Lift the ``critical_lag_self_managed`` marker once the slot's lag is back under the warning threshold.
 
-    PostHog never drops a self-managed slot, so this marker reports a condition, not lost state.
+    Flind never drops a self-managed slot, so this marker reports a condition, not lost state.
     Left in place it keeps absorbing every status update and makes resume refuse the source,
     long after the customer has recovered. Returns how many schemas were cleared.
     """

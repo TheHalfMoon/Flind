@@ -618,7 +618,7 @@ class ReplayScannerSerializer(TaggedItemSerializerMixin, UserAccessControlSerial
     )
     emits_signals = serializers.BooleanField(
         required=False,
-        help_text="When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals.",
+        help_text="When true, the prompt is augmented with the Signal side mission and the scanner emits Flind Signals.",
     )
 
     scanner_version = serializers.IntegerField(
@@ -1593,7 +1593,7 @@ class InlineScanConfigSerializer(serializers.Serializer):
         choices=BuiltInScanKey.choices,
         required=False,
         help_text=(
-            "Run a scan PostHog defines instead of your own prompt. `summarize_recording` is the AI summary the "
+            "Run a scan Flind defines instead of your own prompt. `summarize_recording` is the AI summary the "
             "Summarize button in the replay player runs, so its results are shared with that button. Leave out "
             "`prompt`, `scanner_type` and `scanner_config` when this is set."
         ),
@@ -2983,7 +2983,7 @@ class ReplayScannerViewSet(TeamAndOrgViewSetMixin, AccessControlViewSetMixin, vi
         The config resolves to a scanner minted on first use, so asking the same question twice reuses
         the observations it already has, while a different question about the same session gets its own.
 
-        With `scanner_type` set to `summarizer`, this is how you get PostHog's own AI summary for a
+        With `scanner_type` set to `summarizer`, this is how you get Flind's own AI summary for a
         recording ID. It resolves to the Summarize button's own scanner only when the prompt and
         `scanner_config` match what the button sends, since the config is what the key fingerprints.
         """

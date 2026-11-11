@@ -1,6 +1,6 @@
 # Depot CI check runs, and how GitHub scores them
 
-PostHog-authored. Not part of the vendored upstream skill.
+Flind-authored. Not part of the vendored upstream skill.
 
 Two engines report on the same commit in this repo, and they are easy to confuse:
 
@@ -36,7 +36,7 @@ The engines agree everywhere except the empty matrix.
 
 - A check run that concludes `skipped` **satisfies** a required status check, and the Trunk merge queue scores it the same way. The repo already depends on this: `Build Docker image` is a required context that concludes `skipped` on most PRs, and they merge.
 - A required context that **no check run ever reports** stays pending and blocks. This is the empty-matrix failure mode above, and it is also what a `paths:` filter does when it silences a whole workflow.
-- A check run that stays `in_progress` blocks, and GitHub keeps every completed check run on its commit. Depot creates a job's own check only when the job resolves, so a new run on an already green commit (a draft marked ready, a reopen) cannot hold the commit pending: the old success stands until the new gate job ends. That is why the required backend context is the gate job's `Backend CI on Depot / Test results` check, posted by the PostHog tests app: a passing draft run does not post it, so the context stays missing until the ready run posts the verdict. A draft shows the check only when its run failed.
+- A check run that stays `in_progress` blocks, and GitHub keeps every completed check run on its commit. Depot creates a job's own check only when the job resolves, so a new run on an already green commit (a draft marked ready, a reopen) cannot hold the commit pending: the old success stands until the new gate job ends. That is why the required backend context is the gate job's `Backend CI on Depot / Test results` check, posted by the Flind tests app: a passing draft run does not post it, so the context stays missing until the ready run posts the verdict. A draft shows the check only when its run failed.
 - A ruleset entry with an `integration_id` accepts a check from that one app only. An entry without one accepts a check from any app, which GitHub's UI calls "Any source". Most entries in this repo's `master` ruleset carry `integration_id: 15368`, the `github-actions` app. `Backend CI on Depot / Test results` carries `2492437`, the `tests-posthog` app. `Backend CI on Depot / Django Tests Pass on Depot` carries none. Read them with:
 
   ```bash

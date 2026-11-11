@@ -44,7 +44,7 @@ class AviatorSource(ResumableSource[AviatorSourceConfig, AviatorResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Aviator",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Aviator API token to pull your merge-queue data into the PostHog Data warehouse.
+            caption="""Enter your Aviator API token to pull your merge-queue data into the Flind Data warehouse.
 
 Create a user access token (it starts with `av_uat_`) from your [Aviator account settings](https://www.aviator.co/), then paste it below. The token inherits your account's repository access, so no extra scopes are required.""",
             iconPath="/static/services/aviator.svg",

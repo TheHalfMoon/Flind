@@ -212,7 +212,7 @@ class RevenueCatSource(
             label="RevenueCat",
             caption=(
                 "Connect your RevenueCat project using a "
-                f"[v2 secret API key]({REVENUECAT_API_KEYS_URL}). PostHog uses the key to pull "
+                f"[v2 secret API key]({REVENUECAT_API_KEYS_URL}). Flind uses the key to pull "
                 "customers, products, entitlements, offerings, and apps, and to register a webhook "
                 "integration for realtime subscription and purchase events."
             ),
@@ -251,15 +251,15 @@ class RevenueCatSource(
             ),
             releaseStatus=ReleaseStatus.GA,
             webhookSetupCaption=(
-                "PostHog tries to register a webhook integration in RevenueCat using your "
+                "Flind tries to register a webhook integration in RevenueCat using your "
                 "secret API key. The integration authenticates itself by sending a custom "
                 "**Authorization** header on every request, whose value you set below. "
-                "PostHog rejects deliveries whose header does not match.\n\n"
+                "Flind rejects deliveries whose header does not match.\n\n"
                 "**Manual setup** (only needed if auto-registration failed):\n\n"
                 "1. Go to your **RevenueCat project** > **Integrations** > **+ New** > **Webhook**\n"
                 "2. Paste the webhook URL shown below into the **Webhook URL** field\n"
                 "3. Set the **Authorization header** to a secret value you generate locally — "
-                "paste the same value into the field below so PostHog can verify deliveries\n"
+                "paste the same value into the field below so Flind can verify deliveries\n"
                 "4. Select **All events** under **Send events**\n"
                 "5. Click **Save**"
             ),

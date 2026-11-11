@@ -13,7 +13,7 @@ const QUARANTINE: QuarantineFileApi = {
     entries: [],
     parse_errors: [],
     parse_warnings: [],
-    repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+    repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
     source_url: 'https://github.com/PostHog/posthog/blob/HEAD/.test_quarantine.json',
     generated_at: '2026-07-02T12:00:00Z',
 }

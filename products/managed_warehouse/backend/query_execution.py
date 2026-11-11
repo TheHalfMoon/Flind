@@ -63,7 +63,7 @@ def validate_managed_trino_query(query: HogQLQuery, team: Team, user: User | Non
         enabled = False
     if not enable_customer_warehouse_access(team.organization_id, trino_enabled=bool(enabled)):
         raise ExposedHogQLError(
-            "Hosted Trino queries are not enabled for this organization. Select PostHog to run this query."
+            "Hosted Trino queries are not enabled for this organization. Select Flind to run this query."
         )
     if query.connectionId:
         raise ExposedHogQLError("Hosted Trino uses the managed warehouse. Clear the external connection.")

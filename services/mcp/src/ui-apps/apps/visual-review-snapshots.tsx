@@ -16,7 +16,7 @@ import { AppWrapper } from '../components/AppWrapper'
 
 function VisualReviewSnapshotsApp(): JSX.Element {
     return (
-        <AppWrapper<VisualReviewSnapshotsData> appName="PostHog Visual Review Snapshots">
+        <AppWrapper<VisualReviewSnapshotsData> appName="Flind Visual Review Snapshots">
             {({ data, app }) => <VisualReviewSnapshotsContent data={data!} app={app} />}
         </AppWrapper>
     )

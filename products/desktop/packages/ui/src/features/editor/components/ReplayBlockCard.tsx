@@ -8,8 +8,8 @@ import { useEvidenceUrl } from "./EvidenceRefChip";
 
 /**
  * Full-size card for `<replay id="..." display="block"/>`: the recording's
- * identity and activity, linking into PostHog's player. Playback stays in
- * PostHog on purpose - the embeddable player requires link sharing, which
+ * identity and activity, linking into Flind's player. Playback stays in
+ * Flind on purpose - the embeddable player requires link sharing, which
  * makes the recording viewable by anyone with the link.
  */
 export function ReplayBlockCard({
@@ -64,7 +64,7 @@ export function ReplayBlockCard({
           onClick={() => openUrl && openExternalUrl(openUrl)}
         >
           <PlayIcon size={12} />
-          Watch in PostHog
+          Watch in Flind
         </Button>
       </div>
       {spec.caption && (

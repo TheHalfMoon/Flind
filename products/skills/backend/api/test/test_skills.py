@@ -2087,7 +2087,7 @@ class TestLLMSkillAPI(APIBaseTest):
         if scopes == ["llm_skill:read"]:
             assert LLMSkillFile.objects.filter(skill=skill, path="doomed.md").exists()
 
-    # write scope implies read in PostHog's scope check (see permissions.py), so a write-scoped
+    # write scope implies read in Flind's scope check (see permissions.py), so a write-scoped
     # key can still GET. We just need to confirm read scope is enough — and that HEAD doesn't 403
     # after dropping required_scopes from get_file's @action (regression guard for the codex bot
     # finding on this PR).

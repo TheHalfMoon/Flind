@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 import { readJson } from '@/testing'
 
-// A fake PostHog API plus object store that records every request. Parity tests run posthog-cli and
+// A fake Flind API plus object store that records every request. Parity tests run posthog-cli and
 // hog against it and compare the recordings. Server-side ids are derived from the request (UUIDv5),
 // so both CLIs see the same ids.
 

@@ -35,7 +35,7 @@ _RECONNECT_GITHUB_MARKERS = (
     "github user integration requires reauthorization",
 )
 
-_RECONNECT_GITHUB_CONNECT_LABEL = "Connect your GitHub in PostHog settings"
+_RECONNECT_GITHUB_CONNECT_LABEL = "Connect your GitHub in Flind settings"
 _RECONNECT_GITHUB_PROMPT = (
     "Your personal GitHub connection stopped working, so this run could not use it. "
     "{connect} to authorize it again, or to connect it for the first time. "

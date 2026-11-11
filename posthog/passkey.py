@@ -79,7 +79,7 @@ def generate_passkey_registration_options(
         exclude_credentials=exclude_credentials or [],
         # static values
         rp_id=get_webauthn_rp_id(),
-        rp_name="PostHog",
+        rp_name="Flind",
         authenticator_selection=AuthenticatorSelectionCriteria(
             resident_key=ResidentKeyRequirement.REQUIRED,
             user_verification=UserVerificationRequirement.REQUIRED,

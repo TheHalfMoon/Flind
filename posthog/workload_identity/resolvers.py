@@ -1,6 +1,6 @@
 """Look up a workload's immutable subject from the name people know it by, through the provider's API.
 
-Each provider entry in `providers.py` points at one of these. A person types `owner/repo`, and PostHog
+Each provider entry in `providers.py` points at one of these. A person types `owner/repo`, and Flind
 stores the repository ID the token carries, so nobody has to find that ID by hand.
 """
 
@@ -36,12 +36,12 @@ EGRESS_SOURCE = "workload_identity"
 GITHUB_REPOSITORY_ENDPOINT = "/repos/{owner}/{repo}"
 GITHUB_UNAVAILABLE = "GitHub didn't answer. Try again in a minute, or enter the repository ID by hand."
 GITHUB_PUBLIC_LOOKUPS_BUSY = (
-    "PostHog looked up many public GitHub repositories just now. Try again in a few minutes, or enter the "
+    "Flind looked up many public GitHub repositories just now. Try again in a few minutes, or enter the "
     "repository ID by hand."
 )
 GITHUB_PUBLIC_LOOKUP_BUCKET = "workload_identity:github_public_lookup"
 GITLAB_PUBLIC_LOOKUPS_BUSY = (
-    "PostHog looked up many public GitLab projects just now. Try again in a few minutes, or enter the project "
+    "Flind looked up many public GitLab projects just now. Try again in a few minutes, or enter the project "
     "ID by hand."
 )
 GITLAB_PUBLIC_LOOKUP_BUCKET = "workload_identity:gitlab_public_lookup"
@@ -64,7 +64,7 @@ def _repository_json(response: requests.Response) -> Any:
 
 
 def _spend_public_lookup(bucket: str, per_hour: int, busy: str) -> None:
-    """Public lookups share PostHog's token, or the server's IP when there is none, so the egress transport
+    """Public lookups share Flind's token, or the server's IP when there is none, so the egress transport
     can't budget them per installation. One bucket caps them for every team, so no member uses up the quota."""
     decision = consume(bucket, Budget(burst=10, per_hour=per_hour))
     if isinstance(decision, BucketDecision) and not decision.allowed:
@@ -105,7 +105,7 @@ def _through_integration(team_id: int, repository: str, deadline: float) -> tupl
 
 
 def _public(repository: str, deadline: float) -> ResolvedWorkloadSubject:
-    """Ask GitHub for a public repository, with PostHog's own token when the deployment has one. Without a
+    """Ask GitHub for a public repository, with Flind's own token when the deployment has one. Without a
     token GitHub allows few requests per IP, so the lookup can fail and the person enters the ID by hand."""
     headers = {"Authorization": f"Bearer {settings.GITHUB_TOKEN}"} if settings.GITHUB_TOKEN else {}
     timeout = _seconds_left(deadline)
@@ -125,7 +125,7 @@ def _public(repository: str, deadline: float) -> ResolvedWorkloadSubject:
     except requests.RequestException:
         raise WorkloadSubjectLookupUnavailable(GITHUB_UNAVAILABLE)
     not_found = WorkloadSubjectNotFound(
-        f"PostHog can't see a GitHub repository named {repository}. For a private repository, connect the "
+        f"Flind can't see a GitHub repository named {repository}. For a private repository, connect the "
         "GitHub integration, or enter the repository ID by hand."
     )
     if response.status_code == 404:
@@ -134,7 +134,7 @@ def _public(repository: str, deadline: float) -> ResolvedWorkloadSubject:
         logger.info("workload_github_repository_lookup_failed", status_code=response.status_code)
         raise WorkloadSubjectLookupUnavailable(GITHUB_UNAVAILABLE)
     body = _repository_json(response)
-    # PostHog's token may see repositories that aren't public, and only a team's own integration may
+    # Flind's token may see repositories that aren't public, and only a team's own integration may
     # tell a team about those.
     if not isinstance(body, dict) or body.get("private") is not False:
         raise not_found
@@ -192,7 +192,7 @@ def _gitlab_subject(
         return None
     path = body.get("path_with_namespace")
     # A token may see projects that aren't public. A team learns about one only when it is the project the
-    # team's own integration was connected to, so PostHog's token and a group token reveal nothing else.
+    # team's own integration was connected to, so Flind's token and a group token reveal nothing else.
     if not isinstance(path, str):
         return None
     if body.get("visibility") != "public" and (
@@ -212,7 +212,7 @@ def _gitlab_through_integration(
             return None, True
         hostname = urlsplit(str(integration.config.get("hostname") or "")).hostname or ""
         token = integration.sensitive_config.get("access_token")
-        # Only gitlab.com issues tokens PostHog trusts, and a self-managed instance's token must not go there.
+        # Only gitlab.com issues tokens Flind trusts, and a self-managed instance's token must not go there.
         if hostname.lower() != "gitlab.com" or not token:
             continue
         try:
@@ -256,6 +256,6 @@ def resolve_gitlab_project(team_id: int, name: str) -> ResolvedWorkloadSubject:
         logger.info("workload_gitlab_project_lookup_failed", status_code=response.status_code)
         raise WorkloadSubjectLookupUnavailable(GITLAB_UNAVAILABLE)
     raise WorkloadSubjectNotFound(
-        f"PostHog can't see a GitLab project at {path}. For a private project, connect a GitLab integration that "
+        f"Flind can't see a GitLab project at {path}. For a private project, connect a GitLab integration that "
         "can read it, or enter the project ID by hand."
     )

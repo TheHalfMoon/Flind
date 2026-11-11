@@ -49,7 +49,7 @@ class SkioSource(ResumableSource[SkioSourceConfig, SkioResumeConfig]):
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Skio",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Skio API token to pull your Skio subscription data into the PostHog Data warehouse.
+            caption="""Enter your Skio API token to pull your Skio subscription data into the Flind Data warehouse.
 
 You can generate an API token in your Skio dashboard: click **API** in the left navigation bar, set a name, and generate the token.
 """,

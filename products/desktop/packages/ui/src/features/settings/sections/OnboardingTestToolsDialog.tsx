@@ -33,7 +33,7 @@ import {
   useState,
 } from "react";
 
-/** What "PostHog is already watching" stands for, so that answer needs no input. */
+/** What "Flind is already watching" stands for, so that answer needs no input. */
 const ALREADY_WATCHING = ["error tracking", "web analytics"];
 
 /** What "findings are waiting" stands for, so that answer needs no input. */
@@ -251,7 +251,7 @@ export function OnboardingTestToolsDialog({
                 >
                   Nothing is connected yet
                   <QuestionnaireChoiceDescription>
-                    No data is arriving, so the agent offers to add PostHog and
+                    No data is arriving, so the agent offers to add Flind and
                     open a pull request.
                   </QuestionnaireChoiceDescription>
                 </QuestionnaireChoice>
@@ -273,7 +273,7 @@ export function OnboardingTestToolsDialog({
                 >
                   Sources were just switched on
                   <QuestionnaireChoiceDescription>
-                    The agent says what PostHog now watches for.
+                    The agent says what Flind now watches for.
                   </QuestionnaireChoiceDescription>
                 </QuestionnaireChoice>
                 <QuestionnaireChoice
@@ -281,7 +281,7 @@ export function OnboardingTestToolsDialog({
                   checked={draft.situation === "already-watching"}
                   onChange={() => patch({ situation: "already-watching" })}
                 >
-                  PostHog is already watching
+                  Flind is already watching
                   <QuestionnaireChoiceDescription>
                     The agent says {ALREADY_WATCHING.join(" and ")} are already
                     covered.
@@ -295,13 +295,13 @@ export function OnboardingTestToolsDialog({
               disabled={draft.situation !== "just-switched-on"}
             >
               <QuestionnaireTitle>
-                What does PostHog now watch for?
+                What does Flind now watch for?
               </QuestionnaireTitle>
               <QuestionnaireDescription>
                 The agent lists these back. Separate them with commas.
               </QuestionnaireDescription>
               <TextAnswer
-                label="What PostHog now watches for"
+                label="What Flind now watches for"
                 placeholder="errors, conversion drops"
                 value={draft.sourcesWatching}
                 onValueChange={(sourcesWatching) => patch({ sourcesWatching })}

@@ -570,11 +570,11 @@ describe('dataQualityOverviewLogic', () => {
         ['a view on a DAG node', { subject_type: 'view', subject_node_id: 'node-1' }, '/models/node-1/data-quality'],
         ['a view on no DAG', { subject_type: 'view', subject_node_id: null }, null],
         [
-            'a PostHog table on a DAG node',
+            'a Flind table on a DAG node',
             { subject_type: 'posthog_table', subject_node_id: 'node-2' },
             '/models/node-2',
         ],
-        ['a PostHog table no view reads', { subject_type: 'posthog_table', subject_node_id: null }, null],
+        ['a Flind table no view reads', { subject_type: 'posthog_table', subject_node_id: null }, null],
         [
             'a metric',
             { subject_type: 'metric', subject_metric_name: 'weekly_signups' },

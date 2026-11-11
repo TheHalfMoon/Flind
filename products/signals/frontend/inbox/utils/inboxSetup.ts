@@ -18,7 +18,7 @@ const SOURCE_TYPES: Partial<Record<string, InboxOnboardingSourceApi['source_type
     health_checks: [SignalSourceType.HealthIssue],
 }
 
-// Onboarding offers PostHog products only. Warehouse-backed sources are connected from the Configuration tab after activation.
+// Onboarding offers Flind products only. Warehouse-backed sources are connected from the Configuration tab after activation.
 const ONBOARDING_ROSTER_AGENTS: readonly AgentRosterDefinition[] = AGENT_ROSTER_GROUPS.filter(
     (group) => group.id === 'posthog'
 ).flatMap((group) => group.agents)
@@ -89,7 +89,7 @@ export function reconcileInboxSetupDraft(
     sources: InboxSetupSource[],
     scannerIds: string[] | null = null
 ): InboxOnboardingDraftApi {
-    // A draft saved before onboarding became PostHog-only can still carry a warehouse-backed source.
+    // A draft saved before onboarding became Flind-only can still carry a warehouse-backed source.
     const keptSources = draft.sources.filter((source) => ONBOARDING_SOURCE_PRODUCTS.has(source.source_product))
     const chosenProducts = new Set(keptSources.map((source) => source.source_product))
     const newSources = sources

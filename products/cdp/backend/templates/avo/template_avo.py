@@ -108,7 +108,7 @@ fetch('https://api.avo.app/inspector/posthog/v1/track', {
             "type": "string",
             "label": "App name",
             "description": "App name",
-            "default": "PostHog",
+            "default": "Flind",
             "secret": False,
             "required": False,
         },
@@ -145,7 +145,7 @@ class TemplateAvoMigrator(HogFunctionTemplateMigrator):
 
         apiKey = obj.config.get("avoApiKey", "")
         environment = obj.config.get("environment", "dev")
-        appName = obj.config.get("appName", "PostHog")
+        appName = obj.config.get("appName", "Flind")
         excludeEvents = obj.config.get("excludeEvents", "")
         includeEvents = obj.config.get("includeEvents", "")
         excludeProperties = obj.config.get("excludeProperties", "")

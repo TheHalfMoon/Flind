@@ -11,7 +11,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function CohortListApp(): JSX.Element {
     return (
-        <AppWrapper<CohortListData> appName="PostHog Cohort List">
+        <AppWrapper<CohortListData> appName="Flind Cohort List">
             {({ data, app }) => <CohortListContent data={data!} app={app} />}
         </AppWrapper>
     )

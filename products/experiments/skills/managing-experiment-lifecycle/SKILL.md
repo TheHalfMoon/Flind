@@ -145,7 +145,7 @@ Returns 409 if an approval policy requires review before the flag change.
 ### Flag cleanup PR (option on end and ship variant)
 
 Both `experiment-end` and `experiment-ship-variant` accept `open_cleanup_pr: true`.
-A background PostHog Code task then removes the experiment's feature flag code and opens a draft pull request in the team's connected GitHub repository.
+A background Flind Code task then removes the experiment's feature flag code and opens a draft pull request in the team's connected GitHub repository.
 
 - Only set this when the user asks for it or confirms it.
 - The key must carry the `task:write` scope, or the whole request is rejected with a 403 and the experiment is not ended or shipped.

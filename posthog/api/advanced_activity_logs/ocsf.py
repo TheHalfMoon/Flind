@@ -99,7 +99,7 @@ class ActivityLogOCSFSerializer(serializers.ModelSerializer):
         event: dict[str, Any] = {
             "metadata": {
                 "version": OCSF_VERSION,
-                "product": {"name": "PostHog", "vendor_name": "PostHog"},
+                "product": {"name": "Flind", "vendor_name": "Flind"},
                 "uid": str(instance.id),
             },
             # OCSF `time` is timestamp_t: epoch milliseconds as an integer. The RFC-3339 string is a
@@ -117,7 +117,7 @@ class ActivityLogOCSFSerializer(serializers.ModelSerializer):
                 "uid": instance.item_id,
                 "name": detail.get("name"),
             },
-            # Everything here is PostHog-specific with no OCSF equivalent, which is what `unmapped`
+            # Everything here is Flind-specific with no OCSF equivalent, which is what `unmapped`
             # is for. Entity Management has no attribute for which fields changed, and the class has
             # no top-level `org`, so tenancy identifiers have nowhere else to go either.
             "unmapped": {

@@ -61,7 +61,7 @@ class AshbyEndpointConfig:
 # Every Ashby object exposes a top-level ``id``, so the primary key is ``["id"]`` throughout.
 #
 # Incremental sync is intentionally not advertised: Ashby's only incremental mechanisms are an
-# opaque ``syncToken`` (which does not map onto PostHog's timestamp-watermark model) and a
+# opaque ``syncToken`` (which does not map onto Flind's timestamp-watermark model) and a
 # ``createdAfter`` filter whose list endpoints provide no documented ordering guarantee — a
 # watermark-based sync could silently skip rows. We ship full refresh; see source.py / the PR
 # for the syncToken follow-up.

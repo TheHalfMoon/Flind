@@ -7,7 +7,7 @@ SCOPE_DOCS = (
         object="business_knowledge",
         name="Business knowledge",
         plural="business knowledge",
-        description="Business knowledge sources, documents, and settings that give PostHog AI context, plus gap suggestions.",
+        description="Business knowledge sources, documents, and settings that give Flind AI context, plus gap suggestions.",
         group="AI & context management tools",
         docs_url="https://posthog.com/docs/business-knowledge",
     ),

@@ -1,8 +1,8 @@
-"""Wrap Braintrust scorers so their LLM calls go through PostHog-traced clients.
+"""Wrap Braintrust scorers so their LLM calls go through Flind-traced clients.
 
 For LLM-based scorers (``autoevals.LLMClassifier`` subclasses that expose a
 ``client`` attribute), the wrapper swaps the inner scorer's client for a
-PostHog-traced OpenAI/Anthropic client for the duration of each invocation.
+Flind-traced OpenAI/Anthropic client for the duration of each invocation.
 For deterministic scorers, the wrapper just records a scorer trace_id and
 emits a summary ``$ai_span`` on the agent trace after scoring completes.
 """
@@ -29,7 +29,7 @@ _scorer_context: ContextVar[dict[str, Any] | None] = ContextVar("_scorer_context
 
 
 def _build_posthog_kwargs() -> dict[str, Any]:
-    """Build PostHog tracing kwargs from the current scorer context var.
+    """Build Flind tracing kwargs from the current scorer context var.
 
     Sets both ``posthog_trace_id`` (direct kwarg, prevents the SDK from
     generating its own trace_id) and ``$ai_trace_id`` / ``$ai_parent_id``
@@ -64,7 +64,7 @@ class TracedClients:
 
 
 def create_traced_scorer_clients(posthog_client: Posthog) -> TracedClients:
-    """Create OpenAI and Anthropic clients that trace LLM calls to PostHog.
+    """Create OpenAI and Anthropic clients that trace LLM calls to Flind.
 
     Uses a context var (``_scorer_context``) to inject per-invocation
     trace properties into each ``create()`` call.
@@ -119,7 +119,7 @@ class TracedScorer(AsyncOnlyScorerMixin, Scorer):
     """Wraps a Scorer to trace LLM calls and collect per-invocation trace IDs.
 
     For LLM-based scorers (those with a ``client`` attribute), injects a
-    PostHog-traced OpenAI client. For LLM scorers, generates a trace_id
+    Flind-traced OpenAI client. For LLM scorers, generates a trace_id
     per invocation and stores it in ``scorer_traces`` for later use in
     offline evaluation results.
     """
@@ -240,7 +240,7 @@ def wrap_scorers(
     ``agent_trace_id_lookup`` maps trial_id → agent trace_id. It's populated
     by the ``task()`` function and read by deterministic scorers to attach
     their spans to the agent trace. ``trace_namespace`` prefixes the experiment
-    name in trace metadata so eval kinds stay distinguishable in PostHog.
+    name in trace metadata so eval kinds stay distinguishable in Flind.
     """
     traced_clients = create_traced_scorer_clients(posthog_client)
     scorer_traces: dict[tuple[str, str], str] = {}

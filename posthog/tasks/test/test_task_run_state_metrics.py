@@ -189,7 +189,7 @@ class TestCaptureTaskRunStateMetrics(TestCase):
     def test_emits_runs_created_1h_by_origin_and_environment(self) -> None:
         Task = apps.get_model("tasks", "Task")
         TaskRun = apps.get_model("tasks", "TaskRun")
-        # Two Slack runs created just now, one old run (outside the 1h window), one PostHog-code run.
+        # Two Slack runs created just now, one old run (outside the 1h window), one Flind-code run.
         self._make_task_run(origin=Task.OriginProduct.SLACK, status=TaskRun.Status.QUEUED)
         self._make_task_run(origin=Task.OriginProduct.SLACK, status=TaskRun.Status.COMPLETED)
         self._make_task_run(

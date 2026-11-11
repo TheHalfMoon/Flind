@@ -111,7 +111,7 @@ export function ManageAlertsModal(props: ManageAlertsModalProps): JSX.Element {
             <LemonModal.Content>
                 {!showVisualEmptyState && (
                     <div className="mb-4">
-                        With alerts, PostHog monitors your insight at a recurring interval and notifies you when
+                        With alerts, Flind monitors your insight at a recurring interval and notifies you when
                         conditions are met.
                         <br />
                         <Link to={urls.alerts()} target="_blank">

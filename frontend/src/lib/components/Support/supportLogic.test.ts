@@ -407,7 +407,7 @@ describe('supportLogic', () => {
             expect(sendMessage).toHaveBeenCalledWith('Help!', { name: 'Jane', email: 'jane@example.com' }, true)
         })
 
-        // The PostHog AI handovers submit through a plain onClick rather than a form submit, so they
+        // The Flind AI handovers submit through a plain onClick rather than a form submit, so they
         // never run the validator above — the address has to be checked on the path every caller shares
         it.each([
             ['a malformed address', 'Jane'],

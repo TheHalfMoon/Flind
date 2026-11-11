@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -130,7 +130,7 @@ export const UiCustomizationUpdateBody = /* @__PURE__ */ zod.object({
                                                                 'new_insight',
                                                             ]),
                                                         })
-                                                        .describe('A PostHog page. It has its own label and icon.'),
+                                                        .describe('A Flind page. It has its own label and icon.'),
                                                     zod.object({
                                                         kind: zod.literal('insight'),
                                                         short_id: zod
@@ -226,7 +226,7 @@ export const UiCustomizationUpdateBody = /* @__PURE__ */ zod.object({
                                                                 'new_insight',
                                                             ]),
                                                         })
-                                                        .describe('A PostHog page. It has its own label and icon.'),
+                                                        .describe('A Flind page. It has its own label and icon.'),
                                                     zod.object({
                                                         kind: zod.literal('insight'),
                                                         short_id: zod
@@ -343,6 +343,6 @@ export const UiCustomizationUpdateBody = /* @__PURE__ */ zod.object({
         })
         .describe("The Analytics context's fragment. A section with no items to show is hidden.")
         .describe(
-            "The layout for the selected context. For analytics_sidebar, the sections of the Analytics pane, from top to bottom. Each section holds links, buttons, metrics and lists. Links and buttons open PostHog pages or this project's insights, dashboards and notebooks, never other sites. A section whose items show nothing, such as an empty pinned list, is hidden. The layout replaces the whole fragment, so send every section to keep."
+            "The layout for the selected context. For analytics_sidebar, the sections of the Analytics pane, from top to bottom. Each section holds links, buttons, metrics and lists. Links and buttons open Flind pages or this project's insights, dashboards and notebooks, never other sites. A section whose items show nothing, such as an empty pinned list, is hidden. The layout replaces the whole fragment, so send every section to keep."
         ),
 })

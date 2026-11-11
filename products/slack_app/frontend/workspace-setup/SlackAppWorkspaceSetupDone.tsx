@@ -17,12 +17,12 @@ export function SlackAppWorkspaceSetupDone(): JSX.Element {
             <div className="flex flex-col items-center gap-1 text-center">
                 <h1 className="text-2xl font-bold m-0">{workspaceName} is set up. Now open Slack.</h1>
                 <p className="text-secondary m-0">
-                    Send PostHog a direct message, or mention @PostHog in any channel to ask a question.
+                    Send Flind a direct message, or mention @PostHog in any channel to ask a question.
                 </p>
             </div>
             {skippedSteps.includes('ai_consent') ? (
                 <LemonBanner type="warning" className="w-full">
-                    PostHog can't answer in Slack until an organization admin allows AI data processing.
+                    Flind can't answer in Slack until an organization admin allows AI data processing.
                 </LemonBanner>
             ) : null}
             {setup?.open_slack_url ? (
@@ -33,7 +33,7 @@ export function SlackAppWorkspaceSetupDone(): JSX.Element {
                     onClick={openSlackClicked}
                     data-attr="slack-app-workspace-setup-open-slack"
                 >
-                    Open PostHog in Slack
+                    Open Flind in Slack
                 </LemonButton>
             ) : null}
         </>

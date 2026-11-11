@@ -12,7 +12,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Add the PostHog Flutter SDK to your `pubspec.yaml`:</Markdown>
+                    <Markdown>Add the Flind Flutter SDK to your `pubspec.yaml`:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -26,7 +26,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                     />
                     <CalloutBox type="fyi" title="SDK version">
                         <Markdown>
-                            Session replay requires PostHog Flutter SDK version 4.7.0 or higher. We recommend always
+                            Session replay requires Flind Flutter SDK version 4.7.0 or higher. We recommend always
                             using the latest version.
                         </Markdown>
                     </CalloutBox>
@@ -120,7 +120,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             content: (
                 <>
                     <Markdown>
-                        Go to your PostHog [Project Settings](https://us.posthog.com/settings/project-replay) and enable
+                        Go to your Flind [Project Settings](https://us.posthog.com/settings/project-replay) and enable
                         **Record user sessions**. Session recordings will not work without this setting enabled.
                     </Markdown>
                     <Markdown>
@@ -131,12 +131,12 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             ),
         },
         {
-            title: 'Initialize PostHog with session replay',
+            title: 'Initialize Flind with session replay',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Initialize PostHog in your `main.dart` with session replay enabled. Here are all the available
+                        Initialize Flind in your `main.dart` with session replay enabled. Here are all the available
                         options:
                     </Markdown>
                     <CodeBlock

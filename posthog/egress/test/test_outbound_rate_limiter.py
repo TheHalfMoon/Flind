@@ -77,7 +77,7 @@ async def test_unique_keys_do_not_share_budget():
 
 @pytest.mark.parametrize("scope_in_metrics", [True, False])
 def test_denied_decision_records_its_scope_only_when_the_policy_opts_in(scope_in_metrics: bool) -> None:
-    # A denial must trace to the installation it hit, but a key scoped per PostHog team must not add a
+    # A denial must trace to the installation it hit, but a key scoped per Flind team must not add a
     # metric series per team.
     domain = f"test-decision-scope-{scope_in_metrics}"
     register_policy(domain, RatePolicy(limits=((1, 3600.0),), scope_in_metrics=scope_in_metrics))

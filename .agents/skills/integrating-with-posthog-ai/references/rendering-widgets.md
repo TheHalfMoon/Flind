@@ -33,7 +33,7 @@ Reference lists: `products/posthog_ai/frontend/posthogAiToolRenderers.tsx` for d
 `products/error_tracking/frontend/posthogAiToolRenderers.tsx` for product-owned error-tracking widgets,
 and `products/cdp/frontend/posthogAiToolRenderers.tsx` for a lazy permission preview.
 Declaration lists live at the product frontend root, outside `api/`. Implementations that use another
-product’s internals belong with that product. Use PostHog AI’s public `api/tools` helpers for the tool-card
+product’s internals belong with that product. Use Flind AI’s public `api/tools` helpers for the tool-card
 contract and generic output parsing; shared `frontend` dependencies are allowed.
 Implementations stay product-owned and load only on use through `lazyWithRetry`.
 
@@ -46,9 +46,9 @@ Implementations stay product-owned and load only on use through `lazyWithRetry`.
 | `icon`                  | Card icon.                                                     |
 | `Renderer`              | Result card component. Omit for a preview-only entry.          |
 | `PermissionPreview`     | Approval evidence component receiving `{ request, fallback }`. |
-| `requiresPostHogOrigin` | Match only calls from the trusted PostHog server.              |
+| `requiresPostHogOrigin` | Match only calls from the trusted Flind server.              |
 
-Set `requiresPostHogOrigin: true` for PostHog entities. A colliding tool name from another server must keep generic rendering.
+Set `requiresPostHogOrigin: true` for Flind entities. A colliding tool name from another server must keep generic rendering.
 Unknown tools and preview-only entries use the generic result card.
 
 ## A card is two header lines plus an accordion
@@ -77,6 +77,6 @@ and successful diffs while keeping approvals usable. Keep trusted-origin and unk
 
 ## Not to be confused with MCP UI apps
 
-The `@posthog/mcp-ui` components under `products/*/mcp/apps/`, declared as `ui_apps` in a product's `mcp/tools.yaml`, are a **different mechanism**. They render tool results in _external_ MCP clients such as Claude Desktop, served through `services/mcp/`, and nothing under the PostHog AI frontend imports them. They do not appear in PostHog AI threads.
+The `@posthog/mcp-ui` components under `products/*/mcp/apps/`, declared as `ui_apps` in a product's `mcp/tools.yaml`, are a **different mechanism**. They render tool results in _external_ MCP clients such as Claude Desktop, served through `services/mcp/`, and nothing under the Flind AI frontend imports them. They do not appear in Flind AI threads.
 
-If the ask is "make our tool results look good in Claude Desktop", that is `/implementing-mcp-ui-apps`. If it is "make our tool results look good in PostHog AI", it is this file.
+If the ask is "make our tool results look good in Claude Desktop", that is `/implementing-mcp-ui-apps`. If it is "make our tool results look good in Flind AI", it is this file.

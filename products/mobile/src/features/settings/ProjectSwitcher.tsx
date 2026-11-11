@@ -63,7 +63,7 @@ export function ProjectSwitcher(): ReactElement {
                 ) : (
                     <View style={styles.stateRow}>
                         <Text style={styles.stateText}>
-                            Your account has no projects you can open. Create one in PostHog on the web.
+                            Your account has no projects you can open. Create one in Flind on the web.
                         </Text>
                     </View>
                 )}

@@ -64,7 +64,7 @@ export function ReplayCollectionsSegment({ logicKey }: { logicKey: string }): JS
             <div className="flex-1 min-h-0 overflow-y-auto">
                 {!searching && (
                     <>
-                        <CollectionSectionHeading title="Built-in" description="Kept up to date by PostHog." />
+                        <CollectionSectionHeading title="Built-in" description="Kept up to date by Flind." />
                         {builtInPlaylistsLoading && builtInPlaylists.length === 0 ? (
                             <RowSkeletons count={4} />
                         ) : (

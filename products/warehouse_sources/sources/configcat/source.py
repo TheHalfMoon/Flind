@@ -90,7 +90,7 @@ class ConfigCatSource(SimpleSource[ConfigCatSourceConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="ConfigCat",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your ConfigCat Public API credentials to pull your feature-flag account structure into the PostHog Data warehouse.
+            caption="""Enter your ConfigCat Public API credentials to pull your feature-flag account structure into the Flind Data warehouse.
 
 Create a Public API credential (a username and password pair) under **Public Management API credentials** in your [ConfigCat dashboard](https://app.configcat.com/my-account/public-api-credentials). These are separate from your SDK keys and grant read access to your organizations and products.
 """,

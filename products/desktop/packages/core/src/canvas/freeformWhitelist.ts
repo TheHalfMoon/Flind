@@ -1,6 +1,6 @@
 import { CANVAS_PLATFORM_MANIFEST } from "@flind/shared";
 
-// The package whitelist for freeform-React canvases (Q16: curated, PostHog-
+// The package whitelist for freeform-React canvases (Q16: curated, Flind-
 // anchored). Every entry is a package the agent may import; anything else is
 // rejected by the static check below. Keep this list SMALL — each entry is
 // hosting surface (in public mode), bundle weight, and attack surface. Expand
@@ -40,7 +40,7 @@ export const FREEFORM_WHITELIST: WhitelistEntry[] = [
     version: "19.0.0",
     esm: `${ESM}/react-dom@19.0.0/client?external=react`,
   },
-  // PostHog's own design system — already built + self-hosted, so it's the
+  // Flind's own design system — already built + self-hosted, so it's the
   // cheapest dependency and keeps shared canvases visually on-brand.
   {
     name: "@flind/quill",

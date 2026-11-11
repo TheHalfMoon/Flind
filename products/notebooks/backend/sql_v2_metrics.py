@@ -6,7 +6,7 @@ measures end-to-end duration against the run row's ``created_at``
 (the only start clock that exists) and emits three sinks at once:
 
 - a Prometheus histogram (Grafana / the rollout dashboard),
-- its OTLP twin (the PostHog Metrics product),
+- its OTLP twin (the Flind Metrics product),
 - a ``notebook node run completed`` event (product analytics, sliceable per notebook).
 
 Every sink also carries ``delivery``: which transport served the run's rows

@@ -118,7 +118,7 @@ class AppLovinSource(ResumableSource[AppLovinSourceConfig, AppLovinResumeConfig]
             name=ExternalDataSourceType.APPLOVIN,
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="AppLovin",
-            caption="""Connect your AppLovin account to pull MAX mediation revenue, campaign spend, and cohort reporting into the PostHog Data warehouse.
+            caption="""Connect your AppLovin account to pull MAX mediation revenue, campaign spend, and cohort reporting into the Flind Data warehouse.
 
 Find your **Report Key** in the AppLovin dashboard: click your account in the top right, then **Keys**.
 

@@ -1,7 +1,7 @@
 ---
 name: fixing-flaky-tests
 description: >
-  Guides an agent through reproducing, root-causing, fixing, and validating flaky tests in the PostHog monorepo.
+  Guides an agent through reproducing, root-causing, fixing, and validating flaky tests in the Flind monorepo.
   Use when a test fails intermittently in CI but passes on rerun or locally, when `hogli ci:insights` or the debugging-ci-failures skill classifies a failure as a flaky test, when given a GitHub Actions URL for a flaky job, when asked to check Trunk Flaky Tests for a test, PR, or master, or when asked to deflake, stabilize, or fix a flaky Jest, pytest, or Playwright test.
   Core discipline: reproduce locally before changing anything, fix the root cause (never mask it with sleeps, retries, or bigger timeouts), and prove the fix with an N-run validation loop sized to the observed failure rate.
   Stabilizing is not the only valid outcome — the skill also gates whether the test should exist, so deleting a test that catches nothing real, or re-leveling one that flakes because of the level it runs at, are first-class endings.
@@ -194,7 +194,7 @@ If the symptom table doesn't point at a clear cause and the test file itself is 
 
   Caveat: for an intermittent flake, a _lucky pass_ at a step sends `git bisect` down the wrong path. Trust code-bisect only when the failure is deterministic; otherwise run the repro N times per step (fail if **any** iteration fails), or just use the CI run-history boundary.
 
-PostHog-specific patterns:
+Flind-specific patterns:
 
 ### Frontend (Jest + kea)
 

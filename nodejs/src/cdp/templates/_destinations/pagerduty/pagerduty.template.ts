@@ -36,7 +36,7 @@ if (action == 'trigger') {
     // row carries no name, so a correctly configured destination can still send nothing.
     let source := inputs.source
     if (empty(source)) {
-        source := 'PostHog'
+        source := 'Flind'
     }
 
     let payload := {
@@ -55,7 +55,7 @@ if (action == 'trigger') {
     }
 
     body['payload'] := payload
-    body['client'] := 'PostHog'
+    body['client'] := 'Flind'
     if (notEmpty(inputs.links)) {
         body['links'] := inputs.links
     }
@@ -193,7 +193,7 @@ if (res.status < 200 or res.status >= 300) {
             type: 'json',
             label: 'Links',
             description: 'A list of links with href and text that PagerDuty shows on the incident.',
-            default: [{ href: '{event.url}', text: 'View event in PostHog' }],
+            default: [{ href: '{event.url}', text: 'View event in Flind' }],
             secret: false,
             required: false,
         },

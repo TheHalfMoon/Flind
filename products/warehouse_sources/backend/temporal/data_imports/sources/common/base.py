@@ -226,7 +226,7 @@ class _BaseSource(ABC, Generic[ConfigType]):
     # the key in code at sync time, and are never asked for one.
     detects_primary_keys: bool = False
 
-    # `True` for sources whose HogQL tables use a PostHog-managed canonical schema
+    # `True` for sources whose HogQL tables use a Flind-managed canonical schema
     # (`external_table_definitions`) — Stripe, Paddle, Zendesk. Their query exposes a fixed
     # field set (and powers revenue analytics), so the physical column set must stay complete.
     # Column selection is disabled for these: dropping a canonically-referenced column makes the
@@ -250,7 +250,7 @@ class _BaseSource(ABC, Generic[ConfigType]):
     # discovery but can never run a scheduled import.
     supports_scheduled_sync: bool = True
 
-    # For a source PostHog creates and syncs itself, one run at a time, when the data behind it
+    # For a source Flind creates and syncs itself, one run at a time, when the data behind it
     # changes (an uploaded file). The API refuses to create one from a request body, and refuses to
     # turn on its schedule, because each scheduled run would bill the same rows again.
     syncs_on_demand: bool = False
@@ -710,7 +710,7 @@ class _BaseSource(ABC, Generic[ConfigType]):
         return None
 
     def on_source_deleted(self, source_model: "ExternalDataSource") -> None:
-        """Best-effort cleanup once the source is soft-deleted, for example of files PostHog stores
+        """Best-effort cleanup once the source is soft-deleted, for example of files Flind stores
         for it. Runs inside the delete's transaction, so work outside the database belongs in
         `transaction.on_commit`. No-op by default."""
         return None

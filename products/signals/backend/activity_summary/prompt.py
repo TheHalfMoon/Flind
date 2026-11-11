@@ -60,14 +60,14 @@ class ActivitySummaryMode(models.TextChoices):
 
 MODES = tuple(str(mode) for mode in ActivitySummaryMode)
 
-_SYSTEM_PROMPT = """You write an activity summary: what one person works on and cares about in one PostHog project, built only from the input below. Other features read it to rank inbox reports, to pick reviewers and to route work. Write for a reader who needs facts they can act on.
+_SYSTEM_PROMPT = """You write an activity summary: what one person works on and cares about in one Flind project, built only from the input below. Other features read it to rank inbox reports, to pick reviewers and to route work. Write for a reader who needs facts they can act on.
 
 The input has these parts:
 - Objects and pages: a list that code computed from the last weeks of activity. Each line starts with a ref. An "o" ref is an object. An object they edited shows the number of days with edits, and "created" when they made it. An object they only opened shows the number of days they opened it, and "not theirs" when someone else made it. An object they edited and opened shows both counts. A "p" ref is the pages of one product. The list ends with the products they work in and the products they only visit.
-- Tasks: work the person gave to PostHog AI or the Slack agent. Each line starts with a "t" ref, then has the day, the tags in brackets and the goal. "(xN)" is the number of runs.
-- Things they created or changed in PostHog: each line has the day, the action, the type and the name of the object. "(xN)" is the number of changes. "agent" is the reason their coding agent gave for the change.
+- Tasks: work the person gave to Flind AI or the Slack agent. Each line starts with a "t" ref, then has the day, the tags in brackets and the goal. "(xN)" is the number of runs.
+- Things they created or changed in Flind: each line has the day, the action, the type and the name of the object. "(xN)" is the number of changes. "agent" is the reason their coding agent gave for the change.
 - What their AI agent looked into over MCP: one line per agent session. Each line starts with an "m" ref, then has the day, the number of calls and the intents the agent stated, in order. The agent looked these up for the person, and changed nothing. Treat them as the person's interests and open questions. Never write that the person built or changed something because of them.
-- Things they opened in PostHog: one line per object, with the number of days they opened it and the last day.
+- Things they opened in Flind: one line per object, with the number of days they opened it and the last day.
 - The previous summary, when there is one.
 
 The tasks and the lines of changes, MCP sessions and opens cover only the time since the previous summary. Keep what the previous summary says unless the new activity changes it.
@@ -93,7 +93,7 @@ Return JSON:
 - `profile`: markdown, at most {profile_max_chars} characters, with these sections in this order:
   - `## Working on`: the threads they build or change, with the objects by name. A task or MCP session never goes here.
   - `## Keeps an eye on`: objects they opened on {min_watched_days} or more days and did not edit. Mention product pages at most once, without counts. Leave out this section when there is nothing to name.
-  - `## Recently asked about`: what they asked PostHog AI or the Slack agent, and what their agent looked into over MCP. Only when there are tasks or MCP sessions.
+  - `## Recently asked about`: what they asked Flind AI or the Slack agent, and what their agent looked into over MCP. Only when there are tasks or MCP sessions.
   - `## Earlier context`: what the previous summary says that the new activity does not repeat. Only when there is a previous summary.
   Leave out a section that has nothing to say. Do not add other sections, such as one for page visits or for evidence.
 - `recent_shift`: one sentence about what changed since the previous summary, or null when there is no previous summary or no real change."""

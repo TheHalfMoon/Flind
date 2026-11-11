@@ -52,10 +52,10 @@ def resolve_untagged_followup_mode(
 
 
 def resolve_untagged_question_mode(slack_workspace_id: str, slack_user_id: str | None) -> UntaggedFollowupMode:
-    """Resolve what PostHog does with this Slack user's top-level channel questions that do not tag it.
+    """Resolve what Flind does with this Slack user's top-level channel questions that do not tag it.
 
     Read from the author's own row, so one person's choice never changes what happens
-    to anyone else's messages. An absent row or empty column resolves to `ASK`: PostHog
+    to anyone else's messages. An absent row or empty column resolves to `ASK`: Flind
     offers privately and answers only after the author confirms. An unknown value
     resolves to `NEVER`.
     """
@@ -116,7 +116,7 @@ def _set_untagged_mode(slack_workspace_id: str, slack_user_id: str, column: str,
 
 
 def resolve_thread_join_mode(integration: WorkspaceIntegration, slack_user_id: str | None) -> ThreadJoinMode:
-    """Resolve what happens when someone else tags PostHog in a thread this Slack user started.
+    """Resolve what happens when someone else tags Flind in a thread this Slack user started.
 
     An absent row or empty column resolves to `ALLOW`, also when the run bills to the creator's own
     plan, so anyone can join until the creator picks a stricter mode.
@@ -199,7 +199,7 @@ OnboardingCompletedReason = Literal["finished", "nothing_to_set_up"]
 
 @frozen(slots=False)
 class OnboardingState:
-    """A person's onboarding thread in the PostHog DM. ``root_ts`` is None until the top message is posted,
+    """A person's onboarding thread in the Flind DM. ``root_ts`` is None until the top message is posted,
     and stays None when there was nothing to set up. ``planned`` holds the step keys the thread promised at
     its start, in display order."""
 

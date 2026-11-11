@@ -147,7 +147,7 @@ export const SubBatchSchema: GenMessage<SubBatch> = /*@__PURE__*/ messageDesc(fi
  * KafkaMessage mirrors `SerializedKafkaMessage` in
  * `rust/ingestion-consumer/src/types.rs` and
  * `nodejs/src/ingestion/api/types.ts`. Values are raw UTF-8 strings —
- * PostHog Kafka messages are always JSON text.
+ * Flind Kafka messages are always JSON text.
  *
  * @generated from message ingestion.worker.v1.KafkaMessage
  */

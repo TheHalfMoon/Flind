@@ -20,7 +20,7 @@ Three things genuinely differ and are overridden here:
 `RedshiftClient.acopy_from_s3_bucket` would be the fast path, since a run's batches are
 already parquet in S3. It is not usable as-is: it needs a MANIFEST file and an IAM role or AWS
 credentials that let the customer's cluster read the bucket the parquet sits in, which is a
-PostHog bucket. Batch exports solve that by staging into a customer-owned bucket first.
+Flind bucket. Batch exports solve that by staging into a customer-owned bucket first.
 Wiring that up here is follow-up work.
 """
 
@@ -69,7 +69,7 @@ PERMISSIONS_DETAIL = (
     "Grant rights on the tables it syncs, then run the sync again."
 )
 ROLE_DETAIL = (
-    "PostHog cannot assume the role. Check the role ARN and the trust policy with the external ID, "
+    "Flind cannot assume the role. Check the role ARN and the trust policy with the external ID, "
     "then run the sync again."
 )
 AWS_CREDENTIALS_DETAIL = "AWS rejected the access key. Check the access key ID and secret, then run the sync again."
@@ -186,7 +186,7 @@ class RedshiftDestinationWriter(PostgresDestinationWriter):
             database=self._database,
             team_id=self._ctx.team_id,
             # The same session name the S3 writer uses, so one role's CloudTrail shows one sync.
-            session_name=f"PostHog-warehouse-sync-{self._ctx.schema_id}",
+            session_name=f"Flind-warehouse-sync-{self._ctx.schema_id}",
         )
         return RedshiftClient.from_inputs(inputs, database=self._database)
 

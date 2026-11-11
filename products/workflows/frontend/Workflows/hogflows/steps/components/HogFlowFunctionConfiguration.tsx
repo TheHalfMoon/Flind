@@ -336,7 +336,7 @@ export function HogFlowFunctionConfiguration({
                 engagementEventsEnabled ? (
                     <div className="flex items-center gap-1.5 mt-2 text-xs text-muted-alt">
                         <IconCheck className="text-success text-base" />
-                        <span>Email engagement is being captured as PostHog events.</span>
+                        <span>Email engagement is being captured as Flind events.</span>
                         <Link
                             to={urls.settings('environment-workflows', 'workflows-engagement-events')}
                             target="_blank"
@@ -349,7 +349,7 @@ export function HogFlowFunctionConfiguration({
                         <div className="flex flex-col gap-2">
                             <span className="text-xs">
                                 Email engagement (sends, opens, clicks, bounces) is recorded as workflow metrics. You
-                                can also capture these as standard PostHog events for use in insights and funnels. They
+                                can also capture these as standard Flind events for use in insights and funnels. They
                                 count toward your event usage and are billed like any other event.
                             </span>
                             <div className="flex items-center gap-2">

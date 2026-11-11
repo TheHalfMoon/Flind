@@ -13,7 +13,7 @@ A comment passes these silent checks, in this order, before the shared steps in
    The webhook's `author_association` only filtered noise; organization members can lack write
    access to a given repository.
 
-The commenter's PostHog accounts come from ``posthog.github.requesters``, which matches them on
+The commenter's Flind accounts come from ``posthog.github.requesters``, which matches them on
 GitHub's numeric user id.
 """
 
@@ -43,8 +43,8 @@ class GitHubCommentChannel:
     # The work posts its result on the pull request the comment sits on.
     follow_up: FollowUpAddress | None = None
     unlinked_message = (
-        "Your GitHub account is not linked to a PostHog account, so I can't tell who to run this as. "
-        "Connect GitHub in your PostHog personal settings, then comment again."
+        "Your GitHub account is not linked to a Flind account, so I can't tell who to run this as. "
+        "Connect GitHub in your Flind personal settings, then comment again."
     )
 
     def __init__(self, comment: CommentCommandRequest, github: CommandGitHub | None = None) -> None:

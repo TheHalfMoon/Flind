@@ -552,7 +552,7 @@ def _earliest_production_host_timestamps(
         converted_at = converted_at_by_team_host.get((team_id, host))
         if converted_at is not None:
             # ClickHouse DateTime is UTC; coerce naive driver values to aware so
-            # the PostHog client doesn't guess a timezone at capture time.
+            # the Flind client doesn't guess a timezone at capture time.
             result[team_id] = converted_at if converted_at.tzinfo else converted_at.replace(tzinfo=UTC)
     return result
 
@@ -598,7 +598,7 @@ def _mark_teams_ingested_production_event(team_signals: Mapping[int, ProductionT
             team_signals={team.id: marked_kinds[team.id] for team in chunk},
         )
 
-    # Emit outside the transaction so the PostHog client round-trip doesn't
+    # Emit outside the transaction so the Flind client round-trip doesn't
     # hold row locks. Emission is at-most-once: rows are already marked, so a
     # crash between the commit above and the flush loses those events for good
     # (re-runs filter on ingested_production_event=False). The column is the

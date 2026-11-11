@@ -6,7 +6,7 @@ construction and request/error mapping, warehouse-name validation (shared by pro
 and availability checks), and connection presentation.
 
 A managed warehouse is shared by every team in an organization, so the duckgres org
-identifier is the PostHog `organization_id` and the Data ops feature flag is evaluated
+identifier is the Flind `organization_id` and the Data ops feature flag is evaluated
 per organization (not per team).
 """
 
@@ -1547,7 +1547,7 @@ def _log_hoglake_action(
 # A member's own credentials: owned by them and limited to projects they choose among the
 # ones they can see. hogtower narrows every token to the owner's current projects and
 # levels (its copy of them is the member-teams push), so these never reach further than
-# the member can in PostHog. Every call here is held to the caller's own credentials, and
+# the member can in Flind. Every call here is held to the caller's own credentials, and
 # names the caller to hogtower, which holds it to them too.
 
 

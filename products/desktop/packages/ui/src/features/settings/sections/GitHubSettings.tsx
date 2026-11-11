@@ -47,7 +47,7 @@ export function GitHubSettings() {
             onClick={() => void openUrlInBrowser(githubSettingsUrl)}
           >
             <ArrowSquareOutIcon size={12} />
-            Advanced settings in PostHog
+            Advanced settings in Flind
           </Button>
         ) : null}
         <button

@@ -19,7 +19,7 @@ vi.mock('@/resources', () => ({
     getPromptsFromManifest: vi.fn().mockResolvedValue([]),
 }))
 
-// Replace the project's PostHog client with a real (but disabled, no-network)
+// Replace the project's Flind client with a real (but disabled, no-network)
 // PostHogMCP so `prepareToolList` / `prepareToolCall` run the actual SDK injection
 // and extraction logic — this proves dotcom's wiring against real SDK behavior,
 // not a stub.

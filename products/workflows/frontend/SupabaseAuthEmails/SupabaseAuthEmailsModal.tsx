@@ -60,7 +60,7 @@ export function SupabaseAuthEmailsModal(): JSX.Element | null {
             onClose={closeSetup}
             hasUnsavedInput={connectionChanged}
             title="Supabase auth emails"
-            description="Send your Supabase project's sign-up, magic link and password reset emails from PostHog. Each email is recorded against the Supabase user's ID."
+            description="Send your Supabase project's sign-up, magic link and password reset emails from Flind. Each email is recorded against the Supabase user's ID."
             width={720}
             footer={
                 <>
@@ -73,7 +73,7 @@ export function SupabaseAuthEmailsModal(): JSX.Element | null {
                                 LemonDialog.open({
                                     title: 'Disconnect your Supabase project?',
                                     description:
-                                        "PostHog removes the project URL, hook secret and template choices, and stops sending. Turn off the Send Email hook in Supabase first, or your users' auth emails will fail. Your templates stay.",
+                                        "Flind removes the project URL, hook secret and template choices, and stops sending. Turn off the Send Email hook in Supabase first, or your users' auth emails will fail. Your templates stay.",
                                     primaryButton: {
                                         children: 'Disconnect',
                                         status: 'danger',

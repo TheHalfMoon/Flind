@@ -207,7 +207,7 @@ describe.each(['ios', 'android'] as const)('TabsLayout (%s)', (platform) => {
         const more = screen.getByTestId('tabs-more')
         expect(more.props.accessibilityValue.text).toContain('Elevated latency')
         fireEvent.press(more)
-        expect(screen.getByLabelText('PostHog status: Elevated latency')).toBeTruthy()
+        expect(screen.getByLabelText('Flind status: Elevated latency')).toBeTruthy()
     })
 
     test.each(['inbox', 'chats', 'views'] as const)(

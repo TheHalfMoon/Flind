@@ -80,7 +80,7 @@ export function App() {
               void beginLogin();
             }}
           >
-            Log in with PostHog
+            Log in with Flind
           </button>
         </div>
       );

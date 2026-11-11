@@ -30,7 +30,7 @@ from products.tasks.backend.facade import api as tasks_facade
 
 _RUN = "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/"
 
-# Endpoints the sandbox calls with the run's token outside any PostHog MCP tool, from the agent
+# Endpoints the sandbox calls with the run's token outside any Flind MCP tool, from the agent
 # server and harness in `packages/agent/`. A new non-GET endpoint in that code must be added here,
 # or a narrowed run gets it refused. The MCP Store's tool calls and tool approvals stay out: they
 # reach installations the scout's selection did not mount, and an unattended run must not approve

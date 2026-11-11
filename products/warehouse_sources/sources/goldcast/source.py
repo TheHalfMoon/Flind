@@ -42,7 +42,7 @@ class GoldcastSource(SimpleSource[GoldcastSourceConfig]):
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Goldcast",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Goldcast API token to sync your virtual event and webinar data into the PostHog Data warehouse.
+            caption="""Enter your Goldcast API token to sync your virtual event and webinar data into the Flind Data warehouse.
 
 An org admin can create a personal access token in Goldcast Studio under **Settings → Tokens**. The token is shown only once, so copy it immediately.
 

@@ -7,7 +7,7 @@ const schema = GENERATED_TOOLS['cdp-function-templates-retrieve']!().schema
 describe('cdp-function-templates-retrieve schema', () => {
     it.each([
         ['template_id', { template_id: 'template-slack' }, 'template-slack'],
-        // Every other PostHog tool names its identifier `id`, and cdp-function-templates-list
+        // Every other Flind tool names its identifier `id`, and cdp-function-templates-list
         // returns the template under `id`, so agents reach for `id` here too.
         ['id alias', { id: 'template-slack' }, 'template-slack'],
         [

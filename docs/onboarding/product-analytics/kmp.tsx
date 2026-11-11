@@ -11,7 +11,7 @@ export const getKMPInstallSteps = (ctx: OnboardingComponentsContext): StepDefini
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Add the PostHog KMP SDK to your shared module's `commonMain` source set:</Markdown>
+                    <Markdown>Add the Flind KMP SDK to your shared module's `commonMain` source set:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -40,19 +40,19 @@ export const getKMPInstallSteps = (ctx: OnboardingComponentsContext): StepDefini
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Call `PostHog.setup()` once, early in your app's lifecycle. The config is shared across every
+                        Call `Flind.setup()` once, early in your app's lifecycle. The config is shared across every
                         target – only the `PostHogContext` differs per platform.
                     </Markdown>
                     <Tab.Group tabs={['Android', 'iOS', 'Web', 'JVM']}>
                         <Tab.Panels>
                             <Tab.Panel>
                                 <Markdown>
-                                    Android needs the `Application` instance, so set PostHog up from your `Application`
+                                    Android needs the `Application` instance, so set Flind up from your `Application`
                                     class – not from an Activity, whose `onCreate` re-runs on every recreation (for
                                     example, on rotation):
                                 </Markdown>
@@ -71,7 +71,7 @@ export const getKMPInstallSteps = (ctx: OnboardingComponentsContext): StepDefini
                                                     override fun onCreate() {
                                                         super.onCreate()
 
-                                                        PostHog.setup(
+                                                        Flind.setup(
                                                             config = PostHogConfig(
                                                                 projectToken = "<ph_project_token>",
                                                                 host = "<ph_client_api_host>",
@@ -111,7 +111,7 @@ export const getKMPInstallSteps = (ctx: OnboardingComponentsContext): StepDefini
 
                                                 fun MainViewController() = ComposeUIViewController {
                                                     LaunchedEffect(Unit) {
-                                                        PostHog.setup(
+                                                        Flind.setup(
                                                             config = PostHogConfig(
                                                                 projectToken = "<ph_project_token>",
                                                                 host = "<ph_client_api_host>",
@@ -141,7 +141,7 @@ export const getKMPInstallSteps = (ctx: OnboardingComponentsContext): StepDefini
                                                 import com.posthog.kmp.PostHogContext
 
                                                 fun main() {
-                                                    PostHog.setup(
+                                                    Flind.setup(
                                                         config = PostHogConfig(
                                                             projectToken = "<ph_project_token>",
                                                             host = "<ph_client_api_host>",
@@ -170,7 +170,7 @@ export const getKMPInstallSteps = (ctx: OnboardingComponentsContext): StepDefini
                                                 import com.posthog.kmp.PostHogContext
 
                                                 fun main() = application {
-                                                    PostHog.setup(
+                                                    Flind.setup(
                                                         config = PostHogConfig(
                                                             projectToken = "<ph_project_token>",
                                                             host = "<ph_client_api_host>",
@@ -201,7 +201,7 @@ export const getKMPEventStep = (ctx: OnboardingComponentsContext): StepDefinitio
         content: (
             <>
                 <Markdown>
-                    Once installed, PostHog automatically captures app lifecycle events on Android and iOS. Send an
+                    Once installed, Flind automatically captures app lifecycle events on Android and iOS. Send an
                     event manually from shared code to test your integration:
                 </Markdown>
                 <CodeBlock
@@ -212,7 +212,7 @@ export const getKMPEventStep = (ctx: OnboardingComponentsContext): StepDefinitio
                             code: dedent`
                                     import com.posthog.kmp.PostHog
 
-                                    PostHog.capture(
+                                    Flind.capture(
                                         event = "button_clicked",
                                         properties = mapOf(
                                             "button_name" to "signup"

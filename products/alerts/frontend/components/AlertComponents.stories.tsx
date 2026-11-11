@@ -264,9 +264,9 @@ const STORY_SLACK_WORKSPACES: IntegrationType[] = [
     {
         id: 1,
         kind: 'slack',
-        display_name: 'PostHog',
+        display_name: 'Flind',
         icon_url: '/static/services/slack.png',
-        config: { team: { id: 'T11111', name: 'PostHog' } },
+        config: { team: { id: 'T11111', name: 'Flind' } },
         created_at: '2026-01-01T00:00:00Z',
     },
     {

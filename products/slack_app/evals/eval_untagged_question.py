@@ -1,10 +1,10 @@
-"""Which top-level channel messages, posted without tagging the app, can PostHog answer?
+"""Which top-level channel messages, posted without tagging the app, can Flind answer?
 
 Every top-level message in a channel the app is in that looks like a question reaches
 `classify_untagged_question`, which asks Jev, a System One decision model, two yes/no
 questions. Both must clear `UNTAGGED_QUESTION_MIN_PROBABILITY`.
 
-Nobody asked PostHog anything, so `no_unasked_answer` is the number to watch: a wrong answer
+Nobody asked Flind anything, so `no_unasked_answer` is the number to watch: a wrong answer
 interrupts a conversation in public. A missed question costs the author one @PostHog.
 
 To run:
@@ -92,7 +92,7 @@ ANSWERABLE_CASES = [
     ),
     BaseEvalCase(
         name="product_how_to",
-        prompt="how do I filter out internal users from my insights in PostHog?",
+        prompt="how do I filter out internal users from my insights in Flind?",
         expected=_answerable(True),
     ),
     BaseEvalCase(
@@ -117,7 +117,7 @@ ANSWERABLE_CASES = [
     ),
 ]
 
-# Messages that look like questions, so they pass the webhook's cheap gate, and that PostHog
+# Messages that look like questions, so they pass the webhook's cheap gate, and that Flind
 # must leave alone.
 LEAVE_ALONE_CASES = [
     BaseEvalCase(name="lunch_plan", prompt="lunch at 12:30 today?", expected=_answerable(False)),

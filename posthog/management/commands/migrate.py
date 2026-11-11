@@ -49,7 +49,7 @@ if TYPE_CHECKING:
 
 
 def get_managed_apps() -> set[str]:
-    """Get apps we manage migrations for (PostHog apps, not third-party)."""
+    """Get apps we manage migrations for (Flind apps, not third-party)."""
     try:
         return get_managed_app_names(Path(settings.BASE_DIR))
     except Exception as e:
@@ -222,7 +222,7 @@ def check_database_version(connection: BaseDatabaseWrapper) -> None:
             "  2. Check that the backup is complete. The last lines must say the cluster dump is complete:\n"
             "     gunzip -c posthog-backup.sql.gz | tail -3\n"
             "  3. Stop the stack, then delete the old postgres-data volume. The backup file is now the only copy of the data.\n"
-            "  4. Start the db service again. It uses the PostgreSQL version PostHog pins.\n"
+            "  4. Start the db service again. It uses the PostgreSQL version Flind pins.\n"
             "  5. Restore the data. Errors about the posthog role and database already existing are expected:\n"
             "     gunzip -c posthog-backup.sql.gz | docker compose exec -T db psql -U posthog\n"
             "  6. Check that the data is back. This must print a count, not an error:\n"
@@ -357,7 +357,7 @@ def check_migration_history_is_supported(
         "This database stopped migrating before the oldest history this release supports. "
         f"These migrations would run without the order they need: {', '.join(unsafe)}.\n\n"
         "No migration ran, so the database is unchanged. Upgrade in two steps:\n"
-        f"  1. Run migrations on PostHog at commit {MIGRATION_FLOOR_COMMIT}.\n"
+        f"  1. Run migrations on Flind at commit {MIGRATION_FLOOR_COMMIT}.\n"
         f"     In a dev checkout: git checkout {MIGRATION_FLOOR_COMMIT} && ./bin/migrate\n"
         f"     On a Docker Compose deployment: set POSTHOG_APP_TAG={MIGRATION_FLOOR_COMMIT} in .env and deploy.\n"
         "  2. Return to this release and migrate again.\n\n"

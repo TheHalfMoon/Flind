@@ -3,13 +3,13 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 2 enabled ops
+ * Flind API - MCP 2 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
 
 /**
- * Start the setup agent in the cloud on a GitHub repository of this project. It adds PostHog to the code and opens a pull request. Each user can have one setup run active per project at a time.
+ * Start the setup agent in the cloud on a GitHub repository of this project. It adds Flind to the code and opens a pull request. Each user can have one setup run active per project at a time.
  * @summary Start a setup run
  */
 export const WizardInstallsCreateParams = () => zod.object({

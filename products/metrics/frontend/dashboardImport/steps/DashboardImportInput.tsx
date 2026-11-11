@@ -37,8 +37,8 @@ export function DashboardImportInput(): JSX.Element {
         <div className="flex flex-col gap-4" onPaste={onPaste}>
             <p className="m-0 text-secondary">
                 {source === 'grafana'
-                    ? 'PostHog AI rebuilds each panel with the metrics, logs and traces of this project. At the end, you see which panels did not import. This uses AI credits.'
-                    : 'PostHog AI reads the panels in the screenshot and rebuilds them with the metrics, logs and traces of this project. This uses AI credits.'}
+                    ? 'Flind AI rebuilds each panel with the metrics, logs and traces of this project. At the end, you see which panels did not import. This uses AI credits.'
+                    : 'Flind AI reads the panels in the screenshot and rebuilds them with the metrics, logs and traces of this project. This uses AI credits.'}
             </p>
             {source === 'grafana' ? (
                 <LemonField.Pure

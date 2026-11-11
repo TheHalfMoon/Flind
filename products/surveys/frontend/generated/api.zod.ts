@@ -4,13 +4,13 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
 
 /**
- * Stores selected attachments and submits one response to the PostHog Desktop feedback survey.
+ * Stores selected attachments and submits one response to the Flind Desktop feedback survey.
  * @summary Submit Desktop feedback
  */
 export const desktopFeedbackCreateBodyResponseMax = 4000
@@ -28,10 +28,10 @@ export const desktopFeedbackCreateBodyAppVersionMax = 100
 export const DesktopFeedbackCreateBody = /* @__PURE__ */ zod.object({
     response: zod.string().max(desktopFeedbackCreateBodyResponseMax).describe('Feedback text entered by the user.'),
     source: zod
-        .enum(['Generic (Leave feedback button)', 'Visiting PostHog web'])
-        .describe('\* `Generic (Leave feedback button)` - Leave Feedback\n\* `Visiting PostHog web` - Posthog Web')
+        .enum(['Generic (Leave feedback button)', 'Visiting Flind web'])
+        .describe('\* `Generic (Leave feedback button)` - Leave Feedback\n\* `Visiting Flind web` - Posthog Web')
         .describe(
-            'Desktop surface that opened the feedback form.\n\n\* `Generic (Leave feedback button)` - Leave Feedback\n\* `Visiting PostHog web` - Posthog Web'
+            'Desktop surface that opened the feedback form.\n\n\* `Generic (Leave feedback button)` - Leave Feedback\n\* `Visiting Flind web` - Posthog Web'
         ),
     feedback_view: zod
         .string()
@@ -63,8 +63,8 @@ export const DesktopFeedbackCreateBody = /* @__PURE__ */ zod.object({
         .string()
         .max(desktopFeedbackCreateBodyAppVersionMax)
         .optional()
-        .describe('Version of PostHog Desktop that submitted the feedback.'),
-    session_id: zod.uuid().optional().describe('PostHog session recording identifier for the Desktop session.'),
+        .describe('Version of Flind Desktop that submitted the feedback.'),
+    session_id: zod.uuid().optional().describe('Flind session recording identifier for the Desktop session.'),
     screenshot: zod.instanceof(File).optional().describe('Screenshot that the user chose to include.'),
     image_1: zod.instanceof(File).optional().describe('First image that the user attached.'),
     image_2: zod.instanceof(File).optional().describe('Second image that the user attached.'),

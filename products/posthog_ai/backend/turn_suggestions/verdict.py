@@ -1,4 +1,4 @@
-"""The verdict a finished PostHog AI turn gets: which follow-up to offer, and the draft that offer needs."""
+"""The verdict a finished Flind AI turn gets: which follow-up to offer, and the draft that offer needs."""
 
 from collections.abc import Mapping
 from enum import StrEnum

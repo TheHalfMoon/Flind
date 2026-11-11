@@ -47,7 +47,7 @@ logger = structlog.get_logger(__name__)
 
 
 def _slack_links(*, slack_user_id: str, slack_team_id: str) -> QuerySet[UserIntegration]:
-    """Links of active PostHog users to this Slack identity, most recently linked first."""
+    """Links of active Flind users to this Slack identity, most recently linked first."""
     return UserIntegration.objects.filter(
         kind=UserIntegration.IntegrationKind.SLACK,
         integration_id=slack_user_id,
@@ -76,7 +76,7 @@ def linked_user_token(*, slack_user_id: str, slack_team_id: str) -> LinkedUserTo
 
 
 def linked_posthog_user_ids(*, slack_user_id: str, slack_team_id: str) -> list[int]:
-    """Active PostHog users linked to this Slack identity, most recently linked first.
+    """Active Flind users linked to this Slack identity, most recently linked first.
 
     Unlike ``find_linked_posthog_user`` this keeps every link, for a caller that picks the account
     by project, such as a pull request command.
@@ -92,11 +92,11 @@ def find_linked_posthog_user(
     slack_team_id: str,
     candidate_org_ids: set[UUID],
 ) -> User | None:
-    """Return the PostHog ``User`` linked to this Slack identity, scoped to the
+    """Return the Flind ``User`` linked to this Slack identity, scoped to the
     organizations connected to this workspace.
 
-    Multiple PostHog users may legitimately link to the same Slack identity
-    (e.g. one Slack account → personal + work PostHog accounts). When more
+    Multiple Flind users may legitimately link to the same Slack identity
+    (e.g. one Slack account → personal + work Flind accounts). When more
     than one matching row passes the org-scope check, we return the
     **most-recently-linked** one — they just authenticated, presumably with
     intent — and emit a warn-log so the rare collision is visible in prod.
@@ -115,7 +115,7 @@ def find_linked_posthog_user(
     # followed by an org-membership check — instead of a single cross-table
     # join. The chained `user__organization_memberships__organization_id__in`
     # lookup gets rejected by Django when one of the joined models lives on
-    # a different database (which `User` does in PostHog's deployment), so a
+    # a different database (which `User` does in Flind's deployment), so a
     # straight-line equivalent keeps the query portable across routers.
     try:
         links = list(_slack_links(slack_user_id=slack_user_id, slack_team_id=slack_team_id).select_related("user"))
@@ -162,7 +162,7 @@ def find_linked_posthog_user(
 # ---------------------------------------------------------------------------
 
 # Short-lived invite tokens carry the Slack-side context (user id, workspace,
-# thread) to the PostHog authorize view; longer would let the same Slack DM
+# thread) to the Flind authorize view; longer would let the same Slack DM
 # be replayed by anyone who scrapes it from a forwarded message.
 INVITE_TOKEN_SALT = "slack_user_link_invite"
 INVITE_TOKEN_MAX_AGE_SECONDS = 15 * 60
@@ -174,7 +174,7 @@ CALLBACK_STATE_MAX_AGE_SECONDS = 15 * 60
 
 
 class InviteToken(BaseModel):
-    """Slack-side invite payload signed into the URL on the "Link my PostHog
+    """Slack-side invite payload signed into the URL on the "Link my Flind
     account" button. Decoded by the authorize view to learn which workspace
     to link against and how to get the user back to the right Slack thread
     after the OAuth dance.
@@ -212,7 +212,7 @@ class InviteToken(BaseModel):
 
 class CallbackState(BaseModel):
     """State we round-trip through Slack's authorize endpoint. Carries the
-    invite context plus the PostHog user who started the flow, so the
+    invite context plus the Flind user who started the flow, so the
     callback can attribute the link to the right account even if the user
     swaps browsers mid-flow.
     """
@@ -251,7 +251,7 @@ def build_invite_url(
     channel: str | None,
     thread_ts: str | None,
 ) -> str:
-    """Full https URL the Slack button opens. Routes through PostHog's
+    """Full https URL the Slack button opens. Routes through Flind's
     ``SITE_URL`` so a workspace in a region different from the one that
     received the event still lands on the right instance after the proxy.
     """
@@ -273,7 +273,7 @@ def build_invite_url(
 SLACK_AUTHORIZE_URL = "https://slack.com/openid/connect/authorize"
 
 # `openid` identifies the user (`https://slack.com/user_id` + `team_id`
-# claims) — the bare minimum we need to bind a Slack user to a PostHog user.
+# claims) — the bare minimum we need to bind a Slack user to a Flind user.
 # `email` powers the support diagnostics field stored alongside the link;
 # `profile` adds the team name. The legacy `identity.*` user scopes these
 # replace are rejected by Slack Marketplace review.
@@ -486,7 +486,7 @@ def post_link_invite_message(
     invite_url: str,
 ) -> None:
     """Post an ephemeral Block Kit message inviting the user to link their
-    PostHog account. Visible only to ``slack_user_id``.
+    Flind account. Visible only to ``slack_user_id``.
 
     The wording is intentionally minimal — a separate public thread reply
     already diagnoses the matching failure for the rest of the channel, and
@@ -496,15 +496,15 @@ def post_link_invite_message(
 
     Slack's ``url``-bearing buttons require no interactivity handler — clicks
     open the link in the user's browser and the OAuth dance proceeds without
-    another round-trip to PostHog. Failures here are logged and swallowed:
+    another round-trip to Flind. Failures here are logged and swallowed:
     the public text reply has already informed the channel about the
     matching failure, so a button-post failure must not double-up a second
     visible error.
     """
     # `slack_email` is intentionally not interpolated into the body — the
-    # public thread reply already names the address PostHog tried to match.
+    # public thread reply already names the address Flind tried to match.
     del slack_email
-    fallback_text = "Link your PostHog account to fix this for future mentions."
+    fallback_text = "Link your Flind account to fix this for future mentions."
     blocks: list[dict[str, Any]] = [
         {
             "type": "section",
@@ -518,7 +518,7 @@ def post_link_invite_message(
             "elements": [
                 {
                     "type": "button",
-                    "text": {"type": "plain_text", "text": "Link my PostHog account"},
+                    "text": {"type": "plain_text", "text": "Link my Flind account"},
                     "style": "primary",
                     "url": invite_url,
                 }

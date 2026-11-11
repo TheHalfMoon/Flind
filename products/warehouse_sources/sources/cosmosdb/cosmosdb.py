@@ -43,7 +43,7 @@ TS_FLOOR_MARGIN_SECONDS = 5 * 60
 INVALID_KEY_MESSAGE = "Azure Cosmos DB account key is not valid base64"
 # Any account key can read the account, so a 403 comes from network rules or disabled key auth.
 FORBIDDEN_MESSAGE = (
-    "Azure Cosmos DB refused the request. Check that the account's firewall allows PostHog's IP addresses, "
+    "Azure Cosmos DB refused the request. Check that the account's firewall allows Flind's IP addresses, "
     "that public network access is on, and that key-based authentication isn't turned off."
 )
 

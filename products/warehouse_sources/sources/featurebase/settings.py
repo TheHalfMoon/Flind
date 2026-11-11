@@ -9,7 +9,7 @@ FEATUREBASE_API_VERSION = "2026-01-01.nova"
 # Featurebase caps `limit` at 100 on every cursor-paginated list endpoint.
 FEATUREBASE_PAGE_SIZE = 100
 
-# Maps PostHog webhook-backed schema name -> the `data.item.object` value of incoming webhook
+# Maps Flind webhook-backed schema name -> the `data.item.object` value of incoming webhook
 # payloads, used to route events into the right warehouse table. Deleted-object topics are
 # intentionally not subscribed: their payload is the object at deletion time, and merging it
 # back on the primary key would resurrect the row. Deletions reconcile on a full refresh.

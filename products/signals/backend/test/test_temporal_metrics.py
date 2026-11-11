@@ -19,7 +19,7 @@ def _sample(metric_name: str) -> float:
 
 @contextmanager
 def _captured_pushes():
-    """Collect the (name, value, attributes) triples pushed to the PostHog metrics client."""
+    """Collect the (name, value, attributes) triples pushed to the Flind metrics client."""
     pushed: list[tuple] = []
     client = MagicMock()
     client.metrics.count.side_effect = lambda name, value, attributes: pushed.append((name, value, attributes))

@@ -5,7 +5,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { toolFromPreBuilt } from '../shared/test-utils'
 
 /**
- * End-to-end proof that a real skill read reaches PostHog carrying the skill's name.
+ * End-to-end proof that a real skill read reaches Flind carrying the skill's name.
  *
  * Only the destination is substituted: a local HTTP sink stands in for ingestion so
  * the outbound payload can be read. Everything upstream is real — the real
@@ -34,7 +34,7 @@ const captured: any[] = []
 let sink: http.Server
 let sinkPort: number
 
-describe.skipIf(!API_TOKEN)('skill read reaches PostHog with $mcp_skill_name', () => {
+describe.skipIf(!API_TOKEN)('skill read reaches Flind with $mcp_skill_name', () => {
     beforeAll(async () => {
         sink = http.createServer((req, res) => {
             const chunks: Buffer[] = []
@@ -153,7 +153,7 @@ describe.skipIf(!API_TOKEN)('skill read reaches PostHog with $mcp_skill_name', (
         const toolCall = captured.find((e) => e.event === '$mcp_tool_call')
         const props = toolCall?.properties ?? {}
 
-        console.info('\n── $mcp_tool_call as PostHog ingestion would receive it ──')
+        console.info('\n── $mcp_tool_call as Flind ingestion would receive it ──')
         console.info(
             JSON.stringify(
                 Object.fromEntries(

@@ -6,7 +6,7 @@ const DISPLAY: Rect = { x: 0, y: 0, width: 2560, height: 1440 };
 const DISPLAYS = [DISPLAY];
 
 const window = (partial: Partial<CgWindow>): CgWindow => ({
-  ownerName: "PostHog",
+  ownerName: "Flind",
   layer: 0,
   bounds: { x: 12, y: 38, width: 1281, height: 1410 },
   ...partial,

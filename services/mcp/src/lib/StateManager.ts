@@ -684,7 +684,7 @@ export class StateManager {
 
     /**
      * Resolve the workspace identifiers used to attach analytics events to the
-     * `organization` and `project` PostHog groups. Reuses the cached user/org/project
+     * `organization` and `project` Flind groups. Reuses the cached user/org/project
      * entities, so repeat calls within a session are cheap.
      */
     async getAnalyticsContext(): Promise<{

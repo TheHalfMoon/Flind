@@ -17,7 +17,7 @@ observed change to explain.
 
 ## Tools
 
-Targets PostHog MCP v2. Typed query tools accept the query body directly — pass
+Targets Flind MCP v2. Typed query tools accept the query body directly — pass
 `kind`, `series`, `dateRange` as top-level fields, do not wrap in `InsightVizNode`.
 
 | Tool                             | Purpose                                          |
@@ -34,7 +34,7 @@ Targets PostHog MCP v2. Typed query tools accept the query body directly — pas
 | `posthog:insight-get` / `-query` | Fetch a saved insight's metadata / data          |
 | `posthog:explain-chart`          | Walk the user through a trends chart (Step 5)    |
 
-Plus the standard PostHog tools the playbooks reference by name (`feature-flag-get-all`,
+Plus the standard Flind tools the playbooks reference by name (`feature-flag-get-all`,
 `experiment-list`, `annotations-list`, `query-error-tracking-issues-list`, `query-logs`,
 `query-session-recordings-list`, `cohorts-list/-create`, `annotation-create`,
 `insight-create`).
@@ -93,7 +93,7 @@ Decide this now, before the investigation, because it changes which queries you 
 
 When the user gave you a saved insight or a query that is a `TrendsQuery` over time (not a box plot, 2D heatmap or scatter plot), or named a metric you ran as one, the investigation ends with a chart explanation from `posthog:explain-chart`.
 `posthog:explain-chart` exists only where chart explanations are enabled, so check for it now and read its schema.
-Where PostHog tools run through `exec`, it is not in your own tool list: run `info explain-chart` before you decide it is missing.
+Where Flind tools run through `exec`, it is not in your own tool list: run `info explain-chart` before you decide it is missing.
 When it does not exist, the findings go in a written report.
 The chart explanation is the answer, in place of a notebook or a long reply. Write a notebook as well only when the user asks for one.
 For anything else, such as a metric that only SQL can express, the findings go in a written report.
@@ -179,7 +179,7 @@ Call `posthog:explain-chart` first. It reports any chapter whose dates match no 
 chart, so fix those dates and call it again.
 When its response says the user already sees the result, the chart explanation is on screen, and you are done.
 Otherwise call `posthog:render-ui` with `tool_name` `explain-chart` and the same input as `tool_input`.
-When `render-ui` does not exist, call `posthog:explain-chart-save` with the same arguments and give the user the link it returns, which opens the chart explanation in PostHog.
+When `render-ui` does not exist, call `posthog:explain-chart-save` with the same arguments and give the user the link it returns, which opens the chart explanation in Flind.
 When the call fails because the tool does not exist, or neither `render-ui` nor a link is available, the user sees nothing, so write the written report instead.
 
 Then reply briefly.

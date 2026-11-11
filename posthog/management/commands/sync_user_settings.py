@@ -13,7 +13,7 @@ from posthog.models.user_home_settings import UserHomeSettings
 
 
 class Command(BaseCommand):
-    help = "Sync user settings from PostHog cloud to local development environment"
+    help = "Sync user settings from Flind cloud to local development environment"
     DEFAULT_CLOUD_TEAM_ID = 2
 
     # Fields to sync from User model
@@ -29,13 +29,13 @@ class Command(BaseCommand):
         parser.add_argument(
             "--api-key",
             type=str,
-            help="Personal API key for PostHog cloud (or set POSTHOG_PERSONAL_API_KEY env var)",
+            help="Personal API key for Flind cloud (or set POSTHOG_PERSONAL_API_KEY env var)",
         )
         parser.add_argument(
             "--host",
             type=str,
             default="https://us.posthog.com",
-            help="PostHog host to sync from (default: https://us.posthog.com)",
+            help="Flind host to sync from (default: https://us.posthog.com)",
         )
         parser.add_argument(
             "--local-email",
@@ -202,14 +202,14 @@ class Command(BaseCommand):
             return team
 
     def _fetch_user_settings(self, host: str, api_key: str) -> dict[str, Any]:
-        """Fetch user settings from PostHog cloud API"""
+        """Fetch user settings from Flind cloud API"""
         headers = {"Authorization": f"Bearer {api_key}"}
         response = requests.get(f"{host}/api/users/@me/", headers=headers, timeout=30)
         response.raise_for_status()
         return response.json()
 
     def _fetch_home_settings(self, host: str, api_key: str, team_id: int) -> dict[str, Any] | None:
-        """Fetch user home settings from PostHog cloud API"""
+        """Fetch user home settings from Flind cloud API"""
         headers = {"Authorization": f"Bearer {api_key}"}
         response = requests.get(f"{host}/api/projects/{team_id}/user_home_settings/", headers=headers, timeout=30)
         if response.status_code == 404:
@@ -218,7 +218,7 @@ class Command(BaseCommand):
         return response.json()
 
     def _fetch_shortcuts(self, host: str, api_key: str, team_id: int) -> list[dict[str, Any]]:
-        """Fetch shortcuts from PostHog cloud API"""
+        """Fetch shortcuts from Flind cloud API"""
         headers = {"Authorization": f"Bearer {api_key}"}
         response = requests.get(f"{host}/api/projects/{team_id}/file_system_shortcuts/", headers=headers, timeout=30)
         if response.status_code == 404:

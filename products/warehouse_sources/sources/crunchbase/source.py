@@ -58,7 +58,7 @@ class CrunchbaseSource(ResumableSource[CrunchbaseSourceConfig, CrunchbaseResumeC
             name=ExternalDataSourceType.CRUNCHBASE,
             category=DataWarehouseSourceCategory.CRM,
             label="Crunchbase",
-            caption="""Enter your Crunchbase user key to pull Crunchbase company and funding data into the PostHog Data warehouse.
+            caption="""Enter your Crunchbase user key to pull Crunchbase company and funding data into the Flind Data warehouse.
 
 You can find your user key in [Crunchbase account settings](https://www.crunchbase.com/account/integrations/crunchbase-api). Note that the Search API used for syncing requires a Crunchbase Enterprise or Applications license.""",
             iconPath="/static/services/crunchbase.png",

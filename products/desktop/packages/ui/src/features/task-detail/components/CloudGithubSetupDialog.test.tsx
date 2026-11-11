@@ -78,7 +78,7 @@ describe("CloudGithubSetupDialog", () => {
     expect(
       screen.getByRole("button", { name: "Details" }).closest("p"),
     ).toHaveTextContent(
-      "Read/write access to authorized repos, plus read access to email addresses and organization membership. PostHog can act as you on GitHub. Details",
+      "Read/write access to authorized repos, plus read access to email addresses and organization membership. Flind can act as you on GitHub. Details",
     );
     await user.click(
       screen.getByRole("button", {
@@ -101,7 +101,7 @@ describe("CloudGithubSetupDialog", () => {
       ).toHaveFocus(),
     );
     expect(
-      screen.getByRole("img", { name: "Connect PostHog to GitHub" }),
+      screen.getByRole("img", { name: "Connect Flind to GitHub" }),
     ).toBeInTheDocument();
     await user.tab();
     expect(screen.getByRole("button", { name: "Not now" })).toHaveFocus();
@@ -200,7 +200,7 @@ describe("CloudGithubSetupDialog", () => {
 
     expect(screen.getByText("GitHub connected")).toBeInTheDocument();
     expect(
-      screen.getByRole("img", { name: "PostHog connected to GitHub" }),
+      screen.getByRole("img", { name: "Flind connected to GitHub" }),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Close" })).toBeInTheDocument();
     expect(

@@ -78,7 +78,7 @@ export function getReviewerOptionDisplayName(option: AvailableReviewerOption, is
 
 /**
  * Display name for a reviewer chip. A reviewer with no linked GitHub account has no login to show,
- * so fall back through the PostHog user we resolved them to.
+ * so fall back through the Flind user we resolved them to.
  */
 export function getReviewerDisplayName(reviewer: EnrichedReviewer): string {
     const fullName = [reviewer.user?.first_name, reviewer.user?.last_name]

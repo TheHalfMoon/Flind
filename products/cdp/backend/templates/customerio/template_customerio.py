@@ -65,7 +65,7 @@ for (let key, value in attributes) {
 let res := fetch(f'https://{inputs.host}/api/v2/entity', {
     'method': 'POST',
     'headers': {
-        'User-Agent': 'PostHog Customer.io App',
+        'User-Agent': 'Flind Customer.io App',
         'Authorization': f'Basic {base64Encode(f'{inputs.site_id}:{inputs.token}')}',
         'Content-Type': 'application/json'
     },

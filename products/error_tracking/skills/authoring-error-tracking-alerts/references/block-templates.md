@@ -122,7 +122,7 @@ The destination code then adds up to 5 resolved in-app stack frames as a code bl
 Each frame shows only the file name, the line and the function name.
 A file name that does not look like a source file, a function name with characters outside an identifier set, or any name that holds a UUID or looks like a key or token, becomes `[redacted]`.
 The message sits in a code block and the browser, OS and release values sit in inline code, so client-sent text cannot render links, images or @mentions.
-Do not add the page URL, request data, local variables or source lines to these inputs. Trackers sit outside PostHog's access controls and a repository can be public, so these values can expose tokens and user data.
+Do not add the page URL, request data, local variables or source lines to these inputs. Trackers sit outside Flind's access controls and a repository can be public, so these values can expose tokens and user data.
 Each list line is left out when the event has no value for it, and the replay line is left out when replay was not recording.
 Keep the list form: GitLab joins plain consecutive lines into one paragraph.
 `_spiking` events carry no exception properties, so on them only the message would render.

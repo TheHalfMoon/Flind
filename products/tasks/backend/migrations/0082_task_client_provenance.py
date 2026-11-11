@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
             name="client_provenance",
             field=models.CharField(
                 blank=True,
-                choices=[("posthog_desktop", "PostHog Desktop")],
+                choices=[("posthog_desktop", "Flind Desktop")],
                 editable=False,
                 max_length=32,
                 null=True,
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
             name="client_provenance",
             field=models.CharField(
                 blank=True,
-                choices=[("posthog_desktop", "PostHog Desktop")],
+                choices=[("posthog_desktop", "Flind Desktop")],
                 editable=False,
                 max_length=32,
                 null=True,
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             name="client_provenance",
             field=models.CharField(
                 blank=True,
-                choices=[("posthog_desktop", "PostHog Desktop")],
+                choices=[("posthog_desktop", "Flind Desktop")],
                 editable=False,
                 max_length=32,
                 null=True,

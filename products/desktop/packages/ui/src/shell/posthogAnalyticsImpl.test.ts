@@ -63,7 +63,7 @@ describe("onFeatureFlagsLoaded", () => {
     expect(mockPosthog.onFeatureFlags).not.toHaveBeenCalled();
   });
 
-  it("propagates unsubscribe to PostHog when called after init", async () => {
+  it("propagates unsubscribe to Flind when called after init", async () => {
     const realUnsub = vi.fn();
     mockPosthog.onFeatureFlags.mockReturnValue(realUnsub);
 
@@ -76,7 +76,7 @@ describe("onFeatureFlagsLoaded", () => {
     expect(realUnsub).toHaveBeenCalledTimes(1);
   });
 
-  it("routes post-init subscribers directly to PostHog", async () => {
+  it("routes post-init subscribers directly to Flind", async () => {
     const realUnsub = vi.fn();
     mockPosthog.onFeatureFlags.mockReturnValue(realUnsub);
 

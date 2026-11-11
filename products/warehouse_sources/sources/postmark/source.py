@@ -66,7 +66,7 @@ class PostmarkSource(
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Postmark",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Postmark **Server API token** to pull your Postmark data into the PostHog Data warehouse.
+            caption="""Enter your Postmark **Server API token** to pull your Postmark data into the Flind Data warehouse.
 
 You can find your server token under **Servers → (your server) → API Tokens** in the Postmark dashboard.
 

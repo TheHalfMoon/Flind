@@ -94,7 +94,7 @@ describe("FeedbackModal", () => {
   it("asks for specific Desktop feedback", async () => {
     await renderModal("feedback");
     expect(
-      screen.getByText("What should we improve in PostHog Desktop?"),
+      screen.getByText("What should we improve in Flind Desktop?"),
     ).toBeInTheDocument();
     expect(
       screen.getByPlaceholderText("What happened, and what did you expect?"),
@@ -131,14 +131,14 @@ describe("FeedbackModal", () => {
     );
   });
 
-  it("does not ask for a type before opening PostHog web", async () => {
+  it("does not ask for a type before opening Flind web", async () => {
     const user = userEvent.setup();
     await renderModal("posthog-web");
     expect(
       screen.queryByRole("combobox", { name: "Feedback type" }),
     ).not.toBeInTheDocument();
     await user.type(
-      screen.getByPlaceholderText("What are you looking for in PostHog web?"),
+      screen.getByPlaceholderText("What are you looking for in Flind web?"),
       "Example feedback",
     );
     await user.click(screen.getByRole("button", { name: "Send feedback" }));

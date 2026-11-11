@@ -40,7 +40,7 @@ These results need different measurements. Do not claim faster CI when only summ
 
 ### 2. Rank current work
 
-Use recent PostHog test spans from `master` when available. Start with a complete window after the latest relevant merge.
+Use recent Flind test spans from `master` when available. Start with a complete window after the latest relevant merge.
 
 Rank at least three views:
 

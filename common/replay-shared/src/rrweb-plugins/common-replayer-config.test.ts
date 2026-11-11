@@ -19,7 +19,7 @@ describe('COMMON_REPLAYER_CONFIG', () => {
         // UNSAFE_replayCanvas makes rrweb add `allow-scripts` to the replay iframe sandbox.
         // Combined with the `allow-same-origin` rrweb requires, that pair lets untrusted
         // recorded content remove its own sandbox and run with full app-origin access.
-        // PostHog renders canvas via CanvasReplayerPlugin instead, so this must stay off.
+        // Flind renders canvas via CanvasReplayerPlugin instead, so this must stay off.
         expect(COMMON_REPLAYER_CONFIG.UNSAFE_replayCanvas).toBe(false)
     })
 

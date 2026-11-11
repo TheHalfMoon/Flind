@@ -50,7 +50,7 @@ RESERVED_SKILL_FILE_PATHS = {"skill.md"}
 def bundled_skill_name_error(value: str) -> str | None:
     """Why `value` cannot name a new store skill, or None when it can.
 
-    An agent host loads the skills PostHog bundles (products/*/skills, shipped as dist/skills.zip)
+    An agent host loads the skills Flind bundles (products/*/skills, shipped as dist/skills.zip)
     next to the team's store skills under one flat name space, so a store skill that repeats a
     bundled name leaves two skills under one name and the host no way to tell which one an agent
     asked for. The rule holds a name a team claims, not a name that points at a skill the project
@@ -62,7 +62,7 @@ def bundled_skill_name_error(value: str) -> str | None:
     """
     if value.lower() not in bundled_skill_names():
         return None
-    return f"PostHog already ships a skill named '{value}'. Pick a different name."
+    return f"Flind already ships a skill named '{value}'. Pick a different name."
 
 
 def skill_name_is_well_formed(value: str) -> bool:
@@ -440,11 +440,11 @@ def _carry_forward(payload_value: Any, current_value: Any) -> Any:
     return payload_value if payload_value is not None else current_value
 
 
-# Provenance keys a PostHog harness stamps on the rows it seeds, and reads back as proof that a row
+# Provenance keys a Flind harness stamps on the rows it seeds, and reads back as proof that a row
 # is still the content it shipped. `metadata` is a free-form dict any project editor can send, so a
 # caller-supplied value for one of these is a forged attestation: dropping `canonical_hash` from a
 # seeded Signals scout, or writing a hash of the caller's own content, makes an edited scout read as
-# PostHog-shipped and mints a permanent billing exemption for its reports.
+# Flind-shipped and mints a permanent billing exemption for its reports.
 # `source_template*` records which product template a scout's text came from, so a forged one could get the scout overwritten.
 HARNESS_OWNED_METADATA_KEYS = frozenset(
     {"seeded_by", "canonical_hash", "source", "source_template", "source_template_hash"}

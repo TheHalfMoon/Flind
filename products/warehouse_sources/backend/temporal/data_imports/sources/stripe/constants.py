@@ -70,7 +70,7 @@ HISTORY_SNAPSHOT_EVENT_TYPE = "snapshot"
 # type. Stripe object types never contain ":", so this can never collide with a real one.
 PAYMENT_METHOD_HISTORY_MAPPING_KEY = "payment_method:history"
 
-# Maps PostHog resource name -> Stripe API object type (as it appears in webhook data.object.object)
+# Maps Flind resource name -> Stripe API object type (as it appears in webhook data.object.object)
 #
 # This is what the webhook HogFunction routes on: it reads `data.object.object` off the incoming
 # event and looks the value up here to find the table to write into. A resource missing from this

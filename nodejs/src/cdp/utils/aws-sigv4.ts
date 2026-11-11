@@ -126,7 +126,7 @@ export function signAwsRequest({
 }: SignAwsRequestArgs): Record<string, string> {
     const parsed = new URL(url)
     // Read time via `Date.now()` so test seams that mock `Date.now` (the standard
-    // PostHog jest pattern) flow through to the signature timestamp.
+    // Flind jest pattern) flow through to the signature timestamp.
     const { amzDate, date } = formatAmzDate(now ?? new Date(Date.now()))
 
     const baseHeaders: Record<string, string> = {}

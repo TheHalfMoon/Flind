@@ -38,7 +38,7 @@ class SourceConnectLinkSerializer(serializers.Serializer):
     )
     connect_url = serializers.CharField(
         help_text=(
-            "Full URL to share with the user. It opens the source's connection form in PostHog — "
+            "Full URL to share with the user. It opens the source's connection form in Flind — "
             "credentials never pass through the agent or the chat."
         )
     )
@@ -59,7 +59,7 @@ class SourceCredentialCreateSerializer(serializers.Serializer):
         required=False,
         help_text=(
             "The migration item whose prefilled settings the connect page showed. Every prefilled setting must "
-            "keep its value, or the request is rejected before PostHog connects anywhere."
+            "keep its value, or the request is rejected before Flind connects anywhere."
         ),
     )
 
@@ -79,7 +79,7 @@ def _find_unresolved_secret_refs(payload: Any) -> list[str]:
     """Return payload keys whose value is an unresolved secret reference.
 
     The wizard CLI's `wizard_ask` returns sensitive answers as `{"secretRef": "..."}` objects that the
-    caller must resolve to real values before they reach PostHog. If one slips through, source creation
+    caller must resolve to real values before they reach Flind. If one slips through, source creation
     fails downstream with a confusing "invalid credentials"/"invalid API key" error — detect it up front
     so the agent gets an actionable message instead.
     """
@@ -97,7 +97,7 @@ def _unresolved_secret_ref_response(payload: Any) -> Response | None:
         data={
             "message": (
                 f"Unresolved secret reference(s) for: {', '.join(sorted(offenders))}. These fields are still "
-                "`{'secretRef': ...}` objects — PostHog cannot resolve them. Resolve the secret to its real "
+                "`{'secretRef': ...}` objects — Flind cannot resolve them. Resolve the secret to its real "
                 "value before calling (or collect credentials via data-warehouse-source-connect-link and pass "
                 "the resulting credential_id instead)."
             )
@@ -155,7 +155,7 @@ class ExternalDataSourceCredentialStoreMixin(base.ExternalDataSourceViewSetBase)
     def store_credentials(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         """Validate and store credentials for a data warehouse source without creating the source.
 
-        Backs the source connect page: the user enters credentials directly in PostHog, they are
+        Backs the source connect page: the user enters credentials directly in Flind, they are
         checked against a live connection, then stashed encrypted in a temporary store. The returned
         credential id can be passed to `setup` as {'credential_id': <id>} to create the source — so
         secrets never travel through an agent conversation. The stash is single-use: it is deleted
@@ -343,12 +343,12 @@ class ExternalDataSourceCredentialStoreMixin(base.ExternalDataSourceViewSetBase)
             "auth_method": "oauth" if oauth_field else "credentials",
             "connect_url": connect_url,
             "instructions": (
-                f"Share this link with the user. They {action_phrase} directly in PostHog — never ask them to "
+                f"Share this link with the user. They {action_phrase} directly in Flind — never ask them to "
                 "paste credentials or tokens into the chat. The page only stores the connection details; it does "
                 "not create the source. Once the user confirms they're done, find the stored credential id via "
                 f"data-warehouse-stored-credentials-list (source_type='{source_type}', newest first) and "
                 f"{create_step}. Stored credentials are "
-                "single-use, expire after 24 hours, and are only visible to and consumable by the PostHog user "
+                "single-use, expire after 24 hours, and are only visible to and consumable by the Flind user "
                 "who entered them — so the page must be filled by the same user this session authenticates as."
             ),
         }

@@ -39,7 +39,7 @@ const bootstrap = JSON.parse(
 ) as Partial<PiRpcBootstrap>;
 const providerOptions = bootstrap.providerOptions;
 if (!providerOptions?.apiKey) {
-  throw new Error("Pi RPC host requires PostHog provider credentials");
+  throw new Error("Pi RPC host requires Flind provider credentials");
 }
 sanitizePiHostEnvironment();
 
@@ -139,7 +139,7 @@ if (requestedModel) {
     requestedModel,
   );
   if (!model) {
-    throw new Error(`PostHog model not found: ${requestedModel}`);
+    throw new Error(`Flind model not found: ${requestedModel}`);
   }
   await runtime.session.setModel(model);
 }

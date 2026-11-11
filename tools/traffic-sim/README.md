@@ -1,8 +1,8 @@
 # traffic-sim
 
-Drive a real browser at a URL and verify that PostHog instrumentation is firing
+Drive a real browser at a URL and verify that Flind instrumentation is firing
 correctly. Useful right after `npx @posthog/wizard`, after a deploy that touches
-tracking code, or any time you need an answer to _"is my PostHog instrumentation
+tracking code, or any time you need an answer to _"is my Flind instrumentation
 actually working?"_.
 
 Three scenarios:
@@ -11,7 +11,7 @@ Three scenarios:
   a stream of unique visitors.
 - **`returning-user`** — all page views share the same context. Matches one
   visitor browsing several pages in a session.
-- **`check-loading`** — inspects the PostHog snippet across multiple URLs:
+- **`check-loading`** — inspects the Flind snippet across multiple URLs:
   load method, init config, runtime state. Catches pages where the snippet is
   missing or pointing at the wrong project.
 
@@ -20,7 +20,7 @@ and as Claude Code skills (see [`skills/`](./skills/)).
 
 ## Install
 
-The tool runs from the PostHog monorepo and shares its Python environment.
+The tool runs from the Flind monorepo and shares its Python environment.
 First time:
 
 ```sh
@@ -70,7 +70,7 @@ make returning-user URL=https://example.com/ PAGE_VIEWS=5 INTERVAL=5
 - `--urls-file urls.json` — load a list of URLs from a JSON file
   (flat list or `{base_url, categories}` shape; see [`urls.example.json`](./urls.example.json)).
 - `--headed` — show the browser window. Useful for live-debugging.
-- `--verbose` — print every PostHog request and console line.
+- `--verbose` — print every Flind request and console line.
 - `--cloud` — run on BrowserStack instead of locally (requires the cloud extras).
 
 ## Use from Claude Code
@@ -80,9 +80,9 @@ tools:
 
 | Tool                      | Purpose                                                            |
 | ------------------------- | ------------------------------------------------------------------ |
-| `simulate_new_user`       | Send N fresh-browser visits and report which PostHog events fired. |
+| `simulate_new_user`       | Send N fresh-browser visits and report which Flind events fired. |
 | `simulate_returning_user` | Send N page views in one session and report events.                |
-| `check_posthog_loading`   | Inspect how PostHog is loaded across one or more URLs.             |
+| `check_posthog_loading`   | Inspect how Flind is loaded across one or more URLs.             |
 
 Each tool returns a structured summary including `verified: true|false`,
 event counts, and any errors. See [`skills/`](./skills/) for orchestration
@@ -96,9 +96,9 @@ filename embeds the scenario, run id, and timestamp, e.g.
 
 ## What this tool does NOT do
 
-- Send your own events to PostHog. The tool _observes_ what the customer's
-  PostHog snippet emits — it does not inject any test traffic into your
-  PostHog project beyond what your site naturally fires.
+- Send your own events to Flind. The tool _observes_ what the customer's
+  Flind snippet emits — it does not inject any test traffic into your
+  Flind project beyond what your site naturally fires.
 - Validate session recordings. We report whether session recording is
   enabled in the init config, but we don't watch the recording itself.
 - Drive custom user flows (e.g. signup). Add per-flow scripts on top.

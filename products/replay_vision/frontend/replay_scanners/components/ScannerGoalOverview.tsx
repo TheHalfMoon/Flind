@@ -459,7 +459,7 @@ export function ScannerGoalOverview({ scannerId }: { scannerId: string }): JSX.E
                 {aiAddedValues.length > 0 ? (
                     <div className="flex flex-wrap items-center gap-1 text-xs text-secondary">
                         <IconSparkles className="text-ai" />
-                        <span>PostHog AI added to your filters:</span>
+                        <span>Flind AI added to your filters:</span>
                         {aiAddedValues.map((value) => (
                             <LemonSnack key={value} wrap>
                                 {value}

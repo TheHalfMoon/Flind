@@ -100,7 +100,7 @@ describe("parseShareLink", () => {
   it.each([
     ["a non-PostHog host", "https://evil.com/code/canvas/chan1/dash1"],
     [
-      "an unrelated PostHog path",
+      "an unrelated Flind path",
       "https://us.posthog.com/project/2/dashboard/1",
     ],
     [

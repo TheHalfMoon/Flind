@@ -47,7 +47,7 @@ class MonteCarloSource(ResumableSource[MonteCarloSourceConfig, MonteCarloResumeC
             label="Monte Carlo",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["montecarlo", "data observability"],
-            caption="""Enter your Monte Carlo API key to pull your data observability history into the PostHog Data warehouse.
+            caption="""Enter your Monte Carlo API key to pull your data observability history into the Flind Data warehouse.
 
 You can create an API key from **Settings → API → Keys** in your Monte Carlo dashboard. Keys are created with an expiration date, so you will need to reconnect with a new key when it expires.
 """,

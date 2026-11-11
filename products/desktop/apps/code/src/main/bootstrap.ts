@@ -50,10 +50,10 @@ const appName = isDev
     : "posthog-code";
 app.setName(
   isDev
-    ? "PostHog (Development)"
+    ? "Flind (Development)"
     : isTestChannel
-      ? "PostHog (Test build)"
-      : "PostHog",
+      ? "Flind (Test build)"
+      : "Flind",
 );
 
 // Set userData path for @flind/code
@@ -118,10 +118,10 @@ if (isDev) {
 crashReporter.start({ uploadToServer: false });
 
 // Force IPv4 resolution when "localhost" is used so the agent hits 127.0.0.1
-// instead of ::1. This matches how the renderer already reaches the PostHog API.
+// instead of ::1. This matches how the renderer already reaches the Flind API.
 dns.setDefaultResultOrder("ipv4first");
 
-// Disable "Happy Eyeballs": PostHog's many-address ELB times out the connect
+// Disable "Happy Eyeballs": Flind's many-address ELB times out the connect
 // when IPv6 is unreachable (e.g. Tailscale), as family racing abandons each
 // IPv4 attempt before it completes. ipv4first alone isn't enough.
 net.setDefaultAutoSelectFamily(false);

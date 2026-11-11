@@ -117,14 +117,14 @@ describe('AI subscription display options', () => {
             'Report + feedback',
         ],
         [
-            'names PostHog-only content',
+            'names Flind-only content',
             {
                 include_images: false,
                 include_feedback: false,
                 include_manage_link: true,
                 include_posthog_hint: true,
             },
-            'Report + PostHog links and suggestions',
+            'Report + Flind links and suggestions',
         ],
         [
             'names charts and feedback content',
@@ -137,24 +137,24 @@ describe('AI subscription display options', () => {
             'Report + charts + feedback',
         ],
         [
-            'names charts and PostHog content',
+            'names charts and Flind content',
             {
                 include_images: true,
                 include_feedback: false,
                 include_manage_link: true,
                 include_posthog_hint: true,
             },
-            'Report + charts + PostHog links and suggestions',
+            'Report + charts + Flind links and suggestions',
         ],
         [
-            'names feedback and PostHog content',
+            'names feedback and Flind content',
             {
                 include_images: false,
                 include_feedback: true,
                 include_manage_link: true,
                 include_posthog_hint: true,
             },
-            'Report + feedback + PostHog links and suggestions',
+            'Report + feedback + Flind links and suggestions',
         ],
         [
             'names an API-managed manage-link-only state',
@@ -174,7 +174,7 @@ describe('AI subscription display options', () => {
                 include_manage_link: false,
                 include_posthog_hint: true,
             },
-            'Report + PostHog suggestion',
+            'Report + Flind suggestion',
         ],
     ] as const)('%s', (_label, deliveryConfig, expected) => {
         expect(getAiSubscriptionDisplaySummary(deliveryConfig)).toBe(expected)
@@ -207,7 +207,7 @@ describe('AI subscription display options', () => {
         })
     })
 
-    it('treats either PostHog action flag as enabled', () => {
+    it('treats either Flind action flag as enabled', () => {
         expect(
             getAiSubscriptionDisplayOptionState(
                 { include_manage_link: true, include_posthog_hint: false },
@@ -231,8 +231,8 @@ describe('AI subscription display options', () => {
     })
 
     it.each([
-        ['the PostHog suggestion', { include_posthog_hint: false }, 'Report + charts + feedback + manage link'],
-        ['the manage link', { include_manage_link: false }, 'Report + charts + feedback + PostHog suggestion'],
+        ['the Flind suggestion', { include_posthog_hint: false }, 'Report + charts + feedback + manage link'],
+        ['the manage link', { include_manage_link: false }, 'Report + charts + feedback + Flind suggestion'],
     ] as const)('does not call a Slack report full when it drops %s', (_label, deliveryConfig, expected) => {
         expect(getAiSubscriptionDisplaySummary(deliveryConfig, SubscriptionTargetEnumApi.Slack)).toBe(expected)
     })

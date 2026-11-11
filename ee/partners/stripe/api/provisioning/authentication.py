@@ -29,10 +29,10 @@ from products.security.backend.facade.api import REFUSAL_CODE as SECURITY_REFUSA
 from ee.partners.stripe.api.provisioning.core import is_stripe_oauth_app
 from ee.partners.stripe.api.provisioning.exceptions import SpecError
 
-# The response reaches Stripe, not a PostHog page, so the message names PostHog. The code is
-# what lets PostHog support trace the refusal to an access rule.
+# The response reaches Stripe, not a Flind page, so the message names Flind. The code is
+# what lets Flind support trace the refusal to an access rule.
 ACCOUNT_BLOCKED_MESSAGE = (
-    "PostHog can't give access to this account. If you think this is a mistake, contact PostHog support "
+    "Flind can't give access to this account. If you think this is a mistake, contact Flind support "
     f"and quote the code {SECURITY_REFUSAL_CODE}."
 )
 

@@ -723,7 +723,7 @@ class EventDefinitionViewSet(
                 location=OpenApiParameter.QUERY,
                 required=False,
                 description=(
-                    "When true, keep only verified events and core PostHog events. When false, keep the rest "
+                    "When true, keep only verified events and core Flind events. When false, keep the rest "
                     "(Enterprise only)."
                 ),
             ),
@@ -1033,7 +1033,7 @@ class EventDefinitionViewSet(
         # EE_AVAILABLE is checked above, so get_object returns an EnterpriseEventDefinition.
         instance = cast(EnterpriseEventDefinition, self.get_object())
         if instance.name.startswith("$"):
-            raise serializers.ValidationError("PostHog events can't be dropped from here.")
+            raise serializers.ValidationError("Flind events can't be dropped from here.")
 
         user = cast(User, request.user)
         teams = list(Team.objects.filter(project_id=self.project_id))

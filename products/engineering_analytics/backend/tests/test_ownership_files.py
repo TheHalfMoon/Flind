@@ -29,7 +29,7 @@ class TestOwnershipFiles(BaseTest):
             team=self.team,
             kind="github",
             integration_id="42",
-            config={"account": {"name": "PostHog"}},
+            config={"account": {"name": "Flind"}},
             sensitive_config={"access_token": "t0ken"},
         )
 

@@ -3,7 +3,7 @@ import { ExternalDataDestinationApi } from 'products/warehouse_sources/frontend/
 /** Where a destination writes, as far as its non-secret config says. Null when there is nothing to add. */
 export function destinationTarget(destination: ExternalDataDestinationApi): string | null {
     if (destination.is_posthog_warehouse) {
-        return 'Managed by PostHog'
+        return 'Managed by Flind'
     }
     const config = (destination.config ?? {}) as Record<string, unknown>
     const parts = [config.database, config.schema, config.dataset, config.bucket].filter(

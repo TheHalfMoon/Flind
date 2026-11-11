@@ -14,7 +14,7 @@ export const getEveSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             content: (
                 <>
                     <Markdown>
-                        Install PostHog AI, its OpenTelemetry peer dependencies, and Vercel's OpenTelemetry package.
+                        Install Flind AI, its OpenTelemetry peer dependencies, and Vercel's OpenTelemetry package.
                     </Markdown>
 
                     <CodeBlock
@@ -38,7 +38,7 @@ export const getEveSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Set your PostHog project token and host in your Eve project's environment.</Markdown>
+                    <Markdown>Set your Flind project token and host in your Eve project's environment.</Markdown>
 
                     <CodeBlock
                         language="bash"
@@ -84,7 +84,7 @@ export const getEveSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                                     ),
                                   ],
                                 }),
-                              // Optional: Link Eve and AI SDK spans to a PostHog user.
+                              // Optional: Link Eve and AI SDK spans to a Flind user.
                               events: {
                                 'step.started'(input) {
                                   const distinctId =

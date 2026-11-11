@@ -142,7 +142,7 @@ describe('BI connections', () => {
         }
     )
 
-    it('keeps native property groups searchable without treating warehouse JSON as PostHog properties', () => {
+    it('keeps native property groups searchable without treating warehouse JSON as Flind properties', () => {
         const catalog = {
             ...tables,
             persons: table('persons', [field('properties', 'json'), field('email', 'string')]),
@@ -156,7 +156,7 @@ describe('BI connections', () => {
         }
     })
 
-    it('uses the PostHog table ID for hydration and status', () => {
+    it('uses the Flind table ID for hydration and status', () => {
         const catalog = { ...tables, persons: { ...table('persons', []), id: 'person-table-id' } }
         const expanded = ['["person"]']
         expect(getPendingBIConnectionTables(buildBIConnections(source, catalog, expanded, {}, false))).toEqual([

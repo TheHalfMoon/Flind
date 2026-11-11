@@ -189,7 +189,7 @@ async def test_reporter_output_is_labeled_and_reserves_pass_for_the_run(
     assert "Experiment: sandboxed-cli-mcp-verify-event-cli" in output
     assert "exit_code_zero: 100.0%" in output
     assert "called_target_tool: 0.0%" in output
-    assert "PostHog: https://us.posthog.com/" in output
+    assert "Flind: https://us.posthog.com/" in output
     assert "Braintrust:" not in output
     assert f"Agent logs: {tmp_path}" in output
     assert output.count("PASS") == 1
@@ -426,16 +426,16 @@ async def test_sandboxed_eval_publishes_existing_results_without_disrupting_repo
             assert batch["results"][0]["item_id"] == batch["items"][0]["id"]
             assert batch["items"][0]["payload"]["output"]["large_integer"] == 2**64
             assert requests[2].url.path.endswith("/complete/")
-            assert "PostHog: https://posthog.example.com/project/123/" in output
+            assert "Flind: https://posthog.example.com/project/123/" in output
         else:
             assert len(requests) == 1
-            assert "PostHog:" not in output
+            assert "Flind:" not in output
             assert "upload failed:" in output
             assert "403" in output
             assert "Results were not saved for retry." in output
     else:
         assert requests == []
-        assert "PostHog:" not in output
+        assert "Flind:" not in output
         if delivery_state != "ready":
             reason = (
                 "background delivery is unavailable" if delivery_state == "unavailable" else "queue is full or closed"
@@ -443,7 +443,7 @@ async def test_sandboxed_eval_publishes_existing_results_without_disrupting_repo
             assert reason in output
             assert "Results were not saved for retry." in output
         elif enrolled and send_to_posthog:
-            assert "PostHog offline: disabled:" in output
+            assert "Flind offline: disabled:" in output
             assert "POSTHOG_OFFLINE_EVAL_" in output
         else:
             assert "POSTHOG OFFLINE" not in output

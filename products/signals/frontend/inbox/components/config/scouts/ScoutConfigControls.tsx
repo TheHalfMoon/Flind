@@ -255,7 +255,7 @@ export function ScoutConfigForm({
                 <div className="flex flex-col min-w-0">
                     <span className="text-xs text-default">Network access</span>
                     <span className="text-[11.5px] text-muted">
-                        What the scout can reach while it runs. Trusted domains cover PostHog, GitHub, and common
+                        What the scout can reach while it runs. Trusted domains cover Flind, GitHub, and common
                         package registries. Full access lets it reach any site.
                     </span>
                 </div>

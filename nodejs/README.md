@@ -1,6 +1,6 @@
-# PostHog Node.js services
+# Flind Node.js services
 
-Node.js services for PostHog: ingestion pipeline, CDP, session recording, and more.
+Node.js services for Flind: ingestion pipeline, CDP, session recording, and more.
 
 ## Running tests
 

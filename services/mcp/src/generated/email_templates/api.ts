@@ -3,13 +3,13 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 7 enabled ops
+ * Flind API - MCP 7 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
 
 /**
- * Send one transactional email to one recipient. Name a template made transactional in `template_id`, and `message_data` fills its `{{ variables.* }}` placeholders. Or send content your code rendered with a `template_key`, a `subject` and `html` or `text`: PostHog sends it as is, and its metrics and run history group under the key. Transactional emails skip opt-outs and frequency caps. Send an `Idempotency-Key` header to retry safely without sending the email twice. Needs the `transactional_email:write` scope. A key with `hog_flow:write` also works, but that scope reaches the rest of Workflows too.
+ * Send one transactional email to one recipient. Name a template made transactional in `template_id`, and `message_data` fills its `{{ variables.* }}` placeholders. Or send content your code rendered with a `template_key`, a `subject` and `html` or `text`: Flind sends it as is, and its metrics and run history group under the key. Transactional emails skip opt-outs and frequency caps. Send an `Idempotency-Key` header to retry safely without sending the email twice. Needs the `transactional_email:write` scope. A key with `hog_flow:write` also works, but that scope reaches the rest of Workflows too.
  * @summary Send a transactional email
  */
 export const MessagingSendEmailCreateParams = () => zod.object({
@@ -46,7 +46,7 @@ export const MessagingSendEmailCreateBody = () => zod.strictObject({
         .regex(messagingSendEmailCreateBodyTemplateKeyRegExp)
         .optional()
         .describe(
-            'Names an email whose content your code rendered, such as `order-shipped`, so its metrics, logs and status group under it. Letters, numbers, hyphens (-) and underscores (_) only. Send it with `subject` and `html` or `text`. PostHog sends the content as is and never stores it as a template.'
+            'Names an email whose content your code rendered, such as `order-shipped`, so its metrics, logs and status group under it. Letters, numbers, hyphens (-) and underscores (_) only. Send it with `subject` and `html` or `text`. Flind sends the content as is and never stores it as a template.'
         ),
     distinct_id: zod
         .string()
@@ -61,7 +61,7 @@ export const MessagingSendEmailCreateBody = () => zod.strictObject({
         .string()
         .optional()
         .describe(
-            'Plain text body of the email your code rendered, at most 5 MiB as UTF-8. Without it, PostHog derives the text from `html`.'
+            'Plain text body of the email your code rendered, at most 5 MiB as UTF-8. Without it, Flind derives the text from `html`.'
         ),
     reply_to: zod
         .array(zod.email())
@@ -184,7 +184,7 @@ export const MessagingTemplatesCreateBody = () => zod.strictObject({
                             })
                             .optional()
                             .describe(
-                                "Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
+                                "Design JSON for Flind's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
                             ),
                         from: zod
                             .strictObject({
@@ -239,7 +239,7 @@ export const MessagingTemplatesCreateBody = () => zod.strictObject({
         .boolean()
         .optional()
         .describe(
-            "For emails that carry login codes, reset links or other secrets. PostHog keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time."
+            "For emails that carry login codes, reset links or other secrets. Flind keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time."
         ),
 })
 
@@ -342,7 +342,7 @@ export const MessagingTemplatesPartialUpdateBody = () => zod.strictObject({
                             })
                             .optional()
                             .describe(
-                                "Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
+                                "Design JSON for Flind's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
                             ),
                         from: zod
                             .strictObject({
@@ -397,7 +397,7 @@ export const MessagingTemplatesPartialUpdateBody = () => zod.strictObject({
         .boolean()
         .optional()
         .describe(
-            "For emails that carry login codes, reset links or other secrets. PostHog keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time."
+            "For emails that carry login codes, reset links or other secrets. Flind keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time."
         ),
 })
 

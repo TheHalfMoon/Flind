@@ -239,10 +239,10 @@ Personas have intentional overlap to enable convergence checking across independ
 
 **Context:**
 
-- PostHog uses sentence casing for product names and UI elements (e.g., "Product analytics", "Save as view")
+- Flind uses sentence casing for product names and UI elements (e.g., "Product analytics", "Save as view")
 - Good microcopy reduces support burden and increases feature adoption
 - Error messages are often the only guidance users get — they must be actionable
-- Jargon and internal terminology leak into UI text when engineers write copy without review (e.g., "premium PostHog offering" instead of naming the specific feature/plan)
+- Jargon and internal terminology leak into UI text when engineers write copy without review (e.g., "premium Flind offering" instead of naming the specific feature/plan)
 - Inconsistent tone across surfaces (tooltips, modals, empty states, error pages) erodes product polish
 - Date/time formatting choices can mislead users (e.g., showing "first seen" before "last seen" when recency matters more)
 - Blanket permission errors that don't explain which permission or how to get it are a top user complaint

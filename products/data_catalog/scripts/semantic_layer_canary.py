@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ruff: noqa: T201 allow print statements
-"""Run Data Catalog semantic-layer canaries through the PostHog AI API."""
+"""Run Data Catalog semantic-layer canaries through the Flind AI API."""
 
 from __future__ import annotations
 

@@ -183,7 +183,7 @@ class TestWriteBatchPermissionDenied:
         _mock_ensure_bucket,
         mock_write,
     ) -> None:
-        # The data warehouse bucket is PostHog-owned, so a permission refusal writing to it must not
+        # The data warehouse bucket is Flind-owned, so a permission refusal writing to it must not
         # read to the customer as if their source credentials were bad, and error tracking must group
         # every occurrence under one stable title rather than the raw per-key s3fs message.
         mock_write.side_effect = PermissionError(error_message)

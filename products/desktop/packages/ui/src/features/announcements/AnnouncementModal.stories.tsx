@@ -8,7 +8,7 @@ import { AnnouncementModal } from "./AnnouncementModal";
 type ModalAnnouncement = Extract<Announcement, { kind: "announcement" }>;
 
 const MARKDOWN_BODY = [
-  "PostHog Desktop now runs **recurring agent jobs** straight from your project.",
+  "Flind Desktop now runs **recurring agent jobs** straight from your project.",
   "",
   "- Schedule a prompt on any cadence",
   "- Route the results to Self-driving or a channel",

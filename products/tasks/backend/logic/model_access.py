@@ -9,7 +9,7 @@ SubscriptionAdapter = Literal["claude", "codex"]
 
 @frozen
 class ModelAccess:
-    """Who pays for a run's model use: PostHog, or the owner's plan for one adapter."""
+    """Who pays for a run's model use: Flind, or the owner's plan for one adapter."""
 
     adapter: SubscriptionAdapter | None = None
     owner_id: int | None = None

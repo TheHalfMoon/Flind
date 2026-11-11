@@ -40,7 +40,7 @@ export const GATEWAY_REMINT_MIN_INTERVAL_MS = 5_000;
 
 export const GATEWAY_MINT_TIMEOUT_MS = 15_000;
 
-const SIGN_IN_DETAIL = "Sign in to PostHog again to use PostHog AI.";
+const SIGN_IN_DETAIL = "Sign in to Flind again to use Flind AI.";
 
 interface RefusalPolicy {
   status: BlockedRoute["status"];
@@ -60,7 +60,7 @@ const TRANSIENT: RefusalPolicy = {
 const UNAVAILABLE: RefusalPolicy = {
   status: 403,
   recheckMs: GATEWAY_ACTION_RECHECK_MS,
-  detail: "PostHog AI isn't available for this project right now.",
+  detail: "Flind AI isn't available for this project right now.",
   serverDetail: true,
 };
 
@@ -68,19 +68,19 @@ const REFUSALS: Record<string, RefusalPolicy> = {
   credit_bucket_exhausted: {
     status: 402,
     recheckMs: GATEWAY_BLOCKED_RECHECK_MS,
-    detail: "Your organization has reached its PostHog Desktop usage limit",
+    detail: "Your organization has reached its Flind Desktop usage limit",
     serverDetail: true,
   },
   throttled: {
     status: 429,
     recheckMs: GATEWAY_THROTTLED_RECHECK_MS,
-    detail: "Too many PostHog AI sign-in attempts. Try again in a few minutes.",
+    detail: "Too many Flind AI sign-in attempts. Try again in a few minutes.",
     serverDetail: false,
   },
   email_unverified: {
     status: 403,
     recheckMs: GATEWAY_ACTION_RECHECK_MS,
-    detail: "Verify your email to use PostHog AI.",
+    detail: "Verify your email to use Flind AI.",
     serverDetail: true,
   },
   oauth_required: {
@@ -104,26 +104,26 @@ const REFUSALS: Record<string, RefusalPolicy> = {
   blocked: {
     status: 403,
     recheckMs: GATEWAY_BLOCKED_RECHECK_MS,
-    detail: "This account can't use PostHog AI.",
+    detail: "This account can't use Flind AI.",
     serverDetail: true,
   },
   desktop_access_blocked: {
     status: 403,
     recheckMs: GATEWAY_BLOCKED_RECHECK_MS,
-    detail: "PostHog Desktop access is required.",
+    detail: "Flind Desktop access is required.",
     serverDetail: true,
   },
   no_project: {
     status: 403,
     recheckMs: GATEWAY_ACTION_RECHECK_MS,
-    detail: "Select a project to use PostHog AI.",
+    detail: "Select a project to use Flind AI.",
     serverDetail: false,
   },
   // Go sends no CORS headers, so the web host cannot reach it.
   host_unsupported: {
     status: 403,
     recheckMs: GATEWAY_BLOCKED_RECHECK_MS,
-    detail: "PostHog AI helpers aren't available in the web app yet.",
+    detail: "Flind AI helpers aren't available in the web app yet.",
     serverDetail: false,
   },
   unconfigured: UNAVAILABLE,
@@ -298,7 +298,7 @@ export class GatewayTokenService {
     entry.route = {
       mode: "blocked",
       reason: "gateway_unauthorized",
-      detail: "PostHog AI couldn't verify this session. Retrying shortly.",
+      detail: "Flind AI couldn't verify this session. Retrying shortly.",
       status: 503,
     };
     this.scheduleRecheck(entry, entry.route, GATEWAY_TRANSIENT_RECHECK_MS);

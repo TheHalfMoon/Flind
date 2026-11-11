@@ -47,7 +47,7 @@ class MarketoSource(ResumableSource[MarketoSourceConfig, MarketoResumeConfig]):
 
     def get_non_retryable_errors(self) -> dict[str, str | None]:
         auth_message = (
-            "PostHog could not authenticate with Marketo. Check the client ID and secret on your Marketo custom service, "
+            "Flind could not authenticate with Marketo. Check the client ID and secret on your Marketo custom service, "
             "and make sure the service is still active."
         )
         return {
@@ -67,7 +67,7 @@ class MarketoSource(ResumableSource[MarketoSourceConfig, MarketoResumeConfig]):
             name=ExternalDataSourceType.MARKETO,
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Marketo",
-            caption="""Connect Adobe Marketo Engage to pull your leads, activities, campaigns, and program assets into the PostHog Data warehouse.
+            caption="""Connect Adobe Marketo Engage to pull your leads, activities, campaigns, and program assets into the Flind Data warehouse.
 
 In Marketo, open **Admin → Web Services** for your Munchkin account ID, then **Admin → LaunchPoint** to create a custom service and copy its client ID and secret. The service's API role needs read access to leads, activities, campaigns, and assets.
 

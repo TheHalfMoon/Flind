@@ -37,7 +37,7 @@ import notebookUpdateCell from './notebooks/updateCell'
 // Organizations
 import getOrganizations from './organizations/getOrganizations'
 import setActiveOrganization from './organizations/setActive'
-// PostHog AI tools
+// Flind AI tools
 import {
     EXECUTE_SQL_TOOL_NAME,
     executeSql,
@@ -47,7 +47,7 @@ import {
     externalDataSyncLogs,
     readDataSchema,
 } from './posthogAiTools'
-// PostHog connections (run this project's tools against a connected project in another org/region)
+// Flind connections (run this project's tools against a connected project in another org/region)
 import { createConnectionCallTool } from './posthogConnections/call'
 // Projects
 import createEventDefinition from './projects/createEventDefinition'
@@ -137,7 +137,7 @@ export const TOOL_MAP: Record<string, () => ToolBase<ZodObjectAny>> = {
     'tasks-comments-list': tasksCommentsList,
     'tasks-comments-retrieve': tasksCommentsRetrieve,
 
-    // PostHog AI tools
+    // Flind AI tools
     [EXECUTE_SQL_TOOL_NAME]: executeSql,
     'read-data-schema': readDataSchema,
 
@@ -158,7 +158,7 @@ export const TOOL_MAP: Record<string, () => ToolBase<ZodObjectAny>> = {
     'workflows-run-batch': workflowsRunBatch,
     'workflows-schedule-create': workflowsScheduleCreate,
 
-    // PostHog connections — runs any other tool in this map (or a generated one) against a connected
+    // Flind connections — runs any other tool in this map (or a generated one) against a connected
     // project. The registry is injected rather than imported over there so the two don't form a cycle.
     'posthog-connection-call': () => createConnectionCallTool(resolveToolBase),
 

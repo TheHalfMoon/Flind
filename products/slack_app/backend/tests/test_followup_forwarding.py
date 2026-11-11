@@ -78,7 +78,7 @@ def _assert_quota_denial_posted(mock_slack_instance: MagicMock, channel: str, th
         if call.kwargs.get("channel") == channel and call.kwargs.get("thread_ts") == thread_ts
     ]
     assert denial_calls, "Expected an in-thread denial message when over quota"
-    assert "PostHog AI credits" in denial_calls[0].kwargs["text"]
+    assert "Flind AI credits" in denial_calls[0].kwargs["text"]
 
 
 class TestTerminalRecoveryPrompt(UnitTestCase):
@@ -1379,8 +1379,8 @@ class TestForwardPostHogCodeFollowupActivity(TestCase):
     @patch("products.slack_app.backend.api.resolve_slack_user")
     @patch("posthog.models.integration.SlackIntegration")
     def test_cross_user_followup_authorized_prefixes_actor_name(self, mock_slack_cls, mock_resolve, mock_signal):
-        # A second user in the same PostHog org and team should be allowed to chip in
-        # on the thread; their message is queued under their own PostHog identity
+        # A second user in the same Flind org and team should be allowed to chip in
+        # on the thread; their message is queued under their own Flind identity
         # and their name is prepended so the agent knows who actually spoke.
         self._create_mapping(mentioning_user="U_ALICE")
         type(self.task).objects.filter(id=self.task.id).update(last_client="posthog_desktop")
@@ -1480,7 +1480,7 @@ class TestForwardPostHogCodeFollowupActivity(TestCase):
         assert result is True
         assert mock_signal.called is delivered
         assert mock_prompt.called is prompted
-        # A held or dropped message must not keep the reaction that says PostHog is working on it.
+        # A held or dropped message must not keep the reaction that says Flind is working on it.
         removed = [c.kwargs for c in mock_slack.client.reactions_remove.call_args_list]
         assert ({"channel": "C123", "timestamp": "1234.5679", "name": "eyes"} in removed) is not delivered
         if prompted:
@@ -1582,7 +1582,7 @@ class TestForwardPostHogCodeFollowupActivity(TestCase):
     @patch("products.slack_app.backend.api.resolve_slack_user", return_value=None)
     @patch("posthog.models.integration.SlackIntegration")
     def test_cross_user_followup_unmapped_user_delegates_feedback_to_resolver(self, mock_slack_cls, mock_resolve):
-        # A second Slack user who can't be resolved to a PostHog member of this team
+        # A second Slack user who can't be resolved to a Flind member of this team
         # still can't participate, but resolve_slack_user owns the exact feedback
         # because it knows whether email, org membership, or team access failed.
         self._create_mapping(mentioning_user="U_ALICE")

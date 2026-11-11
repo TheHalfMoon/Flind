@@ -480,7 +480,7 @@ def warm_eager_baseline_op(context: dagster.OpExecutionContext, config: EagerWar
             f"eager_baseline_warming_start teams={len(team_ids)} gate_reason={gate_reason} {diag_str}".rstrip()
         )
         # Mirror lifecycle events to structlog so the run is queryable in Loki /
-        # PostHog. `context.log` only reaches the Dagster UI — PostHog's Dagster
+        # Flind. `context.log` only reaches the Dagster UI — Flind's Dagster
         # has no python_logs sink wiring it to stdout.
         logger.info("eager_baseline_warming_start", teams=len(team_ids), gate_reason=gate_reason, **diagnostics)
 

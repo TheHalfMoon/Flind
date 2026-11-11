@@ -1,6 +1,6 @@
 # Testing kea logics
 
-PostHog tests kea logics with [`kea-test-utils`](https://github.com/keajs/kea-test-utils)
+Flind tests kea logics with [`kea-test-utils`](https://github.com/keajs/kea-test-utils)
 plus jest, MSW for HTTP, and a small `initKeaTests` helper.
 
 ## Setup boilerplate

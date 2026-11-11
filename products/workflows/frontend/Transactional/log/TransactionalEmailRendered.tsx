@@ -9,7 +9,7 @@ export function TransactionalEmailRendered({ email }: { email: TransactionalEmai
     if (email.sensitive) {
         return (
             <LemonBanner type="info" icon={<IconLock />}>
-                This email is marked sensitive, so PostHog keeps no copy of what it contained.
+                This email is marked sensitive, so Flind keeps no copy of what it contained.
             </LemonBanner>
         )
     }

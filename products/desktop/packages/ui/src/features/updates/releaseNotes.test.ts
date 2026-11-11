@@ -11,13 +11,13 @@ describe("parseReleaseNotes", () => {
       "## What's Changed",
       "* feat(canvas): right-click a canvas by @alice in https://github.com/PostHog/code/pull/1",
       "* fix(inbox): point link to docs by @bob in https://github.com/PostHog/code/pull/2",
-      '* Add "PostHog Web" button by @carol in https://github.com/PostHog/code/pull/3',
+      '* Add "Flind Web" button by @carol in https://github.com/PostHog/code/pull/3',
       "* @newbie made their first contribution in https://example.com",
       "**Full Changelog**: https://github.com/PostHog/code/compare/v1...v2",
     ].join("\n");
 
     expect(parseReleaseNotes(notes)).toEqual({
-      improved: ["Right-click a canvas", 'Add "PostHog Web" button'],
+      improved: ["Right-click a canvas", 'Add "Flind Web" button'],
       fixed: ["Point link to docs"],
     });
   });

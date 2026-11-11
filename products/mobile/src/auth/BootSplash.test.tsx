@@ -80,7 +80,7 @@ describe('boot splash handoff', () => {
             fireEvent(screen.getByTestId('boot-splash'), 'layout')
 
             expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1)
-            expect(screen.getByLabelText('Loading PostHog')).toBeTruthy()
+            expect(screen.getByLabelText('Loading Flind')).toBeTruthy()
             expect(screen.getByLabelText('ph-no-capture')).toBeTruthy()
             expect(screen.queryByTestId('app-screens')).toBeNull()
 

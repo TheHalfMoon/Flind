@@ -104,7 +104,7 @@ class GitLabIntegration:
                 f"projects/{project_id}",
                 project_access_token,
                 endpoint="/api/v4/projects/{id}",
-                # Setup runs on a token the caller supplied and PostHog may never store, so this
+                # Setup runs on a token the caller supplied and Flind may never store, so this
                 # probe must not mint a metric scope per rejected token.
                 scoped=False,
             )

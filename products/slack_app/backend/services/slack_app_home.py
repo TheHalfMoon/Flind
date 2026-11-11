@@ -1,4 +1,4 @@
-"""App Home tab + edit modal renderers for the PostHog Slack app.
+"""App Home tab + edit modal renderers for the Flind Slack app.
 
 The Home tab is the user-facing control panel for the integration. For this
 first iteration it carries one card — the AI preferences picker that feeds
@@ -274,7 +274,7 @@ def _runtime_adapter_options() -> tuple[tuple[str, str], ...]:
 
 @dataclass(frozen=True)
 class ProjectChoice:
-    """One PostHog project the user can route their @PostHog mentions to."""
+    """One Flind project the user can route their @PostHog mentions to."""
 
     team_id: int
     label: str
@@ -304,7 +304,7 @@ class TaskItem:
     """One row on the Tasks card."""
 
     title: str
-    # The desktop link is `None` for a viewer without PostHog Desktop access, matching
+    # The desktop link is `None` for a viewer without Flind Desktop access, matching
     # the reply footer. The web link is always present: the task page enforces access
     # itself, so at worst it asks the viewer to sign in. Stated at every construction
     # rather than defaulted, so a row can't lose its links by omission and render as
@@ -411,8 +411,8 @@ class GitHubAccount:
 class GitHubState:
     """Inputs the renderer needs to draw the GitHub half of the accounts card.
 
-    ``user_resolved`` is False when we couldn't tell which PostHog user is
-    behind this Slack identity — the card then asks them to link PostHog first
+    ``user_resolved`` is False when we couldn't tell which Flind user is
+    behind this Slack identity — the card then asks them to link Flind first
     instead of claiming they have no GitHub connection.
 
     ``credentials_usable`` carries the same judgment the task flow gates on,
@@ -436,7 +436,7 @@ class OwnPlanState:
 
 @dataclass(frozen=True)
 class RunDefaultsState:
-    """The central PostHog default a Slack run resolves to; only a model named in
+    """The central Flind default a Slack run resolves to; only a model named in
     the mention sits above it, and Slack's hardcoded floor below. The card reads
     it so what it names is what a mention would actually launch on."""
 
@@ -453,7 +453,7 @@ class RunDefaultsState:
 
     @property
     def source_label(self) -> str:
-        return "Your PostHog default" if self.source == "user" else "The project default"
+        return "Your Flind default" if self.source == "user" else "The project default"
 
 
 def render_home_view(
@@ -510,7 +510,7 @@ def render_home_view(
     blocks.append({"type": "divider"})
     blocks.extend(_active_model_blocks(run_defaults))
     blocks.extend(_personal_section_blocks(run_defaults))
-    # `None` means no PostHog user is linked to this viewer.
+    # `None` means no Flind user is linked to this viewer.
     if auto_model_choice is not None:
         blocks.extend(_auto_model_choice_blocks(auto_model_choice))
     # A connected plan is described under Multiplayer, because people who join spend it too.
@@ -518,7 +518,7 @@ def render_home_view(
         blocks.extend(_own_plan_blocks(own_plan))
 
     # Section 4 — thread follow-ups: whether replies other people leave in the
-    # threads you started reach PostHog on their own.
+    # threads you started reach Flind on their own.
     if untagged_followup_mode is not None:
         blocks.append({"type": "divider"})
         blocks.extend(_untagged_followups_section_blocks(untagged_followup_mode))
@@ -544,9 +544,9 @@ def render_home_view(
         blocks.append({"type": "divider"})
         blocks.extend(_feature_tips_section_blocks(feature_tips_enabled))
 
-    # Section 6 — linked accounts: PostHog and GitHub side by side, shown
+    # Section 6 — linked accounts: Flind and GitHub side by side, shown
     # before Tasks so the connect prompts are visible while the Tasks list
-    # is still empty. The PostHog half is flag-gated.
+    # is still empty. The Flind half is flag-gated.
     if (account_state and account_state.enabled) or github_state is not None:
         blocks.append({"type": "divider"})
         blocks.extend(_linked_accounts_section_blocks(account_state, github_state))
@@ -630,14 +630,14 @@ def _static_select(
 def _header_blocks() -> list[dict]:
     return [
         _section_title(
-            "Welcome to PostHog! 👋",
+            "Welcome to Flind! 👋",
             "Tune how @PostHog mentions get routed and answered from this Slack workspace.",
         ),
     ]
 
 
 def _no_project_access_blocks(account_settings_url: str | None = None) -> list[dict]:
-    """Shown when the viewer can't reach any PostHog project connected to this workspace.
+    """Shown when the viewer can't reach any Flind project connected to this workspace.
 
     Covers three causes that look identical from Slack: no project is connected yet, one
     is but the viewer isn't a member of its organization, or they are a member under an
@@ -646,20 +646,20 @@ def _no_project_access_blocks(account_settings_url: str | None = None) -> list[d
 
     The signed account-link URL is deliberately absent. Landing here means nobody could
     be identified, which is also what a Slack Connect guest from another company looks
-    like, so the remedy points at PostHog's own settings behind a login instead.
+    like, so the remedy points at Flind's own settings behind a login instead.
     """
     site_url = (settings.SITE_URL or "").rstrip("/")
     blocks: list[dict] = [
         _section_title(
             "🔒 No project to show yet",
-            "This Slack workspace isn't connected to a PostHog project you can see, "
+            "This Slack workspace isn't connected to a Flind project you can see, "
             "so there's nothing to set up here and @PostHog mentions won't run.",
         ),
         {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": ("Connect a project in PostHog, or ask an admin to add you to one that's already connected."),
+                "text": ("Connect a project in Flind, or ask an admin to add you to one that's already connected."),
             },
         },
         {
@@ -667,9 +667,9 @@ def _no_project_access_blocks(account_settings_url: str | None = None) -> list[d
             "text": {
                 "type": "mrkdwn",
                 "text": (
-                    "If you already belong to one, check that your PostHog account uses the same email "
+                    "If you already belong to one, check that your Flind account uses the same email "
                     "address as your Slack profile. When the two differ, link them from Personal "
-                    "integrations in PostHog and this tab will find you."
+                    "integrations in Flind and this tab will find you."
                 ),
             },
         },
@@ -680,7 +680,7 @@ def _no_project_access_blocks(account_settings_url: str | None = None) -> list[d
             {
                 "type": "button",
                 "url": f"{site_url}/settings/project-integrations",
-                "text": {"type": "plain_text", "text": "Connect PostHog to Slack", "emoji": True},
+                "text": {"type": "plain_text", "text": "Connect Flind to Slack", "emoji": True},
                 "style": "primary",
             }
         )
@@ -700,7 +700,7 @@ def _no_project_access_blocks(account_settings_url: str | None = None) -> list[d
 def _active_model_blocks(run_defaults: RunDefaultsState) -> list[dict]:
     """Headline that shows which model handles this viewer's mentions, and why.
 
-    Two rungs, in resolution order: the central PostHog default (personal or
+    Two rungs, in resolution order: the central Flind default (personal or
     project), else Slack's own floor.
     """
     header = _section_title(
@@ -732,8 +732,8 @@ def _active_model_blocks(run_defaults: RunDefaultsState) -> list[dict]:
                 "elements": [
                     {
                         "type": "mrkdwn",
-                        "text": f"<{run_defaults.settings_url}|Task agent defaults in PostHog> apply everywhere: "
-                        "the task composer, PostHog Desktop, and Slack.",
+                        "text": f"<{run_defaults.settings_url}|Task agent defaults in Flind> apply everywhere: "
+                        "the task composer, Flind Desktop, and Slack.",
                     }
                 ],
             }
@@ -756,7 +756,7 @@ def _project_section_blocks(state: ProjectState, *, is_admin: bool) -> list[dict
     blocks: list[dict] = [
         _section_title(
             "🧭 Project routing",
-            "Which PostHog project @PostHog mentions land in. Personal picks override the workspace default.",
+            "Which Flind project @PostHog mentions land in. Personal picks override the workspace default.",
         ),
     ]
 
@@ -819,7 +819,7 @@ def _linked_accounts_section_blocks(
     right-aligned `accessory`. Block Kit allows at most one accessory per
     section and renders `actions` blocks full width, so a row apiece is the
     only layout that keeps each button next to the account it acts on.
-    The PostHog row only appears when `is_slack_app_oauth_enabled` returned
+    The Flind row only appears when `is_slack_app_oauth_enabled` returned
     True; the GitHub row is independent of that gate.
     """
     rows: list[dict] = []
@@ -836,7 +836,7 @@ def _linked_accounts_section_blocks(
     return [
         _section_title(
             "🔗 Linked accounts",
-            "Who @PostHog acts as: your PostHog user, and the GitHub account it opens pull requests with.",
+            "Who @PostHog acts as: your Flind user, and the GitHub account it opens pull requests with.",
         ),
         *rows,
     ]
@@ -851,8 +851,8 @@ def _account_row(text: str, button: dict | None) -> dict:
 
 def _posthog_account_text(account_state: AccountState) -> str:
     if account_state.linked_email:
-        return f"*PostHog*\n✅ Connected as {account_state.linked_email}"
-    return "*PostHog*\nNot connected. Link your Slack identity so @PostHog knows it's you without matching on email."
+        return f"*Flind*\n✅ Connected as {account_state.linked_email}"
+    return "*Flind*\nNot connected. Link your Slack identity so @PostHog knows it's you without matching on email."
 
 
 def _posthog_account_button(account_state: AccountState) -> dict | None:
@@ -863,10 +863,10 @@ def _posthog_account_button(account_state: AccountState) -> dict | None:
             "style": "danger",
             "text": {"type": "plain_text", "text": "Disconnect", "emoji": True},
             "confirm": {
-                "title": {"type": "plain_text", "text": "Disconnect your PostHog account?"},
+                "title": {"type": "plain_text", "text": "Disconnect your Flind account?"},
                 "text": {
                     "type": "mrkdwn",
-                    "text": "@PostHog will fall back to matching your Slack email against PostHog users until you link again.",
+                    "text": "@PostHog will fall back to matching your Slack email against Flind users until you link again.",
                 },
                 "confirm": {"type": "plain_text", "text": "Disconnect"},
                 "deny": {"type": "plain_text", "text": "Cancel"},
@@ -878,14 +878,14 @@ def _posthog_account_button(account_state: AccountState) -> dict | None:
         "type": "button",
         "action_id": ACTION_CONNECT_ACCOUNT,
         "url": account_state.link_url,
-        "text": {"type": "plain_text", "text": "Connect to PostHog", "emoji": True},
+        "text": {"type": "plain_text", "text": "Connect to Flind", "emoji": True},
         "style": "primary",
     }
 
 
 def _github_account_text(github_state: GitHubState) -> str:
     if not github_state.user_resolved:
-        return "*GitHub*\nLink your PostHog account first, so we know whose GitHub to look up."
+        return "*GitHub*\nLink your Flind account first, so we know whose GitHub to look up."
     if not github_state.accounts:
         return "*GitHub*\nNot connected. Connect it so @PostHog opens pull requests as you."
     marker = "✅" if github_state.credentials_usable else "⚠️"
@@ -925,7 +925,7 @@ def _personal_section_blocks(run_defaults: RunDefaultsState) -> list[dict]:
 
     has_preference = run_defaults.source == "user"
     summary = (
-        "_Your personal default (shown above) applies to Slack, the task composer, and PostHog Desktop._"
+        "_Your personal default (shown above) applies to Slack, the task composer, and Flind Desktop._"
         if has_preference
         else "_No personal default. Inheriting the project default._"
     )
@@ -948,7 +948,7 @@ def _personal_section_blocks(run_defaults: RunDefaultsState) -> list[dict]:
                     "title": {"type": "plain_text", "text": "Clear your personal default?"},
                     "text": {
                         "type": "mrkdwn",
-                        "text": "This clears your task agent default, which the composer and PostHog "
+                        "text": "This clears your task agent default, which the composer and Flind "
                         "Desktop use too. You'll inherit the project default until you set a new one.",
                     },
                     "confirm": {"type": "plain_text", "text": "Reset"},
@@ -975,7 +975,7 @@ def _auto_model_choice_blocks(enabled: bool) -> list[dict]:
         # `views.publish` call over it, so the caveats go in the context line below.
         "description": {
             "type": "mrkdwn",
-            "text": "PostHog picks the model for each new task you start.",
+            "text": "Flind picks the model for each new task you start.",
         },
         "value": AUTO_MODEL_CHOICE_VALUE,
     }
@@ -1011,14 +1011,14 @@ def _feature_tips_section_blocks(enabled: bool) -> list[dict]:
     if enabled:
         checkbox["initial_options"] = [option]
     return [
-        _section_title("💡 Tips", "Short tips about PostHog features you have not used yet."),
+        _section_title("💡 Tips", "Short tips about Flind features you have not used yet."),
         {"type": "actions", "elements": [checkbox]},
     ]
 
 
 def _own_plan_blocks(state: OwnPlanState) -> list[dict]:
     """The prompt to connect a ChatGPT plan, for a viewer who has not connected one."""
-    text = f"<{state.settings_url}|Connect your ChatGPT plan> in PostHog to use it for Codex tasks you start here."
+    text = f"<{state.settings_url}|Connect your ChatGPT plan> in Flind to use it for Codex tasks you start here."
     return [
         _subsection_label("ChatGPT plan"),
         {"type": "context", "elements": [{"type": "mrkdwn", "text": text}]},
@@ -1047,7 +1047,7 @@ def _untagged_mode_section_blocks(
     subtitle: str,
     note: str,
 ) -> list[dict]:
-    """One picker for what PostHog does with a kind of message nobody tagged it in.
+    """One picker for what Flind does with a kind of message nobody tagged it in.
 
     Both pickers ask until the viewer picks, so nothing reaches the agent or the
     channel on a default.
@@ -1088,7 +1088,7 @@ def _untagged_questions_section_blocks(mode: UntaggedFollowupMode) -> list[dict]
         title="❓ Questions in channels",
         subtitle=(
             "What I do when you post a question in a channel without tagging @PostHog, "
-            "and your PostHog data can answer it."
+            "and your Flind data can answer it."
         ),
         note="Only your own questions. Thread follow-ups keep the setting above.",
     )
@@ -1677,7 +1677,7 @@ def render_edit_modal(
             "elements": [
                 {
                     "type": "mrkdwn",
-                    "text": "Pick the runtime and model that should handle PostHog Slack requests for you.",
+                    "text": "Pick the runtime and model that should handle Flind Slack requests for you.",
                 }
             ],
         },
@@ -1863,7 +1863,7 @@ def handle_ai_preferences_block_action(payload: dict, action: dict) -> HttpRespo
         return HttpResponse(status=200)
 
     if action_id == ACTION_SET_AUTO_MODEL_CHOICE:
-        # The router runs as a PostHog user, so a viewer with no linked user cannot turn it on.
+        # The router runs as a Flind user, so a viewer with no linked user cannot turn it on.
         if _auto_model_choice_offered(integration, slack_user_id):
             enabled = any(
                 option.get("value") == AUTO_MODEL_CHOICE_VALUE for option in action.get("selected_options") or []
@@ -1952,7 +1952,7 @@ def handle_app_home_view_submission(payload: dict) -> HttpResponse | JsonRespons
 
     integration = _resolve_interaction_integration(slack_team_id, slack_user_id)
     if integration is None:
-        return _modal_error_response("This Slack workspace is no longer connected to PostHog.")
+        return _modal_error_response("This Slack workspace is no longer connected to Flind.")
 
     runtime_adapter, model, reasoning_effort = parse_modal_submission(view)
 
@@ -2154,7 +2154,7 @@ def _routed_project_integration(
 def _personal_preference_target(
     integration: WorkspaceIntegration, slack_user_id: str
 ) -> tuple[User, WorkspaceIntegration]:
-    """The PostHog user behind this viewer and the project whose central config
+    """The Flind user behind this viewer and the project whose central config
     they edit — the one their mentions route to, restricted to this user's own
     access via `resolve_from_candidates(user=...)`.
 
@@ -2166,7 +2166,7 @@ def _personal_preference_target(
     user = _resolve_home_user(integration, slack_user_id)
     if user is None:
         raise ValidationError(
-            "Link your PostHog account first. You can do that from the Linked accounts card on the Home tab."
+            "Link your Flind account first. You can do that from the Linked accounts card on the Home tab."
         )
     result = resolve_from_candidates(
         _workspace_integrations(integration.integration_id),
@@ -2195,7 +2195,7 @@ def _apply_personal_preferences(
     """Persist the modal's triple as the viewer's central tasks preference.
 
     The central per-(user, project) config — the same store the web composer,
-    PostHog Desktop, and the MCP config tools edit — is the only place a model
+    Flind Desktop, and the MCP config tools edit — is the only place a model
     preference lives.
 
     Raises `ValidationError` when the viewer has no authorized target project
@@ -2399,7 +2399,7 @@ _TASKS_PAGE_SIZE = 10
 _TASKS_MAX_TOTAL = 100
 # Tasks fall off the Home tab once their Slack thread has been quiet for two
 # weeks. Keeps the list tight and avoids dragging in stale work that the user
-# already moved past in the PostHog UI.
+# already moved past in the Flind UI.
 _TASKS_RECENT_WINDOW = timedelta(days=14)
 
 
@@ -2557,7 +2557,7 @@ def _format_relative(when: datetime | None, *, now: datetime) -> str:
 def _resolve_run_defaults_state(
     integration: WorkspaceIntegration, slack_user_id: str, *, accessible: Sequence[WorkspaceIntegration]
 ) -> RunDefaultsState:
-    """The PostHog default this person's Slack runs fall back to, plus where to change it.
+    """The Flind default this person's Slack runs fall back to, plus where to change it.
 
     Resolves the viewer through the same cascade the run path uses (`_resolve_home_user`),
     so an unlinked but email-matched identity reflects its own personal default rather than
@@ -2633,7 +2633,7 @@ def _auto_model_choice_offered(integration: WorkspaceIntegration, slack_user_id:
 
 
 def linked_posthog_user(integration: WorkspaceIntegration, slack_user_id: str) -> User | None:
-    """The PostHog user this Slack user linked, the check behind "Connected as" on the Home tab."""
+    """The Flind user this Slack user linked, the check behind "Connected as" on the Home tab."""
     slack_team_id = integration.integration_id
     return find_linked_posthog_user(
         slack_user_id=slack_user_id,
@@ -2670,7 +2670,7 @@ def _resolve_account_state(integration: WorkspaceIntegration, slack_user_id: str
 
 
 def _resolve_home_user(integration: WorkspaceIntegration, slack_user_id: str) -> User | None:
-    """Identify the PostHog user behind this Slack identity.
+    """Identify the Flind user behind this Slack identity.
 
     Mirrors the event-path cascade in `resolve_posthog_user_from_event`: the
     OAuth link wins, otherwise we match the cached Slack profile email against
@@ -2715,7 +2715,7 @@ def _resolve_github_state(integration: WorkspaceIntegration, slack_user_id: str)
     `should_block_task_for_missing_user_github` gates on, so the card and the
     task flow never disagree about whether a connection works.
 
-    Connecting GitHub needs an authenticated PostHog session, so the button
+    Connecting GitHub needs an authenticated Flind session, so the button
     deep-links to Personal integrations settings — the same target the
     in-thread "Connect GitHub" prompt uses.
     """
@@ -2760,12 +2760,12 @@ def _github_account_from_row(row: UserIntegration) -> GitHubAccount:
 
 
 def _workspace_integrations(slack_team_id: str) -> list[WorkspaceIntegration]:
-    """Every PostHog project this Slack workspace is connected to."""
+    """Every Flind project this Slack workspace is connected to."""
     return workspace_integrations(slack_team_id)
 
 
 def _accessible_integrations(integration: WorkspaceIntegration, slack_user_id: str) -> list[WorkspaceIntegration]:
-    """The workspace's projects this Slack user can actually reach in PostHog.
+    """The workspace's projects this Slack user can actually reach in Flind.
 
     Resolved once per publish and handed to every card: it costs a `UserPermissions`
     build plus three queries, and all three cards want the same answer. It is also the
@@ -2793,7 +2793,7 @@ def _resolve_stats_state(
     Admin-only: every other card on the tab renders for any viewer.
 
     Scoped to the projects this admin can already reach: being a Slack workspace admin
-    says nothing about PostHog org membership, so the card must never widen what its
+    says nothing about Flind org membership, so the card must never widen what its
     viewer could otherwise see.
     """
     if not is_admin:
@@ -2870,7 +2870,7 @@ def _filter_accessible_integrations(
     """The candidates this Slack identity can reach.
 
     `views.publish` answers whoever opens the tab, including a Slack Connect guest with no
-    PostHog account, so a viewer this cannot resolve must reach no project at all.
+    Flind account, so a viewer this cannot resolve must reach no project at all.
 
     `_apply_project_pick` gates on this too, so an unidentified viewer also cannot save a
     default for any team in the workspace.
@@ -2982,7 +2982,7 @@ def _post_ephemeral_admin_only(slack: SlackIntegration, payload: dict) -> None:
     slack_user_id = (payload.get("user") or {}).get("id", "")
     if not slack_user_id:
         return
-    text = "Only Slack workspace admins can change PostHog workspace settings."
+    text = "Only Slack workspace admins can change Flind workspace settings."
     channel = (payload.get("channel") or {}).get("id") or (payload.get("container") or {}).get("channel_id")
     try:
         if channel:

@@ -162,7 +162,7 @@ def _fetch_text(url: str, *, deadline: float, budget: _RequestBudget) -> _Fetche
             current_url,
             headers={
                 "Accept": "text/html,application/xml,text/xml,text/plain;q=0.9,*/*;q=0.1",
-                "User-Agent": "PostHog content site discovery",
+                "User-Agent": "Flind content site discovery",
             },
             max_bytes=_MAX_DISCOVERY_BYTES,
             deadline=deadline,
@@ -289,7 +289,7 @@ def _fetch_sitemap(url: str, *, deadline: float) -> str | None:
                 current_url,
                 headers={
                     "Accept": "application/xml,text/xml;q=0.9,*/*;q=0.1",
-                    "User-Agent": "PostHog content research",
+                    "User-Agent": "Flind content research",
                 },
                 max_bytes=_MAX_SITEMAP_BYTES,
                 deadline=deadline,

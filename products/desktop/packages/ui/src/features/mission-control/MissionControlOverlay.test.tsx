@@ -25,8 +25,8 @@ describe("MissionControlOverlay", () => {
     useMissionControlStore.setState({ active: true });
     render(<MissionControlOverlay />);
 
-    expect(screen.getByText("PostHog Desktop")).toBeTruthy();
-    expect(screen.getByLabelText("PostHog logo")).toBeTruthy();
+    expect(screen.getByText("Flind Desktop")).toBeTruthy();
+    expect(screen.getByLabelText("Flind logo")).toBeTruthy();
   });
 
   it.each([

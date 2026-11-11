@@ -2430,7 +2430,7 @@ class TestUserAPI(APIBaseTest):
 
     @patch("posthog.api.user.get_flags_from_service")
     def test_prepare_toolbar_preloaded_flags_passes_internal_request_token(self, mock_get_flags):
-        """The toolbar prep handler is internal PostHog traffic, not customer SDK
+        """The toolbar prep handler is internal Flind traffic, not customer SDK
         traffic — it must forward INTERNAL_REQUEST_TOKEN so the Rust service skips
         the per-team billing limiter."""
         mock_get_flags.return_value = {"flags": {}}

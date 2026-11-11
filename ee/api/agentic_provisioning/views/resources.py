@@ -191,7 +191,7 @@ class RotateCredentialsView(BearerResourceAPIView):
 class ResourceRemoveView(BearerResourceAPIView):
     """Detaches the resource from the orchestrator: removes it from the token's
     scope and clears provisioning metadata. Preserves the underlying team and
-    user data so the customer can still access PostHog directly."""
+    user data so the customer can still access Flind directly."""
 
     @rate_limited("resource_removals")
     def post(self, request: Request, resource_id: str) -> Response:

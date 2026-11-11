@@ -9,7 +9,7 @@ export const posthogAnonymization: LegacyTransformationPlugin = {
         status: 'deprecated',
         type: 'transformation',
         id: 'plugin-posthog-anonymization',
-        name: 'PostHog Anonymization',
+        name: 'Flind Anonymization',
         description: 'Anonymize your data.',
         icon_url: 'https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/builder_hog_01_955c082cad.png',
         category: ['Custom'],

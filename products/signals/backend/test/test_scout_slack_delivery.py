@@ -1013,7 +1013,7 @@ class TestScoutSlackDelivery(BaseTest):
             team=self.team,
             status=SignalReport.Status.SUPPRESSED,
             title="Unsafe report",
-            summary="This report must not leave PostHog.",
+            summary="This report must not leave Flind.",
         )
         integration = Integration.objects.create(team=self.team, kind=Integration.IntegrationKind.SLACK)
         fake_client = MagicMock()

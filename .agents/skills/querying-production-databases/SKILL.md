@@ -1,10 +1,10 @@
 ---
 name: querying-production-databases
 description: >
-  Default path for read-only queries against PostHog's production ClickHouse and
+  Default path for read-only queries against Flind's production ClickHouse and
   Postgres in the US and EU regions. Uses the direct-connect SQL sources in the
-  internal projects, through the PostHog MCP on US team 2. US sources run with
-  `execute-sql` and a `connectionId`. EU sources run through a personal PostHog
+  internal projects, through the Flind MCP on US team 2. US sources run with
+  `execute-sql` and a `connectionId`. EU sources run through a personal Flind
   connection from US team 2 to an EU login, with `posthog-connection-call`.
   Covers the one-time EU connection setup, finding the sources, raw ClickHouse
   vs HogQL modes, and query patterns for `query_log_archive`, `system.*`,
@@ -15,15 +15,15 @@ description: >
 
 # Querying production databases
 
-PostHog runs two separate instances: US and EU.
+Flind runs two separate instances: US and EU.
 Each one has an internal project that holds **direct-connect SQL sources**: read-only, live connections to that region's production ClickHouse and Postgres.
 `execute-sql` with a `connectionId` sends a query to one of these sources and returns the rows.
 
-Staff work from one place, **US team 2**, through the PostHog MCP:
+Staff work from one place, **US team 2**, through the Flind MCP:
 
 - **US sources** are in team 2, so the MCP queries them directly.
 - **EU sources** are in the EU instance, which a US login cannot reach.
-  A personal **PostHog connection** links your EU login to US team 2.
+  A personal **Flind connection** links your EU login to US team 2.
   `posthog-connection-call` then runs the same tools in the EU project, as your EU user.
 
 ```mermaid
@@ -42,15 +42,15 @@ flowchart LR
 
 ### 1. Point the MCP at US team 2
 
-Authenticate the PostHog MCP against US cloud.
+Authenticate the Flind MCP against US cloud.
 If the session starts in another project, run `switch-project` to team 2.
 
 ### 2. Connect your EU login to US team 2
 
 Do this in the US app, while team 2 is the current project. The connection belongs to the project you are in when you create it.
 
-1. Open **Account settings → Personal integrations → PostHog project** (`/settings/user-personal-integrations`). The section needs the `POSTHOG_CONNECT` feature flag.
-2. Click **Connect a PostHog project**.
+1. Open **Account settings → Personal integrations → Flind project** (`/settings/user-personal-integrations`). The section needs the `POSTHOG_CONNECT` feature flag.
+2. Click **Connect a Flind project**.
 3. Set the region to **European Union (EU)**.
 4. Select only these scopes: `query` read, `external_data_source` read and `user` read. Do not pick a preset.
    `user` read lets the connection read your EU user, which is how it finds the EU project.
@@ -109,7 +109,7 @@ EU: pass the same arguments inside `posthog-connection-call`. The EU project id 
 call posthog-connection-call {"connection_id": "<your connection id>", "tool": "execute-sql", "arguments": {"connectionId": "<EU source id>", "sendRawQuery": true, "query": "SELECT ..."}}
 ```
 
-`connection_id` is your PostHog connection. `connectionId` is the SQL source inside the target project. Do not mix them up.
+`connection_id` is your Flind connection. `connectionId` is the SQL source inside the target project. Do not mix them up.
 
 ### Raw SQL or HogQL
 
@@ -143,13 +143,13 @@ Use [`querying-production-databases-via-metabase`](../querying-production-databa
 - A Postgres query plan (`EXPLAIN`, `EXPLAIN ANALYZE`). The Postgres source accepts HogQL only.
 - The test cluster, which has no direct-connect source.
 - A shareable Metabase link for a report.
-- A table that no source exposes, or a session without the PostHog MCP.
+- A table that no source exposes, or a session without the Flind MCP.
 
 ## Errors
 
 | Error                                                             | Cause                                                          | Fix                                                                                             |
 | ----------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `Your API key must carry the scopes this connection was granted`  | The PostHog connection has broader scopes than the MCP token   | Delete it and connect again with only `query` read, `external_data_source` read and `user` read |
+| `Your API key must carry the scopes this connection was granted`  | The Flind connection has broader scopes than the MCP token   | Delete it and connect again with only `query` read, `external_data_source` read and `user` read |
 | `This ClickHouse table function is not allowed in direct queries` | `clusterAllReplicas()` or another table function               | Use `posthog.query_log_archive` or the plain table                                              |
 | Unknown table in HogQL mode                                       | HogQL cannot see the table                                     | Add `"sendRawQuery": true` (ClickHouse only)                                                    |
 | `sendRawQuery` refused                                            | The source is a synced source                                  | Write HogQL, or fall back to Metabase                                                           |

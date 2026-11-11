@@ -9,7 +9,7 @@ export const template: HogFunctionTemplate = {
     id: 'template-source-webhook-pixel',
     name: 'Tracking pixel',
     description:
-        'Capture an event using a 1x1 tracking pixel. Useful for embedding tracking where PostHog SDKs are not available such as emails.',
+        'Capture an event using a 1x1 tracking pixel. Useful for embedding tracking where Flind SDKs are not available such as emails.',
     icon_url: '/static/services/webhook.svg',
     category: ['Email', 'Tracking'],
     code_language: 'hog',
@@ -65,7 +65,7 @@ return {
             key: 'properties',
             type: 'json',
             label: 'Event properties',
-            description: 'A mapping of the incoming webhook body to the PostHog event properties',
+            description: 'A mapping of the incoming webhook body to the Flind event properties',
             default: {
                 $lib: 'posthog-webhook',
                 $source_url: '{source.url}',

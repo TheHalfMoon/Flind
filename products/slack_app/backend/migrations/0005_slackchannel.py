@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
                     "approved_by",
                     models.ForeignKey(
                         blank=True,
-                        help_text="The PostHog user who clicked Approve. Carries the email and audit trail.",
+                        help_text="The Flind user who clicked Approve. Carries the email and audit trail.",
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         related_name="approved_slack_channels",

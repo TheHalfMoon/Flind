@@ -172,7 +172,7 @@ describe("ToolGroup", () => {
       expected: "posthog - Query trends",
     },
     {
-      name: "names a direct PostHog exec call while it is active",
+      name: "names a direct Flind exec call while it is active",
       items: [
         piToolItem("mcp-exec", "mcp_posthog_exec", {
           command: "call feature-flag-get-all",

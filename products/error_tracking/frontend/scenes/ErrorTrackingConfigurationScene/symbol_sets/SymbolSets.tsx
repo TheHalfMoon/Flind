@@ -53,7 +53,7 @@ export function SymbolSets(): JSX.Element {
     return (
         <div className="deprecated-space-y-4">
             <p>
-                Source maps are required to demangle any minified code in your exception stack traces. PostHog
+                Source maps are required to demangle any minified code in your exception stack traces. Flind
                 automatically retrieves source maps where possible.
             </p>
 

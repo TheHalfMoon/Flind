@@ -571,7 +571,7 @@ describe('hog error-tracking upload', () => {
     test.each([
         ['a key without access', ['0192f0a0-0000-7000-8000-000000000001'], 403, 'access_denied'],
         ['a ref lookup with a key without access', ['app.js.map'], 403, 'access_denied'],
-        ['an ID PostHog does not have', ['0192f0a0-0000-7000-8000-000000000001'], 404, 'symbol_set_not_found'],
+        ['an ID Flind does not have', ['0192f0a0-0000-7000-8000-000000000001'], 404, 'symbol_set_not_found'],
     ])('download fails with a hint for %s', async (_name, args, status, code) => {
         const result = await runHog(['et', 'download', ...args], {
             env: { ...TEST_CREDENTIALS, CLAUDECODE: '1' },

@@ -192,7 +192,7 @@ class SendGridSource(ResumableSource[SendGridSourceConfig, SendGridResumeConfig]
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="SendGrid",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your SendGrid API key to pull your SendGrid data into the PostHog Data warehouse.
+            caption="""Enter your SendGrid API key to pull your SendGrid data into the Flind Data warehouse.
 
 You can create an API key in your [SendGrid account settings](https://app.sendgrid.com/settings/api_keys).
 

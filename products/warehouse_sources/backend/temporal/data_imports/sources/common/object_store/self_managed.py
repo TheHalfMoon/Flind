@@ -104,7 +104,7 @@ class SelfManagedCredential:
 def _s3_location(host: str, path: str) -> SelfManagedLocation:
     match = _S3_HOST.fullmatch(host)
     if match is None:
-        raise UnmappableTableError(f"'{host}' isn't an S3 endpoint PostHog can import from")
+        raise UnmappableTableError(f"'{host}' isn't an S3 endpoint Flind can import from")
     endpoint = match.group("endpoint")
     region: str | None = None
     if endpoint == _S3_EXTERNAL_ENDPOINT:
@@ -126,7 +126,7 @@ def parse_self_managed_url(url: str) -> SelfManagedLocation:
     if parsed.scheme not in ("https", "http"):
         raise UnmappableTableError("the URL isn't an http or https URL")
     if parsed.query or parsed.fragment or "?" in url or "#" in url:
-        raise UnmappableTableError("the URL has a '?' or '#', which PostHog can't map to a file pattern")
+        raise UnmappableTableError("the URL has a '?' or '#', which Flind can't map to a file pattern")
     if parsed.username or parsed.password or parsed.port:
         raise UnmappableTableError("the URL names a user or a port")
     host = (parsed.hostname or "").lower()
@@ -146,7 +146,7 @@ def parse_self_managed_url(url: str) -> SelfManagedLocation:
         container, _, key = path.partition("/")
         location = SelfManagedLocation(service="azure", bucket=container, key=key, account=azure.group("account"))
     else:
-        raise UnmappableTableError(f"'{host}' isn't a storage host PostHog can import from")
+        raise UnmappableTableError(f"'{host}' isn't a storage host Flind can import from")
     if not location.bucket or has_glob(location.bucket) or has_glob(location.account or ""):
         raise UnmappableTableError("the URL doesn't name one bucket")
     if location.key.startswith("/") or "//" in location.key:

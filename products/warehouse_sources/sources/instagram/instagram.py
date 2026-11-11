@@ -958,7 +958,7 @@ def validate_credentials(
         capture_exception(e)
         return (
             False,
-            "PostHog couldn't check this Instagram connection. Reconnect your Instagram account and try again.",
+            "Flind couldn't check this Instagram connection. Reconnect your Instagram account and try again.",
         )
 
     if not body.get("id"):

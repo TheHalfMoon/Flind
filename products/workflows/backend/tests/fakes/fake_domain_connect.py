@@ -172,7 +172,7 @@ def _load_template(provider_id: str, service_id: str) -> dict[str, Any]:
 
 def _public_key() -> RSAPublicKey:
     if not settings.DOMAIN_CONNECT_PRIVATE_KEY:
-        raise DomainConnectRejected("PostHog has no published signing key")
+        raise DomainConnectRejected("Flind has no published signing key")
     private_key = serialization.load_pem_private_key(settings.DOMAIN_CONNECT_PRIVATE_KEY.encode(), password=None)
     assert isinstance(private_key, RSAPrivateKey)
     return private_key.public_key()

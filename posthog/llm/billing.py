@@ -1,6 +1,6 @@
 AI_COST_MARKUP_PERCENT = 0.2
 
-# ai_product values that roll into PostHog AI (Max) billing credits.
+# ai_product values that roll into Flind AI (Max) billing credits.
 POSTHOG_AI_PRODUCTS = [
     "posthog_ai",
     "slack_app",
@@ -14,7 +14,7 @@ POSTHOG_AI_PRODUCTS = [
     "hogql_decide",
 ]
 
-# ai_product values billed as PostHog Desktop credits.
+# ai_product values billed as Flind Desktop credits.
 POSTHOG_CODE_AI_PRODUCTS = ["posthog_code"]
 
 BILLABLE_AI_PRODUCTS = frozenset(POSTHOG_AI_PRODUCTS + POSTHOG_CODE_AI_PRODUCTS)

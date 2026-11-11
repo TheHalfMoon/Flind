@@ -76,7 +76,7 @@ This session has no authenticated GitHub access.
 - Publishing changes requires authenticated GitHub access.
 
 Only when the requested work requires unavailable private repository or publishing access:
-- If the required access is unavailable, do not replace the requested code work with generic guidance or PostHog data analysis.
+- If the required access is unavailable, do not replace the requested code work with generic guidance or Flind data analysis.
 - Tell the user to connect GitHub at ${settingsUrl}.
 - The connection applies to a new task, not this task.
 - Write the access explanation first.
@@ -107,7 +107,7 @@ Only when the requested work requires unavailable private repository or publishi
 \`gh\` is authenticated as the person you are working for, so let GitHub resolve who that is. To put them on an issue or pull request, self-assign:
 \`gh issue create --assignee "@me"\`, \`gh pr create --assignee "@me"\`, \`gh issue edit <number> --add-assignee "@me"\`
 To \`@\`-mention them in a body or a comment, read their handle with \`gh api user --jq .login\`. Read it once per reply rather than reusing one from an earlier reply, because a different person can take over between replies and \`gh\` follows that change.
-If the command fails, or returns a name ending in \`[bot]\`, you are acting as the PostHog app rather than as a person: ask them for their GitHub login instead of assigning or mentioning anyone.
+If the command fails, or returns a name ending in \`[bot]\`, you are acting as the Flind app rather than as a person: ask them for their GitHub login instead of assigning or mentioning anyone.
 `
       : "";
     const identityInstructions = `${this.options.identityInstructions ?? ""}${githubIdentityInstructions}`;
@@ -154,7 +154,7 @@ hard reset is the safe one here — your work is held in the stash.
 ## Attribution
 Do NOT add "Co-Authored-By" trailers or "Generated with [Claude Code]" lines to your
 commit messages. The \`git_signed_commit\` tool automatically appends the only trailers
-we want: \`Generated-By: PostHog Desktop\` and a \`Task-Id\` trailer with this task's id.`;
+we want: \`Generated-By: Flind Desktop\` and a \`Task-Id\` trailer with this task's id.`;
 
     // A stack is several PRs, so this would contradict the review-first modes.
     const stackInstructions = shouldAutoCreatePr
@@ -305,11 +305,11 @@ ${prMentionSafetyInstruction.trimStart()}
       return `${identityInstructions}
 # Cloud Task Execution — No Repository Mode
 
-You are a helpful assistant with access to PostHog via MCP tools. You can help with both code tasks and data/analytics questions.
+You are a helpful assistant with access to Flind via MCP tools. You can help with both code tasks and data/analytics questions.
 
 For a question about company-specific terms, internal policies, or team knowledge, search the project knowledge base before you answer, whatever else the question is about: call \`posthog:exec\` and run its inner \`posthog:business-knowledge-documents-search\` tool. These documents are not in the public docs or the context wiki, so check the knowledge base before you tell the user that you cannot find the answer. If that tool is not available in this project, move on instead of retrying it.
 
-When the user asks about analytics, data, metrics, events, funnels, dashboards, feature flags, experiments, or anything PostHog-related:
+When the user asks about analytics, data, metrics, events, funnels, dashboards, feature flags, experiments, or anything Flind-related:
 - Use the canonical \`posthog:exec\` tool to query data, search insights, and provide real answers
 - A count, sum, or amount of X per day/hour/week/month/year, a rate or percentage of X, an average or percentile of X, a cost per X, a conversion between two events, or a derived form of one of those is a governed metric question — whatever X is (sessions, 404s, feedback submissions, scout runs, tool calls, revenue). For those, inspect the complete governed catalog with \`posthog:metric-list\` first, inspect a candidate with \`posthog:metric-describe\`, then run an approved match with \`posthog:data-catalog-metric-run\`. Do this before \`posthog:read-data-schema\`, a typed domain tool, or a raw query
 - Follow its built-in instructions to discover and invoke inner tools

@@ -39,7 +39,7 @@ describe('navPanelProductPushAdLogic', () => {
             'Session replay',
             true,
         ],
-        ['a click that leaves the app queues nothing', ProductKey.POSTHOG_DESKTOP, 'PostHog Desktop', false],
+        ['a click that leaves the app queues nothing', ProductKey.POSTHOG_DESKTOP, 'Flind Desktop', false],
         ['a click on a surface with no product scene queues nothing', ProductKey.SELF_DRIVING, null, false],
     ])('%s', (_description, productKey, productPath, queued) => {
         logic = navPanelProductPushAdLogic({ campaign: campaignFor(productKey, productPath) })

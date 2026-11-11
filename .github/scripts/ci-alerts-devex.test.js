@@ -175,7 +175,7 @@ function run(github, { history = [], now = minutes(0), env = {}, fetch: fetchImp
         ...env,
     })
     return ciAlertsDevex(
-        { context: { repo: { owner: 'PostHog', repo: 'posthog' } }, github, core },
+        { context: { repo: { owner: 'Flind', repo: 'posthog' } }, github, core },
         { now, slack, fetch: fetchImpl, sleep: () => Promise.resolve() }
     ).then(() => ({ slack, outputs, failures }))
 }
@@ -611,7 +611,7 @@ describe('ci-alerts-devex', () => {
                 },
             },
         }
-        const result = await ciAlertsDevex.fetchWorkflowRuns(github, 'PostHog', 'posthog', 'ci-backend.yml', 40)
+        const result = await ciAlertsDevex.fetchWorkflowRuns(github, 'Flind', 'posthog', 'ci-backend.yml', 40)
         // The root-cause guard: never request the eventually-consistent status=completed index.
         assert.equal(capturedParams.status, undefined)
         assert.equal(capturedParams.event, 'push') // one lane per trigger event; push is the default

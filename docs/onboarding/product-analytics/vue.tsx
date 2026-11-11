@@ -12,7 +12,7 @@ export const getVueInstallSteps = (ctx: OnboardingComponentsContext): StepDefini
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog JavaScript library using your package manager:</Markdown>
+                    <Markdown>Install the Flind JavaScript library using your package manager:</Markdown>
                     <CodeBlock
                         blocks={[
                             {

@@ -75,7 +75,7 @@ class TestCascadeSelectRepository:
             integration_id="gh-1",
             config={"installation_id": "gh-1"},
             sensitive_config={},
-            repository_cache=[{"full_name": "PostHog/PostHog", "name": "PostHog", "id": 1}],
+            repository_cache=[{"full_name": "PostHog/PostHog", "name": "Flind", "id": 1}],
         )
 
         assert cascade_select_repository(team.id, None, "", single_repo_wins=True, allow_refresh=False) == (
@@ -97,7 +97,7 @@ class TestListTeamConnectedRepositories:
             config={"installation_id": "gh-1"},
             sensitive_config={},
             repository_cache=[
-                {"full_name": "PostHog/PostHog", "name": "PostHog", "id": 1},
+                {"full_name": "PostHog/PostHog", "name": "Flind", "id": 1},
                 {"full_name": "acme/retired", "name": "retired", "id": 2, "archived": True},
             ],
         )

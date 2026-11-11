@@ -79,7 +79,7 @@ class YouSignSource(
             category=DataWarehouseSourceCategory.SALES,
             label="Yousign",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Sync signature requests, signers, documents, contacts, and more from Yousign into the PostHog Data warehouse.
+            caption="""Sync signature requests, signers, documents, contacts, and more from Yousign into the Flind Data warehouse.
 
 Create an API key in the Yousign app under **Integrations → API keys**. Keys are environment-scoped, so pick the environment that matches your key — a sandbox key cannot access production data. A read-only, organization-scoped key is enough for syncing; managing webhooks automatically additionally requires a full-access key.""",
             iconPath="/static/services/yousign.png",

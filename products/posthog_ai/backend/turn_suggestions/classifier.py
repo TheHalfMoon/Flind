@@ -1,4 +1,4 @@
-"""Decides which follow-up, if any, a finished PostHog AI turn gets, and builds the offer.
+"""Decides which follow-up, if any, a finished Flind AI turn gets, and builds the offer.
 
 Two steps. Jev judges the turn in one fast request (see ``judgment.py``), and the policy below turns
 those probabilities into at most one offer. Only a scout or a notebook then needs generated text,

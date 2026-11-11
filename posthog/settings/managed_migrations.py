@@ -33,7 +33,7 @@ MANAGED_MIGRATIONS_TRIAL_S3_REGION = os.getenv("MANAGED_MIGRATIONS_TRIAL_S3_REGI
 MANAGED_MIGRATIONS_TRIAL_S3_BUCKET = os.getenv("MANAGED_MIGRATIONS_TRIAL_S3_BUCKET", "posthog" if TEST or DEBUG else "")
 MANAGED_MIGRATIONS_TRIAL_S3_PREFIX = os.getenv("MANAGED_MIGRATIONS_TRIAL_S3_PREFIX", "trial_runs")
 
-# ARN of the PostHog-owned IAM role the batch import worker runs as. Customers grant this
+# ARN of the Flind-owned IAM role the batch import worker runs as. Customers grant this
 # role access to their S3 buckets via a cross-account trust policy, so it must stay stable.
 MANAGED_MIGRATIONS_IMPORT_ROLE_ARN: str = os.getenv("MANAGED_MIGRATIONS_IMPORT_ROLE_ARN", "")
 

@@ -162,7 +162,7 @@ Some context for that call:
 - A significant step (a candidate from step 1 that held for 3 days or more in step 2) usually deserves a report even when it looks like good news. It moves the team's bill and changes what their data means, and a person can often tell in seconds what you cannot see from the data.
 - A small step is usually better as a `pattern:general:traffic-baseline:<source_id>` entry, so a later run can tell when that source changes shape.
 - The shape from step 3 is the most useful lead for a reader: growth from their own surface, traffic that looks foreign, or a loop.
-- Next steps that often fit: confirm whether the source is theirs and wanted, filter it in code (a `before_send` check on the host or app version) or with a transformation that drops it, fix a loop in their own client, set a billing limit while they look, and contact PostHog support about the billed volume if the traffic was never theirs.
+- Next steps that often fit: confirm whether the source is theirs and wanted, filter it in code (a `before_send` check on the host or app version) or with a transformation that drops it, fix a loop in their own client, set a billing limit while they look, and contact Flind support about the billed volume if the traffic was never theirs.
 - The harness suppresses a `not_actionable` report, so a step you want a person to see needs an actionability that reflects the decision in front of them.
 
 Put the evidence in the report: the source, the onset, the pinned baseline, the current daily level, the ratio, the days sustained, and an estimate of the excess events since onset (daily events minus the pinned baseline, summed).

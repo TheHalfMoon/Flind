@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -98,7 +98,7 @@ export interface CommunitySkillListApi {
     metadata?: CommunitySkillListApiMetadata
     /** Free-form tags used for filtering and discovery. */
     tags?: string[]
-    /** Moderation tier: 'official' (PostHog-authored), 'verified' (reviewed), or 'community'.
+    /** Moderation tier: 'official' (Flind-authored), 'verified' (reviewed), or 'community'.
      *
      * * `official` - Official
      * * `verified` - Verified
@@ -173,7 +173,7 @@ export interface CommunitySkillApi {
     metadata?: CommunitySkillApiMetadata
     /** Free-form tags used for filtering and discovery. */
     tags?: string[]
-    /** Moderation tier: 'official' (PostHog-authored), 'verified' (reviewed), or 'community'.
+    /** Moderation tier: 'official' (Flind-authored), 'verified' (reviewed), or 'community'.
      *
      * * `official` - Official
      * * `verified` - Verified
@@ -530,7 +530,7 @@ export interface LLMSkillFileInputApi {
 export interface LLMSkillCreateApi {
     readonly id: string
     /**
-     * Unique skill name. Lowercase letters, numbers, and hyphens only. Max 64 characters. Cannot be the name of a skill PostHog ships.
+     * Unique skill name. Lowercase letters, numbers, and hyphens only. Max 64 characters. Cannot be the name of a skill Flind ships.
      * @maxLength 64
      */
     name: string
@@ -815,7 +815,7 @@ export interface PatchedLLMSkillPublishApi {
 
 export interface LLMSkillDuplicateApi {
     /**
-     * Name for the duplicated skill. Must be unique, and cannot be the name of a skill PostHog ships.
+     * Name for the duplicated skill. Must be unique, and cannot be the name of a skill Flind ships.
      * @maxLength 64
      */
     new_name: string
@@ -889,7 +889,7 @@ export interface LLMSkillPublishToCommunityApi {
      * @items.maxLength 64
      */
     tags?: string[]
-    /** The publisher's GitHub username, used for public attribution on the listing and PR. Optional, and self-reported: it is not verified against the publisher's PostHog account. */
+    /** The publisher's GitHub username, used for public attribution on the listing and PR. Optional, and self-reported: it is not verified against the publisher's Flind account. */
     author_handle?: string
 }
 
@@ -909,7 +909,7 @@ export interface LLMSkillPublishConflictApi {
 
 export interface LLMSkillRenameApi {
     /**
-     * New name for the skill. Must be unique in the project, cannot be the name of a skill PostHog ships, and must not start with 'signals-scout-' or 'review-hog-'.
+     * New name for the skill. Must be unique in the project, cannot be the name of a skill Flind ships, and must not start with 'signals-scout-' or 'review-hog-'.
      * @maxLength 64
      */
     new_name: string
@@ -1116,7 +1116,7 @@ export type LlmSkillsListParams = {
 
 export type LlmSkillsBundleRetrieveParams = {
     /**
-     * What each skill directory in the zip contains. 'stub' (default) writes a SKILL.md with the name, description and instructions to fetch the skill over the PostHog MCP when it is invoked. 'full' writes the rendered SKILL.md, every bundled file and the Codex sidecar.
+     * What each skill directory in the zip contains. 'stub' (default) writes a SKILL.md with the name, description and instructions to fetch the skill over the Flind MCP when it is invoked. 'full' writes the rendered SKILL.md, every bundled file and the Codex sidecar.
      *
      * * `stub` - stub
      * * `full` - full

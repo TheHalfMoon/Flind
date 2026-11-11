@@ -41,7 +41,7 @@ class GitBookSource(ResumableSource[GitBookSourceConfig, GitBookResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="GitBook",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your GitBook API token to pull your documentation workspace into the PostHog Data warehouse.
+            caption="""Enter your GitBook API token to pull your documentation workspace into the Flind Data warehouse.
 
 You can create a personal access token under **Account settings → Developer** in [GitBook](https://app.gitbook.com/account/developer). The token inherits your account permissions and grants read access to your organizations, spaces, pages, collections, sites, site questions and answers, members, teams, team members, change requests, and comments.
 """,

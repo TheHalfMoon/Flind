@@ -63,7 +63,7 @@ _OWNERSHIP_LABEL_KEY = "posthog_sync_schema"
 _PUBLISHED_RUN_LABEL_KEY = "posthog_sync_run"
 
 IMPERSONATION_DENIED_DETAIL = (
-    "PostHog can't act as your Google Cloud service account. Grant the PostHog service account the "
+    "Flind can't act as your Google Cloud service account. Grant the Flind service account the "
     "Service Account Token Creator role on it, then run the sync again."
 )
 
@@ -135,7 +135,7 @@ class UnrelatedTableExistsError(RuntimeError):
 
 
 def _is_impersonation_denied(err: Exception) -> bool:
-    """Whether Google refused to mint a token for the service account PostHog impersonates.
+    """Whether Google refused to mint a token for the service account Flind impersonates.
 
     The refusal comes lazily, on the first request that needs a token. Over REST it is a
     `RefreshError`, and over gRPC the auth plugin's failure reaches the caller as a 503, so the
@@ -201,7 +201,7 @@ class BigQueryDestinationWriter:
         """The underlying BigQuery client, resolved the way the batch export resolves it.
 
         `from_service_account_integration` also covers the case where the integration holds no
-        key and PostHog impersonates the service account instead, which hand-building the
+        key and Flind impersonates the service account instead, which hand-building the
         credentials from `sensitive_config` does not.
         """
         if self._client is not None:
@@ -217,9 +217,9 @@ class BigQueryDestinationWriter:
         )
         google_cloud_integration = GoogleCloudServiceAccountIntegration(integration)
         if not google_cloud_integration.has_key():
-            # Keyless means PostHog impersonates the team's service account instead of holding
+            # Keyless means Flind impersonates the team's service account instead of holding
             # its credentials. Confirm the team actually owns that account first — otherwise a
-            # team that merely knows another org's service account email could have PostHog
+            # team that merely knows another org's service account email could have Flind
             # impersonate it, the confused-deputy problem batch exports guards against at the
             # same call site.
             async_to_sync(verify_impersonated_service_account_ownership)(

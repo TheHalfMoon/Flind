@@ -1,7 +1,7 @@
 """Reusable core for LLM-drafted semantic descriptions.
 
 Warehouse table enrichment and data-modeling view enrichment both draft one-sentence descriptions of
-data assets so PostHog AI picks the right tables/columns and joins. The surface-specific orchestration
+data assets so Flind AI picks the right tables/columns and joins. The surface-specific orchestration
 (what to enrich, how to build the prompt, where to persist) lives with each product; the pieces shared
 by both — prompt-injection hardening, the JSON completion + parsing, telemetry, the team's business
 context, and the guarded annotation upsert — live here.

@@ -7,7 +7,7 @@ import { isEmptyMapContent, loadMapContent, serializeMapContent, type MapContent
 
 // React Native with Hermes: Metro writes `.bundle` or `.jsbundle` files that get chunk IDs like
 // JavaScript bundles. The Hermes compiler then composes a second map for the bytecode, and that
-// composed map is what PostHog symbolicates with.
+// composed map is what Flind symbolicates with.
 
 export const HERMES_BUNDLE_EXTENSIONS = ['.bundle', '.jsbundle'] as const
 

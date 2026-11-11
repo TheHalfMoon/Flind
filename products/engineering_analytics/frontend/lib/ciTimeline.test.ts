@@ -3,7 +3,7 @@ import { buildPushTimeline, buildRunTimeline } from './ciTimeline'
 import { WorkflowRun } from './lifecycle'
 
 const NOW_MS = Date.parse('2026-06-10T00:00:00Z')
-const REPO = { owner: 'PostHog', name: 'posthog' }
+const REPO = { owner: 'Flind', name: 'posthog' }
 
 function job(id: number, name: string, startedAt: string, completedAt: string, conclusion = 'success'): WorkflowJobApi {
     return {

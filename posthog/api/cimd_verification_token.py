@@ -185,7 +185,7 @@ class CIMDVerificationTokenViewSet(
 
     A partner embeds the plaintext token in their CIMD metadata document as
     `verification_token` inside the `com.posthog` object (the legacy top-level
-    `posthog_verification_token` field still works as a fallback). When PostHog fetches
+    `posthog_verification_token` field still works as a fallback). When Flind fetches
     the metadata, matching the token links the partner app to this organization and
     grants a higher default rate limit for account provisioning.
 
@@ -203,7 +203,7 @@ class CIMDVerificationTokenViewSet(
     serializer_class = CIMDVerificationTokenSerializer
     # No PUT: partial_update (PATCH) only ever binds a null cimd_url, which a full
     # replace would make awkward to express safely; the create/reissue flow covers
-    # replacing every other field. No TRACE either, PostHog's viewsets don't use it.
+    # replacing every other field. No TRACE either, Flind's viewsets don't use it.
     http_method_names = ["get", "post", "patch", "delete", "head", "options"]
 
     def safely_get_queryset(self, queryset):

@@ -19,7 +19,7 @@ SQUARESPACE_BASE_URL = "https://api.squarespace.com"
 
 # Squarespace rate-limits requests with a blank/default User-Agent more aggressively,
 # so a descriptive one is required.
-USER_AGENT = "PostHog-DataWarehouse/1.0 (+https://posthog.com)"
+USER_AGENT = "Flind-DataWarehouse/1.0 (+https://posthog.com)"
 
 REQUEST_TIMEOUT_SECONDS = 60
 

@@ -32,7 +32,7 @@ Exclude staff when the question is about customers, for example with the project
 
 ## Live metrics
 
-Nine of these queries are saved as metrics in the PostHog data catalog for project 2.
+Nine of these queries are saved as metrics in the Flind data catalog for project 2.
 Run a metric with `posthog:data-catalog-metric-run` to get the current value instead of reading a figure from this skill.
 The metrics are proposed until a person approves them in the data catalog, so treat their results as noncanonical until then.
 The metric and the query here hold the same SQL.
@@ -497,7 +497,7 @@ FROM switchers
 
 ## Updating the doc
 
-1. Run each metric in the table above with `posthog:data-catalog-metric-run`, and the other queries via the PostHog MCP `posthog:execute-sql` against project 2 on us.posthog.com.
+1. Run each metric in the table above with `posthog:data-catalog-metric-run`, and the other queries via the Flind MCP `posthog:execute-sql` against project 2 on us.posthog.com.
 2. Convert results to ratios.
    Drop absolute event and user counts.
 3. Update [product-reality](product-reality.md) and the five-line picture in `SKILL.md`, and bump the "last refreshed" date.

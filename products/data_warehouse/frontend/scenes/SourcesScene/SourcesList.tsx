@@ -22,7 +22,7 @@ export function SourcesList(): JSX.Element {
         <div className="flex flex-col gap-4">
             <SceneSection
                 title="Managed data warehouse sources"
-                description="PostHog can connect to external sources and automatically import data from them into the PostHog data warehouse"
+                description="Flind can connect to external sources and automatically import data from them into the Flind data warehouse"
             >
                 <ManagedSourcesTable />
             </SceneSection>
@@ -39,7 +39,7 @@ export function SourcesList(): JSX.Element {
                                 </LemonTag>
                             </span>
                         }
-                        description="PostHog can expose a webhook that you can configure however you need to receive data from a 3rd party with no in-between service necessary"
+                        description="Flind can expose a webhook that you can configure however you need to receive data from a 3rd party with no in-between service necessary"
                         actions={
                             <LemonButton
                                 type="primary"
@@ -60,7 +60,7 @@ export function SourcesList(): JSX.Element {
 
             <SceneSection
                 title="Direct connect sources"
-                description="Query these sources live from PostHog. Your data stays where it is, nothing gets imported"
+                description="Query these sources live from Flind. Your data stays where it is, nothing gets imported"
             >
                 <DirectConnectSourcesTable />
             </SceneSection>
@@ -69,7 +69,7 @@ export function SourcesList(): JSX.Element {
                     <SceneDivider />
                     <SceneSection
                         title="Self-managed data warehouse sources"
-                        description="Tables that PostHog reads in place from your own bucket"
+                        description="Tables that Flind reads in place from your own bucket"
                     >
                         <SelfManagedSourcesTable />
                     </SceneSection>

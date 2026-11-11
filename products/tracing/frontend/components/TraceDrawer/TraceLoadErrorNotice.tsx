@@ -6,7 +6,7 @@ export function TraceLoadErrorNotice({ onRetry }: { onRetry?: () => void }): JSX
     return (
         <div className="flex flex-col gap-1.5 p-4" data-attr="tracing-trace-load-error-notice">
             <span className="font-semibold">Couldn't load trace</span>
-            <p className="m-0">PostHog couldn't load this trace.</p>
+            <p className="m-0">Flind couldn't load this trace.</p>
             {onRetry && (
                 <div>
                     <LemonButton

@@ -2,14 +2,14 @@
 
 ## Hog Function (`system.hog_functions`)
 
-Hog functions are programmable event handlers in PostHog's CDP (Customer Data Platform). They process events in real time to send data to external destinations, transform events during ingestion, or run site-side apps.
+Hog functions are programmable event handlers in Flind's CDP (Customer Data Platform). They process events in real time to send data to external destinations, transform events during ingestion, or run site-side apps.
 
 ### Function Types
 
 - `destination` — sends event data to external services (Slack, webhooks, CRMs, etc.)
 - `site_destination` — client-side destination running in the browser
-- `internal_destination` — PostHog internal processing (e.g. triggering workflows)
-- `source_webhook` — receives inbound webhooks and converts them to PostHog events
+- `internal_destination` — Flind internal processing (e.g. triggering workflows)
+- `source_webhook` — receives inbound webhooks and converts them to Flind events
 - `warehouse_source_webhook` — receives webhooks for data warehouse ingestion
 - `site_app` — client-side app running in the browser (e.g. surveys, feedback widgets)
 - `transformation` — modifies events during ingestion before they reach ClickHouse

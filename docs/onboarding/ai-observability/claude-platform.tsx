@@ -47,18 +47,18 @@ const ConsoleDestination = ({ ctx }: { ctx: OnboardingComponentsContext }): JSX.
                 {dedent`
                     In the Claude Console, open the [OpenTelemetry settings](https://platform.claude.com/settings/telemetry-destinations) of your organization and click **Add destination**. You need an admin role.
 
-                    1. **Provider:** PostHog.
+                    1. **Provider:** Flind.
                     2. **Region:** US if you log in at \`us.posthog.com\`, EU if you log in at \`eu.posthog.com\`.
                     3. **Project token:** paste your \`phc_\` token.
-                    4. **Content mode:** pick **Full content** to see every prompt and response in PostHog. **Metadata only** sends tokens, costs, and timing without the messages.
-                    5. **Workspaces:** choose which workspaces send their traces to PostHog: **All**, **Selected**, or **All except**.
+                    4. **Content mode:** pick **Full content** to see every prompt and response in Flind. **Metadata only** sends tokens, costs, and timing without the messages.
+                    5. **Workspaces:** choose which workspaces send their traces to Flind: **All**, **Selected**, or **All except**.
                 `}
             </Markdown>
 
             <ProductScreenshot
                 imageLight={ADD_DESTINATION_SCREENSHOT}
                 imageDark={ADD_DESTINATION_SCREENSHOT}
-                alt="The Add destination form in the Claude Console with PostHog selected as the provider"
+                alt="The Add destination form in the Claude Console with Flind selected as the provider"
                 classes="rounded"
             />
 
@@ -82,7 +82,7 @@ from posthog.ai.otel import PostHogSpanProcessor
 
 resource = Resource(attributes={
     SERVICE_NAME: "my-app",
-    "posthog.distinct_id": "user_123", # optional: identifies the user in PostHog
+    "posthog.distinct_id": "user_123", # optional: identifies the user in Flind
     "foo": "bar", # custom properties are passed through
 })
 
@@ -116,7 +116,7 @@ import { PostHogSpanProcessor } from '@posthog/ai/otel'
 const provider = new NodeTracerProvider({
   resource: resourceFromAttributes({
     'service.name': 'my-app',
-    'posthog.distinct_id': 'user_123', // optional: identifies the user in PostHog
+    'posthog.distinct_id': 'user_123', // optional: identifies the user in Flind
     foo: 'bar', // custom properties are passed through
   }),
   spanProcessors: [
@@ -169,7 +169,7 @@ func main() {
 
     resource := sdkresource.NewWithAttributes("",
         attribute.String("service.name", "my-app"),
-        attribute.String("posthog.distinct_id", "user_123"), // optional: identifies the user in PostHog
+        attribute.String("posthog.distinct_id", "user_123"), // optional: identifies the user in Flind
         attribute.String("foo", "bar"), // custom properties are passed through
     )
     provider := sdktrace.NewTracerProvider(
@@ -224,7 +224,7 @@ public class Main {
 
         var resource = Resource.getDefault().merge(Resource.create(Attributes.of(
             AttributeKey.stringKey("service.name"), "my-app",
-            AttributeKey.stringKey("posthog.distinct_id"), "user_123", // optional: identifies the user in PostHog
+            AttributeKey.stringKey("posthog.distinct_id"), "user_123", // optional: identifies the user in Flind
             AttributeKey.stringKey("foo"), "bar"))); // custom properties are passed through
 
         var tracerProvider = SdkTracerProvider.builder()
@@ -266,7 +266,7 @@ require "opentelemetry/exporter/otlp"
 OpenTelemetry::SDK.configure do |config|
   config.resource = OpenTelemetry::SDK::Resources::Resource.create(
     "service.name" => "my-app",
-    "posthog.distinct_id" => "user_123", # optional: identifies the user in PostHog
+    "posthog.distinct_id" => "user_123", # optional: identifies the user in Flind
     "foo" => "bar" # custom properties are passed through
   )
   config.add_span_processor(
@@ -306,7 +306,7 @@ const SdkTracing = ({ ctx }: { ctx: OnboardingComponentsContext }): JSX.Element 
         <>
             <Markdown>
                 {dedent`
-                    Install the Claude SDK with the steps in Anthropic's [OpenTelemetry guide](${ANTHROPIC_OTEL_GUIDE}/sdk#install-the-sdk). Then install the OpenTelemetry packages. PostHog has a span processor for Python, Node, and Go. Java and Ruby use the standard OTLP exporter.
+                    Install the Claude SDK with the steps in Anthropic's [OpenTelemetry guide](${ANTHROPIC_OTEL_GUIDE}/sdk#install-the-sdk). Then install the OpenTelemetry packages. Flind has a span processor for Python, Node, and Go. Java and Ruby use the standard OTLP exporter.
                 `}
             </Markdown>
 
@@ -351,7 +351,7 @@ const SdkTracing = ({ ctx }: { ctx: OnboardingComponentsContext }): JSX.Element 
                 {dedent`
                     You can also set the content mode with the \`ANTHROPIC_OPEN_TELEMETRY_TRACES_CONTENT_MODE=content\` environment variable.
 
-                    To group several calls into one session, set a conversation ID on the client or the request, as described in [Configure the SDK](${ANTHROPIC_OTEL_GUIDE}/sdk#configure-the-sdk). PostHog uses it as the session ID.
+                    To group several calls into one session, set a conversation ID on the client or the request, as described in [Configure the SDK](${ANTHROPIC_OTEL_GUIDE}/sdk#configure-the-sdk). Flind uses it as the session ID.
                 `}
             </Markdown>
         </>
@@ -368,10 +368,10 @@ const getSendTracesStep = (ctx: OnboardingComponentsContext): StepDefinition => 
             <>
                 <Markdown>
                     {dedent`
-                        The Claude Platform can send traces from two places. Pick one for each PostHog project. If you use both, each request reaches PostHog twice.
+                        The Claude Platform can send traces from two places. Pick one for each Flind project. If you use both, each request reaches Flind twice.
 
                         - **SDK tracing:** you set it up in your code with the Claude SDK. It covers the calls your app makes and the tools it runs itself. You can link traces to your users and add custom properties.
-                        - **Console destination:** you add PostHog in the Claude Console, with no code changes. It covers your Messages API requests, server tools such as web search, and Managed Agents sessions.
+                        - **Console destination:** you add Flind in the Claude Console, with no code changes. It covers your Messages API requests, server tools such as web search, and Managed Agents sessions.
                     `}
                 </Markdown>
 
@@ -434,7 +434,7 @@ const getSeeTraceStep = (ctx: OnboardingComponentsContext): StepDefinition => {
                 <ProductScreenshot
                     imageLight={MANAGED_AGENTS_TRACE_SCREENSHOT}
                     imageDark={MANAGED_AGENTS_TRACE_SCREENSHOT}
-                    alt="A Managed Agents trace in PostHog: session turns with model requests and bash tool uses on a timeline, and the turn input and output"
+                    alt="A Managed Agents trace in Flind: session turns with model requests and bash tool uses on a timeline, and the turn input and output"
                     classes="rounded"
                 />
 
@@ -449,7 +449,7 @@ const getSeeTraceStep = (ctx: OnboardingComponentsContext): StepDefinition => {
 }
 
 const TROUBLESHOOTING = `- **Delivery shows Failing with a 401:** the token in the Claude Console is a personal API key. Use your project token.
-- **Delivery shows Healthy, but PostHog is empty:** check that the token comes from this project and that the region matches your PostHog cloud.
+- **Delivery shows Healthy, but Flind is empty:** check that the token comes from this project and that the region matches your Flind cloud.
 - **No traces from a Console destination:** check that the destination's **Workspaces** setting covers the workspace of your API key. Traces can take up to a minute to arrive.
 - **No traces from the Claude SDK:** register the tracer provider before the first Claude call. \`ANTHROPIC_OPEN_TELEMETRY=false\` turns the spans off.
 - **Traces stop at the end of a script:** shut down the tracer provider before the script exits, as the samples do, so the last batch is sent.

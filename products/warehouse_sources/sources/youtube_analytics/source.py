@@ -258,7 +258,7 @@ class YouTubeAnalyticsSource(ResumableSource[YouTubeAnalyticsSourceConfig, YouTu
             caption=(
                 "Pull daily channel metrics from the YouTube Analytics API: views, watch time, subscribers, "
                 "traffic sources, geography and demographics.\n\n"
-                "Connect the Google account that manages your channel, then pick the channel to sync. PostHog "
+                "Connect the Google account that manages your channel, then pick the channel to sync. Flind "
                 "asks for read-only access to your YouTube Analytics reports and your list of channels."
             ),
             docsUrl="https://posthog.com/docs/cdp/sources/youtube-analytics",

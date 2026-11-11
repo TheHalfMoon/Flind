@@ -11,7 +11,7 @@ _COMMAND_PATTERN = re.compile(r"^[/!]\S")
 
 
 def is_untagged_question_candidate(event: dict[str, Any]) -> bool:
-    """Whether a top-level post nobody tagged the app in could be a question for PostHog.
+    """Whether a top-level post nobody tagged the app in could be a question for Flind.
 
     Text-only checks, because every top-level post in every channel the app is in comes through
     here. The classifier makes the real decision later.

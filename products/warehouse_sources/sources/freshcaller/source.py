@@ -76,7 +76,7 @@ class FreshcallerSource(ResumableSource[FreshcallerSourceConfig, FreshcallerResu
             name=ExternalDataSourceType.FRESHCALLER,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Freshcaller",
-            caption="""Enter your Freshcaller account name and API key to pull your Freshcaller call-center data into the PostHog Data warehouse.
+            caption="""Enter your Freshcaller account name and API key to pull your Freshcaller call-center data into the Flind Data warehouse.
 
 Your **account name** is the subdomain in your Freshcaller URL — e.g. `acme` for `acme.freshcaller.com`.
 

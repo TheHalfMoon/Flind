@@ -1,10 +1,10 @@
 ---
-title: How to run migrations on PostHog Cloud
+title: How to run migrations on Flind Cloud
 sidebar: Handbook
 showTitle: true
 ---
 
-This document outlines how to do large-scale data migrations on PostHog Cloud without using [Async Migrations](./async-migrations).
+This document outlines how to do large-scale data migrations on Flind Cloud without using [Async Migrations](./async-migrations).
 
 ## Background
 

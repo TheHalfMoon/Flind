@@ -1,11 +1,11 @@
-# PostHog metrics agent
+# Flind metrics agent
 
-A small deployable image that scrapes the Prometheus `/metrics` endpoints you already expose, or pulls metrics from Google Cloud Monitoring, and forwards them to PostHog as OTLP metrics.
-Use it when you want PostHog Metrics without touching application code: no PostHog SDK, no exporter changes.
+A small deployable image that scrapes the Prometheus `/metrics` endpoints you already expose, or pulls metrics from Google Cloud Monitoring, and forwards them to Flind as OTLP metrics.
+Use it when you want Flind Metrics without touching application code: no Flind SDK, no exporter changes.
 
-Under the hood it is the OpenTelemetry Collector (contrib distribution, pinned) with a PostHog-rendered config:
-prometheus and/or googlecloudmonitoring receiver → memory_limiter + batch → otlphttp exporter pointed at PostHog ingestion.
-Exemplars survive the trip: counters and histograms scraped with OpenMetrics exemplars (`trace_id`/`span_id`) become clickable trace links in the PostHog Metrics UI.
+Under the hood it is the OpenTelemetry Collector (contrib distribution, pinned) with a Flind-rendered config:
+prometheus and/or googlecloudmonitoring receiver → memory_limiter + batch → otlphttp exporter pointed at Flind ingestion.
+Exemplars survive the trip: counters and histograms scraped with OpenMetrics exemplars (`trace_id`/`span_id`) become clickable trace links in the Flind Metrics UI.
 
 ## Quickstart (Docker)
 
@@ -24,16 +24,16 @@ EU cloud: set `POSTHOG_HOST=https://eu.i.posthog.com`.
 | Variable                         | Required | Default                    | Meaning                                                                          |
 | -------------------------------- | -------- | -------------------------- | -------------------------------------------------------------------------------- |
 | `POSTHOG_API_KEY`                | yes      | —                          | Project API key, sent as `Authorization: Bearer`                                 |
-| `POSTHOG_HOST`                   | no       | `http://localhost:8010` | PostHog ingestion origin                                                         |
+| `POSTHOG_HOST`                   | no       | `http://localhost:8010` | Flind ingestion origin                                                         |
 | `SCRAPE_TARGETS`                 | yes\*    | —                          | Comma-separated `host:port` list to scrape                                       |
 | `SCRAPE_INTERVAL`                | no       | `15s`                      | Scrape interval                                                                  |
 | `SCRAPE_METRICS_PATH`            | no       | `/metrics`                 | Metrics path on the targets                                                      |
-| `SCRAPE_JOB_NAME`                | no       | `posthog-metrics-agent`    | Prometheus job name; becomes `service_name` on every metric in PostHog           |
+| `SCRAPE_JOB_NAME`                | no       | `posthog-metrics-agent`    | Prometheus job name; becomes `service_name` on every metric in Flind           |
 | `GCP_PROJECT_ID`                 | no       | unset                      | GCP project to pull Cloud Monitoring metrics from; setting it enables the source |
 | `GCP_METRICS`                    | yes\*\*  | —                          | Comma-separated metric types to pull                                             |
 | `GCP_METRIC_FILTERS`             | yes\*\*  | —                          | **Semicolon**-separated metric descriptor filters                                |
 | `GCP_COLLECTION_INTERVAL`        | no       | `60s`                      | Pull interval. The collector rejects values under `60s`                          |
-| `GCP_SERVICE_NAME`               | no       | `google-cloud-monitoring`  | `service_name` set on every pulled metric in PostHog                             |
+| `GCP_SERVICE_NAME`               | no       | `google-cloud-monitoring`  | `service_name` set on every pulled metric in Flind                             |
 | `GOOGLE_APPLICATION_CREDENTIALS` | no       | unset                      | Path to a service account JSON key. Omit on GKE Workload Identity / GCE          |
 | `POSTHOG_DEBUG`                  | no       | unset                      | `1`/`true`: also log exported batches to the container's stdout                  |
 | `POSTHOG_INGEST_PATH`            | no       | `/i/v1/metrics`            | Advanced: override the ingest route (used by tests)                              |
@@ -47,12 +47,12 @@ EU cloud: set `POSTHOG_HOST=https://eu.i.posthog.com`.
 
 ## Pull metrics from Google Cloud Monitoring
 
-Google Cloud Monitoring cannot push OTLP by itself, so the agent polls it: when `GCP_PROJECT_ID` is set, the agent calls the Cloud Monitoring `timeSeries.list` API for the metric types you list and forwards the points to PostHog, in the same pipeline as any Prometheus scrape.
+Google Cloud Monitoring cannot push OTLP by itself, so the agent polls it: when `GCP_PROJECT_ID` is set, the agent calls the Cloud Monitoring `timeSeries.list` API for the metric types you list and forwards the points to Flind, in the same pipeline as any Prometheus scrape.
 
 Use each path for what it is for:
 
 - **Prometheus scrape** — anything that exposes a `/metrics` endpoint (your apps, exporters).
-- **Direct OTLP** — application code you control (PostHog SDK `posthog.metrics`, or an OpenTelemetry exporter pointed at PostHog).
+- **Direct OTLP** — application code you control (Flind SDK `posthog.metrics`, or an OpenTelemetry exporter pointed at Flind).
 - **Cloud Monitoring pull** — metrics only Google has: Cloud SQL, GKE, Cloud Run, load balancers, Pub/Sub, and the other managed services.
 
 ```sh
@@ -118,7 +118,7 @@ The Helm chart wires this up automatically — set `shards: <n>` and it runs a S
 
 ## Durability
 
-By default the export queue is in memory: if PostHog is briefly unreachable the agent retries, but a restart during that window drops whatever was buffered.
+By default the export queue is in memory: if Flind is briefly unreachable the agent retries, but a restart during that window drops whatever was buffered.
 Set `PERSIST_QUEUE=1` (and give the container a durable volume at `QUEUE_DIR`) to back the queue with disk, so samples scraped during an outage survive restarts and deliver on recovery.
 The Helm chart's `persistence.enabled=true` provisions the volume for you.
 
@@ -127,19 +127,19 @@ The Helm chart's `persistence.enabled=true` provisions the volume for you.
 Checked in this order:
 
 1. **Full config override**: mount a complete collector config at `/etc/posthog/config.yaml`. It is used verbatim (`${env:POSTHOG_API_KEY}`-style references still resolve). This is how the Helm chart drives the image.
-2. **Custom scrape configs**: mount a YAML list of Prometheus `scrape_configs` at `/etc/posthog/scrape_configs.yaml` to replace the env-generated job while keeping the PostHog exporter wiring. Tip: add `scrape_protocols: [OpenMetricsText1.0.0, OpenMetricsText0.0.1, PrometheusText0.0.4]` to each job so exemplars keep flowing.
+2. **Custom scrape configs**: mount a YAML list of Prometheus `scrape_configs` at `/etc/posthog/scrape_configs.yaml` to replace the env-generated job while keeping the Flind exporter wiring. Tip: add `scrape_protocols: [OpenMetricsText1.0.0, OpenMetricsText0.0.1, PrometheusText0.0.4]` to each job so exemplars keep flowing.
 3. **Custom Cloud Monitoring metric list**: mount a raw `metrics_list` YAML list at `/etc/posthog/gcp_metrics_list.yaml` to control exactly which metric types and filters the `googlecloudmonitoring` receiver pulls (requires `GCP_PROJECT_ID`).
 4. Otherwise the scrape job is rendered from `SCRAPE_TARGETS` and the Cloud Monitoring source from `GCP_PROJECT_ID` + `GCP_METRICS` / `GCP_METRIC_FILTERS`.
 
 ## Exemplars (metric ↔ trace linking)
 
-- The agent scrapes with OpenMetrics negotiation enabled, which is the only Prometheus exposition format that carries exemplars. Exemplar `trace_id`/`span_id` labels are converted to OTLP exemplars and linked to traces in PostHog automatically.
+- The agent scrapes with OpenMetrics negotiation enabled, which is the only Prometheus exposition format that carries exemplars. Exemplar `trace_id`/`span_id` labels are converted to OTLP exemplars and linked to traces in Flind automatically.
 - Exemplars exist only on counters and histogram buckets; gauges never have them.
 - The agent preserves exemplars, it cannot create them: your application's Prometheus client must be configured to attach them (for example prom-client's `enableExemplars`, or a span-context supplier in Micrometer). If your endpoint only serves classic Prometheus text, metrics still flow but without trace links.
 
 ## Notes and limits
 
-- One `service_name` per scrape job: Prometheus `job_name` maps to `service_name` in PostHog and target labels cannot override it. Run one agent (or one mounted scrape job) per logical service if you need distinct service names.
+- One `service_name` per scrape job: Prometheus `job_name` maps to `service_name` in Flind and target labels cannot override it. Run one agent (or one mounted scrape job) per logical service if you need distinct service names.
 - Don't run bare replicas of one agent — they all scrape the same targets (and pull the same Cloud Monitoring series) and double-count. To scale scraping, use a sharded fleet (see Scaling out) so each instance takes a disjoint slice. Cloud Monitoring is not shardable: run one puller.
 - Metrics are rate limited server side per project; keep label cardinality sane (avoid user IDs, request IDs and the like as label values).
 - Health endpoint for probes: `:13133`.

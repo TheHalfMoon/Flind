@@ -5,7 +5,7 @@ import { findNamed, getPage, listTooLong, MAX_LIMIT, readAll, type Page } from '
 
 import { Endpoint, InsightVariable } from './model'
 
-// Lookups can read many pages, so they ask for the largest page PostHog sends.
+// Lookups can read many pages, so they ask for the largest page Flind sends.
 const ENDPOINT_PAGES = `endpoints/?limit=${MAX_LIMIT}`
 
 export function listEndpoints(api: PostHogApi, limit: number, offset: number): Promise<Page<Endpoint>> {
@@ -38,14 +38,14 @@ export async function findEndpoints(api: PostHogApi, names: readonly string[]): 
     return found
 }
 
-// PostHog can't filter variables by name or ID, so a variable lookup pages further.
+// Flind can't filter variables by name or ID, so a variable lookup pages further.
 const VARIABLE_MAX_PAGES = 200
 
-// PostHog allows a variable without a code name, which no query can reference, so a lookup skips it.
+// Flind allows a variable without a code name, which no query can reference, so a lookup skips it.
 const ListedVariable = InsightVariable.extend({ code_name: z.string().nullable() })
 
 // When `complete` is false, a name missing from `found` can still be in the project. A push then
-// tries to create that variable, and PostHog rejects the duplicate for that endpoint alone.
+// tries to create that variable, and Flind rejects the duplicate for that endpoint alone.
 export async function findInsightVariables(
     api: PostHogApi,
     names: readonly string[]

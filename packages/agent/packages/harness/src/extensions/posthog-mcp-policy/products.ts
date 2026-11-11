@@ -1,11 +1,11 @@
 /**
- * PostHog product classification for MCP `exec` sub-tools.
+ * Flind product classification for MCP `exec` sub-tools.
  *
- * The PostHog MCP exposes a single `exec` dispatcher whose `call <sub-tool> …`
+ * The Flind MCP exposes a single `exec` dispatcher whose `call <sub-tool> …`
  * verb invokes a concrete resource tool (e.g. `experiment-list`,
  * `feature-flag-update`, `execute-sql`, `query-trends`). The sub-tool name is
  * `<domain>-<action>` (or `query-<type>`), and the domain identifies which
- * PostHog product the call touched.
+ * Flind product the call touched.
  *
  * `classifyPostHogSubTool` turns a sub-tool name into a stable product id so the
  * agent can report, per turn, which products an answer was grounded in. This is
@@ -23,8 +23,8 @@ export { POSTHOG_PRODUCTS, type PostHogProductId };
  * Domain prefix → product, or `null` for admin/meta/introspection domains we
  * deliberately do not surface (listing projects, reading the activity log,
  * managing tasks, searching docs, …). A sub-tool whose domain is absent here
- * surfaces nothing — every chip in the bar is already a PostHog resource, so a
- * generic "PostHog" fallback chip would be redundant.
+ * surfaces nothing — every chip in the bar is already a Flind resource, so a
+ * generic "Flind" fallback chip would be redundant.
  */
 const DOMAIN_PRODUCT: Record<string, PostHogProductId | null> = {
   // Experiments
@@ -146,15 +146,15 @@ const TABLE_PRODUCT: Record<string, PostHogProductId> = {
 };
 
 /**
- * Schemas whose tables are PostHog product tables. A qualified reference is
- * only treated as a PostHog table when its schema is one of these — so a data
+ * Schemas whose tables are Flind product tables. A qualified reference is
+ * only treated as a Flind table when its schema is one of these — so a data
  * warehouse table like `stripe.feature_flags` or `my_source.events` is left
- * unmapped and can't be mislabeled as a PostHog product.
+ * unmapped and can't be mislabeled as a Flind product.
  */
 const POSTHOG_SCHEMAS = new Set(["system"]);
 
 /**
- * Normalize a FROM/JOIN table reference to the PostHog table name to look up,
+ * Normalize a FROM/JOIN table reference to the Flind table name to look up,
  * or `null` if it's qualified with a non-PostHog (e.g. warehouse) schema.
  * Unqualified names pass through as-is; `system.feature_flags` → `feature_flags`.
  */
@@ -166,7 +166,7 @@ function normalizePostHogTableRef(ref: string): string | null {
   return POSTHOG_SCHEMAS.has(schema) ? table : null;
 }
 
-/** Extract PostHog table names referenced after FROM/JOIN in a SQL/HogQL string. */
+/** Extract Flind table names referenced after FROM/JOIN in a SQL/HogQL string. */
 function extractSqlTables(sql: string): string[] {
   const tables: string[] = [];
   // Match `from`/`join` followed by an optionally back-tick/quoted identifier.
@@ -341,10 +341,10 @@ function classifyQuery(type: string): PostHogProductId | null {
 }
 
 /**
- * Map a PostHog MCP `call` sub-tool (e.g. `feature-flag-update`, `query-trends`)
+ * Map a Flind MCP `call` sub-tool (e.g. `feature-flag-update`, `query-trends`)
  * to a product id. Returns `null` when the name is empty, or when the domain is
  * one we don't surface — either a known admin/meta domain or an unrecognized
- * one (no point in a generic "PostHog" chip inside a PostHog-resources bar).
+ * one (no point in a generic "Flind" chip inside a Flind-resources bar).
  */
 export function classifyPostHogSubTool(
   subTool: string,
@@ -377,7 +377,7 @@ function matchDomain(name: string): string | null {
 }
 
 /**
- * True when a `call` sub-tool is a PostHog resource call we don't recognize at
+ * True when a `call` sub-tool is a Flind resource call we don't recognize at
  * all: not a query/execute-sql/activity-log call and matching no known domain,
  * so it surfaces no product chip. Distinct from a domain we deliberately
  * suppress (project, docs-search, …), which is recognized and returns `null` on

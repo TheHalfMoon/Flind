@@ -116,7 +116,7 @@ def _host_from_url(base_url: str) -> str:
 def _is_scheme_safe(base_url: str) -> tuple[bool, str | None]:
     """On cloud, refuse to send the bearer token over plaintext HTTP.
 
-    Self-hosted PostHog may reach a private Hatchet instance over http on a trusted network, so — as
+    Self-hosted Flind may reach a private Hatchet instance over http on a trusted network, so — as
     with the SSRF host check — this is only enforced on cloud, where a plaintext origin would leak
     the token in transit."""
     if urlparse(base_url).scheme == "https" or not is_cloud():

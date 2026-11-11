@@ -127,7 +127,7 @@ function QueuedMessageItem({
 
 /**
  * The editable queue rendered above the composer while the agent is busy. Purely presentational (no kea):
- * the consumer owns the queue state and passes `onUpdate` / `onRemove`. Modeled on PostHog AI's
+ * the consumer owns the queue state and passes `onUpdate` / `onRemove`. Modeled on Flind AI's
  * `QueuedMessageItem`, minus the conversation/Max coupling.
  */
 export function QueuedMessageList({

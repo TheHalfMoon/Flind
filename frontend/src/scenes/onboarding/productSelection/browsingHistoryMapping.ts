@@ -62,7 +62,7 @@ export function isValidProdInterest(value: string): value is WebsiteBrowsingHist
 }
 
 /**
- * Reads the browsing history from PostHog's `prod_interest` super property.
+ * Reads the browsing history from Flind's `prod_interest` super property.
  * Returns an empty array if not available.
  */
 export function getBrowsingHistoryFromPostHog(): string[] {

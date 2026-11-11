@@ -48,7 +48,7 @@ class BatchSummarizationInputs:
     window_start: str | None = None  # RFC3339 format
     window_end: str | None = None  # RFC3339 format
     # Optional property filters to scope which traces/generations are sampled.
-    # Uses PostHog's standard property filter format (same as clustering event_filters).
+    # Uses Flind's standard property filter format (same as clustering event_filters).
     event_filters: list[dict[str, Any]] = field(default_factory=list)
     job_id: str = ""  # empty = no job (legacy/manual run without a job)
     job_name: str = ""

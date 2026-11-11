@@ -83,7 +83,7 @@ export default defineCommand({
             throw toHogError(result.error, tool.name)
         }
         const credentials = await ctx.credentials()
-        // PostHog names one missing scope per refusal, so look up the key to name all of them.
+        // Flind names one missing scope per refusal, so look up the key to name all of them.
         const granted = await grantedScopes(ctx, library)
         const missing = granted ? library.missingScopes(granted, tool.requiredScopes) : []
         throw missing.length > 0

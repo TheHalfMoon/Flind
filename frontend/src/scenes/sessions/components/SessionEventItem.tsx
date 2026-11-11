@@ -59,7 +59,7 @@ export function eventToIcon(event: string | undefined | null): React.ComponentTy
         case 'error':
             return IconTerminal
         default:
-            // Check if it's a core PostHog event
+            // Check if it's a core Flind event
             if (event && event.startsWith('$')) {
                 return IconLogomark
             }

@@ -147,7 +147,7 @@ export const biDataSourcePickerLogic: LogicWrapper<biDataSourcePickerLogicType> 
                 for (const table of tables) {
                     const group =
                         table.type === 'posthog'
-                            ? 'PostHog'
+                            ? 'Flind'
                             : table.type === 'view'
                               ? 'Views'
                               : table.type === 'system'

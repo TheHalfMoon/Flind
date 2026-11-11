@@ -140,7 +140,7 @@ class AwsCostAnomalyDetectionSource(
             name=ExternalDataSourceType.AWSCOSTANOMALYDETECTION,
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="AWS Cost Anomaly Detection",
-            caption="""Sync the cost anomalies AWS detected on your account into the PostHog Data warehouse.
+            caption="""Sync the cost anomalies AWS detected on your account into the Flind Data warehouse.
 
 Create an IAM user or role with the `ce:GetAnomalies`, `ce:GetAnomalyMonitors` and `ce:GetAnomalySubscriptions` permissions, then paste its access key ID and secret access key. Add a session token too if you are using temporary credentials.
 

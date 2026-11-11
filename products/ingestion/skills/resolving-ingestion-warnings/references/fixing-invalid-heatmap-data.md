@@ -35,7 +35,7 @@ The classic bugs: a `null`/`undefined` URL variable interpolated into the key, a
 
 - **Outdated posthog-js**: upgrade to the current version everywhere — hunt down pinned snippets and stale bundles so all pages ship the same version.
 - **Stock, current posthog-js**: don't touch `$heatmap_data` — remove or fix any middleware/proxy that rewrites it.
-- **Hand-built payloads**: match the shape exactly — page-URL string keys (guard against unset URL variables), arrays of `{x, y, target_fixed, type}` items as values. Or better: capture the interactions as regular events and let PostHog's own heatmap capture do the heatmap part.
+- **Hand-built payloads**: match the shape exactly — page-URL string keys (guard against unset URL variables), arrays of `{x, y, target_fixed, type}` items as values. Or better: capture the interactions as regular events and let Flind's own heatmap capture do the heatmap part.
 
 ## Verify
 

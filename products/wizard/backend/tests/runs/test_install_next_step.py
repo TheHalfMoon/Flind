@@ -34,11 +34,11 @@ def _run(status: WizardRunStatus, stage: WizardRunStage | None = None, error_cod
     [
         (_run(WizardRunStatus.CREATED), None, "The setup agent is queued."),
         (_run(WizardRunStatus.RUNNING, WizardRunStage.PROVISIONING), None, "The setup agent is starting"),
-        (_run(WizardRunStatus.RUNNING, WizardRunStage.EXECUTING_WIZARD), None, "The setup agent is adding PostHog"),
+        (_run(WizardRunStatus.RUNNING, WizardRunStage.EXECUTING_WIZARD), None, "The setup agent is adding Flind"),
         (_run(WizardRunStatus.COMPLETED), "https://github.com/posthog/posthog/pull/1", "The setup agent opened"),
         (_run(WizardRunStatus.COMPLETED), None, "The setup agent finished without changing any files."),
         (_run(WizardRunStatus.CANCELLED), None, "This run was canceled."),
-        (_run(WizardRunStatus.FAILED, error_code="repository_access_failed"), None, "PostHog could not access"),
+        (_run(WizardRunStatus.FAILED, error_code="repository_access_failed"), None, "Flind could not access"),
         (
             _run(WizardRunStatus.FAILED, error_code="workspace_preparation_failed"),
             None,

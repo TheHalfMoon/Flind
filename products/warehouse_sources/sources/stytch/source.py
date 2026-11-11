@@ -61,7 +61,7 @@ class StytchSource(ResumableSource[StytchSourceConfig, StytchResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Stytch",
             keywords=["auth", "authentication", "identity"],
-            caption="""Enter your Stytch project ID and secret to pull your Stytch users and sessions into the PostHog Data warehouse.
+            caption="""Enter your Stytch project ID and secret to pull your Stytch users and sessions into the Flind Data warehouse.
 
 You can find both under [API keys](https://stytch.com/dashboard/api-keys) in your Stytch dashboard. Live credentials (`project-live-...`) sync from `api.stytch.com`; test credentials (`project-test-...`) sync your test environment's data from `test.stytch.com`.
 

@@ -12,7 +12,7 @@ export const getDocusaurusInstallSteps = (ctx: OnboardingComponentsContext): Ste
             content: (
                 <>
                     <Markdown>
-                        Docusaurus is a popular static site generator for documentation. You can add PostHog using the
+                        Docusaurus is a popular static site generator for documentation. You can add Flind using the
                         official plugin:
                     </Markdown>
                     <CodeBlock
@@ -76,7 +76,7 @@ export const getDocusaurusEventStep = (ctx: OnboardingComponentsContext): StepDe
         title: 'View events',
         content: (
             <Markdown>
-                Start your Docusaurus site and visit a few pages. PostHog will automatically capture pageviews and other
+                Start your Docusaurus site and visit a few pages. Flind will automatically capture pageviews and other
                 events.
             </Markdown>
         ),

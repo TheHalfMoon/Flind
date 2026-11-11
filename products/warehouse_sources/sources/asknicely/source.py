@@ -51,7 +51,7 @@ class AsknicelySource(ResumableSource[AsknicelySourceConfig, AskNicelyResumeConf
             label="AskNicely",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["nps", "csat", "survey"],
-            caption="""Sync your AskNicely survey responses (NPS, CSAT, 5-star), daily stats and unsubscribed contacts into the PostHog Data warehouse.
+            caption="""Sync your AskNicely survey responses (NPS, CSAT, 5-star), daily stats and unsubscribed contacts into the Flind Data warehouse.
 
 Your account subdomain is the first part of your AskNicely URL (`https://<subdomain>.asknice.ly`). You can find your API key in AskNicely under **Settings > API**.""",
             iconPath="/static/services/asknicely.png",

@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -892,7 +892,7 @@ export const getHogFlowsOptimizationRetrieveUrl = (projectId: string, id: string
 }
 
 /**
- * Whether PostHog may suggest changes to this workflow.
+ * Whether Flind may suggest changes to this workflow.
  *
  * Turning it off stops new suggestions. Suggestions already made are left alone: someone
  * still has them to resolve.
@@ -913,7 +913,7 @@ export const getHogFlowsOptimizationCreateUrl = (projectId: string, id: string) 
 }
 
 /**
- * Whether PostHog may suggest changes to this workflow.
+ * Whether Flind may suggest changes to this workflow.
  *
  * Turning it off stops new suggestions. Suggestions already made are left alone: someone
  * still has them to resolve.
@@ -1121,7 +1121,7 @@ export const getHogFlowsResumeEmailSendingUrl = (projectId: string, id: string) 
 }
 
 /**
- * Resume email sending for a workflow PostHog paused automatically.
+ * Resume email sending for a workflow Flind paused automatically.
  *
  * Self-serve on purpose. Resuming re-arms the detector rather than exempting the workflow, so
  * a workflow that is still generating complaints or hard bounces pauses again within minutes,
@@ -1740,7 +1740,7 @@ export const getWorkflowImportsCreateUrl = (projectId: string) => {
 }
 
 /**
- * Turns Customer.io automations into draft workflows. Pass each automation as Customer.io's Journeys UI API returns it. Pass the templates its messages use, or leave them out when the project stored a Customer.io App API key, and PostHog reads them. Each result lists what the import changed or left out. Importing an automation again updates its draft, unless that workflow is no longer a draft. Set dry_run to preview without saving.
+ * Turns Customer.io automations into draft workflows. Pass each automation as Customer.io's Journeys UI API returns it. Pass the templates its messages use, or leave them out when the project stored a Customer.io App API key, and Flind reads them. Each result lists what the import changed or left out. Importing an automation again updates its draft, unless that workflow is no longer a draft. Set dry_run to preview without saving.
  * @summary Import Customer.io automations as draft workflows
  */
 export const workflowImportsCreate = async (

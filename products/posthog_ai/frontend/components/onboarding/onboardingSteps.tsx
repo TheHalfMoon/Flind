@@ -1,6 +1,6 @@
 import { IconBolt, IconBook, IconGithub, IconList, IconSparkles } from '@posthog/icons'
 
-// Default, overridable content for the PostHog AI onboarding takeover. Five steps, in order: reset the
+// Default, overridable content for the Flind AI onboarding takeover. Five steps, in order: reset the
 // user's prediction of the old assistant, then one step per capability, ending on a real prompt. Pass your
 // own array to override.
 
@@ -33,8 +33,8 @@ export const DEFAULT_ONBOARDING_STEPS: readonly OnboardingStep[] = [
     {
         key: 'meet',
         icon: <IconSparkles />,
-        headline: 'PostHog AI is a different agent now',
-        body: 'It is a coding agent, and it works across every PostHog product.',
+        headline: 'Flind AI is a different agent now',
+        body: 'It is a coding agent, and it works across every Flind product.',
         media: { src: '/static/posthog-ai-onboarding/meet.mp4', poster: '/static/posthog-ai-onboarding/meet.jpg' },
     },
     {
@@ -87,7 +87,7 @@ export const DEFAULT_STARTER_PROMPTS: readonly string[] = [
  * brand-new org every one of them would dead-end on an empty result.
  */
 export const EMPTY_PROJECT_STARTER_PROMPTS: readonly string[] = [
-    'Set up PostHog tracking in my codebase.',
+    'Set up Flind tracking in my codebase.',
     'What events should I track for a product like mine?',
     'Add error tracking and show me the first issues.',
 ]

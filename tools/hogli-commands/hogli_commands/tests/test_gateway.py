@@ -110,7 +110,7 @@ def test_host_allowlist(host: str, args: tuple[str, ...], expected_origin: str |
     "stdin,env,sent",
     [
         ("phe_piped\n", {"POSTHOG_GATEWAY_TOKEN": "phe_env"}, "phe_piped"),
-        # A real provider key in ANTHROPIC_API_KEY is skipped, never sent to PostHog.
+        # A real provider key in ANTHROPIC_API_KEY is skipped, never sent to Flind.
         ("", {"ANTHROPIC_API_KEY": "sk-ant-real", "OPENAI_API_KEY": "phe_openai"}, "phe_openai"),
     ],
 )

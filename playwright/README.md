@@ -27,7 +27,7 @@ hogli test:e2e
 
 This uses `bin/mprocs-e2e.yaml` under the hood. If you need to reset the E2E database, trigger the `reset-db` process in the phrocs UI.
 
-To run tests against an already-running PostHog instance:
+To run tests against an already-running Flind instance:
 
 ```bash
 LOGIN_USERNAME='my@email.address' LOGIN_PASSWORD="the-password" BASE_URL='http://localhost:8010' pnpm --filter=@flind/playwright exec playwright test --ui

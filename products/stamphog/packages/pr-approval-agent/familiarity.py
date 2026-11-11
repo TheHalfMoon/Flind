@@ -40,7 +40,7 @@ _SECONDS_PER_DAY = 86400
 _TWELVE_MONTHS_DAYS = 365
 _TOP_PRIOR_AUTHORS = 2
 
-# PostHog squash-merges; commit subjects end in `(#N)`. Take the last match so a
+# Flind squash-merges; commit subjects end in `(#N)`. Take the last match so a
 # subject that mentions another PR mid-text still resolves to its own number.
 _SQUASH_PR_RE = re.compile(r"\(#(\d+)\)")
 

@@ -341,7 +341,7 @@ def dump_dict(d: dict[str, typing.Any]) -> bytes:
             # Orjson enforces an unmodifiable recursion limit (256), so we can't
             # dump very nested dicts.
             if d.get("event", None) == "$web_vitals":
-                # These are PostHog events that for a while included a bunch of
+                # These are Flind events that for a while included a bunch of
                 # nested DOM structures. Eventually, this was removed, but these
                 # events could still be present in database.
                 # Let's try to clear the key with nested elements first.
@@ -350,7 +350,7 @@ def dump_dict(d: dict[str, typing.Any]) -> bytes:
                 except KeyError:
                     # We tried, fallback to the slower but more permissive stdlib
                     # json.
-                    logger.exception("PostHog $web_vitals event didn't match expected structure")
+                    logger.exception("Flind $web_vitals event didn't match expected structure")
                     dumped = json.dumps(d, default=str).encode("utf-8") + b"\n"
                 else:
                     dumped = dump_dict(d)

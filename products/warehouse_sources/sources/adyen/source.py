@@ -33,7 +33,7 @@ from products.warehouse_sources.sources.sdk import (
     detect,
 )
 
-CAPTION = """Connect your Adyen account to sync payments data into the PostHog Data warehouse.
+CAPTION = """Connect your Adyen account to sync payments data into the Flind Data warehouse.
 
 Create an API credential in your Adyen Customer Area under **Developers > API credentials**, then paste its API key below. Which tables you can sync depends on what that credential can reach:
 

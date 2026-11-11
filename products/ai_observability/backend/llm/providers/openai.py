@@ -86,7 +86,7 @@ class OpenAIConfig:
         }
     )
 
-    # Models available in the PostHog-funded playground. Excludes expensive
+    # Models available in the Flind-funded playground. Excludes expensive
     # "pro" tiers and includes one flagship model for quality evaluation.
     PLAYGROUND_MODELS: list[str] = [
         "gpt-4.1",

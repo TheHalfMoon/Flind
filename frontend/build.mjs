@@ -64,7 +64,7 @@ const appBundle = { ...common, extraPlugins: [zodJitlessEsbuildPlugin()] }
 await buildInParallel(
     [
         {
-            name: 'PostHog App',
+            name: 'Flind App',
             globalName: 'posthogApp',
             entryPoints: ['src/index.tsx', 'src/sharedChunkAnchors.ts'],
             splitting: true,
@@ -123,14 +123,14 @@ await buildInParallel(
 
             const { chunks, entrypoints } = buildResponse
 
-            if (config.name === 'PostHog App') {
+            if (config.name === 'Flind App') {
                 if (Object.keys(chunks).length === 0) {
-                    console.error('Could not get chunk metadata for bundle "PostHog App."')
-                    throw new Error('Could not get chunk metadata for bundle "PostHog App."')
+                    console.error('Could not get chunk metadata for bundle "Flind App."')
+                    throw new Error('Could not get chunk metadata for bundle "Flind App."')
                 }
                 if (!isDev && Object.keys(entrypoints).length === 0) {
-                    console.error('Could not get entrypoint for bundle "PostHog App."')
-                    throw new Error('Could not get entrypoint for bundle "PostHog App."')
+                    console.error('Could not get entrypoint for bundle "Flind App."')
+                    throw new Error('Could not get entrypoint for bundle "Flind App."')
                 }
                 // onBuildComplete runs outside the heavy-build lock, and this work runs esbuild over every chunk.
                 const stable = isDev ? null : await runExclusiveHeavy(() => finishAppBuild(buildResponse))
@@ -165,7 +165,7 @@ await buildInParallel(
 async function finishAppBuild(buildResponse) {
     const { chunks, entrypoints } = buildResponse
     const unminifiedDir = await minifyAppChunks(buildResponse)
-    reportTopChunks(buildResponse.outputs, { label: 'PostHog App chunks' })
+    reportTopChunks(buildResponse.outputs, { label: 'Flind App chunks' })
     const preloadManifest = writePreloadManifest(buildResponse.outputs)
     // A throw here must fail the build: it reaches buildInParallel's catch, which
     // exits non-zero for non-dev builds. Keep it in this awaited call chain.

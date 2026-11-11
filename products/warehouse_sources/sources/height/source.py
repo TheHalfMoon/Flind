@@ -46,7 +46,7 @@ class HeightSource(SimpleSource[HeightSourceConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Height",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Height API key to pull your project management data into the PostHog Data warehouse.
+            caption="""Enter your Height API key to pull your project management data into the Flind Data warehouse.
 
 You can create an API key on the **Settings → API** page in [Height](https://height.app/). The key grants read access to your workspace's users, lists, and field templates.
 """,

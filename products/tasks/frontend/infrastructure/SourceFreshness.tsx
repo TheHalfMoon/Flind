@@ -14,7 +14,7 @@ const sourceLabels: Record<keyof Sources, string> = {
     autoresearch: 'Autoresearch',
     vm: 'VM base',
     custom: 'Custom images',
-    dev_stack: 'PostHog dev stack',
+    dev_stack: 'Flind dev stack',
 }
 
 export function SourceFreshness({ sources, now }: { sources: Sources; now: number }): JSX.Element {

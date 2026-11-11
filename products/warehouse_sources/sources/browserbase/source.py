@@ -50,7 +50,7 @@ class BrowserbaseSource(SimpleSource[BrowserbaseSourceConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Browserbase",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Browserbase API key to sync your Browserbase sessions and projects into the PostHog Data warehouse.
+            caption="""Enter your Browserbase API key to sync your Browserbase sessions and projects into the Flind Data warehouse.
 
 You can find your project API key in your [Browserbase dashboard](https://www.browserbase.com/settings). API keys are scoped to a single project.""",
             iconPath="/static/services/browserbase.svg",

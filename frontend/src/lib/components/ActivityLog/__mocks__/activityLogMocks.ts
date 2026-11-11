@@ -16,7 +16,7 @@ export const teamActivityResponseJson: ActivityLogItem[] = [
         scope: ActivityScope.TEAM,
         detail: {
             merge: null,
-            name: '🦔 PostHog App + Website',
+            name: '🦔 Flind App + Website',
             type: undefined,
             changes: [
                 {
@@ -51,7 +51,7 @@ export const teamActivityResponseJson: ActivityLogItem[] = [
         scope: ActivityScope.TEAM,
         detail: {
             merge: null,
-            name: '🦔 PostHog App + Website',
+            name: '🦔 Flind App + Website',
             type: undefined,
             changes: [
                 {

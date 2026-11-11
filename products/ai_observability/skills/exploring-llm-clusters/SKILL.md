@@ -21,7 +21,7 @@ comparing cluster behavior, and drilling into individual clusters.
 
 ## How clustering works
 
-PostHog clusters LLM traces, individual generations, or evaluation events by embedding similarity.
+Flind clusters LLM traces, individual generations, or evaluation events by embedding similarity.
 A Temporal workflow runs periodically or on-demand, producing cluster events stored as
 `$ai_trace_clusters` (trace-level), `$ai_generation_clusters` (generation-level), or
 `$ai_evaluation_clusters` (evaluation-level).
@@ -321,7 +321,7 @@ For the full `$ai_*` event schema, load the `exploring-llm-traces` skill.
 - **Specific run**: `https://app.posthog.com/ai-observability/clusters/<url_encoded_run_id>`
 - **Cluster detail**: `https://app.posthog.com/ai-observability/clusters/<url_encoded_run_id>/<cluster_id>`
 
-Always surface these links so the user can verify visually in the PostHog UI.
+Always surface these links so the user can verify visually in the Flind UI.
 
 ## Tips
 

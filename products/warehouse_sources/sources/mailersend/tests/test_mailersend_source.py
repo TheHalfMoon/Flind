@@ -72,6 +72,6 @@ class TestResumableWiring:
 
 class TestCanonicalDescriptions:
     def test_activity_documents_injected_domain_id(self) -> None:
-        # domain_id is added by PostHog, not MailerSend, so it must be documented for the AI agent.
+        # domain_id is added by Flind, not MailerSend, so it must be documented for the AI agent.
         activity = MailerSendSource().get_canonical_descriptions()["activity"]
         assert "domain_id" in activity["columns"]

@@ -92,7 +92,7 @@ class EventDefinitionGenerator(ABC):
         Fetch event definitions and build schema map. The key of `schema_map` references a EventDefinition.ID
         from the returned event_definitions set.
         """
-        # Include core PostHog events (from the taxonomy), verified events, and
+        # Include core Flind events (from the taxonomy), verified events, and
         # custom events with a schema. This prevents spam events and events with
         # personal information from being included in generated code.
         has_schema = Exists(EventSchema.objects.filter(event_definition=OuterRef("pk")))
@@ -101,7 +101,7 @@ class EventDefinitionGenerator(ABC):
             EventDefinition.objects.alias(effective_project_id=effective_project_id_expr())
             .filter(effective_project_id=project_id)
             .filter(
-                Q(name__in=CORE_EVENTS)  # Core PostHog events from the taxonomy
+                Q(name__in=CORE_EVENTS)  # Core Flind events from the taxonomy
                 | Q(enterpriseeventdefinition__verified=True)  # Any verified event
                 | (
                     ~Q(name__startswith="$") & has_schema  # Custom events with a schema

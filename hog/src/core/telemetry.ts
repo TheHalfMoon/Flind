@@ -10,7 +10,7 @@ import { parseJsonOrUndefined } from './json'
 import type { Env, Runtime } from './runtime'
 import type { Schema } from './schema'
 
-// PostHog's own project, where posthog-cli release builds send their events too.
+// Flind's own project, where posthog-cli release builds send their events too.
 export const DEFAULT_TELEMETRY_TOKEN = 'sTMFPsFhdP1Ssg'
 
 const TELEMETRY_HOST = 'https://us.i.posthog.com'
@@ -106,7 +106,7 @@ type CachedIdentity = z.output<typeof CachedIdentitySchema>
 // hog writes this file itself, so a cache it can't read is broken and hog starts a new one.
 const IdentityCacheSchema = z.record(z.string(), CachedIdentitySchema)
 
-// Only PostHog Cloud users exist in the project telemetry goes to.
+// Only Flind Cloud users exist in the project telemetry goes to.
 function isCloudHost(host: string): boolean {
     const { hostname } = new URL(host)
     return hostname === 'posthog.com' || hostname.endsWith('.posthog.com')
@@ -118,7 +118,7 @@ const Text = z.string().min(1).optional().catch(undefined)
 const IdentityUser = z.object({ distinct_id: Text, organization: z.object({ id: Text }).optional().catch(undefined) })
 const IdentityProject = z.object({ organization: Text, uuid: Text })
 
-// Usage events for the PostHog team. They belong to the PostHog Cloud user whose key hog uses, and
+// Usage events for the Flind team. They belong to the Flind Cloud user whose key hog uses, and
 // to a random install ID otherwise. Events carry no argument or option values and no error messages,
 // only names, counts and error codes.
 export class Telemetry {
@@ -173,7 +173,7 @@ export class Telemetry {
         const common = {
             ...this.commonProperties(),
             install_id: installId,
-            // A self-hosted project ID means nothing in PostHog Cloud and would tie the install to that instance.
+            // A self-hosted project ID means nothing in Flind Cloud and would tie the install to that instance.
             env_id: key && isCloudHost(key.host) ? key.projectId : null,
             credential_type: key?.status().kind ?? null,
             ...(workload ? { workload_provider: workload.provider } : {}),
@@ -227,7 +227,7 @@ export class Telemetry {
         }
     }
 
-    // Looks the user up once per key and keeps the answer for 30 days, or a day when PostHog had
+    // Looks the user up once per key and keeps the answer for 30 days, or a day when Flind had
     // none, so most runs send no extra request. A key without the scopes stays anonymous.
     private async identity(key: AccessKey): Promise<Identity | undefined> {
         if (!isCloudHost(key.host) || !key.identifiesPerson) {

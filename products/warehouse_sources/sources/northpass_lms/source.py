@@ -53,7 +53,7 @@ class NorthpassLMSSource(ResumableSource[NorthpassLMSSourceConfig, NorthpassResu
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="Northpass LMS",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Northpass API key to sync your Northpass (Gainsight Customer Education) learning data into the PostHog Data warehouse.
+            caption="""Enter your Northpass API key to sync your Northpass (Gainsight Customer Education) learning data into the Flind Data warehouse.
 
 You can create an API key in your Northpass admin panel under **Apps → API Access**.""",
             iconPath="/static/services/northpass_lms.png",

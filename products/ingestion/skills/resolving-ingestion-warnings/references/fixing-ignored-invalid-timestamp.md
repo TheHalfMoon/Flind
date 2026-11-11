@@ -1,13 +1,13 @@
 # Fixing `ignored_invalid_timestamp`
 
-An event's `timestamp` property couldn't be parsed, so PostHog **ingested the event with the server's arrival time** instead of the intended one.
+An event's `timestamp` property couldn't be parsed, so Flind **ingested the event with the server's arrival time** instead of the intended one.
 Category `event`, severity `warning`: no event was lost, but its time is wrong — which quietly corrupts trends, funnels with time windows, and historical imports (everything lands at import time).
 
 Note this is strictly about **unparseable** timestamps. Events that arrive late with _valid_ timestamps (mobile SDKs flushing offline queues, batched backends) are handled normally and don't produce this warning.
 
 ## What it means in your code
 
-The timestamp string isn't a format PostHog can parse. Common sources:
+The timestamp string isn't a format Flind can parse. Common sources:
 
 - locale formats: `"07/08/2026 14:32"`, `"8 Jul 2026"`,
 - unix epochs sent as strings or in seconds where milliseconds are expected,

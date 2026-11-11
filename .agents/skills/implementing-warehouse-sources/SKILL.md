@@ -1,6 +1,6 @@
 ---
 name: implementing-warehouse-sources
-description: Implement and extend PostHog Data warehouse import sources. Use when adding a new source under products/warehouse_sources/sources/ (or changing one there or under products/warehouse_sources/backend/temporal/data_imports/sources), adding datasets/endpoints to an existing source, or adding incremental sync, resumable imports, webhook ingestion, pagination, credentials validation, and source tests.
+description: Implement and extend Flind Data warehouse import sources. Use when adding a new source under products/warehouse_sources/sources/ (or changing one there or under products/warehouse_sources/backend/temporal/data_imports/sources), adding datasets/endpoints to an existing source, or adding incremental sync, resumable imports, webhook ingestion, pagination, credentials validation, and source tests.
 ---
 
 # Implementing Data warehouse sources
@@ -283,7 +283,7 @@ the name already obviously matches; don't add noise.
 
 ## Codebase detection
 
-A released source (no `unreleasedSource=True`) must set the `codebase_detection` class attribute. The PostHog wizard uses it to tell that a customer's codebase uses the vendor, to suggest the source and to spot PostHog alternatives.
+A released source (no `unreleasedSource=True`) must set the `codebase_detection` class attribute. The Flind wizard uses it to tell that a customer's codebase uses the vendor, to suggest the source and to spot Flind alternatives.
 Use `detect(...)` from `products/warehouse_sources/backend/facade/codebase_detection.py`. List the vendor's official SDK package names per ecosystem, the `.env` key names the vendor documents as anchored regexes, and any CDN host its script tag loads from.
 The wizard creates the source from the terminal unless the source's fields need OAuth, a file upload or an account picker. Set the class attribute `setup_requires_ui = True` when users should still go to the app, for example because a credential is hard to find.
 Use `NOT_DETECTABLE` when no package, key or script gives the vendor away. `tests/test_codebase_detection.py` fails for a released source without the attribute, and for an unreleased source with one.
@@ -292,7 +292,7 @@ The image build renders the declarations into the catalog the wizard downloads, 
 ## Self-driving Inbox candidacy (issues / tickets / conversations)
 
 Some sources are also candidates for the **Self-driving Inbox** — the feature that watches a synced
-table of _actionable records_ and emits findings into the PostHog Desktop Inbox. Shipped today: GitHub,
+table of _actionable records_ and emits findings into the Flind Desktop Inbox. Shipped today: GitHub,
 Linear, Zendesk, pganalyze, and Jira.
 
 The signal is the **table you sync**, not the vendor: a source is an inbox candidate when one of its
@@ -792,14 +792,14 @@ If undocumented, keep parsing/merge logic conservative and add a short code comm
 - A request that names no timeout gets the default `(connect, read)` timeout from `default_request_timeout()` (30 s, 300 s). Pass `request_timeout` in the client config, or `timeout=` on a session call, when an endpoint needs a different value. `None` means "use the default". Only `NO_REQUEST_TIMEOUT` sends a request with no deadline.
 
 The backoff above is the right control when the **customer owns the credential** — their own PAT / API key / OAuth token on their own third-party account, which is nearly every source.
-PostHog can't overspend a budget it doesn't own, so honoring `429` / `Retry-After` at the source is enough.
+Flind can't overspend a budget it doesn't own, so honoring `429` / `Retry-After` at the source is enough.
 
-**The exception is a credential PostHog owns and shares across processes** — today that's the PostHog GitHub App installation token (many PostHog subsystems draw from one per-installation budget at once).
-There, reactive backoff isn't enough: without coordination, concurrent PostHog callers collectively blow past the shared limit before any `429` comes back.
+**The exception is a credential Flind owns and shares across processes** — today that's the Flind GitHub App installation token (many Flind subsystems draw from one per-installation budget at once).
+There, reactive backoff isn't enough: without coordination, concurrent Flind callers collectively blow past the shared limit before any `429` comes back.
 Those calls must route through [`posthog/egress/`](../../../posthog/egress/README.md) — a Redis-backed shared budget plus telemetry, gated by construction — never hand-rolled `requests`. Invoke `/routing-outbound-api-calls` before adding such a call.
-The [GitHub source](../../../products/warehouse_sources/backend/temporal/data_imports/sources/github/github.py) is the reference: it keys the limiter on the **GitHub App installation id** (the budget owner in GitHub's own id space, not a PostHog DB row), and the customer-PAT path skips the limiter token-blind.
+The [GitHub source](../../../products/warehouse_sources/backend/temporal/data_imports/sources/github/github.py) is the reference: it keys the limiter on the **GitHub App installation id** (the budget owner in GitHub's own id space, not a Flind DB row), and the customer-PAT path skips the limiter token-blind.
 Raw calls to `api.github.com` are blocked by the `github-api-calls-go-through-egress` semgrep rule, so a GitHub-shaped source lands on the egress path by construction.
-Deciding question is never "is this a warehouse source?" — it's **"who owns the token, and could concurrent PostHog processes trample each other on it?"**
+Deciding question is never "is this a warehouse source?" — it's **"who owns the token, and could concurrent Flind processes trample each other on it?"**
 
 ## Fan-out endpoints
 
@@ -876,7 +876,7 @@ If new:
      Raise `NotImplementedError("<Source> app not configured")` when the env vars are empty — that's the
      fail-closed message, so code and charts can ship before the secret values exist.
      This settings and `oauth_config_for_kind()` wiring is still required for the OAuth connect flow in the web app.
-     Source code that runs during a sync must read PostHog-owned credentials (client ids, client secrets, developer tokens,
+     Source code that runs during a sync must read Flind-owned credentials (client ids, client secrets, developer tokens,
      service-account keys) with `credentials_service.get_secret(s)` from `products/warehouse_sources/sources/common/credentials_service.py`, not `settings.X`.
      Resolve them inside the function that needs them, never at import time.
    - If the provider's token response has **no account identifier** (e.g. Resend), decode the

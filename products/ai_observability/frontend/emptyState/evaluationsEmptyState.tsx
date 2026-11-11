@@ -28,7 +28,7 @@ export const evaluationsEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Score AI responses as they happen',
-                lead: 'Score your generations, traces, or sessions in production. Use an LLM as a judge, Hog code, or sentiment analysis for a wide range of checks. Start with a template, from scratch, or with PostHog AI, then view pass rates over time and jump straight into the runs that failed.',
+                lead: 'Score your generations, traces, or sessions in production. Use an LLM as a judge, Hog code, or sentiment analysis for a wide range of checks. Start with a template, from scratch, or with Flind AI, then view pass rates over time and jump straight into the runs that failed.',
             },
         },
         // Owns the primary-action slot so the shared fallback button doesn't come back; the quick start below is the only CTA.

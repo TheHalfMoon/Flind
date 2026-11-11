@@ -50,9 +50,9 @@ _MAX_ROLE_PROFILES = 10
 
 # The start of the error a sync raises when it must not replace a self-managed table. The import
 # classifies it as permanent, so the job fails once and syncing stops until someone fixes the rules.
-ADOPTION_ACCESS_ERROR = "PostHog did not replace the self-managed table"
+ADOPTION_ACCESS_ERROR = "Flind did not replace the self-managed table"
 
-TABLE_RULES_REASON = "the table has its own access rules, which the source PostHog would create can't carry"
+TABLE_RULES_REASON = "the table has its own access rules, which the source Flind would create can't carry"
 PROJECT_RULES_REASON = "the project has access rules for sources or for the warehouse, which the move would change"
 ROLES_REASON = "the access rules name too many roles to check"
 
@@ -234,7 +234,7 @@ class TeamAccessRules:
             None,
         )
         if unknown is not None:
-            return f"an access rule has the level '{unknown}', which PostHog doesn't know"
+            return f"an access rule has the level '{unknown}', which Flind doesn't know"
         found = self._search(table_rules)
         if found is not None:
             return found
@@ -402,7 +402,7 @@ def adoption_access_error(table: DataWarehouseTable, source: ExternalDataSource)
     return (
         f"{ADOPTION_ACCESS_ERROR} '{table.name}', because {refusal}. The table still reads its own files. "
         "To continue, an organization admin must make the access rules of this source the same as the "
-        "rules of the table, then turn syncing on again. PostHog support can help with this."
+        "rules of the table, then turn syncing on again. Flind support can help with this."
     )
 
 

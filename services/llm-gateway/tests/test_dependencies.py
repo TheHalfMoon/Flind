@@ -401,7 +401,7 @@ class TestFreeTierModelGateWiring:
             error = exc_info.value.detail["error"]
             assert "claude-fable-5" in error["message"]
             assert error["code"] == "model_gate"
-            # Legacy PostHog Desktop clients route errors by substring; the
+            # Legacy Flind Desktop clients route errors by substring; the
             # "(rate_limit)" suffix sends this 403 to their usage-limit modal
             # instead of their fatal-session teardown path.
             assert error["message"].endswith("(rate_limit)")
@@ -455,7 +455,7 @@ class TestModelAccessGateWiring:
         error = exc_info.value.detail["error"]
         assert error["code"] == "model_gate"
         assert self.GATED_MODEL in error["message"]
-        # Legacy PostHog Desktop clients route errors by substring; the "(rate_limit)" suffix
+        # Legacy Flind Desktop clients route errors by substring; the "(rate_limit)" suffix
         # sends this 403 to their usage-limit modal instead of their fatal-session teardown path.
         assert error["message"].endswith("(rate_limit)")
         assert error["reason"] == "model_not_available"

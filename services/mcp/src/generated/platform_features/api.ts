@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 24 enabled ops
+ * Flind API - MCP 24 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -62,7 +62,7 @@ export const PartialUpdateBody = () => zod.object({
         .boolean()
         .nullish()
         .describe(
-            "When True, requests through the PostHog MCP server can read but not change this organization's data."
+            "When True, requests through the Flind MCP server can read but not change this organization's data."
         ),
     member_notice: zod
         .union([
@@ -98,7 +98,7 @@ export const PartialUpdateBody = () => zod.object({
     is_ai_training_opted_in: zod
         .boolean()
         .nullish()
-        .describe('When True, this organization allows its data to be used to train PostHog AI models.'),
+        .describe('When True, this organization allows its data to be used to train Flind AI models.'),
     default_anonymize_ips: zod
         .boolean()
         .optional()
@@ -302,7 +302,7 @@ export const AdvancedActivityLogsListQueryParams = () => zod.object({
         .enum(['ocsf'])
         .optional()
         .describe(
-            'Response format. Set to ocsf to return Open Cybersecurity Schema Framework events for ingestion into a security tool. Omit for the default PostHog format.\n\n\* `ocsf` - ocsf'
+            'Response format. Set to ocsf to return Open Cybersecurity Schema Framework events for ingestion into a security tool. Omit for the default Flind format.\n\n\* `ocsf` - ocsf'
         ),
     scopes: zod
         .array(zod.string())
@@ -561,7 +561,7 @@ export const UserHomeSettingsRetrieveParams = () => zod.object({
 })
 
 /**
- * Update the authenticated user's pinned sidebar tabs and/or homepage for the current team. Pass `@me` as the UUID. Send `tabs` to replace the pinned tab list, `homepage` to set the home destination (any PostHog URL — dashboard, insight, search results, scene). Either field may be omitted to leave it unchanged; sending `homepage: null` or `{}` clears the homepage.
+ * Update the authenticated user's pinned sidebar tabs and/or homepage for the current team. Pass `@me` as the UUID. Send `tabs` to replace the pinned tab list, `homepage` to set the home destination (any Flind URL — dashboard, insight, search results, scene). Either field may be omitted to leave it unchanged; sending `homepage: null` or `{}` clears the homepage.
  */
 export const UserHomeSettingsPartialUpdateParams = () => zod.object({
     uuid: zod.string(),
@@ -705,6 +705,6 @@ export const UserHomeSettingsPartialUpdateBody = () => zod.object({
         ])
         .optional()
         .describe(
-            "Tab descriptor for the user's chosen home page — the destination opened when they click the PostHog logo or hit `\/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default."
+            "Tab descriptor for the user's chosen home page — the destination opened when they click the Flind logo or hit `\/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default."
         ),
 })

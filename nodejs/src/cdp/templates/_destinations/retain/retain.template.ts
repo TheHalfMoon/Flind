@@ -12,7 +12,7 @@ export const template: HogFunctionTemplate = {
     category: ['Analytics'],
     code_language: 'hog',
     code: `
-// Retain only consumes product usage and identity events. Skip PostHog
+// Retain only consumes product usage and identity events. Skip Flind
 // internal events ($pageview, $autocapture, $feature_flag_called, ...) to
 // avoid useless requests — Retain would ignore them anyway.
 let allowedSystemEvents := ['$identify', '$set', '$groupidentify']

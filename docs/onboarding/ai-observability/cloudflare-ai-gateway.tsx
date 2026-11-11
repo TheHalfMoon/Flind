@@ -23,7 +23,7 @@ export const getCloudflareAIGatewaySteps = (ctx: OnboardingComponentsContext): S
                         </Markdown>
                     </CalloutBox>
 
-                    <Markdown>Install the PostHog SDK and the OpenAI SDK.</Markdown>
+                    <Markdown>Install the Flind SDK and the OpenAI SDK.</Markdown>
 
                     <CodeBlock
                         blocks={[
@@ -47,13 +47,13 @@ export const getCloudflareAIGatewaySteps = (ctx: OnboardingComponentsContext): S
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                            Create a PostHog client, then swap in PostHog's OpenAI wrapper, pointed at your
+                            Create a Flind client, then swap in Flind's OpenAI wrapper, pointed at your
                             Cloudflare AI Gateway endpoint.
                         `}
                     </Markdown>
@@ -85,9 +85,9 @@ export const getCloudflareAIGatewaySteps = (ctx: OnboardingComponentsContext): S
                                 file: 'Node',
                                 code: dedent`
                                     import { OpenAI } from '@posthog/ai/openai'
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
 
-                                    const posthog = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' })
+                                    const posthog = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' })
 
                                     const client = new OpenAI({
                                       baseURL: 'https://gateway.ai.cloudflare.com/v1/<account_id>/<gateway_id>/compat',
@@ -111,7 +111,7 @@ export const getCloudflareAIGatewaySteps = (ctx: OnboardingComponentsContext): S
                 <>
                     <Markdown>
                         {dedent`
-                            When you use the wrapped client to call Cloudflare AI Gateway, PostHog automatically
+                            When you use the wrapped client to call Cloudflare AI Gateway, Flind automatically
                             captures an \`$ai_generation\` event.
                         `}
                     </Markdown>

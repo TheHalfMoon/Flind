@@ -290,7 +290,7 @@
 
 ### Patch changes
 
-- [d57bdcce6d](https://github.com/PostHog/posthog/commit/d57bdcce6dc77adde629de5ffbbad10a6a99b850) Capture CLI errors with PostHog telemetry — Thanks @hpouillot!
+- [d57bdcce6d](https://github.com/PostHog/posthog/commit/d57bdcce6dc77adde629de5ffbbad10a6a99b850) Capture CLI errors with Flind telemetry — Thanks @hpouillot!
 
 ## 0.8.0 — 2026-07-03
 
@@ -314,7 +314,7 @@ _Never published: the release pipeline's Windows build failed after the version 
 ### Patch changes
 
 - [6fb4456e8f](https://github.com/PostHog/posthog/commit/6fb4456e8f9a5048b3db6ceb6d873241e14fe6b8) Fix the CLI release workflow so the Windows (`x86_64-pc-windows-msvc`) build succeeds and ships with each release. — Thanks @cat-ph!
-- [dfd1f66a9f](https://github.com/PostHog/posthog/commit/dfd1f66a9f0a5ae4e492887c79921b0692c97d51) Add `symbol-sets upload` for native (ELF) debug symbols: it scans a directory for executables, shared libraries, and `objcopy --only-keep-debug` companions that carry a GNU build id and uploads them to PostHog. — Thanks @cat-ph!
+- [dfd1f66a9f](https://github.com/PostHog/posthog/commit/dfd1f66a9f0a5ae4e492887c79921b0692c97d51) Add `symbol-sets upload` for native (ELF) debug symbols: it scans a directory for executables, shared libraries, and `objcopy --only-keep-debug` companions that carry a GNU build id and uploads them to Flind. — Thanks @cat-ph!
 
 ## 0.7.31 — 2026-06-24
 
@@ -404,7 +404,7 @@ _Never published: the release pipeline's Windows build failed after the version 
 
 ## 0.7.16
 
-- feat: add `--dry-run` flag (and `POSTHOG_CLI_DRY_RUN` env var) to skip artifact uploads (sourcemap, dSYM, Hermes, ProGuard) without contacting PostHog or requiring credentials — for CI gates that bundle to catch regressions but must not upload.
+- feat: add `--dry-run` flag (and `POSTHOG_CLI_DRY_RUN` env var) to skip artifact uploads (sourcemap, dSYM, Hermes, ProGuard) without contacting Flind or requiring credentials — for CI gates that bundle to catch regressions but must not upload.
 
 ## 0.7.15
 

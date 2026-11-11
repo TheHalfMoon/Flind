@@ -88,7 +88,7 @@ describe('mcpSetupModeLogic', () => {
         })
     })
 
-    it('asking PostHog AI closes setup mode before opening the side panel with the question', async () => {
+    it('asking Flind AI closes setup mode before opening the side panel with the question', async () => {
         enableSetupMode(true)
         sidePanelStateLogic.mount()
         router.actions.push(urls.mcpAnalyticsDashboard(), { setup: 'open', setup_step: 'useful' })

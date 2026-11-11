@@ -40,7 +40,7 @@ export const Basic: Story = {
             {
                 name: 'Data Warehouse',
                 description:
-                    'The PostHog data warehouse gives you a place to put all of your most important data, query across these datasets, and analyze alongside the product analytics data already in PostHog',
+                    'The Flind data warehouse gives you a place to put all of your most important data, query across these datasets, and analyze alongside the product analytics data already in Flind',
                 stage: 'beta',
                 documentationUrl: 'https://docs.example.com',
                 flagKey: 'data-warehouse',

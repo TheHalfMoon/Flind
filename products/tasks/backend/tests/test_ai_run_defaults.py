@@ -499,7 +499,7 @@ class TestTasksConfigAPI(APIBaseTest):
         self.client.logout()
         for path in ("config", "@me/config"):
             url = f"/api/projects/{self.team.id}/tasks/{path}/"
-            # 401, not 403: PostHog's SessionAuthentication sets a WWW-Authenticate challenge.
+            # 401, not 403: Flind's SessionAuthentication sets a WWW-Authenticate challenge.
             assert self.client.get(url).status_code == 401
             assert self.client.post(url, TEAM_TRIPLE).status_code == 401
 
@@ -558,7 +558,7 @@ class TestTasksConfigAPI(APIBaseTest):
 
 class TestConfigEndpointScopes(APIBaseTest):
     # Both endpoints rely on `scope_object = "task"` to derive their scopes rather than
-    # declaring them. PostHog Desktop reads them with a personal API key, so a change to
+    # declaring them. Flind Desktop reads them with a personal API key, so a change to
     # the scope object or the action sets would silently lock it out — or hand a
     # read-only key write access.
     def setUp(self) -> None:

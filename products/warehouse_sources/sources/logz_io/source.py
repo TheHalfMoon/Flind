@@ -73,7 +73,7 @@ class LogzIOSource(ResumableSource[LogzIOSourceConfig, LogzIOResumeConfig]):
             releaseStatus=ReleaseStatus.BETA,
             caption=(
                 "Enter your Logz.io API token to sync your log data, alerts, and account configuration "
-                "into the PostHog Data warehouse. Create a token under **Settings → Tools → Manage tokens → "
+                "into the Flind Data warehouse. Create a token under **Settings → Tools → Manage tokens → "
                 "API tokens** in your Logz.io account, and pick the region that matches your account.\n\n"
                 "Log search is bounded by your account's retention window."
             ),

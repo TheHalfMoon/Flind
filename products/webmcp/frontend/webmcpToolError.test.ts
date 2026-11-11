@@ -14,7 +14,7 @@ const toolCallException = {
 describe('dropWebMCPToolErrors', () => {
     test.each([
         {
-            name: 'a failed PostHog command',
+            name: 'a failed Flind command',
             properties: {
                 ...toolCallException,
                 $exception_list: [{ type: new WebMCPToolError('Not found').name, value: 'Not found' }],

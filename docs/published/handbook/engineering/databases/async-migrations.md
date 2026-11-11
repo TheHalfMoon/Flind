@@ -19,7 +19,7 @@ When the Django server boots up - a setup step for async migrations happens, whi
 1. Imports all the migration definitions
 2. Populates a dependencies map and in-memory record of migration definitions
 3. Creates a database record for each
-4. Check if all async migrations necessary for this PostHog version have completed (else don't start)
+4. Check if all async migrations necessary for this Flind version have completed (else don't start)
 5. Triggers migrations to run (in order) if `AUTO_START_ASYNC_MIGRATIONS` is set and there are uncompleted migrations for this version
 
 #### Running a migration
@@ -29,7 +29,7 @@ When a migration is triggered, the following happens:
 1. A task is dispatched to Celery to run this migration in the background
 2. The following basic checks are performed to ensure the migration can indeed run:
    1. We're not over the concurrent migrations limit
-   2. The migration can be run with the current PostHog version
+   2. The migration can be run with the current Flind version
    3. The migration is not already running
    4. The service version requirements are met (e.g. X < ClickHouse version < Y)
    5. The migration's `is_required` check passes
@@ -62,13 +62,13 @@ The initial implementation of async migrations targets only **data migrations**,
 
 For example, when we [moved our ClickHouse `person_distinct_id` table to a `CollapsingMergeTree`](https://github.com/PostHog/posthog/pull/5563), we updated the SQL for creating the table, and wrote a migration to help users on the old schema migrate to the new schema.
 
-However, users that did a fresh deploy of PostHog _after_ this change already had the table with the new schema created by default.
+However, users that did a fresh deploy of Flind _after_ this change already had the table with the new schema created by default.
 
 This is the only type of operation that async migrations _currently_ support, to prevent a complex web of dependencies between migration types.
 
 As such, those writing an async migration should write a sensible `is_required` function that determines if the migration should run or not.
 
-Thus, when a user deploys a new PostHog instance, we will first run **all** EE migrations in order, and then **all** of the async migrations in order. At this step, async migrations should be skipped if the codebase already contains updated default schemas.
+Thus, when a user deploys a new Flind instance, we will first run **all** EE migrations in order, and then **all** of the async migrations in order. At this step, async migrations should be skipped if the codebase already contains updated default schemas.
 
 For instance, here's a good `is_required` function, which ensures the migration will only run if the table does not already exist.
 

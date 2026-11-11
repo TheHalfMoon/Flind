@@ -124,7 +124,7 @@ export const AUTH_TOKEN_OVERRIDE = Symbol.for(
 );
 
 /**
- * Fetch for the auth service's own PostHog requests. Desktop binds Electron's
+ * Fetch for the auth service's own Flind requests. Desktop binds Electron's
  * `net.fetch` so these requests use system proxies and VPN routing like the
  * browser does. Defaults to the global fetch when unbound.
  */

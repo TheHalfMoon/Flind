@@ -1,4 +1,4 @@
-# PostHog mobile
+# Flind mobile
 
 The app is its own pnpm workspace. Run every command from `products/mobile`.
 [README.md](README.md) has setup and the docs index; read it before your first change here.

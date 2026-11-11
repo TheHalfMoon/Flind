@@ -1333,10 +1333,10 @@ class UserAccessControl:
     def stored_rule_floor(self, resources: Iterable[APIScopeObject]) -> Optional[AccessControlLevel]:
         """The lowest level the stored rules on ``resources`` can give this user in this team.
 
-        For a caller that copies access to a place that cannot follow PostHog's resolution, such as
+        For a caller that copies access to a place that cannot follow Flind's resolution, such as
         a grant over a whole warehouse namespace. The floor holds under either resolution mode and
         whether or not the organization is entitled to access control or roles. So a later change
-        to either can only raise what PostHog enforces above it, never drop it below.
+        to either can only raise what Flind enforces above it, never drop it below.
 
         Each scope (the resource, or one object) contributes its lowest candidate row. The
         candidates are the user's member rows, if the scope has any. Otherwise they are the rows of
@@ -2317,7 +2317,7 @@ class UserAccessControl:
         current: Optional[ResolvedAccess],
         proposed_fn: Callable[[], Optional[ResolvedAccess]],
     ) -> None:
-        """Capture a PostHog event when the enforced resolution and the most-specific one disagree.
+        """Capture a Flind event when the enforced resolution and the most-specific one disagree.
 
         This is read-only telemetry for the resolution migration. It does not change the enforced
         answer. `proposed_fn` runs only after the guards pass, so a skipped call does not pay

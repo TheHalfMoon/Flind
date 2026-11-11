@@ -18,6 +18,6 @@ export default meta
 export const Clamped: StoryObj<typeof MetricDescription> = {
     args: {
         description:
-            'The number of dashboards created in PostHog, across every surface that can create one: web, API, MCP, PostHog AI, CLI and Terraform. Each creation counts once, including dashboards made from a template or by duplicating an existing one.',
+            'The number of dashboards created in Flind, across every surface that can create one: web, API, MCP, Flind AI, CLI and Terraform. Each creation counts once, including dashboards made from a template or by duplicating an existing one.',
     },
 }

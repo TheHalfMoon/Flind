@@ -1,4 +1,4 @@
-"""Central PostHog model admin classes.
+"""Central Flind model admin classes.
 
 Importing this package triggers every ``@admin.register(Model)`` decorator in
 ``posthog/admin/admins/*.py``. ``register_all_admin()`` does ``import

@@ -817,7 +817,7 @@ class TestOAuthAPI(APIBaseTest):
         self.assertEqual(redirect_to, "https://example.com/callback?error=access_denied")
 
     def test_authorize_with_prompt_none_openid_is_rejected_not_500(self):
-        # PostHog does not support OIDC silent authentication: `prompt=none` is always rejected
+        # Flind does not support OIDC silent authentication: `prompt=none` is always rejected
         # with a spec-compliant error, never a token and never a 500. On the GET validate path
         # oauthlib hasn't attached the user yet, so it rejects at the first gate with
         # `login_required` (a missing validate_silent_login override used to crash here instead).
@@ -843,7 +843,7 @@ class TestOAuthAPI(APIBaseTest):
         self.assertEqual(OAuthValidator().validate_silent_login(make_request(self)), expected)
 
     def test_validate_silent_authorization_always_false(self):
-        # PostHog never authorizes silently; prompt=none must fall back to interactive consent.
+        # Flind never authorizes silently; prompt=none must fall back to interactive consent.
         self.assertFalse(OAuthValidator().validate_silent_authorization(SimpleNamespace(user=self.user)))
 
     def test_authorize_post_allow_with_prompt_none_returns_consent_required(self):
@@ -1028,7 +1028,7 @@ class TestOAuthAPI(APIBaseTest):
         wizard_app, grant = self._create_cimd_app_and_grant(
             slug=f"wizard-{region}",
             cimd_url=wizard_cimd_url,
-            name="PostHog Wizard",
+            name="Flind Wizard",
         )
 
         response = self._exchange_code_for_token(wizard_app, grant)
@@ -1272,7 +1272,7 @@ class TestOAuthAPI(APIBaseTest):
     @override_settings(SITE_URL="https://us.posthog.com")
     def test_public_cimd_client_with_stored_jwks_completes_assertion_exchange(self):
         # A public CIMD client (never partner-registered) can start signing at any time — a
-        # runtime change on the client's side PostHog doesn't control — and must be verified
+        # runtime change on the client's side Flind doesn't control — and must be verified
         # and accepted rather than rejected for presenting more proof than required.
         app, grant, private_key = self._create_private_key_jwt_app_and_grant(client_type=OAuthApplication.CLIENT_PUBLIC)
         assertion, jwks = self._signed_assertion_and_jwks(app, private_key)
@@ -3959,7 +3959,7 @@ class TestOAuthAPI(APIBaseTest):
         self.assertFalse(any(scope.endswith(":write") for scope in wildcard_reads))
 
     def test_authorize_wildcard_accepted_when_app_ceiling_empty(self):
-        # Existing clients (the PostHog Desktop CLI today) still send scope=*
+        # Existing clients (the Flind Desktop CLI today) still send scope=*
         # against apps that have no explicit ceiling. Until wildcard retirement
         # (#60342) lands, those broad-default apps keep accepting it.
         response = self._authorize_post("*")
@@ -6128,7 +6128,7 @@ class TestOAuthClientManifest(APIBaseTest):
         response = self.client.get("/auth.md")
         body = response.content.decode()
 
-        self.assertIn("# PostHog", body)
+        self.assertIn("# Flind", body)
         self.assertIn("/oauth/token/", body)
         self.assertIn("urn:ietf:params:oauth:token-type:id-jag", body)
         self.assertIn("/.well-known/oauth-protected-resource", body)

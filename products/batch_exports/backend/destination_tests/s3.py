@@ -58,7 +58,7 @@ class S3AssumeRoleTestStep(DestinationTestStep):
             _ = await get_credentials_using_user_aws_role(
                 self.aws_role_arn,
                 external_id,
-                session_name="PostHog-batch-exports-test",
+                session_name="Flind-batch-exports-test",
                 policy_statements=[
                     PolicyStatement(
                         Effect="Allow", Action=["s3:ListBucket"], Resource=f"arn:aws:s3:::{self.bucket_name}"
@@ -79,7 +79,7 @@ class S3AssumeRoleTestStep(DestinationTestStep):
                 # We can't really separate what went wrong here.
                 return DestinationTestStepResult(
                     status=Status.FAILED,
-                    message=f"We couldn't assume '{self.aws_role_arn}' due to an 'AccessDenied' error. Ensure that the trust policy attached to the role allows 'sts:AssumeRole' for the PostHog role, that the 'ExternalId' condition is set, and that the role actually exists.",
+                    message=f"We couldn't assume '{self.aws_role_arn}' due to an 'AccessDenied' error. Ensure that the trust policy attached to the role allows 'sts:AssumeRole' for the Flind role, that the 'ExternalId' condition is set, and that the role actually exists.",
                 )
 
             return DestinationTestStepResult(
@@ -164,7 +164,7 @@ class S3EnsureBucketTestStep(DestinationTestStep):
             credentials = await get_credentials_using_user_aws_role(
                 self.aws_role_arn,
                 external_id,
-                session_name="PostHog-batch-exports-test",
+                session_name="Flind-batch-exports-test",
                 policy_statements=[
                     PolicyStatement(
                         Effect="Allow", Action=["s3:ListBucket"], Resource=f"arn:aws:s3:::{self.bucket_name}"

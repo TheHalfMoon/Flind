@@ -20,7 +20,7 @@ export const ContentAutopilotSourceFields = ({ draft }: { draft: ContentAutopilo
                     minRows={4}
                 />
             </LemonField.Pure>
-            <LemonField.Pure label="Content boundaries" help="PostHog will only research paths with these prefixes.">
+            <LemonField.Pure label="Content boundaries" help="Flind will only research paths with these prefixes.">
                 <LemonTextArea
                     value={draft.contentBoundaries}
                     onChange={(contentBoundaries) => setProfileDraft({ contentBoundaries })}

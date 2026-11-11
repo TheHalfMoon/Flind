@@ -43,7 +43,7 @@ export const startSessionInput = z.object({
   additionalDirectories: z.array(z.string()).optional(),
   customInstructions: customInstructionsField,
   /**
-   * Replaces the PostHog system prompt entirely for this session. Used by
+   * Replaces the Flind system prompt entirely for this session. Used by
    * constrained, single-purpose surfaces (e.g. the canvas generator) that drive
    * the agent with their own prompt rather than the default coding prompt.
    * Uncapped, unlike `customInstructions`.

@@ -53,7 +53,7 @@ class ClariSource(ResumableSource[ClariSourceConfig, ClariResumeConfig]):
             name=ExternalDataSourceType.CLARI,
             category=DataWarehouseSourceCategory.SALES,
             label="Clari",
-            caption="""Connect your Clari account to pull your revenue data into the PostHog Data warehouse.
+            caption="""Connect your Clari account to pull your revenue data into the Flind Data warehouse.
 
 Generate an API key in Clari under your account's API settings. The forecast ID is in the URL when viewing a forecast tab in Clari (e.g. `app.clari.com/forecast/<forecast-id>`). Note: Clari retains audit events for ~30 days and limits bulk exports per rolling 30 days, so avoid very frequent syncs of the forecast and activity tables. The first activity sync covers the past year.""",
             iconPath="/static/services/clari.png",

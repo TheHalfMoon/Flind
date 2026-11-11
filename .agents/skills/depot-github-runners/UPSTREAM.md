@@ -1,6 +1,6 @@
 # Upstream
 
-Vendored from [depot/skills](https://github.com/depot/skills) — used by PostHog workflows pinning `depot-ubuntu-*` runners.
+Vendored from [depot/skills](https://github.com/depot/skills) — used by Flind workflows pinning `depot-ubuntu-*` runners.
 
 - Source: `skills/depot-github-runners/SKILL.md`
 - Commit: [`34871e1`](https://github.com/depot/skills/tree/34871e14c57f322e87debbe17e73f0a3b4e2e4f1/skills/depot-github-runners) (2026-10-30)
@@ -8,7 +8,7 @@ Vendored from [depot/skills](https://github.com/depot/skills) — used by PostHo
 
 ## Local additions
 
-In `SKILL.md`: the "Depot runners are not Depot CI" section between the PostHog-local comment markers, and the sentence appended to the frontmatter `description` that sends Depot CI questions to the `depot-ci` skill.
+In `SKILL.md`: the "Depot runners are not Depot CI" section between the Flind-local comment markers, and the sentence appended to the frontmatter `description` that sends Depot CI questions to the `depot-ci` skill.
 
 ## Resync
 

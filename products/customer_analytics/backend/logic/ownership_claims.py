@@ -7,9 +7,9 @@ feed as many relationships as it has views. Each view maps the frozen decision f
 Tasks onto one row per Task with these columns:
 
 - ``task_id``: the Task id; the idempotency key of the decision.
-- ``organization_id``: the PostHog organization the Task's account is linked to.
-- ``region``: the PostHog cloud region the organization lives in (``us``, ``eu``).
-- ``assignee_user_id``: PostHog user id of the allocated holder.
+- ``organization_id``: the Flind organization the Task's account is linked to.
+- ``region``: the Flind cloud region the organization lives in (``us``, ``eu``).
+- ``assignee_user_id``: Flind user id of the allocated holder.
 - ``source_assignee_id``: Salesforce user id of the same person.
 - ``allocated_at``: when the eligible allocation was made at the source; never a delivery time.
 - ``released_at``: when the Task was disqualified, or null while the allocation stands.

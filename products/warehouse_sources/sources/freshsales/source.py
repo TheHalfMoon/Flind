@@ -49,7 +49,7 @@ class FreshsalesSource(ResumableSource[FreshsalesSourceConfig, FreshsalesResumeC
             name=ExternalDataSourceType.FRESHSALES,
             category=DataWarehouseSourceCategory.CRM,
             label="Freshsales",
-            caption="""Enter your Freshsales domain and API key to pull your Freshsales (Freshworks CRM) data into the PostHog Data warehouse.
+            caption="""Enter your Freshsales domain and API key to pull your Freshsales (Freshworks CRM) data into the Flind Data warehouse.
 
 Both are available under **Profile settings → API settings** in Freshsales.
 

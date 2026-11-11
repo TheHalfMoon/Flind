@@ -142,8 +142,8 @@ Title examples:
 - "aaaaaaaaaa" → Repeated letters
 - "   " → Empty message
 - "What's the best restaurant in NYC?" → NYC restaurant recommendations
-- "https://github.com/PostHog/posthog/issues/1234" → PostHog issue #1234
-- "https://github.com/PostHog/posthog/pull/567" → PostHog PR #567
+- "https://github.com/PostHog/posthog/issues/1234" → Flind issue #1234
+- "https://github.com/PostHog/posthog/pull/567" → Flind PR #567
 - "fix https://github.com/org/repo/issues/42" → Fix repo issue #42
 
 Never include any explanation outside the TITLE and SUMMARY lines.`;

@@ -43,7 +43,7 @@ class DopplerSource(ResumableSource[DopplerSourceConfig, DopplerResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Doppler",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter a Doppler API token to pull your Doppler projects, configs, and activity logs into the PostHog Data warehouse for audit and change tracking. Secret values are never synced.
+            caption="""Enter a Doppler API token to pull your Doppler projects, configs, and activity logs into the Flind Data warehouse for audit and change tracking. Secret values are never synced.
 
 Use a [personal token](https://docs.doppler.com/docs/personal-tokens) or a [service account token](https://docs.doppler.com/docs/service-accounts) with read access to the workplace and the projects you want to sync.""",
             iconPath="/static/services/doppler.png",

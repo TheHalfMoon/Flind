@@ -38,7 +38,7 @@ export function NameStep(): JSX.Element {
                     <div>
                         <div className="font-semibold">Protect sensitive data</div>
                         <div className="text-secondary text-sm font-normal">
-                            For emails with login codes or reset links. PostHog keeps no copy of what each email
+                            For emails with login codes or reset links. Flind keeps no copy of what each email
                             contained, and doesn&apos;t track link clicks.
                         </div>
                     </div>

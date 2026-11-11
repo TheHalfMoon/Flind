@@ -42,7 +42,7 @@ def is_custom_images_enabled(*, distinct_id: str, organization_id: str, origin_p
 IMAGE_BUILDER_MODEL = "zai-org/glm-5.3-flash"
 IMAGE_BUILDER_REASONING_EFFORT = "high"
 
-IMAGE_BUILDER_PROMPT = """You are an expert at building sandbox base images for PostHog cloud tasks.
+IMAGE_BUILDER_PROMPT = """You are an expert at building sandbox base images for Flind cloud tasks.
 
 The user wants to create a custom base image named "{image_name}" for their cloud task sandboxes. Your job is to converse with them, figure out what they need installed or configured, and maintain a declarative image spec that captures it.
 

@@ -36,7 +36,7 @@ def _image_file(name: str = "example.png", image_format: str = "PNG") -> SimpleU
 class TestDesktopFeedback(APIBaseTest):
     def setUp(self) -> None:
         super().setUp()
-        self.internal_org = Organization.objects.create(name="PostHog internal")
+        self.internal_org = Organization.objects.create(name="Flind internal")
         self.internal_team = Team.objects.create(
             organization=self.internal_org,
             name="Internal feedback",
@@ -168,7 +168,7 @@ class TestDesktopFeedback(APIBaseTest):
         client.capture.return_value = "00000000-0000-0000-0000-000000000001"
         get_client.return_value = client
         oauth_app = OAuthApplication.objects.create(
-            name="PostHog Desktop test",
+            name="Flind Desktop test",
             client_type=OAuthApplication.CLIENT_CONFIDENTIAL,
             authorization_grant_type=OAuthApplication.GRANT_AUTHORIZATION_CODE,
             redirect_uris="https://example.com/callback",

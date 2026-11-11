@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 4 enabled ops
+ * Flind API - MCP 4 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -155,7 +155,7 @@ export const UiCustomizationUpdateBody = () => zod.strictObject({
                                                                 'new_insight',
                                                             ]),
                                                         })
-                                                        .describe('A PostHog page. It has its own label and icon.'),
+                                                        .describe('A Flind page. It has its own label and icon.'),
                                                     zod.strictObject({
                                                         kind: zod.literal('insight'),
                                                         short_id: zod
@@ -251,7 +251,7 @@ export const UiCustomizationUpdateBody = () => zod.strictObject({
                                                                 'new_insight',
                                                             ]),
                                                         })
-                                                        .describe('A PostHog page. It has its own label and icon.'),
+                                                        .describe('A Flind page. It has its own label and icon.'),
                                                     zod.strictObject({
                                                         kind: zod.literal('insight'),
                                                         short_id: zod
@@ -367,7 +367,7 @@ export const UiCustomizationUpdateBody = () => zod.strictObject({
                 ),
         })
         .describe(
-            "The layout for the selected context. For analytics_sidebar, the sections of the Analytics pane, from top to bottom. Each section holds links, buttons, metrics and lists. Links and buttons open PostHog pages or this project's insights, dashboards and notebooks, never other sites. A section whose items show nothing, such as an empty pinned list, is hidden. The layout replaces the whole fragment, so send every section to keep."
+            "The layout for the selected context. For analytics_sidebar, the sections of the Analytics pane, from top to bottom. Each section holds links, buttons, metrics and lists. Links and buttons open Flind pages or this project's insights, dashboards and notebooks, never other sites. A section whose items show nothing, such as an empty pinned list, is hidden. The layout replaces the whole fragment, so send every section to keep."
         ),
 })
 

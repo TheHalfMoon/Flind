@@ -50,7 +50,7 @@ class OrbSource(ResumableSource[OrbSourceConfig, OrbResumeConfig]):
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Orb",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Orb API key to automatically pull your Orb billing data into the PostHog Data warehouse.
+            caption="""Enter your Orb API key to automatically pull your Orb billing data into the Flind Data warehouse.
 
 You can create an API key in your [Orb account settings](https://app.withorb.com/settings). A read-only key is sufficient.""",
             iconPath="/static/services/orb.png",

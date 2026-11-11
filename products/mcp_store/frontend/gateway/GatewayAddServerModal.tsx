@@ -162,7 +162,7 @@ export function GatewayAddServerModal(): JSX.Element | null {
                                         <OAuthRedirectUri />
                                         <LemonField.Pure
                                             label="OAuth client ID (optional)"
-                                            help="Leave blank to let PostHog register a client."
+                                            help="Leave blank to let Flind register a client."
                                             htmlFor="mcp-gateway-server-client-id"
                                         >
                                             <LemonInput

@@ -550,7 +550,7 @@ class ConversionRecommendationService:
             runs.filter(pk=run_id, status=ConversionRecommendationRun.Status.RUNNING).update(
                 status=ConversionRecommendationRun.Status.FAILED,
                 completed_at=timezone.now(),
-                error="Could not analyze the sources. Scan again to retry, or review events with PostHog AI.",
+                error="Could not analyze the sources. Scan again to retry, or review events with Flind AI.",
             )
 
     def visible_results(self, run: ConversionRecommendationRun | None) -> ConversionRecommendationResults:

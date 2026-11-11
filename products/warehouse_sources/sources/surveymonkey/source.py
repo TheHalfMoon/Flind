@@ -65,7 +65,7 @@ class SurveyMonkeySource(ResumableSource[SurveyMonkeySourceConfig, SurveyMonkeyR
             name=ExternalDataSourceType.SURVEYMONKEY,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="SurveyMonkey",
-            caption="""Enter a SurveyMonkey access token to pull your surveys, responses, and collectors into the PostHog Data warehouse.
+            caption="""Enter a SurveyMonkey access token to pull your surveys, responses, and collectors into the Flind Data warehouse.
 
 Create a private app and generate an access token in the [SurveyMonkey developer dashboard](https://developer.surveymonkey.com/apps/).
 

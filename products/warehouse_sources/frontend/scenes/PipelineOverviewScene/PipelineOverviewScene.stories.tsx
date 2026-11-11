@@ -164,7 +164,7 @@ const ROWS_QUERY = {
 const DESTINATIONS = {
     count: 2,
     results: [
-        { id: 'dest-1', name: 'PostHog warehouse', type: 'PostHogWarehouse' },
+        { id: 'dest-1', name: 'Flind warehouse', type: 'PostHogWarehouse' },
         { id: 'dest-2', name: 'Analytics Postgres', type: 'Postgres' },
     ],
 }

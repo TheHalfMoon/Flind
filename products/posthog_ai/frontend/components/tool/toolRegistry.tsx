@@ -50,7 +50,7 @@ export interface ToolRegistryEntry {
     /** Never fold into an activity group, because the user acts on it, like a plan or a question. */
     pinned?: boolean
     /**
-     * Registry key. For single-exec PostHog tools, this is the **inner** tool name parsed from
+     * Registry key. For single-exec Flind tools, this is the **inner** tool name parsed from
      * `rawInput.command` (e.g. "execute-sql", "insight-create"); for `exec`'s discovery verbs,
      * the sentinel "__posthog_exec_tools__" etc.; for non-exec MCP tools and Claude built-ins,
      * the wire `toolName` directly (e.g. "TodoWrite", "WebSearch").
@@ -66,7 +66,7 @@ export interface ToolRegistryEntry {
         | ComponentType<PermissionPreviewProps>
         | LazyExoticComponent<ComponentType<PermissionPreviewProps>>
     /**
-     * When set, this entry only matches a call that came through the trusted single-exec PostHog
+     * When set, this entry only matches a call that came through the trusted single-exec Flind
      * server — one whose inner tool name we parsed out of the exec command. The product data-tool
      * widgets set it: a user-installed MCP server can expose a tool whose bare name collides with a
      * widget key (e.g. "notebooks-create" or "dashboard-create") and return the expected fields with
@@ -131,7 +131,7 @@ const BUILTIN_TOOLS: { keys: string[]; displayName: string; icon: JSX.Element }[
     { keys: ['ExitPlanMode'], displayName: 'Plan', icon: <IconDocument /> },
 ]
 
-// PostHog single-exec discovery verbs. `resolveToolKey` parses `exec tools|search|info|schema` into
+// Flind single-exec discovery verbs. `resolveToolKey` parses `exec tools|search|info|schema` into
 // these sentinel keys; PostHogExecRenderer (inside the built-in chunk) derives the friendly label and
 // input preview from the command. Registered so they get a fitting icon instead of the wrench fallback.
 const POSTHOG_EXEC_VERBS: { key: string; displayName: string; icon: JSX.Element }[] = [
@@ -193,7 +193,7 @@ export const toolRegistry: ToolRegistry = {
 
 /**
  * Looks up the renderer entry for a resolved tool key, falling back to the generic built-in card.
- * `fromPostHogExec` is whether the call came through the trusted single-exec PostHog server (its inner
+ * `fromPostHogExec` is whether the call came through the trusted single-exec Flind server (its inner
  * tool name was parsed out of the exec command). An entry marked `requiresPostHogOrigin` only matches a
  * trusted call, so a third-party tool whose bare name collides with a product-widget key can't spoof a
  * first-party card — it falls through to the generic card here. A registered preview-only entry (no

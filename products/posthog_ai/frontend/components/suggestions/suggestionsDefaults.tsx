@@ -8,7 +8,7 @@ import { productUrls } from '~/products'
 import { type SuggestionGroup } from './Suggestions'
 
 // Default, overridable suggestion content for the Suggestions primitive. The "Coding" group leads (this
-// surface drives an agent that writes code), followed by PostHog's analytics categories. Pass your own
+// surface drives an agent that writes code), followed by Flind's analytics categories. Pass your own
 // array to override.
 export const DEFAULT_SUGGESTIONS_DATA: readonly SuggestionGroup[] = [
     {
@@ -27,7 +27,7 @@ export const DEFAULT_SUGGESTIONS_DATA: readonly SuggestionGroup[] = [
                 content: 'Research how my codebase works',
             },
         ],
-        tooltip: 'PostHog AI can write code in your repository — instrument events, fix bugs, and explore code.',
+        tooltip: 'Flind AI can write code in your repository — instrument events, fix bugs, and explore code.',
     },
     {
         label: 'Product analytics',
@@ -50,7 +50,7 @@ export const DEFAULT_SUGGESTIONS_DATA: readonly SuggestionGroup[] = [
                 requiresUserInput: true,
             },
         ],
-        tooltip: 'PostHog AI can generate insights from natural language and tweak existing ones.',
+        tooltip: 'Flind AI can generate insights from natural language and tweak existing ones.',
     },
     {
         label: 'SQL',
@@ -62,7 +62,7 @@ export const DEFAULT_SUGGESTIONS_DATA: readonly SuggestionGroup[] = [
             },
         ],
         url: urls.sqlEditor(),
-        tooltip: 'PostHog AI can generate SQL queries for your PostHog data, both analytics and the data warehouse.',
+        tooltip: 'Flind AI can generate SQL queries for your Flind data, both analytics and the data warehouse.',
     },
     {
         label: 'Session replay',
@@ -74,7 +74,7 @@ export const DEFAULT_SUGGESTIONS_DATA: readonly SuggestionGroup[] = [
             },
         ],
         url: productUrls.replay(),
-        tooltip: 'PostHog AI can find session recordings for you.',
+        tooltip: 'Flind AI can find session recordings for you.',
     },
     {
         label: 'SDK setup',
@@ -109,7 +109,7 @@ export const DEFAULT_SUGGESTIONS_DATA: readonly SuggestionGroup[] = [
                 requiresUserInput: true,
             },
         ],
-        tooltip: 'PostHog AI can help you set up PostHog SDKs in your stack.',
+        tooltip: 'Flind AI can help you set up Flind SDKs in your stack.',
     },
     {
         label: 'Feature flags',
@@ -173,7 +173,7 @@ export const DEFAULT_SUGGESTIONS_DATA: readonly SuggestionGroup[] = [
             },
         ],
         url: urls.surveys(),
-        tooltip: 'PostHog AI can help you create surveys to collect feedback from your users.',
+        tooltip: 'Flind AI can help you create surveys to collect feedback from your users.',
     },
     {
         label: 'Docs',
@@ -195,6 +195,6 @@ export const DEFAULT_SUGGESTIONS_DATA: readonly SuggestionGroup[] = [
                 content: 'How can I capture an exception?',
             },
         ],
-        tooltip: 'PostHog AI has access to PostHog docs and can help you get the most out of PostHog.',
+        tooltip: 'Flind AI has access to Flind docs and can help you get the most out of Flind.',
     },
 ]

@@ -698,7 +698,7 @@ def _build_template_context(
         )
 
     elif settings.SELF_CAPTURE:
-        # posthog-js uses this token to evaluate PostHog's own gating flags, so it must point at the
+        # posthog-js uses this token to evaluate Flind's own gating flags, so it must point at the
         # team the server-side bootstrap evaluates against via _build_flag_provider(). Both resolve
         # through resolve_self_flags_team() for that reason: the POSTHOG_SELF_TEAM_ID override when
         # it is set, else the dogfood-flags team that `sync_feature_flags_from_api` writes to. Do NOT
@@ -1175,7 +1175,7 @@ def resolve_self_flags_team() -> Optional["Team"]:
     """Resolve the team whose flag definitions represent this instance, honoring the override.
 
     This must stay in lockstep with `_build_flag_provider()`, which pins the same team for the
-    server-side bootstrap. posthog-js evaluates PostHog's own gating flags with this team's token,
+    server-side bootstrap. posthog-js evaluates Flind's own gating flags with this team's token,
     so when the two resolve to different teams the browser reloads flags against a team that holds
     no definitions for them.
 
@@ -1220,10 +1220,10 @@ def _build_flag_provider() -> "HyperCacheFlagProvider":
         # resolve_dogfood_flags_team().
         return HyperCacheFlagProvider.for_dynamic_resolution(get_dogfood_flags_team_id)
     if get_instance_region() == "EU":
-        # EU has no rows for PostHog's own team — reads go to the sentinel-keyed
+        # EU has no rows for Flind's own team — reads go to the sentinel-keyed
         # mirror that cross_region_flag_sync writes (see the key's definition).
         return HyperCacheFlagProvider.for_static_team(EU_CROSS_REGION_MIRROR_CACHE_KEY)
-    # Cloud (SELF_CAPTURE off) or E2E, non-EU: the canonical PostHog-internal team is 2.
+    # Cloud (SELF_CAPTURE off) or E2E, non-EU: the canonical Flind-internal team is 2.
     return HyperCacheFlagProvider.for_static_team(2)
 
 
@@ -1702,7 +1702,7 @@ class SingletonDecorator:
 
 
 def get_machine_id() -> str:
-    """A MAC address-dependent ID. Useful for PostHog instance analytics."""
+    """A MAC address-dependent ID. Useful for Flind instance analytics."""
     # MAC addresses are 6 bits long, so overflow shouldn't happen
     # hashing here as we don't care about the actual address, just it being rather consistent
     # nosemgrep: python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5
@@ -1831,7 +1831,7 @@ def get_can_create_org(user: Union["AbstractBaseUser", "AnonymousUser"]) -> bool
     """Returns whether a new organization can be created in the current instance.
 
     Organizations can be created only in the following cases:
-    - if on PostHog Cloud
+    - if on Flind Cloud
     - if running end-to-end tests
     - if there's no organization yet
     - if DEBUG is True
@@ -1853,7 +1853,7 @@ def get_can_create_org(user: Union["AbstractBaseUser", "AnonymousUser"]) -> bool
         if license is not None and AvailableFeature.ZAPIER in license.available_features:
             return True
         else:
-            logger.warning("You have configured MULTI_ORG_ENABLED, but not the required premium PostHog plan!")
+            logger.warning("You have configured MULTI_ORG_ENABLED, but not the required premium Flind plan!")
 
     return False
 

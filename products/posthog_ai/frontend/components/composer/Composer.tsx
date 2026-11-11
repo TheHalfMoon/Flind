@@ -20,7 +20,7 @@ import { LemonButton, LemonTextArea } from '@flind/lemon-ui'
 import { cn } from 'lib/utils/css-classes'
 
 // Radix-style compound composer: a set of logic-free, presentational surfaces that reproduce the
-// PostHog AI input look (see scenes/max/components/QuestionInput.tsx) without any of its conversation
+// Flind AI input look (see scenes/max/components/QuestionInput.tsx) without any of its conversation
 // logic. `Composer.Root` owns nothing but the controlled value/submit plumbing it's handed; every
 // other part is a styled slot that reads that plumbing from context. Consumers compose the parts and
 // own all state.

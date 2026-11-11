@@ -79,7 +79,7 @@ class TicketCommand(SlashCommand):
 
     async def _summarize_conversation(self, messages: Sequence[AssistantMessageUnion]) -> str:
         """Summarize the conversation for the support ticket."""
-        summarization_header = "PostHog AI Support Ticket Summary"
+        summarization_header = "Flind AI Support Ticket Summary"
         transcript = render_transcript(messages)
         messages_list: list[SystemMessage | LangchainHumanMessage] = [
             SystemMessage(content=SUPPORT_SUMMARIZER_SYSTEM_PROMPT),

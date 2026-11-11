@@ -1,4 +1,4 @@
-"""The SQLV2 data plane: the sandbox's read path to PostHog data.
+"""The SQLV2 data plane: the sandbox's read path to Flind data.
 
 Token-authed sandbox -> backend endpoints (like the result callback, plain
 function views, no session). The sandbox never parses HogQL — it sends the query

@@ -25,7 +25,7 @@ export function buildErrorReport({
   userAgent,
 }: ErrorReportInput): string {
   const header = [
-    "PostHog Desktop error report",
+    "Flind Desktop error report",
     boundaryName ? `Boundary: ${boundaryName}` : null,
     `Time: ${timestamp.toISOString()}`,
     userAgent ? `User agent: ${userAgent}` : null,

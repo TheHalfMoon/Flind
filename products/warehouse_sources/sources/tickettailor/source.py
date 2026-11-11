@@ -51,7 +51,7 @@ class TicketTailorSource(ResumableSource[TicketTailorSourceConfig, TicketTailorR
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="Ticket Tailor",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Ticket Tailor API key to pull your event ticketing data into the PostHog Data warehouse.
+            caption="""Enter your Ticket Tailor API key to pull your event ticketing data into the Flind Data warehouse.
 
 You can create an API key under **Settings → API** in your [Ticket Tailor](https://www.tickettailor.com) box office. API keys are scoped to a single box office — connect one source per box office you want to sync.
 """,

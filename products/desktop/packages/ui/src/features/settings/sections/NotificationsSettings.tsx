@@ -166,7 +166,7 @@ export function NotificationsSettings() {
         if (permission !== "granted") {
           toast.info("Notifications are blocked", {
             description:
-              "Allow notifications for PostHog in your system settings.",
+              "Allow notifications for Flind in your system settings.",
           });
           return;
         }
@@ -258,7 +258,7 @@ export function NotificationsSettings() {
       {notificationsDenied && (
         <div className="rounded-(--radius-3) border border-(--amber-6) bg-(--amber-2) px-3.5 py-2.5 text-[12.5px] text-amber-11">
           Notifications are blocked in your system settings. Allow them for
-          PostHog to receive alerts.
+          Flind to receive alerts.
         </div>
       )}
 
@@ -585,7 +585,7 @@ function VoiceSection() {
   }, [keyStore, setElevenLabsKeyConfigured]);
 
   const testVoice = useCallback(() => {
-    void speech?.speak("PostHog task 'demo' — [excited] this is my voice!", {
+    void speech?.speak("Flind task 'demo' — [excited] this is my voice!", {
       voiceId: elevenLabsVoiceId || undefined,
     });
   }, [speech, elevenLabsVoiceId]);
@@ -863,7 +863,7 @@ function TestSection({
 
   const testNative = () =>
     notifications?.notify({
-      title: "PostHog",
+      title: "Flind",
       body: "This is a native OS notification.",
       silent: false,
     });
@@ -871,7 +871,7 @@ function TestSection({
   const testNativeDeepLink = () => {
     if (!notifications || !deepLinkTask) return;
     notifications.notify({
-      title: "PostHog",
+      title: "Flind",
       body: `Click to open "${deepLinkTask.title}"`,
       silent: false,
       target: { kind: "task", taskId: deepLinkTask.id },

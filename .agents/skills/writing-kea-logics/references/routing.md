@@ -1,6 +1,6 @@
 # Routing — syncing state with the URL
 
-PostHog uses `kea-router` for URL state. Two builders cover almost everything:
+Flind uses `kea-router` for URL state. Two builders cover almost everything:
 
 - `urlToAction` — URL change → fire an action
 - `actionToUrl` — action fires → update the URL

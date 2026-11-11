@@ -7,12 +7,12 @@ import { HogFunctionIcon } from 'scenes/hog-functions/configuration/HogFunctionI
 import { destinationWorkflowSuggestionLogic } from './destinationWorkflowSuggestionLogic'
 
 const ADVANTAGES: { title: string; detail: string }[] = [
-    { title: 'No second copy of your data.', detail: 'Workflows use your PostHog events and person properties.' },
+    { title: 'No second copy of your data.', detail: 'Workflows use your Flind events and person properties.' },
     {
         title: 'Stop when they convert.',
         detail: 'A workflow can end as soon as someone does what you wanted, like upgrading.',
     },
-    { title: 'Results in one place.', detail: 'See opens and clicks next to the rest of your PostHog data.' },
+    { title: 'Results in one place.', detail: 'See opens and clicks next to the rest of your Flind data.' },
 ]
 
 const AI_BUILD_ADVANTAGE = { title: 'Free to set up.', detail: 'Building these workflows with AI costs you nothing.' }
@@ -38,7 +38,7 @@ export function DestinationWorkflowSuggestionModal(): JSX.Element {
                     {template ? (
                         <HogFunctionIcon src={template.icon_url} className={template.icon_class_name} size="small" />
                     ) : null}
-                    <span>Send these emails from PostHog instead?</span>
+                    <span>Send these emails from Flind instead?</span>
                 </div>
             }
             footer={
@@ -77,8 +77,8 @@ export function DestinationWorkflowSuggestionModal(): JSX.Element {
                 <div className="flex flex-col gap-3">
                     <p className="m-0">
                         {canBuildWorkflows
-                            ? `You're about to stream these events to ${toolName}. PostHog Workflows can send emails on them directly, and we can build those workflows for you.`
-                            : `It looks like you want to stream your events to ${toolName}, maybe to send emails. PostHog Workflows can send those emails directly.`}
+                            ? `You're about to stream these events to ${toolName}. Flind Workflows can send emails on them directly, and we can build those workflows for you.`
+                            : `It looks like you want to stream your events to ${toolName}, maybe to send emails. Flind Workflows can send those emails directly.`}
                     </p>
                     <ul className="m-0 pl-4 list-disc flex flex-col gap-1">
                         {advantages.map(({ title, detail }) => (

@@ -337,7 +337,7 @@ class TestPlaygroundModelEnforcement(APIBaseTest):
             format="json",
         )
         assert response.status_code == 403
-        assert "not available on the PostHog-funded playground" in response.json()["error"]
+        assert "not available on the Flind-funded playground" in response.json()["error"]
 
     @patch("products.ai_observability.backend.api.proxy.Client")
     def test_completion_allows_playground_model(self, mock_client_cls) -> None:

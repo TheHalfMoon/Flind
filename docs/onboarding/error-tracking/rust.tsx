@@ -13,7 +13,7 @@ export const getRustSteps = (ctx: OnboardingComponentsContext): StepDefinition[]
                 <>
                     <Markdown>
                         {dedent`
-                            Install the PostHog Rust SDK. Error tracking is enabled by its default \`error-tracking\` feature.
+                            Install the Flind Rust SDK. Error tracking is enabled by its default \`error-tracking\` feature.
                         `}
                     </Markdown>
                     <CodeBlock language="bash" code="cargo add posthog-rs" />

@@ -2199,7 +2199,7 @@ class QueryRunner(ABC, Generic[Q, R, CR]):
         return None
 
     def _reads_events_route(self) -> bool:
-        """True when this query reads the PostHog events table.
+        """True when this query reads the Flind events table.
 
         Only then does the events route belong in the query's cache key and in its queued payload.
         """
@@ -2541,7 +2541,7 @@ class QueryRunner(ABC, Generic[Q, R, CR]):
         # Some queries read live, mutable state that must never be served stale — e.g. HogQL against
         # system.information_schema.*, which mirrors data-catalog approval/certification status, so a
         # cached row keeps reporting the pre-change value after a catalog write. Such runners force a
-        # blocking recompute here so every entry point (SQL editor, insights, PostHog AI, MCP) sees the
+        # blocking recompute here so every entry point (SQL editor, insights, Flind AI, MCP) sees the
         # current state. Async-only and cache-only modes are left as requested — they explicitly opt
         # out of returning a fresh synchronous result.
         if (

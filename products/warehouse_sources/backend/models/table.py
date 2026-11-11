@@ -117,10 +117,10 @@ ExtractErrors = {
     "The operation is not valid for the object's storage class": "Some files in the bucket are archived (e.g. Glacier or S3 Intelligent-Tiering archive). Restore them to Standard storage or narrow the URL pattern to exclude archived files.",
     # TOO_MANY_REDIRECTS, raised when the URL pattern points at something that answers with a
     # redirect (a website endpoint, a share link) instead of the object itself.
-    "Too many redirects": "The files URL redirected too many times, so PostHog couldn't read it. Check that the URL points straight at your bucket rather than at a share or website link, then try again.",
+    "Too many redirects": "The files URL redirected too many times, so Flind couldn't read it. Check that the URL points straight at your bucket rather than at a share or website link, then try again.",
     # UNKNOWN_IDENTIFIER. A column the table still expects is gone from the files, most often the
     # incremental field of a source whose upstream schema changed.
-    "Unknown expression or function identifier": "A column PostHog expected isn't in your files any more. Refresh the table schema, then check the fields the sync is set to read.",
+    "Unknown expression or function identifier": "A column Flind expected isn't in your files any more. Refresh the table schema, then check the fields the sync is set to read.",
 }
 
 
@@ -550,10 +550,10 @@ class DataWarehouseTable(CreatedMetaFields, UpdatedMetaFields, UUIDTModel, Delet
 
     def _reject_client_supplied_url_pattern_change(self, update_fields: Iterable[str] | None) -> None:
         """Block a url_pattern change on a table with no credential, unless the caller declares the
-        new value was computed by PostHog's own code rather than taken from request input.
+        new value was computed by Flind's own code rather than taken from request input.
 
         A table with no credential is read by ClickHouse under the cluster's own S3 role rather than
-        a key the team supplied, so its url_pattern is only safe because PostHog chose it. Pipeline
+        a key the team supplied, so its url_pattern is only safe because Flind chose it. Pipeline
         syncs, saved-query materialization, and the direct-connection upsert helpers all legitimately
         rewrite this field on such tables using values they compute themselves; those call
         ``save(internally_computed_url_pattern=True)`` to say so. Every other caller, present or
@@ -569,7 +569,7 @@ class DataWarehouseTable(CreatedMetaFields, UpdatedMetaFields, UUIDTModel, Delet
         prior_credential_id, prior_url_pattern = prior
         if prior_credential_id is None and prior_url_pattern != self.url_pattern:
             raise ValidationError(
-                "This table has no credential, so its URL is only safe because PostHog set it. "
+                "This table has no credential, so its URL is only safe because Flind set it. "
                 "Add an access key and secret before pointing it at a different location."
             )
 
@@ -592,13 +592,13 @@ class DataWarehouseTable(CreatedMetaFields, UpdatedMetaFields, UUIDTModel, Delet
         """Make a self-managed table one that `source` syncs. Returns the fields this changed.
 
         The caller saves these fields together with the new `url_pattern` and `format`: the
-        customer's key can't read PostHog's bucket, and PostHog's key can't read the customer's, so
+        customer's key can't read Flind's bucket, and Flind's key can't read the customer's, so
         a row that has only some of these changes can't be read at all. The row id and the name stay,
         so joins, views and saved queries that refer to the table keep working.
         """
         self.external_data_source = source
         self.credential = None
-        # A CSV setting for the customer's files. The table now reads Parquet files PostHog wrote.
+        # A CSV setting for the customer's files. The table now reads Parquet files Flind wrote.
         self.options = {key: value for key, value in (self.options or {}).items() if key != "csv_allow_double_quotes"}
         return ["external_data_source", "credential", "options"]
 
@@ -785,7 +785,7 @@ class DataWarehouseTable(CreatedMetaFields, UpdatedMetaFields, UUIDTModel, Delet
         deltaLake() reads through delta-kernel's own HTTP client, which s3_max_redirects does not
         govern, so chdb cannot stop it from following a redirect. A table with a credential reads a
         URL the team supplied, so its Delta reads go to the cluster, which checks every hop against
-        remote_url_allow_hosts. A table without a credential reads a URL that PostHog built.
+        remote_url_allow_hosts. A table without a credential reads a URL that Flind built.
         """
         # chdb's Azure client ignores the egress proxy and connects directly.
         if is_azure_blob_url(self.url_pattern):
@@ -897,7 +897,7 @@ class DataWarehouseTable(CreatedMetaFields, UpdatedMetaFields, UUIDTModel, Delet
             column_name = str(item[0])
             if REJECTED_COLUMN_NAME_CHARACTERS.intersection(column_name):
                 raise Exception(
-                    f"PostHog can't use the column name {column_name!r}. Column names can't contain "
+                    f"Flind can't use the column name {column_name!r}. Column names can't contain "
                     "backticks, backslashes, line breaks, or null bytes. Rename the column, then try again."
                 )
             clickhouse_type = self._nested_object_column_type(str(item[1]))

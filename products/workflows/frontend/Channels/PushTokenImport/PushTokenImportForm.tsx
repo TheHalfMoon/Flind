@@ -44,8 +44,8 @@ export function PushTokenImportForm(): JSX.Element {
             />
             {error ? <LemonBanner type="error">{error}</LemonBanner> : null}
             <span className="text-xs text-secondary">
-                PostHog imports the file in the background, so you can close this window once the upload is done. A
-                distinct ID that no person in PostHog has is not imported, and the result lets you create those persons.
+                Flind imports the file in the background, so you can close this window once the upload is done. A
+                distinct ID that no person in Flind has is not imported, and the result lets you create those persons.
                 Each device is saved with one event, so it counts toward your event usage.
             </span>
         </>

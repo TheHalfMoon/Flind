@@ -13,7 +13,7 @@ from ee.hogai.utils.types import AssistantState, PartialAssistantState
 class FeedbackCommand(SlashCommand):
     """
     Handles the /feedback slash command.
-    Captures user feedback about their PostHog AI experience.
+    Captures user feedback about their Flind AI experience.
     """
 
     def get_feedback_content(self, state: AssistantState) -> str | None:
@@ -33,7 +33,7 @@ class FeedbackCommand(SlashCommand):
             return PartialAssistantState(
                 messages=[
                     AssistantMessage(
-                        content="Please provide your feedback for PostHog AI. Usage: `/feedback <your feedback>`",
+                        content="Please provide your feedback for Flind AI. Usage: `/feedback <your feedback>`",
                         id=str(uuid4()),
                     )
                 ]
@@ -55,5 +55,5 @@ class FeedbackCommand(SlashCommand):
         )
 
         return PartialAssistantState(
-            messages=[AssistantMessage(content="Thanks for making PostHog AI better!", id=str(uuid4()))]
+            messages=[AssistantMessage(content="Thanks for making Flind AI better!", id=str(uuid4()))]
         )

@@ -7,7 +7,7 @@ Known gaps and behavior that stays on the device.
 - **Dark mode.** Light theme only (`userInterfaceStyle: 'light'`). Tokens are not split by scheme yet.
 - **Dismiss and resolve from the inbox list.** Resolve and dismiss live on the report screen's action pill and the row's context menu; there is no bulk action.
 - **Approve PR.** The PR card only opens the PR. Approving happens on GitHub.
-- **External hand-off is a prepared prompt.** Claude Code and Codex get a deep link with the prompt, and copy is the fallback. There is no Cursor row, and the app never checks that the agent has the PostHog MCP connected.
+- **External hand-off is a prepared prompt.** Claude Code and Codex get a deep link with the prompt, and copy is the fallback. There is no Cursor row, and the app never checks that the agent has the Flind MCP connected.
 - **Time-based snooze is local.** "In an hour", "Tomorrow", "Next week", "In a month" and
   "Custom…" hide the report on this device only. Other devices and the web app still show it.
   "Until more signals arrive" is the only server-side snooze.
@@ -28,7 +28,7 @@ Known gaps and behavior that stays on the device.
 
 ## Verification limits
 
-- No live PostHog was reachable while building. Every live path is covered by unit tests on
+- No live Flind was reachable while building. Every live path is covered by unit tests on
   fixtures shaped from the serializers and by browser runs against intercepted responses.
   The first real sign-in, hand-off, stream and chat need a device and an account.
 - The web render check cannot show the iOS keyboard that some reference screenshots include.
@@ -40,7 +40,7 @@ Known gaps and behavior that stays on the device.
   LangGraph chats made before the move stay in the web app's legacy view and `/ai?chat=<id>` links.
 - **Queued messages require review after reopening a chat.** Queued text is saved with the chat's draft in native secure storage before the composer clears. Delivery keeps that saved text until the server acknowledges it. After a restart or reopening, the queue waits for **Send now** because a message may already have reached the agent. Check the conversation before repeating it; delivery is not exactly once.
   Queued files stay in memory. After reopening, messages that had files cannot send until you copy their text, remove them, and attach the files again. File paths and contents are not saved in the draft store. Storage failures keep the composer or queue visible and show retry feedback. Drafts and queues are isolated by account, host, project, and chat, and cleared on sign-out. The web preview keeps them in memory only.
-- **No PostHog Desktop access pre-check.** A refused user learns it from the 403 on the first send.
+- **No Flind Desktop access pre-check.** A refused user learns it from the 403 on the first send.
   `GET /api/code/invites/check-access/` evaluates the server-side current team, which can differ from the app's project,
   and the project-scoped `desktop/access/` needs `llm_gateway:read`, which the app does not request.
 - **Context items are re-sent with every message** while a chip stays attached. The web sends a report item once per task resume chain.
@@ -206,7 +206,7 @@ by the mobile footer change:
 - **No player with `mobile-replay-video` off.** The phone shows the summary, chapter frames and the event timeline.
   Watching the recording is "Open full replay", the web player in the browser.
 - **The video is pixels only.** Watch replay plays an MP4, so it has no DOM inspection, console or network panes, and no event markers on the scrubber.
-  Those stay in the web player, which More and the player's error state open as Open in PostHog.
+  Those stay in the web player, which More and the player's error state open as Open in Flind.
 - **The first watch waits for a render.** Rendering takes a few minutes, and the app polls only while the player is open.
   No push says the video is ready.
 - **Renders spend the export cap.** Each first watch of a session counts against the team's monthly video export cap.

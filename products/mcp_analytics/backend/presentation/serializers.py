@@ -273,14 +273,14 @@ class MCPSessionListQuerySerializer(serializers.Serializer):
         required=False,
         allow_blank=True,
         help_text=(
-            "Start of the window to aggregate sessions over. PostHog date string — relative "
+            "Start of the window to aggregate sessions over. Flind date string — relative "
             "(e.g. '-7d', '-24h') or an absolute ISO timestamp. Defaults to '-7d'."
         ),
     )
     date_to = serializers.CharField(
         required=False,
         allow_blank=True,
-        help_text="End of the window. PostHog date string or absolute ISO timestamp. Defaults to now.",
+        help_text="End of the window. Flind date string or absolute ISO timestamp. Defaults to now.",
     )
     has_errors = serializers.BooleanField(
         required=False,
@@ -407,7 +407,7 @@ class MCPSessionSerializer(serializers.Serializer):
         read_only=True, help_text="Timestamp of the most recent $mcp_tool_call event in the session."
     )
     distinct_id_count = serializers.IntegerField(
-        read_only=True, help_text="Number of distinct PostHog distinct_ids that produced events in the session."
+        read_only=True, help_text="Number of distinct Flind distinct_ids that produced events in the session."
     )
     tools_used = serializers.ListField(
         child=serializers.CharField(),

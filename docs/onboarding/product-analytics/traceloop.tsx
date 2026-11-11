@@ -12,12 +12,12 @@ export const getTraceloopSteps = (ctx: OnboardingComponentsContext): StepDefinit
             content: (
                 <>
                     <Markdown>
-                        Traceloop supports most popular LLM models and you can bring your Traceloop data into PostHog
+                        Traceloop supports most popular LLM models and you can bring your Traceloop data into Flind
                         for analysis.
                     </Markdown>
                     <Markdown>
                         Go to the [integrations page](https://app.traceloop.com/settings/integrations) in your Traceloop
-                        dashboard and click on the PostHog card.
+                        dashboard and click on the Flind card.
                     </Markdown>
                 </>
             ),
@@ -27,7 +27,7 @@ export const getTraceloopSteps = (ctx: OnboardingComponentsContext): StepDefinit
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Paste in your PostHog project token:</Markdown>
+                    <Markdown>Paste in your Flind project token:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -39,7 +39,7 @@ export const getTraceloopSteps = (ctx: OnboardingComponentsContext): StepDefinit
                             },
                         ]}
                     />
-                    <Markdown>Paste in your PostHog host:</Markdown>
+                    <Markdown>Paste in your Flind host:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -51,9 +51,9 @@ export const getTraceloopSteps = (ctx: OnboardingComponentsContext): StepDefinit
                             },
                         ]}
                     />
-                    <Markdown>Select the environment you want to connect to PostHog and click **Enable**.</Markdown>
+                    <Markdown>Select the environment you want to connect to Flind and click **Enable**.</Markdown>
                     <Markdown>
-                        Traceloop events will now be exported into PostHog as soon as they're available.
+                        Traceloop events will now be exported into Flind as soon as they're available.
                     </Markdown>
                 </>
             ),
@@ -66,7 +66,7 @@ export const getTraceloopSteps = (ctx: OnboardingComponentsContext): StepDefinit
                     <Markdown>
                         Prefix any Traceloop association property with `posthog_` to attach it to the exported event as
                         a custom property. The prefix is stripped, so `posthog_environment` becomes an `environment`
-                        property you can filter and break down by in PostHog.
+                        property you can filter and break down by in Flind.
                     </Markdown>
                     <CodeBlock
                         language="typescript"

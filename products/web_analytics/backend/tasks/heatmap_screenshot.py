@@ -177,7 +177,7 @@ def _capture_mode_usage(
     page_status: int | None = None,
 ) -> None:
     # ph_scoped_capture (not posthoganalytics.capture) — events from Celery tasks are otherwise
-    # silently lost; no-ops off PostHog Cloud. Telemetry must never fail the task, so swallow errors.
+    # silently lost; no-ops off Flind Cloud. Telemetry must never fail the task, so swallow errors.
     team = screenshot.team
     try:
         with ph_scoped_capture() as capture:
@@ -699,7 +699,7 @@ def render_page(
     )
     if page_status is not None and not 200 <= page_status < 300:
         guidance = (
-            "Screenshot cookie delivery is disabled on this installation. Contact your PostHog administrator."
+            "Screenshot cookie delivery is disabled on this installation. Contact your Flind administrator."
             if reason == "delivery_disabled"
             else "The screenshot cookie was configured. Check the page and your bot protection rule before retrying."
             if cookies

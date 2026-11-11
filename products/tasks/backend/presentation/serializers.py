@@ -155,7 +155,7 @@ def _is_desktop_app_grant(request: Request) -> bool:
 def _may_select_claude_plan(request: Request) -> bool:
     """Whether this caller may bill a run to a Claude plan.
 
-    PostHog stores no Claude token: a subscription run asks the person who started it for
+    Flind stores no Claude token: a subscription run asks the person who started it for
     one over the run's stream, and fails if nobody answers. The caller therefore has to be
     something that can answer, on behalf of someone whose plan can be billed. Desktop does
     it interactively; an API key acting as a user is a deliberate server-to-server
@@ -182,19 +182,19 @@ def _validate_subscription_caller(attrs: dict[str, Any], context: dict[str, Any]
             access = tasks_facade.get_task_run_claude_model_access(run_id, task_id, team.id)
             if access == "own-subscription" and not is_sandbox_oauth_request(request):
                 raise serializers.ValidationError(
-                    {"claude_model_access": "Open PostHog Desktop to resume this run with your Claude plan."}
+                    {"claude_model_access": "Open Flind Desktop to resume this run with your Claude plan."}
                 )
     if access == "own-subscription" and not _may_select_claude_plan(request):
         raise serializers.ValidationError(
             {
                 "claude_model_access": (
-                    "Only PostHog Desktop or an API key can start a run on your Claude plan. "
+                    "Only Flind Desktop or an API key can start a run on your Claude plan. "
                     "Start the task from Desktop, authenticate with an API key, or select "
-                    "'posthog-gateway' to use PostHog credits."
+                    "'posthog-gateway' to use Flind credits."
                 )
             }
         )
-    # The PostHog API serves the ChatGPT token, so any caller can resume a Codex plan run.
+    # The Flind API serves the ChatGPT token, so any caller can resume a Codex plan run.
     if attrs.get("codex_model_access") == "own-subscription" and is_sandbox_oauth_request(request):
         raise serializers.ValidationError({"codex_model_access": "Only a user can select a ChatGPT plan."})
 
@@ -410,15 +410,15 @@ class TaskRunSkillBundleMetadataSerializer(serializers.Serializer):
 class TaskRunPostHogReferenceMetadataSerializer(serializers.Serializer):
     reference_type = serializers.ChoiceField(
         choices=["posthog_object"],
-        help_text="Reference metadata type. posthog_object identifies a live PostHog object.",
+        help_text="Reference metadata type. posthog_object identifies a live Flind object.",
     )
     object_kind = serializers.ChoiceField(
         choices=POSTHOG_OBJECT_KIND_CHOICES,
-        help_text="PostHog object kind used to resolve the reference.",
+        help_text="Flind object kind used to resolve the reference.",
     )
     object_id = serializers.CharField(
         max_length=16384,
-        help_text="Exact PostHog object identifier, flag key, event name, or SQL query.",
+        help_text="Exact Flind object identifier, flag key, event name, or SQL query.",
     )
     source_message_ids = serializers.ListField(
         child=serializers.CharField(max_length=255),
@@ -497,7 +497,7 @@ class TaskRunArtifactResponseSerializer(serializers.Serializer):
     content_type = serializers.CharField(required=False, allow_blank=True, help_text="Optional MIME type")
     metadata = TaskRunArtifactMetadataField(
         required=False,
-        help_text="Structured metadata for a skill bundle or a PostHog object reference.",
+        help_text="Structured metadata for a skill bundle or a Flind object reference.",
     )
     storage_path = serializers.CharField(
         required=False,
@@ -630,7 +630,7 @@ class WizardCloudRunSerializer(DataclassSerializer):
 
 
 # The relationship a client asserts between a task and a signal report when creating a task from the
-# report (e.g. PostHog Desktop inbox), recorded as a signals `task_run` work-log entry. This is a
+# report (e.g. Flind Desktop inbox), recorded as a signals `task_run` work-log entry. This is a
 # free-form label — the same as the `task_run` artefact `(product, type)` values, which have never
 # been access-controlled — so no relationship is reserved here either. `implementation` additionally
 # opens the auto-start spend gate (recorded server-side via `record_report_task`). Only the routing-
@@ -674,7 +674,7 @@ class TaskSerializer(DataclassSerializer):
         choices=tasks_facade.TaskClientProvenance.choices,
         allow_null=True,
         required=False,
-        help_text="First-party PostHog client that created this task.",
+        help_text="First-party Flind client that created this task.",
     )
     last_client = serializers.ChoiceField(
         choices=tasks_facade.TaskClient.choices,
@@ -831,7 +831,7 @@ class TaskWriteSerializer(serializers.Serializer):
         choices=tasks_facade.TaskOriginProduct.choices,
         required=False,
         help_text=(
-            "PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). "
+            "Flind product or surface that created this task (e.g. error_tracking, slack, user_created). "
             "Origins reserved for server-created agents cannot be set through this API."
         ),
     )
@@ -1498,7 +1498,7 @@ class TaskRunSetSummaryRequestSerializer(serializers.Serializer):
 
 
 class DesktopAccessResponseSerializer(serializers.Serializer):
-    allowed = serializers.BooleanField(help_text="Whether the selected project can use PostHog Desktop.")
+    allowed = serializers.BooleanField(help_text="Whether the selected project can use Flind Desktop.")
     reason = serializers.ChoiceField(
         choices=DesktopAccessReason.choices,
         allow_null=True,
@@ -1507,7 +1507,7 @@ class DesktopAccessResponseSerializer(serializers.Serializer):
 
 
 class LegacyDesktopAccessResponseSerializer(serializers.Serializer):
-    has_access = serializers.BooleanField(help_text="Whether the current project can use PostHog Desktop.")
+    has_access = serializers.BooleanField(help_text="Whether the current project can use Flind Desktop.")
     has_loops_access = serializers.BooleanField(help_text="Whether the independent Loops feature is enabled.")
 
 
@@ -1523,7 +1523,7 @@ class TaskRunErrorResponseSerializer(serializers.Serializer):
     reason = serializers.ChoiceField(
         choices=DesktopAccessReason.choices,
         required=False,
-        help_text="Why PostHog Desktop access was denied, when applicable.",
+        help_text="Why Flind Desktop access was denied, when applicable.",
     )
     attr = serializers.CharField(required=False, help_text="Request field associated with the error")
     missing_artifact_ids = serializers.ListField(
@@ -1706,11 +1706,11 @@ class TaskRunPostHogReferenceSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=255, help_text="Fallback display name for the referenced object.")
     object_kind = serializers.ChoiceField(
         choices=POSTHOG_OBJECT_KIND_CHOICES,
-        help_text="PostHog object kind used to resolve the reference.",
+        help_text="Flind object kind used to resolve the reference.",
     )
     object_id = serializers.CharField(
         max_length=16384,
-        help_text="Exact PostHog object identifier, flag key, event name, or SQL query.",
+        help_text="Exact Flind object identifier, flag key, event name, or SQL query.",
     )
     source_message_id = serializers.CharField(
         max_length=255,
@@ -1723,7 +1723,7 @@ class TaskRunPostHogReferencesRequestSerializer(serializers.Serializer):
         child=TaskRunPostHogReferenceSerializer(),
         allow_empty=False,
         max_length=50,
-        help_text="PostHog object references extracted from one completed assistant message.",
+        help_text="Flind object references extracted from one completed assistant message.",
     )
 
 
@@ -1886,7 +1886,7 @@ class TaskRunLivingArtifactChartResponseSerializer(serializers.Serializer):
     url = serializers.URLField(
         allow_null=True,
         required=False,
-        help_text="Link to explore this chart interactively in PostHog.",
+        help_text="Link to explore this chart interactively in Flind.",
     )
 
 
@@ -2527,7 +2527,7 @@ class TaskListQuerySerializer(serializers.Serializer):
             "Only tasks from any of these sources. Repeat the parameter for each source, or send one "
             "comma-joined value or a JSON array. 'posthog_desktop', 'posthog_mobile' and 'posthog_web' "
             "match user-created tasks by the client that created them, and a user-created task from no "
-            "other known client counts as desktop. 'posthog_web' also matches PostHog AI tasks. "
+            "other known client counts as desktop. 'posthog_web' also matches Flind AI tasks. "
             "Any other value matches the task's origin product."
         ),
     )
@@ -3766,7 +3766,7 @@ class ImportedMcpServersFieldMixin(serializers.Serializer):
         default=None,
         write_only=True,
         help_text=(
-            "Local url-based MCP servers from the creating client (PostHog Desktop) to make "
+            "Local url-based MCP servers from the creating client (Flind Desktop) to make "
             "available inside the cloud sandbox. Header values are treated as credentials: "
             "stored encrypted and never returned by the API."
         ),
@@ -3806,7 +3806,7 @@ class RelayedMcpServersFieldMixin(serializers.Serializer):
         default=None,
         write_only=True,
         help_text=(
-            "Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the "
+            "Names of desktop-only MCP servers the creating client (Flind Desktop) relays into the "
             "cloud sandbox over the durable event/command channel. Names only — the server "
             "configuration (command, env, URL, headers) never crosses the wire."
         ),
@@ -3867,9 +3867,9 @@ class TaskRunPreferencesFieldMixin(serializers.Serializer):
             "How the Claude runtime pays for model use. 'own-subscription' makes the sandbox "
             "request a Claude token from whoever started the run; Desktop relays it interactively "
             "and an API key caller relays it unattended. The token is sent in flight and never "
-            "stored on PostHog servers. Only PostHog Desktop and API keys can select "
+            "stored on Flind servers. Only Flind Desktop and API keys can select "
             "'own-subscription'; other callers get a 400. If omitted or null, resumed runs keep "
-            "their billing choice and new runs use the PostHog gateway."
+            "their billing choice and new runs use the Flind gateway."
         ),
     )
     codex_model_access = serializers.ChoiceField(
@@ -3879,9 +3879,9 @@ class TaskRunPreferencesFieldMixin(serializers.Serializer):
         default=None,
         help_text=(
             "How the Codex runtime pays for model use. 'own-subscription' makes the sandbox fetch a "
-            "ChatGPT access token from the PostHog API, refreshed from the ChatGPT account "
+            "ChatGPT access token from the Flind API, refreshed from the ChatGPT account "
             "the run owner connected in Desktop settings. If omitted or null, resumed runs keep their "
-            "billing choice and new runs use the PostHog gateway."
+            "billing choice and new runs use the Flind gateway."
         ),
     )
 
@@ -4001,7 +4001,7 @@ class TaskRunCreateRequestSerializer(
         allow_blank=False,
         write_only=True,
         help_text=(
-            "Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. "
+            "Optional GitHub user token from Flind Desktop for user-authored cloud pull requests. "
             "Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; "
             "this field remains supported for callers that still manage their own tokens."
         ),
@@ -4028,7 +4028,7 @@ class TaskRunCreateRequestSerializer(
                 if attrs.get(field):
                     errors[field] = "Scheduled runs cannot use credentials or connections from a connected desktop."
             if attrs.get("claude_model_access") == "own-subscription":
-                errors["claude_model_access"] = "Scheduled runs must use the PostHog gateway."
+                errors["claude_model_access"] = "Scheduled runs must use the Flind gateway."
         if attrs.get("model") and attrs.get("runtime_adapter") is None:
             model_runtime_adapter = get_runtime_adapter_for_model(attrs["model"]) or next(
                 (
@@ -4211,14 +4211,14 @@ class TaskRunBootstrapCreateRequestSerializer(
         default=None,
         allow_blank=False,
         write_only=True,
-        help_text="Ephemeral GitHub user token from PostHog Desktop for user-authored cloud pull requests.",
+        help_text="Ephemeral GitHub user token from Flind Desktop for user-authored cloud pull requests.",
     )
     initial_permission_mode = serializers.ChoiceField(
         choices=ALL_INITIAL_PERMISSION_MODE_CHOICES,
         required=False,
         default=None,
         help_text=(
-            "Initial permission mode for the agent session. Claude runtimes accept PostHog permission "
+            "Initial permission mode for the agent session. Claude runtimes accept Flind permission "
             "presets like 'plan'. Codex runtimes accept native Codex modes like 'plan', 'auto', "
             "and 'read-only'."
         ),
@@ -4687,7 +4687,7 @@ class TaskRunResumeRequestSchemaSerializer(TaskRunScheduleSerializer):
         allow_blank=False,
         write_only=True,
         help_text=(
-            "Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. "
+            "Optional GitHub user token from Flind Desktop for user-authored cloud pull requests. "
             "Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; "
             "this field remains supported for callers that still manage their own tokens."
         ),
@@ -5006,7 +5006,7 @@ class SandboxEnvironmentWriteSerializer(serializers.Serializer):
                     )
                 if tasks_facade.is_reserved_sandbox_env_var_key(key):
                     raise serializers.ValidationError(
-                        f"Environment variable key {key!r} is reserved and managed by PostHog; it cannot be set."
+                        f"Environment variable key {key!r} is reserved and managed by Flind; it cannot be set."
                     )
         return value
 
@@ -5166,7 +5166,7 @@ class SlackThreadContextThreadSerializer(serializers.Serializer):
 
 
 class SlackThreadContextTaskSerializer(serializers.Serializer):
-    """The PostHog Task linked to the Slack thread."""
+    """The Flind Task linked to the Slack thread."""
 
     id = serializers.CharField(help_text="UUID of the Task row.")
     team_id = serializers.IntegerField(help_text="Team that owns the task.")
@@ -5177,7 +5177,7 @@ class SlackThreadContextTaskSerializer(serializers.Serializer):
     )
     origin_product = serializers.CharField(help_text="`Task.OriginProduct` (`slack` for slack-originated tasks).")
     created_at = serializers.DateTimeField(help_text="When the task was created (server-side timestamp).")
-    url = serializers.CharField(help_text="Absolute URL to the task detail page in the PostHog app.")
+    url = serializers.CharField(help_text="Absolute URL to the task detail page in the Flind app.")
     admin_url = serializers.CharField(help_text="Absolute URL to the Task row in Django admin.")
 
 
@@ -5282,7 +5282,7 @@ class SlackThreadContextResponseSerializer(serializers.Serializer):
     thread = SlackThreadContextThreadSerializer(help_text="Slack-side identifiers and the mapping metadata.")
     task = SlackThreadContextTaskSerializer(
         allow_null=True,
-        help_text="Linked PostHog Task. Null when no mapping was found for the thread.",
+        help_text="Linked Flind Task. Null when no mapping was found for the thread.",
     )
     runs = SlackThreadContextRunSerializer(
         many=True,
@@ -5494,14 +5494,14 @@ class TasksResolvedAIRunDefaultsSerializer(serializers.Serializer):
 
 
 class TasksAgentInstructionsSerializer(serializers.Serializer):
-    """Markdown instructions that PostHog cloud agents load as their user-level AGENTS.md in Tasks runs."""
+    """Markdown instructions that Flind cloud agents load as their user-level AGENTS.md in Tasks runs."""
 
     agent_instructions = serializers.CharField(
         allow_blank=True,
         max_length=AGENT_INSTRUCTIONS_MAX_LENGTH,
         trim_whitespace=False,
         help_text=(
-            "Markdown instructions that PostHog cloud agents read in every eligible Tasks run, the same way "
+            "Markdown instructions that Flind cloud agents read in every eligible Tasks run, the same way "
             "a local agent reads AGENTS.md. Send an empty string to clear."
         ),
     )
@@ -5516,7 +5516,7 @@ class TasksTeamConfigResponseSerializer(serializers.Serializer):
     )
     agent_instructions = serializers.CharField(
         help_text=(
-            "Project instructions that PostHog cloud agents read in every eligible Tasks run, including autonomous "
+            "Project instructions that Flind cloud agents read in every eligible Tasks run, including autonomous "
             "runs such as scouts and loops. Empty when unset."
         )
     )
@@ -5524,7 +5524,7 @@ class TasksTeamConfigResponseSerializer(serializers.Serializer):
 
 @extend_schema_serializer(many=False)
 class TasksTaskDefaultsSerializer(serializers.Serializer):
-    """The requesting user's per-project task defaults, shared by PostHog Desktop and the web app."""
+    """The requesting user's per-project task defaults, shared by Flind Desktop and the web app."""
 
     start_in_plan_mode = serializers.BooleanField(
         allow_null=True,
@@ -5570,7 +5570,7 @@ class TasksUserConfigResponseSerializer(serializers.Serializer):
     )
     agent_instructions = serializers.CharField(
         help_text=(
-            "Your personal instructions, which PostHog cloud agents read in Tasks runs you start, after the project "
+            "Your personal instructions, which Flind cloud agents read in Tasks runs you start, after the project "
             "instructions. Anyone who continues a task you started can see them. Empty when unset."
         )
     )

@@ -8,7 +8,7 @@ export interface FeatureFlags {
   /**
    * Remote JSON payload attached to a matched flag; undefined when the flag
    * is unmatched or flags haven't loaded. Validate with Zod at the
-   * consumption boundary — the shape is whatever was typed into PostHog.
+   * consumption boundary — the shape is whatever was typed into Flind.
    */
   getPayload(flagKey: string): unknown;
   /**

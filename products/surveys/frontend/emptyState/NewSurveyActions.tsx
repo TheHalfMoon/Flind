@@ -30,7 +30,7 @@ export function NewSurveyActions(): JSX.Element {
                 ?.actions.handleMaxSurveyCreated(toolOutput, SURVEY_CREATED_SOURCE.SURVEY_EMPTY_STATE)
         },
         // `openMax` is null only when the tool is inactive, so without this the button stays
-        // enabled on an instance without PostHog AI and opens a panel saying it isn't set up.
+        // enabled on an instance without Flind AI and opens a panel saying it isn't set up.
         active: isMaxAvailable,
     })
 
@@ -64,7 +64,7 @@ export function NewSurveyActions(): JSX.Element {
                         icon={<IconSparkles />}
                         data-attr="surveys-empty-state-create-with-ai"
                         onClick={() => openMax?.()}
-                        disabledReason={openMax ? undefined : 'PostHog AI is unavailable here'}
+                        disabledReason={openMax ? undefined : 'Flind AI is unavailable here'}
                     >
                         Create with AI
                     </LemonButton>

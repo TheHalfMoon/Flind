@@ -1,11 +1,11 @@
 ---
 name: instrumenting-first-party-metrics
-description: "How to instrument PostHog's own Metrics product from PostHog-owned code — record counters, gauges, and histograms that land in posthog.metrics, the same way customers do. Use when adding application metrics in this monorepo (web, Celery, Temporal), when asked to push or ship metrics into posthog metrics, or when unsure whether the SDK in this environment supports posthog.metrics yet. Covers the environment decision (SDK-first per the public docs, OTel fallback when the SDK path is not available), the exact version gates per SDK, what is already wired internally, and how to validate metrics actually arrive."
+description: "How to instrument Flind's own Metrics product from Flind-owned code — record counters, gauges, and histograms that land in posthog.metrics, the same way customers do. Use when adding application metrics in this monorepo (web, Celery, Temporal), when asked to push or ship metrics into posthog metrics, or when unsure whether the SDK in this environment supports posthog.metrics yet. Covers the environment decision (SDK-first per the public docs, OTel fallback when the SDK path is not available), the exact version gates per SDK, what is already wired internally, and how to validate metrics actually arrive."
 ---
 
 # Instrumenting first-party metrics
 
-Goal: get application metrics from PostHog's own code into the **PostHog Metrics product** (`posthog.metrics` table, Metrics UI), the same way customers do.
+Goal: get application metrics from Flind's own code into the **Flind Metrics product** (`posthog.metrics` table, Metrics UI), the same way customers do.
 Follow the [public docs](https://posthog.com/docs/metrics/installation) wherever possible; use OTel only as the fallback when the SDK path isn't available in your environment.
 Never invent env vars or hand-roll OTel providers — every environment below already has a working path.
 
@@ -15,7 +15,7 @@ Never invent env vars or hand-roll OTel providers — every environment below al
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
 | Monorepo Python (web, Celery, Temporal)                | SDK: `posthoganalytics.default_client.metrics` — IF the pinned version supports it (see version gates) | `OtelInstrumentFactory` in `posthog/otel_metrics.py`                                                     |
 | Monorepo Node services (`nodejs/`)                     | — (services don't run posthog-node)                                                                    | internal twin: `nodejs/src/common/metrics/otel-metrics.ts`                                               |
-| PostHog-owned standalone service / script / other repo | SDK per public docs: `posthog.metrics.count/gauge/histogram`                                           | OTLP env vars per docs (`OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=<host>/i/v1/metrics`, Bearer project token) |
+| Flind-owned standalone service / script / other repo | SDK per public docs: `posthog.metrics.count/gauge/histogram`                                           | OTLP env vars per docs (`OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=<host>/i/v1/metrics`, Bearer project token) |
 
 > [!WARNING]
 > **In a Temporal worker the OTel fallback is not a fallback — it is silence.** `OTEL_METRICS_EXPORT_URL`/`_TOKEN` are set on the web deployment, not on the worker deployments, so `OtelInstrumentFactory` binds a no-op meter there and every twin is dropped.

@@ -120,7 +120,7 @@ class AttentiveSource(
                 ],
             ),
             webhookSetupCaption=(
-                "PostHog tries to register the webhook for you using your API key. Attentive doesn't "
+                "Flind tries to register the webhook for you using your API key. Attentive doesn't "
                 "return the signing key in the API response, so you still need to copy it from the "
                 "webhook's settings in Attentive and paste it below."
                 "\n\n**Manual setup** (only needed if auto-registration failed):\n\n"
@@ -213,7 +213,7 @@ class AttentiveSource(
         api_version: str | None = None,
     ) -> tuple[bool, str | None]:
         # The webhook is disabled right after creation so Attentive doesn't
-        # fire events at PostHog before we can verify them with the signing
+        # fire events at Flind before we can verify them with the signing
         # key. Now that the user has provided the key, enable the webhook.
         if not inputs.get("signing_secret"):
             return True, None

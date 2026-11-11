@@ -120,7 +120,7 @@ class CanonicalSkill:
     `scout-role` frontmatter value — what the harness is allowed to do to the scout.
     `display_name` is the optional `scout-display-name` frontmatter value, the label the fleet
     ships the scout under. `deprecation` is the optional retirement marker from `scout-status` /
-    `scout-deprecation`, set only on a scout PostHog is retiring.
+    `scout-deprecation`, set only on a scout Flind is retiring.
     `structured_output_schema` is the record contract a measurement scout ships, read from the
     bundled file `scout-structured-output-schema` names. `precheck_query` is the optional
     `scout-precheck-query` frontmatter value, the pre-check a scheduled run uses when the team set
@@ -705,7 +705,7 @@ def canonical_precheck_queries() -> dict[str, str]:
 
 @lru_cache(maxsize=1)
 def _canonical_deprecations() -> dict[str, ScoutDeprecation]:
-    """The retirement marker per canonical scout name, for the scouts PostHog is retiring.
+    """The retirement marker per canonical scout name, for the scouts Flind is retiring.
 
     Cached for the process like `canonical_skill_names` — the shipped fleet only changes on
     deploy — and degrades to empty on a malformed canonical, which leaves every scout reading as
@@ -719,7 +719,7 @@ def _canonical_deprecations() -> dict[str, ScoutDeprecation]:
 
 
 def canonical_deprecation_for(skill_name: str) -> ScoutDeprecation | None:
-    """The retirement PostHog announced for the canonical scout of this name, if any.
+    """The retirement Flind announced for the canonical scout of this name, if any.
 
     None for a custom scout, and for a canonical scout still in the fleet. Callers must confirm
     the name is canonical first — a team's own `signals-scout-*` skill can share a canonical name,
@@ -887,7 +887,7 @@ def _seed_metadata(canonical: CanonicalSkill, canonical_hash: str) -> dict:
 
     The retirement marker rides here rather than in the content hash on purpose: a hash change
     would bump the skill version on every team and read as a content edit, when what changed is
-    what PostHog says about the scout. `_reconcile_deprecation_metadata` is what carries a
+    what Flind says about the scout. `_reconcile_deprecation_metadata` is what carries a
     marker-only change to rows whose content is already current.
     """
     return {

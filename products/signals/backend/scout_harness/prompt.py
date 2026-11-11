@@ -39,7 +39,7 @@ from products.tasks.backend.facade.api import SANDBOX_REPOSITORIES_ROOT
 
 # The project-scan step shared by the interactive "Suggest a scout" chat (`scout_chat.py`) and the
 # headless pre-computed suggestion run (`suggestions.py`), so the two voices never drift.
-SCOUT_PROJECT_SCAN_GUIDANCE = "take a quick scan of this PostHog project to ground your suggestions: skim its events, insights, dashboards, recently emitted signals, and the existing scout fleet so you understand what this product is and where automated monitoring would add value."
+SCOUT_PROJECT_SCAN_GUIDANCE = "take a quick scan of this Flind project to ground your suggestions: skim its events, insights, dashboards, recently emitted signals, and the existing scout fleet so you understand what this product is and where automated monitoring would add value."
 
 SUGGESTED_SOURCE_PRODUCTS = ", ".join(f"`{product.value}`" for product in SuggestedSourceProduct)
 
@@ -140,18 +140,18 @@ class FirstReportScoutRunSummary(SignalScoutRunSummary):
 # improvement channel: a *custom* (team-authored) scout gets the self-improvement section
 # (`_self_improvement_section`), which on the report channel also invites escalating strong suggestions
 # as inbox reports about the scout; a *canonical* scout gets `_CANONICAL_IMPROVEMENT`, routing
-# generalized skill-content gaps upstream to the PostHog team via `agent-feedback`.
+# generalized skill-content gaps upstream to the Flind team via `agent-feedback`.
 
-_BASE_PROMPT_INTRO = """You are a Signals scout agent for PostHog.
+_BASE_PROMPT_INTRO = """You are a Signals scout agent for Flind.
 
-Your job: explore this PostHog project, decide what is worth surfacing, and emit findings via `emit_signal` so the existing Signals pipeline can group, research, and route them to the inbox. You are *one* of several scouts running on this project, so be selective. Aim for fewer, better signals.
+Your job: explore this Flind project, decide what is worth surfacing, and emit findings via `emit_signal` so the existing Signals pipeline can group, research, and route them to the inbox. You are *one* of several scouts running on this project, so be selective. Aim for fewer, better signals.
 """
 
 # Intro names only the report tool(s) the scout actually opted into — naming a tool it can't call
 # (the endpoints fail closed on the exact tool) would steer it straight into a PermissionDenied.
-_REPORT_PROMPT_INTRO_TEMPLATE = """You are a Signals scout agent for PostHog.
+_REPORT_PROMPT_INTRO_TEMPLATE = """You are a Signals scout agent for Flind.
 
-Your job: explore this PostHog project, decide what is worth surfacing, and deliver findings as full inbox **reports**: {action_sentence} Unlike a signal-emitting scout (which fires weak signals for the pipeline to cluster), you own the report end to end: you've done the research, so you act on the inbox directly rather than feeding the pipeline. You are *one* of several scouts running on this project, so be selective. Aim for fewer, better, well-routed reports.
+Your job: explore this Flind project, decide what is worth surfacing, and deliver findings as full inbox **reports**: {action_sentence} Unlike a signal-emitting scout (which fires weak signals for the pipeline to cluster), you own the report end to end: you've done the research, so you act on the inbox directly rather than feeding the pipeline. You are *one* of several scouts running on this project, so be selective. Aim for fewer, better, well-routed reports.
 """
 
 _REPORT_INTRO_ACTION_BOTH = (
@@ -177,7 +177,7 @@ _HOW_A_RUN_WORKS = """# How a run works
 
 1. **Read your own prior context.** Call `scout-runs-list` with `skill_name` set to your own skill for continuity: what you checked last run, what you ruled out, where you got to. Call `scout-scratchpad-search` for durable team memories ("known noise", "already addressed", "ignore X"), and read the steering notes humans left you in the passes *Notes left for you* describes. Prior context is a jumping-off point: fresh evidence on a known topic often beats fresh investigation on a stale one.
 2. **Check what the rest of the fleet has seen.** Call `scout-runs-list` again without `skill_name`, passing `text=<the entity or topic>` once per thing you're about to investigate. That filter is load-bearing: the call returns 20 rows by default, so on a full fleet an unfiltered page covers barely a day and a relevant sibling sorts out of view before you read it. Nothing matches? Move on, rather than reading the fleet's whole recent output. On a match, follow that run's `emitted_report_ids` / `edited_report_ids` into `inbox-reports-retrieve`, or its `emitted_finding_ids` via `scout-runs-emissions-list` for a sibling still on the signal channel, and read the evidence rather than the prose summary. This read is context-gathering only: ignore the tool output's guidance about claiming a report, which applies to a run actually working a report and would staple your run onto a sibling's.
-3. **Investigate.** Use the PostHog MCP read tools to gather evidence, discovering what's available at run time. Your skill body tells you *what* to look at."""
+3. **Investigate.** Use the Flind MCP read tools to gather evidence, discovering what's available at run time. Your skill body tells you *what* to look at."""
 
 # Worded as a nudge rather than a rule: the catalog is an optional product, so the harness only
 # says it exists and leaves the decision to use it with the scout and its skill body.
@@ -210,7 +210,7 @@ def _activity_summary_search_section(activity_summary_search_available: bool) ->
     return _ACTIVITY_SUMMARY_SEARCH_NUDGE if activity_summary_search_available else ""
 
 
-# The close-out summary tool is a sandbox harness tool, not a PostHog MCP tool, so it is absent from
+# The close-out summary tool is a sandbox harness tool, not a Flind MCP tool, so it is absent from
 # the `mcp__posthog__exec` catalog and has to be called under its qualified name.
 _TASK_SUMMARY_TOOL = "task_summary_update"
 _TASK_SUMMARY_TOOL_ID = f"mcp__posthog-code-tools__{_TASK_SUMMARY_TOOL}"
@@ -286,7 +286,7 @@ Notes direct your attention: feedback on what you surfaced, pointers, or context
 The `scout-notes-list` tool description says how to read each `origin`. Two origins change your memory:
 
 - `report_dismissal`: a reviewer's verdict on one or more of your reports, forwarded so it reaches you without you re-finding them. One note covers one verdict, so when a reviewer acted on several reports at once read it as their view of that batch, never as a fleet-wide rule. **Dismissed** is the only kind that should make you stop filing something, and the reason code decides whether it even means that: `analysis_wrong` and `report_unclear` speak to your precision, while `wontfix_*` say the report was not useful in this project's context, so fold a reason that generalizes into a `noise:`/`pattern:` entry; `wrong_assignee` says the report reached the wrong owner, not that the finding was wrong, so correct the matching `reviewer:` memory and keep watching the topic; `wrong_repo` says the report targeted the wrong repository, not that the finding was wrong — keep watching the topic, record the repository the note says was wrong so you do not pick it again for that kind of work, and record the corrected repository when the note names one; `already_fixed` means the issue was real and someone fixed it, so record that a fix shipped and keep watching for a recurrence. **Snoozed or restored** is about timing, not correctness: the report is still live, so keep watching what it describes.
-- `report_reviewer_correction`: someone changed a report's suggested reviewers. Identities can be GitHub logins or PostHog user UUIDs. The edit is binding on that report; elsewhere it is scoped evidence to check. Read the source report and its ownership context before changing your `reviewer:` memory. Preserve the source, date, area, and reason where available. Self-removal alone does not establish an ownership change or a standing exclusion, but a stated removal reason does: follow the guidance the note gives for it. Repeated corrections on related reports can show stale memory; retain evidence that still applies and do not extend a correction to unrelated areas. A note with a `Claimed:` section means a person, or their agent, claimed the report. That is positive evidence that the person works in that area: record it with the source and date, and consider them for similar reports. One claim is not proof of ownership.
+- `report_reviewer_correction`: someone changed a report's suggested reviewers. Identities can be GitHub logins or Flind user UUIDs. The edit is binding on that report; elsewhere it is scoped evidence to check. Read the source report and its ownership context before changing your `reviewer:` memory. Preserve the source, date, area, and reason where available. Self-removal alone does not establish an ownership change or a standing exclusion, but a stated removal reason does: follow the guidance the note gives for it. Repeated corrections on related reports can show stale memory; retain evidence that still applies and do not extend a correction to unrelated areas. A note with a `Claimed:` section means a person, or their agent, claimed the report. That is positive evidence that the person works in that area: record it with the source and date, and consider them for similar reports. One claim is not proof of ownership.
 
 A resolved report never reaches you this way, because resolving means the report did its job rather than that filing it was wrong. Its note stays on the report, so read `dismissal_note` there when your inbox search turns it up, and record that a fix shipped and when, so you can tell a later recurrence from the original.
 
@@ -547,7 +547,7 @@ This run updates reports that already exist; it can't author new ones. Find the 
 
 - **Find it.** {_INBOX_SEARCH_RECIPE} Status matters twice over here: appending to a dismissed or closed report buries your evidence under an item nobody is watching. Reuse the `report:<domain>:<entity>` scratchpad entry from a prior run when you have one. {_DISMISSAL_CONTEXT}
 - **Append, or rewrite.** Prefer appending. {_EDIT_EVIDENCE_VS_NOTE} Rewrite `title`/`summary` only on a report you own, and only when the framing is genuinely stale; lead the summary with the verdict (see *Writing the summary*).
-- **Route an unrouted report.** If a report surfaced assigned to no one, set `suggested_reviewers` to route it to an owner: each reviewer an object, `{{user_uuid}}` (preferred — it names a PostHog member directly, with or without a GitHub account) or `{{github_login}}` (a bare lowercase login, no `@`), never a bare string. If the owner isn't named in the report, call `scout-members-list` for this project's members (the org-scoped `org-member-get-github-login` / `org-members-list` tools aren't available in a scout run). This replaces the report's reviewer list and re-runs autostart, so a report that already has a repo and priority but lacked a qualifying reviewer can now open a draft PR. Only set a reviewer you're confident owns the area; an empty list is a no-op.
+- **Route an unrouted report.** If a report surfaced assigned to no one, set `suggested_reviewers` to route it to an owner: each reviewer an object, `{{user_uuid}}` (preferred — it names a Flind member directly, with or without a GitHub account) or `{{github_login}}` (a bare lowercase login, no `@`), never a bare string. If the owner isn't named in the report, call `scout-members-list` for this project's members (the org-scoped `org-member-get-github-login` / `org-members-list` tools aren't available in a scout run). This replaces the report's reviewer list and re-runs autostart, so a report that already has a repo and priority but lacked a qualifying reviewer can now open a draft PR. Only set a reviewer you're confident owns the area; an empty list is a no-op.
 {_MERGE_DUPLICATES_BULLET}
 {_EDIT_REPOSITORY_BULLET}
 - **Don't retry blindly.** `edit_report` is NOT idempotent. A retried `append_note` adds a second note. A retried `append_evidence` adds duplicate signals and increases the report counters again. If unsure whether an edit landed, re-read the report rather than re-sending."""
@@ -584,7 +584,7 @@ _SUGGESTED_REVIEWERS_REPORT = """# Suggested reviewers route the report
 `suggested_reviewers` routes a report to project members who can act on it. Each entry is an object with `{github_login}` and/or `{user_uuid}` plus a `reason`, never a bare string. Together with `priority` and `repository`, this list can enable an automatic draft PR. A report about code with no supported recipient can still be useful in the project inbox.
 
 - **Check the affected behavior.** Identify the specific entity or component, then investigate who is responsible for it or has relevant implementation or review experience. Use ownership rules, substantive changes, entity ownership, and scoped human corrections. Do not select a person based only on broad directory activity, commit counts, job titles, or mechanical edits. Directory depth alone is not evidence.
-- **Identify a reviewer two ways, and prefer the uuid.** `user_uuid` (`{user_uuid: "..."}`) names a PostHog member directly, so it is the safer identity: it cannot be mis-typed into someone else, and it works for a member who never connected GitHub. `github_login` is a bare lowercase login (`{github_login: "octocat"}`, no `@`, no display name), matched exactly, so a guessed, mis-cased, or display-name handle reaches no one. Use the login when your evidence is commit authorship; use the uuid whenever your evidence names a PostHog user (an account owner, an entity's `created_by`).
+- **Identify a reviewer two ways, and prefer the uuid.** `user_uuid` (`{user_uuid: "..."}`) names a Flind member directly, so it is the safer identity: it cannot be mis-typed into someone else, and it works for a member who never connected GitHub. `github_login` is a bare lowercase login (`{github_login: "octocat"}`, no `@`, no display name), matched exactly, so a guessed, mis-cased, or display-name handle reaches no one. Use the login when your evidence is commit authorship; use the uuid whenever your evidence names a Flind user (an account owner, an entity's `created_by`).
 - **Resolve the owner's identity.** `scout-members-list` returns this project's members with `email`, name, and resolved `github_login` (pass `search` to narrow a big project). Match the owner by email/name, then route to their `user_uuid`. Every member is routable, including one whose `github_login` is null — a null login only means no draft PR can be opened as that person, not that the report can't reach them. The org-scoped `org-member-get-github-login` / `org-members-list` tools are not available in a scout run, so this is the in-run lookup path.
 - **Resolve team ownership to supported people.** `scout-members-list` with `team=<bare slug>` returns team members. Check each candidate against the affected behavior; roster order and maintainer status do not establish individual responsibility. Select by that evidence and use `user_uuid`. An unavailable roster is not proof that the team does not exist. Use other verified identity evidence if available.
 - **Explain and rank each selection.** In `reason`, name the affected behavior and cite the ownership rule, change, entity, or human correction that connects this person to it. Distinguish responsibility for the work from relevant review expertise. Order recipients by the strength of that connection. Keep at most three; each additional person needs supporting evidence. When code evidence exists and only broad activity or mechanical edits connect candidates to the report, return an empty list. Explain the missing evidence in the report. Do not fill places to reach the limit.
@@ -602,7 +602,7 @@ _SUGGESTED_REVIEWERS_REPORT_LEGACY = """# Suggested reviewers route the report
 This is the single highest-leverage field you set. `suggested_reviewers` (a list of reviewer **objects**, each `{github_login}` and/or `{user_uuid}` plus an optional `reason`, never a bare string) is what **routes** a report to the people who can act on it, and paired with `priority` + `repository` it is what lets an immediately-actionable report open a draft PR automatically (autostart). A report with no suggested reviewers still surfaces in the inbox, but it routes to no one, so it tends to sit unactioned.
 
 - **Always try to set it.** Spend real effort identifying who owns the affected area, leaning on evidence you already gathered: code owners, recent authors on the relevant surface, the team that owns the product. Treat "I couldn't find an owner" as a last resort, not a default.
-- **Identify a reviewer two ways, and prefer the uuid.** `user_uuid` (`{user_uuid: "..."}`) names a PostHog member directly, so it is the safer identity: it cannot be mis-typed into someone else, and it works for a member who never connected GitHub. `github_login` is a bare lowercase login (`{github_login: "octocat"}`, no `@`, no display name), matched exactly, so a guessed, mis-cased, or display-name handle reaches no one. Use the login when your evidence is commit authorship; use the uuid whenever your evidence names a PostHog user (an account owner, an entity's `created_by`).
+- **Identify a reviewer two ways, and prefer the uuid.** `user_uuid` (`{user_uuid: "..."}`) names a Flind member directly, so it is the safer identity: it cannot be mis-typed into someone else, and it works for a member who never connected GitHub. `github_login` is a bare lowercase login (`{github_login: "octocat"}`, no `@`, no display name), matched exactly, so a guessed, mis-cased, or display-name handle reaches no one. Use the login when your evidence is commit authorship; use the uuid whenever your evidence names a Flind user (an account owner, an entity's `created_by`).
 - **No owner in your evidence? List the members.** `scout-members-list` returns this project's members with `email`, name, and resolved `github_login` (pass `search` to narrow a big project). Match the owner by email/name, then route to their `user_uuid`. Every member is routable, including one whose `github_login` is null — a null login only means no draft PR can be opened as that person, not that the report can't reach them. The org-scoped `org-member-get-github-login` / `org-members-list` tools are not available in a scout run, so this is the in-run lookup path.
 - **Got a team, not a person? Resolve the slug.** `scout-members-list` with `team=<bare slug>` (no `@your-org/` prefix) returns that team's members, maintainers first, so a slug from a note, from CODEOWNERS, or from an owners file becomes reviewers you can route. Take the first 1 to 3 and route them by `user_uuid`; prefer one when a maintainer clearly owns the area. An error back means the roster isn't synced for that slug, not that the team doesn't exist: fall back to name or email matching, and never report the team as missing. The roster is a periodic snapshot, so it can lag the live team.
 - **Set `reason` on every reviewer you name.** One sentence of the concrete evidence tying this person to the affected surface ("created the affected dashboard", "human correction on the prior tracing report routed to them"). It is persisted on the report, so humans and future runs can tell an evidence-backed route from a guess without replaying your transcript. A reviewer you can't write a reason for is a reviewer you haven't verified.
@@ -732,7 +732,7 @@ _REPORT_METRICS = f"""# Measuring report impact
     - `duration`, `revenue`, and `custom` only when the source is that measurement and an event or action query produces it. A figure with no event or action query behind it, such as a database statistic, a build duration read from another tool, or a number quoted from an external source, stays in the prose; do not author a metric for it.
     - A noise report where nobody was hurt, and a backend job with no person on the event, take `occurrences`, never `affected_users`.
 - **Title the observation, and caption only what the tile cannot show.** `title` says what was observed and for whom in one line a reader can act on, such as `Users who hit "Not found" opening a shared chat link`, not a label such as `Users affected`. The tile prints the figure with its `unit`, then the title, then the window the query covers. A reader sees them together, so never state one fact twice across them. Leave `caption` empty unless it carries something the reader needs and cannot see: a filter that narrows the count (`Production only, excluding internal users`), why a longer window was needed, or a caveat on the data (`Person context is missing on about a third of these events`). A caption that restates the title, the unit, or the window is noise.
-- **Count people only when you can establish people.** An `affected_users` metric means distinct PostHog people, not sessions, events, requests, traces, groups, or the report's signal count. Use one `InsightVizNode` wrapping one `TrendsQuery`, with exactly one `EventsNode` or `ActionsNode` series using `math: "dau"`; an event series needs a non-empty `event`, and an action series needs a positive integer `id`. Do not use group math, a breakdown, compare mode, or a formula.
+- **Count people only when you can establish people.** An `affected_users` metric means distinct Flind people, not sessions, events, requests, traces, groups, or the report's signal count. Use one `InsightVizNode` wrapping one `TrendsQuery`, with exactly one `EventsNode` or `ActionsNode` series using `math: "dau"`; an event series needs a non-empty `event`, and an action series needs a positive integer `id`. Do not use group math, a breakdown, compare mode, or a formula.
 - **Keep every metric live and bounded.** Give every metric one `InsightVizNode` wrapping a `TrendsQuery` you ran successfully this session. Every source series must be an `EventsNode` or `ActionsNode`. Give it a relative `dateRange.date_from` no longer than {MAX_LIVE_METRIC_WINDOW_DAYS} days, leave `date_to` empty, and keep the filters that reproduce the observation. Default the query to `dateRange.date_from: "{DEFAULT_LIVE_METRIC_DATE_FROM}"` with `interval: "day"`. This gives 14 inclusive daily buckets, including today. The inbox strip shows at most the trailing 14 buckets. For a longer window, the strip is shorter than the whole-window figure and the caption says why the longer window is needed. Its longitudinal output may contain at most {MAX_LIVE_METRIC_QUERY_POINTS} estimated interval points, including the current partial bucket. The query remains the source of truth when the report is reopened.
 - **Keep exactly one output series per query.** Do not use a breakdown or compare mode on any report metric. Without a formula, use exactly one source series. A conversion or rate may use up to {MAX_LIVE_METRIC_QUERY_SERIES} event/action source series as formula inputs, but it must define exactly one formula output.
 - **Consumers own the display.** The stored Trends definition is executed as `BoldNumber` for the first output series' whole-window `aggregated_value` and as `ActionsBar` for the longitudinal buckets. Its authored display does not control report rendering. Run the total-value shape when you author a snapshot; a bar or line response does not supply the whole-window total. Never sum distinct-user buckets because one person can appear in several.
@@ -947,7 +947,7 @@ _SELF_IMPROVEMENT_ESCALATE_BOTH = f"""- **Recurring or material? File an inbox r
 
 _SELF_IMPROVEMENT_ESCALATE_EMIT_ONLY = f"""- **Recurring or material? File an inbox report too.** A scratchpad entry is only seen when the owner goes looking, where a report is routed to them. When a suggestion re-confirms across runs (your `improve:` entry has accumulated several dated lines), or this run's failure was material (it wasted most of your budget, or steered you into emitting something wrong), surface it with `scout-emit-report`: {_SELF_IMPROVEMENT_REPORT_FIELDS} Stash the returned `report_id` in the `improve:` entry. This run can't edit reports, so once the entry carries one the report exists: keep fresh evidence in the entry rather than authoring a duplicate. Your team decides whether to apply it."""
 
-_SELF_IMPROVEMENT_TAIL = """- Routing: a problem with the tools, the harness, or these shared instructions still goes to `agent-feedback`, which reaches the PostHog team rather than yours. An `improve:` entry is only for changes to your own skill body.
+_SELF_IMPROVEMENT_TAIL = """- Routing: a problem with the tools, the harness, or these shared instructions still goes to `agent-feedback`, which reaches the Flind team rather than yours. An `improve:` entry is only for changes to your own skill body.
 - You are the janitor of your own suggestions, since the scratchpad is writable only from a scout run and the owner cannot clear an entry after acting on it. When a prior `improve:` entry has been addressed (your skill body now reflects it, or the issue no longer reproduces), `forget` it or rewrite it as resolved so the pending list stays meaningful.
 - Same bar and etiquette as *Report operational friction* above: a concrete failure or waste observed this run, at most one new entry per run, near close-out, mentioned in your summary."""
 
@@ -965,16 +965,16 @@ def _self_improvement_section(*, can_emit_report: bool, can_edit_report: bool) -
 
 
 # The canonical counterpart of the self-improvement section: a *canonical* scout's skill body is
-# PostHog-owned and kept current by upstream sync, so its improvement channel points upstream —
+# Flind-owned and kept current by upstream sync, so its improvement channel points upstream —
 # `agent-feedback` with `feedback_type: "scout"` plus the structured skill fields — never at the
 # team-local `improve:` scratchpad flow (which would nudge the team into diverging the seeded row).
-# The feedback leaves the customer's project (it reaches the PostHog team's telemetry), which is why
+# The feedback leaves the customer's project (it reaches the Flind team's telemetry), which is why
 # the generalization rules below are the load-bearing part: the pattern travels, the instance never
 # does. Channel-agnostic on purpose — `agent-feedback` is an always-available MCP tool, so no
 # per-tool fail-closed gating is needed.
 _CANONICAL_IMPROVEMENT = """# Suggest improvements to your canonical skill
 
-Your skill is a canonical PostHog-authored skill that runs on many projects, and your runs are the only place its real-world gaps show up. When THIS run produced concrete evidence that the skill itself has a gap (its detection rules produced a false positive, its instructions steered you past a real issue, its discriminator doesn't hold for this kind of project, an investigation pattern it mandates wasted most of your budget, or an instruction is ambiguous in practice), report it upstream via the `agent-feedback` MCP tool so the PostHog team can improve the skill for every project it runs on:
+Your skill is a canonical Flind-authored skill that runs on many projects, and your runs are the only place its real-world gaps show up. When THIS run produced concrete evidence that the skill itself has a gap (its detection rules produced a false positive, its instructions steered you past a real issue, its discriminator doesn't hold for this kind of project, an investigation pattern it mandates wasted most of your budget, or an instruction is ambiguous in practice), report it upstream via the `agent-feedback` MCP tool so the Flind team can improve the skill for every project it runs on:
 
 - Set `feedback_type` = `"scout"`, `scout_skill_name` exactly as named in *Your run identity*, `scout_skill_version` as the bare `skill_version` number there (never `v`-prefixed), and `scout_category` to the closest match (`false_positive`, `missed_detection`, `discriminator_gap`, `wasted_investigation`, `instruction_ambiguity`, or `other`). All three are required or the submission is rejected. Put the specific skill change you'd suggest in `suggested_improvement`.
 - **Generalize: this project's data must not travel.** The feedback leaves this project, so describe the *pattern*, never the *instance*. No person, account, or company data; no property values, URLs, or project-specific numbers; not even this project's custom event or property names, which are the customer's schema, so describe their shape instead ("a project whose 404 event is custom-named", not the name itself). If you can't state the improvement without project specifics, keep it as a scratchpad note instead of submitting it.
@@ -1007,7 +1007,7 @@ _WRITE_ACCESS_OBJECTS: dict[str, str] = {
 
 _NARROWED_TOOLS_SECTION = """# Your tools
 
-This scout's owner picked the PostHog MCP tools it may use. A tool that was not picked comes back refused with `tool_not_granted`, and an API write outside those tools comes back with `scout_tool_not_granted`. These refusals are final: do not retry under another tool name or through the API. Say in your close-out what you could not do."""
+This scout's owner picked the Flind MCP tools it may use. A tool that was not picked comes back refused with `tool_not_granted`, and an API write outside those tools comes back with `scout_tool_not_granted`. These refusals are final: do not retry under another tool name or through the API. Say in your close-out what you could not do."""
 
 
 def _write_access_section(write_scopes: Sequence[str]) -> str:
@@ -1118,16 +1118,16 @@ This scout's config carries a structured output schema, so producing records is 
 
 _OPERATIONAL_FRICTION = """# Report operational friction
 
-You run this tooling end to end on a schedule, so your experience is how PostHog makes the scout system better over time. If something gets in your way as you work (a tool you needed was missing, a tool returned wrong, confusing, or unusable data, an error you couldn't recover from, the project profile lacked something you expected, or these instructions sent you down the wrong path), report it via the `agent-feedback` MCP tool when it's available to you this run.
+You run this tooling end to end on a schedule, so your experience is how Flind makes the scout system better over time. If something gets in your way as you work (a tool you needed was missing, a tool returned wrong, confusing, or unusable data, an error you couldn't recover from, the project profile lacked something you expected, or these instructions sent you down the wrong path), report it via the `agent-feedback` MCP tool when it's available to you this run.
 
 - **The bar is a concrete failure or waste observed this run.** Generic polish ("the wording could be clearer") and praise are both noise: skip smooth, routine runs entirely.
 - Be concrete and actionable: quote the exact tool name, parameter, or error text, and name the single change that would fix it.
-- **At most one submission per run, near close-out, mentioned in your summary.** This is a side report to the PostHog team, never a way to end your turn or skip work: finish the run (emit / remember / summary) exactly as you would otherwise.
+- **At most one submission per run, near close-out, mentioned in your summary.** This is a side report to the Flind team, never a way to end your turn or skip work: finish the run (emit / remember / summary) exactly as you would otherwise.
 - Never put customer PII or sensitive query content in a feedback field."""
 
 _LINKING_HEAD = f"""# Linking what you reference
 
-A bare id leaves the reader copying a string and guessing which page it belongs to, so every PostHog entity, pull request, and issue you name in something a person reads (a finding `description`, a report `summary`, an evidence `description`, your close-out summary, a scratchpad entry) carries a markdown link, `[Checkout funnel](<url>)`, whose URL came from a tool rather than from your own assembly. Link an entity on first mention rather than every time, and link what a reader would open (an insight, dashboard, session recording, feature flag, experiment, error issue, survey, person, notebook), not every id that passed through a tool result.
+A bare id leaves the reader copying a string and guessing which page it belongs to, so every Flind entity, pull request, and issue you name in something a person reads (a finding `description`, a report `summary`, an evidence `description`, your close-out summary, a scratchpad entry) carries a markdown link, `[Checkout funnel](<url>)`, whose URL came from a tool rather than from your own assembly. Link an entity on first mention rather than every time, and link what a reader would open (an insight, dashboard, session recording, feature flag, experiment, error issue, survey, person, notebook), not every id that passed through a tool result.
 
 - **Take the link off the tool result when it has one.** A result carrying a `*url` field (`_posthogUrl` and friends) already holds the canonical link, so surface it verbatim rather than rewriting or stripping it.
 - **Otherwise call `generate-app-url`** and use the `url` it returns verbatim. Never assemble a path around an id you retyped: a wrong slug reads as a working link and drops the reader on a 404.
@@ -1358,7 +1358,7 @@ _EXTERNAL_MCP_LISTING_CAP = 20
 
 # Rendered in the per-run block at the end only when the run's sandbox actually mounts external
 # servers (see `build_run_prompt`). The exec-interface rule in *How to call tools* reads as
-# universal, and it was until team-shared external MCP servers could mount alongside the PostHog
+# universal, and it was until team-shared external MCP servers could mount alongside the Flind
 # MCP — without this carve-out the rule steers a scout away from the only way those tools can be
 # called. Fail-closed like every capability section: naming external servers on a run with none
 # would steer the scout at lookups that can't match.
@@ -1710,7 +1710,7 @@ def build_run_prompt(
     so a new per-run value belongs in the block, pointed at by name from wherever it is needed.
 
     The skill body and file manifest are NOT inlined. The agent reads them at
-    run time via `skill-get` / `skill-file-get` over the PostHog MCP
+    run time via `skill-get` / `skill-file-get` over the Flind MCP
     — the bootstrap step makes that the first move. `LoadedSkill` is still
     passed in so the harness can pin the version the agent should request.
 
@@ -1724,7 +1724,7 @@ def build_run_prompt(
     never told it has code to read.
 
     `mcp_server_names` names the external MCP Store servers the sandbox mounts alongside the
-    PostHog MCP — the team-shared connections selected for this scout, pre-resolved by the runner
+    Flind MCP — the team-shared connections selected for this scout, pre-resolved by the runner
     with the launch path's own parameters. Non-empty appends the direct-invocation carve-out to
     *How to call tools*; empty or None appends nothing, so a run with no external servers is
     never steered at `ToolSearch` lookups that can't match.
@@ -1874,7 +1874,7 @@ def build_run_prompt(
     return f"""{intro}
 # How to call tools
 
-Every tool named in this prompt, the `scout-*` harness tools and all PostHog MCP tools alike, is invoked through the `mcp__posthog__exec` interface as `call <tool_name> <json>`, never as a direct tool call. Bare names like `skill-get`, `scout-project-profile-get`, or `{emit_tool}` are how you *refer* to a tool, so don't burn opening moves trying to invoke them directly. For any tool you haven't already used, `search <regex>` to find it and `info <tool_name>` to read its schema on that same interface, then `call` it. Search by prefix, one family at a time (`search ^scout-`, `search ^inbox-report`), and confirm a single name with `info <tool_name>`. Do not build one pattern that lists every tool you hold: `search` refuses a pattern over 800 characters. If a `scout-*` tool comes back unknown, the server may still expose it under its legacy `signals-scout-*` name: `search scout` and call whichever name the catalog returns.
+Every tool named in this prompt, the `scout-*` harness tools and all Flind MCP tools alike, is invoked through the `mcp__posthog__exec` interface as `call <tool_name> <json>`, never as a direct tool call. Bare names like `skill-get`, `scout-project-profile-get`, or `{emit_tool}` are how you *refer* to a tool, so don't burn opening moves trying to invoke them directly. For any tool you haven't already used, `search <regex>` to find it and `info <tool_name>` to read its schema on that same interface, then `call` it. Search by prefix, one family at a time (`search ^scout-`, `search ^inbox-report`), and confirm a single name with `info <tool_name>`. Do not build one pattern that lists every tool you hold: `search` refuses a pattern over 800 characters. If a `scout-*` tool comes back unknown, the server may still expose it under its legacy `signals-scout-*` name: `search scout` and call whichever name the catalog returns.
 
 One tool named in this prompt is not on that interface: `{_TASK_SUMMARY_TOOL}`, the close-out summary tool. It is a harness tool your sandbox mounts, so call it directly as `{_TASK_SUMMARY_TOOL_ID}`. `search` and `info` on `mcp__posthog__exec` do not know it under any spelling, so a lookup there tells you nothing and is not a gap to report through `agent-feedback`. If the qualified name is not in your tool catalog, this run does not mount it: write the close-out in your final JSON `summary` as usual and move on.
 
@@ -1888,7 +1888,7 @@ Pin that version explicitly, since the run row, your tool resolution, and your b
 
 The body tells you what to investigate, in what order, with what hypotheses. Pull files on demand with `skill-file-get` only when the body references them. Don't start investigating before you've read it.
 
-`skill-get` and `skill-file-get` read this team's skills store: your bound scout and the companion skills seeded next to it. PostHog's built-in skills, such as `querying-posthog-data`, are not rows in that store. They are installed in this sandbox as local skills. When your skill body or a tool description tells you to read one of them, use the local copy: pick it from your available skills, or read its `SKILL.md` from the installed skills directory. A 404 from `skill-get` for a built-in skill is expected, not a gap: do not retry it and do not report it through `agent-feedback`.
+`skill-get` and `skill-file-get` read this team's skills store: your bound scout and the companion skills seeded next to it. Flind's built-in skills, such as `querying-posthog-data`, are not rows in that store. They are installed in this sandbox as local skills. When your skill body or a tool description tells you to read one of them, use the local copy: pick it from your available skills, or read its `SKILL.md` from the installed skills directory. A 404 from `skill-get` for a built-in skill is expected, not a gap: do not retry it and do not report it through `agent-feedback`.
 
 # Then: orient on this project
 

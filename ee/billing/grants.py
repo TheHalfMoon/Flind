@@ -1,6 +1,6 @@
-"""What a caller may read from billing, computed once on PostHog's side.
+"""What a caller may read from billing, computed once on Flind's side.
 
-PostHog holds the users, memberships, key scopes, organization settings and access flags, so it
+Flind holds the users, memberships, key scopes, organization settings and access flags, so it
 works out the answer here and billing checks it. The answer travels in the access token as
 three claims. `scope` is what the credential holds. `roles` is who the person is in the
 organization. `entitlements` is the access level the role and the two flags add up to.

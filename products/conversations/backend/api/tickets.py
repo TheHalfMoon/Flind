@@ -164,7 +164,7 @@ class TicketMessageSerializer(serializers.Serializer):
         read_only=True,
         allow_null=True,
         help_text=(
-            "Email of the authoring PostHog user, when the message was written by one "
+            "Email of the authoring Flind user, when the message was written by one "
             "(support replies and internal notes). Null for customer and AI messages."
         ),
     )
@@ -314,7 +314,7 @@ class ComposeTicketSerializer(serializers.Serializer):
     recipient_distinct_id = serializers.CharField(
         required=False,
         max_length=400,
-        help_text="PostHog distinct_id to link the ticket to a person. Falls back to recipient_email.",
+        help_text="Flind distinct_id to link the ticket to a person. Falls back to recipient_email.",
     )
     email_subject = serializers.CharField(
         required=False,
@@ -532,7 +532,7 @@ class TicketSerializer(UserAccessControlSerializerMixin, TaggedItemSerializerMix
             "sla_due_at": {"help_text": "SLA deadline set via workflows. Null means no SLA."},
             "anonymous_traits": {"help_text": "Customer-provided traits such as name and email"},
             "organization_id": {
-                "help_text": "Customer's PostHog organization group key, resolved at ticket creation. Null when unknown."
+                "help_text": "Customer's Flind organization group key, resolved at ticket creation. Null when unknown."
             },
             "organization_id_source": {
                 "help_text": "How organization_id was resolved: 'person' (from the requester's identity) or "
@@ -1626,7 +1626,7 @@ class TicketViewSet(TaggedItemViewSetMixin, TeamAndOrgViewSetMixin, AccessContro
                 f"{comment.created_by.first_name} {comment.created_by.last_name}".strip() or comment.created_by.email
             )
         elif author_type == "AI":
-            author_name = "PostHog Assistant"
+            author_name = "Flind Assistant"
         elif context_author_name:
             author_name = context_author_name
         elif author_type == "customer":

@@ -126,11 +126,11 @@ export function DestinationList({
                         data-attr="warehouse-destination-edit"
                         tooltip={
                             destination.is_posthog_warehouse
-                                ? 'The PostHog warehouse is managed for you'
+                                ? 'The Flind warehouse is managed for you'
                                 : 'Edit this destination'
                         }
                         disabledReason={
-                            destination.is_posthog_warehouse ? 'The PostHog warehouse is managed for you' : undefined
+                            destination.is_posthog_warehouse ? 'The Flind warehouse is managed for you' : undefined
                         }
                     />
                     {/* Every toggle stays free, the last one on included, so a person can turn the
@@ -153,7 +153,7 @@ export function DestinationList({
             loading={loading}
             rowKey={(destination) => destination.id}
             columns={columns}
-            emptyState="No destinations yet. Add one to sync these tables somewhere besides PostHog."
+            emptyState="No destinations yet. Add one to sync these tables somewhere besides Flind."
         />
     )
 }

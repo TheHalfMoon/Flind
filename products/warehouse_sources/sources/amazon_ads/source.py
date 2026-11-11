@@ -58,7 +58,7 @@ class AmazonAdsSource(ResumableSource[AmazonAdsSourceConfig, AmazonAdsResumeConf
             name=ExternalDataSourceType.AMAZONADS,
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="Amazon Ads",
-            caption="""Connect your Amazon Ads account to pull your advertising entity data into the PostHog Data warehouse.
+            caption="""Connect your Amazon Ads account to pull your advertising entity data into the Flind Data warehouse.
 
 You need a Login with Amazon (LWA) application with Advertising API access: enter its client ID and secret plus a refresh token authorized for your advertiser account. Pick the region that matches your advertising profiles (North America, Europe, or Far East). Your portfolios, your Sponsored Products, Sponsored Brands and Sponsored Display entities, and daily Sponsored Products campaign performance are synced from every profile the token can access.""",
             iconPath="/static/services/amazon_ads.png",

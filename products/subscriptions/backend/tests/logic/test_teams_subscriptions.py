@@ -53,7 +53,7 @@ class TestTeamsSubscriptionCard(APIBaseTest):
         assert content["actions"] == [
             {
                 "type": "Action.OpenUrl",
-                "title": "View in PostHog",
+                "title": "View in Flind",
                 "url": "http://localhost:8010/insights/123456?utm_source=posthog&utm_campaign=subscription_report&utm_medium=teams",
             },
             {
@@ -112,7 +112,7 @@ class TestTeamsSubscriptionCard(APIBaseTest):
         content = self._card_content(is_new_subscription=True)
 
         assert content["body"][0]["text"].startswith(
-            "This channel has been subscribed to the Insight **My Test subscription** on PostHog!"
+            "This channel has been subscribed to the Insight **My Test subscription** on Flind!"
         )
 
     def test_a_summary_skipped_over_budget_says_so_in_subtle_text(self) -> None:

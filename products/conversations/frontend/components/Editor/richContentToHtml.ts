@@ -12,7 +12,7 @@ import { SUPPORT_PREVIEW_EXTENSIONS } from './SupportEditor'
  * plain HTML generation. Without a text child the element serializes empty, so a paste target that
  * does not know the `ph-mention` tag, such as a mail client, drops the mention and loses a word
  * from the sentence. The composer parses the node back from the tag and ignores this text, so it
- * only shows up outside PostHog, where it matches what the markdown form has always carried.
+ * only shows up outside Flind, where it matches what the markdown form has always carried.
  */
 const ClipboardMention = RichContentNodeMention.extend({
     renderHTML({ HTMLAttributes, node }) {

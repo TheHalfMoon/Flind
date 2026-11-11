@@ -1,4 +1,4 @@
-// Which PostHog surface a request came from, stamped as `source` so the MCP server's own
+// Which Flind surface a request came from, stamped as `source` so the MCP server's own
 // events sit in the same breakdown as the product events they cause.
 //
 // The vocabulary is Django's: `EventSource` in `posthog/event_usage.py` owns it, and this is a
@@ -25,11 +25,11 @@ const CLI_CONSUMER = 'posthog-cli'
 const WIZARD_USER_AGENT_FRAGMENT = 'posthog/wizard'
 
 // Minted server-side only and rejected by every user-facing scope validator, so a token
-// carrying it is provably one of PostHog's own agents rather than a third party naming
+// carrying it is provably one of Flind's own agents rather than a third party naming
 // itself one. See INTERNAL_SCOPES in `posthog/temporal/oauth.py`.
 const INTERNAL_RUN_SCOPE = 'internal_run:read'
 
-// The OAuth applications PostHog controls, mirroring POSTHOG_DESKTOP_OAUTH_CLIENT_IDS,
+// The OAuth applications Flind controls, mirroring POSTHOG_DESKTOP_OAUTH_CLIENT_IDS,
 // POSTHOG_AI_OAUTH_APP_CLIENT_IDS and SIGNALS_OAUTH_APP_CLIENT_IDS in
 // `posthog/temporal/oauth.py`, which owns them. A client id reaches this server through token
 // introspection rather than a header, so unlike `x-posthog-mcp-consumer` the caller cannot set
@@ -59,7 +59,7 @@ const FIRST_PARTY_OAUTH_CLIENT_IDS = new Set([
 ])
 
 /**
- * Whether one of PostHog's own OAuth applications vouches for this request.
+ * Whether one of Flind's own OAuth applications vouches for this request.
  *
  * The client id is what Django gates on, so it is the signal that makes the two sides agree.
  * `internal_run:read` stays as a second route because it is minted server-side only, which
@@ -103,7 +103,7 @@ export interface EventSourceInput {
  * Ends at `mcp`, meaning a third-party agent, whenever nothing vouches for the declared consumer.
  */
 export function resolveEventSource(input: EventSourceInput): EventSource {
-    // A token minted against the PostHog AI application is authoritative, which is the same
+    // A token minted against the Flind AI application is authoritative, which is the same
     // early return `get_event_source` makes before it looks at any header.
     if (input.oauthClientId && POSTHOG_AI_OAUTH_CLIENT_IDS.has(input.oauthClientId)) {
         return EVENT_SOURCE.POSTHOG_AI

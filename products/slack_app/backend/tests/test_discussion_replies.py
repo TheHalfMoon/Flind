@@ -140,7 +140,7 @@ class TestIngestDiscussionReply(APIBaseTest):
     @patch(RESOLVE, return_value={"name": "X", "email": None, "avatar": None, "team_id": "T1"})
     def test_caption_less_upload_creates_comment_with_placeholder(self, _resolve):
         # A file-only upload has no text and no blocks; without placeholders it produced no
-        # comment at all, so the PostHog side never learned anything had been sent.
+        # comment at all, so the Flind side never learned anything had been sent.
         event = self._event(
             text="",
             blocks=None,

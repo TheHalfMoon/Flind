@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -2529,7 +2529,7 @@ export const getWarehouseTablesRefreshSchemaCreateUrl = (projectId: string, id: 
 }
 
 /**
- * Re-introspect an existing direct-read warehouse table's schema from its underlying source files and overwrite its stored column list. Use when the source schema has evolved (e.g. new columns in the underlying Delta/Parquet/CSV files) but queries still can't see the new columns, because PostHog serves a cached column snapshot until the table is refreshed. This applies only to existing direct-read tables. New direct-read tables cannot be created. Tables managed by an external data source sync refresh on their own schedule.
+ * Re-introspect an existing direct-read warehouse table's schema from its underlying source files and overwrite its stored column list. Use when the source schema has evolved (e.g. new columns in the underlying Delta/Parquet/CSV files) but queries still can't see the new columns, because Flind serves a cached column snapshot until the table is refreshed. This applies only to existing direct-read tables. New direct-read tables cannot be created. Tables managed by an external data source sync refresh on their own schedule.
  * @summary Refresh table schema from source
  */
 export const warehouseTablesRefreshSchemaCreate = async (
@@ -2593,7 +2593,7 @@ export const getWarehouseTablesCreateFromUploadCreateUrl = (projectId: string) =
 /**
  * Turn a previously uploaded file into a warehouse table with a FileUpload source.
  *
- * The file already sits in PostHog's own bucket (see `upload_file`), so the table points straight
+ * The file already sits in Flind's own bucket (see `upload_file`), so the table points straight
  * at it for the initial direct read. The source imports it on its first sync. The read location
  * is always derived from the caller's own team, so a client-supplied
  * `upload_id` can only resolve inside that team's folder, and the table carries no credential (reads

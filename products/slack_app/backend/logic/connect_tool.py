@@ -29,7 +29,7 @@ logger = structlog.get_logger(__name__)
 
 CONNECT_TOOL_SKIP_ACTION_ID = "slack_app_connect_tool:skip"
 CONNECTED_PATH = "/complete/slack-tool-connected/"
-# Login-gated, because the MCP store API answers 401 to a browser without a PostHog session.
+# Login-gated, because the MCP store API answers 401 to a browser without a Flind session.
 CONNECT_PATH = "/complete/slack-tool-connect/"
 # pinned: analytics event name, renaming breaks dashboards
 CONNECT_OFFERED_EVENT = "slack app connect tool offered"

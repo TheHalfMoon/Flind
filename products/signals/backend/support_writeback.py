@@ -118,11 +118,11 @@ def post_pull_request_to_tickets(team: Team, report_id: str, pr_url: str, signal
         return 0
 
     body = (
-        "[PostHog bot] **Self-driving linked a pull request to this report.** Internal note, not sent to the customer.\n\n"
+        "[Flind bot] **Self-driving linked a pull request to this report.** Internal note, not sent to the customer.\n\n"
         f"Pull request: {pr_url}\n"
         f"Report: {build_report_url(team.pk, report_id, ReportLinkSource.SUPPORT)}"
     )
-    public_body = f"[PostHog bot] Self-driving opened a pull request related to this ticket: {pr_url}"
+    public_body = f"[Flind bot] Self-driving opened a pull request related to this ticket: {pr_url}"
     posted = 0
     first_error: Exception | None = None
     for ticket_id in ticket_ids:

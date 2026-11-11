@@ -547,7 +547,7 @@ class TestResolveAccessToken:
         assert access.authed_user_id == "UBOT"
         assert access.cache_id == manual_cache_id("xoxb-abc")
         # The bring-your-own path must never touch an Integration row — that's what keeps it
-        # off the shared PostHog app.
+        # off the shared Flind app.
         mock_get_integration.assert_not_called()
         mock_auth_test.assert_called_once_with("xoxb-abc")
 

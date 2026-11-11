@@ -93,7 +93,7 @@ export class AppMetricsAggregator {
         const messages = drained.map((m) => ({
             value: Buffer.from(
                 // safeClickhouseString strips lone Unicode surrogates that ClickHouse rejects —
-                // identity fields are PostHog-generated UUIDs today, but cheap insurance if
+                // identity fields are Flind-generated UUIDs today, but cheap insurance if
                 // any of them ever take user-controlled values.
                 safeClickhouseString(
                     JSON.stringify({

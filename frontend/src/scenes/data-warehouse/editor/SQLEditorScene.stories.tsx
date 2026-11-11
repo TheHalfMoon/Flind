@@ -433,7 +433,7 @@ export const ManagedWarehouseConnection: Story = {
             },
         },
         // The `c` hash param preselects the connection, so the selector renders the long label
-        // instead of the default "PostHog (ClickHouse)".
+        // instead of the default "Flind (ClickHouse)".
         pageUrl: urls.sqlEditor({ query: SAMPLE_SQL, connectionId: MANAGED_WAREHOUSE_CONNECTION_ID }),
     },
 }

@@ -24,7 +24,7 @@ from policy import _sanitize_untrusted, review_guidance_path, steering_path
 from verdict_rule import FACT_FIELDS, FACTS_SCHEMA, InvalidFactsError, ReviewFacts, derive_verdict
 from version import STAMPHOG_VERSION
 
-# Traced wrapper, bound only with a PostHog key and no gateway route (gateway
+# Traced wrapper, bound only with a Flind key and no gateway route (gateway
 # mode uses plain `query` so its $ai_generation isn't double-counted).
 _traced_query = None
 
@@ -561,7 +561,7 @@ class Reviewer:
             # sent after the generator ends).
             props = posthog_kwargs["posthog_properties"]
 
-        # Neither gateway nor a PostHog key: plain, untraced SDK query.
+        # Neither gateway nor a Flind key: plain, untraced SDK query.
         if active_query is None:
             active_query = query
 
@@ -924,7 +924,7 @@ class Reviewer:
             return ""
         return (
             "\nProvenance: this PR was opened by a self-driving implementation task from a team "
-            "member's Inbox report. What the platform attested: the PR is authored by the PostHog "
+            "member's Inbox report. What the platform attested: the PR is authored by the Flind "
             "GitHub App on a repo-native head branch that matches the branch name the server "
             "pre-assigned to that implementation run. That proves where the PR came from, not that "
             "its contents are good — judge the diff strictly on its own merits. The author is a "

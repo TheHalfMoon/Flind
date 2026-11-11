@@ -55,7 +55,7 @@ class SourcegraphSource(ResumableSource[SourcegraphSourceConfig, SourcegraphResu
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Sourcegraph",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Sourcegraph instance URL and an access token to pull your Sourcegraph data into the PostHog Data warehouse.
+            caption="""Enter your Sourcegraph instance URL and an access token to pull your Sourcegraph data into the Flind Data warehouse.
 
 You can create an access token in Sourcegraph under **Settings > Access tokens**.
 

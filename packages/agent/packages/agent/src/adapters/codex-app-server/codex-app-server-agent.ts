@@ -319,7 +319,7 @@ export interface CodexAppServerAgentOptions {
 
 /**
  * ACP Agent backed by the native Codex `app-server` JSON-RPC protocol,
- * presenting the ACP surface PostHog expects.
+ * presenting the ACP surface Flind expects.
  */
 export class CodexAppServerAgent extends BaseAcpAgent {
   readonly adapterName = "codex";
@@ -358,7 +358,7 @@ export class CodexAppServerAgent extends BaseAcpAgent {
   private taskRunId?: string;
   /** Deployment environment; on "cloud" a non-danger sandbox would panic, so we skip the override. */
   private environment?: "local" | "cloud";
-  /** Gates PostHog exec sub-tools; set per session, defaults to the destructive-verbs regex. */
+  /** Gates Flind exec sub-tools; set per session, defaults to the destructive-verbs regex. */
   private posthogExecPermissionRegex =
     resolvePostHogExecPermissionRegex(undefined);
   private readonly commandOutputs = new Map<string, string>();
@@ -1926,7 +1926,7 @@ export class CodexAppServerAgent extends BaseAcpAgent {
           void this.refuseTurnWithMessage(policyErrorMessage);
           return;
         }
-        // ChatGPT's own usage limit, not a PostHog gateway denial — show the
+        // ChatGPT's own usage limit, not a Flind gateway denial — show the
         // account's real reason (it already includes a reset time) instead
         // of the generic fallback below.
         if (codexErrorInfo === "usageLimitExceeded" && message) {
@@ -2416,7 +2416,7 @@ export class CodexAppServerAgent extends BaseAcpAgent {
   }
 
   /**
-   * Sub-tool policy for a gated PostHog exec call. Codex's `approval_mode:
+   * Sub-tool policy for a gated Flind exec call. Codex's `approval_mode:
    * "prompt"` gates the whole exec tool, so this is where the configured regex
    * actually filters: non-matching sub-tools never prompt, and matching ones
    * stay hands-off in local auto/full-access modes (parity with the Claude
@@ -2489,7 +2489,7 @@ export class CodexAppServerAgent extends BaseAcpAgent {
       const tokens = await this.refreshChatgptAuthTokens();
       // Never include the cause: a token refresh error can carry the token.
       if (!tokens.accessToken) {
-        throw new Error("PostHog returned no ChatGPT access token.");
+        throw new Error("Flind returned no ChatGPT access token.");
       }
       return tokens;
     } catch (error) {
@@ -2555,7 +2555,7 @@ export class CodexAppServerAgent extends BaseAcpAgent {
       detail.command ?? (isFileChange ? "Apply file changes" : "Run command");
     const toolCallId = detail.itemId ?? "codex-approval";
     // Codex has no MCP-specific approval; a known MCP call surfaces the real server/tool/args
-    // so the host renders the proper MCP permission (incl. PostHog `exec` unwrapping).
+    // so the host renders the proper MCP permission (incl. Flind `exec` unwrapping).
     const mcp = this.mcp.byItemId(detail.itemId);
     if (
       shouldAutoAcceptLocalApproval({

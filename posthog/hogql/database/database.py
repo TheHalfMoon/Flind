@@ -602,7 +602,7 @@ def _construct_database_root_node(*, include_posthog_tables: bool) -> TableNode:
     }
 
     if not include_posthog_tables:
-        # This is a direct-connection catalog: no PostHog tables, only the connection's own. It still
+        # This is a direct-connection catalog: no Flind tables, only the connection's own. It still
         # needs to be discoverable — otherwise the only way to learn a connection's table names is to
         # already know them. The rows are computed from this Database object, so they describe the
         # connection, not the team's ClickHouse catalog. `_prepare_direct_query` explains why such a
@@ -1426,7 +1426,7 @@ class Database(BaseModel):
         built_in_global_table_names.add("numbers")
 
         # Direct connections stay hidden from the default scope, but they must not evict
-        # built-in PostHog tables when a direct source reuses names like `events` or `persons`.
+        # built-in Flind tables when a direct source reuses names like `events` or `persons`.
         hidden_direct_name_collisions = self._direct_access_warehouse_table_names & built_in_global_table_names
         direct_table_names_to_hide = self._direct_access_warehouse_table_names - built_in_global_table_names
         allowed_table_names.difference_update(direct_table_names_to_hide)
@@ -1541,7 +1541,7 @@ class Database(BaseModel):
 
         certifications_by_table_id, certifications_by_saved_query_id = _settled_catalog_certifications(context)
 
-        # PostHog tables
+        # Flind tables
         posthog_table_names = (
             []
             if self._is_direct_query()
@@ -2006,7 +2006,7 @@ class Database(BaseModel):
     def create_for_posthog_tables(
         team: Team, *, modifiers: HogQLQueryModifiers | None = None, timings: HogQLTimings | None = None
     ) -> Database:
-        """PostHog's built-in tables only, wired for the team's modifiers, with no Postgres I/O.
+        """Flind's built-in tables only, wired for the team's modifiers, with no Postgres I/O.
 
         For internal queries that touch only built-in tables. It has no warehouse tables, views, or
         joins, no group-type tables, and no per-user access control, so it must never serve
@@ -2789,7 +2789,7 @@ class Database(BaseModel):
                                 # where a is the parent, b is the child of a, and c is the child of b
                                 # where a.b.c will contain the table.
                                 # Direct Snowflake and Trino connections resolve unquoted identifiers
-                                # case-insensitively. Synced table names are PostHog-generated, so
+                                # case-insensitively. Synced table names are Flind-generated, so
                                 # they stay exact-match.
                                 warehouse_tables.add_child(
                                     TableNode.create_nested_for_chain(

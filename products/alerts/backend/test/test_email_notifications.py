@@ -123,7 +123,7 @@ def test_alert_evaluation_failure_email_claims_no_cause_for_an_unavailable_detec
     assert "there is nothing to change" not in html
     assert "Review the alert settings" not in html
     assert "settings need attention" not in html
-    assert "PostHog will try again" in html
+    assert "Flind will try again" in html
     assert "View alert" in html
 
 
@@ -140,12 +140,12 @@ def test_alert_evaluation_failure_email_includes_the_reason_and_next_check_timin
     )
 
     assert "The query could not run." in html
-    assert "PostHog could not evaluate this alert." in html
-    assert "PostHog has a temporary problem" in html
+    assert "Flind could not evaluate this alert." in html
+    assert "Flind has a temporary problem" in html
     assert "Insight" in html
     assert "Error" in html
     assert "Review the alert settings" in html
-    assert "PostHog will try again" in html
+    assert "Flind will try again" in html
     assert "next scheduled check" in html
     assert "contact" in html
     assert "support" in html

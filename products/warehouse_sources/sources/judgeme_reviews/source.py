@@ -44,7 +44,7 @@ class JudgeMeReviewsSource(ResumableSource[JudgeMeReviewsSourceConfig, JudgeMeRe
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="Judge.me Reviews",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your shop domain and private API token to pull your Judge.me product reviews into the PostHog Data warehouse.
+            caption="""Enter your shop domain and private API token to pull your Judge.me product reviews into the Flind Data warehouse.
 
 You can find your private API token under **Settings → Integrations → Judge.me API** in the [Judge.me admin](https://judge.me). Use the **private** token — the public token cannot read reviews. The shop domain is your store's `myshopify.com` domain (e.g. `example.myshopify.com`).
 """,

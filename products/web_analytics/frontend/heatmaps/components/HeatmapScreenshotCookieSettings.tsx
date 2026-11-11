@@ -46,7 +46,7 @@ export function HeatmapScreenshotCookieSettings(): JSX.Element {
             {!settings.cookie_delivery_enabled && (
                 <LemonBanner type="info">
                     Screenshot cookie delivery is disabled on this installation. You can save your settings, but
-                    screenshots will run without the cookie. Contact your PostHog administrator to enable delivery.
+                    screenshots will run without the cookie. Contact your Flind administrator to enable delivery.
                 </LemonBanner>
             )}
             <p className="mb-0">

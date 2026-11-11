@@ -21,7 +21,7 @@ describe('whatsapp template', () => {
                 phone_number_id: '987654321',
                 api_version: 'v21.0',
                 message_type: 'text',
-                message: 'Hello from PostHog',
+                message: 'Hello from Flind',
             },
             {
                 event: { event: 'event-name' },
@@ -49,7 +49,7 @@ describe('whatsapp template', () => {
             recipient_type: 'individual',
             to: '+1234567893',
             type: 'text',
-            text: { preview_url: false, body: 'Hello from PostHog' },
+            text: { preview_url: false, body: 'Hello from Flind' },
         })
 
         const fetchResponse = await tester.invokeFetchResponse(response.invocation, {

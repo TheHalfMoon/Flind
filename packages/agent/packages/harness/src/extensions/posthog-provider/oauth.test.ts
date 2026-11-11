@@ -225,7 +225,7 @@ describe("loginPosthog region selection", () => {
     const state = new URL(authUrl).searchParams.get("state") ?? "";
 
     expect(callbacks.onSelect).toHaveBeenCalledWith({
-      message: "Select your PostHog region",
+      message: "Select your Flind region",
       options: [
         { id: "us", label: "United States" },
         { id: "eu", label: "European Union" },

@@ -387,7 +387,7 @@ class ClickHouseClient:
 
     @classmethod
     def from_posthog_settings(cls, settings, **kwargs):
-        """Initialize a ClickHouseClient from PostHog settings."""
+        """Initialize a ClickHouseClient from Flind settings."""
         return cls(
             url=settings.CLICKHOUSE_URL,
             user=settings.CLICKHOUSE_USER,

@@ -333,7 +333,7 @@ class TestPostgresImplementationWiring:
 
 class TestPostgresSourceMetadataConnectionErrors:
     def test_posthog_database_connection_failure_propagates_unwrapped(self):
-        # `source_for_pipeline` first reads sync metadata from PostHog's own database. A transient
+        # `source_for_pipeline` first reads sync metadata from Flind's own database. A transient
         # connection failure there (e.g. a DNS blip resolving our host) must propagate as the same
         # Django `OperationalError` it was raised as. `_handle_import_error` already classifies that
         # type, regardless of message, as a self-recovering app-DB blip and keeps it out of error
@@ -485,7 +485,7 @@ class TestPostgresSourceNonRetryableErrors:
             'psycopg2.OperationalError: could not connect to server: No route to host\n\tIs the server running on host "10.0.0.1"?',
             # The OS-level TCP connect() timeout (ETIMEDOUT) — no response at all, as opposed to the
             # immediate rejection of "Connection refused". Observed against a private RDS endpoint
-            # PostHog can't route to.
+            # Flind can't route to.
             'could not connect to server "some_server"\nDETAIL:  connection to server at "10.0.5.177", port 5432 failed: Connection timed out\n\tIs the server running on that host and accepting TCP/IP connections?',
             'could not translate host name "bad-hostname.example.com" to address: Name or service not known',
             'FATAL:  password authentication failed for user "myuser"',
@@ -5667,7 +5667,7 @@ class TestValidateCredentialsErrorMapping:
             (
                 'connection failed: connection to server at "66.33.22.254", port 41667 failed: '
                 "received invalid response to SSL negotiation: I",
-                "PostHog reached the host and port you configured, but the server didn't respond like a "
+                "Flind reached the host and port you configured, but the server didn't respond like a "
                 "PostgreSQL server speaking SSL. Check that the host and port point at your PostgreSQL server "
                 "(not an HTTP, proxy, or edge endpoint) and that the database is running.",
             ),
@@ -5686,10 +5686,10 @@ class TestValidateCredentialsErrorMapping:
             # ENETUNREACH/EHOSTUNREACH, which the generic fallback couldn't explain.
             (
                 'connection failed: connection to server at "2600:1f18::1", port 5432 failed: Network is unreachable',
-                "PostHog reached the network but couldn't open a connection to the database host. This usually "
-                "means the host only accepts IPv6 connections (PostHog connects over IPv4), or a firewall is "
-                "blocking PostHog's IP addresses. Use a host that's reachable over IPv4 (for example a "
-                "connection pooler), enable your provider's IPv4 add-on, or add PostHog's IP addresses to your "
+                "Flind reached the network but couldn't open a connection to the database host. This usually "
+                "means the host only accepts IPv6 connections (Flind connects over IPv4), or a firewall is "
+                "blocking Flind's IP addresses. Use a host that's reachable over IPv4 (for example a "
+                "connection pooler), enable your provider's IPv4 add-on, or add Flind's IP addresses to your "
                 "firewall allowlist, then try again.",
             ),
             # libpq can append the "Is the server running..." hint to a routing failure; the more
@@ -5697,10 +5697,10 @@ class TestValidateCredentialsErrorMapping:
             (
                 'connection to server at "203.0.113.7", port 5432 failed: No route to host\n\t'
                 "Is the server running on that host and accepting TCP/IP connections?",
-                "PostHog reached the network but couldn't open a connection to the database host. This usually "
-                "means the host only accepts IPv6 connections (PostHog connects over IPv4), or a firewall is "
-                "blocking PostHog's IP addresses. Use a host that's reachable over IPv4 (for example a "
-                "connection pooler), enable your provider's IPv4 add-on, or add PostHog's IP addresses to your "
+                "Flind reached the network but couldn't open a connection to the database host. This usually "
+                "means the host only accepts IPv6 connections (Flind connects over IPv4), or a firewall is "
+                "blocking Flind's IP addresses. Use a host that's reachable over IPv4 (for example a "
+                "connection pooler), enable your provider's IPv4 add-on, or add Flind's IP addresses to your "
                 "firewall allowlist, then try again.",
             ),
             # Supavisor trips its own circuit breaker after repeated authentication failures against
@@ -5720,8 +5720,8 @@ class TestValidateCredentialsErrorMapping:
             (
                 'connection failed: connection to server at "203.0.113.10", port 5432 failed: '
                 "FATAL:  (EADDRNOTALLOWED) address not in tenant allow_list: {192, 0, 2, 1}",
-                "Your database provider rejected the connection because PostHog's IP address isn't on its IP "
-                "allow list. Add PostHog's IP addresses to that allow list, then try again.",
+                "Your database provider rejected the connection because Flind's IP address isn't on its IP "
+                "allow list. Add Flind's IP addresses to that allow list, then try again.",
             ),
             (
                 'connection failed: connection to server at "203.0.113.20", port 5432 failed: '
@@ -5767,12 +5767,12 @@ class TestValidateCredentialsErrorMapping:
             ),
             (
                 f"{HOST_RESOLUTION_TIMEOUT_ERROR} after 15.0s",
-                "PostHog couldn't resolve your database host right now. Check the host name, then try "
+                "Flind couldn't resolve your database host right now. Check the host name, then try "
                 "again in a moment.",
             ),
             (
                 TEMPORARY_HOST_RESOLUTION_ERROR,
-                "PostHog couldn't resolve your database host right now. Check the host name, then try "
+                "Flind couldn't resolve your database host right now. Check the host name, then try "
                 "again in a moment.",
             ),
             # A provider that routes by TLS SNI refuses a connection carrying none, and the
@@ -5792,7 +5792,7 @@ class TestValidateCredentialsErrorMapping:
             (
                 'connection failed: connection to server at "203.0.113.10", port 5432 failed: FATAL:  '
                 "SSL/TLS connection required. Connect with sslmode=require or higher.",
-                'Your database refused an unencrypted connection ("SSL/TLS connection required"). PostHog '
+                'Your database refused an unencrypted connection ("SSL/TLS connection required"). Flind '
                 "only tries an unencrypted connection after an encrypted one fails, so check that the host "
                 "is the hostname your database provider gave you rather than an IP address, then try again.",
             ),
@@ -5809,7 +5809,7 @@ class TestValidateCredentialsErrorMapping:
                 'connection to server at "203.0.113.10", port 5432 failed: Connection timed out\n\t'
                 "Is the server running on that host and accepting TCP/IP connections?",
                 "Could not connect to the database on the host and port given. Check the host and port are "
-                "correct, and that PostHog's IP addresses are allowed through your firewall.",
+                "correct, and that Flind's IP addresses are allowed through your firewall.",
             ),
             # Neon's proxy routes by the "endpoint ID" carried in the TLS SNI extension, which is
             # dropped whenever the host is dialed as a bare IP literal — exactly what an SSH tunnel

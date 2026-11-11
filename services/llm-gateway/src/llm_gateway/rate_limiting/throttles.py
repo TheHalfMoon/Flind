@@ -15,7 +15,7 @@ def get_team_multiplier(team_id: int | None) -> int:
 
 
 def get_staff_multiplier(user: AuthenticatedUser) -> int:
-    """Elevated rate/cost cap for PostHog staff, applied regardless of which
+    """Elevated rate/cost cap for Flind staff, applied regardless of which
     team they're acting on — so impersonating a customer doesn't drop the cap.
     Non-staff users get the unmodified base limit (1×)."""
     if not user.is_staff:
@@ -32,7 +32,7 @@ def get_rate_limit_multiplier(user: AuthenticatedUser) -> int:
 
 
 def is_usage_unlimited(user: AuthenticatedUser) -> bool:
-    """PostHog staff have no per-user cost cap — the burst/sustained throttles
+    """Flind staff have no per-user cost cap — the burst/sustained throttles
     neither deny their requests nor report them as rate limited. Spend is still
     recorded for observability; only enforcement is skipped. Gated by a setting
     so it can be switched off without a redeploy. Non-staff users are unaffected."""

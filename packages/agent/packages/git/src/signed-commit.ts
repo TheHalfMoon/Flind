@@ -46,7 +46,7 @@ export interface SignedCommitCtx {
 export interface SignedCommitInput {
   /** Commit headline (first line). */
   message: string;
-  /** Optional extended body; PostHog trailers are appended automatically. */
+  /** Optional extended body; Flind trailers are appended automatically. */
   body?: string;
   /** Target branch; defaults to the current branch. Created on the remote if missing. */
   branch?: string;

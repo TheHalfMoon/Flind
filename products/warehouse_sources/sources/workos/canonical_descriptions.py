@@ -16,11 +16,11 @@ _COMMON_COLUMNS = {
 }
 
 
-# PostHog adds these columns to the tables that can sync by webhook, because a webhook delete
+# Flind adds these columns to the tables that can sync by webhook, because a webhook delete
 # merges on `id` and can only mark a row, never remove it. WorkOS itself does not send them.
 # The tables that get them are the keys of WEBHOOK_EVENTS_BY_SCHEMA in `settings.py`.
 _TOMBSTONE_COLUMNS = {
-    "workos_deleted": "Whether WorkOS reported this record as deleted. Added by PostHog, not a WorkOS field.",
+    "workos_deleted": "Whether WorkOS reported this record as deleted. Added by Flind, not a WorkOS field.",
     "workos_deleted_at": "Time at which WorkOS reported the delete. Null while the record still exists.",
 }
 

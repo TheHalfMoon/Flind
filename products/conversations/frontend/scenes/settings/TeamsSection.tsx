@@ -59,7 +59,7 @@ function TeamsChannelRow({ pair, onRemove, isLoading, adminRestrictionReason }: 
                 <div className="flex items-center gap-2">
                     <div className="text-xs text-muted-alt truncate">#{pair.channel_name || pair.channel_id}</div>
                     {isShared && (
-                        <Tooltip title="Shared channels don't push messages to bots, so PostHog polls them via Microsoft Graph every minute to pick up new messages.">
+                        <Tooltip title="Shared channels don't push messages to bots, so Flind polls them via Microsoft Graph every minute to pick up new messages.">
                             <LemonTag type="completion" size="small">
                                 Shared · polled
                             </LemonTag>

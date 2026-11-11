@@ -41,9 +41,9 @@ class TestPostHogAISystemPrompt(SimpleTestCase):
 
     def test_includes_core_sections(self):
         prompt = self._build()["append"]
-        assert "# PostHog AI" in prompt
-        assert "# PostHog MCP" in prompt
-        assert "# PostHog Products" in prompt
+        assert "# Flind AI" in prompt
+        assert "# Flind MCP" in prompt
+        assert "# Flind Products" in prompt
         assert "# Tone and style" in prompt
         assert "# Context blocks" in prompt
         # The MCP is reachable through its single entry point.

@@ -114,7 +114,7 @@ class AsyncMigrationsViewset(viewsets.ModelViewSet):
             return response.Response(
                 {
                     "success": False,
-                    "error": f"Can't run migration. Minimum PostHog version: {migration_instance.posthog_min_version}. Maximum PostHog version: {migration_instance.posthog_max_version}",
+                    "error": f"Can't run migration. Minimum Flind version: {migration_instance.posthog_min_version}. Maximum Flind version: {migration_instance.posthog_max_version}",
                 },
                 status=400,
             )

@@ -18,7 +18,7 @@ const EMPTY_DRAFT: CustomCloudDraft = {
 const CUSTOM_CLOUD_QUERY_KEY = ["customCloud"] as const;
 
 const URL_SHAPE_MESSAGE =
-  "with no path, query, or fragment, and not a PostHog Cloud address";
+  "with no path, query, or fragment, and not a Flind Cloud address";
 
 export function useCustomCloud({ enabled }: { enabled: boolean }) {
   const hostClient = useHostTRPCClient();
@@ -59,7 +59,7 @@ export function useCustomCloud({ enabled }: { enabled: boolean }) {
 
   const commit = async (): Promise<boolean> => {
     if (!draft.url.trim()) {
-      setError("Enter the URL of your PostHog instance");
+      setError("Enter the URL of your Flind instance");
       return false;
     }
     if (!draft.oauthClientId.trim()) {

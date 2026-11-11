@@ -142,7 +142,7 @@ class AwsOrganizationsSource(ResumableSource[AwsOrganizationsSourceConfig, AwsOr
             name=ExternalDataSourceType.AWSORGANIZATIONS,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="AWS Organizations",
-            caption="""Sync your AWS organization structure into the PostHog Data warehouse, so cost and usage data can be read by account name, organizational unit, and tag.
+            caption="""Sync your AWS organization structure into the Flind Data warehouse, so cost and usage data can be read by account name, organizational unit, and tag.
 
 Create an IAM user or role with the `organizations:DescribeOrganization`, `organizations:ListAccounts`, `organizations:ListParents`, `organizations:ListRoots`, `organizations:ListOrganizationalUnitsForParent`, `organizations:ListPolicies`, `organizations:ListTargetsForPolicy`, `organizations:ListTagsForResource`, `organizations:ListDelegatedAdministrators` and `organizations:ListDelegatedServicesForAccount` permissions, then paste its access key ID and secret access key. Add a session token too if you are using temporary credentials.
 

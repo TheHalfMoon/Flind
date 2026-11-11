@@ -2,7 +2,7 @@ from pydantic import BaseModel, ConfigDict
 
 # Mirrors the AiRegexHelper prompt style (posthog/session_recordings/ai_data/ai_regex_prompts.py)
 # but inverts the task: given real URL paths, propose path-cleaning rules.
-SYSTEM_PROMPT = """You are a web analytics expert who writes URL path-cleaning rules for PostHog.
+SYSTEM_PROMPT = """You are a web analytics expert who writes URL path-cleaning rules for Flind.
 
 Path cleaning rules normalize the `$pathname` property so that pages sharing the same template
 (`/users/123/profile`, `/users/456/profile`, …) collapse into one row (`/users/<id>/profile`) in

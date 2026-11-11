@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Toolbox command for connecting to PostHog toolbox pods in a Kubernetes environment.
+Toolbox command for connecting to Flind toolbox pods in a Kubernetes environment.
 """
 
 import os

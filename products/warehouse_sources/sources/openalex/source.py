@@ -115,7 +115,7 @@ class OpenalexSource(ResumableSource[OpenalexSourceConfig, OpenAlexResumeConfig]
             name=ExternalDataSourceType.OPENALEX,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="OpenAlex",
-            caption="""Enter your OpenAlex API key to pull scholarly metadata into the PostHog Data warehouse.
+            caption="""Enter your OpenAlex API key to pull scholarly metadata into the Flind Data warehouse.
 
 Keys are free and take about a minute to create at [openalex.org/settings/api](https://openalex.org/settings/api).
 

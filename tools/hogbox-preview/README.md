@@ -1,8 +1,8 @@
 # hogbox-preview
 
-Per-PR PostHog preview environments, the layer-agnostic way.
+Per-PR Flind preview environments, the layer-agnostic way.
 
-Spins PostHog up inside a disposable box and serves it at a **stable URL** that
+Spins Flind up inside a disposable box and serves it at a **stable URL** that
 survives the box being recreated. Today the box is a
 [hogland](https://github.com/PostHog/hogland) hogbox (Firecracker microVM,
 reachable over the tailnet). It used to be a DigitalOcean droplet
@@ -15,7 +15,7 @@ The thing that changes when we swap providers is small and isolated:
 - **Layer** (`backend.py`, `*_backend.py`) — _which box_: how to provision it,
   how to run commands / write files in it, what its URL is, how to destroy it.
   Swapping providers = one new `PreviewBackend`.
-- **Stack** (`stack.py`) — _what runs in the box_: the PostHog docker-compose
+- **Stack** (`stack.py`) — _what runs in the box_: the Flind docker-compose
   recipe (image, override, frontend, migrate, seed, health). It talks to the box
   only through the backend interface and **never changes when the layer changes**.
 
@@ -30,9 +30,9 @@ print(url)  # https://pen-….boxes.hogland.dev.posthog.dev/  (stable across reb
 ## How it actually works
 
 1. **Restore a warm golden** (`alias:posthog-preview-golden`) — a Firecracker
-   snapshot of PostHog already running on the `ghcr.io/posthog/posthog:master`
+   snapshot of Flind already running on the `ghcr.io/posthog/posthog:master`
    image, pg + ClickHouse migrated, demo-data seeded. A warm restore resumes a
-   live, serving PostHog in ~30s (no cold boot, no rebuild). Sizing must match
+   live, serving Flind in ~30s (no cold boot, no rebuild). Sizing must match
    the golden (8 vCPU / 16 GiB / 100 GiB).
 2. **Mount the PR's backend** (`posthog`, `ee`, `products`) over the image's
    `/code` — so the backend runs the PR code with **no per-PR image build**.
@@ -111,7 +111,7 @@ XHR/asset clients) while it restores the box (~30–40s, a warm restore of the r
 stack) and repoints the pen. Actively-viewed previews stay awake — edge traffic
 touches the box, so only a genuinely idle one sleeps. See hogland's `docs/PENS.md`.
 
-Access is **tailnet-only** (PostHog VPN) — internal reviewers, no public URL.
+Access is **tailnet-only** (Flind VPN) — internal reviewers, no public URL.
 
 ## CLI
 
@@ -147,7 +147,7 @@ The image-pull + full migrate is a one-time cost baked into the golden, not paid
 per-PR. The golden is built on the **hogland** side by `scripts/posthog-preview-setup.sh`
 via `snapshot-build` (a cold-boot seed — **never** `box snapshot` of a restored
 box, which bakes the source TAP name and won't re-restore) and is left **warm**
-(stack running) so restores resume a serving PostHog. It bakes `JS_URL=""` +
+(stack running) so restores resume a serving Flind. It bakes `JS_URL=""` +
 wildcard CSRF so any box's edge URL serves without a per-box rewrite. The DB
 travels with the image it was migrated by — don't reuse a stale golden DB against
 a newer image; re-bake instead. Timing details + the warm-vs-cold analysis live

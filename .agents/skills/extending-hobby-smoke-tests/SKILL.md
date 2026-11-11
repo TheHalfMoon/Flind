@@ -1,6 +1,6 @@
 ---
 name: extending-hobby-smoke-tests
-description: Design, extend, review, or debug PostHog Hobby end-to-end smoke tests in bin/hobby-ci.py and .github/workflows/ci-hobby.yml. Use when adding an ingestion round trip, deciding whether a product belongs in Hobby CI, changing the CI Hobby service topology or API-key scopes, or diagnosing a smoke test that captures data but cannot query it.
+description: Design, extend, review, or debug Flind Hobby end-to-end smoke tests in bin/hobby-ci.py and .github/workflows/ci-hobby.yml. Use when adding an ingestion round trip, deciding whether a product belongs in Hobby CI, changing the CI Hobby service topology or API-key scopes, or diagnosing a smoke test that captures data but cannot query it.
 ---
 
 # Extending Hobby smoke tests

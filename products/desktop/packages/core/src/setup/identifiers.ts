@@ -16,7 +16,7 @@ export type DiscoveryFailureReason =
 /**
  * Host capabilities the setup discovery/enrichment orchestration needs.
  *
- * The desktop adapter wraps trpc (agent/enrichment), the authenticated PostHog
+ * The desktop adapter wraps trpc (agent/enrichment), the authenticated Flind
  * API client (task runs), analytics, and build/env flags. The interface speaks
  * product intent so the orchestration stays host-agnostic: no trpc, no Electron,
  * no analytics taxonomy, no `import.meta.env` inside the package.

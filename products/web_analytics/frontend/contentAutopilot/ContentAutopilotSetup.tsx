@@ -39,7 +39,7 @@ export const ContentAutopilotSetup = ({ onboarding = false }: { onboarding?: boo
         LemonDialog.open({
             title: `Delete ${profile.name || profile.domain}?`,
             description:
-                'PostHog stops any run in progress and removes this site and its proposals from the workspace. You can add the site again later.',
+                'Flind stops any run in progress and removes this site and its proposals from the workspace. You can add the site again later.',
             primaryButton: {
                 children: 'Delete site',
                 status: 'danger',
@@ -94,7 +94,7 @@ export const ContentAutopilotSetup = ({ onboarding = false }: { onboarding?: boo
                     <div className="mb-5">
                         <h2 className="m-0">Add a site</h2>
                         <p className="m-0 mt-1 text-muted">
-                            PostHog will inspect the public site to fill in the details it can find.
+                            Flind will inspect the public site to fill in the details it can find.
                         </p>
                     </div>
                     <ContentAutopilotSiteFields draft={profileDraft} />
@@ -121,7 +121,7 @@ export const ContentAutopilotSetup = ({ onboarding = false }: { onboarding?: boo
                 <>
                     <div className="mb-5">
                         <h2 className="m-0">Review sources</h2>
-                        <p className="m-0 mt-1 text-muted">Confirm where PostHog may research content.</p>
+                        <p className="m-0 mt-1 text-muted">Confirm where Flind may research content.</p>
                     </div>
                     {discoveredSite ? (
                         <LemonBanner type={discoveredSite.sitemap_detected ? 'success' : 'warning'} className="mb-4">

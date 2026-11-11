@@ -19,7 +19,7 @@ const FILTERS: { id: string; label: string; mark?: BrandMarkName }[] = [
     { id: 'openai', label: 'Codex', mark: 'OpenAI' },
 ]
 
-// Clients shown under the sparkline (the PostHog Desktop link is rendered separately, first).
+// Clients shown under the sparkline (the Flind Desktop link is rendered separately, first).
 const CLIENT_MARKS: BrandMarkName[] = ['Claude', 'OpenAI', 'Cursor', 'Windsurf']
 
 // A hand-authored series for the sparkline — abstract, just enough to read as a rising trend.
@@ -115,9 +115,9 @@ export function MCPToolCallPreview({ mode }: { mode: ProductEmptyStateMode }): J
                         className="MCPSpark__code"
                         to="https://posthog.com/desktop?utm_medium=in-product&utm_campaign=mcp-analytics-empty-state"
                         target="_blank"
-                        title="PostHog Desktop"
+                        title="Flind Desktop"
                     >
-                        <BrandMark name="PostHog" label="PostHog Desktop" />
+                        <BrandMark name="Flind" label="Flind Desktop" />
                     </Link>
                     {CLIENT_MARKS.map((mark) => (
                         <BrandMark key={mark} name={mark} />

@@ -799,7 +799,7 @@ class SlackThreadHandler:
         the commits this thread pushes once someone replies here.
         """
         url = personal_integrations_url(self._get_integration().team_id)
-        return f"Opened by the PostHog bot. <{url}|Connect your GitHub> so pull requests are opened as you."
+        return f"Opened by the Flind bot. <{url}|Connect your GitHub> so pull requests are opened as you."
 
     def post_footer(self) -> None:
         """Post the footer alone, for an answer with no message of its own to close.

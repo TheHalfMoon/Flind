@@ -35,7 +35,7 @@ import { todayShellLogic } from './todayShellLogic'
 import { todaySpacesLogic } from './todaySpacesLogic'
 
 /**
- * Recent's sort, grouping and filters, in PostHog Desktop's order. Desktop's Type filter is left out,
+ * Recent's sort, grouping and filters, in Flind Desktop's order. Desktop's Type filter is left out,
  * because Recent holds no canvases.
  */
 export function TodayRecentFilterMenu(): JSX.Element {

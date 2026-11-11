@@ -539,7 +539,7 @@ class TestAssistantQueryExecutor(NonAtomicBaseTest):
                 "storage_failure",
                 None,
                 "s3_error",
-                "PostHog couldn't read from storage while running this query. Wait a few minutes, "
+                "Flind couldn't read from storage while running this query. Wait a few minutes, "
                 "then run the query again. If the problem continues, contact support.",
                 "s3_error",
             ),

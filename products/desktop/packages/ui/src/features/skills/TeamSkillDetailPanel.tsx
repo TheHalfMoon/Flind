@@ -19,7 +19,7 @@ interface TeamSkillDetailPanelProps {
   onClose: () => void;
 }
 
-/** Read-only view of a PostHog cloud team skill (body + companion files). */
+/** Read-only view of a Flind cloud team skill (body + companion files). */
 export function TeamSkillDetailPanel({
   skill,
   onClose,

@@ -53,7 +53,7 @@ class GorgiasSource(ResumableSource[GorgiasSourceConfig, GorgiasResumeConfig]):
             # customer was merged or deleted while paginating), not the "identifier already in use"
             # conflict Gorgias documents for writes. The resumable cursor is saved, so every retry
             # within this job replays the same request against the same now-invalid position.
-            "409 Client Error: Conflict": "PostHog's sync position for this table no longer matches your Gorgias data. This can happen when records are merged or deleted during a sync. Trigger a full resync of this source to continue syncing.",
+            "409 Client Error: Conflict": "Flind's sync position for this table no longer matches your Gorgias data. This can happen when records are merged or deleted during a sync. Trigger a full resync of this source to continue syncing.",
         }
 
     def get_retryable_errors(self) -> set[str]:
@@ -127,7 +127,7 @@ class GorgiasSource(ResumableSource[GorgiasSourceConfig, GorgiasResumeConfig]):
             name=ExternalDataSourceType.GORGIAS,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Gorgias",
-            caption="""Enter your Gorgias credentials to pull your helpdesk data into the PostHog Data warehouse.
+            caption="""Enter your Gorgias credentials to pull your helpdesk data into the Flind Data warehouse.
 
 Create an API key in your Gorgias account under **Settings → REST API**. Use the email of the account that owns the key together with the key itself.
 

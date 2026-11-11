@@ -20,7 +20,7 @@ import SyncModes from '../_snippets/sync-modes.mdx'
 import TroubleshootingLink from '../_snippets/dw-troubleshooting-link.mdx'
 
 Sync your [Visma e-conomic](https://www.e-conomic.com/) accounting data — customers, suppliers,
-products, invoices, the chart of accounts, and more — into PostHog so you can join financial data with
+products, invoices, the chart of accounts, and more — into Flind so you can join financial data with
 product and revenue analytics.
 
 ## Prerequisites
@@ -43,7 +43,7 @@ Provide:
 - **App secret token** — your app's secret from the e-conomic Developer portal.
 - **Agreement grant token** — the grant token issued for the agreement you want to sync.
 
-PostHog sends these as the `X-AppSecretToken` and `X-AgreementGrantToken` headers on every request.
+Flind sends these as the `X-AppSecretToken` and `X-AgreementGrantToken` headers on every request.
 
 ## Sync modes
 
@@ -72,7 +72,7 @@ synced as full refresh to avoid missing edits.
 - **401 Unauthorized** — one or both tokens are invalid or revoked. e-conomic returns the same status
   for a bad app secret token and a bad agreement grant token. Re-check both, re-grant the app access to
   the agreement if needed, and reconnect.
-- **Rate limiting (429)** — e-conomic throttles heavy traffic. PostHog retries with backoff
+- **Rate limiting (429)** — e-conomic throttles heavy traffic. Flind retries with backoff
   automatically; large initial syncs may simply take longer.
 
 <TroubleshootingLink />

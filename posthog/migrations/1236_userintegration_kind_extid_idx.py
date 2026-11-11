@@ -4,7 +4,7 @@ from posthog.migration_helpers import SafeAddIndexConcurrently
 
 
 class Migration(migrations.Migration):
-    # CREATE INDEX CONCURRENTLY cannot run inside a transaction, and PostHog policy keeps
+    # CREATE INDEX CONCURRENTLY cannot run inside a transaction, and Flind policy keeps
     # concurrent index builds in their own migration away from regular DDL.
     atomic = False
     dependencies = [("posthog", "1235_userintegration_slack_kind")]

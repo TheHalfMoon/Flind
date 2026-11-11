@@ -27,10 +27,10 @@ export const getKMPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                                 language: 'kotlin',
                                 file: 'Kotlin',
                                 code: dedent`
-                                    if (PostHog.isFeatureEnabled("flag-key")) {
+                                    if (Flind.isFeatureEnabled("flag-key")) {
                                         // Do something differently for this user
                                         // Optional: fetch the payload
-                                        val payload = PostHog.getFeatureFlagResult("flag-key")?.getPayloadAs<Map<String, Any>>()
+                                        val payload = Flind.getFeatureFlagResult("flag-key")?.getPayloadAs<Map<String, Any>>()
                                     }
                                 `,
                             },
@@ -55,7 +55,7 @@ export const getKMPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                                 language: 'kotlin',
                                 file: 'Kotlin',
                                 code: dedent`
-                                    when (PostHog.getFeatureFlag("flag-key")) {
+                                    when (Flind.getFeatureFlag("flag-key")) {
                                         "control" -> showOriginalPricing()
                                         "variant-key" -> showNewPricing()
                                     }
@@ -82,7 +82,7 @@ export const getKMPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                                 language: 'kotlin',
                                 file: 'Kotlin',
                                 code: dedent`
-                                    PostHog.reloadFeatureFlags {
+                                    Flind.reloadFeatureFlags {
                                         // flags are now up to date
                                     }
                                 `,
@@ -98,7 +98,7 @@ export const getKMPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             content: (
                 <Markdown>
                     {dedent`
-                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the PostHog dashboard.
+                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the Flind dashboard.
                     `}
                 </Markdown>
             ),

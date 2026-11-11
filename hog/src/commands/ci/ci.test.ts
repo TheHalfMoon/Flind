@@ -275,7 +275,7 @@ describe('hog ci setup', () => {
             { '/work/.git/config': REPOSITORY['/work/.git/config'] },
             'provider_not_detected',
         ],
-    ])('stops before asking PostHog when it has %s', async (_name, args, files, code) => {
+    ])('stops before asking Flind when it has %s', async (_name, args, files, code) => {
         const run = await setup(args, { files, respond: policyApi() })
 
         expect(run.exitCode).not.toBe(0)
@@ -283,7 +283,7 @@ describe('hog ci setup', () => {
         expect(run.requests.some((request) => request.url === REQUESTS)).toBe(false)
     })
 
-    test("without a preset, an agent gets the choices with PostHog's explanations and nothing is requested", async () => {
+    test("without a preset, an agent gets the choices with Flind's explanations and nothing is requested", async () => {
         const run = await setup(['--scope', 'query:read'], { respond: policyApi() })
 
         expect(run.exitCode).toBe(0)
@@ -366,7 +366,7 @@ describe('hog ci setup', () => {
         }
     })
 
-    test('a token in the origin remote never reaches PostHog', async () => {
+    test('a token in the origin remote never reaches Flind', async () => {
         const run = await setup(['--preset', 'branch_push=main', '--scope', 'query:read'], {
             files: {
                 ...REPOSITORY,
@@ -383,15 +383,15 @@ describe('hog ci setup', () => {
         )
     })
 
-    test('a repository PostHog can not look up points to --subject-id', async () => {
+    test('a repository Flind can not look up points to --subject-id', async () => {
         const run = await setup(['--preset', 'branch_push=main', '--scope', 'query:read'], {
             respond: (url) =>
                 url.startsWith(`${REQUESTS}resolve_subject/`)
-                    ? { status: 404, body: { detail: 'No repository acme/web that PostHog can see.' } }
+                    ? { status: 404, body: { detail: 'No repository acme/web that Flind can see.' } }
                     : policyApi()(url),
         })
 
-        expect(run.error()).toMatchObject({ message: 'No repository acme/web that PostHog can see.' })
+        expect(run.error()).toMatchObject({ message: 'No repository acme/web that Flind can see.' })
         expect(run.error().hint).toContain('--subject-id')
     })
 })

@@ -43,7 +43,7 @@ class CustomerioCampaignSerializer(serializers.Serializer):
         help_text=(
             "The message templates the actions point at, from `GET /v1/environments/{environment_id}/templates/"
             "{template_id}`: a list of template objects, or an object keyed by template id. Leave them out when "
-            "the project stored a Customer.io App API key: PostHog then reads the content from Customer.io itself. "
+            "the project stored a Customer.io App API key: Flind then reads the content from Customer.io itself. "
             "Without either, messages import with empty content."
         ),
     )
@@ -89,14 +89,14 @@ class WorkflowImportRequestSerializer(serializers.Serializer):
         required=False,
         default=dict,
         help_text="Customer.io snippet name to its content, inlined where a message uses `{{ snippets.name }}`. "
-        "When PostHog reads the message content with a stored Customer.io App API key, it reads the snippets too.",
+        "When Flind reads the message content with a stored Customer.io App API key, it reads the snippets too.",
     )
     segment_cohorts = serializers.DictField(
         child=serializers.IntegerField(),
         required=False,
         default=dict,
         help_text=(
-            "Customer.io segment id to the PostHog cohort that replaces it. Segment triggers and segment "
+            "Customer.io segment id to the Flind cohort that replaces it. Segment triggers and segment "
             "conditions with no cohort here are left for the team to set."
         ),
     )
@@ -123,7 +123,7 @@ class WorkflowImportRequestSerializer(serializers.Serializer):
         default=list,
         help_text=(
             "Customer.io sender identities, from `GET /v1/environments/{environment_id}/identities?type=email`. "
-            "Each email gets the PostHog sender with the same address."
+            "Each email gets the Flind sender with the same address."
         ),
     )
     segments = CustomerioSegmentSerializer(
@@ -145,7 +145,7 @@ class WorkflowImportNoteSerializer(serializers.Serializer):
     level = serializers.ChoiceField(
         choices=WorkflowImportNoteLevel.choices,
         help_text=(
-            "`approximated`: the step behaves differently in PostHog. `unsupported`: the setting was left out. "
+            "`approximated`: the step behaves differently in Flind. `unsupported`: the setting was left out. "
             "`needs_input`: the team must set something before enabling."
         ),
     )
@@ -177,7 +177,7 @@ class WorkflowImportResultSerializer(serializers.Serializer):
 class WorkflowImportResponseSerializer(serializers.Serializer):
     results = WorkflowImportResultSerializer(many=True, help_text="One result per automation, in request order.")
     content_fetched = serializers.BooleanField(
-        help_text="True when PostHog read message content from Customer.io with the project's stored App API key."
+        help_text="True when Flind read message content from Customer.io with the project's stored App API key."
     )
 
 
@@ -206,7 +206,7 @@ class WorkflowImportViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
         description=(
             "Turns Customer.io automations into draft workflows. Pass each automation as Customer.io's Journeys UI "
             "API returns it. Pass the templates its messages use, or leave them out when the project stored a "
-            "Customer.io App API key, and PostHog reads them. Each result lists what the import changed or "
+            "Customer.io App API key, and Flind reads them. Each result lists what the import changed or "
             "left out. Importing an automation again updates its draft, unless that workflow is no longer a draft. "
             "Set dry_run to preview without saving."
         ),

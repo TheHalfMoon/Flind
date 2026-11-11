@@ -21,7 +21,7 @@ import {
     type OAuthRefreshToken,
 } from './tokens'
 
-// hog's CIMD client ID: the URL of its client metadata document, which PostHog fetches.
+// hog's CIMD client ID: the URL of its client metadata document, which Flind fetches.
 export const HOG_CLIENT_ID = 'https://posthog.com/.well-known/oauth/hog/client-metadata.json'
 
 const REQUEST_TIMEOUT_MS = 30_000
@@ -124,7 +124,7 @@ export class OAuthLogin implements AccessKey {
         if (refreshToken === undefined) {
             throw new HogError(
                 'unexpected_response',
-                'PostHog answered without a refresh token.',
+                'Flind answered without a refresh token.',
                 'Run `hog auth login` to log in again.'
             )
         }
@@ -158,7 +158,7 @@ export class OAuthLogin implements AccessKey {
         return this.expiresAt - runtime.now() > REFRESH_MARGIN_MS
     }
 
-    // When PostHog rotates refresh tokens, it revokes the whole login if a rotated refresh token is
+    // When Flind rotates refresh tokens, it revokes the whole login if a rotated refresh token is
     // used again, so two hog processes must never refresh at once: the refresh runs under a lock
     // file, and re-reads the stored login inside it to pick up a token another process just stored.
     async fresh(runtime: Runtime, storage: AccessKeyStorage, rejectedToken?: string): Promise<AccessKey> {
@@ -191,7 +191,7 @@ export class OAuthLogin implements AccessKey {
                 return current
             }
             const renewed = await current.refresh(runtime).catch((error: unknown) => {
-                // A lost answer may hide a rotation that already happened. PostHog takes the old
+                // A lost answer may hide a rotation that already happened. Flind takes the old
                 // refresh token again during its grace period, so one retry recovers the new tokens.
                 if (error instanceof HogError && error.code === 'network_error') {
                     return current.refresh(runtime)
@@ -201,7 +201,7 @@ export class OAuthLogin implements AccessKey {
             try {
                 await storage.save(renewed)
             } catch {
-                // PostHog already replaced the refresh token, so a lost write ends the login once the
+                // Flind already replaced the refresh token, so a lost write ends the login once the
                 // grace period passes. One more try covers a keychain that failed for a moment.
                 await storage.save(renewed)
             }
@@ -209,7 +209,7 @@ export class OAuthLogin implements AccessKey {
         })
     }
 
-    // PostHog issued this login moments ago, so there is nothing to check.
+    // Flind issued this login moments ago, so there is nothing to check.
     async verify(): Promise<OAuthLogin> {
         return this
     }
@@ -223,7 +223,7 @@ export class OAuthLogin implements AccessKey {
         if (response.ok) {
             const body = parseOrThrow(TokenResponse, response.json, {
                 code: 'unexpected_response',
-                context: "PostHog's answer to the renewal isn't what hog expects.",
+                context: "Flind's answer to the renewal isn't what hog expects.",
                 hint: 'Run `hog auth login` to log in again.',
             })
             return OAuthLogin.fromTokens(runtime, body, this)
@@ -237,7 +237,7 @@ export class OAuthLogin implements AccessKey {
         }
         throw new HogError(
             'refresh_failed',
-            `PostHog didn't renew your login: it answered with HTTP ${response.status}.`,
+            `Flind didn't renew your login: it answered with HTTP ${response.status}.`,
             'Run the command again. If it keeps failing, run `hog auth login`.'
         )
     }
@@ -247,7 +247,7 @@ export class OAuthLogin implements AccessKey {
             kind: 'oauth',
             scopes: this.scopes,
             expiresAt: this.expiresAt,
-            rejected: 'PostHog rejected the token. Someone may have revoked it.',
+            rejected: 'Flind rejected the token. Someone may have revoked it.',
             fix: 'hog auth login',
             provider: null,
         }
@@ -258,7 +258,7 @@ export class OAuthLogin implements AccessKey {
         return { scopes: this.scopes, scopedTeams: [Number(this.projectId)], scopedOrganizations: [] }
     }
 
-    // Revoking the refresh token ends this login: PostHog revokes its access tokens with it.
+    // Revoking the refresh token ends this login: Flind revokes its access tokens with it.
     async logout(runtime: Runtime): Promise<LogoutOutcome> {
         let revoked = false
         try {

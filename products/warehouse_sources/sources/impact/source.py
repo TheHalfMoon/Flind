@@ -54,7 +54,7 @@ class ImpactSource(ResumableSource[ImpactSourceConfig, ImpactResumeConfig]):
             keywords=["impact.com", "impact radius"],
             label="impact.com",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your impact.com Account SID and Auth Token to pull your partnership data into the PostHog Data warehouse.
+            caption="""Enter your impact.com Account SID and Auth Token to pull your partnership data into the Flind Data warehouse.
 
 Find these in impact.com under **Settings > Technical > API**. Create a Read-Only access token, then copy its Account SID and Auth Token below.
 
@@ -98,7 +98,7 @@ If your account is a partner (publisher) account, use the impact.com Partner sou
     def get_retryable_errors(self) -> set[str]:
         # `_fetch` reads over the tracked session, whose `DEFAULT_RETRY` adapter already retries a
         # 429 or 5xx three times. A response that still reaches us is an exhausted upstream blip —
-        # transient, not a PostHog bug — and Temporal retries the whole activity, so the sync
+        # transient, not a Flind bug — and Temporal retries the whole activity, so the sync
         # self-recovers. `DEFAULT_RETRY.status_forcelist` classes 429 as transient too, so match it
         # here as well or an exhausted rate limit still pages the team. `raise_for_status` derives
         # the "429 Client Error"/"Server Error" prefixes from the status code alone, so they are

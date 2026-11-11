@@ -507,7 +507,7 @@ export const workloadTrustPoliciesLogic = kea<workloadTrustPoliciesLogicType>([
                 actions.setEditingPolicyValues({ subject: '', subject_name: '' })
                 actions.setConditionRows(defaultConditionRows(values.editingProvider))
             }
-            // A new name needs its own ID, so an ID PostHog found for another name is never saved under it.
+            // A new name needs its own ID, so an ID Flind found for another name is never saved under it.
             const lookup = values.subjectLookup
             if (
                 field === 'subject_name' &&

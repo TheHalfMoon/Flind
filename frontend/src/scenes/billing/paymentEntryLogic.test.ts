@@ -361,7 +361,7 @@ describe('paymentEntryLogic', () => {
         })
     })
 
-    describe('startPaymentEntryFlow — billing locked outside PostHog', () => {
+    describe('startPaymentEntryFlow — billing locked outside Flind', () => {
         it.each<{ name: string; billing: Partial<BillingType> }>([
             {
                 name: 'a partner manages billing',

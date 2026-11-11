@@ -73,7 +73,7 @@ The 64 processor partitions that markers count are unrelated to the partitions o
 
 ## The `cohort_membership` table
 
-The table lives in a dedicated Postgres database for behavioral cohorts, separate from the main PostHog database.
+The table lives in a dedicated Postgres database for behavioral cohorts, separate from the main Flind database.
 If the Node service has no URL for that database, it silently writes to the main Postgres instead.
 
 ```text

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 
 class BillingUsageRecordsTable(Table):
-    """Usage records emitted by PostHog product services.
+    """Usage records emitted by Flind product services.
 
     HogQL applies its standard ``team_id`` guard to this table, so records are
     visible only in the project that produced them.

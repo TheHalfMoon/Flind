@@ -45,7 +45,7 @@ class TestMetricEventNotIngested(TestCase):
             (
                 "a_name_without_a_definition_is_left_out",
                 _context(REVENUE, received={}),
-                not_checked("Couldn't check because PostHog keeps no record of these event names"),
+                not_checked("Couldn't check because Flind keeps no record of these event names"),
             ),
             ("ended", _context(REVENUE, received={"purchase": False}, **ENDED), not_applicable(NOT_AFTER_END)),
             (

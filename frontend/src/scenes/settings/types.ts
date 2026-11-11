@@ -376,7 +376,7 @@ export type Setting = {
      */
     organizationAdminOnly?: boolean
 
-    /** Shows the setting only to PostHog staff. The API it calls must enforce the same check. */
+    /** Shows the setting only to Flind staff. The API it calls must enforce the same check. */
     staffOnly?: boolean
 
     /**
@@ -391,7 +391,7 @@ export type Setting = {
     /** Plaintext description for search indexing when `description` is JSX */
     searchDescription?: string
 
-    /** URL to relevant PostHog documentation */
+    /** URL to relevant Flind documentation */
     docsUrl?: string
 
     /** Platform/SDK availability rendered as badges to the right of the title */

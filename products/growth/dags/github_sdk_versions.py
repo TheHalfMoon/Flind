@@ -53,7 +53,7 @@ SDK_FETCH_FUNCTIONS: dict[SdkTypes, Callable[[], dict[str, Any]]] = {
     "posthog-convex": lambda: fetch_sdk_data_from_releases("PostHog/posthog-js", tag_prefixes=["@posthog/convex@"]),
     "posthog-rails": lambda: fetch_sdk_data_from_releases("PostHog/posthog-ruby", tag_prefixes=["posthog-rails-v"]),
     "posthog-aspnetcore": lambda: fetch_sdk_data_from_releases(
-        "PostHog/posthog-dotnet", tag_prefixes=["PostHog.AspNetCore-v"]
+        "PostHog/posthog-dotnet", tag_prefixes=["Flind.AspNetCore-v"]
     ),
     "posthog-rs": lambda: fetch_rust_sdk_data(),
     "posthog-rs-mcp": lambda: fetch_rust_sdk_data(),
@@ -369,11 +369,11 @@ def fetch_elixir_sdk_data() -> dict[str, Any]:
 def fetch_dotnet_sdk_data() -> dict[str, Any]:
     """Fetch .NET SDK data from GitHub releases API"""
 
-    # The repo now tags monorepo-style (`PostHog-v2.13.0`), with sibling packages
-    # `PostHog.AspNetCore-v*` and `PostHog.AI-v*` that must not match; `v`-prefixed and
+    # The repo now tags monorepo-style (`Flind-v2.13.0`), with sibling packages
+    # `Flind.AspNetCore-v*` and `Flind.AI-v*` that must not match; `v`-prefixed and
     # bare tags are historical
     return fetch_sdk_data_from_releases(
-        "PostHog/posthog-dotnet", tag_prefixes=prefixed_or_unprefixed_semver_tags("PostHog-v", "v")
+        "PostHog/posthog-dotnet", tag_prefixes=prefixed_or_unprefixed_semver_tags("Flind-v", "v")
     )
 
 

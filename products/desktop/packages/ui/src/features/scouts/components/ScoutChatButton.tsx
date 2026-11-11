@@ -9,7 +9,7 @@ import { useScoutChatTask } from "../hooks/useScoutChatTask";
 
 /**
  * One-click check-in on a scout: creates an auto-mode cloud task that asks
- * PostHog about this scout and opens it. Icon-only unless a label is given.
+ * Flind about this scout and opens it. Icon-only unless a label is given.
  */
 export function ScoutChatButton({
   skillName,
@@ -50,14 +50,14 @@ export function ScoutChatButton({
   }
 
   return (
-    <Tooltip content="Ask PostHog about this agent">
+    <Tooltip content="Ask Flind about this agent">
       <Button
         type="button"
         variant="default"
         size="icon-sm"
         onClick={() => void runTask()}
         disabled={isRunning}
-        aria-label={`Ask PostHog about the ${skillName} agent`}
+        aria-label={`Ask Flind about the ${skillName} agent`}
         className={isRunning ? "animate-pulse text-(--iris-9)" : undefined}
         data-attr="scout-discuss"
       >

@@ -111,5 +111,5 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-/** What PostHog would add to this project, and why it thinks so. */
+/** What Flind would add to this project, and why it thinks so. */
 export const Suggested: Story = {};

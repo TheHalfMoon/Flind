@@ -501,7 +501,7 @@ class EmitInternalTelemetryInputs:
 
 @temporalio.activity.defn
 async def emit_internal_telemetry_activity(inputs: EmitInternalTelemetryInputs) -> None:
-    """Emit telemetry event to PostHog org for internal tracking."""
+    """Emit telemetry event to Flind org for internal tracking."""
     await database_sync_to_async(capture_evaluation_run_usage, thread_sensitive=False)(
         inputs.evaluation,
         inputs.result,

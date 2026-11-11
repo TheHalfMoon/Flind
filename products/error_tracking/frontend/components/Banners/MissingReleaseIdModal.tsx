@@ -51,7 +51,7 @@ export function MissingReleaseIdModal({ eventId, runtime }: MissingReleaseIdModa
                             later, then deploy again.
                         </>
                     ) : (
-                        <>Update your PostHog SDK to the latest version, then deploy again.</>
+                        <>Update your Flind SDK to the latest version, then deploy again.</>
                     )}
                 </p>
                 <LemonButton

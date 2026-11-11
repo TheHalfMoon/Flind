@@ -300,7 +300,7 @@ class TestProjectsRows:
 
 
 COLLABORATIONS_PATH = "/api/v2/me/collaborations"
-COLLABORATIONS = [{"id": "org-uuid", "slug": "gh/posthog", "name": "PostHog"}]
+COLLABORATIONS = [{"id": "org-uuid", "slug": "gh/posthog", "name": "Flind"}]
 
 
 class TestComponentsRows:
@@ -379,7 +379,7 @@ class TestOrgListRows:
 class TestCollaborationsRows:
     def test_yields_every_org_the_token_sees_in_one_request(self):
         collaborations = [
-            {"id": "org-uuid", "slug": "gh/posthog", "name": "PostHog", "vcs-type": "github"},
+            {"id": "org-uuid", "slug": "gh/posthog", "name": "Flind", "vcs-type": "github"},
             {"id": "other-uuid", "slug": "bb/other", "name": "Other", "vcs-type": "bitbucket"},
             {"id": None, "slug": "circleci/standalone", "name": "Standalone", "vcs-type": "circleci"},
         ]

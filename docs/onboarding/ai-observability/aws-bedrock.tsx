@@ -37,7 +37,7 @@ export const getAWSBedrockSteps = (ctx: OnboardingComponentsContext): StepDefini
                             {
                                 language: PROSE_LANGUAGE,
                                 file: 'Go',
-                                code: "There are no Go instrumentation libraries for the AWS SDK yet. Register PostHog's span processor and set the `gen_ai.*` attributes on a span around each Bedrock call, as shown in the Go tab of the [OpenTelemetry integration](https://posthog.com/docs/ai-observability/installation/opentelemetry).",
+                                code: "There are no Go instrumentation libraries for the AWS SDK yet. Register Flind's span processor and set the `gen_ai.*` attributes on a span around each Bedrock call, as shown in the Go tab of the [OpenTelemetry integration](https://posthog.com/docs/ai-observability/installation/opentelemetry).",
                             },
                         ]}
                     />
@@ -50,7 +50,7 @@ export const getAWSBedrockSteps = (ctx: OnboardingComponentsContext): StepDefini
             content: (
                 <>
                     <Markdown>
-                        Configure the OpenTelemetry SDK to export traces to PostHog's OTLP ingestion endpoint. PostHog
+                        Configure the OpenTelemetry SDK to export traces to Flind's OTLP ingestion endpoint. Flind
                         converts `gen_ai.*` spans into `$ai_generation` events automatically.
                     </Markdown>
 
@@ -192,7 +192,7 @@ export const getAWSBedrockSteps = (ctx: OnboardingComponentsContext): StepDefini
                     <Blockquote>
                         <Markdown>
                             **Note:** To capture LLM events anonymously, omit the `posthog.distinct_id` resource
-                            attribute and don't set a distinct ID in the PostHog context. See our docs on [anonymous vs
+                            attribute and don't set a distinct ID in the Flind context. See our docs on [anonymous vs
                             identified events](https://posthog.com/docs/data/anonymous-vs-identified-events) to learn
                             more.
                         </Markdown>

@@ -2,14 +2,14 @@
 
 Framework-free and source-agnostic on purpose: the upload endpoint and the table-create endpoint
 (both in ``data_warehouse``) share this key layout, so it has to live in exactly one place. Uploads
-land in PostHog's own data warehouse bucket, namespaced by team then by a per-upload id, which is
+land in Flind's own data warehouse bucket, namespaced by team then by a per-upload id, which is
 what keeps a table's read path scoped to its own team's files.
 
 An uploaded file becomes a self-managed ``DataWarehouseTable`` pointing straight at the stored
-object: PostHog reads it in place from its own bucket. A team with the object storage sources also
+object: Flind reads it in place from its own bucket. A team with the object storage sources also
 gets a file upload source that imports the file into a managed table (see ``file_upload_sources``).
 
-Every key is built from a team id that PostHog supplies, never from request input. The parts a
+Every key is built from a team id that Flind supplies, never from request input. The parts a
 client sends (the upload id and the filename) go through ``UploadLocation`` before they reach a key,
 so a crafted value can't name an object outside the team's own folder.
 """
@@ -62,7 +62,7 @@ FILE_FORMAT_READ_HINTS: dict[str, str] = {
 }
 
 # Cap on uploads streamed through the web pod. Larger datasets belong on a self-managed S3/GCS
-# source, where PostHog reads the customer's bucket directly instead of hosting the bytes.
+# source, where Flind reads the customer's bucket directly instead of hosting the bytes.
 MAX_UPLOAD_SIZE_BYTES = 50 * 1024 * 1024
 
 
@@ -91,7 +91,7 @@ def build_file_upload_url_pattern(team_id: int, upload_id: str, filename: str) -
     """``https://`` URL used as the self-managed table's ``url_pattern``.
 
     This is the form `DataWarehouseTable.get_columns` builds its ClickHouse s3 table function from.
-    The object lives in PostHog's own bucket, so the table carries no credential and reads fall back
+    The object lives in Flind's own bucket, so the table carries no credential and reads fall back
     to the node role — never a user-supplied key. Built server-side from the source's own team, so a
     client-supplied ``upload_id`` can only ever resolve inside that team's folder.
     """
@@ -100,7 +100,7 @@ def build_file_upload_url_pattern(team_id: int, upload_id: str, filename: str) -
 
 def hosted_upload_s3_path(url_pattern: str) -> str | None:
     """The bucket-qualified ``bucket/key`` path (the form s3fs takes) backing a self-managed table
-    whose file PostHog hosts in its own data warehouse bucket, or ``None`` when the table reads from
+    whose file Flind hosts in its own data warehouse bucket, or ``None`` when the table reads from
     anywhere else — most importantly a customer-linked S3/GCS bucket, which is never ours to delete.
 
     The gate is the URL host: only ``url_pattern``s under ``DATAWAREHOUSE_BUCKET_DOMAIN`` are hosted
@@ -140,7 +140,7 @@ def _validate_team_id(team_id: object) -> None:
 
 @frozen
 class UploadLocation:
-    """One uploaded file in PostHog's bucket: `file_uploads/team_<team_id>/<upload_id>/<filename>`."""
+    """One uploaded file in Flind's bucket: `file_uploads/team_<team_id>/<upload_id>/<filename>`."""
 
     team_id: int
     upload_id: str
@@ -207,7 +207,7 @@ HostedUpload = UploadLocation | LegacyUpload
 def parse_hosted_upload(team_id: int, url_pattern: str) -> HostedUpload | None:
     """The uploaded file one of `team_id`'s tables reads, or None when its URL names anything else.
 
-    Exact on purpose: other objects in PostHog's bucket (synced tables, materialized views) and other
+    Exact on purpose: other objects in Flind's bucket (synced tables, materialized views) and other
     teams' uploads give None, so a caller that copies or deletes the result only ever touches a file
     this team uploaded.
     """

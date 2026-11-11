@@ -89,7 +89,7 @@ def _root_message(
     )
     return SlackAppOnboardingMessage(
         kind="root",
-        text="PostHog is set up" if ready else "Set up PostHog in Slack",
+        text="Flind is set up" if ready else "Set up Flind in Slack",
         blocks=blocks,
         ts=ts,
         root_status=_progress(checked),
@@ -282,7 +282,7 @@ def remind_onboarding(integration: WorkspaceIntegration, slack_user_id: str) -> 
     if current is None or not current.shown:
         return
     text = (
-        f"<@{slack_user_id}> Your PostHog setup is waiting at step {current.number} of {len(checked)}, "
+        f"<@{slack_user_id}> Your Flind setup is waiting at step {current.number} of {len(checked)}, "
         f"{current.step.title}. Pick it up above when you have a minute, or skip the steps you don't need."
     )
     SlackIntegration(integration).client.chat_postMessage(

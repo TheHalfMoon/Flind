@@ -29,7 +29,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                 </Markdown>
                 <Markdown>
                     {dedent`
-                        You can autocapture exceptions by configuring the \`errorTrackingConfig\` when setting up PostHog:
+                        You can autocapture exceptions by configuring the \`errorTrackingConfig\` when setting up Flind:
                     `}
                 </Markdown>
                 <CodeBlock
@@ -59,7 +59,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                         | --- | --- |
                         | \`captureFlutterErrors\` | Captures Flutter framework errors (\`FlutterError.onError\`) |
                         | \`capturePlatformDispatcherErrors\` | Captures Dart runtime errors (\`PlatformDispatcher.onError\`). Web not supported. |
-                        | \`captureIsolateErrors\` | Captures errors from the isolate where PostHog is set up. Spawn background isolates paused and call \`isolate.addPostHogErrorListener()\` before resuming them to capture their errors. Web not supported. |
+                        | \`captureIsolateErrors\` | Captures errors from the isolate where Flind is set up. Spawn background isolates paused and call \`isolate.addPostHogErrorListener()\` before resuming them to capture their errors. Web not supported. |
                         | \`captureNativeExceptions\` | Captures native exceptions. Android (Java/Kotlin) and Apple platforms (iOS, macOS, tvOS). |
                         | \`captureSilentFlutterErrors\` | Captures Flutter errors that are marked as silent. Default: false. |
                     `}
@@ -90,7 +90,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                                 // Your awesome code that may throw
                                 await someRiskyOperation();
                               } catch (exception, stackTrace) {
-                                // Capture the exception with PostHog
+                                // Capture the exception with Flind
                                 await Posthog().captureException(
                                   error: exception,
                                   stackTrace: stackTrace,
@@ -110,7 +110,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
 
                         ### Error tracking configuration
 
-                        You can configure error tracking behavior when setting up PostHog:
+                        You can configure error tracking behavior when setting up Flind:
                     `}
                 </Markdown>
                 <CalloutBox type="fyi" title="Flutter web apps use minified stack trace frames">
@@ -146,7 +146,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                         | \`inAppExcludes\` | List of package names to be excluded from inApp frames |
                         | \`inAppByDefault\` | Whether frames are considered inApp by default when their origin cannot be determined |
 
-                        \`inApp\` frames are stack trace frames that belong to your application code (as opposed to third-party libraries or system code). These are highlighted in the PostHog error tracking interface to help you focus on the relevant parts of the stack trace.
+                        \`inApp\` frames are stack trace frames that belong to your application code (as opposed to third-party libraries or system code). These are highlighted in the Flind error tracking interface to help you focus on the relevant parts of the stack trace.
                     `}
                 </Markdown>
             </>
@@ -160,9 +160,9 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
         content: (
             <Markdown>
                 {dedent`
-                    Before proceeding, let's make sure exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Before proceeding, let's make sure exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),
@@ -175,7 +175,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             <>
                 <Markdown>
                     {dedent`
-                        Flutter writes Dart debug symbols for release builds when you pass \`--split-debug-info\`. Upload the symbols for each build you ship so PostHog can show Dart function names and line numbers for Android and iOS exceptions. Add \`--obfuscate\` to the build command if you obfuscate your app.
+                        Flutter writes Dart debug symbols for release builds when you pass \`--split-debug-info\`. Upload the symbols for each build you ship so Flind can show Dart function names and line numbers for Android and iOS exceptions. Add \`--obfuscate\` to the build command if you obfuscate your app.
                     `}
                 </Markdown>
                 <CodeBlock

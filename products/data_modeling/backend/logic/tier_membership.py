@@ -4,7 +4,7 @@ Neither the warehouse mirror nor the node's stored `target_seconds` is reliable 
 mirror lags on deletes, and a node can carry a target the last reconcile never wrote into a live
 schedule. The only authoritative record of what a tier will materialize is the `node_ids` list in
 the tier's Temporal schedule payload — which is Fernet-encrypted, so it must be read through a
-codec-configured client (the standard PostHog Temporal client decodes it transparently).
+codec-configured client (the standard Flind Temporal client decodes it transparently).
 
 This module reads those live `node_ids` and compares them against what reconcile *would* schedule
 (`compute_effective_cadences`), so a node that has a target but is missing from every live tier is

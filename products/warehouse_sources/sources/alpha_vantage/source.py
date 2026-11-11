@@ -120,7 +120,7 @@ class AlphaVantageSource(SimpleSource[AlphaVantageSourceConfig]):
             label="Alpha Vantage",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["stocks", "market data", "financial", "equities", "fundamentals"],
-            caption="""Enter your Alpha Vantage API key and the stock symbols you want to track to pull market data and company fundamentals into the PostHog Data warehouse.
+            caption="""Enter your Alpha Vantage API key and the stock symbols you want to track to pull market data and company fundamentals into the Flind Data warehouse.
 
 You can claim a free API key on the [Alpha Vantage support page](https://www.alphavantage.co/support/#api-key).
 

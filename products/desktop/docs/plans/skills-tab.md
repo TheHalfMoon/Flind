@@ -14,7 +14,7 @@ the rest of a skill directory (`references/`, `scripts/`).
 
 This plan turns the tab into a full skill manager across seven stacked PRs:
 full multi-file rendering, CRUD for user/repo skills, live refresh, validation,
-skills.sh marketplace browse + install, PostHog cloud team skills via the
+skills.sh marketplace browse + install, Flind cloud team skills via the
 existing `LLMSkill` API, and Codex skills unification.
 
 ## Goals
@@ -24,7 +24,7 @@ existing `LLMSkill` API, and Codex skills unification.
 - Render skills as what they are: directories (`SKILL.md` + `references/` +
   `scripts/` + assets), not a single markdown file.
 - Browse and install community skills from skills.sh without leaving the app.
-- Publish skills to the team and consume team skills via the existing PostHog
+- Publish skills to the team and consume team skills via the existing Flind
   cloud `LLMSkill` API.
 - Unify with Codex: read the user's Codex skills, import them, and mirror
   user skills out so they work in any agent. Bring your skills, use them
@@ -32,7 +32,7 @@ existing `LLMSkill` API, and Codex skills unification.
 
 ## Non-goals (explicitly out of scope)
 
-- **No changes to the official PostHog skills pipeline.** The
+- **No changes to the official Flind skills pipeline.** The
   `agent-skills-latest` release, `skills.zip`, the context-mill omnibus zips,
   `update-skills-saga.ts`, and the 30-minute refresh stay exactly as they are.
   No manifest, no versioning added to that channel.
@@ -57,14 +57,14 @@ existing `LLMSkill` API, and Codex skills unification.
 4. **Write-path guards live in workspace-server**, not the UI. Every mutation
    validates the target resolves under a writable skills root.
 5. **Standard layering** (per `AGENTS.md`): fs/zip/watchers/HTTP-download in
-   `workspace-server` behind one-line tRPC forwards; PostHog cloud API calls in
+   `workspace-server` behind one-line tRPC forwards; Flind cloud API calls in
    a `core` service via injected `api-client`; pure decisions (validation,
    shadowing, list merging) in `core`; UI renders and calls one hook per
    query/mutation.
 
 ## Key findings (already verified)
 
-### PostHog cloud already has the skills model and API
+### Flind cloud already has the skills model and API
 
 No new Django models needed. In `PostHog/posthog`:
 
@@ -109,7 +109,7 @@ into it.
 | `repo` | `{repo}/.claude/skills` | yes | yes | Per workspace folder |
 | `marketplace` | plugin install paths | yes | **no** | Claude plugin manager owns these |
 | `codex` (new) | `~/.agents/skills` | yes | **no** (import to edit) | Deduped against bundled + mirrored names |
-| `team` (new) | PostHog cloud `LLMSkill` | yes | via publish | Install materializes a local copy |
+| `team` (new) | Flind cloud `LLMSkill` | yes | via publish | Install materializes a local copy |
 
 ---
 
@@ -283,10 +283,10 @@ Split into 5a (backend) / 5b (UI) if review size demands.
 
 ---
 
-### PR 6a — PostHog cloud team skills: read path
+### PR 6a — Flind cloud team skills: read path
 
 **posthog/posthog (separate small PR, the only non-Code work in this plan)**
-- Roll out / gate `LLM_ANALYTICS_SKILLS` for PostHog usage and confirm the
+- Roll out / gate `LLM_ANALYTICS_SKILLS` for Flind usage and confirm the
   desktop OAuth token carries `llm_skill:read` and `llm_skill:write` scopes.
   No model or endpoint changes.
 
@@ -345,7 +345,7 @@ Split into 5a (backend) / 5b (UI) if review size demands.
 **Write: your skills → Codex**
 - Extend the existing bundled→Codex sync to also mirror `~/.claude/skills`
   into `~/.agents/skills` (one-way, ours out). Skills created, edited, or
-  installed in PostHog become available to Codex sessions automatically.
+  installed in Flind become available to Codex sessions automatically.
 - Safety rule: never overwrite a skill in `~/.agents/skills` we didn't put
   there. Track mirrored names (small state file next to the existing sync), and
   on collision skip + surface the conflict in the tab.
@@ -370,7 +370,7 @@ Split into 5a (backend) / 5b (UI) if review size demands.
   workspace-server (PR 2). The read endpoints from PR 1 validate against
   discovered skill directories. Both get direct unit tests including `../`
   traversal.
-- Team skills inherit PostHog access control (`AccessControlPermission`, API
+- Team skills inherit Flind access control (`AccessControlPermission`, API
   scopes) — nothing custom on our side.
 
 ## Testing

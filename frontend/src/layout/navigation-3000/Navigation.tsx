@@ -37,7 +37,7 @@ export function Navigation({
     useLayoutEffect(() => (todayRail ? todayPanelChatSessionLogic.mount() : undefined), [todayRail])
 
     /**
-     * 'Today' is the new scene shell for PostHog.
+     * 'Today' is the new scene shell for Flind.
      *
      * Controlled under 'today-rail-nav' flag.
      */

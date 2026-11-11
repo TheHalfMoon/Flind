@@ -23,12 +23,12 @@ follow this workflow to systematically diagnose the cause.
 
 ## Diagnostic signals
 
-The PostHog SDK emits diagnostic properties on every event that explain the recording state.
+The Flind SDK emits diagnostic properties on every event that explain the recording state.
 See the [diagnostic signals reference](./references/diagnostic-signals.md) for the full list.
 
 The key signals are:
 
-- `$has_recording` — whether PostHog has a stored recording for this session
+- `$has_recording` — whether Flind has a stored recording for this session
 - `$recording_status` — SDK state: `active`, `buffering`, `disabled`, `sampled`, `paused`
 - `$session_recording_start_reason` — why recording started or didn't
 - `$sdk_debug_recording_script_not_loaded` — recorder script blocked (ad blocker)

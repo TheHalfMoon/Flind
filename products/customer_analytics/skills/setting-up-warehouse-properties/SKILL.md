@@ -4,7 +4,7 @@ description: >
   Populate person or group properties from a data warehouse table or materialized view, so warehouse columns
   become properties usable in feature flags, cohorts, and insights. Use when the user wants to "sync my Postgres
   columns to person properties", "map a warehouse table to people", "replace our daily identify cron", "update
-  person properties from the warehouse", or asks for reverse ETL into PostHog. Covers picking the table and the
+  person properties from the warehouse", or asks for reverse ETL into Flind. Covers picking the table and the
   identifier column, proposing a whole-table column mapping in one call, excluding identity and reserved
   properties, checking collisions with properties that already exist, and running the first backfill.
 ---
@@ -22,8 +22,8 @@ per column.
 ## When to use this skill
 
 - "Sync my `postgres.customer_attributes` columns to person properties"
-- "We send a daily identify job from our warehouse, can PostHog pull it instead?"
-- "Map this table to people" / "reverse ETL into PostHog"
+- "We send a daily identify job from our warehouse, can Flind pull it instead?"
+- "Map this table to people" / "reverse ETL into Flind"
 - The user is looking at Data → Warehouse properties and wants a whole table mapped
 
 Use `setting-up-a-data-warehouse-source` instead when the table is not in the warehouse yet. This skill starts
@@ -60,13 +60,13 @@ data to read and the create call rejects it.
 
 ### 2. Pick the identifier column, and say why it matters
 
-Ask which column holds the PostHog **distinct ID** (person targets) or the **group key** (group targets). This is
+Ask which column holds the Flind **distinct ID** (person targets) or the **group key** (group targets). This is
 the single most common reason a mapping silently does nothing, so do not guess it from a name like `id` or
 `user_id` without confirming.
 
 Two properties of the sync are worth stating plainly before the user commits:
 
-- It **only updates people or groups that already exist** in PostHog. Rows that match nobody are skipped, and
+- It **only updates people or groups that already exist** in Flind. Rows that match nobody are skipped, and
   the run reports them as `skipped_missing_person`. It does not create people.
 - **Null values are skipped, not written.** A column that is null for a row leaves that property as it was. If
   the user expects a null to clear a property, warehouse properties will not do it.
@@ -80,7 +80,7 @@ Exclude from the proposal, and say what you excluded:
 
 - **The identifier column.** Its values identify the person, they do not describe them.
 - **Anything `$`-prefixed, and `email`, `name`, `username`.** These are identity properties the SDKs set, and
-  writing them from the warehouse can overwrite what PostHog already knows.
+  writing them from the warehouse can overwrite what Flind already knows.
 - **Columns that would be sensitive as a person property.** Password hashes, tokens, internal audit columns, and
   anything the user would not want visible in the person profile UI. Flag them rather than dropping them
   silently, since only the user knows their schema.
@@ -131,7 +131,7 @@ A run that reads rows but shows `existing: 0` is the wrong-key-column case almos
 - A source that fails repeatedly is **disabled automatically** after five consecutive failures. Re-enabling it
   resets the streak and triggers a fresh backfill.
 - When that happens, the person who created the source gets a notification. If Customer analytics tasks are
-  available to them, PostHog also assigns them a task. The task reaches email only if they have turned the task
+  available to them, Flind also assigns them a task. The task reaches email only if they have turned the task
   digest on.
 - "Sync now" runs the underlying table, which for a synced table is a real, billable warehouse sync, and for a
   materialized view is a materialization. It is not a cheap no-op — do not call it to "check" a mapping when

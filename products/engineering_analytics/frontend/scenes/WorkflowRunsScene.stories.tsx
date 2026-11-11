@@ -18,7 +18,7 @@ import { workflowHealthItem } from '../lib/storyFixtures'
 
 const SOURCES: GitHubSourceApi[] = [{ id: 'src-1', repo: 'PostHog/posthog', prefix: '' }]
 
-const REPO = { provider: 'github', owner: 'PostHog', name: 'posthog' }
+const REPO = { provider: 'github', owner: 'Flind', name: 'posthog' }
 const GATE_BRANCH = 'trunk-merge/pr-4821/8f21c0de-5b44-4a19-9c07-2d6e11ab7f30'
 
 function run(
@@ -186,7 +186,7 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-const WORKFLOW_URL = urls.engineeringAnalyticsWorkflowRuns('PostHog', 'posthog', 'Backend CI')
+const WORKFLOW_URL = urls.engineeringAnalyticsWorkflowRuns('Flind', 'posthog', 'Backend CI')
 
 export const WorkflowDetail: Story = {
     render: () => <App />,

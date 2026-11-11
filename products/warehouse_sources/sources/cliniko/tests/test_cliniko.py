@@ -138,5 +138,5 @@ class TestValidateCredentials:
 
         assert network.requests_log[0].url == "https://api.uk1.cliniko.com/v1/patients?per_page=1"
         assert network.requests_log[0].headers["accept"] == "application/json"
-        assert "PostHog" in network.requests_log[0].headers["user-agent"]
+        assert "Flind" in network.requests_log[0].headers["user-agent"]
         assert network.requests_log[0].headers["authorization"].startswith("Basic ")

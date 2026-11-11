@@ -28,10 +28,10 @@ export function AiConsentSheet({
     const colors = useColors()
     const styles = useStyles()
     return (
-        <BottomSheet visible={visible} onClose={onNotNow} accessibilityLabel="PostHog AI" testID="chat-ai-consent">
+        <BottomSheet visible={visible} onClose={onNotNow} accessibilityLabel="Flind AI" testID="chat-ai-consent">
             <View style={styles.content}>
                 <Text style={styles.title} accessibilityRole="header">
-                    Before you use PostHog AI
+                    Before you use Flind AI
                 </Text>
                 <View style={styles.section}>
                     <Eyebrow>What is sent</Eyebrow>
@@ -43,7 +43,7 @@ export function AiConsentSheet({
                 <View style={styles.section}>
                     <Eyebrow>Where it goes</Eyebrow>
                     <Text style={styles.body}>
-                        PostHog AI, which uses third-party model providers such as Anthropic and OpenAI to process it.
+                        Flind AI, which uses third-party model providers such as Anthropic and OpenAI to process it.
                     </Text>
                 </View>
                 <Pressable44

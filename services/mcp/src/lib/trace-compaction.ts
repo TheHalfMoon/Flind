@@ -18,9 +18,9 @@
  * Truncating here keeps the response parseable and says what was dropped.
  *
  * Compaction is a client-boundary safeguard only — the underlying query and the
- * PostHog UI still have the complete, untruncated trace. Everything it shortens
+ * Flind UI still have the complete, untruncated trace. Everything it shortens
  * or drops is flagged so the agent can narrow the query or open the trace in
- * PostHog.
+ * Flind.
  */
 
 import { MCP_TOOL_OUTPUT_CHAR_BUDGET } from '@/lib/constants'
@@ -178,7 +178,7 @@ const SUMMARY_OMITTED_TRACE_FIELDS = new Set(['inputState', 'outputState'])
 const SUMMARY_OMITTED_KEYS_FIELD = '_summaryOmittedKeys'
 
 const SUMMARY_NOTE =
-    'Event content is omitted; only the names of the omitted properties are listed. Re-run this tool with detail: "full" for prompts, outputs, error messages, and feedback text, or open the trace in PostHog.'
+    'Event content is omitted; only the names of the omitted properties are listed. Re-run this tool with detail: "full" for prompts, outputs, error messages, and feedback text, or open the trace in Flind.'
 
 function metaReserveFor(budget: number): number {
     return Math.min(META_RESERVE, Math.floor(Math.max(0, budget) * SMALL_BUDGET_RESERVE_RATIO))
@@ -237,7 +237,7 @@ function truncateString(value: string, budget: number): string {
         return value
     }
     const dropped = value.length - kept.length
-    return `${kept}… [truncated ${dropped} of ${value.length} chars — open the trace in PostHog for the full value]`
+    return `${kept}… [truncated ${dropped} of ${value.length} chars — open the trace in Flind for the full value]`
 }
 
 interface Compacted {
@@ -391,7 +391,7 @@ function summarizeTraceFields(fields: Record<string, unknown>): void {
  *
  * Events are dropped from the tail. The backend orders events by timestamp,
  * which is not guaranteed to be parent-before-child order, so a truncated trace
- * may not be fully tree-reconstructable — hence the pointer back to PostHog.
+ * may not be fully tree-reconstructable — hence the pointer back to Flind.
  */
 export function compactTrace(trace: unknown, budget: number = MAX_TRACE_CHARS, detail: TraceDetail = 'full'): unknown {
     if (!isRecord(trace)) {
@@ -443,8 +443,8 @@ function compactTraceWithin(trace: Record<string, unknown>, budget: number, deta
     if (omitted > 0) {
         const note =
             detail === 'full'
-                ? 'Re-run with detail: "summary" for metadata alone. Summary responses can also omit events; narrow the query or open the trace in PostHog for the complete data.'
-                : 'Open the trace in PostHog for the complete, untruncated data, or narrow the query to the events you need.'
+                ? 'Re-run with detail: "summary" for metadata alone. Summary responses can also omit events; narrow the query or open the trace in Flind for the complete data.'
+                : 'Open the trace in Flind for the complete, untruncated data, or narrow the query to the events you need.'
         assignKey(base, '_truncated', {
             omittedEvents: omitted,
             totalEvents: events.length,
@@ -465,7 +465,7 @@ function minimalTracePlaceholder(trace: Record<string, unknown>): Record<string,
             omittedEvents: events.length,
             totalEvents: events.length,
             reason: 'Trace could not be compacted below the response size limit.',
-            note: 'Open the trace in PostHog for the complete, untruncated data, or narrow the query to the events you need.',
+            note: 'Open the trace in Flind for the complete, untruncated data, or narrow the query to the events you need.',
         },
     }
 }

@@ -32,7 +32,7 @@ export const getNextJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
                 <>
                     <Markdown>
                         Use `posthog-node` to evaluate feature flags on the server. The server-side SDK uses an async
-                        API and requires a `distinct_id` for each user. Initialize PostHog in your API route or server
+                        API and requires a `distinct_id` for each user. Initialize Flind in your API route or server
                         action:
                     </Markdown>
                     <CodeBlock
@@ -41,9 +41,9 @@ export const getNextJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                 language: 'typescript',
                                 file: 'app/api/example/route.ts',
                                 code: dedent`
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
 
-                                    const client = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
+                                    const client = new Flind(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
                                         host: process.env.NEXT_PUBLIC_POSTHOG_HOST
                                     })
                                 `,
@@ -67,7 +67,7 @@ export const getNextJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
             content: (
                 <Markdown>
                     Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run
-                    an experiment by creating a new experiment in the PostHog dashboard.
+                    an experiment by creating a new experiment in the Flind dashboard.
                 </Markdown>
             ),
         },

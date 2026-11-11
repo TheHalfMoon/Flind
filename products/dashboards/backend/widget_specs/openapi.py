@@ -410,7 +410,7 @@ class DashboardFiltersOpenApiSerializer(serializers.Serializer):
     )
     properties = serializers.JSONField(
         required=False,
-        help_text="Dashboard-level property filters applied to every tile (PostHog property filter group).",
+        help_text="Dashboard-level property filters applied to every tile (Flind property filter group).",
     )
     breakdown_filter = DashboardBreakdownFilterField(
         required=False,

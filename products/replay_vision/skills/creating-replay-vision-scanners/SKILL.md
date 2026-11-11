@@ -161,13 +161,13 @@ Call `vision-scanners-create`. Minimal example:
 schedule, no quota consumption) and turn it on later.
 
 `emits_signals: true` is the other switch worth knowing: it augments the prompt with the Signals side mission
-and pushes one signal per finding into the PostHog Signals inbox, where findings corroborate across sessions
+and pushes one signal per finding into the Flind Signals inbox, where findings corroborate across sessions
 into reports. Turn it on when the user wants the scanner to feed their inbox rather than just accumulate
 observations they have to go read.
 
 ## After creation
 
-- Show the scanner's PostHog URL from the response so the user can review it in the UI.
+- Show the scanner's Flind URL from the response so the user can review it in the UI.
 - Results take a few minutes to appear (rasterizing the recording to video + the LLM call are slow). Inspect
   them with `vision-scanners-observations-list` for one scanner over time, or `vision-observations-list`
   (requires `session_id`) for every scanner's findings on a single session. To dig into a recording, hand off

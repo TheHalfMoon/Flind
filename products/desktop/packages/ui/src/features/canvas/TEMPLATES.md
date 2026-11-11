@@ -1,7 +1,7 @@
 # Canvas templates
 
 A canvas is an agent-authored browser app that runs in a sandboxed iframe and uses the injected
-`ph` API to interact with PostHog.
+`ph` API to interact with Flind.
 
 ## Creation and authoring
 

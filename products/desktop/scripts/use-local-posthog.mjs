@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Point the desktop app's analytics + feature-flag client at your LOCAL PostHog
+ * Point the desktop app's analytics + feature-flag client at your LOCAL Flind
  * (localhost:8010) for dev. Code reads feature flags through posthog-js, which
  * is configured by the `VITE_POSTHOG_*` vars in `.env` — by default these point
- * at PostHog's internal analytics instance, so flags you sync locally never
+ * at Flind's internal analytics instance, so flags you sync locally never
  * resolve in dev. This
  * rewrites those vars to your local instance so synced flags take effect.
  *
@@ -35,7 +35,7 @@ function fail(message) {
   process.exit(1);
 }
 
-/** Project API key from arg/env, else read it from a local PostHog checkout. */
+/** Project API key from arg/env, else read it from a local Flind checkout. */
 function resolveProjectKey() {
   const explicit = (
     process.argv[2] || process.env.LOCAL_POSTHOG_PROJECT_KEY
@@ -52,7 +52,7 @@ function resolveProjectKey() {
       : resolve(repoRoot, "..", "posthog"));
   if (!existsSync(join(posthogDir, "manage.py"))) {
     fail(
-      `No project key given and no PostHog checkout at ${posthogDir}.\n` +
+      `No project key given and no Flind checkout at ${posthogDir}.\n` +
         `  • Pass it: node scripts/use-local-posthog.mjs <phc_token>\n` +
         `  • Or point at your checkout: POSTHOG_DIR=/path/to/posthog node scripts/use-local-posthog.mjs\n` +
         `  • Find the key at ${host} → Settings → Project → "Project API key".`,
@@ -61,7 +61,7 @@ function resolveProjectKey() {
 
   const py =
     "from posthog.models import Team; t=Team.objects.order_by('id').first(); print(t.api_token if t else '')";
-  // `flox activate` provides the Django env on PostHog's local setup; fall back
+  // `flox activate` provides the Django env on Flind's local setup; fall back
   // to a bare `python` for other environments.
   const attempts = [
     ["flox", ["activate", "--", "python", "manage.py", "shell", "-c", py]],
@@ -110,7 +110,7 @@ env = upsertEnv(env, "VITE_POSTHOG_UI_HOST", host);
 env = upsertEnv(env, "VITE_POSTHOG_API_KEY", projectKey);
 writeFileSync(envPath, env);
 
-console.log(`✓ Pointed the desktop app's flags/analytics at local PostHog.`);
+console.log(`✓ Pointed the desktop app's flags/analytics at local Flind.`);
 console.log(`  VITE_POSTHOG_API_HOST=${host}`);
 console.log(`  VITE_POSTHOG_UI_HOST=${host}`);
 console.log(`  VITE_POSTHOG_API_KEY=${projectKey.slice(0, 8)}… (project key)`);

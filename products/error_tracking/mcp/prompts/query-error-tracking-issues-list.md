@@ -19,7 +19,7 @@ Be minimalist. Only add filters needed to answer the user’s question. Do not a
 - `release`: exact release ID, release version, or git commit ID captured in `$exception_release`. This intentionally does not match project name, branch, or timestamp fragments.
 - `fingerprint`: exact `$exception_fingerprint` match.
 - `url`: substring match on `$current_url`.
-- `personId`: exact PostHog person UUID.
+- `personId`: exact Flind person UUID.
 - `user`: user/email text search.
 - `filePath`: stack-frame file/source text search.
 - `filterGroup`: advanced flat AND property filters. Prefer typed fields above when they fit. For severity, use type `error_tracking_issue`, key `severity`, and `exact`, `is_set`, or `is_not_set`.

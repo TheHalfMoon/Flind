@@ -121,7 +121,7 @@ export function intervalOptionsForWindow(
     })
 }
 
-// The interval to group by: the pinned choice when it still suits the window, else PostHog's
+// The interval to group by: the pinned choice when it still suits the window, else Flind's
 // auto-choice for the range. A pin survives date changes, so it has to give way when the window
 // outgrows it — hourly kept from a 12-hour window would otherwise chart a year hour by hour.
 export function resolveInterval(

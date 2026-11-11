@@ -101,7 +101,7 @@ export function LegalDocumentNewScene(): JSX.Element {
                     }}
                 />
                 <LemonBanner type="info">
-                    <p className="mb-0">Legal documents are only available on PostHog Cloud.</p>
+                    <p className="mb-0">Legal documents are only available on Flind Cloud.</p>
                 </LemonBanner>
             </SceneContent>
         )

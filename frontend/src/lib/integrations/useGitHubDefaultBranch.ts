@@ -10,7 +10,7 @@ export interface UseGitHubDefaultBranchProps {
     onChange: (value: string | null) => void
 }
 
-// Pre-select the repo's default branch once it's known and nothing is chosen yet (matches PostHog Desktop).
+// Pre-select the repo's default branch once it's known and nothing is chosen yet (matches Flind Desktop).
 // Only a picker still missing a branch pays for the upfront fetch that surfaces it. One that already has
 // its branch stays lazy, so a list of them doesn't fire a request per row.
 export function useGitHubDefaultBranch({ integrationId, repo, value, onChange }: UseGitHubDefaultBranchProps): void {

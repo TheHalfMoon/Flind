@@ -183,7 +183,7 @@ class TestEventDefinitionEnterpriseAPI(APIBaseTest):
 
     @parameterized.expand(
         [
-            # $pageview is a core PostHog event, so it's treated as verified
+            # $pageview is a core Flind event, so it's treated as verified
             ("verified_only", "true", ["$pageview", "entered_free_trial", "watched_movie"]),
             ("unverified_only", "false", ["purchase"]),
             ("all_when_not_specified", None, ["$pageview", "entered_free_trial", "purchase", "watched_movie"]),
@@ -461,7 +461,7 @@ class TestEventDefinitionEnterpriseAPI(APIBaseTest):
         # Fail once the second event is mid-flight, after the first has already been written.
         mock_log_activity.side_effect = [None, RuntimeError("boom")]
 
-        # The unhandled error surfaces as a 500 rather than propagating: PostHog's DRF exception
+        # The unhandled error surfaces as a 500 rather than propagating: Flind's DRF exception
         # handler catches it before the test client can re-raise.
         response = self.client.post(
             f"/api/projects/{self.demo_team.pk}/event_definitions/bulk_update_verified/",

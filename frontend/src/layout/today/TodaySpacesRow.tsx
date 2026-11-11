@@ -146,7 +146,7 @@ export function TodaySpacesRow({
                 {content}
             </SidebarOption>
             {badge && (
-                // Like PostHog Desktop, the badges sit at the end of the row.
+                // Like Flind Desktop, the badges sit at the end of the row.
                 <div className="absolute right-1 flex min-w-0 items-center gap-0.5">
                     <span className="flex shrink-0 items-center gap-1.5">{badge}</span>
                 </div>

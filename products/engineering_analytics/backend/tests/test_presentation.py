@@ -58,7 +58,7 @@ def _pr_lifecycle() -> contracts.PRLifecycle:
             number=10,
             title="PR 10",
             author=contracts.Author(handle="alice", display_name="alice", avatar_url="https://x", is_bot=False),
-            repo=contracts.RepoRef(provider="github", owner="PostHog", name="posthog"),
+            repo=contracts.RepoRef(provider="github", owner="Flind", name="posthog"),
             state=contracts.PRState.MERGED,
             is_draft=False,
             created_at=datetime(2026, 1, 10, tzinfo=UTC),
@@ -89,7 +89,7 @@ def _pr_list_item() -> contracts.PullRequestListItem:
         number=10,
         title="PR 10",
         author=contracts.Author(handle="alice", display_name="alice", avatar_url="https://x", is_bot=False),
-        repo=contracts.RepoRef(provider="github", owner="PostHog", name="posthog"),
+        repo=contracts.RepoRef(provider="github", owner="Flind", name="posthog"),
         state=contracts.PRState.OPEN,
         is_draft=False,
         created_at=datetime(2026, 1, 10, tzinfo=UTC),
@@ -106,7 +106,7 @@ def _pr_list_item() -> contracts.PullRequestListItem:
 
 def _workflow_health() -> contracts.WorkflowHealthItem:
     return contracts.WorkflowHealthItem(
-        repo=contracts.RepoRef(provider="github", owner="PostHog", name="posthog"),
+        repo=contracts.RepoRef(provider="github", owner="Flind", name="posthog"),
         workflow_name="CI",
         run_count=10,
         successful_run_count=9,
@@ -212,7 +212,7 @@ def _repo_overview() -> contracts.RepoOverview:
 
 def _workflow_run() -> contracts.WorkflowRunDetail:
     return contracts.WorkflowRunDetail(
-        repo=contracts.RepoRef(provider="github", owner="PostHog", name="posthog"),
+        repo=contracts.RepoRef(provider="github", owner="Flind", name="posthog"),
         id=7777,
         workflow_name="CI",
         head_sha="abc123def456",
@@ -723,7 +723,7 @@ class TestEngineeringAnalyticsAPI(APIBaseTest):
             # repo is required (a PR number is repo-scoped), consistent with pr_runs/pr_cost.
             ("pr_lifecycle_repo_missing", "pr_lifecycle", {"pr_number": "10"}),
             # Bare org (no '/name') would otherwise silently match the wrong repo.
-            ("pr_lifecycle_repo_malformed", "pr_lifecycle", {"pr_number": "10", "repo": "PostHog"}),
+            ("pr_lifecycle_repo_malformed", "pr_lifecycle", {"pr_number": "10", "repo": "Flind"}),
             ("resolve_branch_branch_missing", "resolve_branch", {}),
             ("workflow_run_run_id_invalid", "workflow_run", {"run_id": "not-a-number"}),
             ("workflow_run_engine_invalid", "workflow_run", {"run_id": "7777", "ci_engine": "unknown"}),

@@ -11,7 +11,7 @@ import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 
 // The data avenue behind a freeform canvas's `ph.*` shims. One-line forwards to
-// CanvasDataService, which injects the PostHog credentials host-side.
+// CanvasDataService, which injects the Flind credentials host-side.
 export const canvasDataRouter = router({
   query: publicProcedure
     .input(canvasDataQueryInput)

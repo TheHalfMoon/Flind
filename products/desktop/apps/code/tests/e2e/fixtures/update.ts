@@ -17,7 +17,7 @@ export const FEED_DIR = path.join(OUT_DIR, "dev-update-feed");
 export const CHAIN_FEED_DIR = path.join(OUT_DIR, "dev-update-feed-chain");
 export const CHAIN_RUN_FEED_DIR = path.join(OUT_DIR, "e2e-chain-feed");
 export const RUN_DIR = path.join(OUT_DIR, "e2e-update-run");
-export const RUN_APP = path.join(RUN_DIR, "PostHog.app");
+export const RUN_APP = path.join(RUN_DIR, "Flind.app");
 export const RUN_APP_BIN = path.join(RUN_APP, "Contents/MacOS/PostHog");
 
 // The "old" side of the Forge -> electron-builder test: a real Electron Forge
@@ -28,7 +28,7 @@ export const FORGE_PRISTINE_APP = path.join(
   "old-forge/PostHog Code.app",
 );
 export const FORGE_RUN_DIR = path.join(OUT_DIR, "e2e-update-forge-run");
-export const FORGE_RUN_APP = path.join(FORGE_RUN_DIR, "PostHog Code.app");
+export const FORGE_RUN_APP = path.join(FORGE_RUN_DIR, "Flind Code.app");
 export const FORGE_RUN_APP_BIN = path.join(
   FORGE_RUN_APP,
   "Contents/MacOS/PostHog Code",
@@ -186,7 +186,7 @@ export function shipItEvidence(): { exists: boolean; entries: string[] } {
   }
 }
 
-// The forge leg is "PostHog Code" pre-swap and "PostHog" post-swap, so match either name.
+// The forge leg is "Flind Code" pre-swap and "Flind" post-swap, so match either name.
 const APP_PROCESS_PATTERN = [FORGE_RUN_APP_BIN, RUN_APP_BIN]
   .map((bin) => path.basename(bin))
   .join("|");

@@ -1,4 +1,4 @@
-"""PostHog Review's data surface for its own views and for other products.
+"""Flind Review's data surface for its own views and for other products.
 
 Takes plain values and contracts, returns contracts. Keep heavy imports (Temporal, HogQL) off this
 module: they go in their own facade submodule.

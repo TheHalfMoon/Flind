@@ -89,7 +89,7 @@ class FusionAuthSource(ResumableSource[FusionAuthSourceConfig, FusionAuthResumeC
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="FusionAuth",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your FusionAuth instance's base URL and an API key to pull your FusionAuth data into the PostHog Data warehouse.
+            caption="""Enter your FusionAuth instance's base URL and an API key to pull your FusionAuth data into the Flind Data warehouse.
 
 You can create an API key in the FusionAuth admin UI under **Settings > API Keys**.
 

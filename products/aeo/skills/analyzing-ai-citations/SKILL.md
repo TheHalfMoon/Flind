@@ -1,19 +1,19 @@
 ---
 name: analyzing-ai-citations
 description: >
-  Answer AI citation and answer engine optimization (AEO) questions in PostHog: whether
+  Answer AI citation and answer engine optimization (AEO) questions in Flind: whether
   AI answer engines (ChatGPT, Claude, and an Exa retrieval baseline) cite the project's
   site for its tracked prompts, which topics and engines cite it least, which domains get
   cited instead, and whether citations line up with Google Search Console rankings and AI
   referral or AI crawler traffic. Use when the user asks "are we cited by AI?", "which
   prompts never cite us?", "citation rate by topic or engine", "who gets cited instead of
   us?", "do AI citations drive traffic?", or wants to cross-reference AI answers, Search
-  Console and PostHog web traffic.
+  Console and Flind web traffic.
 ---
 
 # Analyzing AI citations
 
-PostHog runs a set of tracked prompts against AI answer engines once a day and records,
+Flind runs a set of tracked prompts against AI answer engines once a day and records,
 per prompt and engine, whether the answer cited the project's own domain. Every citation
 question reduces to an aggregation over that record, optionally joined to two other
 sources: Google Search Console (a data warehouse source) and the project's own web traffic

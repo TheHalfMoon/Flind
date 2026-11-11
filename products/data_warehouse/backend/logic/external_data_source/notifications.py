@@ -26,7 +26,7 @@ MAX_SCHEMAS_PER_DIGEST_EMAIL = 30
 
 # A schema the user switched off is not a failure to chase: it will not run again, and nobody
 # asked it to. Its last status stays Failed for the syncs UI, so the digest cannot read status
-# alone. `auto_disabled_at` marks the other way syncing stops, where PostHog halted the schema
+# alone. `auto_disabled_at` marks the other way syncing stops, where Flind halted the schema
 # after an error that retrying would not fix; that one still needs the email, because only the
 # user can repair the source and turn syncing back on. CDC breakage halts a schema without
 # flipping `should_sync`, so it stays in the digest either way.

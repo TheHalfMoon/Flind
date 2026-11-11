@@ -51,11 +51,11 @@ export interface SkillLookupMiss {
     kind: SkillLookupMissKind
 }
 
-/** What the caller knows about the built-in PostHog skill catalog, which the
+/** What the caller knows about the built-in Flind skill catalog, which the
  *  store knows nothing about. Optional at every call site, because a connection
  *  that never loaded the catalog cannot claim a name is absent from it. */
 export interface BuiltInSkillHint {
-    /** True when the name is in the built-in PostHog skill catalog loaded by the server. */
+    /** True when the name is in the built-in Flind skill catalog loaded by the server. */
     isBuiltIn: (name: string) => boolean
     /** True when this connection can run `learn posthog:<skill>`. */
     learnAvailable: boolean
@@ -71,7 +71,7 @@ export interface BuiltInSkillHint {
  * that conclusion stops calling the skill tools at all, so the miss has to name
  * itself and point at the tool that lists what exists.
  *
- * Built-in PostHog skills are a separate catalog the store never held, so a tool
+ * Built-in Flind skills are a separate catalog the store never held, so a tool
  * description that says "load the `<name>` skill" sends an agent to `skill-get`
  * and the store answers 404. Pointing that agent at `skill-list` confirms the
  * wrong conclusion — that the skill does not exist — so a name the built-in
@@ -179,12 +179,12 @@ export function formatSkillLookupMiss(
             kind: 'builtin',
             message: hint.learnAvailable
                 ? [
-                      `"${skillName}" is a built-in PostHog skill, not a skill in this project's skills store.`,
+                      `"${skillName}" is a built-in Flind skill, not a skill in this project's skills store.`,
                       `Run \`learn posthog:${skillName}\` to load it.`,
                   ].join('\n')
                 : [
-                      `"${skillName}" is a built-in PostHog skill, not a skill in this project's skills store, and this connection cannot load built-in skills.`,
-                      `Read it from your installed PostHog skills (\`.agents/skills/${skillName}/SKILL.md\`) if you have them. Otherwise continue with the tool description.`,
+                      `"${skillName}" is a built-in Flind skill, not a skill in this project's skills store, and this connection cannot load built-in skills.`,
+                      `Read it from your installed Flind skills (\`.agents/skills/${skillName}/SKILL.md\`) if you have them. Otherwise continue with the tool description.`,
                   ].join('\n'),
         }
     }

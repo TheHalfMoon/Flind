@@ -486,7 +486,7 @@ class DatadogSource(ResumableSource[DatadogSourceConfig, DatadogResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Datadog",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Connect your Datadog account to sync logs, events, monitors, dashboards, and more into the PostHog Data warehouse.
+            caption="""Connect your Datadog account to sync logs, events, monitors, dashboards, and more into the Flind Data warehouse.
 
 Create an API key and an application key in your [Datadog organization settings](https://app.datadoghq.com/organization-settings/api-keys). The application key should be granted read scopes for the data you want to sync, for example:
 - `dashboards_read`
@@ -503,7 +503,7 @@ Create an API key and an application key in your [Datadog organization settings]
 
 Logs, audit logs, and events read access is governed by your Datadog account's data retention.
 
-Error tracking issues, error spans, error logs, and monitor alerts are off by default. Turn them on to feed errors and alerts into the PostHog Self-driving inbox. Error spans and error logs only contain `status:error` records, and monitor alerts only contain firing alerts from the last 7 days.""",
+Error tracking issues, error spans, error logs, and monitor alerts are off by default. Turn them on to feed errors and alerts into the Flind Self-driving inbox. Error spans and error logs only contain `status:error` records, and monitor alerts only contain firing alerts from the last 7 days.""",
             iconPath="/static/services/datadog.svg",
             docsUrl="https://posthog.com/docs/cdp/sources/datadog",
             fields=cast(

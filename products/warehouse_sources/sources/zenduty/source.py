@@ -44,7 +44,7 @@ class ZendutySource(ResumableSource[ZendutySourceConfig, ZendutyResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Zenduty",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Zenduty API key to automatically pull your Zenduty incident-management and on-call data into the PostHog Data warehouse.
+            caption="""Enter your Zenduty API key to automatically pull your Zenduty incident-management and on-call data into the Flind Data warehouse.
 
 Create an API key in your Zenduty account under **Account Settings → Access → API Keys** (account owners and admins only). The key is account-scoped and read access is enough for syncing.""",
             iconPath="/static/services/zenduty.png",

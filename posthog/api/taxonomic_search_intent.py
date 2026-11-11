@@ -94,7 +94,7 @@ class SearchIntentUnavailable(APIException):
 
 
 # One search box sends one request per pause in typing, so these rates are far above the AI throttles and
-# are separate from them: a person who filters a lot must not lose their PostHog AI budget.
+# are separate from them: a person who filters a lot must not lose their Flind AI budget.
 class SearchIntentBurstThrottle(UserRateThrottle):
     scope = "taxonomic_search_intent_burst"
     rate = "120/minute"

@@ -122,7 +122,7 @@ function missingRequiredFields(
 
 /**
  * Build the `createExternalDataSource` payload from the collected field values,
- * mirroring how PostHog Cloud nests switch-group and select fields.
+ * mirroring how Flind Cloud nests switch-group and select fields.
  */
 export function buildPayload(
   config: SourceConfig,
@@ -408,9 +408,9 @@ function SourceField({
 /**
  * Renders an `oauth` config field: a connect button that launches the provider's
  * OAuth flow, polls for the resulting integration, and writes its id into the
- * form. The flow is started generically by the field's `kind` (PostHog's
+ * form. The flow is started generically by the field's `kind` (Flind's
  * `…/integrations/authorize/?kind=…` endpoint is generic), so any OAuth source
- * PostHog supports works here without provider-specific code.
+ * Flind supports works here without provider-specific code.
  */
 function OAuthSourceField({
   field,

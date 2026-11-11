@@ -109,7 +109,7 @@ const USER_IDENTITY: Record<InstrumentationCheckStatusEnumApi, InstrumentationCh
         key: AIObservabilityInstrumentationCheckEnumApi.UserIdentity,
         status: InstrumentationCheckStatusEnumApi.Pending,
         title: 'User identity',
-        detail: 'This check runs once there are 20 generations from a PostHog SDK. Generations sent over OpenTelemetry are not counted, because we cannot tell whether they are identified.',
+        detail: 'This check runs once there are 20 generations from a Flind SDK. Generations sent over OpenTelemetry are not counted, because we cannot tell whether they are identified.',
         docs_url: INSTALLATION_DOCS_URL,
         stats: { sdk_generations: 4, sdk_generations_identified: 0 },
     },

@@ -330,7 +330,7 @@ describe("ArtifactPreview", () => {
     await expect(result).rejects.toThrow("Artifact is unavailable");
   });
 
-  it("renders PostHog references even when no preview URL exists", async () => {
+  it("renders Flind references even when no preview URL exists", async () => {
     const metadata = {
       reference_type: "posthog_object",
       object_kind: "insight",

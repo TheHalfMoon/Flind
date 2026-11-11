@@ -4,7 +4,7 @@
 // from components and primitives. Think PageHeader (title + breadcrumb +
 // action slot), EmptyState (icon + copy + CTA), CommandPalette, the
 // user-menu dropdown, a standard SettingsForm shell, and so on —
-// opinionated shapes that stay consistent across every PostHog product
+// opinionated shapes that stay consistent across every Flind product
 // surface.
 //
 // None of these are implemented yet. This file is an empty module so

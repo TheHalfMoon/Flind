@@ -45,7 +45,7 @@ class InstanceStatusViewSet(viewsets.ViewSet):
             metrics: list[dict[str, Union[str, bool, int, float, dict[str, Any]]]] = []
 
             metrics.append(
-                {"key": "posthog_git_sha", "metric": "PostHog Git SHA", "value": get_git_commit_short() or "unknown"}
+                {"key": "posthog_git_sha", "metric": "Flind Git SHA", "value": get_git_commit_short() or "unknown"}
             )
 
             helm_info = get_helm_info_env()

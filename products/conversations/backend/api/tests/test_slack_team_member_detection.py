@@ -268,7 +268,7 @@ class TestSlackEchoPreventionSignal(BaseTest):
             team=self.team,
             scope="conversations_ticket",
             item_id=str(self.slack_ticket.id),
-            content="Reply from PostHog UI",
+            content="Reply from Flind UI",
             created_by=self.user,
             item_context={"author_type": "support", "is_private": False},
         )

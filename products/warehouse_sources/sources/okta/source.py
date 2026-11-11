@@ -147,7 +147,7 @@ class OktaSource(ResumableSource[OktaSourceConfig, OktaResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Okta",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Okta org domain and an API token to pull your Okta data into the PostHog Data warehouse.
+            caption="""Enter your Okta org domain and an API token to pull your Okta data into the Flind Data warehouse.
 
 You can create an API token in the Okta Admin Console under **Security > API > Tokens**.
 

@@ -115,11 +115,11 @@ function projectNameFor(projects: AuthProject[], projectId: number | null): stri
 function accountLoadMessage(error: unknown, method: AuthMethod): string {
     if (error instanceof NotSignedInError) {
         return method === 'personal_api_key'
-            ? "PostHog didn't accept that key. Check that it is a personal API key with the user:read, organization:read and project:read scopes."
-            : "PostHog didn't accept the new session. Try signing in again."
+            ? "Flind didn't accept that key. Check that it is a personal API key with the user:read, organization:read and project:read scopes."
+            : "Flind didn't accept the new session. Try signing in again."
     }
     if (error instanceof ApiError && error.status === 403) {
-        return `PostHog didn't share your account details with the app. ${error.detail ?? 'Check the key or app scopes and try again.'}`
+        return `Flind didn't share your account details with the app. ${error.detail ?? 'Check the key or app scopes and try again.'}`
     }
     if (error instanceof ApiError) {
         return `Couldn't load your account. ${error.message}`
@@ -355,7 +355,7 @@ export const useAuthStore = create<AuthState>()(
                     }
                     const trimmedClientId = clientId.trim()
                     if (!trimmedClientId) {
-                        throw new SignInInputError('Enter the OAuth client ID of the PostHog app on this instance.')
+                        throw new SignInInputError('Enter the OAuth client ID of the Flind app on this instance.')
                     }
                     const intent = ++signInIntent
                     const tokens = await authorize({ host: validation.host, clientId: trimmedClientId })

@@ -8,7 +8,7 @@ import {
 } from "./injectedBlocks";
 
 const TRUSTED =
-  "<posthog_trusted_context>\n- You are running alongside the PostHog app.\n</posthog_trusted_context>";
+  "<posthog_trusted_context>\n- You are running alongside the Flind app.\n</posthog_trusted_context>";
 const UNTRUSTED =
   '<posthog_untrusted_context>\nThe user is currently looking at the resources below.\n- dashboard 42 ("Weekly active users")\n</posthog_untrusted_context>';
 const CUSTOM = `<user_custom_instructions>\n${CUSTOM_INSTRUCTIONS_PREAMBLE}\n\nAlways respond in British English.\n</user_custom_instructions>`;
@@ -88,7 +88,7 @@ describe("splitInjectedBlocks", () => {
       text: "",
     },
     {
-      name: "leading trusted and untrusted PostHog context as one block, tags kept",
+      name: "leading trusted and untrusted Flind context as one block, tags kept",
       content: `${TRUSTED}\n${UNTRUSTED}\n\nHow many monthly active users do we have`,
       block: {
         kind: "posthog-context",
@@ -109,7 +109,7 @@ describe("splitInjectedBlocks", () => {
       text: "what does this show",
     },
     {
-      name: "a PostHog block after the question",
+      name: "a Flind block after the question",
       content: `what does this show\n\n${TRUSTED}`,
       block: { kind: "posthog-context", body: TRUSTED, attrs: {} },
       text: "what does this show",

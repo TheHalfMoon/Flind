@@ -38,9 +38,9 @@ export function QuillDebugReplayPromptModal({ onClose }: { onClose: () => void }
         <Dialog open onOpenChange={(open: boolean) => !open && onClose()}>
             <DialogContent className="max-w-[40rem]">
                 <DialogHeader>
-                    <DialogTitle>Debug this replay with PostHog AI</DialogTitle>
+                    <DialogTitle>Debug this replay with Flind AI</DialogTitle>
                     <DialogDescription>
-                        Edit the prompt if you want to. PostHog AI gets the recording data along with it.
+                        Edit the prompt if you want to. Flind AI gets the recording data along with it.
                     </DialogDescription>
                 </DialogHeader>
                 <DialogBody>
@@ -69,7 +69,7 @@ export function QuillDebugReplayPromptModal({ onClose }: { onClose: () => void }
                         disabledReason={trimmedPrompt ? undefined : 'Write a prompt first'}
                         data-attr="replay-debug-prompt-submit"
                     >
-                        Send to PostHog AI
+                        Send to Flind AI
                     </Button>
                 </DialogFooter>
             </DialogContent>

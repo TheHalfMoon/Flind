@@ -326,7 +326,7 @@ def execute_process_query(
             query_status.cache_key = getattr(err, "cache_key", None)
             query_status.query_scan = _query_scan_from_error(err)
         if is_user_safe_error or is_staff_user:
-            # We can only expose the error message if it's a known safe error OR if the user is PostHog staff
+            # We can only expose the error message if it's a known safe error OR if the user is Flind staff
             query_status.error_message = str(err)
             if isinstance(err, APIException):
                 # get_codes() returns a list/dict for compound validation errors; only scalar codes

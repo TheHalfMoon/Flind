@@ -8,7 +8,7 @@ Neither of those imports the other, and both may import this package.
 ## What belongs here
 
 Knowledge about Slack itself, which changes when Slack changes.
-Examples are how to escape `mrkdwn`, the limits Slack puts on a message, the format of a stored channel picker value, how to find a channel by name, and how to resolve a Slack user to a PostHog user.
+Examples are how to escape `mrkdwn`, the limits Slack puts on a message, the format of a stored channel picker value, how to find a channel by name, and how to resolve a Slack user to a Flind user.
 
 ## What stays with the product
 

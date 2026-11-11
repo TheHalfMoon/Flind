@@ -218,7 +218,7 @@ class MoEngageSource(ResumableSource[MoEngageSourceConfig, MoEngageResumeConfig]
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="MoEngage",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Sync your MoEngage campaigns, flows, segments, subscription categories, and campaign performance reports into the PostHog Data warehouse.
+            caption="""Sync your MoEngage campaigns, flows, segments, subscription categories, and campaign performance reports into the Flind Data warehouse.
 
 Find your Workspace ID and the **Campaign report** API key in your MoEngage dashboard under **Settings** > **Account** > **APIs**. Pick the data center your dashboard URL shows (for example, `dashboard-01.moengage.com` is DC-01). To sync the `segments` table, give the key access to **Segmentation APIs** too.
 

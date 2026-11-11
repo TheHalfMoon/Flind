@@ -36,7 +36,7 @@ describe('chat error mapping', () => {
         [
             '503 at capacity',
             new ApiError(503, undefined, headers({ 'Retry-After': '120' })),
-            { kind: 'unavailable', message: 'PostHog AI is busy right now. Try again in 2 minutes.' },
+            { kind: 'unavailable', message: 'Flind AI is busy right now. Try again in 2 minutes.' },
         ],
         [
             '400 from run/ shows the server copy',
@@ -46,27 +46,27 @@ describe('chat error mapping', () => {
         [
             '400 without server copy',
             new ApiError(400, undefined),
-            { kind: 'invalid', message: "PostHog AI couldn't take this message. Start a new chat and try again." },
+            { kind: 'invalid', message: "Flind AI couldn't take this message. Start a new chat and try again." },
         ],
         [
-            '403 from the PostHog Desktop gate shows the server copy',
+            '403 from the Flind Desktop gate shows the server copy',
             new ApiError(403, {
                 type: 'permission_denied',
                 code: 'code_access_required',
                 reason: 'startup_plan',
-                error: "PostHog Desktop isn't available for Startup or YC program organizations.",
+                error: "Flind Desktop isn't available for Startup or YC program organizations.",
             }),
-            { kind: 'access', message: "PostHog Desktop isn't available for Startup or YC program organizations." },
+            { kind: 'access', message: "Flind Desktop isn't available for Startup or YC program organizations." },
         ],
         [
             '503 when the gate cannot decide',
             new ApiError(503, { code: 'desktop_access_unavailable', error: 'x' }),
-            { kind: 'unavailable', message: "We couldn't verify PostHog Desktop access. Try again." },
+            { kind: 'unavailable', message: "We couldn't verify Flind Desktop access. Try again." },
         ],
         [
             '429 from a billing limit',
             new ApiError(429, { type: 'billing_limit', code: 'compute_quota' }),
-            { kind: 'throttled', message: "You've reached your PostHog Desktop usage limit." },
+            { kind: 'throttled', message: "You've reached your Flind Desktop usage limit." },
         ],
         [
             "429 from the report's task limit shows the server copy",

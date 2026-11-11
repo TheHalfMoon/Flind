@@ -1200,11 +1200,11 @@ class SourceConfigSpec:
     native: NativeAlertLifecycle | None = None
     # For a kind with both `create` and `native`: whether a team's new alert gets no source row.
     native_create: Callable[[int], bool] | None = None
-    # A PostHog feature flag a project needs, beside `platform-alerts`, to create alerts of this kind.
+    # A Flind feature flag a project needs, beside `platform-alerts`, to create alerts of this kind.
     # A new kind names its own flag, so it opens on its own schedule while the others stay generally
     # available.
     rollout_flag: str | None = None
-    # A PostHog feature flag that opens every API action on this kind in place of `platform-alerts`.
+    # A Flind feature flag that opens every API action on this kind in place of `platform-alerts`.
     # The source product can then release its alerts on its own flag, while `platform-alerts` keeps
     # the other kinds and the platform's own pages closed.
     access_flag: str | None = None

@@ -77,7 +77,7 @@ class TestDirectConnectionInformationSchema(ClickhouseTestMixin, APIBaseTest):
 
     def test_catalog_query_runs_on_clickhouse_not_the_remote_engine(self):
         # The rows are built in Python and shipped as ClickHouse external data. Translating the query
-        # into the remote engine's dialect would send it a table that only exists inside PostHog.
+        # into the remote engine's dialect would send it a table that only exists inside Flind.
         source = self._create_direct_source(table_names=["orders"])
 
         response = execute_hogql_query(

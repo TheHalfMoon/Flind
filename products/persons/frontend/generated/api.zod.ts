@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -114,7 +114,7 @@ export const PersonsBatchByUuidsCreateBody = /* @__PURE__ */ zod.object({
 })
 
 /**
- * This endpoint allows you to bulk delete persons, either by the PostHog person IDs or by distinct IDs. You can pass in a maximum of 1000 IDs per call. Only events captured before the request will be deleted.
+ * This endpoint allows you to bulk delete persons, either by the Flind person IDs or by distinct IDs. You can pass in a maximum of 1000 IDs per call. Only events captured before the request will be deleted.
  *
  * Person records are removed in the background shortly after the request returns, so a successful response reports them in `persons_queued_for_deletion` and `persons_deleted` is 0.
  */
@@ -123,7 +123,7 @@ export const personsBulkDeleteCreateBodyDeleteRecordingsDefault = false
 export const personsBulkDeleteCreateBodyKeepPersonDefault = false
 
 export const PersonsBulkDeleteCreateBody = /* @__PURE__ */ zod.object({
-    ids: zod.array(zod.string()).optional().describe('A list of PostHog person UUIDs to delete (max 1000).'),
+    ids: zod.array(zod.string()).optional().describe('A list of Flind person UUIDs to delete (max 1000).'),
     distinct_ids: zod
         .array(zod.string())
         .optional()

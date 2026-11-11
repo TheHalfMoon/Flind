@@ -62,7 +62,7 @@ class CircleciInsightsSource(ResumableSource[CircleciInsightsSourceConfig, Circl
             name=ExternalDataSourceType.CIRCLECIINSIGHTS,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="CircleCI Insights",
-            caption="""Enter your CircleCI personal API token and project slugs to pull pipeline health metrics — workflow and job durations, success rates, credit usage, recent runs, and flaky tests — from the CircleCI Insights API into the PostHog Data warehouse.
+            caption="""Enter your CircleCI personal API token and project slugs to pull pipeline health metrics — workflow and job durations, success rates, credit usage, recent runs, and flaky tests — from the CircleCI Insights API into the Flind Data warehouse.
 
 You can create a personal API token in your [CircleCI user settings](https://app.circleci.com/settings/user/tokens). Note that CircleCI retains Insights data for roughly 90 days.""",
             iconPath="/static/services/circleci_insights.png",

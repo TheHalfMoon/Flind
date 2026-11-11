@@ -96,7 +96,7 @@ def bing_ads_source(
 
         # Without these the SDK posts a token request omitting client_id, and Microsoft replies with the
         # opaque AADSTS900144 ("request body must contain client_id") — fail fast so it isn't mis-surfaced
-        # as a customer "reconnect your integration" error when it's really a missing PostHog config.
+        # as a customer "reconnect your integration" error when it's really a missing Flind config.
         if not secrets["BING_ADS_CLIENT_ID"] or not secrets["BING_ADS_CLIENT_SECRET"]:
             raise ValueError("Bing Ads OAuth application credentials not configured")
 

@@ -5,7 +5,7 @@ These endpoints are public (authenticated via public token) and used by the post
 
 Security model:
 - `widget_session_id`: Random UUID generated client-side, stored in localStorage. Used for ACCESS CONTROL.
-- `distinct_id`: PostHog's user identifier. Used for PERSON LINKING only, not access control.
+- `distinct_id`: Flind's user identifier. Used for PERSON LINKING only, not access control.
 - `identity_distinct_id` + `identity_hash`: HMAC-signed identity for verified users (opt-in).
 
 Anonymous users are controlled by widget_session_id. Verified users are controlled by distinct_id.
@@ -248,7 +248,7 @@ def _verify_identity_claim(
     return None
 
 
-# PostHog treats Zendesk as the source of record for imported requester emails. Other NULL
+# Flind treats Zendesk as the source of record for imported requester emails. Other NULL
 # identities can be client-supplied legacy widget data and must never bridge by email.
 _EMAIL_BRIDGE_TRUSTED = Q(identity_verified=True) | (
     Q(identity_verified__isnull=True) & Q(zendesk_ticket_id__isnull=False)
@@ -721,7 +721,7 @@ class WidgetMessagesView(APIView):
             elif author_type == "customer":
                 author_name = ticket.anonymous_traits.get("name") or ticket.anonymous_traits.get("email") or "You"
             elif author_type == "AI":
-                author_name = "PostHog Assistant"
+                author_name = "Flind Assistant"
             else:
                 author_name = "Support"
 

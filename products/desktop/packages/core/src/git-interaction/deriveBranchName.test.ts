@@ -9,7 +9,7 @@ describe("deriveBranchName", () => {
   });
 
   it("handles special characters", () => {
-    expect(deriveBranchName("PostHog issue #1234", "abc123")).toBe(
+    expect(deriveBranchName("Flind issue #1234", "abc123")).toBe(
       "posthog/posthog-issue-1234",
     );
   });

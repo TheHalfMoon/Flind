@@ -17,7 +17,7 @@ Four cases:
      the agent identifies the issue but still greenlights a ship.
 
 2. ``early_significance_notification`` (C9 — significance reached early) —
-   user reports PostHog flagging significance at low sample / short runtime
+   user reports Flind flagging significance at low sample / short runtime
    and asks whether to ship. Correct behavior is to treat the notification
    as a *prompt to review*, not an instruction to ship — wait for the
    pre-planned duration or for the signal to stabilise. Same two-scorer
@@ -81,7 +81,7 @@ async def eval_interpretation_traps(ctx: EvalContext) -> None:
             },
         ),
         SandboxedEvalCase(
-            # Inline-evidence pattern. The shape: PostHog flagged significance early, the user
+            # Inline-evidence pattern. The shape: Flind flagged significance early, the user
             # reads "completed" as a green light and asks whether to ship. Correct behavior is
             # to treat the notification as a "prompt to review", not an instruction to ship —
             # wait for pre-planned duration, check guardrails, etc. The numbers (250/variant,
@@ -89,7 +89,7 @@ async def eval_interpretation_traps(ctx: EvalContext) -> None:
             # flips" noise band.
             name="early_significance_notification",
             prompt=(
-                f"PostHog just notified me that my experiment '{ROLLOUT_EXPERIMENT_NAME}' has "
+                f"Flind just notified me that my experiment '{ROLLOUT_EXPERIMENT_NAME}' has "
                 "reached significance — the test variant is winning on the primary metric "
                 "(signup conversion) with a chance-to-win of 96%. We have about 250 exposures "
                 "per variant and the experiment has been running for 36 hours. Should I ship "

@@ -145,12 +145,12 @@ class TestSecretScrubbing:
 
         assert result.raised is None
         env = result.rows[0]["definition"]["env"]
-        assert env[0] == {"key": "DB_PASSWORD", "value": "[redacted by PostHog]"}
+        assert env[0] == {"key": "DB_PASSWORD", "value": "[redacted by Flind]"}
         # A secret *reference* is just a name, not the value, so it survives untouched.
         assert env[1] == {"key": "API_KEY", "secret": "my-secret-ref"}
         assert result.rows[0]["definition"]["config_files"][0] == {
             "path": "/etc/app.conf",
-            "content": "[redacted by PostHog]",
+            "content": "[redacted by Flind]",
         }
 
     def test_capture_disabled_only_for_secret_scrubbed_endpoints(self) -> None:

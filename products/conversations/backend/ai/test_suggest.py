@@ -437,7 +437,7 @@ class TestBuildTicketContext(BaseTest):
             author_type="customer",
         )
         generic = self._context(ticket, [message])
-        assert "Referenced PostHog entities:" not in generic
+        assert "Referenced Flind entities:" not in generic
 
         self.team.conversations_settings = {"docs_source": "posthog"}
         self.team.save(update_fields=["conversations_settings"])

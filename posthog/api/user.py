@@ -890,7 +890,7 @@ class UserSerializer(serializers.ModelSerializer):
         return instance
 
     def to_representation(self, instance: Any) -> Any:
-        # Refresh PostHog person properties so the dogfood instance keeps the user's
+        # Refresh Flind person properties so the dogfood instance keeps the user's
         # org/project/role properties current. posthoganalytics.capture is non-blocking
         # (the SDK ships events on a background thread) so this call doesn't add request
         # latency. Inline rather than via celery — the previous celery .delay() was a
@@ -1196,7 +1196,7 @@ class UserViewSet(
                     reason="token_auth",
                 )
                 raise exceptions.PermissionDenied(
-                    "You can only change your email or password from the PostHog app, not with an API key or token."
+                    "You can only change your email or password from the Flind app, not with an API key or token."
                 )
             return
 
@@ -2113,7 +2113,7 @@ def prepare_toolbar_preloaded_flags(request):
 
         # Use Rust flags service. Pass the internal token so this Django -> Rust
         # call bypasses the team's billing limiter and isn't counted as customer
-        # SDK traffic — the toolbar launch is internal PostHog UI, not an SDK call.
+        # SDK traffic — the toolbar launch is internal Flind UI, not an SDK call.
         result = get_flags_from_service(
             token=team.api_token,
             distinct_id=distinct_id,

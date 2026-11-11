@@ -564,7 +564,7 @@ def _rfc3339(value: Any) -> str:
         moment = datetime.datetime.fromtimestamp(value, tz=datetime.UTC)
     else:
         raise FirebaseConfigError(
-            "PostHog couldn't read the last value this table synced up to. Reset the table's sync to "
+            "Flind couldn't read the last value this table synced up to. Reset the table's sync to "
             "start it again from the beginning."
         )
     return moment.astimezone(datetime.UTC).isoformat().replace("+00:00", "Z")

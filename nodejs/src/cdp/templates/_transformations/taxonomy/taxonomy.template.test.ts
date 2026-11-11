@@ -69,7 +69,7 @@ describe('taxonomy.template', () => {
         expect(await rename('spaces in between', 'user_signed_up')).toBe('user_signed_up')
     })
 
-    it('leaves PostHog events and survey events untouched', async () => {
+    it('leaves Flind events and survey events untouched', async () => {
         expect(await rename('snake_case', '$pageview')).toBe('$pageview')
         expect(await rename('snake_case', 'survey sent')).toBe('survey sent')
     })

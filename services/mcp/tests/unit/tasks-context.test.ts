@@ -33,7 +33,7 @@ describe('task artifacts and comments tools', () => {
         expect(definitions['tasks-comments-retrieve']?.required_scopes).toEqual(['comment:read'])
     })
 
-    it('advertises them only to a stamped PostHog Desktop task', () => {
+    it('advertises them only to a stamped Flind Desktop task', () => {
         const code = new MCPClientProfile({ consumer: 'posthog-code' })
         expect(tasksContextToolsToExclude(code, 'task-1')).toEqual([])
         expect(tasksContextToolsToExclude(code, undefined)).toEqual(TASKS_CONTEXT_TOOL_NAMES)
@@ -91,7 +91,7 @@ describe('task artifacts and comments tools', () => {
     it('fails closed when the host did not stamp a task', async () => {
         const { context: toolContext, request } = context(undefined)
 
-        await expect(tasksArtifactsList().handler(toolContext, {})).rejects.toThrow('current PostHog Desktop task')
+        await expect(tasksArtifactsList().handler(toolContext, {})).rejects.toThrow('current Flind Desktop task')
         expect(request).not.toHaveBeenCalled()
     })
 })

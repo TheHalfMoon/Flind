@@ -6,7 +6,7 @@ export const template: HogFunctionTemplate = {
     type: 'destination',
     id: 'template-beehiiv',
     name: 'beehiiv',
-    description: 'Sync PostHog persons to beehiiv as subscribers',
+    description: 'Sync Flind persons to beehiiv as subscribers',
     icon_url: '/static/services/beehiiv.png',
     category: ['User Engagement Platforms'],
     code_language: 'hog',
@@ -144,7 +144,7 @@ print(f'Successfully updated beehiiv subscription {inputs.email}')
             type: 'dictionary',
             label: 'Custom field mapping',
             description:
-                'Map existing beehiiv custom field names to PostHog values. Unknown beehiiv custom fields are ignored by the beehiiv API.',
+                'Map existing beehiiv custom field names to Flind values. Unknown beehiiv custom fields are ignored by the beehiiv API.',
             default: {
                 'First Name': '{person.properties.first_name}',
                 'Last Name': '{person.properties.last_name}',

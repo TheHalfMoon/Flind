@@ -2,10 +2,10 @@
 name: modeling-revenue-metrics
 description: >
   Build reusable revenue models — MRR, ARR, gross revenue, new/expansion/contraction/churn, ARPU, LTV, and
-  per-customer/per-account revenue — on either PostHog data-warehouse views (HogQL) or an external dbt
+  per-customer/per-account revenue — on either Flind data-warehouse views (HogQL) or an external dbt
   project. Use when the user wants to model, define, or compute recurring revenue, monthly/annual recurring
   revenue, churn or retention of revenue, lifetime value, average revenue per user, or revenue by customer,
-  cohort, product, or currency. On PostHog, build on the managed *_revenue_view views (revenue_item,
+  cohort, product, or currency. On Flind, build on the managed *_revenue_view views (revenue_item,
   mrr, customer, subscription, charge, product) fed by Stripe or custom revenue events — not raw Stripe
   tables — and normalize money with convertCurrency(). In dbt, stage the payment source and compute
   fct_mrr / fct_revenue_item / dim_customer marts with tests. Covers picking the right source, the
@@ -23,7 +23,7 @@ layer on top. Metric definitions live in
 
 ## Step 1 — find where revenue lives
 
-Revenue reaches PostHog two ways; both feed the same **managed revenue views**:
+Revenue reaches Flind two ways; both feed the same **managed revenue views**:
 
 - **A payment platform as a warehouse source** — Stripe today (Chargebee/Polar/RevenueCat coming). Best when
   the business runs on a billing platform. Connect via `setting-up-a-data-warehouse-source`.
@@ -35,7 +35,7 @@ staging whichever billing tables landed in the warehouse.
 
 ## Step 2 — model on the managed views, not raw tables
 
-PostHog auto-generates a curated set of views per source. **Do not re-derive revenue from raw Stripe
+Flind auto-generates a curated set of views per source. **Do not re-derive revenue from raw Stripe
 tables** — the managed views already handle deferred-revenue recognition, currency, and a stable schema.
 
 Each source gets its own views. There is no cross-source view. Names depend on the source type:
@@ -91,7 +91,7 @@ base currency), `original_amount` / `original_currency` (as charged), `is_recurr
 
 ## Step 3 — build the model
 
-**PostHog:** write the HogQL (alias every column), `view-create`, verify with `view-get`, then
+**Flind:** write the HogQL (alias every column), `view-create`, verify with `view-get`, then
 `view-materialize` the expensive monthly rollups (a daily `sync_frequency` is usually right for revenue).
 Recipes: [`references/posthog/`](references/posthog/) — `mrr_and_arr.sql`, `gross_revenue_by_month.sql`,
 `revenue_by_customer.sql`.

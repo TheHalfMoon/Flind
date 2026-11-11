@@ -4,7 +4,7 @@ import { createCounterWithExemplars, createHistogramWithExemplars, swallowing } 
 
 /**
  * OTLP-pushed twins of the core session replay ingestion prom counters. The prom side keeps
- * feeding the scrape/VictoriaMetrics dashboards; these land in the PostHog metrics product
+ * feeding the scrape/VictoriaMetrics dashboards; these land in the Flind metrics product
  * through the exporter installed by initMetrics (common/metrics/otel-metrics.ts).
  *
  * Names and label sets deliberately match the prom counters so dashboards translate 1:1.

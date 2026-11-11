@@ -27,7 +27,7 @@ def claim_display_name(report: "SignalReport", actor: "ArtefactAttribution") -> 
             phase = next((run.type for run in reversed(runs) if str(run.task_id) == actor.task_id), None)
         if phase and phase.startswith("scout:"):
             return f"Scout {phase.removeprefix('scout:')}"
-        return _PHASE_NAMES.get(phase or "", "PostHog agent")
+        return _PHASE_NAMES.get(phase or "", "Flind agent")
     if actor.user_id:
         user = User.objects.filter(id=actor.user_id).only("first_name").first()
         name = (user.first_name.strip() if user and user.first_name else "") or "User"
@@ -36,4 +36,4 @@ def claim_display_name(report: "SignalReport", actor: "ArtefactAttribution") -> 
             client = "agent" if client.lower() in {"", "mcp", "unknown"} else _CLIENT_NAMES.get(client.lower(), client)
             return f"{name}'s {client}"
         return name
-    return "PostHog"
+    return "Flind"

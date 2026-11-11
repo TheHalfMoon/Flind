@@ -117,7 +117,7 @@ PERSON_DEPENDENT_ACTION_TYPES: Final[set[str]] = {
 }
 
 # Trigger types that start a run with no person attached: a synced warehouse row and a Slack message
-# are both authored by something PostHog has no person record for. Keep in sync with the frontend's
+# are both authored by something Flind has no person record for. Keep in sync with the frontend's
 # ROW_SCOPED_TRIGGER_TYPES.
 ROW_SCOPED_TRIGGER_TYPES: Final[set[str]] = {
     "data-warehouse-table",
@@ -276,7 +276,7 @@ class HogFlow(Taggable, UUIDTModel):
 
     EmailSendingPausedBy = HogFlowEmailSendingPausedBy
 
-    # Who paused it: "auto" for the deliverability detector, "staff" for a PostHog admin. A staff
+    # Who paused it: "auto" for the deliverability detector, "staff" for a Flind admin. A staff
     # pause is not customer-resumable, so the resume endpoint refuses it. Empty when not paused.
     email_sending_paused_by = models.CharField(
         max_length=16, blank=True, default="", db_default="", choices=EmailSendingPausedBy.choices

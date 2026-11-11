@@ -156,7 +156,7 @@ export function GithubRepoSummary({
       {isUnavailable ? (
         <div className="ml-9 rounded-(--radius-2) border border-(--red-6) bg-(--red-2) px-3 py-2">
           <Text size="xs" className="text-(--red-11)">
-            The PostHog app was removed from GitHub. Remove this connection,
+            The Flind app was removed from GitHub. Remove this connection,
             then connect again if you still need it.
           </Text>
         </div>

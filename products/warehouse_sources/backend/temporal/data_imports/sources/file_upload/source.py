@@ -58,7 +58,7 @@ UploadedFileFormat = Literal["csv", "json", "parquet"]
 # JSON uploads are read one object per line, the same as the in-place table read them.
 _READ_FORMATS: dict[UploadedFileFormat, FileFormat] = {"csv": "csv", "json": "jsonl", "parquet": "parquet"}
 
-# Written by PostHog when it creates the source or replaces its file. The update endpoint pins them,
+# Written by Flind when it creates the source or replaces its file. The update endpoint pins them,
 # so no request can point a source at a different object.
 SERVER_MANAGED_FIELDS = ("upload_id", "filename", "file_format", "schema_name")
 
@@ -90,10 +90,10 @@ def read_format(file_format: str) -> FileFormat:
 
 
 def open_upload_store(location: UploadLocation) -> ObjectStore:
-    """A store rooted at the upload's own folder, read with PostHog's storage access.
+    """A store rooted at the upload's own folder, read with Flind's storage access.
 
-    Only this source uses PostHog's access, and only for a path built from the team id and a checked
-    upload id. Customer sources go through `ObjectStorageSource.open_store`, which refuses PostHog's
+    Only this source uses Flind's access, and only for a path built from the team id and a checked
+    upload id. Customer sources go through `ObjectStorageSource.open_store`, which refuses Flind's
     bucket.
     """
     return ObjectStore(
@@ -120,9 +120,9 @@ def iter_upload_tables(
 
 @SourceRegistry.register
 class FileUploadSource(SimpleSource[FileUploadInputs]):
-    """Imports one file a user uploaded to PostHog into a managed table.
+    """Imports one file a user uploaded to Flind into a managed table.
 
-    PostHog creates the source when a table is made from an upload, and starts each sync itself: once
+    Flind creates the source when a table is made from an upload, and starts each sync itself: once
     at creation, and once each time the file is replaced. The schema's schedule stays paused.
     """
 
@@ -147,7 +147,7 @@ class FileUploadSource(SimpleSource[FileUploadInputs]):
             name=ExternalDataSourceType.FILEUPLOAD,
             category=DataWarehouseSourceCategory.FILE_STORAGE,
             label="File upload",
-            caption="Upload a CSV, JSON, or Parquet file to query it in the PostHog data warehouse.",
+            caption="Upload a CSV, JSON, or Parquet file to query it in the Flind data warehouse.",
             iconPath="/static/services/file-upload.svg",
             releaseStatus=ReleaseStatus.ALPHA,
             fields=[],
@@ -205,7 +205,7 @@ class FileUploadSource(SimpleSource[FileUploadInputs]):
     def source_for_pipeline(self, config: FileUploadInputs, inputs: SourceInputs) -> SourceResponse:
         location = upload_location(config, inputs.team_id)
         file_format = read_format(config.file_format)
-        # The schema keeps the read options PostHog chose for the file (CSV column types, raw column
+        # The schema keeps the read options Flind chose for the file (CSV column types, raw column
         # names). Where the file is comes from the source's inputs, never from the schema.
         metadata = inputs.schema_metadata or {}
         csv_metadata = metadata.get("csv")

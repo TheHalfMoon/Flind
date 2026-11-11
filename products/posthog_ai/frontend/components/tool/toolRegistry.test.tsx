@@ -66,7 +66,7 @@ describe('toolRegistry', () => {
 
     // A user-installed MCP server can expose a tool whose bare name collides with a product-widget key
     // (e.g. "notebooks-create") and return an arbitrary `_posthogUrl`. Such a call is NOT from the
-    // trusted single-exec PostHog server (no inner tool name was parsed, so `fromPostHogExec` is false),
+    // trusted single-exec Flind server (no inner tool name was parsed, so `fromPostHogExec` is false),
     // and must fall through to the generic card rather than spoofing a first-party Notebook/Dashboard card.
     it.each([
         ['notebooks-create', 'Notebook'],
@@ -75,7 +75,7 @@ describe('toolRegistry', () => {
         ['execute-sql', 'SQL query'],
         ['insight-query', 'Insight query'],
         ['query-error-tracking-issues-list', 'Error tracking'],
-    ])('gates product widget %s on a trusted PostHog-exec origin', (key, displayName) => {
+    ])('gates product widget %s on a trusted Flind-exec origin', (key, displayName) => {
         expect(lookupToolRenderer(key, false).displayName).toEqual(key)
         expect(lookupToolRenderer(key, true).displayName).toEqual(displayName)
     })
@@ -115,7 +115,7 @@ describe('toolRegistry', () => {
         expect(lookupToolRenderer(key, false).displayName).toEqual(displayName)
     })
 
-    // PostHog single-exec discovery verbs are keyed by their sentinel key (from `resolveToolKey`); the
+    // Flind single-exec discovery verbs are keyed by their sentinel key (from `resolveToolKey`); the
     // registry gives each a fitting icon + displayName instead of the wrench fallback.
     const execVerbCases: [string, string][] = [
         ['__posthog_exec_tools__', 'List tools'],

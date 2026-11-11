@@ -44,7 +44,7 @@ class HubplannerSource(ResumableSource[HubplannerSourceConfig, HubPlannerResumeC
             name=ExternalDataSourceType.HUBPLANNER,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Hub Planner",
-            caption="""Enter your Hub Planner API key to sync your resource-scheduling, project-planning and time-tracking data into the PostHog Data warehouse.
+            caption="""Enter your Hub Planner API key to sync your resource-scheduling, project-planning and time-tracking data into the Flind Data warehouse.
 
 Generate a **Read Only** API key in Hub Planner under **Settings → API** (admin access required).""",
             iconPath="/static/services/hubplanner.png",

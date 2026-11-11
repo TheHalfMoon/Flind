@@ -42,7 +42,7 @@ class Env0Source(ResumableSource[Env0SourceConfig, Env0ResumeConfig]):
             name=ExternalDataSourceType.ENV0,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="env0",
-            caption="""Enter your env0 API key credentials to pull your env0 data into the PostHog Data warehouse.
+            caption="""Enter your env0 API key credentials to pull your env0 data into the Flind Data warehouse.
 
 You can create an organization API key in your env0 [Organization Settings > API Keys](https://docs.envzero.com/docs/api-keys), or a personal API key from your user settings. The key needs read access to the organizations you want to sync.
 

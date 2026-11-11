@@ -29,7 +29,7 @@ class TestTemplateJune(BaseHogFunctionTemplateTest):
                         "$is_identified": True,
                         "$app_build": "1.0.0",
                         "$app_version": "2.0",
-                        "$app_name": "PostHog",
+                        "$app_name": "Flind",
                         "utm_campaign": "test1",
                         "utm_content": "test2",
                         "utm_medium": "test3",
@@ -76,7 +76,7 @@ class TestTemplateJune(BaseHogFunctionTemplateTest):
                     "traits": {"name": "Max AI", "email": "max@posthog.com"},
                     "timestamp": "2024-10-24T23:03:50.941Z",
                     "context": {
-                        "app": {"build": "1.0.0", "version": "2.0", "name": "PostHog"},
+                        "app": {"build": "1.0.0", "version": "2.0", "name": "Flind"},
                         "campaign": {
                             "name": "test1",
                             "content": "test2",

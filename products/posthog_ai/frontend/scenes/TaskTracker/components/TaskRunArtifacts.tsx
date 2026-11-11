@@ -133,7 +133,7 @@ function commentLogicProps(
         : null
 }
 
-/** Size for a file, the object kind for a cited PostHog object, where the agent sent a living document. */
+/** Size for a file, the object kind for a cited Flind object, where the agent sent a living document. */
 function artifactDetail(artifact: RunArtifact): string {
     if (artifact.living) {
         return LIVING_ADAPTER_LABEL[artifact.living.adapter] ?? 'Document'
@@ -504,8 +504,8 @@ function ArtifactPreview({ taskId, mode }: { taskId: string; mode: PreviewMode }
                     <EmptyTitle>No preview for this document</EmptyTitle>
                     <EmptyDescription>
                         {selectedArtifact.living.adapter.startsWith('slack_')
-                            ? "PostHog can't show this version here. Open the Slack thread the agent replied in to see it."
-                            : "PostHog can't show this version here. Open it where the agent saved it."}
+                            ? "Flind can't show this version here. Open the Slack thread the agent replied in to see it."
+                            : "Flind can't show this version here. Open it where the agent saved it."}
                     </EmptyDescription>
                 </EmptyHeader>
             </Empty>
@@ -638,7 +638,7 @@ function fileMeta(file: ArtifactFile): string {
 function ArtifactFileList({ taskId, size, label }: { taskId: string; size: 'xs' | 'sm'; label: string }): JSX.Element {
     const { files, selectedFile, isEditing, todayPhone } = useValues(taskRunArtifactsLogic({ taskId }))
     const { selectArtifact } = useActions(taskRunArtifactsLogic({ taskId }))
-    // Cited PostHog objects sit under their own label, after the files.
+    // Cited Flind objects sit under their own label, after the files.
     const objects = files.filter((file) => !!postHogObjectRef(file.latest))
     const onKeyDown = (event: KeyboardEvent<HTMLDivElement>): void => {
         const target = event.target as HTMLElement
@@ -695,7 +695,7 @@ function ArtifactFileList({ taskId, size, label }: { taskId: string; size: 'xs' 
         >
             {files.filter((file) => !postHogObjectRef(file.latest)).map(renderRow)}
             {objects.length > 0 && (
-                <div role="group" aria-label="In PostHog" className="flex flex-col gap-px">
+                <div role="group" aria-label="In Flind" className="flex flex-col gap-px">
                     <Text
                         size="xs"
                         weight="medium"
@@ -703,7 +703,7 @@ function ArtifactFileList({ taskId, size, label }: { taskId: string; size: 'xs' 
                         render={<span aria-hidden />}
                         className="px-2 pt-3 pb-1"
                     >
-                        In PostHog
+                        In Flind
                     </Text>
                     {objects.map(renderRow)}
                 </div>

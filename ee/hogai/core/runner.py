@@ -546,7 +546,7 @@ class BaseAgentRunner(ABC):
                 "ai_product": self._ai_product,
                 "privacy_mode": self._privacy_mode,
                 "event_source": self._event_source,
-                # Metadata to be sent to PostHog SDK (error tracking, etc).
+                # Metadata to be sent to Flind SDK (error tracking, etc).
                 "sdk_metadata": {
                     "tag": "max_ai",
                 },

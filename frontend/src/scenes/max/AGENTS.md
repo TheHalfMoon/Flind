@@ -1,11 +1,11 @@
-# PostHog AI scene — agent guide
+# Flind AI scene — agent guide
 
-This is the scene for **PostHog AI**, PostHog's agent. It hosts **two coexisting runtimes**, chosen per conversation by `conversation.agent_runtime` (`'langgraph' | 'sandbox'`):
+This is the scene for **Flind AI**, Flind's agent. It hosts **two coexisting runtimes**, chosen per conversation by `conversation.agent_runtime` (`'langgraph' | 'sandbox'`):
 
 - **`langgraph`** — the **legacy** runtime. Frozen.
 - **`sandbox`** — the **new** runtime (Claude Code/Codex agent-server over SSE). New work goes here.
 
-> **Naming:** the user-facing product is **PostHog AI** (was "Max"). Use "PostHog AI" in all user-facing copy. The directory stays `scenes/max/`, and existing internal identifiers (`Max*` components, `MaxUIContext`, `maxThreadLogic`, `maxContextLogic`, the "Max Context" subsystem) keep their names — don't mass-rename. New code shouldn't introduce fresh "Max" branding in copy.
+> **Naming:** the user-facing product is **Flind AI** (was "Max"). Use "Flind AI" in all user-facing copy. The directory stays `scenes/max/`, and existing internal identifiers (`Max*` components, `MaxUIContext`, `maxThreadLogic`, `maxContextLogic`, the "Max Context" subsystem) keep their names — don't mass-rename. New code shouldn't introduce fresh "Max" branding in copy.
 
 > For the **Max Context** subsystem (how scenes expose dashboards/insights/events to the assistant), see [`README.md`](./README.md). This guide does not repeat it.
 
@@ -52,7 +52,7 @@ parsing wire frames in a Max component.
 ## 4. The sandbox surface lives in `products/posthog_ai/frontend`
 
 The conversation-agnostic sandbox run surface (stream logic, thread/tool/permission/composer components,
-policy, wire types) **no longer lives under `scenes/max`** — it's the composable PostHog AI agent-run
+policy, wire types) **no longer lives under `scenes/max`** — it's the composable Flind AI agent-run
 library at `products/posthog_ai/frontend`, consumed here through its tiered `api/<module>` facade
 (`import { ... } from 'products/posthog_ai/frontend/api/readableRun'` / `api/runSurface` / `api/primitives` /
 `api/logics` / `api/types` / `api/tools` — there is no root barrel; pick the narrowest tier). See that
@@ -62,7 +62,7 @@ and the hard rule that it must never import `scenes/max`.
 
 What stays in `scenes/max`: conversation orchestration (`maxLogic`, `maxThreadLogic`, `maxGlobalLogic`), the
 Max Context subsystem, slash commands, `useMaxTool`/`MaxTool`, feedback/ratings, and the frozen LangGraph
-path (including its `messages/*` presenters). The **PostHog product tool renderers** (insight, dashboard,
+path (including its `messages/*` presenters). The **Flind product tool renderers** (insight, dashboard,
 recordings, notebook, query) live in `products/posthog_ai/frontend/components/tool/widgets`; error tracking
 and replay vision own their widget families under their respective `products/<product>/frontend` directories.
 Error tracking contributes a declaration list to the central manifest, so its cards render on the sandbox path too.
@@ -77,7 +77,7 @@ The first three now live in `products/posthog_ai/frontend` (the shared surface) 
 - **A new thread-item type** → `products/posthog_ai/frontend/types/streamTypes.ts` (the `ThreadItem` union), handle it in `foldLogToThread`, and add a memoized leaf renderer wired into `ThreadView`/`ThreadRow`.
 - **A new permission affordance / auto-approval rule** → `products/posthog_ai/frontend/policy/toolPolicy.ts`, then surface it through `PermissionInput`.
 - **New stream telemetry** → a guarded `posthog.capture` in the relevant `runStreamLogic` listener (fire-once, suppressed on replay).
-- **A new product tool renderer** (renders a PostHog entity) → the owning product’s frontend + declare it in `products/<product>/frontend/posthogAiToolRenderers.tsx` (the central manifest makes it available before any scene renders).
+- **A new product tool renderer** (renders a Flind entity) → the owning product’s frontend + declare it in `products/<product>/frontend/posthogAiToolRenderers.tsx` (the central manifest makes it available before any scene renders).
 - **New context the agent should see** → register it from the owning product via the surface's context seam: `useAttachedContext` / `AttachedContextProvider` / `attachedContextLogic.registerContext` (see `products/posthog_ai/frontend/AGENTS.md` §3). Not `MaxUIContext`, and no new fields on the legacy stores. Scenes now register their on-screen context natively into that seam, and `maxThreadLogic`'s sandbox send merges the seam's items into `attached_context` — that bridge lives here and is deleted with `scenes/max`.
 - **UI that reacts to the agent calling a tool** (sandbox path) → subscribe via the surface's `useToolStreamListener` / `toolStreamEventsLogic` (resolved tool names, replay suppressed by default). The legacy `useMaxTool` `callback` fires on LangGraph only.
 

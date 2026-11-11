@@ -8,7 +8,7 @@ import { regionalStatus, usePostHogStatus } from './usePostHogStatus'
 
 jest.mock('@/demo/demoMode', () => ({ useDataMode: jest.fn(() => 'live') }))
 
-const euAI = { current_status: 'degraded_performance' as const, name: 'PostHog AI', group_name: 'EU Cloud 🇪🇺' }
+const euAI = { current_status: 'degraded_performance' as const, name: 'Flind AI', group_name: 'EU Cloud 🇪🇺' }
 const usAPI = { current_status: 'degraded_performance' as const, name: 'API', group_name: 'US Cloud 🇺🇸' }
 const incident = {
     current_worst_impact: 'degraded_performance' as const,

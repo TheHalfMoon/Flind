@@ -1,4 +1,4 @@
-PostHog ClickHouse setup
+Flind ClickHouse setup
 
 # Cluster setup
 

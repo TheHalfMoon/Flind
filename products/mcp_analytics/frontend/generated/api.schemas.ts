@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface MCPCustomHarnessApi {
@@ -521,7 +521,7 @@ export interface MCPSessionApi {
     readonly session_start: string
     /** Timestamp of the most recent $mcp_tool_call event in the session. */
     readonly session_end: string
-    /** Number of distinct PostHog distinct_ids that produced events in the session. */
+    /** Number of distinct Flind distinct_ids that produced events in the session. */
     readonly distinct_id_count: number
     /** Distinct $mcp_tool_name values seen in the session. */
     readonly tools_used: readonly string[]
@@ -747,11 +747,11 @@ export type McpAnalyticsMissingCapabilitiesListParams = {
 
 export type McpAnalyticsSessionsListParams = {
     /**
-     * Start of the window to aggregate sessions over. PostHog date string — relative (e.g. '-7d', '-24h') or an absolute ISO timestamp. Defaults to '-7d'.
+     * Start of the window to aggregate sessions over. Flind date string — relative (e.g. '-7d', '-24h') or an absolute ISO timestamp. Defaults to '-7d'.
      */
     date_from?: string
     /**
-     * End of the window. PostHog date string or absolute ISO timestamp. Defaults to now.
+     * End of the window. Flind date string or absolute ISO timestamp. Defaults to now.
      */
     date_to?: string
     /**

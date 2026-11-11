@@ -97,7 +97,7 @@ class AnnouncementSerializer(DataclassSerializer):
         choices=_ANNOUNCEMENT_SEND_AS_CHOICES,
         default="bot",
         help_text="Slack identity the message is posted under: 'bot' posts as SupportHog, 'user' posts under the "
-        "Slack name and avatar of the person sending it (matched by their PostHog email).",
+        "Slack name and avatar of the person sending it (matched by their Flind email).",
     )
     sender_display_name = serializers.CharField(
         read_only=True,

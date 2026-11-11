@@ -48,7 +48,7 @@ class ShortcutSource(SimpleSource[ShortcutSourceConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Shortcut",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Shortcut API token to sync your Shortcut data into the PostHog Data warehouse.
+            caption="""Enter your Shortcut API token to sync your Shortcut data into the Flind Data warehouse.
 
 You can create an API token in your [Shortcut account settings](https://app.shortcut.com/settings/account/api-tokens). The token grants access to the whole workspace it belongs to and becomes invalid if you're removed from that workspace.""",
             iconPath="/static/services/shortcut.png",

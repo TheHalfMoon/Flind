@@ -122,9 +122,9 @@ describe('ui-apps', () => {
             const registeredNames = server.registerResource.mock.calls.map((call: unknown[]) => call[0])
             expect(registeredNames).toContain('MCP Apps Debug')
             expect(registeredNames).toContain('Query Results')
-            expect(registeredNames).toContain('PostHog Feature Flag')
-            expect(registeredNames).toContain('PostHog Feature Flag Testing')
-            expect(registeredNames).toContain('PostHog Experiment Results')
+            expect(registeredNames).toContain('Flind Feature Flag')
+            expect(registeredNames).toContain('Flind Feature Flag Testing')
+            expect(registeredNames).toContain('Flind Experiment Results')
 
             expect(URI_MAP['feature-flag-testing']).toBe('ui://posthog/feature-flag-testing.html')
         })

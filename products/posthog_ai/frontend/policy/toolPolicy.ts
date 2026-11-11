@@ -9,7 +9,7 @@ export { isPostHogExecTool } from '../components/tool/posthogExecDisplay'
  * Client-side sandbox tool-permission policy.
  *
  * The run's permission mode can relay manual approvals when a client is connected. This policy
- * auto-approves built-in tools and PostHog MCP calls in the task's project. It keeps approval cards
+ * auto-approves built-in tools and Flind MCP calls in the task's project. It keeps approval cards
  * for connected-project calls, external MCP servers, and requests that cannot be identified.
  */
 
@@ -35,7 +35,7 @@ export function isConnectedProjectTool(record: PermissionRequestRecord): boolean
  * Decide whether a permission request can be auto-approved or must prompt the user. The policy fails
  * closed: a request only auto-approves when it is positively identified as safe.
  *
- * PostHog `exec` is detected by canonical tool name and by the parsed command. Operations in the
+ * Flind `exec` is detected by canonical tool name and by the parsed command. Operations in the
  * task's project auto-approve. Connected-project calls, other MCP servers, and frames that cannot be
  * identified still prompt.
  */

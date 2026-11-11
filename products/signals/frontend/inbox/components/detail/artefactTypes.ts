@@ -1,6 +1,6 @@
 import { isObject } from 'lib/utils/guards'
 // Pure (no-React) artefact helpers shared by the detail logic and the activity-log renderers.
-// Mirrors the PostHog Desktop inbox's artefact-log domain helpers. Content shapes stay loose
+// Mirrors the Flind Desktop inbox's artefact-log domain helpers. Content shapes stay loose
 // (`Record<string, any>` on the artefact) and are read through these typed accessors so legacy
 // rows with extra/missing keys never crash a render.
 import { identifierToHuman } from 'lib/utils/strings'

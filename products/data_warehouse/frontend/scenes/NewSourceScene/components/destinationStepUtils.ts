@@ -28,7 +28,7 @@ export function shouldShowDestinationStep({
 /**
  * What the step starts with selected.
  *
- * The PostHog warehouse, so a person who steps past this gets what they would have got before
+ * The Flind warehouse, so a person who steps past this gets what they would have got before
  * destinations existed. An existing choice is left alone, so stepping back and forth keeps it.
  */
 export function defaultDestinationIds(
@@ -47,7 +47,7 @@ export function defaultDestinationIds(
  *
  * The toggles stay free, so the warehouse can go off before another destination goes on, which
  * leaves the Import button to hold the rule. A team with no destination rows yet has nothing to
- * pick, and its source writes to the PostHog warehouse, so the step does not block there.
+ * pick, and its source writes to the Flind warehouse, so the step does not block there.
  */
 export function destinationStepBlockReason(availableCount: number, selectedIds: string[]): string | null {
     if (availableCount === 0 || selectedIds.length > 0) {

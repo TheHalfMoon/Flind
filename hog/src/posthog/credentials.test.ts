@@ -129,7 +129,7 @@ describe('resolveCredentials', () => {
             { key: { apiKey: 'phx_eu', host: EU }, source: 'store', store: 'keychain' },
         ],
         [
-            'a self-hosted login keeps the path PostHog sits under',
+            'a self-hosted login keeps the path Flind sits under',
             settings('https://example.com', { 'https://example.com/posthog': 'keychain' }),
             { 'https://example.com': login('phx_self') },
             {},

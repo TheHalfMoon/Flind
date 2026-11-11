@@ -321,7 +321,7 @@ class ErrorTrackingIssueViewSet(TeamAndOrgViewSetMixin, ForbidDestroyModel, view
 
     def _report_issue_change(self, request: request.Request, action: str, properties: dict[str, object]) -> None:
         # Captured server-side because the frontend issue events only see the web app.
-        # This event also counts changes made through MCP, PostHog AI, Slack and the API.
+        # This event also counts changes made through MCP, Flind AI, Slack and the API.
         report_user_action(
             cast(User, request.user),
             "error_tracking_issue_changed",

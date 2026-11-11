@@ -90,7 +90,7 @@ class WorkOSSource(
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="WorkOS",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your WorkOS API key to sync your WorkOS data into the PostHog Data warehouse.
+            caption="""Enter your WorkOS API key to sync your WorkOS data into the Flind Data warehouse.
 
 You can find your API key in the [WorkOS Dashboard](https://dashboard.workos.com/) under **API Keys**.
 
@@ -111,7 +111,7 @@ The key starts with `sk_`.
                     ),
                 ],
             ),
-            webhookSetupCaption="""PostHog can create the WorkOS webhook automatically. To set it up manually:
+            webhookSetupCaption="""Flind can create the WorkOS webhook automatically. To set it up manually:
 
 1. Open **Webhooks** in the WorkOS Dashboard.
 2. Create an endpoint and paste the webhook URL shown below.

@@ -10,7 +10,7 @@ logger = structlog.get_logger(__name__)
 BATCH_RUN_STATUS_HELP_TEXT = (
     "Status of the batch run. waiting: the audience's cohort is still calculating. queued and active: the run "
     "is enrolling its audience. completed: the whole audience was enrolled. When every enrolled person's run "
-    "has ended, or a day after the run completed, PostHog checks for errored sends. A completed run stays "
+    "has ended, or a day after the run completed, Flind checks for errored sends. A completed run stays "
     "completed when no send errored, becomes "
     "partially_failed when some sends errored, and becomes failed when every send errored. failed also means "
     "the run could not enroll its audience. cancelled: someone stopped the run. A send errors when its step "
@@ -37,10 +37,10 @@ class HogFlowBatchJobSerializer(serializers.Serializer):
     updated_at = serializers.DateTimeField(read_only=True, help_text="When the batch run was last updated.")
 
     def validate_status(self, value: str) -> str:
-        # A waiting run is one PostHog has not dispatched yet, and stopping it skips the workers.
+        # A waiting run is one Flind has not dispatched yet, and stopping it skips the workers.
         if value == HogFlowBatchJobState.WAITING:
             raise serializers.ValidationError(
-                "PostHog sets 'waiting' itself while the audience's cohort calculates. Leave the status out."
+                "Flind sets 'waiting' itself while the audience's cohort calculates. Leave the status out."
             )
         return value
 

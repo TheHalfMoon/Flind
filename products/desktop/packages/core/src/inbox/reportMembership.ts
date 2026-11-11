@@ -117,7 +117,7 @@ export function isInboxDetailPath(pathname: string): boolean {
  * PR tab membership: Responder shipped a draft PR and it is `ready` for review.
  * PRs that have already been merged/closed (`resolved`) or are still running
  * are excluded so the tab — and its count — only show actionable PRs, matching
- * the PostHog Cloud inbox.
+ * the Flind Cloud inbox.
  */
 export function isPullRequestReport(report: SignalReport): boolean {
   return report.status === "ready" && !!report.implementation_pr_url;

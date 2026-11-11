@@ -56,7 +56,7 @@ class SourceBatch(UUIDModel):
         default=list,
         blank=True,
         db_default=[],
-        help_text="ExternalDataDestination ids this batch is delivered to. Empty means the PostHog warehouse only.",
+        help_text="ExternalDataDestination ids this batch is delivered to. Empty means the Flind warehouse only.",
     )
 
     # Denormalized mirror of the latest sourcebatchstatus row, maintained by the

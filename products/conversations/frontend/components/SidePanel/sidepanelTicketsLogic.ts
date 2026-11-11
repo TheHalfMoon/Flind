@@ -514,7 +514,7 @@ export const sidepanelTicketsLogic = kea<sidepanelTicketsLogicType>([
             },
         ],
         // Opening a ticket is the paid part of support. Reading and replying to tickets already in
-        // the account isn't — free plans can end up with tickets via billing questions or PostHog AI
+        // the account isn't — free plans can end up with tickets via billing questions or Flind AI
         // bug reports, and abandoning those threads helps nobody.
         canCreateTicket: [
             (s) => [s.billing, s.isCurrentOrganizationNew, s.hasSupportExemption, s.isBillingIssue, s.isErrorReport],
@@ -550,7 +550,7 @@ export const sidepanelTicketsLogic = kea<sidepanelTicketsLogicType>([
             (s) => [s.billing, s.billingLoading],
             (billing: BillingType | null, billingLoading: boolean): boolean => !billingLoading && billing !== null,
         ],
-        // Free plans can't open new tickets, but tickets they already have (billing questions, PostHog AI
+        // Free plans can't open new tickets, but tickets they already have (billing questions, Flind AI
         // bug reports) stay readable and repliable.
         canAccessTickets: [
             (s) => [s.canCreateTicket, s.tickets],

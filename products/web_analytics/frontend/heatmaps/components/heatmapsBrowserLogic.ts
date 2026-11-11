@@ -617,7 +617,7 @@ export const heatmapsBrowserLogic = kea<heatmapsBrowserLogicType>([
                     // must be something that can be parsed as a URL
                     new URL(dataUrl)
                     // and must be a valid URL that our redirects can cope with
-                    // this is a very loose check, but `http:/blaj` is not valid for PostHog
+                    // this is a very loose check, but `http:/blaj` is not valid for Flind
                     // but survives new URL(http:/blaj)
                     return dataUrl.includes('://')
                 } catch {

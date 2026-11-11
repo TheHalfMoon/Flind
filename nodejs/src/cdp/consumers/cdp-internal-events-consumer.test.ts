@@ -469,7 +469,7 @@ describe('CDP Internal Events Consumer', () => {
         })
 
         it.each([
-            ['PostHog posted the message', 'A0POSTHOG', 0],
+            ['Flind posted the message', 'A0POSTHOG', 0],
             ['another app posted the message', 'A0OTHER', 1],
         ])('starts a workflow only when it did not post the message: %s', async (_name, appId, expected) => {
             // A workflow that replies in Slack sees its own reply arrive back on this topic. The

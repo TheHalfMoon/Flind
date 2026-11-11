@@ -5,7 +5,7 @@ import { Button, Field, FieldLabel, Text, Textarea } from '@flind/quill'
 
 import { capture, isAnalyticsEnabled, newId } from '../analytics/posthog'
 
-// An API survey in the PostHog project that receives the app's analytics. The app sends the responses itself.
+// An API survey in the Flind project that receives the app's analytics. The app sends the responses itself.
 const SURVEY_ID = '01a18c51-4f07-0000-03ff-d05744424486'
 const RATING_QUESTION_ID = 'ea2206c2-1e43-41f8-ba87-86d6281ed76d'
 const NOTE_QUESTION_ID = '6631e694-32f6-4add-897c-a23029a4d284'

@@ -50,7 +50,7 @@ from products.warehouse_sources.sources.slack.slack import (
 # seconds. The discovery activity times out at 10 minutes and runs again every few hours.
 _REQUEST_JOIN_BUDGET_SECONDS = 30.0
 _ACTIVITY_JOIN_BUDGET_SECONDS = 300.0
-# Sources made before bring-your-own point at PostHog's shared Slack app with this key. No form field declares it.
+# Sources made before bring-your-own point at Flind's shared Slack app with this key. No form field declares it.
 _LEGACY_INTEGRATION_KEY = "slack_integration_id"
 
 
@@ -178,7 +178,7 @@ class SlackSource(ResumableSource[SlackSourceConfig, SlackResumeConfig], Webhook
           source itself, so it stays within Slack's API terms for internal apps. ``auth.test`` gives
           the token's own user id and a hash of the token keys the cache. This is the only path new
           sources can configure.
-        - Otherwise the source predates bring-your-own and still points at PostHog's shared app
+        - Otherwise the source predates bring-your-own and still points at Flind's shared app
           (legacy OAuth): credentials live on the linked Integration row. Pasting a token converts
           such a source in place — the token takes precedence and the stale integration id is ignored.
         """
@@ -224,7 +224,7 @@ class SlackSource(ResumableSource[SlackSourceConfig, SlackResumeConfig], Webhook
         return SourceConfig(
             name=ExternalDataSourceType.SLACK,
             category=DataWarehouseSourceCategory.COMMUNICATION,
-            caption="""Sync Slack channels, users, and messages into PostHog by connecting your own Slack app.
+            caption="""Sync Slack channels, users, and messages into Flind by connecting your own Slack app.
 
 You create a Slack app in your workspace and paste its bot token here. Using your own app keeps message syncing within Slack's API terms — [read the docs](https://posthog.com/docs/cdp/sources/slack) for the full walkthrough.
 
@@ -235,8 +235,8 @@ Open [Slack apps](https://api.slack.com/apps?new_app=1), click **From a manifest
 ```json
 {
     "display_information": {
-        "name": "PostHog data warehouse",
-        "description": "Sync Slack channels, users, and messages to PostHog data warehouse"
+        "name": "Flind data warehouse",
+        "description": "Sync Slack channels, users, and messages to Flind data warehouse"
     },
     "oauth_config": {
         "scopes": {
@@ -293,7 +293,7 @@ Invite the bot to any channel whose messages you want to sync (`/invite @PostHog
                 ],
             ),
             webhookManualOnly=True,
-            webhookSetupCaption="""Slack delivers new messages to PostHog through your Slack app's Event Subscriptions.
+            webhookSetupCaption="""Slack delivers new messages to Flind through your Slack app's Event Subscriptions.
 
 If you connected with your own Slack app (recommended), open that same app and add the Event Subscriptions below. Otherwise create a new app from the manifest.
 
@@ -307,8 +307,8 @@ Prefer a manifest? Paste this when creating the app — it wires the request URL
 ```json
 {
     "display_information": {
-        "name": "PostHog data warehouse",
-        "description": "Sync Slack channels, users, and messages to PostHog data warehouse"
+        "name": "Flind data warehouse",
+        "description": "Sync Slack channels, users, and messages to Flind data warehouse"
     },
     "oauth_config": {
         "scopes": {
@@ -363,7 +363,7 @@ Prefer a manifest? Paste this when creating the app — it wires the request URL
             "invalid_auth": "Your Slack token is invalid. Please reconnect the source.",
             "account_inactive": "Your Slack account is inactive. Please reconnect the source.",
             "token_revoked": "Your Slack token has been revoked. Please reconnect the source.",
-            "missing_scope": "Your Slack app is missing scopes PostHog needs. Add the bot scopes from the setup manifest, reinstall the app to your workspace, then try again.",
+            "missing_scope": "Your Slack app is missing scopes Flind needs. Add the bot scopes from the setup manifest, reinstall the app to your workspace, then try again.",
             "not_allowed_token_type": "This Slack token type isn't supported. Please paste the Bot User OAuth Token (starts with xoxb-) from your Slack app's Install App page.",
             "not_in_channel": "The Slack bot is not a member of this channel. Please invite the bot to the channel and try again.",
             "channel_not_found": "This Slack channel was not found. It may have been deleted or the bot lacks permission to access it.",

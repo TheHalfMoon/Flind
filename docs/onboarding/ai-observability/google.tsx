@@ -22,7 +22,7 @@ export const getGoogleSteps = (ctx: OnboardingComponentsContext): StepDefinition
                         </Markdown>
                     </CalloutBox>
 
-                    <Markdown>Install the PostHog SDK and the Google Gen AI SDK.</Markdown>
+                    <Markdown>Install the Flind SDK and the Google Gen AI SDK.</Markdown>
 
                     <CodeBlock
                         blocks={[
@@ -47,13 +47,13 @@ export const getGoogleSteps = (ctx: OnboardingComponentsContext): StepDefinition
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                            Create a PostHog client, then swap in PostHog's Google Gen AI wrapper.
+                            Create a Flind client, then swap in Flind's Google Gen AI wrapper.
                         `}
                     </Markdown>
 
@@ -81,9 +81,9 @@ export const getGoogleSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                 file: 'Node',
                                 code: dedent`
                                     import { GoogleGenAI } from '@posthog/ai/gemini'
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
 
-                                    const posthog = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' })
+                                    const posthog = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' })
 
                                     const client = new GoogleGenAI({
                                       apiKey: 'your_gemini_api_key',
@@ -139,7 +139,7 @@ export const getGoogleSteps = (ctx: OnboardingComponentsContext): StepDefinition
                 <>
                     <Markdown>
                         {dedent`
-                            When you use the wrapped client to call Gemini, PostHog automatically captures an
+                            When you use the wrapped client to call Gemini, Flind automatically captures an
                             \`$ai_generation\` event.
                         `}
                     </Markdown>
@@ -302,7 +302,7 @@ export const getGoogleSteps = (ctx: OnboardingComponentsContext): StepDefinition
             content: (
                 <>
                     <Markdown>
-                        PostHog can also capture embedding generations as `$ai_embedding` events. The wrapped client
+                        Flind can also capture embedding generations as `$ai_embedding` events. The wrapped client
                         captures these automatically when you use the `embed_content` API:
                     </Markdown>
 

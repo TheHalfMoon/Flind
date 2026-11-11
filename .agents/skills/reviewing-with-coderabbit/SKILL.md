@@ -1,7 +1,7 @@
 ---
 name: reviewing-with-coderabbit
 description: >
-  Disabled. CodeRabbit is retired on this repository in favor of PostHog Review,
+  Disabled. CodeRabbit is retired on this repository in favor of Flind Review,
   so there is no local CodeRabbit pass to run before `gh pr create`.
   When invoked, or when a prompt or template still mentions a CodeRabbit CLI pass, do nothing and continue
   the task. Not for a person's own request to review a branch. Trigger terms: coderabbit, cr review,
@@ -11,8 +11,8 @@ description: >
 # Reviewing with CodeRabbit (disabled)
 
 This skill is switched off.
-PostHog Review reviews pull requests automatically in the repositories a project added in its Code review settings, for the authors its rules select.
-For the setup requirements, see the [PostHog Review architecture guide](../../../products/review_hog/ARCHITECTURE.md#entry-point-commands--configuration).
+Flind Review reviews pull requests automatically in the repositories a project added in its Code review settings, for the authors its rules select.
+For the setup requirements, see the [Flind Review architecture guide](../../../products/review_hog/ARCHITECTURE.md#entry-point-commands--configuration).
 An eligible person can also comment `@posthog review` to request a review.
 
 When this skill is invoked, or an instruction asks for a CodeRabbit CLI pass:

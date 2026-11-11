@@ -1037,7 +1037,7 @@ def projection_repo(tmp_path: Path) -> Path:
     _write(
         tmp_path,
         "owners.yaml",
-        "version: 1\nowners: []\ngithub_org: PostHog\n",
+        "version: 1\nowners: []\ngithub_org: Flind\n",
     )
     _write(tmp_path, "posthog/security/owners.yaml", "version: 1\nowners: [team-security]\n")
     _write(tmp_path, "posthog/security/test/owners.yaml", "version: 1\nowners: null\n")
@@ -1085,14 +1085,14 @@ def test_projection_resolves_every_spelling_to_what_the_resolver_says(projection
     resolver = OwnersResolver(projection_repo)
 
     projection = project(
-        tracked, resolver, org="PostHog", package_dirs=package_dirs_from(tracked), settings=JEST_ROOT_SETTINGS
+        tracked, resolver, org="Flind", package_dirs=package_dirs_from(tracked), settings=JEST_ROOT_SETTINGS
     )
     rendered = projection.render()
 
     for path in tracked:
         if runner_for_path(path) is None:
             continue
-        expected = [owner_handle(owner, "PostHog") for owner in resolver.resolve(path).owners or []]
+        expected = [owner_handle(owner, "Flind") for owner in resolver.resolve(path).owners or []]
         for spelling in spellings(path, package_dirs_from(tracked), JEST_ROOT_SETTINGS):
             assert _codeowners_lookup(rendered, spelling) == expected, f"{spelling} resolved wrongly"
     assert projection.owned_file_count == 5
@@ -1111,7 +1111,7 @@ def test_projection_drops_a_spelling_two_teams_would_both_claim(projection_repo:
     ]
 
     projection = project(
-        tracked, OwnersResolver(projection_repo), org="PostHog", package_dirs=package_dirs_from(tracked)
+        tracked, OwnersResolver(projection_repo), org="Flind", package_dirs=package_dirs_from(tracked)
     )
     rendered = projection.render()
 

@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type { WebMCPExecRequestApi, WebMCPExecResultApi } from './api.schemas'
@@ -15,7 +15,7 @@ export const getWebmcpExecCreateUrl = (projectId: string) => {
 }
 
 /**
- * @summary Run an exec command on the PostHog MCP server
+ * @summary Run an exec command on the Flind MCP server
  */
 export const webmcpExecCreate = async (
     projectId: string,

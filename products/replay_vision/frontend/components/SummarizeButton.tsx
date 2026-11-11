@@ -70,7 +70,7 @@ export function SummarizeButton({
         })),
         {
             key: 'built-in',
-            // This row is PostHog's built-in prompt, not a team scanner they could open, so it says so.
+            // This row is Flind's built-in prompt, not a team scanner they could open, so it says so.
             label: (
                 <span className="flex items-center justify-between gap-2 w-full">
                     <span className="truncate">{BUILT_IN_SUMMARY_LABEL}</span>

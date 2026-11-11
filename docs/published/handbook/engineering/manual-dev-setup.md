@@ -10,7 +10,7 @@ This documentation is deprecated, and likely not up to date. Please use the [Flo
 
 ## 1. Spin up external services
 
-In this step we will start all the external services needed by PostHog to work.
+In this step we will start all the external services needed by Flind to work.
 
 First, append line `127.0.0.1 kafka clickhouse clickhouse-coordinator objectstorage` and line `::1 kafka clickhouse clickhouse-coordinator objectstorage` to `/etc/hosts`. Our ClickHouse and Kafka data services won't be able to talk to each other without these mapped hosts.
 You can do this with:
@@ -124,7 +124,7 @@ On Linux you often have separate packages: `postgres` for the tools, `postgres-s
     <code>$PATH</code>. Otherwise the command line will use your system Node.js version instead.
 </blockquote>
 
-2. Install the Node.js version pinned in `.nvmrc` (the version used by PostHog in production) with `nvm install` (run from the repo root — nvm reads `.nvmrc`). Activate it in the current shell with `nvm use`.
+2. Install the Node.js version pinned in `.nvmrc` (the version used by Flind in production) with `nvm install` (run from the repo root — nvm reads `.nvmrc`). Activate it in the current shell with `nvm use`.
 
 3. Install pnpm by running `npm install -g corepack@0.36.0 && corepack enable`. Node.js 25 and later no longer bundle corepack. Corepack will activate the version pinned in the root `package.json`'s `packageManager` field on the next `pnpm` invocation. Validate with `pnpm --version`.
 
@@ -268,9 +268,9 @@ DEBUG=1 ./bin/migrate
 
 > **Friendly tip 3:** When migrating, make sure the containers are running (detached or in a separate terminal tab).
 
-## 6. Start PostHog
+## 6. Start Flind
 
-Now start all of PostHog (backend, worker, nodejs services, and frontend – simultaneously):
+Now start all of Flind (backend, worker, nodejs services, and frontend – simultaneously):
 
 ```bash
 hogli start
@@ -286,12 +286,12 @@ Open [http://localhost:8010](http://localhost:8010) to see the app.
 
 > **Note:** The first time you run this command you might get an error that says "layout.html is not defined". Make sure you wait until the frontend is finished compiling and try again.
 
-To get some practical test data into your brand-new instance of PostHog, run `DEBUG=1 ./manage.py generate_demo_data`. For a list of useful arguments of the command, run `DEBUG=1 ./manage.py generate_demo_data --help`.
+To get some practical test data into your brand-new instance of Flind, run `DEBUG=1 ./manage.py generate_demo_data`. For a list of useful arguments of the command, run `DEBUG=1 ./manage.py generate_demo_data --help`.
 
 > **Friendly Tip** The first time you run the app, you can log in with a test account: _user_:`test@posthog.com` _pwd_:`12345678`.
 
 ## 7. Develop
 
-This is it – you should be seeing the PostHog app at <a href="http://localhost:8010" target="_blank">http://localhost:8010</a>.
+This is it – you should be seeing the Flind app at <a href="http://localhost:8010" target="_blank">http://localhost:8010</a>.
 
-You can now change PostHog in any way you want. See [Project structure](./project-structure) for an intro to the repository's contents. To commit changes, create a new branch based on `master` for your intended change, and develop away.
+You can now change Flind in any way you want. See [Project structure](./project-structure) for an intro to the repository's contents. To commit changes, create a new branch based on `master` for your intended change, and develop away.

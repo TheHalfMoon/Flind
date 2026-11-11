@@ -70,7 +70,7 @@ class MCPRegistryServer(UUIDModel):
     # Raw official-registry metadata (version, publishedAt, updatedAt, status).
     registry_meta = models.JSONField(default=dict, blank=True)
     is_measured = models.BooleanField(default=False)
-    # Whether measured stats may be shown outside PostHog. Stays False until the
+    # Whether measured stats may be shown outside Flind. Stays False until the
     # server owner opts in, because it is their analytics data.
     measured_public = models.BooleanField(default=False)
     # Which project a standalone (non-registry) row belongs to. Registry rows are global and

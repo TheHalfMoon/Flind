@@ -107,7 +107,7 @@ def measured_visibility(server: MCPRegistryServer, team_id: int | None, is_staff
     redacted breakdown.
 
     Registry rows are global, but each stats row aggregates one project's own
-    $mcp_tool_call events, so visibility is tiered. PostHog staff see every row, which is
+    $mcp_tool_call events, so visibility is tiered. Flind staff see every row, which is
     how we tell whether ranking behaves across the whole fleet instead of one project. A
     project sees its own rows. Anyone else sees none, because another customer's call
     volumes, error rates, and per-tool breakdowns are not ours to hand out.

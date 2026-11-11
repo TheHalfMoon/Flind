@@ -5,7 +5,7 @@ import {
     resolvePullRequestTarget,
 } from './pullRequestReference'
 
-const LINK: PullRequestReference = { kind: 'link', owner: 'PostHog', repo: 'posthog', number: 123 }
+const LINK: PullRequestReference = { kind: 'link', owner: 'Flind', repo: 'posthog', number: 123 }
 const NUMBER: PullRequestReference = { kind: 'number', number: 123 }
 
 describe('pullRequestReference', () => {
@@ -18,7 +18,7 @@ describe('pullRequestReference', () => {
         [
             'a link to a repository with a dot in its name',
             'https://github.com/PostHog/posthog.com/pull/7',
-            { kind: 'link', owner: 'PostHog', repo: 'posthog.com', number: 7 },
+            { kind: 'link', owner: 'Flind', repo: 'posthog.com', number: 7 },
         ],
         ['owner/repo#n', 'PostHog/posthog#123', { ...LINK, kind: 'repo_number' }],
         ['#n', '#123', NUMBER],
@@ -43,14 +43,14 @@ describe('pullRequestReference', () => {
             'a bare number to the repository in scope',
             NUMBER,
             'PostHog/posthog.com',
-            { owner: 'PostHog', repo: 'posthog.com', number: 123, inScope: true },
+            { owner: 'Flind', repo: 'posthog.com', number: 123, inScope: true },
         ],
         ['a bare number to nothing when no repository is in scope', NUMBER, null, null],
         [
             'a link to the repository in scope, in the casing of the scope',
             { kind: 'link', owner: 'posthog', repo: 'POSTHOG', number: 123 },
             'PostHog/posthog',
-            { owner: 'PostHog', repo: 'posthog', number: 123, inScope: true },
+            { owner: 'Flind', repo: 'posthog', number: 123, inScope: true },
         ],
         [
             'a link to another repository as typed, out of scope',
@@ -62,7 +62,7 @@ describe('pullRequestReference', () => {
             'a link with no repository in scope as typed',
             LINK,
             null,
-            { owner: 'PostHog', repo: 'posthog', number: 123, inScope: false },
+            { owner: 'Flind', repo: 'posthog', number: 123, inScope: false },
         ],
     ])('resolves %s', (_label, reference, scopedRepo, expected) => {
         expect(resolvePullRequestTarget(reference, scopedRepo)).toEqual(expected)

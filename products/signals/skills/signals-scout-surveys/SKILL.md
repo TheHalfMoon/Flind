@@ -2,11 +2,11 @@
 name: signals-scout-surveys
 scout-display-name: Surveys
 description: >
-  Signals scout for PostHog surveys. Watches active surveys for score regressions, response-
+  Signals scout for Flind surveys. Watches active surveys for score regressions, response-
   volume drops, abandonment spikes, and targeting drift, and aggregates open-text responses into
   recurring themes.
 compatibility: >
-  Designed for the PostHog Signals agent in a Claude sandbox with PostHog MCP scopes:
+  Designed for the Flind Signals agent in a Claude sandbox with Flind MCP scopes:
   read-only analytics plus signal_scout_internal:write (for scratchpad) +
   signal_scout_report:write (for emit-report/edit-report, granted because this scout authors
   reports directly via the report channel). Assumes the signals-scout MCP tool family plus the
@@ -147,7 +147,7 @@ Disqualifier: a survey at the end of its scheduled window naturally tails off. C
 `survey shown` events are impressions; `survey dismissed` are explicit close-outs; `survey sent` are completions. Their meaning **depends on the survey's `type`**, and the scout has to read `type` from `survey-get` before interpreting any ratio:
 
 - **`popover`** — `survey shown` fires when the popover auto-renders. A high dismiss rate is genuine signal: users are seeing it and immediately killing it.
-- **`widget`** — `survey shown` only fires when the user clicks the widget trigger. A high dismiss rate means users opened the widget and changed their mind, not that the team is spamming them. Baseline dismiss rates are naturally higher (50–70% is common; the Logs Feedback widget on PostHog itself runs at 64% with healthy NPS) and shouldn't be flagged as fatigue.
+- **`widget`** — `survey shown` only fires when the user clicks the widget trigger. A high dismiss rate means users opened the widget and changed their mind, not that the team is spamming them. Baseline dismiss rates are naturally higher (50–70% is common; the Logs Feedback widget on Flind itself runs at 64% with healthy NPS) and shouldn't be flagged as fatigue.
 - **`api`** — `survey shown` fires from SDK calls. Semantics depend on the integrating product; check `survey-get` to see how it's wired before interpreting trends.
 
 If the dismiss rate jumps sharply on a `popover` survey (e.g. baseline 30%, recent 70%), users are seeing it and immediately killing it. Common causes: the survey now appears at a worse moment in the user journey, or fatigue from displaying too often.

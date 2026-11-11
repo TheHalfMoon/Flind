@@ -230,7 +230,7 @@ export function StepTriggerConfiguration({ node }: { node: Node<TriggerAction> }
         const items: TriggerOptionItem[] = [
             {
                 label: 'Event',
-                description: 'Trigger your workflow based on incoming realtime PostHog events',
+                description: 'Trigger your workflow based on incoming realtime Flind events',
                 value: 'event',
                 icon: <IconBolt />,
             },
@@ -863,7 +863,7 @@ function StepTriggerConfigurationTrackingPixel({
 
                                 <div>
                                     You can use query parameters to pass in data that you can parse into the event
-                                    properties below, or you can hard code the values. This will not create a PostHog
+                                    properties below, or you can hard code the values. This will not create a Flind
                                     event by default, it will only be used to trigger the workflow.
                                 </div>
                             </>

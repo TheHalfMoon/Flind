@@ -156,7 +156,7 @@ class DodoPaymentsSource(ResumableSource[DodoPaymentsSourceConfig, DodoPaymentsR
             label="Dodo Payments",
             caption=(
                 "Sync payments, subscriptions, customers, refunds, disputes, payouts and your product "
-                "catalog from Dodo Payments into PostHog. Create an API key in your Dodo Payments "
+                "catalog from Dodo Payments into Flind. Create an API key in your Dodo Payments "
                 f"dashboard under [Developer > API keys]({DODOPAYMENTS_API_KEYS_URL}). Read access is enough."
             ),
             docsUrl="https://posthog.com/docs/cdp/sources/dodo-payments",

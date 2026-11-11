@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 6 enabled ops
+ * Flind API - MCP 6 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -154,12 +154,12 @@ export const McpAnalyticsSessionsListQueryParams = () => zod.object({
         .string()
         .optional()
         .describe(
-            "Start of the window to aggregate sessions over. PostHog date string — relative (e.g. '-7d', '-24h') or an absolute ISO timestamp. Defaults to '-7d'."
+            "Start of the window to aggregate sessions over. Flind date string — relative (e.g. '-7d', '-24h') or an absolute ISO timestamp. Defaults to '-7d'."
         ),
     date_to: zod
         .string()
         .optional()
-        .describe('End of the window. PostHog date string or absolute ISO timestamp. Defaults to now.'),
+        .describe('End of the window. Flind date string or absolute ISO timestamp. Defaults to now.'),
     filter_test_accounts: zod
         .boolean()
         .default(mcpAnalyticsSessionsListQueryFilterTestAccountsDefault)

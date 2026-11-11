@@ -36,7 +36,7 @@ export class PostHogApi {
     });
     if (!res.ok) {
       throw new Error(
-        `PostHog API error: ${res.status} ${res.statusText} on GET ${path}`,
+        `Flind API error: ${res.status} ${res.statusText} on GET ${path}`,
       );
     }
     return res.json() as Promise<T>;
@@ -54,7 +54,7 @@ export class PostHogApi {
     });
     if (!res.ok) {
       throw new Error(
-        `PostHog API error: ${res.status} ${res.statusText} on POST ${path}`,
+        `Flind API error: ${res.status} ${res.statusText} on POST ${path}`,
       );
     }
     return res.json() as Promise<T>;

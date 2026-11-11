@@ -24,7 +24,7 @@ logger = structlog.get_logger(__name__)
 
 
 class ResourceHealthSource:
-    """Broken PostHog resources the team should fix, surfaced as health items → "fix" opportunities."""
+    """Broken Flind resources the team should fix, surfaced as health items → "fix" opportunities."""
 
     name = "resource_health"
 

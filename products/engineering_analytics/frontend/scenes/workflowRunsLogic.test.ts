@@ -63,7 +63,7 @@ describe('workflowRunsLogic', () => {
     })
 
     it('sends the shared run scope to every windowed read on the page, reloading all of them on a change', async () => {
-        logic = workflowRunsLogic({ repoOwner: 'PostHog', repoName: 'posthog', workflowName: 'CI', sourceId: null })
+        logic = workflowRunsLogic({ repoOwner: 'Flind', repoName: 'posthog', workflowName: 'CI', sourceId: null })
         logic.mount()
         const filters = engineeringAnalyticsFiltersLogic()
         unmountFilters = filters.mount()
@@ -98,7 +98,7 @@ describe('workflowRunsLogic', () => {
     it('reads the tiles from the window-wide figures, not the capped run table', async () => {
         mockWorkflowHealth.mockResolvedValue([
             {
-                repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+                repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
                 workflow_name: 'CI',
                 run_count: 4000,
                 successful_run_count: 3800,
@@ -140,7 +140,7 @@ describe('workflowRunsLogic', () => {
                 estimated_cost_usd: 3.2,
             },
         ])
-        logic = workflowRunsLogic({ repoOwner: 'PostHog', repoName: 'posthog', workflowName: 'CI', sourceId: null })
+        logic = workflowRunsLogic({ repoOwner: 'Flind', repoName: 'posthog', workflowName: 'CI', sourceId: null })
         logic.mount()
         await expectLogic(logic).toDispatchActionsInAnyOrder([
             'loadWorkflowHealthSuccess',

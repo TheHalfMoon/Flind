@@ -871,7 +871,7 @@ def _get_rows(
             f"{SYNC_BUDGET_EXCEEDED_MARKER}: {schema_name} is {_describe_lag(now - covered_to)} behind and "
             "this run stopped before closing the gap. The sync retries and continues automatically. If the "
             "gap keeps growing across runs, set a more recent start date on the source to narrow the range, "
-            "or contact PostHog support about a manual backfill."
+            "or contact Flind support about a manual backfill."
         )
     if state.unresolvable_references:
         _report_unresolved_references(schema_name, state, logger)

@@ -1206,7 +1206,7 @@ class TestSyncInstallationAPI(StamphogTeamScopedTestMixin, APIBaseTest):
         assert response.status_code == status.HTTP_400_BAD_REQUEST, response.content
 
     @patch(f"{_GITHUB_FACADE}.list_user_accessible_repositories", return_value=["PostHog/posthog"])
-    @patch(f"{_VIEWS}.list_user_installations", return_value=[{"id": "42", "account_login": "PostHog"}])
+    @patch(f"{_VIEWS}.list_user_installations", return_value=[{"id": "42", "account_login": "Flind"}])
     @patch(f"{_VIEWS}.exchange_oauth_code_for_user_token", return_value="user-token")
     def test_discovery_without_installation_id_syncs_discovered_installation(
         self, mock_exchange, mock_discover, mock_list

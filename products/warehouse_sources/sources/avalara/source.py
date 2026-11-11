@@ -66,7 +66,7 @@ class AvalaraSource(ResumableSource[AvalaraSourceConfig, AvalaraResumeConfig]):
             name=ExternalDataSourceType.AVALARA,
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="Avalara AvaTax",
-            caption="""Connect your Avalara AvaTax account to pull tax transactions, companies, nexus, customers and exemption certificates into the PostHog Data warehouse.
+            caption="""Connect your Avalara AvaTax account to pull tax transactions, companies, nexus, customers and exemption certificates into the Flind Data warehouse.
 
 Use your AvaTax account ID and a license key (found under Settings > License and API Keys). Generating a new license key immediately revokes the previous one. Sandbox and production credentials only work against their matching environment, so pick the one your account was created in.""",
             docsUrl="https://posthog.com/docs/cdp/sources/avalara",

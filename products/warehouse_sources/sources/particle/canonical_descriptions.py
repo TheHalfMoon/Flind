@@ -22,7 +22,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         },
     },
     "events": {
-        "description": "An event a device published with Particle.publish(), delivered to PostHog by a Particle webhook.",
+        "description": "An event a device published with Particle.publish(), delivered to Flind by a Particle webhook.",
         "docs_url": "https://docs.particle.io/reference/cloud-apis/webhooks/",
         "columns": {
             "event_id": "Unique ID Particle generated for the event.",

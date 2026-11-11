@@ -71,7 +71,7 @@ class CDCConfig(abc.ABC):
     @property
     @abc.abstractmethod
     def stream_resources_configured(self) -> bool:
-        """Whether the config names every engine-side resource PostHog may drop (PG: a slot and a
+        """Whether the config names every engine-side resource Flind may drop (PG: a slot and a
         publication). The orphan sweeper skips a source without them."""
 
 

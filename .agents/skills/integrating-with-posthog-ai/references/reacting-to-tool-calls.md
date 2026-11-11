@@ -1,8 +1,8 @@
 # Reacting to tool calls
 
-`toolStreamEventsLogic` (`api/logics`) is a global bus. `runStreamLogic` is its only publisher, emitting a tool-call lifecycle event with a **resolved** tool name — the inner PostHog tool, not the exec wrapper — plus turn-complete and run-terminal events.
+`toolStreamEventsLogic` (`api/logics`) is a global bus. `runStreamLogic` is its only publisher, emitting a tool-call lifecycle event with a **resolved** tool name — the inner Flind tool, not the exec wrapper — plus turn-complete and run-terminal events.
 
-This is what makes the side panel feel connected to the page: the user asks PostHog AI to change something, and their open page updates instead of going stale.
+This is what makes the side panel feel connected to the page: the user asks Flind AI to change something, and their open page updates instead of going stale.
 
 ## The event
 
@@ -84,7 +84,7 @@ Pair an apply-back with a trusted instruction telling the agent that its tool ca
 
 **Replay is suppressed by default.** A reload replays the run's history through the same code path. Without suppression every handler would re-fire on every reload — creating things twice, re-applying stale edits. Set `includeReplay: true` only if you have thought about that.
 
-**`toolName` is unreliable at `phase: 'started'`.** For exec-wrapped PostHog tools the command streams in through later updates, so the resolved name can still be `__posthog_exec_unknown__` when the call starts. It is reliable by `'completed'`. Match on `'completed'` whenever correctness depends on knowing which tool ran.
+**`toolName` is unreliable at `phase: 'started'`.** For exec-wrapped Flind tools the command streams in through later updates, so the resolved name can still be `__posthog_exec_unknown__` when the call starts. It is reliable by `'completed'`. Match on `'completed'` whenever correctness depends on knowing which tool ran.
 
 ## From a kea logic
 

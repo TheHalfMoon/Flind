@@ -195,7 +195,7 @@ class CustomerIOSource(
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             caption=(
                 "Connect your Customer.io workspace using an "
-                f"[App API Key]({CIO_APP_API_KEY_URL}). PostHog uses the key to pull "
+                f"[App API Key]({CIO_APP_API_KEY_URL}). Flind uses the key to pull "
                 "campaigns, broadcasts, segments, newsletters, and more, and to register "
                 "a reporting webhook for realtime message activity."
             ),
@@ -213,7 +213,7 @@ class CustomerIOSource(
                         placeholder="Customer.io App API Key",
                         caption=(
                             f"Generate a key under [API Credentials > App API Keys]({CIO_APP_API_KEY_URL}). "
-                            "PostHog needs this key both for pulling list endpoints and for managing the "
+                            "Flind needs this key both for pulling list endpoints and for managing the "
                             "reporting webhook automatically."
                         ),
                         secret=True,
@@ -232,7 +232,7 @@ class CustomerIOSource(
             ),
             releaseStatus=ReleaseStatus.GA,
             webhookSetupCaption=(
-                "PostHog tries to register the reporting webhook for you using your App API Key. "
+                "Flind tries to register the reporting webhook for you using your App API Key. "
                 "Customer.io doesn't return the signing key in the API response, so you still need "
                 "to copy it from the **Reporting Webhooks** page in Customer.io and paste it below."
                 "\n\nGo to your **Customer.io workspace** > **Integrations** > **Reporting Webhooks** > **{CIO_AUTO_WEBHOOK_NAME}**\n\n\n"
@@ -363,7 +363,7 @@ class CustomerIOSource(
         api_version: str | None = None,
     ) -> tuple[bool, str | None]:
         # The webhook is created in a disabled state so Customer.io doesn't fire
-        # events at PostHog before we can verify them with the signing secret.
+        # events at Flind before we can verify them with the signing secret.
         # Now that the user has provided the secret, enable the webhook.
         if not inputs.get("signing_secret"):
             return True, None

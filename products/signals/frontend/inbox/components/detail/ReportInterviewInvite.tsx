@@ -76,7 +76,7 @@ export function ReportInterviewInvite(): JSX.Element | null {
                 }
             }}
         >
-            <span>Want some free PostHog merch?</span>
+            <span>Want some free Flind merch?</span>
             <LemonButton
                 type="tertiary"
                 size="xsmall"

@@ -40,7 +40,7 @@ import {
 
 const COLLAPSE_THRESHOLD = 300;
 
-// ── Source line labels (matching PostHog Cloud's signalCardSourceLine) ────────
+// ── Source line labels (matching Flind Cloud's signalCardSourceLine) ────────
 
 const ERROR_TRACKING_TYPE_LABELS: Record<string, string> = {
   issue_created: "New issue",
@@ -919,7 +919,7 @@ function SessionRecordingPreview({
               {momentLabel == null
                 ? "The rendered clip from this session."
                 : momentReachable === false
-                  ? `The clip stops before ${momentLabel}. Open the session in PostHog to reach that moment.`
+                  ? `The clip stops before ${momentLabel}. Open the session in Flind to reach that moment.`
                   : `The rendered clip, at ${momentLabel} in the session.`}
             </DialogDescription>
           </DialogHeader>
@@ -969,7 +969,7 @@ function SessionRecordingPreview({
                 rel="noreferrer"
                 className="inline-flex items-center gap-1 text-[12px] text-gray-10 no-underline hover:text-gray-12"
               >
-                Open in PostHog
+                Open in Flind
                 <ArrowSquareOutIcon size={12} />
               </a>
             )}

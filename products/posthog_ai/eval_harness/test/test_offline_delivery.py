@@ -46,11 +46,11 @@ async def test_offline_status_links_only_uploaded_results(capsys: pytest.Capture
 
     output = capsys.readouterr().out
     if status == "uploaded":
-        assert f"PostHog: {offline_url}" in output
-        assert "PostHog offline:" not in output
+        assert f"Flind: {offline_url}" in output
+        assert "Flind offline:" not in output
     else:
-        assert "PostHog:" not in output
-        assert f"PostHog offline: {status}" in output
+        assert "Flind:" not in output
+        assert f"Flind offline: {status}" in output
 
 
 def _upload(index: int) -> OfflineEvalUpload:
@@ -246,7 +246,7 @@ async def test_completed_upload_stays_successful_when_tagging_is_interrupted(
     assert server.status == "completed"
     assert sum(request.url.path.endswith("/complete/") for request in requests) == 1
     assert output.count("POSTHOG OFFLINE") == 1
-    assert "PostHog: https://posthog.example.com/project/123/" in output
+    assert "Flind: https://posthog.example.com/project/123/" in output
     assert "upload failed" not in output
     if shutdown == "tag_timeout":
         assert "tagging timed out" in caplog.text

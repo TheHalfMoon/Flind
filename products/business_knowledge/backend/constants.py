@@ -40,7 +40,7 @@ URL_MAX_REDIRECTS = 5
 # and a contact point if we hammer their site by accident. URL_BOT_NAME is
 # the short token site operators target in robots.txt; it MUST appear at the
 # start of URL_USER_AGENT so urllib.robotparser's prefix match lines up.
-URL_BOT_NAME = "PostHog-BusinessKnowledge"
+URL_BOT_NAME = "Flind-BusinessKnowledge"
 URL_USER_AGENT = f"{URL_BOT_NAME}/1.0 (+https://posthog.com)"
 
 # --- Stage 2b: crawl tunables ---
@@ -248,7 +248,7 @@ BK_DRILLDOWN_MAX_RADIUS = 15
 MAX_OPEN_RUNS_PER_OWNER = 3
 
 BK_MCP_SCOPE = "business_knowledge:read"
-# The PostHog MCP server reads /api/users/@me/ to start a session, so without user:read it never connects.
+# The Flind MCP server reads /api/users/@me/ to start a session, so without user:read it never connects.
 # It reads the project to find its organization, and the business knowledge tools sit behind a flag
 # targeted by organization, so without project:read the search tool is hidden.
 BK_MCP_SCOPES = [BK_MCP_SCOPE, "user:read", "project:read"]

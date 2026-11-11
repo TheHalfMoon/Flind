@@ -90,7 +90,7 @@ export function ChangePill({ positive, label, colors, size = 'sm', tooltip }: Ch
 
 // A hover tooltip for the change pill. Built on floating-ui directly so the charts package stays
 // dependency-light (no app Tooltip import), but styled with the app's tooltip surface tokens so it
-// reads as a normal PostHog tooltip and stays legible over the tile's own --card background. Falls
+// reads as a normal Flind tooltip and stays legible over the tile's own --card background. Falls
 // back to the chart tooltip constants in non-app hosts that don't define those vars.
 const TOOLTIP_BG = `var(--color-bg-surface-tooltip, ${TOOLTIP_FALLBACK_BG})`
 const TOOLTIP_COLOR = `var(--color-text-primary-inverse, ${TOOLTIP_FALLBACK_COLOR})`

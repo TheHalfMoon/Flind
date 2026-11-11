@@ -212,7 +212,7 @@ describe("createMcpExtension", () => {
   it("forwards a directly-registered tool's structured fields on details (regression)", async () => {
     const UI_TOOL = {
       name: "exec",
-      description: "Run a PostHog tool",
+      description: "Run a Flind tool",
       inputSchema: {
         type: "object",
         properties: { command: { type: "string" } },

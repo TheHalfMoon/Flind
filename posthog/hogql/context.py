@@ -80,7 +80,7 @@ class HogQLContext:
     # Detached printer stages snapshot these values so they do not retain the schema database.
     timezone: Optional[str] = None
     week_start_day: Optional[WeekStartDay] = None
-    # Set when the query executes against an external direct-SQL connection instead of PostHog's own cluster
+    # Set when the query executes against an external direct-SQL connection instead of Flind's own cluster
     is_direct_query: bool = False
     # If set, will save string constants to this dict. Inlines strings into the query if None.
     values: dict = field(default_factory=dict)

@@ -262,7 +262,7 @@ def ingest_slack_discussion_reply(
     except Exception as exc:
         raise self.retry(exc=exc)
 
-    # Only attribute the comment to a PostHog user when Slack confirms the author belongs to
+    # Only attribute the comment to a Flind user when Slack confirms the author belongs to
     # this integration's own workspace. In externally-shared (Slack Connect) channels the other
     # workspace's admin controls its users' profile emails, so trusting the email there would
     # let an outsider post as any org member.
@@ -278,7 +278,7 @@ def ingest_slack_discussion_reply(
         source_comment_id=mirror.source_comment_id,
         content=content,
         rich_content=rich_content,
-        # Slack users without a verified PostHog account stay author-less; their display
+        # Slack users without a verified Flind account stay author-less; their display
         # identity rides in item_context (name + avatar only — no email or Slack user id,
         # which would leak external participants' PII through the comments API).
         created_by=posthog_user,

@@ -1,4 +1,4 @@
-"""Where PostHog Review's review of one PR head stands. Read through `facade/review_status.py`.
+"""Where Flind Review's review of one PR head stands. Read through `facade/review_status.py`.
 
 The answer is per head, unlike `pr_status.PRStatusLookup`, which reports "queued" for the whole PR.
 The database answers for turns that started: a running turn keeps the report ACTIVE on its head

@@ -1,5 +1,5 @@
 // Self-contained statistics helpers for hog-charts. Wraps `simple-statistics`
-// directly so the library has no PostHog imports.
+// directly so the library has no Flind imports.
 
 import { linearRegression as ssLinearRegression, probit, standardDeviation } from 'simple-statistics'
 

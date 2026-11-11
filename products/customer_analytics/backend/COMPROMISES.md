@@ -130,11 +130,11 @@ once the command has run everywhere.
 
 ## Slack workspace URL is hardcoded
 
-- **`SLACK_ARCHIVES_ORIGIN` hardcodes PostHog's own workspace** — in `backend/constants.py` and
+- **`SLACK_ARCHIVES_ORIGIN` hardcodes Flind's own workspace** — in `backend/constants.py` and
   mirrored in `frontend/components/Accounts/accountLinksLogic.ts`. Every Slack link built from it
   (Useful links sidebar, Slack summary message permalinks, channel summary citations) is wrong for
   any team other than us.
-  Fine while the product is PostHog-internal; **must be fixed before GA**. The correct value is
+  Fine while the product is Flind-internal; **must be fixed before GA**. The correct value is
   per-team and owned by conversations: the bot's `auth.test` response carries the workspace `url`
   (same call `get_bot_user_id_cached` already caches a field from), so the fix is a cached lookup
   in conversations exposed through its facade, consumed here and by the frontend.

@@ -59,7 +59,7 @@ class ClickUpSource(ResumableSource[ClickUpSourceConfig, ClickUpResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="ClickUp",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your ClickUp personal API token to pull your ClickUp data into the PostHog Data warehouse.
+            caption="""Enter your ClickUp personal API token to pull your ClickUp data into the Flind Data warehouse.
 
 You can generate a personal token (starts with `pk_`) under **Settings → Apps** in ClickUp.
 

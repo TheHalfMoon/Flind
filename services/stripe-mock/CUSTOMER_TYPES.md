@@ -1,7 +1,7 @@
 # Customer types
 
 Each customer type represents a distinct billing behavior pattern.
-Together they exercise all the edge cases in PostHog Revenue analytics.
+Together they exercise all the edge cases in Flind Revenue analytics.
 
 ## Loyalists (monthly)
 

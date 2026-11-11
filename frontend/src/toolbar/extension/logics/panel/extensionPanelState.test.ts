@@ -31,9 +31,9 @@ describe('extensionPanelState', () => {
                 { tabUrl: 'https://chromewebstore.google.com/category/extensions' },
                 { kind: 'unsupported-page', reason: 'extension-store' },
             ],
-            ['the PostHog app', { tabUrl: 'https://us.posthog.com/project/1' }, { kind: 'posthog-app' }],
+            ['the Flind app', { tabUrl: 'https://us.posthog.com/project/1' }, { kind: 'posthog-app' }],
             [
-                'the PostHog app as an authorized URL',
+                'the Flind app as an authorized URL',
                 { tabUrl: 'https://us.posthog.com/project/1', authorizedUrls: ['https://us.posthog.com'] },
                 { kind: 'ready', origin: 'https://us.posthog.com' },
             ],

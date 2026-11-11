@@ -9,7 +9,7 @@ copyInstructions()
 
 build(cliEsbuildOptions())
     .then(() => {
-        console.info(`Built PostHog API CLI -> ${cliOutfile}`)
+        console.info(`Built Flind API CLI -> ${cliOutfile}`)
     })
     .catch((err: unknown) => {
         console.error('Build failed:', err)

@@ -949,13 +949,13 @@ class BillingManager:
         )
         headers = {"Authorization": f"Bearer {billing_service_token}"}
         if self.ip_address:
-            # Billing is called server-to-server, so it only ever sees PostHog's egress IP.
+            # Billing is called server-to-server, so it only ever sees Flind's egress IP.
             # Forward the end-user's IP so billing can attach it to activity-log records.
             headers["X-PostHog-Actor-IP"] = self.ip_address
         return headers
 
     def organization_api_headers(self, organization: Organization, grants: EffectiveBillingGrants) -> dict[str, str]:
-        """Headers for billing's /api/v2/billing/ routes: the PostHog-minted access token carrying the
+        """Headers for billing's /api/v2/billing/ routes: the Flind-minted access token carrying the
         caller's grants, plus the end-user IP as on every other call."""
         headers = {"Authorization": f"Bearer {mint_billing_access_token(organization, grants, self.license)}"}
         if self.ip_address:

@@ -45,7 +45,7 @@ def _handle_slack_event(event_payload: Any) -> None:
 
             team_id = sharing_config.team_id
 
-            # Now we try and get the SlackIntegration for the specificed PostHog team and Slack Team
+            # Now we try and get the SlackIntegration for the specificed Flind team and Slack Team
             # `where` compares top-level config keys only, so match the nested Slack team id here.
             integration = next(
                 (

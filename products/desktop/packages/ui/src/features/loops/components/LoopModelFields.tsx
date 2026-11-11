@@ -81,7 +81,7 @@ export function LoopModelFields({
     <div className="flex flex-col gap-4">
       <Field
         label="Model"
-        hint="Default lets PostHog pick the model each run; choose one to pin it."
+        hint="Default lets Flind pick the model each run; choose one to pin it."
       >
         <SettingsOptionSelect
           value={model || DEFAULT_MODEL_VALUE}

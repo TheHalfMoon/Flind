@@ -323,7 +323,7 @@ export async function runAgent(
       ? [
           {
             name: "web-access",
-            // Web tools always call the PostHog gateway; another provider's headers can carry its credentials.
+            // Web tools always call the Flind gateway; another provider's headers can carry its credentials.
             factory: createWebAccessExtension({
               headers:
                 modelAuth.model.provider === POSTHOG_PROVIDER_NAME

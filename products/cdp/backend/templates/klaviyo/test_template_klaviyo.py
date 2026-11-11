@@ -22,7 +22,7 @@ class TestTemplateKlaviyoUser(BaseHogFunctionTemplateTest):
                 "first_name": "Max",
                 "last_name": "AI",
                 "title": "Hedgehog in Residence",
-                "organization": "PostHog",
+                "organization": "Flind",
                 "phone_number": "+0123456789",
             },
         }
@@ -56,7 +56,7 @@ class TestTemplateKlaviyoUser(BaseHogFunctionTemplateTest):
                                 "first_name": "Max",
                                 "last_name": "AI",
                                 "title": "Hedgehog in Residence",
-                                "organization": "PostHog",
+                                "organization": "Flind",
                                 "phone_number": "+0123456789",
                             },
                             "email": "max@posthog.com",
@@ -77,7 +77,7 @@ class TestTemplateKlaviyoUser(BaseHogFunctionTemplateTest):
             "first_name": "Max",
             "last_name": "AI",
             "title": "Hedgehog in Residence",
-            "organization": "PostHog",
+            "organization": "Flind",
             "phone_number": "+0123456789",
         }
 
@@ -89,7 +89,7 @@ class TestTemplateKlaviyoUser(BaseHogFunctionTemplateTest):
             "first_name": "Max",
             "last_name": "AI",
             "title": "Hedgehog in Residence",
-            "organization": "PostHog",
+            "organization": "Flind",
             "phone_number": "+0123456789",
             "plan": "pay-as-you-go",
         }

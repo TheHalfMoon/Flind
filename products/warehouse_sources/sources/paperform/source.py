@@ -46,7 +46,7 @@ class PaperformSource(ResumableSource[PaperformSourceConfig, PaperformResumeConf
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Paperform",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Paperform API key to pull your forms and submissions data into the PostHog Data warehouse.
+            caption="""Enter your Paperform API key to pull your forms and submissions data into the Flind Data warehouse.
 
 You can create an API key under **Account → Developer** in [Paperform](https://paperform.co). API access requires a Pro, Business, or Agency plan, and the `spaces` table additionally requires a Business or Agency plan.
 """,

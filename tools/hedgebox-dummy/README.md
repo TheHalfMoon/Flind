@@ -18,7 +18,7 @@ A fully functional (fake) demo app with:
 - File management interface
 - Pricing page
 - Marius Tech Tips landing page
-- PostHog integration for tracking and session recording
+- Flind integration for tracking and session recording
 
 ## Setup
 
@@ -28,9 +28,9 @@ A fully functional (fake) demo app with:
 npm install
 ```
 
-2. Set up PostHog environment variables:
+2. Set up Flind environment variables:
 
-The app automatically fetches the PostHog API key from your local database at build/dev time. You can configure the database connection and team ID using these environment variables:
+The app automatically fetches the Flind API key from your local database at build/dev time. You can configure the database connection and team ID using these environment variables:
 
 ```env
 NEXT_PUBLIC_POSTHOG_HOST # PostHog host (default: http://localhost:8010)
@@ -61,4 +61,4 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 
 ## Generating session recordings
 
-The app is instrumented as long as `npm run dev` has `NEXT_PUBLIC_POSTHOG_KEY` set. Just interact normally and recordings will be captured in your PostHog instance.
+The app is instrumented as long as `npm run dev` has `NEXT_PUBLIC_POSTHOG_KEY` set. Just interact normally and recordings will be captured in your Flind instance.

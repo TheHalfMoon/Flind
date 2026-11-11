@@ -1,13 +1,13 @@
 """Anonymous opt-out telemetry for hogli CLI.
 
-Events are queued in-process and sent as batch POSTs to a PostHog-compatible
+Events are queued in-process and sent as batch POSTs to a Flind-compatible
 ``/batch/`` endpoint -- eagerly via :func:`flush_async`, or blocking via
 :func:`flush` (registered atexit, which also joins in-flight sends).
 
 Telemetry is **disabled** unless an API key is configured via the
 ``telemetry.api_key`` section of ``hogli.yaml`` (or the
 ``POSTHOG_TELEMETRY_API_KEY`` env var). Standalone users of the hogli
-framework never emit events to PostHog's project by default.
+framework never emit events to Flind's project by default.
 
 Opt-out precedence:
     CI (any common provider) -> POSTHOG_TELEMETRY_OPT_OUT=1 -> DO_NOT_TRACK=1 -> config enabled: false -> no api_key

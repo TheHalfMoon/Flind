@@ -38,7 +38,7 @@ const MAX_RETRY_AFTER_SECONDS = 60
 const MAX_RATE_LIMIT_RETRIES = 3
 
 const SET_HOST =
-    'Put the address you open PostHog at in posthog.json as "host", like https://eu.posthog.com, or set HOG_HOST. A self-hosted PostHog needs HOG_HOST. hog asks for an OIDC token for that address and sends it there.'
+    'Put the address you open Flind at in posthog.json as "host", like https://eu.posthog.com, or set HOG_HOST. A self-hosted Flind needs HOG_HOST. hog asks for an OIDC token for that address and sends it there.'
 
 function exchangeHint(
     code: string,
@@ -52,7 +52,7 @@ function exchangeHint(
         case 'workload_policy_request_pending':
             return body.approval_url
                 ? `Ask an organization admin to approve the request: ${body.approval_url}`
-                : 'Ask an organization admin to approve the request in PostHog.'
+                : 'Ask an organization admin to approve the request in Flind.'
         case 'workload_audience_mismatch':
         case 'workload_invalid_request':
             return SET_HOST
@@ -69,7 +69,7 @@ function exchangeHint(
 
 function exchangeError(status: number, raw: unknown, provider: WorkloadProvider, projectId: ProjectId): HogError {
     const body = ExchangeErrorBody.safeParse(raw).data ?? {}
-    const message = body.error_description ?? `PostHog refused the workload token exchange with HTTP ${status}.`
+    const message = body.error_description ?? `Flind refused the workload token exchange with HTTP ${status}.`
     const code = body.error_code ?? (status >= 500 ? 'workload_exchange_unavailable' : 'workload_exchange_failed')
     const claims = body.claims ? ` The job sent: ${JSON.stringify(body.claims)}.` : ''
     return new HogError(code, `${message}${claims}`, exchangeHint(code, body, provider, projectId))
@@ -82,7 +82,7 @@ interface WorkloadKeyFields {
     accessToken: WorkloadToken
     // The provider's OIDC token the exchange used. It stays in memory like the access token.
     providerToken: ProviderIdToken
-    // Epoch milliseconds when PostHog issued the token, and after which it refuses it.
+    // Epoch milliseconds when Flind issued the token, and after which it refuses it.
     issuedAt: number
     expiresAt: number
     scopes: string[]
@@ -123,8 +123,8 @@ export async function exchangeWorkloadToken(
     }
     const body = parseOrThrow(ExchangeResponse, response.json, {
         code: 'unexpected_response',
-        context: "PostHog's answer to the workload token exchange isn't what hog expects.",
-        hint: 'Check that the host runs a recent version of PostHog.',
+        context: "Flind's answer to the workload token exchange isn't what hog expects.",
+        hint: 'Check that the host runs a recent version of Flind.',
     })
     return new WorkloadKey({
         host,
@@ -138,7 +138,7 @@ export async function exchangeWorkloadToken(
 }
 
 // The token lives a few minutes, so hog keeps it in memory for the run and never stores it.
-// PostHog signs the token, and hog reads its payload only to count the workload's runs.
+// Flind signs the token, and hog reads its payload only to count the workload's runs.
 const WorkloadTokenPayload = z.object({
     org_id: z.string().optional().catch(undefined),
     workload: z.object({ provider: z.string(), subject: z.string() }),
@@ -163,7 +163,7 @@ class WorkloadKey implements AccessKey {
     readonly scopes: string[]
     readonly identifiesPerson = false
     readonly workload: WorkloadIdentity | undefined
-    // Some providers, like GitLab, give a job one OIDC token for the whole run. Once the PostHog token
+    // Some providers, like GitLab, give a job one OIDC token for the whole run. Once the Flind token
     // expires with it, another exchange gains nothing, so the key renews only when it has expired.
     private expiresWithProviderToken = false
 
@@ -219,7 +219,7 @@ class WorkloadKey implements AccessKey {
             kind: 'workload',
             scopes: this.scopes,
             expiresAt: this.expiresAt,
-            rejected: `PostHog rejected the workload token. An admin may have disabled or deleted the trust policy for this ${this.provider.name} workload.`,
+            rejected: `Flind rejected the workload token. An admin may have disabled or deleted the trust policy for this ${this.provider.name} workload.`,
             fix: 'hog ci setup',
             provider: this.provider.name,
         }

@@ -100,7 +100,7 @@ class SleekplanSource(ResumableSource[SleekplanSourceConfig, SleekplanResumeConf
             name=ExternalDataSourceType.SLEEKPLAN,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Sleekplan",
-            caption="""Enter your Sleekplan API key to sync feedback posts, comments, votes, changelog updates, end users, and survey responses into the PostHog Data warehouse.
+            caption="""Enter your Sleekplan API key to sync feedback posts, comments, votes, changelog updates, end users, and survey responses into the Flind Data warehouse.
 
 Create a key in Sleekplan under **Settings > Developer**. A key inherits the permissions of the member who created it, so create it from an account that can see every board you want to sync.""",
             docsUrl="https://posthog.com/docs/cdp/sources/sleekplan",

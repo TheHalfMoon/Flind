@@ -15,7 +15,7 @@ const github: Integration = {
 const gitlab: Integration = {
   id: 2,
   kind: "gitlab",
-  display_name: "PostHog / Desktop",
+  display_name: "Flind / Desktop",
   config: {
     hostname: "https://gitlab.example.com/",
     path_with_namespace: "PostHog/Desktop",
@@ -52,7 +52,7 @@ describe("gitProviders", () => {
     );
     expect(connections).toEqual([
       { provider: "github", integrationId: 1, label: "posthog" },
-      { provider: "gitlab", integrationId: 2, label: "PostHog / Desktop" },
+      { provider: "gitlab", integrationId: 2, label: "Flind / Desktop" },
     ]);
   });
 

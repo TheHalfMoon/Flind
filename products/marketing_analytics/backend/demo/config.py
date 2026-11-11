@@ -151,7 +151,7 @@ def apply_marketing_config(team: Team, *, bigquery_sources_map: dict[str, dict[s
 
 def enable_feature_flags(team: Team, user: User) -> list[str]:
     """Enable the marketing flags at 100% on the target team and on the local
-    self-capture team (the one whose flags the local PostHog UI evaluates)."""
+    self-capture team (the one whose flags the local Flind UI evaluates)."""
     teams = {team.pk: team}
     self_capture_team = Team.objects.filter(api_token="phc_localposthogprojecttoken").first()
     if self_capture_team:

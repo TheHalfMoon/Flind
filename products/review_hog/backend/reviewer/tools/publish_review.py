@@ -280,7 +280,7 @@ def publish_review(
     `findings_footer` follows `footer` only on a review that posts findings, never on the clean-turn note.
 
     `first_review_note` follows them only on the first review that posts findings on the pull request. It tells
-    people new to PostHog Review where the review is in PostHog and how to ask for a Deep review.
+    people new to Flind Review where the review is in Flind and how to ask for a Deep review.
 
     `budget_note` says the finding budget left findings out. An automatic turn that keeps nothing stays silent: once
     the budget is spent an automatic review only looks for must-fix findings.

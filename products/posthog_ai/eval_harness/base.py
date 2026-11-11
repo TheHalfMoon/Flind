@@ -75,7 +75,7 @@ class _BaseEvalRun:
     """
 
     trace_namespace = "evals"
-    """Experiment-name prefix on PostHog trace events. Subclasses set it per run kind."""
+    """Experiment-name prefix on Flind trace events. Subclasses set it per run kind."""
 
     def __init__(
         self,
@@ -113,7 +113,7 @@ class _BaseEvalRun:
         # harness read back what happened without round-tripping through Braintrust.
         self.run_log_dir = build_case_dir(experiment_name, self.experiment_id)
 
-        # Wrap scorers with tracing if PostHog client is available
+        # Wrap scorers with tracing if Flind client is available
         self.scorer_traces: dict[tuple[str, str], str] = {}
         if self.posthog_client:
             self.active_scorers, self.scorer_traces = wrap_scorers(
@@ -164,7 +164,7 @@ class _BaseEvalRun:
         return self.experiment_name
 
     def _experiment_metadata(self) -> RunMetadata:
-        """The run's configuration, sent to the engine and stamped on every PostHog event."""
+        """The run's configuration, sent to the engine and stamped on every Flind event."""
         metadata: RunMetadata = {
             "agent_model": self.ctx.agent_model,
             "trials": self.ctx.trials,
@@ -250,7 +250,7 @@ class _BaseEvalRun:
             await self.ctx.reporter.case_phase(trial_id, phase)
 
     async def _finalize(self, result: ExperimentResult) -> None:
-        """Append scores to local summaries, emit PostHog trace-root
+        """Append scores to local summaries, emit Flind trace-root
         events, and hand the summary to the reporter — after scoring completes."""
         # Append final scores to local summary files for every case we wrote.
         if result.results:
@@ -269,7 +269,7 @@ class _BaseEvalRun:
                 except Exception:
                     logger.exception("Failed to append scores to local log summary for '%s'", case_name)
 
-        # Emit trace roots to PostHog (after scoring)
+        # Emit trace roots to Flind (after scoring)
         if self.posthog_client and result.results:
             try:
                 # Emit $ai_trace root events now that scores are available
@@ -701,7 +701,7 @@ class _SandboxedEvalRun(_BaseEvalRun):
             self.agent_trace_id_lookup[trial_id] = result.trace_id
         hooks.metadata["artifacts"] = result.artifacts.model_dump()
 
-        # Parse the log once for local output and PostHog trace capture
+        # Parse the log once for local output and Flind trace capture
         last_message = ""
         messages: list[dict[str, Any]] = []
         if result.raw_log:

@@ -1,7 +1,7 @@
 import { dateRangeForSelection, selectionForDateRange } from './dateRangeSelection'
 
 describe('date range selection mapping', () => {
-    // Persisted PostHog strings must round-trip exactly — a drift here rewrites saved queries.
+    // Persisted Flind strings must round-trip exactly — a drift here rewrites saved queries.
     it.each([
         ['-7d', null, { kind: 'rolling', count: 7, unit: 'days' }],
         ['-24h', null, { kind: 'rolling', count: 24, unit: 'hours' }],

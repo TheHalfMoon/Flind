@@ -19,7 +19,7 @@ export const MiniFilters: SharedListMiniFilter[] = [
     {
         type: 'events',
         key: 'events-posthog',
-        name: 'PostHog',
+        name: 'Flind',
         tooltip: 'Standard Flind events except Pageviews, Autocapture, and Exceptions.',
     },
     {

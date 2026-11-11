@@ -1,12 +1,12 @@
 # PosthogPluginService
 
-Provides the PostHog plugin to agent sessions (Claude Code and Codex). The plugin is a directory containing `plugin.json` and a `skills/` folder of markdown instruction files that teach agents how to use PostHog APIs.
+Provides the Flind plugin to agent sessions (Claude Code and Codex). The plugin is a directory containing `plugin.json` and a `skills/` folder of markdown instruction files that teach agents how to use Flind APIs.
 
 `AgentService` calls `getPluginPath()` when starting each session to get the path to the assembled plugin directory.
 
 ## Skills
 
-Skills are the main content of the plugin. Each skill is a directory containing a `SKILL.md` and optional `references/` folder with supporting docs. For example, the `query-data` skill teaches agents how to write HogQL queries against PostHog's API.
+Skills are the main content of the plugin. Each skill is a directory containing a `SKILL.md` and optional `references/` folder with supporting docs. For example, the `query-data` skill teaches agents how to write HogQL queries against Flind's API.
 
 Skills are published independently from the desktop app at a stable GitHub releases URL (`skills.zip`). This service ensures agents always have the latest skills without requiring an app update.
 

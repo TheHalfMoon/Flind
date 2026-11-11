@@ -3004,7 +3004,7 @@ class TestTicketMessagesAPI(APIBaseTest):
             ("customer_with_name", {"name": "Bob", "email": "bob@example.com"}, "customer", {}, "Bob"),
             ("customer_email_fallback", {"email": "bob@example.com"}, "customer", {}, "bob@example.com"),
             ("customer_default", {}, "customer", {}, "Customer"),
-            ("ai_author", {}, "AI", {}, "PostHog Assistant"),
+            ("ai_author", {}, "AI", {}, "Flind Assistant"),
             ("support_without_user", {}, "support", {}, "Support"),
             # Per-comment author overrides the ticket requester (thread replies from other participants)
             (

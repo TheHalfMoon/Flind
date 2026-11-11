@@ -1,6 +1,6 @@
 # Weekly Digest
 
-The weekly digest is an email sent to all customers summarizing activity in their PostHog projects over the past week.
+The weekly digest is an email sent to all customers summarizing activity in their Flind projects over the past week.
 
 ## Architecture Overview
 

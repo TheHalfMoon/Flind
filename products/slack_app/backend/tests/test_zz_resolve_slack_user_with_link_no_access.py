@@ -1,5 +1,5 @@
 """Access-denied branch of ``resolve_slack_user`` when a Slack user is linked
-to a PostHog account that has no access to the workspace's project.
+to a Flind account that has no access to the workspace's project.
 
 Lives in its own top-level test file (rather than next to the other linked-user
 resolver tests in ``tests/services/test_slack_user_oauth.py``) so it sorts

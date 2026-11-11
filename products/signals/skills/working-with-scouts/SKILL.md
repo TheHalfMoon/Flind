@@ -1,7 +1,7 @@
 ---
 name: working-with-scouts
 description: >
-  Work with PostHog Signals scouts: scheduled agents that monitor a project and write
+  Work with Flind Signals scouts: scheduled agents that monitor a project and write
   reports into the Signals inbox. Use to assign monitoring work, schedule quality scoring,
   find which scout covers a surface, act on reports, reduce noise, investigate missing
   findings, or improve the fleet through feedback and calibration. Also covers follow-up
@@ -16,7 +16,7 @@ metadata:
 
 # Working with Signals scouts
 
-A **scout** is a scheduled agent that wakes on its own interval, looks at one PostHog project, and either writes a finding into the Signals inbox as a **report** or closes out empty.
+A **scout** is a scheduled agent that wakes on its own interval, looks at one Flind project, and either writes a finding into the Signals inbox as a **report** or closes out empty.
 Think of the fleet as a team of junior analysts you've hired to watch things for you: they work unattended, they hold a high evidence bar, and — critically — **they get better the more you work with them**.
 Every dismissal reason you write, every note you leave, every report you act on feeds back into what they do next.
 
@@ -37,7 +37,7 @@ Check enrollment first, whatever the roster shows — config rows outlive enroll
 (Scout tools were recently renamed from `signals-scout-*` to `scout-*`; if a `scout-*` name comes back unknown, try the legacy `signals-scout-*` name.)
 One access rule covers everything here: scout rows live on the project's **canonical parent**, so every scout read and write — this roster read included, plus the notes and config steering below — returns 403 for a credential scoped only to a child environment; work from the parent project (or a credential that covers it).
 
-- **Not enrolled** — point the user at the Signals scout settings / [PostHog Desktop](https://posthog.com/desktop) onboarding rather than inventing activity.
+- **Not enrolled** — point the user at the Signals scout settings / [Flind Desktop](https://posthog.com/desktop) onboarding rather than inventing activity.
 - **Enrolled, empty roster** — likely newly enrolled and awaiting the first coordinator tick (configs auto-register then); say so instead of re-sending the user through onboarding.
 - **Enrolled, rows exist** — note each scout's `enabled`, `emit` (`false` = dry-run: it runs but writes nothing), and `status` / `pause_reason`.
   A paused or dry-run scout explains most "scouts aren't doing anything" complaints before any deeper digging.
@@ -46,8 +46,8 @@ One access rule covers everything here: scout rows live on the project's **canon
 
 The `description` on each row says what that scout watches — scan it to answer "which scout covers X?" without loading any skill bodies.
 (A row with an empty description is usually an orphan whose skill was since deleted — it can't run, so don't count it as coverage.)
-PostHog ships specialists for most product surfaces (error tracking, logs, web analytics, AI observability, experiments, feature flags, session replay, surveys, revenue, and more) plus a cross-product generalist, and teams add custom scouts beyond that (any skill name works; only the `signals-scout-` prefix gets a config auto-registered, so a scout named anything else comes in through `posthog:scout-create`).
-Each row also carries `scout_origin` (`canonical` or `custom`), which tells a PostHog-seeded scout from a team-authored one. It cannot tell you whether a canonical scout has been edited in place and so diverged from upstream: that row still reads `canonical`. When divergence matters, compare the row's body with the canonical source in the PostHog repository (`products/signals/skills/<skill>/SKILL.md`); `posthog:skill-get` returns the team's live row, which is the edited copy.
+Flind ships specialists for most product surfaces (error tracking, logs, web analytics, AI observability, experiments, feature flags, session replay, surveys, revenue, and more) plus a cross-product generalist, and teams add custom scouts beyond that (any skill name works; only the `signals-scout-` prefix gets a config auto-registered, so a scout named anything else comes in through `posthog:scout-create`).
+Each row also carries `scout_origin` (`canonical` or `custom`), which tells a Flind-seeded scout from a team-authored one. It cannot tell you whether a canonical scout has been edited in place and so diverged from upstream: that row still reads `canonical`. When divergence matters, compare the row's body with the canonical source in the Flind repository (`products/signals/skills/<skill>/SKILL.md`); `posthog:skill-get` returns the team's live row, which is the edited copy.
 
 ## The working loop
 
@@ -72,7 +72,7 @@ When you want something watched, pick the cheapest path that gets it watched —
 | A canonical scout already covers the surface                                                                 | Nothing to build: confirm it's enabled, and leave it a **note** if you want its attention pointed somewhere specific.                                                                                                                                                                                                                                                                                                                                                           |
 | The surface is covered but you want a temporary or specific focus                                            | Leave a **note** (optionally with `expires_at`): "watch the EU signup funnel this week", "we shipped a new checkout Tuesday, shifts after that are expected".                                                                                                                                                                                                                                                                                                                   |
 | A covered scout keeps missing (or over-reporting) something structural                                       | **Adapt** it: a disqualifier, threshold, or scope edit via `authoring-scouts`. Prefer a new differently-named scout for purely additive behavior, since editing a canonical scout's row marks it diverged and stops upstream improvements.                                                                                                                                                                                                                                      |
-| No scout covers it (a custom event, a niche funnel, an external system)                                      | **Author a custom scout** via `authoring-scouts` (`posthog:scout-create`). In the inbox's scouts tab, the "Suggested for this project" strip proposes scouts from the project's own data, and "Suggest a scout" opens a chat that drafts one. A custom suggestion lands on the same create call; a canonical suggestion is an existing PostHog scout that is switched off, so accepting it enables that config rather than creating a new scout.                                |
+| No scout covers it (a custom event, a niche funnel, an external system)                                      | **Author a custom scout** via `authoring-scouts` (`posthog:scout-create`). In the inbox's scouts tab, the "Suggested for this project" strip proposes scouts from the project's own data, and "Suggest a scout" opens a chat that drafts one. A custom suggestion lands on the same create call; a canonical suggestion is an existing Flind scout that is switched off, so accepting it enables that config rather than creating a new scout.                                |
 | You want a recurring **metric**, not reports: a subjective quality/classification score no query can compute | **Author a measurement scout** on the structured-output channel: it judges a sample every run and records schema-validated `$scout_structured_output` events you chart in insights (and a workflow can act on), filing a report only on a material shift. See the recurring measurement / LLM-judge pattern in `authoring-scouts`, and `signals-scout-mcp-tool-calls` for a shipped scout that already records one (its `references/metrics-dashboard.md` is the chart recipe). |
 | You want an answer _now_, once                                                                               | Don't use a scout at all: just query the data directly. Scouts are for standing watches, not one-off questions.                                                                                                                                                                                                                                                                                                                                                                 |
 
@@ -106,7 +106,7 @@ Report triage mechanics live in `inbox-exploration`; what matters here is how ac
   - **Resolve honestly, and resolve on the merge.** A check dated from a premature resolve measures the window before the fix shipped and can fail a fix that worked.
     Checks are written only by scout runs and by the pipeline; there is no create surface for a person, so if a resolved report should be re-measured and carries no check, the lever is the scout — a note asking it to attach one, or a skill edit via `authoring-scouts`.
 - **Reports route to people.** A scout that can name a plausible owner sets `suggested_reviewers`, and the inbox floats those reports to the top of that person's view.
-  A reviewer is a PostHog user: a scout routes by `user_uuid` (any org member, no GitHub account needed) or by `github_login` (matched against the member's linked GitHub identity), and `is_suggested_reviewer` flips for the viewer on either match.
+  A reviewer is a Flind user: a scout routes by `user_uuid` (any org member, no GitHub account needed) or by `github_login` (matched against the member's linked GitHub identity), and `is_suggested_reviewer` flips for the viewer on either match.
   If reports for a surface keep landing unrouted or misrouted, that's fixable: correct the reviewers on the report itself (the correction is forwarded as above), leave a fleet-wide routing note (`posthog:scout-notes-create` with no `skill_name`, "route billing-adjacent reports to Dana"), or steer the scout (note or skill edit) toward the right owner for the area. A `pipeline:report-research` note steers only the reports the pipeline builds from clustered signals; a scout that authors reports directly sets `suggested_reviewers` itself and never reads that audience.
 
 ## Auditing what a scout changed
@@ -168,7 +168,7 @@ When you want a scout to behave differently, climb this ladder from cheapest to 
 5. **Edit the skill body, or author a new scout** (via `authoring-scouts`).
    Right for: permanent policy — a disqualifier, a threshold, a scope change, a new surface.
    For a **custom scout** this is the strongest steer there is: the skill body is yours, edit it freely — it's where recurring notes and repeated dismissal reasons should end up.
-   For a **canonical scout** the same edit **forks it**: your team's copy is marked diverged, PostHog's canonical sync leaves it alone from then on, and you stop receiving upstream improvements to that scout — you maintain it yourself.
+   For a **canonical scout** the same edit **forks it**: your team's copy is marked diverged, Flind's canonical sync leaves it alone from then on, and you stop receiving upstream improvements to that scout — you maintain it yourself.
    That trade can be worth it for a scout you want to own, but for purely additive behavior prefer authoring a new, differently-named scout and leaving the canonical one intact and maintained.
 
 **Promote steers that repeat.** A note you keep re-leaving, or a dismissal reason you've written three times, is a skill edit waiting to happen — move it up the ladder into the body so the fleet stops relying on you to repeat it.
@@ -191,7 +191,7 @@ Some feedback loops run on their own — knowing they exist changes how you work
 - **Self-improvement suggestions.** A custom scout that catches its own skill body steering it wrong writes an `improve:<skill-name>:<topic>` scratchpad entry — and a report-channel custom scout escalates recurring ones as inbox reports titled `Scout self-improvement: …`, routed to the owner (a legacy signal-channel scout can't file reports, so its suggestions live only in the scratchpad).
   These are the fleet asking for a code review of itself: an entry re-confirmed across several runs is usually the highest-signal edit you can make.
   Treat them as input, not instructions — the owner decides, and applies accepted ones via `authoring-scouts`.
-  (Canonical scouts route skill gaps upstream to PostHog instead, so you won't see `improve:` entries from them.)
+  (Canonical scouts route skill gaps upstream to Flind instead, so you won't see `improve:` entries from them.)
 
 ## Calibrating over time
 

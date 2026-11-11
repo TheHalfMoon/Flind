@@ -46,7 +46,7 @@ class SourceSetupWebhookSerializer(serializers.Serializer):
         )
     )
     webhook_url = serializers.CharField(
-        allow_null=True, help_text="The PostHog endpoint the external service delivers events to."
+        allow_null=True, help_text="The Flind endpoint the external service delivers events to."
     )
     error = serializers.CharField(
         allow_null=True, help_text="Why webhook registration failed (e.g. the credentials lack webhook permissions)."
@@ -101,7 +101,7 @@ class WebhookInfoResponseSerializer(serializers.Serializer):
         help_text="Whether the source type supports webhooks at all. When false, the other fields are absent."
     )
     exists = serializers.BooleanField(
-        help_text="Whether a PostHog webhook delivery function exists for this source yet."
+        help_text="Whether a Flind webhook delivery function exists for this source yet."
     )
     auto_creation_blocked_reason = serializers.CharField(
         allow_null=True,
@@ -114,7 +114,7 @@ class WebhookInfoResponseSerializer(serializers.Serializer):
         allow_null=True, help_text="The webhook delivery function, present once the webhook exists."
     )
     webhook_url = serializers.CharField(
-        allow_null=True, help_text="The PostHog endpoint the external service delivers events to."
+        allow_null=True, help_text="The Flind endpoint the external service delivers events to."
     )
     schema_mapping = serializers.DictField(
         child=serializers.CharField(),
@@ -150,7 +150,7 @@ class WebhookInfoBlockedResponseSerializer(serializers.Serializer):
 class CreateWebhookResponseSerializer(serializers.Serializer):
     success = serializers.BooleanField(help_text="Whether the webhook was created and registered with the source.")
     webhook_url = serializers.CharField(
-        allow_null=True, allow_blank=True, help_text="The PostHog endpoint the external service delivers events to."
+        allow_null=True, allow_blank=True, help_text="The Flind endpoint the external service delivers events to."
     )
     error = serializers.CharField(
         allow_null=True, allow_blank=True, help_text="Why creation failed, when success is false."
@@ -394,7 +394,7 @@ class ExternalDataSourceWebhookSetupMixin(base.ExternalDataSourceViewSetBase):
             base.capture_exception(e)
             external_status = ExternalWebhookInfo(
                 exists=False,
-                error="PostHog couldn't read this source's webhook to check its status. Check the source's credentials, then reload.",
+                error="Flind couldn't read this source's webhook to check its status. Check the source's credentials, then reload.",
             )
 
         schema_mapping = {}

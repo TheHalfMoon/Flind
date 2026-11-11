@@ -345,14 +345,14 @@ export default function Home() {
     const wrapperLine = annotated
       .split("\n")
       .find((l) => l.includes('track("event_123")'));
-    expect(wrapperLine).toContain("{/* [PostHog]");
+    expect(wrapperLine).toContain("{/* [Flind]");
     expect(wrapperLine).toContain("*/}");
 
     // The direct call is in a JS statement context, so the existing `//` form is correct.
     const directLine = annotated
       .split("\n")
       .find((l) => l.includes('posthog.capture("direct_event")'));
-    expect(directLine).toContain("// [PostHog]");
+    expect(directLine).toContain("// [Flind]");
   });
 
   test("non-wrapper file is cached as empty", async () => {

@@ -1,6 +1,6 @@
 # Replay Vision
 
-A sub-product of Session Replay. Users configure named **scanners** that PostHog applies to completed session recordings; results land as queryable `$recording_observed` events that feed insights, dashboards, and PostHog Signals.
+A sub-product of Session Replay. Users configure named **scanners** that Flind applies to completed session recordings; results land as queryable `$recording_observed` events that feed insights, dashboards, and Flind Signals.
 
 ## Concepts
 
@@ -18,7 +18,7 @@ Created in `pending` when triggered (by the scanner's schedule, the `/observe/` 
 Each observation snapshots the full scanner state (`scanner_snapshot`) that produced it, so subsequent edits to the scanner don't retro-mutate history.
 Rows stranded in `pending`/`running` by a dead workflow are failed as `orphaned` by a reaper on the reconciler tick.
 Teams rate observations thumbs up/down, with optional written feedback. A scheduled job (`backend/learned_rules.py`) distills new ratings into hidden learned rules, one set for the project and one per scanner, and later scans include them in their prompt. Users never see or approve the rules.
-A finding can also be turned into a PostHog Task once (the observation remembers the task it minted).
+A finding can also be turned into a Flind Task once (the observation remembers the task it minted).
 
 **Backfill** — one historical scan of a scanner over a closed, past time window, walked newest-first. The window is closed, so the candidate query enumerates the exact eligible set at creation: the quoted cost (`total_count` x the model's credit price) is a ceiling, and actual spend only falls below it as already-observed sessions dedup, expired recordings land `ineligible`, and failures write no receipt. The scanner's full config is frozen into `scanner_snapshot` at creation, so later edits change neither the enumerated set nor the price nor what the observations record. A per-backfill Temporal schedule ticks every minute, dispatching the same `ApplyScannerWorkflow` children within the shared in-flight caps plus a per-backfill sub-cap; its `window_end` is clamped to the scanner's sweep watermark so live and backfill never contest a session. Backfill and live observations have equal quota priority: an active backfill's remaining commitment counts toward the projected monthly spend, the per-observation creation check enforces the org limit for both, and exhausting the monthly quota moves the backfill to `paused_quota` until an explicit resume.
 
@@ -61,7 +61,7 @@ The `experiment` scanner type is the way agents (Max, MCP, the `scanning-experim
 
 ## Cloud only
 
-Replay vision runs only on PostHog Cloud and in local development. A scan needs the AI gateway and the recording rasterizer worker, and self-hosted installs run neither. On a self-hosted install every vision endpoint returns 403 (`backend/api/cloud_only.py`), the scenes redirect to the Move to PostHog Cloud page (`cloudOnly` in `manifest.tsx`), and the player and replay list hide their vision surfaces.
+Replay vision runs only on Flind Cloud and in local development. A scan needs the AI gateway and the recording rasterizer worker, and self-hosted installs run neither. On a self-hosted install every vision endpoint returns 403 (`backend/api/cloud_only.py`), the scenes redirect to the Move to Flind Cloud page (`cloudOnly` in `manifest.tsx`), and the player and replay list hide their vision surfaces.
 
 ## Layout
 

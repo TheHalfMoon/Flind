@@ -217,7 +217,7 @@ def _entry_for_environment(entry: CatalogEntry, template: MCPServerTemplate | No
         raise ValueError("Disconnect existing Slack MCP installations before changing OAuth apps")
     return replace(
         entry,
-        name="Slack via PostHog (dev)",
+        name="Slack via Flind (dev)",
         description="Search Slack channels, direct messages, and group messages, and read messages, user profiles, and canvases you can access.",
         oauth_scope_allowlist=(entry.oauth_scope_allowlist or ()) + _SLACK_DEV_EXTRA_SCOPES,
         oauth_credentials_source="slack_dev_app",

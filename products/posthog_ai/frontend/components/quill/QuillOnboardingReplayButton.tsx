@@ -12,7 +12,7 @@ export interface QuillOnboardingReplayButtonProps {
 
 /**
  * Quill skin of `OnboardingReplayButton`: an icon-only trigger for the composer toolbar. Temporary for the same
- * reason, so delete it with that component once the migration to the new PostHog AI is done.
+ * reason, so delete it with that component once the migration to the new Flind AI is done.
  */
 export function QuillOnboardingReplayButton({ panelId, className }: QuillOnboardingReplayButtonProps): JSX.Element {
     const { openOnboarding } = useActions(aiOnboardingLogic({ panelId }))
@@ -24,7 +24,7 @@ export function QuillOnboardingReplayButton({ panelId, className }: QuillOnboard
                     <Button
                         variant="default"
                         size="icon-sm"
-                        aria-label="What's new in PostHog AI"
+                        aria-label="What's new in Flind AI"
                         onClick={() => openOnboarding(true)}
                         className={className}
                         data-attr="posthog-ai-onboarding-replay"
@@ -33,7 +33,7 @@ export function QuillOnboardingReplayButton({ panelId, className }: QuillOnboard
                     </Button>
                 }
             />
-            <TooltipContent>What's new in PostHog AI</TooltipContent>
+            <TooltipContent>What's new in Flind AI</TooltipContent>
         </Tooltip>
     )
 }

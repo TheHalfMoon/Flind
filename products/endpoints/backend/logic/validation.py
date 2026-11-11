@@ -79,7 +79,7 @@ def validate_bucket_overrides(bucket_overrides: dict[str, str] | None) -> None:
 
 DIRECT_CONNECTION_UNSUPPORTED = (
     "Endpoints can't query a direct connection. "
-    "Switch the connection to PostHog (ClickHouse) and query a synced table instead."
+    "Switch the connection to Flind (ClickHouse) and query a synced table instead."
 )
 
 

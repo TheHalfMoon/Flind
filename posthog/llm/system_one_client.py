@@ -1,6 +1,6 @@
 """Picks the System One server a caller reaches, the way ``build_openai_client`` picks a chat gateway.
 
-The Go ai-gateway serves System One models that PostHog hosts, and bills the wallet of the team that
+The Go ai-gateway serves System One models that Flind hosts, and bills the wallet of the team that
 owns ``AI_GATEWAY_API_KEY``. TypeSafe serves Jev, but a caller reaches it only by passing a
 ``TypeSafeFallback`` in local development: TypeSafe is a third party, approved for experiments that
 send no customer data (see ``posthog/egress/typesafe/README.md``). The two serve different models,

@@ -125,7 +125,7 @@ class ClockodoSource(ResumableSource[ClockodoSourceConfig, ClockodoResumeConfig]
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Clockodo",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Clockodo email and API key to pull your Clockodo time-tracking data into the PostHog Data warehouse.
+            caption="""Enter your Clockodo email and API key to pull your Clockodo time-tracking data into the Flind Data warehouse.
 
 You can find your personal API key under **Personal data** in your Clockodo account. Credentials are scoped to that co-worker's permissions, so connect a user that can see the data you want to sync.""",
             iconPath="/static/services/clockodo.png",

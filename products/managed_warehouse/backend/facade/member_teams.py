@@ -15,7 +15,7 @@ __all__ = [
 
 
 def member_teams_push_enabled() -> bool:
-    """Whether PostHog keeps hogtower's copy of each member's projects current."""
+    """Whether Flind keeps hogtower's copy of each member's projects current."""
     from products.managed_warehouse.backend import member_teams
 
     return member_teams.is_enabled()

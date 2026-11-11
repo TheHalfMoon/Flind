@@ -84,7 +84,7 @@ export const customerioPlugin: LegacyDestinationPlugin = {
             {
                 templating: false,
                 key: 'eventsToSend',
-                label: 'PostHog Event Allowlist',
+                label: 'Flind Event Allowlist',
                 type: 'string',
                 description: 'If this is set, only the specified events (comma-separated) will be sent to Customer.io.',
             },

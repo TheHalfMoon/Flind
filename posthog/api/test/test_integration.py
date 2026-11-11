@@ -5193,8 +5193,8 @@ class TestGitHubTeamIntegrationComplete:
     @patch("posthog.models.integration.github.GitHubIntegration.verify_user_installation_access", return_value=True)
     @patch("posthog.models.integration.github.GitHubIntegration.integration_from_installation_id")
     def test_link_existing_adopts_orphan_installation_with_personal_github_proof(self, mock_from_install, mock_verify):
-        # No PostHog team anywhere has installation "424242" linked, so it's a true orphan: installed
-        # on GitHub but never round-tripped through PostHog's callback. Proving personal access to it
+        # No Flind team anywhere has installation "424242" linked, so it's a true orphan: installed
+        # on GitHub but never round-tripped through Flind's callback. Proving personal access to it
         # must create the team integration instead of raising the old unconditional orphan error.
         self._personal_github_integration(self.user)
         mock_from_install.side_effect = lambda *args, **kwargs: self._team_github_integration(installation_id="424242")
@@ -5253,7 +5253,7 @@ class TestGitHubTeamIntegrationComplete:
     def test_link_existing_adoption_requires_personal_github_regardless_of_admin(self, role):
         # Adoption needs both gates: project admin (a new installation entering the org is a
         # first-time connect, same bar as the setup callback) and personal GitHub proof (admin on
-        # the PostHog side proves nothing about GitHub). A member fails the admin gate outright;
+        # the Flind side proves nothing about GitHub). A member fails the admin gate outright;
         # an admin without a personal link still fails the proof gate.
         if role == "admin":
             user = self.user
@@ -6003,7 +6003,7 @@ class TestStripeIntegrationOAuthTokens:
         self.team = Team.objects.create(organization=self.organization, name="Test Team")
         self.user = User.objects.create_and_join(self.organization, "test@posthog.com", "test")
         self.oauth_app = OAuthApplication.objects.create(
-            name="PostHog for Stripe",
+            name="Flind for Stripe",
             client_id="stripe_oauth_client_id",
             client_type=OAuthApplication.CLIENT_CONFIDENTIAL,
             authorization_grant_type=OAuthApplication.GRANT_AUTHORIZATION_CODE,
@@ -7191,7 +7191,7 @@ class TestGitHubIntegrationListStatusFields:
             kind="github",
             config={
                 "installation_id": installation_id,
-                "account": {"name": "PostHog", "type": "Organization"},
+                "account": {"name": "Flind", "type": "Organization"},
                 **config,
             },
             sensitive_config={"access_token": "ghs_token"},
@@ -7267,7 +7267,7 @@ class TestGitHubIntegrationListStatusFields:
     @patch("posthog.models.github_integration_base.GitHubIntegrationBase.client_request")
     def test_list_heals_a_placeholder_account_name(self, mock_client_request, client: HttpClient):
         mock_client_request.return_value = MagicMock(
-            status_code=200, json=lambda: {"account": {"login": "PostHog", "type": "Organization"}}
+            status_code=200, json=lambda: {"account": {"login": "Flind", "type": "Organization"}}
         )
         integration = Integration.objects.create(
             team=self.team,
@@ -7279,8 +7279,8 @@ class TestGitHubIntegrationListStatusFields:
 
         row = self._list_github_row(client, integration.id)
 
-        assert row["display_name"] == "PostHog"
-        assert row["config"]["account"] == {"name": "PostHog", "type": "Organization"}
+        assert row["display_name"] == "Flind"
+        assert row["config"]["account"] == {"name": "Flind", "type": "Organization"}
         mock_client_request.assert_called_once_with("installations/12345")
 
 

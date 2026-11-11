@@ -60,7 +60,7 @@ class WindmillSource(ResumableSource[WindmillSourceConfig, WindmillResumeConfig]
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Windmill",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Windmill instance URL, workspace ID, and API token to sync your Windmill data into the PostHog Data warehouse.
+            caption="""Enter your Windmill instance URL, workspace ID, and API token to sync your Windmill data into the Flind Data warehouse.
 
 Create a personal API token in your Windmill account under **User settings → Tokens**. For cloud, your instance URL is `https://app.windmill.dev`; for self-hosted, use your own instance URL.
 

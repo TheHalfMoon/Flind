@@ -1,4 +1,4 @@
-// PostHog enrichment boundary data types. These are the serialized output of the
+// Flind enrichment boundary data types. These are the serialized output of the
 // (workspace-server) enrichment scan, consumed by the renderer to render flag/event
 // annotations. They live in @flind/agent-contracts so both the renderer (ui) and the
 // enricher/ws-server can import them without crossing layer boundaries.

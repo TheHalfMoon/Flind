@@ -391,7 +391,7 @@ class ContextSelector:
     ) -> None:
         scored = scored or []
         # The gateway drops System One inputs and answers from its events, so this is the only record of decisions.
-        # The event goes to PostHog's own analytics, so it carries no customer-written names.
+        # The event goes to Flind's own analytics, so it carries no customer-written names.
         privacy_mode = is_privacy_mode_enabled(self.run.team) if scored else None
         candidates: list[dict[str, object]] = []
         for candidate, score in sorted(scored, key=lambda pair: -pair[1]):

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import { z as zod } from 'zod'
@@ -27,7 +27,7 @@ export const ConversionGoalSummaryApi = zod.object({
             '\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
         )
         .describe(
-            'Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)\n\n\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
+            'Goal type: EventsNode (Flind event), ActionsNode (Flind action), or DataWarehouseNode (external table)\n\n\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
         ),
     target_label: zod.string().describe('Human-readable target the goal matches (event\/action name or table)'),
     last_30d_count: zod.number().describe('Count of matching conversion events in the last 30 days'),
@@ -80,7 +80,7 @@ export const ConversionGoalsListResponseApi = zod.object({
                         '\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
                     )
                     .describe(
-                        'Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)\n\n\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
+                        'Goal type: EventsNode (Flind event), ActionsNode (Flind action), or DataWarehouseNode (external table)\n\n\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
                     ),
                 target_label: zod
                     .string()
@@ -569,7 +569,7 @@ export const MarketingDiagnosticResponseApi = zod.object({
                                     '\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
                                 )
                                 .describe(
-                                    'Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)\n\n\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
+                                    'Goal type: EventsNode (Flind event), ActionsNode (Flind action), or DataWarehouseNode (external table)\n\n\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
                                 ),
                             target_label: zod
                                 .string()
@@ -680,7 +680,7 @@ export const GoalExplanationApi = zod.object({
             '\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
         )
         .describe(
-            'Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)\n\n\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
+            'Goal type: EventsNode (Flind event), ActionsNode (Flind action), or DataWarehouseNode (external table)\n\n\* `EventsNode` - EventsNode\n\* `ActionsNode` - ActionsNode\n\* `DataWarehouseNode` - DataWarehouseNode'
         ),
     period: zod
         .object({

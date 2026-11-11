@@ -72,7 +72,7 @@ export const SUPPORT_WIDGET_UNAVAILABLE_MESSAGE =
     "We can't load the support chat, which is usually an ad blocker or a network policy."
 
 // `current_url` is explicit rather than autocapture's `$current_url`, so an alert template reading
-// these properties doesn't depend on autocapture staying enabled. The recording lives in PostHog's
+// these properties doesn't depend on autocapture staying enabled. The recording lives in Flind's
 // own telemetry project, so the replay link is for staff triaging the alert, never the reporter.
 function supportFailureContext(): Record<string, any> {
     return {
@@ -231,7 +231,7 @@ export type SupportFormFields = {
     exception_event?: SupportTicketExceptionEvent
     ticket_context?: string
     isEmailFormOpen?: boolean | 'true' | 'false'
-    // Set when the ticket originates from a PostHog AI (/ticket, feedback) handover, so the created
+    // Set when the ticket originates from a Flind AI (/ticket, feedback) handover, so the created
     // ticket can be attributed back to the conversation regardless of which submit path files it.
     ai_conversation_id?: string | null
     ai_trace_id?: string | null
@@ -450,7 +450,7 @@ export const supportLogic = kea<supportLogicType>([
             (sendSupportRequest: SupportFormFields) =>
                 sendSupportRequest.kind
                     ? SUPPORT_TICKET_KIND_TO_TITLE[sendSupportRequest.kind]
-                    : 'Leave a message with PostHog',
+                    : 'Leave a message with Flind',
         ],
         isBillingIssue: [
             (s) => [s.sendSupportRequest],
@@ -500,7 +500,7 @@ export const supportLogic = kea<supportLogicType>([
                 exception_event,
                 ticket_context,
                 billing_issue: billing_issue ?? false,
-                // Carried through so a PostHog AI handover still attributes the ticket it files.
+                // Carried through so a Flind AI handover still attributes the ticket it files.
                 ai_conversation_id,
                 ai_trace_id,
                 ai_feedback_rating,
@@ -528,7 +528,7 @@ export const supportLogic = kea<supportLogicType>([
             const email = formValues.email.trim()
             const { ai_conversation_id, ai_trace_id, ai_feedback_rating } = formValues
 
-            // Attribute PostHog AI (/ticket, feedback) handovers to the conversation. The ticket id
+            // Attribute Flind AI (/ticket, feedback) handovers to the conversation. The ticket id
             // only exists once the send resolves — capturing from here means it fires no matter which
             // caller triggered the submit, instead of relying on a component effect that races the
             // async conversations round-trip and silently drops the event.
@@ -560,7 +560,7 @@ export const supportLogic = kea<supportLogicType>([
                 })
             }
 
-            // The form's own validator only runs on a form submit, and the PostHog AI handovers submit
+            // The form's own validator only runs on a form submit, and the Flind AI handovers submit
             // straight from a button — so the reply address is checked here, on the path every caller
             // shares. Without one a logged-out ticket is unreachable: widget replies are in-app only,
             // and restoring by email is the sole way back if that browser session is gone.

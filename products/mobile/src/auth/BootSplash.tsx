@@ -10,7 +10,7 @@ export function BootSplash(): ReactElement {
         <View
             style={styles.screen}
             accessible
-            accessibilityLabel="Loading PostHog"
+            accessibilityLabel="Loading Flind"
             accessibilityState={{ busy: true }}
             testID="boot-splash"
         >

@@ -69,7 +69,7 @@ async function uploadDirect(
     ],
   );
   if (!prepared) {
-    throw new Error("PostHog did not prepare the artifact upload.");
+    throw new Error("Flind did not prepare the artifact upload.");
   }
 
   const form = new FormData();
@@ -112,12 +112,12 @@ async function uploadDirect(
     (artifact) => artifact.storage_path === prepared.storage_path,
   );
   if (!entry) {
-    throw new Error("PostHog did not confirm the artifact upload.");
+    throw new Error("Flind did not confirm the artifact upload.");
   }
   return entry;
 }
 
-/** Send the bytes through the PostHog API and let the backend write them to storage. */
+/** Send the bytes through the Flind API and let the backend write them to storage. */
 async function uploadInline(
   client: TaskToolsApiClient,
   taskId: string,
@@ -137,7 +137,7 @@ async function uploadInline(
   // The client returns the entries for this upload request only, newest last.
   const entry = manifest.at(-1);
   if (!entry) {
-    throw new Error("PostHog did not confirm the artifact upload.");
+    throw new Error("Flind did not confirm the artifact upload.");
   }
   return entry;
 }

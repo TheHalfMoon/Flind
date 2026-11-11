@@ -49,7 +49,7 @@ class TeamworkSource(ResumableSource[TeamworkSourceConfig, TeamworkResumeConfig]
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Teamwork",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Teamwork.com site and API key to pull your Teamwork projects data into the PostHog Data warehouse.
+            caption="""Enter your Teamwork.com site and API key to pull your Teamwork projects data into the Flind Data warehouse.
 
 Find your API key under **Profile → Edit my details → API & Mobile** in Teamwork. The key inherits your own permissions, so it can only sync data you can see.""",
             iconPath="/static/services/teamwork.png",

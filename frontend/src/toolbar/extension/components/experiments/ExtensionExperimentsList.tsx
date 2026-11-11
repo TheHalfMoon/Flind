@@ -35,7 +35,7 @@ export function ExtensionExperimentsList(): JSX.Element {
             notice={
                 experimentsState?.webExperimentsDisabled && (
                     <LemonBanner type="warning">
-                        Web experiments are off in this page's PostHog setup. To run experiments, set{' '}
+                        Web experiments are off in this page's Flind setup. To run experiments, set{' '}
                         <code>disable_web_experiments: false</code> in your configuration.{' '}
                         <Link
                             target="_blank"

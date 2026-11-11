@@ -148,7 +148,7 @@ export function useSetReviewersAction(reportId: string): AsyncAction<[string[]]>
         if (!scope) {
             throw new NotSignedInError()
         }
-        // The sheet only lists PostHog users. Reviewers known only by GitHub login go back unchanged,
+        // The sheet only lists Flind users. Reviewers known only by GitHub login go back unchanged,
         // because the PUT replaces the whole list.
         const latest = await fetchLatestReviewerArtefact(scope, reportId)
         const githubOnly = githubOnlyReviewers(latest ? [latest] : [])

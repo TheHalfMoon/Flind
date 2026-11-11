@@ -156,7 +156,7 @@ describe('Hono App Routes', () => {
             expect(res.headers.get('Cache-Control')).toBe('public, max-age=3600')
         })
 
-        it('should allow CORS from PostHog app origins for consent-page metadata fetch', async () => {
+        it('should allow CORS from Flind app origins for consent-page metadata fetch', async () => {
             const { app } = createApp(mockRedis)
             const res = await app.request('/.well-known/oauth-protected-resource/mcp', {
                 headers: { Origin: 'https://us.posthog.com' },
@@ -166,7 +166,7 @@ describe('Hono App Routes', () => {
             expect(res.headers.get('Vary')).toBe('Origin')
         })
 
-        it('should answer OPTIONS preflight for PostHog app origins', async () => {
+        it('should answer OPTIONS preflight for Flind app origins', async () => {
             const { app } = createApp(mockRedis)
             const res = await app.request('/.well-known/oauth-protected-resource/mcp', {
                 method: 'OPTIONS',
@@ -308,7 +308,7 @@ describe('Hono App Routes', () => {
         it('should pass auth check for ID-JAG access tokens (typ: at+jwt)', async () => {
             // Synthesize a JWT-shaped token: header `{"typ":"at+jwt","alg":"RS256"}`,
             // a stub payload, and a placeholder signature. The MCP gate only inspects
-            // the header — the PostHog API verifies the signature downstream.
+            // the header — the Flind API verifies the signature downstream.
             const headerB64 = btoa('{"typ":"at+jwt","alg":"RS256"}')
                 .replace(/=+$/, '')
                 .replace(/\+/g, '-')

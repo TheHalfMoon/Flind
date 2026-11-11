@@ -203,7 +203,7 @@ If your source uses OAuth (SourceFieldOauthConfig):
 
    The settings and `oauth_config_for_kind()` entries are still required for the OAuth connect flow, which runs in the web app.
    Source code that runs during a sync must not read `settings.YOUR_SOURCE_CLIENT_ID` directly.
-   It reads PostHog-owned credentials through the credentials service instead:
+   It reads Flind-owned credentials through the credentials service instead:
 
    ```python
    from products.warehouse_sources.backend.temporal.data_imports.sources.common import credentials_service
@@ -222,7 +222,7 @@ If your source uses OAuth (SourceFieldOauthConfig):
 
 ## Testing Your Source Locally
 
-1. **Start PostHog**: `DEBUG=1 ./bin/start`
+1. **Start Flind**: `DEBUG=1 ./bin/start`
 2. **Navigate to**: Data Warehouse → New Source
 3. **Test OAuth flow**: Click "Connect with [Your Service]"
 4. **Test form**: Verify all fields render correctly

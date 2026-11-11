@@ -245,7 +245,7 @@ describe("TaskArtifactsList", () => {
     expect(within(row as HTMLElement).getByText("17 KB")).toBeTruthy();
   });
 
-  it("lists a PostHog reference beside file artifacts and opens its artifact tab", () => {
+  it("lists a Flind reference beside file artifacts and opens its artifact tab", () => {
     mocks.runs = [
       run("run-1", {
         artifacts: [
@@ -589,7 +589,7 @@ describe("TaskArtifactsList", () => {
     expect(mocks.taskRunsRefreshKeys.at(-1)).toBe(1);
   });
 
-  it("refreshes the runs query when a PostHog reference is registered", () => {
+  it("refreshes the runs query when a Flind reference is registered", () => {
     mocks.sessionArtifacts = [
       {
         id: "phref-1",

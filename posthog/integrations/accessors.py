@@ -295,7 +295,7 @@ class IntegrationReader:
 
     @instrumented("usages")
     def usages(self, team_id: int, id: int) -> builtins.list[IntegrationUsage]:
-        """The PostHog objects of the team that use the row. See `usages.py`."""
+        """The Flind objects of the team that use the row. See `usages.py`."""
         row = self._row(team_id, id)
         return integration_usages(team_id, row.id)
 

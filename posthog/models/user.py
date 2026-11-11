@@ -65,7 +65,7 @@ class Notifications(TypedDict, total=False):
     )
     project_api_key_exposed: bool
     ai_evaluation_disabled: bool  # One email each time an AI observability evaluation is auto-disabled
-    workflow_suggestions: bool  # Email when PostHog suggests a change to a workflow the user opted in or created
+    workflow_suggestions: bool  # Email when Flind suggests a change to a workflow the user opted in or created
     materialized_view_sync_failed: bool
     materialized_view_sync_failed_daily: bool  # One digest a day summarizing failing views
     materialized_view_sync_failed_immediate: bool  # One email each time a view starts failing
@@ -174,7 +174,7 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, *args: Any, **kwargs: Any) -> NoReturn:
-        # PostHog has no superuser concept — the `is_superuser` field was removed in 2020 (PR #2026)
+        # Flind has no superuser concept — the `is_superuser` field was removed in 2020 (PR #2026)
         # and `User.is_superuser` is now a read-only alias for `is_staff`. Django's `createsuperuser`
         # command calls this method, so we shadow it here to fail with guidance instead of a confusing
         # `AttributeError`. (We can't override the command itself: `django.contrib.auth` is listed

@@ -156,25 +156,25 @@ export class SettingsBackupService {
   inspect(contents: string, currentVersion: string): BackupReview {
     if (new TextEncoder().encode(contents).length > MAX_SETTINGS_BACKUP_BYTES)
       throw new Error(
-        "This file exceeds 64 MB. Choose a smaller PostHog backup.",
+        "This file exceeds 64 MB. Choose a smaller Flind backup.",
       );
     let raw: unknown;
     try {
       raw = JSON.parse(contents);
     } catch {
       throw new Error(
-        "This file is not valid JSON. Choose a PostHog settings backup.",
+        "This file is not valid JSON. Choose a Flind settings backup.",
       );
     }
     const result = settingsBackupSchema.safeParse(raw);
     if (!result.success)
       throw new Error(
-        "This is not a valid PostHog settings backup. Choose a file exported from Advanced settings.",
+        "This is not a valid Flind settings backup. Choose a file exported from Advanced settings.",
       );
     const backup = result.data;
     if (backup.formatVersion !== SETTINGS_BACKUP_FORMAT_VERSION)
       throw new Error(
-        "This backup uses a newer file format. Update PostHog Desktop before importing it.",
+        "This backup uses a newer file format. Update Flind Desktop before importing it.",
       );
     const warnings: BackupWarning[] = [];
     const settings: Record<string, unknown> = {};

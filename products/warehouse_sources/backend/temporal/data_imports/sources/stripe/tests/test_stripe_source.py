@@ -2421,7 +2421,7 @@ class TestRepinWebhookApiVersion:
             url=self._URL,
             api_version=api_version,
             enabled_events=["invoice.paid", "customer.created"],
-            description="PostHog data warehouse webhook",
+            description="Flind data warehouse webhook",
         )
 
     def _client(self, mock_client_cls: MagicMock, endpoint: SimpleNamespace) -> MagicMock:

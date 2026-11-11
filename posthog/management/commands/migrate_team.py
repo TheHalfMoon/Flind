@@ -13,7 +13,7 @@ from products.batch_exports.backend.facade.enums import BatchExportDestinationTy
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-EXPORT_NAME = "PostHog HTTP Migration"
+EXPORT_NAME = "Flind HTTP Migration"
 DATA_START_UNBOUNDED = "the start of the team's data"
 VALID_INTERVALS = set(batch_exports_api.list_supported_intervals())
 REGION_URLS = {
@@ -23,7 +23,7 @@ REGION_URLS = {
 
 
 class Command(BaseCommand):
-    help = "Creates an HTTP batch export for a team to migrate data to another PostHog instance, \
+    help = "Creates an HTTP batch export for a team to migrate data to another Flind instance, \
             or another team within the same instance."
 
     def add_arguments(self, parser):

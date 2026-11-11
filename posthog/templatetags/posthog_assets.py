@@ -21,7 +21,7 @@ def absolute_uri(url: str = "") -> str:
 @register.simple_tag
 def absolute_asset_url(path: str) -> str:
     """
-    Returns a versioned absolute asset URL (located within PostHog's static files).
+    Returns a versioned absolute asset URL (located within Flind's static files).
     Example:
       {% absolute_asset_url 'dist/posthog.css' %}
       =>  "http://posthog.example.com/_static/74d127b78dc7daf2c51f/dist/posthog.css"

@@ -43,7 +43,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "stages": "The stages of the build.",
             "created_by": "The user or organization that created the build.",
             "updated_at": "When the build was last updated.",
-            "repository_id": "Id of the repository the build belongs to (added by PostHog for joins).",
+            "repository_id": "Id of the repository the build belongs to (added by Flind for joins).",
         },
     },
     "jobs": {
@@ -65,8 +65,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "created_at": "When the job was created.",
             "updated_at": "When the job was last updated.",
             "private": "Whether or not the job is private.",
-            "build_id": "Id of the build the job belongs to (added by PostHog; the incremental cursor).",
-            "repository_id": "Id of the repository the job belongs to (added by PostHog for joins).",
+            "build_id": "Id of the build the job belongs to (added by Flind; the incremental cursor).",
+            "repository_id": "Id of the repository the job belongs to (added by Flind for joins).",
         },
     },
     "branches": {
@@ -78,7 +78,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "exists_on_github": "Whether or not the branch still exists on GitHub.",
             "last_build": "Last build on the branch.",
             "repository": "GitHub user or organization the branch belongs to.",
-            "repository_id": "Id of the repository the branch belongs to (added by PostHog; part of the primary key).",
+            "repository_id": "Id of the repository the branch belongs to (added by Flind; part of the primary key).",
         },
     },
 }

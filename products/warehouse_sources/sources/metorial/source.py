@@ -47,7 +47,7 @@ class MetorialSource(ResumableSource[MetorialSourceConfig, MetorialResumeConfig]
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Metorial",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Metorial secret API key to pull your Metorial MCP data into the PostHog Data warehouse.
+            caption="""Enter your Metorial secret API key to pull your Metorial MCP data into the Flind Data warehouse.
 
 Create a secret API key (`metorial_sk_...`) in your [Metorial dashboard](https://metorial.com). Keys are project-scoped, so connect one source per project you want to sync. A publishable key (`metorial_pk_...`) only exposes public data and will not work here.""",
             iconPath="/static/services/metorial.png",

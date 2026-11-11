@@ -105,7 +105,7 @@ class TestMarketplaceTree:
             plugin_name="posthog-skill-store",
             plugin_description="Team skills",
             plugin_version="1.0.42",
-            owner_name="PostHog",
+            owner_name="Flind",
             marketplace_name="posthog-skill-store-marketplace",
             skills=skills if skills is not None else [_skill()],
         )
@@ -113,7 +113,7 @@ class TestMarketplaceTree:
     def test_marketplace_json_lists_the_plugin_with_version(self):
         manifest = json.loads(self._tree()[".claude-plugin/marketplace.json"])
         assert manifest["name"] == "posthog-skill-store-marketplace"
-        assert manifest["owner"]["name"] == "PostHog"
+        assert manifest["owner"]["name"] == "Flind"
         plugin = manifest["plugins"][0]
         assert plugin["name"] == "posthog-skill-store"
         assert plugin["source"] == "./plugins/posthog-skill-store"
@@ -184,7 +184,7 @@ class TestZipImport:
 
 class TestGitTreeSafety:
     def _synth(self, files: dict[str, str]):
-        return synthesize_repo(files, author="PostHog", message="m")
+        return synthesize_repo(files, author="Flind", message="m")
 
     def test_valid_nested_tree_synthesizes(self):
         assert self._synth({"SKILL.md": "a", "scripts/x.sh": "b"}).head_sha
@@ -231,6 +231,6 @@ class TestZipBombDefense:
 
 class TestSynthesizedPackfile:
     def test_repo_carries_a_packfile(self):
-        repo = synthesize_repo({"SKILL.md": "a", "scripts/x.sh": "b"}, author="PostHog", message="m")
+        repo = synthesize_repo({"SKILL.md": "a", "scripts/x.sh": "b"}, author="Flind", message="m")
         assert repo.packfile.startswith(b"PACK")
         assert len(repo.packfile) > 12  # header + at least one object + trailer

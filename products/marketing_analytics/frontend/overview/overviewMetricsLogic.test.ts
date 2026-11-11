@@ -93,7 +93,7 @@ describe('overview metric configuration', () => {
 
     it.each([
         [
-            'defaults to three platform and two PostHog metrics',
+            'defaults to three platform and two Flind metrics',
             items,
             null,
             ['Cost', 'Clicks', 'Impressions', 'Trial started', 'Cost Per Trial started'],

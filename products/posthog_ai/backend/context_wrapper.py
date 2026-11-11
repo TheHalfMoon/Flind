@@ -35,7 +35,7 @@ AttachedContextType = Literal[
 ALLOWED_TYPES: frozenset[str] = frozenset(get_args(AttachedContextType))
 
 # Types carrying a `value` rather than an entity `id`. Only `instructions` is trusted: it is
-# PostHog's own build-time guidance, while `text` can hold user-authored or ingested content.
+# Flind's own build-time guidance, while `text` can hold user-authored or ingested content.
 VALUE_TYPES: frozenset[str] = frozenset({"text", "instructions"})
 
 # Must stay equivalent to the frontend `defang` regex in `posthogContextBlock.ts`: every open and
@@ -129,7 +129,7 @@ class ContextService:
         """Render `instructions` into the trusted block and everything else into the untrusted one.
 
         Either block is omitted when it has no items. Collapsing the two would give page-derived
-        values the same standing as PostHog's own guidance.
+        values the same standing as Flind's own guidance.
         """
         trusted = [item for item in items if item.get("type") == "instructions"]
         untrusted = [item for item in items if item.get("type") != "instructions"]

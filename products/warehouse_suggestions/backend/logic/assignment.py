@@ -40,7 +40,7 @@ KIND_ACTIONS: Mapping[WarehouseSuggestionKind, str] = {
 NOTIFIED_RESOURCE: APIScopeObject = "warehouse_objects"
 NOTIFICATION_TITLE_MAX_LENGTH = 255
 ELLIPSIS = "…"
-MANUAL_ASSIGNMENT_BODY = "Open it to see why PostHog suggests it, then accept or dismiss it."
+MANUAL_ASSIGNMENT_BODY = "Open it to see why Flind suggests it, then accept or dismiss it."
 
 Assignments = Mapping[User, Sequence[WarehouseSuggestion]]
 
@@ -152,8 +152,8 @@ def _surfaced_assignee(team: "Team", row: WarehouseSuggestion, creator: User | N
 
 def _surfaced_title(rows: Sequence[WarehouseSuggestion]) -> str:
     if len(rows) == 1:
-        return f"PostHog suggests you {_proposal(rows[0])}"
-    return f"PostHog has {len(rows)} new warehouse suggestions for you"
+        return f"Flind suggests you {_proposal(rows[0])}"
+    return f"Flind has {len(rows)} new warehouse suggestions for you"
 
 
 def _proposal(row: WarehouseSuggestion) -> str:

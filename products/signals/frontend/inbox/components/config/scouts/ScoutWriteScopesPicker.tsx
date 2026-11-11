@@ -23,7 +23,7 @@ interface ScoutWriteScopesPickerProps {
 
 /**
  * Per-scout picker for the write access a scout's runs carry, persisted as the config's
- * `write_scopes`. One switch per object a scout can be trusted with, grouped by the part of PostHog
+ * `write_scopes`. One switch per object a scout can be trusted with, grouped by the part of Flind
  * it belongs to. Reads and the inbox are the same for every scout, so only the grant is offered.
  */
 export function ScoutWriteScopesPicker({

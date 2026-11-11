@@ -150,7 +150,7 @@ function sendSourceCommentToAgent(
 }
 
 /**
- * A PostHog comment thread. Its own component so it can hold the mutations for
+ * A Flind comment thread. Its own component so it can hold the mutations for
  * its thread's resource — the list spans several, each with its own target.
  */
 function ResourceThreadRow({
@@ -216,7 +216,7 @@ function ResourceThreadRow({
   );
 }
 
-/** A GitHub thread. Reply and resolve go to GitHub, not to PostHog. */
+/** A GitHub thread. Reply and resolve go to GitHub, not to Flind. */
 function PrThreadRow({
   thread,
   selected,

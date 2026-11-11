@@ -42,7 +42,7 @@ class HuntrSource(ResumableSource[HuntrSourceConfig, HuntrResumeConfig]):
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="Huntr",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Huntr organization access token to pull your Organization API data into the PostHog Data warehouse.
+            caption="""Enter your Huntr organization access token to pull your Organization API data into the Flind Data warehouse.
 
 You can generate an access token in your Huntr organization admin dashboard. The token grants read access to your members, advisors, candidates, jobs, job posts, employers, activities, actions, activity categories, tags, and candidate action metrics.
 """,

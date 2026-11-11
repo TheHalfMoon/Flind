@@ -101,7 +101,7 @@ export interface debugReplayChatLogicActions {
 export type debugReplayChatLogicType = MakeLogicType<debugReplayChatLogicValues, debugReplayChatLogicActions>
 
 /**
- * Remembers which PostHog AI chat debugged each recording, so that the player can reopen that chat.
+ * Remembers which Flind AI chat debugged each recording, so that the player can reopen that chat.
  *
  * A task has no reference to a recording on the server. The link exists only in this browser's local storage.
  */

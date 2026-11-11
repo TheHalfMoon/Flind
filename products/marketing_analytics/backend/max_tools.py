@@ -48,8 +48,8 @@ MARKETING_CONTEXT_PROMPT = dedent("""
     User is on /marketing — the Marketing analytics product, NOT Web analytics.
 
     Distinctions to keep in mind:
-    - Marketing analytics 'Reported conversions' = numbers PULLED from connected ad platforms via their APIs (Google Ads metrics_conversions, Meta CAPI, etc.). PostHog does not compute these.
-    - Marketing analytics 'Conversion goals' = PostHog events/actions configured by the team to be matched with UTM-tagged sessions for attribution.
+    - Marketing analytics 'Reported conversions' = numbers PULLED from connected ad platforms via their APIs (Google Ads metrics_conversions, Meta CAPI, etc.). Flind does not compute these.
+    - Marketing analytics 'Conversion goals' = Flind events/actions configured by the team to be matched with UTM-tagged sessions for attribution.
     - Web analytics 'Goals' are a SEPARATE concept from Marketing analytics conversion goals; do not conflate them.
     - Marketing analytics is a built-in feature page at /marketing, not a configurable dashboard. Its tabular view cannot be added as a component to other dashboards.
     - Marketing analytics supports first-touch, last-touch, and multi-touch attribution (linear, time-decay, position-based). The team's active model is reported as `attribution_mode` by the conversion-goal tools — read it rather than assuming. Multi-touch distributes conversion credit across the UTM touchpoints seen within the team's attribution window before each conversion. ML-based "data-driven" attribution is not available.
@@ -253,7 +253,7 @@ class MarketingListDataSourcesTool(MaxTool):
     description: str = dedent("""
         List the platform-side health of every native marketing integration: connected/not, last sync time and status, last error, rows synced, and schema-mapping coverage.
 
-        This is the platform → DW side only. For PostHog-events-side health (UTM matching), call `marketing_diagnose_setup`.
+        This is the platform → DW side only. For Flind-events-side health (UTM matching), call `marketing_diagnose_setup`.
     """).strip()
     context_prompt_template: str = MARKETING_CONTEXT_PROMPT
     args_schema: type[BaseModel] = MarketingListDataSourcesArgs
@@ -793,7 +793,7 @@ def _format_utm_mapping_suggestions_for_llm(response) -> str:
     if response.current_mappings:
         canonical = [m for m in response.current_mappings if m.source == "canonical"]
         team_custom = [m for m in response.current_mappings if m.source == "team_custom"]
-        lines.append("## Already-active mappings (canonical aliases hardcoded by PostHog)")
+        lines.append("## Already-active mappings (canonical aliases hardcoded by Flind)")
         # Group canonical by target for readability
         by_target: dict[str, list[str]] = {}
         for m in canonical:

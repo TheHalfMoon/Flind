@@ -52,7 +52,7 @@ DREAM_BRANCH_RE = re.compile(r"dream/\d{4}-\d{2}-\d{2}")
 LOCK_TTL_MS = 60_000
 LOCK_RENEW_INTERVAL_SECONDS = 20.0
 GIT_TIMEOUT_SECONDS = 60
-COMMITTER_NAME = "PostHog Context Layer"
+COMMITTER_NAME = "Flind Context Layer"
 COMMITTER_EMAIL = "context-layer@posthog.com"
 
 
@@ -296,7 +296,7 @@ def _has_changes(workdir: Path) -> bool:
 
 
 def _refresh_canonical_scripts(workdir: Path) -> bool:
-    """Rewrite scripts/ to the content PostHog currently ships.
+    """Rewrite scripts/ to the content Flind currently ships.
 
     Landing is the upgrade point: a wiki scaffolded under an older script
     version (or carrying a tampered copy) gets the canonical scripts restored

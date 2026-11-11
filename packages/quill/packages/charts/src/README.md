@@ -1,6 +1,6 @@
 # hog-charts
 
-PostHog's canvas-based charting library, used for trends, dashboards, and any in-app chart that needs to render thousands of points smoothly. D3 powers the scales; the canvas does the drawing; React handles overlays.
+Flind's canvas-based charting library, used for trends, dashboards, and any in-app chart that needs to render thousands of points smoothly. D3 powers the scales; the canvas does the drawing; React handles overlays.
 
 ```tsx
 import { LineChart } from '@flind/quill-charts'

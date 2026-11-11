@@ -38,7 +38,7 @@ function useSlackStatus(integrations: IntegrationType[]): IntegrationStatus {
     return anyNeedsAttention ? 'needs_attention' : 'ok'
 }
 
-// Only the install that the OAuth callback just created has its id in the URL, so a later visit keeps "Go to PostHog".
+// Only the install that the OAuth callback just created has its id in the URL, so a later visit keeps "Go to Flind".
 function useSlackSetupUrl(integrations: IntegrationType[]): string | null {
     const { searchParams } = useValues(router)
     const newIntegrationId = Number(searchParams[OAUTH_INTEGRATION_ID_PARAM])

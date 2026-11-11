@@ -41,7 +41,7 @@ describe('resolvePhaiOnboardingMounts', () => {
             [{ host: 'scene', autoOpen: true }],
         ],
         [
-            'the tasks scene without the PostHog AI view',
+            'the tasks scene without the Flind AI view',
             { sceneId: Scene.TaskTracker },
             [{ host: 'scene', autoOpen: false }],
         ],

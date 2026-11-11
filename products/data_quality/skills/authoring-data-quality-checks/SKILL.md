@@ -76,7 +76,7 @@ views and metrics you can read, then pass the `subject_type` and `id` it gives y
 `editable` can carry a check; the others can still be the target of a relationships check. After that a check is
 addressed by its own id: `-update`, `-delete`, `-run` and `-results` take no subject.
 
-## Checks on PostHog tables
+## Checks on Flind tables
 
 `events`, `persons` and `groups` take checks like any other subject: pass
 `subject_type: "posthog_table"` with the id `posthog:data-quality-subjects` gives you. Every check
@@ -139,7 +139,7 @@ refresh whose error-severity checks fail is not published), a source table's che
 completed sync, and a plain view's checks run when its DAG runs. Checks on a view outside any DAG
 only run on demand.
 
-**Subject schedules:** A metric and a PostHog table have no data-change event to run on, so their
+**Subject schedules:** A metric and a Flind table have no data-change event to run on, so their
 checks run on a schedule instead. The first saved check creates an enabled daily schedule for all
 checks on that subject. The Tests tab lets you change the interval or turn automatic runs off. Manual runs remain
 available. Scheduled checks use the latest definition author's access, falling back to the creator;

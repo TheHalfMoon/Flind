@@ -26,7 +26,7 @@ export type ProtocolTestHarness = {
      * instead of throwing errors. The Hono dispatcher does this; the CF SDK doesn't. */
     gracefulUnknown?: boolean | undefined
     /** Optional org/project ids — only set when the harness runs against the real
-     * PostHog API. Tests that hit the upstream API (projects-get, switch-project,
+     * Flind API. Tests that hit the upstream API (projects-get, switch-project,
      * organization-get response shape) skip when these are missing. */
     orgId?: string | undefined
     projectId?: string | undefined
@@ -104,7 +104,7 @@ export function defineMcpProtocolTests(
 
         it('reports server name and version after the initialize handshake', () => {
             const info = client.getServerVersion()
-            expect(info?.name).toBe('PostHog')
+            expect(info?.name).toBe('Flind')
             expect(info?.version).toBeTruthy()
         })
 
@@ -128,7 +128,7 @@ export function defineMcpProtocolTests(
             expect(sample.inputSchema.type).toBe('object')
         })
 
-        it('exposes a known PostHog tool (organization-get)', async () => {
+        it('exposes a known Flind tool (organization-get)', async () => {
             const { tools } = await client.listTools()
             const names = tools.map((t) => t.name)
             expect(names).toContain('organization-get')
@@ -240,8 +240,8 @@ export function defineMcpProtocolTests(
                 ])
 
                 // Both clients should resolve initialize against their own session.
-                expect(a.client.getServerVersion()?.name).toBe('PostHog')
-                expect(b.client.getServerVersion()?.name).toBe('PostHog')
+                expect(a.client.getServerVersion()?.name).toBe('Flind')
+                expect(b.client.getServerVersion()?.name).toBe('Flind')
 
                 const [toolsA, toolsB] = await Promise.all([a.client.listTools(), b.client.listTools()])
 
@@ -896,13 +896,13 @@ export function defineAuthTests(
             expect(res.status).toBe(401)
         })
 
-        it('returns 401 for a token that does not look like a PostHog API key', async () => {
+        it('returns 401 for a token that does not look like a Flind API key', async () => {
             const harness = await getHarness()
             const res = await postUnauthed(harness, { Authorization: 'Bearer not_a_phx_or_pha_token' })
             expect(res.status).toBe(401)
             const body = await res.text()
             // The format-check rejection has a distinctive body so a regression
-            // that started letting bad-prefix tokens through to PostHog would
+            // that started letting bad-prefix tokens through to Flind would
             // surface here as a different status / body.
             expect(body.toLowerCase()).toContain('invalid token')
         })
@@ -921,7 +921,7 @@ export function defineAuthTests(
     })
 }
 
-// Tool behavior against the real PostHog API. These tests assert on the actual
+// Tool behavior against the real Flind API. These tests assert on the actual
 // response shape rather than just "the call didn't error" — that way a
 // regression in the API client (wrong path, dropped query param) shows up here
 // instead of as a vague "the agent gave a weird answer" bug report.
@@ -1025,7 +1025,7 @@ export function defineToolBehaviorTests(
         })
 
         it('switch-project validates the project: a non-existent project id returns an error', async () => {
-            // switch-project fetches the project from PostHog before committing
+            // switch-project fetches the project from Flind before committing
             // the id to the session cache. When the project doesn't exist (or the
             // session can't reach it), the fetch fails with a 404 and the tool
             // returns an isError payload instead of silently "succeeding". This is
@@ -1044,7 +1044,7 @@ export function defineToolBehaviorTests(
         // We hit it through the MCP layer and assert the org id we read back
         // matches the configured one — that exercises the full chain: SDK
         // client → streamable transport → dispatcher → tool executor → API
-        // client → PostHog.
+        // client → Flind.
         it('organization-get returns the configured org id', async ({ skip }) => {
             if (!harness.orgId) {
                 skip('Set TEST_ORG_ID to run the organization-get behavior test.')
@@ -1246,7 +1246,7 @@ export function defineToolBehaviorTests(
         })
 
         // execute-sql is the heaviest upstream call surface in the MCP server:
-        // it crosses the API client, the PostHog `/api/environments/<id>/mcp_tools/execute_sql/`
+        // it crosses the API client, the Flind `/api/environments/<id>/mcp_tools/execute_sql/`
         // endpoint, and ClickHouse via HogQL. If this works end-to-end, the
         // whole query path is wired up.
         //
@@ -1452,7 +1452,7 @@ export function defineSessionLifecycleTests(
                     instructions?: string
                 }
             }
-            expect(json.result?.serverInfo?.name).toBe('PostHog')
+            expect(json.result?.serverInfo?.name).toBe('Flind')
             expect(json.result?.serverInfo?.version).toBeTruthy()
             expect(json.result?.capabilities?.tools).toBeTruthy()
             expect(json.result?.capabilities?.resources).toBeTruthy()
@@ -1499,8 +1499,8 @@ export function defineSessionLifecycleTests(
             expect(b.status).toBe(200)
             const aJson = (await a.json()) as { result?: { serverInfo?: { name?: string } } }
             const bJson = (await b.json()) as { result?: { serverInfo?: { name?: string } } }
-            expect(aJson.result?.serverInfo?.name).toBe('PostHog')
-            expect(bJson.result?.serverInfo?.name).toBe('PostHog')
+            expect(aJson.result?.serverInfo?.name).toBe('Flind')
+            expect(bJson.result?.serverInfo?.name).toBe('Flind')
         })
     })
 }
@@ -1790,7 +1790,7 @@ export function defineStatelessProtocolTests(
                 extensions: { 'io.modelcontextprotocol/enterprise-managed-authorization': {} },
             })
             // DiscoverResult requires top-level serverInfo (not just result _meta).
-            expect(result.serverInfo).toMatchObject({ name: 'PostHog' })
+            expect(result.serverInfo).toMatchObject({ name: 'Flind' })
             expect(typeof result.instructions).toBe('string')
             expect((result.instructions as string).length).toBeGreaterThan(0)
 
@@ -1801,7 +1801,7 @@ export function defineStatelessProtocolTests(
             expect(result.resultType).toBe('complete')
             expect(result.ttlMs).toBe(0)
             expect(result.cacheScope).toBe('private')
-            expect(serverInfoOf(json)?.name).toBe('PostHog')
+            expect(serverInfoOf(json)?.name).toBe('Flind')
 
             // Stateless dialect has no protocol-level sessions — the server
             // must not mint one for discover.
@@ -1821,14 +1821,14 @@ export function defineStatelessProtocolTests(
             expect(result.isError).toBeFalsy()
             expect(Array.isArray(result.content)).toBe(true)
             expect(result.resultType).toBe('complete')
-            expect(serverInfoOf(json)?.name).toBe('PostHog')
+            expect(serverInfoOf(json)?.name).toBe('Flind')
             // tools/call is not a CacheableResult — no freshness hints.
             expect(result.ttlMs).toBeUndefined()
             expect(result.cacheScope).toBeUndefined()
         })
 
         it('merges server identity into a tool result that carries its own _meta', async () => {
-            // Only the exec path with a PostHog Desktop consumer puts `_meta`
+            // Only the exec path with a Flind Desktop consumer puts `_meta`
             // (ui.resourceUri) on the call result — the one production shape
             // that would expose serverInfo stamping clobbering a tool's meta.
             const harness = await getHarness()
@@ -1841,7 +1841,7 @@ export function defineStatelessProtocolTests(
             )
 
             const meta = json.result?._meta ?? {}
-            expect(serverInfoOf(json)?.name).toBe('PostHog')
+            expect(serverInfoOf(json)?.name).toBe('Flind')
             expect((meta.ui as { resourceUri?: string } | undefined)?.resourceUri).toBeTruthy()
         })
 

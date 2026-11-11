@@ -367,7 +367,7 @@ export function emptyCopy(filter: IssueFilter, window: ErrorsWindow, progress?: 
         case 'spiking':
             return {
                 title: `Nothing is spiking in ${range}`,
-                message: 'Issues show up here when PostHog detects a spike in their occurrences.',
+                message: 'Issues show up here when Flind detects a spike in their occurrences.',
                 action: showAll,
             }
         case 'mine':

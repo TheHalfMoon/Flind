@@ -101,7 +101,7 @@ export function CodexCloudSection({
         />
       </div>
       <span className="text-muted-foreground text-xs">
-        PostHog keeps your ChatGPT login and gives each cloud task a short-lived
+        Flind keeps your ChatGPT login and gives each cloud task a short-lived
         token. Tasks run when Desktop is closed. Compute is billed separately.
       </span>
       {account.isPending ? (

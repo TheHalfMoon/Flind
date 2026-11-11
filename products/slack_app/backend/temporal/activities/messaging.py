@@ -42,7 +42,7 @@ def post_posthog_code_no_repos_activity(
         thread_ts=thread_ts,
         text=(
             "I couldn't find any connected GitHub repositories. "
-            "Please make sure a GitHub integration is set up in your PostHog project."
+            "Please make sure a GitHub integration is set up in your Flind project."
         ),
     )
 
@@ -162,7 +162,7 @@ def block_posthog_code_task_if_no_personal_github_activity(
     reconnect wording; a missing one gets first-time-setup wording.
 
     The team-level GitHub App can still author commits, but PRs would land under the
-    PostHog app identity instead of the user's. Rather than degrading silently, hold
+    Flind app identity instead of the user's. Rather than degrading silently, hold
     the task and surface the one-click path to the personal integration setup.
     """
     from django.conf import settings
@@ -231,7 +231,7 @@ def post_posthog_code_picker_timeout_activity(
         slack.client,
         channel=channel,
         thread_ts=thread_ts,
-        text="Repository selection expired. Please mention PostHog again to retry.",
+        text="Repository selection expired. Please mention Flind again to retry.",
     )
 
 

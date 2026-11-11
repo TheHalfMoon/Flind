@@ -70,7 +70,7 @@ def _get_headers(api_key: str) -> dict[str, str]:
     return {
         "Ocp-Apim-Subscription-Key": api_key,
         "Accept": "application/json",
-        "User-Agent": "PostHog-DataWarehouse",
+        "User-Agent": "Flind-DataWarehouse",
     }
 
 

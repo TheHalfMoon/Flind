@@ -18,7 +18,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.honeycomb.io/api/columns",
         "columns": {
             "id": "Unique identifier for the column.",
-            "dataset_slug": "Slug of the dataset the column belongs to (added by PostHog during sync).",
+            "dataset_slug": "Slug of the dataset the column belongs to (added by Flind during sync).",
             "key_name": "Name of the column as it appears in events and queries.",
             "type": "Data type of the column (string, integer, float, or boolean).",
             "description": "Optional description of the column.",
@@ -33,7 +33,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.honeycomb.io/api/derived-columns",
         "columns": {
             "id": "Unique identifier for the derived column.",
-            "dataset_slug": "Slug of the dataset the derived column belongs to, or __all__ for environment-wide derived columns (added by PostHog during sync).",
+            "dataset_slug": "Slug of the dataset the derived column belongs to, or __all__ for environment-wide derived columns (added by Flind during sync).",
             "alias": "Name of the derived column as used in queries.",
             "expression": "Formula that computes the derived column's value.",
             "description": "Optional description of the derived column.",
@@ -46,7 +46,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.honeycomb.io/api/slos",
         "columns": {
             "id": "Unique identifier for the SLO.",
-            "dataset_slug": "Slug of the dataset the SLO was listed under (added by PostHog during sync).",
+            "dataset_slug": "Slug of the dataset the SLO was listed under (added by Flind during sync).",
             "name": "Human-readable name of the SLO.",
             "description": "Optional description of the SLO.",
             "sli": "The service level indicator: a derived column alias that classifies each event as passing or failing.",
@@ -62,8 +62,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.honeycomb.io/api/burn-alerts",
         "columns": {
             "id": "Unique identifier for the burn alert.",
-            "dataset_slug": "Slug of the dataset whose SLO list surfaced this burn alert (added by PostHog during sync).",
-            "slo_id": "Identifier of the SLO the burn alert monitors (added by PostHog during sync).",
+            "dataset_slug": "Slug of the dataset whose SLO list surfaced this burn alert (added by Flind during sync).",
+            "slo_id": "Identifier of the SLO the burn alert monitors (added by Flind during sync).",
             "alert_type": "Whether the alert fires on projected exhaustion time or on budget-rate drop.",
             "exhaustion_minutes": "For exhaustion-time alerts, minutes until budget exhaustion at which the alert fires.",
             "created_at": "When the burn alert was created.",
@@ -75,7 +75,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.honeycomb.io/api/triggers",
         "columns": {
             "id": "Unique identifier for the trigger.",
-            "dataset_slug": "Slug of the dataset the trigger runs against (added by PostHog during sync).",
+            "dataset_slug": "Slug of the dataset the trigger runs against (added by Flind during sync).",
             "name": "Human-readable name of the trigger.",
             "description": "Optional description of the trigger.",
             "threshold": "Comparison operator and value the query result is evaluated against.",
@@ -91,7 +91,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.honeycomb.io/api/markers",
         "columns": {
             "id": "Unique identifier for the marker.",
-            "dataset_slug": "Slug of the dataset the marker belongs to, or __all__ for environment-wide markers (added by PostHog during sync).",
+            "dataset_slug": "Slug of the dataset the marker belongs to, or __all__ for environment-wide markers (added by Flind during sync).",
             "message": "Label shown for the marker.",
             "type": "Grouping type of the marker (e.g. deploy), which also determines its color.",
             "start_time": "Start of the marker as a Unix timestamp in seconds.",
@@ -118,7 +118,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "columns": {
             "id": "Unique identifier for the recipient.",
             "type": "Delivery mechanism of the recipient (e.g. email, slack, pagerduty, webhook).",
-            "details": "Type-specific delivery settings, such as the target address or channel. Credential-bearing fields (integration keys, webhook URLs and secrets) are redacted by PostHog during sync.",
+            "details": "Type-specific delivery settings, such as the target address or channel. Credential-bearing fields (integration keys, webhook URLs and secrets) are redacted by Flind during sync.",
             "created_at": "When the recipient was created.",
             "updated_at": "When the recipient was last modified.",
         },
@@ -128,7 +128,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.honeycomb.io/api/boards",
         "columns": {
             "id": "Unique identifier for the board view.",
-            "board_id": "ID of the board the view belongs to (added by PostHog during sync).",
+            "board_id": "ID of the board the view belongs to (added by Flind during sync).",
             "name": "Name of the view.",
             "filters": "The filters the view applies, each with a column, an operation, and an optional value.",
         },
@@ -137,8 +137,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Hourly total and error event counts for an SLO, the data behind its compliance and budget burn.",
         "docs_url": "https://api-docs.honeycomb.io/api/slos",
         "columns": {
-            "slo_id": "ID of the SLO the counts belong to (added by PostHog during sync).",
-            "dataset_slug": "Slug of the dataset the SLO was listed under (added by PostHog during sync).",
+            "slo_id": "ID of the SLO the counts belong to (added by Flind during sync).",
+            "dataset_slug": "Slug of the dataset the SLO was listed under (added by Flind during sync).",
             "start_time": "Start of the hour as a Unix timestamp in seconds.",
             "end_time": "End of the hour as a Unix timestamp in seconds.",
             "total_count": "Total number of events (good and bad) in the hour.",
@@ -171,7 +171,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.honeycomb.io/api/anomaly-detection",
         "columns": {
             "id": "Identifier for the anomaly, derived from the Signal, its measured kind, and the anomaly's start time.",
-            "signal_id": "ID of the Signal the anomaly belongs to (added by PostHog during sync).",
+            "signal_id": "ID of the Signal the anomaly belongs to (added by Flind during sync).",
             "started_at": "When the anomaly started, as a Unix timestamp in seconds.",
             "ended_at": "When the anomaly ended, as a Unix timestamp in seconds.",
             "measurement": "The measured value that triggered the anomaly.",

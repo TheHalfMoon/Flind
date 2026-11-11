@@ -12,12 +12,12 @@ import { SlackNotificationsSection } from './SlackNotificationsSection'
 const WORKSPACE = {
     id: 1,
     kind: 'slack',
-    display_name: 'PostHog',
+    display_name: 'Flind',
     // A real install records what Slack granted, and the direct message needs users:read.
     config: { scope: 'chat:write,channels:read,users:read' },
 } as IntegrationType
 const DM_TARGET = 'U0123ABC456|@sam'
-const DM_SAVED = 'PostHog sends these to @sam in Slack.'
+const DM_SAVED = 'Flind sends these to @sam in Slack.'
 // Anchored: the team card's copy carries the same sentence, after one of its own.
 const CHANNEL_HELP = /^PostHog must be in the channel/
 

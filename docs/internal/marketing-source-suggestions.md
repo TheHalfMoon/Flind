@@ -56,7 +56,7 @@ Bing Ads connections need to sync `keyword_performance_report` or `destination_u
 Older rows without placement data show no value.
 The Traffic and Conversions views both include spend when a paid source is ready.
 The first column stays visible while the metrics scroll horizontally.
-The `marketing-analytics-search-conversions` flag controls PostHog conversion goals in Search performance, independently of the precomputation flags.
+The `marketing-analytics-search-conversions` flag controls Flind conversion goals in Search performance, independently of the precomputation flags.
 When the flag is off or unavailable, the UI hides the goal columns and the backend skips conversion attribution, including requests from older clients.
 Platform-reported conversions remain available, and the main Ad performance conversion goals keep their existing behavior.
 In Search performance → Conversions, the Ad performance Include conversion goals switch adds the first five supported event or action goals and their cost per conversion.
@@ -70,10 +70,10 @@ Landing pages match by landing URL and search source.
 Paid keywords match by the session entry `utm_term` and search source, ignoring case and surrounding whitespace.
 Set `utm_term` to the keyword text in Google Ads or Bing Ads tracking URLs.
 Click IDs identify the paid source but do not provide a keyword lookup.
-Organic query rows do not receive PostHog conversion credit; use Landing pages for organic goals.
-Keywords with multiple match types or currencies leave PostHog metrics empty because the same credit cannot be assigned to individual rows.
+Organic query rows do not receive Flind conversion credit; use Landing pages for organic goals.
+Keywords with multiple match types or currencies leave Flind metrics empty because the same credit cannot be assigned to individual rows.
 URL query parameters and fragments are combined in this view.
-Opening a combined landing page preserves this URL matching in the organic query details without loading PostHog goals.
+Opening a combined landing page preserves this URL matching in the organic query details without loading Flind goals.
 With goals off, landing page details keep exact URL matching.
 Google organic search, paid Google search, and paid Bing search receive separate credit; campaign source aliases use the existing Marketing analytics mappings.
 Canonical Google and Bing source names match regardless of capitalization.
@@ -81,10 +81,10 @@ Paid Search sessions can also identify Google through `gclid` and Bing through `
 A click ID alone does not classify a session as search traffic; the session must have the Paid Search channel.
 When `marketing-analytics-live-session-resolution` is enabled, eligible search goals reuse shared live session resolution.
 They do not read session or conversion precomputation tables.
-Organic rows have no cost per conversion, and pages with spend in multiple currencies leave PostHog metrics empty because credit cannot be assigned to individual ad accounts.
+Organic rows have no cost per conversion, and pages with spend in multiple currencies leave Flind metrics empty because credit cannot be assigned to individual ad accounts.
 Data warehouse goals are not supported by search attribution.
-Turning the switch off removes PostHog goal columns and stops their queries while keeping platform-reported conversions.
-The switch only loads search conversions in the Conversions view; organic detail views do not imply query-level PostHog attribution.
+Turning the switch off removes Flind goal columns and stops their queries while keeping platform-reported conversions.
+The switch only loads search conversions in the Conversions view; organic detail views do not imply query-level Flind attribution.
 For Google Ads landing pages, enable `landing_page_stats` and wait for its first sync to finish.
 
 ## X Ads
@@ -103,7 +103,7 @@ Daily spend is converted from micros using each row's funding-instrument currenc
 Monetary tiles require the currency column; impressions remain available when only currency is missing.
 Clicks include the engagement clicks reported by X, not only outbound link clicks.
 The current import provides spend, clicks, and impressions; platform-reported conversions and revenue are not imported.
-PostHog conversion goals still work through campaign attribution.
+Flind conversion goals still work through campaign attribution.
 Ad-level reporting is unavailable because the connector does not import promoted-post statistics.
 
 ## Search performance
@@ -202,14 +202,14 @@ Source setup panels are centered within the scene.
 **Browse integrations** opens the searchable catalog in place; **Back to suggestions** restores the pending connections without another scan.
 When `marketing-analytics-organic-keywords` enables Search performance, setup and the manual catalog show Google Search Console as an optional organic-search connection, separate from detected ad platforms.
 
-The source setup panel explains how connections centralize campaign performance and how conversion goals based on PostHog events measure conversion costs and return on ad spend.
+The source setup panel explains how connections centralize campaign performance and how conversion goals based on Flind events measure conversion costs and return on ad spend.
 When Search performance is enabled, it also explains paid-keyword and organic-query analysis for optimizing search ads.
 Pending-source cards offer the source connection buttons and **Browse integrations**; they do not redirect users to Setup to review the same suggestions.
 
 Manual event scans are available from onboarding and the dashboard with **Scan again**.
 A successful scan starts a one-hour cooldown per project; the server also reuses the scan during this cooldown.
 Failed scans can be retried. Suggested connections stay visible during a refresh.
-When no platforms are detected, the panel explains how UTM parameters on ad links help PostHog identify platforms.
+When no platforms are detected, the panel explains how UTM parameters on ad links help Flind identify platforms.
 
 With Search performance enabled, a connected Google Search Console source also skips onboarding.
 The current dashboard shows Search performance below a compact ad-source connection panel when no ad data is ready.
@@ -310,14 +310,14 @@ Cards preserve period comparisons, currency formatting, and missing-value labels
 Ad performance cards include time-series sparklines for advertising metrics, including platform-reported conversions.
 Select an advertising metric card to update the existing trend chart while keeping the date range, interval, and source filters.
 CPC, CTR, reported ROAS, and cost per reported conversion use ratios of bucket totals in both sparklines and the main trend, with monetary values converted to the project currency; undefined ratios leave gaps rather than zeroes.
-Attributed PostHog conversion goals retain their summary cards without sparklines or selection.
+Attributed Flind conversion goals retain their summary cards without sparklines or selection.
 
 Advertising metrics appear first, followed by attributed conversion goals and their cost per conversion.
 The goal cards use a separate grid so cards without sparklines keep a compact height.
 
 The overview loads on demand so other query surfaces do not load marketing-specific validation eagerly.
 
-The Ad performance summary groups metrics by source: Ad platforms contains platform-reported metrics, and PostHog contains configured conversion goals and their costs.
+The Ad performance summary groups metrics by source: Ad platforms contains platform-reported metrics, and Flind contains configured conversion goals and their costs.
 Configure metrics uses the same apply-and-cancel interaction as Configure columns.
 It lets users show or hide individual metrics, show or hide an entire group, and reorder metrics within each group with the move buttons.
 Each group can also collapse without changing which metrics are selected.

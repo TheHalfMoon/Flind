@@ -2,7 +2,7 @@
 File upload source wiring for the data_warehouse table API.
 
 The table endpoints use these to turn an uploaded file into a file upload source, to replace the file
-a source reads, and to tell whether PostHog may delete an uploaded file. Every function takes the
+a source reads, and to tell whether Flind may delete an uploaded file. Every function takes the
 team id from the caller's request and checks the client-supplied upload id and filename itself, so a
 crafted value can't name a file outside the team's folder. These pull the source registry and the
 Temporal client, so this module stays off the ``django.setup()`` path.

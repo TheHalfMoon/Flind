@@ -161,7 +161,7 @@ class TestPostReportFindingsToTickets(BaseTest):
         assert (first, second) == (1, 0)
         reply = _ticket_notes(self.team, ticket).get()
         assert reply.item_context["is_private"] is not expected_public
-        assert reply.content.startswith("[PostHog bot]")
+        assert reply.content.startswith("[Flind bot]")
         assert "https://github.com/Post%3C%40U123%3EHog/posthog/pull/123" in reply.content
         assert "<@" not in reply.content
         if expected_public:

@@ -1,10 +1,10 @@
-"""Redshift driver for PostHog's data-warehouse import pipeline.
+"""Redshift driver for Flind's data-warehouse import pipeline.
 
 Everything Redshift-specific — psycopg connection lifecycle (with SSH
 tunnel), schema listing, sortkey discovery, per-cursor metadata for the
 streaming sync, and the dlt pipeline build — lives on
 `RedshiftImplementation`. The source-class `RedshiftSource` is a thin
-PostHog-layer wrapper that just holds an instance and validates
+Flind-layer wrapper that just holds an instance and validates
 credentials.
 """
 
@@ -142,7 +142,7 @@ class RedshiftReadTimeoutError(Exception):
     """Redshift sent no batch of rows before the deadline. A later attempt can succeed."""
 
     def __init__(self, timeout_seconds: float) -> None:
-        super().__init__(f"{REDSHIFT_READ_TIMEOUT_ERROR} for {timeout_seconds:g} seconds, so PostHog ended the read")
+        super().__init__(f"{REDSHIFT_READ_TIMEOUT_ERROR} for {timeout_seconds:g} seconds, so Flind ended the read")
 
 
 def _batches_with_idle_deadline(connection: psycopg.Connection, batches: Iterator[Any]) -> Iterator[Any]:
@@ -935,7 +935,7 @@ def _stream_arrow_batches(
                 # takes over a minute to fail.
                 raise NonRetryableException(
                     "This table is too large to read from this Redshift cluster. The cluster caps how "
-                    "much data a cursor can hold, and row streaming is unavailable, so PostHog cannot "
+                    "much data a cursor can hold, and row streaming is unavailable, so Flind cannot "
                     "page through the result set. Sync fewer columns, add a row filter, or move to a "
                     "multi-node cluster."
                 ) from e

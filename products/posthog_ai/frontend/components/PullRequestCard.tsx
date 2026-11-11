@@ -7,7 +7,7 @@ import { QuillPullRequestRow } from './quill/QuillPullRequestRow'
 import { useQuillThread } from './quill/quillThreadContext'
 
 /**
- * Post-turn "Pull request opened" card for a sandbox coding run — the web port of PostHog Desktop's
+ * Post-turn "Pull request opened" card for a sandbox coding run — the web port of Flind Desktop's
  * `GitActionResult`, adapted to LemonUI. Plain props, `React.memo`'d — `prUrl` is required, so the
  * caller decides whether to mount it (only once a run has opened a PR and is no longer thinking).
  * Frontend-only: it shows the link + branch, no diff stats (those need a backend wire field; see the

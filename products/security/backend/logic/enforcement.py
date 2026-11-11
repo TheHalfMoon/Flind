@@ -8,7 +8,7 @@ from ..facade.enums import Surface
 
 logger = structlog.get_logger(__name__)
 
-# One flag in PostHog's own project. Its JSON payload names the surfaces where a block rule
+# One flag in Flind's own project. Its JSON payload names the surfaces where a block rule
 # refuses requests, for example {"signup": true, "ai_gateway": false, "app": false}. Turning the
 # flag off stops every refusal at once.
 ENFORCEMENT_FLAG = "security-access-enforcement"

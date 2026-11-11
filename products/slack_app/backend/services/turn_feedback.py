@@ -52,7 +52,7 @@ _MODAL_TEXT_ACTION_ID = "text"
 # Slack-origin run resolves to this gateway product (`_ORIGIN_TO_GATEWAY_PRODUCT` in
 # `products/tasks/backend/temporal/process_task/ai_gateway_token.py`) and the gateway
 # stamps it onto every `$ai_generation`. The other clients make the same match — desktop
-# sends `posthog_code`, web sends `posthog_ai` — which is what puts all PostHog AI
+# sends `posthog_code`, web sends `posthog_ai` — which is what puts all Flind AI
 # feedback on one metric, split by this property.
 AI_PRODUCT = "slack_app"
 
@@ -231,7 +231,7 @@ def _turn_id(payload: dict) -> str | None:
 def _distinct_id(target: _FeedbackTarget) -> str:
     """Who the feedback is attributed to.
 
-    The PostHog user behind the Slack identity when there is one, so a rating joins that
+    The Flind user behind the Slack identity when there is one, so a rating joins that
     person's feedback from the web and desktop clients. The OAuth link wins, else the cached
     Slack profile email is matched against the project's organization, the same cascade that
     resolves who started the task. Most readers never link, so without the email match their

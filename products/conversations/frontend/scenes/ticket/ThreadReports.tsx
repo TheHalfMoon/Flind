@@ -19,7 +19,7 @@ import { TeamOnlyBadge } from '../../components/Chat/TeamOnlyBadge'
  * One report, as an entry in the ticket thread.
  *
  * The thread is a place where people talk to customers, so this has to read as three things at a
- * glance: not a person, not sent to anyone, and about this conversation. It wears the PostHog mark
+ * glance: not a person, not sent to anyone, and about this conversation. It wears the Flind mark
  * instead of an avatar, names the agent rather than a human, keeps the thread's own private-note
  * lock, and deliberately avoids the message bubble so it doesn't scan as something anybody said.
  */
@@ -43,8 +43,8 @@ export function ThreadReportEntry({ report }: { report: SignalReportApi }): JSX.
                         in this thread. "PostHog agent" stays muted: it qualifies the name rather than
                         repeating it. */}
                     <span className="text-sm font-medium text-ai">Self-driving</span>
-                    <Tooltip title="A PostHog agent that investigates tickets against your codebase. Not a teammate.">
-                        <span className="text-xs text-muted-alt">PostHog agent</span>
+                    <Tooltip title="A Flind agent that investigates tickets against your codebase. Not a teammate.">
+                        <span className="text-xs text-muted-alt">Flind agent</span>
                     </Tooltip>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">

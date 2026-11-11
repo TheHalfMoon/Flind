@@ -104,7 +104,7 @@ class IngestionWarningsCheck(HealthCheck):
         summary = f"{warning_type} fired {count} times" if count is not None else f"{warning_type} detected"
         return SignalContent(
             description=(
-                f"PostHog raised the ingestion warning `{warning_type}` {count_clause} for this project in the last "
+                f"Flind raised the ingestion warning `{warning_type}` {count_clause} for this project in the last "
                 "week. Ingestion warnings mean events are being dropped, mis-merged, or degraded on the way in — so "
                 "the affected data is incomplete or inaccurate. Recommend reviewing the ingestion warnings page to "
                 "find the source and fix the instrumentation producing them."

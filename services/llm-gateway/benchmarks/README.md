@@ -1,6 +1,6 @@
 # LLM Gateway Benchmarks
 
-Measures the overhead the PostHog LLM gateway adds compared to calling providers directly.
+Measures the overhead the Flind LLM gateway adds compared to calling providers directly.
 
 ## Metrics
 

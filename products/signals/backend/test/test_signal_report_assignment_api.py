@@ -592,7 +592,7 @@ class TestSignalReportAssignmentAPI(APIBaseTest):
             ("implementation", "Implementation agent"),
             ("repo_selection", "Repository selection agent"),
             ("scout:checkout", "Scout checkout"),
-            (None, "PostHog agent"),
+            (None, "Flind agent"),
         ]
     )
     def test_internal_claim_display_name_uses_phase(self, phase, expected):

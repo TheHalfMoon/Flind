@@ -77,14 +77,14 @@ _KIND_BY_TYPE: dict[str, PanelKind] = {
 }
 
 _APPROXIMATED_TYPES: dict[str, str] = {
-    "trend": "PostHog shows a trend panel as a line chart.",
-    "xychart": "PostHog shows an XY chart as a line chart over time.",
-    "state-timeline": "PostHog shows a state timeline as a line chart.",
-    "status-history": "PostHog shows a status history as a line chart.",
-    "histogram": "PostHog shows a histogram panel as a bar chart over time.",
-    "candlestick": "PostHog shows a candlestick panel as a line chart.",
-    "piechart": "PostHog shows a pie chart as a bar gauge.",
-    "grafana-piechart-panel": "PostHog shows a pie chart as a bar gauge.",
+    "trend": "Flind shows a trend panel as a line chart.",
+    "xychart": "Flind shows an XY chart as a line chart over time.",
+    "state-timeline": "Flind shows a state timeline as a line chart.",
+    "status-history": "Flind shows a status history as a line chart.",
+    "histogram": "Flind shows a histogram panel as a bar chart over time.",
+    "candlestick": "Flind shows a candlestick panel as a line chart.",
+    "piechart": "Flind shows a pie chart as a bar gauge.",
+    "grafana-piechart-panel": "Flind shows a pie chart as a bar gauge.",
 }
 
 _DISPLAY_BY_KIND: dict[PanelKind, DisplayType] = {
@@ -352,7 +352,7 @@ class GrafanaDashboardParser:
                 **common,
                 title=title or "Untitled panel",
                 kind="unsupported",
-                skip_reason=f'PostHog has no "{grafana_type or "unknown"}" panel.',
+                skip_reason=f'Flind has no "{grafana_type or "unknown"}" panel.',
             )
         notes: list[str] = []
         if approximation := _APPROXIMATED_TYPES.get(grafana_type):

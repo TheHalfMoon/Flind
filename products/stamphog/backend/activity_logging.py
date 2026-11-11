@@ -200,7 +200,7 @@ def log_repo_config_bulk_update(
 def installation_webhook_trigger(*, delivery_id: str, action: str, installation_id: str) -> Trigger:
     """Name the GitHub delivery behind a row a webhook wrote.
 
-    A webhook carries no PostHog user, so its rows are system rows. The trigger is what lets a
+    A webhook carries no Flind user, so its rows are system rows. The trigger is what lets a
     reader tie a batch of repos back to the one event that touched them.
     """
     return Trigger(
@@ -220,7 +220,7 @@ def log_repo_configs_disabled_by_webhook(
 ) -> None:
     """Log the disable that a GitHub installation webhook applies with one queryset update.
 
-    The row is a system row: a webhook carries no PostHog user. The trigger names the delivery, so
+    The row is a system row: a webhook carries no Flind user. The trigger names the delivery, so
     a reader can tie every disabled repo back to the one GitHub event that caused it.
     """
     log_repo_config_bulk_update(

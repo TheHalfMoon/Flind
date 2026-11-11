@@ -12,7 +12,7 @@ from posthog.models.user import User
 
 logger = structlog.get_logger(__name__)
 
-STREAMLIT_OAUTH_APP_NAME = "PostHog Streamlit Apps"
+STREAMLIT_OAUTH_APP_NAME = "Flind Streamlit Apps"
 STREAMLIT_OAUTH_CLIENT_ID = "posthog-streamlit-apps-first-party"
 ACCESS_TOKEN_EXPIRY_SECONDS = 60 * 60  # 1 hour
 BRIDGE_TOKEN_EXPIRY_SECONDS = 60 * 20  # sandbox TTL + buffer
@@ -89,7 +89,7 @@ def find_reusable_streamlit_access_token(
 
 
 def create_sandbox_bridge_token(user: User | None, team_id: int) -> str:
-    """Mint a long-TTL OAuth token for the sandbox→PostHog HogQL bridge hop.
+    """Mint a long-TTL OAuth token for the sandbox→Flind HogQL bridge hop.
 
     OAuth rather than a project secret API key is deliberate: the token carries a
     `user`, which the bridge's org-membership re-check relies on to revoke access

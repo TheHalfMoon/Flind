@@ -1,4 +1,4 @@
-"""Shared PostHog API auth for hogli commands, the way `github_auth` does for github.com.
+"""Shared Flind API auth for hogli commands, the way `github_auth` does for github.com.
 
     from hogli_commands import posthog_auth
 
@@ -13,9 +13,9 @@ Three sources, in order:
 3. An interactive browser login, on a tty only.
 
 The browser path is the RFC 8252 native-app flow. The client_id is the URL of the client metadata
-document PostHog publishes for hogli on posthog.com, so there is nothing to register and every machine
+document Flind publishes for hogli on posthog.com, so there is nothing to register and every machine
 authorizes as the same named client on every host. The code comes back to an ephemeral port on 127.0.0.1 with PKCE.
-RFC 8628 device flow is not used because PostHog does not advertise that grant. A login always
+RFC 8628 device flow is not used because Flind does not advertise that grant. A login always
 prints the URL as well as opening it, and accepts the redirect typed back in, so it also finishes
 on a machine whose browser lives somewhere else.
 
@@ -129,7 +129,7 @@ class Credential:
 
 @dataclass(frozen=True, kw_only=True)
 class ClientMetadata:
-    """The client PostHog publishes for hogli: its id, and the scope ceiling it may ask for."""
+    """The client Flind publishes for hogli: its id, and the scope ceiling it may ask for."""
 
     client_id: str
     scopes: tuple[str, ...]
@@ -254,7 +254,7 @@ def revoke(credential: Credential) -> None:
     """Tell the server to drop the grant, so a copy of the token stops working.
 
     The refresh token goes when there is one, since it outlives the access token and mints more.
-    PostHog's `revoke_token` override then sweeps every token and grant for that user and client,
+    Flind's `revoke_token` override then sweeps every token and grant for that user and client,
     not just the one presented, so this must only ever run against a client hogli is done with.
     """
     hint = "refresh_token" if credential.refresh_token else "access_token"
@@ -404,14 +404,14 @@ def login(*, scopes: Sequence[str], host: str = DEFAULT_HOST) -> Credential:
 def approve_in_browser(url_for_port: Callable[[int], str], *, state: str) -> str:
     """Open the page `url_for_port` builds and return the code it redirects back to the loopback `/callback`.
 
-    For PostHog flows other than this OAuth login that hand a code back the same way.
+    For Flind flows other than this OAuth login that hand a code back the same way.
     """
     with _CallbackServer() as server:
         return server.collect(url_for_port(server.port), state=state)
 
 
 def _client() -> ClientMetadata:
-    """The client PostHog publishes for hogli.
+    """The client Flind publishes for hogli.
 
     The document's own URL is the client_id, so there is nothing to register and every machine
     authorizes as the same named client. Fetched rather than hardcoded so the scope ceiling comes

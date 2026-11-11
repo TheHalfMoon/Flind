@@ -40,7 +40,7 @@ FLAG_EVALUATIONS_WRITABLE_TABLE = f"writable_{FLAG_EVALUATIONS_TABLE}"
 KAFKA_FLAG_EVALUATIONS_TABLE = f"kafka_{FLAG_EVALUATIONS_TABLE}"
 FLAG_EVALUATIONS_MV_TABLE = f"{FLAG_EVALUATIONS_TABLE}_mv"
 
-# PostHog tells customers that this table keeps this many days. The frontend mirrors this value as
+# Flind tells customers that this table keeps this many days. The frontend mirrors this value as
 # FLAG_EVALUATIONS_RETENTION_DAYS in flagEvaluationsTable.ts. Change both together.
 FLAG_EVALUATIONS_RETENTION_DAYS = 90
 

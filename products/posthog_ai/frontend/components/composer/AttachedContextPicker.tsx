@@ -19,7 +19,7 @@ export function AttachedContextPicker({
 }: AttachedContextPickerProps): JSX.Element {
     const { handleTaxonomicFilterChange } = useActions(contextPickerLogic)
     return (
-        <Tooltip title="Add context to help PostHog AI answer your question">
+        <Tooltip title="Add context to help Flind AI answer your question">
             {/* Wrapper span prevents Base UI's Tooltip.Trigger from merging
             props into TaxonomicPopover. Without it, mergeProps treats
             onChange as a DOM event handler and wraps it in a single-arg

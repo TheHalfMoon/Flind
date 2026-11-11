@@ -11,9 +11,9 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 /**
- * PostHog color values — sourced from `frontend/src/styles/base.scss`.
+ * Flind color values — sourced from `frontend/src/styles/base.scss`.
  * Hardcoded as static values so this story renders without loading
- * PostHog's stylesheet. Update if `base.scss` changes.
+ * Flind's stylesheet. Update if `base.scss` changes.
  */
 type PhValue = { light: string; dark: string }
 const ph: Record<string, PhValue> = {
@@ -272,9 +272,9 @@ export const QuillVsPostHog: Story = {
     render: () => (
         <div className="space-y-4 max-w-7xl">
             <div className="space-y-1">
-                <h2 className="text-base font-semibold">Quill vs PostHog color tokens</h2>
+                <h2 className="text-base font-semibold">Quill vs Flind color tokens</h2>
                 <p className="text-sm text-muted-foreground">
-                    Side-by-side comparison of quill semantic tokens and their PostHog `base.scss` equivalents. Each
+                    Side-by-side comparison of quill semantic tokens and their Flind `base.scss` equivalents. Each
                     pair shows light then dark. Empty cells mean no direct equivalent on that side.
                 </p>
             </div>
@@ -282,7 +282,7 @@ export const QuillVsPostHog: Story = {
             <div className="grid grid-cols-[260px_1fr_1fr] gap-4 pb-2 border-b border-border text-xs font-mono uppercase tracking-wide text-muted-foreground">
                 <span>Purpose</span>
                 <span>Quill (light / dark)</span>
-                <span>PostHog (light / dark)</span>
+                <span>Flind (light / dark)</span>
             </div>
 
             <div>

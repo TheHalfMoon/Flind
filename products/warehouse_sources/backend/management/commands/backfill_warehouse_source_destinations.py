@@ -26,7 +26,7 @@ BATCH_SIZE = 500
 
 class Command(BaseCommand):
     help = (
-        "Link sources without destinations to their team's PostHog warehouse. "
+        "Link sources without destinations to their team's Flind warehouse. "
         "Previews by default; pass --live-run to persist."
     )
 

@@ -536,9 +536,9 @@ class ProgressReporter:
 
         posthog_url = self._posthog_urls.get(experiment_name)
         if posthog_url:
-            lines.append(f"  PostHog: {posthog_url}")
+            lines.append(f"  Flind: {posthog_url}")
         if (offline_status := self._posthog_offline_statuses.get(experiment_name)) and offline_status != "uploaded":
-            lines.append(f"  PostHog offline: {offline_status}")
+            lines.append(f"  Flind offline: {offline_status}")
         log_dir = self._log_dirs.get(experiment_name)
         if log_dir:
             lines.append(f"  Agent logs: {log_dir}")

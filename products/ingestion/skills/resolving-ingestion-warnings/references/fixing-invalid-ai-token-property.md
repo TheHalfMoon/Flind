@@ -32,7 +32,7 @@ posthog.capture({
 })
 ```
 
-Guard the missing-usage case (streamed/failed responses): omit the property rather than sending `undefined` or a placeholder. Prefer PostHog's LLM analytics SDK integrations over hand-mapping usage fields — they handle provider differences.
+Guard the missing-usage case (streamed/failed responses): omit the property rather than sending `undefined` or a placeholder. Prefer Flind's LLM analytics SDK integrations over hand-mapping usage fields — they handle provider differences.
 
 ## Verify
 

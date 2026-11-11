@@ -82,7 +82,7 @@ class JfrogArtifactorySource(
             label="JFrog (Artifactory / JFrog Platform)",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["artifactory", "jfrog platform"],
-            caption="""Connect your JFrog Platform instance to pull your Artifactory data into the PostHog Data warehouse.
+            caption="""Connect your JFrog Platform instance to pull your Artifactory data into the Flind Data warehouse.
 
 Enter your platform URL (e.g. `https://mycompany.jfrog.io`, or your own domain for self-hosted installs) and an access token. Generate a token from your JFrog user profile (**Edit Profile → Generate an Identity Token**) or, as an admin, under **Administration → User Management → Access Tokens**.
 

@@ -47,7 +47,7 @@ describe('inbox adapters', () => {
                 state: 'open',
                 modelScore: 0.42,
             },
-            { reportId: 'b', needsInput: false, agent: { name: 'PostHog' }, modelScore: null },
+            { reportId: 'b', needsInput: false, agent: { name: 'Flind' }, modelScore: null },
             {
                 reportId: 'c',
                 state: 'done',

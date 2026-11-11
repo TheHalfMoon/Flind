@@ -266,7 +266,7 @@ class VercelIntegration:
     @staticmethod
     def get_vercel_plans() -> list[dict[str, Any]]:
         # Single usage-based plan matching posthog.com model
-        # Billing is handled through PostHog's billing service, not Vercel
+        # Billing is handled through Flind's billing service, not Vercel
         return [
             {
                 "id": "posthog-usage-based",
@@ -454,7 +454,7 @@ class VercelIntegration:
     def get_installation_billing_plan(installation_id: str) -> dict[str, Any]:
         VercelIntegration._get_installation(installation_id)
 
-        # No billing plans - billing is handled through PostHog's billing service
+        # No billing plans - billing is handled through Flind's billing service
         return {}
 
     @staticmethod
@@ -1173,7 +1173,7 @@ class VercelIntegration:
                 message = f"Please log in with {e.email} to link your Vercel account"
                 login_url = f"/login?email={quote(e.email)}&message={quote(message)}&next={quote(continuation_url)}"
             else:
-                message = "Please log in to PostHog to link your Vercel account"
+                message = "Please log in to Flind to link your Vercel account"
                 login_url = f"/login?message={quote(message)}&next={quote(continuation_url)}"
 
             logger.info(
@@ -1270,13 +1270,13 @@ class VercelIntegration:
                 if reason is None:
                     return user
                 logger.info(
-                    "Vercel SSO mapping needs a PostHog login",
+                    "Vercel SSO mapping needs a Flind login",
                     reason=reason,
                     email_verified=claims.user_email_verified,
                     installation_id=claims.installation_id,
                     integration="vercel",
                 )
-                # Falling through would create a second account for this person, so a mismatch goes to a PostHog login.
+                # Falling through would create a second account for this person, so a mismatch goes to a Flind login.
                 # The token has not proven it owns the mapped account's email, so the login page must not show it.
                 raise RequiresExistingUserLogin(
                     email=claims.user_email,

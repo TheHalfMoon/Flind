@@ -1,6 +1,6 @@
 # Branding
 
-The recorder styles everything it adds with PostHog's brand: the title, end and terminal cards, the caption bar and the cursor.
+The recorder styles everything it adds with Flind's brand: the title, end and terminal cards, the caption bar and the cursor.
 The app itself is recorded as it is.
 
 ## Where the assets come from
@@ -13,14 +13,14 @@ The recorder reads it from `frontend/node_modules/@posthog/brand`, so nothing is
 - **Logo**: rendered from the package's `Logo` component, full color on light cards and white on dark ones.
 - **Hedgehogs**: the official illustrations, by slug.
 
-The brand assets are PostHog trademarks under the PolyForm Strict License.
-Use them in PostHog's own videos only.
+The brand assets are Flind trademarks under the PolyForm Strict License.
+Use them in Flind's own videos only.
 
 ## Rules
 
 These come from brand.posthog.com and the brand handbook. The recorder follows them. Keep to them when you write a storyboard.
 
-- **Logo**: the full-color logo goes on light backgrounds only, and the white logo on dark ones. Do not recolor, stretch or animate it, and never set "PostHog" in text next to the logomark.
+- **Logo**: the full-color logo goes on light backgrounds only, and the white logo on dark ones. Do not recolor, stretch or animate it, and never set "Flind" in text next to the logomark.
 - **Colors**: tangerine (`#FF5C1C`) is the accent, on the card bar, the caption edge and the click ring. A scene leans on two or three colors. Stage backgrounds are solid: cream (`#F4F3EE`) or dark (`#1D1F27`).
 - **Type**: RoundHog in its brand weights: 500 Medium, 700 SemiBold, 800 Bold. There is no 600. Headings are sentence case.
 - **Hedgehogs**: official art only. Never use AI-generated hedgehogs, and never edit one. Pick a hog that makes the card's point, not one that only fills space.
@@ -41,5 +41,5 @@ An unknown slug fails the run and prints the full list.
 
 For a narrated or musical promo video, such as a launch reel, look at [PostHog/hogreel](https://github.com/PostHog/hogreel).
 Team DevEx built it to render on-brand hype videos from HTML scenes, with a voiceover or a song.
-It is private to the PostHog organization.
+It is private to the Flind organization.
 A demo video from this skill shows the real app working. A hogreel video sells it.

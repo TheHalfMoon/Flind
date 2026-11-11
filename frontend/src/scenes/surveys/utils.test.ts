@@ -304,7 +304,7 @@ describe('survey utils', () => {
         }
 
         it('skips all appearance validation for API surveys', () => {
-            // API surveys are rendered by the customer, so PostHog's appearance CSS is not applied
+            // API surveys are rendered by the customer, so Flind's appearance CSS is not applied
             // and the Customization section is hidden in the editor — flagging errors here would
             // route submitSurveyFailure to a non-existent section and silently block saves.
             expect(validateSurveyAppearance(invalidAppearance, false, SurveyType.API)).toEqual({})

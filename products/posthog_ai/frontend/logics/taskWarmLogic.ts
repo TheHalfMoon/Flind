@@ -155,7 +155,7 @@ export type taskWarmLogicType = MakeLogicType<
 /**
  * Boots a sandbox while the user is still typing, so submitting a task lands on one that is already up.
  *
- * A cold PostHog AI task spends ~16s provisioning and booting the agent server before the typed message
+ * A cold Flind AI task spends ~16s provisioning and booting the agent server before the typed message
  * even reaches the agent. Warming moves that off the user's perceived path; it does not make the boot
  * faster. Best-effort throughout — every failure just means the submit takes the cold path.
  *

@@ -24,7 +24,7 @@ export default defineCommand({
         infoPlist: RELEASE_OPTIONS.infoPlist,
         dryRun: {
             type: 'boolean',
-            description: 'Look the release up without creating it. The ID is null when PostHog has no such release yet',
+            description: 'Look the release up without creating it. The ID is null when Flind has no such release yet',
         },
     },
     scopes: ['error_tracking:write'],

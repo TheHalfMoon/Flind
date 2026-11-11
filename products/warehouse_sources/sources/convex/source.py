@@ -56,7 +56,7 @@ class ConvexSource(ResumableSource[ConvexSourceConfig, ConvexResumeConfig], Curs
             category=DataWarehouseSourceCategory.DATABASES,
             label="Convex",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Convex deployment URL and deploy key to sync your Convex tables into PostHog.
+            caption="""Enter your Convex deployment URL and deploy key to sync your Convex tables into Flind.
 
 You can find your deployment URL and deploy key in your [Convex Dashboard](https://dashboard.convex.dev/) under **Settings** > **URL & Deploy Key**.
 
@@ -136,7 +136,7 @@ You can find your deployment URL and deploy key in your [Convex Dashboard](https
             # surfaces transient edge problems as the 52x/530 family instead (retried in
             # `_CONVEX_RETRY`), so a 404 is never a transient blip that this could disable a sync over.
             "404 Client Error": (
-                "PostHog couldn't find this table in your Convex deployment. It was likely deleted, so "
+                "Flind couldn't find this table in your Convex deployment. It was likely deleted, so "
                 "turn off syncing for this table, then re-enable the sync."
             ),
             "StreamingExportNotEnabled": "Streaming export requires the Convex Professional plan. See https://www.convex.dev/plans to upgrade.",
@@ -150,17 +150,17 @@ You can find your deployment URL and deploy key in your [Convex Dashboard](https
                 "object types). Change that field's type in your Convex schema, then retry."
             ),
             # A deploy key that cannot be encoded into an Authorization header is rejected before
-            # any request leaves PostHog, so every retry rebuilds the same unsendable request. The
+            # any request leaves Flind, so every retry rebuilds the same unsendable request. The
             # user has to re-enter the key, which makes this a credential error rather than a blip.
-            "contains characters PostHog can't send to Convex": (
-                "PostHog can't send your Convex deploy key. Copy the key again from your Convex "
+            "contains characters Flind can't send to Convex": (
+                "Flind can't send your Convex deploy key. Copy the key again from your Convex "
                 "dashboard, then update this source's credentials."
             ),
             # Convex treats a `list_snapshot` cursor conflict as deterministic rather than transient. It
             # surfaces when a data import or backup restore invalidates the cursor's position, so every
             # retry replays the same request against the same now-invalid cursor.
             "409 Client Error": (
-                "PostHog's sync position for this table no longer matches your Convex deployment. "
+                "Flind's sync position for this table no longer matches your Convex deployment. "
                 "This can happen after a data import or backup restore. Trigger a full resync of "
                 "this source to continue syncing."
             ),

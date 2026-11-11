@@ -102,11 +102,11 @@ export function SearchPerformanceTable({
                 (conversionsLoading ? (
                     <div className="flex items-center gap-2 py-2 text-secondary" role="status">
                         <Spinner className="text-xl" />
-                        <span>Loading PostHog conversions…</span>
+                        <span>Loading Flind conversions…</span>
                     </div>
                 ) : conversionsError ? (
                     <MarketingQueryError
-                        message="Could not load PostHog conversions. Your search data is still available."
+                        message="Could not load Flind conversions. Your search data is still available."
                         queryId={conversionsErrorObject?.queryId ?? conversionsQueryId}
                         onRetry={() => loadConversions('force_async')}
                         loading={conversionsLoading}
@@ -124,8 +124,8 @@ export function SearchPerformanceTable({
                         }
                     >
                         {goals.length === 0
-                            ? 'Add an event or action conversion goal in Marketing analytics settings to see PostHog conversions.'
-                            : `PostHog conversions use ${conversionsResponse.posthogAttributionMode?.replaceAll('_', ' ') ?? 'your configured'} attribution. ${
+                            ? 'Add an event or action conversion goal in Marketing analytics settings to see Flind conversions.'
+                            : `Flind conversions use ${conversionsResponse.posthogAttributionMode?.replaceAll('_', ' ') ?? 'your configured'} attribution. ${
                                   query.breakdown === 'page'
                                       ? 'Conversions are matched by landing URL and search source. URL query parameters and fragments are combined. Organic rows have no cost per conversion.'
                                       : 'Paid keywords are matched to the session’s utm_term and search source. Set utm_term to the keyword in your ad links. Organic query conversions are only available by landing page.'
@@ -299,8 +299,8 @@ export function SearchPerformanceTable({
                             ),
                             tooltip:
                                 metric === 'conversions'
-                                    ? 'Conversions attributed by PostHog'
-                                    : 'Spend divided by PostHog conversions. Unavailable without spend or conversions.',
+                                    ? 'Conversions attributed by Flind'
+                                    : 'Spend divided by Flind conversions. Unavailable without spend or conversions.',
                             width: 220,
                             align: 'right' as const,
                             sorter: (a: MarketingAnalyticsSearchRow, b: MarketingAnalyticsSearchRow) =>

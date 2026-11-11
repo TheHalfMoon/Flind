@@ -1,5 +1,5 @@
 # ruff: noqa: T201
-"""Route the reviewer's LLM calls through PostHog's internal Go ai-gateway.
+"""Route the reviewer's LLM calls through Flind's internal Go ai-gateway.
 
 Gated on AI_GATEWAY_URL + AI_GATEWAY_API_KEY; a bad/half-set config falls back to
 the direct provider key instead of failing the review. The gateway is slugless, so the

@@ -22,7 +22,7 @@ export function ComposerModelIcon({ model, ownPlan }: ComposerModelIconProps): J
     return (
         <span
             className="inline-flex size-3.5 shrink-0 items-center justify-center [&_svg]:size-full"
-            title={ownPlan ? 'Billed to your plan' : 'Billed to PostHog credits'}
+            title={ownPlan ? 'Billed to your plan' : 'Billed to Flind credits'}
         >
             {PlanLogo ? <PlanLogo /> : <IconLogomark />}
         </span>

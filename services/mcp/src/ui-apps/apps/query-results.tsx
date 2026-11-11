@@ -6,7 +6,7 @@ import { AppWrapper } from '../components/AppWrapper'
 import { Component } from '../components/Component'
 
 function QueryResultsApp(): JSX.Element {
-    return <AppWrapper appName="PostHog Query Results">{({ data }) => <Component data={data} />}</AppWrapper>
+    return <AppWrapper appName="Flind Query Results">{({ data }) => <Component data={data} />}</AppWrapper>
 }
 
 const container = document.getElementById('root')

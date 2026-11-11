@@ -609,7 +609,7 @@ def resume_email_sending(
             paused_by=locked.email_sending_paused_by,
             resumed_at=locked.email_sending_resumed_at,
         ):
-            raise StaffPausedError("Only PostHog staff can resume this pause.")
+            raise StaffPausedError("Only Flind staff can resume this pause.")
         HogFlow.objects.filter(id=hog_flow_id, team_id=team_id).update(
             email_sending_paused_at=None,
             email_sending_paused_reason="",

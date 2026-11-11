@@ -62,7 +62,7 @@ def _enforce_caller_may_grant_billing_read(request: Request, organization: Organ
     if "billing:read" not in scopes:
         return
     if not EE_AVAILABLE:
-        raise PermissionDenied("The billing:read scope needs PostHog's enterprise billing, which this instance lacks.")
+        raise PermissionDenied("The billing:read scope needs Flind's enterprise billing, which this instance lacks.")
     user = request.user if isinstance(request.user, User) else None
     grants = effective_billing_grants(
         organization=organization, user=user, authenticator=getattr(request, "successful_authenticator", None)

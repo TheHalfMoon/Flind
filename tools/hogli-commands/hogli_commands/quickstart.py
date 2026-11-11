@@ -1,17 +1,17 @@
-"""PostHog development quickstart command."""
+"""Flind development quickstart command."""
 
 from __future__ import annotations
 
 import click
 
 
-@click.command(name="quickstart", help="Show getting started with PostHog development")
+@click.command(name="quickstart", help="Show getting started with Flind development")
 def quickstart() -> None:
     """Display essential commands for getting up and running."""
     click.echo("")
-    click.echo(click.style("🚀 PostHog Development Quickstart", fg="green", bold=True))
+    click.echo(click.style("🚀 Flind Development Quickstart", fg="green", bold=True))
     click.echo("")
-    click.echo("Get PostHog running locally:")
+    click.echo("Get Flind running locally:")
     click.echo("")
     click.echo("  hogli start")
     click.echo("")

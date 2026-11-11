@@ -410,11 +410,11 @@ function describeInsightPreviewExport(logItem: ActivityLogItem, asNotification?:
             'Exported a preview image for the shared link',
             nameOrLinkToInsight(logItem.detail.short_id, logItem.detail.name),
             undefined,
-            <strong>PostHog</strong>
+            <strong>Flind</strong>
         ),
         description: (
             <>
-                <strong>PostHog</strong> exported {asNotification ? 'your' : 'the'} insight: {logItem.detail.name} as an
+                <strong>Flind</strong> exported {asNotification ? 'your' : 'the'} insight: {logItem.detail.name} as an
                 image for the shared insight link.
             </>
         ),

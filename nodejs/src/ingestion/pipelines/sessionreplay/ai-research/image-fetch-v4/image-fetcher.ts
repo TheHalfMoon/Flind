@@ -107,9 +107,9 @@ const REDIRECT_STATUSES = new Set([301, 302, 303, 307, 308])
 
 /**
  * This sends no user credential: no cookie and no `Authorization`, because this lane must not reach an
- * image behind a login. The `Referer` names PostHog and never the page that showed the image, because
+ * image behind a login. The `Referer` names Flind and never the page that showed the image, because
  * that page would tell the origin where on the customer's site the image sat. Web Bot Auth identifies
- * PostHog as the operator of the request.
+ * Flind as the operator of the request.
  *
  * Every refusal is an outcome rather than a throw. This runs inside a Kafka batch, one URL at a
  * time, and a throw would abandon the URLs after it in the same batch.

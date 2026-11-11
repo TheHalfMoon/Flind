@@ -60,7 +60,7 @@ export function LoginPasswordField(): JSX.Element {
             )}
             {accountExists === false && !hasSingleSignOn(precheckResponse) && (
                 <AuthBanner variant="note">
-                    There's no account for this email. Ask your PostHog admin for an invite.
+                    There's no account for this email. Ask your Flind admin for an invite.
                 </AuthBanner>
             )}
             {hasNoConfiguredLoginMethod &&

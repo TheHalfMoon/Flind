@@ -45,7 +45,7 @@ function baseContext(eventName: string, actor: string): Context {
     return {
         event_name: eventName,
         repository: REPOSITORY,
-        repository_owner: 'PostHog',
+        repository_owner: 'Flind',
         actor,
         triggering_actor: actor,
         run_id: '1000',

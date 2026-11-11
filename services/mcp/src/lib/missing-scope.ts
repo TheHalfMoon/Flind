@@ -11,7 +11,7 @@ export class InsufficientScopeError extends Error {
     public readonly requiredScopes: readonly string[]
 
     constructor(requiredScopes: readonly string[]) {
-        super(`This request needs the PostHog scopes: ${requiredScopes.join(', ')}`)
+        super(`This request needs the Flind scopes: ${requiredScopes.join(', ')}`)
         this.name = 'InsufficientScopeError'
         this.challenge = buildInsufficientScopeChallenge(requiredScopes)
         this.requiredScopes = requiredScopes

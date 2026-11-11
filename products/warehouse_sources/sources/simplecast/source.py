@@ -55,7 +55,7 @@ class SimpleCastSource(ResumableSource[SimpleCastSourceConfig, SimpleCastResumeC
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="SimpleCast",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Simplecast API token to pull your podcast data into the PostHog Data warehouse.
+            caption="""Enter your Simplecast API token to pull your podcast data into the Flind Data warehouse.
 
 You can create an API token on the **Private Apps** page in [Simplecast](https://dashboard.simplecast.com). The token grants read access to the podcasts your account can see.
 """,

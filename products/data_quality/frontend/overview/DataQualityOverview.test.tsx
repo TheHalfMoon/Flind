@@ -198,7 +198,7 @@ describe('DataQualityOverview', () => {
         expect(screen.getAllByText('orders').length).toBeGreaterThan(0)
     })
 
-    it('groups a PostHog table under its own tag, with a schedule and a link to its node', async () => {
+    it('groups a Flind table under its own tag, with a schedule and a link to its node', async () => {
         const check = buildCheck('check-events', 'events', {
             subject_type: 'posthog_table',
             subject_uuid: 'uuid-events',
@@ -217,7 +217,7 @@ describe('DataQualityOverview', () => {
         render(<DataQualityOverview />)
         await waitFor(() => expect(runSubjectButtons()).toHaveLength(1))
 
-        expect(screen.getByText('PostHog')).toBeTruthy()
+        expect(screen.getByText('Flind')).toBeTruthy()
         expect(document.querySelector('a[href*="/models/node-events"]')).not.toBeNull()
 
         fireEvent.click(queryAll('[data-attr="data-quality-subject-disclosure"]')[0])

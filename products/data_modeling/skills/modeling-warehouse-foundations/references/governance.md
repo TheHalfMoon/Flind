@@ -4,7 +4,7 @@ Models are only useful if they're trusted and discoverable. Two habits bracket e
 
 ## Before deriving: check the semantic layer
 
-PostHog has a data catalog with a semantic layer of **canonical metrics**. Before you build a model for a
+Flind has a data catalog with a semantic layer of **canonical metrics**. Before you build a model for a
 headline number (MRR, activation rate, conversion rate, active users), check whether an approved definition
 already exists — reuse it instead of inventing a second, subtly-different number.
 

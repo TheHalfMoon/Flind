@@ -63,7 +63,7 @@ class FleetioSource(ResumableSource[FleetioSourceConfig, FleetioResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Fleetio",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Fleetio API key and account token to pull your Fleetio fleet data into the PostHog Data warehouse.
+            caption="""Enter your Fleetio API key and account token to pull your Fleetio fleet data into the Flind Data warehouse.
 
 Create an API key under **Account Menu → Account Settings → API Keys** in Fleetio. Your account token is shown on the same page (it identifies your Fleetio account).""",
             iconPath="/static/services/fleetio.png",

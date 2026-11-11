@@ -45,7 +45,7 @@ describe('thread activity grouping', () => {
         expect(groupThreadActivity([...items, tool('last', 3200)], new Set(['chart'])).at(-1)?.id).toBe('activity-next')
     })
 
-    it('folds tool runs like PostHog Desktop, keeping plans, lone calls and the final chart of a closed run visible', () => {
+    it('folds tool runs like Flind Desktop, keeping plans, lone calls and the final chart of a closed run visible', () => {
         const calls = new Map<string, ToolInvocation>()
         const call = (id: string, status: ToolInvocation['status'] = 'completed'): ThreadItem => {
             calls.set(id, {

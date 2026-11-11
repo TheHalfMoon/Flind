@@ -1,5 +1,5 @@
 """Factory functions for Stripe objects. Each returns a dict matching the fields
-from PostHog's external_table_definitions.py for that resource type."""
+from Flind's external_table_definitions.py for that resource type."""
 
 import random
 import calendar

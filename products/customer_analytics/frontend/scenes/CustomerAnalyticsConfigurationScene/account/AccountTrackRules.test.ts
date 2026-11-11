@@ -27,7 +27,7 @@ describe('AccountTrackRules', () => {
                 {
                     field: { kind: 'account_field', field: 'name' },
                     operator: 'icontains',
-                    values: ['PostHog'],
+                    values: ['Flind'],
                 },
                 {
                     field: { kind: 'custom_property', definition_id: definition.id },
@@ -42,7 +42,7 @@ describe('AccountTrackRules', () => {
         expect(filters).toEqual([
             {
                 key: 'name',
-                value: ['PostHog'],
+                value: ['Flind'],
                 operator: PropertyOperator.IContains,
                 type: PropertyFilterType.Account,
             },

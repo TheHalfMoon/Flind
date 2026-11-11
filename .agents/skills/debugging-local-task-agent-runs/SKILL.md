@@ -1,20 +1,20 @@
 ---
 name: debugging-local-task-agent-runs
-description: 'Debug the output of local PostHog task runs — the wizard cloud-run path that executes inside a Docker sandbox under the local Temporal `process-task` workflow (the wizard that integrates PostHog, then the coding agent that commits and opens the PR). Use when a local run looks stuck, failed, or silent, or when you need to read the wizard or agent logs. Covers the `.env.local` keys + `ai_features` intent required for cloud runs locally, finding the task UUID (docker ps, temporal CLI, Temporal UI at localhost:8081), tailing live logs inside the sandbox container (`/tmp/posthog-wizard.log`, `/tmp/agent-server.log`), and reading the durable per-run console log from object storage after the sandbox is torn down. Trigger terms: task-sandbox, run_wizard, agent-server, process-task, SANDBOX_PROVIDER, LLM_GATEWAY, cloud_run, posthog-wizard.log.'
+description: 'Debug the output of local Flind task runs — the wizard cloud-run path that executes inside a Docker sandbox under the local Temporal `process-task` workflow (the wizard that integrates Flind, then the coding agent that commits and opens the PR). Use when a local run looks stuck, failed, or silent, or when you need to read the wizard or agent logs. Covers the `.env.local` keys + `ai_features` intent required for cloud runs locally, finding the task UUID (docker ps, temporal CLI, Temporal UI at localhost:8081), tailing live logs inside the sandbox container (`/tmp/posthog-wizard.log`, `/tmp/agent-server.log`), and reading the durable per-run console log from object storage after the sandbox is torn down. Trigger terms: task-sandbox, run_wizard, agent-server, process-task, SANDBOX_PROVIDER, LLM_GATEWAY, cloud_run, posthog-wizard.log.'
 ---
 
 # Debugging local task/agent runs
 
 A "cloud run" of the Tasks product (e.g. the setup-wizard `cloud_run` endpoint) executes as the Temporal **`process-task`** workflow on the `development-task-queue`. Locally (`SANDBOX_PROVIDER=docker`) each run gets a **Docker sandbox container** in which two things happen in sequence:
 
-1. **`run_wizard`** activity — runs the published `@posthog/wizard` to integrate PostHog (writes `/tmp/posthog-wizard.log`).
+1. **`run_wizard`** activity — runs the published `@posthog/wizard` to integrate Flind (writes `/tmp/posthog-wizard.log`).
 2. **`agent-server`** — the coding agent that commits the wizard's changes, opens the PR, and keeps it green (writes `/tmp/agent-server.log`).
 
 The hard part of debugging is that **the Temporal UI doesn't show this output** — workflow result/failure payloads are `binary/encrypted`, and the activity captures the wizard/agent output to the run's logs, not to the timeline. This skill is how you actually read it.
 
 ## Prerequisites: env for local cloud runs
 
-Cloud runs only work locally if **all** of these are set in `.env.local` (values shown are the local targets — never commit real secrets). Inside the Docker sandbox, `localhost` is the container itself, so PostHog URLs use `host.docker.internal`.
+Cloud runs only work locally if **all** of these are set in `.env.local` (values shown are the local targets — never commit real secrets). Inside the Docker sandbox, `localhost` is the container itself, so Flind URLs use `host.docker.internal`.
 
 | Key                             | Purpose / local value                                                                                  |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------ |

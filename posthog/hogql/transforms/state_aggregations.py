@@ -244,7 +244,7 @@ def combine_queries_with_state_and_merge(*query_strings: str) -> QueryType:
     1. Pre-aggregated data (e.g., from materialized views or pre-aggregated tables)
     2. Real-time data that needs to be combined
 
-    This is especially useful for PostHog's web analytics where we combine:
+    This is especially useful for Flind's web analytics where we combine:
     - Historical data from materialized views (stats_table_preaggregated)
     - Real-time data from events table
 

@@ -52,7 +52,7 @@ class _Echo:
 
 
 class OptOutService:
-    """Reads and writes opt-out lists in bulk, so recipients can be moved in and out of PostHog."""
+    """Reads and writes opt-out lists in bulk, so recipients can be moved in and out of Flind."""
 
     def __init__(self, team_id: int, created_by_id: Optional[int] = None):
         self.team_id = team_id

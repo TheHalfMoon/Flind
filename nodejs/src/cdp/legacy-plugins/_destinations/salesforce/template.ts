@@ -12,7 +12,7 @@ export const salesforcePlugin: LegacyDestinationPlugin = {
         type: 'destination',
         id: 'plugin-salesforce-plugin',
         name: 'Salesforce Export Plugin',
-        description: 'Relay PostHog events to Salesforce',
+        description: 'Relay Flind events to Salesforce',
         icon_url: 'https://raw.githubusercontent.com/PostHog/salesforce-plugin/main/logo.png',
         category: [],
         code_language: 'javascript',

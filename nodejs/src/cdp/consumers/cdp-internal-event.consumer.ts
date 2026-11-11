@@ -24,7 +24,7 @@ import { CdpConsumerBase, CdpConsumerBaseDeps } from './cdp-base.consumer'
 import { parseBatch } from './message-parsing'
 
 /**
- * Whether a GitHub delivery is a write PostHog's own GitHub App made, resolved from the `own_app`
+ * Whether a GitHub delivery is a write Flind's own GitHub App made, resolved from the `own_app`
  * property the emit stamps on the event.
  *
  * A workflow that comments back on an issue sees its own comment arrive on this topic, so without
@@ -145,7 +145,7 @@ export class CdpInternalEventsConsumer extends CdpConsumerBase {
     }
 
     /**
-     * Slack messages PostHog's own app posted, resolved through the integration the emit stamped
+     * Slack messages Flind's own app posted, resolved through the integration the emit stamped
      * on the event.
      *
      * A workflow that replies in Slack sees its own reply arrive back on this topic, so without

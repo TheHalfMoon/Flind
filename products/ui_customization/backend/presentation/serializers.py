@@ -36,7 +36,7 @@ class CustomizationLayoutField(serializers.Field):
 
 LAYOUT_HELP_TEXT = (
     "The layout for the selected context. For analytics_sidebar, the sections of the Analytics pane, from top to bottom. Each section holds links, buttons, metrics and lists. "
-    "Links and buttons open PostHog pages or this project's insights, dashboards and notebooks, never other sites. "
+    "Links and buttons open Flind pages or this project's insights, dashboards and notebooks, never other sites. "
     "A section whose items show nothing, such as an empty pinned list, is hidden."
 )
 

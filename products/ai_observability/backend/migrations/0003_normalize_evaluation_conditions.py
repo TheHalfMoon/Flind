@@ -7,7 +7,7 @@ from django.db import migrations
 # `sampling_rate`) is dropped during normalization.
 _ALLOWED_KEYS = frozenset({"id", "rollout_percentage", "properties", "bytecode", "bytecode_error"})
 
-# Keys of a PostHog property filter that some legacy rows stored at the condition's
+# Keys of a Flind property filter that some legacy rows stored at the condition's
 # top level instead of nested inside `properties`.
 _PROPERTY_FILTER_KEYS = ("key", "value", "operator", "type", "group_type_index")
 

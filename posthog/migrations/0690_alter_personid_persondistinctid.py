@@ -94,7 +94,7 @@ class Migration(migrations.Migration):
         ),
         #
         # STEP 2: Add each foreign key constraint with NOT VALID (non-blocking),
-        #         and the PostHog-linter-ignore comment on the exact same line.
+        #         and the Flind-linter-ignore comment on the exact same line.
         #
         migrations.RunSQL(
             sql="""

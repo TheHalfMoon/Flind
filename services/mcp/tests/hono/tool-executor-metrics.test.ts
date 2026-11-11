@@ -305,7 +305,7 @@ describe('ToolExecutor metrics', () => {
             expect(JSON.stringify(extras)).not.toContain("'from' property")
         })
 
-        // A tool that fails inside PostHog's backend answers with an error type and, when the
+        // A tool that fails inside Flind's backend answers with an error type and, when the
         // backend knows it, the leaf failure name. Without the name every such failure reads
         // as one `internal` or `validation` bucket.
         it.each([

@@ -52,9 +52,9 @@ User ─────────────────────────
 
 For combined task creation, run-start responses, and MCP tools, see [Create tasks and start runs](../../../../../docs/internal/task-run-api.md).
 
-### PostHog API
+### Flind API
 
-`backend/presentation/views/api.py` (thin viewsets) over `backend/facade/api.py` (behavior) — every user-triggered cloud launch path, including prewarming, checks server-side PostHog Desktop access before provisioning or activating a run. Composer prewarming carries the complete ordered repository selection, so single- and multi-repository submissions can reuse only a matching sandbox. A terminal task can also prewarm a successor through `POST .../tasks/{id}/warm/`; the source run must remain the task's latest terminal run, and the normal `run` request activates that successor with `resume_from_run_id`. Runtime, model, branch, permission mode, and sandbox configuration must match; reasoning effort may change and is applied before the warmed agent's first turn. Repository snapshots bundle their agent binary, so prewarming probes for the deferred-resume capability and falls back to a fresh sandbox when an old snapshot lacks it. `TaskViewSet.run` creates a `TaskRun` (status=QUEUED) and starts the Temporal workflow. `TaskRunViewSet.partial_update` handles status transitions and signals the Temporal workflow on terminal statuses via `signal_workflow_completion`. `TaskRunViewSet.cancel` (`POST .../runs/{id}/cancel/`) is the user-facing kill switch: `cancel_task_run` interrupts the in-flight agent turn, signals `complete_task("cancelled")` so the workflow snapshots the session and tears down the sandbox, and falls back to finalizing the run directly when no workflow is running.
+`backend/presentation/views/api.py` (thin viewsets) over `backend/facade/api.py` (behavior) — every user-triggered cloud launch path, including prewarming, checks server-side Flind Desktop access before provisioning or activating a run. Composer prewarming carries the complete ordered repository selection, so single- and multi-repository submissions can reuse only a matching sandbox. A terminal task can also prewarm a successor through `POST .../tasks/{id}/warm/`; the source run must remain the task's latest terminal run, and the normal `run` request activates that successor with `resume_from_run_id`. Runtime, model, branch, permission mode, and sandbox configuration must match; reasoning effort may change and is applied before the warmed agent's first turn. Repository snapshots bundle their agent binary, so prewarming probes for the deferred-resume capability and falls back to a fresh sandbox when an old snapshot lacks it. `TaskViewSet.run` creates a `TaskRun` (status=QUEUED) and starts the Temporal workflow. `TaskRunViewSet.partial_update` handles status transitions and signals the Temporal workflow on terminal statuses via `signal_workflow_completion`. `TaskRunViewSet.cancel` (`POST .../runs/{id}/cancel/`) is the user-facing kill switch: `cancel_task_run` interrupts the in-flight agent turn, signals `complete_task("cancelled")` so the workflow snapshots the session and tears down the sandbox, and falls back to finalizing the run directly when no workflow is running.
 
 ### Temporal workflow
 
@@ -101,8 +101,8 @@ Environment variables consumed inside the sandbox:
 | Variable                   | Purpose                                              |
 | -------------------------- | ---------------------------------------------------- |
 | `GITHUB_TOKEN`             | GitHub installation access token for repo operations |
-| `POSTHOG_PERSONAL_API_KEY` | OAuth access token (6h TTL) for PostHog API          |
-| `POSTHOG_API_URL`          | PostHog instance URL                                 |
+| `POSTHOG_PERSONAL_API_KEY` | OAuth access token (6h TTL) for Flind API          |
+| `POSTHOG_API_URL`          | Flind instance URL                                 |
 | `POSTHOG_PROJECT_ID`       | Team ID for API scoping                              |
 | `JWT_PUBLIC_KEY`           | Public key for verifying sandbox connection tokens   |
 
@@ -114,7 +114,7 @@ Environment variables consumed inside the sandbox:
 4. **update_task_run_status** — Sets status to IN_PROGRESS
 5. **get_sandbox_for_repository** — Gets GitHub token from integration, creates OAuth access token, provisions sandbox, clones repo (unless snapshot used), stores sandbox credentials in TaskRun.state
 6. **start_agent_server** — Starts `npx agent-server` in sandbox, polls `/health` until ready
-7. **wait_condition** — Workflow blocks with a 2-hour inactivity timeout, extended by `heartbeat` signals from the agent. PostHog Desktop or the agent server signals completion via the API
+7. **wait_condition** — Workflow blocks with a 2-hour inactivity timeout, extended by `heartbeat` signals from the agent. Flind Desktop or the agent server signals completion via the API
 8. Agent server calls `PATCH /api/projects/{team_id}/task_runs/{run_id}/` with terminal status
 9. API handler sends `complete_task(status, error_message)` signal to the Temporal workflow
    - A user can end the run early via `POST .../runs/{run_id}/cancel/`, which sends the same signal with status `cancelled`
@@ -152,9 +152,9 @@ Per-team configuration for sandbox execution: network access level (trusted/full
 ### Claude subscription token relay
 
 A run created with `claude_model_access: "own-subscription"` uses the user's Claude plan for model usage.
-Sandbox compute still uses PostHog credits.
+Sandbox compute still uses Flind credits.
 The `posthog-code-claude-own-subscription-cloud` flag controls rollout.
-If the backend cannot confirm that the flag is enabled, an explicitly requested subscription run fails without switching to PostHog billing.
+If the backend cannot confirm that the flag is enabled, an explicitly requested subscription run fails without switching to Flind billing.
 
 Desktop stores a `claude setup-token` token in its encrypted local store.
 The server records the user who selected subscription billing in protected run state.
@@ -178,7 +178,7 @@ Subscription runs do not reuse prewarmed sessions, because those processes have 
 A run created with `codex_model_access: "own-subscription"` uses the user's ChatGPT plan for model usage.
 The `posthog-code-codex-own-subscription-cloud` flag controls rollout, and the run must use the Codex runtime.
 Owner recording and the owner check on `/command/` match the Claude path.
-No ChatGPT token travels through the credential relay. Desktop reads the local `auth.json` at connect time and uploads its tokens to PostHog. It deletes that file after acceptance if cleanup succeeds. A failed upload or cleanup can leave the file behind. Cloud runs do not use that local file.
+No ChatGPT token travels through the credential relay. Desktop reads the local `auth.json` at connect time and uploads its tokens to Flind. It deletes that file after acceptance if cleanup succeeds. A failed upload or cleanup can leave the file behind. Cloud runs do not use that local file.
 
 The user connects a ChatGPT account once: Desktop runs `codex login --device-auth` in an in-app terminal with a separate `CODEX_HOME`, then submits the resulting `auth.json` to `POST /api/users/@me/integrations/codex/`.
 The server refreshes the chain once, stores the rotated refresh token in a `UserIntegration` row (`kind="codex"`), and never returns it.
@@ -222,10 +222,10 @@ sequenceDiagram
 ```
 
 Codex in the sandbox signs in with `chatgptAuthTokens`, which forces ephemeral storage and writes no auth file.
-The sandbox OAuth token of a plan run (Claude or ChatGPT) omits `llm_gateway:read`, so nothing in the sandbox can reach the LLM gateway and bill PostHog credits.
+The sandbox OAuth token of a plan run (Claude or ChatGPT) omits `llm_gateway:read`, so nothing in the sandbox can reach the LLM gateway and bill Flind credits.
 A sandbox environment with a restricted network gets `chatgpt.com` added to its allowlist when the run is on a ChatGPT plan, because Codex calls it directly.
 Subscription runs require the `--codexSubscription` startup option, and the launcher checks support before it starts the process.
-Cloud usage and local usage share one plan allowance, so a run can stop at a plan rate limit that no PostHog quota controls.
+Cloud usage and local usage share one plan allowance, so a run can stop at a plan rate limit that no Flind quota controls.
 
 Keep the flag off while deploying the backend and publishing the sandbox agent build, then enable it for the intended users.
 Desktop and backend use the same flag; a stale client cannot bypass the backend check.
@@ -269,7 +269,7 @@ SANDBOX_API_URL=https://your-subdomain.ngrok.dev
 
 Get tokens from [modal.com](https://modal.com).
 
-`SANDBOX_API_URL` is the URL the Modal sandbox uses to call back to your local PostHog instance. Since Modal runs in the cloud, it can't reach `localhost`. Use a tunnel like ngrok to expose your local Django server:
+`SANDBOX_API_URL` is the URL the Modal sandbox uses to call back to your local Flind instance. Since Modal runs in the cloud, it can't reach `localhost`. Use a tunnel like ngrok to expose your local Django server:
 
 ```bash
 ngrok http 8000
@@ -285,9 +285,9 @@ Set `SANDBOX_API_URL` to the ngrok URL. `SITE_URL` stays as `http://localhost:80
 
 ## Frontend
 
-- **TaskDetailPage** (`frontend/components/TaskDetailPage.tsx`) — Task detail view with run history, "Run task" button, and an "Open in PostHog Desktop" link for users with Desktop access
+- **TaskDetailPage** (`frontend/components/TaskDetailPage.tsx`) — Task detail view with run history, "Run task" button, and an "Open in Flind Desktop" link for users with Desktop access
 - **TaskSessionView** (`frontend/components/TaskSessionView.tsx`) — Live log streaming with hedgehog animation during agent execution
-- PostHog Desktop integration via `posthog-code://task/{id}` deep links
+- Flind Desktop integration via `posthog-code://task/{id}` deep links
 
 ## Key files
 

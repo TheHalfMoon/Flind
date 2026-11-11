@@ -12,7 +12,7 @@ description: >
 
 ## What Are Signals?
 
-Signals are automated observations that PostHog generates by monitoring a customer's product data across multiple sources — error tracking, web analytics, experiments, session replay, and more. Each signal is a short natural-language description of something noteworthy (e.g. "Error rate spiked 3× on /checkout").
+Signals are automated observations that Flind generates by monitoring a customer's product data across multiple sources — error tracking, web analytics, experiments, session replay, and more. Each signal is a short natural-language description of something noteworthy (e.g. "Error rate spiked 3× on /checkout").
 
 Signals are grouped into **Signal Reports**. When a report accumulates enough weight it gets summarized and assessed for actionability. A signal report represents a cluster of related observations that together describe a meaningful issue or trend.
 

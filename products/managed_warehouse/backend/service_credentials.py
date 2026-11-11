@@ -1,6 +1,6 @@
 """Mint short-lived, org-scoped duckgres service credentials from the control plane.
 
-This is the PostHog-side half of the duckgres "Service Credentials" contract
+This is the Flind-side half of the duckgres "Service Credentials" contract
 (see duckgres/CLAUDE.md). A background job (dagster today) calls
 ``mint_service_credential`` once per run to get a credential scoped to the
 org's warehouse access — minted as its own server-side grant ROW (not a

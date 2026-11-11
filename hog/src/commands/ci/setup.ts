@@ -18,7 +18,7 @@ import type { ProjectId } from '@/posthog/ids'
 
 interface Setup {
     provider: string
-    // What to add to posthog.json. A job reads a host from it only for PostHog Cloud.
+    // What to add to posthog.json. A job reads a host from it only for Flind Cloud.
     posthogJson: { host?: Host; projectId: number }
     snippet: string
     // The job sets it as HOG_HOST when posthog.json can't name it.
@@ -104,7 +104,7 @@ function needed(preset: Preset): NeededPreset {
 }
 
 // Which runs may get a token, from --preset, then from questions when a person can answer them.
-// Without a person, the presets still needed come back with PostHog's explanations.
+// Without a person, the presets still needed come back with Flind's explanations.
 async function collectConditions(
     settings: ProviderSettings,
     raw: readonly string[] | undefined,
@@ -128,8 +128,8 @@ async function collectConditions(
         // A policy without a run restriction would trust every run, so hog never asks for one.
         throw new HogError(
             'missing_conditions',
-            `PostHog offers no preset that says which ${settings.name} runs may get a token.`,
-            'Add the policy in PostHog under the project settings, Trusted workloads.'
+            `Flind offers no preset that says which ${settings.name} runs may get a token.`,
+            'Add the policy in Flind under the project settings, Trusted workloads.'
         )
     }
     if (!chosen.some((preset) => runPresets.includes(preset)) && prompts) {
@@ -188,7 +188,7 @@ async function collectConditions(
 }
 
 function printInputRequired(out: Output, result: InputRequired): void {
-    // PostHog wrote these, so they go through escapeControls like any server text shown in a terminal.
+    // Flind wrote these, so they go through escapeControls like any server text shown in a terminal.
     const item = (entry: NeededPreset, example: boolean): void => {
         out.line('')
         out.line(`  ${escapeControls(entry.option)}  ${escapeControls(entry.label)}`)
@@ -219,7 +219,7 @@ function printSnippet(out: Output, result: Setup): void {
     out.line(
         result.posthogJson.host
             ? `Or, instead of posthog.json, set HOG_HOST=${result.host} and HOG_PROJECT_ID=${result.posthogJson.projectId} in the job.`
-            : `This PostHog isn't PostHog Cloud, so the job also needs HOG_HOST=${result.host}.`
+            : `This Flind isn't Flind Cloud, so the job also needs HOG_HOST=${result.host}.`
     )
     out.line(out.style(`More in ${escapeControls(result.docsUrl)}`, 'dim'))
 }
@@ -240,7 +240,7 @@ export default defineCommand({
         subjectId: {
             type: 'string',
             placeholder: 'id',
-            description: "The workload's immutable ID, like the repository ID, when PostHog can not look it up",
+            description: "The workload's immutable ID, like the repository ID, when Flind can not look it up",
         },
         preset: {
             type: 'string',
@@ -259,9 +259,9 @@ export default defineCommand({
     },
     scopes: ['workload_trust_policy_request:write'],
     notes: [
-        'Run it in the repository, logged in with `hog auth login`. hog asks PostHog to trust the repository in your project, and an organization admin approves the request in the browser.',
+        'Run it in the repository, logged in with `hog auth login`. hog asks Flind to trust the repository in your project, and an organization admin approves the request in the browser.',
         'When you are an admin, hog opens the approval page and waits. Otherwise it names the admins and prints the link to send them.',
-        'The job then exchanges its OIDC token for a short-lived PostHog token on each run, with the scopes you asked for.',
+        'The job then exchanges its OIDC token for a short-lived Flind token on each run, with the scopes you asked for.',
     ].join('\n'),
     examples: [
         'hog ci setup --scope error_tracking:write',
@@ -281,7 +281,7 @@ export default defineCommand({
             return { status: 'approved', policyId: approved.policyId, ...setupFor(settings, approved) }
         }
 
-        // The checks that need no PostHog run first, so a usage mistake never waits on the keychain.
+        // The checks that need no Flind run first, so a usage mistake never waits on the keychain.
         const scopes = scopesFrom(options.scope)
         if (scopes.length === 0) {
             throw usage(
@@ -298,7 +298,7 @@ export default defineCommand({
         if (options.subjectId && !options.repository) {
             throw usage(
                 'missing_repository',
-                '--subject-id needs --repository with the exact name the provider shows, because PostHog matches both.',
+                '--subject-id needs --repository with the exact name the provider shows, because Flind matches both.',
                 'Pass --repository too, like --repository PostHog/posthog.'
             )
         }

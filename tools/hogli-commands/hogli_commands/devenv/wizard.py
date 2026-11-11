@@ -62,7 +62,7 @@ def run_setup_wizard(intent_map: IntentMap, log_to_files: bool = False) -> Deven
     local_path = get_generated_mprocs_path()
 
     click.echo("")
-    click.echo(click.style("PostHog Developer Environment Setup", fg="green", bold=True))
+    click.echo(click.style("Flind Developer Environment Setup", fg="green", bold=True))
     click.echo("")
     click.echo("Configure which services to start based on the products you're working on.")
     click.echo("")

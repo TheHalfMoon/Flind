@@ -12,7 +12,7 @@ export interface ResourceProduct {
 }
 
 /**
- * Accumulate the de-duplicated, first-seen-ordered list of PostHog products
+ * Accumulate the de-duplicated, first-seen-ordered list of Flind products
  * used across the whole session, from its `_posthog/resources_used`
  * notifications. Works for both live streaming and log replay, since both feed
  * the same `events` array. A product used on several turns appears once.

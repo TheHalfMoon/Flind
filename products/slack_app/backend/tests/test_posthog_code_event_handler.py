@@ -635,7 +635,7 @@ class TestRoutePostHogCodeEventToRelevantRegion(TestCase):
     def test_app_mention_from_unknown_user_posts_in_thread_failure_reply(
         self, mock_sync_connect, mock_asyncio_run, mock_post_feedback, mock_capture
     ):
-        # A Slack user whose email doesn't map to any PostHog ``User`` in any connected
+        # A Slack user whose email doesn't map to any Flind ``User`` in any connected
         # org gets a public in-thread "Sorry, I couldn't find <email>…" reply that names
         # the looked-up Slack email so they can self-correct. The mention is still
         # captured to product analytics so the unknown-user funnel keeps its coverage.
@@ -660,7 +660,7 @@ class TestRoutePostHogCodeEventToRelevantRegion(TestCase):
         mock_asyncio_run.assert_not_called()
 
         # Failure reply is posted in-thread and names the looked-up Slack email so the
-        # user can spot a wrong-email mismatch against their PostHog account.
+        # user can spot a wrong-email mismatch against their Flind account.
         mock_post_feedback.assert_called_once()
         feedback_text = mock_post_feedback.call_args.args[4]
         assert "stranger@example.com" in feedback_text
@@ -726,7 +726,7 @@ class TestRoutePostHogCodeEventToRelevantRegion(TestCase):
     @patch("products.slack_app.backend.api.sync_connect")
     @override_settings(DEBUG=False, CLOUD_DEPLOYMENT="US")
     def test_app_mention_filters_candidates_to_user_accessible_only(self, mock_sync_connect, mock_asyncio_run):
-        # When the workspace spans two orgs and the resolved PostHog user only
+        # When the workspace spans two orgs and the resolved Flind user only
         # belongs to one of them, ``resolve_from_candidates`` filters the other
         # out so the workflow runs against the accessible integration.
         other_org = Organization.objects.create(name="Other Org")
@@ -807,7 +807,7 @@ class TestRoutePostHogCodeEventToRelevantRegion(TestCase):
     @patch("products.slack_app.backend.api.sync_connect")
     @override_settings(DEBUG=False, CLOUD_DEPLOYMENT="US")
     def test_app_mention_passes_resolved_user_id_into_workflow_inputs(self, mock_sync_connect, mock_asyncio_run):
-        # The routing layer must propagate the resolved PostHog user id into the
+        # The routing layer must propagate the resolved Flind user id into the
         # mention workflow inputs so the workflow can skip its legacy in-workflow
         # resolve activity.
         from products.slack_app.backend.api import route_posthog_code_event_to_relevant_region
@@ -1528,7 +1528,7 @@ class TestChannelApprovalGate(TestCase):
             config={"scope": ",".join(sorted(REQUIRED_SLACK_SCOPES))},
             sensitive_config={"access_token": "xoxb-posthog-code-test"},
         )
-        # Routing now resolves the Slack user to a PostHog user before any
+        # Routing now resolves the Slack user to a Flind user before any
         # channel-approval logic runs. Seed the cache so the gate has something
         # to resolve without calling Slack.
         SlackUserProfileCache.objects.create(
@@ -1865,8 +1865,8 @@ class TestQueueWorkflowDispatch(TestCase):
 class TestUntaggedFollowupPrompt(SimpleTestCase):
     @parameterized.expand(
         [
-            ("linked", {"app_id": "A123"}, "<slack://app?team=T12345&id=A123&tab=home|PostHog app Home tab>"),
-            ("no_app_id", {}, "PostHog app Home tab"),
+            ("linked", {"app_id": "A123"}, "<slack://app?team=T12345&id=A123&tab=home|Flind app Home tab>"),
+            ("no_app_id", {}, "Flind app Home tab"),
         ]
     )
     def test_prompt_shows_where_to_change_the_setting(self, _name, config, expected_label):

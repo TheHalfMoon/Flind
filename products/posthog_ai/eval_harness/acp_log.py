@@ -1,6 +1,6 @@
 """Parse ACP JSONL session logs into structured generations and spans.
 
-No PostHog, Braintrust, or OpenAI dependency — this module is pure data
+No Flind, Braintrust, or OpenAI dependency — this module is pure data
 transformation so it can be exercised by lightweight unit tests.
 """
 

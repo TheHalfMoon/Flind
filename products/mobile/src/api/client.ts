@@ -31,7 +31,7 @@ export function setAuthProvider(next: AuthProvider | null): void {
 export class ApiError extends Error {
     readonly status: number
     readonly code: string | undefined
-    /** PostHog error `detail`, which is user-facing copy for most errors. */
+    /** Flind error `detail`, which is user-facing copy for most errors. */
     readonly detail: string | undefined
     readonly body: unknown
     readonly retryAfterSeconds: number | undefined

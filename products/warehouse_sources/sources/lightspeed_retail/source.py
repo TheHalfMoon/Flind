@@ -86,7 +86,7 @@ class LightspeedRetailSource(ResumableSource[LightspeedRetailSourceConfig, Light
             category=DataWarehouseSourceCategory.E_COMMERCE,
             keywords=["lightspeed"],
             label="Lightspeed Retail",
-            caption="""Enter your Lightspeed Retail (X-Series) credentials to pull your point-of-sale data into the PostHog Data warehouse.
+            caption="""Enter your Lightspeed Retail (X-Series) credentials to pull your point-of-sale data into the Flind Data warehouse.
 
 Your domain prefix is the first part of your store URL — for `mystore.retail.lightspeed.app` enter `mystore`. An admin can create a personal token in Setup > Personal Tokens (available on the Plus plan and above).""",
             iconPath="/static/services/lightspeed_retail.png",

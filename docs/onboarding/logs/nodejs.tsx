@@ -12,7 +12,7 @@ export const getNodeJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
             content: (
                 <>
                     <Markdown>
-                        PostHog logs uses the standard OpenTelemetry SDK. No PostHog-specific packages required. Install
+                        Flind logs uses the standard OpenTelemetry SDK. No Flind-specific packages required. Install
                         the OTel SDK and the logs signal package:
                     </Markdown>
                     <CodeBlock
@@ -64,7 +64,7 @@ export const getNodeJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
                     <Markdown>
                         {dedent`
                             Create a logger setup file that configures the OpenTelemetry log exporter to send logs to
-                            PostHog. Call this before your application starts.
+                            Flind. Call this before your application starts.
                         `}
                     </Markdown>
                     <CodeBlock
@@ -129,7 +129,7 @@ export const getNodeJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
                     />
                     <Markdown>
                         {dedent`
-                            Logs appear in PostHog within a few seconds. Use the [Logs page](https://app.posthog.com/logs) to search and filter
+                            Logs appear in Flind within a few seconds. Use the [Logs page](https://app.posthog.com/logs) to search and filter
                             by service name, severity, or any attribute you attach.
                         `}
                     </Markdown>

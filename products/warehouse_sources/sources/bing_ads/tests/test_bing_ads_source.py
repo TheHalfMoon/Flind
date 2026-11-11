@@ -189,10 +189,10 @@ class TestBingAdsSource:
         assert result.requests == []
 
     def test_aadsts7000215_is_internal_config_not_customer_actionable(self):
-        # AADSTS7000215 means PostHog's own app secret is invalid/expired. The message also contains
+        # AADSTS7000215 means Flind's own app secret is invalid/expired. The message also contains
         # "OAuthTokenRequestException" and "invalid_client", both of which map to the customer-facing
         # "reconnect your integration" toast — so AADSTS7000215 must precede them and resolve to None,
-        # keeping the misleading toast off an error only a PostHog config change can fix.
+        # keeping the misleading toast off an error only a Flind config change can fix.
         non_retryable_errors = self.source.get_non_retryable_errors()
         keys = list(non_retryable_errors.keys())
 

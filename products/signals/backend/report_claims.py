@@ -83,7 +83,7 @@ def get_active_claim(*, team_id: int, report_id: str | UUID) -> ReportClaim | No
 
 
 def responsible_user(claim: ReportClaim) -> User | None:
-    """The PostHog user who answers for a claim, or None when no person stands behind it.
+    """The Flind user who answers for a claim, or None when no person stands behind it.
 
     A user claim and an external agent claim carry the user. An internal task claim carries only
     the task, and the task runs as the user who started it, so that user answers for the claim.

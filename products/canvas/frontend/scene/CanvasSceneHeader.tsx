@@ -34,7 +34,7 @@ import { CanvasToolbar } from './CanvasToolbar'
 import { CanvasVisibilityControl } from './CanvasVisibilityControl'
 
 /**
- * The bar across the top of the canvas, laid out like PostHog Desktop's: the name and version history
+ * The bar across the top of the canvas, laid out like Flind Desktop's: the name and version history
  * at the start, then the canvas's status, editing, the side panel, and the canvas menu at the end.
  */
 export function CanvasSceneHeader(): JSX.Element {

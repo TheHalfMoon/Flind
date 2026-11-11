@@ -52,7 +52,7 @@ class CodemagicSource(ResumableSource[CodemagicSourceConfig, CodemagicResumeConf
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             keywords=["ci/cd", "mobile ci/cd"],
             label="Codemagic",
-            caption="""Enter a Codemagic personal API token to sync your applications and build history into the PostHog Data warehouse.
+            caption="""Enter a Codemagic personal API token to sync your applications and build history into the Flind Data warehouse.
 
 You can find your API token under **Account settings > API token** in Codemagic. The actions this token can perform are limited by your own user role within your Codemagic team.
 

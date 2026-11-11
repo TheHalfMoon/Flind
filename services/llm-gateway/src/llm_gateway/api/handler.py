@@ -240,7 +240,7 @@ async def handle_llm_request(
     rebuild_request_context(product)
     set_auth_user(user)
 
-    # Stash effort for the PostHog callback to stamp on the $ai_generation event (mirrors
+    # Stash effort for the Flind callback to stamp on the $ai_generation event (mirrors
     # time_to_first_token). Set unconditionally so a stale value can't leak if the context
     # is reused.
     set_effort(provider_config.extract_effort(request_data))

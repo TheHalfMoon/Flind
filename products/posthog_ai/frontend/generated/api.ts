@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -410,8 +410,8 @@ export const getDocsSearchUrl = (projectId: string) => {
 }
 
 /**
- * Run a hybrid (semantic + full-text) RAG search over the PostHog documentation via Inkeep. Returns a markdown body with title, URL, and excerpt for each match for the agent to cite back to the user.
- * @summary Search PostHog documentation
+ * Run a hybrid (semantic + full-text) RAG search over the Flind documentation via Inkeep. Returns a markdown body with title, URL, and excerpt for each match for the agent to cite back to the user.
+ * @summary Search Flind documentation
  */
 export const docsSearch = async (
     projectId: string,
@@ -443,7 +443,7 @@ export const getTerminalAiCreateUrl = (projectId: string, params?: TerminalAiCre
 }
 
 /**
- * Stream a terminal model response through PostHog AI. Requires organization approval for AI data processing. SDK consumers must use getTerminalAiCreateUrl() with streaming fetch. The generated JSON client buffers the response and cannot parse SSE.
+ * Stream a terminal model response through Flind AI. Requires organization approval for AI data processing. SDK consumers must use getTerminalAiCreateUrl() with streaming fetch. The generated JSON client buffers the response and cannot parse SSE.
  */
 export const terminalAiCreate = async (
     projectId: string,
@@ -464,7 +464,7 @@ export const getTurnSuggestionsResolveCreateUrl = (projectId: string) => {
 }
 
 /**
- * @summary Record what the user did with a PostHog AI turn suggestion card
+ * @summary Record what the user did with a Flind AI turn suggestion card
  */
 export const turnSuggestionsResolveCreate = async (
     projectId: string,
@@ -496,7 +496,7 @@ export const getTurnSuggestionsStateRetrieveUrl = (projectId: string, params: Tu
 }
 
 /**
- * @summary Read which PostHog AI turn suggestion cards the user already resolved
+ * @summary Read which Flind AI turn suggestion cards the user already resolved
  */
 export const turnSuggestionsStateRetrieve = async (
     projectId: string,

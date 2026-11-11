@@ -286,7 +286,7 @@ export async function inject(
 }
 
 const DRY_RUN_RELEASE_WARNING =
-    'PostHog assigns the release ID, so a dry run leaves it out. JavaScript content hashes from a dry run can differ from a real run.'
+    'Flind assigns the release ID, so a dry run leaves it out. JavaScript content hashes from a dry run can differ from a real run.'
 const MISSING_RELEASE_WARNING =
     'No release could be resolved. Sourcemaps will upload without a release. Pass both --release-name and --release-version, or run from a git repository or supported CI environment.'
 
@@ -430,7 +430,7 @@ export async function upload(
         for (const chunkId of prepared.duplicates) {
             warnings.push(`Duplicate chunk ID ${chunkId} across symbol sets: hog uploads the first one.`)
         }
-        // Event mode always replaces what PostHog has, because the payload changes with each release.
+        // Event mode always replaces what Flind has, because the payload changes with each release.
         const policy = {
             ...(options.releaseMode === 'event'
                 ? { force: true, skipOnConflict: false }
@@ -452,7 +452,7 @@ export async function upload(
             artifact,
             map: loadMapContent(decodeUtf8(readFileSync(artifact.path))),
         }))
-        // posthog-cli creates the release even in event mode, so PostHog has a row to match the
+        // posthog-cli creates the release even in event mode, so Flind has a row to match the
         // app metadata of an event to.
         let releaseId: string | null = null
         if (releaseRequested(fields) || maps.some(({ map }) => map.releaseId === null)) {
@@ -765,7 +765,7 @@ const NATIVE_PROBLEMS: Record<NativeProblem, string> = {
         "it has no GNU build ID, so crashes can't be matched to it. Link with `-Wl,--build-id=sha1`. Go needs `-ldflags=-B=gobuildid`.",
     missing_uuid: "it has no LC_UUID, so crashes can't be matched to it. Link without `-no_uuid`.",
     compressed_dwarf:
-        "its DWARF is compressed (`__zdebug` sections), which PostHog can't read yet. Go needs `-ldflags=-compressdwarf=false` on macOS.",
+        "its DWARF is compressed (`__zdebug` sections), which Flind can't read yet. Go needs `-ldflags=-compressdwarf=false` on macOS.",
     unparseable_slice: "one of its architectures can't be parsed, so hog skips that architecture.",
 }
 

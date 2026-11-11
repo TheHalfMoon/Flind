@@ -106,7 +106,7 @@ class Rapid7InsightvmSource(ResumableSource[Rapid7InsightvmSourceConfig, Rapid7I
             label="Rapid7 InsightVM",
             caption=(
                 "Connect Rapid7 InsightVM with an **Insight Platform API key** to pull your asset inventory "
-                "and vulnerability findings into the PostHog Data warehouse.\n\n"
+                "and vulnerability findings into the Flind Data warehouse.\n\n"
                 "Generate a key under **Settings → API Keys** at [insight.rapid7.com](https://insight.rapid7.com), "
                 "then pick the **region** your Insight Platform account lives in (the first part of your product "
                 "URL, e.g. `us` in `us.idr.insight.rapid7.com`).\n\n"

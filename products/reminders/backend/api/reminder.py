@@ -219,7 +219,7 @@ class ReminderSerializer(serializers.ModelSerializer):
             "message": {"help_text": "Optional longer body for the notification."},
             "resource_type": {
                 "help_text": (
-                    f"Optional PostHog resource this reminder is about. One of: {', '.join(RESOURCE_TYPES)}. "
+                    f"Optional Flind resource this reminder is about. One of: {', '.join(RESOURCE_TYPES)}. "
                     "Resources are project-scoped, so a team must be set when this is provided."
                 ),
             },

@@ -55,7 +55,7 @@ CREDENTIALS_CALLER = CredentialsCaller.INTEGRATIONS
 
 @frozen
 class GitHubAppJwtCredentials:
-    """What PostHog's GitHub App signs its App JWT with."""
+    """What Flind's GitHub App signs its App JWT with."""
 
     client_id: str
     private_key: str = field(repr=False)
@@ -67,7 +67,7 @@ class GitHubAppJwtCredentials:
 
 @frozen
 class GitHubAppOauthCredentials:
-    """What PostHog's GitHub App exchanges a user authorization code or refresh token with."""
+    """What Flind's GitHub App exchanges a user authorization code or refresh token with."""
 
     client_id: str
     client_secret: str = field(repr=False)
@@ -297,7 +297,7 @@ class GitHubIntegrationBase:
         return self.integration.integration_id
 
     def _installation_cache_scope(self) -> str:
-        """Cache identity for data GitHub scopes to the installation, not to the PostHog row.
+        """Cache identity for data GitHub scopes to the installation, not to the Flind row.
 
         Many rows can share one installation and they all read it through the same installation
         token, so keying on the row splits one answer into N copies that each refetch it against the
@@ -388,7 +388,7 @@ class GitHubIntegrationBase:
         exclude_team_integration_id: int | None = None,
         exclude_user_integration_id: uuid.UUID | None = None,
     ) -> int:
-        """Count PostHog rows that reference a GitHub App installation.
+        """Count Flind rows that reference a GitHub App installation.
 
         One installation can be shared by many team ``Integration`` rows and many
         personal ``UserIntegration`` rows. Callers pass the id of the row currently
@@ -412,7 +412,7 @@ class GitHubIntegrationBase:
     def installation_reference_counts(
         installation_ids: Iterable[str], *, include_personal: bool = True
     ) -> dict[str, int]:
-        """PostHog rows referencing each GitHub App installation, keyed by installation id.
+        """Flind rows referencing each GitHub App installation, keyed by installation id.
 
         Batched form of :meth:`installation_reference_count` for list endpoints: one grouped
         query per model for the whole page instead of a count pair per row. The returned count
@@ -502,7 +502,7 @@ class GitHubIntegrationBase:
         exclude_team_integration_id: int | None = None,
         exclude_user_integration_id: uuid.UUID | None = None,
     ) -> bool:
-        """Uninstall the App on GitHub only when no other PostHog row references it."""
+        """Uninstall the App on GitHub only when no other Flind row references it."""
         if not installation_id:
             return False
 

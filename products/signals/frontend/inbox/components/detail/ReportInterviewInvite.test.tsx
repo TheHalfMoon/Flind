@@ -45,14 +45,14 @@ describe('ReportInterviewInvite', () => {
 
     it('shows a dismissible booking link only when the flag has a Cal.com URL', async () => {
         const { rerender } = render(<ReportInterviewInvite />)
-        expect(screen.queryByText('Want some free PostHog merch?')).not.toBeInTheDocument()
+        expect(screen.queryByText('Want some free Flind merch?')).not.toBeInTheDocument()
 
         featureFlagLogic.actions.setFeatureFlags([FEATURE_FLAGS.INBOX_INTERVIEW_INVITE], {
             [FEATURE_FLAGS.INBOX_INTERVIEW_INVITE]: true,
         })
         rerender(<ReportInterviewInvite />)
 
-        expect(await screen.findByText('Want some free PostHog merch?')).toBeInTheDocument()
+        expect(await screen.findByText('Want some free Flind merch?')).toBeInTheDocument()
         const link = (await screen.findByText(bookingText)).closest('a')
         expect(link).toHaveAttribute('href', 'https://cal.com/example/interview')
         await waitFor(() => expect(captureInboxInterviewInvite).toHaveBeenCalledWith('shown'))

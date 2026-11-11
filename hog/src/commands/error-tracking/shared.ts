@@ -66,8 +66,8 @@ export const UPLOAD_OPTIONS = {
         placeholder: 'id',
         description: 'ProGuard only: the map ID your Android build injected into the app',
     },
-    force: { type: 'boolean', description: 'Replace symbol sets PostHog already has with different content' },
-    skipOnConflict: { type: 'boolean', description: 'Keep symbol sets PostHog already has with different content' },
+    force: { type: 'boolean', description: 'Replace symbol sets Flind already has with different content' },
+    skipOnConflict: { type: 'boolean', description: 'Keep symbol sets Flind already has with different content' },
     deleteAfter: {
         type: 'boolean',
         description: 'JavaScript and CSS: remove sourcemap references and delete the maps after a successful upload',
@@ -75,7 +75,7 @@ export const UPLOAD_OPTIONS = {
     includeSource: {
         type: 'boolean',
         description:
-            'dSYM and native files: bundle the source files their debug info names, and replace what PostHog has',
+            'dSYM and native files: bundle the source files their debug info names, and replace what Flind has',
     },
     batchSize: {
         type: 'string',
@@ -92,7 +92,7 @@ export const UPLOAD_OPTIONS = {
 export const DRY_RUN_OPTION = {
     dryRun: {
         type: 'boolean',
-        description: 'Show what would happen, with content hashes, without changing files or contacting PostHog',
+        description: 'Show what would happen, with content hashes, without changing files or contacting Flind',
     },
 } as const satisfies Record<string, OptionSpec>
 
@@ -137,7 +137,7 @@ export async function readOptions(options: RawOptions, ctx: Context): Promise<Er
         throw new HogError(
             'usage_error',
             '--force and --skip-on-conflict cannot be used together.',
-            'Use --force to replace what PostHog has, or --skip-on-conflict to keep it.',
+            'Use --force to replace what Flind has, or --skip-on-conflict to keep it.',
             EXIT_USAGE
         )
     }

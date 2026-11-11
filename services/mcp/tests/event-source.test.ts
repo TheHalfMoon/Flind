@@ -25,7 +25,7 @@ describe('resolveEventSource', () => {
             EVENT_SOURCE.MCP,
         ],
         ['the Slack app', { mcpConsumer: 'slack', apiKeyScopes: SANDBOX_SCOPES }, EVENT_SOURCE.SLACK],
-        ['PostHog AI', { mcpConsumer: 'posthog_ai', apiKeyScopes: SANDBOX_SCOPES }, EVENT_SOURCE.POSTHOG_AI],
+        ['Flind AI', { mcpConsumer: 'posthog_ai', apiKeyScopes: SANDBOX_SCOPES }, EVENT_SOURCE.POSTHOG_AI],
         [
             'a sandbox coding agent',
             { mcpConsumer: 'posthog-code', apiKeyScopes: SANDBOX_SCOPES },
@@ -44,15 +44,15 @@ describe('resolveEventSource', () => {
         ],
         ['no consumer at all', {}, EVENT_SOURCE.MCP],
         [
-            // The agent PostHog Desktop hosts authenticates with the user's consented token, so it
+            // The agent Flind Desktop hosts authenticates with the user's consented token, so it
             // carries no `internal_run:read`. Only the OAuth application vouches for it, and Django
             // resolves the same request to posthog_code.
-            'the local agent inside PostHog Desktop',
+            'the local agent inside Flind Desktop',
             { mcpConsumer: 'posthog-code', apiKeyScopes: CONSENTED_SCOPES, oauthClientId: ARRAY_CLIENT_ID },
             EVENT_SOURCE.POSTHOG_CODE,
         ],
         [
-            'a PostHog AI token, whichever consumer it declares',
+            'a Flind AI token, whichever consumer it declares',
             { mcpConsumer: 'cursor', oauthClientId: POSTHOG_AI_CLIENT_ID },
             EVENT_SOURCE.POSTHOG_AI,
         ],
@@ -83,7 +83,7 @@ describe('resolveEventSource', () => {
         expect(resolveEventSource(input)).toBe(expected)
     })
 
-    it('emits only surfaces the PostHog API also knows', () => {
+    it('emits only surfaces the Flind API also knows', () => {
         // A source the API's EventSource does not carry drops out of every breakdown that joins
         // the MCP events with the product events they cause.
         expect(Object.values(EVENT_SOURCE).sort()).toEqual([...SURFACES_THE_API_KNOWS].sort())

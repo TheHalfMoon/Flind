@@ -25,7 +25,7 @@ export const HIGHLIGHTS_TAB = 'highlights'
 export const HIGHLIGHT_FEED_ORIGIN = HIGHLIGHTS_TAB
 export const RECORDING_ORIGIN = 'recording'
 export const POSTHOG_AI_ORIGIN = 'ai'
-/** The in-app page the reader left, such as a playlist or the scene a PostHog AI side panel was open over. */
+/** The in-app page the reader left, such as a playlist or the scene a Flind AI side panel was open over. */
 export const OBSERVATION_RETURN_PATH_PARAM = 'return_to'
 
 export type ReturnOrigin = typeof RECORDING_ORIGIN | typeof POSTHOG_AI_ORIGIN

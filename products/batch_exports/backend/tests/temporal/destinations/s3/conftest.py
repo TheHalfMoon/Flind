@@ -203,7 +203,7 @@ async def kms_key(session: aioboto3.Session) -> collections.abc.AsyncIterator[di
     try:
         async with session.client("kms") as kms:
             resp = await kms.create_key(
-                Description="PostHog batch exports test key",
+                Description="Flind batch exports test key",
                 KeyUsage="ENCRYPT_DECRYPT",
                 KeySpec="SYMMETRIC_DEFAULT",
             )
@@ -323,7 +323,7 @@ async def external_aws_role_arn(
 ) -> collections.abc.AsyncIterator[str]:
     """Role used to assume a destination AWS role.
 
-    This simulates the role shown to users of PostHog, so that they can grant
+    This simulates the role shown to users of Flind, so that they can grant
     this role permission to assume one of their roles.
 
     The current assumed role is granted permission to assume this role.

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -313,7 +313,7 @@ export const McpGatewayServersSetTemplateEnabledCreateBody = /* @__PURE__ */ zod
 })
 
 /**
- * PostHog's built-in agents and their MCP access grants.
+ * Flind's built-in agents and their MCP access grants.
  *
  * The catalog is fixed. Projects can pause an agent's MCP access and grant or
  * revoke servers, but cannot create, rename, rotate, or delete agents.
@@ -327,7 +327,7 @@ export const McpGatewayServiceAccountsUpdateBody = /* @__PURE__ */ zod.object({
 })
 
 /**
- * PostHog's built-in agents and their MCP access grants.
+ * Flind's built-in agents and their MCP access grants.
  *
  * The catalog is fixed. Projects can pause an agent's MCP access and grant or
  * revoke servers, but cannot create, rename, rotate, or delete agents.
@@ -434,7 +434,7 @@ export const McpServerInstallationsPartialUpdateBody = /* @__PURE__ */ zod.objec
  * Invoke one tool on a connected MCP server.
  *
  * The request/response shape is plain REST rather than the JSON-RPC envelope
- * `proxy` speaks, because the caller here is an agent surface (the PostHog MCP's
+ * `proxy` speaks, because the caller here is an agent surface (the Flind MCP's
  * `exec`) that wants one tool result, not an MCP transport of its own.
  */
 export const mcpServerInstallationsCallToolCreateBodyToolNameMax = 200
@@ -513,7 +513,7 @@ export const McpServerInstallationsInstallCustomCreateBody = /* @__PURE__ */ zod
         .describe('\* `personal` - personal\n\* `shared` - shared')
         .default(mcpServerInstallationsInstallCustomCreateBodyScopeDefault)
         .describe(
-            "'personal' is per-user; 'shared' makes the credential available to project members. PostHog agents get access to the connection automatically; see agent_scope.\n\n\* `personal` - personal\n\* `shared` - shared"
+            "'personal' is per-user; 'shared' makes the credential available to project members. Flind agents get access to the connection automatically; see agent_scope.\n\n\* `personal` - personal\n\* `shared` - shared"
         ),
     team_enabled: zod
         .boolean()
@@ -524,7 +524,7 @@ export const McpServerInstallationsInstallCustomCreateBody = /* @__PURE__ */ zod
         .describe('\* `personal` - Personal\n\* `team` - Team')
         .optional()
         .describe(
-            "How far the automatic agent grants for this connection reach. 'personal' (the default) lets PostHog agents use it only on runs for you; 'team' lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.\n\n\* `personal` - Personal\n\* `team` - Team"
+            "How far the automatic agent grants for this connection reach. 'personal' (the default) lets Flind agents use it only on runs for you; 'team' lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.\n\n\* `personal` - Personal\n\* `team` - Team"
         ),
     return_path: zod
         .string()
@@ -554,7 +554,7 @@ export const McpServerInstallationsInstallTemplateCreateBody = /* @__PURE__ */ z
         .describe('\* `personal` - personal\n\* `shared` - shared')
         .default(mcpServerInstallationsInstallTemplateCreateBodyScopeDefault)
         .describe(
-            "'personal' is per-user; 'shared' makes the credential available to project members. PostHog agents get access to the connection automatically; see agent_scope.\n\n\* `personal` - personal\n\* `shared` - shared"
+            "'personal' is per-user; 'shared' makes the credential available to project members. Flind agents get access to the connection automatically; see agent_scope.\n\n\* `personal` - personal\n\* `shared` - shared"
         ),
     team_enabled: zod
         .boolean()
@@ -565,7 +565,7 @@ export const McpServerInstallationsInstallTemplateCreateBody = /* @__PURE__ */ z
         .describe('\* `personal` - Personal\n\* `team` - Team')
         .optional()
         .describe(
-            "How far the automatic agent grants for this connection reach. 'personal' (the default) lets PostHog agents use it only on runs for you; 'team' lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.\n\n\* `personal` - Personal\n\* `team` - Team"
+            "How far the automatic agent grants for this connection reach. 'personal' (the default) lets Flind agents use it only on runs for you; 'team' lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.\n\n\* `personal` - Personal\n\* `team` - Team"
         ),
     return_path: zod
         .string()

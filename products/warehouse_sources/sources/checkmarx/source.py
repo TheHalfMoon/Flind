@@ -58,7 +58,7 @@ class CheckmarxSource(ResumableSource[CheckmarxSourceConfig, CheckmarxResumeConf
             label="Checkmarx (Checkmarx One)",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["checkmarx one", "sast", "sca", "appsec"],
-            caption="""Enter your Checkmarx One credentials to automatically pull your application security data into the PostHog Data warehouse.
+            caption="""Enter your Checkmarx One credentials to automatically pull your application security data into the Flind Data warehouse.
 
 You can generate an API key in Checkmarx One under **Settings** → **Identity and Access Management** → **API Keys**. The tenant name and region are shown in your Checkmarx One URL (for example, a tenant on `https://eu.ast.checkmarx.net` is in the EU region).
 """,

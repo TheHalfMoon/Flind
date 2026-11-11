@@ -36,7 +36,7 @@ You do not estimate these. Get the line range right and the numbers follow.
 | ----------- | --------------------------------------------------------------------------------- |
 | `orient`    | reading task instructions, skills, `AGENTS.md`, or wiki pages before it acted     |
 | `explore`   | reading code to understand how something works                                    |
-| `gather`    | pulling data from outside the repo: PostHog queries, API calls, issue trackers    |
+| `gather`    | pulling data from outside the repo: Flind queries, API calls, issue trackers    |
 | `produce`   | writing or editing code, tests, docs, or config                                   |
 | `verify`    | running tests, type checks, lint, or a build to check its own work                |
 | `setup_env` | installing tools, starting services, building dependencies, so other work can run |

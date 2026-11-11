@@ -52,7 +52,7 @@ class TestFeedbackCommand(BaseTest):
         self.assertEqual(len(result.messages), 1)
         message = result.messages[0]
         assert isinstance(message, AssistantMessage)
-        self.assertEqual(message.content, "Thanks for making PostHog AI better!")
+        self.assertEqual(message.content, "Thanks for making Flind AI better!")
 
         mock_capture.assert_called_once_with(
             distinct_id=str(self.user.distinct_id),

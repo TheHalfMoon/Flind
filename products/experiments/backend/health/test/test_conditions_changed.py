@@ -154,7 +154,7 @@ class TestReleaseConditionsChangedMidRun(TestCase):
                 "override_removed_without_a_measurement_before_4_people",
                 _context([PRO_PINNED, EVERYONE], [PRO, EVERYONE], exposed_units=4),
                 ("variant_override_changed", INFO, OVERRIDE_TITLE, "A7"),
-                f'The variant override "test" of Set 1 was removed on {FIRST_CHANGE}. {OVERRIDE_MOVED} PostHog '
+                f'The variant override "test" of Set 1 was removed on {FIRST_CHANGE}. {OVERRIDE_MOVED} Flind '
                 "can't measure how many users Set 1 matches. Reset the experiment, or move its start date to "
                 f"{FIRST_CHANGE}.",
                 "not_measured",
@@ -178,7 +178,7 @@ class TestReleaseConditionsChangedMidRun(TestCase):
                 "override_removed_without_a_measurement",
                 _context([PRO_PINNED, EVERYONE], [PRO, EVERYONE]),
                 ("variant_override_changed", INFO, OVERRIDE_TITLE, "A7"),
-                f'The variant override "test" of Set 1 was removed on {FIRST_CHANGE}. {OVERRIDE_MOVED} PostHog '
+                f'The variant override "test" of Set 1 was removed on {FIRST_CHANGE}. {OVERRIDE_MOVED} Flind '
                 "can't measure how many users Set 1 matches. Reset the experiment, or move its start date to "
                 f"{FIRST_CHANGE}.",
                 "not_measured",
@@ -222,7 +222,7 @@ class TestReleaseConditionsChangedMidRun(TestCase):
                 "override_removed_with_its_rollout_set_to_zero",
                 _context([PRO_PINNED, EVERYONE], [{**PRO, "rollout_percentage": 0}, EVERYONE], people_by_set={2: 3000}),
                 ("variant_override_changed", INFO, OVERRIDE_TITLE, "A7"),
-                f'The variant override "test" of Set 1 was removed on {FIRST_CHANGE}. {OVERRIDE_MOVED} PostHog '
+                f'The variant override "test" of Set 1 was removed on {FIRST_CHANGE}. {OVERRIDE_MOVED} Flind '
                 f"can't measure how many users the override matched. Reset the experiment, or move its start date to "
                 f"{FIRST_CHANGE}.",
             ),
@@ -248,7 +248,7 @@ class TestReleaseConditionsChangedMidRun(TestCase):
                 f'A release condition with the variant override "test" was removed on {FIRST_CHANGE}. The variant '
                 f'override "test" of Set 1 was removed on {FIRST_CHANGE}. Users they matched got the override\'s '
                 "variant while it was in place and a random variant after, so those exposed while it was in place "
-                "may have switched variants. Their exposures stay in the results. PostHog can't measure how many "
+                "may have switched variants. Their exposures stay in the results. Flind can't measure how many "
                 f"users these conditions match. Reset the experiment, or move its start date to {FIRST_CHANGE}.",
                 "not_measured",
             ),
@@ -257,7 +257,7 @@ class TestReleaseConditionsChangedMidRun(TestCase):
                 _context([PRO_PINNED, EVERYONE], [EVERYONE]),
                 ("variant_override_changed", INFO, OVERRIDE_TITLE, "A7"),
                 f'A release condition with the variant override "test" was removed on {FIRST_CHANGE}. '
-                f"{OVERRIDE_MOVED} PostHog can't measure how many users the override matched. Reset the experiment, "
+                f"{OVERRIDE_MOVED} Flind can't measure how many users the override matched. Reset the experiment, "
                 f"or move its start date to {FIRST_CHANGE}.",
             ),
             (
@@ -292,7 +292,7 @@ class TestReleaseConditionsChangedMidRun(TestCase):
                 "override_removed_with_its_filters_edited",
                 _context([PRO_PINNED, EVERYONE], [TEAM, EVERYONE], people_by_set={2: 3000}),
                 ("variant_override_changed", INFO, OVERRIDE_TITLE, "A7"),
-                f'The variant override "test" of Set 1 was removed on {FIRST_CHANGE}. {OVERRIDE_MOVED} PostHog '
+                f'The variant override "test" of Set 1 was removed on {FIRST_CHANGE}. {OVERRIDE_MOVED} Flind '
                 f"can't measure how many users the override matched. Reset the experiment, or move its start date to "
                 f"{FIRST_CHANGE}.",
             ),

@@ -313,7 +313,7 @@ HISTORY_TABLE_STILL_WRITTEN_ERROR = (
     "capture, before you delete the history table."
 )
 HISTORY_TABLE_CHECK_FAILED_ERROR = (
-    "PostHog couldn't check whether a sync of this table is still running. Try again in a few minutes."
+    "Flind couldn't check whether a sync of this table is still running. Try again in a few minutes."
 )
 HISTORY_TABLE_SYNC_IN_FLIGHT_ERROR = (
     "A sync of this table is still running and could still write to its history table. Try again once it "

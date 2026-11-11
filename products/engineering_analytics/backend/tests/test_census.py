@@ -45,12 +45,12 @@ class _FakeTarballResponse:
 def test_collect_repo_census_strips_the_tarball_prefix_and_ignores_traversal_members() -> None:
     body = _tarball(
         {
-            "PostHog-posthog-abc123/owners.yaml": b"version: 1\nowners: []\n",
-            "PostHog-posthog-abc123/products/a/owners.yaml": b"version: 1\nowners: [team-a]\n",
-            "PostHog-posthog-abc123/products/a/test_api.py": b"",
-            "PostHog-posthog-abc123/products/a/thing.test.tsx": b"",
-            "PostHog-posthog-abc123/posthog/test_uncovered.py": b"",
-            "PostHog-posthog-abc123/../escape/test_evil.py": b"",
+            "Flind-posthog-abc123/owners.yaml": b"version: 1\nowners: []\n",
+            "Flind-posthog-abc123/products/a/owners.yaml": b"version: 1\nowners: [team-a]\n",
+            "Flind-posthog-abc123/products/a/test_api.py": b"",
+            "Flind-posthog-abc123/products/a/thing.test.tsx": b"",
+            "Flind-posthog-abc123/posthog/test_uncovered.py": b"",
+            "Flind-posthog-abc123/../escape/test_evil.py": b"",
         }
     )
     with patch(

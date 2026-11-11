@@ -31,7 +31,7 @@ export const getNuxtSteps = (ctx: OnboardingComponentsContext): StepDefinition[]
             content: (
                 <>
                     <Markdown>
-                        Use `posthog-node` to evaluate feature flags on the server. Initialize PostHog in your server
+                        Use `posthog-node` to evaluate feature flags on the server. Initialize Flind in your server
                         route:
                     </Markdown>
                     <CodeBlock
@@ -40,10 +40,10 @@ export const getNuxtSteps = (ctx: OnboardingComponentsContext): StepDefinition[]
                                 language: 'javascript',
                                 file: 'server/api/example.js',
                                 code: dedent`
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
 
                                     const runtimeConfig = useRuntimeConfig()
-                                    const posthog = new PostHog(
+                                    const posthog = new Flind(
                                         runtimeConfig.public.posthogPublicKey,
                                         { host: runtimeConfig.public.posthogHost }
                                     )
@@ -64,7 +64,7 @@ export const getNuxtSteps = (ctx: OnboardingComponentsContext): StepDefinition[]
             content: (
                 <Markdown>
                     Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run
-                    an experiment by creating a new experiment in the PostHog dashboard.
+                    an experiment by creating a new experiment in the Flind dashboard.
                 </Markdown>
             ),
         },

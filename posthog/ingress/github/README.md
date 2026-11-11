@@ -1,6 +1,6 @@
 # GitHub
 
-Deliveries from the GitHub Apps PostHog runs.
+Deliveries from the GitHub Apps Flind runs.
 
 ## Headers
 
@@ -40,7 +40,7 @@ The `stamphog` App is one App, and one region serves its endpoint.
 ## Quirks
 
 The status codes are the defaults: 403 on a bad signature, 500 when unconfigured, 202 on success.
-The installation lifecycle is a core consumer rather than a product one, because it keeps PostHog's own integration rows in step with GitHub.
+The installation lifecycle is a core consumer rather than a product one, because it keeps Flind's own integration rows in step with GitHub.
 A GitHub delivery is never forwarded to the other region, so no consumer here declares `ownership`.
 The other region verifies against its own App's secret, so it would answer a replayed delivery 403 and count it as an invalid signature.
 An installation this region does not hold is an installation this region never receives deliveries for.
@@ -53,12 +53,12 @@ See [Regional forwarding](../README.md#regional-forwarding) for the lane the pro
 - `products/stamphog/backend/webhook_consumers.py` registers `stamphog_review` on the `stamphog` app.
 
 The Error Tracking consumer handles opened and edited issues and pull requests from repository owners, members, and collaborators.
-It scans descriptions for direct issue links and fingerprint permalinks on the configured PostHog site, then queues team-scoped tasks.
+It scans descriptions for direct issue links and fingerprint permalinks on the configured Flind site, then queues team-scoped tasks.
 Repeated links and deliveries reuse an existing reference.
 Removing a link from a later description does not remove the reference.
 
 The commands consumer reads `@posthog <command>` lines in new pull request comments from repository owners, members and collaborators, and queues one task per command.
-The task checks the commenter's write access with GitHub and their linked PostHog account before any command runs.
+The task checks the commenter's write access with GitHub and their linked Flind account before any command runs.
 See `products/commands/README.md`.
 
 ### Picking the project

@@ -23,7 +23,7 @@ _COUNT_TIMEOUT_SECONDS = 30
 _COUNT_MAX_BYTES = 4_000_000_000
 # A scan this size answers in about 3 seconds.
 _COUNT_TARGET_ROWS = 10_000_000
-# PostHog events that stand for being active in the product.
+# Flind events that stand for being active in the product.
 ACTIVITY_EVENTS = frozenset({"$pageview", "$screen"})
 # pinned: broadcast email steps send to {{ person.properties.email }}
 EMAIL_PROPERTY = "email"
@@ -150,7 +150,7 @@ def _matches(audience: AudienceSuggestion) -> ast.Expr:
 
 
 def activity_counts(team: Team, user: User | None = None) -> dict[str, int]:
-    """Weekly counts of the PostHog events that stand for being active, which the project's own event counts skip."""
+    """Weekly counts of the Flind events that stand for being active, which the project's own event counts skip."""
     query = parse_select(
         """
         SELECT event, count() FROM events

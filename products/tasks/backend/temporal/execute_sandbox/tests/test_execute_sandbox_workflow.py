@@ -74,7 +74,7 @@ def silent_workflow_logger(monkeypatch):
 class TestActivityErrorProperties:
     def test_returns_full_context_for_activity_error(self):
         # Mirrors process_task — the new workflow keeps the same surface for
-        # PostHog event capture so dashboards continue to slice by these props.
+        # Flind event capture so dashboards continue to slice by these props.
         error = ActivityError(
             "Activity task timed out",
             scheduled_event_id=10,

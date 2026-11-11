@@ -55,7 +55,7 @@ class PlainSource(SimpleSource[PlainSourceConfig]):
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Plain",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Plain API key to automatically pull your Plain customer support data into the PostHog Data warehouse.
+            caption="""Enter your Plain API key to automatically pull your Plain customer support data into the Flind Data warehouse.
 
 You can create an API key in your [Plain workspace settings](https://app.plain.com/settings/api-keys).
 

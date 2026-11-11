@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface OrganizationEventsRetentionApi {
@@ -17,7 +17,7 @@ export interface OrganizationEventsRetentionApi {
     readonly default_retention_months: number
     /** Whether the default is longer than 24 months because the plan predates the 24-month default. */
     readonly default_is_grandfathered: boolean
-    /** The periods, in months, an admin can choose from. A save also has to be between min_retention_months and max_retention_months. Only PostHog staff can set other periods. */
+    /** The periods, in months, an admin can choose from. A save also has to be between min_retention_months and max_retention_months. Only Flind staff can set other periods. */
     readonly retention_months_choices: readonly number[]
     /** The longest period the organization's plan allows, in months. */
     readonly plan_retention_months: number
@@ -285,7 +285,7 @@ export interface EventsRetentionApi {
     readonly default_retention_months: number
     /** Whether the default is longer than 24 months because the plan predates the 24-month default. */
     readonly default_is_grandfathered: boolean
-    /** The periods, in months, an admin can choose from. A save also has to be between min_retention_months and max_retention_months. Only PostHog staff can set other periods. */
+    /** The periods, in months, an admin can choose from. A save also has to be between min_retention_months and max_retention_months. Only Flind staff can set other periods. */
     readonly retention_months_choices: readonly number[]
     /** The longest period the organization's plan allows, in months. */
     readonly plan_retention_months: number
@@ -3795,7 +3795,7 @@ export interface WebStatsTableQueryApi {
     samplingFactor?: number | null
     tags?: QueryLogTagsApi | null
     useSessionsTable?: boolean | null
-    /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+    /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. * */
     useWebAnalyticsPrecompute?: boolean | null
     /** version of the node, used for schema migrations */
     version?: number | null
@@ -3882,7 +3882,7 @@ export interface WebOverviewQueryApi {
     samplingFactor?: number | null
     tags?: QueryLogTagsApi | null
     useSessionsTable?: boolean | null
-    /** Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+    /** Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. * */
     useWebAnalyticsPrecompute?: boolean | null
     /** version of the node, used for schema migrations */
     version?: number | null
@@ -5561,7 +5561,7 @@ export interface ExperimentWarehouseNativeExposureConfigApi {
     /** The direct-query source (an ExternalDataSource id) the SQL is written for. */
     connection_id: string
     kind?: 'ExperimentWarehouseNativeExposureConfig'
-    /** Read-only SQL in the warehouse's dialect, returning one row per exposure with `entity_id`, `variant` and `timestamp` columns. PostHog keeps the first exposure per entity and applies the experiment's date range and multiple-variant handling. */
+    /** Read-only SQL in the warehouse's dialect, returning one row per exposure with `entity_id`, `variant` and `timestamp` columns. Flind keeps the first exposure per entity and applies the experiment's date range and multiple-variant handling. */
     query: string
     response?: ExperimentWarehouseNativeExposureConfigApiResponse
     unit: ExperimentWarehouseNativeUnitBindingApi
@@ -6494,7 +6494,7 @@ export interface WebGoalsQueryApi {
     samplingFactor?: number | null
     tags?: QueryLogTagsApi | null
     useSessionsTable?: boolean | null
-    /** Opt this specific query into the web_goals_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+    /** Opt this specific query into the web_goals_query precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. * */
     useWebAnalyticsPrecompute?: boolean | null
     /** version of the node, used for schema migrations */
     version?: number | null
@@ -6633,7 +6633,7 @@ export interface WebVitalsPathBreakdownQueryApi {
      */
     thresholds: number[]
     useSessionsTable?: boolean | null
-    /** Opt this specific query into the web vitals path breakdown precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+    /** Opt this specific query into the web vitals path breakdown precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. * */
     useWebAnalyticsPrecompute?: boolean | null
     /** version of the node, used for schema migrations */
     version?: number | null
@@ -9727,7 +9727,7 @@ export interface ActivityLogEntryApi {
     readonly created_at: string
     /** Whether the activity was performed by the system rather than a user. */
     readonly is_system: boolean
-    /** Whether the acting user was being impersonated by PostHog staff. */
+    /** Whether the acting user was being impersonated by Flind staff. */
     readonly was_impersonated: boolean
     /**
      * API client that triggered the activity. Self-reported through the x-posthog-client request header (e.g. 'mcp'), or 'scout:<skill_name>' when a scout run made the change, which the server derives from the run's own token. Null for requests that did neither.

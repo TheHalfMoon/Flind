@@ -4963,7 +4963,7 @@ class TestCoalesceGroup:
         ids=["warehouse_only", "two_warehouse_rows"],
     )
     def test_batches_bound_only_for_the_warehouse_still_share_a_write(self, destination_ids: list[str]):
-        # Every run now snapshots the PostHog warehouse, which delta writes rather than a
+        # Every run now snapshots the Flind warehouse, which delta writes rather than a
         # destination writer delivers. Reading a non-empty snapshot as "has destinations" would
         # stop the whole fleet coalescing.
         batches = [

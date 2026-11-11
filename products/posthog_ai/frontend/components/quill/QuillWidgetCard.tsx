@@ -7,7 +7,7 @@ export function QuillWidgetCard({ body, bodyHeightClassName, footer, danger = fa
     return (
         <Card size="sm" flush className={cn('w-full py-0', quillCardBorderClass(danger))}>
             {body && (
-                // Product widgets keep PostHog's own colours inside the quill thread.
+                // Product widgets keep Flind's own colours inside the quill thread.
                 <CardContent data-not-quill>
                     {/* The viewport inherits a `max-h-*` cap from the root, or it outgrows the root and scrolls nothing. */}
                     <ScrollArea className={bodyHeightClassName} viewportClassName="flex flex-col max-h-[inherit]">

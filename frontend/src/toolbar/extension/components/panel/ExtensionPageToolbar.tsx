@@ -24,7 +24,7 @@ export function ExtensionPageToolbar(): JSX.Element {
                 }}
             >
                 {authStatus === 'failed'
-                    ? "Couldn't connect the toolbar to this project. Connect again, and finish any step PostHog shows in the new tab."
+                    ? "Couldn't connect the toolbar to this project. Connect again, and finish any step Flind shows in the new tab."
                     : 'Connect the toolbar to this project to use its tools on this page.'}
             </LemonBanner>
         )

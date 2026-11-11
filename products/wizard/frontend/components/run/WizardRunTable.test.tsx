@@ -17,7 +17,7 @@ const run: WizardRunApi = {
     workspace: { type: 'git_repository', repository: 'example/project' },
     program: {
         id: 'posthog-integration',
-        name: 'PostHog integration',
+        name: 'Flind integration',
         description: '',
         command: [],
         wizard_version: '1.0.0',
@@ -61,7 +61,7 @@ describe('WizardRunTable', () => {
             onCancel: jest.fn(),
         }
         const { rerender } = render(<WizardRunTable {...props} />)
-        fireEvent.click(screen.getByLabelText('More options for PostHog integration'))
+        fireEvent.click(screen.getByLabelText('More options for Flind integration'))
         const menu = await screen.findByRole('menu')
         expect(within(menu).getByText('Cancel run')).not.toHaveAttribute('aria-disabled', 'true')
 
@@ -89,7 +89,7 @@ describe('WizardRunTable', () => {
         expect(onSelect).toHaveBeenCalledWith(refreshedRun)
         expect(props.onSelect).not.toHaveBeenCalled()
 
-        fireEvent.click(screen.getByLabelText('More options for PostHog integration'))
+        fireEvent.click(screen.getByLabelText('More options for Flind integration'))
         const reopenedMenu = await screen.findByRole('menu')
         rerender(<WizardRunTable {...props} runs={[{ ...refreshedRun, id: 'replacement-run' }]} />)
         expect(reopenedMenu).not.toBeInTheDocument()

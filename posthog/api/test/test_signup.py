@@ -56,7 +56,7 @@ class TestSignupAPI(APIBaseTest):
     @patch("posthoganalytics.capture")
     def test_api_sign_up(self, mock_capture):
         # Ensure the internal system metrics org doesn't prevent org-creation
-        Organization.objects.create(name="PostHog Internal Metrics", for_internal_metrics=True)
+        Organization.objects.create(name="Flind Internal Metrics", for_internal_metrics=True)
 
         response = self.client.post(
             "/api/signup/",
@@ -105,7 +105,7 @@ class TestSignupAPI(APIBaseTest):
         # Assert that the org was properly created
         self.assertEqual(organization.name, "Hedgehogs United, LLC")
 
-        # Assert that the sign up event & identify calls were sent to PostHog analytics
+        # Assert that the sign up event & identify calls were sent to Flind analytics
         signup_calls = [c for c in mock_capture.call_args_list if c.kwargs.get("event") == "user signed up"]
         self.assertEqual(len(signup_calls), 1)
         signup_call = signup_calls[0]
@@ -159,7 +159,7 @@ class TestSignupAPI(APIBaseTest):
     @patch("posthog.api.signup.email_verification_code_verifier.send_code")
     def test_api_sign_up_requires_verification(self, mock_email_verifier, mock_is_email_available):
         # Ensure the internal system metrics org doesn't prevent org-creation
-        Organization.objects.create(name="PostHog Internal Metrics", for_internal_metrics=True)
+        Organization.objects.create(name="Flind Internal Metrics", for_internal_metrics=True)
 
         response = self.client.post(
             "/api/signup/",
@@ -210,7 +210,7 @@ class TestSignupAPI(APIBaseTest):
         mock_is_email_available,
     ):
         # Ensure the internal system metrics org doesn't prevent org-creation
-        Organization.objects.create(name="PostHog Internal Metrics", for_internal_metrics=True)
+        Organization.objects.create(name="Flind Internal Metrics", for_internal_metrics=True)
 
         response = self.client.post(
             "/api/signup/",
@@ -591,7 +591,7 @@ class TestSignupAPI(APIBaseTest):
         self.assertEqual(user.role_at_organization, "product")
         self.assertTrue(user.is_staff)  # True because this is the first user in the instance
 
-        # Assert that the sign up event & identify calls were sent to PostHog analytics
+        # Assert that the sign up event & identify calls were sent to Flind analytics
         signup_calls = [c for c in mock_capture.call_args_list if c.kwargs.get("event") == "user signed up"]
         self.assertEqual(len(signup_calls), 1)
         signup_call = signup_calls[0]
@@ -1666,7 +1666,7 @@ class TestSignupAPI(APIBaseTest):
     @patch("posthog.api.signup.is_email_available", return_value=True)
     @patch("posthog.api.signup.email_verification_code_verifier.send_code")
     def test_api_sign_up_preserves_next_param(self, mock_email_verifier, mock_is_email_available):
-        Organization.objects.create(name="PostHog Internal Metrics", for_internal_metrics=True)
+        Organization.objects.create(name="Flind Internal Metrics", for_internal_metrics=True)
 
         response = self.client.post(
             "/api/signup/",
@@ -1695,7 +1695,7 @@ class TestSignupAPI(APIBaseTest):
     def test_api_sign_up_preserves_oauth_next_param_with_query_string(
         self, mock_email_verifier, mock_is_email_available
     ):
-        Organization.objects.create(name="PostHog Internal Metrics", for_internal_metrics=True)
+        Organization.objects.create(name="Flind Internal Metrics", for_internal_metrics=True)
 
         oauth_url = "/oauth/authorize?client_id=test123&redirect_uri=http://localhost:3000/callback&response_type=code"
         response = self.client.post(
@@ -1817,7 +1817,7 @@ class TestSignupAPI(APIBaseTest):
     @patch("posthog.utils.get_ip_address", return_value="192.168.1.100")
     def test_signup_rate_limit_by_ip(self, mock_get_ip):
         # Ensure the internal system metrics org doesn't prevent org-creation
-        Organization.objects.create(name="PostHog Internal Metrics", for_internal_metrics=True)
+        Organization.objects.create(name="Flind Internal Metrics", for_internal_metrics=True)
         cache.clear()
 
         for i in range(3):
@@ -1849,7 +1849,7 @@ class TestSignupAPI(APIBaseTest):
     @pytest.mark.skip_on_multitenancy
     @patch("posthog.utils.get_ip_address", return_value="192.168.1.100")
     def test_signup_rate_limits_failed_attempts_by_ip(self, mock_get_ip):
-        Organization.objects.create(name="PostHog Internal Metrics", for_internal_metrics=True)
+        Organization.objects.create(name="Flind Internal Metrics", for_internal_metrics=True)
         cache.clear()
 
         def signup(i: int):
@@ -1881,7 +1881,7 @@ class TestSignupAPI(APIBaseTest):
     def test_signup_rate_limit_different_ips(self):
         """Test that different IPs can signup independently"""
         # Ensure the internal system metrics org doesn't prevent org-creation
-        Organization.objects.create(name="PostHog Internal Metrics", for_internal_metrics=True)
+        Organization.objects.create(name="Flind Internal Metrics", for_internal_metrics=True)
 
         # Clear any existing rate limit cache
         cache.clear()
@@ -2624,7 +2624,7 @@ class TestInviteSignupAPI(APIBaseTest):
         self.assertEqual(user.email, "test+99@posthog.com")
         self.assertEqual(user.role_at_organization, "Engineering")
 
-        # Assert that the sign up event & identify calls were sent to PostHog analytics
+        # Assert that the sign up event & identify calls were sent to Flind analytics
         mock_capture.assert_called_once()
         self.assertEqual(user.distinct_id, mock_capture.call_args.kwargs["distinct_id"])
         self.assertEqual("user signed up", mock_capture.call_args.kwargs["event"])
@@ -2936,7 +2936,7 @@ class TestInviteSignupAPI(APIBaseTest):
         self.assertFalse(user.is_staff)  # Not first user in the instance
         self.assertEqual(user.role_at_organization, "product")
 
-        # Assert that the sign up event & identify calls were sent to PostHog analytics
+        # Assert that the sign up event & identify calls were sent to Flind analytics
         mock_capture.assert_called_once_with(
             event="user joined organization",
             distinct_id=user.distinct_id,
@@ -3005,7 +3005,7 @@ class TestInviteSignupAPI(APIBaseTest):
         self.assertEqual(user.first_name, "")
         self.assertFalse(user.check_password(VALID_TEST_PASSWORD + "_new"))  # Password is not updated
 
-        # Assert that the sign up event & identify calls were sent to PostHog analytics
+        # Assert that the sign up event & identify calls were sent to Flind analytics
         mock_capture.assert_called_once_with(
             event="user joined organization",
             distinct_id=user.distinct_id,

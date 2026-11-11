@@ -7,7 +7,7 @@ description: >
   dispatched for, and reports when a fix didn't hold, plus a gated escalation check on
   dismissed reports.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus inbox-reports-list /
   inbox-reports-retrieve / scout-report-check-create / scout-report-check-list,
   execute-sql (document_embeddings + events), and whatever surface

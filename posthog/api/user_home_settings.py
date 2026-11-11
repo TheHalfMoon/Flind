@@ -106,7 +106,7 @@ class PinnedSceneTabsSerializer(serializers.Serializer):
         description=(
             "Update the authenticated user's pinned sidebar tabs and/or homepage for the current team. "
             "Pass `@me` as the UUID. Send `tabs` to replace the pinned tab list, `homepage` to set the home "
-            "destination (any PostHog URL — dashboard, insight, search results, scene). Either field may be "
+            "destination (any Flind URL — dashboard, insight, search results, scene). Either field may be "
             "omitted to leave it unchanged; sending `homepage: null` or `{}` clears the homepage."
         ),
         request=PinnedSceneTabsSerializer,

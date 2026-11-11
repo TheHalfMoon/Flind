@@ -54,7 +54,7 @@ export function buildActivity(
     timestamps: { start: startedAt },
     assets: {
       large_image: LARGE_IMAGE_KEY,
-      large_text: "PostHog",
+      large_text: "Flind",
       small_image: agentRunning ? SMALL_IMAGE_RUNNING : SMALL_IMAGE_IDLE,
       small_text: smallText,
     },

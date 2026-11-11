@@ -116,7 +116,7 @@ class OpnPaymentsSource(ResumableSource[OpnPaymentsSourceConfig, OpnPaymentsResu
             label="Opn Payments (formerly Omise)",
             releaseStatus=ReleaseStatus.BETA,
             caption="Enter your Opn Payments (Omise) secret key to sync charges, customers, transfers, "
-            "and more into the PostHog Data warehouse. Find your secret key in the Opn Payments "
+            "and more into the Flind Data warehouse. Find your secret key in the Opn Payments "
             "dashboard under **Keys**.",
             docsUrl="https://posthog.com/docs/cdp/sources/opn-payments",
             iconPath="/static/services/opn_payments.png",

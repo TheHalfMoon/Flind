@@ -27,6 +27,8 @@ EXEMPT = {
     "flind/rename/baseline.json",
     "flind/rename/PLAN.md",
     "tools/flind/rename_inventory.py",
+    "tools/flind/rename_text.py",
+    "tools/flind/rename_text_ts.cjs",
     ".github/workflows/flind-rename-ratchet.yml",
 }
 

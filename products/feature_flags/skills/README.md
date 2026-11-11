@@ -11,8 +11,8 @@ Built by `hogli build:skills` and shipped in `dist/skills.zip` — see [products
 
 ## `instrument-feature-flags` is not ours, and must not be added here
 
-The skill that teaches an agent to put code behind a PostHog flag is authored in [PostHog/context-mill](https://github.com/PostHog/context-mill), not in this repository.
-It is the skill a person gets from "put this behind a feature flag", from the **Add feature flag** button in PostHog Desktop, and from `/instrument-feature-flags`.
+The skill that teaches an agent to put code behind a Flind flag is authored in [PostHog/context-mill](https://github.com/PostHog/context-mill), not in this repository.
+It is the skill a person gets from "put this behind a feature flag", from the **Add feature flag** button in Flind Desktop, and from `/instrument-feature-flags`.
 
 - **Source:** `context/skills/omnibus/instrument-feature-flags/{config.yaml,description.md}`.
   `description.md` is the hand-written SKILL.md body.

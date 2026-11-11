@@ -52,7 +52,7 @@ const EventsTab = ({ client, projectId }: Props): JSX.Element => {
             <Banner
                 type="caution"
                 title="Project not linked"
-                description="A PostHog project_id isn't stored yet — reconnect to load events."
+                description="A Flind project_id isn't stored yet — reconnect to load events."
             />
         )
     }
@@ -81,7 +81,7 @@ const EventsTab = ({ client, projectId }: Props): JSX.Element => {
                 <Banner
                     type="default"
                     title="No events yet"
-                    description="Start sending events to PostHog to see them here."
+                    description="Start sending events to Flind to see them here."
                 />
             </>
         )
@@ -111,7 +111,7 @@ const EventsTab = ({ client, projectId }: Props): JSX.Element => {
             <Box css={{ width: 'fill', stack: 'y', rowGap: 'medium' }}>
                 <DataTable columns={columns} items={items} />
                 <Box css={{ paddingX: 'medium' }}>
-                    <ExternalLink href={`${posthogBase}/activity`}>View in PostHog</ExternalLink>
+                    <ExternalLink href={`${posthogBase}/activity`}>View in Flind</ExternalLink>
                 </Box>
             </Box>
         </>

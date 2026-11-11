@@ -3,15 +3,15 @@
 A curated marketplace of third-party MCP servers (Linear, Notion, Sentry, ...) that users browse and connect from Settings → MCP servers (behind the `mcp-gateway` feature flag).
 Connected servers are consumed by agent surfaces via the `backend/facade/` package.
 
-Store connections to PostHog MCP use individual tools so each call receives its own policy check. They cannot invoke the `exec` wrapper or expand nested connections. Direct PostHog MCP clients retain CLI mode and access to their own connected tools.
+Store connections to Flind MCP use individual tools so each call receives its own policy check. They cannot invoke the `exec` wrapper or expand nested connections. Direct Flind MCP clients retain CLI mode and access to their own connected tools.
 
 Tool names missing from the cached registry are re-listed before use and refused if the server still does not advertise them. OAuth responses are limited to 1 MiB. Buffered MCP handshakes and calls allow 8 MiB for full tool schemas and results. Both paths enforce a total response deadline. Upstream servers must honor `Accept-Encoding: identity`.
 
-This is unrelated to `products/*/mcp/tools.yaml`, which exposes PostHog's own endpoints as MCP tools.
+This is unrelated to `products/*/mcp/tools.yaml`, which exposes Flind's own endpoints as MCP tools.
 
-## PostHog Desktop
+## Flind Desktop
 
-PostHog Desktop is no longer maintained, so web app changes here do not need a Desktop counterpart.
+Flind Desktop is no longer maintained, so web app changes here do not need a Desktop counterpart.
 Desktop still builds against this backend in CI: it hand-writes its gateway API types in `products/desktop/packages/api-client/src/mcp-gateway.ts` as mirrors of the serializers in `backend/presentation/gateway_views.py`.
 When you change a serializer the gateway UI consumes, keep those mirrors compiling.
 
@@ -31,7 +31,7 @@ The gateway experience has these pages and workflows:
   The server keeps that choice: a teammate who connects later follows it, so a server added with an API key asks each member for their own key instead of starting an OAuth flow.
   Connecting to a registered custom server is not gated by the "members can add custom servers" setting.
   Admins can set its team availability.
-  Every connection is shared with the built-in PostHog agents automatically when the connecting user may manage agent access (admins always, members while team settings allow it).
+  Every connection is shared with the built-in Flind agents automatically when the connecting user may manage agent access (admins always, members while team settings allow it).
   The built-in agents are the support agent, the scout agent, and the workflow agent, which runs the "Create AI task" step of a workflow; a step picks among the servers shared with the whole project, the same way a scout does.
   An agent added to the catalog later inherits the grants its siblings already hold on the team the first time it is synced.
   The add-server form picks how far that share reaches: only the user's own runs (the default), or every agent run in the project.
@@ -55,7 +55,7 @@ The standalone gateway routes under `/mcp-servers` use the same data and page co
 When `MCP_GATEWAY` is off, the top-level scene renders a "not enabled" banner in place, while the detail routes (wrapped in `GatewayRouteGuard`) redirect to the Settings page.
 Server details are available to members, while agent and member details require project admin access — the guard sends non-admins back to the gateway home.
 The flag gates the frontend only: the gateway REST API has no flag check and stays reachable when the flag is off.
-Settings supplies its own navigation shell so the gateway workflows fit the main PostHog application without importing the PostHog Desktop layout.
+Settings supplies its own navigation shell so the gateway workflows fit the main Flind application without importing the Flind Desktop layout.
 
 ## How the catalog works
 
@@ -131,7 +131,7 @@ Templates carry an `icon_domain` (the vendor's brand domain, e.g. `linear.app`).
 The frontend renders them through the authenticated proxy endpoint `GET /api/projects/:team_id/mcp_servers/icon/?domain=<domain>&theme=<light|dark>`.
 The proxy fetches each brand icon from [logo.dev](https://logo.dev) through the egress-gated `CDPIconsService`.
 Logos are transparent retina PNGs matched to the active UI theme instead of logo.dev's default white-tiled JPGs.
-Icon bytes are never stored on PostHog infrastructure because our logo.dev plan does not include a data-caching license.
+Icon bytes are never stored on Flind infrastructure because our logo.dev plan does not include a data-caching license.
 Browsers cache responses via `Cache-Control`, and only the fact of a definitive miss is cached server-side.
 Custom installations without a template derive a best-effort brand domain from their server URL.
 Domains without a logo return 404 and the UI falls back to a generic server glyph.
@@ -147,7 +147,7 @@ To show brand icons on a self-hosted instance, create a logo.dev account, genera
 ## Auth models
 
 - **OAuth with DCR** (most modern remote servers): nothing to provision. Each install discovers OAuth metadata fresh and mints a per-user client via RFC 7591. Template `oauth_credentials`/`oauth_metadata` stay empty.
-- **OAuth with an instance credential source**: a catalog entry can reuse a client already configured for that PostHog environment. The template stores only the source name; installs resolve the current credentials at runtime, so rotation does not create another secret copy. Each source pins its trusted issuer, authorization endpoint, and token endpoint before any secret leaves PostHog.
+- **OAuth with an instance credential source**: a catalog entry can reuse a client already configured for that Flind environment. The template stores only the source name; installs resolve the current credentials at runtime, so rotation does not create another secret copy. Each source pins its trusted issuer, authorization endpoint, and token endpoint before any secret leaves Flind.
 - **OAuth without DCR** ("shared creds"): an operator registers one OAuth app with the vendor and pastes `client_id`/`client_secret` into Django admin (stored encrypted per template). The sync pre-fills `oauth_metadata` from discovery; installs then share the client while each user gets their own tokens. Redirect URI: `{SITE_URL}/api/mcp_store/oauth_redirect/`.
 - **API key**: users supply their own key at install; nothing on the template.
 
@@ -181,11 +181,11 @@ If the catalog entry has `disabled=True`, remove the suspension in a follow-up o
 There are two ways a caller uses a connection, and they differ in who speaks MCP.
 
 - **`POST .../mcp_server_installations/:id/proxy/`** is a transparent JSON-RPC passthrough.
-  The caller is an MCP client that runs its own `initialize` handshake and holds the session — PostHog Desktop points a sandbox at this URL as if it were the vendor's server.
+  The caller is an MCP client that runs its own `initialize` handshake and holds the session — Flind Desktop points a sandbox at this URL as if it were the vendor's server.
   Built-in agents get the equivalent root-level route with a signed token (see `backend/facade/api.py`).
 - **`POST .../mcp_server_installations/:id/call_tool/`** takes `{tool_name, arguments}` and returns one tool result.
-  The caller wants a result, not a transport, so PostHog runs the handshake server-side (`call_upstream_tool` in `backend/tools.py`).
-  This is what the PostHog MCP's `exec` uses, so an external agent (Claude Code, Codex) can call a connected server's tools through its existing PostHog connection instead of authenticating each vendor separately.
+  The caller wants a result, not a transport, so Flind runs the handshake server-side (`call_upstream_tool` in `backend/tools.py`).
+  This is what the Flind MCP's `exec` uses, so an external agent (Claude Code, Codex) can call a connected server's tools through its existing Flind connection instead of authenticating each vendor separately.
   Discovery for that path is `GET .../mcp_server_installations/available_tools/`, which returns every callable tool across the caller's connections in one request, each namespaced by a server slug (`linear__create_issue`).
   When two connections share a display name, both slugs carry a fragment of their installation id (`linear-a1b2c3`), and that ambiguity is decided over every connection the caller can address rather than only the reachable ones — otherwise an expiring token could re-point a tool name at a different connection between refreshes.
   The `exec` side lives in `services/mcp/src/lib/gateway-tools.ts` and is gated on the `mcp-gateway` flag.

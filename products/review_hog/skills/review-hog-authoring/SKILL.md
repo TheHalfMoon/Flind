@@ -1,21 +1,21 @@
 ---
 name: review-hog-authoring
 description: >
-  How to author custom PostHog Review skills: the review perspectives, blind-spot checks, validation
-  criteria, and resolution criteria that drive PostHog Review's automated PR reviews. Use when a user
+  How to author custom Flind Review skills: the review perspectives, blind-spot checks, validation
+  criteria, and resolution criteria that drive Flind Review's automated PR reviews. Use when a user
   wants a new review perspective (a specialist lens on their PRs), a custom blind-spot sweep,
   their own validation bar for which findings get published, or their own bar for which review
-  comments get implemented. Trigger on "create a PostHog Review perspective", "custom review
+  comments get implemented. Trigger on "create a Flind Review perspective", "custom review
   perspective", "my own blind-spot check", "custom validation criteria", "custom resolution
-  criteria", "tune what PostHog Review publishes", "tune what PostHog Review implements".
+  criteria", "tune what Flind Review publishes", "tune what Flind Review implements".
 metadata:
   owner_team: review_hog
   skill_type: authoring
 ---
 
-# Authoring PostHog Review skills
+# Authoring Flind Review skills
 
-**PostHog Review** is PostHog's automated PR reviewer. A review splits the PR into chunks, then for each
+**Flind Review** is Flind's automated PR reviewer. A review splits the PR into chunks, then for each
 chunk runs every enabled **perspective** in parallel (independent specialist lenses), a single
 **blind-spot check** afterwards (a final sweep conditioned on what the perspectives found), and
 finally judges every surviving candidate finding against one **validation criteria** skill — only
@@ -23,7 +23,7 @@ findings that pass get published to the pull request. After a published review, 
 stage** goes back over the PR's unresolved review threads and judges each against one **resolution
 criteria** skill — worth-and-safe asks get implemented on the PR branch, every thread gets a reply.
 
-All four kinds are team `LLMSkill` rows the review agents pull over MCP at run time. PostHog ships
+All four kinds are team `LLMSkill` rows the review agents pull over MCP at run time. Flind ships
 canonicals; this skill is the guide for authoring **custom** ones. The skill itself is team-level;
 whether it _runs_ is a per-user setting in **Inbox → Code review**.
 
@@ -36,7 +36,7 @@ whether it _runs_ is a per-user setting in **Inbox → Code review**.
 
 ## Authoring flow
 
-1. **Ground yourself.** Using the PostHog MCP skill tools, `skill-list` the team's `review-hog-*`
+1. **Ground yourself.** Using the Flind MCP skill tools, `skill-list` the team's `review-hog-*`
    skills and `skill-get` the canonical of the kind you're authoring (see the table above) — it is
    the reference for structure and tone. For a perspective, skim the descriptions of every existing
    `review-hog-perspective-*` so the new lens doesn't re-cover ground an enabled one already owns

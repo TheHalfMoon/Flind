@@ -71,14 +71,14 @@ PROSE_SPEC = EventKindSpec(
 
 class TestSpecVocabularyRendering:
     def test_slack_renders_intro_lines_and_additional_actions(self) -> None:
-        blocks = slack_blocks(PROSE_SPEC, context_elements=("Project: PostHog", "Alert ID: alert-1"))
+        blocks = slack_blocks(PROSE_SPEC, context_elements=("Project: Flind", "Alert ID: alert-1"))
 
         section = next(b for b in blocks if b["type"] == "section")
         assert "Pageviews is 42, breaching 30\nSignups is 7, breaching 5" in section["text"]["text"]
 
         context = next(b for b in blocks if b["type"] == "context")
         assert context["elements"] == [
-            {"type": "mrkdwn", "text": "Project: PostHog"},
+            {"type": "mrkdwn", "text": "Project: Flind"},
             {"type": "mrkdwn", "text": "Alert ID: alert-1"},
         ]
 

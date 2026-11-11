@@ -60,7 +60,7 @@ class DixaSource(ResumableSource[DixaSourceConfig, DixaResumeConfig]):
             name=ExternalDataSourceType.DIXA,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Dixa",
-            caption="""Enter your Dixa API token to pull your Dixa customer service data into the PostHog Data warehouse.
+            caption="""Enter your Dixa API token to pull your Dixa customer service data into the Flind Data warehouse.
 
 An admin can generate an API token in Dixa under Settings > Integrations > API Tokens. The same token covers both the main API (agents, queues, tags, end users) and the Exports API (conversations). Note that conversation exports are rate limited to 10 requests per minute, so large historical backfills take a while.""",
             iconPath="/static/services/dixa.png",

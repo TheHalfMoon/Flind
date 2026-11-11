@@ -19,7 +19,7 @@ const hostOf = (url: string): string | null => {
 
 /**
  * Appends each UTM tag the link does not already carry. Returns null when the link stays as is:
- * not an absolute http(s) URL, a link to PostHog itself (unsubscribe and preference pages), an
+ * not an absolute http(s) URL, a link to Flind itself (unsubscribe and preference pages), an
  * unrendered template tag, or a link that already has every tag.
  */
 const addUtmTagsToUrl = (url: string, tags: UtmTags, siteHost: string | null): string | null => {

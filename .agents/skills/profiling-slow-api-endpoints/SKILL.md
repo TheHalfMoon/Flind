@@ -1,7 +1,7 @@
 ---
 name: profiling-slow-api-endpoints
 description: >
-  Profiles slow PostHog API endpoints when the main cost is in Postgres or
+  Profiles slow Flind API endpoints when the main cost is in Postgres or
   Python. Use when a screen, picker, or list is slow; a Django endpoint has high
   tail latency; a query plan changes with tenant size; or a proposed database
   fix needs production evidence. Covers APM traces, safe production EXPLAIN,
@@ -12,7 +12,7 @@ description: >
 
 # Profiling slow API endpoints
 
-Use this skill when a PostHog API request spends most of its time in Postgres or Python.
+Use this skill when a Flind API request spends most of its time in Postgres or Python.
 For ClickHouse and HogQL, use
 [`optimizing-clickhouse-and-hogql-queries`](../optimizing-clickhouse-and-hogql-queries/SKILL.md).
 

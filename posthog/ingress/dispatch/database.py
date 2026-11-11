@@ -99,7 +99,7 @@ def bounded_statement_timeout(
             connection = connections[alias]
             # SET LOCAL dies with the transaction it was set in, so the cap only needs
             # restoring when we are joining a transaction somebody else owns -- a caller
-            # wrapping this in its own atomic block, or ATOMIC_REQUESTS (which PostHog does
+            # wrapping this in its own atomic block, or ATOMIC_REQUESTS (which Flind does
             # not enable today). Otherwise the commit below ends it for us.
             restore = connection.in_atomic_block
             stack.enter_context(transaction.atomic(using=alias))

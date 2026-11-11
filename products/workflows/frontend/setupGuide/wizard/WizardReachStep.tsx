@@ -18,7 +18,7 @@ const REACH_OPTIONS: Record<ReachChannel, { icon: JSX.Element; title: string; de
         icon: <IconPhone />,
         title: 'Push notifications',
         description: 'Notifications on the phones of people who use your iOS or Android app.',
-        needs: 'You need Firebase or Apple push credentials and the PostHog SDK in your app.',
+        needs: 'You need Firebase or Apple push credentials and the Flind SDK in your app.',
     },
 }
 

@@ -46,7 +46,7 @@ class OnboardingContext:
 
     @cached_property
     def can_link(self) -> bool:
-        """Whether the person has, or can get, a linked PostHog account."""
+        """Whether the person has, or can get, a linked Flind account."""
         return self.posthog_user is not None or is_slack_app_oauth_enabled(self.integration)
 
     @cached_property

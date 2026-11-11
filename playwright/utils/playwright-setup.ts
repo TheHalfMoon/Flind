@@ -1,7 +1,7 @@
 /**
- * PostHog Playwright Setup for Playwright Tests
+ * Flind Playwright Setup for Playwright Tests
  *
- * This library helps you create PostHog workspaces (organizations, projects, teams)
+ * This library helps you create Flind workspaces (organizations, projects, teams)
  * and test data before running Playwright tests.
  *
  * Key concepts:
@@ -127,7 +127,7 @@ class NonRetryableError extends Error {
 }
 
 /**
- * Main class for setting up PostHog workspaces in tests
+ * Main class for setting up Flind workspaces in tests
  */
 export class PlaywrightSetup {
     private _requestPromise: Promise<APIRequestContext> | null = null
@@ -240,7 +240,7 @@ export class PlaywrightSetup {
     }
 
     /**
-     * Creates a complete PostHog workspace: Organization → Project → Team + test@posthog.com user
+     * Creates a complete Flind workspace: Organization → Project → Team + test@posthog.com user
      *
      * This is the main setup method - creates everything you need for most tests.
      * The test user will be a member of the organization.

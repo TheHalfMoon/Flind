@@ -267,7 +267,7 @@ function HeatmapsBrowserIntro(): JSX.Element {
                         </p>
                         <p>
                             You can also view heatmaps for any page on your website by entering the URL above. As long
-                            as the page has the PostHog Toolbar installed, and can be loaded in an iframe, you can view
+                            as the page has the Flind Toolbar installed, and can be loaded in an iframe, you can view
                             heatmaps for it.
                         </p>
                     </div>

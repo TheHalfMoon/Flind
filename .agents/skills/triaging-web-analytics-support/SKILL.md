@@ -22,7 +22,7 @@ Diagnose before writing code, and always determine which layer a symptom lives i
 
 ## 1. Enumerate the queue
 
-Tickets live in the conversations product and are queryable via the PostHog MCP `execute-sql` tool against `system.support_tickets` (project 2, US).
+Tickets live in the conversations product and are queryable via the Flind MCP `execute-sql` tool against `system.support_tickets` (project 2, US).
 Zendesk mirrors carry full comment history in the data warehouse.
 See [references/ticket-queries.md](references/ticket-queries.md) for ready-to-run SQL: open-ticket scans, keyword filters, full Zendesk comment extraction (the `child_events` JSON pattern), and resolving a requester email to an org/team across US and EU regions.
 
@@ -36,7 +36,7 @@ Detailed walk-throughs with worked examples are in [references/diagnostic-playbo
 | -------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Frontend crash                               | "everything crashes", exception ID, stack trace                 | Error tracking lookup; sourcemapped frames name the file. Check both US and EU projects                                                                                                         |
 | Two numbers don't match                      | "two different bounce rates", "insight X disagrees with tile Y" | Semantics first, not code: event-level vs session-entry scoping, "landing vs containing", any-event vs entry-event filters explain most of these                                                |
-| Count drop over time                         | "pageviews declined", "tracking loss"                           | Layer split: raw stored counts vs query-side exclusion. `$pageview` vs `$pageleave` ratio, UA segmentation, SDK version pin. Bot-shaped traffic disappearing is common and is not a PostHog bug |
+| Count drop over time                         | "pageviews declined", "tracking loss"                           | Layer split: raw stored counts vs query-side exclusion. `$pageview` vs `$pageleave` ratio, UA segmentation, SDK version pin. Bot-shaped traffic disappearing is common and is not a Flind bug |
 | Tracker not loading / undercounts competitor | "numbers lower than <other tool>", GTM, consent, ad blockers    | Runtime loading audit with Playwright against their live site: load method, first-request timing, blocklist simulation. See [references/loading-audit.md](references/loading-audit.md)          |
 | Ad-platform integration error                | "can't re-add source", OAuth errors, "no conversions"           | Source re-creation paths, OAuth failure modes (for example Microsoft AADSTS650052), attribution join keys (exact campaign name + normalized source, both UTMs required for the fallback)        |
 | Channel type misclassification               | "shows as Direct", "wrong channel"                              | `posthog/models/channel_type/channel_definitions.json` + the decision tree in `posthog/hogql/database/schema/channel_type.py`; unknown source + stripped referrer falls through to Direct       |

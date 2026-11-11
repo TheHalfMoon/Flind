@@ -80,7 +80,7 @@ const EVENT_ICON_CASES: {
         definition: makeEventDefinition({ name: '$autocapture' }),
     },
     {
-        label: '$identify (core PostHog event)',
+        label: '$identify (core Flind event)',
         expectedIcon: 'IconLogomark',
         definition: makeEventDefinition({ name: '$identify' }),
     },

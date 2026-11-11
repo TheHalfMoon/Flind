@@ -1,7 +1,7 @@
 ---
 name: generating-clickhouse-query-performance-reports
 description: >
-  Produce and structure slow-query performance reports for PostHog's production
+  Produce and structure slow-query performance reports for Flind's production
   ClickHouse (US and EU). Use when asked for a slow query report, query performance
   analysis over the last N days, per-team query cost, OOM or timeout investigation,
   cluster cost/memory regressions, or materialization candidates. Covers the modern
@@ -15,7 +15,7 @@ description: >
 
 This skill is the _methodology_ for investigating slow ClickHouse queries and writing up a
 performance report. It pairs with [`querying-production-databases`](../querying-production-databases/SKILL.md),
-which is the _mechanism_ (the PostHog MCP's direct-query connections, with `sendRawQuery`). Run every
+which is the _mechanism_ (the Flind MCP's direct-query connections, with `sendRawQuery`). Run every
 query in this skill through that one. Use [`querying-production-databases-via-metabase`](../querying-production-databases-via-metabase/SKILL.md)
 only for the shareable Metabase links in a report.
 
@@ -163,7 +163,7 @@ mentioned. Diff against history only after the independent pass is done.
 ## Grounding recommendations in code
 
 A recommendation like "audit pipeline X" or "materialize property Y" is far more useful when it points at
-the actual code. For each recommendation that maps to a concrete place in the PostHog codebase, **spawn a
+the actual code. For each recommendation that maps to a concrete place in the Flind codebase, **spawn a
 background research agent** (the `Agent` tool, `run_in_background: true`, `subagent_type: general-purpose`
 or `Explore`) to read the source and return: how the relevant code works today, the specific file /
 function to change, any constraints, and whether a better mechanism already exists. Spawn **one agent per

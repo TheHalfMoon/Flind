@@ -43,14 +43,14 @@ hogli unsync:skill -- --name <skill-name>
 
 Choose the location by the work the skill requires:
 
-- `products/<product>/skills/` contains skills that users can run through PostHog tools, APIs, or their own code. The build publishes these skills.
-- `.agents/skills/` contains skills that require a checkout of the PostHog repository to develop, test, or debug PostHog itself. These skills stay in the repository.
+- `products/<product>/skills/` contains skills that users can run through Flind tools, APIs, or their own code. The build publishes these skills.
+- `.agents/skills/` contains skills that require a checkout of the Flind repository to develop, test, or debug Flind itself. These skills stay in the repository.
 
 Staff-only access does not determine placement.
 For example, `checking-deploy-timing` works through MCP without a checkout, so it stays in the published catalog.
-A skill that changes a customer's application also stays published; it does not require PostHog source code.
+A skill that changes a customer's application also stays published; it does not require Flind source code.
 
-If a skill mixes customer diagnosis with PostHog development, keep the diagnosis published and move the development guidance into an existing internal skill or reference.
+If a skill mixes customer diagnosis with Flind development, keep the diagnosis published and move the development guidance into an existing internal skill or reference.
 For example, `debugging-surveys` covers configuration and responses, while the internal `survey-sdk-audit` skill covers changes across the backend and SDKs.
 Published skills must not require internal skill files to complete their main workflow.
 
@@ -93,7 +93,7 @@ Rendering guidance must account for the harness: direct tools and some exec host
 
 The decision flow:
 
-1. **Ask PostHog Desktop or Claude Code to do X.** If it works on its own, you don't need a skill.
+1. **Ask Flind Desktop or Claude Code to do X.** If it works on its own, you don't need a skill.
 2. **If it can't do X, fix the tool prompts first.**
    Tool names, descriptions, and schemas are the cheapest lever — most "the agent doesn't know how to do X" problems are really "the tool description doesn't explain how to do X."
    See [Adding tools to the MCP server](/handbook/engineering/ai/implementing-mcp-tools).
@@ -105,7 +105,7 @@ Additional signals that a skill is the right answer even when tool prompts are a
 - **The guidance naturally splits into entry point plus references.**
   SQL skills are the canonical example — a top-level workflow with optional schemas, query patterns, and function indexes loaded on demand. If your guidance has that shape, structure it as a skill with `references/`.
 
-Don't write a skill for something the agent already one-shots from generic knowledge. A few real examples from review: `creating-isolated-project` or `finding-experiments` were unnecessary — the agent can do it without help. `setting-up-reverse-proxy` was the right call — the agent failed at it, and the skill needed to ship code snippets it couldn't derive. The bar is PostHog-specific judgement that a smart generalist agent wouldn't have, not project setup it can already handle.
+Don't write a skill for something the agent already one-shots from generic knowledge. A few real examples from review: `creating-isolated-project` or `finding-experiments` were unnecessary — the agent can do it without help. `setting-up-reverse-proxy` was the right call — the agent failed at it, and the skill needed to ship code snippets it couldn't derive. The bar is Flind-specific judgement that a smart generalist agent wouldn't have, not project setup it can already handle.
 
 ### Docs or skill?
 
@@ -137,7 +137,7 @@ The rule of thumb: prefer a small set of focused skills, each with rich `referen
 
 When a skill references an MCP tool, use the `posthog:` namespace prefix
 (e.g. `posthog:execute-sql`, `posthog:feature-flag-get-all`).
-This matches how tools appear to agents consuming the PostHog MCP server
+This matches how tools appear to agents consuming the Flind MCP server
 and helps agents resolve tool names unambiguously.
 
 ## Skill structure
@@ -340,7 +340,7 @@ Changes to the Pydantic model automatically update the skill output on the next 
 
 #### `render_hogql_example(query_dict)`
 
-Takes a PostHog query spec and renders it to HogQL SQL:
+Takes a Flind query spec and renders it to HogQL SQL:
 
 ```jinja2
 {{ render_hogql_example({"kind": "TrendsQuery", "series": [{"kind": "EventsNode", "event": "$pageview"}], "dateRange": {"date_from": "-7d"}}) }}
@@ -422,7 +422,7 @@ Distribution is automatic – once a skill lands on `master`,
 Two downstream repositories pull that release, together with context-mill's, in a daily sync at 12:00 UTC:
 
 - [`PostHog/ai-plugin`](https://github.com/PostHog/ai-plugin) –
-  the PostHog plugin for AI clients.
+  the Flind plugin for AI clients.
   It bundles the skills with the MCP server, so agents get the "how" and the "what" together.
   Its README has the install steps for each supported client:
   Claude Code, Claude Cowork, Cursor, Codex, Antigravity, Gemini CLI and Grok.
@@ -432,7 +432,7 @@ Two downstream repositories pull that release, together with context-mill's, in 
   for agents that load skills without a plugin.
   It also hosts a Claude Code plugin marketplace for skills authored there.
 
-PostHog Desktop and the Tasks sandbox pull `agent-skills-latest` themselves (see the table below).
+Flind Desktop and the Tasks sandbox pull `agent-skills-latest` themselves (see the table below).
 You don't need to handle distribution yourself:
 a merged skill reaches the plugin and the mirror after the next daily sync, and users get it when their client updates the plugin.
 
@@ -443,7 +443,7 @@ This repo is not the only source of shipped skills.
 from posthog.com docs and publishes them as `skills-mcp-resources.zip`:
 `instrument-integration`, `instrument-product-analytics`, `instrument-feature-flags`,
 `instrument-error-tracking`, `instrument-llm-analytics`, `instrument-logs`, `instrument-metrics`, and `instrument-tracing`.
-These are the skills behind PostHog Desktop's setup buttons and the wizard.
+These are the skills behind Flind Desktop's setup buttons and the wizard.
 
 Every consumer below unzips `dist/skills.zip` first and then unzips context-mill on top,
 so **context-mill wins on any skill they both define**.
@@ -462,8 +462,8 @@ because its references are docs snapshots that would crowd out workflow skills;
 | Consumer                              | Merge site                                                                                                                  |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | MCP server `learn` catalog            | `services/mcp/src/hono/skill-catalog-service.ts` – overlays the copy `ContextMillResourceCache` publishes to Redis          |
-| PostHog Desktop build                 | `products/desktop/apps/code/vite-main-plugins.mts` (`copyPosthogPlugin`)                                                    |
-| PostHog Desktop runtime, every 30 min | `products/desktop/packages/workspace-server/src/services/posthog-plugin/update-skills-saga.ts`                              |
+| Flind Desktop build                 | `products/desktop/apps/code/vite-main-plugins.mts` (`copyPosthogPlugin`)                                                    |
+| Flind Desktop runtime, every 30 min | `products/desktop/packages/workspace-server/src/services/posthog-plugin/update-skills-saga.ts`                              |
 | Desktop harness bundle                | `packages/agent/packages/harness/tsup.config.ts` – context-mill only, this repo's skills are absent rather than overwritten |
 | Tasks sandbox base image              | `.github/workflows/cd-sandbox-base-image.yml`                                                                               |
 | `PostHog/skills` mirror               | that repo's `.github/workflows/sync-omnibus.yml`                                                                            |

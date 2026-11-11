@@ -3,7 +3,7 @@ BigQuery destination wiring for batch_exports.
 
 Re-exports the BigQuery client that the warehouse_sources BigQuery writer reuses, and the
 service account helpers that let the BigQuery import source impersonate a customer's service
-account through the same PostHog identity that BigQuery batch exports use.
+account through the same Flind identity that BigQuery batch exports use.
 
 The import source resolves credentials on web requests, so it imports this module inside the
 function that needs it.

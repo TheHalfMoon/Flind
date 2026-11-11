@@ -1,4 +1,4 @@
-"""Calls to the PostHog Trino functions that reproduce ClickHouse's JSONExtractKeysAndValues."""
+"""Calls to the Flind Trino functions that reproduce ClickHouse's JSONExtractKeysAndValues."""
 
 import json
 

@@ -227,7 +227,7 @@ describe('utils', () => {
             expect(formatPrompt('PREFIX {v} SUFFIX', { v: "$'" })).toBe("PREFIX $' SUFFIX")
         })
 
-        it('does not splice the template prefix when a value contains $` (realistic PostHog case)', () => {
+        it('does not splice the template prefix when a value contains $` (realistic Flind case)', () => {
             const template = 'Header text before {guidelines} and trailing bit'
             const guidelinesValue = 'Events start with `$` (e.g., `$pageview`)'
             expect(formatPrompt(template, { guidelines: guidelinesValue })).toBe(

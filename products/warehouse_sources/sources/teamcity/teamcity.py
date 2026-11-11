@@ -121,11 +121,11 @@ def _check_host_safe(host: str, team_id: int) -> None:
 
     On Cloud the Bearer token crosses the public internet, so plain http would expose it to
     on-path capture — require https there (mirrors `custom/source.py:_check_url`). Self-hosted
-    PostHog may sit next to an internal TeamCity server over http, so http stays allowed.
+    Flind may sit next to an internal TeamCity server over http, so http stays allowed.
     """
     parsed = urlparse(normalize_host(host))
     if is_cloud() and parsed.scheme != "https":
-        raise ValueError(f"Invalid TeamCity server URL: {host!r} must use https:// on PostHog Cloud")
+        raise ValueError(f"Invalid TeamCity server URL: {host!r} must use https:// on Flind Cloud")
     is_safe, error = _is_host_safe(parsed.hostname or "", team_id)
     if not is_safe:
         raise ValueError(f"Invalid TeamCity server URL: {error}")

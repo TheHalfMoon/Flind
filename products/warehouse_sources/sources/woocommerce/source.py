@@ -47,14 +47,14 @@ if TYPE_CHECKING:
     from products.warehouse_sources.sources.sdk import HogFunctionTemplateDC
 
 WEBHOOK_SETUP_CAPTION = (
-    "PostHog registers a webhook on your store for each of the product, order, coupon and customer "
+    "Flind registers a webhook on your store for each of the product, order, coupon and customer "
     "created and updated topics, using the API key above. The key needs **Read/Write** permission "
     "for this to work.\n\n"
     "**Manual setup** (only needed if automatic registration failed):\n\n"
     "1. Go to **WooCommerce > Settings > Advanced > Webhooks** in your store admin\n"
     "2. Add one webhook per topic you want, pointing its delivery URL at the URL shown below\n"
     "3. Give every one of them the same secret, and paste that secret into the field below so "
-    "PostHog can verify deliveries"
+    "Flind can verify deliveries"
 )
 
 
@@ -272,7 +272,7 @@ class WooCommerceSource(
             label="WooCommerce",
             caption=(
                 "Enter your WooCommerce store URL and REST API consumer key/secret to pull your store data "
-                "into the PostHog Data warehouse. Create keys under **WooCommerce → Settings → Advanced → "
+                "into the Flind Data warehouse. Create keys under **WooCommerce → Settings → Advanced → "
                 "REST API** with at least **Read** permission."
             ),
             iconPath="/static/services/woocommerce.png",
@@ -318,7 +318,7 @@ class WooCommerceSource(
                         required=True,
                         placeholder="",
                         caption=(
-                            "The secret set on your WooCommerce webhooks. PostHog fills this in "
+                            "The secret set on your WooCommerce webhooks. Flind fills this in "
                             "automatically when it registers them for you, so you only need it for "
                             "manual setup. It verifies the X-WC-Webhook-Signature header on every "
                             "delivery."

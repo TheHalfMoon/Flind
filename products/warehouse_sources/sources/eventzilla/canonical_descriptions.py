@@ -42,7 +42,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://developer.eventzilla.net/docs/",
         "columns": {
             "id": "Unique identifier for the attendee.",
-            "event_id": "Identifier of the event this attendee belongs to (added by PostHog during fan-out).",
+            "event_id": "Identifier of the event this attendee belongs to (added by Flind during fan-out).",
             "bar_code": "Barcode encoded on the attendee's ticket.",
             "transaction_ref": "Order reference of the transaction that created this attendee.",
             "transaction_date": "Timestamp the purchasing transaction was made.",
@@ -74,7 +74,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://developer.eventzilla.net/docs/",
         "columns": {
             "id": "Unique identifier for the ticket type.",
-            "event_id": "Identifier of the event this ticket type belongs to (added by PostHog during fan-out).",
+            "event_id": "Identifier of the event this ticket type belongs to (added by Flind during fan-out).",
             "sales_start_date": "Date ticket sales start.",
             "sales_end_date": "Date ticket sales end.",
         },

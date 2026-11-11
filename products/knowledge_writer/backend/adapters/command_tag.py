@@ -8,7 +8,7 @@ from ..facade.enums import DocsChangeKind, DocsRequestSource
 class CommandTagAdapter:
     source: ClassVar[DocsRequestSource] = DocsRequestSource.COMMAND_TAG
     instructions: ClassVar[str] = (
-        "A PostHog teammate asked for this docs change with the docs command, so the change is wanted. "
+        "A Flind teammate asked for this docs change with the docs command, so the change is wanted. "
         "Read the linked pull request to learn what shipped, then change the docs pages it affects."
     )
 

@@ -61,7 +61,7 @@ class ChartHopSource(ResumableSource[ChartHopSourceConfig, ChartHopResumeConfig]
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="ChartHop",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your ChartHop API token to pull your ChartHop people, org chart, and compensation-change data into the PostHog Data warehouse.
+            caption="""Enter your ChartHop API token to pull your ChartHop people, org chart, and compensation-change data into the Flind Data warehouse.
 
 You can generate an API token in ChartHop under **Settings → API**. The token's access level determines which data the source can read.
 

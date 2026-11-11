@@ -25,7 +25,7 @@ from .serializers import WebMCPExecRequestSerializer, WebMCPExecResultSerializer
 
 class McpServerUnavailable(APIException):
     status_code = status.HTTP_502_BAD_GATEWAY
-    default_detail = "The PostHog MCP server could not complete the request."
+    default_detail = "The Flind MCP server could not complete the request."
     default_code = "mcp_server_unavailable"
 
 
@@ -41,7 +41,7 @@ class WebMCPViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
     @validated_request(
         request_serializer=WebMCPExecRequestSerializer,
         responses={200: OpenApiResponse(response=WebMCPExecResultSerializer)},
-        summary="Run an exec command on the PostHog MCP server",
+        summary="Run an exec command on the Flind MCP server",
     )
     @action(detail=False, methods=["post"], url_path="exec")
     def exec(self, request: Request, **kwargs) -> Response:

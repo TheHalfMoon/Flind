@@ -64,7 +64,7 @@ class TerminalAIModel(StrEnum):
 class TerminalAIRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    model: TerminalAIModel = Field(description="Model served by the PostHog provider.")
+    model: TerminalAIModel = Field(description="Model served by the Flind provider.")
     messages: list[TerminalAIMessage] = Field(
         min_length=1, max_length=1000, description="Conversation and tool results."
     )
@@ -78,7 +78,7 @@ class TerminalAIRequest(BaseModel):
 class TerminalAIUnavailable(APIException):
     status_code = 503
     default_detail = (
-        "PostHog AI is not configured for this terminal. Ask your administrator to configure the AI gateway."
+        "Flind AI is not configured for this terminal. Ask your administrator to configure the AI gateway."
     )
 
 
@@ -91,14 +91,14 @@ def _stream_generation(url: str, headers: dict[str, str], body: str) -> Iterator
                     return
                 message = {
                     400: "The model rejected the conversation. Start a new pi session or shorten the prompt.",
-                    402: "PostHog AI has reached its spending limit. Check your billing settings.",
-                    429: "PostHog AI is busy. Wait a moment and try again.",
-                }.get(response.status_code, "PostHog AI could not complete the request. Try again in a moment.")
+                    402: "Flind AI has reached its spending limit. Check your billing settings.",
+                    429: "Flind AI is busy. Wait a moment and try again.",
+                }.get(response.status_code, "Flind AI could not complete the request. Try again in a moment.")
                 logger.warning("terminal_ai_gateway_request_failed", status=response.status_code)
     except httpx.HTTPError as exc:
         # The exception class, not its text: an httpx message can carry the gateway URL.
         logger.warning("terminal_ai_gateway_transport_failed", error=type(exc).__name__)
-        message = "The connection to PostHog AI failed. Try again in a moment."
+        message = "The connection to Flind AI failed. Try again in a moment."
     error = {"type": "error", "error": {"type": "api_error", "message": message}}
     yield f"event: error\ndata: {json.dumps(error)}\n\n".encode()
 
@@ -113,17 +113,17 @@ class TerminalAIViewSet(TeamAndOrgViewSetMixin, GenericViewSet):
         request=TerminalAIRequest,
         responses={(200, "text/event-stream"): OpenApiTypes.STR},
         description=(
-            "Stream a terminal model response through PostHog AI. Requires organization approval for AI data processing. "
+            "Stream a terminal model response through Flind AI. Requires organization approval for AI data processing. "
             "SDK consumers must use getTerminalAiCreateUrl() with streaming fetch. "
             "The generated JSON client buffers the response and cannot parse SSE."
         ),
     )
     def create(self, request: Request, **kwargs: object) -> HttpResponse | StreamingHttpResponse:
         if not isinstance(request.successful_authenticator, SessionAuthentication):
-            raise PermissionDenied("Sign in to use PostHog AI in the terminal.")
+            raise PermissionDenied("Sign in to use Flind AI in the terminal.")
         if self.team.organization.is_ai_data_processing_approved is not True:
             raise PermissionDenied(
-                "Enable AI data processing in organization settings to use PostHog AI in the terminal."
+                "Enable AI data processing in organization settings to use Flind AI in the terminal."
             )
         user = cast(User, request.user)
         if not feature_enabled_or_false(
@@ -148,7 +148,7 @@ class TerminalAIViewSet(TeamAndOrgViewSetMixin, GenericViewSet):
                 raise RequestValidationError("The conversation exceeds 1 MiB. Start a new pi session.")
             body = TerminalAIRequest.model_validate(request.data).model_dump_json(exclude_none=True)
         except (ValidationError, UnicodeEncodeError, PydanticSerializationError):
-            raise RequestValidationError("Invalid model request. Use pi's PostHog provider.")
+            raise RequestValidationError("Invalid model request. Use pi's Flind provider.")
         # Keep the gateway credential server-side; derive attribution and policy headers from the authenticated session.
         headers = (
             ai_gateway_headers(

@@ -113,7 +113,7 @@ class CommunitySkillSerializer(serializers.ModelSerializer):
     )
     trust_tier = serializers.ChoiceField(
         choices=CommunitySkillTrustTier.choices,
-        help_text="Moderation tier: 'official' (PostHog-authored), 'verified' (reviewed), or 'community'.",
+        help_text="Moderation tier: 'official' (Flind-authored), 'verified' (reviewed), or 'community'.",
     )
     kind = serializers.ChoiceField(
         choices=CommunitySkillKind.choices,

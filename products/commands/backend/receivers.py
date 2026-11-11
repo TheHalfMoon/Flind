@@ -1,7 +1,7 @@
 """Sends a command's result to where the command came from, once the work it started ends.
 
 The products report the end through their own hook registries, because they cannot import this
-product: Stamphog and PostHog Review call a registered callback, and a QA run's save fires the task
+product: Stamphog and Flind Review call a registered callback, and a QA run's save fires the task
 run signal. Each callback finds the follow-up the handler saved and queues the message, so the
 product's worker never waits on Slack.
 

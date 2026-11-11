@@ -64,7 +64,7 @@ export function EventConfiguration({
     return (
         <SceneSection
             title="Event Configuration"
-            description="PostHog can display revenue data in our Revenue Analytics product from any event. You can configure as many events as you want, and specify the revenue property and currency for each event individually."
+            description="Flind can display revenue data in our Revenue Analytics product from any event. You can configure as many events as you want, and specify the revenue property and currency for each event individually."
         >
             <div className="flex flex-col mb-1 items-end w-full">
                 <div className="flex flex-row w-full gap-1 justify-end my-2">

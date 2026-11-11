@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                     ("ask", "Ask before picking it up"),
                     ("never", "Never pick it up"),
                 ],
-                help_text="What PostHog does with this user's top-level channel questions that do not tag the app.",
+                help_text="What Flind does with this user's top-level channel questions that do not tag the app.",
                 max_length=16,
                 null=True,
             ),

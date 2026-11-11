@@ -15,7 +15,7 @@ export const getGoSteps = (ctx: OnboardingComponentsContext): StepDefinition[] =
             <>
                 <Markdown>
                     {dedent`
-                        Use \`NewDefaultException\` when you have an error value and want PostHog to group it in Error tracking.
+                        Use \`NewDefaultException\` when you have an error value and want Flind to group it in Error tracking.
                     `}
                 </Markdown>
                 <CodeBlock
@@ -78,9 +78,9 @@ export const getGoSteps = (ctx: OnboardingComponentsContext): StepDefinition[] =
         content: (
             <Markdown>
                 {dedent`
-                    Confirm exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Confirm exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),

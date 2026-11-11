@@ -1,6 +1,6 @@
-"""How warehouse sources read PostHog's own credentials.
+"""How warehouse sources read Flind's own credentials.
 
-These are the OAuth app client ids/secrets, developer tokens, and API keys PostHog owns — the
+These are the OAuth app client ids/secrets, developer tokens, and API keys Flind owns — the
 ones a source presents as *itself*, not the per-team credentials a customer connected. Today a
 source reads them straight off Django settings (`settings.GOOGLE_ADS_DEVELOPER_TOKEN`), which
 means rotating one is a charts PR and a restart of everything that mounts it.
@@ -73,7 +73,7 @@ _client = credentials_service_client.CredentialsServiceClient(session=_session)
 
 
 def get_secret(key: str) -> str:
-    """One PostHog-owned credential, by the name it has in the service and in settings."""
+    """One Flind-owned credential, by the name it has in the service and in settings."""
     return get_or_settings(key, CALLER, client=_client)
 
 

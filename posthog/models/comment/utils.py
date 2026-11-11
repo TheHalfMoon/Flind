@@ -120,7 +120,7 @@ def extract_plain_text_from_rich_content(rich_content: Optional[dict]) -> str:
 
 # Mention notifications and events outlive the access check made when they are sent, and the notifications
 # API and CDP destinations do not recheck the observation. So they carry this text instead of the note.
-OBSERVATION_NOTE_PLACEHOLDER = "A note on a Replay Vision observation. Open it in PostHog to read it."
+OBSERVATION_NOTE_PLACEHOLDER = "A note on a Replay Vision observation. Open it in Flind to read it."
 
 
 def _mention_fanout_content(comment: "Comment") -> str | None:

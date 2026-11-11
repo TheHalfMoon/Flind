@@ -1,4 +1,4 @@
-# PostHog ClickHouse setup quirks
+# Flind ClickHouse setup quirks
 
 ## ClickHouse cluster architecture
 

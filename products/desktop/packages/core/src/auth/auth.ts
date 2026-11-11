@@ -320,7 +320,7 @@ export class AuthService extends TypedEventEmitter<AuthServiceEvents> {
       )
     ) {
       throw new Error(
-        `Refusing to send PostHog credentials to ${safeOrigin(url)}`,
+        `Refusing to send Flind credentials to ${safeOrigin(url)}`,
       );
     }
     let response = await this.executeAuthenticatedFetch(

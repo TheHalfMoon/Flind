@@ -720,7 +720,7 @@ data_warehouse_sources: PostgresTable = PostgresTable(
         "access_method": StringDatabaseField(
             name="access_method",
             description="'direct' for a live-query connection (nothing is synced; its tables exist only "
-            "when queried through the connection), or 'warehouse' for a source synced into PostHog.",
+            "when queried through the connection), or 'warehouse' for a source synced into Flind.",
         ),
         "_direct_query_enabled": BooleanDatabaseField(name="direct_query_enabled", hidden=True),
         "direct_query_enabled": ExpressionField(
@@ -1691,7 +1691,7 @@ revenue_analytics_config: PostgresTable = PostgresTable(
 teams: PostgresTable = PostgresTable(
     name="teams",
     postgres_table_name="posthog_team",
-    description="Projects/teams (a PostHog 'team' is a project); typically just the caller's own team.",
+    description="Projects/teams (a Flind 'team' is a project); typically just the caller's own team.",
     fields={
         "id": IntegerDatabaseField(name="id", description="Team/project id."),
         "team_id": IntegerDatabaseField(name="id", description="Alias of id for consistency with other tables."),
@@ -1731,7 +1731,7 @@ data_deletion_requests: PostgresTable = PostgresTable(
         "created_by_staff": BooleanDatabaseField(
             name="created_by_staff",
             nullable=True,
-            description="Whether the submitting user was a PostHog staff member.",
+            description="Whether the submitting user was a Flind staff member.",
         ),
         "created_at": DateTimeDatabaseField(name="created_at", description="When the request was created."),
         "updated_at": DateTimeDatabaseField(name="updated_at", description="When the request was last updated."),

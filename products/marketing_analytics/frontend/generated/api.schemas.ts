@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -58,7 +58,7 @@ export interface ConversionGoalSummaryApi {
     conversion_goal_id: string
     /** Display name of the conversion goal */
     name: string
-    /** Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)
+    /** Goal type: EventsNode (Flind event), ActionsNode (Flind action), or DataWarehouseNode (external table)
      *
      * * `EventsNode` - EventsNode
      * * `ActionsNode` - ActionsNode
@@ -2300,7 +2300,7 @@ export interface GoalExplanationApi {
     conversion_goal_id: string
     /** Display name of the conversion goal */
     goal_name: string
-    /** Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)
+    /** Goal type: EventsNode (Flind event), ActionsNode (Flind action), or DataWarehouseNode (external table)
      *
      * * `EventsNode` - EventsNode
      * * `ActionsNode` - ActionsNode

@@ -221,7 +221,7 @@ def _entry_data(entry: ReviewRepositoryOverviewEntry) -> dict[str, Any]:
 
 
 class ReviewProjectSettingsViewSet(ReviewHogProjectViewSetMixin, viewsets.GenericViewSet):
-    """The project-wide PostHog Review rule and the repository overview.
+    """The project-wide Flind Review rule and the repository overview.
 
     Project members can read everything here. Only project admins can change the rule and its lists,
     and every change goes to the activity log.

@@ -304,7 +304,7 @@ describe('exec tool', () => {
             // keep its own class rather than be typed as a usage error.
             await expect(exec.handler(mockContext, { command: 'learn posthog:missing' })).rejects.toMatchObject({
                 name: 'SkillsUnavailableError',
-                message: expect.stringContaining('PostHog skills are temporarily unavailable'),
+                message: expect.stringContaining('Flind skills are temporarily unavailable'),
             })
             await expect(exec.handler(mockContext, { command: 'tools' })).resolves.toContain('mock-tool')
         })
@@ -573,7 +573,7 @@ describe('exec tool', () => {
             expect(result.__execBuiltPayload).toBe(true)
         })
 
-        // Inline-exec UI-app hosts: PostHog Desktop (via consumer) plus Claude Code (via
+        // Inline-exec UI-app hosts: Flind Desktop (via consumer) plus Claude Code (via
         // the client-profile flag). Both surface structuredContent to the model, so it
         // must be dropped and the UI data re-homed onto _meta.
         it.each([
@@ -1026,7 +1026,7 @@ describe('exec tool', () => {
             expect(result).not.toContain('answers the same way')
         })
 
-        // Built-in PostHog skills are a catalog the store never held, so a tool
+        // Built-in Flind skills are a catalog the store never held, so a tool
         // description that says "load the `<name>` skill" sends an agent here and
         // the store answers 404. The message above points at `skill-list`, which
         // confirms the wrong conclusion — that the skill does not exist.
@@ -1080,7 +1080,7 @@ describe('exec tool', () => {
             expect(result).toContain(expected)
             // A pinned version proves the caller already holds a store skill, so
             // only the bare name lookup may be answered with the built-in catalog.
-            expect(result.includes('built-in PostHog skill')).toBe(skillName === BUILT_IN_SKILL && !pinnedVersion)
+            expect(result.includes('built-in Flind skill')).toBe(skillName === BUILT_IN_SKILL && !pinnedVersion)
         })
 
         // A file belongs to one version row, and a publish replaces the whole set,
@@ -2062,7 +2062,7 @@ describe('exec tool', () => {
                 (error: Error) => error.message
             )
 
-            expect(message).toContain('is retired on this PostHog connection')
+            expect(message).toContain('is retired on this Flind connection')
             expect(message.includes(redirectHint)).toBe(kept)
         })
 
@@ -2159,7 +2159,7 @@ describe('exec tool', () => {
         )
 
         it.each([
-            { apiToken: 'pha_test', recovery: 'Reauthorize the PostHog MCP connection and approve these scopes.' },
+            { apiToken: 'pha_test', recovery: 'Reauthorize the Flind MCP connection and approve these scopes.' },
             {
                 apiToken: 'phx_test',
                 recovery:
@@ -2167,7 +2167,7 @@ describe('exec tool', () => {
             },
             {
                 apiToken: 'unrecognized-token',
-                recovery: 'Reauthorize the PostHog MCP connection, or add these scopes to the personal API key.',
+                recovery: 'Reauthorize the Flind MCP connection, or add these scopes to the personal API key.',
             },
             {
                 apiToken: 'pha_test',
@@ -2463,7 +2463,7 @@ describe('exec tool', () => {
             ['a hostname', 'example.com', '[redacted]'],
             ['a phone number', 'tel_15555550100', '[redacted]'],
             ['a token', `ghp_${'aB3'.repeat(12)}`, '[redacted]'],
-            ['a PostHog token without digits', `phx_${'aBc'.repeat(15)}`, '[redacted]'],
+            ['a Flind token without digits', `phx_${'aBc'.repeat(15)}`, '[redacted]'],
         ])('records an undeclared key that is %s', (_shape, key, recorded) => {
             const shape = describeInputShape({ [key]: 'secret-value', id: 1 }, z.object({ id: z.number() }))
 

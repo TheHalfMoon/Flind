@@ -344,7 +344,7 @@ class TestGetSandboxMcpConfigs(SimpleTestCase):
     def test_describes_posthog_capabilities_for_agent_discovery(self) -> None:
         # A pi agent searches its configured servers before connecting to any of them, matching
         # only the server name and this description. Without capability words, an agent looking
-        # for "insights" or "feature flags" concludes it has no PostHog tools.
+        # for "insights" or "feature flags" concludes it has no Flind tools.
         with patch("products.tasks.backend.temporal.process_task.utils.settings") as mock_settings:
             mock_settings.SANDBOX_MCP_URL = None
             mock_settings.MCP_SERVER_URL = "https://mcp.us.posthog.com/mcp"
@@ -897,7 +897,7 @@ class TestGetGitIdentityEnvVars(TestCase):
         user.get_full_name.return_value = ""
         task = self._make_task(Task.OriginProduct.USER_CREATED, user=user)
         result = get_git_identity_env_vars(task)
-        assert result["GIT_AUTHOR_NAME"] == "PostHog User"
+        assert result["GIT_AUTHOR_NAME"] == "Flind User"
         assert result["GIT_AUTHOR_EMAIL"] == "anon@example.com"
 
 
@@ -1717,7 +1717,7 @@ class TestGetRelayedMcpServerNames(SimpleTestCase):
     def test_drops_names_colliding_with_resolved_configs(self):
         task_run = self._task_run([{"name": "posthog"}, {"name": "grafana"}, {"name": "playwright"}])
 
-        # Names taken by already-resolved MCP configs (PostHog MCP, MCP Store, imported) win.
+        # Names taken by already-resolved MCP configs (Flind MCP, MCP Store, imported) win.
         assert get_relayed_mcp_server_names(task_run, {"posthog", "grafana"}) == ["playwright"]
 
     def test_collision_detection_is_case_insensitive(self):

@@ -1,4 +1,4 @@
-"""What PostHog does with one verified Vercel webhook event.
+"""What Flind does with one verified Vercel webhook event.
 
 Separate from the transport, which is `posthog/ingress/`: the caller decides what an outcome
 answers on the wire, and nothing here does. Which region holds an installation is answered here
@@ -151,7 +151,7 @@ def _handle_transfer(config_id: str, in_receiving_region: bool) -> VercelEventOu
         _log_unknown_config("vercel_webhook_transfer_unknown_config", config_id, TRANSFER_EVENT, in_receiving_region)
         return VercelEventOutcome.UNKNOWN_CONFIG
 
-    # A linked account is billed through PostHog. Vercel account details stored on it would point
+    # A linked account is billed through Flind. Vercel account details stored on it would point
     # its billing page at Vercel invoices and change who gets Owner on login.
     if integration.config.get("type") == "connectable":
         logger.info("vercel_webhook_transfer_connectable_ignored", config_id=config_id)

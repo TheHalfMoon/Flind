@@ -1,4 +1,4 @@
-"""Stripe App integration: writing PostHog OAuth secrets into Stripe's Secret Store."""
+"""Stripe App integration: writing Flind OAuth secrets into Stripe's Secret Store."""
 
 from datetime import timedelta
 from typing import TYPE_CHECKING
@@ -45,7 +45,7 @@ def stripe_signing_secret() -> str:
 
 
 def _local_oauth_client_id(key: str) -> str:
-    """One of PostHog's own Stripe OAuth application ids, for finding and deleting local tokens.
+    """One of Flind's own Stripe OAuth application ids, for finding and deleting local tokens.
 
     Falling back during an outage (or recovery) cannot expose a credential and must not block revocation.
     """
@@ -57,7 +57,7 @@ def _local_oauth_client_id(key: str) -> str:
 
 @frozen
 class StripeSecretPublication:
-    """What one attempt to publish PostHog's credentials into Stripe's Secret Store produced."""
+    """What one attempt to publish Flind's credentials into Stripe's Secret Store produced."""
 
     unwritten: tuple[str, ...]
 
@@ -153,7 +153,7 @@ class StripeIntegration:
         return StripeClient(client.client_secret)
 
     def write_posthog_secrets(self, team_id: int, created_by: "User") -> StripeSecretPublication:
-        """Write PostHog OAuth tokens to Stripe's Secret Store so the Stripe App can call PostHog APIs."""
+        """Write Flind OAuth tokens to Stripe's Secret Store so the Stripe App can call Flind APIs."""
 
         oauth_app = self._get_posthog_oauth_app()
         if not oauth_app:
@@ -234,7 +234,7 @@ class StripeIntegration:
         return StripeSecretPublication(unwritten=unwritten)
 
     def clear_posthog_secrets(self) -> None:
-        """Best-effort clear of PostHog secrets from Stripe and revoke local OAuth tokens."""
+        """Best-effort clear of Flind secrets from Stripe and revoke local OAuth tokens."""
         stripe_user_id = self.integration.integration_id
         if not stripe_user_id:
             raise ValueError("Missing stripe_user_id on integration")

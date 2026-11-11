@@ -1,6 +1,6 @@
 """Generates a new template from metric names that no template in the bank covers.
 
-The model drafts the panels. PostHog checks every query, builds an unlisted preview dashboard with live data,
+The model drafts the panels. Flind checks every query, builds an unlisted preview dashboard with live data,
 and renders a picture of it. The model then looks at the picture and corrects the panels, for a few rounds,
 until it is satisfied. The template then waits for a staff review, and no team sees it before that.
 """
@@ -313,7 +313,7 @@ def _convert(
     attributes: Mapping[str, Sequence[str]] | None = None,
     checks: ProjectChecks | None = None,
 ) -> _Converted:
-    """Check each drafted query as PostHog would run it, and keep the panels that pass, with no overlapping boxes.
+    """Check each drafted query as Flind would run it, and keep the panels that pass, with no overlapping boxes.
 
     A drafted variable stays when it lists a known attribute and a kept panel refers to it. It selects All, because
     the template is for every project and a value of the source project must not reach the others. With `checks`,

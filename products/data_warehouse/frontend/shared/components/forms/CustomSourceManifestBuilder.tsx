@@ -231,7 +231,7 @@ export function CustomSourceManifestBuilder({
                     <div>
                         <h4 className="mb-0">Tables</h4>
                         <p className="m-0 text-xs text-secondary">
-                            Each table maps to one endpoint. PostHog fetches it, paginates, and writes the rows.
+                            Each table maps to one endpoint. Flind fetches it, paginates, and writes the rows.
                         </p>
                     </div>
                     <LemonButton type="secondary" icon={<IconPlus />} onClick={addTable}>
@@ -362,7 +362,7 @@ function OAuth2AuthFields({
     return (
         <div className="space-y-2">
             <p className="m-0 text-xs text-secondary">
-                Bring your own OAuth2 client. PostHog mints a short-lived access token from your token endpoint at sync
+                Bring your own OAuth2 client. Flind mints a short-lived access token from your token endpoint at sync
                 time and refreshes it automatically — no browser sign-in.
             </p>
             <div className="grid grid-cols-2 gap-2">
@@ -660,7 +660,7 @@ function ParentSection({
             {hasParent && (
                 <>
                     <p className="m-0 text-xs text-secondary">
-                        PostHog fetches the parent table first, then calls this table once per parent row — binding the
+                        Flind fetches the parent table first, then calls this table once per parent row — binding the
                         chosen parent field into the path placeholder (e.g. <code>/forms/{'{form_id}'}/responses</code>
                         ).
                     </p>

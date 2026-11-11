@@ -91,7 +91,7 @@ function outermostRects(rects: Iterable<DOMRect>): DOMRect[] {
 
 /**
  * Text that people can select to comment on, with a tint on each open text thread. Offsets count the
- * rendered text, the same way PostHog Desktop counts them, so a highlight written in either app shows in both.
+ * rendered text, the same way Flind Desktop counts them, so a highlight written in either app shows in both.
  */
 export function ArtifactTextAnnotations({
     logicProps,
@@ -283,7 +283,7 @@ export function ArtifactTextAnnotations({
                         type="button"
                         tabIndex={firstRectIndex.get(rect.id) === index ? 0 : -1}
                         aria-label={rect.label}
-                        // The same yellow as PostHog Desktop in both themes, so a highlight reads on dark text too.
+                        // The same yellow as Flind Desktop in both themes, so a highlight reads on dark text too.
                         className={cn(
                             'pointer-events-auto absolute cursor-pointer rounded-xs',
                             rect.id === activeThreadId

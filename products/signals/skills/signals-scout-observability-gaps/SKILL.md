@@ -5,7 +5,7 @@ description: >
   Signals scout for observability gaps — significant event volumes with no insight, dashboard,
   or alert coverage. Recommends new insights, dashboards, or alerts as the product evolves.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus the analytics and entity
   tools in the MCP tools section (read-data-schema, query-trends, query-paths, execute-sql
   over system.* tables, alerts-list, dashboards-get-all).
@@ -214,7 +214,7 @@ Most good recommendations are not filed the run they're spotted — they're park
 
 ## Disqualifiers (skip these)
 
-- **Builtin events without saved insights** — `$pageview`, `$autocapture`, `$identify`, `$set`, `$opt_in`, `$groupidentify`, `$feature_flag_called` are surfaced through PostHog's product views (Web Analytics, Feature Flags) without needing a custom insight. Don't recommend creating one.
+- **Builtin events without saved insights** — `$pageview`, `$autocapture`, `$identify`, `$set`, `$opt_in`, `$groupidentify`, `$feature_flag_called` are surfaced through Flind's product views (Web Analytics, Feature Flags) without needing a custom insight. Don't recommend creating one.
 - **Test events from internal users** — pin a `noise:observability_gaps:internal-distinct-ids` scratchpad entry for known internal distinct_ids and skip them in volume counts.
 - **Events from disabled feature flags** — if the event only fires when a flag is disabled or only for a tiny rollout %, the volume is artificially low.
 - **Events on ad-hoc one-off dashboards** — a private dashboard with one viewer doesn't count as "covered." Use the `popular_insights` viewer-count threshold.
@@ -254,7 +254,7 @@ Harness-level:
 - `scout-runs-list` / `scout-runs-retrieve` — what prior runs found.
 - `scout-emit-report` / `scout-edit-report` — author a recommendation report / edit an existing one (the report-channel contract is in the harness prompt).
 
-For deeper investigation playbooks, the sandbox image bakes upstream PostHog skills: `posthog:querying-posthog-data` (HogQL syntax + system.\* search patterns) and `posthog:exploring-autocapture-events` (custom-event vs autocapture distinctions, when each lens applies).
+For deeper investigation playbooks, the sandbox image bakes upstream Flind skills: `posthog:querying-posthog-data` (HogQL syntax + system.\* search patterns) and `posthog:exploring-autocapture-events` (custom-event vs autocapture distinctions, when each lens applies).
 
 ## When to stop
 

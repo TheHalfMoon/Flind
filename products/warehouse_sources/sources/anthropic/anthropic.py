@@ -341,7 +341,7 @@ STANDARD_KEY_MESSAGE = (
     "Anthropic Console, then reconnect."
 )
 VALIDATION_UNREACHABLE_MESSAGE = (
-    "PostHog couldn't reach Anthropic to check your Admin API key. Wait a few minutes, then try again."
+    "Flind couldn't reach Anthropic to check your Admin API key. Wait a few minutes, then try again."
 )
 
 

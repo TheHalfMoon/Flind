@@ -53,7 +53,7 @@ class JotformSource(ResumableSource[JotformSourceConfig, JotformResumeConfig]):
             name=ExternalDataSourceType.JOTFORM,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Jotform",
-            caption="""Enter your Jotform API key to pull your forms and submissions into the PostHog Data warehouse.
+            caption="""Enter your Jotform API key to pull your forms and submissions into the Flind Data warehouse.
 
 You can create an API key in your [Jotform API settings](https://www.jotform.com/myaccount/api). A **Read-only** key is enough.
 

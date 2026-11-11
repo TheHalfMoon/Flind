@@ -115,7 +115,7 @@ Protected research runs require analytics access before a person can resume or w
 
 ## Monitoring metric definitions
 
-The report detail action is **Start monitoring**, with the tooltip “PostHog watches to make sure the fix works”. It is hidden until follow-up checks have loaded and when none are set. The implementation-completion service remains responsible for selecting applicable checks and deciding whether entry creates a Monitoring attempt or resolves directly.
+The report detail action is **Start monitoring**, with the tooltip “Flind watches to make sure the fix works”. It is hidden until follow-up checks have loaded and when none are set. The implementation-completion service remains responsible for selecting applicable checks and deciding whether entry creates a Monitoring attempt or resolves directly.
 
 **Resolve** on a Monitoring report resolves it manually and cancels its remaining pending and active follow-up checks in the same transaction. Historical terminal checks and other reports' checks are preserved. Results already in flight cannot revive canceled checks. Its reasons are **Verified manually**, **No action needed**, **Was already fixed before this report**, and **Something else…**. The `verified_manually` reason is separate from `fixed_outside_posthog`, requires an enabled Monitoring period, and is preserved with caller attribution. A separate attributed log entry records that automatic verification and an evidence amendment were not performed, preserving the full 4,000-character limit for the user's feedback note.
 
@@ -267,7 +267,7 @@ For reports built from GitHub issues, the issue repository is a default when it 
 With multiple permitted candidates, selection can choose another repository based on code ownership, applicable routing rules, or past wrong-repository corrections.
 Matching paths can be vendored, generated, or mirrored copies; ownership evidence takes precedence over the source default.
 If the evidence otherwise leaves candidates equally plausible, selection prefers the issue repository.
-Selection sandboxes use read-only GitHub credentials and read-only PostHog scopes to inspect repositories and query the cache.
+Selection sandboxes use read-only GitHub credentials and read-only Flind scopes to inspect repositories and query the cache.
 
 The selector checks cached source visibility before the single-candidate shortcut or the agent runs, including when the source is not eligible.
 If the source is not confirmed public, the permitted destinations are the eligible source itself and eligible repositories confirmed private.
@@ -300,7 +300,7 @@ Research without a repository preserves structured agent startup failures and cl
 
 A saved repository is reused before checking GitHub availability. A data-only fallback leaves that selection and its recorded context unchanged, so a transient failure cannot replace a reviewer's pinned target.
 
-The report remains readable and supports discussion, assignment, resolution, and eligible monitoring. Implement offers prompts for the customer's own agents even without GitHub access, including while access checks are pending or have failed. Choosing Implement with PostHog requires usable repository access and opens the GitHub connection flow when access is missing. Both report details and triage use these choices, with retry available after temporary failures. The access check probes GitHub directly, and any installation that confirms access enables PostHog implementation without waiting for other installations. Report controls use the server's canonical project eligibility. Authorization returns to the report; existing installations can be linked without leaving it. Recovery tracking records the report, surface, retry, and outcome. GitHub access improves research by connecting project data to code; opening pull requests is optional. Connecting or repairing GitHub does not enable automatic implementation; the user must opt in separately. Previous blocked reports are not automatically rerun.
+The report remains readable and supports discussion, assignment, resolution, and eligible monitoring. Implement offers prompts for the customer's own agents even without GitHub access, including while access checks are pending or have failed. Choosing Implement with Flind requires usable repository access and opens the GitHub connection flow when access is missing. Both report details and triage use these choices, with retry available after temporary failures. The access check probes GitHub directly, and any installation that confirms access enables Flind implementation without waiting for other installations. Report controls use the server's canonical project eligibility. Authorization returns to the report; existing installations can be linked without leaving it. Recovery tracking records the report, surface, retry, and outcome. GitHub access improves research by connecting project data to code; opening pull requests is optional. Connecting or repairing GitHub does not enable automatic implementation; the user must opt in separately. Previous blocked reports are not automatically rerun.
 
 Report access checks share pending and recent results by project, installation, and repository for up to 30 seconds. Explicit retries invalidate the project cache. A pending request is canceled when its last report reader leaves or after 30 seconds, allowing stalled checks to be retried; temporary failures are not cached. The backend still checks live access before creating an implementation task.
 
@@ -348,7 +348,7 @@ Keep the selection flag disabled until the trial confirms suitable assignments a
 
 When a project member adds a reviewer, the report shows "Added by" and that member's name as the reason above the reviewer. The name comes from the authenticated author of the artefact that added the reviewer, not from the editable reason. If the author is unavailable, the report shows the generic "Added by teammate" badge instead.
 
-Shared Slack notification settings belong to the project selected in PostHog.
+Shared Slack notification settings belong to the project selected in Flind.
 Project members with Inbox editor access can change these settings; admin access is not required.
 API callers also need `inbox:write`.
 The team channel has its own minimum priority, separate from each reviewer's personal notification setting.
@@ -372,7 +372,7 @@ The agent uses the clicking member's project access and can ask them to select a
 Implementation requires task editor access and claims the report's implementation slot before creating a task.
 Slack implementations use manual AI billing, including when a discussion becomes an implementation.
 The button remains available if startup fails. Slack removes it after startup succeeds.
-Review in PostHog opens the report page.
+Review in Flind opens the report page.
 
 When an implementation pull request has one assignee, the worker requests that person's review, even when another person or team request exists.
 This makes the owner's work visible in both GitHub assignment and review-request lists.
@@ -395,7 +395,7 @@ There is no separate assignment table, operation ledger, or writer service.
 The product goal is for human feedback to improve the next relevant assignment, including when another research or scout producer makes it.
 The shared write rules protect corrections on the current report. Existing notes, activity, and reviewer memory provide evidence for later selections.
 Research reads recent corrections. Eligible reviewer edits also send notes to the scouts that touched the report or hold the affected routing memory.
-The notes include members without GitHub accounts, identified by their PostHog user UUID.
+The notes include members without GitHub accounts, identified by their Flind user UUID.
 Repeat delivery is suppressed only for the same report and the latest action for that identity.
 A correction on another report, or a reversal, remains separate evidence.
 Scouts search relevant notes across producers before selection, through `scout-notes-list` without a `skill_name` filter.
@@ -541,9 +541,9 @@ The live trial remains pending; automated delivery tests do not establish resear
 
 ### Identity and organization changes
 
-`resolve_reviewers.py` maps linked PostHog and GitHub identities in both directions. The existing `scout-members-list` tool
+`resolve_reviewers.py` maps linked Flind and GitHub identities in both directions. The existing `scout-members-list` tool
 exposes project members and known GitHub accounts to agents. Personal GitHub integrations and GitHub OAuth provide identity links;
-some existing lookup paths also use the GitHub App installer identity. Report recipients can use PostHog user UUIDs without GitHub accounts.
+some existing lookup paths also use the GitHub App installer identity. Report recipients can use Flind user UUIDs without GitHub accounts.
 
 The PR worker uses current personal GitHub integrations and OAuth links. Before assigning a linked account, it verifies the stable GitHub user ID against the repository collaborator record.
 The provenance record stores the link source, verification time, and a 30-day expiry. An expired proof is refreshed on the next reassessment trigger.
@@ -692,5 +692,5 @@ Missing data, failed checks, and inconclusive results do not establish that the 
 
 The web report's Runs section lists linked tasks newest first, regardless of their purpose, using each task's first association with the report. Repository-selection tasks remain hidden.
 
-When a report has a linked task run, the View task button opens it in the PostHog AI sidebar.
+When a report has a linked task run, the View task button opens it in the Flind AI sidebar.
 The button fits its label, including when it appears below the Solution section.

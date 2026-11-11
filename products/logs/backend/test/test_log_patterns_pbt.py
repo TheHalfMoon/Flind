@@ -15,7 +15,7 @@ from hypothesis import (
 
 from products.logs.backend.log_patterns import LogSample, _prepare_json_body, mine_patterns
 
-# PostHog CI runs the backend suite with pytest-rerunfailures (--reruns 2). A rerun
+# Flind CI runs the backend suite with pytest-rerunfailures (--reruns 2). A rerun
 # re-instantiates the TestCase, so a genuinely-failing @given method is re-invoked from a
 # fresh instance, which trips hypothesis's differing_executors health check and masks the
 # real falsifying example. These tests are pure functions with no shared state, so

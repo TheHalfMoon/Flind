@@ -44,7 +44,7 @@ def _get_digest_orgs(inputs: GetDigestOrgsInputs) -> GetDigestOrgsResult:
     # Checked before org_ids so a targeted manual run can't route around the cloud gate. Returning
     # no orgs is what keeps the page children from being scheduled at all.
     if not is_cloud():
-        logger.info("Skipping Error Tracking weekly digest outside PostHog Cloud")
+        logger.info("Skipping Error Tracking weekly digest outside Flind Cloud")
         return GetDigestOrgsResult(total_orgs=0)
 
     if inputs.org_ids is not None:

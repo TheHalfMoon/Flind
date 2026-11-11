@@ -275,7 +275,7 @@ export function buildTrafficFacts(state: HealthInputsState): SetupFact[] {
                   {
                       label: 'People assigned outside the flag service',
                       value: formatCount(traffic.people_assigned_outside),
-                      help: 'People who got a variant from a call without a flag version that is no local evaluation, from an hour after the window starts. With a 0% rollout, 10 or more of them show that the variants are assigned outside PostHog.',
+                      help: 'People who got a variant from a call without a flag version that is no local evaluation, from an hour after the window starts. With a 0% rollout, 10 or more of them show that the variants are assigned outside Flind.',
                   },
               ]
             : []),

@@ -57,7 +57,7 @@ function tokenRequests(runtime: FakeRuntime): FakeRuntime['requests'] {
 
 describe('OAuth credentials', () => {
     test.each([
-        ['renews a token PostHog rejects and sends the request once more', 3_600_000, 0, 'pha_new', 2, OK],
+        ['renews a token Flind rejects and sends the request once more', 3_600_000, 0, 'pha_new', 2, OK],
         ['renews a token about to expire mid-command before it sends', 11 * 60_000, 2 * 60_000, 'pha_new', 1, OK],
         ['surfaces a second 401 instead of retrying again', 3_600_000, 0, 'pha_also_rejected', 2, REJECTED],
     ])('a request %s', async (_name, expiresInMs, commandRunsMs, renewedToken, apiCalls, expected) => {
@@ -120,7 +120,7 @@ describe('OAuth credentials', () => {
         expect(tokenRequests(runtime)).toEqual([])
     })
 
-    test('a stored personal API key that PostHog rejects is sent only once', async () => {
+    test('a stored personal API key that Flind rejects is sent only once', async () => {
         const record = { store: 'keychain', type: 'personal_api_key', projectId: '42', host: EU }
         const runtime = fakeRuntime({
             files: { [SETTINGS_FILE]: JSON.stringify({ logins: { [EU]: record }, host: EU }) },
@@ -135,7 +135,7 @@ describe('OAuth credentials', () => {
         expect(runtime.requests).toHaveLength(1)
     })
 
-    test('renew a token about to expire, keeping the refresh token PostHog did not rotate', async () => {
+    test('renew a token about to expire, keeping the refresh token Flind did not rotate', async () => {
         const runtime = fakeRuntime({
             ...stored('pha_old', 30_000),
             respond: () => ({ status: 200, body: { access_token: 'pha_new', expires_in: 3600, scope: 'openid' } }),

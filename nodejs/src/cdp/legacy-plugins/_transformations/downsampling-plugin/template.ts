@@ -11,7 +11,7 @@ export const downsamplingPlugin: LegacyTransformationPlugin = {
         type: 'transformation',
         id: 'plugin-downsampling-plugin',
         name: 'Downsample',
-        description: 'Reduces event volume coming into PostHog',
+        description: 'Reduces event volume coming into Flind',
         icon_url: 'https://raw.githubusercontent.com/posthog/downsampling-plugin/main/logo.png',
         category: ['Custom'],
         code_language: 'javascript',
@@ -42,7 +42,7 @@ export const downsamplingPlugin: LegacyTransformationPlugin = {
                 templating: false,
                 key: 'triggeringEvents',
                 description:
-                    "A comma-separated list of PostHog events you want to downsample (e.g.: '$identify,mycustomevent'). If empty, all events will be downsampled.",
+                    "A comma-separated list of Flind events you want to downsample (e.g.: '$identify,mycustomevent'). If empty, all events will be downsampled.",
                 label: 'Triggering events',
                 default: '',
                 required: false,

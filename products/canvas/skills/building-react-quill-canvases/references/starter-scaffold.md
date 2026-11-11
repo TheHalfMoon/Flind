@@ -7,7 +7,7 @@ the "View query" verification dialog every ad-hoc data card must carry, and card
 first build: keep the wiring, replace the sample metrics and the layout with what the user asked
 for. Ideally swap the inline `ph.query` typed nodes for saved insights loaded with
 `ph.loadInsight(shortId, { dateRange })` (see the `querying-canvas-data` skill) — then replace the
-"View query" dialog with a "View in PostHog" button calling `ph.openExternal(insightUrl)`, the URL
+"View query" dialog with a "View in Flind" button calling `ph.openExternal(insightUrl)`, the URL
 minted at authoring time by the `generate-app-url` MCP tool (`/insights/{id}`), so viewers verify
 the numbers on the real insight with their own permissions applied.
 
@@ -285,6 +285,6 @@ export default function Canvas() {
 }
 ```
 
-Note: reach PostHog through `import { ph } from "@posthog/canvas-sdk"`, a platform-provided module
+Note: reach Flind through `import { ph } from "@posthog/canvas-sdk"`, a platform-provided module
 that needs no `dependencies` entry. The host also injects the same object as the `window.ph`
 global. Never initialize it, and do not import or initialize posthog-js.

@@ -468,7 +468,7 @@ def delete_webhook() -> WebhookDeletionResult:
     return WebhookDeletionResult(
         success=False,
         error=(
-            "ZapSign doesn't support looking up webhooks via its API, so PostHog can't remove it "
+            "ZapSign doesn't support looking up webhooks via its API, so Flind can't remove it "
             "automatically. Delete it in ZapSign under Settings > Integrations > ZapSign API."
         ),
     )

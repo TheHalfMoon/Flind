@@ -27,7 +27,7 @@ import {
 import { objectKindMeta } from "@flind/core/inbox/objectTags";
 
 /**
- * The registry of PostHog object kinds an agent can embed in a message as
+ * The registry of Flind object kinds an agent can embed in a message as
  * `<kind id="...">label</kind>` tags (see remarkObjectTags), read from the
  * generated registry (source of truth: posthog/object_tags/kinds.py).
  *
@@ -45,7 +45,7 @@ export interface ObjectKindDef {
   /** Product the object comes from, e.g. "Product analytics". */
   source: string;
   /**
-   * Project-relative PostHog web path, mirroring the canonical route table
+   * Project-relative Flind web path, mirroring the canonical route table
    * (the `generate-app-url` MCP tool carries the same list). Return null when
    * this id has no direct page; omit when the kind has no canonical page.
    */
@@ -55,8 +55,8 @@ export interface ObjectKindDef {
 }
 
 /**
- * The brand primary (orange in light, yellow in dark): PostHog object icons
- * carry it wherever they appear so PostHog-native artifacts read as PostHog at
+ * The brand primary (orange in light, yellow in dark): Flind object icons
+ * carry it wherever they appear so Flind-native artifacts read as Flind at
  * a glance next to files and PRs. Passed as the phosphor `color` prop (an SVG
  * fill), which quill highlight rules can't reset the way `currentColor` can.
  */

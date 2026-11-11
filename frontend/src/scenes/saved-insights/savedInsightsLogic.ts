@@ -112,7 +112,7 @@ function insightsListParams(filters: SavedInsightFilters): Record<string, any> {
         limit: INSIGHTS_PER_PAGE,
         offset: Math.max(0, (filters.page - 1) * INSIGHTS_PER_PAGE),
         saved: true,
-        // PostHog no longer generates these, and the flag Usage tab still shows the same charts
+        // Flind no longer generates these, and the flag Usage tab still shows the same charts
         hide_feature_flag_insights: true,
         exclude_bi: true,
         ...(filters.favorited && { favorited: true }),

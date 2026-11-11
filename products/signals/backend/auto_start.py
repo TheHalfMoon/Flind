@@ -264,7 +264,7 @@ def _fix_loop_instructions(summary: str) -> str:
 #
 # The template belongs to the target repository, which is often one the user does not own, so it is
 # untrusted input on the same footing as signal text and repository content elsewhere in signals: the
-# agent reuses its shape but takes no instructions from it. The run holds full-scope PostHog MCP
+# agent reuses its shape but takes no instructions from it. The run holds full-scope Flind MCP
 # access (`posthog_mcp_scopes="signals_implementation"` below) and publishes to a repository an
 # outsider controls, so a template that could direct the agent would be a data-exfiltration path.
 _PR_DESCRIPTION_FORM_RULES = (
@@ -284,7 +284,7 @@ _PR_DESCRIPTION_FORM_RULES = (
     "- Cut what the diff shows, what the linked report already says, and all narration of how you "
     "investigated. The report is the long form. What you tried and rejected goes under 'Agent "
     "context', briefly.\n"
-    "- Do not write an 'Origin' section. PostHog adds one below Problem after the PR opens. When you "
+    "- Do not write an 'Origin' section. Flind adds one below Problem after the PR opens. When you "
     "edit the description later, keep that section and its HTML comment markers exactly as they are.\n"
     "- Before opening the PR, reread it: could a reviewer get the why, the what and the risk by "
     "scanning it for about thirty seconds? If not, turn paragraphs into bullets and comparisons into "
@@ -331,7 +331,7 @@ def _generate_self_driving_head_branch(title: str) -> str:
 def _head_branch_instruction(head_branch: str) -> str:
     return (
         f"\n\nWhen you push your work, create the branch named exactly `{head_branch}` and open the "
-        "PR from it. This name was pre-generated for this run: PostHog uses it to link the opened PR "
+        "PR from it. This name was pre-generated for this run: Flind uses it to link the opened PR "
         "back to the run for automated review, and a PR from any other branch name will not be "
         "recognized. Do NOT choose a different branch name."
     )
@@ -445,7 +445,7 @@ def _build_autostart_task_description(
         f"{_PR_DESCRIPTION_FORM_RULES}"
         f"{source_reference_instruction}"
         "When opening the PR, include this report link in the description footer, "
-        "making the footer '*Created with [PostHog Desktop](https://posthog.com/desktop?ref=pr) "
+        "making the footer '*Created with [Flind Desktop](https://posthog.com/desktop?ref=pr) "
         f"from [this inbox report]({report_link}){footer_source_refs}.' - "
         "so the human reviewer can jump straight to it."
         f"{_superseded_pr_instruction(supersede)}"
@@ -1326,7 +1326,7 @@ def _resolve_autostart_fallback_user(team_id: int) -> User | None:
     Rather than drop the auto-start, run the implementation task under the human who turned signals
     on for this team. Enabling a signal source is the team's opt-in to the signals product, of which
     autonomous PRs are a part, so attributing the task to that member is within the team's consent.
-    The task mints a PostHog OAuth token as this user, which is why `resolve_signals_enabler` only
+    The task mints a Flind OAuth token as this user, which is why `resolve_signals_enabler` only
     returns active org members.
     """
     return resolve_signals_enabler(team_id)
@@ -1341,7 +1341,7 @@ def _resolve_triggering_user(
     """Assignee for a *user-triggered* auto-start: the triggering user runs it as themselves.
 
     When a human edits a report's `suggested_reviewers` (the artefact API), that edit re-runs
-    auto-start — but the agent mints a PostHog OAuth token under the task's user, so it must run as
+    auto-start — but the agent mints a Flind OAuth token under the task's user, so it must run as
     the person who triggered it, never as a named colleague (that would be reviewer impersonation).
     Returns the triggering user if they're an org member and their effective autonomy threshold
     allows the report's priority, else ``None``.
@@ -1378,12 +1378,12 @@ async def maybe_autostart_implementation_task(
 
     ``triggering_user_id`` is set when a *user edit* of the report's `suggested_reviewers` re-ran
     auto-start: the task then runs as that user (they triggered it), never as a named colleague —
-    the agent mints a PostHog OAuth token under the task's user, so running as the assignee would
+    the agent mints a Flind OAuth token under the task's user, so running as the assignee would
     let one user act as another (reviewer impersonation). When ``None`` (the pipeline / custom
     agent / scout, whose reviewers come from commit authorship), the assignee is resolved from
     *reviewers_content*.
 
-    ``billing_exempt_reason`` lets a caller that knows its origin is PostHog-system (e.g. a future
+    ``billing_exempt_reason`` lets a caller that knows its origin is Flind-system (e.g. a future
     report-linked onboarding run) declare the report never-billable up front. Independently of it,
     system policy (`billing.system_billing_exempt_reason`) marks exempt-origin reports — either
     way the reason freezes under the row lock before the task (and any billable PR run) exists.
@@ -1895,7 +1895,7 @@ async def maybe_autostart_from_report_artefacts(
         reviewers_content=reviewers_content,
         priority=priority,
         # If a user edited the reviewers, run the task as that user — never as a named colleague,
-        # which would let one user act under another's PostHog identity (reviewer impersonation).
+        # which would let one user act under another's Flind identity (reviewer impersonation).
         triggering_user_id=editor_user_id,
         repository_autostart_eligible=repo_selection.autostart_eligible,
         implementation_decision=implementation_decision,

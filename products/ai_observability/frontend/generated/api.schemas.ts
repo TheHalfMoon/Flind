@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface _SummaryApi {
@@ -36,7 +36,7 @@ export interface _ProductBreakdownRowApi {
     event_count: number
     /** Total cost in USD for this product over the lookback window. */
     cost_usd: number
-    /** Whether this product is eligible for PostHog AI or Desktop credit billing, independent of event-level billing rules. */
+    /** Whether this product is eligible for Flind AI or Desktop credit billing, independent of event-level billing rules. */
     billable: boolean
 }
 
@@ -3551,7 +3551,7 @@ export interface TestHogResponseApi {
 export type ClusteringConfigApiEventFiltersItem = { [key: string]: unknown }
 
 export interface ClusteringConfigApi {
-    /** PostHog property filters that scope automated clustering jobs. Empty array means no saved filters. */
+    /** Flind property filters that scope automated clustering jobs. Empty array means no saved filters. */
     event_filters: ClusteringConfigApiEventFiltersItem[]
     readonly created_at: string
     readonly updated_at: string
@@ -3560,7 +3560,7 @@ export interface ClusteringConfigApi {
 export type ClusteringConfigSetEventFiltersApiEventFiltersItem = { [key: string]: unknown }
 
 export interface ClusteringConfigSetEventFiltersApi {
-    /** PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters. */
+    /** Flind property filters to save for automated clustering jobs. Pass an empty array to clear filters. */
     event_filters: ClusteringConfigSetEventFiltersApiEventFiltersItem[]
 }
 
@@ -3584,7 +3584,7 @@ export interface ClusteringJobApi {
     /** @maxLength 100 */
     name: string
     analysis_level: AnalysisLevelEnumApi
-    /** PostHog property filters that scope this clustering job. Empty array means no filters. */
+    /** Flind property filters that scope this clustering job. Empty array means no filters. */
     event_filters?: ClusteringJobApiEventFiltersItem[]
     enabled?: boolean
     readonly created_at: string
@@ -3607,7 +3607,7 @@ export interface PatchedClusteringJobApi {
     /** @maxLength 100 */
     name?: string
     analysis_level?: AnalysisLevelEnumApi
-    /** PostHog property filters that scope this clustering job. Empty array means no filters. */
+    /** Flind property filters that scope this clustering job. Empty array means no filters. */
     event_filters?: PatchedClusteringJobApiEventFiltersItem[]
     enabled?: boolean
     readonly created_at?: string
@@ -3739,7 +3739,7 @@ export interface ClusteringRunRequestApi {
      * * `pca` - pca
      * * `tsne` - tsne */
     visualization_method?: VisualizationMethodEnumApi
-    /** Property filters to scope which traces are included in clustering (PostHog standard format) */
+    /** Property filters to scope which traces are included in clustering (Flind standard format) */
     event_filters?: ClusteringRunRequestApiEventFiltersItem[]
     /**
      * If provided, use this clustering job's analysis_level and event_filters instead of request params
@@ -4323,7 +4323,7 @@ export interface LLMProviderModelsSummaryApi {
     provider: string
     /** How many of this provider's models appear in `models`. */
     model_count: number
-    /** True when this provider's models can only be listed by passing `key_id` for one of the team's provider keys, so `model_count` is 0 until a key is supplied. False means PostHog funds some of the provider's models in the playground. LLM-judge evaluations and LLM taggers always run on one of the team's own provider keys, whatever this value is. */
+    /** True when this provider's models can only be listed by passing `key_id` for one of the team's provider keys, so `model_count` is 0 until a key is supplied. False means Flind funds some of the provider's models in the playground. LLM-judge evaluations and LLM taggers always run on one of the team's own provider keys, whatever this value is. */
     requires_provider_key: boolean
 }
 
@@ -5462,7 +5462,7 @@ export interface TaggerModelConfigurationApi {
      */
     model: string
     /**
-     * Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by PostHog, or omit/null when no provider key should be pinned.
+     * Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by Flind, or omit/null when no provider key should be pinned.
      * @nullable
      */
     provider_key_id?: string | null
@@ -5516,7 +5516,7 @@ export interface TaggerModelConfigurationWriteApi {
      */
     model: string
     /**
-     * Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by PostHog, or omit/null when no provider key should be pinned.
+     * Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by Flind, or omit/null when no provider key should be pinned.
      * @nullable
      */
     provider_key_id?: string | null
@@ -5620,7 +5620,7 @@ export type LlmAnalyticsPersonalSpendListParams = {
      */
     bucket_minutes?: LlmAnalyticsPersonalSpendListBucketMinutes
     /**
-     * Start of the spend window. Accepts absolute dates (`2026-04-23`) or relative strings (`-7d`, `-1m`, etc.) — same parser used elsewhere in PostHog. Defaults to `-30d`. The window between `date_from` and `date_to` cannot exceed 90 days.
+     * Start of the spend window. Accepts absolute dates (`2026-04-23`) or relative strings (`-7d`, `-1m`, etc.) — same parser used elsewhere in Flind. Defaults to `-30d`. The window between `date_from` and `date_to` cannot exceed 90 days.
      * @minLength 1
      * @maxLength 32
      */

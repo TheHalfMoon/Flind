@@ -13,10 +13,10 @@ A sandbox token can start a background agent run through `start_run` or the task
 - The new run is always a background run. Its state records `agent_parent_task_id` and `agent_parent_run_id`, and callers cannot change or remove them.
 
 Sandbox tokens still cannot start runs through warm creation, warm activation, warm resumes, cloud resumes, or the endpoints under `/tasks/{task_id}/runs/`.
-Requests through a PostHog connection keep the sandbox origin and the same run restrictions.
+Requests through a Flind connection keep the sandbox origin and the same run restrictions.
 The origin marker does not grant sandbox access.
-PostHog Desktop access, runtime access, and usage limits still apply.
-PostHog Code's per-user gateway caps are disabled by default and apply only to configured users when enabled.
+Flind Desktop access, runtime access, and usage limits still apply.
+Flind Code's per-user gateway caps are disabled by default and apply only to configured users when enabled.
 Repository-backed report discussions also require Desktop access.
 Opening Ask AI on a Self-driving inbox report warms a task sandbox for the discussion.
 
@@ -122,7 +122,7 @@ The endpoint requires permission to control the task. A task-bound sandbox token
 The update does not complete the run or change its structured `output`.
 Cloud agent runs write the summary through the `task_summary_update` local tool; local Desktop sessions do not have the tool.
 The tool belongs to the sandbox harness, so an agent calls it as `mcp__posthog-code-tools__task_summary_update`.
-It is not in the PostHog MCP catalog, so tool discovery through the `mcp__posthog__exec` dispatcher never returns it.
+It is not in the Flind MCP catalog, so tool discovery through the `mcp__posthog__exec` dispatcher never returns it.
 Generic run-state updates cannot change the summary or its inherited value.
 
 A resumed run uses its source run's summary until it saves a new summary.

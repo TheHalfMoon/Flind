@@ -1,7 +1,7 @@
 /**
  * Actionable recovery hints appended to non-recoverable tool errors (5xx).
  *
- * `handleToolError` returns the raw PostHog API error verbatim. For a 5xx that
+ * `handleToolError` returns the raw Flind API error verbatim. For a 5xx that
  * body is usually an opaque "Internal Server Error" that gives an agent nothing
  * to act on — it just retries the same failing call. These hints add a short,
  * endpoint-aware "here's how to recover" footer, modeled on the multi-line
@@ -96,7 +96,7 @@ interface RecoveryHintInput {
  */
 export function getToolRecoveryHint({ url, status, retryAfterSeconds }: RecoveryHintInput): string | undefined {
     if (status === 503 && retryAfterSeconds != null) {
-        return `The PostHog API is temporarily unavailable. Wait at least ${retryAfterSeconds} seconds before retrying this request.`
+        return `The Flind API is temporarily unavailable. Wait at least ${retryAfterSeconds} seconds before retrying this request.`
     }
 
     // 4xx is recoverable agent input, already surfaced verbatim upstream.

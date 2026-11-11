@@ -11,7 +11,7 @@ export const getPythonInstallSteps = (ctx: OnboardingComponentsContext): StepDef
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog Python library using pip:</Markdown>
+                    <Markdown>Install the Flind Python library using pip:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -27,12 +27,12 @@ export const getPythonInstallSteps = (ctx: OnboardingComponentsContext): StepDef
             ),
         },
         {
-            title: 'Initialize PostHog',
+            title: 'Initialize Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Initialize the PostHog client with your project token and host from your project settings:
+                        Initialize the Flind client with your project token and host from your project settings:
                     </Markdown>
                     <CodeBlock
                         blocks={[
@@ -73,7 +73,7 @@ export const getPythonEventStep = (ctx: OnboardingComponentsContext): StepDefini
         content: (
             <>
                 <Markdown>
-                    Once installed, PostHog will automatically start capturing events. You can also manually send events
+                    Once installed, Flind will automatically start capturing events. You can also manually send events
                     to test your integration:
                 </Markdown>
                 {PythonEventCapture && <PythonEventCapture />}

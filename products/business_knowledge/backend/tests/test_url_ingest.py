@@ -5,7 +5,7 @@ path, conditional-GET 304 behavior, cross-team isolation on refresh.
 Design notes:
 - We mock `requests.Session.get` at the module level of `url_fetch` rather
   than monkey-patching `requests` globally — keeps blast radius to this
-  product's fetch path and matches how other PostHog tests isolate HTTP.
+  product's fetch path and matches how other Flind tests isolate HTTP.
 - SSRF is covered exhaustively in `posthog/security/test/test_url_validation.py`.
   We only smoke-test that our create path *routes through* it (one localhost
   attempt should fail fast).

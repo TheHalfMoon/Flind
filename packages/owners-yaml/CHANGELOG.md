@@ -77,12 +77,12 @@ First release on PyPI, as `owners-yaml`. The package was developed in the monore
 
 - The GitHub organization is no longer hardcoded. `codeowners` and `lint --live` read it from `github_org` or `--org`, and fail with a clear message when neither is set.
 - Producer names are no longer hardcoded. A repo that declares `producers` gets typo checks; a repo that does not accepts any name.
-- The reserved `products/**/mcp/**` location moved from the code into PostHog's own `reserved_dirs`. `.github/workflows/**` stays built in.
-- The CODEOWNERS projection reads its Jest spelling rules from the `codeowners` settings instead of PostHog's layout.
+- The reserved `products/**/mcp/**` location moved from the code into Flind's own `reserved_dirs`. `.github/workflows/**` stays built in.
+- The CODEOWNERS projection reads its Jest spelling rules from the `codeowners` settings instead of Flind's layout.
 - Outside a git worktree and without `--repo-root`, the CLI prints an error instead of a traceback.
 - `version: true` and `version: 1.0` no longer count as `version: 1`, so such a file counts as absent.
-- `product.yaml` is no longer a PostHog convention baked into the code. It is the default value of `alias_files`, which a root file can replace or empty.
+- `product.yaml` is no longer a Flind convention baked into the code. It is the default value of `alias_files`, which a root file can replace or empty.
 
 ## 0.1.0
 
-First version, used inside the PostHog monorepo only.
+First version, used inside the Flind monorepo only.

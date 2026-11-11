@@ -13,9 +13,9 @@ export function DefaultProjectStep(): JSX.Element {
     return (
         <>
             <div className="flex flex-col items-center gap-1 text-center">
-                <h1 className="text-2xl font-bold m-0">Which project should PostHog use by default?</h1>
+                <h1 className="text-2xl font-bold m-0">Which project should Flind use by default?</h1>
                 <p className="text-secondary m-0">
-                    This Slack workspace is connected to more than one project. PostHog uses the default project when a
+                    This Slack workspace is connected to more than one project. Flind uses the default project when a
                     question doesn't name one. Each person can change it for themselves in Slack.
                 </p>
             </div>

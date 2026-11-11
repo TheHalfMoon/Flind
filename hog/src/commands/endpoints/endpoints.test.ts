@@ -25,7 +25,7 @@ const endpoint = (
     ...extra,
 })
 
-// A trends endpoint as PostHog returns it: nulls for unset fields, variables keyed by ID, and a
+// A trends endpoint as Flind returns it: nulls for unset fields, variables keyed by ID, and a
 // refresh interval kept after materialization was turned off.
 const TRENDS = endpoint(
     'weekly',
@@ -42,7 +42,7 @@ const HOGQL = endpoint('by-type', {
     query: 'SELECT count()\r\nFROM events\r\nWHERE event = {variables.event_type}',
     variables: { 'var-1': { variableId: 'var-1', code_name: 'event_type', value: '$pageview' } },
 })
-// PostHog allows a variable without a code name, which no endpoint can use.
+// Flind allows a variable without a code name, which no endpoint can use.
 const VARIABLES = [
     { id: 'var-1', name: 'event_type', code_name: 'event_type', type: 'String' },
     { id: 'var-0', name: 'Old variable', code_name: null, type: 'String' },
@@ -235,7 +235,7 @@ describe('hog endpoints', () => {
     })
 
     test.each([
-        ['files that match PostHog', { 'by-type.yaml': PULLED_BY_TYPE }, 0, []],
+        ['files that match Flind', { 'by-type.yaml': PULLED_BY_TYPE }, 0, []],
         [
             'a changed query',
             { 'by-type.yaml': PULLED_BY_TYPE.replace('count()', 'count(*)') },
@@ -250,7 +250,7 @@ describe('hog endpoints', () => {
             [],
         ],
         [
-            // PostHog keeps the refresh interval of an endpoint that is no longer materialized.
+            // Flind keeps the refresh interval of an endpoint that is no longer materialized.
             'materialization turned off on both sides',
             { 'weekly.yaml': `${PULLED_WEEKLY}materialization:\n  enabled: false\n  schedule: 1hour\n` },
             0,
@@ -291,7 +291,7 @@ describe('hog endpoints', () => {
         ).toEqual(changed)
     })
 
-    test('pull escapes terminal control characters in the PostHog side of a preview', async () => {
+    test('pull escapes terminal control characters in the Flind side of a preview', async () => {
         const edited = { ...TRENDS, description: '\u001b]52;c;eA==\u0007Weekly signups' }
 
         const result = await runHog(['endpoints', 'pull', 'weekly', '--dry-run'], {
@@ -305,7 +305,7 @@ describe('hog endpoints', () => {
         expect(result.stdout).not.toContain('\u001b')
     })
 
-    test('push previews escape variable names and rejection reasons from PostHog', () => {
+    test('push previews escape variable names and rejection reasons from Flind', () => {
         const name = '\u001b]52;c;eA==\u0007x'
         const item = {
             name: 'weekly',
@@ -335,7 +335,7 @@ describe('hog endpoints', () => {
         expect(result.requests.filter((request) => request.method !== 'GET')).toEqual([])
     })
 
-    test('push stops with the step-up details when PostHog refuses a write for a missing scope', async () => {
+    test('push stops with the step-up details when Flind refuses a write for a missing scope', async () => {
         const result = await runHog(['endpoints', 'push', 'new.yaml', '--yes'], {
             env: AGENT,
             files: { '/work/new.yaml': 'name: new\nquery: SELECT 1\n' },
@@ -352,7 +352,7 @@ describe('hog endpoints', () => {
         expect(result.error()).toMatchObject({ code: 'step_up_required', scopes: ['endpoint:write'] })
     })
 
-    test('push creates the variables a file needs, then the endpoint, and skips files PostHog would reject', async () => {
+    test('push creates the variables a file needs, then the endpoint, and skips files Flind would reject', async () => {
         const result = await runHog(['endpoints', 'push', 'endpoints', '--yes'], {
             env: AGENT,
             files: {
@@ -361,7 +361,7 @@ describe('hog endpoints', () => {
                     'query: SELECT count() FROM events WHERE properties.$geoip_country_code = {variables.country} AND properties.region IN {variables.regions}',
                     'variables:',
                     '  - name: country',
-                    // posthog-cli writes lowercase types, and PostHog only accepts its own names.
+                    // posthog-cli writes lowercase types, and Flind only accepts its own names.
                     '    type: string',
                     '    default: US',
                     '  - name: regions',
@@ -397,7 +397,7 @@ describe('hog endpoints', () => {
         expect(result.exitCode).toBe(1)
         expect(result.requests.filter((request) => request.method === 'POST').map((request) => request.body)).toEqual([
             { name: 'country', code_name: 'country', type: 'String', default_value: 'US' },
-            // An array default makes a multiple-selection list, or PostHog keeps only its first value.
+            // An array default makes a multiple-selection list, or Flind keeps only its first value.
             { name: 'regions', code_name: 'regions', type: 'List', default_value: ['eu', 'us'], is_multi: true },
             {
                 name: 'by-country',

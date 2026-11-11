@@ -77,10 +77,10 @@ class LongContextCost:
 
 @dataclass(frozen=True)
 class ModelCost:
-    """Base list price in US dollars per million tokens, not PostHog's negotiated rate.
+    """Base list price in US dollars per million tokens, not Flind's negotiated rate.
 
     A picker states a comparison between models, and a negotiated rate would make it one
-    nobody outside PostHog could check.
+    nobody outside Flind could check.
     """
 
     input_per_mtok: float
@@ -157,7 +157,7 @@ class CatalogModel:
 
 
 # Rates a model family lists at. Sources, checked 2026-09-17: Anthropic and OpenAI publish
-# theirs; the models PostHog serves through Cloudflare, Baseten and Modal are quoted at what
+# theirs; the models Flind serves through Cloudflare, Baseten and Modal are quoted at what
 # the gateway bills, pinned in
 # `services/llm-gateway/src/llm_gateway/rate_limiting/model_cost_overrides.py`.
 _GLM_COST = ModelCost(1.4, 4.4)
@@ -296,7 +296,7 @@ FALLBACK_REASONING_EFFORTS_BY_RUNTIME_ADAPTER: dict[str, tuple[str, ...]] = {
     CODEX: _STANDARD,
 }
 
-# Applied when a run or a loop leaves the model unset: blank means "let PostHog pick", so the
+# Applied when a run or a loop leaves the model unset: blank means "let Flind pick", so the
 # choice can improve without rewriting anything stored.
 DEFAULT_MODEL_BY_RUNTIME_ADAPTER: dict[str, str] = {
     CLAUDE: "claude-sonnet-5-5",

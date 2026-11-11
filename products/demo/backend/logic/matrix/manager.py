@@ -165,7 +165,7 @@ class MatrixManager:
                 print(f"Found existing account for {email}.")
             if is_staff and not existing_user.is_staff:
                 # Make sure the user is marked as staff - this is for users who signed up normally before
-                # and now are logging in securely as a PostHog team member
+                # and now are logging in securely as a Flind team member
                 existing_user.is_staff = True
                 existing_user.save()
             return (existing_user.organization, existing_user.team, existing_user)
@@ -274,7 +274,7 @@ class MatrixManager:
 
     @classmethod
     def _create_master_team(cls) -> Team:
-        organization = Organization.objects.create(id=cls.MASTER_TEAM_ID, name="PostHog")
+        organization = Organization.objects.create(id=cls.MASTER_TEAM_ID, name="Flind")
         return cls.create_team(organization, id=cls.MASTER_TEAM_ID, name="Master")
 
     @classmethod

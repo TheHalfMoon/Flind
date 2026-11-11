@@ -25,7 +25,7 @@ import SourceSetupIntro from "../\_snippets/source-setup-intro.mdx"
 import SyncModes from "../\_snippets/sync-modes.mdx"
 import TroubleshootingLink from "../\_snippets/dw-troubleshooting-link.mdx"
 
-[Everhour](https://everhour.com) is a time-tracking, budgeting, and resource-planning tool for teams. This source syncs your Everhour clients, projects, tasks, project sections, project custom fields, team members, time records, invoices, expenses, expense categories, timecards, timesheets, and resource planner assignments, time off types and allocations into the PostHog data warehouse so you can join time-tracking data with your product and revenue data.
+[Everhour](https://everhour.com) is a time-tracking, budgeting, and resource-planning tool for teams. This source syncs your Everhour clients, projects, tasks, project sections, project custom fields, team members, time records, invoices, expenses, expense categories, timecards, timesheets, and resource planner assignments, time off types and allocations into the Flind data warehouse so you can join time-tracking data with your product and revenue data.
 
 ## Prerequisites
 
@@ -41,15 +41,15 @@ You'll need your Everhour **API key**:
 2. Open your [profile settings](https://app.everhour.com/#/account/profile).
 3. Copy the key from the **API** section.
 
-Paste the key into the API key field when connecting the source in PostHog. The key is sent only over the `X-Api-Key` header to `https://api.everhour.com`.
+Paste the key into the API key field when connecting the source in Flind. The key is sent only over the `X-Api-Key` header to `https://api.everhour.com`.
 
 ## Sync modes
 
 <SyncModes />
 
-**Time records** support incremental sync: PostHog uses Everhour's server-side `from`/`to` date window to pull only entries on or after the last synced date.
+**Time records** support incremental sync: Flind uses Everhour's server-side `from`/`to` date window to pull only entries on or after the last synced date.
 
-Every other table syncs as **full refresh**. Clients, projects, users, tasks, sections, custom fields, invoices, expenses, expense categories, timesheets, time off types, and allocations have no server-side change timestamp to filter on. Timecards and assignments do accept a date filter, but it selects rows by the day they cover rather than the day they changed, so it cannot tell PostHog what is new since the last sync.
+Every other table syncs as **full refresh**. Clients, projects, users, tasks, sections, custom fields, invoices, expenses, expense categories, timesheets, time off types, and allocations have no server-side change timestamp to filter on. Timecards and assignments do accept a date filter, but it selects rows by the day they cover rather than the day they changed, so it cannot tell Flind what is new since the last sync.
 
 ## Configuration
 
@@ -67,13 +67,13 @@ A few notes:
 - **Timecards and time records are different things.** A time record is time logged against a task. A timecard is a clock-in and clock-out for one person on one day. Timecards carry no id of their own, so the table is keyed on `(user, date)`.
 - **Invoice line items are nested.** Each invoice row carries its line items in the `invoiceItems` column rather than in a separate table.
 - **Assignments cover planned work and time off.** The `type` column tells the two apart, and the rows reach into the future because they describe scheduled work.
-- **Timesheets are fetched per person.** Everhour's team-wide timesheet endpoint returns one week at a time, so PostHog reads each member's own timesheet history instead, going back about five years. Each row is one person's week, with its tasks, daily totals, timecards, scheduled time off, and approval history nested inside it.
+- **Timesheets are fetched per person.** Everhour's team-wide timesheet endpoint returns one week at a time, so Flind reads each member's own timesheet history instead, going back about five years. Each row is one person's week, with its tasks, daily totals, timecards, scheduled time off, and approval history nested inside it.
 - **Lookup tables resolve the ids on other rows.** Expense categories name the `category` on an expense, time off types name the `timeOffType` on an assignment or an allocation, sections name the section a task sits in, and custom fields describe the custom field values on a task.
 - **Allocations are entitlements, not bookings.** A row says how many days off of one type a person has over a period and how many they have used. The time off they actually booked is in assignments.
 
 ## Troubleshooting
 
 - **Invalid API key** — if the connection fails to validate, regenerate your key in your Everhour profile settings and reconnect. The key requires a paid Everhour plan.
-- **Rate limits** — Everhour rate-limits at roughly 20 requests per 10 seconds per API key. PostHog automatically honors the `Retry-After` header and backs off, so large initial syncs of time records may take a while to complete.
+- **Rate limits** — Everhour rate-limits at roughly 20 requests per 10 seconds per API key. Flind automatically honors the `Retry-After` header and backs off, so large initial syncs of time records may take a while to complete.
 
 <TroubleshootingLink />

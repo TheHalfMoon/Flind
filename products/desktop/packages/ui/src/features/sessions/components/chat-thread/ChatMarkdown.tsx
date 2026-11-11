@@ -188,7 +188,7 @@ function ChatCodeBlock({
 
 /**
  * The chat thread's own markdown renderer — intentionally separate from the app-wide
- * `MarkdownRenderer` (which carries PostHog deeplink handling, Radix Text wrappers, and other
+ * `MarkdownRenderer` (which carries Flind deeplink handling, Radix Text wrappers, and other
  * product baggage). This one is a thin, generic react-markdown setup for chat bubble content:
  * GFM + sanitized HTML, minimal prose styling. Restyle the element map below per product.
  */

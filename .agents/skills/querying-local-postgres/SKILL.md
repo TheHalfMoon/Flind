@@ -4,7 +4,7 @@ description: Run read-only SQL against the local Postgres app database (SELECT, 
 allowed-tools: Bash
 ---
 
-# Querying local Postgres (READ-ONLY) — PostHog repo
+# Querying local Postgres (READ-ONLY) — Flind repo
 
 User's query: $ARGUMENTS
 
@@ -67,7 +67,7 @@ Optional flags (when useful): `SETTINGS` (show non-default GUCs), `WAL` (with `A
 - **Production / shared DBs** — analyzing hot or wide queries can add load; prefer staging, a replica, or off-peak when the user cares about impact.
 - **`EXPLAIN` without `ANALYZE`** — does not execute the inner statement (except some special cases); still only wrap **read-only** SQL.
 
-## PostHog: connection and `DATABASE_URL`
+## Flind: connection and `DATABASE_URL`
 
 ### Local Postgres (host machine) — default for this skill
 
@@ -123,7 +123,7 @@ Point `psql` at the right database by changing the path in `DATABASE_URL` (e.g. 
 > read-only. The inline equivalent is `SET TRANSACTION READ ONLY;` **as the first statement** of the
 > `-c` string (it affects the current transaction, unlike `SET SESSION CHARACTERISTICS`).
 
-**Run from the PostHog repo root** so relative env paths resolve.
+**Run from the Flind repo root** so relative env paths resolve.
 
 **Default — local hardcoded URL** (`posthog` / `posthog` @ `localhost:5432` / db `posthog`):
 
@@ -147,13 +147,13 @@ npx dotenv -e .env -- bash -c "PGOPTIONS='-c default_transaction_read_only=on' p
 - Default `LIMIT 100` unless the user specifies otherwise.
 - For wide rows use `-x`: `psql ... -x -c "..."`.
 
-## Schema reference (PostHog)
+## Schema reference (Flind)
 
 - **Django models → tables:** see `posthog/models/` (and product packages under `products/`). Table names are usually prefixed with `posthog_` and snake-cased (e.g. `posthog_team`, `posthog_user`). Confirm with `\dt posthog_*` in psql, or check the model's `Meta.db_table` if nonstandard.
 - **Migrations:** `posthog/migrations/` (and product migration paths) define the authoritative DDL over time.
 - **Person table name:** configurable via `PERSON_TABLE_NAME` (see `data_stores.py`); default `posthog_person`.
 
-## Debugging with the query runner (PostHog-flavored)
+## Debugging with the query runner (Flind-flavored)
 
 - Confirm a row exists for a team, project, user, or feature-flag linkage; check soft-delete / `deleted` fields where applicable.
 - Compare counts and joins to what the app assumes (e.g. membership, project access).

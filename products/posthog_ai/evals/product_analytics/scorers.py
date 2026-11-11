@@ -52,7 +52,7 @@ How would you rate the alignment of the generated query with the expected query?
 Details matter greatly here — including math types, property types, and filter direction — so be harsh.
 """.strip()
 
-# PostHog MCP tools that persist saved-insight state. The sandbox is disposable
+# Flind MCP tools that persist saved-insight state. The sandbox is disposable
 # but these tools still hit real rows, so any successful call is a bug in the
 # agent's behaviour for a "just run the query" prompt.
 INSIGHT_WRITE_TOOLS = frozenset(

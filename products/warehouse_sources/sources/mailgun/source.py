@@ -109,7 +109,7 @@ class MailgunSource(
             name=ExternalDataSourceType.MAILGUN,
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Mailgun",
-            caption=f"""Enter your Mailgun private API key to pull your Mailgun data into the PostHog Data warehouse.
+            caption=f"""Enter your Mailgun private API key to pull your Mailgun data into the Flind Data warehouse.
 
 You can find your private API key in the [Mailgun dashboard]({API_SECURITY_URL}) under **Settings → API security**. Pick the region that matches where your Mailgun account is hosted.
 
@@ -141,7 +141,7 @@ Note: Mailgun only retains events for a limited period (1 day on free plans, up 
                 ],
             ),
             webhookSetupCaption=(
-                "PostHog registers a webhook on every sending domain of your account, for every "
+                "Flind registers a webhook on every sending domain of your account, for every "
                 "Mailgun event type, using the API key above. Webhook events land in the "
                 f"`{WEBHOOK_EVENTS_ENDPOINT}` table, which keeps history past the 1 to 30 days "
                 "Mailgun retains events for.\n\n"
@@ -163,7 +163,7 @@ Note: Mailgun only retains events for a limited period (1 day on free plans, up 
                         required=True,
                         placeholder="",
                         caption=(
-                            f"From [Settings > API security]({API_SECURITY_URL}). PostHog uses it to verify "
+                            f"From [Settings > API security]({API_SECURITY_URL}). Flind uses it to verify "
                             "the HMAC-SHA256 signature on every delivery."
                         ),
                         secret=True,

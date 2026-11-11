@@ -9,11 +9,11 @@ export const getClaudeAgentSDKSteps = (ctx: OnboardingComponentsContext): StepDe
 
     return [
         {
-            title: 'Install the PostHog SDK',
+            title: 'Install the Flind SDK',
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Setting up analytics starts with installing the PostHog Python SDK.</Markdown>
+                    <Markdown>Setting up analytics starts with installing the Flind Python SDK.</Markdown>
 
                     <CodeBlock
                         language="bash"
@@ -30,8 +30,8 @@ export const getClaudeAgentSDKSteps = (ctx: OnboardingComponentsContext): StepDe
             content: (
                 <>
                     <Markdown>
-                        Install the Claude Agent SDK. PostHog instruments your agent queries by wrapping the `query()`
-                        function. The PostHog SDK **does not** proxy your calls.
+                        Install the Claude Agent SDK. Flind instruments your agent queries by wrapping the `query()`
+                        function. The Flind SDK **does not** proxy your calls.
                     </Markdown>
 
                     <CodeBlock
@@ -43,7 +43,7 @@ export const getClaudeAgentSDKSteps = (ctx: OnboardingComponentsContext): StepDe
 
                     <CalloutBox type="fyi" icon="IconInfo" title="Proxy note">
                         <Markdown>
-                            These SDKs **do not** proxy your calls. They only fire off an async call to PostHog in the
+                            These SDKs **do not** proxy your calls. They only fire off an async call to Flind in the
                             background to send the data. You can also use AI observability with other SDKs or our API,
                             but you will need to capture the data in the right format. See the schema in the [manual
                             capture section](https://posthog.com/docs/ai-observability/installation/manual-capture) for
@@ -54,14 +54,14 @@ export const getClaudeAgentSDKSteps = (ctx: OnboardingComponentsContext): StepDe
             ),
         },
         {
-            title: 'Initialize PostHog and run a query',
+            title: 'Initialize Flind and run a query',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                            Initialize PostHog with your project token and host from [your project
-                            settings](https://app.posthog.com/settings/project). Then use the PostHog \`query()\`
+                            Initialize Flind with your project token and host from [your project
+                            settings](https://app.posthog.com/settings/project). Then use the Flind \`query()\`
                             wrapper as a drop-in replacement for \`claude_agent_sdk.query()\`. This automatically
                             captures \`$ai_generation\`, \`$ai_span\`, and \`$ai_trace\` events, including a span
                             for each tool the agent uses, such as \`Bash\` below.
@@ -110,7 +110,7 @@ export const getClaudeAgentSDKSteps = (ctx: OnboardingComponentsContext): StepDe
                             {dedent`
                             **Notes:**
                             - The wrapper yields all original messages unchanged, fully transparent to your code.
-                            - Pass \`$ai_session_id\` in \`posthog_properties\` to group every generation, span, and trace from a call into one PostHog session.
+                            - Pass \`$ai_session_id\` in \`posthog_properties\` to group every generation, span, and trace from a call into one Flind session.
                             - If you want to capture LLM events anonymously, **do not** pass a distinct ID. See our docs on [anonymous vs identified events](https://posthog.com/docs/data/anonymous-vs-identified-events) to learn more.
                             `}
                         </Markdown>
@@ -132,7 +132,7 @@ export const getClaudeAgentSDKSteps = (ctx: OnboardingComponentsContext): StepDe
             content: (
                 <>
                     <Markdown>
-                        If you make multiple `query()` calls with the same PostHog configuration, use `instrument()` to
+                        If you make multiple `query()` calls with the same Flind configuration, use `instrument()` to
                         configure once and reuse across queries.
                     </Markdown>
 
@@ -158,7 +158,7 @@ export const getClaudeAgentSDKSteps = (ctx: OnboardingComponentsContext): StepDe
                             options = ClaudeAgentOptions(max_turns=10)
 
                             async def main():
-                                # All queries share the same PostHog config
+                                # All queries share the same Flind config
                                 async for msg in ph.query(prompt="Question 1", options=options):
                                     ...
                                 async for msg in ph.query(prompt="Question 2", options=options):
@@ -168,7 +168,7 @@ export const getClaudeAgentSDKSteps = (ctx: OnboardingComponentsContext): StepDe
                         `}
                     />
 
-                    <Markdown>You can override any PostHog parameter per-query:</Markdown>
+                    <Markdown>You can override any Flind parameter per-query:</Markdown>
 
                     <CodeBlock
                         language="python"
@@ -220,7 +220,7 @@ export const getClaudeAgentSDKSteps = (ctx: OnboardingComponentsContext): StepDe
 
                     <Markdown>
                         {dedent`
-                            Across the whole query, PostHog captures:
+                            Across the whole query, Flind captures:
                             - \`$ai_generation\` events for each LLM turn (with token counts, cost, and cache metrics)
                             - \`$ai_span\` events for each tool use (Read, Glob, Grep, Bash, etc.)
                             - An \`$ai_trace\` event grouping the entire conversation with total cost and latency

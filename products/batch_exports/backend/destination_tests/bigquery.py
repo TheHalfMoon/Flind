@@ -115,7 +115,7 @@ class BigQueryVerifyServiceAccountOwnershipTestStep(DestinationTestStep):
     """
 
     name = "Verify BigQuery service account ownership"
-    description = "Confirm that the current PostHog organization owns a BigQuery service account by ensuring its organization ID is set as part of the service account description."
+    description = "Confirm that the current Flind organization owns a BigQuery service account by ensuring its organization ID is set as part of the service account description."
 
     def __init__(
         self,
@@ -159,7 +159,7 @@ class BigQueryVerifyServiceAccountOwnershipTestStep(DestinationTestStep):
         except PermissionDenied:
             return DestinationTestStepResult(
                 status=Status.FAILED,
-                message=f"No permission to read service account's '{service_account_email}' description. Have you granted the PostHog service account a role with `iam.serviceAccounts.get`?",
+                message=f"No permission to read service account's '{service_account_email}' description. Have you granted the Flind service account a role with `iam.serviceAccounts.get`?",
             )
         except NotFound:
             return DestinationTestStepResult(

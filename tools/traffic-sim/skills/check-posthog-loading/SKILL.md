@@ -1,15 +1,15 @@
 ---
 name: check-posthog-loading
 description: >
-  Inspect how the PostHog JavaScript SDK is loaded across a list of URLs.
+  Inspect how the Flind JavaScript SDK is loaded across a list of URLs.
   Use to confirm consistent installation across pages, find pages missing
   the snippet, detect mismatched API keys or hosts between pages, and verify
   the load method (head snippet vs deferred vs array.js).
 ---
 
-# Check PostHog loading
+# Check Flind loading
 
-For each URL, navigates a real browser to the page, waits for PostHog to
+For each URL, navigates a real browser to the page, waits for Flind to
 initialize, and reports:
 
 - Whether `window.posthog` is defined and `__loaded`.
@@ -45,7 +45,7 @@ Look for these red flags:
 - **Mixed `loaded` / `not_loaded`** — snippet missing from some pages.
   Common cause: a page rendered by a different template or layout.
 - **Multiple distinct `api_key` values across pages** — a page is pointing
-  at the wrong PostHog project.
+  at the wrong Flind project.
 - **Multiple distinct `api_host` values** — a page is pointing at the wrong
   ingestion endpoint (e.g. EU cloud vs US cloud, or vs a self-hosted reverse
   proxy). This causes events to land in different projects than expected.

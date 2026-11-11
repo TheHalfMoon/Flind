@@ -11,7 +11,7 @@ import { APP_DATA_META_KEY } from '@/ui-apps/types'
 import { type Context, type Tool, type ZodObjectAny } from './types'
 
 export const RENDER_UI_TOOL_NAME = 'render-ui'
-export const RENDER_UI_TOOL_TITLE = 'Render a PostHog visualization'
+export const RENDER_UI_TOOL_TITLE = 'Render a Flind visualization'
 export const RENDER_UI_TOOL_DESCRIPTION = RENDER_UI_PROMPT.trim()
 
 // OpenAI's plugin review rejects a tools/list entry without these hints.

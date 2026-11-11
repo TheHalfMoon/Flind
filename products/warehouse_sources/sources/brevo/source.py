@@ -69,7 +69,7 @@ class BrevoSource(ResumableSource[BrevoSourceConfig, BrevoResumeConfig]):
             keywords=["sendinblue"],
             label="Brevo",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Brevo API key to automatically pull your Brevo (formerly Sendinblue) data into the PostHog Data warehouse.
+            caption="""Enter your Brevo API key to automatically pull your Brevo (formerly Sendinblue) data into the Flind Data warehouse.
 
 You can create an API key in your [Brevo account settings](https://app.brevo.com/settings/keys/api).""",
             iconPath="/static/services/brevo.png",

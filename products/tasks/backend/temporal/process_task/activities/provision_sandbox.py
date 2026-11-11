@@ -232,7 +232,7 @@ def _prepare_posthog_desktop_cloud_task(ctx: TaskProcessingContext, sandbox: San
 
     The dev-stack image warms pnpm's content-addressed store but deliberately does
     not retain checkout-specific node_modules or dist directories. Prepare only the
-    internal PostHog checkout that uses that image, after its final branch is in place.
+    internal Flind checkout that uses that image, after its final branch is in place.
 
     The build runs detached so the agent does not wait for it before its first turn.
     Most tasks never touch Desktop, and the ones that do wait on the state directory

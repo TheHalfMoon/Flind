@@ -1,4 +1,4 @@
-"""Which of PostHog's two Cloud regions a request reached.
+"""Which of Flind's two Cloud regions a request reached.
 
 EU is the primary region: the callback and webhook URLs third parties hold point there, so a
 request for a resource the US region owns arrives here first and has to be forwarded on.

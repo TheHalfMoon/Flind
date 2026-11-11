@@ -525,7 +525,7 @@ container.bind(CLOUD_TASK_AUTH).toDynamicValue((ctx) => ({
   },
 }));
 // ── Canvas / Channels: host-agnostic dashboard + freeform canvas services ──
-// They only need AuthService + fetch (they reach the PostHog canvases and
+// They only need AuthService + fetch (they reach the Flind canvases and
 // task_channels APIs), so the web host binds them by loading the same core
 // module desktop does; the web host router forwards its canvas routers to these.
 container.load(canvasCoreModule);
@@ -584,7 +584,7 @@ container.bind(MCP_SANDBOX_PROXY_URL).toConstantValue(() => sandboxProxyUrl);
 // they exist and thin stubs for genuinely local-only host capabilities.
 
 // Setup discovery (useSetupDiscovery at __root): SetupRunService is portable
-// core; SetupRunServiceImpl talks to the PostHog API via HOST_TRPC_CLIENT; the
+// core; SetupRunServiceImpl talks to the Flind API via HOST_TRPC_CLIENT; the
 // store adapter is host-agnostic zustand, reused verbatim from desktop.
 container.load(setupCoreModule);
 container.load(setupUiModule);
@@ -610,7 +610,7 @@ container.bind(HEDGEHOG_MODE_HOST).toConstantValue({
 
 // ── GitHub integration: onboarding connect step + __root's useIntegrations() ──
 // Cloud tasks operate on GitHub repos, so these are REAL bindings backed by the
-// PostHog API (api-client), not stubs. The onboarding and integrations features
+// Flind API (api-client), not stubs. The onboarding and integrations features
 // each define their own GITHUB_CONNECT_{CLIENT,SERVICE} tokens; both services
 // are portable core and both client impls are host-agnostic, reused verbatim
 // from the desktop renderer. RepositoriesService has no module, so bind it
@@ -694,7 +694,7 @@ container
   .toConstantValue(webExternalAppsFocusCoordinator);
 
 // ── Task deletion (sidebar context menu / task CRUD) ──
-// The task delete itself goes through the PostHog API; these clients only cover
+// The task delete itself goes through the Flind API; these clients only cover
 // local-worktree cleanup (inert on web) and host UI (confirm dialog, unpin,
 // navigate). TaskDeletionService is portable core.
 container.load(tasksModule);
@@ -744,7 +744,7 @@ container.bind(UPDATES_CLIENT).toConstantValue({
 container.bind(GIT_CACHE_KEY_PROVIDER).toConstantValue(webGitCacheKeyProvider);
 
 // ── Team skills (skills panel) ──
-// Listing team skills is a real PostHog API call, so TeamSkillsService is bound
+// Listing team skills is a real Flind API call, so TeamSkillsService is bound
 // for real. Its workspace client only does local-disk export/install (publish a
 // local skill / materialize a team skill to disk) — neither exists on web, so
 // those two methods reject.

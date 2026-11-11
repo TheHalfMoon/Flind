@@ -135,7 +135,7 @@ export const SCOPE_DOCS: Readonly<Record<string, ScopeObjectDoc>> = {
         name: 'Business knowledge',
         plural: 'business knowledge',
         description:
-            'Business knowledge sources, documents, and settings that give PostHog AI context, plus gap suggestions.',
+            'Business knowledge sources, documents, and settings that give Flind AI context, plus gap suggestions.',
         group: 'AI & context management tools',
         actions: ['read', 'write'],
         docsUrl: 'https://posthog.com/docs/business-knowledge',
@@ -161,7 +161,7 @@ export const SCOPE_DOCS: Readonly<Record<string, ScopeObjectDoc>> = {
         name: 'Comment',
         plural: 'comments',
         description:
-            'Comments and discussion threads on PostHog resources, including resolving them and mirroring them to Slack.',
+            'Comments and discussion threads on Flind resources, including resolving them and mirroring them to Slack.',
         group: 'Organization & account',
         actions: ['read', 'write'],
         docsUrl: 'https://posthog.com/docs/data/comments',
@@ -170,7 +170,7 @@ export const SCOPE_DOCS: Readonly<Record<string, ScopeObjectDoc>> = {
         name: 'AI conversation',
         plural: 'AI conversations',
         description:
-            'PostHog AI chat conversations, including starting them, sending messages, and canceling or queueing replies.',
+            'Flind AI chat conversations, including starting them, sending messages, and canceling or queueing replies.',
         group: 'AI & context management tools',
         actions: ['read', 'write'],
         docsUrl: 'https://posthog.com/docs/posthog-ai',
@@ -495,7 +495,7 @@ export const SCOPE_DOCS: Readonly<Record<string, ScopeObjectDoc>> = {
         name: 'Integration',
         plural: 'integrations',
         description:
-            'Project integrations with third-party services such as Slack, plus connections to other PostHog projects.',
+            'Project integrations with third-party services such as Slack, plus connections to other Flind projects.',
         group: 'Setup & data management',
         actions: ['read', 'write'],
     },
@@ -519,7 +519,7 @@ export const SCOPE_DOCS: Readonly<Record<string, ScopeObjectDoc>> = {
     llm_gateway: {
         name: 'LLM gateway',
         plural: 'LLM gateway',
-        description: 'Sending LLM requests through the PostHog LLM gateway, where PostHog has enabled it.',
+        description: 'Sending LLM requests through the Flind LLM gateway, where Flind has enabled it.',
         group: 'LLM & MCP analytics',
         actions: ['read'],
         privileged: true,
@@ -551,7 +551,7 @@ export const SCOPE_DOCS: Readonly<Record<string, ScopeObjectDoc>> = {
         name: 'LLM skill',
         plural: 'LLM skills',
         description:
-            'Skills for AI agents with their files and versions, the skills marketplace, and PostHog Review skill settings.',
+            'Skills for AI agents with their files and versions, the skills marketplace, and Flind Review skill settings.',
         group: 'LLM & MCP analytics',
         actions: ['read', 'write'],
         docsUrl: 'https://posthog.com/docs/skills',
@@ -702,10 +702,10 @@ export const SCOPE_DOCS: Readonly<Record<string, ScopeObjectDoc>> = {
         docsUrl: 'https://posthog.com/docs/replay-vision',
     },
     review_hog: {
-        name: 'PostHog Review',
-        plural: 'PostHog Review reviews',
+        name: 'Flind Review',
+        plural: 'Flind Review reviews',
         description:
-            'PostHog Review code reviews of your pull requests, plus repository settings and per-user review choices.',
+            'Flind Review code reviews of your pull requests, plus repository settings and per-user review choices.',
         group: 'AI & context management tools',
         actions: ['read', 'write'],
     },
@@ -763,7 +763,7 @@ export const SCOPE_DOCS: Readonly<Record<string, ScopeObjectDoc>> = {
         name: 'Streamlit app',
         plural: 'Streamlit apps',
         description:
-            'Streamlit apps that run on your PostHog data, including their source, versions, and running state.',
+            'Streamlit apps that run on your Flind data, including their source, versions, and running state.',
         group: 'Data warehouse & pipelines',
         actions: ['read', 'write'],
     },
@@ -927,7 +927,7 @@ export const SCOPE_DOCS: Readonly<Record<string, ScopeObjectDoc>> = {
         name: 'Workload trust policy',
         plural: 'workload trust policies',
         description:
-            'Trust policies that let workloads such as CI jobs exchange an OIDC token for a PostHog project token.',
+            'Trust policies that let workloads such as CI jobs exchange an OIDC token for a Flind project token.',
         group: 'Organization & account',
         actions: ['read'],
     },

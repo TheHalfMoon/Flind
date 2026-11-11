@@ -2,7 +2,7 @@
 
 Access is controlled by the `autoresearch` feature flag. The `autoresearch-report-notebook`
 flag gates the report notebook that a training run builds. Rollout is configured on each
-flag in PostHog, so code only asks whether it's enabled for this user/team.
+flag in Flind, so code only asks whether it's enabled for this user/team.
 """
 
 from django.conf import settings

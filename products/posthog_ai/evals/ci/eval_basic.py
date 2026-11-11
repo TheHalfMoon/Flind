@@ -28,9 +28,9 @@ async def eval_bugfix(ctx: EvalContext) -> None:
         SandboxedEvalCase(
             name="mcp_pageview_count_last_week",
             prompt=(
-                "Using the PostHog MCP tools available to you, query how many $pageview events "
+                "Using the Flind MCP tools available to you, query how many $pageview events "
                 "were captured in the last 7 days for the current project. Run a HogQL query "
-                "via the PostHog MCP server and report the total count as a single integer in "
+                "via the Flind MCP server and report the total count as a single integer in "
                 "your final reply."
             ),
         ),
@@ -67,7 +67,7 @@ async def eval_app_link_generation(ctx: EvalContext) -> None:
             name="person_profile_link",
             prompt=(
                 "Using SQL, find one person in this project and read their UUID. Then give me a "
-                "clickable link to open that person's profile page in PostHog."
+                "clickable link to open that person's profile page in Flind."
             ),
             expected={
                 "called_target_tool": {"tool": "generate-app-url"},
@@ -80,7 +80,7 @@ async def eval_app_link_generation(ctx: EvalContext) -> None:
             name="event_link",
             prompt=(
                 "Using SQL, find one recent `$pageview` event and read its uuid and timestamp. "
-                "Then give me a clickable link to view that specific event in PostHog."
+                "Then give me a clickable link to view that specific event in Flind."
             ),
             expected={
                 "called_target_tool": {"tool": "generate-app-url"},

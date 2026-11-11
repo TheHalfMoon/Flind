@@ -50,7 +50,7 @@ class OpsgenieSource(ResumableSource[OpsgenieSourceConfig, OpsgenieResumeConfig]
             name=ExternalDataSourceType.OPSGENIE,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Opsgenie",
-            caption="""Enter your Opsgenie API key to pull your Opsgenie data into the PostHog Data warehouse.
+            caption="""Enter your Opsgenie API key to pull your Opsgenie data into the Flind Data warehouse.
 
 You can create an API key in Opsgenie under **Settings → API key management**. The key needs **Read** access; the `integrations` table additionally requires **Configuration access**.
 

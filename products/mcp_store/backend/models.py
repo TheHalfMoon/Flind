@@ -404,7 +404,7 @@ class MCPOrgRule(TeamScopedRootMixin, UUIDModel):
 
 
 class MCPServiceAccount(TeamScopedRootMixin, UUIDModel):
-    """A fixed PostHog agent identity with independent MCP access policies."""
+    """A fixed Flind agent identity with independent MCP access policies."""
 
     team = models.ForeignKey(
         "posthog.Team", on_delete=models.CASCADE, related_name="mcp_service_accounts", db_constraint=False

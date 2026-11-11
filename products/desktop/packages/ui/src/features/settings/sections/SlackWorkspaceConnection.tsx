@@ -219,7 +219,7 @@ export function SlackWorkspaceConnectionCallouts({
       {slackConnect.isTimedOut ? (
         <div className="rounded-(--radius-2) border border-border bg-(--gray-2) px-3 py-2">
           <Text size="xs" variant="muted">
-            We didn't hear back from PostHog. If you completed the connection in
+            We didn't hear back from Flind. If you completed the connection in
             your browser it should appear shortly, otherwise try again.
           </Text>
         </div>

@@ -113,7 +113,7 @@ logger = structlog.get_logger(__name__)
 # Shown as latest_error on schemas reset by slot-invalidation recovery.
 SLOT_INVALIDATION_RECOVERY_MESSAGE = (
     "The source database invalidated this source's replication slot (its WAL retention limit was "
-    "exceeded), so changes since the last successful sync could not be read. PostHog recreated the "
+    "exceeded), so changes since the last successful sync could not be read. Flind recreated the "
     "slot and scheduled a full re-sync of this table; change data capture resumes automatically "
     "once the re-sync completes."
 )
@@ -1622,10 +1622,10 @@ def validate_cdc_prerequisites_activity(inputs: ValidateCDCPrerequisitesInput) -
 def cleanup_orphan_slots_activity() -> None:
     """Safety-net sweeper: clean up orphaned CDC slots and monitor WAL lag.
 
-    1. For deleted/inactive PostHog-managed sources → drop slot + publication
+    1. For deleted/inactive Flind-managed sources → drop slot + publication
     2. For active sources → check WAL lag:
        - Warning threshold: log warning, update source status
-       - Critical threshold (PostHog-managed, safety net on): drop slot, mark error
+       - Critical threshold (Flind-managed, safety net on): drop slot, mark error
        - Self-managed: never drop, only warn
     """
     close_old_connections()
@@ -1677,8 +1677,8 @@ def cleanup_orphan_slots_activity() -> None:
                 management_mode=cdc_config.management_mode,
             )
 
-            # 1. Deleted sources — drop the Temporal schedule (always; PostHog-side)
-            #    and PostHog-managed slot/publication (only when we own them).
+            # 1. Deleted sources — drop the Temporal schedule (always; Flind-side)
+            #    and Flind-managed slot/publication (only when we own them).
             if source.deleted:
                 try:
                     from products.data_warehouse.backend.facade.api import delete_cdc_extraction_schedule
@@ -1803,7 +1803,7 @@ def cleanup_orphan_slots_activity() -> None:
                                 source,
                                 SELF_MANAGED_LAG_REASON,
                                 f"Change data capture replication lag exceeded {critical_threshold_mb} MB. "
-                                f"This slot is self-managed, so PostHog did not drop it — reduce load or WAL "
+                                f"This slot is self-managed, so Flind did not drop it — reduce load or WAL "
                                 f"retention on the source database, or it may invalidate the slot and "
                                 f"require a full re-sync.",
                                 pause=False,

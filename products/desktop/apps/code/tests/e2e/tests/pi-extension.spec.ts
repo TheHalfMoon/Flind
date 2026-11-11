@@ -8,7 +8,7 @@ import { expect, test } from "../fixtures/electron";
 const EXTENSION_SOURCE = `
 export default function (pi) {
   pi.registerCommand("extension-e2e", {
-    description: "Exercise the PostHog Desktop extension RPC UI",
+    description: "Exercise the Flind Desktop extension RPC UI",
     handler: async (_args, ctx) => {
       ctx.ui.setTitle("Extension E2E");
       ctx.ui.setStatus("extension-e2e", "Extension ready");

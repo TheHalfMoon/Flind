@@ -431,7 +431,7 @@ def _build_activity_page_url(project_id: Optional[int], sdk_type: str, version: 
     Activity > Explore drill-in URL for SDK usage, rendered as-is by the SDK Health UI and MCP tool.
 
     Returns a relative path (no host) including /project/<id>/ prefix so MCP agents
-    can combine it with the user's known PostHog host (e.g. us.posthog.com).
+    can combine it with the user's known Flind host (e.g. us.posthog.com).
 
     Returns an empty string when `sdk_type` or a supplied `version` fails validation.
     This is consistent with _build_sql_query and keeps the pair either both populated

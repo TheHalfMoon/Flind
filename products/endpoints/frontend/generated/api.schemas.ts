@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -140,7 +140,7 @@ export interface EndpointResponseApi {
      */
     url: string | null
     /**
-     * Absolute URL to view this endpoint in the PostHog UI.
+     * Absolute URL to view this endpoint in the Flind UI.
      * @nullable
      */
     ui_url: string | null
@@ -297,7 +297,7 @@ export interface EndpointVersionResponseApi {
      */
     url: string | null
     /**
-     * Absolute URL to view this endpoint in the PostHog UI.
+     * Absolute URL to view this endpoint in the Flind UI.
      * @nullable
      */
     ui_url: string | null

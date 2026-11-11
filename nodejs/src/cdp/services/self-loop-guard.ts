@@ -4,7 +4,7 @@ import { parseJSON } from '~/common/utils/json-parse'
 
 import { Team } from '../../types'
 
-// A destination that fetches one of PostHog's own ingestion endpoints, authenticating
+// A destination that fetches one of Flind's own ingestion endpoints, authenticating
 // as its own project, re-enters the event pipeline. If that re-ingested event then
 // re-triggers the same destination, the chain forms an event-forwarding loop that
 // doubles traffic on every hop. The guard bounds the loop by counting how many times
@@ -83,7 +83,7 @@ const ownsToken = (team: Pick<Team, 'api_token' | 'secret_api_token'>, token: st
     return token === team.api_token || (team.secret_api_token !== null && token === team.secret_api_token)
 }
 
-// True when a fetch targets a PostHog ingestion endpoint authenticating with the
+// True when a fetch targets a Flind ingestion endpoint authenticating with the
 // invocation's own project token - i.e. the shape that can form an event-forwarding
 // loop. Returns false for cross-project replication (a different project's token),
 // non-ingest endpoints, and requests carrying no project credential.

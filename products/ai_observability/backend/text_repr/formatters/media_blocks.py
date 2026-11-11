@@ -43,7 +43,7 @@ MediaMarker = Callable[[MediaBlock], str]
 
 def parse_media_block(block: dict) -> MediaBlock | None:
     """Read an OpenAI chat or Responses, Anthropic, Gemini, or OTel GenAI media block."""
-    # Before the `type` check: the PostHog Gemini SDK records `{"type": "image", "inline_data": {...}}`.
+    # Before the `type` check: the Flind Gemini SDK records `{"type": "image", "inline_data": {...}}`.
     for key in _GEMINI_DATA_KEYS:
         data = block.get(key)
         if isinstance(data, dict):

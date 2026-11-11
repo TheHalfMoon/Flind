@@ -53,7 +53,7 @@ export function getEventsQueriesForTeam(team: Partial<TeamType>): Record<string,
     const projectDefault = getDefaultEventsQueryForTeam(team)
     return {
         ...(projectDefault ? { 'Project default view': projectDefault } : {}),
-        'PostHog default view': getDefaultEventsSceneQuery().source as EventsQuery,
+        'Flind default view': getDefaultEventsSceneQuery().source as EventsQuery,
         'Event counts view': {
             kind: NodeKind.EventsQuery,
             select: ['event', 'count()'],

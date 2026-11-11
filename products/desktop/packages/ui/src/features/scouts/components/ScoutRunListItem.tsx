@@ -130,7 +130,7 @@ export function ScoutRunListItem({
         ) : status === "failed" ? (
           <p className="mt-2 pl-[21px] text-[12.5px] text-gray-10 italic leading-snug">
             No summary. The run ended before it wrote a close-out. The task run
-            in PostHog is the only diagnostic.
+            in Flind is the only diagnostic.
           </p>
         ) : null
       ) : null}

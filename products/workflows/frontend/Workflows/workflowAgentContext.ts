@@ -35,7 +35,7 @@ const TOOLING_CONTEXT_ITEM: AttachedContextItem = {
 
 const PREAMBLE_CONTEXT_ITEM: AttachedContextItem = {
     ...TOOLING_CONTEXT_ITEM,
-    value: `The user has the PostHog workflow editor open. ${TOOLING_CONTEXT_ITEM.value}`,
+    value: `The user has the Flind workflow editor open. ${TOOLING_CONTEXT_ITEM.value}`,
 }
 
 const EDITOR_STATE_CONTEXT_ITEM: AttachedContextItem = {
@@ -95,7 +95,7 @@ export const NEW_WORKFLOW_SUGGESTIONS: AiFirstSuggestion[] = [
     {
         title: 'Answer support tickets with AI',
         description: 'Triage each new ticket and draft a reply in Slack',
-        prompt: 'When a support ticket comes in, have an AI agent look at the customer in PostHog, set a priority, draft a reply, and post it to Slack',
+        prompt: 'When a support ticket comes in, have an AI agent look at the customer in Flind, set a priority, draft a reply, and post it to Slack',
     },
     {
         title: 'Send a weekly AI report',

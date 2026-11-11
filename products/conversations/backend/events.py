@@ -1,9 +1,9 @@
 """
-Emit PostHog analytics events for ticket and message state changes.
+Emit Flind analytics events for ticket and message state changes.
 
 These events power workflow triggers (e.g. "if ticket pending for X days, resolve it").
 Staff/system actions use the actor's distinct_id; customer actions use the ticket's distinct_id.
-Events are sent to the customer's PostHog project via their team's API token.
+Events are sent to the customer's Flind project via their team's API token.
 """
 
 import uuid
@@ -292,9 +292,9 @@ def _resolve_person_org_groups(ticket: Ticket, team: Team) -> tuple[bool, dict |
     """Resolve the customer organization's ``$groups`` from the requester's identity.
 
     Returns ``(process_person, groups)``. ``groups`` is ``None`` when the
-    customer can't be tied to a PostHog organization.
+    customer can't be tied to a Flind organization.
 
-    The web widget sets ``ticket.distinct_id`` to a real PostHog distinct_id,
+    The web widget sets ``ticket.distinct_id`` to a real Flind distinct_id,
     so the membership is found directly. Other channels (Slack, Email, MS
     Teams) set ``distinct_id`` to the customer email (or empty), so we fall
     back to looking the person up by ``properties.email`` in ClickHouse and

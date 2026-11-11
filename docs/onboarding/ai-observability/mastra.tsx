@@ -17,14 +17,14 @@ export const getMastraSteps = (ctx: OnboardingComponentsContext): StepDefinition
                         <Markdown>
                             See the complete [Node.js
                             example](https://github.com/PostHog/posthog-js/tree/main/examples/example-ai-mastra) on
-                            GitHub. If you're using the PostHog SDK wrapper instead, see the [Node.js wrapper
+                            GitHub. If you're using the Flind SDK wrapper instead, see the [Node.js wrapper
                             example](https://github.com/PostHog/posthog-js/tree/e08ff1be/examples/example-ai-mastra).
                         </Markdown>
                     </CalloutBox>
 
                     <Markdown>
                         Install Mastra with the official `@mastra/posthog` exporter. Mastra's observability system sends
-                        traces to PostHog as `$ai_generation` events automatically.
+                        traces to Flind as `$ai_generation` events automatically.
                     </Markdown>
 
                     <CodeBlock
@@ -37,13 +37,13 @@ export const getMastraSteps = (ctx: OnboardingComponentsContext): StepDefinition
             ),
         },
         {
-            title: 'Configure Mastra with the PostHog exporter',
+            title: 'Configure Mastra with the Flind exporter',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         Initialize Mastra with an `Observability` config that uses the `PosthogExporter`. Pass your
-                        PostHog project token and host from [your project
+                        Flind project token and host from [your project
                         settings](https://app.posthog.com/settings/project).
                     </Markdown>
 
@@ -96,7 +96,7 @@ export const getMastraSteps = (ctx: OnboardingComponentsContext): StepDefinition
 
                     <Markdown>
                         Pass `tracingOptions.metadata` to `generate()` to attach per-request metadata. The `userId`
-                        field maps to PostHog's distinct ID, `sessionId` maps to `$ai_session_id`, and any other keys
+                        field maps to Flind's distinct ID, `sessionId` maps to `$ai_session_id`, and any other keys
                         are passed through as custom event properties.
                     </Markdown>
 

@@ -316,7 +316,7 @@ export const pipelineOverviewSceneLogic = kea<pipelineOverviewSceneLogicType>([
         /**
          * One chart series per destination, biggest first so the legend matches the stack.
          *
-         * The PostHog warehouse series is derived rather than read directly. Runs from before
+         * The Flind warehouse series is derived rather than read directly. Runs from before
          * destination attribution landed report no destination at all, and a run that resolves
          * to the warehouse alone still reports none. Those rows only exist keyed by schema, in
          * the total, so the warehouse gets whatever the other destinations did not take.
@@ -365,7 +365,7 @@ export const pipelineOverviewSceneLogic = kea<pipelineOverviewSceneLogicType>([
             },
         ],
         /**
-         * Tables PostHog imports on a schedule. Counts schemas switched on rather than every
+         * Tables Flind imports on a schedule. Counts schemas switched on rather than every
          * schema a source offers, so it matches what the pipeline actually runs.
          */
         syncingTableCount: [

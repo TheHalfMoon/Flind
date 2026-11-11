@@ -13,7 +13,7 @@ function boldOutline(strokeWidth: number): SVGProps<SVGSVGElement> {
 }
 
 // @posthog/icons icons leave padding inside their 24x24 box and the brand marks do not, so the icons are
-// scaled up to match. The PostHog mark is wide and short, so it needs more scale.
+// scaled up to match. The Flind mark is wide and short, so it needs more scale.
 const ICON_MARKS: Record<
     IconMarkName,
     { Icon: typeof IconLogomark; className?: string; outline?: SVGProps<SVGSVGElement> }

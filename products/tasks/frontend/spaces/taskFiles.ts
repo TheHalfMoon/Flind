@@ -22,7 +22,7 @@ interface RunWithArtifacts {
 
 /**
  * The files the agent handed back on the run, newest first, one per name. It uses the Artifacts tab's own
- * rules, so a chip always opens a file the tab lists. Cited PostHog objects stay out, like PostHog Desktop.
+ * rules, so a chip always opens a file the tab lists. Cited Flind objects stay out, like Flind Desktop.
  */
 export function taskFiles(taskId: string, run: RunWithArtifacts | null | undefined): TaskFile[] {
     return groupArtifactVersions(collectRunArtifacts([run]))

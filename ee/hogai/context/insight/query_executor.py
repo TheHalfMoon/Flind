@@ -259,7 +259,7 @@ class AssistantQueryExecutor:
     for AI assistant responses.
 
     Attributes:
-        _team: The PostHog team context for query execution
+        _team: The Flind team context for query execution
         _utc_now_datetime: Current UTC datetime for time-based calculations
     """
 
@@ -466,7 +466,7 @@ class AssistantQueryExecutor:
             )
 
         try:
-            # Execute the query using PostHog's query processing system
+            # Execute the query using Flind's query processing system
             process_start = time.time()
             if debug_timing:
                 logger.warning(f"{TIMING_LOG_PREFIX} Calling process_query_dict")

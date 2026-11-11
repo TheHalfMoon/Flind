@@ -114,7 +114,7 @@ class _SweepStats:
 
 class Command(BaseCommand):
     help = (
-        "Soft-delete the insights PostHog auto-generates on feature flag usage dashboards, whether "
+        "Soft-delete the insights Flind auto-generates on feature flag usage dashboards, whether "
         "the owning flag is live or soft-deleted. Mirrors the insight bulk_delete side effects "
         "(tiles, activity log) and nulls FeatureFlag.usage_dashboard for any flag whose usage "
         "dashboard ends up empty."
@@ -390,7 +390,7 @@ class Command(BaseCommand):
 
     def _usage_dashboard_flags(self) -> QuerySet[FeatureFlag]:
         """Every flag row that vouches for a usage dashboard, soft-deleted rows included: deleting
-        a flag never touches usage_dashboard, so the row still proves PostHog generated whatever
+        a flag never touches usage_dashboard, so the row still proves Flind generated whatever
         the dashboard holds. Pass 1 scans it and pass 2 excludes it, so both passes must read flags
         through this one queryset.
         """
@@ -442,7 +442,7 @@ class Command(BaseCommand):
     def _delete_orphaned(self) -> None:
         """Pass 2 (opt-in): generated insights left on a generated dashboard no flag row points at."""
         # Anchor on the dashboard the generator stamps, so a name match is never the only evidence that
-        # PostHog created the insight. Pass 1 owns every dashboard a flag row still references, so this
+        # Flind created the insight. Pass 1 owns every dashboard a flag row still references, so this
         # pass exists for dashboards with no flag row at all (hard-deleted rows, see
         # _free_key_held_by_soft_deleted_flags in products/feature_flags/backend/api/feature_flag.py);
         # ones whose dashboard was deleted outright stay out of scope.

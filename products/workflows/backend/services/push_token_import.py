@@ -266,7 +266,7 @@ def run_push_token_import_batches(team_id: int, import_id: uuid.UUID) -> bool:
         fail_push_token_import(
             team_id,
             import_id,
-            "PostHog couldn't read the stored devices, so the import stopped. Upload the file again.",
+            "Flind couldn't read the stored devices, so the import stopped. Upload the file again.",
         )
         return False
 

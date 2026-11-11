@@ -1,7 +1,7 @@
 """Forward GitHub App webhook deliveries onto the internal events topic.
 
 The counterpart to ``products.slack_app.backend.slack_workflow_events``, and deliberately dumb in
-the same way: resolve the PostHog projects behind the GitHub installation, then write the delivery
+the same way: resolve the Flind projects behind the GitHub installation, then write the delivery
 out as-is. A workflow's trigger config decides what it wants, and the CDP consumer evaluates that.
 
 Registered by ``products/workflows/backend/webhook_consumers.py`` as the ``workflows`` consumer
@@ -82,7 +82,7 @@ def _actor_has_write_access(event_type: str, subject: dict[str, Any]) -> bool:
 
 
 def _is_own_app_sender(sender: dict[str, Any]) -> bool:
-    """Whether this delivery's sender is PostHog's own GitHub App bot.
+    """Whether this delivery's sender is Flind's own GitHub App bot.
 
     Unlike Slack, where each connected workspace can have its own app identity, one GitHub App
     per environment posts for every installation, so its slug is an instance setting rather than
@@ -124,7 +124,7 @@ def _event_properties(event_type: str, payload: dict[str, Any], *, integration_i
     is_private = repository.get("private")
 
     properties: dict[str, Any] = {
-        # The PostHog GitHub connection this copy belongs to, so a step can resolve back to it.
+        # The Flind GitHub connection this copy belongs to, so a step can resolve back to it.
         "integration_id": integration_id,
         "event_type": event_type,
         "action": payload.get("action"),
@@ -141,7 +141,7 @@ def _event_properties(event_type: str, payload: dict[str, Any], *, integration_i
         "bot_sender": sender.get("login") if sender.get("type") == "Bot" else None,
         # Checked at eligibility rather than baked into a trigger's filters (see the CDP consumer's
         # `isOwnGithubEvent`), so a workflow created through the API or MCP without a matching
-        # filter still can't retrigger on PostHog's own write.
+        # filter still can't retrigger on Flind's own write.
         "own_app": _is_own_app_sender(sender),
         "author_association": subject.get("author_association"),
         # Precomputed for the same reason: a property filter compares against a constant, so
@@ -175,7 +175,7 @@ def _event_properties(event_type: str, payload: dict[str, Any], *, integration_i
 
 
 def emit_github_event(event_type: str, payload: dict[str, Any], delivery_id: str) -> None:
-    """Write one internal event per PostHog project connected to this GitHub installation.
+    """Write one internal event per Flind project connected to this GitHub installation.
 
     Never raises. This runs inside the webhook fan-out, which owes GitHub a fast response and
     shares the request with the tasks, conversations and loops handlers.

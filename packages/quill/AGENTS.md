@@ -2,7 +2,7 @@
 
 ## What is Quill?
 
-Quill is PostHog's design system built on React, TypeScript, Base UI, and Tailwind v4.
+Quill is Flind's design system built on React, TypeScript, Base UI, and Tailwind v4.
 It follows a layered architecture: **tokens > primitives > components > blocks**.
 
 This guide covers the **primitives** layer — the foundational UI components that everything else builds on.

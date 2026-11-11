@@ -82,11 +82,11 @@ class ParticleSource(
             keywords=["iot", "particle.io"],
             releaseStatus=ReleaseStatus.ALPHA,
             featureFlag="dwh-particle",
-            caption="""Connect your [Particle](https://www.particle.io) devices. PostHog creates the Particle webhooks for you, and every `Particle.publish()` that matches your event name prefixes arrives as a PostHog event on that device, ready for insights, dashboards and alerts.
+            caption="""Connect your [Particle](https://www.particle.io) devices. Flind creates the Particle webhooks for you, and every `Particle.publish()` that matches your event name prefixes arrives as a Flind event on that device, ready for insights, dashboards and alerts.
 
 For **product devices**, use an **API user** token. In the Particle console, open your product → **Team** → **Add API user**, and give it these scopes:
 - `devices:list` to sync your device list
-- `integrations:list`, `integrations:create` and `integrations:remove` so PostHog can manage its webhooks
+- `integrations:list`, `integrations:create` and `integrations:remove` so Flind can manage its webhooks
 
 For **sandbox devices**, Particle has no API users, so use a personal access token for your account (`particle token create --never-expires` in the Particle CLI) and leave **Product ID** empty.
 """,
@@ -123,7 +123,7 @@ For **sandbox devices**, Particle has no API users, so use a personal access tok
                     ),
                 ],
             ),
-            webhookSetupCaption="""PostHog creates one Particle webhook per event name prefix, using your access token.
+            webhookSetupCaption="""Flind creates one Particle webhook per event name prefix, using your access token.
 
 **Manual setup** (only needed if automatic setup failed):
 

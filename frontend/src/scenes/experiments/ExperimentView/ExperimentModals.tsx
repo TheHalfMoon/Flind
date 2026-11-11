@@ -238,7 +238,7 @@ export function FinishExperimentModal(): JSX.Element {
 
     const { cleanupTarget } = useValues(flagCleanupTargetLogic({ experimentId: experiment.id as number }))
 
-    // The cleanup PR runs as a PostHog Desktop task, so the user needs Code access.
+    // The cleanup PR runs as a Flind Desktop task, so the user needs Code access.
     const cleanupPrAvailable = !!featureFlags[FEATURE_FLAGS.TASKS]
     // With several connected repositories and none saved on the experiment, the backend would
     // skip the cleanup rather than guess — so a pick is required here.

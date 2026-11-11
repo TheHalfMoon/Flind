@@ -83,7 +83,7 @@ describe('loginLogic', () => {
             ['/bla?haha', '/bla?haha'],
             ['/bla?haha#hoho', '/bla?haha#hoho'],
             // Percent-encoded chars nested in next's own query params must survive the redirect
-            // (e.g. docs "Run in PostHog" links carrying %0A newlines in open_query); the router
+            // (e.g. docs "Run in Flind" links carrying %0A newlines in open_query); the router
             // round-trip normalizes form-encoded "+" spaces to "%20", which decodes the same
             [
                 '/sql?open_query=SELECT%0A++properties.%24mcp+AS+tool',

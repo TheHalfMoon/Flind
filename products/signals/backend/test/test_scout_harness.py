@@ -705,7 +705,7 @@ class TestCloseOutTaskSummary(SimpleTestCase):
 
         assert "task_summary_update" in close_out_step
         assert "task_summary_update" in writing_summary
-        # The close-out tool is a harness tool, not a PostHog MCP tool. Without the qualified name
+        # The close-out tool is a harness tool, not a Flind MCP tool. Without the qualified name
         # in both sections, the "every tool goes through mcp__posthog__exec" rule sends the scout
         # to search a catalog the tool was never in, and the run row stays blank.
         assert scout_prompt._TASK_SUMMARY_TOOL_ID in writing_summary
@@ -1654,7 +1654,7 @@ class TestPromptBuilder(BaseTest):
             assert "scout-edit-report" not in prompt
         # The canonical-improvement channel is the exact inverse of the self-improvement gate: a
         # canonical scout routes skill-content gaps upstream via agent-feedback, while a custom or
-        # diverged scout must never be told to send its team-owned skill body to the PostHog team.
+        # diverged scout must never be told to send its team-owned skill body to the Flind team.
         assert ("Suggest improvements to your canonical skill" in prompt) is not expect_section
         assert ('`feedback_type` = `"scout"`' in prompt) is not expect_section
         # The structured fields and the reported: dedupe key are what make fleet-wide feedback
@@ -1689,7 +1689,7 @@ class TestPromptBuilder(BaseTest):
         assert "Suggest improvements to your own skill" not in prompt
         # The pristine canonical scout routes skill-content gaps upstream instead.
         assert "Suggest improvements to your canonical skill" in prompt
-        # A canonical skill body is PostHog-owned — the run identity must not name the seeding
+        # A canonical skill body is Flind-owned — the run identity must not name the seeding
         # row's incidental `created_by` as a skill author.
         assert "skill authors" not in prompt
 

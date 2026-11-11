@@ -130,7 +130,7 @@ class TestUsage(BaseTest):
             query, params = mock_sync_execute.call_args[0][:2]
             self.assertEqual(params["team_to_query"], expected_team_to_query)
             self.assertEqual(params["session_id"], str(conversation_id))
-            # Only PostHog AI bucket products count — posthog_code bills separately.
+            # Only Flind AI bucket products count — posthog_code bills separately.
             self.assertIn("AND JSONExtractString(properties, 'ai_product') IN %(ai_products)s", query)
             self.assertEqual(params["ai_products"], tuple(POSTHOG_AI_PRODUCTS))
             if expected_region_url is None:
@@ -332,7 +332,7 @@ class TestUsage(BaseTest):
         message = result.messages[0]
         assert isinstance(message, AssistantMessage)
         content = cast(str, message.content)
-        self.assertIn("PostHog AI usage", content)
+        self.assertIn("Flind AI usage", content)
         self.assertNotIn("query failed", content)
 
     def test_format_usage_message_no_usage(self):
@@ -406,7 +406,7 @@ class TestUsage(BaseTest):
         )
         self.assertIn(f"since {DEFAULT_GA_LAUNCH_DATE.strftime('%Y-%m-%d')}", message)
         self.assertIn(
-            f"from PostHog AI general availability date ({DEFAULT_GA_LAUNCH_DATE.strftime('%b %d, %Y')})", message
+            f"from Flind AI general availability date ({DEFAULT_GA_LAUNCH_DATE.strftime('%b %d, %Y')})", message
         )
 
     def test_format_usage_message_with_conversation_start(self):

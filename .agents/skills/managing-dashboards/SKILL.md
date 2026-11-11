@@ -1,7 +1,7 @@
 ---
 name: managing-dashboards
 description: >
-  Guides PostHog engineers through dashboard platform and scene changes. Use when changing
+  Guides Flind engineers through dashboard platform and scene changes. Use when changing
   Dashboard, DashboardTile, dashboardLogic, dashboard layouts, dashboard sharing or embeds,
   public dashboards, templates, filters, variables, refresh behavior, tile loading, dashboard
   lists, or dashboard permissions. Also use for slow dashboard loading, scrolling, edit-mode entry or exit,

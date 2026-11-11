@@ -17,7 +17,7 @@ describe('markdown utils', () => {
 
             // Links with URL preserved
             ['[click here](https://example.com)', 'click here (https://example.com)'],
-            ['[PostHog](https://posthog.com/docs)', 'PostHog (https://posthog.com/docs)'],
+            ['[Flind](https://posthog.com/docs)', 'Flind (https://posthog.com/docs)'],
 
             // Link without text
             ['[](https://example.com)', 'https://example.com'],

@@ -32,7 +32,7 @@ export function SourceDestinationsBanner(): JSX.Element | null {
                 'data-attr': 'warehouse-destinations-cross-sell',
             }}
         >
-            PostHog also runs ELT pipelines. A pipeline imports tables from a source like Stripe or HubSpot, and can
+            Flind also runs ELT pipelines. A pipeline imports tables from a source like Stripe or HubSpot, and can
             write them to the same warehouse you export to, over the same connection.
         </LemonBanner>
     )

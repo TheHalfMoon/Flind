@@ -48,7 +48,7 @@ class SmartleadSource(ResumableSource[SmartleadSourceConfig, SmartleadResumeConf
             category=DataWarehouseSourceCategory.SALES,
             label="Smartlead",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Smartlead API key to pull your cold email campaigns, leads, statistics, email accounts, and clients into the PostHog Data warehouse.
+            caption="""Enter your Smartlead API key to pull your cold email campaigns, leads, statistics, email accounts, and clients into the Flind Data warehouse.
 
 Find or create your API key under **Settings → Smartlead API key** in your Smartlead account. The key has access to everything your account can see.""",
             iconPath="/static/services/smartlead.png",

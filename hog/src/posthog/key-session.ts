@@ -5,10 +5,10 @@ import type { AccessKey, AccessKeyStorage } from './access-key'
 import type { BearerToken } from './tokens'
 
 // A command can outlive an OAuth access token, so each request renews it first when it is about to
-// expire, and renews it and sends once more when PostHog answers 401. PostHog checks the token
+// expire, and renews it and sends once more when Flind answers 401. Flind checks the token
 // before it does any work, so the second send is safe for a POST too.
 export class KeySession {
-    // PostHog also answers 401 for a valid token when the account can't act. Once a renewed token
+    // Flind also answers 401 for a valid token when the account can't act. Once a renewed token
     // gets 401 too, renewing again for every request would only rotate the login for nothing.
     private renewalHelps = true
     // One renewal at a time, so concurrent requests share it instead of each renewing.

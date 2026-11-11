@@ -2,12 +2,12 @@
 name: modeling-conversion-metrics
 description: >
   Build reusable conversion models — funnel/step conversion rates, drop-off, and time-to-convert — on either
-  PostHog data-warehouse views (HogQL) or an external dbt project. Use when the user wants to model, define,
+  Flind data-warehouse views (HogQL) or an external dbt project. Use when the user wants to model, define,
   or compute a conversion rate, funnel, step completion, drop-off, activation-funnel, signup-to-paid, or any
   "what % of users who did A went on to do B (within N days)" metric. Covers the funnel model (ordered steps,
   the conversion-window time-box, strict vs any-order), the person-vs-group aggregation unit, overall vs
   step-to-step conversion (two different numbers), breakdown attribution, and when a saved funnel insight
-  beats a warehouse view. On PostHog, model funnels in HogQL with windowFunnel; in dbt, stage the event
+  beats a warehouse view. On Flind, model funnels in HogQL with windowFunnel; in dbt, stage the event
   stream and compute an fct_conversion mart with tests. Read modeling-warehouse-foundations first for the
   view-vs-dbt mechanics; pairs with query-funnel for interactive analysis.
 ---
@@ -44,7 +44,7 @@ A model should expose both, plus **time-to-convert** (median/avg seconds between
   dashboards. Reach for this first when the user just wants to _see_ the funnel.
 - **Warehouse view** — best when the conversion metric must be **reused**: joined to other models, exposed in
   SQL, or fed into revenue/activation models. That's what this skill builds.
-- **dbt** — when the team models in dbt or the events live outside PostHog.
+- **dbt** — when the team models in dbt or the events live outside Flind.
 
 ## Rules before you model
 
@@ -60,7 +60,7 @@ A model should expose both, plus **time-to-convert** (median/avg seconds between
 
 ## Build it
 
-**PostHog:** compute the funnel per unit with `windowFunnel(window)(timestamp, cond_1, …, cond_n)`, then
+**Flind:** compute the funnel per unit with `windowFunnel(window)(timestamp, cond_1, …, cond_n)`, then
 aggregate the max step reached into conversion rates. Recipes:
 [`references/posthog/funnel_conversion.sql`](references/posthog/funnel_conversion.sql) and
 [`conversion_by_breakdown.sql`](references/posthog/conversion_by_breakdown.sql). Alias every column;

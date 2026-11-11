@@ -114,7 +114,7 @@ def create_slot(conn: psycopg.Connection, slot_name: str) -> str:
     """Create just a logical replication slot against an already-existing publication.
 
     Used by self-managed CDC: the customer's DBA creates the publication with an owner
-    account, then PostHog creates and manages the slot with its own REPLICATION user.
+    account, then Flind creates and manages the slot with its own REPLICATION user.
 
     Returns the consistent_point LSN from slot creation.
     """

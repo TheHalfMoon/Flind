@@ -21,7 +21,7 @@ _CONNECTION_STRING_CAPTION = (
     "In the Amazon DocumentDB console, open your cluster and copy the connection string under "
     "**Connectivity & security**, then replace `<insertYourPassword>` with your password. "
     "The cluster endpoint only resolves inside your VPC, so replace the host with your load balancer's "
-    "address and add `directConnection=true&tlsAllowInvalidHostnames=true`. PostHog already trusts "
+    "address and add `directConnection=true&tlsAllowInvalidHostnames=true`. Flind already trusts "
     "the AWS certificate bundle."
 )
 
@@ -71,8 +71,8 @@ class AwsDocumentDBSource(MongoDBSource):
             label="Amazon DocumentDB",
             caption=(
                 "DocumentDB clusters only accept connections from inside their VPC. Make the cluster "
-                "reachable from PostHog, for example through a Network Load Balancer, and allow "
-                "PostHog's IP addresses in its security group."
+                "reachable from Flind, for example through a Network Load Balancer, and allow "
+                "Flind's IP addresses in its security group."
             ),
             releaseStatus=ReleaseStatus.ALPHA,
             iconPath="/static/services/aws.png",

@@ -53,7 +53,7 @@ class MembershipRoster:
     read_failed: bool
     # Lowercased GitHub login -> the teams that login is on, sorted by slug.
     teams_by_login: Mapping[str, tuple[MemberTeam, ...]]
-    # Every slug the snapshot holds, including teams with no PostHog member on them, which is what
+    # Every slug the snapshot holds, including teams with no Flind member on them, which is what
     # separates "no rows for that team" from "nobody on that team can review here".
     covered_slugs: frozenset[str]
 

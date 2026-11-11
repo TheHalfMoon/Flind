@@ -20,7 +20,7 @@ const SPOKEN_UNITS: [string, number][] = [
 const MAX_SPOKEN_UNITS = 2
 const SURFACE_LABELS: Record<string, string> = {
     mcp: 'MCP',
-    posthog_ai: 'PostHog AI',
+    posthog_ai: 'Flind AI',
     desktop: 'Desktop app',
     endpoints: 'Endpoints',
     dashboard: 'Dashboards',
@@ -166,7 +166,7 @@ export function suggestedScheduleHint(
         case 'consumer_refresh':
             return `Suggested: every ${cadence}. The views that read it don't refresh more often than that.`
         case 'fastest_schedule':
-            return `Suggested: every ${cadence}, the most often PostHog refreshes a view.`
+            return `Suggested: every ${cadence}, the most often Flind refreshes a view.`
         default:
             return `Suggested: every ${cadence}, the shortest schedule that saves more than it costs.`
     }

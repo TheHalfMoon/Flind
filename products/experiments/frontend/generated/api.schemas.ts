@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -2837,7 +2837,7 @@ export interface ExperimentHealthSetupApi {
      * * `client` - Client
      * * `all` - All */
     evaluation_runtime: EvaluationRuntimeEnumApi
-    /** The names of the flag's evaluation contexts. When PostHog evaluates the flag, an SDK that sends evaluation contexts gets it only when it sends one of these, and an SDK that sends none gets it. Empty when the flag has none. */
+    /** The names of the flag's evaluation contexts. When Flind evaluates the flag, an SDK that sends evaluation contexts gets it only when it sends one of these, and an SDK that sends none gets it. Empty when the flag has none. */
     evaluation_contexts: string[]
     /** The flag's 'Persist flag across authentication steps' setting. */
     ensure_experience_continuity: boolean
@@ -3343,7 +3343,7 @@ export interface ActivityLogEntryApi {
     readonly created_at: string
     /** Whether the activity was performed by the system rather than a user. */
     readonly is_system: boolean
-    /** Whether the acting user was being impersonated by PostHog staff. */
+    /** Whether the acting user was being impersonated by Flind staff. */
     readonly was_impersonated: boolean
     /**
      * API client that triggered the activity. Self-reported through the x-posthog-client request header (e.g. 'mcp'), or 'scout:<skill_name>' when a scout run made the change, which the server derives from the run's own token. Null for requests that did neither.
@@ -3479,7 +3479,7 @@ export interface ExperimentFlagCleanupTaskApi {
      * @nullable
      */
     pr_url: string | null
-    /** Whether the requesting user can open the task in PostHog Desktop. Cleanup tasks are visible to their creator only, so other viewers should not be shown a task link. */
+    /** Whether the requesting user can open the task in Flind Desktop. Cleanup tasks are visible to their creator only, so other viewers should not be shown a task link. */
     can_view_task: boolean
 }
 
@@ -4058,17 +4058,17 @@ export interface ExperimentHealthInputsApi {
      */
     flag_last_called_at: string | null
     /**
-     * Whether PostHog has recorded any call of the flag. The flag traffic check reads it on a draft. Null when the experiment has no flag, or the organization's flag calls are stored where the checks can't read them.
+     * Whether Flind has recorded any call of the flag. The flag traffic check reads it on a draft. Null when the experiment has no flag, or the organization's flag calls are stored where the checks can't read them.
      * @nullable
      */
     flag_called: boolean | null
     /**
-     * Whether PostHog has recorded a call of the flag between launch and the end, or until now. The zero exposures check reads it to say whether the flag is called. Null before launch, after a latest call that came after the end, or when the organization's flag calls can't be read.
+     * Whether Flind has recorded a call of the flag between launch and the end, or until now. The zero exposures check reads it to say whether the flag is called. Null before launch, after a latest call that came after the end, or when the organization's flag calls can't be read.
      * @nullable
      */
     flag_called_during_run: boolean | null
     /**
-     * Whether PostHog has recorded a call of the flag after the end and within the last 3 days. The flag state check reads it on an ended experiment whose flag is still active with multiple variants. False only once 3 days have passed since the end. Null before the end, before those 3 days are over without a call, or when the organization's flag calls can't be read.
+     * Whether Flind has recorded a call of the flag after the end and within the last 3 days. The flag state check reads it on an ended experiment whose flag is still active with multiple variants. False only once 3 days have passed since the end. Null before the end, before those 3 days are over without a call, or when the organization's flag calls can't be read.
      * @nullable
      */
     flag_called_after_end: boolean | null

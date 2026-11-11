@@ -87,7 +87,7 @@ class CalendlySource(
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Calendly",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Calendly personal access token to pull your Calendly data into the PostHog Data warehouse.
+            caption="""Enter your Calendly personal access token to pull your Calendly data into the Flind Data warehouse.
 
 You can create a personal access token in Calendly under **Integrations → API & Webhooks**. A personal access token requires a paid Calendly plan.""",
             iconPath="/static/services/calendly.png",
@@ -105,7 +105,7 @@ You can create a personal access token in Calendly under **Integrations → API 
                     ),
                 ],
             ),
-            webhookSetupCaption="""PostHog registers an organization-wide webhook subscription with your personal access token, using a generated signing key to verify every delivery. Webhooks need a Calendly Standard plan or higher, and an organization-wide subscription needs an admin or owner token.
+            webhookSetupCaption="""Flind registers an organization-wide webhook subscription with your personal access token, using a generated signing key to verify every delivery. Webhooks need a Calendly Standard plan or higher, and an organization-wide subscription needs an admin or owner token.
 
 **Manual setup** (only needed if automatic registration failed):
 
@@ -118,7 +118,7 @@ curl -X POST https://api.calendly.com/webhook_subscriptions \\
   -d '{"url": "THE_WEBHOOK_URL_BELOW", "events": ["invitee.created", "invitee.canceled"], "organization": "YOUR_ORGANIZATION_URI", "scope": "organization", "signing_key": "YOUR_SIGNING_KEY"}'
 ```
 
-Paste the same signing key into the field below so PostHog can verify deliveries.""",
+Paste the same signing key into the field below so Flind can verify deliveries.""",
             webhookFields=cast(
                 list[FieldType],
                 [
@@ -129,7 +129,7 @@ Paste the same signing key into the field below so PostHog can verify deliveries
                         required=True,
                         placeholder="",
                         caption=(
-                            "The signing key set on the Calendly webhook subscription. PostHog uses it to "
+                            "The signing key set on the Calendly webhook subscription. Flind uses it to "
                             "verify the Calendly-Webhook-Signature header on every delivery."
                         ),
                         secret=True,
@@ -180,7 +180,7 @@ Paste the same signing key into the field below so PostHog can verify deliveries
                 "Create a token with access to your Calendly organization, then reconnect.",
             )
 
-        return False, "PostHog couldn't reach Calendly to check your token. Try connecting again in a few minutes."
+        return False, "Flind couldn't reach Calendly to check your token. Try connecting again in a few minutes."
 
     def get_non_retryable_errors(self) -> dict[str, str | None]:
         return {

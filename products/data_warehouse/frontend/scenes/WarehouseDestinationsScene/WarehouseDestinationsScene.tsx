@@ -63,7 +63,7 @@ export function WarehouseDestinationsScene(): JSX.Element {
         <SceneContent>
             <SceneTitleSection
                 name="Warehouse destinations"
-                description="Destinations are where your warehouse sources write the rows they sync. Pick which ones a source or a single table uses from that source's Destinations tab. To export PostHog events to a warehouse, use a batch export."
+                description="Destinations are where your warehouse sources write the rows they sync. Pick which ones a source or a single table uses from that source's Destinations tab. To export Flind events to a warehouse, use a batch export."
                 resourceType={{ type: 'data_warehouse' }}
                 actions={
                     todayRailNav ? (
@@ -82,7 +82,7 @@ export function WarehouseDestinationsScene(): JSX.Element {
                     <div className="flex flex-col gap-2">
                         <span>
                             Destinations receive data synced from warehouse sources, such as Stripe or Postgres. They do
-                            not receive your PostHog events. To send events to a warehouse, set up a batch export.
+                            not receive your Flind events. To send events to a warehouse, set up a batch export.
                         </span>
                         <div className="flex flex-wrap gap-2">
                             <LemonButton
@@ -128,7 +128,7 @@ export function WarehouseDestinationsScene(): JSX.Element {
                     emptyState={
                         <div className="flex flex-col gap-2 items-center py-4">
                             <span>
-                                No destinations yet. Your sources write to the PostHog warehouse until you add one.
+                                No destinations yet. Your sources write to the Flind warehouse until you add one.
                             </span>
                             <span className="text-muted">
                                 Add a destination here, then turn it on from a <Link to={urls.sources()}>source</Link>.

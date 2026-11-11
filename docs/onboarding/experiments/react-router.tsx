@@ -52,7 +52,7 @@ export const getReactRouterSteps = (ctx: OnboardingComponentsContext): StepDefin
             content: (
                 <Markdown>
                     {dedent`
-                        Once you've implemented the feature flag in your code, you'll enable it for a target audience by creating a new experiment in the PostHog dashboard.
+                        Once you've implemented the feature flag in your code, you'll enable it for a target audience by creating a new experiment in the Flind dashboard.
                     `}
                 </Markdown>
             ),

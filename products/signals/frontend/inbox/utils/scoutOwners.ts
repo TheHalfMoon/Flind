@@ -6,7 +6,7 @@ import type { SignalScoutConfigApi, UserBasicApi } from 'products/signals/fronte
  * Who answers for a scout, and where saying so is useful.
  *
  * Ownership is recorded on the scout's skill rather than its config, so editing or pausing the
- * scout leaves it unchanged. Canonical scouts are PostHog's to maintain, so an owner is only worth
+ * scout leaves it unchanged. Canonical scouts are Flind's to maintain, so an owner is only worth
  * showing (or missing) on a scout a team wrote itself.
  */
 export function showsScoutOwnership(config: Pick<SignalScoutConfigApi, 'scout_origin'>): boolean {

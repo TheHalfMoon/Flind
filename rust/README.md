@@ -1,6 +1,6 @@
-# PostHog Rust Workspace
+# Flind Rust Workspace
 
-The `posthog/rust` directory serves as PostHog's "Rust monorepo" hosting Rust libraries and service implementations. This is *not* the Rust client library for PostHog.
+The `posthog/rust` directory serves as Flind's "Rust monorepo" hosting Rust libraries and service implementations. This is *not* the Rust client library for Flind.
 
 ## Catalog
 
@@ -12,21 +12,21 @@ This is the microservice that receives HTTP event capture requests and extracts 
 
 ### feature-flags
 
-The new feature flags backend service that handles flag-scoped PostHog API requests. Currently, `/flags` endpoint is natively supported, and legacy `/decide` traffic is gradually being shifted to the Rust service.
+The new feature flags backend service that handles flag-scoped Flind API requests. Currently, `/flags` endpoint is natively supported, and legacy `/decide` traffic is gradually being shifted to the Rust service.
 
 ### cymbal
 
-Processing inbound source map payloads into symbols for the PostHog error tracking product.
+Processing inbound source map payloads into symbols for the Flind error tracking product.
 
 ### property-defs-rs
 
-Extracts event and property definitions from the post-processed event stream and infers data types for the same. Stores these in Postgres for use in event/property lookup widgets in the PostHog product UI.
+Extracts event and property definitions from the post-processed event stream and infers data types for the same. Stores these in Postgres for use in event/property lookup widgets in the Flind product UI.
 
 This service has some known data quality issues that are being addressed by a re-architecture effort. That effort may result in a change of role or even decomissioning of this service in the near future.
 
 ### batch-import-worker
 
-Backend service that handles PostHog user requests to import bulk datasets from external sources (S3, Amplitude, Segment, etc.)
+Backend service that handles Flind user requests to import bulk datasets from external sources (S3, Amplitude, Segment, etc.)
 
 ### kafka-deduplicator
 

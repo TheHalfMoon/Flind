@@ -55,7 +55,7 @@ export function SelfDrivingIntroModal({ isOpen, onClose, inline }: SelfDrivingIn
                 </div>
                 <h2 className="mb-3 text-2xl font-bold leading-[1.1] tracking-[-0.02em]">Ship fixes while you sleep</h2>
                 <p className="mb-8 max-w-[560px] text-[15px] leading-[1.55] text-secondary">
-                    PostHog watches your session replays, errors, and Slack. When it finds something worth fixing, it
+                    Flind watches your session replays, errors, and Slack. When it finds something worth fixing, it
                     writes the pull request. You review and merge.
                 </p>
                 <LoopDiagram />

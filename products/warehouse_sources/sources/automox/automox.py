@@ -69,7 +69,7 @@ class AutomoxResumeConfig:
 
 def _make_session(api_key: str) -> requests.Session:
     # `redact_values` masks the bearer token in logged URLs and captured HTTP samples so a failed
-    # or sampled request can never persist the raw Automox credential in PostHog's HTTP telemetry.
+    # or sampled request can never persist the raw Automox credential in Flind's HTTP telemetry.
     # `capture=False` keeps requests metered and logged but excludes their bodies from HTTP sample
     # capture: `/orgs` and `/users` responses embed org `access_key` enrollment secrets that the
     # name-based sample scrubbers don't recognise, and capture happens before row sanitization.

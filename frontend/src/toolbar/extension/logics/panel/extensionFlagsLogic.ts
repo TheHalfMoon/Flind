@@ -235,7 +235,7 @@ export const extensionFlagsLogic = kea<extensionFlagsLogicType>([
                 }
             },
             impersonate: ({ distinctId }) => {
-                // The page loads the person's flags from PostHog before it overrides anything, so this doesn't wait.
+                // The page loads the person's flags from Flind before it overrides anything, so this doesn't wait.
                 actions.sendCommand({ tool: 'flags', command: { type: 'impersonate-flags', distinctId } })
                 capturePageToolUsed('impersonate-flags')
             },

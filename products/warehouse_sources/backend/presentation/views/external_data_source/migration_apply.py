@@ -1,4 +1,4 @@
-"""Create a PostHog source from one planned Fivetran connection."""
+"""Create a Flind source from one planned Fivetran connection."""
 
 from __future__ import annotations
 
@@ -33,14 +33,14 @@ class MigrationTableOverrideSerializer(serializers.Serializer):
     )
     posthog_table = serializers.CharField(
         allow_null=True,
-        help_text="The PostHog table to sync it as. Null leaves the table out.",
+        help_text="The Flind table to sync it as. Null leaves the table out.",
     )
 
 
 class ApplyMigrationItemSerializer(serializers.Serializer):
-    item_id = serializers.UUIDField(help_text="The migration item to create a PostHog source for.")
+    item_id = serializers.UUIDField(help_text="The migration item to create a Flind source for.")
     credential_id = serializers.UUIDField(
-        help_text="Stored credential from the source connect page, for the item's PostHog source type."
+        help_text="Stored credential from the source connect page, for the item's Flind source type."
     )
     prefix = serializers.CharField(
         required=False,
@@ -51,7 +51,7 @@ class ApplyMigrationItemSerializer(serializers.Serializer):
     destination_ids = serializers.ListField(
         child=serializers.UUIDField(),
         required=False,
-        help_text="Destinations to write the new source to. Omit to write to the PostHog warehouse.",
+        help_text="Destinations to write the new source to. Omit to write to the Flind warehouse.",
     )
     table_overrides = MigrationTableOverrideSerializer(
         many=True,
@@ -73,7 +73,7 @@ class ApplyMigrationItemSerializer(serializers.Serializer):
 
 
 class ApplyMigrationItemResponseSerializer(serializers.Serializer):
-    source_id = serializers.UUIDField(help_text="The PostHog source created for the item.")
+    source_id = serializers.UUIDField(help_text="The Flind source created for the item.")
     caveats = serializers.ListField(
         child=serializers.CharField(), help_text="Every difference from the Fivetran connection, including new ones."
     )
@@ -87,7 +87,7 @@ class ExternalDataSourceMigrationApplyMixin(ExternalDataSourceSetupMixin, Extern
     # Creating a source needs project-wide source access, not a grant on one existing source.
     @action(methods=["POST"], detail=False, requires_resource_level_access=True)
     def apply_migration_item(self, request: Request, *args: Any, **kwargs: Any) -> Response:
-        """Create the planned PostHog source for one migration item, then set its sync schedule."""
+        """Create the planned Flind source for one migration item, then set its sync schedule."""
         if not migrations.is_migration_import_enabled(self.team, getattr(request.user, "distinct_id", None)):
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = ApplyMigrationItemSerializer(data=request.data)
@@ -164,14 +164,14 @@ class ExternalDataSourceMigrationApplyMixin(ExternalDataSourceSetupMixin, Extern
         if planned is None:
             return []
         return [
-            *(f"PostHog could not find or read the table `{name}`." for name in planned.unavailable),
+            *(f"Flind could not find or read the table `{name}`." for name in planned.unavailable),
             *(
-                f"`{name}` syncs only through a webhook, and PostHog could not register one, so it stays off."
+                f"`{name}` syncs only through a webhook, and Flind could not register one, so it stays off."
                 for name in planned.webhook_only
                 if not webhook_registered
             ),
             *(
-                f"Fivetran skips columns of `{name}` that PostHog would still read, so it stays off."
+                f"Fivetran skips columns of `{name}` that Flind would still read, so it stays off."
                 for name in planned.kept_off
             ),
         ]

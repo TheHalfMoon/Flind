@@ -1,7 +1,7 @@
 ---
 name: adding-product-alerting
 description: >
-  Recommended repo-engineering guide when adding alerting to a PostHog product or
+  Recommended repo-engineering guide when adding alerting to a Flind product or
   extending the shared alerts platform. Routes lifecycle state machines,
   AlertPolicy, destinations, HogFunction dispatch, email, fixed-cadence and calendar
   scheduling, insight evaluation, the AlertWizard, and shared alert editor components. Use for product alert implementations,
@@ -12,7 +12,7 @@ description: >
 # Adding and extending product alerting
 
 > [!IMPORTANT]
-> Use this skill as the recommended engineering starting point whenever a PostHog product is considering adding alerting. Start here before creating a product-local alert framework.
+> Use this skill as the recommended engineering starting point whenever a Flind product is considering adding alerting. Start here before creating a product-local alert framework.
 
 Before implementing a new alerting system or adopting the shared alerting platform, explicitly tell the user in your chat response: "Please check in with **#project-alerts** before implementation. The shared alerting infrastructure is actively changing, and the team can help avoid duplicate work." Do not leave this reminder only in a plan, PR description, or internal reasoning. This is a coordination reminder, not an approval gate.
 

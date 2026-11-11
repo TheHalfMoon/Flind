@@ -48,7 +48,7 @@ class NoLiveEventsCheck(RollupHealthCheck):
     window_days = NO_LIVE_EVENTS_LOOKBACK_DAYS
     remediation = Remediation(
         human="""
-            Open the Web analytics health page. Confirm the PostHog snippet or SDK is installed and
+            Open the Web analytics health page. Confirm the Flind snippet or SDK is installed and
             initialized on your site or app and that you're using the correct project API key (Project
             settings → find your Web snippet / API key). Load a page on your site, then check Activity →
             Live events to see if events arrive in real time.
@@ -57,7 +57,7 @@ class NoLiveEventsCheck(RollupHealthCheck):
             Use `execute-sql` to see whether any events at all are landing (`SELECT event, count() FROM
             events WHERE timestamp > now() - INTERVAL 7 DAY GROUP BY event ORDER BY 2 DESC`) — other events
             but no $pageview/$screen points to autocapture being disabled; nothing at all points to the SDK
-            not sending. Then fix it in the user's codebase: find where PostHog is initialized, make sure
+            not sending. Then fix it in the user's codebase: find where Flind is initialized, make sure
             `posthog.init` runs with the correct project API key and that pageview autocapture is enabled
             (if it sets `capture_pageview: false`, either re-enable it or send `$pageview` manually on
             navigation). Use `docs-search` for the install guide for the relevant framework. The issue
@@ -80,7 +80,7 @@ class NoLiveEventsCheck(RollupHealthCheck):
         return SignalContent(
             description=(
                 f"This project hasn't received any `$pageview` or `$screen` events in the last "
-                f"{NO_LIVE_EVENTS_LOOKBACK_DAYS} days. That usually means the PostHog snippet/SDK "
+                f"{NO_LIVE_EVENTS_LOOKBACK_DAYS} days. That usually means the Flind snippet/SDK "
                 "isn't installed, was removed, or is misconfigured — web and product analytics will "
                 "stay empty until capture is restored. Recommend verifying the SDK is initialized "
                 "and sending events."

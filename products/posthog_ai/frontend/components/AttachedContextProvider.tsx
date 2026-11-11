@@ -9,7 +9,7 @@ export interface AttachedContextProviderProps {
 
 /**
  * Render-null wrapper over `useAttachedContext` for JSX-only call sites that can't call the hook
- * directly. Attaches `items` to the PostHog AI surface for as long as it's mounted.
+ * directly. Attaches `items` to the Flind AI surface for as long as it's mounted.
  */
 export function AttachedContextProvider({ items, active }: AttachedContextProviderProps): null {
     useAttachedContext(items, { active })

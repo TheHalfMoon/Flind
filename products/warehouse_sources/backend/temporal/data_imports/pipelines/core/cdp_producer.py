@@ -278,7 +278,7 @@ class CDPProducer:
                     team_id=self.team_id, trigger_source=trigger_source, table_name=dot_notated_table_name
                 )
             except (DjangoOperationalError, OSError) as e:
-                # This queries PostHog's own database, not the source being synced. A transient
+                # This queries Flind's own database, not the source being synced. A transient
                 # failure reaching it (e.g. a DNS blip resolving our host) stringifies with the
                 # same wording a customer's misconfigured source host would, which the source's
                 # `get_non_retryable_errors` would misclassify as non-retryable and permanently
@@ -289,7 +289,7 @@ class CDPProducer:
                 # transient condition, different exception type depending on which connect step it
                 # hits, so both need the same reclassification.
                 raise PostHogInternalDatabaseError(
-                    "Failed to check hog function/workflow triggers in PostHog's database"
+                    "Failed to check hog function/workflow triggers in Flind's database"
                 ) from e
 
         self._should_run_cache = await _check()

@@ -1,7 +1,7 @@
 ---
 name: triaging-visual-review-runs
 description: >
-  Inspects PostHog Visual Review (VR) runs that gate PR merges with screenshot regression checks.
+  Inspects Flind Visual Review (VR) runs that gate PR merges with screenshot regression checks.
   Use when the user mentions "visual review", "VR", "snapshot diff", "screenshot test", "storybook regression",
   "playwright snapshot", "quarantine", asks why a PR is blocked or what changed visually, wants to triage the VR backlog,
   decide whether a snapshot diff is real vs flaky, quarantine or lift a flaky story, or check whether a story has been changing across runs.
@@ -11,7 +11,7 @@ description: >
 
 # Triaging visual review runs
 
-Visual Review is PostHog's screenshot-regression product: CI captures storybook + playwright screenshots,
+Visual Review is Flind's screenshot-regression product: CI captures storybook + playwright screenshots,
 diffs them against committed baseline hashes, and gates the PR until every changed snapshot is resolved.
 A PR with visual changes carries a `visual-review` GitHub status check, and usually a required CI job that reports the same verdict.
 Both stay red until each diffed snapshot is approved and finalized, tolerated, or quarantined, and the job re-runs:

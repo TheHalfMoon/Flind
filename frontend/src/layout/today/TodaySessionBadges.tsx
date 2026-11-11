@@ -21,7 +21,7 @@ interface TodaySessionBadgesProps {
     pinned: boolean
 }
 
-/** A session row's trailing stack, like PostHog Desktop: who is working on it, the pin, the source, then the pull request colored by its state. */
+/** A session row's trailing stack, like Flind Desktop: who is working on it, the pin, the source, then the pull request colored by its state. */
 export function TodaySessionBadges({ badges, pullRequestState, pinned }: TodaySessionBadgesProps): JSX.Element {
     const author = badges.find((badge) => badge.kind === 'author')
     const stacked = badges.filter((badge) => badge.kind !== 'author')

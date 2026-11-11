@@ -83,7 +83,7 @@ class MailJetSource(
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Mailjet",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Mailjet API key and secret key to pull your Mailjet data into the PostHog Data warehouse.
+            caption="""Enter your Mailjet API key and secret key to pull your Mailjet data into the Flind Data warehouse.
 
 You can find your API key and secret key in your [Mailjet API key management page](https://app.mailjet.com/account/apikeys).
 """,
@@ -111,11 +111,11 @@ You can find your API key and secret key in your [Mailjet API key management pag
                 ],
             ),
             webhookSetupCaption=(
-                "PostHog registers one Mailjet event callback URL per event type using the API key above, "
+                "Flind registers one Mailjet event callback URL per event type using the API key above, "
                 "covering sent, open, click, bounce, blocked, spam and unsub.\n\n"
-                "Mailjet does not sign its deliveries, so PostHog embeds generated basic-auth credentials in "
+                "Mailjet does not sign its deliveries, so Flind embeds generated basic-auth credentials in "
                 "the callback URL it registers. Mailjet sends those back as an Authorization header on every "
-                "delivery, and PostHog rejects anything that doesn't match.\n\n"
+                "delivery, and Flind rejects anything that doesn't match.\n\n"
                 "The sent event fires once for every message you send, so this table can grow quickly on high "
                 "volume accounts."
             ),

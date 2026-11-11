@@ -49,7 +49,7 @@ if TYPE_CHECKING:
 
 logger = structlog.get_logger(__name__)
 
-PUSH_TITLE = "PostHog"
+PUSH_TITLE = "Flind"
 AWAITING_INPUT_COOLDOWN_SECONDS = 30
 
 # Cooldown windows per push kind. Terminal pushes get a longer window because
@@ -176,7 +176,7 @@ def _notify_task_thread_message(message: TaskThreadMessage, mentioned_user_ids: 
 
     mentioned = set(mentioned_user_ids)
     author = message.author
-    author_name = (author.first_name.strip() or author.email) if author else "PostHog"
+    author_name = (author.first_name.strip() or author.email) if author else "Flind"
     task_title = (message.task.title or "").strip() or "Untitled task"
     data: dict[str, str | int] = {
         "taskId": str(message.task_id),

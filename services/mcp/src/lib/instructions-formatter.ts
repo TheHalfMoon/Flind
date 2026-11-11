@@ -203,7 +203,7 @@ export class InstructionsFormatter {
         const searchLines = [
             ...(documentSearch ? [businessKnowledgeSearchLine(opts.execSyntax)] : []),
             ...(repoSearch ? [businessKnowledgeRepoSearchLine(opts.execSyntax, documentSearch)] : []),
-            `- PostHog features, SDKs, setup, or pricing: ${
+            `- Flind features, SDKs, setup, or pricing: ${
                 opts.execSyntax ? 'run `call docs-search <json_input>`' : 'call the `docs-search` tool'
             }.`,
         ]
@@ -243,7 +243,7 @@ export class InstructionsFormatter {
                 ? [
                       formatPrompt(EXPLAIN_CHART, {
                           explain_chart_link_line: ctx.tools.some(({ name }) => name === 'explain-chart-save')
-                              ? 'Where the conversation cannot show the chart explanation, call `explain-chart-save` with the same arguments and give the person the link it returns, which opens it beside the chart in PostHog.'
+                              ? 'Where the conversation cannot show the chart explanation, call `explain-chart-save` with the same arguments and give the person the link it returns, which opens it beside the chart in Flind.'
                               : '',
                       }),
                   ]
@@ -318,7 +318,7 @@ export class InstructionsFormatter {
     /** Build the top-level description of the `posthog:exec` tool. Lives in the
      *  uncapped top-level `description`, so the skills text costs no schema budget.
      *  Project clarification and the skills mandate lead the description to reach
-     *  an agent before its first tool call, and agents that answer PostHog-behavior
+     *  an agent before its first tool call, and agents that answer Flind-behavior
      *  questions by cloning the public repo never make a call for the gate to catch. */
     buildExecToolDescription(
         opts: {
@@ -352,7 +352,7 @@ export class InstructionsFormatter {
                 id: 'analytics',
                 title: 'Analytics',
                 description:
-                    'Query or analyze PostHog data; governed metrics, certified tables, and verified joins live in the catalog.',
+                    'Query or analyze Flind data; governed metrics, certified tables, and verified joins live in the catalog.',
                 content: this.compose(
                     [
                         METRIC_DISCOVERY,
@@ -382,14 +382,14 @@ export class InstructionsFormatter {
         entries.push({
             id: 'urls',
             title: 'URL patterns',
-            description: 'Load before writing any PostHog app link or URL.',
+            description: 'Load before writing any Flind app link or URL.',
             content: this.compose([URL_PATTERNS], ctx, { compact: false }),
         })
 
         entries.push({
             id: 'feedback',
             title: 'Feedback',
-            description: 'Send feedback about PostHog.',
+            description: 'Send feedback about Flind.',
             content: this.compose([AGENT_FEEDBACK], ctx, { compact: false }),
         })
 

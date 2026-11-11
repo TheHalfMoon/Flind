@@ -66,7 +66,7 @@ def get_idempotency_key(
 ) -> str:
     """Generate a unique idempotency key for a batch at one destination.
 
-    The PostHog warehouse keeps the unsuffixed key it has always used, so keys written
+    The Flind warehouse keeps the unsuffixed key it has always used, so keys written
     before this change still match after a deploy. Every other destination gets its own,
     which is what lets a retry skip the destinations that already took the batch instead
     of re-writing all of them.

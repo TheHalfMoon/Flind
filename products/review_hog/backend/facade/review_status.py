@@ -1,4 +1,4 @@
-"""Facade for reading where PostHog Review's review of one pull request head stands.
+"""Facade for reading where Flind Review's review of one pull request head stands.
 
 Any product may read it, except one that review_hog depends on: stamphog gets the same answer
 through the provider that `receivers.connect()` registers, because importing review_hog there would

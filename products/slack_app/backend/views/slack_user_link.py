@@ -8,7 +8,7 @@ install routes the SPA owns.
 
 * ``GET /complete/slack-link/start/``
   Entry point the user lands on from the Slack DM button or settings page.
-  Login-gated, so an unauthenticated visitor is bounced through PostHog
+  Login-gated, so an unauthenticated visitor is bounced through Flind
   login and returns here with the invite token still in the URL. Validates
   the invite, then redirects to Slack to start the OAuth dance.
 
@@ -17,7 +17,7 @@ install routes the SPA owns.
   user token, call ``openid.connect.userInfo`` to learn the Slack user id
   + team, and upsert a ``UserIntegration(kind="slack")`` row pinning the
   Slack identity
-  to the currently-logged-in PostHog user. On success we DM the user back in
+  to the currently-logged-in Flind user. On success we DM the user back in
   the original Slack thread (if we have channel + thread context) and bounce
   the browser tab back to Personal integrations with a success query param —
   matching how the GitHub link flow finishes.
@@ -165,10 +165,10 @@ def slack_user_link_callback(request: HttpRequest) -> HttpResponse:
 
     Re-checks login + feature flag at this end so a stale tab can't bypass
     either guard. The session-mismatch check below binds the callback to the
-    PostHog user who started the flow (``state.posthog_user_id``) — without
+    Flind user who started the flow (``state.posthog_user_id``) — without
     it, a leaked invite URL + Slack ``code`` (15-min lifetime) opened in a
     different user's browser would write the attacker's Slack identity to
-    the victim's PostHog account.
+    the victim's Flind account.
     """
     slack_error = request.GET.get("error")
     if slack_error:
@@ -221,11 +221,11 @@ def slack_user_link_callback(request: HttpRequest) -> HttpResponse:
     # factory's `user: User` signature is satisfied without an `assert`.
     posthog_user = cast(User, request.user)
 
-    # CSRF guard: bind the link write to the same PostHog user who initiated
+    # CSRF guard: bind the link write to the same Flind user who initiated
     # the flow. Without this, an attacker who completes their own OAuth dance
     # could send the resulting `?code=…&state=…` URL to a victim and have the
     # victim's browser write the *attacker's* Slack identity into the *victim's*
-    # PostHog account — every subsequent @mention from the attacker would then
+    # Flind account — every subsequent @mention from the attacker would then
     # resolve as the victim. `org_mismatch` below catches cross-org cases but
     # not the same-org colleague case, so this check is the actual boundary.
     if state.posthog_user_id != posthog_user.id:
@@ -236,7 +236,7 @@ def slack_user_link_callback(request: HttpRequest) -> HttpResponse:
         )
         return _link_failed(workspace_integration, "session_mismatch", slack_user_id=identity.slack_user_id)
 
-    # Refuse to write a link row for a PostHog user who isn't a member of
+    # Refuse to write a link row for a Flind user who isn't a member of
     # the workspace's org. The org-scope filter in `find_linked_posthog_user`
     # would already skip such rows at resolve time, but writing them anyway
     # would let anyone who got hold of a signed invite URL (forwarded DM,
@@ -307,7 +307,7 @@ def _post_link_success_followup(
             channel=channel,
             user=slack_user_id,
             thread_ts=thread_ts if isinstance(thread_ts, str) else None,
-            text="✅ Your PostHog account is now linked. Mention me again and I'll route to you correctly.",
+            text="✅ Your Flind account is now linked. Mention me again and I'll route to you correctly.",
         )
     except Exception:
         logger.info(

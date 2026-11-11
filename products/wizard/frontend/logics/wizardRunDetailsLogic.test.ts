@@ -55,8 +55,8 @@ function makeRun(): WizardRunApi {
         workspace: { type: 'git_repository', repository: 'posthog/posthog' },
         program: {
             id: 'posthog-integration',
-            name: 'PostHog integration',
-            description: 'Set up PostHog',
+            name: 'Flind integration',
+            description: 'Set up Flind',
             wizard_version: '2.6.0',
             command: [],
             tags: [],

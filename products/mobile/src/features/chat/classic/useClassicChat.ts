@@ -166,7 +166,7 @@ export function useClassicChat(
                     if (failure instanceof ApiError && failure.status === 409) {
                         idRef.current = conversation
                         setId(conversation)
-                        setHistoryError('PostHog AI is still answering. Reconnect to continue this chat.')
+                        setHistoryError('Flind AI is still answering. Reconnect to continue this chat.')
                     }
                 }
                 return accepted

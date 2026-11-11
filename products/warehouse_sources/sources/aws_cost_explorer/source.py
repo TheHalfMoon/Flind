@@ -134,7 +134,7 @@ class AwsCostExplorerSource(ResumableSource[AwsCostExplorerSourceConfig, AwsCost
             name=ExternalDataSourceType.AWSCOSTEXPLORER,
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="AWS Cost Explorer",
-            caption="""Sync your AWS cost and usage data into the PostHog Data warehouse.
+            caption="""Sync your AWS cost and usage data into the Flind Data warehouse.
 
 Create an IAM user or role with the `ce:GetCostAndUsage`, `ce:GetCostAndUsageWithResources`, `ce:GetDimensionValues`, `ce:GetReservationUtilization`, `ce:GetReservationCoverage`, `ce:GetSavingsPlansUtilization` and `ce:GetSavingsPlansCoverage` permissions, then paste its access key ID and secret access key. Add a session token too if you are using temporary credentials.
 

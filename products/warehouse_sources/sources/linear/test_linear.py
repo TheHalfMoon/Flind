@@ -333,7 +333,7 @@ class TestLinearSourceNonRetryableErrors:
                 "read_timeout",
                 "Linear: transient network error - HTTPSConnectionPool(host='api.linear.app', port=443): Read timed out. (read timeout=60)",
             ),
-            # Raised when the worker has no Linear client credentials: a PostHog fault, not the customer's.
+            # Raised when the worker has no Linear client credentials: a Flind fault, not the customer's.
             ("app_not_configured", "NotImplementedError: Linear app not configured"),
         ]
     )

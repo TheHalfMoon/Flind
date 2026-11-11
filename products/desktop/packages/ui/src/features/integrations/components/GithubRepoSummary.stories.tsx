@@ -23,7 +23,7 @@ const meta: Meta<typeof GithubRepoSummary> = {
     ),
   ],
   args: {
-    accountLabel: "PostHog",
+    accountLabel: "Flind",
     repos,
     status: "connected",
     meta: "Connected 3 days ago",
@@ -47,7 +47,7 @@ export const SelectedRepositories: Story = {
 
 export const AllRepositories: Story = {
   args: {
-    summary: { kind: "all", label: "All repositories in PostHog (712)" },
+    summary: { kind: "all", label: "All repositories in Flind (712)" },
   },
 };
 

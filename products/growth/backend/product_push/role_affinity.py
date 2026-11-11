@@ -5,7 +5,7 @@ pool is a long tail of products that suit some teams and not others, so picking
 from it uniformly throws away the one thing we already know about who works at the
 organization. Each role names the products its people reach for, and a product's
 weight grows with the share of members in those roles: an org full of data people
-is far more likely to be shown the SQL editor than PostHog in Slack.
+is far more likely to be shown the SQL editor than Flind in Slack.
 
 Weighting, not filtering: every candidate keeps a non-zero weight, so a product no
 role favors still gets pushed and the org still sees the whole pool over time.

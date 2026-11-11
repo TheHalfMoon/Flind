@@ -1,13 +1,13 @@
 ---
 name: managing-reminders
-description: 'Create and manage PostHog reminders — private, human-paced nudges that fire as in-app notifications on a schedule, optionally linked to a PostHog resource. Use when the user says "remind me to…", wants a one-off or recurring nudge (daily/weekly/monthly/yearly, a cron schedule, or a specific date/time), wants to be reminded to look at a dashboard, insight, experiment, feature flag, survey, notebook, replay, or error, or wants to list, change, or cancel their reminders. Covers when to pick a reminder over an alert or subscription, the one-off vs recurring vs cron schedule field mappings, timezones, and attaching a resource.'
+description: 'Create and manage Flind reminders — private, human-paced nudges that fire as in-app notifications on a schedule, optionally linked to a Flind resource. Use when the user says "remind me to…", wants a one-off or recurring nudge (daily/weekly/monthly/yearly, a cron schedule, or a specific date/time), wants to be reminded to look at a dashboard, insight, experiment, feature flag, survey, notebook, replay, or error, or wants to list, change, or cancel their reminders. Covers when to pick a reminder over an alert or subscription, the one-off vs recurring vs cron schedule field mappings, timezones, and attaching a resource.'
 ---
 
 # Managing reminders
 
-This skill guides you through creating and managing PostHog reminders.
+This skill guides you through creating and managing Flind reminders.
 A reminder is a private, human-paced nudge to yourself: it fires an in-app notification
-on a schedule, with no condition attached. It can optionally link to a PostHog resource.
+on a schedule, with no condition attached. It can optionally link to a Flind resource.
 
 ## When to use this skill
 
@@ -97,7 +97,7 @@ so include its offset or rely on the same zone.
 
 ## Attaching a resource
 
-To link the reminder to a PostHog object, set `resource_type`, `resource_id`, and `team`
+To link the reminder to a Flind object, set `resource_type`, `resource_id`, and `team`
 **together**. The fired notification deep-links to that object. The resource must already exist
 in that project. Always send `resource_id` as a **string**, even when the ID is numeric (`"67"`, not `67`).
 

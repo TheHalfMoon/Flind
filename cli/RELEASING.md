@@ -124,7 +124,7 @@ DIST_BIN="$HOME/.cargo/bin/dist" flox activate -- bash -c './cli/scripts/smoke-r
 ```
 
 If you are testing uncommitted local changes, set `CLI_RELEASE_SMOKE_ALLOW_DIRTY=1` for the second command.
-The smoke test verifies that the archive includes `lib/posthog-api-cli.mjs`, that `posthog-cli api --agent-help` works from the unpacked artifact, and that the generated shell installer produces a working `posthog-cli api` install without relying on a PostHog repo checkout.
+The smoke test verifies that the archive includes `lib/posthog-api-cli.mjs`, that `posthog-cli api --agent-help` works from the unpacked artifact, and that the generated shell installer produces a working `posthog-cli api` install without relying on a Flind repo checkout.
 It serves `target/distrib` on `127.0.0.1:8765` while testing the installer; set `CLI_RELEASE_SMOKE_PORT` if that port is already in use.
 It does not replace any `posthog-cli` already on your `PATH`; to manually test the built artifact, run `target/distrib/posthog-cli-$(rustc -vV | sed -n 's/^host: //p')/posthog-cli api --agent-help`.
 

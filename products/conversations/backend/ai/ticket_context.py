@@ -156,7 +156,7 @@ def parse_posthog_entity_refs(text: str) -> str:
     if not found:
         return ""
     lines = [f"- {_ENTITY_KIND_LABELS[kind]}: {value}" for kind, value in found]
-    return _capped_section("Referenced PostHog entities:", lines, MAX_ENTITY_REFS_SECTION_CHARS)
+    return _capped_section("Referenced Flind entities:", lines, MAX_ENTITY_REFS_SECTION_CHARS)
 
 
 def format_prior_tickets(tickets: Iterable[PriorTicket]) -> str:

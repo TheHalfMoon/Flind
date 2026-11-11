@@ -1,7 +1,7 @@
 ---
 name: exploring-mcp-intent-clusters
 description: >
-  Explore PostHog MCP intent clusters — agent goals grouped by semantic
+  Explore Flind MCP intent clusters — agent goals grouped by semantic
   similarity, with each cluster's tool distribution and error rates, plus the
   tool-centric pivot (capture rate per intent, discovery rate against the
   advertised catalog, description fit, tool overlaps). Use when the user asks

@@ -54,7 +54,7 @@ def _take_fill_budget(slack_workspace_id: str) -> None:
         fills = 1
     if fills > FILLS_PER_WINDOW:
         raise ChannelCatalogBusy(
-            "PostHog loaded this workspace's Slack channels too often. Try again in a few minutes."
+            "Flind loaded this workspace's Slack channels too often. Try again in a few minutes."
         )
 
 
@@ -73,7 +73,7 @@ def public_channel_options(integration: IntegrationRecord) -> tuple[ChannelOptio
             return _to_options(cached)
         # A winner that died leaves no list, so one waiting request takes over the fill.
         if not cache.add(fill_key, 1, FILL_LOCK_SECONDS):
-            raise ChannelCatalogBusy("PostHog is still loading the Slack channels. Try again in a moment.")
+            raise ChannelCatalogBusy("Flind is still loading the Slack channels. Try again in a moment.")
 
     try:
         _take_fill_budget(slack_workspace_id)

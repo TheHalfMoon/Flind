@@ -685,7 +685,7 @@ class TestHogFunctionAPI(ClickhouseTestMixin, APIBaseTest, QueryMatchingTest):
         )
         assert response.status_code == status.HTTP_400_BAD_REQUEST, response.json()
         assert response.json()["attr"] == "hog"
-        assert "Reserved for PostHog's own use" in response.json()["detail"]
+        assert "Reserved for Flind's own use" in response.json()["detail"]
         assert not HogFunction.objects.filter(team=self.team, name="Sneaky").exists()
 
     @parameterized.expand(
@@ -2932,7 +2932,7 @@ class TestHogFunctionAPI(ClickhouseTestMixin, APIBaseTest, QueryMatchingTest):
             )
 
         assert response.status_code == status.HTTP_400_BAD_REQUEST, response.json()
-        assert "PostHog connection" in json.dumps(response.json())
+        assert "Flind connection" in json.dumps(response.json())
         mock_create_hog_invocation_test.assert_not_called()
 
     def test_test_invocation_of_unsaved_function_cannot_borrow_a_hidden_templates_reserved_calls(self):

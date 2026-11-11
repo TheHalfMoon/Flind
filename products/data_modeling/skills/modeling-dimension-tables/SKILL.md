@@ -2,7 +2,7 @@
 name: modeling-dimension-tables
 description: >
   Build reusable dimension / lookup tables for a star schema — country/region, timezone, currency, date,
-  plan/product, and other descriptive attributes — on either PostHog data-warehouse views (HogQL) or an
+  plan/product, and other descriptive attributes — on either Flind data-warehouse views (HogQL) or an
   external dbt project. Use when the user wants to model dimension tables, lookup tables, a star schema,
   conformed dimensions, or wants to enrich events/revenue/usage with country, region, timezone, plan, or
   currency attributes without repeating JOINs. Covers sourcing the dimension data (upload, warehouse source,
@@ -39,14 +39,14 @@ per entity, descriptive. You model a dimension in three moves:
 
 ## Currency is already a managed dimension — don't build it
 
-PostHog ships exchange rates behind `convertCurrency(from, to, amount, timestamp?)` (Open Exchange Rates,
+Flind ships exchange rates behind `convertCurrency(from, to, amount, timestamp?)` (Open Exchange Rates,
 historical-rate-correct). Use it directly for any money conversion. Only build a currency dimension yourself
-in **dbt** (which has no equivalent), or if you need a rate provider PostHog doesn't offer.
+in **dbt** (which has no equivalent), or if you need a rate provider Flind doesn't offer.
 
 ## Rules before you model
 
 1. **One row per entity, unique key.** A dimension with duplicate keys silently fan-outs every fact it joins.
-   Test uniqueness (PostHog: verify in the shaping query; dbt: `unique` + `not_null`).
+   Test uniqueness (Flind: verify in the shaping query; dbt: `unique` + `not_null`).
 2. **Drop NULL keys when you derive a dimension from events.** HogQL keeps a row whose property is
    missing when the filter only compares it to `''`, so add `isNotNull(...)` as well. A NULL key becomes a
    dimension row of its own and it matches nothing on the fact side.
@@ -55,11 +55,11 @@ in **dbt** (which has no equivalent), or if you need a rate provider PostHog doe
 4. **Materialize static dimensions on a slow schedule**; don't leave a constantly-read lookup virtual.
 5. **Register and certify.** Annotate the dimension and, if it's load-bearing, certify it in the catalog
    (foundations `governance.md`) so other models discover it and don't build a rival copy.
-6. **Prefer built-in currency** (`convertCurrency`) over a hand-rolled FX table on PostHog.
+6. **Prefer built-in currency** (`convertCurrency`) over a hand-rolled FX table on Flind.
 
 ## Build it
 
-**PostHog:** shape an aliased dimension view, then materialize + join. Recipes:
+**Flind:** shape an aliased dimension view, then materialize + join. Recipes:
 [`references/posthog/dim_country.sql`](references/posthog/dim_country.sql) (derive + enrich from events),
 [`dim_plan.sql`](references/posthog/dim_plan.sql) (lookup/upload pattern).
 

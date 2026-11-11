@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function FeatureFlagApp(): JSX.Element {
     return (
-        <AppWrapper<FeatureFlagData> appName="PostHog Feature Flag">
+        <AppWrapper<FeatureFlagData> appName="Flind Feature Flag">
             {({ data }) => <FeatureFlagView flag={data!} />}
         </AppWrapper>
     )

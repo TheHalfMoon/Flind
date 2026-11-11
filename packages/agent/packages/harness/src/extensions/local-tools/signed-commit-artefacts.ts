@@ -93,7 +93,7 @@ export function createSandboxPosthogClient(
 
 // Reports are best-effort bookkeeping for a commit that already landed, and the
 // sandbox client's fetches carry no timeout, so one stalled connection to the
-// PostHog backend would otherwise wedge the signed-commit tool indefinitely.
+// Flind backend would otherwise wedge the signed-commit tool indefinitely.
 const REPORT_TIMEOUT_MS = 15_000;
 
 export function withReportDeadline<T>(
@@ -137,7 +137,7 @@ export async function reportCommitArtefacts(opts: {
       opts.oauthEnvFilePath,
     );
     if (!client) {
-      return; // No sandbox PostHog credentials — nothing to report to.
+      return; // No sandbox Flind credentials — nothing to report to.
     }
     const reportIds = await withReportDeadline(
       (signal) => client.getSignalReportIdsForTask(taskId, signal),

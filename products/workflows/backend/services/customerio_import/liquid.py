@@ -1,4 +1,4 @@
-"""Customer.io Liquid rewritten for PostHog's Liquid globals."""
+"""Customer.io Liquid rewritten for Flind's Liquid globals."""
 
 import re
 
@@ -18,7 +18,7 @@ _CAPTURE_TAG = re.compile(r"\{%-?\s*capture\s+(\w+)\s*-?%\}")
 _QUOTED = re.compile(r"(\"[^\"]*\"|'[^']*')")
 _OUTPUT_TAG = re.compile(r"\{\{(.{0,1000}?)\}\}", re.DOTALL)
 _RAW_FILTER = re.compile(r"\|\s*raw\s*$")
-# Customer.io's `customer.id` is the id the team identifies people with, which is the distinct id in PostHog.
+# Customer.io's `customer.id` is the id the team identifies people with, which is the distinct id in Flind.
 _RENAMES = (
     (re.compile(r"(?<![\w.])customer\.id\b"), "event.distinct_id"),
     (re.compile(r"(?<![\w.])customer(?=[.\[])"), "person.properties"),
@@ -42,7 +42,7 @@ _UNSUPPORTED = {
 @frozen
 class RewrittenLiquid:
     text: str
-    # Customer.io globals the text uses that PostHog has no value for, like `journey`.
+    # Customer.io globals the text uses that Flind has no value for, like `journey`.
     unsupported_globals: tuple[str, ...] = ()
     # Snippets the text includes that the import was not given.
     missing_snippets: tuple[str, ...] = ()
@@ -91,7 +91,7 @@ def rewrite(text: str | None, snippets: dict[str, str], room: SnippetRoom | None
 
 
 def _print_captures_raw(text: str) -> str:
-    # PostHog escapes HTML in every output and Customer.io does not, so captured markup would print as text.
+    # Flind escapes HTML in every output and Customer.io does not, so captured markup would print as text.
     captured = set(_CAPTURE_TAG.findall(text))
     if not captured:
         return text

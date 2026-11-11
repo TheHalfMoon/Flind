@@ -1,8 +1,8 @@
 # @flind/harness
 
-PostHog's [Pi](https://pi.dev) distribution.
+Flind's [Pi](https://pi.dev) distribution.
 
-It adds the PostHog LLM provider and the extensions in `src/extensions/` while keeping Pi's native runtime, sessions, tools, and RPC protocol.
+It adds the Flind LLM provider and the extensions in `src/extensions/` while keeping Pi's native runtime, sessions, tools, and RPC protocol.
 
 ## CLI
 
@@ -39,7 +39,7 @@ RPC is Pi's JSONL protocol over stdin/stdout. Harness does not define another pr
 
 ## Authentication
 
-Run `hogness /login`, or pass a PostHog personal API key:
+Run `hogness /login`, or pass a Flind personal API key:
 
 ```ts
 const runtime = await createHarnessRuntime({ apiKey: "pha_…" });
@@ -57,11 +57,11 @@ Set `POSTHOG_REGION` to `us`, `eu`, or `dev` when needed.
 | `@flind/harness/extensions/context-wiki` | Context-wiki prompt and environment helpers |
 | `@flind/harness/extensions/enrichment` | File enrichment behavior |
 | `@flind/harness/extensions/task-system-prompt` | Task prompt builders and Pi task-prompt extension |
-| `@flind/harness/extensions/posthog-mcp-policy` | PostHog MCP permission policy and product-id classification |
-| `@flind/harness/extensions/local-tools` | Injected local tools (signed git, artifacts) and their PostHog task/run API client |
+| `@flind/harness/extensions/posthog-mcp-policy` | Flind MCP permission policy and product-id classification |
+| `@flind/harness/extensions/local-tools` | Injected local tools (signed git, artifacts) and their Flind task/run API client |
 | `@flind/harness/extensions/rtk` | RTK command-compression: Pi's native rewrite, the pure matching rules Claude's hook uses, and the Codex guidance text |
 | `@flind/harness/extensions/benjamin` | Vendored Benjamin-Plus and Simplified Technical English (ASD-STE100) system-prompt instructions, gated by `POSTHOG_BENJAMIN` |
 | `@flind/harness/extensions/agent-instructions` | Base appended system-prompt content (branch naming, PR links, plan mode, shell efficiency, spoken narration, …) |
-| `@flind/harness/extensions/skills-store` | PostHog skills-store pointer-file rendering and install/remove across Claude Code, Codex, and Pi skill roots |
+| `@flind/harness/extensions/skills-store` | Flind skills-store pointer-file rendering and install/remove across Claude Code, Codex, and Pi skill roots |
 
 Individual extensions are also exported under `@flind/harness/extensions/*`.

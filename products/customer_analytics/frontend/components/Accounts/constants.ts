@@ -1,6 +1,6 @@
 import type { AccountsOverviewTile } from './accountsOverviewTilesLogic'
 
-// PostHog's Salesforce instance origin; append a record id to deep-link to that record (account or opportunity).
+// Flind's Salesforce instance origin; append a record id to deep-link to that record (account or opportunity).
 export const SALESFORCE_ORIGIN = 'https://posthog.my.salesforce.com'
 
 export const ACCOUNTS_OVERVIEW_THRESHOLD_OPERATORS = ['>', '>=', '<', '<=', '=', '!='] as const
@@ -30,7 +30,7 @@ export const ACCOUNT_RELATIONSHIP_ANALYTICS_ROLES: Record<string, string> = {
 
 // Canonical analytics event names for the accounts list. Every `posthog.capture`
 // in this directory must reference these — a mistyped string silently forks a new
-// event in PostHog and breaks reporting without any error. Keep in sync with the
+// event in Flind and breaks reporting without any error. Keep in sync with the
 // analytics table in AGENTS.md.
 export const AccountsEvents = {
     ListViewed: 'customer analytics accounts list viewed',

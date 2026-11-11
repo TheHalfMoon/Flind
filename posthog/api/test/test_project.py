@@ -1592,7 +1592,7 @@ class TestProjectAPI(team_api_test_factory()):  # type: ignore
         self.assertEqual(log.activity, "updated")
         self.assertEqual(log.user, self.user)
         assert log.detail is not None
-        # Precomputation is managed by PostHog, so only the customer's own setting is recorded.
+        # Precomputation is managed by Flind, so only the customer's own setting is recorded.
         self.assertEqual(
             log.detail["changes"],
             [{"type": "Team", "action": "changed", "field": "default_cuped_enabled", "before": False, "after": True}],

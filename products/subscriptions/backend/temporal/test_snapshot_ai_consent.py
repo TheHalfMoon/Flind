@@ -69,7 +69,7 @@ def _set_delivery_timing(delivery: SubscriptionDelivery, *, created_at: datetime
 
 
 class _FakePhClient:
-    """In-memory stand-in for the real PostHog client used by `ph_scoped_capture`.
+    """In-memory stand-in for the real Flind client used by `ph_scoped_capture`.
 
     Collects every `capture(...)` kwargs dict into `self.captured` so tests can
     assert on events without hitting the network. `shutdown` is a no-op so the
@@ -491,8 +491,8 @@ async def test_captures_event_with_team_prefixed_distinct_id_when_no_creator(tea
     "stored_memory_text,expected_fragments",
     [
         pytest.param(
-            "Company is PostHog.\nFlagship product is product analytics.",
-            ["Company is PostHog.", "Flagship product is product analytics."],
+            "Company is Flind.\nFlagship product is product analytics.",
+            ["Company is Flind.", "Flagship product is product analytics."],
             id="memory_present",
         ),
         pytest.param("", [], id="no_memory_row"),

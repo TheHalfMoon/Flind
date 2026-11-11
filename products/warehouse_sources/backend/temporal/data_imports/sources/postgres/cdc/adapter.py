@@ -98,12 +98,12 @@ def _customer_fixable_setup_message(exc: BaseException) -> str | None:
             "needs only SELECT."
         )
     # ALTER PUBLICATION ADD TABLE raises this when the table was renamed or dropped on the
-    # source database after PostHog last synced the schema — the customer's database, not ours.
+    # source database after Flind last synced the schema — the customer's database, not ours.
     if isinstance(exc, psycopg.errors.UndefinedTable):
         return (
             f"Could not add this table to change data capture: {exc} "
             "The table doesn't exist on your database — it may have been renamed or dropped "
-            "since PostHog last synced the schema. Refresh the schema and try again."
+            "since Flind last synced the schema. Refresh the schema and try again."
         )
     return None
 
@@ -224,7 +224,7 @@ class PostgresCDCAdapter:
 
     def recreate_stream(self, source: ExternalDataSource, tables: list[str]) -> dict[str, Any]:
         """Drop the dead replication slot and create a fresh one against the existing
-        publication, recreating the publication first when PostHog owns it and it's gone.
+        publication, recreating the publication first when Flind owns it and it's gone.
 
         ``tables`` are schema-qualified ``schema.table`` names — a publication can span
         schemas, so each table keeps its own schema rather than inheriting the source's
@@ -276,7 +276,7 @@ class PostgresCDCAdapter:
         source: ExternalDataSource,
         payload: dict[str, Any],
     ) -> tuple[dict[str, Any], str | None]:
-        """Create the logical replication slot (and the publication, for PostHog-managed
+        """Create the logical replication slot (and the publication, for Flind-managed
         mode) on the source database. Returns the cdc_* fields the caller should merge
         into ``source.job_inputs``, or an error string. Cleans up partial state on failure.
         """
@@ -305,7 +305,7 @@ class PostgresCDCAdapter:
                     slot_present = slot_exists(conn, slot_name)
                     publication_present = publication_exists(conn, pub_name)
                     # Default names are source-id derived, so pre-existing resources are recoverable
-                    # PostHog state from this source. Custom-name conflicts still belong to the user/DBA.
+                    # Flind state from this source. Custom-name conflicts still belong to the user/DBA.
                     if uses_default_posthog_resources and slot_present:
                         if not publication_present:
                             create_publication(conn, pub_name, tables=[])
@@ -338,7 +338,7 @@ class PostgresCDCAdapter:
                 return {}, _slot_setup_error_message(e)
             return resource_fields, None
 
-        # self_managed: the publication is customer-owned; PostHog only creates the slot.
+        # self_managed: the publication is customer-owned; Flind only creates the slot.
         try:
             with cdc_pg_connection(source) as conn:
                 if slot_exists(conn, slot_name):
@@ -364,7 +364,7 @@ class PostgresCDCAdapter:
         return resource_fields, None
 
     def cleanup_resources(self, source: ExternalDataSource) -> None:
-        """Drop the PostHog-managed replication slot (and publication, for PostHog-managed
+        """Drop the Flind-managed replication slot (and publication, for Flind-managed
         mode) on the source database. Self-managed mode drops only the slot — the
         publication is customer-owned. Best-effort: logs and continues on errors.
         """
@@ -441,7 +441,7 @@ class PostgresCDCAdapter:
 
     def _managed_publication_name(self, source: ExternalDataSource) -> str | None:
         cdc_config = self.parse_cdc_config(source)
-        # PostHog only manages the publication in posthog-managed mode.
+        # Flind only manages the publication in posthog-managed mode.
         if cdc_config.management_mode != "posthog" or not cdc_config.publication_name:
             return None
         return cdc_config.publication_name

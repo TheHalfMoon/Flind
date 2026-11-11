@@ -746,7 +746,7 @@ const inlineReviewMocks = mswDecorator({
                         id: 1,
                         installation_id: '12345',
                         repository_selection: 'all',
-                        account: { type: 'Organization', name: 'PostHog' },
+                        account: { type: 'Organization', name: 'Flind' },
                         github_login: 'twixes',
                         uses_shared_installation: true,
                         created_at: '2026-05-01T00:00:00Z',

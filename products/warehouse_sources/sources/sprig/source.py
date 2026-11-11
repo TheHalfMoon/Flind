@@ -51,7 +51,7 @@ class SprigSource(ResumableSource[SprigSourceConfig, SprigResumeConfig]):
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Sprig",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Sprig API key to automatically pull your survey and response data into the PostHog Data warehouse.
+            caption="""Enter your Sprig API key to automatically pull your survey and response data into the Flind Data warehouse.
 
 Find your API key under **Integrations > Enrichment > Data Import API** in Sprig (Admin or Developer role required). Free/Starter plans need to contact [support@sprig.com](mailto:support@sprig.com) to enable API access first.""",
             iconPath="/static/services/sprig.png",

@@ -1,17 +1,17 @@
 ---
 name: designing-email-templates
-description: 'Author, save, and edit email templates in the PostHog workflows library — compose email design JSON with Liquid personalization and create and round-trip-edit templates over MCP. Use when asked to design, build, update, or fix an email template for workflows, broadcasts, or campaigns.'
+description: 'Author, save, and edit email templates in the Flind workflows library — compose email design JSON with Liquid personalization and create and round-trip-edit templates over MCP. Use when asked to design, build, update, or fix an email template for workflows, broadcasts, or campaigns.'
 ---
 
 # Designing email templates
 
-Use this skill when creating or editing email templates for PostHog workflows — broadcast campaigns and `function_email` workflow actions send the rendered template.
+Use this skill when creating or editing email templates for Flind workflows — broadcast campaigns and `function_email` workflow actions send the rendered template.
 
 ## How authoring works
 
-You author the **design JSON** (`content.email.design`) and save it with `workflows-create-email-template`. The server renders the sent email from your design with the same renderer PostHog's visual editor uses, so the template opens as editable blocks for humans and sends exactly what the design describes. Schema, the native blocks and spacing rules every email follows, and a working example in [references/unlayer-design-json.md](references/unlayer-design-json.md).
+You author the **design JSON** (`content.email.design`) and save it with `workflows-create-email-template`. The server renders the sent email from your design with the same renderer Flind's visual editor uses, so the template opens as editable blocks for humans and sends exactly what the design describes. Schema, the native blocks and spacing rules every email follows, and a working example in [references/unlayer-design-json.md](references/unlayer-design-json.md).
 
-When talking to the user, call it the template's **design** — the design document format is an internal implementation detail. Always share the template's `_posthogUrl` edit link in your reply after creating or updating, so the user can open it in PostHog directly.
+When talking to the user, call it the template's **design** — the design document format is an internal implementation detail. Always share the template's `_posthogUrl` edit link in your reply after creating or updating, so the user can open it in Flind directly.
 
 Read [references/design-guidelines.md](references/design-guidelines.md) before composing — it covers committing to a design direction, typography, color, and the patterns that make an email look designed rather than generated. For one fragment the block editor can't express, use an `html`-type content block inside the design.
 
@@ -90,7 +90,7 @@ Call `workflows-create-email-template` with:
 - Put the preview text that most inboxes show after the subject in the design's `body.values.preheaderText`. The rendered html carries it, so it reaches the inbox on every send path. Leave `content.email.preheader` unset, so the email carries one preview text.
 - Always author the `design` and omit `html` - the server renders html from the design. Sending hand-written html without a design produces an email the visual editor can only show as one raw block.
 - Always provide `text` as a real plain-text rendering of the message - clients that block rich content show only `text`, so filler like "placeholder" reaches real inboxes, and a text part that doesn't match the html hurts deliverability.
-- The tool result returns an edit link into the PostHog library.
+- The tool result returns an edit link into the Flind library.
 - After creating (or updating), call `workflows-show-email-template` — it renders an inline preview so the user sees the result.
 
 ### Payload mechanics
@@ -110,7 +110,7 @@ To move an email from another platform, rebuild it from native blocks instead of
 
 ## Editing a template (read–modify–write)
 
-`content` is replaced as a whole on update, never merged — and humans may have edited the design in PostHog's visual editor since you last saw it:
+`content` is replaced as a whole on update, never merged — and humans may have edited the design in Flind's visual editor since you last saw it:
 
 1. `workflows-get-email-template` — always fetch fresh; the returned `design` is the current source of truth.
 2. Modify the `design` (keep subject/text alongside it).
@@ -133,5 +133,5 @@ Edit it with `workflows-patch-action-email`: the same design operations as `work
 
 - List what exists with `workflows-list-email-templates` (metadata only; fetch one for its content).
 - When the user asks to see a template, call `workflows-show-email-template` — it renders an inline preview.
-- Reference a template from a workflow's `function_email` action (its UUID in `config.template_uuid`), or start a broadcast from it in the PostHog UI. The step takes a snapshot of the template's body at save - editing the library template later does not change steps that already used it. To change a step's email, patch that step with `workflows-patch-action-email`.
+- Reference a template from a workflow's `function_email` action (its UUID in `config.template_uuid`), or start a broadcast from it in the Flind UI. The step takes a snapshot of the template's body at save - editing the library template later does not change steps that already used it. To change a step's email, patch that step with `workflows-patch-action-email`.
 - Templates are soft-deleted by setting `deleted: true` via `workflows-update-email-template`.

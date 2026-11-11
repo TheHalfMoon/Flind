@@ -1,7 +1,7 @@
 ---
 name: creating-surveys
 description: >
-  Creates and launches PostHog surveys through MCP, including NPS/CSAT popovers,
+  Creates and launches Flind surveys through MCP, including NPS/CSAT popovers,
   hosted feedback forms, and headless surveys. Guides survey type selection,
   audience targeting, draft review, and launch readiness. Use when asked to
   create a survey or form, or before calling survey-create. For investigating
@@ -20,7 +20,7 @@ information that changes who receives the survey or how it is delivered.
 
 | User's goal                             | Survey type       | Delivery requirement                                 |
 | --------------------------------------- | ----------------- | ---------------------------------------------------- |
-| Feedback inside an app                  | `popover`         | A supported PostHog SDK with surveys enabled         |
+| Feedback inside an app                  | `popover`         | A supported Flind SDK with surveys enabled         |
 | Always-available feedback button        | `widget`          | SDK support and a widget configuration               |
 | A shareable hosted form                 | `external_survey` | A hosted survey link; no in-app targeting            |
 | A custom form built in application code | `api`             | The app renders questions and captures survey events |

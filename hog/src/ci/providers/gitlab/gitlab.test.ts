@@ -24,7 +24,7 @@ describe('GitLab', () => {
 
     test.each([
         ['a gitlab.com job', { GITLAB_CI: 'true', CI_SERVER_URL: 'https://gitlab.com' }, true],
-        // A self-managed instance is its own issuer, which PostHog doesn't trust.
+        // A self-managed instance is its own issuer, which Flind doesn't trust.
         ['a self-managed GitLab job', { GITLAB_CI: 'true', CI_SERVER_URL: 'https://gitlab.example.com' }, false],
     ])('detects %s', (_name, env, expected) => {
         expect(GITLAB.detect(env)).toBe(expected)

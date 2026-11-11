@@ -392,7 +392,7 @@ class TestTaskRunArtefacts(BaseTest):
         assert SignalReportArtefact.objects.filter(pull_request=pr).values("report_id").distinct().count() == 2
 
     def test_record_implementation_task_declared_billing_exemption_marks_report(self):
-        # A caller that knows its origin is PostHog-system freezes the exemption in the same
+        # A caller that knows its origin is Flind-system freezes the exemption in the same
         # transaction that records the task — dropping this plumbing would silently bill it.
         report = self._report()
         task = self._task()

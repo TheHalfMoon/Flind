@@ -121,7 +121,7 @@ def validate_deploy_key(deploy_key: str) -> str:
         deploy_key.encode("latin-1")
     except UnicodeEncodeError:
         raise InvalidDeployKeyError(
-            "Your deploy key contains characters PostHog can't send to Convex. "
+            "Your deploy key contains characters Flind can't send to Convex. "
             "Copy the key again from your Convex dashboard, then try again."
         ) from None
 
@@ -469,7 +469,7 @@ def validate_credentials(deploy_url: str, deploy_key: str) -> tuple[bool, str | 
             if e.response.status_code == 404:
                 return (
                     False,
-                    "PostHog couldn't find this Convex deployment. Copy the deployment URL from your Convex dashboard, then reconnect.",
+                    "Flind couldn't find this Convex deployment. Copy the deployment URL from your Convex dashboard, then reconnect.",
                 )
         # Any other status falls through to a generic message. Keep the raw error
         # (which embeds the deployment URL) out of what the user sees.

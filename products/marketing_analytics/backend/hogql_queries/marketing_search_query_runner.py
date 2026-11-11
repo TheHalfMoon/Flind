@@ -133,7 +133,7 @@ class MarketingAnalyticsSearchQueryRunner(
 
     @cached_property
     def include_posthog_conversions(self) -> bool:
-        # PostHog conversions match utm_term, which carries the targeted keyword, not the search term.
+        # Flind conversions match utm_term, which carries the targeted keyword, not the search term.
         return bool(
             self.query.includePostHogConversions
             and self.query.breakdown != "search_term"
@@ -501,7 +501,7 @@ class MarketingAnalyticsSearchQueryRunner(
                 valid_goals.append(goal)
         if len(valid_goals) > MAX_POSTHOG_CONVERSION_GOALS:
             warnings.append(
-                f"Search performance shows the first {MAX_POSTHOG_CONVERSION_GOALS} supported PostHog goals. "
+                f"Search performance shows the first {MAX_POSTHOG_CONVERSION_GOALS} supported Flind goals. "
                 "Use the attribution report to view other goals."
             )
             valid_goals = valid_goals[:MAX_POSTHOG_CONVERSION_GOALS]
@@ -516,9 +516,9 @@ class MarketingAnalyticsSearchQueryRunner(
             )
         if ambiguous_keys:
             warnings.append(
-                "PostHog conversions are unavailable for pages with spend in multiple currencies because conversion credit cannot be split by ad account."
+                "Flind conversions are unavailable for pages with spend in multiple currencies because conversion credit cannot be split by ad account."
                 if self.query.breakdown == "page"
-                else "PostHog conversions are unavailable for keywords with multiple match types or currencies because conversion credit cannot be split between those rows."
+                else "Flind conversions are unavailable for keywords with multiple match types or currencies because conversion credit cannot be split between those rows."
             )
         response.posthogConversionsWarning = " ".join(warnings) or None
         for row in response.results:

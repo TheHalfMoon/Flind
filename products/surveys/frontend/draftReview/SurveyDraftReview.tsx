@@ -54,10 +54,10 @@ export function SurveyDraftReview({ openMax }: { openMax: UseMaxToolReturn['open
                                     size="medium"
                                     icon={<IconAI />}
                                     onClick={openMax}
-                                    tooltip="Ask PostHog AI to change this survey"
+                                    tooltip="Ask Flind AI to change this survey"
                                     data-attr="survey-draft-ask-ai"
                                 >
-                                    Ask PostHog AI
+                                    Ask Flind AI
                                 </LemonButton>
                             )}
                             <LaunchSurveyButton size="medium">Launch survey</LaunchSurveyButton>

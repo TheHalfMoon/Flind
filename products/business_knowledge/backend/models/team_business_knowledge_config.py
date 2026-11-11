@@ -14,7 +14,7 @@ class TeamBusinessKnowledgeConfig(models.Model):
         default=False,
         db_default=False,
         help_text=(
-            "When true, PostHog learns reusable knowledge from public human replies on resolved "
+            "When true, Flind learns reusable knowledge from public human replies on resolved "
             "support tickets. Requires Support to be enabled for this environment."
         ),
     )

@@ -4,7 +4,7 @@ Experience continuity ensures users see consistent feature flag variants when tr
 
 ## Why the switch happens
 
-When evaluating a feature flag with multiple variants, PostHog determines which variant a user gets by hashing the `distinct_id`:
+When evaluating a feature flag with multiple variants, Flind determines which variant a user gets by hashing the `distinct_id`:
 
 1. Takes the user's `distinct_id` (e.g., `"anon_abc123"` or `"user@example.com"`)
 2. Combines it with the feature flag key
@@ -27,7 +27,7 @@ This is the problem experience continuity solves.
 
 ## How It Works
 
-When a user identifies, PostHog stores a "hash key override" that preserves the original anonymous `distinct_id` for future flag evaluations. This ensures the same hash bucket is used before and after identification.
+When a user identifies, Flind stores a "hash key override" that preserves the original anonymous `distinct_id` for future flag evaluations. This ensures the same hash bucket is used before and after identification.
 
 ```text
 Anonymous visit: distinct_id = "anon_abc123" → hash bucket 42 → variant "control"

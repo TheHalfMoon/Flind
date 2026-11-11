@@ -1,4 +1,4 @@
-"""Re-push PostHog secrets to every Vercel resource already linked to a team.
+"""Re-push Flind secrets to every Vercel resource already linked to a team.
 
 Usage:
     python manage.py backfill_vercel_secrets --dry-run

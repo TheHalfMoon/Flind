@@ -12,14 +12,14 @@ function issueExplanation(issue: EventHealthIssue): JSX.Element {
     if (issue.status === 'stale') {
         return (
             <>
-                PostHog last saw this event <b>{dayjs(issue.lastSeenAt).fromNow()}</b>. This match group matches nothing
+                Flind last saw this event <b>{dayjs(issue.lastSeenAt).fromNow()}</b>. This match group matches nothing
                 newer than that, so recent results can be incomplete.
             </>
         )
     }
     return (
         <>
-            PostHog has no definition for this event. Either it was never sent, or someone deleted the definition in
+            Flind has no definition for this event. Either it was never sent, or someone deleted the definition in
             data management. This match group matches nothing new.
         </>
     )

@@ -1,5 +1,5 @@
 const MAX_BODY_CHARS = 2000;
-// PostHog Logs only facets attribute key/value pairs shorter than 256 chars,
+// Flind Logs only facets attribute key/value pairs shorter than 256 chars,
 // so free-text attribute values are capped well below that.
 const MAX_ATTR_CHARS = 200;
 // The SDK default export timeout is 30s; a hanging endpoint must not hold up

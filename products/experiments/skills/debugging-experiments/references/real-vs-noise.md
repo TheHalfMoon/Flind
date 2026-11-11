@@ -12,7 +12,7 @@ real effect on the downstream action. It can even read _more_ significant than t
 because it's a smaller, more-selected denominator.
 
 **Trust the randomized endpoint — exposure → final step, counting everyone assigned — over any rate
-measured between two mid-funnel steps.** PostHog computes significance from the first step to the last
+measured between two mid-funnel steps.** Flind computes significance from the first step to the last
 step for exactly this reason (see `numbers-vs-sql.md` D2 in the `diagnosing-experiment-health`
 library).
 

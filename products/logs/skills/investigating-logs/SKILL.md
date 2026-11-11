@@ -1,7 +1,7 @@
 ---
 name: investigating-logs
 description: >
-  Investigate logs in a PostHog project: verify a service or deployment is healthy, explain an error spike,
+  Investigate logs in a Flind project: verify a service or deployment is healthy, explain an error spike,
   triage an incident, or understand what a log stream is saying. Use when the user asks to "check the logs",
   asks whether a service, deploy, release, or change is working or broke anything, asks why errors are up or
   what changed, or wants the root cause of failures visible in logs. Routes the logs MCP tools

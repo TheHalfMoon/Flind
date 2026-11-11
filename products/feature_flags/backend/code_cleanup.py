@@ -193,11 +193,11 @@ def build_code_cleanup_prompt(
     at_commit = f" at commit {result.commit_sha}" if _SAFE_COMMIT.fullmatch(result.commit_sha) else ""
     description = "\n".join(
         [
-            f'Remove every check of the PostHog feature flag "{flag.key}" from this repository, keep the right code path, and open a draft pull request.',
+            f'Remove every check of the Flind feature flag "{flag.key}" from this repository, keep the right code path, and open a draft pull request.',
             "",
             f"Repository: {repository}",
             f'Feature flag key: "{flag.key}"',
-            "PostHog marks this flag as stale, so it no longer needs to decide which code runs.",
+            "Flind marks this flag as stale, so it no longer needs to decide which code runs.",
             "",
             "## Which code to keep",
             f"- {_keep_instruction(keep_outcome)}",
@@ -218,13 +218,13 @@ def build_code_cleanup_prompt(
             "- Leave reads of the flag's payload unchanged, because you don't know its value. List them in the pull request description.",
             "- Do not touch unrelated code.",
             "- If the right code path is unclear at a check, leave it unchanged and list it in the pull request description.",
-            "- Do not change the flag in PostHog.",
+            "- Do not change the flag in Flind.",
             "- If the repository has no checks of the flag, do not open a pull request. Say so in your final message.",
             "",
             "## Output",
             f'Open a draft pull request titled "{title}".',
             "In the description, say which outcome the code keeps, list the files you changed, and list anything left for a person to review.",
-            "End the description with a reminder to archive the flag in PostHog after the change deploys.",
+            "End the description with a reminder to archive the flag in Flind after the change deploys.",
         ]
     )
     return TaskPrompt(title=title, description=description)

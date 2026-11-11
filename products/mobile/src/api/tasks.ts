@@ -60,7 +60,7 @@ interface ReportImplementationTaskCreateApi {
 }
 
 /**
- * A PostHog AI chat, as the web side panel creates it. A blank title makes the server name the task from
+ * A Flind AI chat, as the web side panel creates it. A blank title makes the server name the task from
  * `description`. It sends no `branch`: that key would let the create claim a warm run a web composer booted.
  */
 export interface ChatTaskCreateApi extends Partial<RunRuntimeSelectionApi> {
@@ -71,7 +71,7 @@ export interface ChatTaskCreateApi extends Partial<RunRuntimeSelectionApi> {
     pending_user_message: string
 }
 
-/** The Inbox "Discuss" task. Repo-less report discussions are exempt from the PostHog Desktop gate. */
+/** The Inbox "Discuss" task. Repo-less report discussions are exempt from the Flind Desktop gate. */
 export interface ReportDiscussionTaskCreateApi extends Partial<RunRuntimeSelectionApi> {
     title: string
     description: string
@@ -421,7 +421,7 @@ export interface TaskSummaryApi {
 
 export const SESSION_LIST_LIMIT = 30
 
-// Scout runs are headless, not conversations. The web PostHog AI task list leaves them out the same way.
+// Scout runs are headless, not conversations. The web Flind AI task list leaves them out the same way.
 const SCOUT_ORIGIN_PRODUCT = 'signals_scout'
 
 /** `created_by` filters on the numeric user id from `users/@me/`, not the UUID. */

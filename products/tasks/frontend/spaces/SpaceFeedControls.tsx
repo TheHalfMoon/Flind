@@ -12,7 +12,7 @@ const VIEWS: { value: SpaceFeedView; label: string; icon: JSX.Element }[] = [
     { value: 'cards', label: 'Cards', icon: <IconStack /> },
 ]
 
-/** The row above the feed: which types show, list or cards, and the filter menu, like PostHog Desktop's. */
+/** The row above the feed: which types show, list or cards, and the filter menu, like Flind Desktop's. */
 export function SpaceFeedControls({ sourceOptions }: { sourceOptions: string[] }): JSX.Element {
     const { types, view } = useValues(spaceFeedViewLogic)
     const { setTypes, setView } = useActions(spaceFeedViewLogic)

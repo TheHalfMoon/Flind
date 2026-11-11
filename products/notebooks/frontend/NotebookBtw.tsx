@@ -10,7 +10,7 @@ import { getNotebookBtwContext } from './notebookBtwContext'
 import type { NotebookBtwSession } from './notebookBtwLogic'
 
 const CONVERSATION_DESCRIPTION =
-    'Sent messages are saved in PostHog AI history, separately from this notebook. After a refresh, reopen the conversation from history.'
+    'Sent messages are saved in Flind AI history, separately from this notebook. After a refresh, reopen the conversation from history.'
 
 const COMPOSER_OVERRIDE = {
     placeholder: 'Ask a side question...',

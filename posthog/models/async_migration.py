@@ -45,7 +45,7 @@ class AsyncMigration(models.Model):
 
     def get_name_with_requirements(self) -> str:
         return (
-            f"{self.name} - must be ran on PostHog version {self.posthog_min_version} up to {self.posthog_max_version}"
+            f"{self.name} - must be ran on Flind version {self.posthog_min_version} up to {self.posthog_max_version}"
         )
 
 

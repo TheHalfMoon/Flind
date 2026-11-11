@@ -69,7 +69,7 @@ changed:
 
 Set `PATHS_FILTER_SHADOW_POSTHOG_TOKEN` on a step to have that run compare the API's
 changed-file list against the same list derived from the pull request's merge commit,
-and send the verdict to PostHog. The comparison never changes what the filter answers.
+and send the verdict to Flind. The comparison never changes what the filter answers.
 
 ```yaml
 - uses: ./.github/actions/paths-filter

@@ -822,14 +822,14 @@ class TestPickAProjectMessage:
     def test_project_names_cannot_inject_slack_control_syntax(self):
         message = pick_a_project_message(
             "You can route your mentions to:",
-            [self._candidate(1, "<!channel>", "<https://evil.example|Open PostHog>")],
+            [self._candidate(1, "<!channel>", "<https://evil.example|Open Flind>")],
             set_command="/posthog",
             home_tab_url=None,
         )
 
         assert "<!channel>" not in message
         assert "&lt;!channel&gt;" in message
-        assert "<https://evil.example|Open PostHog>" not in message
+        assert "<https://evil.example|Open Flind>" not in message
 
 
 class TestUnresolvedUserProperties:

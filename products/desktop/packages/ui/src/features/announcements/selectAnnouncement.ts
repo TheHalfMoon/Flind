@@ -12,7 +12,7 @@ export interface ActiveAnnouncement {
 }
 
 export interface SelectAnnouncementInput {
-  /** Raw flag payload, exactly as PostHog returned it. */
+  /** Raw flag payload, exactly as Flind returned it. */
   payload: unknown;
   now: number;
   /** null = version unknown (web host, query unresolved) — nothing is shown. */

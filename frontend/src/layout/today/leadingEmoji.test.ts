@@ -2,14 +2,14 @@ import { leadingEmoji, withoutLeadingEmoji } from './leadingEmoji'
 
 describe('leadingEmoji', () => {
     it.each([
-        ['🎉 PostHog App', '🎉', 'PostHog App'],
-        ['🎉PostHog App', '🎉', 'PostHog App'],
+        ['🎉 Flind App', '🎉', 'Flind App'],
+        ['🎉Flind App', '🎉', 'Flind App'],
         ['👩‍💻 Dev team', '👩‍💻', 'Dev team'],
         ['❤️ Fans', '❤️', 'Fans'],
         ['👍🏽 Thumbs', '👍🏽', 'Thumbs'],
         ['🎉', '🎉', '🎉'],
-        ['PostHog 🎉', null, 'PostHog 🎉'],
-        ['PostHog', null, 'PostHog'],
+        ['Flind 🎉', null, 'Flind 🎉'],
+        ['Flind', null, 'Flind'],
         ['', null, ''],
     ])('splits %j into %j and %j', (name, emoji, rest) => {
         expect(leadingEmoji(name)).toEqual(emoji)

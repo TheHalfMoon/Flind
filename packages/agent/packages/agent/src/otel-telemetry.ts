@@ -45,7 +45,7 @@ export interface OtelTelemetryConfig {
 
 /**
  * Session identity pinned as OTel resource attributes. Resource attributes are
- * indexed via resource_fingerprint in PostHog Logs, so runs are directly
+ * indexed via resource_fingerprint in Flind Logs, so runs are directly
  * filterable per user/task/run in the Logs UI.
  */
 export interface OtelSessionResource {
@@ -277,8 +277,8 @@ export function mapNotificationToLogRecord(
 }
 
 /**
- * Ships run telemetry to PostHog over OTLP: an allowlisted metadata subset of
- * the session log to PostHog Logs (see mapNotificationToLogRecord) and, when a
+ * Ships run telemetry to Flind over OTLP: an allowlisted metadata subset of
+ * the session log to Flind Logs (see mapNotificationToLogRecord) and, when a
  * traces URL is configured, an APM trace per run (see RunTraceBuilder) with
  * trace/span ids stamped on the log records so the two cross-link in the UI.
  * Registered as a SessionLogWriter sink; the S3 session log remains the source

@@ -11,7 +11,7 @@ export const getRubyInstallSteps = (ctx: OnboardingComponentsContext): StepDefin
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Add the PostHog Ruby gem to your Gemfile:</Markdown>
+                    <Markdown>Add the Flind Ruby gem to your Gemfile:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -27,11 +27,11 @@ export const getRubyInstallSteps = (ctx: OnboardingComponentsContext): StepDefin
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Initialize the PostHog client with your project token and host:</Markdown>
+                    <Markdown>Initialize the Flind client with your project token and host:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -40,7 +40,7 @@ export const getRubyInstallSteps = (ctx: OnboardingComponentsContext): StepDefin
                                 code: dedent`
                                 require 'posthog'
                                 
-                                posthog = PostHog::Client.new({
+                                posthog = Flind::Client.new({
                                     api_key: "<ph_project_token>",
                                     host: "<ph_client_api_host>",
                                     on_error: Proc.new { |status, msg| print msg }

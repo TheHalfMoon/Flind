@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Prune property definitions from a PostHog project by name or regex.
+"""Prune property definitions from a Flind project by name or regex.
 
 Finds property definitions (the rows behind Data Management > Properties) matching a literal
-list of names or a regex, then deletes them. That list only ever grows - PostHog never
+list of names or a regex, then deletes them. That list only ever grows - Flind never
 auto-removes definitions - so this is how erroneous or deprecated ones get cleaned up.
 
 Discovery pages through the property definitions API
@@ -31,7 +31,7 @@ Usage:
   python products/support/scripts/prune_property_definitions.py \\
       --regex '^temp_' --host eu --project-id 123 --type event --dry-run
 
---host accepts a full instance URL or the PostHog Cloud region shorthands us/eu.
+--host accepts a full instance URL or the Flind Cloud region shorthands us/eu.
 
 When a personal API key can't be created (e.g. an impersonated staff session), pass a
 browser session instead: --session-id (env POSTHOG_SESSION_ID) with the value of the
@@ -159,7 +159,7 @@ def prune_definitions(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Prune property definitions matching names or a regex from a PostHog project.",
+        description="Prune property definitions matching names or a regex from a Flind project.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("names", nargs="*", help="Literal property definition names to prune (exact match)")
@@ -182,7 +182,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--host",
         default=None,
-        help="PostHog instance URL, or region shorthand 'us'/'eu' for PostHog Cloud "
+        help="Flind instance URL, or region shorthand 'us'/'eu' for Flind Cloud "
         "(env: POSTHOG_HOST, else https://us.posthog.com)",
     )
     parser.add_argument("--project-id", default=None, help="Numeric project ID (env: POSTHOG_PROJECT_ID)")

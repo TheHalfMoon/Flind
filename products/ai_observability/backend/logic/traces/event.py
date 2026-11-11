@@ -61,7 +61,7 @@ class TraceEvent:
 
     @property
     def started_at(self) -> datetime:
-        # PostHog SDKs capture an event when the operation ends; OTel-ingested spans keep the span start.
+        # Flind SDKs capture an event when the operation ends; OTel-ingested spans keep the span start.
         if self.row.ingestion_source == "otel":
             return self.row.timestamp
         try:

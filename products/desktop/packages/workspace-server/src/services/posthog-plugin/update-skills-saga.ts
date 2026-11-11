@@ -148,11 +148,11 @@ export class UpdateSkillsSaga extends Saga<
       // source" — it tells the user what happened, that they're not stuck
       // (bundled skills still work), and that it will recover on its own.
       throw new Error(
-        "Couldn't download skills from PostHog (the skills and context-mill " +
+        "Couldn't download skills from Flind (the skills and context-mill " +
           "sources both returned nothing, likely a temporary network or " +
           "server issue) and no previously downloaded skills were cached. " +
-          "The skills bundled with this version of PostHog are still " +
-          "available, and PostHog will retry automatically on the next " +
+          "The skills bundled with this version of Flind are still " +
+          "available, and Flind will retry automatically on the next " +
           "update.",
       );
     }

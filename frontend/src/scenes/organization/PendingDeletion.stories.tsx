@@ -24,7 +24,7 @@ const meta: Meta = {
                     200,
                     {
                         email: 'test@posthog.com',
-                        first_name: 'Test PostHog',
+                        first_name: 'Test Flind',
                         organization: { name: 'Test org', teams: [], projects: [] },
                         organizations: [],
                         team: null,

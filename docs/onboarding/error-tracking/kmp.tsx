@@ -9,7 +9,7 @@ export const getKMPErrorTrackingSteps = (ctx: OnboardingComponentsContext): Step
     const installSteps = getKMPSteps(ctx)
 
     const enableExceptionAutocaptureStep: StepDefinition = {
-        title: 'Enable exception autocapture in PostHog',
+        title: 'Enable exception autocapture in Flind',
         badge: 'required',
         content: (
             <Markdown>
@@ -27,11 +27,11 @@ export const getKMPErrorTrackingSteps = (ctx: OnboardingComponentsContext): Step
         content: (
             <>
                 <CalloutBox type="fyi" title="Version requirement">
-                    <Markdown>The error tracking configuration requires PostHog KMP version 0.8.0 or higher.</Markdown>
+                    <Markdown>The error tracking configuration requires Flind KMP version 0.8.0 or higher.</Markdown>
                 </CalloutBox>
                 <Markdown>
                     Both the project setting from the previous step and `errorTracking.autoCapture` must be enabled.
-                    Replace the `PostHog.setup()` call from the configuration step with the appropriate example below.
+                    Replace the `Flind.setup()` call from the configuration step with the appropriate example below.
                     The optional `inAppIncludes` prefixes mark matching stack frames as in-app code on Android, iOS, and
                     JVM. Kotlin/JS and Kotlin/Wasm ignore `inAppIncludes`.
                 </Markdown>
@@ -53,7 +53,7 @@ export const getKMPErrorTrackingSteps = (ctx: OnboardingComponentsContext): Step
                                             import com.posthog.kmp.PostHogConfig
                                             import com.posthog.kmp.PostHogContext
 
-                                            PostHog.setup(
+                                            Flind.setup(
                                                 config = PostHogConfig(
                                                     projectToken = "<ph_project_token>",
                                                     host = "<ph_client_api_host>",
@@ -85,7 +85,7 @@ export const getKMPErrorTrackingSteps = (ctx: OnboardingComponentsContext): Step
                                             import com.posthog.kmp.PostHogConfig
                                             import com.posthog.kmp.PostHogContext
 
-                                            PostHog.setup(
+                                            Flind.setup(
                                                 config = PostHogConfig(
                                                     projectToken = "<ph_project_token>",
                                                     host = "<ph_client_api_host>",
@@ -118,7 +118,7 @@ export const getKMPErrorTrackingSteps = (ctx: OnboardingComponentsContext): Step
         content: (
             <>
                 <Markdown>
-                    Call `PostHog.captureException` for handled exceptions or errors caught by your application code.
+                    Call `Flind.captureException` for handled exceptions or errors caught by your application code.
                     You can include additional properties to help investigate the exception.
                 </Markdown>
                 <CodeBlock
@@ -130,7 +130,7 @@ export const getKMPErrorTrackingSteps = (ctx: OnboardingComponentsContext): Step
                                 try {
                                     riskyOperation()
                                 } catch (error: Exception) {
-                                    PostHog.captureException(
+                                    Flind.captureException(
                                         throwable = error,
                                         additionalProperties = mapOf("context" to "checkout_flow"),
                                     )
@@ -149,7 +149,7 @@ export const getKMPErrorTrackingSteps = (ctx: OnboardingComponentsContext): Step
         checkpoint: true,
         content: (
             <Markdown>
-                Capture a test exception, flush queued events with `PostHog.flush()`, and confirm the exception appears
+                Capture a test exception, flush queued events with `Flind.flush()`, and confirm the exception appears
                 in [Error tracking](https://app.posthog.com/error-tracking). Unhandled mobile crashes are persisted and
                 sent after the app launches again.
             </Markdown>

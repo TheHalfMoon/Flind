@@ -47,10 +47,10 @@ _SUPABASE_INVALID_CREDENTIALS_ERROR = (
     "account password, or reset it in your project's database settings."
 )
 
-# Supabase signs its database certificates with its own authority, which PostHog does not trust by
+# Supabase signs its database certificates with its own authority, which Flind does not trust by
 # default, so the shared message can't say where to get it.
 _SUPABASE_CERTIFICATE_VERIFY_FAILED_ERROR = (
-    "PostHog could not verify your Supabase TLS certificate. Paste the certificate from SSL configuration "
+    "Flind could not verify your Supabase TLS certificate. Paste the certificate from SSL configuration "
     "in your Supabase database settings into Certificate authority, or turn off verification and clear that field."
 )
 
@@ -315,7 +315,7 @@ class SupabaseSource(PostgresSource):
             keywords=["sql", "postgresql", "postgres"],
             featured=True,
             iconPath="/static/services/supabase.png",
-            caption="Enter your Supabase credentials to automatically pull your data into the PostHog Data warehouse",
+            caption="Enter your Supabase credentials to automatically pull your data into the Flind Data warehouse",
             docsUrl="https://posthog.com/tutorials/supabase-query",
             fields=fields,
             releaseStatus=ReleaseStatus.GA,

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -105,7 +105,7 @@ export interface EnterpriseEventDefinitionApi {
     readonly scheduled_deletion_at: string | null
     enforcement_mode?: SchemaEnforcementModeEnumApi
     /**
-     * Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event.
+     * Name of a single property on this event that Flind UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event.
      * @maxLength 400
      * @nullable
      */
@@ -163,7 +163,7 @@ export interface EnterpriseEventDefinitionRequestApi {
     readonly scheduled_deletion_at: string | null
     enforcement_mode?: SchemaEnforcementModeEnumApi
     /**
-     * Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event.
+     * Name of a single property on this event that Flind UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event.
      * @maxLength 400
      * @nullable
      */
@@ -210,7 +210,7 @@ export interface PatchedEnterpriseEventDefinitionApi {
     readonly scheduled_deletion_at?: string | null
     enforcement_mode?: SchemaEnforcementModeEnumApi
     /**
-     * Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event.
+     * Name of a single property on this event that Flind UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event.
      * @maxLength 400
      * @nullable
      */
@@ -240,7 +240,7 @@ export interface EventDefinitionRecordApi {
     tags?: unknown[]
     enforcement_mode?: SchemaEnforcementModeEnumApi
     /**
-     * Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event.
+     * Name of a single property on this event that Flind UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event.
      * @maxLength 400
      * @nullable
      */
@@ -392,7 +392,7 @@ export type EventDefinitionsListParams = {
      */
     tags?: string
     /**
-     * When true, keep only verified events and core PostHog events. When false, keep the rest (Enterprise only).
+     * When true, keep only verified events and core Flind events. When false, keep the rest (Enterprise only).
      */
     verified?: boolean
 }

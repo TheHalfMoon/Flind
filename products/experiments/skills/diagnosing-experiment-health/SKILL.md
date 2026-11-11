@@ -1,18 +1,18 @@
 ---
 name: diagnosing-experiment-health
-description: "Runs diagnostics and a health check on one PostHog experiment: its setup, exposures, results and changes during the run. Covers 0 exposures, sample ratio mismatch, lost or uneven exposures, users in multiple variants, identity faults, who the experiment counts, significance traps (peeking, A/A, 'target reached', Bayesian vs Frequentist, sequential, CUPED), mid-run edits, pause and freeze, and survey follow-up.\nTRIGGER when: user asks 'is my experiment healthy / set up right / biased?' or 'why 0 exposures?', asks why it counts different people than their insight, mentions the bias or mismatch warning, an uneven split, significance that flips, numbers that disagree with their SQL, results that changed after an edit, or wants user feedback on an experiment.\nDO NOT TRIGGER when: creating an experiment (use creating-experiments), only configuring rollout (use configuring-experiment-rollout) or metrics (use configuring-experiment-analytics), or only asking lifecycle questions (use managing-experiment-lifecycle)."
+description: "Runs diagnostics and a health check on one Flind experiment: its setup, exposures, results and changes during the run. Covers 0 exposures, sample ratio mismatch, lost or uneven exposures, users in multiple variants, identity faults, who the experiment counts, significance traps (peeking, A/A, 'target reached', Bayesian vs Frequentist, sequential, CUPED), mid-run edits, pause and freeze, and survey follow-up.\nTRIGGER when: user asks 'is my experiment healthy / set up right / biased?' or 'why 0 exposures?', asks why it counts different people than their insight, mentions the bias or mismatch warning, an uneven split, significance that flips, numbers that disagree with their SQL, results that changed after an edit, or wants user feedback on an experiment.\nDO NOT TRIGGER when: creating an experiment (use creating-experiments), only configuring rollout (use configuring-experiment-rollout) or metrics (use configuring-experiment-analytics), or only asking lifecycle questions (use managing-experiment-lifecycle)."
 ---
 
 # Diagnosing experiment health
 
-This skill answers: **My PostHog experiment results look wrong, biased, or empty — what's going on?**
+This skill answers: **My Flind experiment results look wrong, biased, or empty — what's going on?**
 It is the diagnostics and health check for one experiment: its setup, its exposures, its results and what changed during the run.
 
 Match the user's complaint in the dispatch table, then read the matching reference file for the
 diagnostic.
 
 Each diagnostic in the reference files is tagged `[HIGH]`, `[MEDIUM]`, or `[LOW]` based on how
-strongly it's verified — `[HIGH]` is verified directly in PostHog code, `[MEDIUM]` is partially or
+strongly it's verified — `[HIGH]` is verified directly in Flind code, `[MEDIUM]` is partially or
 team-source verified, `[LOW]` describes SDK/external behavior that wasn't verified here. Treat `[LOW]`
 items as hypotheses to test, not facts to assert.
 
@@ -79,7 +79,7 @@ Query raw events only for what those cannot show.
 | "Variant ratio doesn't match my split" / mismatch warning / "is 58/42 normal?"             | A — bias & skew                              |
 | "Why isn't it 50/50?" / "one variant gets fewer users every day"                           | A — bias & skew                              |
 | "Users in both control and test" / high `$multiple` %                                      | A — bias & skew                              |
-| "Our own analytics show an even split and PostHog doesn't"                                 | A — bias & skew                              |
+| "Our own analytics show an even split and Flind doesn't"                                 | A — bias & skew                              |
 | "Most responses on the flag are false" / "users saw the new UI for a second, then lost it" | A — bias & skew                              |
 | Multi-variant exposure on a server-rendered app                                            | A — bias & skew                              |
 | Banner about feature-flag/experiment state mismatch                                        | A — bias & skew                              |
@@ -102,9 +102,9 @@ Query raw events only for what those cannot show.
 | "Bayesian says 96% chance to win — should we ship?"                                        | C — interpretation traps                     |
 | "Confidence intervals overlap — does that mean not significant?"                           | C — interpretation traps                     |
 | "The p-value is exactly 1" / "control shows a lift"                                        | C — interpretation traps                     |
-| "An external tool (significance calculator or AI agent) disagrees with PostHog"            | C — interpretation traps                     |
+| "An external tool (significance calculator or AI agent) disagrees with Flind"            | C — interpretation traps                     |
 | "Should I ship? Primary is up but a secondary is down"                                     | C — interpretation traps                     |
-| "PostHog numbers ≠ my SQL count"                                                           | D — numbers vs SQL                           |
+| "Flind numbers ≠ my SQL count"                                                           | D — numbers vs SQL                           |
 | "Funnel says X% but my raw event count says Y"                                             | D — numbers vs SQL                           |
 | "The experiment says flat and our dashboard shows a drop"                                  | D — numbers vs SQL                           |
 | "Sum of revenue looks wrong" / "breakdown shows 'none'"                                    | D — numbers vs SQL                           |
@@ -186,7 +186,7 @@ comparisons, low-volume variance, peeking / early stopping. Includes the running
 
 → See [references/interpretation.md](references/interpretation.md)
 
-### D — Numbers don't match (PostHog vs the user's SQL / raw count)
+### D — Numbers don't match (Flind vs the user's SQL / raw count)
 
 The experiment page applies an exposure scope, `$multiple` exclusion, test-account filter, and date range
 that ad-hoc SQL almost never replicates. Covers funnel attribution (only first→last step counts for stats),

@@ -190,7 +190,7 @@ def send_test_slack_message(*, team_id: int, stream_id: str, user: "User") -> st
         SlackIntegration(integration, source="customer_analytics_event_stream").client.chat_postMessage(
             channel=stream.slack_channel_id,
             text=(
-                ":wave: This is a test message from PostHog Customer analytics — "
+                ":wave: This is a test message from Flind Customer analytics — "
                 "your event stream will post matching events to this channel."
             ),
         )
@@ -202,7 +202,7 @@ def send_test_slack_message(*, team_id: int, stream_id: str, user: "User") -> st
             stream_id=str(stream_id),
             error=error,
         )
-        hint = " Invite the PostHog bot to the channel and try again." if error == "not_in_channel" else ""
+        hint = " Invite the Flind bot to the channel and try again." if error == "not_in_channel" else ""
         raise EventStreamTestMessageError(f"Slack rejected the test message: {error}.{hint}")
     return stream.slack_channel_id
 

@@ -227,7 +227,7 @@ export const wizardOnboardingCloudRunLogic = kea<wizardOnboardingCloudRunLogicTy
         startLabel: [
             (s) => [s.run],
             (run: WizardRunApi | null): string =>
-                run && ['failed', 'cancelled'].includes(run.status) ? 'Retry cloud setup' : 'Install PostHog here',
+                run && ['failed', 'cancelled'].includes(run.status) ? 'Retry cloud setup' : 'Install Flind here',
         ],
         runActive: [(s) => [s.run], (run: WizardRunApi | null): boolean => !!run && wizardRunIsActive(run)],
         connectGitHubUrl: [

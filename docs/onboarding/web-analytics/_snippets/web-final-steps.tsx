@@ -6,7 +6,7 @@ export const WebFinalSteps = (): JSX.Element => {
     return (
         <>
             <Markdown>
-                Click around and view a couple pages to generate some events. PostHog automatically captures pageviews,
+                Click around and view a couple pages to generate some events. Flind automatically captures pageviews,
                 clicks, and other interactions for you.
             </Markdown>
             <Markdown>If you'd like, you can also manually capture custom events:</Markdown>

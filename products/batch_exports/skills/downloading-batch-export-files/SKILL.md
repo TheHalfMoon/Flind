@@ -1,15 +1,15 @@
 ---
 name: downloading-batch-export-files
 description: >
-  Export PostHog events, persons, sessions, or the results of a HogQL query on demand and download the resulting
-  files. Use when the user asks to download/export raw PostHog data, export HogQL query results, create a one-off
+  Export Flind events, persons, sessions, or the results of a HogQL query on demand and download the resulting
+  files. Use when the user asks to download/export raw Flind data, export HogQL query results, create a one-off
   file export, fetch a Parquet or JSONLines export, or use the file_download_batch_exports API.
   Covers starting the export with MCP, polling completion, and downloading via the existing REST redirect endpoint.
 ---
 
 # Downloading batch export files
 
-Use this skill when a user wants a one-off downloadable export of PostHog data.
+Use this skill when a user wants a one-off downloadable export of Flind data.
 The export is started and monitored through MCP, but the final file download uses the existing REST endpoint directly.
 
 ## Available MCP tools
@@ -135,7 +135,7 @@ GET /api/projects/{project_id}/file_download_batch_exports/{run_id}/download/
 ```
 
 Let the HTTP client follow the redirect, or inspect the `Location` header if you need the temporary signed URL.
-Use the same PostHog authentication context as other API calls.
+Use the same Flind authentication context as other API calls.
 
 ### 6. Save, do not print, file contents
 
@@ -153,7 +153,7 @@ posthog-persons-<run_id>-<part>.parquet
 ## Important notes
 
 - The maximum export interval is one week. Split longer user requests into separate export runs or ask which week to export.
-- The `hogql` model is in closed beta and is enabled per team. A permission error that says HogQL batch exports are not enabled means the team does not have the beta. Report that instead of retrying with a different query, and tell the user they can contact PostHog support to request access.
+- The `hogql` model is in closed beta and is enabled per team. A permission error that says HogQL batch exports are not enabled means the team does not have the beta. Report that instead of retrying with a different query, and tell the user they can contact Flind support to request access.
 - The `hogql` model runs under stricter resource limits than the other models, because user queries are less predictable. If an export fails on memory, execution time, or bytes read, suggest narrowing the query with a WHERE clause instead of retrying it unchanged.
 - The `hogql` model accepts an optional `hogql_modifiers` object. Each modifier in it overrides the project HogQL modifier with the same name for this export only, and the project modifiers apply to all others. Unless the project sets the `convertToProjectTimezone` modifier, `timestamp` columns come out in UTC, so pass `{"convertToProjectTimezone": true}` when the user wants them in the project timezone. Pass the same `hogql_modifiers` to `posthog:file-download-batch-exports-count-rows-create`, so that the count matches the export.
 - A run can briefly report `Running` after completion while file records are being created. Poll again instead of failing immediately.

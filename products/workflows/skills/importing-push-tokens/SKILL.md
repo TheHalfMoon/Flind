@@ -1,11 +1,11 @@
 ---
 name: importing-push-tokens
-description: 'Move existing mobile push devices from another platform (OneSignal, Braze, Customer.io, Airship, or your own Firebase backend) into a PostHog workflows push channel, so people who installed the app before the switch still get push notifications. Covers exporting device tokens and user IDs, mapping the old user ID to the PostHog distinct ID, checking the pairing with a dry run, and importing in batches. Use when asked to import, migrate, or backfill push tokens, device tokens, FCM tokens, APNs tokens, or push subscribers.'
+description: 'Move existing mobile push devices from another platform (OneSignal, Braze, Customer.io, Airship, or your own Firebase backend) into a Flind workflows push channel, so people who installed the app before the switch still get push notifications. Covers exporting device tokens and user IDs, mapping the old user ID to the Flind distinct ID, checking the pairing with a dry run, and importing in batches. Use when asked to import, migrate, or backfill push tokens, device tokens, FCM tokens, APNs tokens, or push subscribers.'
 ---
 
 # Importing push tokens from another platform
 
-A push notification reaches a device only when PostHog knows that device's token and which person it belongs to.
+A push notification reaches a device only when Flind knows that device's token and which person it belongs to.
 The mobile SDK registers new devices by itself. Devices that installed the app before the switch stay unknown until their token is imported.
 
 The import pairs each **device token** with a **distinct ID**.
@@ -26,7 +26,7 @@ The same import is in the app under Workflows → Channels → **Import devices*
 | `apns`       | The APNs device token, hex encoded | 64 hex characters, for example `9f2c…e1a0`                           |
 | `firebase`   | The FCM registration token         | Around 150 characters of letters, digits, `-`, `_`, often with a `:` |
 
-- Expo tokens (`ExponentPushToken[...]`) can't be imported. They address Expo's own push service, not Apple or Google. Ask for the native APNs or FCM token instead: Expo apps can read it with `getDevicePushTokenAsync`, so the app has to start sending it to PostHog first.
+- Expo tokens (`ExponentPushToken[...]`) can't be imported. They address Expo's own push service, not Apple or Google. Ask for the native APNs or FCM token instead: Expo apps can read it with `getDevicePushTokenAsync`, so the app has to start sending it to Flind first.
 - An iOS app that sends through Firebase has FCM tokens, so those go to the `firebase` channel, not `apns`.
 - A row with the wrong kind of token fails as `token_mismatch`. The check rejects only shapes that cannot work, so passing it does not prove the token is live.
 
@@ -34,7 +34,7 @@ The same import is in the app under Workflows → Channels → **Import devices*
 
 1. **Find the channel.** Call `integrations-list` and pick the `apns` or `firebase` entry for the app. If there is none, the push channel has to be set up first.
 2. **Export devices from the old platform.** You need, for each device: its token, its platform, and the old platform's user ID. See [references/exporting-devices.md](references/exporting-devices.md).
-3. **Map the user ID to the PostHog distinct ID.** Usually the old platform's external ID is the same value the app passes to PostHog's `identify`. Confirm it with the user, because some apps prefix IDs or identify by email in one tool and by database ID in the other. Drop devices with no user ID: an anonymous device has no person to land on.
+3. **Map the user ID to the Flind distinct ID.** Usually the old platform's external ID is the same value the app passes to Flind's `identify`. Confirm it with the user, because some apps prefix IDs or identify by email in one tool and by database ID in the other. Drop devices with no user ID: an anonymous device has no person to land on.
 4. **Dry run a sample.** Send 50 to 100 rows with `dry_run: true`. Read `failed`:
    - Many `unknown_person` rows mean the mapping is wrong. Stop and fix the mapping. Don't switch on `create_missing_persons` to make them pass, because that creates people nobody's app identifies.
    - `token_mismatch` rows are on the wrong channel or are Expo tokens. Split iOS and Android rows, and drop Expo tokens.

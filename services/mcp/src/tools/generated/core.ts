@@ -650,7 +650,7 @@ const ProjectCreateSchema = () => {
         web_analytics_pre_aggregated_tables_enabled: true,
     }).extend({
         name: OrganizationsProjectsCreateBody.shape['name'].describe(
-            'Name for the new project. Must be unique within the organization, ignoring case. If omitted, PostHog generates a default name.'
+            'Name for the new project. Must be unique within the organization, ignoring case. If omitted, Flind generates a default name.'
         ),
     })
 }

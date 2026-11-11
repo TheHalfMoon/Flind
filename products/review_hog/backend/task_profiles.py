@@ -11,7 +11,7 @@ from products.tasks.backend.facade.profiles import (
     register_task_profiles,
 )
 
-# Least-privilege PostHog MCP scopes for every ReviewHog sandbox session. The sessions process
+# Least-privilege Flind MCP scopes for every ReviewHog sandbox session. The sessions process
 # untrusted PR-comment text, and their only legitimate MCP use is reading their criteria skill
 # (skill-get / skill-file-get) — without this the context defaults to "full", handing an injectable
 # agent execute-sql and every write tool. Internal sandbox-plumbing scopes are re-added by the

@@ -57,9 +57,9 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { useCallback, useMemo, useState } from "react";
 
-const AUTONOMY_SETUP_PROMPT = `Set up PostHog Self-driving for this product.
+const AUTONOMY_SETUP_PROMPT = `Set up Flind Self-driving for this product.
 
-Inspect the connected PostHog project and repository, figure out which Self-driving inputs would be useful first, connect the minimum useful context, and leave a concise report of what is configured and what still needs user input. Do not invent integrations that are not available.`;
+Inspect the connected Flind project and repository, figure out which Self-driving inputs would be useful first, connect the minimum useful context, and leave a concise report of what is configured and what still needs user input. Do not invent integrations that are not available.`;
 
 const log = logger.scope("agents-setup-task");
 
@@ -185,7 +185,7 @@ export function ConfigureAgentsSection() {
 
       <SettingsSubsection
         title="Slack"
-        description="Post reports to channels and ping suggested reviewers. Invite PostHog with /invite @PostHog in each channel you use."
+        description="Post reports to channels and ping suggested reviewers. Invite Flind with /invite @PostHog in each channel you use."
       >
         <SlackInboxNotificationsSettings
           isLoading={isLoadingSlack}
@@ -195,7 +195,7 @@ export function ConfigureAgentsSection() {
 
       <SettingsSubsection
         title="MCP servers"
-        description="External tools agents can read from. PostHog data is always available; this is everything else."
+        description="External tools agents can read from. Flind data is always available; this is everything else."
       >
         <Link
           to="/settings/$category"
@@ -421,7 +421,7 @@ function SetupTaskSection() {
               </Badge>
             </Flex>
             <Text className="max-w-xl text-[12.5px] text-gray-11 leading-snug">
-              The agent will look at your connected PostHog project and repo,
+              The agent will look at your connected Flind project and repo,
               choose useful inputs, and tell you what still needs your
               attention.
             </Text>

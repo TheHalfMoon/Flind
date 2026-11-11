@@ -100,13 +100,13 @@ def is_loopback_host(hostname: str | None) -> bool:
 
 
 OIDC_SIGNING_KEY_MISSING_MESSAGE = (
-    "OAuth is not set up on this PostHog instance. "
+    "OAuth is not set up on this Flind instance. "
     "Ask the instance admin to set the OIDC_RSA_PRIVATE_KEY environment variable to an RSA private key in PEM format."
 )
 
 
 def oidc_signing_key_configured() -> bool:
-    # Every OAuth client PostHog creates (CIMD, DCR, toolbar) uses RS256, and OAuthApplication.clean()
+    # Every OAuth client Flind creates (CIMD, DCR, toolbar) uses RS256, and OAuthApplication.clean()
     # rejects RS256 without this key, so no client can be created or updated while it is unset.
     return bool(oauth2_settings.OIDC_RSA_PRIVATE_KEY)
 
@@ -145,18 +145,18 @@ class OAuthApplication(ModelActivityMixin, AbstractApplication):  # type: ignore
         null=True, blank=True, help_text="When the client_id was issued (for DCR clients)"
     )
 
-    # Verification status - manually set by PostHog staff
+    # Verification status - manually set by Flind staff
     is_verified: models.BooleanField = models.BooleanField(
         default=False, help_text="True if this application has been verified by Flind"
     )
 
-    # First-party flag - manually set by PostHog staff
+    # First-party flag - manually set by Flind staff
     # First-party apps skip the OAuth consent screen and can use direct token exchange
     is_first_party: models.BooleanField = models.BooleanField(
         default=False, help_text="True if this is a first-party Flind application that skips OAuth consent"
     )
 
-    # Set only by PostHog staff in the admin. No CIMD field, DCR field or API sets it, so a
+    # Set only by Flind staff in the admin. No CIMD field, DCR field or API sets it, so a
     # client cannot opt itself in and a metadata refresh never changes it.
     supports_step_up: models.BooleanField = models.BooleanField(
         default=False,
@@ -547,7 +547,7 @@ class OAuthApplication(ModelActivityMixin, AbstractApplication):  # type: ignore
 
     def allows_grant_type(self, *grant_types: str) -> bool:
         # The device grant's approval page can only show a client's self-declared name, so a device
-        # client works only while PostHog staff keep it verified. This covers starting a grant,
+        # client works only while Flind staff keep it verified. This covers starting a grant,
         # redeeming one and refreshing its tokens.
         if self.authorization_grant_type == self.GRANT_DEVICE_CODE and not self.is_verified:
             return False
@@ -738,7 +738,7 @@ class OAuthDeviceGrant(AbstractDeviceGrant):
     person who approves it on the approval page.
 
     Swapped in for DOT's model because a CIMD `client_id` is a URL longer than DOT's 100
-    characters, a PostHog scope list is longer than DOT's 64, and the grant has to carry the
+    characters, a Flind scope list is longer than DOT's 64, and the grant has to carry the
     project the person picked, which the token is then scoped to.
     """
 
@@ -845,7 +845,7 @@ def has_live_third_party_oauth_access(user: "User") -> bool:
     of the connection and owns no live access token at all between refreshes. Checking access
     tokens alone would therefore report no access for a partner that has full standing access.
 
-    First-party applications are excluded because they are PostHog's own surfaces, so a token from
+    First-party applications are excluded because they are Flind's own surfaces, so a token from
     one is not the third-party access this answers about.
 
     The check starts from the user's tokens, not from the application table. An `id IN (...)`
@@ -1147,7 +1147,7 @@ def normalize_cimd_url(url: str) -> str:
 
 
 class CIMDVerificationToken(models.Model):
-    """Token that links a CIMD partner app to a PostHog organization.
+    """Token that links a CIMD partner app to a Flind organization.
 
     A partner embeds the plaintext token in their CIMD metadata document under
     `posthog_verification_token`. On fetch, we hash and look up the token; if it

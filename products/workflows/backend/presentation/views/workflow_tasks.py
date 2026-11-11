@@ -46,7 +46,7 @@ class WorkflowTasksJWTAuthentication(WorkflowStepJWTAuthentication):
 
 class WorkflowTaskSlackContextSerializer(serializers.Serializer):
     integration_id = serializers.IntegerField(
-        help_text="PostHog Slack integration that received the triggering message."
+        help_text="Flind Slack integration that received the triggering message."
     )
     channel = serializers.CharField(max_length=64, help_text="Slack channel ID of the triggering message.")
     thread_ts = serializers.CharField(max_length=64, help_text="Slack thread timestamp the task replies under.")
@@ -133,7 +133,7 @@ class WorkflowTaskCreateSerializer(serializers.Serializer):
     posthog_mcp_scopes = serializers.ChoiceField(
         choices=["read_only", "full"],
         default="read_only",
-        help_text="What the PostHog MCP inside the sandbox may do.",
+        help_text="What the Flind MCP inside the sandbox may do.",
     )
     max_parallel_tasks = serializers.IntegerField(
         min_value=1,
@@ -323,7 +323,7 @@ class WorkflowTaskViewSet(viewsets.GenericViewSet):
                 hog_flow_id=str(hog_flow_id),
             )
             return _rejected(
-                "This project has used its monthly PostHog AI credits, so no task was created. "
+                "This project has used its monthly Flind AI credits, so no task was created. "
                 "Raise the AI credit limit in billing settings, or wait for the next billing period.",
                 status.HTTP_409_CONFLICT,
             )

@@ -39,14 +39,14 @@ CREATE_EXPERIMENT_TOOL_DESCRIPTION = dedent("""
     in their own code via the feature flag. UX/UI and frontend experiments are fully supported
     this way, including when an agent writes the variant code in the user's repo.
     The one thing this tool cannot create is a no-code web experiment — those store DOM
-    transforms this tool cannot author, and are created with the PostHog toolbar on the user's
+    transforms this tool cannot author, and are created with the Flind toolbar on the user's
     own site. Only when the user explicitly wants to author changes visually without touching
     code should you point them to the toolbar instead of using this tool.
 
     # Workflow
     1. Create a multivariate feature flag with `create_feature_flag` (variants: control + test)
     2. Create the experiment with this tool, linking it to the feature flag
-    3. Configure metrics in the PostHog UI
+    3. Configure metrics in the Flind UI
     4. Launch the experiment when ready
     """).strip()
 

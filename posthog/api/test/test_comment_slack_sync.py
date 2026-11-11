@@ -43,7 +43,7 @@ class TestDiscussionCardBlocks(SimpleTestCase):
         # renders as the card's own text rather than as the quoted comment.
         text = self._card_text("first line\nsecond line\n\nfourth line")
 
-        quoted = text.split("in PostHog:\n\n", 1)[1]
+        quoted = text.split("in Flind:\n\n", 1)[1]
         assert quoted == "> first line\n> second line\n> \n> fourth line"
 
     def test_empty_body_still_renders_a_quoted_placeholder(self):

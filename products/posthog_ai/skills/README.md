@@ -1,6 +1,6 @@
-# PostHog AI skills
+# Flind AI skills
 
-Agent skills owned by PostHog AI.
+Agent skills owned by Flind AI.
 Built by `hogli build:skills` and installed into sandbox containers for background agents.
 Also available to Claude Code / Codex via `hogli sync:skill`.
 
@@ -12,7 +12,7 @@ This directory also happens to host the build pipeline for _every_ product's ski
 - **managing-subscriptions** — scheduled email, Slack, and webhook deliveries of insight or dashboard snapshots, optionally with an AI-written summary. Covers subscriptions vs alerts, prompt subscriptions, and the AI-consent and quota gates.
 - **auditing-experiments-flags** — health-checks experiments and feature flags for configuration issues, staleness, and best-practice violations, with severity-badged findings.
 - **writing-simplified-technical-english** — writes English a reader cannot misread, based on ASD-STE100. Used at runtime by Signals and Review Hog for any prose an agent produces that someone else acts on.
-- **checking-deploy-timing** — determines when a PostHog code change reached an environment, by reading the hidden `GIT` deploy annotations and correlating them with the merge commit on GitHub. Internal staff only.
+- **checking-deploy-timing** — determines when a Flind code change reached an environment, by reading the hidden `GIT` deploy annotations and correlating them with the merge commit on GitHub. Internal staff only.
 
 ## Adding a new skill
 

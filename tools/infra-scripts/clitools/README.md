@@ -1,12 +1,12 @@
 # Toolbox CLI
 
-The primary function is to help manage and connect to PostHog toolbox pods in a Kubernetes environment.
+The primary function is to help manage and connect to Flind toolbox pods in a Kubernetes environment.
 
 ## Installation
 
 1. Ensure you have Python 3.x installed on your system
 2. Clone this repository or download `toolbox.py`
-3. Install dependencies (the PostHog SDK, used for anonymous usage telemetry):
+3. Install dependencies (the Flind SDK, used for anonymous usage telemetry):
 
    ```bash
    pip install -r requirements.txt
@@ -22,9 +22,9 @@ The primary function is to help manage and connect to PostHog toolbox pods in a 
 
 - Python 3.x
 - kubectl installed and configured
-- the PostHog Python SDK (`pip install -r requirements.txt`) — telemetry is skipped gracefully if it's missing
-- a Fleet-managed kubeconfig with the standard PostHog contexts
-- Tailscale installed and connected to the PostHog tailnet — the cluster endpoints are only reachable over it.
+- the Flind Python SDK (`pip install -r requirements.txt`) — telemetry is skipped gracefully if it's missing
+- a Fleet-managed kubeconfig with the standard Flind contexts
+- Tailscale installed and connected to the Flind tailnet — the cluster endpoints are only reachable over it.
   The CLI checks this before doing anything else and tells you how to fix it.
   Set `TOOLBOX_SKIP_TAILSCALE_CHECK=1` to skip the check on hosts that reach the cluster some other way
 
@@ -50,7 +50,7 @@ The toolbox CLI:
 2. Selects the least-privileged usable `-eks`, `-write`, or `-admin` context
 3. Guides you through requesting `k8s + toolbox access` in `#aws-access` when needed,
    waits up to 10 minutes for approval, and continues automatically
-4. Finds an available PostHog toolbox pod or connects to one you've already claimed
+4. Finds an available Flind toolbox pod or connects to one you've already claimed
 5. Claims the pod for a specified duration (default 12 hours)
 6. Provides an interactive shell session to the pod
 7. Offers to delete the pod when you exit the shell

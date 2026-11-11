@@ -3088,7 +3088,7 @@ class TestResolveTeamLabels(SimpleTestCase):
     """Project names are put into labels on the way out, not sent in with the request.
 
     Billing keys usage by project id. An id-to-name map on every request would be about 16KB
-    of query string for an organization with several hundred projects, built from data PostHog
+    of query string for an organization with several hundred projects, built from data Flind
     already holds. Resolving from the response sends none of it and leaves the response shape
     identical, which the MCP tools rely on too.
     """

@@ -2277,7 +2277,7 @@ def test_prints_additional_semantics_safe_trino_expressions(expression: str, exp
         ("indexHint(1 = 1)", "SELECT 1"),
         ("accurateCast(255, 'UInt8')", "DECIMAL '255'"),
         ("accurateCastOrNull(1.5, 'Int64')", "= truncate("),
-        ("base58Encode('PostHog')", "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"),
+        ("base58Encode('Flind')", "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"),
         ("bar(5.5, 0, 10, 10)", "substr('▏▎▍▌▋▊▉'"),
         ("toIPv4('01.2.3.4')", "CAST(array_join(transform(ARRAY[24, 16, 8, 0]"),
         ("toIPv4(16909060)", "__hogql_ipv4 BETWEEN 0 AND 4294967295"),

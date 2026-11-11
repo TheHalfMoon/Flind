@@ -27,7 +27,7 @@ def create_generated_ai_event(
     distinct_id: str,
     properties: dict[str, Any],
 ) -> None:
-    """Write an AI event that PostHog generates in the team's project, and report its usage after Kafka acknowledges it.
+    """Write an AI event that Flind generates in the team's project, and report its usage after Kafka acknowledges it.
 
     These events go straight to ClickHouse, so they skip the ingestion pipeline that writes the
     usage record for every other AI event. The nightly report counts them as AI events, so they

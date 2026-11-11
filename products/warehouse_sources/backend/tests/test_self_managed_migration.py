@@ -1450,7 +1450,7 @@ class TestAccessRulesMoveWithTheTable(_AccessRulesTest):
         if outcome.action != "linked":
             assert outcome.status.state == TableMigrationState.SKIPPED
             assert outcome.status.reason in (
-                "the table has its own access rules, which the source PostHog would create can't carry",
+                "the table has its own access rules, which the source Flind would create can't carry",
                 "the project has access rules for sources or for the warehouse, which the move would change",
             )
             return

@@ -82,12 +82,12 @@ def token_exchange_error_message(error: requests.RequestException) -> str:
             "private key all belong to the same Apple Ads API user, then reconnect."
         )
     capture_exception(error)
-    return "PostHog couldn't reach Apple to check these credentials. Wait a few minutes, then connect again."
+    return "Flind couldn't reach Apple to check these credentials. Wait a few minutes, then connect again."
 
 
 @dataclasses.dataclass(frozen=True)
 class AppleSearchAdsCredentials:
-    # Empty on the OAuth path, where PostHog's own service provider registration holds the key
+    # Empty on the OAuth path, where Flind's own service provider registration holds the key
     # material and the client is handed a bearer token instead of minting one. Only the
     # customer-supplied key pair path fills these in.
     client_id: str = ""
@@ -207,7 +207,7 @@ class AppleSearchAdsClient:
         self._logger: FilteringBoundLogger = request_logger or logger
         self._access_token: Optional[str] = None
         # On the OAuth path the caller supplies the bearer token, because the grant belongs to
-        # PostHog's service provider registration rather than to credentials stored on the source.
+        # Flind's service provider registration rather than to credentials stored on the source.
         # Called on every (re-)authentication, so it can refresh an expired token in place.
         self._token_provider = token_provider or self._mint_access_token
         redact_values = (credentials.private_key,) if credentials.private_key else ()
@@ -415,7 +415,7 @@ _AD_ACCOUNT_SCOPING = (
 def _blank_ad_account_message(accounts: Optional[list[AppleAdAccount]]) -> str:
     if accounts is None:
         return (
-            "Enter the ad account ID. PostHog could not list the ad accounts these credentials can "
+            "Enter the ad account ID. Flind could not list the ad accounts these credentials can "
             "read. Read adAccount.id from Apple's Get User ACL endpoint, "
             f"GET https://api.ads.apple.com/v1/acls, and connect again. {_AD_ACCOUNT_SCOPING}"
         )

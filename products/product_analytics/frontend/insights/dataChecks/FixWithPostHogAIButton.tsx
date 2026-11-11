@@ -23,7 +23,7 @@ export function FixWithPostHogAIButton({
         <Button
             variant="outline"
             size="sm"
-            disabledReason={postHogAIOpen ? 'PostHog AI is already open' : undefined}
+            disabledReason={postHogAIOpen ? 'Flind AI is already open' : undefined}
             onClick={() => {
                 reportButtonClicked('fix_with_posthog_ai', check.key)
                 fixWithPostHogAI(check)
@@ -31,7 +31,7 @@ export function FixWithPostHogAIButton({
             data-attr="insight-data-check-fix-with-ai"
         >
             <IconSparkles />
-            {check.key === 'duplicate_events' ? 'Investigate with PostHog AI' : 'Fix with PostHog AI'}
+            {check.key === 'duplicate_events' ? 'Investigate with Flind AI' : 'Fix with Flind AI'}
         </Button>
     )
 }

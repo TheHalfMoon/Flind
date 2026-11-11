@@ -1,10 +1,10 @@
 ---
 name: test-electron-app
-description: Drive the real running PostHog Electron app (live tRPC, workspace-server, real data) over CDP with agent-browser. Connect to the running app on port 9222, test desktop changes against a local Django stack, snapshot the accessibility tree, inspect network requests, and screenshot only when explicitly asked. Use when asked to test, verify, dogfood, screenshot, interact with the running app, or run a live backend-to-desktop E2E check. For regression specs use the Playwright E2E suite.
+description: Drive the real running Flind Electron app (live tRPC, workspace-server, real data) over CDP with agent-browser. Connect to the running app on port 9222, test desktop changes against a local Django stack, snapshot the accessibility tree, inspect network requests, and screenshot only when explicitly asked. Use when asked to test, verify, dogfood, screenshot, interact with the running app, or run a live backend-to-desktop E2E check. For regression specs use the Playwright E2E suite.
 allowed-tools: Bash(agent-browser:*), Bash(npx agent-browser:*), Bash(pnpm app:cdp*)
 ---
 
-# Test the real PostHog Electron app
+# Test the real Flind Electron app
 
 Drive the actual running app over the Chrome DevTools Protocol with
 [agent-browser](https://github.com/vercel-labs/agent-browser). The dev app
@@ -197,9 +197,9 @@ When the user asked for a screenshot, they want to look at it, so close the loop
 
 - **Port:** `9222` (override with `POSTHOG_CODE_CDP_PORT`). Collides with Chrome's
   default debugging port; if `connect` attaches to the wrong target, list and
-  pick the PostHog window: `agent-browser tab` then `agent-browser tab --url "*"`.
+  pick the Flind window: `agent-browser tab` then `agent-browser tab --url "*"`.
 - **Multiple targets:** the app has a main renderer window (page title contains
-  "PostHog") plus possible webviews/devtools. `agent-browser tab` lists them;
+  "Flind") plus possible webviews/devtools. `agent-browser tab` lists them;
   switch with `agent-browser tab <index>`.
 - **Never pass `--color-scheme dark`:** that global flag makes agent-browser apply
   device emulation that forces a 1280x720 viewport and renders this Electron window
@@ -214,7 +214,7 @@ When the user asked for a screenshot, they want to look at it, so close the loop
 
 ## Running alongside prod
 
-PostHog orchestrates the agent, so the usual loop is: **prod** (the installed app) runs the agent, and the **dev** build (`pnpm dev`) is the system under test. They coexist by design (`apps/code/src/main/bootstrap.ts`): dev runs as `posthog-code-dev` with its own app name, userData and single-instance lock, so it never collides with prod.
+Flind orchestrates the agent, so the usual loop is: **prod** (the installed app) runs the agent, and the **dev** build (`pnpm dev`) is the system under test. They coexist by design (`apps/code/src/main/bootstrap.ts`): dev runs as `posthog-code-dev` with its own app name, userData and single-instance lock, so it never collides with prod.
 
 - **agent-browser always targets dev.** Only the dev build exposes CDP on `:9222`; prod has no debug port, so `connect 9222` can't accidentally drive prod.
 - **Separate auth/state.** The dev instance has its own `posthog-code-dev` profile; it is not signed in just because prod is. Sign into the dev window once; its state persists.
@@ -233,6 +233,6 @@ PostHog orchestrates the agent, so the usual loop is: **prod** (the installed ap
   check the `pnpm dev:code` output. Note `pnpm dev` cannot run headlessly at all — its
   `phrocs` TUI needs a TTY; use `pnpm dev:code`.
 - **Snapshot is empty / wrong window:** you're on the wrong target. Run
-  `agent-browser tab` and switch to the "PostHog" page.
+  `agent-browser tab` and switch to the "Flind" page.
 - **Can't type into an input:** try `agent-browser keyboard type "text"` (types at
   current focus) or `agent-browser keyboard inserttext "text"` to bypass key events.

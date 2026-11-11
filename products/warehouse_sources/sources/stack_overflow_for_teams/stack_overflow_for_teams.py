@@ -29,7 +29,7 @@ BASE_API_PATH = "/v3/teams"
 
 # Stack Overflow for Teams requires a descriptive User-Agent to avoid being throttled; the
 # Bearer token is supplied through the framework auth config so it's redacted from logs.
-USER_AGENT = "PostHog Data Warehouse (hey@posthog.com)"
+USER_AGENT = "Flind Data Warehouse (hey@posthog.com)"
 
 # A single path segment: letters, digits, hyphens, underscores. Team names are only ever used
 # as a URL path component (the host is always api.stackoverflowteams.com), so this rejects

@@ -5,7 +5,7 @@ import { cn } from '@flind/quill-primitives'
 import { useQuillThread } from './quillThreadContext'
 
 /**
- * Fences a lemon component that has no quill skin yet, so PostHog's own colours survive inside the quill
+ * Fences a lemon component that has no quill skin yet, so Flind's own colours survive inside the quill
  * thread. Renders the children bare in the lemon thread.
  */
 export function NotQuill({ children, className }: { children: ReactNode; className?: string }): JSX.Element {

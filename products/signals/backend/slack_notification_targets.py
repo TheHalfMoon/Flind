@@ -33,13 +33,13 @@ logger = logging.getLogger(__name__)
 # Member ids start with U, or W for an Enterprise Grid member. Channel ids start with C, G, or D.
 _MEMBER_ID_RE = re.compile(r"[UW][A-Z0-9]{4,}")
 
-_UNRESOLVED_MEMBER_ERROR = "PostHog cannot direct message that person. Pick someone else."
+_UNRESOLVED_MEMBER_ERROR = "Flind cannot direct message that person. Pick someone else."
 _UNRESOLVED_SELF_ERROR = (
-    "PostHog could not find your account in this Slack workspace. Connect your Slack account, or pick a channel."
+    "Flind could not find your account in this Slack workspace. Connect your Slack account, or pick a channel."
 )
 _SLACK_UNAVAILABLE_ERROR = "Slack did not answer. Try saving this again in a moment."
 _SLACK_MISSING_SCOPE_ERROR = (
-    "PostHog cannot look up members in this Slack workspace. Reconnect Slack to give it the users:read "
+    "Flind cannot look up members in this Slack workspace. Reconnect Slack to give it the users:read "
     "permission, and then turn this on again."
 )
 _NO_WORKSPACE_ERROR = "Choose the Slack workspace to send these through."
@@ -122,7 +122,7 @@ def _cached_slack_member(slack: SlackIntegration, integration: IntegrationRecord
 def resolve_own_direct_message_target(user: User, integration: IntegrationRecord | None) -> str:
     """Resolve a user's own Slack account in this workspace to a `U…|@name` target.
 
-    The Slack account they linked to PostHog answers first, then their PostHog email against the
+    The Slack account they linked to Flind answers first, then their Flind email against the
     workspace directory, which is what lets someone turn direct messages on without picking
     anything. `get_user_by_id` then decides eligibility the same way the member picker does.
     """

@@ -220,7 +220,7 @@ describe("createReadEnrichmentHook", () => {
   test("returns additionalContext when enricher produces annotations", async () => {
     enrichFileMock.mockReset();
     enrichFileMock.mockResolvedValueOnce(
-      "posthog.capture('x'); // [PostHog] Event: \"x\"",
+      "posthog.capture('x'); // [Flind] Event: \"x\"",
     );
 
     const cache: EnrichedReadCache = new Map();
@@ -238,7 +238,7 @@ describe("createReadEnrichmentHook", () => {
       hookSpecificOutput: {
         hookEventName: "PostToolUse",
         additionalContext: expect.stringContaining(
-          "posthog.capture('x'); // [PostHog] Event: \"x\"",
+          "posthog.capture('x'); // [Flind] Event: \"x\"",
         ),
       },
     });
@@ -253,7 +253,7 @@ describe("createReadEnrichmentHook", () => {
   test("writes enriched content to cache keyed by tool_use_id", async () => {
     enrichFileMock.mockReset();
     enrichFileMock.mockResolvedValueOnce(
-      "posthog.capture('x'); // [PostHog] Event: \"x\"",
+      "posthog.capture('x'); // [Flind] Event: \"x\"",
     );
 
     const cache: EnrichedReadCache = new Map();
@@ -262,7 +262,7 @@ describe("createReadEnrichmentHook", () => {
       signal: new AbortController().signal,
     });
 
-    expect(cache.get("toolu_1")).toContain('// [PostHog] Event: "x"');
+    expect(cache.get("toolu_1")).toContain('// [Flind] Event: "x"');
   });
 
   test("does not write to cache when tool_use_id is missing", async () => {
@@ -424,7 +424,7 @@ describe("createPreToolUseHook", () => {
   const posthogExecPermissionRegex =
     /(^|-)(partial-update|update|patch|delete|destroy)(-|$)/i;
 
-  test("defers destructive PostHog exec sub-tool to canUseTool via ask", async () => {
+  test("defers destructive Flind exec sub-tool to canUseTool via ask", async () => {
     const settingsManager = buildSettingsManagerStub({
       decision: "allow",
       rule: "mcp__posthog__exec",
@@ -452,7 +452,7 @@ describe("createPreToolUseHook", () => {
     });
   });
 
-  test("allows non-destructive PostHog exec sub-tool via settings rule", async () => {
+  test("allows non-destructive Flind exec sub-tool via settings rule", async () => {
     const settingsManager = buildSettingsManagerStub({
       decision: "allow",
       rule: "mcp__posthog__exec",

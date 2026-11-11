@@ -237,7 +237,7 @@ function denialReason(meta: unknown): string | undefined {
     return asText(response?.decisionReason) ?? asText(response?.message)
 }
 
-/** The agent's own tool, else the inner PostHog tool behind the `exec` wrapper, else the raw ACP name. */
+/** The agent's own tool, else the inner Flind tool behind the `exec` wrapper, else the raw ACP name. */
 function toolDisplayName(raw: RawToolCall): string {
     const agentToolName = extractAgentToolName(raw.meta)
     const { innerToolName } = resolveToolCall({

@@ -17,7 +17,7 @@ export function EvaluationAgentActions(): JSX.Element | null {
     const { effectiveOptOut, userRole } = useValues(mcpHintLogic)
     const { reportUseCaseCardShown, reportAgentOpened } = useActions(mcpHintLogic)
     const { isCloudOrDev } = useValues(preflightLogic)
-    // The PostHog MCP server only serves cloud and dev instances. Unknown while preflight loads, so only a known self-hosted instance hides the actions.
+    // The Flind MCP server only serves cloud and dev instances. Unknown while preflight loads, so only a known self-hosted instance hides the actions.
     const visible = !effectiveOptOut && isCloudOrDev !== false
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export function EvaluationAgentActions(): JSX.Element | null {
                 overlay={
                     <div className="flex flex-col gap-2 p-1 max-w-[24rem]">
                         <span className="text-xs text-secondary">
-                            Run this once so your agent can read your traces through the PostHog MCP server.
+                            Run this once so your agent can read your traces through the Flind MCP server.
                         </span>
                         <CommandBlock
                             command={MCP_INSTALL_COMMAND}

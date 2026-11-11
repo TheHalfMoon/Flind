@@ -1,7 +1,7 @@
 ---
 name: exploring-mcp-tool-quality
 description: >
-  Investigate the quality of PostHog MCP tool calls — error rates, latency,
+  Investigate the quality of Flind MCP tool calls — error rates, latency,
   reach, and which tools are failing or slow. Use when the user asks "which
   MCP tool has the highest error rate?", "what's the slowest tool?", "which
   tools fail most often?", "how reliable is tool X?", wants a tool-quality
@@ -11,7 +11,7 @@ description: >
 
 # Exploring MCP tool quality
 
-Any MCP server instrumented with PostHog's MCP analytics SDK emits a
+Any MCP server instrumented with Flind's MCP analytics SDK emits a
 `$mcp_tool_call` event on the shared `events` table every time an agent invokes a
 tool. There is **no dedicated ClickHouse table** — every field lives as a
 `$mcp_*` property on `events`, and every tool-quality metric (error rate, latency

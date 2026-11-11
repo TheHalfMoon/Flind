@@ -127,8 +127,8 @@ export const GoogleCloudServiceAccountSetupModal = (
                                                 <>
                                                     <p className="m-0">
                                                         If your Google Cloud organization restricts access to external
-                                                        identities, you may need an exception to grant PostHog access.
-                                                        PostHog's organization principal set is:
+                                                        identities, you may need an exception to grant Flind access.
+                                                        Flind's organization principal set is:
                                                     </p>
                                                     <code className="break-all" translate="no">
                                                         is:principalSet://cloudresourcemanager.googleapis.com/organizations/777310081778

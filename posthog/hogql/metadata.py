@@ -209,7 +209,7 @@ def get_hogql_metadata(
                     # Execution rejects these regardless of Django expansion, so surface the
                     # same error at edit time.
                     find_unsupported_pure_trino_features(hogql_ast)
-                    # Direct queries cannot join PostHog person tables, so the team's
+                    # Direct queries cannot join Flind person tables, so the team's
                     # person-on-events mode has no effect; print with the one mode the Trino
                     # dialect accepts. A direct database exposes no event or person properties,
                     # so property restrictions cannot apply either.

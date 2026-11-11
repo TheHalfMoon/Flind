@@ -196,7 +196,7 @@ describe('stepFacts', () => {
         ],
         ['an event trigger', eventTrigger, 'Signed up', 'Starts when someone does this'],
         [
-            'a trigger on a PostHog action',
+            'a trigger on a Flind action',
             step('trigger', 'trigger', {
                 type: 'event',
                 filters: {

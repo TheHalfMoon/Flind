@@ -60,7 +60,7 @@ def build_client_secret(
 
 
 def service_provider_client_credentials() -> OauthClientCredentials:
-    """The client id and a freshly signed client secret for PostHog's own service provider registration."""
+    """The client id and a freshly signed client secret for Flind's own service provider registration."""
     values = get_many_or_settings(
         [
             SERVICE_PROVIDER_CLIENT_ID_KEY,

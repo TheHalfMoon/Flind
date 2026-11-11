@@ -17,7 +17,7 @@ upstream release. The fork is heavily diverged. The job is to port the *valuable
 to make the fork identical to upstream.
 
 `UPSTREAM.md` (this directory) is the source of truth for the **fork point**, **last-synced
-version/commit**, the **file mapping**, the **PostHog-only code**, and the **intentional
+version/commit**, the **file mapping**, the **Flind-only code**, and the **intentional
 divergences**. Read it first, update it last.
 
 > This file is a runbook, not an auto-registered slash command. Invoke it by telling Claude to
@@ -36,7 +36,7 @@ divergences**. Read it first, update it last.
 ### 0. Orient (read, don't write)
 
 - Read `UPSTREAM.md`. Note **Last sync** (commit + version), the pinned **SDK** versions, the
-  **File Mapping**, **PostHog-Only Code (Do Not Sync)**, and **Intentional Divergences**.
+  **File Mapping**, **Flind-Only Code (Do Not Sync)**, and **Intentional Divergences**.
 - In the upstream checkout, list the change set since the last sync and skim the changelog:
   - `git -C <upstream> log --oneline <last-sync-sha>..HEAD`
   - `git -C <upstream> show <upstream>/CHANGELOG.md:CHANGELOG.md` (or just read `CHANGELOG.md`)
@@ -47,11 +47,11 @@ divergences**. Read it first, update it last.
 
 Bucket each commit since the last sync:
 
-- **Port** — bug fixes and new feature / SDK-message handling that are *not* in the PostHog-only
+- **Port** — bug fixes and new feature / SDK-message handling that are *not* in the Flind-only
   list and don't fight a divergence.
 - **Dep bump** — record the target SDK versions; the diff tells you if code changes ride along.
 - **Skip** — `chore(main): release …`, `actions/* ` CI bumps, pure dependabot **dev**-dep bumps, and
-  anything matching the PostHog-only / divergence lists.
+  anything matching the Flind-only / divergence lists.
 
 Read intent from source diffs (exclude tests + JSON first):
 
@@ -110,7 +110,7 @@ in past syncs:
 
 For each ported change:
 
-- **Preserve divergences** (see `UPSTREAM.md` → Intentional Divergences + PostHog-only). The big ones:
+- **Preserve divergences** (see `UPSTREAM.md` → Intentional Divergences + Flind-only). The big ones:
   single-session `this.session` (not `this.sessions[id]`); `interruptReason` on cancel; gateway models
   via `fetchGatewayModels` (not `initializationResult.models`); `_posthog/*` ext notifications;
   the "Unsupported slash command" gate on `knownSlashCommands`; `SYSTEM_REMINDER` stripping; plan /

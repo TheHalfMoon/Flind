@@ -4,9 +4,9 @@ sidebar: Docs
 showTitle: true
 ---
 
-Sandboxed agents are background AI agents that run in isolated cloud containers with access to PostHog data,
+Sandboxed agents are background AI agents that run in isolated cloud containers with access to Flind data,
 GitHub repositories, and code execution.
-Use them when your feature needs an autonomous agent that reads PostHog data, writes code, and produces artifacts like PRs or reports.
+Use them when your feature needs an autonomous agent that reads Flind data, writes code, and produces artifacts like PRs or reports.
 
 For simpler LLM calls (summarization, translation, classification),
 skip this page and use the LLM gateway (`get_llm_client(product=..., team_id=...)`) directly —
@@ -16,8 +16,8 @@ it's simpler and doesn't need a sandbox.
 
 | Example                                                                                         | Solution                                                   |
 | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| Signals team building an enrichment pipeline that generates reports from PostHog analytics data | Sandboxed agent (this page)                                |
-| Conversations team building a support agent that queries PostHog and customer documentation     | Sandboxed agent (this page)                                |
+| Signals team building an enrichment pipeline that generates reports from Flind analytics data | Sandboxed agent (this page)                                |
+| Conversations team building a support agent that queries Flind and customer documentation     | Sandboxed agent (this page)                                |
 | AI observability summarizing a funnel, generating a natural-language insight title              | LLM gateway via `get_llm_client(product=..., team_id=...)` |
 | Not sure                                                                                        | Ask in `#team-posthog-ai`                                  |
 
@@ -35,11 +35,11 @@ The full task composer remains available during startup.
 Follow-up messages collect in "Up next" and send after the first response finishes.
 Once the agent starts, Steer can send them before the current turn ends.
 The thread hides empty and whitespace-only assistant messages during streaming and history replay.
-The PostHog AI thread and embedded run views render Pi session logs independently of the `pi-acp` rollout flag.
+The Flind AI thread and embedded run views render Pi session logs independently of the `pi-acp` rollout flag.
 
 An idle sandbox resume does not run an agent turn, so it does not send a finished notification or mark the run's activity completed.
 
-The chat history filters for PostHog AI, Slack, and Desktop show tasks created by the current user.
+The chat history filters for Flind AI, Slack, and Desktop show tasks created by the current user.
 These requests wait until the current user's ID is available, including filter changes, searches, and refreshes.
 When the user loads, the pending request uses the active filter and search term.
 
@@ -98,9 +98,9 @@ Temporal workflow (process-task)
 
 The agent inside the sandbox gets:
 
-- A **scoped OAuth access token** for the PostHog API (6-hour TTL)
+- A **scoped OAuth access token** for the Flind API (6-hour TTL)
 - A **GitHub installation token** for repo operations
-- Access to the **PostHog MCP server** for querying data
+- Access to the **Flind MCP server** for querying data
 - **Code execution** capabilities within the sandbox
 
 ### Run system prompts
@@ -193,7 +193,7 @@ Import it from your module, or look it up by key with `get_task_profile("your_pr
 
 ### Starting a task from a deep link
 
-In the new PostHog AI view, `/ai?ask=...` hands the prompt to the task composer once.
+In the new Flind AI view, `/ai?ask=...` hands the prompt to the task composer once.
 The handoff removes `ask` from the current browser history entry while preserving other query parameters and the hash.
 Changing the panel state or remounting the view therefore does not submit the prompt again.
 Without organization-level AI data-processing consent, the prompt only prefills the composer.
@@ -205,11 +205,11 @@ The task stays selected on reload and when navigating back or forward.
 Existing `/tasks/<task-id>` links still open the standalone runner.
 Task headers keep horizontal padding around the title and run metadata.
 With `today-rail-nav` enabled, task loading placeholders preserve the header height, conversation column, and composer area while task metadata and run history load.
-In the AI chat view, the staff options menu sits beside the task actions, including **Open in PostHog Desktop**.
+In the AI chat view, the staff options menu sits beside the task actions, including **Open in Flind Desktop**.
 
 ## Fine-grained access tokens
 
-Every sandboxed agent gets a scoped OAuth access token that controls what PostHog resources it can access.
+Every sandboxed agent gets a scoped OAuth access token that controls what Flind resources it can access.
 Tokens expire after 6 hours and are scoped to a single team.
 Task-bound tokens enforce organization IP restrictions. When a signed MCP client IP is present, restrictions apply to that verified address; direct requests are checked using their trusted client IP.
 
@@ -220,7 +220,7 @@ Use the `posthog_mcp_scopes` parameter to control access:
 | Preset             | What it grants                                                                                            | When to use                                                                                        |
 | ------------------ | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `"read_only"`      | Read access to actions, cohorts, dashboards, experiments, feature flags, insights, queries, surveys, etc. | Agent only needs to read data for analysis or reporting                                            |
-| `"full"` (default) | Read + write access to all MCP-exposed resources                                                          | Agent needs to create or modify PostHog resources (e.g., create feature flags, update experiments) |
+| `"full"` (default) | Read + write access to all MCP-exposed resources                                                          | Agent needs to create or modify Flind resources (e.g., create feature flags, update experiments) |
 
 The internal `signals_research` preset also reads the project-member roster through `scout-members-list`.
 It can write to the scratchpad, but it cannot emit signals, edit reports, or start tasks.
@@ -253,7 +253,7 @@ Available write scopes: `action:write`, `cohort:write`, `dashboard:write`,
 
 Internal scopes (`task:write`, `inbox:write`, `llm_gateway:read`) are always added automatically.
 
-An empty list (`posthog_mcp_scopes=[]`) omits the built-in PostHog MCP connection.
+An empty list (`posthog_mcp_scopes=[]`) omits the built-in Flind MCP connection.
 Internal credentials for task lifecycle and model calls remain available, including the local `task_summary_update` tool.
 
 See `posthog/temporal/oauth.py` for the full list.
@@ -308,10 +308,10 @@ A row written with a token bound to a sandbox task still records the request IP 
 The token can leave the sandbox, so the address is what tells a sandbox write apart from a write made elsewhere with the same token.
 The audit log tags these rows "via scout <skill_name>" or "via sandbox", and shows the IP in a tooltip on the IP address column.
 
-## PostHog MCP server
+## Flind MCP server
 
-The sandbox comes with access to the PostHog MCP server,
-which exposes PostHog resources as tools the agent can call —
+The sandbox comes with access to the Flind MCP server,
+which exposes Flind resources as tools the agent can call —
 listing feature flags, running HogQL queries, searching session recordings, etc.
 
 The MCP server is ready to use today.
@@ -331,7 +331,7 @@ They're copied to three discovery locations during image build:
 
 Evals build skills from the local checkout into a new output directory, then capture a snapshot. Model comparisons share one saved snapshot across their model runs, so rendered examples cannot change between models. `--skill-snapshot-report <results.json>` reuses a previous run's archived snapshot only if its source fingerprint and commit match the checkout. The fingerprint includes staged and unstaged changes plus untracked source files, so schema edits outside the skill folders also invalidate reuse. It excludes configured result files and comparison output directories, including outputs inside the checkout. Docker mounts the snapshot at all three discovery paths, replacing image-only skills as well. Modal builds use the same snapshot. Before the agent starts, the harness checks every skill file against a SHA-256 manifest in the agent's task filesystem and stops on missing, changed, or extra files. MCP delivery pins the archive hash and clears native bundled skills. Verification reads the delivery mode inside the running sandbox, including when a worker retrieves it by ID. Desktop skill-source preferences and shell-level MCP archive URLs cannot replace the eval snapshot.
 
-Run reports and PostHog eval metadata record the skill snapshot hash alongside the commit and dirty-worktree flag. The local run report includes the full file manifest's path. Model comparisons reject missing or different snapshot hashes. These checks confirm which files the agent can read; separate tool-call checks confirm whether it reads a skill.
+Run reports and Flind eval metadata record the skill snapshot hash alongside the commit and dirty-worktree flag. The local run report includes the full file manifest's path. Model comparisons reject missing or different snapshot hashes. These checks confirm which files the agent can read; separate tool-call checks confirm whether it reads a skill.
 
 For details on writing skills, see [Writing skills](/handbook/engineering/ai/writing-skills).
 
@@ -506,7 +506,7 @@ which carries two origin allowlists and an optional default image:
   we widen it origin-by-origin (and, later, the flag's release condition) as the rollout expands.
 - `default_custom_image` — a Modal image name that VM runs fall back to when no custom image was picked.
   Because the flag's payload variants are org-targeted, this routes _which default VM image an org gets_:
-  PostHog's own org points at the prebaked dev-stack image (below), everyone else keeps the plain VM base.
+  Flind's own org points at the prebaked dev-stack image (below), everyone else keeps the plain VM base.
   A user- or environment-selected custom image always wins over this default,
   and provisioning falls back to the plain VM base if the named image is missing.
 
@@ -514,7 +514,7 @@ which carries two origin allowlists and an optional default image:
 
 `hogli start` on a fresh VM pays for multi-gigabyte docker pulls and the full Django + persons +
 ClickHouse migration history — and dead-ends anyway, because the lean VM base lacks the dev
-toolchain flox provides on dev machines (brotli, phrocs, Go, Rust). For runs on the PostHog
+toolchain flox provides on dev machines (brotli, phrocs, Go, Rust). For runs on the Flind
 monorepo we bake all of that ahead of time:
 the `bake-dev-stack-image` Temporal workflow boots a plain VM-base sandbox,
 runs `bake-posthog-dev-stack.sh` inside it (install the dev toolchain, pre-pull the dev compose
@@ -554,7 +554,7 @@ so the agent should start only the datastores unless the task needs the running 
 (see `docs/internal/cloud-task-sandbox.md`).
 
 Provisioning also fires that helper detached as soon as the sandbox is up (best-effort, only on
-runs that booted the PostHog-published `posthog-dev-stack` image itself — never a user-authored
+runs that booted the Flind-published `posthog-dev-stack` image itself — never a user-authored
 custom image, and never a filesystem-snapshot restore, whose filesystem a prior run could have
 altered; directory-snapshot resumes only mount the workspace, so they keep the warmup), so
 the dockerd warmup overlaps the repo clone and the environment is usually
@@ -594,7 +594,7 @@ port 8020 in front of both Django (8010) and Vite (8234). It serves `/_metrics` 
 that endpoint is unauthenticated under `DEBUG`.
 
 When the stack answers, the run's state gets a `dev_stack_preview` entry and the link is emitted
-as a progress step. The link always points at PostHog:
+as a progress step. The link always points at Flind:
 `GET /api/projects/{team}/tasks/{task}/runs/{run}/preview/` requires control of the task (a
 `task:write` scope, not only visibility of a shared run) because the dev stack behind it is
 writable, mints a fresh Modal connect token per click, and redirects. Read-only impersonation sessions
@@ -685,7 +685,7 @@ Modal enforces the network boundary on every restricted run that provisions on M
 Hogland runs rely on agentsh inside the sandbox.
 
 Environments can also be managed via the REST API (`SandboxEnvironmentViewSet`)
-or the PostHog Desktop settings UI.
+or the Flind Desktop settings UI.
 
 ### Custom base images
 
@@ -694,12 +694,12 @@ and select it as a cloud environment's base via `SandboxEnvironment.custom_image
 Custom images always layer on top of the published VM sandbox base —
 agent tooling, git guard, and the VM runtime are always present —
 and the whole mechanism is gated on the Modal VM runtime being available:
-the `sandbox_custom_images` API returns 403 (and the PostHog Desktop UI hides the feature)
+the `sandbox_custom_images` API returns 403 (and the Flind Desktop UI hides the feature)
 unless the `tasks-modal-vm-sandbox` flag is enabled for the org
 with `user_created` in its `origin_products` payload allowlist,
 since custom-image sandboxes cannot run under gVisor.
 
-The flow, driven from the PostHog Desktop Environments → Cloud tab:
+The flow, driven from the Flind Desktop Environments → Cloud tab:
 
 1. Creating an image spawns an interactive **image-builder agent task**
    (`custom_image_builder_id` in the run state, VM runtime forced)
@@ -862,7 +862,7 @@ hogli test products/tasks/backend/temporal/process_task/tests/test_workflow.py::
 
 The completion and failure cases use a fixture HTTP API inside the sandbox. It serves
 the test task and a prewarmed run waiting for a message, so the real agent can become
-ready without calling a live PostHog API or submitting an LLM prompt. The test waits
+ready without calling a live Flind API or submitting an LLM prompt. The test waits
 for readiness before signaling completion, then checks persisted status, error, and
 sandbox shutdown. It does not test Django API authentication or LLM task execution.
 

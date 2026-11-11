@@ -35,7 +35,7 @@ Explicit State Handles).
   session continuity."
 - **Continuity is the application's job.** "State that needs to span multiple requests ... MUST be
   referenced by an explicit identifier the client passes on each request." That is SEP-2567's
-  explicit-state-handle model, and it is the whole basis for what PostHog does below.
+  explicit-state-handle model, and it is the whole basis for what Flind does below.
 
 Per-request `_meta` keys replace the handshake for identity:
 
@@ -54,7 +54,7 @@ Two constraints worth internalising:
   client sends identical `clientInfo` across a run.
 
 **There is no `conversation_id` in the spec.** Grepping the revision for `conversationId` /
-`conversation_id` / `agentId` returns nothing. PostHog's conversation handle is our own
+`conversation_id` / `agentId` returns nothing. Flind's conversation handle is our own
 application-level state handle, implementing SEP-2567's pattern — don't go looking for it in the
 spec, and don't assume another vendor's server has one.
 
@@ -105,7 +105,7 @@ the legacy paths still work and still matter for legacy clients.
 > sessions, check in this order: did the host turn the flag off, then does the agent echo the
 > handle.**
 
-A request that already carries an MCP transport session or a PostHog session token mints no
+A request that already carries an MCP transport session or a Flind session token mints no
 handle and gets no prompt-back (ADR-0013 decision 3), so a legacy session is never replaced
 mid-flight. An agent-echoed handle still wins over it. Requests carrying neither keep the
 conversation fallback.
@@ -186,7 +186,7 @@ groups with the work that hit it instead of falling back to the transport sessio
 
 ## Where each repo stands
 
-> **PostHog's own dogfood data resolves `$session_id` in `services/mcp`, not in the SDK's
+> **Flind's own dogfood data resolves `$session_id` in `services/mcp`, not in the SDK's
 > `getSessionId`.** `services/mcp` uses the custom-dispatcher (`PostHogMCP`) path and pins
 > `@posthog/mcp` 0.25.0 (alias `@posthog/mcp-analytics`). `resolveSessionKey`
 > (`src/hono/mcp-context.ts`) takes the first of: the echoed `conversation_id` tool argument or
@@ -284,7 +284,7 @@ agent was never told about.
 - **`$mcp_initialize` is not a session-start anchor, and whether it fires at all depends on whose
   server you're looking at.** A customer server on the SDK's `instrument()` path emits nothing for
   a stateless client — that path patches the `initialize` handler and knows nothing of
-  `server/discover`. PostHog's own `services/mcp` does emit it, from both entry points
+  `server/discover`. Flind's own `services/mcp` does emit it, from both entry points
   (`dispatcher.ts::recordDiscoveryRequest`). Live consequence, customer servers only: the
   onboarding query in `frontend/mcpAnalyticsOnboardingLogic.ts` computes
   `countIf(event = '$mcp_initialize') > 0 AS has_initialize`, and `manifest.tsx` lists

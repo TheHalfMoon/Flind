@@ -1,7 +1,7 @@
 # Remote in-app announcements
 
 Broad in-app announcements are **remote content, not code**. They live in the
-JSON payload of the `posthog-desktop-announcements` feature flag (PostHog
+JSON payload of the `posthog-desktop-announcements` feature flag (Flind
 project 2) and render through `packages/ui/src/features/announcements/`.
 Publishing, changing, or retiring an announcement means editing that flag
 payload — never adding a component. The employee-gated editor is

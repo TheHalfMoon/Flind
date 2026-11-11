@@ -1,6 +1,6 @@
-"""Matches a vendor's connectors, tables and settings to PostHog sources.
+"""Matches a vendor's connectors, tables and settings to Flind sources.
 
-Matching runs on every call against the live source registry, so a new PostHog source or table
+Matching runs on every call against the live source registry, so a new Flind source or table
 matches without a code change. Vendor files such as `fivetran.py` hold only the exceptions.
 """
 
@@ -57,7 +57,7 @@ class MatchConfidence(StrEnum):
 @frozen
 class TableMatch:
     vendor_table: str
-    # None when no PostHog table matches. The agent can propose one from `posthog_tables`.
+    # None when no Flind table matches. The agent can propose one from `posthog_tables`.
     posthog_table: str | None
     confidence: MatchConfidence | None
 
@@ -98,7 +98,7 @@ def match_destination(provider: str, vendor_service: str) -> ExternalDataDestina
 
 
 def destination_vendor_keys(provider: str, vendor_service: str) -> frozenset[str]:
-    """The vendor destination config keys a migration may keep. Empty for a destination PostHog cannot write to."""
+    """The vendor destination config keys a migration may keep. Empty for a destination Flind cannot write to."""
     destination_type = match_destination(provider, vendor_service)
     if destination_type is None:
         return frozenset()
@@ -158,7 +158,7 @@ def match_tables(
         )
         if hit is not None:
             inferred[vendor_table] = hit
-    # When two vendor tables infer the same PostHog table, the one whose name needed the smaller
+    # When two vendor tables infer the same Flind table, the one whose name needed the smaller
     # change keeps it, so `campaign` beats `campaign_history` for `campaigns`. The name breaks ties,
     # so the result does not depend on the input order.
     winners: dict[str, str] = {}
@@ -192,7 +192,7 @@ def match_tables(
 def prefill_config(
     provider: str, source_type: ExternalDataSourceType, vendor_config: Mapping[str, Any]
 ) -> dict[str, Any]:
-    """Non-secret source settings keyed by PostHog payload path. A dot is a nested field."""
+    """Non-secret source settings keyed by Flind payload path. A dot is a nested field."""
     return {
         posthog_key: vendor_config[vendor_key]
         for vendor_key, posthog_key in _prefill_key_map(provider, source_type).items()

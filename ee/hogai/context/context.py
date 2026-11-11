@@ -152,7 +152,7 @@ class AssistantContextManager(AssistantContextMixin):
 
         Defaults to `posthog_ai` because most runs are the in-product assistant. Programmatic
         entry points (the MCP `create_and_query_insight` endpoint) resolve it from the request
-        instead, so an agent's work isn't counted as PostHog AI's.
+        instead, so an agent's work isn't counted as Flind AI's.
 
         Coerced rather than type-checked: configs round-trip through checkpoint serialization,
         which turns the enum back into a plain string, and `isinstance` would silently reset a

@@ -103,7 +103,7 @@ The widget `Component` receives `loading` from scene logic and must early-return
 
 ## Product visual parity
 
-When the widget surfaces data from an **existing PostHog product** (variant in an existing `groupId`, or first widget in a product area that already has a scene):
+When the widget surfaces data from an **existing Flind product** (variant in an existing `groupId`, or first widget in a product area that already has a scene):
 
 **Default:** Reuse the same presentation the product scene uses — list rows, cards, empty copy, skeletons, setup prompts. A dashboard tile is a smaller viewport; users should still recognize it as the same product data they see in-app (e.g. `ErrorTrackingIssueList` on `/error-tracking`, not a bespoke widget-only table). **Chart-primary bodies do not belong in widgets** — use insight tiles ([architecture.md § Charts → insight tiles](architecture.md#charts--use-insight-tiles-not-widgets)).
 
@@ -163,7 +163,7 @@ When the FE catalog lacks a `widget_type` (partial deploy, unrebased stack):
 - **Header** — `tryGetDashboardWidgetCatalogEntry` + `getUnknownDashboardWidgetCatalogFallback` so title and ⋯ menu (remove, duplicate, copy/move) still work
 - **Body** — `ErrorBoundary` wraps `DashboardWidgetItemBody`, which calls `getDashboardWidgetCatalogEntry` (throws → full error UI)
 - **Fetch errors** — do not pass `run_widgets` fetch `error` into `WidgetCardBody` for unknown types; no Refresh data action in ⋯ menu
-- **Analytics** — `getDashboardWidgetDefinition` still dedupes a PostHog `captureException` per canonical type — add the registry entry
+- **Analytics** — `getDashboardWidgetDefinition` still dedupes a Flind `captureException` per canonical type — add the registry entry
 
 ## Widget settings modal
 

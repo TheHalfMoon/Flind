@@ -43,7 +43,7 @@ Placeholder: `Search or ask PostHog AI… try is:dashboard`.
 
 Input controls, carried over from the current palette:
 
-- **Press Tab to ask AI** shows while Tab would ask AI: there is a question to ask (see **Ask PostHog AI**) and the highlighted row is not a filter row. Clicking it does the same as Tab.
+- **Press Tab to ask AI** shows while Tab would ask AI: there is a question to ask (see **Ask Flind AI**) and the highlighted row is not a filter row. Clicking it does the same as Tab.
 - **Clear (×)** shows whenever there is text or a chip, and clears both.
 - **Cancel** closes the palette. It shows only with the `today-rail-nav` UI at narrow widths, where the footer hides, as in the current palette.
 
@@ -96,9 +96,9 @@ The input is always in exactly one mode, decided from the token under the cursor
      - The settings rows come from the settings scene's own map (`SETTINGS_MAP`) and the same gates the scene applies (feature flags, realm, team, admin-only, staff-only, billing access, integrations), so search never shows a setting the scene hides. Sections hidden from the settings navigation stay out of search too.
      - Rows: **Settings**, one landing row per level (**Project settings**, **Organization settings**, **User settings**), one row per section ("Billing" in Organization settings), and one row per setting with a readable title ("Date & time" in Project settings › Customization) that opens the section at that setting's anchor. A setting whose title matches its section's title, or whose section links to another page, folds into the section row.
   3. Remote lists that the file system does not hold: **Events**, **Properties**, **Workflows** (one unified search request), **Accounts** (behind the customer analytics flag, excluding accounts already shown in ranked results), **Support tickets** (3+ characters or a ticket number).
-  4. **Ask PostHog AI**.
+  4. **Ask Flind AI**.
   5. **Persons**, **Groups**. Person and group searches can take seconds, so they usually come last. The person search starts with the file system search, after 50 ms. A search that contains "@" waits for the person search and ranks the persons it finds with **Results** / **Best matches**. A person who matches every word comes first. Persons that do not rank stay in **Persons** below, with no duplicates. Other searches do not wait for persons or groups.
-- With any filter (a chip, or a valid `key:value` still being typed), only **Results** and **Ask PostHog AI** show, because filters apply only to objects.
+- With any filter (a chip, or a valid `key:value` still being typed), only **Results** and **Ask Flind AI** show, because filters apply only to objects.
 - With an `is:` chip (not negated), **Results** holds a **View all <types>** row (`View all feature flags`) that opens the list page of that type. With no search text it is the first row; once you type a search it moves below the results. It shows only for types with a list page.
   - A list page that reads a search from its URL opens with the rest of the query. The type's product manifest names the URL param in `listSearchParam`, and Command K adds the search text to `listHref()`.
   - Feature flags, experiments, cohorts, surveys, insights, and dashboards take the search text as `?search=`: the `name:` value, then the free text.
@@ -204,7 +204,7 @@ These are the rules reviewers check. Breaking one is a bug.
 | `↑` / `↓`               | Move highlight. Skips section headers. `↑` on the first row returns to the input. `↓` stops at the last row.                |
 | `↵`                     | Filter key or value row: complete it. Result row: open it.                                                                  |
 | `⌘↵`                    | Open result in a new tab.                                                                                                   |
-| `Tab`                   | Highlighted key or value row: complete it. Any other row, with a query: ask PostHog AI. With neither, focus moves as usual. |
+| `Tab`                   | Highlighted key or value row: complete it. Any other row, with a query: ask Flind AI. With neither, focus moves as usual. |
 | `Space`                 | After `key:value`, commits the chip.                                                                                        |
 | `⌫` at start of text    | First press selects the previous chip. Second press removes it.                                                             |
 | `↵` on a selected chip  | Turns the chip back into editable text (`is:dashboard`) with the cursor after it.                                           |
@@ -219,8 +219,8 @@ These are the rules reviewers check. Breaking one is a bug.
 - **Pasted query** (`is:flag createdBy:me checkout`): parse into chips immediately.
 - **Same key twice** (`is:dashboard is:insight`): the later value replaces the earlier chip. While a value for a key that already has a chip is being typed, results preview the new value instead of the chip.
 - **Invalid value** (`is:banana`): keep it as plain text, no chip, and show "No type called banana" in the Suggestions section.
-- **Ask PostHog AI**: the last section in Search mode, shown only when no other row matches. When other rows match, Tab and the **Press Tab to ask AI** button ask AI. Without filters, the question is the input text as typed. With filters and free text, the filters read as a sentence around the text (`Find notebooks created by me called "untitled"`). With filters and no free text, the section does not show and Tab does not ask AI.
-  Asking AI does not send the question. It closes the palette and opens the PostHog AI side panel with the question in the composer, so the user can edit it and send it with Enter.
+- **Ask Flind AI**: the last section in Search mode, shown only when no other row matches. When other rows match, Tab and the **Press Tab to ask AI** button ask AI. Without filters, the question is the input text as typed. With filters and free text, the filters read as a sentence around the text (`Find notebooks created by me called "untitled"`). With filters and no free text, the section does not show and Tab does not ask AI.
+  Asking AI does not send the question. It closes the palette and opens the Flind AI side panel with the question in the composer, so the user can edit it and send it with Enter.
 
 ## Out of scope for v1
 

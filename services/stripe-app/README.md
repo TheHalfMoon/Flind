@@ -1,39 +1,39 @@
-# PostHog Stripe App
+# Flind Stripe App
 
-A [Stripe App](https://docs.stripe.com/stripe-apps) that surfaces PostHog product analytics data
+A [Stripe App](https://docs.stripe.com/stripe-apps) that surfaces Flind product analytics data
 directly inside the Stripe Dashboard.
 
 ## Architecture
 
 ### Double OAuth flow
 
-Connecting PostHog to Stripe requires **two** OAuth exchanges in sequence:
+Connecting Flind to Stripe requires **two** OAuth exchanges in sequence:
 
-1. **Stripe OAuth** (Stripe → PostHog):
-   the user clicks "Connect" in PostHog,
+1. **Stripe OAuth** (Stripe → Flind):
+   the user clicks "Connect" in Flind,
    which redirects them to `marketplace.stripe.com/oauth/v2/authorize`.
-   Stripe asks the user to grant PostHog access to their Stripe account.
-   On success Stripe redirects back to PostHog with an authorization code
-   that PostHog exchanges for a Stripe access token.
-   This token is stored in the PostHog `Integration` model (`sensitive_config.access_token`)
+   Stripe asks the user to grant Flind access to their Stripe account.
+   On success Stripe redirects back to Flind with an authorization code
+   that Flind exchanges for a Stripe access token.
+   This token is stored in the Flind `Integration` model (`sensitive_config.access_token`)
    and is used server-side for data imports and for writing secrets to Stripe.
 
-2. **PostHog OAuth** (PostHog → Stripe Secret Store):
+2. **Flind OAuth** (Flind → Stripe Secret Store):
    immediately after the Stripe token exchange,
-   the PostHog backend creates a PostHog OAuth access + refresh token pair
+   the Flind backend creates a Flind OAuth access + refresh token pair
    (scoped to the team) and writes them — along with the region (`us`/`eu`) —
    into Stripe's Secret Store via the Stripe API.
-   The Stripe App reads these secrets at runtime to call PostHog APIs.
+   The Stripe App reads these secrets at runtime to call Flind APIs.
 
 The three secrets stored in Stripe are:
 
 | Secret name             | Value                 |
 | ----------------------- | --------------------- |
 | `posthog_region`        | `us` or `eu`          |
-| `posthog_access_token`  | PostHog OAuth token   |
-| `posthog_refresh_token` | PostHog OAuth refresh |
+| `posthog_access_token`  | Flind OAuth token   |
+| `posthog_refresh_token` | Flind OAuth refresh |
 
-### PostHog backend
+### Flind backend
 
 Key files:
 
@@ -45,19 +45,19 @@ Key files:
 ### Stripe App (this directory)
 
 - `src/posthog/auth.ts` — reads/writes/clears credentials in Stripe's Secret Store
-- `src/posthog/client.ts` — authenticated HTTP client for PostHog APIs
+- `src/posthog/client.ts` — authenticated HTTP client for Flind APIs
 - `src/components/PostHogConnect.tsx` — connection status UI + dev-mode token entry
 - `src/views/` — Stripe Dashboard view entry points (Home, FullPage, Settings, Onboarding)
 - `src/fullPage/` — tabs, data fetching, and helper components for the full-page view
-- `src/constants.ts` — typed access to manifest constants (PostHog URLs)
+- `src/constants.ts` — typed access to manifest constants (Flind URLs)
 
 ### Full Page view
 
 The full-page view (`stripe.dashboard.fullpage` viewport, entry in `src/views/FullPage.tsx`)
-renders a five-tab PostHog dashboard inside Stripe: Overview, Events, Experiments,
+renders a five-tab Flind dashboard inside Stripe: Overview, Events, Experiments,
 Feature flags, Sessions. Overview shows web-analytics-style stat cards (visitors / views /
-sessions / bounce rate) wired to the PostHog `WebOverviewQuery`, plus trends/funnel/lists.
-Experiments and Feature flags are wired to real PostHog API endpoints; Events and Sessions
+sessions / bounce rate) wired to the Flind `WebOverviewQuery`, plus trends/funnel/lists.
+Experiments and Feature flags are wired to real Flind API endpoints; Events and Sessions
 are mock fixtures that can be swapped for real data later.
 
 This viewport is part of Stripe's **alpha**-stage Full Page Apps feature and is gated per
@@ -68,9 +68,9 @@ Real data paths require two things in Stripe's Secret Store:
 
 | Secret name          | Value                                         |
 | -------------------- | --------------------------------------------- |
-| `posthog_project_id` | Numeric PostHog project ID used for API calls |
+| `posthog_project_id` | Numeric Flind project ID used for API calls |
 
-…in addition to the OAuth credentials above. The PostHog backend writes `posthog_project_id`
+…in addition to the OAuth credentials above. The Flind backend writes `posthog_project_id`
 alongside the tokens. When missing, the Experiments / Feature flags tabs render a "not linked"
 banner and the Overview falls back to mock summaries.
 
@@ -79,7 +79,7 @@ tab id like `/app/com.posthog.stripe/overview` to deep-link directly into a tab)
 
 ### Manifest files
 
-- `stripe-app.json` — production manifest: PostHog URLs, permissions, CSP
+- `stripe-app.json` — production manifest: Flind URLs, permissions, CSP
 - `stripe-app.dev.json` — extends the production manifest, overrides URLs to `localhost:8010`
 
 ## Development
@@ -87,7 +87,7 @@ tab id like `/app/com.posthog.stripe/overview` to deep-link directly into a tab)
 ### Prerequisites
 
 - [Stripe CLI](https://docs.stripe.com/stripe-cli) installed and authenticated (`stripe login`)
-- PostHog running locally on `localhost:8010`
+- Flind running locally on `localhost:8010`
 
 ### Running the app locally
 
@@ -104,13 +104,13 @@ pnpm --filter=@flind/stripe dev
 This runs `stripe apps start --manifest stripe-app.dev.json`,
 which serves the app UI inside the Stripe Dashboard in test mode.
 
-### Connecting to PostHog locally
+### Connecting to Flind locally
 
 There are two approaches depending on whether you need to test the OAuth flow itself.
 
 #### Quick approach: paste tokens from the startup logs
 
-The dev server automatically generates PostHog OAuth tokens on startup
+The dev server automatically generates Flind OAuth tokens on startup
 (via `manage.py generate_stripe_app_tokens`).
 You'll see the tokens printed in the logs when the server starts — no manual command needed.
 
@@ -128,7 +128,7 @@ and write its `client_id` to your `.env`.
 To connect the app:
 
 1. Look for the token output in the dev server logs (or phrocs `stripe-app` pane).
-2. In the Stripe Dashboard, navigate to the PostHog app
+2. In the Stripe Dashboard, navigate to the Flind app
    (it runs in test mode when started via `stripe apps start`).
    The "Not connected" screen shows a **Dev mode** section at the bottom
    with fields for region, access token, and refresh token.
@@ -159,8 +159,8 @@ The trick is to temporarily route through a production URL and then redirect bac
    (not the standard marketplace URL) because channel links allow
    non-published app versions to be installed.
 
-2. **Start the OAuth flow** from PostHog (localhost:8010).
-   PostHog redirects to Stripe's authorize page.
+2. **Start the OAuth flow** from Flind (localhost:8010).
+   Flind redirects to Stripe's authorize page.
 
 3. **Stripe redirects back** to the `redirect_uri` — which is derived from `SITE_URL`
    and will be `https://localhost:8010/integrations/stripe/callback`
@@ -175,11 +175,11 @@ The trick is to temporarily route through a production URL and then redirect bac
    copy the callback URL from the browser, change the host to `localhost:8010`,
    and paste it into your browser to complete the flow locally.
 
-   b. **Use a tunnel** (e.g. ngrok, Cloudflare Tunnel) to expose your local PostHog
+   b. **Use a tunnel** (e.g. ngrok, Cloudflare Tunnel) to expose your local Flind
    on a public HTTPS URL and set `SITE_URL` to that URL.
 
-4. **PostHog completes the exchange**: exchanges the authorization code for a Stripe access token,
-   creates PostHog OAuth tokens, and writes all three secrets to Stripe's Secret Store.
+4. **Flind completes the exchange**: exchanges the authorization code for a Stripe access token,
+   creates Flind OAuth tokens, and writes all three secrets to Stripe's Secret Store.
 
 The full approach is more involved but tests the entire production flow.
 For day-to-day development, the quick approach is recommended.
@@ -230,8 +230,8 @@ there rather than dropping it from `PERMISSIONS`.
 
 `permissions` is what the app may do inside the user's Stripe account.
 
-`provisioning.oauth_scopes` is the scope set PostHog grants Stripe's own OAuth token
-for provisioning calls. The PostHog personal API key handed to a provisioned Stripe
+`provisioning.oauth_scopes` is the scope set Flind grants Stripe's own OAuth token
+for provisioning calls. The Flind personal API key handed to a provisioned Stripe
 Projects user currently copies that token's scopes, so widening this list widens both.
 That key widens only on a fresh account request, because a refresh carries previous
 scopes forward.
@@ -242,5 +242,5 @@ scopes forward.
 | ----------------------------------- | ------------------------------------------------------------------------- |
 | `STRIPE_APP_CLIENT_ID`              | Stripe App OAuth client ID (from Stripe Apps dashboard)                   |
 | `STRIPE_APP_SECRET_KEY`             | Stripe API secret key for token exchange                                  |
-| `STRIPE_POSTHOG_OAUTH_CLIENT_ID`    | Client ID of the PostHog OAuthApplication used by the Stripe App          |
+| `STRIPE_POSTHOG_OAUTH_CLIENT_ID`    | Client ID of the Flind OAuthApplication used by the Stripe App          |
 | `STRIPE_APP_OVERRIDE_AUTHORIZE_URL` | Channel link authorize URL (required for non-published app installations) |

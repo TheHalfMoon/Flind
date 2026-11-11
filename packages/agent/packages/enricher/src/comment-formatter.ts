@@ -18,7 +18,7 @@ function formatFlagComment(flag: EnrichedFlag): string {
   const parts: string[] = [`Flag: "${sanitizeCommentValue(flag.flagKey)}"`];
 
   if (!flag.flag) {
-    parts.push("not in PostHog");
+    parts.push("not in Flind");
     return parts.join(" \u2014 ");
   }
 
@@ -120,8 +120,8 @@ export function formatComments(
     if (!body) continue;
 
     const comment = item.inJsx
-      ? `{/* [PostHog] ${body} */}`
-      : `${prefix} [PostHog] ${body}`;
+      ? `{/* [Flind] ${body} */}`
+      : `${prefix} [Flind] ${body}`;
     const indent = lines[targetLine]?.match(/^(\s*)/)?.[1] ?? "";
     lines.splice(targetLine, 0, `${indent}${comment}`);
     offset++;
@@ -169,7 +169,7 @@ export function formatInlineComments(
       const indent = lines[lineIdx]?.match(/^(\s*)/)?.[1] ?? "";
       leadingInserts.push({
         atLine: lineIdx,
-        text: `${indent}{/* [PostHog] ${joined} */}`,
+        text: `${indent}{/* [Flind] ${joined} */}`,
       });
       continue;
     }
@@ -178,8 +178,8 @@ export function formatInlineComments(
     const bodies = isJsx ? jsxBodies : nonJsxBodies;
     const joined = bodies.join(" | ");
     const suffix = isJsx
-      ? ` {/* [PostHog] ${joined} */}`
-      : ` ${prefix} [PostHog] ${joined}`;
+      ? ` {/* [Flind] ${joined} */}`
+      : ` ${prefix} [Flind] ${joined}`;
     const sourceLine = stripExistingInlineAnnotation(
       lines[lineIdx] ?? "",
       isJsx,

@@ -4,7 +4,7 @@ import type { IntegrationKind, IntegrationType } from '~/types'
 
 import type { ExternalDataDestinationTypeEnumApi } from 'products/warehouse_sources/frontend/generated/api.schemas'
 
-/** The PostHog warehouse is managed by the sync itself, so it is not creatable. */
+/** The Flind warehouse is managed by the sync itself, so it is not creatable. */
 export type CreatableDestinationType = Exclude<ExternalDataDestinationTypeEnumApi, 'PostHogWarehouse'>
 
 export interface DestinationContext {

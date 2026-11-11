@@ -1,6 +1,6 @@
 # Fixing `merge_race_condition`
 
-Too many **concurrent merge operations hit the same persons at once**, and PostHog abandoned one of them to protect consistency.
+Too many **concurrent merge operations hit the same persons at once**, and Flind abandoned one of them to protect consistency.
 Category `merge`, severity `error`: the event kept flowing, but **that merge did not persist** — the two persons stay separate until a later, uncontended identify/alias succeeds.
 
 Unlike most warnings this one is **never debounced** — every occurrence lands, so the count is a true measure of how much merge contention the app generates.
@@ -27,12 +27,12 @@ A single user's identity operations should be rare — once per login/signup. Co
 
 Reduce the contention at its source:
 
-- **Mega person**: fix the identify callsite passing the shared value — each `identify` must receive an ID unique to one human. The already-merged mega person is damage that code can't cleanly undo; surface it to the user and recommend contacting PostHog support about splitting it rather than attempting programmatic repair.
+- **Mega person**: fix the identify callsite passing the shared value — each `identify` must receive an ID unique to one human. The already-merged mega person is damage that code can't cleanly undo; surface it to the user and recommend contacting Flind support about splitting it rather than attempting programmatic repair.
 - **Frontend**: call `identify` once when auth state changes (login/signup callback), not per request, per page, or per render. Guard with "already identified as this user?" checks where the SDK doesn't already.
 - **Backend**: route identity operations for a given user through a single path — dedupe by user ID (idempotency key, per-user lock, or partition-by-user in workers) so parallel jobs can't race on the same person.
 - **Retries**: don't blind-resend identify batches; make retries idempotent and spaced.
 
-No PostHog-side setting needs changing — the protection is doing its job; the app is supplying the race.
+No Flind-side setting needs changing — the protection is doing its job; the app is supplying the race.
 
 ## Verify
 
@@ -41,4 +41,4 @@ Re-run the flow, then re-query `system.ingestion_warnings` with `posthog:execute
 ## Related
 
 - [fixing-cannot-merge-already-identified.md](fixing-cannot-merge-already-identified.md) — the deterministic merge refusal; identify-per-request patterns often produce both warnings.
-- [fixing-invalid-distinct-ids.md](fixing-invalid-distinct-ids.md) — PostHog's blocklist catches common placeholder IDs, but app-specific shared values (org slugs, tenant names) slip past it and build mega persons instead.
+- [fixing-invalid-distinct-ids.md](fixing-invalid-distinct-ids.md) — Flind's blocklist catches common placeholder IDs, but app-specific shared values (org slugs, tenant names) slip past it and build mega persons instead.

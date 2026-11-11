@@ -44,7 +44,7 @@ describe('addUtmTagsToEmail', () => {
             expected: '<a href="https://example.com/?utm_source=a&utm_medium=b&utm_campaign=c">x</a>',
         },
         {
-            case: 'the unsubscribe link on the PostHog host',
+            case: 'the unsubscribe link on the Flind host',
             html: '<a href="https://us.posthog.com/messaging-preferences/abc/">Unsubscribe</a>',
             expected: '<a href="https://us.posthog.com/messaging-preferences/abc/">Unsubscribe</a>',
         },
@@ -186,7 +186,7 @@ describe('addUtmTagsToEmail', () => {
             expected: '<a href="https://other.herokuapp.com/">x</a>',
         },
         {
-            case: 'leaves the unsubscribe link on the PostHog host',
+            case: 'leaves the unsubscribe link on the Flind host',
             sender: 'hi@posthog.com',
             html: '<a href="https://us.posthog.com/messaging-preferences/abc/">Unsubscribe</a>',
             expected: '<a href="https://us.posthog.com/messaging-preferences/abc/">Unsubscribe</a>',

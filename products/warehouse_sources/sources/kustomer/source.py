@@ -69,7 +69,7 @@ class KustomerSource(ResumableSource[KustomerSourceConfig, KustomerResumeConfig]
             name=ExternalDataSourceType.KUSTOMER,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Kustomer",
-            caption="""Enter your Kustomer API credentials to pull your Kustomer support data into the PostHog Data warehouse.
+            caption="""Enter your Kustomer API credentials to pull your Kustomer support data into the Flind Data warehouse.
 
 Your organization name is the first part of your Kustomer URL — for `myorg.kustomerapp.com` enter `myorg`. Create an API key in Kustomer under Settings > Security > API Keys with read roles for the data you want to sync (e.g. `org.user.read`).""",
             iconPath="/static/services/kustomer.png",

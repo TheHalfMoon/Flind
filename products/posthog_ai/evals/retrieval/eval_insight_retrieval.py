@@ -10,7 +10,7 @@ Two metrics:
   reasoning about how to find the entity? Buying noise without skill
   guidance pushes the agent toward the wrong tool.
 * ``lookup_id_in_output`` — does the agent's final message include the
-  seeded insight's ID? Proves it actually queried PostHog rather than
+  seeded insight's ID? Proves it actually queried Flind rather than
   hallucinating a plausible-looking ID.
 
 To run:
@@ -35,7 +35,7 @@ async def eval_insight_retrieval(ctx: EvalContext) -> None:
             name="retrieval_insight_northern_lights",
             prompt=(
                 "Find the saved insight named '[lookup] Northern Lights Funnel' "
-                "in this PostHog project and return its numeric ID. Reply with just the ID."
+                "in this Flind project and return its numeric ID. Reply with just the ID."
             ),
             setup=seed_insight_noise,
         ),
@@ -43,7 +43,7 @@ async def eval_insight_retrieval(ctx: EvalContext) -> None:
             name="retrieval_insight_aurora",
             prompt=(
                 "Find the saved insight named '[lookup] Aurora Retention Cohort' "
-                "in this PostHog project and return its numeric ID. Reply with just the ID."
+                "in this Flind project and return its numeric ID. Reply with just the ID."
             ),
             setup=seed_insight_noise,
         ),
@@ -51,7 +51,7 @@ async def eval_insight_retrieval(ctx: EvalContext) -> None:
             name="retrieval_insight_solstice",
             prompt=(
                 "Find the saved insight named '[lookup] Solstice Pageview Trend' "
-                "in this PostHog project and return its numeric ID. Reply with just the ID."
+                "in this Flind project and return its numeric ID. Reply with just the ID."
             ),
             setup=seed_insight_noise,
         ),

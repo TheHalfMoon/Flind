@@ -264,7 +264,7 @@ class SkillSearchFirst(Scorer):
                 name=self._name(),
                 score=0.0,
                 metadata={
-                    "reason": "A non-learning PostHog command ran before skill search",
+                    "reason": "A non-learning Flind command ran before skill search",
                     "call_id": first.call_id,
                     "tool": first.name,
                 },

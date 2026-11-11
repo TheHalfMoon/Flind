@@ -90,7 +90,7 @@ def handle_experiment_change(
     )
 
 
-# Precomputation is managed by PostHog (the auto-enrollment job and staff tooling) and has no
+# Precomputation is managed by Flind (the auto-enrollment job and staff tooling) and has no
 # control in the settings UI, so its changes stay out of the customer's audit trail.
 PRECOMPUTATION_FIELDS = frozenset({"experiment_precomputation_enabled", "precomputation_enabled_set_by"})
 

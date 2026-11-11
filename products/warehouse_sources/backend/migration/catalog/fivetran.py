@@ -8,7 +8,7 @@ is not safe: it lets a different product of the same name match.
 from products.warehouse_sources.backend.models.external_data_destination import ExternalDataDestination
 from products.warehouse_sources.backend.types import ExternalDataSourceType as T
 
-# Fivetran service ids that name matching cannot pair with their PostHog source, or pairs wrongly.
+# Fivetran service ids that name matching cannot pair with their Flind source, or pairs wrongly.
 SOURCE_OVERRIDES: dict[str, T] = {
     # Hosted and managed flavors of the same database engine.
     "aurora_postgres": T.POSTGRES,
@@ -49,7 +49,7 @@ SOURCE_OVERRIDES: dict[str, T] = {
     "singlestore_source": T.SINGLESTORE,
     "snowflake_db": T.SNOWFLAKE,
     "apache_kafka": T.KAFKA,
-    # A name match gives the PostHog Confluent Cloud source, which reads the Metrics API, not topics.
+    # A name match gives the Flind Confluent Cloud source, which reads the Metrics API, not topics.
     "confluent_cloud": T.KAFKA,
     "aws_msk": T.KAFKA,
     "heroku_kafka": T.KAFKA,
@@ -61,7 +61,7 @@ SOURCE_OVERRIDES: dict[str, T] = {
     "azure_blob_storage": T.AZUREBLOB,
     "gcs": T.GOOGLECLOUDSTORAGE,
     "s3": T.AMAZONS3,
-    # Sandbox and test accounts of a vendor use the same PostHog source.
+    # Sandbox and test accounts of a vendor use the same Flind source.
     "braintree_sandbox": T.BRAINTREE,
     "pardot_sandbox": T.PARDOT,
     "paypal_sandbox": T.PAYPAL,
@@ -126,16 +126,16 @@ SOURCE_OVERRIDES: dict[str, T] = {
 }
 
 # Same vendor, different product. Each entry names what the Fivetran connector reads and what the
-# PostHog source of the same name reads, so a match would sync none of the customer's data.
+# Flind source of the same name reads, so a match would sync none of the customer's data.
 REJECTED_SOURCES: frozenset[str] = frozenset(
     {
-        # Fivetran reads the Lightspeed R-Series API. PostHog reads X-Series.
+        # Fivetran reads the Lightspeed R-Series API. Flind reads X-Series.
         "light_speed_retail",
-        # Fivetran takes in the event stream. PostHog reads workspace config from the Public API.
+        # Fivetran takes in the event stream. Flind reads workspace config from the Public API.
         "segment",
-        # Fivetran takes in the event stream. PostHog reads pipeline health from the BDP Console.
+        # Fivetran takes in the event stream. Flind reads pipeline health from the BDP Console.
         "snowplow",
-        # Fivetran reads Workday RaaS custom reports. PostHog reads the HCM API, which is `workday_hcm`.
+        # Fivetran reads Workday RaaS custom reports. Flind reads the HCM API, which is `workday_hcm`.
         "workday",
     }
 )
@@ -151,14 +151,14 @@ TABLE_SUFFIX_REWRITES: tuple[tuple[str, str], ...] = (
     ("_daily_report", "_report"),
 )
 
-# Fivetran keeps the SSH tunnel in flat config keys. PostHog nests it under the `ssh_tunnel` field.
+# Fivetran keeps the SSH tunnel in flat config keys. Flind nests it under the `ssh_tunnel` field.
 TUNNEL_CONFIG_KEYS: dict[str, str] = {
     "tunnel_host": "ssh_tunnel.host",
     "tunnel_port": "ssh_tunnel.port",
     "tunnel_user": "ssh_tunnel.auth.username",
 }
 
-# Non-secret config keys whose PostHog field has a different name. Keys with the same name on both
+# Non-secret config keys whose Flind field has a different name. Keys with the same name on both
 # sides are copied without an entry here.
 CONFIG_KEY_OVERRIDES: dict[T, dict[str, str]] = {
     T.SNOWFLAKE: {"user": "auth_type.user"},
@@ -170,7 +170,7 @@ _D = ExternalDataDestination.Type
 # Fivetran destination service ids, from
 # https://github.com/fivetran/terraform-provider-fivetran/blob/main/destination-services.txt.
 # The managed data lake is left out because it can sit on ADLS or GCS, which an S3 destination cannot write to.
-# Non-secret destination config keys a migration may carry over, per PostHog destination type. Every other key
+# Non-secret destination config keys a migration may carry over, per Flind destination type. Every other key
 # is dropped, because Fivetran marks secrets per destination and no name rule can find them all.
 DESTINATION_CONFIG_KEYS: dict[ExternalDataDestination.Type, frozenset[str]] = {
     _D.SNOWFLAKE: frozenset({"host", "port", "database", "user", "role"}),

@@ -15,7 +15,7 @@ export const getAndroidSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             content: (
                 <>
                     {MobileFinalSteps && <MobileFinalSteps />}
-                    <Markdown>To automatically track screen views, configure PostHog to capture screen views:</Markdown>
+                    <Markdown>To automatically track screen views, configure Flind to capture screen views:</Markdown>
                     <CodeBlock
                         blocks={[
                             {

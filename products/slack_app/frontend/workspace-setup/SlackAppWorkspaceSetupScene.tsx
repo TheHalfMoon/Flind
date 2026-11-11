@@ -45,7 +45,7 @@ export function SlackAppWorkspaceSetupScene(): JSX.Element {
                     <Spinner className="text-2xl" />
                 ) : !setup ? (
                     <LemonBanner type="error" className="w-full">
-                        We couldn't load the Slack setup. Refresh the page, or go back to PostHog and connect Slack
+                        We couldn't load the Slack setup. Refresh the page, or go back to Flind and connect Slack
                         again.
                     </LemonBanner>
                 ) : currentStep ? (
@@ -60,7 +60,7 @@ export function SlackAppWorkspaceSetupScene(): JSX.Element {
                 className="flex items-center gap-1 mt-6 text-secondary"
             >
                 <IconArrowLeft />
-                {returnLink?.label ?? 'Back to PostHog'}
+                {returnLink?.label ?? 'Back to Flind'}
             </Link>
         </div>
     )

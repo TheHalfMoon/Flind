@@ -535,7 +535,7 @@ def test_a_final_gate_verdict_is_posted_without_a_sandbox_review(
     author, head_sha = "devex-dev", "sha-pregate"
     pr_object = {**_pr_object(101, author, head_sha), "changed_files": len(files)}
     stamphog_chain.recorder.register_pr(
-        REPO, 101, pr_object, files, commit_messages=("feat: infra\n\nGenerated-By: PostHog Code\nTask-Id: t-1",)
+        REPO, 101, pr_object, files, commit_messages=("feat: infra\n\nGenerated-By: Flind Code\nTask-Id: t-1",)
     )
 
     stamphog_chain.recorder.repo_files[(REPO, "src/AGENT_APPROVALS.md")] = _LIFTING_FOLDER_FILE
@@ -2306,9 +2306,9 @@ def test_mark_review_failed_never_rewrites_a_terminal_run(team) -> None:
 def _waiting_engine_output() -> str:
     payload = {
         "final_verdict": "WAIT",
-        "reviewer": {"reasoning": "PostHog Review is still reviewing this commit.", "issues": []},
+        "reviewer": {"reasoning": "Flind Review is still reviewing this commit.", "issues": []},
         "gates": [{"name": "size", "passed": True}],
-        "review_body": "Waiting for PostHog Review.",
+        "review_body": "Waiting for Flind Review.",
     }
     return json.dumps(payload)
 

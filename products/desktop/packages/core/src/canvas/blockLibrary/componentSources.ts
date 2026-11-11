@@ -1140,7 +1140,7 @@ export function Insight(props: InsightProps) {
     if (kind === "FunnelsQuery") return <FunnelBody rows={rows} />;
     if (kind === "RetentionQuery") return <RetentionGrid cohorts={rows} period="period" />;
     if (kind === "HogQLQuery" || kind === "DataVisualizationNode" || kind === "DataTableNode") return <ResultTable columns={result.data?.columns ?? []} rows={rows} />;
-    return <div className="py-8 text-center text-sm text-muted-foreground">This insight type opens in PostHog. Ask the agent to rebuild it here.</div>;
+    return <div className="py-8 text-center text-sm text-muted-foreground">This insight type opens in Flind. Ask the agent to rebuild it here.</div>;
   };
   return (
     <Card

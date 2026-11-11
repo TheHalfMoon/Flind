@@ -20,7 +20,7 @@ logger = structlog.get_logger(__name__)
 
 @functools.cache
 def app_prompts() -> Prompts:
-    # PostHog's own prompts live in the US project, and EU has no copy of that project, so every region
+    # Flind's own prompts live in the US project, and EU has no copy of that project, so every region
     # reads them through the SDK. One client per process keeps the last good copy when a fetch fails.
     # It is built on first use, because apps.ready() sets the key after this module can be imported.
     # A zero TTL leaves the refresh interval to BackgroundRefresher alone.

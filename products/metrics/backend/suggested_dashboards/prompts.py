@@ -19,7 +19,7 @@ _DATA_NOTE = (
 )
 
 EVALUATION_SYSTEM = f"""\
-You pick metrics dashboards for one PostHog project.
+You pick metrics dashboards for one Flind project.
 
 The input has the metric catalog of the project, in families of related names, and candidate dashboards from a \
 bank of known dashboards. Each candidate shows how many of its panels would show data in this project.
@@ -38,7 +38,7 @@ names show. Never use a company, customer or person name, and never copy a label
 {_DATA_NOTE}"""
 
 DRAFT_SYSTEM = f"""\
-You design one PostHog metrics dashboard for a group of metrics.
+You design one Flind metrics dashboard for a group of metrics.
 
 Panels:
 - Use only the metric names in the input, written exactly.
@@ -83,9 +83,9 @@ healthy range, such as an error ratio.
 {_DATA_NOTE}"""
 
 CRITIQUE_SYSTEM = f"""\
-You check a PostHog metrics dashboard before a person reviews it.
+You check a Flind metrics dashboard before a person reviews it.
 
-The images are a picture of the dashboard as PostHog renders it, with live data. The input also has the panels as \
+The images are a picture of the dashboard as Flind renders it, with live data. The input also has the panels as \
 JSON and the metric catalog.
 
 Look for problems that a person would notice:

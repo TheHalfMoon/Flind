@@ -225,7 +225,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         ),
         "docs_url": "https://dev.mailjet.com/email/guides/webhooks/",
         "columns": {
-            "event_id": "Identifier PostHog derives from the delivery body so repeated deliveries of the same event collapse onto one row.",
+            "event_id": "Identifier Flind derives from the delivery body so repeated deliveries of the same event collapse onto one row.",
             "event": "The event type: sent, open, click, bounce, blocked, spam or unsub.",
             "time": "Unix timestamp of the event.",
             "email": "Email address of the recipient that triggered the event.",

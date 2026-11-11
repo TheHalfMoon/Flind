@@ -1,5 +1,5 @@
 """
-Generate PostHog OAuth tokens for the Stripe App in local development.
+Generate Flind OAuth tokens for the Stripe App in local development.
 
 Reuses existing valid tokens if available, otherwise creates new ones.
 Prints the tokens so you can paste them into the Stripe App's dev mode UI.
@@ -27,7 +27,7 @@ from posthog.models.integration import StripeIntegration
 from posthog.models.oauth import OAuthAccessToken, OAuthApplication, OAuthRefreshToken
 from posthog.models.utils import generate_random_oauth_access_token, generate_random_oauth_refresh_token
 
-STRIPE_APP_NAME = "PostHog Stripe App"
+STRIPE_APP_NAME = "Flind Stripe App"
 ENV_KEY = "STRIPE_POSTHOG_OAUTH_CLIENT_ID"
 
 
@@ -44,7 +44,7 @@ def _read_env_value(env_path: str, key: str) -> str | None:
 
 
 class Command(BaseCommand):
-    help = "Generate PostHog OAuth tokens for the Stripe App (local dev only)"
+    help = "Generate Flind OAuth tokens for the Stripe App (local dev only)"
 
     def add_arguments(self, parser):
         parser.add_argument("--team-id", type=int, required=True, help="The team ID to scope the tokens to")

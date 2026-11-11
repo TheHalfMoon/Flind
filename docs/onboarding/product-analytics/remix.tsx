@@ -18,7 +18,7 @@ export const getRemixInstallSteps = (ctx: OnboardingComponentsContext): StepDefi
                             docs](https://posthog.com/docs/libraries/react-router).
                         </Markdown>
                     </CalloutBox>
-                    <Markdown>Install the PostHog JavaScript library using your package manager:</Markdown>
+                    <Markdown>Install the Flind JavaScript library using your package manager:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -101,7 +101,7 @@ export const getRemixInstallSteps = (ctx: OnboardingComponentsContext): StepDefi
             content: (
                 <>
                     <Markdown>
-                        Create a `provider.tsx` file in the app folder. Set up the PostHog provider to initialize after
+                        Create a `provider.tsx` file in the app folder. Set up the Flind provider to initialize after
                         hydration:
                     </Markdown>
                     <CodeBlock

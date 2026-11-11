@@ -696,7 +696,7 @@ export const SSO_PROVIDER_NAMES: Record<SSOProvider, string> = {
 }
 
 export const DOMAIN_REGEX = /^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$/
-/** The PostHog Chrome extension, which shows the toolbar in a side panel next to the website. */
+/** The Flind Chrome extension, which shows the toolbar in a side panel next to the website. */
 export const TOOLBAR_CHROME_EXTENSION_ID = 'khajokjedaapggnioajbdaoaaedaaoeg'
 export const TOOLBAR_CHROME_EXTENSION_URL = `https://chromewebstore.google.com/detail/posthog/${TOOLBAR_CHROME_EXTENSION_ID}`
 

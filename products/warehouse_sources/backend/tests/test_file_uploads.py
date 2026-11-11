@@ -56,7 +56,7 @@ def test_an_upload_location_is_built_inside_the_team_folder() -> None:
         (7, UPLOAD_ID, "ördërs.csv"),
         (7, UPLOAD_ID, ""),
         (7, UPLOAD_ID, None),
-        # The team always comes from PostHog, but a bad one still never builds a key.
+        # The team always comes from Flind, but a bad one still never builds a key.
         (0, UPLOAD_ID, "orders.csv"),
         (-1, UPLOAD_ID, "orders.csv"),
         (True, UPLOAD_ID, "orders.csv"),
@@ -86,7 +86,7 @@ def test_a_crafted_legacy_filename_never_builds_a_key(filename: str) -> None:
         (f"https://{DOMAIN}/file_uploads/team_8/{UPLOAD_ID}/orders.csv", None),
         (f"https://{DOMAIN}/file_uploads/team_77/{UPLOAD_ID}/orders.csv", None),
         (f"https://{DOMAIN}/managed/team_70/orders.csv", None),
-        # Objects PostHog writes itself in the same bucket.
+        # Objects Flind writes itself in the same bucket.
         (f"https://{DOMAIN}/dlt/team_7_model_abc/modeling/orders", None),
         (f"https://{DOMAIN}/data_pipelines_extract/team_7/orders.csv", None),
         # Keys that aren't exactly one upload.

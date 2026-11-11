@@ -103,7 +103,7 @@ export function WorkflowOverviewSuggestions({ id }: { id: string }): JSX.Element
                 </span>
             ) : watching ? (
                 <span className="text-sm text-muted">
-                    No suggestions yet. PostHog is watching this workflow and will suggest changes here.
+                    No suggestions yet. Flind is watching this workflow and will suggest changes here.
                 </span>
             ) : (
                 <span className="text-sm text-muted">

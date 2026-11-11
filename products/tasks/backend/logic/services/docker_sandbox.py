@@ -93,7 +93,7 @@ AGENT_SERVER_PORT = 47821  # Arbitrary high port unlikely to conflict with dev s
 
 STREAMLIT_AUTH_PROXY_PORT = 8080
 
-# Env vars holding a PostHog URL the sandbox must reach from inside the container.
+# Env vars holding a Flind URL the sandbox must reach from inside the container.
 # localhost would resolve to the container itself, so they're rewritten to
 # host.docker.internal at `docker run` time (non-localhost hosts pass through).
 _DOCKER_URL_ENV_KEYS = frozenset(
@@ -337,7 +337,7 @@ class DockerSandbox(AgentServerLaunchMixin):
 
     @staticmethod
     def _build_local_image(monorepo_root: str) -> None:
-        logger.info("Building posthog-sandbox-base-local image with local PostHog Desktop packages...")
+        logger.info("Building posthog-sandbox-base-local image with local Flind Desktop packages...")
         dockerfile_path = os.path.join(
             settings.BASE_DIR, "products/tasks/backend/sandbox/images/Dockerfile.sandbox-local"
         )

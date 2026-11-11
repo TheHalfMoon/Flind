@@ -13,7 +13,7 @@ import { DESTINATION_STATUS_TAGS } from '../../shared/components/destinationStat
 import { destinationTarget } from '../../shared/components/destinationTarget'
 import { SyncedSources } from './SyncedSources'
 
-const MANAGED_REASON = 'The PostHog warehouse is managed for you'
+const MANAGED_REASON = 'The Flind warehouse is managed for you'
 
 export interface WarehouseDestinationsTableProps {
     destinations: ExternalDataDestinationApi[]
@@ -78,7 +78,7 @@ export function WarehouseDestinationsTable({
             title: 'Status',
             key: 'status',
             render: (_, destination) => {
-                // The PostHog warehouse is written by the sync itself, so it has no delivery health of its own.
+                // The Flind warehouse is written by the sync itself, so it has no delivery health of its own.
                 if (destination.is_posthog_warehouse) {
                     return null
                 }

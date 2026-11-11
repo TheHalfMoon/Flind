@@ -24,7 +24,7 @@ export const alertsEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Find out a metric moved without watching the dashboard',
-                lead: 'An alert re-runs one insight or log search on a schedule and compares the result to a threshold you set. When the value crosses it, PostHog notifies you in Slack, Microsoft Teams, email, or a webhook, and keeps a record of every check it ran.',
+                lead: 'An alert re-runs one insight or log search on a schedule and compares the result to a threshold you set. When the value crosses it, Flind notifies you in Slack, Microsoft Teams, email, or a webhook, and keeps a record of every check it ran.',
                 hint: 'Insight alerts start on the insight. Open one, then pick Alerts in its actions sidebar.',
             },
         },

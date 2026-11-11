@@ -26,8 +26,8 @@ const deeplinkSchemes = isTestChannelBuild
 const config: Configuration = {
   // Original release bundle id; changing it breaks existing installs' data dir and Keychain entries.
   appId: "com.posthog.array",
-  productName: "PostHog",
-  executableName: "PostHog",
+  productName: "Flind",
+  executableName: "Flind",
 
   directories: {
     output: "out",
@@ -50,7 +50,7 @@ const config: Configuration = {
     "package.json",
     "!node_modules/**/*",
     ...packagedFileGlobs,
-    // Sourcemaps are uploaded to PostHog at build time, not consumed in the app.
+    // Sourcemaps are uploaded to Flind at build time, not consumed in the app.
     "!**/*.map",
     // better-sqlite3 ships its C amalgamation sources; only the built .node runs.
     "!node_modules/better-sqlite3/deps/**",
@@ -78,7 +78,7 @@ const config: Configuration = {
 
   protocols: [
     {
-      name: "PostHog",
+      name: "Flind",
       schemes: deeplinkSchemes,
     },
   ],
@@ -86,7 +86,7 @@ const config: Configuration = {
   mac: {
     target: ["dmg", "zip"],
     // biome-ignore lint/suspicious/noTemplateCurlyInString: electron-builder interpolation tokens, not JS template literals
-    artifactName: "PostHog-Desktop-${version}-${arch}-mac.${ext}",
+    artifactName: "Flind-Desktop-${version}-${arch}-mac.${ext}",
     icon: "build/app-icon.icns",
     category: "public.app-category.productivity",
     hardenedRuntime: true,
@@ -98,7 +98,7 @@ const config: Configuration = {
       // Shown in the macOS microphone-permission prompt when a user records a
       // custom notification sound.
       NSMicrophoneUsageDescription:
-        "PostHog uses the microphone to record custom notification sounds.",
+        "Flind uses the microphone to record custom notification sounds.",
     },
     notarize: !skipNotarize,
   },
@@ -119,7 +119,7 @@ const config: Configuration = {
   win: {
     target: ["nsis"],
     // biome-ignore lint/suspicious/noTemplateCurlyInString: electron-builder interpolation tokens, not JS template literals
-    artifactName: "PostHog-Desktop-${version}-${arch}-win.${ext}",
+    artifactName: "Flind-Desktop-${version}-${arch}-win.${ext}",
     // electron-builder generates the multi-size .ico from this 1024px PNG; a real
     // .ico must be >=256px and the committed app-icon.ico is only 32px.
     icon: "build/app-icon.png",
@@ -147,7 +147,7 @@ const config: Configuration = {
   linux: {
     target: ["AppImage", "deb", "rpm"],
     // biome-ignore lint/suspicious/noTemplateCurlyInString: electron-builder interpolation tokens, not JS template literals
-    artifactName: "PostHog-Desktop-${version}-${arch}-linux.${ext}",
+    artifactName: "Flind-Desktop-${version}-${arch}-linux.${ext}",
     icon: "build/app-icon.png",
     category: "Development",
     mimeTypes: ["x-scheme-handler/posthog-code"],
@@ -155,7 +155,7 @@ const config: Configuration = {
 
   deb: {
     packageName: "posthog-code",
-    maintainer: "PostHog <eng@posthog.com>",
+    maintainer: "Flind <eng@posthog.com>",
     packageCategory: "devel",
   },
 

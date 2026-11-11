@@ -289,7 +289,7 @@ export const evaluationToMaxContextPayload = (evaluation: {
 })
 
 /**
- * Generic context that can be passed when opening PostHog AI.
+ * Generic context that can be passed when opening Flind AI.
  */
 export interface MaxOpenContext {
     /** Error tracking issue context */

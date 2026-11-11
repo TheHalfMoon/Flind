@@ -54,7 +54,7 @@ class ChartMogulSource(ResumableSource[ChartMogulSourceConfig, ChartMogulResumeC
             name=ExternalDataSourceType.CHARTMOGUL,
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="ChartMogul",
-            caption="""Enter your ChartMogul API key to pull your subscription analytics data into the PostHog Data warehouse.
+            caption="""Enter your ChartMogul API key to pull your subscription analytics data into the Flind Data warehouse.
 
 You can find your API key in your [ChartMogul admin settings](https://app.chartmogul.com/#/admin/api).""",
             iconPath="/static/services/chartmogul.png",

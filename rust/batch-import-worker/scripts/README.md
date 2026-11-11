@@ -1,10 +1,10 @@
 # Batch Import Worker Scripts
 
-This directory contains test scripts and utilities for the PostHog Rust batch import worker.
+This directory contains test scripts and utilities for the Flind Rust batch import worker.
 
 ## Amplitude Test Data Generator
 
-Generates comprehensive test data for testing the PostHog Amplitude identify logic during batch imports.
+Generates comprehensive test data for testing the Flind Amplitude identify logic during batch imports.
 
 **Features:**
 
@@ -130,9 +130,9 @@ Based on the generated data, you should see identify events for:
    ```
 
 2. **Export from Amplitude:**
-   Use Amplitude's export API to get the generated events in the format expected by PostHog batch imports. Make sure to use the same cluster (US/EU) that you sent the data to.
+   Use Amplitude's export API to get the generated events in the format expected by Flind batch imports. Make sure to use the same cluster (US/EU) that you sent the data to.
 
-3. **Run PostHog Batch Import:**
+3. **Run Flind Batch Import:**
    Create a batch import with:
    - Source: Amplitude
    - `generate_identify_events: true`

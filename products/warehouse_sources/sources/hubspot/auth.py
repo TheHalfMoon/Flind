@@ -43,7 +43,7 @@ class HubspotTokenRefreshError(Exception):
     def __init__(self, message: str, grant_rejected: bool = False) -> None:
         super().__init__(message)
         # HubSpot said the refresh token itself is invalid, expired or revoked. Any other refusal, such as one
-        # of PostHog's app credentials, says nothing about the grant.
+        # of Flind's app credentials, says nothing about the grant.
         self.grant_rejected = grant_rejected
 
 
@@ -115,7 +115,7 @@ def _is_grant_rejection(res: requests.Response) -> bool:
 
 
 def _hubspot_app_credentials() -> dict[str, str]:
-    """PostHog's own HubSpot app id and secret, as the token endpoint wants them named."""
+    """Flind's own HubSpot app id and secret, as the token endpoint wants them named."""
     resolved = credentials_service.get_secrets(["HUBSPOT_APP_CLIENT_ID", "HUBSPOT_APP_CLIENT_SECRET"])
     return {
         "client_id": resolved["HUBSPOT_APP_CLIENT_ID"],
@@ -211,7 +211,7 @@ def hubspot_exchange_legacy_grant(refresh_token: str) -> HubspotLegacyGrant:
         )
     except HubspotTokenRefreshError as e:
         # Only a confirmed rejection of the refresh token lets the cleanup clear the tokens. A timeout, a malformed
-        # body or a refusal of PostHog's app credentials says nothing about the grant.
+        # body or a refusal of Flind's app credentials says nothing about the grant.
         if not e.grant_rejected:
             raise HubspotRetryableError("The legacy HubSpot grant could not be checked") from None
         raise LegacyOAuthGrantUnusable("The legacy HubSpot grant could not be exchanged") from None

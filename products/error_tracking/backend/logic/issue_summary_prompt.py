@@ -11,7 +11,7 @@ ISSUE_SUMMARY_PROMPT_VERSION = "v5"
 
 ISSUE_SUMMARY_SYSTEM_PROMPT = """\
 You summarise one error tracking issue for an engineer who is deciding what to do about it.
-You get the issue's stack trace, a few properties of a recent event, and facts that PostHog computed.
+You get the issue's stack trace, a few properties of a recent event, and facts that Flind computed.
 
 Rules:
 - Write plain English. One or two short sentences per field. No markdown.

@@ -16,7 +16,7 @@ Cloud Native: The company builds SaaS/fintech/dev tools where AI is NOT the core
 - Founded 2010-2021
 - Industry is SaaS, Financial Technology, Business Software Services, Cloud Infrastructure, or OSS
 - Tech stack includes analytics competitors (Mixpanel, Amplitude, Segment, Heap, Piwik)
-- Larger team (50+), uses multiple PostHog products (3+)
+- Larger team (50+), uses multiple Flind products (3+)
 
 Unknown: Insufficient evidence to classify — use when metadata is sparse and no clear
 signals exist for either archetype.

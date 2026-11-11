@@ -73,7 +73,7 @@ afterEach(() => {
 })
 
 test.each([
-    ['posthog', 'PostHog'],
+    ['posthog', 'Flind'],
     ['claude', 'Claude Code'],
     ['codex', 'Codex'],
 ] as const)('hands the selected report to the saved %s agent and blocks duplicate taps', async (target, name) => {

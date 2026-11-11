@@ -26,7 +26,7 @@ export function SourcesTab(): JSX.Element {
             </SettingsSection>
             <SettingsSection
                 title="Available sources"
-                description="Connect a tool so self-driving can investigate its signals alongside your PostHog data."
+                description="Connect a tool so self-driving can investigate its signals alongside your Flind data."
             >
                 <SourceCatalog />
             </SettingsSection>

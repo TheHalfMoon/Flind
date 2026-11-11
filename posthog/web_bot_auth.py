@@ -24,7 +24,7 @@ _CACHE_MAX_AGE_SECONDS = 60
 # Otherwise, another site could proxy this route and receive a directory that verifies for its
 # domain but contains our public key.
 #
-# PostHog normally hosts public identity metadata on the root posthog.com domain. Web Bot Auth is an
+# Flind normally hosts public identity metadata on the root posthog.com domain. Web Bot Auth is an
 # exception because its directory response needs a cryptographic signature with creation and
 # expiration timestamps. The root domain runs on Vercel, which only serves static files under
 # /.well-known, so Signature-Agent points to this Django app at us.posthog.com.

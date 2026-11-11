@@ -97,7 +97,7 @@ Create an API user in Listmonk under **Admin > Users** and copy its token. Its r
         return {
             "401 Client Error: Unauthorized for url": "Listmonk rejected the API user or token. Create a new token under Admin > Users, then reconnect the source.",
             "403 Client Error: Forbidden for url": "The Listmonk API user's role lacks a permission this table needs. Check the permissions listed in the source setup, grant the missing one, or deselect the table.",
-            "internal or private IP address": "The Listmonk instance URL resolves to an internal or private IP address, which PostHog can't reach. Use your instance's public URL, then reconnect.",
+            "internal or private IP address": "The Listmonk instance URL resolves to an internal or private IP address, which Flind can't reach. Use your instance's public URL, then reconnect.",
             "Invalid Listmonk instance URL": "The Listmonk instance URL is not valid. Enter the address of your instance, such as https://listmonk.example.com.",
             "Listmonk instance URL must use https": "The Listmonk instance URL must use https. Update the URL, then reconnect the source.",
         }
@@ -122,7 +122,7 @@ Create an API user in Listmonk under **Admin > Users** and copy its token. Its r
             return None
         if error and "internal or private IP address" in error:
             # The shared message suggests an SSH tunnel, which this source does not offer.
-            return "The Listmonk instance URL resolves to an internal or private IP address, which PostHog can't reach. Use your instance's public URL."
+            return "The Listmonk instance URL resolves to an internal or private IP address, which Flind can't reach. Use your instance's public URL."
         return error or "Invalid Listmonk instance URL"
 
     def validate_credentials(

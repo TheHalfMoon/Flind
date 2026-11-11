@@ -248,7 +248,7 @@ class ReviewerInput:
 
     Mirrors the inbox `SuggestedReviewerEntryWriteSerializer`: at least one of the two must be set. A
     `user_uuid` is resolved server-side to the org member's linked GitHub login (and wins over a
-    supplied `github_login` when both are given), so a scout that only knows a PostHog user — e.g.
+    supplied `github_login` when both are given), so a scout that only knows a Flind user — e.g.
     routing a report to an account owner — can route it without first looking up the handle.
     `reason` is the evidence behind the pick (recent author on the affected surface, human
     correction, …), persisted on the artefact so the routing is auditable without the run
@@ -1367,7 +1367,7 @@ def _build_suggested_reviewers(
     omit it.
 
     Each scout-supplied entry identifies a reviewer by `github_login`, `user_uuid`, or both —
-    mirroring the inbox `SuggestedReviewerEntryWriteSerializer`. A reviewer is a PostHog user, so a
+    mirroring the inbox `SuggestedReviewerEntryWriteSerializer`. A reviewer is a Flind user, so a
     `user_uuid` only has to name an org member of this team: a member who never connected GitHub is
     stored by uuid with a null login and routes like anyone else. A supplied login is stored
     alongside the uuid of the org member it names, so the entry keeps routing if they later unlink
@@ -1798,10 +1798,10 @@ def _report_classification_props(effective_title: str | None) -> dict[str, Any]:
 
 # Customer-facing copies of the report-channel lifecycle events, captured into the scout's *own team*
 # project (via `capture_internal`) — distinct from the `signals_scout_report_*` events above, which go to
-# PostHog's internal analytics via the `posthoganalytics` SDK. Landing them in the team's own event stream
-# lets a team act on its scout reports with no PostHog-side wiring: HogQL/insights/alerts over the events,
+# Flind's internal analytics via the `posthoganalytics` SDK. Landing them in the team's own event stream
+# lets a team act on its scout reports with no Flind-side wiring: HogQL/insights/alerts over the events,
 # or a CDP destination (e.g. the Slack destination) filtering on the event and templating off `report_url`
-# / `title` / `summary`. The `$` prefix marks a PostHog-generated event (cf. `$session_summary_ready`,
+# / `title` / `summary`. The `$` prefix marks a Flind-generated event (cf. `$session_summary_ready`,
 # `$ai_tag`), keeping them out of a customer's own custom-event namespace.
 CUSTOMER_REPORT_EMITTED_EVENT = "$scout_report_emitted"
 CUSTOMER_REPORT_EDITED_EVENT = "$scout_report_edited"

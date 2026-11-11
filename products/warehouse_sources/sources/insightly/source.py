@@ -54,7 +54,7 @@ class InsightlySource(ResumableSource[InsightlySourceConfig, InsightlyResumeConf
             category=DataWarehouseSourceCategory.CRM,
             label="Insightly",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Insightly API key to sync your Insightly CRM data into the PostHog Data warehouse.
+            caption="""Enter your Insightly API key to sync your Insightly CRM data into the Flind Data warehouse.
 
 Find your **API key** and your **API URL** in Insightly under **User Settings** (top-right profile menu). The API URL looks like `https://api.na1.insightly.com/v3.1` — the **pod** is the region token in the middle (`na1`, `eu1`, ...). Enter just that token, or paste the full API URL.
 

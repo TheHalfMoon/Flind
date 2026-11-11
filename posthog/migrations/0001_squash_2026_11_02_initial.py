@@ -203,7 +203,7 @@ class Migration(migrations.Migration):
                     models.BooleanField(
                         blank=True,
                         default=True,
-                        help_text="When True, this organization allows its data to be used to train PostHog AI models.",
+                        help_text="When True, this organization allows its data to be used to train Flind AI models.",
                         null=True,
                     ),
                 ),
@@ -256,7 +256,7 @@ class Migration(migrations.Migration):
                     models.BooleanField(
                         blank=True,
                         default=False,
-                        help_text="When True, requests through the PostHog MCP server can read but not change this organization's data.",
+                        help_text="When True, requests through the Flind MCP server can read but not change this organization's data.",
                         null=True,
                     ),
                 ),
@@ -2208,7 +2208,7 @@ class Migration(migrations.Migration):
                     models.BooleanField(
                         db_default=False,
                         default=False,
-                        help_text="When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.",
+                        help_text="When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.",
                     ),
                 ),
                 ("credentials_reviewed_at", models.DateTimeField(blank=True, null=True)),
@@ -3986,14 +3986,14 @@ class Migration(migrations.Migration):
                 (
                     "is_verified",
                     models.BooleanField(
-                        default=False, help_text="True if this application has been verified by PostHog"
+                        default=False, help_text="True if this application has been verified by Flind"
                     ),
                 ),
                 (
                     "is_first_party",
                     models.BooleanField(
                         default=False,
-                        help_text="True if this is a first-party PostHog application that skips OAuth consent",
+                        help_text="True if this is a first-party Flind application that skips OAuth consent",
                     ),
                 ),
                 (

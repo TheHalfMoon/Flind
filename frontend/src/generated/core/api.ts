@@ -5,7 +5,7 @@ import { apiMutator } from '../../lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - core
+ * Flind API - core
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -274,7 +274,7 @@ export const getCimdVerificationTokensListUrl = (organizationId: string, params?
  *
  * A partner embeds the plaintext token in their CIMD metadata document as
  * `verification_token` inside the `com.posthog` object (the legacy top-level
- * `posthog_verification_token` field still works as a fallback). When PostHog fetches
+ * `posthog_verification_token` field still works as a fallback). When Flind fetches
  * the metadata, matching the token links the partner app to this organization and
  * grants a higher default rate limit for account provisioning.
  *
@@ -305,7 +305,7 @@ export const getCimdVerificationTokensCreateUrl = (organizationId: string) => {
  *
  * A partner embeds the plaintext token in their CIMD metadata document as
  * `verification_token` inside the `com.posthog` object (the legacy top-level
- * `posthog_verification_token` field still works as a fallback). When PostHog fetches
+ * `posthog_verification_token` field still works as a fallback). When Flind fetches
  * the metadata, matching the token links the partner app to this organization and
  * grants a higher default rate limit for account provisioning.
  *
@@ -338,7 +338,7 @@ export const getCimdVerificationTokensRetrieveUrl = (organizationId: string, id:
  *
  * A partner embeds the plaintext token in their CIMD metadata document as
  * `verification_token` inside the `com.posthog` object (the legacy top-level
- * `posthog_verification_token` field still works as a fallback). When PostHog fetches
+ * `posthog_verification_token` field still works as a fallback). When Flind fetches
  * the metadata, matching the token links the partner app to this organization and
  * grants a higher default rate limit for account provisioning.
  *
@@ -369,7 +369,7 @@ export const getCimdVerificationTokensPartialUpdateUrl = (organizationId: string
  *
  * A partner embeds the plaintext token in their CIMD metadata document as
  * `verification_token` inside the `com.posthog` object (the legacy top-level
- * `posthog_verification_token` field still works as a fallback). When PostHog fetches
+ * `posthog_verification_token` field still works as a fallback). When Flind fetches
  * the metadata, matching the token links the partner app to this organization and
  * grants a higher default rate limit for account provisioning.
  *
@@ -403,7 +403,7 @@ export const getCimdVerificationTokensDestroyUrl = (organizationId: string, id: 
  *
  * A partner embeds the plaintext token in their CIMD metadata document as
  * `verification_token` inside the `com.posthog` object (the legacy top-level
- * `posthog_verification_token` field still works as a fallback). When PostHog fetches
+ * `posthog_verification_token` field still works as a fallback). When Flind fetches
  * the metadata, matching the token links the partner app to this organization and
  * grants a higher default rate limit for account provisioning.
  *
@@ -3279,10 +3279,10 @@ export const getRevokeLeakedKeyCreateUrl = () => {
 }
 
 /**
- * Public, unauthenticated endpoint for self-service revocation of a leaked PostHog personal API key, project secret API key, legacy feature flags secure API key, or OAuth access/refresh token. If the token matches a real credential, it is revoked immediately and the owner is notified by email. This includes an expired OAuth access token: the paired refresh token it protects may still be live. A legacy feature flags secure API key is matched through its migrated project secret API key row; it cannot be rotated automatically, so its project admins get an email to rotate it.
+ * Public, unauthenticated endpoint for self-service revocation of a leaked Flind personal API key, project secret API key, legacy feature flags secure API key, or OAuth access/refresh token. If the token matches a real credential, it is revoked immediately and the owner is notified by email. This includes an expired OAuth access token: the paired refresh token it protects may still be live. A legacy feature flags secure API key is matched through its migrated project secret API key row; it cannot be rotated automatically, so its project admins get an email to rotate it.
  *
  * This endpoint only checks the region it is running on. `"found": false` does not guarantee the token is safe. If you're not sure which region issued it, check both: https://app.posthog.com/api/revoke_leaked_key and https://eu.posthog.com/api/revoke_leaked_key.
- * @summary Report and revoke a leaked PostHog API key or token
+ * @summary Report and revoke a leaked Flind API key or token
  */
 export const revokeLeakedKeyCreate = async (
     leakedKeyReportApi: LeakedKeyReportApi,
@@ -3513,7 +3513,7 @@ export const getUsersIntegrationsCodexCreateUrl = (uuid: string) => {
 }
 
 /**
- * Submit the `tokens` object of the `auth.json` that `codex login` wrote on the user's machine. PostHog refreshes the chain once to prove it works, stores the rotated tokens encrypted, and from then on refreshes them for the user's Codex cloud runs. Only the owning user can connect. No response carries a token.
+ * Submit the `tokens` object of the `auth.json` that `codex login` wrote on the user's machine. Flind refreshes the chain once to prove it works, stores the rotated tokens encrypted, and from then on refreshes them for the user's Codex cloud runs. Only the owning user can connect. No response carries a token.
  * @summary Connect a ChatGPT account for Codex cloud tasks
  */
 export const usersIntegrationsCodexCreate = async (
@@ -3816,7 +3816,7 @@ export const getUsersIntegrationsSlackStartCreateUrl = (uuid: string) => {
 
 /**
  * Mint a Sign-in-with-Slack invite URL initiated from settings, without
- * Slack-DM context. The returned URL takes the user through PostHog login
+ * Slack-DM context. The returned URL takes the user through Flind login
  * (already satisfied here), then to Slack OAuth, then back to our callback
  * which writes the ``UserIntegration`` row.
  *

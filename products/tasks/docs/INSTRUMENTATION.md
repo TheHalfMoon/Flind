@@ -112,7 +112,7 @@ write resubmits the same repository set and the same integration.
 | `is_first_configuration`         | `bool`  | Previous list was empty                                                                           |
 | `is_cleared`                     | `bool`  | New list is empty                                                                                 |
 | `github_integration_changed`     | `bool`  |                                                                                                   |
-| `github_integration_id`          | `int?`  | PostHog-side integration id                                                                       |
+| `github_integration_id`          | `int?`  | Flind-side integration id                                                                       |
 | `previous_github_integration_id` | `int?`  |                                                                                                   |
 | `space_repository_count`         | `int?`  | `subject=task` only — the channel's current list size                                             |
 | `diverged_from_space`            | `bool?` | `subject=task` only — the new task list differs from the channel's                                |

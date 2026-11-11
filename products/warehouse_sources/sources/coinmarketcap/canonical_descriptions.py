@@ -127,7 +127,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Daily ranked snapshot of the market, taken at the end of each UTC day. One row per cryptocurrency per day, covering the top of the CoinMarketCap ranking.",
         "docs_url": "https://pro.coinmarketcap.com/api/documentation/pro-api-reference/cryptocurrency/listings-historical.md",
         "columns": {
-            "snapshot_date": "The UTC day this snapshot was requested for. Added by PostHog, because the response identifies the day only through last_updated.",
+            "snapshot_date": "The UTC day this snapshot was requested for. Added by Flind, because the response identifies the day only through last_updated.",
             "id": "The unique CoinMarketCap ID for this cryptocurrency.",
             "name": "The name of this cryptocurrency.",
             "symbol": "The ticker symbol for this cryptocurrency.",

@@ -334,7 +334,7 @@ class VercelConnectCallbackViewSet(viewsets.GenericViewSet):
     When a user clicks "Link Existing Account" in the Vercel Marketplace,
     Vercel opens a popup to our Redirect URL with an OAuth code.
     We exchange the code for an access token and then link the user's
-    existing PostHog org to the Vercel installation.
+    existing Flind org to the Vercel installation.
     """
 
     permission_classes = [permissions.AllowAny]

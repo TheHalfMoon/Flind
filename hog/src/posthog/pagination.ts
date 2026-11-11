@@ -120,7 +120,7 @@ function wholeNumber(min: number, max?: number): z.ZodType<number, string> {
         .pipe(max === undefined ? number : number.max(max, { error }))
 }
 
-// PostHog answers at most 1000 rows a page from a limit/offset list (BoundedLimitOffsetPagination).
+// Flind answers at most 1000 rows a page from a limit/offset list (BoundedLimitOffsetPagination).
 export const MAX_LIMIT = 1000
 const LimitSchema = wholeNumber(1, MAX_LIMIT)
 const OffsetSchema = wholeNumber(0)

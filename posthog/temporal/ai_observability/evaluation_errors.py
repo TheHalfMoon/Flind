@@ -1,7 +1,7 @@
 """Shared taxonomy for evaluation execution errors.
 
-The split between user-actionable and PostHog-owned errors is load-bearing: most user errors
-disable the evaluation without failing the Temporal activity, while PostHog-owned errors still
+The split between user-actionable and Flind-owned errors is load-bearing: most user errors
+disable the evaluation without failing the Temporal activity, while Flind-owned errors still
 raise so Temporal/Grafana stays useful. `hog_input_error` is the one user error that disables
 nothing — it describes a single unit, not the evaluation.
 """

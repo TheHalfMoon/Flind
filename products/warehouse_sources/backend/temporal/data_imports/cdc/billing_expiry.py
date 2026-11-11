@@ -33,12 +33,12 @@ BILLING_LIMIT_EXPIRED_REASON = "billing_limit_expired"
 
 _SLOT_DROPPED_MESSAGE = (
     "Change data capture stopped because this team has been over its Sources billing limit for "
-    "14 days, and PostHog keeps captured changes for 14 days. PostHog dropped the replication slot. "
+    "14 days, and Flind keeps captured changes for 14 days. Flind dropped the replication slot. "
     "Once you're back under the limit, use Repair CDC to recreate it and re-sync your tables."
 )
 _SLOT_KEPT_MESSAGE = (
     "Change data capture stopped loading because this team has been over its Sources billing "
-    "limit for 14 days, and PostHog keeps captured changes for 14 days. The replication slot was not "
+    "limit for 14 days, and Flind keeps captured changes for 14 days. The replication slot was not "
     "dropped. Once you're back under the limit, your tables re-sync on their own."
 )
 
@@ -118,9 +118,9 @@ def _billing_blocked_since(source: ExternalDataSource, schema_id: uuid.UUID) -> 
 def stop_cdc_past_billing_retention(
     source: ExternalDataSource, cdc_config: CDCConfig, adapter: CDCSourceAdapter[CDCConfig]
 ) -> bool:
-    """Move the source to the broken state, and drop its slot where PostHog may. Returns whether it dropped the slot.
+    """Move the source to the broken state, and drop its slot where Flind may. Returns whether it dropped the slot.
 
-    The slot is dropped on the terms of the lag safety net: only a PostHog-managed slot whose owner
+    The slot is dropped on the terms of the lag safety net: only a Flind-managed slot whose owner
     left auto-drop on. Any other slot is left to its owner, and capture keeps advancing it so the
     customer's WAL does not grow, which is why that case does not pause the schedules.
 

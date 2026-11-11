@@ -536,7 +536,7 @@ export const mcpAnalyticsToolQualityLogic = kea<mcpAnalyticsToolQualityLogicType
             (dateFilter: DateFilter, timezone: string): IntervalOption[] =>
                 intervalOptionsForWindow(dateFilter.dateFrom, dateFilter.dateTo, timezone),
         ],
-        // Grouping interval for the charts: the pinned choice, or PostHog's standard auto-choice when
+        // Grouping interval for the charts: the pinned choice, or Flind's standard auto-choice when
         // none is pinned, so a sub-day window (e.g. last 12 hours) still buckets hourly by default
         // instead of collapsing to a single day point.
         interval: [

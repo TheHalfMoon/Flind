@@ -5,7 +5,7 @@ const ISSUES_ENDPOINT = "issues";
 
 /**
  * Full table replication. Issues get edited and closed after they are created, so an append-only
- * sync would miss everything that happens to an issue after PostHog first saw it.
+ * sync would miss everything that happens to an issue after Flind first saw it.
  */
 export const GITHUB_ISSUES_SYNC_TYPE = "full_refresh";
 

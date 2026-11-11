@@ -44,7 +44,7 @@ describe('aiFirstHomepageLogic', () => {
         sidePanelStateLogic.unmount()
     })
 
-    // Regression guard: on the PostHog AI homepage, a `#panel=max:<prompt>` link should prefill the
+    // Regression guard: on the Flind AI homepage, a `#panel=max:<prompt>` link should prefill the
     // full-scene chat, not stack a redundant Max side panel on top of it. Without interception the
     // side panel opens (via sidePanelStateLogic's `*` handler) and the prompt never reaches the
     // homepage composer.
@@ -59,7 +59,7 @@ describe('aiFirstHomepageLogic', () => {
     })
 
     // The homepage chat only drives the legacy runtime. Without the handoff, a prompt submitted by a
-    // user on the new PostHog AI surface starts a LangGraph conversation that surface never renders,
+    // user on the new Flind AI surface starts a LangGraph conversation that surface never renders,
     // so the submit looks like it did nothing.
     it.each([
         ['legacy view', false, '/project/997/home', 'ai'],
@@ -116,7 +116,7 @@ describe('aiFirstHomepageLogic', () => {
         expect(suggestions.filter((item) => item.source === 'static')).toHaveLength(3)
     })
 
-    it('activating a prompt suggestion types it into the input and submits to PostHog AI', async () => {
+    it('activating a prompt suggestion types it into the input and submits to Flind AI', async () => {
         const prompt = 'What is my DAU?'
         router.actions.push(urls.projectHomepage())
 

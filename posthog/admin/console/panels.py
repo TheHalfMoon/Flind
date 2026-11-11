@@ -48,10 +48,10 @@ class Fact:
         # The shell escapes facts. Markup from format_html or mark_safe would bypass the shared design.
         if isinstance(self.label, SafeData) or isinstance(self.value, SafeData):
             raise ValueError(f"Fact {self.label!r} must be plain text, not markup")
-        # Facts link within PostHog only, so a value that came from customer data cannot become an outside link.
+        # Facts link within Flind only, so a value that came from customer data cannot become an outside link.
         # Browsers read a leading "/\\" like "//", so both would leave the site.
         if self.href is not None and (not self.href.startswith("/") or self.href.startswith(("//", "/\\"))):
-            raise ValueError(f"Fact {self.label!r} links to {self.href!r}. Link to a PostHog path that starts with /.")
+            raise ValueError(f"Fact {self.label!r} links to {self.href!r}. Link to a Flind path that starts with /.")
 
 
 def _unresolved_owner_gate(request: "HttpRequest") -> bool:
@@ -65,7 +65,7 @@ class Gate:
     """Who may run an operation, on top of the staff check that every console page has.
 
     Use `Gate.owner()`, or a Django group or a reviewed rule for the rare case across teams. Not a Django model
-    permission: `User.is_superuser` mirrors `is_staff` in PostHog, so every staff member has every permission and
+    permission: `User.is_superuser` mirrors `is_staff` in Flind, so every staff member has every permission and
     such a gate would let everyone in.
     """
 

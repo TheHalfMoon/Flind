@@ -18,7 +18,7 @@ export function GithubSection(): JSX.Element {
             description={
                 <>
                     Connect a GitHub App installation to sync issues as support tickets. Comments sync bidirectionally —
-                    replies from PostHog appear on the GitHub issue.
+                    replies from Flind appear on the GitHub issue.
                 </>
             }
         >
@@ -44,7 +44,7 @@ function GithubConnectionSection(): JSX.Element {
                 <div className="flex flex-col gap-y-2">
                     <label className="font-medium">Connection</label>
                     <p className="text-xs text-muted-alt">
-                        First, install the PostHog GitHub App from the integrations page, then come back here to select
+                        First, install the Flind GitHub App from the integrations page, then come back here to select
                         which repositories to monitor.
                     </p>
                     <Link to="/integrations/github" className="mt-1">

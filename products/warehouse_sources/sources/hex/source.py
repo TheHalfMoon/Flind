@@ -53,7 +53,7 @@ class HexSource(ResumableSource[HexSourceConfig, HexResumeConfig]):
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Hex",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Hex API token to pull your Hex projects, run history, cells, queried tables, data connections, agent threads, users, groups, and collections into the PostHog Data warehouse.
+            caption="""Enter your Hex API token to pull your Hex projects, run history, cells, queried tables, data connections, agent threads, users, groups, and collections into the Flind Data warehouse.
 
 You can create an API token in Hex under **Workspace settings > API keys**. A personal token inherits your permissions; workspace tokens are available on some plans and can read across the workspace. The threads table needs a token from a user with the Manager role or higher.
 
@@ -93,7 +93,7 @@ If your workspace runs on a single-tenant or self-hosted Hex deployment, enter i
             # for a specific project, e.g. one in a state its run history can't be queried in).
             # Matched on the stable error code rather than the per-request URL; every retry sends the
             # identical request and fails identically, so there's nothing to gain from retrying.
-            "code=UNPROCESSABLE_CONTENT": "Hex rejected a request as unprocessable. This is usually caused by the state of a specific project in your Hex workspace rather than something PostHog can retry. Check the project in Hex, or contact Hex support if this persists.",
+            "code=UNPROCESSABLE_CONTENT": "Hex rejected a request as unprocessable. This is usually caused by the state of a specific project in your Hex workspace rather than something Flind can retry. Check the project in Hex, or contact Hex support if this persists.",
             # Catch-all for every other 422: some Hex endpoints (e.g. GetQueriedTables) reject a
             # request without a structured error code in the body, so the key above never matches
             # and the message carries nothing past the stock "for url: ..." text. A 422 means the
@@ -102,7 +102,7 @@ If your workspace runs on a single-tenant or self-hosted Hex deployment, enter i
             # still wins when Hex does return a structured code. Matched on just the status, like
             # the 401/403 keys above, since the reason phrase isn't guaranteed stable (RFC 9110
             # renamed it "Unprocessable Content").
-            "422 Client Error": "Hex rejected a request as unprocessable. This is usually caused by the state of a specific resource in your Hex workspace rather than something PostHog can retry. Check your Hex workspace, or contact Hex support if this persists.",
+            "422 Client Error": "Hex rejected a request as unprocessable. This is usually caused by the state of a specific resource in your Hex workspace rather than something Flind can retry. Check your Hex workspace, or contact Hex support if this persists.",
         }
 
     def get_canonical_descriptions(self) -> CanonicalDescriptions:

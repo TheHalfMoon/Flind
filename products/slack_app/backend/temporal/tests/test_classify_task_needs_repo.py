@@ -30,7 +30,7 @@ class TestClassifyTaskNeedsRepo:
         [
             (
                 "product_debug_automation",
-                "debug why the automation that sends PostHog AI Feedback always gives a thumbs down",
+                "debug why the automation that sends Flind AI Feedback always gives a thumbs down",
                 False,
             ),
             (

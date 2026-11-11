@@ -44,7 +44,7 @@ class PrintifySource(ResumableSource[PrintifySourceConfig, PrintifyResumeConfig]
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="Printify",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Printify personal access token to pull your print-on-demand data into the PostHog Data warehouse.
+            caption="""Enter your Printify personal access token to pull your print-on-demand data into the Flind Data warehouse.
 
 You can generate a token under **My Profile → Connections** in [Printify](https://printify.com). The token needs the `shops.read`, `products.read`, `orders.read`, `uploads.read`, `webhooks.read`, and `catalog.read` scopes. Personal access tokens expire after one year.
 """,

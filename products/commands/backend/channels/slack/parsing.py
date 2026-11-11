@@ -1,8 +1,8 @@
-"""Reads one command out of a Slack message that mentions the PostHog app.
+"""Reads one command out of a Slack message that mentions the Flind app.
 
 The Slack app removes its own mention and hands over plain text. What is left must be the command
 and the URL of its subject, in either order: a pull request on GitHub, or an error tracking issue
-in this PostHog instance. For a pull request: ``review --deep https://github.com/PostHog/posthog/pull/123``
+in this Flind instance. For a pull request: ``review --deep https://github.com/PostHog/posthog/pull/123``
 as in a shell, or ``https://github.com/PostHog/posthog/pull/123 review --deep``. Options and free
 text, such as the focus of ``qa``, may also follow the URL. With the verb first, every word before
 the URL must be an option, so a valued option takes the ``--name=value`` form there. Anything else is

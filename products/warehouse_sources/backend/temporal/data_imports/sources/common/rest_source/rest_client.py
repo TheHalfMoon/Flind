@@ -58,7 +58,7 @@ class RESTClientRetryableError(NonReportableError):
     """A transient failure (429/5xx, connection reset/timeout, malformed/truncated body) that
     tenacity reissues up to the client's attempt cap. Once that budget is exhausted it escapes to
     the activity and Temporal's own activity retry takes over — the upstream blip is expected to
-    clear, not a PostHog defect. Subclasses NonReportableError, like ``RESTClientNonRetryableError``,
+    clear, not a Flind defect. Subclasses NonReportableError, like ``RESTClientNonRetryableError``,
     so the activity interceptor keeps it out of error tracking instead of minting an issue per blip.
     """
 
@@ -75,7 +75,7 @@ class RESTClientNonRetryableError(NonReportableError):
     deterministic failure.
 
     Raised only for a 2xx response whose body is not JSON (an auth/login page, an HTML
-    error page, plain text) — always a customer/upstream condition, never a PostHog defect.
+    error page, plain text) — always a customer/upstream condition, never a Flind defect.
     Subclasses NonReportableError so the activity interceptor stops it from becoming
     error-tracking noise while the job still fails with the message.
     """

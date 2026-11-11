@@ -1,6 +1,6 @@
 """hogli devex:feedback — send feedback about the dev experience to the devex team.
 
-Feedback lands as a ``hogli_feedback`` event in PostHog's internal hogli project,
+Feedback lands as a ``hogli_feedback`` event in Flind's internal hogli project,
 carrying the same environment context that hogli telemetry attaches (environment,
 agent, git branch, repo vintage) so the devex team can triage it.
 
@@ -33,7 +33,7 @@ _CLOUD_TASK_ENV_VARS = ("POSTHOG_TASK_ID", "POSTHOG_TASK_RUN_ID")
 
 
 def _is_cloud_task() -> bool:
-    """Whether hogli is running inside a PostHog cloud agent task."""
+    """Whether hogli is running inside a Flind cloud agent task."""
     return any(os.environ.get(name) for name in _CLOUD_TASK_ENV_VARS)
 
 
@@ -131,7 +131,7 @@ def _send(message: str, category: str | None, context: dict[str, Any]) -> tuple[
 @click.option("-c", "--category", type=click.Choice(_CATEGORIES), help="Optional feedback category.")
 @click.option("-y", "--yes", is_flag=True, help="Send without the confirmation preview (implied when non-interactive).")
 def devex_feedback(message: tuple[str, ...], category: str | None, yes: bool) -> None:
-    """Send feedback about the dev experience to the PostHog devex team.
+    """Send feedback about the dev experience to the Flind devex team.
 
     Humans and agents alike: when a hogli command, the dev stack, or any repo
     tooling is slow, broken, confusing, or delightful, say so here. It lands as

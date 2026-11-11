@@ -87,7 +87,7 @@ Env vars alone create nothing — you must complete the install flow:
 
 ### Connecting a second project to the same org
 
-A GitHub App installs **once per org**, so a second PostHog project in the same
+A GitHub App installs **once per org**, so a second Flind project in the same
 org can't reinstall it: GitHub shows "already configured" and may not redirect
 back with a fresh `code`. For that case the GitHub integration settings expose a
 **Link existing installation** button (`GithubIntegration` in
@@ -100,9 +100,9 @@ personal GitHub OAuth link; non-admins still need one as an ownership proof (see
 The same endpoint also **adopts orphan installations**: ones installed on
 GitHub (e.g. an install request approved by a GitHub org admin directly on
 github.com, which never round-trips the setup callback) but not linked to any
-PostHog team. `github/available_installations` surfaces them from the user's
+Flind team. `github/available_installations` surfaces them from the user's
 personal `GET /user/installations`. Adoption (`adopt_orphan_installation`)
-requires both PostHog project admin — a new installation entering the org is
+requires both Flind project admin — a new installation entering the org is
 held to the setup callback's first-time-connect bar, since adoption has no
 GitHub-side gate on who submits the installation id — and the personal-token
 access proof. Sibling reuse stays member-grade with proof. An installation

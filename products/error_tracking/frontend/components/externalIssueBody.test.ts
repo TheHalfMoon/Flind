@@ -4,7 +4,7 @@ const TRACE = 'TypeError: boom\n  File "app.js", line: 3'
 
 describe('appendStacktrace', () => {
     test.each([
-        ['returns the text unchanged without a trace', 'PostHog issue: url', '', 'PostHog issue: url'],
+        ['returns the text unchanged without a trace', 'Flind issue: url', '', 'Flind issue: url'],
         [
             'puts the trace after the text',
             'Details\n\nPostHog issue: url\n\n',
@@ -23,7 +23,7 @@ describe('appendStacktrace', () => {
     })
 
     test.each([
-        ['short text', 'PostHog issue: url'],
+        ['short text', 'Flind issue: url'],
         ['text that leaves room for part of the trace', 'x'.repeat(MAX_ISSUE_BODY_LENGTH - 200)],
     ])('cuts a long trace at a line break so the body fits, with %s', (_name, text) => {
         const lines = Array.from({ length: 2000 }, (_, index) => `  File "app.js", line: ${index}, in: handler`)

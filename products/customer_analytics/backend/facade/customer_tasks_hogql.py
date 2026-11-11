@@ -32,7 +32,7 @@ customer_tasks = _CustomerTasksTable(
         "description": StringDatabaseField(name="description", nullable=True, description="Task description."),
         "status": StringDatabaseField(name="status", description="open, in_progress, completed, or canceled."),
         "assigned_to_id": IntegerDatabaseField(
-            name="assigned_to_id", nullable=True, description="Assigned PostHog user ID."
+            name="assigned_to_id", nullable=True, description="Assigned Flind user ID."
         ),
         "due_at": DateTimeDatabaseField(name="due_at", nullable=True, description="Task deadline."),
         "completed_at": DateTimeDatabaseField(name="completed_at", nullable=True, description="Completion time."),

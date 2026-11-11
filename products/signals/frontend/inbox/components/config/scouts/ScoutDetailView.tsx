@@ -73,7 +73,7 @@ export function ScoutDetailView({ skillName }: { skillName: string }): JSX.Eleme
     const scoutName = config ? scoutDisplayName(config) : null
 
     // Registered by the page as well as the AI panel, so the scout is already attached when the
-    // panel composer mounts and sends the question at once. Any PostHog AI chat opened here gets it.
+    // panel composer mounts and sends the question at once. Any Flind AI chat opened here gets it.
     useAttachedContext(config && scoutName ? scoutAiContextItems({ scoutId: config.id, skillName, scoutName }) : null)
 
     // Once per scout opened, as soon as its config resolves — the run rollup fills in a beat later

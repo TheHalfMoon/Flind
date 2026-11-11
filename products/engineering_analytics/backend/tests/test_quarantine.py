@@ -109,7 +109,7 @@ def _response(status_code: int = 200, text: str = "", headers: dict[str, str] | 
 
 def _github_mock(**overrides: Any) -> mock.Mock:
     github = mock.Mock()
-    github.organization.return_value = "PostHog"
+    github.organization.return_value = "Flind"
     github.get_default_branch.return_value = "master"
     github.get_file_contents.return_value = None
     github.create_issue.return_value = {"number": 4242, "repository": "posthog"}
@@ -246,7 +246,7 @@ class TestQuarantineBuild(BaseTest):
             result = build_quarantine(team=self.team, repo="PostHog/posthog")
 
         assert result.available is True
-        assert result.repo == contracts.RepoRef(provider="github", owner="PostHog", name="posthog")
+        assert result.repo == contracts.RepoRef(provider="github", owner="Flind", name="posthog")
         assert result.source_url == "https://github.com/PostHog/posthog/blob/HEAD/.test_quarantine.json"
         assert len(result.entries) == 1
         assert result.entries[0].days_until_expiry == 8
@@ -262,7 +262,7 @@ class TestQuarantineBuild(BaseTest):
 
         assert result.available is False
         assert result.entries == [] and result.parse_errors == []
-        assert result.repo == contracts.RepoRef(provider="github", owner="PostHog", name="posthog")
+        assert result.repo == contracts.RepoRef(provider="github", owner="Flind", name="posthog")
         assert result.source_url == ""
 
     @parameterized.expand(
@@ -282,7 +282,7 @@ class TestQuarantineBuild(BaseTest):
         assert result.available is False
         assert len(result.parse_errors) == 1 and "could not fetch" in result.parse_errors[0]
 
-    @parameterized.expand(["PostHog", "Post Hog/repo", "PostHog/po$thog", "-bad/repo", "a/b/c", "PostHog/"])
+    @parameterized.expand(["Flind", "Post Hog/repo", "PostHog/po$thog", "-bad/repo", "a/b/c", "PostHog/"])
     @time_machine.travel("2026-06-12", tick=False)
     def test_invalid_repo_rejected_before_fetch(self, repo: str) -> None:
         with mock.patch(_REQUESTS_GET) as get:
@@ -325,14 +325,14 @@ class TestQuarantineBuild(BaseTest):
 
     @time_machine.travel("2026-06-12", tick=False)
     def test_resolves_most_active_repo_from_workflow_runs(self) -> None:
-        source = _curated_source([("PostHog", "posthog.com")])
+        source = _curated_source([("Flind", "posthog.com")])
         with (
             mock.patch(_FOR_TEAM, return_value=source),
             mock.patch(_REQUESTS_GET, return_value=_response(200, _text(_entry()))),
         ):
             result = build_quarantine(team=self.team)
 
-        assert result.repo == contracts.RepoRef(provider="github", owner="PostHog", name="posthog.com")
+        assert result.repo == contracts.RepoRef(provider="github", owner="Flind", name="posthog.com")
         assert source.run.call_args.kwargs["query_type"] == "engineering_analytics.quarantine_repo"
 
     @time_machine.travel("2026-06-12", tick=False)
@@ -388,7 +388,7 @@ class TestQuarantineAPI(APIBaseTest):
         assert response.status_code == status.HTTP_200_OK
         body = response.json()
         assert body["available"] is True
-        assert body["repo"] == {"provider": "github", "owner": "PostHog", "name": "posthog"}
+        assert body["repo"] == {"provider": "github", "owner": "Flind", "name": "posthog"}
         assert body["source_url"] == "https://github.com/PostHog/posthog/blob/HEAD/.test_quarantine.json"
         entry = body["entries"][0]
         assert entry["id"] == "posthog/api/test/test_foo.py::TestFoo::test_bar"
@@ -730,12 +730,12 @@ class TestQuarantineRequestAPI(APIBaseTest):
     def test_write_error_becomes_400_with_detail(self) -> None:
         with mock.patch(
             f"{_VIEWS}.request_quarantine",
-            side_effect=contracts.QuarantineWriteError("The connected GitHub App is installed on 'X', not 'PostHog'."),
+            side_effect=contracts.QuarantineWriteError("The connected GitHub App is installed on 'X', not 'Flind'."),
         ):
             response = self.client.post(self._url(), self._body(), format="json")
 
         assert response.status_code == status.HTTP_400_BAD_REQUEST
-        assert "not 'PostHog'" in response.json()["detail"]
+        assert "not 'Flind'" in response.json()["detail"]
 
     def test_invalid_body_is_rejected(self) -> None:
         # Proves the viewset runs the serializer at all; the case matrix lives in

@@ -7,7 +7,7 @@ from posthog.models.utils import UUIDModel
 class WebAnalyticsInteraction(TeamScopedRootMixin, UUIDModel):
     """First-party per-user counter of in-product Web analytics interactions, the source for the
     Explorer and Detective tracks. The product-usage events these tracks reward are captured to
-    PostHog's own internal analytics instance, not the customer team's events table, so they can't be
+    Flind's own internal analytics instance, not the customer team's events table, so they can't be
     queried back — counting first-party here keeps the metric correct for every team."""
 
     DATA = "data"

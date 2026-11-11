@@ -1,6 +1,6 @@
 import type { CanvasBuildApi, CanvasBuildsResponseApi, CanvasDiagnosticApi } from '../generated/api.schemas'
 
-// Reads over a canvas's build lifecycle, ported from PostHog Desktop's canvasBuildSchemas.ts.
+// Reads over a canvas's build lifecycle, ported from Flind Desktop's canvasBuildSchemas.ts.
 
 /** The build still queued or building, if any. */
 export function activeCanvasBuild(lifecycle: CanvasBuildsResponseApi): CanvasBuildApi | null {

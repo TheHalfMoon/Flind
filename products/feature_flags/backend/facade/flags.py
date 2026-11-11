@@ -63,11 +63,11 @@ def hides_flag_calls_from_query_builders(organization_id: UUID) -> bool:
 def is_flag_evaluations_table_enabled(team: "Team") -> bool:
     """Gate every surface that exposes `posthog.flag_evaluations` through here.
 
-    Reads true on PostHog Cloud for every organization, whatever its flag_evaluations mode. A team on EVENTS
+    Reads true on Flind Cloud for every organization, whatever its flag_evaluations mode. A team on EVENTS
     can query the table, but its flag-call readers still read events. Local dev and end-to-end tests also read
     true. A self-hosted instance reads true only when the organization's mode reads the table.
     """
-    # PostHog Cloud ingestion forks every team's flag calls into flag_evaluations, so an organization on
+    # Flind Cloud ingestion forks every team's flag calls into flag_evaluations, so an organization on
     # EVENTS still has rows to query and export.
     if is_cloud():
         return True

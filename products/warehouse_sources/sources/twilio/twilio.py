@@ -48,9 +48,9 @@ CREDENTIAL_PROBE_ENDPOINTS: tuple[str, ...] = ("messages", "calls", "incoming_ph
 TWILIO_INVALID_CREDENTIALS_MESSAGE = (
     "Twilio rejected these credentials. Check that the Account SID and secret are correct and have no "
     "extra spaces, and that the API key was created in the same Twilio account as that Account SID. "
-    "PostHog connects to api.twilio.com, so a key created in another Twilio region will not work. A "
+    "Flind connects to api.twilio.com, so a key created in another Twilio region will not work. A "
     "Restricted API key also needs read access to Messages, Calls, or Phone Numbers, which is how "
-    "PostHog checks the credential before you pick a table."
+    "Flind checks the credential before you pick a table."
 )
 TWILIO_ACCOUNT_NOT_FOUND_MESSAGE = (
     "Twilio has no account with that Account SID. Copy the Account SID from your Twilio Console "

@@ -23,7 +23,7 @@ function pr(
         number: 7,
         title: 'PR 7',
         author: { handle: 'alice', display_name: 'alice', avatar_url: '', is_bot: false },
-        repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+        repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
         state,
         is_draft: !!options.draft,
         created_at: at(segments[0][1] - (options.openedAtStart ? 0 : 1)),

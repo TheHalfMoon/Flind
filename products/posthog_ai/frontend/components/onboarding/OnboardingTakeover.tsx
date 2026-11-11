@@ -67,7 +67,7 @@ export function OnboardingTakeover({
             <DialogContent
                 className="PhaiOnboardingTakeover"
                 data-attr="posthog-ai-onboarding"
-                aria-label="What's new in PostHog AI"
+                aria-label="What's new in Flind AI"
             >
                 {/* No DialogHeader: the media panel leads, so the headline sits below it inside the body
                     rather than in a pinned row above. */}

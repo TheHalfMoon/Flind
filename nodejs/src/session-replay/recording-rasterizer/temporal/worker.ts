@@ -18,7 +18,7 @@ import { installUnhandledRejectionGuard } from './install-unhandled-rejection-gu
 
 prometheus.collectDefaultMetrics()
 RasterizationMetrics.initialize()
-// OTLP push into the PostHog Metrics product; no-op unless OTEL_METRICS_EXPORT_URL/TOKEN are set.
+// OTLP push into the Flind Metrics product; no-op unless OTEL_METRICS_EXPORT_URL/TOKEN are set.
 initMetrics()
 
 const log = createLogger()

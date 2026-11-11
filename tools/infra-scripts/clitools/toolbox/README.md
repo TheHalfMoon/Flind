@@ -1,6 +1,6 @@
 # Toolbox Utility
 
-A command line utility to connect to PostHog toolbox pods in a Kubernetes environment.
+A command line utility to connect to Flind toolbox pods in a Kubernetes environment.
 
 ## Features
 

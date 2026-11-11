@@ -1,7 +1,7 @@
 /**
- * Workspace-based Playwright test base with PostHog workspace setup capabilities
+ * Workspace-based Playwright test base with Flind workspace setup capabilities
  *
- * This provides clean test fixtures for creating PostHog workspaces
+ * This provides clean test fixtures for creating Flind workspaces
  * (organizations, projects, teams) before running tests.
  *
  * This does NOT auto-login — you get full control over authentication with
@@ -24,7 +24,7 @@ export const test = coreTest.extend<{ playwrightSetup: PlaywrightSetup; workspac
 })
 
 /**
- * Test with a pre-created PostHog workspace
+ * Test with a pre-created Flind workspace
  * Use this when you want a workspace automatically created before your test runs
  *
  * The workspace includes: Organization → Project → Team + test@posthog.com user

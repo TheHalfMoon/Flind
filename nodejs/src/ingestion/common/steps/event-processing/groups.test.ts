@@ -71,7 +71,7 @@ describe('addGroupProperties', () => {
         const properties = {
             foo: 'bar',
             $groups: {
-                organization: 'PostHog',
+                organization: 'Flind',
                 project: 'web',
                 foobar: 'afsafa',
             },
@@ -81,11 +81,11 @@ describe('addGroupProperties', () => {
         expect(await addGroupProperties(2, 2 as ProjectId, properties, mgr as any, eventTimestamp)).toEqual({
             foo: 'bar',
             $groups: {
-                organization: 'PostHog',
+                organization: 'Flind',
                 project: 'web',
                 foobar: 'afsafa',
             },
-            $group_0: 'PostHog',
+            $group_0: 'Flind',
             $group_1: 'web',
         })
 

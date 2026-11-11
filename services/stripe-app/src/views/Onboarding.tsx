@@ -42,7 +42,7 @@ const Onboarding = ({ environment }: ExtensionContextValue): JSX.Element => {
             <SignInView
                 brandColor={BRAND_COLOR}
                 brandIcon={BrandIcon}
-                description="You're connected to PostHog. Navigate to a customer to see their analytics data."
+                description="You're connected to Flind. Navigate to a customer to see their analytics data."
             />
         )
     }
@@ -51,9 +51,9 @@ const Onboarding = ({ environment }: ExtensionContextValue): JSX.Element => {
         <SignInView
             brandColor={BRAND_COLOR}
             brandIcon={BrandIcon}
-            description="Connect this Stripe account from your PostHog dashboard to see product analytics data alongside your customers."
+            description="Connect this Stripe account from your Flind dashboard to see product analytics data alongside your customers."
             primaryAction={{
-                label: 'Open PostHog',
+                label: 'Open Flind',
                 href: constants.POSTHOG_DASHBOARD_URL,
                 target: '_blank',
             }}

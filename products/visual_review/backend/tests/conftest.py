@@ -1,7 +1,7 @@
 """
 Shared fixtures for visual_review tests.
 
-Shared PostHog test fixtures (team, user, django_db_setup) are inherited
+Shared Flind test fixtures (team, user, django_db_setup) are inherited
 from products/conftest.py which re-exports posthog/conftest.py.
 """
 

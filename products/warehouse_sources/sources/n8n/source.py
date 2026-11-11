@@ -54,7 +54,7 @@ class N8nSource(ResumableSource[N8nSourceConfig, N8nResumeConfig], ValidateDatab
             name=ExternalDataSourceType.N8N,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="n8n",
-            caption="""Connect your n8n instance to pull your workflow automation data into the PostHog Data warehouse.
+            caption="""Connect your n8n instance to pull your workflow automation data into the Flind Data warehouse.
 
 Works with n8n Cloud and self-hosted instances. Enter your instance URL (e.g. `https://myorg.app.n8n.cloud`) and an API key created under **Settings > n8n API**.
 

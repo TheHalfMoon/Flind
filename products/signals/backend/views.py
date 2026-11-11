@@ -403,7 +403,7 @@ def github_repository_inaccessible_response(team_id: int, repository: str) -> Re
             {
                 "code": "github_repository_inaccessible",
                 "error": (
-                    f"PostHog's GitHub connection can't access {repository}. A project admin must give the "
+                    f"Flind's GitHub connection can't access {repository}. A project admin must give the "
                     "GitHub app access to this repository, or reconnect GitHub."
                 ),
                 "remediation_url": f"/project/{team_id}/settings/project-integrations",
@@ -916,7 +916,7 @@ SIGNAL_REPORT_DISMISSAL_REASON_CHOICES = [
     ("wrong_repo", "Agent picked the wrong repository"),
     ("wontfix_intentional", "Won't fix - intentional behavior"),
     ("wontfix_irrelevant", "Not relevant to this project"),
-    ("fixed_outside_posthog", "Fixed outside PostHog"),
+    ("fixed_outside_posthog", "Fixed outside Flind"),
     ("verified_manually", "Verified manually"),
     ("no_action_needed", "No action needed"),
     ("pr_merged", "PR was merged"),
@@ -1555,7 +1555,7 @@ _SUGGESTED_REVIEWERS_PARAMETER = OpenApiParameter(
     location=OpenApiParameter.QUERY,
     required=False,
     description=(
-        "Comma-separated list of PostHog user UUIDs. Reports are kept if their suggested reviewers "
+        "Comma-separated list of Flind user UUIDs. Reports are kept if their suggested reviewers "
         "include any of the given users."
     ),
 )
@@ -1715,7 +1715,7 @@ _REPORT_LIST_PARAMETERS = [
         type=OpenApiTypes.UUID,
         location=OpenApiParameter.QUERY,
         required=False,
-        description="PostHog user UUID used when scope=teammate.",
+        description="Flind user UUID used when scope=teammate.",
     ),
     _PRIORITY_PARAMETER,
     OpenApiParameter(
@@ -3224,7 +3224,7 @@ class SignalReportViewSet(
         if result.skipped_reason == AI_PROCESSING_NOT_APPROVED_REASON:
             raise exceptions.PermissionDenied(
                 "This organization has not approved AI data processing, so no report was filed. An organization "
-                "admin must turn on 'Enable PostHog features that use third-party AI services' in "
+                "admin must turn on 'Enable Flind features that use third-party AI services' in "
                 "Organization settings → AI service providers."
             )
         if result.skipped_reason == USER_REPORT_DAILY_LIMIT_REASON:
@@ -3644,7 +3644,7 @@ class SignalReportViewSet(
     @action(detail=False, methods=["get"], url_path="available_reviewers", required_scopes=["inbox:read"])
     def available_reviewers(self, request, **kwargs):
         with tracer.start_as_current_span("signals.available_reviewers") as span:
-            # Search all org members, not only the GitHub-linked ones: a reviewer is a PostHog user,
+            # Search all org members, not only the GitHub-linked ones: a reviewer is a Flind user,
             # so a teammate who never connected GitHub is still pickable — and can pick themselves.
             query = (request.query_params.get("query") or "").strip().lower()
             users_by_uuid = (
@@ -6024,7 +6024,7 @@ def append_suggested_reviewers(
     scoped_team_id_tuple = tuple(scoped_team_ids) if scoped_team_ids is not None else None
 
     # Resolve a supplied user_uuid to the org member it names, and a supplied login to that member's
-    # uuid. A reviewer is a PostHog user, so an entry needs org membership rather than a GitHub
+    # uuid. A reviewer is a Flind user, so an entry needs org membership rather than a GitHub
     # account: a member who never connected GitHub is stored by uuid, with a null login.
     uuids_to_resolve = [str(e["user_uuid"]) for e in entries if e.get("user_uuid")]
     uuid_to_user = resolve_org_users_by_uuid(team.id, uuids_to_resolve) if uuids_to_resolve else {}
@@ -6772,7 +6772,7 @@ class SignalReportCheckViewSet(
             "behind the report), status judgments (safety / actionability / priority, repo "
             "selection, suggested reviewers — the newest row of each status type is canonical), "
             "and log entries (code references, commits, task runs, notes). "
-            "`suggested_reviewers` content is enriched with PostHog user info at read time. "
+            "`suggested_reviewers` content is enriched with Flind user info at read time. "
             "`ranking_score` content keeps only the head fields of each model's metadata; get the "
             "artefact by id for the full metadata."
         ),

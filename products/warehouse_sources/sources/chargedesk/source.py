@@ -47,7 +47,7 @@ class ChargedeskSource(ResumableSource[ChargedeskSourceConfig, ChargedeskResumeC
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Chargedesk",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your ChargeDesk secret API key to automatically pull your ChargeDesk data into the PostHog Data warehouse.
+            caption="""Enter your ChargeDesk secret API key to automatically pull your ChargeDesk data into the Flind Data warehouse.
 
 Each company has its own secret key. Create one in your ChargeDesk account under **Setup → API / Webhooks → Issue New Key**, and make sure API access is enabled for the company.""",
             iconPath="/static/services/chargedesk.png",

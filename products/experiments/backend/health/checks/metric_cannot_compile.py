@@ -4,7 +4,7 @@ Metrics whose query doesn't compile, so that every calculation of the metric fai
 Nothing checks this at save: a metric fails only when its query runs, and before launch no query runs. The compiler's
 messages are written for HogQL, so the finding puts the known ones in words. A message that names a field, a function,
 a cohort, a regular expression or a table gets those words only when the metric's definition holds that name, because
-a query can also fail on a name that PostHog generates.
+a query can also fail on a name that Flind generates.
 """
 
 import re
@@ -89,11 +89,11 @@ def metric_cannot_compile(ctx: HealthContext) -> CheckOutcome:
         severity=ExperimentHealthFindingSeverity.WARNING
         if any(failure.role == "primary" for failure in failures)
         else ExperimentHealthFindingSeverity.INFO,
-        title="PostHog can't calculate a metric"
+        title="Flind can't calculate a metric"
         if len(failures) == 1
-        else f"PostHog can't calculate {_metrics(len(failures))}",
+        else f"Flind can't calculate {_metrics(len(failures))}",
         detail=" ".join(
-            f'PostHog can\'t calculate the {failure.role} metric "{failure.name}". {wording.explanation}'
+            f'Flind can\'t calculate the {failure.role} metric "{failure.name}". {wording.explanation}'
             for failure, wording in worded
         ),
         evidence=_evidence(worded),
@@ -191,7 +191,7 @@ def _aggregation_arguments(match: re.Match[str], _message: str) -> _Wording:
     )
     return _Wording(
         error=MetricCompileError.AGGREGATION_ARGUMENTS,
-        explanation=f"Its SQL expression uses {name}, and PostHog passes only the first argument of the aggregation "
+        explanation=f"Its SQL expression uses {name}, and Flind passes only the first argument of the aggregation "
         f"to it, so {name} gets too few arguments.{fix}",
     )
 
@@ -200,7 +200,7 @@ def _unknown_function(match: re.Match[str], _message: str) -> _Wording:
     suggestion = match.group("suggestion")
     return _Wording(
         error=MetricCompileError.UNKNOWN_FUNCTION,
-        explanation=f"Its SQL expression calls {match.group('name')}, which PostHog doesn't support."
+        explanation=f"Its SQL expression calls {match.group('name')}, which Flind doesn't support."
         + (f" Did you mean {suggestion}?" if suggestion else " Check the name of the function."),
     )
 
@@ -221,7 +221,7 @@ def _unknown_field(match: re.Match[str], message: str) -> _Wording:
         fix = " Check the name of the field."
     return _Wording(
         error=MetricCompileError.UNKNOWN_FIELD,
-        explanation=f'It reads "{name}", which isn\'t a field that PostHog knows.{fix}',
+        explanation=f'It reads "{name}", which isn\'t a field that Flind knows.{fix}',
     )
 
 
@@ -236,8 +236,8 @@ def _deleted_cohort(match: re.Match[str], _message: str) -> _Wording:
 def _invalid_regex(match: re.Match[str], _message: str) -> _Wording:
     return _Wording(
         error=MetricCompileError.INVALID_REGEX,
-        explanation=f'A filter of the metric uses the regular expression "{match.group("regex")}", which PostHog '
-        "can't run. PostHog supports the RE2 syntax, which has no lookaheads, such as (?!...), and no backreferences. "
+        explanation=f'A filter of the metric uses the regular expression "{match.group("regex")}", which Flind '
+        "can't run. Flind supports the RE2 syntax, which has no lookaheads, such as (?!...), and no backreferences. "
         "Rewrite the expression.",
     )
 

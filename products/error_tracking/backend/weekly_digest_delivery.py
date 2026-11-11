@@ -11,7 +11,7 @@ from posthog.utils import compact_number
 DIGEST_WEBHOOK_TIMEOUT_SECONDS = 10
 
 # Webhook trigger of the "[Error tracking] Weekly digest email" workflow in the internal
-# PostHog project. Protected by WORKFLOWS_WEBHOOK_SECRET, so the URL is not a secret.
+# Flind project. Protected by WORKFLOWS_WEBHOOK_SECRET, so the URL is not a secret.
 DIGEST_WORKFLOW_WEBHOOK_URL = "https://webhooks.us.posthog.com/public/webhooks/019f2754-aeff-0000-6a0d-5d3933a94b08"
 
 

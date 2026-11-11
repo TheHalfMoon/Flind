@@ -76,7 +76,7 @@ class InstantlySource(
             category=DataWarehouseSourceCategory.SALES,
             label="Instantly",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Sync campaigns, leads, emails, sending accounts, and analytics from Instantly into the PostHog Data warehouse.
+            caption="""Sync campaigns, leads, emails, sending accounts, and analytics from Instantly into the Flind Data warehouse.
 
 Create an API key under **Settings → Integrations → API keys** in Instantly. The API requires the Growth plan or above.
 

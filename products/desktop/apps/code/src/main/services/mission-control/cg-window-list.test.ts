@@ -21,7 +21,7 @@ describe("parseWindowListPlist", () => {
         bounds: { x: 0, y: -1, width: 1440, height: 901 },
       },
       {
-        ownerName: "PostHog",
+        ownerName: "Flind",
         layer: 0,
         bounds: { x: 12, y: 38, width: 800, height: 600 },
       },
@@ -66,7 +66,7 @@ describe("createSamplerFromBindings", () => {
 
     expect(sampler.sample().map((window) => window.ownerName)).toEqual([
       "Dock",
-      "PostHog",
+      "Flind",
       "",
     ]);
     expect(released).toEqual([DATA, LIST]);

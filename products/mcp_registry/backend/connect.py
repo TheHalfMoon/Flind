@@ -27,7 +27,7 @@ Method taxonomy, most to least automated:
 - ``local_package``: no hosted remote; the agent runs the published package locally.
   Always human-gated: the package is publisher-controlled code, so a person approves
   the exact package (and version) before the agent installs and runs it.
-- ``posthog_gateway``: install the server into PostHog's own MCP servers gateway, which
+- ``posthog_gateway``: install the server into Flind's own MCP servers gateway, which
   drives the OAuth handshake, holds the credential, and gates each tool behind an
   approval state. A different destination rather than a different auth path, so it is
   appended last and never becomes the recommendation.
@@ -107,7 +107,7 @@ KNOWN_CONNECT_OVERRIDES: dict[str, dict[str, Any]] = {
                     {
                         "actor": "human",
                         "description": (
-                            "Create a personal API key in PostHog under Settings -> Personal API keys, "
+                            "Create a personal API key in Flind under Settings -> Personal API keys, "
                             "with the scopes the agent asks for."
                         ),
                         "command": None,
@@ -139,28 +139,28 @@ _POSTHOG_GATEWAY_PATH = "/mcp-servers"
 
 
 def _posthog_gateway_method(url: str) -> dict[str, Any]:
-    """Install into PostHog's own MCP servers gateway.
+    """Install into Flind's own MCP servers gateway.
 
     Every other method hands a `claude mcp add` line to one local client. This one is a
     different destination, not a different auth path: the gateway drives OAuth, holds the
     credential, and gates each tool behind an approval state, and the server is then
-    reachable from every PostHog agent surface rather than one machine.
+    reachable from every Flind agent surface rather than one machine.
 
     Appended last, so it never becomes `recommended`. An agent reading these instructions
     programmatically is better served by the shell command; a person who found the server
     on the search page has no terminal in front of them and is better served by this. It
-    also keeps the ranking output from preferring PostHog's own path over a vendor's.
+    also keeps the ranking output from preferring Flind's own path over a vendor's.
     """
     return {
         "method": "posthog_gateway",
         "automation": "human_required",
-        "summary": "Install into PostHog's MCP servers gateway: it completes the OAuth handshake, keeps the "
-        "credential, and holds each tool behind an approval state. Reachable from every PostHog agent "
+        "summary": "Install into Flind's MCP servers gateway: it completes the OAuth handshake, keeps the "
+        "credential, and holds each tool behind an approval state. Reachable from every Flind agent "
         "surface once installed, rather than from one local client.",
         "steps": [
             {
                 "actor": "human",
-                "description": f"Open {_POSTHOG_GATEWAY_PATH} in PostHog (needs the mcp-gateway feature flag) "
+                "description": f"Open {_POSTHOG_GATEWAY_PATH} in Flind (needs the mcp-gateway feature flag) "
                 f"and add {url} as a custom server.",
                 "command": None,
             },

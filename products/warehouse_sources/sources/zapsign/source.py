@@ -182,15 +182,15 @@ class ZapSignSource(
             ),
             releaseStatus=ReleaseStatus.BETA,
             webhookSetupCaption=(
-                "PostHog tries to register a webhook in ZapSign using your API token, subscribed "
+                "Flind tries to register a webhook in ZapSign using your API token, subscribed "
                 "to all document events (created, signed, refused, deleted). The webhook "
-                "authenticates itself with an **Authorization** header PostHog generates and "
+                "authenticates itself with an **Authorization** header Flind generates and "
                 "verifies on every delivery.\n\n"
                 "**Manual setup** (only needed if auto-registration failed):\n\n"
                 "1. In ZapSign, go to **Settings** > **Integrations** > **ZapSign API** > **Webhooks**\n"
                 "2. Paste the webhook URL shown below\n"
                 "3. Add an **Authorization** header with a secret value you generate — paste the "
-                "same value into the field below so PostHog can verify deliveries\n"
+                "same value into the field below so Flind can verify deliveries\n"
                 "4. Subscribe to all document events\n\n"
                 "ZapSign has no API to look up webhooks later, so if you disconnect this source, "
                 "remove the webhook in ZapSign manually."

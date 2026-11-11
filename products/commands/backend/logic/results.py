@@ -1,7 +1,7 @@
 """The follow-up messages that tell a requester how the work their command started ended.
 
 Each message names the subject with its label and link and adds a link to the result. It is built
-from fixed text and values PostHog produced, never from the review text, so a pull request cannot
+from fixed text and values Flind produced, never from the review text, so a pull request cannot
 make the bot post its words.
 """
 
@@ -19,14 +19,14 @@ def _subject(follow_up: FollowUp) -> str:
 def review_result(finished: FinishedReview, follow_up: FollowUp) -> str:
     subject = _subject(follow_up)
     if finished.failed:
-        return f"PostHog Review couldn't finish reviewing {subject}. Try `review` again in a few minutes."
+        return f"Flind Review couldn't finish reviewing {subject}. Try `review` again in a few minutes."
     if finished.findings_count == 0:
         found = "found nothing to fix"
     elif finished.findings_count == 1:
         found = "found 1 issue"
     else:
         found = f"found {finished.findings_count} issues"
-    return f"PostHog Review finished reviewing {subject} and {found}. [Open the review]({finished.review_url})"
+    return f"Flind Review finished reviewing {subject} and {found}. [Open the review]({finished.review_url})"
 
 
 def stamphog_result(finished: FinishedReviewRun, follow_up: FollowUp) -> str:
@@ -48,7 +48,7 @@ def stamphog_result(finished: FinishedReviewRun, follow_up: FollowUp) -> str:
 
 def qa_result(status: str, task_url: str, follow_up: FollowUp) -> str:
     subject = _subject(follow_up)
-    run = f"[Open the run in PostHog Code]({task_url})"
+    run = f"[Open the run in Flind Code]({task_url})"
     if status == "completed":
         return f"The QA run on {subject} finished, and its report is on the pull request. {run}"
     if status == "cancelled":

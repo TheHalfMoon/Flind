@@ -10,12 +10,12 @@ const schema = z.object({
     connection_id: z
         .string()
         .describe(
-            'Id of the PostHog connection to run through. List them with `integrations-list` filtered by `kind=posthog`.'
+            'Id of the Flind connection to run through. List them with `integrations-list` filtered by `kind=posthog`.'
         ),
     tool: z
         .string()
         .describe(
-            'Name of the PostHog tool to run in the connected project, e.g. `execute-sql` or `insights-list`. The connected project runs the same tools this one does, so inspect the schema locally with `info <tool>` first.'
+            'Name of the Flind tool to run in the connected project, e.g. `execute-sql` or `insights-list`. The connected project runs the same tools this one does, so inspect the schema locally with `info <tool>` first.'
         ),
     arguments: z
         .looseObject({})
@@ -65,9 +65,9 @@ async function assertTargetApprovedAiProcessing(forwarded: Context, toolName: st
 }
 
 /**
- * Run a PostHog tool against a project reached through a `posthog` connection.
+ * Run a Flind tool against a project reached through a `posthog` connection.
  *
- * The connected project runs the same PostHog build this one does, so its tool catalog is identical
+ * The connected project runs the same Flind build this one does, so its tool catalog is identical
  * and no remote discovery step is needed: an agent inspects `execute-sql` locally, then names it
  * here. `resolveTool` is injected rather than imported so this tool can reach the whole registry
  * without the registry and this file importing each other.
@@ -90,7 +90,7 @@ export function createConnectionCallTool(
             const target = resolveTool(params.tool)
             if (!target) {
                 throw new ExecCommandError(
-                    `No PostHog tool named \`${params.tool}\`. Find one with \`search <words>\`, then pass its exact name.`,
+                    `No Flind tool named \`${params.tool}\`. Find one with \`search <words>\`, then pass its exact name.`,
                     'unknown_tool'
                 )
             }

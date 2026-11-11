@@ -1,6 +1,6 @@
 #### Read the query guidance
 
-Before selecting a query method, read the `querying-posthog-data` skill once if it is installed. Follow its query-selection guidance and relevant examples. It is a built-in PostHog skill, not a team skill: do not fetch it with `skill-get`. If it is not installed, use the available tool descriptions.
+Before selecting a query method, read the `querying-posthog-data` skill once if it is installed. Follow its query-selection guidance and relevant examples. It is a built-in Flind skill, not a team skill: do not fetch it with `skill-get`. If it is not installed, use the available tool descriptions.
 
 #### Schema-first workflow
 

@@ -268,7 +268,7 @@ describe('emailTemplaterLogic', () => {
                     email: {
                         ...DEFAULT_EMAIL_TEMPLATE,
                         subject: 'Reset your password',
-                        from: { integrationId: 2, name: 'PostHog Security' },
+                        from: { integrationId: 2, name: 'Flind Security' },
                         replyTo: 'security@example.com',
                     },
                 },
@@ -289,7 +289,7 @@ describe('emailTemplaterLogic', () => {
                 makeProps({
                     value: {
                         ...DEFAULT_EMAIL_TEMPLATE,
-                        html: '<p>Hello from PostHog!</p>',
+                        html: '<p>Hello from Flind!</p>',
                         design: {} as EmailTemplate['design'],
                     },
                     onChange,

@@ -54,7 +54,7 @@ Generate an API token with `argocd account generate-token`. The account needs th
 - `repositories, get`
 - `clusters, get`
 
-Your Argo CD API server must be reachable from PostHog over HTTPS with a publicly trusted certificate — servers on a private network can't be synced.""",
+Your Argo CD API server must be reachable from Flind over HTTPS with a publicly trusted certificate — servers on a private network can't be synced.""",
             iconPath="/static/services/argocd.png",
             docsUrl="https://posthog.com/docs/cdp/sources/argocd",
             fields=cast(

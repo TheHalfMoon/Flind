@@ -59,7 +59,7 @@ class MuxSource(ResumableSource[MuxSourceConfig, MuxResumeConfig]):
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Mux",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Mux Access Token ID and Secret Key to pull your Mux Video and Mux Data into the PostHog Data warehouse.
+            caption="""Enter your Mux Access Token ID and Secret Key to pull your Mux Video and Mux Data into the Flind Data warehouse.
 
 Create an access token under [Settings → Access Tokens](https://dashboard.mux.com/settings/access-tokens) in your Mux dashboard. Tokens are scoped to a single Mux environment.
 
@@ -113,7 +113,7 @@ Grant the following read permissions:
             "code=invalid_timeframe": (
                 "Mux rejected the time range this sync requested as invalid. This usually means the range "
                 "reaches further back than your Mux plan keeps. Check your Mux Data retention window, or "
-                "contact PostHog support if this keeps happening."
+                "contact Flind support if this keeps happening."
             ),
             # Some Mux Data accounts reject `max_request_latency` timeseries queries with a 400 and
             # the generic `code=bad_request` (no specific sub-code), regardless of the timeframe —
@@ -123,7 +123,7 @@ Grant the following read permissions:
             # timeout for this same URL — whose message carries no query string — stays retryable.
             "metrics/max_request_latency/timeseries?timeframe": (
                 "Mux rejected the request-latency metric sync for this account. This can happen when "
-                "the account's Mux Data plan doesn't include request-latency metrics. Contact PostHog "
+                "the account's Mux Data plan doesn't include request-latency metrics. Contact Flind "
                 "support if this keeps happening."
             ),
         }

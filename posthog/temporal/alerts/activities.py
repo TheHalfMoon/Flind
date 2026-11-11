@@ -1097,30 +1097,30 @@ def dispatch_alert_error_in_app_notifications(alert: AlertConfiguration, alert_c
         # The check turned the alert off, so a promise to try again would be false.
         title = f"{alert_name[:75]} was turned off"
         body = (
-            f"PostHog turned this alert off because it could not be evaluated: {error_message}. "
+            f"Flind turned this alert off because it could not be evaluated: {error_message}. "
             "Fix the alert or insight settings, then turn the alert back on."
         )
     else:
         next_check_at = next_scheduled_check_time(alert)
         next_check_message = (
-            f"PostHog will try again on {next_check_at}."
+            f"Flind will try again on {next_check_at}."
             if next_check_at
-            else "PostHog will try again at the next scheduled check."
+            else "Flind will try again at the next scheduled check."
         )
         title = f"{alert_name[:75]} could not be evaluated"
         if error_code == LLM_DETECTOR_PAUSED_ERROR_CODE:
-            body = f"PostHog could not evaluate this alert: {error_message}."
+            body = f"Flind could not evaluate this alert: {error_message}."
         elif error_code == LLM_DETECTOR_UNAVAILABLE_ERROR_CODE:
             # A check the AI detector could not complete is not something the owner can fix,
             # so this case drops the advice to review the alert settings.
             body = (
-                f"PostHog could not evaluate this alert: {error_message}. "
+                f"Flind could not evaluate this alert: {error_message}. "
                 f"{next_check_message} If it fails again, contact support."
             )
         else:
             body = (
-                f"PostHog could not evaluate this alert: {error_message}. "
-                "This can happen when the insight or alert settings need attention, or when PostHog has a "
+                f"Flind could not evaluate this alert: {error_message}. "
+                "This can happen when the insight or alert settings need attention, or when Flind has a "
                 f"temporary problem. Review the alert settings. {next_check_message} If it fails again, "
                 "contact support."
             )

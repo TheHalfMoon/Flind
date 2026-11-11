@@ -14,7 +14,7 @@ export interface DestinationRecentSendsProps {
 }
 
 const PATH_META: Record<LogsAlertDestinationSendApi['path'], { label: string; tooltip: string }> = {
-    native: { label: 'PostHog alerts', tooltip: 'Sent by PostHog alerts with the standard message.' },
+    native: { label: 'Flind alerts', tooltip: 'Sent by Flind alerts with the standard message.' },
     hog_function: { label: 'Hog function', tooltip: "Sent by this destination's hog function." },
 }
 

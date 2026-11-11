@@ -93,7 +93,7 @@ The session closes when the connection scope exits.
 Customer-configured external Trino sources also bypass environment proxies for these regional tenant hostnames.
 This requires HTTPS on port 443 with certificate verification.
 Use the same tenant hostname, SQL username, and password as the CLI.
-PostHog passes the configured credentials unchanged.
+Flind passes the configured credentials unchanged.
 External sources retain the tracked HTTP transport.
 They reject redirects or polling URLs outside the configured HTTPS origin.
 Other external hosts retain the environment proxy behavior.
@@ -158,7 +158,7 @@ The backend owns its function mappings, structural rewrites, validation, and tab
 | `BasePrinter` rendering hooks         | Support Trino's limit/offset order, `FETCH FIRST ... WITH TIES`, and `GROUP BY AUTO`.                         | Default hook implementations preserve the existing rendering.                                                  |
 | Lazy-table visitor annotations        | The Trino validator visits `LazyTableType`; the common visitor signature must describe that actual node type. | The workload visitor drops an impossible `FunctionCallTable` check; valid lazy-table behavior stays unchanged. |
 
-A standalone printer cannot repair a query rejected earlier by the resolver or introduce relation-shape rewrites after semantic resolution is finished. A separate compiler pipeline could avoid these hooks, but would duplicate the PostHog semantic expansion sequence. The small hooks keep that sequence shared. Overriding complete base-printer methods would likewise duplicate unrelated SELECT and set-operation rendering.
+A standalone printer cannot repair a query rejected earlier by the resolver or introduce relation-shape rewrites after semantic resolution is finished. A separate compiler pipeline could avoid these hooks, but would duplicate the Flind semantic expansion sequence. The small hooks keep that sequence shared. Overriding complete base-printer methods would likewise duplicate unrelated SELECT and set-operation rendering.
 
 Trino table rendering stays in Trino-specific modules. Neither the built-in numbers table nor the shared direct-Trino table class needs a new rendering method.
 
@@ -364,12 +364,12 @@ joins and membership tests. Trino plans data distribution for these operations.
 
 `test_tracks_every_registered_function_without_a_trino_mapping` snapshots every
 registered function that has no Trino mapping. The snapshot separates scalar,
-aggregate, and PostHog functions. A new registry function must receive a mapping
+aggregate, and Flind functions. A new registry function must receive a mapping
 or appear in this explicit gap inventory.
 
 The registry has 1,180 names. Trino mode maps 850 of these names. The explicit
 gap inventory has 330 names: 149 scalar functions, 155 aggregate functions, and
-26 PostHog functions. Aliases count as separate names.
+26 Flind functions. Aliases count as separate names.
 
 A live differential QA pass used one typed fixture for each mapped name. ClickHouse
 and Trino returned equal results for 836 names. Seven time-dependent, random, or
@@ -497,8 +497,8 @@ The remaining function gaps fall into these groups:
   type-aware AST lowering. A string-only function handler cannot preserve them.
 - Table functions, including `generateSeries`, need relational lowering. A
   scalar array workaround would change the number of result rows.
-- PostHog display functions produce HogQLX output instead of relational values.
-  Other PostHog functions must expand before the detached Trino compiler runs.
+- Flind display functions produce HogQLX output instead of relational values.
+  Other Flind functions must expand before the detached Trino compiler runs.
 - Exact hashes, quantiles, regex engines, and public-suffix functions stay blocked
   when a similar Trino function has different results.
 

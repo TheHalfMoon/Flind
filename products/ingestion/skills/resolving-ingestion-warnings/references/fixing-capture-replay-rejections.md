@@ -21,7 +21,7 @@ posthog-js and the mobile SDKs always set this, so seeing it means something oth
 
 - **Hand-rolled replay ingestion.** A script or server relay assembling `$snapshot` events itself, and omitting the property. `$session_id` is required; there is no default.
 - **Session management driven outside the SDK.** An integration that generates its own session ids and forgot to attach one to the replay payload, while analytics events still carry theirs.
-- **A rewriting proxy.** Something between the SDK and PostHog strips or renames properties. Compare a captured request body against what the browser actually sent.
+- **A rewriting proxy.** Something between the SDK and Flind strips or renames properties. Compare a captured request body against what the browser actually sent.
 
 ## `invalid_session_id`
 
@@ -33,7 +33,7 @@ posthog-js and the mobile SDKs always set this, so seeing it means something oth
 
 The offending value itself is deliberately not in the details. It is unvalidated client input, and it would land in a customer-visible column, so `reason` and `sessionIdLength` carry the actionable part instead. To see the value, look at the SDK's own session id on the client.
 
-If you are generating session ids yourself, the safe format is a UUID. PostHog's own SDKs emit one.
+If you are generating session ids yourself, the safe format is a UUID. Flind's own SDKs emit one.
 
 ## `missing_snapshot_data`
 

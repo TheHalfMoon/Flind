@@ -37,7 +37,7 @@ class MaterializedViewFailureCheck(HealthCheck):
             Read this issue with `health-issues-get` for the view name and error from the payload, use
             `read-data-warehouse-schema` to see the available tables and columns, and `execute-sql` to run
             the view's query (or its upstream tables) directly to pinpoint what broke. The view's SQL is
-            stored in PostHog Data modeling rather than the user's codebase, so the edit happens there —
+            stored in Flind Data modeling rather than the user's codebase, so the edit happens there —
             diagnose the exact failure, propose the corrected query, and have it re-run. Use `docs-search`
             for the data modeling / materialized view docs. The check clears once a materialization
             succeeds.

@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -205,7 +205,7 @@ export const getRequestAiAccessCreateUrl = (id: string) => {
 }
 
 /**
- * Notify organization admins that a member is requesting PostHog AI be enabled.
+ * Notify organization admins that a member is requesting Flind AI be enabled.
  */
 export const requestAiAccessCreate = async (
     id: string,
@@ -1325,7 +1325,7 @@ export const getUserHomeSettingsPartialUpdateUrl = (uuid: string) => {
 }
 
 /**
- * Update the authenticated user's pinned sidebar tabs and/or homepage for the current team. Pass `@me` as the UUID. Send `tabs` to replace the pinned tab list, `homepage` to set the home destination (any PostHog URL — dashboard, insight, search results, scene). Either field may be omitted to leave it unchanged; sending `homepage: null` or `{}` clears the homepage.
+ * Update the authenticated user's pinned sidebar tabs and/or homepage for the current team. Pass `@me` as the UUID. Send `tabs` to replace the pinned tab list, `homepage` to set the home destination (any Flind URL — dashboard, insight, search results, scene). Either field may be omitted to leave it unchanged; sending `homepage: null` or `{}` clears the homepage.
  */
 export const userHomeSettingsPartialUpdate = async (
     uuid: string,

@@ -39,7 +39,7 @@ describe('PostHogPermissionError', () => {
             method: 'GET',
         })
 
-        expect(error.message).toBe("Missing PostHog API scope: 'user:read'")
+        expect(error.message).toBe("Missing Flind API scope: 'user:read'")
         expect(error.missingScope).toBe('user:read')
         expect(error.name).toBe('PostHogPermissionError')
     })
@@ -51,7 +51,7 @@ describe('PostHogPermissionError', () => {
             method: 'GET',
         })
 
-        expect(error.message).toContain('PostHog API permission denied')
+        expect(error.message).toContain('Flind API permission denied')
         expect(error.missingScope).toBeUndefined()
     })
 })
@@ -81,7 +81,7 @@ describe('formatPermissionErrorMessage', () => {
 
         const text = formatPermissionErrorMessage(error)
 
-        expect(text).toContain('PostHog API permission denied')
+        expect(text).toContain('Flind API permission denied')
         expect(text).toContain('HTTP 403')
     })
 
@@ -158,7 +158,7 @@ describe('findPostHogPermissionError', () => {
     // 403 + insufficient_scope challenge they need to re-consent.
     describe('boundary-stripped errors (DO RPC fallback)', () => {
         it('reconstructs a PostHogPermissionError from a plain Error whose message carries the missing-scope literal', () => {
-            const stripped = new Error("Failed to get user: Missing PostHog API scope: 'user:read'")
+            const stripped = new Error("Failed to get user: Missing Flind API scope: 'user:read'")
 
             const recovered = findPostHogPermissionError(stripped)
 
@@ -167,7 +167,7 @@ describe('findPostHogPermissionError', () => {
         })
 
         it('handles double-quoted scope literal', () => {
-            const stripped = new Error('Failed to do thing: Missing PostHog API scope: "insight:write"')
+            const stripped = new Error('Failed to do thing: Missing Flind API scope: "insight:write"')
 
             const recovered = findPostHogPermissionError(stripped)
 
@@ -176,7 +176,7 @@ describe('findPostHogPermissionError', () => {
 
         it('returns undefined for unrelated error messages even when shape-similar', () => {
             expect(findPostHogPermissionError(new Error('Something about scope but not the literal'))).toBeUndefined()
-            expect(findPostHogPermissionError(new Error('Missing PostHog API scope without quotes'))).toBeUndefined()
+            expect(findPostHogPermissionError(new Error('Missing Flind API scope without quotes'))).toBeUndefined()
         })
     })
 })
@@ -365,7 +365,7 @@ describe('ApiClient fetchJson on 403 permission_denied', () => {
 })
 
 // Regression: an LLM agent passing a placeholder UUID to an MCP tool produced
-// a 404, and `handleToolError` captured it as a PostHog exception fingerprinted
+// a 404, and `handleToolError` captured it as a Flind exception fingerprinted
 // by tool name — creating a brand-new error tracking issue per tool every time
 // an agent fumbled a parameter. `handleToolError` must treat 4xx (and
 // validation errors) as recoverable agent input and reserve `captureException`

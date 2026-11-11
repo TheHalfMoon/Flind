@@ -10,7 +10,7 @@ The token is a secret and the scope is a metric label, so both parts go through 
 A user with several tokens shows as several scopes. GitLab does not tell us the user id without an extra call.
 
 Integration setup is the exception and passes `scoped=False`.
-It probes GitLab with a token the caller just typed in, which PostHog does not store unless the probe succeeds.
+It probes GitLab with a token the caller just typed in, which Flind does not store unless the probe succeeds.
 A scope retains its counter and gauge children for the life of the process, so scoping that probe would let repeated setup attempts with rejected tokens grow the registry without a bound.
 The call still records the counter under an empty scope; the gauges are skipped.
 
@@ -18,17 +18,17 @@ The call still records the counter under an empty scope; the gauges are skipped.
 
 None: calls are recorded, never gated (`RecordedEgressClient`).
 The customer owns the token on their own GitLab account or instance.
-The admin of each self-managed instance sets its limits, and gitlab.com limits depend on the plan, so PostHog has no single limit to stay under.
+The admin of each self-managed instance sets its limits, and gitlab.com limits depend on the plan, so Flind has no single limit to stay under.
 The transport returns `429` responses without retries or delays.
 The integration does not use `Retry-After`.
-Add a gate if one token starts to carry enough PostHog traffic to reach the gitlab.com limit.
+Add a gate if one token starts to carry enough Flind traffic to reach the gitlab.com limit.
 
 ## Lanes and callers
 
 No lanes, because nothing is gated.
 `posthog/models/integration/gitlab.py` is the caller, with `source="integration"`.
 It creates, closes and searches issues, lists project members, lists projects and creates and reads merge requests.
-Workload identity looks up a gitlab.com project's ID and exact path with `source="workload_identity"`, through the team's own token first, then PostHog's shared token, or no token when the deployment has none, for public projects only.
+Workload identity looks up a gitlab.com project's ID and exact path with `source="workload_identity"`, through the team's own token first, then Flind's shared token, or no token when the deployment has none, for public projects only.
 Error tracking code search in `products/error_tracking/backend/presentation/views/git_provider_file_link_resolver.py` still calls GitLab directly and has not moved here yet.
 
 ## Rate-limit headers
@@ -49,7 +49,7 @@ Callers pass an endpoint template, because a project path in a URL is customer d
 ## Auth
 
 The customer's access token in the `PRIVATE-TOKEN` header.
-No PostHog-owned credential.
+No Flind-owned credential.
 The caller validates the host before the call and never follows a redirect, because the token header would go to the redirect target.
 
 ## Sources

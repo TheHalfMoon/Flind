@@ -53,7 +53,7 @@ class AgileCRMSource(ResumableSource[AgileCRMSourceConfig, AgileCRMResumeConfig]
             category=DataWarehouseSourceCategory.CRM,
             label="AgileCRM",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Agile CRM credentials to pull your CRM data into the PostHog Data warehouse.
+            caption="""Enter your Agile CRM credentials to pull your CRM data into the Flind Data warehouse.
 
 Find your API key under **Admin Settings → Developers & API** in your Agile CRM account. Authenticate with the email address you log in with and that API key.
 

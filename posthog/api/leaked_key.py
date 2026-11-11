@@ -20,7 +20,7 @@ from posthog.api.secret_revocation import (
 from posthog.rate_limit import LeakedKeyReportThrottle
 from posthog.utils import get_instance_region
 
-PUBLIC_REPORT_MORE_INFO = "This key was reported as leaked via PostHog's public key-revocation API."
+PUBLIC_REPORT_MORE_INFO = "This key was reported as leaked via Flind's public key-revocation API."
 
 
 class LeakedKeyReportSerializer(serializers.Serializer):
@@ -51,7 +51,7 @@ class LeakedKeyReportResponseSerializer(serializers.Serializer):
 
 class PublicLeakedKeyReport(APIView):
     """
-    Public, unauthenticated self-service endpoint: submit a leaked PostHog token and,
+    Public, unauthenticated self-service endpoint: submit a leaked Flind token and,
     if it matches a real credential, it's revoked immediately and the owner is
     notified — even if the submitted OAuth access token has itself already expired,
     since the paired refresh token it protects may still be live. The one exception
@@ -83,9 +83,9 @@ class PublicLeakedKeyReport(APIView):
             400: OpenApiResponse(description="The token is missing, blank, or longer than 200 characters."),
             429: OpenApiResponse(description="Too many requests from this IP."),
         },
-        summary="Report and revoke a leaked PostHog API key or token",
+        summary="Report and revoke a leaked Flind API key or token",
         description=(
-            "Public, unauthenticated endpoint for self-service revocation of a leaked PostHog "
+            "Public, unauthenticated endpoint for self-service revocation of a leaked Flind "
             "personal API key, project secret API key, legacy feature flags secure API key, or "
             "OAuth access/refresh token. If the token matches a real credential, it is revoked "
             "immediately and the owner is notified by email. This includes an expired OAuth "
@@ -106,9 +106,9 @@ class PublicLeakedKeyReport(APIView):
         result = revoke_leaked_secret(token, key_type=None, more_info=PUBLIC_REPORT_MORE_INFO)
 
         # Unlike github_secret_alert, no token_prefix/token_suffix here: GitHub already
-        # confirmed the string is a real PostHog-shaped secret before that event fires,
+        # confirmed the string is a real Flind-shaped secret before that event fires,
         # but this endpoint's callers are the whole internet, and people will paste
-        # things that aren't PostHog keys at all.
+        # things that aren't Flind keys at all.
         properties: dict[str, str | int | bool | None] = {
             "found": result.found,
             "type": result.key_type,
@@ -118,9 +118,9 @@ class PublicLeakedKeyReport(APIView):
             "region": get_instance_region(),
         }
         if result.found:
-            # Only hash a token once it matched a real PostHog credential: those are
+            # Only hash a token once it matched a real Flind credential: those are
             # high-entropy and this hash isn't practically reversible. For the common
-            # case of a caller pasting something that isn't a PostHog secret at all, an
+            # case of a caller pasting something that isn't a Flind secret at all, an
             # unsalted SHA-256 of a low-entropy string (a password, a short token) is
             # dictionary/rainbow-table reversible, so we don't persist a recoverable
             # copy of a third party's actual secret.

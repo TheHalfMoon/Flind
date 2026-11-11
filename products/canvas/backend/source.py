@@ -143,12 +143,12 @@ _NETWORK_PATTERNS: list[tuple[re.Pattern[str], str, str]] = [
     (
         re.compile(r"\bfetch\s*\("),
         "network_fetch",
-        "fetch() requires every destination in capabilities.network.origins — prefer the `ph` data bridge for PostHog data",
+        "fetch() requires every destination in capabilities.network.origins — prefer the `ph` data bridge for Flind data",
     ),
     (
         re.compile(r"\bXMLHttpRequest\b"),
         "network_xhr",
-        "XMLHttpRequest requires every destination in capabilities.network.origins — prefer the `ph` data bridge for PostHog data",
+        "XMLHttpRequest requires every destination in capabilities.network.origins — prefer the `ph` data bridge for Flind data",
     ),
 ]
 

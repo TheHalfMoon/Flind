@@ -1,13 +1,13 @@
 # SQL editor schema tree
 
 The Sources tree starts with Popular, containing `events`, `groups`, `persons`, and `sessions`.
-PostHog follows with the full PostHog catalog, sorted by name and qualified with `posthog.`, including those four tables.
+Flind follows with the full Flind catalog, sorted by name and qualified with `posthog.`, including those four tables.
 Qualified entries use the same schema fields as their unqualified shortcuts.
 Search includes both categories, and table actions use the name shown in the tree.
 
-The PostHog catalog includes `posthog.ai_events` for AI observability, `posthog.session_replay_events` for recordings, and `posthog.trace_spans` for tracing.
+The Flind catalog includes `posthog.ai_events` for AI observability, `posthog.session_replay_events` for recordings, and `posthog.trace_spans` for tracing.
 `posthog.metrics` contains metric data points; join `posthog.metric_series` for their labels.
-`posthog.flag_evaluations` appears for every organization on PostHog Cloud. On a self-hosted instance it appears only when the organization's flag_evaluations mode reads that table.
+`posthog.flag_evaluations` appears for every organization on Flind Cloud. On a self-hosted instance it appears only when the organization's flag_evaluations mode reads that table.
 These tables come from the backend catalog without a separate sidebar allowlist.
 Namespace-only tables retain their `posthog.` prefix when requesting fields.
 
@@ -45,7 +45,7 @@ After that request, catalog reloads also restore complete fields for consumers o
 Schema mutations refresh previously hydrated or pending tables, as well as expanded nodes.
 Saved-query lists expose metadata only; refreshing them preserves the query and columns already fetched for an open editor tab.
 
-In PostHog Warehouse, sidebar search accepts `status:failed`, `status:running`, and `status:completed` to filter materialized views by their latest run status.
+In Flind Warehouse, sidebar search accepts `status:failed`, `status:running`, and `status:completed` to filter materialized views by their latest run status.
 The Models tab accepts the same status tokens and combines them with its name and lineage search syntax.
 The funnel menu beside search inserts and removes the same tokens. Select multiple statuses to include views matching any of them. **Failed** includes views paused after repeated failures.
 Status tokens combine with a name search, and matching views retain their folders and expandable columns. The funnel button highlights while a status filter is active.

@@ -155,7 +155,7 @@ describe("SuggestedReviewerAvatarStack", () => {
     expect(onCardClick).not.toHaveBeenCalled();
     expect(mocks.mutate).toHaveBeenCalledWith(
       {
-        // The write names the kept reviewer by PostHog user, so it keeps routing if they unlink GitHub.
+        // The write names the kept reviewer by Flind user, so it keeps routing if they unlink GitHub.
         content: [{ user_uuid: "user-bob" }],
         action: "remove",
         targets: [{ user_uuid: "user-me" }],

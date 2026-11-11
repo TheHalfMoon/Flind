@@ -107,14 +107,14 @@ class EventTaxonomySnapshot:
 def _taxonomy_snapshot_legend(computed_at: datetime) -> str:
     """State what the counts measure and when they were measured.
 
-    Other surfaces read the same project over their own windows, and PostHog system events that are
+    Other surfaces read the same project over their own windows, and Flind system events that are
     not useful for analysis never reach this list at all. Without the window, the snapshot time and
     the omission on the response, a caller that compares two surfaces reads an honest difference as
     a broken taxonomy.
     """
     return (
         f"Taxonomy snapshot taken at {computed_at.isoformat()}. Counts cover the last {LOOKBACK_DAYS} days, so a "
-        "surface that reads a shorter or longer window can disagree with this list. PostHog system events that are "
+        "surface that reads a shorter or longer window can disagree with this list. Flind system events that are "
         "not useful for analysis are left out, so a surface that reads raw event traffic can show an event that is "
         "absent here."
     )

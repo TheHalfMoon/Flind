@@ -8,7 +8,7 @@ It is not a product-facing runbook.
 
 **Organization IP restrictions protect management access.**
 Public widget and external ticket APIs, plus inbound Slack, Teams, and email callbacks, remain available outside the allowlist.
-A PostHog login cookie does not make these runtime requests subject to management IP restrictions.
+A Flind login cookie does not make these runtime requests subject to management IP restrictions.
 Existing widget credentials, API scopes, and callback signature checks still apply.
 Ticket management and integration settings remain restricted.
 

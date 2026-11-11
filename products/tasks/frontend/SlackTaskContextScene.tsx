@@ -25,7 +25,7 @@ export function SlackTaskContextScene(): JSX.Element {
         <SceneContent>
             <SceneTitleSection
                 name="Slack task context"
-                description="Look up the PostHog Task, runs, and Temporal workflows linked to a Slack thread. Restricted to PostHog-internal debugging (team 2)."
+                description="Look up the Flind Task, runs, and Temporal workflows linked to a Slack thread. Restricted to Flind-internal debugging (team 2)."
                 resourceType={{ type: 'task' }}
             />
 
@@ -83,7 +83,7 @@ export function SlackTaskContextScene(): JSX.Element {
 
 function SubmissionErrorContent({ error }: { error: SlackTaskContextSubmissionError }): JSX.Element {
     if (error.status === 403) {
-        return <>This endpoint is restricted to PostHog-internal debugging (team 2).</>
+        return <>This endpoint is restricted to Flind-internal debugging (team 2).</>
     }
     if (error.status === 404) {
         return (
@@ -155,7 +155,7 @@ function SlackTaskContextResult({
                             ['Origin', task.origin_product],
                             ['Team ID', String(task.team_id)],
                             [
-                                'Open in PostHog',
+                                'Open in Flind',
                                 <Link key="task-url" to={task.url}>
                                     {task.url}
                                 </Link>,
@@ -199,7 +199,7 @@ function SlackTaskContextRunCard({ run, index }: { run: SlackThreadContextRunApi
                 rows={[
                     ['Run ID', <CodeSnippet key="run-id">{run.id}</CodeSnippet>],
                     [
-                        'Open in PostHog',
+                        'Open in Flind',
                         <Link key="task-view" to={run.task_view_url}>
                             {run.task_view_url}
                         </Link>,
@@ -301,7 +301,7 @@ function RepoResearchBlock({ research }: { research: SlackThreadContextRepoResea
                 rows={[
                     ['Research run ID', <CodeSnippet key="rr-id">{research.run_id}</CodeSnippet>],
                     [
-                        'Open in PostHog',
+                        'Open in Flind',
                         <Link key="rr-view" to={research.task_view_url}>
                             {research.task_view_url}
                         </Link>,

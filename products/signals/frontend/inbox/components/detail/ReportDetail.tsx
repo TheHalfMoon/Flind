@@ -381,7 +381,7 @@ export function InboxDetailFrame({
         <div className="flex flex-1 flex-col gap-6">
             {report.research_context?.mode === 'data_only' && (
                 <LemonBanner type="info">
-                    This report uses only your PostHog data. Without code access, agents can find problems but can't
+                    This report uses only your Flind data. Without code access, agents can find problems but can't
                     trace them to the underlying code, so findings may be less specific.{' '}
                     <Link to={urls.settings('environment-integrations', 'integration-github')}>GitHub access</Link>{' '}
                     helps agents investigate root causes and pinpoint what to change.

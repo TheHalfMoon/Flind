@@ -128,7 +128,7 @@ def owner_sql_errors(query: object) -> Iterator[None]:
 
     The owner wrote the query, such as a HogQL call with the wrong arguments or a column type
     mismatch, and it fails the same way until they fix it. Other kinds keep the ordinary path,
-    because PostHog builds their SQL and the error can be a bug. A transient ClickHouse error also
+    because Flind builds their SQL and the error can be a bug. A transient ClickHouse error also
     keeps the ordinary path, because the query itself can be sound.
     """
     try:

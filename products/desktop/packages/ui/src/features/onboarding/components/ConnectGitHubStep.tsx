@@ -67,7 +67,7 @@ export function ConnectGitHubStep({ onNext, onBack }: ConnectGitHubStepProps) {
               description={
                 isConnected
                   ? "GitHub connected"
-                  : "Gives PostHog Desktop read access to your repos"
+                  : "Gives Flind Desktop read access to your repos"
               }
             >
               <GitHubConnectPanel />

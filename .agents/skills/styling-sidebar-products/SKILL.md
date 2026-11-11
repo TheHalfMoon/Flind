@@ -1,7 +1,7 @@
 ---
 name: styling-sidebar-products
 description: >
-  How products and pages appear in the PostHog sidebar: which category they sit in, which icon and color they
+  How products and pages appear in the Flind sidebar: which category they sit in, which icon and color they
   get, and which groups share a color gradient. Use when adding a product or data management page to the
   sidebar (treeItemsProducts or treeItemsMetadata in a products/*/manifest.tsx), giving an entry a new icon or
   color, moving an entry between sidebar categories, adding a category, or when a sidebar icon renders the

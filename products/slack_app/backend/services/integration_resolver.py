@@ -44,16 +44,16 @@ def user_resolution_failure_reply(
 ) -> str | None:
     """Map a ``UserAndIntegrationsResolution.failure_reason`` to the user-facing
     text, mentioning ``slack_email`` when known so the user sees which address
-    PostHog tried to match. Returns ``None`` for unknown values so callers can
+    Flind tried to match. Returns ``None`` for unknown values so callers can
     no-op safely until a new failure mode is wired up here.
 
     Wording mirrors the per-integration ``resolve_slack_user`` precedent in
     ``api.py`` — same "Sorry, …" register, same actionable next step.
 
     ``linking_available`` says whether the install can link a Slack identity to a
-    PostHog user. When it can, the reply points to linking first: an invite only
+    Flind user. When it can, the reply points to linking first: an invite only
     works for the exact email it was sent to, so it can't help a user whose
-    existing PostHog account uses a different email.
+    existing Flind account uses a different email.
 
     ``home_tab_url`` deep-links to the app's Home tab, which carries the same link
     button. The reader is already in Slack, so the hint names the tab first.
@@ -61,17 +61,17 @@ def user_resolution_failure_reply(
     if failure_reason == "user_not_found":
         if home_tab_url:
             link_hint = (
-                "If you already have a PostHog account with a different email, link it to Slack from "
-                f"<{home_tab_url}|my Home tab>, or in PostHog under Settings > Personal integrations."
+                "If you already have a Flind account with a different email, link it to Slack from "
+                f"<{home_tab_url}|my Home tab>, or in Flind under Settings > Personal integrations."
             )
         else:
             link_hint = (
-                "If you already have a PostHog account with a different email, link it to Slack in PostHog "
+                "If you already have a Flind account with a different email, link it to Slack in Flind "
                 "under Settings > Personal integrations."
             )
         if slack_email:
             prefix = (
-                f"Sorry, I couldn't find {slack_email} in any PostHog organization connected to this Slack workspace."
+                f"Sorry, I couldn't find {slack_email} in any Flind organization connected to this Slack workspace."
             )
             if linking_available:
                 return f"{prefix} {link_hint} If you don't have an account, ask an admin to invite {slack_email}. Then mention me again."
@@ -87,7 +87,7 @@ def user_resolution_failure_reply(
         # The membership lookup succeeded by email, so it's always known here.
         subject = slack_email or "your account"
         return (
-            f"Sorry, {subject} doesn't have access to any PostHog project connected to this Slack "
+            f"Sorry, {subject} doesn't have access to any Flind project connected to this Slack "
             "workspace. Ask an admin to grant you access, then try again."
         )
     return None
@@ -358,7 +358,7 @@ def routable_projects(*, slack_team_id: str, slack_user_id: str, user: User) -> 
 class UserAndIntegrationsResolution:
     """Outcome of the user identification + access-filter step.
 
-    ``user`` is ``None`` when no PostHog user resolved or none had access — both
+    ``user`` is ``None`` when no Flind user resolved or none had access — both
     cases are silently logged inside ``resolve_user_for_workspace`` under
     ``posthog_code_no_integration_found``, and the specific case is exposed via
     ``failure_reason`` so the caller can post an actionable reply in-thread.

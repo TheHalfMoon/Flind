@@ -11,7 +11,7 @@ Resolve `context-mill`, `wizard`, and `wizard-workbench` checkouts via
 
 `npx -y @posthog/wizard@latest mcp-analytics` runs an agentic codemod that instruments a
 user's _own_ MCP server, in TypeScript/JavaScript **or Python**. It is not `wizard mcp add`,
-which installs the PostHog MCP server into a coding agent.
+which installs the Flind MCP server into a coding agent.
 
 Two repos cooperate:
 
@@ -69,7 +69,7 @@ instrumentation:
 Only path A has been verified against a real third-party server. B, C, D and the Python paths
 are unverified — treat a report of them working as new information.
 
-The codemod also handles credentials (the project token, fetched via the PostHog MCP
+The codemod also handles credentials (the project token, fetched via the Flind MCP
 `posthog:projects-get` tool), lifecycle (shutdown and flush), STDIO-safe logging (stderr is fine,
 stdout corrupts the protocol stream), and version pinning. The TypeScript paths **never hardcode
 an SDK version** — they install the current published one and read the result back. The Python
@@ -113,14 +113,14 @@ Do not confuse these; they have different audiences and different release mechan
    `products/*/skills/` into `dist/skills.zip`, which `ci-agent-skills.yml` publishes as a
    GitHub release. This is the channel that carries the customer-facing **analysis** skills
    (`querying-posthog-data`, the `exploring-mcp-*` set, `improving-mcp-tools`) and this skill.
-   Consumed by PostHog Desktop and PostHog AI. **Not** by `posthog-cli` — that is channel 2.
+   Consumed by Flind Desktop and Flind AI. **Not** by `posthog-cli` — that is channel 2.
 
 Two lookalikes are **not** MCP-analytics skills:
 `.agents/skills/testing-mcp-tools-locally/` and
-`.agents/skills/implementing-mcp-tools/`. Both concern building and testing PostHog's own MCP
+`.agents/skills/implementing-mcp-tools/`. Both concern building and testing Flind's own MCP
 server tools, not analyzing MCP usage.
 
-Note the activation gap: `wizard mcp add` installs the PostHog MCP server but does **not**
+Note the activation gap: `wizard mcp add` installs the Flind MCP server but does **not**
 auto-load the analysis skills, so a freshly onboarded user has the data and the server without
 the skills that read them.
 

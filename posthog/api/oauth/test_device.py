@@ -238,7 +238,7 @@ class TestOAuthDeviceGrant(APIBaseTest):
     @parameterized.expand(
         [
             ("registered for authorization code", OAuthApplication.GRANT_AUTHORIZATION_CODE, True, "can't use"),
-            ("PostHog hasn't verified", OAuthApplication.GRANT_DEVICE_CODE, False, "hasn't verified"),
+            ("Flind hasn't verified", OAuthApplication.GRANT_DEVICE_CODE, False, "hasn't verified"),
         ]
     )
     def test_a_client_cannot_start_a_device_grant_when(

@@ -46,7 +46,7 @@ export function SuppressionRules(): JSX.Element {
                 <div>
                     <h3 className="font-semibold text-base mb-1">Automatic suppression rules</h3>
                     <p className="text-muted-foreground">
-                        PostHog maintains these rules for common exceptions that you usually can't act on, and keeps
+                        Flind maintains these rules for common exceptions that you usually can't act on, and keeps
                         them up to date.
                     </p>
                 </div>

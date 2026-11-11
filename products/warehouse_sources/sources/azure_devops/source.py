@@ -73,7 +73,7 @@ class AzureDevOpsSource(ResumableSource[AzureDevOpsSourceConfig, AzureDevOpsResu
             name=ExternalDataSourceType.AZUREDEVOPS,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Azure DevOps",
-            caption="""Enter your Azure DevOps credentials to pull your project, build, and work item data into the PostHog Data warehouse.
+            caption="""Enter your Azure DevOps credentials to pull your project, build, and work item data into the Flind Data warehouse.
 
 Your organization is the first path segment of your Azure DevOps URL — for `dev.azure.com/myorg` enter `myorg`. Create a personal access token under User settings > Personal access tokens with read scopes for the data you want to sync (Work Items, Code, Build, Project and Team).""",
             iconPath="/static/services/azure_devops.png",

@@ -3,7 +3,7 @@
 How to attach dimension/lookup data to fact data on each stack. The full star-schema treatment (building the
 dimensions themselves) is the `modeling-dimension-tables` skill; this is the shared mechanics.
 
-## PostHog: three ways to join
+## Flind: three ways to join
 
 1. **Saved table join** (persistent). Define once (SQL editor → source table → _Add join_), specifying
    `source_table.key = joined_table.key`. After that the joined table's columns are addressable as nested
@@ -28,7 +28,7 @@ just SQL, and the test guarantees referential integrity.
 
 ## Currency
 
-PostHog ships a managed exchange-rate dimension so you don't build one:
+Flind ships a managed exchange-rate dimension so you don't build one:
 
 ```sql
 convertCurrency(from_currency, to_currency, amount, timestamp?)
@@ -46,6 +46,6 @@ In **dbt** there is no equivalent — supply your own rate table (a dbt seed CSV
 ## Star schema in one line
 
 Facts (`events`, charges, revenue items) carry foreign keys; dimensions (`dim_country`, `dim_plan`,
-`dim_currency`) carry descriptive attributes. On PostHog, dimensions are aliased (often materialized) views
+`dim_currency`) carry descriptive attributes. On Flind, dimensions are aliased (often materialized) views
 attached via saved/person joins; in dbt they are `dim_*` marts joined in `fct_*` models. Keep dimension
 grain at one row per entity and test the key is `unique`.

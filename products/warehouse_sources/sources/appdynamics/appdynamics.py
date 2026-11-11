@@ -122,7 +122,7 @@ def normalize_host(host: str) -> str:
 def _resolve_base_url(host: str, team_id: int) -> str:
     """Normalize the controller URL and reject internal/private hosts (SSRF guard).
 
-    ``_is_host_safe`` is a no-op outside of PostHog Cloud, so self-hosted instances can
+    ``_is_host_safe`` is a no-op outside of Flind Cloud, so self-hosted instances can
     still reach any host (e.g. an on-premises controller).
     """
     base_url = normalize_host(host)

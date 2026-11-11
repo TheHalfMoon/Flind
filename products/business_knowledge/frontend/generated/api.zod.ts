@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -132,7 +132,7 @@ export const BusinessKnowledgeSettingsPartialUpdateBody = /* @__PURE__ */ zod.ob
         .boolean()
         .optional()
         .describe(
-            'When true, PostHog learns reusable knowledge from public human replies on resolved support tickets. Rejected when Support is off for this environment.'
+            'When true, Flind learns reusable knowledge from public human replies on resolved support tickets. Rejected when Support is off for this environment.'
         ),
 })
 

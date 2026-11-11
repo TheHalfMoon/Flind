@@ -68,7 +68,7 @@ import {
 import { analyticsBlockType, libraryLabel } from './libraryCatalog'
 import type { SourceDragSource, SourceDropHit } from './sourceDrag'
 
-// Matches PostHog Desktop: edits save shortly after the author stops, and the head is re-read
+// Matches Flind Desktop: edits save shortly after the author stops, and the head is re-read
 // while editing so a publish from elsewhere loads when there is nothing local to lose.
 const SAVE_DEBOUNCE_MS = 700
 const SOURCE_POLL_MS = 4_000
@@ -327,7 +327,7 @@ export type canvasEditLogicType = MakeLogicType<
 >
 
 /**
- * Manual editing of a canvas, ported from PostHog Desktop's block editor. The author edits the head
+ * Manual editing of a canvas, ported from Flind Desktop's block editor. The author edits the head
  * source in the draft sandbox: selecting, moving, inserting and changing blocks rewrites the files
  * locally, a snapshot stack backs undo and redo, and every change publishes a new version shortly after.
  */
@@ -456,7 +456,7 @@ export const canvasEditLogic = kea<canvasEditLogicType>([
         ],
     }),
     selectors({
-        // A browsed version shows instead of the editor, like PostHog Desktop.
+        // A browsed version shows instead of the editor, like Flind Desktop.
         sourceEditing: [
             (s) => [s.editing, s.browseVersionId],
             (editing: boolean, browseVersionId: string | null): boolean => editing && !browseVersionId,
@@ -486,7 +486,7 @@ export const canvasEditLogic = kea<canvasEditLogicType>([
                     return 'This canvas has no source to edit yet.'
                 }
                 if (!sandboxDocumentUrl) {
-                    return "Editing needs a separate canvas origin, and this PostHog instance doesn't have one set up."
+                    return "Editing needs a separate canvas origin, and this Flind instance doesn't have one set up."
                 }
                 if (isGenerating) {
                     return 'The agent is changing the canvas. Wait for it to finish.'

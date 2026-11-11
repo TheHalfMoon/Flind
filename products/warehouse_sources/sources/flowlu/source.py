@@ -52,7 +52,7 @@ class FlowluSource(ResumableSource[FlowluSourceConfig, FlowluResumeConfig]):
             category=DataWarehouseSourceCategory.CRM,
             label="Flowlu",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Flowlu API key and account subdomain to pull your CRM, project, task, and finance data into the PostHog Data warehouse.
+            caption="""Enter your Flowlu API key and account subdomain to pull your CRM, project, task, and finance data into the Flind Data warehouse.
 
 You can create an API key under **Portal Settings → API Settings** in Flowlu. Your subdomain is the first part of your portal URL — for `acme.flowlu.com` the subdomain is `acme`.""",
             iconPath="/static/services/flowlu.png",

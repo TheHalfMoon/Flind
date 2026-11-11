@@ -197,7 +197,7 @@ def runtime_adapter_serves_model(runtime_adapter: RuntimeAdapter | str | None, m
 
 
 # Applied at fire time when a run or loop leaves its model unset ("" / None): a blank
-# model means "let PostHog pick", so defaults can improve without rewriting stored loops.
+# model means "let Flind pick", so defaults can improve without rewriting stored loops.
 DEFAULT_MODEL_BY_RUNTIME_ADAPTER: dict[str, str] = dict(model_catalog.DEFAULT_MODEL_BY_RUNTIME_ADAPTER)
 
 
@@ -435,7 +435,7 @@ def parse_run_state(state: dict[str, Any] | None) -> RunState:
 
 
 # TTL for the per-run GitHub user token cache. Kept for backward-compat with callers
-# (notably the PostHog Desktop CLI) that still pass ``github_user_token`` on the run request.
+# (notably the Flind Desktop CLI) that still pass ``github_user_token`` on the run request.
 # The server-side identity flow should be preferred going forward.
 GITHUB_USER_TOKEN_CACHE_TTL_SECONDS = 6 * 60 * 60
 
@@ -715,7 +715,7 @@ def build_imported_mcp_server_configs(
 ) -> list[McpServerConfig]:
     """Sandbox configs for client-imported MCP servers (TaskRun.imported_mcp_servers).
 
-    Entries whose name collides with an already-resolved server (the PostHog MCP
+    Entries whose name collides with an already-resolved server (the Flind MCP
     or an MCP Store installation) are dropped — existing servers win. Malformed
     entries are skipped rather than failing the launch; the shape was validated
     at run creation, so this only guards against drift in stored data.
@@ -757,7 +757,7 @@ def build_imported_mcp_server_configs(
 def get_relayed_mcp_server_names(task_run: TaskRun, existing_names: Iterable[str]) -> list[str]:
     """Names of desktop-only MCP servers relayed into the run (TaskRun.relayed_mcp_servers).
 
-    Names whose entry collides with an already-resolved MCP config (the PostHog MCP, an MCP Store
+    Names whose entry collides with an already-resolved MCP config (the Flind MCP, an MCP Store
     installation, or an imported server) are dropped — existing servers win. Malformed entries are
     skipped rather than failing the launch; the shape was validated at run creation, so this only
     guards against drift in stored data.
@@ -810,9 +810,9 @@ def _resolve_mcp_consumer(
     """Map the task's reply context to the `x-posthog-mcp-consumer` value.
 
     Slack reply contexts send `"slack"`, posthog_ai (Max) runs send `"posthog_ai"`,
-    and eval harness runs send `"eval"`; everything else (the PostHog Desktop UI,
-    API callers, missing origin) is treated as PostHog Desktop. Browser-created
-    PostHog AI runs can lack an interaction origin, so their task origin selects
+    and eval harness runs send `"eval"`; everything else (the Flind Desktop UI,
+    API callers, missing origin) is treated as Flind Desktop. Browser-created
+    Flind AI runs can lack an interaction origin, so their task origin selects
     the consumer that retains native widget data. Only `"posthog-code"` is a UI-apps host
     on the MCP server — it gates UI-apps payload emission, so `"posthog_ai"` and
     `"slack"` deliberately don't get UI apps. Keep the `"posthog-code"` literal
@@ -845,9 +845,9 @@ def mcp_exec_skills_env_vars(ctx: TaskProcessingContext) -> dict[str, str]:
 
 
 # Names capabilities rather than describing the server, because the agent's tool search reads
-# this before the PostHog MCP has ever connected.
+# this before the Flind MCP has ever connected.
 POSTHOG_MCP_DESCRIPTION = (
-    "Query and manage a PostHog project: events, insights, dashboards, SQL queries, "
+    "Query and manage a Flind project: events, insights, dashboards, SQL queries, "
     "feature flags, experiments, surveys, error tracking, session replay, logs, "
     "LLM analytics, and the data warehouse."
 )
@@ -915,10 +915,10 @@ def get_sandbox_ph_mcp_configs(
     origin_product: str | None = None,
     exclude_tools: Sequence[str] | None = None,
 ) -> list[McpServerConfig]:
-    """Return PostHog MCP server configurations for sandbox agents.
+    """Return Flind MCP server configurations for sandbox agents.
 
     `task_id` is baked into an `X-PostHog-Task-Id` header so the MCP server (and through it the
-    PostHog API) can deterministically attribute the agent's writes to its task — the LLM never
+    Flind API) can deterministically attribute the agent's writes to its task — the LLM never
     handles its own task id.
 
     `origin_product` rides along as `X-PostHog-Task-Origin`. The consumer header can't carry it
@@ -928,7 +928,7 @@ def get_sandbox_ph_mcp_configs(
     Uses SANDBOX_MCP_URL if explicitly set, otherwise MCP_SERVER_URL. Returns an empty list when
     neither is set, because the instance has no MCP server.
     An explicit empty scope list also omits the server: internal-only tokens cannot initialize
-    a PostHog MCP session.
+    a Flind MCP session.
     """
     if scopes == []:
         return []
@@ -1151,7 +1151,7 @@ def get_github_token(github_integration_id: int, repositories: Sequence[str] = (
 
 
 # Downscope for sandboxes that only gather evidence (commit history, PR metadata) and must not be
-# able to write anywhere. Every permission here must be one the PostHog GitHub App holds, or the
+# able to write anywhere. Every permission here must be one the Flind GitHub App holds, or the
 # mint 422s: contents/metadata back `gh api repos/.../commits`, pull_requests backs PR lookups.
 READONLY_SANDBOX_GITHUB_PERMISSIONS: dict[str, str] = {
     "contents": "read",
@@ -1480,7 +1480,7 @@ def _resolve_sandbox_github_token(
     Resolution order for ``USER`` authorship:
 
     1. Caller-supplied token cached at run-create time (backward compat for the
-       PostHog Desktop CLI — wins when present so self-managed tokens still work).
+       Flind Desktop CLI — wins when present so self-managed tokens still work).
     2. Server-side ``UserIntegration`` for the acting user, refreshing on demand.
     3. Team ``Integration`` token for legacy runs that predate persisted user identity.
 
@@ -1662,7 +1662,7 @@ def build_sandbox_environment_variables(
 
 
 def get_sandbox_otel_env_vars() -> dict[str, str]:
-    """OTLP config for agent-server run telemetry (PostHog Logs/APM).
+    """OTLP config for agent-server run telemetry (Flind Logs/APM).
 
     Deliberately POSTHOG_-prefixed rather than the standard OTEL_* names: the
     sandbox env is inherited by user processes, and standard OTEL_* vars would
@@ -1843,7 +1843,7 @@ def _record_pinned_gateway_product(run_id: str, state: dict | None, minted_produ
 WORKFLOWS_PRODUCT = "workflows"
 WORKFLOWS_CREDITS_EXHAUSTED_REFUSAL = "ai_credits_exhausted"
 WORKFLOWS_CREDITS_EXHAUSTED_DETAIL = (
-    "This project has used its monthly PostHog AI credits. "
+    "This project has used its monthly Flind AI credits. "
     "Raise the AI credit limit in billing settings, or wait for the next billing period."
 )
 
@@ -1987,11 +1987,11 @@ def ai_gateway_env_vars(
 # Messages for reasons a retry won't change.
 _POSTHOG_CODE_REFUSAL_MESSAGES = {
     "model_outside_free_pin": "This run's model isn't included in the free plan. Choose a free-plan model or upgrade.",
-    "model_outside_pin": "This run's model isn't available for PostHog Code cloud runs. Choose another model.",
+    "model_outside_pin": "This run's model isn't available for Flind Code cloud runs. Choose another model.",
     "posthog_code_credits_exhausted": POSTHOG_CODE_CREDITS_EXHAUSTED_DETAIL,
     "org_deactivated": "This organization is deactivated.",
     "team_not_found": "This run's project no longer exists.",
-    "not_configured": "Cloud runs can't reach PostHog AI: the AI gateway isn't configured for posthog_code.",
+    "not_configured": "Cloud runs can't reach Flind AI: the AI gateway isn't configured for posthog_code.",
 }
 # A credit lookup or mint can succeed on the next attempt.
 _POSTHOG_CODE_TRANSIENT_REFUSALS = frozenset({"posthog_code_credits_unknown", "mint_failed", "pin_unrecorded"})
@@ -2003,12 +2003,12 @@ def posthog_code_token_unavailable(reason: str, team_id: int | None) -> ProcessT
     if reason in _POSTHOG_CODE_TRANSIENT_REFUSALS:
         # Also the run's final error after the last retry, so it can't promise one.
         return ProcessTaskTransientError(
-            f"Couldn't get a PostHog AI token for this run (reason: {reason}). Try again in a few minutes.",
+            f"Couldn't get a Flind AI token for this run (reason: {reason}). Try again in a few minutes.",
             context,
             RuntimeError(reason),
             capture=False,
         )
-    message = _POSTHOG_CODE_REFUSAL_MESSAGES.get(reason, f"PostHog AI refused this run (reason: {reason}).")
+    message = _POSTHOG_CODE_REFUSAL_MESSAGES.get(reason, f"Flind AI refused this run (reason: {reason}).")
     if reason == "not_configured":
         logger.error("ai_gateway: posthog_code run with no gateway configured (team_id=%s)", team_id)
         return ProcessTaskFatalError(message, context, RuntimeError(reason), capture=False)
@@ -2120,7 +2120,7 @@ def get_git_identity_env_vars(task: Task, state: dict[str, Any] | None = None) -
     """Return git author/committer env vars for the sandbox.
 
     Runs with user authorship are attributed to the acting user.
-    Bot-authored runs fall back to the Dockerfile defaults ("PostHog Desktop" /
+    Bot-authored runs fall back to the Dockerfile defaults ("Flind Desktop" /
     code@posthog.com).
     """
     if get_pr_authorship_mode(task, state) != PrAuthorshipMode.USER:
@@ -2130,7 +2130,7 @@ def get_git_identity_env_vars(task: Task, state: dict[str, Any] | None = None) -
     if user is None:
         return {}
 
-    name = user.get_full_name() or user.first_name or "PostHog User"
+    name = user.get_full_name() or user.first_name or "Flind User"
     email = user.email
 
     return {

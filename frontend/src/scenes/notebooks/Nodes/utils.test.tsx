@@ -258,7 +258,7 @@ describe('notebook node utils', () => {
         })
 
         describe('real-world scenarios', () => {
-            it('should sort PostHog event properties correctly', () => {
+            it('should sort Flind event properties correctly', () => {
                 const entries: [string, any][] = [
                     ['timestamp', '2023-01-01T10:00:00Z'],
                     ['$current_url', 'https://example.com'],

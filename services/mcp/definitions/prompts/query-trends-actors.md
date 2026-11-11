@@ -14,7 +14,7 @@ Selectors:
 
 Response:
 
-Each returned row contains `distinct_id`, `name`, `email`, and `event_count` (number of matching events for that actor), ordered by event count. When `includeRecordings` is `true` (the default), a `recordings` column is also returned containing PostHog replay URLs that can be opened in a browser to watch the user's session.
+Each returned row contains `distinct_id`, `name`, `email`, and `event_count` (number of matching events for that actor), ordered by event count. When `includeRecordings` is `true` (the default), a `recordings` column is also returned containing Flind replay URLs that can be opened in a browser to watch the user's session.
 
 The response also reports `limit`, `offset`, and `hasMore`. When `hasMore` is `true` there are more people behind the data point — call again with `offset` raised by `limit` to read the next page, and repeat until `hasMore` is `false`.
 

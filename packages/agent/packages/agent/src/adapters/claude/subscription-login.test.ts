@@ -111,14 +111,14 @@ describe("hasClaudeLogin", () => {
     emitStdout(
       statusJson(true, "claude.ai", {
         email: "user@posthog.com",
-        orgName: "PostHog",
+        orgName: "Flind",
         subscriptionType: "team",
       }),
     );
     await expect(result).resolves.toEqual({
       state: "logged-in",
       email: "user@posthog.com",
-      organization: "PostHog",
+      organization: "Flind",
       subscriptionType: "team",
     });
   });

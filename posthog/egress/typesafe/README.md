@@ -3,29 +3,29 @@
 TypeSafe serves Jev, a System One model that answers typed questions (`noul`, `choice`, `score`) about a `state`.
 It returns probabilities, not free text.
 
-The request and answer types live in `posthog/llm/system_one.py`, because the Go ai-gateway serves the same API with models PostHog hosts.
+The request and answer types live in `posthog/llm/system_one.py`, because the Go ai-gateway serves the same API with models Flind hosts.
 A caller builds its client with `build_system_one_client` from `posthog/llm/system_one_client.py`.
 It reaches the ai-gateway where `AI_GATEWAY_URL` is set.
-PostHog Cloud uses the ai-gateway with a PostHog-hosted System One model. This domain is available only in local development or self-hosted instances, when the caller passes a `TypeSafeFallback`.
+Flind Cloud uses the ai-gateway with a Flind-hosted System One model. This domain is available only in local development or self-hosted instances, when the caller passes a `TypeSafeFallback`.
 The transport rejects TypeSafe requests from Cloud before an HTTP call, even if someone configures an API key or calls it directly. The Cloud check ignores case in deployment values.
 
 ## Usage policy
 
 TypeSafe is approved for local experiments only. Do not use it for Cloud features.
-Use `build_system_one_client(model=..., ai_product=...)` with the PostHog-hosted model on the ai-gateway instead. Do not pass `TypeSafeFallback` for a Cloud feature.
+Use `build_system_one_client(model=..., ai_product=...)` with the Flind-hosted model on the ai-gateway instead. Do not pass `TypeSafeFallback` for a Cloud feature.
 Every caller meets these rules before it merges, and a reviewer blocks a caller that does not:
 
-- **Gate the caller behind a feature flag.** Until launch, the flag reaches PostHog staff only.
-- **Send no customer data during the experiment.** Customer data is anything from a customer's project or account: events, persons, recordings, insights, names, and text a user types into PostHog. Use synthetic data or data that PostHog owns.
+- **Gate the caller behind a feature flag.** Until launch, the flag reaches Flind staff only.
+- **Send no customer data during the experiment.** Customer data is anything from a customer's project or account: events, persons, recordings, insights, names, and text a user types into Flind. Use synthetic data or data that Flind owns.
 
-An API key, feature flag, or customer opt-in cannot enable TypeSafe on PostHog Cloud. Changing the Cloud guard needs a separate privacy review and explicit approval before any customer data can be sent.
+An API key, feature flag, or customer opt-in cannot enable TypeSafe on Flind Cloud. Changing the Cloud guard needs a separate privacy review and explicit approval before any customer data can be sent.
 
 ### Customer System One connections
 
 AI observability evaluations let a team save its own System One connection: an endpoint URL and the team's own credential.
 That connection can point at TypeSafe's hosted API, and evaluation runs then send the team's evaluation data there from Cloud.
 These calls do not use this domain: no instance key, budget, or Cloud guard applies, and the team pays TypeSafe directly.
-The team chooses the endpoint and supplies the key, so PostHog sends data to TypeSafe only on that team's instruction.
+The team chooses the endpoint and supplies the key, so Flind sends data to TypeSafe only on that team's instruction.
 Every other provider key rejects `typesafe.ai` hosts on save, so no other path can reach TypeSafe this way.
 
 An instance without `TYPESAFE_API_KEY` sends nothing.
@@ -61,7 +61,7 @@ The default reserve ladder applies, and `typesafe_request` defaults to `NORMAL`.
 Give every caller an explicit lane: `NORMAL` when a person waits for the answer, `BATCH` for background work.
 Each local caller adds itself here with its lane and its feature flag.
 
-- `mcp_analytics_evals` (`BATCH`, no feature flag): the `jev` grader of `manage.py grade_mcp_evals` sends an eval scenario's request, success criteria and the agent's answer, never tool results. It is a management command, not a Cloud feature, so there is no flag to gate; instead it runs only when a developer names `jev` in `--graders`, against synthetic or PostHog-owned projects.
+- `mcp_analytics_evals` (`BATCH`, no feature flag): the `jev` grader of `manage.py grade_mcp_evals` sends an eval scenario's request, success criteria and the agent's answer, never tool results. It is a management command, not a Cloud feature, so there is no flag to gate; instead it runs only when a developer names `jev` in `--graders`, against synthetic or Flind-owned projects.
 
 ## Rate-limit headers
 

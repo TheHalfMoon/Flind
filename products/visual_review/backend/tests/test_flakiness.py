@@ -319,7 +319,7 @@ class TestFlakinessOverview(VisualReviewTeamScopedTestMixin, APIBaseTest):
         ]
     )
     def test_a_signed_off_default_branch_failure_is_not_a_flake(self, _name: str, review_state: str):
-        # PostHog's own default-branch runs are observe and carry no approvals, but
+        # Flind's own default-branch runs are observe and carry no approvals, but
         # `purpose` defaults to review, so a repo whose CI omits the flag can land an
         # approved snapshot on master. Counting it would hold a quarantine open over
         # a change somebody already accepted.

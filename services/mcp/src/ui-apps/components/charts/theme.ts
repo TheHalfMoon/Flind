@@ -4,7 +4,7 @@ import { type ChartTheme, useChartTheme } from '@flind/quill-charts'
 
 import type { LifecycleStatus } from '../types'
 
-// PostHog brand palette. Canvas can't read CSS custom properties, so we hand the
+// Flind brand palette. Canvas can't read CSS custom properties, so we hand the
 // chart concrete hexes. The chart picks one per series by index; legends use the
 // same array to stay in sync. Mirrors the web's --data-color-1..15 (light mode) in
 // frontend/src/styles/base.scss so MCP charts match the product and series with many

@@ -1,6 +1,6 @@
-# LLM prompting guide for PostHog
+# LLM prompting guide for Flind
 
-You know code, now meet prompts. This guide explains how we make effective LLM prompts in PostHog's AI features.
+You know code, now meet prompts. This guide explains how we make effective LLM prompts in Flind's AI features.
 
 ## Standard building blocks
 
@@ -25,9 +25,9 @@ llm = ChatOpenAI(model="gpt-4.1")
 
 This context appears at the end of system messages.
 
-## The anatomy of a PostHog prompt
+## The anatomy of a Flind prompt
 
-PostHog prompts typically follow a structure like this:
+Flind prompts typically follow a structure like this:
 
 ```python
 SYSTEM_PROMPT = """
@@ -56,7 +56,7 @@ As you see, we use non-nested XML tags to clearly delineate sections.
 
 ### Variable templating with Mustache
 
-PostHog uses Mustache templating for dynamic content:
+Flind uses Mustache templating for dynamic content:
 
 ```python
 # Basic variable substitution
@@ -228,7 +228,7 @@ You are an expert analyst...
 
 ## Evaluation
 
-Use the [sandbox eval harness](../../products/posthog_ai/eval_harness/README.md) to test PostHog AI 2.0.
+Use the [sandbox eval harness](../../products/posthog_ai/eval_harness/README.md) to test Flind AI 2.0.
 Run `hogli evals --list` to find existing suites. Add cases under `products/posthog_ai/evals/` or `products/<product>/evals/` and follow [`/writing-evals`](../../.agents/skills/writing-evals/SKILL.md).
 
 For expert feedback, tag `@team-posthog-ai` on LLM-related PRs! Before doing that, test your feature with various user prompts, especially tricky ones.

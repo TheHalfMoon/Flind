@@ -1,4 +1,4 @@
-"""Truncate oversized AI analytics events before the PostHog SDK queues them.
+"""Truncate oversized AI analytics events before the Flind SDK queues them.
 
 The vendored ``posthoganalytics`` Consumer drops any single event larger than 900 KiB
 client-side (``consumer.py`` ``MAX_MSG_SIZE``), before it ever reaches capture. Max AI's
@@ -38,7 +38,7 @@ TRUNCATION_MARKER = "...truncated"
 TRUNCATABLE_AI_EVENTS = frozenset({"$ai_trace", "$ai_span", "$ai_generation"})
 # State blobs on $ai_trace/$ai_span, and model input/output on $ai_generation.
 TRUNCATABLE_PROPS = ("$ai_input_state", "$ai_output_state", "$ai_input", "$ai_output_choices")
-# Set on the event when anything was truncated, so it's queryable in PostHog.
+# Set on the event when anything was truncated, so it's queryable in Flind.
 TRUNCATED_FLAG_PROP = "$ai_event_truncated"
 # Short structural fields kept when a message is reduced to its billing-critical shape.
 _KEPT_MESSAGE_FIELDS = ("type", "role", "id", "name", "tool_call_id")

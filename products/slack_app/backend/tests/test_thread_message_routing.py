@@ -60,7 +60,7 @@ class TestRouteThreadMessage(TestCase):
             refreshed_at=timezone.now(),
         )
         # Bob participates in the thread (default ``_make_event`` user). Seed
-        # him as a real PostHog user with team access so the user-resolution
+        # him as a real Flind user with team access so the user-resolution
         # gate passes for happy-path tests; the silent-drop test deliberately
         # uses a different unknown user id.
         self.bob = User.objects.create(email="bob@example.com", distinct_id="user-2")
@@ -127,7 +127,7 @@ class TestRouteThreadMessage(TestCase):
             "channel_type": "channel",
             "ts": "2000.0000",
             "thread_ts": None,
-            "text": "How many people signed up last week in PostHog?",
+            "text": "How many people signed up last week in Flind?",
         }
         return self._make_event(**{**defaults, **overrides})
 
@@ -164,13 +164,13 @@ class TestRouteThreadMessage(TestCase):
             ("a private channel", {"channel_type": "group"}, None, False, True),
             (
                 "a request without a question word",
-                {"text": "need signups by country from PostHog for last month"},
+                {"text": "need signups by country from Flind for last month"},
                 None,
                 False,
                 True,
             ),
             (
-                "a question that does not name PostHog",
+                "a question that does not name Flind",
                 {"text": "How many people signed up last week?"},
                 None,
                 False,
@@ -180,7 +180,7 @@ class TestRouteThreadMessage(TestCase):
             ("a question that tags the app", {"text": "<@U0BOT> how many signups last week?"}, None, False, False),
             ("a group DM", {"channel_type": "mpim"}, None, False, False),
             ("the author picks up only tagged messages", {}, UntaggedFollowupMode.NEVER, False, False),
-            ("an author without a PostHog account", {"user": "U_UNKNOWN"}, None, False, False),
+            ("an author without a Flind account", {"user": "U_UNKNOWN"}, None, False, False),
             ("an externally shared channel", {}, None, True, False),
         ]
     )
@@ -493,7 +493,7 @@ class TestRouteThreadMessage(TestCase):
     def test_tagged_message_starts_workflow_with_resolved_user_and_untagged_flag(self):
         """Happy path: the handler runs the same gates as a mention but on
         success starts the workflow with ``untagged_followup=True`` and the
-        resolved PostHog user. The classifier and thread-history fetch happen
+        resolved Flind user. The classifier and thread-history fetch happen
         inside the workflow."""
         from products.slack_app.backend.api import ROUTE_HANDLED_LOCALLY
 

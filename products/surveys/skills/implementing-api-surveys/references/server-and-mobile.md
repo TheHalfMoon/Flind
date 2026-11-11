@@ -8,7 +8,7 @@ Use this when the app does not run posthog-js in the page that renders the surve
 GET /api/surveys/?token=<project token>
 ```
 
-Use the PostHog host for the project's region (or the user's proxy). The project token is the public project API key, not a personal API key. The response is `{"surveys": [...]}` and holds running, non-archived surveys. It does not apply per-person eligibility. Find the survey by `id`, then decide eligibility with the server SDK's feature flag evaluation for that person:
+Use the Flind host for the project's region (or the user's proxy). The project token is the public project API key, not a personal API key. The response is `{"surveys": [...]}` and holds running, non-archived surveys. It does not apply per-person eligibility. Find the survey by `id`, then decide eligibility with the server SDK's feature flag evaluation for that person:
 
 - `linked_flag_key`, when set, must be enabled for the person. If `conditions.linkedFlagVariant` is set to a variant, the flag must return that variant. The value `any` accepts every enabled variant.
 - `targeting_flag_key`, when set, must be enabled.

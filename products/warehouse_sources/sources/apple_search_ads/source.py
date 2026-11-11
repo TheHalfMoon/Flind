@@ -139,9 +139,9 @@ class AppleSearchAdsSource(
             name=ExternalDataSourceType.APPLESEARCHADS,
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="Apple Ads",
-            caption="""Connect your Apple Ads account, formerly Apple Search Ads, to pull campaigns, ad groups, keywords and daily performance into the PostHog Data warehouse.
+            caption="""Connect your Apple Ads account, formerly Apple Search Ads, to pull campaigns, ad groups, keywords and daily performance into the Flind Data warehouse.
 
-Choose **Sign in with Apple** and authorize PostHog. Apple sends you back here, and the **Ad account** list fills with the accounts you can read.
+Choose **Sign in with Apple** and authorize Flind. Apple sends you back here, and the **Ad account** list fills with the accounts you can read.
 
 Either way, your Apple Ads user needs an API role first, or the connection reads nothing. An account admin grants one in [Apple Ads](https://ads.apple.com) under **Account settings > User management**.
 
@@ -151,7 +151,7 @@ The **API key pair** option is for accounts that run their own API client, and f
 2. Signed in as a user with an API role, open **Account settings > API**, paste the contents of `public-key.pem` into the public key field and save. Saving the key creates the client. An account admin who holds no API role will not see that field.
 3. Apple then shows the client ID, team ID and key ID above the field. Enter those below, along with the contents of `private-key.pem`.
 
-PostHog stores every credential encrypted. With a key pair, PostHog signs a short-lived token on each sync and never stores that token.
+Flind stores every credential encrypted. With a key pair, Flind signs a short-lived token on each sync and never stores that token.
 
 Reporting tables use daily granularity, which Apple serves for the last 90 days only.""",
             permissionsCaption="""Assign the **API Account Read Only** role to the Apple Ads user who sets up the connection, under **Account settings > User management**. Apple attaches API roles to users, not to clients, so this applies to both authentication types. That role grants read access to the campaign data these tables are built from. Pick it rather than the campaign group **API Read Only**, which covers a single campaign group. The **API Account Manager** role also works if you already use it.""",
@@ -169,7 +169,7 @@ Reporting tables use daily granularity, which Apple serves for the last 90 days 
                         label="Authentication type",
                         required=True,
                         # Signing in is the default because it asks the customer for nothing: Apple
-                        # grants the token to PostHog's own service provider registration.
+                        # grants the token to Flind's own service provider registration.
                         defaultValue="oauth",
                         options=[
                             SourceFieldSelectConfigOption(

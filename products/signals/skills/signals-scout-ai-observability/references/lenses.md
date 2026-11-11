@@ -33,7 +33,7 @@ queries for anything more):
 
 ## The deep-dive skills
 
-The sandbox bakes four upstream PostHog skills — they hold the exact, maintained query
+The sandbox bakes four upstream Flind skills — they hold the exact, maintained query
 recipes so this scout doesn't have to. Read the matching one **when you go deep on a
 lens**, not on every run:
 
@@ -69,7 +69,7 @@ lens**, not on every run:
 - **Slice by.** model, provider, `$ai_span_name`, `ai_product`.
 - **Discipline.** Never band latency in aggregate — o3 / preview models are structurally
   slow, so a mix shift moves the aggregate without any regression. Provider-side slowness
-  during a known upstream incident is not a PostHog bug (but may be worth a `watch:`).
+  during a known upstream incident is not a Flind bug (but may be worth a `watch:`).
 
 ## Errors — read `posthog:exploring-llm-traces`
 

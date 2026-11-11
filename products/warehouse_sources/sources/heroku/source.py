@@ -59,7 +59,7 @@ class HerokuSource(ResumableSource[HerokuSourceConfig, HerokuResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Heroku",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Heroku API key to pull your Heroku platform data (apps, releases, builds, dynos, add-ons, and more) into the PostHog Data warehouse.
+            caption="""Enter your Heroku API key to pull your Heroku platform data (apps, releases, builds, dynos, add-ons, and more) into the Flind Data warehouse.
 
 You can find your API key in your [Heroku account settings](https://dashboard.heroku.com/account) under **API Key**, or create a long-lived token with the Heroku CLI: `heroku authorizations:create`.
 """,

@@ -155,7 +155,7 @@ class TasksTeamConfigViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
         request=TasksAgentInstructionsSerializer,
         responses={200: TasksAgentInstructionsSerializer},
         description=(
-            "Set the project instructions that PostHog cloud agents load as their user-level AGENTS.md in every "
+            "Set the project instructions that Flind cloud agents load as their user-level AGENTS.md in every "
             "eligible Tasks run, including autonomous runs. Send an empty string to clear."
         ),
     )
@@ -233,7 +233,7 @@ class TasksUserConfigViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
         request=TasksAgentInstructionsSerializer,
         responses={200: TasksAgentInstructionsSerializer},
         description=(
-            "Set your personal instructions, which PostHog cloud agents load in Tasks runs you start, after the "
+            "Set your personal instructions, which Flind cloud agents load in Tasks runs you start, after the "
             "project instructions. Autonomous runs never get them. Anyone who continues a task you started can "
             "see them, so leave out anything private. Send an empty string to clear."
         ),

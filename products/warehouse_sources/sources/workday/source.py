@@ -60,7 +60,7 @@ class WorkdaySource(ResumableSource[WorkdaySourceConfig, WorkdayResumeConfig]):
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="Workday",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Pull your Workday HCM data into the PostHog Data warehouse over the Workday REST API.
+            caption="""Pull your Workday HCM data into the Flind Data warehouse over the Workday REST API.
 
 Register an API client for integrations in Workday (**Register API Client for Integrations**) with the `staffing` scope, then paste its client ID, client secret and refresh token below.
 

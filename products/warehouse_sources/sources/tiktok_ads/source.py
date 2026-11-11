@@ -129,9 +129,9 @@ class TikTokAdsSource(ResumableSource[TikTokAdsSourceConfig, TikTokAdsResumeConf
             label="TikTok Ads",
             caption=(
                 "Collect campaign data, ad performance, and advertising metrics from TikTok Ads. "
-                "Ensure you have granted PostHog access to your TikTok Ads account, learn how to do this in "
+                "Ensure you have granted Flind access to your TikTok Ads account, learn how to do this in "
                 "[the documentation](https://posthog.com/docs/cdp/sources/tiktok-ads).\n\n"
-                "If TikTok's authorization page rejects the connection before returning to PostHog, this is "
+                "If TikTok's authorization page rejects the connection before returning to Flind, this is "
                 "usually an account or region restriction on TikTok's side. Check that you have an admin role "
                 "in the TikTok Business Center you're connecting, and that TikTok Ads is available in your region. "
                 "If it still fails, copy the Log ID from TikTok's error page and contact support.\n\n"

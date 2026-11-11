@@ -125,7 +125,7 @@ class TestWorkflowEndpointMapping(BaseTest):
         # latest_conclusion, latest_run_id, latest_run_attempt, rerun_cycles, merge_queue_run_count.
         rows = [
             (
-                "PostHog",
+                "Flind",
                 "posthog",
                 "CI",
                 10,
@@ -147,13 +147,13 @@ class TestWorkflowEndpointMapping(BaseTest):
             # No completed runs: success_rate is NULL and quantileIf returns NaN — both map to None,
             # latest_run_failed is None (the completed_count guard), and latest_run_conclusion is None too
             # despite argMaxIf's '' default.
-            ("PostHog", "posthog", "Deploy", 2, 0, 0, 0, None, float("nan"), float("nan"), None, 0, 0, "", 0, 0, 0, 0),
+            ("Flind", "posthog", "Deploy", 2, 0, 0, 0, None, float("nan"), float("nan"), None, 0, 0, "", 0, 0, 0, 0),
         ]
         # A -30d window buckets by day. Must land inside the window (relative to now). Columns:
         # owner, name, workflow, bucket_start, run_count, completed, successes, failures.
-        bucket_rows = [("PostHog", "posthog", "CI", _seed_now() - timedelta(days=1), 10, 8, 7, 1)]
+        bucket_rows = [("Flind", "posthog", "CI", _seed_now() - timedelta(days=1), 10, 8, 7, 1)]
         # Third response: the previous-window success rate (the Δ baseline); Deploy had no prior runs.
-        prev_rows = [("PostHog", "posthog", "CI", 0.95)]
+        prev_rows = [("Flind", "posthog", "CI", 0.95)]
         with mock.patch(
             _RUN_QUERY,
             side_effect=[_resp([(*row, "github_actions") for row in rows]), _resp(bucket_rows), _resp(prev_rows)],
@@ -161,7 +161,7 @@ class TestWorkflowEndpointMapping(BaseTest):
             items = api.list_workflow_health(team=self.team, date_from="-30d", date_to=None)
 
         assert items[0].workflow_name == "CI" and items[0].success_rate == 0.9
-        assert items[0].repo.owner == "PostHog" and items[0].repo.name == "posthog"
+        assert items[0].repo.owner == "Flind" and items[0].repo.name == "posthog"
         assert items[0].granularity == "day"
         assert items[0].latest_run_failed is False
         assert items[0].latest_run_conclusion == "success"
@@ -1084,7 +1084,7 @@ class TestWorkflowEndpointsWarehouse(_EndpointsWarehouseMixin, BaseTest):
         assert run.status == "completed"
         assert run.head_branch == "master"
         assert run.pr_number == 42
-        assert run.repo.owner == "PostHog" and run.repo.name == "posthog"
+        assert run.repo.owner == "Flind" and run.repo.name == "posthog"
         assert run.duration_seconds is not None
 
         # An unknown id is None (the view turns this into a 404).

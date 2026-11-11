@@ -1,4 +1,4 @@
-"""Asks the model for a structured answer through the PostHog AI gateway."""
+"""Asks the model for a structured answer through the Flind AI gateway."""
 
 from __future__ import annotations
 

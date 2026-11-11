@@ -1,7 +1,7 @@
 ---
 name: creating-an-endpoint
 description: >
-  Create a PostHog endpoint with the right shape on the first try — covers query kind choice, name
+  Create a Flind endpoint with the right shape on the first try — covers query kind choice, name
   conventions, what to expose as variables (HogQL code_name vs insight breakdown),
   data_freshness_seconds, and whether to materialise on day one. Use when the user says "create an endpoint", "expose this
   query as an API", "turn this insight into an endpoint", or asks for help structuring a new
@@ -24,7 +24,7 @@ materialisation decision is non-obvious.
 - "Create an endpoint for [query]"
 - "Expose this insight as an API"
 - "Help me turn this HogQL into a callable endpoint"
-- A new caller (mobile app, customer-facing dashboard, downstream pipeline) needs PostHog data
+- A new caller (mobile app, customer-facing dashboard, downstream pipeline) needs Flind data
   and the user is choosing how to deliver it
 
 ## Decisions to make in order
@@ -33,13 +33,13 @@ materialisation decision is non-obvious.
 
 Endpoints are right when:
 
-- An **external system** (someone else's code) needs to call PostHog for data
+- An **external system** (someone else's code) needs to call Flind for data
 - The query is **stable** — not exploratory analysis
 - The shape is **reusable** — same query with different parameters
 
 Endpoints are wrong when:
 
-- An internal PostHog dashboard or insight needs the data — use the insight directly; an endpoint
+- An internal Flind dashboard or insight needs the data — use the insight directly; an endpoint
   only adds an external API surface you don't need internally
 - One-off, exploratory analysis — use the `execute-sql` tool (or the SQL editor) directly
 
@@ -207,7 +207,7 @@ Agent:
 - **Materialised endpoints require all variables to be passed.** Calls without them are
   rejected — this is intentional (security: prevents returning unfiltered data). Pair the
   materialisation recommendation with a note to the user about which variables become required.
-  (Optional/partial variables on materialised endpoints are a known limitation the PostHog team
+  (Optional/partial variables on materialised endpoints are a known limitation the Flind team
   plans to lift — if it's blocking the user, nudge them via the `agent-feedback` tool.)
 - **Don't enable materialisation on a query that isn't eligible.** Use
   `endpoints-materialization-preview` first to confirm eligibility and see the rejection reason
@@ -220,5 +220,5 @@ Agent:
   change their results. They bump the pinned version deliberately once they've validated the new
   one.
 - **Share friction via `agent-feedback`.** If a limitation gets in the way (eligibility rules,
-  required variables, the TTL enum), send the PostHog team a note — it's how the product and these
+  required variables, the TTL enum), send the Flind team a note — it's how the product and these
   tools improve.

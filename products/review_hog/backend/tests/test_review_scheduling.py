@@ -37,7 +37,7 @@ async def test_pushes_coalesce_and_full_requests_survive_an_active_flash_review(
     first = ReviewPRWorkflowInputs(
         team_id=1,
         user_id=1,
-        owner="PostHog",
+        owner="Flind",
         repo="posthog",
         pr_number=7,
         review_mode="flash",
@@ -151,7 +151,7 @@ def test_a_repeated_full_request_waits_when_it_changes_comment_resolution(
     active = ReviewPRWorkflowInputs(
         team_id=1,
         user_id=1,
-        owner="PostHog",
+        owner="Flind",
         repo="posthog",
         pr_number=7,
         review_mode="full",

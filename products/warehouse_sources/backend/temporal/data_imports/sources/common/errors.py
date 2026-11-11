@@ -34,7 +34,7 @@ def auth_non_retryable_errors(host: str | None = None, *, service: str | None = 
 AUTH_401_403_ERRORS: dict[str, str | None] = auth_non_retryable_errors()
 
 
-# PostHog's own egress proxy throttling (429) or briefly unreachable (5xx tunnel, refused, timed
+# Flind's own egress proxy throttling (429) or briefly unreachable (5xx tunnel, refused, timed
 # out): nothing on the customer's side is wrong and the next attempt recovers. Statuses are
 # allowlisted and connect failures name their inner exception so a 407 (proxy auth, deterministic)
 # stays reportable despite sharing the "Cannot connect to proxy." prefix.

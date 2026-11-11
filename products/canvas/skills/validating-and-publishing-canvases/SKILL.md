@@ -12,7 +12,7 @@ description: >
 
 # Validating and publishing canvases
 
-A canvas's source lives in PostHog, versioned per publish. Publishing is guarded: every edit is
+A canvas's source lives in Flind, versioned per publish. Publishing is guarded: every edit is
 based on a specific version, and the server refuses to overwrite newer work. Every publish queues
 a server-side build, and the canvas renders the last successful build.
 
@@ -51,7 +51,7 @@ then dies in the rendered canvas. Declare:
   loopback and private IPs, single-label names like `intranet`, and the `.local`, `.localhost`,
   `.internal`, and `.home.arpa` suffixes are all rejected, so a local dev host such as
   `https://localhost:8010` fails validation with an `invalid_network_origin` error. Data sent to a
-  declared origin leaves PostHog and appears in the capability review before promotion.
+  declared origin leaves Flind and appears in the capability review before promotion.
 
 Before validation, inventory every literal external URL in every source file. Classify navigation
 links and `ph.openExternal()` URLs as navigation; they do not need a network origin. For every

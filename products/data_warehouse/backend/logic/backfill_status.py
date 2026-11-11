@@ -17,7 +17,7 @@ logger = structlog.get_logger(__name__)
 Granularity = ManagedWarehouseBackfillPartition.Granularity
 LifecycleState = ManagedWarehouseBackfillPartition.LifecycleState
 
-# Partition key shapes. These are PostHog's convention for naming a unit of backfill work, not
+# Partition key shapes. These are Flind's convention for naming a unit of backfill work, not
 # any one scheduler's: `1_2026-05` (a historical month), `1_2026-05-04` (a day), `1` (persons'
 # whole history in one run). This module is the only place that decodes them.
 _FULL_KEY = re.compile(r"^\d+$")

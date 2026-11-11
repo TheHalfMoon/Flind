@@ -1,6 +1,6 @@
 # Ingestion Acceptance Tests
 
-End-to-end tests that verify the PostHog ingestion pipeline is functioning correctly. These tests capture real events via the PostHog SDK and query them back via direct ClickHouse queries to ensure events land in ClickHouse as expected.
+End-to-end tests that verify the Flind ingestion pipeline is functioning correctly. These tests capture real events via the Flind SDK and query them back via direct ClickHouse queries to ensure events land in ClickHouse as expected.
 
 ## Goal
 
@@ -65,7 +65,7 @@ class TestExample(AcceptanceTest):
 1. Create a file in `tests/` named `acceptance_test_<feature>.py`
 2. Create a class starting with `Test` that inherits from `AcceptanceTest`
 3. Add methods starting with `test_` for each test case
-4. Use `self.client` for PostHog operations and `self.config` for configuration
+4. Use `self.client` for Flind operations and `self.config` for configuration
 
 **Available client methods:**
 
@@ -87,7 +87,7 @@ All configuration is loaded from environment variables with the `INGESTION_ACCEP
 
 | Variable                | Required | Default                                                                                                         | Description                                                                                                     |
 | ----------------------- | -------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `API_HOST`              | Yes      | -                                                                                                               | PostHog API host (e.g., `https://us.posthog.com`)                                                               |
+| `API_HOST`              | Yes      | -                                                                                                               | Flind API host (e.g., `https://us.posthog.com`)                                                               |
 | `PROJECT_API_KEY`       | Yes      | -                                                                                                               | Project token for capturing events                                                                              |
 | `TEAM_ID`               | Yes      | -                                                                                                               | Team ID for ClickHouse queries                                                                                  |
 | `EVENT_TIMEOUT_SECONDS` | No       | 90                                                                                                              | Max time to wait for events to appear                                                                           |

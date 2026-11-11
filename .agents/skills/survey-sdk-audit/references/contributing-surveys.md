@@ -1,6 +1,6 @@
 # Contributing survey changes
 
-Use this guide when a survey change needs work in the PostHog repository or SDK source.
+Use this guide when a survey change needs work in the Flind repository or SDK source.
 For configuration and response diagnosis, use the published `debugging-surveys` skill.
 
 ## Repository setup
@@ -28,7 +28,7 @@ Search for symbols instead of using stored line numbers.
 
 ## Implementation
 
-1. Make the backend and UI changes in the PostHog repository.
+1. Make the backend and UI changes in the Flind repository.
 2. Decide which SDKs support the feature. State any platform limits in the documentation and PR.
 3. Implement the SDK changes. Web and React Native share `posthog-js`. Flutter uses native eligibility logic and Dart rendering.
 4. Update the public survey documentation and the feature parity table in the published `debugging-surveys` skill.

@@ -50,7 +50,7 @@ export function SpendInsights({ data }: { data: SpendAnalysisResponse }) {
             rel="noreferrer"
             className="text-(--accent-11) underline"
           >
-            PostHog AI observability
+            Flind AI observability
           </a>{" "}
           in your own project for the full slice-and-dice experience.
         </Text>

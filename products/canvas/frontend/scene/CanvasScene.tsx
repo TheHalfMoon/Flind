@@ -137,8 +137,8 @@ function CanvasBody(): JSX.Element {
                         </EmptyMedia>
                         <EmptyTitle>This draft can't be shown here</EmptyTitle>
                         <EmptyDescription>
-                            Drafts render from a separate canvas origin, and this PostHog instance doesn't have one set
-                            up. The canvas shows here once it's built, or you can open it in PostHog Desktop.
+                            Drafts render from a separate canvas origin, and this Flind instance doesn't have one set
+                            up. The canvas shows here once it's built, or you can open it in Flind Desktop.
                         </EmptyDescription>
                     </EmptyHeader>
                 </Empty>

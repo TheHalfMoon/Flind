@@ -998,8 +998,8 @@ describe('RequestStateResolver MCP client contexts', () => {
     })
 
     it.each([
-        ['PostHog Code task', { mcpConsumer: 'posthog-code', taskId: 'task-1' }, false],
-        ['PostHog Code without a task', { mcpConsumer: 'posthog-code', taskId: undefined }, true],
+        ['Flind Code task', { mcpConsumer: 'posthog-code', taskId: 'task-1' }, false],
+        ['Flind Code without a task', { mcpConsumer: 'posthog-code', taskId: undefined }, true],
         ['non-PostHog Code task', { mcpConsumer: 'other', taskId: 'task-1' }, true],
     ] as const)('advertises task artifacts and comments for %s', async (_label, overrides, excluded) => {
         const { resolver, getFilteredTools } = makeResolverWithCatalog()

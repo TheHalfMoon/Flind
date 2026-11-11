@@ -93,7 +93,7 @@ export function ReplayFiltersScannerPopover({ handoff }: { handoff: ScannerHando
                     )}
                 </div>
                 <div className="text-xs text-secondary">
-                    New recordings only. PostHog AI can narrow them to fit your goal.
+                    New recordings only. Flind AI can narrow them to fit your goal.
                     {notKept ? <span> Not kept: {notKept}.</span> : null}
                 </div>
             </div>

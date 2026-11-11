@@ -227,7 +227,7 @@ A database statistic, a build time read from another tool, or a number quoted fr
 **The server checks the aggregation for `affected_users` and `affected_sessions` only.**
 A plain event count formatted as `duration` or `revenue` passes validation and then prints a count beside a time or currency unit, so pick the aggregation from the row above rather than relying on the refusal.
 
-**An `affected_users` metric means distinct PostHog people**, not sessions, events, requests, traces, groups, or the report's signal count.
+**An `affected_users` metric means distinct Flind people**, not sessions, events, requests, traces, groups, or the report's signal count.
 `affected_sessions` means distinct sessions.
 Group math and a formula are refused on both, because the total comes from the series math alone.
 
@@ -484,13 +484,13 @@ Each entry identifies one reviewer by **`github_login`**, **`user_uuid`**, or bo
 
 - **`github_login`** — a **bare, lowercase GitHub login** (e.g. `octocat`, not `@OctoCat`).
   Internal assignment matches it against each user's linked GitHub login by exact, lowercased comparison, so a mis-cased handle, an `@`-prefix, a display name, a CODEOWNERS **team** slug, or an email won't set `is_suggested_reviewer` for anyone (autostart's PR-selection path is more lenient, but the assignment path is not).
-- **`user_uuid`** — a **PostHog user UUID**.
+- **`user_uuid`** — a **Flind user UUID**.
   The server resolves it to that org member. It wins if you also pass a `github_login`.
-  Use this whenever your evidence already names a PostHog user. It works without a linked GitHub account.
+  Use this whenever your evidence already names a Flind user. It works without a linked GitHub account.
   A `user_uuid` that is not an org member of this team is rejected, so it never silently drops.
 
 So you have two routes to a reviewer.
-If you already hold a PostHog user UUID, prefer passing it as `user_uuid` — it's the most reliable.
+If you already hold a Flind user UUID, prefer passing it as `user_uuid` — it's the most reliable.
 Otherwise resolve a `github_login`, cheapest source first:
 
 1. **Scratchpad cache.** A `reviewer:<domain>:<area>` entry you (or a sibling run) recorded before — reuse it.
@@ -654,7 +654,7 @@ Such a scout omits both `emit_report` and `edit_report`, and it does not call `e
 `signals-scout-workflows` is the example.
 It files suggestions through the workflows suggestions API, and the suggestion on the workflow page is its output.
 Its frontmatter description and its "Why this scout files no reports" section state that this is deliberate.
-A report on a workflow change could autostart a code PR for a change that is only PostHog configuration.
+A report on a workflow change could autostart a code PR for a change that is only Flind configuration.
 
 Before you add the report tools to a scout that does not have them, read its description and output section.
 If the scout states a product-specific output, keep it off the report channel.

@@ -77,7 +77,7 @@ function SlackChannelSection(): JSX.Element {
                 <label className="font-medium">Connection</label>
                 <p className="text-xs text-muted-alt">
                     Install the SupportHog bot in your Slack workspace to enable support ticket creation from channels,
-                    mentions, and emoji reactions. This is separate from the main PostHog Slack integration.
+                    mentions, and emoji reactions. This is separate from the main Flind Slack integration.
                 </p>
                 {!slackConnected && (
                     <LemonButton
@@ -100,7 +100,7 @@ function SlackChannelSection(): JSX.Element {
                             onClick: () => connectSlack(window.location.pathname),
                         }}
                     >
-                        Files sent in Slack won't appear on tickets, and images you send from PostHog arrive as links
+                        Files sent in Slack won't appear on tickets, and images you send from Flind arrive as links
                         instead of attachments. Reconnect SupportHog to give it access to files.
                     </LemonBanner>
                 )}

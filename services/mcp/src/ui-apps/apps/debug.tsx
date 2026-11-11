@@ -158,7 +158,7 @@ function useDebugTabState(app: App | null, hostMessageCount: number): DebugTabSt
         } catch (e) {
             const receivedAt = new Date().toISOString()
             const errMsg = e instanceof Error ? e.message : String(e)
-            console.error('[PostHog MCP Debug] Tool call error:', { callId, error: errMsg, receivedAt })
+            console.error('[Flind MCP Debug] Tool call error:', { callId, error: errMsg, receivedAt })
 
             setToolCalls((prev) =>
                 prev.map((c) => (c.id === callId ? { ...c, status: 'error', error: errMsg, receivedAt } : c))
@@ -451,7 +451,7 @@ function ShowcaseTab(): JSX.Element {
                         <Button variant="outline" size="sm">
                             Edit
                         </Button>
-                        <Button size="sm">View in PostHog</Button>
+                        <Button size="sm">View in Flind</Button>
                     </div>
                 </div>
 

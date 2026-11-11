@@ -28,7 +28,7 @@ from products.warehouse_sources.sources.sdk import (
     detect,
 )
 
-RAYGUN_CAPTION = """Enter a Raygun [personal access token](https://raygun.com/documentation/product-guides/apis/personal-access-tokens/) to pull your Raygun crash reporting and real user monitoring data into the PostHog Data warehouse.
+RAYGUN_CAPTION = """Enter a Raygun [personal access token](https://raygun.com/documentation/product-guides/apis/personal-access-tokens/) to pull your Raygun crash reporting and real user monitoring data into the Flind Data warehouse.
 
 Grant the token these read scopes for the tables you want to sync:
 - `applications:read` — Applications

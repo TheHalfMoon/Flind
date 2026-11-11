@@ -6,7 +6,7 @@ export const SurveysFinalSteps = (): JSX.Element => {
     return (
         <Markdown>
             {dedent`
-                After installing the PostHog SDK, you can create your first survey.
+                After installing the Flind SDK, you can create your first survey.
 
 
                 | Resource | Description |
@@ -17,7 +17,7 @@ export const SurveysFinalSteps = (): JSX.Element => {
                 | [Framework guides](https://posthog.com/docs/surveys/tutorials#framework-guides) | Setup guides for React, Next.js, Vue, and other frameworks |
                 | [More tutorials](https://posthog.com/docs/surveys/tutorials) | Other real-world examples and use cases |
 
-                You should also [identify](https://posthog.com/docs/product-analytics/identify) users and [capture events](https://posthog.com/docs/product-analytics/capture-events) with PostHog to control who and when to show surveys to your users.
+                You should also [identify](https://posthog.com/docs/product-analytics/identify) users and [capture events](https://posthog.com/docs/product-analytics/capture-events) with Flind to control who and when to show surveys to your users.
 
                 Not all survey features are available on every SDK. See the [SDK feature support matrix](https://posthog.com/docs/surveys/sdk-feature-support) for a full comparison.
             `}

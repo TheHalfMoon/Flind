@@ -70,7 +70,7 @@ function ToolHeader({ tool }: { tool: PageToolDefinition }): JSX.Element {
                 <LemonButton
                     size="xsmall"
                     icon={<IconExternal />}
-                    tooltip={`Open ${tool.label.toLowerCase()} in PostHog`}
+                    tooltip={`Open ${tool.label.toLowerCase()} in Flind`}
                     onClick={() => openFeature(feature.key, feature.path)}
                     data-attr={`toolbar-extension-feature-${feature.key}`}
                 />

@@ -51,7 +51,7 @@ describe("collectMemorySnapshot", () => {
 });
 
 describe("flattenMemorySnapshot", () => {
-  it("flattens scalars and serializes byType for PostHog", () => {
+  it("flattens scalars and serializes byType for Flind", () => {
     expect(
       flattenMemorySnapshot({
         totalWorkingSetKb: 430,

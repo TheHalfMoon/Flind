@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -185,8 +185,8 @@ export const getCodeInvitesCheckAccessRetrieveUrl = () => {
 }
 
 /**
- * Compatibility endpoint for released PostHog Desktop clients.
- * @summary Check PostHog Desktop access
+ * Compatibility endpoint for released Flind Desktop clients.
+ * @summary Check Flind Desktop access
  */
 export const codeInvitesCheckAccessRetrieve = async (
     options?: RequestInit
@@ -218,7 +218,7 @@ export const getDesktopAccessRetrieveUrl = (projectId: string) => {
 
 /**
  * Evaluate Desktop access for the selected project and organization.
- * @summary Check PostHog Desktop access
+ * @summary Check Flind Desktop access
  */
 export const desktopAccessRetrieve = async (
     projectId: string,
@@ -661,7 +661,7 @@ export const getTaskChannelsFeedCreateUrl = (projectId: string, channelId: strin
 }
 
 /**
- * API for a channel's system-announcement feed — durable "PostHog agent" rows
+ * API for a channel's system-announcement feed — durable "Flind agent" rows
  * (context created, CONTEXT.md being built) rendered alongside the channel's task
  * cards. Read by any team member for a public channel; personal channels are owner-only.
  * @summary Post a channel feed message
@@ -1646,7 +1646,7 @@ export const getTasksRunsAnalyzeCreateUrl = (projectId: string, taskId: string, 
 }
 
 /**
- * Create a PostHog-funded analysis task that reviews this run's transcript for inefficiencies and reports findings. Idempotent per run: if an analysis task already exists for this run, it is returned instead of creating another. The analysis is not billed to the customer.
+ * Create a Flind-funded analysis task that reviews this run's transcript for inefficiencies and reports findings. Idempotent per run: if an analysis task already exists for this run, it is returned instead of creating another. The analysis is not billed to the customer.
  * @summary Analyze this run
  */
 export const tasksRunsAnalyzeCreate = async (
@@ -1905,8 +1905,8 @@ export const getTasksRunsArtifactsReferencesCreateUrl = (projectId: string, task
 }
 
 /**
- * Attach live PostHog object references to the run artifact manifest without uploading files.
- * @summary Register PostHog object references for a task run
+ * Attach live Flind object references to the run artifact manifest without uploading files.
+ * @summary Register Flind object references for a task run
  */
 export const tasksRunsArtifactsReferencesCreate = async (
     projectId: string,
@@ -2017,7 +2017,7 @@ export const getTasksRunsPreviewRetrieveUrl = (projectId: string, taskId: string
 }
 
 /**
- * Redirects to the PostHog dev stack running inside this run's sandbox. A fresh sandbox access token is minted on every request and carried only in the redirect target, so it is never persisted or returned in a response body. When the run has no preview, or its sandbox has stopped, this renders a short HTML page instead.
+ * Redirects to the Flind dev stack running inside this run's sandbox. A fresh sandbox access token is minted on every request and carried only in the redirect target, so it is never persisted or returned in a response body. When the run has no preview, or its sandbox has stopped, this renders a short HTML page instead.
  * @summary Open the dev stack preview for a task run
  */
 export const tasksRunsPreviewRetrieve = async (
@@ -2483,7 +2483,7 @@ export const getTasksRunsLivingArtifactsChartUrl = (projectId: string, taskId: s
 }
 
 /**
- * Renders a PostHog insight (ad-hoc query JSON or a saved insight) to a PNG server-side and registers it as a slack_file living artifact in one call. Blocks until the render finishes.
+ * Renders a Flind insight (ad-hoc query JSON or a saved insight) to a PNG server-side and registers it as a slack_file living artifact in one call. Blocks until the render finishes.
  * @summary Render an insight chart and attach it as a living artifact
  */
 export const tasksRunsLivingArtifactsChart = async (
@@ -2649,7 +2649,7 @@ export const getTasksMeConfigAgentInstructionsCreateUrl = (projectId: string) =>
 }
 
 /**
- * Set your personal instructions, which PostHog cloud agents load in Tasks runs you start, after the project instructions. Autonomous runs never get them. Anyone who continues a task you started can see them, so leave out anything private. Send an empty string to clear.
+ * Set your personal instructions, which Flind cloud agents load in Tasks runs you start, after the project instructions. Autonomous runs never get them. Anyone who continues a task you started can see them, so leave out anything private. Send an empty string to clear.
  */
 export const tasksMeConfigAgentInstructionsCreate = async (
     projectId: string,
@@ -2757,7 +2757,7 @@ export const getTasksConfigAgentInstructionsCreateUrl = (projectId: string) => {
 }
 
 /**
- * Set the project instructions that PostHog cloud agents load as their user-level AGENTS.md in every eligible Tasks run, including autonomous runs. Send an empty string to clear.
+ * Set the project instructions that Flind cloud agents load as their user-level AGENTS.md in every eligible Tasks run, including autonomous runs. Send an empty string to clear.
  */
 export const tasksConfigAgentInstructionsCreate = async (
     projectId: string,
@@ -3083,7 +3083,7 @@ export const getTasksSlackThreadContextRetrieveUrl = (
 }
 
 /**
- * PostHog-internal debug tool. Resolves a Slack permalink to the linked task, its runs, the task-processing and mention-dispatch Temporal workflow ids/URLs, and presigned log URLs.
+ * Flind-internal debug tool. Resolves a Slack permalink to the linked task, its runs, the task-processing and mention-dispatch Temporal workflow ids/URLs, and presigned log URLs.
  * @summary Resolve a Slack thread to its task, runs, and Temporal workflows
  */
 export const tasksSlackThreadContextRetrieve = async (

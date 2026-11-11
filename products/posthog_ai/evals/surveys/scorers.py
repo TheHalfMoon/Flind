@@ -503,7 +503,7 @@ class SurveyCreateSchemaAlignment(JudgedScorer):
         super().__init__(
             name="survey_create_alignment",
             prompt_template="""
-You are judging whether an agent-produced PostHog `survey-create` MCP payload would create the survey the user asked for, compared to a reference expected survey.
+You are judging whether an agent-produced Flind `survey-create` MCP payload would create the survey the user asked for, compared to a reference expected survey.
 
 The bar is semantic equivalence, not strict field equality. Accept harmless defaults and equivalent wording, but reject material differences that would create a different survey.
 

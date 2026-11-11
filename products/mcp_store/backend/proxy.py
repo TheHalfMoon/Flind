@@ -239,7 +239,7 @@ def _gateway_decision(policy_context: PolicyContext, tool: MCPServerInstallation
 
     approved via the caller's own scope (or a legacy per-installation approval)
     reads as a human having approved it; approved via team baseline/rule is
-    auto. needs_approval blocks at the proxy — approval happens in PostHog, not
+    auto. needs_approval blocks at the proxy — approval happens in Flind, not
     inline — and is recorded as pending."""
     resolved = policy_context.resolve(tool.tool_name, tool.annotations)
     if resolved.state == "do_not_use":

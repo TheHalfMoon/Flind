@@ -31,8 +31,8 @@ import { logger } from "@flind/ui/shell/logger";
 const log = logger.scope("analytics");
 
 // Client discriminator stamped on every inbox analytics event so the shared
-// PostHog project can be sliced by surface (this desktop host = "code";
-// mobile sends "mobile"; the PostHog web frontend sends "cloud"). Mirrors
+// Flind project can be sliced by surface (this desktop host = "code";
+// mobile sends "mobile"; the Flind web frontend sends "cloud"). Mirrors
 // posthog's frontend/src/scenes/inbox/inboxAnalytics.ts.
 const INBOX_CLIENT = "code" as const;
 
@@ -200,7 +200,7 @@ export function initializePostHog(sessionId?: string) {
     api_host: apiHost,
     ui_host: uiHost,
     // The flags this app reads are listed in feature-flag-keys.json. Each one must carry the
-    // posthog-desktop evaluation context in PostHog, because this filter hides a flag that is
+    // posthog-desktop evaluation context in Flind, because this filter hides a flag that is
     // tagged only with other contexts. The JSON list does not set the context.
     evaluation_contexts: ["posthog-desktop"],
     metrics: {
@@ -233,7 +233,7 @@ export function initializePostHog(sessionId?: string) {
       captureCanvas: { recordCanvas: false },
     },
     // The shared analytics project runs many popover surveys aimed at the
-    // PostHog web app; any one without URL/event conditions would render here
+    // Flind web app; any one without URL/event conditions would render here
     // too. This app submits survey responses through its server-owned feedback
     // endpoint, which survey rendering being off does not affect.
     disable_surveys: true,
@@ -277,7 +277,7 @@ export function initializePostHog(sessionId?: string) {
  */
 export function logSessionRecordingStatus() {
   if (!isInitialized) {
-    log.warn("PostHog not initialized");
+    log.warn("Flind not initialized");
     return;
   }
 
@@ -305,7 +305,7 @@ export function startSessionRecording() {
 
   log.info("Attempting to start session recording...");
 
-  // Use PostHog's startSessionRecording API which overrides triggers
+  // Use Flind's startSessionRecording API which overrides triggers
   posthog.startSessionRecording();
 
   // Log status after attempting to start
@@ -464,7 +464,7 @@ export function buildPermissionToolMetadata(
 }
 
 /**
- * Capture an exception for error tracking using PostHog's built-in exception tracking.
+ * Capture an exception for error tracking using Flind's built-in exception tracking.
  */
 export function captureException(
   error: Error,
@@ -486,7 +486,7 @@ export function captureException(
 
 /**
  * Check if a feature flag is enabled for the current user.
- * Returns false if PostHog is not initialized or flag is not found.
+ * Returns false if Flind is not initialized or flag is not found.
  */
 export function isFeatureFlagEnabled(flagKey: string): boolean {
   if (!isInitialized) {

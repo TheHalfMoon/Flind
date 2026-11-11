@@ -562,7 +562,7 @@ class PremiumFeaturePermission(BasePermission):
     Exactly one of the two attributes must be set on the view.
 
     Staff impersonating a customer (`is_impersonated_session`) bypass the feature check
-    so PostHog support can debug paid features for non-paying orgs. Plain staff sessions
+    so Flind support can debug paid features for non-paying orgs. Plain staff sessions
     are not bypassed — staff must actively start an impersonation session, which is
     audit-logged via the `loginas` flow.
     """
@@ -842,7 +842,7 @@ def get_authenticator_scoped_organization_ids(authenticator) -> list[str] | None
     if credential is not None:
         return list(credential.scoped_organizations or []) or None
     if isinstance(authenticator, IDJagAccessTokenAuthentication):
-        # An ID-JAG access token is bound to the one PostHog organization whose OrganizationDomain
+        # An ID-JAG access token is bound to the one Flind organization whose OrganizationDomain
         # pinned the trusted IdP, carried in the `org_id` claim. Confining it to that organization
         # keeps it away from the other organizations the resolved user happens to belong to
         # (cross-org confused-deputy defense).
@@ -1352,7 +1352,7 @@ class AccessControlPermission(ScopeBasePermission):
                     # problem, and clients act on it by refreshing the token and retrying.
                     raise PermissionDenied(
                         "This endpoint reads the project that is set on your account, and your "
-                        "account has none. Open PostHog, select a project, then try again."
+                        "account has none. Open Flind, select a project, then try again."
                     )
 
         uac = self._get_user_access_control(request, view)
@@ -1420,7 +1420,7 @@ def posthog_feature_flag_value(
     only_evaluate_locally: bool = False,
     caller_properties: dict[str, str] | None = None,
 ) -> bool | None:
-    """Server-side check of a PostHog-internal gating flag with org/project group context.
+    """Server-side check of a Flind-internal gating flag with org/project group context.
 
     Matches in-app flag evaluation: posthog-js often has project (team) context; server-only org
     groups miss per-environment rollouts (e.g. logs-settings-drop-rules for project 2 only).
@@ -1615,7 +1615,7 @@ class UserCanCreateProjectPermission(BasePermission):
 
 def is_mcp_built_in_agent_oauth_request(request: Request) -> bool:
     """Whether the request authenticated with an OAuth token minted for one of
-    PostHog's built-in agents (carries the server-only `mcp_builtin_agent` scope)."""
+    Flind's built-in agents (carries the server-only `mcp_builtin_agent` scope)."""
     authenticator = request.successful_authenticator
     if not isinstance(authenticator, OAuthAccessTokenAuthentication):
         return False

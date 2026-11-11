@@ -18,7 +18,7 @@ def token_scope(url: str, token: str) -> str:
 
 class GitLabClient(RecordedEgressClient):
     """Recorded, never gated. The customer owns the token, and each instance admin sets its own
-    limits, so PostHog has no budget it can model. The caller handles error responses."""
+    limits, so Flind has no budget it can model. The caller handles error responses."""
 
     observability = gitlab_egress
     egress_domain = "gitlab"
@@ -46,7 +46,7 @@ def gitlab_request(
 
     Pass ``token=None`` for an anonymous request, which sees only public projects on gitlab.com.
 
-    Pass ``scoped=False`` when the token is a candidate PostHog has not stored yet. Each scope
+    Pass ``scoped=False`` when the token is a candidate Flind has not stored yet. Each scope
     retains a counter child and three gauge children for the lifetime of the process, so a caller
     that probes with rejected tokens would otherwise grow the metric registry without a bound.
     """

@@ -49,7 +49,7 @@ class NpmRegistrySource(ResumableSource[NpmRegistrySourceConfig, NpmRegistryResu
             label="npm registry",
             releaseStatus=ReleaseStatus.GA,
             keywords=["npm", "node", "javascript", "downloads"],
-            caption="""Pull daily download counts and published-version metadata for npm packages from the public npm registry into the PostHog Data warehouse.
+            caption="""Pull daily download counts and published-version metadata for npm packages from the public npm registry into the Flind Data warehouse.
 
 npm's read APIs are public, so no credentials are required. There is no practical way to sync the whole registry, so enter the package names you want to track, one per line (or comma-separated). For example:
 

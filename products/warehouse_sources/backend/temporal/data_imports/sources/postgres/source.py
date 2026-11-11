@@ -115,15 +115,15 @@ _RAILWAY_INTERNAL_HOST_ERROR = (
     "public TCP proxy host and port Railway shows for your database instead."
 )
 
-# ENETUNREACH / EHOSTUNREACH at connect time: the host resolved to a public address PostHog can't
-# route to. The common cause is a host that only accepts IPv6 (PostHog egresses over IPv4) — for
-# example a Supabase direct-connection host — or a firewall dropping PostHog's IPs. Deterministic
+# ENETUNREACH / EHOSTUNREACH at connect time: the host resolved to a public address Flind can't
+# route to. The common cause is a host that only accepts IPv6 (Flind egresses over IPv4) — for
+# example a Supabase direct-connection host — or a firewall dropping Flind's IPs. Deterministic
 # for the configured host, so give an actionable message instead of the generic connect fallback.
 _HOST_UNREACHABLE_ERROR = (
-    "PostHog reached the network but couldn't open a connection to the database host. This usually "
-    "means the host only accepts IPv6 connections (PostHog connects over IPv4), or a firewall is "
-    "blocking PostHog's IP addresses. Use a host that's reachable over IPv4 (for example a "
-    "connection pooler), enable your provider's IPv4 add-on, or add PostHog's IP addresses to your "
+    "Flind reached the network but couldn't open a connection to the database host. This usually "
+    "means the host only accepts IPv6 connections (Flind connects over IPv4), or a firewall is "
+    "blocking Flind's IP addresses. Use a host that's reachable over IPv4 (for example a "
+    "connection pooler), enable your provider's IPv4 add-on, or add Flind's IP addresses to your "
     "firewall allowlist, then try again."
 )
 
@@ -142,14 +142,14 @@ _ROLE_CANNOT_LOG_IN_ERROR = (
     "user, then re-enable the sync."
 )
 
-# A custom PL/pgSQL `RAISE EXCEPTION` (most often a row-level security policy) denying PostHog's
+# A custom PL/pgSQL `RAISE EXCEPTION` (most often a row-level security policy) denying Flind's
 # sync connection, which carries no authenticated application user. The message is customer-authored
 # free text, so this stays deliberately generic rather than naming the specific check that failed.
 _CUSTOM_ACCESS_DENIAL_ERROR = (
     "A database function used by one or more of the tables you selected to sync denied the read "
     '(PostgreSQL reported a custom "RAISE EXCEPTION" naming an access denial). This is often a '
-    "row-level security policy that expects an authenticated application user, which PostHog's "
-    "sync connection doesn't have. Update the policy or function to allow PostHog's connecting "
+    "row-level security policy that expects an authenticated application user, which Flind's "
+    "sync connection doesn't have. Update the policy or function to allow Flind's connecting "
     "role, or remove the affected tables from the sync, then re-enable the sync."
 )
 
@@ -169,7 +169,7 @@ _INVALID_CREDENTIALS_VALIDATION_ERROR = (
 )
 
 _HOST_RESOLUTION_RETRY_MESSAGE = (
-    "PostHog couldn't resolve your database host right now. Check the host name, then try again in a moment."
+    "Flind couldn't resolve your database host right now. Check the host name, then try again in a moment."
 )
 
 # libpq and the raw socket layer word the same DNS failure three different ways, so they share one
@@ -180,13 +180,13 @@ _DNS_RESOLUTION_VALIDATION_ERROR = (
 )
 
 # libpq appends this hint both to a refused connection and to one the network dropped, which is what
-# a firewall that hasn't allowlisted PostHog looks like from our side.
+# a firewall that hasn't allowlisted Flind looks like from our side.
 _HOST_UNREACHABLE_VALIDATION_ERROR = (
     "Could not connect to the database on the host and port given. Check the host and port are "
-    "correct, and that PostHog's IP addresses are allowed through your firewall."
+    "correct, and that Flind's IP addresses are allowed through your firewall."
 )
 
-_CONNECT_TIMEOUT_VALIDATION_ERROR = "Connection timed out. Check that your database is reachable from the public internet and that PostHog's egress IP addresses are allowed through your firewall (see the docs). For a database that can't be exposed publicly, use the SSH tunnel option."
+_CONNECT_TIMEOUT_VALIDATION_ERROR = "Connection timed out. Check that your database is reachable from the public internet and that Flind's egress IP addresses are allowed through your firewall (see the docs). For a database that can't be exposed publicly, use the SSH tunnel option."
 
 _DATABASE_NOT_FOUND_VALIDATION_ERROR = (
     "The database named in your connection details doesn't exist on this server. Check the database name is "
@@ -315,8 +315,8 @@ PostgresErrors = {
     # already handles this on the streaming path; map it here too so validation returns an
     # actionable message instead of the generic fallback.
     "address not in tenant allow_list": (
-        "Your database provider rejected the connection because PostHog's IP address isn't on its IP "
-        "allow list. Add PostHog's IP addresses to that allow list, then try again."
+        "Your database provider rejected the connection because Flind's IP address isn't on its IP "
+        "allow list. Add Flind's IP addresses to that allow list, then try again."
     ),
     "could not translate host name": _DNS_RESOLUTION_VALIDATION_ERROR,
     # libpq prefixes a DNS-resolution failure with "could not translate host name ..." (matched
@@ -328,7 +328,7 @@ PostgresErrors = {
     # customer's unresolvable host as captured error noise.
     "Name or service not known": _DNS_RESOLUTION_VALIDATION_ERROR,
     "No address associated with hostname": _DNS_RESOLUTION_VALIDATION_ERROR,
-    # A public host PostHog resolved but can't route to (IPv6-only host, or a firewall dropping our
+    # A public host Flind resolved but can't route to (IPv6-only host, or a firewall dropping our
     # IPs). Placed before the "Is the server running..." entry — some libpq versions append that hint
     # to routing failures too, and the IPv4/pooler guidance here is more actionable. `get_non_retryable_errors`
     # already treats both as non-retryable on the streaming path.
@@ -347,7 +347,7 @@ PostgresErrors = {
     # extra word the server message lacks, so it never substring-matched this. Placed after the
     # "requires connecting via" entry so the host guidance wins when a message carries both.
     "SSL/TLS connection required": (
-        'Your database refused an unencrypted connection ("SSL/TLS connection required"). PostHog '
+        'Your database refused an unencrypted connection ("SSL/TLS connection required"). Flind '
         "only tries an unencrypted connection after an encrypted one fails, so check that the host "
         "is the hostname your database provider gave you rather than an IP address, then try again."
     ),
@@ -355,7 +355,7 @@ PostgresErrors = {
     # (wrong port, an HTTP/proxy/edge endpoint, or a TCP proxy fronting a paused/deleted database).
     # Map it to an actionable message so validation stops surfacing this expected user/upstream
     # condition as captured error noise. See `get_non_retryable_errors` for the streaming-path twin.
-    "received invalid response to SSL negotiation": "PostHog reached the host and port you configured, but the server didn't respond like a PostgreSQL server speaking SSL. Check that the host and port point at your PostgreSQL server (not an HTTP, proxy, or edge endpoint) and that the database is running.",
+    "received invalid response to SSL negotiation": "Flind reached the host and port you configured, but the server didn't respond like a PostgreSQL server speaking SSL. Check that the host and port point at your PostgreSQL server (not an HTTP, proxy, or edge endpoint) and that the database is running.",
     "SSL connection has been closed unexpectedly": "The SSL/TLS connection to your database was closed unexpectedly. Check your database's SSL configuration and that the port is correct.",
     # libpq reports a server-side socket close during the startup handshake with this wording. During
     # credential validation it almost always means the host/port points at something that isn't (or
@@ -369,7 +369,7 @@ PostgresErrors = {
     # Supabase/Supavisor reports a saturated session-mode pooler as
     # "FATAL: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to
     # pool_size: <n>". Every client slot the pooler exposes is in use, so it refuses new connections
-    # until one frees up — a config/capacity condition on the customer's pooler, not a PostHog bug.
+    # until one frees up — a config/capacity condition on the customer's pooler, not a Flind bug.
     # Map it to an actionable message so credential validation stops surfacing it as captured error
     # noise. The volatile pool_size number and the "(EMAXCONNSESSION)" code prefix are excluded from
     # the match. NB: this is intentionally NOT added to `get_non_retryable_errors` — pooler
@@ -390,7 +390,7 @@ _POSTGRES_IMPLEMENTATION = PostgresImplementation()
 _PROBE_STATEMENT_TIMEOUT_MS = int((FAST_RETURN_PROBE_TIMEOUT.total_seconds() - 10) * 1000)
 
 RLS_WARNING_MESSAGE = (
-    "Row-level security is active on this table for the sync role, so PostHog can only read "
+    "Row-level security is active on this table for the sync role, so Flind can only read "
     "rows the policy permits, and cannot detect how many rows are hidden. "
     "Granting the sync role BYPASSRLS will silence the check."
 )
@@ -399,7 +399,7 @@ RLS_WARNING_MESSAGE = (
 # setup. Kept clear of the connect-time substrings in `get_non_retryable_errors` so the condition
 # stays retryable — see `ForeignServerUnreachableError`.
 _FOREIGN_SERVER_UNREACHABLE_ERROR = (
-    "A table selected for sync is a postgres_fdw foreign table and PostHog could not connect to the "
+    "A table selected for sync is a postgres_fdw foreign table and Flind could not connect to the "
     "foreign server it points at. This is usually a transient outage of that downstream server; if it "
     "persists, check that the foreign server is running and reachable from your source database."
 )
@@ -414,13 +414,13 @@ _FOREIGN_SERVER_UNREACHABLE_EXHAUSTED_MESSAGE = (
 
 # sshtunnel raises BaseSSHTunnelForwarderError("Could not establish session to SSH gateway") when it
 # can't open a session to the bastion — the SSH host/port is wrong or unreachable, the bastion is
-# down, or its firewall blocks PostHog's IPs. The raw message tells the user nothing actionable, so
+# down, or its firewall blocks Flind's IPs. The raw message tells the user nothing actionable, so
 # replace it with concrete guidance on both the validate and sync paths.
 _SSH_GATEWAY_SESSION_ERROR = "Could not establish session to SSH gateway"
 _SSH_GATEWAY_UNREACHABLE_GUIDANCE = (
-    "Could not connect to your SSH tunnel — PostHog couldn't open a session to the SSH gateway. "
+    "Could not connect to your SSH tunnel — Flind couldn't open a session to the SSH gateway. "
     "Check that the SSH host and port point to a reachable SSH server (not the database port), that "
-    "the bastion is running, and that PostHog's IP addresses are allowed through its firewall"
+    "the bastion is running, and that Flind's IP addresses are allowed through its firewall"
 )
 _SSH_GATEWAY_UNREACHABLE_MESSAGE = f"{_SSH_GATEWAY_UNREACHABLE_GUIDANCE}."
 # The sync path classifies this non-retryable, which switches the schema off, so the customer has
@@ -440,7 +440,7 @@ _SSH_GATEWAY_UNREACHABLE_SYNC_MESSAGE = f"{_SSH_GATEWAY_UNREACHABLE_GUIDANCE}, t
 # retryable rather than disabling an otherwise healthy sync.
 _SSH_FORWARD_FAILED_ERROR = "An error occurred while opening tunnels."
 _SSH_FORWARD_FAILED_GUIDANCE = (
-    "PostHog signed in to your SSH server but couldn't reach the database through it. Check that "
+    "Flind signed in to your SSH server but couldn't reach the database through it. Check that "
     "the database host and port are reachable from the SSH server, and that the server allows port "
     "forwarding"
 )
@@ -456,7 +456,7 @@ _SSH_FORWARD_FAILED_EXHAUSTED_MESSAGE = (
 # fails the moment the sync — or a direct query — opens its connection. An SSH tunnel with
 # `require_tls` off is the supported way to reach such a server.
 _SSL_UNSUPPORTED_ERROR = (
-    "Your database doesn't support the encrypted connection PostHog requires. Enable SSL/TLS on "
+    "Your database doesn't support the encrypted connection Flind requires. Enable SSL/TLS on "
     "your database server, or connect through an SSH tunnel instead."
 )
 
@@ -465,7 +465,7 @@ _SSL_UNSUPPORTED_ERROR = (
 # carrying the customer's host and IP and no next action. Each message below names the class and
 # what to check, and deliberately carries no connection detail. See `get_retry_exhausted_errors`.
 _CONNECTION_DROPPED_EXHAUSTED_MESSAGE = (
-    "PostHog's connection to your database kept closing before the sync could finish, and "
+    "Flind's connection to your database kept closing before the sync could finish, and "
     "reconnecting didn't help. The database, a connection pooler, a firewall, or an SSH tunnel is "
     "ending the connection early. Check those for idle or connection lifetime timeouts, restarts, "
     "and failovers. This sync is still enabled and will run again on its next schedule."
@@ -488,14 +488,14 @@ _SERVER_UNAVAILABLE_EXHAUSTED_MESSAGE = (
 # unavailable" refusal (see `_SERVICE_UNAVAILABLE_ERROR_SUBSTRING` in postgres.py), which names no
 # lifecycle state, so the message doesn't claim one either.
 _SERVICE_UNAVAILABLE_EXHAUSTED_MESSAGE = (
-    "Your database refused PostHog's connection, reporting that the service was temporarily "
+    "Your database refused Flind's connection, reporting that the service was temporarily "
     "unavailable, and it was still refusing connections after every retry. Check your database and "
     "any connection pooler or proxy in front of it for an ongoing outage, maintenance, or failover. "
     "This sync is still enabled and will run again on its next schedule."
 )
 
 _CONNECTION_LIMIT_EXHAUSTED_MESSAGE = (
-    "Your database had no free connection slots for PostHog, and none freed up before the retries "
+    "Your database had no free connection slots for Flind, and none freed up before the retries "
     "ran out. Raise the connection limit on the database or its pooler, or reduce how many other "
     "clients connect at the same time. This sync is still enabled and will run again on its next "
     "schedule."
@@ -503,17 +503,17 @@ _CONNECTION_LIMIT_EXHAUSTED_MESSAGE = (
 
 # What a customer reads when their database reports a damaged page rather than a damaged row
 # length. The driver text is raw Postgres internals (a TOAST chunk number, a block number), so it
-# reads like a PostHog defect and names no next action.
+# reads like a Flind defect and names no next action.
 _SOURCE_PAGE_CORRUPTION_ERROR = (
-    "PostHog couldn't read one of the tables you're syncing because your database reported "
-    "damaged data on disk. PostHog only reads from your source, so this has to be repaired on "
+    "Flind couldn't read one of the tables you're syncing because your database reported "
+    "damaged data on disk. Flind only reads from your source, so this has to be repaired on "
     "your database. Check your database server logs, run a consistency check on the table (for "
     "example pg_amcheck), reindex it if an index is damaged, or restore the affected data from a "
     "backup. Then re-enable the sync."
 )
 
 _RECOVERY_CONFLICT_EXHAUSTED_MESSAGE = (
-    "Your read replica kept canceling PostHog's reads because it had to apply changes from the "
+    "Your read replica kept canceling Flind's reads because it had to apply changes from the "
     "primary that removed rows the sync was still reading, and the conflict outlasted every retry. "
     "Increase max_standby_streaming_delay on the replica, enable hot_standby_feedback, or point the "
     "connection at the primary database. This sync is still enabled and will run again on its next "
@@ -521,7 +521,7 @@ _RECOVERY_CONFLICT_EXHAUSTED_MESSAGE = (
 )
 
 _SPURIOUS_CANCEL_EXHAUSTED_MESSAGE = (
-    "Your database canceled one of PostHog's statements, and the sync kept hitting the same "
+    "Your database canceled one of Flind's statements, and the sync kept hitting the same "
     "cancellation on every retry. This can happen when a connection pooler recycles connections "
     "mid-query, or someone or something on your database canceled it. Check your database and "
     "pooler logs around the time of the failure. This sync is still enabled and will run again on "
@@ -529,7 +529,7 @@ _SPURIOUS_CANCEL_EXHAUSTED_MESSAGE = (
 )
 
 _SERIALIZATION_CONFLICT_EXHAUSTED_MESSAGE = (
-    "Your database kept aborting PostHog's read with a transaction serialization conflict, and the "
+    "Your database kept aborting Flind's read with a transaction serialization conflict, and the "
     "conflict outlasted every retry. This is common on CockroachDB and similar databases under "
     "heavy write load. Check how busy the table is during the sync window, or point the connection "
     "at a replica with less write traffic. This sync is still enabled and will run again on its "
@@ -541,15 +541,15 @@ _SERIALIZATION_CONFLICT_EXHAUSTED_MESSAGE = (
 # that the host is unreachable for good.
 _CONNECT_TIMEOUT_ERROR = "connection timeout expired"
 _CONNECT_TIMEOUT_EXHAUSTED_MESSAGE = (
-    "PostHog couldn't connect to your database before the connection timed out, and it did so again "
+    "Flind couldn't connect to your database before the connection timed out, and it did so again "
     "on every retry. Check that the database is running and reachable from the public internet, and "
-    "that PostHog's egress IP addresses are allowed through your firewall. For a database that can't "
+    "that Flind's egress IP addresses are allowed through your firewall. For a database that can't "
     "be exposed publicly, use the SSH tunnel option. This sync is still enabled and will run again on "
     "its next schedule."
 )
 
 # Supavisor blocks new connections for a short time after too many failed sign-ins to a project.
-# The failures can come from any client of that project, so the block does not prove that PostHog's
+# The failures can come from any client of that project, so the block does not prove that Flind's
 # credentials are wrong. When they are wrong, the next attempt after the block clears gets
 # "password authentication failed", which stops the sync.
 _POOLER_AUTH_CIRCUIT_BREAKER_ERROR = "too many authentication failures"
@@ -751,7 +751,7 @@ class PostgresSource(
             name=ExternalDataSourceType.POSTGRES,
             category=DataWarehouseSourceCategory.DATABASES,
             keywords=["postgresql", "sql", "rds", "aws rds", "amazon rds", "aurora"],
-            caption="Enter your Postgres credentials to automatically pull your Postgres data into the PostHog Data warehouse",
+            caption="Enter your Postgres credentials to automatically pull your Postgres data into the Flind Data warehouse",
             iconPath="/static/services/postgres.png",
             docsUrl="https://posthog.com/docs/cdp/sources/postgres",
             fields=cast(
@@ -772,7 +772,7 @@ class PostgresSource(
                         required=True,
                         placeholder="db.example.com",
                         caption=(
-                            "Must be reachable from the public internet. Add PostHog's egress IP addresses to your "
+                            "Must be reachable from the public internet. Add Flind's egress IP addresses to your "
                             "firewall allowlist (see the docs above) and use a public host. `localhost` and private "
                             "IPs (10.x, 172.16-31.x, 192.168.x) can't be reached. For a database that can't be "
                             "exposed publicly, enable the SSH tunnel below."
@@ -838,7 +838,7 @@ class PostgresSource(
             # This entry comes first because the finalizer takes the first match, and a multi-address
             # refusal can also carry a generic "Connection refused" or timeout for another address.
             "branch is hibernated": (
-                "Your database provider hibernated this branch, so PostHog can't connect. "
+                "Your database provider hibernated this branch, so Flind can't connect. "
                 "Reactivate the branch in your provider's dashboard, then re-enable the sync."
             ),
             # xmin can't run against this relation (server < PG13, no primary key, or a partitioned
@@ -895,7 +895,7 @@ class PostgresSource(
             # below). Unlike the sibling ":etimedout"/":econnrefused" tuples in
             # `_CONNECTION_DROPPED_ERROR_SUBSTRINGS` — a transient blip reaching a backend that's up —
             # there's no route to the backend's network at all, which is deterministic for the
-            # configured host (an IPv6-only backend PostHog can't route to, or a firewall dropping our
+            # configured host (an IPv6-only backend Flind can't route to, or a firewall dropping our
             # IPs), so retrying re-hits the same wall. Match the stable erlang-tuple fragment.
             "{:error, :enetunreach}": _HOST_UNREACHABLE_ERROR,
             # Supabase/Supavisor poolers reject a connection that carries no tenant identifier with
@@ -1037,7 +1037,7 @@ class PostgresSource(
             # reset artifact.
             "incremental_field and incremental_field_type can't be None": (
                 "This table is set to sync incrementally but has no incremental field configured, so "
-                "PostHog can't build its sync query. Choose an incremental field for the table in its "
+                "Flind can't build its sync query. Choose an incremental field for the table in its "
                 "sync settings, or switch it to full table replication, then re-enable the sync."
             ),
             # `xmin` was picked as a plain incremental/append field instead of through the dedicated
@@ -1059,14 +1059,14 @@ class PostgresSource(
             # Marking it non-retryable would permanently disable syncs on a transient blip. A
             # genuinely unsupported-SSL source fails at connect time with a different message and is
             # caught via "SSLRequiredError" / "SSL/TLS connection is required".
-            # A Neon-style proxy rejects the connection because PostHog's egress IP isn't on the
+            # A Neon-style proxy rejects the connection because Flind's egress IP isn't on the
             # project's configured IP allow list (EADDRNOTALLOWED). Deterministic until the customer
             # updates the allow list, so retrying just re-hits the same rejection. NB: the raw message
             # lowercases "address" ("... FATAL:  (EADDRNOTALLOWED) address not in tenant allow_list:
             # ..."), unlike the capitalized key this replaced, which never matched production traffic.
             "address not in tenant allow_list": (
-                "Your database provider rejected the connection because PostHog's IP address is not on "
-                'its configured allow list ("address not in tenant allow_list"). Add PostHog\'s egress IP '
+                "Your database provider rejected the connection because Flind's IP address is not on "
+                'its configured allow list ("address not in tenant allow_list"). Add Flind\'s egress IP '
                 "addresses to your database provider's IP allow list, then re-enable the sync."
             ),
             # Neon words its own IP allow list rejection differently from the Supavisor key above
@@ -1074,12 +1074,12 @@ class PostgresSource(
             # project that blocks public access with "... from a blocked network". Both are the
             # customer's network policy, so every retry re-hits them until they change it.
             "is not allowed to connect to this endpoint": (
-                "Your database provider rejected the connection because PostHog's IP address isn't on its "
-                "IP allow list. Add PostHog's egress IP addresses to that allow list, then re-enable the sync."
+                "Your database provider rejected the connection because Flind's IP address isn't on its "
+                "IP allow list. Add Flind's egress IP addresses to that allow list, then re-enable the sync."
             ),
             "access this endpoint from a blocked network": (
-                "Your database provider blocks connections from the public internet, so PostHog can't "
-                "connect. Allow public access for PostHog's IP addresses, then re-enable the sync."
+                "Your database provider blocks connections from the public internet, so Flind can't "
+                "connect. Allow public access for Flind's IP addresses, then re-enable the sync."
             ),
             # A Neon-style proxy rejects the connection for a specific branch/compute endpoint —
             # observed when the branch is archived, suspended, or otherwise restricted from external
@@ -1137,7 +1137,7 @@ class PostgresSource(
             # database host doesn't resolve to an address — a config/DNS issue on their side that
             # retrying won't fix.
             "No address associated with hostname": _DNS_RESOLUTION_ERROR,
-            # A resolved-but-unroutable host (ENETUNREACH) — an IPv6-only host PostHog can't reach
+            # A resolved-but-unroutable host (ENETUNREACH) — an IPv6-only host Flind can't reach
             # over IPv4, or a firewall dropping our egress IPs. Already non-retryable, but the bare
             # driver text ("connection to server at <host> ... Network is unreachable") gives the
             # customer nothing to act on and echoes their host/IP back into `latest_error`. Surface
@@ -1170,7 +1170,7 @@ class PostgresSource(
             # SELECT won't help, so it needs its own EXECUTE-oriented message and must precede the
             # generic "permission denied for" so that message is the one selected.
             "permission denied for function": (
-                "PostHog's database role isn't allowed to execute a function used by one or more of the "
+                "Flind's database role isn't allowed to execute a function used by one or more of the "
                 'tables or views you selected to sync (PostgreSQL reported "permission denied for function"). '
                 "This often happens when a view decrypts secrets (for example Supabase Vault's "
                 "crypto_aead_det_decrypt). Grant the connecting role EXECUTE on that function, or remove the "
@@ -1183,26 +1183,26 @@ class PostgresSource(
             # SELECT denial below, and it must precede the generic "permission denied for" so this
             # USAGE-oriented message is the one selected.
             "permission denied for schema": (
-                "PostHog's database role isn't allowed to access a schema that contains one or more of the "
+                "Flind's database role isn't allowed to access a schema that contains one or more of the "
                 'tables you selected to sync (PostgreSQL reported "permission denied for schema"). Grant the '
                 "connecting role USAGE on that schema and SELECT on the tables in it (for example: "
                 "GRANT USAGE ON SCHEMA <schema> TO <role>), or remove those tables from the sync, then "
                 "re-enable the sync."
             ),
             "permission denied for": (
-                "PostHog's database role isn't allowed to read one or more of the tables you selected to sync "
+                "Flind's database role isn't allowed to read one or more of the tables you selected to sync "
                 '(PostgreSQL reported "permission denied"). Grant the connecting role SELECT on those tables '
                 "(for example: GRANT SELECT ON <table> TO <role>), then re-enable the sync."
             ),
             # A custom "app.*" session GUC the connecting role doesn't set — raised (SQLSTATE 42704)
             # by a row-level security policy, view, or connection pooler that reads a per-session
             # setting the application is expected to set (e.g. `current_setting('app.client_id')`).
-            # PostHog only ever sets standard parameters (client_encoding, statement_timeout,
+            # Flind only ever sets standard parameters (client_encoding, statement_timeout,
             # DateStyle, idle_in_transaction_session_timeout), so an unrecognized `app.*` parameter is
             # always the customer's own setup and is permanent until they change it — retrying just
             # re-hits it. Match the stable "app." namespace prefix; the parameter name after it varies.
             'unrecognized configuration parameter "app.': (
-                "Your database expects a session setting that PostHog doesn't provide (PostgreSQL "
+                "Your database expects a session setting that Flind doesn't provide (PostgreSQL "
                 'reported "unrecognized configuration parameter"). This usually comes from a row-level '
                 "security policy, view, or connection pooler that reads a custom setting (for example "
                 "app.current_tenant). Make that setting optional in your database (for example with "
@@ -1235,7 +1235,7 @@ class PostgresSource(
             # The OS-level TCP connect() timing out (strerror(ETIMEDOUT)) instead of getting an
             # immediate refusal or unreachable-route response. Same connect-time host-reachability
             # class as its two siblings above — usually a non-routable host (e.g. a private RDS
-            # endpoint) or a firewall silently dropping PostHog's egress IPs — and won't change on
+            # endpoint) or a firewall silently dropping Flind's egress IPs — and won't change on
             # retry until the customer fixes the network path.
             "Connection timed out": None,
             "password authentication failed connection": None,
@@ -1250,7 +1250,7 @@ class PostgresSource(
             # the volatile host/port so the condition is caught on both paths. Placed before the
             # generic SSL entries so its accurate message wins if both happen to match.
             "no application protocol": (
-                "PostHog couldn't complete a TLS handshake with the host and port you configured — "
+                "Flind couldn't complete a TLS handshake with the host and port you configured — "
                 'the server rejected the connection during TLS negotiation ("no application '
                 "protocol\"). This usually means the host and port don't point at a PostgreSQL server "
                 "speaking TLS (for example an HTTP, proxy, or edge endpoint, or the wrong port). "
@@ -1265,7 +1265,7 @@ class PostgresSource(
             # Placed before the generic SSL entries so its accurate message wins. The volatile
             # trailing byte is excluded from the match.
             "received invalid response to SSL negotiation": (
-                "PostHog reached the host and port you configured, but the server didn't respond "
+                "Flind reached the host and port you configured, but the server didn't respond "
                 'like a PostgreSQL server during the SSL handshake ("received invalid response to '
                 "SSL negotiation\"). This usually means the host and port don't point at a "
                 "PostgreSQL server speaking SSL — for example an HTTP, proxy, or edge endpoint, the "
@@ -1282,7 +1282,7 @@ class PostgresSource(
             # together.
             "SSL/TLS connection required": (
                 'Your database refused an unencrypted connection ("SSL/TLS connection required"). '
-                "PostHog only tries an unencrypted connection after an encrypted one fails, so "
+                "Flind only tries an unencrypted connection after an encrypted one fails, so "
                 "check that the host for this source is the hostname your database provider gave "
                 "you rather than an IP address, then re-enable the sync."
             ),
@@ -1293,7 +1293,7 @@ class PostgresSource(
             _SSH_GATEWAY_SESSION_ERROR: _SSH_GATEWAY_UNREACHABLE_SYNC_MESSAGE,
             # paramiko raises a bare, message-less EOFError when the SSH gateway accepts the TCP
             # connection but drops it mid-handshake (a non-SSH service on the port, the bastion
-            # refusing PostHog's IPs, a proxy resetting the stream). sshtunnel doesn't wrap it, so
+            # refusing Flind's IPs, a proxy resetting the stream). sshtunnel doesn't wrap it, so
             # without translation it surfaces as an empty-message crash that matches no rule and
             # retries forever. `postgres_source` re-raises it as `_SSH_HANDSHAKE_EOF_ERROR` — same
             # gateway-configuration class as "Could not establish session to SSH gateway" above.
@@ -1301,7 +1301,7 @@ class PostgresSource(
                 "Could not connect to your SSH tunnel — the gateway accepted the connection but "
                 "closed it during the SSH handshake. Check that the SSH host and port point to an "
                 "SSH server (not the database port), that the bastion is running and reachable, and "
-                "that PostHog's IP addresses are allowed through its firewall, then re-enable the sync."
+                "that Flind's IP addresses are allowed through its firewall, then re-enable the sync."
             ),
             # Raised by `SSHTunnel.get_tunnel` when `is_auth_valid()` fails — the SSH tunnel private
             # key can't be parsed, or password auth is missing a username/password. The auth config
@@ -1323,7 +1323,7 @@ class PostgresSource(
             ),
             "exceeded the compute time quota": (
                 "Your database provider has suspended the database because the account or project "
-                'exceeded its compute-time quota ("exceeded the compute time quota"). PostHog can\'t '
+                'exceeded its compute-time quota ("exceeded the compute time quota"). Flind can\'t '
                 "connect until the database is available again. Upgrade your provider's plan or wait "
                 "for the quota to reset, then re-enable the sync."
             ),
@@ -1345,7 +1345,7 @@ class PostgresSource(
             # retry re-hits the same refusal. Match the stable provider sentence; it carries no host
             # or account detail.
             "The endpoint has been disabled": (
-                "Your database provider has disabled the compute endpoint, so PostHog can't connect "
+                "Your database provider has disabled the compute endpoint, so Flind can't connect "
                 '("The endpoint has been disabled"). This usually happens when a usage limit is '
                 "exceeded or the endpoint was disabled manually. Re-enable the endpoint from your "
                 "provider's dashboard or API, then re-enable the sync."
@@ -1366,7 +1366,7 @@ class PostgresSource(
             # camelCase reason code, which carries no host or account detail.
             "planLimitReached": (
                 "Your database provider has restricted the account because a plan limit was reached, "
-                "so PostHog can't connect. This usually comes from a database proxy such as Prisma. "
+                "so Flind can't connect. This usually comes from a database proxy such as Prisma. "
                 "Upgrade the plan or contact your provider to lift the restriction, then re-enable "
                 "the sync."
             ),
@@ -1374,7 +1374,7 @@ class PostgresSource(
             # refuses the connection because an invoice is unpaid. Only the customer's billing
             # settles it, so every retry re-hits the refusal. Match the stable camelCase reason code.
             "unpaidPlanInvoice": (
-                "Your database provider has restricted the account over an unpaid invoice, so PostHog "
+                "Your database provider has restricted the account over an unpaid invoice, so Flind "
                 "can't connect. Settle it with your provider, then re-enable the sync."
             ),
             # Any other restriction reason from that same sentence. The reason codes are the
@@ -1383,7 +1383,7 @@ class PostgresSource(
             # host and port. Placed after the two specific codes, whose guidance is more actionable,
             # because finalization takes the first matching entry.
             "Your account has restrictions": (
-                "Your database provider has restricted the account, so PostHog can't connect. Contact "
+                "Your database provider has restricted the account, so Flind can't connect. Contact "
                 "your provider to lift the restriction, then re-enable the sync."
             ),
             # The provider has put the cluster into read-only mode, so it rejects our read (the
@@ -1394,7 +1394,7 @@ class PostgresSource(
             # exclude the volatile leading "pg_readonly:" prefix and trailing docs URL.
             "cluster is read-only": (
                 "Your database provider has put the database cluster into read-only mode, so it's "
-                'rejecting PostHog\'s queries ("cluster is read-only"). Providers such as PlanetScale '
+                'rejecting Flind\'s queries ("cluster is read-only"). Providers such as PlanetScale '
                 "do this when a storage or usage limit is exceeded. Restore write access to the cluster "
                 "(for example free up storage or upgrade your plan), then re-enable the sync."
             ),
@@ -1407,7 +1407,7 @@ class PostgresSource(
             # message also fires transiently while a server is starting up, shutting down, or failing
             # over and must stay retryable (see the "the database system is starting up" mapping above).
             "Hot standby mode is disabled": (
-                "PostHog connected to a PostgreSQL standby (read replica) that isn't accepting "
+                "Flind connected to a PostgreSQL standby (read replica) that isn't accepting "
                 'connections because hot standby is turned off ("Hot standby mode is disabled"). '
                 "Enable hot_standby on the replica and restart it, or point this source at the primary "
                 "database, then re-enable the sync."
@@ -1444,7 +1444,7 @@ class PostgresSource(
             # the condition is sustained and a whole-activity retry just re-reads from offset 0 into the
             # same wall, so it's non-retryable. Substring excludes the volatile retry count.
             "kept canceling reads due to conflict with recovery": (
-                "PostHog repeatedly hit Postgres recovery conflicts while reading from your read replica "
+                "Flind repeatedly hit Postgres recovery conflicts while reading from your read replica "
                 '("canceling statement due to conflict with recovery"). This happens when the replica must '
                 "apply changes from the primary that remove rows the sync is still reading. Increase "
                 "max_standby_streaming_delay on the replica, enable hot_standby_feedback, or point the "
@@ -1456,7 +1456,7 @@ class PostgresSource(
             # unlike the same conflict on a table that has a key, which stays retryable.
             "no key that can resume a canceled read": (
                 "Your read replica canceled the sync's read of this table "
-                '("canceling statement due to conflict with recovery"). To resume the read, PostHog '
+                '("canceling statement due to conflict with recovery"). To resume the read, Flind '
                 "needs a column that is unique and never null, and this table doesn't have one. "
                 "Without it, reading the table again would duplicate or miss rows. Add a primary key "
                 "to the table, increase max_standby_streaming_delay on the replica, enable "
@@ -1485,7 +1485,7 @@ class PostgresSource(
             # str(e) and the Temporal-wrapped "OutOfMemory: ..." workflow-level form. The volatile
             # request size and memory-context name are excluded from the match.
             "out of memory": (
-                "Your database server ran out of memory while PostHog was reading from it "
+                "Your database server ran out of memory while Flind was reading from it "
                 '(PostgreSQL reported "out of memory"). This usually means the server is undersized, '
                 "work_mem is set too high, or too many connections are competing for memory. Reduce "
                 "memory pressure on your database (for example lower work_mem, reduce concurrent "
@@ -1545,8 +1545,8 @@ class PostgresSource(
             # incremental field and its data. The volatile offending value is excluded from the match.
             # Coercing the cursor here would change sync semantics (risk of skipped/duplicated rows),
             # so stop and ask the user to reset.
-            "invalid input syntax for type integer": "PostHog tried to resume this table's incremental sync from a non-integer cursor value against an integer incremental field, which your database rejects. This usually means the incremental field's type doesn't match its data. Please reset and fully re-sync this table, or pick a different incremental field.",
-            "invalid input syntax for type bigint": "PostHog tried to resume this table's incremental sync from a non-integer cursor value against a bigint incremental field, which your database rejects. This usually means the incremental field's type doesn't match its data. Please reset and fully re-sync this table, or pick a different incremental field.",
+            "invalid input syntax for type integer": "Flind tried to resume this table's incremental sync from a non-integer cursor value against an integer incremental field, which your database rejects. This usually means the incremental field's type doesn't match its data. Please reset and fully re-sync this table, or pick a different incremental field.",
+            "invalid input syntax for type bigint": "Flind tried to resume this table's incremental sync from a non-integer cursor value against a bigint incremental field, which your database rejects. This usually means the incremental field's type doesn't match its data. Please reset and fully re-sync this table, or pick a different incremental field.",
             # Same mechanism as the integer/bigint keys above, but for a column whose declared type
             # changed to boolean at the source after it was picked as the incremental field (e.g. an
             # integer status column altered to `boolean`). `IncrementalFieldType` has no boolean
@@ -1554,7 +1554,7 @@ class PostgresSource(
             # column's type drifted out from under an already-stored cursor. The stored watermark no
             # longer parses against the column's new type, and every retry re-runs the identical
             # failing query, so stop and ask the user to reset.
-            "invalid input syntax for type boolean": "PostHog tried to resume this table's incremental sync from a cursor value that your database can no longer parse as a boolean. This usually means the incremental field's column type changed at the source after this sync started. Please reset and fully re-sync this table, or pick a different incremental field.",
+            "invalid input syntax for type boolean": "Flind tried to resume this table's incremental sync from a cursor value that your database can no longer parse as a boolean. This usually means the incremental field's column type changed at the source after this sync started. Please reset and fully re-sync this table, or pick a different incremental field.",
             # Raised (ObjectNotInPrerequisiteState, SQLSTATE 55000) when a selected materialized view
             # was created `WITH NO DATA` and never refreshed — every SELECT against it fails until the
             # customer runs `REFRESH MATERIALIZED VIEW`. Deterministic and outside our control, so
@@ -1618,9 +1618,9 @@ class PostgresSource(
             # Temporal-wrapped "ReadOnlySqlTransaction: ..." workflow-level form.
             "in a read-only transaction": (
                 "One of the tables or views you selected to sync tries to write to your database while "
-                "PostHog is reading it (for example a view or trigger that refreshes a materialized "
-                "view), and PostHog reads inside a read-only transaction so the write is rejected "
-                '("cannot execute ... in a read-only transaction"). PostHog never writes to your '
+                "Flind is reading it (for example a view or trigger that refreshes a materialized "
+                "view), and Flind reads inside a read-only transaction so the write is rejected "
+                '("cannot execute ... in a read-only transaction"). Flind never writes to your '
                 "source. Remove that relation from the sync, or change its definition so reading it "
                 "doesn't perform a write, then re-enable the sync."
             ),
@@ -1632,7 +1632,7 @@ class PostgresSource(
             # user/server names.
             "user mapping not found for": (
                 "One of the tables you selected to sync is a foreign table (postgres_fdw), and "
-                "PostHog's database role has no user mapping for the foreign server it points at "
+                "Flind's database role has no user mapping for the foreign server it points at "
                 '(PostgreSQL reported "user mapping not found"). Create a user mapping for the '
                 "connecting role on that foreign server (CREATE USER MAPPING ...), or remove the "
                 "foreign table from the sync, then re-enable the sync."
@@ -1687,7 +1687,7 @@ class PostgresSource(
             # 22P02). Ordinary tables validate uuid values at write time, so the value comes from the
             # customer's side: a foreign table or a view that casts text to uuid, or a row filter on a
             # uuid column. Row filter validation treats uuid as a plain string, so it accepts any
-            # value. No query PostHog builds casts to uuid, and uuid is never an incremental field
+            # value. No query Flind builds casts to uuid, and uuid is never an incremental field
             # type. Every retry runs the same statement again. The volatile value is excluded.
             "invalid input syntax for type uuid": (
                 "PostgreSQL rejected a value that isn't a valid UUID for a uuid column "
@@ -1735,7 +1735,7 @@ class PostgresSource(
                 'a signed-in user and rejects the read when none is present ("Access denied: No '
                 'user ID provided"). This usually means the function depends on request-scoped auth '
                 "context (for example Supabase's auth.uid()) that a direct database connection like "
-                "PostHog's never has. Update the function to allow the connecting role through, or "
+                "Flind's never has. Update the function to allow the connecting role through, or "
                 "remove the affected view or column from the sync, then re-enable the sync."
             ),
         }
@@ -2349,7 +2349,7 @@ class PostgresSource(
 
         ssh_tunnel = self.make_ssh_tunnel_func(config, inputs.team_id, POSTGRES_HOST_CHECK_SOURCE_TYPE)
 
-        # This reads sync metadata from PostHog's own database, not the customer's Postgres — a
+        # This reads sync metadata from Flind's own database, not the customer's Postgres — a
         # transient failure reaching it (e.g. a DNS blip resolving our host) is a plain Django
         # `OperationalError`, which `_handle_import_error` already classifies as a self-recovering
         # app-DB blip and keeps out of error tracking. Let it propagate as-is: wrapping it would only

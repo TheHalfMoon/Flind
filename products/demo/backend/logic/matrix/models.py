@@ -120,7 +120,7 @@ class SimEvent:
 
 
 class SimClient(ABC):
-    """An abstract PostHog client."""
+    """An abstract Flind client."""
 
     LIB_NAME: str  # Used for `$lib` property
     LIB_VERSION: str  # Used for `$lib_version` property
@@ -419,7 +419,7 @@ class SimPerson(ABC):
 
     # Constant properties
     in_product_id: str  # User ID within the product being simulated (freeform string)
-    in_posthog_id: Optional[UUID]  # PostHog person ID (must be a UUID)
+    in_posthog_id: Optional[UUID]  # Flind person ID (must be a UUID)
     country_code: str
     region: str
     city: str

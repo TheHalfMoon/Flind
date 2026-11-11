@@ -94,7 +94,7 @@ export function TabsHeader({
                     <View
                         accessible
                         accessibilityRole="image"
-                        accessibilityLabel="PostHog"
+                        accessibilityLabel="Flind"
                         accessibilityState={{ busy: slot?.refreshing ?? false }}
                         testID="tabs-logomark"
                     >
@@ -143,7 +143,7 @@ export function TabsHeader({
                         onPress={onMore}
                         accessibilityLabel="More"
                         accessibilityValue={
-                            statusUpdate ? { text: `PostHog status update: ${statusUpdate}` } : undefined
+                            statusUpdate ? { text: `Flind status update: ${statusUpdate}` } : undefined
                         }
                         pressedBackground={colors.background}
                         style={styles.button}

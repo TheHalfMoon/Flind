@@ -1,11 +1,11 @@
 ---
 name: managing-streamlit-apps
-description: Create, deploy, and operate Streamlit apps in PostHog via the streamlit-apps MCP tools — create an app, set its source, read and patch its code, start and stop its sandbox, poll status, list versions, delete, and share the app with humans via its PostHog URL. Use when asked to "create a streamlit app", "deploy a data app", "ship a dashboard app", "restart/stop my app", "why is my app not running", or "give me a link to the app".
+description: Create, deploy, and operate Streamlit apps in Flind via the streamlit-apps MCP tools — create an app, set its source, read and patch its code, start and stop its sandbox, poll status, list versions, delete, and share the app with humans via its Flind URL. Use when asked to "create a streamlit app", "deploy a data app", "ship a dashboard app", "restart/stop my app", "why is my app not running", or "give me a link to the app".
 ---
 
 # Managing Streamlit apps
 
-A Streamlit app is a Python data app running in an isolated sandbox inside PostHog.
+A Streamlit app is a Python data app running in an isolated sandbox inside Flind.
 Each app has immutable versions of its code; one version is active; a sandbox process serves the active version.
 The full lifecycle is driven with the `streamlit-apps-*` MCP tools.
 
@@ -16,14 +16,14 @@ The full lifecycle is driven with the `streamlit-apps-*` MCP tools.
 2. `streamlit-apps-set-source` with the complete `app.py` source as one string.
    Extra files ride along in the same call: `files` maps a project-relative path to text (helper modules, CSV, JSON), `assets` maps a path to base64 (Parquet, images).
    This creates version 1 and activates it.
-   Write the source per the `writing-streamlit-apps` skill — in particular use `posthog_apps.query()` for PostHog data, never `import posthog`.
+   Write the source per the `writing-streamlit-apps` skill — in particular use `posthog_apps.query()` for Flind data, never `import posthog`.
 3. `streamlit-apps-start`.
    Returns immediately; the sandbox boots asynchronously.
 4. Poll `streamlit-apps-status` until `status` is `running` (typically well under a minute).
    If it lands on `error`, read `last_error` — see Troubleshooting below.
-5. Share the app: the `_posthogUrl` returned by create/get/start (`/streamlit-apps/{short_id}`) is the app's page in PostHog.
+5. Share the app: the `_posthogUrl` returned by create/get/start (`/streamlit-apps/{short_id}`) is the app's page in Flind.
    That link is what you give humans.
-   Viewers need to be logged into PostHog with access to the project (the app renders in an authenticated iframe; there is no public URL).
+   Viewers need to be logged into Flind with access to the project (the app renders in an authenticated iframe; there is no public URL).
 
 ## Whose data the app reads
 

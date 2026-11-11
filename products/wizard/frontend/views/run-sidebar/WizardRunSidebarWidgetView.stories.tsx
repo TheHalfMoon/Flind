@@ -13,8 +13,8 @@ const baseRun: WizardRunApi = {
     workspace: { type: 'git_repository', repository: 'example/project' },
     program: {
         id: 'posthog-integration',
-        name: 'PostHog integration',
-        description: 'Set up PostHog',
+        name: 'Flind integration',
+        description: 'Set up Flind',
         wizard_version: '2.78.0',
         command: [],
         tags: [],
@@ -186,7 +186,7 @@ export const ManyRuns: Story = {
         runs: Array.from({ length: 36 }, (_, index) => ({
             ...baseRun,
             id: `example-run-${index}`,
-            program: { ...baseRun.program, name: index % 2 ? 'Analytics audit' : 'PostHog integration' },
+            program: { ...baseRun.program, name: index % 2 ? 'Analytics audit' : 'Flind integration' },
             status: (['running', 'failed', 'completed'] as const)[index % 3],
         })),
         initialMenuOpen: true,

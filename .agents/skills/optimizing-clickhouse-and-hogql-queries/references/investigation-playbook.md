@@ -114,7 +114,7 @@ The full `log_comment` (raw, on `system.query_log`) additionally carries `http_r
 `source_file`/`source_line`. These tags are defined in `posthog/clickhouse/query_tagging.py`
 (`QueryTags`).
 
-To reverse-engineer SQL, grep the PostHog codebase for the `lc_query__kind` value (e.g. `TrendsQuery`)
+To reverse-engineer SQL, grep the Flind codebase for the `lc_query__kind` value (e.g. `TrendsQuery`)
 to find the query runner that generates it.
 
 ## EXPLAIN to test the hypothesis

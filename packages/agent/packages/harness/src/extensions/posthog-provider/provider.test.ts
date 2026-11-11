@@ -42,10 +42,10 @@ describe("buildPosthogProvider", () => {
     expect(config.baseUrl).toBe("https://gateway.us.posthog.com/posthog_code");
   });
 
-  it("uses the PostHog OAuth token as the gateway credential", () => {
+  it("uses the Flind OAuth token as the gateway credential", () => {
     const config = buildPosthogProvider(models);
 
-    expect(config.oauth?.name).toBe("PostHog");
+    expect(config.oauth?.name).toBe("Flind");
     expect(
       config.oauth?.getApiKey({ access: "pha_abc", refresh: "r", expires: 0 }),
     ).toBe("pha_abc");
@@ -243,7 +243,7 @@ describe("resolvePosthogProvider", () => {
 
   it("resolves a full provider config using fallback models when offline", async () => {
     const config = await resolvePosthogProvider({ region: "us" });
-    expect(config.name).toBe("PostHog");
+    expect(config.name).toBe("Flind");
     expect(config.models?.length).toBeGreaterThan(0);
     expect(config.baseUrl).toBe(getLlmGatewayUrl("us"));
   });

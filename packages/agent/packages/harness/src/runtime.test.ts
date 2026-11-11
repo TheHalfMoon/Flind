@@ -25,7 +25,7 @@ afterEach(async () => {
 
 describe("createHarnessRuntime", () => {
   it(
-    "returns a native Pi runtime with the PostHog model and named harness extensions",
+    "returns a native Pi runtime with the Flind model and named harness extensions",
     { timeout: 15_000 },
     async () => {
       vi.stubEnv("PI_OFFLINE", "1");

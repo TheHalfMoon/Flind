@@ -136,7 +136,7 @@ export const BRAND_MARKS = {
     },
 } satisfies Record<string, BrandMarkShape>
 
-export type IconMarkName = 'PostHog' | 'Unbranded model' | 'Other harnesses' | 'Unidentified client'
+export type IconMarkName = 'Flind' | 'Unbranded model' | 'Other harnesses' | 'Unidentified client'
 
 export type BrandMarkName = keyof typeof BRAND_MARKS | IconMarkName
 

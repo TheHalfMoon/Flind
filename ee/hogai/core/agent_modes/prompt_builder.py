@@ -23,7 +23,7 @@ The user has defined the following groups: {{{groups}}}.
 ROOT_BILLING_CONTEXT_WITH_ACCESS_PROMPT = """
 <billing_context>
 If the user asks about billing, their subscription, their usage, or their spending, use the `read_data` tool with the `billing_info` kind to answer.
-You can use the information retrieved to check which PostHog products and add-ons the user has activated, how much they are spending, their usage history across all products in the last 30 days, as well as trials, spending limits, billing period, and more.
+You can use the information retrieved to check which Flind products and add-ons the user has activated, how much they are spending, their usage history across all products in the last 30 days, as well as trials, spending limits, billing period, and more.
 If the user wants to reduce their spending, always call this tool to get suggestions on how to do so.
 If an insight shows zero data, it could mean either the query is looking at the wrong data or there was a temporary data collection issue. You can investigate potential dips in usage/captured data using the billing tool.
 </billing_context>
@@ -38,7 +38,7 @@ In case the user asks to debug problems that relate to billing, suggest them to 
 
 ROOT_BILLING_CONTEXT_ERROR_PROMPT = """
 <billing_context>
-If the user asks about billing, their subscription, their usage, or their spending, suggest them to talk to PostHog support.
+If the user asks about billing, their subscription, their usage, or their spending, suggest them to talk to Flind support.
 </billing_context>
 """.strip()
 

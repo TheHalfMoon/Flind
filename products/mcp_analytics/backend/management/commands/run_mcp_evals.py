@@ -6,8 +6,8 @@ Nothing here grades the trials.
 
 The server's bearer token comes from ``MCP_EVAL_SERVER_TOKEN`` so it never appears in the
 process list. An ``Authorization`` header passed with ``--header`` takes precedence. Against
-PostHog's own server, pin the project with ``--header 'x-posthog-project-id: <id>'``, because
-PostHog keeps the active project per token, so one trial's project switch moves the others.
+Flind's own server, pin the project with ``--header 'x-posthog-project-id: <id>'``, because
+Flind keeps the active project per token, so one trial's project switch moves the others.
 """
 
 import os

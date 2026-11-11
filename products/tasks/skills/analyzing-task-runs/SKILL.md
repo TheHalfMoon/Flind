@@ -1,7 +1,7 @@
 ---
 name: analyzing-task-runs
 description: >-
-  Split a completed PostHog task run into activity records — what the agent tried, whether it
+  Split a completed Flind task run into activity records — what the agent tried, whether it
   worked, what blocked it — and record each one through the report_activity tool. Use when a task
   asks to analyze a run, produce a task analysis, or review a run from an attached run log. Covers
   the log query protocol (bounded jq queries over the raw JSONL), both log schemas, the activity

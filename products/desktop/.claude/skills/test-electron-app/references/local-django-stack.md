@@ -9,7 +9,7 @@ Check for existing processes before starting anything. Reuse services you do not
 Prefer the smallest stack that exercises the contract:
 
 - Docker data services required by the endpoint
-- Django on the local PostHog URL
+- Django on the local Flind URL
 - root Vite when Django pages such as login and OAuth need it
 - the desktop Electron dev process
 

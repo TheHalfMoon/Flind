@@ -17,7 +17,7 @@ Sandbox lifetime and saved snapshots have separate limits:
 
 | Data or environment                              | Retention                                                                                                      |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| Running sandbox                                  | Each sandbox has a maximum lifetime of 6 hours. PostHog terminates it when the run ends.                       |
+| Running sandbox                                  | Each sandbox has a maximum lifetime of 6 hours. Flind terminates it when the run ends.                       |
 | Repository snapshots from interactive cloud runs | Some tasks save snapshots for resume. These snapshots have no automatic expiry and remain stored indefinitely. |
 
 Snapshot creation depends on the task and its execution mode. A snapshot preserves files so an interactive run can resume after its sandbox stops. The 6-hour sandbox limit does not delete a saved snapshot.
@@ -26,7 +26,7 @@ Snapshot creation depends on the task and its execution mode. A snapshot preserv
 
 Reports, conversations, execution records, and output files are separate records. Code that an agent includes in a report or model request is subject to the retention for that record or provider.
 
-Review [AI data processing access](/docs/posthog-ai/allow-access) before you enable agents for your organization. See [data storage](/docs/privacy/data-storage) for general PostHog storage and deletion information.
+Review [AI data processing access](/docs/posthog-ai/allow-access) before you enable agents for your organization. See [data storage](/docs/privacy/data-storage) for general Flind storage and deletion information.
 
 ## Execution controls
 

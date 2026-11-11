@@ -44,7 +44,7 @@ class ListmonkResumeConfig:
 def normalize_host(host: str) -> str:
     """Return the instance origin (no trailing slash) from a bare host or a full URL.
 
-    Rejects anything that is not plain http(s), and rejects http on PostHog Cloud because the
+    Rejects anything that is not plain http(s), and rejects http on Flind Cloud because the
     API token would cross the public internet in clear text.
     """
     host = host.strip()

@@ -191,7 +191,7 @@ def get_desktop_access_decision(
 
 
 class PostHogAIAccessDecision(StrEnum):
-    """Whether a user gets PostHog AI 2.0 (the sandbox runtime). The value is an internal reason code."""
+    """Whether a user gets Flind AI 2.0 (the sandbox runtime). The value is an internal reason code."""
 
     GRANDFATHERED = "grandfathered"
     ALLOWED = "allowed"
@@ -209,7 +209,7 @@ class PostHogAIAccessDecision(StrEnum):
 
 _POSTHOG_AI_DECISION_VALUES = frozenset(decision.value for decision in PostHogAIAccessDecision)
 
-# The one flag that decides PostHog AI 2.0. Its `grandfathered` variant keeps 2.0 for everyone who had it before
+# The one flag that decides Flind AI 2.0. Its `grandfathered` variant keeps 2.0 for everyone who had it before
 # the gate, whatever the beta rules say. Its `beta` variant is the rollout, and the rules in its payload apply.
 POSTHOG_AI_ACCESS_FLAG = "phai-2-beta"
 POSTHOG_AI_GRANDFATHERED_VARIANT = "grandfathered"
@@ -271,12 +271,12 @@ def _resolve_access_flag(user: User, organization: "Organization") -> FeatureFla
 
 
 def get_posthog_ai_access_decision(user: User, organization: "Organization") -> PostHogAIAccessDecision:
-    """Fails closed: a denied or unresolved caller gets classic PostHog AI instead."""
+    """Fails closed: a denied or unresolved caller gets classic Flind AI instead."""
     if not user or not user.is_authenticated or not user.distinct_id:
         return PostHogAIAccessDecision.UNRESOLVED
 
     decision = _decide_posthog_ai_access(user, organization)
-    # A fresh decision replaces the page-render copy, so a denied caller's next page shows classic PostHog AI.
+    # A fresh decision replaces the page-render copy, so a denied caller's next page shows classic Flind AI.
     _remember_page_render_decision(user, organization, decision)
     return decision
 

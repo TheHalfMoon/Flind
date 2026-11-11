@@ -61,7 +61,7 @@ export function HomeDashboardMenu({
                     Show a different dashboard
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={restorePostHogHome} data-attr="home-tab-restore-posthog-home">
-                    Reset to PostHog default
+                    Reset to Flind default
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

@@ -47,7 +47,7 @@ class OnfleetSource(ResumableSource[OnfleetSourceConfig, OnfleetResumeConfig]):
             name=ExternalDataSourceType.ONFLEET,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Onfleet",
-            caption="""Enter your Onfleet API key to pull your Onfleet last-mile delivery data into the PostHog Data warehouse.
+            caption="""Enter your Onfleet API key to pull your Onfleet last-mile delivery data into the Flind Data warehouse.
 
 You can create an API key in your [Onfleet dashboard](https://onfleet.com/dashboard#/manage) under **Settings → API & Webhooks**. Onfleet API keys are org-scoped and grant read access to your organization's data.""",
             iconPath="/static/services/onfleet.png",

@@ -240,7 +240,7 @@ class TestGetContextForTemplate(APIBaseTest):
                 MagicMock(),
             )
 
-        # Under self-capture, posthog-js evaluates PostHog's own flags with the dogfood-flags team's
+        # Under self-capture, posthog-js evaluates Flind's own flags with the dogfood-flags team's
         # token (first team by PK), which in this test is self.team — not the PH Cloud key.
         assert self.team.api_token != "sTMFPsFhdP1Ssg"
         assert actual == {

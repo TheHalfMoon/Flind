@@ -243,7 +243,7 @@ export const ListVariableFields = ({
                                     })
                                 }
                                 options={[
-                                    { value: POSTHOG_WAREHOUSE, label: 'PostHog (ClickHouse)' },
+                                    { value: POSTHOG_WAREHOUSE, label: 'Flind (ClickHouse)' },
                                     ...(connectionOptions ?? []).map((source) => ({
                                         value: source.id,
                                         label: getConnectionOptionLabel(source),

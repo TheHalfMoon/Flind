@@ -37,7 +37,7 @@ def task_review(team_id: int, task_id: str, user_id: int, page: int) -> dict:
             else None
         )
         if integration is None:
-            raise ValidationError("Connect GitHub in PostHog to load the review.")
+            raise ValidationError("Connect GitHub in Flind to load the review.")
         github = GitHubIntegration(integration, source="tasks", priority=Priority.CRITICAL)
         if github.access_token_expired():
             github.refresh_access_token()

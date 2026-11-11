@@ -568,7 +568,7 @@ export const reportActivityTool = defineLocalTool({
       const client = createSandboxPosthogClient();
       if (!client) {
         return errorResult(
-          "PostHog is not configured in this sandbox; the report cannot be saved.",
+          "Flind is not configured in this sandbox; the report cannot be saved.",
         );
       }
       if (args.end_line < args.start_line) {

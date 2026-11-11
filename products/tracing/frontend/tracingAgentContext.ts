@@ -34,7 +34,7 @@ const PREAMBLE_CONTEXT_ITEM: AttachedContextItem = {
     hidden: true,
     dismissGroup: SKILL_DISMISS_GROUP,
     value:
-        'The user has the PostHog tracing (APM, OpenTelemetry spans) viewer open. Load the ' +
+        'The user has the Flind tracing (APM, OpenTelemetry spans) viewer open. Load the ' +
         `${EXPLORING_APM_TRACES_SKILL} skill before your first tool call; it covers the span fields and ` +
         'attributes you filter on. Act through the tracing MCP tools (the exec `apm-*` commands plus ' +
         'query-apm-spans: query-apm-spans, apm-trace-get, apm-spans-aggregate, apm-spans-count, ' +

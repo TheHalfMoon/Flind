@@ -50,7 +50,7 @@ function SignInCardPreview({
               boxShadow: "0 3px 0 -1px var(--accent-8)",
             }}
           >
-            Sign in with PostHog
+            Sign in with Flind
           </button>
           <RegionSelect
             region={region}

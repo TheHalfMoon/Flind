@@ -11,7 +11,7 @@ export const getAndroidInstallSteps = (ctx: OnboardingComponentsContext): StepDe
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Add the PostHog Android SDK to your `build.gradle` dependencies:</Markdown>
+                    <Markdown>Add the Flind Android SDK to your `build.gradle` dependencies:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -29,11 +29,11 @@ export const getAndroidInstallSteps = (ctx: OnboardingComponentsContext): StepDe
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Initialize PostHog in your Application class:</Markdown>
+                    <Markdown>Initialize Flind in your Application class:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -50,13 +50,13 @@ export const getAndroidInstallSteps = (ctx: OnboardingComponentsContext): StepDe
                                         override fun onCreate() {
                                             super.onCreate()
 
-                                            // Create a PostHog Config with the given project token and host
+                                            // Create a Flind Config with the given project token and host
                                             val config = PostHogAndroidConfig(
                                                 apiKey = POSTHOG_PROJECT_TOKEN,
                                                 host = POSTHOG_HOST
                                             )
 
-                                            // Setup PostHog with the given Context and Config
+                                            // Setup Flind with the given Context and Config
                                             PostHogAndroid.setup(this, config)
                                         }
                                     }
@@ -79,7 +79,7 @@ export const getAndroidEventStep = (ctx: OnboardingComponentsContext): StepDefin
         content: (
             <>
                 <Markdown>
-                    Once installed, PostHog will automatically start capturing events. You can also manually send events
+                    Once installed, Flind will automatically start capturing events. You can also manually send events
                     to test your integration:
                 </Markdown>
                 <CodeBlock
@@ -90,7 +90,7 @@ export const getAndroidEventStep = (ctx: OnboardingComponentsContext): StepDefin
                             code: dedent`
                                     import com.posthog.PostHog
 
-                                    PostHog.capture(
+                                    Flind.capture(
                                         event = "button_clicked",
                                         properties = mapOf(
                                             "button_name" to "signup"

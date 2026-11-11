@@ -267,7 +267,7 @@ async def create_salesforce_usage_enrichment_schedule(client: Client):
     """Create or update the schedule for the Salesforce usage enrichment workflow.
 
     This schedule runs every Sunday at 6 AM UTC to enrich Salesforce accounts with
-    PostHog usage signals.
+    Flind usage signals.
     """
     salesforce_usage_enrichment_schedule = Schedule(
         action=ScheduleActionStartWorkflow(

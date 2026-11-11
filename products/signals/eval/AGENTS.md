@@ -1,6 +1,6 @@
 # Signal grouping eval
 
-Offline runs publish to PostHog's offline experiments API through the shared eval-harness publisher.
+Offline runs publish to Flind's offline experiments API through the shared eval-harness publisher.
 Read [offline evaluation reporting](../../../docs/internal/ai-offline-evaluation-reporting.md#signals-pytest-suites)
 for the two suites, pinned scorer versions, upload credentials, and result layout.
 
@@ -73,7 +73,7 @@ Two tqdm progress bars:
 
 Followed by an aggregate results summary table.
 
-### Eval metrics uploaded to PostHog
+### Eval metrics uploaded to Flind
 
 Offline runs produce one experiment per suite, with items for each stage and aggregate statistics.
 The table below lists grouping stage names. Inspect each run in the offline experiments UI.

@@ -232,7 +232,7 @@ class TestOrganizationBillingAPI(OrganizationBillingTestMixin, APILicensedTest):
         # The subject names the user by uuid, which never changes, and the analytics id rides beside it.
         self.assertEqual(claims["sub"], f"user:{self.user.uuid}")
         self.assertEqual(claims["distinct_id"], self.user.distinct_id)
-        # And the token proves the license it names, not just that PostHog signed it.
+        # And the token proves the license it names, not just that Flind signed it.
         secret = self.license.key.partition("::")[2]
         assertion = jwt.decode(claims["license_assertion"], secret, algorithms=["HS256"], audience=claims["aud"])
         self.assertEqual(
@@ -644,7 +644,7 @@ class TestOrganizationBillingSpendForecastAndSeries(OrganizationBillingTestMixin
 
     @patch("ee.billing.billing_manager.http_session.get")
     def test_a_credential_scoped_to_no_project_is_refused_rather_than_widened(self, mock_get):
-        # PostHog never mints an empty project list today, so this guards the shape rather than a
+        # Flind never mints an empty project list today, so this guards the shape rather than a
         # reachable path: an empty filter would read downstream as no filter at all.
         grants = EffectiveBillingGrants(
             sub=f"user:{self.user.distinct_id}",
@@ -803,7 +803,7 @@ class TestOrganizationBillingInvoicesAndLimits(OrganizationBillingTestMixin, API
         mock_upstream_get.return_value = upstream
         await self.async_client.aforce_login(self.user)
 
-        # The ASGI client, because that is how PostHog serves requests and where a synchronous
+        # The ASGI client, because that is how Flind serves requests and where a synchronous
         # body is read whole before the first byte goes out.
         response = await self.async_client.get(self._url("invoices/in_1/content/"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)

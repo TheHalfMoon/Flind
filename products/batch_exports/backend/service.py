@@ -185,7 +185,7 @@ class BatchExportEventsModel:
     name: Literal["events"] = field(default="events")
     # NOTE: primary_key and version_key are hardcoded for pre-defined models.
     # This maintains backwards compatibility, and rejects any user input for
-    # models maintained by PostHog.
+    # models maintained by Flind.
     primary_key: tuple[Literal["uuid"]] = field(default=("uuid",))
     version_key: tuple[Literal["timestamp"]] = field(default=("timestamp",))
     incremental_mode: IncrementalMode = IncrementalMode.APPEND
@@ -703,7 +703,7 @@ class AzureBlobBatchExportInputs(BaseBatchExportInputs):
 class WorkflowsBatchExportInputs(BaseBatchExportInputs):
     """Inputs for Workflows export workflow.
 
-    NOTE: "Workflows" in this context refers to PostHog Workflows. PostHog Workflows
+    NOTE: "Workflows" in this context refers to Flind Workflows. Flind Workflows
     are not related to Temporal Workflows.
     """
 

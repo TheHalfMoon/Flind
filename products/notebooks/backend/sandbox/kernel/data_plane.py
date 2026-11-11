@@ -1,4 +1,4 @@
-"""Client for the backend data plane — the sandbox's only read path to PostHog data.
+"""Client for the backend data plane — the sandbox's only read path to Flind data.
 
 POSTs a HogQL query to the backend's data-plane endpoint (authed with the
 run-scoped data-plane token), which enqueues it on the backend's async query

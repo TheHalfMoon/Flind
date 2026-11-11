@@ -83,7 +83,7 @@ class PgAnalyzeSource(SimpleSource[PgAnalyzeSourceConfig]):
             name=ExternalDataSourceType.PGANALYZE,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="pganalyze",
-            caption="Connect pganalyze to sync Postgres performance issues, query stats, and server metadata into the PostHog Data warehouse.",
+            caption="Connect pganalyze to sync Postgres performance issues, query stats, and server metadata into the Flind Data warehouse.",
             iconPath="/static/services/pganalyze.svg",
             docsUrl="https://posthog.com/docs/cdp/sources/pganalyze",
             fields=cast(

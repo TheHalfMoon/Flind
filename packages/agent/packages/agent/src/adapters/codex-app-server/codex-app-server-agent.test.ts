@@ -1271,7 +1271,7 @@ describe("CodexAppServerAgent", () => {
     });
   });
 
-  it("auto-accepts a PostHog exec approval for a sub-tool the permission regex does not gate", async () => {
+  it("auto-accepts a Flind exec approval for a sub-tool the permission regex does not gate", async () => {
     const stub = makeStubRpc({
       initialize: {},
       "thread/start": { thread: { id: "thr_1" } },
@@ -1425,7 +1425,7 @@ describe("CodexAppServerAgent", () => {
     expect(decision).toMatchObject({ action: "decline" });
   });
 
-  it("auto-accepts a gated PostHog exec sub-tool in local hands-off modes", async () => {
+  it("auto-accepts a gated Flind exec sub-tool in local hands-off modes", async () => {
     const stub = makeStubRpc({
       initialize: {},
       "thread/start": { thread: { id: "thr_1" } },
@@ -1470,7 +1470,7 @@ describe("CodexAppServerAgent", () => {
   });
 
   it("enriches the MCP elicitation approval (posthog exec) from the in-flight tool call", async () => {
-    // codex gates PostHog `exec` behind a generic elicitation (serverName only, no tool/args);
+    // codex gates Flind `exec` behind a generic elicitation (serverName only, no tool/args);
     // the adapter correlates it to the in-flight mcpToolCall so the real tool + command render.
     const stub = makeStubRpc({
       initialize: {},
@@ -1953,7 +1953,7 @@ describe("CodexAppServerAgent", () => {
     });
   });
 
-  it("uses the default PostHog exec prompt policy when session metadata omits the regex", async () => {
+  it("uses the default Flind exec prompt policy when session metadata omits the regex", async () => {
     const stub = makeStubRpc({ "thread/start": { thread: { id: "t" } } });
     const { client } = makeFakeClient();
     const agent = new CodexAppServerAgent(client, {
@@ -2397,7 +2397,7 @@ describe("CodexAppServerAgent", () => {
             model: "gpt-5.5",
             displayName: "GPT-5.5",
             hidden: false,
-            // The PostHog gateway populates no efforts (defaultReasoningEffort:"none").
+            // The Flind gateway populates no efforts (defaultReasoningEffort:"none").
             supportedReasoningEfforts: [],
           },
           {
@@ -3225,7 +3225,7 @@ describe("CodexAppServerAgent", () => {
       willRetry: false,
       error: {
         message:
-          "unexpected status 403 Forbidden: Model 'gpt-5.5' needs a paid PostHog plan. Models available on the free tier: @cf/zai-org/glm-5.2. (rate_limit)",
+          "unexpected status 403 Forbidden: Model 'gpt-5.5' needs a paid Flind plan. Models available on the free tier: @cf/zai-org/glm-5.2. (rate_limit)",
       },
     });
 
@@ -3241,7 +3241,7 @@ describe("CodexAppServerAgent", () => {
     expect(err).toBeInstanceOf(RequestError);
     expect((err as RequestError).message).toContain("Internal error: ");
     expect((err as RequestError).message).toContain(
-      "needs a paid PostHog plan",
+      "needs a paid Flind plan",
     );
   });
 

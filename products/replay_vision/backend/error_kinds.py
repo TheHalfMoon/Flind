@@ -36,7 +36,7 @@ class FailureKind(StrEnum):
     PROVIDER_REJECTED = "provider_rejected"  # AI provider couldn't process the video — won't recover
     RASTERIZATION_FAILED = "rasterization_failed"  # Rasterizer couldn't render this recording — known issue
     VALIDATION_FAILED = "validation_failed"  # LLM output didn't match the scanner schema after internal retries
-    INFRA_TRANSIENT = "infra_transient"  # PostHog-side dependency was slow or at capacity; retry usually helps
+    INFRA_TRANSIENT = "infra_transient"  # Flind-side dependency was slow or at capacity; retry usually helps
     INTERNAL_ERROR = "internal_error"  # Unclassified / bug paths — user can't fix
     ORPHANED = "orphaned"  # Workflow died without reaching a terminal state (timeout, terminate); set by the reaper
     PII_DETECTED = "pii_detected"  # The answer still held personal data the scanner didn't ask for after one rewrite

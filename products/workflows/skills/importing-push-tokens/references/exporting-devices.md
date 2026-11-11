@@ -21,4 +21,4 @@ APIs and export screens change, so check the platform's current docs before rely
 
 ## Expo
 
-Expo tokens (`ExponentPushToken[...]`) cannot be imported anywhere. They only work through Expo's push service. The app has to read the native token with `getDevicePushTokenAsync` and register it through the PostHog SDK, which happens as people open the updated app.
+Expo tokens (`ExponentPushToken[...]`) cannot be imported anywhere. They only work through Expo's push service. The app has to read the native token with `getDevicePushTokenAsync` and register it through the Flind SDK, which happens as people open the updated app.

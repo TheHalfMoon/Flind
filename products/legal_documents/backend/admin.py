@@ -73,7 +73,7 @@ class LegalDocumentAdminForm(forms.ModelForm):
 # staff get wrong: `logic.delete_document` skips the PandaDoc void for signed rows,
 # and nothing restores the AI opt-out that a signed BAA applied.
 _SIGNED_DELETE_NOTE = (
-    "Deleting a signed document removes the PostHog record and the stored PDF. "
+    "Deleting a signed document removes the Flind record and the stored PDF. "
     "It does not change the document in PandaDoc, because PandaDoc cannot void a completed document. "
     "Delete or archive it in PandaDoc yourself. "
     "For a BAA, the organization keeps AI data processing and AI training turned off after the delete. "
@@ -359,7 +359,7 @@ class LegalDocumentAdmin(admin.ModelAdmin):
         if not (is_cloud() or is_dev_mode()):
             messages.warning(
                 request,
-                "Legal documents are only generated on PostHog Cloud. On self-hosted "
+                "Legal documents are only generated on Flind Cloud. On self-hosted "
                 "deployments, listed rows (if any) are read-only historical records and "
                 "the PandaDoc integration is disabled.",
             )
@@ -371,7 +371,7 @@ class LegalDocumentAdmin(admin.ModelAdmin):
         if not (is_cloud() or is_dev_mode()):
             messages.warning(
                 request,
-                "Legal documents are only generated on PostHog Cloud. On self-hosted "
+                "Legal documents are only generated on Flind Cloud. On self-hosted "
                 "deployments, listed rows (if any) are read-only historical records and "
                 "the PandaDoc integration is disabled.",
             )

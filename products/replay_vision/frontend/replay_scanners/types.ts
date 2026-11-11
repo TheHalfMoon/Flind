@@ -157,7 +157,7 @@ const FAILURE_KINDS: Record<FailureKind, FailureKindInfo> = {
     rasterization_failed: {
         label: 'Recording video failed',
         description:
-            'PostHog could not turn this recording into a video for the AI. Retry the scan, and contact support if it fails again.',
+            'Flind could not turn this recording into a video for the AI. Retry the scan, and contact support if it fails again.',
         retryWorthwhile: true,
     },
     validation_failed: {
@@ -168,25 +168,25 @@ const FAILURE_KINDS: Record<FailureKind, FailureKindInfo> = {
         retryHint: "A retry runs the scanner's current prompt. Edit the prompt first if you haven't changed it yet.",
     },
     infra_transient: {
-        label: 'PostHog service unavailable',
+        label: 'Flind service unavailable',
         description:
-            'A PostHog service was slow or unavailable while preparing this recording. Retry the scan in a few minutes.',
+            'A Flind service was slow or unavailable while preparing this recording. Retry the scan in a few minutes.',
         retryWorthwhile: true,
     },
     internal_error: {
         label: 'Internal error',
-        description: 'Something inside PostHog stopped this scan. Retry it, and contact support if it fails again.',
+        description: 'Something inside Flind stopped this scan. Retry it, and contact support if it fails again.',
         retryWorthwhile: true,
     },
     orphaned: {
         label: 'Interrupted',
-        description: 'The scan was interrupted before it finished, and PostHog cleaned it up. Retry the scan.',
+        description: 'The scan was interrupted before it finished, and Flind cleaned it up. Retry the scan.',
         retryWorthwhile: true,
     },
     pii_detected: {
         label: 'Personal data in the answer',
         description:
-            "The AI's answer included personal data the scanner didn't ask for, so PostHog didn't save it. Retry the scan, or rephrase the scanner prompt if it keeps happening.",
+            "The AI's answer included personal data the scanner didn't ask for, so Flind didn't save it. Retry the scan, or rephrase the scanner prompt if it keeps happening.",
         retryWorthwhile: true,
     },
 }

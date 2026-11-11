@@ -406,7 +406,7 @@ class TestRESTClient:
 
         assert mock_session.send.call_count == 5
         # An upstream blip surviving every tenacity attempt is expected to clear on Temporal's own
-        # activity retry, not a PostHog defect, so it must carry the non-reportable marker the
+        # activity retry, not a Flind defect, so it must carry the non-reportable marker the
         # activity interceptor uses to keep it out of error tracking.
         assert isinstance(ctx.value, NonReportableError)
 

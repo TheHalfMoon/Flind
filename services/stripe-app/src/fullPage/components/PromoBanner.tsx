@@ -21,7 +21,7 @@ const PromoBanner = ({ children, hero }: Props): JSX.Element => (
     >
         {hero && (
             <Box css={{ stack: 'x', alignX: 'center' }}>
-                <Img src={POSTHOG_ICON_SRC} alt="PostHog" width="48" height="28" />
+                <Img src={POSTHOG_ICON_SRC} alt="Flind" width="48" height="28" />
             </Box>
         )}
         {children}

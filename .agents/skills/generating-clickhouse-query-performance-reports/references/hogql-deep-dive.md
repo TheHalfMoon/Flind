@@ -43,8 +43,8 @@ There is **no single boolean "written by AI" column.** Identify it from `lc_prod
 
 | Signal                                       | Means                                                                                                              |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `lc_product = 'max_ai'`                      | PostHog's Max assistant and its tools (tagged via `tags_context(product=Product.MAX_AI)` throughout `ee/hogai/**`) |
-| `lc_product = 'mcp'` or `lc_feature = 'mcp'` | Queries issued by external AI agents through the PostHog MCP server                                                |
+| `lc_product = 'max_ai'`                      | Flind's Max assistant and its tools (tagged via `tags_context(product=Product.MAX_AI)` throughout `ee/hogai/**`) |
+| `lc_product = 'mcp'` or `lc_feature = 'mcp'` | Queries issued by external AI agents through the Flind MCP server                                                |
 | `lc_feature = 'posthog_ai'`                  | The AI feature tag (also exists; less common in practice)                                                          |
 
 Filter: `lc_product IN ('max_ai','mcp') OR lc_feature IN ('mcp','posthog_ai')`.

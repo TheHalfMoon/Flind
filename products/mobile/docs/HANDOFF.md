@@ -1,23 +1,23 @@
 # Hand-off and agent runs
 
-How the report screen hands a report to the PostHog agent, follows the run, relays the agent's
+How the report screen hands a report to the Flind agent, follows the run, relays the agent's
 questions, and shows the PR it opens. Code lives in `src/features/handoff/` and `src/api/tasks.ts`.
 
 ## Flow
 
 ### Default agent
 
-The report's hand-off button uses the last agent selected in the hand-off sheet: PostHog,
+The report's hand-off button uses the last agent selected in the hand-off sheet: Flind,
 Claude Code or Codex. The selection is saved on this device across reports and app
-restarts, with PostHog as the initial default. Selecting PostHog again restores that default.
+restarts, with Flind as the initial default. Selecting Flind again restores that default.
 Copy prompt does not change the preference. The preference is client-only; external handoffs
-still open a prepared prompt without starting a PostHog run.
+still open a prepared prompt without starting a Flind run.
 
 ### External agents on mobile
 
-The hand-off sheet offers two external destinations, independently of the PostHog run options:
+The hand-off sheet offers two external destinations, independently of the Flind run options:
 
-PostHog, Claude Code and Codex each show their existing brand mark beside the option label.
+Flind, Claude Code and Codex each show their existing brand mark beside the option label.
 The marks are decorative; screen readers announce the button's label and hint.
 
 - **Claude Code** opens the [documented mobile composer](https://support.claude.com/en/articles/14898120-open-the-claude-mobile-app-with-a-link)
@@ -34,10 +34,10 @@ The marks are decorative; screen readers announce the button's label and hint.
   environment. Use `prompt`, not `q`, to target a draft. OS link preferences or an absent app may open the browser.
 
 The prompt includes the report URL and ID, a repository hint when known, and instructions to retrieve evidence
-through authenticated PostHog MCP tools. It does not make the report public or pass PostHog credentials.
-The receiving agent needs its own PostHog connection. Copy prompt uses the same text as both direct links.
+through authenticated Flind MCP tools. It does not make the report public or pass Flind credentials.
+The receiving agent needs its own Flind connection. Copy prompt uses the same text as both direct links.
 The agent claims the report when work starts, retains its `claim_id`, and attaches its PR URLs.
-Opening or copying never claims the report, starts a PostHog run, or reports that an external agent
+Opening or copying never claims the report, starts a Flind run, or reports that an external agent
 is working. Failed launches show an inline fallback. The web preview supports copying only.
 Tracking: `mobile_external_handoff_opened` with `target` (`claude`, `codex`), `from` (`button`, `sheet`,
 `inbox_menu`) and `has_repository`, never the prompt. A failed launch sends `mobile_handoff_failed` with
@@ -50,9 +50,9 @@ Device acceptance checks (iOS and Android, with receiving apps installed and abs
 2. In ChatGPT, choose the project manually; the prompt includes repository context but does not select a project.
 3. Return from each app and test a failed launch and Copy prompt; report state must stay unchanged.
 4. Try a report with no repository; the prompt must ask the agent to confirm one.
-5. Try a small screen and larger accessibility text; all destinations, PostHog options and Copy prompt must remain reachable.
+5. Try a small screen and larger accessibility text; all destinations, Flind options and Copy prompt must remain reachable.
 
-### PostHog runs
+### Flind runs
 
 ```text
 Hand off ──► kickOffReportTask ──► store.started ──► useTaskRun ──► store.live ──► mergeLiveRun ──► ActionBar
@@ -90,7 +90,7 @@ Demo mode skips all of this: the demo store drives the same cards.
 
 ## Run options
 
-The hand-off sheet has Model, Mode and Branch rows above the PostHog row. Each row opens a page in
+The hand-off sheet has Model, Mode and Branch rows above the Flind row. Each row opens a page in
 the same sheet with a back control. The quick "Hand off" button uses the same options while they last
 (see Reset below), so outside a sheet session it sends the defaults.
 Code: `runOptions.ts` (ports of the web's `composerModels.ts` and `composerModes.ts`),
@@ -213,7 +213,7 @@ execution and missing check data stay unknown.
 and waits; when the phone is the only client, a request it does not answer stalls the agent.
 
 - Allowed for the user (with `allow_once`, else another `allow*` option): built-in tools (a
-  canonical tool name such as `Bash`, `Edit`), and PostHog `exec` calls in the task's project.
+  canonical tool name such as `Bash`, `Edit`), and Flind `exec` calls in the task's project.
 - Asked: questions (`AskUserQuestion`), plan approvals (no tool name, `kind: 'switch_mode'`),
   other MCP servers (`mcp__*`), connected-project calls (`posthog-connection-call`,
   `posthog-connection-forward`), and anything with no tool name.
@@ -254,13 +254,13 @@ instead of rejecting, because every caller fires them without waiting.
 | 402 `self_driving_free_trial`                    | Server `detail`, else "During your free trial, Self-driving writes reports but doesn't open pull requests. Contact us to upgrade."               |
 | Other 402 (PR limit)                             | Server `detail`, else "Your organization reached its self-driving pull request limit. Ask an org admin to raise it from the Inbox usage widget." |
 | 429 `signal_report_task_cap`, `throttled`        | Server `error` or `detail`, else "Task limit reached for this report. Try again later."                                                          |
-| Other 429                                        | Server copy, else "PostHog is busy. Try again in a few minutes."                                                                                 |
-| 503 `warm_run_activation_unavailable` after 20 s | "PostHog couldn't start the agent in time. Try again."                                                                                           |
+| Other 429                                        | Server copy, else "Flind is busy. Try again in a few minutes."                                                                                 |
+| 503 `warm_run_activation_unavailable` after 20 s | "Flind couldn't start the agent in time. Try again."                                                                                           |
 | 403                                              | Server copy, else "You don't have access to hand off reports in this project."                                                                   |
 | 404                                              | "This report is no longer available."                                                                                                            |
-| No run returned                                  | "PostHog created the task but couldn't start it. Try again."                                                                                     |
-| Network                                          | "Couldn't reach PostHog. Check your connection and try again."                                                                                   |
-| Anything else                                    | "Couldn't hand off to PostHog. Try again."                                                                                                       |
+| No run returned                                  | "Flind created the task but couldn't start it. Try again."                                                                                     |
+| Network                                          | "Couldn't reach Flind. Check your connection and try again."                                                                                   |
+| Anything else                                    | "Couldn't hand off to Flind. Try again."                                                                                                       |
 
 Tracking: `mobile_handoff_failed` with `agent: posthog` and `reason`, one value per row above
 (`free_trial`, `pr_limit`, `task_limit`, `busy`, `start_timeout`, `forbidden`, `not_found`,

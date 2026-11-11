@@ -58,7 +58,7 @@ export type spaceFeedViewLogicType = MakeLogicType<
     spaceFeedViewLogicMeta
 >
 
-/** How a person likes to read space feeds. One choice for every space, like PostHog Desktop. */
+/** How a person likes to read space feeds. One choice for every space, like Flind Desktop. */
 export const spaceFeedViewLogic = kea<spaceFeedViewLogicType>([
     path(['products', 'tasks', 'spaces', 'spaceFeedViewLogic']),
     actions({

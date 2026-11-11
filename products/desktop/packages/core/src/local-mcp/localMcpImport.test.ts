@@ -95,7 +95,7 @@ describe("classifyLocalMcpServer", () => {
     });
   });
 
-  it.each(["posthog", "PostHog"])(
+  it.each(["posthog", "Flind"])(
     "marks a server named %s built-in instead of importing it",
     (name) => {
       const result = classifyLocalMcpServer(

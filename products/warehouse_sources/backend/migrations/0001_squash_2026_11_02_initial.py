@@ -215,7 +215,7 @@ class Migration(migrations.Migration):
                     "type",
                     models.CharField(
                         choices=[
-                            ("PostHogWarehouse", "PostHog warehouse"),
+                            ("PostHogWarehouse", "Flind warehouse"),
                             ("Redshift", "Redshift"),
                             ("Snowflake", "Snowflake"),
                             ("BigQuery", "BigQuery"),
@@ -252,7 +252,7 @@ class Migration(migrations.Migration):
                     "integration",
                     models.ForeignKey(
                         blank=True,
-                        help_text="Credentials for this destination. Null for the PostHog warehouse.",
+                        help_text="Credentials for this destination. Null for the Flind warehouse.",
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         related_name="+",
@@ -274,7 +274,7 @@ class Migration(migrations.Migration):
                         choices=[("healthy", "Healthy"), ("failing", "Failing"), ("paused", "Paused")],
                         db_default="healthy",
                         default="healthy",
-                        help_text="Whether the last delivery to this destination worked, failed, or PostHog paused it.",
+                        help_text="Whether the last delivery to this destination worked, failed, or Flind paused it.",
                         max_length=32,
                     ),
                 ),
@@ -295,7 +295,7 @@ class Migration(migrations.Migration):
                     models.IntegerField(
                         db_default=0,
                         default=0,
-                        help_text="Configuration errors since the last successful delivery. At the threshold, PostHog pauses the destination.",
+                        help_text="Configuration errors since the last successful delivery. At the threshold, Flind pauses the destination.",
                     ),
                 ),
             ],
@@ -624,7 +624,7 @@ class Migration(migrations.Migration):
                     "auto_disabled_at",
                     models.DateTimeField(
                         blank=True,
-                        help_text="When PostHog stopped syncing this schema itself, after an error that retrying would not fix. Null while syncing is on, and while syncing is off because the user turned it off.",
+                        help_text="When Flind stopped syncing this schema itself, after an error that retrying would not fix. Null while syncing is on, and while syncing is off because the user turned it off.",
                         null=True,
                     ),
                 ),

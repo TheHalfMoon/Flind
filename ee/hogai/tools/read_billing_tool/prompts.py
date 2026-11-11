@@ -1,7 +1,7 @@
 BILLING_CONTEXT_UNAVAILABLE_PROMPT = (
     "No billing information available. "
     "Do not guess or infer billing details, plan pricing, or how specific plans work. "
-    'Search the PostHog documentation using the `search` tool with kind="docs" for the relevant billing or pricing topic, '
+    'Search the Flind documentation using the `search` tool with kind="docs" for the relevant billing or pricing topic, '
     "and be transparent with the user that you cannot see their specific billing details."
 )
 
@@ -158,8 +158,8 @@ When users ask about reducing costs, analyze their billing situation and usage d
 3. **Anonymous vs identified events**: identified events are 4x more expensive than anonymous events, see: https://posthog.com/docs/data/anonymous-vs-identified-events
 4. **identify() calls**: It's only necessary to identify a user once per session. To prevent sending unnecessary events, check posthog._isIdentified() before calling identify(), see: https://posthog.com/docs/product-analytics/identify
 5. **group() calls**: If group analytics is on, in client-side SDKs, it's only necessary to call group() once per session, see: https://posthog.com/docs/product-analytics/group-analytics
-6. **Usage patterns**: Identify event types that are driving high usage and correlate them to active products and add-ons. It's useful to show the user a recap of the top 20 events by usage. Events starting with `$` are PostHog defaults.
-7. **$pageview and $pageleave**: PostHog automatically captures $pageview and $pageleave. This is great for analytics, but it may capture more events than you need. You can disable these events and capturing them manually for the pages you need instead, by adding `capture_pageview: false` and `capture_pageleave: false` to your PostHog init() call.
+6. **Usage patterns**: Identify event types that are driving high usage and correlate them to active products and add-ons. It's useful to show the user a recap of the top 20 events by usage. Events starting with `$` are Flind defaults.
+7. **$pageview and $pageleave**: Flind automatically captures $pageview and $pageleave. This is great for analytics, but it may capture more events than you need. You can disable these events and capturing them manually for the pages you need instead, by adding `capture_pageview: false` and `capture_pageleave: false` to your Flind init() call.
 8. **Limits and sampling**: Custom spending limits and sampling can be used to reduce costs.
 See: https://posthog.com/docs/product-analytics/cutting-costs
 
@@ -176,7 +176,7 @@ See: https://posthog.com/docs/session-replay/cutting-costs
 3. **Survey-only evaluation**: If you only need flags for surveys, set `advanced_only_evaluate_survey_feature_flags: true` to disable other flag evaluations
 4. **Use local evaluation for server-side flags**: The most cost-effective option - evaluate flags locally instead of making API requests for each flag. Local evaluation requests cost 10 credits but can evaluate flags for hundreds/thousands of users, making it far more efficient than individual API calls, see: https://posthog.com/docs/feature-flags/local-evaluation
 5. **Optimize local evaluation polling**: Increase the polling interval for local evaluation from default 30 seconds to reduce definition fetch frequency (each request costs 10 credits), see: https://posthog.com/docs/feature-flags/local-evaluation
-6. **Avoid edge/Lambda local evaluation**: Don't use local evaluation in edge or Lambda environments as it initializes PostHog on every call
+6. **Avoid edge/Lambda local evaluation**: Don't use local evaluation in edge or Lambda environments as it initializes Flind on every call
 7. **Audit forgotten environments**: Old demos, test apps, or staging servers can silently make flag requests. Use trends insights with $feature_flag_called events broken down by $lib, $lib_version, $host to identify unexpected environments
 See: https://posthog.com/docs/feature-flags/cutting-costs
 

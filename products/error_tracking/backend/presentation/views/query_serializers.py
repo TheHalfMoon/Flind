@@ -200,7 +200,7 @@ class ErrorTrackingIssuesListQueryRequestSerializer(serializers.Serializer):
         required=False, help_text="Filter by exact exception fingerprint hash, not fuzzy search."
     )
     user = serializers.CharField(required=False, max_length=500, help_text="Search user/email text.")
-    personId = serializers.UUIDField(required=False, help_text="Filter by exact PostHog person UUID.")
+    personId = serializers.UUIDField(required=False, help_text="Filter by exact Flind person UUID.")
     url = serializers.CharField(required=False, max_length=1000, help_text="Filter by current URL substring.")
     filePath = serializers.CharField(
         required=False, max_length=1000, help_text="Search stack-frame source/file path text."

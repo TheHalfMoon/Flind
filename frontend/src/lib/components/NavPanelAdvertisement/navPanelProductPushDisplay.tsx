@@ -34,7 +34,7 @@ import { ProductKey } from '~/queries/schema/schema-general'
 
 import type { ProductPushDisplay } from './navPanelAdShared'
 
-// The logo geometry is large, and only the PostHog Desktop card shows it. Load it when that card renders.
+// The logo geometry is large, and only the Flind Desktop card shows it. Load it when that card renders.
 const Logomark = lazyWithRetry(() => import('lib/brand').then(({ Logomark }) => ({ default: Logomark })))
 
 const HedgehogChart = pngHoggie(chart)
@@ -249,7 +249,7 @@ export const PRODUCT_PUSH_DISPLAY: Partial<Record<ProductKey, ProductPushDisplay
         accentColor: 'var(--color-accent)',
         tagline:
             'The product editor for builders. Run AI agents that use your product data as context to ship changes.',
-        label: 'PostHog Desktop',
+        label: 'Flind Desktop',
         href: 'https://posthog.com/desktop',
     },
 }

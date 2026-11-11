@@ -154,7 +154,7 @@ produceToWarehouseWebhooks(
             "type": "json",
             "key": "signing_secrets",
             "label": "Signing secrets",
-            "description": ("Secret keys Webflow returned when PostHog registered the webhooks. One per trigger type."),
+            "description": ("Secret keys Webflow returned when Flind registered the webhooks. One per trigger type."),
             "default": [],
             "required": False,
             "secret": True,
@@ -165,7 +165,7 @@ produceToWarehouseWebhooks(
             "key": "signing_secrets_complete",
             "label": "Signing secrets complete",
             "description": (
-                "Whether PostHog captured a secret for every trigger type it registered. False means some "
+                "Whether Flind captured a secret for every trigger type it registered. False means some "
                 "deliveries cannot be verified until a signing secret is entered by hand."
             ),
             "default": False,

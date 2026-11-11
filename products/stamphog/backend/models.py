@@ -56,7 +56,7 @@ class StamphogRepoConfig(ModelActivityMixin, ProductTeamModel):
         default=ReviewMode.LABEL.value,
     )
     trigger_label = models.CharField(max_length=100, default="stamphog")
-    # The PostHog user who connected this repo's installation (plain id, no FK — multi-DB product).
+    # The Flind user who connected this repo's installation (plain id, no FK — multi-DB product).
     # The review sandbox's short-lived LLM gateway token is minted under this identity, mirroring how
     # tasks mints under task.created_by. Null means "never synced": hosted reviews fail closed.
     connected_by_user_id = models.BigIntegerField(null=True, blank=True)

@@ -58,7 +58,7 @@ def run_utm_audit(
     Run a UTM audit for all marketing integrations.
 
     Compares campaigns with spend from ad platforms against pageview events
-    with UTM parameters in PostHog to identify campaigns that are spending
+    with UTM parameters in Flind to identify campaigns that are spending
     money but not properly tracked via UTMs.
     """
     date_range = QueryDateRange(

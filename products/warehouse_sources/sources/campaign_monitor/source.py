@@ -115,7 +115,7 @@ class CampaignMonitorSource(ResumableSource[CampaignMonitorSourceConfig, Campaig
             name=ExternalDataSourceType.CAMPAIGNMONITOR,
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Campaign Monitor",
-            caption="""Enter your Campaign Monitor (CreateSend) API key and Client ID to pull your email marketing data into the PostHog Data warehouse.
+            caption="""Enter your Campaign Monitor (CreateSend) API key and Client ID to pull your email marketing data into the Flind Data warehouse.
 
 Create an API key in your [Campaign Monitor account settings](https://www.campaignmonitor.com/api/) under **Account settings → API keys**.
 

@@ -13,8 +13,8 @@ const permissionRegex = compilePostHogExecPermissionRegex(
   DEFAULT_POSTHOG_EXEC_PERMISSION_REGEX_SOURCE,
 );
 
-describe("PostHog exec identification", () => {
-  it("matches bare and plugin-prefixed PostHog exec tools", () => {
+describe("Flind exec identification", () => {
+  it("matches bare and plugin-prefixed Flind exec tools", () => {
     expect(isPostHogExecTool("mcp__posthog__exec")).toBe(true);
     expect(isPostHogExecTool("mcp__posthog_posthog__exec")).toBe(true);
     expect(isPostHogExecTool("mcp__posthog_cloud__exec")).toBe(true);

@@ -24,7 +24,7 @@ Name its object with a `snake_case` singular noun, such as `feature_flag`.
 - **Public:** OAuth lists it, MCP can request it, and the key picker offers it. This is the default.
 - **Internal:** only the server creates tokens with it. Use `INTERNAL_API_SCOPE_OBJECTS`.
 - **OAuth-hidden:** a person can paste it into a personal API key, but OAuth clients do not see it. Use this for staff-only or unreleased surfaces. Use `OAUTH_HIDDEN_SCOPE_OBJECTS`.
-- **Privileged:** only PostHog staff can give it to an OAuth app, through Django admin or a data migration. An app that registers itself cannot get it, and the CLI login and the key picker presets never include it. Use this for a scope that a partner app must not grant to itself, such as `llm_gateway`. Use `PRIVILEGED_SCOPES`. The picker row reads it from the generated scope docs.
+- **Privileged:** only Flind staff can give it to an OAuth app, through Django admin or a data migration. An app that registers itself cannot get it, and the CLI login and the key picker presets never include it. Use this for a scope that a partner app must not grant to itself, such as `llm_gateway`. Use `PRIVILEGED_SCOPES`. The picker row reads it from the generated scope docs.
 
 Then decide two more things, separately from the kind:
 

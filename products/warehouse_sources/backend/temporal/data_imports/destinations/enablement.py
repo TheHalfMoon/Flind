@@ -69,7 +69,7 @@ def is_multi_destination_enabled(team_id: int, source_type: str) -> bool:
 
 
 def destination_ids_for_run(schema: ExternalDataSchema) -> list[str]:
-    """Every destination id this run writes to, the PostHog warehouse included, in a stable order.
+    """Every destination id this run writes to, the Flind warehouse included, in a stable order.
 
     The warehouse is a destination like any other, so a run that writes there says so rather
     than recording nothing. Readers that still receive an empty list — a job that predates

@@ -10,7 +10,7 @@ import SourceSetupIntro from "../\_snippets/source-setup-intro.mdx"
 import SyncModes from "../\_snippets/sync-modes.mdx"
 import TroubleshootingLink from "../\_snippets/dw-troubleshooting-link.mdx"
 
-The env0 connector syncs your infrastructure-as-code data into PostHog: organizations, projects, teams, templates, organization members, roles and role assignments, environments, deployment history, the steps and resources behind each deployment, drift causes, audit logs, project budgets, and cloud cost at the environment, project, and organization level. You can attribute cloud spend to teams and projects, compare it against budgets, and analyze deployment and drift activity alongside your product data.
+The env0 connector syncs your infrastructure-as-code data into Flind: organizations, projects, teams, templates, organization members, roles and role assignments, environments, deployment history, the steps and resources behind each deployment, drift causes, audit logs, project budgets, and cloud cost at the environment, project, and organization level. You can attribute cloud spend to teams and projects, compare it against budgets, and analyze deployment and drift activity alongside your product data.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ To connect env0, you need an API key ID and an API key secret:
 
 1. In env0, go to **Organization Settings** → **API Keys** (or create a [personal API key](https://docs.envzero.com/docs/api-keys) from your user settings).
 2. Create a new API key and copy both the **API Key ID** and the **API Key Secret** — the secret is only shown once.
-3. Paste them into the PostHog source setup form.
+3. Paste them into the Flind source setup form.
 
 ## Sync modes
 

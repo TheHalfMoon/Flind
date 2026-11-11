@@ -1,4 +1,4 @@
-"""Facade re-export for the PostHog Review Temporal surface.
+"""Facade re-export for the Flind Review Temporal surface.
 
 The worker registers ``WORKFLOWS``/``ACTIVITIES`` for the review task queue, and the schedule setup
 creates the finding-outcomes schedule. Kept apart from ``facade/api.py`` so ``temporalio`` never

@@ -252,7 +252,7 @@ class TestEmailReputationAPI(APIBaseTest):
         assert data["reputation"]["emails_sent"] == 200
 
     def test_reputation_endpoint_flags_workflows_we_paused_ourselves(self):
-        # The rest of this tab reports the provider's verdict, so a workflow PostHog paused reads
+        # The rest of this tab reports the provider's verdict, so a workflow Flind paused reads
         # as healthy here without this flag.
         paused = self._create_flow("Paused blast")
         clean = self._create_flow("Healthy drip")

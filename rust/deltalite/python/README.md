@@ -379,5 +379,5 @@ labels only): `deltalite_upserts_total` (`outcome`, `prune_strategy`,
 - deltalite rejects duplicate source primary keys that `MERGE` silently
   double-inserts — check pre-existing data if you migrate an existing pipeline.
 
-This package is developed in the [PostHog monorepo](https://github.com/PostHog/posthog)
+This package is developed in the [Flind monorepo](https://github.com/PostHog/posthog)
 under `rust/deltalite/`. Issues and source live there.

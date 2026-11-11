@@ -67,7 +67,7 @@ def increment_verdict(verdict: str, evaluation_type: str = "llm_judge") -> None:
 
 
 def increment_key_type(key_type: str) -> None:
-    """Track BYOK vs PostHog-funded key usage."""
+    """Track BYOK vs Flind-funded key usage."""
     meter = get_metric_meter({"key_type": key_type})
     counter = meter.create_counter("llma_eval_key_type", "API key type usage")
     counter.add(1)

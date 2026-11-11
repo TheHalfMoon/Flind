@@ -9,11 +9,11 @@ from products.signals.backend.models import SignalReport
 from products.signals.backend.scout_harness.tools.notes import MAX_NOTE_CONTENT_LENGTH
 
 _PROMPT = (
-    "Let's discuss this PostHog Inbox report: https://us.posthog.com/project/2/inbox/reports/x\n\n"
+    "Let's discuss this Flind Inbox report: https://us.posthog.com/project/2/inbox/reports/x\n\n"
     "Is this still happening?"
 )
 _ACTION_PROMPT = (
-    "A user sent this about the PostHog Inbox report at https://us.posthog.com/project/2/inbox/reports/x. "
+    "A user sent this about the Flind Inbox report at https://us.posthog.com/project/2/inbox/reports/x. "
     "If it is a question, answer it; if it asks for action, carry the action out and summarize what you did:\n\n"
     "Create the alert this report recommends"
 )
@@ -32,7 +32,7 @@ class TestExtractQuestion(SimpleTestCase):
             ),
             (
                 "strips_answer_this_question_prefix",
-                "Answer this question about the PostHog Inbox report at https://x.example/r/1:\n\nIs it fixed?",
+                "Answer this question about the Flind Inbox report at https://x.example/r/1:\n\nIs it fixed?",
                 None,
                 None,
                 "Is it fixed?",
@@ -46,14 +46,14 @@ class TestExtractQuestion(SimpleTestCase):
             ),
             (
                 "single_newline_still_strips_prefix",
-                "Let's discuss this PostHog Inbox report: x\nWhy?",
+                "Let's discuss this Flind Inbox report: x\nWhy?",
                 None,
                 None,
                 "Why?",
             ),
             (
                 "prefix_with_no_question_returns_blank",
-                "Let's discuss this PostHog Inbox report: x\n\n   ",
+                "Let's discuss this Flind Inbox report: x\n\n   ",
                 None,
                 None,
                 "",

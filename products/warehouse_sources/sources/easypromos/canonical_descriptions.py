@@ -29,7 +29,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": DOCS_BASE,
         "columns": {
             "id": "Unique identifier of the stage within its promotion.",
-            "promotion_id": "Identifier of the promotion this stage belongs to (added by PostHog during sync).",
+            "promotion_id": "Identifier of the promotion this stage belongs to (added by Flind during sync).",
         },
     },
     "users": {
@@ -37,7 +37,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": DOCS_BASE,
         "columns": {
             "id": "Unique identifier of the user within its promotion.",
-            "promotion_id": "Identifier of the promotion this user registered in (added by PostHog during sync).",
+            "promotion_id": "Identifier of the promotion this user registered in (added by Flind during sync).",
             "created": "Date and time the user registered. ISO-8601 in UTC.",
         },
     },
@@ -46,7 +46,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": DOCS_BASE,
         "columns": {
             "id": "Unique identifier of the participation within its promotion.",
-            "promotion_id": "Identifier of the promotion this participation belongs to (added by PostHog during sync).",
+            "promotion_id": "Identifier of the promotion this participation belongs to (added by Flind during sync).",
             "created": "Date and time of the participation. ISO-8601 in UTC.",
         },
     },
@@ -55,7 +55,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": DOCS_BASE,
         "columns": {
             "id": "Unique identifier of the assigned prize within its promotion.",
-            "promotion_id": "Identifier of the promotion this prize belongs to (added by PostHog during sync).",
+            "promotion_id": "Identifier of the promotion this prize belongs to (added by Flind during sync).",
             "created": "Date and time the prize was assigned. ISO-8601 in UTC.",
         },
     },
@@ -64,7 +64,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": DOCS_BASE,
         "columns": {
             "id": "Unique identifier of the prize type within its promotion.",
-            "promotion_id": "Identifier of the promotion this prize type belongs to (added by PostHog during sync).",
+            "promotion_id": "Identifier of the promotion this prize type belongs to (added by Flind during sync).",
             "name": "Name of the prize type.",
             "ref": "Reference code the organizer gave the prize type.",
             "description": "Description of the prize type.",
@@ -79,21 +79,21 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Virtual coin transactions in a promotion — each records an amount, timestamp, coin type and the user performing the transaction.",
         "docs_url": DOCS_BASE,
         "columns": {
-            "promotion_id": "Identifier of the promotion this transaction belongs to (added by PostHog during sync).",
+            "promotion_id": "Identifier of the promotion this transaction belongs to (added by Flind during sync).",
         },
     },
     "rankings": {
         "description": "Leaderboard of a promotion: users with their scores in a game-based stage.",
         "docs_url": DOCS_BASE,
         "columns": {
-            "promotion_id": "Identifier of the promotion this ranking belongs to (added by PostHog during sync).",
+            "promotion_id": "Identifier of the promotion this ranking belongs to (added by Flind during sync).",
         },
     },
     "points_of_sale": {
         "description": "Points of sale configured in a promotion (e.g. for in-store prize redemption).",
         "docs_url": DOCS_BASE,
         "columns": {
-            "promotion_id": "Identifier of the promotion this point of sale belongs to (added by PostHog during sync).",
+            "promotion_id": "Identifier of the promotion this point of sale belongs to (added by Flind during sync).",
         },
     },
 }

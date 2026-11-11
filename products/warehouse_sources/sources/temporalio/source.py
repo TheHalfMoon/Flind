@@ -112,7 +112,7 @@ class TemporalIOSource(ValidateDatabaseHostMixin, ResumableSource[TemporalIOSour
             # decoded at all (vs the alerts above, which reject an otherwise-parseable cert). The blobs
             # come straight from the source config, so this is a malformed-credential problem — retrying
             # can never recover.
-            "CertificateParseError": "PostHog could not parse the TLS certificate or key configured for this source. Check that the client certificate, client private key, and server client root CA are valid PEM and were pasted in full, including the BEGIN and END lines.",
+            "CertificateParseError": "Flind could not parse the TLS certificate or key configured for this source. Check that the client certificate, client private key, and server client root CA are valid PEM and were pasted in full, including the BEGIN and END lines.",
             # tonic surfaces a gRPC UNAUTHENTICATED status when the server requires API key (JWT/Bearer)
             # authentication, which this source does not provide — it authenticates with mTLS client
             # certificates. This is a credential/host configuration problem, so retrying can never recover.

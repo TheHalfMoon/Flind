@@ -178,7 +178,7 @@ class AmazonCloudWatchSource(ResumableSource[AmazonCloudWatchSourceConfig, Amazo
             name=ExternalDataSourceType.AMAZONCLOUDWATCH,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Amazon CloudWatch",
-            caption="""Sync CloudWatch log events, alarms, alarm history and metric datapoints from one AWS region into the PostHog Data warehouse.
+            caption="""Sync CloudWatch log events, alarms, alarm history and metric datapoints from one AWS region into the Flind Data warehouse.
 
 Create an IAM user or role with the `logs:DescribeLogGroups`, `logs:FilterLogEvents`, `cloudwatch:DescribeAlarms`, `cloudwatch:DescribeAlarmHistory` and `cloudwatch:GetMetricData` permissions, then paste its access key ID and secret access key. Add a session token too if you are using temporary credentials.
 

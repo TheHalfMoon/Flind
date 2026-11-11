@@ -193,7 +193,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://grafana.com/docs/grafana/latest/developers/http_api/access_control/",
         "columns": {
             "dashboardUid": "Unique identifier of the dashboard the grant applies to.",
-            "subject": "Who holds the grant: user:<userId>, team:<teamId>, or role:<basic role>. Derived by PostHog from the grant's user, team, or role.",
+            "subject": "Who holds the grant: user:<userId>, team:<teamId>, or role:<basic role>. Derived by Flind from the grant's user, team, or role.",
             "id": "Internal identifier of the permission. Grafana returns 0 when it serves permissions from unified storage.",
             "roleName": "Name of the managed role that carries the grant.",
             "isManaged": "Whether the grant is managed through the permissions UI or API.",
@@ -215,7 +215,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://grafana.com/docs/grafana/latest/developers/http_api/access_control/",
         "columns": {
             "folderUid": "Unique identifier of the folder the grant applies to.",
-            "subject": "Who holds the grant: user:<userId>, team:<teamId>, or role:<basic role>. Derived by PostHog from the grant's user, team, or role.",
+            "subject": "Who holds the grant: user:<userId>, team:<teamId>, or role:<basic role>. Derived by Flind from the grant's user, team, or role.",
             "id": "Internal identifier of the permission. Grafana returns 0 when it serves permissions from unified storage.",
             "roleName": "Name of the managed role that carries the grant.",
             "isManaged": "Whether the grant is managed through the permissions UI or API.",

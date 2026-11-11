@@ -34,7 +34,7 @@ class ModelStep(OnboardingStep):
     action_ids = frozenset({AUTO_MODEL_ACTION_ID, MODEL_ACTION_ID})
 
     def applies(self, ctx: OnboardingContext) -> bool:
-        # The model is saved for the linked PostHog user, so the step needs an install that can link.
+        # The model is saved for the linked Flind user, so the step needs an install that can link.
         return is_slack_app_oauth_enabled(ctx.integration)
 
     def is_done(self, ctx: OnboardingContext) -> bool:
@@ -50,7 +50,7 @@ class ModelStep(OnboardingStep):
             }
             for choice in offered_model_choices()[:SLACK_SELECT_MAX_OPTIONS]
         ]
-        elements: list[dict] = [button(ctx, "Let PostHog choose", AUTO_MODEL_ACTION_ID, primary=True)]
+        elements: list[dict] = [button(ctx, "Let Flind choose", AUTO_MODEL_ACTION_ID, primary=True)]
         if options:
             elements.append(
                 {
@@ -64,7 +64,7 @@ class ModelStep(OnboardingStep):
         return [
             section_block(
                 "*Choose your model*\n"
-                "PostHog can pick the model for each task you start, or you can pick one model for all of them. "
+                "Flind can pick the model for each task you start, or you can pick one model for all of them. "
                 "You can change this later in the Home tab."
             ),
             {"type": "actions", "elements": elements},

@@ -26,7 +26,7 @@ afterEach(() => {
 });
 
 describe("ReplayBlockCard", () => {
-  it("shows the recording and links into PostHog's player, never an embed", () => {
+  it("shows the recording and links into Flind's player, never an embed", () => {
     useAuthStore.setState({
       authState: {
         ...ANONYMOUS_AUTH_STATE,
@@ -41,7 +41,7 @@ describe("ReplayBlockCard", () => {
     );
     expect(screen.getByText("Session by ann@example.com")).toBeDefined();
     expect(screen.getByText("42 clicks")).toBeDefined();
-    // Playback stays in PostHog: no iframe, no sharing prompt.
+    // Playback stays in Flind: no iframe, no sharing prompt.
     expect(document.querySelector("iframe")).toBeNull();
     expect(screen.queryByText(/link sharing/)).toBeNull();
 

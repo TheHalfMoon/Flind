@@ -126,7 +126,7 @@ export function ProjectSheet({ visible, onClose, onSelect }: ProjectSheetProps):
     } else if (projects.length === 0) {
         content = (
             <Text style={styles.empty}>
-                Your account has no projects you can open. Create one in PostHog on the web.
+                Your account has no projects you can open. Create one in Flind on the web.
             </Text>
         )
     } else {

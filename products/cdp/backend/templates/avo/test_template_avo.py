@@ -15,7 +15,7 @@ class TestTemplateAvo(BaseHogFunctionTemplateTest):
         inputs = {
             "apiKey": "NnBd7B55ZXC6o0Kh20pE",
             "environment": "dev",
-            "appName": "PostHog",
+            "appName": "Flind",
             "excludeProperties": "",
             "includeProperties": "",
         }
@@ -43,7 +43,7 @@ class TestTemplateAvo(BaseHogFunctionTemplateTest):
                     },
                 },
                 "person": {
-                    "properties": {"email": "max@posthog.com", "name": "Max", "company": "PostHog"},
+                    "properties": {"email": "max@posthog.com", "name": "Max", "company": "Flind"},
                 },
             },
         )
@@ -65,7 +65,7 @@ class TestTemplateAvo(BaseHogFunctionTemplateTest):
                     {
                         "apiKey": "NnBd7B55ZXC6o0Kh20pE",
                         "env": "dev",
-                        "appName": "PostHog",
+                        "appName": "Flind",
                         "sessionId": "4d4454b4-31bb-4b13-8167-4ec76a0f49b6",
                         "createdAt": "2024-09-06T09:04:28.324Z",
                         "avoFunction": False,
@@ -127,14 +127,14 @@ class TestTemplateAvo(BaseHogFunctionTemplateTest):
                 inputs={
                     "apiKey": "NnBd7B55ZXC6o0Kh20pE",
                     "environment": "dev",
-                    "appName": "PostHog",
+                    "appName": "Flind",
                     "excludeProperties": filters[0],
                     "includeProperties": filters[1],
                 },
                 globals={
                     "event": {
                         "event": "sign up",
-                        "properties": {"name": "Max", "company": "PostHog", "job": "Product Engineer"},
+                        "properties": {"name": "Max", "company": "Flind", "job": "Product Engineer"},
                     },
                 },
             )
@@ -148,7 +148,7 @@ class TestTemplateMigration(SimpleTestCase):
         _config = {
             "avoApiKey": "1234567890",
             "environment": "dev",
-            "appName": "PostHog",
+            "appName": "Flind",
         }
         _config.update(config)
         return PluginConfig(enabled=True, order=0, config=_config)
@@ -161,7 +161,7 @@ class TestTemplateMigration(SimpleTestCase):
         assert template["inputs"] == {
             "apiKey": {"value": "1234567890"},
             "environment": {"value": "dev"},
-            "appName": {"value": "PostHog"},
+            "appName": {"value": "Flind"},
             "excludeProperties": {"value": "price, currency"},
             "includeProperties": {"value": "account_status, plan"},
         }
@@ -174,7 +174,7 @@ class TestTemplateMigration(SimpleTestCase):
         assert template["inputs"] == {
             "apiKey": {"value": "1234567890"},
             "environment": {"value": "dev"},
-            "appName": {"value": "PostHog"},
+            "appName": {"value": "Flind"},
             "excludeProperties": {"value": ""},
             "includeProperties": {"value": ""},
         }
@@ -192,7 +192,7 @@ class TestTemplateMigration(SimpleTestCase):
         assert template["inputs"] == {
             "apiKey": {"value": "1234567890"},
             "environment": {"value": "dev"},
-            "appName": {"value": "PostHog"},
+            "appName": {"value": "Flind"},
             "excludeProperties": {"value": ""},
             "includeProperties": {"value": ""},
         }
@@ -217,7 +217,7 @@ class TestTemplateMigration(SimpleTestCase):
         assert template["inputs"] == {
             "apiKey": {"value": "1234567890"},
             "environment": {"value": "dev"},
-            "appName": {"value": "PostHog"},
+            "appName": {"value": "Flind"},
             "excludeProperties": {"value": ""},
             "includeProperties": {"value": ""},
         }

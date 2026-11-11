@@ -630,7 +630,7 @@ def send_provisioning_welcome(user_id: int, token: str, partner_name: str = "") 
         subject="Welcome to Flind - set your password",
         template_name="provisioning_welcome",
         template_context={
-            "preheader": "Your PostHog account is ready. Set your password to log in.",
+            "preheader": "Your Flind account is ready. Set your password to log in.",
             "link": f"/reset/{user.uuid}/{token}",
             "cloud": is_cloud(),
             "site_url": settings.SITE_URL,
@@ -1333,7 +1333,7 @@ def filter_members_by_external_data_source_access(
 def send_warehouse_destination_paused(
     team_id: int, destination_id: str, destination_name: str, latest_error: str, paused_at: str
 ) -> None:
-    """Tell a project that PostHog paused a data warehouse destination after repeated configuration errors.
+    """Tell a project that Flind paused a data warehouse destination after repeated configuration errors.
 
     The destination stays paused until someone edits it, so one email per pause is enough. The
     caller passes the details so this module does not read the warehouse product's models.
@@ -3108,7 +3108,7 @@ def send_integration_access_request(team_id: int, requesting_user_id: int, kind:
 @shared_task(**EMAIL_TASK_KWARGS)
 @skip_team_scope_audit
 def send_posthog_ai_access_request(organization_id: str, requesting_user_id: int) -> None:
-    """Notify org admins that a member is requesting PostHog AI be enabled."""
+    """Notify org admins that a member is requesting Flind AI be enabled."""
     organization = Organization.objects.filter(id=organization_id).first()
     requester = User.objects.filter(id=requesting_user_id).first()
     if organization is None or requester is None:
@@ -3137,7 +3137,7 @@ def send_posthog_ai_access_request(organization_id: str, requesting_user_id: int
     # Deterministic per requester so re-clicking doesn't spam admins (MessagingRecord dedups).
     campaign_key = f"posthog_ai_access_request_{organization_id}_{requesting_user_id}"
 
-    # Org admins/owners can enable PostHog AI, so they're the recipients of the request.
+    # Org admins/owners can enable Flind AI, so they're the recipients of the request.
     memberships = (
         OrganizationMembership.objects.select_related("user")
         .filter(organization_id=organization.id, level__gte=OrganizationMembership.Level.ADMIN)

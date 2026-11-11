@@ -51,7 +51,7 @@ If the plan limit blocks creation, delete an unused subscription or change the p
 
 AI prompt reports require all these conditions at creation:
 
-- PostHog Cloud, unless the instance runs in development mode.
+- Flind Cloud, unless the instance runs in development mode.
 - Organization approval for AI data processing.
 - AI subscriptions enabled for the current user.
 - `subscription:write` and `query:read` scopes.
@@ -60,13 +60,13 @@ AI prompt reports require all these conditions at creation:
 AI prompt reports use billable model calls.
 The planner can use more than one model call to select events, create queries, repair queries, and write the report.
 AI credits do not block creation.
-PostHog checks the credit balance before report generation.
+Flind checks the credit balance before report generation.
 Use `understanding-billing-usage` to investigate `ai_credits_used_in_period`.
 
-If the organization exhausts AI credits, PostHog skips the prompt report.
+If the organization exhausts AI credits, Flind skips the prompt report.
 The subscription stays enabled.
-PostHog moves its next delivery past the credit reset date.
-PostHog can notify the active creator once during that billing period.
+Flind moves its next delivery past the credit reset date.
+Flind can notify the active creator once during that billing period.
 
 AI summaries on insight and dashboard snapshots also use AI credits.
 Enabling one requires organization approval for AI data processing.
@@ -77,8 +77,8 @@ The exact limit depends on the plan.
 A paused subscription with `summary_enabled: true` still uses an active-summary slot.
 Disable its summary or delete the subscription to free the slot.
 
-If credits run out after setup, PostHog skips the summary.
-PostHog still sends the insight or dashboard snapshot.
+If credits run out after setup, Flind skips the summary.
+Flind still sends the insight or dashboard snapshot.
 
 ## Test delivery
 
@@ -101,7 +101,7 @@ Ask for approval before these changes.
 If the user does not approve delivery, do not make the update.
 A schedule-only or title-only update does not send by default.
 
-- The request returns `202` when PostHog queues the test.
+- The request returns `202` when Flind queues the test.
 - The request returns `409` when the subscription is disabled.
 - The request returns `409` when another test for that subscription is active.
 - The team limit is 10 test deliveries per minute.
@@ -130,7 +130,7 @@ Each delivery records these details:
 Treat each stage as a separate check:
 
 1. The API accepts and returns the configuration.
-2. PostHog queues a delivery.
+2. Flind queues a delivery.
 3. The delivery reaches a terminal state.
 4. The user confirms external receipt when that proof is required.
 
@@ -158,8 +158,8 @@ Examples include these conditions:
 - An AI prompt or its original creator becomes invalid.
 - The organization revokes AI data processing approval.
 
-PostHog sends the creator an in-app notification when possible.
-PostHog can also send a notification email.
+Flind sends the creator an in-app notification when possible.
+Flind can also send a notification email.
 
 Fix the permanent cause before you resume the subscription.
 An AI prompt subscription cannot resume if its original creator is unavailable.
@@ -168,10 +168,10 @@ Create a new subscription under an active user in that case.
 ## Ownership changes
 
 The subscription creator owns failure and automatic-disable notifications.
-PostHog sends them only while the creator remains an active organization member.
+Flind sends them only while the creator remains an active organization member.
 
 An AI prompt report requires its original creator for query access and report generation.
-If that creator becomes unavailable, PostHog can automatically disable the subscription.
+If that creator becomes unavailable, Flind can automatically disable the subscription.
 Recreate it under an active user.
 
 Insight and dashboard subscriptions can continue without an active creator.

@@ -11,7 +11,7 @@ const KNOWN_EVENTS: Record<string, string> = {
     $set: 'Set person properties',
 }
 
-/** A readable name for an event: known PostHog events get their label, other `$` events a sentence-case one. */
+/** A readable name for an event: known Flind events get their label, other `$` events a sentence-case one. */
 export function eventLabel(event: string): string {
     if (KNOWN_EVENTS[event]) {
         return KNOWN_EVENTS[event]

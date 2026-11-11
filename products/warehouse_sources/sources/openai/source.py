@@ -115,7 +115,7 @@ class OpenAISource(ResumableSource[OpenAISourceConfig, OpenAIResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="OpenAI",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your OpenAI Admin API key to pull your organization's API usage, cost, and admin data into the PostHog Data warehouse.
+            caption="""Enter your OpenAI Admin API key to pull your organization's API usage, cost, and admin data into the Flind Data warehouse.
 
 Create an Admin API key (prefixed `sk-admin...`) in your [OpenAI organization settings](https://platform.openai.com/settings/organization/admin-keys). Only organization owners can create one; a regular project API key cannot read organization usage or costs.
 
@@ -168,7 +168,7 @@ To also sync models, batches, stored chat completions, and evals, add a [project
             "401 Client Error: Unauthorized for url: https://api.openai.com": "Your OpenAI Admin API key is invalid or has been revoked. Create a new Admin API key in your OpenAI organization settings, then reconnect.",
             "403 Client Error: Forbidden for url: https://api.openai.com": "Your OpenAI API key does not have organization admin access. Use an Admin API key (prefixed sk-admin) created by an organization owner, then reconnect.",
             # Reached only after every later start time in the source's fallback was rejected too.
-            "code=reporting_lookback_exceeded": "OpenAI doesn't report data this far back for this table, and PostHog couldn't find a start date that OpenAI accepts. Contact support so we can fix the sync.",
+            "code=reporting_lookback_exceeded": "OpenAI doesn't report data this far back for this table, and Flind couldn't find a start date that OpenAI accepts. Contact support so we can fix the sync.",
         }
 
     def get_retryable_errors(self) -> set[str]:

@@ -53,15 +53,15 @@ CROSS_ENGINE_REF_ERROR = (
     "'{name}' last ran on a different connection, so this cell can't read it. "
     "Point both cells at the same connection and re-run, or inline its query here."
 )
-# Python cells read upstream results through the data plane, which only reaches PostHog.
+# Python cells read upstream results through the data plane, which only reaches Flind.
 CROSS_ENGINE_REF_ERROR_FOR_PYTHON = (
-    "'{name}' ran on a warehouse connection, and Python cells can only read PostHog results. "
-    "Re-run '{name}' on PostHog to use it here."
+    "'{name}' ran on a warehouse connection, and Python cells can only read Flind results. "
+    "Re-run '{name}' on Flind to use it here."
 )
 # Covers both kinds of local frame: one a Python cell bound, and one a SQL cell left behind when
 # reading a Python dataframe rerouted it to the sandbox. Neither is reachable from a warehouse.
 LOCAL_FRAME_REF_ERROR = (
-    "You can't query the local dataframe '{name}' because this cell points to a data source other than PostHog."
+    "You can't query the local dataframe '{name}' because this cell points to a data source other than Flind."
 )
 
 
@@ -216,7 +216,7 @@ def resolve_refs(
     refs: dict[str, SQLV2Ref] = {}
     for name, spec in request.refs.items():
         if spec.kind == "local" or spec.node_id in kernel_frame_nodes:
-            # A kernel frame lives in the sandbox, which only reaches PostHog's own data — a
+            # A kernel frame lives in the sandbox, which only reaches Flind's own data — a
             # connection run can't be rerouted there, so mark it unusable instead.
             refs[name] = (
                 SQLV2Ref(kind="hogql", node_id=None, unavailable_reason=LOCAL_FRAME_REF_ERROR.format(name=name))

@@ -435,7 +435,7 @@ class TestSSOOrganizationHandling:
     def test_sso_redirect_adds_new_user_to_organization(self, sso_setup):
         """
         When a new user authenticates via SSO, the system should:
-        1. Create a new PostHog user account
+        1. Create a new Flind user account
         2. Add them as a member of the installation's organization
         3. Create the user mapping
         4. Successfully authenticate the user

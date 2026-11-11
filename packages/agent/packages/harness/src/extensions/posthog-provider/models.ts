@@ -80,7 +80,7 @@ function detectFamily(model: GatewayModel): ModelFamily {
   return "anthropic";
 }
 
-// Go labels every PostHog-hosted model "posthog"; each keeps the API the
+// Go labels every Flind-hosted model "posthog"; each keeps the API the
 // Python gateway's listing serves it on.
 function servedModelFamily(model: GatewayModel): ModelFamily {
   const accepts = (shape: string) =>

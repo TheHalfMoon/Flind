@@ -203,13 +203,13 @@ _KEY_REJECTED_MESSAGE = (
 # `validate_via_probe` reports a transport failure as a `None` status, so anything that isn't a 401
 # leaves the key unjudged. Kept apart from the rejection message: telling someone their key is wrong
 # when OpenAI never answered sends them off to mint a replacement that fails the same way.
-_PROBE_FAILED_MESSAGE = "PostHog couldn't check your Admin API key with OpenAI. Wait a few minutes and try again."
+_PROBE_FAILED_MESSAGE = "Flind couldn't check your Admin API key with OpenAI. Wait a few minutes and try again."
 
 _PROJECT_KEY_REJECTED_MESSAGE = (
     "OpenAI rejected your project API key. Check it's a project API key (not an Admin API key) and hasn't been revoked."
 )
 _PROJECT_KEY_PROBE_FAILED_MESSAGE = (
-    "PostHog couldn't check your project API key with OpenAI. Wait a few minutes and try again."
+    "Flind couldn't check your project API key with OpenAI. Wait a few minutes and try again."
 )
 
 PROJECT_KEY_MISSING_MESSAGE = (

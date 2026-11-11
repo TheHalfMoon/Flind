@@ -89,7 +89,7 @@ describe("canUseTool MCP approval enforcement", () => {
     expect(result.behavior).toBe("deny");
     if (result.behavior === "deny") {
       expect(result.message).toContain("Settings > MCP Servers");
-      expect(result.message).toContain("PostHog");
+      expect(result.message).toContain("Flind");
       expect(result.interrupt).toBe(false);
     }
   });
@@ -172,7 +172,7 @@ describe("canUseTool MCP approval enforcement", () => {
   it("auto-allows the show_actions tool without prompting", async () => {
     const context = createContext("mcp__posthog-code-tools__show_actions", {
       toolInput: {
-        actions: [{ kind: "compose", label: "Add PostHog", prompt: "/x" }],
+        actions: [{ kind: "compose", label: "Add Flind", prompt: "/x" }],
       },
     });
     const result = await canUseTool(context);
@@ -188,7 +188,7 @@ describe("canUseTool MCP approval enforcement", () => {
 
     const context = createContext("mcp__posthog-code-tools__show_actions", {
       toolInput: {
-        actions: [{ kind: "compose", label: "Add PostHog", prompt: "/x" }],
+        actions: [{ kind: "compose", label: "Add Flind", prompt: "/x" }],
       },
     });
     const result = await canUseTool(context);
@@ -286,7 +286,7 @@ describe("canUseTool MCP approval enforcement", () => {
     "auto",
     "bypassPermissions",
   ] as const)(
-    "prompts for a configured PostHog exec match in cloud %s mode with a remembered choice",
+    "prompts for a configured Flind exec match in cloud %s mode with a remembered choice",
     async (permissionMode) => {
       setMcpToolApprovalStates({ mcp__posthog__exec: "approved" });
 
@@ -314,7 +314,7 @@ describe("canUseTool MCP approval enforcement", () => {
             expect.objectContaining({ kind: "reject_once" }),
           ],
           toolCall: expect.objectContaining({
-            title: "The agent wants to run `notebooks-destroy` on PostHog",
+            title: "The agent wants to run `notebooks-destroy` on Flind",
             _meta: { claudeCode: { toolName: "mcp__posthog__exec" } },
           }),
         }),
@@ -323,7 +323,7 @@ describe("canUseTool MCP approval enforcement", () => {
   );
 
   it.each(["auto", "bypassPermissions"] as const)(
-    "keeps local %s mode hands-off for a configured PostHog exec match",
+    "keeps local %s mode hands-off for a configured Flind exec match",
     async (permissionMode) => {
       setMcpToolApprovalStates({ mcp__posthog__exec: "approved" });
 
@@ -348,7 +348,7 @@ describe("canUseTool MCP approval enforcement", () => {
     },
   );
 
-  it("skips the prompt for a remembered PostHog exec sub-tool", async () => {
+  it("skips the prompt for a remembered Flind exec sub-tool", async () => {
     setMcpToolApprovalStates({ mcp__posthog__exec: "approved" });
 
     const context = createContext("mcp__posthog__exec", {
@@ -370,7 +370,7 @@ describe("canUseTool MCP approval enforcement", () => {
     expect(context.client.requestPermission).not.toHaveBeenCalled();
   });
 
-  it("persists a PostHog exec sub-tool selected with allow always", async () => {
+  it("persists a Flind exec sub-tool selected with allow always", async () => {
     setMcpToolApprovalStates({ mcp__posthog__exec: "approved" });
     const addPostHogExecApproval = vi.fn().mockResolvedValue(undefined);
 
@@ -396,7 +396,7 @@ describe("canUseTool MCP approval enforcement", () => {
     expect(addPostHogExecApproval).toHaveBeenCalledWith("notebooks-destroy");
   });
 
-  it("does not gate a nonmatching PostHog sub-tool", async () => {
+  it("does not gate a nonmatching Flind sub-tool", async () => {
     setMcpToolApprovalStates({ mcp__posthog__exec: "approved" });
 
     const context = createContext("mcp__posthog__exec", {

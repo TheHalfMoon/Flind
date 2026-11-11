@@ -357,7 +357,7 @@ class EventsQueryRunner(AnalyticsQueryRunner[EventsQueryResponse]):
         # property must fail loudly — the printer's silent JSONDropKeys strip would otherwise turn
         # the request into an empty string, which is surprising when the field name was typed by hand.
         #
-        # Check the raw user columns, not the expanded select list. PostHog's own pseudo-columns
+        # Check the raw user columns, not the expanded select list. Flind's own pseudo-columns
         # (``person``, ``person_display_name``) expand to expressions that reference restricted
         # person properties such as ``email``; those values are masked elsewhere, so walking the
         # expansion here would wrongly fail the whole query instead of degrading gracefully.
@@ -405,7 +405,7 @@ class EventsQueryRunner(AnalyticsQueryRunner[EventsQueryResponse]):
         checker = _Checker()
         for col in self.select_input_raw():
             stripped = col.split("--")[0].strip()
-            # Skip PostHog-generated pseudo-columns; their expansion is masked, not restricted.
+            # Skip Flind-generated pseudo-columns; their expansion is masked, not restricted.
             if col == "*" or stripped in ("person", "person_display_name"):
                 continue
             checker.visit(map_virtual_properties(parse_expr(col, timings=self.timings)))

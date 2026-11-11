@@ -55,7 +55,7 @@ export interface TodayMenuSectionProps {
 
 /**
  * What a row's action list draws with. Each kind of row writes its actions once against these parts,
- * like PostHog Desktop, so its hover card and its menus can't drift apart.
+ * like Flind Desktop, so its hover card and its menus can't drift apart.
  */
 export interface TodayMenuParts {
     Item: (props: TodayMenuItemProps) => JSX.Element

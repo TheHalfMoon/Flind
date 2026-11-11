@@ -77,7 +77,7 @@ export function SlackInboxNotificationsSettings({
           </div>
           <p className="m-0 text-(--gray-11) text-[13px]">
             New Self-driving reports are posted to Slack with the suggested
-            reviewers @mentioned. PostHog must be in the channel, so invite it
+            reviewers @mentioned. Flind must be in the channel, so invite it
             with <code className="text-[13px]">/invite @PostHog</code>.
           </p>
         </div>

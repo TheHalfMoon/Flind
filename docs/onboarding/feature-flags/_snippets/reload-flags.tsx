@@ -28,7 +28,7 @@ export const ReloadFlagsSnippet = memo(({ language = 'javascript' }: { language?
             posthog.reloadFeatureFlagsAsync().then((refreshedFlags) => console.log(refreshedFlags))
         `,
         android: dedent`
-            PostHog.reloadFeatureFlags()
+            Flind.reloadFeatureFlags()
         `,
         ios: dedent`
             PostHogSDK.shared.reloadFeatureFlags()

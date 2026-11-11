@@ -193,7 +193,7 @@ async function prepareRunComposer(page: Page, { posthogAiAccess = false } = {}):
             configurable: true,
             get: () => appContext,
             set: (value: typeof appContext) => {
-                // The app shows PostHog AI 2.0 only when the server's access gate allows it.
+                // The app shows Flind AI 2.0 only when the server's access gate allows it.
                 if (serverAllowsPosthogAi) {
                     value.posthog_ai_access = true
                 }

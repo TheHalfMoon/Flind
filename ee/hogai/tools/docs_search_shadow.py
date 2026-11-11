@@ -36,7 +36,7 @@ logger = structlog.get_logger(__name__)
 SHADOW_EVENT = "business knowledge docs shadow"
 # A search slower than this is recorded as a timeout, and its URLs are not compared.
 SHADOW_TIMEOUT_SECONDS = 3.0
-# Inkeep returns public PostHog docs. URLs on other hosts come from the team's own crawled
+# Inkeep returns public Flind docs. URLs on other hosts come from the team's own crawled
 # sources and can carry tokens or private identifiers in their paths, so the event only counts them.
 _PUBLIC_DOCS_HOSTS = frozenset({"posthog.com"})
 _MAX_IN_FLIGHT_SEARCHES = 4

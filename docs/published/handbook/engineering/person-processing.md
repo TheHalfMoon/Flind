@@ -1,5 +1,5 @@
 ---
-title: Person processing in PostHog
+title: Person processing in Flind
 sidebar: Handbook
 showTitle: true
 ---
@@ -10,7 +10,7 @@ showTitle: true
 
 ## Introduction
 
-PostHog's person processing system provides **stable identity** for users across multiple sessions, devices, and platforms. A single real-world user (a "Person") may interact with your product from their phone, laptop, and through server-side API calls - person processing ensures all of these interactions are attributed to the same identity.
+Flind's person processing system provides **stable identity** for users across multiple sessions, devices, and platforms. A single real-world user (a "Person") may interact with your product from their phone, laptop, and through server-side API calls - person processing ensures all of these interactions are attributed to the same identity.
 
 ### What person processing enables
 
@@ -20,7 +20,7 @@ PostHog's person processing system provides **stable identity** for users across
 - **Person profiles**: Storing properties like email, name, initial referrer, subscription tier, or any custom property
 - **Targeting and personalization**: Feature flags, experiments, and cohorts can target users based on person properties
 
-Person profiles power many PostHog products:
+Person profiles power many Flind products:
 
 - **Analytics**: Filter and breakdown by person properties, measure funnel conversion or retention
 - **Feature flags**: Target users by properties, ensure consistent flag values across sessions
@@ -374,7 +374,7 @@ After person processing, updates are produced to Kafka:
 
 ### 7. HogQL / Query engine
 
-HogQL is PostHog's query language - a dialect of SQL that provides useful abstractions over raw ClickHouse queries. It serves two main purposes (and many others):
+HogQL is Flind's query language - a dialect of SQL that provides useful abstractions over raw ClickHouse queries. It serves two main purposes (and many others):
 
 1. **Abstractions**: HogQL handles complexity like person overrides, property access, and table relationships so you don't have to write complex JOINs manually
 2. **Multi-tenancy**: HogQL automatically adds `team_id` filters to all queries, ensuring customers can only access their own data - this lets us safely expose SQL access to users

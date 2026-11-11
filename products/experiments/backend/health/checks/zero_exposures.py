@@ -122,14 +122,14 @@ def zero_exposures(ctx: HealthContext) -> CheckOutcome:
         if ctx.has_ended:
             title = f"No {unit}s exposed: the feature flag had no recorded calls"
             detail = (
-                f"No {unit}s were exposed while the experiment ran, because PostHog didn't record a call of the feature "
+                f"No {unit}s were exposed while the experiment ran, because Flind didn't record a call of the feature "
                 f'flag "{flag_key}" in that time. {unit.capitalize()}s are counted when your code reads this flag\'s '
                 f"value. {no_call_recorded}"
             )
         else:
             title = f"No {unit}s exposed: the feature flag has no recorded calls"
             detail = (
-                f'PostHog hasn\'t recorded a call of the feature flag "{flag_key}" during the experiment, so nobody is '
+                f'Flind hasn\'t recorded a call of the feature flag "{flag_key}" during the experiment, so nobody is '
                 f"counted as exposed. {unit.capitalize()}s are counted when your code reads this flag's value, for "
                 "example with getFeatureFlag in the browser or with get_flag on the result of evaluate_flags in Python. "
                 f"{no_call_recorded} New calls can take up to {LAST_CALLED_AT_LAG} to show up here."
@@ -165,7 +165,7 @@ def zero_exposures(ctx: HealthContext) -> CheckOutcome:
             group_rule = " A call counts only when it carries the group." if unit == "group" else ""
             title = f"No {unit}s exposed, although the feature flag was called"
             detail = (
-                f"No {unit}s were exposed while the experiment ran, although PostHog recorded calls of the feature "
+                f"No {unit}s were exposed while the experiment ran, although Flind recorded calls of the feature "
                 f'flag "{flag_key}" in that time. A call counts when the flag returns one of the experiment\'s '
                 f"variants and the {unit} passes the exposure criteria.{group_rule}{activation} Check that the "
                 f"exposure criteria, such as the test account filter, don't leave out your {unit}s."
@@ -179,7 +179,7 @@ def zero_exposures(ctx: HealthContext) -> CheckOutcome:
             )
             title = f"No {unit}s exposed, although the feature flag is called"
             detail = (
-                f'PostHog has recorded calls of the feature flag "{flag_key}" during the experiment, but none of them '
+                f'Flind has recorded calls of the feature flag "{flag_key}" during the experiment, but none of them '
                 "counts as an exposure. A call counts when the flag returns one of the experiment's variants and the "
                 f"{unit} passes the exposure criteria.{group_rule}{activation} Check that the flag's release "
                 f"conditions include your {unit}s, and that the exposure criteria, such as the test account filter, "

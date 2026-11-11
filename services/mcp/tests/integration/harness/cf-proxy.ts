@@ -25,13 +25,13 @@ async function reserveFreePort(): Promise<number> {
 
 // Boots the full proxy stack:
 //   1. A Hono listener (with a real Redis on `TEST_REDIS_URL` / db `TEST_REDIS_DB`)
-//      pointed at `env.apiBaseUrl` (the local PostHog stack).
+//      pointed at `env.apiBaseUrl` (the local Flind stack).
 //   2. A Cloudflare Worker via `wrangler unstable_dev` running this service's
 //      `src/index.ts`, with `MCP_HONO_URL` set to the Hono URL so every
 //      proxied request lands on the in-process Hono.
 //
 // Tests receive the Worker's URL — every assertion travels through the proxy
-// → Hono → PostHog backend chain end-to-end. Nothing is mocked.
+// → Hono → Flind backend chain end-to-end. Nothing is mocked.
 export async function startCfProxyHarness(env: IntegrationEnv): Promise<IntegrationHarness & { honoUrl: URL }> {
     const hono = await startHonoHarness(env)
     const port = await reserveFreePort()

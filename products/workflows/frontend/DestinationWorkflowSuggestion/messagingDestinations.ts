@@ -30,7 +30,7 @@ export function isMessagingDestinationTemplate(templateId: string): boolean {
 // Matches MAX_PICKED_EVENTS in the data suggestions service, which rejects longer lists.
 export const MAX_WORKFLOW_EVENTS = 5
 
-/** The custom events in a destination's filters that a workflow can start from. PostHog's own `$` events, like the
+/** The custom events in a destination's filters that a workflow can start from. Flind's own `$` events, like the
  * `$identify` and `$pageview` defaults, say nothing about what the team wants to email on. */
 export function workflowEventsFromFilters(
     filters: { events?: { id?: unknown }[] | null } | null | undefined

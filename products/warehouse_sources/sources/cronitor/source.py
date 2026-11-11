@@ -59,7 +59,7 @@ class CronitorSource(ResumableSource[CronitorSourceConfig, CronitorResumeConfig]
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Cronitor",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Import your Cronitor monitors, monitor groups, recent job invocations, time-series reliability metrics, issues, and RUM sites with their JavaScript errors into the PostHog Data warehouse.
+            caption="""Import your Cronitor monitors, monitor groups, recent job invocations, time-series reliability metrics, issues, and RUM sites with their JavaScript errors into the Flind Data warehouse.
 
 Create an API key under **Settings → API keys** in your Cronitor account, and enter it here. The key needs `monitor:read` to connect. Add `issue:read` to sync issues, and `site:read` to sync sites and site errors.""",
             iconPath="/static/services/cronitor.png",
@@ -92,7 +92,7 @@ Create an API key under **Settings → API keys** in your Cronitor account, and 
             "401 Client Error: Unauthorized": "Your Cronitor API key is invalid or has been revoked. Create a new key in your Cronitor account's API settings, then reconnect.",
             # A changed response shape cannot fix itself on retry, so fail with something the
             # user can act on instead of looping.
-            "Cronitor returned an unexpected response shape": "Cronitor returned data PostHog could not read, so this table was not synced. The Cronitor API may have changed. Contact support so the connector can be updated.",
+            "Cronitor returned an unexpected response shape": "Cronitor returned data Flind could not read, so this table was not synced. The Cronitor API may have changed. Contact support so the connector can be updated.",
             "403 Client Error: Forbidden": "Your Cronitor API key is missing a scope needed to sync this table. Monitors, groups, invocations and metrics need monitor:read, issues need issue:read, and sites and site errors need site:read. Update the key's scopes, then reconnect.",
         }
 

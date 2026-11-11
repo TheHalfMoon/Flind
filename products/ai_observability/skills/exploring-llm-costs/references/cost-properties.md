@@ -1,6 +1,6 @@
 # Cost properties
 
-All costs are USD, recorded per event at ingestion. PostHog derives them from the
+All costs are USD, recorded per event at ingestion. Flind derives them from the
 model+provider and token counts — you cannot set them manually and trust them to
 survive. Costs live on `$ai_generation` and `$ai_embedding` only.
 

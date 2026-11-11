@@ -4,13 +4,13 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary Land agent commits from a git bundle
  */
 export const contextLayerCommitsCreateBodySummaryMax = 10000
@@ -40,7 +40,7 @@ export const ContextLayerCommitsCreateBody = /* @__PURE__ */ zod
     .describe('Request body for landing agent commits posted back as a git bundle.')
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary Create or replace a wiki page
  */
 export const contextLayerPagesUpdateBodyPathMax = 512

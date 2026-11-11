@@ -43,7 +43,7 @@ export function QuillModeSelector(): JSX.Element {
                         variant="default"
                         size="sm"
                         aria-label="Mode"
-                        tooltip="Select a mode to focus PostHog AI on a specific product or task."
+                        tooltip="Select a mode to focus Flind AI on a specific product or task."
                         disabledReason={disabledReason}
                         data-attr="max-mode-selector"
                     >

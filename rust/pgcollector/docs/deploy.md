@@ -26,7 +26,7 @@ Nothing here requires a parameter-group change or a reboot.
   cluster, but `CREATE EXTENSION` is per database and the collector reads
   cluster-wide stats through the **database named in the server URL** (the
   `aurora_user_management` credentials point at the application database, so
-  `d63d9unoslck8q` on the PostHog clusters, not `postgres`). Run
+  `d63d9unoslck8q` on the Flind clusters, not `postgres`). Run
   `CREATE EXTENSION IF NOT EXISTS pg_stat_statements` there (DDL user) if it
   hasn't been. This is the only step that is genuinely required.
   A cluster upgraded in place keeps the old extension definition, so also run

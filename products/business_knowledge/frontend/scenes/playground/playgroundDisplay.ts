@@ -54,7 +54,7 @@ function dateGroupLabel(iso: string, now: dayjs.Dayjs): PlaygroundChatGroupLabel
     return 'Older'
 }
 
-/** Same buckets and order as the PostHog AI chat list, newest activity first. */
+/** Same buckets and order as the Flind AI chat list, newest activity first. */
 export function groupPlaygroundChats(
     chats: PlaygroundChatListApi[],
     search: string,

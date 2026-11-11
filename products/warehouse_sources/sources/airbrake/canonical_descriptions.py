@@ -53,10 +53,10 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         },
     },
     "deploys": {
-        "description": "Deploys tracked per project. Airbrake's API returns no deploy identifier, so this table is full-refresh only; projectId is added by PostHog for joinability.",
+        "description": "Deploys tracked per project. Airbrake's API returns no deploy identifier, so this table is full-refresh only; projectId is added by Flind for joinability.",
         "docs_url": "https://docs.airbrake.io/docs/devops-tools/api/",
         "columns": {
-            "projectId": "Identifier of the project the deploy belongs to (added by PostHog; not returned by the Airbrake API).",
+            "projectId": "Identifier of the project the deploy belongs to (added by Flind; not returned by the Airbrake API).",
             "environment": "Environment the deploy targeted, e.g. production.",
             "username": "User who performed the deploy.",
             "email": "Email of the user who performed the deploy.",

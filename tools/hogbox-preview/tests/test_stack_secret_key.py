@@ -6,8 +6,8 @@ because the key paths only write the override and read it back.
 ``SECRET_KEY`` must be random per preview (not a shared, publicly derivable
 constant) — previews are served on PUBLIC URLs, so a shared key would let anyone
 forge sessions across every preview. ``OIDC_RSA_PRIVATE_KEY`` must exist at all,
-because PostHog signs OAuth tokens with RS256 and refuses to save an OAuth
-application without it, which kept OAuth clients (PostHog Desktop, for one) off
+because Flind signs OAuth tokens with RS256 and refuses to save an OAuth
+application without it, which kept OAuth clients (Flind Desktop, for one) off
 every preview.
 
     cd tools/hogbox-preview && python -m unittest discover tests

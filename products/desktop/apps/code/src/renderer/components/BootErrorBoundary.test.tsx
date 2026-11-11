@@ -33,7 +33,7 @@ describe("BootErrorScreen", () => {
     render(<BootErrorScreen error={new Error("kaboom")} />);
 
     expect(screen.getByRole("alert")).toBeInTheDocument();
-    expect(screen.getByText("PostHog failed to start")).toBeInTheDocument();
+    expect(screen.getByText("Flind failed to start")).toBeInTheDocument();
     expect(screen.getByText("kaboom")).toBeInTheDocument();
   });
 

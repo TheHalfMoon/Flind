@@ -17,7 +17,7 @@ export function WarehouseNativeExposureFields({ exposure, onChange }: WarehouseN
             />
             <WarehouseNativeQueryEditor
                 label="Exposure query"
-                hint="Return one row per exposure with the columns entity_id, variant and timestamp. PostHog keeps the first exposure of each unit."
+                hint="Return one row per exposure with the columns entity_id, variant and timestamp. Flind keeps the first exposure of each unit."
                 query={exposure.query}
                 onChange={(query) => onChange({ ...exposure, query })}
                 data-attr="experiment-warehouse-native-exposure-query"

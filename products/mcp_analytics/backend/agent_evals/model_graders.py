@@ -126,7 +126,7 @@ def _build_jev(settings: GraderSettings) -> Grader:
     )
 
 
-# jev is opt-in by name: TypeSafe may only receive data PostHog owns, so a run asks for it knowingly.
+# jev is opt-in by name: TypeSafe may only receive data Flind owns, so a run asks for it knowingly.
 DEFAULT_GRADERS = ("expected_tools", "judge")
 GRADERS: dict[str, Callable[[GraderSettings], Grader]] = {
     "expected_tools": lambda _: expected_tools_grader,

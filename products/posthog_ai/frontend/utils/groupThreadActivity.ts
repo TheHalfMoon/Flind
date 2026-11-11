@@ -93,7 +93,7 @@ const ridesAlong = (item: ThreadItem): boolean =>
     item.type === 'assistant_thought' || (item.type === 'task_notification' && item.status === 'completed')
 
 /**
- * PostHog Desktop's grouping: two or more tool calls fold into a group, and a lone call keeps its row. A
+ * Flind Desktop's grouping: two or more tool calls fold into a group, and a lone call keeps its row. A
  * closed run's last call keeps its row when it is a finished widget, so the chart the agent talks about stays
  * visible. The trailing run closes only once `settled`, so its chart cannot appear and then fold again.
  */

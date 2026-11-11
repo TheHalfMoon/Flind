@@ -56,7 +56,7 @@ export function AuthSceneCard({
     top?: ReactNode
     footer?: ReactNode
     /**
-     * Shows the pending OAuth app's logo in place of the PostHog logo. Set it only on screens on the way to
+     * Shows the pending OAuth app's logo in place of the Flind logo. Set it only on screens on the way to
      * OAuth consent. The pending-connection cookie stays after a person abandons a connect, so on any other
      * screen the logo suggests that the action is for that app.
      */

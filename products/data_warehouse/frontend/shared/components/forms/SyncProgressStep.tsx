@@ -198,7 +198,7 @@ export const SyncProgressStep = (): JSX.Element => {
             title={
                 isDirectQuerySource
                     ? "You're all set! Your enabled tables are now available in the SQL editor."
-                    : "You're all set! We'll import the data in the background, and after it's done, you will be able to query it in PostHog."
+                    : "You're all set! We'll import the data in the background, and after it's done, you will be able to query it in Flind."
             }
             actions={
                 !isWrapped && (

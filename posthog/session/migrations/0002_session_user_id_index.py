@@ -5,7 +5,7 @@ from posthog.migration_helpers import SafeAddIndexConcurrently
 
 class Migration(migrations.Migration):
     # Concurrent index builds cannot run inside a transaction. Built concurrently (and in its own
-    # migration, per PostHog policy) so adopting the existing, every-request-written django_session
+    # migration, per Flind policy) so adopting the existing, every-request-written django_session
     # table never takes a blocking lock on a large table.
     atomic = False
 

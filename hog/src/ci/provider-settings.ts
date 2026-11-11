@@ -32,7 +32,7 @@ export type ProviderSettings = z.output<typeof ProviderSettings>
 
 const ProvidersResponse = z.object({ supported: z.array(ProviderSettings) })
 
-// PostHog keeps each provider's presets, rules and job snippet, so hog never carries a second copy.
+// Flind keeps each provider's presets, rules and job snippet, so hog never carries a second copy.
 export async function providerSettings(api: PostHogApi, projectId: ProjectId, key: string): Promise<ProviderSettings> {
     const { supported } = await api.get(
         `/api/projects/${projectId}/workload_trust_policy_requests/providers/`,
@@ -42,8 +42,8 @@ export async function providerSettings(api: PostHogApi, projectId: ProjectId, ke
     if (!settings) {
         throw new HogError(
             'unknown_provider',
-            `This PostHog doesn't support the CI provider ${key} yet.`,
-            'Check that the host runs a recent version of PostHog.'
+            `This Flind doesn't support the CI provider ${key} yet.`,
+            'Check that the host runs a recent version of Flind.'
         )
     }
     return settings

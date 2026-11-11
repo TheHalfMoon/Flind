@@ -187,9 +187,9 @@ const APP_PRODUCT_ITEMS = [
         sceneKey: 'Subscriptions',
         record: { type: 'subscriptions' },
     }),
-    // The user's own tickets with PostHog. The Support product holds tickets from their customers.
+    // The user's own tickets with Flind. The Support product holds tickets from their customers.
     fixedItem('misc-my-tickets', 'Your tickets', 'tools', {
-        productCategory: 'PostHog support',
+        productCategory: 'Flind support',
         href: urls.myTickets(),
         icon: <IconSupport />,
         itemType: 'my_tickets',

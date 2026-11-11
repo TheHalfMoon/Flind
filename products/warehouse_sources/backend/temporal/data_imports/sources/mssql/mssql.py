@@ -1,9 +1,9 @@
-"""MSSQL driver for PostHog's data-warehouse import pipeline.
+"""MSSQL driver for Flind's data-warehouse import pipeline.
 
 Everything MSSQL-specific — connection lifecycle (with SSH tunnel),
 schema listing, per-cursor metadata for the streaming sync, the dlt
 pipeline build, type conversions — lives on `MSSQLImplementation`.
-The source-class `MSSQLSource` is a thin PostHog-layer wrapper that
+The source-class `MSSQLSource` is a thin Flind-layer wrapper that
 just holds an instance and validates credentials.
 """
 
@@ -134,14 +134,14 @@ class MSSQLMetadataTimeoutError(NonReportableError):
     """SQL Server gave no answer to the connect or to a metadata query before the deadline."""
 
     def __init__(self, action: str, timeout_seconds: float) -> None:
-        super().__init__(f"{MSSQL_METADATA_TIMEOUT_ERROR} while PostHog {action} (waited {timeout_seconds:g} seconds)")
+        super().__init__(f"{MSSQL_METADATA_TIMEOUT_ERROR} while Flind {action} (waited {timeout_seconds:g} seconds)")
 
 
 class MSSQLRowReadTimeoutError(Exception):
     """SQL Server sent no batch of rows before the deadline. A later attempt can succeed."""
 
     def __init__(self, timeout_seconds: float) -> None:
-        super().__init__(f"{MSSQL_ROW_READ_TIMEOUT_ERROR} for {timeout_seconds:g} seconds, so PostHog ended the read")
+        super().__init__(f"{MSSQL_ROW_READ_TIMEOUT_ERROR} for {timeout_seconds:g} seconds, so Flind ended the read")
 
 
 def read_rows_with_deadline(read: Callable[[], Iterator[_T]]) -> Iterator[_T]:
@@ -194,7 +194,7 @@ _MAX_DEADLOCK_ATTEMPTS = 5
 
 # paramiko raises a bare, message-less EOFError from `start_client` when the SSH gateway accepts
 # the TCP connection but closes it during the SSH handshake — a non-SSH service on the port, a
-# bastion refusing PostHog's IPs, or a proxy that resets the stream. sshtunnel doesn't wrap it, so
+# bastion refusing Flind's IPs, or a proxy that resets the stream. sshtunnel doesn't wrap it, so
 # it escapes as an EOFError whose `str()` is empty, matching no non-retryable rule and retrying
 # forever. `connect` translates it into this stable, classifiable message (see
 # `MSSQLSource.get_non_retryable_errors`) — same gateway-config class as a wrapped tunnel failure.

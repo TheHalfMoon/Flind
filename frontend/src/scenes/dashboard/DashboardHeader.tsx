@@ -47,7 +47,7 @@ export function DashboardHeader({
 
     const isLoading = !dashboard && (loading || dashboardLoading)
 
-    // Sandbox PostHog AI adds insights through insight-create/insight-update, rather than the legacy
+    // Sandbox Flind AI adds insights through insight-create/insight-update, rather than the legacy
     // upsert_dashboard tool. Reload only when that tool explicitly targets the dashboard being viewed.
     useMcpToolApplyBack({
         tools: ['insight-create', 'insight-update'],

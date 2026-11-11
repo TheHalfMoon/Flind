@@ -64,7 +64,7 @@ const HOG_EVAL_COMMON_GLOBAL_DEFINITIONS: readonly HogGlobalDefinition[] = [
         },
         fields: [
             { name: 'uuid', type: 'string', description: 'The event UUID.' },
-            { name: 'event', type: 'string', description: 'The PostHog event name.' },
+            { name: 'event', type: 'string', description: 'The Flind event name.' },
             { name: 'timestamp', type: 'string', description: 'When the event was captured.' },
             { name: 'input', type: 'string', description: 'The raw input serialized as a string.' },
             { name: 'output', type: 'string', description: 'The raw output serialized as a string.' },
@@ -506,7 +506,7 @@ export function EvaluationCodeEditor(): JSX.Element {
                             onClick={() => openSidePanel(SidePanelTab.Max, autoRunMaxPrompt(HOG_ADAPT_PROMPT))}
                             data-attr="llma-evaluation-hog-adapt-with-ai"
                         >
-                            Adapt with PostHog AI
+                            Adapt with Flind AI
                         </LemonButton>
                     </div>
                     <div className="flex items-center gap-2">

@@ -50,7 +50,7 @@ import { ComposerReasoningSlider } from './ComposerReasoningSlider'
 const STOP_SEPARATOR = '|'
 
 const BILLING_LABELS: Record<ModelAccessEnumApi, string> = {
-    [ModelAccessEnumApi.PosthogGateway]: 'PostHog credits',
+    [ModelAccessEnumApi.PosthogGateway]: 'Flind credits',
     [ModelAccessEnumApi.OwnSubscription]: 'OpenAI (ChatGPT plan)',
 }
 
@@ -81,7 +81,7 @@ export interface ComposerModelEffortPickersProps {
     lockedRuntimeAdapter?: string | null
     /** The selection shown is the resolved default (user/project preference), not an explicit pick for
      * this run — the lemon model trigger renders a "Default ·" prefix so that's visible at a glance. The quill
-     * trigger shows only the model, like PostHog Desktop. */
+     * trigger shows only the model, like Flind Desktop. */
     isDefaultSelection?: boolean
     /** Clears the explicit pick so the run falls back to the resolved default. Omit on a surface with no
      * configured default and the reset row falls back to the ladder's balanced notch. */

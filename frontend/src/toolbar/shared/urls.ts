@@ -2,7 +2,7 @@ import { combineUrl } from 'kea-router'
 
 import { toParams } from 'lib/utils/url'
 
-// The toolbar's own copy of the `urls` helpers it links to in the PostHog app. The app's
+// The toolbar's own copy of the `urls` helpers it links to in the Flind app. The app's
 // `scenes/urls.ts` spreads every product manifest into its `urls` object, which would pull the
 // entire product scene graph into the customer-facing toolbar bundle — so toolbar code imports
 // this deliberate duplicate instead. `urls.test.ts` asserts each helper stays byte-identical

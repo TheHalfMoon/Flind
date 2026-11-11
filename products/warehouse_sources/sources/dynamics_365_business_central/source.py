@@ -56,7 +56,7 @@ class Dynamics365BusinessCentralSource(
             name=ExternalDataSourceType.DYNAMICS365BUSINESSCENTRAL,
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="Microsoft Dynamics 365 Business Central",
-            caption="""Sync your Business Central customers, vendors, items, documents and general ledger entries into the PostHog Data warehouse.
+            caption="""Sync your Business Central customers, vendors, items, documents and general ledger entries into the Flind Data warehouse.
 
 Register an app in [Microsoft Entra ID](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/administration/automation-apis-using-s2s-authentication) and grant it the `API.ReadWrite.All` application permission with admin consent, then add it as a Business Central user in the environment you want to sync. Enter that app's client ID and secret below, along with your Entra tenant ID and the environment name (usually `production`).
 

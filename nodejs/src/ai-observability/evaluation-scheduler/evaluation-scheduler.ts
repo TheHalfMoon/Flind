@@ -127,7 +127,7 @@ export function groupEventsByTeam(events: RawKafkaEvent[]): Map<number, RawKafka
  * be ingested as numbers (e.g. a buggy `trace_id: 0`), so values are string-coerced; empty or
  * missing ids resolve to null.
  *
- * `sessionId` ($session_id) is PostHog's product-analytics session and only ever travels through
+ * `sessionId` ($session_id) is Flind's product-analytics session and only ever travels through
  * to the emitted evaluation event. `aiSessionId` ($ai_session_id) is the AI-observability session
  * and is the unit a session-target evaluation runs on. They are different id spaces.
  */

@@ -143,7 +143,7 @@ export const ConfigureMetricsWithChanges: Story = {
         await userEvent.click(platforms.getByText('Impressions', { exact: true }))
         await userEvent.click(platforms.getByText('CTR', { exact: true }))
         await userEvent.click(
-            within(within(dialog).getByRole('region', { name: 'PostHog' })).getByText('Trial started', {
+            within(within(dialog).getByRole('region', { name: 'Flind' })).getByText('Trial started', {
                 exact: true,
             })
         )

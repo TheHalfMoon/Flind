@@ -1,10 +1,10 @@
 ---
-description: PostHog coding conventions for frontend and backend development
+description: Flind coding conventions for frontend and backend development
 ---
 
-# PostHog Coding Conventions
+# Flind Coding Conventions
 
-When writing code, follow these PostHog coding conventions.
+When writing code, follow these Flind coding conventions.
 
 > **Source of truth**: These conventions are maintained at:
 >
@@ -105,7 +105,7 @@ Hence the explicit separation between the data and view layers.
 
 As a general rule, we should have logs for every expected and unexpected actions of the application, using the appropriate _log level_.
 
-We should also be logging these exceptions to PostHog. Python exceptions should almost always be captured automatically without extra instrumentation, but custom ones (such as failed requests to external services, query errors, or Celery task failures) can be tracked using `capture_exception()`.
+We should also be logging these exceptions to Flind. Python exceptions should almost always be captured automatically without extra instrumentation, but custom ones (such as failed requests to external services, query errors, or Celery task failures) can be tracked using `capture_exception()`.
 
 #### Levels
 

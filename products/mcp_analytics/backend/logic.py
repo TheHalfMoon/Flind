@@ -321,7 +321,7 @@ def list_mcp_sessions(
     Over-fetches one row to report ``has_next`` (replay-style) without a separate count query.
     Results are cached briefly so concurrent dashboard refreshes share a single aggregation.
 
-    ``date_from`` / ``date_to`` accept PostHog date strings (relative like ``-7d`` or absolute
+    ``date_from`` / ``date_to`` accept Flind date strings (relative like ``-7d`` or absolute
     ISO timestamps), resolved via ``QueryDateRange`` like the dashboard. ``date_from`` defaults to
     ``DEFAULT_SESSIONS_DATE_FROM`` when omitted.
 

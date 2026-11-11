@@ -573,7 +573,7 @@ class Migration(migrations.Migration):
                     "archived",
                     models.BooleanField(
                         default=False,
-                        help_text="If true, the task is hidden from default list responses. Used by PostHog Desktop clients to share archive state across desktop and mobile.",
+                        help_text="If true, the task is hidden from default list responses. Used by Flind Desktop clients to share archive state across desktop and mobile.",
                     ),
                 ),
                 ("archived_at", models.DateTimeField(blank=True, null=True)),

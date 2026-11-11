@@ -1,6 +1,6 @@
 """System-table search eval for the sandboxed product-analytics agent.
 
-When users ask the agent to find or modify a PostHog entity by name
+When users ask the agent to find or modify a Flind entity by name
 (e.g. "rename the MAU insight"), the agent reaches for ``execute-sql``
 against ``system.*``. The failure modes this eval grades:
 

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -542,7 +542,7 @@ export interface SandboxOpenApi {
     content?: string | null
     /** Client-generated trace id correlated with the resulting Run's SSE stream. */
     trace_id?: string
-    /** Typed PostHog entities (and free text) attached to this message. */
+    /** Typed Flind entities (and free text) attached to this message. */
     attached_context?: SandboxAttachedContextItemApi[]
     /** Initial permission mode for the sandbox agent session. Defaults to `auto`, which allows safe tool use while preserving explicit confirmations.
      *
@@ -666,7 +666,7 @@ export interface MCPToolResponseApi {
 }
 
 export interface DocsSearchRequestApi {
-    /** Natural-language description of what to find in the PostHog documentation. Inkeep performs hybrid (semantic + full-text) RAG, so phrase the query the way a user would ask the question. */
+    /** Natural-language description of what to find in the Flind documentation. Inkeep performs hybrid (semantic + full-text) RAG, so phrase the query the way a user would ask the question. */
     query: string
 }
 
@@ -739,7 +739,7 @@ export interface TerminalAIToolApi {
 }
 
 export interface TerminalAIRequestApi {
-    /** Model served by the PostHog provider. */
+    /** Model served by the Flind provider. */
     model: TerminalAIModelApi
     /**
      * Conversation and tool results.
@@ -779,7 +779,7 @@ export const TurnSuggestionResolutionEnumApi = {
 } as const
 
 export interface ResolveTurnSuggestionApi {
-    /** ID of the PostHog AI conversation (task) the suggestion card belongs to. */
+    /** ID of the Flind AI conversation (task) the suggestion card belongs to. */
     task_id: string
     /**
      * Zero-based index of the conversation turn the suggestion card was shown under.
@@ -843,7 +843,7 @@ export const TerminalAiCreateFormat = {
 
 export type TurnSuggestionsStateRetrieveParams = {
     /**
-     * ID of the PostHog AI conversation (task) to read suggestion outcomes for.
+     * ID of the Flind AI conversation (task) to read suggestion outcomes for.
      */
     task_id: string
 }

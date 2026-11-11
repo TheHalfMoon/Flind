@@ -10,7 +10,7 @@ export const manifest: ProductManifest = {
         Toolbar: {
             name: 'Toolbar',
             projectBased: true,
-            description: 'PostHog toolbar launches PostHog right in your app or website.',
+            description: 'Flind toolbar launches Flind right in your app or website.',
             iconType: 'toolbar',
         },
     },

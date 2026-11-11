@@ -73,7 +73,7 @@ class StreamChunk:
 
 @dataclass(frozen=False)
 class AnalyticsContext:
-    """Context for PostHog analytics tracking"""
+    """Context for Flind analytics tracking"""
 
     distinct_id: str = ""
     trace_id: str | None = None

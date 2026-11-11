@@ -1912,7 +1912,7 @@ class TestExperimentExposuresQueryRunner(ExperimentQueryRunnerBaseTest):
             (
                 response.total_exposures,
                 True,
-                # The precomputed exposures carry no library. A library outside PostHog's own SDKs counts as other.
+                # The precomputed exposures carry no library. A library outside Flind's own SDKs counts as other.
                 None
                 if use_precomputation
                 else {

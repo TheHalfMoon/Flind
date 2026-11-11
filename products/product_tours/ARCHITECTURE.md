@@ -1,6 +1,6 @@
 # Product Tours Architecture
 
-Product tours allow PostHog users to implement automated onboarding and product walkthroughs, similar to tools like Userpilot and Product Fruits.
+Product tours allow Flind users to implement automated onboarding and product walkthroughs, similar to tools like Userpilot and Product Fruits.
 
 ## System Overview
 
@@ -263,11 +263,11 @@ posthog.productTours.clearCache() // Clear cached tour data
 
 ---
 
-## Layer 4: PostHog App UI (TODO)
+## Layer 4: Flind App UI (TODO)
 
 **Status:** Not yet implemented
 
-Will provide a dedicated UI for viewing, managing, and analyzing product tours within the PostHog app (outside the toolbar).
+Will provide a dedicated UI for viewing, managing, and analyzing product tours within the Flind app (outside the toolbar).
 
 **Planned location:** `frontend/src/scenes/product-tours/`
 
@@ -289,7 +289,7 @@ Will provide a dedicated UI for viewing, managing, and analyzing product tours w
 | --------------------- | ----------------------------------------------------- |
 | Toolbar → Backend API | OAuth Bearer token (`OAuthAccessTokenAuthentication`) |
 | SDK → Public endpoint | Project token in request                              |
-| App UI → Backend API  | Session auth (standard PostHog auth)                  |
+| App UI → Backend API  | Session auth (standard Flind auth)                  |
 
 ### Error Handling
 
@@ -302,7 +302,7 @@ Will provide a dedicated UI for viewing, managing, and analyzing product tours w
 
 ## Known Gaps / TODOs
 
-- **App UI not implemented** - no way to view/manage tours in PostHog app yet (only toolbar)
+- **App UI not implemented** - no way to view/manage tours in Flind app yet (only toolbar)
 - **Conditions UI missing** - URL/device matching not exposed in toolbar yet
 - **Appearance customization** - not wired up in toolbar UI
 - **Step reordering** - can't drag to reorder steps in toolbar
@@ -336,13 +336,13 @@ Will provide a dedicated UI for viewing, managing, and analyzing product tours w
 
 The toolbar requires a specific setup because it runs inside an iframe on the customer's site:
 
-1. **Start PostHog:** `hogli start`
+1. **Start Flind:** `hogli start`
 2. **Build frontend:** `cd frontend && pnpm build` (repeat after every change)
 3. **Enable feature flag:** Add your local account email to the `product-tours` feature flag
    - ⚠️ The toolbar fetches feature flags from **prod**, not local - your email must be in the prod flag
 4. **Run test site:** Start the Next.js playground (`pnpm dev` in playground repo)
 5. **Configure authorized URLs:**
-   - Go to toolbar page in local PostHog (e.g., `http://localhost:8010/project/1/toolbar`)
+   - Go to toolbar page in local Flind (e.g., `http://localhost:8010/project/1/toolbar`)
    - Add playground URL to authorized URLs (e.g., `https://localhost:3000`)
 6. **Inject toolbar:**
    - Click "Launch" dropdown → "Copy launch code"

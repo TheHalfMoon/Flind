@@ -203,7 +203,7 @@ export class CanvasDataService {
     const { apiHost } = await this.authService.getValidAccessToken();
     const projectId = this.authService.getState().currentProjectId;
     if (projectId == null) {
-      throw new Error("No PostHog project selected");
+      throw new Error("No Flind project selected");
     }
     const [publicKey, distinctId] = await Promise.all([
       this.getProjectToken(apiHost, projectId),
@@ -216,7 +216,7 @@ export class CanvasDataService {
     const { apiHost } = await this.authService.getValidAccessToken();
     const projectId = this.authService.getState().currentProjectId;
     if (projectId == null) {
-      throw new Error("No PostHog project selected");
+      throw new Error("No Flind project selected");
     }
 
     const apiKey = await this.getProjectToken(apiHost, projectId);

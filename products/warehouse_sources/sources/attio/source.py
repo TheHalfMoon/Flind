@@ -60,7 +60,7 @@ class AttioSource(ResumableSource[AttioSourceConfig, AttioResumeConfig]):
         return SourceConfig(
             name=ExternalDataSourceType.ATTIO,
             category=DataWarehouseSourceCategory.CRM,
-            caption="""Enter your Attio API key to automatically pull your Attio data into the PostHog Data warehouse.
+            caption="""Enter your Attio API key to automatically pull your Attio data into the Flind Data warehouse.
 
 You can generate an API key in your Attio workspace settings. Check out [this guide](https://attio.com/help/apps/other-apps/generating-an-api-key) for more details.
 

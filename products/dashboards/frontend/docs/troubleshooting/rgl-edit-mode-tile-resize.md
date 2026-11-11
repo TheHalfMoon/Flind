@@ -2,7 +2,7 @@
 
 In dashboard **edit mode**, dragging a tile resize handle shows the orange preview **under** the tile body instead of on top. View mode is unaffected — this is CSS/DOM glue in the dashboard scene fighting react-grid-layout, not stored layout JSON.
 
-## How PostHog wires RGL
+## How Flind wires RGL
 
 ```text
 ReactGridLayout (DashboardItems.tsx)
@@ -18,7 +18,7 @@ Rules:
 
 ## Cause
 
-The white/orange resize preview is painted by RGL on `.react-resizable-handle`. PostHog also renders decorative `DashboardResizeHandles` (`.handle`) on the grid item. If `.handle` is not anchored to the full grid cell, its SVG overlays sit above the preview and look like content covering the resize ghost.
+The white/orange resize preview is painted by RGL on `.react-resizable-handle`. Flind also renders decorative `DashboardResizeHandles` (`.handle`) on the grid item. If `.handle` is not anchored to the full grid cell, its SVG overlays sit above the preview and look like content covering the resize ghost.
 
 Common triggers:
 

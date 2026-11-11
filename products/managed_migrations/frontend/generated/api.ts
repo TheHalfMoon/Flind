@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -56,7 +56,7 @@ export const getManagedMigrationsSupportListUrl = (params?: ManagedMigrationsSup
 }
 
 /**
- * List batch import (managed migration) jobs across all teams. PostHog staff only.
+ * List batch import (managed migration) jobs across all teams. Flind staff only.
  */
 export const managedMigrationsSupportList = async (
     params?: ManagedMigrationsSupportListParams,
@@ -73,7 +73,7 @@ export const getManagedMigrationsSupportRetrieveUrl = (id: string) => {
 }
 
 /**
- * Get one batch import job with its raw worker state and import config. PostHog staff only.
+ * Get one batch import job with its raw worker state and import config. Flind staff only.
  */
 export const managedMigrationsSupportRetrieve = async (
     id: string,
@@ -309,7 +309,7 @@ export const getManagedMigrationsAwsIamSetupRetrieveUrl = (projectId: string) =>
 }
 
 /**
- * Values needed to set up cross-account IAM role access for S3 imports: the external ID, PostHog's import role ARN, and ready-to-paste trust/permission policy JSON.
+ * Values needed to set up cross-account IAM role access for S3 imports: the external ID, Flind's import role ARN, and ready-to-paste trust/permission policy JSON.
  */
 export const managedMigrationsAwsIamSetupRetrieve = async (
     projectId: string,

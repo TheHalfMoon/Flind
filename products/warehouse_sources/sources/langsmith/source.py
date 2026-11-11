@@ -85,7 +85,7 @@ class LangSmithSource(ResumableSource[LangSmithSourceConfig, LangSmithResumeConf
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="LangSmith",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter a LangSmith API key to sync your LLM traces, tracing projects, datasets, and feedback into the PostHog Data warehouse.
+            caption="""Enter a LangSmith API key to sync your LLM traces, tracing projects, datasets, and feedback into the Flind Data warehouse.
 
 Create an API key in your [LangSmith settings](https://smith.langchain.com/settings) under **API Keys**.
 
@@ -133,12 +133,12 @@ Leave the **Host** field blank for the US cloud (`api.smith.langchain.com`). Set
             # accept — rather than the credentials. The request shape is fixed per endpoint, so
             # every retry sends the identical query and is rejected identically. `_fetch_page`
             # logs the response body, which is the only place the vendor's reason survives.
-            "400 Client Error": "LangSmith rejected PostHog's request for this table. Check that the Host field matches your LangSmith region or deployment, then contact support if it keeps failing.",
+            "400 Client Error": "LangSmith rejected Flind's request for this table. Check that the Host field matches your LangSmith region or deployment, then contact support if it keeps failing.",
             "401 Client Error": "Your LangSmith API key is invalid or has been revoked. Create a new API key in your LangSmith settings, then reconnect.",
             "403 Client Error": "Your LangSmith API key does not have access to this workspace. Check the key's workspace scope, then reconnect.",
             REPEATED_CURSOR_ERROR: "LangSmith kept returning the same pagination cursor, so the import was stopped to avoid looping. This usually means the host is misconfigured. Check the Host field, then reconnect.",
-            RESPONSE_TOO_LARGE_ERROR: "A page of data from the LangSmith API exceeded 256 MB. This usually means individual records contain very large inputs or outputs. Contact PostHog support for next steps.",
-            PAGINATION_TOO_LARGE_ERROR: "The LangSmith API returned more pagination data than PostHog can accept, so the import was stopped. This usually means the host is misconfigured. Check the Host field, then reconnect.",
+            RESPONSE_TOO_LARGE_ERROR: "A page of data from the LangSmith API exceeded 256 MB. This usually means individual records contain very large inputs or outputs. Contact Flind support for next steps.",
+            PAGINATION_TOO_LARGE_ERROR: "The LangSmith API returned more pagination data than Flind can accept, so the import was stopped. This usually means the host is misconfigured. Check the Host field, then reconnect.",
             RUNS_PAGE_TOO_LARGE_ERROR: "A single LangSmith trace was too large to import, so the runs sync stopped. This usually means one trace has an unusually large input or output. Contact support so we can help unblock the sync.",
         }
 

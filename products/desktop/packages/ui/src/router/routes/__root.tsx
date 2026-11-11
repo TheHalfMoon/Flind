@@ -101,7 +101,7 @@ const log = logger.scope("root-route");
 
 // On Windows the frameless window overlays the min/max/close controls on the
 // top-right of the title bar (see window.ts titleBarOverlay). Reserve that strip
-// so the tab strip / PostHog Web button never render under the native controls.
+// so the tab strip / Flind Web button never render under the native controls.
 const WINDOWS_TITLEBAR_INSET = 140;
 
 export const Route = createRootRoute({
@@ -143,7 +143,7 @@ function RootLayout() {
 
   // The user's current project on the correct cloud (region comes from
   // cloudRegion via getPostHogUrl), falling back to the account root. `null`
-  // when the region is unknown — the "PostHog Web" button is disabled then, so
+  // when the region is unknown — the "Flind Web" button is disabled then, so
   // a click can never silently no-op.
   const posthogWebUrl = getPostHogUrl(
     currentProjectId ? `/project/${currentProjectId}` : "/",
@@ -189,7 +189,7 @@ function RootLayout() {
   const reconcilingTaskIds = useRef<Set<string>>(new Set());
   const billingEnabled = useFeatureFlag(BILLING_FLAG);
   useSpendGuardrails();
-  // "PostHog Web" is a channels-world affordance — show it only while the user
+  // "Flind Web" is a channels-world affordance — show it only while the user
   // is actually seeing channels.
   const channelsWorld = useChannelsWorld();
   // The new channels layout has exactly one gate: its feature flag (no
@@ -379,7 +379,7 @@ function RootLayout() {
                   onClick={handleOpenPostHogWeb}
                 >
                   <ArrowSquareOut size={14} />
-                  PostHog Web
+                  Flind Web
                 </Button>
               )}
             </Flex>

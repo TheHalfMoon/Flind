@@ -94,13 +94,13 @@ export class IngestionMetricsServer implements NodeServer {
         this.producerRegistry = await createProducerRegistry(this.config.KAFKA_CLIENT_RACK).build(this.config)
         logger.info('👍', 'Kafka ready')
 
-        logger.info('🤔', 'Connecting to PostHog Redis...')
+        logger.info('🤔', 'Connecting to Flind Redis...')
         this.posthogRedisPool = createRedisPoolFromConfig({
             connection: createPosthogRedisConnectionConfig(this.config),
             poolMinSize: this.config.REDIS_POOL_MIN_SIZE,
             poolMaxSize: this.config.REDIS_POOL_MAX_SIZE,
         })
-        logger.info('👍', 'PostHog Redis ready')
+        logger.info('👍', 'Flind Redis ready')
 
         const teamManager = new TeamManager(this.postgres)
         const quotaLimiting = new QuotaLimiting(this.posthogRedisPool, teamManager)

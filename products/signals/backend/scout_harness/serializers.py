@@ -550,7 +550,7 @@ class LighthouseAuditRequestSerializer(serializers.Serializer):
     url = serializers.URLField(
         max_length=2000,
         help_text=(
-            "The page to audit. Must be an https url on an allowed host — public PostHog pages only. "
+            "The page to audit. Must be an https url on an allowed host — public Flind pages only. "
             "Pages behind a login cannot be audited: the browser signs in to nothing, so it would "
             "measure the login screen and report its numbers as the page's. A url that redirects off the "
             "allowed hosts is rejected for the same reason."
@@ -1519,7 +1519,7 @@ class ReportEvidenceSerializer(serializers.Serializer):
 class SuggestedReviewerSerializer(serializers.Serializer):
     """One suggested reviewer — identified by `github_login`, `user_uuid`, or both.
 
-    A reviewer is a PostHog user, so a `user_uuid` only has to name an org member of this team: a
+    A reviewer is a Flind user, so a `user_uuid` only has to name an org member of this team: a
     member with no linked GitHub account routes the report like anyone else. A `user_uuid` that
     isn't an org member of this team is rejected — so a reviewer is never silently dropped."""
 
@@ -1536,8 +1536,8 @@ class SuggestedReviewerSerializer(serializers.Serializer):
     user_uuid = serializers.UUIDField(
         required=False,
         help_text=(
-            "PostHog user UUID (e.g. from `scout-members-list`, or an entity's `created_by`). Use "
-            "this when you know the PostHog user, whether or not they have a GitHub handle — every "
+            "Flind user UUID (e.g. from `scout-members-list`, or an entity's `created_by`). Use "
+            "this when you know the Flind user, whether or not they have a GitHub handle — every "
             "member is routable this way. Must be a concrete UUID; the `@me` alias is not valid here."
         ),
     )
@@ -2385,7 +2385,7 @@ class RecentDashboardEntrySerializer(serializers.Serializer):
     name = serializers.CharField(allow_blank=True, help_text="Dashboard name (may be blank if unnamed).")
     last_accessed_at = serializers.CharField(
         allow_null=True,
-        help_text="ISO-8601 timestamp of the most recent view in the PostHog UI.",
+        help_text="ISO-8601 timestamp of the most recent view in the Flind UI.",
     )
     last_refresh = serializers.CharField(
         allow_null=True,
@@ -3058,7 +3058,7 @@ class SignalScoutSlackDestinationSerializer(serializers.Serializer):
         help_text=(
             "Slack members to send output to as direct messages, each in `member_id|@display-name` format "
             "(a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the "
-            f"PostHog app; at most {MAX_SCOUT_SLACK_DM_TARGETS}. Set either this or `channel`, not both. "
+            f"Flind app; at most {MAX_SCOUT_SLACK_DM_TARGETS}. Set either this or `channel`, not both. "
             "Useful for personal scouts where a DM beats a channel."
         ),
     )
@@ -3601,7 +3601,7 @@ class ScoutDeprecationPhase(models.TextChoices):
 
 
 class ScoutDeprecationSerializer(serializers.Serializer):
-    """What PostHog has said about retiring this scout, for the chip and the banner to render."""
+    """What Flind has said about retiring this scout, for the chip and the banner to render."""
 
     phase = serializers.ChoiceField(
         choices=ScoutDeprecationPhase.choices,
@@ -3611,7 +3611,7 @@ class ScoutDeprecationSerializer(serializers.Serializer):
         ),
     )
     reason = serializers.CharField(
-        help_text="Why PostHog is retiring the scout, written to be shown to a person as-is."
+        help_text="Why Flind is retiring the scout, written to be shown to a person as-is."
     )
     superseded_by = serializers.CharField(
         allow_blank=True,
@@ -3644,7 +3644,7 @@ class SignalScoutConfigSerializer(serializers.ModelSerializer):
     )
     scout_origin = serializers.SerializerMethodField(
         help_text=(
-            "Where this scout came from: `canonical` for a scout PostHog ships and maintains "
+            "Where this scout came from: `canonical` for a scout Flind ships and maintains "
             "(seeded from `products/signals/skills/`), or `custom` for one a team hand-authored "
             "on this project. Use it to badge built-in vs custom scouts instead of a hardcoded "
             "name list. Defaults to `custom` if the skill is not currently present on the team."
@@ -3653,7 +3653,7 @@ class SignalScoutConfigSerializer(serializers.ModelSerializer):
     scout_role = serializers.SerializerMethodField(
         help_text=(
             "What this scout is to the harness: `specialist` for one that watches a product "
-            "surface, or `operational` for one PostHog ships to watch the self-driving system "
+            "surface, or `operational` for one Flind ships to watch the self-driving system "
             "itself. An operational scout is exempt from the inactivity sweep and from the "
             "enabled-scout cap, and is not a scout a project should delete. Always `specialist` "
             "for a custom scout."
@@ -3661,7 +3661,7 @@ class SignalScoutConfigSerializer(serializers.ModelSerializer):
     )
     deprecation = serializers.SerializerMethodField(
         help_text=(
-            "Set when PostHog is retiring this scout, and null otherwise. Carries the phase, the "
+            "Set when Flind is retiring this scout, and null otherwise. Carries the phase, the "
             "reason to show, what replaces the scout, and when it stops running. Only a canonical "
             "scout the project has not edited is ever marked: a project's own copy keeps running "
             "and reads as null."
@@ -3703,7 +3703,7 @@ class SignalScoutConfigSerializer(serializers.ModelSerializer):
             "Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the "
             "evaluation window), `ignored` (no person engaged with its reports — no view, rating, "
             "note, dismissal, or resolution), `repeated_failures` (consecutive failed runs), `retired` "
-            "(PostHog retired the scout), or `background_removed` (the background lane stopped "
+            "(Flind retired the scout), or `background_removed` (the background lane stopped "
             "managing the scout). Null unless `status` is `pending_pause` or `paused_by_system`."
         ),
     )
@@ -3712,7 +3712,7 @@ class SignalScoutConfigSerializer(serializers.ModelSerializer):
         read_only=True,
         help_text=(
             "Who controls this scout now. `team`: a person set it up or has changed it. "
-            "`background`: PostHog runs it in the background and no person has edited it yet. Any "
+            "`background`: Flind runs it in the background and no person has edited it yet. Any "
             "edit through this API changes `background` to `team`."
         ),
     )
@@ -3758,7 +3758,7 @@ class SignalScoutConfigSerializer(serializers.ModelSerializer):
         read_only=True,
         help_text=(
             "What the scout's sandbox can reach over the network while it runs. `trusted` (the "
-            "default) restricts runs to the platform's trusted-domain allowlist (PostHog, GitHub, "
+            "default) restricts runs to the platform's trusted-domain allowlist (Flind, GitHub, "
             "common package registries). `full` lets the scout reach any site, for skills that read "
             "external sources such as documentation or papers."
         ),
@@ -4191,7 +4191,7 @@ class SignalScoutConfigUpdateSerializer(_ScoutConfigCapabilityFieldsMixin, seria
         required=False,
         help_text=(
             "What the scout's sandbox can reach over the network while it runs. `trusted` (the "
-            "default) restricts runs to the platform's trusted-domain allowlist (PostHog, GitHub, "
+            "default) restricts runs to the platform's trusted-domain allowlist (Flind, GitHub, "
             "common package registries). Set `full` to let this scout reach any site, for skills "
             "that read external sources such as documentation or papers. Applies from the scout's "
             "next run."
@@ -4363,7 +4363,7 @@ class SignalScoutConfigOptionsSerializer(_ScoutConfigCapabilityFieldsMixin, seri
         required=False,
         help_text=(
             "What the scout's sandbox can reach over the network while it runs. Defaults to "
-            "`trusted`, the platform's trusted-domain allowlist (PostHog, GitHub, common package "
+            "`trusted`, the platform's trusted-domain allowlist (Flind, GitHub, common package "
             "registries). Set `full` to let this scout reach any site, for skills that read "
             "external sources such as documentation or papers."
         ),
@@ -4908,7 +4908,7 @@ class ScoutMemberSerializer(serializers.Serializer):
 
     user_uuid = serializers.CharField(
         help_text=(
-            "The member's stable PostHog user UUID — the same id that appears as `created_by.uuid` on "
+            "The member's stable Flind user UUID — the same id that appears as `created_by.uuid` on "
             "entities they own. A durable handle for this person across runs."
         )
     )

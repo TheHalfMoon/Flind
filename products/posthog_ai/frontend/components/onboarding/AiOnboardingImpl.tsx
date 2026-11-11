@@ -74,7 +74,7 @@ function StarterPromptsAction(): JSX.Element {
 
 export interface AiOnboardingProps extends AiOnboardingLogicProps {
     /**
-     * Whether the host surface is showing PostHog AI to a user who hasn't seen the takeover. The host owns
+     * Whether the host surface is showing Flind AI to a user who hasn't seen the takeover. The host owns
      * this because the answer depends on the runtime and the entry point, neither of which this surface
      * knows about.
      */

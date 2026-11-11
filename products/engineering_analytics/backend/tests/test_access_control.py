@@ -124,7 +124,7 @@ class TestEngineeringAnalyticsAccessControl(WarehouseAccessControlTestMixin):
     def test_denied_user_cannot_write_quarantine_to_source_b(self) -> None:
         ExternalDataSource.objects.filter(pk=self.source_b.pk).update(job_inputs={"repository": "PostHog/secret"})
         github = mock.Mock()
-        github.organization.return_value = "PostHog"
+        github.organization.return_value = "Flind"
         github.get_default_branch.return_value = "master"
         github.get_file_contents.return_value = None
         github.create_issue.return_value = {"number": 4242, "repository": "secret"}

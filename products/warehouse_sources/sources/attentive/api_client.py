@@ -134,7 +134,7 @@ def create_webhook(api_key: str, webhook_url: str, resource_names: list[str]) ->
 
         # Attentive has no create-disabled option, so immediately disable the
         # webhook until the user provides the signing key — otherwise events
-        # would fire at PostHog before deliveries can be verified.
+        # would fire at Flind before deliveries can be verified.
         webhook_id = (response.json() or {}).get("id")
         if not webhook_id:
             # The create response occasionally omits the id; look it up by URL so

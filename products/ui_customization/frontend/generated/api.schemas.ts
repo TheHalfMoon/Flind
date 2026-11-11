@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export type FragmentIconApi = (typeof FragmentIconApi)[keyof typeof FragmentIconApi]
@@ -47,7 +47,7 @@ export const AnalyticsPageApi = {
 } as const
 
 /**
- * A PostHog page. It has its own label and icon.
+ * A Flind page. It has its own label and icon.
  */
 export interface AnalyticsPageTargetApi {
     kind: 'page'
@@ -190,14 +190,14 @@ export interface AnalyticsFragmentLayoutApi {
 }
 
 export interface CustomizationApi {
-    /** The layout for the selected context. For analytics_sidebar, the sections of the Analytics pane, from top to bottom. Each section holds links, buttons, metrics and lists. Links and buttons open PostHog pages or this project's insights, dashboards and notebooks, never other sites. A section whose items show nothing, such as an empty pinned list, is hidden. */
+    /** The layout for the selected context. For analytics_sidebar, the sections of the Analytics pane, from top to bottom. Each section holds links, buttons, metrics and lists. Links and buttons open Flind pages or this project's insights, dashboards and notebooks, never other sites. A section whose items show nothing, such as an empty pinned list, is hidden. */
     layout: AnalyticsFragmentLayoutApi
     /** True when the person saved their own layout. False for the default layout. */
     customized: boolean
 }
 
 export interface CustomizationRequestApi {
-    /** The layout for the selected context. For analytics_sidebar, the sections of the Analytics pane, from top to bottom. Each section holds links, buttons, metrics and lists. Links and buttons open PostHog pages or this project's insights, dashboards and notebooks, never other sites. A section whose items show nothing, such as an empty pinned list, is hidden. The layout replaces the whole fragment, so send every section to keep. */
+    /** The layout for the selected context. For analytics_sidebar, the sections of the Analytics pane, from top to bottom. Each section holds links, buttons, metrics and lists. Links and buttons open Flind pages or this project's insights, dashboards and notebooks, never other sites. A section whose items show nothing, such as an empty pinned list, is hidden. The layout replaces the whole fragment, so send every section to keep. */
     layout: AnalyticsFragmentLayoutApi
 }
 

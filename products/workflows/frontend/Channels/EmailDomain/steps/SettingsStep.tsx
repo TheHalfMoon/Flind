@@ -157,7 +157,7 @@ export function SettingsStep(): JSX.Element {
     }
 
     const lead = supportsDomainConnect
-        ? `${hostName} runs ${domain}'s DNS and lets PostHog add settings for you.`
+        ? `${hostName} runs ${domain}'s DNS and lets Flind add settings for you.`
         : hostName
           ? `${hostName} runs ${domain}'s DNS. Add these there, then come back.`
           : `We could not tell who runs ${domain}'s DNS. Open your DNS provider's settings and add these.`

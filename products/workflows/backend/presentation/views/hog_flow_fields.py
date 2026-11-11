@@ -81,7 +81,7 @@ class HogFlowActionTypeField(serializers.ChoiceField):
         raise serializers.ValidationError(
             f"Unsupported action type {self._describe(data)}. "
             f"Valid types are: {', '.join(SUPPORTED_ACTION_TYPES)}. "
-            "Steps that act on PostHog data don't get a type of their own - they are type 'function' "
+            "Steps that act on Flind data don't get a type of their own - they are type 'function' "
             f"with a template_id.{self._hint(data)}"
         )
 

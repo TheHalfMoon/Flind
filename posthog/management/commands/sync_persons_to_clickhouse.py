@@ -1,9 +1,9 @@
 """Reconcile a team's person, distinct-id, and group rows from Postgres to ClickHouse.
 
 LOCAL DEV AND SELF-HOSTED ONLY: this loads the whole team's rows into memory (no batching), so it
-is not safe to run against large production teams, and it refuses to run on deployed PostHog Cloud.
+is not safe to run against large production teams, and it refuses to run on deployed Flind Cloud.
 It exists to seed local ClickHouse from the local persons database (e.g. via the generate_persons
-command). On PostHog Cloud, `person_consistency` scans a team and repairs what it finds.
+command). On Flind Cloud, `person_consistency` scans a team and repairs what it finds.
 """
 
 import json
@@ -71,7 +71,7 @@ def run(options):
     if run_mode().is_deployed_cloud:
         raise CommandError(
             "sync_persons_to_clickhouse runs only in local dev and self-hosted deployments. "
-            "On PostHog Cloud, use person_consistency to scan and repair a team."
+            "On Flind Cloud, use person_consistency to scan and repair a team."
         )
     live_run = options["live_run"]
     deletes = options["deletes"]

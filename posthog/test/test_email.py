@@ -139,7 +139,7 @@ class TestEmail(BaseTest):
                     to=[
                         {
                             "raw_email": "test0@posthog.com",
-                            "recipient": "Test PostHog <test0@posthog.com>",
+                            "recipient": "Test Flind <test0@posthog.com>",
                         }
                     ],
                     subject="Test email",
@@ -1019,7 +1019,7 @@ class TestEmail(BaseTest):
         self.assertEqual(sanitized["utm_tags"], "utm_source=posthog&utm_medium=email&utm_campaign=test")
 
     def test_sanitize_email_properties_preserves_trusted_url_keys(self) -> None:
-        # Clean PostHog-built URLs survive sanitization unchanged: html.escape is a
+        # Clean Flind-built URLs survive sanitization unchanged: html.escape is a
         # no-op on URL-shape characters (`:` `/` `.`), and trusted URL keys skip the
         # defang step so the link stays clickable.
         section: dict[str, str] = {"team_url": "https://app.posthog.com/project/3", "team_name": "Acme.com"}

@@ -57,7 +57,7 @@ def invoke_structured(
             model=model,
             user=user,
             team=team,
-            # PostHog covers these calls, so suggestions never draw on the customer's AI credits.
+            # Flind covers these calls, so suggestions never draw on the customer's AI credits.
             billable=False,
             inject_context=False,
             streaming=False,

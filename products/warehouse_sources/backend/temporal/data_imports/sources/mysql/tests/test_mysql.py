@@ -2633,7 +2633,7 @@ class TestMySQLSourceNonRetryableErrors:
             "Check that it's spelled correctly and reachable from the public internet.",
             # The other rejection `_pinned_ssh_host` can raise: the host resolves to a private/internal address.
             "SSH tunnel host not allowed: This host points to an internal or private IP address, "
-            "which PostHog can't reach. Use a host that's reachable from the public internet.",
+            "which Flind can't reach. Use a host that's reachable from the public internet.",
         ],
     )
     def test_ssh_tunnel_host_not_allowed_is_non_retryable(self, source, error_msg):
@@ -3092,7 +3092,7 @@ class TestMySQLSourceValidateCredentials:
                 pymysql.err.OperationalError(
                     2003, "Can't connect to MySQL server on 'db.example.com' ([Errno -2] Name or service not known)"
                 ),
-                "Host could not be resolved. Check the host is spelled correctly and reachable from PostHog.",
+                "Host could not be resolved. Check the host is spelled correctly and reachable from Flind.",
             ),
             (
                 pymysql.err.OperationalError(
@@ -3102,19 +3102,19 @@ class TestMySQLSourceValidateCredentials:
             ),
             (
                 pymysql.err.OperationalError(2003, "Can't connect to MySQL server on 'db.example.com' (timed out)"),
-                "Connection timed out. Check that your database is reachable from the public internet and that PostHog's egress IP addresses are allowed through your firewall (see the docs). For a database that can't be exposed publicly, use the SSH tunnel option.",
+                "Connection timed out. Check that your database is reachable from the public internet and that Flind's egress IP addresses are allowed through your firewall (see the docs). For a database that can't be exposed publicly, use the SSH tunnel option.",
             ),
             (
                 pymysql.err.OperationalError(
                     2003, "Can't connect to MySQL server on 'db.example.com' ([Errno 113] No route to host)"
                 ),
-                "Could not reach the host. Check the host is correct and that PostHog's IP addresses are allowed through your firewall.",
+                "Could not reach the host. Check the host is correct and that Flind's IP addresses are allowed through your firewall.",
             ),
             (
                 pymysql.err.OperationalError(
                     2003, "Can't connect to MySQL server on 'db.example.com' ([Errno 101] Network is unreachable)"
                 ),
-                "Could not reach the host. Check the host is correct and that PostHog's IP addresses are allowed through your firewall.",
+                "Could not reach the host. Check the host is correct and that Flind's IP addresses are allowed through your firewall.",
             ),
             # pymysql wraps the TLS failure in the generic 2003 error, so it must not get the firewall advice.
             (

@@ -94,7 +94,7 @@ export function WebhookSetupForm({
                 <h3 className="text-lg font-semibold">Set up webhook for {sourceName}</h3>
                 <p>
                     Instead of polling for changes on a schedule, we'll set up a webhook on your {sourceName} account so
-                    that new data is pushed to PostHog. This means faster syncs and less load on your source.
+                    that new data is pushed to Flind. This means faster syncs and less load on your source.
                 </p>
                 {webhookTablesList}
                 <LemonBanner type={autoCreationBlockedReason ? 'warning' : 'info'}>
@@ -206,7 +206,7 @@ export function WebhookSetupForm({
                 <div className="flex flex-col items-start gap-2">
                     <p className="m-0">
                         {manualOnly
-                            ? 'PostHog could not generate the webhook URL. Try again to get one.'
+                            ? 'Flind could not generate the webhook URL. Try again to get one.'
                             : 'Automatic setup can fail for a temporary reason. Try again, or set the webhook up by hand below.'}
                     </p>
                     <LemonButton type="secondary" onClick={onCreateWebhook}>
@@ -282,7 +282,7 @@ export function WebhookStatusTags({
                 <LemonTag type={externalStateLabel.tagType}>{externalStateLabel.label}</LemonTag>
             </div>
             <div className="space-y-1">
-                <p className="text-xs font-semibold text-muted uppercase">PostHog processing</p>
+                <p className="text-xs font-semibold text-muted uppercase">Flind processing</p>
                 <LemonTag type={internalStateLabel.tagType}>{internalStateLabel.label}</LemonTag>
             </div>
         </div>

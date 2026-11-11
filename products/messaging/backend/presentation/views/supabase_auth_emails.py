@@ -49,7 +49,7 @@ SUPABASE_AUTH_EMAILS_FLAG = "workflows-supabase-auth-emails"
 # log-ins of each customer's own app.
 HOOK_CALLS = Counter(
     "messaging_supabase_auth_email_hook_total",
-    "Supabase Send Email Hook calls, by the status PostHog answered and why a send failed.",
+    "Supabase Send Email Hook calls, by the status Flind answered and why a send failed.",
     labelnames=["status", "email_action_type", "error_code"],
 )
 # Supabase fails the sign-up when the hook takes over 5 seconds.

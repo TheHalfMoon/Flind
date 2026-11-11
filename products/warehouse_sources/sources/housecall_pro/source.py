@@ -47,7 +47,7 @@ class HousecallProSource(ResumableSource[HousecallProSourceConfig, HousecallProR
             category=DataWarehouseSourceCategory.CRM,
             label="Housecall Pro",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Housecall Pro API key to pull your jobs, customers, and invoices into the PostHog Data warehouse.
+            caption="""Enter your Housecall Pro API key to pull your jobs, customers, and invoices into the Flind Data warehouse.
 
 API access needs a MAX plan. An account admin can generate a key under **My Apps → All Apps → API Key Management** — choose read-only access for a sync-only key.""",
             iconPath="/static/services/housecall_pro.png",

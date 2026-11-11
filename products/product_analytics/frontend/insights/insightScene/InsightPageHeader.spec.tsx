@@ -307,7 +307,7 @@ describe('InsightPageHeader', () => {
         })
     })
 
-    describe('insight context for PostHog AI', () => {
+    describe('insight context for Flind AI', () => {
         function findReadDataCall(): Record<string, unknown> | undefined {
             const call = mockUseMaxTool.mock.calls.find(
                 (c: Record<string, unknown>[]) => c[0]?.identifier === 'read_data'

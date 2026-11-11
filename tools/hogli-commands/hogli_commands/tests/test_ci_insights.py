@@ -64,7 +64,7 @@ _BROKEN = {
 
 _MASTER_FAILURES = [
     {
-        "repo": {"provider": "github", "owner": "PostHog", "name": "posthog"},
+        "repo": {"provider": "github", "owner": "Flind", "name": "posthog"},
         "workflow_name": "ci-frontend",
         "failed_job": "Jest tests",
         "run_count": 18,

@@ -89,7 +89,7 @@ class FinalizePlanTool(MaxTool):
         if not plan:
             return f"Execute {self.name} operation"
 
-        return f"PostHog AI's plan:\n\n{plan}"
+        return f"Flind AI's plan:\n\n{plan}"
 
     async def _arun_impl(
         self,
@@ -100,7 +100,7 @@ class FinalizePlanTool(MaxTool):
         artifact, status, _blocks = await create_or_update_notebook_artifact(
             artifacts_manager=self._context_manager.artifacts,
             content=plan,
-            title="PostHog AI's plan: " + title,
+            title="Flind AI's plan: " + title,
             artifact_id=artifact_id,
         )
 

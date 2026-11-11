@@ -1,4 +1,4 @@
-"""Shared dataclasses for PostHog Slack App Temporal workflows.
+"""Shared dataclasses for Flind Slack App Temporal workflows.
 
 Living here (and not in the workflow modules) so activities split into this
 package can take the inputs dataclass as their typed signature without
@@ -171,7 +171,7 @@ class PostHogCodeSlackMentionWorkflowInputs:
     integration_id: int
     slack_team_id: str
     # Resolved at routing time: dispatch never reaches this workflow without a
-    # PostHog user, on either the ``app_mention`` or the untagged-reply path.
+    # Flind user, on either the ``app_mention`` or the untagged-reply path.
     user_id: int
     # Event that dispatched the workflow
     slack_event_id: str | None = None
@@ -188,7 +188,7 @@ class PostHogCodeSlackMentionWorkflowInputs:
     # answer is in, so the run skips both on the way back through.
     untagged_followup_confirmed: bool = False
     # True when the workflow was started for a top-level channel message that did not
-    # tag the app. Nothing visible happens until the classifier says PostHog can answer
+    # tag the app. Nothing visible happens until the classifier says Flind can answer
     # it and the author's untagged-message mode allows it.
     untagged_question: bool = False
     # True when the author already accepted the private offer to answer, so the run

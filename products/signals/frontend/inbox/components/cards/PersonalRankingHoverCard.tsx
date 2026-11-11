@@ -36,7 +36,7 @@ export function PersonalRankingHoverCard({
             <div className="border-t border-primary pt-2 font-semibold">Ranking model, for everyone on the team</div>
             <RankingScoreRows ranking={ranking} scores={INBOX_RANKING_SCORES} active={null} isStaff={isStaff} />
             <div className="opacity-70">
-                Your list is built with your recent activity in PostHog and these scores. It refreshes every few hours.
+                Your list is built with your recent activity in Flind and these scores. It refreshes every few hours.
             </div>
             {isStaff && ranking.model && (
                 <div className="border-t border-primary pt-1 font-mono opacity-70">{ranking.model}</div>

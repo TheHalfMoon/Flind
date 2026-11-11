@@ -138,7 +138,7 @@ return task
         {
             key: 'posthog_mcp_scopes',
             type: 'choice',
-            label: 'PostHog access',
+            label: 'Flind access',
             secret: false,
             required: false,
             default: 'read_only',
@@ -146,7 +146,7 @@ return task
                 { label: 'Read only', value: 'read_only' },
                 { label: 'Full access', value: 'full' },
             ],
-            description: 'What the agent can do in your PostHog project. Read only blocks changes.',
+            description: 'What the agent can do in your Flind project. Read only blocks changes.',
         },
         {
             key: 'max_parallel_tasks',

@@ -15,7 +15,7 @@ export async function offerSlackWorkspaceSetup(teamId: number, integrationId: nu
     }
     // pinned: analytics event and property names, renaming breaks dashboards
     posthog.capture('slack app workspace setup offered', { integration_id: integrationId, surface })
-    lemonToast.info('Slack is connected. Finish the Slack setup, so PostHog can answer your team in Slack.', {
+    lemonToast.info('Slack is connected. Finish the Slack setup, so Flind can answer your team in Slack.', {
         autoClose: false,
         button: {
             label: 'Finish setup',

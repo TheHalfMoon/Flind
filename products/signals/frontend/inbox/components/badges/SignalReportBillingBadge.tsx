@@ -7,15 +7,15 @@ import { formatCredits, usdToCredits } from '../../utils/credits'
 
 const EXEMPT_TOOLTIPS: Record<SignalReportBillingExemptReasonEnumApi, string> = {
     [SignalReportBillingExemptReasonEnumApi.PosthogHealthCheck]:
-        'This report came from a PostHog health check, so creating a pull request for it is free.',
+        'This report came from a Flind health check, so creating a pull request for it is free.',
     [SignalReportBillingExemptReasonEnumApi.PosthogOnboarding]:
         'This report was created during onboarding, so creating a pull request for it is free.',
     [SignalReportBillingExemptReasonEnumApi.PosthogSystem]:
-        'This report came from a PostHog-managed signal, so creating a pull request for it is free.',
+        'This report came from a Flind-managed signal, so creating a pull request for it is free.',
 }
 
 const EXEMPT_TOOLTIP_DEFAULT =
-    'PostHog marked this report as free, so creating a pull request for it will not be billed.'
+    'Flind marked this report as free, so creating a pull request for it will not be billed.'
 
 function refundTooltip(refund: NonNullable<SignalReport['refund']>): string {
     if (refund.billing_path === 'excluded') {
@@ -29,7 +29,7 @@ function refundTooltip(refund: NonNullable<SignalReport['refund']>): string {
 
 /**
  * Permanent billing marker for a report: "Refunded" once its PR has been refunded, or "Free" when
- * the report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout
+ * the report is system-marked never-billable (Flind-system origin, e.g. a health-check scout
  * finding). Null for ordinary billable reports.
  */
 export function SignalReportBillingBadge({ report }: { report: SignalReport }): JSX.Element | null {

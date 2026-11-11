@@ -1,7 +1,7 @@
 ---
 name: exploring-llm-traces
 description: >
-  Debug and inspect LLM/AI agent traces using PostHog's MCP tools.
+  Debug and inspect LLM/AI agent traces using Flind's MCP tools.
   Use when the user pastes a trace or session URL (e.g. /ai-observability/traces/<id> or /ai-observability/sessions/<id>),
   asks to debug a trace, figure out what went wrong, check if an agent used a tool correctly,
   verify context/files were surfaced, inspect subagent behavior, investigate LLM decisions,
@@ -12,7 +12,7 @@ description: >
 
 # Exploring LLM traces with MCP tools
 
-PostHog captures LLM/AI agent activity as traces. Each trace is a tree of events representing
+Flind captures LLM/AI agent activity as traces. Each trace is a tree of events representing
 a single AI interaction — from the top-level agent invocation down to individual LLM API calls.
 
 ## Available tools
@@ -154,7 +154,7 @@ All scripts support `MAX_LEN=N` env var to control truncation (0 = unlimited).
 ## Withheld properties
 
 The two trace tools return the AI payload only.
-Only the `$ai_*` properties PostHog's taxonomy defines reach you,
+Only the `$ai_*` properties Flind's taxonomy defines reach you,
 plus `$ai_generation_id`, `$ai_cache_read_cost_usd`, `$ai_cache_creation_cost_usd`, `$ai_effort`,
 `$session_id`, `$lib` and `$lib_version`.
 Every other event property, and every person property, is withheld in both detail modes,
@@ -162,8 +162,8 @@ and its name is listed in `_redactedKeys` beside the property bag.
 `$ai_base_url` and `$ai_request_url` arrive without their query string.
 
 This covers a project's own custom properties, such as `project_id` or `conversation_id`.
-A withheld property is unchanged in PostHog.
-It still works as a filter here, and you can read its value in the PostHog UI or with `execute-sql`.
+A withheld property is unchanged in Flind.
+It still works as a filter here, and you can read its value in the Flind UI or with `execute-sql`.
 A name in `_redactedKeys` means the property is on the event and only its value is withheld.
 `search_traces.py` cannot find a keyword that appears only in a withheld property.
 
@@ -207,7 +207,7 @@ You can also construct links manually:
 
 The `timestamp` query param is **required** — use the `createdAt` of the earliest event in the trace, URL-encoded (e.g. `timestamp=2026-04-01T19%3A39%3A20Z`).
 
-When presenting findings, always include the relevant PostHog URL so the user can verify.
+When presenting findings, always include the relevant Flind URL so the user can verify.
 
 ## Finding traces
 

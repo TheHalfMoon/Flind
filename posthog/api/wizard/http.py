@@ -64,7 +64,7 @@ ERROR_PROJECT_NOT_FOUND = "This project does not exist."
 WIZARD_CLOUD_RUN_DAILY_ATTEMPT_CAP = 15
 
 WIZARD_EMAIL_UNVERIFIED_DETAIL = (
-    "Verify your email address, then run the wizard again. The link is in the welcome email from PostHog."
+    "Verify your email address, then run the wizard again. The link is in the welcome email from Flind."
 )
 
 WIZARD_GATEWAY_TOKEN_REQUESTS_TOTAL = Counter(
@@ -197,7 +197,7 @@ class SetupWizardViewSet(viewsets.ViewSet):
         team: Team | None = None
         posture: WizardPosture | None = None
         if not wizard_gateway_configured():
-            refuse_absent_gateway("unconfigured", "The PostHog AI gateway is not configured on this instance.")
+            refuse_absent_gateway("unconfigured", "The Flind AI gateway is not configured on this instance.")
 
         authenticator = OAuthAccessTokenAuthentication()
         # authenticate() raises its own AuthenticationFailed, so the count wraps the
@@ -347,9 +347,9 @@ class SetupWizardViewSet(viewsets.ViewSet):
         ],
     )
     def cloud_run(self, request: Request) -> Response:
-        """Run the PostHog setup wizard in the cloud against the user's GitHub repository.
+        """Run the Flind setup wizard in the cloud against the user's GitHub repository.
 
-        Provisions a task-run sandbox that runs the published wizard headlessly to integrate PostHog,
+        Provisions a task-run sandbox that runs the published wizard headlessly to integrate Flind,
         then hands off to the task agent to open the pull request and keep it green. The wizard
         authenticates with a dedicated, scoped token minted under the wizard's own OAuth app — distinct
         from the agent's sandbox token. This is the cloud alternative to copy-pasting the wizard command

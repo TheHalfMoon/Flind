@@ -14,7 +14,7 @@ describe('GitHubInstallationLink', () => {
         const installations: GitHubAvailableInstallationApi[] = [
             {
                 installation_id: '101',
-                account_name: 'PostHog',
+                account_name: 'Flind',
                 account_type: 'Organization',
                 source_team_id: 1,
                 source_team_name: 'Website',
@@ -34,7 +34,7 @@ describe('GitHubInstallationLink', () => {
         expect(screen.queryByText('PostHog')).not.toBeInTheDocument()
 
         await user.click(screen.getByText('Choose an account'))
-        await user.click(await screen.findByText('PostHog'))
+        await user.click(await screen.findByText('Flind'))
 
         expect(onLink).toHaveBeenCalledWith('101')
     })
@@ -48,7 +48,7 @@ describe('GitHubInstallationLink', () => {
         const installations: GitHubAvailableInstallationApi[] = [
             {
                 installation_id: '303',
-                account_name: 'PostHog',
+                account_name: 'Flind',
                 account_type: 'Organization',
                 source_team_id: null,
                 source_team_name: null,

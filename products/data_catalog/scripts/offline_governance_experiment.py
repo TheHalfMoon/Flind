@@ -1,6 +1,6 @@
 """Offline experiment runner for the semantic-layer governance judges.
 
-Runs a PostHog AI-evals dataset (curated at /ai-evals/datasets) through fresh hosted-MCP agent
+Runs a Flind AI-evals dataset (curated at /ai-evals/datasets) through fresh hosted-MCP agent
 sessions, scores each resulting trace with the three online judge rubrics (fetched live so
 offline scoring can never drift from them), and prints each verdict and its reasoning locally.
 
@@ -229,7 +229,7 @@ def fetch_dataset_items(dataset_id: str) -> list[ExperimentItem]:
 
 def run_agent_session(client: anthropic.Anthropic, prompt: str, nonce: str, system: str | None = None) -> None:
     marker_instruction = (
-        f"Include the marker {nonce} verbatim in the context/intent text of every PostHog "
+        f"Include the marker {nonce} verbatim in the context/intent text of every Flind "
         "tool call you make in this session."
     )
     messages: list[BetaMessageParam] = [{"role": "user", "content": f"{marker_instruction}\n\n{prompt}"}]

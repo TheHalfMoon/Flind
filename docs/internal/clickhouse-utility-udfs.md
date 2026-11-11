@@ -166,8 +166,8 @@ RSS is the median of each run's maximum resident set size, not live heap size.
 The discarded-payload file repeats the synthetic `BenchmarkProcessWorkloads/dropped` row 1,000 times, totaling 172,018,000 bytes.
 Its repeated shape exercises disposal of large object arrays; it is not representative of every event distribution.
 All four executable comparisons produced identical SHA-256 output hashes for all three versions.
-A further 10,000 generated objects containing duplicate and dotted keys, exceptional values, large integers, and PostHog-specific properties produced identical output hashes in all three modes.
-Bluesky exercises real nested JSON and strings, but does not contain PostHog's special property names, so synthetic workloads cover those transformations separately.
+A further 10,000 generated objects containing duplicate and dotted keys, exceptional values, large integers, and Flind-specific properties produced identical output hashes in all three modes.
+Bluesky exercises real nested JSON and strings, but does not contain Flind's special property names, so synthetic workloads cover those transformations separately.
 
 ClickHouse measurements used version 26.6.2.158 in Docker on the same host, with the dataset copied into the container.
 All three executable-pool functions used the repository's `Raw` format and chunk headers.

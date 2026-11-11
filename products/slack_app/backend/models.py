@@ -135,10 +135,10 @@ class SlackUserProfileCache(UUIDModel):
 
 
 class UntaggedFollowupMode(models.TextChoices):
-    """What PostHog does with a message that does not tag it.
+    """What Flind does with a message that does not tag it.
 
     Read from the settings row of the person who started the thread, so it governs
-    every untagged reply in a thread PostHog owns, and the author's own top-level
+    every untagged reply in a thread Flind owns, and the author's own top-level
     channel question. An unset row resolves to ``ASK``, so the person who wrote the
     message chooses whether to send it.
     """
@@ -149,7 +149,7 @@ class UntaggedFollowupMode(models.TextChoices):
 
 
 class ThreadJoinMode(models.TextChoices):
-    """What PostHog does when someone else tags it in a thread a user started.
+    """What Flind does when someone else tags it in a thread a user started.
 
     Read from the thread creator's settings row. An unset row resolves to ``ALLOW``.
     Under ``ASK_PER_THREAD`` the creator's first approval in a thread lets anyone join it.
@@ -175,7 +175,7 @@ class ChannelWelcomeMode(models.TextChoices):
 
 class SlackSettings(UUIDModel):
     """Per-(Slack workspace, Slack user) settings for inbound Slack events.
-    Currently stores the routing default — which PostHog integration a mention
+    Currently stores the routing default — which Flind integration a mention
     from this Slack user should route to.
 
     Two row shapes share this table:
@@ -184,7 +184,7 @@ class SlackSettings(UUIDModel):
       settings UI.
     - ``slack_user_id IS NULL`` → workspace-wide fallback, applied when an
       inbound event's Slack user has no personal row yet. Written via the
-      PostHog project-level settings UI by a team admin, or via the Slack
+      Flind project-level settings UI by a team admin, or via the Slack
       `/posthog project workspace <id>` command by a Slack workspace
       admin/owner.
 
@@ -216,7 +216,7 @@ class SlackSettings(UUIDModel):
         null=True,
         blank=True,
         choices=UntaggedFollowupMode.choices,
-        help_text="What PostHog does with untagged replies in threads this user started.",
+        help_text="What Flind does with untagged replies in threads this user started.",
     )
     # NULL means the user has never picked, which resolves to ``ASK``.
     untagged_question_mode = models.CharField(
@@ -224,7 +224,7 @@ class SlackSettings(UUIDModel):
         null=True,
         blank=True,
         choices=UntaggedFollowupMode.choices,
-        help_text="What PostHog does with this user's top-level channel questions that do not tag the app.",
+        help_text="What Flind does with this user's top-level channel questions that do not tag the app.",
     )
     # NULL means the user has never picked, which resolves to ``ALLOW``.
     thread_join_mode = models.CharField(
@@ -232,7 +232,7 @@ class SlackSettings(UUIDModel):
         null=True,
         blank=True,
         choices=ThreadJoinMode.choices,
-        help_text="What PostHog does when someone else tags it in threads this user started.",
+        help_text="What Flind does when someone else tags it in threads this user started.",
     )
     # Only read on the workspace-wide row. NULL resolves to ``CHANNEL``.
     channel_welcome_mode = models.CharField(
@@ -246,7 +246,7 @@ class SlackSettings(UUIDModel):
     auto_model_choice = models.BooleanField(
         null=True,
         blank=True,
-        help_text="Let PostHog pick the model for each new task this user starts from Slack.",
+        help_text="Let Flind pick the model for each new task this user starts from Slack.",
     )
     # Only read on a personal row. NULL means feature tips never evaluated this user.
     # The shape is ``FeatureTipsState`` in ``logic/feature_tips/state.py``.
@@ -259,7 +259,7 @@ class SlackSettings(UUIDModel):
     onboarding = models.JSONField(
         null=True,
         blank=True,
-        help_text="This user's onboarding thread in the PostHog DM, and whether they finished it.",
+        help_text="This user's onboarding thread in the Flind DM, and whether they finished it.",
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -290,14 +290,14 @@ class SlackChannel(UUIDModel):
     """Per-(Slack workspace, Slack channel) state.
 
     Today the only meaning of a row with ``approved_at`` set is that a user
-    in the channel has acknowledged that PostHog data answered there may be
+    in the channel has acknowledged that Flind data answered there may be
     visible to external (cross-workspace) members. Absence of a row — or a
     row with ``approved_at`` null — for an externally-shared channel means
     the bot must refuse to answer and post the approval prompt instead.
     Non-externally-shared channels skip the lookup entirely.
 
     The approval is workspace-scoped, not integration-scoped: a single
-    workspace can be connected to multiple PostHog projects, and once any
+    workspace can be connected to multiple Flind projects, and once any
     member of any of those orgs has consented to the bot answering in this
     channel the consent applies to all of them. Per-mention data access
     remains gated by the existing email → ``OrganizationMembership`` check,
@@ -317,7 +317,7 @@ class SlackChannel(UUIDModel):
         null=True,
         blank=True,
         related_name="approved_slack_channels",
-        help_text="The PostHog user who clicked Approve. Carries the email and audit trail.",
+        help_text="The Flind user who clicked Approve. Carries the email and audit trail.",
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

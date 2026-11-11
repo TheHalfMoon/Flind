@@ -7,13 +7,13 @@ export const getRudderstackSteps = (ctx: OnboardingComponentsContext): StepDefin
 
     return [
         {
-            title: 'Add PostHog destination',
+            title: 'Add Flind destination',
             badge: 'required',
             content: (
                 <Markdown>
-                    RudderStack is an open-source customer data platform that can route your analytics data to PostHog
+                    RudderStack is an open-source customer data platform that can route your analytics data to Flind
                     and other destinations. In your RudderStack dashboard, go to **Destinations** &gt; **Add
-                    Destination** and search for **PostHog**.
+                    Destination** and search for **Flind**.
                 </Markdown>
             ),
         },
@@ -22,7 +22,7 @@ export const getRudderstackSteps = (ctx: OnboardingComponentsContext): StepDefin
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Enter your PostHog project token:</Markdown>
+                    <Markdown>Enter your Flind project token:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -34,7 +34,7 @@ export const getRudderstackSteps = (ctx: OnboardingComponentsContext): StepDefin
                             },
                         ]}
                     />
-                    <Markdown>Enter your PostHog host:</Markdown>
+                    <Markdown>Enter your Flind host:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -55,8 +55,8 @@ export const getRudderstackSteps = (ctx: OnboardingComponentsContext): StepDefin
             content: (
                 <>
                     <Markdown>
-                        Connect your source to the PostHog destination. RudderStack will now forward `track`,
-                        `identify`, `page`, and `group` calls to PostHog.
+                        Connect your source to the Flind destination. RudderStack will now forward `track`,
+                        `identify`, `page`, and `group` calls to Flind.
                     </Markdown>
                     <CalloutBox type="fyi" title="Learn more">
                         <Markdown>

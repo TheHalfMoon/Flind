@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Create a test user, org, team, and personal API key for hobby CI smoke tests.
 
-Run inside the PostHog web container:
+Run inside the Flind web container:
     PYTHONPATH=/code:/python-runtime python /tmp/hobby-ci-setup-user.py
 
 Prints "{project_api_token}|||{personal_api_key}" to stdout on success.

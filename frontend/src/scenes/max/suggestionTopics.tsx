@@ -2,10 +2,10 @@ import { IconBook } from '@posthog/icons'
 
 import { FileSystemIconType } from '~/queries/schema/schema-general'
 
-/** One suggestion inside a topic. `content` is the prompt sent to PostHog AI. */
+/** One suggestion inside a topic. `content` is the prompt sent to Flind AI. */
 export interface TopicSuggestion {
     /**
-     * The prompt sent to PostHog AI. For `requiresUserInput` cards this is the instruction prefix
+     * The prompt sent to Flind AI. For `requiresUserInput` cards this is the instruction prefix
      * (no trailing "…"); the input shows it as a hint and the user's text is appended on send.
      * For docs-style topics this is also the text shown in the list.
      */
@@ -47,7 +47,7 @@ export const CODE_BADGE = {
 }
 
 /**
- * A few docs prompts so newcomers can learn about PostHog. The sidebar renders these as a
+ * A few docs prompts so newcomers can learn about Flind. The sidebar renders these as a
  * plain question list (docs variant), matching the Docs suggestions we show in production;
  * the homepage suggestion cards use the title/description pair instead.
  */
@@ -87,8 +87,8 @@ const LEARN_TOPIC: SuggestionTopic = {
 }
 
 /**
- * Suggestion topics on the homepage and the PostHog AI sidebar, one per PostHog product. Prompt
- * content is drawn from the existing `QUESTION_SUGGESTIONS_DATA` on the PostHog AI scene so the
+ * Suggestion topics on the homepage and the Flind AI sidebar, one per Flind product. Prompt
+ * content is drawn from the existing `QUESTION_SUGGESTIONS_DATA` on the Flind AI scene so the
  * two surfaces stay in sync.
  */
 export const HOMEPAGE_SUGGESTION_TOPICS: SuggestionTopic[] = [

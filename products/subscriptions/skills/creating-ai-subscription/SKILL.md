@@ -1,7 +1,7 @@
 ---
 name: creating-ai-subscription
 description: >
-  Create a recurring AI-generated PostHog report — schedule a free-text prompt to
+  Create a recurring AI-generated Flind report — schedule a free-text prompt to
   run on a cron, with the LLM-synthesized markdown delivered to email, Slack, or Microsoft Teams
   on each tick. Use when the user wants a recurring AI summary of X on any cadence
   (daily, weekly, monthly, yearly) rather than a one-off report. (To attach an AI
@@ -14,7 +14,7 @@ description: >
 
 ## When to use this
 
-A **subscription** delivers a PostHog report to email, Slack, or Microsoft Teams on a
+A **subscription** delivers a Flind report to email, Slack, or Microsoft Teams on a
 recurring schedule. There are three kinds, distinguished by which field you set — the kind is
 derived and returned as the read-only `resource_type`:
 
@@ -63,14 +63,14 @@ re-enable it, send a test delivery, or delete it.
 
 The endpoint enforces three create-time gates and will return 400 if any fails:
 
-1. **PostHog Cloud, or `DEBUG=true`** — self-hosted production deployments are not
-   eligible (the LLM call routes through a PostHog-managed key).
+1. **Flind Cloud, or `DEBUG=true`** — self-hosted production deployments are not
+   eligible (the LLM call routes through a Flind-managed key).
 2. **Org-level "AI data processing approved"** — must be toggled on in
    `Org settings → Data → AI data processing`. The user must opt in to AI features
    for the organization first.
-3. **Prompt subscriptions enabled** for the organization — a PostHog-managed rollout
+3. **Prompt subscriptions enabled** for the organization — a Flind-managed rollout
    flag. If it's off, the org has not been granted access yet; tell the user to
-   reach out to PostHog to enable it (there is no self-serve toggle).
+   reach out to Flind to enable it (there is no self-serve toggle).
 
 If any of the three is missing, stop and tell the user which one to fix —
 re-calling the tool will not help.

@@ -925,7 +925,7 @@ class TestValidateSchemaAndUpdateTable:
         names = resolve_table_and_folder_names(schema.name, schema.resolved_s3_folder_name)
         assert table.url_pattern == job.url_pattern_by_schema(names.folder_name)
         assert table.options == {"kept": 1}
-        # The customer's key can't read PostHog's bucket, so introspection must see the adopted row.
+        # The customer's key can't read Flind's bucket, so introspection must see the adopted row.
         assert credential_seen_by_introspection == [None]
         job.refresh_from_db()
         assert job.storage_delta_mib == 3.0

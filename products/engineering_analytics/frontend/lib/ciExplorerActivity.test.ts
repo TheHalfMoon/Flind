@@ -3,7 +3,7 @@ import { activityDays, commitRows } from './ciExplorerActivity'
 
 function run(overrides: Partial<WorkflowRunDetailApi>): WorkflowRunDetailApi {
     return {
-        repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+        repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
         id: 1,
         workflow_name: 'CI',
         head_sha: 'aaaaaaa1',

@@ -35,7 +35,7 @@ class TestResolveActingUser(BaseTest):
             # The PR author maps to the org user, case-insensitively.
             ("maps_author", "octocat", None, _SELF),
             ("maps_author_mixed_case", "OCTOCAT", None, _SELF),
-            # No PostHog org user for the author (or no author) → None, so the parent skips the review.
+            # No Flind org user for the author (or no author) → None, so the parent skips the review.
             ("unmapped_author", "ghost", None, None),
             ("empty_author", "", None, None),
         ]
@@ -79,19 +79,19 @@ class TestResolveActingUser(BaseTest):
 
     @parameterized.expand(
         [
-            ("enabled", True, True, True, True, False, "PostHog", None),
-            ("opted_out", False, True, True, True, False, "PostHog", None),
-            ("inactive", True, False, True, True, False, "PostHog", None),
-            ("left_organization", True, True, False, True, False, "PostHog", None),
-            ("repository_removed", True, True, True, False, False, "PostHog", None),
+            ("enabled", True, True, True, True, False, "Flind", None),
+            ("opted_out", False, True, True, True, False, "Flind", None),
+            ("inactive", True, False, True, True, False, "Flind", None),
+            ("left_organization", True, True, False, True, False, "Flind", None),
+            ("repository_removed", True, True, True, False, False, "Flind", None),
             # No Flash after Full: a Full review published while the push waited stops it.
-            ("full_review_published", True, True, True, True, True, "PostHog", None),
+            ("full_review_published", True, True, True, True, True, "Flind", None),
             ("placeholder_account_name", True, True, True, True, False, "installation-1234", "1234"),
             # Draft reviews are off in the repository, so a queued draft run stops when it starts.
-            ("draft_in_a_repository_without_drafts", True, True, True, True, False, "PostHog", None, "draft"),
+            ("draft_in_a_repository_without_drafts", True, True, True, True, False, "Flind", None, "draft"),
             # Marked ready after the fetch: the queue dropped the ready request, so GitHub's state decides.
-            ("draft_marked_ready_after_the_fetch", True, True, True, True, False, "PostHog", None, "ready"),
-            ("draft_state_unreadable", True, True, True, True, False, "PostHog", None, "unreadable"),
+            ("draft_marked_ready_after_the_fetch", True, True, True, True, False, "Flind", None, "ready"),
+            ("draft_state_unreadable", True, True, True, True, False, "Flind", None, "unreadable"),
         ]
     )
     def test_automatic_trigger_rechecks_eligible_author(
@@ -382,7 +382,7 @@ class TestResolveActingUser(BaseTest):
             team=self.team,
             kind="github",
             integration_id="1234",
-            config={"account": {"name": "PostHog"}},
+            config={"account": {"name": "Flind"}},
             created_by=self.user,
         )
         ReviewInstallationClaim.objects.for_team(self.team.id).create(

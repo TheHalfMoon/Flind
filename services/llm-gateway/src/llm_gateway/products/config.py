@@ -46,7 +46,7 @@ class ProductConfig:
     credit_bucket: CreditBucket | None = None
     # When True, OAuth callers must present a server-minted credential (a token carrying
     # the internal `internal_run:read` scope). Set on the internal products that share the
-    # PostHog Desktop OAuth app but are only ever driven by sandbox runs — a user's own Code
+    # Flind Desktop OAuth app but are only ever driven by sandbox runs — a user's own Code
     # OAuth token can't carry an internal scope, so this stops it routing around the
     # posthog_code free-tier model gate through these products. Personal API keys are
     # unaffected (they reach the gateway only with an explicit, feature-gated
@@ -69,12 +69,12 @@ TWIG_EU_APP_ID = POSTHOG_CODE_EU_APP_ID
 WIZARD_US_APP_ID = "019a0c79-b69d-0000-f31b-b41345208c9d"
 WIZARD_EU_APP_ID = "019a12d0-6edd-0000-0458-86616af3a3db"
 # What a retired wizard product answers every caller with.
-WIZARD_RETIRED_MESSAGE = "The wizard now runs on the PostHog AI gateway. Upgrade with: npx @posthog/wizard@latest"
-# posthog_code reaches this gateway only after a PostHog AI token refusal, so the advice names
+WIZARD_RETIRED_MESSAGE = "The wizard now runs on the Flind AI gateway. Upgrade with: npx @posthog/wizard@latest"
+# posthog_code reaches this gateway only after a Flind AI token refusal, so the advice names
 # the common refusals.
 POSTHOG_CODE_RETIRED_MESSAGE = (
-    "PostHog Code no longer runs on this gateway. This request arrived here because the app couldn't get "
-    "a PostHog AI token: sign in again and confirm your email is verified. Contact support if this continues."
+    "Flind Code no longer runs on this gateway. This request arrived here because the app couldn't get "
+    "a Flind AI token: sign in again and confirm your email is verified. Contact support if this continues."
 )
 POSTHOG_AI_US_APP_ID = "019ee060-3a0e-0000-7e9c-4e6b48dfae66"
 POSTHOG_AI_EU_APP_ID = "019ee061-5620-0000-1a0d-ab1160fceeb1"
@@ -126,7 +126,7 @@ _POSTHOG_CODE_AGENT_MODELS: Final[frozenset[str]] = frozenset(
 # model-registry advertising filter; the registry also derives its advertising from it so the two
 # can't drift. Keys must be lowercase.
 RESTRICTED_MODEL_PRODUCTS: Final[dict[str, frozenset[str]]] = {
-    # Evaluated by ReviewHog and offered in PostHog Code; no other product may select it.
+    # Evaluated by ReviewHog and offered in Flind Code; no other product may select it.
     BASETEN_DEEPSEEK_PUBLIC_MODEL: frozenset({"posthog_code", "review_hog"}),
     BASETEN_GLM53_PUBLIC_MODEL: frozenset({"posthog_code", "review_hog"}),
     BASETEN_GLM53_FLASH_PUBLIC_MODEL: frozenset({"posthog_code", "review_hog"}),
@@ -142,9 +142,9 @@ PRODUCTS: Final[dict[str, ProductConfig]] = {
         credit_bucket=CreditBucket.POSTHOG_CODE_CREDITS,
         denial_message=POSTHOG_CODE_RETIRED_MESSAGE,
     ),
-    # PostHog-initiated internal task runs (Task.internal=True without a more specific
+    # Flind-initiated internal task runs (Task.internal=True without a more specific
     # origin route — e.g. the repo-selection agent). Deliberately unbilled: this is
-    # "work completed by PostHog" per the pricing RFC, which gets its own (marked-up)
+    # "work completed by Flind" per the pricing RFC, which gets its own (marked-up)
     # pricing later rather than posthog_code's pass-through bucket. Interim spend
     # control is the product/user cost limits in llm_gateway/config.py.
     "background_agents": ProductConfig(
@@ -205,7 +205,7 @@ PRODUCTS: Final[dict[str, ProductConfig]] = {
         requires_server_credential=True,
     ),
     # Workflow task runs authenticate with a server-minted credential, share the Slack app's
-    # model policy, and bill into PostHog AI credits rather than PostHog Code credits.
+    # model policy, and bill into Flind AI credits rather than Flind Code credits.
     "workflows": ProductConfig(
         allowed_application_ids=frozenset({POSTHOG_CODE_US_APP_ID, POSTHOG_CODE_EU_APP_ID, POSTHOG_CODE_DEV_APP_ID}),
         allowed_models=_POSTHOG_CODE_AGENT_MODELS | BEDROCK_MODELS,
@@ -281,7 +281,7 @@ PRODUCTS: Final[dict[str, ProductConfig]] = {
         allow_api_keys=True,
     ),
     "signals": ProductConfig(
-        # Only the dedicated Signals app: dropping the PostHog Code ids is what finally makes
+        # Only the dedicated Signals app: dropping the Flind Code ids is what finally makes
         # this product unreachable from a Desktop-app token.
         allowed_application_ids=frozenset({SIGNALS_US_APP_ID, SIGNALS_EU_APP_ID, SIGNALS_DEV_APP_ID}),
         allowed_models=None,  # any model — the signals pipeline picks models per stage (haiku, sonnet, ...)
@@ -337,7 +337,7 @@ PRODUCTS: Final[dict[str, ProductConfig]] = {
         allowed_models=frozenset({"claude-haiku-4-5", "claude-sonnet-4-6", "claude-sonnet-5"}),
         allow_api_keys=True,
         # Deliberately unbilled: autonomous support-reply drafting is "work completed by
-        # PostHog" per the pricing RFC — it gets its own pricing later, not posthog_code's
+        # Flind" per the pricing RFC — it gets its own pricing later, not posthog_code's
         # pass-through bucket.
         credit_bucket=None,
         requires_server_credential=True,
@@ -475,7 +475,7 @@ def check_free_tier_model_access(
 
     available = ", ".join(sorted(free_models))
     return False, (
-        f"Model '{model}' needs a paid PostHog plan. Models available on the free tier: {available}. "
+        f"Model '{model}' needs a paid Flind plan. Models available on the free tier: {available}. "
         "Add a payment method to your organization to unlock all models."
     )
 
@@ -566,7 +566,7 @@ def check_product_access(
         if application_id not in (config.allowed_application_ids or frozenset()):
             return False, f"OAuth application not authorized for product '{product}'"
 
-    # Internal products that share the PostHog Desktop OAuth app are only ever driven by
+    # Internal products that share the Flind Desktop OAuth app are only ever driven by
     # server-minted sandbox tokens; a user's own Desktop OAuth token would otherwise reach them
     # and route around the posthog_code free-tier model gate. Require the internal marker that
     # only server-minted tokens carry. OAuth-only: personal API keys reach the gateway with an

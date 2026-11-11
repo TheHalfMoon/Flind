@@ -699,7 +699,7 @@ function takeCommentContexts(props: RunInteractionLogicProps, content: string): 
  * Queueing is client-side: a follow-up typed while the agent is working a turn is staged here, and each one
  * keeps its own row so the user can edit or drop it on its own. The staged rows are flushed as a single
  * `user_message` when the turn completes, so follow-ups never fan out into separate turns. This mirrors the
- * PostHog AI sandbox flush path without any conversation/Max coupling.
+ * Flind AI sandbox flush path without any conversation/Max coupling.
  */
 export const runInteractionLogic = kea<runInteractionLogicType>([
     path(['products', 'posthog_ai', 'frontend', 'logics', 'runInteractionLogic']),

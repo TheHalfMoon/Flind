@@ -118,7 +118,7 @@ def sync_new_schemas_activity(inputs: SyncNewSchemasActivityInputs) -> None:
                 return
 
             error_msg = str(e)
-            # Every credential the credentials service holds is PostHog's own (OAuth app secrets,
+            # Every credential the credentials service holds is Flind's own (OAuth app secrets,
             # API keys), never the customer's, and none of its failure states are permanent — a
             # burned key gets re-provisioned, an unreachable service comes back. Unlike the skips
             # above, this isn't ours to give up on: re-raise wrapped in NonReportableError so the
@@ -134,7 +134,7 @@ def sync_new_schemas_activity(inputs: SyncNewSchemasActivityInputs) -> None:
                     logger.warning(error_msg)
                 raise NonReportableError(error_msg) from e
 
-            # PostHog's own egress proxy throttled or refused the connection. Raise rather than
+            # Flind's own egress proxy throttled or refused the connection. Raise rather than
             # skip so Temporal still retries this discovery run, and classify here rather than per
             # source so every connector gets the same treatment.
             if is_transient_egress_proxy_error(error_msg):

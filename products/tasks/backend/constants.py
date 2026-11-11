@@ -63,7 +63,7 @@ STORE_SKILLS_STATE_KEY = "store_skills"
 # Separate from `store_skills`, which is also empty when the store is on and the user owns no skills.
 STORE_SKILLS_BRIDGE_STATE_KEY = "store_skills_bridge"
 AGENT_INSTRUCTIONS_STATE_KEY = "agent_instructions"
-# Matches the cap PostHog Code applies to its local personalization.
+# Matches the cap Flind Code applies to its local personalization.
 AGENT_INSTRUCTIONS_MAX_LENGTH = 20_000
 SAME_RUN_RESUME_STATE_KEY = "same_run_resume"
 SAME_RUN_RESUME_IDLE_STATE_KEY = "same_run_resume_idle"
@@ -174,7 +174,7 @@ def vm_sandbox_origin_in_rollout(origin_product: str | None, run_id: str, percen
     return bucket < percentage
 
 
-# Published Modal image name of the prebaked PostHog dev-stack VM image. Unlike
+# Published Modal image name of the prebaked Flind dev-stack VM image. Unlike
 # spec-built custom images, this one is a sandbox *filesystem snapshot* publish
 # (see logic/services/dev_stack_image.py), which Modal cannot layer build steps on.
 DEV_STACK_IMAGE_NAME = "posthog-dev-stack"
@@ -184,7 +184,7 @@ def vm_sandbox_default_custom_image(payload: object) -> str | None:
     """Modal image name that VM runs fall back to when no custom image was picked.
 
     This is how the *default* VM image is routed per organization: the flag's payload
-    variants are org-targeted, so e.g. PostHog's own org can point its standard VM runs
+    variants are org-targeted, so e.g. Flind's own org can point its standard VM runs
     at the prebaked posthog dev-stack image (see
     `products/tasks/backend/logic/services/dev_stack_image.py`) while every other org
     keeps the plain VM base. A user- or environment-picked custom image always wins over
@@ -251,7 +251,7 @@ ClaudePermissionMode = Literal["default", "acceptEdits", "plan", "bypassPermissi
 CodexPermissionMode = Literal["plan", "auto", "read-only", "full-access"]
 InitialPermissionMode = ClaudePermissionMode | CodexPermissionMode
 
-# Starting a task authorizes its selected PostHog project, not projects reached through connections.
+# Starting a task authorizes its selected Flind project, not projects reached through connections.
 # Relay both connection wrappers so the client can require fresh approval before they run.
 POSTHOG_EXEC_PERMISSION_REGEX = r"^posthog-connection-(call|forward)$"
 
@@ -262,7 +262,7 @@ ALL_INITIAL_PERMISSION_MODE_CHOICES: list[str] = [
 ]
 
 DEFAULT_TRUSTED_DOMAINS = [
-    # PostHog Services
+    # Flind Services
     "posthog.com",
     "*.posthog.com",
     # Version Control

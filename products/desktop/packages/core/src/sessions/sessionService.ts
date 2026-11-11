@@ -3498,7 +3498,7 @@ export class SessionService {
         }
         this.d.store.updateSession(taskRunId, { cloudArtifacts: artifacts });
       } catch (error) {
-        this.d.log.warn("Failed to register PostHog object references", {
+        this.d.log.warn("Failed to register Flind object references", {
           taskId: pending.taskId,
           taskRunId,
           error: String(error),
@@ -9080,7 +9080,7 @@ export class SessionService {
               ? "ChatGPT token request failed"
               : "ChatGPT account unavailable",
             errorMessage: transient
-              ? "PostHog could not get a ChatGPT token for this run. Start the task again in a few minutes."
+              ? "Flind could not get a ChatGPT token for this run. Start the task again in a few minutes."
               : "Connect your ChatGPT account again in Settings > Harness. Then start the task again.",
             errorRetryable: transient,
             isPromptPending: false,
@@ -9195,7 +9195,7 @@ export class SessionService {
   ): Promise<TaskRunArtifact[]> {
     const authStatus = await this.getAuthCredentialsStatus();
     if (authStatus.kind !== "ready") {
-      throw new Error("Not signed in to PostHog");
+      throw new Error("Not signed in to Flind");
     }
 
     return this.getCloudAttachmentManifest(
@@ -9215,7 +9215,7 @@ export class SessionService {
   ): Promise<string> {
     const authStatus = await this.getAuthCredentialsStatus();
     if (authStatus.kind !== "ready") {
-      throw new Error("Not signed in to PostHog");
+      throw new Error("Not signed in to Flind");
     }
 
     return this.d.h.uploadRunOutput(
@@ -9236,7 +9236,7 @@ export class SessionService {
   ): Promise<TaskRunArtifact[]> {
     const authStatus = await this.getAuthCredentialsStatus();
     if (authStatus.kind !== "ready") {
-      throw new Error("Not signed in to PostHog");
+      throw new Error("Not signed in to Flind");
     }
 
     return authStatus.auth.client.setTaskRunArtifactsDismissed(

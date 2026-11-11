@@ -4,7 +4,7 @@ import { Button } from '@flind/quill-primitives'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 
 export interface QuillTaskHeaderActionsProps {
-    /** Link that opens the task in PostHog Desktop, or `null` when the user has no desktop access. */
+    /** Link that opens the task in Flind Desktop, or `null` when the user has no desktop access. */
     desktopUrl: string | null
     prUrl?: string
     /** The run button's label, or `null` when the task cannot run now. */
@@ -30,7 +30,7 @@ export function QuillTaskHeaderActions({
                     className="hidden lg:inline-flex"
                 >
                     <IconExternal />
-                    Open in PostHog Desktop
+                    Open in Flind Desktop
                 </Button>
             )}
             {prUrl && (

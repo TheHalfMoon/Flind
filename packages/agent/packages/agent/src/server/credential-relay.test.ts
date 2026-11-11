@@ -50,7 +50,7 @@ describe("CredentialRelay", () => {
 
     relay.resolve({ requestId, error: "sensitive-untrusted-error" });
     await expect(tokenPromise).rejects.toThrow(
-      "PostHog Desktop could not provide the Claude token.",
+      "Flind Desktop could not provide the Claude token.",
     );
   });
 
@@ -59,7 +59,7 @@ describe("CredentialRelay", () => {
     const tokenPromise = relay.request("claude_subscription_token");
 
     const assertion = expect(tokenPromise).rejects.toThrow(
-      "timed out waiting for PostHog Desktop",
+      "timed out waiting for Flind Desktop",
     );
     await vi.advanceTimersByTimeAsync(120_000);
     await assertion;

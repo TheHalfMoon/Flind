@@ -77,7 +77,7 @@ class QualtricsSource(ResumableSource[QualtricsSourceConfig, QualtricsResumeConf
             label="Qualtrics",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["surveys", "xm", "experience management"],
-            caption="""Enter your Qualtrics datacenter ID and credentials to pull surveys, responses and account metadata into the PostHog Data warehouse.
+            caption="""Enter your Qualtrics datacenter ID and credentials to pull surveys, responses and account metadata into the Flind Data warehouse.
 
 Find your datacenter ID under **Account settings > Qualtrics IDs**. It looks like `iad1` or `fra1`. If your brand uses a custom domain, paste the full hostname instead.
 

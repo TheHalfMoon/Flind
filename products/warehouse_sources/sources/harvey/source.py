@@ -67,7 +67,7 @@ class HarveySource(ResumableSource[HarveySourceConfig, HarveyResumeConfig]):
             name=ExternalDataSourceType.HARVEY,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Harvey",
-            caption="""Enter your Harvey API token to pull audit logs, usage and query history, client matters, Vault projects, files, and members, and Vault review tables into the PostHog Data warehouse.
+            caption="""Enter your Harvey API token to pull audit logs, usage and query history, client matters, Vault projects, files, and members, and Vault review tables into the Flind Data warehouse.
 
 Create an API token in Harvey workspace settings under **API Tokens** (if you don't see that section, ask your Harvey Customer Success Manager to enable API access).
 

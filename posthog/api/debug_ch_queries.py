@@ -547,13 +547,13 @@ class DebugCHQueries(viewsets.ViewSet):
         arr_by_org = self._fetch_org_arr({org_id}) if org_id else {}
         return Response(self._serialize_precomputation_team(team, enabled, arr_by_org))
 
-    # Team ID for PostHog's own project, which has data warehouse billing tables
+    # Team ID for Flind's own project, which has data warehouse billing tables
     _POSTHOG_INTERNAL_TEAM_ID = 2
 
     def _fetch_org_arr(self, org_ids: set[str]) -> dict[str, int]:
         """Fetch current confirmed ARR per organization from data warehouse billing tables.
 
-        Uses HogQL to access data warehouse tables via the PostHog internal team.
+        Uses HogQL to access data warehouse tables via the Flind internal team.
         Returns empty dict if unavailable (e.g. local dev or missing tables).
         """
         try:

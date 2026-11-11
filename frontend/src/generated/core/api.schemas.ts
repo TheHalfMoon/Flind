@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - core
+ * Flind API - core
  * OpenAPI spec version: 1.0.0
  */
 export interface ConnectedAppApi {
@@ -21,13 +21,13 @@ export interface ConnectedAppApi {
     scopes: string[]
     /** When the user first authorized this application */
     authorized_at: string
-    /** Whether this application has been verified by PostHog */
+    /** Whether this application has been verified by Flind */
     is_verified: boolean
-    /** Whether this is a first-party PostHog application */
+    /** Whether this is a first-party Flind application */
     is_first_party: boolean
-    /** Whether the user must choose to keep or disconnect this application, because it set up one of the user's organizations and PostHog has not verified it */
+    /** Whether the user must choose to keep or disconnect this application, because it set up one of the user's organizations and Flind has not verified it */
     requires_access_confirmation: boolean
-    /** Whether the application registered itself, through dynamic client registration or a client ID metadata document. MCP clients connect this way; applications PostHog registers do not. */
+    /** Whether the application registered itself, through dynamic client registration or a client ID metadata document. MCP clients connect this way; applications Flind registers do not. */
     is_self_registered: boolean
 }
 
@@ -97,7 +97,7 @@ export interface DeviceGrantDetailsApi {
      * @nullable
      */
     logo_uri: string | null
-    /** Whether PostHog has verified the client. */
+    /** Whether Flind has verified the client. */
     is_verified: boolean
     /** The scopes the token will carry if the person approves. */
     scopes: string[]
@@ -602,7 +602,7 @@ export interface PaginatedOrganizationInviteListApi {
 }
 
 export interface OrganizationInviteDelegateApi {
-    /** Email of the teammate who should complete setup on the inviter's behalf. Receives a PostHog-branded delegation invite granting admin-level membership on accept. */
+    /** Email of the teammate who should complete setup on the inviter's behalf. Receives a Flind-branded delegation invite granting admin-level membership on accept. */
     target_email: string
     /**
      * Optional personal message included in the delegation email (up to 1000 characters).
@@ -737,7 +737,7 @@ export interface OrganizationOAuthApplicationApi {
     /** @maxLength 2048 */
     client_id?: string
     readonly redirect_uris_list: readonly string[]
-    /** True if this application has been verified by PostHog */
+    /** True if this application has been verified by Flind */
     is_verified?: boolean
     readonly created: string
     readonly updated: string
@@ -1865,7 +1865,7 @@ export interface EmailUtmParamsApi {
 }
 
 export interface TeamWorkflowsConfigApi {
-    /** When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard PostHog events ($workflows_email_*) alongside the existing workflow metrics. */
+    /** When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard Flind events ($workflows_email_*) alongside the existing workflow metrics. */
     capture_workflows_engagement_events?: boolean
     /** Recipient-consent enforcement for open/click tracking on marketing workflow emails. 'off': no enforcement, tracking follows each email step's own setting. 'opt_out': track by default but not recipients who have opted out. 'opt_in': only track recipients who have explicitly opted in. Transactional emails are exempt from consent enforcement.
      *
@@ -1986,7 +1986,7 @@ export interface ProjectCreateRequestApi {
     tags?: string[]
     /** @items.maxLength 200 */
     app_urls?: (string | null)[]
-    /** When true, PostHog drops the IP address from every ingested event. */
+    /** When true, Flind drops the IP address from every ingested event. */
     anonymize_ips?: boolean
     completed_snippet_onboarding?: boolean
     /** Filter groups that identify internal/test traffic to be excluded from insights. */
@@ -2987,7 +2987,7 @@ export interface ProjectBackwardCompatApi {
     readonly api_token: string
     /** @items.maxLength 200 */
     app_urls?: (string | null)[]
-    /** When true, PostHog drops the IP address from every ingested event. */
+    /** When true, Flind drops the IP address from every ingested event. */
     anonymize_ips?: boolean
     completed_snippet_onboarding?: boolean
     readonly ingested_event: boolean
@@ -3772,9 +3772,9 @@ export interface ProjectBackwardCompatApi {
      */
     readonly user_access_level: string | null
     readonly managed_viewsets: ProjectBackwardCompatApiManagedViewsets
-    /** Which table this project's feature flag usage data is read from. PostHog sets it for the whole organization. 0 reads the events table. 1 and 2 read the flag_evaluations table. */
+    /** Which table this project's feature flag usage data is read from. Flind sets it for the whole organization. 0 reads the events table. 1 and 2 read the flag_evaluations table. */
     readonly flag_evaluations_mode: FlagEvaluationsModeEnumApi
-    /** Host the PostHog SDKs send events to, set as their `api_host` option. It is `https://us.i.posthog.com` on US Cloud, `https://eu.i.posthog.com` on EU Cloud, and the instance URL when self-hosted. */
+    /** Host the Flind SDKs send events to, set as their `api_host` option. It is `https://us.i.posthog.com` on US Cloud, `https://eu.i.posthog.com` on EU Cloud, and the instance URL when self-hosted. */
     readonly api_host: string
     revenue_analytics_config?: TeamRevenueAnalyticsConfigApi
     marketing_analytics_config?: TeamMarketingAnalyticsConfigApi
@@ -3883,7 +3883,7 @@ export interface PatchedProjectBackwardCompatApi {
     readonly api_token?: string
     /** @items.maxLength 200 */
     app_urls?: (string | null)[]
-    /** When true, PostHog drops the IP address from every ingested event. */
+    /** When true, Flind drops the IP address from every ingested event. */
     anonymize_ips?: boolean
     completed_snippet_onboarding?: boolean
     readonly ingested_event?: boolean
@@ -4668,9 +4668,9 @@ export interface PatchedProjectBackwardCompatApi {
      */
     readonly user_access_level?: string | null
     readonly managed_viewsets?: PatchedProjectBackwardCompatApiManagedViewsets
-    /** Which table this project's feature flag usage data is read from. PostHog sets it for the whole organization. 0 reads the events table. 1 and 2 read the flag_evaluations table. */
+    /** Which table this project's feature flag usage data is read from. Flind sets it for the whole organization. 0 reads the events table. 1 and 2 read the flag_evaluations table. */
     readonly flag_evaluations_mode?: FlagEvaluationsModeEnumApi
-    /** Host the PostHog SDKs send events to, set as their `api_host` option. It is `https://us.i.posthog.com` on US Cloud, `https://eu.i.posthog.com` on EU Cloud, and the instance URL when self-hosted. */
+    /** Host the Flind SDKs send events to, set as their `api_host` option. It is `https://us.i.posthog.com` on US Cloud, `https://eu.i.posthog.com` on EU Cloud, and the instance URL when self-hosted. */
     readonly api_host?: string
     revenue_analytics_config?: TeamRevenueAnalyticsConfigApi
     marketing_analytics_config?: TeamMarketingAnalyticsConfigApi
@@ -4908,7 +4908,7 @@ export interface DataDeletionRequestApi {
      */
     readonly created_by_id: number | null
     /**
-     * Whether the submitter was a PostHog staff user.
+     * Whether the submitter was a Flind staff user.
      * @nullable
      */
     readonly created_by_staff: boolean | null
@@ -5821,7 +5821,7 @@ export interface WorkloadTrustPolicyApi {
      * @maxLength 255
      */
     issuer: string
-    /** The key of the workload provider the issuer belongs to. PostHog sets it from the issuer.
+    /** The key of the workload provider the issuer belongs to. Flind sets it from the issuer.
      *
      * * `github_actions` - GitHub Actions
      * * `gitlab` - GitLab
@@ -5879,7 +5879,7 @@ export interface PatchedWorkloadTrustPolicyApi {
      * @maxLength 255
      */
     issuer?: string
-    /** The key of the workload provider the issuer belongs to. PostHog sets it from the issuer.
+    /** The key of the workload provider the issuer belongs to. Flind sets it from the issuer.
      *
      * * `github_actions` - GitHub Actions
      * * `gitlab` - GitLab
@@ -5994,20 +5994,20 @@ export interface WorkloadProviderApi {
     required_presets: string[]
     /** Keys of the presets a new policy starts with, in display order. */
     default_presets: string[]
-    /** Whether PostHog can look up the subject from its name with resolve_subject. */
+    /** Whether Flind can look up the subject from its name with resolve_subject. */
     readonly can_resolve_subject: boolean
     /** Condition values a policy must have for resolve_subject to find its subject. Empty when any policy works. */
     readonly subject_lookup_conditions: WorkloadProviderApiSubjectLookupConditions
-    /** The CI config a job needs to get a token for PostHog, empty when the provider has none. */
+    /** The CI config a job needs to get a token for Flind, empty when the provider has none. */
     readonly setup_snippet: string
 }
 
 export interface WorkloadJobSettingsApi {
-    /** The PostHog address a job sends its token to, which is its audience. */
+    /** The Flind address a job sends its token to, which is its audience. */
     host: string
     /** The project a job's token works in. */
     project_id: number
-    /** Whether hog reads the host from posthog.json. It does only for PostHog Cloud, so other hosts need HOG_HOST. */
+    /** Whether hog reads the host from posthog.json. It does only for Flind Cloud, so other hosts need HOG_HOST. */
     host_in_posthog_json: boolean
 }
 
@@ -6054,7 +6054,7 @@ export interface WorkloadTrustPolicyRequestApi {
      * @maxLength 255
      */
     issuer: string
-    /** The key of the workload provider the issuer belongs to. PostHog sets it from the issuer.
+    /** The key of the workload provider the issuer belongs to. Flind sets it from the issuer.
      *
      * * `github_actions` - GitHub Actions
      * * `gitlab` - GitLab
@@ -6101,7 +6101,7 @@ export interface WorkloadTrustPolicyRequestApi {
      */
     readonly requested_via: string | null
     /**
-     * Whether PostHog verified the OAuth app the request came through, or null for other credentials.
+     * Whether Flind verified the OAuth app the request came through, or null for other credentials.
      * @nullable
      */
     readonly requested_via_verified: boolean | null
@@ -6136,13 +6136,13 @@ export interface ResolvedWorkloadSubjectApi {
     subject: string
     /** The provider's exact spelling of the name, which the token carries, for the policy's subject name. */
     subject_name: string
-    /** Where PostHog found the workload, to show the user. */
+    /** Where Flind found the workload, to show the user. */
     found_via: string
 }
 
 export interface LeakedKeyReportApi {
     /**
-     * The leaked PostHog personal API key, project secret API key, legacy feature flags secure API key, or OAuth access/refresh token to revoke.
+     * The leaked Flind personal API key, project secret API key, legacy feature flags secure API key, or OAuth access/refresh token to revoke.
      * @maxLength 200
      */
     token: string
@@ -6167,7 +6167,7 @@ export const LeakedKeyReportResponseTypeEnumApi = {
 } as const
 
 export interface LeakedKeyReportResponseApi {
-    /** Whether a matching PostHog key or token was found. It was revoked, or, for team_secret_token, its project admins were told to rotate it. */
+    /** Whether a matching Flind key or token was found. It was revoked, or, for team_secret_token, its project admins were told to rotate it. */
     found: boolean
     /** The type of key that was found and revoked, or null if no match was found. team_secret_token means the string is a legacy feature flags secure API key: its migrated project secret API key row was removed, but the legacy key itself cannot be auto-rotated, so project admins are emailed to rotate it.
      *
@@ -6344,7 +6344,7 @@ export interface OrganizationApi {
     members_can_see_org_members?: boolean
     allow_publicly_shared_resources?: boolean
     /**
-     * When True, requests through the PostHog MCP server can read but not change this organization's data.
+     * When True, requests through the Flind MCP server can read but not change this organization's data.
      * @nullable
      */
     read_only_mcp_access?: boolean | null
@@ -6354,7 +6354,7 @@ export interface OrganizationApi {
     /** @nullable */
     is_ai_data_processing_approved?: boolean | null
     /**
-     * When True, this organization allows its data to be used to train PostHog AI models.
+     * When True, this organization allows its data to be used to train Flind AI models.
      * @nullable
      */
     is_ai_training_opted_in?: boolean | null
@@ -6534,7 +6534,7 @@ export interface UserApi {
     /** Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user's own choice underneath. Read-only. */
     readonly notification_locks: readonly OrganizationNotificationLockApi[]
     /**
-     * Whether PostHog should anonymize events captured for this user when identified.
+     * Whether Flind should anonymize events captured for this user when identified.
      * @nullable
      */
     anonymize_data?: boolean | null
@@ -6589,7 +6589,7 @@ export interface UserApi {
      * @nullable
      */
     passkeys_enabled_for_2fa?: boolean | null
-    /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
+    /** When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions. */
     hide_mcp_hints?: boolean
     /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Covers SQL editor settings such as Vim mode and the vimrc. Send the complete object: it replaces the stored value wholesale. Null means no customization. */
     ui_configuration?: unknown
@@ -6652,7 +6652,7 @@ export interface PatchedUserApi {
     /** Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user's own choice underneath. Read-only. */
     readonly notification_locks?: readonly OrganizationNotificationLockApi[]
     /**
-     * Whether PostHog should anonymize events captured for this user when identified.
+     * Whether Flind should anonymize events captured for this user when identified.
      * @nullable
      */
     anonymize_data?: boolean | null
@@ -6707,7 +6707,7 @@ export interface PatchedUserApi {
      * @nullable
      */
     passkeys_enabled_for_2fa?: boolean | null
-    /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
+    /** When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions. */
     hide_mcp_hints?: boolean
     /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Covers SQL editor settings such as Vim mode and the vimrc. Send the complete object: it replaces the stored value wholesale. Null means no customization. */
     ui_configuration?: unknown
@@ -6769,7 +6769,7 @@ export const InstallationStatusEnumApi = {
 } as const
 
 export interface UserGitHubIntegrationItemApi {
-    /** PostHog UserIntegration row id. */
+    /** Flind UserIntegration row id. */
     id: string
     /** Integration kind; always `github` for this API. */
     kind: string
@@ -6789,14 +6789,14 @@ export interface UserGitHubIntegrationItemApi {
     github_login?: string | null
     /** True when this installation id matches a team-level GitHub integration on the active project. */
     uses_shared_installation: boolean
-    /** Whether any other PostHog project or personal connection references the same App installation. When false, disconnecting this integration also uninstalls the GitHub App from the connected account or organization. */
+    /** Whether any other Flind project or personal connection references the same App installation. When false, disconnecting this integration also uninstalls the GitHub App from the connected account or organization. */
     installation_shared: boolean
-    /** `unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise.
+    /** `unavailable` means the App was uninstalled or suspended on GitHub and Flind can no longer mint tokens for it; `connected` otherwise.
      *
      * * `connected` - connected
      * * `unavailable` - unavailable */
     installation_status: InstallationStatusEnumApi
-    /** True when GitHub rejected the stored credentials and PostHog dropped them. The installation is still on GitHub, but PostHog cannot act as the user until they authorize it again. */
+    /** True when GitHub rejected the stored credentials and Flind dropped them. The installation is still on GitHub, but Flind cannot act as the user until they authorize it again. */
     needs_reauthorization: boolean
     /**
      * When the stored credentials stopped working, or null while they still work.
@@ -6872,7 +6872,7 @@ export interface UserCodexAuthTokensApi {
 }
 
 export interface UserCodexConnectRequestApi {
-    /** The `tokens` object of the `auth.json` that `codex login` wrote. PostHog refreshes the chain once, stores the rotated tokens, and refreshes them for cloud runs from then on. */
+    /** The `tokens` object of the `auth.json` that `codex login` wrote. Flind refreshes the chain once, stores the rotated tokens, and refreshes them for cloud runs from then on. */
     tokens: UserCodexAuthTokensApi
 }
 
@@ -6918,7 +6918,7 @@ export interface GitHubRepoApi {
     pushed_at?: string
     /** Whether the repository is archived. */
     archived?: boolean
-    /** Whether the PostHog GitHub App has write access — required to open pull requests. */
+    /** Whether the Flind GitHub App has write access — required to open pull requests. */
     can_push?: boolean
 }
 
@@ -6973,7 +6973,7 @@ export const GitHubInstallRequestStatusEnumApi = {
 } as const
 
 export interface GitHubInstallRequestItemApi {
-    /** PostHog GitHubInstallRequest row id. */
+    /** Flind GitHubInstallRequest row id. */
     id: string
     /** GitHub login the install was requested under. Blank if it could not be resolved. */
     github_login: string
@@ -7011,7 +7011,7 @@ export interface GitHubInstallRequestListResponseApi {
     /** The user's GitHub App install-approval requests, newest first. */
     results: GitHubInstallRequestItemApi[]
     /**
-     * Shareable GitHub App install URL with no PostHog session state, for an org owner who needs to approve the install. Null when the GitHub App is not configured on this instance.
+     * Shareable GitHub App install URL with no Flind session state, for an org owner who needs to approve the install. Null when the GitHub App is not configured on this instance.
      * @nullable
      */
     install_url?: string | null
@@ -7024,7 +7024,7 @@ export interface UserGitHubPrepareCallbackRequestApi {
 
 export interface UserGitHubLinkStartRequestApi {
     /**
-     * Optional team/project id (e.g. PostHog Desktop); web UI uses the session's current team.
+     * Optional team/project id (e.g. Flind Desktop); web UI uses the session's current team.
      * @nullable
      */
     team_id?: number | null
@@ -7040,16 +7040,16 @@ export interface UserGitHubLinkStartResponseApi {
 }
 
 export interface UserSlackLinkableWorkspaceItemApi {
-    /** PostHog team/project id owning the Slack workspace install. */
+    /** Flind team/project id owning the Slack workspace install. */
     posthog_team_id: number
-    /** PostHog team/project name, for display in a picker. */
+    /** Flind team/project name, for display in a picker. */
     posthog_team_name: string
-    /** PostHog organization name owning the team, for picker disambiguation. */
+    /** Flind organization name owning the team, for picker disambiguation. */
     posthog_organization_name: string
     /** Slack workspace (team) id. */
     slack_team_id: string
     /**
-     * Slack workspace display name as known by PostHog.
+     * Slack workspace display name as known by Flind.
      * @nullable
      */
     slack_team_name?: string | null
@@ -7061,7 +7061,7 @@ export interface UserSlackLinkableWorkspaceListResponseApi {
 }
 
 /**
- * Settings-initiated link can target a specific PostHog team + Slack workspace.
+ * Settings-initiated link can target a specific Flind team + Slack workspace.
  *
  * Both are optional — when omitted we fall back to the user's ``current_team``
  * and that team's first Slack ``Integration`` (mirrors ``github_start`` for
@@ -7188,7 +7188,7 @@ export interface UserPushTokenRegisterRequestApi {
 }
 
 export interface UserPushTokenItemApi {
-    /** PostHog UserPushToken row id. */
+    /** Flind UserPushToken row id. */
     id: string
     /** Device platform the token was issued for.
      *
@@ -7717,7 +7717,7 @@ export type WorkloadTrustPolicyRequestsListParams = {
 
 export type WorkloadTrustPolicyRequestsResolveSubjectRetrieveParams = {
     /**
-     * The policy's conditions as claim=value, repeated. PostHog refuses a lookup they rule out, like a repository on a forge the lookup doesn't ask.
+     * The policy's conditions as claim=value, repeated. Flind refuses a lookup they rule out, like a repository on a forge the lookup doesn't ask.
      * @items.maxLength 500
      */
     condition?: string[]

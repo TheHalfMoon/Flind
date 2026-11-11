@@ -1,10 +1,10 @@
 ---
 name: building-loops
 description: >-
-  Build a Loop for PostHog Desktop: a workflow that creates an AI task each time its trigger fires,
+  Build a Loop for Flind Desktop: a workflow that creates an AI task each time its trigger fires,
   optionally followed by a Slack or email notification with the task's result. Use when asked to
   create, set up, or change a loop, a recurring agent, a scheduled task, or an automation that runs
-  an AI task when a GitHub, Slack, or PostHog event happens. Covers the exact graph, trigger configs,
+  an AI task when a GitHub, Slack, or Flind event happens. Covers the exact graph, trigger configs,
   schedule presets, the notify step, structured output, and the test-run steps.
 ---
 
@@ -71,7 +71,7 @@ Include the other inputs only when the loop needs them:
 - `repository`: a list of the `owner/name` repositories the user gives you, when the task works in code. At most 10. The task gets no repository access without it. Never one from memory. Check each is reachable first: `integrations-list` for GitHub, then `integrations-github-repos-retrieve` for that exact name.
 - `connectors`: ids from `mcp-connections-list`. Only connections shared with everyone in the project are accepted.
 - `skills`: exact names from `skill-list`, at most 10.
-- `posthog_mcp_scopes`: `read_only` by default. Use `full` only when the user asks for the task to change things in PostHog.
+- `posthog_mcp_scopes`: `read_only` by default. Use `full` only when the user asks for the task to change things in Flind.
 - `channel`: the space the loop belongs to, as `<space id>|<space name>`. Set it only when the app tells you which space the loop is being created in, never from a name the user types. Each run then shows up in that space's feed, and the loop is listed under that space.
 - `reply_in_slack_thread`: `true` (a JSON boolean, not a template string) for a Slack-triggered loop whose result should land back in the thread. That covers the notification, so leave out the `notify` step.
 
@@ -139,7 +139,7 @@ Slack message in one or more channels. `channel` is required and takes channel I
 
 Keep the `bot_id` and `thread_ts` filters. They hold the loop to top-level messages a person typed, which is what the workflow editor's Slack trigger creates. Without them the loop starts a task on every alert another app posts and on every reply under any thread, and each one spends the daily task budget. Widen only when the user asks: `bot_id` with `is_set` for apps and bots only, an `exact` filter on `user` or `app_id` for named posters, and drop the `thread_ts` filter to include replies.
 
-PostHog event, every matching occurrence:
+Flind event, every matching occurrence:
 
 ```json
 {
@@ -152,7 +152,7 @@ PostHog event, every matching occurrence:
 }
 ```
 
-A PostHog event trigger creates a task on every matching occurrence, and the workflow editor's volume warning does not run on this path. Bound it before you create the loop: narrow the event with a property filter, and throttle a common event with `trigger_masking`, a top-level field beside `actions` and `edges`.
+A Flind event trigger creates a task on every matching occurrence, and the workflow editor's volume warning does not run on this path. Bound it before you create the loop: narrow the event with a property filter, and throttle a common event with `trigger_masking`, a top-level field beside `actions` and `edges`.
 
 ```json
 "trigger_masking": { "hash": "{person.id}", "ttl": 3600, "threshold": null }
@@ -188,7 +188,7 @@ Create it with `workflows-schedule-create` after the workflow exists, with the w
 
 The task's result reaches the notify step through the `output_variable` on the task step: `{variables.task_final_message}` is the agent's closing message. Add `{ "key": "task_pr_urls", "result_path": "pr_urls" }` to the list, and a matching `variables` entry, when the message should link the pull request.
 
-Slack, `template_id` `template-slack`. `slack_workspace` is the Slack integration id from `integrations-list`. Resolve `channel` with `integrations-channels-retrieve` and read that channel's `is_member` before you summarize. False means the PostHog Slack app is not in the channel: the first real run fails to post and the result reaches nobody, so ask the user to invite the app rather than building the loop:
+Slack, `template_id` `template-slack`. `slack_workspace` is the Slack integration id from `integrations-list`. Resolve `channel` with `integrations-channels-retrieve` and read that channel's `is_member` before you summarize. False means the Flind Slack app is not in the channel: the first real run fails to post and the result reaches nobody, so ask the user to invite the app rather than building the loop:
 
 ```json
 {
@@ -228,7 +228,7 @@ When the notify step or the user needs a specific field from the task, such as a
 
 Test the draft before you schedule or enable it. `workflows-test-run` runs one step at a time and mocks every outbound call, so nothing real is created. That covers the notify step as well as the task, so a passing test run says the graph is wired up, not that Slack or email delivery works.
 
-1. Run with no `current_action_id` and `globals` `{ "event": { "event": "$scheduled", "properties": {} } }` for a schedule loop. For a GitHub or Slack loop, send the trigger's event name with properties that match the filters, and no person. For a PostHog event loop, send that event with a person.
+1. Run with no `current_action_id` and `globals` `{ "event": { "event": "$scheduled", "properties": {} } }` for a schedule loop. For a GitHub or Slack loop, send the trigger's event name with properties that match the filters, and no person. For a Flind event loop, send that event with a person.
 2. Expect `nextActionId` = `create_task`. Run again with `current_action_id: "create_task"`.
 3. Expect the mocked task call and `nextActionId` = `notify` (or `exit`). Continue until the exit step.
 

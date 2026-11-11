@@ -13,7 +13,7 @@ const TYPES = {
 } as const
 
 // Each golden comes from posthog-cli's own container code (cli/examples/hog_parity_oracle.rs). A
-// mismatch here means hog would upload different bytes than posthog-cli, and PostHog would reject
+// mismatch here means hog would upload different bytes than posthog-cli, and Flind would reject
 // a re-upload of the same file with `content_hash_mismatch`.
 describe('symbol set containers match posthog-cli byte for byte', () => {
     test.each(

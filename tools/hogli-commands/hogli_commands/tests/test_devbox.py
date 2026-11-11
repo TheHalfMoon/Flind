@@ -91,14 +91,14 @@ class TestDevboxConfig:
     """Test persisted devbox preferences."""
 
     def test_save_git_identity_persists_trimmed_values(self, devbox_config_path: Path) -> None:
-        devbox_config.save_git_identity(" PostHog Engineer ", " test-user@example.com ")
+        devbox_config.save_git_identity(" Flind Engineer ", " test-user@example.com ")
 
         assert devbox_config.load_config() == {
-            "git_name": "PostHog Engineer",
+            "git_name": "Flind Engineer",
             "git_email": "test-user@example.com",
         }
         assert json.loads(devbox_config_path.read_text()) == {
-            "git_name": "PostHog Engineer",
+            "git_name": "Flind Engineer",
             "git_email": "test-user@example.com",
         }
 
@@ -109,41 +109,41 @@ class TestDevboxConfig:
         assert config["dotfiles_uri"] == "https://github.com/user/dotfiles"
 
     def test_save_dotfiles_uri_merges_with_existing_config(self, devbox_config_path: Path) -> None:
-        devbox_config.save_git_identity("PostHog Engineer", "test-user@example.com")
+        devbox_config.save_git_identity("Flind Engineer", "test-user@example.com")
         devbox_config.save_dotfiles_uri("https://github.com/user/dotfiles")
 
         config = devbox_config.load_config()
         assert config == {
-            "git_name": "PostHog Engineer",
+            "git_name": "Flind Engineer",
             "git_email": "test-user@example.com",
             "dotfiles_uri": "https://github.com/user/dotfiles",
         }
 
     def test_clear_dotfiles_uri_removes_only_dotfiles(self, devbox_config_path: Path) -> None:
-        devbox_config.save_git_identity("PostHog Engineer", "test-user@example.com")
+        devbox_config.save_git_identity("Flind Engineer", "test-user@example.com")
         devbox_config.save_dotfiles_uri("https://github.com/user/dotfiles")
 
         devbox_config.clear_dotfiles_uri()
 
         config = devbox_config.load_config()
         assert config == {
-            "git_name": "PostHog Engineer",
+            "git_name": "Flind Engineer",
             "git_email": "test-user@example.com",
         }
 
     def test_clear_dotfiles_uri_is_noop_when_unset(self, devbox_config_path: Path) -> None:
-        devbox_config.save_git_identity("PostHog Engineer", "test-user@example.com")
+        devbox_config.save_git_identity("Flind Engineer", "test-user@example.com")
 
         devbox_config.clear_dotfiles_uri()
 
         config = devbox_config.load_config()
         assert config == {
-            "git_name": "PostHog Engineer",
+            "git_name": "Flind Engineer",
             "git_email": "test-user@example.com",
         }
 
     def test_clear_git_identity_leaves_dotfiles_intact(self, devbox_config_path: Path) -> None:
-        devbox_config.save_git_identity("PostHog Engineer", "test-user@example.com")
+        devbox_config.save_git_identity("Flind Engineer", "test-user@example.com")
         devbox_config.save_dotfiles_uri("https://github.com/user/dotfiles")
 
         devbox_config.clear_git_identity()
@@ -152,36 +152,36 @@ class TestDevboxConfig:
         assert config == {"dotfiles_uri": "https://github.com/user/dotfiles"}
 
     def test_save_region_persists_alongside_other_fields(self, devbox_config_path: Path) -> None:
-        devbox_config.save_git_identity("PostHog Engineer", "test-user@example.com")
+        devbox_config.save_git_identity("Flind Engineer", "test-user@example.com")
         devbox_config.save_region("eu-central-1")
 
         config = devbox_config.load_config()
         assert config == {
-            "git_name": "PostHog Engineer",
+            "git_name": "Flind Engineer",
             "git_email": "test-user@example.com",
             "region": "eu-central-1",
         }
 
     def test_clear_region_leaves_other_fields_intact(self, devbox_config_path: Path) -> None:
-        devbox_config.save_git_identity("PostHog Engineer", "test-user@example.com")
+        devbox_config.save_git_identity("Flind Engineer", "test-user@example.com")
         devbox_config.save_region("eu-central-1")
 
         devbox_config.clear_region()
 
         config = devbox_config.load_config()
         assert config == {
-            "git_name": "PostHog Engineer",
+            "git_name": "Flind Engineer",
             "git_email": "test-user@example.com",
         }
 
     def test_clear_region_is_noop_when_unset(self, devbox_config_path: Path) -> None:
-        devbox_config.save_git_identity("PostHog Engineer", "test-user@example.com")
+        devbox_config.save_git_identity("Flind Engineer", "test-user@example.com")
 
         devbox_config.clear_region()
 
         config = devbox_config.load_config()
         assert config == {
-            "git_name": "PostHog Engineer",
+            "git_name": "Flind Engineer",
             "git_email": "test-user@example.com",
         }
 
@@ -1839,7 +1839,7 @@ class TestWorkspaceCreation:
             (
                 {
                     "preset": "Default (warm)",
-                    "git_name": "PostHog Engineer",
+                    "git_name": "Flind Engineer",
                     "git_email": "test-user@example.com",
                     "dotfiles_uri": _DOTFILES,
                 },
@@ -1849,7 +1849,7 @@ class TestWorkspaceCreation:
                 {
                     "repo": _REPO,
                     "workspace_region": "us-east-1",
-                    "git_name": "PostHog Engineer",
+                    "git_name": "Flind Engineer",
                     "git_email": "test-user@example.com",
                     "dotfiles_uri": _DOTFILES,
                 },
@@ -2060,7 +2060,7 @@ class TestWorkspaceCreation:
             coder.create_workspace(
                 "devbox-test-user",
                 100,
-                git_name="PostHog Engineer",
+                git_name="Flind Engineer",
                 dotfiles_uri=_DOTFILES,
             )
 
@@ -2951,7 +2951,7 @@ class TestDevboxCommands:
             devbox_cli,
             "load_config",
             lambda: {
-                "git_name": "PostHog Engineer",
+                "git_name": "Flind Engineer",
                 "git_email": "test-user@example.com",
                 "dotfiles_uri": "https://github.com/user/dotfiles",
             },
@@ -2962,7 +2962,7 @@ class TestDevboxCommands:
 
         assert result.exit_code == 0
         assert captured["name"] == "devbox-test-user-api"
-        assert captured["git_name"] == "PostHog Engineer"
+        assert captured["git_name"] == "Flind Engineer"
         assert captured["git_email"] == "test-user@example.com"
         assert captured["dotfiles_uri"] == "https://github.com/user/dotfiles"
         assert captured["region"] == coder.DEFAULT_REGION
@@ -3624,7 +3624,7 @@ class TestDevboxConfigCommands:
         devbox_config_path.write_text(
             json.dumps(
                 {
-                    "git_name": "PostHog Engineer",
+                    "git_name": "Flind Engineer",
                     "git_email": "engineer@example.com",
                     "dotfiles_uri": "https://github.com/user/dotfiles",
                 }
@@ -3636,7 +3636,7 @@ class TestDevboxConfigCommands:
 
         assert result.exit_code == 0
         assert "Currently configured:" in result.output
-        assert "PostHog Engineer <engineer@example.com>" in result.output
+        assert "Flind Engineer <engineer@example.com>" in result.output
         assert "https://github.com/user/dotfiles" in result.output
         assert "Git signing" in result.output
         auto_line = next(line for line in result.output.splitlines() if "Automatic worktree boxes" in line)
@@ -3660,7 +3660,7 @@ class TestDevboxConfigCommands:
         devbox_config_path: Path,
         stub_config_runtime: None,
     ) -> None:
-        devbox_config.save_git_identity("PostHog Engineer", "engineer@example.com")
+        devbox_config.save_git_identity("Flind Engineer", "engineer@example.com")
         devbox_config.save_dotfiles_uri("https://github.com/user/dotfiles")
 
         result = runner.invoke(cli, ["devbox:config:rm", "git-identity"])

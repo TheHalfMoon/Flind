@@ -49,7 +49,7 @@ export interface AgentServerConfig {
   version?: string;
   mcpServers?: McpServerConnection[];
   /**
-   * Case-insensitive JavaScript regex matched against PostHog `exec` sub-tool
+   * Case-insensitive JavaScript regex matched against Flind `exec` sub-tool
    * names. Overrides the default approval regex for interactive calls.
    */
   posthogExecPermissionRegex?: string;

@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -32,7 +32,7 @@ export const getContextLayerChannelPagesRetrieveUrl = (organizationId: string, c
 }
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary Resolve a channel's wiki page
  */
 export const contextLayerChannelPagesRetrieve = async (
@@ -51,7 +51,7 @@ export const getContextLayerCommitsCreateUrl = (organizationId: string) => {
 }
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary Land agent commits from a git bundle
  */
 export const contextLayerCommitsCreate = async (
@@ -165,7 +165,7 @@ export const getContextLayerPagesRetrieveUrl = (organizationId: string, params: 
 }
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary Read a wiki page
  */
 export const contextLayerPagesRetrieve = async (
@@ -184,7 +184,7 @@ export const getContextLayerPagesUpdateUrl = (organizationId: string) => {
 }
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary Create or replace a wiki page
  */
 export const contextLayerPagesUpdate = async (
@@ -217,7 +217,7 @@ export const getContextLayerProposalsListUrl = (organizationId: string, params?:
 }
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary List your pending wiki edits
  */
 export const contextLayerProposalsList = async (
@@ -236,7 +236,7 @@ export const getContextLayerProposalsApplyCreateUrl = (organizationId: string, p
 }
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary Apply a reviewed wiki edit
  */
 export const contextLayerProposalsApplyCreate = async (
@@ -255,7 +255,7 @@ export const getContextLayerStatusRetrieveUrl = (organizationId: string) => {
 }
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary Get the wiki head
  */
 export const contextLayerStatusRetrieve = async (
@@ -273,7 +273,7 @@ export const getContextLayerTreeRetrieveUrl = (organizationId: string) => {
 }
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary List wiki pages
  */
 export const contextLayerTreeRetrieve = async (organizationId: string, options?: RequestInit): Promise<WikiTreeApi> => {
@@ -288,7 +288,7 @@ export const getContextLayerWikiReportRetrieveUrl = (organizationId: string) => 
 }
 
 /**
- * The organization's context wiki: a git repo of Markdown pages hosted by PostHog.
+ * The organization's context wiki: a git repo of Markdown pages hosted by Flind.
  * @summary Report wiki health findings
  */
 export const contextLayerWikiReportRetrieve = async (

@@ -26,7 +26,7 @@ const SETTINGS_SEARCH_INDEX: SettingsSearchEntry[] = [
   },
   {
     category: "general",
-    label: "PostHog account",
+    label: "Flind account",
     keywords: ["billing", "manage account", "email"],
   },
   {

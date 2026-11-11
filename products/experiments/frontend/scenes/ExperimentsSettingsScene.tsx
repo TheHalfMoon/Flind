@@ -62,7 +62,7 @@ export function ExperimentsSettingsScene(): JSX.Element {
     const { experimentsConfig, experimentsConfigLoading } = useValues(experimentsConfigLogic)
     const { featureFlags } = useValues(featureFlagLogic)
 
-    // The cleanup PR runs as a PostHog Desktop task, so the setting is only relevant with
+    // The cleanup PR runs as a Flind Desktop task, so the setting is only relevant with
     // Code access (same gate as the end-experiment modal checkbox).
     const cleanupPrAvailable = !!featureFlags[FEATURE_FLAGS.TASKS]
 

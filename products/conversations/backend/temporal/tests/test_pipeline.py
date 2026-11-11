@@ -2448,13 +2448,13 @@ class TestDiagnosticScopes:
         prompt, _ = await self._run_draft()
         assert self._captured["exclude_tools"] == ("docs-search",)
         assert "You do not have docs-search" in prompt
-        assert "docs-search: searches the official PostHog" not in prompt
+        assert "docs-search: searches the official Flind" not in prompt
 
     @pytest.mark.asyncio
     async def test_posthog_mode_keeps_docs_search(self):
         prompt, _ = await self._run_draft(docs_source="posthog")
         assert self._captured["exclude_tools"] == ()
-        assert "docs-search: searches the official PostHog" in prompt
+        assert "docs-search: searches the official Flind" in prompt
 
     @pytest.mark.asyncio
     async def test_playbook_sits_below_security_and_above_untrusted_ticket(self):

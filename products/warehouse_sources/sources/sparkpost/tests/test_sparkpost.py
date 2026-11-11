@@ -383,7 +383,7 @@ def _json_response(body: Any, status_code: int = 200) -> ScriptedResponse:
 def _webhook_object(**overrides: Any) -> dict[str, Any]:
     webhook = {
         "id": "wh_1",
-        "name": "PostHog data warehouse",
+        "name": "Flind data warehouse",
         "target": WEBHOOK_URL,
         "events": ["delivery", "bounce"],
         "active": True,

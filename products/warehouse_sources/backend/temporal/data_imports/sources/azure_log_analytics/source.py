@@ -235,7 +235,7 @@ class AzureLogAnalyticsSource(LogAnalyticsWorkspaceSource[AzureLogAnalyticsSourc
             label="Microsoft Azure (Azure Monitor / Log Analytics)",
             keywords=["azure monitor", "log analytics", "kql"],
             releaseStatus=ReleaseStatus.ALPHA,
-            caption="""Sync tables from an Azure Monitor Log Analytics workspace into the PostHog Data warehouse. Each table becomes a warehouse table, synced incrementally on the time Azure ingested each record, so records that arrive late still sync.
+            caption="""Sync tables from an Azure Monitor Log Analytics workspace into the Flind Data warehouse. Each table becomes a warehouse table, synced incrementally on the time Azure ingested each record, so records that arrive late still sync.
 
 Register an app in Microsoft Entra ID, create a client secret for it, and give its service principal the **Log Analytics Reader** role on the workspace. Then enter the directory (tenant) ID, the application (client) ID, the secret value, and the workspace ID from the workspace's **Overview** page.
 

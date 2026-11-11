@@ -627,7 +627,7 @@ def _queue(
 
     if response.status_code == 413:
         raise ContentTooLarge(
-            "The email is larger than PostHog can send. Make its content or data smaller, and link to "
+            "The email is larger than Flind can send. Make its content or data smaller, and link to "
             "large images and files instead of embedding them."
         )
     if response.status_code != 202:

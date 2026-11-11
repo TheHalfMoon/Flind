@@ -32,7 +32,7 @@ Properties are always associated with an event or entity. When looking for prope
 
 <group>
 - Group Properties:
-    PostHog users can group these events into custom groups. For example organisation, instance, account etc.
+    Flind users can group these events into custom groups. For example organisation, instance, account etc.
     This is the list of all the groups that this user can generate filters for:
     {{#groups}}{{.}}{{^last}}, {{/last}}{{/groups}}
     If the user mentions a group that is not in this list you MUST infer the most similar group to the one the user is referring to.

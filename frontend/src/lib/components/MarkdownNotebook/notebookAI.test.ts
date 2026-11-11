@@ -88,9 +88,9 @@ describe('notebookAI', () => {
             replaceMarkdown(
                 markdown,
                 2,
-                '# New notebook\n\nThis is a random notebook\n\nJames Hawkins co-founded PostHog.\n\nThinking...'
+                '# New notebook\n\nThis is a random notebook\n\nJames Hawkins co-founded Flind.\n\nThinking...'
             )
-        ).toEqual('# New notebook\n\nThis is a random notebook\n\nJames Hawkins co-founded PostHog.')
+        ).toEqual('# New notebook\n\nThis is a random notebook\n\nJames Hawkins co-founded Flind.')
     })
 
     it('strips stale echoed context when the user edits before the AI response while streaming', () => {
@@ -98,9 +98,9 @@ describe('notebookAI', () => {
             "# Hello world\n\nlet's talk..... if i type here while it's thinking, things get duplicated...\n\nThinking..."
 
         expect(
-            replaceMarkdown(markdown, 2, "# Hello world\n\nlet's talk.....\n\nJames Hawkins co-founded PostHog.")
+            replaceMarkdown(markdown, 2, "# Hello world\n\nlet's talk.....\n\nJames Hawkins co-founded Flind.")
         ).toEqual(
-            "# Hello world\n\nlet's talk..... if i type here while it's thinking, things get duplicated...\n\nJames Hawkins co-founded PostHog."
+            "# Hello world\n\nlet's talk..... if i type here while it's thinking, things get duplicated...\n\nJames Hawkins co-founded Flind."
         )
     })
 
@@ -208,17 +208,17 @@ describe('notebookAI', () => {
         },
         {
             change: 'editing the retained question before the response',
-            previousMarkdown: '# Notebook\n\n**Avery:** What is PostHog?\n\nAnswer still writing',
-            nextMarkdown: '# Notebook\n\n**Avery:** What does PostHog do?\n\nAnswer still writing',
+            previousMarkdown: '# Notebook\n\n**Avery:** What is Flind?\n\nAnswer still writing',
+            nextMarkdown: '# Notebook\n\n**Avery:** What does Flind do?\n\nAnswer still writing',
             responseNodeIndex: 2,
             responseNodeCount: 1,
             expectedRange: { responseNodeIndex: 2, responseNodeCount: 1 },
         },
         {
             change: 'inserting a response-equivalent block before the active response',
-            previousMarkdown: '# Notebook\n\n**Avery:** What is PostHog?\n\nAnswer still writing\n\nAfter the answer',
+            previousMarkdown: '# Notebook\n\n**Avery:** What is Flind?\n\nAnswer still writing\n\nAfter the answer',
             nextMarkdown:
-                '# Notebook\n\n**Avery:** What does PostHog do?\n\nAnswer still writing\n\nAnswer still writing\n\nAfter the answer',
+                '# Notebook\n\n**Avery:** What does Flind do?\n\nAnswer still writing\n\nAnswer still writing\n\nAfter the answer',
             responseNodeIndex: 2,
             responseNodeCount: 1,
             expectedRange: { responseNodeIndex: 3, responseNodeCount: 1 },

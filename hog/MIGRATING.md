@@ -3,12 +3,12 @@
 > [!NOTE]
 > This guide is a draft. hog isn't published yet, and the guide will move to posthog.com when it is.
 
-hog is version 1 of the PostHog command line. It does what posthog-cli does, with new command names, `HOG_` environment variables, and output that agents can read.
+hog is version 1 of the Flind command line. It does what posthog-cli does, with new command names, `HOG_` environment variables, and output that agents can read.
 Most moves take three steps: install hog, rename the environment variables, and rewrite each command with the tables below.
 
 ## What stays the same
 
-- **Your login.** Run `hog auth migrate` once. It moves the key `posthog-cli login` saved in `~/.posthog/credentials.json` into hog's store, so you don't have to log in again. It checks the key with PostHog first, and a key PostHog rejects stays out of hog's store. hog doesn't read that file otherwise and never changes it.
+- **Your login.** Run `hog auth migrate` once. It moves the key `posthog-cli login` saved in `~/.posthog/credentials.json` into hog's store, so you don't have to log in again. It checks the key with Flind first, and a key Flind rejects stays out of hog's store. hog doesn't read that file otherwise and never changes it.
 - **Uploads.** hog sends the same bytes and content hashes, so either CLI can re-upload what the other uploaded. Chunk IDs and releases don't change.
 - **posthog.json.** hog reads the `languages` entries `posthog-cli exp schema` writes, and the endpoint YAML files `posthog-cli exp endpoints` writes.
 - **Global flags.** `--host`, `--dotenv-file`, `--no-fail`, `--skip-ssl-verification` and `--rate-limit` work as before, before or after the command.
@@ -77,7 +77,7 @@ hog lists these and prints the posthog-cli command to run instead.
 - **Paths are arguments.** `--directory`, `--path`, `-m` and `-c` become positional arguments, and one command takes several paths.
 - **`-o` is the output format.** It takes `text` or `json`. posthog-cli's `-o` paths become `--to` in `endpoints pull`, `--file` in `schema pull`, and `--output-dir` in `download` and `extract`.
 - **`--include`, `--exclude` and `--stdin` are gone.** List the paths as arguments, or keep them in `errorTracking.sources` in `posthog.json`, where `ignore` globs skip files.
-- **`--skip-release-on-fail` is gone.** hog always retries without the release when PostHog says a chunk belongs to another release, as posthog-cli did.
+- **`--skip-release-on-fail` is gone.** hog always retries without the release when Flind says a chunk belongs to another release, as posthog-cli did.
 - **`--main-dsym` is gone.** hog takes the release from `--release-name`, `--release-version`, `--info-plist`, `posthog.json` or git.
 - **`--debug` is global.** It prints each request to stderr for every command.
 

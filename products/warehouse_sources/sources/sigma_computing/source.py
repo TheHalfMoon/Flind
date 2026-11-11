@@ -131,7 +131,7 @@ class SigmaComputingSource(ResumableSource[SigmaComputingSourceConfig, SigmaComp
             name=ExternalDataSourceType.SIGMACOMPUTING,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Sigma Computing",
-            caption="""Connect Sigma Computing to pull your workbook, data model, connection, and membership metadata into the PostHog Data warehouse.
+            caption="""Connect Sigma Computing to pull your workbook, data model, connection, and membership metadata into the Flind Data warehouse.
 
 Generate a client ID and secret from **Administration > Developer Access** in Sigma, then pick the deployment region shown on that same page (or under **Account > General Settings**).""",
             iconPath="/static/services/sigma_computing.png",

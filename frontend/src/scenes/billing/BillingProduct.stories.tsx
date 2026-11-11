@@ -56,9 +56,9 @@ const makePostHogCodeUsageBilling = ({
     const projectedAmountUsd = isAboveStartupCap ? currentLimitUsd + 150 : 75
     const product: BillingProductV2Type = {
         ...sourceProduct,
-        name: 'PostHog Desktop (usage-based)',
-        headline: 'AI coding agents for your PostHog workspace.',
-        description: 'AI coding agents for automating PostHog work.',
+        name: 'Flind Desktop (usage-based)',
+        headline: 'AI coding agents for your Flind workspace.',
+        description: 'AI coding agents for automating Flind work.',
         usage_key: POSTHOG_CODE_USAGE_PRODUCT_KEY,
         icon_key: 'IconTerminal',
         docs_url: 'https://posthog.com/docs/posthog-desktop',
@@ -251,7 +251,7 @@ export const BillingProductTemporarilyFree: Story = {
                             key: 'data_warehouse_joins',
                             name: 'Cross-source joins',
                             description:
-                                'Join data from any source, including your PostHog analytics data, to easily get the answers you need.',
+                                'Join data from any source, including your Flind analytics data, to easily get the answers you need.',
                             unit: null,
                             limit: null,
                             note: null,
@@ -260,7 +260,7 @@ export const BillingProductTemporarilyFree: Story = {
                         {
                             key: 'data_warehouse_unified_querying',
                             name: 'Unified querying',
-                            description: 'Query all your business and product data directly inside PostHog.',
+                            description: 'Query all your business and product data directly inside Flind.',
                             unit: null,
                             limit: null,
                             note: null,
@@ -270,7 +270,7 @@ export const BillingProductTemporarilyFree: Story = {
                             key: 'data_warehouse_insights_visualization',
                             name: 'Data visualization',
                             description:
-                                'Create insights from the data you import and add them to your PostHog dashboards.',
+                                'Create insights from the data you import and add them to your Flind dashboards.',
                             unit: null,
                             limit: null,
                             note: null,
@@ -354,7 +354,7 @@ export const BillingProductTemporarilyFree: Story = {
                     key: 'data_warehouse_joins',
                     name: 'Cross-source joins',
                     description:
-                        'Join data from any source, including your PostHog analytics data, to easily get the answers you need.',
+                        'Join data from any source, including your Flind analytics data, to easily get the answers you need.',
                     images: null,
                     icon_key: null,
                     type: null,
@@ -362,7 +362,7 @@ export const BillingProductTemporarilyFree: Story = {
                 {
                     key: 'data_warehouse_unified_querying',
                     name: 'Unified querying',
-                    description: 'Query all your business and product data directly inside PostHog.',
+                    description: 'Query all your business and product data directly inside Flind.',
                     images: null,
                     icon_key: null,
                     type: null,
@@ -370,7 +370,7 @@ export const BillingProductTemporarilyFree: Story = {
                 {
                     key: 'data_warehouse_insights_visualization',
                     name: 'Data visualization',
-                    description: 'Create insights from the data you import and add them to your PostHog dashboards.',
+                    description: 'Create insights from the data you import and add them to your Flind dashboards.',
                     images: null,
                     icon_key: null,
                     type: null,

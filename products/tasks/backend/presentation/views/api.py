@@ -806,7 +806,7 @@ class TaskViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
                 str,
                 OpenApiParameter.HEADER,
                 enum=tasks_facade.TaskClientProvenance.values,
-                description="First-party client creating the task. Accepted only with an interactive PostHog OAuth grant.",
+                description="First-party client creating the task. Accepted only with an interactive Flind OAuth grant.",
             ),
         ],
         responses={
@@ -833,13 +833,13 @@ class TaskViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
                     "Agent-started runs are limited to the internal project. A task sandbox can start a run only "
                     "for the person who created its task (code `no_actor`), and a run that a sandbox started "
                     "cannot start more runs (code `nested`). "
-                    "Immediate runs also require PostHog Desktop access and an enabled Pi cloud runtime."
+                    "Immediate runs also require Flind Desktop access and an enabled Pi cloud runtime."
                 ),
             ),
             429: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
                 description=(
-                    "Organization reached its PostHog Desktop usage limit, the signal report reached its "
+                    "Organization reached its Flind Desktop usage limit, the signal report reached its "
                     "task limit (code `signal_report_task_cap`), or the per-user creation rate limit fired. "
                     "A task sandbox gets code `agent_run_fanout_cap` when its run started its maximum number "
                     "of runs, or code `agent_run_rate_limited` when its user starts runs too fast"
@@ -848,7 +848,7 @@ class TaskViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             503: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
                 description=(
-                    "PostHog Desktop access could not be verified, or warm run activation is unavailable "
+                    "Flind Desktop access could not be verified, or warm run activation is unavailable "
                     "(code `warm_run_activation_unavailable`). After confirmed nondelivery, a retry_token permits "
                     "retrying the same run and message with X-PostHog-Warm-Retry. Web retries for up to 20 seconds."
                 ),
@@ -1402,12 +1402,12 @@ class TaskViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
                 description="Task, runs, and Temporal workflow handles for the Slack thread.",
             ),
             400: OpenApiResponse(description="Malformed Slack URL or unparseable thread identifiers."),
-            403: OpenApiResponse(description="Endpoint is gated to PostHog-internal debugging."),
+            403: OpenApiResponse(description="Endpoint is gated to Flind-internal debugging."),
             404: OpenApiResponse(description="No SlackThreadTaskMapping exists for the parsed (channel, thread_ts)."),
         },
         summary="Resolve a Slack thread to its task, runs, and Temporal workflows",
         description=(
-            "PostHog-internal debug tool. Resolves a Slack permalink to the linked task, its runs, "
+            "Flind-internal debug tool. Resolves a Slack permalink to the linked task, its runs, "
             "the task-processing and mention-dispatch Temporal workflow ids/URLs, and presigned log URLs."
         ),
     )
@@ -1422,7 +1422,7 @@ class TaskViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
     def slack_thread_context(self, request, **kwargs):
         if not _is_internal_debug_team(self.team_id):
             return Response(
-                {"detail": "slack-thread-context is restricted to PostHog-internal debugging."},
+                {"detail": "slack-thread-context is restricted to Flind-internal debugging."},
                 status=status.HTTP_403_FORBIDDEN,
             )
         url = request.validated_query_data["url"]
@@ -1550,7 +1550,7 @@ class TaskViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             403: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
                 description=(
-                    "PostHog Desktop access is required, Pi cloud runtime is disabled, or agent-started runs are "
+                    "Flind Desktop access is required, Pi cloud runtime is disabled, or agent-started runs are "
                     "not enabled for this project. A task sandbox can start a run only for the person who created "
                     "its task (code `no_actor`), and a run that a sandbox started cannot start more runs "
                     "(code `nested`)."
@@ -1560,7 +1560,7 @@ class TaskViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             503: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
                 description=(
-                    "PostHog Desktop access could not be verified, or warm run activation is unavailable "
+                    "Flind Desktop access could not be verified, or warm run activation is unavailable "
                     "(code `warm_run_activation_unavailable`). After confirmed nondelivery, a retry_token permits "
                     "retrying the same run and message with X-PostHog-Warm-Retry. Web retries for up to 20 seconds."
                 ),
@@ -1820,14 +1820,14 @@ class TaskViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
                 description="Warm Run provisioned (`task_id`/`run_id` to activate on submit), or an empty body when the feature is off, capped, or the integration didn't resolve.",
             ),
             403: OpenApiResponse(
-                response=TaskRunErrorResponseSerializer, description="PostHog Desktop access is required"
+                response=TaskRunErrorResponseSerializer, description="Flind Desktop access is required"
             ),
             429: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer, description="Team is over its posthog_code usage limit"
             ),
             503: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="PostHog Desktop access could not be verified",
+                description="Flind Desktop access could not be verified",
             ),
         },
         summary="Warm a task sandbox",
@@ -1906,7 +1906,7 @@ class TaskViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
                 description="Successor Run provisioned, or an empty body when warming is unavailable or the source run changed.",
             ),
             403: OpenApiResponse(
-                response=TaskRunErrorResponseSerializer, description="PostHog Desktop access is required"
+                response=TaskRunErrorResponseSerializer, description="Flind Desktop access is required"
             ),
             404: OpenApiResponse(description="Task not found"),
             429: OpenApiResponse(
@@ -2343,14 +2343,14 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             400: OpenApiResponse(response=TaskRunErrorResponseSerializer, description="Invalid task run payload"),
             403: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="PostHog Desktop access is required, or Pi cloud runtime is disabled",
+                description="Flind Desktop access is required, or Pi cloud runtime is disabled",
             ),
             429: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer, description="Team is over its posthog_code usage limit"
             ),
             503: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="PostHog Desktop access could not be verified",
+                description="Flind Desktop access could not be verified",
             ),
         },
         summary="Create task run",
@@ -2385,7 +2385,7 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             400: OpenApiResponse(response=TaskRunErrorResponseSerializer, description="Invalid start payload"),
             403: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="PostHog Desktop access is required, or Pi cloud runtime is disabled",
+                description="Flind Desktop access is required, or Pi cloud runtime is disabled",
             ),
             404: OpenApiResponse(description="Task run not found"),
             429: OpenApiResponse(
@@ -2393,7 +2393,7 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             ),
             503: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="PostHog Desktop access could not be verified",
+                description="Flind Desktop access could not be verified",
             ),
         },
         summary="Start task run",
@@ -2996,8 +2996,8 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             ),
             404: OpenApiResponse(description="Run not found"),
         },
-        summary="Register PostHog object references for a task run",
-        description="Attach live PostHog object references to the run artifact manifest without uploading files.",
+        summary="Register Flind object references for a task run",
+        description="Attach live Flind object references to the run artifact manifest without uploading files.",
         strict_request_validation=True,
     )
     @action(
@@ -3381,7 +3381,7 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             body = "Try again in a moment."
         else:
             heading = "This preview isn't ready yet"
-            body = "PostHog is still starting in the sandbox. Refresh this page in a moment."
+            body = "Flind is still starting in the sandbox. Refresh this page in a moment."
         task_url = escape(absolute_uri(f"/project/{self.team_id}/tasks/{task_id}"))
         html = (
             '<!doctype html><html lang="en"><head><meta charset="utf-8">'
@@ -3406,7 +3406,7 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
         },
         summary="Open the dev stack preview for a task run",
         description=(
-            "Redirects to the PostHog dev stack running inside this run's sandbox. A fresh sandbox "
+            "Redirects to the Flind dev stack running inside this run's sandbox. A fresh sandbox "
             "access token is minted on every request and carried only in the redirect target, so it "
             "is never persisted or returned in a response body. When the run has no preview, or its "
             "sandbox has stopped, this renders a short HTML page instead."
@@ -3446,7 +3446,7 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
         },
         summary="Analyze this run",
         description=(
-            "Create a PostHog-funded analysis task that reviews this run's transcript for "
+            "Create a Flind-funded analysis task that reviews this run's transcript for "
             "inefficiencies and reports findings. Idempotent per run: if an analysis task already "
             "exists for this run, it is returned instead of creating another. The analysis is not "
             "billed to the customer."
@@ -3607,16 +3607,16 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
                 description="Connection token for direct sandbox connection",
             ),
             403: OpenApiResponse(
-                response=TaskRunErrorResponseSerializer, description="PostHog Desktop access is required"
+                response=TaskRunErrorResponseSerializer, description="Flind Desktop access is required"
             ),
             404: OpenApiResponse(description="Task run not found"),
             503: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="PostHog Desktop access could not be verified",
+                description="Flind Desktop access could not be verified",
             ),
             429: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="Organization reached its PostHog Desktop usage limit",
+                description="Organization reached its Flind Desktop usage limit",
             ),
         },
         summary="Get sandbox connection token",
@@ -3691,14 +3691,14 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             ),
             400: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="Invalid command — fatal, do not retry. (Legacy exception: interactive PostHog "
+                description="Invalid command — fatal, do not retry. (Legacy exception: interactive Flind "
                 "Desktop grants still receive the transient `sandbox_not_ready` condition as a 400 for every "
                 "method except `credential_response`, because shipped Desktop builds branch on that status; "
                 "API callers always get it as a 503.)",
             ),
             403: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="PostHog Desktop access is required to message this run's agent",
+                description="Flind Desktop access is required to message this run's agent",
             ),
             404: OpenApiResponse(description="Task run not found"),
             409: OpenApiResponse(
@@ -3709,7 +3709,7 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             ),
             429: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="Organization reached its PostHog Desktop usage limit",
+                description="Organization reached its Flind Desktop usage limit",
             ),
             502: OpenApiResponse(response=TaskRunErrorResponseSerializer, description="Agent server unreachable"),
             503: OpenApiResponse(
@@ -3718,7 +3718,7 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
                 "Code `sandbox_not_ready`: the run is still live but its sandbox's command channel is not "
                 "reachable yet — the usual answer to a command sent as soon as the run asks for one, such as a "
                 "credential_response (a 409 `run_ended` ends that loop). Code `agent_session_not_ready`: approval "
-                "rejected before execution while the agent starts. Or PostHog Desktop access could not be verified.",
+                "rejected before execution while the agent starts. Or Flind Desktop access could not be verified.",
             ),
         },
         summary="Send command to task run",
@@ -3949,7 +3949,7 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
                     "error": "No active sandbox for this task run",
                 }
             ).data
-            # Shipped PostHog Desktop builds recognise this condition only as a 400
+            # Shipped Flind Desktop builds recognise this condition only as a 400
             # (isNoActiveSandboxError gates its startup wait-and-retry on that status), so an
             # interactive Desktop grant keeps the legacy status. Current Desktop accepts either;
             # drop this carve-out once pre-503 builds age out.
@@ -4283,14 +4283,14 @@ class TaskRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             ),
             403: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="PostHog Desktop access is required, or Pi cloud runtime is disabled",
+                description="Flind Desktop access is required, or Pi cloud runtime is disabled",
             ),
             429: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer, description="Team is over its posthog_code usage limit"
             ),
             503: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="PostHog Desktop access could not be verified",
+                description="Flind Desktop access could not be verified",
             ),
         },
         summary="Resume task run in cloud",
@@ -4865,7 +4865,7 @@ class TaskRunLivingArtifactViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewS
         },
         summary="Render an insight chart and attach it as a living artifact",
         description=(
-            "Renders a PostHog insight (ad-hoc query JSON or a saved insight) to a PNG server-side and registers "
+            "Renders a Flind insight (ad-hoc query JSON or a saved insight) to a PNG server-side and registers "
             "it as a slack_file living artifact in one call. Blocks until the render finishes."
         ),
         strict_request_validation=True,
@@ -5189,8 +5189,8 @@ class LegacyDesktopAccessViewSet(viewsets.ViewSet):
             200: OpenApiResponse(response=LegacyDesktopAccessResponseSerializer),
             503: OpenApiResponse(response=TaskRunErrorResponseSerializer),
         },
-        summary="Check PostHog Desktop access",
-        description="Compatibility endpoint for released PostHog Desktop clients.",
+        summary="Check Flind Desktop access",
+        description="Compatibility endpoint for released Flind Desktop clients.",
     )
     # nosemgrep: api-path-underscore -- shipped public API path, a rename breaks clients
     @action(detail=False, methods=["get"], url_path="check-access")
@@ -5202,7 +5202,7 @@ class LegacyDesktopAccessViewSet(viewsets.ViewSet):
                     {
                         "type": "service_unavailable",
                         "code": "desktop_access_unavailable",
-                        "error": "We couldn't verify PostHog Desktop access. Try again.",
+                        "error": "We couldn't verify Flind Desktop access. Try again.",
                     }
                 ).data,
                 status=status.HTTP_503_SERVICE_UNAVAILABLE,
@@ -5216,7 +5216,7 @@ class LegacyDesktopAccessViewSet(viewsets.ViewSet):
                     {
                         "type": "service_unavailable",
                         "code": "desktop_access_unavailable",
-                        "error": "We couldn't verify PostHog Desktop access. Try again.",
+                        "error": "We couldn't verify Flind Desktop access. Try again.",
                     }
                 ).data,
                 status=status.HTTP_503_SERVICE_UNAVAILABLE,

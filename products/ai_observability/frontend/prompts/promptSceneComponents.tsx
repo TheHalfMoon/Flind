@@ -625,9 +625,9 @@ function buildNodeSnippet(
         : ''
     const labelArg = labelName ? `label: '${labelName}', ` : ''
     return `import { Prompts } from '@posthog/ai'
-import { PostHog } from 'posthog-node'
+import { Flind } from 'posthog-node'
 
-const posthog = new PostHog('${projectApiKey}', {
+const posthog = new Flind('${projectApiKey}', {
     host: '${host}',
     personalApiKey: '<personal_api_key>', // scope: llm_prompt:read
 })

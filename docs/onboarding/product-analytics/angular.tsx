@@ -12,7 +12,7 @@ export const getAngularInstallSteps = (ctx: OnboardingComponentsContext): StepDe
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog JavaScript library using your package manager:</Markdown>
+                    <Markdown>Install the Flind JavaScript library using your package manager:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -49,12 +49,12 @@ export const getAngularInstallSteps = (ctx: OnboardingComponentsContext): StepDe
             ),
         },
         {
-            title: 'Initialize PostHog',
+            title: 'Initialize Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        In your `src/main.ts`, initialize PostHog using your project token and instance address:
+                        In your `src/main.ts`, initialize Flind using your project token and instance address:
                     </Markdown>
                     <Tab.Group tabs={['Angular 17+', 'Angular 16 and below']}>
                         <Tab.List>
@@ -65,7 +65,7 @@ export const getAngularInstallSteps = (ctx: OnboardingComponentsContext): StepDe
                             <Tab.Panel>
                                 <Markdown>
                                     {dedent`
-                                        For Angular v17 and above, you can set up PostHog as a singleton service. 
+                                        For Angular v17 and above, you can set up Flind as a singleton service. 
                                         To do this, start by creating and injecting a \`PosthogService\` instance.
 
                                         Create a service by running \`ng g service services/posthog\`. The 
@@ -111,7 +111,7 @@ export const getAngularInstallSteps = (ctx: OnboardingComponentsContext): StepDe
                                         to reduce change detection cycles. This is important to avoid performance issues with 
                                         session recording.
                                         Then, inject the service in your app's root component \`app.component.ts\`. 
-                                        This will make sure PostHog is initialized before any other component is rendered.
+                                        This will make sure Flind is initialized before any other component is rendered.
                                     `}
                                 </Markdown>
                                 <CodeBlock
@@ -143,7 +143,7 @@ export const getAngularInstallSteps = (ctx: OnboardingComponentsContext): StepDe
                             <Tab.Panel>
                                 <Markdown>
                                     {dedent`
-                                        In your \`src/main.ts\`, initialize PostHog using your project API 
+                                        In your \`src/main.ts\`, initialize Flind using your project API 
                                         key and instance address. You can find both in your 
                                         [project settings](https://us.posthog.com/project/settings).
                                     `}

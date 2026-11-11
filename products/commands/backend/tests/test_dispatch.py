@@ -213,7 +213,7 @@ class TestDispatchCommentCommand(BaseTest):
 
         assert outcome == "unlinked"
         request_review.assert_not_called()
-        assert "not linked to a PostHog account" in github.replies[0]
+        assert "not linked to a Flind account" in github.replies[0]
 
     def test_a_connected_github_account_identifies_the_commenter_by_id(self) -> None:
         UserIntegration.objects.create(
@@ -484,22 +484,22 @@ class TestDispatchCommentCommand(BaseTest):
 
     @parameterized.expand(
         [
-            ("standard", "commenter_project", "", RUN_MODE_FLASH, "PostHog Review is reviewing this pull request."),
-            ("deep", "commenter_project", "--deep", RUN_MODE_REVIEW, "PostHog Review is reviewing this pull request."),
+            ("standard", "commenter_project", "", RUN_MODE_FLASH, "Flind Review is reviewing this pull request."),
+            ("deep", "commenter_project", "--deep", RUN_MODE_REVIEW, "Flind Review is reviewing this pull request."),
             (
                 "deep_without_resolving",
                 "commenter_project",
                 "--deep --no-resolve",
                 RUN_MODE_REVIEW_ONLY,
-                "PostHog Review is reviewing this pull request.",
+                "Flind Review is reviewing this pull request.",
             ),
-            ("no_owner", None, "", None, "PostHog Review isn't set up for this repository."),
+            ("no_owner", None, "", None, "Flind Review isn't set up for this repository."),
             (
                 "owner_without_the_commenter",
                 "other_project",
                 "",
                 None,
-                "You aren't a member of the PostHog project that reviews this repository.",
+                "You aren't a member of the Flind project that reviews this repository.",
             ),
         ]
     )
@@ -643,7 +643,7 @@ class TestDispatchCommentCommand(BaseTest):
 
     @parameterized.expand(
         [
-            ("accepted", True, True, "PostHog Review is reviewing this pull request."),
+            ("accepted", True, True, "Flind Review is reviewing this pull request."),
             # The message already skipped the agent, so a refusal must still answer.
             ("over_the_rate_limit", False, True, "You've sent a lot of commands in a short time."),
             ("github_unreachable", True, False, "I couldn't reach GitHub for this repository."),

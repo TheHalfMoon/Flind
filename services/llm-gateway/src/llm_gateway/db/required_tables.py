@@ -1,4 +1,4 @@
-"""Tables the gateway references in the PostHog Postgres database.
+"""Tables the gateway references in the Flind Postgres database.
 
 The gateway's role has SELECT only on a per-table allowlist in
 posthog-cloud-infra (terraform, users.tf); a query outside it fails in

@@ -282,7 +282,7 @@ class MetricsQueryRunner(AnalyticsQueryRunner[MetricsQueryResponse]):
         )
 
     def apply_dashboard_filters(self, dashboard_filter: DashboardFilter) -> None:
-        # Metric label predicates are not PostHog property filters, so the dashboard's
+        # Metric label predicates are not Flind property filters, so the dashboard's
         # property filters do not apply. Its date range and variables do, in all three languages.
         if dashboard_filter.date_from or dashboard_filter.date_to:
             self.query.dateRange = DateRange(

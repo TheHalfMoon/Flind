@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function ExperimentResultsApp(): JSX.Element {
     return (
-        <AppWrapper<ExperimentResultsData> appName="PostHog Experiment Results">
+        <AppWrapper<ExperimentResultsData> appName="Flind Experiment Results">
             {({ data }) => <ExperimentResultsView data={data!} />}
         </AppWrapper>
     )

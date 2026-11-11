@@ -61,7 +61,7 @@ export type actionEventHealthLogicType = MakeLogicType<
 
 /**
  * The `names` filter on `event_definitions` splits every value it receives on commas, so an event
- * name that contains one is asked about as two different names and never comes back. PostHog cannot
+ * name that contains one is asked about as two different names and never comes back. Flind cannot
  * answer for such a name, and no tag is better than a "Not seen" tag on a step that matches fine.
  */
 function isResolvableName(name: string | null | undefined): name is string {
@@ -112,7 +112,7 @@ export const actionEventHealthLogic = kea<actionEventHealthLogicType>([
     loaders(({ values }) => ({
         definitions: [
             // Event names come from the customer, so one can be `constructor` or `__proto__`. These
-            // maps carry no prototype, so `in` and an indexed read see only names PostHog resolved,
+            // maps carry no prototype, so `in` and an indexed read see only names Flind resolved,
             // and a write to `__proto__` adds a key instead of re-parenting the map.
             Object.create(null) as EventDefinitionsByName,
             {

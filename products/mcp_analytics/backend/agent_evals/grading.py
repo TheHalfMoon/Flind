@@ -35,7 +35,7 @@ class Verdict:
 
 
 def called_tools(trial: AgentTrial) -> frozenset[str]:
-    """The tools a trial called, with PostHog's `exec` dispatcher unwrapped to the tool behind `call`.
+    """The tools a trial called, with Flind's `exec` dispatcher unwrapped to the tool behind `call`.
 
     Discovery verbs such as `learn` or `info` only describe a tool, so they name none. An attempt
     counts whether or not it errored, because the grader asks whether the agent reached for the tool.

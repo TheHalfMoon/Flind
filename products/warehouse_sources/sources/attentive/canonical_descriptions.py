@@ -9,9 +9,9 @@ webhook-backed schema names in `constants.py` `RESOURCE_TO_ATTENTIVE_EVENT_TYPE`
 from products.warehouse_sources.sources.sdk import CanonicalDescriptions
 
 # Fields present on every stored Attentive webhook row. `event_id` and `created_at` are synthesized
-# by PostHog during ingestion; `type` and `timestamp` come from the Attentive webhook payload.
+# by Flind during ingestion; `type` and `timestamp` come from the Attentive webhook payload.
 _COMMON_COLUMNS = {
-    "event_id": "Stable hash of the webhook payload, synthesized by PostHog to dedupe retried deliveries.",
+    "event_id": "Stable hash of the webhook payload, synthesized by Flind to dedupe retried deliveries.",
     "type": "The Attentive webhook event type (e.g. 'sms.subscribed', 'email.opened').",
     "timestamp": "Time at which the event occurred, as a Unix timestamp in milliseconds.",
     "created_at": "Event time in Unix seconds, derived from `timestamp` for datetime partitioning.",

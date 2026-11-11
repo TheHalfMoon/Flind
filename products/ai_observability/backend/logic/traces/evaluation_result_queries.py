@@ -42,7 +42,7 @@ class EvaluationResultRow:
 
     @property
     def evaluation_uuid(self) -> str | None:
-        # Results can come from outside PostHog with any id, and a malformed UUID in the lookup raises.
+        # Results can come from outside Flind with any id, and a malformed UUID in the lookup raises.
         return canonical_uuid(self.evaluation_id) if self.evaluation_id else None
 
 

@@ -59,7 +59,7 @@ export function SubscriptionsPreview(): JSX.Element {
                 <div className="SubscriptionPreview__delivery-head SubscriptionPreview__swap">
                     <span className="SubscriptionPreview__when-before">
                         <span className="SubscriptionPreview__avatar" aria-hidden="true" />
-                        <span className="SubscriptionPreview__sender">PostHog</span>
+                        <span className="SubscriptionPreview__sender">Flind</span>
                         <span className="SubscriptionPreview__meta">9:00 AM in #product-updates</span>
                     </span>
                     <span className="SubscriptionPreview__when-after">

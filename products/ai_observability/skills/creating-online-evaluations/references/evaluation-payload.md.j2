@@ -43,7 +43,7 @@ The output type cannot change after creation.
     matching generation (defaults to 1800).
   - A session evaluation only fires for events that carry `$ai_session_id`. Producers set it on every
     generation or on none, so an SDK that never sets it will never trigger a session evaluation.
-    `$ai_session_id` is not `$session_id`, PostHog's product-analytics session; the two are unrelated.
+    `$ai_session_id` is not `$session_id`, Flind's product-analytics session; the two are unrelated.
   - A session is evaluated at most once per evaluation, for as long as the completed run stays inside
     Temporal's retention window. A session that resumes long after being evaluated may be evaluated
     again.
@@ -143,7 +143,7 @@ evaluates each matching trace once.
 | -------------------- | -------- | --------------------------------------------------------------------- |
 | `id`                 | yes      | Stable string identifier for the set (e.g. `"default"`).             |
 | `rollout_percentage` | no       | 0–100, defaults to 100. The sampling rate the dispatcher reads.       |
-| `properties`         | no       | Flat list of PostHog property filters, AND-ed together.               |
+| `properties`         | no       | Flat list of Flind property filters, AND-ed together.               |
 
 Each property filter: `{ "key": "...", "type": "event" | "person", "operator": "...", "value": ... }`.
 Common operators: `exact`, `is_not`, `icontains`, `not_icontains`, `regex`, `gt`, `lt`, `is_set`,

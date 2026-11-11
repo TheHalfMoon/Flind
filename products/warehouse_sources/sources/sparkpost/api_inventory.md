@@ -43,7 +43,7 @@ SparkPost (now part of Bird) — transactional & marketing email delivery. REST/
   marked incremental (the one endpoint with a documented server-side timestamp filter); everything else ships
   full refresh and dedupes on its primary key.
 - **Webhooks:** SparkPost exposes a programmatic Event Webhooks API (`/api/v1/webhooks`). This source pulls the
-  webhook _configuration_ as a table but does not (yet) register PostHog as a push destination — a future
+  webhook _configuration_ as a table but does not (yet) register Flind as a push destination — a future
   `WebhookSource` enhancement.
 - **Metrics API:** data is retained for 6 months, so the first sync of a metrics table reaches back 180 days.
   `from` is required on every route. The breakdown routes (template, bounce/rejection/delay reason) return one

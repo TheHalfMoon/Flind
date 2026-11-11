@@ -1,6 +1,6 @@
 """logo.dev egress budget.
 
-logo.dev meters usage per account, and each PostHog instance configures the image and Search API
+logo.dev meters usage per account, and each Flind instance configures the image and Search API
 credentials from that account, so the whole instance draws from a single shared budget under a
 constant scope. logo.dev limits requests per month by plan, with no per-minute or hourly limit, so
 the defaults are deliberately modest operator ceilings. Icon bytes are never stored server-side (logo.dev gates that behind a

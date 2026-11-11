@@ -54,7 +54,7 @@ class AircallSource(ResumableSource[AircallSourceConfig, AircallResumeConfig]):
             name=ExternalDataSourceType.AIRCALL,
             category=DataWarehouseSourceCategory.COMMUNICATION,
             label="Aircall",
-            caption="""Enter your Aircall API credentials to pull your Aircall data into the PostHog Data warehouse.
+            caption="""Enter your Aircall API credentials to pull your Aircall data into the Flind Data warehouse.
 
 You can create an API key (API ID + API token) in your [Aircall dashboard](https://dashboard.aircall.io/integrations/api-keys). The key has read access to all of your company's data.""",
             iconPath="/static/services/aircall.png",

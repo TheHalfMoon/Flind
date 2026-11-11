@@ -1,4 +1,4 @@
-"""The uploaded files a file upload source reads, and when PostHog deletes them.
+"""The uploaded files a file upload source reads, and when Flind deletes them.
 
 A source reads one file, named by server-managed `job_inputs`. Replacing the file points the source at
 a new upload and records the old one as superseded. The old file stays until a sync that started after

@@ -1,6 +1,6 @@
 # Person property modes
 
-PostHog has two modes for how `person.properties.*` behaves when querying the `events` table.
+Flind has two modes for how `person.properties.*` behaves when querying the `events` table.
 The active mode is included in the project metadata.
 
 ## Person-on-events mode (event-time)

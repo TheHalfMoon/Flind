@@ -72,7 +72,7 @@ class AwsCostAndUsageReportSource(ResumableSource[AwsCostAndUsageReportSourceCon
             "The first billing period on the source is not in YYYY-MM form. Fix it and retry the sync."
         )
         errors[f"{ERROR_PREFIX}: {UNSUPPORTED_COMPRESSION}"] = (
-            "A file in the export uses Brotli compression, which PostHog can't read. "
+            "A file in the export uses Brotli compression, which Flind can't read. "
             "Check that only AWS writes to the export's S3 prefix, then retry the sync."
         )
         return errors
@@ -156,7 +156,7 @@ class AwsCostAndUsageReportSource(ResumableSource[AwsCostAndUsageReportSourceCon
             name=ExternalDataSourceType.AWSCOSTANDUSAGEREPORT,
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="AWS Cost and Usage Report",
-            caption="""Sync the line items of an AWS Data Exports export (Cost and Usage Report 2.0 or FOCUS) from its S3 bucket into the PostHog Data warehouse.
+            caption="""Sync the line items of an AWS Data Exports export (Cost and Usage Report 2.0 or FOCUS) from its S3 bucket into the Flind Data warehouse.
 
 Create the export in the AWS Billing console under **Data Exports**, delivered to S3 as Parquet or gzip CSV. Parquet keeps the column types of the export; gzip CSV takes them from the export's manifest. Then create an IAM user or role with `s3:ListBucket` on the bucket and `s3:GetObject` on the export's prefix, and paste its access key ID and secret access key.
 

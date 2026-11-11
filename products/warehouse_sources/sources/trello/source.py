@@ -54,7 +54,7 @@ class TrelloSource(ResumableSource[TrelloSourceConfig, TrelloResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Trello",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Trello API key and token to sync your boards, cards, lists and more into the PostHog Data warehouse.
+            caption="""Enter your Trello API key and token to sync your boards, cards, lists and more into the Flind Data warehouse.
 
 Get your API key from [trello.com/power-ups/admin](https://trello.com/power-ups/admin) and generate a token with **read** access for your account.""",
             iconPath="/static/services/trello.png",

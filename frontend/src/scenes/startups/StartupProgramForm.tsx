@@ -128,12 +128,12 @@ export function StartupProgramForm(): JSX.Element {
                                 <span>
                                     Screenshot showing you're using{' '}
                                     <Link target="_blank" to={YC_DEAL_BOOKFACE}>
-                                        PostHog deal
+                                        Flind deal
                                     </Link>{' '}
                                     on Bookface
                                 </span>
                             }
-                            info="Open PostHog deal on Bookface, click 'Mark Using', take a screenshot and attach it below"
+                            info="Open Flind deal on Bookface, click 'Mark Using', take a screenshot and attach it below"
                         >
                             <LemonFileInput
                                 accept="image/*"

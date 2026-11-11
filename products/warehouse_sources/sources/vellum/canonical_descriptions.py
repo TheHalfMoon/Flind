@@ -65,7 +65,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Per-execution history for each workflow deployment: inputs, outputs, timing, and errors for every run. One row per execution span, keyed by the parent workflow deployment and the span id.",
         "docs_url": "https://docs.vellum.ai/api-reference/api-reference/workflow-deployments/list-workflow-deployment-event-executions",
         "columns": {
-            "workflow_deployment_id": "ID of the workflow deployment this execution belongs to (injected by PostHog during the fan-out).",
+            "workflow_deployment_id": "ID of the workflow deployment this execution belongs to (injected by Flind during the fan-out).",
             "span_id": "Vellum-generated ID that uniquely identifies this execution span.",
             "start": "Timestamp representing when this execution started.",
             "end": "Timestamp representing when this execution finished. Null while still running.",
@@ -82,7 +82,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Release history of each workflow deployment in the environment the API key is scoped to. One row per release, keyed by the parent workflow deployment and the release id.",
         "docs_url": "https://docs.vellum.ai/developers/client-sdk/workflows/deployments/list-releases",
         "columns": {
-            "workflow_deployment_id": "ID of the workflow deployment this release belongs to (injected by PostHog during the fan-out).",
+            "workflow_deployment_id": "ID of the workflow deployment this release belongs to (injected by Flind during the fan-out).",
             "id": "Vellum-generated ID that uniquely identifies this release.",
             "created": "Timestamp representing when this release was created.",
             "environment": "The environment this release was made to: its `id`, `name`, and `label`.",
@@ -98,7 +98,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Release tags of each workflow deployment, and the release each tag points to. One row per tag, keyed by the parent workflow deployment and the tag name.",
         "docs_url": "https://docs.vellum.ai/developers/client-sdk/workflows/deployments/list-release-tags",
         "columns": {
-            "workflow_deployment_id": "ID of the workflow deployment this release tag belongs to (injected by PostHog during the fan-out).",
+            "workflow_deployment_id": "ID of the workflow deployment this release tag belongs to (injected by Flind during the fan-out).",
             "name": "The name of the release tag, for example LATEST or PRODUCTION. Unique within its deployment.",
             "source": "How the release tag was originally created (SYSTEM or USER).",
             "release": "The release this tag points to: its `id` and `timestamp`.",
@@ -109,7 +109,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Release tags of each prompt deployment, and the release each tag points to. One row per tag, keyed by the parent prompt deployment and the tag name.",
         "docs_url": "https://docs.vellum.ai/developers/client-sdk/prompts/deployments/list-release-tags",
         "columns": {
-            "prompt_deployment_id": "ID of the prompt deployment this release tag belongs to (injected by PostHog during the fan-out).",
+            "prompt_deployment_id": "ID of the prompt deployment this release tag belongs to (injected by Flind during the fan-out).",
             "name": "The name of the release tag, for example LATEST or PRODUCTION. Unique within its deployment.",
             "source": "How the release tag was originally created (SYSTEM or USER).",
             "release": "The release this tag points to: its `id` and `timestamp`.",

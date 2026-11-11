@@ -52,14 +52,14 @@ const BUSINESS_KNOWLEDGE_REPO_SEARCH_TOOL = 'business-knowledge-repositories-sea
 const INBOX_FIRST_TOOLS = ['inbox-reports-list', 'inbox-reports-retrieve']
 const INBOX_CLAIM_TOOL = 'inbox-reports-claim'
 
-// Human comment, not AI slop. Version 2.0.0 of the PostHog app for ChatGPT and Codex started
+// Human comment, not AI slop. Version 2.0.0 of the Flind app for ChatGPT and Codex started
 // requesting `llm_skill:read`, but existing connections never got re-prompted for it, so their
 // agents hit a warning they can't act on. Telling them to "reconnect with that scope" doesn't
 // work there, since the app picks the scopes, so this nudges them to the thing that does:
 // disconnect the app and connect it again. Can be removed after 2027-01-01.
 function projectSkillsScopeReason(oauthClientId: string | undefined): string {
     if (isChatGptAppConnection(oauthClientId)) {
-        return 'This connection is missing the llm_skill:read scope. A new connection to the PostHog app includes it: disconnect the PostHog app in ChatGPT or Codex and connect it again to read project skills.'
+        return 'This connection is missing the llm_skill:read scope. A new connection to the Flind app includes it: disconnect the Flind app in ChatGPT or Codex and connect it again to read project skills.'
     }
     return 'This connection is missing the llm_skill:read scope. Reconnect with that scope to read project skills.'
 }
@@ -121,7 +121,7 @@ export class InstructionsBuilder {
 
         return {
             name: 'exec',
-            title: 'Execute PostHog command',
+            title: 'Execute Flind command',
             description: this.buildExecToolDescription(state),
             inputSchema: { type: 'object', properties: ExecSchema, required: ['command'] },
             annotations: { ...EXEC_TOOL_ANNOTATIONS },
@@ -234,7 +234,7 @@ export class InstructionsBuilder {
 
     private getExecLearnCapabilities(state: ExecToolState): { guidesEnabled: boolean; skillsEnabled: boolean } {
         const clientContext = getEffectiveMCPClientContext(state.requestContext, state.sessionContext)
-        // The plugin and PostHog Code sandboxes bundle their own skill context, so
+        // The plugin and Flind Code sandboxes bundle their own skill context, so
         // learn stays off for them regardless of the feature flag.
         if (clientContext.mcpConsumer === 'plugin' || isPostHogCodeConsumer(clientContext.mcpConsumer)) {
             return { guidesEnabled: false, skillsEnabled: false }

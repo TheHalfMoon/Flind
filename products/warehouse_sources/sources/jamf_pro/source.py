@@ -69,7 +69,7 @@ class JamfProSource(ResumableSource[JamfProSourceConfig, JamfProResumeConfig]):
             label="Jamf Pro",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["jamf", "mdm", "apple", "device management"],
-            caption="""Enter your Jamf Pro instance URL and credentials to pull your device inventory into the PostHog Data warehouse.
+            caption="""Enter your Jamf Pro instance URL and credentials to pull your device inventory into the Flind Data warehouse.
 
 The recommended way to connect is an API client: in Jamf Pro go to **Settings > System > API roles and clients**, create an API role with **read** privileges for the objects you want to sync (Computers, Mobile Devices, Buildings, Departments, Categories, Sites, Smart Computer Groups, Static Computer Groups, Smart Mobile Device Groups, Static Mobile Device Groups, Scripts, Packages, Users, Patch Management Software Titles, Patch Policies, Computer Extension Attributes, Mobile Device Extension Attributes, Volume Purchasing Locations, Device Enrollment Program Instances), plus **View MDM command information in Jamf Pro API** for MDM commands, then create an API client with that role and enable it.
 

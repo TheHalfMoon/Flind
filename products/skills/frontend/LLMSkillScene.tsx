@@ -282,7 +282,7 @@ export function LLMSkillScene(): JSX.Element {
                                                         data-attr="llma-skill-publish-community-button"
                                                         fullWidth
                                                     >
-                                                        Publish to PostHog community…
+                                                        Publish to Flind community…
                                                     </LemonButton>
                                                 </AccessControlAction>
                                             )}

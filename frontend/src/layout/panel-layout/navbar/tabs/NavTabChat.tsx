@@ -336,7 +336,7 @@ export function NavTabChat(): JSX.Element {
                             to={urls.ai()}
                             data-attr="nav-chat-new"
                             buttonProps={{ iconOnly: true, variant: 'outline', className: 'text-ai' }}
-                            // Only the new PostHog AI view puts the task composer behind this link; every
+                            // Only the new Flind AI view puts the task composer behind this link; every
                             // other cohort lands on the legacy chat, which can only start a conversation.
                             tooltip={effectivePhaiView === 'new' ? 'New chat or task' : 'New chat'}
                         >

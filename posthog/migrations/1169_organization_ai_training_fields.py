@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
             field=models.BooleanField(
                 blank=True,
                 default=True,
-                help_text="When True, this organization allows its data to be used to train PostHog AI models.",
+                help_text="When True, this organization allows its data to be used to train Flind AI models.",
                 null=True,
             ),
         ),

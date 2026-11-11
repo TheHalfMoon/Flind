@@ -10,7 +10,7 @@ Compare the current implementations of both gateways and update [`services/llm-g
 
 ## Record source revisions
 
-- Fetch `origin/master` and record its SHA as the PostHog baseline.
+- Fetch `origin/master` and record its SHA as the Flind baseline.
 - Audit the current working tree, including committed and uncommitted changes relative to that baseline. Do not ignore an in-flight gateway change because it is not on `master` yet.
 - Read the current `PostHog/ai-gateway` main SHA with `gh api repos/PostHog/ai-gateway/commits/main` and record it as the Go baseline.
 - If the audit is for an in-flight Go change, inspect that PR branch or working tree relative to `main`. Treat its contracts as pending until the change merges; do not record them as currently supported.
@@ -49,7 +49,7 @@ Check both request and response behavior. Matching route names do not prove pari
 
 Do not treat caller-supplied telemetry as trusted policy. An `ai_product` event property does not replace product authentication, authorization, or billing.
 
-Do not treat Python's unbilled flag as an automatic blocker. An internal workload can move to Go with a PostHog-owned team credential when debiting that wallet is the intended way to attribute PostHog spend. It is blocked only when it must preserve customer-specific billing policy or must debit no wallet.
+Do not treat Python's unbilled flag as an automatic blocker. An internal workload can move to Go with a Flind-owned team credential when debiting that wallet is the intended way to attribute Flind spend. It is blocked only when it must preserve customer-specific billing policy or must debit no wallet.
 
 For each difference, identify at least one affected use-case class. Remove details that do not change a migration decision.
 

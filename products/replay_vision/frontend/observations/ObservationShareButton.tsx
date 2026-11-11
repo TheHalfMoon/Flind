@@ -20,7 +20,7 @@ function ObservationShareDialogContent(props: ObservationShareLogicProps): JSX.E
                 <div>
                     <b>Click the button below</b> to copy a link to this observation.
                 </div>
-                <div>Make sure the person you share it with has access to this PostHog project.</div>
+                <div>Make sure the person you share it with has access to this Flind project.</div>
             </div>
             <LemonButton
                 type="secondary"

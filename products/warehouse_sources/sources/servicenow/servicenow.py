@@ -121,7 +121,7 @@ def normalize_instance_url(instance: str) -> str:
 def _resolve_base_url(instance_url: str, team_id: int) -> str:
     """Normalize the instance URL and reject internal/private hosts (SSRF guard).
 
-    ``_is_host_safe`` is a no-op outside of PostHog Cloud, so self-hosted
+    ``_is_host_safe`` is a no-op outside of Flind Cloud, so self-hosted
     instances can still reach any host.
     """
     base_url = normalize_instance_url(instance_url)

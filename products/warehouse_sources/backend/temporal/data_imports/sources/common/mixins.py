@@ -40,7 +40,7 @@ from products.warehouse_sources.backend.temporal.data_imports.sources.common.int
 logger = structlog.get_logger(__name__)
 
 _INTERNAL_IP_ERROR = (
-    "This host points to an internal or private IP address, which PostHog can't reach. "
+    "This host points to an internal or private IP address, which Flind can't reach. "
     "Use a host that's reachable from the public internet."
 )
 _DNS_FAILURE_ERROR = "Host could not be resolved"
@@ -69,12 +69,12 @@ SOURCE_HOST_NOT_ALLOWED_ERROR = "Source host not allowed"
 TEMPORARY_HOST_RESOLUTION_PREFIX = "Temporary failure resolving the host"
 # Stored as the job's error once every retry of a connect was spent on the pin's own lookup failing.
 HOST_RESOLUTION_EXHAUSTED_MESSAGE = (
-    "PostHog could not resolve your database host: the DNS lookup timed out or the resolver asked "
+    "Flind could not resolve your database host: the DNS lookup timed out or the resolver asked "
     "to try again on every attempt. Check that the host name is correct and that its DNS records "
     "are answering. This sync is still enabled and will run again on its next schedule."
 )
 DATABASE_HOST_NOT_ALLOWED_GUIDANCE = (
-    "PostHog rejected this source's database host because it either couldn't be resolved, or "
+    "Flind rejected this source's database host because it either couldn't be resolved, or "
     "resolves to a private/internal address. Check the host is spelled correctly and reachable "
     "from the public internet, then re-enable the sync."
 )
@@ -93,12 +93,12 @@ class TemporaryHostResolutionError(NonReportableError):
 
 
 class HostNotAllowedError(NonReportableError):
-    """A direct database or SSH tunnel host resolved to an address PostHog won't connect to.
+    """A direct database or SSH tunnel host resolved to an address Flind won't connect to.
 
     Raised at connect time by `_check_direct_host`, `_pinned_ssh_host`, `pinned_connect_host` and
     `pinned_host_kwargs`. A host can pass the validation-layer check and still land here, because
     each check resolves the host again and a short-TTL record can answer public for one lookup and
-    private for the next. It is always the customer's own DNS or network config, never a PostHog
+    private for the next. It is always the customer's own DNS or network config, never a Flind
     defect, and retrying re-hits the same rejection, so it must fail the work without minting an
     error tracking issue.
 
@@ -112,7 +112,7 @@ class HostNotAllowedError(NonReportableError):
 
 
 def is_team_allowlisted_for_internal_hosts(team_id: int) -> bool:
-    """Whether this team may point warehouse sources at PostHog-internal hosts.
+    """Whether this team may point warehouse sources at Flind-internal hosts.
 
     Only our own internal analytics projects: team 2 in US, team 1 in EU.
     Gates both the SSRF host check and the egress-proxy bypass for direct
@@ -390,7 +390,7 @@ def bracket_host(host: str) -> str:
 
 
 # A DNS-1123 label. Stricter than `_HOST_LABEL`, which admits an underscore because some
-# providers publish records with one. A managed warehouse host is a name PostHog issues, so
+# providers publish records with one. A managed warehouse host is a name Flind issues, so
 # nothing outside the strict set can be one.
 _DNS_LABEL = re.compile(r"^(?!-)[a-z0-9-]{1,63}(?<!-)\Z")
 
@@ -460,7 +460,7 @@ def _managed_warehouse_exemption(
 ) -> str | None:
     """Whether `host` is this team's own managed warehouse at `addresses`, or None when it is not.
 
-    The exemption the guard grants here is narrower than "this is a PostHog hostname". Every part
+    The exemption the guard grants here is narrower than "this is a Flind hostname". Every part
     of the destination has to agree with what the control plane says the team owns:
 
     - the host equals the control plane's host for the team's organization, so a guessed tenant
@@ -814,7 +814,7 @@ _SSH_TUNNEL_CONNECT_BACKOFF_SECONDS: tuple[float, ...] = (2.0, 4.0, 8.0)
 
 # paramiko raises a bare, message-less EOFError when the SSH gateway accepts the TCP connection
 # but closes it during the handshake itself — a non-SSH service on the port, a bastion refusing
-# PostHog's IPs, or a proxy resetting the stream. sshtunnel doesn't wrap it (it only translates
+# Flind's IPs, or a proxy resetting the stream. sshtunnel doesn't wrap it (it only translates
 # *auth* failures into BaseSSHTunnelForwarderError), so it escapes with an empty `str()`, matching
 # no non-retryable rule and retrying forever. Translate it into this stable, classifiable message
 # instead. Postgres registers it in `PostgresSource.get_non_retryable_errors`; other sources using

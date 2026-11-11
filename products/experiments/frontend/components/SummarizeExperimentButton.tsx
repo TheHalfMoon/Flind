@@ -81,7 +81,7 @@ function useExperimentSummaryMaxTool(): ReturnType<typeof useMaxTool> {
 }
 
 /**
- * Icon-only spark affordance that opens PostHog AI to summarize experiment results.
+ * Icon-only spark affordance that opens Flind AI to summarize experiment results.
  * Styled after the MaxTool corner button.
  */
 export function SummarizeExperimentButton(): JSX.Element | null {
@@ -93,10 +93,10 @@ export function SummarizeExperimentButton(): JSX.Element | null {
     }
 
     return (
-        <Tooltip title="Summarize results with PostHog AI" placement="top-end" delayMs={0}>
+        <Tooltip title="Summarize results with Flind AI" placement="top-end" delayMs={0}>
             <button
                 type="button"
-                aria-label="Summarize results with PostHog AI"
+                aria-label="Summarize results with Flind AI"
                 data-attr="experiment-summarize-results"
                 className="size-6 shrink-0 cursor-pointer rounded-md border border-dashed border-ai bg-ai/08 backdrop-blur-[2px] transition duration-50 hover:scale-110 dark:bg-ai/20"
                 onClick={() => {

@@ -82,7 +82,7 @@ interface TodaySessionHoverCardProps {
 
 /**
  * A session row's hover card: what the row's marks mean in words, where the work sits, what the agent said last,
- * and the row's actions, like PostHog Desktop.
+ * and the row's actions, like Flind Desktop.
  */
 export function TodaySessionHoverCard({ preview, onAction }: TodaySessionHoverCardProps): JSX.Element {
     const { dot, pullRequest, author } = preview

@@ -41,7 +41,7 @@ class SignalAgentInstructions:
             return ""
         return (
             f"# Self-driving {role.value} instructions\n\n"
-            f"You are part of PostHog Self-driving. Your role is {role.value}. "
+            f"You are part of Flind Self-driving. Your role is {role.value}. "
             "Apply these role-specific instructions together with the project instructions.\n\n"
             f"{instructions}"
         )

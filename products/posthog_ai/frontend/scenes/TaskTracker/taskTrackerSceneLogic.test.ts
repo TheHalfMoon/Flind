@@ -111,7 +111,7 @@ describe('taskTrackerSceneLogic', () => {
             },
         })
         initKeaTests()
-        // Without PostHog AI 2.0 the scene sends `/tasks` URLs to classic PostHog AI.
+        // Without Flind AI 2.0 the scene sends `/tasks` URLs to classic Flind AI.
         featureFlagLogic.actions.setFeatureFlags([FEATURE_FLAGS.TASKS, FEATURE_FLAGS.PHAI_SANDBOX_MODE], {
             [FEATURE_FLAGS.TASKS]: true,
             [FEATURE_FLAGS.PHAI_SANDBOX_MODE]: true,
@@ -208,7 +208,7 @@ describe('taskTrackerSceneLogic', () => {
         ['/tasks/new', '/ai', {}],
         ['/tasks/new', '/ai', { [FEATURE_FLAGS.TASKS]: true }],
         ['/tasks/a1b2c3d4-0000-4000-8000-000000000001', '/tasks/a1b2c3d4-0000-4000-8000-000000000001', {}],
-    ])('without PostHog AI 2.0, %s lands on %s (flags %j)', async (start, expected, flags) => {
+    ])('without Flind AI 2.0, %s lands on %s (flags %j)', async (start, expected, flags) => {
         featureFlagLogic.actions.setFeatureFlags(Object.keys(flags), flags)
         logic.mount()
         router.actions.push(start)
@@ -343,7 +343,7 @@ describe('taskTrackerSceneLogic', () => {
         }
     )
 
-    it('loads PostHog Desktop access and exposes it to the task UI', async () => {
+    it('loads Flind Desktop access and exposes it to the task UI', async () => {
         logic.mount()
 
         await expectLogic(logic).toFinishAllListeners()
@@ -415,12 +415,12 @@ describe('taskTrackerSceneLogic', () => {
     )
 
     // A page can still show 2.0 after the server stopped allowing it. The refused message must reach classic
-    // PostHog AI without passing through the URL, and the switch must also hold in an OAuth session, which
+    // Flind AI without passing through the URL, and the switch must also hold in an OAuth session, which
     // has no server-rendered app context.
     it.each([
         ['with the server-rendered decision', true],
         ['without an app context', false],
-    ])('hands a send the server refuses to classic PostHog AI %s', async (_, hasAppContext) => {
+    ])('hands a send the server refuses to classic Flind AI %s', async (_, hasAppContext) => {
         const originalAppContext = window.POSTHOG_APP_CONTEXT
         window.POSTHOG_APP_CONTEXT = hasAppContext
             ? ({ ...originalAppContext, posthog_ai_access: true } as AppContext)
@@ -451,7 +451,7 @@ describe('taskTrackerSceneLogic', () => {
         }
     })
 
-    // PostHog AI can run without a repo: a description-only submit must still create and run the task with a
+    // Flind AI can run without a repo: a description-only submit must still create and run the task with a
     // null repository, not bail. Guards against re-adding a "Repository is required" gate on the send path.
     it('creates and runs a task with no repository selected', async () => {
         logic.mount()

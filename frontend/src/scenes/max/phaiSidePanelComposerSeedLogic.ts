@@ -66,7 +66,7 @@ export type phaiSidePanelComposerSeedLogicType = MakeLogicType<
 >
 
 /**
- * Bridges the legacy `initialMaxPrompt` side-panel option into the new PostHog AI composer. `openMax` (and any
+ * Bridges the legacy `initialMaxPrompt` side-panel option into the new Flind AI composer. `openMax` (and any
  * other producer) still rides the prompt on `openSidePanel(SidePanelTab.Max, prompt)` — the option only the
  * legacy `maxLogic` used to read. Mounted by the new view's panel (`PhaiSidePanelChat`), this reads the same
  * option and seeds the surface's `composerSeedLogic`, so a single consumer fixes every producer without

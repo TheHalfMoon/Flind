@@ -1071,7 +1071,7 @@ class TestActivityOverview(_MCPAnalyticsTeamScopedTestMixin, ClickhouseTestMixin
             ("codex_user_agent_surface", {"$mcp_client_user_agent": "openai-mcp/1.0 (Codex)"}, "OpenAI Codex"),
             # The vendor header resolves from both wire keys it is captured under:
             # $mcp_vendor_client (SDKs) and the unprefixed mcp_vendor_client
-            # (PostHog's own server).
+            # (Flind's own server).
             ("sdk_vendor_header", {"$mcp_vendor_client": "ClaudeCode"}, "Claude Code"),
             ("legacy_vendor_header", {"mcp_vendor_client": "ClaudeCode"}, "Claude Code"),
             # An unrecognized client is still named — its own self-report beats "Other".

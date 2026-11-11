@@ -6,7 +6,7 @@ A single rating question counts as qualitative evidence; open text is optional d
 
 Shared by [[diagnosing-experiment-health]], [[analyzing-experiment-session-replays]], [[scanning-experiments-with-replay-vision]], and [[managing-experiment-lifecycle]]; covers only what is experiment-specific.
 General survey mechanics belong to the surveys product ([[debugging-surveys]] covers a survey that isn't showing).
-Facts are tagged by verification strength, as in `SKILL.md`: `[HIGH]` verified in PostHog code, `[MEDIUM]` partially verified, `[LOW]` unverified hypothesis.
+Facts are tagged by verification strength, as in `SKILL.md`: `[HIGH]` verified in Flind code, `[MEDIUM]` partially verified, `[LOW]` unverified hypothesis.
 
 ## The best moment: alongside launch
 

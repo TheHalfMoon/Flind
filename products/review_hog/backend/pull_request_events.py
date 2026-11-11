@@ -1,4 +1,4 @@
-"""GitHub `pull_request` deliveries of the PostHog GitHub App, routed by action.
+"""GitHub `pull_request` deliveries of the Flind GitHub App, routed by action.
 
 - `opened` / `synchronize` / `ready_for_review`: an automatic review (`automatic_reviews.py`).
 - `review_requested` for the `posthog-review` team: a requested review (`review_team_requests.py`).

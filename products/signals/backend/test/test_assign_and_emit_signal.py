@@ -249,7 +249,7 @@ async def test_new_match_creates_and_immediately_promotes_when_above_threshold(a
 
 
 # ---------------------------------------------------------------------------
-# Billing exemption: PostHog-system signal sources
+# Billing exemption: Flind-system signal sources
 # ---------------------------------------------------------------------------
 
 
@@ -263,7 +263,7 @@ async def test_new_match_creates_and_immediately_promotes_when_above_threshold(a
     ],
 )
 async def test_new_report_billing_exemption_follows_source_product(ateam, source_product, expected_reason):
-    """A report formed from a PostHog-system signal (health checks) is stamped never-billable at
+    """A report formed from a Flind-system signal (health checks) is stamped never-billable at
     creation; reports from customer sources stay billable."""
     input_ = _build_input(ateam.id, _new_match(), source_product=source_product)
 

@@ -50,7 +50,7 @@ class DataForSEOSource(ResumableSource[DataForSEOSourceConfig, DataForSEOResumeC
             label="DataForSEO",
             releaseStatus=ReleaseStatus.GA,
             keywords=["seo", "serp", "keyword research", "backlinks", "rank tracking"],
-            caption="""Enter your DataForSEO API credentials and the domains you want to track to pull SEO metrics like Google rankings, keywords, competitors, and backlinks into the PostHog Data warehouse.
+            caption="""Enter your DataForSEO API credentials and the domains you want to track to pull SEO metrics like Google rankings, keywords, competitors, and backlinks into the Flind Data warehouse.
 
 Find your API login and password on the [DataForSEO API access page](https://app.dataforseo.com/api-access).
 

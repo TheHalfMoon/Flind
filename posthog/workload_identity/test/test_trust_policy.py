@@ -688,7 +688,7 @@ class TestWorkloadTrustPolicyRequestAPI(APIBaseTest):
         def resolve(team_id: int, name: str) -> ResolvedWorkloadSubject:
             calls.append((team_id, name))
             if outcome == "not_found":
-                raise WorkloadSubjectNotFound("No repository acme/web that PostHog can see.")
+                raise WorkloadSubjectNotFound("No repository acme/web that Flind can see.")
             if outcome == "unavailable":
                 raise WorkloadSubjectLookupUnavailable("Fake CI didn't answer.")
             return ResolvedWorkloadSubject(subject="1234", subject_name="Acme/Web", found_via="Fake CI")

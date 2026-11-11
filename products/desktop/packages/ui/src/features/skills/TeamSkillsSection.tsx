@@ -9,7 +9,7 @@ interface TeamSkillsSectionProps {
   onSelect: (skill: TeamSkillInfo) => void;
 }
 
-/** Skill cards shared via PostHog cloud, read-only here. */
+/** Skill cards shared via Flind cloud, read-only here. */
 export function TeamSkillsSection({
   skills,
   selectedName,

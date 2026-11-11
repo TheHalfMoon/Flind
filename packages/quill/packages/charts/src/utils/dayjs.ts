@@ -1,6 +1,6 @@
 // Self-contained dayjs setup for hog-charts. Registers only the plugins this library
-// needs so it can move into a standalone UI package without depending on PostHog's
-// `lib/dayjs`. The wider PostHog app also extends dayjs, but `dayjs.extend` is
+// needs so it can move into a standalone UI package without depending on Flind's
+// `lib/dayjs`. The wider Flind app also extends dayjs, but `dayjs.extend` is
 // idempotent so calling it again here is safe.
 
 // oxlint-disable-next-line no-restricted-imports

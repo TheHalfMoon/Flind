@@ -40,7 +40,7 @@ function fakeGithub(forkPrResult, mergedPr) {
     }
 }
 
-const context = { repo: { owner: 'PostHog', repo: 'posthog' } }
+const context = { repo: { owner: 'Flind', repo: 'posthog' } }
 const core = { info: () => {}, warning: () => {} }
 
 test.describe('thank-fork-contributor', () => {

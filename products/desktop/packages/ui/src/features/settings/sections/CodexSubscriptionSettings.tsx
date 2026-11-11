@@ -191,7 +191,7 @@ export function CodexSubscriptionSettings(): ReactElement | null {
           <span className="flex flex-col gap-1">
             <span>
               Local and worktree Codex sessions run on your ChatGPT plan instead
-              of PostHog credits. Cloud tasks always use PostHog credits
+              of Flind credits. Cloud tasks always use Flind credits
             </span>
             <ConnectedAccount
               status={status}

@@ -1470,7 +1470,7 @@ class TestEESAMLAuthenticationAPI(APILicensedTest):
         ) as f:
             saml_response = f.read()
 
-        # No SP-initiated request preceded this, so there is no PostHog-issued RelayState and no
+        # No SP-initiated request preceded this, so there is no Flind-issued RelayState and no
         # saml_state in the session — exactly the IdP-initiated case.
         post_data = {"SAMLResponse": saml_response}
         if relay_state is not None:
@@ -1599,7 +1599,7 @@ class TestEESAMLAuthenticationAPI(APILicensedTest):
         # User is created
         self.assertEqual(User.objects.count(), user_count + 1)
         user = cast(User, User.objects.last())
-        self.assertEqual(user.first_name, "PostHog")
+        self.assertEqual(user.first_name, "Flind")
         self.assertEqual(user.email, "engineering@posthog.com")
         self.assertEqual(user.organization, self.organization)
         self.assertEqual(user.team, self.team)

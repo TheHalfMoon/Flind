@@ -13,10 +13,10 @@ Let an internal task or an external coding agent claim an actionable report, sho
 
 Assignments and report artefacts use four actor kinds:
 
-- `user`: a person acting directly through PostHog or the API.
-- `task`: an internal PostHog task. This is the only actor kind that references the tasks product.
+- `user`: a person acting directly through Flind or the API.
+- `task`: an internal Flind task. This is the only actor kind that references the tasks product.
 - `agent`: an external MCP coding agent acting on behalf of an authenticated user.
-- `system`: an automated PostHog process.
+- `system`: an automated Flind process.
 
 For MCP requests without an internal task header, the backend derives the agent name from the MCP client identity forwarded by the MCP server. The authenticated user remains the principal. The client name is attribution metadata, not an authorization boundary.
 
@@ -46,13 +46,13 @@ The assignment stores the supplied URL and its normalized `(repository, pr_numbe
 
 When the repository is connected, attaching a PR immediately fetches its state. Open and draft PRs put the report in review. A merged PR resolves the report. A closed, unmerged PR suppresses it, matching the existing inbox behavior.
 
-PRs from unconnected repositories are allowed. Their state is `unknown`, they are treated as in review, and they require a manual state transition because PostHog cannot fetch their state or receive their webhooks.
+PRs from unconnected repositories are allowed. Their state is `unknown`, they are treated as in review, and they require a manual state transition because Flind cannot fetch their state or receive their webhooks.
 
 GitHub webhook matching is scoped by the teams associated with the installation, then matched by normalized repository and PR number. A matching merge or close transitions every unresolved report attached to that PR.
 
 Internal implementation tasks claim their report when they start. When a PR-bearing task run records a PR, the signals receiver copies it into the assignment without requiring the task to call the public claim API. Existing task-backed PRs remain a compatibility fallback for reads, PR actions, dismissal, and webhook handling when an assignment has no PR; a non-empty assignment PR always wins. See [PR lifecycle](../../docs/internal/signals-pr-lifecycle.md).
 
-Resolving a report never requires a PR. Manual resolution keeps the existing behavior: `fixed_outside_posthog` describes a fix without a PR, and `pr_merged` describes a merged PR that did not resolve the report automatically. A direct resolve or suppression closes an attached open PR only when its assignment actor is `task` or `system`, or the PR comes from the task-backed fallback, and PostHog can access it. Explicit PRs owned by users or external agents are not modified. A PR stays open while another unfinished report uses it through either source.
+Resolving a report never requires a PR. Manual resolution keeps the existing behavior: `fixed_outside_posthog` describes a fix without a PR, and `pr_merged` describes a merged PR that did not resolve the report automatically. A direct resolve or suppression closes an attached open PR only when its assignment actor is `task` or `system`, or the PR comes from the task-backed fallback, and Flind can access it. Explicit PRs owned by users or external agents are not modified. A PR stays open while another unfinished report uses it through either source.
 
 ## Derived work state
 

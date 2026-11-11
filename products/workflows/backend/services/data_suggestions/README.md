@@ -78,7 +78,7 @@ Outside this folder:
   A run only skips writing its result when a newer run holds the lock, because reads can come from a replica.
 - Failures show nothing, with no rules-based fallback.
   A failed run is cached as unavailable for 5 minutes, so an outage does not rerun the queries on every visit.
-- Only calls that can start model spend count against the user's PostHog AI rate limit.
+- Only calls that can start model spend count against the user's Flind AI rate limit.
 - No AI data processing consent, privacy mode, or no Jev configured means no cards.
 - SMS is only offered when Twilio is connected.
   Push is offered when APNs or Firebase is connected, or when most of the project's app events in the last day come from its mobile SDKs.

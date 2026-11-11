@@ -454,7 +454,7 @@ def validate_actors_query_for_cohort(query_dict: dict[str, Any]) -> None:
 
     invalid_day_message = (
         "Provide a valid day for this time series trends insight. "
-        "To choose a day in PostHog, open the insight and click a data point."
+        "To choose a day in Flind, open the insight and click a data point."
     )
     if not isinstance(day, str):
         raise ValidationError(invalid_day_message)
@@ -857,7 +857,7 @@ def remove_person_from_static_cohort(person_uuid: uuid.UUID, cohort_id: int, *, 
 
     Uses DELETE FROM with mutations_sync=0 and lightweight_deletes_sync=0 to avoid replica
     synchronization issues when some replicas are inactive. In tests, uses synchronous mutations
-    for deterministic behavior. This is an exception to PostHog's usual pattern due to the table
+    for deterministic behavior. This is an exception to Flind's usual pattern due to the table
     lacking an is_deleted and version columns.
     """
     tag_queries(

@@ -4,11 +4,11 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface LegacyDesktopAccessResponseApi {
-    /** Whether the current project can use PostHog Desktop. */
+    /** Whether the current project can use Flind Desktop. */
     has_access: boolean
     /** Whether the independent Loops feature is enabled. */
     has_loops_access: boolean
@@ -47,7 +47,7 @@ export interface TaskRunErrorResponseApi {
     code?: string
     /** After confirmed warm startup nondelivery, echo this token in X-PostHog-Warm-Retry to retry the same run and message within 60 seconds. */
     retry_token?: string
-    /** Why PostHog Desktop access was denied, when applicable.
+    /** Why Flind Desktop access was denied, when applicable.
      *
      * * `startup_plan` - startup_plan
      * * `prepaid_credits` - prepaid_credits */
@@ -91,7 +91,7 @@ export interface SandboxComputePricingApi {
 }
 
 export interface DesktopAccessResponseApi {
-    /** Whether the selected project can use PostHog Desktop. */
+    /** Whether the selected project can use Flind Desktop. */
     allowed: boolean
     /** Why Desktop access is blocked, or null when access is allowed.
      *
@@ -101,7 +101,7 @@ export interface DesktopAccessResponseApi {
 }
 
 export interface DesktopBetaTermsAcceptanceDTOApi {
-    /** Whether the organization has accepted the PostHog Desktop beta terms. */
+    /** Whether the organization has accepted the Flind Desktop beta terms. */
     readonly is_desktop_beta_terms_accepted: boolean
 }
 
@@ -1116,11 +1116,11 @@ export const ObjectKindEnumApi = {
 } as const
 
 export interface TaskRunPostHogReferenceMetadataApi {
-    /** Reference metadata type. posthog_object identifies a live PostHog object.
+    /** Reference metadata type. posthog_object identifies a live Flind object.
      *
      * * `posthog_object` - posthog_object */
     reference_type: ReferenceTypeEnumApi
-    /** PostHog object kind used to resolve the reference.
+    /** Flind object kind used to resolve the reference.
      *
      * * `insight` - insight
      * * `hogql` - hogql
@@ -1140,7 +1140,7 @@ export interface TaskRunPostHogReferenceMetadataApi {
      * * `person` - person */
     object_kind: ObjectKindEnumApi
     /**
-     * Exact PostHog object identifier, flag key, event name, or SQL query.
+     * Exact Flind object identifier, flag key, event name, or SQL query.
      * @maxLength 16384
      */
     object_id: string
@@ -1183,7 +1183,7 @@ export interface TaskRunArtifactResponseApi {
     size?: number
     /** Optional MIME type */
     content_type?: string
-    /** Structured metadata for a skill bundle or a PostHog object reference. */
+    /** Structured metadata for a skill bundle or a Flind object reference. */
     metadata?: TaskRunArtifactMetadataApi
     /** S3 object key for file artifacts. Reference artifacts do not have one. */
     storage_path?: string
@@ -1294,9 +1294,9 @@ export interface SlackThreadReferenceDTOApi {
 }
 
 /**
- * * `posthog_desktop` - PostHog Desktop
- * * `posthog_mobile` - PostHog Mobile
- * * `posthog_web` - PostHog Web
+ * * `posthog_desktop` - Flind Desktop
+ * * `posthog_mobile` - Flind Mobile
+ * * `posthog_web` - Flind Web
  */
 export type TaskClientProvenanceEnumApi = (typeof TaskClientProvenanceEnumApi)[keyof typeof TaskClientProvenanceEnumApi]
 
@@ -1307,9 +1307,9 @@ export const TaskClientProvenanceEnumApi = {
 } as const
 
 /**
- * * `posthog_desktop` - PostHog Desktop
- * * `posthog_mobile` - PostHog Mobile
- * * `posthog_web` - PostHog Web
+ * * `posthog_desktop` - Flind Desktop
+ * * `posthog_mobile` - Flind Mobile
+ * * `posthog_web` - Flind Web
  * * `slack` - Slack
  */
 export type TaskClientEnumApi = (typeof TaskClientEnumApi)[keyof typeof TaskClientEnumApi]
@@ -1381,17 +1381,17 @@ export interface TaskDetailDTOApi {
      * @nullable
      */
     origin_key?: string | null
-    /** First-party PostHog client that created this task.
+    /** First-party Flind client that created this task.
      *
-     * * `posthog_desktop` - PostHog Desktop
-     * * `posthog_mobile` - PostHog Mobile
-     * * `posthog_web` - PostHog Web */
+     * * `posthog_desktop` - Flind Desktop
+     * * `posthog_mobile` - Flind Mobile
+     * * `posthog_web` - Flind Web */
     client_provenance?: TaskClientProvenanceEnumApi | null
     /** Client the latest person turn on this task came from. Null when no turn came from a known client.
      *
-     * * `posthog_desktop` - PostHog Desktop
-     * * `posthog_mobile` - PostHog Mobile
-     * * `posthog_web` - PostHog Web
+     * * `posthog_desktop` - Flind Desktop
+     * * `posthog_mobile` - Flind Mobile
+     * * `posthog_web` - Flind Web
      * * `slack` - Slack */
     last_client?: TaskClientEnumApi | null
     /**
@@ -1463,17 +1463,17 @@ export interface TaskBasicApi {
      * @nullable
      */
     origin_key?: string | null
-    /** First-party PostHog client that created this task.
+    /** First-party Flind client that created this task.
      *
-     * * `posthog_desktop` - PostHog Desktop
-     * * `posthog_mobile` - PostHog Mobile
-     * * `posthog_web` - PostHog Web */
+     * * `posthog_desktop` - Flind Desktop
+     * * `posthog_mobile` - Flind Mobile
+     * * `posthog_web` - Flind Web */
     client_provenance?: TaskClientProvenanceEnumApi | null
     /** Client the latest person turn on this task came from. Null when no turn came from a known client.
      *
-     * * `posthog_desktop` - PostHog Desktop
-     * * `posthog_mobile` - PostHog Mobile
-     * * `posthog_web` - PostHog Web
+     * * `posthog_desktop` - Flind Desktop
+     * * `posthog_mobile` - Flind Mobile
+     * * `posthog_web` - Flind Web
      * * `slack` - Slack */
     last_client?: TaskClientEnumApi | null
     /**
@@ -1505,7 +1505,7 @@ export interface PaginatedTaskListItemListApi {
  * * `slack` - Slack
  * * `support_queue` - Support Queue
  * * `session_summaries` - Session Summaries
- * * `posthog_ai` - PostHog AI
+ * * `posthog_ai` - Flind AI
  * * `experiments` - Experiments
  * * `signal_report` - Signal Report
  * * `autoresearch` - Autoresearch
@@ -1698,7 +1698,7 @@ export interface TaskCreateApi {
     title_manually_set?: boolean
     /** Free-form description of the work to be done. Used as the prompt passed to the agent. */
     description?: string
-    /** PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.
+    /** Flind product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.
      *
      * * `onboarding` - Onboarding
      * * `account_audit` - Account audit
@@ -1708,7 +1708,7 @@ export interface TaskCreateApi {
      * * `slack` - Slack
      * * `support_queue` - Support Queue
      * * `session_summaries` - Session Summaries
-     * * `posthog_ai` - PostHog AI
+     * * `posthog_ai` - Flind AI
      * * `experiments` - Experiments
      * * `signal_report` - Signal Report
      * * `autoresearch` - Autoresearch
@@ -1931,17 +1931,17 @@ export interface TaskCreateResponseDTOApi {
      * @nullable
      */
     origin_key?: string | null
-    /** First-party PostHog client that created this task.
+    /** First-party Flind client that created this task.
      *
-     * * `posthog_desktop` - PostHog Desktop
-     * * `posthog_mobile` - PostHog Mobile
-     * * `posthog_web` - PostHog Web */
+     * * `posthog_desktop` - Flind Desktop
+     * * `posthog_mobile` - Flind Mobile
+     * * `posthog_web` - Flind Web */
     client_provenance?: TaskClientProvenanceEnumApi | null
     /** Client the latest person turn on this task came from. Null when no turn came from a known client.
      *
-     * * `posthog_desktop` - PostHog Desktop
-     * * `posthog_mobile` - PostHog Mobile
-     * * `posthog_web` - PostHog Web
+     * * `posthog_desktop` - Flind Desktop
+     * * `posthog_mobile` - Flind Mobile
+     * * `posthog_web` - Flind Web
      * * `slack` - Slack */
     last_client?: TaskClientEnumApi | null
     /**
@@ -1963,7 +1963,7 @@ export interface TaskWriteApi {
     title_manually_set?: boolean
     /** Free-form description of the work to be done. Used as the prompt passed to the agent. */
     description?: string
-    /** PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.
+    /** Flind product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.
      *
      * * `onboarding` - Onboarding
      * * `account_audit` - Account audit
@@ -1973,7 +1973,7 @@ export interface TaskWriteApi {
      * * `slack` - Slack
      * * `support_queue` - Support Queue
      * * `session_summaries` - Session Summaries
-     * * `posthog_ai` - PostHog AI
+     * * `posthog_ai` - Flind AI
      * * `experiments` - Experiments
      * * `signal_report` - Signal Report
      * * `autoresearch` - Autoresearch
@@ -2103,7 +2103,7 @@ export interface PatchedTaskWriteApi {
     title_manually_set?: boolean
     /** Free-form description of the work to be done. Used as the prompt passed to the agent. */
     description?: string
-    /** PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.
+    /** Flind product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.
      *
      * * `onboarding` - Onboarding
      * * `account_audit` - Account audit
@@ -2113,7 +2113,7 @@ export interface PatchedTaskWriteApi {
      * * `slack` - Slack
      * * `support_queue` - Support Queue
      * * `session_summaries` - Session Summaries
-     * * `posthog_ai` - PostHog AI
+     * * `posthog_ai` - Flind AI
      * * `experiments` - Experiments
      * * `signal_report` - Signal Report
      * * `autoresearch` - Autoresearch
@@ -2575,12 +2575,12 @@ export const InitialPermissionModeEnumApi = {
  */
 export interface ClaudeTaskRunCreateSchemaApi {
     /**
-     * Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.
+     * Local url-based MCP servers from the creating client (Flind Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.
      * @nullable
      */
     imported_mcp_servers?: ImportedMcpServerApi[] | null
     /**
-     * Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire.
+     * Names of desktop-only MCP servers the creating client (Flind Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire.
      * @nullable
      */
     relayed_mcp_servers?: RelayedMcpServerApi[] | null
@@ -2594,12 +2594,12 @@ export interface ClaudeTaskRunCreateSchemaApi {
      * @nullable
      */
     benjamin_enabled?: boolean | null
-    /** How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from whoever started the run; Desktop relays it interactively and an API key caller relays it unattended. The token is sent in flight and never stored on PostHog servers. Only PostHog Desktop and API keys can select 'own-subscription'; other callers get a 400. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
+    /** How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from whoever started the run; Desktop relays it interactively and an API key caller relays it unattended. The token is sent in flight and never stored on Flind servers. Only Flind Desktop and API keys can select 'own-subscription'; other callers get a 400. If omitted or null, resumed runs keep their billing choice and new runs use the Flind gateway.
      *
      * * `posthog-gateway` - posthog-gateway
      * * `own-subscription` - own-subscription */
     claude_model_access?: ModelAccessEnumApi | null
-    /** How the Codex runtime pays for model use. 'own-subscription' makes the sandbox fetch a ChatGPT access token from the PostHog API, refreshed from the ChatGPT account the run owner connected in Desktop settings. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
+    /** How the Codex runtime pays for model use. 'own-subscription' makes the sandbox fetch a ChatGPT access token from the Flind API, refreshed from the ChatGPT account the run owner connected in Desktop settings. If omitted or null, resumed runs keep their billing choice and new runs use the Flind gateway.
      *
      * * `posthog-gateway` - posthog-gateway
      * * `own-subscription` - own-subscription */
@@ -2676,7 +2676,7 @@ export interface ClaudeTaskRunCreateSchemaApi {
      * @nullable
      */
     fast_mode?: boolean | null
-    /** Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
+    /** Optional GitHub user token from Flind Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
     github_user_token?: string
     /** Initial permission mode for Claude runtimes.
      *
@@ -2718,12 +2718,12 @@ export const CodexTaskRunCreateSchemaInitialPermissionModeEnumApi = {
  */
 export interface CodexTaskRunCreateSchemaApi {
     /**
-     * Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.
+     * Local url-based MCP servers from the creating client (Flind Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.
      * @nullable
      */
     imported_mcp_servers?: ImportedMcpServerApi[] | null
     /**
-     * Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire.
+     * Names of desktop-only MCP servers the creating client (Flind Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire.
      * @nullable
      */
     relayed_mcp_servers?: RelayedMcpServerApi[] | null
@@ -2737,12 +2737,12 @@ export interface CodexTaskRunCreateSchemaApi {
      * @nullable
      */
     benjamin_enabled?: boolean | null
-    /** How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from whoever started the run; Desktop relays it interactively and an API key caller relays it unattended. The token is sent in flight and never stored on PostHog servers. Only PostHog Desktop and API keys can select 'own-subscription'; other callers get a 400. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
+    /** How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from whoever started the run; Desktop relays it interactively and an API key caller relays it unattended. The token is sent in flight and never stored on Flind servers. Only Flind Desktop and API keys can select 'own-subscription'; other callers get a 400. If omitted or null, resumed runs keep their billing choice and new runs use the Flind gateway.
      *
      * * `posthog-gateway` - posthog-gateway
      * * `own-subscription` - own-subscription */
     claude_model_access?: ModelAccessEnumApi | null
-    /** How the Codex runtime pays for model use. 'own-subscription' makes the sandbox fetch a ChatGPT access token from the PostHog API, refreshed from the ChatGPT account the run owner connected in Desktop settings. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
+    /** How the Codex runtime pays for model use. 'own-subscription' makes the sandbox fetch a ChatGPT access token from the Flind API, refreshed from the ChatGPT account the run owner connected in Desktop settings. If omitted or null, resumed runs keep their billing choice and new runs use the Flind gateway.
      *
      * * `posthog-gateway` - posthog-gateway
      * * `own-subscription` - own-subscription */
@@ -2819,7 +2819,7 @@ export interface CodexTaskRunCreateSchemaApi {
      * @nullable
      */
     fast_mode?: boolean | null
-    /** Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
+    /** Optional GitHub user token from Flind Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
     github_user_token?: string
     /** Initial permission mode for Codex runtimes.
      *
@@ -2870,7 +2870,7 @@ export interface TaskRunResumeRequestSchemaApi {
     run_source?: RunSourceEnumApi
     /** Optional signal report identifier when this run was started from Inbox. */
     signal_report_id?: string
-    /** Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
+    /** Optional GitHub user token from Flind Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
     github_user_token?: string
 }
 
@@ -2938,17 +2938,17 @@ export interface TaskRunResponseApi {
      * @nullable
      */
     origin_key?: string | null
-    /** First-party PostHog client that created this task.
+    /** First-party Flind client that created this task.
      *
-     * * `posthog_desktop` - PostHog Desktop
-     * * `posthog_mobile` - PostHog Mobile
-     * * `posthog_web` - PostHog Web */
+     * * `posthog_desktop` - Flind Desktop
+     * * `posthog_mobile` - Flind Mobile
+     * * `posthog_web` - Flind Web */
     client_provenance?: TaskClientProvenanceEnumApi | null
     /** Client the latest person turn on this task came from. Null when no turn came from a known client.
      *
-     * * `posthog_desktop` - PostHog Desktop
-     * * `posthog_mobile` - PostHog Mobile
-     * * `posthog_web` - PostHog Web
+     * * `posthog_desktop` - Flind Desktop
+     * * `posthog_mobile` - Flind Mobile
+     * * `posthog_web` - Flind Web
      * * `slack` - Slack */
     last_client?: TaskClientEnumApi | null
     /**
@@ -3205,12 +3205,12 @@ export const TaskBootstrapRunSourceEnumApi = {
  */
 export interface TaskRunBootstrapCreateRequestApi {
     /**
-     * Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.
+     * Local url-based MCP servers from the creating client (Flind Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.
      * @nullable
      */
     imported_mcp_servers?: ImportedMcpServerApi[] | null
     /**
-     * Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire.
+     * Names of desktop-only MCP servers the creating client (Flind Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire.
      * @nullable
      */
     relayed_mcp_servers?: RelayedMcpServerApi[] | null
@@ -3224,12 +3224,12 @@ export interface TaskRunBootstrapCreateRequestApi {
      * @nullable
      */
     benjamin_enabled?: boolean | null
-    /** How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from whoever started the run; Desktop relays it interactively and an API key caller relays it unattended. The token is sent in flight and never stored on PostHog servers. Only PostHog Desktop and API keys can select 'own-subscription'; other callers get a 400. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
+    /** How the Claude runtime pays for model use. 'own-subscription' makes the sandbox request a Claude token from whoever started the run; Desktop relays it interactively and an API key caller relays it unattended. The token is sent in flight and never stored on Flind servers. Only Flind Desktop and API keys can select 'own-subscription'; other callers get a 400. If omitted or null, resumed runs keep their billing choice and new runs use the Flind gateway.
      *
      * * `posthog-gateway` - posthog-gateway
      * * `own-subscription` - own-subscription */
     claude_model_access?: ModelAccessEnumApi | null
-    /** How the Codex runtime pays for model use. 'own-subscription' makes the sandbox fetch a ChatGPT access token from the PostHog API, refreshed from the ChatGPT account the run owner connected in Desktop settings. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.
+    /** How the Codex runtime pays for model use. 'own-subscription' makes the sandbox fetch a ChatGPT access token from the Flind API, refreshed from the ChatGPT account the run owner connected in Desktop settings. If omitted or null, resumed runs keep their billing choice and new runs use the Flind gateway.
      *
      * * `posthog-gateway` - posthog-gateway
      * * `own-subscription` - own-subscription */
@@ -3299,9 +3299,9 @@ export interface TaskRunBootstrapCreateRequestApi {
      * @nullable
      */
     fast_mode?: boolean | null
-    /** Ephemeral GitHub user token from PostHog Desktop for user-authored cloud pull requests. */
+    /** Ephemeral GitHub user token from Flind Desktop for user-authored cloud pull requests. */
     github_user_token?: string
-    /** Initial permission mode for the agent session. Claude runtimes accept PostHog permission presets like 'plan'. Codex runtimes accept native Codex modes like 'plan', 'auto', and 'read-only'.
+    /** Initial permission mode for the agent session. Claude runtimes accept Flind permission presets like 'plan'. Codex runtimes accept native Codex modes like 'plan', 'auto', and 'read-only'.
      *
      * * `default` - default
      * * `acceptEdits` - acceptEdits
@@ -3872,7 +3872,7 @@ export interface TaskRunPostHogReferenceApi {
      * @maxLength 255
      */
     name: string
-    /** PostHog object kind used to resolve the reference.
+    /** Flind object kind used to resolve the reference.
      *
      * * `insight` - insight
      * * `hogql` - hogql
@@ -3892,7 +3892,7 @@ export interface TaskRunPostHogReferenceApi {
      * * `person` - person */
     object_kind: ObjectKindEnumApi
     /**
-     * Exact PostHog object identifier, flag key, event name, or SQL query.
+     * Exact Flind object identifier, flag key, event name, or SQL query.
      * @maxLength 16384
      */
     object_id: string
@@ -3905,7 +3905,7 @@ export interface TaskRunPostHogReferenceApi {
 
 export interface TaskRunPostHogReferencesRequestApi {
     /**
-     * PostHog object references extracted from one completed assistant message.
+     * Flind object references extracted from one completed assistant message.
      * @maxItems 50
      */
     references: TaskRunPostHogReferenceApi[]
@@ -4419,7 +4419,7 @@ export interface TaskRunLivingArtifactChartResponseApi {
     /** Id of the rendered PNG export backing the chart. */
     export_asset_id: number
     /**
-     * Link to explore this chart interactively in PostHog.
+     * Link to explore this chart interactively in Flind.
      * @nullable
      */
     url?: string | null
@@ -4543,7 +4543,7 @@ export interface TasksResolvedAIRunDefaultsApi {
 }
 
 /**
- * The requesting user's per-project task defaults, shared by PostHog Desktop and the web app.
+ * The requesting user's per-project task defaults, shared by Flind Desktop and the web app.
  */
 export interface TasksTaskDefaultsApi {
     /**
@@ -4572,18 +4572,18 @@ export interface TasksUserConfigResponseApi {
     ai_run_preferences: TasksAIRunPreferencesApi
     /** The defaults a new run will use when no explicit runtime selection is sent. */
     resolved_ai_run_defaults: TasksResolvedAIRunDefaultsApi
-    /** Your personal instructions, which PostHog cloud agents read in Tasks runs you start, after the project instructions. Anyone who continues a task you started can see them. Empty when unset. */
+    /** Your personal instructions, which Flind cloud agents read in Tasks runs you start, after the project instructions. Anyone who continues a task you started can see them. Empty when unset. */
     agent_instructions: string
     /** Your per-project defaults for new tasks. Unset defaults are false. */
     task_defaults: TasksTaskDefaultsApi
 }
 
 /**
- * Markdown instructions that PostHog cloud agents load as their user-level AGENTS.md in Tasks runs.
+ * Markdown instructions that Flind cloud agents load as their user-level AGENTS.md in Tasks runs.
  */
 export interface TasksAgentInstructionsApi {
     /**
-     * Markdown instructions that PostHog cloud agents read in every eligible Tasks run, the same way a local agent reads AGENTS.md. Send an empty string to clear.
+     * Markdown instructions that Flind cloud agents read in every eligible Tasks run, the same way a local agent reads AGENTS.md. Send an empty string to clear.
      * @maxLength 20000
      */
     agent_instructions: string
@@ -4629,7 +4629,7 @@ export interface WizardCloudRunDTOApi {
 export interface TasksTeamConfigResponseApi {
     /** Project-wide default AI run triple; all fields null when unset. */
     ai_run_preferences: TasksAIRunPreferencesApi
-    /** Project instructions that PostHog cloud agents read in every eligible Tasks run, including autonomous runs such as scouts and loops. Empty when unset. */
+    /** Project instructions that Flind cloud agents read in every eligible Tasks run, including autonomous runs such as scouts and loops. Empty when unset. */
     agent_instructions: string
 }
 
@@ -5046,7 +5046,7 @@ export interface SlackThreadContextThreadApi {
 }
 
 /**
- * The PostHog Task linked to the Slack thread.
+ * The Flind Task linked to the Slack thread.
  */
 export interface SlackThreadContextTaskApi {
     /** UUID of the Task row. */
@@ -5064,7 +5064,7 @@ export interface SlackThreadContextTaskApi {
     origin_product: string
     /** When the task was created (server-side timestamp). */
     created_at: string
-    /** Absolute URL to the task detail page in the PostHog app. */
+    /** Absolute URL to the task detail page in the Flind app. */
     url: string
     /** Absolute URL to the Task row in Django admin. */
     admin_url: string
@@ -5174,7 +5174,7 @@ export interface SlackThreadContextRunApi {
 export interface SlackThreadContextResponseApi {
     /** Slack-side identifiers and the mapping metadata. */
     thread: SlackThreadContextThreadApi
-    /** Linked PostHog Task. Null when no mapping was found for the thread. */
+    /** Linked Flind Task. Null when no mapping was found for the thread. */
     task: SlackThreadContextTaskApi | null
     /** All runs on the task, oldest first. Empty when no mapping was found. */
     runs: SlackThreadContextRunApi[]
@@ -5412,7 +5412,7 @@ export type SandboxCustomImagesListParams = {
      * * `slack` - Slack
      * * `support_queue` - Support Queue
      * * `session_summaries` - Session Summaries
-     * * `posthog_ai` - PostHog AI
+     * * `posthog_ai` - Flind AI
      * * `experiments` - Experiments
      * * `signal_report` - Signal Report
      * * `autoresearch` - Autoresearch
@@ -5575,9 +5575,9 @@ export type TasksListParams = {
     /**
      * Filter by the client that created the task
      *
-     * * `posthog_desktop` - PostHog Desktop
-     * * `posthog_mobile` - PostHog Mobile
-     * * `posthog_web` - PostHog Web
+     * * `posthog_desktop` - Flind Desktop
+     * * `posthog_mobile` - Flind Mobile
+     * * `posthog_web` - Flind Web
      * @minLength 1
      */
     client_provenance?: TasksListClientProvenance
@@ -5600,7 +5600,7 @@ export type TasksListParams = {
      * * `slack` - Slack
      * * `support_queue` - Support Queue
      * * `session_summaries` - Session Summaries
-     * * `posthog_ai` - PostHog AI
+     * * `posthog_ai` - Flind AI
      * * `experiments` - Experiments
      * * `signal_report` - Signal Report
      * * `autoresearch` - Autoresearch
@@ -5694,7 +5694,7 @@ export type TasksListParams = {
      */
     search?: string
     /**
-     * Only tasks from any of these sources. Repeat the parameter for each source, or send one comma-joined value or a JSON array. 'posthog_desktop', 'posthog_mobile' and 'posthog_web' match user-created tasks by the client that created them, and a user-created task from no other known client counts as desktop. 'posthog_web' also matches PostHog AI tasks. Any other value matches the task's origin product.
+     * Only tasks from any of these sources. Repeat the parameter for each source, or send one comma-joined value or a JSON array. 'posthog_desktop', 'posthog_mobile' and 'posthog_web' match user-created tasks by the client that created them, and a user-created task from no other known client counts as desktop. 'posthog_web' also matches Flind AI tasks. Any other value matches the task's origin product.
      */
     sources?: TasksListSourcesItem[]
     /**

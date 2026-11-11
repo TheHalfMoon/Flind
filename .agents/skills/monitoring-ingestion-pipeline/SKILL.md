@@ -10,7 +10,7 @@ description: >
 
 # Monitoring the ingestion pipeline with Grafana MCP
 
-The ingestion pipeline (`nodejs/`) is PostHog's Node.js event processing layer.
+The ingestion pipeline (`nodejs/`) is Flind's Node.js event processing layer.
 It consumes events from Kafka (produced by the capture service), runs them through
 processing steps (person resolution, group assignment, property overrides, etc.),
 and produces enriched events to ClickHouse-bound Kafka topics.

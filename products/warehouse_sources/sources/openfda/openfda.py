@@ -94,7 +94,7 @@ class OpenFDALinkPaginator(HeaderLinkPaginator):
 
 
 def _get_headers() -> dict[str, str]:
-    return {"Accept": "application/json", "User-Agent": "PostHog-DataWarehouse"}
+    return {"Accept": "application/json", "User-Agent": "Flind-DataWarehouse"}
 
 
 def _format_date_value(value: Any) -> str:

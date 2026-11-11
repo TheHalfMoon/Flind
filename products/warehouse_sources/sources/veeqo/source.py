@@ -46,7 +46,7 @@ class VeeqoSource(ResumableSource[VeeqoSourceConfig, VeeqoResumeConfig]):
             name=ExternalDataSourceType.VEEQO,
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="Veeqo",
-            caption="""Enter your Veeqo API key to automatically pull your Veeqo inventory, order and shipping data into the PostHog Data warehouse.
+            caption="""Enter your Veeqo API key to automatically pull your Veeqo inventory, order and shipping data into the Flind Data warehouse.
 
 You can find your API key in your Veeqo account under **Settings > Users**, on your user's profile. Veeqo support must enable API access for your account before the key appears there — contact them if you don't see it.
 

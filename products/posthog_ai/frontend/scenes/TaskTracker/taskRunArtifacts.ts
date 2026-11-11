@@ -32,7 +32,7 @@ export const ARTIFACT_KIND_LABEL: Record<ArtifactPreviewKind, string> = {
     video: 'Video',
     csv: 'CSV',
     text: 'Text',
-    reference: 'PostHog object',
+    reference: 'Flind object',
     none: 'File',
 }
 
@@ -43,7 +43,7 @@ function extension(name: string): string {
     return dot === -1 ? '' : name.slice(dot + 1).toLowerCase()
 }
 
-/** The PostHog object a reference artifact points at. Agent messages cite objects, and the run lists each one once. */
+/** The Flind object a reference artifact points at. Agent messages cite objects, and the run lists each one once. */
 export interface PostHogObjectRef {
     objectKind: string
     objectId: string
@@ -125,7 +125,7 @@ export function isTextPreview(kind: ArtifactPreviewKind): boolean {
 }
 
 /**
- * Files the agent wrote for the user, versions of them a user saved, and the PostHog objects the run cites.
+ * Files the agent wrote for the user, versions of them a user saved, and the Flind objects the run cites.
  * Attachments, plans, skill bundles and dismissed entries stay out.
  */
 export function visibleRunArtifacts(artifacts: readonly TaskRunArtifactResponseApi[]): TaskRunArtifactResponseApi[] {
@@ -139,7 +139,7 @@ export function visibleRunArtifacts(artifacts: readonly TaskRunArtifactResponseA
         if (!artifact.storage_path) {
             return false
         }
-        // An edit saved here or in PostHog Desktop is an `output` upload by a user, with no source label.
+        // An edit saved here or in Flind Desktop is an `output` upload by a user, with no source label.
         const savedByUser = artifact.type === 'output' && artifact.uploaded_by === 'user'
         return (
             savedByUser ||
@@ -260,7 +260,7 @@ export function collectRunArtifacts(
     return [...byId.values()].sort((a, b) => b.uploaded_at.localeCompare(a.uploaded_at))
 }
 
-/** One file name with every upload of it, or one cited PostHog object. */
+/** One file name with every upload of it, or one cited Flind object. */
 export interface ArtifactFile {
     /** Selects the entry and goes in the share link. The file name, or the artifact id for a reference. */
     key: string
@@ -306,13 +306,13 @@ export interface LivingVersion {
     /** The version number in the version content URL. */
     version: number
     adapter: string
-    /** `null` when PostHog keeps no text for the version, for example a file sent to Slack. */
+    /** `null` when Flind keeps no text for the version, for example a file sent to Slack. */
     text: string | null
-    /** True when PostHog stores the version as a file, for example a file sent to Slack. */
+    /** True when Flind stores the version as a file, for example a file sent to Slack. */
     stored: boolean
 }
 
-/** PostHog keeps the content of a version as text in the registry or as a stored file. */
+/** Flind keeps the content of a version as text in the registry or as a stored file. */
 export function hasLivingContent(living: LivingVersion): boolean {
     return living.text !== null || living.stored
 }
@@ -376,7 +376,7 @@ export function livingArtifactFiles(artifacts: readonly TaskRunLivingArtifactRes
         .sort((a, b) => b.latest.uploaded_at.localeCompare(a.latest.uploaded_at))
 }
 
-/** The text files a user can edit, the same set PostHog Desktop edits. */
+/** The text files a user can edit, the same set Flind Desktop edits. */
 export type EditableArtifactKind = 'markdown' | 'html' | 'plain-text'
 
 export const EDITOR_LANGUAGE: Record<EditableArtifactKind, string> = {

@@ -269,14 +269,14 @@ class CanvasStateWriteThrottle(SimpleRateThrottle):
 
 
 class CanvasActionInvokeThrottle(CanvasStateWriteThrottle):
-    """Tighter than state writes: every invocation is a real PostHog write."""
+    """Tighter than state writes: every invocation is a real Flind write."""
 
     scope = "canvas_action_invoke"
     rate = "60/min"
 
 
 class CanvasToolInvokeThrottle(CanvasStateWriteThrottle):
-    """Shares the action ceiling: a tool call is a real PostHog read or write as the viewer."""
+    """Shares the action ceiling: a tool call is a real Flind read or write as the viewer."""
 
     scope = "canvas_tool_invoke"
     rate = "60/min"
@@ -1665,7 +1665,7 @@ class CanvasViewSet(CanvasAccessMixin, viewsets.GenericViewSet):
         if outcome == "organization_deactivated":
             return Response(
                 {
-                    "detail": "Your organization has been deactivated. Contact PostHog support if you think this is a mistake."
+                    "detail": "Your organization has been deactivated. Contact Flind support if you think this is a mistake."
                 },
                 status=status.HTTP_429_TOO_MANY_REQUESTS,
             )
@@ -1754,7 +1754,7 @@ class CanvasViewSet(CanvasAccessMixin, viewsets.GenericViewSet):
         if outcome == "organization_deactivated":
             return Response(
                 {
-                    "detail": "Your organization has been deactivated. Contact PostHog support if you think this is a mistake."
+                    "detail": "Your organization has been deactivated. Contact Flind support if you think this is a mistake."
                 },
                 status=status.HTTP_429_TOO_MANY_REQUESTS,
             )
@@ -1805,7 +1805,7 @@ class CanvasViewSet(CanvasAccessMixin, viewsets.GenericViewSet):
     )
     @action(methods=["GET"], detail=False, url_path="actions")
     def actions(self, request: Request, *args: Any, **kwargs: Any) -> Response:
-        """List the action registry: every verb and PostHog MCP tool a canvas may declare and invoke."""
+        """List the action registry: every verb and Flind MCP tool a canvas may declare and invoke."""
         return Response(
             CanvasActionsResponseSerializer(
                 instance={"actions": canvas_api.list_actions(), "tools": canvas_api.list_tools()}
@@ -1882,7 +1882,7 @@ class CanvasViewSet(CanvasAccessMixin, viewsets.GenericViewSet):
                 description="The tool is not declared in the canvas's capabilities, canvas tools are off for the team, "
                 "or the caller is a sandbox or an impersonated session."
             ),
-            502: OpenApiResponse(description="The PostHog MCP server could not run the tool."),
+            502: OpenApiResponse(description="The Flind MCP server could not run the tool."),
             504: OpenApiResponse(
                 description="A tool that changes data did not answer in time. The change can still apply."
             ),
@@ -1890,7 +1890,7 @@ class CanvasViewSet(CanvasAccessMixin, viewsets.GenericViewSet):
     )
     @action(methods=["POST"], detail=True, url_path="tools/invoke")
     def invoke_tool(self, request: Request, *args: Any, **kwargs: Any) -> Response:
-        """Run one PostHog MCP tool as the viewer.
+        """Run one Flind MCP tool as the viewer.
 
         The canvas must declare the tool in capabilities.posthog.tools. The
         tool runs on the MCP server with a token minted for the viewer, so it

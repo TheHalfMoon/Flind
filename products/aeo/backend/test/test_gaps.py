@@ -56,7 +56,7 @@ class TestListCitationGaps(BaseTest):
             gap,
             "claude-web-search",
             cited_urls=["https://rival.example/replay", "https://other.example/a"],
-            answer_text="Rival is the best, though PostHog also records sessions.",
+            answer_text="Rival is the best, though Flind also records sessions.",
             queries=["session replay tools"],
         )
         self._check(
@@ -91,7 +91,7 @@ class TestListCitationGaps(BaseTest):
         assert result.our_cited_urls == ("https://posthog.com/session-replay",)
         assert result.engine_search_queries[0] == "session replay tools"
         assert [a.answer_text for a in result.latest_answers] == [
-            "Rival is the best, though PostHog also records sessions."
+            "Rival is the best, though Flind also records sessions."
         ]
 
     @parameterized.expand(

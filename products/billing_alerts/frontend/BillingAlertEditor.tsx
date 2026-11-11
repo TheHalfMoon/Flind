@@ -90,7 +90,7 @@ function BillingAlertEditorContent(props: BillingAlertFormLogicProps): JSX.Eleme
                         nameDataAttr="billing-alert-name"
                     />
                     <LemonField name="description" label="Internal note">
-                        <LemonTextArea placeholder="Only visible in PostHog." />
+                        <LemonTextArea placeholder="Only visible in Flind." />
                     </LemonField>
 
                     <AlertEditorSection

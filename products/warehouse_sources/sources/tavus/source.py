@@ -44,7 +44,7 @@ class TavusSource(ResumableSource[TavusSourceConfig, TavusResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Tavus",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Tavus API key to pull your Tavus data into the PostHog Data warehouse.
+            caption="""Enter your Tavus API key to pull your Tavus data into the Flind Data warehouse.
 
 You can generate an API key in the [Tavus Developer Portal](https://platform.tavus.io/api-keys). This single key grants read access to your videos, replicas, personas, conversations, and memory stores.
 """,

@@ -153,7 +153,7 @@ export function ReportsInboxViewPresentation({
                 </EmptyTitle>
                 <EmptyDescription>
                   {showConfigureAgentsEmptyState
-                    ? "PostHog watches your session replays, errors, and Slack, then opens a pull request when it finds something worth fixing. Connect a source to get started."
+                    ? "Flind watches your session replays, errors, and Slack, then opens a pull request when it finds something worth fixing. Connect a source to get started."
                     : hasActiveFilters
                       ? "Clear the filters to check for hidden reports."
                       : "Reports show up here as your agents find things worth acting on."}

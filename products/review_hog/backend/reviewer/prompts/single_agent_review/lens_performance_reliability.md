@@ -93,7 +93,7 @@ context.
 
 - Logic and correctness errors → Logic & Correctness
 - Security vulnerabilities and API-contract changes → Contracts & Security
-- Code style or formatting → not a PostHog Review concern
+- Code style or formatting → not a Flind Review concern
 
 ## Key questions
 

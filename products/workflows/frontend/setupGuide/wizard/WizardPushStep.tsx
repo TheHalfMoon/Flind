@@ -39,7 +39,7 @@ PostHogAndroid.setup(this, config)
 
 // In your FirebaseMessagingService, so a refreshed token registers right away
 override fun onNewToken(token: String) {
-    PostHog.registerPushNotificationToken(token, "${appId ?? '<firebase project id>'}")
+    Flind.registerPushNotificationToken(token, "${appId ?? '<firebase project id>'}")
 }`
 }
 
@@ -113,7 +113,7 @@ export function WizardPushStep(): JSX.Element {
 
                 <div className="flex flex-col gap-2">
                     <StepTitle index={2} done={deviceRegistered}>
-                        Turn on push in the PostHog SDK
+                        Turn on push in the Flind SDK
                     </StepTitle>
                     <div className="ps-7 flex flex-col gap-2">
                         <span className="text-secondary text-sm">

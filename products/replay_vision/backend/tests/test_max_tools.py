@@ -779,7 +779,7 @@ class TestCompareReplayVisionVariantsTool(BaseTest):
 
 
 class TestScanReplayVisionSessionsOutcomes(BaseTest):
-    """The reply has to match what the scan will do, so PostHog AI never reports a scan that cannot run."""
+    """The reply has to match what the scan will do, so Flind AI never reports a scan that cannot run."""
 
     def _tool(self, tool_cls=ScanReplayVisionSessionsTool):
         config: RunnableConfig = {"configurable": {"team": self.team, "user": self.user}}

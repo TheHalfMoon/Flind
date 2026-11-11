@@ -921,7 +921,7 @@ class TestExternalTicketAPI(BaseTest):
         # Both directions flow through the TaggedItem activity signal: adds fire it on save,
         # removes only because the endpoint deletes per-instance (a bulk delete would skip it).
         # The signal picks the workflow trigger up from ActivityTriggerContext; without that,
-        # workflow tag changes render as an anonymous "PostHog" on the ticket timeline.
+        # workflow tag changes render as an anonymous "Flind" on the ticket timeline.
         from posthog.models import Tag
 
         existing_tag = Tag.objects.create(name="bug", team_id=self.team.id)

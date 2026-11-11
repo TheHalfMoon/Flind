@@ -67,8 +67,8 @@ DeclaredCredentialType = Literal[
 CredentialType = Literal[DeclaredCredentialType, "unattributed"]
 CREDENTIAL_TYPE_CHOICES: tuple[CredentialType, ...] = get_args(CredentialType)
 # The credential types whose `credential_id` customers can read. Each id names a login session or a
-# key that the customer can look up and revoke through the PostHog API. Never add `service_jwt`: its
-# id is the audience of an internal PostHog service.
+# key that the customer can look up and revoke through the Flind API. Never add `service_jwt`: its
+# id is the audience of an internal Flind service.
 CUSTOMER_VISIBLE_CREDENTIAL_ID_TYPES: frozenset[CredentialType] = frozenset(
     {"session", "personal_api_key", "project_secret_key"}
 )
@@ -312,7 +312,7 @@ class ActivityCredentialMixin:
     """Declares the credential type of an authentication class, and records that credential on the
     request's activity rows.
 
-    `posthog/test/repo_invariants/test_authentication_credential_types.py` fails when a PostHog
+    `posthog/test/repo_invariants/test_authentication_credential_types.py` fails when a Flind
     authentication class does not declare a type.
     """
 

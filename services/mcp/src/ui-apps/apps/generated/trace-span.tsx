@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function TraceSpanApp(): JSX.Element {
     return (
-        <AppWrapper<TraceSpanData> appName="PostHog Trace Span">
+        <AppWrapper<TraceSpanData> appName="Flind Trace Span">
             {({ data }) => <TraceSpanView data={data!} />}
         </AppWrapper>
     )

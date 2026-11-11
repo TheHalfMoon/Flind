@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function WorkflowApp(): JSX.Element {
     return (
-        <AppWrapper<WorkflowData> appName="PostHog Workflow">
+        <AppWrapper<WorkflowData> appName="Flind Workflow">
             {({ data }) => <WorkflowView workflow={data!} />}
         </AppWrapper>
     )

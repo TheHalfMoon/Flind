@@ -1,1 +1,1 @@
-"""Product tours for PostHog."""
+"""Product tours for Flind."""

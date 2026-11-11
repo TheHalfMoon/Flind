@@ -270,7 +270,7 @@ class ConversionGoalSummarySerializer(serializers.Serializer):
     # reading the valid values out of this help text.
     kind = serializers.ChoiceField(
         choices=CONVERSION_GOAL_KIND_CHOICES,
-        help_text="Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)",
+        help_text="Goal type: EventsNode (Flind event), ActionsNode (Flind action), or DataWarehouseNode (external table)",
     )
     target_label = serializers.CharField(
         help_text="Human-readable target the goal matches (event/action name or table)"
@@ -614,7 +614,7 @@ class GoalExplanationSerializer(serializers.Serializer):
     goal_name = serializers.CharField(help_text="Display name of the conversion goal")
     kind = serializers.ChoiceField(
         choices=CONVERSION_GOAL_KIND_CHOICES,
-        help_text="Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)",
+        help_text="Goal type: EventsNode (Flind event), ActionsNode (Flind action), or DataWarehouseNode (external table)",
     )
     period = GoalExplanationPeriodSerializer(help_text="The period the breakdown was computed over")
     total_count = serializers.IntegerField(help_text="Total matching conversion events in the period")

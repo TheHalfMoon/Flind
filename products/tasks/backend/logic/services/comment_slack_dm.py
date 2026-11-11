@@ -1,4 +1,4 @@
-"""Slack DM delivery for PostHog Code comment notifications.
+"""Slack DM delivery for Flind Code comment notifications.
 
 A second channel for the three recipient kinds the in-app Activity feed already gets: a mention,
 a reply to your comment, a comment on something you own. Recipients and the personal-channel
@@ -293,11 +293,11 @@ def _linked_integration_for_recipient(
 
 
 def _slack_user_id_by_email(*, email: str, integration: IntegrationRecord, slack: SlackIntegration) -> str | None:
-    """Match a PostHog email against the workspace's own Slack directory.
+    """Match a Flind email against the workspace's own Slack directory.
 
     This is what makes the feature work without every person linking an account first. It asks the
     customer's own directory a question about our own user's email, which is the opposite direction
-    from the inbound path (where a Slack-supplied email would decide who a PostHog user is, and so
+    from the inbound path (where a Slack-supplied email would decide who a Flind user is, and so
     can't be trusted).
     """
     workspace = integration.integration_id or ""

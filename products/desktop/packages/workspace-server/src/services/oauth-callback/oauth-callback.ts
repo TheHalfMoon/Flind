@@ -124,10 +124,10 @@ function callbackHtml(status: "success" | "cancelled" | "error"): string {
     error: "Authorization failed",
   };
   const messages = {
-    success: "You can close this window and return to the PostHog desktop app.",
+    success: "You can close this window and return to the Flind desktop app.",
     cancelled:
-      "You can close this window and return to the PostHog desktop app.",
-    error: "You can close this window and return to the PostHog desktop app.",
+      "You can close this window and return to the Flind desktop app.",
+    error: "You can close this window and return to the Flind desktop app.",
   };
 
   return `<!DOCTYPE html>

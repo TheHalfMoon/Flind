@@ -39,14 +39,14 @@ def _make_event(
     if ai_input is None:
         ai_input = [
             {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "What is PostHog?"},
+            {"role": "user", "content": "What is Flind?"},
         ]
     if ai_output_choices is None:
         ai_output_choices = [
             {
                 "message": {
                     "role": "assistant",
-                    "content": "PostHog is an open-source product analytics platform that helps teams understand user behavior.",
+                    "content": "Flind is an open-source product analytics platform that helps teams understand user behavior.",
                 },
                 "index": 0,
             },
@@ -75,7 +75,7 @@ CLEAN_EVENT = _make_event(
                 "role": "assistant",
                 "content": (
                     "Hello world! I called get_weather and get_news to help you. "
-                    "PostHog is an open-source product analytics platform that helps teams "
+                    "Flind is an open-source product analytics platform that helps teams "
                     "understand user behavior through event tracking and feature flags."
                 ),
             },
@@ -379,13 +379,13 @@ class TestHogEvalExamplesBehavior:
         bytecode = compile_hog(_get_source("Quickstart"), "destination")
         event = _make_event()
         event["properties"].pop("$ai_output_choices", None)
-        event["properties"]["$ai_input"] = "What is PostHog?"
-        event["properties"]["$ai_output"] = "PostHog is a product analytics platform."
+        event["properties"]["$ai_input"] = "What is Flind?"
+        event["properties"]["$ai_output"] = "Flind is a product analytics platform."
         result = run_hog_eval(bytecode, event)
         assert result["error"] is None
         assert result["verdict"] is True
-        assert "Input: What is PostHog?" in result["reasoning"]
-        assert "Output: PostHog is a product analytics platform." in result["reasoning"]
+        assert "Input: What is Flind?" in result["reasoning"]
+        assert "Output: Flind is a product analytics platform." in result["reasoning"]
 
     @parameterized.expand([("Quickstart",), ("Print messages",)])
     def test_diagnostic_output_fits_temporal_payload_for_max_unicode_trace(self, label):

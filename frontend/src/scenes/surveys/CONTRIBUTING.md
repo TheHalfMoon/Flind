@@ -14,14 +14,14 @@
 
 ## How to test changes
 
-### PostHog App Changes (Backend/Frontend)
+### Flind App Changes (Backend/Frontend)
 
 - Run the app locally following the [local development guide](https://posthog.com/handbook/engineering/developing-locally)
 - Write tests for logic changes, especially in `surveyLogic.tsx` or `surveysLogic.tsx`
 
 ### JS SDK Changes
 
-Most survey logic lives in the [PostHog JS SDK](https://github.com/PostHog/posthog-js/). To test changes:
+Most survey logic lives in the [Flind JS SDK](https://github.com/PostHog/posthog-js/). To test changes:
 
 First, build the package with hot-reload:
 
@@ -83,7 +83,7 @@ rm -rf node_modules .next && pnpm install && pnpm dev
 
 Changes are picked up automatically via `package:watch`.
 
-#### Option 2: Main PostHog repo
+#### Option 2: Main Flind repo
 
 1. Update `frontend/package.json` to use your local build:
 
@@ -307,4 +307,4 @@ select * from posthog_survey
  where id = '{survey_id}'
 ```
 
-Access postgres directly, check the [runbook](http://runbooks/postgres#accessing-postgres) (internal PostHog link).
+Access postgres directly, check the [runbook](http://runbooks/postgres#accessing-postgres) (internal Flind link).

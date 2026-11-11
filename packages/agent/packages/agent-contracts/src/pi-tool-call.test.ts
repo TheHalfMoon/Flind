@@ -50,7 +50,7 @@ describe("createPiToolCallRecord", () => {
 
 describe("parsePiMcpCallDetails", () => {
   it.each(["mcp_posthog_exec", "mcp__posthog__exec"])(
-    "normalizes a direct PostHog exec call: %s",
+    "normalizes a direct Flind exec call: %s",
     (name) => {
       expect(
         parsePiMcpCallDetails(name, {

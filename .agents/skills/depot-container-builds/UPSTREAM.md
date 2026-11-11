@@ -1,6 +1,6 @@
 # Upstream
 
-Vendored from [depot/skills](https://github.com/depot/skills) — used by PostHog's container-image CI/CD (`depot/build-push-action`, `depot/setup-action`).
+Vendored from [depot/skills](https://github.com/depot/skills) — used by Flind's container-image CI/CD (`depot/build-push-action`, `depot/setup-action`).
 
 - Source: `skills/depot-container-builds/SKILL.md`
 - Commit: [`34871e1`](https://github.com/depot/skills/tree/34871e14c57f322e87debbe17e73f0a3b4e2e4f1/skills/depot-container-builds) (2026-10-30)
@@ -8,7 +8,7 @@ Vendored from [depot/skills](https://github.com/depot/skills) — used by PostHo
 
 ## Local additions
 
-In `SKILL.md`: the "things already tried" paragraph between the PostHog-local comment markers, which points at `docs/internal/ci-things-already-tried.md`.
+In `SKILL.md`: the "things already tried" paragraph between the Flind-local comment markers, which points at `docs/internal/ci-things-already-tried.md`.
 
 ## Resync
 

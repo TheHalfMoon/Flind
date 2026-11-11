@@ -1,4 +1,4 @@
-// Legacy PostHog hedgehog illustrations.
+// Legacy Flind hedgehog illustrations.
 //
 // ⚠️ We're migrating away from these hand-rolled hogs to the shared `@posthog/brand`
 // hoggie library, rendered via its PNG exports — see `pngHoggie` in lib/brand/hoggies.

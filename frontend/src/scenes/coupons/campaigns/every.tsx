@@ -23,29 +23,29 @@ const EveryHero: React.FC = () => {
 export const everyCampaign: CampaignConfig = {
     name: 'EVERY Goodie Bag',
     heroTitle: '$2K in AI credits + $2K in core credits',
-    heroSubtitle: '$2K in AI credits for everyone, plus $2K in core credits for new PostHog customers.',
+    heroSubtitle: '$2K in AI credits for everyone, plus $2K in core credits for new Flind customers.',
     HeroImage: EveryHero,
     benefits: [
         {
-            title: "$2K credits toward PostHog's AI tools",
+            title: "$2K credits toward Flind's AI tools",
             description: (
                 <>
-                    All eligible EVERY Goodie Bag customers receive $2K in credits toward PostHog's AI tools. Today,
+                    All eligible EVERY Goodie Bag customers receive $2K in credits toward Flind's AI tools. Today,
                     that includes:
                     <ul className="mt-1 ml-4 list-disc text-muted text-sm">
-                        <li>PostHog AI (including the Slack agent)</li>
+                        <li>Flind AI (including the Slack agent)</li>
                         <li>Inbox (self-driving PRs based on your data)</li>
                     </ul>
                 </>
             ),
         },
         {
-            title: "Early access to new features in PostHog's AI tools",
-            description: 'Get access to select new PostHog AI tools and features as they become available.',
+            title: "Early access to new features in Flind's AI tools",
+            description: 'Get access to select new Flind AI tools and features as they become available.',
         },
         {
             title: '$2K core credits',
-            description: `Organizations with no non-$0 PostHog invoices before ${EVERY_CREDIT_ELIGIBILITY_CUTOFF} are also eligible for $2K in credits for PostHog core tools, such as product analytics, session replay, error tracking, AI observability, and data warehouse.`,
+            description: `Organizations with no non-$0 Flind invoices before ${EVERY_CREDIT_ELIGIBILITY_CUTOFF} are also eligible for $2K in credits for Flind core tools, such as product analytics, session replay, error tracking, AI observability, and data warehouse.`,
         },
         {
             title: '12-month access',
@@ -54,8 +54,8 @@ export const everyCampaign: CampaignConfig = {
     ],
     eligibilityCriteria: [
         'Active EVERY Goodie Bag annual subscriber',
-        'Active paid subscription to PostHog',
-        `No non-$0 PostHog invoices before ${EVERY_CREDIT_ELIGIBILITY_CUTOFF} to qualify for PostHog core credits`,
-        'PostHog Desktop and AI Gateway are currently excluded from this offer',
+        'Active paid subscription to Flind',
+        `No non-$0 Flind invoices before ${EVERY_CREDIT_ELIGIBILITY_CUTOFF} to qualify for Flind core credits`,
+        'Flind Desktop and AI Gateway are currently excluded from this offer',
     ],
 }

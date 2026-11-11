@@ -37,7 +37,7 @@ Example: 50/50 split → 80/20 A/B split.
 
 **User experience**: This moves the bucket boundaries. Users who were previously assigned to B may now fall in A's expanded bucket. When rollout is increased later, **these users switch from the test variant back to control** — they see a different experience than what they were originally assigned. This is the most disruptive change because it causes variant reassignment.
 
-**Analysis**: Users who experienced B and are now in A have behavior that can't be cleanly attributed to either variant — this is bias. PostHog handles this with two options:
+**Analysis**: Users who experienced B and are now in A have behavior that can't be cleanly attributed to either variant — this is bias. Flind handles this with two options:
 
 - **Exclude from analysis** (default, recommended) — removes these users from the analysis. Cleaner data but fewer data points, meaning longer time to reach reliable results.
 - **Use first seen variant** — keeps all users, attributes them to their first variant. More data but noisier.
@@ -61,7 +61,7 @@ Example: Adding variant C to a running A/B experiment.
 
 **Analysis**: More multivariate users to exclude, AND more variants means more traffic needed for reliable results. You're simultaneously reducing your usable data AND increasing the amount you need. This compounds badly.
 
-**This is not supported on running experiments** — PostHog prevents adding or removing variants on non-draft experiments. Only rollout percentages between existing variants can change.
+**This is not supported on running experiments** — Flind prevents adding or removing variants on non-draft experiments. Only rollout percentages between existing variants can change.
 
 ## What to recommend
 

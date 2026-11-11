@@ -29,7 +29,7 @@ _KEEP_ON_REFRESH = (
     WarehouseMigrationItem.Status.APPLIED,
     WarehouseMigrationItem.Status.SKIPPED,
 )
-# Kept items that have, or are creating, a PostHog source, so their prefixes are taken.
+# Kept items that have, or are creating, a Flind source, so their prefixes are taken.
 _HAS_SOURCE = (WarehouseMigrationItem.Status.APPLYING, WarehouseMigrationItem.Status.APPLIED)
 _REPLANNED_FIELDS = ("vendor_service", "name", "verdict", "caveats", "proposal", "status", "error")
 _AUTH_FAILED_MESSAGE = (

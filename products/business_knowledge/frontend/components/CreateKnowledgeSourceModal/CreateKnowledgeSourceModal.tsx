@@ -84,7 +84,7 @@ export function CreateKnowledgeSourceModal({
                                     />
                                 </LemonField>
                                 <p className="text-xs text-muted">
-                                    Text is split into sections and made searchable. PostHog AI can use it after
+                                    Text is split into sections and made searchable. Flind AI can use it after
                                     processing finishes.
                                 </p>
                                 <AlwaysIncludeField />
@@ -129,7 +129,7 @@ export function CreateKnowledgeSourceModal({
                                 <LemonField
                                     name="refresh_interval"
                                     label="Auto-refresh"
-                                    info="How often PostHog re-fetches this source in the background after the initial crawl."
+                                    info="How often Flind re-fetches this source in the background after the initial crawl."
                                 >
                                     <LemonSelect options={refreshIntervalOptions} />
                                 </LemonField>

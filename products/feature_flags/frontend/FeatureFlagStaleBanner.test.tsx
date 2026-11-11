@@ -357,7 +357,7 @@ describe('FeatureFlagStaleBanner', () => {
             expect(document.querySelector(REVIEW_CLEANUP_SELECTOR)).not.toBeInTheDocument()
         })
 
-        it('opens PostHog AI on a fresh request, and disables itself so a repeat click cannot start a second one', async () => {
+        it('opens Flind AI on a fresh request, and disables itself so a repeat click cannot start a second one', async () => {
             setCleanupActionAvailable(true)
             useMocks(endpointMocks())
             const logic = mountAndRender()

@@ -6,7 +6,7 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 import { addSessionEndTask } from '@/auth/authStore'
 import { createPersistHydrationGate } from '@/lib/persistHydration'
 
-// Each person on this device agrees once that PostHog AI sends the data used by their AI actions to third-party model providers.
+// Each person on this device agrees once that Flind AI sends the data used by their AI actions to third-party model providers.
 // The key carries the host, because the same person on another instance has a separate account.
 
 export function aiConsentKey(host: string, userUuid: string): string {

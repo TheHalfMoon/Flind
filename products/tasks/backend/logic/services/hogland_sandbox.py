@@ -1,6 +1,6 @@
 """Hogland-backed sandbox provider.
 
-Hogland is PostHog's Firecracker microVM service. A hogbox boots from a golden
+Hogland is Flind's Firecracker microVM service. A hogbox boots from a golden
 snapshot (alias ``posthog-tasks-default``) baked from the same layout as the Modal
 base image, so the shared ``AgentServerLaunchMixin`` drives it unchanged: repo
 clone, agent-server launch, and health checks are all bash over ``execute``.
@@ -217,7 +217,7 @@ class HoglandSandbox(AgentServerLaunchMixin):
 
     # hogland boxes boot with the `bedrock` feature, which puts the Claude CLI in
     # direct-Bedrock mode. Unset those vars at agent launch so the CLI routes
-    # through the PostHog LLM gateway instead — avoids AWS Bedrock Marketplace
+    # through the Flind LLM gateway instead — avoids AWS Bedrock Marketplace
     # model-access and SigV4 header-signing issues, and keeps gateway-based AI
     # observability attribution (matching the Modal backend).
     disable_direct_bedrock = True

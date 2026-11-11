@@ -1,4 +1,4 @@
-"""Per-PR PostHog preview environments, layer-agnostic.
+"""Per-PR Flind preview environments, layer-agnostic.
 
 backend  = which box (HoglandBackend today, DigitalOceanBackend before)
 stack    = what runs in it (PostHogPreviewStack — never changes per layer)

@@ -10,7 +10,7 @@ import type { SignalScoutSlackDestinationApi } from 'products/signals/frontend/g
 
 import { ScoutSlackDestination } from './ScoutSlackDestination'
 
-const SLACK_WORKSPACE = { id: 1, kind: 'slack', display_name: 'PostHog' } as IntegrationType
+const SLACK_WORKSPACE = { id: 1, kind: 'slack', display_name: 'Flind' } as IntegrationType
 const BROKEN_WORKSPACE = { ...SLACK_WORKSPACE, errors: 'TOKEN_REFRESH_FAILED' } as IntegrationType
 
 describe('ScoutSlackDestination', () => {

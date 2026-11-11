@@ -292,7 +292,7 @@ class TestIdJagTokenEndpoint(APIBaseTest):
             issuer=_AUTH_SERVER_URL,
         )
         # The stamped sub preserves the IdP's opaque identifier; the resolved
-        # PostHog user identity is stamped separately into `email` so the
+        # Flind user identity is stamped separately into `email` so the
         # resource-side authenticator can find the User row without trying to
         # parse an email out of `sub`.
         self.assertEqual(claims["sub"], f"{_PROVIDER_NAME}:{opaque_sub}")
@@ -404,7 +404,7 @@ class TestIdJagTokenEndpoint(APIBaseTest):
         self.assertEqual(resp.json()["scope"], "")
 
     def test_unknown_scopes_in_id_jag_are_dropped(self) -> None:
-        """We never propagate scope strings we don't recognize as PostHog scopes —
+        """We never propagate scope strings we don't recognize as Flind scopes —
         otherwise a malformed IdP could smuggle arbitrary tokens into requests."""
         assertion = _make_id_jag(scope="feature_flag:read totally_bogus:thing")
         resp = self._post_token({"grant_type": JWT_BEARER_GRANT_TYPE, "assertion": assertion})
@@ -482,7 +482,7 @@ class TestIdJagTokenEndpoint(APIBaseTest):
 
     def test_rejects_unverified_domain_in_sub(self) -> None:
         # Trust is rooted in the verified-domain → org mapping. An ID-JAG whose
-        # `sub` doesn't belong to a verified domain on any PostHog org is
+        # `sub` doesn't belong to a verified domain on any Flind org is
         # rejected with the uniform pre-signature error so we don't leak which
         # domains a tenant has verified.
         assertion = _make_id_jag(sub="someone@not-verified.example.org")

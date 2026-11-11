@@ -129,7 +129,7 @@ def ensure_demo_ready(
     """Seed the master Hedgebox team (once) and expose a per-case context factory."""
     master_team_id = ensure_master_demo_team(blocker)
     with blocker.unblock():
-        # Eval tasks use the posthog_ai origin, which mints sandbox tokens under the PostHog AI
+        # Eval tasks use the posthog_ai origin, which mints sandbox tokens under the Flind AI
         # OAuth app. Demo data creates only the Array app, so without this every case fails to start.
         call_command("setup_tasks_oauth", stdout=io.StringIO())
     _ensure_event_search_columns_materialized(blocker)

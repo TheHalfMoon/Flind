@@ -210,7 +210,7 @@ def test_detect_all_raises_when_every_detector_fails() -> None:
 
 def _flaky_row(job_name: str, run_id: int, *, workflow_name: str = "CI", head_sha: str = "sha") -> FlakyJobRun:
     return FlakyJobRun(
-        repo_owner="PostHog",
+        repo_owner="Flind",
         repo_name="posthog",
         workflow_name=workflow_name,
         job_name=job_name,

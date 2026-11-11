@@ -15,7 +15,7 @@ Do not use `tasks.create_and_run` for a repository override: that action inherit
 that apply to that one task and do not change saved run preferences. `reasoning_effort` requires `model`.
 A retry with the same `idempotency_key` returns the existing task even if these fields change.
 
-`ph.openExternal(url)` accepts HTTPS GitHub PR links as well as PostHog HTTPS URLs. GitHub links
+`ph.openExternal(url)` accepts HTTPS GitHub PR links as well as Flind HTTPS URLs. GitHub links
 must use `github.com`, with no credentials, custom port, or query string. PR overview, files,
 commits, and checks paths are allowed, including fragment links. The host opens these PR links
 without a confirmation dialog, but still requires a user click and applies its existing rate limit.

@@ -1,4 +1,4 @@
-"""Short-lived AI gateway tokens for PostHog staff.
+"""Short-lived AI gateway tokens for Flind staff.
 
 The gateway pins the staff user's distinct_id on each token, so no request header can
 change who a call is attributed to.
@@ -85,7 +85,7 @@ def daily_cap_usd() -> Decimal:
 def eligibility_refusal(user: User) -> DevTokenRefused | None:
     """Impersonation is request state, so the caller checks it before this."""
     if not user.is_active or not user.is_staff:
-        return DevTokenRefused("not_staff", "Developer mode is only available to PostHog staff.", 403)
+        return DevTokenRefused("not_staff", "Developer mode is only available to Flind staff.", 403)
     # None is a legacy account that predates verification.
     if not (user.email or "").lower().endswith(STAFF_EMAIL_DOMAIN) or user.is_email_verified is False:
         return DevTokenRefused("not_staff", "Developer mode needs a verified @posthog.com email.", 403)
@@ -164,7 +164,7 @@ def _gateway_post(path: str, body: dict) -> requests.Response:
 
 
 class _UnreadableMint(DevTokenRefused):
-    """The gateway answered 201, so it may have minted a token PostHog can't read."""
+    """The gateway answered 201, so it may have minted a token Flind can't read."""
 
 
 def _call_mint(user: User, cap: Decimal) -> dict:
@@ -185,7 +185,7 @@ def _call_mint(user: User, cap: Decimal) -> dict:
     try:
         minted = response.json()
     except ValueError as e:
-        raise _UnreadableMint("mint_failed", "The AI gateway sent a response PostHog couldn't read.", 503) from e
+        raise _UnreadableMint("mint_failed", "The AI gateway sent a response Flind couldn't read.", 503) from e
     if not isinstance(minted, dict) or not minted.get("token") or not minted.get("expires_at"):
         raise _UnreadableMint("mint_failed", "The AI gateway sent a response without a token.", 503)
     return minted
@@ -427,7 +427,7 @@ def team_usage(viewer: User) -> DevTeamUsage:
                 last_minted_at=max((row.created_at for row in mine), default=None),
             )
         )
-    # Spend whose $ai_user matches no PostHog user still shows, so totals reconcile.
+    # Spend whose $ai_user matches no Flind user still shows, so totals reconcile.
     for distinct_id, spent in spend.items():
         result.append(
             DevUserUsage(

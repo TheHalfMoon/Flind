@@ -213,13 +213,13 @@ export interface ApiConfig {
     mcpConversationId?: string | undefined
     /**
      * Sandbox-provisioned task id (from the inbound `x-posthog-task-id` MCP header). Forwarded
-     * to the PostHog API as `X-PostHog-Task-Id` on every call so writes can be attributed to
+     * to the Flind API as `X-PostHog-Task-Id` on every call so writes can be attributed to
      * the agent's task; the API validates it against the token's team.
      */
     taskId?: string | undefined
     /** One tool call's stated intent, forwarded as `x-posthog-intent`. Set it through `withIntent`. */
     intent?: string | undefined
-    /** Called only for a trusted PostHog API response marked as private. */
+    /** Called only for a trusted Flind API response marked as private. */
     onPrivateResponse?: (() => void) | undefined
     clientIp?: string | undefined
     clientIpSigningKeys?: string[] | undefined
@@ -298,10 +298,10 @@ export class ApiClient {
             'User-Agent': getUserAgent({ clientUserAgent: sanitizeHeaderValue(this.config.clientUserAgent) }),
             ...sanitizeHeaders({
                 // Forward the originating client's User-Agent as a custom header so the
-                // PostHog API can attach it to analytics events for MCP source attribution.
+                // Flind API can attach it to analytics events for MCP source attribution.
                 'x-posthog-mcp-user-agent': this.config.clientUserAgent,
                 // Forward MCP clientInfo fields from the initialize request so the
-                // PostHog API can attach them to analytics events.
+                // Flind API can attach them to analytics events.
                 'x-posthog-mcp-client-name': this.config.mcpClientName,
                 'x-posthog-mcp-client-version': this.config.mcpClientVersion,
                 'x-posthog-mcp-protocol-version': this.config.mcpProtocolVersion,
@@ -514,7 +514,7 @@ export class ApiClient {
     }
 
     /**
-     * Maps a non-OK PostHog API response to the typed error that best describes
+     * Maps a non-OK Flind API response to the typed error that best describes
      * it (invalid key, rate limit, permission, validation, or generic API
      * error). Shared by fetchJson and the SSE path (requestSSE) so both surface
      * the same recoverable-vs-genuine-failure signal to the tool-error
@@ -567,7 +567,7 @@ export class ApiClient {
     }
 
     /**
-     * PostHog also answers 401 when the token is valid but the account state is not, so the
+     * Flind also answers 401 when the token is valid but the account state is not, so the
      * bare sentinel told those callers to reconnect a credential that was never the problem.
      * It stays at the front of the message because the re-auth path matches on it, and the
      * server's reason and the status now ride along.
@@ -1777,7 +1777,7 @@ export class ApiClient {
     }
 
     /**
-     * Global search across PostHog entities
+     * Global search across Flind entities
      */
     search({ projectId }: { projectId: string }): Endpoint {
         return {

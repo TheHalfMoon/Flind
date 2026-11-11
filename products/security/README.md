@@ -12,7 +12,7 @@ This product pulls them, decides them in-process, and answers the hub's question
 - `facade.api.decide(subject, surface)` returns allow, block or exempt with the deciding rule.
   A posthog.com account is never blocked.
   A rule's scope picks the surfaces it decides. `all_access` covers `signup`, `app` and `ai_gateway`.
-- The `security-access-enforcement` flag in PostHog's own project turns refusals on per surface.
+- The `security-access-enforcement` flag in Flind's own project turns refusals on per surface.
   Its JSON payload maps each surface to a value, for example `{"signup": true, "app": false, "ai_gateway": false}`.
   A surface refuses requests only when its value is a literal `true`.
   Any other value, a missing payload or an unreadable flag leaves that surface logging only.

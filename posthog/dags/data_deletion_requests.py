@@ -329,7 +329,7 @@ def _get_affected_mat_columns(
     table while the DEFAULT expression lives on ``sharded_events`` (see
     ``materialize()`` in ee/clickhouse/materialized_columns), so we cannot
     filter by ``default_kind`` on the same row that carries the comment.
-    The comment itself is a sufficient identifier — it is PostHog-specific and the
+    The comment itself is a sufficient identifier — it is Flind-specific and the
     ``elements_chain::*`` family is excluded explicitly.
 
     Callers pass the target's Distributed read table, because that is where events keeps the

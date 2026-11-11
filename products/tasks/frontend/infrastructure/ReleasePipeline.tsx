@@ -140,7 +140,7 @@ export function ReleasePipeline({
                     />
                     <PipelineNode
                         id="dev_stack"
-                        title="PostHog dev stack"
+                        title="Flind dev stack"
                         subtitle={devStack?.name || 'Reading bake record'}
                         state={devStackState(sources)}
                         selected={selected}

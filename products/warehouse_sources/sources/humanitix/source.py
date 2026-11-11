@@ -48,7 +48,7 @@ class HumanitixSource(ResumableSource[HumanitixSourceConfig, HumanitixResumeConf
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Humanitix",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Humanitix API key to pull your Humanitix data into the PostHog Data warehouse.
+            caption="""Enter your Humanitix API key to pull your Humanitix data into the Flind Data warehouse.
 
 You can generate an API key under **Account → Advanced → Public API key** in the Humanitix dashboard. This single key grants read access to your events, tags, orders, and tickets.
 """,

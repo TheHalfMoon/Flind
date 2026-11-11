@@ -890,7 +890,7 @@ class SharingViewerPageViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSe
     4. Export downloading - used to download the actual content of an export if requested with the correct extension
     """
 
-    # Only use sharing-specific authentication, ignore regular PostHog auth
+    # Only use sharing-specific authentication, ignore regular Flind auth
     authentication_classes = [SharingPasswordProtectedAuthentication, SharingAccessTokenAuthentication]
     permission_classes = []
     # SharePasswordThrottle is deliberately not here - it's charged manually in retrieve(),

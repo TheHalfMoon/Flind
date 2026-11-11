@@ -80,7 +80,7 @@ class TestOpenSandboxMessage(APIBaseTest):
         assert result.just_created_run is True
         assert result.trace_id == "trace-1"
 
-        # Task.create_and_run called with the PostHog AI profile and no repo / no PR.
+        # Task.create_and_run called with the Flind AI profile and no repo / no PR.
         _, kwargs = m_car.call_args
         assert kwargs["profile"] == POSTHOG_AI
         assert kwargs["repository"] is None
@@ -91,7 +91,7 @@ class TestOpenSandboxMessage(APIBaseTest):
         # The sandbox session pins its short interactivity window as a per-task override.
         assert kwargs["inactivity_timeout_seconds"] == SANDBOX_INACTIVITY_TIMEOUT_SECONDS
 
-        # Run state enriched with the PostHog AI per-Run keys; full undeduped context.
+        # Run state enriched with the Flind AI per-Run keys; full undeduped context.
         run.refresh_from_db()
         assert run.state["interaction_origin"] == POSTHOG_AI_INTERACTION_ORIGIN
         assert run.state["systemPrompt"] == SYS_PROMPT

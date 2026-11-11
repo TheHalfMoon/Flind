@@ -437,7 +437,7 @@ You are an expert data analyst judging whether an agent built a notebook that fo
 analytical approach for the user's request. You are grading the *approach*, not whether the
 numbers are exactly right — a separate check confirms the cells actually ran.
 
-The agent works in a PostHog notebook. It writes `sql` cells (HogQL against product data) and
+The agent works in a Flind notebook. It writes `sql` cells (HogQL against product data) and
 `python` cells (pandas over the dataframes those SQL cells produce), and `markdown` cells for
 prose. Judge the cells it authored, in order, against the expected approach.
 

@@ -113,7 +113,7 @@ MAX_SERIES: Final = 1000
 # and short enough that groups which stopped reporting cannot hold every instance slot.
 ABSENT_RESOLVE_AFTER: Final = timedelta(hours=1)
 
-_UNEXPECTED_ERROR: Final = "Alert check failed unexpectedly. PostHog has been notified."
+_UNEXPECTED_ERROR: Final = "Alert check failed unexpectedly. Flind has been notified."
 _INVALID_CONFIG: Final = "The alert's configuration is no longer valid. Edit the alert to fix it."
 
 _COMPARE: Final[dict[str, Callable[[float, float], bool]]] = {

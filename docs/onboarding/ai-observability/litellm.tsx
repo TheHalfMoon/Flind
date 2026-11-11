@@ -13,7 +13,7 @@ export const getLiteLLMSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             content: (
                 <Blockquote>
                     <Markdown>
-                        **Note:** Use LiteLLM as a Python SDK or as a proxy server. PostHog observability requires
+                        **Note:** Use LiteLLM as a Python SDK or as a proxy server. Flind observability requires
                         LiteLLM version 1.77.3 or higher.
                     </Markdown>
                 </Blockquote>
@@ -52,12 +52,12 @@ export const getLiteLLMSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             ),
         },
         {
-            title: 'Configure PostHog observability',
+            title: 'Configure Flind observability',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Configure PostHog by setting your project token and host as well as adding `posthog` to your
+                        Configure Flind by setting your project token and host as well as adding `posthog` to your
                         LiteLLM callback handlers. You can find your project token in [your project
                         settings](https://app.posthog.com/settings/project).
                     </Markdown>
@@ -75,7 +75,7 @@ export const getLiteLLMSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                                     os.environ["POSTHOG_API_KEY"] = "<ph_project_token>"
                                     os.environ["POSTHOG_API_URL"] = "<ph_client_api_host>"  # Optional, defaults to https://app.posthog.com
 
-                                    # Enable PostHog callbacks
+                                    # Enable Flind callbacks
                                     litellm.success_callback = ["posthog"]
                                     litellm.failure_callback = ["posthog"]  # Optional: also log failures
                                 `,
@@ -111,7 +111,7 @@ export const getLiteLLMSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                 <>
                     <Markdown>
                         {dedent`
-                            When you use LiteLLM to call an LLM provider, PostHog automatically captures an
+                            When you use LiteLLM to call an LLM provider, Flind automatically captures an
                             \`$ai_generation\` event. Identity and trace data travel through \`metadata\`, since
                             LiteLLM has no dedicated \`posthog_trace_id\` parameter.
                         `}
@@ -135,7 +135,7 @@ export const getLiteLLMSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                                         messages=[{"role": "user", "content": "What's the weather in Paris?"}],
                                         tools=tools,
                                         metadata={
-                                            "user_id": "user_123",                # Maps to PostHog distinct_id
+                                            "user_id": "user_123",                # Maps to Flind distinct_id
                                             "company": "company_id_in_your_db",   # Custom property
                                             "$ai_session_id": "conversation-abc",
                                             "$ai_trace_id": trace_id,
@@ -176,7 +176,7 @@ export const getLiteLLMSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                                 - This works with streaming responses by setting \`stream=True\`.
                                 - To disable logging for specific requests, add \`{"no-log": true}\` to metadata.
                                 - Pass \`$ai_session_id\` in metadata to group calls from the same conversation into
-                                  one PostHog session.
+                                  one Flind session.
                                 - If you want to capture LLM events anonymously, **do not** pass a \`user_id\` in metadata.
 
                                 See our docs on [anonymous vs identified events](https://posthog.com/docs/data/anonymous-vs-identified-events) to learn more.
@@ -244,7 +244,7 @@ export const getLiteLLMSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             content: (
                 <>
                     <Markdown>
-                        PostHog can also capture embedding generations as `$ai_embedding` events through LiteLLM:
+                        Flind can also capture embedding generations as `$ai_embedding` events through LiteLLM:
                     </Markdown>
 
                     <CodeBlock
@@ -257,7 +257,7 @@ export const getLiteLLMSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                                         input="The quick brown fox",
                                         model="text-embedding-3-small",
                                         metadata={
-                                            "user_id": "user_123",  # Maps to PostHog distinct_id
+                                            "user_id": "user_123",  # Maps to Flind distinct_id
                                             "company": "company_id_in_your_db"  # Custom property
                                         }
                                     )

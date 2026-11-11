@@ -1,6 +1,6 @@
 # Chart widget
 
-A home-screen widget for iOS and Android that shows a pinned insight from the Views tab and reads PostHog by itself.
+A home-screen widget for iOS and Android that shows a pinned insight from the Views tab and reads Flind by itself.
 See the sections below for the store contract, the fetch rules and the identifiers.
 
 The widget shows one pin as a number, chart or compact rows (small and medium), or one pin plus up to two extra tiles (large). Number widgets center a large value and its change. Charts show a formatted headline, date endpoints and labeled value bounds; a single-series chart without an aggregate labels its headline “Latest”. Medium and large charts keep the full saved series (up to 60 points), rather than silently cropping to the last 14. Refresh age stays secondary to the data. A dashboard pin shows its selected insight. Numbers preserve saved currency, percentage, prefix, suffix and precision settings; text and boolean SQL values remain text.
@@ -215,12 +215,12 @@ The widget only reads what the server already computed: never `blocking`, never 
 | Answer                               | Error kind     | Render                                                              |
 | ------------------------------------ | -------------- | ------------------------------------------------------------------- |
 | 200 with `result` and no query error | none (cleared) | The new snapshot                                                    |
-| 401, 403, or an expired token        | `auth`         | "Open PostHog to update"                                            |
+| 401, 403, or an expired token        | `auth`         | "Open Flind to update"                                            |
 | 404                                  | `not_found`    | "<name> was unpinned or deleted." and how to pick another pin       |
 | 429, 503                             | `rate_limited` | The cached snapshot                                                 |
 | No connection                        | `network`      | The cached snapshot                                                 |
 | A response the parser cannot read    | `bad_data`     | The cached snapshot, else the error                                 |
-| 200 with `result: null`, no error    | `no_result`    | The cached snapshot, else "Open it in PostHog to load this insight" |
+| 200 with `result: null`, no error    | `no_result`    | The cached snapshot, else "Open it in Flind to load this insight" |
 
 ### Cadence
 
@@ -234,14 +234,14 @@ The widget only reads what the server already computed: never `blocking`, never 
 | State                      | Text                                                                                                                           |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | No supported pins          | "No chart pins available", then "Open Views to pin an insight or choose a dashboard tile"                                      |
-| No credentials, demo mode  | "Sign in to see your pins", then "Open PostHog to sign in"                                                                     |
-| Expired or rejected token  | "Open PostHog to update"                                                                                                       |
+| No credentials, demo mode  | "Sign in to see your pins", then "Open Flind to sign in"                                                                     |
+| Expired or rejected token  | "Open Flind to update"                                                                                                       |
 | Pin missing from catalog   | "<name> is no longer pinned"                                                                                                   |
-| Catalog of another project | "In another project", then "Switch to <projectName> in PostHog"                                                                |
+| Catalog of another project | "In another project", then "Switch to <projectName> in Flind"                                                                |
 | Pin from another project   | iOS: a pin missing from the catalog whose `chart.pinProject` marker names another project. Same text, with that project's name |
 | Ineligible pin             | The pin's `reason`                                                                                                             |
 | First read pending         | The title, "Loading…" and a placeholder sparkline. Only for a pin never read                                                   |
-| No cached result           | The title, then "Open it in PostHog to load this insight"; links to the insight                                                |
+| No cached result           | The title, then "Open it in Flind to load this insight"; links to the insight                                                |
 
 A state links to `<scheme>://views`; a selected pin that is still loading and a chart link to the pin's view with `from=widget` (see "How it works").
 The scheme is `posthog`, `posthog-dev` or `posthog-preview` by build variant (`src/lib/appVariants.json`).
@@ -339,13 +339,13 @@ Catalog changes discard snapshots and errors for removed pins or changed insight
 2. Eligible pins are radio rows (name and the catalog `subtitle`). Ineligible pins follow, grayed, under "Can't show on the widget" with their `reason`.
 3. "Also show (large widget)" offers checkboxes for up to two more eligible pins, never the chosen one.
 4. Done writes `chart.widget.<id>`, calls `refreshAll`, and returns `RESULT_OK` with the widget id.
-5. Signed out: "Sign in to PostHog to see your pins". No pins: "Pin a dashboard or insight in Views first". Both offer "Open PostHog".
+5. Signed out: "Sign in to Flind to see your pins". No pins: "Pin a dashboard or insight in Views first". Both offer "Open Flind".
 6. `widgetFeatures="reconfigurable"` lets Android 12+ reopen the screen from a long press; it preselects the current choice.
 
 ## Chart widget (iOS)
 
 The iOS widget is a second kind in the `HedgehogWidget` extension (`targets/HedgehogWidget/`).
-It reads encrypted catalog and snapshot values from the App Group suite and their key and credentials from the keychain, and it reads PostHog itself.
+It reads encrypted catalog and snapshot values from the App Group suite and their key and credentials from the keychain, and it reads Flind itself.
 
 | File                                           | What it holds                                                                                                                  |
 | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |

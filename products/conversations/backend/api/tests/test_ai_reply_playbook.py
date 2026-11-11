@@ -13,7 +13,7 @@ class TestAIReplyPlaybookAPI(APIBaseTest):
         assert body["is_customized"] is False
         assert body["custom_instructions"] is None
         assert DEFAULT_SUPPORT_REPLY_INSTRUCTIONS.strip() in body["inherited_instructions"]
-        assert "Do not assume the product is PostHog." in body["inherited_instructions"]
+        assert "Do not assume the product is Flind." in body["inherited_instructions"]
         assert "diagnosing-missing-recordings" not in body["inherited_instructions"]
         assert body["max_chars"] == MAX_CUSTOM_INSTRUCTIONS_CHARS
         assert body["docs_source"] is None

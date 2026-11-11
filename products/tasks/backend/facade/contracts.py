@@ -138,7 +138,7 @@ class SignalImplementationRunDTO:
     """Identity of a signals-origin ("self-driving") implementation run that produced a PR.
 
     Returned by ``find_signal_implementation_run``. Consumers (stamphog's inbox carve-out) use it
-    to confirm a bot-authored PR is a PostHog Code self-driving implementation and to find whose
+    to confirm a bot-authored PR is a Flind Code self-driving implementation and to find whose
     review preferences apply.
     """
 
@@ -701,7 +701,7 @@ class SlackThreadContextThreadDTO:
 
 @dataclass(frozen=True)
 class SlackThreadContextTaskDTO:
-    """The PostHog Task linked to a Slack thread."""
+    """The Flind Task linked to a Slack thread."""
 
     id: str
     team_id: int
@@ -983,7 +983,7 @@ class WorkflowTaskRateLimits:
 class WorkflowTaskSlackContext:
     """The Slack thread whose message triggered the workflow run, so the task reports back there.
 
-    ``integration_id`` is the PostHog integration pk stamped on the trigger event;
+    ``integration_id`` is the Flind integration pk stamped on the trigger event;
     ``slack_team_id`` is the Slack workspace id, kept as a fallback for re-resolving the
     integration when the stamped pk is stale. ``slack_user_id`` is empty when a bot
     posted the triggering message. ``message_ts`` is the triggering message itself,
@@ -1170,7 +1170,7 @@ class SandboxRunStarter:
 
 @dataclass(frozen=True, kw_only=True)
 class RunPlan:
-    """The user plan a run bills to in place of PostHog credits."""
+    """The user plan a run bills to in place of Flind credits."""
 
     plan_name: str
     owner_user_id: int | None

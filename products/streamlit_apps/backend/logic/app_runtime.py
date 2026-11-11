@@ -80,7 +80,7 @@ def _boot_step(step: str) -> Iterator[None]:
 
 
 def _get_sandbox_callback_url() -> str:
-    """URL that sandboxes use to call back to PostHog (OAuth introspect, bridge queries).
+    """URL that sandboxes use to call back to Flind (OAuth introspect, bridge queries).
 
     Docker sandboxes reach the host directly via host.docker.internal (applied by
     DockerSandbox to SITE_URL), so they ignore STREAMLIT_SANDBOX_CALLBACK_URL — that

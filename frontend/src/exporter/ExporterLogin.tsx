@@ -151,7 +151,7 @@ export function ExporterLogin(props: ExporterLoginProps): JSX.Element {
     const { isLoginSubmitting, generalError, isSuccess } = useValues(loginLogic())
 
     return (
-        // A white-labelled share shows no PostHog branding, so it drops the corner notes and the logo
+        // A white-labelled share shows no Flind branding, so it drops the corner notes and the logo
         <AuthScene notes={props.whitelabel ? [] : AUTH_NOTES.exporter.default}>
             <AuthSceneCard top={props.whitelabel ? null : undefined} footer={<SupportModalButton />}>
                 <AuthCardTitle

@@ -49,7 +49,7 @@ _ORDERING_CHOICES = [
 
 
 class CustomerTaskUserSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True, help_text="PostHog user ID.")
+    id = serializers.IntegerField(read_only=True, help_text="Flind user ID.")
     email = serializers.EmailField(read_only=True, help_text="Email address of the user.")
     first_name = serializers.CharField(read_only=True, help_text="First name of the user.")
     last_name = serializers.CharField(read_only=True, help_text="Last name of the user.")
@@ -105,7 +105,7 @@ class CustomerTaskCreateSerializer(serializers.Serializer):
         required=False, allow_null=True, allow_blank=True, help_text="Task description, or null to leave it empty."
     )
     assigned_to_id = serializers.IntegerField(
-        required=False, allow_null=True, help_text="PostHog user ID to assign, or null to leave unassigned."
+        required=False, allow_null=True, help_text="Flind user ID to assign, or null to leave unassigned."
     )
     due_at = serializers.DateTimeField(
         required=False, allow_null=True, help_text="ISO 8601 deadline, or null for no deadline."

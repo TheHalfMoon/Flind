@@ -22,7 +22,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "cost_type": "Cost basis the budget is measured against. CloudZero only supports `real_cost`.",
             "planned_limits": "Planned spend per period, mapping each period's ISO start date to an `amount`.",
             "alerts": "Alert configuration, mapping a percentage of the planned limit to `Y` or `N`.",
-            "current": "Actual and planned spend for the current period, returned because PostHog requests `expand=current`.",
+            "current": "Actual and planned spend for the current period, returned because Flind requests `expand=current`.",
             "created": "Unix epoch timestamp of when the budget was created.",
             "last_updated": "Unix epoch timestamp of the last change to the budget.",
         },

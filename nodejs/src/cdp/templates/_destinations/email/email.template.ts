@@ -6,7 +6,7 @@ export const template: HogFunctionTemplate = {
     type: 'destination',
     id: 'template-email',
     name: 'Email',
-    description: 'Sends an email via PostHog email service',
+    description: 'Sends an email via Flind email service',
     icon_url: '/static/posthog-icon.svg',
     category: ['Custom'],
     code: `

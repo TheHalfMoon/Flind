@@ -91,7 +91,7 @@ handling for context, but don't raise contract / security findings on them.
 
 - Logic and correctness errors → Logic & Correctness
 - Performance optimizations and error-handling completeness → Performance & Reliability
-- Code style or formatting → not a PostHog Review concern
+- Code style or formatting → not a Flind Review concern
 
 ## Key questions
 

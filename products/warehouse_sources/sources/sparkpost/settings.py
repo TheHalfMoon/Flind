@@ -306,7 +306,7 @@ WEBHOOK_EVENT_TYPES = [
 ]
 
 # Name given to the webhook we register, so it is recognisable in the SparkPost UI.
-WEBHOOK_NAME = "PostHog data warehouse"
+WEBHOOK_NAME = "Flind data warehouse"
 
 # SparkPost POSTs a *batch* of events per delivery, but a Hog function may only produce one
 # payload per request. The template therefore hands the whole batch over as a JSON string under

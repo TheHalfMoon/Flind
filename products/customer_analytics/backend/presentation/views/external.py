@@ -273,7 +273,7 @@ def _authenticate_team_for_update(request: Request) -> tuple[Team, None] | tuple
 
 
 class ExternalAccountAssignmentSerializer(serializers.Serializer):
-    user_id = serializers.IntegerField(help_text="PostHog user id of the assigned user.")
+    user_id = serializers.IntegerField(help_text="Flind user id of the assigned user.")
     email = serializers.CharField(help_text="Email address of the assigned user.")
 
 
@@ -489,7 +489,7 @@ class ExternalAccountListQuerySerializer(serializers.Serializer):
 
 
 class ExternalAccountListAssignmentSerializer(serializers.Serializer):
-    user_id = serializers.IntegerField(help_text="PostHog user id of the assigned user.")
+    user_id = serializers.IntegerField(help_text="Flind user id of the assigned user.")
     email = serializers.CharField(help_text="Current email address of the assigned user.")
     name = serializers.CharField(
         allow_null=True,

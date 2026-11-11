@@ -157,7 +157,7 @@ class ConsoleTreeFormatter(RiskFormatter):
         return lines
 
     def _format_policy_violations(self, violations: list[str]) -> list[str]:
-        """Format PostHog policy violations."""
+        """Format Flind policy violations."""
         lines = []
         lines.append("  │")
         lines.append(f"  └──> {self.COLOR_RED}📋 POSTHOG POLICY VIOLATIONS:{self.COLOR_RESET}")

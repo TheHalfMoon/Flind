@@ -23,7 +23,7 @@ class _PandaDocUnavailable(exceptions.APIException):
 
     status_code = status.HTTP_503_SERVICE_UNAVAILABLE
     default_detail = (
-        "Couldn't cancel the PandaDoc envelope. Please try again, or contact PostHog support if this keeps happening."
+        "Couldn't cancel the PandaDoc envelope. Please try again, or contact Flind support if this keeps happening."
     )
     default_code = "legal_document_void_failed"
 
@@ -124,7 +124,7 @@ class LegalDocumentViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             raise exceptions.NotFound()
         except api.LegalDocumentAlreadySigned:
             raise exceptions.PermissionDenied(
-                "Signed documents can't be deleted from the UI. Contact PostHog support if you need to remove a signed record."
+                "Signed documents can't be deleted from the UI. Contact Flind support if you need to remove a signed record."
             )
         except api.LegalDocumentVoidFailed:
             raise _PandaDocUnavailable()

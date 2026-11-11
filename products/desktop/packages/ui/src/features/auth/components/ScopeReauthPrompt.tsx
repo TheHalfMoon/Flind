@@ -42,7 +42,7 @@ export function ScopeReauthPrompt() {
           </Flex>
           <Dialog.Description>
             <Text color="gray" className="text-sm">
-              PostHog has been updated with new features that require additional
+              Flind has been updated with new features that require additional
               permissions. Please sign in again to continue.
             </Text>
           </Dialog.Description>

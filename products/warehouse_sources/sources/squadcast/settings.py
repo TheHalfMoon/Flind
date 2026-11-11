@@ -31,7 +31,7 @@ class SquadcastEndpointConfig:
     partition_key: Optional[str] = None  # Stable datetime field used to partition (never a mutable field)
     incremental_fields: list[IncrementalField] = field(default_factory=list)
     # Credential-bearing row fields dropped before rows are yielded, so live keys never
-    # land in warehouse tables readable by any PostHog user.
+    # land in warehouse tables readable by any Flind user.
     sensitive_fields: tuple[str, ...] = ()
 
 

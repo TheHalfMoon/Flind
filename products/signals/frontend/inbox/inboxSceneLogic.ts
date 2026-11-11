@@ -1422,7 +1422,7 @@ export const inboxSceneLogic = kea<inboxSceneLogicType>([
                     // A `back` pointing at triage means the open came from the triage card's "Full
                     // report" link, which navigates by URL rather than through `openCurrent`; attribute
                     // it to triage so the metric isn't split with plain list clicks. Otherwise: a link
-                    // PostHog wrote, or a first route before any list URL was seen, is a deep-link,
+                    // Flind wrote, or a first route before any list URL was seen, is a deep-link,
                     // else an in-app click. A tab that already saw the list can still open a link.
                     const fromTriage =
                         typeof searchParams.back === 'string' && searchParams.back.startsWith(urls.inboxTriage())

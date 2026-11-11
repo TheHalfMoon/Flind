@@ -14,7 +14,7 @@ import { DEFAULT_SKILLS_TAB_KEY, skillTabUrl, skillTabsLogic, visibleCategoryTab
 /** Tab key for the Community scene, and its `/skills/<key>` URL segment. */
 export const COMMUNITY_SKILLS_TAB_KEY = 'community'
 
-export const COMMUNITY_SKILLS_TAB_DESCRIPTION = 'Discover and install agent skills shared by the PostHog community.'
+export const COMMUNITY_SKILLS_TAB_DESCRIPTION = 'Discover and install agent skills shared by the Flind community.'
 
 /**
  * Shared shell for every Skills tab. It renders uncategorized, product-specific, and community

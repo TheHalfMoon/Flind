@@ -153,7 +153,7 @@ function regionFromUrl(url?: string): Region | undefined {
 
 // A verified ticket on these channels holds an attested identity that the admin user search matches:
 // the signed distinct ID of a widget request, or the sender's address. A GitHub ticket holds a GitHub
-// login in distinct_id, which matches no PostHog user.
+// login in distinct_id, which matches no Flind user.
 const ATTESTED_LOOKUP_CHANNELS: TicketChannel[] = ['widget', 'email', 'slack', 'teams']
 
 export function getImpersonationTicketContext(
@@ -1245,7 +1245,7 @@ export const supportTicketSceneLogic = kea<supportTicketSceneLogicType>([
                             message.created_by.email ||
                             'Support'
                     } else if (authorType === 'AI') {
-                        displayName = 'PostHog Assistant'
+                        displayName = 'Flind Assistant'
                     } else {
                         // Per-message author identity (e.g. Zendesk import stores each comment's own
                         // author) takes precedence over the ticket-level requester, so a reply from a

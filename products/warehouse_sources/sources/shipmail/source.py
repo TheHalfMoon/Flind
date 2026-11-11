@@ -40,7 +40,7 @@ class ShipmailSource(ResumableSource[ShipmailSourceConfig, ShipmailResumeConfig]
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Shipmail",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Shipmail API key to sync email activity, newsletters, subscribers, and members into the PostHog Data warehouse.
+            caption="""Enter your Shipmail API key to sync email activity, newsletters, subscribers, and members into the Flind Data warehouse.
 
 Grant the key the read scopes for the tables you want to sync: `messages:read`, `mailboxes:read`, `domains:read`, `suppressions:read`, `threads:read`, `newsletters:read`, `audiences:read`, and `members:read`. Threads also require `mailboxes:read` to list their mailboxes.""",
             iconPath="/static/services/shipmail.png",

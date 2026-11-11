@@ -41,7 +41,7 @@ async function deliver(data: Record<string, unknown>): Promise<Notifications.Not
             identifier: `push-${identifier++}`,
             trigger: { type: 'push' },
             content: {
-                title: 'PostHog',
+                title: 'Flind',
                 subtitle: null,
                 body: 'Report update',
                 data,

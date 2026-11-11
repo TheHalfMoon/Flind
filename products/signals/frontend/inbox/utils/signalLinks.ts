@@ -6,7 +6,7 @@ import { INBOX_SOURCE_OPTIONS } from '../filterOptions'
 import { safeHttpUrl } from './reportPresentation'
 
 /**
- * Deep link into the PostHog product an entity came from, or null when the product has no entity
+ * Deep link into the Flind product an entity came from, or null when the product has no entity
  * page or the entity id is missing. `logs` has no per-entity page, so it links to the logs scene.
  */
 export function signalEntityUrl(sourceProduct: string, entityId?: string | null): string | null {
@@ -54,7 +54,7 @@ const EXTRA_URL_KEYS = ['html_url', 'url', 'web_url', 'permalink', 'link'] as co
 export interface SignalLink {
     to: string
     label: string
-    /** True for a link that leaves PostHog, so callers open it in a new tab. */
+    /** True for a link that leaves Flind, so callers open it in a new tab. */
     external: boolean
 }
 
@@ -66,7 +66,7 @@ function sourceProductLabel(sourceProduct: string): string {
 
 /**
  * Best available link for a signal that has no dedicated card, or whose `extra` doesn't satisfy
- * that card's guard: a PostHog entity page from `(source_product, source_id)` first, then an
+ * that card's guard: a Flind entity page from `(source_product, source_id)` first, then an
  * http(s) URL the emitter put on `extra`. Relative paths on `extra` are ignored because, without
  * a product to anchor them, there is no way to tell a real route from an emitter's internal key.
  */

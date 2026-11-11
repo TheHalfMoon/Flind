@@ -205,10 +205,10 @@ export function ScoutSlackDestination({
                         <>
                             <span className="text-[11.5px] text-muted">
                                 {hasChannel
-                                    ? 'PostHog must be in the channel. Invite it with '
+                                    ? 'Flind must be in the channel. Invite it with '
                                     : hasUsers
-                                      ? 'Direct messages stay on until you pick a channel to replace them. PostHog must be in the channel. Invite it with '
-                                      : 'Pick a channel to turn notifications on. PostHog must be in the channel. Invite it with '}
+                                      ? 'Direct messages stay on until you pick a channel to replace them. Flind must be in the channel. Invite it with '
+                                      : 'Pick a channel to turn notifications on. Flind must be in the channel. Invite it with '}
                                 <code>/invite @PostHog</code>.
                             </span>
                             {configuredIntegration && hasChannel ? (
@@ -226,10 +226,10 @@ export function ScoutSlackDestination({
                     ) : (
                         <span className="text-[11.5px] text-muted">
                             {hasUsers
-                                ? `Each person gets their own direct message from the PostHog app (up to ${MAX_DM_RECIPIENTS} people).`
+                                ? `Each person gets their own direct message from the Flind app (up to ${MAX_DM_RECIPIENTS} people).`
                                 : hasChannel
-                                  ? `The channel stays on until you pick up to ${MAX_DM_RECIPIENTS} people to replace it. Each person gets their own direct message from the PostHog app.`
-                                  : `Pick up to ${MAX_DM_RECIPIENTS} people to turn notifications on. Each person gets their own direct message from the PostHog app.`}
+                                  ? `The channel stays on until you pick up to ${MAX_DM_RECIPIENTS} people to replace it. Each person gets their own direct message from the Flind app.`
+                                  : `Pick up to ${MAX_DM_RECIPIENTS} people to turn notifications on. Each person gets their own direct message from the Flind app.`}
                         </span>
                     )}
                 </div>

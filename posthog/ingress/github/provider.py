@@ -1,6 +1,6 @@
-"""GitHub App deliveries, for every App PostHog runs.
+"""GitHub App deliveries, for every App Flind runs.
 
-Two apps share this incarnation: the customer-facing PostHog App (`posthog`, secret in
+Two apps share this incarnation: the customer-facing Flind App (`posthog`, secret in
 instance settings so an operator can rotate it without a deploy) and the Stamphog review App
 (`stamphog`, secret in env because it is instance-wide infrastructure). Both secrets are read from
 the credentials service first, and from those settings while the service does not hold them.
@@ -126,7 +126,7 @@ def _run_installation_repositories(delivery: WebhookDelivery) -> None:
     handle_installation_repositories_event(dict(delivery.payload))
 
 
-# Core owns the installation lifecycle: it is what keeps PostHog's own integration rows in
+# Core owns the installation lifecycle: it is what keeps Flind's own integration rows in
 # step with GitHub, so no product registers it.
 CORE_CONSUMERS = (
     WebhookConsumer(

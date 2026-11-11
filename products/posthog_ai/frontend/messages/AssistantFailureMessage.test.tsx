@@ -22,7 +22,7 @@ describe.each([
     it('falls back when no failure message is supplied', () => {
         render(wrap(<AssistantFailureMessage id="failure-1" content={null} />))
 
-        expect(screen.getByText('*PostHog AI has failed to generate an answer. Please try again.*')).toBeInTheDocument()
+        expect(screen.getByText('*Flind AI has failed to generate an answer. Please try again.*')).toBeInTheDocument()
     })
 
     it('renders an optional action', () => {

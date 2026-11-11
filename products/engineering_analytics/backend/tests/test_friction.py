@@ -43,7 +43,7 @@ def _pr(author: str, number: int, **friction: Any) -> PullRequestFriction:
         **friction,
     }
     return PullRequestFriction(
-        number=number, repo_owner="PostHog", repo_name="posthog", author=author, author_avatar_url="", **values
+        number=number, repo_owner="Flind", repo_name="posthog", author=author, author_avatar_url="", **values
     )
 
 

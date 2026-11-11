@@ -1,4 +1,4 @@
-// Portable LLM analytics message normalizer + recipe DSL. Shared by the PostHog frontend
+// Portable LLM analytics message normalizer + recipe DSL. Shared by the Flind frontend
 // (products/ai_observability) and headless runtimes (services/mcp) — keep it free of
 // browser- and app-coupled imports.
 

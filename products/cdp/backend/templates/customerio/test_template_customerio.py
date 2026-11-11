@@ -44,7 +44,7 @@ class TestTemplateCustomerio(BaseHogFunctionTemplateTest):
             {
                 "method": "POST",
                 "headers": {
-                    "User-Agent": "PostHog Customer.io App",
+                    "User-Agent": "Flind Customer.io App",
                     "Authorization": "Basic U0lURV9JRDpUT0tFTg==",
                     "Content-Type": "application/json",
                 },
@@ -72,7 +72,7 @@ class TestTemplateCustomerio(BaseHogFunctionTemplateTest):
             {
                 "method": "POST",
                 "headers": {
-                    "User-Agent": "PostHog Customer.io App",
+                    "User-Agent": "Flind Customer.io App",
                     "Authorization": "Basic U0lURV9JRDpUT0tFTg==",
                     "Content-Type": "application/json",
                 },

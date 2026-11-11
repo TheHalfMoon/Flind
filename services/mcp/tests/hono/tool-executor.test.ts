@@ -522,7 +522,7 @@ describe('ToolExecutor', () => {
 
         it.each([
             {
-                connection: 'the PostHog app for ChatGPT and Codex',
+                connection: 'the Flind app for ChatGPT and Codex',
                 oauthClientId: CHATGPT_APP_OAUTH_CLIENT_ID,
                 reconnectHint: true,
             },
@@ -551,7 +551,7 @@ describe('ToolExecutor', () => {
                 expect(project.available).toBe(false)
                 expect(project.reason).toContain('llm_skill:read')
                 if (reconnectHint) {
-                    expect(project.reason).toContain('disconnect the PostHog app in ChatGPT or Codex')
+                    expect(project.reason).toContain('disconnect the Flind app in ChatGPT or Codex')
                 } else {
                     expect(project.reason).not.toMatch(/ChatGPT|Codex/)
                     expect(project.reason).toContain('Reconnect with that scope')
@@ -610,7 +610,7 @@ describe('ToolExecutor', () => {
                 )
 
                 expect(JSON.stringify(other.tools)).toBe(JSON.stringify(result.tools))
-                expect(commandDesc).toContain('PostHog tools have lowercase kebab-case naming')
+                expect(commandDesc).toContain('Flind tools have lowercase kebab-case naming')
                 expect(commandDesc.includes('**LEARN FIRST: HARD REQUIREMENT**')).toBe(isClaudeChatHost)
                 expect(commandDesc.includes('- analytics:')).toBe(isClaudeChatHost)
                 expect(commandDesc.includes('### Retrieving data')).toBe(!isClaudeChatHost)
@@ -1014,7 +1014,7 @@ describe('ToolExecutor', () => {
             )) as any
 
             expect(result.isError).toBe(true)
-            expect(result.content[0].text).toContain("Missing PostHog API scope: 'person:read'")
+            expect(result.content[0].text).toContain("Missing Flind API scope: 'person:read'")
             expect(result._meta).toBeUndefined()
         })
     })

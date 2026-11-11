@@ -357,7 +357,7 @@ def validate_credentials(project: str, api_key: str, protocol_version: str) -> t
         if e.retryable:
             return (
                 False,
-                "PostHog couldn't reach Framer to check your project. This is usually temporary, so wait a moment and try again.",
+                "Flind couldn't reach Framer to check your project. This is usually temporary, so wait a moment and try again.",
             )
         return (
             False,

@@ -1131,7 +1131,7 @@ export const marketingAnalyticsLogic = kea<marketingAnalyticsLogicType>([
                             ...table,
                             name: table.name,
                             url_pattern: table.url_pattern || '',
-                            // An adopted table reads PostHog's storage, so only its source names the provider.
+                            // An adopted table reads Flind's storage, so only its source names the provider.
                             source_type: table.source?.source_type || mapUrlToProvider(table.url_pattern),
                             source_map_id: sourceMapId,
                             source_prefix: table.source?.prefix || '',

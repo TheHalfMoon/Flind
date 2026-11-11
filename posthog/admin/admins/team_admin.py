@@ -348,7 +348,7 @@ class TeamAdmin(admin.ModelAdmin):
             return "-"
         return MovedToConsole.team_action(team, "group-types", "View and edit group types")
 
-    @admin.display(description="PostHog system internal properties")
+    @admin.display(description="Flind system internal properties")
     def internal_properties(self, team: Team):
         from posthog import settings
         from posthog.rate_limit import team_is_allowed_to_bypass_throttle

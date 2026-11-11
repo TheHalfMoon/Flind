@@ -17,7 +17,7 @@ class UUIDT(uuid.UUID):
     """
     Deprecated, you probably want to use UUIDv7 instead. As of May 2024 the latest RFC with the UUIDv7 spec is at
     Proposed Standard (see RFC9562 https://www.rfc-editor.org/rfc/rfc9562#name-uuid-version-7). This class was written
-    well before that, is still in use in PostHog, but should not be used for new columns / models / features / etc.
+    well before that, is still in use in Flind, but should not be used for new columns / models / features / etc.
 
     UUID (mostly) sortable by generation time.
 

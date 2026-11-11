@@ -126,7 +126,7 @@ def credential_type_field() -> serializers.ChoiceField:
         help_text=(
             "Kind of credential that authenticated the request that made the change. 'unattributed' means "
             "the request recorded no credential. Null for changes made outside a request, such as "
-            "background jobs, and for entries recorded before PostHog stored the credential."
+            "background jobs, and for entries recorded before Flind stored the credential."
         ),
     )
 

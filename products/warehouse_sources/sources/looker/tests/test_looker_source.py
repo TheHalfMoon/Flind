@@ -86,4 +86,4 @@ def test_connection_failure_returns_guidance_without_exposing_credentials() -> N
     with scripted_network(respond):
         valid, error = LookerSource().validate_credentials(config, 1)
     assert not valid
-    assert error == "PostHog could not connect to Looker. Check the instance URL and its TLS certificate."
+    assert error == "Flind could not connect to Looker. Check the instance URL and its TLS certificate."

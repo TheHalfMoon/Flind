@@ -308,7 +308,7 @@ class EmitClassifierTagsInputs(BaseModel, frozen=True):
 
 
 class EmitObservationSignalInputs(BaseModel, frozen=True):
-    """Input to the side-effect activity that emits the side-mission findings as PostHog Signals."""
+    """Input to the side-effect activity that emits the side-mission findings as Flind Signals."""
 
     team_id: int
     observation_id: UUID

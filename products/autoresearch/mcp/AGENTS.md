@@ -1,6 +1,6 @@
 # MCP tools
 
-The `autoresearch-*` tool surface. Unusually for a PostHog product, these tools are not primarily for users or for Max — **they are how the training agent operates the product on itself.**
+The `autoresearch-*` tool surface. Unusually for a Flind product, these tools are not primarily for users or for Max — **they are how the training agent operates the product on itself.**
 
 During a run, the sandbox agent has no other write path. It records iterations, materializes features, uploads its bundle, and finalizes its run entirely through these tools. Everything a tool description does not say, the agent has to guess.
 
@@ -18,7 +18,7 @@ Tools are opt-in: `pnpm --filter=@flind/mcp run scaffold-yaml -- --candidates --
 
 `autoresearch-training-runs-iterations-create`, `-materialize-features`, `-artifacts-upload-create`, `-artifacts-get-create`, `-artifacts-retrieve`, `-complete-create`, `-history`.
 
-**Bring-your-own agents** — an agent that trains outside PostHog (for example on a laptop) calls `autoresearch-training-runs-create` to open a run, then the agent-facing tools above except `-materialize-features`, which writes into a PostHog sandbox; it pulls data with `execute-sql` instead. A sandbox request to open a run is refused.
+**Bring-your-own agents** — an agent that trains outside Flind (for example on a laptop) calls `autoresearch-training-runs-create` to open a run, then the agent-facing tools above except `-materialize-features`, which writes into a Flind sandbox; it pulls data with `execute-sql` instead. A sandbox request to open a run is refused.
 
 **User-facing** — creating and inspecting pipelines: `autoresearch-resolve-template-create`, `-validate-create`, `-create`, `-train-create`, `-score-create`, `-list`, `-retrieve`, `-training-runs-list`, `-online-performance-retrieve` (realized metrics per model per validated date), `-suggestions-create`, `-suggestions-list` (to read the agent's response).
 
@@ -34,7 +34,7 @@ The descriptions here already do real work, and that is the standard to hold. Ex
 
 - `autoresearch-create` spells out the mutual exclusion — pass `target_event` _or_ `target_definition`, exactly one — and names the next call (`autoresearch-train-create`).
 - It also tells the caller to run `autoresearch-validate-create` first _and_ warns that the endpoint does not block on validation errors, so the model knows the check is advisory.
-- `autoresearch-train-create` says what happens to the existing champion on a retrain and names every refusal (run in progress, paused pipeline, no PostHog Desktop access).
+- `autoresearch-train-create` says what happens to the existing champion on a retrain and names every refusal (run in progress, paused pipeline, no Flind Desktop access).
 
 Write for a model that has read nothing else. Name the prerequisite call, the next call, and the failure mode.
 

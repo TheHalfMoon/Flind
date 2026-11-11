@@ -36,7 +36,7 @@ interface OnboardingInstallStepProps {
 
 /**
  * Onboarding install step — wizard-centered layout for non-Logs products, bare
- * SDK grid for Logs (which uses OpenTelemetry, not the PostHog JS wizard).
+ * SDK grid for Logs (which uses OpenTelemetry, not the Flind JS wizard).
  */
 export const OnboardingInstallStep: OnboardingStepComponentType<OnboardingInstallStepProps> = ({
     sdkInstructionMap,
@@ -184,7 +184,7 @@ export const OnboardingInstallStep: OnboardingStepComponentType<OnboardingInstal
         return <WizardInstallStep {...variantProps} />
     }
 
-    // Logs: bare SDK grid — OpenTelemetry, not the PostHog JS wizard.
+    // Logs: bare SDK grid — OpenTelemetry, not the Flind JS wizard.
     return (
         <OnboardingStep
             title={installTitle}

@@ -193,7 +193,7 @@ export interface ReportSignalView {
 
 export interface ActivityEvent {
     id: string
-    /** Sentence with `**bold**` segments, for example "Alex Kim handed off to **PostHog**". */
+    /** Sentence with `**bold**` segments, for example "Alex Kim handed off to **Flind**". */
     text: string
     at: string
     via?: string
@@ -273,7 +273,7 @@ export type ReportStatus =
 
 export type ReportPriority = 'P0' | 'P1' | 'P2' | 'P3' | 'P4'
 
-/** Who owns the report now. `agent` covers PostHog's own tasks and external agents such as Claude Code. */
+/** Who owns the report now. `agent` covers Flind's own tasks and external agents such as Claude Code. */
 export type ReportOwner = { kind: 'none' } | { kind: 'user' | 'agent'; name: string }
 
 export interface ReportView {
@@ -387,7 +387,7 @@ export interface QueryState<T> {
 
 export type ChatSessionStatus = 'working' | 'queued' | 'starting' | 'completed' | 'failed' | 'stopped' | 'idle'
 
-/** Where a session started: a PostHog AI chat, a report hand-off, or anything else. */
+/** Where a session started: a Flind AI chat, a report hand-off, or anything else. */
 export type ChatOrigin = 'chat' | 'report' | 'session'
 
 export interface ChatListItem {

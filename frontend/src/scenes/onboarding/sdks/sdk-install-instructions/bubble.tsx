@@ -3,7 +3,7 @@ import { JSSnippet } from 'lib/components/JSSnippet'
 export function SDKInstallBubbleInstructions(): JSX.Element {
     return (
         <>
-            <h3>Install the PostHog web snippet</h3>
+            <h3>Install the Flind web snippet</h3>
             <p>First copy your web snippet:</p>
             <JSSnippet />
             <p>
@@ -15,7 +15,7 @@ export function SDKInstallBubbleInstructions(): JSX.Element {
                     Go to the <strong>SEO / metatags</strong> tab in site settings.
                 </li>
                 <li>
-                    Paste your PostHog snippet in the <strong>Script/meta tags in header</strong> section.
+                    Paste your Flind snippet in the <strong>Script/meta tags in header</strong> section.
                 </li>
                 <li> Deploy your site to live.</li>
             </ol>

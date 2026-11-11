@@ -10,18 +10,18 @@ import { defineAuthTests, defineResilienceTests, type ProtocolTestHarness } from
 //   - Real workerd via `wrangler unstable_dev` running `src/index.ts`
 //   - Real `@hono/node-server` listener running `createApp(redis)` behind it
 //   - Real Redis (TEST_REDIS_URL / db TEST_REDIS_DB, default localhost:6379 db 15)
-//   - Real local PostHog stack at TEST_POSTHOG_API_BASE_URL (default localhost:8010)
+//   - Real local Flind stack at TEST_POSTHOG_API_BASE_URL (default localhost:8010)
 //
 // Only the product-skill archive is served locally. The Worker is configured with
 // `MCP_HONO_URL` pointing at the in-process Hono, so authenticated `/mcp` traffic
-// travels the full client → proxy → Hono → PostHog chain.
+// travels the full client → proxy → Hono → Flind chain.
 //
 // The worker owns OAuth metadata, redirects, health, and the bearer-token gate
 // locally and proxies only `/mcp` — it is not a transparent pass-through. The
 // Hono-runtime public-route surface (`/readyz`, `/metrics`, unknown-path 404s,
 // security headers) is asserted against the Hono integration test, not here.
 //
-// Boot the local PostHog stack with `./bin/start` and have a local Redis
+// Boot the local Flind stack with `./bin/start` and have a local Redis
 // listening on 6379 before running this suite. Ensure `.env.test` (or the
 // integration env) defines `TEST_POSTHOG_PERSONAL_API_KEY` / `TEST_ORG_ID` /
 // `TEST_PROJECT_ID`.

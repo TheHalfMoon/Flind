@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 @pytest.fixture(scope="class")
 def test_client():
-    """Create a PostHog test client instance for each test class."""
+    """Create a Flind test client instance for each test class."""
     # Get configuration from environment
     base_url = os.environ.get("POSTHOG_TEST_BASE_URL", "http://localhost:8010")
     personal_api_key = os.environ.get("POSTHOG_PERSONAL_API_KEY")
@@ -30,7 +30,7 @@ def test_client():
 
 @pytest.fixture(scope="function")
 def function_test_client():
-    """Create a PostHog test client instance for each individual test (for auth tests)."""
+    """Create a Flind test client instance for each individual test (for auth tests)."""
     # Get configuration from environment
     base_url = os.environ.get("POSTHOG_TEST_BASE_URL", "http://localhost:8010")
     personal_api_key = os.environ.get("POSTHOG_PERSONAL_API_KEY")

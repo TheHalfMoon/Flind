@@ -115,7 +115,7 @@ class ReplayObservation(UUIDModel):
     created_task_id = models.UUIDField(
         null=True,
         blank=True,
-        help_text="PostHog Task minted from this observation's finding. Repeat create_task calls return this id instead of creating a duplicate.",
+        help_text="Flind Task minted from this observation's finding. Repeat create_task calls return this id instead of creating a duplicate.",
     )
 
     backfill = models.ForeignKey(

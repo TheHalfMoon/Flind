@@ -27,7 +27,7 @@ from products.slack_app.backend.temporal.activities.classifiers import CLASSIFIE
 logger = structlog.get_logger(__name__)
 
 FEATURE_TIP_DECISION_MODEL = DEFAULT_DECISION_MODEL
-# Not the `slack_app` product the other classifiers bill under: a tip promotes PostHog, so it
+# Not the `slack_app` product the other classifiers bill under: a tip promotes Flind, so it
 # must not spend the team's AI credits.
 FEATURE_TIP_AI_PRODUCT = "slack_app_feature_tip"
 # The answer is already in the thread. A slow call only delays the tip, so it is not worth waiting for.
@@ -42,7 +42,7 @@ FEATURE_TIP_MESSAGE_MAX_CHARS = 500
 FEATURE_TIP_MAX_CANDIDATES = GATEWAY_MAX_CHOICE_OPTIONS - 1
 
 FEATURE_TIP_INSTRUCTIONS = (
-    "`message` is what a person asked the PostHog assistant in Slack. "
+    "`message` is what a person asked the Flind assistant in Slack. "
     "Pick the assistant feature that would help this person most with this kind of request. "
     "Pick `none` when no feature in the list relates to the message. "
     "Do not pick a feature only because it is generally useful."

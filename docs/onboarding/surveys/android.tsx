@@ -45,7 +45,7 @@ function getSurveysAndroidSteps(ctx: OnboardingComponentsContext): StepDefinitio
                 <>
                     <Markdown>
                         {dedent`
-                            Enable surveys in your PostHog configuration. The SDK auto-discovers the UI module from the
+                            Enable surveys in your Flind configuration. The SDK auto-discovers the UI module from the
                             classpath, so matching surveys render automatically with no extra wiring.
                         `}
                     </Markdown>

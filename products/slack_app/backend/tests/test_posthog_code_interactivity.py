@@ -592,7 +592,7 @@ class TestSignalsDismissReport(TestCase):
         report.refresh_from_db()
         assert report.status == SignalReport.Status.SUPPRESSED
         dismissal = SignalReportArtefact.objects.get(report=report, type=SignalReportArtefact.ArtefactType.DISMISSAL)
-        # Attributed to the resolved PostHog user, not system.
+        # Attributed to the resolved Flind user, not system.
         assert dismissal.created_by_id == self.user.id
         # The original message is replaced with a dismissed acknowledgement.
         assert mock_requests_post.call_args.kwargs["json"]["replace_original"] is True
@@ -604,7 +604,7 @@ class TestSignalsDismissReport(TestCase):
         from products.signals.backend.models import SignalReport
 
         mock_config.return_value = {"SLACK_APP_SIGNING_SECRET": self.signing_secret}
-        mock_is_org_member.return_value = None  # clicker is not a PostHog org member
+        mock_is_org_member.return_value = None  # clicker is not a Flind org member
         report = self._make_ready_report()
 
         response = self._post_interactivity(self._dismiss_payload(str(report.id)))

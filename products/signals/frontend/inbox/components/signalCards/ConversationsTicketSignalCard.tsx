@@ -27,7 +27,7 @@ function ticketExtra(value: unknown): TicketExtra {
 const IMAGE_PREVIEW_COUNT = 4
 
 /**
- * One attachment thumbnail that opens the full image. Only an image PostHog serves loads inline: the
+ * One attachment thumbnail that opens the full image. Only an image Flind serves loads inline: the
  * URL comes from ticket rich content, which is not origin-validated, and an inline `<img>` makes every
  * viewer's browser fetch it on render. Any other host is a click-to-open tile that loads nothing.
  * Drops out when the image can no longer be fetched.

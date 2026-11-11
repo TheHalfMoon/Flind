@@ -33,7 +33,7 @@ def get_mcp_server_url() -> str | None:
 
 
 class McpServerClient:
-    """Talks to the PostHog MCP server in single-`exec` mode, for one user and team.
+    """Talks to the Flind MCP server in single-`exec` mode, for one user and team.
 
     The views that call this client are sync, so each call holds a web worker until the MCP server
     answers, which can take up to the read timeout. The MCP server runs the tool by calling this

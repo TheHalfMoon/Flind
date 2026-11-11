@@ -49,7 +49,7 @@ class SafetyCultureSource(ResumableSource[SafetyCultureSourceConfig, SafetyCultu
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="SafetyCulture",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your SafetyCulture API token to pull your inspections, actions, issues, assets, and workplace-operations data into the PostHog Data warehouse.
+            caption="""Enter your SafetyCulture API token to pull your inspections, actions, issues, assets, and workplace-operations data into the Flind Data warehouse.
 
 You can generate an API token under **Account settings → Integrations → Manage API tokens** in [SafetyCulture](https://app.safetyculture.com) (requires a Premium or Enterprise plan). Tokens expire after 30 days of inactivity, so SafetyCulture recommends a [service user](https://help.safetyculture.com/en-US/1064186-service-users) token with the **Data Access** permission for long-term integrations.
 """,

@@ -8,7 +8,7 @@ The error tracking Temporal worker redeploys only when a file in its path filter
 so the errorTracking filter in .github/workflows/container-images-cd.yml must list every file
 outside this product that the definitions read.
 
-Every pattern here comes from PostHog's own data or from public facts:
+Every pattern here comes from Flind's own data or from public facts:
 React's error decoder pages, bundler and browser error text, and browser release history.
 """
 

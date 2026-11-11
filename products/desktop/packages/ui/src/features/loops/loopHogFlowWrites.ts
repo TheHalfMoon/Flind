@@ -35,7 +35,7 @@ export class LoopScheduleSaveError extends Error {
 export class LoopForeignWorkflowError extends Error {
   constructor() {
     super(
-      "This loop was changed in the workflow editor. Open it in PostHog to change it.",
+      "This loop was changed in the workflow editor. Open it in Flind to change it.",
     );
     this.name = "LoopForeignWorkflowError";
   }

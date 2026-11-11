@@ -53,7 +53,7 @@ class PingdomSource(ResumableSource[PingdomSourceConfig, PingdomResumeConfig]):
             name=ExternalDataSourceType.PINGDOM,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Pingdom",
-            caption="""Enter your Pingdom API token to pull your Pingdom uptime monitoring data into the PostHog Data warehouse.
+            caption="""Enter your Pingdom API token to pull your Pingdom uptime monitoring data into the Flind Data warehouse.
 
 You can create an API token in [My Pingdom](https://my.pingdom.com/app/api-tokens) under Settings > Pingdom API. A read-only token is sufficient.""",
             iconPath="/static/services/pingdom.png",

@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -981,7 +981,7 @@ export const getIntegrationsGithubAvailableInstallationsRetrieveUrl = (projectId
  * exists, the client passes the chosen installation_id to github/link_existing. The list also
  * includes installations the user's personal GitHub link can see but that aren't linked to any
  * project yet (``source_team_id: null``) — orphan installations approved on GitHub outside
- * PostHog's callback, which ``github/link_existing`` can adopt.
+ * Flind's callback, which ``github/link_existing`` can adopt.
  */
 export const integrationsGithubAvailableInstallationsRetrieve = async (
     projectId: string,
@@ -1043,7 +1043,7 @@ export const getIntegrationsGithubPrepareCallbackCreateUrl = (projectId: string)
 /**
  * Seed GitHub setup callback state without redirecting to GitHub.
  *
- * Used when the user opens an existing installation's settings on github.com (e.g. PostHog
+ * Used when the user opens an existing installation's settings on github.com (e.g. Flind
  * Code "Update in GitHub") so the subsequent Setup URL redirect can be validated.
  */
 export const integrationsGithubPrepareCallbackCreate = async (
@@ -1084,8 +1084,8 @@ export const getPosthogConnectionsForwardCreateUrl = (projectId: string, id: str
 }
 
 /**
- * Replay an API request against the connected PostHog project. The server injects the connection's token; the response is passed through.
- * @summary Forward a request through a PostHog connection
+ * Replay an API request against the connected Flind project. The server injects the connection's token; the response is passed through.
+ * @summary Forward a request through a Flind connection
  */
 export const posthogConnectionsForwardCreate = async (
     projectId: string,
@@ -1106,7 +1106,7 @@ export const getPosthogConnectionsTargetRetrieveUrl = (projectId: string, id: st
 }
 
 /**
- * Resolve which project, organization and region a PostHog connection points at, so callers can build target API paths without reading `api/users/@me/` through the connection first.
+ * Resolve which project, organization and region a Flind connection points at, so callers can build target API paths without reading `api/users/@me/` through the connection first.
  * @summary Read the connected project's identity
  */
 export const posthogConnectionsTargetRetrieve = async (

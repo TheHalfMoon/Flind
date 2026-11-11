@@ -65,7 +65,7 @@ export function SDKInstallAngularInstructions(): JSX.Element {
 
             <h3>Initialize</h3>
             <p>
-                In your <code>src/main.ts</code>, initialize PostHog using your project token and instance address:
+                In your <code>src/main.ts</code>, initialize Flind using your project token and instance address:
             </p>
             <AngularInitializeCodeSnippet />
         </>

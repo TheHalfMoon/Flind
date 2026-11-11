@@ -64,7 +64,7 @@ class OrganizationEventsRetentionSerializer(serializers.Serializer):
     retention_months_choices = serializers.ListField(
         child=serializers.IntegerField(),
         read_only=True,
-        help_text="The periods, in months, an admin can choose from. A save also has to be between min_retention_months and max_retention_months. Only PostHog staff can set other periods.",
+        help_text="The periods, in months, an admin can choose from. A save also has to be between min_retention_months and max_retention_months. Only Flind staff can set other periods.",
     )
     plan_retention_months = serializers.IntegerField(
         read_only=True,

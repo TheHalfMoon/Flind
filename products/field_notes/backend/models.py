@@ -6,7 +6,7 @@ from posthog.models.utils import CreatedMetaFields, UpdatedMetaFields, UUIDTMode
 
 class FieldNote(TeamScopedRootMixin, CreatedMetaFields, UpdatedMetaFields, UUIDTModel):
     """
-    A UI field note captured from the PostHog toolbar on a user's own site.
+    A UI field note captured from the Flind toolbar on a user's own site.
 
     The user points at an element, leaves a comment, and the toolbar records the
     element selector plus page context. Field notes are surfaced over MCP so a

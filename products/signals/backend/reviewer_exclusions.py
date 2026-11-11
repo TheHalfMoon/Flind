@@ -7,7 +7,7 @@ under the prefix. When the report or the instruction cannot answer that question
 stays unresolved instead of guessing. Pull request assignment reads the same instructions, so an
 excluded person is neither assigned nor asked to review.
 
-The subject of an instruction is always a PostHog user. A candidate known only by a GitHub login
+The subject of an instruction is always a Flind user. A candidate known only by a GitHub login
 resolves to the member who links that login now. A login that resolves to nobody cannot be excluded.
 """
 

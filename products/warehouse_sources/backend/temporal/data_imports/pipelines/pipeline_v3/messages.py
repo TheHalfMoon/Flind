@@ -74,7 +74,7 @@ class ExportSignalMessage:
     cumulative_row_count: int = 0
     cdc_write_mode: Optional[str] = None
     cdc_table_mode: Optional[str] = None
-    # Snapshotted when the run started. Empty means the PostHog warehouse only, which is
+    # Snapshotted when the run started. Empty means the Flind warehouse only, which is
     # also what an old message that predates destinations decodes to.
     destination_ids: list[str] = field(default_factory=list)
     # The subset of `destination_ids` a destination writer delivers, so without the warehouse.

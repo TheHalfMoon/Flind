@@ -28,7 +28,7 @@ export interface ResultSink {
  * - `HogInvocationResultsService`  — per-invocation lifecycle row in ClickHouse
  *                                    (powers the new runs UI + rerun path)
  * - `WarehouseWebhooksService`    — warehouse source webhook payloads
- * - `CapturedEventsService`       — PostHog events emitted via posthog.capture()
+ * - `CapturedEventsService`       — Flind events emitted via posthog.capture()
  * - `MessageAssetsService`        — rendered-email snapshots for the workflow
  *                                    Assets tab
  * - `ConversionWatchersService`   — per-run conversion watchers, which outlive the

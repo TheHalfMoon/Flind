@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 24 enabled ops
+ * Flind API - MCP 24 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -79,7 +79,7 @@ export const AutoresearchCreateBody = () => zod.object({
         .max(autoresearchCreateBodyTargetEventMax)
         .optional()
         .describe(
-            "PostHog event name to predict, e.g. '$pageview' or 'signed_up'. Omit when predicting an action target (pass target_definition instead)."
+            "Flind event name to predict, e.g. '$pageview' or 'signed_up'. Omit when predicting an action target (pass target_definition instead)."
         ),
     target_definition: zod
         .union([
@@ -93,11 +93,11 @@ export const AutoresearchCreateBody = () => zod.object({
                     type: zod.enum(['action']),
                     action_id: zod.number().min(1).describe('ID of the action to predict.'),
                 })
-                .describe('Predict a PostHog action in this project.'),
+                .describe('Predict a Flind action in this project.'),
         ])
         .optional()
         .describe(
-            'Omit (or pass {\"type\": \"event\"}) to predict target_event; pass {\"type\": \"action\", \"action_id\": N} to predict a PostHog action. No other shapes are accepted.'
+            'Omit (or pass {\"type\": \"event\"}) to predict target_event; pass {\"type\": \"action\", \"action_id\": N} to predict a Flind action. No other shapes are accepted.'
         ),
     horizon_days: zod
         .number()
@@ -159,7 +159,7 @@ export const AutoresearchCreateBody = () => zod.object({
         .max(autoresearchCreateBodyAgentModelMax)
         .nullish()
         .describe(
-            "Model the training agent runs on, a model id from the PostHog Tasks catalogue such as 'claude-opus-5-5', 'claude-sonnet-5-5' or 'gpt-6.1-sol'. Null or omitted uses the autoresearch default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it."
+            "Model the training agent runs on, a model id from the Flind Tasks catalogue such as 'claude-opus-5-5', 'claude-sonnet-5-5' or 'gpt-6.1-sol'. Null or omitted uses the autoresearch default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it."
         ),
     agent_reasoning_effort: zod
         .string()
@@ -185,7 +185,7 @@ export const AutoresearchCreateBody = () => zod.object({
         .max(autoresearchCreateBodyOutputPersonPropertyMax)
         .optional()
         .describe(
-            "Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines."
+            "Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for Flind's own properties); must be unique among this project's non-archived pipelines."
         ),
     write_person_property: zod
         .boolean()
@@ -839,7 +839,7 @@ export const AutoresearchPartialUpdateBody = () => zod.object({
         .max(autoresearchPartialUpdateBodyTargetEventMax)
         .optional()
         .describe(
-            "PostHog event name to predict, e.g. '$pageview' or 'signed_up'. Omit when predicting an action target (pass target_definition instead)."
+            "Flind event name to predict, e.g. '$pageview' or 'signed_up'. Omit when predicting an action target (pass target_definition instead)."
         ),
     target_definition: zod
         .union([
@@ -853,11 +853,11 @@ export const AutoresearchPartialUpdateBody = () => zod.object({
                     type: zod.enum(['action']),
                     action_id: zod.number().min(1).describe('ID of the action to predict.'),
                 })
-                .describe('Predict a PostHog action in this project.'),
+                .describe('Predict a Flind action in this project.'),
         ])
         .optional()
         .describe(
-            'Omit (or pass {\"type\": \"event\"}) to predict target_event; pass {\"type\": \"action\", \"action_id\": N} to predict a PostHog action. No other shapes are accepted.'
+            'Omit (or pass {\"type\": \"event\"}) to predict target_event; pass {\"type\": \"action\", \"action_id\": N} to predict a Flind action. No other shapes are accepted.'
         ),
     horizon_days: zod
         .number()
@@ -919,7 +919,7 @@ export const AutoresearchPartialUpdateBody = () => zod.object({
         .max(autoresearchPartialUpdateBodyAgentModelMax)
         .nullish()
         .describe(
-            "Model the training agent runs on, a model id from the PostHog Tasks catalogue such as 'claude-opus-5-5', 'claude-sonnet-5-5' or 'gpt-6.1-sol'. Null or omitted uses the autoresearch default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it."
+            "Model the training agent runs on, a model id from the Flind Tasks catalogue such as 'claude-opus-5-5', 'claude-sonnet-5-5' or 'gpt-6.1-sol'. Null or omitted uses the autoresearch default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it."
         ),
     agent_reasoning_effort: zod
         .string()
@@ -945,7 +945,7 @@ export const AutoresearchPartialUpdateBody = () => zod.object({
         .max(autoresearchPartialUpdateBodyOutputPersonPropertyMax)
         .optional()
         .describe(
-            "Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines."
+            "Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for Flind's own properties); must be unique among this project's non-archived pipelines."
         ),
     write_person_property: zod
         .boolean()
@@ -1103,11 +1103,11 @@ export const AutoresearchValidateCreateBody = () => zod.object({
                     type: zod.enum(['action']),
                     action_id: zod.number().min(1).describe('ID of the action to predict.'),
                 })
-                .describe('Predict a PostHog action in this project.'),
+                .describe('Predict a Flind action in this project.'),
         ])
         .optional()
         .describe(
-            'Optional target definition. Pass {\"type\": \"action\", \"action_id\": N} to predict a PostHog action (multi-step \/ property \/ autocapture matcher) instead of a single event.'
+            'Optional target definition. Pass {\"type\": \"action\", \"action_id\": N} to predict a Flind action (multi-step \/ property \/ autocapture matcher) instead of a single event.'
         ),
     horizon_days: zod
         .number()

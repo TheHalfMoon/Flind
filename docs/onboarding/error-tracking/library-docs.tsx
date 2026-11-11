@@ -52,7 +52,7 @@ export const ConvexErrorTrackingInstallation = createInstallation(
     createLibraryDocsSteps({
         title: 'Capture Convex exceptions',
         guidance:
-            "Configure Convex's first-party PostHog Error Tracking destination to capture uncaught exceptions automatically. Convex exception reporting currently requires a Convex Pro plan. Use `captureException` for handled errors that need custom properties.",
+            "Configure Convex's first-party Flind Error Tracking destination to capture uncaught exceptions automatically. Convex exception reporting currently requires a Convex Pro plan. Use `captureException` for handled errors that need custom properties.",
         docsLink: 'https://posthog.com/docs/libraries/convex#6-capture-exceptions-with-custom-properties',
         language: 'typescript',
         code: `await posthog.captureException(ctx, {

@@ -46,7 +46,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": _V2_DOCS_URL,
         "columns": {
             **_TEST_METRICS_COLUMNS,
-            "synced_through": "PostHog-added: the start of the sync run this row was fetched in, used to track incremental progress.",
+            "synced_through": "Flind-added: the start of the sync run this row was fetched in, used to track incremental progress.",
         },
     },
     MERGE_QUEUE_PULL_REQUESTS: {
@@ -66,7 +66,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "prSha": "The commit SHA of the pull request.",
             "prBaseBranch": "The base branch of the pull request.",
             "prAuthor": "The author of the pull request.",
-            "synced_through": "PostHog-added: the start of the sync run this row was fetched in, used to track incremental progress.",
+            "synced_through": "Flind-added: the start of the sync run this row was fetched in, used to track incremental progress.",
         },
     },
     TEST_COLLECTIONS: {

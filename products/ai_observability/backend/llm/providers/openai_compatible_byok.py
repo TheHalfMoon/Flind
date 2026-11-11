@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 class OpenAICompatibleByokAdapter(OpenAIAdapter):
-    """Base for providers with OpenAI-compatible APIs and no PostHog-funded key."""
+    """Base for providers with OpenAI-compatible APIs and no Flind-funded key."""
 
     BASE_URL: ClassVar[str]
     PROVIDER_DISPLAY_NAME: ClassVar[str]

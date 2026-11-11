@@ -30,7 +30,7 @@ function CohortMembers({ cohort }: { cohort: AudienceCohort }): JSX.Element {
         return (
             <span className="text-secondary">
                 {people}. {humanFriendlyNumber(cohort.importUnmatched)} of {humanFriendlyNumber(cohort.importTotal)} on
-                the list aren't in PostHog and won't get this email.
+                the list aren't in Flind and won't get this email.
             </span>
         )
     }

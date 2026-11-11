@@ -23,7 +23,7 @@
  *   so it does not need the formatted-results workaround.
  *
  * - `isPostHogCodeConsumer()` matches the `x-posthog-mcp-consumer` header
- *   sent by the PostHog Desktop Tasks wrapper.
+ *   sent by the Flind Desktop Tasks wrapper.
  *
  * - `isRenderUiHost()` uses declared MCP Apps support when the client sends it.
  *   Otherwise it matches Claude web/desktop, Cowork, and the exact `openai-mcp`
@@ -172,10 +172,10 @@ export function resolveEffectiveClientName(
     return VENDOR_CLIENT_TO_CLIENT_NAME[normalizeClientName(vendorClient)] ?? vendorClient
 }
 
-// Value sent in `x-posthog-mcp-consumer` by PostHog Desktop (the Tasks sandbox
+// Value sent in `x-posthog-mcp-consumer` by Flind Desktop (the Tasks sandbox
 // wrapper around the Claude Agent SDK) when the task was launched from the
-// PostHog Desktop UI. Slack-launched runs send `"slack"` and posthog_ai (Max) runs
-// send `"posthog_ai"`; only PostHog Desktop renders MCP UI apps, so this is the
+// Flind Desktop UI. Slack-launched runs send `"slack"` and posthog_ai (Max) runs
+// send `"posthog_ai"`; only Flind Desktop renders MCP UI apps, so this is the
 // sole consumer that gates UI-apps payload emission in single-exec mode.
 export const POSTHOG_CODE_CONSUMER = 'posthog-code'
 
@@ -195,7 +195,7 @@ export const ANTHROPIC_UI_HOST_VENDOR_FRAGMENTS = ['claudeai', 'cowork'] as cons
 export const ANTHROPIC_CHAT_HOST_VENDOR_FRAGMENTS = ['claudeai'] as const
 
 // Anthropic surfaces that render MCP UI apps on the `exec` response itself, so they
-// get the same treatment as the PostHog Desktop consumer. `Cowork` is not one: Claude
+// get the same treatment as the Flind Desktop consumer. `Cowork` is not one: Claude
 // desktop chat reports `Cowork` and mounts an iframe only for a tool that declares
 // `_meta.ui.resourceUri` on `tools/list`, which `exec` does not. It renders through
 // `render-ui`, like `ClaudeAI`.
@@ -359,7 +359,7 @@ export class MCPClientProfile {
     isInlineExecUiHost(): boolean {
         // Claude Code renders MCP UI apps inline on the single-exec `exec` tool, while
         // Claude.ai and Cowork render through the separate `render-ui` tool.
-        // Like PostHog Desktop, Claude Code surfaces `structuredContent` to the model, so
+        // Like Flind Desktop, Claude Code surfaces `structuredContent` to the model, so
         // the exec UI-app branch suppresses it and re-homes the app data onto `_meta`.
         // The per-request vendor header (`ClaudeCode`) is the reliable signal.
         return matchesAnyFragment(this.vendorClient, INLINE_EXEC_UI_APP_VENDOR_FRAGMENTS)

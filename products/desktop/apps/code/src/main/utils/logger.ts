@@ -98,7 +98,7 @@ const CHROMIUM_LOG_TAIL_BYTES = 32 * 1024;
 
 /**
  * Read the last ~32 KB of the Chromium internal log file. Used by crash
- * handlers to attach the tail to OTEL/electron-log so PostHog gets the native
+ * handlers to attach the tail to OTEL/electron-log so Flind gets the native
  * V8/GPU output around a renderer death — Chromium writes chromium.log
  * directly from native code and never goes through electron-log otherwise.
  */

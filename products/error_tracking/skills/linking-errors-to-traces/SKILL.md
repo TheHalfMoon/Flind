@@ -1,7 +1,7 @@
 ---
 name: linking-errors-to-traces
 description: >
-  Links a PostHog error occurrence or session's errors to OpenTelemetry traces, logs with the
+  Links a Flind error occurrence or session's errors to OpenTelemetry traces, logs with the
   same trace ID, and Session Replay. Use when the user asks for trace or span IDs on an error,
   same-trace logs, or backend traces for errors in a session. Starts from an occurrence UUID,
   session ID, or error tracking issue URL. For a general issue diagnosis or replay summary,
@@ -50,7 +50,7 @@ you checked. Do not claim that an event never existed based on a bounded search.
    `info`. A trace can have logs even when no span was retained.
 
 Use `posthog:generate-app-url` with `/error-tracking/{id}` when the issue ID is known.
-Do not build PostHog links by hand.
+Do not build Flind links by hand.
 
 ## Report the result
 

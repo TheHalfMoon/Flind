@@ -11,7 +11,7 @@ const OWNERSHIP_EXPLAINER =
 
 /**
  * Who to talk to when a custom scout turns noisy or wrong, on its page. A canonical scout is
- * PostHog's to maintain, so it says nothing.
+ * Flind's to maintain, so it says nothing.
  */
 export function ScoutOwners({ config }: { config: SignalScoutConfig }): JSX.Element | null {
     if (!showsScoutOwnership(config)) {

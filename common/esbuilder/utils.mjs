@@ -84,7 +84,7 @@ export function copyIndexHtml(
     //
     // `JS_URL` is expected to be injected into the html as part of Django html
     // template rendering. We do not know what JS_URL should be at runtime, as,
-    // for instance, on PostHog Cloud, we want to use the official PostHog
+    // for instance, on Flind Cloud, we want to use the official Flind
     // Docker image, but serve the js and it's dependencies from e.g. CloudFront
     const buildId = new Date().valueOf()
 
@@ -513,7 +513,7 @@ function getBuiltEntryPoints(config, result) {
 
 let buildsInProgress = 0
 
-// Serialize the heavy full-app bundles (PostHog App, Exporter). All esbuild contexts in a
+// Serialize the heavy full-app bundles (Flind App, Exporter). All esbuild contexts in a
 // process multiplex over one Go service, so concurrent heavy rebuilds keep both build graphs
 // resident at once — the summed peak is what OOM-kills the Docker builder. Each heavy build
 // disposes its context before releasing the lock (see runBuild), so the next heavy build reuses

@@ -8,7 +8,7 @@ exports[`stripe webhook template should invoke the function 1`] = `
     "properties": {
       "$hog_function_execution_count": 1,
       "account_country": "US",
-      "account_name": "PostHog",
+      "account_name": "Flind",
       "account_tax_ids": null,
       "amount_due": 0,
       "amount_overpaid": 0,
@@ -51,7 +51,7 @@ exports[`stripe webhook template should invoke the function 1`] = `
       "due_date": null,
       "effective_at": 1754571965,
       "ending_balance": 0,
-      "footer": "Please note that PostHog does not accept payment by cheque. ",
+      "footer": "Please note that Flind does not accept payment by cheque. ",
       "from_invoice": null,
       "hosted_invoice_url": "https://invoice.stripe.com/foo",
       "id": "in_1234",

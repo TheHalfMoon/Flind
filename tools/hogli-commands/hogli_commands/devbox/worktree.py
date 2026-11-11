@@ -394,7 +394,7 @@ def _reset_recreated_mirror(target: _WorktreeTarget) -> None:
     "--start-app/--no-start-app",
     "start_app",
     default=None,
-    help="Bring the PostHog app up on every start. Applies only when the box is created.",
+    help="Bring the Flind app up on every start. Applies only when the box is created.",
 )
 @click.option(
     "--on-clean",

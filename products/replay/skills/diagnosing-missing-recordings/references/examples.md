@@ -55,7 +55,7 @@ so the buffer was discarded and no recording was stored.
 ## Example 3: snapshots produced but never flushed
 
 A session where the SDK is recording and the internal buffer keeps growing,
-but nothing ever gets flushed to PostHog.
+but nothing ever gets flushed to Flind.
 This pattern can't be seen from a single event —
 you need to look at the trend of buffer/flush signals across the session's events.
 
@@ -85,7 +85,7 @@ ORDER BY timestamp ASC
 **Explanation:**
 The buffer keeps climbing but `flushed_size` stays at zero.
 That means the SDK is producing snapshots correctly but the `POST /s/` requests
-never complete — so the recording data never reaches PostHog's backend.
+never complete — so the recording data never reaches Flind's backend.
 Most commonly this is an ad blocker silently blocking the ingestion endpoint.
 On self-hosted or reverse-proxied setups it can also indicate the proxy
 isn't forwarding `/s/` to the capture service.
@@ -93,7 +93,7 @@ isn't forwarding `/s/` to the capture service.
 **What to check:**
 
 - User's browser: does the Network tab show failed/blocked `POST /s/` requests?
-- Reverse proxy config: is `/s/` routed to PostHog capture?
+- Reverse proxy config: is `/s/` routed to Flind capture?
 - Custom domain: is the recorder script using the same domain as capture?
 
 This is a different signal from `$sdk_debug_recording_script_not_loaded` —

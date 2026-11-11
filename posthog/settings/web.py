@@ -997,9 +997,9 @@ PROXY_USE_GATEWAY_API = get_from_env("PROXY_USE_GATEWAY_API", False, type_cast=s
 PROXY_TARGET_CNAME = get_from_env("PROXY_TARGET_CNAME", "")
 PROXY_BASE_CNAME = get_from_env("PROXY_BASE_CNAME", "")
 
-# PostHog's own (first-party) organizations, set per-region to PostHog's internal org id(s).
+# Flind's own (first-party) organizations, set per-region to Flind's internal org id(s).
 # A generic allowlist for gating internal-only behaviour; today it lets these orgs register
-# reserved, PostHog-owned proxy domains (e.g. internal proxies on posthog.com). Empty by
+# reserved, Flind-owned proxy domains (e.g. internal proxies on posthog.com). Empty by
 # default, so every such gate stays closed for other orgs unless a deployment lists an id here.
 POSTHOG_INTERNAL_ORG_IDS = get_list(get_from_env("POSTHOG_INTERNAL_ORG_IDS", ""))
 
@@ -1378,7 +1378,7 @@ ID_JAG_ALLOWED_RESOURCES: list[str] = get_list(get_from_env("ID_JAG_ALLOWED_RESO
 
 TOOLBAR_OAUTH_STATE_TTL_SECONDS = 60 * 5
 TOOLBAR_OAUTH_EXCHANGE_TIMEOUT_SECONDS = 10
-TOOLBAR_OAUTH_APPLICATION_NAME = "PostHog Toolbar"
+TOOLBAR_OAUTH_APPLICATION_NAME = "Flind Toolbar"
 TOOLBAR_OAUTH_SCOPES = [
     "openid",
     "user:read",
@@ -1472,7 +1472,7 @@ except ValueError:
     WIZARD_GATEWAY_TOKEN_CAP_USD_BY_PROGRAM = {}
     WIZARD_GATEWAY_TOKEN_CAP_USD_BY_PROGRAM_INVALID = True
 
-# PostHog Desktop on the Go ai-gateway: the URL is the ai-gateway host because gateway.* cannot
+# Flind Desktop on the Go ai-gateway: the URL is the ai-gateway host because gateway.* cannot
 # validate a phe_. A dedicated relay-team phs_ keeps the mint ceiling to desktop tokens. Unset
 # refuses as `unconfigured`, which keeps the app on the legacy gateway.
 DESKTOP_GATEWAY_URL = get_from_env("DESKTOP_GATEWAY_URL", "")

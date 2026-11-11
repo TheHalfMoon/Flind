@@ -559,7 +559,7 @@ class TestTable(BaseTest):
 
         with patch("products.warehouse_sources.backend.models.table.sync_execute") as sync_execute_results:
             sync_execute_results.return_value = [[column_name, "String"]]
-            with pytest.raises(Exception, match="PostHog can't use the column name"):
+            with pytest.raises(Exception, match="Flind can't use the column name"):
                 table.get_columns()
 
     @parameterized.expand(

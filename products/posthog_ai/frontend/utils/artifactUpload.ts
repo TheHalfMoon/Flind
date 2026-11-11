@@ -129,7 +129,7 @@ export async function uploadRunAttachments(
 }
 
 /**
- * Save text as a new version of a run file, the same upload PostHog Desktop makes for an edit.
+ * Save text as a new version of a run file, the same upload Flind Desktop makes for an edit.
  * The artifacts tab groups uploads by file name, so the same name adds a version. Returns the new artifact id.
  */
 export async function uploadRunOutputVersion(

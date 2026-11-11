@@ -32,7 +32,7 @@ class PeopleImportCreateSerializer(serializers.Serializer):
 class PeopleImportSerializer(serializers.Serializer):
     cohort_id = serializers.IntegerField(help_text="The static cohort that fills with the imported people.")
     row_count = serializers.IntegerField(help_text="People created or updated.")
-    new_people = serializers.IntegerField(help_text="Rows that create a person who isn't in PostHog yet.")
+    new_people = serializers.IntegerField(help_text="Rows that create a person who isn't in Flind yet.")
     columns = serializers.ListField(child=serializers.CharField(), help_text="Person properties the rows set.")
     dropped_invalid_email = serializers.IntegerField(help_text="Rows dropped for a missing or invalid email.")
     dropped_duplicate_email = serializers.IntegerField(

@@ -243,7 +243,7 @@ const WorkflowsSendEmailSchema = () => {
             "HTML body of the email, exactly as the recipient should see it. Through this tool the whole request as JSON, html and text included, must stay under 1 MiB, and quotes and line breaks count twice. A larger email can't be sent here."
         ),
         text: MessagingSendEmailCreateBody.shape['text'].describe(
-            'Plain text body of the email. Without it, PostHog derives the text from html. Through this tool the whole request as JSON, html and text included, must stay under 1 MiB.'
+            'Plain text body of the email. Without it, Flind derives the text from html. Through this tool the whole request as JSON, html and text included, must stay under 1 MiB.'
         ),
         distinct_id: MessagingSendEmailCreateBody.shape['distinct_id'].describe(
             "Distinct ID of the recipient's person. The send and its engagement events are recorded against that person. Defaults to the recipient's email address."

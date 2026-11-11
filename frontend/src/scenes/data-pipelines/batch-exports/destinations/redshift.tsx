@@ -14,7 +14,7 @@ import type { DestinationDefinition } from './types'
 // authorization, bucket_credentials), which we flatten to top-level redshift_* fields
 // in the form for editing and re-assemble on save.
 //
-// The two COPY credentials do different jobs: bucket_credentials is what PostHog writes the staged
+// The two COPY credentials do different jobs: bucket_credentials is what Flind writes the staged
 // files with, authorization is what Redshift reads them back with. Either can be an aws-s3
 // Integration id; authorization can also be the ARN of a role attached to the cluster.
 type AuthorizationMode = 'SameConnection' | 'DifferentConnection' | 'IAMRole'

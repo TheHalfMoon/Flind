@@ -75,8 +75,8 @@ def _capture_emit_exception(
 
 
 def _send(capture: Callable | None, *, distinct_id: str, event: str, properties: dict[str, Any]) -> None:
-    # The module-level client carries PostHog's own project token on self-hosted installs too, so without this
-    # guard they report SLO events into PostHog's internal project, with no region. Tests run in hobby mode with
+    # The module-level client carries Flind's own project token on self-hosted installs too, so without this
+    # guard they report SLO events into Flind's internal project, with no region. Tests run in hobby mode with
     # that client patched, so they keep observing emission.
     if capture is None and is_hobby() and not settings.TEST:
         return

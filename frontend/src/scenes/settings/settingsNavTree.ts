@@ -31,7 +31,7 @@ export function settingsNavItems(level: SettingLevelId, sections: SettingSection
         }
         seenGroups.add(section.group)
         const groupSections = otherSections.filter((other) => other.group === section.group)
-        // Only the Products group sorts by title, because the AI group lists PostHog AI first on purpose.
+        // Only the Products group sorts by title, because the AI group lists Flind AI first on purpose.
         if (section.group === 'Products') {
             groupSections.sort((a, b) => settingsSectionLabel(a).localeCompare(settingsSectionLabel(b)))
         }

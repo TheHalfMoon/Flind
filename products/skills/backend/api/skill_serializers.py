@@ -168,7 +168,7 @@ class LLMSkillBundleQuerySerializer(serializers.Serializer):
         default="stub",
         help_text=(
             "What each skill directory in the zip contains. 'stub' (default) writes a SKILL.md with the name, "
-            "description and instructions to fetch the skill over the PostHog MCP when it is invoked. 'full' writes "
+            "description and instructions to fetch the skill over the Flind MCP when it is invoked. 'full' writes "
             "the rendered SKILL.md, every bundled file and the Codex sidecar."
         ),
     )
@@ -633,7 +633,7 @@ class LLMSkillSerializer(serializers.ModelSerializer):
         ]
         extra_kwargs = {
             # No bundled-name rule here: this base serves the read responses, and a project's
-            # seeded canonical skills come back under the names PostHog ships. The write
+            # seeded canonical skills come back under the names Flind ships. The write
             # serializers carry that rule.
             "name": {
                 "help_text": "Unique skill name. Lowercase letters, numbers, and hyphens only. Max 64 characters."
@@ -806,7 +806,7 @@ class LLMSkillCreateSerializer(LLMSkillSerializer):
             **LLMSkillSerializer.Meta.extra_kwargs,
             "name": {
                 "help_text": "Unique skill name. Lowercase letters, numbers, and hyphens only. Max 64 characters. "
-                "Cannot be the name of a skill PostHog ships."
+                "Cannot be the name of a skill Flind ships."
             },
         }
 
@@ -895,7 +895,7 @@ class LLMSkillImportSerializer(serializers.Serializer):
 class LLMSkillDuplicateSerializer(serializers.Serializer):
     new_name = serializers.CharField(
         max_length=64,
-        help_text="Name for the duplicated skill. Must be unique, and cannot be the name of a skill PostHog ships.",
+        help_text="Name for the duplicated skill. Must be unique, and cannot be the name of a skill Flind ships.",
     )
 
     def validate_new_name(self, value: str) -> str:
@@ -906,7 +906,7 @@ class LLMSkillRenameSerializer(serializers.Serializer):
     new_name = serializers.CharField(
         max_length=MAX_SKILL_NAME_LENGTH,
         help_text="New name for the skill. Must be unique in the project, cannot be the name of a skill "
-        "PostHog ships, and must not start with 'signals-scout-' or 'review-hog-'.",
+        "Flind ships, and must not start with 'signals-scout-' or 'review-hog-'.",
     )
 
     def validate_new_name(self, value: str) -> str:
@@ -1177,7 +1177,7 @@ class LLMSkillPublishToCommunitySerializer(serializers.Serializer):
         max_length=MAX_GITHUB_HANDLE_LENGTH,
         help_text=(
             "The publisher's GitHub username, used for public attribution on the listing and PR. Optional, "
-            "and self-reported: it is not verified against the publisher's PostHog account."
+            "and self-reported: it is not verified against the publisher's Flind account."
         ),
     )
 

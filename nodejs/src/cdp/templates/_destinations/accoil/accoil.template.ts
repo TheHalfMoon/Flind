@@ -7,12 +7,12 @@ export const template: HogFunctionTemplate = {
     id: 'template-accoil',
     name: 'Accoil',
     description:
-        'Pipe PostHog data to Accoil for usage-based account scoring, churn alerts, and expansion insights — automatically shared with Customer Success, Sales, RevOps, and Leadership in tools like Slack and HubSpot.',
+        'Pipe Flind data to Accoil for usage-based account scoring, churn alerts, and expansion insights — automatically shared with Customer Success, Sales, RevOps, and Leadership in tools like Slack and HubSpot.',
     icon_url: '/static/services/accoil.com.png',
     category: ['Analytics'],
     code_language: 'hog',
     code: `
-// Skip PostHog internal events that start with $ unless they're in our whitelist
+// Skip Flind internal events that start with $ unless they're in our whitelist
 let allowedSystemEvents := ['$pageview', '$screen', '$identify', '$set', '$groupidentify']
 if (startsWith(event.event, '$') and not (event.event in allowedSystemEvents)) {
     return

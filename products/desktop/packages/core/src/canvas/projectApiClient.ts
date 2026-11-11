@@ -52,7 +52,7 @@ async function errorBodyDetail(res: Response): Promise<string> {
 }
 
 /**
- * Thin shared client for the current PostHog project's REST API. Resolves the
+ * Thin shared client for the current Flind project's REST API. Resolves the
  * project + auth, then forwards to authenticated fetch. Owners of typed
  * resources (canvases, channel tasks, ...) compose this client instead of
  * duplicating the auth + URL construction + pagination boilerplate.
@@ -68,7 +68,7 @@ export class ProjectApiClient {
   async fetch(path: string, init?: RequestInit): Promise<Response> {
     const { apiHost } = await this.authService.getValidAccessToken();
     const projectId = this.authService.getState().currentProjectId;
-    if (projectId == null) throw new Error("No PostHog project selected");
+    if (projectId == null) throw new Error("No Flind project selected");
     const url = `${apiHost}/api/projects/${projectId}/${path}`;
     return this.authService.authenticatedFetch(fetch, url, init);
   }

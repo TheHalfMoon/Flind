@@ -68,8 +68,8 @@ function rowContent(realtime: CohortRealtimeReadinessApi): RowContent | null {
                 tooltip: (
                     <div>
                         {realtime.state === 'rebuilding'
-                            ? 'The criteria changed, so PostHog is rebuilding this cohort from past events before feature flags can target it again. This usually takes under 30 minutes.'
-                            : 'PostHog is catching up on past events so feature flags can target this cohort. This usually takes under 30 minutes.'}
+                            ? 'The criteria changed, so Flind is rebuilding this cohort from past events before feature flags can target it again. This usually takes under 30 minutes.'
+                            : 'Flind is catching up on past events so feature flags can target this cohort. This usually takes under 30 minutes.'}
                     </div>
                 ),
             }
@@ -78,7 +78,7 @@ function rowContent(realtime: CohortRealtimeReadinessApi): RowContent | null {
                 label: <span className="text-secondary">Unavailable</span>,
                 tooltip: (
                     <div>
-                        Feature flags can't target this cohort yet because PostHog hasn't prepared it. Contact support
+                        Feature flags can't target this cohort yet because Flind hasn't prepared it. Contact support
                         if this doesn't change.
                     </div>
                 ),

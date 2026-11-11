@@ -218,7 +218,7 @@ export const DASHBOARD_WIDGET_CATALOG = {
         titleHref: urls.supportTickets(),
         sharedPlaceholder: {
             title: 'Recent tickets',
-            message: 'Log in to PostHog to see recent support tickets from this dashboard.',
+            message: 'Log in to Flind to see recent support tickets from this dashboard.',
         },
         availability: {
             requirement: 'conversations_enabled',
@@ -243,7 +243,7 @@ export const DASHBOARD_WIDGET_CATALOG = {
         titleHref: urls.errorTracking(),
         sharedPlaceholder: {
             title: 'Top issues',
-            message: 'Log in to PostHog to see which errors are affecting your users.',
+            message: 'Log in to Flind to see which errors are affecting your users.',
         },
         tileFilters: {
             quickFilterContext: QuickFilterContext.ErrorTrackingIssueFilters,
@@ -264,7 +264,7 @@ export const DASHBOARD_WIDGET_CATALOG = {
         titleHref: urls.replay(),
         sharedPlaceholder: {
             title: 'Recent recordings',
-            message: 'Log in to PostHog to watch session replays from this dashboard.',
+            message: 'Log in to Flind to watch session replays from this dashboard.',
         },
         availability: {
             requirement: 'session_replay_enabled',
@@ -292,7 +292,7 @@ export const DASHBOARD_WIDGET_CATALOG = {
         titleHref: urls.experiments(),
         sharedPlaceholder: {
             title: 'Experiments',
-            message: 'Log in to PostHog to see experiments from this dashboard.',
+            message: 'Log in to Flind to see experiments from this dashboard.',
         },
     },
     experiment_results: {
@@ -307,7 +307,7 @@ export const DASHBOARD_WIDGET_CATALOG = {
         productAccess: 'experiment',
         sharedPlaceholder: {
             title: 'Experiment results',
-            message: 'Log in to PostHog to see experiment results from this dashboard.',
+            message: 'Log in to Flind to see experiment results from this dashboard.',
         },
     },
     survey_results: {
@@ -321,7 +321,7 @@ export const DASHBOARD_WIDGET_CATALOG = {
         titleHref: urls.surveys(),
         sharedPlaceholder: {
             title: 'Survey results',
-            message: 'Log in to PostHog to see survey results from this dashboard.',
+            message: 'Log in to Flind to see survey results from this dashboard.',
         },
     },
     activity_events_list: {
@@ -336,7 +336,7 @@ export const DASHBOARD_WIDGET_CATALOG = {
         titleHref: urls.activity(ActivityTab.ExploreEvents),
         sharedPlaceholder: {
             title: 'Recent events',
-            message: 'Log in to PostHog to explore the latest events from this dashboard.',
+            message: 'Log in to Flind to explore the latest events from this dashboard.',
         },
     },
     logs_list: {
@@ -352,7 +352,7 @@ export const DASHBOARD_WIDGET_CATALOG = {
         titleHref: urls.logs(),
         sharedPlaceholder: {
             title: 'Recent logs',
-            message: 'Log in to PostHog to see the latest logs from this dashboard.',
+            message: 'Log in to Flind to see the latest logs from this dashboard.',
         },
     },
     metrics_table: {
@@ -370,7 +370,7 @@ export const DASHBOARD_WIDGET_CATALOG = {
         titleHref: urls.metrics(),
         sharedPlaceholder: {
             title: 'Metrics table',
-            message: 'Log in to PostHog to see the metrics in this table.',
+            message: 'Log in to Flind to see the metrics in this table.',
         },
     },
     canvas_app: {
@@ -385,7 +385,7 @@ export const DASHBOARD_WIDGET_CATALOG = {
         defaultLayout: { w: 6, h: 6, minW: 3, minH: 3 },
         sharedPlaceholder: {
             title: 'Canvas app',
-            message: 'Log in to PostHog with access to this canvas to use it from this dashboard.',
+            message: 'Log in to Flind with access to this canvas to use it from this dashboard.',
         },
     },
 } as const satisfies Record<string, DashboardWidgetCatalogEntry>
@@ -441,7 +441,7 @@ export function tryGetDashboardWidgetCatalogEntry(widgetType: string): ResolvedD
 
 export const DEFAULT_SHARED_DASHBOARD_WIDGET_PLACEHOLDER = {
     title: 'Widget data',
-    message: "Log in to PostHog to see this widget's data.",
+    message: "Log in to Flind to see this widget's data.",
 } as const
 
 export function getUnknownDashboardWidgetCatalogFallback(widgetType: string): ResolvedDashboardWidgetCatalogEntry {

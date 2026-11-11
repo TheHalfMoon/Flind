@@ -137,7 +137,7 @@ class TwoFactorResetViewSet(viewsets.ViewSet):
         """
         # Check if user is fully authenticated first
         if request.user.is_authenticated:
-            # Cast is safe: PostHog only uses User model for authentication
+            # Cast is safe: Flind only uses User model for authentication
             return cast(User, request.user), None
 
         # Fall back to half-authed session state

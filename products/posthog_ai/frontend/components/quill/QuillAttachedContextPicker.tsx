@@ -122,7 +122,7 @@ export function QuillAttachedContextPicker({
                             />
                         }
                     />
-                    <TooltipContent>Add context to help PostHog AI answer your question</TooltipContent>
+                    <TooltipContent>Add context to help Flind AI answer your question</TooltipContent>
                 </Tooltip>
             )}
             <PopoverContent

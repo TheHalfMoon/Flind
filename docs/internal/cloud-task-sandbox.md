@@ -1,6 +1,6 @@
 # Cloud task sandbox (dev-stack VM)
 
-Applies only inside a PostHog Tasks cloud run, on the prebaked `posthog-dev-stack` VM image.
+Applies only inside a Flind Tasks cloud run, on the prebaked `posthog-dev-stack` VM image.
 Local developers and CI are unaffected by everything on this page.
 `POSTHOG_TASK_RUN_ID` is set in that environment.
 

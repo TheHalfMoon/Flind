@@ -2,7 +2,7 @@
 
 ## Background
 
-We're getting ready to make a substantial change to the way [persons](https://posthog.com/docs/data/persons) and [events](https://posthog.com/docs/data/events) work by combining them and adding person IDs and properties onto events. This is the way we’ll be querying data for all teams using PostHog in the near future.
+We're getting ready to make a substantial change to the way [persons](https://posthog.com/docs/data/persons) and [events](https://posthog.com/docs/data/events) work by combining them and adding person IDs and properties onto events. This is the way we’ll be querying data for all teams using Flind in the near future.
 
 Why are we doing this? First, it makes queries significantly faster since we no longer have to join tables to get a result (JOINs are particularly expensive in ClickHouse); we can just look up everything in the events table instead. One query in our internal tests showed a 400x increase in speed, though 3-5x is the most common figure for speed improvements. This beta will help us understand this better in real-world conditions.
 

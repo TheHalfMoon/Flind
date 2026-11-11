@@ -19,7 +19,7 @@ export function MenuDefault(): JSX.Element {
     return (
         <div className="max-w-xs bg-surface-secondary p-2">
             <Collapsible variant="menu" open={open} onOpenChange={setOpen}>
-                <Collapsible.Trigger icon={<IconSparkles />}>PostHog AI</Collapsible.Trigger>
+                <Collapsible.Trigger icon={<IconSparkles />}>Flind AI</Collapsible.Trigger>
                 <Collapsible.Panel>
                     <div className="px-2 py-1 text-sm">New chat</div>
                     <div className="px-2 py-1 text-sm">Recent conversation 1</div>
@@ -42,7 +42,7 @@ export function MenuMultipleSections(): JSX.Element {
     return (
         <div className="max-w-xs bg-surface-secondary p-2 flex flex-col gap-2">
             <Collapsible variant="menu" open={sections.ai} onOpenChange={() => toggle('ai')}>
-                <Collapsible.Trigger icon={<IconSparkles />}>PostHog AI</Collapsible.Trigger>
+                <Collapsible.Trigger icon={<IconSparkles />}>Flind AI</Collapsible.Trigger>
                 <Collapsible.Panel>
                     <div className="px-2 py-1 text-sm">New chat</div>
                     <div className="px-2 py-1 text-sm">Recent conversation</div>

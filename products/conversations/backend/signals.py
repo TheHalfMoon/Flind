@@ -65,7 +65,7 @@ def _is_outbound_reply(item_context: dict | None, created_by_id: int | None) -> 
 
 
 def _unattributed_author_name(item_context: dict | None) -> str:
-    """Name shown to the customer when a reply has no PostHog user.
+    """Name shown to the customer when a reply has no Flind user.
 
     A workflow reply is not the assistant. Using the AI bot name here would tell the
     customer the assistant wrote a message a workflow sent.
@@ -239,7 +239,7 @@ def update_ticket_on_message(sender, instance: Comment, created: bool, **kwargs)
                     item_context=item_context if isinstance(item_context, dict) and created_by_id is None else None,
                 )
 
-            # Internal analytics (PostHog tracking its own usage)
+            # Internal analytics (Flind tracking its own usage)
             props = {"channel_source": ticket.channel_source}
             if is_team_message:
                 if author:

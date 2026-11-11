@@ -47,7 +47,7 @@ STALL_FACTOR = 2.0
 # the obligatory hedgehog
 HEDGEHOG = r"""
          /////////,
-       ///////////// .            PostHog · Signals
+       ///////////// .            Flind · Signals
      ///////////////  `.            health & performance
     ////////////////  o  `.
     `````````````````   `-.>

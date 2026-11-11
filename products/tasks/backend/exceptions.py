@@ -136,7 +136,7 @@ class ComputeBillingLimitError(ProcessTaskError, ComputeBillingLimitExceeded):
         message = (
             "Your organization has been deactivated."
             if reason == ORGANIZATION_DEACTIVATED_DENIAL_CODE
-            else "Your organization reached its PostHog Desktop usage limit."
+            else "Your organization reached its Flind Desktop usage limit."
         )
         super().__init__(
             message,

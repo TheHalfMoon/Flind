@@ -16,7 +16,7 @@ export function NotebookWidgetGenerationCost({ cost }: { cost: string | null | u
                 title={
                     <>
                         <div className="mb-1 font-semibold">Estimated generation cost</div>
-                        Includes this version's generation, security review, retries, and 20% markup. Final PostHog AI
+                        Includes this version's generation, security review, retries, and 20% markup. Final Flind AI
                         credits may differ due to billing rounding.
                     </>
                 }

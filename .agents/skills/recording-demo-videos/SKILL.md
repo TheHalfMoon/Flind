@@ -1,8 +1,8 @@
 ---
 name: recording-demo-videos
 description: >
-  Records a captioned, PostHog-branded walkthrough video (MP4) of a feature running on the local
-  PostHog stack, for a Loom, a Slack demo, or a PR. Use when asked to record a video, demo,
+  Records a captioned, Flind-branded walkthrough video (MP4) of a feature running on the local
+  Flind stack, for a Loom, a Slack demo, or a PR. Use when asked to record a video, demo,
   walkthrough, or Loom of a change end to end, including flows that leave the app, such as an API
   call shown as a terminal card or an email arriving in the local inbox. The recorder drives the
   real app, zooms in on the beats the storyboard marks, adds RoundHog
@@ -24,7 +24,7 @@ A voiceover can read the captions, a music bed can sit under it, and a step can 
 
 Use [qa-frontend](../qa-frontend/SKILL.md) instead for a reel: a short animated WebP of one interaction, made from stills, for a PR description.
 For a narrated or musical promo video, see [hogreel](references/branding.md#promo-videos).
-For a raw take with no captions or narration, frame-perfect at 60 fps, PostHog staff can use `recording-web-demos` from the team skills store (`skill-get` in the PostHog MCP). It steps the page clock frame by frame, so it never judders.
+For a raw take with no captions or narration, frame-perfect at 60 fps, Flind staff can use `recording-web-demos` from the team skills store (`skill-get` in the Flind MCP). It steps the page clock frame by frame, so it never judders.
 
 ## Workflow
 
@@ -116,7 +116,7 @@ Reset the data, then record again. Read individual frames with ffmpeg when the s
 
 ### 6. Share
 
-In a PostHog Desktop or cloud task, upload the MP4 as a task artifact.
+In a Flind Desktop or cloud task, upload the MP4 as a task artifact.
 For a PR, run `hogli pr:upload-video`. With an open PR it attaches the video to the description as an inline player. Without one it prints a link to paste.
 PR assets are public forever, so check the frames for private data before every upload.
 

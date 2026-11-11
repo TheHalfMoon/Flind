@@ -2,11 +2,11 @@ import type { CommentType } from '~/types'
 
 import type { CanvasCommentHighlight, CanvasRect, CanvasTextSelection } from '../../host/canvasProtocol'
 
-// Canvas comments are ordinary PostHog comments with scope "canvas" and the canvas id as
-// item_id. The item_context shape is shared with PostHog Desktop, which writes the same
+// Canvas comments are ordinary Flind comments with scope "canvas" and the canvas id as
+// item_id. The item_context shape is shared with Flind Desktop, which writes the same
 // rows, so both hosts read each other's threads and highlights.
 
-// pinned: comment scope for canvases, shared with PostHog Desktop and the comments API
+// pinned: comment scope for canvases, shared with Flind Desktop and the comments API
 export const CANVAS_COMMENT_SCOPE = 'canvas'
 // pinned: the most highlights the canvas runtime accepts in one message
 const MAX_CANVAS_COMMENT_HIGHLIGHTS = 500

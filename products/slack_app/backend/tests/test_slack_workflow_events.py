@@ -41,7 +41,7 @@ def test_emits_once_per_connected_project(produce, org_team_user, workspace_inte
     # Same Slack event, different projects: the uuids have to differ or the second project's run
     # would be discarded as a duplicate of the first.
     assert len({call.args[1].uuid for call in produce.call_args_list}) == 2
-    # The consumer resolves this back to a stored app id to recognize a message PostHog posted, and
+    # The consumer resolves this back to a stored app id to recognize a message Flind posted, and
     # each project has its own connection.
     assert {call.args[1].properties["integration_id"] for call in produce.call_args_list} == {
         workspace_integration.pk,

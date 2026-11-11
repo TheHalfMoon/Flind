@@ -358,7 +358,7 @@ function Detection({
   if (empty || detected === null) {
     return (
       <Text size="xs" variant="muted">
-        A Slack channel, Notion page, Linear project, GitHub repo, PostHog
+        A Slack channel, Notion page, Linear project, GitHub repo, Flind
         insight or flag, or any web page.
       </Text>
     );

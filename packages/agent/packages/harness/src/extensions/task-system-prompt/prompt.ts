@@ -16,7 +16,7 @@ function escapeXml(value: string): string {
 export function buildPostHogContextPrompt(
   context: Pick<TaskContext, "projectId" | "apiHost">,
 ): string {
-  return `PostHog context: use project ${context.projectId} on ${context.apiHost}. When using PostHog MCP tools, operate only on this project.`;
+  return `Flind context: use project ${context.projectId} on ${context.apiHost}. When using Flind MCP tools, operate only on this project.`;
 }
 
 export function buildTaskContextPrompt(taskId: string): string {
@@ -36,15 +36,15 @@ export function buildAttributionPrompt(
   // Local runs always come from Desktop, and GitHub drops custom URL schemes from links.
   const threadLink =
     environment === "local" && apiHost
-      ? ` from a [PostHog Desktop task](${apiHost.replace(/\/+$/, "")}/code/task/${encodeURIComponent(taskId)})`
+      ? ` from a [Flind Desktop task](${apiHost.replace(/\/+$/, "")}/code/task/${encodeURIComponent(taskId)})`
       : "";
   const commitInstructions =
     environment === "cloud"
       ? `In cloud tasks, call \`git_signed_commit\` to create commits. It automatically adds these trailers:
-  Generated-By: PostHog Desktop
+  Generated-By: Flind Desktop
   Task-Id: ${taskId}`
       : `Add the following trailers to every commit message after a blank line:
-  Generated-By: PostHog Desktop
+  Generated-By: Flind Desktop
   Task-Id: ${taskId}
 
 Example:
@@ -52,7 +52,7 @@ Example:
 git commit -m "$(cat <<'EOF'
 fix: resolve login redirect loop
 
-Generated-By: PostHog Desktop
+Generated-By: Flind Desktop
 Task-Id: ${taskId}
 EOF
 )"
@@ -68,7 +68,7 @@ When creating new branches, prefix them with \`posthog/\` (e.g. \`posthog/fix-lo
 When creating pull requests, add the following footer at the end of the PR description:
 \`\`\`
 ---
-*Created with [PostHog Desktop](https://posthog.com/desktop?ref=pr)${threadLink}*
+*Created with [Flind Desktop](https://posthog.com/desktop?ref=pr)${threadLink}*
 \`\`\``;
 }
 
@@ -115,7 +115,7 @@ This task may not need a repository. Your working directory is \`${cwd}\`, task-
   }
 
   return `## Channel task (no repository attached)
-You are running in a PostHog channel as a general-purpose assistant. This task may not need a code repository. It could be data analysis via PostHog tools, drafting a message, or answering a question. Do not assume you need a repo.
+You are running in a Flind channel as a general-purpose assistant. This task may not need a code repository. It could be data analysis via Flind tools, drafting a message, or answering a question. Do not assume you need a repo.
 
 - Your working directory is \`${cwd}\`, a scratch directory, not a git checkout. Treat it as empty.
 - Decide from the user's request and the channel CONTEXT.md, if present, whether the task requires a code repository. If it doesn't, do the work in the scratch directory.

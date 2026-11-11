@@ -45,7 +45,7 @@ export function SDKInstallDjangoInstructions(): JSX.Element {
             <DjangoInstallSnippet />
             <h3>Configure</h3>
             <p>
-                Set the PostHog project token and host in your <code>AppConfig</code> in <code>apps.py</code> so that's
+                Set the Flind project token and host in your <code>AppConfig</code> in <code>apps.py</code> so that's
                 it's available everywhere:
             </p>
             <DjangoAppConfigSnippet />

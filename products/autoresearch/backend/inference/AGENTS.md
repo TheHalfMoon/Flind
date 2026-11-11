@@ -1,6 +1,6 @@
 # Inference
 
-Scoring a population with the champion model and writing the result back into PostHog as `autoresearch_prediction` events, then scoring the same people with every other model in the shadow set.
+Scoring a population with the champion model and writing the result back into Flind as `autoresearch_prediction` events, then scoring the same people with every other model in the shadow set.
 
 This is the cheap, boring, high-frequency half of the product — it runs on the pipeline's cadence (default daily) for every active pipeline, forever.
 `../training/` is the expensive half that produces what this package consumes.

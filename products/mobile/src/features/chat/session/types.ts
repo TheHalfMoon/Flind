@@ -12,11 +12,11 @@ export type SessionToolStatus = 'pending' | 'in_progress' | 'completed' | 'faile
 
 export interface SessionToolInvocation {
     toolCallId: string
-    /** The agent's own tool (`Bash`, `Edit`) or the inner PostHog MCP tool, else the raw ACP tool name. */
+    /** The agent's own tool (`Bash`, `Edit`) or the inner Flind MCP tool, else the raw ACP tool name. */
     toolName: string
     /** The ACP `title`, already shortened for a phone row. */
     title?: string
-    /** The PostHog MCP `context` sentence: why the agent made this call. */
+    /** The Flind MCP `context` sentence: why the agent made this call. */
     detail?: string
     /** The ACP `kind` (`execute`, `read`, `edit`, …), which the activity summary counts. */
     kind?: string

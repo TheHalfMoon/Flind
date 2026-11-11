@@ -592,7 +592,7 @@ class TestExternalDataSource(APIBaseTest):
         self.assertEqual(listed_schema["sync_frequency"], "6hour")
         self.assertEqual(listed_schema["table"]["row_count"], 42)
         self.assertEqual(listed_schema["table"]["name"], "Customers")
-        # sync_type is kept for the PostHog Desktop app, which reads it from the list; without it the
+        # sync_type is kept for the Flind Desktop app, which reads it from the list; without it the
         # app treats every schema as needing an update and sends a redundant PATCH per toggle.
         self.assertIn("sync_type", listed_schema)
 
@@ -1334,7 +1334,7 @@ class TestExternalDataSource(APIBaseTest):
 
     @parameterized.expand(
         [
-            # The MCP tool injects `mcp`; a wizard or PostHog Desktop user agent upgrades it.
+            # The MCP tool injects `mcp`; a wizard or Flind Desktop user agent upgrades it.
             ("posthog/wizard/1.0.0", ExternalDataSource.CreatedVia.MCP, ExternalDataSource.CreatedVia.WIZARD),
             ("posthog/code 1.2.3", ExternalDataSource.CreatedVia.MCP, ExternalDataSource.CreatedVia.SELF_DRIVING),
             # The wizard's self-driving program marks its UA distinctly → self_driving, not plain wizard.
@@ -1466,7 +1466,7 @@ class TestExternalDataSource(APIBaseTest):
         [
             ("garbage_value", "hacker"),
             # `wizard` and `self_driving` are derived server-side; a caller must not be able to
-            # self-label as wizard- or PostHog Desktop-created.
+            # self-label as wizard- or Flind Desktop-created.
             ("wizard_is_not_caller_settable", ExternalDataSource.CreatedVia.WIZARD),
             ("self_driving_is_not_caller_settable", ExternalDataSource.CreatedVia.SELF_DRIVING),
         ]
@@ -4821,7 +4821,7 @@ class TestExternalDataSource(APIBaseTest):
         )
 
         assert response.status_code == status.HTTP_400_BAD_REQUEST
-        assert response.json() == {"message": "This source name is reserved by PostHog."}
+        assert response.json() == {"message": "This source name is reserved by Flind."}
         assert not ExternalDataSource.objects.filter(team=self.team, prefix="managed_warehouse").exists()
 
     @patch("products.warehouse_sources.backend.presentation.views.external_data_source.base.SourceRegistry.get_source")
@@ -6659,7 +6659,7 @@ class TestExternalDataSource(APIBaseTest):
             self.assertEqual(
                 response.json(),
                 {
-                    "message": "This host points to an internal or private IP address, which PostHog can't reach. "
+                    "message": "This host points to an internal or private IP address, which Flind can't reach. "
                     "Use a host that's reachable from the public internet. "
                     "If your database isn't publicly reachable, connect through an SSH tunnel."
                 },
@@ -6739,7 +6739,7 @@ class TestExternalDataSource(APIBaseTest):
             self.assertEqual(
                 response.json(),
                 {
-                    "message": "This host points to an internal or private IP address, which PostHog can't reach. "
+                    "message": "This host points to an internal or private IP address, which Flind can't reach. "
                     "Use a host that's reachable from the public internet. "
                     "If your database isn't publicly reachable, connect through an SSH tunnel."
                 },
@@ -6799,7 +6799,7 @@ class TestExternalDataSource(APIBaseTest):
                 self.assertEqual(
                     response.json(),
                     {
-                        "message": "This host points to an internal or private IP address, which PostHog can't reach. "
+                        "message": "This host points to an internal or private IP address, which Flind can't reach. "
                         "Use a host that's reachable from the public internet. "
                         "If your database isn't publicly reachable, connect through an SSH tunnel."
                     },
@@ -8398,7 +8398,7 @@ class TestExternalDataSource(APIBaseTest):
 
         assert response.status_code == 400
         assert response.json()["detail"] == (
-            "This host points to an internal or private IP address, which PostHog can't reach. "
+            "This host points to an internal or private IP address, which Flind can't reach. "
             "Use a host that's reachable from the public internet. "
             "If your database isn't publicly reachable, connect through an SSH tunnel."
         )
@@ -10733,7 +10733,7 @@ class TestWebhookInfo(APIBaseTest):
             url="https://webhooks.us.posthog.com/public/webhooks/dwh/test-id",
             status="enabled",
             enabled_events=["charge.created", "charge.updated"],
-            description="PostHog data warehouse webhook",
+            description="Flind data warehouse webhook",
         )
 
         source = self._create_stripe_source()
@@ -12188,7 +12188,7 @@ class TestDisableCDC(APIBaseTest):
         return_value=None,
     )
     def test_disable_cdc_clears_an_earlier_auto_disable(self, _cleanup, _purge_buffer_prefix) -> None:
-        # PostHog can halt a CDC schema before the user gives up on CDC. The halt must not
+        # Flind can halt a CDC schema before the user gives up on CDC. The halt must not
         # survive their disable, or the failure digest keeps emailing them about a sync
         # they switched off themselves.
         source = _make_postgres_source(self.team.pk, self.user, cdc_enabled=True)
@@ -12645,7 +12645,7 @@ class TestRepairCDC(APIBaseTest):
         message = response.json()["message"]
         assert "must be owner of table orders" in message
         assert "Incremental sync" in message
-        # A missing grant on the customer's database is not a PostHog exception.
+        # A missing grant on the customer's database is not a Flind exception.
         mock_capture.assert_not_called()
 
     @patch(

@@ -259,7 +259,7 @@ describe("EvidenceRefChip", () => {
 
   it("gives an unlinked reference a focusable trigger that opens the card", () => {
     // A flag cited by key or an event cited by name has no chip URL, so the
-    // card's "Open in PostHog" is the only route to the object; the trigger
+    // card's "Open in Flind" is the only route to the object; the trigger
     // must therefore be reachable and operable by keyboard.
     signIn();
     renderInTheme(

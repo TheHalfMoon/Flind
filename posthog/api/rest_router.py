@@ -136,7 +136,7 @@ projects_router.register(
 
 # Tasks endpoints
 
-# PostHog Desktop invites (not project-scoped)
+# Flind Desktop invites (not project-scoped)
 
 # Seats (proxied to billing service)
 

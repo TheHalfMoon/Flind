@@ -15,7 +15,7 @@ const createEvent = (properties?: Record<string, unknown>): PluginEvent => ({
 })
 
 describe('convertRawEvent', () => {
-    it('maps OTel attributes to PostHog properties when source is otel', () => {
+    it('maps OTel attributes to Flind properties when source is otel', () => {
         const event = createEvent({
             $ai_ingestion_source: 'otel',
             'gen_ai.request.model': 'gpt-4',

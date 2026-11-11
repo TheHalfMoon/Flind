@@ -512,7 +512,7 @@ class SignupResendInviteViewset(generics.GenericAPIView):
     """Re-send the existing invite email for a given address, if one exists.
 
     Pairs with the precheck nudge banner: a user who landed on /signup with a pending invite
-    can ask PostHog to re-deliver the original invite email. Returns the same shape whether
+    can ask Flind to re-deliver the original invite email. Returns the same shape whether
     or not an invite exists, but precheck has already disclosed the existence — this endpoint
     just makes the round-trip via email easier.
     """

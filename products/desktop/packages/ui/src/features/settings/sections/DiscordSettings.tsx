@@ -88,7 +88,7 @@ export function DiscordSettings() {
   };
 
   const statusDescription = !enabled ? (
-    "Show what you're working on in PostHog on your profile"
+    "Show what you're working on in Flind on your profile"
   ) : !configured ? (
     <span className="text-(--amber-11)">
       No Discord application is configured for this build, so nothing will

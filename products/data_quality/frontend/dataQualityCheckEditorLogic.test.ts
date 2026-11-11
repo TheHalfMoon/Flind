@@ -1054,14 +1054,14 @@ describe('dataQualityCheckEditorLogic', () => {
 
     it.each<[string, DataQualitySubjectRef, CheckTypeEnumApi, string[], string | null]>([
         [
-            'a PostHog table not_null check',
+            'a Flind table not_null check',
             { subjectType: 'posthog_table', subjectId: 'events-1' },
             CheckTypeEnumApi.NotNull,
             ['distinct_id', 'timestamp'],
             'timestamp',
         ],
         [
-            'a PostHog table row_count check',
+            'a Flind table row_count check',
             { subjectType: 'posthog_table', subjectId: 'events-1' },
             CheckTypeEnumApi.RowCount,
             ['distinct_id', 'timestamp'],

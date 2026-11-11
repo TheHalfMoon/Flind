@@ -1,7 +1,7 @@
 ---
 name: simulate-new-user
 description: >
-  Send synthetic first-time-visitor traffic to a URL and confirm that PostHog
+  Send synthetic first-time-visitor traffic to a URL and confirm that Flind
   $pageview events fire. Use when a customer wants to verify that anonymous
   visitor tracking works, after deploying instrumentation changes, or when
   debugging "events not arriving" reports.
@@ -10,13 +10,13 @@ description: >
 # Simulate new-user traffic
 
 Drives a fresh browser context for each visit (no cookies, no localStorage),
-goes to the given URL, scrolls a bit, and reports which PostHog events fired.
-Each visit looks to PostHog like a brand-new anonymous visitor.
+goes to the given URL, scrolls a bit, and reports which Flind events fired.
+Each visit looks to Flind like a brand-new anonymous visitor.
 
 ## When to use
 
 - Confirm `$pageview` fires on the first visit (no cookies present).
-- Confirm an anonymous `distinct_id` is generated and a PostHog request
+- Confirm an anonymous `distinct_id` is generated and a Flind request
   is sent within a few seconds of page load.
 - Reproduce "events not showing up for new users" reports.
 
@@ -53,7 +53,7 @@ The tool returns a structured summary:
 
 - `verified: true` means at least one `$pageview` was captured per visit and
   no errors occurred — the new-user flow works.
-- `verified: false` with `pageviews: 0` means PostHog isn't firing pageviews.
+- `verified: false` with `pageviews: 0` means Flind isn't firing pageviews.
   Run `check_posthog_loading` next to see whether the snippet is even loaded.
-- `posthog_requests_ok < posthog_requests` means PostHog returned non-2xx
+- `posthog_requests_ok < posthog_requests` means Flind returned non-2xx
   responses. Check the project's ingestion limits and api_host configuration.

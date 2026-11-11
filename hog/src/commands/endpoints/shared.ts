@@ -92,8 +92,8 @@ const LABELS: Record<Change['field'], string> = {
     defaults: 'Defaults',
 }
 
-// `from` is the side that changes: PostHog for a push, the file for a pull. Anyone in the project
-// can edit the PostHog side, so escape sequences in it must not reach the terminal.
+// `from` is the side that changes: Flind for a push, the file for a pull. Anyone in the project
+// can edit the Flind side, so escape sequences in it must not reach the terminal.
 export function changeLines(change: Change, direction: 'push' | 'pull', style: Styler): string[] {
     const [from, to] = direction === 'push' ? [change.remote, change.local] : [change.local, change.remote]
     if (change.field !== 'query') {
@@ -117,7 +117,7 @@ export function variableLines(changes: VariableChange[], style: Styler): string[
     return [
         'Variables:',
         ...changes.map((change) => {
-            // A name can come from the endpoint in PostHog, which another member can edit.
+            // A name can come from the endpoint in Flind, which another member can edit.
             const name = escapeControls(change.name)
             if (change.change === 'add') {
                 return style(`  + ${name} (${escapeControls(change.type ?? '')})`, 'green')

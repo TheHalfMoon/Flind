@@ -69,7 +69,7 @@ SCOUT_RUN_CONTEXT_TOOLS = frozenset(
 
 
 def scout_held_mcp_tools(allowed_mcp_tools: Iterable[str]) -> frozenset[str]:
-    """Every PostHog MCP tool a scout run holds when its config narrows it to a tool list.
+    """Every Flind MCP tool a scout run holds when its config narrows it to a tool list.
 
     That is the picked tools, the run context tools every scout needs to report, and the tools
     the MCP server offers every client. Each enforcement point calls this, so the API and the

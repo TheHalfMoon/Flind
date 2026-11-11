@@ -88,7 +88,7 @@ class FreshdeskSource(ResumableSource[FreshdeskSourceConfig, FreshdeskResumeConf
             name=ExternalDataSourceType.FRESHDESK,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Freshdesk",
-            caption="""Enter your Freshdesk domain and API key to pull your Freshdesk support data into the PostHog Data warehouse.
+            caption="""Enter your Freshdesk domain and API key to pull your Freshdesk support data into the Flind Data warehouse.
 
 Your **domain** is the subdomain in your Freshdesk URL — e.g. `acme` for `acme.freshdesk.com`.
 

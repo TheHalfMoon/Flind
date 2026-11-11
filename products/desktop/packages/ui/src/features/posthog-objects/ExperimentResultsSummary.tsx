@@ -34,7 +34,7 @@ export function ExperimentResultsSummary({
     return (
       <ExperimentResultNotice tone="destructive">
         Couldn't load experiment results. Try again, or open the experiment in
-        PostHog.
+        Flind.
       </ExperimentResultNotice>
     );
   }
@@ -73,7 +73,7 @@ export function ExperimentResultsSummary({
       )}
       {results.state === "error" && (
         <ExperimentResultNotice tone="destructive">
-          Some metric results couldn't load. Open the experiment in PostHog to
+          Some metric results couldn't load. Open the experiment in Flind to
           retry them.
         </ExperimentResultNotice>
       )}

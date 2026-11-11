@@ -49,7 +49,7 @@ function ExtensionPanelBody({ panelState }: { panelState: ExtensionPanelState })
                         'data-attr': 'toolbar-extension-allow-host',
                     }}
                 >
-                    Allow the extension to use your PostHog login on {host}.
+                    Allow the extension to use your Flind login on {host}.
                 </LemonBanner>
             )
         case 'signed-out':
@@ -62,7 +62,7 @@ function ExtensionPanelBody({ panelState }: { panelState: ExtensionPanelState })
                         'data-attr': 'toolbar-extension-log-in',
                     }}
                 >
-                    Log in to PostHog on {host}, then come back to this tab.
+                    Log in to Flind on {host}, then come back to this tab.
                 </LemonBanner>
             )
         case 'no-toolbar-access':
@@ -93,7 +93,7 @@ function ExtensionPanelBody({ panelState }: { panelState: ExtensionPanelState })
             return (
                 <>
                     <LemonBanner type="info">
-                        This is PostHog, not your website. Open your website to use the toolbar on it.
+                        This is Flind, not your website. Open your website to use the toolbar on it.
                     </LemonBanner>
                     <ExtensionAuthorizedUrlLinks />
                 </>
@@ -104,7 +104,7 @@ function ExtensionPanelBody({ panelState }: { panelState: ExtensionPanelState })
                     type="error"
                     action={{ children: 'Try again', onClick: retry, 'data-attr': 'toolbar-extension-retry' }}
                 >
-                    Couldn't reach PostHog on {host}. Check your connection and try again.
+                    Couldn't reach Flind on {host}. Check your connection and try again.
                 </LemonBanner>
             )
         case 'ready':
@@ -118,7 +118,7 @@ export function ExtensionPanel(): JSX.Element {
     return (
         <div className="flex min-h-screen flex-col gap-3 p-3">
             <h1 className="m-0 flex">
-                <Logo size="xs" title="PostHog" />
+                <Logo size="xs" title="Flind" />
             </h1>
             <ExtensionPanelBody panelState={panelState} />
             <ExtensionPanelSettings />

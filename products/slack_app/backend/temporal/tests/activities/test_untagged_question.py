@@ -38,7 +38,7 @@ class TestClassifyUntaggedQuestion(SimpleTestCase):
     @parameterized.expand(
         [
             ("both confident", NoulAnswer(probability=0.97), NoulAnswer(probability=0.91), True),
-            ("a question PostHog cannot answer", NoulAnswer(probability=0.97), NoulAnswer(probability=0.6), False),
+            ("a question Flind cannot answer", NoulAnswer(probability=0.97), NoulAnswer(probability=0.6), False),
             ("answerable but not a question", NoulAnswer(probability=0.5), NoulAnswer(probability=0.95), False),
             ("a refusal", NoulAnswer(probability=0.99), RefusalAnswer(), None),
         ]

@@ -39,19 +39,19 @@ export const getUnitySteps = (ctx: OnboardingComponentsContext): StepDefinition[
             badge: 'required',
             content: (
                 <Markdown>
-                    Go to your PostHog [Project Settings](https://us.posthog.com/settings/project-replay) and enable
+                    Go to your Flind [Project Settings](https://us.posthog.com/settings/project-replay) and enable
                     **Record user sessions**. Session recordings will not work without this setting enabled.
                 </Markdown>
             ),
         },
         {
-            title: 'Configure PostHog with session replay',
+            title: 'Configure Flind with session replay',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Enable `SessionReplay` in your PostHog configuration. You can also configure session replay in
-                        **Edit &gt; Project Settings &gt; PostHog** in the Unity Editor. The `SessionReplayConfig`
+                        Enable `SessionReplay` in your Flind configuration. You can also configure session replay in
+                        **Edit &gt; Project Settings &gt; Flind** in the Unity Editor. The `SessionReplayConfig`
                         values below are the SDK defaults. Adjust them to match your app's requirements.
                     </Markdown>
                     <CodeBlock
@@ -63,7 +63,7 @@ export const getUnitySteps = (ctx: OnboardingComponentsContext): StepDefinition[
                                     using PostHogUnity;
                                     using PostHogUnity.SessionReplay;
 
-                                    PostHog.Setup(new PostHogConfig
+                                    Flind.Setup(new PostHogConfig
                                     {
                                         ApiKey = "<ph_project_token>",
                                         Host = "<ph_client_api_host>",

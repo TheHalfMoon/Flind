@@ -37,7 +37,7 @@ const ENVIRONMENT_OPTIONS: { value: SpaceFeedEnvironmentFilter; label: string }[
     { value: 'cloud', label: 'Cloud' },
 ]
 
-/** The space feed's sort, grouping and filters behind the funnel button, like PostHog Desktop's. */
+/** The space feed's sort, grouping and filters behind the funnel button, like Flind Desktop's. */
 export function SpaceFeedFilterMenu({ sourceOptions }: { sourceOptions: string[] }): JSX.Element {
     const { filters, filtersActive, sort, grouping } = useValues(spaceFeedViewLogic)
     const { setFilters, clearFilters, setSort, setGrouping } = useActions(spaceFeedViewLogic)

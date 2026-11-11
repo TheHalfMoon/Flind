@@ -1,5 +1,5 @@
 /**
- * PostHog Design System — Border Radius Tokens
+ * Flind Design System — Border Radius Tokens
  *
  * Note: Tailwind v4 uses --radius as a base value in color-system.css (0.625rem).
  * These are the static design-token values for direct use.

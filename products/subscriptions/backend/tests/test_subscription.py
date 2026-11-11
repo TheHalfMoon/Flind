@@ -3986,7 +3986,7 @@ class TestAISubscriptionAPI(APILicensedTest):
                 self._make_ai_payload(),
             )
         assert response.status_code == status.HTTP_400_BAD_REQUEST
-        assert "PostHog Cloud" in str(response.json())
+        assert "Flind Cloud" in str(response.json())
 
     def test_rejects_when_flag_off(self, mock_is_cloud, mock_flag, mock_sync):
         self._enable_ai()

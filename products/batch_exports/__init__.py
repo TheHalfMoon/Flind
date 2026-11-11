@@ -1,1 +1,1 @@
-"""Batch exports product for PostHog."""
+"""Batch exports product for Flind."""

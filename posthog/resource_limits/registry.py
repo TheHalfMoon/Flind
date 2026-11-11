@@ -30,7 +30,7 @@ class LimitDefinition:
     ``by_plan_tier`` carries optional tier-keyed overrides for limits that
     scale with billing plan. When set, callers should resolve the tier via
     the organization helper rather than reading ``default`` directly.
-    Boost and Scale collapse to "paid" because PostHog's existing tier
+    Boost and Scale collapse to "paid" because Flind's existing tier
     helper conflates them; revisit if/when the helper learns finer
     granularity.
     """

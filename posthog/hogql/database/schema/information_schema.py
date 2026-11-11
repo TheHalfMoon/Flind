@@ -1692,7 +1692,7 @@ class InformationSchemaTablesTable(InformationSchemaTable):
         "table_catalog": _string_field(
             "table_catalog",
             nullable=False,
-            description="Table name (same as table_name); PostHog does not use a separate catalog identifier.",
+            description="Table name (same as table_name); Flind does not use a separate catalog identifier.",
         ),
         "table_schema": _string_field(
             "table_schema",
@@ -2252,8 +2252,8 @@ class InformationSchemaDataQualityHealthTable(LazyTable):
         "subject_uuid": _string_field("subject_uuid", description="UUID of the table, view, or metric."),
         "subject_name": _string_field(
             "subject_name",
-            description="Name of the table, view, metric, or PostHog table. "
-            "Table, view and PostHog table names are queryable in HogQL; a metric name is not.",
+            description="Name of the table, view, metric, or Flind table. "
+            "Table, view and Flind table names are queryable in HogQL; a metric name is not.",
         ),
         "health": _string_field(
             "health", description="'failing', 'erroring', 'warn', 'healthy', or 'unknown'. Worst outcome wins."

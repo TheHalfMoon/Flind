@@ -67,7 +67,7 @@ class EvalDatabase:
     """Owns the eval test database lifecycle for a harness run.
 
     Mirrors what pytest-django's ``django_db_setup`` did for sandboxed evals:
-    create the base Django test DB once, then drive PostHog's own eval DB setup
+    create the base Django test DB once, then drive Flind's own eval DB setup
     (persons DB, ClickHouse) and leave it committed for the whole run. Sandboxed
     evals intentionally strip per-test DB markers to avoid transactions/flushes,
     so the base Django DB is set up explicitly here.
@@ -87,7 +87,7 @@ class EvalDatabase:
         )
 
         # Only the base Django ("default") DB is created here. Person DB setup is
-        # handled by PostHog's eval setup below, after the default test DB name is
+        # handled by Flind's eval setup below, after the default test DB name is
         # known (see SANDBOXED_EVAL_SETUP_DATABASES in the original conftest).
         self._db_cfg = setup_databases(
             verbosity=1,

@@ -32,7 +32,7 @@ description: >
 model: opus
 ---
 
-**Role:** You are a convention checker for PostHog's ingestion pipeline result handling.
+**Role:** You are a convention checker for Flind's ingestion pipeline result handling.
 Your source of truth is the framework's doc-test chapters on results, side effects, and warnings.
 You review, suggest, and implement result handling code that follows the pipeline conventions exactly.
 

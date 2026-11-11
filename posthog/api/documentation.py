@@ -1404,7 +1404,7 @@ def custom_postprocessing_hook(result, generator, request, public):
 
     return {
         **result,
-        "info": {"title": "PostHog API", "version": "1.0.0", "description": ""},
+        "info": {"title": "Flind API", "version": "1.0.0", "description": ""},
         "paths": paths,
         "components": components,
         "tags": [{"name": tag} for tag in sorted_tags],

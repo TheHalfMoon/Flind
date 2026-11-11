@@ -28,7 +28,7 @@ describe('reddit template', () => {
                         sku: '43431-18',
                         category: 'merch',
                         name: 'Tactical black t-shirt',
-                        brand: 'PostHog',
+                        brand: 'Flind',
                         variant: 'dark',
                         price: 30,
                         quantity: 1,

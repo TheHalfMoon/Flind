@@ -804,7 +804,7 @@ def raise_if_delivery_rejected(campaign_key: str, email: str) -> None:
 # and mail clients expect the literal `&` between query parameters.
 _PASSTHROUGH_KEYS = {"utm_tags"}
 
-# Keys whose values are PostHog-generated URLs (built from `settings.SITE_URL`
+# Keys whose values are Flind-generated URLs (built from `settings.SITE_URL`
 # + a path) and should remain clickable in the rendered email. Defanging would
 # break every "click here" button, so URL-shape characters (`:`, `/`, `.`) are
 # preserved — but attribute-injection characters (`<`, `>`, `"`, `'`, `&`) are

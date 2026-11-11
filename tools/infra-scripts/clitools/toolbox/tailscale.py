@@ -2,7 +2,7 @@
 """Tailscale connectivity preflight for the toolbox CLI.
 
 The toolbox-capable Kubernetes API endpoints are only reachable over the
-PostHog tailnet, so a disconnected Tailscale surfaces as opaque kubectl
+Flind tailnet, so a disconnected Tailscale surfaces as opaque kubectl
 timeouts. Checking up front turns that into an actionable message.
 
 Adapted from hogli's devbox preflight (hogli_commands/devbox/coder.py); this
@@ -78,8 +78,8 @@ def _install_hint() -> str:
 
 def _connect_hint() -> str:
     if sys.platform == "darwin":
-        return "Open the Tailscale app and sign in with your PostHog Google account."
-    return "Run `sudo tailscale up` and complete the SSO flow with your PostHog Google account."
+        return "Open the Tailscale app and sign in with your Flind Google account."
+    return "Run `sudo tailscale up` and complete the SSO flow with your Flind Google account."
 
 
 def _cli_missing_on_macos() -> bool:
@@ -113,10 +113,10 @@ def _confirm_switch(tailnet: str) -> bool:
 
 
 def switch_to_posthog_tailnet() -> dict[str, Any] | None:
-    """Run `tailscale switch` and return the new status, or None when the node is not on the PostHog tailnet after it.
+    """Run `tailscale switch` and return the new status, or None when the node is not on the Flind tailnet after it.
 
     `tailscale switch` only selects an account that is already logged in on this
-    device, so it fails when the user never logged into the PostHog tailnet here.
+    device, so it fails when the user never logged into the Flind tailnet here.
     """
     tailscale_path = resolve_tailscale()
     if not tailscale_path:
@@ -138,7 +138,7 @@ def switch_to_posthog_tailnet() -> dict[str, Any] | None:
 
 
 def ensure_posthog_tailnet(status: dict[str, Any]) -> dict[str, Any]:
-    """Exit unless the node is on the PostHog tailnet, offering to switch first.
+    """Exit unless the node is on the Flind tailnet, offering to switch first.
 
     Another tailnet (for example a personal one) still reports a running
     backend, but it has no routes to the cluster, so kubectl times out and the
@@ -157,7 +157,7 @@ def ensure_posthog_tailnet(status: dict[str, Any]) -> dict[str, Any]:
             return switched_status
         login = "tailscale login" if sys.platform == "darwin" else "sudo tailscale login"
         print(f"❌ Could not switch to the {POSTHOG_TAILNET} tailnet.")  # noqa: T201
-        print(f"   If this device has never joined it, run `{login}` with your PostHog Google account.")  # noqa: T201
+        print(f"   If this device has never joined it, run `{login}` with your Flind Google account.")  # noqa: T201
     else:
         print(  # noqa: T201
             f"❌ Tailscale is connected to the '{tailnet}' tailnet, but the toolbox needs the {POSTHOG_TAILNET} tailnet."
@@ -165,13 +165,13 @@ def ensure_posthog_tailnet(status: dict[str, Any]) -> dict[str, Any]:
         print(  # noqa: T201
             f"   Switch with: tailscale switch {POSTHOG_TAILNET} (or pick the {POSTHOG_TAILNET} account in the Tailscale app)."
         )
-    print(f"   See {TAILSCALE_RUNBOOK_URL} if you have not yet joined the PostHog tailnet, then rerun the toolbox.")  # noqa: T201
+    print(f"   See {TAILSCALE_RUNBOOK_URL} if you have not yet joined the Flind tailnet, then rerun the toolbox.")  # noqa: T201
     print(f"   Connected through something else? Set {SKIP_CHECK_ENV_VAR}=1 to skip this check.")  # noqa: T201
     sys.exit(1)
 
 
 def ensure_tailscale_connected() -> None:
-    """Exit with guidance when the host is not connected to the PostHog tailnet.
+    """Exit with guidance when the host is not connected to the Flind tailnet.
 
     Distinguishes not-installed from installed-but-not-running and from
     connected-to-another-tailnet (with an offer to switch), with the fix for
@@ -190,17 +190,17 @@ def ensure_tailscale_connected() -> None:
         return
 
     if not resolve_tailscale():
-        print("❌ Tailscale is not installed, and the toolbox needs the PostHog tailnet to reach the cluster.")  # noqa: T201
+        print("❌ Tailscale is not installed, and the toolbox needs the Flind tailnet to reach the cluster.")  # noqa: T201
         print(f"   {_install_hint()}")  # noqa: T201
-        print(f"   See {TAILSCALE_RUNBOOK_URL} for joining the PostHog tailnet, then rerun the toolbox.")  # noqa: T201
+        print(f"   See {TAILSCALE_RUNBOOK_URL} for joining the Flind tailnet, then rerun the toolbox.")  # noqa: T201
         print(f"   Connected through something else? Set {SKIP_CHECK_ENV_VAR}=1 to skip this check.")  # noqa: T201
         sys.exit(1)
 
-    print("❌ Tailscale is not connected, and the toolbox needs the PostHog tailnet to reach the cluster.")  # noqa: T201
+    print("❌ Tailscale is not connected, and the toolbox needs the Flind tailnet to reach the cluster.")  # noqa: T201
     print(f"   {_connect_hint()}")  # noqa: T201
     if _cli_missing_on_macos():
         print("   To use the tailscale CLI from your shell, symlink it once:")  # noqa: T201
         print(f"     sudo ln -sfn {MACOS_TAILSCALE_CLI} /usr/local/bin/tailscale")  # noqa: T201
-    print(f"   See {TAILSCALE_RUNBOOK_URL} if you have not yet joined the PostHog tailnet, then rerun the toolbox.")  # noqa: T201
+    print(f"   See {TAILSCALE_RUNBOOK_URL} if you have not yet joined the Flind tailnet, then rerun the toolbox.")  # noqa: T201
     print(f"   Connected through something else? Set {SKIP_CHECK_ENV_VAR}=1 to skip this check.")  # noqa: T201
     sys.exit(1)

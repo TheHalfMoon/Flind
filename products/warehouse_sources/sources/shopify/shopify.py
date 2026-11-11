@@ -73,11 +73,11 @@ SHOPIFY_ACCESS_TOKEN_INVALID_CLIENT_ERROR = (
 )
 
 # Raised on a 4xx whose body reports `error: unsupported_grant_type` — the app can't use the
-# client_credentials grant PostHog mints tokens with. This is the legacy store-admin custom app
-# type; PostHog needs a Dev Dashboard app. Surfaced separately so the message points at the fix.
+# client_credentials grant Flind mints tokens with. This is the legacy store-admin custom app
+# type; Flind needs a Dev Dashboard app. Surfaced separately so the message points at the fix.
 SHOPIFY_ACCESS_TOKEN_UNSUPPORTED_GRANT_ERROR = (
-    "This Shopify app does not support the sign-in method PostHog uses "
-    "(unsupported_grant_type). Create a Dev Dashboard app by following the PostHog Shopify "
+    "This Shopify app does not support the sign-in method Flind uses "
+    "(unsupported_grant_type). Create a Dev Dashboard app by following the Flind Shopify "
     "docs, then enter its client ID and secret."
 )
 
@@ -96,7 +96,7 @@ SHOPIFY_ACCESS_TOKEN_SHOP_NOT_PERMITTED_ERROR = (
 # Re-entering the credentials cannot fix that; the user must install the app on the store first.
 # Surfaced separately so the message points at installing the app rather than the credentials.
 SHOPIFY_ACCESS_TOKEN_APP_NOT_INSTALLED_ERROR = (
-    "This Shopify app isn't installed on your store, so PostHog can't get an access token. "
+    "This Shopify app isn't installed on your store, so Flind can't get an access token. "
     "Install the app on your store, then re-enter the client ID and secret here."
 )
 
@@ -188,7 +188,7 @@ SHOPIFY_STORE_FROZEN_ERROR = (
     "Your Shopify store is frozen because of an unpaid bill. Settle your balance in Shopify, then reconnect."
 )
 SHOPIFY_CREDENTIALS_CHECK_ERROR = (
-    "PostHog couldn't verify your Shopify credentials. Check your store id and credentials, then try again."
+    "Flind couldn't verify your Shopify credentials. Check your store id and credentials, then try again."
 )
 
 

@@ -393,7 +393,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "timestamp": "The date and time of the event in ISO 8601 format.",
             "url": "For a click, the URL the recipient clicked.",
             "ip": "The IP address recorded for the event.",
-            "event_id": "A unique id for the event, built by PostHog from the campaign, the recipient, and the event details. Mailchimp doesn't give these events an id.",
+            "event_id": "A unique id for the event, built by Flind from the campaign, the recipient, and the event details. Mailchimp doesn't give these events an id.",
         },
     },
     "report_open_events": {
@@ -406,7 +406,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "email_address": "Email address for the recipient.",
             "timestamp": "The date and time of the open in ISO 8601 format.",
             "is_proxy_open": "Whether the open came from an email client that uses proxies.",
-            "event_id": "A unique id for the open, built by PostHog from the campaign, the recipient, and the open details. Mailchimp doesn't give opens an id.",
+            "event_id": "A unique id for the open, built by Flind from the campaign, the recipient, and the open details. Mailchimp doesn't give opens an id.",
         },
     },
     "report_click_details": {

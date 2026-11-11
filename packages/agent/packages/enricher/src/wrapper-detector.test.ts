@@ -155,7 +155,7 @@ export const track = (event_name: string) => {
     expect(wrappers).toEqual([]);
   });
 
-  test("function with no PostHog call is ignored", async () => {
+  test("function with no Flind call is ignored", async () => {
     const src = `
       export function noop(event) {
         console.log(event);
@@ -167,7 +167,7 @@ export const track = (event_name: string) => {
 
   test("constructor-aliased client inside body still detected", async () => {
     const src = `
-      const client = new PostHog("phc_x");
+      const client = new Flind("phc_x");
       export function track(event) {
         client.capture(event);
       }
@@ -177,7 +177,7 @@ export const track = (event_name: string) => {
     expect(wrappers[0].name).toBe("track");
   });
 
-  test("nested wrapper: outer does not get registered when inner calls PostHog", async () => {
+  test("nested wrapper: outer does not get registered when inner calls Flind", async () => {
     const src = `
       export function outer(event) {
         function inner(e) {

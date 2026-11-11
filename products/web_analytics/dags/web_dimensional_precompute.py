@@ -10,7 +10,7 @@ windows are skipped.
 
 Rollout is intentionally decoupled from the v2 pre-aggregation pipeline and its
 team selection. The audience defaults to a small per-region built-in rollout list
-(`DEFAULT_ROLLOUT_TEAM_IDS_BY_REGION`) on PostHog Cloud, and is fully overridable via the
+(`DEFAULT_ROLLOUT_TEAM_IDS_BY_REGION`) on Flind Cloud, and is fully overridable via the
 `WEB_DIMENSIONAL_PRECOMPUTE_TEAM_IDS` env var (comma-separated team IDs; set it
 to empty to disable the job). Self-hosted instances default to no teams so the
 job never precomputes for unrelated teams that happen to share those IDs. There
@@ -77,7 +77,7 @@ PRECOMPUTE_CHUNK_DAYS = int(os.getenv("WEB_DIMENSIONAL_PRECOMPUTE_CHUNK_DAYS", "
 
 # Built-in rollout audience used when the env var is unset, keyed by Cloud region.
 # Region-keyed because team IDs are not unique across US and EU — a single flat list
-# would enroll an unrelated same-ID team in the other region. Applied on PostHog
+# would enroll an unrelated same-ID team in the other region. Applied on Flind
 # Cloud only (see get_selected_team_ids). US holds the dogfood project (2), the
 # high-volume pilot (55348), and the teams currently reading the v2 tables, for the
 # v2 side-by-side.
@@ -115,7 +115,7 @@ def get_selected_team_ids() -> list[int]:
 
     The env var wins if set (even to empty): a comma-separated list, blank/invalid
     entries skipped. If unset, fall back to the current region's default — but only
-    on PostHog Cloud; self-hosted defaults to none so the job never runs for
+    on Flind Cloud; self-hosted defaults to none so the job never runs for
     unrelated teams that happen to share those IDs.
     """
     raw = os.getenv(SELECTED_TEAM_IDS_ENV_VAR)

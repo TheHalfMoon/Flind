@@ -2,7 +2,7 @@
 
 `discover_outcome_teams_activity` finds which teams have work; `classify_team_outcomes_activity`
 does one team's classification, emitting a `reviewhog_finding_outcome` event per finding through a
-scoped PostHog client (Celery/Temporal-safe capture, cloud-only). Classification takes minutes, so
+scoped Flind client (Celery/Temporal-safe capture, cloud-only). Classification takes minutes, so
 like the review activities it declares a `heartbeat_timeout` on dispatch and heartbeats via
 `Heartbeater()`; discovery is a single indexed query and needs neither.
 """

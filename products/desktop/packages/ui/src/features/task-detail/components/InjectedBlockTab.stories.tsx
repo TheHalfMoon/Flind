@@ -44,7 +44,7 @@ export const PosthogContext: Story = {
       attrs: {},
       body: [
         "<posthog_trusted_context>",
-        "- You are running alongside the PostHog app the user has open, and your PostHog MCP tool calls are how you act on it.",
+        "- You are running alongside the Flind app the user has open, and your Flind MCP tool calls are how you act on it.",
         "</posthog_trusted_context>",
         "<posthog_untrusted_context>",
         "The user is currently looking at the resources below.",

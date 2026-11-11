@@ -1,12 +1,12 @@
-"""Clean up unused agent and phw worktrees (Claude Code, Codex, PostHog Desktop, phw).
+"""Clean up unused agent and phw worktrees (Claude Code, Codex, Flind Desktop, phw).
 
 These tools each create throwaway git worktrees that accumulate over time. A
-single PostHog worktree carries multi-GB `node_modules`, Python venvs, and Rust
+single Flind worktree carries multi-GB `node_modules`, Python venvs, and Rust
 build artifacts, so stale ones are by far the largest reclaimable disk on a dev
 machine. This command finds them, filters by age, and either removes the whole
 worktree or just its dependencies and build output (keeping the code).
 
-The discovery roots and dependency patterns are PostHog-specific, but the age
+The discovery roots and dependency patterns are Flind-specific, but the age
 logic and deletion modes are generic.
 
 Safety: age is a staleness heuristic, not a "no unsaved work" guarantee — edits
@@ -79,7 +79,7 @@ WORKTREE_SOURCES = ("claude", "claude-scratchpad", "codex", "posthog-code", "phw
 
 
 # Roots that hold agent-created worktrees, keyed by the tool that owns them.
-# Claude Code nests worktrees under the repo. The Codex app and PostHog Desktop
+# Claude Code nests worktrees under the repo. The Codex app and Flind Desktop
 # keep them in the home directory as <id>/<repo>, and Claude Code agents make
 # throwaway ones in their scratchpad. Returned as (source, root). The phw root
 # must match WORKTREE_BASE in bin/posthog-worktree, including its
@@ -258,7 +258,7 @@ class WorktreeBox:
 
 @click.command(
     name="worktrees:clean",
-    help="Clear out unused Claude Code / Codex / PostHog Desktop / phw worktrees by age",
+    help="Clear out unused Claude Code / Codex / Flind Desktop / phw worktrees by age",
 )
 @click.option(
     "--before",
@@ -434,7 +434,7 @@ def worktrees_clean(
         resolved = _resolve(path)
         if resolved in protected:
             continue
-        # PostHog Desktop worktrees live outside the repo and the home root is
+        # Flind Desktop worktrees live outside the repo and the home root is
         # shared across repos, so only act on worktrees owned by this repo.
         if not _belongs_to_repo(resolved, repo_root, repo_common):
             continue
@@ -1102,7 +1102,7 @@ def _parse_cutoff(value: str) -> tuple[float, str]:
 def _discover_worktrees(root: Path, max_depth: int = 2) -> list[Path]:
     """Find worktree directories under *root* (a dir containing a .git entry).
 
-    Depth 1 covers Claude/Codex (root/<name>); depth 2 covers PostHog Desktop
+    Depth 1 covers Claude/Codex (root/<name>); depth 2 covers Flind Desktop
     (root/<id>/posthog). Found worktrees are not descended into.
     """
 
@@ -1348,7 +1348,7 @@ def _belongs_to_repo(resolved_path: Path, repo_root: Path, repo_common: Path | N
     """Whether a worktree is owned by *repo_root*.
 
     Worktrees physically inside the repo always belong to it. For out-of-repo
-    worktrees (PostHog Desktop's home root is shared across repos), confirm via the
+    worktrees (Flind Desktop's home root is shared across repos), confirm via the
     gitdir's commondir pointing back at this repo's common git directory. A
     dangling pointer we can't attribute is treated as not ours, so we never
     delete another repo's worktree.
@@ -2097,7 +2097,7 @@ def _holds_git_entry(directory: Path) -> bool:
 
 
 def _cleanup_empty_parent(path: Path) -> None:
-    """Remove a now-empty parent (e.g. PostHog Desktop's <id>/ after <id>/posthog)."""
+    """Remove a now-empty parent (e.g. Flind Desktop's <id>/ after <id>/posthog)."""
 
     parent = path.parent
     try:

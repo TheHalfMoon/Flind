@@ -1,6 +1,6 @@
 # @flind/enricher
 
-Detect and enrich PostHog SDK usage in source code. Uses tree-sitter AST analysis to find `capture()` calls, feature flag checks, `init()` calls, and variant branches across JavaScript, TypeScript, Python, Go, and Ruby.
+Detect and enrich Flind SDK usage in source code. Uses tree-sitter AST analysis to find `capture()` calls, feature flag checks, `init()` calls, and variant branches across JavaScript, TypeScript, Python, Go, and Ruby.
 
 ## Quick start
 
@@ -22,7 +22,7 @@ result.eventNames; // ["purchase"]
 result.toList();   // [{ type: "event", line: 5, name: "purchase", method: "capture" }, ...]
 ```
 
-## Enriching from the PostHog API
+## Enriching from the Flind API
 
 Let the enricher fetch everything it needs based on what `parse()` found — feature flags, experiments, event definitions, and event volume/user stats:
 
@@ -85,7 +85,7 @@ enricher.dispose();
 
 ### `ParseResult`
 
-Returned by `enricher.parse()`. Contains all detected PostHog SDK usage.
+Returned by `enricher.parse()`. Contains all detected Flind SDK usage.
 
 | Property / Method | Type | Description |
 |---|---|---|
@@ -99,7 +99,7 @@ Returned by `enricher.parse()`. Contains all detected PostHog SDK usage.
 | `flagKeys` | `string[]` | Unique flag keys |
 | `eventNames` | `string[]` | Unique event names |
 | `toList()` | `ListItem[]` | Flat sorted list of all SDK usage |
-| `enrichFromApi(config)` | `Promise<EnrichedResult>` | Fetch from PostHog API and enrich |
+| `enrichFromApi(config)` | `Promise<EnrichedResult>` | Fetch from Flind API and enrich |
 
 ### `PostHogEnricher` methods
 
@@ -115,7 +115,7 @@ Returned by `enricher.parse()`. Contains all detected PostHog SDK usage.
 
 ### `EnrichedResult`
 
-Returned by `enrich()` or `enrichFromApi()`. Detection combined with PostHog context.
+Returned by `enrich()` or `enrichFromApi()`. Detection combined with Flind context.
 
 | Property / Method | Type | Description |
 |---|---|---|
@@ -135,7 +135,7 @@ interface EnricherApiConfig {
 }
 ```
 
-Set `publicHost` when API requests use a private proxy but annotation links should use the public PostHog URL.
+Set `publicHost` when API requests use a private proxy but annotation links should use the public Flind URL.
 
 ### `EnrichedFlag`
 
@@ -168,7 +168,7 @@ interface EnrichedEvent {
 
 ## Detection API
 
-The lower-level detection API is also exported for direct use (this is the same API used by the PostHog VSCode extension):
+The lower-level detection API is also exported for direct use (this is the same API used by the Flind VSCode extension):
 
 ```typescript
 import { PostHogDetector } from "@flind/enricher";

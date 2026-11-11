@@ -3011,7 +3011,7 @@ class TestHogFlowAPI(APIBaseTest):
         assert "subscription created" in events[0]["filters"]["bytecode"], events[0]["filters"]
 
     def test_hog_flow_wait_until_keeps_action_only_entry(self):
-        # An "events to wait for" entry can target a PostHog Action instead of an event: filters.actions
+        # An "events to wait for" entry can target a Flind Action instead of an event: filters.actions
         # is set and filters.events is empty. That is a real wait and must be kept (and its bytecode
         # compiled), while a truly-empty entry alongside it is still dropped.
         action = create_action(team=self.team, name="Played with calculator", steps_json=[{"event": "calc"}])

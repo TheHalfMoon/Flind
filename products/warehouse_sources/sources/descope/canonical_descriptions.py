@@ -107,7 +107,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Authentication history per user: one row per sign-in, with where it came from.",
         "docs_url": "https://docs.descope.com/api/management/users",
         "columns": {
-            "id": "A synthetic identifier PostHog derives from the sign-in's fields, since Descope returns no record id.",
+            "id": "A synthetic identifier Flind derives from the sign-in's fields, since Descope returns no record id.",
             "userId": "The id of the user who signed in.",
             "loginTime": "Unix timestamp of when the sign-in happened.",
             "city": "City the sign-in came from.",
@@ -120,7 +120,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Descope's own aggregated authentication analytics, counted per day and broken down by action, device, method, country, tenant and referrer. Covers the last 12 months, which is as far back as the endpoint reports.",
         "docs_url": "https://docs.descope.com/audit-trails-and-integrations",
         "columns": {
-            "id": "A synthetic identifier PostHog derives from the row's grouping fields, since Descope returns no record id.",
+            "id": "A synthetic identifier Flind derives from the row's grouping fields, since Descope returns no record id.",
             "projectId": "The Descope project the counts belong to.",
             "created": "The day the counted events happened on.",
             "action": "The action counted, for example a sign-in.",

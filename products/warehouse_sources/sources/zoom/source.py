@@ -182,7 +182,7 @@ class ZoomSource(ResumableSource[ZoomSourceConfig, ZoomResumeConfig]):
             category=DataWarehouseSourceCategory.COMMUNICATION,
             label="Zoom",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Sync your Zoom users, meetings, webinars, registrants, and attendance into the PostHog Data warehouse.
+            caption="""Sync your Zoom users, meetings, webinars, registrants, and attendance into the Flind Data warehouse.
 
 Create a **Server-to-Server OAuth** app in the [Zoom App Marketplace](https://marketplace.zoom.us/develop/create) and copy its Account ID, Client ID, and Client Secret below.
 

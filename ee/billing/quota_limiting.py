@@ -181,7 +181,7 @@ INFORMATIONAL_USAGE_RESOURCES = (
     "sandbox_compute_memory_mib_seconds",
 )
 BILLING_STATUS_STAMP_KEYS = ("billing_status_computed_at", "billing_latest_usage_report_date")
-# PostHog's counts for one quota resource, keyed by UTC date. Only the quota run and the signals refresh write it.
+# Flind's counts for one quota resource, keyed by UTC date. Only the quota run and the signals refresh write it.
 DAILY_USAGE_FIELD = "daily_usage"
 # The quota run that writes yesterday's finished counts into `daily_usage` sets this key for that day.
 YESTERDAY_FINISHED_KEY_PREFIX = "@posthog/quota-limits-yesterday-finished/"
@@ -467,10 +467,10 @@ def _period_timestamp(value: str) -> int:
 
 def _quota_usage(organization_usage: Mapping[str, Any], resource_usage: Mapping[str, Any]) -> int:
     """
-    Billing's total plus PostHog's counts for the days that the total does not include.
+    Billing's total plus Flind's counts for the days that the total does not include.
 
     Billing's total covers its billing period through `billing_latest_usage_report_date`, and no day
-    when that date is None. Without the stamp, or before a quota run stores `daily_usage`, PostHog
+    when that date is None. Without the stamp, or before a quota run stores `daily_usage`, Flind
     cannot tell which days the total covers, so the result is billing's total plus `todays_usage`.
     """
     billing_total = resource_usage.get("usage") or 0
@@ -1097,7 +1097,7 @@ def set_org_usage_summary(
             and "quota_limiting_suspended_until" not in resource_usage
         ):
             resource_usage["quota_limiting_suspended_until"] = original_field_usage["quota_limiting_suspended_until"]
-        # Billing's summary never carries daily_usage, so a billing status keeps PostHog's counts.
+        # Billing's summary never carries daily_usage, so a billing status keeps Flind's counts.
         if original_field_usage and DAILY_USAGE_FIELD in original_field_usage:
             resource_usage[DAILY_USAGE_FIELD] = original_field_usage[DAILY_USAGE_FIELD]
 

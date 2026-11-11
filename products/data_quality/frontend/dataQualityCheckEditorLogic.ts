@@ -992,7 +992,7 @@ export const dataQualityCheckEditorLogic = kea<dataQualityCheckEditorLogicType>(
                 subjectColumns: string[],
                 subject: DataQualitySubjectRef | null
             ) =>
-                // Relationships needs every subject to point at. A PostHog table needs the
+                // Relationships needs every subject to point at. A Flind table needs the
                 // catalog for its time column, which no surface supplies and which the lookback
                 // window reads. Anything else only needs the catalog when the surface that
                 // opened the editor could not supply the columns.

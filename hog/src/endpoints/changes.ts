@@ -10,7 +10,7 @@ import {
 
 export type ChangeField = 'description' | 'query' | 'materialization' | 'schedule' | 'variables' | 'defaults'
 
-// One field that differs between a local file and PostHog. Push reads it from remote to local,
+// One field that differs between a local file and Flind. Push reads it from remote to local,
 // pull from local to remote.
 export interface Change {
     field: ChangeField
@@ -32,7 +32,7 @@ function sortKeys(value: unknown): unknown {
     return value
 }
 
-// PostHog stores variables inside the query, under IDs a file never names, so they're compared on their own.
+// Flind stores variables inside the query, under IDs a file never names, so they're compared on their own.
 function comparableQuery(query: Record<string, unknown>): string {
     if (isPlainHogql(query) && typeof query.query === 'string') {
         return query.query.replace(/\r\n?/g, '\n')
@@ -66,10 +66,10 @@ export function compare(file: EndpointFile, endpoint: Endpoint): Change[] {
         file.materialization?.enabled ? 'enabled' : 'disabled',
         endpoint.is_materialized ? 'enabled' : 'disabled'
     )
-    // PostHog keeps the refresh interval after materialization is turned off, so it only counts while on.
+    // Flind keeps the refresh interval after materialization is turned off, so it only counts while on.
     const remoteSchedule = endpoint.is_materialized ? scheduleFor(endpoint.data_freshness_seconds) : undefined
     const localSchedule = file.materialization?.enabled ? file.materialization.schedule : undefined
-    // A push without a schedule keeps the one PostHog has, so a file that names none matches any.
+    // A push without a schedule keeps the one Flind has, so a file that names none matches any.
     if (localSchedule !== undefined) {
         add('schedule', localSchedule, remoteSchedule ?? '')
     }

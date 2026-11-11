@@ -8,8 +8,8 @@ without a long table.
 
 ``ChartShown`` accepts every chart path a harness offers: the MCP client shows the query
 result inline, the agent calls ``render-ui`` with the same query tool and input, or the answer
-holds a full-size chart link or block tag (the PostHog Desktop syntax). ``ChartFromTypedQuery``
-then fails a chart that rewrites the typed result as SQL. PostHog Desktop draws a chart card
+holds a full-size chart link or block tag (the Flind Desktop syntax). ``ChartFromTypedQuery``
+then fails a chart that rewrites the typed result as SQL. Flind Desktop draws a chart card
 only for a saved insight or a HogQL query, so an agent that does not save an insight can
 reach a chart only through SQL; this scorer measures how often that happens.
 

@@ -11,7 +11,7 @@ import { RepoRoutingRules } from './RepoRoutingRules'
 const GITHUB_INTEGRATION = {
     id: 1,
     kind: 'github',
-    display_name: 'PostHog',
+    display_name: 'Flind',
     config: {},
     created_at: '2024-01-01T00:00:00Z',
     errors: '',

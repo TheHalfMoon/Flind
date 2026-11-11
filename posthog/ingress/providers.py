@@ -43,7 +43,7 @@ class InvalidPayload(Exception):
     answers 400 and no consumer runs.
 
     Carries the provider's own message, which the view logs and never answers with: what the
-    provider tripped over is a hint to an unauthenticated caller about how PostHog reads a body.
+    provider tripped over is a hint to an unauthenticated caller about how Flind reads a body.
     A message that quotes a value the caller sent, or one the token carried, writes that value
     into the log of an endpoint a stranger can drive, so name the field instead of either value.
     """

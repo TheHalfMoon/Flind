@@ -97,7 +97,7 @@ export function TodayContextPanelLauncher(): JSX.Element {
 
     return (
         // Stays mounted while docked, so the button can sink away and rise back with the panel. Scenes without
-        // PostHog AI, like a canvas, hide it but keep the host for other undocked tabs.
+        // Flind AI, like a canvas, hide it but keep the host for other undocked tabs.
         <div
             ref={hostRef}
             data-quill

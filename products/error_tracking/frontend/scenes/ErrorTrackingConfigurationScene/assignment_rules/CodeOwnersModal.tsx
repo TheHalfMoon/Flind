@@ -119,7 +119,7 @@ function ConfigureStep(): JSX.Element {
         <>
             <ModalHeader
                 title="Map unresolved code owners"
-                description="Match unresolved owners to a PostHog role or user."
+                description="Match unresolved owners to a Flind role or user."
             />
             <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-4">
                 <CodeOwnersConfigureTable />
@@ -128,7 +128,7 @@ function ConfigureStep(): JSX.Element {
                 left={
                     mappingUnresolvedCount > 0 ? (
                         <span className="text-xs text-warning">
-                            {mappingUnresolvedCount} owner{mappingUnresolvedCount === 1 ? '' : 's'} still need a PostHog
+                            {mappingUnresolvedCount} owner{mappingUnresolvedCount === 1 ? '' : 's'} still need a Flind
                             mapping.
                         </span>
                     ) : (
@@ -182,7 +182,7 @@ function ImpactStep(): JSX.Element {
         <>
             <ModalHeader
                 title="Review assignment rule impact"
-                description="Impact is grouped by the PostHog role or user that will receive the generated assignment rules."
+                description="Impact is grouped by the Flind role or user that will receive the generated assignment rules."
             />
             <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-4">
                 <CodeOwnersImpactTable />
