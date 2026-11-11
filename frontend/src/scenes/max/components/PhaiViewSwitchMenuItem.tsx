@@ -3,7 +3,9 @@ import { useActions, useValues } from 'kea'
 import { IconRevert, IconSparkles } from '@posthog/icons'
 import { DropdownMenuItem } from '@flind/quill'
 
-import { PhaiViewMode, maxGlobalLogic } from '../maxGlobalLogic'
+import type { PhaiViewMode } from '~/layout/ai/aiPanelIds'
+
+import { maxGlobalLogic } from '../maxGlobalLogic'
 
 export function PhaiViewSwitchMenuItem({ onChange }: { onChange?: (mode: PhaiViewMode) => void }): JSX.Element | null {
     const { isPhaiSandboxFlagOn, effectivePhaiView } = useValues(maxGlobalLogic)

@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-OAUTH = ROOT / "frontend/src/lib/oauth/oauthClient.ts"
+OAUTH = ROOT / "frontend/src/lib/utils/oauthClient.ts"
 
 
 class FlindOAuthIsolationTests(unittest.TestCase):

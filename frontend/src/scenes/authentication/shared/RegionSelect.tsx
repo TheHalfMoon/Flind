@@ -4,7 +4,7 @@ import { router } from 'kea-router'
 import { LemonField, LemonSelect } from '@flind/lemon-ui'
 
 import { flindRegionHost, flindRegionUrl } from 'lib/flindRegionHosts'
-import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
+import { preflightLogic } from 'lib/logic/preflightLogic'
 
 import { Region } from '~/types'
 

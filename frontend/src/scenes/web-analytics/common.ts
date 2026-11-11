@@ -5,6 +5,7 @@ import { FEATURE_FLAGS } from 'lib/constants'
 import { type FeatureFlagsSet } from 'lib/logic/featureFlagLogic'
 import { getDefaultInterval } from 'lib/utils/dateFilters'
 import { UnexpectedNeverError } from 'lib/utils/guards'
+import { hogql } from 'lib/utils/hogql'
 
 import { pageCollectionId } from '~/queries/nodes/DataNode/pageCollections'
 import { hogqlQuery } from '~/queries/query'
@@ -17,7 +18,6 @@ import {
     WebAnalyticsPropertyFilters,
     WebStatsBreakdown,
 } from '~/queries/schema/schema-general'
-import { hogql } from '~/queries/utils'
 import { InsightLogicProps, PropertyFilterType, PropertyMathType, PropertyOperator } from '~/types'
 
 /** Matches BREAKDOWN_NULL_DISPLAY in products/web_analytics/backend/hogql_queries/stats_table.py */
@@ -124,8 +124,8 @@ export enum ProductTab {
     CONTENT_AUTOPILOT = 'content-autopilot',
 }
 
+// One flag gates the whole AI visibility page: prompt tracking, bots and content autopilot.
 export const isContentAutopilotEnabled = (featureFlags: FeatureFlagsSet): boolean =>
-    !!featureFlags[FEATURE_FLAGS.WEB_ANALYTICS_PAGE_PERFORMANCE] &&
     !!featureFlags[FEATURE_FLAGS.WEB_ANALYTICS_CONTENT_AUTOPILOT]
 
 export type DeviceType = 'Desktop' | 'Mobile'

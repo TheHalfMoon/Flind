@@ -2,8 +2,10 @@ import { useValues } from 'kea'
 
 import { IconGear } from '@posthog/icons'
 import { LemonButton, LemonSwitch, Link, Tooltip } from '@flind/lemon-ui'
+import { Button, Switch } from '@flind/quill'
 
 import { flindPublicUrl } from 'lib/flindPublicLinks'
+import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { IconBranch } from 'lib/lemon-ui/icons/icons'
 import { urls } from 'scenes/urls'
 import { userLogic } from 'scenes/userLogic'
@@ -20,6 +22,7 @@ export const PathCleaningToggle = ({
     const { hasAvailableFeature } = useValues(userLogic)
     const hasAdvancedPaths = hasAvailableFeature(AvailableFeature.PATHS_ADVANCED)
     const docsUrl = flindPublicUrl('docs')
+    const todayRailNav = useFeatureFlag('TODAY_RAIL_NAV')
 
     if (!hasAdvancedPaths) {
         return null
@@ -52,9 +55,18 @@ export const PathCleaningToggle = ({
             placement="top"
             interactive={true}
         >
-            <LemonButton icon={<IconBranch />} onClick={() => onChange(!value)} type="secondary" size="small">
-                Path cleaning: <LemonSwitch checked={value} className="ml-1" />
-            </LemonButton>
+            {todayRailNav ? (
+                <Button variant="outline" onClick={() => onChange(!value)} aria-pressed={value}>
+                    <IconBranch />
+                    Path cleaning
+                    {/* Decorative: the button owns the toggle, so the switch must not take clicks or focus. */}
+                    <Switch checked={value} size="sm" tabIndex={-1} aria-hidden className="pointer-events-none ml-1" />
+                </Button>
+            ) : (
+                <LemonButton icon={<IconBranch />} onClick={() => onChange(!value)} type="secondary" size="small">
+                    Path cleaning: <LemonSwitch checked={value} className="ml-1" />
+                </LemonButton>
+            )}
         </Tooltip>
     )
 }

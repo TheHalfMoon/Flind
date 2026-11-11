@@ -16,6 +16,7 @@ import {
 } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
+import 'lib/components/Cards/InsightCard/InsightCard.scss'
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { FEATURE_FLAGS } from 'lib/constants'

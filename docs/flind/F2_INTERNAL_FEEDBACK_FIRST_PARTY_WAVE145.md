@@ -1,5 +1,11 @@
 # Wave 145 — Flind-owned staff feedback and Slack destination
 
+> **Historical document.** Upstream PostHog removed the staff-only internal feedback feature, and Flind
+> took that removal in the upstream merge of `4efa693e9aec`. `posthog/api/internal_feedback.py` no longer exists, and
+> `posthog/settings/integrations.py` no longer defines `INTERNAL_FEEDBACK_SLACK_CHANNEL`,
+> `FLIND_INTERNAL_STAFF_EMAIL_SUFFIX`, or the other internal feedback settings. The changes below describe code that
+> is no longer in the tree and are kept only as a record of Wave 145.
+
 ## Production safety and first-party identity defect
 
 The optional staff-only UI feedback flow inherited **two non-Flind trust assumptions**:

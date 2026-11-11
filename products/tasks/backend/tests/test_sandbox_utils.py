@@ -26,15 +26,15 @@ from products.tasks.backend.temporal.process_task.utils import (
     PUSH_SANDBOX_GITHUB_PERMISSIONS,
     READONLY_SANDBOX_GITHUB_PERMISSIONS,
     can_mint_readonly_github_token,
+    forget_cached_github_tokens,
     get_readonly_github_token,
     get_sandbox_api_url,
     get_scoped_github_token,
 )
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def _isolated_tasks_cache(settings):
-    # Scoped mints cache their token, so pin these tests to a fresh in-memory cache.
     settings.TASKS_REDIS_URL = ""
     settings.CACHES = {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}}
     get_tasks_cache().clear()
@@ -151,19 +151,23 @@ def test_repository_snapshot_reuse_is_refused_for_read_only_runs(
 
 @parameterized.expand(
     [
-        ("repo_less", None, False),
-        ("repo_backed", "acme/repo", True),
+        ("repo_less", None, False, True),
+        ("repo_backed", "acme/repo", True, True),
+        ("mint_unavailable", None, False, False),
     ]
 )
 @patch("products.tasks.backend.temporal.process_task.activities.provision_sandbox.emit_agent_log")
+@patch("products.tasks.backend.temporal.process_task.activities.provision_sandbox.TaskRun.update_state_atomic")
 @patch("products.tasks.backend.temporal.process_task.activities.provision_sandbox.get_sandbox_github_token")
 @patch("products.tasks.backend.temporal.process_task.activities.provision_sandbox.get_readonly_github_token")
 def test_readonly_request_takes_priority_over_full_credential_path(
     _name: str,
     repository: str | None,
     has_repo: bool,
+    token_available: bool,
     mock_readonly: MagicMock,
     mock_full: MagicMock,
+    mock_state: MagicMock,
     _mock_log: MagicMock,
 ) -> None:
     # Task creation attaches the team's GitHub integration to every task, so a run on a
@@ -178,7 +182,7 @@ def test_readonly_request_takes_priority_over_full_credential_path(
         _resolve_sandbox_github_token,
     )
 
-    mock_readonly.return_value = "READONLY_TOKEN"
+    mock_readonly.return_value = "READONLY_TOKEN" if token_available else None
     ctx = TaskProcessingContext(
         task_id="t",
         run_id="r",
@@ -196,7 +200,8 @@ def test_readonly_request_takes_priority_over_full_credential_path(
     )
 
     mock_readonly.assert_called_once_with(ctx.team_id, repositories=ctx.repositories)
-    assert token == "READONLY_TOKEN"
+    assert token == ("READONLY_TOKEN" if token_available else "")
+    mock_state.assert_called_once_with(ctx.run_id, updates={"github_read_access_available": token_available})
     mock_full.assert_not_called()
 
 
@@ -335,6 +340,40 @@ async def test_github_token_failure_maps_to_run_error(
         assert raised.value.next_retry_delay == timedelta(seconds=30)
 
 
+def test_readonly_token_is_still_minted_when_the_cache_fails():
+    integration = _team_integration()
+    broken_cache = MagicMock()
+    broken_cache.get.side_effect = ConnectionError("redis down")
+    broken_cache.set.side_effect = ConnectionError("redis down")
+    with (
+        patch(
+            "products.tasks.backend.temporal.process_task.utils.resolve_readonly_github_integration",
+            return_value=integration,
+        ),
+        patch("products.tasks.backend.temporal.process_task.utils.get_tasks_cache", return_value=broken_cache),
+    ):
+        token = get_readonly_github_token(1, repositories=["acme/api"])
+
+    assert token == "ghs_readonly"
+    integration.mint_scoped_installation_token.assert_called_once()
+
+
+def test_readonly_token_is_reused_until_forgotten():
+    integration = _team_integration()
+    integration.mint_scoped_installation_token.side_effect = ["ghs_ro_1", "ghs_ro_2"]
+    with patch(
+        "products.tasks.backend.temporal.process_task.utils.resolve_readonly_github_integration",
+        return_value=integration,
+    ):
+        first = [get_readonly_github_token(1, repositories=["acme/api"]) for _ in range(2)]
+        forget_cached_github_tokens(integration, ["acme/api"])
+        second = get_readonly_github_token(1, repositories=["acme/api"])
+
+    assert first == ["ghs_ro_1", "ghs_ro_1"]
+    assert second == "ghs_ro_2"
+    assert integration.mint_scoped_installation_token.call_count == 2
+
+
 @pytest.mark.parametrize(
     "repositories, mints, expected",
     [
@@ -371,7 +410,6 @@ def test_readonly_token_scopes_repositories_without_widening_permissions(reposit
     ],
     ids=["repo_less", "pinned_repositories", "public_bootstrap_only"],
 )
-@pytest.mark.usefixtures("_isolated_tasks_cache")
 def test_scoped_token_is_always_pinned_to_run_repositories(repositories, expected):
     integration = _team_integration()
     with (
@@ -389,7 +427,6 @@ def test_scoped_token_is_always_pinned_to_run_repositories(repositories, expecte
         integration.mint_scoped_installation_token.assert_not_called()
 
 
-@pytest.mark.usefixtures("_isolated_tasks_cache")
 def test_scoped_token_mint_failure_reaches_the_caller():
     integration = _team_integration()
     integration.mint_scoped_installation_token.side_effect = GitHubRateLimitError("rate limited", retry_after=30)

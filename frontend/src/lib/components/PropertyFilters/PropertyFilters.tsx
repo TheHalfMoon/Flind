@@ -4,11 +4,14 @@ import clsx from 'clsx'
 import { BindLogic, useActions, useValues } from 'kea'
 import React, { useState } from 'react'
 
+import { Separator } from '@flind/quill'
+
 import { BehavioralPropertyFilterRow } from 'lib/components/PropertyFilters/components/BehavioralPropertyFilterRow'
 import { FILTER_ROW_FRAME_CLASSES } from 'lib/components/PropertyFilters/components/filterRowFrame'
 import { PropertyFilterRowOperator } from 'lib/components/PropertyFilters/components/PropertyFilterRowOperator'
 import { TaxonomicPropertyFilter } from 'lib/components/PropertyFilters/components/TaxonomicPropertyFilter'
 import { isBehavioralPropertyFilter, isPropertyGroupFilterLike } from 'lib/components/PropertyFilters/utils'
+import { useQuillSurface } from 'lib/components/QuillSurface/quillSurfaceContext'
 import {
     AllowedProperties,
     ExcludedOperators,
@@ -70,12 +73,6 @@ export interface PropertyFiltersProps {
     addFilterDocLink?: string
     operatorAllowlist?: OperatorValueSelectProps['operatorAllowlist']
     hogQLGlobals?: Record<string, any>
-    /**
-     * `'input'` renders the replay-style input-box add-filter trigger; `'button'`
-     * (the default) renders a button. Only has an effect on the rebuild menu
-     * (`TAXONOMIC_FILTER_MENU_REBUILD`).
-     */
-    triggerVariant?: 'button' | 'input'
     staticValueOptions?: PropertyFilterInternalProps['staticValueOptions']
     renderOperatorValueSelect?: PropertyFilterInternalProps['renderOperatorValueSelect']
     /** Override inferred property definitions for contexts where one event key is polymorphic. */
@@ -89,6 +86,8 @@ export interface PropertyFiltersProps {
     addFilterSuffix?: ((addFilter: (property: AnyPropertyFilter) => void) => JSX.Element) | null
     addFilterDivider?: boolean
     framedRows?: boolean
+    filterHeader?: React.ReactNode
+    onFilterOpen?: () => void
     renderControls?: (controls: {
         addFilter: React.ReactNode
         activeFilters: JSX.Element[]
@@ -134,7 +133,6 @@ export function PropertyFilters({
     addFilterDocLink,
     operatorAllowlist,
     hogQLGlobals,
-    triggerVariant = 'button',
     staticValueOptions,
     renderOperatorValueSelect,
     propertyDefinitionsOverride,
@@ -145,11 +143,14 @@ export function PropertyFilters({
     addFilterDivider = false,
     framedRows = false,
     renderControls,
+    onFilterOpen,
+    filterHeader,
 }: PropertyFiltersProps): JSX.Element {
     const logicProps = { propertyFilters, onChange, pageKey, sendAllKeyUpdates }
     const { filters, filtersWithNew, filterIds, filterIdsWithNew } = useValues(propertyFilterLogic(logicProps))
     const { remove, setFilter, setFilters, update } = useActions(propertyFilterLogic(logicProps))
     const [allowOpenOnInsert, setAllowOpenOnInsert] = useState<boolean>(false)
+    const quillSurface = useQuillSurface()
 
     const showNewFilterRow = allowNew && editable
     const displayedFilters = showNewFilterRow ? filtersWithNew : filters
@@ -180,8 +181,11 @@ export function PropertyFilters({
                 {addFilterDivider &&
                     showNewFilterRow &&
                     index === displayedFilters.length - 1 &&
-                    filters.length > 0 && <LemonDivider className="my-1 w-full" />}
+                    filters.length > 0 &&
+                    (quillSurface ? <Separator className="my-1" /> : <LemonDivider className="my-1 w-full" />)}
                 <FilterRow
+                    onOpen={onFilterOpen}
+                    header={filterHeader}
                     item={item}
                     index={index}
                     totalCount={displayedFilters.length - 1} // empty state
@@ -252,7 +256,6 @@ export function PropertyFilters({
                                 editable={editable}
                                 operatorAllowlist={operatorAllowlist}
                                 hogQLGlobals={hogQLGlobals}
-                                triggerVariant={triggerVariant}
                                 staticValueOptions={staticValueOptions}
                                 renderOperatorValueSelect={renderOperatorValueSelect}
                                 propertyDefinitionsOverride={propertyDefinitionsOverride}

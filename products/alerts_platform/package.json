@@ -8,13 +8,19 @@
     "dependencies": {
         "@flind/quill": "workspace:*",
         "kea": "catalog:",
-        "kea-loaders": "catalog:"
+        "kea-forms": "catalog:",
+        "kea-loaders": "catalog:",
+        "kea-router": "catalog:",
+        "posthog-js": "catalog:"
     },
     "devDependencies": {
-        "@storybook/react": "catalog:"
+        "@storybook/react": "catalog:",
+        "kea-test-utils": "catalog:"
     },
     "peerDependencies": {
+        "@posthog/icons": "catalog:",
         "@flind/lemon-ui": "workspace:*",
+        "@testing-library/dom": "*",
         "@types/react": "*",
         "react": "*"
     }

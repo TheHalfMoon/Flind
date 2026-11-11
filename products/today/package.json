@@ -4,5 +4,20 @@
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests -v --tb=short",
         "backend:contract-check": "echo 'Contract files unchanged'"
+    },
+    "peerDependencies": {
+        "@posthog/icons": "catalog:",
+        "@flind/quill": "workspace:*",
+        "@flind/quill-components": "workspace:*",
+        "@posthog/react": "catalog:",
+        "@testing-library/react": "^14.3.1",
+        "@types/react": "catalog:",
+        "kea": "catalog:",
+        "kea-loaders": "catalog:",
+        "kea-router": "catalog:",
+        "kea-subscriptions": "catalog:",
+        "kea-test-utils": "catalog:",
+        "posthog-js": "catalog:",
+        "react": "^18.3.1"
     }
 }

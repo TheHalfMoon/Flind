@@ -57,7 +57,7 @@ jobs:
                 posthog/hogql/test/test_restricted_properties.py
                 posthog/hogql/transforms/test/test_property_types.py
                 posthog/hogql_queries/test/test_events_query_runner.py
-                posthog/tasks/test/test_team_metadata_token_reset.py
+                posthog/storage/test/test_team_metadata_signal_handlers.py
                 posthog/tasks/test/test_team_access_cache_tasks.py
                 posthog/tasks/test/test_task_registration.py
                 products/groups/backend/tests/test_clickhouse_groups.py
@@ -70,7 +70,6 @@ jobs:
                 products/tasks/backend/tests/test_sandbox_utils.py
                 products/tasks/backend/tests/test_facade.py
                 products/tasks/backend/tests/test_models.py
-                posthog/tasks/test/test_team_metadata_signals.py
                 posthog/security/test/test_url_validation.py
                 posthog/security/test/test_oob_domains.py
                 posthog/api/test/test_routing.py

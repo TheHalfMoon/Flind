@@ -162,7 +162,7 @@ export const FeedbackPromptDetails = memo(function FeedbackPromptDetails({
     if (status === 'done') {
         return (
             <MessageTemplate type="ai">
-                <p className="m-0 text-sm text-secondary">Thanks for making PostHog AI better!</p>
+                <p className="m-0 text-sm text-secondary">Thanks for making Flind AI better!</p>
             </MessageTemplate>
         )
     }
@@ -174,7 +174,7 @@ export const FeedbackPromptDetails = memo(function FeedbackPromptDetails({
                     <div className="flex flex-col gap-2">
                         <p className="m-0 font-medium">What could we improve?</p>
                         <LemonInput
-                            placeholder="Help us improve PostHog AI..."
+                            placeholder="Help us improve Flind AI..."
                             value={feedbackText}
                             onChange={setFeedbackText}
                             onPressEnter={submitFeedback}

@@ -6,13 +6,11 @@ import { LemonButton, LemonDivider, LemonSkeleton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { flindPublicUrl } from 'lib/flindPublicLinks'
+import { billingLogic } from 'lib/logic/billing/billingLogic'
 
-import { billingLogic } from './billingLogic'
 import { PurchaseCreditsModal } from './PurchaseCreditsModal'
 
 const HedgehogBurningMoney = pngHoggie(burningMoneyHogPng)
-
-export const DEFAULT_ESTIMATED_MONTHLY_CREDIT_AMOUNT_USD = 500
 
 export const CreditCTAHero = (): JSX.Element | null => {
     const {

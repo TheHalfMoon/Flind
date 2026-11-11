@@ -1,4 +1,3 @@
-import { Robot } from "@phosphor-icons/react";
 import type {
   ArtifactPayload,
   CommentEventPayload,
@@ -49,7 +48,6 @@ import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore"
 import { useCommentNavigationStore } from "@flind/ui/features/sessions/commentNavigationStore";
 import type { buildConversationItems } from "@flind/ui/features/sessions/components/buildConversationItems";
 import { INJECTED_BLOCK_PRESENTATION } from "@flind/ui/features/sessions/components/session-update/injectedBlocks";
-import { MentionChip } from "@flind/ui/features/sessions/components/session-update/parseFileMentions";
 import { splitUserMessage } from "@flind/ui/features/sessions/components/session-update/userMessageDisplay";
 import {
   useHasTranscriptListener,
@@ -77,7 +75,7 @@ function UserMessageRow({
   onShowInChat?: () => void;
 }) {
   const name = author ? userDisplayName(author) : "You";
-  const { peerAgentMessage, blocks, displayContent } = useMemo(
+  const { blocks, displayContent } = useMemo(
     () => splitUserMessage(content),
     [content],
   );
@@ -101,12 +99,6 @@ function UserMessageRow({
       onShowInChat={onShowInChat}
       detail={
         <div className="space-y-1.5">
-          {peerAgentMessage && (
-            <MentionChip
-              icon={<Robot size={12} />}
-              label={`From agent: ${peerAgentMessage.senderTaskTitle}`}
-            />
-          )}
           <MessageBubble content={displayContent} />
           {disclosedBlocks.map((block) => {
             const { icon: BlockIcon, label } =

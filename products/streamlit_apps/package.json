@@ -12,7 +12,7 @@
         "kea-router": "catalog:"
     },
     "peerDependencies": {
-        "@posthog/icons": "*",
+        "@posthog/icons": "catalog:",
         "@flind/lemon-ui": "workspace:*",
         "@types/react": "*",
         "react": "*"

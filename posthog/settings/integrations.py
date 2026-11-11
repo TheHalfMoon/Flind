@@ -9,13 +9,6 @@ CREDENTIALS_SERVICE_URL = get_from_env("CREDENTIALS_SERVICE_URL", "")
 # Comma-separated `new,old`, newest first. Per deployment, not fleet-wide.
 CREDENTIALS_SERVICE_JWT_SECRET = get_from_env("CREDENTIALS_SERVICE_JWT_SECRET", "")
 
-# The first-party Flind feedback integration is disabled unless *both* an
-# owned Slack destination and an owned verified staff email suffix are configured.
-# Never inherit a donor's Slack channel or staff-email domain.
-INTERNAL_FEEDBACK_SLACK_BOT_TOKEN = get_from_env("INTERNAL_FEEDBACK_SLACK_BOT_TOKEN", "")
-INTERNAL_FEEDBACK_SLACK_CHANNEL = get_from_env("INTERNAL_FEEDBACK_SLACK_CHANNEL", "")
-FLIND_INTERNAL_STAFF_EMAIL_SUFFIX = get_from_env("FLIND_INTERNAL_STAFF_EMAIL_SUFFIX", "")
-
 HUBSPOT_APP_CLIENT_ID = get_from_env("HUBSPOT_APP_CLIENT_ID", "")
 HUBSPOT_APP_CLIENT_SECRET = get_from_env("HUBSPOT_APP_CLIENT_SECRET", "")
 
@@ -70,6 +63,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = get_from_env("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRE
 
 LINEAR_APP_CLIENT_ID = get_from_env("LINEAR_APP_CLIENT_ID", "")
 LINEAR_APP_CLIENT_SECRET = get_from_env("LINEAR_APP_CLIENT_SECRET", "")
+# The signing secret from the Linear App's webhook settings. Empty leaves `webhooks/linear` unconfigured.
+LINEAR_APP_WEBHOOK_SECRET = get_from_env("LINEAR_APP_WEBHOOK_SECRET", "")
 
 HELPSCOUT_APP_CLIENT_ID = get_from_env("HELPSCOUT_APP_CLIENT_ID", "")
 HELPSCOUT_APP_CLIENT_SECRET = get_from_env("HELPSCOUT_APP_CLIENT_SECRET", "")

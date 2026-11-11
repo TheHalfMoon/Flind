@@ -24,7 +24,7 @@ export const FeedbackPromptTrailer = memo(function FeedbackPromptTrailer({
         return (
             <MessageTemplate type="ai">
                 <div className="flex flex-col gap-2">
-                    <span className="text-xs text-muted">How is PostHog AI doing? (optional)</span>
+                    <span className="text-xs text-muted">How is Flind AI doing? (optional)</span>
                     <FeedbackPromptRating sessionId={sessionId} streamKey={streamKey} />
                 </div>
             </MessageTemplate>
@@ -36,7 +36,7 @@ export const FeedbackPromptTrailer = memo(function FeedbackPromptTrailer({
     if (isThankYouVisible) {
         return (
             <MessageTemplate type="ai">
-                <p className="m-0 text-sm text-secondary">Thanks for your feedback and using PostHog AI!</p>
+                <p className="m-0 text-sm text-secondary">Thanks for your feedback and using Flind AI!</p>
             </MessageTemplate>
         )
     }

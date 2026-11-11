@@ -1,10 +1,14 @@
+import { cloneLayout } from 'react-grid-layout'
 import type { Compactor, Layout } from 'react-grid-layout'
+import { moveElement } from 'react-grid-layout/core'
 
 import { objectsEqual } from 'lib/utils/objects'
+import { pluralize } from 'lib/utils/strings'
 import { BREAKPOINT_COLUMN_COUNTS } from 'scenes/dashboard/dashboardUtils'
 
 import type { DashboardLayoutSize, DashboardTile } from '~/types'
 
+import type { DashboardGridCompactor } from './dashboardCustomization'
 import type { DashboardTileGroupApi } from './generated/api.schemas'
 
 export type DashboardSection =
@@ -12,6 +16,25 @@ export type DashboardSection =
     | { kind: 'group'; key: string; groupKey: string; group: DashboardTileGroupApi; tiles: DashboardTile[] }
 
 export type SectionLayouts = Partial<Record<DashboardLayoutSize, Layout>>
+
+export interface TileGroupMoveOptions {
+    targets: { sectionKey: string; label: string }[]
+    canTakeOut: boolean
+}
+
+export function getTileGroupLabel(group: DashboardTileGroupApi, tileCount: number): string {
+    return group.title || pluralize(tileCount, 'tile')
+}
+
+const TILE_GROUP_SECTION_KEY_PREFIX = 'group-'
+
+export function isTileGroupSectionKey(sectionKey: string): boolean {
+    return sectionKey.startsWith(TILE_GROUP_SECTION_KEY_PREFIX)
+}
+
+export function getTileGroupSectionKey(groupKey: string): string {
+    return `${TILE_GROUP_SECTION_KEY_PREFIX}${groupKey}`
+}
 
 function tilesInLayoutOrder(tiles: DashboardTile[], layout: Layout | undefined): DashboardTile[] {
     const positions = new Map((layout ?? []).map((item) => [item.i, item]))
@@ -26,15 +49,20 @@ function tilesInLayoutOrder(tiles: DashboardTile[], layout: Layout | undefined):
     })
 }
 
-/** Splits tiles into full-width bands: each group starts where its top-left tile is, other tiles fill the gaps. */
+/**
+ * Splits tiles into full-width bands: each group starts where its top-left tile is, other tiles fill the gaps.
+ * `emptyGroupKeys` are groups with no tiles yet, which go last so a new group shows at the bottom.
+ */
 export function getDashboardSections({
     tiles,
     layout,
     groups,
+    emptyGroupKeys = [],
 }: {
     tiles: DashboardTile[]
     layout: Layout | undefined
     groups: Record<string, DashboardTileGroupApi> | undefined
+    emptyGroupKeys?: string[]
 }): DashboardSection[] {
     const sections: DashboardSection[] = []
     const groupSections = new Map<string, DashboardSection>()
@@ -50,7 +78,7 @@ export function getDashboardSections({
             const group = groups && Object.hasOwn(groups, groupKey) ? groups[groupKey] : {}
             const section: DashboardSection = {
                 kind: 'group',
-                key: `group-${groupKey}`,
+                key: getTileGroupSectionKey(groupKey),
                 groupKey,
                 group,
                 tiles: [tile],
@@ -69,7 +97,40 @@ export function getDashboardSections({
         }
     }
 
+    for (const groupKey of emptyGroupKeys) {
+        if (groupSections.has(groupKey)) {
+            continue
+        }
+        const group = groups && Object.hasOwn(groups, groupKey) ? groups[groupKey] : {}
+        sections.push({ kind: 'group', key: getTileGroupSectionKey(groupKey), groupKey, group, tiles: [] })
+    }
+
     return sections
+}
+
+/** Groups saved on the dashboard that no tile belongs to, such as one just added from the Add menu. */
+export function getEmptyTileGroupKeys(
+    tiles: DashboardTile[],
+    groups: Record<string, DashboardTileGroupApi> | undefined
+): string[] {
+    const usedGroupKeys = new Set(tiles.map((tile) => tile.group_key).filter(Boolean))
+    return Object.keys(groups ?? {}).filter((groupKey) => !usedGroupKeys.has(groupKey))
+}
+
+// Group keys can't hold a null character, so no real group shares this key.
+export const UNGROUPED_TILES_TAB_KEY = '\u0000ungrouped'
+
+export function getSectionGroupKey(section: DashboardSection): string {
+    return section.kind === 'group' ? section.groupKey : UNGROUPED_TILES_TAB_KEY
+}
+
+/** Tabs show one group at a time, so tiles outside any group gather into one tab of their own, first. */
+export function getDashboardTabs(sections: DashboardSection[]): DashboardSection[] {
+    const ungroupedTiles = sections.flatMap((section) => (section.kind === 'tiles' ? section.tiles : []))
+    const groupSections = sections.filter((section) => section.kind === 'group')
+    return ungroupedTiles.length > 0
+        ? [{ kind: 'tiles', key: 'tiles-ungrouped', tiles: ungroupedTiles }, ...groupSections]
+        : groupSections
 }
 
 function moveToTop(layout: Layout): Layout {
@@ -163,4 +224,113 @@ export function getCollapsedTileGroupKeys({
         }
         return !!(groups && Object.hasOwn(groups, groupKey) && groups[groupKey].collapsed)
     })
+}
+
+export function getTileGroupMoveOptions(sections: DashboardSection[]): Record<number, TileGroupMoveOptions> {
+    const targets = sections.flatMap((section) =>
+        section.kind === 'group'
+            ? [{ sectionKey: section.key, label: getTileGroupLabel(section.group, section.tiles.length) }]
+            : []
+    )
+    return Object.fromEntries(
+        sections.flatMap((section) => {
+            const options: TileGroupMoveOptions = {
+                targets: targets.filter((target) => target.sectionKey !== section.key),
+                canTakeOut: section.kind === 'group',
+            }
+            return section.tiles.map((tile) => [tile.id, options])
+        })
+    )
+}
+
+export function getDropCell({
+    tileRect,
+    gridRect,
+    cols,
+    rowHeight,
+    margin: [marginX, marginY],
+    tileWidth,
+}: {
+    tileRect: { left: number; top: number }
+    gridRect: { left: number; top: number; width: number }
+    cols: number
+    rowHeight: number
+    margin: [number, number]
+    tileWidth: number
+}): { x: number; y: number } {
+    const columnStep = (gridRect.width - marginX * (cols - 1)) / cols + marginX
+    const x = Math.round((tileRect.left - gridRect.left) / columnStep)
+    const y = Math.round((tileRect.top - gridRect.top) / (rowHeight + marginY))
+    return { x: Math.min(Math.max(x, 0), cols - tileWidth), y: Math.max(y, 0) }
+}
+
+/**
+ * The dashboard layout after a tile moves to the `target` section, or out of its group when `target` is null.
+ * Without a drop cell the tile goes below the target's tiles and only its own layout item changes, so a save of
+ * that one tile matches what the dashboard shows. A tile out of its group goes below every tile, which puts it in
+ * the last band when that band has no group, and in a new band after the last group otherwise.
+ */
+export function getLayoutAfterTileMove({
+    layout,
+    sections,
+    sectionLayouts,
+    tileId,
+    target,
+    cell,
+    compactor,
+}: {
+    layout: Layout
+    sections: DashboardSection[]
+    sectionLayouts: Layout[]
+    tileId: number
+    target: DashboardSection | null
+    cell: { x: number; y: number } | null
+    compactor: DashboardGridCompactor
+}): Layout {
+    const tileKey = tileId.toString()
+    if (!cell || !target) {
+        // An empty group shows after every band, so its first tile goes below every tile too.
+        const targetTiles = target?.tiles.length ? target.tiles : sections.flatMap((section) => section.tiles)
+        const targetTileIds = new Set(targetTiles.map((tile) => tile.id.toString()))
+        targetTileIds.delete(tileKey)
+        const bottom = Math.max(0, ...layout.filter((item) => targetTileIds.has(item.i)).map((item) => item.y + item.h))
+        return layout.map((item) => (item.i === tileKey ? { ...item, y: bottom } : item))
+    }
+
+    const cols = BREAKPOINT_COLUMN_COUNTS.sm
+    const sourceIndex = sections.findIndex((section) => section.tiles.some((tile) => tile.id === tileId))
+    const targetIndex = sections.indexOf(target)
+    const item = sectionLayouts[sourceIndex]?.find((layoutItem) => layoutItem.i === tileKey)
+    if (!item) {
+        return layout
+    }
+    const targetLayout = sectionLayouts[targetIndex] ?? []
+    const bottom = Math.max(0, ...targetLayout.map((layoutItem) => layoutItem.y + layoutItem.h))
+    // Enter at the bottom, then move to the drop cell the way a drag does, so the tile under the drop moves aside.
+    const withTile = cloneLayout([...targetLayout, { ...item, y: bottom }])
+    const moved = moveElement(
+        withTile,
+        withTile[withTile.length - 1],
+        cell.x,
+        cell.y,
+        true,
+        false,
+        compactor.type,
+        cols,
+        compactor.allowOverlap
+    )
+    return stackSectionLayouts(
+        sectionLayouts.map((sectionLayout, index) => {
+            if (index === sourceIndex) {
+                return compactor.compact(
+                    sectionLayout.filter((layoutItem) => layoutItem.i !== tileKey),
+                    cols
+                )
+            }
+            if (index === targetIndex) {
+                return compactor.compactInteraction(cols, tileKey, moved, moved, true)
+            }
+            return sectionLayout
+        })
+    )
 }

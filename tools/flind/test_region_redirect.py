@@ -63,7 +63,7 @@ class FlindRegionRedirectTests(unittest.TestCase):
         self.assertFalse(unsafe.exists())
 
     def test_login_has_no_dangling_import_of_removed_redirect(self) -> None:
-        login = (ROOT / "frontend/src/scenes/authentication/login/LoginForm.tsx").read_text()
+        login = (ROOT / "frontend/src/scenes/authentication/auth/Auth.tsx").read_text()
         self.assertNotIn("RedirectToLoggedInInstance", login)
         self.assertNotIn("RedirectIfLoggedInOtherInstance", login)
 

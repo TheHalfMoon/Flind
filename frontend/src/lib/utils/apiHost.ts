@@ -1,6 +1,6 @@
-import { getBackendHost } from 'lib/oauth/oauthClient'
+import { getBackendHost } from 'lib/utils/oauthClient'
 
-import { inStorybook, inStorybookTestRunner } from './dom'
+import { inStorybook } from './dom'
 import { getAppContext } from './getAppContext'
 
 /**
@@ -25,7 +25,7 @@ export function apiHostOrigin(): string {
 export function liveEventsHostOrigin(): string | null {
     const appContext = getAppContext()
 
-    if (inStorybook() || inStorybookTestRunner()) {
+    if (inStorybook()) {
         return 'http://localhost:6006'
     }
 
