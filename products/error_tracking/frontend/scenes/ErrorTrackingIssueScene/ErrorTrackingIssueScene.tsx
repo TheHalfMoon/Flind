@@ -6,7 +6,7 @@ import { router } from 'kea-router'
 import posthog from 'posthog-js'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { IconChevronDown, IconRewindPlay, IconSparkles, IconX } from '@posthog/icons'
+import { IconChevronDown, IconRewindPlay, IconSparkles, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

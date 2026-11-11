@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconCheckCircle } from '@posthog/icons'
+import { IconCheckCircle } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import type { MessagingSetupTabKey } from '../messagingTabs'

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
-import { IconClock } from '@posthog/icons'
+import { IconClock } from '@flind/icons'
 import { LemonButtonProps, LemonSelect, LemonSelectOptionLeaf } from '@flind/lemon-ui'
 
 import { RollingDateRangeFilter } from 'lib/components/DateFilter/RollingDateRangeFilter'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChevronLeft, IconChevronRight, IconPlus, IconRefresh, IconTrash } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight, IconPlus, IconRefresh, IconTrash } from '@flind/icons'
 import { LemonButton, LemonInput, LemonModal, LemonTable, LemonTableColumns, LemonTag } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { type RefObject, Suspense, lazy, useLayoutEffect, useRef } from 'react'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 
 import { dayjs } from 'lib/dayjs'
 import { formatAggregationAxisValue } from 'lib/insights/aggregationAxisFormat'

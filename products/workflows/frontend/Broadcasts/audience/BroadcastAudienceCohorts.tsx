@@ -1,6 +1,6 @@
 import { useMountedLogic, useValues } from 'kea'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { LemonButton, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { IconCohort, IconOpenInNew } from 'lib/lemon-ui/icons'

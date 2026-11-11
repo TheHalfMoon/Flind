@@ -2,7 +2,7 @@ import { offset } from '@floating-ui/react'
 import { BindLogic, useActions, useValues } from 'kea'
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
 
-import { IconArrowRight, IconCheck, IconPencil, IconPlus, IconStopFilled, IconTrash, IconX } from '@posthog/icons'
+import { IconArrowRight, IconCheck, IconPencil, IconPlus, IconStopFilled, IconTrash, IconX } from '@flind/icons'
 import { LemonTextArea } from '@flind/lemon-ui'
 import { Button, Kbd, Spinner, Switch, Text } from '@flind/quill'
 

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconExternal, IconGear } from '@posthog/icons'
+import { IconExternal, IconGear } from '@flind/icons'
 import { Button, Field, FieldLabel, Switch } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

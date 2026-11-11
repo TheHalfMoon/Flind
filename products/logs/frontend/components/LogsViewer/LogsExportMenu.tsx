@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconDownload } from '@posthog/icons'
+import { IconDownload } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'

@@ -10,7 +10,7 @@ import {
     IconFolderOpen,
     IconTrash,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     Button,
     Chip,

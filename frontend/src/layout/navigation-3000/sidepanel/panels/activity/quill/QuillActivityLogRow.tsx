@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { router } from 'kea-router'
 import { useId, useState } from 'react'
 
-import { IconCollapse, IconExpand } from '@posthog/icons'
+import { IconCollapse, IconExpand } from '@flind/icons'
 import {
     Button,
     Tabs,

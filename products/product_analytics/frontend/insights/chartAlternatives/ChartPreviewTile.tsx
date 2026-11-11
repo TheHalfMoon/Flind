@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 
 import { ChartDisplayIcon } from 'lib/components/ChartFilter/ChartDisplayIcon'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

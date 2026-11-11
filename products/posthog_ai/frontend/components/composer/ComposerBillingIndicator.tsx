@@ -1,4 +1,4 @@
-import { IconCreditCard } from '@posthog/icons'
+import { IconCreditCard } from '@flind/icons'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 export interface ComposerBillingIndicatorProps {

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconArrowRightDown, IconInfo } from '@posthog/icons'
+import { IconArrowRightDown, IconInfo } from '@flind/icons'
 import { LemonBanner, LemonTable, LemonTableColumns, Tooltip } from '@flind/lemon-ui'
 
 import { billingLogic } from 'lib/logic/billing/billingLogic'

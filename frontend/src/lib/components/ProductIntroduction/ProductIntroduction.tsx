@@ -1,6 +1,6 @@
+import { IconOpenSidebar, IconPlus } from '@flind/icons'
 import * as construction from '@posthog/brand/hoggies/png/construction-2'
 import * as magnifyingGlass from '@posthog/brand/hoggies/png/magnifying-glass'
-import { IconOpenSidebar, IconPlus } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

@@ -1,6 +1,6 @@
 import { type ComponentType } from 'react'
 
-import { IconRocket, IconServer } from '@posthog/icons'
+import { IconRocket, IconServer } from '@flind/icons'
 
 import type { FlagIntent } from 'scenes/feature-flags/featureFlagIntentWarningLogic'
 

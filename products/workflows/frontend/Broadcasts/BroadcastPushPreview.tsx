@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconNotification, IconSend } from '@posthog/icons'
+import { IconNotification, IconSend } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { createDisabledReason } from './broadcastLifecycle'

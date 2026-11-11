@@ -1,6 +1,6 @@
 import './Today.scss'
 
-import { IconArrowRight, IconHide, IconSparkles } from '@posthog/icons'
+import { IconArrowRight, IconHide, IconSparkles } from '@flind/icons'
 import { Button, Heading, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

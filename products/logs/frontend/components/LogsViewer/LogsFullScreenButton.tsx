@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconExpand45 } from '@posthog/icons'
+import { IconExpand45 } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LogsViewerScope } from './config/types'

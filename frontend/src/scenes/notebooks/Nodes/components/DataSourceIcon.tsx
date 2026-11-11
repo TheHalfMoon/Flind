@@ -1,4 +1,4 @@
-import { IconDatabase, IconPiggyBank } from '@posthog/icons'
+import { IconDatabase, IconPiggyBank } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 export function DataSourceIcon({ source }: { source: 'revenue-analytics' | 'properties' | null }): JSX.Element | null {

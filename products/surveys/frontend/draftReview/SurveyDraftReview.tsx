@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconAI } from '@posthog/icons'
+import { IconAI } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { UseMaxToolReturn } from 'scenes/max/useMaxTool'

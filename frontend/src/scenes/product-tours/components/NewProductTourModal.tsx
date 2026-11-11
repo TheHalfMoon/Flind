@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 
-import { IconCursorClick, IconMegaphone } from '@posthog/icons'
+import { IconCursorClick, IconMegaphone } from '@flind/icons'
 import { LemonButton, LemonInput, LemonLabel, LemonModal } from '@flind/lemon-ui'
 
 import { EffectiveProductTourType } from '~/types'

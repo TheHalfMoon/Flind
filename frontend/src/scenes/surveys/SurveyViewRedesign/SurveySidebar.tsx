@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ReactNode } from 'react'
 
-import { IconDownload } from '@posthog/icons'
+import { IconDownload } from '@flind/icons'
 import { LemonButton, LemonMenu, LemonSelect, Link } from '@flind/lemon-ui'
 
 import { exportsLogic } from 'lib/components/ExportButton/exportsLogic'

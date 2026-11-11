@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useId } from 'react'
 
-import { IconGithub } from '@posthog/icons'
+import { IconGithub } from '@flind/icons'
 import { Button, Label, Popover, PopoverContent, PopoverTrigger, Switch } from '@flind/quill-primitives'
 
 import { GitHubBranchCombobox } from 'lib/integrations/GitHubBranchCombobox'

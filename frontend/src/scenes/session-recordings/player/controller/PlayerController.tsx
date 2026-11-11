@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconCamera, IconPause, IconPlay, IconRewindPlay } from '@posthog/icons'
+import { IconCamera, IconPause, IconPlay, IconRewindPlay } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { useKeyboardHotkeys } from 'lib/hooks/useKeyboardHotkeys'

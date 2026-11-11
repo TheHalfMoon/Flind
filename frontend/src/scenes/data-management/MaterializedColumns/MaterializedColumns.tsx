@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconDatabase, IconPlus, IconRefresh } from '@posthog/icons'
+import { IconDatabase, IconPlus, IconRefresh } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { LemonDivider } from 'lib/lemon-ui/LemonDivider'

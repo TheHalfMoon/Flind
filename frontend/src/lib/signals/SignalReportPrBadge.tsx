@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconPullRequest, IconSpinner, IconWarning, type IconProps } from '@posthog/icons'
+import { IconCheckCircle, IconPullRequest, IconSpinner, IconWarning, type IconProps } from '@flind/icons'
 import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

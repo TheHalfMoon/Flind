@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { combineUrl } from 'kea-router'
 
-import { IconMessage, IconOpenSidebar, IconShare, IconTrash } from '@posthog/icons'
+import { IconMessage, IconOpenSidebar, IconShare, IconTrash } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'

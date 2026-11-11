@@ -1,5 +1,5 @@
+import { IconWarning } from '@flind/icons'
 import * as errorPng from '@posthog/brand/hoggies/png/error'
-import { IconWarning } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

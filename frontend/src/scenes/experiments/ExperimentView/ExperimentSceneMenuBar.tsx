@@ -14,7 +14,7 @@ import {
     IconRefresh,
     IconTrash,
     IconUnlock,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { SceneMenuBarFileItems } from 'lib/components/Scenes/SceneMenuBarFileItems'
 import { superpowersLogic } from 'lib/components/Superpowers/superpowersLogic'

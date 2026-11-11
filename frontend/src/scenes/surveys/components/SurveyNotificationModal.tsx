@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Field, Form } from 'kea-forms'
 
-import { IconExternal, IconX } from '@posthog/icons'
+import { IconExternal, IconX } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonMenu, LemonSelect, LemonSwitch, Spinner } from '@flind/lemon-ui'
 
 import { IntegrationChoice } from 'lib/components/CyclotronJob/integrations/IntegrationChoice'

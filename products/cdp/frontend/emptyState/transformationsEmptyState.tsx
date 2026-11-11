@@ -1,5 +1,5 @@
+import { IconShuffle } from '@flind/icons'
 import * as transformerPng from '@posthog/brand/hoggies/png/transformer'
-import { IconShuffle } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

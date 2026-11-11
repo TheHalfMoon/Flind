@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Dispatch, SetStateAction, useState } from 'react'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonButton, LemonInput, LemonModal, LemonSearchableSelect } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

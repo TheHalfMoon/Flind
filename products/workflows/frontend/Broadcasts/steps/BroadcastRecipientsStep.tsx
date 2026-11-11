@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconUpload, IconWarning } from '@posthog/icons'
+import { IconUpload, IconWarning } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonModal, LemonSelect, Link, Spinner } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'

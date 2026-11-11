@@ -1,6 +1,6 @@
 import { router } from 'kea-router'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 
 import { ErrorTrackingException, ErrorTrackingRuntime } from 'lib/components/Errors/types'
 import { getRuntimeFromLib } from 'lib/components/Errors/utils'

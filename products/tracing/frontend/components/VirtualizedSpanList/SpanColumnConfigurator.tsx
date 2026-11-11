@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonModal, LemonSelect } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'

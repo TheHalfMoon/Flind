@@ -1,4 +1,4 @@
-import { IconLetter } from '@posthog/icons'
+import { IconLetter } from '@flind/icons'
 
 import { EmailPreviewThumbnail } from 'lib/components/EmailPreviewThumbnail/EmailPreviewThumbnail'
 import { cn } from 'lib/utils/css-classes'

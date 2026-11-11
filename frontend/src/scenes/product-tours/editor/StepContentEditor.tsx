@@ -13,7 +13,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { IconCode, IconImage, IconList, IconVideoCamera } from '@posthog/icons'
+import { IconCode, IconImage, IconList, IconVideoCamera } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonInput, LemonMenu, LemonModal } from '@flind/lemon-ui'
 
 import { ResizableElement } from 'lib/components/ResizeElement/ResizeElement'

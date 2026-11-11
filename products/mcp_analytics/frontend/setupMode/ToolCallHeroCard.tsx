@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { IconCheckCircle, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconWarning } from '@flind/icons'
 import { LemonCard } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

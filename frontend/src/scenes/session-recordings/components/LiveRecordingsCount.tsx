@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconVideoCamera } from '@posthog/icons'
+import { IconVideoCamera } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import 'lib/components/LiveUserCount/LiveUserCount.scss'

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconPullRequest, type IconProps } from '@posthog/icons'
+import { IconPullRequest, type IconProps } from '@flind/icons'
 import { Badge, Card, Text, cn } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

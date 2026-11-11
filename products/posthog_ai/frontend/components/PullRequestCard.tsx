@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { IconCheckCircle, IconExternal, IconPullRequest } from '@posthog/icons'
+import { IconCheckCircle, IconExternal, IconPullRequest } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { QuillPullRequestRow } from './quill/QuillPullRequestRow'

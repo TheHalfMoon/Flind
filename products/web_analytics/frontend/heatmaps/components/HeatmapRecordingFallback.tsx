@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRewindPlay } from '@posthog/icons'
+import { IconRewindPlay } from '@flind/icons'
 import { LemonBanner, LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

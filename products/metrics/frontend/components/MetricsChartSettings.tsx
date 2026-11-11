@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconGear, IconPlusSmall } from '@posthog/icons'
+import { IconGear, IconPlusSmall } from '@flind/icons'
 import { LemonButton, LemonInput, LemonLabel, LemonSelect, LemonSwitch, Popover } from '@flind/lemon-ui'
 
 import { GoalLinesList } from 'lib/components/GoalLinesList'

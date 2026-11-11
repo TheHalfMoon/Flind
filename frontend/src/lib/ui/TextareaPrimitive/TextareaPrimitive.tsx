@@ -1,7 +1,7 @@
 import { forwardRef, useRef } from 'react'
 import TextareaAutosize, { TextareaAutosizeProps } from 'react-textarea-autosize'
 
-import { IconMarkdownFilled } from '@posthog/icons'
+import { IconMarkdownFilled } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

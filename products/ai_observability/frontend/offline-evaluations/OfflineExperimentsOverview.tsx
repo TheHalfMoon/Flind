@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconChevronRight, IconRefresh, IconSearch } from '@posthog/icons'
+import { IconChevronRight, IconRefresh, IconSearch } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

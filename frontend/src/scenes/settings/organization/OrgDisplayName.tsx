@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconUpload, IconX } from '@posthog/icons'
+import { IconUpload, IconX } from '@flind/icons'
 import { LemonButton, LemonFileInput, LemonInput, lemonToast } from '@flind/lemon-ui'
 
 import { useRestrictedArea } from 'lib/components/RestrictedArea'

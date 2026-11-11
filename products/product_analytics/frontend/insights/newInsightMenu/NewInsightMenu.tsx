@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconPlusSmall, IconSparkles } from '@posthog/icons'
+import { IconPlusSmall, IconSparkles } from '@flind/icons'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'

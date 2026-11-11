@@ -1,4 +1,4 @@
-import { IconAI, IconDashboard, IconGraph } from '@posthog/icons'
+import { IconAI, IconDashboard, IconGraph } from '@flind/icons'
 import { LemonTable, LemonTableColumn, LemonTableColumns, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 import type { PaginationManual, Sorting } from '@flind/lemon-ui'
 

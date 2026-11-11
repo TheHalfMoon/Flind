@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { router } from 'kea-router'
 import { useState } from 'react'
 
-import { IconCheckCircle } from '@posthog/icons'
+import { IconCheckCircle } from '@flind/icons'
 import { LemonLabel, LemonModal, LemonSelect, LemonSelectOptions } from '@flind/lemon-ui'
 
 import { flindRegionHost, flindRegionUrl } from 'lib/flindRegionHosts'

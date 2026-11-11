@@ -1,4 +1,4 @@
-import { IconCopy, IconSparkles } from '@posthog/icons'
+import { IconCopy, IconSparkles } from '@flind/icons'
 import { Badge, Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

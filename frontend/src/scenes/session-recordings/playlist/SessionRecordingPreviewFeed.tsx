@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useValues } from 'kea'
 import { memo } from 'react'
 
-import { IconBug, IconCursorClick, IconKeyboard, IconLive } from '@posthog/icons'
+import { IconBug, IconCursorClick, IconKeyboard, IconLive } from '@flind/icons'
 import { Badge, Skeleton, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { PropertyIcon } from 'lib/components/PropertyIcon/PropertyIcon'

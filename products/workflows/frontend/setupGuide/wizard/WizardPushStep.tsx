@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconAndroid, IconApple, IconCheckCircle } from '@posthog/icons'
+import { IconAndroid, IconApple, IconCheckCircle } from '@flind/icons'
 import { LemonSegmentedButton, Link, Spinner } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

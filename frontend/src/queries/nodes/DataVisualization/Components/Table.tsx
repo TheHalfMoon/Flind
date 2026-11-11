@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react'
 
-import { IconInfo, IconPin, IconPinFilled } from '@posthog/icons'
+import { IconInfo, IconPin, IconPinFilled } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonTable, LemonTableColumn, Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconList, IconNotification } from '@posthog/icons'
+import { IconList, IconNotification } from '@flind/icons'
 import { LemonButton, LemonSkeleton, LemonTabs, Link, Spinner } from '@flind/lemon-ui'
 
 import { ActivityLogRow } from 'lib/components/ActivityLog/ActivityLogRow'

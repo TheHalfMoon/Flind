@@ -1,4 +1,4 @@
-import { IconClock, IconTrends } from '@posthog/icons'
+import { IconClock, IconTrends } from '@flind/icons'
 import { LemonButton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

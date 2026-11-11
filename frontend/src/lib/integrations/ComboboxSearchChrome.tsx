@@ -1,6 +1,6 @@
 import { type MouseEvent } from 'react'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import {
     Button,
     ComboboxInput,

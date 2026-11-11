@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { IconChevronRight, IconEllipsis, IconGear } from '@posthog/icons'
+import { IconChevronRight, IconEllipsis, IconGear } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

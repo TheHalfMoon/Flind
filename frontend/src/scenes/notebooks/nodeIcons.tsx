@@ -19,7 +19,7 @@ import {
     IconSquareRoot,
     IconUserPaths,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { IconSQL } from 'lib/lemon-ui/icons'
 

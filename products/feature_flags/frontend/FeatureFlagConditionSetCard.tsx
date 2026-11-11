@@ -1,4 +1,4 @@
-import { IconFlag } from '@posthog/icons'
+import { IconFlag } from '@flind/icons'
 import { LemonButton, LemonSnack, LemonTag } from '@flind/lemon-ui'
 
 import { allOperatorsToHumanName } from 'lib/components/DefinitionPopover/utils'

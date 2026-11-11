@@ -6,7 +6,7 @@
         "backend:contract-check": "echo 'Contract files unchanged'"
     },
     "peerDependencies": {
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@flind/quill": "workspace:*",
         "@flind/quill-components": "workspace:*",
         "@posthog/react": "catalog:",

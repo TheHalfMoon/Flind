@@ -1,7 +1,7 @@
 import { BuiltLogic, useActions, useMountedLogic, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonDialog, LemonInput, LemonInputSelect, LemonTextArea, Link } from '@flind/lemon-ui'
 
 import { stackFrameLogic } from 'lib/components/Errors/Frame/stackFrameLogic'

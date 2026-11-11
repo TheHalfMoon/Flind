@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconBug, IconCursorClick, IconGlobe, IconKeyboard } from '@posthog/icons'
+import { IconBug, IconCursorClick, IconGlobe, IconKeyboard } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { sessionRecordingInfoLogic } from 'lib/components/ViewRecordingButton/sessionRecordingInfoLogic'

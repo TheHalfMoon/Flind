@@ -1,4 +1,4 @@
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { LemonCollapse, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

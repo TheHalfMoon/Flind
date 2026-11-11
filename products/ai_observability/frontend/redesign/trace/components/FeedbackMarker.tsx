@@ -1,4 +1,4 @@
-import { IconMessage } from '@posthog/icons'
+import { IconMessage } from '@flind/icons'
 
 export interface FeedbackMarkerProps {
     count: number

@@ -13,7 +13,7 @@ import {
     useState,
 } from 'react'
 
-import { IconMinus, IconPlus, IconTrash } from '@posthog/icons'
+import { IconMinus, IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { shouldUseMarkdownPaste } from './documentModel'

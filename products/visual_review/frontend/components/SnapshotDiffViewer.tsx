@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconGithub } from '@posthog/icons'
+import { IconGithub } from '@flind/icons'
 import { LemonButton, LemonSkeleton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { VisualImageDiffViewer, type VisualDiffResult } from 'lib/components/VisualImageDiffViewer'

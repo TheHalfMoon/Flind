@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChevronDown, IconGridMasonry } from '@posthog/icons'
+import { IconChevronDown, IconGridMasonry } from '@flind/icons'
 import {
     Button,
     ButtonGroup,

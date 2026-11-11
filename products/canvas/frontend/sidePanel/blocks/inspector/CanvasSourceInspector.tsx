@@ -1,4 +1,4 @@
-import { IconCopy, IconSparkles, IconTrash } from '@posthog/icons'
+import { IconCopy, IconSparkles, IconTrash } from '@flind/icons'
 import { Button, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@flind/quill'
 
 import { BlockPropsRecord, blockDefinition } from '../../../editing/blockLibrary/blockDefinitions'

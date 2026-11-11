@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPause, IconPlay, IconWarning } from '@posthog/icons'
+import { IconPause, IconPlay, IconWarning } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

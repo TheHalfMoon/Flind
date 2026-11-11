@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useState } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'

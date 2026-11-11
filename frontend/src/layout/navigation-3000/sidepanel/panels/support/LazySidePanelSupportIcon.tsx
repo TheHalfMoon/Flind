@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Suspense } from 'react'
 
-import { IconSupport } from '@posthog/icons'
+import { IconSupport } from '@flind/icons'
 import { PostHogErrorBoundary } from '@posthog/react'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'

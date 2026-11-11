@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import React from 'react'
 
-import { IconLlmAnalytics, IconWarning } from '@posthog/icons'
+import { IconLlmAnalytics, IconWarning } from '@flind/icons'
 
 import { hiddenEventNames } from 'lib/components/TaxonomicFilter/utils/hiddenEvents'
 import ViewRecordingButton, { RecordingPlayerType } from 'lib/components/ViewRecordingButton/ViewRecordingButton'

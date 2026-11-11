@@ -1,4 +1,4 @@
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 export interface TipCardLink {

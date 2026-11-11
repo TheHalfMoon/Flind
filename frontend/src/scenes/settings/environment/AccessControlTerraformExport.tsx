@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconCode2 } from '@posthog/icons'
+import { IconCode2 } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { TerraformExportModal } from 'lib/components/TerraformExporter/TerraformExportModal'

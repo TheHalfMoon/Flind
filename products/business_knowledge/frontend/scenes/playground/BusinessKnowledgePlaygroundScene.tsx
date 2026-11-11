@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconMessage, IconSearch } from '@posthog/icons'
+import { IconMessage, IconSearch } from '@flind/icons'
 import { LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

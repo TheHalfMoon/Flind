@@ -1,4 +1,4 @@
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 /** Stands in for the step icons on the "blank workflow" card, which has no steps yet. */
 export function WorkflowTemplateBlankPreview(): JSX.Element {

@@ -1,4 +1,4 @@
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { FieldLegend, FieldSet, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import type { ChartOptionGroupProps } from './ChartOptionGroup'

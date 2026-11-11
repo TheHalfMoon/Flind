@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { useEffect } from 'react'
 
-import { IconInfo, IconPlayFilled, IconTestTube } from '@posthog/icons'
+import { IconInfo, IconPlayFilled, IconTestTube } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

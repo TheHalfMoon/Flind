@@ -3,7 +3,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useEffect, useState } from 'react'
 
-import { IconArrowLeft, IconChevronLeft, IconChevronRight } from '@posthog/icons'
+import { IconArrowLeft, IconChevronLeft, IconChevronRight } from '@flind/icons'
 import { LemonButton, LemonDialog } from '@flind/lemon-ui'
 
 import { EditableField } from 'lib/components/EditableField/EditableField'

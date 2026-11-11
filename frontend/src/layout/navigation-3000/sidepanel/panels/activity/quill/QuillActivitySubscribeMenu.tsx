@@ -1,6 +1,6 @@
 import { combineUrl, router } from 'kea-router'
 
-import { IconBell } from '@posthog/icons'
+import { IconBell } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

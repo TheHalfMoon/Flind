@@ -5,7 +5,7 @@ import { CSSProperties, useMemo, useState } from 'react'
 import { List } from 'react-window'
 import { useDebouncedCallback } from 'use-debounce'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonTag } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'

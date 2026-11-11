@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconArrowUpRight, IconLaptop, IconShare } from '@posthog/icons'
+import { IconArrowUpRight, IconLaptop, IconShare } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

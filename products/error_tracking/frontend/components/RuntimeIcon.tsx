@@ -18,7 +18,7 @@ import {
     IconRust,
     IconSwift,
     type IconProps,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { ErrorTrackingRuntime } from 'lib/components/Errors/types'
 

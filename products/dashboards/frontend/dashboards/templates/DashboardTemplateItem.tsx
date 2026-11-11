@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useId } from 'react'
 
-import { IconBuilding, IconHeartFilled } from '@posthog/icons'
+import { IconBuilding, IconHeartFilled } from '@flind/icons'
 
 import { FallbackCoverImage } from 'lib/components/FallbackCoverImage/FallbackCoverImage'
 import { LemonTag } from 'lib/lemon-ui/LemonTag'

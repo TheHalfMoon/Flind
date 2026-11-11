@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { IconArchive, IconInfo } from '@posthog/icons'
+import { IconArchive, IconInfo } from '@flind/icons'
 
 import type { TodayMenuParts } from '~/layout/today/todayMenuParts'
 

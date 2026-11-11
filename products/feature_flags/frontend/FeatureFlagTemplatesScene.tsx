@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { IconArrowLeft, IconCode, IconFlask, IconPeople, IconPlus, IconTestTube, IconToggle } from '@posthog/icons'
+import { IconArrowLeft, IconCode, IconFlask, IconPeople, IconPlus, IconTestTube, IconToggle } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { FlagIntent } from 'scenes/feature-flags/featureFlagIntentWarningLogic'

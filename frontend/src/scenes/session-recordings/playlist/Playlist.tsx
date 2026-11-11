@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { ReactNode, useLayoutEffect, useRef, useState } from 'react'
 
-import { IconSidebarClose } from '@posthog/icons'
+import { IconSidebarClose } from '@flind/icons'
 import { LemonBadge, LemonBanner, LemonButton, LemonDivider, Tooltip } from '@flind/lemon-ui'
 import { Heading, Text } from '@flind/quill'
 

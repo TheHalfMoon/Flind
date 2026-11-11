@@ -1,4 +1,4 @@
-import { IconApps, IconChat, IconLock, IconLogomark, IconNotebook, IconPulse } from '@posthog/icons'
+import { IconApps, IconChat, IconLock, IconLogomark, IconNotebook, IconPulse } from '@flind/icons'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 

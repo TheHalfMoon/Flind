@@ -5,7 +5,7 @@ import { useValues } from 'kea'
 import React, { useEffect, useRef, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 
-import { IconMarkdownFilled, IconPencil } from '@posthog/icons'
+import { IconMarkdownFilled, IconPencil } from '@flind/icons'
 
 import { useResizeObserver } from 'lib/hooks/useResizeObserver'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

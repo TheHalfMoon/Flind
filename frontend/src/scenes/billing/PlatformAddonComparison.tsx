@@ -14,7 +14,7 @@ import {
     IconShieldLock,
     IconShieldPeople,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { UNSUBSCRIBE_SURVEY_ID } from 'lib/constants'

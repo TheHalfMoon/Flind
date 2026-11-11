@@ -7,7 +7,7 @@ import {
     IconToggle,
     IconTrending,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 export type HealthIssueCategory =
     | 'ingestion'

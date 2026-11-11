@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconRefresh, IconX } from '@posthog/icons'
+import { IconRefresh, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'

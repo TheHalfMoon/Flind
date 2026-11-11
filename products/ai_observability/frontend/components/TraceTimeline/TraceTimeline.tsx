@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconChevronDown, IconExpand45 } from '@posthog/icons'
+import { IconChevronDown, IconExpand45 } from '@flind/icons'
 import { LemonButton, LemonModal, Tooltip } from '@flind/lemon-ui'
 
 import { ScrollableShadows } from 'lib/lemon-ui/ScrollableShadows/ScrollableShadows'

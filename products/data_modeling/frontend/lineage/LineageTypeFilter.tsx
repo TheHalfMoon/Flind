@@ -1,4 +1,4 @@
-import { IconChevronDown, IconDatabase } from '@posthog/icons'
+import { IconChevronDown, IconDatabase } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonDropdown } from '@flind/lemon-ui'
 
 import { DataModelingNodeType } from '~/types'

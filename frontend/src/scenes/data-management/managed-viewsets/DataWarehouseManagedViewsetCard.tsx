@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPiggyBank } from '@posthog/icons'
+import { IconPiggyBank } from '@flind/icons'
 import { LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

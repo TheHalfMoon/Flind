@@ -2,7 +2,7 @@ import { router } from 'kea-router'
 import { expectLogic, partial } from 'kea-test-utils'
 import posthog from 'posthog-js'
 
-import '@posthog/icons'
+import '@flind/icons'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 import { dashboardLogic } from 'scenes/dashboard/dashboardLogic'

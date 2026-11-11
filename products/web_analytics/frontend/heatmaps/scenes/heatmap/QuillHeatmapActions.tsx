@@ -1,6 +1,6 @@
 import type { MutableRefObject } from 'react'
 
-import { IconDownload } from '@posthog/icons'
+import { IconDownload } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { appEditorUrl } from 'lib/components/AuthorizedUrlList/authorizedUrlListLogic'

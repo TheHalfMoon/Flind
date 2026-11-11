@@ -1,5 +1,5 @@
+import { IconListTree } from '@flind/icons'
 import * as xRayPng from '@posthog/brand/hoggies/png/x-ray'
-import { IconListTree } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react'
 
-import { IconPlayFilled } from '@posthog/icons'
+import { IconPlayFilled } from '@flind/icons'
 
 import { mswDecorator } from '~/mocks/browser'
 import { sessionFrameResponse } from '~/mocks/fixtures/sessionFrame'

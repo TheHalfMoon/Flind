@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconCheck, IconWarning } from '@posthog/icons'
+import { IconCheck, IconWarning } from '@flind/icons'
 import { LemonCollapse } from '@flind/lemon-ui'
 
 import { DnsRecordRows } from '../components/DnsRecordRows'

@@ -3,7 +3,7 @@ import './LemonFileInput.scss'
 import clsx from 'clsx'
 import { ChangeEvent, RefObject, useEffect, useRef, useState } from 'react'
 
-import { IconUpload } from '@posthog/icons'
+import { IconUpload } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { LemonTag } from 'lib/lemon-ui/LemonTag/LemonTag'

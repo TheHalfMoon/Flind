@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconPlug } from '@posthog/icons'
+import { IconPlug } from '@flind/icons'
 
 import { Logomark } from 'lib/brand'
 

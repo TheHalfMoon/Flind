@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { CSSProperties, useCallback, useMemo } from 'react'
 import { List } from 'react-window'
 
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonInput, Spinner } from '@flind/lemon-ui'
 
 import { type MetricNameItem, customMetricName, metricNamePickerLogic } from './metricNamePickerLogic'

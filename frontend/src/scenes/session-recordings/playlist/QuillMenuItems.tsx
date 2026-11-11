@@ -1,6 +1,6 @@
 import { Fragment, ReactNode } from 'react'
 
-import { IconCheck } from '@posthog/icons'
+import { IconCheck } from '@flind/icons'
 import {
     DropdownMenuGroup,
     DropdownMenuItem,

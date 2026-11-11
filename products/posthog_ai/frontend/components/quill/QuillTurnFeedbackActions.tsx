@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useContext, useId } from 'react'
 
-import { IconThumbsDown, IconThumbsDownFilled, IconThumbsUp, IconThumbsUpFilled, IconX } from '@posthog/icons'
+import { IconThumbsDown, IconThumbsDownFilled, IconThumbsUp, IconThumbsUpFilled, IconX } from '@flind/icons'
 import { Button, ChatMessageFooter, Input, Text } from '@flind/quill-primitives'
 
 import { stripMarkdown } from 'lib/utils/markdown'

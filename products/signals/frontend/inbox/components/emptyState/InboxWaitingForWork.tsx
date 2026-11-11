@@ -1,6 +1,6 @@
 import { useMountedLogic, useValues } from 'kea'
 
-import { IconCheckCircle, IconPullRequest } from '@posthog/icons'
+import { IconCheckCircle, IconPullRequest } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'

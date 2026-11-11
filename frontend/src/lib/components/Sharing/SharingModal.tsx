@@ -4,7 +4,7 @@ import { router } from 'kea-router'
 import posthog from 'posthog-js'
 import { ReactNode, useEffect, useState } from 'react'
 
-import { IconCollapse, IconDay, IconExpand, IconInfo, IconLaptop, IconLock, IconNight } from '@posthog/icons'
+import { IconCollapse, IconDay, IconExpand, IconInfo, IconLaptop, IconLock, IconNight } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

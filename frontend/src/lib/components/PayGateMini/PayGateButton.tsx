@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { LemonButton, LemonButtonProps } from '@flind/lemon-ui'
 
 import { PayGateMiniLogicProps, payGateMiniLogic } from './payGateMiniLogic'

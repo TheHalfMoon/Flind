@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
-import { IconCheck, IconFilter, IconX } from '@posthog/icons'
+import { IconCheck, IconFilter, IconX } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonLabel, LemonSelect } from '@flind/lemon-ui'
 
 import { DataWarehouseColumnsHint } from 'lib/components/CyclotronJob/DataWarehouseColumnsHint'

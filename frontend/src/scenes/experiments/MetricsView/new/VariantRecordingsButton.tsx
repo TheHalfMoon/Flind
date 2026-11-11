@@ -1,6 +1,6 @@
 import posthog from 'posthog-js'
 
-import { IconChevronDown, IconRewindPlay } from '@posthog/icons'
+import { IconChevronDown, IconRewindPlay } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LemonMenuOverlay } from 'lib/lemon-ui/LemonMenu'

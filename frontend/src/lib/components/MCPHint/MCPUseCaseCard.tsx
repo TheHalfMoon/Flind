@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 
 import { CodeSnippet } from 'lib/components/CodeSnippet/CodeSnippet'
 import { cn } from 'lib/utils/css-classes'

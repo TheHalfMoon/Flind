@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { RE2JS } from 're2js'
 import { useEffect } from 'react'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 import { LemonButton, LemonInputSelect, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { FlagSelector } from 'lib/components/FlagSelector'

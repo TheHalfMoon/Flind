@@ -1,4 +1,4 @@
-import { IconCheck, IconX } from '@posthog/icons'
+import { IconCheck, IconX } from '@flind/icons'
 import { LemonTagType } from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

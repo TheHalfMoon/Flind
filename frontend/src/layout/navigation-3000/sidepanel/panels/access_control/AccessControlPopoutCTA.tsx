@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconOpenSidebar } from '@posthog/icons'
+import { IconOpenSidebar } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { captureAccessControlEvent } from 'lib/utils/accessControlUtils'

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'

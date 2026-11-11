@@ -2,7 +2,7 @@ import './FeatureFlag.scss'
 
 import { useActions, useValues } from 'kea'
 
-import { IconCode, IconFlag, IconGlobe, IconLaptop, IconList, IconPencil, IconServer } from '@posthog/icons'
+import { IconCode, IconFlag, IconGlobe, IconLaptop, IconList, IconPencil, IconServer } from '@flind/icons'
 import { LemonButton, LemonSwitch, LemonTag } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

@@ -27,7 +27,7 @@ import {
     IconShare,
     IconScreen,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDivider, LemonMenu, LemonModal, LemonTable, Tooltip } from '@flind/lemon-ui'
 
 import { ExportButton } from 'lib/components/ExportButton/ExportButton'

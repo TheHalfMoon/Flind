@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight } from '@flind/icons'
 import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { FacetRail } from 'lib/components/FacetRail/FacetRail'

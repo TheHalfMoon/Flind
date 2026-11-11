@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconInfo, IconNotification } from '@posthog/icons'
+import { IconInfo, IconNotification } from '@flind/icons'
 import { LemonSegmentedButton, LemonTabs, Link, Tooltip } from '@flind/lemon-ui'
 
 import { AccessDenied } from 'lib/components/AccessDenied'

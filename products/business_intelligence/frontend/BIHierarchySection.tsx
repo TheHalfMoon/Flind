@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconEllipsis, IconPlus } from '@posthog/icons'
+import { IconEllipsis, IconPlus } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { biEditorLogic } from './biEditorLogic'

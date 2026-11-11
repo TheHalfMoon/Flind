@@ -2,7 +2,7 @@ import { deepEqual as equal } from 'fast-equals'
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { VerticalNestedDND } from 'lib/components/VerticalNestedDND/VerticalNestedDND'

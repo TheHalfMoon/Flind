@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconInfo, IconX } from '@posthog/icons'
+import { IconInfo, IconX } from '@flind/icons'
 import { LemonButton, LemonSegmentedButton, Tooltip } from '@flind/lemon-ui'
 
 import api from 'lib/api'

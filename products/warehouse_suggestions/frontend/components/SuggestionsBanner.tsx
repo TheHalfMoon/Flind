@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ReactNode } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { warehouseSuggestionsLogic } from '../warehouseSuggestionsLogic'

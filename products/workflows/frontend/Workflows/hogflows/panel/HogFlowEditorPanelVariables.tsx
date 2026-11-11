@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconPlus, IconX } from '@posthog/icons'
+import { IconPlus, IconX } from '@flind/icons'
 import { LemonButton, LemonCollapse, LemonDivider, LemonInput } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField/LemonField'

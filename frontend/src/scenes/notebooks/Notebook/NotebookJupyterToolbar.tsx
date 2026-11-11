@@ -11,7 +11,7 @@ import {
     IconPlus,
     IconRefresh,
     IconStopFilled,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonDivider, LemonSelect } from '@flind/lemon-ui'
 
 import { useNotebookJupyterCommands, useNotebookJupyterStoreValue } from 'lib/components/MarkdownNotebook/jupyterMode'

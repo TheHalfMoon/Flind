@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconDrag, IconEllipsis, IconSparkles } from '@posthog/icons'
+import { IconDrag, IconEllipsis, IconSparkles } from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonInput, LemonTag, SpinnerOverlay } from '@flind/lemon-ui'
 
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

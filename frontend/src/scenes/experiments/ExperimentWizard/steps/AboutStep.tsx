@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useDebouncedCallback } from 'use-debounce'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonButton, LemonInput, Link, Tooltip } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'

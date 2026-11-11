@@ -2,7 +2,7 @@ import { Collapsible } from '@base-ui/react/collapsible'
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useId, useMemo } from 'react'
 
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { TZLabel } from 'lib/components/TZLabel'

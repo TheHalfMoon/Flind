@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 import { TextMorph } from 'torph/react'
 
-import { IconCheck, IconCopy, IconRewind, IconWarning, IconX } from '@posthog/icons'
+import { IconCheck, IconCopy, IconRewind, IconWarning, IconX } from '@flind/icons'
 import { LemonButton, LemonCollapse, LemonModal } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { cn } from 'lib/utils/css-classes'

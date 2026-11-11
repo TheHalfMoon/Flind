@@ -1,4 +1,4 @@
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { ExperimentMetric } from '~/queries/schema/schema-general'

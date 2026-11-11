@@ -1,4 +1,4 @@
-import { IconCloud, IconLaptop } from '@posthog/icons'
+import { IconCloud, IconLaptop } from '@flind/icons'
 import { Badge } from '@flind/quill-primitives'
 
 import type { RunEnvironmentEnumApi } from '../../generated/api.schemas'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconChevronRight, IconPlusSmall } from '@posthog/icons'
+import { IconChevronRight, IconPlusSmall } from '@flind/icons'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'

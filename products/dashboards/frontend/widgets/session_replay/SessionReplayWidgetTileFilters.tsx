@@ -2,7 +2,7 @@ import { deepEqual as equal } from 'fast-equals'
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 
 import { quickFiltersLogic } from 'lib/components/QuickFilters/quickFiltersLogic'
 import { LemonSelect, type LemonSelectOptionLeaf } from 'lib/lemon-ui/LemonSelect'

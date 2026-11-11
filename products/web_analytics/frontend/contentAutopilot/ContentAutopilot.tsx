@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlusSmall } from '@posthog/icons'
+import { IconPlusSmall } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDialog, LemonSelect, LemonTabs } from '@flind/lemon-ui'
 
 import { ContentAutopilotDrafts } from './ContentAutopilotDrafts'

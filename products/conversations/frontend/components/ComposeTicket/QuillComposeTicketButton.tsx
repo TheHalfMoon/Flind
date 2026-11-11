@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useState } from 'react'
 
-import { IconLetter } from '@posthog/icons'
+import { IconLetter } from '@flind/icons'
 import { LemonButtonProps } from '@flind/lemon-ui'
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 

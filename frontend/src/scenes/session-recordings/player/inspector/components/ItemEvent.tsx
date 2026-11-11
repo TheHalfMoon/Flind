@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconCollapse, IconExpand, IconShare } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconShare } from '@flind/icons'
 import { LemonButton, LemonMenu, Link } from '@flind/lemon-ui'
 
 import { AutocapturePreviewImage } from 'lib/components/AutocapturePreviewImage/AutocapturePreviewImage'

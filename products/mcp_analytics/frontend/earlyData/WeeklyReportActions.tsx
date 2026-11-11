@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconLetter } from '@posthog/icons'
+import { IconLetter } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { AIConsentPopoverWrapper } from 'scenes/settings/organization/AIConsentPopoverWrapper'

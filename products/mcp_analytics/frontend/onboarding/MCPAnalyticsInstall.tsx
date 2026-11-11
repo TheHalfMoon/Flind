@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconCheckCircle } from '@posthog/icons'
+import { IconCheckCircle } from '@flind/icons'
 import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { CommandBlock } from 'lib/components/CommandBlock/CommandBlock'

@@ -26,7 +26,7 @@
     },
     "peerDependencies": {
         "@posthog/brand": "catalog:",
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@flind/quill-components": "workspace:*",
         "@types/d3": "*",
         "@types/d3-array": "*",

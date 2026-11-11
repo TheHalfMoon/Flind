@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArchive, IconChevronRight } from '@posthog/icons'
+import { IconArchive, IconChevronRight } from '@flind/icons'
 
 import {
     NotificationActionButton,

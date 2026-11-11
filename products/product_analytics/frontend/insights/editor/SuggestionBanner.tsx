@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-import { IconCheck, IconInfo, IconX } from '@posthog/icons'
+import { IconCheck, IconInfo, IconX } from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

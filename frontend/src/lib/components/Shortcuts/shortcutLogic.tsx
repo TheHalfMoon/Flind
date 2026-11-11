@@ -1,6 +1,6 @@
 import { MakeLogicType, actions, afterMount, beforeUnmount, kea, path, reducers, selectors } from 'kea'
 
-import { IconKeyboard } from '@posthog/icons'
+import { IconKeyboard } from '@flind/icons'
 
 import { SearchItem } from 'lib/components/Search/searchItems'
 import posthog from 'lib/posthog-typed'

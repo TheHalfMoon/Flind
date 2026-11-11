@@ -3,7 +3,7 @@ import './AggregationColumn.scss'
 import { useActions, useValues } from 'kea'
 import { ReactNode } from 'react'
 
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 import { LemonMenu, LemonMenuItem } from '@flind/lemon-ui'
 
 import { formatAggregationAxisValue } from 'lib/insights/aggregationAxisFormat'

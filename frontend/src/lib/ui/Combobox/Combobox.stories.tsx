@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 
-import { IconGear, IconPlusSmall } from '@posthog/icons'
+import { IconGear, IconPlusSmall } from '@flind/icons'
 
 import { Link } from 'lib/lemon-ui/Link'
 

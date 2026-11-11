@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconEmojiAdd } from '@posthog/icons'
+import { IconEmojiAdd } from '@flind/icons'
 
 import { LemonButton, LemonButtonProps } from 'lib/lemon-ui/LemonButton'
 import { Popover } from 'lib/lemon-ui/Popover'

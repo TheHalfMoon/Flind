@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useEffect, useMemo } from 'react'
 
-import { IconBottomPanel, IconRabbit, IconSearch, IconTortoise } from '@posthog/icons'
+import { IconBottomPanel, IconRabbit, IconSearch, IconTortoise } from '@flind/icons'
 import { LemonMenuItems, Link } from '@flind/lemon-ui'
 
 import { SettingsButton, SettingsMenu } from 'lib/components/PanelSettings/PanelSettings'

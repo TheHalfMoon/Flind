@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { IconGitBranch } from '@posthog/icons'
+import { IconGitBranch } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

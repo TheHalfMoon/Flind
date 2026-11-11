@@ -1,4 +1,4 @@
-import { IconPencil } from '@posthog/icons'
+import { IconPencil } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { scoutWriteScopeLabels, scoutWriteScopesBeyondDefault } from './scoutWriteScopes'

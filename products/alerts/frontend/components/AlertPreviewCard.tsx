@@ -1,4 +1,4 @@
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonSkeleton, LemonTag, Tooltip } from '@flind/lemon-ui'
 import { LineChart, ReferenceLines, useChartTheme } from '@flind/quill-charts'
 

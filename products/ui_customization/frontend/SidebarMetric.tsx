@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react'
 
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 import {
     Metric,
     MetricDelta,

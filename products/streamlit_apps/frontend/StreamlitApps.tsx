@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconEllipsis, IconPlus, IconTrash } from '@posthog/icons'
+import { IconEllipsis, IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonMenu, LemonTag, LemonTagType } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

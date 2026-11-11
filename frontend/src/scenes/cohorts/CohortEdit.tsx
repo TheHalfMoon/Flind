@@ -14,7 +14,7 @@ import {
     IconSend,
     IconTrash,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBanner, LemonDivider, LemonMenu, LemonSnack, LemonTabs, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

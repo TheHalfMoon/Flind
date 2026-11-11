@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconArrowRight, IconSparkles } from '@posthog/icons'
+import { IconArrowRight, IconSparkles } from '@flind/icons'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'
 

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconBug, IconHourglass } from '@posthog/icons'
+import { IconBug, IconHourglass } from '@flind/icons'
 
 import { SESSION_RECORDINGS_TTL_WARNING_THRESHOLD_DAYS } from 'lib/constants'
 import { colonDelimitedDuration } from 'lib/utils/durations'

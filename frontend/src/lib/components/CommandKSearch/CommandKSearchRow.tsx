@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { memo } from 'react'
 
-import { IconArrowRight, IconChevronDown, IconFilter, IconFolder, IconPerson, IconSparkles } from '@posthog/icons'
+import { IconArrowRight, IconChevronDown, IconFilter, IconFolder, IconPerson, IconSparkles } from '@flind/icons'
 import { Button, Skeleton, cn } from '@flind/quill'
 
 import { getIconForItem, getItemTypeDisplayName } from 'lib/components/Search/searchItemDisplay'

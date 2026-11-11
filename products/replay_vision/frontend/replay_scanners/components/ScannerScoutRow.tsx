@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChevronRight, IconEye, IconGear, IconTrash } from '@posthog/icons'
+import { IconChevronRight, IconEye, IconGear, IconTrash } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonSwitch, Tooltip } from '@flind/lemon-ui'
 
 import { ProjectTimezoneHint } from 'lib/components/ScheduledRunStatus'

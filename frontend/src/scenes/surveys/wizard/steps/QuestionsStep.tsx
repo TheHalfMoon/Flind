@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 
-import { IconEmoji, IconPlusSmall, IconRevert, IconTrash } from '@posthog/icons'
+import { IconEmoji, IconPlusSmall, IconRevert, IconTrash } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonInput, LemonSegmentedButton, LemonTag } from '@flind/lemon-ui'
 
 import { EditableField } from 'lib/components/EditableField/EditableField'

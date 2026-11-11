@@ -1,4 +1,4 @@
-import { IconBook, IconGear } from '@posthog/icons'
+import { IconBook, IconGear } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 

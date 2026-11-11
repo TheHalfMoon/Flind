@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCheckbox, LemonDialog, LemonSelect, LemonTag, Link } from '@flind/lemon-ui'
 
 import { OrganizationMembershipLevel } from 'lib/constants'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { DomainProblem } from '../domainInput'

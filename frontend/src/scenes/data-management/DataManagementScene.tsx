@@ -2,7 +2,7 @@ import { MakeLogicType, actions, connect, kea, path, reducers, selectors, useVal
 import { actionToUrl, combineUrl, router, urlToAction } from 'kea-router'
 import React from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 
 import { ActivityLog } from 'lib/components/ActivityLog/ActivityLog'
 import { TitleWithIcon } from 'lib/components/TitleWithIcon'

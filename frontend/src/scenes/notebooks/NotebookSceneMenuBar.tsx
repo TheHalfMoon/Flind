@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconCopy, IconDownload, IconOpenSidebar, IconShare, IconTrash } from '@posthog/icons'
+import { IconCopy, IconDownload, IconOpenSidebar, IconShare, IconTrash } from '@flind/icons'
 
 import { SceneMenuBarPinItem } from 'lib/components/Scenes/SceneMenuBarPinItem'
 import { FEATURE_FLAGS } from 'lib/constants'

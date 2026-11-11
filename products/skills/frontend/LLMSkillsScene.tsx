@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 import { useMemo, useRef } from 'react'
 
-import { IconDownload, IconPlus, IconPlusSmall, IconUpload } from '@posthog/icons'
+import { IconDownload, IconPlus, IconPlusSmall, IconUpload } from '@flind/icons'
 import { LemonDivider, LemonModal, LemonSwitch, LemonTag, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

@@ -1,4 +1,4 @@
-import { IconChat, IconDocument, IconPlus } from '@posthog/icons'
+import { IconChat, IconDocument, IconPlus } from '@flind/icons'
 import { Badge, Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@flind/quill'
 
 export interface QuillScoutNewMenuProps {

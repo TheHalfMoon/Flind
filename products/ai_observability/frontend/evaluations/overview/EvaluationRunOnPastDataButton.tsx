@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconClockRewind } from '@posthog/icons'
+import { IconClockRewind } from '@flind/icons'
 import { LemonButton, type LemonButtonProps } from '@flind/lemon-ui'
 
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'

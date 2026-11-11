@@ -1,4 +1,4 @@
-import { IconCalendar } from '@posthog/icons'
+import { IconCalendar } from '@flind/icons'
 
 type ElementStatisticProps = {
     title: string

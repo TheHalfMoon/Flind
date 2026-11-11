@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconImage } from '@posthog/icons'
+import { IconImage } from '@flind/icons'
 
 import { ButtonPrimitive, DisabledReasonsObject } from 'lib/ui/Button/ButtonPrimitives'
 

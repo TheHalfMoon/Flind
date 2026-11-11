@@ -1,6 +1,6 @@
 import 'kea'
 
-import { IconBalance, IconMessage, IconPlus, IconTrash } from '@posthog/icons'
+import { IconBalance, IconMessage, IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonInput } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

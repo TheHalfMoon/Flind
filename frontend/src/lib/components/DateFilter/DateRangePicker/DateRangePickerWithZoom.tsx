@@ -1,4 +1,4 @@
-import { IconMinusSquare, IconPlusSquare } from '@posthog/icons'
+import { IconMinusSquare, IconPlusSquare } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { DateRangePicker, DateRangePickerProps } from './DateRangePicker'

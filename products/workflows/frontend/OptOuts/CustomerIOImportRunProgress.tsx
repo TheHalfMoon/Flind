@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconCircleDashed, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconCircleDashed, IconWarning } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import type {

@@ -4,16 +4,16 @@ The durable record of where Flind stands. Each milestone lists what changed, the
 (CI runs on the exact merged commit), legal and security notes, and what is next. **Verified** means shown by a CI
 run or test result on that commit; anything else is marked as planned or unverified.
 
-Last updated: 2026-11-11.
+Last updated: 2026-11-12.
 
-## Live qualification checkpoint (2026-11-11, later run)
+## Stage 3 qualification checkpoint (2026-11-12)
 
-- **Main:** `66cc22360e50ce5835f834dbbaf091e8339cac5c` at the start of this checkpoint; no release or deployment authorized.
-- **PR #23, icons:** draft head `ff40a2ea5929fe0330077de000acaac5fa2017a5`. Earlier lockfile repair was followed by a Playwright alias fix: `@flind/icons` now resolves to executable workspace code rather than `packages/icons/index.d.ts`. At inspection, 9/17 checks succeeded, 8 were still running; no failures reported yet. The separate Playwright real-service run `43087399986` remained in progress during database setup. **Not qualified and not merged.**
-- **PR #24, toolbar origin isolation:** draft branch adds default-deny external messaging, explicit origin validation, tests for actual manifest-builder wiring, and rejection of trailing-dot DNS hostnames (including inherited donor domains). Local Windows `node --check` and `node --test`: **6 passed, 0 failed**, on the updated files. GitHub CI on the final PR head was still queued/running at inspection; packaging and browser runtime are **not yet verified**. **Not qualified and not merged.**
-- **Next gate:** require all exact-head checks and real-service E2E to finish successfully before merging; then verify main. SDK ownership transfer and SDK-to-Flind ingestion E2E remain outstanding.
-- **Legal:** founder reports permission to rebrand donor artwork and code; retain applicable copyright, licensing and provenance. Do not rewrite signed fixture data.
-- **Release:** prohibited until explicit **GREEN LIGHT FLIND**.
+- **Main:** PR #23 merged as `b9e66abbbec7581e073de1ba933e8f11eab4f1a2`. The `@flind/icons` workspace migration passed exact-head frontend, backend, upstream, E2E, brand-audit, rename-ratchet, and runtime-migration workflows; ESM and CommonJS React smoke tests also passed on Node 26.
+- **PR #24, toolbar origin isolation:** this branch implements default-deny extension messaging, opt-in exact HTTPS origin validation, rejection of inherited hosts, and tests wired to the generated manifest builder. Its prior exact-head rename-ratchet and runtime-migrations jobs passed. This integration merge with main still requires renewed qualification.
+- **PR #25, extension brand icon:** stacked on #24. Latest observed head `0b802897fa7e64431ead1f9bfe71003383b70850` passed rename-ratchet, runtime-migrations, and toolbar extension qualification after repairing Quill build prerequisites. It must be reconciled against updated #24 before any merge.
+- **Remaining release gates:** SDK ownership and end-to-end Flind ingestion, comprehensive deployment/security/upgrade qualification, and removal of remaining hosted donor dependencies are unverified.
+- **Rights/provenance:** founder reports permission to use and rebrand donor artwork and code. The underlying permission documents have not been independently inspected; preserve required licenses and notices, and do not alter signed fixtures.
+- **Publication:** prohibited until explicit **GREEN LIGHT FLIND**. No deployment or release authorized.
 
 ## Release gates
 
@@ -21,7 +21,7 @@ Last updated: 2026-11-11.
 | --- | --- |
 | Required Flind CI green on `main` | Verified for each merged PR below (exact head commit). |
 | Brand and attribution guards | Verified: `tools/flind/test_user_facing_brand.py` in the brand-audit workflow. |
-| No PostHog-hosted runtime dependencies | Not verified. Known gaps: mobile app legal links, toolbar trusted PostHog hosts, `npx @posthog/wizard` onboarding. |
+| No PostHog-hosted runtime dependencies | Not verified. Known gaps: mobile app legal links and `npx @posthog/wizard` onboarding; toolbar origin restrictions are in PR #24 and still require complete integration qualification. |
 | Core user journeys | Partly verified: 4 Playwright journeys (`playwright/e2e/flind-brand-journeys.spec.ts`). Full journey set not built. |
 | SDK event ingestion end to end | Not verified. |
 | Fresh deployment | Not verified as a release artifact. CI brings up the dev stack only. |
@@ -45,13 +45,16 @@ Last updated: 2026-11-11.
 | #11–#17 | `de44833`…`2ce3b1a` | 25 upstream security fixes, each with its upstream tests (`flind/upstream-sync/security-fixes.md`). |
 | #18 | `35de3ed` | Upstream merged to the cutoff: 912 conflicts, backports replaced by upstream's originals, 10 new upstream workflows left out (`flind/upstream-sync/merge-4efa693e9aec.md`). |
 | #19 | `f1728a0` | Full rename stage 1: plan, inventory and ratchet (`flind/rename/`). |
+| #20 | `d9a845f` | Rename stage 2 user-visible copy and follow-up regression fixes. |
+| #21 | `ce23b45` | Disable inherited legal agreements by default and add a status ledger. |
+| #22 | `66cc223` | Vendor SipHash as `@flind/siphash`. |
+| #23 | `b9e66ab` | Vendor icon bundle as `@flind/icons`; React and CI qualification on exact PR head. |
 
 ## In progress
 
-- **#20, rename stage 2:** "PostHog" becomes "Flind" in user-facing text across 6,530 files. Includes the owner's SDK-label
-  corrections (the inherited SDK is labelled as the PostHog SDK until stage 3 vendors it).
-- **Legal-documents feature off:** the inherited BAA/DPA feature (contracts with PostHog Inc.) is switched off by
-  `FLIND_LEGAL_DOCUMENTS_ENABLED` (default off) and removed from navigation. Stacked on #20.
+- **#24:** qualify extension origin default-deny integration against main after #23.
+- **#25:** qualify the corrected Chrome extension icon and packaging branch on top of #24.
+- **Remaining rename stages:** SDKs, Python packages, database tables and service identifiers remain pending.
 
 ## Next
 

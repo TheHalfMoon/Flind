@@ -3,7 +3,7 @@ import './SurveyPickerSelect.scss'
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { LemonInputSelect, type LemonInputSelectOption } from 'lib/lemon-ui/LemonInputSelect'
 import { urls } from 'scenes/urls'

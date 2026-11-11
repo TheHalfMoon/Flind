@@ -1,4 +1,4 @@
-import { IconCloud, IconLaptop, IconListCheck } from '@posthog/icons'
+import { IconCloud, IconLaptop, IconListCheck } from '@flind/icons'
 
 import { TaskRunEnvironment } from '../types/taskTypes'
 import { getOriginProductMeta } from './taskSourceMeta'

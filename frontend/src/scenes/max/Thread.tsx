@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { BindLogic, useValues } from 'kea'
 import React, { useCallback, useMemo, useState } from 'react'
 
-import { IconChevronRight, IconWarning, IconWrench } from '@posthog/icons'
+import { IconChevronRight, IconWarning, IconWrench } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 import {
     ChatBubble,

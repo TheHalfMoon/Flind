@@ -7,7 +7,7 @@ import {
     IconThumbsDown,
     IconUser,
     IconVideoCamera,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 

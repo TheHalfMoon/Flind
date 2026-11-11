@@ -1,6 +1,6 @@
 import './LemonTabs.scss'
 
-import { IconCheckCircle, IconInfo } from '@posthog/icons'
+import { IconCheckCircle, IconInfo } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

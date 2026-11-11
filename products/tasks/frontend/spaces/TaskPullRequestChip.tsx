@@ -1,4 +1,4 @@
-import { IconPullRequest } from '@posthog/icons'
+import { IconPullRequest } from '@flind/icons'
 import { Badge, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

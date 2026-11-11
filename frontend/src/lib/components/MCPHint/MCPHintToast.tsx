@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 
 import { AgentBadgeRotator } from './AgentBadgeRotator'
 import { MCPHintActions } from './MCPHintActions'

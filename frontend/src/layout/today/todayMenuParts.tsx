@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import {
     Button,
     ContextMenuItem,

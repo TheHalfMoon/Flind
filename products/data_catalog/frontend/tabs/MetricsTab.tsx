@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonSelect } from '@flind/lemon-ui'
 
 import { MemberSelect } from 'lib/components/MemberSelect'

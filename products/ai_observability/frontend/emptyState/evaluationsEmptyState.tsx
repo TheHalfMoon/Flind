@@ -1,5 +1,5 @@
+import { IconListCheck } from '@flind/icons'
 import * as judgePng from '@posthog/brand/hoggies/png/judge'
-import { IconListCheck } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

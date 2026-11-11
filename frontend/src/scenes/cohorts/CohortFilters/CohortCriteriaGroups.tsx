@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import { Group } from 'kea-forms'
 import { Field as KeaField } from 'kea-forms/lib/components'
 
-import { IconCopy, IconPlusSmall, IconTrash } from '@posthog/icons'
+import { IconCopy, IconPlusSmall, IconTrash } from '@flind/icons'
 
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

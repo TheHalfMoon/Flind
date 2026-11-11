@@ -2,7 +2,7 @@
 // diagram animates wherever it renders (the welcome takeover and the intro modal).
 import './InboxWelcome.scss'
 
-import { IconRewindPlay, IconWarning } from '@posthog/icons'
+import { IconRewindPlay, IconWarning } from '@flind/icons'
 import { LemonButton, LemonCard, LemonTag } from '@flind/lemon-ui'
 
 import { IconSlack } from 'lib/lemon-ui/icons'

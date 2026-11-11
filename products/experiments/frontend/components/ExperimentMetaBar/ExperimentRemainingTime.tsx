@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconCheck, IconGear, IconHourglass, IconWarning } from '@posthog/icons'
+import { IconCheck, IconGear, IconHourglass, IconWarning } from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { LemonProgressCircle } from 'lib/lemon-ui/LemonProgressCircle/LemonProgressCircle'

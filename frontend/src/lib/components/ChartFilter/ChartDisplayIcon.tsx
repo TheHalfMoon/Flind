@@ -1,4 +1,4 @@
-import { IconGlobe, IconGraph, IconPieChart, IconRetentionHeatmap, IconTrends } from '@posthog/icons'
+import { IconGlobe, IconGraph, IconPieChart, IconRetentionHeatmap, IconTrends } from '@flind/icons'
 
 import {
     Icon123,

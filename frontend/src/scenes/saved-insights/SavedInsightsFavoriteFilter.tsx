@@ -1,4 +1,4 @@
-import { IconHeart, IconHeartFilled } from '@posthog/icons'
+import { IconHeart, IconHeartFilled } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { SavedInsightFilters } from 'scenes/saved-insights/savedInsightsLogic'

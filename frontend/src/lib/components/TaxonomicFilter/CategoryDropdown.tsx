@@ -4,7 +4,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 import { flushSync } from 'react-dom'
 
-import { IconChevronDown, IconSidebarClose, IconSidebarOpen } from '@posthog/icons'
+import { IconChevronDown, IconSidebarClose, IconSidebarOpen } from '@flind/icons'
 
 import { CLICK_OUTSIDE_BLOCK_CLASS } from 'lib/hooks/useOutsideClickHandler'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

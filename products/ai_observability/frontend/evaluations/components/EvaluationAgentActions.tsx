@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconTerminal } from '@posthog/icons'
+import { IconTerminal } from '@flind/icons'
 import { LemonButton, LemonDropdown } from '@flind/lemon-ui'
 
 import { AgentPromptButton } from 'lib/components/AgentPromptButton'

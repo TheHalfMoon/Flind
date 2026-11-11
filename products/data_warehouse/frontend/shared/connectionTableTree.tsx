@@ -1,4 +1,4 @@
-import { IconChevronDown, IconFolder } from '@posthog/icons'
+import { IconChevronDown, IconFolder } from '@flind/icons'
 
 import { TreeDataItem } from 'lib/lemon-ui/LemonTree/LemonTree'
 

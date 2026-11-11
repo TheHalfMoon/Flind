@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconCheckbox, IconEllipsis, IconFilter, IconFolderPlus } from '@posthog/icons'
+import { IconCheckbox, IconEllipsis, IconFilter, IconFolderPlus } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { projectTreeDataLogic } from '../../ProjectTree/projectTreeDataLogic'

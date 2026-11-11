@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconPencil, IconPlus } from '@posthog/icons'
+import { IconPencil, IconPlus } from '@flind/icons'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

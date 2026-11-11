@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRedo, IconUndo } from '@posthog/icons'
+import { IconRedo, IconUndo } from '@flind/icons'
 import { Badge, Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { canvasEditLogic } from '../editing/canvasEditLogic'

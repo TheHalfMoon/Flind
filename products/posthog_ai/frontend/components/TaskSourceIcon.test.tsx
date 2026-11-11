@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import { ComponentType } from 'react'
 
-import { IconCloud, IconLaptop, IconListCheck } from '@posthog/icons'
+import { IconCloud, IconLaptop, IconListCheck } from '@flind/icons'
 
 import { IconSlack } from 'lib/lemon-ui/icons'
 

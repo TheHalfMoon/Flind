@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ReactNode, useState } from 'react'
 
-import { IconClock, IconEye, IconPerson } from '@posthog/icons'
+import { IconClock, IconEye, IconPerson } from '@flind/icons'
 import { Button, Chip, ChipClose } from '@flind/quill'
 
 import { convertSecondsToDuration } from 'lib/components/DurationPicker/DurationPicker'

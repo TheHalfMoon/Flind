@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { IconDownload } from '@posthog/icons'
+import { IconDownload } from '@flind/icons'
 
 import { CodeSnippet, Language } from '~/lib/components/CodeSnippet/CodeSnippet'
 import { LemonBanner } from '~/lib/lemon-ui/LemonBanner'

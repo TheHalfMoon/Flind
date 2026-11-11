@@ -3,7 +3,7 @@ import './FeatureFlagInstructions.scss'
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonCheckbox, LemonSelect, Link } from '@flind/lemon-ui'
 
 import { INSTANTLY_AVAILABLE_PROPERTIES } from 'lib/constants'

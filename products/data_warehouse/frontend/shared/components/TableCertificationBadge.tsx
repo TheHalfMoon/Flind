@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconWarning } from '@flind/icons'
 
 import { LemonTag } from 'lib/lemon-ui/LemonTag'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

@@ -19,7 +19,7 @@
     },
     "peerDependencies": {
         "@posthog/brand": "catalog:",
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@flind/lemon-ui": "workspace:*",
         "@testing-library/jest-dom": "*",
         "@testing-library/react": "*",

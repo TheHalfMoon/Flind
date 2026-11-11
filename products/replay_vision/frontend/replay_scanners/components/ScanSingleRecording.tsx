@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconPlay } from '@posthog/icons'
+import { IconPlay } from '@flind/icons'
 import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { getReplayVisionEditDisabledReason } from '../../utils/accessControl'

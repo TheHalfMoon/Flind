@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconExpand45, IconExternal } from '@posthog/icons'
+import { IconExpand45, IconExternal } from '@flind/icons'
 import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { LemonModal } from 'lib/lemon-ui/LemonModal/LemonModal'

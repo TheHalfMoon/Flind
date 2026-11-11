@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Suspense, useState } from 'react'
 
-import { IconEllipsis, IconExternal, IconWarning } from '@posthog/icons'
+import { IconEllipsis, IconExternal, IconWarning } from '@flind/icons'
 import {
     DropdownMenu,
     DropdownMenuContent,

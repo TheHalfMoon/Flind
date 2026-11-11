@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconEllipsis, IconGear, IconPalette } from '@posthog/icons'
+import { IconEllipsis, IconGear, IconPalette } from '@flind/icons'
 import { LemonBadge, LemonButton, LemonDivider, LemonLabel, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useMemo, useState } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 
 import { isPlainObject, searchableText, toDisplayText } from './jsonText'
 import { KeyValueTable } from './KeyValueTable'

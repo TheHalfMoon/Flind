@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonLabel } from '@flind/lemon-ui'
 
 import { AddEventButton } from 'scenes/surveys/AddEventButton'

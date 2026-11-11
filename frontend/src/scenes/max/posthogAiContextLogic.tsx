@@ -3,7 +3,7 @@ import type { BuiltLogic } from 'kea'
 import posthog from 'posthog-js'
 import type { ReactNode } from 'react'
 
-import { IconDashboard, IconGraph, IconNotebook } from '@posthog/icons'
+import { IconDashboard, IconGraph, IconNotebook } from '@flind/icons'
 
 import { IconAction, IconEvent } from 'lib/lemon-ui/icons'
 import { sceneLogic } from 'scenes/sceneLogic'

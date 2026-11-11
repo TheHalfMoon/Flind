@@ -1,4 +1,4 @@
-import { IconRewindPlay } from '@posthog/icons'
+import { IconRewindPlay } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { colonDelimitedDuration } from 'lib/utils/durations'

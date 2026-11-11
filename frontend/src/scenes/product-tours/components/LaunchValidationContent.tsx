@@ -1,4 +1,4 @@
-import { IconCode, IconCursorClick, IconDocument } from '@posthog/icons'
+import { IconCode, IconCursorClick, IconDocument } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LaunchValidationIssue, LaunchValidationIssueType } from '../productTourLogic'

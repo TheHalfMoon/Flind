@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Fragment, Suspense, lazy, useEffect, useMemo } from 'react'
 
-import { IconArrowRight, IconChevronRight, IconExternal } from '@posthog/icons'
+import { IconArrowRight, IconChevronRight, IconExternal } from '@flind/icons'
 import { Badge, Item, ItemContent, ItemSeparator, ItemTitle, Skeleton } from '@flind/quill'
 
 import { newInternalTab } from 'lib/utils/newInternalTab'

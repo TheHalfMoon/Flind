@@ -1,4 +1,4 @@
-import { IconEllipsis } from '@posthog/icons'
+import { IconEllipsis } from '@flind/icons'
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 
 import { DisplayOptionTab } from 'lib/components/ChartOptions/displayOptions'

@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconCopy, IconExternal } from '@posthog/icons'
+import { IconCopy, IconExternal } from '@flind/icons'
 
 import { todayChatMenuLogic } from './todayChatMenuLogic'
 import { TodayMenuParts } from './todayMenuParts'

@@ -1,4 +1,4 @@
-import { IconChevronDown, IconChevronRight } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import type { LLMSentimentResult } from '~/queries/schema/schema-general'

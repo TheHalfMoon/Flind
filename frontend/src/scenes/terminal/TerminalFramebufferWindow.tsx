@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
-import { IconExpand, IconX } from '@posthog/icons'
+import { IconExpand, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { DraggableWithSnapZones } from 'lib/components/DraggableWithSnapZones/DraggableWithSnapZones'

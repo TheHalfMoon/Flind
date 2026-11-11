@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
-import { IconWarning, IconX } from '@posthog/icons'
+import { IconWarning, IconX } from '@flind/icons'
 
 import { Logomark } from 'lib/brand'
 import { useFloatingContainer } from 'lib/hooks/useFloatingContainerContext'

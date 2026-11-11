@@ -12,7 +12,7 @@ import {
     IconPlus,
     IconUpload,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBanner, LemonButton, LemonSelect, LemonTag, LemonTextArea, Link } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

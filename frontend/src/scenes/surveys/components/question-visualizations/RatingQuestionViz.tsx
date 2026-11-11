@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconInfo, IconThumbsDown, IconThumbsUp } from '@posthog/icons'
+import { IconInfo, IconThumbsDown, IconThumbsUp } from '@flind/icons'
 import { LemonButton, LemonCollapse, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { CompareFilter } from 'lib/components/CompareFilter/CompareFilter'

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconMessage, IconRocket } from '@posthog/icons'
+import { IconMessage, IconRocket } from '@flind/icons'
 
 import api from 'lib/api'
 import { TaxonomicFilterGroupType, TaxonomicFilterValue } from 'lib/components/TaxonomicFilter/types'

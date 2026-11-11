@@ -14,7 +14,7 @@ import {
     IconLive,
     IconStethoscope,
     IconTerminal,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonInput, SideAction, Tooltip } from '@flind/lemon-ui'
 
 import { SettingsBar, SettingsButton, SettingsToggle } from 'lib/components/PanelSettings/PanelSettings'

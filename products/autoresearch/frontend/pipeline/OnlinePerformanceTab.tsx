@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 import { LemonBanner, LemonCollapse, LemonTable, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

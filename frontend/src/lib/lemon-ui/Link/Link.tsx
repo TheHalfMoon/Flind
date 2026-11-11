@@ -3,7 +3,7 @@ import './Link.scss'
 import { router } from 'kea-router'
 import React from 'react'
 
-import { IconExternal, IconSend } from '@posthog/icons'
+import { IconExternal, IconSend } from '@flind/icons'
 
 import { ButtonPrimitiveProps, buttonPrimitiveVariants } from 'lib/ui/Button/ButtonPrimitives'
 import { cn } from 'lib/utils/css-classes'

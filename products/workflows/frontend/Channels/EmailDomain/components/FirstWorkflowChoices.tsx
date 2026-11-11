@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ReactNode, useEffect, useState } from 'react'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { LemonButton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { SuggestionCard } from '../../../setupGuide/suggestions/suggestionCards'

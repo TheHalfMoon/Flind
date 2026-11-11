@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IconWrench } from '@posthog/icons'
+import { IconWrench } from '@flind/icons'
 
 import { MAX_SIDE_PANEL_ID } from '~/layout/ai/aiPanelIds'
 import type { PhaiViewMode } from '~/layout/ai/aiPanelIds'

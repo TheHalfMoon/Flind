@@ -1,4 +1,4 @@
-import { IconInfo, IconLaptop, IconServer } from '@posthog/icons'
+import { IconInfo, IconLaptop, IconServer } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { FilterLogicalOperator, UniversalFiltersGroup, UniversalFiltersGroupValue } from '~/types'

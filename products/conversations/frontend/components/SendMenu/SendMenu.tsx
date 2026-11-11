@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { IconSend } from '@posthog/icons'
+import { IconSend } from '@flind/icons'
 import { LemonButton, LemonMenu, LemonMenuItem, Link } from '@flind/lemon-ui'
 
 import type { TicketChannel, TicketStatus } from '../../types'

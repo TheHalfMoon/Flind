@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconCheck, IconCopy, IconWarning, IconX } from '@posthog/icons'
+import { IconCheck, IconCopy, IconWarning, IconX } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

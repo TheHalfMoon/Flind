@@ -1,4 +1,4 @@
-import { IconGraph, IconPencil, IconPlay, IconServer } from '@posthog/icons'
+import { IconGraph, IconPencil, IconPlay, IconServer } from '@flind/icons'
 import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet/CodeSnippet'

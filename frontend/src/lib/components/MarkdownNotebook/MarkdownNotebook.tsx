@@ -23,7 +23,7 @@ import {
     useSyncExternalStore,
 } from 'react'
 
-import { IconCode, IconComment, IconDrag } from '@posthog/icons'
+import { IconCode, IconComment, IconDrag } from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { Spinner } from 'lib/lemon-ui/Spinner'

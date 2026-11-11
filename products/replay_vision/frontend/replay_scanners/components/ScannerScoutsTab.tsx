@@ -9,7 +9,7 @@ import {
     IconSearch,
     IconTrends,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCard, LemonTag } from '@flind/lemon-ui'
 
 import { ProjectTimezoneHint } from 'lib/components/ScheduledRunStatus'

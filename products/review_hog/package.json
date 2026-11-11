@@ -15,7 +15,7 @@
         "kea-test-utils": "catalog:"
     },
     "peerDependencies": {
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@testing-library/dom": "*",
         "@types/react": "*",
         "react": "*"

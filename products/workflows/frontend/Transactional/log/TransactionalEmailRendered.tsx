@@ -1,4 +1,4 @@
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { LemonBanner } from '@flind/lemon-ui'
 
 import type { TransactionalEmailLogDetailApi } from 'products/messaging/frontend/generated/api.schemas'

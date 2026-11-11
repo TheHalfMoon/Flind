@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconChevronDown, IconEllipsis, IconLineGraph } from '@posthog/icons'
+import { IconChevronDown, IconEllipsis, IconLineGraph } from '@flind/icons'
 import { LemonButton, LemonMenu, LemonMenuItem, LemonSelectOptionLeaf } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

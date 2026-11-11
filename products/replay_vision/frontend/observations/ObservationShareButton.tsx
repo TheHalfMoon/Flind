@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCopy, IconShare } from '@posthog/icons'
+import { IconCopy, IconShare } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonInput } from '@flind/lemon-ui'
 
 import { LemonDialog } from 'lib/lemon-ui/LemonDialog'

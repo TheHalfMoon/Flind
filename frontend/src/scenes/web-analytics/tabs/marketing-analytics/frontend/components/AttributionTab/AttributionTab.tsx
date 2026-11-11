@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDivider, LemonSelect, LemonSwitch, Popover } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

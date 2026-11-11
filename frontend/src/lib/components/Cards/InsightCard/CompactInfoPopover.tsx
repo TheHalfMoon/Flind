@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 
 import { EditableField } from 'lib/components/EditableField/EditableField'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

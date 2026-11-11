@@ -20,7 +20,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonButton, LemonSwitch } from '@flind/lemon-ui'
 
 import { SortableDragIcon } from 'lib/lemon-ui/icons'

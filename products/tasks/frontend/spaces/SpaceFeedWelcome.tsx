@@ -9,7 +9,7 @@ import {
     IconPiggyBank,
     IconTrends,
     IconWrench,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     Empty,
     EmptyContent,

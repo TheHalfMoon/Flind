@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconClock, IconPullRequest, IconSparkles } from '@posthog/icons'
+import { IconClock, IconPullRequest, IconSparkles } from '@flind/icons'
 import { Button, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

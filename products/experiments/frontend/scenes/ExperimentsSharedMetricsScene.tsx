@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useState } from 'react'
 
-import { IconChevronLeft, IconChevronRight, IconCopy, IconPencil, IconTrash } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight, IconCopy, IconPencil, IconTrash } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

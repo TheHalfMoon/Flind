@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconClock, IconWarning, IconXCircle } from '@posthog/icons'
+import { IconCheckCircle, IconClock, IconWarning, IconXCircle } from '@flind/icons'
 import { Spinner } from '@flind/quill-primitives'
 
 import { TZLabel } from 'lib/components/TZLabel'

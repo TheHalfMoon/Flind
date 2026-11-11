@@ -10,7 +10,7 @@
         "@testing-library/react": "^14.3.1"
     },
     "peerDependencies": {
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@testing-library/react": "*",
         "@types/react": "*",
         "clsx": "*",

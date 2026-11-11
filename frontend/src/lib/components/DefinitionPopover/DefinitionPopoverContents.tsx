@@ -2,7 +2,7 @@ import { hide } from '@floating-ui/react'
 import { useActions, useValues } from 'kea'
 import { Fragment, useEffect, useMemo } from 'react'
 
-import { IconBadge, IconEye, IconHide, IconInfo } from '@posthog/icons'
+import { IconBadge, IconEye, IconHide, IconInfo } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonInputSelect, LemonSegmentedButton, LemonTag } from '@flind/lemon-ui'
 
 import { ActionPopoverInfo } from 'lib/components/DefinitionPopover/ActionPopoverInfo'

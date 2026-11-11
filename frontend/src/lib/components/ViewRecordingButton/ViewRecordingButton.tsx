@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { isValidElement, ReactNode, useEffect } from 'react'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { LemonButton, LemonButtonProps, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { Dayjs, dayjs } from 'lib/dayjs'

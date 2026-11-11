@@ -1,4 +1,4 @@
-import { IconCopy, IconListTree } from '@posthog/icons'
+import { IconCopy, IconListTree } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { IconLink } from 'lib/lemon-ui/icons'

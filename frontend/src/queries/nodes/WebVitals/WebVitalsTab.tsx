@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { WebVitalsMetric } from '~/queries/schema/schema-general'

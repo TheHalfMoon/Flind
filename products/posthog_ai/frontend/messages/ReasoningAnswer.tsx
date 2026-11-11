@@ -1,4 +1,4 @@
-import { IconBrain } from '@posthog/icons'
+import { IconBrain } from '@flind/icons'
 
 import { inStorybookTestRunner } from 'lib/utils/dom'
 

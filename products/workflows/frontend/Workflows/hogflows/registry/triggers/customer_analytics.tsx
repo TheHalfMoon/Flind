@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBolt, IconPencil, IconPerson, IconPlusSmall, IconX } from '@posthog/icons'
+import { IconBolt, IconPencil, IconPerson, IconPlusSmall, IconX } from '@flind/icons'
 import { LemonButton, LemonInputSelect, LemonSelect } from '@flind/lemon-ui'
 
 import { CodeSnippet } from 'lib/components/CodeSnippet'

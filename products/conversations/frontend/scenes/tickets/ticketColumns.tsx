@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconClock } from '@posthog/icons'
+import { IconClock } from '@flind/icons'
 import { LemonBadge, LemonTableColumns, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'

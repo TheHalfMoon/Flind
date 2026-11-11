@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonDropdown } from '@flind/lemon-ui'
 
 import type { HighlightFeedCategoryEnumApi } from '../../generated/api.schemas'

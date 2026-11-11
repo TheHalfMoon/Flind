@@ -1,4 +1,4 @@
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 
 /**
  * Fallback for node types that cannot render for the current viewer — e.g. inline / ad-hoc

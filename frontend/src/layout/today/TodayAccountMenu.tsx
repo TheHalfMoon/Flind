@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconDatabase, IconLeave, IconPeople, IconServer, IconShieldLock, IconToggle } from '@posthog/icons'
+import { IconDatabase, IconLeave, IconPeople, IconServer, IconShieldLock, IconToggle } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

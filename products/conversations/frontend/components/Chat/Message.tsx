@@ -10,7 +10,7 @@ import {
     IconThumbsUpFilled,
     IconTrash,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonInput, LemonTag, Link, ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

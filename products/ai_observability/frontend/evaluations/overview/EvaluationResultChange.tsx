@@ -1,4 +1,4 @@
-import { IconArrowRightDown, IconArrowUpRight } from '@posthog/icons'
+import { IconArrowRightDown, IconArrowUpRight } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import type { EvaluationResultApi } from '../../generated/api.schemas'

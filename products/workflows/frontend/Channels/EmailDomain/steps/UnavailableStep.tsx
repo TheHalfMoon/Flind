@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 
 import { BigAction } from '../components/BigAction'
 import { StepHeading } from '../components/StepHeading'

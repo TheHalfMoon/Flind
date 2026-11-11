@@ -1,4 +1,4 @@
-import { IconList } from '@posthog/icons'
+import { IconList } from '@flind/icons'
 
 import {
     EXCEPTION_STEP_INTERNAL_FIELDS,

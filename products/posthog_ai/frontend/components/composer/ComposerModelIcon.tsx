@@ -1,4 +1,4 @@
-import { IconLogomark } from '@posthog/icons'
+import { IconLogomark } from '@flind/icons'
 
 import { AnthropicLogo } from 'scenes/onboarding/shared/logos/AnthropicLogo'
 import { OpenAILogo } from 'scenes/onboarding/shared/logos/OpenAILogo'

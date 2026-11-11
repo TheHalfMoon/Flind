@@ -1,6 +1,6 @@
 import { MouseEvent, PointerEvent, ReactNode, useCallback, useLayoutEffect, useRef, useState } from 'react'
 
-import { IconMinus, IconPlus } from '@posthog/icons'
+import { IconMinus, IconPlus } from '@flind/icons'
 import { Button, Separator, Text, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill-primitives'
 
 import { COMMENT_SURFACE_ATTR } from '../artifactCommentScreenshot'

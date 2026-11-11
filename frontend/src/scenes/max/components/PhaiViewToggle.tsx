@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRevert, IconSparkles } from '@posthog/icons'
+import { IconRevert, IconSparkles } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'

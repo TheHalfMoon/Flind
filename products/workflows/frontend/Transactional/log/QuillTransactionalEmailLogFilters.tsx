@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRefresh, IconSearch } from '@posthog/icons'
+import { IconRefresh, IconSearch } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

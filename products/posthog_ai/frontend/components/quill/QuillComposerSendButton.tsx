@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { IconArrowRight, IconStopFilled } from '@posthog/icons'
+import { IconArrowRight, IconStopFilled } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 import { useComposerContext } from '../composer/Composer'

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconMessage, IconWarning } from '@posthog/icons'
+import { IconMessage, IconWarning } from '@flind/icons'
 import {
     ChatMarker,
     ChatMarkerContent,

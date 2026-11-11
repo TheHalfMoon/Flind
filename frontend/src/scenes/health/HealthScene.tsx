@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBell, IconCheck, IconEllipsis, IconRefresh, IconSparkles, IconSupport } from '@posthog/icons'
+import { IconBell, IconCheck, IconEllipsis, IconRefresh, IconSparkles, IconSupport } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'

@@ -19,7 +19,7 @@ import {
     IconServer,
     IconShieldLock,
     IconToggle,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { IconBlank } from 'lib/lemon-ui/icons'

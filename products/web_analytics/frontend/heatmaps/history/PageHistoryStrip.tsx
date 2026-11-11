@@ -10,7 +10,7 @@ import {
     IconInfo,
     IconRefresh,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCard, LemonMenu, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

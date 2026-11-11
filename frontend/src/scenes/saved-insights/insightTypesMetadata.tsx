@@ -15,7 +15,7 @@ import {
     IconTrends,
     IconVideoCamera,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonSelectOptions } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS, FeatureFlagKey } from 'lib/constants'

@@ -1,8 +1,8 @@
 import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 import posthog from 'posthog-js'
 
+import { IconOpenSidebar } from '@flind/icons'
 import * as superheroPng from '@posthog/brand/hoggies/png/superhero'
-import { IconOpenSidebar } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { flindDocsUrl } from 'lib/flindPublicLinks'

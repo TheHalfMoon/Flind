@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import { Popover } from 'lib/lemon-ui/Popover'

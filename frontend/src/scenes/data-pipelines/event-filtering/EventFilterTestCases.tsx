@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlusSmall, IconTrash } from '@posthog/icons'
+import { IconPlusSmall, IconTrash } from '@flind/icons'
 import { LemonButton, LemonInput, LemonLabel, LemonSelect, LemonTag } from '@flind/lemon-ui'
 
 import { eventFilterLogic, TestCase, TestResult } from './eventFilterLogic'

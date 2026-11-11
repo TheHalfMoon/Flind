@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import React, { useMemo } from 'react'
 import { match } from 'ts-pattern'
 
-import { IconPerson } from '@posthog/icons'
+import { IconPerson } from '@flind/icons'
 import { ProfilePicture } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

@@ -2,7 +2,7 @@ import './CustomerTasksTable.scss'
 
 import { useActions, useValues } from 'kea'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDropdown, LemonInputSelect, LemonMenu, LemonSkeleton } from '@flind/lemon-ui'
 
 import { MemberSelect } from 'lib/components/MemberSelect'

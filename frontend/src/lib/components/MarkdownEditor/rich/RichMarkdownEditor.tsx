@@ -3,7 +3,7 @@ import { EditorContent, Extensions } from '@tiptap/react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 
-import { IconArrowLeft, IconArrowRight } from '@posthog/icons'
+import { IconArrowLeft, IconArrowRight } from '@flind/icons'
 import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 
 import 'lib/components/MarkdownEditor/shared/RichMarkdownEditor.scss'

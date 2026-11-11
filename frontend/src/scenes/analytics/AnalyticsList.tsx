@@ -11,7 +11,7 @@ import {
     IconPlus,
     IconSearch,
     IconTrash,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     Button,
     Card,

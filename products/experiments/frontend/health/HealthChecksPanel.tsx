@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef, useState } from 'react'
 
-import { IconChevronLeft } from '@posthog/icons'
+import { IconChevronLeft } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

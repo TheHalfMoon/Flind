@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconDownload } from '@posthog/icons'
+import { IconDownload } from '@flind/icons'
 import { LemonButton, LemonDropdown } from '@flind/lemon-ui'
 
 import { ActivityLogSubscribeMenu } from 'lib/components/ActivityLog/ActivityLogSubscribeMenu'

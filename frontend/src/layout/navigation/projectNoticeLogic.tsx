@@ -2,7 +2,7 @@ import { MakeLogicType, actions, afterMount, connect, kea, listeners, path, redu
 import { loaders } from 'kea-loaders'
 import { router } from 'kea-router'
 
-import { IconGear, IconPlus } from '@posthog/icons'
+import { IconGear, IconPlus } from '@flind/icons'
 
 import api, { ApiError } from 'lib/api'
 import { getProductPushDisplay } from 'lib/components/NavPanelAdvertisement/navPanelProductPushDisplay'

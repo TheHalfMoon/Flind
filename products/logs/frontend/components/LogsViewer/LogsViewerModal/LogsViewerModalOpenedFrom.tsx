@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRewindPlay, IconWarning } from '@posthog/icons'
+import { IconRewindPlay, IconWarning } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LogsViewerModalOrigin, logsViewerModalLogic } from './logsViewerModalLogic'

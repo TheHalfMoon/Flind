@@ -1,5 +1,5 @@
+import { IconDecisionTree } from '@flind/icons'
 import * as workflowsPng from '@posthog/brand/hoggies/png/workflows'
-import { IconDecisionTree } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

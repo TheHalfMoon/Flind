@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArrowRight, IconChevronDown, IconCursor } from '@posthog/icons'
+import { IconArrowRight, IconChevronDown, IconCursor } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCard, LemonLabel, LemonSelect } from '@flind/lemon-ui'
 
 import { availableOnboardingProducts, getProductIcon } from 'scenes/onboarding/shared/utils'

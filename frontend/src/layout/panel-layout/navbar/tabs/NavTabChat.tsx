@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { memo, useId, useMemo, useState } from 'react'
 
-import { IconPlusSmall, IconSearch } from '@posthog/icons'
+import { IconPlusSmall, IconSearch } from '@flind/icons'
 import { LemonInput, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

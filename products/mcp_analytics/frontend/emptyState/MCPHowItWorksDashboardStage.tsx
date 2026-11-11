@@ -1,6 +1,6 @@
 import './MCPHowItWorksDashboardStage.scss'
 
-import { IconBrain, IconWarning, IconWrench } from '@posthog/icons'
+import { IconBrain, IconWarning, IconWrench } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

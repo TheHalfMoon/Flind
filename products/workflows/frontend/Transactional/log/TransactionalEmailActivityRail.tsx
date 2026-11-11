@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { ReactNode, useState } from 'react'
 
-import { IconLetter } from '@posthog/icons'
+import { IconLetter } from '@flind/icons'
 import { LemonButton, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import ViewRecordingButton, { RecordingPlayerType } from 'lib/components/ViewRecordingButton/ViewRecordingButton'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { type ReactNode, useMemo } from 'react'
 
 import * as greekPng from '@posthog/brand/hoggies/png/greek'
-import { IconClock } from '@posthog/icons'
+import { IconClock } from '@flind/icons'
 import {
     LemonButton,
     LemonCollapse,

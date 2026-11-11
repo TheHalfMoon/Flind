@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { type ReactNode } from 'react'
 
-import { IconCheckCircle, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconWarning } from '@flind/icons'
 
 import { IconErrorOutline } from 'lib/lemon-ui/icons'
 

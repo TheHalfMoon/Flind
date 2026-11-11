@@ -1,5 +1,5 @@
+import { IconEndpoints } from '@flind/icons'
 import * as codeBubblePng from '@posthog/brand/hoggies/png/code-bubble'
-import { IconEndpoints } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

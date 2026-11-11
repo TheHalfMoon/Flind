@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { type KeyboardEvent, useEffect } from 'react'
 
-import { IconNotebook, IconPlus, IconSearch } from '@posthog/icons'
+import { IconNotebook, IconPlus, IconSearch } from '@flind/icons'
 import {
     Badge,
     Button,

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheckCircle, IconRefresh } from '@posthog/icons'
+import { IconCheckCircle, IconRefresh } from '@flind/icons'
 import { LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

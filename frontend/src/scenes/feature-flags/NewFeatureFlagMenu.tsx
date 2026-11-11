@@ -10,7 +10,7 @@ import {
     IconTestTube,
     IconToggle,
     IconWrench,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

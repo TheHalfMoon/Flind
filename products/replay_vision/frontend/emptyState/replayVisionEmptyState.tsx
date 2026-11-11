@@ -1,5 +1,5 @@
+import { IconEye } from '@flind/icons'
 import * as xRayPng from '@posthog/brand/hoggies/png/x-ray'
-import { IconEye } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

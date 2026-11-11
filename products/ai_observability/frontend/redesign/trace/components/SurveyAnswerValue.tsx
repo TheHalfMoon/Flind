@@ -1,4 +1,4 @@
-import { IconThumbsDown, IconThumbsUp } from '@posthog/icons'
+import { IconThumbsDown, IconThumbsUp } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { SurveyAnswer } from '../types'

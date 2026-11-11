@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import { LemonBadge, LemonButton, Link, Tooltip } from '@flind/lemon-ui'
 
 import { LemonTableColumn } from 'lib/lemon-ui/LemonTable'

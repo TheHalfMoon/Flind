@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconCheckCircle, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconWarning } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

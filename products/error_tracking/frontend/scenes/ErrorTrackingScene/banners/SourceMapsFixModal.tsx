@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef, useState } from 'react'
 
-import { IconCheckCircle, IconCopy, IconTerminal, IconThumbsDown, IconThumbsUp } from '@posthog/icons'
+import { IconCheckCircle, IconCopy, IconTerminal, IconThumbsDown, IconThumbsUp } from '@flind/icons'
 import { LemonButton, LemonModal, LemonSegmentedButton, LemonTextArea } from '@flind/lemon-ui'
 
 import { Popover } from 'lib/lemon-ui/Popover'

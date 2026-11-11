@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import React from 'react'
 
 import * as chartPng from '@posthog/brand/hoggies/png/chart'
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

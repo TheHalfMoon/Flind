@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconPencil, IconPlus, IconTrash } from '@posthog/icons'
+import { IconPencil, IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonInput, LemonModal, LemonSelect, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import { DatePicker } from 'lib/components/DatePicker/DatePicker'

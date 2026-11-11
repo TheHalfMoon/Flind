@@ -1,6 +1,6 @@
 import { useValues, useActions } from 'kea'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonSwitch, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { LastSavedIndicator } from 'lib/components/LastSavedIndicator'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconCalendar, IconOpenSidebar, IconPlus } from '@posthog/icons'
+import { IconCalendar, IconOpenSidebar, IconPlus } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

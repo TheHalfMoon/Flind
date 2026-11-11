@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react'
 
-import { IconClock } from '@posthog/icons'
+import { IconClock } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { IconTrendingFlat, IconTrendingFlatDown } from 'lib/lemon-ui/icons'

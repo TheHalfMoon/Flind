@@ -1,7 +1,7 @@
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu'
 import * as React from 'react'
 
-import { IconCheckCircle } from '@posthog/icons'
+import { IconCheckCircle } from '@flind/icons'
 
 import { ScrollableShadows } from 'lib/lemon-ui/ScrollableShadows/ScrollableShadows'
 import { cn } from 'lib/utils/css-classes'

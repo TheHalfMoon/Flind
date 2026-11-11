@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconCommit, IconGitBranch, IconPullRequest, IconXCircle } from '@posthog/icons'
+import { IconCommit, IconGitBranch, IconPullRequest, IconXCircle } from '@flind/icons'
 
 import { dayjs } from 'lib/dayjs'
 import { capitalizeFirstLetter } from 'lib/utils/strings'

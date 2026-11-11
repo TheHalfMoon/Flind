@@ -3,7 +3,7 @@ import './FeatureFlag.scss'
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { IconCopy, IconFlag, IconInfo, IconPlus, IconTrash } from '@posthog/icons'
+import { IconCopy, IconFlag, IconInfo, IconPlus, IconTrash } from '@flind/icons'
 import { LemonLabel, LemonSelect, LemonSnack, Link, Tooltip } from '@flind/lemon-ui'
 
 import { allOperatorsToHumanName } from 'lib/components/DefinitionPopover/utils'

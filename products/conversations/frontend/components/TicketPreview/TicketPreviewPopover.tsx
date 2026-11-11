@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

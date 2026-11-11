@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconCheckCircle, IconGlobe, IconList } from '@posthog/icons'
+import { IconCheckCircle, IconGlobe, IconList } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

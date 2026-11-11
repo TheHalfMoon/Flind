@@ -24,7 +24,7 @@ import React, {
     useState,
 } from 'react'
 
-import { IconEllipsis, IconUpload } from '@posthog/icons'
+import { IconEllipsis, IconUpload } from '@flind/icons'
 
 import { ScrollableShadows } from 'lib/lemon-ui/ScrollableShadows/ScrollableShadows'
 import { ButtonGroupPrimitive, ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'

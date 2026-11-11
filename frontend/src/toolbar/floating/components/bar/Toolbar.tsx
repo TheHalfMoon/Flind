@@ -27,7 +27,7 @@ import {
     IconToggle,
     IconWarning,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBadge, LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { useKeyboardHotkeys } from 'lib/hooks/useKeyboardHotkeys'

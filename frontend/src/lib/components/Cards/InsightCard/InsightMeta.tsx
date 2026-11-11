@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import React, { useMemo, useState } from 'react'
 
-import { IconChevronRight, IconClock, IconPulse, IconThumbsDown, IconThumbsUp, IconWarning } from '@posthog/icons'
+import { IconChevronRight, IconClock, IconPulse, IconThumbsDown, IconThumbsUp, IconWarning } from '@flind/icons'
 import { lemonToast } from '@flind/lemon-ui'
 
 import { CardMeta } from 'lib/components/Cards/CardMeta'

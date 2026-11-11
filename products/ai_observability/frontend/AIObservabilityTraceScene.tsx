@@ -21,7 +21,7 @@ import {
     IconReceipt,
     IconSearch,
     IconShare,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     LemonButton,
     LemonCheckbox,

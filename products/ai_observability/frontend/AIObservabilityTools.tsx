@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
-import { IconGraph, IconRetentionHeatmap, IconTrends, IconUserPaths } from '@posthog/icons'
+import { IconGraph, IconRetentionHeatmap, IconTrends, IconUserPaths } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { Link } from 'lib/lemon-ui/Link'

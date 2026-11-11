@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonButton, LemonInput, Tooltip } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'

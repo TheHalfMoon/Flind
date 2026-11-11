@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import { IconEye, IconHide, IconPin, IconPinFilled } from '@posthog/icons'
+import { IconEye, IconHide, IconPin, IconPinFilled } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonModal, LemonSelect } from '@flind/lemon-ui'
 
 import { IconArrowDown, IconArrowUp } from 'lib/lemon-ui/icons'

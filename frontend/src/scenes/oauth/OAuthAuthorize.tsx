@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { useMemo, useState } from 'react'
 
-import { IconCheckCircle, IconLock, IconPlus, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconLock, IconPlus, IconWarning } from '@flind/icons'
 
 import { OAuthScopeList } from 'lib/components/ScopeAccessRow/OAuthScopeList'
 import { upgradeModalLogic } from 'lib/components/UpgradeModal/upgradeModalLogic'

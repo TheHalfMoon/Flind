@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonSwitch } from '@flind/lemon-ui'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'

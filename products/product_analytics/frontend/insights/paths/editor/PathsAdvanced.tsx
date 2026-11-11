@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useId, useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonInput, LemonSwitch } from '@flind/lemon-ui'
 import { Field, FieldTitle, Input, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 

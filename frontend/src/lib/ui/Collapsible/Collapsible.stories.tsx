@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 
-import { IconClock, IconFolder, IconHome, IconSparkles, IconStar } from '@posthog/icons'
+import { IconClock, IconFolder, IconHome, IconSparkles, IconStar } from '@flind/icons'
 
 import { Collapsible, CollapsibleProps } from './Collapsible'
 

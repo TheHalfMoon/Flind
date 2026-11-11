@@ -3,7 +3,7 @@ import { Editor, Extension, ReactRenderer } from '@tiptap/react'
 import Suggestion from '@tiptap/suggestion'
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react'
 
-import { IconCode, IconImage, IconList, IconMinus, IconQuote, IconVideoCamera } from '@posthog/icons'
+import { IconCode, IconImage, IconList, IconMinus, IconQuote, IconVideoCamera } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { Popover } from 'lib/lemon-ui/Popover'

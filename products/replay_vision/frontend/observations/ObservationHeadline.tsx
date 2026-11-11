@@ -1,4 +1,4 @@
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { LabeledRow } from '../components/LabeledRow'

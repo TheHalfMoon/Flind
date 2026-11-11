@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconWrench } from '@posthog/icons'
+import { IconWrench } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

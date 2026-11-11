@@ -1,4 +1,4 @@
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { formatFileSize } from '../../utils/attachments'

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconTrending } from '@posthog/icons'
+import { IconTrending } from '@flind/icons'
 
 import { IconTrendingDown, IconTrendingFlat } from 'lib/lemon-ui/icons'
 import { percentage } from 'lib/utils/numbers'

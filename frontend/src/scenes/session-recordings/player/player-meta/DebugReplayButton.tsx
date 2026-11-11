@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo, useState } from 'react'
 
-import { IconChevronDown, IconSparkles } from '@posthog/icons'
+import { IconChevronDown, IconSparkles } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { SettingsButton } from 'lib/components/PanelSettings/PanelSettings'

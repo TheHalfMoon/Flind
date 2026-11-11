@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconMegaphone } from '@posthog/icons'
+import { IconMegaphone } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'

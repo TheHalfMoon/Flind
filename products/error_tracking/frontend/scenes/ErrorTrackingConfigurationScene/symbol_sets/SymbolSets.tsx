@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 import { P, match } from 'ts-pattern'
 
-import { IconCheckCircle, IconDownload, IconSort, IconTrash, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconDownload, IconSort, IconTrash, IconWarning } from '@flind/icons'
 import {
     LemonButton,
     LemonCheckbox,

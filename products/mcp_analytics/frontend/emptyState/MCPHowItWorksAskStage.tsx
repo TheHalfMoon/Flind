@@ -1,6 +1,6 @@
 import './MCPHowItWorksAskStage.scss'
 
-import { IconChat, IconSparkles, IconTerminal } from '@posthog/icons'
+import { IconChat, IconSparkles, IconTerminal } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

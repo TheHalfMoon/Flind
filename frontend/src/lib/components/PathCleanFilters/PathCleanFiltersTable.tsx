@@ -14,7 +14,7 @@ import { CSS } from '@dnd-kit/utilities'
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 
-import { IconPencil, IconTrash } from '@posthog/icons'
+import { IconPencil, IconTrash } from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { TeamMembershipLevel } from 'lib/constants'

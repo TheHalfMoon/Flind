@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-dom-props -- positions come from the chart scales */
 import { useMemo } from 'react'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { RATE_TO_PERCENT, useChartLayout } from '@flind/quill-charts'
 
 import { humanFriendlyLargeNumber } from 'lib/utils/numbers'

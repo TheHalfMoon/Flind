@@ -2,7 +2,7 @@ import { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu'
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 
-import { IconChevronRight, IconSearch } from '@posthog/icons'
+import { IconChevronRight, IconSearch } from '@flind/icons'
 
 import { Link } from 'lib/lemon-ui/Link/Link'
 import {

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconGraph, IconInfo } from '@posthog/icons'
+import { IconGraph, IconInfo } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonTable } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

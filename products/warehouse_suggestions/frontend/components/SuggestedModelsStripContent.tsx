@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconLightBulb, IconWarning } from '@posthog/icons'
+import { IconLightBulb, IconWarning } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LemonProgress } from 'lib/lemon-ui/LemonProgress'

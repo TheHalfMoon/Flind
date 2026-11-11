@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconBolt } from '@posthog/icons'
+import { IconBolt } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { onboardingWizardUrl } from './wizard/onboardingWizardSteps'

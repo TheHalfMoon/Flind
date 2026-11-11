@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
+import { IconChevronDown, IconPlus } from '@flind/icons'
 import * as chartPng from '@posthog/brand/hoggies/png/chart'
-import { IconChevronDown, IconPlus } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { AccessControlAction } from 'lib/components/AccessControlAction'

@@ -1,4 +1,4 @@
-import { IconCheck, IconMinus, IconQuestion } from '@posthog/icons'
+import { IconCheck, IconMinus, IconQuestion } from '@flind/icons'
 
 import type { ListedHealthCheck } from './healthPanelChecks'
 

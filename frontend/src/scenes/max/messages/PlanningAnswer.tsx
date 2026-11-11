@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useLayoutEffect, useState } from 'react'
 
-import { IconChevronRight, IconNotebook } from '@posthog/icons'
+import { IconChevronRight, IconNotebook } from '@flind/icons'
 import { LemonCheckbox } from '@flind/lemon-ui'
 
 import { useQuillThread } from 'products/posthog_ai/frontend/api/primitives'

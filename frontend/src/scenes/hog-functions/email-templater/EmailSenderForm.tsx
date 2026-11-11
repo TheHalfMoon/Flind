@@ -1,4 +1,4 @@
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useContext, useEffect, useState } from 'react'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'

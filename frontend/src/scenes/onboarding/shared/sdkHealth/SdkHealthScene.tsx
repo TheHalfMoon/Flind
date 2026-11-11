@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconBell, IconRefresh } from '@posthog/icons'
+import { IconBell, IconRefresh } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonTag, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

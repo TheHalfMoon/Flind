@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { Button, ButtonGroup } from '@flind/quill-primitives'
 
 import { GitHubRepositoryCombobox } from 'lib/integrations/GitHubRepositoryCombobox'

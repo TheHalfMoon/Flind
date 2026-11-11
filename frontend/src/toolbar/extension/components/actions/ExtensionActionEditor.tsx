@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Field, Form, Group } from 'kea-forms'
 
-import { IconArrowLeft, IconPlus } from '@posthog/icons'
+import { IconArrowLeft, IconPlus } from '@flind/icons'
 import { LemonDivider } from '@flind/lemon-ui'
 
 import { IconOpenInNew } from 'lib/lemon-ui/icons'

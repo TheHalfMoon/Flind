@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonSwitch, Popover } from '@flind/lemon-ui'
 
 import {

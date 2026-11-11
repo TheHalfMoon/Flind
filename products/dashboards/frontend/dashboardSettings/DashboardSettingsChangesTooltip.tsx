@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { IconCalendar, IconClock, IconFilter, IconPeople, IconSort } from '@posthog/icons'
+import { IconCalendar, IconClock, IconFilter, IconPeople, IconSort } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { InsightDetailSectionDisplay } from 'lib/components/Cards/InsightCard/InsightDetails'

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconDatabase, IconPlug, IconServer } from '@posthog/icons'
+import { IconDatabase, IconPlug, IconServer } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import type { DataHealthIssue } from './pipelineHealthLogic'

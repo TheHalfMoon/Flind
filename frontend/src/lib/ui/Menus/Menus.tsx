@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

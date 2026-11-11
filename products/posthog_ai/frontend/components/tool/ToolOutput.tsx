@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { type ReactNode, useEffect, useRef } from 'react'
 
-import { IconCopy, IconExternal } from '@posthog/icons'
+import { IconCopy, IconExternal } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

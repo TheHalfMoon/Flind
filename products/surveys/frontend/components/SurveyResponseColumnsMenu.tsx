@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconPlus, IconX } from '@posthog/icons'
+import { IconPlus, IconX } from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonSwitch } from '@flind/lemon-ui'
 
 import { TaxonomicFilter } from 'lib/components/TaxonomicFilter/TaxonomicFilter'

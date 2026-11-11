@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconCloud, IconGithub, IconTerminal } from '@posthog/icons'
+import { IconCloud, IconGithub, IconTerminal } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonSegmentedButton, Spinner } from '@flind/lemon-ui'
 
 import { GitHubRepositoryPicker } from 'lib/integrations/GitHubIntegrationHelpers'

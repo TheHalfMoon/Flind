@@ -1,6 +1,6 @@
 import { useMemo, type FocusEvent } from 'react'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCheckbox, LemonInput } from '@flind/lemon-ui'
 
 import { estimateCheckSlotsNext24h } from 'products/alerts/frontend/logic/scheduleRestrictionPreview'

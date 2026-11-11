@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconOpenSidebar, IconShare, IconSidePanel } from '@posthog/icons'
+import { IconOpenSidebar, IconShare, IconSidePanel } from '@flind/icons'
 import { LemonBanner } from '@flind/lemon-ui'
 import { DropdownMenuItem, DropdownMenuSeparator } from '@flind/quill'
 

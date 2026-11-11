@@ -1,4 +1,4 @@
-import { IconInfo, IconSparkles } from '@posthog/icons'
+import { IconInfo, IconSparkles } from '@flind/icons'
 import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 export type AiEmailDraftStatusProps =

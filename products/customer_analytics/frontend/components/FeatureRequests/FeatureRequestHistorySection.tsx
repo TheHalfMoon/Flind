@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconClock } from '@posthog/icons'
+import { IconClock } from '@flind/icons'
 
 import { FeatureRequestDetailSection } from './FeatureRequestDetailSection'
 import { FeatureRequestHistory } from './FeatureRequestHistory'

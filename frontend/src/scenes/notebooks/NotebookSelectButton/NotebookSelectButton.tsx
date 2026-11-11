@@ -1,7 +1,7 @@
 import { BuiltLogic, useActions, useValues } from 'kea'
 import { ReactChild, ReactElement, useEffect } from 'react'
 
-import { IconNotebook, IconPlusSmall } from '@posthog/icons'
+import { IconNotebook, IconPlusSmall } from '@flind/icons'
 import { LemonDivider, LemonDropdown, LemonTag, ProfilePicture } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

@@ -11,7 +11,7 @@ import {
     IconPerson,
     IconPlay,
     IconServer,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { FlagCalledMoveNotice } from 'lib/components/FlagCalledMoveNotice/FlagCalledMoveNotice'
 import { PropertyKeyInfo } from 'lib/components/PropertyKeyInfo'

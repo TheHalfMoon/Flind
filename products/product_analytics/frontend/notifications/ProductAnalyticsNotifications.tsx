@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconCursor, IconPlus, IconWarning } from '@posthog/icons'
+import { IconCursor, IconPlus, IconWarning } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCard, LemonSkeleton, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { ConfirmDeleteButton } from 'lib/components/ConfirmDeleteButton'

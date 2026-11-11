@@ -13,7 +13,7 @@ import {
     IconPlus,
     IconRefresh,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonMenuItem, Spinner, lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'

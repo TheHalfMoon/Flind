@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconFilter } from '@posthog/icons'
+import { IconFilter } from '@flind/icons'
 
 import { Button, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from 'lib/ui/quill'
 

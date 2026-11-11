@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React, { useMemo } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { LemonDropdownProps } from 'lib/lemon-ui/LemonDropdown'
 

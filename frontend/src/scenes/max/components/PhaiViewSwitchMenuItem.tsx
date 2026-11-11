@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRevert, IconSparkles } from '@posthog/icons'
+import { IconRevert, IconSparkles } from '@flind/icons'
 import { DropdownMenuItem } from '@flind/quill'
 
 import type { PhaiViewMode } from '~/layout/ai/aiPanelIds'

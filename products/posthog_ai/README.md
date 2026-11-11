@@ -136,7 +136,7 @@ The manifest is the sole extension mechanism: there is no runtime registration, 
 `toolRegistry.lookup` and `lookupToolRenderer` remain available; keep headless `api/logics` and `api/types` free of registry imports.
 
 ```tsx
-import { IconBolt } from '@posthog/icons'
+import { IconBolt } from '@flind/icons'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 

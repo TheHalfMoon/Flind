@@ -9,7 +9,7 @@ import {
     IconThumbsDownFilled,
     IconThumbsUp,
     IconThumbsUpFilled,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 import { useThumbSurvey } from '@posthog/react/surveys'
 

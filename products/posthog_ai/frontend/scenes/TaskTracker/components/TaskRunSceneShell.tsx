@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { type ReactNode } from 'react'
 
-import { IconArchive, IconChevronLeft } from '@posthog/icons'
+import { IconArchive, IconChevronLeft } from '@flind/icons'
 import { LemonDivider } from '@flind/lemon-ui'
 import { Button } from '@flind/quill-primitives'
 

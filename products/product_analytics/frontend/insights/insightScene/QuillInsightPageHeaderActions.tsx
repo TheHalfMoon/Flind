@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconBell, IconPlus, IconShare, IconWarning } from '@posthog/icons'
+import { IconBell, IconPlus, IconShare, IconWarning } from '@flind/icons'
 import {
     Button,
     DropdownMenuItem,

@@ -13,7 +13,7 @@ import {
     IconScreen,
     IconShare,
     IconTrash,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

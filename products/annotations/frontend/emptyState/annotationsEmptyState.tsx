@@ -1,5 +1,5 @@
+import { IconNotification } from '@flind/icons'
 import * as reporterPng from '@posthog/brand/hoggies/png/reporter'
-import { IconNotification } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

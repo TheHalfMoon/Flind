@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconArchive, IconCopy, IconScreen } from '@posthog/icons'
+import { IconArchive, IconCopy, IconScreen } from '@flind/icons'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { SceneTags } from 'lib/components/Scenes/SceneTags'

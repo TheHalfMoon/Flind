@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCursorClick, IconPlus, IconTrash } from '@posthog/icons'
+import { IconCursorClick, IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSegmentedButton, LemonSlider, Tooltip } from '@flind/lemon-ui'
 
 import { flindPublicUrl } from 'lib/flindPublicLinks'

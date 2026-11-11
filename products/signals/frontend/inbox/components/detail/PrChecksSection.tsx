@@ -8,7 +8,7 @@ import {
     IconSpinner,
     IconWarning,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonSkeleton, Link } from '@flind/lemon-ui'
 
 import type { PullRequestCheckApi } from 'products/signals/frontend/generated/api.schemas'

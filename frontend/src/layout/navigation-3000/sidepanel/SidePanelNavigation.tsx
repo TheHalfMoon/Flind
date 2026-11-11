@@ -1,7 +1,7 @@
 import { Tabs } from '@base-ui/react/tabs'
 import { useActions, useValues } from 'kea'
 
-import { IconSparkles, IconX } from '@posthog/icons'
+import { IconSparkles, IconX } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { RenderKeybind } from 'lib/components/Shortcuts/RenderKeybind'

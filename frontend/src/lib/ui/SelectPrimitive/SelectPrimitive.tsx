@@ -1,7 +1,7 @@
 import * as SelectPrimitiveBase from '@radix-ui/react-select'
 import * as React from 'react'
 
-import { IconCheck, IconChevronRight } from '@posthog/icons'
+import { IconCheck, IconChevronRight } from '@flind/icons'
 
 import { ScrollableShadows } from 'lib/lemon-ui/ScrollableShadows/ScrollableShadows'
 import { cn } from 'lib/utils/css-classes'

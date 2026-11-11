@@ -13,7 +13,7 @@ import {
     IconRocket,
     IconStopFilled,
     IconTrash,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonDialog, LemonDivider, LemonInput, LemonTable, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

@@ -10,7 +10,7 @@ import {
     IconPercentage,
     IconSparkles,
     IconWebhooks,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonCard, LemonTag } from '@flind/lemon-ui'
 
 import { IconSlack, IconTwilio } from 'lib/lemon-ui/icons'

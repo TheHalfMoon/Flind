@@ -1,4 +1,4 @@
-import { IconCalendar, IconFilter } from '@posthog/icons'
+import { IconCalendar, IconFilter } from '@flind/icons'
 
 import { Button, Heading, Text } from 'lib/ui/quill'
 

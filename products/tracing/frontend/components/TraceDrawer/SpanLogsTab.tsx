@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonButton, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

@@ -1,4 +1,4 @@
-import { IconCursorClick } from '@posthog/icons'
+import { IconCursorClick } from '@flind/icons'
 
 import { LemonTag } from 'lib/lemon-ui/LemonTag'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

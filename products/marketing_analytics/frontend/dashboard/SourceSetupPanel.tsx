@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
 import * as moneyPng from '@posthog/brand/hoggies/png/money'
-import { IconCheckCircle, IconInfo } from '@posthog/icons'
+import { IconCheckCircle, IconInfo } from '@flind/icons'
 import { LemonButton, LemonCard, LemonCollapse, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

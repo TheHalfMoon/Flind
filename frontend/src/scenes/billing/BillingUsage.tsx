@@ -2,7 +2,7 @@ import './BillingUsage.scss'
 
 import { useActions, useValues } from 'kea'
 
-import { IconChevronDown, IconInfo } from '@posthog/icons'
+import { IconChevronDown, IconInfo } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonSelect, LemonMenu, LemonInput } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

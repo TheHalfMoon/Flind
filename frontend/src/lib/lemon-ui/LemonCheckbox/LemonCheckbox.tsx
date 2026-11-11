@@ -3,7 +3,7 @@ import './LemonCheckbox.scss'
 import clsx from 'clsx'
 import { ChangeEvent, useEffect, useMemo, useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 
 import { Tooltip } from '../Tooltip'
 

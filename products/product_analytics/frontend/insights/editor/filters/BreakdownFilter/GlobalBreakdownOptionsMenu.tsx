@@ -3,7 +3,7 @@ import './BreakdownTagMenu.scss'
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonInput, LemonLabel, LemonSwitch } from '@flind/lemon-ui'
 
 import { QuillChartOptionNumberInput } from 'lib/components/ChartOptions/QuillChartOptionNumberInput'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconCheckCircle, IconGitBranch, IconSparkles } from '@posthog/icons'
+import { IconCheckCircle, IconGitBranch, IconSparkles } from '@flind/icons'
 import { LemonButton, LemonMenuItems, LemonMenuOverlay, lemonToast } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

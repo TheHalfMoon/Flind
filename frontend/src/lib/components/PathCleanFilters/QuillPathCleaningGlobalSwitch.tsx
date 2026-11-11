@@ -1,6 +1,6 @@
 import { useId } from 'react'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { Button, Field, Switch } from '@flind/quill'
 
 import { QuillChartOptionLabel } from 'lib/components/ChartOptions/QuillChartOptionLabel'

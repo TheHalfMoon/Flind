@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlus, IconX } from '@posthog/icons'
+import { IconPlus, IconX } from '@flind/icons'
 
 import { ElementClickStats } from 'lib/components/heatmaps/ElementClickStats'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

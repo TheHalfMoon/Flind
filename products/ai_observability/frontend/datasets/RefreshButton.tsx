@@ -1,4 +1,4 @@
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { Spinner } from 'lib/lemon-ui/Spinner'

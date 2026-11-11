@@ -1,5 +1,5 @@
+import { IconSupport } from '@flind/icons'
 import * as phoneCallPng from '@posthog/brand/hoggies/png/phone-call'
-import { IconSupport } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

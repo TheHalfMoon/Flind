@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGithub, IconPlus, IconRefresh } from '@posthog/icons'
+import { IconGithub, IconPlus, IconRefresh } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInputSelect, LemonSkeleton } from '@flind/lemon-ui'
 
 import { editorDisabledReason } from './repoAccess'

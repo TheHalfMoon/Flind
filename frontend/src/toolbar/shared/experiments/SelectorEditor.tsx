@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 
-import { IconPencil } from '@posthog/icons'
+import { IconPencil } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { LemonInput } from 'lib/lemon-ui/LemonInput'

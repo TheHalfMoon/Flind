@@ -1,6 +1,6 @@
 import './NotebooksPreview.scss'
 
-import { IconGraph, IconRewindPlay, IconToggle } from '@posthog/icons'
+import { IconGraph, IconRewindPlay, IconToggle } from '@flind/icons'
 
 import { LemonTag } from 'lib/lemon-ui/LemonTag'
 import { cn } from 'lib/utils/css-classes'

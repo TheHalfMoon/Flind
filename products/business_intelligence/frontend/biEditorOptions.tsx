@@ -6,7 +6,7 @@ import {
     IconPulse,
     IconScatter,
     IconTrends,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import {

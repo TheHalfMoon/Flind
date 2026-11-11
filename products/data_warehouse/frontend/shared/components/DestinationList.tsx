@@ -1,4 +1,4 @@
-import { IconPencil } from '@posthog/icons'
+import { IconPencil } from '@flind/icons'
 import { LemonButton, LemonSwitch, LemonTable, LemonTableColumn, LemonTag } from '@flind/lemon-ui'
 
 import { AppMetricsSparkline } from 'lib/components/AppMetrics/AppMetricsSparkline'

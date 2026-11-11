@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconBox, IconCheck, IconCloud, IconPlus, IconStar, IconStarFilled } from '@posthog/icons'
+import { IconBox, IconCheck, IconCloud, IconPlus, IconStar, IconStarFilled } from '@flind/icons'
 import {
     Button,
     cn,

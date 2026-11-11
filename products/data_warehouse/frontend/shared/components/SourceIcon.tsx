@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useMemo } from 'react'
 
 import BlushingHog from '@posthog/brand/hoggies/png/ipad'
-import { IconWrench } from '@posthog/icons'
+import { IconWrench } from '@flind/icons'
 import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'

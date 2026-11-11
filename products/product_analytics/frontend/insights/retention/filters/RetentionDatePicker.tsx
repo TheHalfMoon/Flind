@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCalendar, IconInfo } from '@posthog/icons'
+import { IconCalendar, IconInfo } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

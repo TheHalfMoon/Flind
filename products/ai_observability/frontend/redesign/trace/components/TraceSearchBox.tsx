@@ -1,4 +1,4 @@
-import { IconChevronDown, IconWarning } from '@posthog/icons'
+import { IconChevronDown, IconWarning } from '@flind/icons'
 import { LemonButton, LemonInput, Tooltip } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'

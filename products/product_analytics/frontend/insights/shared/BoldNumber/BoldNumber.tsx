@@ -6,7 +6,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { useEffect } from 'react'
 import React from 'react'
 
-import { IconTrending } from '@posthog/icons'
+import { IconTrending } from '@flind/icons'
 import { LemonRow, Link } from '@flind/lemon-ui'
 
 import { formatAggregationAxisValue } from 'lib/insights/aggregationAxisFormat'

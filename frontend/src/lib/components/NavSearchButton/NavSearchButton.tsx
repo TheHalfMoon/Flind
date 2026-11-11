@@ -1,4 +1,4 @@
-import { IconSearch } from '@posthog/icons'
+import { IconSearch } from '@flind/icons'
 
 import { CommandOpenSource } from 'lib/components/Command/commandLogic'
 import { RenderKeybind } from 'lib/components/Shortcuts/RenderKeybind'

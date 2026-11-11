@@ -2,7 +2,7 @@ import { LemonMenu, LemonSwitch } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconCollapse, IconExpand, IconPlus } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconPlus } from '@flind/icons'
 
 import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { supportLogic } from 'lib/components/Support/supportLogic'

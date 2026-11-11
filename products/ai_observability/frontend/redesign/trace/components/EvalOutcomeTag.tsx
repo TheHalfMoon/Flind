@@ -1,4 +1,4 @@
-import { IconCheck, IconMinus, IconX } from '@posthog/icons'
+import { IconCheck, IconMinus, IconX } from '@flind/icons'
 import { LemonTag, LemonTagType } from '@flind/lemon-ui'
 
 import { EvalOutcome } from '../types'

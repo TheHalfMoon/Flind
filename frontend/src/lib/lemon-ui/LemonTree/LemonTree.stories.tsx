@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useRef, useState } from 'react'
 
-import { IconArchive, IconShieldPeople } from '@posthog/icons'
+import { IconArchive, IconShieldPeople } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { LemonTree, LemonTreeProps } from './LemonTree'

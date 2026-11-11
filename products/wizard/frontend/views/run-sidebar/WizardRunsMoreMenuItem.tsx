@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconCheckCircle, IconXCircle } from '@posthog/icons'
+import { IconCheckCircle, IconXCircle } from '@flind/icons'
 import { DropdownMenuItem, Spinner } from '@flind/quill-primitives'
 
 import { urls } from 'scenes/urls'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconEye } from '@posthog/icons'
+import { IconEye } from '@flind/icons'
 import { LemonButton, LemonSwitch } from '@flind/lemon-ui'
 
 import { TimezoneSelect } from 'lib/components/TimezoneSelect'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonBanner, Link, Spinner } from '@flind/lemon-ui'
 
 import { FeedbackTabContent } from 'scenes/surveys/FeedbackTabContent'

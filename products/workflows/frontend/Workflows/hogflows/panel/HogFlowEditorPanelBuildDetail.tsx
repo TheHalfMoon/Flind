@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconExternal, IconPlay, IconPlus, IconX } from '@posthog/icons'
+import { IconExternal, IconPlay, IconPlus, IconX } from '@flind/icons'
 import {
     LemonBadge,
     LemonBanner,

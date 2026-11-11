@@ -1,4 +1,4 @@
-import { IconGitBranch, IconGithub } from '@posthog/icons'
+import { IconGitBranch, IconGithub } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

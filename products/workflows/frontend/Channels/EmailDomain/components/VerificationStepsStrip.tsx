@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconCheck, IconWarning } from '@posthog/icons'
+import { IconCheck, IconWarning } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import { VerificationStep } from '../emailDomainLogic'

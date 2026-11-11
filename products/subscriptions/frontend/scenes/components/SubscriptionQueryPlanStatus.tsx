@@ -1,4 +1,4 @@
-import { IconLock, IconRefresh, IconUnlock } from '@posthog/icons'
+import { IconLock, IconRefresh, IconUnlock } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import {

@@ -1,6 +1,6 @@
 import type { MouseEvent, ReactNode } from 'react'
 
-import { IconArrowRight, IconArrowUpRight, IconPullRequest } from '@posthog/icons'
+import { IconArrowRight, IconArrowUpRight, IconPullRequest } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

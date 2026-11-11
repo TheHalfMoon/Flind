@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'

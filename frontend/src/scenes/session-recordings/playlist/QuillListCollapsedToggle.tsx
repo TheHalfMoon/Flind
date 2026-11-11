@@ -1,4 +1,4 @@
-import { IconSidebarClose } from '@posthog/icons'
+import { IconSidebarClose } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 export function QuillListCollapsedToggle({ onExpand }: { onExpand: () => void }): JSX.Element {

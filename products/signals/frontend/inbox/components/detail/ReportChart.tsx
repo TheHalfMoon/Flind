@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useContext, useMemo } from 'react'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'

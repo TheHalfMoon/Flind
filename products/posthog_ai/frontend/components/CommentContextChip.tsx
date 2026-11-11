@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { IconComment } from '@posthog/icons'
+import { IconComment } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { type CommentContext, commentContextPreview } from '../utils/commentContext'

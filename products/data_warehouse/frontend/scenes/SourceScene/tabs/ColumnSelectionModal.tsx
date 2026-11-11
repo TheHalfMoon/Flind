@@ -1,7 +1,7 @@
 import posthog from 'posthog-js'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonInput, LemonModal, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

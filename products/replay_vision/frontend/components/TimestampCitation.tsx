@@ -1,4 +1,4 @@
-import { IconRewindPlay } from '@posthog/icons'
+import { IconRewindPlay } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { colonDelimitedDuration } from 'lib/utils/durations'

@@ -5,7 +5,7 @@ import { CSS } from '@dnd-kit/utilities'
 import clsx from 'clsx'
 import { useState } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { TaxonomicFilter } from 'lib/components/TaxonomicFilter/TaxonomicFilter'

@@ -1,4 +1,4 @@
-import { IconGlobe } from '@posthog/icons'
+import { IconGlobe } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import type { AccountTabDefinition } from './accountTabs'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCollapse45 } from '@posthog/icons'
+import { IconCollapse45 } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { canvasFullscreenLogic } from './canvasFullscreenLogic'

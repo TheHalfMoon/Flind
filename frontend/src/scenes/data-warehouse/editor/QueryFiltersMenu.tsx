@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { memo, useState } from 'react'
 
-import { IconFilter, IconWarning } from '@posthog/icons'
+import { IconFilter, IconWarning } from '@flind/icons'
 import { LemonButton, LemonMenu, LemonMenuItems, Link } from '@flind/lemon-ui'
 
 import { CLICK_OUTSIDE_BLOCK_CLASS } from 'lib/hooks/useOutsideClickHandler'

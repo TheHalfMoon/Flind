@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconBolt, IconDownload, IconGear, IconSearch, IconSparkles, IconStar, IconTarget, IconX } from '@posthog/icons'
+import { IconBolt, IconDownload, IconGear, IconSearch, IconSparkles, IconStar, IconTarget, IconX } from '@flind/icons'
 import { Badge, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { sceneFileLogic } from 'lib/components/Scenes/sceneFileLogic'

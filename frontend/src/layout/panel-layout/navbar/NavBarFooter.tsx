@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { Suspense } from 'react'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 import { PostHogErrorBoundary } from '@posthog/react'
 

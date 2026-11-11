@@ -11,7 +11,7 @@ import {
     IconPlus,
     IconTrash,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     LemonButton,
     LemonDivider,

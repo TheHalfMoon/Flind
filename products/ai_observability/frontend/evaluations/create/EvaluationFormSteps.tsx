@@ -8,7 +8,7 @@ import * as officeWorkerPng from '@posthog/brand/hoggies/png/office-worker'
 import * as organizedPng from '@posthog/brand/hoggies/png/organized'
 import * as reporterPng from '@posthog/brand/hoggies/png/reporter'
 import * as stampApprovedPng from '@posthog/brand/hoggies/png/stamp-approved'
-import { IconCheck } from '@posthog/icons'
+import { IconCheck } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

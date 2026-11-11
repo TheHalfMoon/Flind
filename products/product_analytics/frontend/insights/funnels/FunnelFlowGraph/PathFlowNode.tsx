@@ -2,7 +2,7 @@ import { Handle, Position } from '@xyflow/react'
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconCheckCircle, IconPlus, IconX } from '@posthog/icons'
+import { IconCheckCircle, IconPlus, IconX } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

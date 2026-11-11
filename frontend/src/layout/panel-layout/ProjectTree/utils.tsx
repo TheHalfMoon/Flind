@@ -1,4 +1,4 @@
-import { IconPlus, IconShortcut } from '@posthog/icons'
+import { IconPlus, IconShortcut } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

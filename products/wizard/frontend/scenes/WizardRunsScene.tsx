@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconBook, IconRefresh, IconSearch, IconSparkles } from '@posthog/icons'
+import { IconBook, IconRefresh, IconSearch, IconSparkles } from '@flind/icons'
 import {
     Button,
     Dot,

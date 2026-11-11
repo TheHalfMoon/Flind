@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 
-import { IconBook } from '@posthog/icons'
+import { IconBook } from '@flind/icons'
 
 import type { ProductEmptyStateConfig, ProductEmptyStateText } from 'lib/components/ProductEmptyState/types'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

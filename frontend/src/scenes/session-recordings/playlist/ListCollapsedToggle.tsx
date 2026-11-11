@@ -1,4 +1,4 @@
-import { IconSidebarClose } from '@posthog/icons'
+import { IconSidebarClose } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 export function ListCollapsedToggle({ onExpand }: { onExpand: () => void }): JSX.Element {

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconNotebook } from '@posthog/icons'
+import { IconNotebook } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconClock } from '@posthog/icons'
+import { IconClock } from '@flind/icons'
 import { LemonButton, LemonMenu, LemonMenuItem } from '@flind/lemon-ui'
 
 import { sqlEditorLogic } from './sqlEditorLogic'

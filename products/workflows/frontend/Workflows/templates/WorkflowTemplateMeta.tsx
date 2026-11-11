@@ -1,4 +1,4 @@
-import { IconBolt, IconClock, IconPeople } from '@posthog/icons'
+import { IconBolt, IconClock, IconPeople } from '@flind/icons'
 
 import type { HogFlowTemplate } from '../hogflows/types'
 import { getTemplateScopeLabel, getTemplateTrigger } from './workflowTemplateDisplay'

@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import type { editor } from 'monaco-editor'
 import { useInView } from 'react-intersection-observer'
 
-import { IconPencil } from '@posthog/icons'
+import { IconPencil } from '@flind/icons'
 
 import MonacoDiffEditor from 'lib/components/MonacoDiffEditor'
 

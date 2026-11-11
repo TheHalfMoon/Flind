@@ -1,4 +1,4 @@
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 
 import { ErrorTrackingRuntime } from 'lib/components/Errors/types'
 

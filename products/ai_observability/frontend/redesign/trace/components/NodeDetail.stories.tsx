@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
-import { IconDatabase } from '@posthog/icons'
+import { IconDatabase } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { langchainCerebrasImageError } from '../sampleFixtures/langchainCerebrasImageError'

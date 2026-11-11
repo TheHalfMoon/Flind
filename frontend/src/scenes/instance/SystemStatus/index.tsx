@@ -2,7 +2,7 @@ import './index.scss'
 
 import { useActions, useValues } from 'kea'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonBanner, Link } from '@flind/lemon-ui'
 
 import { LemonTab, LemonTabs } from 'lib/lemon-ui/LemonTabs'

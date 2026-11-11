@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconEllipsis, IconInfo } from '@posthog/icons'
+import { IconEllipsis, IconInfo } from '@flind/icons'
 import { LemonButton, LemonMenu, PopoverReferenceContext, Tooltip } from '@flind/lemon-ui'
 
 import { IconOpenInNew } from 'lib/lemon-ui/icons'

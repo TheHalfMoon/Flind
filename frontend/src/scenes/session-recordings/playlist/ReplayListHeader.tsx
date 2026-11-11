@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconCheckbox, IconChevronDown, IconGear, IconSidebarClose } from '@posthog/icons'
+import { IconCheckbox, IconChevronDown, IconGear, IconSidebarClose } from '@flind/icons'
 import {
     Button,
     Checkbox,

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

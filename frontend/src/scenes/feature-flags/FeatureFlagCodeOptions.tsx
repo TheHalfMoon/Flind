@@ -1,4 +1,4 @@
-import { IconServer } from '@posthog/icons'
+import { IconServer } from '@flind/icons'
 import {
     IconCSharp,
     IconFlutter,
@@ -8,7 +8,7 @@ import {
     IconPython,
     IconReact,
     IconRuby,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { IconAndroidOS, IconAppleIOS, IconNodeJS } from 'lib/lemon-ui/icons'
 

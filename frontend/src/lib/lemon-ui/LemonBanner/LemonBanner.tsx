@@ -3,7 +3,7 @@ import './LemonBanner.scss'
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { IconInfo, IconSparkles, IconWarning, IconX } from '@posthog/icons'
+import { IconInfo, IconSparkles, IconWarning, IconX } from '@flind/icons'
 
 import { LemonButton, SideAction } from 'lib/lemon-ui/LemonButton'
 import { LemonButtonPropsBase } from 'lib/lemon-ui/LemonButton'

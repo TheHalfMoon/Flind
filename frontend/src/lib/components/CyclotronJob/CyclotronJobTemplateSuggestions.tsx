@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import type { IDisposable, editor } from 'monaco-editor'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { IconCode, IconExternal } from '@posthog/icons'
+import { IconCode, IconExternal } from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonInput, LemonSelect, Link } from '@flind/lemon-ui'
 
 import {

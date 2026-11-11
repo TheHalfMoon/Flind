@@ -54,7 +54,7 @@ Example implementation:
 Minimal skeleton:
 
 ```tsx
-import { IconBolt } from '@posthog/icons'
+import { IconBolt } from '@flind/icons'
 
 import { registerTriggerType } from 'products/workflows/frontend/Workflows/hogflows/registry/triggers/triggerTypeRegistry'
 

@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconSend } from '@posthog/icons'
+import { IconSend } from '@flind/icons'
 
 import { DropdownMenuItem } from 'lib/ui/quill'
 

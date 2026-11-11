@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconServer } from '@posthog/icons'
+import { IconServer } from '@flind/icons'
 import { LemonBanner, LemonSelect, LemonTag } from '@flind/lemon-ui'
 
 import { DataWarehouseColumnsHint } from 'lib/components/CyclotronJob/DataWarehouseColumnsHint'

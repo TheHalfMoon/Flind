@@ -1,4 +1,4 @@
-import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight } from '@flind/icons'
 
 import { Button, Text } from 'lib/ui/quill'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { memo, useRef } from 'react'
 
-import { IconSidebarClose } from '@posthog/icons'
+import { IconSidebarClose } from '@flind/icons'
 
 import { TreeDataItem } from 'lib/lemon-ui/LemonTree/LemonTree'
 import { Resizer } from 'lib/lemon-ui/Resizer/Resizer'

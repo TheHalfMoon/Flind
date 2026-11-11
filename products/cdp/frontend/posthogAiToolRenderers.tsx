@@ -1,4 +1,4 @@
-import { IconBolt } from '@posthog/icons'
+import { IconBolt } from '@flind/icons'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 

@@ -1,4 +1,4 @@
-import { IconCheck, IconMinus, IconWarning, IconX } from '@posthog/icons'
+import { IconCheck, IconMinus, IconWarning, IconX } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 import type { LemonTagProps } from '@flind/lemon-ui'
 

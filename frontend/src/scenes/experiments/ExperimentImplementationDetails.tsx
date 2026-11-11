@@ -1,8 +1,8 @@
 import posthog from 'posthog-js'
 import { useState } from 'react'
 
-import { IconServer } from '@posthog/icons'
-import { IconFlutter, IconGo, IconJavascript, IconPHP, IconPython, IconRuby } from '@posthog/icons'
+import { IconServer } from '@flind/icons'
+import { IconFlutter, IconGo, IconJavascript, IconPHP, IconPython, IconRuby } from '@flind/icons'
 import { LemonSelect, LemonTabs, Link } from '@flind/lemon-ui'
 
 import { IconAndroidOS, IconAppleIOS, IconNodeJS } from 'lib/lemon-ui/icons'

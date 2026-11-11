@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { NodeTypes } from '@xyflow/react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 

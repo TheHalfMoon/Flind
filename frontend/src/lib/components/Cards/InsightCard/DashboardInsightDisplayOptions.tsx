@@ -1,4 +1,4 @@
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 
 import { DisplayOptionTab } from 'lib/components/ChartOptions/displayOptions'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

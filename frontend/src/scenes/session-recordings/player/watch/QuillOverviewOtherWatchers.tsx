@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconChevronDown, IconPeople } from '@posthog/icons'
+import { IconChevronDown, IconPeople } from '@flind/icons'
 import { AvatarGroup, Button, Skeleton } from '@flind/quill'
 
 import { cn } from 'lib/utils/css-classes'

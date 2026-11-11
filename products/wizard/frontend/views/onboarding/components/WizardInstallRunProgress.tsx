@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconClock, IconXCircle } from '@posthog/icons'
+import { IconCheckCircle, IconClock, IconXCircle } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import type { WizardRunApi, WizardRunTaskApi } from '../../../generated/api.schemas'

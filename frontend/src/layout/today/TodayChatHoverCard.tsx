@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { IconChat } from '@posthog/icons'
+import { IconChat } from '@flind/icons'
 import { Item, ItemContent, ItemSeparator, ItemTitle } from '@flind/quill'
 
 import { TodayChatActionItems } from './TodayChatActionItems'

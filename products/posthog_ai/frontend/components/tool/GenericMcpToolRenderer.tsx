@@ -1,6 +1,6 @@
 import { memo, type ReactNode } from 'react'
 
-import { IconWrench } from '@posthog/icons'
+import { IconWrench } from '@flind/icons'
 
 import { ToolActivity } from './ToolActivity'
 import { formatInput, getContentText, stripCodeFences } from './toolContentUtils'

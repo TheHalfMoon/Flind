@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'

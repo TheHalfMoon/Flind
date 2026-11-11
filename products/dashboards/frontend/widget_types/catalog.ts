@@ -10,7 +10,7 @@ import {
     IconRewindPlay,
     IconTrending,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { FEATURE_FLAGS, type FeatureFlagKey } from 'lib/constants'
 import { urls } from 'scenes/urls'

@@ -5,7 +5,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconPlus, IconX } from '@posthog/icons'
+import { IconPlus, IconX } from '@flind/icons'
 import { LemonButton, LemonInput, LemonModal, LemonSelect } from '@flind/lemon-ui'
 
 import { SortableDragIcon } from 'lib/lemon-ui/icons'

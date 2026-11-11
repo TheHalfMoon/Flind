@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconSearch } from '@posthog/icons'
+import { IconSearch } from '@flind/icons'
 import { cn } from '@flind/quill'
 
 import { commandLogic } from 'lib/components/Command/commandLogic'
