@@ -13,7 +13,7 @@ pnpm build:toolbar-extension        # one build
 pnpm watch:toolbar-extension        # rebuild on change
 ```
 
-The build writes `dist/toolbar-extension/chrome/`, and zips it into `dist/toolbar-extension/posthog-toolbar-chrome-<version>.zip` for the Chrome Web Store.
+The build writes `dist/toolbar-extension/chrome/`, and zips it into `dist/toolbar-extension/flind-toolbar-chrome-<version>.zip` for the Chrome Web Store.
 
 A pull request that changes the extension runs the "Toolbar extension" workflow.
 Download the `toolbar-extension` artifact from the run to install that build without building it yourself.
