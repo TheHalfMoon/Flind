@@ -8,7 +8,7 @@ import { AIHipaaDisclaimer } from './aiConsentCopy'
 import { AITrainingDescription } from './OrgAITraining'
 
 // Flind is self-hosted software, not a contracting party. Copy must not claim a BAA, DPA or data
-// custody relationship "with Flind", and must label inherited PostHog SDKs and docs truthfully.
+// custody relationship "with Flind", and must not mislabel inherited SDKs or their documentation.
 const FLIND_LEGAL_CLAIM = /(BAA|DPA|agreement|subprocessor)[^.]*with Flind|stays with Flind|Flind subprocessors/i
 
 describe('Flind legal and data-handling copy', () => {
@@ -32,7 +32,7 @@ describe('Flind legal and data-handling copy', () => {
         expect(container.textContent).not.toMatch(FLIND_LEGAL_CLAIM)
     })
 
-    it('SDK onboarding labels the inherited PostHog SDK and its docs', () => {
+    it('SDK onboarding uses neutral labels until SDK packages are Flind-branded', () => {
         const sdk: SDK = {
             name: 'React',
             key: SDKKey.REACT,
@@ -43,7 +43,8 @@ describe('Flind legal and data-handling copy', () => {
 
         render(<SDKSnippet sdk={sdk} sdkInstructions={() => <div />} />)
 
-        expect(screen.getByRole('heading', { name: 'Send React data to Flind with the PostHog SDK' })).toBeTruthy()
-        expect(screen.getByText('Read the PostHog SDK docs')).toBeTruthy()
+        expect(screen.getByRole('heading', { name: 'Send React data to Flind using the integration SDK' })).toBeTruthy()
+        const docsLink = screen.getByRole('link', { name: 'Read the SDK documentation' })
+        expect(docsLink.getAttribute('href')).toBe('https://example.test/docs/react')
     })
 })
