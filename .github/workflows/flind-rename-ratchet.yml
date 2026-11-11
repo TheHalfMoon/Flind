@@ -1,0 +1,31 @@
+# Flind rename ratchet: fails a branch that adds PostHog references beyond flind/rename/baseline.json.
+# Each rename PR lowers the counts and rewrites the baseline (tools/flind/rename_inventory.py --write).
+# Read-only token, no secrets, nothing published.
+name: Flind rename ratchet
+
+on:
+    push:
+        branches:
+            - 'flind-ci/**'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-rename-ratchet-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    ratchet:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - name: No new PostHog references
+              run: |
+                  python3 tools/flind/rename_inventory.py --check | tee counts.json
+                  { echo '## Remaining PostHog references'; echo '```json'; cat counts.json; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
