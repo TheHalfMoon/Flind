@@ -1,0 +1,91 @@
+# Real Chrome extension package qualification for Flind's staged toolbar branding.
+# No secrets, deployment, publication, model inference, or paid services.
+name: Flind toolbar extension qualification
+
+on:
+    push:
+        branches:
+            - 'flind-ci/toolbar-extension-brand-icon-*'
+            - 'flind-ci/brand-audit-toolbar-icon-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-toolbar-qualification-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    package:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 60
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            - name: Install workspace toolchain
+              env:
+                  HUSKY: '0'
+                  SKIP_ELECTRON_REBUILD: '1'
+              run: |
+                  set -euo pipefail
+                  npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
+                  pnpm --version
+                  install() {
+                      if ! pnpm install --frozen-lockfile --ignore-scripts "$@" > install.log 2>&1; then
+                          grep -n -B 20 -A 5 'ERR_PNPM\|ELIFECYCLE' install.log | tail -100 || true
+                          exit 1
+                      fi
+                      tail -3 install.log
+                  }
+                  install --filter=@flind/root
+                  install --filter=@flind/frontend...
+                  if ! pnpm rebuild --filter=@flind/frontend... > rebuild.log 2>&1; then
+                      tail -70 rebuild.log
+                      exit 1
+                  fi
+
+            - name: Validate source and identity tests
+              run: |
+                  node --check frontend/toolbar-config.mjs
+                  node --test frontend/bin/flind-toolbar-trusted-hosts.test.mjs
+                  node --test frontend/bin/flind-toolbar-brand.test.mjs
+
+            - name: Build Chrome extension
+              run: |
+                  set -euo pipefail
+                  pnpm --dir frontend build:toolbar-extension
+
+            - name: Inspect real packaged manifest, icon and archive
+              run: |
+                  set -euo pipefail
+                  node --input-type=module <<'NODE'
+                  import assert from 'node:assert/strict'
+                  import { readFileSync, existsSync } from 'node:fs'
+                  import { join } from 'node:path'
+                  const root = 'frontend/dist/toolbar-extension'
+                  const manifestPath = join(root, 'chrome', 'manifest.json')
+                  assert.ok(existsSync(manifestPath), 'generated manifest must exist')
+                  const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
+                  assert.equal(manifest.name, 'Flind')
+                  assert.equal(manifest.icons['128'], 'icons/flind-128x128.png')
+                  assert.equal(manifest.action.default_icon['128'], 'icons/flind-128x128.png')
+                  assert.ok(!('externally_connectable' in manifest), 'no upstream host trust by default')
+                  const icon = readFileSync(join(root, 'chrome', manifest.icons['128']))
+                  assert.equal(icon.readUInt32BE(16), 128)
+                  assert.equal(icon.readUInt32BE(20), 128)
+                  const original = readFileSync('frontend/public/icons/flind-128x128.png')
+                  assert.ok(icon.equals(original), 'packaged icon must match committed Flind asset')
+                  const release = JSON.parse(readFileSync('frontend/src/toolbar/extension/release/package.json', 'utf8'))
+                  const archive = join(root, `flind-toolbar-chrome-${release.version}.zip`)
+                  assert.ok(existsSync(archive), 'Flind-branded archive must exist')
+                  console.log('PASS Flind packaged manifest, 128px icon, deny-by-default origins and zip', archive)
+                  NODE
+                  zip="frontend/dist/toolbar-extension/flind-toolbar-chrome-$(node -p "require('./frontend/src/toolbar/extension/release/package.json').version").zip"
+                  unzip -l "$zip" | grep -E '(manifest\.json|icons/flind-128x128\.png)' | tee /dev/stderr
