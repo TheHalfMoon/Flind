@@ -100,3 +100,5 @@ jobs:
                   NODE
                   zip="frontend/dist/toolbar-extension/flind-toolbar-chrome-$(node -p "require('./frontend/src/toolbar/extension/release/package.json').version").zip"
                   unzip -l "$zip" | grep -E '(manifest\.json|icons/flind-128x128\.png)' | tee /dev/stderr
+                  python3 -m unittest discover -s frontend/bin -p 'test_flind_toolbar_zip_integrity.py' -v
+                  python3 frontend/bin/flind_toolbar_zip_integrity.py "$zip"
