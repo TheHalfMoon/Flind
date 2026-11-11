@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
+import { readFileSync } from 'node:fs'
 
 import { getFlindExternalConnectable, getTrustedFlindAppMatches } from './flind-toolbar-trusted-hosts.mjs'
 
@@ -34,4 +35,17 @@ test('manifest fragment is absent by default and only contains approved origins'
         { externally_connectable: { matches: ['https://flind.example.org/*'] } }
     )
     assert.throws(() => getFlindExternalConnectable('https://app.posthog.com'))
+})
+
+test('toolbar extension manifest actually uses the opt-in host policy', () => {
+    // A helper-only test would miss a regression that hardcodes upstream
+    // origins directly in the real generated Chrome manifest.
+    const toolbarSource = readFileSync(new URL('../toolbar-config.mjs', import.meta.url), 'utf8')
+    const manifestStart = toolbarSource.indexOf('function buildToolbarExtensionManifest()')
+    const manifestEnd = toolbarSource.indexOf('export function finalizeToolbarExtensionBuild', manifestStart)
+    assert.ok(manifestStart >= 0 && manifestEnd > manifestStart, 'toolbar extension manifest builder must exist')
+    assert.match(toolbarSource, /import \{ getFlindExternalConnectable \} from '\.\/bin\/flind-toolbar-trusted-hosts\.mjs'/)
+    const manifestSource = toolbarSource.slice(manifestStart, manifestEnd)
+    assert.match(manifestSource, /\.\.\.getFlindExternalConnectable\(\)/)
+    assert.doesNotMatch(manifestSource, /(?:us|eu|app)\.posthog\.com/)
 })
