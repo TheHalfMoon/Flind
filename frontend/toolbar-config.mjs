@@ -257,7 +257,7 @@ export async function finalizeToolbarBuild(dirname, buildResponse) {
 //   dist/toolbar-extension/chrome/manifest.json
 //   dist/toolbar-extension/chrome/panel.html, panel.js, panel.css, background.js, content.js, content.css,
 //   assets/, icons/
-//   dist/toolbar-extension/posthog-toolbar-chrome-<version>.zip
+//   dist/toolbar-extension/flind-toolbar-chrome-<version>.zip
 const TOOLBAR_EXTENSION_OUT_DIR = 'toolbar-extension'
 
 // The release workflow bumps this version from Sampo changesets. See "Releases" in src/toolbar/extension/README.md.
@@ -388,7 +388,7 @@ export function finalizeToolbarExtensionBuild(dirname) {
         JSON.stringify(buildToolbarExtensionManifest(), null, 4) + '\n'
     )
     fs.writeFileSync(
-        path.resolve(extensionDir, `posthog-toolbar-chrome-${TOOLBAR_EXTENSION_VERSION}.zip`),
+        path.resolve(extensionDir, `flind-toolbar-chrome-${TOOLBAR_EXTENSION_VERSION}.zip`),
         zipSync(readDirectoryFiles(outDir))
     )
 }
