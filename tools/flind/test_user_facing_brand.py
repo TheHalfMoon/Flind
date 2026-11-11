@@ -6,6 +6,7 @@ These tests are cheap, dependency-free and must run before every identity-only P
 
 from __future__ import annotations
 
+import json
 import re
 import unittest
 from pathlib import Path
@@ -79,6 +80,18 @@ class FlindUserFacingBrandTests(unittest.TestCase):
         html = read("posthog/templates/email/base.html")
         self.assertIn('<span class="logo">Flind</span>', html)
         self.assertNotIn("posthog-logo.png", html)
+
+    def test_icon_alias_resolves_to_runtime_package_not_type_declarations(self) -> None:
+        # Playwright evaluates the tsconfig paths alias at runtime. A .d.ts target
+        # is not executable and broke E2E discovery on the first icon-vendor PR.
+        # tsconfig.json is JSONC, so do not parse it as strict JSON.
+        self.assertIn(
+            '"@flind/icons": ["./frontend/node_modules/@flind/icons"]',
+            read("tsconfig.json"),
+        )
+        package = json.loads(read("packages/icons/package.json"))
+        self.assertEqual(package["exports"]["."]["require"], "./index.cjs")
+        self.assertEqual(package["exports"]["."]["import"], "./index.mjs")
 
     def test_compatibility_imports_remain_intact(self) -> None:
         # Rebranding cannot silently rename loaded SDK/protocol modules. The icon set is the exception:
