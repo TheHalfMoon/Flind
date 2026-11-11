@@ -20,6 +20,8 @@ Download the `toolbar-extension` artifact from the run to install that build wit
 
 The extension needs Chrome 116 or later.
 
+The 128×128 Chrome extension icon is `frontend/public/icons/flind-128x128.png`, rendered from Flind's canonical `frontend/public/flind-icon.svg` mark. The extension must not ship the inherited upstream icon as its active identity. The existing legacy-named source asset is retained for compatibility until all historical references are migrated, but is not selected by the Flind extension build.
+
 ### Trusted Flind app origins
 
 The extension has **no externally connectable website origins by default**. This prevents inherited cloud domains from messaging a Flind-branded extension. The sidebar still opens manually.
