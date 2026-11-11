@@ -1599,7 +1599,8 @@ class TestEESAMLAuthenticationAPI(APILicensedTest):
         # User is created
         self.assertEqual(User.objects.count(), user_count + 1)
         user = cast(User, User.objects.last())
-        self.assertEqual(user.first_name, "Flind")
+        # The name comes from the signed SAML response fixture, so it keeps the fixture's value.
+        self.assertEqual(user.first_name, "PostHog")
         self.assertEqual(user.email, "engineering@posthog.com")
         self.assertEqual(user.organization, self.organization)
         self.assertEqual(user.team, self.team)
