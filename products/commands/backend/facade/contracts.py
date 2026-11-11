@@ -9,7 +9,7 @@ from posthog.dataclasses import frozen
 
 @frozen
 class SlackMention:
-    """A Slack message that mentions the PostHog app, as the Slack app hands it over."""
+    """A Slack message that mentions the Flind app, as the Slack app hands it over."""
 
     # The text after the app's own mention, as plain text: links unwrapped to their URLs and
     # Slack's entities decoded.
@@ -22,7 +22,7 @@ class SlackMention:
     # The Slack integration the mention came in on. The answer goes out through it.
     integration_id: int
     integration_team_id: int
-    # The PostHog accounts the requester may act as. First the one the Slack app resolved for them,
+    # The Flind accounts the requester may act as. First the one the Slack app resolved for them,
     # the account its agent acts as: their linked account, else the member of a connected
     # organization with their Slack email. Then every other account linked to their Slack user.
     user_ids: tuple[int, ...]

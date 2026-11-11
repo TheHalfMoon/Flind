@@ -52,7 +52,7 @@ class GrafanaIRMSource(ResumableSource[GrafanaIRMSourceConfig, GrafanaIRMResumeC
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             keywords=["oncall", "grafana oncall", "grafana incident", "incident response"],
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Sync your Grafana IRM alert groups, incidents, schedules and escalation setup into the PostHog Data warehouse.
+            caption="""Sync your Grafana IRM alert groups, incidents, schedules and escalation setup into the Flind Data warehouse.
 
 Create a service account token under **Administration > Users and access > Service accounts** in your Grafana Cloud stack. Give the service account the **Viewer** role, or the IRM reader permissions for the tables you want to sync.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-SCIM 2.0 (System for Cross-domain Identity Management) enables automated user provisioning and deprovisioning from identity providers (Okta, Azure AD, etc.) into PostHog.
+SCIM 2.0 (System for Cross-domain Identity Management) enables automated user provisioning and deprovisioning from identity providers (Okta, Azure AD, etc.) into Flind.
 
 ## Architecture
 
@@ -26,7 +26,7 @@ SCIM 2.0 (System for Cross-domain Identity Management) enables automated user pr
 
 ### Group Mapping
 
-- SCIM Groups → PostHog RBAC Roles
+- SCIM Groups → Flind RBAC Roles
 - **Upsert by name**: Groups auto-create roles if they don't exist
 - **Name matching**: Case-sensitive role name matching
 - **Membership sync**: PATCH operations sync role memberships
@@ -61,8 +61,8 @@ keys, so no history is hidden while it works.
 ### Core SCIM Implementation (`posthog/api/scim/`)
 
 - `auth.py` - Bearer token authentication
-- `user.py` - SCIM User adapter (maps to PostHog User model)
-- `group.py` - SCIM Group adapter (maps to PostHog Role model)
+- `user.py` - SCIM User adapter (maps to Flind User model)
+- `group.py` - SCIM Group adapter (maps to Flind Role model)
 - `views.py` - SCIM 2.0 endpoints
 - `utils.py` - Helper functions for token management
 
@@ -106,7 +106,7 @@ GET    /scim/v2/{scim_slug}/ResourceTypes          # Resource types
 GET    /scim/v2/{scim_slug}/Schemas                # SCIM schemas
 ```
 
-### Management Endpoints (PostHog UI)
+### Management Endpoints (Flind UI)
 
 ```text
 PATCH /api/organizations/{org_id}/domains/{domain_id} (scim_enabled)   # Enable/disable SCIM
@@ -386,10 +386,10 @@ pytest posthog/api/scim/test/test_groups_api.py
 
 1. Go to Applications → Applications → Add App → Search for **"SCIM Provisioner with SAML (SCIM v2 full SAML)"**
 2. SCIM Base URL: Use the `scim_base_url` returned by the OrganizationDomain API. It includes the `scim_slug` configured on the linked identity provider configuration.
-3. Bearer Token: Paste the generated Bearer Token from PostHog. It's only shown on first enable or when regenerating.
+3. Bearer Token: Paste the generated Bearer Token from Flind. It's only shown on first enable or when regenerating.
 4. Enable provisioning in the Configuration and Provisioning tabs (otherwise, OneLogin won't push any updates).
-5. In "Rules", you can sync Role membership by: - Mapping OneLogin roles or groups directly to existing groups in PostHog (by matching names), or - Mapping OneLogin roles/groups that will be upserted in PostHog as needed
-   In most cases you'll want the second - it pushes OneLogin roles to PostHog.
+5. In "Rules", you can sync Role membership by: - Mapping OneLogin roles or groups directly to existing groups in Flind (by matching names), or - Mapping OneLogin roles/groups that will be upserted in Flind as needed
+   In most cases you'll want the second - it pushes OneLogin roles to Flind.
    To configure this, set the condition to: "Match `any` of the following conditions" and select the roles you want to provision by choosing "Roles include <ONELOGIN-ROLE-NAME>".
    Then set the actions to "Map from OneLogin" and "For each `roles` with a value that matches `.*`"
 6. Add users to the App if they weren't added automatically
@@ -404,7 +404,7 @@ pytest posthog/api/scim/test/test_groups_api.py
 
 ## Frontend UI
 
-The SCIM configuration interface is available in the PostHog settings:
+The SCIM configuration interface is available in the Flind settings:
 
 **Location**: Settings → Organization → Verified Domains → [Domain] → More → Configure SCIM
 

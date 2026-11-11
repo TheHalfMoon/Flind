@@ -147,7 +147,7 @@ class TestStreamlitAppAPI(_StreamlitAppsFlagMixin, APIBaseTest):
 
     def test_list_returns_403_when_feature_flag_disabled(self):
         # StreamlitAppsAccessPermission hides the whole viewset behind the
-        # `streamlit-apps` PostHog flag; when the flag is off, even listing
+        # `streamlit-apps` Flind flag; when the flag is off, even listing
         # should 403 regardless of team membership.
         self._set_streamlit_apps_flag(False)
         response = self.client.get(self._url())

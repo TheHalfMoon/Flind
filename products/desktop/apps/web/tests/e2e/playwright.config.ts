@@ -7,7 +7,7 @@ const BASE_URL = `http://localhost:${PORT}`;
 // Browser e2e for the web host. Unlike apps/code (which drives Electron), this
 // is a plain SPA, so it runs in stock Chromium against the Vite dev server.
 // Scope is the hermetic happy path up to the OAuth wall: boot, container wiring,
-// onboarding → sign-in, and the /callback relay. Real login needs PostHog cloud
+// onboarding → sign-in, and the /callback relay. Real login needs Flind cloud
 // + a popup IdP, so it's out of scope here (see apps/web/README.md).
 export default defineConfig({
   testDir: "./tests",

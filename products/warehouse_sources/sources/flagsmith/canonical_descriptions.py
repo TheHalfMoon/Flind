@@ -37,7 +37,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "api_key": "Client-side SDK key that identifies the environment.",
             "project": "ID of the project the environment belongs to.",
             "use_v2_feature_versioning": "Whether the environment uses versioned feature states.",
-            "_project_id": "ID of the parent project this row was fetched for (added by PostHog).",
+            "_project_id": "ID of the parent project this row was fetched for (added by Flind).",
         },
     },
     "features": {
@@ -54,7 +54,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "is_archived": "Whether the feature has been archived.",
             "multivariate_options": "Weighted value options for multivariate features.",
             "project": "ID of the project the feature belongs to.",
-            "_project_id": "ID of the parent project this row was fetched for (added by PostHog).",
+            "_project_id": "ID of the parent project this row was fetched for (added by Flind).",
         },
     },
     "evaluation_data": {
@@ -64,9 +64,9 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "day": "The day the evaluations were counted on.",
             "count": "Number of times the feature was evaluated that day.",
             "labels": "Client application name, version and user agent the count is broken down by, when a breakdown applies.",
-            "_project_id": "ID of the parent project this row was fetched for (added by PostHog).",
-            "_feature_id": "ID of the feature the evaluations were counted for (added by PostHog).",
-            "_environment_id": "ID of the environment the evaluations were counted in (added by PostHog).",
+            "_project_id": "ID of the parent project this row was fetched for (added by Flind).",
+            "_feature_id": "ID of the feature the evaluations were counted for (added by Flind).",
+            "_environment_id": "ID of the environment the evaluations were counted in (added by Flind).",
         },
     },
     "tags": {
@@ -82,7 +82,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "is_permanent": "Whether features with this tag are excluded from stale flag detection.",
             "is_system_tag": "Whether the tag was created by Flagsmith rather than a user.",
             "type": "Identifier Flagsmith uses for tag business logic (NONE, STALE, GITHUB, UNHEALTHY or GITLAB).",
-            "_project_id": "ID of the parent project this row was fetched for (added by PostHog).",
+            "_project_id": "ID of the parent project this row was fetched for (added by Flind).",
         },
     },
     "feature_states": {
@@ -99,7 +99,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "created_at": "When the feature state was created.",
             "updated_at": "When the feature state was last changed.",
             "live_from": "When this feature state went (or goes) live.",
-            "_environment_api_key": "API key of the parent environment this row was fetched for (added by PostHog).",
+            "_environment_api_key": "API key of the parent environment this row was fetched for (added by Flind).",
         },
     },
     "environment_feature_versions": {
@@ -115,8 +115,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "live_from": "When the version started serving traffic.",
             "is_live": "Whether the version is the one currently serving traffic.",
             "description": "Optional description of what the version changed.",
-            "_environment_id": "ID of the environment the version belongs to (added by PostHog).",
-            "_feature_id": "ID of the feature the version belongs to (added by PostHog).",
+            "_environment_id": "ID of the environment the version belongs to (added by Flind).",
+            "_feature_id": "ID of the feature the version belongs to (added by Flind).",
         },
     },
     "segments": {
@@ -131,7 +131,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "project": "ID of the project the segment belongs to.",
             "feature": "For feature-specific segments, the feature the segment targets.",
             "created_at": "When the segment was created.",
-            "_project_id": "ID of the parent project this row was fetched for (added by PostHog).",
+            "_project_id": "ID of the parent project this row was fetched for (added by Flind).",
         },
     },
     "segment_members": {
@@ -141,9 +141,9 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "identifier": "The identifier the end user is known by in Flagsmith.",
             "identity_key": "Key uniquely identifying the identity within its environment.",
             "traits": "Trait values the identity matched the segment rules on.",
-            "_project_id": "ID of the parent project this row was fetched for (added by PostHog).",
-            "_segment_id": "ID of the segment the identity belongs to (added by PostHog).",
-            "_environment_id": "ID of the environment membership was resolved in (added by PostHog).",
+            "_project_id": "ID of the parent project this row was fetched for (added by Flind).",
+            "_segment_id": "ID of the segment the identity belongs to (added by Flind).",
+            "_environment_id": "ID of the environment membership was resolved in (added by Flind).",
         },
     },
     "feature_segments": {
@@ -157,8 +157,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "environment": "ID of the environment the override applies in.",
             "priority": "Order the override is evaluated in — lower values win.",
             "is_feature_specific": "Whether the segment exists only for this feature rather than project-wide.",
-            "_environment_id": "ID of the environment this row was fetched for (added by PostHog).",
-            "_feature_id": "ID of the feature this override belongs to (added by PostHog).",
+            "_environment_id": "ID of the environment this row was fetched for (added by Flind).",
+            "_feature_id": "ID of the feature this override belongs to (added by Flind).",
         },
     },
     "identities": {
@@ -168,7 +168,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "id": "Unique identifier for the identity.",
             "identifier": "The identifier your SDK sends for this user.",
             "environment": "ID of the environment the identity belongs to.",
-            "_environment_api_key": "API key of the parent environment this row was fetched for (added by PostHog).",
+            "_environment_api_key": "API key of the parent environment this row was fetched for (added by Flind).",
         },
     },
     "identity_traits": {
@@ -183,8 +183,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "float_value": "Trait value when the trait is a float.",
             "boolean_value": "Trait value when the trait is a boolean.",
             "created_date": "When the trait was first set for this identity.",
-            "_environment_api_key": "API key of the environment this row was fetched for (added by PostHog).",
-            "_identity_id": "ID of the identity the trait belongs to (added by PostHog).",
+            "_environment_api_key": "API key of the environment this row was fetched for (added by Flind).",
+            "_identity_id": "ID of the identity the trait belongs to (added by Flind).",
         },
     },
     "audit_logs": {
@@ -200,7 +200,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "related_object_id": "ID of the object the change relates to.",
             "related_object_type": "Type of the object the change relates to (for example FEATURE or SEGMENT).",
             "is_system_event": "Whether the change was made by the system rather than a user.",
-            "_organisation_id": "ID of the parent organisation this row was fetched for (added by PostHog).",
+            "_organisation_id": "ID of the parent organisation this row was fetched for (added by Flind).",
         },
     },
     "users": {
@@ -213,7 +213,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "first_name": "First name of the user.",
             "last_name": "Last name of the user.",
             "last_login": "When the user last logged in.",
-            "_organisation_id": "ID of the parent organisation this row was fetched for (added by PostHog).",
+            "_organisation_id": "ID of the parent organisation this row was fetched for (added by Flind).",
         },
     },
     "groups": {
@@ -225,7 +225,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "users": "Members of the group and whether each is a group admin.",
             "is_default": "Whether new organisation members are added to this group automatically.",
             "external_id": "ID of the group in an external system, when the group is managed there.",
-            "_organisation_id": "ID of the parent organisation this row was fetched for (added by PostHog).",
+            "_organisation_id": "ID of the parent organisation this row was fetched for (added by Flind).",
         },
     },
 }

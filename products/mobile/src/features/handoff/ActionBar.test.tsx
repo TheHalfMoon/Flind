@@ -97,13 +97,13 @@ test('keeps the PR, activity and real request together, with full question and a
     }
     const viewProps = props({
         pullRequests: [DRAFT_PR],
-        activity: { title: 'PostHog is working', meta: 'Checking regression tests', tone: 'working' },
+        activity: { title: 'Flind is working', meta: 'Checking regression tests', tone: 'working' },
         request: question,
         showHandoff: false,
     })
     const { rerender } = render(<ActionBar {...viewProps} />, { wrapper: OverlayHost })
     expect(screen.getByTestId('pr-ready-card')).toBeTruthy()
-    expect(screen.getByText('PostHog is working')).toBeTruthy()
+    expect(screen.getByText('Flind is working')).toBeTruthy()
     expect(screen.queryByText('Which fix should ship?')).toBeNull()
     expect(screen.queryByTestId('decision-option-guard')).toBeNull()
     fireEvent.press(screen.getByTestId('view-task-activity'))
@@ -141,7 +141,7 @@ test('keeps the PR, activity and real request together, with full question and a
 test('selects every PR state and keeps selection by URL as activity changes', () => {
     const viewProps = props({
         pullRequests: PULL_REQUESTS,
-        activity: { title: 'PostHog is working', tone: 'working' },
+        activity: { title: 'Flind is working', tone: 'working' },
         showHandoff: false,
     })
     const { rerender } = render(<ActionBar {...viewProps} />, { wrapper: OverlayHost })
@@ -162,7 +162,7 @@ test('selects every PR state and keeps selection by URL as activity changes', ()
             state={{
                 ...viewProps.state,
                 pullRequests: PULL_REQUESTS.slice(1).concat(DRAFT_PR),
-                activity: { title: 'PostHog finished this turn', tone: 'idle' },
+                activity: { title: 'Flind finished this turn', tone: 'idle' },
             }}
         />
     )
@@ -219,7 +219,7 @@ test.each([false, true])('a task without a run can retry with local kickoff stat
             {...viewProps}
             report={{
                 ...REPORT,
-                work: { state: 'working', assignee: { kind: 'task', name: 'PostHog', taskId: 'task-retry' } },
+                work: { state: 'working', assignee: { kind: 'task', name: 'Flind', taskId: 'task-retry' } },
                 task: { taskId: 'task-retry', status: 'not_started' },
             }}
         />

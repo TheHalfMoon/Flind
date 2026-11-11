@@ -2,7 +2,7 @@
 
 Snuffle (https://github.com/PostHog/snuffle) is the PromQL/LogQL bridge deployed alongside the
 logs ClickHouse cluster. It speaks the Prometheus and Loki HTTP APIs and translates them to
-ClickHouse SQL. PostHog owns authentication and tenant resolution: the viewset resolves the team
+ClickHouse SQL. Flind owns authentication and tenant resolution: the viewset resolves the team
 from the URL and forwards the request with an ``X-Team-ID`` header, which Snuffle turns into a
 tenant filter on every ClickHouse query. Snuffle's own credential is the ClickHouse user, sent as
 HTTP Basic auth and never exposed to the API caller.
@@ -49,8 +49,8 @@ _snuffle_budget_debit_slots = threading.BoundedSemaphore(SNUFFLE_BUDGET_DEBIT_MA
 _snuffle_budget_debit_executor: ThreadPoolExecutor | None = None
 _snuffle_budget_debit_executor_lock = threading.Lock()
 # Snuffle also accepts the tenant as a `team_id` parameter, with lower precedence than the header;
-# strip it so the forwarded request only ever names the team from the URL. PostHog accepts the
-# caller's personal API key as a parameter too, and that must never leave PostHog.
+# strip it so the forwarded request only ever names the team from the URL. Flind accepts the
+# caller's personal API key as a parameter too, and that must never leave Flind.
 STRIPPED_PARAMS = frozenset({"team_id", "personal_api_key"})
 
 
@@ -172,7 +172,7 @@ class SnuffleProxyViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
     Subclasses set ``scope_object``, ``upstream_prefix`` (the Snuffle path the ``api/v1/``
     suffix maps onto) and ``allowed_paths`` (read-only endpoints, matched against the rest
     of the path). Anything else, including remote write and push, is rejected before it
-    leaves PostHog.
+    leaves Flind.
     """
 
     upstream_prefix: ClassVar[str]

@@ -59,7 +59,7 @@ class SigNozSource(ResumableSource[SigNozSourceConfig, SigNozResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="SigNoz",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Connect your SigNoz workspace to sync logs, traces, alert rules, dashboards, and notification channels into the PostHog Data warehouse.
+            caption="""Connect your SigNoz workspace to sync logs, traces, alert rules, dashboards, and notification channels into the Flind Data warehouse.
 
 Enter your SigNoz host (your SigNoz Cloud tenant, e.g. `example.signoz.io`, or your self-hosted URL) and an API key.
 

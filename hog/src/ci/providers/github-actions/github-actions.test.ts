@@ -15,7 +15,7 @@ const JOB = {
 }
 
 describe('GitHub Actions', () => {
-    test('asks for a token whose audience is the PostHog host, with the job request token', async () => {
+    test('asks for a token whose audience is the Flind host, with the job request token', async () => {
         const seen: { url: string; authorization: string | null }[] = []
         const runtime = fakeRuntime({
             env: JOB,

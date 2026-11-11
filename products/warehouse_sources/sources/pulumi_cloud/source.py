@@ -87,7 +87,7 @@ class PulumiCloudSource(ResumableSource[PulumiCloudSourceConfig, PulumiCloudResu
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Pulumi",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Pulumi Cloud access token and organization name to pull your infrastructure-as-code data into the PostHog Data warehouse.
+            caption="""Enter your Pulumi Cloud access token and organization name to pull your infrastructure-as-code data into the Flind Data warehouse.
 
 Create a personal access token from your [Pulumi Cloud access tokens page](https://app.pulumi.com/account/tokens), or an organization access token from your organization's settings. The token inherits its owner's access, so no extra scopes are required.
 

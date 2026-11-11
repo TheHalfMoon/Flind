@@ -56,7 +56,7 @@ class CultureAmpSource(ResumableSource[CultureAmpSourceConfig, CultureAmpResumeC
             name=ExternalDataSourceType.CULTUREAMP,
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="Culture Amp",
-            caption="""Connect your Culture Amp account to pull your employee experience data into the PostHog Data warehouse.
+            caption="""Connect your Culture Amp account to pull your employee experience data into the Flind Data warehouse.
 
 An account admin can generate API credentials in Culture Amp under Settings > Integrations > Culture Amp API. Grant the employees, employee demographics, and performance evaluations read permissions. The account ID is the entity ID shown alongside your credentials.""",
             iconPath="/static/services/culture_amp.png",

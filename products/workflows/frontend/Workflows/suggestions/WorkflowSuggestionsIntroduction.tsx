@@ -21,11 +21,11 @@ function sampleProgress(sample: SuggestionsSampleApi | null | undefined): string
         return null
     }
     const sends = `${sample.tracked_sends} tracked ${sample.tracked_sends === 1 ? 'send' : 'sends'}`
-    const needs = `PostHog needs ${sample.required_sends} tracked sends on one email step within 7 days, from a version that has been live for at least 2 days.`
+    const needs = `Flind needs ${sample.required_sends} tracked sends on one email step within 7 days, from a version that has been live for at least 2 days.`
     const liveSince = dayjs(sample.version_live_since)
     const tooNew = dayjs().diff(liveSince, 'hour') < MIN_VERSION_AGE_HOURS
     if (sample.tracked_sends >= sample.required_sends) {
-        return `This version went live ${liveSince.fromNow()}. PostHog waits until a version has been live for 2 days before it judges it.`
+        return `This version went live ${liveSince.fromNow()}. Flind waits until a version has been live for 2 days before it judges it.`
     }
     if (tooNew) {
         return `This version went live ${liveSince.fromNow()}, and its busiest email step has had ${sends} in the last 7 days. ${needs}`
@@ -49,11 +49,11 @@ export function WorkflowSuggestionsIntroduction({
         return (
             <ProductIntroduction
                 thingName="suggestion"
-                titleOverride="Let PostHog suggest improvements"
+                titleOverride="Let Flind suggest improvements"
                 description={[
-                    'PostHog reads how this workflow performs, such as how many people open and click each email, and suggests one concrete change when a step underperforms. Nothing reaches anyone until you approve a suggestion and publish it.',
+                    'Flind reads how this workflow performs, such as how many people open and click each email, and suggests one concrete change when a step underperforms. Nothing reaches anyone until you approve a suggestion and publish it.',
                     progress &&
-                        `PostHog can't judge this workflow yet. ${progress} You can turn suggestions on now, and they start once it can.`,
+                        `Flind can't judge this workflow yet. ${progress} You can turn suggestions on now, and they start once it can.`,
                 ]
                     .filter(Boolean)
                     .join(' ')}
@@ -98,7 +98,7 @@ export function WorkflowSuggestionsIntroduction({
             thingName="suggestion"
             titleOverride="Watching this workflow"
             description={[
-                "PostHog reads this workflow's metrics once a day and files a suggestion here when it finds a change worth making. It waits for a version to collect a couple of days of opens before judging it, so a fresh publish takes a few days to read. Transactional emails, like receipts or support replies, are not reviewed.",
+                "Flind reads this workflow's metrics once a day and files a suggestion here when it finds a change worth making. It waits for a version to collect a couple of days of opens before judging it, so a fresh publish takes a few days to read. Transactional emails, like receipts or support replies, are not reviewed.",
                 progress,
             ]
                 .filter(Boolean)

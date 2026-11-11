@@ -1,4 +1,4 @@
-"""Read a customer's Fivetran account and plan what PostHog creates for each connection.
+"""Read a customer's Fivetran account and plan what Flind creates for each connection.
 
 Runs on the table-metadata worker: it makes only light vendor API calls and must not contend
 with the import pipeline. The activity writes the snapshot and items to Postgres and returns

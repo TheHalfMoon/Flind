@@ -115,7 +115,7 @@ class MixpanelSource(ResumableSource[MixpanelSourceConfig, MixpanelResumeConfig]
             name=ExternalDataSourceType.MIXPANEL,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Mixpanel",
-            caption="""Connect your Mixpanel project to pull events, user profiles, cohorts, annotations, funnels and retention into the PostHog Data warehouse.
+            caption="""Connect your Mixpanel project to pull events, user profiles, cohorts, annotations, funnels and retention into the Flind Data warehouse.
 
 Authenticate with a [Mixpanel Service Account](https://developer.mixpanel.com/reference/service-accounts). In Mixpanel, go to **Organization Settings → Service Accounts → Create Service Account** and grant it access to the project you want to sync. You'll need:
 

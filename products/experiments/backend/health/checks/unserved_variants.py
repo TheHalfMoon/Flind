@@ -181,7 +181,7 @@ def _finding(
             "They count in the results. Their variants come from outside the flag, for example from a bootstrap, from "
             "flags that a client cached before the save, or from your own assignment, so the flag's setup doesn't "
             "decide who gets which variant.",
-            "If PostHog should assign the variants, stop setting them in your code.",
+            "If Flind should assign the variants, stop setting them in your code.",
         ]
     return ExperimentHealthFinding(
         code=ExperimentHealthFindingCode.UNSERVED_VARIANT_EXPOSURES,

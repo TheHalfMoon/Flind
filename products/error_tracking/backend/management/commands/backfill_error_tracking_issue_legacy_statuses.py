@@ -1,7 +1,7 @@
 """Backfill error tracking issues stuck on legacy `archived` or `pending_release` statuses to `resolved`.
 
 Both statuses were defined on `ErrorTrackingIssue.Status` but are no longer reachable from
-the PostHog UI — `archived` was used by a short-lived "Archive" button (Sep 2024 to Mar 2025)
+the Flind UI — `archived` was used by a short-lived "Archive" button (Sep 2024 to Mar 2025)
 and later by an MCP tool, and `pending_release` was never wired up in the UI. The model
 still accepts both values via direct API writes, and a small number of rows ended up with
 them across teams.

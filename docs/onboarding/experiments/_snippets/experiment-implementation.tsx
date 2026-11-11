@@ -57,9 +57,9 @@ export const ExperimentImplementationSnippet = memo(
             }
         `,
             'node.js': dedent`
-            import { PostHog } from 'posthog-node'
+            import { Flind } from 'posthog-node'
 
-            const client = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' })
+            const client = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' })
 
             const experimentFlagValue = await client.getFeatureFlag('your-experiment-feature-flag', 'user distinct id')
 
@@ -84,7 +84,7 @@ export const ExperimentImplementationSnippet = memo(
                 # so if something goes wrong with flag evaluation, you don't break your app.
         `,
             php: dedent`
-            if (PostHog::getFeatureFlag('your-experiment-feature-flag', 'user distinct id') == 'test') {
+            if (Flind::getFeatureFlag('your-experiment-feature-flag', 'user distinct id') == 'test') {
                 // Do something differently for this user
             } else {
                 // It's a good idea to let control variant always be the default behaviour,
@@ -130,7 +130,7 @@ export const ExperimentImplementationSnippet = memo(
             }
         `,
             android: dedent`
-            if (PostHog.getFeatureFlag("your-experiment-feature-flag") == "test") {
+            if (Flind.getFeatureFlag("your-experiment-feature-flag") == "test") {
                 // do something
             } else {
                 // It's a good idea to let control variant always be the default behaviour,
@@ -154,7 +154,7 @@ export const ExperimentImplementationSnippet = memo(
             }
         `,
             kmp: dedent`
-            if (PostHog.getFeatureFlag("your-experiment-feature-flag") == "test") {
+            if (Flind.getFeatureFlag("your-experiment-feature-flag") == "test") {
                 // do something
             } else {
                 // It's a good idea to let control variant always be the default behaviour,

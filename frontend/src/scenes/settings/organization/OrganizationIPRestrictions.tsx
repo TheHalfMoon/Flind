@@ -72,7 +72,7 @@ export function OrganizationIPRestrictions(): JSX.Element {
                 {validationError && <p className="text-danger text-sm m-0">{validationError}</p>}
                 {values.length === 0 && (
                     <p className="text-muted m-0">
-                        With no IP restrictions, members of your organization can access PostHog from any IP address.
+                        With no IP restrictions, members of your organization can access Flind from any IP address.
                     </p>
                 )}
                 <LemonButton

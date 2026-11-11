@@ -1,9 +1,9 @@
 ---
 name: storybook-stories
-description: Write Storybook stories for PostHog UI components. Covers the provider stack stories run inside, the key gotcha that tRPC/useHostTRPC queries never resolve in Storybook (so data-fetching components render empty), and the pure-presentational split that makes a component storyable. Use when adding or fixing a *.stories.tsx file under packages/ui.
+description: Write Storybook stories for Flind UI components. Covers the provider stack stories run inside, the key gotcha that tRPC/useHostTRPC queries never resolve in Storybook (so data-fetching components render empty), and the pure-presentational split that makes a component storyable. Use when adding or fixing a *.stories.tsx file under packages/ui.
 ---
 
-# Storybook stories in PostHog
+# Storybook stories in Flind
 
 Stories live next to components as `*.stories.tsx` and are collected by
 `apps/code/.storybook/main.ts` (its glob includes

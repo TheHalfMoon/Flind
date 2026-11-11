@@ -27,7 +27,7 @@ Both overrides are load-bearing:
 - **The interpreter must be the acceptance venv's**, because that is where the `openai` package this
   script drives is installed. Create it with
   `python3 -m venv .venv && ./.venv/bin/pip install -r requirements.txt` in
-  `common/ingestion/acceptance_tests`. Both that venv and the monorepo install the PostHog SDK under
+  `common/ingestion/acceptance_tests`. Both that venv and the monorepo install the Flind SDK under
   the same name, `posthoganalytics` — deliberately, since importing it as `posthog` resolves to this
   repo's own Django app and breaks type checking.
 - **`OPENAI_BASE_URL` must be forced to the real API.** Some local and agent environments set it

@@ -202,7 +202,7 @@ def security_txt(request):
 
 @xframe_options_exempt
 def render_query(request: HttpRequest) -> HttpResponse:
-    """Render a lightweight container for third parties to display PostHog visualizations."""
+    """Render a lightweight container for third parties to display Flind visualizations."""
     from posthog.api.sharing import get_global_themes
 
     payload = {"query": None, "cachedResults": None, "context": None, "insight": None, "themes": get_global_themes()}

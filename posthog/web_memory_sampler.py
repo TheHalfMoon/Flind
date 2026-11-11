@@ -67,7 +67,7 @@ def start_web_memory_sampler() -> None:
     """Start a daemon thread that periodically records this worker's RSS — as the
     `posthog_web_worker_rss_mb` Prometheus gauge and a `worker_memory` log line — so the
     gradual climb toward the cgroup limit that precedes an OOM kill is visible in both
-    metrics and PostHog logs rather than only on infra dashboards.
+    metrics and Flind logs rather than only on infra dashboards.
 
     MUST be called from inside each worker (see posthog/wsgi.py), because threads do not
     survive a fork and the idle process that started one is not the one serving requests.

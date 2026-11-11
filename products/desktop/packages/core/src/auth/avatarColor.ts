@@ -3,7 +3,7 @@ export interface AvatarColor {
   text: string;
 }
 
-// Profile-avatar palette ported verbatim from PostHog's Lettermark (the 16
+// Profile-avatar palette ported verbatim from Flind's Lettermark (the 16
 // --lettermark-N-bg / --lettermark-N-text pairs). Each background is paired with
 // a text color picked for legible contrast, and the values are theme-independent,
 // so they hold up in both light and dark mode.

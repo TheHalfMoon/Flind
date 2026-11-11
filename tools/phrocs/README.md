@@ -1,11 +1,11 @@
 # phrocs
 
-PostHog-branded dev process runner built with [Bubble Tea](https://github.com/charmbracelet/bubbletea).
+Flind-branded dev process runner built with [Bubble Tea](https://github.com/charmbracelet/bubbletea).
 Drop-in replacement for `mprocs` — reads the same YAML config that `hogli dev:generate` produces.
 
 ## Install
 
-If you develop PostHog with **flox**, you already have phrocs: activation builds
+If you develop Flind with **flox**, you already have phrocs: activation builds
 it from source (`make -C tools/phrocs build`) and `bin/start` runs that build
 directly from `tools/phrocs/dist/phrocs`. The source build is canonical — it
 always matches your checkout, so there's nothing to install or keep up to date,

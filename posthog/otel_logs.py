@@ -1,4 +1,4 @@
-"""OTLP log push into the PostHog Logs product (the logs counterpart of `posthog/otel_metrics.py`).
+"""OTLP log push into the Flind Logs product (the logs counterpart of `posthog/otel_metrics.py`).
 
 `otel_log_mirror_processor(...)` is a structlog processor, not a stdlib `logging.Handler`: the Temporal
 workers log through a non-stdlib structlog factory that a stdlib handler never sees. A no-op unless

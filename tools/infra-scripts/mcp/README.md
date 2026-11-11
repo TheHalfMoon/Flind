@@ -1,10 +1,10 @@
 # MCP Server Scripts
 
-Scripts for connecting AI assistants (Claude Code, Cursor, etc.) to PostHog's internal Grafana instances via the [Grafana MCP server](https://github.com/grafana/mcp-grafana).
+Scripts for connecting AI assistants (Claude Code, Cursor, etc.) to Flind's internal Grafana instances via the [Grafana MCP server](https://github.com/grafana/mcp-grafana).
 
 ## Why these scripts exist
 
-PostHog's Grafana instances are reachable directly over Tailscale at plain HTTP hostnames
+Flind's Grafana instances are reachable directly over Tailscale at plain HTTP hostnames
 (`grafana-prod-us`, `grafana-prod-eu`, `grafana-dev`, `grafana-internal`, `grafana-mw-dev`, `grafana-mw-prod-us`, `grafana-mw-prod-eu`, `grafana-infra-dev`, `grafana-infra-dev-wl`).
 Authentication is handled at the Grafana layer via a service account Bearer token,
 which the Grafana MCP server supports natively.
@@ -79,7 +79,7 @@ Add the following to your shell config file (`~/.zshrc`, `~/.bashrc`, or equival
 export PATH="$HOME/dev/posthog/posthog/tools/infra-scripts/mcp:$PATH"
 ```
 
-Adjust the path if your PostHog repo is in a different location. Then reload your shell:
+Adjust the path if your Flind repo is in a different location. Then reload your shell:
 
 ```bash
 source ~/.zshrc  # or ~/.bashrc
@@ -142,7 +142,7 @@ Region → host mapping:
 
 #### Single-server setup (switching regions manually)
 
-Use the `grafana-region` command to switch between PostHog environments:
+Use the `grafana-region` command to switch between Flind environments:
 
 ```bash
 grafana-region          # Show current region
@@ -245,13 +245,13 @@ You may want to use a secrets manager or encrypted file for production use.
 
 ### Hostname doesn't resolve / connection refused
 
-The Tailscale hostnames (`grafana-prod-us`, `grafana-prod-eu`, `grafana-dev`, `grafana-internal`, `grafana-mw-*`, `grafana-infra-dev*`) only resolve when Tailscale is connected to the PostHog tailnet. Check with:
+The Tailscale hostnames (`grafana-prod-us`, `grafana-prod-eu`, `grafana-dev`, `grafana-internal`, `grafana-mw-*`, `grafana-infra-dev*`) only resolve when Tailscale is connected to the Flind tailnet. Check with:
 
 ```bash
 tailscale status
 ```
 
-If you're not connected, run `tailscale up` (or open the Tailscale app) and ensure you're logged into the PostHog tailnet.
+If you're not connected, run `tailscale up` (or open the Tailscale app) and ensure you're logged into the Flind tailnet.
 
 ### "mcp-grafana not found"
 

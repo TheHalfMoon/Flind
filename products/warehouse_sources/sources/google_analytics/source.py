@@ -46,10 +46,10 @@ logger = structlog.get_logger(__name__)
 # embed OAuth tokens, ids, or an HTML error body, so we capture it for debugging and show generic
 # guidance instead of surfacing `str(e)` to the user.
 _LOAD_CONNECTION_ERROR = (
-    "PostHog couldn't load your Google Analytics connection. Reconnect your Google account, then try again."
+    "Flind couldn't load your Google Analytics connection. Reconnect your Google account, then try again."
 )
 _PROPERTY_METADATA_ERROR = (
-    "PostHog couldn't reach Google Analytics to read your property. Wait a few minutes, then try again."
+    "Flind couldn't reach Google Analytics to read your property. Wait a few minutes, then try again."
 )
 
 # Google answers the metadata probe with 403 both when the account can't read the property (or the
@@ -197,7 +197,7 @@ class GoogleAnalyticsSource(ResumableSource[GoogleAnalyticsSourceConfig, GoogleA
                 "GA4 Data API schema, then try again."
             ),
             "401 Client Error": "Your Google Analytics connection is invalid or expired. Please reconnect your account.",
-            "403 Client Error": "PostHog is not authorized to read this Google Analytics property. Please make sure the connected Google account has access to the property.",
+            "403 Client Error": "Flind is not authorized to read this Google Analytics property. Please make sure the connected Google account has access to the property.",
             "ACCESS_TOKEN_SCOPE_INSUFFICIENT": "Insufficient permissions. Please reconnect your Google Analytics account with the required scopes.",
             # Raised as a bare `RefreshError` from `AuthorizedSession` when the stored refresh token
             # has been revoked or expired. `validate_credentials` already maps this to a reconnect
@@ -372,7 +372,7 @@ class GoogleAnalyticsSource(ResumableSource[GoogleAnalyticsSourceConfig, GoogleA
             # users, so guide them to reconnect.
             return (
                 False,
-                "PostHog could not authenticate with Google Analytics. Your connection may have "
+                "Flind could not authenticate with Google Analytics. Your connection may have "
                 "expired or is missing the required permissions. Please reconnect your Google "
                 "account and grant access to Google Analytics.",
             )
@@ -434,7 +434,7 @@ class GoogleAnalyticsSource(ResumableSource[GoogleAnalyticsSourceConfig, GoogleA
                         ),
                         caption=(
                             "Define your own report tables as a JSON array, on top of the built-in ones. "
-                            "Each report needs a name, GA4 dimensions, and GA4 metrics. PostHog always adds "
+                            "Each report needs a name, GA4 dimensions, and GA4 metrics. Flind always adds "
                             "the date dimension and syncs each report daily. GA4 allows up to 9 dimensions "
                             "(including date) and 10 metrics per report."
                         ),

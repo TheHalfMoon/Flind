@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface AIContextAccountPropertyApi {
@@ -15,7 +15,7 @@ export interface AIContextAccountPropertyApi {
 }
 
 export interface AIReplyPlaybookApi {
-    /** Repo default instructions, plus the PostHog overlay when docs_source is posthog. */
+    /** Repo default instructions, plus the Flind overlay when docs_source is posthog. */
     readonly inherited_instructions: string
     /**
      * Team addendum on top of the inherited playbook. Null means the team inherits the default instructions.
@@ -27,12 +27,12 @@ export interface AIReplyPlaybookApi {
     /** Version of the generic default playbook layer currently in the repo. */
     readonly default_version: number
     /**
-     * Version of the PostHog overlay when docs_source is posthog; null otherwise.
+     * Version of the Flind overlay when docs_source is posthog; null otherwise.
      * @nullable
      */
     readonly posthog_overlay_version: number | null
     /**
-     * Documentation source for this team. 'posthog' enables PostHog docs-search and the PostHog overlay.
+     * Documentation source for this team. 'posthog' enables Flind docs-search and the Flind overlay.
      * @nullable
      */
     readonly docs_source: string | null
@@ -417,7 +417,7 @@ export interface TicketApi {
     /** @nullable */
     readonly zendesk_ticket_id: number | null
     /**
-     * Customer's PostHog organization group key, resolved at ticket creation. Null when unknown.
+     * Customer's Flind organization group key, resolved at ticket creation. Null when unknown.
      * @nullable
      */
     readonly organization_id: string | null
@@ -682,7 +682,7 @@ export interface TicketMessageApi {
     /** Display name of the author. */
     readonly author_name: string
     /**
-     * Email of the authoring PostHog user, when the message was written by one (support replies and internal notes). Null for customer and AI messages.
+     * Email of the authoring Flind user, when the message was written by one (support replies and internal notes). Null for customer and AI messages.
      * @nullable
      */
     readonly author_email: string | null
@@ -834,7 +834,7 @@ export interface ComposeTicketApi {
     /** Recipient email address. */
     recipient_email: string
     /**
-     * PostHog distinct_id to link the ticket to a person. Falls back to recipient_email.
+     * Flind distinct_id to link the ticket to a person. Falls back to recipient_email.
      * @maxLength 400
      */
     recipient_distinct_id?: string

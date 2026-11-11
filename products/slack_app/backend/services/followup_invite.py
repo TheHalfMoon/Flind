@@ -1,4 +1,4 @@
-"""The line under a PostHog-authored Slack message that invites the reader to ask a follow-up.
+"""The line under a Flind-authored Slack message that invites the reader to ask a follow-up.
 
 What the line says depends on the install: a workspace whose bot can answer a mention is invited to
 send one, and a workspace whose bot cannot is offered the setup link instead. Other products reach

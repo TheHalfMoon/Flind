@@ -12,8 +12,8 @@ Email recipients can use an unsubscribe link.
 An unsubscribe token expires after 30 days.
 
 One recipient can unsubscribe without stopping delivery to other recipients.
-PostHog removes that address from `target_value`.
-PostHog soft-deletes the subscription when the last email recipient unsubscribes.
+Flind removes that address from `target_value`.
+Flind soft-deletes the subscription when the last email recipient unsubscribes.
 
 The overall delivery can succeed when at least one recipient succeeds.
 The MCP tools do not return per-recipient results.
@@ -31,7 +31,7 @@ The API uses the channel ID for delivery.
 
 For dashboard snapshots, `delivery_config.post_all_insights_in_main_message` controls Slack layout.
 The default is `false`.
-PostHog sends the first image in the main message and the rest in a thread.
+Flind sends the first image in the main message and the rest in a thread.
 
 Set the option to `true` to send all images in the main message.
 Only dashboard snapshots need the Slack `files:write` permission for this option.
@@ -72,7 +72,7 @@ When you change from Teams, send the new destination value in the same update.
 - If Teams rejects delivery, ask the user to create a new URL with the correct workflow.
 - If the user asks for a generic webhook, offer email, Slack, or Microsoft Teams.
 
-PostHog can automatically disable a subscription after a permanent destination failure.
+Flind can automatically disable a subscription after a permanent destination failure.
 Fix the destination before you resume it.
 
 Destination acceptance does not prove external delivery.

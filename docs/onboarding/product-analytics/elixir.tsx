@@ -11,7 +11,7 @@ export const getElixirSteps = (ctx: OnboardingComponentsContext): StepDefinition
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Add the PostHog Elixir library to your `mix.exs` dependencies:</Markdown>
+                    <Markdown>Add the Flind Elixir library to your `mix.exs` dependencies:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -35,7 +35,7 @@ export const getElixirSteps = (ctx: OnboardingComponentsContext): StepDefinition
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Add your PostHog configuration to your config file:</Markdown>
+                    <Markdown>Add your Flind configuration to your config file:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -64,7 +64,7 @@ export const getElixirSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                 language: 'elixir',
                                 file: 'Elixir',
                                 code: dedent`
-                                PostHog.capture("user_signed_up", %{
+                                Flind.capture("user_signed_up", %{
                                     distinct_id: "distinct_id_of_the_user",
                                     login_type: "email",
                                     is_free_trial: true

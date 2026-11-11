@@ -47,7 +47,7 @@ def rerun_state(writer: WriterSettings) -> dict[str, Any]:
 
 def build_writer_prompt(request: DocsRequest, routing: SectionRouting, *, is_joining: bool) -> str:
     sections = [
-        "You update the PostHog docs in this repository so they match what shipped.",
+        "You update the Flind docs in this repository so they match what shipped.",
         REGISTRY[request.source].instructions,
         f"Change kind: {request.change_kind}.",
         PUSH_TO_CHECKED_OUT_BRANCH if is_joining else PUSH_TO_NEW_BRANCH,

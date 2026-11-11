@@ -52,7 +52,7 @@ describe('destination step', () => {
     })
 
     describe('defaultDestinationIds', () => {
-        it('starts on the PostHog warehouse, so skipping the step changes nothing', () => {
+        it('starts on the Flind warehouse, so skipping the step changes nothing', () => {
             expect(defaultDestinationIds([POSTGRES, WAREHOUSE], [])).toEqual(['wh'])
         })
 

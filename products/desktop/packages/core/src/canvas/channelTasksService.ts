@@ -10,7 +10,7 @@ interface ApiTask {
 
 /**
  * Files tasks into channels. A filing is simply the task's `channel` field on
- * the PostHog tasks API — one channel per task, no side-table.
+ * the Flind tasks API — one channel per task, no side-table.
  */
 @injectable()
 export class ChannelTasksService {

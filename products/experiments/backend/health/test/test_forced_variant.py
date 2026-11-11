@@ -501,10 +501,10 @@ class TestForcedVariantReleaseCondition(TestCase):
         self.assertEqual(
             (finding.title, finding.detail, finding.evidence["variant_property"]),
             (
-                "Variants are assigned outside PostHog",
+                "Variants are assigned outside Flind",
                 'Each release condition that includes users matches the users whose property "checkout_arm" holds a '
                 'variant key, and serves them that variant. So the code that sets "checkout_arm" assigns the '
-                "variants, not PostHog. If it assigns at random, each variant gets similar users. If it assigns by "
+                "variants, not Flind. If it assigns at random, each variant gets similar users. If it assigns by "
                 "who the users are, for example by plan or country, a difference in the results can come from those "
                 "users and not from the variant.",
                 "checkout_arm",

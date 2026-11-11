@@ -282,7 +282,7 @@ def build_scout_slack_message(emission: SignalScoutEmission) -> tuple[list[dict]
             "elements": [
                 {
                     "type": "button",
-                    "text": {"type": "plain_text", "text": "View signal in PostHog"},
+                    "text": {"type": "plain_text", "text": "View signal in Flind"},
                     "url": finding_url,
                 }
             ],
@@ -352,7 +352,7 @@ def _send_shortening_markdown(
     """Send the blocks, and send them again with shorter markdown if Slack says they are too long.
 
     Slack counts its markdown budget in its own way, so text inside our budget can still go over.
-    The report link stays in the message, so a reader still reaches the full text in PostHog."""
+    The report link stays in the message, so a reader still reaches the full text in Flind."""
     try:
         return send(blocks)
     except SlackApiError as exc:
@@ -375,7 +375,7 @@ def _report_link_block(report: SignalReport) -> dict:
         "elements": [
             {
                 "type": "button",
-                "text": {"type": "plain_text", "text": "View report in PostHog"},
+                "text": {"type": "plain_text", "text": "View report in Flind"},
                 "url": report_url,
             }
         ],

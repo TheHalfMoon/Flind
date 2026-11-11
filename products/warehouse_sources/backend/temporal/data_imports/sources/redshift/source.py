@@ -52,12 +52,12 @@ _REDSHIFT_IMPLEMENTATION = RedshiftImplementation()
 
 # sshtunnel raises BaseSSHTunnelForwarderError("Could not establish session to SSH gateway") when it
 # can't open a session to the bastion — the SSH host/port is wrong or unreachable, the bastion is
-# down, or its firewall blocks PostHog's IPs. The raw message tells the user nothing actionable, so
+# down, or its firewall blocks Flind's IPs. The raw message tells the user nothing actionable, so
 # replace it with concrete guidance (the sibling SQL sources already do the same).
 _SSH_GATEWAY_SESSION_ERROR = "Could not establish session to SSH gateway"
 _SSH_GATEWAY_UNREACHABLE_MESSAGE = (
     "Could not connect to your SSH tunnel. Check that the SSH host, port, and credentials are "
-    "correct, the bastion host is running and reachable, and that PostHog's IP addresses are "
+    "correct, the bastion host is running and reachable, and that Flind's IP addresses are "
     "allowed through its firewall."
 )
 
@@ -69,7 +69,7 @@ _DNS_RESOLUTION_VALIDATION_ERROR = (
 )
 _HOST_UNREACHABLE_VALIDATION_ERROR = (
     "Could not connect to the database on the host and port given. Check the host and port are "
-    "correct, and that PostHog's IP addresses are allowed through your firewall."
+    "correct, and that Flind's IP addresses are allowed through your firewall."
 )
 
 # psycopg raises `ConnectionTimeout` with this text when `connect_timeout` runs out before the
@@ -84,7 +84,7 @@ _CONNECT_TIMEOUT_ERROR = "connection timeout expired"
 # here too — otherwise `_handle_import_error` logs it at `exception` on every occurrence, flooding
 # error tracking with a self-recovering network blip. Mirrors the equivalent Postgres source.
 _CONNECTION_DROPPED_EXHAUSTED_MESSAGE = (
-    "PostHog's connection to your Redshift cluster kept closing before the sync could finish, and "
+    "Flind's connection to your Redshift cluster kept closing before the sync could finish, and "
     "reconnecting didn't help. Check that the cluster is not paused, resizing, or dropping idle "
     "connections (a firewall or load balancer in front of it can do this too). This sync is still "
     "enabled and will run again on its next schedule."
@@ -96,7 +96,7 @@ RedshiftErrors = {
     "could not translate host name": _DNS_RESOLUTION_VALIDATION_ERROR,
     "Is the server running on that host and accepting TCP/IP connections": _HOST_UNREACHABLE_VALIDATION_ERROR,
     'database "': "Database does not exist",
-    "timeout expired": "Connection timed out. Check that your database is reachable from the public internet and that PostHog's egress IP addresses are allowed through your firewall (see the docs). For a database that can't be exposed publicly, use the SSH tunnel option.",
+    "timeout expired": "Connection timed out. Check that your database is reachable from the public internet and that Flind's egress IP addresses are allowed through your firewall (see the docs). For a database that can't be exposed publicly, use the SSH tunnel option.",
     "SSL connection has been closed unexpectedly": "SSL connection error. Please check your SSL settings.",
     "server does not support SSL": "The server does not support SSL, which we require for Redshift. Please check the host and port point to your Redshift cluster.",
     "Connection refused": "Connection refused. Please check the host and port.",
@@ -135,7 +135,7 @@ class RedshiftSource(SQLSource[RedshiftSourceConfig], SSHTunnelMixin, ValidateDa
             name=ExternalDataSourceType.REDSHIFT,
             category=DataWarehouseSourceCategory.DATABASES,
             keywords=["aws redshift", "amazon redshift", "sql"],
-            caption="Enter your Redshift credentials to automatically pull your Redshift data into the PostHog Data warehouse",
+            caption="Enter your Redshift credentials to automatically pull your Redshift data into the Flind Data warehouse",
             iconPath="/static/services/redshift.png",
             docsUrl="https://posthog.com/docs/cdp/sources/redshift",
             releaseStatus=ReleaseStatus.GA,
@@ -157,7 +157,7 @@ class RedshiftSource(SQLSource[RedshiftSourceConfig], SSHTunnelMixin, ValidateDa
                         required=True,
                         placeholder="my-cluster.abc123xyz.us-east-1.redshift.amazonaws.com",
                         caption=(
-                            "Must be reachable from the public internet. Add PostHog's egress IP addresses to your "
+                            "Must be reachable from the public internet. Add Flind's egress IP addresses to your "
                             "firewall allowlist (see the docs above) and use a public host. `localhost` and private "
                             "IPs (10.x, 172.16-31.x, 192.168.x) can't be reached. For a database that can't be "
                             "exposed publicly, enable the SSH tunnel below."
@@ -236,9 +236,9 @@ class RedshiftSource(SQLSource[RedshiftSourceConfig], SSHTunnelMixin, ValidateDa
                 "for the read. This sync is still enabled and will run again on its next schedule."
             ),
             _CONNECT_TIMEOUT_ERROR: (
-                "PostHog couldn't connect to your Redshift cluster before the connection timed out, and it "
+                "Flind couldn't connect to your Redshift cluster before the connection timed out, and it "
                 "did so again on every retry. Check that the cluster is running and not paused, and that "
-                "PostHog's IP addresses are allowed through its security group. If you connect through an "
+                "Flind's IP addresses are allowed through its security group. If you connect through an "
                 "SSH tunnel, check that the bastion host can reach the cluster. This sync is still enabled "
                 "and will run again on its next schedule."
             ),
@@ -284,7 +284,7 @@ class RedshiftSource(SQLSource[RedshiftSourceConfig], SSHTunnelMixin, ValidateDa
             # the activity's full retry budget on a denial that can't resolve itself.
             "InsufficientPrivilege": None,
             "permission denied for": (
-                "PostHog's database role isn't allowed to read one or more of the tables you selected to sync "
+                "Flind's database role isn't allowed to read one or more of the tables you selected to sync "
                 '(Redshift reported "permission denied"). If this is a materialized view, Redshift also '
                 "requires the connecting role to have SELECT on its underlying base table(s), not just the "
                 "view. Grant the connecting role SELECT on those tables, then re-enable the sync."
@@ -315,7 +315,7 @@ class RedshiftSource(SQLSource[RedshiftSourceConfig], SSHTunnelMixin, ValidateDa
             self.get_schemas(config, team_id, api_version=api_version)
         except (HostNotAllowedError, TemporaryHostResolutionError) as e:
             # The host policy refused the host, or its lookup never answered. Both carry their own
-            # user-facing wording and neither is a PostHog defect, so they are not captured.
+            # user-facing wording and neither is a Flind defect, so they are not captured.
             return False, str(e)
         except OperationalError as e:
             error_msg = " ".join(str(n) for n in e.args)

@@ -64,14 +64,14 @@ def _collect_command_help() -> list[tuple[str, str]]:
 def _render(help_text: str, command_help_sections: list[tuple[str, str]]) -> str:
     escaped_help_lines = [_escape_roff(line) for line in help_text.splitlines()]
     lines = [
-        '.TH HOGLI 1 "Auto-generated" "PostHog" "User Commands"',
+        '.TH HOGLI 1 "Auto-generated" "Flind" "User Commands"',
         ".SH NAME",
-        "hogli \\- PostHog developer CLI",
+        "hogli \\- Flind developer CLI",
         ".SH SYNOPSIS",
         ".B hogli",
         "[\\fIOPTIONS\\fR] \\fICOMMAND\\fR [\\fIARGS\\fR]...",
         ".SH DESCRIPTION",
-        "\\fBhogli\\fR is the unified command line interface for PostHog development workflows.",
+        "\\fBhogli\\fR is the unified command line interface for Flind development workflows.",
         "This page is generated from the current CLI help output.",
         ".SH HELP OUTPUT",
         ".nf",
@@ -102,7 +102,7 @@ def _render(help_text: str, command_help_sections: list[tuple[str, str]]) -> str
             "CLI group and command registration.",
             ".TP",
             "\\fItools/hogli-commands/hogli_commands/\\fR",
-            "PostHog-specific lazy Click command modules.",
+            "Flind-specific lazy Click command modules.",
             "",
         ]
     )

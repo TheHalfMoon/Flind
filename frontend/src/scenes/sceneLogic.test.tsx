@@ -423,7 +423,7 @@ describe('sceneLogic', () => {
     })
 
     it.each([
-        ['sends a self-hosted install to the Move to PostHog Cloud page', false, false, urls.moveToPostHogCloud()],
+        ['sends a self-hosted install to the Move to Flind Cloud page', false, false, urls.moveToPostHogCloud()],
         [
             'sends a self-hosted install away once preflight loads after the scene opened',
             false,
@@ -458,13 +458,13 @@ describe('sceneLogic', () => {
         ['/activity/explore', () => urls.activity(ActivityTab.ExploreEvents), {}, { q: '{"kind":"DataTableNode"}' }],
         [
             '/visual_review/repos/PostHog/posthog/runs/run-1',
-            () => urls.visualReviewRepoRun('PostHog', 'posthog', 'run-1'),
+            () => urls.visualReviewRepoRun('Flind', 'posthog', 'run-1'),
             {},
             { snapshot: 'snap-1' },
         ],
         [
             '/visual_review/repos/PostHog/posthog/storybook/snapshots/scenes%2FButton--dark',
-            () => urls.visualReviewSnapshotHistory('PostHog', 'posthog', 'storybook', 'scenes/Button--dark'),
+            () => urls.visualReviewSnapshotHistory('Flind', 'posthog', 'storybook', 'scenes/Button--dark'),
             {},
             { panel: 'max:inspect' },
         ],

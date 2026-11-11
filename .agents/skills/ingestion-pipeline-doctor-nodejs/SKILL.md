@@ -8,7 +8,7 @@ description: >
 
 # Pipeline Doctor
 
-Quick reference for PostHog's ingestion pipeline framework and its convention-checking agents.
+Quick reference for Flind's ingestion pipeline framework and its convention-checking agents.
 
 ## Architecture overview
 

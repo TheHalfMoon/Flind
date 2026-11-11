@@ -32,7 +32,7 @@ for (let key, value in inputs.attributes) {
 let res := fetch(f'https://api.gleap.io/admin/identify', {
     'method': 'POST',
     'headers': {
-        'User-Agent': 'PostHog Gleap.io App',
+        'User-Agent': 'Flind Gleap.io App',
         'Api-Token': inputs.apiKey,
         'Content-Type': 'application/json'
     },

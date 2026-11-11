@@ -115,7 +115,7 @@ class DesktopAccessResolver:
     async def _fetch_access(self, team_id: int, auth_header: str) -> DesktopAccessDecision:
         settings = get_settings()
         if not settings.posthog_api_base_url:
-            raise RuntimeError("PostHog API base URL is not configured")
+            raise RuntimeError("Flind API base URL is not configured")
 
         url = f"{settings.posthog_api_base_url.rstrip('/')}/api/projects/{team_id}/desktop/access/"
         response = await self._http.get(

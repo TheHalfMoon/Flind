@@ -185,7 +185,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$feature_flag_called": {
             "label": "Feature flag called",
-            "description": "Sent by PostHog SDKs each time a feature flag is evaluated.",
+            "description": "Sent by Flind SDKs each time a feature flag is evaluated.",
             "examples": ["beta-feature"],
             "ignored_in_assistant": True,  # Mostly irrelevant product-wise
             "hidden_in_query_builders": True,
@@ -215,7 +215,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         "$feature_enrollment_update": {
             "label": "Feature enrollment",
             "description": "When a user enrolls with a feature.",
-            "description_llm": "When a user opts in or out of a beta feature. This event is specific to the PostHog Early Access Features product, and is only relevant if the project is using this product.",
+            "description_llm": "When a user opts in or out of a beta feature. This event is specific to the Flind Early Access Features product, and is only relevant if the project is using this product.",
         },
         "$capture_metrics": {
             "label": "Capture metrics",
@@ -381,7 +381,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$mcp_auth_failed": {
             "label": "MCP auth failed",
-            "description": "Fires when an MCP request is refused before a session is established, because the credential was rejected or lacked a required scope. Emitted by PostHog's own MCP server rather than the SDK, so it is absent for customer-instrumented servers. Carries `$mcp_auth_failure_reason`, `$mcp_auth_method`, and the client identity, so connectors stuck re-authorizing are visible instead of appearing as an absence of traffic. Not a tool-call failure: it never sets `$mcp_is_error`.",
+            "description": "Fires when an MCP request is refused before a session is established, because the credential was rejected or lacked a required scope. Emitted by Flind's own MCP server rather than the SDK, so it is absent for customer-instrumented servers. Carries `$mcp_auth_failure_reason`, `$mcp_auth_method`, and the client identity, so connectors stuck re-authorizing are visible instead of appearing as an absence of traffic. Not a tool-call failure: it never sets `$mcp_is_error`.",
             "primary_property": "$mcp_auth_failure_reason",
         },
         "$mcp_missing_capability": {
@@ -451,12 +451,12 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "mcp_posthog:identify": {
             "label": "MCP identify — in-tree (legacy)",
-            "description": "LEGACY — do not use. Identify event from PostHog's retired in-tree MCP analytics path. Superseded by the canonical `$identify` emitted by @posthog/mcp. Query this only for historical data before 2026-06-16.",
+            "description": "LEGACY — do not use. Identify event from Flind's retired in-tree MCP analytics path. Superseded by the canonical `$identify` emitted by @posthog/mcp. Query this only for historical data before 2026-06-16.",
             "ignored_in_assistant": True,
         },
         "mcp_tool_called": {
             "label": "MCP tool called — in-tree (legacy)",
-            "description": "LEGACY — do not use. Tool-call event from PostHog's retired in-tree MCP analytics path. Superseded by `$mcp_tool_call`. Query this only for historical data before 2026-06-16.",
+            "description": "LEGACY — do not use. Tool-call event from Flind's retired in-tree MCP analytics path. Superseded by `$mcp_tool_call`. Query this only for historical data before 2026-06-16.",
             "ignored_in_assistant": True,
         },
         "mcp tool call": {
@@ -479,7 +479,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "mcp feedback submitted": {
             "label": "MCP feedback submitted",
-            "description": "Fires when feedback is submitted through the MCP server's feedback tool — about any PostHog product, the MCP server itself, or the docs.",
+            "description": "Fires when feedback is submitted through the MCP server's feedback tool — about any Flind product, the MCP server itself, or the docs.",
         },
         "$snapshot": {
             "label": "Session recording snapshot",
@@ -552,7 +552,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$slack_message_received": {
             "label": "Slack message received",
-            "description": "Fires when a message is posted in a Slack channel PostHog is connected to.",
+            "description": "Fires when a message is posted in a Slack channel Flind is connected to.",
         },
         # Descriptions here must stay in step with the matching workflow email metric definitions in
         # products/workflows/frontend/Workflows/workflowMetricsSummaryLogic.ts, since the two surfaces
@@ -801,7 +801,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$config_defaults": {
             "label": "Config defaults",
-            "description": "The version of the PostHog config defaults that were used when capturing the event.",
+            "description": "The version of the Flind config defaults that were used when capturing the event.",
             "type": "String",
             "used_for_debug": True,
         },
@@ -857,15 +857,15 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
             "used_for_debug": True,
         },
         "$sdk_debug_extensions_init_method": {
-            "label": "PostHog.js extensions init method",
-            "description": "The method used to initialize PostHog.js extensions.",
+            "label": "Flind.js extensions init method",
+            "description": "The method used to initialize Flind.js extensions.",
             "examples": ["deferred", "synchronous"],
             "type": "String",
             "used_for_debug": True,
         },
         "$sdk_debug_extensions_init_time_ms": {
-            "label": "PostHog.js extensions init time (ms)",
-            "description": "The time taken to initialize PostHog.js extensions in milliseconds.",
+            "label": "Flind.js extensions init time (ms)",
+            "description": "The time taken to initialize Flind.js extensions in milliseconds.",
             "examples": [150],
             "type": "Numeric",
             "used_for_debug": True,
@@ -948,7 +948,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$pageview_id": {
             "label": "Pageview ID",
-            "description": "PostHog's internal ID for matching events to a pageview.",
+            "description": "Flind's internal ID for matching events to a pageview.",
             "system": True,
             "ignored_in_assistant": True,
         },
@@ -1120,7 +1120,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
             "ignored_in_assistant": True,
         },
         "$session_entry_ph_keyword": {
-            "description": "PostHog keyword tracking parameter. Captured at the start of the session and remains constant for the duration of the session.",
+            "description": "Flind keyword tracking parameter. Captured at the start of the session and remains constant for the duration of the session.",
             "label": "Session entry ph_keyword",
             "ignored_in_assistant": True,
         },
@@ -1674,7 +1674,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$sent_at": {
             "label": "Sent at",
-            "description": "Time the event was sent to PostHog. Used for correcting the event timestamp when the device clock is off.",
+            "description": "Time the event was sent to Flind. Used for correcting the event timestamp when the device clock is off.",
             "examples": ["2023-05-20T15:31:00Z"],
         },
         "$event_time_override_provided": {
@@ -1742,7 +1742,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$raw_user_agent": {
             "label": "Raw user agent",
-            "description": "PostHog process information like browser, OS, and device type from the user agent string. This is the raw user agent string.",
+            "description": "Flind process information like browser, OS, and device type from the user agent string. This is the raw user agent string.",
             "examples": ["Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko)"],
         },
         "$user_agent": {
@@ -1875,7 +1875,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$feature_flag_request_id": {
             "label": "Feature flag request ID",
-            "description": "The unique identifier for the request that retrieved this feature flag result.\n\nNote: Primarily used by PostHog support for debugging issues with feature flags.",
+            "description": "The unique identifier for the request that retrieved this feature flag result.\n\nNote: Primarily used by Flind support for debugging issues with feature flags.",
             "examples": ["01234567-89ab-cdef-0123-456789abcdef"],
         },
         "$feature_flag_evaluated_at": {
@@ -1900,15 +1900,15 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$feature_flag_bootstrapped_response": {
             "label": "Feature flag bootstrapped response",
-            "description": "The response value provided to the SDK at initialization via the bootstrap option, before evaluation against PostHog.",
+            "description": "The response value provided to the SDK at initialization via the bootstrap option, before evaluation against Flind.",
         },
         "$feature_flag_bootstrapped_payload": {
             "label": "Feature flag bootstrapped payload",
-            "description": "The payload value provided to the SDK at initialization via the bootstrap option, before evaluation against PostHog.",
+            "description": "The payload value provided to the SDK at initialization via the bootstrap option, before evaluation against Flind.",
         },
         "$feature_flag_original_response": {
             "label": "Feature flag original response",
-            "description": "The original feature flag response from PostHog, before any local override was applied.",
+            "description": "The original feature flag response from Flind, before any local override was applied.",
         },
         "$feature_flag_error": {
             "label": "Feature flag error",
@@ -2485,7 +2485,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$ai_cost_passthrough": {
             "label": "AI cost passthrough (LLM)",
-            "description": "Set this to keep the reported total cost and skip PostHog's token-based estimate. Use it when the provider reports an authoritative cost, such as an LLM gateway. The input and output cost split is left unset.",
+            "description": "Set this to keep the reported total cost and skip Flind's token-based estimate. Use it when the provider reports an authoritative cost, such as an LLM gateway. The input and output cost split is left unset.",
             "examples": [True],
         },
         "$ai_cost_model_provider": {
@@ -2627,7 +2627,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$ai_evaluation_key_type": {
             "label": "AI Evaluation Key Type (LLM)",
-            "description": "The type of API key used for the evaluation (byok = user's own key, posthog = PostHog default).",
+            "description": "The type of API key used for the evaluation (byok = user's own key, posthog = Flind default).",
             "examples": ["byok", "posthog"],
         },
         "$ai_evaluation_key_id": {
@@ -2677,7 +2677,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$ai_tagger_key_type": {
             "label": "AI Tagger Key Type (LLM)",
-            "description": "The type of API key used for the tagger (byok = user's own key, posthog = PostHog default).",
+            "description": "The type of API key used for the tagger (byok = user's own key, posthog = Flind default).",
             "examples": ["byok", "posthog"],
         },
         "$ai_tagger_key_id": {
@@ -2892,14 +2892,14 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$mcp_tool_category": {
             "label": "MCP tool category",
-            "description": "The product category the invoked tool belongs to — the grouping dimension the MCP analytics dashboard buckets tool calls by. Stamped server-side from the tool catalog (PostHog's server) or declared per tool (external servers). Omitted when the tool has no catalogued category (e.g. the `exec` dispatcher), which the dashboard buckets as 'Uncategorized'. Present on mcp_tool_call.",
+            "description": "The product category the invoked tool belongs to — the grouping dimension the MCP analytics dashboard buckets tool calls by. Stamped server-side from the tool catalog (Flind's server) or declared per tool (external servers). Omitted when the tool has no catalogued category (e.g. the `exec` dispatcher), which the dashboard buckets as 'Uncategorized'. Present on mcp_tool_call.",
             "examples": ["Error tracking", "Logs", "Feature flags", "Session replays"],
         },
         "$mcp_tool_description": {
             "label": "MCP tool description",
             "description": "The MCP tool's description as advertised to the agent at the time of the call. Useful when triaging errors to see what the agent thought the tool would do — descriptions change over time, so the value captured here is the version the agent actually saw. Only present on mcp_tool_call and the paired $exception event.",
             "examples": [
-                "Run a HogQL/SQL query against PostHog.",
+                "Run a HogQL/SQL query against Flind.",
                 "Fetch the trace referenced by an AI observability URL.",
             ],
         },
@@ -2929,12 +2929,12 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$mcp_error_type": {
             "label": "MCP error type",
-            "description": "Failure category for an errored MCP tool call, for breaking failures down by reason. PostHog's server emits a semantic bucket (missing_context, validation, permission, timeout, rate_limited, api_4xx, api_5xx, internal); external servers using the SDK fall back to the thrown error's type. Only set when $mcp_is_error is true.",
+            "description": "Failure category for an errored MCP tool call, for breaking failures down by reason. Flind's server emits a semantic bucket (missing_context, validation, permission, timeout, rate_limited, api_4xx, api_5xx, internal); external servers using the SDK fall back to the thrown error's type. Only set when $mcp_is_error is true.",
             "examples": ["rate_limited", "validation", "timeout", "api_4xx"],
         },
         "$mcp_error_status": {
             "label": "MCP error status",
-            "description": "Upstream HTTP status code when an MCP tool call failed against a PostHog API (e.g. 429, 500). Only set for API-originated failures.",
+            "description": "Upstream HTTP status code when an MCP tool call failed against a Flind API (e.g. 429, 500). Only set for API-originated failures.",
             "type": "Numeric",
             "examples": [429, 500, 403],
         },
@@ -2945,12 +2945,12 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$mcp_error_field": {
             "label": "MCP error field",
-            "description": "Field path the PostHog API's validation error pointed at, with array indexes normalized to N so one failure mode groups to one value. Only set for validation failures.",
+            "description": "Field path the Flind API's validation error pointed at, with array indexes normalized to N so one failure mode groups to one value. Only set for validation failures.",
             "examples": ["actions__N__inputs__email", "query"],
         },
         "$mcp_validation_fields": {
             "label": "MCP validation fields",
-            "description": "Parameter paths the MCP server's own input schema rejected, as `path:code` (for example `id:invalid_type`). Names from the tool's schema, never caller values. Only set when the server rejected the input before calling PostHog.",
+            "description": "Parameter paths the MCP server's own input schema rejected, as `path:code` (for example `id:invalid_type`). Names from the tool's schema, never caller values. Only set when the server rejected the input before calling Flind.",
             "examples": ["id:invalid_type", "filters.groups:required"],
         },
         "$mcp_input_keys": {
@@ -2975,7 +2975,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$mcp_auth_method": {
             "label": "MCP auth method",
-            "description": "Which credential the MCP request authenticated with, derived from the bearer token's prefix: oauth, personal_api_key, id_jag, none, or unknown. Stamped on every event by PostHog's own MCP server. Use it to tell an OAuth connector apart from an API-key connection — for example when a user works around a broken OAuth flow by switching to a personal API key.",
+            "description": "Which credential the MCP request authenticated with, derived from the bearer token's prefix: oauth, personal_api_key, id_jag, none, or unknown. Stamped on every event by Flind's own MCP server. Use it to tell an OAuth connector apart from an API-key connection — for example when a user works around a broken OAuth flow by switching to a personal API key.",
             "examples": ["oauth", "personal_api_key"],
         },
         "$mcp_auth_failure_reason": {
@@ -2991,7 +2991,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$mcp_missing_scope": {
             "label": "MCP missing scope",
-            "description": "The API scope the PostHog API said was missing when it refused an MCP request. Only set on $mcp_auth_failed with reason insufficient_scope, and only when the API named a specific scope.",
+            "description": "The API scope the Flind API said was missing when it refused an MCP request. Only set on $mcp_auth_failed with reason insufficient_scope, and only when the API named a specific scope.",
             "examples": ["insight:read", "query:read"],
         },
         "$mcp_error_message": {
@@ -3001,7 +3001,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         "$mcp_server_name": {
             "label": "MCP server name",
             "description": "The advertised name of the MCP server that handled the request.",
-            "examples": ["PostHog"],
+            "examples": ["Flind"],
         },
         "$mcp_server_build": {
             "label": "MCP server build",
@@ -3043,7 +3043,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$mcp_llm_model_missing_reason": {
             "label": "MCP model missing reason",
-            "description": "Why PostHog's MCP server captured no model identifier. missing means llm_model was omitted; unknown means the agent explicitly reported unknown; invalid means the argument was blank or not a string; not_captured means a nonempty report was not captured by the analytics SDK; capture_error means analytics preparation failed. Only set when no model was captured. Older events and other MCP servers may omit this property.",
+            "description": "Why Flind's MCP server captured no model identifier. missing means llm_model was omitted; unknown means the agent explicitly reported unknown; invalid means the argument was blank or not a string; not_captured means a nonempty report was not captured by the analytics SDK; capture_error means analytics preparation failed. Only set when no model was captured. Older events and other MCP servers may omit this property.",
             "examples": ["missing", "unknown", "invalid", "not_captured", "capture_error"],
         },
         "$mcp_intent": {
@@ -3075,7 +3075,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
             "label": "MCP conversation ID",
             "description": "Stable, agent-echoed conversation identifier that stitches multiple tool calls into a single logical session. The MCP server mints a UUID when the agent omits one and prompts the agent to reuse it on subsequent calls; subsequent calls within the same conversation carry the same value. Unlike $mcp_session_id this survives reconnects and process restarts. Only present when the server has `enableConversationId` turned on.",
         },
-        # PostHog-specific MCP properties added by the PostHog MCP server on top of the SDK's core
+        # Flind-specific MCP properties added by the Flind MCP server on top of the SDK's core
         # set. They identify which deployment, transport, and consumer produced the event. The
         # @posthog/mcp SDK will continue to carry these — they're not on a deprecation path.
         "$mcp_exec_tool_call_name": {
@@ -3087,7 +3087,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
             "label": "MCP exec inner tool description",
             "description": "In single-exec mode, $mcp_tool_name is always 'exec' (the dispatcher), so the SDK's $mcp_tool_description is the dispatcher's static text on every call. This property carries the description of the inner tool the agent was actually invoking via 'call <tool> ...' — derived server-side by parsing the exec command and looking the inner tool up in our catalog. Only present when an exec call targets a recognized inner tool.",
             "examples": [
-                "Run a HogQL/SQL query against PostHog.",
+                "Run a HogQL/SQL query against Flind.",
                 "List feature flags in the project.",
             ],
         },
@@ -3118,7 +3118,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$mcp_consumer": {
             "label": "MCP consumer",
-            "description": "The upstream surface that initiated the MCP request, supplied via the `x-posthog-mcp-consumer` header. 'posthog-code' is the catch-all every sandbox agent sends, so it covers Signals runs as well as PostHog Desktop; break down by `source` to separate them. 'slack' means it was triggered from Slack.",
+            "description": "The upstream surface that initiated the MCP request, supplied via the `x-posthog-mcp-consumer` header. 'posthog-code' is the catch-all every sandbox agent sends, so it covers Signals runs as well as Flind Desktop; break down by `source` to separate them. 'slack' means it was triggered from Slack.",
             "examples": ["posthog-code", "slack"],
         },
         "$mcp_mode": {
@@ -3128,12 +3128,12 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$mcp_region": {
             "label": "MCP region",
-            "description": "The PostHog cloud region the MCP server routed the request to.",
+            "description": "The Flind cloud region the MCP server routed the request to.",
             "examples": ["us", "eu"],
         },
         "$mcp_scope_preset": {
             "label": "MCP scope preset",
-            "description": "Which kind of caller minted the token behind an MCP request, worked out from its scope set. 'scout' is a Signals scout run, 'research' is a read-only report-research run, 'implementation' is a write-capable implementation run, 'sandbox' is any other server-minted run (a task started from the desktop app or the pipeline before the scratchpad scopes tell research and implementation apart), and 'user' is a person's own token. Stamped on every event by PostHog's own MCP server. Use it to split scratchpad and notes usage by caller, for example to measure scout scratchpad adoption apart from ordinary users.",
+            "description": "Which kind of caller minted the token behind an MCP request, worked out from its scope set. 'scout' is a Signals scout run, 'research' is a read-only report-research run, 'implementation' is a write-capable implementation run, 'sandbox' is any other server-minted run (a task started from the desktop app or the pipeline before the scratchpad scopes tell research and implementation apart), and 'user' is a person's own token. Stamped on every event by Flind's own MCP server. Use it to split scratchpad and notes usage by caller, for example to measure scout scratchpad adoption apart from ordinary users.",
             "examples": ["scout", "research", "implementation", "sandbox", "user"],
         },
         "$mcp_oauth_client_name": {
@@ -3148,25 +3148,25 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$mcp_organization_id": {
             "label": "MCP organization ID",
-            "description": "PostHog organization ID resolved for the authenticated MCP session.",
+            "description": "Flind organization ID resolved for the authenticated MCP session.",
         },
         "$mcp_project_id": {
             "label": "MCP project ID",
-            "description": "PostHog project (team) numeric ID for the active project on the MCP session.",
+            "description": "Flind project (team) numeric ID for the active project on the MCP session.",
         },
         "$mcp_project_name": {
             "label": "MCP project name",
-            "description": "Display name of the active PostHog project on the MCP session.",
+            "description": "Display name of the active Flind project on the MCP session.",
         },
         "$mcp_project_uuid": {
             "label": "MCP project UUID",
-            "description": "PostHog project UUID for the active project on the MCP session.",
+            "description": "Flind project UUID for the active project on the MCP session.",
         },
         "$mcp_read_only": {
             "label": "MCP read-only",
             "description": "Whether the MCP session is operating in read-only mode. When true, write/mutation tools are not registered on the server.",
         },
-        # Unprefixed MCP properties from the older code paths (the mcpcat library and PostHog's
+        # Unprefixed MCP properties from the older code paths (the mcpcat library and Flind's
         # in-tree trackEvent path). They overlap with the $mcp_*-prefixed core properties above
         # and will be retired once @posthog/mcp reaches general availability — they are not yet
         # deprecated, because @posthog/mcp is still in internal testing.
@@ -3236,7 +3236,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "mcp_vendor_client": {
             "label": "MCP vendor client (legacy)",
-            "description": "Older unprefixed variant of $mcp_vendor_client, stamped only by PostHog's hosted MCP server. Coalesce both keys when querying vendor identity directly; the harness resolution in MCP analytics already does.",
+            "description": "Older unprefixed variant of $mcp_vendor_client, stamped only by Flind's hosted MCP server. Coalesce both keys when querying vendor identity directly; the harness resolution in MCP analytics already does.",
             "examples": ["ClaudeCode", "ClaudeAI"],
         },
         "mcp_session_client_name": {
@@ -3335,7 +3335,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$anomaly_source": {
             "label": "Anomaly source",
-            "description": "Where the series comes from. `insight` is a saved insight, and `default` is a series PostHog scores without a saved insight.",
+            "description": "Where the series comes from. `insight` is a saved insight, and `default` is a series Flind scores without a saved insight.",
             "examples": ["insight", "default"],
             "type": "String",
         },
@@ -3587,13 +3587,13 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$ai_input_token_price": {
             "label": "AI input token price (LLM)",
-            "description": "The price per input token used to compute the input cost. Set this to override PostHog's cost calculation.",
+            "description": "The price per input token used to compute the input cost. Set this to override Flind's cost calculation.",
             "examples": [0.000003],
             "type": "Numeric",
         },
         "$ai_output_token_price": {
             "label": "AI output token price (LLM)",
-            "description": "The price per output token used to compute the output cost. Set this to override PostHog's cost calculation.",
+            "description": "The price per output token used to compute the output cost. Set this to override Flind's cost calculation.",
             "examples": [0.000015],
             "type": "Numeric",
         },
@@ -3611,7 +3611,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$ai_cache_write_1h_token_price": {
             "label": "AI 1-hour cache write token price (LLM)",
-            "description": "The price per token written to the 1-hour prompt cache. Set this to override PostHog's cost calculation for 1-hour cache writes.",
+            "description": "The price per token written to the 1-hour prompt cache. Set this to override Flind's cost calculation for 1-hour cache writes.",
             "examples": [0.000006],
             "type": "Numeric",
         },
@@ -3886,7 +3886,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
         },
         "$fbc": {
             "label": "Facebook click ID (fbc)",
-            "description": "The Facebook click ID in the format Meta's Conversions API expects, built when PostHog saw the fbclid so it carries the time of the ad click. Equivalent to the `_fbc` cookie the Meta pixel sets.",
+            "description": "The Facebook click ID in the format Meta's Conversions API expects, built when Flind saw the fbclid so it carries the time of the ad click. Equivalent to the `_fbc` cookie the Meta pixel sets.",
             "examples": ["fb.1.1735689600000.IwAR2xY9zAbCdEf"],
             "type": "String",
         },
@@ -3900,7 +3900,7 @@ CORE_FILTER_DEFINITIONS_BY_GROUP: dict[str, dict[str, CoreFilterDefinition]] = {
     "session_properties": {
         "$session_duration": {
             "label": "Session duration",
-            "description": "The duration of the session being tracked. Learn more about how PostHog tracks sessions in [our documentation](https://posthog.com/docs/user-guides/sessions).\n\nNote: If the duration is formatted as a single number (not `HH:MM:SS`), it's in seconds.",
+            "description": "The duration of the session being tracked. Learn more about how Flind tracks sessions in [our documentation](https://posthog.com/docs/user-guides/sessions).\n\nNote: If the duration is formatted as a single number (not `HH:MM:SS`), it's in seconds.",
             "examples": [30, 146, 2],
             "type": "Numeric",
         },
@@ -4353,7 +4353,7 @@ IGNORED_EVENT_NAMES: list[str] = [
     name for name, defn in CORE_FILTER_DEFINITIONS_BY_GROUP.get("events", {}).items() if is_hidden_from_assistant(defn)
 ]
 
-# Core PostHog events, derived from the taxonomy. Used to determine which events
+# Core Flind events, derived from the taxonomy. Used to determine which events
 # are treated as verified in the Data Management UI and included in typed code generation.
 CORE_EVENTS: list[str] = [name for name in CORE_FILTER_DEFINITIONS_BY_GROUP.get("events", {}) if name != "All events"]
 

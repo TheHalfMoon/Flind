@@ -58,7 +58,7 @@ describe('scoutAiLogic', () => {
         trackerLogic?.unmount()
     })
 
-    // The generic PostHog AI panel is open, so its seed bridge hears the `inbox-scout` option too.
+    // The generic Flind AI panel is open, so its seed bridge hears the `inbox-scout` option too.
     const mountWithOpenPanel = (consent: boolean): void => {
         approved = consent
         initKeaTests(true, undefined, undefined, {

@@ -15,14 +15,14 @@ export function SourcesTab(): JSX.Element {
         <div className="flex flex-col gap-4">
             <SceneSection
                 title="Managed data warehouse sources"
-                description="PostHog can connect to external sources and automatically import data from them into the PostHog data warehouse"
+                description="Flind can connect to external sources and automatically import data from them into the Flind data warehouse"
             >
                 <ManagedSourcesTable />
             </SceneSection>
             <SceneDivider />
             <SceneSection
                 title="Direct connect sources"
-                description="Query these sources live from PostHog. Your data stays where it is, nothing gets imported"
+                description="Query these sources live from Flind. Your data stays where it is, nothing gets imported"
             >
                 <DirectConnectSourcesTable />
             </SceneSection>
@@ -31,7 +31,7 @@ export function SourcesTab(): JSX.Element {
                     <SceneDivider />
                     <SceneSection
                         title="Self-managed data warehouse sources"
-                        description="Tables that PostHog reads in place from your own bucket"
+                        description="Tables that Flind reads in place from your own bucket"
                     >
                         <SelfManagedSourcesTable />
                     </SceneSection>

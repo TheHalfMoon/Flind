@@ -47,7 +47,7 @@ describe("connectCodexCloudAccount", () => {
     await service.begin("attempt-2");
   });
 
-  it("removes the local login file only after PostHog accepted the tokens", async () => {
+  it("removes the local login file only after Flind accepted the tokens", async () => {
     let finishUpload!: (value: UserCodexIntegration) => void;
     const upload = new Promise<UserCodexIntegration>((resolve) => {
       finishUpload = resolve;
@@ -115,7 +115,7 @@ describe("connectCodexCloudAccount", () => {
     });
   });
 
-  it("keeps the local login file when PostHog rejects the tokens", async () => {
+  it("keeps the local login file when Flind rejects the tokens", async () => {
     const client = {
       connectCodexUserIntegration: vi
         .fn()

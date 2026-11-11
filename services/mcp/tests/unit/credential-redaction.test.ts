@@ -40,7 +40,7 @@ describe('credential redaction', () => {
             expected: 'body: password=[REDACTED]&user=jo',
         },
         {
-            name: 'a PostHog personal API key outside a parameter',
+            name: 'a Flind personal API key outside a parameter',
             input: `Authorization: Bearer ${PERSONAL_KEY}`,
             expected: 'Authorization: [REDACTED]',
         },
@@ -111,7 +111,7 @@ describe('credential redaction', () => {
             expected: 'request failed with Bearer [REDACTED]',
         },
         {
-            name: 'a private PostHog token outside a header',
+            name: 'a private Flind token outside a header',
             input: `key supplied: ${PERSONAL_KEY}`,
             expected: 'key supplied: phx_[REDACTED]',
         },

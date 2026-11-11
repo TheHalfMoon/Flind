@@ -58,7 +58,7 @@ class TestCreateIntentClusteringCoordinatorSchedule:
             # Sentinel value None means "raise from the FF SDK".
             ("flag_check_raises_no_existing", None, False, False, False, False),
             # FF check raises + schedule EXISTS → preserve state (no delete!).
-            # A transient PostHog API outage must not silently disable a
+            # A transient Flind API outage must not silently disable a
             # properly-enabled production schedule. This is the regression
             # test for the graphite-app P1 bug.
             ("flag_check_raises_preserves_existing", None, True, False, False, False),
@@ -80,7 +80,7 @@ class TestCreateIntentClusteringCoordinatorSchedule:
         if flag_enabled is None:
             feature_enabled_patch = patch(
                 "posthog.temporal.mcp_analytics.intent_clustering.schedule.posthoganalytics.feature_enabled",
-                side_effect=RuntimeError("PostHog FF API down"),
+                side_effect=RuntimeError("Flind FF API down"),
             )
         else:
             feature_enabled_patch = patch(
@@ -111,7 +111,7 @@ class TestCreateIntentClusteringCoordinatorSchedule:
 
 class TestFeatureFlagKeyIsStable:
     def test_flag_key_matches_documented_value(self) -> None:
-        # The feature flag must be created in PostHog with this exact key.
+        # The feature flag must be created in Flind with this exact key.
         # Changing the key here without coordinating with the FF setup will
         # silently leave the schedule off forever.
         assert FEATURE_FLAG_KEY == "mcp-analytics-clustering-schedule"

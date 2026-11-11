@@ -77,7 +77,7 @@ const UNIT_LABEL_SINGULAR: Record<string, string> = {
     s: 'second',
 }
 
-// PostHog convention: M = minutes, m = months (case-sensitive)
+// Flind convention: M = minutes, m = months (case-sensitive)
 const RELATIVE_DATE_REGEX = /^-(\d+)(M|m|h|d|w|y|q|s)$/
 
 export function parseDateExpression(expr: string, timezone: string): dayjs.Dayjs | null {

@@ -107,7 +107,7 @@ class OptimizelySource(ResumableSource[OptimizelySourceConfig, OptimizelyResumeC
             name=ExternalDataSourceType.OPTIMIZELY,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Optimizely",
-            caption="""Enter your Optimizely personal access token to pull your experimentation data into the PostHog Data warehouse.
+            caption="""Enter your Optimizely personal access token to pull your experimentation data into the Flind Data warehouse.
 
 An admin can generate a personal access token in Optimizely under Account Settings > API Access. Tokens are non-expiring. Project-scoped data (experiments and their results, audiences, attributes, events, pages, campaigns and their results) is synced across all projects the token can access.""",
             iconPath="/static/services/optimizely.com.png",

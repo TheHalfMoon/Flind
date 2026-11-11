@@ -365,7 +365,7 @@ class IssuesListInputAlignment(_AlignmentClassifier):
         super().__init__(
             name="issues_list_input_alignment",
             prompt_template="""
-You are comparing two argument shapes for the PostHog `query-error-tracking-issues-list` MCP tool.
+You are comparing two argument shapes for the Flind `query-error-tracking-issues-list` MCP tool.
 The ACTUAL was produced by an agent in response to USER_PROMPT. The EXPECTED is the shape we want.
 
 Treat these fields as material when EXPECTED sets them:
@@ -418,7 +418,7 @@ class IssueInputAlignment(_AlignmentClassifier):
         super().__init__(
             name="issue_input_alignment",
             prompt_template="""
-You are comparing the ACTUAL arguments an agent passed to PostHog's `query-error-tracking-issue` MCP tool against the EXPECTED shape, given the USER_PROMPT.
+You are comparing the ACTUAL arguments an agent passed to Flind's `query-error-tracking-issue` MCP tool against the EXPECTED shape, given the USER_PROMPT.
 
 Material fields when EXPECTED sets them:
 - `dateRange.date_from` / `dateRange.date_to` — relative windows like `-14d`, `-2w`, `-7d`, and explicit dates are acceptable when equivalent. EXPECTED omitting `dateRange` means the API default range is fine.
@@ -523,7 +523,7 @@ class EventsArgsAlignment(_AlignmentClassifier):
         super().__init__(
             name="events_args_alignment",
             prompt_template="""
-You are comparing the ACTUAL arguments an agent passed to PostHog's `query-error-tracking-issue-events` MCP tool against the EXPECTED shape, given the USER_PROMPT. ACTUAL may contain multiple successful calls; every call must be consistent with EXPECTED.
+You are comparing the ACTUAL arguments an agent passed to Flind's `query-error-tracking-issue-events` MCP tool against the EXPECTED shape, given the USER_PROMPT. ACTUAL may contain multiple successful calls; every call must be consistent with EXPECTED.
 
 Material fields when EXPECTED sets them:
 - `limit` — integer; treat as material when EXPECTED specifies a max or a range. The tool defaults `limit=1`; `limit > 5` without an explicit "show me many" prompt is wrong.

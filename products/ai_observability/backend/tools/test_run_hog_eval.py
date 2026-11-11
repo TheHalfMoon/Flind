@@ -134,8 +134,8 @@ class TestRunHogEvalTestTool(BaseTest):
         mock_response = MagicMock()
         mock_response.results = [
             _make_event(
-                ai_input=[{"role": "user", "content": "What is PostHog?"}],
-                ai_output_choices=[{"message": {"role": "assistant", "content": "PostHog is analytics."}}],
+                ai_input=[{"role": "user", "content": "What is Flind?"}],
+                ai_output_choices=[{"message": {"role": "assistant", "content": "Flind is analytics."}}],
             )
         ]
         mock_query.return_value = mock_response

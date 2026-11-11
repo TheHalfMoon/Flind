@@ -369,7 +369,7 @@ def handle_new_user(
 
     if partner.is_verified:
         # Radar scores the request IP and user agent, which belong to the partner server, not the
-        # end user. A busy partner therefore looks like a bot. PostHog staff vouch for a verified
+        # end user. A busy partner therefore looks like a bot. Flind staff vouch for a verified
         # partner, so its users get an email-only check instead.
         if is_disposable_email(email):
             capture_provisioning_event("account_request", "disposable_email_blocked", partner=partner, region=region)

@@ -1,6 +1,6 @@
 """Delivering one batch to every destination configured for the run.
 
-The load consumer calls this after it has written the batch to the PostHog warehouse. All
+The load consumer calls this after it has written the batch to the Flind warehouse. All
 destinations share one lifecycle: the batch is done only when every one of them has taken it,
 and a destination that fails fails the batch, which is then retried in full.
 
@@ -8,7 +8,7 @@ Retrying in full does not mean writing everything again. Each destination has it
 idempotency key, so a retry after Redshift was briefly unreachable skips Snowflake and the
 warehouse and writes only what is missing.
 
-The PostHog warehouse is not delivered here. It is written by the delta path in the processor
+The Flind warehouse is not delivered here. It is written by the delta path in the processor
 before this runs, and it carries the unsuffixed idempotency key it has always had.
 """
 
@@ -52,7 +52,7 @@ logger = structlog.get_logger(__name__)
 
 
 def external_destinations_for(export_signal: ExportSignalMessage) -> list[ExternalDataDestination]:
-    """The run's destinations, minus the PostHog warehouse, in a stable order.
+    """The run's destinations, minus the Flind warehouse, in a stable order.
 
     Ordered by id so every batch visits them the same way, which keeps the logs readable
     when a run partially fails and retries.
@@ -70,7 +70,7 @@ def external_destinations_for(export_signal: ExportSignalMessage) -> list[Extern
 
 
 def warehouse_is_a_destination(export_signal: ExportSignalMessage) -> bool:
-    """Whether this run writes to the PostHog warehouse at all.
+    """Whether this run writes to the Flind warehouse at all.
 
     An empty list means the warehouse only, which is every run that predates destinations.
     A run that lists destinations but not the warehouse never touches delta: the customer
@@ -158,7 +158,7 @@ def _fail_for_unresolved_destinations(
 ) -> None:
     """Raise if a destination from the run's snapshot no longer delivers here.
 
-    The only reason a snapshotted id can be absent from `resolved` is that it is the PostHog
+    The only reason a snapshotted id can be absent from `resolved` is that it is the Flind
     warehouse (delivered elsewhere, exempt here) or that it was deleted after the run started.
     The warehouse case is fine; the deletion case is not — the run's snapshot promised this
     destination the batch, and `external_destinations_for` silently dropping it would let the

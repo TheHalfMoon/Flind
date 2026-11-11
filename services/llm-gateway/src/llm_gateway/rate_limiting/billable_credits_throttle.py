@@ -5,11 +5,11 @@ from llm_gateway.rate_limiting.throttles import Throttle, ThrottleContext, Throt
 
 _BUCKET_EXHAUSTED_DETAIL = {
     CreditBucket.AI_CREDITS: (
-        "Your team has used its monthly PostHog AI credits. "
+        "Your team has used its monthly Flind AI credits. "
         "Top up at https://app.posthog.com/organization/billing to continue."
     ),
     CreditBucket.POSTHOG_CODE_CREDITS: (
-        "Your team has reached its PostHog Desktop usage limit for this billing period. "
+        "Your team has reached its Flind Desktop usage limit for this billing period. "
         "See https://app.posthog.com/organization/billing for your usage and limits."
     ),
 }

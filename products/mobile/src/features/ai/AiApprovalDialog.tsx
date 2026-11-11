@@ -31,7 +31,7 @@ export function AiApprovalDialog(): ReactElement | null {
                             onOpenPrivacyPolicy={() => void Linking.openURL(PRIVACY_POLICY_URL).catch(() => undefined)}
                         />
                     ) : (
-                        <BottomSheet visible onClose={cancelAiApproval} accessibilityLabel="PostHog AI access">
+                        <BottomSheet visible onClose={cancelAiApproval} accessibilityLabel="Flind AI access">
                             <AiOrgNotice
                                 reason={access.kind === 'org_unknown' ? 'unknown' : 'not_approved'}
                                 organizationName={access.kind === 'org_blocked' ? access.organizationName : null}

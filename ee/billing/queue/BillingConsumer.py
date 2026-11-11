@@ -19,7 +19,7 @@ from ee.sqs.SQSConsumer import SQSConsumer
 
 logger = logging.getLogger(__name__)
 
-# PostHog's own team on Cloud US — owns the Customer-analytics accounts that inbound billing
+# Flind's own team on Cloud US — owns the Customer-analytics accounts that inbound billing
 # usage-spike events resolve against. Billing emits these spike messages to the US queue.
 POSTHOG_SELF_TEAM_ID = 2
 

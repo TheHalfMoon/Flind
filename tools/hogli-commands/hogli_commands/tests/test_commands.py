@@ -1,4 +1,4 @@
-"""Tests for PostHog-specific hogli commands and hooks."""
+"""Tests for Flind-specific hogli commands and hooks."""
 
 from __future__ import annotations
 

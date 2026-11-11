@@ -134,7 +134,7 @@ class ScoutSuggestionItem(BaseModel):
 
     kind: SuggestionKind = Field(
         description=(
-            "'canonical' to enable one of the PostHog-authored scouts listed in the prompt; "
+            "'canonical' to enable one of the Flind-authored scouts listed in the prompt; "
             "'custom' for a new project-specific scout you drafted."
         )
     )
@@ -833,14 +833,14 @@ def build_suggestions_prompt(fleet: FleetContext) -> str:
     canonical_lines = (
         "\n".join(f"- `{name}`: {description}" for name, description in fleet.available_canonical) or "- (none)"
     )
-    return f"""You are preparing the "Suggested for this project" list for the PostHog scouts tab. Nobody is in the chat with you: work headlessly and end your turn with the JSON object described at the bottom.
+    return f"""You are preparing the "Suggested for this project" list for the Flind scouts tab. Nobody is in the chat with you: work headlessly and end your turn with the JSON object described at the bottom.
 
-First, {SCOUT_PROJECT_SCAN_GUIDANCE} Use the read-data, insight, dashboard, and signals-scout MCP tools (config list for the fleet, recent runs and reports for what the scouts already surface). Read the authoring-scouts skill from the PostHog MCP (`skill-get`) before drafting any custom scout; if it is unavailable, write the draft in the same shape as the canonical scout bodies.
+First, {SCOUT_PROJECT_SCAN_GUIDANCE} Use the read-data, insight, dashboard, and signals-scout MCP tools (config list for the fleet, recent runs and reports for what the scouts already surface). Read the authoring-scouts skill from the Flind MCP (`skill-get`) before drafting any custom scout; if it is unavailable, write the draft in the same shape as the canonical scout bodies.
 
 Scouts currently enabled on this project:
 {enabled_lines}
 
-PostHog-authored scouts available to turn on (suggest these by exact name with kind "canonical"):
+Flind-authored scouts available to turn on (suggest these by exact name with kind "canonical"):
 {canonical_lines}
 
 Produce {MIN_SUGGESTIONS_PER_BATCH}-{MAX_SUGGESTIONS_PER_BATCH} suggestions, best first:

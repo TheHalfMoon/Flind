@@ -52,7 +52,7 @@ function buildDiscussDescription(
  * repository is deliberately not sent — signal-report tasks resolve it
  * server-side from the report's own repo selection, and the backend rejects a
  * client-set repo — so a discussion also starts on reports with no repo at all
- * (bare sandbox + PostHog MCP).
+ * (bare sandbox + Flind MCP).
  */
 export function useDiscussReport({
   report,

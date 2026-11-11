@@ -43,7 +43,7 @@ from products.posthog_ai.evals.experiments.seeders import ROLLOUT_EXPERIMENT_NAM
 from products.posthog_ai.evals.offline_config import offline_suite
 
 # Event name chosen to be obviously fictional so the agent can't plausibly
-# justify it as a typo of a real PostHog event in the seeded team.
+# justify it as a typo of a real Flind event in the seeded team.
 UNKNOWN_EVENT_NAME = "totally_made_up_event_qzx"
 
 

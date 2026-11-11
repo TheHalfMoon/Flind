@@ -34,7 +34,7 @@ from products.signals.backend.activity_summary.render import (
 )
 from products.tasks.backend.facade.user_task_summaries import list_user_task_summaries
 
-# Tasks a person started: in PostHog AI, in Slack, or by hand in the web or desktop app. Scouts,
+# Tasks a person started: in Flind AI, in Slack, or by hand in the web or desktop app. Scouts,
 # reports and workflows start tasks under a person's name too, and those are not the person's intent.
 TASK_ORIGIN_PRODUCTS = ("posthog_ai", "slack", "user_created")
 # The build runs on a worker, not a request, so it can wait longer than the writer's `REDIS_TIMEOUT_SECONDS`.

@@ -8,7 +8,7 @@ command telemetry.
 
 On the pr-assets route, auth reuses a GitHub token from GH_TOKEN/GITHUB_TOKEN or the gh CLI (`gh auth token`),
 so it works with or without gh installed as long as a token with write access to a
-PostHog org repo is available. The target repo is public by design: GitHub renders PR
+Flind org repo is available. The target repo is public by design: GitHub renders PR
 images through its anonymous camo proxy, which requires anonymous read. The command
 warns about this on every run.
 """

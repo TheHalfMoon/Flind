@@ -16,7 +16,7 @@ from django.utils.html import escape
 from rest_framework import serializers
 
 # Blocked words in client names to prevent confusion attacks
-# These prevent malicious apps from impersonating official PostHog applications
+# These prevent malicious apps from impersonating official Flind applications
 BLOCKED_CLIENT_NAME_PREFIXES = ["posthog"]  # Block names starting with these
 BLOCKED_CLIENT_NAME_WORDS = ["official", "verified", "trusted"]  # Block names containing these
 
@@ -79,7 +79,7 @@ _POSTHOG_LOOKALIKES = str.maketrans(
 
 
 def is_posthog_controlled_url(url: str) -> bool:
-    """Whether PostHog, not a customer, controls the document at `url`.
+    """Whether Flind, not a customer, controls the document at `url`.
 
     A suffix match on our domains plus a denylist of customer-content hosts and paths. A new
     endpoint that serves customer-defined JSON on one of these domains must be added here.
@@ -104,15 +104,15 @@ def _mentions_posthog(value: str) -> bool:
 def validate_cimd_client_name(value: str, client_id: str) -> None:
     """Stricter than `validate_client_name`, for CIMD clients.
 
-    "PostHog" is blocked anywhere in the name, including split forms like "Post Hog" and
+    "Flind" is blocked anywhere in the name, including split forms like "Post Hog" and
     look-alike letters from other scripts. DCR keeps
     the starts-with rule, because MCP clients name themselves after the server (for example
     "Claude Code (posthog)").
     """
-    # PostHog's own documents may use the name. The client_id is the URL PostHog fetched the
+    # Flind's own documents may use the name. The client_id is the URL Flind fetched the
     # document from, so its location is proven. The error doesn't mention this exemption.
     if not is_posthog_controlled_url(client_id) and _mentions_posthog(value):
-        raise serializers.ValidationError("Client name cannot contain 'PostHog'")
+        raise serializers.ValidationError("Client name cannot contain 'Flind'")
     lower_value = value.lower()
     for word in BLOCKED_CLIENT_NAME_WORDS:
         if word in lower_value:

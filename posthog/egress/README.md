@@ -1,14 +1,14 @@
 # Outbound egress: rate limiting, observability, transport
 
-General-purpose controls for the calls PostHog makes _out_ to third-party APIs.
+General-purpose controls for the calls Flind makes _out_ to third-party APIs.
 A new outbound integration that needs rate limiting or egress telemetry belongs here as a `<domain>/` package (see [Adding a new egress domain](#adding-a-new-egress-domain)), never hand-rolled around `requests`.
 Three lanes, one per subpackage:
 
-- **`limiter/`**: shared, Redis-backed budgets so every worker process draws from one limit and PostHog stays inside an external API's rate limit, with priority lanes so bulk traffic can't starve critical traffic.
+- **`limiter/`**: shared, Redis-backed budgets so every worker process draws from one limit and Flind stays inside an external API's rate limit, with priority lanes so bulk traffic can't starve critical traffic.
 - **`observability/`**: the metrics analog, with request volume plus the API's own rate-limit headers, on one Prometheus metric set.
 - **`transport/`**: the HTTP client that composes the other two. Each request is gated _and_ recorded by construction, so no caller can bypass either.
 
-This is _outbound_ egress: what PostHog sends.
+This is _outbound_ egress: what Flind sends.
 It is unrelated to `posthog.rate_limit`, which throttles _inbound_ DRF requests from clients.
 
 All three lanes are domain-free.
@@ -88,7 +88,7 @@ Each domain registers its policy with `register_policy(domain, provider)`.
 A provider takes the full limiter key and runs at acquire time, so the budget follows settings changes and per-scope state rather than freezing at import.
 Most domains use `per_minute_and_hourly_policy`, which reads a per-minute and an hourly ceiling from settings.
 
-Where the provider publishes a limit, the budget stays under it, so the caller's reactive backoff absorbs drift (clock skew, multi-process races, traffic PostHog does not count).
+Where the provider publishes a limit, the budget stays under it, so the caller's reactive backoff absorbs drift (clock skew, multi-process races, traffic Flind does not count).
 Where the provider publishes none, the budget is an operator ceiling on spend, meant to be raised in settings as real traffic grows.
 
 ### Priority lanes
@@ -119,7 +119,7 @@ Request volume and the API's rate-limit headers land on one metric set, whicheve
 
 - **Counter** (for example `github_integration_api_requests_total`): request volume, always recorded, including errors, rate-limited responses, and transport exceptions that raise before a response. Labeled `<scope>, method, endpoint, status_code, source`.
 - **Gauges** (for example `github_integration_api_rate_limit_remaining`): last-observed budget headroom parsed from the API's response headers. Labeled `<scope>, resource`, with no `source`, because the budget is shared across sources. The gauges are optional: a domain declares only the ones its API reports, and parses only headers the API documents.
-- **Decisions** (`outbound_rate_limit_decisions_total`): one sample per limiter admission, labeled `domain, scope, source, priority, granted`. `scope` is the id segment of the limiter key, the same value the domain's request counter records, so a denial joins to the budget owner it hit. A policy opts in with `scope_in_metrics=True`, as the GitHub policies do; any other domain records an empty `scope`, so a key scoped per PostHog team adds no series per team.
+- **Decisions** (`outbound_rate_limit_decisions_total`): one sample per limiter admission, labeled `domain, scope, source, priority, granted`. `scope` is the id segment of the limiter key, the same value the domain's request counter records, so a denial joins to the budget owner it hit. A policy opts in with `scope_in_metrics=True`, as the GitHub policies do; any other domain records an empty `scope`, so a key scoped per Flind team adds no series per team.
 
 Each domain keeps its own metric names, so existing dashboards stay valid.
 The `source` label (e.g. `integration`, `visual_review`, `warehouse`) carries per-subsystem attribution.
@@ -156,8 +156,8 @@ No rule covers the other domains, another language, or a caller under `tools/`.
 ## The one identity rule
 
 Everything keys on the **budget owner in the external API's own id space**: for GitHub the App **installation id**, because that is what GitHub meters.
-It is **never** a PostHog DB row id (`Integration.id`).
-Several PostHog integration rows can point at the same installation (multiple projects, one org), and GitHub gives that installation one shared budget: key a gauge by the row and one real budget splits into N flip-flopping series; key by the installation and you get one true series.
+It is **never** a Flind DB row id (`Integration.id`).
+Several Flind integration rows can point at the same installation (multiple projects, one org), and GitHub gives that installation one shared budget: key a gauge by the row and one real budget splits into N flip-flopping series; key by the installation and you get one true series.
 Per-caller attribution is the `source` label's job, not the identity's.
 
 An identity that must not reach a metric label in plain form, such as a token, is hashed first (see `browserless/`).

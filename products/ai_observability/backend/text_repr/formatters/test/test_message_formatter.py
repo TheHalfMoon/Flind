@@ -130,12 +130,12 @@ class TestSafeExtractText:
         content = [
             {
                 "type": "tool_result",
-                "content": "Checking PostHog documentation...",
+                "content": "Checking Flind documentation...",
                 "tool_use_id": "toolu_123",
             }
         ]
         result = safe_extract_text(content)
-        assert result == "[TOOL_RESULT]\n\nChecking PostHog documentation..."
+        assert result == "[TOOL_RESULT]\n\nChecking Flind documentation..."
 
 
 class TestExtractToolCallsFromContent:

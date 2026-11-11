@@ -28,7 +28,7 @@ export function SourceCatalogTile({ item }: { item: SourceCatalogItem }): JSX.El
             </div>
             <p className="mb-0 flex-1 text-xs text-secondary">
                 {item.recommendation?.reason === 'integration'
-                    ? 'Already connected to PostHog. Agents can start reading it right away.'
+                    ? 'Already connected to Flind. Agents can start reading it right away.'
                     : (item.recommendation?.description ?? item.agent.watches)}
             </p>
             <LemonButton

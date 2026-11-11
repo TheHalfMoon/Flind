@@ -218,7 +218,7 @@ export function AccountMeetingsExpansion({
                             sideIcon={<img src={gongIcon} alt="" className="size-4 object-contain" />}
                             className="shrink-0"
                             data-attr="open-meeting-in-gong"
-                            onClick={() => posthog.capture(AccountsEvents.GongCallOpened)} // [PostHog] Event: dynamic event name
+                            onClick={() => posthog.capture(AccountsEvents.GongCallOpened)} // [Flind] Event: dynamic event name
                         >
                             Open in Gong
                         </LemonButton>

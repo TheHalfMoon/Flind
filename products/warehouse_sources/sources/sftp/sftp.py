@@ -389,7 +389,7 @@ def validate_credentials(
 
     if not files:
         raise SFTPCredentialsError(
-            f"{NO_MATCHING_FILES_ERROR} in '{normalize_remote_path(path)}'. PostHog connected to the server "
+            f"{NO_MATCHING_FILES_ERROR} in '{normalize_remote_path(path)}'. Flind connected to the server "
             "but found nothing to import there. Check the folder, the file pattern, and the file format."
         )
 

@@ -1,18 +1,18 @@
-"""Who a person asking from GitHub is in PostHog, and which projects they may act in.
+"""Who a person asking from GitHub is in Flind, and which projects they may act in.
 
 Every product that starts work on behalf of a GitHub user resolves them here, so one set of rules
 decides who may start a run. The steps are:
 
-1. ``users_linked_to_github_account``: the PostHog accounts linked to the GitHub account, matched on
+1. ``users_linked_to_github_account``: the Flind accounts linked to the GitHub account, matched on
    GitHub's numeric user id, never on the login. A login can be renamed and then claimed by someone
-   else, but the id stays with the account. Only identities that GitHub itself confirmed to PostHog
-   count: the GitHub account a user connected in PostHog, or the one they log in with. A login typed
+   else, but the id stays with the account. Only identities that GitHub itself confirmed to Flind
+   count: the GitHub account a user connected in Flind, or the one they log in with. A login typed
    into a profile or saved on a project integration does not.
 2. ``resolve_requester``: the linked accounts that the security rules allow, and the candidate
    projects each one is a member of. Channels that link accounts another way, such as Slack, call it
    with their own accounts.
 3. ``members_with_resource_access``: the members that also have the access a product declares, in
-   PostHog access control.
+   Flind access control.
 
 One person can have several linked accounts, for example a work and a personal one. Every link
 needed that person's approval, so all of them belong to the person. The caller picks the project,

@@ -53,7 +53,7 @@ class JustCallSource(ResumableSource[JustCallSourceConfig, JustCallResumeConfig]
             name=ExternalDataSourceType.JUSTCALL,
             category=DataWarehouseSourceCategory.COMMUNICATION,
             label="JustCall",
-            caption="""Enter your JustCall API credentials to pull your JustCall data into the PostHog Data warehouse.
+            caption="""Enter your JustCall API credentials to pull your JustCall data into the Flind Data warehouse.
 
 Generate an API key and secret under **Account Settings → Developers (APIs and Webhooks)** in your [JustCall dashboard](https://app.justcall.io/). The credentials have read access to your account's calls, texts, contacts, and phone numbers.""",
             iconPath="/static/services/justcall.png",

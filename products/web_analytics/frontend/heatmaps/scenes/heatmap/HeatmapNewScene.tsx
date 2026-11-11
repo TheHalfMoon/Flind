@@ -313,7 +313,7 @@ function PublicBackgroundChoice(): JSX.Element {
                 <LemonBanner type="warning">
                     <div className="flex flex-col gap-3">
                         <div>
-                            The page URL's origin must be authorized before PostHog can embed it. Screenshot does not
+                            The page URL's origin must be authorized before Flind can embed it. Screenshot does not
                             require authorization.
                         </div>
                         {authorizationDisabledReason ? (
@@ -406,7 +406,7 @@ function ChooseBackgroundStep(): JSX.Element {
                             <div className="flex-1 min-w-48">
                                 <h3 className="mb-1">Capture from your browser</h3>
                                 <p className="text-muted text-sm mb-0">
-                                    Save the signed-in page using the toolbar's “Save to PostHog” action.
+                                    Save the signed-in page using the toolbar's “Save to Flind” action.
                                 </p>
                             </div>
                             <LemonButton

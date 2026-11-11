@@ -23,7 +23,7 @@ const BUILT_IN_TRIGGER_LABELS: Record<BuiltInTriggerType, string> = {
     schedule: 'on a schedule',
     tracking_pixel: 'when a tracking pixel loads',
     batch: 'when a batch run starts',
-    'internal-event': 'when PostHog records',
+    'internal-event': 'when Flind records',
     api: 'when your code sends it through the API',
 }
 

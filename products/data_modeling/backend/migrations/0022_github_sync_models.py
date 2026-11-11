@@ -93,7 +93,7 @@ class Migration(migrations.Migration):
                     "auto_merge_prs",
                     models.BooleanField(
                         default=False,
-                        help_text="Auto-merge PRs created by PostHog for this env",
+                        help_text="Auto-merge PRs created by Flind for this env",
                     ),
                 ),
                 (

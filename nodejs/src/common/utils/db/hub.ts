@@ -54,13 +54,13 @@ export async function createHub(config: Partial<PluginsServerConfig> = {}): Prom
     logger.info('👍', `Ingestion Redis ready`)
 
     const teamManager = new TeamManager(postgres)
-    logger.info('🤔', `Connecting to PostHog Redis...`)
+    logger.info('🤔', `Connecting to Flind Redis...`)
     const posthogRedisPool = createRedisPoolFromConfig({
         connection: createPosthogRedisConnectionConfig(serverConfig),
         poolMinSize: serverConfig.REDIS_POOL_MIN_SIZE,
         poolMaxSize: serverConfig.REDIS_POOL_MAX_SIZE,
     })
-    logger.info('👍', `PostHog Redis ready`)
+    logger.info('👍', `Flind Redis ready`)
 
     const pubSub = new PubSub(redisPool)
     await pubSub.start()

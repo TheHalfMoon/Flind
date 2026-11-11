@@ -102,7 +102,7 @@ function ScannerPromptField({
                         onClick={() => openMax()}
                         data-attr="replay-vision-write-prompt-with-ai"
                     >
-                        {promptWasDrafted ? 'Rewrite with PostHog AI' : 'Write with PostHog AI'}
+                        {promptWasDrafted ? 'Rewrite with Flind AI' : 'Write with Flind AI'}
                     </LemonButton>
                 )}
             </div>

@@ -99,7 +99,7 @@ class PipedriveSource(
             category=DataWarehouseSourceCategory.CRM,
             label="Pipedrive",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Pipedrive API token to sync your Pipedrive CRM data into the PostHog Data warehouse.
+            caption="""Enter your Pipedrive API token to sync your Pipedrive CRM data into the Flind Data warehouse.
 
 You can find your personal API token in Pipedrive under **Settings > Personal preferences > API**. The token inherits your user's permissions, so make sure your user can access the data you want to sync.""",
             iconPath="/static/services/pipedrive.png",
@@ -126,14 +126,14 @@ You can find your personal API token in Pipedrive under **Settings > Personal pr
                     ),
                 ],
             ),
-            webhookSetupCaption="""PostHog registers one webhook on your Pipedrive account using your API token. Pipedrive does not sign deliveries, so PostHog generates HTTP auth credentials, sets them on the webhook, and rejects any delivery that does not send them back.
+            webhookSetupCaption="""Flind registers one webhook on your Pipedrive account using your API token. Pipedrive does not sign deliveries, so Flind generates HTTP auth credentials, sets them on the webhook, and rejects any delivery that does not send them back.
 
 **Manual setup** (only needed if automatic registration failed):
 
 1. Go to **Tools and apps > Webhooks** in Pipedrive and click **Create new webhook**
 2. Paste the webhook URL shown below into the **Endpoint URL** field
 3. Set both **Event action** and **Event object** to **All**, and leave the payload version on **v2**
-4. Fill in **HTTP Auth username** and **HTTP Auth password**, then enter the same two values below so PostHog can verify deliveries
+4. Fill in **HTTP Auth username** and **HTTP Auth password**, then enter the same two values below so Flind can verify deliveries
 5. Click **Save**
 
 Deletions in Pipedrive are not applied to tables synced by webhook. Switch a table back to a full sync to drop deleted rows.""",
@@ -155,7 +155,7 @@ Deletions in Pipedrive are not applied to tables synced by webhook. Switch a tab
                         type=SourceFieldInputConfigType.PASSWORD,
                         required=True,
                         placeholder="",
-                        caption="The HTTP auth password set on the Pipedrive webhook. PostHog checks both values on every delivery.",
+                        caption="The HTTP auth password set on the Pipedrive webhook. Flind checks both values on every delivery.",
                         secret=True,
                     ),
                 ],

@@ -226,7 +226,7 @@ export function FeatureFlag({ id }: FeatureFlagLogicProps): JSX.Element {
         getAccessControlDisabledReason(AccessControlResourceType.Workflow, AccessControlLevel.Editor) ??
         (broadcastCohortLoading ? FINDING_FLAG_PEOPLE_MESSAGE : broadcastNoOneReason(featureFlag))
 
-    // Expose the flag's release conditions to PostHog AI so it can answer "who does this match?"
+    // Expose the flag's release conditions to Flind AI so it can answer "who does this match?"
     // and build an equivalent insight. The blast-radius endpoint only returns counts, so without
     // this the agent on a flag page has no visibility into the targeting.
     const featureFlagContext = useMemo(

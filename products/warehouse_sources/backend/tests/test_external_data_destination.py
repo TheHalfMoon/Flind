@@ -80,7 +80,7 @@ class TestResolveDestinations(BaseTest):
         )
 
         assert resolve_destinations(self.schema) == []
-        # An empty id list means "the PostHog warehouse only", which this table never picked.
+        # An empty id list means "the Flind warehouse only", which this table never picked.
         with self.assertRaises(NoActiveDestinationsError):
             destination_ids_for_run(self.schema)
 

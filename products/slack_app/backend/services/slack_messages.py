@@ -181,7 +181,7 @@ def decode_slack_event_text(slack: SlackIntegration, integration: WorkspaceInteg
     handler can't drift back into the original mention-eating bug.
 
     Also decodes Slack's escaped entities, because this text feeds task titles and
-    descriptions that render in the PostHog UI, where an undecoded `&gt;` shows up
+    descriptions that render in the Flind UI, where an undecoded `&gt;` shows up
     literally.
     """
     bot_user_id = get_cached_bot_user_id(slack, integration)
@@ -266,7 +266,7 @@ def flatten_block_text(node: Any) -> list[str]:
 
 
 def extract_message_text(msg: dict) -> str:
-    # Always include `text` and `blocks`/`attachments`: PostHog's own alert templates put
+    # Always include `text` and `blocks`/`attachments`: Flind's own alert templates put
     # the headline in `text` and the values/details in blocks. Dedup so a string repeated
     # across both (e.g. text == header block) shows up once.
     pieces: list[str] = []
@@ -598,7 +598,7 @@ def collect_thread_messages(
     for index, msg in enumerate(raw_messages):
         # Skip our own bot's posts to avoid loops where the agent ingests its own replies.
         # Never skip the thread root: the agent only ever posts as a reply, so msg 0 is
-        # always the originating message (e.g. a PostHog alert) that's the actual context
+        # always the originating message (e.g. a Flind alert) that's the actual context
         # for the task. Filtering it by bot_id breaks workspaces where the alerting Slack
         # app and the `@PostHog` code app share an installation identity.
         if index > 0 and our_bot_id and msg.get("bot_id") == our_bot_id:
@@ -713,7 +713,7 @@ class RunFooter:
     # The project the thread's task belongs to, so a reader can tell which project's
     # data the answer was drawn from.
     project: str | None = None
-    # Whose plan pays for the run, for example "Your ChatGPT plan". Absent on PostHog credits.
+    # Whose plan pays for the run, for example "Your ChatGPT plan". Absent on Flind credits.
     plan: str | None = None
     # Whether the run shares charts as insight links instead of images, so reply analytics can
     # compare the two delivery modes. Not rendered.
@@ -779,7 +779,7 @@ _SLACK_USER_ID = re.compile(r"[UW][A-Z0-9]+")
 
 
 def _plan_label(state: dict[str, Any] | None, *, task_id: Any, integration_id: int | None) -> str | None:
-    """Whose plan pays for the run, or `None` on PostHog credits.
+    """Whose plan pays for the run, or `None` on Flind credits.
 
     The person who sent the turn reads "Your". When someone who joined the thread sent it, the
     reply mentions the thread creator, so everyone reading can see and reach whose plan pays.
@@ -814,7 +814,7 @@ def load_run_footer(
     written, so failing to describe the run must not cost the reader the answer.
 
     The task link is for everyone, since the task page enforces access itself. It is the
-    only link: the task page carries its own link into PostHog Desktop.
+    only link: the task page carries its own link into Flind Desktop.
 
     ``integration_id`` is the install the reply is posted through, and the workspace
     behind it is what the project segment is judged against. Required rather than
@@ -848,7 +848,7 @@ def load_run_footer(
             ),
             plan=plan,
             chart_links=bool((run.state or {}).get("slack_chart_links")),
-            # A run on someone's own plan is not paid with PostHog credits, so its cost says nothing.
+            # A run on someone's own plan is not paid with Flind credits, so its cost says nothing.
             thread_cost_usd=_thread_cost(run) if include_thread_cost and plan is None else None,
         )
     except Exception:
@@ -859,7 +859,7 @@ def load_run_footer(
 def _thread_cost(run: "TaskRunDTO") -> Decimal | None:
     """What the thread's task spent on models so far, or `None` when unknown.
 
-    Reads the same task usage that PostHog Desktop shows, which sums the task's `$ai_generation`
+    Reads the same task usage that Flind Desktop shows, which sums the task's `$ai_generation`
     events. Those events arrive with a short delay and the usage is cached for a minute, so the
     newest requests can be missing here. A later reply's total then includes them.
     """
@@ -1062,7 +1062,7 @@ def app_home_url(integration: WorkspaceIntegration, *, tab: str = "home") -> str
 def personal_integrations_url(team_id: int) -> str:
     """Where someone connects their own GitHub, so @PostHog opens pull requests as them.
 
-    Connecting requires an authenticated PostHog session, so every surface that asks for it
+    Connecting requires an authenticated Flind session, so every surface that asks for it
     deep-links to this settings page instead of starting an OAuth flow from Slack.
     """
     return _public_url(f"/project/{team_id}/settings/user-personal-integrations")
@@ -1074,7 +1074,7 @@ def ai_subscriptions_url(team_id: int) -> str:
 
 
 def project_web_url(team_id: int) -> str:
-    """Absolute ``/project/<id>`` base for links into this project's PostHog app."""
+    """Absolute ``/project/<id>`` base for links into this project's Flind app."""
     return _public_url(f"/project/{team_id}")
 
 
@@ -1093,7 +1093,7 @@ def _public_url(path: str) -> str:
 
 
 def viewer_has_code_access(integration: WorkspaceIntegration, slack_user_id: str | None) -> bool:
-    """Whether the Slack identity reading this can open a PostHog Code link.
+    """Whether the Slack identity reading this can open a Flind Code link.
 
     Asked about the reader rather than the task's creator: the two can differ, and a link
     is only useful to the person looking at it. Fail closed — an unlinked identity or a

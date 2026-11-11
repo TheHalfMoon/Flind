@@ -144,7 +144,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.clockodo.com/#tag/UserReport",
         "columns": {
             "users_id": "Identifier of the co-worker the report covers.",
-            "year": "Year the report covers. Added by PostHog from the requested year, which the API does not return on the row.",
+            "year": "Year the report covers. Added by Flind from the requested year, which the API does not return on the row.",
             "users_name": "Name of the co-worker.",
             "users_email": "Email address of the co-worker.",
             "users_number": "Personnel number of the co-worker.",

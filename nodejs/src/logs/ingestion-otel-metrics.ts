@@ -4,7 +4,7 @@ import { createCounterWithExemplars, createHistogramWithExemplars, swallowing } 
 
 /**
  * OTLP-pushed twins of the core logs-ingestion prom counters. The prom side keeps
- * feeding the scrape/VictoriaMetrics dashboards; these land in the PostHog metrics
+ * feeding the scrape/VictoriaMetrics dashboards; these land in the Flind metrics
  * product through the exporter installed by initMetrics (common/metrics/otel-metrics.ts),
  * with per-replica resource identity instead of the bridge's collapsed scrape identity.
  *

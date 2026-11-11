@@ -144,7 +144,7 @@ class TestChannelApprovalInteractivity(_ChannelApprovalTestBase):
         assert row.approved_at is not None
         assert row.approved_by_id == self.member_user.id
 
-        self._assert_outcome_posted(mock_slack_cls, "enabled the PostHog Slack app")
+        self._assert_outcome_posted(mock_slack_cls, "enabled the Flind Slack app")
         self._assert_ephemeral_deleted(mock_post)
         # Context cache cleared so a forwarded click can't replay this approval.
         assert cache.get(_picker_context_cache_key(self.context_token)) is None
@@ -251,7 +251,7 @@ class TestChannelApprovalInteractivity(_ChannelApprovalTestBase):
             ).count()
             == 1
         )
-        self._assert_outcome_posted(mock_slack_cls, "enabled the PostHog Slack app")
+        self._assert_outcome_posted(mock_slack_cls, "enabled the Flind Slack app")
         self._assert_ephemeral_deleted(mock_post)
 
     def test_deny_by_org_member_posts_dismissal(self, mock_slack_cls, mock_post):
@@ -265,7 +265,7 @@ class TestChannelApprovalInteractivity(_ChannelApprovalTestBase):
             slack_workspace_id=self.slack_team_id, slack_channel_id=self.slack_channel_id
         ).exists()
         assert cache.get(_picker_context_cache_key(self.context_token)) is None
-        self._assert_outcome_posted(mock_slack_cls, "dismissed the PostHog Slack app")
+        self._assert_outcome_posted(mock_slack_cls, "dismissed the Flind Slack app")
         self._assert_ephemeral_deleted(mock_post)
 
     def test_deny_by_non_member_posts_rejection(self, mock_slack_cls, mock_post):

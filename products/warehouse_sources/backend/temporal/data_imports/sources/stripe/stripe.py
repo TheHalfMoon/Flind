@@ -1700,7 +1700,7 @@ def stripe_source(
     api_key_provider: Optional[Callable[[], str]] = None,
     include_zero_balance_customers: bool = False,
 ):
-    # Only the endpoints with a PostHog-managed canonical schema have column hints; the rest let the
+    # Only the endpoints with a Flind-managed canonical schema have column hints; the rest let the
     # pipeline infer their columns from the rows Stripe returns.
     table_name = f"stripe_{endpoint.lower()}"
     column_mapping = get_dlt_mapping_for_external_table(table_name) if table_name in external_tables else {}
@@ -2078,7 +2078,7 @@ def create_webhook(
             params={
                 "url": webhook_url,
                 "enabled_events": filtered_events,  # type: ignore
-                "description": "PostHog data warehouse webhook",
+                "description": "Flind data warehouse webhook",
                 # Stripe renders delivered events at the account's default version unless the
                 # endpoint pins one, so an account on basil or later would send reshaped Invoice /
                 # Subscription payloads whose moved fields the canonical schema reads as NULL.
@@ -2103,7 +2103,7 @@ def create_webhook(
         if isinstance(e, stripe_lib.APIConnectionError):
             return WebhookCreationResult(
                 success=False,
-                error="PostHog couldn't reach Stripe to create the webhook. Select Try again, or set up the webhook manually below.",
+                error="Flind couldn't reach Stripe to create the webhook. Select Try again, or set up the webhook manually below.",
             )
 
         # Check account access before the permission branch — an account-access rejection can carry a
@@ -2144,7 +2144,7 @@ def create_webhook(
                 # cannot grant it. Manual setup is the only route for an app-connected source.
                 return WebhookCreationResult(
                     success=False,
-                    error="The PostHog Stripe app cannot create webhooks. Set up the webhook manually below.",
+                    error="The Flind Stripe app cannot create webhooks. Set up the webhook manually below.",
                 )
             return WebhookCreationResult(
                 success=False,
@@ -2351,7 +2351,7 @@ def create_pinned_webhook_replacement(
             params={
                 "url": webhook_url,
                 "enabled_events": enabled_events,  # type: ignore[typeddict-item]
-                "description": endpoint.description or "PostHog data warehouse webhook",
+                "description": endpoint.description or "Flind data warehouse webhook",
                 "api_version": api_version,  # type: ignore[typeddict-item]
             }
         )

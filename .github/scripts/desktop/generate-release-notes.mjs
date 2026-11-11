@@ -77,7 +77,7 @@ async function readPullRequests(numbers) {
                 Authorization: `Bearer ${process.env.GH_TOKEN}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ query: `query { repository(owner: "PostHog", name: "posthog") { ${fields} } }` }),
+            body: JSON.stringify({ query: `query { repository(owner: "Flind", name: "posthog") { ${fields} } }` }),
         });
         if (!response.ok) throw new Error(`GitHub GraphQL request failed: ${response.status}`);
         const payload = await response.json();

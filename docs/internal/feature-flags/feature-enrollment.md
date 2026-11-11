@@ -17,10 +17,10 @@ The matcher merges request overrides ahead of the database, so the flag is live 
 ## What it is used for
 
 Feature enrollment powers the early access feature (EAF) system.
-When a person opts in through the UI, PostHog sets a person property like `$feature_enrollment/my-feature` to the value `"true"` (stored as a string, not a boolean).
+When a person opts in through the UI, Flind sets a person property like `$feature_enrollment/my-feature` to the value `"true"` (stored as a string, not a boolean).
 
-PostHog enables enrollment only for features in **active stages**: Alpha, Beta, and General Availability.
-The Concept stage lets people register interest, but does not enable enrollment: PostHog does not set `feature_enrollment` on the flag, so opted-in people are not served through the enrollment shortcut.
+Flind enables enrollment only for features in **active stages**: Alpha, Beta, and General Availability.
+The Concept stage lets people register interest, but does not enable enrollment: Flind does not set `feature_enrollment` on the flag, so opted-in people are not served through the enrollment shortcut.
 
 Concept turns off the enrollment shortcut, not the flag's normal release-condition evaluation.
 A flag auto-created for the feature starts at `rollout_percentage: 0`, so it serves nobody until the feature reaches an active stage.
@@ -30,7 +30,7 @@ Demoting a feature back to Concept clears the enrollment marker but leaves the r
 Example flow:
 
 1. A product team creates an early access feature "New Dashboard" in Alpha stage, linked to feature flag `new-dashboard`.
-2. PostHog sets `filters.feature_enrollment` to `true` on the flag (only because it is in an active stage).
+2. Flind sets `filters.feature_enrollment` to `true` on the flag (only because it is in an active stage).
 3. A person opts in through the early access features UI.
 4. posthog-js sets `$feature_enrollment/new-dashboard` to `"true"` on the person and sends it as a request override.
 5. On the next `/flags` call, the matcher sees the property and the person gets the feature.

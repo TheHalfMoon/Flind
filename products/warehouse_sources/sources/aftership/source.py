@@ -57,7 +57,7 @@ class AftershipSource(ResumableSource[AftershipSourceConfig, AftershipResumeConf
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="AfterShip",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your AfterShip API key to pull your shipment tracking data into the PostHog Data warehouse.
+            caption="""Enter your AfterShip API key to pull your shipment tracking data into the Flind Data warehouse.
 
 You can create a key in the AfterShip admin under **Settings → API keys**.
 

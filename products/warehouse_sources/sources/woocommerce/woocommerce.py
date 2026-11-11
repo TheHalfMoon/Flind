@@ -35,10 +35,10 @@ DEFAULT_PER_PAGE = 100
 # frequently block the default `python-requests` User-Agent outright, returning a 403
 # before the request ever reaches WooCommerce. Identify ourselves with a stable,
 # non-default agent so those layers let legitimate sync traffic through.
-WOOCOMMERCE_USER_AGENT = "PostHog Data Warehouse (WooCommerce source; +https://posthog.com)"
+WOOCOMMERCE_USER_AGENT = "Flind Data Warehouse (WooCommerce source; +https://posthog.com)"
 # Name given to every webhook we register, so a store owner can tell ours apart in
 # WooCommerce > Settings > Advanced > Webhooks.
-WEBHOOK_NAME = "PostHog Data warehouse"
+WEBHOOK_NAME = "Flind Data warehouse"
 # Webhook lists are page-numbered like every other WooCommerce collection. A store with more
 # than this many webhooks is pathological; cap the scan rather than paging forever.
 WEBHOOK_LIST_MAX_PAGES = 20
@@ -85,7 +85,7 @@ def _assert_host_safe(store_url: str, team_id: int) -> None:
 
     The store URL is fully user-controlled and drives server-side requests, so it
     must be vetted before any outbound call. The check is a no-op on self-hosted
-    instances and blocks private/internal IPs on PostHog Cloud.
+    instances and blocks private/internal IPs on Flind Cloud.
     """
     _check_host_safe(urlparse(normalize_store_url(store_url)).hostname or "", team_id)
 

@@ -106,7 +106,7 @@ class PlunkSource(ResumableSource[PlunkSourceConfig, PlunkResumeConfig]):
             label="Plunk",
             releaseStatus=ReleaseStatus.GA,
             keywords=["useplunk", "email marketing"],
-            caption="""Enter your Plunk secret API key to pull your contacts, campaigns, templates, and segments into the PostHog Data warehouse.
+            caption="""Enter your Plunk secret API key to pull your contacts, campaigns, templates, and segments into the Flind Data warehouse.
 
 You can find your secret API key (it starts with `sk_`) in your Plunk project settings under **Project Settings > API Keys**. The public key (`pk_`) cannot read data.
 

@@ -34,7 +34,7 @@ from ee.billing.billing_manager import OrganizationFundingStatus, PrepaidCreditS
 _VIEW = "products.tasks.backend.presentation.views.desktop_access"
 _POST = "products.tasks.backend.logic.services.desktop_gateway_token.requests.post"
 _EXHAUSTED = (
-    "Your team has reached its PostHog Desktop usage limit for this billing period. "
+    "Your team has reached its Flind Desktop usage limit for this billing period. "
     "See https://app.posthog.com/organization/billing for your usage and limits."
 )
 
@@ -67,7 +67,7 @@ class _GatewayTestBase(APIBaseTest):
         settings_override.enable()
         self.addCleanup(settings_override.disable)
         self.application = OAuthApplication.objects.create(
-            name="PostHog Desktop",
+            name="Flind Desktop",
             client_id=ARRAY_APP_CLIENT_ID_DEV,
             client_type=OAuthApplication.CLIENT_PUBLIC,
             authorization_grant_type=OAuthApplication.GRANT_AUTHORIZATION_CODE,
@@ -122,7 +122,7 @@ class TestDesktopGatewayTokenMint(_GatewayTestBase):
         assert response.json() == {
             "enabled": False,
             "reason": "oauth_required",
-            "detail": "Sign in with PostHog Desktop.",
+            "detail": "Sign in with Flind Desktop.",
         }
         post.assert_not_called()
 
@@ -220,7 +220,7 @@ class TestDesktopGatewayTokenMint(_GatewayTestBase):
             "enabled": False,
             "reason": "desktop_access_blocked",
             "access": {"allowed": False, "reason": "startup_plan"},
-            "detail": "PostHog Desktop isn't available for Startup or YC program organizations.",
+            "detail": "Flind Desktop isn't available for Startup or YC program organizations.",
         }
         self.mocks["credit"].assert_not_called()
         post.assert_not_called()
@@ -331,7 +331,7 @@ class TestDesktopGatewayTokenMint(_GatewayTestBase):
 
     def test_paid_plan_mints_the_desktop_pin(self) -> None:
         self.organization.available_product_features = [
-            {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "PostHog Desktop usage billing"}
+            {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "Flind Desktop usage billing"}
         ]
         self.organization.save()
         response, post = self._mint(go=_minted(allowed_models=DESKTOP_AGENT_MODELS))
@@ -545,7 +545,7 @@ class TestDesktopUsageEndpoint(_GatewayTestBase):
             "sandbox_compute_cpu_millicore_seconds": {"usage": 12.5},
         }
         self.organization.available_product_features = [
-            {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "PostHog Desktop usage billing"}
+            {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "Flind Desktop usage billing"}
         ]
         self.organization.save()
 
@@ -603,7 +603,7 @@ class TestDesktopUsageEndpoint(_GatewayTestBase):
 
     def test_deactivated_org_is_exhausted_and_unbilled(self) -> None:
         self.organization.available_product_features = [
-            {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "PostHog Desktop usage billing"}
+            {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "Flind Desktop usage billing"}
         ]
         self.organization.is_active = False
         self.organization.save()

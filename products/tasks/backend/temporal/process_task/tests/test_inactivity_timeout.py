@@ -53,7 +53,7 @@ class TestResolveInactivityTimeout(SimpleTestCase):
     @override_settings(TEST=False, TASKS_INACTIVITY_TIMEOUT_SECONDS=0)
     def test_context_forwards_its_origin_and_profile_to_the_resolver(self, _name, profile_fields, expected_seconds):
         # Guards the wiring, not the resolver: dropping `origin_product=` at this call site
-        # would leave every resolver case green while PostHog AI silently fell back to 30 minutes.
+        # would leave every resolver case green while Flind AI silently fell back to 30 minutes.
         context = TaskProcessingContext(
             task_id="task-id",
             run_id="run-id",

@@ -1,4 +1,4 @@
-"""Which feature tip fits a message the person sent to PostHog in Slack?
+"""Which feature tip fits a message the person sent to Flind in Slack?
 
 `no_forced_tip` is the number to watch: a tip that claims to fit a message it does not fit reads
 as an ad. A missed match only costs the ranked tip, which is still a valid tip.

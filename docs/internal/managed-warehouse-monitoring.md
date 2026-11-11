@@ -5,14 +5,14 @@ It has two variants. Organizations on `data-warehouse-scene` see the DuckDB work
 
 ## Request path and tenant boundary
 
-The browser calls project-scoped PostHog endpoints:
+The browser calls project-scoped Flind endpoints:
 
 - `GET /api/projects/{team_id}/data_warehouse/managed-warehouse-monitoring/`
 - `GET /api/projects/{team_id}/data_warehouse/managed-warehouse-monitoring-timeseries/?metric=...&window=...`
 
-PostHog derives the organization ID from the authenticated project and forwards the request to the corresponding organization-scoped Duckgres endpoint.
+Flind derives the organization ID from the authenticated project and forwards the request to the corresponding organization-scoped Duckgres endpoint.
 The browser never supplies an organization ID and never calls Duckgres directly.
-Both PostHog actions require `warehouse_view:read`.
+Both Flind actions require `warehouse_view:read`.
 
 Duckgres only returns sanitized worker data.
 The response excludes SQL text, usernames, client addresses, pod names, images, credentials, trace IDs, and control-plane ownership details.
@@ -78,7 +78,7 @@ Each monitoring endpoint serves one variant. A Trino organization gets 404 from 
 
 The snapshot contains the organization's Trino lifecycle state, its concurrency and queue limits, in-flight totals, and at most 200 in-flight queries, longest-running first.
 `in_flight` equals `running` plus `queued`, and `blocked` is a subset of `running`.
-Query text has literal values replaced with `?`. The control plane does the masking, so unmasked SQL never reaches PostHog.
+Query text has literal values replaced with `?`. The control plane does the masking, so unmasked SQL never reaches Flind.
 When `available` is false the live data could not be read. The UI shows that state instead of presenting zero as an idle warehouse.
 
 The Trino series metrics are queries in flight by state, query rate and outcomes, query duration, queue time, data scanned, CPU time, and storage size.

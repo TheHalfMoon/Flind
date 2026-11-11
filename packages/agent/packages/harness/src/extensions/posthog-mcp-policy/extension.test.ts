@@ -97,7 +97,7 @@ describe("posthog MCP policy extension", () => {
 
     await expect(runtime.call("mcp_Cloudflare_search")).resolves.toEqual({
       block: true,
-      reason: "The Cloudflare tool search is disabled in PostHog MCP settings.",
+      reason: "The Cloudflare tool search is disabled in Flind MCP settings.",
     });
   });
 

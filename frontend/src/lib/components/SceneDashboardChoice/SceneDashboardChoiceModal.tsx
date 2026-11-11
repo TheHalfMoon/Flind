@@ -50,7 +50,7 @@ export function SceneDashboardChoiceModal({ scene }: SceneDashboardChoiceModalPr
                             }}
                         >
                             {scene === Scene.ProductAnalyticsHomeTab
-                                ? 'Reset to PostHog default'
+                                ? 'Reset to Flind default'
                                 : 'Reset to "new tab"'}
                         </LemonButton>
                     ) : null}

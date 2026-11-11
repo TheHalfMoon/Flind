@@ -32,13 +32,13 @@ export const businessKnowledgeEmptyState: SceneProductEmptyState = {
         hedgehog: HedgehogReading,
         text: {
             'needs-setup': {
-                headline: 'Teach PostHog AI how your business works',
-                lead: 'Add pricing pages, policies, product docs, or any text, and PostHog AI uses them to answer questions with your context in mind. Sources refresh on a schedule you choose, so answers stay current as your docs change.',
+                headline: 'Teach Flind AI how your business works',
+                lead: 'Add pricing pages, policies, product docs, or any text, and Flind AI uses them to answer questions with your context in mind. Sources refresh on a schedule you choose, so answers stay current as your docs change.',
             },
         },
         PrimaryAction: BusinessKnowledgePrimaryAction,
         skippable: false,
-        previewLabel: 'PostHog AI, once it knows your business',
+        previewLabel: 'Flind AI, once it knows your business',
         Preview: BusinessKnowledgePreview,
     },
 }

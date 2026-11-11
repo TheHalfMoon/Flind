@@ -54,7 +54,7 @@ MAX_WEBHOOK_LIST_PAGES = 10
 # Instantly limits daily analytics requests to 31 days.
 DATE_WINDOW_SIZE_DAYS = 31
 
-WEBHOOK_NAME = "PostHog data warehouse"
+WEBHOOK_NAME = "Flind data warehouse"
 # Instantly deliveries are unsigned, but webhooks accept static custom headers — we attach a
 # generated secret header on create and the webhook template verifies it on every delivery.
 WEBHOOK_SECRET_HEADER = "x-posthog-webhook-secret"

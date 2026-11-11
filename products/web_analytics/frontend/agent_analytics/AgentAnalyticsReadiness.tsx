@@ -231,7 +231,7 @@ export const AgentAnalyticsReadiness = (): JSX.Element => {
                             <Field
                                 name="url"
                                 label="llms.txt URL"
-                                help="PostHog loads up to 1 MB from a public HTTP or HTTPS URL. The file is used for this comparison and is not saved."
+                                help="Flind loads up to 1 MB from a public HTTP or HTTPS URL. The file is used for this comparison and is not saved."
                             >
                                 <LemonInput
                                     type="url"

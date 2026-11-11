@@ -3081,7 +3081,7 @@ async def test_apply_scanner_workflow_bumps_the_stuck_counter_when_a_render_time
             "Failed to fetch block listing: connect ECONNREFUSED 10.0.0.5:6738",
             False,
             FailureKind.INFRA_TRANSIENT,
-            "infra_transient:rasterizer could not reach a PostHog dependency (BLOCK_LISTING_FAILED)",
+            "infra_transient:rasterizer could not reach a Flind dependency (BLOCK_LISTING_FAILED)",
         ),
         # A permanent 4xx (auth, bad request) or malformed listing reaches the parent as a non-retryable
         # BLOCK_LISTING_FAILED. Retrying can't heal it, so it must keep the recording-level rasterization_failed
@@ -3710,7 +3710,7 @@ class TestClassifyGeminiError:
         assert classify_gemini_error(error) is FailureKind.PROVIDER_TRANSIENT
 
     def test_leaves_non_provider_exceptions_unclassified(self) -> None:
-        # Claiming a kind here would be worse than the status quo: a PostHog bug would be blamed on the provider,
+        # Claiming a kind here would be worse than the status quo: a Flind bug would be blamed on the provider,
         # and for the transient kinds it would burn the retry budget before failing anyway.
         assert classify_gemini_error(ValueError("bad arg")) is None
 
@@ -3894,7 +3894,7 @@ class TestGeminiErrorRedaction:
                     ),
                 )
         assert exc_info.value.kind is FailureKind.PROVIDER_TRANSIENT
-        assert exc_info.value.message == "PostHog could not reach the AI provider (ConnectError)"
+        assert exc_info.value.message == "Flind could not reach the AI provider (ConnectError)"
 
 
 class TestWorkflowErrorHelpers:

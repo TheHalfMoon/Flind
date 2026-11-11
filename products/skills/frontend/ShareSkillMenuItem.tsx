@@ -43,7 +43,7 @@ export function ShareSkillMenuItem({
                 data-attr="llma-skill-dropdown-publish-community"
                 fullWidth
             >
-                Publish to PostHog community…
+                Publish to Flind community…
             </LemonButton>
         </AccessControlAction>
     )

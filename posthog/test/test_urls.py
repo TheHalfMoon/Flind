@@ -226,7 +226,7 @@ class TestUrls(APIBaseTest):
         # TODO: build frontend before backend tests, or find a way to mock the template
         # self.assertContains(
         #     response,
-        #     "Do you want to give the PostHog Toolbar on <strong>https://domain.com/sdf</strong> access to your PostHog data?",
+        #     "Do you want to give the Flind Toolbar on <strong>https://domain.com/sdf</strong> access to your Flind data?",
         # )
 
 

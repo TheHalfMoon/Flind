@@ -24,7 +24,7 @@ const LETTER_BY_UNIT: Record<RelativeRangeUnit, string> = {
     years: 'y',
 }
 
-/** PostHog relative-date strings → a picker selection. Named periods resolve through
+/** Flind relative-date strings → a picker selection. Named periods resolve through
  *  `dateMapping`, so the picker's chip names and the query vocabulary can't drift. Anything
  *  the picker can't express (quarters, minute ranges, Start/End anchors, relative pairs)
  *  resolves through the canonical parser to a concrete custom range — never a fabricated preset. */

@@ -39,7 +39,7 @@ export function HomeDashboardModals(): JSX.Element {
                 creatingWithAI={dashboardCreationLoading}
                 aiDisabledReason={
                     !dataProcessingAccepted &&
-                    (dataProcessingApprovalDisabledReason ?? 'Approve AI data processing to use PostHog AI')
+                    (dataProcessingApprovalDisabledReason ?? 'Approve AI data processing to use Flind AI')
                 }
             />
             <SceneDashboardChoiceModal scene={Scene.ProductAnalyticsHomeTab} />

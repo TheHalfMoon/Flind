@@ -53,7 +53,7 @@ def _get_provenance_note(message: AssistantMessage) -> str | None:
         command_name = source.split(":", 1)[1]
         return (
             f"[System note: the previous assistant message was produced by the /{command_name} slash command. "
-            "It is deterministic PostHog code, not assistant-authored content.]"
+            "It is deterministic Flind code, not assistant-authored content.]"
         )
     return None
 

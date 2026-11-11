@@ -224,7 +224,7 @@ read `FINAL_REPORT.md` there first (config glossary + coverage matrix + ranking)
 - **Why the hook.** Stamphog already calls the finished-review hooks right after its terminal save.
   A second registry would repeat it with a different payload.
   `FinishedReviewRun` gains `head_sha` and `request_external_review`, because a gate-blocked refusal is stored as `WAIT` and the verdict alone does not say to hand off.
-- **No installation id in the payload.** Stamphog's installation belongs to its own GitHub App, so it never matches a PostHog App `Integration`.
+- **No installation id in the payload.** Stamphog's installation belongs to its own GitHub App, so it never matches a Flind App `Integration`.
   The handoff finds the owning project and installation by repository name (`RepositoryOwnership.find_by_name`).
 - **Skips.** A head with a pending or completed review is not reviewed again; a failed status lookup raises so the task retries.
   A missing owner, missing integration, missing run user, or running resolution is a no-op counted in `posthog_review_hog_stamphog_handoff_total`.
@@ -381,7 +381,7 @@ read `FINAL_REPORT.md` there first (config glossary + coverage matrix + ranking)
   to set it.
 - **Why.** A finding that repeated another bot's comment dropped silently, so the PR showed that bot's P1 next to
   ReviewHog's "Nothing worth raising" although ReviewHog found the same issue. No vendor we checked dedups against
-  other bots' comments; each dedups only against its own earlier comments. On PostHog PRs, 16% of bot comments repeat
+  other bots' comments; each dedups only against its own earlier comments. On Flind PRs, 16% of bot comments repeat
   another bot's, almost all from bots running in parallel on the same commit, and no bot acknowledged another.
 - **Not chosen.** A reply in the other bot's thread (Greptile answers bot replies about half the time, which starts
   a bot exchange) and a stored per-user preference (only if someone asks). Full mode keeps its comment dedup for now:
@@ -479,7 +479,7 @@ and API (storage, ownership, the Flash decision), then the behavior rules. The r
   repository exception → the project rule. Bots and authors without an active member follow `bot_prs` only; a bot
   review runs as the user who connected the installation, with default settings and no writes.
 - **PR owner** (`backend/pr_owner.py`): the author when the login maps to an active member; a self-driving PR (opened
-  by the PostHog app) belongs to its Inbox report's canonical reviewer; else nobody.
+  by the Flind app) belongs to its Inbox report's canonical reviewer; else nobody.
 - **Whose settings shape a review.** Automatic: the owner's rules (Flash reads no personal settings). Review button
   and MCP: the person who asks. Label: the owner, else the connector with default settings. Inbox: the report
   reviewer. The `review_labeled_prs` opt-out is gone: a label always runs.
@@ -654,7 +654,7 @@ and API (storage, ownership, the Flash decision), then the behavior rules. The r
 - **Fallback.** A Flash PR over `FLASH_SINGLE_AGENT_MAX_CHANGED_LINES` (2,500 changed lines) or
   `FLASH_SINGLE_AGENT_MAX_FILES` (40 files), counted over the reviewable files, runs the Flash pipeline (`reviewhog-flash-1-1`).
   The single-chunk gate (400 added lines) was too small for a one-session review.
-- **Rollback.** The `reviewhog-flash-pipeline-kill-switch` PostHog feature flag, evaluated per organization in the
+- **Rollback.** The `reviewhog-flash-pipeline-kill-switch` Flind feature flag, evaluated per organization in the
   fetch activity (never in workflow code, so a replay reads the recorded choice), moves Flash turns back to the pipeline
   without a deploy. A flag evaluation error reads as off and keeps the single agent. `FLASH_DESIGN_DEFAULT` stays as the
   code default. `reviewhog_review_started` carries `review_design_reason`.
@@ -684,9 +684,9 @@ and API (storage, ownership, the Flash decision), then the behavior rules. The r
   first lines stay visible, the rest goes under a collapsed "More detail" block, and a warning logs the drift
   (`_fold_overlong_reply`). Rejecting was ruled out in review: a schema limit fails the turn parser with no correction
   path, so a landed fix commit would get no reply. Review also flagged that publishing `verification` opens a
-  credential channel: the sandbox holds the GitHub token and a PostHog personal API key, the git remote carries the
+  credential channel: the sandbox holds the GitHub token and a Flind personal API key, the git remote carries the
   token inline, and nothing inspected the body before it posted (the reply had the same gap on master). The posted
-  body is now scrubbed of credential shapes last (`tools/redaction.py`: PostHog secret prefixes `phx_`/`phs_`/
+  body is now scrubbed of credential shapes last (`tools/redaction.py`: Flind secret prefixes `phx_`/`phs_`/
   `pha_`/`phr_` and the per-run `phe_` AI gateway token, GitHub `gh?_`/`github_pat_` tokens, `x-access-token` clone URLs; `phc_` project tokens are public
   and stay), with a warning logged, and the prompt asks for a summary rather than raw command output. The review
   stage runs the same scrub over the review body and every inline finding comment (`_post_github_review`), since
@@ -804,7 +804,7 @@ Template-level and reversible, same as the original move.
 - **Why now.** Stage 5 rejected "Path B" (webhook) because it diverged from Stamphog's CI model; Stamphog
   is hosted and webhook-driven since #70407, so that reason is gone. The Action costs a CI run per
   label, carries a secret in Actions, and only works in repos that ship the workflow file. ReviewHog
-  already publishes through the PostHog GitHub App installation token, so that App's inlet is the
+  already publishes through the Flind GitHub App installation token, so that App's inlet is the
   right one — **not** a standalone endpoint like Stamphog's (a different App, hence a different secret).
 - **Constraints.** Core's dispatcher owns verification, parsing, and per-handler delivery dedup — the
   handler does none of that. It has no retry either, and GitHub does not redeliver on its own, so the
@@ -950,7 +950,7 @@ tab claimed publication for findings computed against the _viewer's current_ thr
 
 - **Report deep links**: `/code-review?review=<report UUID>`, mirrored both ways by the existing URL sync in
   `reviewHogSettingsLogic` (`replace`, never `push`, so drawer open/close doesn't stack history). The status
-  comment's held-back sentence links here ("View them in PostHog", auth-gated — same posture as Slack links),
+  comment's held-back sentence links here ("View them in Flind", auth-gated — same posture as Slack links),
   which makes the param a **permanent public contract**. A deep link has no list row, so the drawer renders
   entirely from the loaded detail (skeletons until then) via an id-only `openReviewDetailById` action.
 - **`ReviewReport.author_login`** (nullable, refreshed from `pr_metadata.author` every turn at upsert): the
@@ -1531,7 +1531,7 @@ The "Create your own …" frontend prompts were fat, self-describing instruction
 anti-pattern (knowledge duplicated in FE strings, editable only via deploy, undiscoverable to other
 agents). Reworked to the **scout pattern** (`authoring-scouts`): the FE prompts in
 `reviewHogSettingsLogic.ts` are now thin kickoff pointers ("use the review-hog-authoring skill from
-the PostHog MCP … follow its <kind> path", plus a skill-unavailable fallback), and the actual guide
+the Flind MCP … follow its <kind> path", plus a skill-unavailable fallback), and the actual guide
 is the canonical **`review-hog-authoring`** skill at `products/review_hog/skills/review-hog-authoring/`.
 
 - **The skill** covers all three kinds in one guide: pipeline context, the naming/category contract,
@@ -2183,7 +2183,7 @@ reproducible and is independently required for resume and the loop.
     (mirroring the scout runner — no Temporal coordinator needed yet). Reuses the shared `LLMSkill` model, so
     add `products.skills` to `products.review_hog`'s `tach` `depends_on` (skills is un-isolated; no facade).
     Delivery flips to **pull**: the issues-review prompt stops splicing the focus text and instead instructs the
-    sandbox agent to `skill-get(skill_name="review-hog-perspective-…", version=N)` over the PostHog MCP (the
+    sandbox agent to `skill-get(skill_name="review-hog-perspective-…", version=N)` over the Flind MCP (the
     sandbox context already carries `llm_skill:read` via the default `full` scope); the version is pinned per run,
     `references/` load on demand via `skill-file-get`.
   - **Selection: fixed three for now.** A registry-driven loader loads the three canonical perspective skills
@@ -2307,7 +2307,7 @@ git checkout -B <branch> FETCH_HEAD`** (`products/tasks` `get_sandbox_for_reposi
     the dead-but-harmless `ReviewReportArtefact.updated_at` column (removing it is migration churn for no Temporal
     benefit). The two `split_pr_into_chunks` modules are **not** a duplicate either — `models/` is the `Chunk` /
     `ChunksList` schema, `tools/` is the logic; legitimate split, kept.
-  - **PostHog-conformance pass (same window, 7-dimension adversarially-verified audit).** Removed import-time
+  - **Flind-conformance pass (same window, 7-dimension adversarially-verified audit).** Removed import-time
     side effects from library modules (`load_dotenv()` in both `split_pr_into_chunks` modules → relocated to the
     `run_review` command; `logging.basicConfig()` in `run.py` → relocated to the command; three stray shebangs) —
     hidden global-state hazards once `run.py` is the Temporal-imported workflow module. Closed strict-typing gaps
@@ -2456,7 +2456,7 @@ version=N)` block — the agent pulls the bar over MCP). Cold-start sync (`run.p
     `task_run` / `note` work-log artefacts. (See _Cloud host, Temporal & GitHub_ above.)
 
   **Grounded implementation map (researched 2026-06-25 — file:line cites for the rewrite).** A 6-reader sweep of
-  PostHog's Temporal subsystems confirmed the conventions and the exact hook points; captured here so the rewrite
+  Flind's Temporal subsystems confirmed the conventions and the exact hook points; captured here so the rewrite
   (and any future agent picking it up) starts from facts, not re-derivation.
 
   _Conventions ReviewHog must follow:_
@@ -2844,7 +2844,7 @@ fixes via a companion PR, maximum reuse of a verified engine), skip B.**
 
 #### Conversational / control surface (optional; channel-agnostic)
 
-Per the maintainer the **interaction channel is pluggable** (Slack, GitHub comments, PostHog Desktop, …) and out of
+Per the maintainer the **interaction channel is pluggable** (Slack, GitHub comments, Flind Desktop, …) and out of
 scope — design the durable part, leave the UI a thin adapter. **Must-have (ships with Variant A):** `@workflow.query`
 for live state (stage, findings-so-far, lifecycle counts, watermarks — zero history cost; copy `get_buffer_size` /
 `get_paused_state`) and `@workflow.signal` for inject-context / pause / cancel / force-turn (copy `submit_signal` /
@@ -2938,7 +2938,7 @@ only, **non-fork only**, **trigger + publish together** (not shadow-first).
 
 **Architecture — "Action calls the app" (Path A).** ReviewHog is **app-embedded** (Temporal workflow + the Tasks
 Modal sandbox + Postgres + DB-synced LLMA skills) — it **cannot** run on a GitHub Actions runner the way Stamphog
-does. So the label trigger is a **thin GitHub Action** that calls a **PostHog endpoint**, which starts the Temporal
+does. So the label trigger is a **thin GitHub Action** that calls a **Flind endpoint**, which starts the Temporal
 workflow; the workflow fetches + publishes **server-side** via the GitHub App installation token. Rejected:
 **Path B** (label → the existing `webhooks/github/pr` dispatcher → Temporal, no CI — diverges from the team's
 Stamphog model; _superseded 2026-08-21, Stamphog is hosted now — see "✅ DECIDED 2026-08-21 — label trigger moves
@@ -2979,7 +2979,7 @@ github-actions[bot] trick), and its Action carries **one** secret (no Anthropic 
   the real `posthog` App **on team 2**. Resolved **server-side** via
   `GitHubIntegration.first_for_team_repository(team_id, "PostHog/posthog").get_access_token()` — never a CI secret.
 - **Run `user_id` = resolved server-side** (team-2 `integration.created_by`, or a `REVIEWHOG_RUN_USER_ID` setting).
-  The sandbox fan-out needs a **real** PostHog user; the CI caller never carries or chooses it. (A new dedicated
+  The sandbox fan-out needs a **real** Flind user; the CI caller never carries or chooses it. (A new dedicated
   service user is optional polish, not required.)
 - **Publish control = a per-run `publish: bool` input** that **replaces the global `PUBLISH_REVIEW_ENABLED` constant**
   (`constants.py:11`, checked in `publish_review_activity`). The trigger endpoint sets `publish=true`; the eval CLI
@@ -3032,7 +3032,7 @@ github-actions[bot] trick), and its Action carries **one** secret (no Anthropic 
   `pull_requests=write` validation (the duck comment) was on the **separate `posthog-local-dev` app** — confirm the
   **prod `posthog`** app's installation also grants `pull_requests: write`. If it's read-only, publishing needs a
   permission bump or a dedicated app.
-- **`settings.REVIEWHOG_TRIGGER_TOKEN`** — generate a value (`openssl rand -hex 32`), put it in **both** the PostHog
+- **`settings.REVIEWHOG_TRIGGER_TOKEN`** — generate a value (`openssl rand -hex 32`), put it in **both** the Flind
   deploy config (env `REVIEWHOG_TRIGGER_TOKEN`, read in `posthog/settings/access.py`) **and** the GitHub Actions secret
   `REVIEWHOG_TRIGGER_TOKEN`. Shared password between CI and the app; the only secret the Action carries. Unset =
   endpoint fails closed (403) outside DEBUG/TEST.
@@ -3251,7 +3251,7 @@ is authoritative server-side, and the deterministic per-PR workflow id + `USE_EX
   other team. No server-side feature-flag check — the scene's `REVIEW_HOG` flag gates discoverability only,
   and the hard team check bounds the cost surface for now. Widening beyond the dogfood team is a later,
   deliberate decision.
-- **Requester wins.** The acting user is the requesting PostHog user via the existing `acting_user_id`
+- **Requester wins.** The acting user is the requesting Flind user via the existing `acting_user_id`
   override (`resolved_from="override"`): their perspectives / blind-spots / validator / urgency threshold
   drive the run, and the report lands in their "For you" recent-reviews scope. The PR author's
   `review_labeled_prs` opt-out stays label-only (its copy is label-specific; an explicit human ask is like
@@ -3700,7 +3700,7 @@ implement what is worth doing and safe to do unattended, answer what isn't, and 
    errors from the Tasks facade (infra vs turn) to close that corner.
    _Same date (off the /resolve criteria-borrowing escalation):_ `ResolveThreadsInput.acting_user_id` is now
    tri-state — `None` (the shared-secret `/resolve` path, which pins nobody) means **the PR author**: prepare maps
-   the fetched author login to a PostHog user (`_login_to_user_id`, the review path's own mapping) and applies
+   the fetched author login to a Flind user (`_login_to_user_id`, the review path's own mapping) and applies
    their criteria selection; an unmapped author pins the **canonical** bar directly
    (`load_resolution_skill_for_run(…, None)`) — a borrowed account's personal selection never governs someone
    else's PR, the same principle as the review path's borrowed-toggle rules. The workflow no longer coerces
@@ -3768,7 +3768,7 @@ RATE_LIMITED` (GraphQL's primary signal, invisible to the REST-shaped helper) no
    code is now always `escalate`, regardless of who asked or what the investigation concluded.
    _Same date (least-privilege MCP scopes, maintainer decision — verified by the next live run):_ every
    ReviewHog sandbox session (perspectives, validation, resolution) ran with the context default of **full**
-   PostHog MCP access — execute-sql and every write tool — while reading untrusted PR-comment text; no prompt
+   Flind MCP access — execute-sql and every write tool — while reading untrusted PR-comment text; no prompt
    ever uses more than `skill-get`/`skill-file-get`. The executor now pins `posthog_mcp_scopes` to
    `REVIEW_MCP_SCOPES = ["llm_skill:read", "user:read"]` at both context constructions (internal sandbox-plumbing
    scopes are re-added by the resolver). `user:read` is the MCP handshake, not a data grant: the MCP server
@@ -3962,13 +3962,13 @@ are enabled by the user via the toggle. A new canonical added later auto-enables
 row the user disabled is left alone (get_or_create no-op). Scouts call register-missing each coordinator tick
 (`config_registry.py`); we call it when resolving the acting user, before loading.
 
-**PR-author → PostHog user (label trigger falls back; other triggers don't).** The acting user whose perspectives
+**PR-author → Flind user (label trigger falls back; other triggers don't).** The acting user whose perspectives
 apply = the **PR author**, from `pr_metadata.author` (`tools/github_meta.py:244`), resolved via
 **`resolve_org_github_login_to_users(team_id, [login]) -> {login: User}`**
 (`products/signals/backend/report_generation/resolve_reviewers.py:241`; org-scoped, case-insensitive, backed by
 `User.get_github_login()` precedence UserIntegration-github → UserSocialAuth-github → team-integration login,
 `posthog/models/user.py:438`; already used in prod). **CORRECTION to earlier docs: this reverse-lookup DOES exist**
-(a prior research pass wrongly said it didn't). When the author does **not** map to a PostHog org user, the **label
+(a prior research pass wrongly said it didn't). When the author does **not** map to a Flind org user, the **label
 trigger** falls back to the **run user** (`inputs.user_id`, threaded into the resolve activity as `default_user_id`
 — the same identity the sandboxes execute under, so acting and sandbox identity can never drift) — someone
 explicitly asked for the review, so a borrowed user's perspectives beat no review. The
@@ -4039,7 +4039,7 @@ PERSPECTIVES`); the obsolete `test_registry_order_matches_perspective_type_enum`
   when it resolves to None. An `acting_user_id: int | None` was added to `ReviewPRWorkflowInputs` (and threaded
   through `client.py`): the cloud trigger leaves it None (resolve the author); the **CLI/eval pins it to
   `--user-id`** so an eval run applies a known user's perspectives against any PR (the PR author need not be a
-  PostHog user). This is an explicit, exercised override, not dead fallback code.
+  Flind user). This is an explicit, exercised override, not dead fallback code.
 - **The toggle viewset is `scope_object = "INTERNAL"` (session/UI-only, not MCP/PAK), keyed by `skill_name`.**
   `ReviewPerspectiveConfigViewSet` at `/api/projects/:team_id/review_hog/perspectives` exposes `list` (the full
   perspective menu joined with the user's enable state — canonicals seed enabled, an un-toggled custom shows
@@ -4439,7 +4439,7 @@ reasoning_effort}]` → `get_task_processing_context` reads it back → `start_a
   `build_agent_runtime_env_prefix` (`logic/services/sandbox.py`) emits `env POSTHOG_CODE_{RUNTIME_ADAPTER,PROVIDER,MODEL,
 REASONING_EFFORT}=…` prefixed onto the agent launch command (guarded by `test_agentsh.py`).
 
-**`@flind/agent` — where they are consumed + applied (the PostHog Desktop monorepo, _not_ this repo).** Clone via
+**`@flind/agent` — where they are consumed + applied (the Flind Desktop monorepo, _not_ this repo).** Clone via
 `LOCAL_POSTHOG_CODE_MONOREPO_ROOT` (legacy alias `LOCAL_TWIG_MONOREPO_ROOT`); package `packages/agent`
 (npm `@flind/agent`, baked into `Dockerfile.sandbox-base`).
 
@@ -4450,7 +4450,7 @@ reasoningEffort})`.
 - **Adapter split `src/server/agent-server.ts`:**
   - **Codex** → `codexOptions = {model: config.model ?? DEFAULT_CODEX_MODEL, reasoningEffort: config.reasoningEffort}`
     → `agent.ts` → `src/adapters/codex/spawn.ts::buildConfigArgs` pushes `-c model="…"` **and**
-    `-c model_reasoning_effort="…"` onto the Codex CLI, talking to the PostHog gateway
+    `-c model_reasoning_effort="…"` onto the Codex CLI, talking to the Flind gateway
     (`model_provider="posthog"`, `wire_api="responses"`). _This is the line that applies our `xhigh` to `gpt-5.5`._
   - **Claude** → `buildClaudeCodeSessionMeta` sets `options.model` + `options.effort` (effort only when
     `runtimeAdapter === "claude"`) on the Claude Code session — effort routes here, **not** through the codex spawn.

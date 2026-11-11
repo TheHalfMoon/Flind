@@ -53,7 +53,7 @@ export async function readRepository(runtime: Runtime): Promise<Repository | und
     const remotes = parseRemoteUrls(config)
     // Only origin, so a checkout of someone else's repository never asks to trust theirs.
     const url = remotes.find(([name]) => name === 'origin')?.[1]
-    // A remote URL can carry a token, and the name read from it goes to PostHog.
+    // A remote URL can carry a token, and the name read from it goes to Flind.
     return { root: found.root, remote: url === undefined ? undefined : stripCredentials(url) }
 }
 

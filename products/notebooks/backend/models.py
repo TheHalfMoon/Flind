@@ -332,7 +332,7 @@ class NotebookNodeRun(TeamScopedRootMixin, UUIDModel):
     # The node's code at run time — paging must re-query what produced the result,
     # not whatever the editor holds now.
     code = models.TextField(blank=True, default="")
-    # The direct-query data source this run executed against (null = PostHog's own ClickHouse).
+    # The direct-query data source this run executed against (null = Flind's own ClickHouse).
     # Stored, not just passed through, because `code` is only meaningful on the engine that ran
     # it: a re-query or a cross-cell reference has to target the same one. A plain id rather
     # than an FK — a deleted source must not take run history with it.

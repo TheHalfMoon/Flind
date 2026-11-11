@@ -126,7 +126,7 @@ def offer_feature_tip(request: TipRequest) -> SlackFeature | None:
             channel=request.channel,
             user=request.slack_user_id,
             thread_ts=request.thread_ts,
-            text=f"💡 PostHog tip: {tip.title}. {body}",
+            text=f"💡 Flind tip: {tip.title}. {body}",
             blocks=tip_blocks(integration.id, tip, reservation.ctx, body, contextual=choice.source == "contextual"),
         )
     except Exception:
@@ -276,7 +276,7 @@ def tip_blocks(
     if contextual:
         note = f"I picked this tip from what you asked. {note}"
     return [
-        section_block(f"💡 *PostHog tip: {tip.title}*\n{tip.emoji} {body}"),
+        section_block(f"💡 *Flind tip: {tip.title}*\n{tip.emoji} {body}"),
         {"type": "actions", "elements": buttons},
         context_block(note),
     ]

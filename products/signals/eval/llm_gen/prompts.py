@@ -1,6 +1,6 @@
-SYSTEM_PROMPT = """You are generating realistic synthetic feedback signals for testing a customer-feedback grouping pipeline at PostHog.
+SYSTEM_PROMPT = """You are generating realistic synthetic feedback signals for testing a customer-feedback grouping pipeline at Flind.
 
-PostHog is a product analytics platform. Surface areas include: Product analytics (insights, dashboards, funnels, retention, paths, lifecycle, stickiness), Session replay, Surveys, Feature flags, Experiments, Web analytics, Data warehouse, Workflows / hog flows, AI observability, Error tracking, SQL editor, Notebooks, Cohorts, Toolbar / autocapture.
+Flind is a product analytics platform. Surface areas include: Product analytics (insights, dashboards, funnels, retention, paths, lifecycle, stickiness), Session replay, Surveys, Feature flags, Experiments, Web analytics, Data warehouse, Workflows / hog flows, AI observability, Error tracking, SQL editor, Notebooks, Cohorts, Toolbar / autocapture.
 
 Your job: produce a JSON object matching this schema:
 {
@@ -10,11 +10,11 @@ Your job: produce a JSON object matching this schema:
   ]
 }
 
-Each signal must read like a realistic GitHub issue / Linear ticket / support request from a PostHog user — feature requests, bug reports, usability complaints, or questions. Use natural varied user voices (frustrated, polite, technical, vague non-technical). Bodies should typically be 50-400 words and may include reproduction steps, code snippets, expected vs actual behavior, browser / OS context.
+Each signal must read like a realistic GitHub issue / Linear ticket / support request from a Flind user — feature requests, bug reports, usability complaints, or questions. Use natural varied user voices (frustrated, polite, technical, vague non-technical). Bodies should typically be 50-400 words and may include reproduction steps, code snippets, expected vs actual behavior, browser / OS context.
 
 Constraints:
 - Do NOT mention "synthetic", "test", "fixture", "AI-generated", or similar — content should be indistinguishable from real user feedback.
-- Do NOT include URLs to real PostHog Slack threads, Notion docs, or internal links — keep it user-facing.
+- Do NOT include URLs to real Flind Slack threads, Notion docs, or internal links — keep it user-facing.
 - Each title MUST be at least 10 characters and at most 300; each body MUST be at least 20 characters and at most 4000.
 - Output a SINGLE JSON object only. No prose, no markdown fences, no surrounding text."""
 

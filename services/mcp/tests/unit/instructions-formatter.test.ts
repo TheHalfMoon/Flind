@@ -52,7 +52,7 @@ describe('InstructionsFormatter', () => {
             const formatter = new InstructionsFormatter()
             const result = formatter.buildToolsInstructions(fullCtx)
             expect(result).toContain('### Basic functionality')
-            expect(result).toContain('### PostHog knowledge sources')
+            expect(result).toContain('### Flind knowledge sources')
             expect(result.indexOf('`business-knowledge-documents-search`')).toBeLessThan(
                 result.indexOf('`docs-search`')
             )
@@ -79,7 +79,7 @@ describe('InstructionsFormatter', () => {
         it('omits business knowledge guidance when search is unavailable', () => {
             const formatter = new InstructionsFormatter()
             expect(formatter.buildToolsInstructions({ guidelines: 'rules' })).not.toContain(
-                '### PostHog knowledge sources'
+                '### Flind knowledge sources'
             )
         })
 
@@ -90,9 +90,9 @@ describe('InstructionsFormatter', () => {
                 tools: [{ name: 'docs-search', category: 'Docs' }],
             })
 
-            expect(result).toContain('### PostHog knowledge sources')
+            expect(result).toContain('### Flind knowledge sources')
             expect(result).not.toContain('`business-knowledge-documents-search`')
-            expect(result).toContain('- PostHog features, SDKs, setup, or pricing: call the `docs-search` tool.')
+            expect(result).toContain('- Flind features, SDKs, setup, or pricing: call the `docs-search` tool.')
         })
 
         it('omits knowledge guidance when only business knowledge search is available', () => {
@@ -102,14 +102,14 @@ describe('InstructionsFormatter', () => {
                 tools: [{ name: 'business-knowledge-documents-search', category: 'Business knowledge' }],
             })
 
-            expect(result).not.toContain('### PostHog knowledge sources')
+            expect(result).not.toContain('### Flind knowledge sources')
         })
 
         it('always includes the agent-feedback section', () => {
             const formatter = new InstructionsFormatter()
-            expect(formatter.buildToolsInstructions(fullCtx)).toContain('### Sharing feedback on PostHog')
+            expect(formatter.buildToolsInstructions(fullCtx)).toContain('### Sharing feedback on Flind')
             expect(formatter.buildToolsInstructions({ guidelines: 'rules' })).toContain(
-                '### Sharing feedback on PostHog'
+                '### Sharing feedback on Flind'
             )
         })
     })
@@ -122,7 +122,7 @@ describe('InstructionsFormatter', () => {
             expect(result).toContain(
                 'business-knowledge-documents|dashboard|docs-search|execute-sql|feature-flag|project|query'
             )
-            expect(result).not.toContain('### PostHog knowledge sources')
+            expect(result).not.toContain('### Flind knowledge sources')
             expect(result).not.toContain('query-*:')
             // Env context is not here — it rides the exec command description, which has no
             // truncation cap, leaving this payload's whole budget to the domain index.
@@ -154,7 +154,7 @@ describe('InstructionsFormatter', () => {
             expect(result.length).toBeLessThanOrEqual(MCP_INSTRUCTIONS_CHAR_BUDGET)
         })
 
-        // The domain index names PostHog resources, not callable tools, so without this
+        // The domain index names Flind resources, not callable tools, so without this
         // line the payload never states what can actually be called. `render-ui` is only
         // mounted on MCP Apps hosts — naming it elsewhere advertises a tool that isn't there.
         it('names the callable tools, gating render-ui on the host mounting it', () => {
@@ -162,9 +162,9 @@ describe('InstructionsFormatter', () => {
             const withUi = formatter.buildExecInstructions({ ...fullCtx, renderUiEnabled: true })
             const withoutUi = formatter.buildExecInstructions({ ...fullCtx, renderUiEnabled: false })
 
-            expect(withUi).toContain('exec – run any PostHog command')
+            expect(withUi).toContain('exec – run any Flind command')
             expect(withUi).toContain('render-ui – show a tool result as an interactive app.')
-            expect(withoutUi).toContain('exec – run any PostHog command')
+            expect(withoutUi).toContain('exec – run any Flind command')
             expect(withoutUi).not.toContain('render-ui')
         })
 
@@ -187,16 +187,16 @@ describe('InstructionsFormatter', () => {
             expect(result).toContain('Run `info <tool_name>` once if its schema is not in context.')
             expect(result).not.toContain('### Basic functionality')
             expect(result).not.toContain('### Examples')
-            expect(result).not.toContain('### PostHog knowledge sources')
+            expect(result).not.toContain('### Flind knowledge sources')
         })
 
         it('includes docs guidance without business knowledge when only docs search is available', () => {
             const formatter = new InstructionsFormatter()
             const result = formatter.buildExecToolDescription({ docsSearchEnabled: true })
 
-            expect(result).toContain('### PostHog knowledge sources')
+            expect(result).toContain('### Flind knowledge sources')
             expect(result).not.toContain('`business-knowledge-documents-search`')
-            expect(result.indexOf('### PostHog knowledge sources')).toBeLessThan(
+            expect(result.indexOf('### Flind knowledge sources')).toBeLessThan(
                 result.indexOf('Using the `posthog` tool')
             )
             // The mandate leads the description, ahead of the grammar it depends on.
@@ -207,7 +207,7 @@ describe('InstructionsFormatter', () => {
             const formatter = new InstructionsFormatter()
             const result = formatter.buildExecToolDescription({ businessKnowledgeSearchEnabled: true })
 
-            expect(result).not.toContain('### PostHog knowledge sources')
+            expect(result).not.toContain('### Flind knowledge sources')
         })
 
         it('clarifies project scope before skills, business knowledge, repositories, and docs', () => {
@@ -222,7 +222,7 @@ describe('InstructionsFormatter', () => {
             expect(result.indexOf('If the target project is ambiguous')).toBe(0)
             expect(result).toContain('After any needed project clarification')
             expect(result).toContain('SKILLS FIRST')
-            expect(result.indexOf('SKILLS FIRST')).toBeLessThan(result.indexOf('### PostHog knowledge sources'))
+            expect(result.indexOf('SKILLS FIRST')).toBeLessThan(result.indexOf('### Flind knowledge sources'))
             expect(result.indexOf('business-knowledge-documents-search')).toBeLessThan(
                 result.indexOf('`call business-knowledge-repositories-search <json_input>`')
             )
@@ -274,7 +274,7 @@ describe('InstructionsFormatter', () => {
                 businessKnowledgeContent: content,
             })
 
-            expect(result).toContain('- PostHog features, SDKs, setup, or pricing: call the `docs-search` tool.')
+            expect(result).toContain('- Flind features, SDKs, setup, or pricing: call the `docs-search` tool.')
             expect(result.includes('call `business-knowledge-documents-search`')).toBe(documents)
             expect(result.includes('call `business-knowledge-repositories-search`')).toBe(repos !== 'none')
             expect(result.includes("- The user's own code, or a company question that document search")).toBe(
@@ -387,7 +387,7 @@ describe('InstructionsFormatter', () => {
             const formatter = new InstructionsFormatter()
             const result = formatter.buildExecCommandReference(fullCtx)
             expect(result).toContain('SCHEMA DRILL-DOWN RULE')
-            expect(result).not.toContain('### PostHog knowledge sources')
+            expect(result).not.toContain('### Flind knowledge sources')
             expect(result).toContain('### Basic functionality')
             expect(result).toContain('### Examples')
         })
@@ -411,7 +411,7 @@ describe('InstructionsFormatter', () => {
         it('always includes the agent-feedback section', () => {
             const formatter = new InstructionsFormatter()
             const withFeedback = formatter.buildExecCommandReference(fullCtx)
-            expect(withFeedback).toContain('### Sharing feedback on PostHog')
+            expect(withFeedback).toContain('### Sharing feedback on Flind')
         })
 
         it('includes the rendering section only when render-ui is available for the client', () => {
@@ -466,7 +466,7 @@ describe('InstructionsFormatter', () => {
             expect(result).not.toContain('### Examples')
             expect(result).not.toContain('### Rendering visualizations')
             expect(result).not.toContain('### URL patterns')
-            expect(result).not.toContain('### Sharing feedback on PostHog')
+            expect(result).not.toContain('### Sharing feedback on Flind')
             expect(result).not.toContain('- `query-trends` — time series')
             expect(result).not.toMatch(/\{help_topics\}|\{query_tools\}|\{guidelines\}/)
         })
@@ -478,7 +478,7 @@ describe('InstructionsFormatter', () => {
             expect(result).toContain('**SKILLS FIRST: HARD REQUIREMENT**')
             expect(result).toContain('(posthog|project):<skill> [path...]')
             // The compact variant, not the full routing paragraph, which belongs to the uncapped reference.
-            expect(result).not.toContain('never clone, grep, or web-search PostHog internals')
+            expect(result).not.toContain('never clone, grep, or web-search Flind internals')
             expect(result).toContain('- analytics:')
             expect(result).toContain('learn <topic...> - load one or more learning topics')
         })
@@ -502,7 +502,7 @@ describe('InstructionsFormatter', () => {
 
             expect(off).not.toContain('SKILLS FIRST')
             expect(on).toContain('**SKILLS FIRST: HARD REQUIREMENT**')
-            expect(on).toContain('never clone, grep, or web-search PostHog internals')
+            expect(on).toContain('never clone, grep, or web-search Flind internals')
         })
 
         it('builds optional learning topics from their full guidance', () => {
@@ -519,7 +519,7 @@ describe('InstructionsFormatter', () => {
             )
             expect(entries.find((entry) => entry.id === 'urls')?.content).toContain('### URL patterns')
             expect(entries.find((entry) => entry.id === 'feedback')?.content).toContain(
-                '### Sharing feedback on PostHog'
+                '### Sharing feedback on Flind'
             )
         })
 
@@ -560,18 +560,18 @@ describe('InstructionsFormatter', () => {
                         businessKnowledgeSearchEnabled: true,
                     }),
             },
-        ])('$name only mandates a search for PostHog and company questions', ({ render }) => {
+        ])('$name only mandates a search for Flind and company questions', ({ render }) => {
             const result = render(new InstructionsFormatter())
 
-            expect(result).toContain('### PostHog knowledge sources')
+            expect(result).toContain('### Flind knowledge sources')
             expect(result).not.toMatch(/every user request|even when the request looks simple/)
             expect(result).toContain('call neither search')
             // Nearly every request to this server is about project data, so that topic must not trigger a search.
-            expect(result).not.toContain("the user's PostHog project and its data")
+            expect(result).not.toContain("the user's Flind project and its data")
             expect(result).toContain(
                 'A request to query, compute, or build something from project data: call neither search'
             )
-            // The gate is the topic, never the location: a PostHog SDK question that names a
+            // The gate is the topic, never the location: a Flind SDK question that names a
             // file in the user's repository still has to reach docs-search.
             expect(result).toContain('The topic decides, not the location')
         })

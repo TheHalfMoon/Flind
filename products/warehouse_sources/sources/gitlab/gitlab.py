@@ -34,7 +34,7 @@ DEFAULT_HOST = "https://gitlab.com"
 HOST_NOT_ALLOWED_ERROR = "GitLab host is not allowed"
 HTTP_NOT_ALLOWED_ERROR = "GitLab host must use HTTPS"
 PROJECT_REF_ERROR = (
-    "PostHog couldn't read a project from that value. Enter group/project (for example, "
+    "Flind couldn't read a project from that value. Enter group/project (for example, "
     "mygroup/myproject), the numeric project ID, or the project's GitLab URL."
 )
 # GitLab answers 404 both for a project that doesn't exist and for one the token can't see, so the

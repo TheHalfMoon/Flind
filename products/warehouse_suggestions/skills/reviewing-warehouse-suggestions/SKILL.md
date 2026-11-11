@@ -1,17 +1,17 @@
 ---
 name: reviewing-warehouse-suggestions
 description: >
-  Reviews PostHog's warehouse suggestions with a person and acts on them.
+  Reviews Flind's warehouse suggestions with a person and acts on them.
   Explains why a view should be materialized, unmaterialized, certified or deprecated using the numbers in the suggestion,
   changes a materialize suggestion's refresh mode, keys or interval when the person wants something else,
   then accepts, dismisses or assigns it.
-  Use when the user asks what PostHog suggests for their data warehouse, whether to materialize a view,
+  Use when the user asks what Flind suggests for their data warehouse, whether to materialize a view,
   why a view should refresh incrementally or every few hours, or wants to accept, change, dismiss or assign a warehouse suggestion.
 ---
 
 # Reviewing warehouse suggestions
 
-PostHog computes warehouse suggestions every day from how the project reads its views and tables.
+Flind computes warehouse suggestions every day from how the project reads its views and tables.
 Each suggestion is about one view or table.
 Its `payload` holds everything that accepting it would create or change.
 
@@ -34,7 +34,7 @@ Do not invent a score or a confidence level.
   - `saves_seconds_per_month` and `saves_bytes_per_month` are what those computations stop costing.
   - Materializing adds a recurring refresh cost, which these numbers already subtract.
   - `freshness_today_seconds` and `freshness_after_seconds` say how old the data can be now and after.
-  - `refresh_interval_seconds` is the proposed interval. `refresh_interval_basis` says what kept it from being shorter: `source_sync` (the sources sync no faster), `fastest_schedule` (PostHog refreshes views no more often), `read_rate` (people read the view no more often), `consumer_refresh` (the materialized views that read it refresh no more often) or `savings` (a shorter interval costs more than it saves).
+  - `refresh_interval_seconds` is the proposed interval. `refresh_interval_basis` says what kept it from being shorter: `source_sync` (the sources sync no faster), `fastest_schedule` (Flind refreshes views no more often), `read_rate` (people read the view no more often), `consumer_refresh` (the materialized views that read it refresh no more often) or `savings` (a shorter interval costs more than it saves).
   - `refresh_mode` is `incremental` when each refresh can read only new rows, by `incremental_key`, and update rows by `unique_key`. Otherwise it is `full`, and each refresh rebuilds the whole table.
 - **unmaterialize**: this materialized view is read so rarely that refreshing it costs more than computing it on each read.
   - `refresh_seconds_per_month` and `refresh_bytes_per_month` are what its refreshes cost now.
@@ -63,7 +63,7 @@ An omitted field keeps the suggested value.
   3. Accept with those keys only when the check returns `eligible: true`. Otherwise explain the `blockers` to the user.
 - **Late rows**: pass `lookback_seconds` so each refresh reads that far back again.
 
-PostHog proposes incremental only when it is certain of the keys.
+Flind proposes incremental only when it is certain of the keys.
 A `full` suggestion can still refresh incrementally if the user chooses keys that pass the check.
 The unique key must include every column the query groups by.
 
@@ -81,7 +81,7 @@ Dismiss with `warehouse-suggestions-dismiss` and a reason (`not_useful`, `not_no
 ## 5. Hand it to someone else
 
 A suggestion's `assignee` is the person who should decide it.
-When a view's suggestion is first shown, PostHog assigns it to the person who created the view, if they can accept it.
+When a view's suggestion is first shown, Flind assigns it to the person who created the view, if they can accept it.
 To see one person's suggestions, pass `assignee_id` to `warehouse-suggestions-list`.
 
 When the user is not the right person to decide, assign it with `warehouse-suggestions-assign`.

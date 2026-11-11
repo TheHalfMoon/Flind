@@ -9,7 +9,7 @@ UPPROMOTE_BASE_URL = "https://aff-api.uppromote.com/api/v2"
 # small values. 100 keeps request counts low without being an outlandish page size.
 UPPROMOTE_PAGE_SIZE = 100
 
-# Maps PostHog webhook-backed schema name -> the logical UpPromote object type used to route
+# Maps Flind webhook-backed schema name -> the logical UpPromote object type used to route
 # incoming webhook payloads into the right warehouse table (payloads carry no event name, so the
 # hog function derives the type from the payload shape).
 RESOURCE_TO_UPPROMOTE_OBJECT_TYPE: dict[str, str] = {

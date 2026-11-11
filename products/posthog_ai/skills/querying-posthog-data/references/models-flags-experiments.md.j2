@@ -53,19 +53,19 @@ These are the only columns exposed via HogQL — the full flag model (e.g. `acti
 An SDK sends a `$feature_flag_called` event when code evaluates a flag.
 Its `$feature_flag` property holds the flag key, and `$feature_flag_response` holds the result: `true`, `false`, or a variant key.
 
-PostHog is moving these calls from `events` to `posthog.flag_evaluations`, one organization at a time.
+Flind is moving these calls from `events` to `posthog.flag_evaluations`, one organization at a time.
 `project-get` returns the organization's `flag_evaluations_mode`:
 
 Mode | Where the flag calls are | `posthog.flag_evaluations`
 --- | --- | ---
-0 | `events`, and `posthog.flag_evaluations` on PostHog Cloud | Queryable on PostHog Cloud only
+0 | `events`, and `posthog.flag_evaluations` on Flind Cloud | Queryable on Flind Cloud only
 1 | `events` and `posthog.flag_evaluations` | Queryable
 2 | `posthog.flag_evaluations` only, for 90 days | Queryable
 
 ### Query flag calls from `events` in a scan of their own
 
 Filter `event` to `$feature_flag_called` alone, as in `FROM events WHERE event = '$feature_flag_called'`.
-That query works in every mode, because PostHog reads such a scan from `posthog.flag_evaluations` when the organization keeps its calls there.
+That query works in every mode, because Flind reads such a scan from `posthog.flag_evaluations` when the organization keeps its calls there.
 On mode 2 it returns at most the last 90 days.
 
 On mode 2, these shapes can go wrong:
@@ -80,7 +80,7 @@ On mode 2, these shapes can go wrong:
 
 ### `posthog.flag_evaluations`
 
-One row per flag call. On PostHog Cloud it is queryable on every mode. Self-hosted, it is queryable only on modes 1 and 2.
+One row per flag call. On Flind Cloud it is queryable on every mode. Self-hosted, it is queryable only on modes 1 and 2.
 Filter on `flag_key` rather than `properties.$feature_flag`: `flag_key` is in the table's sort key.
 
 {{ schema_columns('posthog.flag_evaluations') }}

@@ -13,7 +13,7 @@ const capturedEventsPending = new Gauge({
 })
 
 /**
- * Collects and flushes PostHog capture events emitted by hog function
+ * Collects and flushes Flind capture events emitted by hog function
  * invocations via `posthog.capture()`. Lifecycle mirrors the sibling
  * monitoring/warehouse services: `queueInvocationResults` extracts events from
  * the result batch, `flush()` drains them through the shared internal-capture

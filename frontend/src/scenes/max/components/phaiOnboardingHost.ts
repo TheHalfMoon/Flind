@@ -20,7 +20,7 @@ export interface PhaiOnboardingHostInput {
     selectedTab: SidePanelTab | null
 }
 
-/** The surface that may open the takeover by itself, on a first open of the new PostHog AI. */
+/** The surface that may open the takeover by itself, on a first open of the new Flind AI. */
 function resolveAutoOpenHost({
     sceneId,
     receivedFeatureFlags,
@@ -50,7 +50,7 @@ function resolveAutoOpenHost({
 /**
  * Every takeover the current surfaces need. A surface belongs here whenever it renders the runner's
  * composer, because the composer carries the replay button — leaving one out would show a button that opens
- * nothing. Only a first open of the new PostHog AI opens the takeover by itself; `/tasks` mounts it purely
+ * nothing. Only a first open of the new Flind AI opens the takeover by itself; `/tasks` mounts it purely
  * so its replay button works.
  */
 export function resolvePhaiOnboardingMounts(input: PhaiOnboardingHostInput): PhaiOnboardingMount[] {
@@ -61,8 +61,8 @@ export function resolvePhaiOnboardingMounts(input: PhaiOnboardingHostInput): Pha
         mounts.push({ host: autoOpenHost, autoOpen: true })
     }
 
-    // `/tasks` reaches everyone who can open the scene, whatever their PostHog AI view mode, so a takeover
-    // opening there wouldn't line up with a first look at the new PostHog AI. It waits for the replay button.
+    // `/tasks` reaches everyone who can open the scene, whatever their Flind AI view mode, so a takeover
+    // opening there wouldn't line up with a first look at the new Flind AI. It waits for the replay button.
     if (input.sceneId === Scene.TaskTracker && autoOpenHost !== 'scene') {
         mounts.push({ host: 'scene', autoOpen: false })
     }

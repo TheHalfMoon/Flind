@@ -442,10 +442,10 @@ If automatic creation failed with a permissions error, the fix depends on how yo
             # disable the schema and point the user at the version repin instead.
             "410 Client Error": "GitHub no longer serves the API version this source is pinned to. Update the source to a supported version, then sync again.",
             "Bad credentials": "Your GitHub connection is invalid or expired. Please reconnect.",
-            # The GitHub App isn't configured on this PostHog instance, so an OAuth source can't mint
+            # The GitHub App isn't configured on this Flind instance, so an OAuth source can't mint
             # the App JWT to refresh its installation token. Deterministic — retrying never resolves it.
-            "GITHUB_APP_CLIENT_ID is not configured": "The GitHub App is not configured on this PostHog instance. Please contact support.",
-            "GITHUB_APP_PRIVATE_KEY is not configured": "The GitHub App is not configured on this PostHog instance. Please contact support.",
+            "GITHUB_APP_CLIENT_ID is not configured": "The GitHub App is not configured on this Flind instance. Please contact support.",
+            "GITHUB_APP_PRIVATE_KEY is not configured": "The GitHub App is not configured on this Flind instance. Please contact support.",
             # A 404 from POST /app/installations/{id}/access_tokens means the GitHub App installation
             # no longer exists (uninstalled or its access revoked). Retrying can never mint a token, so
             # stop syncing until the user reconnects. Match the not-found body specifically — a bare
@@ -704,7 +704,7 @@ If automatic creation failed with a permissions error, the fix depends on how yo
         if held is None or held.get("repository_hooks") == "write":
             return None
         return (
-            "This GitHub app installation cannot manage repository webhooks, so PostHog cannot "
+            "This GitHub app installation cannot manage repository webhooks, so Flind cannot "
             "create the webhook for you. Set it up manually using the steps below, or reconnect "
             "the source with a personal access token that has the admin:repo_hook scope."
         )

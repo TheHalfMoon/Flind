@@ -161,7 +161,7 @@ export function ticketActivityDescriber(logItem: ActivityLogItem, asNotification
     }
 
     // When a HogFlow workflow step made the change, attribute it to (and link to) the workflow
-    // instead of the generic "PostHog" system actor. The workflow name is resolved live by id
+    // instead of the generic "Flind" system actor. The workflow name is resolved live by id
     // (never trusted from the log payload), so it can't be spoofed via the update headers.
     const trigger = logItem.detail.trigger
     const actor =

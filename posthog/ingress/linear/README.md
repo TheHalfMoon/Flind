@@ -1,6 +1,6 @@
 # Linear
 
-Deliveries from the PostHog Linear OAuth App.
+Deliveries from the Flind Linear OAuth App.
 
 ## Headers
 

@@ -33,7 +33,7 @@ def run_push_token_import(self: Task, *, team_id: int, import_id: str) -> None:
         fail_push_token_import(
             team_id,
             UUID(import_id),
-            "PostHog couldn't save the devices, so the import stopped. Upload the file again to import the rest. "
+            "Flind couldn't save the devices, so the import stopped. Upload the file again to import the rest. "
             "Devices already imported are not stored twice.",
         )
         return

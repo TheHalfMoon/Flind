@@ -3,13 +3,13 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 2 enabled ops
+ * Flind API - MCP 2 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
 
 /**
- * List batch import (managed migration) jobs across all teams. PostHog staff only.
+ * List batch import (managed migration) jobs across all teams. Flind staff only.
  */
 export const ManagedMigrationsSupportListQueryParams = () => zod.object({
     limit: zod.number().optional().describe('Number of results to return per page.'),
@@ -24,7 +24,7 @@ export const ManagedMigrationsSupportListQueryParams = () => zod.object({
 })
 
 /**
- * Get one batch import job with its raw worker state and import config. PostHog staff only.
+ * Get one batch import job with its raw worker state and import config. Flind staff only.
  */
 export const ManagedMigrationsSupportRetrieveParams = () => zod.object({
     id: zod.string().describe('A UUID string identifying this batch import.'),

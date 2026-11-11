@@ -61,7 +61,7 @@ export function ErrorDetailsDialog() {
     close();
     openTaskInput({
       initialPrompt: [
-        `Investigate this error from the PostHog app: ${detail.title}`,
+        `Investigate this error from the Flind app: ${detail.title}`,
         "",
         "## Error",
         "```",

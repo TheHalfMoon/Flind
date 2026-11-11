@@ -20,7 +20,7 @@ def _label(check: Callable[..., Any]) -> str:
 
 def test_every_system_check_declares_ids_in_the_posthog_scheme() -> None:
     checks = _owned_checks()
-    assert checks, "No PostHog system check is registered, so this test checks nothing."
+    assert checks, "No Flind system check is registered, so this test checks nothing."
 
     problems: list[str] = []
     for check in checks:

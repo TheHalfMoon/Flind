@@ -19,7 +19,7 @@ Quotes are ignored. A regex that matches no tool falls back to ranking by its wo
 
 Only fall back to `tools` if you have no idea which domain to search, or if `search` returns no results.
 
-PostHog tools have lowercase kebab-case naming. Tools are organized by category:
+Flind tools have lowercase kebab-case naming. Tools are organized by category:
 
 {tool_domains}
 Typical action names: list/retrieve/get/create/update/delete/query.

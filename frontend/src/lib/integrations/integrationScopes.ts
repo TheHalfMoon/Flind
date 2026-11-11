@@ -43,7 +43,7 @@ export function requestsSlackInReviewScopes(preflight: PreflightStatus | null | 
     return !!preflight?.is_debug || preflight?.region === Region.DEV
 }
 
-/** Scopes PostHog asks for on the authorize URL, for the kinds where the frontend knows the full list. */
+/** Scopes Flind asks for on the authorize URL, for the kinds where the frontend knows the full list. */
 export function requestedScopesForKind(kind: IntegrationKind, preflight: PreflightStatus | null | undefined): string[] {
     return kind === 'slack' ? slackRequestedScopes(requestsSlackInReviewScopes(preflight)) : []
 }

@@ -53,7 +53,7 @@ const currentAboveStartupCapNotice = (
 
 // Mirrors the caps the billing service enforces for startup-program customers, so the form
 // rejects out-of-range limits before the API does. The billing API product names are too
-// verbose for copy (e.g. "PostHog Desktop (usage-based)").
+// verbose for copy (e.g. "Flind Desktop (usage-based)").
 const startupProgramCapResolver = (productName: string, cap: number): BillingLimitConfigResolver => {
     return ({ billing, customLimitUsd, billingLimitNextPeriod }) => {
         if (!billing?.startup_program_label) {

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -21,10 +21,10 @@ export const ExternalDataDestinationsCreateBody = /* @__PURE__ */ zod.object({
     type: zod
         .enum(['PostHogWarehouse', 'Redshift', 'Snowflake', 'BigQuery', 'Postgres', 'Databricks', 'AzureBlob', 'S3'])
         .describe(
-            '\* `PostHogWarehouse` - PostHog warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
+            '\* `PostHogWarehouse` - Flind warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
         )
         .describe(
-            'Where synced rows are written. The PostHog warehouse is managed for you, so you cannot create one here.\n\n\* `PostHogWarehouse` - PostHog warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
+            'Where synced rows are written. The Flind warehouse is managed for you, so you cannot create one here.\n\n\* `PostHogWarehouse` - Flind warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
         ),
     name: zod
         .string()
@@ -40,13 +40,13 @@ export const ExternalDataDestinationsCreateBody = /* @__PURE__ */ zod.object({
         .number()
         .nullish()
         .describe(
-            "Integration holding this destination's credentials. Required for every type except the PostHog warehouse."
+            "Integration holding this destination's credentials. Required for every type except the Flind warehouse."
         ),
     migration_item_id: zod
         .uuid()
         .optional()
         .describe(
-            'The warehouse migration item that planned this destination. The integration must keep every setting the connect page prefilled from it, or creation fails before PostHog connects anywhere.'
+            'The warehouse migration item that planned this destination. The integration must keep every setting the connect page prefilled from it, or creation fails before Flind connects anywhere.'
         ),
 })
 
@@ -62,10 +62,10 @@ export const ExternalDataDestinationsUpdateBody = /* @__PURE__ */ zod.object({
     type: zod
         .enum(['PostHogWarehouse', 'Redshift', 'Snowflake', 'BigQuery', 'Postgres', 'Databricks', 'AzureBlob', 'S3'])
         .describe(
-            '\* `PostHogWarehouse` - PostHog warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
+            '\* `PostHogWarehouse` - Flind warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
         )
         .describe(
-            'Where synced rows are written. The PostHog warehouse is managed for you, so you cannot create one here.\n\n\* `PostHogWarehouse` - PostHog warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
+            'Where synced rows are written. The Flind warehouse is managed for you, so you cannot create one here.\n\n\* `PostHogWarehouse` - Flind warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
         ),
     name: zod
         .string()
@@ -81,13 +81,13 @@ export const ExternalDataDestinationsUpdateBody = /* @__PURE__ */ zod.object({
         .number()
         .nullish()
         .describe(
-            "Integration holding this destination's credentials. Required for every type except the PostHog warehouse."
+            "Integration holding this destination's credentials. Required for every type except the Flind warehouse."
         ),
     migration_item_id: zod
         .uuid()
         .optional()
         .describe(
-            'The warehouse migration item that planned this destination. The integration must keep every setting the connect page prefilled from it, or creation fails before PostHog connects anywhere.'
+            'The warehouse migration item that planned this destination. The integration must keep every setting the connect page prefilled from it, or creation fails before Flind connects anywhere.'
         ),
 })
 
@@ -103,11 +103,11 @@ export const ExternalDataDestinationsPartialUpdateBody = /* @__PURE__ */ zod.obj
     type: zod
         .enum(['PostHogWarehouse', 'Redshift', 'Snowflake', 'BigQuery', 'Postgres', 'Databricks', 'AzureBlob', 'S3'])
         .describe(
-            '\* `PostHogWarehouse` - PostHog warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
+            '\* `PostHogWarehouse` - Flind warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
         )
         .optional()
         .describe(
-            'Where synced rows are written. The PostHog warehouse is managed for you, so you cannot create one here.\n\n\* `PostHogWarehouse` - PostHog warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
+            'Where synced rows are written. The Flind warehouse is managed for you, so you cannot create one here.\n\n\* `PostHogWarehouse` - Flind warehouse\n\* `Redshift` - Redshift\n\* `Snowflake` - Snowflake\n\* `BigQuery` - BigQuery\n\* `Postgres` - Postgres\n\* `Databricks` - Databricks\n\* `AzureBlob` - Azure Blob\n\* `S3` - S3'
         ),
     name: zod
         .string()
@@ -124,13 +124,13 @@ export const ExternalDataDestinationsPartialUpdateBody = /* @__PURE__ */ zod.obj
         .number()
         .nullish()
         .describe(
-            "Integration holding this destination's credentials. Required for every type except the PostHog warehouse."
+            "Integration holding this destination's credentials. Required for every type except the Flind warehouse."
         ),
     migration_item_id: zod
         .uuid()
         .optional()
         .describe(
-            'The warehouse migration item that planned this destination. The integration must keep every setting the connect page prefilled from it, or creation fails before PostHog connects anywhere.'
+            'The warehouse migration item that planned this destination. The integration must keep every setting the connect page prefilled from it, or creation fails before Flind connects anywhere.'
         ),
 })
 
@@ -477,7 +477,7 @@ export const ExternalDataSourcesCreateBody = /* @__PURE__ */ zod.object({
         .max(externalDataSourcesCreateBodyPrefixMax)
         .nullish()
         .describe(
-            'Prefix added to the table names PostHog creates in HogQL. Does not filter which tables are imported.'
+            'Prefix added to the table names Flind creates in HogQL. Does not filter which tables are imported.'
         ),
     description: zod
         .string()
@@ -496,7 +496,7 @@ export const ExternalDataSourcesCreateBody = /* @__PURE__ */ zod.object({
         .describe('\* `web` - web\n\* `api` - api\n\* `mcp` - mcp')
         .default(externalDataSourcesCreateBodyCreatedViaDefault)
         .describe(
-            'Where the request came from: `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls. `wizard` and `self_driving` cannot be set directly — they are derived server-side for wizard- and PostHog Desktop-driven MCP calls. Defaults to `api`.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp'
+            'Where the request came from: `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls. `wizard` and `self_driving` cannot be set directly — they are derived server-side for wizard- and Flind Desktop-driven MCP calls. Defaults to `api`.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp'
         ),
     direct_query_enabled: zod
         .boolean()
@@ -508,7 +508,7 @@ export const ExternalDataSourcesCreateBody = /* @__PURE__ */ zod.object({
         .array(zod.uuid())
         .optional()
         .describe(
-            'Destinations every table on this source writes to. Set here rather than afterwards, so the opening sync already carries them. Omit to write to the PostHog warehouse only.'
+            'Destinations every table on this source writes to. Set here rather than afterwards, so the opening sync already carries them. Omit to write to the Flind warehouse only.'
         ),
 })
 
@@ -536,7 +536,7 @@ export const ExternalDataSourcesUpdateBody = /* @__PURE__ */ zod
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -594,7 +594,7 @@ export const ExternalDataSourcesPartialUpdateBody = /* @__PURE__ */ zod
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string().optional(),
         account_id: zod.string().optional(),
@@ -756,7 +756,7 @@ export const ExternalDataSourcesCheckCdcPrerequisitesForSourceCreateBody = /* @_
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -817,7 +817,7 @@ export const ExternalDataSourcesCreateWebhookCreateBody = /* @__PURE__ */ zod
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -875,7 +875,7 @@ export const ExternalDataSourcesDeleteWebhookCreateBody = /* @__PURE__ */ zod
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -954,7 +954,7 @@ export const ExternalDataSourcesDisableCdcCreateBody = /* @__PURE__ */ zod
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -1023,7 +1023,7 @@ export const ExternalDataSourcesEnableCdcCreateBody = /* @__PURE__ */ zod
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -1081,7 +1081,7 @@ export const ExternalDataSourcesRefreshSchemasCreateBody = /* @__PURE__ */ zod
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -1139,7 +1139,7 @@ export const ExternalDataSourcesReloadCreateBody = /* @__PURE__ */ zod
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -1197,7 +1197,7 @@ export const ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateBody = /* @__
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string().optional(),
         account_id: zod.string().optional(),
@@ -1263,7 +1263,7 @@ export const ExternalDataSourcesUpdateCdcSettingsCreateBody = /* @__PURE__ */ zo
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -1321,7 +1321,7 @@ export const ExternalDataSourcesUpdateWebhookInputsCreateBody = /* @__PURE__ */ 
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -1356,17 +1356,17 @@ export const ExternalDataSourcesUpdateWebhookInputsCreateBody = /* @__PURE__ */ 
     .describe('Mixin for serializers to add user access control fields')
 
 /**
- * Create the planned PostHog source for one migration item, then set its sync schedule.
+ * Create the planned Flind source for one migration item, then set its sync schedule.
  */
 export const externalDataSourcesApplyMigrationItemCreateBodyPrefixMax = 100
 
 export const externalDataSourcesApplyMigrationItemCreateBodyCreatedViaDefault = `api`
 
 export const ExternalDataSourcesApplyMigrationItemCreateBody = /* @__PURE__ */ zod.object({
-    item_id: zod.uuid().describe('The migration item to create a PostHog source for.'),
+    item_id: zod.uuid().describe('The migration item to create a Flind source for.'),
     credential_id: zod
         .uuid()
-        .describe("Stored credential from the source connect page, for the item's PostHog source type."),
+        .describe("Stored credential from the source connect page, for the item's Flind source type."),
     prefix: zod
         .string()
         .max(externalDataSourcesApplyMigrationItemCreateBodyPrefixMax)
@@ -1375,7 +1375,7 @@ export const ExternalDataSourcesApplyMigrationItemCreateBody = /* @__PURE__ */ z
     destination_ids: zod
         .array(zod.uuid())
         .optional()
-        .describe('Destinations to write the new source to. Omit to write to the PostHog warehouse.'),
+        .describe('Destinations to write the new source to. Omit to write to the Flind warehouse.'),
     table_overrides: zod
         .array(
             zod.object({
@@ -1387,7 +1387,7 @@ export const ExternalDataSourcesApplyMigrationItemCreateBody = /* @__PURE__ */ z
                 posthog_table: zod
                     .string()
                     .nullable()
-                    .describe('The PostHog table to sync it as. Null leaves the table out.'),
+                    .describe('The Flind table to sync it as. Null leaves the table out.'),
             })
         )
         .optional()
@@ -1535,7 +1535,7 @@ export const ExternalDataSourcesSetupCreateBody = /* @__PURE__ */ zod.object({
         .max(externalDataSourcesSetupCreateBodyPrefixMax)
         .nullish()
         .describe(
-            "Prefix added to the table names PostHog creates in HogQL, e.g. 'stripe' produces stripe_charges. Does not filter which tables are imported. Defaults to the source type."
+            "Prefix added to the table names Flind creates in HogQL, e.g. 'stripe' produces stripe_charges. Does not filter which tables are imported. Defaults to the source type."
         ),
     description: zod
         .string()
@@ -1574,7 +1574,7 @@ export const ExternalDataSourcesSourcePrefixCreateBody = /* @__PURE__ */ zod
             ])
             .optional()
             .describe(
-                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
+                "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent\/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.\n\n\* `web` - web\n\* `api` - api\n\* `mcp` - mcp\n\* `wizard` - wizard\n\* `self_driving` - self_driving"
             ),
         client_secret: zod.string(),
         account_id: zod.string(),
@@ -1611,7 +1611,7 @@ export const ExternalDataSourcesSourcePrefixCreateBody = /* @__PURE__ */ zod
 /**
  * Validate and store credentials for a data warehouse source without creating the source.
  *
- * Backs the source connect page: the user enters credentials directly in PostHog, they are
+ * Backs the source connect page: the user enters credentials directly in Flind, they are
  * checked against a live connection, then stashed encrypted in a temporary store. The returned
  * credential id can be passed to `setup` as {'credential_id': <id>} to create the source — so
  * secrets never travel through an agent conversation. The stash is single-use: it is deleted
@@ -1628,7 +1628,7 @@ export const ExternalDataSourcesStoreCredentialsCreateBody = /* @__PURE__ */ zod
         .uuid()
         .optional()
         .describe(
-            'The migration item whose prefilled settings the connect page showed. Every prefilled setting must keep its value, or the request is rejected before PostHog connects anywhere.'
+            'The migration item whose prefilled settings the connect page showed. Every prefilled setting must keep its value, or the request is rejected before Flind connects anywhere.'
         ),
 })
 
@@ -1694,7 +1694,7 @@ export const WarehouseAlertsDestinationsDeleteCreateBody = /* @__PURE__ */ zod.o
 })
 
 /**
- * Import a team's Fivetran setup and plan the PostHog sources that replace it.
+ * Import a team's Fivetran setup and plan the Flind sources that replace it.
  */
 export const WarehouseMigrationsCreateBody = /* @__PURE__ */ zod.object({
     provider: zod
@@ -1722,7 +1722,7 @@ export const WarehouseMigrationsConnectionsCreateBody = /* @__PURE__ */ zod.obje
         .max(warehouseMigrationsConnectionsCreateBodyDestinationsMax)
         .optional()
         .describe(
-            "Fivetran destination details responses, unchanged. Send them before the connections that use them, so PostHog reads each connection's sync time in its destination's time zone."
+            "Fivetran destination details responses, unchanged. Send them before the connections that use them, so Flind reads each connection's sync time in its destination's time zone."
         ),
     connections: zod
         .array(
@@ -1743,7 +1743,7 @@ export const WarehouseMigrationsConnectionsCreateBody = /* @__PURE__ */ zod.obje
         .max(warehouseMigrationsConnectionsCreateBodyConnectionsMax)
         .optional()
         .describe(
-            'At most 25 connections. A connection uploaded again replaces its plan, unless it is already created in PostHog or skipped.'
+            'At most 25 connections. A connection uploaded again replaces its plan, unless it is already created in Flind or skipped.'
         ),
 })
 

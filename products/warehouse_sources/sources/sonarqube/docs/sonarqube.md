@@ -16,7 +16,7 @@ import SourceSetupIntro from "../\_snippets/source-setup-intro.mdx"
 import SyncModes from "../\_snippets/sync-modes.mdx"
 import TroubleshootingLink from "../\_snippets/dw-troubleshooting-link.mdx"
 
-Sync code-quality data from your self-hosted [SonarQube Server](https://www.sonarsource.com/products/sonarqube/) into the PostHog data warehouse — projects, their analyses, branches, and pull requests, metric definitions and values, metric history, quality gates and their status per project, coding rules, issues and their change history, security hotspots, and users — so you can trend technical debt, reliability, coverage, and issue counts across your projects over time.
+Sync code-quality data from your self-hosted [SonarQube Server](https://www.sonarsource.com/products/sonarqube/) into the Flind data warehouse — projects, their analyses, branches, and pull requests, metric definitions and values, metric history, quality gates and their status per project, coding rules, issues and their change history, security hotspots, and users — so you can trend technical debt, reliability, coverage, and issue counts across your projects over time.
 
 ## Prerequisites
 
@@ -59,6 +59,6 @@ You'll need:
 
 - **Setup rejects a SonarQube Cloud URL.** This source reads SonarQube Server. Cloud needs an organization key on every request, so connect it with the Sonar Cloud source instead.
 - **The users table fails to sync.** `/api/users/search` requires the _Administer System_ permission. Either grant it to the token's user or leave the users table unselected — it's off by default.
-- **Fewer issues than expected on a large project.** SonarQube caps issue search at 10,000 results per query window. PostHog automatically pages past this by re-windowing on the issue creation date, so all issues are synced; if you still see gaps, check that the token can browse the affected projects.
+- **Fewer issues than expected on a large project.** SonarQube caps issue search at 10,000 results per query window. Flind automatically pages past this by re-windowing on the issue creation date, so all issues are synced; if you still see gaps, check that the token can browse the affected projects.
 
 <TroubleshootingLink />

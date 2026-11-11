@@ -5048,7 +5048,7 @@ class TestSurveyQuestionValidationWithEnterpriseFeatures(APIBaseTest):
         )
         response_data = response.json()
         assert response.status_code == status.HTTP_400_BAD_REQUEST, response_data
-        assert response_data["detail"] == "You need to upgrade to PostHog Enterprise to use white labelling"
+        assert response_data["detail"] == "You need to upgrade to Flind Enterprise to use white labelling"
 
 
 class TestSurveyWithActions(APIBaseTest):
@@ -8917,7 +8917,7 @@ class TestSurveyFeatureFlagScopeWarning(PersonalAPIKeysBaseTest, APIBaseTest):
         assert events[0].kwargs["action"] == "survey.destroy"
 
     def test_destroy_with_only_internal_targeting_flag_does_not_log(self):
-        # The internal targeting flag is PostHog-managed, so deleting a survey that only has
+        # The internal targeting flag is Flind-managed, so deleting a survey that only has
         # one must not warn (or be blocked once enforced).
         survey_id = self._create_survey().json()["id"]
         survey = Survey.objects.get(pk=survey_id)

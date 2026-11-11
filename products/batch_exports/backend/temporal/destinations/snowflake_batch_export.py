@@ -1064,7 +1064,7 @@ class SnowflakeClient:
             raise SnowflakeIncompatibleSchemaError(
                 f"A Snowflake table '{table.name}' was found, but one or more "
                 f"fields are defined with incompatible types: '{exc}'. Have "
-                "you created the table following the PostHog documentation? "
+                "you created the table following the Flind documentation? "
             ) from exc
         return table
 
@@ -1090,7 +1090,7 @@ class SnowflakeClient:
             CREATE TABLE {if_not_exists} "{table.name}" (
                 {field_ddl}
             )
-            COMMENT = 'PostHog generated table'
+            COMMENT = 'Flind generated table'
             """,
             fetch_results=False,
         )

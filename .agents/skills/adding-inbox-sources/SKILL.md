@@ -5,7 +5,7 @@ description: Add a data warehouse table as a Self-driving Inbox signal source (t
 
 # Adding a Self-driving Inbox source
 
-The Self-driving Inbox connects a PostHog **data warehouse source** and syncs one table of actionable records.
+The Self-driving Inbox connects a Flind **data warehouse source** and syncs one table of actionable records.
 After each sync, the signals pipeline reads the new rows, filters them with an LLM actionability gate, and emits signals.
 The pipeline is driven by a static registry keyed on `(ExternalDataSourceType, table)`, so each table needs an emitter config.
 

@@ -375,7 +375,7 @@ class ResolveActingUserInput:
 @dataclass(frozen=False)
 class ResolveActingUserResult:
     # The user whose enabled perspectives drive this review; None when nothing in the resolution
-    # chain maps to a PostHog org user — the parent then skips the review.
+    # chain maps to a Flind org user — the parent then skips the review.
     acting_user_id: int | None
     # The acting user's preferences, snapshotted here so mid-run edits don't flip gates between
     # stages. Defaults match the code defaults (and cover payloads serialized before these existed).
@@ -1157,7 +1157,7 @@ def _resolve_acting_user(input: ResolveActingUserInput) -> ResolveActingUserResu
 async def resolve_acting_user_activity(input: ResolveActingUserInput) -> ResolveActingUserResult:
     """Resolve the user whose enabled perspectives drive this review, plus their settings snapshot.
 
-    Production: the PR author, mapped GitHub-login → PostHog org user (`resolve_org_github_login_to_users`).
+    Production: the PR author, mapped GitHub-login → Flind org user (`resolve_org_github_login_to_users`).
     The label trigger falls back to the default run user (someone explicitly asked for the review);
     other triggers return None on an unmapped author and the parent skips the review.
     The CLI/eval passes an explicit `override_user_id` to test a known user's perspectives on any PR.

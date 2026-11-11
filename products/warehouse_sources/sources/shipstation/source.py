@@ -70,7 +70,7 @@ class ShipStationSource(ResumableSource[ShipStationSourceConfig, ShipStationResu
             name=ExternalDataSourceType.SHIPSTATION,
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="ShipStation",
-            caption="""Enter your ShipStation API credentials to pull your ShipStation shipping data into the PostHog data warehouse.
+            caption="""Enter your ShipStation API credentials to pull your ShipStation shipping data into the Flind data warehouse.
 
 New connections use ShipStation API v2, which needs only the API key from your [ShipStation API settings](https://docs.shipstation.com/getting-started). The API secret is only for older v1 connections, which ShipStation is deprecating.
 

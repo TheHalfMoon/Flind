@@ -133,7 +133,7 @@ class BingWebmasterToolsSource(SimpleSource[BingWebmasterToolsSourceConfig]):
             category=DataWarehouseSourceCategory.ANALYTICS,
             keywords=["bing", "seo", "organic search", "search analytics"],
             label="Bing Webmaster Tools",
-            caption="""Sync your site's organic search performance on Bing into the PostHog Data warehouse: top queries, top pages, daily rank and traffic, and crawl statistics.
+            caption="""Sync your site's organic search performance on Bing into the Flind Data warehouse: top queries, top pages, daily rank and traffic, and crawl statistics.
 
 Generate an API key in [Bing Webmaster Tools](https://www.bing.com/webmasters) under **Settings > API access > API key**. The key is issued per user and covers every verified site on the account.
 """,

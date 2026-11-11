@@ -107,14 +107,14 @@ def update_validated_data_from_url(validated_data: dict[str, Any], url: str) -> 
             validated_data["plugin_type"] = Plugin.PluginType.CUSTOM
 
     if posthog_version and not is_cloud():
-        # Legacy: PostHog is no longer versioned
+        # Legacy: Flind is no longer versioned
         try:
             spec = SimpleSpec(posthog_version.replace(" ", ""))
         except ValueError:
-            raise ValidationError(f'Invalid PostHog semantic version requirement "{posthog_version}"!')
+            raise ValidationError(f'Invalid Flind semantic version requirement "{posthog_version}"!')
         if FROZEN_POSTHOG_VERSION not in spec:
             raise ValidationError(
-                f'Currently running PostHog version {FROZEN_POSTHOG_VERSION} does not match this plugin\'s semantic version requirement "{posthog_version}".'
+                f'Currently running Flind version {FROZEN_POSTHOG_VERSION} does not match this plugin\'s semantic version requirement "{posthog_version}".'
             )
 
     return plugin_json

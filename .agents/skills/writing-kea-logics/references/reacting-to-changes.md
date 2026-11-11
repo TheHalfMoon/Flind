@@ -1,6 +1,6 @@
 # Reacting to changes
 
-When a value changes, what should run? PostHog has a hierarchy. Try each option in
+When a value changes, what should run? Flind has a hierarchy. Try each option in
 order — only fall through to the next when the previous can't express the case.
 
 | Option                        | Use when                                               |

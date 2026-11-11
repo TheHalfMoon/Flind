@@ -18,7 +18,7 @@ V0 supports two configurations:
 | Environment | Workspace                                | Execution                           |
 | ----------- | ---------------------------------------- | ----------------------------------- |
 | `local`     | Local folder with a `project_name`       | The user's machine                  |
-| `cloud`     | GitHub repository in `owner/name` format | A PostHog-provisioned Wizard Worker |
+| `cloud`     | GitHub repository in `owner/name` format | A Flind-provisioned Wizard Worker |
 
 The request uses explicit `environment` and `workspace.type` discriminators.
 The backend rejects unsupported combinations before creating a run.
@@ -226,7 +226,7 @@ Events omit local paths, full shell commands, diff contents, tokens, and raw err
 
 `WIZARD_GATEWAY_URL` is the gateway address returned to the setup agent.
 `WIZARD_GATEWAY_MINT_URL` optionally sets a separate address for the backend's token-mint requests and defaults to `WIZARD_GATEWAY_URL` when unset.
-For local Docker sandboxes, set `WIZARD_GATEWAY_URL=http://host.docker.internal:8080` and `WIZARD_GATEWAY_MINT_URL=http://localhost:8080` in PostHog's `.env.local`.
+For local Docker sandboxes, set `WIZARD_GATEWAY_URL=http://host.docker.internal:8080` and `WIZARD_GATEWAY_MINT_URL=http://localhost:8080` in Flind's `.env.local`.
 Restart the backend after changing these settings.
 
 ### Distributed tracing
@@ -261,7 +261,7 @@ Its internal agent steps are represented by the duration of `wizard.cli.execute`
 Recovery dispatches that start outside the original request can produce another trace, correlated by `wizard.run_id`.
 
 Configure `OTEL_SERVICE_NAME` and the existing OTLP collector endpoint on both the web service and the Wizard Worker.
-The shared Python exporter sends gRPC to the collector; configure that collector to forward traces to PostHog's HTTP `/i/v1/traces` endpoint with its project token.
+The shared Python exporter sends gRPC to the collector; configure that collector to forward traces to Flind's HTTP `/i/v1/traces` endpoint with its project token.
 The [Python installation guide](https://posthog.com/docs/distributed-tracing/installation/python) describes the HTTP exporter configuration for direct clients.
 Check web-service sampling when validating a run: a parent trace that is not sampled also suppresses its child spans.
 For a controlled validation environment, use `OTEL_TRACES_SAMPLER=always_on`, create a cloud run, and confirm its activity spans and cleanup appear in one trace.
@@ -332,7 +332,7 @@ POST /api/projects/{project_id}/wizard/sessions/
 ```
 
 Wizard sessions remain independent from Wizard runs in V0.
-The setup agent can still write them, but the PostHog app no longer reads them.
+The setup agent can still write them, but the Flind app no longer reads them.
 
 The existing `/api/wizard/cloud_run` onboarding flow remains Tasks-backed.
 The app no longer starts these runs or shows their progress.

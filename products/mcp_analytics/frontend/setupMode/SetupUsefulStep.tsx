@@ -14,7 +14,7 @@ import { SetupStepHero } from './SetupStepHero'
 import { SetupStepLayout } from './SetupStepLayout'
 
 const COPY = {
-    title: 'Hear from your server without opening PostHog',
+    title: 'Hear from your server without opening Flind',
     lead: 'Pick one or both. You can change them later in Notifications.',
     report: {
         // Shown while the report offer resolves, and when this project can't get the one-click report.
@@ -36,8 +36,8 @@ const COPY = {
         title: 'What to expect',
         detail: 'Every tool call shows up here live from now on. Trends, tool quality and intent clusters fill in once your server has a few hundred calls.',
     },
-    askAI: 'Ask PostHog AI what you can do',
-    // Sent to PostHog AI as the first message. A question about the product rather than the data, because
+    askAI: 'Ask Flind AI what you can do',
+    // Sent to Flind AI as the first message. A question about the product rather than the data, because
     // a server this new has only a few calls to analyze.
     aiPrompt: 'What can MCP analytics tell me about my MCP server, and what should I look at as tool calls come in?',
     finish: 'Open MCP analytics',

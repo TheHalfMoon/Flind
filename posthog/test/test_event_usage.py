@@ -31,7 +31,7 @@ from posthog.temporal.oauth import (
     WEBMCP_APP_CLIENT_ID,
 )
 
-# The MCP server's catch-all consumer, sent by every sandbox agent and by the agent PostHog
+# The MCP server's catch-all consumer, sent by every sandbox agent and by the agent Flind
 # Desktop hosts locally.
 _POSTHOG_CODE_CONSUMER = "posthog-code"
 
@@ -396,7 +396,7 @@ class TestGetEventSource(SimpleTestCase):
 
     @parameterized.expand(
         [
-            # The agent PostHog Desktop hosts locally authenticates with the same consented token
+            # The agent Flind Desktop hosts locally authenticates with the same consented token
             # as the app around it, so the declared consumer is what tells them apart. A grant that
             # would otherwise read as the interactive app must not override it.
             ("local_agent_in_desktop", _POSTHOG_CODE_CONSUMER, "insight:read", True, EventSource.POSTHOG_CODE),

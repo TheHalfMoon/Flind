@@ -67,7 +67,7 @@ export const LinksThatStayPlain: Story = {
       `- A flag cited by key, like [new-checkout-flow](${PROJECT}/feature_flags/new-checkout-flow), has no page, so it stays a plain link.`,
       `- A chart link inside a list, like [DAU](${sql("SELECT 1")}), stays an inline chip.`,
       `- Code stays code: \`[DAU](${PROJECT}/insights/9pQx3)\``,
-      "- The docs stay a normal link: [PostHog docs](https://posthog.com/docs).",
+      "- The docs stay a normal link: [Flind docs](https://posthog.com/docs).",
     ].join("\n"),
   },
 };

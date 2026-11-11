@@ -249,7 +249,7 @@ export function HandoffSheet({
                                     </View>
                                     <View style={styles.agentBody}>
                                         <Text style={styles.agentName}>{POSTHOG_AGENT.name}</Text>
-                                        <Text style={styles.agentMeta}>PostHog agent · opens a PR in your repo</Text>
+                                        <Text style={styles.agentMeta}>Flind agent · opens a PR in your repo</Text>
                                     </View>
                                 </Pressable44>
                             </View>
@@ -288,12 +288,12 @@ export function HandoffSheet({
                                 ))}
                             </View>
                             <Text style={styles.externalNote}>
-                                Review the prompt before sending. Your agent needs PostHog connected to read the report.
+                                Review the prompt before sending. Your agent needs Flind connected to read the report.
                                 {handoffRepository(report.repository)
                                     ? ` Repository: ${handoffRepository(report.repository)}.`
                                     : ' Choose the correct repository in your agent.'}
                             </Text>
-                            <Text style={styles.sectionLabel}>PostHog options</Text>
+                            <Text style={styles.sectionLabel}>Flind options</Text>
                             <HandoffOptionRows rows={rows} disabled={disabled} />
                         </ScrollView>
                     </GestureDetector>

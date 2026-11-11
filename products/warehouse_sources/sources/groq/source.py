@@ -46,7 +46,7 @@ class GroqSource(ResumableSource[GroqSourceConfig, GroqResumeConfig]):
             label="Groq",
             releaseStatus=ReleaseStatus.GA,
             keywords=["llm", "ai", "inference", "batch"],
-            caption="""Enter your Groq API key to pull your Groq batch jobs, files, and model catalog into the PostHog Data warehouse.
+            caption="""Enter your Groq API key to pull your Groq batch jobs, files, and model catalog into the Flind Data warehouse.
 
 Create an API key in the [Groq console](https://console.groq.com/keys). Groq exposes no usage or spend API, so this source covers batch-job and file bookkeeping plus the model catalog.""",
             iconPath="/static/services/groq.png",

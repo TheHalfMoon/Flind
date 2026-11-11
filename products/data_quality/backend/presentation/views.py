@@ -363,7 +363,7 @@ _SUBJECT_UUID_PARAMETER = OpenApiParameter(
     "subject_uuid",
     OpenApiTypes.UUID,
     OpenApiParameter.QUERY,
-    description="Id of the table, view, metric, or PostHog table.",
+    description="Id of the table, view, metric, or Flind table.",
 )
 _SUBJECT_PARAMETERS = [_SUBJECT_TYPE_PARAMETER, _SUBJECT_UUID_PARAMETER]
 # A listing filter can be left out; a lookup cannot answer without a subject at all, so the actions

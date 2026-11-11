@@ -1,6 +1,6 @@
 ---
 name: adding-mcp-store-servers
-description: Add a third-party MCP server (Linear, Notion, GitHub, ...) to the PostHog MCP store catalog. Use when asked to "add X to the MCP store", expand the MCP server marketplace, or fix a broken catalog entry. Covers finding the vendor's remote MCP endpoint, probing it (handshake, OAuth discovery, DCR), authoring the catalog entry in products/mcp_store/backend/catalog.py, verification tiers, and the operator handoff for servers without Dynamic Client Registration.
+description: Add a third-party MCP server (Linear, Notion, GitHub, ...) to the Flind MCP store catalog. Use when asked to "add X to the MCP store", expand the MCP server marketplace, or fix a broken catalog entry. Covers finding the vendor's remote MCP endpoint, probing it (handshake, OAuth discovery, DCR), authoring the catalog entry in products/mcp_store/backend/catalog.py, verification tiers, and the operator handoff for servers without Dynamic Client Registration.
 ---
 
 # Adding a server to the MCP store
@@ -31,7 +31,7 @@ Adding a server is a small PR to that file.
    The JSON verdict tells you everything the entry needs:
    - `speaks_mcp: false` → the probe could not verify MCP. Stop and re-research — with one exception: `reachable: true` plus the error "Initialize was rejected and no OAuth metadata was discovered" is the auth-walled API-key case (last bullet below).
    - `auth_flavor: "oauth_dcr"` with `passed_activation_gate: true` → OAuth with Dynamic Client Registration. The entry is `auth_type="oauth"` and will **activate automatically on merge**.
-   - `auth_flavor: "oauth_shared"` → OAuth without DCR. The entry is `auth_type="oauth"` but normally ships **inactive**; an operator must register an OAuth app with the vendor and paste credentials in Django admin (see the operator checklist below — include it in your PR description). If PostHog already provisions that exact OAuth app through an instance credential source, declare the reviewed source instead; catalog sync verifies and activates it without copying secrets.
+   - `auth_flavor: "oauth_shared"` → OAuth without DCR. The entry is `auth_type="oauth"` but normally ships **inactive**; an operator must register an OAuth app with the vendor and paste credentials in Django admin (see the operator checklist below — include it in your PR description). If Flind already provisions that exact OAuth app through an instance credential source, declare the reviewed source instead; catalog sync verifies and activates it without copying secrets.
    - `auth_flavor: "open"` → the handshake completed without credentials. `auth_type="api_key"`; activates automatically on merge.
    - `auth_flavor: "api_key_or_unknown"` with `reachable: true` → an auth-walled API-key server; a bare 401/403 gives the probe no MCP evidence. `auth_type="api_key"`, but the entry ships **inactive** — verify it with a real install (Gate B) before adding it, and note in the PR that an operator flips it active in Django admin per environment (users bring their own key; nothing to provision).
 

@@ -1,12 +1,12 @@
 /**
- * Run PostHog's own MCP tools against a *different* PostHog project, over a `posthog` connection.
+ * Run Flind's own MCP tools against a *different* Flind project, over a `posthog` connection.
  *
  * A connection (`posthog/api/posthog_connection.py`) holds a user-consented OAuth grant on another
  * project, in another region or the same one, and exposes a single `forward/` endpoint that replays
  * an arbitrary API request there with the stored token injected. The token never reaches this
  * service.
  *
- * Every tool in this codebase is, underneath, a shaped call to the PostHog API — so pointing a tool
+ * Every tool in this codebase is, underneath, a shaped call to the Flind API — so pointing a tool
  * at another project needs nothing more than an `ApiClient` whose requests come out the other end of
  * that endpoint. `ApiClient` funnels all of its traffic through one `fetch` seam, so a subclass that
  * overrides it re-routes the whole surface at once: `request`, the endpoint helpers, and anything

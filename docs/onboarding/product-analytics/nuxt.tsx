@@ -12,7 +12,7 @@ export const getNuxtClientSteps = (ctx: OnboardingComponentsContext): StepDefini
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog JavaScript library using your package manager:</Markdown>
+                    <Markdown>Install the Flind JavaScript library using your package manager:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -59,7 +59,7 @@ export const getNuxtClientSteps = (ctx: OnboardingComponentsContext): StepDefini
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Add your PostHog project token and host to your `nuxt.config.js` file:</Markdown>
+                    <Markdown>Add your Flind project token and host to your `nuxt.config.js` file:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -176,12 +176,12 @@ export const getNuxtServerSteps = (ctx: OnboardingComponentsContext): StepDefini
                                 language: 'javascript',
                                 file: 'server/api/example.js',
                                 code: dedent`
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
 
                                     export default defineEventHandler(async (event) => {
                                         const runtimeConfig = useRuntimeConfig()
 
-                                        const posthog = new PostHog(
+                                        const posthog = new Flind(
                                             runtimeConfig.public.posthogPublicKey,
                                             { host: runtimeConfig.public.posthogHost }
                                         )

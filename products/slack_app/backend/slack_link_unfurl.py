@@ -1,4 +1,4 @@
-"""Slack link unfurling for PostHog resource URLs.
+"""Slack link unfurling for Flind resource URLs.
 
 Ticket subjects and messages are customer-authored, so every one goes through `escape_slack_mrkdwn`.
 """
@@ -149,7 +149,7 @@ _REJECTED_PAYLOAD_ERRORS = frozenset(
 )
 
 _INVITE_UTM_TAGS = "utm_source=slack&utm_medium=unfurl&utm_campaign=link_unfurl_followup"
-# A channel that shares PostHog links all day would otherwise carry the invite on every unfurl,
+# A channel that shares Flind links all day would otherwise carry the invite on every unfurl,
 # which reads as chrome and stops being noticed. One a day per channel keeps it legible.
 _INVITE_THROTTLE_SECONDS = 24 * 60 * 60
 # The throttle must fail fast rather than correctly: it sits inside the webhook's ack budget.
@@ -228,7 +228,7 @@ def _is_adhoc_insight_url(url: str) -> bool:
 
 def parse_posthog_resource_link(url: str) -> ObjectRef | None:
     """
-    Parse a PostHog app URL into the object a card can unfurl.
+    Parse a Flind app URL into the object a card can unfurl.
 
     An unsaved insight link (`/insights/new#q=<query>`) has the id "new", so logs never carry its
     query. Read the query with `adhoc_insight_query`.
@@ -237,7 +237,7 @@ def parse_posthog_resource_link(url: str) -> ObjectRef | None:
     sit beside the detail a card would add, so they opt out rather than repeat it.
 
     If the path includes `/project/:id`, that segment is ignored — lookup is always scoped to the
-    Slack-connected project and the resolved PostHog user, not to any project id in the URL.
+    Slack-connected project and the resolved Flind user, not to any project id in the URL.
     """
     if "false" in parse_qs(urlparse(url).query).get(UNFURL_OPT_OUT_PARAM, []):
         return None
@@ -474,7 +474,7 @@ def _card_blocks(card: _UnfurlCard, *, kind: str, url: str, compact: bool) -> li
     if body:
         text = _truncate(escape_slack_mrkdwn(body), _MAX_BODY_CHARS)
         blocks.append({"type": "section", "text": {"type": "mrkdwn", "text": text}})
-    buttons = [{"type": "button", "text": {"type": "plain_text", "text": "Open in PostHog"}, "url": link}]
+    buttons = [{"type": "button", "text": {"type": "plain_text", "text": "Open in Flind"}, "url": link}]
     if card.button:
         buttons.append(
             {"type": "button", "text": {"type": "plain_text", "text": card.button.label}, "url": card.button.url}
@@ -766,7 +766,7 @@ def _adhoc_insight_card(ctx: _UnfurlContext, ref: str, url: str) -> _UnfurlCard 
     query = adhoc_insight_query(url)
     if query is None:
         return "not_found"
-    # The card shows only with its chart, and the chart image opens without a PostHog login.
+    # The card shows only with its chart, and the chart image opens without a Flind login.
     if not ctx.team.organization.allow_publicly_shared_resources:
         return "public_sharing_disabled"
     # Rendering an ad hoc query runs it, so it needs the same access as running it directly.
@@ -1220,7 +1220,7 @@ def start_unfurl_charts(
 ) -> None:
     """Start the workflow that adds chart images to the posted cards. Best effort: a failure keeps the text cards.
 
-    The image url opens without a PostHog login, so an organization that turns off public
+    The image url opens without a Flind login, so an organization that turns off public
     sharing gets no charts.
     """
     if not integration.team.organization.allow_publicly_shared_resources:
@@ -1319,7 +1319,7 @@ class _ImageLink:
 
 
 def _artifact_image_link(*, integration: WorkspaceIntegration, user: User, url: str, title: str) -> _ImageLink:
-    # The link opens without a PostHog login, so it follows the public sharing setting like chart images do.
+    # The link opens without a Flind login, so it follows the public sharing setting like chart images do.
     team = integration.team
     if not team.organization.allow_publicly_shared_resources:
         return _ImageLink(failure="public_sharing_disabled")
@@ -1389,8 +1389,8 @@ def _bot_reply_actor(integration: WorkspaceIntegration, event: dict) -> str | No
     """The Slack user steering the run in this thread, when that run was told to share chart links.
 
     Slack credits a message our app posts to our bot user, and some bot-posted messages to the
-    placeholder author. Neither resolves to a PostHog user, so a thread whose run shares links is
-    the signal that such a message is our reply, written for that person with their PostHog
+    placeholder author. Neither resolves to a Flind user, so a thread whose run shares links is
+    the signal that such a message is our reply, written for that person with their Flind
     access. The run state holds the decision, so no flag call here."""
     if not event.get("thread_ts"):
         return None
@@ -1411,7 +1411,7 @@ def _bot_reply_actor(integration: WorkspaceIntegration, event: dict) -> str | No
 
 def handle_posthog_link_unfurl(event: dict, integration: WorkspaceIntegration) -> None:
     """
-    Unfurl supported PostHog resource links with metadata.
+    Unfurl supported Flind resource links with metadata.
 
     Scope is always the Slack-connected project (`integration.team`); `resolve_slack_user` enforces
     that the sharer can access it. Each resource adds its own access check. Ticket and task links

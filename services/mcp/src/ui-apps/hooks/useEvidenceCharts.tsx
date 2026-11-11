@@ -144,7 +144,7 @@ export function useEvidenceCharts(app: App | null, chartClassName: string): Stor
                         {chart?.status === 'error' ? (
                             <div className="flex max-w-xs flex-col items-center gap-2 text-center">
                                 <Text size="sm" variant="muted">
-                                    Couldn't load this chart. Try again, or use Open in PostHog.
+                                    Couldn't load this chart. Try again, or use Open in Flind.
                                 </Text>
                                 <Button
                                     variant="outline"

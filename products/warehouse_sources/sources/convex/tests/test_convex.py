@@ -142,7 +142,7 @@ class TestValidateDeployUrl:
     @parameterized.expand(
         [
             ("unexpected_status", 400, "The Convex deployment rejected the request."),
-            ("unknown_deployment", 404, "PostHog couldn't find this Convex deployment."),
+            ("unknown_deployment", 404, "Flind couldn't find this Convex deployment."),
         ]
     )
     def test_validate_credentials_does_not_leak_url_on_http_error(self, _name, status_code, expected):
@@ -351,7 +351,7 @@ class TestConvexNonRetryableErrors:
             ),
             (
                 "unsendable_deploy_key",
-                "Your deploy key contains characters PostHog can't send to Convex. "
+                "Your deploy key contains characters Flind can't send to Convex. "
                 "Copy the key again from your Convex dashboard, then try again.",
             ),
             (

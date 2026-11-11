@@ -89,7 +89,7 @@ _INBOX_INVITE_UTM_TAGS = "utm_source=posthog&utm_campaign=signals_inbox&utm_medi
 # Bound message size / avoid pinging a crowd.
 _MAX_REVIEWER_MENTIONS = 5
 
-# Deep link opened by the PostHog Desktop app. Override via env for dev (`posthog-code-dev`).
+# Deep link opened by the Flind Desktop app. Override via env for dev (`posthog-code-dev`).
 POSTHOG_CODE_INBOX_DEEP_LINK_SCHEME = getattr(settings, "POSTHOG_CODE_INBOX_DEEP_LINK_SCHEME", "posthog-code")
 
 # Priority ranking — lower index is higher priority. Index used for threshold comparison.
@@ -241,7 +241,7 @@ def resolve_org_suggested_reviewer_user_ids(*, team_id: int, report_ids: Collect
         unmapped_count = len(report_logins - login_map.keys())
         if unmapped_count:
             logger.info(
-                "slack routing for report %s (team %d): %d of %d suggested reviewer login(s) map to no PostHog user",
+                "slack routing for report %s (team %d): %d of %d suggested reviewer login(s) map to no Flind user",
                 art.report_id,
                 team_id,
                 unmapped_count,
@@ -488,7 +488,7 @@ def _build_message_blocks(
     action_elements.append(
         {
             "type": "button",
-            "text": {"type": "plain_text", "text": "Review in PostHog", "emoji": True},
+            "text": {"type": "plain_text", "text": "Review in Flind", "emoji": True},
             "url": build_report_url(report.team_id, report.id, ReportLinkSource.SLACK),
         }
     )
@@ -832,7 +832,7 @@ def _stripped_nonempty(values: Iterable[str] | None) -> set[str]:
 def _resolve_added_reviewer_user_ids(
     report: SignalReport, *, logins: set[str], user_uuids: set[str], exclude_user_id: int | None
 ) -> set[int]:
-    """PostHog user IDs for the reviewers just added, restricted to the project's access set.
+    """Flind user IDs for the reviewers just added, restricted to the project's access set.
 
     A reviewer added by uuid may have no GitHub login at all, so both identities are resolved: the
     personal ping is the whole point of this path, and losing it would leave them unnotified.

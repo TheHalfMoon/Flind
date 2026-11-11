@@ -37,7 +37,7 @@ describe('twilio template', () => {
         expect(response.finished).toEqual(false)
         expect(response.invocation.queueParameters).toMatchInlineSnapshot(`
             {
-              "body": "To=%2B1234567893&From=%2B1234567891&Body=PostHog%20event%20event-name%20was%20triggered",
+              "body": "To=%2B1234567893&From=%2B1234567891&Body=Flind%20event%20event-name%20was%20triggered",
               "headers": {
                 "Authorization": "Basic c2lkXzEyMzQ1OmF1dGhfMTIzNDU=",
                 "Content-Type": "application/x-www-form-urlencoded",

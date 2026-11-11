@@ -1215,7 +1215,7 @@ class PendingBatch:
     is_first_ever_sync: bool
     metadata: dict[str, Any]
     latest_attempt: int
-    # Snapshotted on the batch when the run started. Empty means the PostHog warehouse only.
+    # Snapshotted on the batch when the run started. Empty means the Flind warehouse only.
     destination_ids: list[str] = field(default_factory=list)
     created_at: datetime | None = None
     # Observed denormalized state clock at read time; None for sinks that don't surface it.

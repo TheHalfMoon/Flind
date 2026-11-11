@@ -14,7 +14,7 @@ SKIP_SERVICE_VERSION_REQUIREMENTS = get_from_env(
 )
 
 if SKIP_SERVICE_VERSION_REQUIREMENTS and not (TEST or DEBUG):
-    logger.warning(["Skipping service version requirements. This is dangerous and PostHog might not work as expected!"])
+    logger.warning(["Skipping service version requirements. This is dangerous and Flind might not work as expected!"])
 
 SERVICE_VERSION_REQUIREMENTS = [
     # Floor tracks Django's own minimum: below it the driver refuses to connect.

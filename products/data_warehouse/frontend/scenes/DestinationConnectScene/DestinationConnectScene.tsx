@@ -76,7 +76,7 @@ export function DestinationConnectScene(): JSX.Element {
                 resourceType={{ type: 'data_warehouse' }}
                 description={
                     integrationId === null
-                        ? `Enter your ${typeLabel} credentials. PostHog stores them encrypted and never shares them with anyone, including the assistant that sent you here.`
+                        ? `Enter your ${typeLabel} credentials. Flind stores them encrypted and never shares them with anyone, including the assistant that sent you here.`
                         : undefined
                 }
             />

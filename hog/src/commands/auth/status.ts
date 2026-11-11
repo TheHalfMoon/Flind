@@ -35,7 +35,7 @@ export default defineCommand({
             out.line(`Run ${out.style(result.next, 'bold')} next.`)
             return
         }
-        // The email and project name come from PostHog, and anyone who can rename the project sets the name.
+        // The email and project name come from Flind, and anyone who can rename the project sets the name.
         const who = result.user ? ` as ${out.style(escapeControls(result.user.email), 'bold')}` : ''
         out.line(`${out.style('Logged in', 'green', 'bold')} to ${escapeControls(result.host)}${who}.`)
         const name = result.projectName ? escapeControls(result.projectName) : null

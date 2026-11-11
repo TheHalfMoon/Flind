@@ -14,10 +14,10 @@ export function InboxSection(): JSX.Element {
     const disabledReason = settings === null ? 'Loading…' : settingsLoading ? 'Saving…' : undefined
 
     return (
-        <SettingsTable title="Inbox" description="Pull requests the PostHog agent opens for your Inbox reports.">
+        <SettingsTable title="Inbox" description="Pull requests the Flind agent opens for your Inbox reports.">
             <SettingRow
                 title="Review my Inbox PRs"
-                description="PostHog Review runs a Deep review on them."
+                description="Flind Review runs a Deep review on them."
                 project={<span className="text-xs text-secondary">Default: off</span>}
                 mine={
                     <>

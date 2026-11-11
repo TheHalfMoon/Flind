@@ -32,8 +32,8 @@ API_PREFIX = "/wp-json/wp/v2"
 HOST_NOT_ALLOWED_ERROR = "WordPress site URL is not allowed"
 HTTP_NOT_ALLOWED_ERROR = "WordPress site URL must use HTTPS when credentials are provided"
 BLOCKED_REQUEST_ERROR = (
-    "A firewall, security plugin or bot check on your WordPress site blocked PostHog. "
-    "Allow PostHog's IP addresses through it, then try again."
+    "A firewall, security plugin or bot check on your WordPress site blocked Flind. "
+    "Allow Flind's IP addresses through it, then try again."
 )
 
 # WordPress `after`/`modified_after` filter on the site-LOCAL post_date/post_modified columns, which

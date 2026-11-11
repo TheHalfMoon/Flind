@@ -57,7 +57,7 @@ class CustomerlySource(ResumableSource[CustomerlySourceConfig, CustomerlyResumeC
             name=ExternalDataSourceType.CUSTOMERLY,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Customerly",
-            caption="""Enter your Customerly access token to pull your Customerly data into the PostHog Data warehouse.
+            caption="""Enter your Customerly access token to pull your Customerly data into the Flind Data warehouse.
 
 You can find your access token in your Customerly project under **Project Settings** > **Installation** > **Public API** — see the [Customerly guide](https://docs.customerly.io/en/api/how-to-obtain-your-api-access-token-in-customerly).""",
             iconPath="/static/services/customerly.png",

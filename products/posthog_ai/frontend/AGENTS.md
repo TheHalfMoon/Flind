@@ -1,6 +1,6 @@
-# PostHog AI agent-run surface — frontend guide
+# Flind AI agent-run surface — frontend guide
 
-This directory is the **composable PostHog AI agent-run UI**: a conversation-agnostic library of surfaces
+This directory is the **composable Flind AI agent-run UI**: a conversation-agnostic library of surfaces
 that render and drive an agent run (the streamed thread, tool cards, approvals, the composer). It is
 consumed by the Max scene (`frontend/src/scenes/max`) and the signals inbox — and is meant to be
 embeddable anywhere an agent run needs to be shown or interacted with. The standalone runner scene
@@ -152,7 +152,7 @@ The heart of the surface:
 - **Keyed by `streamKey`** so concurrent streams stay independent.
 
 **Permissions:** parse (`parsePermissionRequestFrame`) → route (`policy/toolPolicy` auto-approves
-built-ins + read-only PostHog `exec`, else surfaces a card) → answer (`respondToPermission`) → resolve (pins
+built-ins + read-only Flind `exec`, else surfaces a card) → answer (`respondToPermission`) → resolve (pins
 the id so a reconnect replay can't re-surface it).
 
 Supporting modules live in `policy/` (tool policy + permission/question utils) and `types/`
@@ -203,11 +203,11 @@ closed chip must not resurrect); re-picking the same item adds it back as a pick
 
 **Tool-stream events (`logics/toolStreamEventsLogic.ts`):** a global bus `runStreamLogic` publishes
 tool-call lifecycle events to — `phase: started/updated/completed/failed`, with `toolName` **resolved** via
-`toolResolver` (inner PostHog MCP tool, e.g. `create_dashboard`). Subscribe with `useToolStreamListener({
+`toolResolver` (inner Flind MCP tool, e.g. `create_dashboard`). Subscribe with `useToolStreamListener({
 tools, onEvent })`, or kea-natively by connecting to the bus and listening to
 `toolStreamEventsLogic.actionTypes.emitToolEvent`. Replay-sourced events are suppressed unless the
 subscription sets `includeReplay` (a reload must not re-trigger UI reactions). Caveat: for exec-wrapped
-PostHog tools the resolved name may be `__posthog_exec_unknown__` at `started` (the `command` streams in via
+Flind tools the resolved name may be `__posthog_exec_unknown__` at `started` (the `command` streams in via
 updates) and is reliable by `completed`. `useMcpToolApplyBack` supports `tool_call_completed` and `turn_end`
 timing.
 The bus also publishes live turn-complete and run-terminal events so apply-back consumers can flush after a
@@ -228,7 +228,7 @@ ingestion).
 - **Keep the projection pure.** `foldLogToThread` is pure and deterministic; item ids stay stable across
   re-folds. Listeners fire only side effects, each with a fire-once guard, suppressed on `source: 'replay'`.
 - **A shared presenter renders in both thread skins.** `ThreadView`'s `skin` prop (`'lemon' | 'quill'`) sets
-  `ThreadSkinContext`; `quill` is the PostHog Desktop chat layout, on behind the `phai-quill` flag (and `today-rail-nav`).
+  `ThreadSkinContext`; `quill` is the Flind Desktop chat layout, on behind the `phai-quill` flag (and `today-rail-nav`).
   `Activity`, `ThreadRow` message and separator rows, `ThreadActivityGroup`, `RunAlertActivity`, `PullRequestCard`, `RunContext` and
   `TurnFeedbackActions` and `AssistantFailureMessage` read `useQuillThread()` and dispatch to their `components/quill/` skin at the top of the
   component. Behavior both skins need (open state, group windowing, ratings) lives in a shared hook

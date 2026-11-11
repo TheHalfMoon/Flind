@@ -687,7 +687,7 @@ def _collect_participants(
 
 
 def _resolve_team_member(email: str, team: Team) -> User | None:
-    """Match a sender email to a PostHog user within the team's organization."""
+    """Match a sender email to a Flind user within the team's organization."""
     if not email:
         return None
     membership = (
@@ -1121,7 +1121,7 @@ def accept_mailgun_outbound_message(delivery: WebhookDelivery) -> None:
 
 
 def accept_mailgun_inbound_message(delivery: WebhookDelivery) -> None:
-    """Turn mail sent to a PostHog inbox address into a ticket or a customer email thread."""
+    """Turn mail sent to a Flind inbox address into a ticket or a customer email thread."""
     request = MailgunRequest(delivery)
     recipient = request.POST.get("recipient", "")
     inbound_token = _extract_inbound_token(recipient)

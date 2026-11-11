@@ -224,7 +224,7 @@ class EmailTemplateSerializer(serializers.Serializer):
     )
     design = UnlayerDesignField(
         required=False,
-        help_text="Design JSON for PostHog's visual email editor — the authoring surface and source of "
+        help_text="Design JSON for Flind's visual email editor — the authoring surface and source of "
         "truth. The server renders the sent email from it, and it opens as editable blocks in the editor. "
         "Full schema in the designing-email-templates skill.",
     )
@@ -336,7 +336,7 @@ class MessageTemplateSerializer(serializers.Serializer):
     )
     sensitive = serializers.BooleanField(
         required=False,
-        help_text="For emails that carry login codes, reset links or other secrets. PostHog keeps no copy of each sent "
+        help_text="For emails that carry login codes, reset links or other secrets. Flind keeps no copy of each sent "
         "email's body or filled-in subject, and clicked links keep only the site address. Can change at any time.",
     )
     transactional_hog_flow_id = serializers.UUIDField(
@@ -487,7 +487,7 @@ class SendEmailSerializer(TransactionalEmailMessageSerializer):
         required=False,
         help_text="Names an email whose content your code rendered, such as `order-shipped`, so its metrics, logs "
         "and status group under it. Letters, numbers, hyphens (-) and underscores (_) only. Send it with `subject` "
-        "and `html` or `text`. PostHog sends the content as is and never stores it as a template.",
+        "and `html` or `text`. Flind sends the content as is and never stores it as a template.",
     )
     distinct_id = serializers.CharField(
         required=False, allow_null=True, allow_blank=True, max_length=400, help_text=DISTINCT_ID_HELP_TEXT
@@ -505,7 +505,7 @@ class SendEmailSerializer(TransactionalEmailMessageSerializer):
         required=False,
         allow_blank=True,
         trim_whitespace=False,
-        help_text="Plain text body of the email your code rendered, at most 5 MiB as UTF-8. Without it, PostHog "
+        help_text="Plain text body of the email your code rendered, at most 5 MiB as UTF-8. Without it, Flind "
         "derives the text from `html`.",
     )
     from_address = serializers.CharField(
@@ -599,7 +599,7 @@ class SendEmailSerializer(TransactionalEmailMessageSerializer):
         unknown = next((field for field in sorted(sent) if field not in self.fields), None)
         if unknown is not None:
             raise serializers.ValidationError(
-                {unknown: "PostHog doesn't take this field, so it doesn't send the email without it."}
+                {unknown: "Flind doesn't take this field, so it doesn't send the email without it."}
             )
         if "message_data" in sent:
             raise serializers.ValidationError(
@@ -680,8 +680,8 @@ class RequestBodyTooLarge(exceptions.APIException):
 
     def __init__(self) -> None:
         limit = f"{settings.DATA_UPLOAD_MAX_MEMORY_SIZE // (1024 * 1024)} MB"
-        super().__init__(f"The request body is over {limit}, so PostHog didn't send the email.")
-        self.why = f"PostHog reads at most {limit} of request body, so it refused the email without reading it."
+        super().__init__(f"The request body is over {limit}, so Flind didn't send the email.")
+        self.why = f"Flind reads at most {limit} of request body, so it refused the email without reading it."
         self.fix = f"Keep the request under {limit}. To send a large file, link to it from the email body."
 
 
@@ -1360,7 +1360,7 @@ class MessagingSendViewSet(TransactionalEmailSendMixin, TeamAndOrgViewSetMixin, 
         description=(
             "Send one transactional email to one recipient. Name a template made transactional in `template_id`, "
             "and `message_data` fills its `{{ variables.* }}` placeholders. Or send content your code rendered with "
-            "a `template_key`, a `subject` and `html` or `text`: PostHog sends it as is, and its metrics and run "
+            "a `template_key`, a `subject` and `html` or `text`: Flind sends it as is, and its metrics and run "
             "history group under the key. Transactional emails skip opt-outs and frequency caps. Send an "
             "`Idempotency-Key` header to retry safely without sending the email twice. Needs the "
             "`transactional_email:write` scope. A key with `hog_flow:write` also works, but that scope reaches the "

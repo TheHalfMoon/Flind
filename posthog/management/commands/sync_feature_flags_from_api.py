@@ -28,7 +28,7 @@ def sync_feature_flags_from_api(
     output_fn: Callable[[str], None] = print,
 ) -> None:
     """
-    Fetch feature flags from the PostHog API and sync them to the database.
+    Fetch feature flags from the Flind API and sync them to the database.
 
     Args:
         distinct_id: The distinct ID for which to evaluate feature flags

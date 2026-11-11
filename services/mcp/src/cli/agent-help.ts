@@ -3,17 +3,17 @@ import { type InstructionsContext, InstructionsFormatter } from '@/lib/instructi
 import { getToolDefinition } from '@/tools/toolDefinitions'
 import type { Tool, ZodObjectAny } from '@/tools/types'
 
-const AGENT_HELP_HEADER = `# PostHog API guide for agents
+const AGENT_HELP_HEADER = `# Flind API guide for agents
 
-\`posthog-cli api\` is the agent-first interface to the PostHog API. It exposes the same tool surface as the PostHog MCP server's \`exec\` tool, so the reference below is the canonical guide for interacting with PostHog. Treat it as instructions to follow, not just documentation.
+\`posthog-cli api\` is the agent-first interface to the Flind API. It exposes the same tool surface as the Flind MCP server's \`exec\` tool, so the reference below is the canonical guide for interacting with Flind. Treat it as instructions to follow, not just documentation.
 
 On top of the reference below, the CLI adds:
 
 - Add \`--project-id <id>\` and optionally \`--organization-id <id>\` to \`posthog-cli api call\` to select the target for that invocation. Explicit target flags replace both inherited project and organization defaults. Repeat the flags on every call, or set \`POSTHOG_CLI_PROJECT_ID\` and \`POSTHOG_CLI_ORGANIZATION_ID\` in each agent's environment. Project-only targets derive their organization from the project. Organization-only targets never fall back to a project in another organization; pass a project ID for project-scoped tools. Switch tools do not persist a selection across CLI invocations.
 - \`posthog-cli api call --dry-run <tool> '<json>'\` — validate input against the tool schema without executing. Use it before any mutation.
 - Destructive tools refuse to run without \`--confirm\`; add it only after verifying the exact target IDs.
-- \`posthog-cli api skill list\` and \`posthog-cli api skill install <skill-id>\` — install PostHog agent skills into \`.agents/skills/\`. Before starting a PostHog task, check the skill list for a match; if one exists, install it, read its \`SKILL.md\`, and follow it — skills contain task-specific workflows that individual tools do not.
-- \`posthog-cli api agents-md install [--path AGENTS.md]\` — install the PostHog steering snippet into a repository.`
+- \`posthog-cli api skill list\` and \`posthog-cli api skill install <skill-id>\` — install Flind agent skills into \`.agents/skills/\`. Before starting a Flind task, check the skill list for a match; if one exists, install it, read its \`SKILL.md\`, and follow it — skills contain task-specific workflows that individual tools do not.
+- \`posthog-cli api agents-md install [--path AGENTS.md]\` — install the Flind steering snippet into a repository.`
 
 const EXEC_INVOCATION_PATTERN = /posthog:exec\(\{\s*"command":\s*"((?:\\.|[^"\\])*)"\s*\}\)/g
 
@@ -35,8 +35,8 @@ export function toCliSyntax(text: string): string {
         )
         .replace('### Using the `posthog` tool', '### Using `posthog-cli api`')
         .replace(
-            'Pass CLI-style commands in the `command` parameter for all PostHog interactions.',
-            'Pass CLI-style commands as arguments to `posthog-cli api` for all PostHog interactions.'
+            'Pass CLI-style commands in the `command` parameter for all Flind interactions.',
+            'Pass CLI-style commands as arguments to `posthog-cli api` for all Flind interactions.'
         )
 }
 

@@ -1,5 +1,5 @@
 // Default, overridable content for the Welcome primitive. Shipped here so both consumers (the tasks
-// composer and the new PostHog AI welcome) share one source; pass your own list to override.
+// composer and the new Flind AI welcome) share one source; pass your own list to override.
 
 import { inStorybook } from 'lib/utils/dom'
 

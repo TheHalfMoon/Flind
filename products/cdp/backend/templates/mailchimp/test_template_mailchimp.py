@@ -10,7 +10,7 @@ def create_inputs(**kwargs):
         "email": "max@posthog.com",
         "include_all_properties": False,
         "doubleOptIn": False,
-        "properties": {"FNAME": "Max", "LNAME": "AI", "COMPANY": "PostHog"},
+        "properties": {"FNAME": "Max", "LNAME": "AI", "COMPANY": "Flind"},
     }
     inputs.update(kwargs)
 
@@ -50,7 +50,7 @@ class TestTemplateMailchimp(BaseHogFunctionTemplateTest):
         assert self.get_mock_fetch_calls()[1][1]["body"]["merge_fields"] == {
             "FNAME": "Max",
             "LNAME": "AI",
-            "COMPANY": "PostHog",
+            "COMPANY": "Flind",
         }
 
         self.run_function(
@@ -63,7 +63,7 @@ class TestTemplateMailchimp(BaseHogFunctionTemplateTest):
         assert self.get_mock_fetch_calls()[1][1]["body"]["merge_fields"] == {
             "FNAME": "Max",
             "LNAME": "AI",
-            "COMPANY": "PostHog",
+            "COMPANY": "Flind",
             "PHONE": "+1415000000",
         }
 

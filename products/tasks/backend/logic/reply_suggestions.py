@@ -39,7 +39,7 @@ PERSON_MESSAGE_CHARS = 2000
 
 # The answer goes in its own message, so text in it cannot replace these instructions.
 REPLY_SUGGESTIONS_INSTRUCTIONS = """\
-You write suggested replies to the PostHog agent's answer. The next message holds the answer in \
+You write suggested replies to the Flind agent's answer. The next message holds the answer in \
 <agent_answer>. When it is known, the message that the person sent before the answer is in \
 <person_message>. The person who reads the answer can send one of your replies with one click or one key press.
 

@@ -111,7 +111,7 @@ class Ticket(Taggable, UUIDTModel):
     channel_source = models.CharField(max_length=20, choices=Channel, default=Channel.WIDGET)
     channel_detail = models.CharField(max_length=30, choices=ChannelDetail, null=True, blank=True)
     widget_session_id = models.CharField(max_length=64, db_index=True)  # Random UUID for access control
-    distinct_id = models.CharField(max_length=400)  # PostHog distinct_id for Person linking only
+    distinct_id = models.CharField(max_length=400)  # Flind distinct_id for Person linking only
     status = models.CharField(max_length=20, choices=Status, default=Status.NEW)
     priority = models.CharField(max_length=20, choices=Priority, null=True, blank=True)
     anonymous_traits = models.JSONField(default=dict, blank=True)
@@ -165,7 +165,7 @@ class Ticket(Taggable, UUIDTModel):
     cc_participants = models.JSONField(default=list, blank=True)
 
     # Session context (captured when ticket is created)
-    session_id = models.CharField(max_length=64, null=True, blank=True)  # PostHog session ID
+    session_id = models.CharField(max_length=64, null=True, blank=True)  # Flind session ID
     session_context = models.JSONField(default=dict, blank=True)  # session_replay_url, current_url, etc.
 
     # SLA deadline — set via workflows, null means no SLA
@@ -174,7 +174,7 @@ class Ticket(Taggable, UUIDTModel):
     # Snooze — when set, ticket is "on hold" until this time, then auto-reopened by wake task
     snoozed_until = models.DateTimeField(null=True, blank=True)
 
-    # Customer's PostHog org group key, resolved once at creation or on a later message
+    # Customer's Flind org group key, resolved once at creation or on a later message
     # (local org pk, cross-region analytics key, or the person's organization_id property).
     organization_id = models.CharField(max_length=400, null=True, blank=True)
     # How organization_id was resolved: "person" (the requester's identity) or

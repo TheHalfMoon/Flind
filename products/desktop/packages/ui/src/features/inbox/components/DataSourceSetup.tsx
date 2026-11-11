@@ -22,7 +22,7 @@ import { toast } from "@flind/ui/primitives/toast";
 import { Box, Flex, Text, TextField } from "@radix-ui/themes";
 import { useCallback, useEffect, useState } from "react";
 
-/** PostHog DWH: full table replication (non-incremental); API enum value `full_refresh`. */
+/** Flind DWH: full table replication (non-incremental); API enum value `full_refresh`. */
 const FULL_TABLE_REPLICATION = "full_refresh" as const;
 
 function schemasPayload(tables: readonly string[]) {
@@ -42,7 +42,7 @@ interface DataSourceSetupProps {
 /**
  * Renders the connect flow for a warehouse inbox source. Credential-based sources
  * (`setup: "dynamic"`) render the generic `DynamicSourceSetup` form driven by the source's
- * connect-form schema served by PostHog Cloud — no per-source form code. The three legacy
+ * connect-form schema served by Flind Cloud — no per-source form code. The three legacy
  * special cases (GitHub repo picker, Zendesk, pganalyze) keep their bespoke forms.
  */
 export function DataSourceSetup({

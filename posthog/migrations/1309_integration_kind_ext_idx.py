@@ -5,7 +5,7 @@ from posthog.migration_helpers import SafeAddIndexConcurrently
 
 class Migration(migrations.Migration):
     """
-    Every inbound Slack webhook resolves its PostHog project by (kind, integration_id), because the
+    Every inbound Slack webhook resolves its Flind project by (kind, integration_id), because the
     payload names the Slack workspace and nothing else. The only index covering those columns is the
     `posthog_integration_kind_id_unique` constraint, which leads with `team`, so that lookup can't
     use it.

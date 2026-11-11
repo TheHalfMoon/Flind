@@ -6,7 +6,7 @@ export const template: HogFunctionTemplate = {
     type: 'destination',
     id: 'template-unify',
     name: 'Unify',
-    description: 'Send PostHog events to Unify',
+    description: 'Send Flind events to Unify',
     icon_url: '/static/services/unify.png',
     category: ['Analytics'],
     code_language: 'hog',
@@ -46,7 +46,7 @@ if (res.status >= 400) {
             type: 'string',
             label: 'Unify Write Key',
             description:
-                'Your Unify write key for authentication. You can find your write key in the Unify app under Settings → Integrations → PostHog.',
+                'Your Unify write key for authentication. You can find your write key in the Unify app under Settings → Integrations → Flind.',
             default: '',
             secret: true,
             required: true,
@@ -56,7 +56,7 @@ if (res.status >= 400) {
             type: 'dictionary',
             label: 'Person',
             description:
-                'Mapping of Unify Person attributes to PostHog person properties. Email is required to associate an event with a Person.',
+                'Mapping of Unify Person attributes to Flind person properties. Email is required to associate an event with a Person.',
             default: {
                 email: '{person.properties.email}',
                 address: '{person.properties.address}',
@@ -82,7 +82,7 @@ if (res.status >= 400) {
             type: 'dictionary',
             label: 'Company',
             description:
-                'Mapping of Unify Company attributes to PostHog company properties. Domain is required to associate an event with a Company.',
+                'Mapping of Unify Company attributes to Flind company properties. Domain is required to associate an event with a Company.',
             default: {
                 domain: '{groups.company.properties.domain}',
                 address: '{groups.company.properties.address}',

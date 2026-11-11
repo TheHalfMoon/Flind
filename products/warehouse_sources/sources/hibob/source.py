@@ -59,7 +59,7 @@ class HiBobSource(SimpleSource[HiBobSourceConfig]):
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             keywords=["bob"],
             label="HiBob",
-            caption="""Enter your HiBob Service User credentials to pull your Bob HR data into the PostHog Data warehouse.
+            caption="""Enter your HiBob Service User credentials to pull your Bob HR data into the Flind Data warehouse.
 
 Create a Service User in Bob under Settings > Integrations > Automation > Service Users, then add it to a permission group with read access to the data categories you want to sync (e.g. People). Calls return 403 until permissions are granted.""",
             iconPath="/static/services/hibob.png",

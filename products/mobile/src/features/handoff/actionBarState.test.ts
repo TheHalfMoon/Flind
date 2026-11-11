@@ -43,25 +43,25 @@ describe('actionBarStateFor', () => {
             'queued task',
             report({ state: 'working' }, run('queued')),
             {},
-            { showHandoff: false, activity: { title: 'PostHog queued', tone: 'idle' } },
+            { showHandoff: false, activity: { title: 'Flind queued', tone: 'idle' } },
         ],
         [
             'unknown active turn',
             report({ state: 'working' }, run('in_progress')),
             {},
-            { showHandoff: false, activity: { title: 'PostHog activity unavailable', tone: 'idle' } },
+            { showHandoff: false, activity: { title: 'Flind activity unavailable', tone: 'idle' } },
         ],
         [
             'idle task retains the chat',
             report({ state: 'working' }, run('in_progress', { phase: 'idle' })),
             {},
-            { showHandoff: false, activity: { title: 'PostHog finished this turn', tone: 'idle' } },
+            { showHandoff: false, activity: { title: 'Flind finished this turn', tone: 'idle' } },
         ],
         [
             'failed task retains the chat',
             report({ state: 'working' }, run('failed')),
             {},
-            { showHandoff: false, activity: { title: 'PostHog run failed', tone: 'stopped' } },
+            { showHandoff: false, activity: { title: 'Flind run failed', tone: 'stopped' } },
         ],
         [
             'external claim',
@@ -127,14 +127,14 @@ describe('actionBarStateFor', () => {
                 run('in_progress', { phase: 'working', stage: 'Editing a.ts', connection: 'unavailable' })
             )
         )
-        expect(output.activity).toEqual({ title: 'PostHog activity unavailable', tone: 'idle' })
+        expect(output.activity).toEqual({ title: 'Flind activity unavailable', tone: 'idle' })
     })
 
     test('failed bootstrap reports unavailable activity instead of starting forever', () => {
         const output = actionBarStateFor(
             report({ state: 'working' }, run('not_started', { phase: 'unknown', connection: 'unavailable' }))
         )
-        expect(output.activity).toEqual({ title: 'PostHog activity unavailable', tone: 'idle' })
+        expect(output.activity).toEqual({ title: 'Flind activity unavailable', tone: 'idle' })
     })
 
     test('a report that cannot act does not offer a handoff', () => {

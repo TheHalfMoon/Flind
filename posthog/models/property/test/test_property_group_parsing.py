@@ -274,7 +274,7 @@ def test_property_group_parsing_reports_non_mapping_property():
 
 
 def test_property_group_parsing_disables_code_variable_capture_for_reported_exception():
-    # capture_exception() forwards the exception object to PostHog's error-tracking SDK, which
+    # capture_exception() forwards the exception object to Flind's error-tracking SDK, which
     # has code-variable capture enabled globally: it would otherwise attach this frame's locals
     # -- including the malformed property's raw value/event_filters -- regardless of the
     # deliberately structure-only additional_properties above. Must be disabled for this call.

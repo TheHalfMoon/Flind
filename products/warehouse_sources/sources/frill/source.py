@@ -44,7 +44,7 @@ class FrillSource(ResumableSource[FrillSourceConfig, FrillResumeConfig]):
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Frill",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Frill API key to sync your Frill ideas, votes, comments, and announcements into the PostHog Data warehouse.
+            caption="""Enter your Frill API key to sync your Frill ideas, votes, comments, and announcements into the Flind Data warehouse.
 
 Find your API key under **Settings → Company** in your [Frill dashboard](https://app.frill.co/settings/company).""",
             iconPath="/static/services/frill.png",

@@ -11,7 +11,7 @@ The other half is `../inference/`, which consumes what this package produces and
 
 - `runner.py`
   The real path. `run_training()` creates the `AutoresearchTrainingRun` (status `RUNNING`) and fires `Task.create_and_run()` with the unlisted `autoresearch.training` profile and no repository, so the run shows up as an internal Task rather than in the normal Tasks list.
-  The brief carries user-authored text, so the sandbox token holds only `TRAINING_MCP_SCOPES` (the `execute-sql` reads, the autoresearch scopes, and `user:read`, which the PostHog MCP server needs to start a session), and an empty connector allowlist keeps the team's shared MCP connectors out of the sandbox.
+  The brief carries user-authored text, so the sandbox token holds only `TRAINING_MCP_SCOPES` (the `execute-sql` reads, the autoresearch scopes, and `user:read`, which the Flind MCP server needs to start a session), and an empty connector allowlist keeps the team's shared MCP connectors out of the sandbox.
   `run_training()` lowers the requested iterations to the project's `max_iterations_per_run` (`../limits.py`), so scheduled and manual runs share one ceiling. The daily run cap is checked by its callers, inside the pipeline row lock.
   The task runs on the model and reasoning effort that `agent_run_config_for()` in `agent_model.py` resolves, and the run records the runtime adapter, model and effort in `agent_runtime_adapter`, `agent_model` and `agent_reasoning_effort`.
   `build_agent_description()` assembles the agent's brief — the target, the horizon, the population, and the contract for the bundle it must author.

@@ -415,7 +415,7 @@ def build_agent_runtime_env_prefix(
     assignments = " ".join(
         f"{name}={shlex.quote(value)}" for name, value in env_vars.items() if value is not None and value != ""
     )
-    # Route the agent through the PostHog LLM gateway instead of direct Bedrock:
+    # Route the agent through the Flind LLM gateway instead of direct Bedrock:
     # unset the box profile's Bedrock vars so the Claude CLI falls back to the
     # gateway (ANTHROPIC_BASE_URL/ANTHROPIC_AUTH_TOKEN). Direct Bedrock from the
     # box needs AWS Marketplace model access plus SigV4-signing the
@@ -462,7 +462,7 @@ class SandboxBase(ABC):
     supports_creation_cancellation = False
     creation_timeout_seconds = 300
     # When True, the agent runtime is launched with the box's Bedrock env unset,
-    # so the Claude CLI routes through the PostHog LLM gateway instead of direct
+    # so the Claude CLI routes through the Flind LLM gateway instead of direct
     # Bedrock. hogland opts in (see HoglandSandbox); Modal/Docker already use the
     # gateway.
     disable_direct_bedrock = False
@@ -529,7 +529,7 @@ class SandboxBase(ABC):
         Best-effort by design: returns whether the helper was found and launched, and never
         raises. A missed warmup only costs the overlap; the agent-side bootstrap still works.
         """
-        # Only a sandbox that actually booted the PostHog-published dev-stack image gets
+        # Only a sandbox that actually booted the Flind-published dev-stack image gets
         # its bootstrap run by the backend. This hook runs after credentials land in the
         # sandbox env, so executing a script from any less-trusted filesystem would hand
         # its author code execution with another member's secrets. Two checks:
@@ -871,17 +871,17 @@ def parse_sandbox_repo_mount_map() -> dict[str, str]:
 
 
 CODEX_CREDENTIAL_UNAVAILABLE_MESSAGE = (
-    "This run could not get a ChatGPT token from PostHog. Start the task again. "
+    "This run could not get a ChatGPT token from Flind. Start the task again. "
     "If it keeps failing, connect your ChatGPT account again in Settings > Harness."
 )
 
 # Named for the same reason as the Codex message above, and worded for whoever is actually
-# listening. PostHog Desktop is no longer the only client that can answer a credential
+# listening. Flind Desktop is no longer the only client that can answer a credential
 # request — an API caller relays the token itself — so telling everyone to "open Desktop"
 # leaves those callers with no way to act on the one error that ends their run.
 CLAUDE_CREDENTIAL_UNAVAILABLE_MESSAGE = (
     "The Claude token did not arrive. Whoever started this run has to answer its "
-    "credential_request within 120 seconds: PostHog Desktop answers from Settings > Harness, "
+    "credential_request within 120 seconds: Flind Desktop answers from Settings > Harness, "
     "and an API caller relays the token to the run's command endpoint. Then start the task again."
 )
 

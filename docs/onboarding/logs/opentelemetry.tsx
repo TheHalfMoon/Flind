@@ -13,10 +13,10 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
                 <>
                     <Markdown>
                         {dedent`
-                            PostHog accepts logs from any OpenTelemetry-compatible client via OTLP over HTTP.
-                            Point your exporter at PostHog's OTLP endpoint and authenticate with your project token.
+                            Flind accepts logs from any OpenTelemetry-compatible client via OTLP over HTTP.
+                            Point your exporter at Flind's OTLP endpoint and authenticate with your project token.
 
-                            PostHog does not require any PostHog-specific SDK or package — use standard
+                            Flind does not require any Flind-specific SDK or package — use standard
                             OpenTelemetry libraries in any language.
                         `}
                     </Markdown>
@@ -65,7 +65,7 @@ export const getOpenTelemetrySteps = (ctx: OnboardingComponentsContext): StepDef
                             The endpoint accepts OTLP over HTTP in both \`application/x-protobuf\` and \`application/json\`
                             formats. gRPC is not supported, use the HTTP transport protocol instead.
 
-                            Logs appear in PostHog within a few seconds. Use the [Logs page](https://app.posthog.com/logs) to search and filter
+                            Logs appear in Flind within a few seconds. Use the [Logs page](https://app.posthog.com/logs) to search and filter
                             by service name, severity, or any attribute you attach.
                         `}
                     </Markdown>

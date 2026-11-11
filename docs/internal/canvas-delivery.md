@@ -23,7 +23,7 @@ The combined endpoint reduces request count only when the client uses it.
 ## Artifact origin
 
 Built HTML and JavaScript are untrusted user content.
-Serve them from a dedicated HTTPS origin, never the PostHog application origin or a host that receives its session cookies.
+Serve them from a dedicated HTTPS origin, never the Flind application origin or a host that receives its session cookies.
 Use a separate registrable domain if application cookies cover subdomains.
 
 `CANVAS_ARTIFACT_ORIGIN` must be a bare HTTPS origin, without a path, query, or credentials.
@@ -66,7 +66,7 @@ A static preview renames every `<link>` and `<meta>` tag of the file to an unkno
 For this reason, the API gives a script URL only when whoever wrote that artifact version had full network access.
 The server records this on the manifest entry or the living artifact version at write time, from the authenticated writer, never from the request body.
 A sandbox agent gets the network access of the run that its token belongs to.
-A person, through a session, a personal API key, or a PostHog Desktop grant, gets full access.
+A person, through a session, a personal API key, or a Flind Desktop grant, gets full access.
 Any other OAuth application gets no access.
 An edit records full access only when its base version has it.
 An upload checks every earlier file with the same name in the run, and a finalized upload also checks the version it names in `base_artifact_id`. So a client that does not send `base_artifact_id` still cannot unlock scripts.
@@ -83,7 +83,7 @@ A stored living artifact version keeps the same hash in its version record.
 A presigned upload form stays valid after finalize and can still replace the object, so the preview runs scripts only when the bytes it serves still match that hash.
 Otherwise it serves the file with scripts off.
 
-The task preview has no PostHog credentials or API bridge.
+The task preview has no Flind credentials or API bridge.
 Do not put secrets in an HTML artifact that runs code.
 Self-hosted deployments need `CANVAS_ARTIFACT_ORIGIN` for the web preview in production; the app origin is used only in development and tests.
 

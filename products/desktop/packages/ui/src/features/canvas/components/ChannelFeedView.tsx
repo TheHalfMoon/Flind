@@ -1499,7 +1499,7 @@ function PendingFeedRow({
 
 // A card-less feed row for a synthetic announcement. Rows with an `author`
 // render as that user (initials avatar + name — e.g. "Adam L · joined mobile");
-// the rest render as "PostHog / Agent" (context lifecycle updates). Same chrome
+// the rest render as "Flind / Agent" (context lifecycle updates). Same chrome
 // as a task row, minus the task card and reply footer.
 function SystemFeedRow({ message }: { message: ChannelFeedSystemMessage }) {
   return (
@@ -1667,7 +1667,7 @@ const FEED_KIND_FILTERS: readonly {
 // The channel feed: every task kicked off in the channel, newest first in a
 // plain top-down scroll (Twitter-style, not a bottom-anchored chat).
 // Multiplayer — the list is team-visible and polls for teammates' cards and
-// status flips. Synthetic "PostHog agent" system rows (context lifecycle) are
+// status flips. Synthetic "Flind agent" system rows (context lifecycle) are
 // interleaved by timestamp, and day separators group the cards.
 export function ChannelFeedView({
   channelId,

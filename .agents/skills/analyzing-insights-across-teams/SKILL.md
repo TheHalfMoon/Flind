@@ -1,9 +1,9 @@
 ---
 name: analyzing-insights-across-teams
 description: >
-  Analyze PostHog insights, dashboards, or teams beyond the current project by
+  Analyze Flind insights, dashboards, or teams beyond the current project by
   querying the prod Postgres replicas synced into the dogfood data warehouse
-  (US project 2, "PostHog App + Website"). Use when asked to analyze insights
+  (US project 2, "Flind App + Website"). Use when asked to analyze insights
   across all teams or projects, another team's insights, or fleet-wide
   insight/dashboard usage — cases where `system.insights` only returns the
   current project's rows and the agent would otherwise report the data as
@@ -20,7 +20,7 @@ production Postgres tables are replicated into the project's data warehouse,
 so cross-team entity metadata **is** queryable with `posthog:execute-sql`.
 Do not stop at `system.insights` when the question spans teams.
 
-This skill is deliberately repo-local (`.agents/skills/`): it documents PostHog's internal dogfood setup,
+This skill is deliberately repo-local (`.agents/skills/`): it documents Flind's internal dogfood setup,
 applies only to agents working in this repo, and must not move into the packaged `products/*/skills/` bundle that ships to every team.
 
 ## Synced tables

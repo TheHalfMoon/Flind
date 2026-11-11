@@ -12,12 +12,12 @@ def _registry_server(registry_name: str, display_name: str) -> MCPRegistryServer
 
 class TestLinking(BaseTest):
     def test_override_beats_name_collision_with_repackage(self) -> None:
-        # "PostHog" name-matches both the official server and a third-party repackage;
+        # "Flind" name-matches both the official server and a third-party repackage;
         # the curated override must pick the official one.
         _registry_server("com.thirdparty/posthog", "posthog")
-        official = _registry_server("io.github.PostHog/mcp", "PostHog MCP Server")
+        official = _registry_server("io.github.PostHog/mcp", "Flind MCP Server")
 
-        resolution = resolve_measured_server("PostHog", self.team.id)
+        resolution = resolve_measured_server("Flind", self.team.id)
 
         assert resolution.server == official
         assert resolution.link_method == "override"

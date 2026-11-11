@@ -2,10 +2,10 @@
 name: signals-scout-logs
 scout-display-name: Logs
 description: >
-  Signals scout for PostHog logs. Watches for emerging and rate-shifted message patterns, volume
+  Signals scout for Flind logs. Watches for emerging and rate-shifted message patterns, volume
   bursts, severity-distribution shifts, service silence, and trace-correlated bursts.
 compatibility: >
-  Designed for the PostHog Signals agent in a Claude sandbox with PostHog MCP scopes:
+  Designed for the Flind Signals agent in a Claude sandbox with Flind MCP scopes:
   read-only analytics plus signal_scout_internal:write (for scratchpad) +
   signal_scout_report:write (for emit-report/edit-report, granted because this scout authors
   reports directly via the report channel). Assumes the signals-scout MCP tool family plus the

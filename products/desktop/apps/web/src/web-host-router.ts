@@ -77,7 +77,7 @@ const deepLinkStubRouter = router({
   onOpenLoop: neverEmit,
 });
 
-// Slack/GitHub connect. Desktop opens the PostHog integration authorize URL in
+// Slack/GitHub connect. Desktop opens the Flind integration authorize URL in
 // the system browser and relays the result back through a posthog-code:// deep
 // link (captured by the main process). The browser has no URL scheme, but it
 // doesn't need one: the third-party (Slack/GitHub) OAuth code exchange happens
@@ -86,7 +86,7 @@ const deepLinkStubRouter = router({
 // opens the same authorize URL in a new tab, and the connect hooks (useSlack/
 // GitHubConnect) refetch the integrations list on window-focus while
 // "connecting" — returning to the app surfaces the connection. connect_from is
-// "posthog_web" (not "posthog_code") so PostHog doesn't try to bounce the popup
+// "posthog_web" (not "posthog_code") so Flind doesn't try to bounce the popup
 // through the desktop deep link. The callback procedures stay inert (there is no
 // deep-link callback on web); the app-wide callback hooks consume the null / see
 // streams that never emit, as before.
@@ -160,7 +160,7 @@ const agentStubRouter = router({
       throw new Error("Side questions require a local session");
     }),
   // Model/mode/effort options for the task-input preview + cloud run creation
-  // (a cloud run requires a model). Real: fetched from the CORS-open PostHog LLM
+  // (a cloud run requires a model). Real: fetched from the CORS-open Flind LLM
   // gateway, same logic the desktop main process runs (see web-agent-config.ts).
   getPreviewConfigOptions: publicProcedure
     .input(
@@ -521,7 +521,7 @@ export const webHostRouter = router({
   browserTabs: browserTabsRouter,
   // Canvas / Channels: real host-router routers over the host-agnostic canvas
   // core services (bound via canvasCoreModule in web-container), which reach the
-  // PostHog canvases + task_channels APIs through authenticatedFetch — no Node
+  // Flind canvases + task_channels APIs through authenticatedFetch — no Node
   // backend.
   canvasData: canvasDataRouter,
   canvasTemplates: canvasTemplatesRouter,

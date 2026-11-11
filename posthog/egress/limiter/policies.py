@@ -1,6 +1,6 @@
 """Outbound egress rate policies and their registry.
 
-A *policy* is a budget for calls leaving PostHog to a third-party API. Consumers identify a
+A *policy* is a budget for calls leaving Flind to a third-party API. Consumers identify a
 budget with a limiter key shaped ``"{domain}:{scope}:{id}"`` (e.g. ``"github:installation:123"``);
 the facade resolves the key to a policy by its ``domain`` (the first segment).
 
@@ -58,7 +58,7 @@ class RatePolicy:
 
     ``scope_in_metrics`` records the key's id segment as the ``scope`` label on the decision counter.
     Turn it on only for a domain whose scopes are few and stable, such as GitHub installations: a key
-    scoped per PostHog team would add a metric series per team.
+    scoped per Flind team would add a metric series per team.
     """
 
     limits: tuple[RateLimit, ...]

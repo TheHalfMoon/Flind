@@ -113,7 +113,7 @@ _THRESHOLD_LABELS = {
 
 # Whose threshold gated publishing, keyed by how the acting user resolved (`resolved_from`): the PR
 # author's own settings, the requester's ("requester wins" when someone else triggers the review),
-# or the built-in default when the author has no linked PostHog user. The default variant is
+# or the built-in default when the author has no linked Flind user. The default variant is
 # defensive — a default-resolved run gates at "All issues", so nothing can be held back — but the
 # comment must never blame a settings page that played no part.
 _THRESHOLD_ATTRIBUTIONS = {
@@ -191,7 +191,7 @@ _HOLD_REASONS = {
 
 
 def report_deep_link(team_id: int, report_id: str) -> str:
-    """The app URL opening this report's review drawer — the held-back "view in PostHog" target.
+    """The app URL opening this report's review drawer — the held-back "view in Flind" target.
 
     `?review=<report id>` is a permanent public contract (baked into GitHub comments that never get
     re-edited); the frontend's Code review URL sync accepts exactly this param, so the two must keep
@@ -202,7 +202,7 @@ def report_deep_link(team_id: int, report_id: str) -> str:
 
 def _title(review_mode: str, verb: str, head_sha: str | None) -> str:
     target = f"`{head_sha[:7]}`" if head_sha else "this pull request"
-    return f"PostHog Review · {_MODE_NAMES.get(review_mode, 'Deep')} · {verb} {target}"
+    return f"Flind Review · {_MODE_NAMES.get(review_mode, 'Deep')} · {verb} {target}"
 
 
 def _header(review_mode: str, verb: str, head_sha: str | None) -> str:
@@ -353,7 +353,7 @@ def render_final_body(
     The counts always show everything the run found, even when only a subset was published, so
     two inline comments on the PR never read as "the review only found two things". The held-back
     note attributes the gating threshold to whoever it actually belonged to (`resolved_from`)
-    and links to the report in PostHog (`report_url`, auth-gated) — the PR is otherwise the only
+    and links to the report in Flind (`report_url`, auth-gated) — the PR is otherwise the only
     place the author hears about held-back findings, so the comment must not dead-end.
     `capped_lens_parts` is set when a single-agent turn reviewed a PR past the lens part cap. `raised_elsewhere`
     lists the findings a Full turn did not post because another reviewer's PR comment raises them, each
@@ -371,7 +371,7 @@ def render_final_body(
         # An unrecognized resolved_from reads as "author".
         attribution = _THRESHOLD_ATTRIBUTIONS.get(resolved_from, _THRESHOLD_ATTRIBUTIONS["author"])
         held = f'{held_back_count} held back by {attribution} "{_THRESHOLD_LABELS[threshold]}" threshold'
-        publish_parts.append(held + (f" ([view in PostHog]({report_url}))" if report_url else ""))
+        publish_parts.append(held + (f" ([view in Flind]({report_url}))" if report_url else ""))
     single_agent = review_design == REVIEW_DESIGN_SINGLE_AGENT
     steps = _SINGLE_AGENT_STEPS if single_agent else _PIPELINE_STEPS
     results = _step_results(review_design, snapshot or SnapshotStats(), turn or TurnStats(), pairs)

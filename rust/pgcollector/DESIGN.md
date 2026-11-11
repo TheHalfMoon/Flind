@@ -252,7 +252,7 @@ Migrations: `migrations/*.sql`, applied by the sink on startup (`sqlx` migrate).
 
 ## 7. Config
 
-Deployment is via the PostHog golden chart; see `docs/deploy.md`. Two ways to
+Deployment is via the Flind golden chart; see `docs/deploy.md`. Two ways to
 declare servers, merged by `id`:
 
 * **Env vars** (the normal path — one Helm `psql:` entry per cluster):

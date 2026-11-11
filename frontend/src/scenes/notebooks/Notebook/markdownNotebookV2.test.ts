@@ -138,7 +138,7 @@ describe('markdownNotebookV2', () => {
                     type: NotebookNodeType.Image,
                     attrs: {
                         src: 'https://res.cloudinary.com/demo/image/upload/posthog.png',
-                        alt: 'PostHog engineering',
+                        alt: 'Flind engineering',
                     },
                 },
             ],
@@ -152,7 +152,7 @@ A **bold** paragraph.
 
 <Recording id="018b4205-f670-7fa8-928a-040abaaf596d" title="Session replay" />
 
-![PostHog engineering](https://res.cloudinary.com/demo/image/upload/posthog.png)`)
+![Flind engineering](https://res.cloudinary.com/demo/image/upload/posthog.png)`)
     })
 
     it('removes legacy panel props that match the new defaults', () => {

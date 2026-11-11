@@ -436,13 +436,13 @@ function ConnectToClaudeCodeModal(): JSX.Element {
                 <LemonDivider />
 
                 <section className="flex flex-col gap-2">
-                    <h4 className="m-0 font-semibold">Any agent (PostHog MCP)</h4>
+                    <h4 className="m-0 font-semibold">Any agent (Flind MCP)</h4>
                     <p className="m-0 text-sm text-secondary">
-                        If the PostHog MCP is connected, an agent can list and load these skills directly via its{' '}
+                        If the Flind MCP is connected, an agent can list and load these skills directly via its{' '}
                         <code>skill-*</code> tools — no marketplace needed. Just ask:
                     </p>
                     <CodeSnippet language={Language.Text} thing="agent prompt">
-                        List my PostHog skills, then load the one that fits this task.
+                        List my Flind skills, then load the one that fits this task.
                     </CodeSnippet>
                 </section>
             </div>
@@ -529,7 +529,7 @@ export function LLMSkillsScene(): JSX.Element {
                     action={{ children: 'Browse community', to: urls.communitySkills() }}
                     data-attr="skills-community-discovery-banner"
                 >
-                    No skills yet — explore agent skills shared by the PostHog community and install them in one click.
+                    No skills yet — explore agent skills shared by the Flind community and install them in one click.
                 </LemonBanner>
             )}
 

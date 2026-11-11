@@ -5,7 +5,7 @@ description: Conventions for adding or editing the SceneMenuBar above a scene's 
 
 # SceneMenuBar conventions
 
-PostHog scenes render a Mac-style menu bar above `<SceneTitleSection>` that consolidates
+Flind scenes render a Mac-style menu bar above `<SceneTitleSection>` that consolidates
 ScenePanel actions into a discoverable, keyboard-navigable surface. This skill documents
 the taxonomy, the available primitives, and the wiring rules.
 
@@ -17,7 +17,7 @@ All primitives live in `frontend/src/layout/scenes/components/SceneMenuBar.tsx`.
 
 | Component                                              | Use for                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `<SceneMenuBar>`                                       | Top-level wrapper; renders above `<SceneTitleSection>`. Includes the universal right cluster (PostHog AI / Docs / Support).                                                                                                                              |
+| `<SceneMenuBar>`                                       | Top-level wrapper; renders above `<SceneTitleSection>`. Includes the universal right cluster (Flind AI / Docs / Support).                                                                                                                              |
 | `<SceneMenuBarMenu label>`                             | Top-level menu (File / Edit / View / Metadata / Staff only).                                                                                                                                                                                             |
 | `<SceneMenuBarSubMenu label>`                          | Nested sub-menu inside a `SceneMenuBarMenu` (e.g. `Create`, `Export`, `Add to notebook`). Auto-prepends a blank icon slot to the trigger so the label aligns with icon-bearing siblings — pass `withIconBlank={false}` to opt out.                       |
 | `<SceneMenuBarItem>`                                   | Standard menu item (action / navigation).                                                                                                                                                                                                                |
@@ -41,7 +41,7 @@ All primitives live in `frontend/src/layout/scenes/components/SceneMenuBar.tsx`.
 > state mutations all live inside the Edit menu — usually at the bottom, after a
 > `<SceneMenuBarSeparator>` if there's a toggle group. Don't create a separate `State` menu.
 
-Right cluster is fixed and universal: **PostHog AI · Docs · Support**. Do not add to it.
+Right cluster is fixed and universal: **Flind AI · Docs · Support**. Do not add to it.
 
 ## Rules
 
@@ -171,4 +171,4 @@ When migrating a scene, take its existing ScenePanel and map every item to:
 5. What gates apply (saved state, FF, AccessControl, multi-project).
 
 See `/Users/adamleithp/Desktop/scene-menu-bar-grouping.md` for the running inventory of
-all ScenePanel items across PostHog and their proposed menu placement.
+all ScenePanel items across Flind and their proposed menu placement.

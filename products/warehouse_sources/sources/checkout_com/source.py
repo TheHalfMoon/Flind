@@ -237,7 +237,7 @@ class CheckoutComSource(ResumableSource[CheckoutComSourceConfig, CheckoutComResu
             name=ExternalDataSourceType.CHECKOUTCOM,
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Checkout.com",
-            caption="""Enter your Checkout.com API access keys to pull your payments data into the PostHog Data warehouse.
+            caption="""Enter your Checkout.com API access keys to pull your payments data into the Flind Data warehouse.
 
 Create an access key in the [Checkout.com dashboard](https://dashboard.checkout.com/) under Settings > Access keys. Grant it the scopes for the tables you want to sync: `disputes`, `reports`, `payments` (search), `gateway` (payment actions and instruments), `financial-actions` (the settlement ledger), and `vault` (customers and instruments).
 

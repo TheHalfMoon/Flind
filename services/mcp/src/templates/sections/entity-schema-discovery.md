@@ -1,6 +1,6 @@
 #### Searching for existing entities
 
-"find / which / do we have / what's our X chart" questions about PostHog-created entities are SQL searches against `system.*` (`system.insights`, `system.dashboards`, `system.cohorts`, `system.feature_flags`, `system.experiments`, `system.surveys`, `system.notebooks`), **not** `*-list` walks.
+"find / which / do we have / what's our X chart" questions about Flind-created entities are SQL searches against `system.*` (`system.insights`, `system.dashboards`, `system.cohorts`, `system.feature_flags`, `system.experiments`, `system.surveys`, `system.notebooks`), **not** `*-list` walks.
 
 This routing is for finding **saved artifacts** (a chart, dashboard, cohort, flag). "What data / tables / events do we have available?" is a schema question instead — answer it from `system.information_schema.tables` (and `read-data-schema` for events), not by searching `system.insights`.
 

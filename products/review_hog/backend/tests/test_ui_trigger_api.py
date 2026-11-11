@@ -69,7 +69,7 @@ class TestReviewHogUiTriggerApi(APIBaseTest):
         resp = self._trigger("https://github.com/PostHog/posthog.com/pull/123/files")
 
         self.assertEqual(resp.status_code, status.HTTP_202_ACCEPTED, resp.content)
-        # A first run has no report yet, and an author with no linked PostHog user owns nothing, so
+        # A first run has no report yet, and an author with no linked Flind user owns nothing, so
         # nobody opted in to resolution.
         self.assertEqual(
             resp.json(),

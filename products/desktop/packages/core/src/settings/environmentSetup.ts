@@ -382,7 +382,7 @@ export function envVarError(
     return "Letters, digits and underscores only, and not starting with a digit.";
   }
   if (RESERVED_ENV_VAR_KEYS.has(key)) {
-    return `${key} is reserved by PostHog and cannot be set.`;
+    return `${key} is reserved by Flind and cannot be set.`;
   }
   if (
     BLOCKED_ENV_VAR_KEYS.has(key) ||

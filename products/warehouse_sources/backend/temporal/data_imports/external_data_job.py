@@ -182,13 +182,13 @@ Any_Source_Errors: dict[str, str | None] = {
     # Raised by the shared HTTP adapter when a request targets an out-of-band interaction domain.
     # The host is in the source's config, so every retry replays the same refusal.
     SOURCE_HOST_NOT_ALLOWED_ERROR: (
-        "PostHog rejected this source's host because it belongs to a blocked domain. "
+        "Flind rejected this source's host because it belongs to a blocked domain. "
         "Point the source at a host on a domain you control, then re-enable the sync."
     ),
     # Raised by `_pinned_ssh_host` for the bastion, the same class of config problem as the entry
     # above: the tunnel host doesn't resolve, or resolves to a private/internal address.
     SSH_TUNNEL_HOST_NOT_ALLOWED_ERROR: (
-        "PostHog rejected this source's SSH tunnel host because it either couldn't be resolved, or "
+        "Flind rejected this source's SSH tunnel host because it either couldn't be resolved, or "
         "resolves to a private/internal address. Check the tunnel host is spelled correctly and "
         "reachable from the public internet, then re-enable the sync."
     ),
@@ -265,7 +265,7 @@ Any_Source_Errors: dict[str, str | None] = {
     # scalars. Keyless rows carry no column names to build a table from, and the same shape comes back
     # on every retry. Keep in step with `NON_MAPPING_ROW_ERROR` in arrow_utils.
     "Rows from this table are not JSON objects": (
-        "This table's rows aren't objects with named fields, so PostHog has no columns to import. "
+        "This table's rows aren't objects with named fields, so Flind has no columns to import. "
         "If the source lets you choose which part of the response to read, point it at a list of "
         "objects, then re-enable the sync."
     ),
@@ -276,19 +276,19 @@ Any_Source_Errors: dict[str, str | None] = {
 # Nothing is disabled and the schema syncs again on its next schedule, so the copy explains that
 # rather than asking for a re-enable.
 TRANSIENT_SOURCE_CONNECTION_MESSAGE = (
-    "PostHog lost its connection to your source and couldn't reconnect. Check that it stays "
+    "Flind lost its connection to your source and couldn't reconnect. Check that it stays "
     "reachable and doesn't drop idle connections; the next sync runs on schedule."
 )
 
 # libpq prefixes a failure with "connection to server at <host>, port <port> failed:" only while it
 # sets the connection up. A drop there never reached an idle connection, so the generic copy points
 # the customer at the wrong cause. A server that accepts the TCP connection and then closes it
-# during startup is usually down, or an allowlist in front of it rejects PostHog's addresses.
+# during startup is usually down, or an allowlist in front of it rejects Flind's addresses.
 LIBPQ_CONNECT_FAILURE_MARKER = "connection to server at"
 
 TRANSIENT_CONNECT_DROPPED_MESSAGE = (
-    "Your database closed the connection while PostHog was connecting. Check that it's running and "
-    "allows PostHog's IP addresses; the next sync runs on schedule."
+    "Your database closed the connection while Flind was connecting. Check that it's running and "
+    "allows Flind's IP addresses; the next sync runs on schedule."
 )
 
 # A tunneled source connects to the local end of the SSH tunnel, which `SSHTunnel.get_tunnel` binds
@@ -308,14 +308,14 @@ TRANSIENT_POOLER_MESSAGE = (
 )
 
 TRANSIENT_EGRESS_MESSAGE = (
-    "PostHog couldn't reach your source over the network. This is on PostHog's side and usually "
+    "Flind couldn't reach your source over the network. This is on Flind's side and usually "
     "clears on its own; the next sync runs on schedule."
 )
 
 # Copy for a table the running worker has no schema for. The web pods and the workers deploy
 # separately, so a newly shipped table is selectable before every worker can sync it.
 NEW_TABLE_NOT_READY_MESSAGE = (
-    "This table was added to PostHog too recently for this sync to pick it up. Nothing is wrong "
+    "This table was added to Flind too recently for this sync to pick it up. Nothing is wrong "
     "with your source; the next sync runs on schedule."
 )
 
@@ -327,14 +327,14 @@ TRANSIENT_VENDOR_UNAVAILABLE_MESSAGE = (
 # day for a full refresh and a week for an incremental run, so reaching one means the extraction
 # itself cannot finish in the window rather than that something stalled.
 SYNC_RUN_TOO_LONG_MESSAGE = (
-    "This sync ran longer than PostHog allows and stopped before it finished. Switch this table to "
+    "This sync ran longer than Flind allows and stopped before it finished. Switch this table to "
     "incremental sync, or sync less data, so the next run finishes in time."
 )
 
-# An activity that stopped heartbeating, or that no worker picked up in time. Both are PostHog-side
+# An activity that stopped heartbeating, or that no worker picked up in time. Both are Flind-side
 # and clear on their own, so the copy asks nothing of the customer.
 SYNC_RUN_STALLED_MESSAGE = (
-    "This sync stopped making progress on PostHog's side and did not finish. The next sync runs on schedule."
+    "This sync stopped making progress on Flind's side and did not finish. The next sync runs on schedule."
 )
 
 # A retryable failure that outlives its retries keeps whatever the driver said, so `latest_error`
@@ -358,7 +358,7 @@ RAILWAY_PROXY_ENDPOINT_MARKERS = (".rlwy.net", "66.33.22.")
 # to look for a pooler, a firewall or an SSH tunnel ending the connection, and on Railway the thing
 # in front of the source is none of those, so it sends them looking for something they cannot find.
 RAILWAY_PROXY_CONNECTION_MESSAGE = (
-    "PostHog's connection to your source kept closing before the sync could finish. This host is "
+    "Flind's connection to your source kept closing before the sync could finish. This host is "
     "Railway's TCP proxy, which closes connections when the service behind it is asleep or out of "
     "connection slots. In Railway, check that the service is running, and check its connection "
     "limit. This sync is still enabled and will run again on its next schedule."
@@ -385,7 +385,7 @@ Transient_Error_Messages: dict[str, str] = {
     # pooler's bookkeeping, not the customer's credentials, which postgres.py retries in-process.
     "(ECIRCUITBREAKER) failed to retrieve database credentials": TRANSIENT_POOLER_MESSAGE,
     "(EAUTHQUERY)": TRANSIENT_POOLER_MESSAGE,
-    # PostHog's own egress proxy refusing the CONNECT. Nothing on the customer's side is wrong, so
+    # Flind's own egress proxy refusing the CONNECT. Nothing on the customer's side is wrong, so
     # this message asks nothing of them.
     "Cannot connect to proxy": TRANSIENT_EGRESS_MESSAGE,
     **dict.fromkeys(TRANSIENT_EGRESS_PROXY_ERRORS, TRANSIENT_EGRESS_MESSAGE),
@@ -397,7 +397,7 @@ Transient_Error_Messages: dict[str, str] = {
     # The host policy's own lookup never answered. Every SQL source reaches it through the shared
     # tunnel layer, so it is mapped here rather than per source.
     TEMPORARY_HOST_RESOLUTION_PREFIX: (
-        "PostHog couldn't resolve your source's host: the lookup kept failing without an answer. "
+        "Flind couldn't resolve your source's host: the lookup kept failing without an answer. "
         "Check that the host name is correct and that its DNS records are answering; the next sync "
         "runs on schedule."
     ),
@@ -475,7 +475,7 @@ def _customer_facing_error(cause: BaseException | None) -> str:
 
 
 def _is_app_db_failure(internal_error: str) -> bool:
-    """Whether a run failed against PostHog's own app DB rather than the customer's source.
+    """Whether a run failed against Flind's own app DB rather than the customer's source.
 
     Temporal renders a wrapped activity failure as ``<ExceptionClass>: <message>`` (see
     ``ApplicationError.__str__``), so the class the activity failed with survives into
@@ -723,7 +723,7 @@ async def _update_job_status(inputs: UpdateExternalDataJobStatusInputs, logger: 
             if transient_message is not None:
                 inputs.latest_error = transient_message
 
-    # A failure PostHog caused says nothing about the source, and an auto-disabled schema runs
+    # A failure Flind caused says nothing about the source, and an auto-disabled schema runs
     # again only once a person turns syncing back on, so neither may throttle the next run.
     counts_as_source_failure = (
         not platform_failure

@@ -1,4 +1,4 @@
-"""Tests for the generic OAuth connect/refresh dispatcher, including kinds with no dedicated business-logic class (Resend, Pardot, YouTube Analytics, PostHog connect)."""
+"""Tests for the generic OAuth connect/refresh dispatcher, including kinds with no dedicated business-logic class (Resend, Pardot, YouTube Analytics, Flind connect)."""
 
 import json
 import time

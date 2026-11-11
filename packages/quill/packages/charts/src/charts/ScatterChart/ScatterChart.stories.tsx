@@ -180,10 +180,10 @@ export const DragToZoom: Story = {
 }
 
 // The dashed grid and crosshair are theme rather than config, and the token vars carry no dash
-// pattern: PostHog layers these on top in `chartThemeDefaults` (`frontend/src/lib/charts/hooks.ts`).
+// pattern: Flind layers these on top in `chartThemeDefaults` (`frontend/src/lib/charts/hooks.ts`).
 const HOST_THEME_CHROME = { gridDashPattern: [3, 3], crosshairDashPattern: [3, 3] }
 
-/** The chart as PostHog renders it: every chrome toggle on, as a host's shared chart config defaults
+/** The chart as Flind renders it: every chrome toggle on, as a host's shared chart config defaults
  *  set them, over a theme carrying the host's dashed grid. */
 export const HostChrome: Story = {
     render: function Render() {

@@ -32,7 +32,7 @@ class AuthorizedUrlsCheck(HealthCheck):
             subdomains.
         """,
         agent="""
-            This is a PostHog project setting (the team's `app_urls`), not a codebase change. `app_urls` is
+            This is a Flind project setting (the team's `app_urls`), not a codebase change. `app_urls` is
             a security boundary — it's the allowlist the toolbar uses to decide which domains it may redirect
             to — so never populate it from event data unattended. Use `execute-sql` on recent $pageview
             events' `properties.$host` / `properties.$current_url` for DISCOVERY ONLY (`SELECT

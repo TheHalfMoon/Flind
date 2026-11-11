@@ -26,7 +26,7 @@ Image and configuration requests opt into HTTP/2 on the shared secure dispatcher
 
 Production requests use Smokescreen. The Rust admission policy also refuses every IP literal, including a public IP literal.
 
-Web Bot Auth uses the shared PostHog key directory. The directory response has a 60-second public cache lifetime.
+Web Bot Auth uses the shared Flind key directory. The directory response has a 60-second public cache lifetime.
 
 ### Scheduling and retries
 

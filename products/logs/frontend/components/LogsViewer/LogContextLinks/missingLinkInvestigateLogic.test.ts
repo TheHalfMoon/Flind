@@ -51,7 +51,7 @@ describe('missingLinkInvestigateLogic', () => {
             route: 'side-panel-task',
         },
         { name: 'legacy view, rail', flags: [FEATURE_FLAGS.TODAY_RAIL_NAV], route: 'ai-scene' },
-    ])('$name sends the prompt to PostHog AI', async ({ flags, route }) => {
+    ])('$name sends the prompt to Flind AI', async ({ flags, route }) => {
         featureFlagLogic.actions.setFeatureFlags(flags, Object.fromEntries(flags.map((flag) => [flag, true])))
         router.actions.push('/logs')
         ;(newInternalTab as jest.Mock).mockClear()

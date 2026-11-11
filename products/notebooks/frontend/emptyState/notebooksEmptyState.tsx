@@ -25,7 +25,7 @@ export const notebooksEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Write up what you found, next to the data you found it in',
-                lead: 'A notebook holds your writing and live PostHog data in one page: insights, session replays, feature flags, and events. Every block re-runs its query when someone opens the notebook, so the analysis you share stays current instead of freezing into a screenshot.',
+                lead: 'A notebook holds your writing and live Flind data in one page: insights, session replays, feature flags, and events. Every block re-runs its query when someone opens the notebook, so the analysis you share stays current instead of freezing into a screenshot.',
             },
         },
         primaryAction: {

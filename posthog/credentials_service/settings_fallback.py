@@ -107,7 +107,7 @@ def get_or_settings(
     client: CredentialsServiceClient | None = None,
     settings_lookup: SettingsLookup = from_django_settings,
 ) -> str:
-    """One PostHog-owned credential, by the name it has in the service and in settings.
+    """One Flind-owned credential, by the name it has in the service and in settings.
 
     `client` swaps the transport (see `CredentialsServiceClient`). `settings_lookup` is where a key
     the service does not hold is read from instead; the default is the Django setting or

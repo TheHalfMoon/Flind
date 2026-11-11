@@ -203,7 +203,7 @@ export class AppLifecycleService {
     try {
       await posthogNodeAnalytics.shutdown();
     } catch (error) {
-      log.warn("Failed to shutdown PostHog", error);
+      log.warn("Failed to shutdown Flind", error);
     }
 
     log.info("Shutdown complete");

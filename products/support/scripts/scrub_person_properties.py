@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scrub person properties from every person that has them in a PostHog project.
+"""Scrub person properties from every person that has them in a Flind project.
 
 Finds all persons carrying any of the given properties, then removes those properties.
 
@@ -33,7 +33,7 @@ Usage:
   python products/support/scripts/scrub_person_properties.py my_secret_prop other_prop \\
       --host eu --project-id 123 --mode events --dry-run
 
---host accepts a full instance URL or the PostHog Cloud region shorthands us/eu.
+--host accepts a full instance URL or the Flind Cloud region shorthands us/eu.
 
 When a personal API key can't be created (e.g. an impersonated staff session), pass a
 browser session instead: --session-id (env POSTHOG_SESSION_ID) with the value of the
@@ -267,7 +267,7 @@ def scrub_via_api(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Scrub person properties from every person that has them in a PostHog project.",
+        description="Scrub person properties from every person that has them in a Flind project.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("properties", nargs="+", help="Person property keys to scrub")
@@ -275,7 +275,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--host",
         default=None,
-        help="PostHog instance URL, or region shorthand 'us'/'eu' for PostHog Cloud "
+        help="Flind instance URL, or region shorthand 'us'/'eu' for Flind Cloud "
         "(env: POSTHOG_HOST, else https://us.posthog.com)",
     )
     parser.add_argument("--project-id", default=None, help="Numeric project ID (env: POSTHOG_PROJECT_ID)")

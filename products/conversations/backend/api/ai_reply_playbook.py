@@ -21,7 +21,7 @@ from products.conversations.backend.playbook import (
 class AIReplyPlaybookSerializer(serializers.Serializer):
     inherited_instructions = serializers.CharField(
         read_only=True,
-        help_text="Repo default instructions, plus the PostHog overlay when docs_source is posthog.",
+        help_text="Repo default instructions, plus the Flind overlay when docs_source is posthog.",
     )
     custom_instructions = serializers.CharField(
         allow_null=True,
@@ -39,12 +39,12 @@ class AIReplyPlaybookSerializer(serializers.Serializer):
     posthog_overlay_version = serializers.IntegerField(
         allow_null=True,
         read_only=True,
-        help_text="Version of the PostHog overlay when docs_source is posthog; null otherwise.",
+        help_text="Version of the Flind overlay when docs_source is posthog; null otherwise.",
     )
     docs_source = serializers.CharField(
         allow_null=True,
         read_only=True,
-        help_text="Documentation source for this team. 'posthog' enables PostHog docs-search and the PostHog overlay.",
+        help_text="Documentation source for this team. 'posthog' enables Flind docs-search and the Flind overlay.",
     )
     max_chars = serializers.IntegerField(
         read_only=True,

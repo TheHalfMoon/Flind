@@ -182,7 +182,7 @@ def _self_driving_pr_author_login() -> str | None:
     """The GitHub login that authors genuine self-driving PRs on this instance.
 
     Signal-report implementation runs push with ``PrAuthorshipMode.BOT``, so the PR is opened by the
-    team's PostHog GitHub App and authored by its machine user, ``<slug>[bot]``. Returns ``None``
+    team's Flind GitHub App and authored by its machine user, ``<slug>[bot]``. Returns ``None``
     when the App slug isn't configured, so callers fail closed instead of trusting an identity they
     can't verify (the same posture as ``allow_any_bot=False`` on the approval writes).
     """
@@ -194,7 +194,7 @@ def _is_self_driving_pr(pr: dict[str, Any], repo: str) -> bool:
     """Check that a PR really is a self-driving inbox PR, using facts only GitHub can attest.
 
     Before granting the bot/fork/mode/write bypass, confirm two things no team member can forge:
-    the PR was opened by this instance's PostHog GitHub App machine user, and its head is in the
+    the PR was opened by this instance's Flind GitHub App machine user, and its head is in the
     base repo, never a fork (a fork's head.ref is attacker-controlled while
     ``repository.full_name`` stays the base repo). The repo-native requirement is also what makes
     the run->PR binding sound: ``find_signal_implementation_run`` matches the head ref against the
@@ -1749,7 +1749,7 @@ class QueuedReview:
 
 
 def request_manual_review(team_id: int, user_id: int | None, repository: str, pr_number: int) -> QueuedReview:
-    """Queue a review of one PR because a PostHog user asked for it, and return the run that covers it.
+    """Queue a review of one PR because a Flind user asked for it, and return the run that covers it.
 
     The request stands in for the trigger label, so it bypasses the repo's review mode and nothing
     else. Every other webhook gate still applies: open state, the draft, bot-author and

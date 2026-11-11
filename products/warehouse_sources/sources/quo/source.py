@@ -117,7 +117,7 @@ class QuoSource(ResumableSource[QuoSourceConfig, QuoResumeConfig]):
             name=ExternalDataSourceType.QUO,
             category=DataWarehouseSourceCategory.COMMUNICATION,
             label="Quo",
-            caption="""Enter your Quo API key to pull your Quo (formerly OpenPhone) data into the PostHog Data warehouse.
+            caption="""Enter your Quo API key to pull your Quo (formerly OpenPhone) data into the Flind Data warehouse.
 
 You can generate an API key in your Quo workspace settings, under the API tab. You need workspace owner or admin access to do this.""",
             keywords=["openphone", "phone", "sms", "calls"],

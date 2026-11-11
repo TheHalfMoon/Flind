@@ -23,7 +23,7 @@ A run that ends before its final batch (a cancel, a failure, a retried attempt) 
 The loader records the table version at the first batch of each append run in `sync_type_config["append_run_in_progress"]`.
 The first batch of the next fresh run restores the table to that version when the recorded run never completed (`pipeline_v3/load/append_rollback.py`).
 A resumed attempt keeps the rows of the attempt before it.
-The restore covers the PostHog warehouse table only, not an external destination.
+The restore covers the Flind warehouse table only, not an external destination.
 
 ## Incremental runs that load a table from empty
 
@@ -62,7 +62,7 @@ With `DATA_WAREHOUSE_IMPORT_PREFIX_WATERMARK_ENABLED`, the watermark also moves 
 
 ## Destinations
 
-A schema syncs to a set of destinations, of which the PostHog warehouse is one rather than a special case.
+A schema syncs to a set of destinations, of which the Flind warehouse is one rather than a special case.
 Absence of configuration resolves to the warehouse alone, so a source set up before destinations existed behaves exactly as it did.
 Gated by the `warehouse-multi-destination` flag, evaluated once in `create_external_data_job_model_activity` and carried into the workflow as recorded history.
 

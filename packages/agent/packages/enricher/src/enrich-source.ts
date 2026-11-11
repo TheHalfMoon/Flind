@@ -8,7 +8,7 @@ interface EnrichSourceApiConfig {
   host: string;
   publicHost?: string;
   projectId: number;
-  /** Timeout in ms for each PostHog API request (default: 5000). */
+  /** Timeout in ms for each Flind API request (default: 5000). */
   timeoutMs?: number;
 }
 
@@ -116,7 +116,7 @@ async function buildParseContext(
  * Shared enrichment pipeline used by both the agent (which then renders
  * inline comments) and the renderer (which consumes a serialised form).
  *
- * Returns `null` when the file is too large, has no PostHog references,
+ * Returns `null` when the file is too large, has no Flind references,
  * is an unsupported language, or the API call fails.
  */
 export async function enrichSource({

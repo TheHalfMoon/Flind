@@ -61,7 +61,7 @@ class TestQuotaLimitsAPI(APIBaseTest):
 
     def test_any_deactivated_org_limits_only_credit_buckets_and_reads_unbilled(self) -> None:
         self.organization.available_product_features = [
-            {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "PostHog Desktop usage billing"}
+            {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "Flind Desktop usage billing"}
         ]
         self.organization.is_active = False
         self.organization.is_not_active_reason = "Past due invoice"
@@ -101,7 +101,7 @@ class TestQuotaLimitsAPI(APIBaseTest):
         # on this field - dropping it (or resolving the wrong org) silently
         # re-caps paying users.
         self.organization.available_product_features = [
-            {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "PostHog Desktop usage billing"}
+            {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "Flind Desktop usage billing"}
         ]
         self.organization.save()
 
@@ -111,7 +111,7 @@ class TestQuotaLimitsAPI(APIBaseTest):
         self.assertIs(response.json()["code_usage_billing_active"], True)
 
     def test_reports_org_usage_and_limit_for_synced_resources(self) -> None:
-        # The LLM gateway forwards these to clients (PostHog Desktop renders
+        # The LLM gateway forwards these to clients (Flind Desktop renders
         # "used $X of $Y"); usage mirrors the limiter's usage + todays_usage sum.
         self.organization.usage = {
             "period": ["2026-07-01T00:00:00Z", "2026-08-01T00:00:00Z"],

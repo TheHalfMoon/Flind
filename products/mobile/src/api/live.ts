@@ -241,7 +241,7 @@ export class LiveStatsError extends Error {
 
 /**
  * Users online from the live events service. A plain `fetch`: the service is another host, takes the project's live
- * events token instead of the session's, and has no PostHog API budget.
+ * events token instead of the session's, and has no Flind API budget.
  */
 export async function fetchLiveStats(liveHost: string, token: string, signal?: AbortSignal): Promise<LiveStatsApi> {
     const controller = new AbortController()

@@ -28,7 +28,7 @@ export const GLOBAL_OPTIONS = {
         placeholder: 'url',
         env: ['HOG_HOST'],
         parse: parseHost,
-        description: 'The PostHog host to use instead of the one in your credentials',
+        description: 'The Flind host to use instead of the one in your credentials',
     },
     dotenvFile: {
         type: 'string',
@@ -64,7 +64,7 @@ export const GLOBAL_OPTIONS = {
     skipSslVerification: {
         type: 'boolean',
         env: ['HOG_SKIP_SSL_VERIFICATION'],
-        description: 'Accept any TLS certificate, for a self-hosted PostHog with a self-signed one',
+        description: 'Accept any TLS certificate, for a self-hosted Flind with a self-signed one',
     },
     noTelemetry: {
         type: 'boolean',
@@ -72,7 +72,7 @@ export const GLOBAL_OPTIONS = {
         config: 'cli.telemetry',
         negate: true,
         lenient: true,
-        description: 'Send no anonymous usage data to PostHog',
+        description: 'Send no anonymous usage data to Flind',
     },
     rateLimit: {
         type: 'string',

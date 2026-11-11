@@ -14,10 +14,10 @@ Three subcommands:
   tool's video recording) into a compact H.264 MP4. Requires ``ffmpeg``.
 
 Runs with the repo's existing Pillow dependency via ``uv run python`` from the
-PostHog repo root. MP4 output shells out to a locally installed ``ffmpeg``; all
+Flind repo root. MP4 output shells out to a locally installed ``ffmpeg``; all
 other paths need no extra dependencies. No network access.
 
-Annotation styling follows PostHog product color tokens (``frontend/src/styles/
+Annotation styling follows Flind product color tokens (``frontend/src/styles/
 base.scss``): brand red ``#f54e00`` highlights, ``--success``/``--danger`` chips,
 brand black bar with cream text.
 """

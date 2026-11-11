@@ -293,7 +293,7 @@ class TeamExperimentsConfigSerializer(serializers.Serializer):
         allow_blank=True,
         help_text="Default statistical method for new experiments in this environment.",
     )
-    # Precomputation is rolled out by PostHog, through the auto-enrollment job and the
+    # Precomputation is rolled out by Flind, through the auto-enrollment job and the
     # staff tools. A customer write here would stamp the row as manual and stop the job
     # from managing that team.
     experiment_precomputation_enabled = serializers.BooleanField(

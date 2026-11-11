@@ -16,7 +16,7 @@ interface LanguageStatus {
 export default defineCommand({
     description: 'Check whether the typed SDKs in posthog.json match your event definitions',
     scopes: ['event_definition:read'],
-    notes: 'Compares the schema hash in posthog.json with the event definitions in PostHog now. Exits with code 1 when a module is missing or out of date, or posthog.json has no languages, so CI can catch a stale SDK.',
+    notes: 'Compares the schema hash in posthog.json with the event definitions in Flind now. Exits with code 1 when a module is missing or out of date, or posthog.json has no languages, so CI can catch a stale SDK.',
     examples: ['hog schema status'],
 
     async run({ ctx }) {

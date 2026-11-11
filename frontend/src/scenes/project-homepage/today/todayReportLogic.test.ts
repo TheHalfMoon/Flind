@@ -152,7 +152,7 @@ describe('todayReportLogic', () => {
             ['openReportDiscussion', 'discussReport'] as const,
             'createPrFromReport',
         ],
-    ])('starting with PostHog %s through a task linked to the report', async (_, overrides, kickoffs, other) => {
+    ])('starting with Flind %s through a task linked to the report', async (_, overrides, kickoffs, other) => {
         const report = makeReport(overrides as Partial<SignalReport>)
         useMocks({
             get: {

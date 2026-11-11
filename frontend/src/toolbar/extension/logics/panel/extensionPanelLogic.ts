@@ -57,7 +57,7 @@ const OPEN_SETTINGS_IN: ExtensionPanelState['kind'][] = [
     'error',
 ]
 
-/** Sends the PostHog session cookie, like the toolbar's own entitlements request. */
+/** Sends the Flind session cookie, like the toolbar's own entitlements request. */
 async function fetchWithSession(uiHost: string, path: string): Promise<{ status: number; data: unknown }> {
     return await readResponse(
         safeFetch(`${uiHost}${path}`, { credentials: 'include', signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) })

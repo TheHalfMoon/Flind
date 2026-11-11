@@ -55,7 +55,7 @@ class AirwallexSource(ResumableSource[AirwallexSourceConfig, AirwallexResumeConf
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Airwallex",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Sync your Airwallex payments, payouts, balances, and billing data into the PostHog Data warehouse.
+            caption="""Sync your Airwallex payments, payouts, balances, and billing data into the Flind Data warehouse.
 
 Create an API key under **Developer** then **API keys** in the Airwallex web app, and copy the client ID shown alongside it. The key needs read access to the resources you want to sync.""",
             iconPath="/static/services/airwallex.png",

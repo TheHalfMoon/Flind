@@ -6,7 +6,7 @@ Usage:
     python manage.py autoresearch_score --pipeline-id <uuid>
 
 Requires:
-    - PostHog running locally (./bin/start or hogli start)
+    - Flind running locally (./bin/start or hogli start)
     - Demo data generated (python manage.py generate_demo_data or similar)
     - A champion model in place (run autoresearch_train first)
 
@@ -159,7 +159,7 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.ERROR(f"  Run failed: {run.error}"))
 
         self.stdout.write(
-            f"\nQuery in PostHog: SELECT distinct_id, properties.$autoresearch_p_y "
+            f"\nQuery in Flind: SELECT distinct_id, properties.$autoresearch_p_y "
             f"FROM events WHERE event = 'autoresearch_prediction' "
             f"AND properties.$autoresearch_pipeline_id = '{pipeline.pk}' ORDER BY timestamp DESC LIMIT 20"
         )

@@ -16,7 +16,7 @@ class RelationshipsConfig(CheckConfig):
     to_subject_type: Literal[SubjectType.TABLE, SubjectType.VIEW, SubjectType.POSTHOG_TABLE] = Field(
         description="Kind of object holding the referenced values."
     )
-    to_subject_uuid: UUID = Field(description="Id of the table, view or PostHog table holding the referenced values.")
+    to_subject_uuid: UUID = Field(description="Id of the table, view or Flind table holding the referenced values.")
     to_column: str = Field(min_length=1, description="Column holding the referenced values.")
     to_lookback_hours: int | None = Field(
         default=None,

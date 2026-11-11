@@ -27,7 +27,7 @@ _metrics = EgressMetrics(
         labelnames=["installation_id", "method", "endpoint", "status_code", "source"],
     ),
     # Gauges are keyed by installation_id, not integration_id: GitHub meters the rate limit per App
-    # installation, and several PostHog integration rows can share one installation. Keying by the row
+    # installation, and several Flind integration rows can share one installation. Keying by the row
     # would split one real budget into flip-flopping per-row series; the installation is the true budget
     # owner. Gauges also carry no source label — all sources sharing an installation update one series.
     remaining_gauge=Gauge(

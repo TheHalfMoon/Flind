@@ -129,7 +129,7 @@ class TeamsInstallAppView(APIView):
     fallback, uploaded to the tenant's org catalog by an admin. For the
     org-catalog fallback the tenant-scoped app id must match the instance
     setting (we deliberately don't accept a caller-supplied override so a
-    compromised PostHog admin can't point this at an arbitrary tenant-catalog
+    compromised Flind admin can't point this at an arbitrary tenant-catalog
     app and install it with the bot's
     ``TeamsAppInstallation.ReadWriteForTeam`` grant).
 

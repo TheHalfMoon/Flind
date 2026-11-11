@@ -322,7 +322,7 @@ describeWithGrammars("PostHogEnricher", () => {
       const enriched = await result.enrichFromApi(API_CONFIG);
 
       const annotated = enriched.toComments();
-      expect(annotated).toContain("// [PostHog]");
+      expect(annotated).toContain("// [Flind]");
       expect(annotated).toContain("purchase");
       expect(annotated).toContain("my-flag");
     });
@@ -335,7 +335,7 @@ describeWithGrammars("PostHogEnricher", () => {
       const enriched = await result.enrichFromApi(API_CONFIG);
 
       const annotated = enriched.toComments();
-      expect(annotated).toContain("# [PostHog]");
+      expect(annotated).toContain("# [Flind]");
     });
 
     test("toInlineComments appends to the same line and preserves line count", async () => {
@@ -371,7 +371,7 @@ describeWithGrammars("PostHogEnricher", () => {
       const enriched = await result.enrichFromApi(API_CONFIG);
 
       const annotated = enriched.toInlineComments();
-      expect(annotated).toContain("# [PostHog]");
+      expect(annotated).toContain("# [Flind]");
       expect(annotated.split("\n")).toHaveLength(1);
     });
 
@@ -553,7 +553,7 @@ describeWithGrammars("PostHogEnricher", () => {
       expect(annotated).toContain("STALE (inactive)");
     });
 
-    test("toComments handles flag not in PostHog", async () => {
+    test("toComments handles flag not in Flind", async () => {
       const code = `posthog.getFeatureFlag('ghost-flag');`;
       const result = await enricher.parse(code, "javascript");
 
@@ -561,7 +561,7 @@ describeWithGrammars("PostHogEnricher", () => {
       const enriched = await result.enrichFromApi(API_CONFIG);
 
       const annotated = enriched.toComments();
-      expect(annotated).toContain(`Flag: "ghost-flag" \u2014 not in PostHog`);
+      expect(annotated).toContain(`Flag: "ghost-flag" \u2014 not in Flind`);
     });
 
     test("toComments omits evaluation segment when stats missing", async () => {

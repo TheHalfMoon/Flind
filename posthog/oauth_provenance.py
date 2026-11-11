@@ -56,7 +56,7 @@ def _get_client_id(access_token: object | None) -> str | None:
 
 
 def is_first_party_oauth_client(request) -> bool:
-    """Whether the token was minted against an OAuth application PostHog controls.
+    """Whether the token was minted against an OAuth application Flind controls.
 
     The MCP consumer header is caller-settable, so a third party can declare itself `slack`
     or `posthog_ai`. Requiring one of our own applications is what makes that header
@@ -70,7 +70,7 @@ def _is_first_party_oauth_token(access_token: object | None) -> bool:
 
 
 def is_interactive_desktop_grant(request, access_token: object | None = None) -> bool:
-    """Whether this request carries a PostHog Desktop token a person consented to.
+    """Whether this request carries a Flind Desktop token a person consented to.
 
     The Electron app, the cloud coding agent, and the Slack app all authenticate against the
     same OAuth application, so three things have to line up: that application, the absence of

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface MintedDevTokenApi {
@@ -73,7 +73,7 @@ export interface DevTokenRevokedApi {
 
 export interface DevUserUsageApi {
     /**
-     * PostHog user id. Null when no user has this distinct_id.
+     * Flind user id. Null when no user has this distinct_id.
      * @nullable
      */
     user_id: number | null

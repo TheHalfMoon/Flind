@@ -88,7 +88,7 @@ class TestTemplateIntercom(BaseHogFunctionTemplateTest):
                 include_all_properties=False, customProperties={"custom_property": "custom_value"}
             ),
             globals={
-                "person": {"properties": {"plan": "pay-as-you-go", "company": "PostHog"}},
+                "person": {"properties": {"plan": "pay-as-you-go", "company": "Flind"}},
             },
         )
 
@@ -120,7 +120,7 @@ class TestTemplateIntercom(BaseHogFunctionTemplateTest):
         self.run_function(
             inputs=self.create_inputs(include_all_properties=True),
             globals={
-                "person": {"properties": {"plan": "pay-as-you-go", "company": "PostHog"}},
+                "person": {"properties": {"plan": "pay-as-you-go", "company": "Flind"}},
             },
         )
 
@@ -144,7 +144,7 @@ class TestTemplateIntercom(BaseHogFunctionTemplateTest):
                     "phone": "+1234567890",
                     "last_seen_at": "1234567890",
                     "plan": "pay-as-you-go",
-                    "company": "PostHog",
+                    "company": "Flind",
                 },
             },
         )

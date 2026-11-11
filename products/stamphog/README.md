@@ -40,7 +40,7 @@ A label added inside that window starts nothing, so stamphog removes it again an
 A transient failure must not silently drop labels across every queued PR.
 
 Each run is stored as a `ReviewRun` row with its evidence bundle.
-Runs are listed in the Stamphog runs page in the PostHog app (`/stamphog/runs`), and the same data is available through the stamphog API and its MCP tools (review runs, repo configs, digest runs).
+Runs are listed in the Stamphog runs page in the Flind app (`/stamphog/runs`), and the same data is available through the stamphog API and its MCP tools (review runs, repo configs, digest runs).
 Retrieving one run also returns the reviewer's reasoning, the same text stamphog posts on GitHub.
 
 A project member can also ask for a review directly, by creating a review run (`POST review_runs/`, or the `stamphog-review-runs-create` MCP tool), and then poll the run for its verdict.
@@ -50,7 +50,7 @@ Every other rule still applies: drafts, closed PRs, bot-authored PRs, PRs from o
 ## Connect a repository
 
 1. Install the Stamphog GitHub App on your GitHub organization.
-2. Open Stamphog in the PostHog app and connect GitHub. The callback records the repositories you can reach with your own GitHub account. It adds none of them yet.
+2. Open Stamphog in the Flind app and connect GitHub. The callback records the repositories you can reach with your own GitHub account. It adds none of them yet.
 3. Add each repository you want reviewed from the **Add a repository** search (`POST repo_configs/add_repository`). Adding a repository turns its reviews on in label-triggered mode. The search lists the repositories you can add, from `GET repo_configs/available_repositories`.
 4. Expand the repository's row to change the **review mode**: "Label-triggered" (the default) reviews only PRs carrying the trigger label, "All PRs" reviews every pull request. Set the trigger label name next to the mode.
 5. Turn on **Include in the digest** if you want the daily Slack digest of merged PRs. The project needs a connected Slack integration first, or the digest run stops silently before posting.
@@ -275,4 +275,4 @@ Details and invariants: [AGENTS.md](AGENTS.md).
 - [AGENTS.md](AGENTS.md) - the invariants that keep approvals and the sandbox sound.
 - [`packages/pr-approval-agent/README.md`](packages/pr-approval-agent/README.md) - the engine: gates, tiers, policy file formats, evidence bundle.
 - [`docs/digest.md`](docs/digest.md) - the digest design note.
-- [`.stamphog/README.md`](../../.stamphog/README.md) - what the PostHog monorepo itself configures.
+- [`.stamphog/README.md`](../../.stamphog/README.md) - what the Flind monorepo itself configures.

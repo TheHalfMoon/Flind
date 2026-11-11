@@ -31,7 +31,7 @@ interface SpaceFeedListRowProps {
     unread: boolean
 }
 
-/** A session as one compact row of the feed's list view, like PostHog Desktop's. */
+/** A session as one compact row of the feed's list view, like Flind Desktop's. */
 export function SpaceFeedListRow({ spaceId, task, pinned, unread }: SpaceFeedListRowProps): JSX.Element {
     const { renaming } = useValues(todaySessionMenuLogic)
     const { user } = useValues(userLogic)

@@ -4,11 +4,11 @@ showTitle: true
 noindex: true
 ---
 
-This guide explains how to create isolated PostHog development environments using Flox and Git worktrees for seamless branch switching.
+This guide explains how to create isolated Flind development environments using Flox and Git worktrees for seamless branch switching.
 
 > This guide builds on the [developing locally](./developing-locally) setup.
 > You should have Flox installed and be able to run `hogli start`
-> (PostHog's developer CLI, available inside the Flox environment) before proceeding.
+> (Flind's developer CLI, available inside the Flox environment) before proceeding.
 
 **Key Benefits:**
 
@@ -17,7 +17,7 @@ This guide explains how to create isolated PostHog development environments usin
 - Quick switching between features, bug fixes, and PR reviews
 - Standard `hogli start` command works in each worktree
 
-> **Important:** Only one PostHog instance (`hogli start`) can run at a time since they all use the same ports. The workflow focuses on quickly stopping one instance and starting another.
+> **Important:** Only one Flind instance (`hogli start`) can run at a time since they all use the same ports. The workflow focuses on quickly stopping one instance and starting another.
 
 ## Light worktrees
 
@@ -59,7 +59,7 @@ export POSTHOG_WORKTREE_BASE="$HOME/code/worktrees"
 
 ### 1. One-Time Setup
 
-In all these examples, replace `~/dev/posthog/posthog` with your local path to the PostHog repo.
+In all these examples, replace `~/dev/posthog/posthog` with your local path to the Flind repo.
 
 ```bash
 # Install dependencies
@@ -161,7 +161,7 @@ phw remove pr-5678-teammate            # Done with PR review
 
 ### Switching Between Worktrees
 
-Since you can only run one PostHog instance at a time, the workflow focuses on quickly switching between isolated environments:
+Since you can only run one Flind instance at a time, the workflow focuses on quickly switching between isolated environments:
 
 ```bash
 # Create isolated worktrees for different tasks
@@ -210,7 +210,7 @@ phw remove pr-5678-teammate
 
 ### Worktree Location Management
 
-The `phw list` and `phw remove` commands work with **all** your PostHog worktrees, regardless of where they were created. This is helpful if you:
+The `phw list` and `phw remove` commands work with **all** your Flind worktrees, regardless of where they were created. This is helpful if you:
 
 - Changed your `POSTHOG_WORKTREE_BASE` setting after creating some worktrees
 - Have worktrees in multiple locations
@@ -402,7 +402,7 @@ phw remove haacked/old-feature
 git worktree prune
 ```
 
-To clear old `phw`, Claude Code (including agent scratchpads), Codex, and PostHog Code worktrees in bulk, run `hogli worktrees:clean --before 7d --mode deps,build --dry-run` to preview, then drop `--dry-run`, or use `--mode full` to remove whole worktrees.
+To clear old `phw`, Claude Code (including agent scratchpads), Codex, and Flind Code worktrees in bulk, run `hogli worktrees:clean --before 7d --mode deps,build --dry-run` to preview, then drop `--dry-run`, or use `--mode full` to remove whole worktrees.
 `--mode deps` removes installed dependencies such as `node_modules`, Python venvs, and Cargo `target` dirs.
 `--mode build` removes build output and tool caches such as Cargo `target`, `dist`, `.next`, and `__pycache__`, but only where git ignores every file inside.
 Neither removes a folder that holds a tracked file.

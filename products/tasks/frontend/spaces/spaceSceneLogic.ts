@@ -809,7 +809,7 @@ export const spaceSceneLogic = kea<spaceSceneLogicType>([
                         : 'loading',
             }),
         ],
-        // Like PostHog Desktop, a card names its repository only when it differs from the space's most used one.
+        // Like Flind Desktop, a card names its repository only when it differs from the space's most used one.
         // A tie goes to the repository of the most recently active session.
         dominantRepository: [
             (s) => [s.sessions],

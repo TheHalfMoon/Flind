@@ -148,7 +148,7 @@ describe("ActivityTimeline", () => {
     expect(useThreadNavigationStore.getState().scrollRequests).toEqual({});
   });
 
-  it("folds injected PostHog app context by default", () => {
+  it("folds injected Flind app context by default", () => {
     renderTimeline(true, [
       {
         type: "user_message",
@@ -165,7 +165,7 @@ describe("ActivityTimeline", () => {
       screen.getByRole("button", { name: /How many active users/ }),
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "PostHog context" }));
+    fireEvent.click(screen.getByRole("button", { name: "Flind context" }));
 
     expect(screen.getByText(/Weekly active users/)).toBeVisible();
   });

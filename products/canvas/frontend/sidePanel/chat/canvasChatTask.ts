@@ -2,7 +2,7 @@ import { CanvasGenerationTask, isStartingRunStatus, isTerminalRunStatus } from '
 
 // The run whose chat the side panel shows: the current person's own run on this canvas.
 // Another person's run never shows, even while it is in flight, so on a shared canvas
-// every editor keeps their own conversation. Mirrors PostHog Desktop's canvasChatTask.ts.
+// every editor keeps their own conversation. Mirrors Flind Desktop's canvasChatTask.ts.
 export function canvasChatTaskId(args: {
     /** The run this person just started here, before the canvas record caught up. */
     startedTaskId: string | null

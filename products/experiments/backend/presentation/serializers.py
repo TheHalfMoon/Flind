@@ -408,7 +408,7 @@ class ExperimentHealthSetupSerializer(serializers.Serializer):
     evaluation_contexts = serializers.ListField(
         child=serializers.CharField(),
         help_text=(
-            "The names of the flag's evaluation contexts. When PostHog evaluates the flag, an SDK that sends evaluation "
+            "The names of the flag's evaluation contexts. When Flind evaluates the flag, an SDK that sends evaluation "
             "contexts gets it only when it sends one of these, and an SDK that sends none gets it. Empty when the flag "
             "has none."
         ),
@@ -1399,7 +1399,7 @@ class ExperimentFeatureFlagInputSerializer(_StrictFieldsMixin, serializers.Seria
     )
 
 
-# Advertises the writable feature_flag input in the OpenAPI request schema. PostHog's drf-spectacular
+# Advertises the writable feature_flag input in the OpenAPI request schema. Flind's drf-spectacular
 # config doesn't split request/response components, so feature_flag stays read-only (MinimalFeatureFlag)
 # on ExperimentSerializer for the response, and this subclass carries the writable input for the
 # request. Referenced via extend_schema(request=...) on the create/update/partial_update methods.
@@ -1562,7 +1562,7 @@ class ExperimentFlagCleanupTaskSerializer(serializers.Serializer):
     )
     can_view_task = serializers.BooleanField(
         help_text=(
-            "Whether the requesting user can open the task in PostHog Desktop. Cleanup tasks are "
+            "Whether the requesting user can open the task in Flind Desktop. Cleanup tasks are "
             "visible to their creator only, so other viewers should not be shown a task link."
         ),
     )
@@ -3770,14 +3770,14 @@ class ExperimentHealthInputsSerializer(serializers.Serializer):
     flag_called = serializers.BooleanField(
         allow_null=True,
         help_text=(
-            "Whether PostHog has recorded any call of the flag. The flag traffic check reads it on a draft. Null when "
+            "Whether Flind has recorded any call of the flag. The flag traffic check reads it on a draft. Null when "
             "the experiment has no flag, or the organization's flag calls are stored where the checks can't read them."
         ),
     )
     flag_called_during_run = serializers.BooleanField(
         allow_null=True,
         help_text=(
-            "Whether PostHog has recorded a call of the flag between launch and the end, or until now. The zero "
+            "Whether Flind has recorded a call of the flag between launch and the end, or until now. The zero "
             "exposures check reads it to say whether the flag is called. Null before launch, after a latest call that "
             "came after the end, or when the organization's flag calls can't be read."
         ),
@@ -3785,7 +3785,7 @@ class ExperimentHealthInputsSerializer(serializers.Serializer):
     flag_called_after_end = serializers.BooleanField(
         allow_null=True,
         help_text=(
-            "Whether PostHog has recorded a call of the flag after the end and within the last 3 days. The flag "
+            "Whether Flind has recorded a call of the flag after the end and within the last 3 days. The flag "
             "state check reads it on an ended experiment whose flag is still active with multiple variants. False "
             "only once 3 days have passed since the end. Null before the end, before those 3 days are over without a "
             "call, or when the organization's flag calls can't be read."

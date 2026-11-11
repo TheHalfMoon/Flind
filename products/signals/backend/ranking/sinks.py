@@ -1,7 +1,7 @@
 """Where a scoring pass writes: one `ranking_score` artefact per report, and one event per model.
 
 `ranking_score` is in `NON_WRITABLE_ARTEFACT_TYPES`, so this system path is its only writer. The
-events go to PostHog's own project, where the inbox label streams join them on `report_id` like
+events go to Flind's own project, where the inbox label streams join them on `report_id` like
 every other ranking event.
 """
 

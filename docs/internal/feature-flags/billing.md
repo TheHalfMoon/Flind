@@ -172,7 +172,7 @@ redis_client.execute_pipeline(commands).await?;
 
 ## Step 2: Scheduled aggregation task
 
-A Celery task aggregates Redis counters and emits PostHog events every 30 minutes.
+A Celery task aggregates Redis counters and emits Flind events every 30 minutes.
 
 **Source files:**
 
@@ -205,7 +205,7 @@ For each team with a team key:
 2. **Extract counters**: Read all time buckets except the current one (still being filled)
 3. **Extract SDK breakdown**: Read all SDK-specific counters using pipelining
 4. **Consume buckets**: Delete processed buckets from Redis
-5. **Emit events**: Send `decide usage` and `local evaluation usage` events to PostHog
+5. **Emit events**: Send `decide usage` and `local evaluation usage` events to Flind
 
 The "skip current bucket" behavior prevents counting requests that are still being recorded:
 
@@ -219,7 +219,7 @@ if time_buckets and len(time_buckets) > 1:
 
 ## Step 3: Event emission
 
-The aggregation task emits events to PostHog's internal analytics instance.
+The aggregation task emits events to Flind's internal analytics instance.
 
 ### Event types
 

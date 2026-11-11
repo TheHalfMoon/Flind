@@ -3,14 +3,14 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 1 enabled ops
+ * Flind API - MCP 1 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
 
 /**
- * Run a hybrid (semantic + full-text) RAG search over the PostHog documentation via Inkeep. Returns a markdown body with title, URL, and excerpt for each match for the agent to cite back to the user.
- * @summary Search PostHog documentation
+ * Run a hybrid (semantic + full-text) RAG search over the Flind documentation via Inkeep. Returns a markdown body with title, URL, and excerpt for each match for the agent to cite back to the user.
+ * @summary Search Flind documentation
  */
 export const DocsSearchParams = () => zod.object({
     project_id: zod
@@ -24,6 +24,6 @@ export const DocsSearchBody = () => zod.object({
     query: zod
         .string()
         .describe(
-            'Natural-language description of what to find in the PostHog documentation. Inkeep performs hybrid (semantic + full-text) RAG, so phrase the query the way a user would ask the question.'
+            'Natural-language description of what to find in the Flind documentation. Inkeep performs hybrid (semantic + full-text) RAG, so phrase the query the way a user would ask the question.'
         ),
 })

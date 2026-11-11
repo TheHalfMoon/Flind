@@ -76,7 +76,7 @@ class ResendSource(ResumableSource[ResendSourceConfig, ResendResumeConfig], OAut
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Resend",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Connect Resend to pull your Resend data into the PostHog Data warehouse. Connect with OAuth, or paste a Resend API key.
+            caption="""Connect Resend to pull your Resend data into the Flind Data warehouse. Connect with OAuth, or paste a Resend API key.
 
 Either way, the connection needs **full access** so the following resources can be read:
 - Audiences

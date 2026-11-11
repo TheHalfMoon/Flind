@@ -338,7 +338,7 @@ class _Recommender:
             tracking.account_name,
             f"Add {KEYWORD_PARAMETER} to the account's Final URL suffix",
             f"{missing:.0%} of the project's {tracking.sessions:,} Google Ads sessions in the selected dates have no "
-            "utm_term, so PostHog conversion goals cannot be tied to the keyword that brought each visitor.",
+            "utm_term, so Flind conversion goals cannot be tied to the keyword that brought each visitor.",
             None,
             "gain",
             "measured",

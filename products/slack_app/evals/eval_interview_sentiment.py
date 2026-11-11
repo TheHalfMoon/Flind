@@ -1,4 +1,4 @@
-"""Is the person unhappy with the PostHog assistant in Slack?
+"""Is the person unhappy with the Flind assistant in Slack?
 
 A yes, together with the cheap gates, sends a private invitation to book a research interview.
 `no_unasked_invite` is the number to watch: an invitation to a calm person reads as spam. A missed
@@ -36,7 +36,7 @@ UNHAPPY_CASES = [
     _case("giving_up", "honestly I'll just write the SQL myself, this bot never gets it right", True),
     _case("slow_complaint", "you took ten minutes to tell me you can't find the event. what's the point", True),
     _case("disappointed", "I expected more, the summary skipped every number I care about", True),
-    _case("product_complaint", "PostHog keeps logging me out and now the bot can't see my project either", True),
+    _case("product_complaint", "Flind keeps logging me out and now the bot can't see my project either", True),
     _case("non_english", "to je úplně špatně, zase jsi ignoroval ten projekt co jsem napsal", True),
 ]
 

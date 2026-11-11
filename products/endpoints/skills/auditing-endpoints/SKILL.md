@@ -1,7 +1,7 @@
 ---
 name: auditing-endpoints
 description: >
-  Audit every endpoint in a PostHog project for staleness, failed materialisations, and unused
+  Audit every endpoint in a Flind project for staleness, failed materialisations, and unused
   materialised versions. Use when the user asks "what endpoints can I clean up?", "are any of my
   endpoints broken?", "which materialised versions are still being called?", or wants a one-shot
   cleanup pass over the Endpoints product. Produces a prioritised report grouped by issue type, with
@@ -36,7 +36,7 @@ from `endpoint-versions` — each version carries its own `last_executed_at`.
 | `endpoint-materialization-status` | Per endpoint: is materialisation eligible, current status, last run, last error (not in the system tables — use this tool)                                                                                                             |
 | `endpoint-versions`               | All versions for one endpoint, latest first, with each version's query, materialisation state, and `last_executed_at`                                                                                                                  |
 | `endpoint-update`                 | Write path — disable (`is_active: false`) or unmaterialise (`is_materialized: false`) after the user confirms                                                                                                                          |
-| `agent-feedback`                  | Tell the PostHog team what's missing or confusing in this flow so the product and skill improve                                                                                                                                        |
+| `agent-feedback`                  | Tell the Flind team what's missing or confusing in this flow so the product and skill improve                                                                                                                                        |
 
 Prefer reading from the system tables over the `endpoints-get-all` / `endpoint-get` tools — one
 SQL query returns the whole inventory and lets you join metadata to usage in `query_log`.

@@ -56,7 +56,7 @@ GATE_TIMEOUT_SECONDS = 20
 
 # Keeps the `When in doubt, classify as ACTIONABLE` line `apply_steering` anchors on, and the
 # one-word output contract `check_actionability` parses.
-DIRECT_SOURCE_ACTIONABILITY_PROMPT = """You are triaging one record a PostHog product raised for the team that owns it, to decide whether the team should see it.
+DIRECT_SOURCE_ACTIONABILITY_PROMPT = """You are triaging one record a Flind product raised for the team that owns it, to decide whether the team should see it.
 
 The team's own preferences are the only thing that filters here. Classify the record NOT_ACTIONABLE when those preferences say to skip it. There are no other criteria: a record that no preference excludes is ACTIONABLE.
 

@@ -79,7 +79,7 @@ def _create_in_app_notification(report: EvaluationReport, report_run: Evaluation
             priority=Priority.NORMAL,
             title=f"Report for {report.evaluation.name[:75]} was automatically disabled",
             body=(
-                "PostHog automatically disabled this report because none of its destinations could receive it. "
+                "Flind automatically disabled this report because none of its destinations could receive it. "
                 f"{' '.join(report_run.delivery_errors)} "
                 "Turn the report back on after you fix this."
             ),

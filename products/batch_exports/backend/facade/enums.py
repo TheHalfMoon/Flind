@@ -15,7 +15,7 @@ from posthog.enums import LabeledStrEnum
 
 
 class BatchExportDestinationType(LabeledStrEnum):
-    """Enumeration of supported destinations for PostHog BatchExports."""
+    """Enumeration of supported destinations for Flind BatchExports."""
 
     AWS_S3 = "AwsS3"
     S3_COMPATIBLE = "S3Compatible"
@@ -104,7 +104,7 @@ S3_FAMILY_TYPES: frozenset[str] = frozenset(
 # (BigQuery, Databricks, Postgres, Redshift, Snowflake) that write rows into a table. File format,
 # compression and object key layout are questions only this half has to answer.
 #
-# Also includes "FileDownload", which writes to a PostHog bucket rather than a customer one.
+# Also includes "FileDownload", which writes to a Flind bucket rather than a customer one.
 # TODO: it probably makes sense to introduce a 'DestinationKind' abstraction in the future,
 # to properly categorize object storage and data warehouse destinations.
 OBJECT_STORAGE_DESTINATIONS: frozenset[str] = frozenset(

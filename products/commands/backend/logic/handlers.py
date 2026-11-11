@@ -1,8 +1,8 @@
 """Handlers that dispatch a command into the product that does the work.
 
 A command's target hook names the projects its product acts in, before ``dispatcher.py`` checks
-membership and access there. The handler then runs as the commenter's PostHog account that is a
-member of the first of them, so a command can only do what the commenter could do in PostHog
+membership and access there. The handler then runs as the commenter's Flind account that is a
+member of the first of them, so a command can only do what the commenter could do in Flind
 themselves. Handlers never pass the pull request's title, body or comments to
 an agent. They pass identifiers, and the downstream product reads the content itself as untrusted
 data.
@@ -61,15 +61,15 @@ def _pull_request_ref(ref: SubjectRef) -> PullRequestRef:
 
 
 def review_target(subject: SubjectRef, team_ids: tuple[int, ...]) -> CommandTarget | Answer:
-    """The project that owns the repository in PostHog Review, and its environments."""
+    """The project that owns the repository in Flind Review, and its environments."""
     ref = _pull_request_ref(subject)
     owner_team_id = review_hog_github.owning_team_id(ref.installation_id, ref.repository)
     if owner_team_id is None:
-        return Answer(outcome="refused", message="PostHog Review isn't set up for this repository.")
+        return Answer(outcome="refused", message="Flind Review isn't set up for this repository.")
     project_ids = _project_ids([*team_ids, owner_team_id])
     return CommandTarget(
         team_ids=tuple(team_id for team_id in team_ids if project_ids.get(team_id) == project_ids.get(owner_team_id)),
-        not_member_message="You aren't a member of the PostHog project that reviews this repository.",
+        not_member_message="You aren't a member of the Flind project that reviews this repository.",
     )
 
 
@@ -81,7 +81,7 @@ def stamp_target(subject: SubjectRef, team_ids: tuple[int, ...]) -> CommandTarge
         return Answer(outcome="refused", message="Stamphog is not set up for this repository.")
     return CommandTarget(
         team_ids=tuple(reviewing),
-        not_member_message="You aren't a member of the PostHog project where Stamphog reviews this repository.",
+        not_member_message="You aren't a member of the Flind project where Stamphog reviews this repository.",
     )
 
 
@@ -97,7 +97,7 @@ def docs_target(subject: SubjectRef, team_ids: tuple[int, ...]) -> CommandTarget
         return Answer(outcome="refused", message="The knowledge writer isn't set up.")
     return CommandTarget(
         team_ids=tuple(team_id for team_id in team_ids if team_id == writer_team_id),
-        not_member_message="You aren't a member of the PostHog project the knowledge writer runs in.",
+        not_member_message="You aren't a member of the Flind project the knowledge writer runs in.",
     )
 
 
@@ -178,7 +178,7 @@ def handle_stamp(context: CommandContext, args: StampArgs) -> CommandOutcome:
 
 
 def handle_review(context: CommandContext, args: ReviewArgs) -> CommandOutcome:
-    """Start a PostHog Review run on the pull request, with the commenter as the acting user.
+    """Start a Flind Review run on the pull request, with the commenter as the acting user.
 
     ``review_target`` already narrowed the members to the project that owns the repository.
     """
@@ -201,20 +201,20 @@ def handle_review(context: CommandContext, args: ReviewArgs) -> CommandOutcome:
         run_mode=run_mode,
     )
     if outcome.status == review_hog_facade.PRReviewRequestStatus.ALREADY_REVIEWED:
-        return CommandOutcome(accepted=True, message="PostHog Review already reviewed the current commit.")
+        return CommandOutcome(accepted=True, message="Flind Review already reviewed the current commit.")
     if outcome.started:
         follow_up = _follow_up(context)
         if follow_up is not None and outcome.review_mode:
             project_id = resolve_effective_team_id(member.team_id)
             key = follow_ups.review_key(project_id, pull_request.repository, pull_request.number, outcome.review_mode)
             follow_ups.remember(key, follow_up)
-        return CommandOutcome(accepted=True, message="PostHog Review is reviewing this pull request.")
-    # PostHog Review writes its refusals from the repository name, the PR number and fixed text.
+        return CommandOutcome(accepted=True, message="Flind Review is reviewing this pull request.")
+    # Flind Review writes its refusals from the repository name, the PR number and fixed text.
     return CommandOutcome(accepted=False, message=outcome.error)
 
 
 def handle_qa(context: CommandContext, args: QaArgs) -> CommandOutcome:
-    """Start a PostHog Code task that runs the frontend QA skill against the pull request head."""
+    """Start a Flind Code task that runs the frontend QA skill against the pull request head."""
     pull_request = context.pull_request
     member = context.members[0]
     team_id = member.team_id
@@ -226,16 +226,16 @@ def handle_qa(context: CommandContext, args: QaArgs) -> CommandOutcome:
     except tasks_access.DesktopAccessResolutionError:
         logger.warning("github_command_desktop_access_unresolved", team_id=team_id, exc_info=True)
         return CommandOutcome(
-            accepted=False, message="I couldn't check your PostHog Code access. Try again in a few minutes."
+            accepted=False, message="I couldn't check your Flind Code access. Try again in a few minutes."
         )
     if not decision.allowed:
         return CommandOutcome(
-            accepted=False, message="PostHog Code isn't available for your organization, so I can't start a QA run."
+            accepted=False, message="Flind Code isn't available for your organization, so I can't start a QA run."
         )
     if tasks_usage.task_run_usage_limited(user, team_id):
         return CommandOutcome(
             accepted=False,
-            message="Your organization has used up its PostHog Code credits, so I can't start a QA run.",
+            message="Your organization has used up its Flind Code credits, so I can't start a QA run.",
         )
     created = tasks_facade.create_and_run_task(
         team=team,
@@ -251,7 +251,7 @@ def handle_qa(context: CommandContext, args: QaArgs) -> CommandOutcome:
     if follow_up is not None and created.latest_run is not None:
         follow_ups.remember(follow_ups.task_run_key(str(created.latest_run.id)), follow_up)
     task_url = absolute_uri(f"/project/{team_id}/tasks/{created.task_id}")
-    return CommandOutcome(accepted=True, message=f"Started a QA run. Follow it in [PostHog Code]({task_url}).")
+    return CommandOutcome(accepted=True, message=f"Started a QA run. Follow it in [Flind Code]({task_url}).")
 
 
 def build_qa_instructions(context: CommandContext, focus: str) -> str:

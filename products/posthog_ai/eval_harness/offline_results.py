@@ -470,7 +470,7 @@ class OfflineEvalPublisher:
                 await client.resume_experiment(experiment_id).set_tags(upload.tags)
         except EvaluationAPIError as error:
             logger.warning(
-                "PostHog offline results uploaded, but tagging failed for experiment %s (status=%s, code=%s). "
+                "Flind offline results uploaded, but tagging failed for experiment %s (status=%s, code=%s). "
                 "Tagging requires a personal key with evaluation:write. Tag updates are not retried.",
                 experiment_id,
                 error.status,
@@ -478,13 +478,13 @@ class OfflineEvalPublisher:
             )
         except TimeoutError:
             logger.warning(
-                "PostHog offline results uploaded, but tagging timed out for experiment %s. "
+                "Flind offline results uploaded, but tagging timed out for experiment %s. "
                 "Tag updates are not retried.",
                 experiment_id,
             )
         except asyncio.CancelledError:
             logger.warning(
-                "PostHog offline tag update interrupted for experiment %s; inspect its tags before retrying.",
+                "Flind offline tag update interrupted for experiment %s; inspect its tags before retrying.",
                 experiment_id,
             )
             raise

@@ -17,7 +17,7 @@ export function workflowHealthItem(
     overrides: Partial<WorkflowHealthItemApi> & { workflow_name: string }
 ): WorkflowHealthItemApi {
     return {
-        repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+        repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
         run_count: 320,
         successful_run_count: 304,
         conclusive_run_count: 320,

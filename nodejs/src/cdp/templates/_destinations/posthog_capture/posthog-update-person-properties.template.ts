@@ -6,7 +6,7 @@ export const template: HogFunctionTemplate = {
     type: 'destination',
     id: 'template-posthog-update-person-properties',
     name: 'Update person properties',
-    description: 'Updates properties of a PostHog person',
+    description: 'Updates properties of a Flind person',
     icon_url: '/static/posthog-icon.svg',
     category: ['Custom', 'Analytics'],
     code_language: 'hog',

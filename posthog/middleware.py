@@ -164,7 +164,7 @@ SIGNED_CLIENT_IP_MAX_CLOCK_SKEW_SECONDS = 5
 
 class SignedClientIPOutcome(StrEnum):
     VALID = "valid"
-    # The instance holds no signing key, which is the normal state outside PostHog Cloud.
+    # The instance holds no signing key, which is the normal state outside Flind Cloud.
     NOT_CONFIGURED = "not_configured"
     TIMESTAMP_OUT_OF_WINDOW = "timestamp_out_of_window"
     INVALID_INPUT = "invalid_input"
@@ -254,7 +254,7 @@ class ManagedProxyClientIPMiddleware:
 
     Envoy sets X-Forwarded-For to its peer, which is a Cloudflare edge for managed proxy traffic.
     Only a shared secret can recover the real client, because a Cloudflare edge range identifies
-    Cloudflare and not PostHog's Worker: any Cloudflare tenant can point a zone at this origin.
+    Cloudflare and not Flind's Worker: any Cloudflare tenant can point a zone at this origin.
     The ingress must therefore keep overwriting X-Forwarded-For rather than appending to it.
 
     After a valid signature, X-Forwarded-For holds only the signed IP, so get_ip_address,
@@ -315,7 +315,7 @@ class AllowIPMiddleware:
                 if get_geoip_properties(ip).get("$geoip_country_code", None) not in settings.BLOCKED_GEOIP_REGIONS:
                     return response
         return HttpResponse(
-            "PostHog is not available in your region. If you think this is in error, please contact tim@posthog.com.",
+            "Flind is not available in your region. If you think this is in error, please contact tim@posthog.com.",
             status=403,
         )
 
@@ -421,7 +421,7 @@ class CsvNeverCacheMiddleware:
 class AutoProjectMiddleware:
     """Automatic switching of the user's current project to that of the item being accessed if possible.
 
-    Sometimes you get sent a link to PostHog that points to an item from a different project than the one you currently
+    Sometimes you get sent a link to Flind that points to an item from a different project than the one you currently
     are in. With this middleware, if you have access to the target project, you are seamlessly switched to it,
     instead of seeing a 404 eror.
     """
@@ -996,7 +996,7 @@ def per_request_logging_context_middleware(
             rss_mb=round(rss_mb_start, 1) if rss_mb_start is not None else None,
         )
 
-        # Forwarded by the PostHog MCP server (services/mcp) on every API call.
+        # Forwarded by the Flind MCP server (services/mcp) on every API call.
         # Binding here lets backend log lines and OTLP spans correlate with the
         # same MCP context that's stamped on events.
         #
@@ -1030,7 +1030,7 @@ def per_request_logging_context_middleware(
 
         # posthog-js `tracing_headers` sends the browser session on app API calls. The key is
         # `sessionId` because the Logs and Tracing session links look for that key by default,
-        # and the PostHog SDKs use it on their own spans. Caller-asserted, like the MCP headers.
+        # and the Flind SDKs use it on their own spans. Caller-asserted, like the MCP headers.
         frontend_session_id = sanitize_header_value(request.headers.get("X-Posthog-Session-Id"))
         if frontend_session_id:
             structlog.contextvars.bind_contextvars(sessionId=frontend_session_id)
@@ -1932,7 +1932,7 @@ READ_ONLY_IMPERSONATION_ALLOWLISTED_PATHS: list[tuple[str, str | re.Pattern]] = 
     ("POST", re.compile(r"^/api/(environments|projects)/([0-9]+|@current)/error_tracking/stack_frames/batch_get/?$")),
     # POST but read-only: returns metadata about available incremental fields / columns
     # for a data warehouse schema. Validates external credentials and lists schemas
-    # against the customer's source — no PostHog-side mutations.
+    # against the customer's source — no Flind-side mutations.
     (
         "POST",
         re.compile(
@@ -2138,7 +2138,7 @@ class ImpersonationBlockedPathsMiddleware:
 def impersonated_session_logout(request: HttpRequest) -> HttpResponse:
     """
     Log out of an impersonated session. Redirects to a safe `next` target when
-    provided (e.g. `/` to return to the PostHog app), otherwise back to the
+    provided (e.g. `/` to return to the Flind app), otherwise back to the
     impersonated user's admin change page.
     """
     next_url = request.GET.get("next")

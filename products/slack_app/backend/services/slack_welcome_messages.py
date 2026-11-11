@@ -1,4 +1,4 @@
-"""What PostHog says the first time someone meets it in Slack.
+"""What Flind says the first time someone meets it in Slack.
 
 Four moments: a fresh install, the app is added to a channel, someone joins a workspace
 that already has it, or someone opens the assistant pane. Keeping them in one module is
@@ -96,7 +96,7 @@ def build_assistant_pane_welcome() -> str:
     ``/posthog``: the slash commands are not reachable from a DM.
     """
     return (
-        "Hi! I'm PostHog, an AI agent. Ask me about your product data, or tell me what to fix and "
+        "Hi! I'm Flind, an AI agent. Ask me about your product data, or tell me what to fix and "
         "I'll open a pull request in a connected repo.\n"
         "• Keep replying here while I'm working and I'll pick up what you say.\n"
         "• Want a different model? Say so: `use fable for this one`.\n"
@@ -124,7 +124,7 @@ def build_channel_welcome(integration: WorkspaceIntegration) -> tuple[str, list[
         worth_knowing.append("You can DM me instead of tagging me here.")
     blocks: list[dict[str, Any]] = [
         section_block(
-            ":wave: Hey, I'm PostHog. Tag me with `@PostHog` and I'll dig into your product data, poke "
+            ":wave: Hey, I'm Flind. Tag me with `@PostHog` and I'll dig into your product data, poke "
             "around your codebase, or open a pull request to fix something."
         ),
         # One analytics question and one code change, so nobody reads the app as only the
@@ -139,12 +139,12 @@ def build_channel_welcome(integration: WorkspaceIntegration) -> tuple[str, list[
         _bullets("A few things worth knowing", tuple(worth_knowing)),
         _feedback_block(),
         context_block(
-            "I also unfurl PostHog links shared in this channel. `/posthog` lists my commands, and your "
+            "I also unfurl Flind links shared in this channel. `/posthog` lists my commands, and your "
             f"default model and thread follow-ups live in {_home_tab(integration)}."
         ),
         _docs_button_block(),
     ]
-    return "Hey, I'm PostHog. Tag me with @PostHog to get started.", blocks
+    return "Hey, I'm Flind. Tag me with @PostHog to get started.", blocks
 
 
 def _member_welcome_tail(integration: WorkspaceIntegration) -> list[dict[str, Any]]:
@@ -177,7 +177,7 @@ def _member_welcome_tail(integration: WorkspaceIntegration) -> list[dict[str, An
 
 def onboarding_intro_text(slack_user_id: str) -> str:
     return (
-        f":wave: Hey <@{slack_user_id}>, I'm PostHog, your team's AI agent in Slack. I can:\n"
+        f":wave: Hey <@{slack_user_id}>, I'm Flind, your team's AI agent in Slack. I can:\n"
         "• :bar_chart: Answer questions about your product data\n"
         "• :bug: Dig into bugs and errors\n"
         "• :hammer_and_wrench: Open pull requests with fixes\n"
@@ -203,7 +203,7 @@ def build_onboarding_ready(
         section_block(text),
         *_member_welcome_tail(integration),
     ]
-    return "You're all set with PostHog", blocks
+    return "You're all set with Flind", blocks
 
 
 def build_team_join_welcome(integration: WorkspaceIntegration) -> tuple[str, list[dict[str, Any]]]:
@@ -214,13 +214,13 @@ def build_team_join_welcome(integration: WorkspaceIntegration) -> tuple[str, lis
     """
     blocks: list[dict[str, Any]] = [
         section_block(
-            ":wave: Hey, welcome! I'm PostHog, an AI agent your team already uses here. Message me, or tag "
+            ":wave: Hey, welcome! I'm Flind, an AI agent your team already uses here. Message me, or tag "
             "`@PostHog` in any channel, and I'll dig into your product data or open a pull request in a "
             "connected repo."
         ),
         *_member_welcome_tail(integration),
     ]
-    return "Hey, welcome! I'm PostHog. Message me to get started.", blocks
+    return "Hey, welcome! I'm Flind. Message me to get started.", blocks
 
 
 # The install onboarding DM. `onboarding.py` owns what the reader's answers do: the status
@@ -348,7 +348,7 @@ def _channel_blocks(integration: WorkspaceIntegration, slack: SlackIntegration, 
 AI_DATA_PROCESSING_TEXT = (
     "To investigate your product I use external AI providers (Anthropic, OpenAI, Google, Microsoft). This can "
     "involve transferring identifying user data, and is never used to train third-party models. FYI it's not "
-    "HIPAA-compliant yet, and any BAA you have with PostHog won't cover these features."
+    "HIPAA-compliant yet, and a BAA doesn't cover these features."
 )
 
 
@@ -392,7 +392,7 @@ def build_onboarding_dm(
     exception: omitted once approved. Always returns a full message — the DM is posted unconditionally.
     """
     intro = section_block(
-        "👋 *Hi, I'm PostHog - self-driving for your product*\nI'm an AI agent on autopilot: I watch your product "
+        "👋 *Hi, I'm Flind - self-driving for your product*\nI'm an AI agent on autopilot: I watch your product "
         "for problems, investigate them myself, and open pull requests to fix them - so issues get handled before "
         "they reach your backlog."
     )
@@ -421,4 +421,4 @@ def build_onboarding_dm(
             f"accounts live in {_home_tab(integration)}."
         )
     )
-    return "Set up PostHog - self-driving for your product", blocks
+    return "Set up Flind - self-driving for your product", blocks

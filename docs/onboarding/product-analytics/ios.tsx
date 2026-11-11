@@ -41,14 +41,14 @@ export const getIOSInstallSteps = (
                             },
                         ]}
                     />
-                    <Markdown>Or add PostHog to your Podfile:</Markdown>
+                    <Markdown>Or add Flind to your Podfile:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
                                 language: 'ruby',
                                 file: 'Podfile',
                                 code: dedent`
-                                    pod "PostHog", "~> ${podVersion}"
+                                    pod "Flind", "~> ${podVersion}"
                                 `,
                             },
                         ]}
@@ -57,11 +57,11 @@ export const getIOSInstallSteps = (
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Initialize PostHog in your AppDelegate:</Markdown>
+                    <Markdown>Initialize Flind in your AppDelegate:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -69,7 +69,7 @@ export const getIOSInstallSteps = (
                                 file: 'AppDelegate.swift',
                                 code: dedent`
                                     import Foundation
-                                    ${options?.includeExperimentalSpi ? '@_spi(Experimental) ' : ''}import PostHog
+                                    ${options?.includeExperimentalSpi ? '@_spi(Experimental) ' : ''}import Flind
                                     import UIKit
 
                                     class AppDelegate: NSObject, UIApplicationDelegate {
@@ -102,7 +102,7 @@ export const getIOSEventStep = (ctx: OnboardingComponentsContext): StepDefinitio
         content: (
             <>
                 <Markdown>
-                    Once installed, PostHog will automatically start capturing events. You can also manually send events
+                    Once installed, Flind will automatically start capturing events. You can also manually send events
                     to test your integration:
                 </Markdown>
                 <CodeBlock

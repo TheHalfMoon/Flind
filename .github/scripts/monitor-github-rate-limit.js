@@ -1,4 +1,4 @@
-// Polls GitHub's /rate_limit endpoint and emits one PostHog event per resource.
+// Polls GitHub's /rate_limit endpoint and emits one Flind event per resource.
 //
 // The default github-script auth is the workflow's $GITHUB_TOKEN, so the snapshot
 // reflects this repository's per-repo bucket — the slice that GitHub's org-level
@@ -34,7 +34,7 @@ async function captureEvent({ fetchImpl, posthogToken, event, distinctId, proper
 // The workflow runs on every PR open/synchronize and master push, so each sample
 // can be attributed to the event that triggered it. Capturing that context turns
 // the aggregate /rate_limit series into a per-trigger breakdown downstream in
-// PostHog — which event types and PR sizes precede the steepest core burn.
+// Flind — which event types and PR sizes precede the steepest core burn.
 function buildTrigger(context) {
     const payload = context.payload || {}
     const pr = payload.pull_request || null

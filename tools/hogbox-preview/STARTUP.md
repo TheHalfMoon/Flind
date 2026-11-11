@@ -84,7 +84,7 @@ concurrent NBD writes racing chunkfs `WriteAt`'s read-modify-write, which tore
 every docker-running snapshot (hogland #302, now **fixed**). With that gone, bake
 the golden with the stack **up, healthy, and cache-warm** instead:
 
-- restore **resumes a serving PostHog** — no containerd cold-start, no cold
+- restore **resumes a serving Flind** — no containerd cold-start, no cold
   import faults. Page cache is guest RAM, restored via UFFD from a node-local
   memory snapshot (fast), not re-fetched from S3 disk chunks.
 - delta-migrate for a PR runs via `exec` into the already-warm container (~20s)

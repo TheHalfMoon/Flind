@@ -123,7 +123,7 @@ export function PHPSnippet({
     localEvaluation,
     samplePropertyName,
 }: FeatureFlagSnippet): JSX.Element {
-    const clientSuffix = 'PostHog::'
+    const clientSuffix = 'Flind::'
 
     const flagFunction = multivariant ? 'getFeatureFlag' : 'isFeatureEnabled'
 
@@ -518,7 +518,7 @@ export function AndroidSnippet({
     remoteConfiguration,
     encryptedPayload,
 }: FeatureFlagSnippet): JSX.Element {
-    const clientSuffix = 'PostHog.'
+    const clientSuffix = 'Flind.'
 
     if (remoteConfiguration) {
         const warning = `// ${REMOTE_CONFIG_REMINDER}` + (encryptedPayload ? `\n// ${ENCRYPTED_PAYLOAD_REMINDER}` : '')

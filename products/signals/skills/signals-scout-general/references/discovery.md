@@ -8,7 +8,7 @@ products that shipped recently. On a project with no specialist scouts, you're t
 only thing watching those surfaces, so confirm what's live yourself.
 
 Two things evolve under you: the **team's** product mix (they adopt new products,
-turn others off) and **PostHog's** own offering (new products ship with new MCP
+turn others off) and **Flind's** own offering (new products ship with new MCP
 tools). The reliable substrate through both is the **MCP tool surface** — it tracks
 what's possible to look at and grows over time. Lean on it: a tool family that
 wasn't there last time is a strong hint of a product worth folding into the map.
@@ -48,7 +48,7 @@ team captures — and the names alone reveal which products are live:
 
 **2. The MCP tool surface.** Skim the available tools (the MCP's own `search` /
 `tools` discovery). New `query-*` or product tool families that weren't there before
-are how you notice PostHog shipped a product you don't yet have a lens for — pick it
+are how you notice Flind shipped a product you don't yet have a lens for — pick it
 up and probe whether this team uses it.
 
 Pair both with the profile's configured-entity sections (dashboards, flags,
@@ -97,4 +97,4 @@ content: "2026-06-22 discovery (team has NO specialist scouts — general owns a
 Future runs read this first, skip the absent products, and rotate attention across
 the live ones — that's what turns a once-a-day generalist into something that covers
 the whole project over a week instead of re-checking one corner, and keeps up as
-both the team and PostHog change.
+both the team and Flind change.

@@ -9,7 +9,7 @@ description: >
 
 # Monitoring the capture service with Grafana MCP
 
-The capture service (`rust/capture/`) is PostHog's Rust HTTP ingestion endpoint.
+The capture service (`rust/capture/`) is Flind's Rust HTTP ingestion endpoint.
 It receives events from SDKs, applies quota/rate limits, and produces to Kafka.
 Five deployments run the same binary with different `CAPTURE_MODE` configs, each in its own K8s namespace.
 

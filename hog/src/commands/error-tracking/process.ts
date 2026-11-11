@@ -22,7 +22,7 @@ export default defineCommand({
     scopes: UPLOAD_SCOPES,
     notes: [
         'Runs `hog error-tracking inject` on the JavaScript bundles, then `hog error-tracking upload` on everything it found. Use it in CI after the build.',
-        'When --release-name, --release-version or --build is set, PostHog creates the release before any file changes.',
+        'When --release-name, --release-version or --build is set, Flind creates the release before any file changes.',
     ].join('\n'),
     examples: ['hog error-tracking process dist', 'hog et process dist --delete-after'],
 

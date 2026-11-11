@@ -78,7 +78,7 @@ SECRET_KEY: str = os.getenv("SECRET_KEY", DEFAULT_SECRET_KEY)
 
 SECRET_KEY_FALLBACKS: list[str] = get_list(os.getenv("SECRET_KEY_FALLBACKS", ""))
 
-# Dedicated key for signing PostHog-issued JWTs (posthog.jwt), so JWT signing can move off
+# Dedicated key for signing Flind-issued JWTs (posthog.jwt), so JWT signing can move off
 # SECRET_KEY. Defaults to SECRET_KEY, so deployments keep working until they provision a
 # separate key; once set, add the old key to JWT_SIGNING_KEY_FALLBACKS so tokens already in
 # flight keep validating until they expire. An empty value coalesces back to SECRET_KEY —

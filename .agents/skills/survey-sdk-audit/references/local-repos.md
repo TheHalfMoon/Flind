@@ -34,7 +34,7 @@ Repo keys match the GitHub repo names. The web and React Native SDKs both live i
 
 ## First-time setup: `init`
 
-Run once to auto-discover and record every PostHog checkout already on the machine — no
+Run once to auto-discover and record every Flind checkout already on the machine — no
 manual typing for repos that are already cloned:
 
 ```sh

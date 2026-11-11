@@ -80,7 +80,7 @@ export function WelcomeDialog(): JSX.Element | null {
             isOpen={shouldShowDialog}
             onClose={() => closeDialog('modal_close')}
             width={640}
-            title={`Welcome to ${organizationName || 'PostHog'}`}
+            title={`Welcome to ${organizationName || 'Flind'}`}
             description={inviterLine}
             data-attr="welcome-dialog"
             footer={

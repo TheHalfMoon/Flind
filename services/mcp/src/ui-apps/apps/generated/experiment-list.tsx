@@ -11,7 +11,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function ExperimentListApp(): JSX.Element {
     return (
-        <AppWrapper<ExperimentListData> appName="PostHog Experiment List">
+        <AppWrapper<ExperimentListData> appName="Flind Experiment List">
             {({ data, app }) => <ExperimentListContent data={data!} app={app} />}
         </AppWrapper>
     )

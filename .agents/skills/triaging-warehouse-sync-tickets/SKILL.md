@@ -1,11 +1,11 @@
 ---
 name: triaging-warehouse-sync-tickets
 description: >
-  Debug a customer's data warehouse source, schema, or table from a support ticket, using PostHog's own
+  Debug a customer's data warehouse source, schema, or table from a support ticket, using Flind's own
   production data. Use when a ticket says a warehouse table is stale, empty, stuck, duplicated, missing rows,
   or failing to sync, and you need the real state of the sync rather than the customer's description.
   The customer is on a team your MCP session cannot reach, so every answer comes from execute-sql with a
-  connectionId set to a direct-connect source over PostHog's live production databases, which hold all
+  connectionId set to a direct-connect source over Flind's live production databases, which hold all
   customers' data. Covers region detection (US vs EU), the Production Postgres connection (externaldatasource /
   externaldataschema / externaldatajob / datawarehousetable), the Production ClickHouse connection (log_entries,
   app_metrics2), cross-region access through posthog-connection-call, why the external-data-* product tools
@@ -18,12 +18,12 @@ description: >
 A support ticket tells you what a customer sees. This skill tells you what actually happened.
 The output is a diagnosis plus one recommended action for the support agent.
 
-You are a PostHog employee working a ticket for a **different customer's team**. That single fact drives
+You are a Flind employee working a ticket for a **different customer's team**. That single fact drives
 everything below.
 
 ## The one way you read customer data: execute-sql over a direct-connect source
 
-PostHog's own project holds direct-connect warehouse sources pointed at the **live production Postgres
+Flind's own project holds direct-connect warehouse sources pointed at the **live production Postgres
 and ClickHouse databases**. Those databases hold every customer's rows. So:
 
 ```text
@@ -50,7 +50,7 @@ either region.
 `external-data-sources-retrieve`, and every other `external-data-*` tool read the MCP session's own
 project. So does `execute-sql` with no `connectionId`. None of them can see the customer.
 
-They also do not error when you point them at a ticket. They return PostHog's own sources, with real
+They also do not error when you point them at a ticket. They return Flind's own sources, with real
 ids, real statuses, and real error strings. That output is indistinguishable from an answer until
 someone notices the numbers describe the wrong company. This is the main way this task goes wrong.
 
@@ -61,7 +61,7 @@ ticket rather than reading a customer's project:
   This is how you get the `connectionId`.
 - `integrations-list` with `kind=posthog` — the EU hop in step 1.
 - `conversations-tickets-retrieve` and `conversations-tickets-messages-retrieve` — the ticket itself.
-  Support runs on PostHog Conversations, so these read the ticket, not a third-party helpdesk. Tickets
+  Support runs on Flind Conversations, so these read the ticket, not a third-party helpdesk. Tickets
   arrive from the widget, email, Slack, Teams, and GitHub; `channel_source` tells you which.
   `conversations-tickets-retrieve` returns a fixed field set, so `identity_verified` and the ticket's
   resolved `organization_id` are not available to you even though they exist on the record. Step 0
@@ -132,7 +132,7 @@ Before you run any query beyond region identification against a specific team, c
 requester against it:
 
 1. Take the ticket's **reporter identity** from the ticket record, in this order:
-   - `person`, the PostHog person the ticket is linked to. Use `person.properties.email`. Prefer this
+   - `person`, the Flind person the ticket is linked to. Use `person.properties.email`. Prefer this
      over `email_from`, because the link comes from the session that filed the ticket rather than from
      anything the requester typed — but it is a corroborating signal, not an authenticated one.
      `person.properties.email` is ordinary person-property data, and person properties can be set by
@@ -195,9 +195,9 @@ Call `execute-sql` directly with the `connectionId`.
 
 ### EU
 
-You cannot reach EU data from a US project key. Route every call through a PostHog connection.
+You cannot reach EU data from a US project key. Route every call through a Flind connection.
 
-The connection points at **PostHog's own EU project**, because that is where the EU direct-connect
+The connection points at **Flind's own EU project**, because that is where the EU direct-connect
 sources live. It does not point at the customer. You still reach the customer the same way as in the US:
 by running SQL against EU production Postgres and ClickHouse, which are cross-team.
 
@@ -344,7 +344,7 @@ Before you write anything, you should be able to answer all five:
 2. What is the customer's symptom, in sync terms rather than their words?
 3. When did it start, and what was the last healthy run?
 4. What does the evidence say the cause is?
-5. Is the cause on PostHog's side or the customer's side?
+5. Is the cause on Flind's side or the customer's side?
 
 Then produce this, and nothing longer:
 
@@ -369,10 +369,10 @@ Rules for the recommendation:
   - **The customer**, in their own project or on their own source system. This covers rotated
     credentials, firewall and allowlist changes, dropped columns, and CDC prerequisites.
   - **A support agent inside the customer's project**, reached by staff impersonation from Django admin.
-    Use this only when the fix is a PostHog-side control such as cancel, reload, or a sync-config
+    Use this only when the fix is a Flind-side control such as cancel, reload, or a sync-config
     change. Impersonation is audited, and it is blocked for users who set `allow_impersonation` to
     false, so name it as a route rather than assuming it is available.
-  - **Engineering**, when the cause is a PostHog bug.
+  - **Engineering**, when the cause is a Flind bug.
 - **Name the destructive ones as destructive.** `resync` and `delete-data` discard synced rows. Say so in
   the same sentence you recommend them, and never recommend either as a first try for a transient error.
 - **If the evidence does not support one action, say that plainly** and list exactly what is missing and
@@ -380,7 +380,7 @@ Rules for the recommendation:
   whether they renamed the column on 3 August". Vague follow-ups waste a whole ticket round trip.
 - Map the cause to the action using the recovery table in the `diagnosing-failed-warehouse-syncs` skill,
   reading it as reference knowledge rather than as tool calls to make.
-- If the cause is a PostHog bug rather than a customer misconfiguration, say so and name the code path.
+- If the cause is a Flind bug rather than a customer misconfiguration, say so and name the code path.
   That routes the ticket to engineering instead of back to the customer.
 
 ## Pitfalls

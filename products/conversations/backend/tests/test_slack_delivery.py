@@ -125,7 +125,7 @@ class TestSlackDelivery(BaseTest):
             team=self.team,
             scope="conversations_ticket",
             item_id=str(self.ticket.id),
-            content="[PostHog bot] Pull request opened",
+            content="[Flind bot] Pull request opened",
             item_context={
                 "author_type": "AI",
                 "is_private": False,
@@ -174,7 +174,7 @@ class TestSlackDelivery(BaseTest):
             team=self.team,
             scope="conversations_ticket",
             item_id=str(self.ticket.id),
-            content="[PostHog bot] Pull request opened",
+            content="[Flind bot] Pull request opened",
             item_context={"author_type": "AI", "is_private": False, "internal_channel_only": True},
         )
         part = self._part()

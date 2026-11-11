@@ -11,7 +11,7 @@ export const getNodeJSInstallSteps = (ctx: OnboardingComponentsContext): StepDef
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog Node.js library using your package manager:</Markdown>
+                    <Markdown>Install the Flind Node.js library using your package manager:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -48,20 +48,20 @@ export const getNodeJSInstallSteps = (ctx: OnboardingComponentsContext): StepDef
             ),
         },
         {
-            title: 'Initialize PostHog',
+            title: 'Initialize Flind',
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Initialize the PostHog client with your project token:</Markdown>
+                    <Markdown>Initialize the Flind client with your project token:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
                                 language: 'javascript',
                                 file: 'Node.js',
                                 code: dedent`
-                                import { PostHog } from 'posthog-node'
+                                import { Flind } from 'posthog-node'
 
-                                const client = new PostHog(
+                                const client = new Flind(
                                     '<ph_project_token>',
                                     {
                                         host: '<ph_client_api_host>'

@@ -289,7 +289,7 @@ describe('nodeDetailSceneLogic', () => {
         }
     )
 
-    it('keeps the data quality tab for an unsupported PostHog table', async () => {
+    it('keeps the data quality tab for an unsupported Flind table', async () => {
         node = buildNode('table', { name: 'unsupported_table', origin: 'posthog' })
         useMocks({
             get: {
@@ -310,7 +310,7 @@ describe('nodeDetailSceneLogic', () => {
         expect(screen.getByText('Data quality is not available for this table.')).toBeTruthy()
     })
 
-    it('keeps Lineage available while the PostHog subject request fails', async () => {
+    it('keeps Lineage available while the Flind subject request fails', async () => {
         node = buildNode('table', { name: 'events', origin: 'posthog' })
         useMocks({
             get: {
@@ -331,7 +331,7 @@ describe('nodeDetailSceneLogic', () => {
         expect(screen.getByText("Couldn't load data quality for this table. Try again.")).toBeTruthy()
     })
 
-    it('records PostHog subject access denials', async () => {
+    it('records Flind subject access denials', async () => {
         node = buildNode('table', { name: 'events', origin: 'posthog' })
         useMocks({
             get: {

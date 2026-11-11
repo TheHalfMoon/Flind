@@ -883,7 +883,7 @@ class TestProfessionalAccountListing:
                         [
                             {
                                 "id": "page-1",
-                                "name": "PostHog",
+                                "name": "Flind",
                                 "instagram_business_account": {"id": ACCOUNT_ID, "username": "posthog"},
                             },
                             {"id": "page-2", "name": "A page with no Instagram account"},
@@ -894,7 +894,7 @@ class TestProfessionalAccountListing:
         ) as network:
             accounts = list_professional_accounts("tok", "v23.0", LOGGER)
 
-        assert accounts == [{"id": ACCOUNT_ID, "username": "posthog", "name": None, "page_name": "PostHog"}]
+        assert accounts == [{"id": ACCOUNT_ID, "username": "posthog", "name": None, "page_name": "Flind"}]
         assert network.requests_log[0].path == "/v23.0/me/accounts"
 
     def test_every_page_of_the_listing_is_walked(self) -> None:

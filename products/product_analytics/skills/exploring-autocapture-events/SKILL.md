@@ -54,7 +54,7 @@ Standard event properties (`$browser`, `$os`, `$device_type`, etc.) are also pre
 Run a count query before doing anything else.
 If the count is zero, autocapture may be disabled. There are two ways this happens:
 
-- **Project settings** — the team can set `autocapture_opt_out` in PostHog project settings
+- **Project settings** — the team can set `autocapture_opt_out` in Flind project settings
 - **SDK config** — the posthog-js `init()` call can pass `autocapture: false`
 
 Tell the user if no data is found so they can check both settings.

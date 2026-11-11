@@ -60,7 +60,7 @@ function ScoutsSubsectionLink(): JSX.Element {
 
 /**
  * Full-page Agents tab body for cloud Inbox – a high-fidelity port of the
- * PostHog Desktop Agents view. Composes Connections, the agent roster,
+ * Flind Desktop Agents view. Composes Connections, the agent roster,
  * Slack, and MCP servers. Adding a source opens the catalog modal from the roster.
  */
 export function AgentsTab(): JSX.Element {
@@ -100,7 +100,7 @@ export function AgentsTab(): JSX.Element {
                 {featureFlags[FEATURE_FLAGS.INBOX_SLACK_NOTIFICATIONS] && (
                     <Subsection
                         title="Slack"
-                        description="Post reports to channels and ping suggested reviewers. Invite PostHog with /invite @PostHog in each channel you use."
+                        description="Post reports to channels and ping suggested reviewers. Invite Flind with /invite @PostHog in each channel you use."
                     >
                         <SlackNotificationsSection />
                     </Subsection>

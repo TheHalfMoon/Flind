@@ -72,7 +72,7 @@ class CDCSlotNotConfiguredError(Exception):
 
 
 class CDCReservedColumnError(Exception):
-    """A source table carries a column whose name PostHog stamps onto change rows.
+    """A source table carries a column whose name Flind stamps onto change rows.
 
     Non-retryable: the collision is a property of the customer's table, so replaying re-fails.
 
@@ -126,15 +126,15 @@ _CATEGORY_DEFAULTS: dict[CDCErrorCategory, tuple[str, bool]] = {
         False,
     ),
     CDCErrorCategory.CONNECTION_FAILED: (
-        "Could not connect to the source database. PostHog will keep retrying — if this persists, "
+        "Could not connect to the source database. Flind will keep retrying — if this persists, "
         "check that the database is reachable and accepting connections.",
         True,
     ),
     CDCErrorCategory.HOST_UNREACHABLE: (
-        "PostHog couldn't open a network connection to the source database. Check that the host "
+        "Flind couldn't open a network connection to the source database. Check that the host "
         "and port are correct, and that the database accepts connections from the public internet "
-        "with PostHog's IP addresses allowed through. If all of that looks right, contact support: "
-        "some hosts resolve to an address PostHog can't reach, which is ours to fix. Re-enable "
+        "with Flind's IP addresses allowed through. If all of that looks right, contact support: "
+        "some hosts resolve to an address Flind can't reach, which is ours to fix. Re-enable "
         "change data capture once it's reachable.",
         False,
     ),
@@ -150,9 +150,9 @@ _CATEGORY_DEFAULTS: dict[CDCErrorCategory, tuple[str, bool]] = {
         False,
     ),
     CDCErrorCategory.SSH_TUNNEL_FAILED: (
-        "Could not connect to your SSH tunnel — PostHog couldn't open a session to the SSH gateway. "
+        "Could not connect to your SSH tunnel — Flind couldn't open a session to the SSH gateway. "
         "Check that the SSH host and port point to a reachable SSH server (not the database port), "
-        "that the bastion is running, and that PostHog's IP addresses are allowed through its "
+        "that the bastion is running, and that Flind's IP addresses are allowed through its "
         "firewall, then re-enable change data capture.",
         False,
     ),
@@ -168,12 +168,12 @@ _CATEGORY_DEFAULTS: dict[CDCErrorCategory, tuple[str, bool]] = {
     ),
     CDCErrorCategory.PUBLICATION_MISSING: (
         "The publication used for change data capture no longer exists on the source database. "
-        "Recreate it (self-managed), or use Repair CDC (PostHog-managed) to recreate it and re-sync.",
+        "Recreate it (self-managed), or use Repair CDC (Flind-managed) to recreate it and re-sync.",
         False,
     ),
     CDCErrorCategory.SLOT_IN_USE: (
         "Another connection held your replication slot, so this run couldn't read changes. If this keeps "
-        "happening, check that no other tool or PostHog source reads from that slot.",
+        "happening, check that no other tool or Flind source reads from that slot.",
         True,
     ),
     CDCErrorCategory.PERMISSION_DENIED: (
@@ -185,7 +185,7 @@ _CATEGORY_DEFAULTS: dict[CDCErrorCategory, tuple[str, bool]] = {
         False,
     ),
     CDCErrorCategory.WAL_DECODE_ERROR: (
-        "PostHog could not decode the change stream from the source database. This usually points to "
+        "Flind could not decode the change stream from the source database. This usually points to "
         "an unsupported column type or replication setting. Contact support if it persists.",
         False,
     ),
@@ -195,7 +195,7 @@ _CATEGORY_DEFAULTS: dict[CDCErrorCategory, tuple[str, bool]] = {
         False,
     ),
     CDCErrorCategory.RESERVED_COLUMN_CONFLICT: (
-        "A source table has a column that loads under a name PostHog writes for change data capture, "
+        "A source table has a column that loads under a name Flind writes for change data capture, "
         "such as _ph_cdc_seq or _ph_valid_from, or valid_from on an older history table that ends in _cdc. "
         "Rename the column on your database, leave it out of the synced columns, or choose another sync "
         "method for that table.",
@@ -207,12 +207,12 @@ _CATEGORY_DEFAULTS: dict[CDCErrorCategory, tuple[str, bool]] = {
         False,
     ),
     CDCErrorCategory.MASKING_KEY_UNAVAILABLE: (
-        "A table masks columns, but this PostHog instance has no secret key to hash them with. "
+        "A table masks columns, but this Flind instance has no secret key to hash them with. "
         "Set WAREHOUSE_COLUMN_MASKING_KEY to a secret value, then re-enable change data capture.",
         False,
     ),
     CDCErrorCategory.UNKNOWN: (
-        "Change data capture hit an unexpected error. PostHog will retry automatically — if it "
+        "Change data capture hit an unexpected error. Flind will retry automatically — if it "
         "persists, check the source's sync logs or contact support.",
         True,
     ),

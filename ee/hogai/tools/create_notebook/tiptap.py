@@ -112,7 +112,7 @@ def tiptap_doc_to_text(doc: dict | None) -> str:
     Convert a tiptap document dict to a simplified markdown-like text.
 
     Handles standard tiptap nodes (heading, paragraph, bulletList, orderedList,
-    codeBlock) as well as PostHog-specific nodes (ph-query, ph-recording).
+    codeBlock) as well as Flind-specific nodes (ph-query, ph-recording).
     """
     if not doc or not isinstance(doc, dict):
         return ""

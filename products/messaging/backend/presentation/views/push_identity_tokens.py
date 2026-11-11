@@ -10,11 +10,11 @@ the mobile app and world-readable, so anyone can present it and claim any `disti
 
 Following the pattern proven by Braze's "SDK Authentication", the customer's backend — the only party
 that actually authenticated the end user — mints a short-lived token asserting the user's
-`distinct_id`, signed with a private key only that backend holds. PostHog re-verifies the signature at
+`distinct_id`, signed with a private key only that backend holds. Flind re-verifies the signature at
 registration time. An attacker holding only the public project token cannot forge it.
 
 The token is signed ES256. The customer holds an EC (P-256) private key and registers only the public
-key on the push channel (`config["push_identity_public_keys"]`), so PostHog never stores a key that
+key on the push channel (`config["push_identity_public_keys"]`), so Flind never stores a key that
 can mint a token. This matches how Braze and OneSignal secure device registration, and it works for
 projects that only ever created scoped API keys, which are hashed at rest and cannot sign.
 
@@ -42,7 +42,7 @@ def sign_push_identity_token_es256(
     app_id: str,
     ttl: timedelta = DEFAULT_TTL,
 ) -> str:
-    """Reference ES256 signer: what the customer's backend runs with its EC private key. PostHog only
+    """Reference ES256 signer: what the customer's backend runs with its EC private key. Flind only
     ever verifies (against the registered public key); this lives here so the round trip stays testable.
     """
     return _claims(distinct_id, app_id, ttl, private_key_pem, _ASYMMETRIC_ALGORITHM)

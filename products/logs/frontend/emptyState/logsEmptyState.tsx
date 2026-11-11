@@ -23,7 +23,7 @@ export const logsEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Search every log from your stack in one place',
-                lead: 'Send logs from any OpenTelemetry-compatible client over OTLP. No PostHog-specific packages needed. Filter by severity and attributes, query with SQL, and set alerts on the lines that matter.',
+                lead: 'Send logs from any OpenTelemetry-compatible client over OTLP. No Flind-specific packages needed. Filter by severity and attributes, query with SQL, and set alerts on the lines that matter.',
             },
         },
         docsUrl: 'https://posthog.com/docs/logs',

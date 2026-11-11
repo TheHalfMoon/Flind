@@ -16,7 +16,7 @@ function getSurveysIOSSteps(ctx: OnboardingComponentsContext): StepDefinition[] 
             content: (
                 <>
                     <Markdown>
-                        To enable surveys in your iOS app, enable surveys in your PostHog configuration:
+                        To enable surveys in your iOS app, enable surveys in your Flind configuration:
                     </Markdown>
                     <CodeBlock
                         blocks={[

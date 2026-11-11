@@ -1,5 +1,5 @@
 // Generate services/mcp/.../app-url-manifest.json — the canonical route table the MCP `generate-app-url`
-// tool resolves entity links from, so agents never hand-build (and mis-slug) PostHog URLs.
+// tool resolves entity links from, so agents never hand-build (and mis-slug) Flind URLs.
 //
 // The complete source of truth is the merged `urls` object the frontend ships:
 // `{ ...productUrls, <~80 builders defined directly in scenes/urls.ts> }`. We can't import it in a
@@ -66,7 +66,7 @@ const EXCLUDED_HELPERS = new Set(['absolute', 'default', 'project', 'currentProj
 const EXCLUDED_BUILDERS = new Set(['tracingOperation', 'dashboardTemplates', 'warehouseDestinationConnect'])
 // Dropping these builders' fixed query strings opens a different destination.
 const BUILDERS_WITH_REQUIRED_QUERY = new Set(['aiObservabilityDatasets'])
-// Flag-gated surfaces for PostHog staff only: a link an agent hands a customer would land on a scene that refuses them.
+// Flag-gated surfaces for Flind staff only: a link an agent hands a customer would land on a scene that refuses them.
 const INTERNAL_BUILDERS = new Set(['decisionPlayground', 'library', 'todayReport'])
 
 const sentinel = (name) => `:${name}`

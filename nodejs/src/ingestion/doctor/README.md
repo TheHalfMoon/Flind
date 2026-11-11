@@ -1,6 +1,6 @@
 # Pipeline Doctor
 
-Convention-checking agents for the PostHog ingestion pipeline.
+Convention-checking agents for the Flind ingestion pipeline.
 The agents use the doc-test chapters in `framework/docs/` as their source of truth
 and review code for adherence to framework patterns.
 

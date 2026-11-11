@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { ChatMarker, ChatMarkerContent, ChatMarkerIcon, Spinner, cn } from '@flind/quill-primitives'
 
 /**
- * The row chrome every quill thread row shares, matching PostHog Desktop's tool rows. Quill's interactive row
+ * The row chrome every quill thread row shares, matching Flind Desktop's tool rows. Quill's interactive row
  * bleeds its hit area past the text column, fills on hover and draws an outset focus ring; a transcript is
  * mostly these rows, so they stay flush with the column and at half opacity next to the prose.
  */

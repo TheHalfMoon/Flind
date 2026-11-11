@@ -15,7 +15,7 @@ description: >
 
 # Formatting insight axes
 
-PostHog renders insights with a built-in axis formatter. Use it instead of
+Flind renders insights with a built-in axis formatter. Use it instead of
 contorting the query or a literal prefix/postfix to fake units.
 
 The two insight kinds configure it in different places:
@@ -65,7 +65,7 @@ Companion fields on `trendsFilter`:
 
 `aggregationAxisFormat: "currency"` renders with the **project's base currency**
 (set in project settings, defaults to USD). Use it when the underlying values
-are in that same currency — e.g. revenue events that PostHog auto-converts to
+are in that same currency — e.g. revenue events that Flind auto-converts to
 the project's base currency.
 
 If the values are pinned to a specific currency regardless of project (e.g.
@@ -86,7 +86,7 @@ Only confirm with the user when they have **explicitly** named a fixed unit
 they want pinned ("show this in minutes", "graph the average in hours"):
 
 > "I can pin the y-axis to minutes by dividing the series by 60, or use
-> PostHog's `duration` formatter which auto-picks seconds / minutes / hours
+> Flind's `duration` formatter which auto-picks seconds / minutes / hours
 > per value — `90s` renders as `1m 30s` and `5400s` as `1h 30m`. Which would
 > you prefer?"
 

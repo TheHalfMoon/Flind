@@ -131,7 +131,7 @@ export const newSessionSceneLogic = kea<newSessionSceneLogicType>([
         ],
     }),
     listeners(({ actions, values }) => ({
-        // Like PostHog Desktop, a pick moves to that space's own New session.
+        // Like Flind Desktop, a pick moves to that space's own New session.
         pickSpace: ({ spaceId }) => {
             router.actions.push(urls.taskSpaceNewSession(spaceId))
         },

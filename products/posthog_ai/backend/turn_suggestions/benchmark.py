@@ -1,4 +1,4 @@
-"""Runs labeled PostHog AI turns through live Jev and scores the policy at a range of show thresholds.
+"""Runs labeled Flind AI turns through live Jev and scores the policy at a range of show thresholds.
 
 The cases live in ``benchmark_cases.yaml``. Each case lists the offers that would be a good outcome,
 so one Jev run per case scores every threshold: the policy is re-applied to the same judgment

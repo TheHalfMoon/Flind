@@ -572,9 +572,9 @@ def _build_reviewers_content(
     them as serializable ReviewerContent dicts, plus the diagnostics explaining an empty list.
 
     The returned list is stored as a ``suggested_reviewers`` artefact keyed only by
-    github_login — no PostHog user IDs are persisted. This is intentional:
+    github_login — no Flind user IDs are persisted. This is intentional:
 
-    - PostHog user enrichment happens at read time (in the artefact serializer via
+    - Flind user enrichment happens at read time (in the artefact serializer via
       ``enrich_reviewer_dicts_with_org_members``) so it stays fresh when users
       connect/disconnect their GitHub account.
     - The list view resolves ``is_suggested_reviewer`` by jsonb containment on this artefact's

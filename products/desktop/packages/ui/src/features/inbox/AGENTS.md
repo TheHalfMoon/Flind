@@ -1,10 +1,10 @@
-# PostHog Self-driving Inbox
+# Flind Self-driving Inbox
 
-The Inbox is the PostHog surface for **Self-driving**: agents that watch product signals, summarize what matters, and can ship pull requests. This document is an architecture map for agents working in this area. It explains where responsibilities live, which backend contracts are relied on, and what not to accidentally rebuild.
+The Inbox is the Flind surface for **Self-driving**: agents that watch product signals, summarize what matters, and can ship pull requests. This document is an architecture map for agents working in this area. It explains where responsibilities live, which backend contracts are relied on, and what not to accidentally rebuild.
 
 ## Product Model
 
-The renderer still talks to backend endpoints and TypeScript types with the legacy `signals` naming. User-facing copy should say **Self-driving**, **Responder**, **report**, **run**, or **finding** depending on context. Do not rename backend paths or shared API fields unless the PostHog Cloud backend has changed too.
+The renderer still talks to backend endpoints and TypeScript types with the legacy `signals` naming. User-facing copy should say **Self-driving**, **Responder**, **report**, **run**, or **finding** depending on context. Do not rename backend paths or shared API fields unless the Flind Cloud backend has changed too.
 
 The main objects are:
 
@@ -81,7 +81,7 @@ Keep the renderer thin:
 - Components render reports, route between tabs/details, and call hooks.
 - Hooks wrap existing API clients and React Query. They should not orchestrate multi-step business workflows.
 - Zustand stores hold UI preferences only: reviewer scope, filters, and selected report IDs used by task creation flows.
-- Business decisions, report generation, task orchestration, and source configuration behavior belong in the PostHog Cloud backend or existing main-process services.
+- Business decisions, report generation, task orchestration, and source configuration behavior belong in the Flind Cloud backend or existing main-process services.
 
 Do not add frontend-only controls that imply a backend capability. If the UI exposes a new action, first identify the backend endpoint or task flow that makes it real.
 
@@ -183,7 +183,7 @@ Report rows expose the same primary actions through a right-click menu. Reviewer
 
 ## Backend Contracts
 
-The Inbox reads from PostHog Cloud's Self-driving backend, currently implemented in the legacy `products/signals/backend` Django app:
+The Inbox reads from Flind Cloud's Self-driving backend, currently implemented in the legacy `products/signals/backend` Django app:
 
 - `GET /api/projects/{teamId}/signals/reports/`: paginated report list. Supports filters such as status, ordering, source product, suggested reviewers, and priority.
 - `GET /api/projects/{teamId}/signals/reports/{id}/`: single report detail.
@@ -193,7 +193,7 @@ The Inbox reads from PostHog Cloud's Self-driving backend, currently implemented
 
 The shared renderer type for the report is `SignalReport` in `packages/agent/packages/agent-contracts/src/domain-types.ts`. If the backend serializer changes, update that type and the client methods in `packages/api-client/src/posthog-client.ts` together.
 
-Report charts: `SignalReport.charts` carries scout-authored chart definitions (`chart_id`, `title`, `query`, `caption?`, `size?`). The desktop app renders them natively in the detail views: `packages/core/src/inbox/reportCharts.ts` classifies the stored query (runnable HogQL/trends vs saved-insight vs link-out fallback), `PostHogAPIClient.runQuery` executes runnable sources against `/api/projects/{teamId}/query/`, and `components/detail/ReportChartCard.tsx` draws the result with `@flind/quill-charts`. Query kinds the app can't draw degrade to a card that links out to PostHog. Summary prose references charts as `[label](chart:<chart_id>)` links; `SignalReportSummaryMarkdown` turns those into in-page jumps to the chart card (plain text on list rows).
+Report charts: `SignalReport.charts` carries scout-authored chart definitions (`chart_id`, `title`, `query`, `caption?`, `size?`). The desktop app renders them natively in the detail views: `packages/core/src/inbox/reportCharts.ts` classifies the stored query (runnable HogQL/trends vs saved-insight vs link-out fallback), `PostHogAPIClient.runQuery` executes runnable sources against `/api/projects/{teamId}/query/`, and `components/detail/ReportChartCard.tsx` draws the result with `@flind/quill-charts`. Query kinds the app can't draw degrade to a card that links out to Flind. Summary prose references charts as `[label](chart:<chart_id>)` links; `SignalReportSummaryMarkdown` turns those into in-page jumps to the chart card (plain text on list rows).
 
 PR refunds: `POST /api/projects/{teamId}/signals/reports/{id}/refund/` refunds a billed PR and archives the report (`PostHogAPIClient.refundSignalReport`). The action is gated behind the `signals-pr-refunds` flag (`SIGNALS_PR_REFUNDS_FLAG`) and `@flind/core/inbox/refundEligibility`'s `computeRefundEligibility`, which reads `implementation_pr_url`, `refund` (one `SignalReportRefund` per report, ever), `billing_exempt_reason`, and the backend-owned `refund_ineligibility_reason`. The server enforces the same rules, so the gate is display-only; `ReportDetailActions` shows no refund action when the report is ineligible.
 
@@ -241,7 +241,7 @@ Components come from `@flind/quill`; layout is `div`s with Tailwind. Radix is ba
 - The Inbox title is a breadcrumb row, not a page header. `InboxView` pushes it into the header store and `ContentHeader` draws it, the same tight row task detail and the loop scenes use. Do not add a second in-page title above the list. Beside the rail's list the pane draws no row at all, because an empty pane and triage name nothing the column's own title does not already say. The row comes back for the report a row opens, which pushes its own crumb and actions.
 - Responder configuration stays in Settings (`/settings/agents`). The Inbox header carries a "Configure agents" link toward it, but do not embed configuration UI in the Inbox itself.
 - Scout (`signals_scout`) is a real Cloud source product. Keep it covered wherever source products surface: `INBOX_SOURCE_OPTIONS`, `SOURCE_PRODUCT_META`, and the scout-name display in `SignalCard`.
-- Scout management UI (fleet configuration, run history) lives in `features/scouts/` and is backed by the PostHog Cloud scout endpoints (`/api/projects/{teamId}/signals/scout/`). Do not add scout controls that have no backing endpoint there.
+- Scout management UI (fleet configuration, run history) lives in `features/scouts/` and is backed by the Flind Cloud scout endpoints (`/api/projects/{teamId}/signals/scout/`). Do not add scout controls that have no backing endpoint there.
 - Do not put preview shims or mock report data in `apps/code/index.html`; the app shell should stay minimal.
 - Do not call `electronTRPC` directly from Inbox code. Use the existing API client, React Query hooks, or tRPC client wrappers.
 - Do not preserve compatibility with unshipped intermediate UI shapes on this branch. Replace them cleanly.

@@ -26,7 +26,7 @@ import { ReplayBlockCard } from "./ReplayBlockCard";
  */
 
 const CHART_ERROR_MESSAGE =
-  "Couldn't run the query behind this chart. Open it in PostHog to investigate.";
+  "Couldn't run the query behind this chart. Open it in Flind to investigate.";
 
 function useOpenOptions(): { cloudUrl: string; projectId: number } | null {
   const projectId = useAuthStateValue((state) => state.currentProjectId);

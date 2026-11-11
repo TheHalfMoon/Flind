@@ -2,7 +2,7 @@
 name: feature-usage-feed
 description: >
   Set up an LLM-judge evaluation that extracts canonical use cases for a
-  PostHog feature at scale and streams the results to a Slack channel as a
+  Flind feature at scale and streams the results to a Slack channel as a
   live feed. Use when someone wants to understand how users are actually
   using a specific AI/LLM-powered feature in production — what they're
   investigating, what questions they're trying to answer, and what
@@ -14,7 +14,7 @@ description: >
 
 # Building a feature usage feed via LLM evals
 
-Some PostHog features (group session summaries, single session summaries, replay AI search, error tracking AI debug, etc.) generate hundreds or thousands of LLM traces per week. Reading them by hand is not feasible. This skill covers the end-to-end pattern for turning that trace volume into a live Slack feed of canonical use cases — what users are actually doing with the feature.
+Some Flind features (group session summaries, single session summaries, replay AI search, error tracking AI debug, etc.) generate hundreds or thousands of LLM traces per week. Reading them by hand is not feasible. This skill covers the end-to-end pattern for turning that trace volume into a live Slack feed of canonical use cases — what users are actually doing with the feature.
 
 The workflow is **mixed, and leans UI**. Trace inspection and filter discovery (steps 1-2) are MCP-driven. Eval creation, dry-running, and enabling (steps 4-5) are MCP-driven _when_ `posthog:llma-evaluation-*` tools are exposed to your agent — but they often aren't, in which case fall back to the UI (Data pipeline → destinations for the alert is always UI). Each step flags its UI fallback. Expect to finish in the UI even when you start from chat.
 
@@ -33,9 +33,9 @@ This skill supports two different ways to scope an eval to "the feature you care
 
 **Pattern A — Feature-native trace_id prefix.** For standalone features that emit their own `$ai_trace_id` pattern (e.g. `session-summary:group:`, `replay-search:`, error-tracking-specific flows). Filter on the prefix.
 
-**Pattern B — PostHog AI agent mode.** For features the user interacts with _via_ PostHog AI in a specific agent mode (error tracking, product analytics, session replay, SQL, flags, surveys, AI observability). Filter on `ai_product = 'posthog_ai' AND agent_mode = '<mode>'`. This requires PR #55160 (merged April 2026) to be deployed, which threads `agent_mode` and `supermode` onto every `$ai_generation` emitted by the chat agent loop. A useful ergonomic side-effect: `agent_mode IS NOT NULL` is a reliable "user-facing chat turn" filter — batch jobs and tool-internal LLM calls go through different code paths and have `agent_mode=null`, so they're excluded for free.
+**Pattern B — Flind AI agent mode.** For features the user interacts with _via_ Flind AI in a specific agent mode (error tracking, product analytics, session replay, SQL, flags, surveys, AI observability). Filter on `ai_product = 'posthog_ai' AND agent_mode = '<mode>'`. This requires PR #55160 (merged April 2026) to be deployed, which threads `agent_mode` and `supermode` onto every `$ai_generation` emitted by the chat agent loop. A useful ergonomic side-effect: `agent_mode IS NOT NULL` is a reliable "user-facing chat turn" filter — batch jobs and tool-internal LLM calls go through different code paths and have `agent_mode=null`, so they're excluded for free.
 
-If the user asks "what are users trying to DO in [ET / replay / SQL / flags / surveys] mode of PostHog AI", that's Pattern B. If they ask "what use cases does [standalone feature] cover", that's Pattern A. Pick the pattern first — the prompt, filter, and Slack channel naming all follow from it.
+If the user asks "what are users trying to DO in [ET / replay / SQL / flags / surveys] mode of Flind AI", that's Pattern B. If they ask "what use cases does [standalone feature] cover", that's Pattern A. Pick the pattern first — the prompt, filter, and Slack channel naming all follow from it.
 
 ## Prerequisites
 
@@ -86,7 +86,7 @@ LIMIT 25
 
 Note: `coalesce(..., '')` is load-bearing — `splitByChar` on a nullable column errors out in HogQL otherwise.
 
-**Pattern B (PostHog AI agent mode):** verify coverage and volume for the mode you're targeting.
+**Pattern B (Flind AI agent mode):** verify coverage and volume for the mode you're targeting.
 
 ```sql
 SELECT
@@ -188,9 +188,9 @@ Rules:
 | --------------------------------- | ------------------------------------------ |
 | Session summary (group / single)  | `A user ran a summary on`                  |
 | Replay AI search                  | `A user searched replays for`              |
-| PostHog AI in error tracking mode | `A user asked PostHog AI about`            |
-| PostHog AI in session replay mode | `A user asked PostHog AI about`            |
-| PostHog AI in SQL mode            | `A user asked PostHog AI to write SQL for` |
+| Flind AI in error tracking mode | `A user asked PostHog AI about`            |
+| Flind AI in session replay mode | `A user asked PostHog AI about`            |
+| Flind AI in SQL mode            | `A user asked PostHog AI to write SQL for` |
 
 Note: `supermode='plan'` is a sub-filter that layers _on top of_ an `agent_mode` row — it's not its own row. If you want plan-mode-only, filter `agent_mode='<mode>' AND supermode='plan'` and pick an opener like `"A user asked PostHog AI to plan"`.
 
@@ -289,7 +289,7 @@ The eval will now run on every new matching `$ai_generation` event.
 
 Workflow setup is not MCP-accessible for writes (`posthog:workflows-list` / `posthog:workflows-get` are read-only). The steps below are a UI walkthrough.
 
-**Prereq:** before you start, invite the PostHog Slack bot to your target channel (`/invite @PostHog` in the Slack channel). Without this, the Slack dispatch step will fail with an opaque permission error at send time, not at save time — easy to miss.
+**Prereq:** before you start, invite the Flind Slack bot to your target channel (`/invite @PostHog` in the Slack channel). Without this, the Slack dispatch step will fail with an opaque permission error at send time, not at save time — easy to miss.
 
 #### 6.1 Create the workflow
 
@@ -363,7 +363,7 @@ If the only values are `True`/`False`/`None` and `True` dominates, the UI `equal
 
 Pick an `<emoji>` that matches the feature's shape: 📊 product analytics, 🐛 error tracking, 🎬 session replay, 🔎 search/AI search, 🧪 experiments, 🚩 flags, 📋 surveys, 🧠 generic AI.
 
-The `{event.properties.X}` and `{person.X}` placeholders are valid PostHog template syntax and resolve at send time.
+The `{event.properties.X}` and `{person.X}` placeholders are valid Flind template syntax and resolve at send time.
 
 #### 6.4 Test before enabling
 
@@ -398,11 +398,11 @@ The PRs that made this work (linked here as worked examples of the session_id th
 - PostHog/posthog#54952 — threads `trigger_session_id` through to `$ai_generation` events on the session summary backend
 - (Followup PR — threads `$session_id` onto `$ai_evaluation` events specifically)
 
-## Worked example B (Pattern B): PostHog AI in error tracking mode
+## Worked example B (Pattern B): Flind AI in error tracking mode
 
-Pattern: an `agent_mode = 'error_tracking'` scoped feed streaming to a `#<team>-usage-feed` channel, answering "what are users actually trying to DO when they chat with PostHog AI in error tracking mode?" Mode sizing varies by an order of magnitude or more across agent modes — spot-check volume per §Step 1 before wiring, because a high-volume mode can flood a channel. Opener: `"A user asked PostHog AI about"`.
+Pattern: an `agent_mode = 'error_tracking'` scoped feed streaming to a `#<team>-usage-feed` channel, answering "what are users actually trying to DO when they chat with Flind AI in error tracking mode?" Mode sizing varies by an order of magnitude or more across agent modes — spot-check volume per §Step 1 before wiring, because a high-volume mode can flood a channel. Opener: `"A user asked PostHog AI about"`.
 
-Enabling PR: PostHog/posthog#55160 — threads `agent_mode` and `supermode` onto every `$ai_generation` emitted by the chat agent loop. Wiring lives in `ee/hogai/core/agent_modes/executables.py` (`AgentExecutable._get_model`) and passes the dict through the existing `posthog_properties` field on `MaxChatMixin` in `ee/hogai/llm.py`. Before this PR, scoping a PostHog AI eval to a specific mode wasn't possible — you'd end up evaluating every PostHog AI generation, which produced noisy feeds with low single-digit PASS rates.
+Enabling PR: PostHog/posthog#55160 — threads `agent_mode` and `supermode` onto every `$ai_generation` emitted by the chat agent loop. Wiring lives in `ee/hogai/core/agent_modes/executables.py` (`AgentExecutable._get_model`) and passes the dict through the existing `posthog_properties` field on `MaxChatMixin` in `ee/hogai/llm.py`. Before this PR, scoping a Flind AI eval to a specific mode wasn't possible — you'd end up evaluating every Flind AI generation, which produced noisy feeds with low single-digit PASS rates.
 
 Key observation from setup: the `agent_mode` tag reflects the mode at turn-time, but chat state retains mode selection even when users drift off-topic mid-conversation. Spot-check: a random `agent_mode=error_tracking` sample included a conversation that ended up being about session replay pricing. The eval prompt's classification must be permissive about topic drift — PASS only when the turn is recognizably in-scope for the mode, FAIL when the conversation has drifted to something else entirely.
 

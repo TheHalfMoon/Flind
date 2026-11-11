@@ -15,7 +15,7 @@ import { Tooltip } from '@flind/lemon-ui'
 import { themeLogic } from '~/layout/navigation-3000/themeLogic'
 
 // Shiki bundled themes that read closest to GitHub's diff view; Pierre swaps between them based on
-// `themeType`, which we drive off PostHog's own light/dark state.
+// `themeType`, which we drive off Flind's own light/dark state.
 const DIFF_THEME = { light: 'github-light', dark: 'github-dark' } as const
 
 // Pierre's own file header uses a prose-font filename and an unlabelled glyph. We render our own header
@@ -201,7 +201,7 @@ function FileDiffHeader({ file }: { file: FileDiffMetadata }): JSX.Element {
  * Read-only, GitHub-style rendering of a unified diff string (the branch-vs-default-branch patch the
  * backend returns for a `commit` artefact). Each file in the patch is rendered with `@pierre/diffs`,
  * which gives Shiki syntax highlighting and hunk expansion out of the box; we swap its file header for
- * our own (`renderCustomHeader`) so it reads in PostHog's visual language. Inspection only — no
+ * our own (`renderCustomHeader`) so it reads in Flind's visual language. Inspection only — no
  * commenting. The worker pool is disabled so highlighting runs without a separately-served worker
  * bundle; diffs are size-bounded by the backend (see `truncated`), so main-thread is fine.
  */
@@ -293,7 +293,7 @@ export function PullRequestDiffView({
     return (
         <div className="flex flex-col gap-3">
             {files.map((file) => (
-                // Card chrome (bordered, rounded surface) so the diff sits in PostHog's visual language;
+                // Card chrome (bordered, rounded surface) so the diff sits in Flind's visual language;
                 // @pierre/diffs renders the syntax-highlighted body inside, with a skeleton until it does.
                 <DiffFileCard key={`${file.name}-${file.cacheKey ?? file.newObjectId ?? ''}`} file={file}>
                     <FileDiff<DiffAnnotationData>

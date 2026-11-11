@@ -1,5 +1,5 @@
 // Self-contained number/colour/currency formatting helpers. hog-charts is intended to
-// move into a standalone UI library, so this file deliberately has no PostHog imports —
+// move into a standalone UI library, so this file deliberately has no Flind imports —
 // only standard browser APIs.
 
 const DEFAULT_DECIMAL_PLACES = 2

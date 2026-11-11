@@ -335,7 +335,7 @@ The flow:
 
 1. taps **Try the demo** on the sign-in screen,
 2. opens "Report load time", opens and closes the hand-off sheet,
-3. resolves the report as fixed outside PostHog and checks that its inbox row is gone,
+3. resolves the report as fixed outside Flind and checks that its inbox row is gone,
 4. opens "3,721 errors", taps **Needs your answer**, picks an answer in the decision sheet, then taps Undo, reopens the question and closes its sheet,
 5. opens Chat from the action pill, sends a question and waits for the demo reply,
 6. goes back, opens Chats, opens the session "Fix the flaky checkout test", and checks its title and reply,
@@ -391,7 +391,7 @@ so the flows do not need a development build or its overlays.
 
 The build disables analytics and over-the-air updates. The script creates a temporary iPhone 17 Pro simulator,
 installs the app again before each flow, and deletes the simulator on success, failure, or interruption.
-Only demo fixtures are used; no PostHog account, API key, Expo token, or Apple signing credentials are needed.
+Only demo fixtures are used; no Flind account, API key, Expo token, or Apple signing credentials are needed.
 Both flows run even when the first fails. JSON reports, failed-step screenshots, and build logs land in the
 artifact directory you pass.
 
@@ -456,7 +456,7 @@ Argent's `argent-create-flow` skill describes the rules. Replay the whole flow b
   The `ios/` folder was generated before `plugins/withIosSceneLifecycle.js` existed. Run `npx expo prebuild --platform ios --clean`, then `pnpm ios` again.
 - **A `visible` check passes while a sheet covers the screen.**
   The screen under a sheet stays in the accessibility tree. Check that the sheet is `hidden` first, as the flow does.
-- **iOS asks "Open in PostHog?"** after `xcrun simctl openurl`. Tap Open. The question does not come every time.
+- **iOS asks "Open in Flind?"** after `xcrun simctl openurl`. Tap Open. The question does not come every time.
 
 ## Native replay prototype
 
@@ -523,7 +523,7 @@ and an internal native build with `EXPO_PUBLIC_POSTHOG_HANDOFF=1`. Both clients 
 same test analytics project to query correlation together. The handoff flag is independent of
 recording: a correlation event does not prove that either session has a replay.
 
-1. Sign in to the same PostHog host in the native app. Open an insight, chart detail, view,
+1. Sign in to the same Flind host in the native app. Open an insight, chart detail, view,
    or chat link in the browser. Only HTTPS links inside the signed-in host and current
    `/project/<id>/` are decorated. External links, other regions/projects, OAuth and existing
    fragment links keep their navigation unchanged. The source event carries `handoff_id`.
@@ -531,7 +531,7 @@ recording: a correlation event does not prove that either session has a replay.
    `web_session_handoff_received` when its flag is enabled. Match its `handoff_id` to
    `mobile_session_handoff_started`. Compare the events' SDK-assigned `$session_id` values:
    they are distinct, and neither identity has changed because of the link.
-3. To exercise web-to-native from a local test page in the running PostHog web app, add a normal
+3. To exercise web-to-native from a local test page in the running Flind web app, add a normal
    anchor with `href="posthog-dev://inbox"` (or `posthog-preview://inbox`) using browser developer
    tools. Click it. The page's delegated click handler adds a marker and emits
    `web_session_handoff_started`. Native strips the marker and emits

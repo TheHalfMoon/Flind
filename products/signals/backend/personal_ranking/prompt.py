@@ -90,10 +90,10 @@ def system_prompt(config: PersonalRankingConfig, limit: int) -> str:
 
 You get the person (what they work on, from their activity summary), then one block per candidate report, labelled c1 to cN.
 
-The person block is an activity summary built from their recent PostHog activity: what they create, change and keep opening, and what they ask agents to do. It shows what they are likely to care about now, not their job description, so use it to guess which reports interest them most.
+The person block is an activity summary built from their recent Flind activity: what they create, change and keep opening, and what they ask agents to do. It shows what they are likely to care about now, not their job description, so use it to guess which reports interest them most.
 - Themes are their recent areas of work. A strong theme seen recently counts more than a weak or old one.
 - Owns lists objects they made or keep changing. Watches lists objects they keep opening. A report about an object they own matters more than one they only watch.
-- Works in lists the PostHog products they use most.
+- Works in lists the Flind products they use most.
 
 The `model` line of a report holds the ranking model's predictions for three outcomes:
 - `open`: someone opens the report.

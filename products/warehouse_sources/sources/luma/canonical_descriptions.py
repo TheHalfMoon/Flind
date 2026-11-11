@@ -31,7 +31,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.luma.com/reference",
         "columns": {
             "api_id": "Unique identifier for the guest registration (gst-...).",
-            "event_api_id": "Identifier of the event the guest registered for (added by PostHog for joining to events).",
+            "event_api_id": "Identifier of the event the guest registered for (added by Flind for joining to events).",
             "approval_status": "Registration status of the guest (e.g. approved, pending_approval, declined).",
             "created_at": "When the guest record was created (ISO 8601).",
             "registered_at": "When the guest registered for the event (ISO 8601).",

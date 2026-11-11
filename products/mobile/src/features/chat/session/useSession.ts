@@ -185,11 +185,11 @@ function sendErrorMessage(error: unknown): string {
         return "The agent didn't take your message. Try again."
     }
     if (error instanceof RunNotStartedError) {
-        return "PostHog couldn't start the agent. Try again."
+        return "Flind couldn't start the agent. Try again."
     }
     if (error instanceof ApiError) {
         if (error.code === 'warm_run_activation_unavailable') {
-            return "PostHog couldn't start the agent in time. Try again."
+            return "Flind couldn't start the agent in time. Try again."
         }
         if (error.status === 402 && error.detail) {
             return error.detail

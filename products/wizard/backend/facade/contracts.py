@@ -144,7 +144,7 @@ class CreateWizardRunInput:
 @frozen
 class StartWizardInstallInput:
     """
-    Starts the PostHog setup program in the cloud on a GitHub repository of the project.
+    Starts the Flind setup program in the cloud on a GitHub repository of the project.
     """
 
     team_id: int

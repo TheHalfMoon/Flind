@@ -57,7 +57,7 @@ export function GatewayTeamView({
       <Flex direction="column" gap="1">
         <Heading className="font-bold text-2xl">Team & agents</Heading>
         <Text color="gray" className="max-w-[560px] text-sm">
-          Control access for your team members and PostHog agents.
+          Control access for your team members and Flind agents.
         </Text>
       </Flex>
 

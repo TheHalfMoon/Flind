@@ -41,7 +41,7 @@ FORBIDDEN_ERROR = (
 )
 UNREACHABLE_ERROR = (
     "Couldn't reach your Elasticsearch cluster. Check the cluster URL and port, and that the "
-    "cluster accepts connections from PostHog's IP addresses."
+    "cluster accepts connections from Flind's IP addresses."
 )
 TLS_ERROR = (
     "Couldn't open a secure connection to your Elasticsearch cluster. Check that the URL starts "

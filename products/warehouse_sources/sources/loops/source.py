@@ -49,7 +49,7 @@ class LoopsSource(ResumableSource[LoopsSourceConfig, LoopsResumeConfig]):
             label="Loops",
             releaseStatus=ReleaseStatus.GA,
             keywords=["loops.so", "email"],
-            caption="""Enter your Loops API key to sync your campaigns, transactional emails, mailing lists and other account data into the PostHog Data warehouse.
+            caption="""Enter your Loops API key to sync your campaigns, transactional emails, mailing lists and other account data into the Flind Data warehouse.
 
 You can generate an API key in your Loops account under **Settings > API**.
 

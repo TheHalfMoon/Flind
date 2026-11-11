@@ -29,7 +29,7 @@ describe("buildCreatePrReportPrompt", () => {
   it("omits the inline link when no report URL is known", () => {
     const prompt = buildCreatePrReportPrompt({ reportId: "abc123" });
     expect(prompt).not.toContain("([inbox item]");
-    expect(prompt).toContain("Act on PostHog inbox report abc123.");
+    expect(prompt).toContain("Act on Flind inbox report abc123.");
   });
 
   it("references the inbox MCP tools so the agent fetches the detail itself", () => {

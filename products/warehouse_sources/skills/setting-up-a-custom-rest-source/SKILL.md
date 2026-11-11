@@ -1,13 +1,13 @@
 ---
 name: setting-up-a-custom-rest-source
 description: >
-  Connect an arbitrary REST API to the PostHog data warehouse as a Custom source by authoring a JSON manifest, with no
-  per-source code. Use when the user points at an API that has no built-in PostHog connector — "import data from this
+  Connect an arbitrary REST API to the Flind data warehouse as a Custom source by authoring a JSON manifest, with no
+  per-source code. Use when the user points at an API that has no built-in Flind connector — "import data from this
   REST API", "sync my internal API", "connect this API from its docs", "build a custom data warehouse source" — and
   gives a docs URL or a natural-language description of the endpoints. Walks through drafting the RESTAPIConfig manifest
   (auth — bearer, API key, HTTP basic, or OAuth2 client credentials / refresh token — pagination, record path,
   incremental cursor, parent/child fan-out), validating it, test-reading live rows to verify the field mappings, and
-  creating the source. If the API already has a native PostHog connector, use
+  creating the source. If the API already has a native Flind connector, use
   setting-up-a-data-warehouse-source instead — this skill checks the connector registry first and only handles APIs
   with no native connector.
 ---
@@ -15,7 +15,7 @@ description: >
 # Setting up a Custom REST source
 
 A **Custom source** imports any HTTP REST API into queryable warehouse tables from a JSON **manifest** — no
-per-source Python. The manifest is a `RESTAPIConfig`: the same shape that powers PostHog's built-in REST connectors
+per-source Python. The manifest is a `RESTAPIConfig`: the same shape that powers Flind's built-in REST connectors
 (Intercom, Attio, Sentry, …), so the generic REST engine handles auth, pagination, JSONPath record extraction, and
 incremental cursors for you. Your job is to author a correct manifest and prove it against live data before creating
 the source.
@@ -28,7 +28,7 @@ This is a **beta** capability. Caps: at most 50 resources per manifest, and at m
   API — and can give you its docs URL or describe its endpoints.
 - The user explicitly asks for a "custom REST source", "custom source manifest", or to "build a connector from docs".
 
-A Custom source is the **fallback** — only correct when no native connector fits. PostHog ships **hundreds** of native
+A Custom source is the **fallback** — only correct when no native connector fits. Flind ships **hundreds** of native
 connectors, far more than could be listed here, so **never assume an API has no built-in** — most well-known SaaS apps
 and databases do, and guessing wrong misroutes them into a hand-authored manifest that duplicates a battle-tested
 connector. Step 0 below makes you check the registry before drafting anything; if a native connector matches, hand off
@@ -67,14 +67,14 @@ The skeleton:
 travels in a separate payload key chosen by the manifest's `client.auth.type`: `auth_token` (bearer), `auth_api_key`
 (api_key), `auth_password` (http_basic), or `auth_oauth2_client_secret` for oauth2 (plus
 `auth_oauth2_refresh_token` for the refresh-token grant only). The
-engine injects it at run time, and PostHog redacts it from every response. Putting a token inline is rejected at
+engine injects it at run time, and Flind redacts it from every response. Putting a token inline is rejected at
 validation.
 
 ## Available tools
 
 | Tool                                     | Purpose                                                                                                                                                                  |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `external-data-sources-wizard`           | List every native source type PostHog supports. Run this **first** (Step 0) to check whether the target API already has a built-in connector before drafting a manifest. |
+| `external-data-sources-wizard`           | List every native source type Flind supports. Run this **first** (Step 0) to check whether the target API already has a built-in connector before drafting a manifest. |
 | `external-data-sources-db-schema`        | Validate the manifest + credential and list the resources (tables) it exposes, with detected primary keys and incremental cursors. This is the validate-and-list step.   |
 | `external-data-sources-preview-resource` | Read a small live sample of rows for one resource — verify `data_selector` / `primary_key` / `cursor_path` against real data before creating anything.                   |
 | `data-warehouse-source-setup`            | Create the source. Enables **all** manifest resources with sync defaults in one call.                                                                                    |

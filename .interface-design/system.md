@@ -1,4 +1,4 @@
-# PostHog Design System
+# Flind Design System
 
 Extracted from codebase. Source of truth for UI consistency.
 

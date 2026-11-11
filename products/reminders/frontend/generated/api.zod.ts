@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -37,7 +37,7 @@ export const RemindersCreateBody = /* @__PURE__ */ zod.object({
         .max(remindersCreateBodyResourceTypeMax)
         .nullish()
         .describe(
-            'Optional PostHog resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.'
+            'Optional Flind resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.'
         ),
     resource_id: zod
         .string()
@@ -109,7 +109,7 @@ export const RemindersUpdateBody = /* @__PURE__ */ zod.object({
         .max(remindersUpdateBodyResourceTypeMax)
         .nullish()
         .describe(
-            'Optional PostHog resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.'
+            'Optional Flind resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.'
         ),
     resource_id: zod
         .string()
@@ -185,7 +185,7 @@ export const RemindersPartialUpdateBody = /* @__PURE__ */ zod.object({
         .max(remindersPartialUpdateBodyResourceTypeMax)
         .nullish()
         .describe(
-            'Optional PostHog resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.'
+            'Optional Flind resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.'
         ),
     resource_id: zod
         .string()

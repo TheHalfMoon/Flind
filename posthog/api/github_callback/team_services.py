@@ -184,7 +184,7 @@ def authorize_link_existing_installation(
     already has legitimate access to it. A user with admin access to the target team can therefore
     attach another of the org's own projects to that installation without re-proving personal
     GitHub access, because team admin within the org is sufficient ownership proof. This is what
-    lets a second PostHog project reuse a GitHub App that installs only once per org.
+    lets a second Flind project reuse a GitHub App that installs only once per org.
 
     For anyone without team admin access (e.g. a plain member using the explicit link endpoint),
     fall back to proving access with the user's personal GitHub OAuth token, raising
@@ -220,13 +220,13 @@ def adopt_orphan_installation(
     *, user: User, team: Team, installation_id: str, discovery_id: str | None = None
 ) -> Integration:
     """Create the team's first ``Integration`` row for a GitHub App installation that exists on
-    GitHub but was never linked to any PostHog team — e.g. a non-admin clicked "Connect
+    GitHub but was never linked to any Flind team — e.g. a non-admin clicked "Connect
     organization", GitHub created an install *request*, and a GitHub org admin approved it
-    directly on github.com without completing PostHog's callback.
+    directly on github.com without completing Flind's callback.
 
     Introducing a new installation to the org is held to the same bar as a first-time connect
-    through the setup callback: PostHog project admin. On top of that, personal GitHub access
-    proof is always required — unlike sibling reuse, there's no existing PostHog integration to
+    through the setup callback: Flind project admin. On top of that, personal GitHub access
+    proof is always required — unlike sibling reuse, there's no existing Flind integration to
     imply the org already has legitimate access, and the admin requirement alone proves nothing
     on the GitHub side. The create/update flows are additionally gated by GitHub itself (only a
     GitHub org admin reaches the callback with a valid installation_id); adoption has no such
@@ -473,7 +473,7 @@ def _org_linked_github_installation_ids(organization: Organization) -> set[str]:
     """Every GitHub installation id linked to *any* team in ``organization``, including projects the
     current user can't access.
 
-    Used to tell a genuinely orphan installation (no PostHog row anywhere in the org) apart from
+    Used to tell a genuinely orphan installation (no Flind row anywhere in the org) apart from
     one that's merely linked to a project the caller can't see — the latter must keep raising the
     access error rather than being offered up for adoption, or the access boundary in
     ``_accessible_org_team_ids`` would leak through the adoption path.
@@ -531,8 +531,8 @@ def link_existing_team_github_integration(
                     "No team in your organization has this GitHub installation linked",
                     code=GITHUB_LINK_EXISTING_ERROR_ORPHAN_INSTALLATION,
                 )
-            # No PostHog team anywhere in the org has this installation linked. It may still be
-            # installed on GitHub — e.g. approved by a GitHub org admin without completing PostHog's
+            # No Flind team anywhere in the org has this installation linked. It may still be
+            # installed on GitHub — e.g. approved by a GitHub org admin without completing Flind's
             # callback. Adoption re-proves personal access rather than raising outright.
             target_team = organization.teams.filter(id=team_id).first()
             if target_team is None:

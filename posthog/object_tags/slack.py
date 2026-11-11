@@ -1,6 +1,6 @@
 """Rewrite agent object tags into markdown Slack can show.
 
-Agents cite PostHog objects with XML-style tags (``<insight id="9pQx3">checkout funnel</insight>``,
+Agents cite Flind objects with XML-style tags (``<insight id="9pQx3">checkout funnel</insight>``,
 ``<hogql display="block" title="DAU">SELECT ...</hogql>``). The desktop and web task views parse
 those into chips and chart cards; Slack has no renderer, so a raw tag reaches the thread as
 escaped XML. This module runs before markdown conversion and turns each tag into the closest
@@ -25,7 +25,7 @@ from posthog.object_tags.kinds import (
 # this size, and a SQL editor deep link carries the whole query in the query string.
 _MAX_LINK_URL_LENGTH = 2000
 
-# Links we post ourselves carry this so PostHog's own unfurler leaves inline references alone;
+# Links we post ourselves carry this so Flind's own unfurler leaves inline references alone;
 # a block-display reference keeps unfurling on because the unfurl card is the nearest thing
 # Slack has to the chart card the desktop renders.
 _UNFURL_OPT_OUT_QUERY = "unfurl=false"

@@ -504,7 +504,7 @@ describe('biEditorLogic', () => {
         }
     )
 
-    it('offers every sidebar table while excluding hidden PostHog tables', () => {
+    it('offers every sidebar table while excluding hidden Flind tables', () => {
         const biLogic = biEditorLogic({ tabId: TAB_ID })
         biLogic.mount()
 

@@ -185,7 +185,7 @@ class HubspotSource(ResumableSource[HubspotSourceConfig | HubspotSourceOldConfig
         return SourceConfig(
             name=ExternalDataSourceType.HUBSPOT,
             category=DataWarehouseSourceCategory.CRM,
-            caption="Select an existing Hubspot account to link to PostHog or create a new connection",
+            caption="Select an existing Hubspot account to link to Flind or create a new connection",
             iconPath="/static/services/hubspot.png",
             docsUrl="https://posthog.com/docs/cdp/sources/hubspot",
             featured=True,
@@ -290,7 +290,7 @@ class HubspotSource(ResumableSource[HubspotSourceConfig | HubspotSourceOldConfig
         # connected, and does not say that the sync recovers by itself once the move finishes.
         return {
             "Migration in progress": (
-                "HubSpot is moving your account to another data center, so PostHog can't reach it right now. "
+                "HubSpot is moving your account to another data center, so Flind can't reach it right now. "
                 "This usually clears on its own and the next sync runs on schedule."
             ),
         }

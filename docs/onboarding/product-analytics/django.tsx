@@ -11,7 +11,7 @@ export const getDjangoInstallSteps = (ctx: OnboardingComponentsContext): StepDef
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog Python library using pip:</Markdown>
+                    <Markdown>Install the Flind Python library using pip:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -27,12 +27,12 @@ export const getDjangoInstallSteps = (ctx: OnboardingComponentsContext): StepDef
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Set the PostHog project token and host in your `AppConfig` in `apps.py` so that it's available
+                        Set the Flind project token and host in your `AppConfig` in `apps.py` so that it's available
                         everywhere:
                     </Markdown>
                     <CodeBlock

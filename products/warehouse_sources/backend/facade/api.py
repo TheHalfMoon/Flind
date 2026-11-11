@@ -487,7 +487,7 @@ def resolve_object_by_name(team_id: int, name: str) -> contracts.WarehouseObject
     Resolves the dotted source forms (``stripe.charges``) the same way a query does, and skips
     soft-deleted rows, orphans of a deleted source, and direct-connection tables the default HogQL
     scope hides. None means the name reaches neither, so it carries no object-level access control
-    -- a PostHog table such as ``events``, or nothing at all.
+    -- a Flind table such as ``events``, or nothing at all.
 
     For a caller recording what a query read: the identity survives the name being freed and taken
     by something else, which is what makes it usable as evidence later.

@@ -290,17 +290,17 @@ def _measured(grade: PinnedShareGrade | None, removed: list[RemovedOverride]) ->
         ]
     if grade is None:
         return [
-            f"PostHog can't measure how many users {'the override' if len(removed) == 1 else 'the overrides'} matched."
+            f"Flind can't measure how many users {'the override' if len(removed) == 1 else 'the overrides'} matched."
         ]
     if grade.unknown_reason == PinnedShareUnknownReason.EVALUATED_OUTSIDE_FLAG_SERVICE:
         return [
             "Most of this flag's calls are evaluated locally in a server SDK, bootstrapped, or assigned in your own "
-            f"code, so PostHog can't measure how many users {subject} {matches}."
+            f"code, so Flind can't measure how many users {subject} {matches}."
         ]
     if grade.unknown_reason == PinnedShareUnknownReason.TOO_FEW_PEOPLE and measurement is not None:
         since = format_change_time(measurement.since, measurement.team_timezone)
         return [f"Too few users called the flag since {since} to measure how many users {subject} {matches}."]
-    return [f"PostHog can't measure how many users {subject} {matches}."]
+    return [f"Flind can't measure how many users {subject} {matches}."]
 
 
 def _finding(

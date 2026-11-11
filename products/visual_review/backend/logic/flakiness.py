@@ -50,7 +50,7 @@ from .run_queries import SnapshotKey
 # hides a CHANGED one.
 #
 # Mirrors `gating._is_unresolved`: a result other than `unchanged` that nobody
-# has signed off. PostHog's own default-branch runs are `RunPurpose.OBSERVE` and
+# has signed off. Flind's own default-branch runs are `RunPurpose.OBSERVE` and
 # so can never carry an approval, but `purpose` defaults to `REVIEW`, and a repo
 # whose CI omits the flag can land an approved or tolerated snapshot on the
 # default branch. Counting that as a failure would hold a quarantine open over a

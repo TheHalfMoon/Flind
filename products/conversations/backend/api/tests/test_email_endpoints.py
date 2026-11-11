@@ -350,7 +350,7 @@ class TestEmailChannelPermissions(BaseTest):
         )
 
         assert response.status_code == 503
-        assert response.json() == {"error": "Email verification is not configured on this PostHog instance."}
+        assert response.json() == {"error": "Email verification is not configured on this Flind instance."}
 
     @patch("products.conversations.backend.api.email_settings.cache.delete")
     @patch("products.conversations.backend.api.email_settings.cache.add", return_value=True)
@@ -2587,7 +2587,7 @@ class TestEmailInboundSelfAddressedAutoreply(MailgunWebhookTestMixin, BaseTest):
         ]
     )
     def test_autoreply_from_the_inbox_itself_is_dropped(self, name, headers):
-        self._post(f"<loop-{name}@posthog.com>", {"from": "PostHog Security <security@posthog.com>", **headers})
+        self._post(f"<loop-{name}@posthog.com>", {"from": "Flind Security <security@posthog.com>", **headers})
 
         assert Ticket.objects.filter(team=self.team).count() == 0
 
@@ -2603,7 +2603,7 @@ class TestEmailInboundSelfAddressedAutoreply(MailgunWebhookTestMixin, BaseTest):
         self._post(
             "<loop-headers-blob@posthog.com>",
             {
-                "from": "PostHog Security <security@posthog.com>",
+                "from": "Flind Security <security@posthog.com>",
                 "message-headers": '[["Auto-Submitted", "auto-replied"]]',
             },
         )

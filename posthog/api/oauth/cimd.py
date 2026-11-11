@@ -315,12 +315,12 @@ THROWAWAY_HOST_SUFFIXES: frozenset[str] = (
 )
 
 THROWAWAY_HOST_MESSAGE = (
-    "PostHog doesn't accept client metadata from this host. "
+    "Flind doesn't accept client metadata from this host. "
     "Host your client metadata document on a domain you control and use that URL as your client_id."
 )
 
 THROWAWAY_JWKS_HOST_MESSAGE = (
-    "PostHog doesn't accept a jwks_uri on this host, because it is not a host you control. "
+    "Flind doesn't accept a jwks_uri on this host, because it is not a host you control. "
     "Publish your JWKS on a domain you control and set that URL as jwks_uri in your client metadata."
 )
 
@@ -335,7 +335,7 @@ def _url_host(url: str) -> str:
         host = urlparse(url).hostname or ""
     except ValueError:
         return ""
-    # The form requests connects to, so the checks judge the host PostHog actually fetches.
+    # The form requests connects to, so the checks judge the host Flind actually fetches.
     return canonical_host(host.rstrip("."))
 
 
@@ -777,7 +777,7 @@ def _resolve_client_authentication(
 
     A self-controlled declaration can only ever lower what we require, never raise it — that
     takes partner registration. But the jwks_uri is stored either way, so a client that starts
-    signing later (a runtime change PostHog does not control) can still be verified and
+    signing later (a runtime change Flind does not control) can still be verified and
     accepted; see ``verify_client_assertion``. The declaration is a menu, not a mandate.
     """
     auth_method = metadata.get("token_endpoint_auth_method", TokenEndpointAuthMethod.NONE.value)
@@ -1063,7 +1063,7 @@ def fetch_and_upsert_cimd_application(
     if not oidc_signing_key_configured():
         raise CIMDSigningKeyMissingError()
 
-    # Refused before the fetch so that PostHog sends no request to the host.
+    # Refused before the fetch so that Flind sends no request to the host.
     if is_throwaway_host(url):
         capture_ph_event(
             distinct_id=url,
@@ -1140,7 +1140,7 @@ def fetch_and_upsert_cimd_application(
                 return app
             if isinstance(e, ValidationError):
                 # Field names only: the messages can echo document values, and whoever calls
-                # /authorize chooses which URL PostHog fetches.
+                # /authorize chooses which URL Flind fetches.
                 fields = sorted(getattr(e, "message_dict", {}) or {"document": []})
                 raise CIMDValidationError(f"Metadata document was rejected: invalid {', '.join(fields)}") from e
             raise
@@ -1215,7 +1215,7 @@ def _cimd_provisioning_defaults_for(app: OAuthApplication) -> "ProvisioningConfi
 
     Deliberately narrow. Creating accounts and provisioning resources is the whole point of
     self-serve registration, so those are turned on; no other capability is, because a partner
-    that vouched for itself by publishing a document is not the same as one PostHog decided to
+    that vouched for itself by publishing a document is not the same as one Flind decided to
     trust. Deep links and skipped consent are granted by an admin or not at all.
 
     No rate limits are written here: budgets are derived per request from the partner's tier

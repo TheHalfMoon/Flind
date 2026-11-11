@@ -53,7 +53,7 @@ function PreferenceEditor({
 
     // Grouped by harness off the same list the composer offers, so a model you can pick for a run is
     // always settable as a default and vice versa — including the Codex models that only Slack and
-    // PostHog Desktop drive today, and the retired one this level is already set to.
+    // Flind Desktop drive today, and the retired one this level is already set to.
     const offeredModels = useMemo(() => pickerModels(catalogue, draft.model), [catalogue, draft.model])
     const modelOptions = useMemo(() => {
         const groups = listRuntimeAdapters(offeredModels).map((adapter) => ({
@@ -192,7 +192,7 @@ export function TaskAgentMyPreferenceSettings(): JSX.Element {
             <p className="text-secondary mb-0">
                 {resolvedDefaults?.model ? (
                     <>
-                        {isPiDefault ? 'Runs you start in PostHog Desktop' : 'Runs you start'} without picking a model
+                        {isPiDefault ? 'Runs you start in Flind Desktop' : 'Runs you start'} without picking a model
                         will use{' '}
                         <strong>
                             {isPiDefault ? `${PI_HARNESS_LABEL} · ` : ''}

@@ -26,7 +26,7 @@ function openDeepLink(buildDeepLink: (prompt: string) => string): (prompt: strin
 export const IMPLEMENTATION_AGENTS: ImplementationAgent[] = [
     {
         key: 'posthog-code',
-        name: 'PostHog Desktop',
+        name: 'Flind Desktop',
         icon: <IconLogomark />,
         open: openDeepLink(buildPostHogCodeDeepLink),
     },

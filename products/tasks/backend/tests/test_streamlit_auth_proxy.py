@@ -243,7 +243,7 @@ class TestIntrospectTokenSecurity:
         be rejected on the iframe path. The B.2.5 scope split is meaningless
         unless the proxy enforces it — without this check, a leaked bridge
         token would unlock the iframe even though it was minted for the
-        sandbox→PostHog backchannel hop.
+        sandbox→Flind backchannel hop.
         """
         session = _make_fake_session(
             status=200,

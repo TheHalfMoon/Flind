@@ -1,8 +1,8 @@
 """
 Personal LLM spend analysis endpoint.
 
-Surfaces the requesting user's own LLM spend across PostHog products (last N
-days) by running a fixed set of HogQL queries against PostHog's internal cloud
+Surfaces the requesting user's own LLM spend across Flind products (last N
+days) by running a fixed set of HogQL queries against Flind's internal cloud
 analytics team. Scoped to a single `ai_product` via the required `product`
 query param; see `SUPPORTED_PRODUCTS` for the currently accepted values.
 
@@ -170,7 +170,7 @@ class _SpendQueryParamsSerializer(serializers.Serializer):
         max_length=MAX_DATE_STRING_LENGTH,
         help_text=(
             "Start of the spend window. Accepts absolute dates (`2026-04-23`) or relative strings "
-            "(`-7d`, `-1m`, etc.) — same parser used elsewhere in PostHog. Defaults to `-30d`. The "
+            "(`-7d`, `-1m`, etc.) — same parser used elsewhere in Flind. Defaults to `-30d`. The "
             "window between `date_from` and `date_to` cannot exceed 90 days."
         ),
     )
@@ -242,7 +242,7 @@ class _ProductBreakdownRowSerializer(serializers.Serializer):
     )
     cost_usd = serializers.FloatField(help_text="Total cost in USD for this product over the lookback window.")
     billable = serializers.BooleanField(
-        help_text="Whether this product is eligible for PostHog AI or Desktop credit billing, independent of event-level billing rules."
+        help_text="Whether this product is eligible for Flind AI or Desktop credit billing, independent of event-level billing rules."
     )
 
 
@@ -1088,13 +1088,13 @@ class _PersonalSpendUserViewSet(viewsets.ViewSet):
 
 class PersonalSpendViewSet(_PersonalSpendUserViewSet):
     """
-    Returns the requesting user's personal LLM spend analysis across PostHog products.
+    Returns the requesting user's personal LLM spend analysis across Flind products.
 
-    Queries are run server-side against PostHog's internal analytics team
+    Queries are run server-side against Flind's internal analytics team
     (settings.LLM_ANALYTICS_INTERNAL_TEAM_ID) and are strictly scoped to the
     authenticated user's email (read off the events row via person-on-events) —
     callers cannot pivot to other users' data. Authorization model is "any
-    authenticated PostHog user may read their own spend" via `user:read` (the
+    authenticated Flind user may read their own spend" via `user:read` (the
     same scope that covers `/api/users/@me/`). Queries the shared `events`
     table directly -- same pattern as the LLM Analytics "Users" tab and every
     other person-property filter on AI events. We don't route through
@@ -1158,7 +1158,7 @@ _EU_REDIRECT_FORWARDED_PARAMS = frozenset({"date_from", "date_to", "product", "l
 def personal_spend_eu_redirect(request: HttpRequest) -> HttpResponseRedirect:
     """Redirect EU callers to the US-hosted endpoint where the data actually lives.
 
-    EU PostHog Cloud forwards its product LLM telemetry to PostHog Cloud US, so the
+    EU Flind Cloud forwards its product LLM telemetry to Flind Cloud US, so the
     spend analysis only runs there. Returning a 302 makes the new home discoverable
     instead of serving a silent 404. Callers still need a US-valid auth token.
 
@@ -1271,7 +1271,7 @@ class PersonalSpendEUProxyViewSet(_PersonalSpendUserViewSet):
         operation_id="llm_analytics_personal_spend_eu_list",
         parameters=[_SpendQueryParamsSerializer],
         responses={200: PersonalSpendAnalysisResponseSerializer},
-        description="EU mirror of the personal spend endpoint — proxies to PostHog Cloud US, where the data lives.",
+        description="EU mirror of the personal spend endpoint — proxies to Flind Cloud US, where the data lives.",
         tags=["AI observability"],
     )
     def list(self, request: Request) -> HttpResponseBase:

@@ -36,7 +36,7 @@ class WizardCatalogToolSerializer(serializers.Serializer):
     warehouse_destination_type = serializers.ChoiceField(
         choices=wizard_facade.TOOL_CATALOG_DESTINATION_CHOICES,
         allow_null=True,
-        help_text="Warehouse destination PostHog can send data to when the tool is that warehouse, or null for any other tool.",
+        help_text="Warehouse destination Flind can send data to when the tool is that warehouse, or null for any other tool.",
     )
     wizard_setup_mode = serializers.ChoiceField(
         choices=WizardSetupMode.choices,
@@ -44,7 +44,7 @@ class WizardCatalogToolSerializer(serializers.Serializer):
         help_text="How the wizard sets up the source: in the terminal or in the app. Null for a tool with no warehouse source.",
     )
     alternative_to = serializers.ListField(
-        child=serializers.CharField(), help_text="PostHog products this tool is an alternative to."
+        child=serializers.CharField(), help_text="Flind products this tool is an alternative to."
     )
     superseded_by = serializers.ListField(
         child=serializers.CharField(),

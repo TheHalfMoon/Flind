@@ -12,7 +12,7 @@ import { AiOnboarding } from 'products/posthog_ai/frontend/api/onboarding'
 import { resolvePhaiOnboardingMounts } from './phaiOnboardingHost'
 
 /**
- * Mounts the PostHog AI onboarding takeover for whichever composers are on screen, and decides which of them
+ * Mounts the Flind AI onboarding takeover for whichever composers are on screen, and decides which of them
  * may open it on its own. Lives here rather than in the surface because the answer depends on the runtime
  * toggle and the entry point, neither of which `products/posthog_ai/frontend` is allowed to know about. The
  * decision itself is in `resolvePhaiOnboardingMounts`, which is tested directly.

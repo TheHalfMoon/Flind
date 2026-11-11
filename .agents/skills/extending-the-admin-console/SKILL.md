@@ -1,11 +1,11 @@
 ---
 name: extending-the-admin-console
-description: Add or change what staff see and do in PostHog Admin, the staff console at /admin/console/. Use when adding a panel to a team page, a staff action (an operation), or a cross-team report (a tool) in a `console.py`, when moving a button, view or page out of Django admin into the console, or when asked to "add an admin action", "add a staff tool", "show X to support in admin", or to touch `posthog/admin/console/` or `posthog/templates/admin_console/`. Covers choosing panel vs tool vs Django admin, the data-only contract, copy, danger operations, replacing the old Django admin entry point, and the checks before calling it done.
+description: Add or change what staff see and do in Flind Admin, the staff console at /admin/console/. Use when adding a panel to a team page, a staff action (an operation), or a cross-team report (a tool) in a `console.py`, when moving a button, view or page out of Django admin into the console, or when asked to "add an admin action", "add a staff tool", "show X to support in admin", or to touch `posthog/admin/console/` or `posthog/templates/admin_console/`. Covers choosing panel vs tool vs Django admin, the data-only contract, copy, danger operations, replacing the old Django admin entry point, and the checks before calling it done.
 ---
 
 # Extending the admin console
 
-PostHog Admin is a shared surface. Every team adds to it, and staff use it under pressure, often while a customer waits.
+Flind Admin is a shared surface. Every team adds to it, and staff use it under pressure, often while a customer waits.
 Consistency is the feature: a panel that looks and reads like every other panel is one staff can use without thinking.
 Read [`posthog/admin/console/AGENTS.md`](../../../posthog/admin/console/AGENTS.md) first. It holds the invariants and the add-a-panel and add-a-tool recipes. This skill holds the judgment around them.
 

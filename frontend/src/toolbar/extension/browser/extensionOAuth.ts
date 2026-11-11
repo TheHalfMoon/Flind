@@ -17,7 +17,7 @@ function pageUrlWithoutHash(pageUrl: string): string {
 }
 
 /**
- * Runs the floating toolbar's OAuth flow in a separate tab. PostHog redirects that tab to the page with the code in the
+ * Runs the floating toolbar's OAuth flow in a separate tab. Flind redirects that tab to the page with the code in the
  * URL hash, so the page must be one of the project's authorized URLs. The extension keeps the PKCE verifier, reads the
  * code from the tab's URL, and exchanges it for tokens.
  */
@@ -41,7 +41,7 @@ export async function authenticateToolbar({
     })
     const authParams = parseToolbarAuthHash(new URL(callbackUrl).hash)
     if (!authParams) {
-        throw new OAuthExchangeError('PostHog returned no authorization code')
+        throw new OAuthExchangeError('Flind returned no authorization code')
     }
 
     const { status, accessToken, refreshToken } = await requestOAuthTokens({

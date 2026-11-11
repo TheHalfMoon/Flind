@@ -59,7 +59,7 @@ function formatMissingProjectContextMessage(organizationId: string | undefined):
         : ''
 
     return (
-        'No PostHog project is selected for this MCP session, and a default could not be derived from your API key.' +
+        'No Flind project is selected for this MCP session, and a default could not be derived from your API key.' +
         orgScopeLine +
         '\n\n' +
         'To pick one (in order of preference):\n' +
@@ -87,7 +87,7 @@ export class MissingOrganizationContextError extends Error {
 
 function formatMissingOrganizationContextMessage(): string {
     return (
-        'No PostHog organization is selected for this MCP session, and a default could not be derived from your API key.' +
+        'No Flind organization is selected for this MCP session, and a default could not be derived from your API key.' +
         '\n\n' +
         'To pick one (in order of preference):\n' +
         '1. Call `organizations-get` to list organizations you can access, then `switch-organization` with the chosen organization id.\n' +
@@ -134,8 +134,8 @@ export const SESSION_RESET_REQUIRED_REASON = 'session_reset_required'
 export class McpSessionResetRequiredError extends Error {
     constructor() {
         super(
-            'This MCP session started before a PostHog MCP server update, and the server cannot restore its project and organization selection. ' +
-                'No tool ran. Reconnect the PostHog MCP server to start a new session, then try again.'
+            'This MCP session started before a Flind MCP server update, and the server cannot restore its project and organization selection. ' +
+                'No tool ran. Reconnect the Flind MCP server to start a new session, then try again.'
         )
         this.name = 'McpSessionResetRequiredError'
     }
@@ -151,7 +151,7 @@ export interface PostHogValidationErrorOptions {
 }
 
 /**
- * Thrown when the PostHog API rejects a request with a `validation_error`
+ * Thrown when the Flind API rejects a request with a `validation_error`
  * body. Carries the structured `extra` payload (if any) so tool handlers can
  * surface information that doesn't fit in a single `detail` line — for
  * example, the HogQL metadata response attached to a failed /query/ call.
@@ -241,13 +241,13 @@ export interface PostHogApiErrorOptions {
 }
 
 /**
- * Thrown when the PostHog API rejects a request with a non-success status that
+ * Thrown when the Flind API rejects a request with a non-success status that
  * isn't already handled by a more specific subclass (PostHogPermissionError,
  * PostHogValidationError). Carries the status code so callers can distinguish
  * recoverable agent-input errors (4xx) from genuine service failures (5xx).
  *
  * Background: an LLM agent passing a placeholder UUID to an MCP tool produced
- * a 404, and `handleToolError` captured it as a PostHog exception fingerprinted
+ * a 404, and `handleToolError` captured it as a Flind exception fingerprinted
  * by tool name — creating a brand-new error tracking issue per tool every time
  * an agent fumbled a parameter. Keying off `status` here lets `handleToolError`
  * short-circuit 4xx without losing visibility into real 5xx failures.
@@ -309,7 +309,7 @@ export class PostHogRateLimitError extends PostHogApiError {
             url: options.url,
             method: options.method,
             retryAfterSeconds: options.retryAfterSeconds,
-            message: `PostHog API rate limit exceeded (429) on ${options.method} ${options.url}.${retryHint}`,
+            message: `Flind API rate limit exceeded (429) on ${options.method} ${options.url}.${retryHint}`,
         })
         this.name = 'PostHogRateLimitError'
     }
@@ -334,7 +334,7 @@ export interface PostHogTransportErrorOptions {
 }
 
 /**
- * Thrown when a request to the PostHog API produced no usable response: the
+ * Thrown when a request to the Flind API produced no usable response: the
  * connection failed, dropped, or the body read was cut short. On a retryable
  * method the client already repeated the call, so this error means the retry
  * budget is spent.
@@ -353,7 +353,7 @@ export class PostHogTransportError extends Error {
             ? 'The request applies nothing upstream, so it is safe to retry.'
             : 'The request may have been applied upstream, so check the state before you send it again.'
         super(
-            `Could not reach the PostHog API on ${options.method} ${requestPath(options.url)} after ${options.attempts} attempt${options.attempts === 1 ? '' : 's'}: ${reason}. ${advice}`
+            `Could not reach the Flind API on ${options.method} ${requestPath(options.url)} after ${options.attempts} attempt${options.attempts === 1 ? '' : 's'}: ${reason}. ${advice}`
         )
         this.name = 'PostHogTransportError'
         this.retryable = options.retryable
@@ -387,7 +387,7 @@ export interface PostHogPermissionErrorOptions {
 }
 
 /**
- * Thrown when the PostHog API rejects a request with HTTP 403 `permission_denied`.
+ * Thrown when the Flind API rejects a request with HTTP 403 `permission_denied`.
  * Preserves the missing scope (when present) so the MCP layer can surface an
  * actionable remediation message instead of a generic failure.
  */
@@ -401,8 +401,8 @@ export class PostHogPermissionError extends Error {
 
     constructor(options: PostHogPermissionErrorOptions) {
         const message = options.missingScope
-            ? `Missing PostHog API scope: '${options.missingScope}'`
-            : `PostHog API permission denied: ${options.detail}`
+            ? `Missing Flind API scope: '${options.missingScope}'`
+            : `Flind API permission denied: ${options.detail}`
         super(message)
         this.name = 'PostHogPermissionError'
         this.detail = options.detail
@@ -439,11 +439,11 @@ export function formatPermissionErrorMessage(error: PostHogPermissionError): str
     const callTarget = error.method && error.url ? `${error.method} ${error.url}` : 'this MCP request'
     if (error.missingScope) {
         return [
-            `Missing PostHog API scope: '${error.missingScope}'`,
+            `Missing Flind API scope: '${error.missingScope}'`,
             '',
             `Your Personal API key is missing the '${error.missingScope}' scope, which is required to call ${callTarget}.`,
             '',
-            `To fix: edit the Personal API key in PostHog (User settings → Personal API keys) and add the '${error.missingScope}' scope. Alternatively, select the "MCP Server" scope preset which includes every scope the MCP needs.`,
+            `To fix: edit the Personal API key in Flind (User settings → Personal API keys) and add the '${error.missingScope}' scope. Alternatively, select the "MCP Server" scope preset which includes every scope the MCP needs.`,
             '',
             `See: ${PERSONAL_API_KEY_DOCS_URL}`,
         ].join('\n')
@@ -452,18 +452,18 @@ export function formatPermissionErrorMessage(error: PostHogPermissionError): str
     // The backend sends this detail when a token restricted to some projects calls an organization endpoint.
     if (error.detail.includes('API keys with scoped projects are only supported on project-based endpoints')) {
         return [
-            `PostHog API permission denied: ${error.detail}`,
+            `Flind API permission denied: ${error.detail}`,
             '',
             `The request to ${callTarget} was rejected with HTTP 403. This is an organization endpoint, and your API key or OAuth token is limited to specific projects. More project access does not fix this.`,
             '',
-            'To fix: use a Personal API key or OAuth token with organization access. In PostHog, open User settings → Personal API keys and set the key access to "All access" or "Organizations" (with this organization), not "Projects".',
+            'To fix: use a Personal API key or OAuth token with organization access. In Flind, open User settings → Personal API keys and set the key access to "All access" or "Organizations" (with this organization), not "Projects".',
             '',
             `See: ${PERSONAL_API_KEY_DOCS_URL}`,
         ].join('\n')
     }
 
     return [
-        `PostHog API permission denied: ${error.detail}`,
+        `Flind API permission denied: ${error.detail}`,
         '',
         `The request to ${callTarget} was rejected with HTTP 403. Verify that your API key, OAuth token, and user account have access to this project.`,
     ].join('\n')
@@ -489,7 +489,7 @@ const MISSING_SCOPE_MESSAGE_PATTERN = /Missing PostHog API scope: ['"]([^'"]+)['
  * 500 in `onCatchErrorHandler` and OAuth-aware MCP clients never see the
  * 403 + `WWW-Authenticate: insufficient_scope` they need to re-consent.
  *
- * The literal `Missing PostHog API scope: 'X'` shape produced by the
+ * The literal `Missing Flind API scope: 'X'` shape produced by the
  * `PostHogPermissionError` constructor is the one piece of information that
  * does survive — we re-synthesize a typed error from it. `url`/`method`
  * are not recoverable from the message alone; `formatPermissionErrorMessage`
@@ -602,7 +602,7 @@ export function handleToolError(
         }
     }
 
-    // Recoverable: 4xx responses from the PostHog API (and validation errors)
+    // Recoverable: 4xx responses from the Flind API (and validation errors)
     // are agent-input failures — the LLM passed a bad id, a stale UUID, or a
     // value the serializer rejected. Returning the typed error message to the
     // LLM lets it self-correct on the next turn. Capturing these as exceptions

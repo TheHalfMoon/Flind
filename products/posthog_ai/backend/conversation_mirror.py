@@ -1,6 +1,6 @@
 """Mirror a LangGraph conversation into the task world.
 
-The new PostHog AI renders and resumes a chat from a task run's S3 log. A LangGraph conversation
+The new Flind AI renders and resumes a chat from a task run's S3 log. A LangGraph conversation
 stores its history in Postgres checkpoints instead, so nothing in the task world can see it. This
 module keeps a task-world copy of every LangGraph conversation up to date: one Task, one completed
 "import run" that never executed, and an S3 log written in the same wire format a real sandbox run
@@ -45,7 +45,7 @@ MESSAGES_COPIED_KEY = "conversation_messages_copied"
 LAST_MESSAGE_ID_KEY = "conversation_last_message_id"
 IMPORTED_TASK_ORIGIN_KEY_PREFIX = "phai-conversation:"
 
-# The task thread and the agent-server both recognize a PostHog tool call by this Claude Code tool
+# The task thread and the agent-server both recognize a Flind tool call by this Claude Code tool
 # name; the inner tool is parsed out of the exec command. Legacy tool calls are written in the same
 # shape so the product widgets (insight, recordings, ...) render them.
 _EXEC_TOOL_NAME = "mcp__posthog__exec"

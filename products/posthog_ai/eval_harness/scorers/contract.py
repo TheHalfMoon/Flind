@@ -1,4 +1,4 @@
-"""The PostHog-owned scorer contract.
+"""The Flind-owned scorer contract.
 
 ``Score`` extends braintrust's normalized score with an optional reporting
 outcome. ``Scorer`` retains braintrust's execution behavior. Both still satisfy
@@ -29,7 +29,7 @@ class Score(BraintrustScore):
 
 
 class Scorer(_UpstreamScorer):
-    """PostHog's scorer base. An empty subclass of braintrust's base for now."""
+    """Flind's scorer base. An empty subclass of braintrust's base for now."""
 
 
 class AsyncOnlyScorerMixin:

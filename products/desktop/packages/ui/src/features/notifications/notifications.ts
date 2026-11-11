@@ -45,7 +45,7 @@ export interface NotificationDescriptor {
   // Extra facts the producer knows about the trigger (which code path raised
   // it, the stop reason, the task run). Logged verbatim beside `reason`.
   debug?: Record<string, unknown>;
-  // Native title; defaults to "PostHog".
+  // Native title; defaults to "Flind".
   title?: string;
   body: string;
   // What the notification is about — drives suppression (am I viewing it?) and
@@ -172,7 +172,7 @@ export class NotificationBus {
     // native
     if (settings.desktopNotifications) {
       this.notifications.notify({
-        title: descriptor.title ?? "PostHog",
+        title: descriptor.title ?? "Flind",
         body: descriptor.body,
         silent: nativeSilent,
         target: descriptor.target,

@@ -33,7 +33,7 @@ export interface SessionLogSink {
 }
 
 export interface SessionLogWriterOptions {
-  /** PostHog API client for log persistence */
+  /** Flind API client for log persistence */
   posthogAPI?: PostHogAPIClient;
   /** Logger instance */
   logger?: Logger;

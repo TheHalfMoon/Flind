@@ -143,7 +143,7 @@ function refreshSeconds(value: unknown): number | undefined {
 }
 
 // Resolves a `ph.*` data-request from a freeform canvas (edit mode). The host
-// injects the PostHog token; the iframe only ever sees the result. The QueryClient
+// injects the Flind token; the iframe only ever sees the result. The QueryClient
 // is passed in by the calling component (via useQueryClient) rather than resolved
 // here, so this stays a pure function with no host/DI coupling. View/published mode
 // (Phase 3) swaps this for a share-token proxy that accepts only `run` of an
@@ -281,7 +281,7 @@ export async function handleFreeformDataRequest(
       if (!input?.verb || typeof input.verb !== "string") {
         throw new Error("ph.actions.invoke(verb, payload) requires a verb");
       }
-      // A write into PostHog, never cached.
+      // A write into Flind, never cached.
       const client = hostClient().dashboards;
       return invokeCanvasAction(
         {
@@ -303,7 +303,7 @@ export async function handleFreeformDataRequest(
       if (!input?.tool || typeof input.tool !== "string") {
         throw new Error("ph.tools requires a tool name");
       }
-      // Reads and writes into PostHog as the viewer, never cached.
+      // Reads and writes into Flind as the viewer, never cached.
       const client = hostClient().dashboards;
       const { result } = await invokeCanvasTool(
         {

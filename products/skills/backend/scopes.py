@@ -7,7 +7,7 @@ SCOPE_DOCS = (
         object="llm_skill",
         name="LLM skill",
         plural="LLM skills",
-        description="Skills for AI agents with their files and versions, the skills marketplace, and PostHog Review skill settings.",
+        description="Skills for AI agents with their files and versions, the skills marketplace, and Flind Review skill settings.",
         group="LLM & MCP analytics",
         docs_url="https://posthog.com/docs/skills",
     ),

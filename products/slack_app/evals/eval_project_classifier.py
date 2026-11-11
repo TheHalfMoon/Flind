@@ -1,6 +1,6 @@
 """Does the project classifier pick the project a person in the thread would have?
 
-A Slack workspace connected to several PostHog projects answers every mention from one
+A Slack workspace connected to several Flind projects answers every mention from one
 saved default, so a question about another project is answered from the wrong data. The
 classifier reads the project out of the message that opens a thread. The unit tests around
 `classify_slack_app_project_route` cover parsing and the schema; this suite covers the only

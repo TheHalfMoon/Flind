@@ -28,7 +28,7 @@ export const getReactRouterSteps = (ctx: OnboardingComponentsContext): StepDefin
             content: (
                 <>
                     <Markdown>
-                        Use `posthog-node` to evaluate feature flags on the server. You can access PostHog in a React
+                        Use `posthog-node` to evaluate feature flags on the server. You can access Flind in a React
                         Router loader:
                     </Markdown>
                     <CodeBlock
@@ -37,11 +37,11 @@ export const getReactRouterSteps = (ctx: OnboardingComponentsContext): StepDefin
                                 language: 'typescript',
                                 file: 'app/routes/example.tsx',
                                 code: dedent`
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
                                     import type { Route } from './+types/example'
 
                                     export async function loader({ request }: Route.LoaderArgs) {
-                                        const posthog = new PostHog(process.env.VITE_POSTHOG_PROJECT_TOKEN!, {
+                                        const posthog = new Flind(process.env.VITE_POSTHOG_PROJECT_TOKEN!, {
                                             host: process.env.VITE_POSTHOG_HOST
                                         })
 
@@ -68,7 +68,7 @@ export const getReactRouterSteps = (ctx: OnboardingComponentsContext): StepDefin
             content: (
                 <Markdown>
                     Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run
-                    an experiment by creating a new experiment in the PostHog dashboard.
+                    an experiment by creating a new experiment in the Flind dashboard.
                 </Markdown>
             ),
         },

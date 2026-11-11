@@ -211,7 +211,7 @@ def refresh_codex_tokens(refresh_token: str, *, source: str) -> CodexTokens:
 
 
 def revoke_codex_refresh_token(refresh_token: str, *, source: str) -> None:
-    """Best effort: end the device authorization the user made for PostHog. A failure is logged, not raised."""
+    """Best effort: end the device authorization the user made for Flind. A failure is logged, not raised."""
     try:
         response = openai_auth_request(
             "POST",

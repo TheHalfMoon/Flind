@@ -117,7 +117,7 @@ class RiskAnalyzer:
         "AlterIndexTogether": AlterIndexTogetherAnalyzer(),
         "RemoveIndex": RemoveIndexAnalyzer(),
         "RemoveIndexConcurrently": RemoveIndexConcurrentlyAnalyzer(),
-        # PostHog migration helpers (posthog/migration_helpers/concurrent_index.py)
+        # Flind migration helpers (posthog/migration_helpers/concurrent_index.py)
         "CreateIndexConcurrently": CreateIndexConcurrentlyAnalyzer(),
         "DropIndexConcurrently": DropIndexConcurrentlyAnalyzer(),
         "DropFieldIndexesConcurrently": DropFieldIndexesConcurrentlyAnalyzer(),
@@ -220,7 +220,7 @@ class RiskAnalyzer:
         # Check for dangerous operation combinations
         combination_risks = self.check_operation_combinations(migration, operation_risks)
 
-        # Check PostHog policies
+        # Check Flind policies
         policy_violations = self.check_policies(migration)
 
         # Build info messages
@@ -462,7 +462,7 @@ class RiskAnalyzer:
         return ["⚠️  INFO: Migration is marked atomic=False. Ensure data migrations handle failures correctly."]
 
     def check_policies(self, migration) -> list[str]:
-        """Check migration against PostHog coding policies."""
+        """Check migration against Flind coding policies."""
         violations = []
 
         for policy in POSTHOG_POLICIES:

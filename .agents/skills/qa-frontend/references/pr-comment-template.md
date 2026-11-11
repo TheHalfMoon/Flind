@@ -1,6 +1,6 @@
 # PR Comment Template
 
-Post one comment per completed run. Do not edit the PR body. The template uses a compact PostHog QA Frontend format so reviewers can scan verdict, coverage, and findings quickly.
+Post one comment per completed run. Do not edit the PR body. The template uses a compact Flind QA Frontend format so reviewers can scan verdict, coverage, and findings quickly.
 
 ## Banner
 

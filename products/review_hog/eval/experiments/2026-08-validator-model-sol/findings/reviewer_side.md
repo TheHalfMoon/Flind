@@ -55,7 +55,7 @@
 
 - REAL LA11 sev=must_fix cluster=2 Verify trusted PR provenance before enabling approval bypass
 - REAL LA13 sev=must_fix cluster=2 Validate the PR before granting self-driving privileges
-- REAL LA14 sev=must_fix cluster=75 Verify the PostHog Code bot identity
+- REAL LA14 sev=must_fix cluster=75 Verify the Flind Code bot identity
 - REAL LA15 sev=must_fix cluster=None Do not use mutable task attribution as authorization
 - REAL LA19 sev=must_fix cluster=6 The carve-out is not bound to the expected PR shape
 - REAL LA4 sev=should_fix cluster=29 Dependency outages can leave stale approvals active

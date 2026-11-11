@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 13 enabled ops
+ * Flind API - MCP 13 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -361,8 +361,8 @@ export const IntegrationsUsersRetrieveQueryParams = () => zod.object({
 })
 
 /**
- * Replay an API request against the connected PostHog project. The server injects the connection's token; the response is passed through.
- * @summary Forward a request through a PostHog connection
+ * Replay an API request against the connected Flind project. The server injects the connection's token; the response is passed through.
+ * @summary Forward a request through a Flind connection
  */
 export const PosthogConnectionsForwardCreateParams = () => zod.object({
     id: zod.string(),

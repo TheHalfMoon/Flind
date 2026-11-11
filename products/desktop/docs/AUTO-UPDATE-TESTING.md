@@ -65,7 +65,7 @@ bash apps/code/scripts/dev-update/run-from-ci.sh
 # automated spec instead: AUTOMATED=1 bash apps/code/scripts/dev-update/run-from-ci.sh
 ```
 
-Needs the GitHub CLI (`gh`) authenticated, and the installed PostHog app must be quit (the test build shares its single-instance lock and data dir). The app opens on `1.0.0` with an update available; click Download, then Restart, and it swaps and relaunches into `2.0.0`.
+Needs the GitHub CLI (`gh`) authenticated, and the installed Flind app must be quit (the test build shares its single-instance lock and data dir). The app opens on `1.0.0` with an update available; click Download, then Restart, and it swaps and relaunches into `2.0.0`.
 
 ## 2a. Run it automated (Playwright)
 
@@ -153,7 +153,7 @@ bash apps/code/scripts/dev-update/run-from-ci-forge.sh
 # automated spec instead: AUTOMATED=1 bash apps/code/scripts/dev-update/run-from-ci-forge.sh
 ```
 
-Needs `gh` authenticated and the installed PostHog app quit. The CI job uploads the Forge app as a `ditto` zip (`update-old-forge-build-1.0.0`) so its symlinks and code signature survive the artifact round-trip; a plain directory upload would break both and the swap would fail.
+Needs `gh` authenticated and the installed Flind app quit. The CI job uploads the Forge app as a `ditto` zip (`update-old-forge-build-1.0.0`) so its symlinks and code signature survive the artifact round-trip; a plain directory upload would break both and the swap would fail.
 
 ## CI
 

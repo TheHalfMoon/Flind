@@ -1,6 +1,6 @@
 """Harmonic egress budget.
 
-Harmonic bills one account-wide rate limit — there is one ``HARMONIC_API_KEY`` per PostHog
+Harmonic bills one account-wide rate limit — there is one ``HARMONIC_API_KEY`` per Flind
 instance, not one per installation or team — so every call anywhere in the codebase draws from a
 single shared budget under the constant key ``harmonic:account:default``.
 

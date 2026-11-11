@@ -181,12 +181,12 @@ def clay_credit_balances_source(api_key: str, team_id: int, job_id: str) -> Sour
 
 
 _CLAY_REJECTED_KEY_MESSAGE = (
-    "Clay rejected PostHog's request while checking your API key. Create a new key under "
+    "Clay rejected Flind's request while checking your API key. Create a new key under "
     "Settings > Account > API keys in Clay, then reconnect."
 )
 
 _CLAY_REJECTED_TABLE_MESSAGE = (
-    "Clay rejected PostHog's request for one of your tables. Check that each value is a Clay table "
+    "Clay rejected Flind's request for one of your tables. Check that each value is a Clay table "
     "ID or table URL, and that Enable for API is on in the table's settings."
 )
 

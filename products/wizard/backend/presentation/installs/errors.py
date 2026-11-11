@@ -37,7 +37,7 @@ def install_start_api_error(error: WizardInstallStartError) -> APIException:
             )
         case RepositoryNotAccessibleError():
             return ValidationError(
-                "PostHog can't access this repository. Add it to the repositories the PostHog GitHub App can "
+                "Flind can't access this repository. Add it to the repositories the Flind GitHub App can "
                 "access, then try again.",
                 code="repository_not_accessible",
             )

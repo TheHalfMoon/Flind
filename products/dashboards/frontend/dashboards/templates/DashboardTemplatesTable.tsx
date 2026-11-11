@@ -28,7 +28,7 @@ const templatesTableLogic = dashboardTemplatesLogic({ scope: 'default', template
 
 const POPULAR_TEMPLATE_TOOLTIP = 'One of our most popular templates'
 
-/** Global template with no owning team (PostHog built-ins). Staff may still narrow to the current team via API; used here for delete restrictions. */
+/** Global template with no owning team (Flind built-ins). Staff may still narrow to the current team via API; used here for delete restrictions. */
 function isBuiltInOfficialTemplate(record: Pick<DashboardTemplateType, 'scope' | 'team_id'>): boolean {
     return record.scope === 'global' && record.team_id == null
 }

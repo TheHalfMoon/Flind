@@ -20,7 +20,7 @@ export function InfrastructureAdmin({ region }: { region: string }): JSX.Element
         <div className="app-shell">
             <header className="app-header">
                 <a className="brand" href="/admin/">
-                    <span>PostHog</span>
+                    <span>Flind</span>
                     <span className="muted">/ agent infrastructure</span>
                 </a>
                 <div className="header-right">

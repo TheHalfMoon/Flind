@@ -19,7 +19,7 @@ export const getFlutterInstallSteps = (
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Add the PostHog Flutter SDK to your `pubspec.yaml`:</Markdown>
+                    <Markdown>Add the Flind Flutter SDK to your `pubspec.yaml`:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -161,7 +161,7 @@ export const getFlutterEventStep = (ctx: OnboardingComponentsContext): StepDefin
         content: (
             <>
                 <Markdown>
-                    Once installed, PostHog will automatically start capturing events. You can also manually send events
+                    Once installed, Flind will automatically start capturing events. You can also manually send events
                     to test your integration:
                 </Markdown>
                 <CodeBlock

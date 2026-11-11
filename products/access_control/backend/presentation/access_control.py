@@ -91,7 +91,7 @@ class ResolvedAccessSerializer(serializers.Serializer):
     source = serializers.ChoiceField(  # type: ignore[assignment]  # field named `source` shadows DRF Field.source
         choices=RESOLVED_ACCESS_SOURCE_CHOICES,
         help_text="How the level was derived: a rule on the object, its parent object, the resource, the parent "
-        "resource, the PostHog default, an organization admin's or a creator's full access, or organization "
+        "resource, the Flind default, an organization admin's or a creator's full access, or organization "
         "membership when the object is the organization itself.",
     )
     source_subject = serializers.ChoiceField(

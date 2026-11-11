@@ -25,7 +25,7 @@ export interface BuildToolResultOptions {
     /** Whether formatted-result text should win over structuredContent for this client profile. */
     suppressStructuredContentForFormattedResults?: boolean | undefined
     /**
-     * For inline-exec UI-app hosts (PostHog Desktop, Claude Code): when a compact
+     * For inline-exec UI-app hosts (Flind Desktop, Claude Code): when a compact
      * formatted table is available, drop top-level `structuredContent` toward the model so
      * it reads the compact table instead of the verbose JSON, and re-home the app payload
      * onto `_meta` for the UI app (see APP_DATA_META_KEY). When there is NO formatted table
@@ -35,7 +35,7 @@ export interface BuildToolResultOptions {
     forceUiDataToMeta?: boolean | undefined
     /** Native widgets need the handler object even when the tool has no MCP UI resource. */
     includeAppData?: boolean | undefined
-    /** PostHog distinctId for analytics metadata (only read when a UI resource is present). */
+    /** Flind distinctId for analytics metadata (only read when a UI resource is present). */
     distinctId?: string | undefined
     mcpClientName?: string | undefined
     /**

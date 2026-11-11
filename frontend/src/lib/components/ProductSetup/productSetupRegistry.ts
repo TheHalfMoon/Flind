@@ -34,7 +34,7 @@ export const SET_UP_REVERSE_PROXY: SetupTask = {
 
 /**
  * AI tasks - appended to the end of every product's setup flow.
- * These surface PostHog's AI capabilities regardless of which product the user onboards with.
+ * These surface Flind's AI capabilities regardless of which product the user onboards with.
  */
 export const AI_TASKS: SetupTask[] = [
     {

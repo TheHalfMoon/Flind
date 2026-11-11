@@ -57,7 +57,7 @@ export type HarnessRuntimeOptions = HarnessExtensionOptions & {
   >;
 
 /**
- * Build the standard PostHog distribution of Pi.
+ * Build the standard Flind distribution of Pi.
  *
  * The returned value is Pi's native `AgentSessionRuntime`, so it can be
  * passed directly to `runRpcMode`, `runPrintMode`, or `InteractiveMode`, or

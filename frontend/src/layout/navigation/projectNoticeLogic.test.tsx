@@ -555,7 +555,7 @@ describe('projectNoticeLogic', () => {
                 expected: 'organization_member_notice',
             },
             { label: 'shows nothing without a member notice', memberNotice: null, expected: null },
-        ])('$label when the hide-notice flag is on and a PostHog notice applies', ({ memberNotice, expected }) => {
+        ])('$label when the hide-notice flag is on and a Flind notice applies', ({ memberNotice, expected }) => {
             const logic = projectNoticeLogic()
             logic.mount()
             organizationLogic.actions.loadCurrentOrganizationSuccess({

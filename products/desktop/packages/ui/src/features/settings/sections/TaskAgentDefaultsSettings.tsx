@@ -26,7 +26,7 @@ import { usePreviewConfig } from "@flind/ui/features/task-detail/hooks/usePrevie
 import { Text } from "@radix-ui/themes";
 import { useEffect, useRef, useState } from "react";
 
-/** The tasks settings page in PostHog, where the project default is set. */
+/** The tasks settings page in Flind, where the project default is set. */
 const POSTHOG_SETTINGS_PATH = "/settings/environment-task-agents";
 
 const INHERIT_PROJECT_DEFAULT = "Use project default";
@@ -276,7 +276,7 @@ function MyDefaultPicker({
  *
  * Both levels are shown because only seeing the resolved answer leaves "why this
  * model" unanswerable. The project default is read-only here: it is admin-gated in
- * PostHog, so this links out rather than offering a control that would be refused.
+ * Flind, so this links out rather than offering a control that would be refused.
  */
 export function TaskAgentDefaultsSettings() {
   const cloudRegion = useAuthStateValue((state) => state.cloudRegion);
@@ -307,7 +307,7 @@ export function TaskAgentDefaultsSettings() {
   if (!isAuthenticated) {
     return (
       <Text className="text-(--gray-11) text-sm">
-        Sign in to PostHog to see the defaults this project runs with.
+        Sign in to Flind to see the defaults this project runs with.
       </Text>
     );
   }
@@ -342,7 +342,7 @@ export function TaskAgentDefaultsSettings() {
 
         <SettingsCardRow
           label="My default"
-          description="Overrides the project default for your own runs, everywhere in PostHog — not just this app."
+          description="Overrides the project default for your own runs, everywhere in Flind — not just this app."
         >
           {/* Deliberately not disabled while saving: the write is debounced and the pick
               already shows, so toggling the control would just make it blink. */}

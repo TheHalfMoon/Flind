@@ -61,7 +61,7 @@ class LiteLLMSource(ResumableSource[LiteLLMSourceConfig, LiteLLMResumeConfig], V
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="LiteLLM",
             keywords=["llm proxy", "llm gateway", "llm spend"],
-            caption="""Sync spend logs, keys, users, teams and models from your LiteLLM proxy into the PostHog Data warehouse.
+            caption="""Sync spend logs, keys, users, teams and models from your LiteLLM proxy into the Flind Data warehouse.
 
 Enter the proxy's public https URL and the master key or an admin key. A key without admin rights only syncs its own spend logs.""",
             iconPath="/static/services/litellm.png",

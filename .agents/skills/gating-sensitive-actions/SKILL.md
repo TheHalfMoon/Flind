@@ -24,7 +24,7 @@ These rules are settled. Do not reopen them in a feature PR.
 Gate a write when it does one of these:
 
 - It changes how someone signs in or proves who they are: password, email, 2FA, passkeys, backup codes.
-- It creates, rolls, or revokes a credential: personal API keys, project secret API keys, OAuth connected apps, personal integrations (GitHub, Slack), personal PostHog connections.
+- It creates, rolls, or revokes a credential: personal API keys, project secret API keys, OAuth connected apps, personal integrations (GitHub, Slack), personal Flind connections.
 - It ends sessions or deletes the account.
 - It changes who can act as the user, or what data is collected about them: allow impersonation, data opt-out.
 - It changes organization membership, roles, domains, SSO, or invites.

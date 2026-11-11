@@ -29,7 +29,7 @@ FLOAT_BASE_URL = "https://api.float.com/v3"
 REQUEST_TIMEOUT_SECONDS = 60
 # Float rejects requests without a User-Agent that identifies the app and a contact email. This is a
 # static integration identifier, not user data, so it's hardcoded rather than surfaced as a form field.
-USER_AGENT = "PostHog Data Warehouse (hey@posthog.com)"
+USER_AGENT = "Flind Data Warehouse (hey@posthog.com)"
 
 
 @frozen

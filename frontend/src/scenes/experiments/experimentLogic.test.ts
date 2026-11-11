@@ -2696,7 +2696,7 @@ describe('experimentLogic', () => {
                         healthCheck(
                             'metric_event_not_ingested',
                             'not_checked',
-                            "Couldn't check because PostHog keeps no record of these event names"
+                            "Couldn't check because Flind keeps no record of these event names"
                         ),
                     ],
                 },
@@ -2711,7 +2711,7 @@ describe('experimentLogic', () => {
                         'flag_state:finding:',
                         'no_metric:passed:',
                         'flag_variants_mismatch:not_applicable:',
-                        "metric_event_not_ingested:not_checked:Couldn't check because PostHog keeps no record of these event names",
+                        "metric_event_not_ingested:not_checked:Couldn't check because Flind keeps no record of these event names",
                     ],
                     flag_state_browser: null,
                     flag_state_server: 'running_but_flag_disabled',

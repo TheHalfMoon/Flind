@@ -1,8 +1,8 @@
 """The shapes that suggested dashboards store, and the answers that the AI steps return.
 
 A template panel holds a finished insight query, the same JSON that an insight saves. So a dashboard that a
-person changed, by hand or with PostHog AI, goes back into the template without loss. The AI steps answer in
-the smaller builder shape of the dashboard import, and PostHog checks and converts each answer.
+person changed, by hand or with Flind AI, goes back into the template without loss. The AI steps answer in
+the smaller builder shape of the dashboard import, and Flind checks and converts each answer.
 """
 
 from __future__ import annotations

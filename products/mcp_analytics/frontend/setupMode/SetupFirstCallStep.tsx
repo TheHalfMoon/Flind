@@ -37,7 +37,7 @@ const COPY = {
                 : count > 1
                   ? 'Your first tool calls just landed'
                   : 'Your first tool call just landed',
-        lead: 'This is what every call looks like in PostHog: which client called which tool, why, and how it went.',
+        lead: 'This is what every call looks like in Flind: which client called which tool, why, and how it went.',
         next: 'Make it useful',
     },
     failure: {
@@ -49,7 +49,7 @@ const COPY = {
                   : latest
                     ? 'One of your latest tool calls failed'
                     : 'Two calls in, and one already needs you',
-        lead: "PostHog caught the error your agent got back. Failures like this are the ones you'll want to hear about.",
+        lead: "Flind caught the error your agent got back. Failures like this are the ones you'll want to hear about.",
         next: 'Catch these automatically',
     },
 }

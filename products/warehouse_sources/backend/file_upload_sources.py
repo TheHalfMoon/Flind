@@ -3,7 +3,7 @@
 A table made from an upload keeps reading the file in place until the first sync of its source
 finishes. That sync's last step points the same row at the imported copy (see
 `DataWarehouseTable.adopt_into_source`), so the table keeps its id and its name. The schema's schedule
-stays paused: PostHog starts each billable sync itself, once when the table is made and once for each
+stays paused: Flind starts each billable sync itself, once when the table is made and once for each
 new file.
 
 A table the self-managed migration moved here has a source that reads no file yet. Its schema does not
@@ -122,14 +122,14 @@ def read_upload_in_place(team_id: int, table_name: str, upload: UploadedFile) ->
         except Exception as e:
             capture_exception(e)
         if allow_double_quotes is None:
-            raise UnreadableUploadError("PostHog couldn't read the file as CSV.")
+            raise UnreadableUploadError("Flind couldn't read the file as CSV.")
         probe.options = {"csv_allow_double_quotes": allow_double_quotes}
     try:
         columns = probe.get_columns()
     except Exception as e:
         # The raw failure is a ClickHouse error that's opaque to users, so it stays in error tracking.
         capture_exception(e)
-        raise UnreadableUploadError("PostHog couldn't read the file's columns.") from e
+        raise UnreadableUploadError("Flind couldn't read the file's columns.") from e
     return UploadReadSettings(columns=columns, allow_double_quotes=allow_double_quotes)
 
 
@@ -256,7 +256,7 @@ def start_file_upload_sync(schema: ExternalDataSchema) -> str:
         )
     except Exception as e:
         capture_exception(e)
-        raise FileUploadSourceError("PostHog couldn't start the sync of the file. Try again in a few minutes.") from e
+        raise FileUploadSourceError("Flind couldn't start the sync of the file. Try again in a few minutes.") from e
     return trigger.workflow_id
 
 

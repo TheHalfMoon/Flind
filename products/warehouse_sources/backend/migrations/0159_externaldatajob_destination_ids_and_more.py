@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                     "type",
                     models.CharField(
                         choices=[
-                            ("PostHogWarehouse", "PostHog warehouse"),
+                            ("PostHogWarehouse", "Flind warehouse"),
                             ("Redshift", "Redshift"),
                             ("Snowflake", "Snowflake"),
                             ("BigQuery", "BigQuery"),
@@ -75,7 +75,7 @@ class Migration(migrations.Migration):
                     "integration",
                     models.ForeignKey(
                         blank=True,
-                        help_text="Credentials for this destination. Null for the PostHog warehouse.",
+                        help_text="Credentials for this destination. Null for the Flind warehouse.",
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         to="posthog.integration",

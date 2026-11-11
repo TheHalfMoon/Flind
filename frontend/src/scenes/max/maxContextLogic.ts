@@ -78,8 +78,8 @@ const PICKER_GROUP_CONTEXT_TYPES: Partial<Record<TaxonomicFilterGroupType, MaxCo
     [TaxonomicFilterGroupType.ErrorTrackingIssues]: MaxContextType.ERROR_TRACKING_ISSUE,
 }
 
-// A throw while building scene context blanks out ALL of PostHog AI's auto-collected context
-// (e.g. PostHog AI reporting it has no dashboard and falling back to search). The selector that
+// A throw while building scene context blanks out ALL of Flind AI's auto-collected context
+// (e.g. Flind AI reporting it has no dashboard and falling back to search). The selector that
 // catches it runs on every read, so dedupe by message to avoid spamming when it keeps
 // throwing — but never let the failure stay silent.
 const reportedSceneContextErrors = new Set<string>()

@@ -82,7 +82,7 @@ If a new widget type omits `minH`, users can only shrink to **4 rows**, not 3. A
 
 ## Add widget modal
 
-- Title: **Add widget**; description: **Bring context from your different PostHog products into one dashboard.**
+- Title: **Add widget**; description: **Bring context from your different Flind products into one dashboard.**
 - `AddWidgetModal` supports **multi-select** — pick one or more catalog variants, then "Add N widgets"
 - `dashboardLogic.addWidgetTiles` → `POST .../widgets/batch/` (1–10 tiles)
 - Backend placement: `widget_layouts.stack_widget_layout_at_bottom` — new tiles land at the **bottom**, anchored to the tallest column so the grid's vertical compaction keeps them there; batch adds stack downward (a horizontal row would drift up on a staircased dashboard). On add, `dashboardLogic` scrolls `#main-content` to the bottom so the new tile is visible.

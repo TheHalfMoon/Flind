@@ -43,7 +43,7 @@ import { Info } from "lucide-react";
 const ITEMS = [
   {
     id: "download-desktop",
-    label: "Download PostHog Desktop",
+    label: "Download Flind Desktop",
     hint: null,
   },
   {
@@ -118,7 +118,7 @@ export default function WelcomeChecklist() {
   return (
     <div className="flex h-full flex-col gap-2 overflow-y-auto p-3">
       <div className="flex items-baseline justify-between gap-2">
-        <Text weight="medium">Welcome to PostHog</Text>
+        <Text weight="medium">Welcome to Flind</Text>
         {checked ? (
           <Text size="sm" className="text-muted-foreground">
             {done} of {ITEMS.length} done
@@ -212,7 +212,7 @@ def seed_home_canvas(canvas: Canvas, *, user: User, channel_id: UUID) -> None:
         channel_id=channel_id,
         name=WELCOME_COMPONENT_NAME,
         kind=Canvas.KIND_COMPONENT,
-        description="Onboarding checklist walking a new user through their first steps in PostHog Desktop.",
+        description="Onboarding checklist walking a new user through their first steps in Flind Desktop.",
         created_by=user,
     )
     build_service.publish_source_project(

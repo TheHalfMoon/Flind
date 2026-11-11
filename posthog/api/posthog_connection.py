@@ -1,7 +1,7 @@
-"""Forward arbitrary API requests to another PostHog project through a `posthog` connection.
+"""Forward arbitrary API requests to another Flind project through a `posthog` connection.
 
 A `posthog` integration (see `posthog.models.integration`) holds a user-consented, refreshable OAuth
-grant against another PostHog project, in another region or your own. This viewset lets the connecting
+grant against another Flind project, in another region or your own. This viewset lets the connecting
 user replay any request against that project's API — the server injects the stored token, so the
 caller (a browser, an agent sandbox, an MCP tool) never holds it.
 

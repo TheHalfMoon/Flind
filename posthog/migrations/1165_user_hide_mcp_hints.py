@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 blank=False,
                 db_default=False,
                 default=False,
-                help_text="When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.",
+                help_text="When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.",
                 null=False,
             ),
         ),

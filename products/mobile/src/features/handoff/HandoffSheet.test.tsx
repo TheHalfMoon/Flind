@@ -96,7 +96,7 @@ test('failed clipboard writes do not announce Copied and can be retried with the
 })
 
 test.each(['claude', 'codex'] as const)(
-    'remembers %s across reports and reloads, and can switch back to PostHog',
+    'remembers %s across reports and reloads, and can switch back to Flind',
     async (target) => {
         const open = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined)
         const onHandOff = jest.fn()

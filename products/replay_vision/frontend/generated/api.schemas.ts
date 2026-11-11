@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -740,7 +740,7 @@ export interface ScannerResultApi {
     /** Validated scanner output. Shape depends on `scanner_snapshot.scanner_type`; always carries `confidence` and `scanner_type`. */
     model_output: unknown
     /**
-     * Number of PostHog Signals emitted from this observation.
+     * Number of Flind Signals emitted from this observation.
      * @minimum 0
      */
     signals_count: number
@@ -916,10 +916,10 @@ export interface PaginatedReplayObservationListApi {
 }
 
 /**
- * The PostHog Task created from an observation.
+ * The Flind Task created from an observation.
  */
 export interface CreateTaskFromObservationResponseApi {
-    /** ID of the PostHog Task holding this observation's finding, created now (201) or by an earlier call (200). */
+    /** ID of the Flind Task holding this observation's finding, created now (201) or by an earlier call (200). */
     task_id: string
 }
 
@@ -1089,7 +1089,7 @@ export const ScannerModelEnumApi = {
  * A question asked inline, without saving a scanner first.
  */
 export interface InlineScanConfigApi {
-    /** Run a scan PostHog defines instead of your own prompt. `summarize_recording` is the AI summary the Summarize button in the replay player runs, so its results are shared with that button. Leave out `prompt`, `scanner_type` and `scanner_config` when this is set.
+    /** Run a scan Flind defines instead of your own prompt. `summarize_recording` is the AI summary the Summarize button in the replay player runs, so its results are shared with that button. Leave out `prompt`, `scanner_type` and `scanner_config` when this is set.
      *
      * * `summarize_recording` - Summarize recording */
     built_in?: BuiltInScanKeyEnumApi
@@ -1407,7 +1407,7 @@ export interface ReplayScannerApi {
     model: ScannerModelEnumApi
     /** When false, the reconciler removes the scanner's Temporal schedule. On-demand triggers still work. */
     enabled?: boolean
-    /** When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals. */
+    /** When true, the prompt is augmented with the Signal side mission and the scanner emits Flind Signals. */
     emits_signals?: boolean
     /** The experiment this scanner's targeting watches, if any. Set null when the experiment targeting is removed. */
     experiment_targeting?: ScannerExperimentTargetingApi | null
@@ -1566,7 +1566,7 @@ export interface PatchedReplayScannerApi {
     model?: ScannerModelEnumApi
     /** When false, the reconciler removes the scanner's Temporal schedule. On-demand triggers still work. */
     enabled?: boolean
-    /** When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals. */
+    /** When true, the prompt is augmented with the Signal side mission and the scanner emits Flind Signals. */
     emits_signals?: boolean
     /** The experiment this scanner's targeting watches, if any. Set null when the experiment targeting is removed. */
     experiment_targeting?: ScannerExperimentTargetingApi | null
@@ -2165,7 +2165,7 @@ export interface SignalScoutSlackDestinationApi {
      */
     channel?: string | null
     /**
-     * Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the PostHog app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel.
+     * Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the Flind app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel.
      * @minItems 1
      * @maxItems 5
      * @nullable
@@ -2275,7 +2275,7 @@ export interface SignalScoutConfigOptionsApi {
     run_interval_minutes?: number
     /** Destinations that receive each finding or report this scout emits. Empty by default. */
     output_destinations?: SignalScoutOutputDestinationsApi
-    /** What the scout's sandbox can reach over the network while it runs. Defaults to `trusted`, the platform's trusted-domain allowlist (PostHog, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers.
+    /** What the scout's sandbox can reach over the network while it runs. Defaults to `trusted`, the platform's trusted-domain allowlist (Flind, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers.
      *
      * * `trusted` - Trusted domains only
      * * `full` - Full */
@@ -2383,7 +2383,7 @@ export const ScoutDeprecationPhaseEnumApi = {
 } as const
 
 /**
- * What PostHog has said about retiring this scout, for the chip and the banner to render.
+ * What Flind has said about retiring this scout, for the chip and the banner to render.
  */
 export interface ScoutDeprecationApi {
     /** How far the retirement has got: `announced` while the scout still runs, `retired` once its sunset has passed. A retired scout is paused and does not run again.
@@ -2391,7 +2391,7 @@ export interface ScoutDeprecationApi {
      * * `announced` - announced
      * * `retired` - retired */
     phase: ScoutDeprecationPhaseEnumApi
-    /** Why PostHog is retiring the scout, written to be shown to a person as-is. */
+    /** Why Flind is retiring the scout, written to be shown to a person as-is. */
     reason: string
     /** Skill name of the scout that takes over, or blank when nothing replaces it. */
     superseded_by: string
@@ -2496,11 +2496,11 @@ export interface SignalScoutConfigApi {
      * @maxLength 200
      */
     display_name?: string
-    /** Where this scout came from: `canonical` for a scout PostHog ships and maintains (seeded from `products/signals/skills/`), or `custom` for one a team hand-authored on this project. Use it to badge built-in vs custom scouts instead of a hardcoded name list. Defaults to `custom` if the skill is not currently present on the team. */
+    /** Where this scout came from: `canonical` for a scout Flind ships and maintains (seeded from `products/signals/skills/`), or `custom` for one a team hand-authored on this project. Use it to badge built-in vs custom scouts instead of a hardcoded name list. Defaults to `custom` if the skill is not currently present on the team. */
     readonly scout_origin: ScoutOriginEnumApi
-    /** What this scout is to the harness: `specialist` for one that watches a product surface, or `operational` for one PostHog ships to watch the self-driving system itself. An operational scout is exempt from the inactivity sweep and from the enabled-scout cap, and is not a scout a project should delete. Always `specialist` for a custom scout. */
+    /** What this scout is to the harness: `specialist` for one that watches a product surface, or `operational` for one Flind ships to watch the self-driving system itself. An operational scout is exempt from the inactivity sweep and from the enabled-scout cap, and is not a scout a project should delete. Always `specialist` for a custom scout. */
     readonly scout_role: ScoutRoleEnumApi
-    /** Set when PostHog is retiring this scout, and null otherwise. Carries the phase, the reason to show, what replaces the scout, and when it stops running. Only a canonical scout the project has not edited is ever marked: a project's own copy keeps running and reads as null. */
+    /** Set when Flind is retiring this scout, and null otherwise. Carries the phase, the reason to show, what replaces the scout, and when it stops running. Only a canonical scout the project has not edited is ever marked: a project's own copy keeps running and reads as null. */
     readonly deprecation: ScoutDeprecationApi | null
     /** Who answers for this scout, seed-creator first. Ownership is recorded on the scout's skill rather than on this config, so editing the skill or toggling the scout leaves it unchanged. Reports the scout files suggest these people as reviewers. Prefer this over `created_by`-style fields, which only say who last flipped a switch. Empty when nobody owns the scout, when the owners are no longer members with access to the project, or when the caller is a scout sandbox token: owners are member PII, and a scout reads them through the skill API instead. */
     readonly owners: readonly UserBasicApi[]
@@ -2513,7 +2513,7 @@ export interface SignalScoutConfigApi {
      * * `paused_by_system` - Paused by system
      * * `paused_by_user` - Paused by user */
     readonly status: SignalScoutConfigStatusEnumApi
-    /** Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), `repeated_failures` (consecutive failed runs), `retired` (PostHog retired the scout), or `background_removed` (the background lane stopped managing the scout). Null unless `status` is `pending_pause` or `paused_by_system`.
+    /** Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), `repeated_failures` (consecutive failed runs), `retired` (Flind retired the scout), or `background_removed` (the background lane stopped managing the scout). Null unless `status` is `pending_pause` or `paused_by_system`.
      *
      * * `no_output` - No output
      * * `ignored` - Ignored
@@ -2522,7 +2522,7 @@ export interface SignalScoutConfigApi {
      * * `retired` - Retired
      * * `background_removed` - Background removed */
     readonly pause_reason: SignalScoutConfigPauseReasonEnumApi | null
-    /** Who controls this scout now. `team`: a person set it up or has changed it. `background`: PostHog runs it in the background and no person has edited it yet. Any edit through this API changes `background` to `team`.
+    /** Who controls this scout now. `team`: a person set it up or has changed it. `background`: Flind runs it in the background and no person has edited it yet. Any edit through this API changes `background` to `team`.
      *
      * * `team` - Team
      * * `background` - Background */
@@ -2547,7 +2547,7 @@ export interface SignalScoutConfigApi {
      * @nullable
      */
     readonly structured_output_schema: SignalScoutConfigApiStructuredOutputSchema
-    /** What the scout's sandbox can reach over the network while it runs. `trusted` (the default) restricts runs to the platform's trusted-domain allowlist (PostHog, GitHub, common package registries). `full` lets the scout reach any site, for skills that read external sources such as documentation or papers.
+    /** What the scout's sandbox can reach over the network while it runs. `trusted` (the default) restricts runs to the platform's trusted-domain allowlist (Flind, GitHub, common package registries). `full` lets the scout reach any site, for skills that read external sources such as documentation or papers.
      *
      * * `trusted` - Trusted domains only
      * * `full` - Full */
@@ -3089,7 +3089,7 @@ export interface HighlightFeedImpressionsApi {
  * Body of POST /vision/scanners/inline_scan/ - a prompt or built-in scan plus the sessions to point it at.
  */
 export interface InlineScanRequestApi {
-    /** Run a scan PostHog defines instead of your own prompt. `summarize_recording` is the AI summary the Summarize button in the replay player runs, so its results are shared with that button. Leave out `prompt`, `scanner_type` and `scanner_config` when this is set.
+    /** Run a scan Flind defines instead of your own prompt. `summarize_recording` is the AI summary the Summarize button in the replay player runs, so its results are shared with that button. Leave out `prompt`, `scanner_type` and `scanner_config` when this is set.
      *
      * * `summarize_recording` - Summarize recording */
     built_in?: BuiltInScanKeyEnumApi

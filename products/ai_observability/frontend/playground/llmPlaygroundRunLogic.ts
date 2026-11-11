@@ -571,7 +571,7 @@ export const llmPlaygroundRunLogic = kea<llmPlaygroundRunLogicType>([
                         const normalizedProvider = normalizeLLMProvider(selectedModel.provider)
                         if (!normalizedProvider) {
                             const describeUnknownProvider = (model: string): string =>
-                                `Model '${model}' has a provider PostHog does not recognize. Pick a different model and try again.`
+                                `Model '${model}' has a provider Flind does not recognize. Pick a different model and try again.`
                             lemonToast.error(describeUnknownProvider(prompt.model))
                             responseText = `**Error:** ${describeUnknownProvider(escapeMarkdownInline(prompt.model))}`
                             responseHasError = true

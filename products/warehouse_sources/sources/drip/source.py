@@ -98,7 +98,7 @@ class DripSource(ResumableSource[DripSourceConfig, DripResumeConfig]):
             name=ExternalDataSourceType.DRIP,
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Drip",
-            caption="""Enter your Drip API token and account ID to pull your Drip data into the PostHog Data warehouse.
+            caption="""Enter your Drip API token and account ID to pull your Drip data into the Flind Data warehouse.
 
 You can find your API token under **Settings → User Settings → API** in Drip, and your account ID under **Settings → Account → General Info** (it's the numeric ID in your Drip dashboard URL).""",
             iconPath="/static/services/drip.png",

@@ -1,6 +1,6 @@
 # Deep Links
 
-PostHog registers custom URL schemes so the desktop app can be opened with context from a browser, another app, or the shell. Opening a deep link focuses the app window and routes the URL to the matching handler.
+Flind registers custom URL schemes so the desktop app can be opened with context from a browser, another app, or the shell. Opening a deep link focuses the app window and routes the URL to the matching handler.
 
 ## Schemes
 
@@ -18,7 +18,7 @@ Links can also be dispatched from inside the app: the `deepLink.open` tRPC route
 
 ## Report references in the app
 
-Report references in agent messages open the full report page in the current app, including inside task chats. They do not open a general object preview or an external browser. The hover card's explicit **Open in PostHog** action still opens the web page.
+Report references in agent messages open the full report page in the current app, including inside task chats. They do not open a general object preview or an external browser. The hover card's explicit **Open in Flind** action still opens the web page.
 
 ## User-facing links
 
@@ -98,7 +98,7 @@ posthog-code://task/abc123/run/xyz789
 posthog-code://task/abc123?comment=thread-1&scope=canvas&item=canvas-9
 ```
 
-An **https** bridge also exists for links sent outside the app (e.g. comment Slack DMs): `<instance>/code/task/<taskId>` resolves to a web interstitial in PostHog Cloud, which fires this scheme — forwarding the `comment`, `scope`, and `item` params — or offers the desktop-app download.
+An **https** bridge also exists for links sent outside the app (e.g. comment Slack DMs): `<instance>/code/task/<taskId>` resolves to a web interstitial in Flind Cloud, which fires this scheme — forwarding the `comment`, `scope`, and `item` params — or offers the desktop-app download.
 
 ### `posthog-code://inbox[/<reportId>]`
 
@@ -152,7 +152,7 @@ Open a canvas (a dashboard inside a Channels-space channel) straight in the
 desktop app. Gated on the `project-bluebird` flag. Unlike the links above,
 users don't share this scheme link directly — the "Copy link" affordance on a
 canvas copies an **https** link (`<instance>/code/canvas/<channelId>/<dashboardId>`)
-that resolves to a web interstitial in PostHog Cloud, which fires this scheme
+that resolves to a web interstitial in Flind Cloud, which fires this scheme
 (or offers the desktop-app download). That way the link works for anyone,
 whether or not they have the app.
 
@@ -176,7 +176,7 @@ straight in the desktop app. Gated on the `project-bluebird` flag. Like canvas
 links, users don't share this scheme link directly — the "Copy link" affordances
 on a channel and on a thread copy an **https** link
 (`<instance>/code/channel/<channelId>[/tasks/<taskId>]`) that resolves to a web
-interstitial in PostHog Cloud, which fires this scheme (or offers the
+interstitial in Flind Cloud, which fires this scheme (or offers the
 desktop-app download).
 
 | Segment | Required | Description |
@@ -195,7 +195,7 @@ These are issued by external services and consumed by the app. You should not ne
 
 ### `posthog-code://callback`
 
-PKCE OAuth callback for user sign-in. PostHog Cloud redirects to this URL after the user authorises in their browser.
+PKCE OAuth callback for user sign-in. Flind Cloud redirects to this URL after the user authorises in their browser.
 
 | Parameter | Required | Description |
 |---|---|---|
@@ -206,12 +206,12 @@ In development the same payload is delivered to `http://localhost:8237/callback`
 
 ### `posthog-code://integration`
 
-OAuth callback for the GitHub App installation flow. PostHog Cloud redirects to this URL after the user finishes the GitHub App install in their browser.
+OAuth callback for the GitHub App installation flow. Flind Cloud redirects to this URL after the user finishes the GitHub App install in their browser.
 
 | Parameter | Description |
 |---|---|
 | `provider` | Integration provider, always `github` for this handler |
-| `project_id` | PostHog project ID |
+| `project_id` | Flind project ID |
 | `installation_id` | GitHub App installation ID |
 | `status` | `success` or `error` |
 | `error_code` | Error code on failure |
@@ -221,17 +221,17 @@ The Slack integration uses its own [`slack-integration`](#posthog-codeslack-inte
 
 ### `posthog-code://slack-integration`
 
-OAuth callback for the Slack workspace install flow. PostHog Cloud redirects to this URL after the user authorises the PostHog Slack app and finishes the flow on the AccountConnected page.
+OAuth callback for the Slack workspace install flow. Flind Cloud redirects to this URL after the user authorises the Flind Slack app and finishes the flow on the AccountConnected page.
 
 | Parameter | Description |
 |---|---|
-| `project_id` | PostHog project ID (numeric) |
-| `integration_id` | PostHog Slack integration row ID (numeric, set on success) |
+| `project_id` | Flind project ID (numeric) |
+| `integration_id` | Flind Slack integration row ID (numeric, set on success) |
 | `status` | `success` or `error` (defaults to `success` if absent) |
 | `error_code` | Error code on failure |
 | `error_message` | Human-readable error message on failure |
 
-The flow is started from the renderer by calling the `slackIntegration.startFlow` tRPC mutation, which opens the browser to PostHog Cloud's authorize endpoint. If the deep link is not received within five minutes, a `FlowTimedOut` event is emitted so the UI can surface a timeout state.
+The flow is started from the renderer by calling the `slackIntegration.startFlow` tRPC mutation, which opens the browser to Flind Cloud's authorize endpoint. If the deep link is not received within five minutes, a `FlowTimedOut` event is emitted so the UI can surface a timeout state.
 
 ### `posthog-code://mcp-oauth-complete`
 

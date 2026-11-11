@@ -152,7 +152,7 @@ const SUB_INSIGHT_CARDS: Record<'worldMap' | 'table' | 'number' | 'pie', NewInsi
 const AI_CARD: NewInsightCardSpec = {
     key: 'ai',
     name: 'AI',
-    description: 'Ask PostHog AI to create insights using natural language.',
+    description: 'Ask Flind AI to create insights using natural language.',
     icon: IconSparkles,
     iconClassName: 'text-ai',
     sketch: AiSketch,

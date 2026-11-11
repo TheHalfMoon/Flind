@@ -24,7 +24,7 @@ TEMPLATE_NAME: Final = "alert_platform_notification"
 
 def subject_for(message: AlertMessage) -> str:
     # The alert name is user-written, and a header cannot carry a line break.
-    return f"PostHog alert: {' '.join(message.headline.split())}"
+    return f"Flind alert: {' '.join(message.headline.split())}"
 
 
 class EmailTransport:

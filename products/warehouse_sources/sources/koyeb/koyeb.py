@@ -32,7 +32,7 @@ USAGE_WINDOW_START = "2019-01-01T00:00:00Z"
 
 # Placeholder written over plaintext secrets pulled out of deployment definitions, so the column
 # still shows a value existed without exposing it.
-REDACTED_SECRET = "[redacted by PostHog]"
+REDACTED_SECRET = "[redacted by Flind]"
 
 
 @dataclasses.dataclass(frozen=False)

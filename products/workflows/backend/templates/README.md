@@ -5,7 +5,7 @@ This directory contains global workflow templates that are stored in code and ve
 ## Creating a New Template
 
 1. **Export the template JSON** from the UI:
-   - Create or edit a workflow in the PostHog UI
+   - Create or edit a workflow in the Flind UI
    - Click "Save as template" from the workflow menu
    - Select "Official (visible to everyone)" as the scope
    - Click "See JSON" to open the JSON modal

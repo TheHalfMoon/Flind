@@ -166,7 +166,7 @@ def is_output_limit_error_message(message: str) -> bool:
 class ContentFilteredError(LLMError):
     """Raised when the provider's content filter refused the prompt or withheld the reply.
 
-    The prompt is usually built from customer trace content, so the refusal is not a PostHog
+    The prompt is usually built from customer trace content, so the refusal is not a Flind
     defect. Callers should skip the item rather than report one.
     """
 

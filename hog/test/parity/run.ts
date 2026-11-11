@@ -56,7 +56,7 @@ function environment(serverUrl: string, home: string): Record<string, string> {
         HOG_PROJECT_ID: '1',
         HOG_HOST: serverUrl,
         // hog runs on the real process runtime here, so without this every scenario would send usage
-        // events, and every expected failure a real exception, to PostHog's own project.
+        // events, and every expected failure a real exception, to Flind's own project.
         HOG_NO_TELEMETRY: '1',
         NO_COLOR: '1',
     }

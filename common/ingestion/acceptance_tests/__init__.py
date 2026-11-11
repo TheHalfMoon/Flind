@@ -1,1 +1,1 @@
-# PostHog Ingestion Acceptance Tests
+# Flind Ingestion Acceptance Tests

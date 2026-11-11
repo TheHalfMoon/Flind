@@ -1,6 +1,6 @@
 # @flind/quill
 
-PostHog's UI primitives, components, and design tokens, bundled as one
+Flind's UI primitives, components, and design tokens, bundled as one
 publishable package. Built on [base-ui](https://base-ui.com/),
 [Tailwind v4](https://tailwindcss.com/), and a shared token layer.
 

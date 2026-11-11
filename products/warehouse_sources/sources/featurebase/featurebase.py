@@ -33,7 +33,7 @@ from products.warehouse_sources.sources.sdk import (
 )
 from products.warehouse_sources.sources.sdk.internals import table_from_py_list
 
-POSTHOG_WEBHOOK_NAME = "PostHog data warehouse"
+POSTHOG_WEBHOOK_NAME = "Flind data warehouse"
 
 
 class FeaturebaseRetryableError(Exception):
@@ -505,7 +505,7 @@ def create_webhook(api_key: str, webhook_url: str) -> WebhookCreationResult:
     payload = {
         "name": POSTHOG_WEBHOOK_NAME,
         "url": webhook_url,
-        "description": "Streams Featurebase events into the PostHog data warehouse",
+        "description": "Streams Featurebase events into the Flind data warehouse",
         "topics": all_desired_webhook_topics(),
     }
     try:

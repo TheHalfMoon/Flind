@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -1788,7 +1788,7 @@ export const LlmAnalyticsClusteringConfigSetEventFiltersCreateBody = /* @__PURE_
     event_filters: zod
         .array(zod.record(zod.string(), zod.unknown()))
         .describe(
-            'PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters.'
+            'Flind property filters to save for automated clustering jobs. Pass an empty array to clear filters.'
         ),
 })
 
@@ -1805,7 +1805,7 @@ export const LlmAnalyticsClusteringJobsCreateBody = /* @__PURE__ */ zod.object({
     event_filters: zod
         .array(zod.record(zod.string(), zod.unknown()))
         .optional()
-        .describe('PostHog property filters that scope this clustering job. Empty array means no filters.'),
+        .describe('Flind property filters that scope this clustering job. Empty array means no filters.'),
     enabled: zod.boolean().optional(),
 })
 
@@ -1822,7 +1822,7 @@ export const LlmAnalyticsClusteringJobsUpdateBody = /* @__PURE__ */ zod.object({
     event_filters: zod
         .array(zod.record(zod.string(), zod.unknown()))
         .optional()
-        .describe('PostHog property filters that scope this clustering job. Empty array means no filters.'),
+        .describe('Flind property filters that scope this clustering job. Empty array means no filters.'),
     enabled: zod.boolean().optional(),
 })
 
@@ -1840,7 +1840,7 @@ export const LlmAnalyticsClusteringJobsPartialUpdateBody = /* @__PURE__ */ zod.o
     event_filters: zod
         .array(zod.record(zod.string(), zod.unknown()))
         .optional()
-        .describe('PostHog property filters that scope this clustering job. Empty array means no filters.'),
+        .describe('Flind property filters that scope this clustering job. Empty array means no filters.'),
     enabled: zod.boolean().optional(),
 })
 
@@ -1964,7 +1964,7 @@ export const LlmAnalyticsClusteringRunsCreateBody = /* @__PURE__ */ zod
         event_filters: zod
             .array(zod.record(zod.string(), zod.unknown()))
             .optional()
-            .describe('Property filters to scope which traces are included in clustering (PostHog standard format)'),
+            .describe('Property filters to scope which traces are included in clustering (Flind standard format)'),
         clustering_job_id: zod
             .uuid()
             .nullish()
@@ -3288,7 +3288,7 @@ export const TaggersUpdateBody = /* @__PURE__ */ zod.object({
                     .uuid()
                     .nullish()
                     .describe(
-                        'Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by PostHog, or omit\/null when no provider key should be pinned.'
+                        'Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by Flind, or omit\/null when no provider key should be pinned.'
                     ),
             }),
             zod.null(),
@@ -3429,7 +3429,7 @@ export const TaggersPartialUpdateBody = /* @__PURE__ */ zod.object({
                     .uuid()
                     .nullish()
                     .describe(
-                        'Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by PostHog, or omit\/null when no provider key should be pinned.'
+                        'Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by Flind, or omit\/null when no provider key should be pinned.'
                     ),
             }),
             zod.null(),

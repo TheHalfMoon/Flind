@@ -34,7 +34,7 @@ from products.signals.dags.inbox_ranking.common import (
     ensure_utc,
 )
 
-# All regions' label telemetry lands in the US dogfood project (PostHog internal, team 2).
+# All regions' label telemetry lands in the US dogfood project (Flind internal, team 2).
 LABELS_TEAM_ID = 2
 
 # Naming scheme from products/error_tracking/backend/indexed_embedding.py (the shared

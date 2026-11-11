@@ -197,7 +197,7 @@ export function PlanUsageContent({
             >
               <Text color="gray" className="text-[13px]">
                 {usage
-                  ? "Usage is billed to your organization. View detailed usage and spend in PostHog."
+                  ? "Usage is billed to your organization. View detailed usage and spend in Flind."
                   : "Unable to load usage data"}
               </Text>
               {usage && (

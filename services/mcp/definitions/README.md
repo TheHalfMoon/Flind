@@ -1,6 +1,6 @@
 # MCP YAML tool definitions
 
-YAML-driven tool generation for PostHog's MCP server. Each YAML file declares which API
+YAML-driven tool generation for Flind's MCP server. Each YAML file declares which API
 endpoints are exposed as MCP tools, with product teams owning the configuration for their
 endpoints.
 

@@ -48,7 +48,7 @@ DatabricksErrors = {
     "nodename nor servname provided": "Can't resolve the server hostname. Check the server hostname and try again.",
     "Name or service not known": "Can't resolve the server hostname. Check the server hostname and try again.",
     "Failed to resolve": "Can't resolve the server hostname. Check the server hostname and try again.",
-    "is blocked by Databricks IP ACL for workspace": "PostHog's IP address is blocked by your Databricks workspace's IP access control list. Add PostHog's IP addresses to the workspace's IP ACL, then try again.",
+    "is blocked by Databricks IP ACL for workspace": "Flind's IP address is blocked by your Databricks workspace's IP access control list. Add Flind's IP addresses to the workspace's IP ACL, then try again.",
     # Workspace-level entitlement, not a Unity Catalog grant — a separate admin setting from
     # PERMISSION_DENIED/INSUFFICIENT_PERMISSIONS above.
     "databricks-sql-access or workspace-consume entitlements": "Your Databricks credentials don't have the databricks-sql-access or workspace-consume entitlement. Grant one of those entitlements to the connecting user or service principal in your Databricks workspace admin settings, then try again.",
@@ -96,7 +96,7 @@ class DatabricksSource(SQLSource[DatabricksSourceConfig], ValidateDatabaseHostMi
             name=ExternalDataSourceType.DATABRICKS,
             category=DataWarehouseSourceCategory.DATABASES,
             label="Databricks",
-            caption="Enter your Databricks SQL warehouse credentials to automatically pull your Databricks data into the PostHog Data warehouse. Requires a Unity Catalog catalog.",
+            caption="Enter your Databricks SQL warehouse credentials to automatically pull your Databricks data into the Flind Data warehouse. Requires a Unity Catalog catalog.",
             iconPath="/static/services/databricks.png",
             docsUrl="https://posthog.com/docs/cdp/sources/databricks",
             releaseStatus=ReleaseStatus.GA,
@@ -215,14 +215,14 @@ class DatabricksSource(SQLSource[DatabricksSourceConfig], ValidateDatabaseHostMi
             "RESOURCE_DOES_NOT_EXIST": "The SQL warehouse referenced by the HTTP path no longer exists. Update the HTTP path to a running SQL warehouse, then resync.",
             # Workspace-level IP ACL rejection — a customer-side network config that retrying can
             # never satisfy. Match the stable phrase, ignoring the appended IP and workspace id.
-            "is blocked by Databricks IP ACL for workspace": "PostHog's IP address is blocked by your Databricks workspace's IP access control list. Add PostHog's IP addresses to the workspace's IP ACL, then resync.",
+            "is blocked by Databricks IP ACL for workspace": "Flind's IP address is blocked by your Databricks workspace's IP access control list. Add Flind's IP addresses to the workspace's IP ACL, then resync.",
             # Workspace-level entitlement, not a Unity Catalog grant — a separate admin setting from
             # PERMISSION_DENIED/INSUFFICIENT_PERMISSIONS above.
             "databricks-sql-access or workspace-consume entitlements": "Your Databricks credentials don't have the databricks-sql-access or workspace-consume entitlement. Grant one of those entitlements to the connecting user or service principal in your Databricks workspace admin settings, then resync.",
             # Raised when a synced table is a Lakehouse Federation table/view backed by an external
             # JDBC data source and Databricks itself can't open a connection to that upstream
             # database — a connectivity problem on the customer's federated data source, not
-            # something PostHog's retries can fix. Matched on Databricks' own stable error class,
+            # something Flind's retries can fix. Matched on Databricks' own stable error class,
             # not the redacted JDBC URL around it.
             "[FAILED_JDBC.CONNECTION]": "Databricks couldn't connect to a federated database backing a table you're syncing (a Lakehouse Federation connection). Check that the underlying database is reachable and its connection details in Databricks are still correct, then resync.",
             # Raised when a synced view's underlying table was altered (a column renamed or dropped)

@@ -50,7 +50,7 @@ AGGREGATORS = frozenset(
 GROUPING_KEYWORDS = frozenset({"by", "without", "on", "ignoring", "group_left", "group_right"})
 KEYWORDS = GROUPING_KEYWORDS | {"bool", "and", "or", "unless", "offset", "atan2", "inf", "nan"}
 
-# Grafana fills these per panel. PostHog runs a range-less rate or increase over the query step,
+# Grafana fills these per panel. Flind runs a range-less rate or increase over the query step,
 # which is what `$__rate_interval` and `$__interval` stand for.
 _STEP_RANGE_VARIABLE = re.compile(r"^\$\{?__(rate_interval|interval|auto)\}?$")
 # Grafana also writes the dashboard range as `${__range_s}s` or `${__range_ms}ms`.

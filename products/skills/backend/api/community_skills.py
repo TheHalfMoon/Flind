@@ -84,7 +84,7 @@ class CommunitySkillFeatureFlagPermission(BasePermission):
             group_properties["project"] = {"id": project_id}
 
         # Honor POSTHOG_FEATURE_FLAGS_FORCE_ENABLED so self-hosted deployments can enable the
-        # marketplace without a round-trip to PostHog Cloud, matching the canonical permission.
+        # marketplace without a round-trip to Flind Cloud, matching the canonical permission.
         if COMMUNITY_SKILL_FEATURE_FLAG in _FORCE_ENABLED_FLAGS:
             return True
 

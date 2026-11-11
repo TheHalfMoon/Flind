@@ -6,7 +6,7 @@ export interface ComposerBillingIndicatorProps {
 }
 
 export function ComposerBillingIndicator({ ownPlan }: ComposerBillingIndicatorProps): JSX.Element {
-    const label = ownPlan ? 'ChatGPT plan' : 'PostHog credits'
+    const label = ownPlan ? 'ChatGPT plan' : 'Flind credits'
     return (
         <Tooltip>
             <TooltipTrigger
@@ -24,7 +24,7 @@ export function ComposerBillingIndicator({ ownPlan }: ComposerBillingIndicatorPr
             <TooltipContent>
                 {ownPlan
                     ? 'This chat uses your ChatGPT plan. Change it in the model menu.'
-                    : 'This chat uses your PostHog credits.'}
+                    : 'This chat uses your Flind credits.'}
             </TooltipContent>
         </Tooltip>
     )

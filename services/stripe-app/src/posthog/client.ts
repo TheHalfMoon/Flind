@@ -142,7 +142,7 @@ export class PostHogClient {
 
     async refreshAccessToken(): Promise<void> {
         if (!this.clientId) {
-            throw new Error('Cannot refresh PostHog token without a client_id')
+            throw new Error('Cannot refresh Flind token without a client_id')
         }
 
         let response: Response
@@ -190,7 +190,7 @@ export class PostHogClient {
         const response = await this.request(path)
         if (!response.ok) {
             const body = await response.text().catch(() => '<unreadable>')
-            throw new Error(`PostHog API ${response.status} on ${path}: ${body}`)
+            throw new Error(`Flind API ${response.status} on ${path}: ${body}`)
         }
         return (await response.json()) as T
     }
@@ -203,7 +203,7 @@ export class PostHogClient {
         })
         if (!response.ok) {
             const body = await response.text().catch(() => '<unreadable>')
-            throw new Error(`PostHog API ${response.status} on ${path}: ${body}`)
+            throw new Error(`Flind API ${response.status} on ${path}: ${body}`)
         }
         return (await response.json()) as T
     }

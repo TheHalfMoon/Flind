@@ -153,7 +153,7 @@ describe('meta ads template', () => {
 
         it.each([
             {
-                name: 'sends the $fbc PostHog stamped when it saw the click',
+                name: 'sends the $fbc Flind stamped when it saw the click',
                 event: {},
                 person: { $fbc: `fb.1.${eventMs - 89 * dayMs}.AbC_123-x` },
                 expected: `fb.1.${eventMs - 89 * dayMs}.AbC_123-x`,

@@ -294,10 +294,10 @@ export const runSlashCommandsLogic: LogicWrapper<runSlashCommandsLogicType> = ke
                             kind: 'support',
                             target: 'sidePanel',
                             isEmailFormOpen: true,
-                            message: [args, taskUrl ? `PostHog AI task: ${taskUrl}` : null]
+                            message: [args, taskUrl ? `Flind AI task: ${taskUrl}` : null]
                                 .filter(Boolean)
                                 .join('\n\n'),
-                            // Attributes the ticket to this run, like the other PostHog AI ticket handovers.
+                            // Attributes the ticket to this run, like the other Flind AI ticket handovers.
                             ai_conversation_id: taskId ?? null,
                             ai_trace_id: values.traceId,
                         })

@@ -420,7 +420,7 @@ class TestFindHogliExecutable:
     """Test _find_hogli_executable resolves correctly across environments."""
 
     def test_prefers_bin_hogli_when_present(self, tmp_path: MagicMock, monkeypatch: pytest.MonkeyPatch) -> None:
-        """If ``<repo>/bin/hogli`` exists it's used directly (PostHog monorepo case)."""
+        """If ``<repo>/bin/hogli`` exists it's used directly (Flind monorepo case)."""
         fake_repo = tmp_path
         (fake_repo / "bin").mkdir()
         (fake_repo / "bin" / "hogli").write_text("#!/bin/sh\n")

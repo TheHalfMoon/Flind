@@ -171,7 +171,7 @@ class ExperimentFlagVariantSplit:
 
 @frozen
 class ExperimentAssistantContext:
-    """What PostHog AI reads to describe an experiment and its results."""
+    """What Flind AI reads to describe an experiment and its results."""
 
     id: int
     # With `id`, the fields that an object access check reads.
@@ -914,7 +914,7 @@ UNSET = Unset()
 @frozen
 class TeamExperimentsSettingsUpdate:
     """The settings that an update changes. UNSET leaves a setting as it is. Precomputation is not here, because
-    PostHog manages it."""
+    Flind manages it."""
 
     experiment_recalculation_times: tuple[str, ...] | None | Unset = UNSET
     default_experiment_confidence_level: Decimal | None | Unset = UNSET

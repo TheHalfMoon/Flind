@@ -73,7 +73,7 @@ def _get_headers(api_token: str) -> dict[str, str]:
     return {
         "Authorization": f"Bearer {api_token}",
         "Content-Type": "application/json",
-        "User-Agent": "PostHog-Data-Warehouse/1.0",
+        "User-Agent": "Flind-Data-Warehouse/1.0",
     }
 
 

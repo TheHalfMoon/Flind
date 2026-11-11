@@ -29,7 +29,7 @@ export function ReportGithubConnection({
         <LemonModal title="Connect GitHub" isOpen={connectionOpen} onClose={() => setConnectionOpen(false)}>
             <div className="flex max-w-xl flex-col gap-4">
                 <p className="m-0">
-                    Connect a GitHub account and give PostHog access to {report.repo_slug || 'your repository'} to
+                    Connect a GitHub account and give Flind access to {report.repo_slug || 'your repository'} to
                     create a pull request for this report.
                 </p>
                 {restricted ? (

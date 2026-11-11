@@ -1,5 +1,5 @@
 /**
- * Pure builders for the PostHog `_posthog/*` ext-notification params the app-server
+ * Pure builders for the Flind `_posthog/*` ext-notification params the app-server
  * adapter emits so log consumers and the renderer
  * see the same shapes. Param-only (no I/O) so each is unit-testable in isolation.
  */

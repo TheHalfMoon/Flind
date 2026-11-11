@@ -45,7 +45,7 @@ class FlexmailSource(ResumableSource[FlexmailSourceConfig, FlexmailResumeConfig]
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Flexmail",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Flexmail account ID and personal access token to pull your email marketing data into the PostHog Data warehouse.
+            caption="""Enter your Flexmail account ID and personal access token to pull your email marketing data into the Flind Data warehouse.
 
 You can create a personal access token under **Settings → API → Personal access tokens** in [Flexmail](https://app.flexmail.eu). The token grants read access to your contacts, interests, custom fields, preferences, segments, sources, and opt-in forms.
 """,

@@ -69,7 +69,7 @@ TOUR_TEMPLATES: list[dict[str, Any]] = [
         "description": "Configure your data pipeline",
         "steps": [
             {"selector": "#sources-tab", "content": "Connect your data sources here"},
-            {"selector": "#transformations", "content": "Transform data before it reaches PostHog"},
+            {"selector": "#transformations", "content": "Transform data before it reaches Flind"},
             {"selector": "#destinations", "content": "Send data to external destinations"},
             {"selector": "#batch-exports", "content": "Set up batch exports to your data warehouse"},
         ],

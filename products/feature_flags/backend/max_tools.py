@@ -28,7 +28,7 @@ class MultivariateVariant(BaseModel):
 
 
 class FeatureFlagCreationSchema(BaseModel):
-    """Structured schema for AI-powered feature flag creation using PostHog's native types."""
+    """Structured schema for AI-powered feature flag creation using Flind's native types."""
 
     key: str = Field(
         description="Unique flag key in kebab-case (e.g., 'new-dashboard', 'dark-mode'). "
@@ -44,7 +44,7 @@ class FeatureFlagCreationSchema(BaseModel):
     groups: list[FeatureFlagGroupType] = Field(
         default_factory=list,
         description="Feature flag groups containing properties and rollout percentage. "
-        "Uses PostHog's native FeatureFlagGroupType schema.",
+        "Uses Flind's native FeatureFlagGroupType schema.",
     )
     tags: list[str] = Field(
         default_factory=list,

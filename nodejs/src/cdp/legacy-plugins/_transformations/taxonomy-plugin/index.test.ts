@@ -104,7 +104,7 @@ describe('taxonomy-plugin', () => {
     })
 
     describe('special cases', () => {
-        it('should not transform PostHog system events starting with $', () => {
+        it('should not transform Flind system events starting with $', () => {
             const testCases = ['$pageview', '$autocapture', '$feature_flag_called']
 
             for (const systemEvent of testCases) {
@@ -117,7 +117,7 @@ describe('taxonomy-plugin', () => {
             }
         })
 
-        it('should not transform skipped PostHog events', () => {
+        it('should not transform skipped Flind events', () => {
             const testCases = ['survey shown', 'survey sent', 'survey dismissed']
 
             for (const surveyEvent of testCases) {

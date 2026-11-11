@@ -90,7 +90,7 @@ export function SourceControlRepositoriesList({
           <div className="px-3.5 py-3">
             <Text size="xs" variant="muted">
               No repositories yet. Connect GitHub above, or connect a GitLab
-              project in the PostHog project settings.
+              project in the Flind project settings.
             </Text>
           </div>
         ) : (

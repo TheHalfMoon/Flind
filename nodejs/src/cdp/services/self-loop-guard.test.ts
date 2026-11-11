@@ -133,7 +133,7 @@ describe('self-loop-guard', () => {
             { case: 'external (non-PostHog) fetch', args: { url: EXTERNAL_URL }, expected: false },
             { case: 'observability logs endpoint (not ingestion)', args: { url: LOGS_URL }, expected: false },
             {
-                case: 'workflow step posting to a PostHog REST API endpoint (with $lib_token in body)',
+                case: 'workflow step posting to a Flind REST API endpoint (with $lib_token in body)',
                 args: { url: API_URL, body: JSON.stringify({ status: 'open', properties: { $lib_token: OWN_TOKEN } }) },
                 expected: false,
             },

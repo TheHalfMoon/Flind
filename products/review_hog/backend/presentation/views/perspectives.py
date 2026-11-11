@@ -47,7 +47,7 @@ class ReviewPerspectiveConfigUpdateSerializer(serializers.Serializer):
 
 
 class ReviewPerspectiveConfigViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
-    """Per-user enablement of PostHog Review's review perspectives for a project.
+    """Per-user enablement of Flind Review's review perspectives for a project.
 
     A perspective is any team `review-hog-perspective-*` `LLMSkill` (canonical or custom — handled
     identically at run time). The skill itself is team-level; this surface only controls **which**

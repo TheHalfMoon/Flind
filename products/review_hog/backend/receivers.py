@@ -64,7 +64,7 @@ from products.tasks.backend.facade.task_run_signals import connect_task_run_post
 logger = logging.getLogger(__name__)
 
 # The name stamphog shows for these reviews, the same name the reviews carry on GitHub.
-REVIEWER_NAME = "PostHog Review"
+REVIEWER_NAME = "Flind Review"
 
 
 def connect() -> None:

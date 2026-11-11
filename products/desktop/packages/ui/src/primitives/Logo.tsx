@@ -18,7 +18,7 @@ export default function LogosLandscape({
       viewBox={`0 0 ${width} ${height}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="PostHog logo"
+      aria-label="Flind logo"
       role="img"
     >
       <g id="logos">

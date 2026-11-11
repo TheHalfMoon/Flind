@@ -1,6 +1,6 @@
-"""Asks Jev, a System One model, whether a finished PostHog AI turn deserves a follow-up and which.
+"""Asks Jev, a System One model, whether a finished Flind AI turn deserves a follow-up and which.
 
-Only the ai-gateway answers, with the Jev build PostHog hosts. TypeSafe is never a fallback here,
+Only the ai-gateway answers, with the Jev build Flind hosts. TypeSafe is never a fallback here,
 because the state carries customer text (see ``posthog/egress/typesafe/README.md``).
 
 Jev answers typed questions instead of writing text, so one request carries every judgment the
@@ -9,7 +9,7 @@ offer (scout mode, cadence, alert direction, which saved insight). The policy in
 reads only the answers that apply to the offer it picks.
 
 The state Jev reads holds what the user asked, which tools ran, and the answer with its values
-masked. Tool outputs never leave PostHog, and saved insights and error issues reach Jev as numbered
+masked. Tool outputs never leave Flind, and saved insights and error issues reach Jev as numbered
 options, so their ids stay here too.
 """
 
@@ -66,15 +66,15 @@ _ALERT_CHANGE_PERCENT = {"small": 10, "moderate": 20, "large": 50}
 
 _SHOW_OFFER = NoulQuestion(
     instructions={
-        "question": "Should PostHog AI show a follow-up offer under the answer in `latest_turn`, at this point in the conversation?",
+        "question": "Should Flind AI show a follow-up offer under the answer in `latest_turn`, at this point in the conversation?",
         "context": (
-            "PostHog AI is the analytics agent inside PostHog. A follow-up offer is a small card under its answer "
+            "Flind AI is the analytics agent inside Flind. A follow-up offer is a small card under its answer "
             "that turns the answer into something lasting: a scheduled report in Slack, an alert, a chart "
             "subscription, or a saved notebook. An offer at the wrong moment interrupts the user, so show one "
             "only when it clearly helps."
         ),
         "show_when": [
-            "The turn ran PostHog tools that completed, and the answer gives a real result.",
+            "The turn ran Flind tools that completed, and the answer gives a real result.",
             "The user digs into something specific: a segment, filter, flow or feature, often compared with an earlier period, a review of what changed on a dashboard, a worry about a number, or a request to keep track of it.",
             "The turn investigated a problem and found its cause.",
             "The question is about one area of the product, such as a flow, page or feature, which the user will likely check again. This counts for more than a question about the whole product.",
@@ -82,7 +82,7 @@ _SHOW_OFFER = NoulQuestion(
         ],
         "hold_back_when": [
             "The turn failed, a tool errored, or the answer apologizes or says it found no data.",
-            "The turn ran no PostHog tools, for example advice, brainstorming or planning.",
+            "The turn ran no Flind tools, for example advice, brainstorming or planning.",
             "The answer asks the user a question or offers options to pick from.",
             "The question satisfies a one-time curiosity: a breakdown such as top pages, referrers, browsers, countries or the device split, a list of users or accounts, or a search for recordings, even when the answer points out something in them. Numbers in the answer do not make it recurring.",
             "The question is a basic count of the whole product with no filters and no digging, such as how many events, people, users or daily active users there are. A count for one flow or feature, such as how many people finished onboarding, is not a basic count.",
@@ -112,7 +112,7 @@ _INTENT = ChoiceQuestion(
 
 _OFFER_CRITERIA: dict[OfferKind, JsonValue] = {
     OfferKind.SCOUT: {
-        "what": "A scheduled agent that reruns this analysis with the same PostHog tools and posts a short report to Slack.",
+        "what": "A scheduled agent that reruns this analysis with the same Flind tools and posts a short report to Slack.",
         "fits": "The user asks how a metric is doing now, today, this week, or over a recent window, and will ask again next period. A metric the user digs into with specific filters, segments or a flow and will follow over time, a concern about a number, a check on one area of the product for a period (such as errors or drop-off in onboarding this week) that the user will want every period, a review of what changed on a dashboard or metric this period, several metrics from this conversation, or an investigation worth repeating when the metric dips.",
         "not_for": "A question about why something happened, once the answer explains it. A basic count with no filters, such as how many events, people or daily active users. A generic overview of the whole product, such as the most common errors this week. An investigation whose cause was a one-time event, such as a release, an email or a migration. A turn about performance. A notebook keeps those last two better.",
     },
@@ -152,7 +152,7 @@ _SCOUT_RECURRING = NoulQuestion(
 )
 
 _SCOUT_MODE = ChoiceQuestion(
-    instructions="If PostHog AI offered a scheduled agent that reruns the analysis in `latest_turn`, which kind of run would fit?",
+    instructions="If Flind AI offered a scheduled agent that reruns the analysis in `latest_turn`, which kind of run would fit?",
     criteria={
         ScoutMode.REPORT: "Posts the current numbers and what changed on every run. Fits a question about the current state of a metric.",
         ScoutMode.WATCH: "Posts only when the number crosses a threshold. Fits a question that carries a concern, such as whether something is down.",
@@ -318,7 +318,7 @@ def build_judge_questions(transcript: TurnTranscript, available: frozenset[Offer
     # server can reject a choice with a single option.
     if len(available) > 1:
         questions["offer"] = ChoiceQuestion(
-            instructions="If PostHog AI showed a follow-up under the answer in `latest_turn`, which one would help the user most? Pick the lightest one that covers what they need next.",
+            instructions="If Flind AI showed a follow-up under the answer in `latest_turn`, which one would help the user most? Pick the lightest one that covers what they need next.",
             criteria={kind: _OFFER_CRITERIA[kind] for kind in OfferKind if kind in available},
         )
     if OfferKind.SCOUT in available:

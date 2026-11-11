@@ -56,7 +56,7 @@ class ExpoSource(ResumableSource[ExpoSourceConfig, ExpoResumeConfig]):
             name=ExternalDataSourceType.EXPO,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Expo (EAS)",
-            caption="""Enter an Expo access token and a project ID to sync your EAS builds and store submissions into the PostHog Data warehouse, including build duration, queue time, and failure reasons.
+            caption="""Enter an Expo access token and a project ID to sync your EAS builds and store submissions into the Flind Data warehouse, including build duration, queue time, and failure reasons.
 
 Create a personal access token at [expo.dev under Access tokens](https://expo.dev/settings/access-tokens), or use a robot user's token for an account-owned integration.
 

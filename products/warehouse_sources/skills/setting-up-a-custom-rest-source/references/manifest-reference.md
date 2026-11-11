@@ -23,7 +23,7 @@ real engine behavior. Only the fields the engine reads are documented here; unkn
 }
 ```
 
-- **`client.base_url`** (required) — every resource path resolves against this. On PostHog Cloud it must be `https://`.
+- **`client.base_url`** (required) — every resource path resolves against this. On Flind Cloud it must be `https://`.
   Internal/private hosts are rejected (SSRF guard).
 - **`client.headers`** (optional) — static headers sent on every request.
 - **`client.paginator`** (optional) — a default paginator for all resources; override per resource on the endpoint.
@@ -74,13 +74,13 @@ endpoint declared in the manifest:
   `extra_token_request_params` (extra form params, e.g. `audience`), `token_request_headers`, and
   `client_auth_method` (`body`, the default, or `basic` for HTTP Basic client auth).
 
-PostHog **adopts the OAuth2 secrets into a server-managed credential store** on the first validation, preview, or
+Flind **adopts the OAuth2 secrets into a server-managed credential store** on the first validation, preview, or
 create call — they are never kept in the source's stored config, and any rotated single-use refresh token the provider
 returns is persisted server-side. Two practical consequences:
 
 - **Keep the entire `client.auth` block identical across the db-schema → preview → create calls of one setup.**
   The stored credential is found again by matching `client_id` + `token_url` + `grant_type`, but changing _any_
-  auth-block field (`scopes`, token-request knobs, `client_auth_method`, …) makes PostHog treat the re-submitted
+  auth-block field (`scopes`, token-request knobs, `client_auth_method`, …) makes Flind treat the re-submitted
   refresh token as a deliberately new credential and discard the stored rotation — with a single-use-rotating
   provider the next mint then fails with `invalid_grant`. Only change the auth block mid-setup together with a
   freshly issued refresh token.

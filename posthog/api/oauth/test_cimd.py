@@ -290,7 +290,7 @@ class TestFetchCimdMetadata(SimpleTestCase):
         self.assertIn("not a public internet address", str(ctx.exception))
         self.assertNotIn("10.0.0.5", str(ctx.exception))
 
-    # Whoever calls /authorize picks the URL PostHog fetches, so errors must not read back the response.
+    # Whoever calls /authorize picks the URL Flind fetches, so errors must not read back the response.
     @parameterized.expand(
         [
             ("client_id_value", _make_metadata(client_id="https://secret-value.example.com/x.json"), 200),
@@ -662,8 +662,8 @@ class TestFetchAndUpsertCimdApplication(APIBaseTest):
 
     @parameterized.expand(
         [
-            ("posthog_prefix", "PostHog Helper"),
-            ("posthog_anywhere", "Claude for PostHog"),
+            ("posthog_prefix", "Flind Helper"),
+            ("posthog_anywhere", "Claude for Flind"),
             ("posthog_split_by_space", "Acme Post Hog Sync"),
             ("posthog_split_by_punctuation", "Acme post-hog sync"),
             ("blocked_word", "Acme Verified Client"),
@@ -688,12 +688,12 @@ class TestFetchAndUpsertCimdApplication(APIBaseTest):
     )
     @patch("posthog.api.oauth.cimd.requests.Session.get")
     def test_posthog_owned_domain_may_use_posthog_in_name(self, _name, url, mock_get, _url_mock):
-        mock_get.return_value = _mock_response(_make_metadata(url=url, client_name="PostHog Artifacts"), headers={})
+        mock_get.return_value = _mock_response(_make_metadata(url=url, client_name="Flind Artifacts"), headers={})
 
         app = fetch_and_upsert_cimd_application(url)
 
         assert app is not None
-        self.assertEqual(app.name, "PostHog Artifacts")
+        self.assertEqual(app.name, "Flind Artifacts")
 
     @parameterized.expand(
         [
@@ -705,7 +705,7 @@ class TestFetchAndUpsertCimdApplication(APIBaseTest):
     )
     @patch("posthog.api.oauth.cimd.requests.Session.get")
     def test_customer_controlled_url_may_not_use_posthog_in_name(self, _name, url, mock_get, _url_mock):
-        mock_get.return_value = _mock_response(_make_metadata(url=url, client_name="PostHog Artifacts"), headers={})
+        mock_get.return_value = _mock_response(_make_metadata(url=url, client_name="Flind Artifacts"), headers={})
 
         with self.assertRaisesRegex(CIMDValidationError, "client_name is not allowed"):
             fetch_and_upsert_cimd_application(url)
@@ -713,7 +713,7 @@ class TestFetchAndUpsertCimdApplication(APIBaseTest):
     @patch("posthog.api.oauth.cimd.requests.Session.get")
     def test_posthog_owned_domain_still_blocks_other_words(self, mock_get, _url_mock):
         url = "https://artifacts.posthog.com/oauth/client-metadata.json"
-        mock_get.return_value = _mock_response(_make_metadata(url=url, client_name="PostHog Official"), headers={})
+        mock_get.return_value = _mock_response(_make_metadata(url=url, client_name="Flind Official"), headers={})
 
         with self.assertRaisesRegex(CIMDValidationError, "official"):
             fetch_and_upsert_cimd_application(url)
@@ -736,7 +736,7 @@ class TestFetchAndUpsertCimdApplication(APIBaseTest):
         assert created is not None
 
         real_cache.delete(_fetch_lock_key(VALID_CIMD_URL))
-        mock_get.return_value = _mock_response(_make_metadata(client_name="Claude for PostHog"), headers={})
+        mock_get.return_value = _mock_response(_make_metadata(client_name="Claude for Flind"), headers={})
         refreshed = fetch_and_upsert_cimd_application(VALID_CIMD_URL)
 
         assert refreshed is not None
@@ -1540,13 +1540,13 @@ class TestCIMDAuthorizeIntegration(APIBaseTest):
 
     @patch("posthog.api.oauth.cimd.requests.Session.get")
     def test_rejected_document_names_the_reason(self, mock_get, _url_mock):
-        mock_get.return_value = _mock_response(_make_metadata(client_name="Claude for PostHog"))
+        mock_get.return_value = _mock_response(_make_metadata(client_name="Claude for Flind"))
 
         response = self.client.get(self._authorize_url(VALID_CIMD_URL))
 
         self.assertEqual(response.status_code, 400)
         self.assertIn(
-            "PostHog could not use the client metadata document at this client_id: client_name is not allowed",
+            "Flind could not use the client metadata document at this client_id: client_name is not allowed",
             response.json()["error_description"],
         )
 

@@ -28,8 +28,8 @@ const ALL_APPS = discoverApps()
  * generates stub HTML that loads the built JS+CSS from static assets.
  *
  * Environment variables:
- * - POSTHOG_UI_APPS_TOKEN: PostHog API token for analytics (optional)
- * - POSTHOG_MCP_APPS_ANALYTICS_BASE_URL: PostHog base URL for analytics
+ * - POSTHOG_UI_APPS_TOKEN: Flind API token for analytics (optional)
+ * - POSTHOG_MCP_APPS_ANALYTICS_BASE_URL: Flind base URL for analytics
  */
 export default defineConfig({
     plugins: [react()],

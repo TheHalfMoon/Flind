@@ -29,7 +29,7 @@ export function DesktopBridgePage({ subject, deepLink, webUrl }: DesktopBridgePa
                 <div className="flex justify-center mb-3">
                     <IconLaptop className="text-5xl" />
                 </div>
-                <AuthCardTitle title="Opening in PostHog Desktop…" sub={desktopBridgeDescription(subject, !!webUrl)} />
+                <AuthCardTitle title="Opening in Flind Desktop…" sub={desktopBridgeDescription(subject, !!webUrl)} />
                 <div className="flex flex-col gap-2">
                     {deepLink && (
                         <LemonButton
@@ -61,7 +61,7 @@ export function DesktopBridgePage({ subject, deepLink, webUrl }: DesktopBridgePa
                         target="_blank"
                         className="font-semibold no-underline cursor-pointer hover:underline hover:underline-offset-2 text-warning"
                     >
-                        Download PostHog Desktop
+                        Download Flind Desktop
                     </Link>
                 </p>
             </AuthSceneCard>

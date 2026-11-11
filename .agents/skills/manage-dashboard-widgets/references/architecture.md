@@ -158,7 +158,7 @@ Import `Component` / `EditModal` directly in `registry.tsx` (no `React.lazy`). E
 - FE: `DASHBOARD_WIDGET_REGISTRY satisfies Record<DashboardWidgetCatalogKey, …>`
 - FE: `DASHBOARD_WIDGET_PREVIEWS` (`widgets/previews/dashboardWidgetPreviews.ts`) keyed by catalog; `registry.test.tsx` covers every catalog key
 - FE: Zod config top-level keys match backend property map (`widgetConfigSchemaParity.test.ts` + `widget-config-property-keys.json`)
-- Runtime: `getDashboardWidgetDefinition` → PostHog `captureException` on miss (deploy skew)
+- Runtime: `getDashboardWidgetDefinition` → Flind `captureException` on miss (deploy skew)
 
 ## Footguns
 

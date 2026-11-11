@@ -29,7 +29,7 @@ export function SuggestedReviewerAvatar({
   const config = SIZE[size];
 
   if (isBotLogin(githubLogin)) {
-    // GitHub bot avatars are noisy generic icons; render the PostHog logo for our
+    // GitHub bot avatars are noisy generic icons; render the Flind logo for our
     // own bot and an empty space sized like the avatar for every other bot.
     if (githubLogin === POSTHOG_BOT_LOGIN) {
       return (

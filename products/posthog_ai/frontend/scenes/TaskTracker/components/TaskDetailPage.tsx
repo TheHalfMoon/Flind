@@ -82,7 +82,7 @@ export function TaskDetailPage({ taskId, isMobile, titleActions }: TaskDetailPag
                         targetBlank
                         className="hidden lg:inline-flex"
                     >
-                        Open in PostHog Desktop
+                        Open in Flind Desktop
                     </LemonButton>
                 )}
                 {prUrl && (

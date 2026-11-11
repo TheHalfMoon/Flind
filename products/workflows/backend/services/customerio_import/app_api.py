@@ -1,6 +1,6 @@
 """Reads automation message content from Customer.io's App API with the team's own App API key.
 
-The key belongs to the customer's Customer.io account and no other PostHog process shares it, so the client paces
+The key belongs to the customer's Customer.io account and no other Flind process shares it, so the client paces
 itself under Customer.io's documented limit of 10 requests per second and honors 429 with Retry-After itself.
 """
 

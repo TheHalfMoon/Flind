@@ -53,7 +53,7 @@ class SecureframeSource(ResumableSource[SecureframeSourceConfig, SecureframeResu
             name=ExternalDataSourceType.SECUREFRAME,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Secureframe",
-            caption="""Enter your Secureframe API credentials to pull your compliance data (controls, tests, personnel, devices, vendors, and more) into the PostHog Data warehouse.
+            caption="""Enter your Secureframe API credentials to pull your compliance data (controls, tests, personnel, devices, vendors, and more) into the Flind Data warehouse.
 
 You can create an API key and secret in the Secureframe Console under **Your Profile → Company settings → API keys**. The key's role-based permissions govern which tables you can sync.""",
             iconPath="/static/services/secureframe.png",

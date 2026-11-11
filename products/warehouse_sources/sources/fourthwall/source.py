@@ -192,7 +192,7 @@ class FourthwallSource(
             label="Fourthwall",
             caption=(
                 "Sync your Fourthwall shop's orders, products, product templates, collections, "
-                "donations, members, membership tiers, promotions and mailing list into PostHog.\n\n"
+                "donations, members, membership tiers, promotions and mailing list into Flind.\n\n"
                 f"{DEVELOPER_SETTINGS_HELP}"
             ),
             keywords=["merch", "memberships", "creator commerce"],
@@ -222,7 +222,7 @@ class FourthwallSource(
             ),
             releaseStatus=ReleaseStatus.BETA,
             webhookSetupCaption=(
-                "PostHog tries to register a webhook on your shop using the API user above, "
+                "Flind tries to register a webhook on your shop using the API user above, "
                 "subscribed to the order, donation and membership events.\n\n"
                 "**Manual setup** (only needed if automatic registration failed):\n\n"
                 "1. Go to **Settings > For developers > Webhooks** in your Fourthwall dashboard\n"
@@ -230,7 +230,7 @@ class FourthwallSource(
                 "3. Subscribe it to `ORDER_PLACED`, `ORDER_UPDATED`, `DONATION`, "
                 "`SUBSCRIPTION_PURCHASED`, `SUBSCRIPTION_CHANGED` and `SUBSCRIPTION_EXPIRED`\n\n"
                 "Either way, copy the secret key from that same settings page into the field below "
-                "so PostHog can verify deliveries."
+                "so Flind can verify deliveries."
             ),
             webhookFields=cast(
                 list[FieldType],
@@ -242,7 +242,7 @@ class FourthwallSource(
                         required=True,
                         placeholder="",
                         caption=(
-                            "Your shop's webhook secret key, from Settings > For developers. PostHog "
+                            "Your shop's webhook secret key, from Settings > For developers. Flind "
                             "uses it to verify the X-Fourthwall-Hmac-SHA256 header on every delivery."
                         ),
                         secret=True,

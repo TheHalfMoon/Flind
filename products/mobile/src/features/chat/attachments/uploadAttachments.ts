@@ -44,7 +44,7 @@ async function postToS3(prepared: PreparedArtifactApi, file: PendingAttachment, 
         form.append(key, value)
     }
     form.append('file', await filePart(file), file.name)
-    // A plain fetch, so the PostHog bearer token never goes to S3.
+    // A plain fetch, so the Flind bearer token never goes to S3.
     const response = await fetch(prepared.presigned_post.url, { method: 'POST', body: form, signal })
     if (!response.ok) {
         throw new AttachmentUploadError(`Couldn't upload ${file.name}`, response.status)

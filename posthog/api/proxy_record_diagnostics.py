@@ -44,7 +44,7 @@ from posthog.temporal.proxy_service.common import is_cloudflare_proxy_by_cname
 
 # --- Customer-facing message helpers ---
 # All user-visible strings live here so copy can be reviewed in one place. Functions
-# return PostHog-flavored sentences without leaking vendor terminology (no mentions of
+# return Flind-flavored sentences without leaking vendor terminology (no mentions of
 # Cloudflare, pki.goog, pending_validation, etc.) into the customer surface.
 
 # Cloudflare's `ssl.certificate_authority` field → CAA-record issuer string.
@@ -638,7 +638,7 @@ def _probe_url(domain: str, path: str) -> str:
 def _check_live_event(record: ProxyRecord) -> CheckResult:
     try:
         # Same dummy payload the daily monitor uses (posthog/temporal/proxy_service/monitor.py
-        # check_proxy_is_live). PostHog's capture endpoint accepts unknown api_keys and returns
+        # check_proxy_is_live). Flind's capture endpoint accepts unknown api_keys and returns
         # 2xx, because team_id resolution happens later in the ingestion pipeline, so a working
         # proxy forwards this to a 2xx response.
         #

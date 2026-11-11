@@ -121,7 +121,7 @@ class PinnedShareGrade:
         if self.unknown_reason == PinnedShareUnknownReason.EVALUATED_OUTSIDE_FLAG_SERVICE:
             return (
                 " Most of this flag's calls are evaluated locally in a server SDK, bootstrapped, or assigned in your "
-                f"own code, so PostHog can't measure how many users match {them}."
+                f"own code, so Flind can't measure how many users match {them}."
             )
         return ""
 

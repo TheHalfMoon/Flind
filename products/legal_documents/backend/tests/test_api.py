@@ -377,7 +377,7 @@ class TestLegalDocumentDownloadEndpoint(APIBaseTest):
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_staff_user_without_membership_can_download(self) -> None:
-        # PostHog staff need to fetch signed PDFs from the Django admin without
+        # Flind staff need to fetch signed PDFs from the Django admin without
         # joining the customer's org first. Drop the membership entirely and
         # flip is_staff — the request should still 302 to the presigned URL.
         self.organization_membership.delete()

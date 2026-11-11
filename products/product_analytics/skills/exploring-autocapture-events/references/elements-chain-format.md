@@ -30,7 +30,7 @@ tag_name.class1.class2:key1="value1":key2="value2";parent_tag.parent_class:key="
 Custom DOM attributes appear verbatim in the chain.
 The most useful for analytics are `data-*` attributes:
 
-- `data-attr` — PostHog's default data attribute (configurable per team)
+- `data-attr` — Flind's default data attribute (configurable per team)
 - `data-testid` — common testing attribute, also useful for analytics
 - `aria-label` — accessibility label, sometimes useful as a selector
 
@@ -42,7 +42,7 @@ button.btn.primary:data-attr="checkout":text="Buy Now";div.container:attr_id="ma
 
 ## How CSS selectors map to regex
 
-PostHog converts CSS selectors to regex patterns matched against `elements_chain`:
+Flind converts CSS selectors to regex patterns matched against `elements_chain`:
 
 - `button` → `(^|;)button(\.|$|;|:)`
 - `button.cta` → `(^|;)button.*?cta.*?`

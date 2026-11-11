@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                     ("ask_per_thread", "Ask me once per thread"),
                     ("allow", "Let anyone join"),
                 ],
-                help_text="What PostHog does when someone else tags it in threads this user started.",
+                help_text="What Flind does when someone else tags it in threads this user started.",
                 max_length=16,
                 null=True,
             ),

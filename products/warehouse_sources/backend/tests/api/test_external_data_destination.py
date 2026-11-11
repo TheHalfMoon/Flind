@@ -1114,7 +1114,7 @@ class TestSyncedSources(DestinationAPITestBase):
         # so deleting or editing that destination does affect it.
         get_or_create_warehouse_destination(self.team.pk)
 
-        listed = self._listing()["PostHog warehouse"]
+        listed = self._listing()["Flind warehouse"]
 
         assert [entry["source_type"] for entry in listed] == ["Stripe"]
 
@@ -1127,7 +1127,7 @@ class TestSyncedSources(DestinationAPITestBase):
 
         listed = self._listing()
 
-        assert listed["PostHog warehouse"] == []
+        assert listed["Flind warehouse"] == []
         assert [entry["source_type"] for entry in listed["analytics postgres"]] == ["Stripe"]
 
     def test_a_deleted_source_is_not_listed(self) -> None:
@@ -1235,7 +1235,7 @@ class TestSyncedSourcesAccessControl(DestinationAPITestBase):
 
         self.client.force_login(self.viewer)
         results = self.client.get(self.base).json()["results"]
-        listed = next(row for row in results if row["name"] == "PostHog warehouse")["synced_sources"]
+        listed = next(row for row in results if row["name"] == "Flind warehouse")["synced_sources"]
 
         assert [entry["id"] for entry in listed] == [str(self.source.id)]
         assert str(hidden_source.id) not in [entry["id"] for entry in listed]

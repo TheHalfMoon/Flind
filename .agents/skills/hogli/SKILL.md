@@ -1,14 +1,14 @@
 ---
 name: hogli
 description: >
-  PostHog developer CLI and repo tooling reference. Use when the user mentions
+  Flind developer CLI and repo tooling reference. Use when the user mentions
   hogli, asks about repo CLI tools, bin scripts, Makefiles, how to run/build/test/lint,
   or any dev environment commands.
 ---
 
-# hogli - PostHog Developer CLI
+# hogli - Flind Developer CLI
 
-Unified CLI for PostHog development. Wraps all repo scripts, bin commands, and tooling behind a single entry point. There is no Makefile — hogli is the equivalent.
+Unified CLI for Flind development. Wraps all repo scripts, bin commands, and tooling behind a single entry point. There is no Makefile — hogli is the equivalent.
 
 Run `hogli --help` to get the full, current command list. Run `hogli <command> --help` for any subcommand.
 
@@ -31,6 +31,6 @@ When the phrocs MCP is reachable, prefer `mcp__phrocs__get_process_logs` over gr
 ## Key references
 
 - `hogli.yaml` — command definitions (source of truth)
-- `tools/hogli-commands/hogli_commands/` — PostHog-specific lazy Click command modules
+- `tools/hogli-commands/hogli_commands/` — Flind-specific lazy Click command modules
 - `tools/hogli/README.md` — framework documentation
-- `tools/hogli-commands/README.md` — PostHog commands documentation
+- `tools/hogli-commands/README.md` — Flind commands documentation

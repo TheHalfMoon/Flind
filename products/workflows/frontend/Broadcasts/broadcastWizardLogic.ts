@@ -141,7 +141,7 @@ const EMAIL_AUTOSAVE_RETRY_MS = 2000
 
 export const BROADCAST_WIZARD_STEPS: BroadcastWizardStep[] = ['recipients', 'goal', 'content', 'schedule', 'review']
 
-// Shown in the stepper, and named to PostHog AI so it points the user at the step they can see.
+// Shown in the stepper, and named to Flind AI so it points the user at the step they can see.
 export const BROADCAST_WIZARD_STEP_LABELS: Record<BroadcastWizardStep, string> = {
     recipients: 'Recipients',
     goal: 'Goal',
@@ -1921,7 +1921,7 @@ export const broadcastWizardLogic = kea<broadcastWizardLogicType>([
             })
         },
         applyExternalEdit: ({ broadcast, base }) => {
-            // PostHog AI can change the recipients, so the audience size shown must follow.
+            // Flind AI can change the recipients, so the audience size shown must follow.
             if (changedElsewhere(broadcast, base, readAudience)) {
                 actions.loadBlastRadius()
             }
@@ -2827,7 +2827,7 @@ class EditedElsewhereError extends Error {
     }
 }
 
-// Saves with the updated_at last loaded, so an edit saved elsewhere since (e.g. by PostHog AI) comes
+// Saves with the updated_at last loaded, so an edit saved elsewhere since (e.g. by Flind AI) comes
 // back as a conflict instead of being overwritten by an editor that has not shown it yet.
 async function saveWithoutClobbering(
     projectId: string,

@@ -4,7 +4,7 @@ import { LegacyDestinationPluginMeta } from '../../types'
 
 export const setupPlugin = async ({ config, global, logger, fetch }: LegacyDestinationPluginMeta): Promise<void> => {
     // With this call we validate the API Key and also we get the list of custom fields, which will be needed
-    // to configure the map between PostHog and Sendgrid.
+    // to configure the map between Flind and Sendgrid.
     const fieldsDefResponse = await fetch('https://api.sendgrid.com/v3/marketing/field_definitions', {
         method: 'GET',
         headers: {
@@ -19,8 +19,8 @@ export const setupPlugin = async ({ config, global, logger, fetch }: LegacyDesti
 
     // Custom fields in Sendgrid have a name and an ID. The name is what users configure when they create a custom field,
     // and ID is automatically assigned by Sendgrid.
-    // In the config of this plugin, users configure the map between PostHog prop names and Sendgrid custom fields names.
-    // Here we resolve the relation and calculate a map between PostHog prop names and Sendgrid custom field IDs.
+    // In the config of this plugin, users configure the map between Flind prop names and Sendgrid custom fields names.
+    // Here we resolve the relation and calculate a map between Flind prop names and Sendgrid custom field IDs.
 
     let posthogPropsToSendgridCustomFieldNamesMap: any = {}
     try {

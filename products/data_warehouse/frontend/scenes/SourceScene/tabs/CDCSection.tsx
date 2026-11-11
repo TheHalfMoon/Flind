@@ -88,7 +88,7 @@ function quoteTable(name: string, defaultSchema: string): string {
     return `${quoteIdent(defaultSchema)}.${quoteIdent(name)}`
 }
 
-// Self-managed CDC setup SQL the customer's DBA runs before PostHog creates the slot.
+// Self-managed CDC setup SQL the customer's DBA runs before Flind creates the slot.
 // schema/user come from `job_inputs` (non-secret, unlike the password).
 function buildSelfManagedCdcSql(source: ExternalDataSource, publicationName: string): string {
     const ji = (source.job_inputs ?? {}) as Record<string, any>
@@ -108,7 +108,7 @@ function buildSelfManagedCdcSql(source: ExternalDataSource, publicationName: str
     const sch = quoteIdent(schema)
     const pub = quoteIdent(pubName)
 
-    return `-- 1. Grants for the PostHog user
+    return `-- 1. Grants for the Flind user
 --    Reading a replication slot requires REPLICATION (or rds_replication on RDS).
 --    Run ONE of the lines below, depending on your environment:
 ALTER USER ${user} WITH REPLICATION;             -- self-hosted / most clouds
@@ -118,7 +118,7 @@ GRANT SELECT ON ${tableList} TO ${user};
 
 -- 2. Publication covering the tables you'll sync via CDC.
 --    Run this as the table owner (or a superuser). Adjust the table list to match the
---    tables you intend to switch to CDC on the Schemas tab. PostHog creates and manages
+--    tables you intend to switch to CDC on the Schemas tab. Flind creates and manages
 --    the replication slot itself once you enable CDC.
 CREATE PUBLICATION ${pub} FOR TABLE ${tableList}
   WITH (publish_via_partition_root = true);
@@ -237,7 +237,7 @@ function EnabledControls({ source }: { source: ExternalDataSource }): JSX.Elemen
             description: (
                 <div className="space-y-2">
                     <p className="m-0">
-                        PostHog will recreate the replication resources on your database and fully re-sync every CDC
+                        Flind will recreate the replication resources on your database and fully re-sync every CDC
                         schema from a fresh snapshot.
                     </p>
                     <p className="m-0 text-sm">
@@ -340,7 +340,7 @@ function EnabledControls({ source }: { source: ExternalDataSource }): JSX.Elemen
             <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                     <div className="text-secondary text-xs">Management mode</div>
-                    <div>{cdc.management_mode === 'posthog' ? 'PostHog-managed' : 'Self-managed'}</div>
+                    <div>{cdc.management_mode === 'posthog' ? 'Flind-managed' : 'Self-managed'}</div>
                 </div>
                 <div>
                     <div className="text-secondary text-xs">Replication slot</div>
@@ -395,7 +395,7 @@ function EnabledControls({ source }: { source: ExternalDataSource }): JSX.Elemen
                             <p className="m-0">
                                 {status.slot_exists === false
                                     ? 'The replication slot is missing on your database — CDC syncs will fail until it is recreated. Repairing recreates it and re-syncs every CDC schema from a fresh snapshot.'
-                                    : 'The publication is missing on your database — recreate it (self-managed) or repair CDC (PostHog-managed).'}
+                                    : 'The publication is missing on your database — recreate it (self-managed) or repair CDC (Flind-managed).'}
                             </p>
                             {(status.slot_exists === false || cdc.management_mode === 'posthog') && (
                                 <AccessControlAction
@@ -461,7 +461,7 @@ function EnabledControls({ source }: { source: ExternalDataSource }): JSX.Elemen
                     <LemonSwitch id="cdc-auto-drop-slot" checked={autoDrop} onChange={setAutoDrop} />
                 </LemonField.Pure>
                 <p className="text-xs text-secondary mt-1 mb-0">
-                    When enabled, PostHog drops the replication slot if WAL lag exceeds the critical threshold —
+                    When enabled, Flind drops the replication slot if WAL lag exceeds the critical threshold —
                     preventing disk exhaustion on your database.
                 </p>
             </div>
@@ -578,7 +578,7 @@ function DisabledControls({ source }: { source: ExternalDataSource }): JSX.Eleme
             return
         }
 
-        // Self-managed: the publication must exist before PostHog can create the slot. Walk the
+        // Self-managed: the publication must exist before Flind can create the slot. Walk the
         // user through the setup SQL first, then enable (which verifies it server-side).
         if (mode === 'self_managed') {
             if (!publicationName.trim()) {
@@ -591,7 +591,7 @@ function DisabledControls({ source }: { source: ExternalDataSource }): JSX.Eleme
             return
         }
 
-        // PostHog-managed: PostHog creates the slot + publication itself, no SQL to run.
+        // Flind-managed: Flind creates the slot + publication itself, no SQL to run.
         confirmThen({
             title: 'Enable CDC',
             description: (
@@ -627,9 +627,9 @@ function DisabledControls({ source }: { source: ExternalDataSource }): JSX.Eleme
                                 value: 'posthog',
                                 label: (
                                     <div>
-                                        <div>PostHog-managed</div>
+                                        <div>Flind-managed</div>
                                         <div className="text-xs text-secondary">
-                                            PostHog creates and manages the replication slot and publication. Requires a
+                                            Flind creates and manages the replication slot and publication. Requires a
                                             DB user with REPLICATION and table ownership.
                                         </div>
                                     </div>
@@ -641,7 +641,7 @@ function DisabledControls({ source }: { source: ExternalDataSource }): JSX.Eleme
                                     <div>
                                         <div>Self-managed</div>
                                         <div className="text-xs text-secondary">
-                                            You (or your DBA) create the publication once as the table owner. PostHog
+                                            You (or your DBA) create the publication once as the table owner. Flind
                                             creates the slot and needs REPLICATION + SELECT on synced tables.
                                         </div>
                                     </div>
@@ -670,7 +670,7 @@ function DisabledControls({ source }: { source: ExternalDataSource }): JSX.Eleme
                         <LemonSwitch id="cdc-auto-drop-slot-new" checked={autoDrop} onChange={setAutoDrop} />
                     </LemonField.Pure>
                     <p className="text-xs text-secondary mt-1 mb-0">
-                        PostHog will drop the slot if WAL lag exceeds the critical threshold.
+                        Flind will drop the slot if WAL lag exceeds the critical threshold.
                     </p>
                 </div>
 
@@ -750,7 +750,7 @@ function DisabledControls({ source }: { source: ExternalDataSource }): JSX.Eleme
                 isOpen={setupModalOpen}
                 onClose={() => setSetupModalOpen(false)}
                 title="Create your publication"
-                description="Self-managed CDC needs the publication to exist before PostHog connects — PostHog creates and manages the replication slot itself. Run the SQL below as the table owner, then enable CDC."
+                description="Self-managed CDC needs the publication to exist before Flind connects — Flind creates and manages the replication slot itself. Run the SQL below as the table owner, then enable CDC."
                 width={720}
                 footer={
                     <>

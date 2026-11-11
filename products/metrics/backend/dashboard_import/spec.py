@@ -141,7 +141,7 @@ class AgentPanel(_Model):
     title: str
     outcome: PanelOutcome = Field(
         description="imported: same meaning. approximated: works but the meaning changed. "
-        "failed: no working query. skipped: no PostHog equivalent."
+        "failed: no working query. skipped: no Flind equivalent."
     )
     reason: str = Field(description="What changed or why it failed. Empty when the panel imported exactly.")
     query: PanelQuery | None = Field(default=None, description="The query for an imported or approximated panel.")
@@ -221,7 +221,7 @@ class LayoutCheck(_Model):
     round: int = 0
     # The agent answer that the latest round used, so that a repeated save of the same answer starts no round.
     answer_digest: str = ""
-    # When PostHog sent the latest picture. An answer saved after it is a reply to that picture.
+    # When Flind sent the latest picture. An answer saved after it is a reply to that picture.
     picture_sent_at: str | None = None
     done: bool = False
 

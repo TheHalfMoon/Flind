@@ -6,7 +6,7 @@ import {
 
 // helpers for resolving the in-sandbox GitHub token
 // Dedicated agentsh credential file (NUL-delimited `key=value` pairs) that the
-// PostHog backend rewrites in place when it refreshes GitHub credentials
+// Flind backend rewrites in place when it refreshes GitHub credentials
 // mid-session. The agent-server process env is frozen at launch, so reading
 // this live file is how in-process tools pick up a refreshed token without a
 // process restart.

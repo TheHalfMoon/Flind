@@ -13,7 +13,7 @@ export const getBubbleInstallSteps = (ctx: OnboardingComponentsContext): StepDef
             badge: 'required',
             content: (
                 <>
-                    <Markdown>First, copy your PostHog web snippet:</Markdown>
+                    <Markdown>First, copy your Flind web snippet:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -44,7 +44,7 @@ export const getBubbleInstallSteps = (ctx: OnboardingComponentsContext): StepDef
                         already, sign up for at least the **Starter** site plan. This enables you to add custom code. Then:
 
                         1. Go to the **SEO / metatags** tab in site settings.
-                        2. Paste your PostHog snippet in the **Script/meta tags in header** section.
+                        2. Paste your Flind snippet in the **Script/meta tags in header** section.
                         3. Deploy your site to live.
                     `}
                 </Markdown>

@@ -386,9 +386,9 @@ class EarlyAccessFeatureSerializerCreateOnly(EarlyAccessFeatureSerializer):
         read_only_fields = ["id", "feature_flag", "created_at", "created_by"]
 
     def validate(self, data):
-        # PostHog's own dogfooding project requires a description on every new early access feature.
+        # Flind's own dogfooding project requires a description on every new early access feature.
         # Scoped to US cloud specifically: project ids are allocated per region, so id 2 is only
-        # PostHog's own team on US — on EU/DEV/E2E it belongs to an unrelated customer.
+        # Flind's own team on US — on EU/DEV/E2E it belongs to an unrelated customer.
         is_us_cloud = (settings.CLOUD_DEPLOYMENT or "").upper() == "US"
         if is_us_cloud and self.context["team_id"] == POSTHOG_TEAM_ID and not (data.get("description") or "").strip():
             raise serializers.ValidationError({"description": "A description is required for early access features."})
@@ -564,7 +564,7 @@ def early_access_features(request: Request):
             request,
             generate_exception_response(
                 "early_access_features",
-                "Project token not provided. You can find your project token in PostHog project settings.",
+                "Project token not provided. You can find your project token in Flind project settings.",
                 type="authentication_error",
                 code="missing_api_key",
                 status_code=status.HTTP_401_UNAUTHORIZED,
@@ -577,7 +577,7 @@ def early_access_features(request: Request):
             request,
             generate_exception_response(
                 "decide",
-                "Project token invalid. You can find your project token in PostHog project settings.",
+                "Project token invalid. You can find your project token in Flind project settings.",
                 type="authentication_error",
                 code="invalid_api_key",
                 status_code=status.HTTP_401_UNAUTHORIZED,

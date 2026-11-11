@@ -37,8 +37,8 @@ export const WIZARD_SKILL_IDS = [
 ] as const
 
 /**
- * Wizard `skill_id` → PostHog SDKKey. The CLI uses hyphenated framework names
- * (`react-native`) while PostHog's SDK catalogue uses underscored enum keys
+ * Wizard `skill_id` → Flind SDKKey. The CLI uses hyphenated framework names
+ * (`react-native`) while Flind's SDK catalogue uses underscored enum keys
  * (`react_native`), and a handful of frameworks don't map 1:1 — this table
  * resolves both kinds of divergence.
  */

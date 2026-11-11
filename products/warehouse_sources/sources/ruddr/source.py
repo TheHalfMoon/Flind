@@ -42,7 +42,7 @@ class RuddrSource(ResumableSource[RuddrSourceConfig, RuddrResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Ruddr",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Ruddr API key to pull your professional services data into the PostHog Data warehouse.
+            caption="""Enter your Ruddr API key to pull your professional services data into the Flind Data warehouse.
 
 You can create a workspace API key under **Settings → API Keys** in [Ruddr](https://www.ruddr.io). The key grants read access to your clients, projects, tasks, members, time entries, invoices, and allocations.
 """,

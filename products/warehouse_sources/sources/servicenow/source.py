@@ -60,7 +60,7 @@ class ServiceNowSource(ResumableSource[ServiceNowSourceConfig, ServiceNowResumeC
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="ServiceNow",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Sync your ServiceNow ITSM data (incidents, problems, change requests, users, configuration items, and more) into the PostHog Data warehouse.
+            caption="""Sync your ServiceNow ITSM data (incidents, problems, change requests, users, configuration items, and more) into the Flind Data warehouse.
 
 Enter your ServiceNow instance URL (e.g. `https://your-instance.service-now.com`) and authenticate with either an API key or a username and password.
 

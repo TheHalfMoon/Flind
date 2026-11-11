@@ -644,7 +644,7 @@ class TestGetDeltaTableUnrecoverableErrors:
 
     @pytest.mark.asyncio
     async def test_object_store_refusal_is_typed_and_not_captured_inline(self):
-        """The bucket refusing the read is a policy condition on PostHog's own storage, not a defect
+        """The bucket refusing the read is a policy condition on Flind's own storage, not a defect
         in this code and not a corrupt table. Capturing inline here and then reraising the raw
         OSError reported the same refusal twice, once from this call and once from the activity
         interceptor, and the raw message names the `_delta_log` key it was refused on, which both

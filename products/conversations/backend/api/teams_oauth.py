@@ -72,7 +72,7 @@ def _verify_id_token(id_token: str, client_id: str) -> dict:
     """
     Verify the id_token returned by Azure AD's authorization-code exchange and
     return its claims. The `tid` claim is load-bearing — it routes every later
-    inbound Bot Framework activity to the right PostHog team — so trusting an
+    inbound Bot Framework activity to the right Flind team — so trusting an
     unverified payload here would be an attribution bypass if the id_token ever
     reached this code path from a less trustworthy source.
 

@@ -43,7 +43,7 @@ class StripeProvisioningTestBase(APIBaseTest):
         self.stripe_app, _ = OAuthApplication.objects.get_or_create(
             client_id=TEST_STRIPE_OAUTH_CLIENT_ID,
             defaults={
-                "name": "PostHog Stripe App",
+                "name": "Flind Stripe App",
                 "client_secret": "",
                 "client_type": OAuthApplication.CLIENT_CONFIDENTIAL,
                 "authorization_grant_type": OAuthApplication.GRANT_AUTHORIZATION_CODE,

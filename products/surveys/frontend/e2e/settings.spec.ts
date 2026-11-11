@@ -45,7 +45,7 @@ test.describe('Survey Settings', () => {
 
     test('toggles survey opt in on the survey settings page', async ({ page }) => {
         await expect(page.locator('h1')).toContainText('Surveys')
-        await expect(page).toHaveTitle('Surveys • PostHog')
+        await expect(page).toHaveTitle('Surveys • Flind')
         await page.getByRole('tab', { name: 'Settings' }).click()
         await expect(page.getByTestId('opt-in-surveys-switch')).not.toBeDisabled()
         await expect(page.getByText('Surveys opt in updated')).not.toBeVisible()
@@ -55,7 +55,7 @@ test.describe('Survey Settings', () => {
 
     test('toggles survey opt in on the org settings page', async ({ page }) => {
         await expect(page.locator('h1')).toContainText('Surveys')
-        await expect(page).toHaveTitle('Surveys • PostHog')
+        await expect(page).toHaveTitle('Surveys • Flind')
 
         await page.goToMenuItem('settings')
         await page.getByRole('main').getByText('Surveys', { exact: true }).click()

@@ -46,7 +46,7 @@ import {
 // viewer as the backend's "the change can still apply" answer.
 const CANVAS_TOOL_TIMEOUT_MS = 60_000;
 
-// A canvas as the PostHog canvases API returns it.
+// A canvas as the Flind canvases API returns it.
 interface ApiCanvas {
   id: string;
   name: string;
@@ -175,7 +175,7 @@ function toComponentLifecycleSeed(entry: ApiComponentLifecycle): {
 }
 
 /**
- * Canvases backed by the PostHog canvases API. A canvas is a first-class row
+ * Canvases backed by the Flind canvases API. A canvas is a first-class row
  * filed into a backend channel; its source is versioned per publish
  * (source/versions endpoints) and its rendered output is the published
  * build's artifact (builds endpoints).
@@ -548,7 +548,7 @@ export class DashboardsService {
     return { verb: body.verb ?? input.verb, result: body.result ?? {} };
   }
 
-  // The PostHog MCP tools a canvas may declare, from the action registry.
+  // The Flind MCP tools a canvas may declare, from the action registry.
   async listTools(): Promise<CanvasToolDefinition[]> {
     const body = await this.api.json<{ tools?: CanvasToolDefinition[] }>(
       `canvases/actions/`,
@@ -557,7 +557,7 @@ export class DashboardsService {
     return body.tools ?? [];
   }
 
-  // Run one declared PostHog MCP tool as the viewer.
+  // Run one declared Flind MCP tool as the viewer.
   async invokeTool(input: {
     id: string;
     tool: string;

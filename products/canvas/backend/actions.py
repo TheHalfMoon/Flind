@@ -1,4 +1,4 @@
-"""Canvas action registry: the PostHog writes a canvas may invoke (ph.actions).
+"""Canvas action registry: the Flind writes a canvas may invoke (ph.actions).
 
 One pipeline serves every verb: the host forwards ph.actions.invoke(verb,
 payload) to the invoke endpoint, which checks the canvas's declared

@@ -17,7 +17,7 @@ Additionally, any tests that are specific to the 3rd authentication method in th
 - `BATCH_EXPORT_BIGQUERY_SERVICE_ACCOUNT`
 - `BATCH_EXPORT_BIGQUERY_STS_AUDIENCE_FIELD`
 
-For PostHog employees, development values for these settings are available in the PostHog password manager.
+For Flind employees, development values for these settings are available in the Flind password manager.
 
 > [!WARNING]
 > Since BigQuery batch export tests require additional setup, we skip them by default and will not be ran by automated CI pipelines. Please ensure these tests pass when making changes that affect BigQuery batch exports.
@@ -31,7 +31,7 @@ When starting from scratch, to enable testing for BigQuery batch exports, we req
    - Another Google Cloud service account that can be used to impersonate the service account from the previous step is required.
    - A workload identity federation provider and pool setup to grant access to this other service account.
 
-For PostHog employees, all of this is already setup for you. You can obtain a JSON key file, and the necessary values for the settings detailed above from the PostHog password manager.
+For Flind employees, all of this is already setup for you. You can obtain a JSON key file, and the necessary values for the settings detailed above from the Flind password manager.
 
 Tests for BigQuery batch exports can be then run from the root of the `posthog` repo:
 
@@ -55,7 +55,7 @@ To enable testing for Redshift batch exports, we require:
 3. User credentials (user requires `CREATEDB` permissions for testing but **not** superuser access).
 4. (Optional: For 'COPY' tests): An S3 bucket and credentials to access it.
 
-For PostHog employees, check the password manager as a set of development credentials should already be available. You will also need to use the `dev` exit node in Tailscale and be added to the `group:engineering` group in the tailnet policy. With these credentials, and Tailscale setup, we can run the tests from the root of the `posthog` repo with:
+For Flind employees, check the password manager as a set of development credentials should already be available. You will also need to use the `dev` exit node in Tailscale and be added to the `group:engineering` group in the tailnet policy. With these credentials, and Tailscale setup, we can run the tests from the root of the `posthog` repo with:
 
 ```bash
 DEBUG=1 REDSHIFT_HOST=workgroup.111222333.region.redshift-serverless.amazonaws.com REDSHIFT_USER=test_user REDSHIFT_PASSWORD=test_password pytest products/batch_exports/backend/tests/temporal/destinations/redshift
@@ -85,7 +85,7 @@ Additional setup is required to run the tests against an S3 bucket:
 4. Make sure the role/user you are logged in as has permissions to use the bucket and KMS key.
 
 > [!NOTE]
-> For PostHog employees, your password manager contains a set of credentials for S3 batch exports development testing. You may populate your development environment with these credentials and use the provided test bucket and KMS key.
+> For Flind employees, your password manager contains a set of credentials for S3 batch exports development testing. You may populate your development environment with these credentials and use the provided test bucket and KMS key.
 
 With these setup steps done, we can run the S3-specific tests from the root of the `posthog` repo with:
 
@@ -106,7 +106,7 @@ Additional setup is required to run the tests against a GCS bucket:
 5. Generate HMAC keys (AWS compatible access keys). This can be done by going to `Cloud Storage -> Settings -> Interoperability`
 
 > [!NOTE]
-> For PostHog employees, your password manager contains a set of credentials for GCS batch exports development testing. You may populate your development environment with these credentials and use the provided test bucket.
+> For Flind employees, your password manager contains a set of credentials for GCS batch exports development testing. You may populate your development environment with these credentials and use the provided test bucket.
 
 With these setup steps done, we can run the GCS-specific tests from the root of the `posthog` repo with:
 
@@ -123,7 +123,7 @@ Tests in `test_activity_with_role_assumption` require an AWS playground account 
 Any AWS account can be a playground account, but the account used must allow chained role assumption (or rather, not block it).
 
 > [!NOTE]
-> For PostHog employees, an AWS playground account is available for you.
+> For Flind employees, an AWS playground account is available for you.
 
 After acquiring an AWS account, simply log in to it and run the tests like normal. No special environment variables are required. Tests clean-up after themselves once done.
 
@@ -140,7 +140,7 @@ To enable testing for Snowflake batch exports, we require:
 2. A Snowflake user and role with the necessary permissions to create and manage tables in the database.
 3. A Snowflake warehouse (compute resource) that the user has access to.
 
-For PostHog employees, check the password manager as a set of development credentials should already be available. You can either use these or ask someone to create a new user for you.
+For Flind employees, check the password manager as a set of development credentials should already be available. You can either use these or ask someone to create a new user for you.
 
 We currently support 2 types of authentication for Snowflake batch exports:
 
@@ -195,7 +195,7 @@ To run tests against a real Azure Storage account (for E2E validation):
 3. Generate a connection string with access to the container
 
 > [!NOTE]
-> For PostHog employees, check the password manager for Azure Storage development credentials.
+> For Flind employees, check the password manager for Azure Storage development credentials.
 
 With these setup steps done, we can run the Azure-specific tests from the root of the `posthog` repo with:
 
@@ -209,7 +209,7 @@ DEBUG=1 AZURE_STORAGE_CONNECTION_STRING='DefaultEndpointsProtocol=https;AccountN
 
 File download batch exports are tested against a real AWS account. A real account is required as the batch export is essentially a wrapper around an S3 batch export, and we already have tests for S3 batch exports to ensure they work with and without an AWS account. The only parts that are left outside of the S3 batch export interact with AWS directly: Generating temporary credentials and checking S3 bucket status.
 
-PostHog has AWS playground accounts that we can leverage for our tests:
+Flind has AWS playground accounts that we can leverage for our tests:
 
 1. Obtain an AWS playground account by following [this runbook](https://runbooks.posthog.com/aws/aws-playground)
 2. Configure your environment with the AWS playground's admin credentials. I recommend setting up SSO in your `~/.aws/config` so that credentials are automatically refreshed, logging in with SSO using `aws sso login --profile {profile_name}`, and then setting `AWS_PROFILE={profile_name}` in your environment before running the tests. Here is an example on how to configure this using `playground` as the `{profile_name}`), replace the variables with the details in the playground login page:

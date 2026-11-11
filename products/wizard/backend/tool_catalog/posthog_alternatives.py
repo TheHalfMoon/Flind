@@ -2,7 +2,7 @@ from posthog.schema_enums import ProductKey
 
 from products.warehouse_sources.backend.facade.codebase_detection import Detection, detect
 
-# PostHog alternatives with no released warehouse source. Every source declares its own `codebase_detection`,
+# Flind alternatives with no released warehouse source. Every source declares its own `codebase_detection`,
 # so only these live here. The wizard detects and reports them, and never offers them as a source.
 POSTHOG_ALTERNATIVES_WITHOUT_SOURCE: dict[str, Detection] = {
     "Heap": detect(

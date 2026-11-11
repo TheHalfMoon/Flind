@@ -259,7 +259,7 @@ class UserSlackIntegrationListResponseSerializer(serializers.Serializer):
 
 
 class UserSlackLinkStartRequestSerializer(serializers.Serializer):
-    """Settings-initiated link can target a specific PostHog team + Slack workspace.
+    """Settings-initiated link can target a specific Flind team + Slack workspace.
 
     Both are optional — when omitted we fall back to the user's ``current_team``
     and that team's first Slack ``Integration`` (mirrors ``github_start`` for
@@ -910,7 +910,7 @@ class UserIntegrationViewSet(viewsets.GenericViewSet):
         },
         summary="Connect a ChatGPT account for Codex cloud tasks",
         description=(
-            "Submit the `tokens` object of the `auth.json` that `codex login` wrote on the user's machine. PostHog "
+            "Submit the `tokens` object of the `auth.json` that `codex login` wrote on the user's machine. Flind "
             "refreshes the chain once to prove it works, stores the rotated tokens encrypted, and from then on "
             "refreshes them for the user's Codex cloud runs. Only the owning user can connect. No response carries "
             "a token."
@@ -941,7 +941,7 @@ class UserIntegrationViewSet(viewsets.GenericViewSet):
 def _resolve_team_for_github_start(user: User, request: Request) -> "Team | None":
     """Resolve which team to use for team-level GitHub install discovery.
 
-    PostHog Desktop passes ``team_id`` (project/team) in the JSON body because the
+    Flind Desktop passes ``team_id`` (project/team) in the JSON body because the
     session's ``user.current_team`` may not match the app UI. The web app omits
     it and uses ``current_team``.
     """

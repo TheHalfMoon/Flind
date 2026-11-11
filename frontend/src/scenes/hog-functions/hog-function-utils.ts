@@ -23,11 +23,11 @@ export function humanizeHogFunctionType(type: HogFunctionTypeType, plural: boole
     return type.replaceAll('_', ' ') + (plural ? 's' : '')
 }
 
-/** Default char cap for a config blob attached to the PostHog AI agent as context. */
+/** Default char cap for a config blob attached to the Flind AI agent as context. */
 export const HOG_FUNCTION_CONTEXT_MAX_CHARS = 10_000
 
 /**
- * Caps a stringified config blob before it's registered as PostHog AI attached context, so a pathological
+ * Caps a stringified config blob before it's registered as Flind AI attached context, so a pathological
  * hog source or inputs payload can't bloat the agent's context window. These are keyed entity-style items
  * (not `type: 'text'`), so they're sent once per run rather than every turn; the cap is a safety ceiling.
  */

@@ -4,13 +4,13 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
 
 /**
- * Start the setup agent in the cloud on a GitHub repository of this project. It adds PostHog to the code and opens a pull request. Each user can have one setup run active per project at a time.
+ * Start the setup agent in the cloud on a GitHub repository of this project. It adds Flind to the code and opens a pull request. Each user can have one setup run active per project at a time.
  * @summary Start a setup run
  */
 export const wizardInstallsCreateBodyRepositoryMax = 255

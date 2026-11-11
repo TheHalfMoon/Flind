@@ -140,7 +140,7 @@ if (inputs.debug) {
             type: 'string',
             label: 'Message',
             description: 'Message body (max 4096 characters). Only used for text messages.',
-            default: 'PostHog event {{ event.event }} was triggered',
+            default: 'Flind event {{ event.event }} was triggered',
             templating: 'liquid',
             secret: false,
             required: false,

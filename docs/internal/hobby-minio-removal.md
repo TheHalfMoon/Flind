@@ -1,6 +1,6 @@
 # Hobby: moving object storage off MinIO
 
-PostHog's hobby stack used two object stores: MinIO on `objectstorage:19000` for general storage, and SeaweedFS on `seaweedfs:8333` for session replay v2.
+Flind's hobby stack used two object stores: MinIO on `objectstorage:19000` for general storage, and SeaweedFS on `seaweedfs:8333` for session replay v2.
 MinIO stopped publishing Docker images, so the `objectstorage` service now runs SeaweedFS as well.
 
 SeaweedFS cannot read the MinIO on-disk format, and there is no in-place conversion.
@@ -8,7 +8,7 @@ The service starts on a new `objectstorage-data` volume, and the MinIO data stay
 
 ## What becomes unavailable
 
-Until you copy the objects across, PostHog cannot read:
+Until you copy the objects across, Flind cannot read:
 
 - exported assets (CSV, PNG, PDF, video)
 - uploaded media, such as images in notebooks
@@ -38,12 +38,12 @@ It copies:
 - session recordings into `seaweedfs`
 - symbol sets into `seaweedfs` as well, because cymbal reads them there while Django reads them from `objectstorage`
 
-The query cache is the one thing left behind, because PostHog rebuilds it.
+The query cache is the one thing left behind, because Flind rebuilds it.
 
 The copy skips objects that already exist in the destination, so it is safe to run again after a failure.
 It exits non-zero if any object failed, and it only suggests deleting the old volume after a complete run.
 
-Check your data in PostHog before you free the disk space:
+Check your data in Flind before you free the disk space:
 
 ```bash
 docker volume rm <project>_objectstorage

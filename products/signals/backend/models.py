@@ -401,9 +401,9 @@ class SignalReport(UUIDModel):
         SUPPRESSED = "suppressed"
 
     class BillingExemptReason(models.TextChoices):
-        POSTHOG_HEALTH_CHECK = "posthog_health_check", "PostHog health check"
-        POSTHOG_ONBOARDING = "posthog_onboarding", "PostHog onboarding"
-        POSTHOG_SYSTEM = "posthog_system", "PostHog system"
+        POSTHOG_HEALTH_CHECK = "posthog_health_check", "Flind health check"
+        POSTHOG_ONBOARDING = "posthog_onboarding", "Flind onboarding"
+        POSTHOG_SYSTEM = "posthog_system", "Flind system"
 
     # Bounds on `tags`, the same as scout finding and task tags.
     MAX_TAGS = 10
@@ -415,7 +415,7 @@ class SignalReport(UUIDModel):
     researching_signal_count = models.IntegerField(null=True, blank=True)
     status = models.CharField(max_length=20, choices=Status, default=Status.POTENTIAL)
     # System billing exemption: non-null means this report's implementation PRs must never be
-    # charged (PostHog-system origins, e.g. health-check scout findings). Prospective-only —
+    # charged (Flind-system origins, e.g. health-check scout findings). Prospective-only —
     # set via `billing.mark_report_billing_exempt` while no billable PR run exists, and never
     # flipped afterwards, so no usage report can observe the value changing. Null = billable.
     billing_exempt_reason = models.CharField(max_length=30, choices=BillingExemptReason, null=True, blank=True)
@@ -1370,7 +1370,7 @@ class SignalReportGithubComment(TeamScopedRootMixin, UUIDModel):
 class SignalReportSlackThread(UUIDModel):
     """The Slack thread a report notification started, so a reply in it resolves back to the report.
 
-    A notification invites the reader to reply in the thread and mention PostHog, which starts a
+    A notification invites the reader to reply in the thread and mention Flind, which starts a
     task. Without this row that task has no way back to the report it discusses, so the work never
     reaches the report's own timeline.
 
@@ -2850,7 +2850,7 @@ class SignalReviewerExclusion(TeamScopedRootMixin, UUIDModel):
     all_teams = models.Manager()  # noqa: DJ012
 
     team = models.ForeignKey("posthog.Team", on_delete=models.CASCADE, db_constraint=False, related_name="+")
-    # The subject is always a PostHog user. The login is a snapshot for display and telemetry, never an identity.
+    # The subject is always a Flind user. The login is a snapshot for display and telemetry, never an identity.
     subject_user_uuid = models.UUIDField()
     subject_github_login = models.CharField(max_length=100, null=True, blank=True)
     # An empty repository covers every repository. A path prefix narrows a repository to one subtree.
@@ -2976,7 +2976,7 @@ class SignalScoutConfig(ModelActivityMixin, TeamScopedRootMixin, UUIDModel):
         IGNORED = "ignored", "Ignored"
         REPEATED_FAILURES = "repeated_failures", "Repeated failures"
         TRIAL_SCOUT_LIMIT = "trial_scout_limit", "Free trial scout limit"
-        # PostHog retired the scout this config runs: its canonical skill declared a sunset that
+        # Flind retired the scout this config runs: its canonical skill declared a sunset that
         # has passed, or it left the fleet on disk altogether. Owned by the retirement pass
         # (`scout_harness/deprecation.py`) alone, so no other system writer resumes a scout that
         # no longer exists, and the roster has a state to render instead of a row that looks
@@ -3761,11 +3761,11 @@ class SignalScratchpad(TeamScopedRootMixin, UUIDModel):
     Scratchpad entries are keyed prose notes the scout fleet writes during runs and
     reads back on future runs (intra-fleet memory) — classifications, dedupe
     fingerprints, learned team quirks the scout decided not to re-emit. The MCP
-    read surface is intentional product design: any agent (PostHog AI, ad-hoc
+    read surface is intentional product design: any agent (Flind AI, ad-hoc
     investigators, other scouts) can read what the scout fleet has learned about
     a team.
 
-    Distinct in shape from PostHog AI's memory primitives (`CoreMemory`,
+    Distinct in shape from Flind AI's memory primitives (`CoreMemory`,
     `AgentMemory`) — those are singleton-per-team blob or per-conversation
     embedded snippets, neither of which fits the scout's per-key cross-agent
     read pattern. Kept narrow to the scouts feature on purpose; not a shared

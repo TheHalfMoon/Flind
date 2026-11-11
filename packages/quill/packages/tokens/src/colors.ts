@@ -1,5 +1,5 @@
 /**
- * PostHog Design System — Color Tokens (hue-based theming)
+ * Flind Design System — Color Tokens (hue-based theming)
  *
  * Surface/neutral colors are derived from a shared theme hue + tint.
  * Consumers can override `--theme-hue`, `--primary-light`,
@@ -36,7 +36,7 @@ export interface ThemeConfig {
     primaryDark: string
 }
 
-/** PostHog default — warm yellowish-grey surfaces + orange/amber brand */
+/** Flind default — warm yellowish-grey surfaces + orange/amber brand */
 export const DEFAULT_THEME: ThemeConfig = {
     hue: 90,
     darkHue: 264,
@@ -84,9 +84,9 @@ function oklch(l: number, c: number, h: number, alpha?: number): string {
 export function buildSemanticColors(): Record<string, ColorTuple> {
     return {
         // ── Surfaces (theme-derived) ──────────────────
-        // Matched to PostHog app's --color-bg-primary so quill panels blend
+        // Matched to Flind app's --color-bg-primary so quill panels blend
         // with the surrounding app: light hsl(75 14% 95%), dark hsl(240 8% 8%),
-        // converted to OKLCH. Dark equals `muted` — PostHog uses one token for
+        // converted to OKLCH. Dark equals `muted` — Flind uses one token for
         // both; surfaces separate via `card` / borders, not background tone.
         background: [surface(0.966, 0.79, 'light'), surface(0.187, 1.1, 'dark'), 'bg-background'],
         foreground: [oklch(0.13, 0.028, 262), oklch(0.967, 0.003, 265), 'text-foreground'],
@@ -96,7 +96,7 @@ export function buildSemanticColors(): Record<string, ColorTuple> {
         // primitives migrate to plain `text-foreground`.
         'card-foreground': ['var(--foreground)', 'var(--foreground)', 'text-card-foreground'],
 
-        // Matched to PostHog app's --color-bg-surface-secondary (subdued cards,
+        // Matched to Flind app's --color-bg-surface-secondary (subdued cards,
         // list rows): light hsl(70 16% 93%), dark hsl(240 8% 10%), in OKLCH.
         muted: [surface(0.953, 1.28, 'light'), surface(0.209, 1.33, 'dark'), 'bg-muted'],
         'muted-foreground': [oklch(0.446, 0.03, 257), oklch(0.709, 0, 0), 'text-muted-foreground'],
@@ -109,7 +109,7 @@ export function buildSemanticColors(): Record<string, ColorTuple> {
         ],
 
         // Chrome — UI furniture surface (toolbars, menubars, nav). Light matches
-        // PostHog app's --color-bg-surface-tertiary, hsl(77 13% 89%), in OKLCH.
+        // Flind app's --color-bg-surface-tertiary, hsl(77 13% 89%), in OKLCH.
         // Dark sits a step above `background` instead of on it, so the chrome
         // and the content stay apart as they do in light mode, where chrome
         // sits a step below. Hue stays theme-derived; chroma is near-zero so

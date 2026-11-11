@@ -19,7 +19,7 @@ So `allowed_tools` is a request for access, not a grant of it.
 | Skill bundle, `content=stub`, and sandbox run state | A pointer file, then MCP         | No grant. The stub omits the list, then `skill-get` sends it |
 | MCP `skill-get`                                     | An MCP response                  | No grant. The list arrives as data                           |
 | `learn project:<skill>`                             | An MCP response                  | No grant. The list never reaches the client                  |
-| PostHog AI `get_llm_skill`                          | Text in the model's context      | No grant. The list is printed as text                        |
+| Flind AI `get_llm_skill`                          | Text in the model's context      | No grant. The list is printed as text                        |
 
 Watch the stub path.
 `render_skill_stub_md` writes only the name, the description, and `metadata`, so the pointer file never carries `allowed-tools`.
@@ -28,7 +28,7 @@ The agent then fetches the real skill with `skill-get`, which makes the skill MC
 `learn project:<skill>` carries less again.
 `formatLearnDocument` in `services/mcp/src/skills/skill-catalog.ts` strips the frontmatter and prints the description, the file manifest, and the body, so the list never reaches the client.
 
-The PostHog AI path is different again.
+The Flind AI path is different again.
 `_format_skill_detail` in `products/skills/backend/tools/skills.py` prints `Allowed tools:` into the text the model reads.
 The tool description tells the model to treat the body as instructions, but nothing acts on the tool list.
 

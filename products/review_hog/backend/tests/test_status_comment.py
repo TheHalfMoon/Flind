@@ -98,7 +98,7 @@ _BODY_CASES: list[tuple[str, Callable[[], str], list[str]]] = [
         "deep_running",
         lambda: _running("reviewing", 7, 9, **_DEEP),
         [
-            "### PostHog Review · Deep · reviewing `b81c2e1`",
+            "### Flind Review · Deep · reviewing `b81c2e1`",
             "| Prepare the diff | done | 14 files, 3 chunks |\n| Pick perspectives | done | 3 perspectives |",
             "| Run review passes | 7/9 |  |",
             "| Publish | waiting |  |",
@@ -108,7 +108,7 @@ _BODY_CASES: list[tuple[str, Callable[[], str], list[str]]] = [
         "deep_failed",
         lambda: _running("validating", 1, 3, pairs=_PAIRS, failed=True, **_DEEP),
         [
-            "### PostHog Review · Deep · couldn't finish reviewing `b81c2e1`",
+            "### Flind Review · Deep · couldn't finish reviewing `b81c2e1`",
             'The review failed at "Validate findings". Ask for a Deep review again to retry.',
             "| Merge overlapping findings | done | 16 → 3 |\n| Validate findings | failed |  |\n| Publish | skipped |  |",
         ],
@@ -128,11 +128,11 @@ _BODY_CASES: list[tuple[str, Callable[[], str], list[str]]] = [
         "deep_done",
         lambda: _done(pairs=_PAIRS, report_url="https://ph.test/r", **_DEEP),
         [
-            "### PostHog Review · Deep · reviewed `b81c2e1`\n\nPosted 1 finding: 1 Must fix.",
+            "### Flind Review · Deep · reviewed `b81c2e1`\n\nPosted 1 finding: 1 Must fix.",
             "| Run review passes | done | 14 issues (+2 blind-spot) |",
             "| Validate findings | done | 2 kept, 1 dismissed |",
             # The full found count stays visible even when the threshold holds some findings back.
-            '| Publish | done | 1 posted ([view review](https://g/review)) · 1 held back by the author\'s "Should fix" threshold ([view in PostHog](https://ph.test/r)) |',
+            '| Publish | done | 1 posted ([view review](https://g/review)) · 1 held back by the author\'s "Should fix" threshold ([view in Flind](https://ph.test/r)) |',
         ],
     ),
     # With no perspective selected for any chunk, only the blind-spot sweep reports issues.
@@ -192,7 +192,7 @@ class TestRenderFinalBody:
         assert hidden in body
         assert "reviewhog-flash" not in body.replace(hidden, "")
         # Held-back findings are otherwise invisible to the author — the comment must not dead-end.
-        assert "([view in PostHog](https://ph.test/project/1/code-review?review=rid))" in body
+        assert "([view in Flind](https://ph.test/project/1/code-review?review=rid))" in body
 
     @parameterized.expand(
         [
@@ -325,7 +325,7 @@ class TestEnsureStatusComment(BaseTest):
         ensure_status_comment(self.team.id, str(report.id), review_mode=REVIEW_MODE_FLASH)
 
         assert _posts(mock_request) == ["/repos/o/r/issues/123/comments"]
-        assert mock_request.call_args.kwargs["json"]["body"].startswith("### PostHog Review · Standard · reviewing ")
+        assert mock_request.call_args.kwargs["json"]["body"].startswith("### Flind Review · Standard · reviewing ")
         report.refresh_from_db()
         assert report.status_comment_id == 777
         assert report.status_comment_edited_at is not None
@@ -517,7 +517,7 @@ class TestFinalizeStatusComment(BaseTest):
         body = mock_request.call_args.kwargs["json"]["body"]
         # The entry point threads the turn's mode into the renderer; a dropped kwarg here would
         # leave a dead Standard run reading as a Deep one.
-        assert body.startswith("### PostHog Review · Standard · couldn't finish reviewing ")
+        assert body.startswith("### Flind Review · Standard · couldn't finish reviewing ")
         assert "1 kept, 0 dismissed" in body
 
     def test_a_failed_rerun_after_an_unpublished_turn_names_the_step_it_died_in(
@@ -862,6 +862,6 @@ class TestFailedTurnNotice(BaseTest):
         assert _patches(mock_request) == expected_patches
         if expected_posts:
             body = mock_request.call_args.kwargs["json"]["body"]
-            assert body.startswith("### PostHog Review · Standard · couldn't review `sha-1`")
+            assert body.startswith("### Flind Review · Standard · couldn't review `sha-1`")
             assert "Push a new commit to run it again." in body
             assert body.endswith(marker)

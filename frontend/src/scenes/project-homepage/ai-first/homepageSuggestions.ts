@@ -107,7 +107,7 @@ export interface ResumableChat {
 }
 
 /**
- * Picks the most recently active chat the user started in the PostHog AI web UI, across the
+ * Picks the most recently active chat the user started in the Flind AI web UI, across the
  * legacy conversations and the newest `posthog_ai` sandbox task.
  */
 export function pickLastChat(

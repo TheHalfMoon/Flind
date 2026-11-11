@@ -1,7 +1,7 @@
 # credentials-service
 
-Serves PostHog's **platform integration credentials** — the OAuth app client ids/secrets and API
-keys PostHog itself owns, as opposed to a customer's — over HTTP, so they stop being injected as
+Serves Flind's **platform integration credentials** — the OAuth app client ids/secrets and API
+keys Flind itself owns, as opposed to a customer's — over HTTP, so they stop being injected as
 environment variables into every pod that might need one. Today those keys are duplicated across
 the Django stack and each temporal worker's chart values, and adding one means a `PostHog/charts`
 PR plus knowing in advance which pods need which key.
@@ -153,7 +153,7 @@ credentials-service-secrets
 applies to a whole secret version, so with everything in one secret, rotating Google — or adding
 an unrelated key — would consume the slot Stripe's in-flight rotation was using and end its
 overlap silently. A sibling key is unaffected by edits to anything else, and it is the convention
-PostHog already uses for rotatable keys (`SECRET_KEY_FALLBACKS`), so the rotation guard in
+Flind already uses for rotatable keys (`SECRET_KEY_FALLBACKS`), so the rotation guard in
 `PostHog/secrets` grades these automatically.
 
 Starting a rotation means writing the new value into the sibling, leaving the live one in place:

@@ -343,7 +343,7 @@ function isMetadataQuery(query: string): boolean {
 // way. `$mcp_tool_call` still records that the call happened.
 const PRESIGNED_UPLOAD_TOOL_NAME = 'media-image-upload-start'
 
-// Its args are raw Fivetran read responses, secrets included. PostHog strips them on
+// Its args are raw Fivetran read responses, secrets included. Flind strips them on
 // the server, after the span would capture them, and many Fivetran secret fields
 // (`pat`, credential-bearing URLs) have names key-based redaction can't recognize.
 const FIVETRAN_UPLOAD_TOOL_NAME = 'warehouse-migration-upload-connections'
@@ -418,7 +418,7 @@ function shouldCaptureToolInput(toolName: string, input: unknown): boolean {
     // body, a support ticket, a CRM record — passing through our gateway on its way
     // somewhere else. Key-based redaction only catches credential-shaped fields, so
     // capturing these would put arbitrary customer content in analytics to serve
-    // evaluations that target PostHog's own tools. `$mcp_tool_call` still records that
+    // evaluations that target Flind's own tools. `$mcp_tool_call` still records that
     // the call happened, with its server, duration and outcome.
     if (isGatewayToolName(toolName)) {
         return false
@@ -618,14 +618,14 @@ export async function trackToolSpan(toolName: string, state: ResolvedState, meta
 }
 
 /**
- * Emits `$mcp_auth_failed` for a request the PostHog API refused. These requests die
+ * Emits `$mcp_auth_failed` for a request the Flind API refused. These requests die
  * before `RequestStateResolver.resolve` returns, so they never reach
  * `trackInitEvent`/`trackToolCall` and are otherwise invisible in analytics — a
  * connector stuck in an authorize loop looks like a gap in the data rather than a
  * failure. Keyed on `userHash` (a hash of the bearer token, never the token itself)
  * so affected credentials can be counted without identifying anyone.
  *
- * Only PostHog's own server emits this; no SDK does. It reuses the canonical `$mcp_*`
+ * Only Flind's own server emits this; no SDK does. It reuses the canonical `$mcp_*`
  * client-identity fields so one query can group it and real MCP traffic by the same
  * dimensions.
  */

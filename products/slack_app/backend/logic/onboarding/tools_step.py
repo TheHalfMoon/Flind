@@ -10,7 +10,7 @@ class ToolsStep(OnboardingStep):
     done_text = "Tools connected"
 
     def applies(self, ctx: OnboardingContext) -> bool:
-        # MCP servers connect for a PostHog user, so the step needs an account that can link.
+        # MCP servers connect for a Flind user, so the step needs an account that can link.
         return ctx.can_link
 
     def is_done(self, ctx: OnboardingContext) -> bool:
@@ -21,7 +21,7 @@ class ToolsStep(OnboardingStep):
         return [
             section_block(
                 "*Connect your tools*\n"
-                "I can also use MCP servers, such as Linear or Notion. Connect them in PostHog, and I use them "
+                "I can also use MCP servers, such as Linear or Notion. Connect them in Flind, and I use them "
                 "with your own access. Press Continue when you're done."
             ),
             {

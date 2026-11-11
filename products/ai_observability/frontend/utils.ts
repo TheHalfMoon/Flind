@@ -457,7 +457,7 @@ export function latencyMs(event: LLMTraceEvent): number {
 }
 
 /**
- * Epoch ms when the operation behind an event began. PostHog AI SDKs capture an
+ * Epoch ms when the operation behind an event began. Flind AI SDKs capture an
  * event when the operation finishes (timestamp = end, $ai_latency = duration),
  * while OTel-ingested spans keep the span's start time. Shared by the timeline,
  * the trace tree, and the drawer's event list so they all order events the same way.

@@ -1,4 +1,4 @@
-"""Shared helpers for the PostHog support CLI scripts (scrub/prune).
+"""Shared helpers for the Flind support CLI scripts (scrub/prune).
 
 Import the names you need straight from the defining module - `lib.errors`, `lib.console`,
 `lib.posthog_api` - rather than re-exporting them here. Scripts run directly

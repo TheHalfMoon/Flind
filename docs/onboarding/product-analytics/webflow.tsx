@@ -13,7 +13,7 @@ export const getWebflowInstallSteps = (ctx: OnboardingComponentsContext): StepDe
             badge: 'required',
             content: (
                 <>
-                    <Markdown>First, copy your PostHog web snippet:</Markdown>
+                    <Markdown>First, copy your Flind web snippet:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -46,7 +46,7 @@ export const getWebflowInstallSteps = (ctx: OnboardingComponentsContext): StepDe
                     </Markdown>
                     <Markdown>
                         {`1. Go to the **Custom code** tab in site settings.
-2. In the **Head code** section, paste your PostHog snippet and press save.
+2. In the **Head code** section, paste your Flind snippet and press save.
 3. Publish your site.`}
                     </Markdown>
                 </>

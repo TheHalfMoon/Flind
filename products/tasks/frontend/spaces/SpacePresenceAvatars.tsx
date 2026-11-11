@@ -12,7 +12,7 @@ function personLabel(name: string, creator: boolean, live: boolean): string {
 }
 
 /**
- * Who has been active in a space lately, like PostHog Desktop. A small corner dot marks who is working right now,
+ * Who has been active in a space lately, like Flind Desktop. A small corner dot marks who is working right now,
  * and a crown marks the creator when `creatorUuid` is given.
  * The newest person sits on top at the right, so their dot shows; the stack tucks the others behind them.
  */

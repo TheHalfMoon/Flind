@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 class TitleAndTopic(BaseModel):
     title: str = Field(description="A crisp conversation title, ≤ 8 words, sentence case.")
-    topic: Conversation.Topic = Field(description="The PostHog product domain the user's first question is about.")
+    topic: Conversation.Topic = Field(description="The Flind product domain the user's first question is about.")
 
 
 class TitleGeneratorNode(AssistantNode):

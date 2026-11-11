@@ -38,7 +38,7 @@ setup(
     name="hogql_parser",
     version="1.3.85",
     url="https://github.com/PostHog/posthog/tree/master/common/hogql_parser",
-    description="HogQL parser for internal PostHog use",
+    description="HogQL parser for internal Flind use",
     author="PostHog Inc.",
     author_email="hey@posthog.com",
     maintainer="PostHog Inc.",

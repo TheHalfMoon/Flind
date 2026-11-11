@@ -362,7 +362,7 @@ class SupportReplyWorkflow:
 
                 # Don't short-circuit on empty in-process retrieval — the draft agent has
                 # read-only MCP tools (team business knowledge, and docs-search when this
-                # team uses PostHog docs) and can find sources itself. Seed chunks are a head start.
+                # team uses Flind docs) and can find sources itself. Seed chunks are a head start.
                 if not retrieve_output.chunk_ids:
                     workflow.logger.info("support_reply: no seed chunks; drafting via MCP tools only")
 

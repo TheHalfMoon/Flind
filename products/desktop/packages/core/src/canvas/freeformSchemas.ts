@@ -8,14 +8,14 @@ export const FREEFORM_TEMPLATE_ID = "freeform";
 
 // ---------------------------------------------------------------------------
 // Canvas data avenue: the host-side query the postMessage `ph.query` shim calls.
-// Routed through PostHog's cached query runner (the same avenue insights use, so
+// Routed through Flind's cached query runner (the same avenue insights use, so
 // caching + cold-boot are handled), never a bare uncached /query (the token is
 // injected host-side; the iframe only sees this shape).
 //
 // Two shapes (the agent picks per metric; see the canvas templates skill):
 //   • `query` — a TYPED query node (`{ kind: "TrendsQuery" | "FunnelsQuery" |
 //     "HogQLQuery" | … }`). PREFERRED: the product's own query runners compute it,
-//     so the numbers match the PostHog UI (sessionization, unique users, bounce
+//     so the numbers match the Flind UI (sessionization, unique users, bounce
 //     rate, breakdowns, math) and the typed `dateRange` handles windows correctly.
 //   • `hogql` — an inline HogQL string (wrapped server-side as a HogQLQuery).
 //     Escape hatch for shapes a typed node can't express; the agent owns the SQL.
@@ -49,7 +49,7 @@ export const canvasDataResultSchema = z.object({
   // and `ph.loadInsight`):
   //   • HogQLQuery / SQL insight → an array of ROWS, each row an array of cell
   //     values aligned to `columns` (e.g. `[[123], [456]]`).
-  //   • Typed nodes / trends-style insight → an array of SERIES OBJECTS as PostHog
+  //   • Typed nodes / trends-style insight → an array of SERIES OBJECTS as Flind
   //     returns them — `{ data: number[], labels: string[], days: string[],
   //     count, aggregated_value, compare_label, … }`. NOT rows-of-cells; passed
   //     through untouched so the canvas reads the native trends shape.
@@ -68,7 +68,7 @@ export type CanvasDataResult = z.infer<typeof canvasDataResultSchema>;
 
 // ---------------------------------------------------------------------------
 // Load-insight avenue: the host-side fetch behind the `ph.loadInsight` shim. The
-// canvas references a SAVED, validated PostHog insight by `short_id` and the host
+// canvas references a SAVED, validated Flind insight by `short_id` and the host
 // returns its STORED result from the insights endpoint (not a fresh `/query/`
 // run). This is the preferred data path — every metric is a proven saved insight.
 // `dateRange` (the canvas date picker's window) re-scopes the insight for this
@@ -158,7 +158,7 @@ export type CanvasCaptureConfig = z.infer<typeof canvasCaptureConfigSchema>;
 // ---------------------------------------------------------------------------
 // Host <-> iframe postMessage protocol (Q10/Q11). The canvas runs in a
 // null-origin sandboxed iframe, so it CANNOT share JS objects with the host —
-// every interaction is a structured-clone message. The real PostHog token never
+// every interaction is a structured-clone message. The real Flind token never
 // crosses this boundary: the iframe sends a data-request; the host runs the
 // authenticated call and returns only the result.
 // ---------------------------------------------------------------------------

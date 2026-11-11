@@ -310,7 +310,7 @@ def vs_baseline_block(
     the baseline's `seeds`, as in an A/A experiment.
 
     `within_team` is the read the inbox order depends on, and `pooled` is there for reference.
-    `within_team_non_dogfood` leaves out PostHog's own project, whose inbox use is not a customer's.
+    `within_team_non_dogfood` leaves out Flind's own project, whose inbox use is not a customer's.
     Each `_macro` read weighs every team the same, so a few large inboxes cannot carry it. The
     non-dogfood macro delta also gets a team bootstrap interval. A seed where either arm has no AUC
     drops out of the pairs.

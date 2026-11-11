@@ -25,7 +25,7 @@ _SHARD_SUFFIX_RE = re.compile(r"-([a-zA-Z]{2}\d{1,2})$")
 _DEFAULT_SHARD = "au1"
 
 # Cliniko blocks requests without a descriptive User-Agent of the form "APP_NAME (email)".
-USER_AGENT = "PostHog Data Warehouse (support@posthog.com)"
+USER_AGENT = "Flind Data Warehouse (support@posthog.com)"
 
 # Sentinel lower bound for the `updated_at` filter on the first incremental sync (or full
 # refresh), well before Cliniko existed. Using it unconditionally means the filter is always

@@ -55,7 +55,7 @@ class MessageCategorySerializer(serializers.Serializer):
             "Opt-out lists and preference imports refer to categories by key. You can't change the key after creation."
         ),
     )
-    name = serializers.CharField(max_length=128, help_text="Display name of the category, shown in the PostHog app.")
+    name = serializers.CharField(max_length=128, help_text="Display name of the category, shown in the Flind app.")
     description = serializers.CharField(
         allow_blank=True,
         required=False,

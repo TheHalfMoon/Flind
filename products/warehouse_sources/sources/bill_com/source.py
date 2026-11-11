@@ -63,9 +63,9 @@ class BillComSource(ResumableSource[BillComSourceConfig, BillComResumeConfig]):
             label="BILL (formerly Bill.com)",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["bill.com", "accounts payable", "accounts receivable", "ap", "ar"],
-            caption="""Connect BILL to pull your accounts payable and receivable data into the PostHog Data warehouse.
+            caption="""Connect BILL to pull your accounts payable and receivable data into the Flind Data warehouse.
 
-Create a developer key in your [BILL developer account](https://developer.bill.com/docs/bill-keys-tokens), then enter the email and password you sign in with, your organization ID, and that developer key. PostHog uses them to start an API session for each sync.
+Create a developer key in your [BILL developer account](https://developer.bill.com/docs/bill-keys-tokens), then enter the email and password you sign in with, your organization ID, and that developer key. Flind uses them to start an API session for each sync.
 
 BILL Spend & Expense data is not included — it uses a separate API token.""",
             iconPath="/static/services/bill_com.png",

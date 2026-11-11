@@ -74,11 +74,11 @@ function summarizeAiSubscriptionDisplayConfig(
         includedContent.push('feedback')
     }
     if (resolved.include_manage_link && resolved.include_posthog_hint) {
-        includedContent.push('PostHog links and suggestions')
+        includedContent.push('Flind links and suggestions')
     } else if (resolved.include_manage_link) {
         includedContent.push('manage link')
     } else if (resolved.include_posthog_hint) {
-        includedContent.push('PostHog suggestion')
+        includedContent.push('Flind suggestion')
     }
 
     return includedContent.join(' + ')

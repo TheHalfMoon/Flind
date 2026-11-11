@@ -101,7 +101,7 @@ export const PendingLoginSchema = PendingApprovalSchema.extend({
 
 export type PendingLogin = z.output<typeof PendingLoginSchema>
 
-// PostHog refuses a client it hasn't verified with `unauthorized_client`, and its description says why.
+// Flind refuses a client it hasn't verified with `unauthorized_client`, and its description says why.
 function unauthorizedClient(host: Host, body: OAuthError | undefined): HogError | undefined {
     if (body?.error !== 'unauthorized_client' || body.error_description === undefined) {
         return undefined
@@ -174,7 +174,7 @@ export async function startDeviceLogin(
         throw new HogError(
             'invalid_scope',
             `${host} won't give hog these scopes: ${escapeControls(error.error_description ?? 'no reason given')}`,
-            'A self-hosted PostHog can be too old for newer scopes. Set HOG_PERSONAL_API_KEY and HOG_PROJECT_ID to use a personal API key instead.'
+            'A self-hosted Flind can be too old for newer scopes. Set HOG_PERSONAL_API_KEY and HOG_PROJECT_ID to use a personal API key instead.'
         )
     }
     const body = response.ok ? DeviceAuthorizationResponse.safeParse(response.json).data : undefined
@@ -182,7 +182,7 @@ export async function startDeviceLogin(
         throw new HogError(
             'login_unavailable',
             `${host} didn't start a login: it answered with HTTP ${response.status}.`,
-            'Check the host. A self-hosted PostHog must be able to reach posthog.com to log hog in. Otherwise set HOG_PERSONAL_API_KEY, with the project ID in posthog.json as "projectId" or in HOG_PROJECT_ID.'
+            'Check the host. A self-hosted Flind must be able to reach posthog.com to log hog in. Otherwise set HOG_PERSONAL_API_KEY, with the project ID in posthog.json as "projectId" or in HOG_PROJECT_ID.'
         )
     }
     return {
@@ -197,7 +197,7 @@ export async function startDeviceLogin(
     }
 }
 
-// An older self-hosted PostHog ignores `required_scopes`, so hog checks the approved scopes itself.
+// An older self-hosted Flind ignores `required_scopes`, so hog checks the approved scopes itself.
 async function refuseWithoutRequiredScopes(
     runtime: Runtime,
     login: OAuthLogin,
@@ -238,12 +238,12 @@ export async function pollDeviceLogin(
         return { state: 'slow_down' }
     }
     if (response.status >= 500) {
-        return { state: 'retry', reason: `PostHog answered with HTTP ${response.status}.` }
+        return { state: 'retry', reason: `Flind answered with HTTP ${response.status}.` }
     }
     if (response.ok) {
         const body = parseOrThrow(DeviceTokenResponse, response.json, {
             code: 'unexpected_response',
-            context: "PostHog approved the login, but its answer isn't what hog expects.",
+            context: "Flind approved the login, but its answer isn't what hog expects.",
             hint: `Run \`${command}\` to start again.`,
         })
         const [projectId] = body.scoped_teams
@@ -268,7 +268,7 @@ export async function pollDeviceLogin(
     }
     throw new HogError(
         'login_failed',
-        `PostHog rejected the login with HTTP ${response.status}.`,
+        `Flind rejected the login with HTTP ${response.status}.`,
         `Run \`${command}\` to start again.`
     )
 }

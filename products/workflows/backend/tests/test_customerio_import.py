@@ -329,7 +329,7 @@ class TestCustomerioCampaignTranslation(BaseTest):
                 "<p>{{ customer.city }}</p><!--[if !mso]><!--><i>web</i><!--<![endif]--></body></html>"
             },
             sender_addresses={"77": "Team <team@example.com>"},
-            senders={"team@example.com": ImportSender(integration_id=12, email="team@example.com", name="PostHog")},
+            senders={"team@example.com": ImportSender(integration_id=12, email="team@example.com", name="Flind")},
             topic_categories={
                 "3": ImportCategory(id="cat-1", category_type="marketing"),
                 "4": ImportCategory(id="cat-2", category_type="marketing"),

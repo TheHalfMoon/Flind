@@ -14,7 +14,7 @@ def backfill_encrypted_payloads_invariant(apps, schema_editor):
     model and serializer validation rejects this combination, so existing rows
     must be reconciled before validation can run for any save path.
 
-    Verified for PostHog Cloud (US: 8 rows, EU: 3 rows) that all violating
+    Verified for Flind Cloud (US: 8 rows, EU: 3 rows) that all violating
     rows have empty `filters.payloads`, so the bit-flip is lossless there.
     For self-hosted installs the same may not hold: a row with non-empty
     `filters.payloads.true` would, after the flip, expose its previously

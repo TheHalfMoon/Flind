@@ -11,7 +11,7 @@ const SEVERITY_MAP: Record<LogLevel, { text: string; number: number }> = {
 
 /**
  * Structured logger for the toolbar. Logs to the browser console and sends
- * log records to PostHog's /i/v1/logs endpoint (OTLP format).
+ * log records to Flind's /i/v1/logs endpoint (OTLP format).
  *
  * Usage:
  *   toolbarLogger.warn('auth', 'PKCE verifier expired', { ttl_ms: PKCE_TTL_MS })

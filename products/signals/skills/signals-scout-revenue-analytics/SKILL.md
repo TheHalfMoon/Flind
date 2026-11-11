@@ -2,10 +2,10 @@
 name: signals-scout-revenue-analytics
 scout-display-name: Revenue analytics
 description: >
-  Signals scout for PostHog revenue analytics. Watches for upstream failures (Stripe sync
+  Signals scout for Flind revenue analytics. Watches for upstream failures (Stripe sync
   stalls, capture regressions), and config drift.
 compatibility: >
-  Designed for the PostHog Signals agent in a Claude sandbox with PostHog MCP scopes:
+  Designed for the Flind Signals agent in a Claude sandbox with Flind MCP scopes:
   read-only analytics plus signal_scout_internal:write (for scratchpad) +
   signal_scout_report:write (for emit-report/edit-report, granted because this scout authors
   reports directly via the report channel). Assumes the signals-scout MCP tool family plus the
@@ -148,7 +148,7 @@ High-confidence finding when:
 
 #### Subscription property missing → MRR is empty
 
-Event source configured for a subscription business, but `revenue_analytics_config.events[].subscriptionProperty` from `project-get` is null. The MRR view will be empty because PostHog can't tell which charges belong to the same subscription. The dashboard renders but only gross revenue is meaningful.
+Event source configured for a subscription business, but `revenue_analytics_config.events[].subscriptionProperty` from `project-get` is null. The MRR view will be empty because Flind can't tell which charges belong to the same subscription. The dashboard renders but only gross revenue is meaningful.
 
 Detect: events configured with revenue + currency but no subscription property; gross-revenue chart populated, MRR chart empty. The managed-view fallback cannot show the property mapping, so do not report this finding without `project-get`. Scratchpad-level finding for new-onboarding teams; report-worthy if the team has been live long enough that they should have noticed.
 
@@ -173,9 +173,9 @@ GROUP BY 1, 2 ORDER BY 3 DESC
 
 A currency that's never appeared before, or whose share suddenly jumped, usually means either (a) the team is selling into a new market — write a scratchpad entry, no report, or (b) currency property is misconfigured and revenue is being mis-tagged. The (b) case shows up as a single dominant currency on a non-USD team or vice versa. Read each `source_label` on its own, because `revenueCurrencyProperty` controls only event charges. For a `revenue_analytics.events.<event>` label, cross-reference that event's `revenue_analytics_config.events[].revenueCurrencyProperty` from `project-get` to tell them apart: `{static: "USD"}` tags every charge of that event with one currency, and `{property: ...}` reads it from the event. A warehouse label (e.g. `stripe.<prefix>`) takes its currency from the source's own data, so do not blame the event config for a shift there.
 
-#### Stripe-customer ↔ PostHog-person join broken
+#### Stripe-customer ↔ Flind-person join broken
 
-Stripe customers should carry `posthog_person_distinct_id` metadata so PostHog can attach revenue to the person profile. If newly-created customers stop carrying that metadata (post-deploy regression in checkout flow), aggregate views still work but person-level revenue (group analytics, customer journeys) goes dark.
+Stripe customers should carry `posthog_person_distinct_id` metadata so Flind can attach revenue to the person profile. If newly-created customers stop carrying that metadata (post-deploy regression in checkout flow), aggregate views still work but person-level revenue (group analytics, customer journeys) goes dark.
 
 Detect via the `customer` view: count of customers with non-null `posthog_person_distinct_id` in last 30d vs the 30d before. Scratchpad-worthy if the team isn't using person-level revenue features; report-worthy if they are (check `popular_insights` for person-breakdown revenue charts).
 

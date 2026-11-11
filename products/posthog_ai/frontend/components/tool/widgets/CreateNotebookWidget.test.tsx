@@ -27,7 +27,7 @@ describe('CreateNotebookWidget', () => {
         'notebooks-get',
     ])('resolves %s to the notebook widget', (key) => {
         expect(toolRegistry.lookup(key)?.displayName).toBe('Notebook')
-        // The notebook widget is gated on a trusted PostHog-exec origin, so pass `fromPostHogExec`.
+        // The notebook widget is gated on a trusted Flind-exec origin, so pass `fromPostHogExec`.
         expect(lookupToolRenderer(key, true).displayName).toBe('Notebook')
     })
 

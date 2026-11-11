@@ -4,7 +4,7 @@
  */
 
 /**
- * Pulls the human-readable message out of a PostHog API error response, so a failing template
+ * Pulls the human-readable message out of a Flind API error response, so a failing template
  * surfaces "Invalid API key" rather than a bare status code. Falls back to the whole body for
  * responses that don't use either of our standard error shapes.
  */
@@ -12,7 +12,7 @@ export const hogApiErrorMessageFn = `fun apiErrorMessage(response) {
   return response.body.error ?? response.body.detail ?? response.body
 }`
 
-// Ticket trackers sit outside PostHog's access controls, and a GitHub or GitLab repository can be
+// Ticket trackers sit outside Flind's access controls, and a GitHub or GitLab repository can be
 // public, so a frame line carries only a file name, the line and the function name. Cymbal marks a JS
 // frame without a source map as resolved, and an inline script's source is the page URL, which can end
 // in a token. So a file name shows only when it looks like a source file, and a function name only when

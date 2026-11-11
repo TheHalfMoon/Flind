@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -1417,7 +1417,7 @@ export interface HeatmapPreflightResponseApi {
      * * `frame_ancestors` - frame_ancestors */
     blocked_by: BlockedByEnumApi | null
     /**
-     * HTTP status the page returned to us. A 4xx or 5xx here points at the customer's host or CDN rather than at PostHog. Null when the page could not be reached at all.
+     * HTTP status the page returned to us. A 4xx or 5xx here points at the customer's host or CDN rather than at Flind. Null when the page could not be reached at all.
      * @nullable
      */
     http_status: number | null
@@ -1798,7 +1798,7 @@ export interface WebAnalyticsBotConditionApi {
 export interface WebAnalyticsBotRuleApi {
     /** Stable id for the rule. Pass it to the delete endpoint. */
     readonly id: string
-    /** Label reported by the `Bot name` property when the rule matches. Also the operator for a rule on a bot PostHog does not know. */
+    /** Label reported by the `Bot name` property when the rule matches. Also the operator for a rule on a bot Flind does not know. */
     name: string
     /** Reported by the `Traffic category` property. Defaults to 'custom'. A built-in category such as ai_crawler or search_crawler relabels the traffic type too. */
     category?: string

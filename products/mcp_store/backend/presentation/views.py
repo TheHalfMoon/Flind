@@ -179,7 +179,7 @@ def _is_https(url: str) -> bool:
 
 
 def _is_valid_posthog_code_callback_url(url: str) -> bool:
-    """Validate that a PostHog Desktop callback URL is safe to redirect to (prevents open redirect)."""
+    """Validate that a Flind Desktop callback URL is safe to redirect to (prevents open redirect)."""
     parsed = urlparse(url)
     if parsed.scheme in ("array", "posthog-code"):
         return True
@@ -241,7 +241,7 @@ class MCPServerTemplateSerializer(serializers.ModelSerializer):
         help_text="The vendor's brand domain (e.g. 'linear.app'), resolved to an icon at render time "
         "via the logo.dev proxy endpoint. Empty when no brand icon is known.",
     )
-    # Kept until PostHog Desktop stops reading it; drop together with the model column.
+    # Kept until Flind Desktop stops reading it; drop together with the model column.
     icon_key = serializers.CharField(
         read_only=True,
         help_text="Deprecated: use icon_domain instead. Lowercase key for clients that still "
@@ -256,7 +256,7 @@ class MCPServerTemplateSerializer(serializers.ModelSerializer):
 class MCPServerViewSet(TeamAndOrgViewSetMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
     """Lists curated MCP server templates that users can install with one click.
 
-    Templates are seeded by PostHog operators and carry shared, encrypted
+    Templates are seeded by Flind operators and carry shared, encrypted
     OAuth client credentials. Inactive templates are hidden from the catalog.
     """
 
@@ -320,7 +320,7 @@ class MCPServerInstallationSerializer(serializers.ModelSerializer):
         help_text="Brand domain from the linked template, rendered via the logo.dev icon proxy. "
         "Empty if custom install (no template).",
     )
-    # Kept until PostHog Desktop stops reading it; drop together with the model column.
+    # Kept until Flind Desktop stops reading it; drop together with the model column.
     icon_key = serializers.CharField(
         source="template.icon_key",
         read_only=True,
@@ -442,7 +442,7 @@ class InstallCustomSerializer(serializers.Serializer):
         default="personal",
         help_text=(
             "'personal' is per-user; 'shared' makes the credential available to project members. "
-            "PostHog agents get access to the connection automatically; see agent_scope."
+            "Flind agents get access to the connection automatically; see agent_scope."
         ),
     )
     # Team-wide install options remain admin-only. Agent grants follow the
@@ -457,7 +457,7 @@ class InstallCustomSerializer(serializers.Serializer):
         required=False,
         help_text=(
             "How far the automatic agent grants for this connection reach. 'personal' (the default) lets "
-            "PostHog agents use it only on runs for you; 'team' lets every agent run in the project use it. "
+            "Flind agents use it only on runs for you; 'team' lets every agent run in the project use it. "
             "Grants are created when the caller may manage agent access: project admins always, members "
             "when team settings allow it. Sending a value without that permission is rejected."
         ),
@@ -493,7 +493,7 @@ class InstallTemplateSerializer(serializers.Serializer):
         default="personal",
         help_text=(
             "'personal' is per-user; 'shared' makes the credential available to project members. "
-            "PostHog agents get access to the connection automatically; see agent_scope."
+            "Flind agents get access to the connection automatically; see agent_scope."
         ),
     )
     # Team-wide install options remain admin-only. Agent grants follow the
@@ -508,7 +508,7 @@ class InstallTemplateSerializer(serializers.Serializer):
         required=False,
         help_text=(
             "How far the automatic agent grants for this connection reach. 'personal' (the default) lets "
-            "PostHog agents use it only on runs for you; 'team' lets every agent run in the project use it. "
+            "Flind agents use it only on runs for you; 'team' lets every agent run in the project use it. "
             "Grants are created when the caller may manage agent access: project admins always, members "
             "when team settings allow it. Sending a value without that permission is rejected."
         ),
@@ -708,11 +708,11 @@ class CallToolBlockedSerializer(serializers.Serializer):
 
 
 # Phrased for the agent reading the refusal: say what happened and where the human
-# fixes it, since approval lives in PostHog and not inline in the conversation.
+# fixes it, since approval lives in Flind and not inline in the conversation.
 _BLOCKED_CALL_DETAIL = {
     "needs_approval": "Tool '{tool_name}' needs approval before it can run. "
-    "Ask the user to approve it in PostHog under Settings → MCP servers.",
-    "disabled": "Tool '{tool_name}' is turned off by team policy. An admin controls this in PostHog.",
+    "Ask the user to approve it in Flind under Settings → MCP servers.",
+    "disabled": "Tool '{tool_name}' is turned off by team policy. An admin controls this in Flind.",
     "removed": "Tool '{tool_name}' is no longer available on the upstream server.",
 }
 
@@ -1292,7 +1292,7 @@ class MCPServerInstallationViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet
         """Invoke one tool on a connected MCP server.
 
         The request/response shape is plain REST rather than the JSON-RPC envelope
-        `proxy` speaks, because the caller here is an agent surface (the PostHog MCP's
+        `proxy` speaks, because the caller here is an agent surface (the Flind MCP's
         `exec`) that wants one tool result, not an MCP transport of its own.
         """
         installation = self.get_object()
@@ -2303,7 +2303,7 @@ class MCPOAuthRedirectViewSet(viewsets.ViewSet):
 
     OAuth providers redirect here after authorization. This endpoint
     validates the state token, exchanges the code for tokens, and
-    redirects to the originating client (PostHog web or PostHog Desktop).
+    redirects to the originating client (Flind web or Flind Desktop).
     """
 
     # Use SessionAuthentication; leave permission_classes empty for uniform 400s, not 401s
@@ -2473,8 +2473,8 @@ class MCPOAuthRedirectViewSet(viewsets.ViewSet):
                 and oauth_state.created_by_id != request_user_id
             ):
                 # Code's dev callback crosses into the system browser, which
-                # does not share the API client's local PostHog session.
-                logger.info("OAuth redirect: allowing PostHog Code callback without user binding in dev mode")
+                # does not share the API client's local Flind session.
+                logger.info("OAuth redirect: allowing Flind Code callback without user binding in dev mode")
 
             enforce_ip_restrictions(
                 request,

@@ -6,7 +6,7 @@ from django.utils.html import format_html
 from posthog.models.data_deletion_request import DataDeletionRequest, build_deletion_count_query
 from posthog.models.team import Team
 
-# Dagster Cloud deployment slug per PostHog cloud environment. The admin runs on web pods, which
+# Dagster Cloud deployment slug per Flind cloud environment. The admin runs on web pods, which
 # don't carry DAGSTER_DOMAIN (only Dagster pods do), so the run URL is derived from CLOUD_DEPLOYMENT.
 DAGSTER_DEPLOYMENT_BY_CLOUD = {"US": "prod-us", "EU": "prod-eu", "DEV": "dev"}
 

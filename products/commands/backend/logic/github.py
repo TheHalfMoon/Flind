@@ -1,4 +1,4 @@
-"""The GitHub calls commands make, through the PostHog GitHub App installation of the pull request.
+"""The GitHub calls commands make, through the Flind GitHub App installation of the pull request.
 
 Reads raise ``GitHubCallFailed`` so dispatch can fail closed. Reactions and replies are best effort:
 a lost acknowledgement must not stop a command or turn a run that started into a failure.

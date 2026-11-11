@@ -423,7 +423,7 @@ describe('supportTicketSceneLogic applyAiDraft', () => {
             id: 'msg-ai-1',
             content: 'Add the snippet to every page.',
             authorType: 'AI' as const,
-            authorName: 'PostHog Assistant',
+            authorName: 'Flind Assistant',
             createdAt: '2026-01-01T00:00:00Z',
             isPrivate: true,
             persistAs: 'reply' as const,

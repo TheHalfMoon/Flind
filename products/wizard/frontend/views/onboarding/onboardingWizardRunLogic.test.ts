@@ -29,7 +29,7 @@ const run: WizardRunApi = {
     created_by_id: props.userId,
     program: {
         id: 'posthog-integration',
-        name: 'PostHog integration',
+        name: 'Flind integration',
         description: '',
         command: [],
         wizard_version: '1.0.0',

@@ -8,7 +8,7 @@ import { mswDecorator } from '~/mocks/browser'
 
 import type { CIDataFreshnessApi, PRLifecycleApi, WorkflowJobApi, WorkflowRunDetailApi } from '../generated/api.schemas'
 
-const REPO = { provider: 'github', owner: 'PostHog', name: 'posthog' }
+const REPO = { provider: 'github', owner: 'Flind', name: 'posthog' }
 const NUMBER = 4820
 const PUSHED_AT = '2026-07-01T11:12:00Z'
 
@@ -104,7 +104,7 @@ const meta: Meta = {
         viewMode: 'story',
         mockDate: '2026-07-02',
         featureFlags: [FEATURE_FLAGS.ENGINEERING_ANALYTICS],
-        pageUrl: urls.engineeringAnalyticsCIExplorer('PostHog', 'posthog', NUMBER),
+        pageUrl: urls.engineeringAnalyticsCIExplorer('Flind', 'posthog', NUMBER),
         testOptions: { waitForSelector: '.CIExplorer__card' },
     },
     decorators: [
@@ -134,7 +134,7 @@ export const Overview: Story = {
 export const Activity: Story = {
     render: () => <App />,
     parameters: {
-        pageUrl: `${urls.engineeringAnalyticsCIExplorer('PostHog', 'posthog', NUMBER)}?view=activity`,
+        pageUrl: `${urls.engineeringAnalyticsCIExplorer('Flind', 'posthog', NUMBER)}?view=activity`,
         testOptions: { waitForSelector: '[data-attr="ci-explorer-activity-commit"]' },
     },
 }

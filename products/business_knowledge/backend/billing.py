@@ -4,10 +4,10 @@ Two meters, matching the pricing RFC:
 
 - `business_knowledge_chunks`: every chunk written, on any ingest path. A refresh that re-indexes changed
   content writes its chunks again, so it counts again. Content a refresh finds unchanged is not
-  re-chunked, so it is not counted. Sources PostHog generates by learning from support tickets count
+  re-chunked, so it is not counted. Sources Flind generates by learning from support tickets count
   the same way.
 - `business_knowledge_queries`: every knowledge search made with a `RetrievalTrace`, on any customer
-  surface. PostHog's internal docs-shadow comparison is not metered.
+  surface. Flind's internal docs-shadow comparison is not metered.
 
 The nightly usage report reads these totals (`usage_by_team`) and sends them to the billing service, which
 does not charge for them until it has Business Knowledge products. No quota is enforced yet, so a metering
@@ -27,7 +27,7 @@ from .models import KnowledgeUsageKey, KnowledgeUsageRecord
 
 logger = structlog.get_logger(__name__)
 
-# PostHog's internal docs-search comparison; the customer never sees its results.
+# Flind's internal docs-search comparison; the customer never sees its results.
 UNMETERED_SURFACES = frozenset({"docs_shadow"})
 
 

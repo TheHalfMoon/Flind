@@ -60,7 +60,7 @@ _SOURCE_USAGE_TYPES = frozenset({WAREHOUSE_SOURCE_USAGE_TYPE, UNREADABLE_WAREHOU
 
 REFRESH_SCHEMAS_FALLBACK_ERROR_MESSAGE = "Could not fetch schemas from source."
 
-RESERVED_SOURCE_NAME_MESSAGE = "This source name is reserved by PostHog."
+RESERVED_SOURCE_NAME_MESSAGE = "This source name is reserved by Flind."
 
 INVALID_CREDENTIALS_FALLBACK_MESSAGE = (
     "We couldn't validate those credentials. Check they're correct and have the required access, then try again."

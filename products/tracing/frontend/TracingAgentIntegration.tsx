@@ -16,7 +16,7 @@ import { TRACING_SCENE_VIEWER_ID, tracingFiltersLogic } from './tracingFiltersLo
 import { tracingViewerLogic } from './tracingViewerLogic'
 
 /**
- * Scene-level PostHog AI integration for the tracing viewer. Attaches the exploring-apm-traces
+ * Scene-level Flind AI integration for the tracing viewer. Attaches the exploring-apm-traces
  * skill, the tracing MCP tool catalog, and the live viewer state as agent context, mirrors a
  * query-apm-spans call back onto the open viewer, and opens the trace an apm-trace-get call
  * fetched in the drawer. Resolves the viewer instance from the enclosing BindLogic. Renders nothing.

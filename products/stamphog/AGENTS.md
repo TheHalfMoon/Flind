@@ -134,7 +134,7 @@ narrow:
   and `find_signal_implementation_run` matches the PR's GitHub-attested head ref against that
   stamp — never against the API-writable `output.pr_url` / `output.head_branch`. The identity
   half, `_is_self_driving_pr`, requires two facts only GitHub attests — the PR is authored
-  by this instance's PostHog GitHub App machine user (`<GITHUB_APP_SLUG>[bot]`) on a repo-native head
+  by this instance's Flind GitHub App machine user (`<GITHUB_APP_SLUG>[bot]`) on a repo-native head
   (never a fork) — enforced on **both** the receiver leg (`process_inbox_pr_review`) and the
   webhook leg (`_inbox_rereview_carve_out`), failing closed when the App slug is unconfigured.
   The fork exclusion is load-bearing for the linkage too: a head ref is only GitHub's word when
@@ -189,7 +189,7 @@ A refusal writes nothing to GitHub and creates no run, so it cannot leave or rem
 
 ## External review evidence
 
-- `facade/review_evidence.py` is a registry of providers that stamphog owns. A product that reviews PRs and depends on stamphog (today review_hog, as PostHog Review) registers one at app-ready, for the same dependency-cycle reason as `inbox_hooks.py`. Stamphog never imports a provider's product.
+- `facade/review_evidence.py` is a registry of providers that stamphog owns. A product that reviews PRs and depends on stamphog (today review_hog, as Flind Review) registers one at app-ready, for the same dependency-cycle reason as `inbox_hooks.py`. Stamphog never imports a provider's product.
 - Each provider answers per head (`pending`, `completed`, `failed`, or None). `list_in_flight_reviewer_bots` asks every provider on every wait poll and stores the answers as `run.output["review_evidence"]`. Any pending review keeps the workflow waiting within the bot-wait budget. After any wait, or when a provider reports a completed review, `refresh_review_evidence` reads the reviews, the discussion and the threads again, because the context fetch ran before the polls.
 - In the engine, any review still pending for the head is a WAIT, never an approval. Each completed review of the current head against the current merge base (`base_sha`) counts as current-head assurance in `_cap_assurance_facts` only when its `skipped_paths` is empty. The PR's `base.sha` is no match key, because it moves on every merge to the base branch. Each one gets its own line in the assurance summary and the posted verdict. Its published findings are review threads, so the unresolved-thread rule still applies to them.
 - A provider error is logged and skipped without affecting the other providers. An error, an answer for another head, and `failed` add no evidence, so stamphog reviews as it would without that provider. An error must never read as a clean review. The one exception: a provider that reported `pending` earlier in the run keeps that pending answer (marked `provider_error`), so the run ends in WAIT.

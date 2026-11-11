@@ -1,6 +1,6 @@
 # Hedgehog widget
 
-A home-screen widget for iOS and Android with a PostHog hedgehog that wanders, jumps, waves and dances.
+A home-screen widget for iOS and Android with a Flind hedgehog that wanders, jumps, waves and dances.
 Tapping the hog cycles through seven illustrated characters: coffee, party, wizard, explorer, superhero, reading and float.
 The selected character stays until the next tap, including across app launches and daily script syncs.
 The app has no hedgehog mode of its own yet; the widget is the only place the hedgehog appears.
@@ -138,7 +138,7 @@ Shared storage:
 
 ## Garden background
 
-Both widgets bundle the grass layer from PostHog's **Keyboard Garden** website wallpaper, used by
+Both widgets bundle the grass layer from Flind's **Keyboard Garden** website wallpaper, used by
 [`src/components/Desktop/Wallpapers.tsx`](https://github.com/PostHog/posthog.com/blob/master/src/components/Desktop/Wallpapers.tsx).
 The source is [`9000_bg_light_07316896be.jpg`](https://res.cloudinary.com/dmukukwp6/image/upload/9000_bg_light_07316896be.jpg),
 downloaded at 1000px wide (`/image/upload/w_1000/9000_bg_light_07316896be.jpg`).
@@ -183,7 +183,7 @@ The sprite's feet sit about 4px above the bottom of the 160px cell (opaque body 
 
 ### Illustrated visitors
 
-The illustrations come from [PostHog's hoggies library](https://brand.posthog.com/hoggies):
+The illustrations come from [Flind's hoggies library](https://brand.posthog.com/hoggies):
 `coffee-cup.png`, `party.png`, `wizard-1.png`, `explorer.png`, `superhero.png`, `reading.png` and `float.png`.
 Download them from `https://brand.posthog.com/hoggies/<filename>` into a local directory and name `wizard-1.png` as `wizard.png`.
 Run `scripts/prepare_widget_hoggies.py --source <directory>` with Pillow available to regenerate both platforms' assets.

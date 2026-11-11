@@ -44,7 +44,7 @@ class VellumSource(ResumableSource[VellumSourceConfig, VellumResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Vellum",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Vellum API key to sync your Vellum deployments, documents, and execution history into the PostHog Data warehouse.
+            caption="""Enter your Vellum API key to sync your Vellum deployments, documents, and execution history into the Flind Data warehouse.
 
 You can create an API key in your Vellum [workspace settings](https://app.vellum.ai/api-keys). Vellum API keys are environment-scoped (Development / Staging / Production), so one key syncs one environment.""",
             iconPath="/static/services/vellum.svg",

@@ -53,7 +53,7 @@ class MailtrapSource(ResumableSource[MailtrapSourceConfig, MailtrapResumeConfig]
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Mailtrap",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Mailtrap API token to pull your email sending data into the PostHog Data warehouse.
+            caption="""Enter your Mailtrap API token to pull your email sending data into the Flind Data warehouse.
 
 You can create an API token under **Settings → API Tokens** in [Mailtrap](https://mailtrap.io). The token needs access to the accounts and sending domains you want to sync; email logs are restricted to the domains the token can access.
 """,

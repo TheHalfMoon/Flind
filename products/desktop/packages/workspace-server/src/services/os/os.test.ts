@@ -105,7 +105,7 @@ describe("OsService.showMessageBox", () => {
     await service.showMessageBox({ message: "" });
 
     expect(dialog.confirm).toHaveBeenCalledWith(
-      expect.objectContaining({ title: "PostHog", options: ["OK"] }),
+      expect.objectContaining({ title: "Flind", options: ["OK"] }),
     );
   });
 });

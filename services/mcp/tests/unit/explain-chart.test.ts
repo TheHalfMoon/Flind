@@ -136,7 +136,7 @@ describe('explain-chart', () => {
         expect(result[POSTHOG_FORMATTED_RESULTS_OVERRIDE_KEY].includes(`explanationId "${id}"`)).toBe(!!id)
     })
 
-    it('links evidence to its query, insight or GitHub change, and saves no PostHog links', async () => {
+    it('links evidence to its query, insight or GitHub change, and saves no Flind links', async () => {
         const context = createContext({ kind: 'InsightVizNode', source: { kind: 'TrendsQuery', series: [] } })
         const github = 'https://github.com/example/app/pull/12'
         const args = {

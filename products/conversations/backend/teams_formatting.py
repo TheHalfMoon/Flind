@@ -1,4 +1,4 @@
-"""Convert between Microsoft Teams HTML and PostHog rich_content format."""
+"""Convert between Microsoft Teams HTML and Flind rich_content format."""
 
 import re
 import html as html_mod
@@ -31,11 +31,11 @@ def _html_to_plain(html_text: str) -> str:
 
 def teams_html_to_content_and_rich_content(html_text: str) -> tuple[str, JSON | None]:
     """
-    Convert Teams HTML message content to PostHog content (plain text) and rich_content.
+    Convert Teams HTML message content to Flind content (plain text) and rich_content.
 
     Teams sends messages as HTML with <at> tags for mentions, basic formatting
     (<b>, <i>, <a>), and <br>/<p> for line breaks. We convert to a simple
-    doc structure for PostHog's rich content model.
+    doc structure for Flind's rich content model.
     """
     if not html_text:
         return "", None
@@ -65,7 +65,7 @@ def teams_html_to_content_and_rich_content(html_text: str) -> tuple[str, JSON | 
 
 def rich_content_to_teams_html(rich_content: JSON | None, fallback_content: str = "") -> str:
     """
-    Convert PostHog rich_content to HTML suitable for Teams Bot Framework replies.
+    Convert Flind rich_content to HTML suitable for Teams Bot Framework replies.
 
     Handles: paragraphs, text marks (bold, italic, code), links, lists, images.
     Falls back to plain text if rich_content is not available.

@@ -95,7 +95,7 @@ def _get_headers(api_token: str) -> dict[str, str]:
         "Authorization": f"Token token={api_token}",
         "Accept": "application/json",
         # Leadfeeder asks integrations to identify themselves via User-Agent.
-        "User-Agent": "PostHog",
+        "User-Agent": "Flind",
     }
 
 
@@ -165,7 +165,7 @@ def _client_config(api_token: str) -> ClientConfig:
             "name": "Authorization",
             "location": "header",
         },
-        "headers": {"Accept": "application/json", "User-Agent": "PostHog"},
+        "headers": {"Accept": "application/json", "User-Agent": "Flind"},
         "paginator": JSONResponsePaginator(next_url_path="links.next"),
         "allowed_hosts": [],
         "allow_redirects": False,
@@ -198,7 +198,7 @@ def _base_params() -> dict[str, Any]:
 
 
 def _unified_headers(api_key: str) -> dict[str, str]:
-    return {"X-Api-Key": api_key, "Accept": "application/json", "User-Agent": "PostHog"}
+    return {"X-Api-Key": api_key, "Accept": "application/json", "User-Agent": "Flind"}
 
 
 def _unified_base_params() -> dict[str, Any]:
@@ -219,7 +219,7 @@ def _unified_client_config(api_key: str) -> ClientConfig:
             "name": "X-Api-Key",
             "location": "header",
         },
-        "headers": {"Accept": "application/json", "User-Agent": "PostHog"},
+        "headers": {"Accept": "application/json", "User-Agent": "Flind"},
         "paginator": PageNumberPaginator(base_page=1, page_param="page[num]", total_path="meta.page_count"),
         "allowed_hosts": [],
         "allow_redirects": False,

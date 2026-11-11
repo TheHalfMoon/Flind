@@ -10,7 +10,7 @@ Usage:
     python manage.py autoresearch_validate_online --pipeline-id <uuid> --dry-run
 
 Requires:
-    - PostHog running locally (./bin/start or hogli start)
+    - Flind running locally (./bin/start or hogli start)
     - completed inference runs whose predictions are in ClickHouse (run autoresearch_score first)
     - Enough time elapsed for the horizon to close (horizon_days must have passed)
 """

@@ -1,6 +1,6 @@
 # Mailgun
 
-Deliveries from Mailgun routes, which forward a mail message to PostHog.
+Deliveries from Mailgun routes, which forward a mail message to Flind.
 
 ## Headers
 
@@ -30,7 +30,7 @@ Each app has one fixed event type: `message_received` for `inbound` and `capture
 
 Three apps, one per route:
 
-- `inbound` — mail a customer sent to a PostHog inbox address.
+- `inbound` — mail a customer sent to a Flind inbox address.
 - `outbound` — mail a customer's own agent sent, captured by a second route.
 - `capture` — one catch-all route that carries both, where the recipient local part is the only thing that tells them apart. Its event type is the inbound one, because the app types the delivery and the split is the consumer's to make.
 

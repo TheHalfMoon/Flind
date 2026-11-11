@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -405,7 +405,7 @@ export const ConversationsTicketsComposeCreateBody = /* @__PURE__ */ zod.object(
         .string()
         .max(conversationsTicketsComposeCreateBodyRecipientDistinctIdMax)
         .optional()
-        .describe('PostHog distinct_id to link the ticket to a person. Falls back to recipient_email.'),
+        .describe('Flind distinct_id to link the ticket to a person. Falls back to recipient_email.'),
     email_subject: zod
         .string()
         .max(conversationsTicketsComposeCreateBodyEmailSubjectMax)

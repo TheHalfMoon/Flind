@@ -1,6 +1,6 @@
 # HyperCache System
 
-PostHog's HyperCache provides multi-tier caching with Redis → S3 → Database fallback. It's designed for high-traffic, read-heavy endpoints where pre-caching every possible value is worth the storage cost.
+Flind's HyperCache provides multi-tier caching with Redis → S3 → Database fallback. It's designed for high-traffic, read-heavy endpoints where pre-caching every possible value is worth the storage cost.
 
 ## Architecture overview
 

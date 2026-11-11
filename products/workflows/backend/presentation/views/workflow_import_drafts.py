@@ -47,7 +47,7 @@ logger = structlog.get_logger(__name__)
 @frozen
 class ImportRun:
     results: list[dict[str, Any]]
-    # Whether PostHog read message content from Customer.io with the team's stored App API key.
+    # Whether Flind read message content from Customer.io with the team's stored App API key.
     content_fetched: bool
 
 
@@ -151,7 +151,7 @@ def import_campaign(
             "workflow_id": None,
             "notes": [asdict(note) for note in extra_notes],
             "validation_errors": [
-                "Customer.io sent a value PostHog could not read, such as a delay that is not a number. "
+                "Customer.io sent a value Flind could not read, such as a delay that is not a number. "
                 "Check the automation in Customer.io and import it again."
             ],
             "status": "failed",

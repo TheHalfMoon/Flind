@@ -62,7 +62,7 @@ class SuggestedQuestionsQueryRunner(QueryRunner):
                 "role": "user",
                 "content": (
                     "Suggest 24 CONCISE AND UNIQUE QUESTIONS that this project's team will find insightful and actionable. "
-                    "The questions need to be high-level and answerable in PostHog. Focus on drivers of user behavior and ways to make the product better. "
+                    "The questions need to be high-level and answerable in Flind. Focus on drivers of user behavior and ways to make the product better. "
                     'Do not propose placeholders such as "event X", be specific with event names.\n'
                     'Right now we can only answer questions based on the "events" table. We can use event properties for this. '
                     "We can chart trends and create tables. AVOID anything with: session duration, event sequences, correlations, logout, or exit/leave rate.\n"

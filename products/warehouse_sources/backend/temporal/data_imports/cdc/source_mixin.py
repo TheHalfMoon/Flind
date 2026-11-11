@@ -45,7 +45,7 @@ class CDCSourceMixin(_BaseSource[ConfigType]):
         raise NotImplementedError(f"{type(self).__name__} does not check CDC prerequisites")
 
     def cleanup_cdc_resources_on_deletion(self, source: ExternalDataSource) -> None:
-        """Drop the Temporal schedule + PostHog-managed slot/publication.
+        """Drop the Temporal schedule + Flind-managed slot/publication.
 
         Schedule lives on our side, slot lives on the customer's DB. No-op for
         sources without CDC enabled.

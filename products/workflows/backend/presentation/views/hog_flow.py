@@ -1586,7 +1586,7 @@ class HogFlowActionSerializer(serializers.Serializer):
             "pixel is injected, links are not rewritten, and the send skips ESP-level open/click tracking, "
             "so opens and clicks are not recorded for that step (delivery/bounce/unsubscribe still are). "
             "function_push also accepts sensitive?: <bool> (default false) - when true, the notification is "
-            "still sent but PostHog keeps no copy of its title, subtitle, body or image, and the run keeps "
+            "still sent but Flind keeps no copy of its title, subtitle, body or image, and the run keeps "
             "no variables, so it can't be rerun. "
             "Dictionary input values are template strings too — write booleans/numbers as single-expression "
             "templates ('{true}', '{42}'), which evaluate to the typed value. "
@@ -2876,7 +2876,7 @@ class WorkflowEmailSendingRatesSerializer(EmailSendingRatesSerializer):
     email_sending_paused = serializers.BooleanField(
         read_only=True,
         help_text=(
-            "True when PostHog paused this workflow's email automatically because its complaint or "
+            "True when Flind paused this workflow's email automatically because its complaint or "
             "hard bounce rate crossed a threshold. Independent of the AWS tenant verdict and of the "
             "project-wide suspension."
         ),
@@ -2929,7 +2929,7 @@ class AwsTenantReputationSerializer(serializers.Serializer):
         help_text=(
             "Overall health derived from AWS's verdicts: healthy (no findings), warning (low-impact "
             "findings), critical (high-impact findings — sending may be paused), suspended (the SES "
-            "tenant's sending is paused). Reflects AWS state only; PostHog-initiated suspensions are "
+            "tenant's sending is paused). Reflects AWS state only; Flind-initiated suspensions are "
             "reported separately via email_sending_suspended."
         ),
     )
@@ -3124,7 +3124,7 @@ class EmailSendingSuspensionStatusSerializer(serializers.Serializer):
 
 
 class WorkflowEmailPauseStatusSerializer(serializers.Serializer):
-    """Whether PostHog paused this one workflow's email sending, and why."""
+    """Whether Flind paused this one workflow's email sending, and why."""
 
     email_sending_paused = serializers.BooleanField(
         read_only=True,
@@ -3488,7 +3488,7 @@ class HogFlowSerializer(HogFlowMinimalSerializer):
         read_only=True,
         allow_null=True,
         help_text=(
-            "When PostHog paused this workflow's email automatically because its spam complaint or hard "
+            "When Flind paused this workflow's email automatically because its spam complaint or hard "
             "bounce rate crossed a threshold. Null when sending is not paused. Read-only: only the "
             "resume_email_sending endpoint clears a pause, so a normal update or publish can't lift it."
         ),
@@ -3502,13 +3502,13 @@ class HogFlowSerializer(HogFlowMinimalSerializer):
         read_only=True,
         allow_blank=True,
         help_text=(
-            'Who paused it: "auto" for the deliverability detector, "staff" for PostHog staff. A staff '
+            'Who paused it: "auto" for the deliverability detector, "staff" for Flind staff. A staff '
             "pause can only be resumed by staff, so the resume endpoint refuses it. Empty when not paused."
         ),
     )
     email_sending_pause_requires_support = serializers.SerializerMethodField(
         help_text=(
-            "True when only PostHog staff can lift the current pause: staff placed it, or it landed "
+            "True when only Flind staff can lift the current pause: staff placed it, or it landed "
             "shortly after a resume, so another self-serve resume is not offered. False when not "
             "paused or when the resume endpoint would accept the caller."
         ),
@@ -3834,7 +3834,7 @@ class HogFlowSerializer(HogFlowMinimalSerializer):
             data["exit_condition"] = runs
 
         # Some triggers are person-less ("row-scoped"): a synced warehouse row, a materialized view row,
-        # and a Slack poster are all things no PostHog person is attached to. Person-dependent steps and
+        # and a Slack poster are all things no Flind person is attached to. Person-dependent steps and
         # person-aware exit conditions would silently assume person data, so we block them here — the
         # serializer is the source of truth, so the API, MCP, and frontend can't bypass it. We force
         # exit_only_at_end since the other exit conditions re-evaluate trigger/conversion filters that
@@ -4458,10 +4458,10 @@ WORKFLOW_PROPOSAL_EVIDENCE_SCHEMA = {
         "string); `unit`, either `rate` or `count`, since 1.0 is either every message or one of them; "
         "`n`, the denominator that value was computed over; and `guardrails`, a list of "
         "{metric, value, n, unit} counter-metrics read over the same window, empty only if none apply. "
-        "PostHog then reads the step's own metrics at `base_version` when the suggestion is filed and stores "
+        "Flind then reads the step's own metrics at `base_version` when the suggestion is filed and stores "
         "them under `measured`; the page shows that reading and flags a disagreement with yours. "
         "Also conventional: target_value, window (a relative one such as `-7d`, or an ISO 8601 "
-        "interval `start/end` with offsets, which PostHog reads back exactly), query, app_source_id. "
+        "interval `start/end` with offsets, which Flind reads back exactly), query, app_source_id. "
         "A rate with no denominator lets a reviewer mistake noise for a result, a target with no "
         "counter-metrics hides a change that lifts one number by harming another, and a number under a "
         "key of your own reads to a person as no evidence at all."
@@ -4486,7 +4486,7 @@ class SuggestionsSampleSerializer(serializers.Serializer):
     reached = serializers.BooleanField(
         read_only=True,
         help_text="Whether an email step of the live version has enough tracked sends, over enough time, for "
-        "PostHog to judge it.",
+        "Flind to judge it.",
     )
     tracked_sends = serializers.IntegerField(
         read_only=True,
@@ -4494,15 +4494,15 @@ class SuggestionsSampleSerializer(serializers.Serializer):
         "last 7 days.",
     )
     required_sends = serializers.IntegerField(
-        read_only=True, help_text="Tracked sends an email step needs before PostHog judges it."
+        read_only=True, help_text="Tracked sends an email step needs before Flind judges it."
     )
     version_live_since = serializers.DateTimeField(
-        read_only=True, help_text="When the live version was published. PostHog waits 48 hours before judging it."
+        read_only=True, help_text="When the live version was published. Flind waits 48 hours before judging it."
     )
 
 
 class HogFlowOptimizationSerializer(serializers.Serializer):
-    enabled = serializers.BooleanField(help_text="Whether PostHog may suggest changes to this workflow.")
+    enabled = serializers.BooleanField(help_text="Whether Flind may suggest changes to this workflow.")
     scout_status = serializers.ChoiceField(
         choices=SuggestionsScoutStatus.choices,
         read_only=True,
@@ -4513,7 +4513,7 @@ class HogFlowOptimizationSerializer(serializers.Serializer):
     sample = SuggestionsSampleSerializer(
         read_only=True,
         allow_null=True,
-        help_text="How close the live version is to the sample PostHog needs before it suggests anything. Null "
+        help_text="How close the live version is to the sample Flind needs before it suggests anything. Null "
         "while suggestions are on but the scout is not running, or when the workflow has no email step.",
     )
 
@@ -5720,7 +5720,7 @@ class HogFlowViewSet(
         ):
             self._sync_suggestions_scout(self.request)
 
-        # PostHog capture for hog_flow activated (draft -> active)
+        # Flind capture for hog_flow activated (draft -> active)
         if result.previous.get("status") == HogFlowState.DRAFT and serializer.instance.status == HogFlowState.ACTIVE:
             self._report_workflow_action(
                 "hog_flow_activated",
@@ -6282,7 +6282,7 @@ class HogFlowViewSet(
                     {"step_id": "Name a step this workflow has, or one the suggestion adds."}
                 )
 
-        # The producer's numbers are its own claim; PostHog's reading of the same step and version sits beside them.
+        # The producer's numbers are its own claim; Flind's reading of the same step and version sits beside them.
         # `measured` is the server's word, so a producer's own copy of that key never survives a failed read.
         evidence = dict(params.get("evidence") or {})
         evidence.pop("measured", None)
@@ -6448,7 +6448,7 @@ class HogFlowViewSet(
     def _measure_evidence(
         self, hog_flow: WorkflowEditState, base_version: int, step_id: Optional[str], evidence: dict
     ) -> Optional[dict]:
-        """PostHog's own reading of the metrics a suggestion is about, taken when it is filed.
+        """Flind's own reading of the metrics a suggestion is about, taken when it is filed.
 
         Same read as the outcome's "before" side, over the producer's window when it names a
         relative one or an absolute interval. A read that fails leaves the suggestion filed with
@@ -6519,7 +6519,7 @@ class HogFlowViewSet(
     @extend_schema(request=HogFlowOptimizationSerializer, responses={200: HogFlowOptimizationSerializer})
     @action(detail=True, methods=["GET", "POST"], url_path="optimization", filter_backends=[])
     def optimization(self, request: Request, *args, **kwargs):
-        """Whether PostHog may suggest changes to this workflow.
+        """Whether Flind may suggest changes to this workflow.
 
         Turning it off stops new suggestions. Suggestions already made are left alone: someone
         still has them to resolve.
@@ -7376,7 +7376,7 @@ class HogFlowViewSet(
     @action(detail=True, methods=["POST"], pagination_class=None, filter_backends=[], url_path="resume_email_sending")
     def resume_email_sending(self, request: Request, **kwargs) -> Response:
         """
-        Resume email sending for a workflow PostHog paused automatically.
+        Resume email sending for a workflow Flind paused automatically.
 
         Self-serve on purpose. Resuming re-arms the detector rather than exempting the workflow, so
         a workflow that is still generating complaints or hard bounces pauses again within minutes,
@@ -7389,7 +7389,7 @@ class HogFlowViewSet(
             )
         except StaffPausedError:
             raise exceptions.PermissionDenied(
-                "This pause can only be lifted by PostHog. Contact support to get sending re-enabled."
+                "This pause can only be lifted by Flind. Contact support to get sending re-enabled."
             )
         if resumed_at is None:
             raise exceptions.ValidationError({"detail": "Email sending is not paused for this workflow."})
@@ -7708,7 +7708,7 @@ class HogFlowViewSet(
         if trigger_type == "manual" and not WORKFLOWS_MANUAL_RUN_JWT_PURPOSE.enabled():
             return Response(
                 {
-                    "detail": "Manual triggers are not set up on this PostHog instance. "
+                    "detail": "Manual triggers are not set up on this Flind instance. "
                     "An admin needs to set WORKFLOWS_CANCEL_JWT_SECRET on the web and plugin servers."
                 },
                 status=503,

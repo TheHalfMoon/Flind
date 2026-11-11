@@ -43,7 +43,7 @@ class DevTokenUsageSerializer(serializers.Serializer):
 
 class DevUserUsageSerializer(serializers.Serializer):
     user_id = serializers.IntegerField(
-        allow_null=True, help_text="PostHog user id. Null when no user has this distinct_id."
+        allow_null=True, help_text="Flind user id. Null when no user has this distinct_id."
     )
     email = serializers.CharField(
         allow_null=True, help_text="The user's email. Null when no user has this distinct_id."

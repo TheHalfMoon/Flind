@@ -137,7 +137,7 @@ export interface ProductEmptyStateConfig {
     primaryAction?: ProductEmptyStatePrimaryAction | ProductEmptyStatePrimaryActionByMode
     /**
      * Rendered in the primary-action slot instead of the `primaryAction` button, for
-     * actions that need hooks - e.g. a create flow that opens PostHog AI via `useMaxTool`.
+     * actions that need hooks - e.g. a create flow that opens Flind AI via `useMaxTool`.
      * Takes precedence over `primaryAction`. With `wizard` also set, the terminal card
      * stays the hero and this renders under the "or" divider.
      */

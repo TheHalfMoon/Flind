@@ -244,7 +244,7 @@ export const LOOP_TEMPLATES: LoopTemplate[] = [
     description:
       "Summarize key product metrics week over week and flag notable changes.",
     triggerLabel: "Runs Mondays at 9:00",
-    worksWith: ["PostHog", "Slack"],
+    worksWith: ["Flind", "Slack"],
     tone: "purple",
     build: () => ({
       name: "Metrics digest",

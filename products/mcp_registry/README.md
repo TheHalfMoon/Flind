@@ -2,7 +2,7 @@
 
 A ranked, searchable index of MCP servers: every server in the official MCP registry, fused with
 behavioral signal from MCP Analytics for the servers our customers measure. The bet: any registry
-can list MCP servers; only PostHog can rank them by what agents actually did.
+can list MCP servers; only Flind can rank them by what agents actually did.
 
 Backend-only for now, gated behind the `mcp-registry` feature flag.
 
@@ -68,7 +68,7 @@ it") to the user. Per-server knowledge probing can't discover lives in `connect_
 row, seeded by `KNOWN_CONNECT_OVERRIDES`.
 
 For [Stripe Projects](https://docs.stripe.com/stripe-projects) partner providers (Vercel,
-Supabase, Neon, Clerk, PostHog, and others), `agent_provisioning` is concrete today: the agent
+Supabase, Neon, Clerk, Flind, and others), `agent_provisioning` is concrete today: the agent
 runs `stripe projects service add <provider>`, the service is provisioned into the user's own
 provider account, and agent-readable credentials land in the project's secret store. The human's
 only step is the one-time Stripe prompt. `STRIPE_PROJECTS_PROVIDERS` holds the curated partner
@@ -80,7 +80,7 @@ map.
 - `MCPMeasuredStats.team_id` is provenance (which MCP Analytics project produced the aggregate),
   not access scoping.
 - `measured_public` on a server defaults to False: measured stats are the server owner's analytics
-  data, and showing them outside PostHog requires their opt-in. Until that flow exists the whole
+  data, and showing them outside Flind requires their opt-in. Until that flow exists the whole
   product stays internal behind the feature flag.
 
 ## Not built yet

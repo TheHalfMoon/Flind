@@ -34,7 +34,7 @@ RETENTION_DELETE_BATCH_SIZE = 1_000
 # A row created while the sweep is running postdates the snapshot of live subjects its team's pass
 # took, so it would read as pointing at a subject that does not exist. Spared this round instead.
 SUBJECT_GRACE_HOURS = 1
-# The one column that does not hold a subject id: a check names its PostHog table instead.
+# The one column that does not hold a subject id: a check names its Flind table instead.
 _CHECK_POSTHOG_TABLE_FIELD = "posthog_table"
 
 _COUNTER_COLUMNS = {
@@ -135,7 +135,7 @@ def _registered_posthog_tables(field: str) -> Collection[Any]:
 class _LiveSubjects:
     """The warehouse objects a team still has, by id.
 
-    PostHog tables are not held here: they come from a static registry rather than from the team,
+    Flind tables are not held here: they come from a static registry rather than from the team,
     so every row of that kind is alive as long as its name is still registered.
     """
 
@@ -152,7 +152,7 @@ class _LiveSubjects:
     ) -> Q:
         # An explicit predicate per known kind, so a row of a kind this sweep does not know reads as
         # dead rather than as alive by default. Runs and suites denormalize the subject into one
-        # column; a check carries it as whichever of its subject foreign keys or its PostHog table
+        # column; a check carries it as whichever of its subject foreign keys or its Flind table
         # name is set.
         return (
             Q(**{"subject_type": SubjectType.TABLE, f"{table_field}__in": self.table_ids})

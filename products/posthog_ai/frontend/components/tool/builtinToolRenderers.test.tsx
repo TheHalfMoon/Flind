@@ -148,7 +148,7 @@ describe('builtin tool renderers', () => {
         ['info execute-sql', 'Read execute-sql', '__posthog_exec_info__'],
         ['schema insight-create field', 'Inspect insight-create.field', '__posthog_exec_schema__'],
         ['bogus', 'Run command', '__posthog_exec_unknown__'],
-    ])('labels the PostHog exec verb "%s" as "%s"', (command, label, resolvedKey) => {
+    ])('labels the Flind exec verb "%s" as "%s"', (command, label, resolvedKey) => {
         render(
             <BuiltinToolRenderer
                 isLastInGroup
@@ -163,7 +163,7 @@ describe('builtin tool renderers', () => {
         expect(screen.getByText(label)).toBeInTheDocument()
     })
 
-    it('shows the search regex as the PostHog exec subtitle', () => {
+    it('shows the search regex as the Flind exec subtitle', () => {
         render(
             <BuiltinToolRenderer
                 isLastInGroup
@@ -252,7 +252,7 @@ describe('builtin tool renderers', () => {
         expect(screen.getByText('Call user-mcp – do_thing (MCP)')).toBeInTheDocument()
     })
 
-    it('renders an unmapped PostHog exec inner tool as "Call <tool>" without the MCP suffix', () => {
+    it('renders an unmapped Flind exec inner tool as "Call <tool>" without the MCP suffix', () => {
         render(
             <GenericMcpToolRenderer
                 isLastInGroup

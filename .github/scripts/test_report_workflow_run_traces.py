@@ -663,11 +663,11 @@ class TestExitStatus:
 
 class TestDryRunTree:
     def test_renders_without_touching_an_exporter(self) -> None:
-        run = reporter.parse_run(_raw_run(), [_raw_job(name="Build and push PostHog")])
+        run = reporter.parse_run(_raw_run(), [_raw_job(name="Build and push Flind")])
         assert run is not None
         lines = list(reporter.format_span_tree(run))
         assert "Container Images CD" in lines[0]
-        assert any("Build and push PostHog" in line for line in lines)
+        assert any("Build and push Flind" in line for line in lines)
 
 
 class TestSpanTree:
@@ -683,13 +683,13 @@ class TestSpanTree:
     def test_builds_run_job_step_hierarchy(self) -> None:
         run = reporter.parse_run(
             _raw_run(),
-            [_raw_job(name="Build and push PostHog", steps=[_raw_step(name="Set up job", start=5, end=8)])],
+            [_raw_job(name="Build and push Flind", steps=[_raw_step(name="Set up job", start=5, end=8)])],
         )
         assert run is not None
         spans = self._emit(run)
         by_name = {span.name: span for span in spans}
 
-        root, job, step = by_name["Container Images CD"], by_name["Build and push PostHog"], by_name["Set up job"]
+        root, job, step = by_name["Container Images CD"], by_name["Build and push Flind"], by_name["Set up job"]
         assert root.parent is None
         assert job.parent.span_id == root.context.span_id
         assert step.parent.span_id == job.context.span_id

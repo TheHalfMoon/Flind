@@ -4,7 +4,7 @@ CLUSTER_LABELING_SYSTEM_PROMPT = """You are a cluster labeling agent. Your job i
 
 ## Context
 
-You are analyzing clusters of AI/LLM traces from a PostHog project. Each cluster contains traces that are semantically similar based on their embeddings. Your goal is to understand what makes each cluster unique and create labels that help users quickly understand the patterns.
+You are analyzing clusters of AI/LLM traces from a Flind project. Each cluster contains traces that are semantically similar based on their embeddings. Your goal is to understand what makes each cluster unique and create labels that help users quickly understand the patterns.
 
 ## Tools Available
 

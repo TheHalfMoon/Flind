@@ -1,7 +1,7 @@
 # Fixing `cannot_merge_already_identified`
 
-An `$identify` or `$create_alias` call asked PostHog to merge two persons that are **both already identified**.
-PostHog refuses this to protect identity data — merging two established users is destructive and almost always a bug.
+An `$identify` or `$create_alias` call asked Flind to merge two persons that are **both already identified**.
+Flind refuses this to protect identity data — merging two established users is destructive and almost always a bug.
 Category `merge`, severity `warning`: no data was lost, but **the merge did not happen** and events continue accumulating under two separate persons.
 
 ## The critical insight: the refusal is silent

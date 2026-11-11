@@ -2886,7 +2886,7 @@ class TestCanvasTools(CanvasAPIBaseTest):
                 "server_unreachable",
                 McpServerError("Could not reach the MCP server: ConnectionError"),
                 status.HTTP_502_BAD_GATEWAY,
-                "The PostHog MCP server could not run this tool. Try again.",
+                "The Flind MCP server could not run this tool. Try again.",
             ),
             (
                 # The server can still apply the write, so the viewer must not retry blind.

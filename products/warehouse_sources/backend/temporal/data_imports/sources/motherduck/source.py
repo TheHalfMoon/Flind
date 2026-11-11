@@ -66,9 +66,9 @@ class MotherduckSource(SQLSource[MotherduckSourceConfig]):
             label="MotherDuck",
             caption=(
                 "Enter your MotherDuck access token to query or pull your MotherDuck tables into the "
-                "PostHog Data warehouse. Create an access token in your MotherDuck account settings. "
+                "Flind Data warehouse. Create an access token in your MotherDuck account settings. "
                 "Leave the database blank to connect to every database in the account. Connections are "
-                "opened read-only, so PostHog never modifies your data."
+                "opened read-only, so Flind never modifies your data."
             ),
             iconPath="/static/services/motherduck.png",
             docsUrl="https://posthog.com/docs/cdp/sources/motherduck",

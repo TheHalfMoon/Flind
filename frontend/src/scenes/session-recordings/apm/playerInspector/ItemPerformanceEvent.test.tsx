@@ -42,7 +42,7 @@ describe('ItemPerformanceEvent', () => {
         ['a successful XHR keeps its real status', { initiator_type: 'xmlhttprequest', response_status: 200 }, false],
         ['a navigation never counts', { entry_type: 'navigation', response_status: undefined }, false],
         [
-            'a request captured before PostHog started is skipped',
+            'a request captured before Flind started is skipped',
             { is_initial: true, response_status: undefined },
             false,
         ],

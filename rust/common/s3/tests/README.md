@@ -4,7 +4,7 @@
 
 The integration tests run against the dev stack's `objectstorage` service — SeaweedFS, S3 API on port 19000.
 
-From the PostHog root directory:
+From the Flind root directory:
 
 ```bash
 # Start object storage and wait until it is ready

@@ -19,10 +19,10 @@ from posthog.utils import safe_cache_delete
 # widen its own access. Risky scopes that stay grantable carry a warning from `RISKY_SCOPE_WARNINGS`.
 # - `workload_trust_policy` and `workload_trust_policy_request` would let a workload change the policy behind its token.
 # - `task:write` starts an agent run from a prompt the caller writes, with its own longer-lived owner token.
-#   `conversation:write` (PostHog AI can create such a task), `signal_scout:write`,
+#   `conversation:write` (Flind AI can create such a task), `signal_scout:write`,
 #   `business_knowledge:write`, `autoresearch:write` and `hog_flow:write` (a workflow can create a task) start the
 #   same kind of run.
-# - `conversation:read` and `task:read` read the owner's private PostHog AI chats and tasks, because the token
+# - `conversation:read` and `task:read` read the owner's private Flind AI chats and tasks, because the token
 #   acts as the owner. Add them back if a workload needs them.
 # - `project:write` lets a token rotate the project's secret token.
 # - `user:write` changes the account of the owner the token acts as.
@@ -202,7 +202,7 @@ class WorkloadTrustPolicyRequest(ModelActivityMixin, TeamScopedRootMixin, UUIDMo
         db_constraint=False,
         related_name="+",
     )
-    # The OAuth app the request came through, so the approval page names it and shows whether PostHog
+    # The OAuth app the request came through, so the approval page names it and shows whether Flind
     # verified it. Null when the request came through another credential.
     requested_via_application = models.ForeignKey(
         "posthog.OAuthApplication",

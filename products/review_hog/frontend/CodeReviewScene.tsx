@@ -263,7 +263,7 @@ function TriggerReviewSection(): JSX.Element {
         <SceneSection
             className="max-w-200"
             title="Review a pull request"
-            description="PostHog Review runs a Deep review and posts it to the pull request."
+            description="Flind Review runs a Deep review and posts it to the pull request."
             actions={
                 <LemonButton
                     type="secondary"
@@ -877,8 +877,8 @@ export function CodeReviewScene(): JSX.Element {
             <SceneContent>
                 {titleSection}
                 <LemonBanner type="info" data-attr="code-review-feature-flag-gated">
-                    PostHog Review is not available for this project yet. If you just turned on the feature preview,
-                    refresh the page in a moment. Otherwise, ask an admin of your PostHog instance to turn it on.
+                    Flind Review is not available for this project yet. If you just turned on the feature preview,
+                    refresh the page in a moment. Otherwise, ask an admin of your Flind instance to turn it on.
                 </LemonBanner>
             </SceneContent>
         )
@@ -899,7 +899,7 @@ export function CodeReviewScene(): JSX.Element {
             <div className="flex flex-col gap-8 pb-8">
                 {initialLoadFailed && (
                     <LemonBanner type="error" action={{ children: 'Retry', onClick: () => loadAll() }}>
-                        Some PostHog Review settings failed to load.
+                        Some Flind Review settings failed to load.
                     </LemonBanner>
                 )}
 

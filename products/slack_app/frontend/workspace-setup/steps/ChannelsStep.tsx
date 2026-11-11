@@ -21,9 +21,9 @@ export function ChannelsStep(): JSX.Element {
     return (
         <>
             <div className="flex flex-col items-center gap-1 text-center">
-                <h1 className="text-2xl font-bold m-0">Which channels should PostHog join?</h1>
+                <h1 className="text-2xl font-bold m-0">Which channels should Flind join?</h1>
                 <p className="text-secondary m-0">
-                    PostHog answers only when someone mentions @PostHog. You can invite it to more channels later with
+                    Flind answers only when someone mentions @PostHog. You can invite it to more channels later with
                     /invite @PostHog.
                 </p>
             </div>
@@ -41,7 +41,7 @@ export function ChannelsStep(): JSX.Element {
                 />
                 {joinedChannelNames.length > 0 ? (
                     <p className="text-xs text-secondary m-0">
-                        PostHog is already in {joinedChannelNames.map((name) => `#${name}`).join(', ')}.
+                        Flind is already in {joinedChannelNames.map((name) => `#${name}`).join(', ')}.
                     </p>
                 ) : null}
                 <LemonCheckbox
@@ -50,7 +50,7 @@ export function ChannelsStep(): JSX.Element {
                     disabledReason={
                         setup?.can_post_channel_welcome
                             ? undefined
-                            : "This workspace's PostHog settings don't post a welcome in channels. A Slack admin can change this under Channel welcome in the PostHog app in Slack."
+                            : "This workspace's Flind settings don't post a welcome in channels. A Slack admin can change this under Channel welcome in the Flind app in Slack."
                     }
                     label="Post a short welcome message in each channel"
                 />
@@ -67,7 +67,7 @@ export function ChannelsStep(): JSX.Element {
                     onClick={joinChannels}
                     data-attr="slack-app-workspace-setup-join-channels"
                 >
-                    {count > 1 ? `Add PostHog to ${count} channels` : 'Add PostHog to this channel'}
+                    {count > 1 ? `Add Flind to ${count} channels` : 'Add Flind to this channel'}
                 </LemonButton>
             </div>
         </>

@@ -64,7 +64,7 @@ def handle_onboarding_action(payload: dict[str, Any]) -> HttpResponse:
     clicked = _clicked_action(payload)
     integration_id = _integration_id(clicked)
     slack_team_id = (payload.get("team") or {}).get("id", "")
-    # The thread sits in the person's own DM with PostHog, so the clicker is the person it is for.
+    # The thread sits in the person's own DM with Flind, so the clicker is the person it is for.
     slack_user_id = (payload.get("user") or {}).get("id", "")
     integration = get_workspace_integration(integration_id, slack_team_id) if integration_id else None
     if clicked is None or integration is None or not slack_user_id:

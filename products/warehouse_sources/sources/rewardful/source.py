@@ -106,7 +106,7 @@ class RewardfulSource(ResumableSource[RewardfulSourceConfig, RewardfulResumeConf
                     SourceFieldInputConfig(
                         name="api_secret",
                         label="API secret",
-                        caption="Found under Company settings in Rewardful. The secret can also change data, but PostHog only reads with it.",
+                        caption="Found under Company settings in Rewardful. The secret can also change data, but Flind only reads with it.",
                         type=SourceFieldInputConfigType.PASSWORD,
                         required=True,
                         placeholder="",

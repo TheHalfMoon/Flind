@@ -59,7 +59,7 @@ class TailscaleSource(ResumableSource[TailscaleSourceConfig, TailscaleResumeConf
             label="Tailscale",
             releaseStatus=ReleaseStatus.GA,
             keywords=["vpn", "wireguard", "tailnet"],
-            caption="""Sync your Tailscale devices, users, keys, and configuration audit logs into the PostHog Data warehouse.
+            caption="""Sync your Tailscale devices, users, keys, and configuration audit logs into the Flind Data warehouse.
 
 An **OAuth client** is the recommended credential for recurring syncs — API access tokens expire after at most 90 days. Create one in the [Tailscale admin console](https://login.tailscale.com/admin/settings/oauth) under **Settings > OAuth clients**, with read scopes for the tables you want to sync (for example `devices:core:read`, `users:read`, `auth_keys:read`, and `logs:configuration:read`).
 

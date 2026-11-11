@@ -9,6 +9,6 @@ import push from './push'
 import run from './run'
 
 export default defineGroup({
-    description: 'Manage PostHog endpoints as YAML files: pull, diff, push and run them',
+    description: 'Manage Flind endpoints as YAML files: pull, diff, push and run them',
     commands: { list, get, open, run, push, pull, diff },
 })

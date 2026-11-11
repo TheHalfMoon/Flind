@@ -162,7 +162,7 @@ export function TaskRunSceneShell({
                                             size="icon"
                                             nativeButton={false}
                                             render={<LinkPrimitive to={urls.ai()} />}
-                                            aria-label="Back to PostHog AI"
+                                            aria-label="Back to Flind AI"
                                         >
                                             <IconChevronLeft />
                                         </Button>
@@ -227,7 +227,7 @@ export function TaskRunSceneShell({
                                     isMobile
                                         ? {
                                               key: 'posthog-ai',
-                                              name: 'PostHog AI',
+                                              name: 'Flind AI',
                                               path: urls.ai(),
                                           }
                                         : undefined

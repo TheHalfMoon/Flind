@@ -75,7 +75,7 @@ def ensure_ai_gateway_binary() -> None:
     """Build the Go ai-gateway from the local clone, during preflight.
 
     The sandboxed agent's model calls go through the Go gateway, as they do in
-    production for PostHog AI runs. The build is incremental, so only the first
+    production for Flind AI runs. The build is incremental, so only the first
     one after a pull is slow.
     """
     repo = ai_gateway_repo()
@@ -102,7 +102,7 @@ def ensure_ai_gateway_binary() -> None:
 
 
 def _ai_gateway_compose(*args: str) -> subprocess.CompletedProcess[str]:
-    # PostHog's dev env exports COMPOSE_PROJECT_NAME=posthog, which outranks the
+    # Flind's dev env exports COMPOSE_PROJECT_NAME=posthog, which outranks the
     # gateway compose file's own project name.
     return subprocess.run(
         ["docker", "compose", *args],

@@ -1,6 +1,6 @@
-# Quill — PostHog's unified design system
+# Quill — Flind's unified design system
 
-A React component library powering PostHog's unified UI surfaces (web, MCP, electron), built on Base UI and shadcn primitives. **Quill requires Tailwind v4 on the consumer side** — the library ships component source and theme metadata, and your app's Tailwind compiles the utilities into your own CSS bundle.
+A React component library powering Flind's unified UI surfaces (web, MCP, electron), built on Base UI and shadcn primitives. **Quill requires Tailwind v4 on the consumer side** — the library ships component source and theme metadata, and your app's Tailwind compiles the utilities into your own CSS bundle.
 
 ## Packages
 
@@ -229,7 +229,7 @@ The shadcn model has no such fight because there is only one Tailwind build: the
 
 ## Development
 
-Quill lives inside the PostHog monorepo. Clone, install dependencies at the repo root, and run:
+Quill lives inside the Flind monorepo. Clone, install dependencies at the repo root, and run:
 
 ```bash
 # Build quill + tokens

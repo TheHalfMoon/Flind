@@ -126,7 +126,7 @@ _POSTHOG_COMMIT_SIGNING_HANDBOOK_URL = "https://posthog.com/handbook/engineering
 _TAILNET_ACCESS_PREREQ = (
     f"Devbox access needs you on the `{EXPECTED_TAILNET}` tailnet. The dev, "
     "prod-us, prod-eu and internal tailnets are for CI runners and subnet "
-    "routers and don't reach devboxes. Every PostHog employee has access "
+    "routers and don't reach devboxes. Every Flind employee has access "
     "through `group:employees` in posthog-cloud-infra/tailnet-policy.hujson.\n"
     "    Still blocked on the right tailnet? Ask Team DevEx."
 )
@@ -1655,7 +1655,7 @@ def _maybe_hint_region_mismatch(name: str) -> None:
     "--start-app/--no-start-app",
     "start_app",
     default=None,
-    help=("Bring the PostHog app up in the background on every workspace start. Applies when the devbox is created."),
+    help=("Bring the Flind app up in the background on every workspace start. Applies when the devbox is created."),
 )
 @click.option("-v", "--verbose", is_flag=True, help="Show full Coder/Terraform build output")
 def devbox_start(
@@ -1880,7 +1880,7 @@ def devbox_ssh(workspace: str | None) -> None:
 @click.option(
     "--flox",
     is_flag=True,
-    help="Run COMMAND in ~/posthog inside PostHog's flox environment, where pnpm, pytest and the venv are on PATH",
+    help="Run COMMAND in ~/posthog inside Flind's flox environment, where pnpm, pytest and the venv are on PATH",
 )
 @click.argument("command", nargs=-1, type=click.UNPROCESSED, required=True)
 def devbox_remote_exec(workspace_name: str | None, flox: bool, command: tuple[str, ...]) -> None:
@@ -2163,11 +2163,11 @@ def devbox_status(workspace: str | None) -> None:
         _print_connection_info(name)
 
 
-@click.command(name="devbox:forward", help="Forward PostHog UI to localhost")
+@click.command(name="devbox:forward", help="Forward Flind UI to localhost")
 @workspace_argument
 @click.option("--port", default=8010, type=int, help="Local port to forward to")
 def devbox_forward(workspace: str | None, port: int) -> None:
-    """Forward the PostHog UI port to localhost."""
+    """Forward the Flind UI port to localhost."""
     ensure_runtime_ready()
     name, _ = resolve_workspace_name(workspace)
     if not _local_port_is_available(port):
@@ -2177,7 +2177,7 @@ def devbox_forward(workspace: str | None, port: int) -> None:
         )
 
     click.echo(f"Forwarding {name}:8010 -> localhost:{port}")
-    click.echo(f"PostHog UI at http://localhost:{port}")
+    click.echo(f"Flind UI at http://localhost:{port}")
     click.echo("Ctrl+C to stop")
     click.echo()
     port_forward_replace(name, port, 8010)

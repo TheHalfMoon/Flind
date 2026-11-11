@@ -60,7 +60,7 @@ describe('personsLogic', () => {
         const cases: [string, Record<string, unknown>, Record<string, unknown>][] = [
             ['no properties', {}, { properties_count: 0, custom_properties_count: 0, posthog_properties_count: 0 }],
             [
-                'one PostHog key and one custom key',
+                'one Flind key and one custom key',
                 { $browser: 'Firefox', favourite_colour: 'green' },
                 { properties_count: 2, custom_properties_count: 1, posthog_properties_count: 1 },
             ],

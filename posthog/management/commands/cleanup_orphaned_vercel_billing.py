@@ -13,7 +13,7 @@ class Command(BaseCommand):
     help = (
         "Clean up orphaned Vercel billing customers. "
         "These are orgs that have billing_provider=vercel in the billing service "
-        "but no corresponding OrganizationIntegration in PostHog (due to broken deauthorization webhooks)."
+        "but no corresponding OrganizationIntegration in Flind (due to broken deauthorization webhooks)."
     )
 
     def add_arguments(self, parser):
@@ -56,7 +56,7 @@ class Command(BaseCommand):
             try:
                 organization = Organization.objects.get(id=org_id)
             except Organization.DoesNotExist:
-                self.stdout.write(self.style.WARNING(f"  {org_id}: organization not found in PostHog, skipping"))
+                self.stdout.write(self.style.WARNING(f"  {org_id}: organization not found in Flind, skipping"))
                 not_found += 1
                 continue
 

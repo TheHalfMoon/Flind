@@ -17,7 +17,7 @@ Run one bounded investigation of this project's existing data. Publish at most o
 
 ## Orient and decide whether there is enough data
 
-Start from the ranked PostHog sources in the First-report project context at the end of the run prompt. Configured sources do not prove usable data, and unlisted sources are not proven empty. Verify a promising unknown with a bounded query. Fetch the full project profile only if missing or stale context blocks an investigation. When warehouse tables are connected, discover relevant tables on demand; a new connection may contain substantial history, and a warehouse-only project is worth investigating.
+Start from the ranked Flind sources in the First-report project context at the end of the run prompt. Configured sources do not prove usable data, and unlisted sources are not proven empty. Verify a promising unknown with a bounded query. Fetch the full project profile only if missing or stale context blocks an investigation. When warehouse tables are connected, discover relevant tables on demand; a new connection may contain substantial history, and a warehouse-only project is worth investigating.
 
 A handful of isolated observations without useful history usually calls for `insufficient_data`. Confirm any promising alternative source, then finish with the specific missing evidence. Missing pageviews, identities, sessions, or downstream events in a small sample do not prove broken tracking. Intentional server-side capture or limited instrumentation can explain them. Small samples can establish a directly observed defect, such as failed deliveries with an explicit error, but cannot establish a population-wide conversion or retention regression.
 

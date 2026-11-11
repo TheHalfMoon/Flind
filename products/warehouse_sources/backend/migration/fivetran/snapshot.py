@@ -242,7 +242,7 @@ def _read_error(error: Exception) -> str:
     if isinstance(error, ValidationError):
         field = ".".join(str(part) for part in error.errors()[0]["loc"])
         return f"the field `{field}` has the wrong type. Upload the Fivetran response unchanged."
-    return "this is not a Fivetran response PostHog can read. Upload the Fivetran response unchanged."
+    return "this is not a Fivetran response Flind can read. Upload the Fivetran response unchanged."
 
 
 def parse_destination(raw: Mapping[str, Any], *, name: str) -> VendorDestination:

@@ -1210,7 +1210,7 @@ describe('inboxReportDetailLogic', () => {
         it('links an inaccessible repository to the GitHub settings and stops polling its checks', async () => {
             const inaccessible = {
                 code: 'github_repository_inaccessible',
-                error: "PostHog's GitHub connection can't access example/repo. A project admin must give the GitHub app access to this repository, or reconnect GitHub.",
+                error: "Flind's GitHub connection can't access example/repo. A project admin must give the GitHub app access to this repository, or reconnect GitHub.",
                 remediation_url: '/project/2/settings/project-integrations',
             }
             useMocks({
@@ -1745,7 +1745,7 @@ describe('inboxReportDetailLogic', () => {
             }
         })
 
-        it('leaves a generic PostHog AI sidebar unchanged', async () => {
+        it('leaves a generic Flind AI sidebar unchanged', async () => {
             useReportTaskMocks({ [REPORT.id]: [] }, {})
             initKeaTests()
             const kickoff = inboxTaskKickoffLogic()

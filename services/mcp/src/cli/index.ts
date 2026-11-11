@@ -31,7 +31,7 @@ interface BuiltStaticExec {
 }
 
 function usage(): string {
-    return `PostHog agent CLI
+    return `Flind agent CLI
 
 Usage:
   posthog-cli api --agent-help
@@ -73,7 +73,7 @@ function buildStaticExec(): BuiltStaticExec {
     const execTool = createExecTool(
         tools,
         undefined,
-        'Execute a PostHog CLI command',
+        'Execute a Flind CLI command',
         COMMAND_REFERENCE,
         'posthog-cli',
         undefined,
@@ -91,7 +91,7 @@ async function buildExec(config: CliConfig = resolveCliConfig()): Promise<BuiltE
     const execTool = createExecTool(
         tools,
         context,
-        'Execute a PostHog CLI command',
+        'Execute a Flind CLI command',
         COMMAND_REFERENCE,
         'posthog-cli',
         (toolName, properties) => trackCliToolCall(context, toolName, properties),

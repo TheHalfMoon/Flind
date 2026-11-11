@@ -32,7 +32,7 @@ export type GithubConnectOutcomeKind =
 
 /**
  * GitHub answers a member's install attempt with `setup_action=request` when an org owner has to
- * approve it. PostHog relays that as the `github_install_pending` code, which is a waiting state
+ * approve it. Flind relays that as the `github_install_pending` code, which is a waiting state
  * rather than a failure, so it must not land in the generic error branch.
  */
 export function classifyGithubCallback(

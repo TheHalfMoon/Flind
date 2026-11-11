@@ -30,7 +30,7 @@ interface SpaceFeedPullRequestRowProps {
     listRow: boolean
 }
 
-/** A pull request in the feed's PRs view, as a card or a list row, like PostHog Desktop's. It opens on GitHub. */
+/** A pull request in the feed's PRs view, as a card or a list row, like Flind Desktop's. It opens on GitHub. */
 export function SpaceFeedPullRequestRow({
     pullRequest,
     pullRequestTitle,

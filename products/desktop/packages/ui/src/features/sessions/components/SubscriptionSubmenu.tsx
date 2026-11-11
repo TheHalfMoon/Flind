@@ -74,7 +74,7 @@ export function SubscriptionSubmenu({
     workspaceMode ?? "local",
   );
   const valueLabel =
-    effective === "own-subscription" ? providerLabel : "PostHog";
+    effective === "own-subscription" ? providerLabel : "Flind";
   const providerLocked = cloudTask && !cloudAvailable;
   const showLoginNote =
     !cloudTask && subscription.subscriptionOn && !subscription.loggedIn;
@@ -106,7 +106,7 @@ export function SubscriptionSubmenu({
             value="posthog-gateway"
             closeOnClick={closeOnChange}
           >
-            PostHog
+            Flind
           </DropdownMenuRadioItem>
           {providerLocked ? (
             <TooltipProvider delay={TOOLTIP_DELAY_MS}>
@@ -138,7 +138,7 @@ export function SubscriptionSubmenu({
         {showLoginNote && (
           // A quiet inline note rather than a permanent menu row: it appears
           // only once the provider option is picked without a confirmed
-          // login, and sessions keep running on PostHog until the login
+          // login, and sessions keep running on Flind until the login
           // completes. Unknown status counts as not logged in, so the note
           // stays reachable when the status check cannot run or is pending.
           <div className="px-2 py-1.5 text-muted-foreground text-xs">

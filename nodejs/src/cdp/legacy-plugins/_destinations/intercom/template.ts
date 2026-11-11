@@ -11,7 +11,7 @@ export const intercomPlugin: LegacyDestinationPlugin = {
         type: 'destination',
         id: 'plugin-posthog-intercom-plugin',
         name: 'Intercom',
-        description: 'Send event data to Intercom on PostHog events.',
+        description: 'Send event data to Intercom on Flind events.',
         icon_url: 'https://raw.githubusercontent.com/PostHog/posthog-intercom-plugin/main/logo.png',
         category: [],
         code_language: 'javascript',
@@ -33,7 +33,7 @@ export const intercomPlugin: LegacyDestinationPlugin = {
                 label: 'Triggering events',
                 type: 'string',
                 description:
-                    'A comma-separated list of PostHog events you want to send to Intercom (e.g.: `$identify,mycustomevent` ).',
+                    'A comma-separated list of Flind events you want to send to Intercom (e.g.: `$identify,mycustomevent` ).',
                 default: '$identify',
                 required: true,
                 secret: false,

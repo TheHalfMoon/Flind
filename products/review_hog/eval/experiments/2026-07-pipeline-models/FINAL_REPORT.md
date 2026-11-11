@@ -116,7 +116,7 @@ way across runs. Both camps cite real code. **This is the single most consequent
    expensive arm, and only a cache-aware token tally can settle whether it's actually the cheapest. **Next concrete
    step: extend `dump_result.py` to split `$ai_cache_read_input_tokens` per model** (one query change), then one
    re-run decides. Prod prerequisite regardless: the gateway allowlist entry for `claude-fable-5` (in tree today).
-3. **Adjudicate the disputed access-control finding by hand** (a PostHog RBAC owner reading both arguments settles
+3. **Adjudicate the disputed access-control finding by hand** (a Flind RBAC owner reading both arguments settles
    it in minutes). Whichever way it lands, feed the outcome to the validator round as a calibration case.
 4. **The skill-content round is overdue** — four model configs, 24 runs, and #1/#4/#8/#10 (both old must_fix
    security findings among them) have never surfaced. No model/effort/validator change will find them; the

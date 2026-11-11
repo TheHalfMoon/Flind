@@ -28,7 +28,7 @@ class TwitterAdsIntegration:
 
     @staticmethod
     def consumer_credentials() -> OauthClientCredentials:
-        """PostHog's X app consumer key and secret, read at use time and never cached."""
+        """Flind's X app consumer key and secret, read at use time and never cached."""
         values = get_many_or_settings(
             ["TWITTER_ADS_CONSUMER_KEY", "TWITTER_ADS_CONSUMER_SECRET"], CredentialsCaller.INTEGRATIONS
         )

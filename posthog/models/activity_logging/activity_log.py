@@ -1154,7 +1154,7 @@ field_exclusions: dict[AuditableScope, list[str]] = {
         # schema save (even ones that don't touch this field) — the extra queries have
         # deadlocked with concurrent DDL in production.
         "table",
-        # Written by the model on the stop-syncing transition to record whether PostHog halted
+        # Written by the model on the stop-syncing transition to record whether Flind halted
         # the schema itself, so it is derived state and not user intent. Diffing it also puts a
         # second change on the entry that turns syncing on or off, which makes the schema
         # activity feed read "updated schema" in place of "enabled schema".

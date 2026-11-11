@@ -67,7 +67,7 @@ COMMAND = DocsCommandRequest(
 @pytest.fixture
 def writer_env(team, user):
     Integration.objects.create(
-        team=team, kind="github", integration_id="31337", config={"account": {"name": "PostHog"}}
+        team=team, kind="github", integration_id="31337", config={"account": {"name": "Flind"}}
     )
     with (
         override_instance_config("GITHUB_APP_SLUG", "posthog-app"),

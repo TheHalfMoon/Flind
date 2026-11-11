@@ -13,7 +13,7 @@ import type {
 export { SurveyMatchType, SurveyPosition, SurveyQuestionType, SurveyType, SurveyWidgetType }
 export type { SurveyQuestionDescriptionContentType }
 
-// Survey creation schema matching PostHog Survey model format
+// Survey creation schema matching Flind Survey model format
 export interface SurveyCreationSchema {
     name: string
     description: string
@@ -35,7 +35,7 @@ export interface SurveyCreationSchema {
 
 export type SurveyQuestionBranchingType = 'next_question' | 'end' | 'response_based' | 'specific_question'
 
-// Question schema matching PostHog Survey model format
+// Question schema matching Flind Survey model format
 export interface SurveyQuestionSchema {
     type: SurveyQuestionType
     question: string
@@ -68,7 +68,7 @@ export interface SurveyQuestionSchema {
     }
 }
 
-// Display conditions matching PostHog Survey model format
+// Display conditions matching Flind Survey model format
 export interface SurveyDisplayConditionsSchema {
     url?: string
     urlMatchType?: SurveyMatchType
@@ -85,7 +85,7 @@ export interface SurveyDisplayConditionsSchema {
     }
 }
 
-// Appearance schema matching PostHog Survey model format
+// Appearance schema matching Flind Survey model format
 export interface SurveyAppearanceSchema {
     backgroundColor?: string
     borderColor?: string

@@ -1,6 +1,6 @@
 # Posthog DAGs
 
-This directory contains [Dagster](https://dagster.io/) data pipelines (DAGs) for PostHog. Dagster is a data orchestration framework that allows us to define, schedule, and monitor data workflows.
+This directory contains [Dagster](https://dagster.io/) data pipelines (DAGs) for Flind. Dagster is a data orchestration framework that allows us to define, schedule, and monitor data workflows.
 
 ## What is Dagster?
 
@@ -73,7 +73,7 @@ To set up a new team with their own Dagster definitions and Slack alerts, follow
 
 3. **Configure production deployment**:
 
-   For PostHog employees, add the new location to the Dagster configuration in the [charts repository](https://github.com/PostHog/charts) (see `argocd/dagster/`).
+   For Flind employees, add the new location to the Dagster configuration in the [charts repository](https://github.com/PostHog/charts) (see `argocd/dagster/`).
 
    Sample PR: https://github.com/PostHog/charts/pull/6366
 

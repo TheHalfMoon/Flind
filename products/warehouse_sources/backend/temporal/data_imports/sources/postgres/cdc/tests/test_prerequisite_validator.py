@@ -80,7 +80,7 @@ class TestValidateCDCPrerequisites:
         assert errors == []
 
     def test_all_checks_pass_self_managed(self):
-        # Self-managed now also checks replication role + slot capacity (PostHog creates the slot).
+        # Self-managed now also checks replication role + slot capacity (Flind creates the slot).
         # Publication existence is verified only when publication_name is provided.
         conn = _mock_conn([_PG_15, _WAL_LOGICAL, _HAS_PK, _HAS_REPL_ROLE, _MAX_SLOTS_10, _SLOT_COUNT_2, _PUB_EXISTS])
         errors = validate_cdc_prerequisites(
@@ -157,7 +157,7 @@ class TestValidateCDCPrerequisites:
         assert errors == []
 
     def test_self_managed_skips_ownership_check(self):
-        # The DBA owns the publication in self-managed mode, so PostHog never publishes the table
+        # The DBA owns the publication in self-managed mode, so Flind never publishes the table
         # and ownership is not required.
         conn = _mock_conn(
             [
@@ -198,7 +198,7 @@ class TestValidateCDCPrerequisites:
         conn.rollback.assert_called()
 
     def test_self_managed_no_slot_name_is_ok(self):
-        # PostHog creates the slot — slot_name omission is fine in self-managed.
+        # Flind creates the slot — slot_name omission is fine in self-managed.
         conn = _mock_conn([_PG_15, _WAL_LOGICAL, _HAS_PK, _HAS_REPL_ROLE, _MAX_SLOTS_10, _SLOT_COUNT_2, _PUB_EXISTS])
         errors = validate_cdc_prerequisites(
             conn=conn,
@@ -233,7 +233,7 @@ class TestValidateCDCPrerequisites:
         assert any("does not exist" in e for e in errors)
 
     def test_self_managed_replication_role_required(self):
-        # Self-managed also needs REPLICATION (PostHog creates the slot itself).
+        # Self-managed also needs REPLICATION (Flind creates the slot itself).
         conn = _mock_conn([_PG_15, _WAL_LOGICAL, _HAS_PK, _NO_REPL_ROLE, _MAX_SLOTS_10, _SLOT_COUNT_2, _PUB_EXISTS])
         errors = validate_cdc_prerequisites(
             conn=conn,

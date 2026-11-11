@@ -26,7 +26,7 @@ interface RenderUiEnvelope {
 
 function RenderUiApp(): JSX.Element {
     return (
-        <AppWrapper<RenderUiEnvelope> appName="PostHog Render UI">
+        <AppWrapper<RenderUiEnvelope> appName="Flind Render UI">
             {({ data, resultMeta, app, openLink }) => (
                 <RenderUiContent envelope={data!} resultMeta={resultMeta} app={app} openLink={openLink} />
             )}

@@ -54,7 +54,7 @@ class FredSource(ResumableSource[FredSourceConfig, FredResumeConfig]):
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="FRED",
             keywords=["federal reserve", "economic data", "st louis fed", "macro"],
-            caption="""Pull US and international economic time series from FRED, the Federal Reserve Bank of St. Louis database, into the PostHog Data warehouse.
+            caption="""Pull US and international economic time series from FRED, the Federal Reserve Bank of St. Louis database, into the Flind Data warehouse.
 
 Request a free API key at [fred.stlouisfed.org/docs/api/api_key.html](https://fred.stlouisfed.org/docs/api/api_key.html). FRED has around 800,000 series, so pick the ones you want: a series ID is the code at the end of its FRED page URL, such as `UNRATE` for the unemployment rate or `CPIAUCSL` for CPI.""",
             iconPath="/static/services/fred.png",

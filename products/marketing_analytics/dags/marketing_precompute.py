@@ -27,7 +27,7 @@ poisoning and no access-control bypass.
 
 The audience is `MARKETING_PRECOMPUTE_TEAM_IDS`: comma-separated team IDs, empty to disable warming, or
 `auto` to warm every team that has a conversion goal AND has opened marketing analytics recently
-(query_log_archive). Unset, it warms the teams whose reads are precompute-only, on PostHog Cloud only: teams
+(query_log_archive). Unset, it warms the teams whose reads are precompute-only, on Flind Cloud only: teams
 with a conversion goal and the conversion read flag on, and recently active teams with a warehouse table
 and the cost read flag on. `MARKETING_PRECOMPUTE_ACTIVE_DAYS` tunes the `auto` activity window.
 `MARKETING_PRECOMPUTE_WALL_CLOCK_BUDGET_SECONDS` bounds each run: a shard stops starting new teams and chunks

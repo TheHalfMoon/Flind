@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 15 enabled ops
+ * Flind API - MCP 15 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -399,7 +399,7 @@ export const ConversationsTicketsComposeCreateBody = () => zod.object({
         .string()
         .max(conversationsTicketsComposeCreateBodyRecipientDistinctIdMax)
         .optional()
-        .describe('PostHog distinct_id to link the ticket to a person. Falls back to recipient_email.'),
+        .describe('Flind distinct_id to link the ticket to a person. Falls back to recipient_email.'),
     email_subject: zod
         .string()
         .max(conversationsTicketsComposeCreateBodyEmailSubjectMax)

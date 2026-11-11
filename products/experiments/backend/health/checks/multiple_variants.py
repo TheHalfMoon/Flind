@@ -62,7 +62,7 @@ def multiple_variants_share(ctx: HealthContext) -> CheckOutcome:
             "variant loses a different group of users, and the results can be biased.\n\n"
             "This usually means that one person has more than one ID: an anonymous ID before login and another after, "
             "an ID for each device, a new ID after reset(), or a different ID on your server than in the browser. It "
-            "also happens when a bootstrapped flag value differs from the value PostHog evaluates, or when the flag "
+            "also happens when a bootstrapped flag value differs from the value Flind evaluates, or when the flag "
             "changes after launch, for example with a new variant split.\n\n"
             "Identify users before your code evaluates the flag, call reset() only at logout, and send the same ID "
             "from your server."

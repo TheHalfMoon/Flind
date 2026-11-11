@@ -229,7 +229,7 @@ describe('buildSections', () => {
             ['results', 'loading-more'],
         ],
         [
-            'no PostHog AI row while other rows match',
+            'no Flind AI row while other rows match',
             { events: [dashboard('e', '8')] },
             false,
             ['results', 'events', 'loading-more'],
@@ -280,7 +280,7 @@ describe('buildSections', () => {
         ],
         ['when nothing else matches', [], [['ask-ai', ['ask-ai']]]],
         ['unless persons match', [dashboard('p', '9')], [['persons', ['item']]]],
-    ])('offers PostHog AI %s', (_, persons, expected) => {
+    ])('offers Flind AI %s', (_, persons, expected) => {
         const remote = emptyRemoteSlots()
         remote.results = { cache: { xyzzy: [] } }
         remote.events = { cache: { xyzzy: [] } }
@@ -579,7 +579,7 @@ describe('buildSections', () => {
         },
         {
             id: 'settings-project-max',
-            name: 'PostHog AI',
+            name: 'Flind AI',
             category: 'settings',
             parentName: 'Project settings',
             href: '/settings/project-max',

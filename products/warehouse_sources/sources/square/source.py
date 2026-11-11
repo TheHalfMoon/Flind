@@ -62,7 +62,7 @@ class SquareSource(ResumableSource[SquareSourceConfig, SquareResumeConfig]):
             name=ExternalDataSourceType.SQUARE,
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Square",
-            caption="""Enter a Square access token to pull your Square data into the PostHog Data warehouse.
+            caption="""Enter a Square access token to pull your Square data into the Flind Data warehouse.
 
 Create a **Personal Access Token** (or a production access token for your app) in the [Square Developer Dashboard](https://developer.squareup.com/apps).
 

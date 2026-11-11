@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 21 enabled ops
+ * Flind API - MCP 21 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -442,7 +442,7 @@ export const CanvasesDraftCreateBody = () => zod
                                 .max(canvasesDraftCreateBodyProjectOneCapabilitiesOnePosthogToolsMax)
                                 .optional()
                                 .describe(
-                                    "PostHog MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', 'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the promote review."
+                                    "Flind MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', 'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the promote review."
                                 ),
                             agentRequests: zod
                                 .boolean()
@@ -649,7 +649,7 @@ export const CanvasesEditCreateBody = () => zod
                         .max(canvasesEditCreateBodyCapabilitiesOnePosthogToolsMax)
                         .optional()
                         .describe(
-                            "PostHog MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', 'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the promote review."
+                            "Flind MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', 'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the promote review."
                         ),
                     agentRequests: zod
                         .boolean()
@@ -1344,7 +1344,7 @@ export const CanvasesPublishCreateBody = () => zod
                                 .max(canvasesPublishCreateBodyProjectOneCapabilitiesOnePosthogToolsMax)
                                 .optional()
                                 .describe(
-                                    "PostHog MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', 'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the promote review."
+                                    "Flind MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', 'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the promote review."
                                 ),
                             agentRequests: zod
                                 .boolean()
@@ -1812,7 +1812,7 @@ export const CanvasesValidateCreateBody = () => zod
                                 .max(canvasesValidateCreateBodyProjectOneCapabilitiesOnePosthogToolsMax)
                                 .optional()
                                 .describe(
-                                    "PostHog MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', 'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the promote review."
+                                    "Flind MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', 'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the promote review."
                                 ),
                             agentRequests: zod
                                 .boolean()

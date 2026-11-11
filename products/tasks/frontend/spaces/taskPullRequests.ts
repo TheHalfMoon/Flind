@@ -65,7 +65,7 @@ export interface SessionPullRequest<T> {
     session: T
 }
 
-/** A space's pull requests for its PRs view, like PostHog Desktop's: newest session activity first, each PR once. */
+/** A space's pull requests for its PRs view, like Flind Desktop's: newest session activity first, each PR once. */
 export function spacePullRequests<T extends { pullRequests: TaskPullRequest[]; timestamp: string | null }>(
     sessions: T[],
     limit = SPACE_PULL_REQUEST_LIMIT

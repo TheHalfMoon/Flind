@@ -29,7 +29,7 @@ export type AuthStatus =
           credentialsPath: string | null
           provider: string | null
           // What an OAuth login may do and when its access token expires (ISO 8601). Null for a
-          // personal API key, which has no expiry and whose scopes PostHog doesn't report.
+          // personal API key, which has no expiry and whose scopes Flind doesn't report.
           scopes: string[] | null
           expiresAt: string | null
           // Null when the key lacks the user:read scope, so hog can't tell whose key it is.

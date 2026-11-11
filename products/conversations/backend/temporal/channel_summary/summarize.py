@@ -55,7 +55,7 @@ _TERMINAL_SLACK_ERRORS = {
 
 _MAX_USER_LOOKUPS = 200
 
-_SUMMARY_SYSTEM_PROMPT = """You summarize one period of activity in a customer's shared Slack channel for the account team at PostHog.
+_SUMMARY_SYSTEM_PROMPT = """You summarize one period of activity in a customer's shared Slack channel for the account team at Flind.
 
 Write short markdown with exactly these two sections:
 

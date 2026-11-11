@@ -841,7 +841,7 @@ class TestWebhookManagement:
                                 "event_object": "*",
                                 "is_active": 1,
                                 "add_time": "2026-05-01 10:00:00",
-                                "name": "PostHog data warehouse",
+                                "name": "Flind data warehouse",
                             }
                         ]
                     }

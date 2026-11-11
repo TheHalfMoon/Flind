@@ -49,7 +49,7 @@ class RechargeSource(ResumableSource[RechargeSourceConfig, RechargeResumeConfig]
             name=ExternalDataSourceType.RECHARGE,
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Recharge",
-            caption="""Enter your Recharge API token to automatically pull your Recharge subscription data into the PostHog Data warehouse.
+            caption="""Enter your Recharge API token to automatically pull your Recharge subscription data into the Flind Data warehouse.
 
 You can create an API token in your [Recharge admin](https://docs.getrecharge.com/docs/recharge-api-and-developer-tools) under **Apps & integrations > API tokens**.
 

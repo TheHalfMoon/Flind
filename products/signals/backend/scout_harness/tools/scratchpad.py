@@ -2,7 +2,7 @@
 
 The scout calls `remember`/`forget` via this module. Scratchpad is the narrow
 per-team memory surface — MCP-readable across agents — that other scouts and
-PostHog AI can read to see what the scout fleet has learned about a team.
+Flind AI can read to see what the scout fleet has learned about a team.
 
 Simplified in PR 2 review: `tags`, `scope`, and `authority` were dropped (none were
 earning their keep on the stack). Retrieval is ILIKE on `content` and `key` only.

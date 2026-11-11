@@ -87,7 +87,7 @@ const dimWhenNotSyncing = (_: unknown, schema: ExternalDataSourceSchema): string
     schema.should_sync ? '' : 'opacity-60'
 
 const PENDING_SELF_MANAGED_TABLE_NOTE =
-    'This table reads your bucket until you turn on syncing. The first sync imports it into PostHog.'
+    'This table reads your bucket until you turn on syncing. The first sync imports it into Flind.'
 
 type SchemaColumn = LemonTableColumn<ExternalDataSourceSchema, keyof ExternalDataSourceSchema | undefined>
 
@@ -1058,11 +1058,11 @@ function SchemaBulkActions({
                             status="danger"
                             onClick={() =>
                                 LemonDialog.open({
-                                    title: `Delete ${pluralize(count, 'table', 'tables')} from PostHog?`,
+                                    title: `Delete ${pluralize(count, 'table', 'tables')} from Flind?`,
                                     description:
-                                        'Removes the synced tables from PostHog and turns off syncing for them. The data in the source is not touched.',
+                                        'Removes the synced tables from Flind and turns off syncing for them. The data in the source is not touched.',
                                     primaryButton: {
-                                        children: 'Delete from PostHog',
+                                        children: 'Delete from Flind',
                                         status: 'danger',
                                         onClick: () => run(() => bulkDeleteData(selected)),
                                     },
@@ -1070,7 +1070,7 @@ function SchemaBulkActions({
                                 })
                             }
                         >
-                            Delete tables from PostHog
+                            Delete tables from Flind
                         </LemonButton>
                     </>
                 }
@@ -1229,7 +1229,7 @@ function SchemaRowMore({
                             )}
                             {schema.table && (
                                 <Tooltip
-                                    title={`Delete this table from PostHog. ${
+                                    title={`Delete this table from Flind. ${
                                         externalSourceType
                                             ? `This will not delete the data in ${externalSourceType}`
                                             : ''
@@ -1242,7 +1242,7 @@ function SchemaRowMore({
                                         status="danger"
                                         onClick={() => {
                                             LemonDialog.open({
-                                                title: `Delete ${schema.table?.name ?? schema.name} from PostHog?`,
+                                                title: `Delete ${schema.table?.name ?? schema.name} from Flind?`,
                                                 description: `This also turns off syncing for the table.${
                                                     externalSourceType
                                                         ? ` The data in ${externalSourceType} will not be touched.`
@@ -1257,7 +1257,7 @@ function SchemaRowMore({
                                             })
                                         }}
                                     >
-                                        Delete table from PostHog
+                                        Delete table from Flind
                                     </LemonButton>
                                 </Tooltip>
                             )}

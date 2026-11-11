@@ -210,7 +210,7 @@ export const FeedbackPromptDetails = memo(function FeedbackPromptDetails({
                         <span className="font-medium">Support ticket ready for review</span>
                     </div>
                     <p className="m-0 text-sm text-secondary">
-                        Here's a draft of your support ticket. Please review and submit it to get help from PostHog
+                        Here's a draft of your support ticket. Please review and submit it to get help from Flind
                         support.
                     </p>
                     <div className="bg-bg-light border rounded p-3">

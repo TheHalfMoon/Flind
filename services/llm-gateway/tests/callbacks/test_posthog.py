@@ -724,7 +724,7 @@ class TestPostHogCallback:
             await callback._on_success(kwargs, None, 0.0, 1.0, end_user_id=None)
 
         props = mock_client.capture.call_args.kwargs["properties"]
-        # Each LiteLLM cost_breakdown component maps 1:1 to its own PostHog
+        # Each LiteLLM cost_breakdown component maps 1:1 to its own Flind
         # property — disjoint, so the sum reconciles to $ai_total_cost_usd.
         for key, value in expected_props.items():
             assert props[key] == value

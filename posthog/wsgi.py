@@ -60,7 +60,7 @@ finally:
 # worker once it passes GRANIAN_WORKERS_MAX_RSS, and respawns one whenever a worker is
 # OOM-killed (SIGKILL is uncatchable, so the kill itself can't be logged from inside the
 # worker). Either way the replacement boots and emits this line — so a burst of these on a pod
-# is the in-app fingerprint of worker churn / OOM kills, queryable in PostHog even though the
+# is the in-app fingerprint of worker churn / OOM kills, queryable in Flind even though the
 # kill leaves no other application-level trace. Best-effort: never break worker startup.
 def _log_web_worker_started() -> None:
     try:

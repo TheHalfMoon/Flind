@@ -66,7 +66,7 @@ def _latency_ms(event: LLMTraceEvent) -> float:
 
 
 def _operation_start_ms(event: LLMTraceEvent) -> float:
-    """Epoch ms the event's operation began. PostHog AI SDKs capture an event when the operation
+    """Epoch ms the event's operation began. Flind AI SDKs capture an event when the operation
     finishes, so its timestamp is the end; OTel-ingested spans already carry the start."""
     try:
         end_ms = isoparse(event.createdAt).timestamp() * 1000

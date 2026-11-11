@@ -30,7 +30,7 @@ def register_all_admin():
     # uses `@admin.register(Model)` at module top, which fires here.
     autodiscover_modules("admin")
 
-    # Central PostHog admins live in `posthog/admin/admins/<x>_admin.py` —
+    # Central Flind admins live in `posthog/admin/admins/<x>_admin.py` —
     # submodules that `autodiscover_modules('admin')` doesn't recurse into.
     # The package's `__init__.py` re-exports them all, so a single import
     # triggers every `@admin.register` decorator in the central registry.
@@ -63,7 +63,7 @@ def register_all_admin():
 
 
 # :KRUDGE: OAuth models live in the `posthog` app, so by default they appear
-# under "PostHog" in the admin sidebar alongside dozens of unrelated models.
+# under "Flind" in the admin sidebar alongside dozens of unrelated models.
 # The "real" fix would be to move these to `products/oauth/` so Django groups
 # them automatically — but every model here is `swappable` (referenced as
 # `OAUTH2_PROVIDER_APPLICATION_MODEL` etc.). Changing the app_label means

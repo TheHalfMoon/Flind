@@ -227,7 +227,7 @@ class AccessControlRolesResponseSerializer(_AccessControlSettingsResponseSeriali
 class AccessControlResourceDefaultSerializer(serializers.Serializer):
     access_level = serializers.CharField(
         allow_null=True,
-        help_text="The stored default level for this resource type. Null when the PostHog default applies.",
+        help_text="The stored default level for this resource type. Null when the Flind default applies.",
     )
     minimum = serializers.CharField(help_text="The lowest level this resource type allows.")
     maximum = serializers.CharField(help_text="The highest level this resource type allows.")

@@ -12,8 +12,8 @@ Under pytest that infrastructure lived in session fixtures, and suites ran stric
 Wall-clock was dominated by suites queueing behind each other while sandbox capacity sat idle.
 
 The harness boots the same infrastructure once, then runs every suite concurrently on a single event loop and bounds sandbox and team-setup load with shared semaphores.
-Braintrust remains the local eval engine. PostHog owns remote result reporting, and the harness controls scheduling.
-The `EvalAsync` call itself lives behind an `EvalEngine` seam (`../engines/`): `_BaseEvalRun.run()` hands a neutral `ExperimentSpec` to the engine resolved by `engines/registry.resolve_engine()` (shared via `EvalContext.engine`) and gets back a neutral `ExperimentResult` (`engines/types.py`), so a future PostHog-native engine can slot in behind the same interface — implementing the `EvalEngine` protocol and passing the conformance suite — without touching the run base or any suite.
+Braintrust remains the local eval engine. Flind owns remote result reporting, and the harness controls scheduling.
+The `EvalAsync` call itself lives behind an `EvalEngine` seam (`../engines/`): `_BaseEvalRun.run()` hands a neutral `ExperimentSpec` to the engine resolved by `engines/registry.resolve_engine()` (shared via `EvalContext.engine`) and gets back a neutral `ExperimentResult` (`engines/types.py`), so a future Flind-native engine can slot in behind the same interface — implementing the `EvalEngine` protocol and passing the conformance suite — without touching the run base or any suite.
 
 Not every suite is sandboxed anymore: each suite declares a `SUITE_KIND` (`requirements.py`), the kind maps to a set of `Infra` requirements, and the harness boots only the union of what the selected suites need.
 A run of one-shot suites never pays for — or fails preflight on — the sandbox provider, Temporal, the live server, the AI gateway, or the MCP server.
@@ -30,7 +30,7 @@ A run of one-shot suites never pays for — or fails preflight on — the sandbo
 | `tunnels.py`       | `TailscaleFunnel`. Modal only: enables Tailscale Funnel on the host services, waits for the public relays, and resolves the URLs.          |
 | `requirements.py`  | `SuiteKind`, `Infra`, and the kind → infrastructure mapping (with implication closure).                                                    |
 | `django_env.py`    | `setup_django()`, the `NullDbBlocker` shim, and `EvalDatabase` (test database lifecycle).                                                  |
-| `live_server.py`   | `EvalLiveServer`, a session-lifetime Uvicorn server for PostHog's full ASGI application.                                                   |
+| `live_server.py`   | `EvalLiveServer`, a session-lifetime Uvicorn server for Flind's full ASGI application.                                                   |
 | `services.py`      | Starts the AI gateway, MCP server, skill archive server, and personhog subprocesses; provisions the gateway mint key; builds local skills. |
 | `temporal_env.py`  | Local Temporal dev server, stale-workflow cleanup, and the worker thread.                                                                  |
 | `demo_data.py`     | `SandboxedDemoData`: seeds the master Hedgebox team once, then mints an isolated team per case.                                            |
@@ -53,9 +53,9 @@ The bootstrap is deliberately synchronous and runs before any event loop exists,
 
 1. `__main__` creates the run transcript, then loads the repo-root `.env` (never overriding what the shell — or hogli's own env loading, under `hogli evals` — already exported), then `setup_django()` sets `DEBUG` / `TEST` / `IN_EVAL_TESTING`, forces `SELF_CAPTURE=0`, and runs `django.setup()` and `setup_test_environment()`. Eval telemetry still uses the explicit regional client configured by the harness.
    The env preflight (required variables, one-line fix per missing one) and provider preflight then run, followed by the personhog binary build (`cargo build`, incremental after the first run) and the AI gateway build (`go build` in the `PostHog/ai-gateway` clone) — a missing key or toolchain fails here, before any database work.
-2. `EvalDatabase.setup()` creates the `default` test database and drives PostHog's own eval database setup (persons database, ClickHouse).
+2. `EvalDatabase.setup()` creates the `default` test database and drives Flind's own eval database setup (persons database, ClickHouse).
 3. `personhog-replica` (`:15051`) and `personhog-router` (`:15052`) start against the test persons database — before anything can query, so a dead router never poisons the negative group-types cache.
-4. `EvalLiveServer` serves PostHog's ASGI application on `0.0.0.0:18000`, including the sandbox event-ingest route.
+4. `EvalLiveServer` serves Flind's ASGI application on `0.0.0.0:18000`, including the sandbox event-ingest route.
 5. The Go AI gateway (`:18080`) starts in resolver mode, on the gateway compose Postgres (database `ai_gateway_evals`) and Valkey (DB 5).
 6. The master Hedgebox team is seeded. This happens before the skill build, because HogQL examples in skill templates render against a Team, and a fresh test database has none until this step.
 7. Local skills are built. A failed build stops the run instead of reusing an older `dist/skills`. In bundled mode, the MCP server (`:18787`) starts with exec skill distribution forced off. In exec mode, the skills are packaged, the local archive server (`:18788`) starts, and MCP receives its content-addressed URL with distribution forced on.
@@ -80,7 +80,7 @@ The comparison retains these reports after each model and checks that case and s
 It reuses the first model's archived branch-skill snapshot for later models and checks that their snapshot hashes match.
 Saved snapshots include a source fingerprint. Reuse stops if the branch's skill sources or commit changed.
 With `--keep-sandbox-containers`, mounted skill files remain under `logs/skill-snapshots/` after the run so preserved containers can still read them.
-Cases with `interaction_origin="posthog_ai"` also receive the production PostHog AI system prompt from this checkout before the task starts. The interaction origin alone does not supply that prompt. Compare skill versions only with the same client prompt and scorer versions.
+Cases with `interaction_origin="posthog_ai"` also receive the production Flind AI system prompt from this checkout before the task starts. The interaction origin alone does not supply that prompt. Compare skill versions only with the same client prompt and scorer versions.
 No prompts, model answers, or credentials are included in the comparison report.
 
 The reporter emits plain-text records with stable labels so terminals and agents can scan the same output.
@@ -89,7 +89,7 @@ Only the final overall run status uses `PASS` or `FAIL`.
 `CASE START` and `CASE PHASE` identify each trial. `CASE READY` marks completed execution with scoring still pending.
 The reporter prints phase counts and the oldest active trial every 30 seconds while suites run.
 The `scoring` duration includes waiting for the experiment results. It does not measure scorer execution alone.
-Local results and PostHog uploads include final phase durations after scoring.
+Local results and Flind uploads include final phase durations after scoring.
 Scorer exceptions produce case errors in the console and final summary.
 The reporter writes output in worker threads so slow output does not stop the event loop.
 Terminal writes do not hold the transcript file lock, so progress output cannot block logging through that lock.

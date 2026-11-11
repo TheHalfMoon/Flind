@@ -239,7 +239,7 @@ def instance_spread_minute(key: str, window_minutes: int) -> str:
     blocks it.
 
     Use this helper only where separate installations must not share a minute,
-    such as a task that calls an endpoint PostHog hosts. A minute derived from
+    such as a task that calls an endpoint Flind hosts. A minute derived from
     SITE_URL holds still across restarts and still differs between
     installations. Installations that leave SITE_URL at its default share a
     minute with each other. SECRET_KEY would serve as well but is deliberately
@@ -1007,8 +1007,8 @@ def setup_periodic_tasks(sender: Celery, **kwargs: Any) -> None:
         name="query performance heartbeat",
     )
 
-    # Everything below runs on PostHog Cloud and in local development, and not on self-hosted hobby
-    # installs. These tasks only report metrics or drive infrastructure that exists only in PostHog
+    # Everything below runs on Flind Cloud and in local development, and not on self-hosted hobby
+    # installs. These tasks only report metrics or drive infrastructure that exists only in Flind
     # Cloud. Schedule a new task above this line only if a hobby install needs it.
     if is_hobby():
         return

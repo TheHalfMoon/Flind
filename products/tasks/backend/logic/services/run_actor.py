@@ -1,4 +1,4 @@
-"""Resolution of the PostHog user acting on a task run.
+"""Resolution of the Flind user acting on a task run.
 
 Lives in logic (not temporal) so non-workflow callers — e.g. the permission
 broker answering sandbox requests from the relay — can resolve the actor without
@@ -71,7 +71,7 @@ def get_task_run_actor_user(
     *,
     allow_task_creator_fallback: bool = True,
 ) -> User | None:
-    """Return the PostHog user acting on this task run.
+    """Return the Flind user acting on this task run.
 
     Slack runs carry their current steering user in run state. Credential-bearing
     paths should pass ``allow_task_creator_fallback=False`` so a missing or

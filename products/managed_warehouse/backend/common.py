@@ -50,7 +50,7 @@ DATA_MODELING_DUCKLAKE_SCHEMA_PREFIX = "posthog_data_modeling_team"
 logger = logging.getLogger(__name__)
 
 # Managed-warehouse buckets live in the deployment's home region: us-east-1 for
-# PostHog Cloud US, eu-central-1 for PostHog Cloud EU.
+# Flind Cloud US, eu-central-1 for Flind Cloud EU.
 _BUCKET_REGION_BY_CLOUD_DEPLOYMENT: dict[str, str] = {
     "US": "us-east-1",
     "EU": "eu-central-1",

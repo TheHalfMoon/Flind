@@ -77,7 +77,7 @@ NO_STEERING = ReportSteering(section="", notes_attached=0, scratchpad_available=
 
 _IMPLEMENTATION_NUDGE = """**Notes and memory from your team**
 
-Your team leaves notes for the PostHog agents, and the fleet keeps a shared scratchpad. Either can record an area nobody should change right now, a fix already in flight, an earlier decision, feedback on a past report, or a repository gotcha. The author of this report read the notes already, so expect most of them to be about something else. Look for the few that touch what you will change before you settle on an approach:
+Your team leaves notes for the Flind agents, and the fleet keeps a shared scratchpad. Either can record an area nobody should change right now, a fix already in flight, an earlier decision, feedback on a past report, or a repository gotcha. The author of this report read the notes already, so expect most of them to be about something else. Look for the few that touch what you will change before you settle on an approach:
 
 - `scout-notes-list`: skim with a small `content_max_chars`, such as 200, then read the full text only of the notes that touch what you will change. Notes newer than this report are the most likely to be news.
 - `scout-scratchpad-search` with `keys_only=true`: once per file, area, or entity you will change, and once with `text=pattern:impl:` followed by this task's repository. Read the full entry only for the few keys that look relevant.
@@ -102,7 +102,7 @@ This run can also write to the scratchpad. At the end of the run, record what th
 
 _RESEARCH_NOTES_NUDGE = """## Steering from this team
 
-Your team leaves steering notes for the PostHog scouts and for this pipeline. Some a teammate typed by hand. Others carry what a person said when they dismissed, discussed, or rated an earlier report, which is the closest thing you have to feedback on work like this one. They are not pasted here, because the newest notes are rarely about this report. Search for the ones that are before you settle on your findings and assessments:
+Your team leaves steering notes for the Flind scouts and for this pipeline. Some a teammate typed by hand. Others carry what a person said when they dismissed, discussed, or rated an earlier report, which is the closest thing you have to feedback on work like this one. They are not pasted here, because the newest notes are rarely about this report. Search for the ones that are before you settle on your findings and assessments:
 
 - Run `call scout-notes-list {"text": "<entity>", "content_max_chars": 300}` through `mcp__posthog__exec` once for each entity this report names: an error id, a flag key, a page path, an event name, or a distinctive term from the signals. `text` matches note content case-insensitively, and it finds old notes as well as new ones.
 - Repeat a search without `content_max_chars` to read the full text of the notes that match.

@@ -235,7 +235,7 @@ class FintocAPI:
             "/v1/webhook_endpoints",
             {
                 "url": url,
-                "description": "PostHog data warehouse",
+                "description": "Flind data warehouse",
                 "enabled_events": [event for endpoint in ENDPOINTS.values() for event in endpoint.webhook_events],
             },
         )

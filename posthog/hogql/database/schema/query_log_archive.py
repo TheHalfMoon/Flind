@@ -38,10 +38,10 @@ QUERY_LOG_ARCHIVE_FIELDS: dict[str, FieldOrTable] = {
         name="lc_request_name", nullable=False, description="Human-readable name of the originating request."
     ),
     "created_by": IntegerDatabaseField(
-        name="lc_user_id", nullable=False, description="ID of the PostHog user who triggered the query."
+        name="lc_user_id", nullable=False, description="ID of the Flind user who triggered the query."
     ),
     "product": StringDatabaseField(
-        name="lc_product", nullable=False, description="PostHog product that issued the query, e.g. 'sql_editor'."
+        name="lc_product", nullable=False, description="Flind product that issued the query, e.g. 'sql_editor'."
     ),
     "read_rows": IntegerDatabaseField(
         name="read_rows", nullable=False, description="Number of rows ClickHouse read while executing the query."
@@ -230,10 +230,10 @@ class RawQueryLogArchiveTable(Table):
         "lc_name": StringDatabaseField(name="lc_name", nullable=False),
         "lc_request_name": StringDatabaseField(name="lc_request_name", nullable=False),
         "lc_user_id": IntegerDatabaseField(
-            name="lc_user_id", nullable=False, description="ID of the PostHog user who triggered the query."
+            name="lc_user_id", nullable=False, description="ID of the Flind user who triggered the query."
         ),
         "lc_product": StringDatabaseField(
-            name="lc_product", nullable=False, description="PostHog product that issued the query, e.g. 'sql_editor'."
+            name="lc_product", nullable=False, description="Flind product that issued the query, e.g. 'sql_editor'."
         ),
         "read_rows": IntegerDatabaseField(name="read_rows", nullable=False),
         "read_bytes": IntegerDatabaseField(name="read_bytes", nullable=False),

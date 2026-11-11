@@ -58,7 +58,7 @@ class WixSource(ResumableSource[WixSourceConfig, WixResumeConfig]):
             name=ExternalDataSourceType.WIX,
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="Wix",
-            caption="""Enter a Wix API key and the ID of the site you want to sync, to pull your orders, products, contacts, members, and blog posts into the PostHog Data warehouse.
+            caption="""Enter a Wix API key and the ID of the site you want to sync, to pull your orders, products, contacts, members, and blog posts into the Flind Data warehouse.
 
 Create an API key in the [Wix API Key Manager](https://manage.wix.com/account/api-keys) and give it read access to the areas you want to sync: eCommerce Orders, Stores, Contacts, Members, and Blog. Only an account owner or a co-owner with full permissions can create one.
 

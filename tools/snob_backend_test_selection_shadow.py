@@ -771,7 +771,7 @@ def format_summary(result: dict[str, Any]) -> str:
     lines = [
         "## Shadow test selection",
         "",
-        "Shadow-only. Compares Snob's import-graph selection with PostHog-specific AST groups for API-client and other non-import-shaped tests.",
+        "Shadow-only. Compares Snob's import-graph selection with Flind-specific AST groups for API-client and other non-import-shaped tests.",
         "",
         "| Metric | Count | Est. duration |",
         "|---|---:|---:|",

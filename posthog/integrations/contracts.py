@@ -102,7 +102,7 @@ class IntegrationPatch:
 
 @frozen
 class IntegrationUsage:
-    """One PostHog object that uses an integration row, such as a warehouse source or a workflow."""
+    """One Flind object that uses an integration row, such as a warehouse source or a workflow."""
 
     # The kind of object, for example "warehouse_source". The product that reports it chooses the value.
     type: str
@@ -139,7 +139,7 @@ class IntegrationConflict(ValueError):
 
 
 class IntegrationInUse(Exception):
-    """`delete` found PostHog objects that use the row."""
+    """`delete` found Flind objects that use the row."""
 
     def __init__(self, usages: list[IntegrationUsage]) -> None:
         super().__init__(f"The integration has {len(usages)} usages")

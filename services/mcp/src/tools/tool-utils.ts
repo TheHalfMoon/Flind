@@ -252,7 +252,7 @@ function removeAtPath(obj: unknown, segments: string[]): void {
  * Remove keys whose value is `null`, recursing through objects and arrays. Array element
  * positions are kept.
  *
- * PostHog serializers write every unset optional field as an explicit `null`, so a response
+ * Flind serializers write every unset optional field as an explicit `null`, so a response
  * that echoes a nested schema (a dashboard tile's query, for example) spends most of its size
  * on keys that carry no information. An absent key and a `null` key read the same to an agent,
  * which makes the removal lossless.

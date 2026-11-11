@@ -120,7 +120,7 @@ let body := {
     'routing_key': inputs.routing_key,
     'event_action': inputs.event_action,
     'payload': payload,
-    'client': 'PostHog'
+    'client': 'Flind'
 }
 if (not empty(inputs.dedup_key)) {
     body['dedup_key'] := inputs.dedup_key

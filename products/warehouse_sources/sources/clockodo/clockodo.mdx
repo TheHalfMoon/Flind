@@ -12,7 +12,7 @@ import SourceParameters from '../_snippets/source-parameters.mdx'
 import SourceTables from '../_snippets/source-tables.mdx'
 import TroubleshootingLink from '../_snippets/dw-troubleshooting-link.mdx'
 
-Clockodo is a cloud-based time-tracking and project-management tool for agencies, service firms, and freelancers. This connector syncs your Clockodo time entries, attendance, absences, target hours, yearly co-worker reports, customers, projects, services, users, teams, and supporting reference data into the PostHog data warehouse so you can join tracked time and billing data with your product and revenue data.
+Clockodo is a cloud-based time-tracking and project-management tool for agencies, service firms, and freelancers. This connector syncs your Clockodo time entries, attendance, absences, target hours, yearly co-worker reports, customers, projects, services, users, teams, and supporting reference data into the Flind data warehouse so you can join tracked time and billing data with your product and revenue data.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ You'll need your Clockodo email address and personal API key:
 
 1. Sign in to Clockodo and open **Personal data** (your account settings).
 2. Find the **API key** section and copy your API key.
-3. Enter your Clockodo account email and the API key into the corresponding fields in PostHog.
+3. Enter your Clockodo account email and the API key into the corresponding fields in Flind.
 
 Clockodo credentials are per co-worker, so the tables you can sync reflect that user's permissions. Requests are rate limited (Clockodo returns `429 Too Many Requests` when the limit is exceeded), so very large initial syncs may take some time to complete.
 

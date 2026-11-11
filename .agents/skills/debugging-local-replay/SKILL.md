@@ -53,9 +53,9 @@ The SDK isn't attempting to send recording data. Investigate client-side causes:
   (Project settings > Session replay). Remove or adjust triggers to allow recording to start.
 - **Recording disabled in project settings.** Session replay may be toggled off.
 - **Sample rate set too low.** If `$replay_sample_rate` is < 1.0, sessions may be sampled out.
-- **SDK not initialized with recording.** Check the local app's PostHog initialization —
+- **SDK not initialized with recording.** Check the local app's Flind initialization —
   `session_recording` must not be explicitly disabled.
-- **Wrong PostHog host.** The local app must point to `http://localhost:8000` (or wherever
+- **Wrong Flind host.** The local app must point to `http://localhost:8000` (or wherever
   the local Caddy proxy is running).
 - **Ad blocker.** Even in local dev, browser extensions can block the recorder script or `/s` endpoint.
 - **Recorder script failed to load (MIME type / CORS error).** The browser console may show

@@ -122,7 +122,7 @@ function parentBreadcrumbFor(observation: ReplayObservationApi, searchParams: Re
         return recordingBreadcrumb(observation, returnPath)
     }
     if (origin === POSTHOG_AI_ORIGIN) {
-        return { key: 'replay-vision-posthog-ai', name: 'PostHog AI', path: returnPath ?? urls.ai() }
+        return { key: 'replay-vision-posthog-ai', name: 'Flind AI', path: returnPath ?? urls.ai() }
     }
     const returnParams = scannerReturnParams(searchParams)
     return returnParams.tab === ReplayScannerTab.Search

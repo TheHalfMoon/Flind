@@ -11,13 +11,13 @@ export const getHeliconeSteps = (ctx: OnboardingComponentsContext): StepDefiniti
             badge: 'required',
             content: (
                 <Markdown>
-                    Helicone supports most popular LLM models and you can bring your Helicone data into PostHog for
+                    Helicone supports most popular LLM models and you can bring your Helicone data into Flind for
                     analysis. Sign up to [Helicone](https://www.helicone.ai/) and add it to your LLM app.
                 </Markdown>
             ),
         },
         {
-            title: 'Add PostHog headers',
+            title: 'Add Flind headers',
             badge: 'required',
             content: (
                 <>
@@ -25,7 +25,7 @@ export const getHeliconeSteps = (ctx: OnboardingComponentsContext): StepDefiniti
                         Similar to how you add a [Helicone-Auth
                         header](https://docs.helicone.ai/helicone-headers/header-directory#supported-headers) when
                         installing Helicone, add two new headers **Helicone-Posthog-Key** and **Helicone-Posthog-Host**
-                        with your PostHog details:
+                        with your Flind details:
                     </Markdown>
                     <CodeBlock
                         blocks={[
@@ -48,7 +48,7 @@ export const getHeliconeSteps = (ctx: OnboardingComponentsContext): StepDefiniti
                             },
                         ]}
                     />
-                    <Markdown>Helicone events will now be exported into PostHog as soon as they're available.</Markdown>
+                    <Markdown>Helicone events will now be exported into Flind as soon as they're available.</Markdown>
                 </>
             ),
         },

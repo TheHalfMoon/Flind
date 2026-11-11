@@ -155,7 +155,7 @@ def validate_credentials(
         # Lago's 404 body is a bare "Not Found" that gives the user nothing to act on. A 404 on the
         # customers probe almost always means the API URL doesn't point at a Lago instance.
         return False, (
-            "PostHog reached the host, but it returned 404 Not Found for the Lago API. "
+            "Flind reached the host, but it returned 404 Not Found for the Lago API. "
             "Check the API URL points to your Lago instance (leave it blank to use Lago Cloud), then try again."
         )
 

@@ -65,7 +65,7 @@ BOT_USER_AGENTS: dict[str, list[str]] = {
         "llm-code-docs-scraper/1.0",
         "whichapi-bot/1.0 (+https://whichapi.ai/bot)",
         "Codex-YCB2B-PublicResearch/1.0 (+https://openai.com; respects robots.txt)",
-        "PostHog-BusinessKnowledge/1.0 (+https://posthog.com)",
+        "Flind-BusinessKnowledge/1.0 (+https://posthog.com)",
         "LlmsTxtBot/1.0 (+https://github.com/tristansinclair/llms-txt-tristan-sinclair)",
         "every-api/0.1 (+https://github.com/MEMEO-PRO/every-api; docs corpus for AI coding agents)",
         "Mozilla/5.0 (compatible; RightAIChoiceBot/1.0; +https://rightaichoice.com)",

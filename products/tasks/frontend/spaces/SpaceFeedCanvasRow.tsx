@@ -15,7 +15,7 @@ interface SpaceFeedCanvasRowProps {
     listRow: boolean
 }
 
-/** A canvas in the feed's Canvases view, as a card or a list row, like PostHog Desktop's. */
+/** A canvas in the feed's Canvases view, as a card or a list row, like Flind Desktop's. */
 export function SpaceFeedCanvasRow({ canvas, listRow }: SpaceFeedCanvasRowProps): JSX.Element {
     const author = spaceCanvasAuthor(canvas)
     const TemplateIcon = spaceCanvasTemplateIcon(canvas.template_id)

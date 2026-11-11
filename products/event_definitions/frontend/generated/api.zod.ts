@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -29,7 +29,7 @@ export const EventDefinitionsCreateBody = /* @__PURE__ */ zod
             .max(eventDefinitionsCreateBodyPrimaryPropertyMax)
             .nullish()
             .describe(
-                "Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event."
+                "Name of a single property on this event that Flind UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event."
             ),
         post_to_slack: zod.boolean().default(eventDefinitionsCreateBodyPostToSlackDefault),
         default_columns: zod.array(zod.string()).optional(),
@@ -56,7 +56,7 @@ export const EventDefinitionsUpdateBody = /* @__PURE__ */ zod
             .max(eventDefinitionsUpdateBodyPrimaryPropertyMax)
             .nullish()
             .describe(
-                "Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event."
+                "Name of a single property on this event that Flind UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event."
             ),
         post_to_slack: zod.boolean().default(eventDefinitionsUpdateBodyPostToSlackDefault),
         default_columns: zod.array(zod.string()).optional(),
@@ -83,7 +83,7 @@ export const EventDefinitionsPartialUpdateBody = /* @__PURE__ */ zod
             .max(eventDefinitionsPartialUpdateBodyPrimaryPropertyMax)
             .nullish()
             .describe(
-                "Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event."
+                "Name of a single property on this event that Flind UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event."
             ),
         post_to_slack: zod.boolean().default(eventDefinitionsPartialUpdateBodyPostToSlackDefault),
         default_columns: zod.array(zod.string()).optional(),

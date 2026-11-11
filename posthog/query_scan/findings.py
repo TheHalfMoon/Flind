@@ -387,7 +387,7 @@ _PERSONS_JOIN_INSIGHT = _Copy(
     lead="{subject} joins the persons table, which is slow.",
     advice=(
         'The project\'s Person properties mode is set to "Use person properties as of running the query". '
-        'PostHog recommends "Use person properties from the time of the event", which makes queries fast.'
+        'Flind recommends "Use person properties from the time of the event", which makes queries fast.'
     ),
     fix=(
         "The insight joins the persons table because the project's Person properties mode reads person "

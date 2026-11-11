@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-// The materialization schedules PostHog accepts, as posthog-cli writes them, with their refresh interval.
+// The materialization schedules Flind accepts, as posthog-cli writes them, with their refresh interval.
 export const SCHEDULES = {
     '15min': 900,
     '30min': 1800,
@@ -125,7 +125,7 @@ export function remoteVariableValues(endpoint: Endpoint): Map<string, unknown> {
     )
 }
 
-// posthog-cli writes the lowercase type it infers from a default. PostHog only accepts its own type names.
+// posthog-cli writes the lowercase type it infers from a default. Flind only accepts its own type names.
 const API_VARIABLE_TYPES: Record<string, string> = {
     string: 'String',
     integer: 'Number',
@@ -184,7 +184,7 @@ function inferType(value: unknown): string {
 }
 
 // Query definitions come back with every optional field set to null. Dropping them keeps pulled
-// files short, and PostHog fills the same defaults back in on push.
+// files short, and Flind fills the same defaults back in on push.
 export function withoutNulls(value: unknown): unknown {
     if (Array.isArray(value)) {
         return value.map(withoutNulls)
@@ -247,7 +247,7 @@ export function requestBody(file: EndpointFile, resolved: ResolvedVariables): Re
             }
             if (variable.default !== undefined) {
                 entry.value = variable.default
-                // Without `isNull`, PostHog replaces a null value with the project's default.
+                // Without `isNull`, Flind replaces a null value with the project's default.
                 if (variable.default === null) {
                     entry.isNull = true
                 }
@@ -258,7 +258,7 @@ export function requestBody(file: EndpointFile, resolved: ResolvedVariables): Re
     if (Object.keys(variables).length > 0) {
         query.variables = variables
     }
-    // PostHog keeps the description when the field is missing, so a file without one sends it empty.
+    // Flind keeps the description when the field is missing, so a file without one sends it empty.
     const body: Record<string, unknown> = { name: file.name, description: file.description ?? '', query }
     // A file without materialization turns it off, or the endpoint would differ from the file forever.
     body.is_materialized = file.materialization?.enabled ?? false

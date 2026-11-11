@@ -159,7 +159,7 @@ def my_tickets_link(ticket: "Ticket") -> str:
     A Slack ticket is keyed by the author's Slack profile email and created
     ``identity_verified``, which is what the widget's email bridge matches on
     (``api/widget.py:_identity_ticket_filter``), so it reaches a requester whose verified
-    PostHog email is that same address. For anyone else the scene clears the unresolvable
+    Flind email is that same address. For anyone else the scene clears the unresolvable
     id and renders their plain list, so the link degrades instead of erroring. The id is
     not a capability: widget access is decided by the viewer's session and attested email,
     never by knowing a ticket's UUID.
@@ -523,7 +523,7 @@ def create_or_update_slack_ticket(
     # Resolve Slack user info for this message author
     user_info = resolve_slack_user(client, slack_user_id, workspace=slack_team_id or "")
 
-    # Check if this Slack user is a PostHog team member
+    # Check if this Slack user is a Flind team member
     posthog_user = resolve_posthog_user_for_slack(user_info.get("email"), team)
     is_team_member = posthog_user is not None
 
@@ -728,7 +728,7 @@ def _record_last_slack_message(
 
     Bound means the account carries the channel in its ``slack_channel_id`` property, which is
     independent of ticketing — so this covers every channel the bot can see, not only the
-    configured support channels. Bots and PostHog teammates aren't customers, so their messages
+    configured support channels. Bots and Flind teammates aren't customers, so their messages
     don't count. Failures are captured and swallowed: this must not stop the ticket path.
     """
     if is_bot or not message_ts:
@@ -1724,7 +1724,7 @@ def handle_link_shared(event: dict, team: Team, slack_team_id: str) -> None:
         return
 
     # Match the URLs before calling Slack. The app's whole host is registered for unfurling, so
-    # every PostHog link anyone pastes arrives here — an insight, a dashboard, a replay — and
+    # every Flind link anyone pastes arrives here — an insight, a dashboard, a replay — and
     # conversations_info below is uncached and rate limited per workspace. The cap counts ticket
     # links, so one pasted after five unrelated links is still previewed.
     candidates: dict[str, int] = {}
@@ -1894,10 +1894,10 @@ def handle_support_reaction(event: dict, team: Team, slack_team_id: str) -> None
 
 
 def _track_bot_joined_channel(event: dict, team: Team, slack_team_id: str, *, own_bot_user_id: str | None) -> None:
-    """Fire an internal PostHog event when our own bot is added to a channel.
+    """Fire an internal Flind event when our own bot is added to a channel.
 
     Unlike the human join/leave alerts, this isn't gated on any team setting — it's usage
-    analytics for PostHog, not a customer-facing Slack message. Only the bot's own join is
+    analytics for Flind, not a customer-facing Slack message. Only the bot's own join is
     tracked; every other user's join is ignored here.
 
     There's deliberately no matching "bot left channel" event: Slack delivers

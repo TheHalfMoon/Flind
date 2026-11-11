@@ -17,7 +17,7 @@ import { AccountRelationshipEditor } from './AccountRelationshipEditor'
 const PROVENANCE = {
     workflow: { icon: <IconBolt />, title: 'Updated by a workflow' },
     warehouse: { icon: <IconDatabase />, title: 'Synced from the data warehouse' },
-    canonical: { icon: <IconLogomark />, title: 'Managed by PostHog' },
+    canonical: { icon: <IconLogomark />, title: 'Managed by Flind' },
 } as const
 
 export interface AccountPropertyFieldProps {

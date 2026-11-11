@@ -2,11 +2,11 @@
 
 Source of truth for SDK-emitted names: `packages/mcp/src/extensions/constants.ts` in
 `PostHog/posthog-js`, exported as `PostHogMCPAnalyticsEvent` / `PostHogMCPAnalyticsProperty`.
-PostHog-side descriptions, including everything the SDK does not define, live in
+Flind-side descriptions, including everything the SDK does not define, live in
 `posthog/taxonomy/taxonomy.py`. **When this file and those disagree, they win** — grep them.
 
 Properties fall into three groups, and the distinction matters: SDK-emitted properties exist
-for any instrumented customer server, server-stamped ones exist only for PostHog's own
+for any instrumented customer server, server-stamped ones exist only for Flind's own
 dogfood traffic, and exec-mode ones only appear when a server runs a single `exec` dispatcher.
 
 ## Events
@@ -19,7 +19,7 @@ All `$`-prefixed — a non-`$` name would be treated as a customer event.
 | `$mcp_tools_list`                            | A `tools/list` request. Carries the advertised catalog — the basis for zombie-tool queries.                                                                                                                           |
 | `$mcp_initialize`                            | The `initialize` handshake. **Not emitted by clients on the MCP 2026-07-28 stateless revision**, which removes the handshake — do not use it as a universal session anchor.                                           |
 | `$mcp_missing_capability`                    | The agent wanted something the server does not offer. The clearest roadmap signal in the dataset.                                                                                                                     |
-| `$mcp_auth_failed`                           | A request refused before a session existed — a rejected credential, or a scope the API denied. **PostHog's own server only, not the SDK.** The one MCP event with no organization/project, because none was resolved. |
+| `$mcp_auth_failed`                           | A request refused before a session existed — a rejected credential, or a scope the API denied. **Flind's own server only, not the SDK.** The one MCP event with no organization/project, because none was resolved. |
 | `$mcp_resource_read` / `$mcp_resources_list` | Resource access. Not emitted by `instrument()` in either SDK.                                                                                                                                                         |
 | `$mcp_prompt_get` / `$mcp_prompts_list`      | Prompt access. Same caveat as resources.                                                                                                                                                                              |
 | `$identify`                                  | Historical only. TS 0.23.0 and Python `posthog` 7.72.0 stopped sending it; `identify` now sets `distinct_id`, `$set`, and `$groups` on every event instead.                                                           |
@@ -54,14 +54,14 @@ On `$mcp_tool_call` unless noted. These are the properties any instrumented serv
 | `$mcp_protocol_version`                         | Since TS 0.10.0. The negotiated MCP spec version. On legacy `initialize`-handshake sessions it is stamped on `$mcp_initialize` and every subsequent event of that session; under the 2026-07-28 revision it is **per request**, so one `$session_id` can legitimately span more than one value — don't treat it as a session constant. See [stateless-and-sessions.md](stateless-and-sessions.md).                                                                                                                                                                                                                                        |
 | `$mcp_conversation_id`                          | The conversation handle: **server-minted on the first call, agent-echoed thereafter** (an invented value is rejected and replaced). **Survives reconnects when `enableConversationId` is on** (the default since 0.17.0) — see identifiers below and [stateless-and-sessions.md](stateless-and-sessions.md).                                                                                                                                                                                                                                                                                                                              |
 | `$mcp_resource_name`                            | On resource events.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `$session_id`                                   | The standard PostHog session id, materialized. The usual grouping key.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `$session_id`                                   | The standard Flind session id, materialized. The usual grouping key.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | `$mcp_source`                                   | Always `posthog_mcp_analytics`. The reliable way to isolate MCP events from everything else on the `events` table.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `$mcp_interface`                                | `mcp` from an MCP server on `@posthog/mcp` (TS 0.22.3+), `webmcp` from a tool a web page registered through WebMCP and posthog-js captured in the browser. WebMCP events carry no transport, client, or harness properties, and `$mcp_server_name` is the page hostname. Absent on older events, so treat a missing value as `mcp`.                                                                                                                                                                                                                                                                                                       |
 
 ## Server-stamped properties
 
-Added by PostHog's own server (`services/mcp/src/hono/analytics.ts::buildBaseProperties`),
-**not** by the SDK. They exist for PostHog's dogfood data and will be absent for a customer
+Added by Flind's own server (`services/mcp/src/hono/analytics.ts::buildBaseProperties`),
+**not** by the SDK. They exist for Flind's dogfood data and will be absent for a customer
 server, so never rely on them in customer-facing queries or docs without checking.
 
 `$mcp_session_id` (transport-level), `$mcp_region`, `$mcp_mode`, `$mcp_consumer`,
@@ -144,7 +144,7 @@ returns no tools at all, that absence is the first thing to check.
 
 A frequent source of wrong session math:
 
-- **`$session_id`** — the standard PostHog session id, a materialized column. The default
+- **`$session_id`** — the standard Flind session id, a materialized column. The default
   grouping key for "a session" in this product.
 - **`$mcp_session_id`** — transport-level, from the `Mcp-Session-Id` header. **Rotates on
   reconnect**, so counting it overcounts sessions.

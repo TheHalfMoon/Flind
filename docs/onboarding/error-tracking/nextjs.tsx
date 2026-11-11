@@ -15,7 +15,7 @@ export const getNextJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
             <>
                 <Markdown>
                     {dedent`
-                        PostHog can automatically capture unhandled exceptions in your Next.js app using the JavaScript Web SDK. Turn it on with \`capture_exceptions: true\` in your \`posthog.init\` call:
+                        Flind can automatically capture unhandled exceptions in your Next.js app using the JavaScript Web SDK. Turn it on with \`capture_exceptions: true\` in your \`posthog.init\` call:
                     `}
                 </Markdown>
                 <CodeBlock
@@ -133,7 +133,7 @@ export const getNextJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
                         <Tab.Panel>
                             <Markdown>
                                 {dedent`
-                                    For Pages Router, you can use React's [Error Boundaries](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary) to catch JavaScript errors anywhere in the component tree. Create a custom error boundary component and report errors to PostHog in the \`componentDidCatch\` method:
+                                    For Pages Router, you can use React's [Error Boundaries](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary) to catch JavaScript errors anywhere in the component tree. Create a custom error boundary component and report errors to Flind in the \`componentDidCatch\` method:
                                 `}
                             </Markdown>
                             <CodeBlock
@@ -195,7 +195,7 @@ export const getNextJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
     }
 
     const installServerStep: StepDefinition = {
-        title: 'Installing PostHog SDK for server-side',
+        title: 'Installing Flind SDK for server-side',
         badge: 'required',
         content: (
             <>
@@ -216,7 +216,7 @@ export const getNextJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
                 />
                 <Markdown>
                     {dedent`
-                        Then create a \`lib/posthog-server.js\` file that initializes PostHog from \`posthog-node\`. With \`enableExceptionAutocapture\`, it captures uncaught exceptions and unhandled promise rejections. Turn it on for the Node.js runtime only: the edge runtime cannot register process listeners, so the client would fail to start there.
+                        Then create a \`lib/posthog-server.js\` file that initializes Flind from \`posthog-node\`. With \`enableExceptionAutocapture\`, it captures uncaught exceptions and unhandled promise rejections. Turn it on for the Node.js runtime only: the edge runtime cannot register process listeners, so the client would fail to start there.
 
                         This looks like this:
                     `}
@@ -227,12 +227,12 @@ export const getNextJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
                             language: 'javascript',
                             file: 'lib/posthog-server.js',
                             code: dedent`
-                                import { PostHog } from 'posthog-node'
+                                import { Flind } from 'posthog-node'
 
                                 let posthogServer = null
 
                                 export function getPostHogServer() {
-                                  posthogServer ??= new PostHog(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN, {
+                                  posthogServer ??= new Flind(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN, {
                                     host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
                                     flushAt: 1,
                                     flushInterval: 0,
@@ -277,9 +277,9 @@ export const getNextJSSteps = (ctx: OnboardingComponentsContext): StepDefinition
         content: (
             <Markdown>
                 {dedent`
-                    You should also see events and exceptions in PostHog coming from your server-side code in the activity feed.
+                    You should also see events and exceptions in Flind coming from your server-side code in the activity feed.
 
-                    [Check for server events in PostHog](https://app.posthog.com/activity/events)
+                    [Check for server events in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),

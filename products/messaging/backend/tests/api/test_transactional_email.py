@@ -1257,7 +1257,7 @@ class TestTransactionalEmail(APIBaseTest):
             "subject": "A new subject",
             "html": "<p>New</p>",
             # A templated address is only known at send time, so publish accepts it.
-            "from": {"integrationId": security.id, "name": "PostHog Security", "email": "{{ variables.alias }}"},
+            "from": {"integrationId": security.id, "name": "Flind Security", "email": "{{ variables.alias }}"},
             "replyTo": "security@example.com",
         }
         with self.captureOnCommitCallbacks(execute=True):
@@ -1277,7 +1277,7 @@ class TestTransactionalEmail(APIBaseTest):
         assert (email["subject"], email["html"]) == ("A new subject", "<p>New</p>")
         assert email["from"] == {
             "integrationId": security.id,
-            "name": "PostHog Security",
+            "name": "Flind Security",
             "email": "{{ variables.alias }}",
         }
         assert email["replyTo"] == "security@example.com"

@@ -52,7 +52,7 @@ class OpenAIAdsSource(ResumableSource[OpenAIAdsSourceConfig, OpenAIAdsResumeConf
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="OpenAI Ads",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your OpenAI Ads API key to pull your campaigns, ad groups, ads, and performance insights into the PostHog Data warehouse.
+            caption="""Enter your OpenAI Ads API key to pull your campaigns, ad groups, ads, and performance insights into the Flind Data warehouse.
 
 Create an API key in the Settings tab of [OpenAI Ads Manager](https://ads.openai.com). Each key is scoped to a single ad account — to import more than one ad account, connect one source per account.""",
             iconPath="/static/services/openai_ads.svg",

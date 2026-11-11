@@ -50,7 +50,7 @@ export interface ApiToolError {
         | 'tool_error'
     message: string
     status?: number
-    /** The scope PostHog named when it refused the request. */
+    /** The scope Flind named when it refused the request. */
     missingScope?: string
 }
 

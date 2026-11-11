@@ -1,4 +1,4 @@
-/** PostHog app origins that render the OAuth consent page and fetch MCP metadata in-browser. */
+/** Flind app origins that render the OAuth consent page and fetch MCP metadata in-browser. */
 export const OAUTH_CONSENT_PAGE_ORIGINS = [
     'https://us.posthog.com',
     'https://eu.posthog.com',

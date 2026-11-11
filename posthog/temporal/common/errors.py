@@ -11,7 +11,7 @@ class NonReportableError(Exception):
     """Marker for an expected, handled condition that must still fail the activity but should not
     be reported to error tracking. The activity interceptor re-raises these without capturing them,
     the same way it skips cancellations and egress backpressure. Subclass it for a failure that is
-    always caused by the customer's config or the upstream API (never a PostHog defect) and that
+    always caused by the customer's config or the upstream API (never a Flind defect) and that
     retrying can't resolve, so a tracked exception would only be noise."""
 
 

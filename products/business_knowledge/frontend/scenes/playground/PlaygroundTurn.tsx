@@ -50,7 +50,7 @@ export const PlaygroundTurn = memo(function PlaygroundTurn({ id, question, turn 
             {run?.docs_search_called ? (
                 <Thread.Failure
                     id={`${id}-docs-search`}
-                    content="This answer searched PostHog documentation, which this playground does not allow. Ask again."
+                    content="This answer searched Flind documentation, which this playground does not allow. Ask again."
                 />
             ) : null}
             {error ? <Thread.Failure id={`${id}-error`} content={error} /> : null}

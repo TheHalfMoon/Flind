@@ -290,7 +290,7 @@ class ShopifySource(ResumableSource[ShopifySourceConfig, ShopifyResumeConfig]):
             category=DataWarehouseSourceCategory.E_COMMERCE,
             iconPath="/static/services/shopify.png",
             caption=(
-                "Pull your Shopify store data into the PostHog Data warehouse. Pick how you want "
+                "Pull your Shopify store data into the Flind Data warehouse. Pick how you want "
                 "to connect. A Dev Dashboard app works when the app and the store belong to the "
                 "same Shopify organization. When they cannot, use an Admin API access token from "
                 "an app installed on the store. The docs walk through both options."

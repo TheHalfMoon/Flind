@@ -121,7 +121,7 @@ export interface HandleServerRequestOptions {
   ) => { server: string; tool: string; args: unknown } | undefined;
   /**
    * When an elicitation gates a known in-flight MCP call, accept it without
-   * prompting if this returns true (e.g. a PostHog exec sub-tool the session's
+   * prompting if this returns true (e.g. a Flind exec sub-tool the session's
    * permission policy does not gate). Elicitations with no resolvable call, or
    * from other servers, always prompt.
    */

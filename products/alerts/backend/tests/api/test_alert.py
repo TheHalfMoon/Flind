@@ -2149,7 +2149,7 @@ class TestAlertTestDelivery(TrendsInsightAPITest):
         mock_trigger.assert_called_once_with(
             mock.ANY,
             {
-                "breaches": "Test alert from PostHog. No action is needed.",
+                "breaches": "Test alert from Flind. No action is needed.",
                 "is_test": True,
                 "alert_name": "[TEST] Testable alert",
             },

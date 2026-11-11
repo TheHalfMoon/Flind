@@ -8,7 +8,7 @@ import { mswDecorator } from '~/mocks/browser'
 
 import type { RunFailureLogsApi, WorkflowJobApi, WorkflowRunDetailApi } from '../generated/api.schemas'
 
-const REPO = { provider: 'github', owner: 'PostHog', name: 'posthog' }
+const REPO = { provider: 'github', owner: 'Flind', name: 'posthog' }
 const RUN_ID = 880163
 const STARTED_AT = '2026-07-01T11:12:00Z'
 
@@ -86,7 +86,7 @@ const meta: Meta = {
         viewMode: 'story',
         mockDate: '2026-07-02',
         featureFlags: [FEATURE_FLAGS.ENGINEERING_ANALYTICS],
-        pageUrl: urls.engineeringAnalyticsWorkflowRun('PostHog', 'posthog', RUN_ID),
+        pageUrl: urls.engineeringAnalyticsWorkflowRun('Flind', 'posthog', RUN_ID),
     },
     decorators: [
         mswDecorator({
@@ -123,7 +123,7 @@ export const JobsAndLogsLoadErrors: Story = {
 export const DepotRun: Story = {
     render: () => <App />,
     parameters: {
-        pageUrl: urls.engineeringAnalyticsWorkflowRun('PostHog', 'posthog', RUN_ID, 'depot_ci'),
+        pageUrl: urls.engineeringAnalyticsWorkflowRun('Flind', 'posthog', RUN_ID, 'depot_ci'),
         testOptions: { waitForSelector: '#ea-section-jobs' },
     },
     decorators: [

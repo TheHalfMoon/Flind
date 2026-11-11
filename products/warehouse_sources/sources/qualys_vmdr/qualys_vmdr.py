@@ -53,7 +53,7 @@ RESPONSE_TOO_SLOW_ERROR = "Qualys API response download was too slow"
 MISSING_GATEWAY_ERROR = "Qualys API gateway URL is required to sync the KnowledgeBase API"
 
 # Qualys rejects any request without an X-Requested-With header.
-_BASE_HEADERS = {"X-Requested-With": "PostHog Data Warehouse"}
+_BASE_HEADERS = {"X-Requested-With": "Flind Data Warehouse"}
 
 
 class QualysVmdrRetryableError(Exception):

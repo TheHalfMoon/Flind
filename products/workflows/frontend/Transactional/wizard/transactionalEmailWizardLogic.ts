@@ -36,7 +36,7 @@ const EMPTY_DRAFT: TransactionalEmailDraft = {
     name: '',
     description: '',
     sensitive: false,
-    // The editor's starter design, with no subject, so nothing sends as "Hello from PostHog" by accident.
+    // The editor's starter design, with no subject, so nothing sends as "Hello from Flind" by accident.
     email: { ...NEW_TEMPLATE.content.email, subject: '' },
 }
 

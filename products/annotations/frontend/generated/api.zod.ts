@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -63,7 +63,7 @@ export const AnnotationsCreateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .nullish()
         .describe(
-            'When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown.'
+            'When true, the annotation is hidden from the Flind UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown.'
         ),
 })
 
@@ -121,7 +121,7 @@ export const AnnotationsUpdateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .nullish()
         .describe(
-            'When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown.'
+            'When true, the annotation is hidden from the Flind UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown.'
         ),
 })
 
@@ -179,6 +179,6 @@ export const AnnotationsPartialUpdateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .nullish()
         .describe(
-            'When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown.'
+            'When true, the annotation is hidden from the Flind UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown.'
         ),
 })

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface TeamLogsConfigApi {
@@ -17,7 +17,7 @@ export interface TeamLogsConfigApi {
      */
     logs_distinct_id_attribute_keys: string[]
     /**
-     * Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes.
+     * Ordered list of log attribute keys whose values hold the Flind session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes.
      * @maxItems 10
      * @items.maxLength 200
      */
@@ -40,7 +40,7 @@ export interface PatchedTeamLogsConfigApi {
      */
     logs_distinct_id_attribute_keys?: string[]
     /**
-     * Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes.
+     * Ordered list of log attribute keys whose values hold the Flind session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes.
      * @maxItems 10
      * @items.maxLength 200
      */
@@ -769,7 +769,7 @@ export interface LogsAlertDestinationConfigApi {
      * * `teams` - teams
      * * `pagerduty` - pagerduty */
     type: LogsAlertDestinationTypeEnumApi
-    /** Whether every HogFunction in the group is enabled, so the destination notifies for all alert event kinds. This is the stored setting: a destination PostHog stopped delivering to after repeated failures still reads as true. */
+    /** Whether every HogFunction in the group is enabled, so the destination notifies for all alert event kinds. This is the stored setting: a destination Flind stopped delivering to after repeated failures still reads as true. */
     enabled: boolean
     /** Whether any HogFunction in the group sends something other than the stock message, such as an edited body, headers, method or code. A customized destination sends exactly what its HogFunctions build. */
     message_customized: boolean

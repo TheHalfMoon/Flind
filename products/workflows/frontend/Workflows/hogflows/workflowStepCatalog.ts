@@ -167,19 +167,19 @@ const POSTHOG_NODES_TO_SHOW: CreateActionType[] = [
     {
         type: 'function',
         name: 'Capture event',
-        description: 'Capture an event to PostHog.',
+        description: 'Capture an event to Flind.',
         config: { template_id: 'template-posthog-capture', inputs: {} },
     },
     {
         type: 'function',
         name: 'Update person property',
-        description: 'Set properties of a person in PostHog.',
+        description: 'Set properties of a person in Flind.',
         config: { template_id: 'template-posthog-update-person-properties', inputs: {} },
     },
     {
         type: 'function',
         name: 'Set group property',
-        description: 'Set properties of a group in PostHog.',
+        description: 'Set properties of a group in Flind.',
         config: { template_id: 'template-posthog-group-identify', inputs: {} },
     },
 ]
@@ -262,7 +262,7 @@ export function workflowStepSections(context: StepCatalogContext): StepCatalogSe
         { key: 'ai', title: 'AI', steps: aiSteps(context) },
         { key: 'delays', title: 'Delays', steps: forTrigger(DELAY_NODES_TO_SHOW, context.isRowScopedTrigger) },
         { key: 'split', title: 'Audience split', steps: forTrigger(LOGIC_NODES_TO_SHOW, context.isRowScopedTrigger) },
-        { key: 'posthog', title: 'PostHog actions', steps: posthogSteps(context) },
+        { key: 'posthog', title: 'Flind actions', steps: posthogSteps(context) },
         ...getRegisteredActionNodeCategories(context.featureFlags).map((category) => ({
             key: category.label,
             title: category.label,

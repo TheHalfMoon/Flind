@@ -1,4 +1,4 @@
-"""Shared helpers for the PostHog AI sandbox-runtime services."""
+"""Shared helpers for the Flind AI sandbox-runtime services."""
 
 from posthog.models import Team, User
 

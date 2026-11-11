@@ -245,7 +245,7 @@ describe('ApiClient', () => {
         vi.unstubAllGlobals()
     })
 
-    it('forwards the current task id to the PostHog API', async () => {
+    it('forwards the current task id to the Flind API', async () => {
         const mockFetch = vi.fn().mockResolvedValue(new Response(JSON.stringify({}), { status: 200 }))
         vi.stubGlobal('fetch', mockFetch)
         const client = new ApiClient({

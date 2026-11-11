@@ -299,7 +299,7 @@ describe('bot-detection.template', () => {
         ['posthog-node', 'axios/1.4.0'],
         ['posthog-webhook', 'okhttp/4.10.0'],
         ['posthog-ios', 'CFNetwork/1410.0.3'],
-    ])('should skip PostHog-curated bot UA list when $lib=%s (non-browser SDK)', async (lib, ua) => {
+    ])('should skip Flind-curated bot UA list when $lib=%s (non-browser SDK)', async (lib, ua) => {
         mockGlobals = tester.createGlobals({
             event: {
                 properties: {
@@ -316,7 +316,7 @@ describe('bot-detection.template', () => {
         expect(response.execResult).toBeTruthy()
     })
 
-    it('should skip PostHog-curated bot IP list when $lib is a non-browser SDK', async () => {
+    it('should skip Flind-curated bot IP list when $lib is a non-browser SDK', async () => {
         mockGlobals = tester.createGlobals({
             event: {
                 properties: {

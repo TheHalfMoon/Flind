@@ -102,7 +102,7 @@ const AI_DISPLAY_OPTIONS: { option: AiSubscriptionDisplayOption; label: string; 
     },
     {
         option: 'posthog_actions',
-        label: 'PostHog links and suggestions',
+        label: 'Flind links and suggestions',
         description:
             'Include a link to manage the subscription. Slack reports also suggest asking @PostHog a follow-up question.',
     },

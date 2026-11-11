@@ -23,7 +23,7 @@ from temporalio import activity
 
 from posthog.utils import get_machine_id
 
-# Any single table whose in-memory Arrow payload crosses this is logged and captured as a PostHog
+# Any single table whose in-memory Arrow payload crosses this is logged and captured as a Flind
 # event with the pod/team/schema/source context needed to reproduce it. The metrics below capture the
 # full distribution; this surfaces the specific offenders to fix. Event volume is bounded because it
 # only fires on the outliers (a paginating source can call record_table_stats thousands of times per
@@ -116,7 +116,7 @@ def record_table_stats(
     Safe outside an activity (unit tests construct the pipeline/batcher directly): the Temporal meter
     is only touched inside an activity context; the outlier log + event still fire. Metric labels are
     kept to `source_type` + `stage` (bounded cardinality); `pod`/`team_id`/`schema_name` ride the
-    outlier log and the PostHog event only.
+    outlier log and the Flind event only.
     """
     resolved_source_type = source_type or "unknown"
     if activity.in_activity():

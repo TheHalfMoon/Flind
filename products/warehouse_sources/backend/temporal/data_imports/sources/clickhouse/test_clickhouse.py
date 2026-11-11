@@ -1396,7 +1396,7 @@ class TestClickHouseReconcileSchemaMetadata(BaseTest):
 
 
 class TestBypassEnvProxy:
-    """The proxy bypass for PostHog-internal direct connections.
+    """The proxy bypass for Flind-internal direct connections.
 
     `bypass_env_proxy=True` must hand clickhouse-connect a pool manager, which
     stops it consulting HTTP(S)_PROXY env vars; `False` must leave the default
@@ -1486,7 +1486,7 @@ def _connect_to(*, port: int, bypass_env_proxy: "ch_module.BypassEnvProxy") -> N
 class TestGetClientEgressProxyRouting:
     """Where the connection actually goes, which is what decides whether a tunnel works.
 
-    PostHog's runtime points HTTP_PROXY at the Smokescreen egress proxy, and Smokescreen blocks
+    Flind's runtime points HTTP_PROXY at the Smokescreen egress proxy, and Smokescreen blocks
     loopback. Routing a tunneled connection through it means the request never reaches the SSH
     tunnel's local forwarded port, so the tunnel opens no channel to the customer's ClickHouse
     and the source fails with a generic connection error. The stub servers answer with a
@@ -1549,7 +1549,7 @@ class TestDirectQueryClientBypassEnvProxy:
     """`direct_query_client` backs the HogQL direct-SQL adapter, and unlike every other
     `_get_client` call site on `ClickHouseSource` it once omitted `bypass_env_proxy` entirely —
     an allowlisted internal team's direct query silently routed through the egress proxy and
-    failed to reach the PostHog-internal host it was pointed at.
+    failed to reach the Flind-internal host it was pointed at.
 
     A tunneled connection must bypass for a different reason: the address is our own loopback
     bind, which the proxy blocks, so a customer team with a tunnel never reached its ClickHouse.

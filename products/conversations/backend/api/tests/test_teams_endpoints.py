@@ -177,7 +177,7 @@ class TestTeamsEventHandler(BaseTest):
     def test_generic_command_replies_with_help_card_without_oauth(self, mock_help: MagicMock, mock_process: MagicMock):
         """Cert 11.4.4.3: bot must respond to "Hi" / "Hello" / "Help" even
         before OAuth — AppSource validators run against an unconnected tenant."""
-        # A tenant we have no PostHog config for, which is the validator's tenant.
+        # A tenant we have no Flind config for, which is the validator's tenant.
         activity = _make_activity(text="Hi", tenant_id="unknown-tenant")
 
         response = self._post(activity, token=self._token(tid="unknown-tenant"))

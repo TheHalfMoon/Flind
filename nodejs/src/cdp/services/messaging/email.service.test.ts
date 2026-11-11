@@ -1776,7 +1776,7 @@ describe('EmailService', () => {
                 invocation.hogFunction.metadata = {
                     email_sending_paused_at: '2026-01-01T00:00:00Z',
                     email_sending_paused_reason:
-                        "PostHog staff paused this workflow's email to protect delivery for everyone.",
+                        "Flind staff paused this workflow's email to protect delivery for everyone.",
                     email_sending_paused_by: 'staff',
                 }
                 sendEmailSpy.mockResolvedValue({ MessageId: 'test-message-id' })
@@ -2542,7 +2542,7 @@ describe('EmailService', () => {
             ['a sensitive template', { sensitive: true }, undefined, undefined],
             ['a workflow step', {}, 'Test Subject', 3],
         ])(
-            'should capture a $workflows_email_sent PostHog event and version the email_sent metric on success, for %s',
+            'should capture a $workflows_email_sent Flind event and version the email_sent metric on success, for %s',
             async (_name, extraMetadata, subject, workflowVersion) => {
                 // Engagement capture is team-opt-in; enable it for this team so the captured event is emitted.
                 jest.spyOn(
@@ -2578,7 +2578,7 @@ describe('EmailService', () => {
             }
         )
 
-        it('does not capture a PostHog event when engagement capture is disabled for the team', async () => {
+        it('does not capture a Flind event when engagement capture is disabled for the team', async () => {
             // Default config has capture_workflows_engagement_events=false, so even on success no event is queued.
             sendEmailSpy.mockResolvedValue({ MessageId: 'test-message-id' })
             const result = await service.executeSendEmail(invocation)
@@ -2586,7 +2586,7 @@ describe('EmailService', () => {
             expect(result.capturedPostHogEvents).toHaveLength(0)
         })
 
-        it('should capture a $workflows_email_failed PostHog event on failure', async () => {
+        it('should capture a $workflows_email_failed Flind event on failure', async () => {
             jest.spyOn((service as any).teamWorkflowsConfigService, 'shouldCaptureEngagementEvents').mockResolvedValue(
                 true
             )

@@ -36,11 +36,11 @@ describe("clone_repo", () => {
     delete process.env.IS_SANDBOX;
     cwd = await mkdtemp(path.join(tmpdir(), "posthog-code-clone-tool-"));
     sourcePath = path.join(cwd, "source");
-    targetPath = path.join(cwd, "repos", "PostHog", "posthog");
+    targetPath = path.join(cwd, "repos", "Flind", "posthog");
     await mkdir(sourcePath, { recursive: true });
 
     await git(["init", "--initial-branch=master", "."], sourcePath);
-    await git(["config", "user.name", "PostHog Code test"], sourcePath);
+    await git(["config", "user.name", "Flind Code test"], sourcePath);
     await git(["config", "user.email", "test@posthog.com"], sourcePath);
     await git(["config", "commit.gpgsign", "false"], sourcePath);
     await git(["config", "tag.gpgsign", "false"], sourcePath);
@@ -190,7 +190,7 @@ describe("clone_repo", () => {
     const externalPath = path.join(cwd, "external");
     await mkdir(path.join(cwd, "repos"), { recursive: true });
     await mkdir(externalPath);
-    await symlink(externalPath, path.join(cwd, "repos", "PostHog"));
+    await symlink(externalPath, path.join(cwd, "repos", "Flind"));
 
     const result = await cloneRepoTool.handler(
       { cwd, token: "test-token" },
@@ -212,12 +212,12 @@ describe("clone_repo", () => {
     );
 
     expect(result.isError).toBe(true);
-    expect(existsSync(path.join(externalPath, "PostHog"))).toBe(false);
+    expect(existsSync(path.join(externalPath, "Flind"))).toBe(false);
   });
 
   it("rejects an existing target that escapes through a symlink", async () => {
     const externalPath = path.join(cwd, "external");
-    await mkdir(path.join(cwd, "repos", "PostHog"), { recursive: true });
+    await mkdir(path.join(cwd, "repos", "Flind"), { recursive: true });
     await mkdir(externalPath);
     await symlink(externalPath, targetPath);
 

@@ -1,7 +1,7 @@
 """LLM judge for auto-merging fingerprints whose nearest neighbour is too far for a distance-only merge.
 
 The rule: merge automatically when the embedding distance is below `auto_merge_threshold`; between
-that and `judge_max_distance`, ask the configured decision model on the PostHog AI gateway whether
+that and `judge_max_distance`, ask the configured decision model on the Flind AI gateway whether
 the two error documents are the same issue and merge when its probability reaches `judge_cutoff`.
 
 Every knob comes from the `error-tracking-auto-merge-config` feature flag payload, evaluated per

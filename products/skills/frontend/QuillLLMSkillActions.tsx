@@ -156,7 +156,7 @@ export function QuillLLMSkillActions({
                             }
                             data-attr="llma-skill-publish-community-button"
                         >
-                            Publish to PostHog community…
+                            Publish to Flind community…
                         </DropdownMenuItem>
                     )}
                     {isSkill(skill) && (

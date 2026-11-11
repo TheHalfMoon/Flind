@@ -1,10 +1,10 @@
 """
-Cross-region sync of PostHog's own (team 2) flag definitions into EU's
+Cross-region sync of Flind's own (team 2) flag definitions into EU's
 HyperCache.
 
 Every other team's `flag_definitions_hypercache` entry is rebuilt locally by
 Django signals reading straight from Postgres (see local_evaluation.py). Team 2
--- PostHog's internal "self" team, used for our own local evaluation
+-- Flind's internal "self" team, used for our own local evaluation
 -- lives only in the US Postgres, so EU has no rows to build it from. Rather
 than have every EU pod poll the US API directly (which HyperCache exists to
 avoid), a single periodic task fetches team 2's flag definitions from the US
@@ -35,7 +35,7 @@ _FLAGS_DEFINITIONS_PATH = "/flags/definitions"
 _REQUEST_TIMEOUT_SECONDS = (3, 10)  # (connect, read)
 
 # Throttle window for capturing a genuinely unexpected failure (bad JSON, an
-# unexpected request error) to PostHog error tracking, shared across the 30s schedule
+# unexpected request error) to Flind error tracking, shared across the 30s schedule
 # so a sustained outage reports once per window instead of once per tick. Expected
 # transient network blips (connection/timeout/proxy errors) are logged, not captured.
 _SYNC_FAILURE_CAPTURE_THROTTLE_KEY = "cross_region_flags_sync_capture_throttle"

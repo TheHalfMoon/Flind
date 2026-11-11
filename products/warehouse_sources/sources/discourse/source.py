@@ -85,7 +85,7 @@ class DiscourseSource(ResumableSource[DiscourseSourceConfig, DiscourseResumeConf
             label="Discourse",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["forum", "community"],
-            caption="""Connect your Discourse community forum to sync categories, topics, posts, tags, groups, group members, badges, and user activity into the PostHog Data warehouse.
+            caption="""Connect your Discourse community forum to sync categories, topics, posts, tags, groups, group members, badges, and user activity into the Flind Data warehouse.
 
 Generate an Admin API key under **Admin > API > Keys** on your Discourse instance (a key scoped to "Global" access, or scoped to read the tables below, both work). The API username must be an admin account, because the admin users and badges tables read admin-only endpoints. The instance URL is your forum's address, e.g. `https://yourforum.discourse.group`.
 

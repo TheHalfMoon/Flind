@@ -84,9 +84,9 @@ SANDBOX_OAUTH_APP_CLIENT_IDS = frozenset(
     }
 )
 
-# The dedicated "PostHog AI" OAuth app. Tokens minted against it are only ever created
-# server-side for PostHog AI sandbox agents, so a request bearing one is authoritatively
-# attributable to PostHog AI regardless of spoofable user-agent or client headers.
+# The dedicated "Flind AI" OAuth app. Tokens minted against it are only ever created
+# server-side for Flind AI sandbox agents, so a request bearing one is authoritatively
+# attributable to Flind AI regardless of spoofable user-agent or client headers.
 POSTHOG_AI_OAUTH_APP_CLIENT_IDS = frozenset(
     {
         POSTHOG_AI_APP_CLIENT_ID_US,
@@ -125,7 +125,7 @@ INTERNAL_SCOPES: list[str] = [
     # Provenance marker: proves a token was minted here (server-side), not obtained by a
     # user via the consent flow or a personal API key. `internal_run` is an internal scope,
     # so it's rejected by every user-facing scope validator and can't be forged. The LLM
-    # gateway requires it on the internal products that share the PostHog Desktop OAuth app
+    # gateway requires it on the internal products that share the Flind Desktop OAuth app
     # (background_agents, signals, slack_app, conversations) so a user's own OAuth token
     # can't route around the posthog_code free-tier model gate through those.
     "internal_run:read",
@@ -590,13 +590,13 @@ def get_posthog_ai_app() -> OAuthApplication:
         dev=POSTHOG_AI_APP_CLIENT_ID_DEV,
     )
 
-    return _get_oauth_app_for_client_id(client_id, "PostHog AI", region)
+    return _get_oauth_app_for_client_id(client_id, "Flind AI", region)
 
 
 def get_signals_app() -> OAuthApplication | None:
     """The Signals sandbox app for this region, or None when it isn't provisioned here.
 
-    Unlike the Array and PostHog AI resolvers this one never raises: the application rows are
+    Unlike the Array and Flind AI resolvers this one never raises: the application rows are
     created per region out of band, so callers fall back to the Array app until the row exists
     rather than failing every Signals run in a region that hasn't been provisioned yet.
     """
@@ -679,7 +679,7 @@ def create_oauth_access_token_for_user(
 
 def get_wizard_app() -> OAuthApplication:
     return _get_oauth_app_for_client_id(
-        settings.WIZARD_CLOUD_RUN_OAUTH_CLIENT_ID, "PostHog Wizard", get_instance_region()
+        settings.WIZARD_CLOUD_RUN_OAUTH_CLIENT_ID, "Flind Wizard", get_instance_region()
     )
 
 

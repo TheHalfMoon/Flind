@@ -11,7 +11,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function TraceSpanListApp(): JSX.Element {
     return (
-        <AppWrapper<TraceSpanListData> appName="PostHog Trace Span List">
+        <AppWrapper<TraceSpanListData> appName="Flind Trace Span List">
             {({ data, app }) => <TraceSpanListContent data={data!} app={app} />}
         </AppWrapper>
     )

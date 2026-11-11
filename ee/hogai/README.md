@@ -1,12 +1,12 @@
-# PostHog AI
+# Flind AI
 
-This directory contains the PostHog AI platform and its core features.
+This directory contains the Flind AI platform and its core features.
 
-[Getting started with PostHog AI.](https://posthog.slack.com/docs/TSS5W8YQZ/F08UU1LJFUP)
+[Getting started with Flind AI.](https://posthog.slack.com/docs/TSS5W8YQZ/F08UU1LJFUP)
 
 ## For product teams: MaxTool
 
-Add new PostHog AI capabilities using the MaxTool API. You can allow our AI agent to do anything in your product: both perform backend actions and control the UI. A tool can itself involve an LLM call based on a prompt tailored to the tool's task, using arguments provided to the tool by the root node + context passed from the frontend.
+Add new Flind AI capabilities using the MaxTool API. You can allow our AI agent to do anything in your product: both perform backend actions and control the UI. A tool can itself involve an LLM call based on a prompt tailored to the tool's task, using arguments provided to the tool by the root node + context passed from the frontend.
 
 To implement a MaxTool you first define it in the backend, then you mount it in the frontend. The backend definition contains the tool's metadata for the LLM (what is it, how to use it, when to use it, what arguments it takes) and its actual implementation. The frontend React mount point makes the tool available - i.e. the tool can only be called when the UI being automated is present.
 
@@ -115,7 +115,7 @@ For an example, see `frontend/src/scenes/session-recordings/filters/RecordingsUn
 
 Once you have an initial version of the tool in place, **test the heck out of it**. Try everything you'd want as a regular user, and tune all aspects of the tool as needed: tool name, tool description, prompt of the context messages (`context_prompt_template`), and context from the frontend.
 
-When developing, get full visibility into what the tool is doing using local PostHog AI observability: [http://localhost:8010/ai-observability/traces](http://localhost:8010/ai-observability/traces). Each _trace_ represents one human message submitted to Max, and shows the whole sequence of steps taken to answer that message.
+When developing, get full visibility into what the tool is doing using local Flind AI observability: [http://localhost:8010/ai-observability/traces](http://localhost:8010/ai-observability/traces). Each _trace_ represents one human message submitted to Max, and shows the whole sequence of steps taken to answer that message.
 
 If you've got any requests for Max, including around tools, let us know at #team-posthog-ai in Slack!
 
@@ -167,9 +167,9 @@ For a _lot_ of great detail on prompting, check out the [GPT-4.1 prompting guide
 
 ## Support new query types
 
-PostHog AI can now read from frontend context multiple query types like trends, funnels, retention, and HogQL queries. To add support for new query types, you need to extend both the QueryExecutor and the Root node.
+Flind AI can now read from frontend context multiple query types like trends, funnels, retention, and HogQL queries. To add support for new query types, you need to extend both the QueryExecutor and the Root node.
 
-NOTE: this won't extend query types generation. For that, talk to the PostHog AI team.
+NOTE: this won't extend query types generation. For that, talk to the Flind AI team.
 
 ### Adding a new query type
 

@@ -2,7 +2,7 @@ READ_DATA_BILLING_PROMPT = """
 # Billing information
 
 Use this tool with the "billing_info" kind to retrieve the billing information if the user asks about their billing, subscription, product usage, spending, or cost reduction strategies.
-You can use the information retrieved to check which PostHog products and add-ons the user has activated, how much they are spending, their usage history across all products in the last 30 days, as well as trials, spending limits, billing period, and more.
+You can use the information retrieved to check which Flind products and add-ons the user has activated, how much they are spending, their usage history across all products in the last 30 days, as well as trials, spending limits, billing period, and more.
 If the user wants to reduce their spending, always call this tool to get suggestions on how to do so.
 If an insight shows zero data, it could mean either the query is looking at the wrong data or there was a temporary data collection issue. You can investigate potential dips in usage/captured data using the billing tool.
 """.strip()
@@ -59,7 +59,7 @@ Retrieves a customer account by its UUID or external id, including its assigned 
 """.strip()
 
 READ_DATA_PROMPT = """
-Use this tool to read user data created in PostHog. This tool returns data that the user manually creates in PostHog.
+Use this tool to read user data created in Flind. This tool returns data that the user manually creates in Flind.
 
 This tool should be used for direct retrieval (by ID, name, etc.). Use the search tool instead for finding entities by name, description. If the search tool doesn't return matching entities, try pagination instead using the list_data tool.
 
@@ -68,7 +68,7 @@ This tool should be used for direct retrieval (by ID, name, etc.). Use the searc
 Read the SQL ClickHouse schema (tables, views, and columns) for the user's data.
 
 ## Available operations:
-- `data_warehouse_schema`: Returns core PostHog tables (events, groups, persons, sessions) with their full schemas, plus a list of available data warehouse tables and views (names, with a semantic description where one is available). Use this first to see what data is available.
+- `data_warehouse_schema`: Returns core Flind tables (events, groups, persons, sessions) with their full schemas, plus a list of available data warehouse tables and views (names, with a semantic description where one is available). Use this first to see what data is available.
 - `data_warehouse_table`: Returns the full schema for a specific data warehouse table or view, including per-column descriptions and the foreign-key graph where available. Use this after `data_warehouse_schema` to get details on specific tables you need.
 
 You MUST use this tool when:
@@ -158,7 +158,7 @@ The dashboard with the ID "{dashboard_id}" was not found. Please verify the dash
 """.strip()
 
 READ_DATA_WAREHOUSE_SCHEMA_PROMPT = """
-# Core PostHog tables
+# Core Flind tables
 {{{posthog_tables}}}
 {{#data_warehouse_tables}}
 
@@ -167,7 +167,7 @@ READ_DATA_WAREHOUSE_SCHEMA_PROMPT = """
 {{/data_warehouse_tables}}
 {{#system_tables}}
 
-# PostHog Postgres tables
+# Flind Postgres tables
 {{{system_tables}}}
 {{/system_tables}}
 {{#data_warehouse_views}}

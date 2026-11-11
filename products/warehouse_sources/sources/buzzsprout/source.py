@@ -51,7 +51,7 @@ class BuzzsproutSource(
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Buzzsprout",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Buzzsprout API token and podcast ID to sync your podcast data into the PostHog Data warehouse.
+            caption="""Enter your Buzzsprout API token and podcast ID to sync your podcast data into the Flind Data warehouse.
 
 You can find both your API token and podcast ID in your [Buzzsprout API settings](https://www.buzzsprout.com/my/profile/api).""",
             iconPath="/static/services/buzzsprout.png",

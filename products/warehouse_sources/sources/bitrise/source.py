@@ -43,7 +43,7 @@ class BitriseSource(ResumableSource[BitriseSourceConfig, BitriseResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Bitrise",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Bitrise API token to pull your CI build data into the PostHog Data warehouse.
+            caption="""Enter your Bitrise API token to pull your CI build data into the Flind Data warehouse.
 
 You can create a personal access token in your [Bitrise security settings](https://app.bitrise.io/me/account/security), or use a workspace API token from your workspace settings.
 """,

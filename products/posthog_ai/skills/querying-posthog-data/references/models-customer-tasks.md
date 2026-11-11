@@ -5,7 +5,7 @@ These are separate from AI coding tasks.
 
 Columns: `id` (UUID), `team_id`, `account_id` (nullable UUID), `name`, `description`, `status`,
 `assigned_to_id`, `due_at`, `completed_at`, `completed_by_id`, `created_by_id`, `archived_at`, `created_at`, `updated_at`.
-User IDs are PostHog project members. Status is `open`, `in_progress`, `completed`, or `canceled`.
+User IDs are Flind project members. Status is `open`, `in_progress`, `completed`, or `canceled`.
 
 ```sql
 SELECT id, name, assigned_to_id, due_at

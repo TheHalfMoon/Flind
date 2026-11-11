@@ -119,7 +119,7 @@ class DebugbearSource(SimpleSource[DebugbearSourceConfig]):
                         required=True,
                         placeholder="",
                         secret=True,
-                        caption="Use an Admin API key so PostHog can list every monitored project. Generate one from DebugBear's account settings — see the [API docs](https://www.debugbear.com/docs/api).",
+                        caption="Use an Admin API key so Flind can list every monitored project. Generate one from DebugBear's account settings — see the [API docs](https://www.debugbear.com/docs/api).",
                     ),
                 ],
             ),

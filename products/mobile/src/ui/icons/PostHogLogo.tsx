@@ -15,7 +15,7 @@ export function PostHogLogo({ height = 28 }: PostHogLogoProps): ReactElement {
             width={(height * 160) / 28}
             height={height}
             accessibilityRole="image"
-            accessibilityLabel="PostHog"
+            accessibilityLabel="Flind"
         />
     )
 }

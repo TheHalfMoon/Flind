@@ -11,7 +11,7 @@ import { ELEMENTS, OBJECTS, TEAMS_AND_COMPANIES, TECHNOLOGY } from './categories
 export type IconCollection = readonly Exclude<keyof typeof packageIcons, 'BaseIcon'>[]
 
 const meta: Meta = {
-    title: 'PostHog 3000/Icons',
+    title: 'Flind 3000/Icons',
     tags: ['test-skip'],
     parameters: {
         previewTabs: {

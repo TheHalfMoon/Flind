@@ -42,7 +42,7 @@ class TestGitHubRepositoryFullCache(BaseTest):
         return Integration.objects.create(
             team=self.team,
             kind="github",
-            config={"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            config={"installation_id": "INSTALL", "account": {"name": "Flind"}},
             sensitive_config={"access_token": "ACCESS_TOKEN"},
         )
 
@@ -53,7 +53,7 @@ class TestGitHubRepositoryFullCache(BaseTest):
         return {
             "/repos/posthog/posthog": {
                 "default_branch": "main",
-                "description": "PostHog open-source",
+                "description": "Flind open-source",
                 "topics": ["analytics", "observability"],
                 "archived": False,
                 "fork": False,
@@ -95,7 +95,7 @@ class TestGitHubRepositoryFullCache(BaseTest):
 
         assert entry.full_name == "posthog/posthog"
         assert entry.team_id == self.team.id
-        assert entry.description == "PostHog open-source"
+        assert entry.description == "Flind open-source"
         assert entry.topics == ["analytics", "observability"]
         assert entry.archived is False
         assert entry.fork is False
@@ -177,7 +177,7 @@ class TestGitHubRepositoryFullCache(BaseTest):
         with self._patch_gh_api_get(responses):
             entry = async_to_sync(self._cache_for(integration).sync_full_cache_entry_async)("posthog/posthog")
 
-        assert entry.description == "PostHog open-source"  # metadata updated
+        assert entry.description == "Flind open-source"  # metadata updated
         assert entry.primary_language == "Python"
         assert entry.readme == "cached"  # readme unchanged
         assert entry.tree_paths == "old/path"
@@ -342,7 +342,7 @@ class TestGitHubRepositoryFullCache(BaseTest):
         responses = {
             "/repos/posthog/posthog": {
                 "default_branch": "release/1.0",
-                "description": "PostHog open-source",
+                "description": "Flind open-source",
                 "topics": [],
                 "archived": False,
                 "fork": False,
@@ -589,7 +589,7 @@ class TestGitHubRepositoryFullCache(BaseTest):
         assert IntegrationRepositoryCacheEntry.objects.filter(pk=keep.pk).exists()
 
     def test_sync_full_cache_evicts_cross_source_rows_for_team(self):
-        # Team upgrade scenario: PostHog Desktop (UserIntegration) hydrated rows for this team, then
+        # Team upgrade scenario: Flind Desktop (UserIntegration) hydrated rows for this team, then
         # the team connected a team-level Integration. Cascade now picks the Integration; the old
         # UserIntegration row would otherwise linger and surface as a duplicate to HogQL queries.
         user = User.objects.create(email="user@example.com")
@@ -676,7 +676,7 @@ class TestSyncFullCacheLock(BaseTest):
         return Integration.objects.create(
             team=self.team,
             kind="github",
-            config={"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            config={"installation_id": "INSTALL", "account": {"name": "Flind"}},
             sensitive_config={"access_token": "ACCESS_TOKEN"},
         )
 

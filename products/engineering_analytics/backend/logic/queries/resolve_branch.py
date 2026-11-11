@@ -1,7 +1,7 @@
 """HogQL resolution of a git branch to the pull request(s) it belongs to.
 
 Powers the cross-product branch → PR link: another product (the LLM analytics UI)
-turns a git branch into a PR detail link without re-deriving PostHog's PR↔CI attribution.
+turns a git branch into a PR detail link without re-deriving Flind's PR↔CI attribution.
 
 Matched directly against the PR snapshot's source branch (``head_branch`` = ``head.ref`` on
 the curated PR source), open PRs first then most recently updated. A branch is reused across

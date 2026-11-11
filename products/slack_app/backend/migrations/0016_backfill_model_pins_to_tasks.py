@@ -41,7 +41,7 @@ def backfill_model_pins(apps, schema_editor):
         )
 
     def resolve_user(workspace_id, slack_user_id, org_ids):
-        """The PostHog user behind a Slack identity, scoped like the inbound event
+        """The Flind user behind a Slack identity, scoped like the inbound event
         resolver: the newest account link whose user belongs to a connected
         organization, else a profile-cache email match against those members."""
         links = list(

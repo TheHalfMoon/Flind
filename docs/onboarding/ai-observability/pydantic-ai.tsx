@@ -18,7 +18,7 @@ export const getPydanticAISteps = (ctx: OnboardingComponentsContext): StepDefini
                         <Markdown>
                             See the complete [Python
                             example](https://github.com/PostHog/posthog-python/tree/master/examples/example-ai-pydantic-ai)
-                            on GitHub. If you use the PostHog SDK wrapper instead of OpenTelemetry, see the [Python
+                            on GitHub. If you use the Flind SDK wrapper instead of OpenTelemetry, see the [Python
                             wrapper
                             example](https://github.com/PostHog/posthog-python/tree/7223c52/examples/example-ai-pydantic-ai).
                         </Markdown>
@@ -41,8 +41,8 @@ export const getPydanticAISteps = (ctx: OnboardingComponentsContext): StepDefini
             content: (
                 <>
                     <Markdown>
-                        Configure OpenTelemetry to export traces to PostHog and enable Pydantic AI's built-in OTel
-                        instrumentation. PostHog converts `gen_ai.*` spans into `$ai_generation` events automatically.
+                        Configure OpenTelemetry to export traces to Flind and enable Pydantic AI's built-in OTel
+                        instrumentation. Flind converts `gen_ai.*` spans into `$ai_generation` events automatically.
                     </Markdown>
 
                     <CodeBlock
@@ -57,7 +57,7 @@ export const getPydanticAISteps = (ctx: OnboardingComponentsContext): StepDefini
 
                             resource = Resource(attributes={
                                 SERVICE_NAME: "my-app",
-                                "posthog.distinct_id": "user_123", # optional: identifies the user in PostHog
+                                "posthog.distinct_id": "user_123", # optional: identifies the user in Flind
                                 "foo": "bar", # custom properties are passed through
                             })
 
@@ -83,7 +83,7 @@ export const getPydanticAISteps = (ctx: OnboardingComponentsContext): StepDefini
             content: (
                 <>
                     <Markdown>
-                        Create a Pydantic AI agent and run it. PostHog automatically captures an `$ai_generation` event
+                        Create a Pydantic AI agent and run it. Flind automatically captures an `$ai_generation` event
                         for each LLM call via the OTel instrumentation.
                     </Markdown>
 
@@ -104,7 +104,7 @@ export const getPydanticAISteps = (ctx: OnboardingComponentsContext): StepDefini
                     <Blockquote>
                         <Markdown>
                             **Note:** To capture LLM events anonymously, omit the `posthog.distinct_id` resource
-                            attribute and don't set a distinct ID in the PostHog context. See our docs on [anonymous vs
+                            attribute and don't set a distinct ID in the Flind context. See our docs on [anonymous vs
                             identified events](https://posthog.com/docs/data/anonymous-vs-identified-events) to learn
                             more.
                         </Markdown>

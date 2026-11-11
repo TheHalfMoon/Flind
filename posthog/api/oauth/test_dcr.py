@@ -317,7 +317,7 @@ class TestDynamicClientRegistration(APIBaseTest):
         response = self.client.post(
             "/oauth/register/",
             {
-                "client_name": "PostHog Client",
+                "client_name": "Flind Client",
                 "redirect_uris": ["https://example.com/callback"],
             },
             format="json",

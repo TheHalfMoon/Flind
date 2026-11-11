@@ -11,7 +11,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "id": "Unique click identifier.",
             "clickTime": "Time of the click.",
             "threatID": "Threat identifier.",
-            "query_end_time": "End of the query interval that returned this event, added by PostHog.",
+            "query_end_time": "End of the query interval that returned this event, added by Flind.",
         },
     },
     "clicks_permitted": {
@@ -21,7 +21,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "id": "Unique click identifier.",
             "clickTime": "Time of the click.",
             "threatTime": "Time when Proofpoint identified the threat.",
-            "query_end_time": "End of the query interval that returned this event, added by PostHog.",
+            "query_end_time": "End of the query interval that returned this event, added by Flind.",
         },
     },
     "messages_blocked": {
@@ -31,7 +31,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "GUID": "Unique message identifier in Proofpoint Protection Server.",
             "messageTime": "Time of delivery or quarantine.",
             "threatsInfoMap": "Threat details for this message.",
-            "query_end_time": "End of the query interval that returned this event, added by PostHog.",
+            "query_end_time": "End of the query interval that returned this event, added by Flind.",
         },
     },
     "messages_delivered": {
@@ -41,7 +41,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "GUID": "Unique message identifier in Proofpoint Protection Server.",
             "messageTime": "Time of delivery or quarantine.",
             "threatsInfoMap": "Threat details for this message.",
-            "query_end_time": "End of the query interval that returned this event, added by PostHog.",
+            "query_end_time": "End of the query interval that returned this event, added by Flind.",
         },
     },
     "threats": {
@@ -57,7 +57,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "severity": "Threat severity score from 0 to 1000.",
             "attackSpread": "Number of other customers that received this threat.",
             "families": "Threat families of the threat.",
-            "query_end_time": "End of the SIEM query interval that first returned this threat in a sync, added by PostHog.",
+            "query_end_time": "End of the SIEM query interval that first returned this threat in a sync, added by Flind.",
         },
     },
     "campaigns": {
@@ -73,14 +73,14 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "actors": "Threat actors associated with the campaign.",
             "malware": "Malware families associated with the campaign.",
             "techniques": "Attack techniques associated with the campaign.",
-            "query_end_time": "End of the campaign ID query interval that returned this campaign, added by PostHog.",
+            "query_end_time": "End of the campaign ID query interval that returned this campaign, added by Flind.",
         },
     },
     "very_attacked_people": {
         "description": "Very Attacked People in your organization over the last 90 days, ranked by attack index.",
         "docs_url": f"{DOCS_ROOT}/People_API",
         "columns": {
-            "guid": "Unique identifier of the user, added by PostHog from the identity.",
+            "guid": "Unique identifier of the user, added by Flind from the identity.",
             "identity": "User identity: emails, name, department, location, title and VIP status.",
             "threatStatistics": "Attack index of the user and the score of each threat family.",
             "interval": "Time interval of the data, in ISO 8601 format.",
@@ -90,7 +90,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Users who clicked the most malicious URLs over the last 90 days.",
         "docs_url": f"{DOCS_ROOT}/People_API",
         "columns": {
-            "guid": "Unique identifier of the user, added by PostHog from the identity.",
+            "guid": "Unique identifier of the user, added by Flind from the identity.",
             "identity": "User identity: emails, name, department, location, title and VIP status.",
             "clickStatistics": "Click count of the user and the clicks for each threat family.",
             "interval": "Time interval of the data, in ISO 8601 format.",

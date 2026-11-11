@@ -1,6 +1,6 @@
 ---
 name: exploring-replay-vision-observations
-description: "Guides agents through pulling a Replay Vision scanner's observations, reading the findings, and acting on them — summarizing patterns across sessions, drilling into individual recordings, and turning real, corroborated issues into PostHog tasks, insights, or an investigating-replay hand-off.\nTRIGGER when: user wants to pull/read/triage Replay Vision observations, asks \"what has my scanner found\", wants to act on or summarize scanner findings, turn observations into tasks/work, or points at a /replay-vision/<scanner-id> URL.\nDO NOT TRIGGER when: creating or sizing a scanner (use creating-replay-vision-scanners), running a one-off scan you don't then analyse, or authoring a signals scout."
+description: "Guides agents through pulling a Replay Vision scanner's observations, reading the findings, and acting on them — summarizing patterns across sessions, drilling into individual recordings, and turning real, corroborated issues into Flind tasks, insights, or an investigating-replay hand-off.\nTRIGGER when: user wants to pull/read/triage Replay Vision observations, asks \"what has my scanner found\", wants to act on or summarize scanner findings, turn observations into tasks/work, or points at a /replay-vision/<scanner-id> URL.\nDO NOT TRIGGER when: creating or sizing a scanner (use creating-replay-vision-scanners), running a one-off scan you don't then analyse, or authoring a signals scout."
 ---
 
 # Exploring Replay Vision observations
@@ -139,7 +139,7 @@ Match the action to the user's intent, and **corroborate before you create work*
   evidence, and add an `annotation` if it marks a regression. To act on the affected people rather than the
   sessions, `vision-scanners-affected-cohort-create` snapshots them into a static cohort (dated, not
   live-updating) you can use for funnels, retention, surveys, or experiment exclusion. To route a finding into
-  tracked work, `vision-observations-create-task` opens a PostHog task from one observation (idempotent per
+  tracked work, `vision-observations-create-task` opens a Flind task from one observation (idempotent per
   observation; it does not start a coding agent). Group by distinct issue, not per observation: pick the
   clearest observation for each issue.
 - **Track the scanner on a dashboard.** If the scanner from Step 1 has `dashboard_suggested: true`, offer once to

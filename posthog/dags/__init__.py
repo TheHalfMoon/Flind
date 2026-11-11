@@ -3,7 +3,7 @@ import os
 import django
 from django.apps import apps
 
-# setup PostHog Django Project
+# setup Flind Django Project
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "posthog.settings")
 
 # Skip the self-capture API token initialization for Dagster

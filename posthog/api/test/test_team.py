@@ -2500,7 +2500,7 @@ def team_api_test_factory():
             assert prefixed.json()["conversations_settings"]["ai_reply_custom_instructions"] == "Always greet first."
 
             # A later PATCH that omits docs_source has to normalize against the saved source, or
-            # the PostHog overlay the editor displayed gets stored as custom text and stacks twice.
+            # the Flind overlay the editor displayed gets stored as custom text and stacks twice.
             assert (
                 self.client.patch(
                     "/api/environments/@current/",

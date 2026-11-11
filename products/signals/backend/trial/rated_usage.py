@@ -102,7 +102,7 @@ def _snapshot_funded_delivery(
                 grant.save(update_fields=["billing_pool_allocated_cents"])
             extra_cents = covered_cents - nominal_cents
             if extra_cents:
-                # Accepted spillover, rounding and transferred grants remain PostHog-funded.
+                # Accepted spillover, rounding and transferred grants remain Flind-funded.
                 allocations.append(
                     {
                         "grant_id": f"signals-trial-extra-{grant.id}-{delivery.id}",

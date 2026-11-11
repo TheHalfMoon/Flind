@@ -148,7 +148,7 @@ class AwsSesSource(ResumableSource[AwsSesSourceConfig, AwsSesResumeConfig]):
             name=ExternalDataSourceType.AWSSES,
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Amazon SES",
-            caption="""Sync your Amazon SES account data into the PostHog Data warehouse.
+            caption="""Sync your Amazon SES account data into the Flind Data warehouse.
 
 Create an IAM user or role with the `ses:GetAccount`, `ses:ListConfigurationSets`, `ses:GetConfigurationSet`, `ses:ListEmailIdentities`, `ses:GetEmailIdentity`, `ses:ListSuppressedDestinations`, `ses:ListEmailTemplates`, `ses:GetEmailTemplate`, `ses:ListContactLists`, `ses:GetContactList`, `ses:ListDedicatedIpPools`, `ses:GetDedicatedIpPool`, `ses:GetDedicatedIps`, `ses:ListCustomVerificationEmailTemplates`, `ses:GetCustomVerificationEmailTemplate` and `ses:ListMultiRegionEndpoints` permissions, then paste its access key ID and secret access key. Add a session token too if you are using temporary credentials.
 

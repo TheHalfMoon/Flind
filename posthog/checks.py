@@ -1,4 +1,4 @@
-"""Core Django system checks, and the ID scheme every PostHog system check follows.
+"""Core Django system checks, and the ID scheme every Flind system check follows.
 
 A system check catches a deployment misconfiguration when the process starts (`migrate`, `check`,
 `runserver`) instead of in user traffic. Each check ID has the form `posthog.<area>.<level><nnn>`:

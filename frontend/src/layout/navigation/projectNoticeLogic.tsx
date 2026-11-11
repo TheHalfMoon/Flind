@@ -510,7 +510,7 @@ export const projectNoticeLogic = kea<projectNoticeLogicType>([
                     return 'billing_alert'
                 } else if (currentTeam?.is_demo && !preflight?.demo) {
                     // If the project is a demo one, show a project-level warning
-                    // Don't show this project-level warning in the PostHog demo environemnt though,
+                    // Don't show this project-level warning in the Flind demo environemnt though,
                     // as then Announcement is shown instance-wide
                     return 'demo_project'
                 } else if (!user?.is_email_verified && !user?.has_social_auth && preflight?.email_service_available) {
@@ -563,7 +563,7 @@ export const projectNoticeLogic = kea<projectNoticeLogicType>([
                 hasMemberNotice: boolean,
                 hidePostHogNotices: boolean
             ): ProjectNoticeVariant | null => {
-                // The member notice comes last. Members can't dismiss it, and the flag only hides PostHog's notices.
+                // The member notice comes last. Members can't dismiss it, and the flag only hides Flind's notices.
                 if (postHogNoticeVariant && !hidePostHogNotices) {
                     return postHogNoticeVariant
                 }

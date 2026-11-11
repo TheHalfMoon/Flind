@@ -13,8 +13,8 @@ from products.warehouse_sources.sources.sdk import CanonicalDescriptions
 _API_REFERENCE = "https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/api-reference/v2.0"
 
 _COMPANY_COLUMNS = {
-    "company_id": "ID of the Business Central company this row was synced from (added by PostHog).",
-    "company_name": "Name of the Business Central company this row was synced from (added by PostHog).",
+    "company_id": "ID of the Business Central company this row was synced from (added by Flind).",
+    "company_name": "Name of the Business Central company this row was synced from (added by Flind).",
 }
 
 _DOCUMENT_LINE_COLUMNS = {

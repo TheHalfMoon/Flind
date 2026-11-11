@@ -124,7 +124,7 @@ async def eval_instrument_flags(ctx: EvalContext) -> None:
             name="explicit_flag_request",
             prompt=(
                 "In this repo, the pricing page marks one of the plans with a "
-                "'Most Popular' badge. Put that badge behind a PostHog feature "
+                "'Most Popular' badge. Put that badge behind a Flind feature "
                 "flag so we can roll it out gradually."
             ),
             setup=require_instrument_skill,

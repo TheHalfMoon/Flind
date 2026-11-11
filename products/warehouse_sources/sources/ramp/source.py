@@ -76,7 +76,7 @@ class RampSource(ResumableSource[RampSourceConfig, RampResumeConfig]):
             name=ExternalDataSourceType.RAMP,
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="Ramp",
-            caption="""Connect your Ramp account to pull your spend data into the PostHog Data warehouse.
+            caption="""Connect your Ramp account to pull your spend data into the Flind Data warehouse.
 
 A Ramp admin can create a developer app under Settings > Developer API. Grant it the `transactions:read`, `reimbursements:read`, `users:read`, `cards:read`, and `departments:read` scopes (scopes are fixed at app creation) and enable client credentials, then enter the app's client ID and secret here.
 

@@ -7,7 +7,7 @@ BASE_URL = "https://wikimedia.org/api/rest_v1/metrics"
 
 # Wikimedia policy requires a descriptive User-Agent; clients without one are throttled to a
 # fraction of the normal per-minute request budget.
-USER_AGENT = "PostHog Data Warehouse (https://posthog.com; support@posthog.com)"
+USER_AGENT = "Flind Data Warehouse (https://posthog.com; support@posthog.com)"
 
 # Pageview data begins 2015-07-01; earlier windows always 404.
 DATA_START_DATE = date(2015, 7, 1)

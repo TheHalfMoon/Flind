@@ -78,7 +78,7 @@ export function FullReviewSettingsSection(): JSX.Element {
                     <>
                         <LemonSwitch
                             aria-label="Commit fixes to my pull requests"
-                            tooltip="Requires a PostHog account linked to the PR author. Fixes are paused while your PR is in the merge queue or another PR is stacked on it. Applies even when someone else starts the review."
+                            tooltip="Requires a Flind account linked to the PR author. Fixes are paused while your PR is in the merge queue or another PR is stacked on it. Applies even when someone else starts the review."
                             checked={settings?.resolve_comments ?? false}
                             onChange={(checked) => updateSettings({ resolve_comments: checked })}
                             disabledReason={mineDisabledReason}
@@ -90,7 +90,7 @@ export function FullReviewSettingsSection(): JSX.Element {
             />
             <SettingRow
                 title="Findings to post on GitHub"
-                description="Lower-priority findings stay in the PostHog report."
+                description="Lower-priority findings stay in the Flind report."
                 project={
                     <LemonSelect<UrgencyThresholdEnumApi>
                         size="small"

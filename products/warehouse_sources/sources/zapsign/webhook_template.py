@@ -98,7 +98,7 @@ produceToWarehouseWebhooks(request.body, schemaId)""",
             "hidden": False,
             "description": (
                 "The exact value ZapSign will send in the Authorization header on each delivery "
-                "(e.g. `Bearer my-secret`). PostHog rejects deliveries whose header does not match."
+                "(e.g. `Bearer my-secret`). Flind rejects deliveries whose header does not match."
             ),
         },
         {

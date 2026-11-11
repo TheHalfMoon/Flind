@@ -69,7 +69,7 @@ describe("Flind Desktop legal consent containment", () => {
       screen.getByText("Flind beta terms unavailable"),
     ).toBeInTheDocument();
     for (const forbidden of [
-      "PostHog",
+      "Flind",
       "Baseten",
       "Modal",
       "HIPAA",

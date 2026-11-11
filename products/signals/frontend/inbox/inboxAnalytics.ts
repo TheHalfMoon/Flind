@@ -24,7 +24,7 @@ import { reportPullRequests } from './utils/reportPullRequests'
 /**
  * Inbox telemetry. Mirrors the desktop "Code" app's inbox analytics (event names + property
  * shapes from `packages/shared/src/analytics-events.ts`) so the two clients are comparable in
- * one PostHog project. Every event carries `inbox_client` so funnels and breakdowns can split
+ * one Flind project. Every event carries `inbox_client` so funnels and breakdowns can split
  * cloud from desktop — cloud sends `'cloud'`, the desktop app sends `'desktop'`.
  */
 export const INBOX_CLIENT = 'cloud' as const
@@ -200,7 +200,7 @@ export type InboxReportActionType =
 /**
  * Where the text of an "Ask AI" question came from. `suggested` is a scout-authored question sent as
  * written, `edited_suggestion` one the reader changed first, `typed` one written from scratch, and
- * `preset` a fixed question that a button sends, such as Today's Investigate with PostHog.
+ * `preset` a fixed question that a button sends, such as Today's Investigate with Flind.
  */
 export type InboxQuestionSource = 'suggested' | 'edited_suggestion' | 'typed' | 'preset'
 
@@ -429,7 +429,7 @@ export function captureInboxWelcomeManualSetupClicked(): void {
 }
 
 /**
- * The self-driving intro modal rendered (opened from the Code badge next to PostHog AI). The
+ * The self-driving intro modal rendered (opened from the Code badge next to Flind AI). The
  * click-through to the inbox is recoverable as this event followed by an inbox view in the same
  * session, so the modal only needs its own top-of-funnel marker.
  */

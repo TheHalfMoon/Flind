@@ -31,7 +31,7 @@ export function NewTemplateAgent(): JSX.Element {
     return (
         <AiFirstCreateScene
             handoff={NEW_TEMPLATE_HANDOFF}
-            banner="We're trialling designing email templates with PostHog AI. Describe the email you want and it drafts the template for you to refine."
+            banner="We're trialling designing email templates with Flind AI. Describe the email you want and it drafts the template for you to refine."
             escapeHatchLabel="Use the editor instead"
             onEscapeHatch={openEditorFromAiComposer}
             suggestions={NEW_TEMPLATE_SUGGESTIONS}

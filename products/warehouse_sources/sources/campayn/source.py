@@ -52,7 +52,7 @@ class CampaynSource(SimpleSource[CampaynSourceConfig]):
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Campayn",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Campayn subdomain and API key to pull your Campayn email-marketing data into the PostHog Data warehouse.
+            caption="""Enter your Campayn subdomain and API key to pull your Campayn email-marketing data into the Flind Data warehouse.
 
 Your subdomain is the first part of your account host — for `acme.campayn.com`, enter `acme`. You can find and regenerate your API key in your Campayn account settings.""",
             iconPath="/static/services/campayn.png",

@@ -223,7 +223,7 @@ def _fetch(url: str, accept: str) -> _FetchedBody | None:
     try:
         response = fetch_public_url(
             strip_userinfo(url),
-            headers={"Accept": accept, "User-Agent": "PostHog content research"},
+            headers={"Accept": accept, "User-Agent": "Flind content research"},
             max_bytes=MAX_DOCUMENT_BYTES,
             deadline=time.monotonic() + FETCH_SECONDS,
             connect_timeout_seconds=3.0,

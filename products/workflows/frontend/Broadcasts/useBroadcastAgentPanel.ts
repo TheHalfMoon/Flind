@@ -55,7 +55,7 @@ const BROADCAST_CONTEXT_ITEM: AttachedContextItem = {
 }
 
 /**
- * Attaches the saved broadcast to PostHog AI on every wizard step, so a run that lands on review still
+ * Attaches the saved broadcast to Flind AI on every wizard step, so a run that lands on review still
  * knows the email it is refining. The panel only opens itself on the content step.
  */
 export function useBroadcastAgentPanel(): void {

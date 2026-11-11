@@ -208,7 +208,7 @@ def compile_clickhouse_glob(pattern: str) -> ClickHouseGlob:
                 raise _invalid(pattern, "has a '{' with no closing '}'")
             body = pattern[index + 1 : end]
             if not body or any(nested in GLOB_CHARACTERS or nested in _AMBIGUOUS_CHARACTERS for nested in body):
-                raise _invalid(pattern, "has a '{...}' group PostHog can't read")
+                raise _invalid(pattern, "has a '{...}' group Flind can't read")
             numeric = _NUMERIC_RANGE.fullmatch(body)
             if numeric is not None:
                 start, stop = numeric.group(1), numeric.group(2)
@@ -224,7 +224,7 @@ def compile_clickhouse_glob(pattern: str) -> ClickHouseGlob:
             index = end + 1
             continue
         elif character in _AMBIGUOUS_CHARACTERS:
-            raise _invalid(pattern, f"has a '{character}' that PostHog can't read as a file pattern")
+            raise _invalid(pattern, f"has a '{character}' that Flind can't read as a file pattern")
         else:
             tokens.append(_Literal(character=character))
         index += 1

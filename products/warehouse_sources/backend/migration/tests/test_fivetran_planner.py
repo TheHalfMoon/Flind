@@ -269,7 +269,7 @@ class TestTables(SimpleTestCase):
                 # Listed, so the user can choose it over the other table.
                 ("contacts",),
                 ("deals",),
-                "same PostHog table",
+                "same Flind table",
             ),
             (
                 "nothing_moves",
@@ -555,7 +555,7 @@ class TestDestination(SimpleTestCase):
                 ),
                 None,
             ),
-            ("unsupported", "oracle_warehouse", {}, None, "PostHog warehouse"),
+            ("unsupported", "oracle_warehouse", {}, None, "Flind warehouse"),
             ("not_uploaded", None, {}, None, "did not get this connection's Fivetran destination"),
         ]
     )

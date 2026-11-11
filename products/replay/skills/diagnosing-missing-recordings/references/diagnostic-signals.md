@@ -1,6 +1,6 @@
 # Session replay diagnostic signals
 
-These properties are emitted by the PostHog SDK on every event when session replay is configured.
+These properties are emitted by the Flind SDK on every event when session replay is configured.
 They describe the recording state at the time the event was captured.
 
 **Important:**
@@ -15,7 +15,7 @@ New diagnostic properties may be added as the SDK evolves.
 
 | Property                          | Type    | Description                                                   |
 | --------------------------------- | ------- | ------------------------------------------------------------- |
-| `$has_recording`                  | boolean | Whether PostHog has a stored recording linked to this session |
+| `$has_recording`                  | boolean | Whether Flind has a stored recording linked to this session |
 | `$recording_status`               | string  | Current SDK recording state                                   |
 | `$session_recording_start_reason` | string  | Why recording started (or didn't)                             |
 
@@ -62,7 +62,7 @@ These indicate whether configured recording triggers have fired.
 | ------------------------------------------ | ------ | --------------------------------------- |
 | `$sdk_debug_replay_internal_buffer_length` | number | Number of events in the internal buffer |
 | `$sdk_debug_replay_internal_buffer_size`   | number | Size of the internal buffer in bytes    |
-| `$sdk_debug_replay_flushed_size`           | number | Total bytes flushed to PostHog so far   |
+| `$sdk_debug_replay_flushed_size`           | number | Total bytes flushed to Flind so far   |
 
 ## Script loading
 
@@ -76,7 +76,7 @@ These indicate whether configured recording triggers have fired.
 | -------------------------------------------------- | ------ | ----------------------------------------------------------- |
 | `$replay_sample_rate`                              | number | The sample rate configured at the time (0.0 to 1.0)         |
 | `$replay_minimum_duration`                         | number | Minimum session duration (ms) before recording is persisted |
-| `$session_recording_remote_config`                 | object | Remote configuration received from PostHog                  |
+| `$session_recording_remote_config`                 | object | Remote configuration received from Flind                  |
 | `$sdk_debug_replay_remote_trigger_matching_config` | object | Trigger matching configuration from remote config           |
 
 ## SDK metadata

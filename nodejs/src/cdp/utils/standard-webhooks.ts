@@ -85,7 +85,7 @@ export function signStandardWebhooksRequest({
     key,
     now,
 }: SignStandardWebhooksRequestArgs): Record<string, string> {
-    // Defaults to `Date.now()` so jest's `Date.now` mock (the standard PostHog
+    // Defaults to `Date.now()` so jest's `Date.now` mock (the standard Flind
     // test seam) flows through to the signature timestamp.
     const timestamp = String(Math.floor((now?.getTime() ?? Date.now()) / 1000))
     const signature = createHmac('sha256', key)

@@ -632,7 +632,7 @@ class _LlmDraft(BaseModel):
 
 
 _SYSTEM_PROMPT = """
-You turn a PostHog user's goal into a draft Replay Vision scanner. A scanner watches individual session
+You turn a Flind user's goal into a draft Replay Vision scanner. A scanner watches individual session
 recordings of the user's product and produces one observation per recording. There are five scanner types:
 
 - monitor: answers a yes/no question about the session (e.g. "Did the user fail to complete checkout?").

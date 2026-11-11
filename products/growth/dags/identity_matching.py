@@ -17,7 +17,7 @@ run (`<prefix>/team_<team_id>/<job_id>/<dataset>/`), and reads it back with the 
 function. Retention is the bucket lifecycle policy's job — there is no MergeTree TTL. It never
 writes to the person store: merges are irreversible, links stay reversible and analytics-only.
 
-Environment restrictions: the job processes internal PostHog data that only exists on
+Environment restrictions: the job processes internal Flind data that only exists on
 Cloud US (team 2). It is not registered on Cloud EU, and on Cloud US it only accepts the
 allowed internal teams; local, dev, and self-hosted environments are unrestricted.
 
@@ -125,7 +125,7 @@ DEFAULT_RULE_WEIGHTS: dict[str, float] = {
     "paid_continuity": 0.75,
 }
 
-# Internal-only data-safety guardrails: the training data lives in the PostHog Cloud US
+# Internal-only data-safety guardrails: the training data lives in the Flind Cloud US
 # internal project (team 2). The job is not registered on Cloud EU at all, and on Cloud US
 # it refuses to process any other team. Local, dev, and self-hosted are unrestricted.
 PROD_US_ALLOWED_TEAM_IDS: frozenset[int] = frozenset({2})
@@ -139,10 +139,10 @@ def is_identity_matching_registered() -> bool:
 
 def validate_team_allowed(team_id: int) -> None:
     if settings.CLOUD_DEPLOYMENT == "EU":
-        raise dagster.Failure("Identity matching does not run on PostHog Cloud EU")
+        raise dagster.Failure("Identity matching does not run on Flind Cloud EU")
     if settings.CLOUD_DEPLOYMENT == "US" and team_id not in PROD_US_ALLOWED_TEAM_IDS:
         raise dagster.Failure(
-            f"On PostHog Cloud US identity matching may only process teams "
+            f"On Flind Cloud US identity matching may only process teams "
             f"{sorted(PROD_US_ALLOWED_TEAM_IDS)}, got team {team_id}"
         )
 

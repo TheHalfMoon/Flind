@@ -66,7 +66,7 @@ class TestMailjetWarehouseWebhookTemplate(BaseHogFunctionTemplateSimpleTest):
 
     @parameterized.expand([(event,) for event in MAILJET_WEBHOOK_EVENTS])
     def test_every_registered_event_type_routes_to_the_message_event_table(self, event_type):
-        # Every event type PostHog subscribes to in settings.py must have a route in the template,
+        # Every event type Flind subscribes to in settings.py must have a route in the template,
         # or those deliveries would be acknowledged and silently dropped.
         globals = self._request(self._event(event_type))
 
@@ -105,7 +105,7 @@ class TestMailjetWarehouseWebhookTemplate(BaseHogFunctionTemplateSimpleTest):
         self.mock_produce_to_warehouse_webhooks.assert_not_called()
 
     def test_grouped_delivery_is_acknowledged_and_dropped(self):
-        # Mailjet's Version 2 callbacks post a JSON array. PostHog registers Version 1, but a
+        # Mailjet's Version 2 callbacks post a JSON array. Flind registers Version 1, but a
         # hand-configured grouped callback must not be mistaken for a single event.
         globals = self._request(self._event())
         globals["request"]["body"] = [self._event(), self._event("click")]
@@ -116,7 +116,7 @@ class TestMailjetWarehouseWebhookTemplate(BaseHogFunctionTemplateSimpleTest):
         self.mock_produce_to_warehouse_webhooks.assert_not_called()
 
     def test_missing_authorization_header_value_drops_delivery(self):
-        # PostHog registers the callback before the header value is stored, so a delivery can
+        # Flind registers the callback before the header value is stored, so a delivery can
         # arrive with nothing to check it against. A 4xx would only start Mailjet's retry loop.
         globals = self._request(self._event())
 

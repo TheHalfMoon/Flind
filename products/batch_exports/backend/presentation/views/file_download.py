@@ -99,7 +99,7 @@ class FileDownloadSessionsRequestSerializer(serializers.Serializer):
 HOGQL_QUERY_HELP_TEXT = (
     "HogQL SELECT query whose results are exported. This model is in closed beta and is enabled "
     "per team; when it is not enabled, the request fails with a permission error that names HogQL "
-    "batch exports. Contact PostHog support to request access. The query may reference the "
+    "batch exports. Contact Flind support to request access. The query may reference the "
     "{data_interval_start} and {data_interval_end} placeholders. Provide a value for each "
     "placeholder the query references; missing referenced bounds are rejected, not inferred. "
     "When both bounds are supplied, they must span at most seven days. Neither supplied bound may be in the future. "

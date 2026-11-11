@@ -103,8 +103,8 @@ def _post_commit_status(
     detection on PR branches, so they must not be able to satisfy the gating
     status context that branch protection evaluates. Branch protection keys off
     the (context, state) pair, not the human-facing description, so a partial
-    run is posted to a separate "PostHog Visual Review / {run_type} (partial)"
-    context rather than the gating "PostHog Visual Review / {run_type}" one.
+    run is posted to a separate "Flind Visual Review / {run_type} (partial)"
+    context rather than the gating "Flind Visual Review / {run_type}" one.
     A subset run therefore can never turn the gated context green; a reviewer
     must require the partial context explicitly to gate on partial runs. The
     description is also annotated so the disclosure is visible to humans.
@@ -112,7 +112,7 @@ def _post_commit_status(
     if not repo.repo_full_name:
         return
 
-    context = f"PostHog Visual Review / {run.run_type}"
+    context = f"Flind Visual Review / {run.run_type}"
     # Tracking-only (observe) and partial runs must never satisfy the gating context that
     # branch protection evaluates. Both purpose and is_partial are client-supplied, so an
     # observe run posted to the gating context could green a PR head SHA's required check

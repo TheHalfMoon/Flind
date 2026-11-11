@@ -127,7 +127,7 @@ async def external_aws_role_arn(
 ) -> collections.abc.AsyncIterator[str]:
     """Role used to assume a destination AWS role.
 
-    This simulates the role shown to PostHog users so that they can grant it
+    This simulates the role shown to Flind users so that they can grant it
     permission to assume one of their roles.
     """
     current_role_trust_policy = {

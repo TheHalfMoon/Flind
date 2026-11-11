@@ -191,7 +191,7 @@ class MCPRegistryServerViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
     @action(detail=False, methods=["GET"], pagination_class=None)
     def measured_projects(self, request: Request, **kwargs) -> Response:
         if not self._caller_is_staff():
-            raise PermissionDenied("Reporting across projects is limited to PostHog staff.")
+            raise PermissionDenied("Reporting across projects is limited to Flind staff.")
         rows = registry_api.measured_projects()
         return Response(MCPMeasuredProjectSerializer(rows, many=True).data)
 

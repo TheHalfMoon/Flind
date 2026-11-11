@@ -174,7 +174,7 @@ class TestPublicLeakedKeyReport(APIBaseTest):
             # Recognized prefix, but no such key exists — exercises the one lookup
             # that runs and misses.
             ("known_prefix_but_key_does_not_exist", "phx_this_is_not_a_real_key"),
-            # No PostHog key prefix at all — exercises _detect_canonical_type
+            # No Flind key prefix at all — exercises _detect_canonical_type
             # returning None and skipping every lookup entirely.
             ("no_recognized_prefix_at_all", "not-a-posthog-key-at-all"),
             # Matches the legacy unprefixed personal-key shape (43 URL-safe chars), so the
@@ -357,7 +357,7 @@ class TestPublicLeakedKeyReport(APIBaseTest):
     def test_analytics_capture_includes_token_hash_only_when_found(
         self, mock_capture: MagicMock, mock_send_personal_api_key_exposed: MagicMock
     ) -> None:
-        # A real PostHog key is high-entropy, so hashing it is safe to persist. An
+        # A real Flind key is high-entropy, so hashing it is safe to persist. An
         # unrecognized string might be a low-entropy third-party secret pasted by
         # mistake (a password, a short token) - an unsalted SHA-256 of that is
         # dictionary/rainbow-table reversible, so it must not be persisted.

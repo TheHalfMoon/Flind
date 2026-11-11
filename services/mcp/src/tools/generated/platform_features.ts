@@ -642,7 +642,7 @@ const OrgMemberGetGithubLoginSchema = () => {
     const MembersGithubLoginRetrieveParams = orvalSchemas.MembersGithubLoginRetrieveParams()
     return MembersGithubLoginRetrieveParams.omit({ organization_id: true }).extend({
         user__uuid: MembersGithubLoginRetrieveParams.shape['user__uuid'].describe(
-            'The PostHog user UUID of the organization member, as returned by org-members-list. Pass "@me" for the current user.'
+            'The Flind user UUID of the organization member, as returned by org-members-list. Pass "@me" for the current user.'
         ),
     })
 }
@@ -751,7 +751,7 @@ const organizationEnforce2faPrepare = (): ToolBase<
             purpose: 'organization-enforce-2fa',
             actionLabel: 'change 2FA enforcement',
             messageTemplate:
-                "About to set organization-wide two-factor-authentication enforcement to {enforce_2fa}. This immediately affects every member of the organization — when enabled, all members must set up 2FA before they can continue using PostHog. Reply 'confirm' to proceed.\n",
+                "About to set organization-wide two-factor-authentication enforcement to {enforce_2fa}. This immediately affects every member of the organization — when enabled, all members must set up 2FA before they can continue using Flind. Reply 'confirm' to proceed.\n",
             codec: __runtime.codec,
             stash: __runtime.stash,
         })

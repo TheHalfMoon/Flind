@@ -22,7 +22,7 @@ POSTHOG_SESSION_RECORDING_ID_KEY = SearchAttributeKey.for_keyword("PostHogSessio
 # single scanner's in-flight applies and enforce a hard per-scanner concurrency cap.
 POSTHOG_SCANNER_ID_KEY = SearchAttributeKey.for_keyword("PostHogScannerId")
 
-# Registry of all custom search attributes PostHog registers in Temporal.
+# Registry of all custom search attributes Flind registers in Temporal.
 # This is the single source of truth — the register_temporal_search_attributes
 # management command reads from this list.
 POSTHOG_SEARCH_ATTRIBUTES: list[SearchAttributeKey] = [

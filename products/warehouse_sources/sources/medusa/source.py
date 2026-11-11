@@ -31,7 +31,7 @@ from products.warehouse_sources.sources.sdk import (
     detect,
 )
 
-CAPTION = """Sync orders, products, customers and more from your self-hosted Medusa server into the PostHog Data warehouse.
+CAPTION = """Sync orders, products, customers and more from your self-hosted Medusa server into the Flind Data warehouse.
 
 Requires Medusa v2. Create a secret API key in your Medusa Admin dashboard under **Settings > Secret API Keys**, then enter it here with your server's URL. Publishable API keys only work with the Store API and will not work here."""
 

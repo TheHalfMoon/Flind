@@ -50,7 +50,7 @@ def fetch_llms_txt(url: str) -> FetchedLlmsTxt:
                 current_url,
                 headers={
                     "Accept": "text/plain,text/markdown;q=0.9,*/*;q=0.1",
-                    "User-Agent": "PostHog llms.txt fetcher",
+                    "User-Agent": "Flind llms.txt fetcher",
                 },
                 max_bytes=LLMS_TXT_MAX_BYTES,
                 deadline=deadline,

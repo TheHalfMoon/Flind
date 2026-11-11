@@ -1,4 +1,4 @@
-"""Post PostHog comment content into a Slack thread.
+"""Post Flind comment content into a Slack thread.
 
 Token-agnostic: the caller supplies a ``slack_sdk.WebClient`` built from whichever workspace
 bot token applies (the generic Slack ``Integration``, the conversations SupportHog bot, ...).
@@ -22,14 +22,14 @@ def slack_author_from_user(user: object | None) -> tuple[str, str]:
     """Resolve a comment author to (display_name, email) for the Slack post.
 
     ``user`` is a ``User`` (typed loosely to avoid importing the model here). Falls back to a
-    neutral "PostHog" name with no email for system/AI-authored comments.
+    neutral "Flind" name with no email for system/AI-authored comments.
     """
     if user is not None:
         name = f"{getattr(user, 'first_name', '')} {getattr(user, 'last_name', '')}".strip() or getattr(
             user, "email", ""
         )
-        return name or "PostHog", getattr(user, "email", "") or ""
-    return "PostHog", ""
+        return name or "Flind", getattr(user, "email", "") or ""
+    return "Flind", ""
 
 
 def _mrkdwn_safe_url(url: str) -> str:
@@ -46,11 +46,11 @@ def _quote_mrkdwn(body: str) -> str:
 
 
 def _discussion_card_blocks(*, body_mrkdwn: str, author_name: str, item_url: str, item_label: str) -> list[dict]:
-    """A Block Kit card for the thread root: 'New comment on <link>' with the PostHog logo, the
-    quoted comment body, an 'Open in PostHog' button, and a reply-to-sync hint. Replies stay plain
+    """A Block Kit card for the thread root: 'New comment on <link>' with the Flind logo, the
+    quoted comment body, an 'Open in Flind' button, and a reply-to-sync hint. Replies stay plain
     text since they're threaded under it.
     """
-    heading = f"New comment on <{_mrkdwn_safe_url(item_url)}|{escape_slack_mrkdwn(item_label)}> in PostHog:\n\n"
+    heading = f"New comment on <{_mrkdwn_safe_url(item_url)}|{escape_slack_mrkdwn(item_label)}> in Flind:\n\n"
     quoted_body = _quote_mrkdwn(body_mrkdwn or "_(no text)_")
     # The heading and body share one section, so the body's budget is whatever the heading leaves
     # of Slack's per-section text limit. Truncated content is still reachable via the button.
@@ -68,9 +68,9 @@ def _discussion_card_blocks(*, body_mrkdwn: str, author_name: str, item_url: str
                 {
                     "type": "image",
                     "image_url": "https://us.posthog.com/static/icons/android-chrome-192x192.png",
-                    "alt_text": "PostHog",
+                    "alt_text": "Flind",
                 },
-                {"type": "mrkdwn", "text": "Replies to this thread will sync to PostHog"},
+                {"type": "mrkdwn", "text": "Replies to this thread will sync to Flind"},
             ],
         },
         {
@@ -78,7 +78,7 @@ def _discussion_card_blocks(*, body_mrkdwn: str, author_name: str, item_url: str
             "elements": [
                 {
                     "type": "button",
-                    "text": {"type": "plain_text", "text": "Open in PostHog", "emoji": True},
+                    "text": {"type": "plain_text", "text": "Open in Flind", "emoji": True},
                     "url": item_url,
                 }
             ],
@@ -123,7 +123,7 @@ def post_comment_to_slack_thread(
     message_kwargs: dict = {
         "channel": channel,
         "text": slack_text,
-        "username": author_name or "PostHog",
+        "username": author_name or "Flind",
     }
     if thread_ts:
         message_kwargs["thread_ts"] = thread_ts

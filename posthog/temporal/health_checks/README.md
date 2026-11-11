@@ -1,6 +1,6 @@
 # Health check framework (Temporal)
 
-A framework for running scheduled health checks across PostHog teams. Subclass `HealthCheck`, implement a `detect` method, and the framework handles team batching, parallel execution, issue persistence, auto-resolution, and rollout control — all orchestrated by Temporal.
+A framework for running scheduled health checks across Flind teams. Subclass `HealthCheck`, implement a `detect` method, and the framework handles team batching, parallel execution, issue persistence, auto-resolution, and rollout control — all orchestrated by Temporal.
 
 Issues are written to the `posthog_healthissue` table and automatically resolved when a team passes a subsequent check run.
 

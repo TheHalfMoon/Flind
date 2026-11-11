@@ -36,7 +36,7 @@ export interface ToolRow {
 }
 
 const SCOPES_HINT =
-    'If you logged in with `hog auth login`, run `hog auth add` with the scopes PostHog named. If you use a personal API key, add the scopes to it in PostHog under Settings, Personal API keys.'
+    'If you logged in with `hog auth login`, run `hog auth add` with the scopes Flind named. If you use a personal API key, add the scopes to it in Flind under Settings, Personal API keys.'
 
 // "Events & properties" becomes "events-properties".
 export function groupSlug(name: string): string {
@@ -172,7 +172,7 @@ export function toHogError(error: ApiToolError, tool?: string, credentials?: Cre
             return new HogError(
                 error.code,
                 error.message,
-                'An organization admin can allow AI data processing in PostHog under Organization settings.'
+                'An organization admin can allow AI data processing in Flind under Organization settings.'
             )
         case 'rate_limited':
             return new ApiError(429, undefined, error.code, error.message, 'Wait a minute, then run it again.')
@@ -200,7 +200,7 @@ export function unwrap<T>(result: ApiToolResult<T>, tool?: string): T {
 
 const SCOPE_LOOKUP_MS = 10_000
 
-// What the credentials can reach. PostHog's key lookup only answers for a personal API key, so a
+// What the credentials can reach. Flind's key lookup only answers for a personal API key, so a
 // credential that knows its own access answers first.
 export async function credentialAccess(
     ctx: Context,

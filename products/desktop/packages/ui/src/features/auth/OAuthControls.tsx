@@ -71,7 +71,7 @@ export function OAuthControls({
         }}
       >
         {isPending && <Spinner size="sm" />}
-        {isPending ? "Cancel" : "Sign in with PostHog"}
+        {isPending ? "Cancel" : "Sign in with Flind"}
       </button>
 
       <RegionSelect

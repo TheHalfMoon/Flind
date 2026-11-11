@@ -5,7 +5,7 @@ from typing import Literal
 
 from posthog.dataclasses import frozen
 
-# Mirrors the file formats and compression methods supported by the PostHog S3 batch export
+# Mirrors the file formats and compression methods supported by the Flind S3 batch export
 # feature (see products/batch_exports/.../destinations/constants.py). Kept as a local copy so the
 # bootstrapper has no import-time dependency on the Temporal batch-export package.
 SUPPORTED_FILE_FORMATS = ("Parquet", "JSONLines")

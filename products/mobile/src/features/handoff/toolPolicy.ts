@@ -71,7 +71,7 @@ export interface ResolvedToolCall {
     innerToolName?: string
 }
 
-// The PostHog MCP server exposes one `exec` tool, so the inner tool comes from `input.command`. An unparsable `call`
+// The Flind MCP server exposes one `exec` tool, so the inner tool comes from `input.command`. An unparsable `call`
 // resolves to the unknown sentinel so the gate fails closed instead of treating it as harmless.
 export function resolveToolCall(toolCall: PermissionToolCall): ResolvedToolCall {
     const agentToolName =
@@ -106,7 +106,7 @@ function isConnectedProjectSubTool(subTool: string): boolean {
     return CONNECTED_PROJECT_SUB_TOOLS.has(subTool.toLowerCase())
 }
 
-/** A PostHog call into a connected project, which the task did not authorize. */
+/** A Flind call into a connected project, which the task did not authorize. */
 export function isConnectedProjectTool(record: PermissionRecord): boolean {
     const { innerToolName } = resolveToolCall(record.rawToolCall)
     return innerToolName !== undefined && isConnectedProjectSubTool(innerToolName)

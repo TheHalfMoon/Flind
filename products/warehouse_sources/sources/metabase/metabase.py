@@ -36,7 +36,7 @@ HOST_NOT_ALLOWED_ERROR = "Metabase host is not allowed"
 # 3xx is an SSRF vector), so a redirecting URL can never be probed. The raw HOST_NOT_ALLOWED_ERROR
 # told the user nothing they could act on; this points them at the canonical instance URL.
 REDIRECT_NOT_FOLLOWED_ERROR = (
-    "Your Metabase instance redirected the connection, which PostHog doesn't follow. "
+    "Your Metabase instance redirected the connection, which Flind doesn't follow. "
     "Enter the direct https:// URL of your Metabase instance, then reconnect."
 )
 
@@ -202,7 +202,7 @@ def _connection_error_message(error: Exception) -> str:
         if "wrong_version_number" in text:
             return (
                 "Couldn't establish a secure (HTTPS) connection to your Metabase instance. "
-                "PostHog connects over HTTPS, so the instance must be served over HTTPS. Check the Instance URL."
+                "Flind connects over HTTPS, so the instance must be served over HTTPS. Check the Instance URL."
             )
         return (
             "Couldn't establish a secure (TLS) connection to your Metabase instance. "

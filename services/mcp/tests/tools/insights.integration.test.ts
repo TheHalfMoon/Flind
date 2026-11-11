@@ -214,7 +214,7 @@ describe('Insights', { concurrent: false }, () => {
             const insight = await createTestInsight(generateUniqueKey('Get By Short Id'))
 
             // Document current behavior: the generated schema types `id` as number only,
-            // but the PostHog API accepts both numeric id and short_id on the retrieve path.
+            // but the Flind API accepts both numeric id and short_id on the retrieve path.
             // If this test ever fails, we need to widen the schema to z.union([z.number(), z.string()]).
             const parsed = insightGetTool.schema.parse({ id: insight.short_id as unknown as number })
             const result = (await insightGetTool.handler(context, parsed)) as { id: number; short_id: string }

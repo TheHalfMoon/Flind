@@ -41,7 +41,7 @@ class TestServicesCatalog(SimpleTestCase):
         by_id = {s["id"]: s for s in services}
         assert set(by_id) == {FREE_PLAN_SERVICE_ID, PAY_AS_YOU_GO_SERVICE_ID, ANALYTICS_SERVICE_ID}
         # Excluded types and inclusion_only entries drop out; the rest are lowercased into the blurb.
-        assert by_id[ANALYTICS_SERVICE_ID]["description"] == "PostHog — product analytics, session replay, and more."
+        assert by_id[ANALYTICS_SERVICE_ID]["description"] == "Flind — product analytics, session replay, and more."
 
     def test_stale_cache_served_when_billing_fetch_fails(self):
         products = [{"name": "Product analytics", "type": "product_analytics"}]

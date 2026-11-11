@@ -20,7 +20,7 @@ TURN_SETTLE_SECONDS = 2
 # the conversation's latest turn when it runs. Past the wait, a report can be a later turn, so it
 # queues its own job.
 ENQUEUE_DEDUP_SECONDS = TURN_SETTLE_SECONDS
-# Every PostHog AI turn queues a job, so a stalled worker must not drain a backlog of late cards.
+# Every Flind AI turn queues a job, so a stalled worker must not drain a backlog of late cards.
 TURN_SUGGESTION_EXPIRES_SECONDS = TURN_SETTLE_SECONDS + 30
 
 
@@ -58,7 +58,7 @@ def _release_report(run_id: str, token: str) -> None:
 
 
 def enqueue_turn_suggestion(task_run: "TaskRun") -> bool:
-    """Queue the end-of-turn suggestion for a PostHog AI run. Never raises: the turn completion that
+    """Queue the end-of-turn suggestion for a Flind AI run. Never raises: the turn completion that
     calls this must not fail because a nudge could not be scheduled."""
     try:
         if task_run.origin_product != TaskOriginProduct.POSTHOG_AI:

@@ -416,7 +416,7 @@ class TestWarmBaselineForTeam(APIBaseTest):
 @patch("products.web_analytics.dags.eager_web_analytics_precompute.is_cloud", return_value=True)
 class TestEagerBaselineLogging(APIBaseTest):
     """The op mirrors lifecycle events to structlog so the run is queryable in
-    Loki / PostHog — `context.log` alone only reaches the Dagster UI."""
+    Loki / Flind — `context.log` alone only reaches the Dagster UI."""
 
     def _events(self, cap_logs: list[MutableMapping[str, Any]], name: str) -> list[MutableMapping[str, Any]]:
         return [log for log in cap_logs if log.get("event") == name]

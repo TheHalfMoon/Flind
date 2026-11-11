@@ -49,7 +49,7 @@ class MigrationRisk:
     name: str
     operations: list[OperationRisk]
     combination_risks: list[str] = field(default_factory=list)
-    policy_violations: list[str] = field(default_factory=list)  # PostHog-specific coding policies
+    policy_violations: list[str] = field(default_factory=list)  # Flind-specific coding policies
     info_messages: list[str] = field(default_factory=list)  # Informational messages (not warnings)
     # Repo-relative path of the migration file. Set by the command layer when
     # a Django Migration object is loaded from disk; downstream consumers

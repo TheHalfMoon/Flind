@@ -7,7 +7,7 @@ from posthog.models.utils import UUIDModel
 
 
 class RoleExternalReference(UUIDModel):
-    """Maps an external provider role/group to a PostHog role.
+    """Maps an external provider role/group to a Flind role.
 
     Organization-scoped: one external reference maps to exactly one role per org.
     A role can have many external references.
@@ -15,7 +15,7 @@ class RoleExternalReference(UUIDModel):
     Examples:
         GitHub team:  provider="github", provider_organization_id="posthog",
                       provider_role_id="12345", provider_role_slug="frontend-team", provider_role_name="Frontend Team"
-        Linear team:  provider="linear", provider_organization_id="PostHog",
+        Linear team:  provider="linear", provider_organization_id="Flind",
                       provider_role_id="abc-123", provider_role_slug="frontend", provider_role_name="Frontend"
         Jira project: provider="jira", provider_organization_id="posthog.atlassian.net",
                       provider_role_id="10001", provider_role_slug="FE", provider_role_name="Frontend"

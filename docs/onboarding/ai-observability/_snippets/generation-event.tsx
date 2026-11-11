@@ -529,9 +529,9 @@ export const GenerationEvent = (): JSX.Element => {
                                 <p>
                                     <em>(Optional)</em> Number of tokens written to cache
                                     <br />
-                                    For Anthropic events, PostHog uses the TTL-specific counts instead of this aggregate
+                                    For Anthropic events, Flind uses the TTL-specific counts instead of this aggregate
                                     when both are present. The aggregate should equal their sum. If either count is
-                                    missing, PostHog uses the aggregate.
+                                    missing, Flind uses the aggregate.
                                     <br />
                                     Built-in Gemini pricing uses normal input rates for cache writes and does not
                                     estimate cache storage fees. Custom pricing can override these rates.

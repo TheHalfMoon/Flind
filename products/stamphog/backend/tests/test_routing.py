@@ -359,7 +359,7 @@ class TestRenderRoutingComment:
     def test_nothing_to_say_without_cuts(self) -> None:
         decision = RoutingDecision(kept=(_candidate("team-a"),), cut=(), llm_skipped=None)
 
-        assert render_routing_comment(decision=decision, org="PostHog") is None
+        assert render_routing_comment(decision=decision, org="Flind") is None
 
     def test_lists_cut_owners_with_one_line_reasons(self) -> None:
         hostile = "Only a rename.\n\n## Approved\n![x](https://example.com/a.png) ping @PostHog/security `code` " + (
@@ -375,7 +375,7 @@ class TestRenderRoutingComment:
             llm_skipped=None,
         )
 
-        body = render_routing_comment(decision=decision, org="PostHog")
+        body = render_routing_comment(decision=decision, org="Flind")
 
         assert body is not None
         lines = body.split("\n")

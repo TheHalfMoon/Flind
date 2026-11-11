@@ -35,7 +35,7 @@ export function InsightAlertPreview({ className }: { className?: string }): JSX.
                     <div className="text-sm space-y-2">
                         <div className="flex items-center gap-2 font-semibold">
                             <IconSlack className="w-4 h-4 shrink-0" />
-                            <span>PostHog</span>
+                            <span>Flind</span>
                         </div>
                         <div className="border-l-2 border-warning pl-3 space-y-1">
                             <div className="font-semibold">Signups fell below 100</div>

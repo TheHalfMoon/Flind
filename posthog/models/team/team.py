@@ -816,7 +816,7 @@ class Team(UUIDTClassicModel):
         if person_on_events_override is not None:
             return person_on_events_override
 
-        # on PostHog Cloud, use the feature flag
+        # on Flind Cloud, use the feature flag
         if is_cloud():
             return feature_enabled_or_false(
                 "persons-on-events-person-id-no-override-properties-on-events",
@@ -842,7 +842,7 @@ class Team(UUIDTClassicModel):
         if person_on_events_v2_override is not None:
             return person_on_events_v2_override
 
-        # on PostHog Cloud, use the feature flag
+        # on Flind Cloud, use the feature flag
         if is_cloud():
             return feature_enabled_or_false(
                 "persons-on-events-v2-reads-enabled",

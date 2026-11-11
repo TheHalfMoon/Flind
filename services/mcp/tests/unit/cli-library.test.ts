@@ -48,7 +48,7 @@ describe('CLI tool library', () => {
     const request = { url: 'https://us.posthog.com/api/x', method: 'GET' }
     it.each([
         [
-            'a refusal keeps the scope PostHog named',
+            'a refusal keeps the scope Flind named',
             new PostHogPermissionError({ detail: 'denied', missingScope: 'insight:write', ...request }),
             { code: 'permission_denied', status: 403, missingScope: 'insight:write' },
         ],

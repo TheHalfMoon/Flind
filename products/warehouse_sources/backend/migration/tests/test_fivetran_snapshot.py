@@ -74,7 +74,7 @@ class TestFetchSnapshot(SimpleTestCase):
                         "database": "ANALYTICS",
                         "password": "******",
                         "private_key": UNMASKED_DESTINATION_KEY,
-                        # Not a key PostHog reads for Snowflake, so it is dropped whatever its name says.
+                        # Not a key Flind reads for Snowflake, so it is dropped whatever its name says.
                         "auth_secret_holder": UNMASKED_DESTINATION_KEY,
                         "snowflake_cloud": "AWS",
                     },
@@ -107,7 +107,7 @@ class TestFetchSnapshot(SimpleTestCase):
                         "tunnel_host": "bastion.example.com",
                         "tunnel_private_key": UNMASKED_TUNNEL_KEY,
                         "update_method": "XMIN",
-                        # Not a Postgres setting in PostHog, so the snapshot leaves it out.
+                        # Not a Postgres setting in Flind, so the snapshot leaves it out.
                         "connection_label": "app",
                     },
                 }
@@ -232,7 +232,7 @@ class TestMergeUpload(SimpleTestCase):
 class TestConnectionConfig(SimpleTestCase):
     @parameterized.expand(
         [
-            # ShipStation's `username` holds its API key; no PostHog field reads it, so it is never kept.
+            # ShipStation's `username` holds its API key; no Flind field reads it, so it is never kept.
             ("unread_key_of_a_matched_source", "shipstation", {"username": "fake", "update_method": "API"}),
             ("unmatched_service", "not_a_fivetran_service", {"host": "db.example.com", "update_method": "API"}),
         ]

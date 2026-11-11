@@ -187,7 +187,7 @@ class TestUserIntegrationEndpoints(APIBaseTest):
     @patch("posthog.models.github_integration_base.GitHubIntegrationBase.client_request")
     def test_list_heals_a_placeholder_account_name(self, mock_client_request):
         mock_client_request.return_value = MagicMock(
-            status_code=200, json=lambda: {"account": {"login": "PostHog", "type": "Organization"}}
+            status_code=200, json=lambda: {"account": {"login": "Flind", "type": "Organization"}}
         )
         integration = _create_user_integration(self.user)
         integration.config = {**integration.config, "account": {"type": None, "name": "12345"}}
@@ -195,7 +195,7 @@ class TestUserIntegrationEndpoints(APIBaseTest):
 
         response = self.client.get("/api/users/@me/integrations/")
 
-        self.assertEqual(response.json()["results"][0]["account"], {"type": "Organization", "name": "PostHog"})
+        self.assertEqual(response.json()["results"][0]["account"], {"type": "Organization", "name": "Flind"})
         mock_client_request.assert_called_once_with("installations/12345")
 
     @patch("posthog.models.github_integration_base.GitHubIntegrationBase.list_all_repositories")
@@ -246,7 +246,7 @@ class TestUserIntegrationEndpoints(APIBaseTest):
                 "expires_in": 3600,
                 "refreshed_at": int(time.time()),
                 "repository_selection": "all",
-                "account": {"type": "Organization", "name": "PostHog"},
+                "account": {"type": "Organization", "name": "Flind"},
                 "github_user": {"login": "octocat", "id": 99},
                 "user_token_refreshed_at": int(time.time()),
             },
@@ -264,7 +264,7 @@ class TestUserIntegrationEndpoints(APIBaseTest):
             team=self.team,
             kind="github",
             integration_id="12345",
-            config={"account": {"name": "PostHog"}},
+            config={"account": {"name": "Flind"}},
             sensitive_config={},
         )
         response = self.client.get("/api/users/@me/integrations/")
@@ -277,7 +277,7 @@ class TestUserIntegrationEndpoints(APIBaseTest):
             team=self.team,
             kind="github",
             integration_id="99999",
-            config={"account": {"name": "PostHog"}},
+            config={"account": {"name": "Flind"}},
             sensitive_config={},
         )
         response = self.client.get("/api/users/@me/integrations/")

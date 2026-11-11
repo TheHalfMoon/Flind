@@ -1,7 +1,7 @@
 """Facade for engineering_analytics.
 
 The ONLY module other products (and the DRF presentation layer) import for
-runtime PR/CI analytics. Public functions take a team plus PostHog-convention
+runtime PR/CI analytics. Public functions take a team plus Flind-convention
 parameters and return canonical contract types.
 
 ``repo`` is an optional ``owner/name`` filter, applied against the curated repo

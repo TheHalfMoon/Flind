@@ -179,7 +179,7 @@ class Migration(migrations.Migration):
                             ("ask", "Ask before picking it up"),
                             ("never", "Never pick it up"),
                         ],
-                        help_text="What PostHog does with untagged replies in threads this user started.",
+                        help_text="What Flind does with untagged replies in threads this user started.",
                         max_length=16,
                         null=True,
                     ),
@@ -202,7 +202,7 @@ class Migration(migrations.Migration):
                     "auto_model_choice",
                     models.BooleanField(
                         blank=True,
-                        help_text="Let PostHog pick the model for each new task this user starts from Slack.",
+                        help_text="Let Flind pick the model for each new task this user starts from Slack.",
                         null=True,
                     ),
                 ),
@@ -239,7 +239,7 @@ class Migration(migrations.Migration):
                     "approved_by",
                     models.ForeignKey(
                         blank=True,
-                        help_text="The PostHog user who clicked Approve. Carries the email and audit trail.",
+                        help_text="The Flind user who clicked Approve. Carries the email and audit trail.",
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
                         related_name="approved_slack_channels",

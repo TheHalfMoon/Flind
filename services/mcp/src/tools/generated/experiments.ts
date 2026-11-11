@@ -508,7 +508,7 @@ const ExperimentEndSchema = () => {
             .extend({
                 id: z.preprocess(castStringToInt, ExperimentsEndCreateParams.shape['id']),
                 open_cleanup_pr: ExperimentsEndCreateBody.shape['open_cleanup_pr'].describe(
-                    "When true, a background PostHog Code task removes the experiment's feature flag code and opens a draft pull request. Only works for teams with the flag cleanup feature enabled; silently skipped otherwise. Additionally requires the task:write scope. Ask the user before setting this."
+                    "When true, a background Flind Code task removes the experiment's feature flag code and opens a draft pull request. Only works for teams with the flag cleanup feature enabled; silently skipped otherwise. Additionally requires the task:write scope. Ask the user before setting this."
                 ),
                 repository: ExperimentsEndCreateBody.shape['repository'].describe(
                     "Repository the cleanup pull request targets, as \"organization/repository\". Must be connected to the team's GitHub integration. Omit to fall back to the experiment's saved repository, the team default, or the team's only connected repository. When several repositories are connected and no default is set, the cleanup is skipped unless this is provided."
@@ -1351,7 +1351,7 @@ const ExperimentShipVariantSchema = () => {
             .extend({
                 id: z.preprocess(castStringToInt, ExperimentsShipVariantCreateParams.shape['id']),
                 open_cleanup_pr: ExperimentsShipVariantCreateBody.shape['open_cleanup_pr'].describe(
-                    "When true, a background PostHog Code task removes the experiment's feature flag code, keeping the shipped variant's code path, and opens a draft pull request. Only works for teams with the flag cleanup feature enabled; silently skipped otherwise. Additionally requires the task:write scope. Ask the user before setting this."
+                    "When true, a background Flind Code task removes the experiment's feature flag code, keeping the shipped variant's code path, and opens a draft pull request. Only works for teams with the flag cleanup feature enabled; silently skipped otherwise. Additionally requires the task:write scope. Ask the user before setting this."
                 ),
                 repository: ExperimentsShipVariantCreateBody.shape['repository'].describe(
                     "Repository the cleanup pull request targets, as \"organization/repository\". Must be connected to the team's GitHub integration. Omit to fall back to the experiment's saved repository, the team default, or the team's only connected repository. When several repositories are connected and no default is set, the cleanup is skipped unless this is provided."

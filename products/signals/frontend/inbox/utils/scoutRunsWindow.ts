@@ -1,4 +1,4 @@
-// Ported from PostHog Desktop `packages/core/src/scouts/scoutRunsWindow.ts`
+// Ported from Flind Desktop `packages/core/src/scouts/scoutRunsWindow.ts`
 // and `scoutPresentation.ts`. Pure metrics + display helpers over scout runs and
 // configs; no I/O. Two different run sets feed them: the per-scout stats read
 // `scoutFleetLogic.loadScoutRuns` (each scout's last N runs, one request), while the
@@ -883,7 +883,7 @@ export function sortConfigsForDisplay(configs: SignalScoutConfig[]): SignalScout
 export function buildScoutCheckinPrompt(skillName: string, displayName: string): string {
     return `How is my ${displayName} scout performing?
 
-Use the exploring-scouts skill from the PostHog MCP to dig into the \`${skillName}\` scout on this project:
+Use the exploring-scouts skill from the Flind MCP to dig into the \`${skillName}\` scout on this project:
 
 - Its config: enabled, cadence, dry-run posture
 - Recent run history: successes, failures, timeouts, durations

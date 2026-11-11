@@ -30,7 +30,7 @@ const heroSchema = z.union([
      * back to the default hoggie.
      */
     hedgehog: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
-    /** Band background, hex only. Defaults to PostHog blue. */
+    /** Band background, hex only. Defaults to Flind blue. */
     color: z
       .string()
       .regex(/^#[0-9a-fA-F]{6}$/)

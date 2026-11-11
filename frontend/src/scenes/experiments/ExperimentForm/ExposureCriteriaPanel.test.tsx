@@ -55,7 +55,7 @@ describe('ExposureCriteriaPanel', () => {
 
     it.each([
         ['starts an empty warehouse-native exposure when the draft has no metrics', false, 1],
-        ['blocks the warehouse-native exposure while the draft has PostHog metrics', true, 0],
+        ['blocks the warehouse-native exposure while the draft has Flind metrics', true, 0],
     ])('%s', async (_, hasPosthogMetrics, expectedChanges) => {
         featureFlagLogic.actions.setFeatureFlags([], { [FEATURE_FLAGS.BIGQUERY_DIRECT_QUERY]: true })
         const onChange = jest.fn()

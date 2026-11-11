@@ -35,7 +35,7 @@ export function TransactionalEmailApiExample({
 
     const projectToken = currentTeam?.api_token ?? '<ph_project_api_key>'
     const host = apiHostOrigin()
-    // The SDKs find the app host themselves only on PostHog Cloud, where the ingestion host differs from the app's.
+    // The SDKs find the app host themselves only on Flind Cloud, where the ingestion host differs from the app's.
     const appHost = host === window.location.origin ? host : null
     const data: [string, string][] = variables?.length
         ? variables.map((name) => [name, '...'])
@@ -49,9 +49,9 @@ export function TransactionalEmailApiExample({
     const snippets: Record<SnippetLanguage, { language: Language; code: string }> = {
         node: {
             language: Language.JavaScript,
-            code: `import { PostHog } from 'posthog-node'
+            code: `import { Flind } from 'posthog-node'
 
-const posthog = new PostHog('${projectToken}', {
+const posthog = new Flind('${projectToken}', {
     host: '${host}',${appHost ? `\n    appHost: '${appHost}',` : ''}
     secretKey: process.env.POSTHOG_PROJECT_SECRET_API_KEY,
     // This client only sends email, so it doesn't poll flag definitions with the secret key

@@ -352,7 +352,7 @@ interface ActiveSession {
   sseController: SseController | null;
   deviceInfo: DeviceInfo;
   logWriter: SessionLogWriter;
-  /** Ships run telemetry (logs + spans) to PostHog; unset when the sandbox has no OTLP config */
+  /** Ships run telemetry (logs + spans) to Flind; unset when the sandbox has no OTLP config */
   telemetry?: OtelRunTelemetry;
   /** Current permission mode, tracked for relay decisions */
   permissionMode: PermissionMode;
@@ -736,7 +736,7 @@ export class AgentServer {
   }
 
   /**
-   * Ships run telemetry to PostHog when the sandbox provides an OTLP endpoint
+   * Ships run telemetry to Flind when the sandbox provides an OTLP endpoint
    * + token (POSTHOG_AGENT_OTEL_LOGS_URL/_TOKEN): metadata log records, plus an
    * APM trace per run when POSTHOG_AGENT_OTEL_TRACES_URL is also set. Resource
    * attributes carry the run/user identifiers so cloud runs are filterable per
@@ -2460,7 +2460,7 @@ export class AgentServer {
 
     // Preserve native Codex modes for cloud runs so they behave the same as
     // local sessions. Claude keeps the historical auto-approved default when
-    // PostHog Desktop has not explicitly selected a mode.
+    // Flind Desktop has not explicitly selected a mode.
     const initialPermissionMode: PermissionMode =
       launch.initialPermissionMode ??
       (runtimeAdapter === "codex" ? "auto" : "bypassPermissions");
@@ -4428,7 +4428,7 @@ export class AgentServer {
    * harness session starts, so it lists them like any local skill. The task
    * worker resolves the list into the run state when it builds the run, so
    * this is filesystem work only and adds no request to session start. Skill
-   * bodies stay in the store and cross the PostHog MCP only when a skill is
+   * bodies stay in the store and cross the Flind MCP only when a skill is
    * invoked.
    */
   private async installStoreSkills(
@@ -5032,8 +5032,8 @@ export class AgentServer {
     const gatewayEnv = buildGatewayEnv(this.config, input, this.logger);
 
     // Server-level constants that don't vary per task — safe to keep in
-    // process.env so spawned tools (PostHog MCP, workspace-server, etc.) can
-    // reach the PostHog API without explicit threading.
+    // process.env so spawned tools (Flind MCP, workspace-server, etc.) can
+    // reach the Flind API without explicit threading.
     Object.assign(process.env, {
       POSTHOG_API_KEY: apiKey,
       POSTHOG_API_URL: apiUrl,
@@ -5209,7 +5209,7 @@ export class AgentServer {
                   (option) => option.kind !== "allow_always",
                 ),
           };
-          this.logger.debug("Relaying configured PostHog exec permission", {
+          this.logger.debug("Relaying configured Flind exec permission", {
             subTool: posthogExecSubTool,
             sessionPermissionMode: this.getSessionPermissionMode(),
           });

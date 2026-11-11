@@ -586,7 +586,7 @@ class ChannelViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
 
 class ChannelFeedMessageViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
     """
-    API for a channel's system-announcement feed — durable "PostHog agent" rows
+    API for a channel's system-announcement feed — durable "Flind agent" rows
     (context created, CONTEXT.md being built) rendered alongside the channel's task
     cards. Read by any team member for a public channel; personal channels are owner-only.
     """
@@ -861,7 +861,7 @@ class TaskThreadMessageViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             400: OpenApiResponse(description="No signalable run, or message already forwarded"),
             429: OpenApiResponse(
                 response=TaskRunErrorResponseSerializer,
-                description="Organization reached its PostHog Desktop usage limit",
+                description="Organization reached its Flind Desktop usage limit",
             ),
         },
         summary="Send a thread message to the agent",

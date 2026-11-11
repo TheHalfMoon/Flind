@@ -1,7 +1,7 @@
 ---
 name: setting-up-support-slack-locally
 description: >
-  Connect a real Slack workspace to local PostHog Conversations (the SupportHog Slack app) so Slack
+  Connect a real Slack workspace to local Flind Conversations (the SupportHog Slack app) so Slack
   messages become support tickets and replies post back. Use when the user wants to test the conversations
   Slack integration locally, hits "Support Slack OAuth client ID is not configured", gets a white screen or
   "Network error" on the OAuth callback, or asks how to set SUPPORT_SLACK_APP_CLIENT_ID / a tunnel for
@@ -26,7 +26,7 @@ low-volume event POSTs rather than the entire SPA.
 
 This is the conversations/SupportHog variant of the general
 [Slack local setup guide](../../../docs/internal/slack-local-setup-guide.md); that guide covers the
-PostHog Desktop / notifications Slack app (`SLACK_APP_*`, `/integrations/slack/callback`). Conversations uses
+Flind Desktop / notifications Slack app (`SLACK_APP_*`, `/integrations/slack/callback`). Conversations uses
 its own `SUPPORT_SLACK_*` credentials and `/api/conversations/v1/slack/*` routes, but the tunnel and
 `SITE_URL` mechanics are identical.
 

@@ -119,7 +119,7 @@ function StartedAt({ item }: { item: PerformanceEvent }): JSX.Element | null {
 
 export function hasNoRecordedResponse(item: PerformanceEvent): boolean {
     // A captured fetch/XHR (method present) that recorded no response. Skip navigations and
-    // requests captured before PostHog started. A fetch that throws records no status, while a
+    // requests captured before Flind started. A fetch that throws records no status, while a
     // successful opaque cross-origin fetch records 0, so for fetch only an absent status means
     // no response. An XHR cannot be opaque, so it reports status 0 when it recorded none.
     //

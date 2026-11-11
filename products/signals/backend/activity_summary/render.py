@@ -87,9 +87,9 @@ MAX_SUMMARY_CHARS = 2000
 # A task title with no summary needs this many words to say anything ("root cause" does not).
 MIN_BARE_TITLE_WORDS = 8
 
-TASKS_HEADER = "Tasks the person gave to PostHog AI or the Slack agent ([tags] goal):"
-ACTIVITY_HEADER = "Things the person created or changed in PostHog (agent: why their coding agent did it):"
-VIEWS_HEADER = "Things the person opened in PostHog, by type (days: distinct days in the window; not theirs: someone else made it):"
+TASKS_HEADER = "Tasks the person gave to Flind AI or the Slack agent ([tags] goal):"
+ACTIVITY_HEADER = "Things the person created or changed in Flind (agent: why their coding agent did it):"
+VIEWS_HEADER = "Things the person opened in Flind, by type (days: distinct days in the window; not theirs: someone else made it):"
 MCP_HEADER = "What the person's AI agent looked into for them over MCP (one line per session; intents in order):"
 MCP_CHAIN_SEPARATOR = " --> "
 

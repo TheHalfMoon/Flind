@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import { parseOrThrow, type ParseFailure } from '@/core/schema'
 
-// PostHog sends a project ID as a number and hog keeps it as text, as it appears in URLs. The
+// Flind sends a project ID as a number and hog keeps it as text, as it appears in URLs. The
 // messages leave out the value, because a user who pastes a token into the wrong flag would see
 // it in logs.
 const PROJECT_ID_ERROR = 'The project ID must be a number. Pass a numeric project ID, like 12345.'
@@ -34,7 +34,7 @@ export function parseProjectId(raw: unknown, failure?: Partial<ParseFailure>): P
 export function parseOrganizationId(raw: unknown, failure?: Partial<ParseFailure>): OrganizationId {
     return parseOrThrow(OrganizationIdSchema, raw, {
         code: 'invalid_organization_id',
-        hint: 'Copy the organization ID from Settings > Organization in PostHog: https://app.posthog.com/settings/organization',
+        hint: 'Copy the organization ID from Settings > Organization in Flind: https://app.posthog.com/settings/organization',
         ...failure,
     })
 }

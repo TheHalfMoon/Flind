@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Main test runner for PostHog acceptance tests."""
+"""Main test runner for Flind acceptance tests."""
 
 import sys
 import logging
@@ -52,7 +52,7 @@ def run_tests():
 def main():
     """Main entry point for the test runner."""
     logger.info("=" * 60)
-    logger.info("PostHog Acceptance Tests")
+    logger.info("Flind Acceptance Tests")
     logger.info("=" * 60)
 
     # Log environment info

@@ -104,13 +104,13 @@ class ClientRegistrationView(ProvisioningAPIView):
         registered one. Returns None with the reason recorded in ``checks``."""
         if not is_cimd_client_id(client_id):
             # A non-CIMD client_id has no document to fetch, so it can only have been
-            # registered by a PostHog admin.
+            # registered by a Flind admin.
             try:
                 admin_registered = OAuthApplication.objects.get(client_id=client_id)
             except OAuthApplication.DoesNotExist:
                 _record(checks, "client_exists", False, "No client is registered with this client_id")
                 return None
-            _record(checks, "client_exists", True, "Registered by a PostHog admin")
+            _record(checks, "client_exists", True, "Registered by a Flind admin")
             return self._require_partner(admin_registered, checks)
 
         # An already-registered client keeps working when its document is momentarily
@@ -194,7 +194,7 @@ def _not_a_partner_detail(app: OAuthApplication, *, document_read: bool) -> str:
     there already, and telling its owner to add it would send them after a problem they fixed.
     """
     if app.provisioning.disabled:
-        return "Provisioning is blocked for this client. Contact PostHog support if that is unexpected."
+        return "Provisioning is blocked for this client. Contact Flind support if that is unexpected."
     if app.is_cimd_client and not document_read:
         return (
             "This client is not registered for agentic provisioning, and its metadata document "

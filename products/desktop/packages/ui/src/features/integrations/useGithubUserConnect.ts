@@ -97,7 +97,7 @@ function useConnectStateMachine(
 
   useEffect(() => stopPolling, [stopPolling]);
 
-  // Window-focus fallback: deep link from PostHog Cloud may not fire reliably,
+  // Window-focus fallback: deep link from Flind Cloud may not fire reliably,
   // so refetch when the user returns to the app while a connect is in flight.
   useEffect(() => {
     if (status.state !== "connecting") return;

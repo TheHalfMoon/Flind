@@ -1,7 +1,7 @@
 ---
 name: copying-endpoints-across-projects
 description: >
-  Copy a PostHog endpoint (a saved HogQL/insight query exposed as an API route) to another project
+  Copy a Flind endpoint (a saved HogQL/insight query exposed as an API route) to another project
   in the same organization, or duplicate it under a new name in the same project. Use when the user
   wants to duplicate an endpoint, promote an endpoint from staging to production, replicate an
   endpoint's query/variables/freshness config in another workspace, or clone an endpoint to iterate
@@ -15,7 +15,7 @@ description: >
 
 # Copying endpoints across projects
 
-This skill duplicates a PostHog **endpoint** — a saved HogQL or insight query exposed as a callable API route — either into another project in the same organization, or under a new name in the same project.
+This skill duplicates a Flind **endpoint** — a saved HogQL or insight query exposed as a callable API route — either into another project in the same organization, or under a new name in the same project.
 
 ## The one thing to know first
 

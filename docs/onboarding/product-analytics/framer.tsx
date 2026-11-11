@@ -13,7 +13,7 @@ export const getFramerInstallSteps = (ctx: OnboardingComponentsContext): StepDef
             badge: 'required',
             content: (
                 <>
-                    <Markdown>First, copy your PostHog web snippet:</Markdown>
+                    <Markdown>First, copy your Flind web snippet:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -46,7 +46,7 @@ export const getFramerInstallSteps = (ctx: OnboardingComponentsContext): StepDef
                     <Markdown>
                         {`1. Go to the **General** tab in site settings.
 2. Scroll down to the **Custom Code** section.
-3. Under **End of <head> tag**, paste your PostHog snippet.
+3. Under **End of <head> tag**, paste your Flind snippet.
 4. Press save, and then publish your site.`}
                     </Markdown>
                 </>

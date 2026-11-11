@@ -1,6 +1,6 @@
 """Mint a wizard-run scoped gateway token.
 
-Django mints a `phe_` off the PostHog-owned wizard team's `phs_`
+Django mints a `phe_` off the Flind-owned wizard team's `phs_`
 (WIZARD_GATEWAY_MINT_KEY) rather than sending the user's OAuth token to the
 gateway. The mint pins what the caller must not control (product=wizard, obo=the
 customer's team id, the acting user) plus a per-run cap and an expiry, and the
@@ -155,7 +155,7 @@ def _parse_limit_fields(raw: dict, *, source: str) -> tuple[Decimal | None, int 
     return cap, mints
 
 
-# Two flags in the PostHog internal project, read for their payloads with the limit
+# Two flags in the Flind internal project, read for their payloads with the limit
 # override's person properties for targeting. The payloads are {"version": 4,
 # "text": "..."} (nothing reads the version) and {"models", "efforts", "programs"}.
 # A flag that is off, missing, unreadable or out of contract never refuses a mint:

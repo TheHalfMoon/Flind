@@ -24,7 +24,7 @@ export const getReactNativeSteps = (ctx: OnboardingComponentsContext): StepDefin
                 </CalloutBox>
                 <Markdown>
                     {dedent`
-                        You can autocapture exceptions by configuring the \`errorTracking\` when setting up PostHog:
+                        You can autocapture exceptions by configuring the \`errorTracking\` when setting up Flind:
                     `}
                 </Markdown>
                 <CodeBlock
@@ -33,7 +33,7 @@ export const getReactNativeSteps = (ctx: OnboardingComponentsContext): StepDefin
                             language: 'jsx',
                             file: 'React Native',
                             code: dedent`
-                              export const posthog = new PostHog('<ph_project_token>', {
+                              export const posthog = new Flind('<ph_project_token>', {
                                 errorTracking: {
                                   autocapture: {
                                     uncaughtExceptions: true,
@@ -178,9 +178,9 @@ export const getReactNativeSteps = (ctx: OnboardingComponentsContext): StepDefin
         content: (
             <Markdown>
                 {dedent`
-                    Before proceeding, let's make sure exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Before proceeding, let's make sure exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),
@@ -196,7 +196,7 @@ export const getReactNativeSteps = (ctx: OnboardingComponentsContext): StepDefin
 
                     - No automatic source map uploads on React Native web
 
-                    This will be added in a future release. We recommend you stay up to date with the latest version of the PostHog React Native SDK.
+                    This will be added in a future release. We recommend you stay up to date with the latest version of the Flind React Native SDK.
                 `}
             </Markdown>
         ),

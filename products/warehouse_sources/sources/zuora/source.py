@@ -75,7 +75,7 @@ class ZuoraSource(ResumableSource[ZuoraSourceConfig, ZuoraResumeConfig]):
             name=ExternalDataSourceType.ZUORA,
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Zuora",
-            caption="""Connect your Zuora tenant to pull your subscription billing data into the PostHog Data warehouse.
+            caption="""Connect your Zuora tenant to pull your subscription billing data into the Flind Data warehouse.
 
 A Zuora admin can create an OAuth client under Settings > Administration > Manage Users (the client inherits the user's permissions). Pick the environment that matches your tenant — credentials only work against their own environment.""",
             iconPath="/static/services/zuora.png",

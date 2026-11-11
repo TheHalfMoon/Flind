@@ -48,7 +48,7 @@ class LeverSource(ResumableSource[LeverSourceConfig, LeverResumeConfig]):
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="Lever",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Lever API key to automatically pull your Lever recruiting data into the PostHog Data warehouse.
+            caption="""Enter your Lever API key to automatically pull your Lever recruiting data into the Flind Data warehouse.
 
 You can generate an API key in your Lever account under **Settings → Integrations and API → API Credentials**.
 

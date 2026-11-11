@@ -17,7 +17,7 @@ No sync problems, no "baseline service went down", no mystery diffs from someone
 
 ## Concepts
 
-**Repo** — a visual review project within a PostHog team. Usually maps 1:1 to a GitHub repository. Holds configuration like which baseline file paths to use per run type.
+**Repo** — a visual review project within a Flind team. Usually maps 1:1 to a GitHub repository. Holds configuration like which baseline file paths to use per run type.
 
 **Artifact** — a PNG stored by the SHA-256 hash of its RGBA bitmap data. Content-addressed: identical pixels produce identical hashes, regardless of PNG compression or metadata. Two runs producing the same screenshot share one artifact. Storage is S3, scoped per repo.
 

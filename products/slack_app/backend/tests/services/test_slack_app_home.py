@@ -444,7 +444,7 @@ class TestRenderHomeView:
         text_blob = " ".join(block["text"]["text"] for block in view["blocks"] if block.get("type") == "section")
         # Friendly label rather than raw model id; source attribution visible.
         assert "Claude Opus 4.7" in text_blob
-        assert "Your PostHog default" in _all_text(view)
+        assert "Your Flind default" in _all_text(view)
 
     def _every_card_view(self, *, auto_model_choice: bool = False) -> dict:
         return render_home_view(
@@ -604,7 +604,7 @@ class TestAutoModelChoiceToggle:
         [
             (True, True, True),
             (True, False, False),
-            # The router runs as a PostHog user, so a viewer with no linked user must not opt in.
+            # The router runs as a Flind user, so a viewer with no linked user must not opt in.
             (False, True, None),
         ],
     )
@@ -683,7 +683,7 @@ class TestLinkedAccountsCard:
         return [
             (block["text"]["text"], block.get("accessory"))
             for block in view["blocks"]
-            if block.get("type") == "section" and block["text"]["text"].startswith(("*PostHog*", "*GitHub*"))
+            if block.get("type") == "section" and block["text"]["text"].startswith(("*Flind*", "*GitHub*"))
         ]
 
     def _row(self, view: dict, prefix: str) -> tuple[str, dict | None]:
@@ -714,10 +714,10 @@ class TestLinkedAccountsCard:
         )
         text, button = self._row(view, "*GitHub*")
         if expected_button is None:
-            # Without a resolved PostHog user we can't say anything about their
+            # Without a resolved Flind user we can't say anything about their
             # GitHub, so the row points at account linking instead.
             assert button is None
-            assert "Link your PostHog account first" in _all_text(view)
+            assert "Link your Flind account first" in _all_text(view)
             return
         assert button is not None
         assert button["text"]["text"] == expected_button
@@ -732,7 +732,7 @@ class TestLinkedAccountsCard:
                 user_resolved=True,
                 accounts=(
                     GitHubAccount(installation_id="1", login="octocat", account_name="octocat"),
-                    GitHubAccount(installation_id="2", login="octocat", account_name="PostHog"),
+                    GitHubAccount(installation_id="2", login="octocat", account_name="Flind"),
                 ),
                 credentials_usable=True,
                 settings_url="https://app/settings",
@@ -741,7 +741,7 @@ class TestLinkedAccountsCard:
         text, _button = self._row(view, "*GitHub*")
         assert "`octocat`" in text
         # Installation on an org the login differs from names both sides.
-        assert "`octocat` on *PostHog*" in text
+        assert "`octocat` on *Flind*" in text
 
     def test_each_account_carries_its_own_button(self):
         view = self._view(
@@ -749,8 +749,8 @@ class TestLinkedAccountsCard:
             github_state=GitHubState(user_resolved=True, settings_url="https://app/settings"),
         )
         rows = self._rows(view)
-        assert [text.split("\n")[0] for text, _ in rows] == ["*PostHog*", "*GitHub*"]
-        # Disconnect belongs to the PostHog row, Connect GitHub to its own.
+        assert [text.split("\n")[0] for text, _ in rows] == ["*Flind*", "*GitHub*"]
+        # Disconnect belongs to the Flind row, Connect GitHub to its own.
         assert rows[0][1] is not None and rows[0][1]["action_id"] == ACTION_UNLINK_ACCOUNT
         assert rows[1][1] is not None and rows[1][1]["text"]["text"] == "Connect GitHub"
 
@@ -1511,7 +1511,7 @@ class TestResetProjectPersonal:
 class TestSetProjectWorkspace:
     """The workspace default is one setting for everyone in the Slack workspace.
 
-    Slack's admin flag gates the control upstream and says nothing about PostHog, so
+    Slack's admin flag gates the control upstream and says nothing about Flind, so
     these cover the second gate: the clicker must reach the project they picked. Every
     case arrives as a `block_actions` payload, which is what a view Slack published
     before access was removed replays.
@@ -1574,7 +1574,7 @@ class TestPersonalSubmit:
     def test_unmapped_viewer_submit_is_refused_with_a_link_prompt(
         self, slack_integration, mock_slack_client, flag_on, admin_user
     ):
-        # No PostHog user maps to U001, so there is nowhere to store the
+        # No Flind user maps to U001, so there is nowhere to store the
         # preference — the modal must say so instead of writing a Slack pin.
         payload = _view_submission_payload(
             callback_id=EDIT_MODAL_PERSONAL_CALLBACK_ID,
@@ -1586,7 +1586,7 @@ class TestPersonalSubmit:
         response = handle_app_home_view_submission(payload)
         body = json.loads(response.content)
         assert body["response_action"] == "errors"
-        assert "Link your PostHog account" in str(body["errors"])
+        assert "Link your Flind account" in str(body["errors"])
         assert not SlackSettings.objects.filter(slack_user_id="U001").exists()
 
     def test_multi_project_viewer_without_a_routing_default_is_asked_to_pick(
@@ -1819,7 +1819,7 @@ class TestInteractionResolvesTheViewersIntegration:
 
 
 class TestNoProjectAccessCard:
-    """What someone sees when no PostHog project connected here is visible to them.
+    """What someone sees when no Flind project connected here is visible to them.
 
     Without this the tab draws its normal cards against nothing: no project picker, and a
     Tasks card inviting them to mention @PostHog — which won't run either, for the same
@@ -1881,7 +1881,7 @@ class TestNoProjectAccessCard:
 
 
 class TestUnidentifiedViewerProjectList:
-    """What the tab lists for a Slack user it cannot map to a PostHog account.
+    """What the tab lists for a Slack user it cannot map to a Flind account.
 
     The regression to catch is the list widening again. A Slack workspace can connect
     several organizations, so reaching any candidate publishes the project and

@@ -138,7 +138,7 @@ export async function patchEvaluation(
 ): Promise<EvaluationConfig> {
     const evaluation = evaluationFromApi(await evaluationsPartialUpdate(projectId, evaluationId, update))
     if (!evaluation) {
-        throw new Error('This evaluation is not supported by this version of PostHog. Refresh the page and try again.')
+        throw new Error('This evaluation is not supported by this version of Flind. Refresh the page and try again.')
     }
     return evaluation
 }

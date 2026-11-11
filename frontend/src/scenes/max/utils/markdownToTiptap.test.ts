@@ -221,14 +221,14 @@ describe('markdownToTiptap', () => {
         })
 
         it('parses links', () => {
-            const result = markdownToTiptap('[PostHog](https://posthog.com)')
+            const result = markdownToTiptap('[Flind](https://posthog.com)')
             expect(result).toEqual([
                 {
                     type: 'paragraph',
                     content: [
                         {
                             type: 'text',
-                            text: 'PostHog',
+                            text: 'Flind',
                             marks: [{ type: 'link', attrs: { href: 'https://posthog.com', title: null } }],
                         },
                     ],

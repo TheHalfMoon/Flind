@@ -73,7 +73,7 @@ export function HomeTabDashboard({
                                 ? DASHBOARD_CANNOT_EDIT_MESSAGE
                                 : !dataProcessingAccepted &&
                                   (dataProcessingApprovalDisabledReason ??
-                                      'Approve AI data processing to use PostHog AI')
+                                      'Approve AI data processing to use Flind AI')
                         }
                     />
                 </div>

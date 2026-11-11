@@ -1,6 +1,6 @@
 # @flind/web
 
-Browser host for PostHog Desktop. Boots the same `@flind/ui` shell and
+Browser host for Flind Desktop. Boots the same `@flind/ui` shell and
 `@flind/core` services as the desktop app, with web platform adapters —
 no Electron, no local workspace-server. Scope today: auth + cloud tasks
 (local workspaces, terminal, and local git need a workspace backend and are
@@ -29,7 +29,7 @@ pnpm --filter @flind/web test:e2e   # Playwright: happy-path browser e2e
 - **`tests/e2e/`** drives stock Chromium against the Vite dev server (Playwright
   starts it). Scope is the hermetic happy path up to the OAuth wall — boot,
   container wiring, onboarding → sign-in card, and the `/callback` relay — since
-  real login needs PostHog cloud and a popup IdP. Runs in CI (`test.yml`),
+  real login needs Flind cloud and a popup IdP. Runs in CI (`test.yml`),
   reusing the desktop suite's cached Chromium.
 - The boot spec doubles as the host-capability guard: `web-container.ts` runs
   `assertHostCapabilities(REQUIRED_HOST_CAPABILITIES)` at container load, so an
@@ -104,7 +104,7 @@ as database rows (Django admin → OAuth applications), and they must include:
 - `https://<web-origin>/callback` for the deployed host. `http` is rejected for
   non-loopback hosts by `OAuthApplication` redirect validation, so the origin
   must be HTTPS.
-- `http://localhost/callback` (portless) for local dev — PostHog's authorize
+- `http://localhost/callback` (portless) for local dev — Flind's authorize
   view extends RFC 8252 §7.3 loopback port flexibility to `localhost`
   (`posthog/api/oauth/views.py: validate_redirect_uri`), so the portless form
   matches the Vite dev server on any port. If desktop dev builds can already
@@ -132,7 +132,7 @@ but sending a task with an attachment fails at the upload step.
 
 ### `posthog_web` integration connect origin — required for Slack / GitHub connect
 
-PostHog brokers the Slack/GitHub OAuth server-side and, on completion, redirects
+Flind brokers the Slack/GitHub OAuth server-side and, on completion, redirects
 to a target chosen by the `connect_from` value (`posthog_code` →
 `posthog-code://…`, `posthog_mobile` → `posthog://…`) — a per-known-client
 mapping, not an open redirect. The web host's `startFlow` opens

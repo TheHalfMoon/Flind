@@ -1,4 +1,4 @@
-// PostHog Loading Inspector — paste into browser DevTools console.
+// Flind Loading Inspector — paste into browser DevTools console.
 // Extracts script tags, init config, runtime state, and load method.
 (() => {
   const scripts = [...document.querySelectorAll("script")];

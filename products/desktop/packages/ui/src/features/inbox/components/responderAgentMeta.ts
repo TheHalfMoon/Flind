@@ -20,7 +20,7 @@ interface ResponderAgentGroup {
 
 export const RESPONDER_AGENT_GROUPS: ResponderAgentGroup[] = [
   {
-    label: "PostHog data",
+    label: "Flind data",
     agents: [
       {
         source: "error_tracking",

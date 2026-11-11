@@ -631,7 +631,7 @@ export const messageTemplateLogic = kea<messageTemplateLogicType>([
                 setTemplatePickerOpen: (_, { open }) => open,
             },
         ],
-        // Another channel (the PostHog AI agent, the API, another tab) saved this template while the form
+        // Another channel (the Flind AI agent, the API, another tab) saved this template while the form
         // holds unsaved edits. The banner lets the person choose which version wins.
         externallyEdited: [
             false,

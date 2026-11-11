@@ -9,8 +9,8 @@ endpoint names in `settings.py` `JELLYFISH_ENDPOINTS`.
 from products.warehouse_sources.sources.sdk import CanonicalDescriptions
 
 _WINDOW_COLUMNS = {
-    "window_start_date": "First day of the calendar-month window this row was exported for (added by PostHog).",
-    "window_end_date": "Last day of the calendar-month window this row was exported for (added by PostHog).",
+    "window_start_date": "First day of the calendar-month window this row was exported for (added by Flind).",
+    "window_end_date": "Last day of the calendar-month window this row was exported for (added by Flind).",
 }
 
 CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
@@ -69,7 +69,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Deliverables (epics/projects) in each Jellyfish work category, with delivery status and effort.",
         "docs_url": "https://github.com/Jellyfish-AI/jellyfish-mcp",
         "columns": {
-            "work_category_slug": "Slug of the work category this deliverable was exported from (added by PostHog).",
+            "work_category_slug": "Slug of the work category this deliverable was exported from (added by Flind).",
             "name": "Display name of the deliverable.",
             "source_issue_url": "URL of the source issue (e.g. Jira epic) backing the deliverable.",
             "activity_status": "Delivery activity status of the deliverable (e.g. completed, in progress).",
@@ -82,7 +82,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://github.com/Jellyfish-AI/jellyfish-mcp",
         "columns": {
             **_WINDOW_COLUMNS,
-            "work_category_slug": "Slug of the work category this row was exported for (added by PostHog).",
+            "work_category_slug": "Slug of the work category this row was exported for (added by Flind).",
         },
     },
     "allocations_by_work_category_person": {
@@ -90,7 +90,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://github.com/Jellyfish-AI/jellyfish-mcp",
         "columns": {
             **_WINDOW_COLUMNS,
-            "work_category_slug": "Slug of the work category this row was exported for (added by PostHog).",
+            "work_category_slug": "Slug of the work category this row was exported for (added by Flind).",
         },
     },
     "allocations_by_work_category_team": {
@@ -98,7 +98,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://github.com/Jellyfish-AI/jellyfish-mcp",
         "columns": {
             **_WINDOW_COLUMNS,
-            "work_category_slug": "Slug of the work category this row was exported for (added by PostHog).",
+            "work_category_slug": "Slug of the work category this row was exported for (added by Flind).",
         },
     },
     "person_metrics": {
@@ -106,7 +106,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://github.com/Jellyfish-AI/jellyfish-mcp",
         "columns": {
             **_WINDOW_COLUMNS,
-            "person_id": "Jellyfish id of the engineer the metrics are for (added by PostHog when absent).",
+            "person_id": "Jellyfish id of the engineer the metrics are for (added by Flind when absent).",
         },
     },
     "team_metrics": {
@@ -114,14 +114,14 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://github.com/Jellyfish-AI/jellyfish-mcp",
         "columns": {
             **_WINDOW_COLUMNS,
-            "team_id": "Jellyfish id of the team the metrics are for (added by PostHog when absent).",
+            "team_id": "Jellyfish id of the team the metrics are for (added by Flind when absent).",
         },
     },
     "deliverable_scope_and_effort_history": {
         "description": "Weekly scope and allocated effort history for each deliverable.",
         "docs_url": "https://github.com/Jellyfish-AI/jellyfish-mcp",
         "columns": {
-            "deliverable_id": "Jellyfish id of the deliverable this history is for (added by PostHog when absent).",
+            "deliverable_id": "Jellyfish id of the deliverable this history is for (added by Flind when absent).",
         },
     },
 }

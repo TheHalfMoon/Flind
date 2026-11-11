@@ -407,7 +407,7 @@ export function ScoutsFleetView({
         </span>
         {origin !== "custom" ? (
           <span>
-            PostHog owns the built-in agents. You can switch them on or off. You
+            Flind owns the built-in agents. You can switch them on or off. You
             cannot edit them.
           </span>
         ) : null}

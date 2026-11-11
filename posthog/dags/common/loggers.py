@@ -1,7 +1,7 @@
-"""Dagster logger that routes op/asset logs through PostHog's structlog pipeline.
+"""Dagster logger that routes op/asset logs through Flind's structlog pipeline.
 
 Dagster's default `colored_console_logger` writes plain colored text to the
-process stdout. The PostHog Logs product is fed by the OTel collector scraping
+process stdout. The Flind Logs product is fed by the OTel collector scraping
 each container's stdout and parsing structlog's JSON lines (see
 `posthog/settings/logs.py`) — plain text isn't parseable, so Dagster job logs
 never make it there as structured records the way Django app logs do.
@@ -47,7 +47,7 @@ class _DropDagsterEngineEvents(logging.Filter):
         "name": dagster.Field(str, is_required=False, default_value="dagster", description="The name of the logger."),
     },
     description=(
-        "Routes Dagster logs through PostHog's structlog pipeline (JSON to stdout, like Django) "
+        "Routes Dagster logs through Flind's structlog pipeline (JSON to stdout, like Django) "
         "so the OTel collector ships them to the Logs product. Replaces colored_console_logger."
     ),
 )

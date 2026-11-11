@@ -11,21 +11,21 @@ export const getDotNetInstallSteps = (ctx: OnboardingComponentsContext): StepDef
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog package for your .NET app:</Markdown>
+                    <Markdown>Install the Flind package for your .NET app:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
                                 language: 'bash',
                                 file: 'ASP.NET Core',
                                 code: dedent`
-                                    dotnet add package PostHog.AspNetCore
+                                    dotnet add package Flind.AspNetCore
                                 `,
                             },
                             {
                                 language: 'bash',
                                 file: 'Console or worker',
                                 code: dedent`
-                                    dotnet add package PostHog
+                                    dotnet add package Flind
                                 `,
                             },
                         ]}
@@ -34,13 +34,13 @@ export const getDotNetInstallSteps = (ctx: OnboardingComponentsContext): StepDef
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                            For ASP.NET Core, register PostHog and configure your project token and host in \`appsettings.json\`. Outside ASP.NET Core, create a single \`PostHogClient\` and reuse it across your app.
+                            For ASP.NET Core, register Flind and configure your project token and host in \`appsettings.json\`. Outside ASP.NET Core, create a single \`PostHogClient\` and reuse it across your app.
                         `}
                     </Markdown>
                     <CodeBlock
@@ -49,7 +49,7 @@ export const getDotNetInstallSteps = (ctx: OnboardingComponentsContext): StepDef
                                 language: 'csharp',
                                 file: 'Program.cs',
                                 code: dedent`
-                                    using PostHog;
+                                    using Flind;
 
                                     var builder = WebApplication.CreateBuilder(args);
                                     builder.AddPostHog();
@@ -60,7 +60,7 @@ export const getDotNetInstallSteps = (ctx: OnboardingComponentsContext): StepDef
                                 file: 'appsettings.json',
                                 code: dedent`
                                     {
-                                      "PostHog": {
+                                      "Flind": {
                                         "ProjectToken": "<ph_project_token>",
                                         "HostUrl": "<ph_client_api_host>"
                                       }
@@ -71,7 +71,7 @@ export const getDotNetInstallSteps = (ctx: OnboardingComponentsContext): StepDef
                                 language: 'csharp',
                                 file: 'Console or worker',
                                 code: dedent`
-                                    using PostHog;
+                                    using Flind;
 
                                     // Disposing the client sends any queued events before your app exits
                                     await using var posthog = new PostHogClient(new PostHogOptions

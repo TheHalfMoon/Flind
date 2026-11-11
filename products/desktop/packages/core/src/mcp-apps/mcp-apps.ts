@@ -539,7 +539,7 @@ export class McpAppsService extends TypedEventEmitter<McpAppsServiceEvents> {
 
   /**
    * Fetch a UI resource directly by its `ui://` URI. Used by the built-in
-   * PostHog `exec` path, where the resource URI is resolved per call from the
+   * Flind `exec` path, where the resource URI is resolved per call from the
    * tool result's `_meta` (in the renderer) rather than from a registered
    * tool->UI association. Because the renderer derives it from the persisted
    * conversation, exec UI apps survive app restarts — unlike the old in-memory

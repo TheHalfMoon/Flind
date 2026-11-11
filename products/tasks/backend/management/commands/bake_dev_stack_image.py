@@ -16,7 +16,7 @@ from products.tasks.backend.logic.services.dev_stack_image_verification import v
 
 class Command(BaseCommand):
     help = (
-        "Bake the PostHog dev-stack image through Temporal. Initialize protected activation "
+        "Bake the Flind dev-stack image through Temporal. Initialize protected activation "
         "after deploying all readers and workers, then enable regional reconciliation. "
         "Inline bakes are available only before protected activation is initialized."
     )

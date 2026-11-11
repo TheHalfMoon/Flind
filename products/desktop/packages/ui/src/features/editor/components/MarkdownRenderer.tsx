@@ -32,7 +32,7 @@ import { openExternalUrl } from "../../../shell/openExternal";
 interface MarkdownRendererProps {
   content: string;
   /**
-   * Render PostHog object tags (`<insight/>`, `<hogql/>`…) as live reference
+   * Render Flind object tags (`<insight/>`, `<hogql/>`…) as live reference
    * chips and chart cards. Off by default because rich objects execute
    * authenticated queries against the viewer's project: only agent-authored
    * surfaces may enable this, never GitHub comments, user messages, or other

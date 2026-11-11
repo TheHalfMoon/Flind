@@ -168,7 +168,7 @@ export function isCredentialOriginAllowed(
     return true;
   }
   if (isLoopbackHost(targetHost)) return isLoopbackHost(apiHostname);
-  // Only PostHog's own domains on the default port are trusted by name, and
+  // Only Flind's own domains on the default port are trusted by name, and
   // only the API host's own one, so a prod token never reaches a dev host.
   const domain = postHogDomain(apiHostname);
   return (
@@ -183,7 +183,7 @@ export function isCredentialOriginAllowed(
  * The origin of a Go gateway URL, or null unless it is a bare https origin on
  * the ai-gateway allowlist with the default port. Loopback passes only with
  * `allowLoopback` (the dev override). With `apiHost`, the gateway must share
- * its PostHog domain, so a prod bearer never reaches a dev host or the reverse.
+ * its Flind domain, so a prod bearer never reaches a dev host or the reverse.
  */
 export function validateAiGatewayUrl(
   raw: string,

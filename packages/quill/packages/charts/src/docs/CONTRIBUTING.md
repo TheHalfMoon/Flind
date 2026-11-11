@@ -55,7 +55,7 @@ Code outside the library builds chart types the library does not ship on top of 
 
 ## Conventions
 
-- **No kea, no PostHog imports.** Colors and data are passed in as props. The theme comes from a prop or a `ChartThemeProvider`, resolved with `useResolvedChartTheme`. The library has no app dependencies. Trends uses it, but the library does not know about trends.
+- **No kea, no Flind imports.** Colors and data are passed in as props. The theme comes from a prop or a `ChartThemeProvider`, resolved with `useResolvedChartTheme`. The library has no app dependencies. Trends uses it, but the library does not know about trends.
 - **`ChartScales` must not expose d3 types.** Public interface is `x(label) => px`, `y(value) => px`, `yTicks() => number[]`. d3 stays inside the chart type's `createScales`.
 - **Overlays use the granular hooks.** `useChartLayout()` doesn't re-render on hover; `useChartHover()` does. Use `useChart()` only when an overlay genuinely needs both. It re-renders on every mousemove.
 - **Pure logic is tested directly, next to its file.** Chart-level tests assert on the rendered DOM through the `ChartAccessor`. See [TESTING.md](./TESTING.md).

@@ -9,7 +9,7 @@ The product surfaces PR + CI data through **named, typed endpoints** that run cu
 
 Reads are the product. The one write is the test-health sidecar (quarantine: issue plus PR through the team's GitHub App), reachable via the API and MCP tool; the Tests tab is the Trunk quarantine debt scoreboard.
 
-The goal is Signals for PostHog Desktop (README → "The goal"): Signal detection is defined once in `logic/` over the read layer, shared by the surfaces and the Signal emitter. Emission rides the curated builders; it does not wait on lifecycle events.
+The goal is Signals for Flind Desktop (README → "The goal"): Signal detection is defined once in `logic/` over the read layer, shared by the surfaces and the Signal emitter. Emission rides the curated builders; it does not wait on lifecycle events.
 
 ## 2. Non-goals
 
@@ -237,7 +237,7 @@ Other products read as sources:
 
 - `github_deployments` + `github_deployment_statuses`: deploy requests and their status history (webhook-fed; statuses append one row per transition, with a bounded reconciliation fan-out for the `inactive` transitions GitHub never webhooks). The DORA substrate. Optional at the source, so reads must degrade gracefully when unsynced.
 
-Lifecycle data the snapshots can't hold and no synced endpoint records needs immutable timestamped events (GitHub webhooks → PostHog events, PR as group type). That is the only thing the deferred events destination is for. Reviews and approvals are not in that bucket: the GitHub `reviews` endpoint syncs review submissions with their timestamps, and the author page reads them. Deploys and DORA left the deferral the same way: `github_deployment_statuses` already holds the immutable transition history, so those reads run on the warehouse like everything else. See README → "The data boundary".
+Lifecycle data the snapshots can't hold and no synced endpoint records needs immutable timestamped events (GitHub webhooks → Flind events, PR as group type). That is the only thing the deferred events destination is for. Reviews and approvals are not in that bucket: the GitHub `reviews` endpoint syncs review submissions with their timestamps, and the author page reads them. Deploys and DORA left the deferral the same way: `github_deployment_statuses` already holds the immutable transition history, so those reads run on the warehouse like everything else. See README → "The data boundary".
 
 ## 8. Reference reading
 

@@ -75,7 +75,7 @@ Notes:
 - Writing reports needs the `signal_scout_report:write` scope, and the scratchpad needs `signal_scout_internal:write` (the sandbox has both).
   Authoring a scout doesn't require either — only the harness writes.
 
-## Path B — canonical (in-repo, for PostHog contributors)
+## Path B — canonical (in-repo, for Flind contributors)
 
 Improving a scout for **every** enrolled project.
 Disk under `products/signals/skills/signals-scout-*/` is the source of truth; `lazy_seed` mirrors changes onto each enrolled team's `LLMSkill` rows on the next coordinator tick (or immediately via `python manage.py sync_signals_scout_skills --all-enabled`).
@@ -94,7 +94,7 @@ Authoring a new canonical scout is just creating `signals-scout-<scope>/SKILL.md
 
 ## Testing
 
-**Dogfood the scout yourself first — before spending any real run.** The authoring agent has the same PostHog MCP tools a scout uses at runtime (`execute-sql`, `read-data-schema`, the per-product list tools, `scout-project-profile-get`), so the cheapest iteration is to walk the scout's own logic against the live project by hand: confirm the watched entity exists and has the assumed shape, run the **discriminator** to check it separates signal from noise on this project's data, and run each **explore pattern**'s queries.
+**Dogfood the scout yourself first — before spending any real run.** The authoring agent has the same Flind MCP tools a scout uses at runtime (`execute-sql`, `read-data-schema`, the per-product list tools, `scout-project-profile-get`), so the cheapest iteration is to walk the scout's own logic against the live project by hand: confirm the watched entity exists and has the assumed shape, run the **discriminator** to check it separates signal from noise on this project's data, and run each **explore pattern**'s queries.
 Free and instant — refine the body, re-run the queries, repeat, until the logic holds on real data.
 
 ### Private trials with a saved rubric
@@ -174,7 +174,7 @@ An execution failure is distinct from a valid run that failed quality criteria, 
 Small comparisons are descriptive, so report what the observed runs support and what remains uncertain.
 
 Both read tools return the full response when `fields` is omitted; selection reduces output but does not guarantee a size limit.
-If the host clips even one selected reference or report section, capture the full JSON through an already configured PostHog CLI (`posthog-cli api call --json <tool> '<input>' > result.json`) or programmatic MCP client and inspect the saved file.
+If the host clips even one selected reference or report section, capture the full JSON through an already configured Flind CLI (`posthog-cli api call --json <tool> '<input>' > result.json`) or programmatic MCP client and inspect the saved file.
 Host clipping does not mean the stored source is truncated, and does not require another paid generation.
 
 Use `posthog:scout-trial-list` to rediscover saved comparisons, following its cursor for more results.

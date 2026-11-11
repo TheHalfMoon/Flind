@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -435,7 +435,7 @@ export const getVisionObservationsCreateTaskCreateUrl = (projectId: string, id: 
 }
 
 /**
- * Create a PostHog Task from this observation's finding so it can be triaged and fixed. Title and description are derived from the scanner and its result. Record-only: this does not start the coding agent. Idempotent per observation: once a task exists, repeat calls return its id with a 200 instead of creating a duplicate.
+ * Create a Flind Task from this observation's finding so it can be triaged and fixed. Title and description are derived from the scanner and its result. Record-only: this does not start the coding agent. Idempotent per observation: once a task exists, repeat calls return its id with a 200 instead of creating a duplicate.
  */
 export const visionObservationsCreateTaskCreate = async (
     projectId: string,
@@ -1268,7 +1268,7 @@ export const getVisionScannersObservationsCreateTaskCreateUrl = (projectId: stri
 }
 
 /**
- * Create a PostHog Task from this observation's finding so it can be triaged and fixed. Title and description are derived from the scanner and its result. Record-only: this does not start the coding agent. Idempotent per observation: once a task exists, repeat calls return its id with a 200 instead of creating a duplicate.
+ * Create a Flind Task from this observation's finding so it can be triaged and fixed. Title and description are derived from the scanner and its result. Record-only: this does not start the coding agent. Idempotent per observation: once a task exists, repeat calls return its id with a 200 instead of creating a duplicate.
  */
 export const visionScannersObservationsCreateTaskCreate = async (
     projectId: string,
@@ -1745,7 +1745,7 @@ export const getVisionScannersInlineScanCreateUrl = (projectId: string) => {
  * The config resolves to a scanner minted on first use, so asking the same question twice reuses
  * the observations it already has, while a different question about the same session gets its own.
  *
- * With `scanner_type` set to `summarizer`, this is how you get PostHog's own AI summary for a
+ * With `scanner_type` set to `summarizer`, this is how you get Flind's own AI summary for a
  * recording ID. It resolves to the Summarize button's own scanner only when the prompt and
  * `scanner_config` match what the button sends, since the config is what the key fingerprints.
  */

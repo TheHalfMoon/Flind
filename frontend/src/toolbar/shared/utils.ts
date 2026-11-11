@@ -237,7 +237,7 @@ function computeElementQuery(element: HTMLElement, dataAttributes: string[]): st
 
         if (querySelectorAllDeep(escapedSelector).length == 1) {
             // if we return the _valid_ escaped CSS,
-            // the action matching in PostHog might not match it
+            // the action matching in Flind might not match it
             // because it's not really CSS matching
             return unescapedSelector
         }
@@ -250,7 +250,7 @@ function computeElementQuery(element: HTMLElement, dataAttributes: string[]): st
             seedMinLength: 5,
             attr: (name, value) => {
                 // preference to data attributes if they exist
-                // that aren't in the PostHog preferred list - they were returned early above
+                // that aren't in the Flind preferred list - they were returned early above
                 return name.startsWith('data-') && value.length < 100 && !containsUnstableGeneratedId(value)
             },
             // the combination guard tripped and cut the candidate search short -

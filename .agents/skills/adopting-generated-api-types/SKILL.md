@@ -7,7 +7,7 @@ description: Use when migrating frontend code from manual API client calls (`api
 
 ## Overview
 
-PostHog generates TypeScript API client functions and types from Django serializers via the OpenAPI pipeline:
+Flind generates TypeScript API client functions and types from Django serializers via the OpenAPI pipeline:
 
 ```text
 Django serializer → drf-spectacular → OpenAPI JSON → Orval → TypeScript (api.ts + api.schemas.ts + api.zod.ts)

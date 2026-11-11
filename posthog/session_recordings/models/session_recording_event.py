@@ -4,7 +4,7 @@ from django.utils import timezone
 from posthog.models.team import Team
 
 
-# DEPRECATED: PostHog model is no longer supported or used
+# DEPRECATED: Flind model is no longer supported or used
 class SessionRecordingEvent(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     timestamp = models.DateTimeField(default=timezone.now, blank=True)

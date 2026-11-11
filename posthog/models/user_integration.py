@@ -63,12 +63,12 @@ class UserIntegration(UUIDModel):
       rotation on later requires no schema or callback-shape change.
 
     Cardinality (Slack):
-    - One PostHog user → many rows, one per Slack workspace they've linked
+    - One Flind user → many rows, one per Slack workspace they've linked
       (Slack assigns a distinct user id per workspace, so the rows have
       different `integration_id` values).
     - One Slack identity (workspace × Slack user id) → may have multiple
-      PostHog rows when the same Slack account is linked to more than one
-      PostHog account (e.g. personal + work). The inbound resolver picks
+      Flind rows when the same Slack account is linked to more than one
+      Flind account (e.g. personal + work). The inbound resolver picks
       the most-recently-linked accessible row and warns when it sees more
       than one match — see `find_linked_posthog_user`.
 
@@ -82,9 +82,9 @@ class UserIntegration(UUIDModel):
     - One row per user: Desktop replaces it on reconnect.
 
     The `unique_together = ("user", "kind", "integration_id")` constraint only
-    forbids the same PostHog user linking the same Slack workspace identity
+    forbids the same Flind user linking the same Slack workspace identity
     twice (which would have to be a re-OAuth that `update_or_create` already
-    folds into an in-place refresh). It does NOT forbid two PostHog users
+    folds into an in-place refresh). It does NOT forbid two Flind users
     sharing a Slack identity — that's a deliberate allowance the resolver
     handles deterministically.
     """

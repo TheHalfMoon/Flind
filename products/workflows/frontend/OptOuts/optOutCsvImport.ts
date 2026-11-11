@@ -23,7 +23,7 @@ export interface ParsedOptOutCsv {
 
 // The export quote-prefixes cells starting with these so spreadsheets don't evaluate them
 // as formulas (see posthog/security/spreadsheet_safety.py). Reversed here so a file
-// exported from PostHog imports back with the original identifiers.
+// exported from Flind imports back with the original identifiers.
 const FORMULA_TRIGGER_CHARS = ['=', '+', '-', '@', '\t', '\r']
 
 function unescapeFormulaPrefix(value: string): string {

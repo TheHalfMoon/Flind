@@ -10,7 +10,7 @@ import { SignalCardShell } from './SignalCardShell'
 import type { SignalCardEntry, SignalCardProps } from './types'
 
 /**
- * Health-check signals are PostHog-native instrumentation issues. They always carry a `kind`,
+ * Health-check signals are Flind-native instrumentation issues. They always carry a `kind`,
  * a `severity`, and an `issue_id`, which together distinguish them from other native sources.
  */
 export function isHealthCheckExtra(value: unknown): value is Record<string, unknown> & HealthCheckSignalExtraApi {
@@ -170,7 +170,7 @@ export function HealthCheckSignalCard({ signal }: SignalCardProps): JSX.Element 
                 <div className="flex items-center gap-2 pt-1">
                     <span className="flex-1" />
                     <Link to={extra.link} className="text-xs font-medium">
-                        Open in PostHog
+                        Open in Flind
                     </Link>
                 </div>
             </div>

@@ -19,7 +19,7 @@ export const GITLAB: WorkloadProvider = {
               })
             : undefined
     },
-    missingTokenHint: `Add an \`id_tokens\` entry named ${GITLAB_ID_TOKEN_VARIABLE} to the job, with the PostHog address as its \`aud\`. Run \`hog ci setup\` on your machine for the snippet.`,
+    missingTokenHint: `Add an \`id_tokens\` entry named ${GITLAB_ID_TOKEN_VARIABLE} to the job, with the Flind address as its \`aud\`. Run \`hog ci setup\` on your machine for the snippet.`,
     configPath: '.gitlab-ci.yml',
     nameFromRemote: (remote) =>
         remote

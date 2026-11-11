@@ -23,7 +23,7 @@ import secrets
 
 from django.db import migrations
 
-STREAMLIT_OAUTH_APP_NAME = "PostHog Streamlit Apps"
+STREAMLIT_OAUTH_APP_NAME = "Flind Streamlit Apps"
 STREAMLIT_OAUTH_CLIENT_ID = "posthog-streamlit-apps-first-party"
 
 

@@ -190,7 +190,7 @@ export function GithubIntegration({
                                 loading={linkedGithubInstallationLoading}
                                 emphasizeInstallation={emphasizeConnect}
                                 onLink={(installationId) => {
-                                    // Reusing an existing install never leaves PostHog, so it's a
+                                    // Reusing an existing install never leaves Flind, so it's a
                                     // connect that skips GitHub entirely — worth separating from the
                                     // clicks that redirect out. Falls back to `connectSurface` like
                                     // every other button here, instead of a fixed literal, so the

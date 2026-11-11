@@ -31,7 +31,7 @@ _TEAM_SLUG_RE = re.compile(r"^[A-Za-z0-9._-]+$")
 class OwningTeam:
     slug: str
     # Lowercase GitHub logins of every team member, in random order. GitHub team membership is the
-    # ownership, so a member needs no PostHog account.
+    # ownership, so a member needs no Flind account.
     logins: tuple[str, ...]
 
 

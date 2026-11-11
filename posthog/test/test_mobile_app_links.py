@@ -35,5 +35,5 @@ def test_android_asset_links_are_served_without_login_or_redirect():
 @pytest.mark.parametrize("path", ["/.well-known/apple-app-site-association", "/.well-known/assetlinks.json"])
 @override_settings(MOBILE_APP_APPLE_TEAM_ID="", MOBILE_APP_ANDROID_CERT_FINGERPRINTS=[])
 def test_association_files_are_absent_where_the_app_is_not_configured(path):
-    # Self-hosted instances must not claim the PostHog mobile app for their domain.
+    # Self-hosted instances must not claim the Flind mobile app for their domain.
     assert Client().get(path).status_code == 404

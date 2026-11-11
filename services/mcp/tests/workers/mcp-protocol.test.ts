@@ -31,7 +31,7 @@ describe('MCP HTTP entry point (Cloudflare Workers)', () => {
             expect(body.resource).toBe('https://mcp.posthog.com/sse')
         })
 
-        it('allows CORS from PostHog app origins for consent-page metadata fetch', async () => {
+        it('allows CORS from Flind app origins for consent-page metadata fetch', async () => {
             const response = await SELF.fetch('https://mcp.posthog.com/.well-known/oauth-protected-resource/mcp', {
                 headers: { Origin: 'https://us.posthog.com' },
             })
@@ -41,7 +41,7 @@ describe('MCP HTTP entry point (Cloudflare Workers)', () => {
             expect(response.headers.get('Vary')).toBe('Origin')
         })
 
-        it('answers OPTIONS preflight for PostHog app origins', async () => {
+        it('answers OPTIONS preflight for Flind app origins', async () => {
             const response = await SELF.fetch('https://mcp.posthog.com/.well-known/oauth-protected-resource/mcp', {
                 method: 'OPTIONS',
                 headers: {
@@ -92,9 +92,9 @@ describe('MCP HTTP entry point (Cloudflare Workers)', () => {
 
         it('passes the gate for ID-JAG access tokens (typ: at+jwt)', async () => {
             // The MCP gate only checks the header. Signature verification happens
-            // downstream against the PostHog API (`IDJagAccessTokenAuthentication`).
+            // downstream against the Flind API (`IDJagAccessTokenAuthentication`).
             // Here we assert the response is NOT the gate's "Invalid token" 401 —
-            // anything else (init failure against a missing PostHog API, etc.) is
+            // anything else (init failure against a missing Flind API, etc.) is
             // acceptable since this test exercises only the gate.
             const headerB64 = btoa('{"typ":"at+jwt","alg":"RS256"}')
                 .replace(/=+$/, '')

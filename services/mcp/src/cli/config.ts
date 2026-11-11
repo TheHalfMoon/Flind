@@ -55,7 +55,7 @@ export function resolveCliConfig(args: string[] = []): CliConfig {
 export function requireApiKey(config: CliConfig): string {
     if (!config.apiKey) {
         throw new Error(
-            'Missing PostHog API key. Run `posthog-cli login` or set POSTHOG_CLI_API_KEY and POSTHOG_CLI_PROJECT_ID.'
+            'Missing Flind API key. Run `posthog-cli login` or set POSTHOG_CLI_API_KEY and POSTHOG_CLI_PROJECT_ID.'
         )
     }
     return config.apiKey

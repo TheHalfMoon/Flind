@@ -120,7 +120,7 @@ class TestSlackWorkspaceClaimsView(TestCase):
 
     @patch("products.slack_app.backend.api.SlackIntegration.slack_config")
     def test_other_kinds_for_same_id_do_not_count(self, mock_config):
-        # Same integration_id can be reused across PostHog integration kinds (e.g. a GitHub install
+        # Same integration_id can be reused across Flind integration kinds (e.g. a GitHub install
         # whose external id happens to collide with a Slack workspace). The endpoint must scope
         # to the requested Slack kinds only.
         mock_config.return_value = {"SLACK_APP_SIGNING_SECRET": self.signing_secret}

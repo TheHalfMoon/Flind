@@ -65,7 +65,7 @@ class CoinGeckoSource(ResumableSource[CoinGeckoSourceConfig, CoinGeckoResumeConf
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="CoinGecko",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your CoinGecko API key to pull cryptocurrency market data into the PostHog Data warehouse.
+            caption="""Enter your CoinGecko API key to pull cryptocurrency market data into the Flind Data warehouse.
 
 Create a key in your [CoinGecko developer dashboard](https://www.coingecko.com/en/developers/dashboard). Free **Demo** keys (`x-cg-demo-api-key`) and paid **Pro** keys (`x-cg-pro-api-key`) use different hosts — pick the plan that matches your key.
 

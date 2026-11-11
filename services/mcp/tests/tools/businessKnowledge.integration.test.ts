@@ -70,7 +70,7 @@ describe('Business knowledge sources', { concurrent: false }, () => {
             const name = generateUniqueKey('MCP Text Source')
             const result = await textCreateTool.handler(context, {
                 name,
-                text: 'PostHog is an open-source product analytics platform.',
+                text: 'Flind is an open-source product analytics platform.',
             })
             const source = parseToolResponse(result)
 

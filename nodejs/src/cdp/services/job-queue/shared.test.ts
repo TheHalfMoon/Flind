@@ -18,7 +18,7 @@ describe('sanitizeInvocationForPersistence', () => {
             type: 'organization',
             index: 0,
             url: 'http://localhost:8000/groups/0/org-1',
-            properties: { name: 'PostHog', employee_count: 100 },
+            properties: { name: 'Flind', employee_count: 100 },
         },
     }
 
@@ -214,7 +214,7 @@ describe('createInvocationSanitizer', () => {
             type: 'organization',
             index: 0,
             url: 'http://localhost:8000/groups/0/org-1',
-            properties: { name: 'PostHog' },
+            properties: { name: 'Flind' },
         },
     }
 

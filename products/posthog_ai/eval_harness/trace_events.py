@@ -1,4 +1,4 @@
-"""Emit sandboxed eval trace events ($ai_generation, $ai_span, $ai_trace) to PostHog.
+"""Emit sandboxed eval trace events ($ai_generation, $ai_span, $ai_trace) to Flind.
 
 Consumes a ``ParsedLog`` produced by ``acp_log.parse_log`` plus scoring
 results from Braintrust. Owns the constants shared with scorer tracing
@@ -35,9 +35,9 @@ def _parse_iso_timestamp(ts: str) -> datetime | None:
 
 
 class TraceEventEmitter:
-    """Emits PostHog $ai_* events for a single eval case trace.
+    """Emits Flind $ai_* events for a single eval case trace.
 
-    Holds the PostHog client, trace_id, and experiment metadata so individual
+    Holds the Flind client, trace_id, and experiment metadata so individual
     emit methods don't have to thread them through every call.
     """
 

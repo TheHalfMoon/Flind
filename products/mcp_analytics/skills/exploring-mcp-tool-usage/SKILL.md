@@ -1,7 +1,7 @@
 ---
 name: exploring-mcp-tool-usage
 description: >
-  Starting point for exploring how a PostHog MCP server's tools are used —
+  Starting point for exploring how a Flind MCP server's tools are used —
   routes a broad question to the typed tool that answers it. Use when the user
   asks "how is my MCP doing?", "what should I look at?", "explore my tool
   calls", "who uses my MCP tools?", "what are agents doing with the MCP?", or

@@ -21,7 +21,7 @@ export type MCPAnalyticsContext = {
 }
 
 /**
- * Build PostHog `$groups` from resolved workspace context. Uses `projectUuid`
+ * Build Flind `$groups` from resolved workspace context. Uses `projectUuid`
  * (not the numeric team id) as the `project` group key to match the convention
  * in `posthog/event_usage.py` so MCP events join with the rest of the product
  * in group-level analytics.

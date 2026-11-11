@@ -11,7 +11,7 @@ export const AGENT_TOOL_APPLY_BACK_CONTEXT_ITEM: AttachedContextItem = {
     type: 'instructions',
     hidden: true,
     value:
-        'You are running alongside the PostHog app the user has open, and your PostHog MCP tool calls are how you act on it. ' +
+        'You are running alongside the Flind app the user has open, and your Flind MCP tool calls are how you act on it. ' +
         'When you complete a relevant tool call, its result is applied directly to what the user is looking at – for example, ' +
         'an open insight or SQL editor picks up the query from a completed query tool call. Be proactive about calling tools: ' +
         'when the user asks you to create or change something, achieve it with the matching tool call rather than only ' +

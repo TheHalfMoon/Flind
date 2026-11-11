@@ -400,7 +400,7 @@ function Step3Content(): JSX.Element {
     return (
         <div className="space-y-4">
             <p className="text-sm text-muted">
-                Configure Customer.io to send a webhook when a user unsubscribes, so PostHog automatically records the
+                Configure Customer.io to send a webhook when a user unsubscribes, so Flind automatically records the
                 opt-out.
             </p>
 
@@ -521,7 +521,7 @@ function Step4Content(): JSX.Element {
     return (
         <div className="space-y-4">
             <p className="text-sm text-muted">
-                When users change their preferences on the PostHog-managed page, automatically sync those changes back
+                When users change their preferences on the Flind-managed page, automatically sync those changes back
                 to Customer.io. Only categories imported from Customer.io are synced.
             </p>
 

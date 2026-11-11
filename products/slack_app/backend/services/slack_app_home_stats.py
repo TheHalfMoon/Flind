@@ -13,7 +13,7 @@ than what gets drawn: `MAX_TREND_POINTS` picks daily-vs-weekly bucketing, and
 Everything is scoped to the tasks a Slack workspace started *and* the caller can already
 see: the mapping query filters on `team_id__in=accessible_team_ids`, which the caller
 derives from the same accessible-integration check the rest of the Home tab uses. A Slack
-workspace admin is not automatically a PostHog org member, so the aggregates must never
+workspace admin is not automatically a Flind org member, so the aggregates must never
 widen what the viewer could otherwise reach.
 """
 

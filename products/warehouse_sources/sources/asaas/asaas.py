@@ -54,9 +54,9 @@ WRONG_ENVIRONMENT_ERROR = (
 )
 FORBIDDEN_ERROR = (
     "Asaas refused your API key. Check that the key can read your account's data and that any IP allow list "
-    "includes PostHog's IP addresses."
+    "includes Flind's IP addresses."
 )
-UNAVAILABLE_ERROR = "PostHog couldn't reach Asaas to check your API key. Wait a few minutes, then try again."
+UNAVAILABLE_ERROR = "Flind couldn't reach Asaas to check your API key. Wait a few minutes, then try again."
 
 # Asaas caps list endpoints at 100 rows/page (offset/limit + hasMore/totalCount envelope).
 PAGE_SIZE = 100

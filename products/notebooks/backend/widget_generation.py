@@ -263,7 +263,7 @@ The source must:
 - Respond to container resizes with `ResizeObserver`. For HTML canvas or WebGL output, resize the renderer and update the camera or coordinate system without leaving whitespace.
 - Always provide controls for interacting with the visualization. For 3D output, support camera orbit, pan, and zoom with pointer and touch input, using only the allowed imports. For 2D output, provide controls for exploring or manipulating the data, such as filters, zoom, ranges, parameters, or series toggles.
 - Keep scene initialization stable. Update mutable camera, object, and interaction state without rebuilding the entire scene on every pointer movement or control change.
-- Be responsive and work in light and dark themes using PostHog theme tokens.
+- Be responsive and work in light and dark themes using Flind theme tokens.
 - Clean up timers, listeners, animation frames, Three.js resources, and renderers on unmount.
 - Keep fixed styling in Tailwind classes. Use inline styles only for runtime-computed values.
 
@@ -574,7 +574,7 @@ def generate_widget_source(
         try:
             stream = resolved_client.with_options(max_retries=0).messages.create(
                 model=model,
-                system="You are an expert widget engineer and technical artist. You generate secure, polished, self-contained React TypeScript widgets for PostHog notebooks.",
+                system="You are an expert widget engineer and technical artist. You generate secure, polished, self-contained React TypeScript widgets for Flind notebooks.",
                 messages=[{"role": "user", "content": request}],
                 output_config=WIDGET_SOURCE_OUTPUT_CONFIG,
                 temperature=WIDGET_MODEL_TEMPERATURE[model],

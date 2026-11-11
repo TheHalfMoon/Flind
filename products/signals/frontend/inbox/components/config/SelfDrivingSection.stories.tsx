@@ -38,7 +38,7 @@ interface CardState {
     issueTrackingConfig?: Record<string, string>
 }
 
-const GITHUB_INTEGRATION = { id: 1, kind: 'github', display_name: 'PostHog', config: {}, created_at: '2024-03-01' }
+const GITHUB_INTEGRATION = { id: 1, kind: 'github', display_name: 'Flind', config: {}, created_at: '2024-03-01' }
 
 function useAutonomyMocks({
     enabled = true,

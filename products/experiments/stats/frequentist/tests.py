@@ -217,7 +217,7 @@ class SequentialTwoSidedTTest(StatisticalTest):
             rho=self._rho,
         )
         # The Waudby-Smith eq. 9 takes the per-observation variance, but the rest of
-        # PostHog's frequentist plumbing passes around the variance of the estimator
+        # Flind's frequentist plumbing passes around the variance of the estimator
         # (SE^2 = Var_T/n_T + Var_C/n_C). Convert by multiplying by the combined sample
         # size; this keeps the e-value (eq. 155) and the half-width (eq. 9) consistent.
         s2_per_observation = pooled_variance * n

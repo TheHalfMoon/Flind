@@ -202,7 +202,7 @@ describe('suggestionCopy', () => {
         ['source_sync', "sources don't sync more often"],
         ['read_rate', "People don't read it more often"],
         ['consumer_refresh', "The views that read it don't refresh more often"],
-        ['fastest_schedule', 'the most often PostHog refreshes a view'],
+        ['fastest_schedule', 'the most often Flind refreshes a view'],
         ['savings', 'saves more than it costs'],
         [null, 'saves more than it costs'],
     ])('explains a %s interval with its own reason', (basis, reason) => {

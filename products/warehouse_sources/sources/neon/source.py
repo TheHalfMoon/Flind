@@ -42,7 +42,7 @@ _NEON_HOST_CAPTION = (
     "not the pooled host (the one with `-pooler`). Pooled connections work for standard "
     "syncs, but **change data capture (CDC)** requires the direct host, and you must enable "
     "**logical replication** in your Neon project settings first. Neon requires SSL, which "
-    "PostHog uses by default."
+    "Flind uses by default."
 )
 
 
@@ -97,7 +97,7 @@ class NeonSource(PostgresSource):
             category=DataWarehouseSourceCategory.DATABASES,
             keywords=["serverless postgres", "postgresql"],
             iconPath="/static/services/neon.png",
-            caption="Enter your Neon credentials to automatically pull your data into the PostHog Data warehouse",
+            caption="Enter your Neon credentials to automatically pull your data into the Flind Data warehouse",
             docsUrl="https://posthog.com/docs/cdp/sources/neon",
             fields=fields,
             releaseStatus=ReleaseStatus.GA,

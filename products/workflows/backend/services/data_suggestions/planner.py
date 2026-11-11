@@ -170,7 +170,7 @@ _SUGGEST_TASK = (
 
 _PICKED_EVENTS_TASK = (
     "The team was about to send these events to an email tool. Suggest one email workflow for each event, "
-    "so the team can send those emails from PostHog instead."
+    "so the team can send those emails from Flind instead."
 )
 
 _SUGGEST_FOCUS = f"- {_ONBOARDING_RULE}\n- {_REVENUE_RULE}"
@@ -178,7 +178,7 @@ _SUGGEST_FOCUS = f"- {_ONBOARDING_RULE}\n- {_REVENUE_RULE}"
 # The team already picked the events, so there is nothing left to rank.
 _PICKED_EVENTS_FOCUS = "- Each workflow sends at least one email."
 
-_IDEAS_PROMPT = f"""You suggest marketing and automation workflows for a product team using PostHog Workflows.
+_IDEAS_PROMPT = f"""You suggest marketing and automation workflows for a product team using Flind Workflows.
 {{task}}
 
 Rules:
@@ -192,7 +192,7 @@ Rules:
 - {_COPY_RULES}
 """
 
-_STEPS_PROMPT = f"""You plan the steps of one PostHog workflow. The workflow and its outline are given below.
+_STEPS_PROMPT = f"""You plan the steps of one Flind workflow. The workflow and its outline are given below.
 Follow the outline unless a step cannot work. Use at most {{max_steps}} steps, as many as the workflow needs.
 
 Step types:
@@ -200,7 +200,7 @@ Step types:
 - push: a notification on the person's phone. Write push_title and push_body.
 - sms: a text message to the person. The team adds the message.
 - slack: a message to the team's Slack channel. Write the message.
-- function: any step from the step catalog, such as a webhook, a CRM update or a PostHog action. Set template_id.
+- function: any step from the step catalog, such as a webhook, a CRM update or a Flind action. Set template_id.
 - delay: wait a fixed time.
 - wait_until_time_window: wait for a time of day or day of the week the team picks.
 - wait_until_event: wait until the person does one of the project's events, at most duration.
@@ -350,7 +350,7 @@ def plan_steps(
                 f"id={template.id} name={template.name} subject={template.subject}"
                 for template in context.email_templates
             ],
-            source="email templates this team saved in PostHog",
+            source="email templates this team saved in Flind",
         )
     return invoke_structured(
         team=team,

@@ -74,8 +74,8 @@ _DESKTOP_COMPONENT_RESOURCES = {
 }
 
 _DESKTOP_ACCESS_MESSAGES = {
-    "startup_plan": "PostHog Desktop isn't available for Startup or YC program organizations.",
-    "prepaid_credits": "PostHog Desktop isn't available while this organization has prepaid credits.",
+    "startup_plan": "Flind Desktop isn't available for Startup or YC program organizations.",
+    "prepaid_credits": "Flind Desktop isn't available while this organization has prepaid credits.",
 }
 
 
@@ -96,7 +96,7 @@ def _disabled(reason: str, http_status: int = status.HTTP_200_OK, **extra: Any) 
 def _desktop_oauth_credential(request: Request) -> tuple[OAuthAccessToken | None, Response | None]:
     authenticator = getattr(request, "successful_authenticator", None)
     if not isinstance(authenticator, OAuthAccessTokenAuthentication):
-        return None, _disabled("oauth_required", status.HTTP_403_FORBIDDEN, detail="Sign in with PostHog Desktop.")
+        return None, _disabled("oauth_required", status.HTTP_403_FORBIDDEN, detail="Sign in with Flind Desktop.")
     access_token = authenticator.access_token
     application = getattr(access_token, "application", None)
     client_id = getattr(application, "client_id", None)
@@ -113,7 +113,7 @@ def _desktop_oauth_credential(request: Request) -> tuple[OAuthAccessToken | None
         return None, _disabled(
             "oauth_required",
             status.HTTP_403_FORBIDDEN,
-            detail="This credential cannot mint PostHog Desktop gateway tokens.",
+            detail="This credential cannot mint Flind Desktop gateway tokens.",
         )
     return access_token, None
 
@@ -187,7 +187,7 @@ class DesktopAccessViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             200: OpenApiResponse(response=DesktopAccessResponseSerializer),
             503: OpenApiResponse(response=TaskRunErrorResponseSerializer),
         },
-        summary="Check PostHog Desktop access",
+        summary="Check Flind Desktop access",
         description="Evaluate Desktop access for the selected project and organization.",
     )
     @action(detail=False, methods=["get"], url_path="access", required_scopes=["llm_gateway:read"])
@@ -200,7 +200,7 @@ class DesktopAccessViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
                     {
                         "type": "service_unavailable",
                         "code": "desktop_access_unavailable",
-                        "error": "We couldn't verify PostHog Desktop access. Try again.",
+                        "error": "We couldn't verify Flind Desktop access. Try again.",
                     }
                 ).data,
                 status=status.HTTP_503_SERVICE_UNAVAILABLE,
@@ -280,7 +280,7 @@ class DesktopAccessViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             return _disabled(
                 "desktop_access_unavailable",
                 status.HTTP_503_SERVICE_UNAVAILABLE,
-                detail="We couldn't verify PostHog Desktop access. Try again.",
+                detail="We couldn't verify Flind Desktop access. Try again.",
             )
         if not decision.allowed:
             access_reason = decision.reason.value if decision.reason is not None else None
@@ -288,7 +288,7 @@ class DesktopAccessViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
                 "desktop_access_blocked",
                 status.HTTP_403_FORBIDDEN,
                 access={"allowed": False, "reason": access_reason},
-                detail=_DESKTOP_ACCESS_MESSAGES.get(access_reason or "", "PostHog Desktop access is required."),
+                detail=_DESKTOP_ACCESS_MESSAGES.get(access_reason or "", "Flind Desktop access is required."),
             )
 
         try:

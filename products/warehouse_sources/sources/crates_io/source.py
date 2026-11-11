@@ -45,7 +45,7 @@ class CratesIOSource(SimpleSource[CratesIOSourceConfig]):
             label="crates.io",
             releaseStatus=ReleaseStatus.GA,
             keywords=["rust", "cargo", "crates"],
-            caption="""Pull metadata, versions, owners, dependencies, and daily download counts for Rust crates from the [crates.io](https://crates.io) API into the PostHog Data warehouse.
+            caption="""Pull metadata, versions, owners, dependencies, and daily download counts for Rust crates from the [crates.io](https://crates.io) API into the Flind Data warehouse.
 
 crates.io's read APIs are public, so no credentials are required. There is no practical way to sync the whole registry, so enter the crate names you want to track, one per line (or comma-separated). For example:
 

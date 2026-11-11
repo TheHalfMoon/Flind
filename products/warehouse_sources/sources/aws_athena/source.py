@@ -89,7 +89,7 @@ class AwsAthenaSource(SQLSource[AwsAthenaSourceConfig]):
             name=ExternalDataSourceType.AWSATHENA,
             category=DataWarehouseSourceCategory.DATABASES,
             label="Amazon Athena",
-            caption="""Sync tables from an AWS Glue database through Amazon Athena into the PostHog Data warehouse.
+            caption="""Sync tables from an AWS Glue database through Amazon Athena into the Flind Data warehouse.
 
 Create an IAM user or role with `glue:GetDatabase`, `glue:GetTables`, `glue:GetTable`, `glue:GetPartitions`, `glue:GetPartition`, `glue:BatchGetPartition`, `athena:GetWorkGroup`, `athena:StartQueryExecution`, `athena:GetQueryExecution`, `athena:GetQueryResults` and `athena:StopQueryExecution`, plus read access to the tables' S3 data and read and write access to the query result location. Paste its access key ID and secret access key.
 

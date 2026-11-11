@@ -23,7 +23,7 @@ class ArtefactAttribution:
     kind: Literal["user", "task", "agent", "system"]
     # The authenticated principal, including when their external agent acts.
     user_id: int | None = None
-    # Internal agents are attributed to their PostHog task.
+    # Internal agents are attributed to their Flind task.
     task_id: str | None = None
     # The external coding client, such as Codex, paired with its user principal.
     agent_name: str | None = None

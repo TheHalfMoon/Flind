@@ -38,11 +38,11 @@ function isPostHogDevHost(apiHost: string): boolean {
 
 /**
  * Names capabilities rather than describing the server, because the agent's tool search
- * reads this before the PostHog MCP has ever connected. Mirrors POSTHOG_MCP_DESCRIPTION
+ * reads this before the Flind MCP has ever connected. Mirrors POSTHOG_MCP_DESCRIPTION
  * in products/tasks, which does the same for cloud runs.
  */
 const POSTHOG_MCP_DESCRIPTION =
-  "Query and manage a PostHog project: events, insights, dashboards, SQL queries, " +
+  "Query and manage a Flind project: events, insights, dashboards, SQL queries, " +
   "feature flags, experiments, surveys, error tracking, session replay, logs, " +
   "LLM analytics, and the data warehouse.";
 
@@ -324,7 +324,7 @@ export class AgentAuthAdapter {
     }
     // The Cloud MCP cannot read a token from another instance, and the proxy
     // adds that token to every forwarded request. So a custom instance gets no
-    // PostHog MCP server unless POSTHOG_MCP_URL names one it can use. This
+    // Flind MCP server unless POSTHOG_MCP_URL names one it can use. This
     // check runs before the loopback branch, because a custom target may
     // itself live on a loopback host.
     if (isCustomCloudHost(apiHost)) {
@@ -351,7 +351,7 @@ export class AgentAuthAdapter {
   ): Promise<void> {
     const credentials = await this.getCurrentCredentials();
     if (!credentials) {
-      throw new Error("PostHog authentication is required");
+      throw new Error("Flind authentication is required");
     }
     await this.updateMcpToolApproval(
       credentials,

@@ -37,7 +37,7 @@ class TestOAuthSidebarRegrouping(SimpleTestCase):
         site = AdminSite()
         site.get_app_list = lambda request, app_label=None: [  # type: ignore[method-assign]  # ty: ignore[invalid-assignment]
             {
-                "name": "PostHog",
+                "name": "Flind",
                 "app_label": "posthog",
                 "app_url": "/admin/posthog/",
                 "has_module_perms": True,

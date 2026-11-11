@@ -6,7 +6,7 @@ To run these tests you'll need:
 - The HUBSPOT_APP_CLIENT_ID and HUBSPOT_APP_CLIENT_SECRET environment variables (these are required for OAuth2
     authentication)
 - The HUBSPOT_SECRET_KEY and HUBSPOT_REFRESH_TOKEN environment variables.
-    - You can obtain these by running the PostHog app locally, then linking a new Hubspot source using OAuth2 then
+    - You can obtain these by running the Flind app locally, then linking a new Hubspot source using OAuth2 then
         grabbing these from the database (in external_data_source.job_inputs)
 
 Then you can run the tests using:

@@ -61,7 +61,7 @@ export function BroadcastAudienceListModal(): JSX.Element {
                     prefix={<span className="text-secondary">Cohort name</span>}
                 />
                 <div className="text-xs text-secondary">
-                    People who aren't in PostHog yet are created. A column with the same name as an existing property
+                    People who aren't in Flind yet are created. A column with the same name as an existing property
                     replaces its value, and a blank cell leaves it as it is. Each row is sent as one event, so it counts
                     toward your event usage and triggers any destinations that run on all events.
                     {audienceProperties.length > 0

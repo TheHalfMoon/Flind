@@ -201,7 +201,7 @@ class CloudflareSource(SimpleSource[CloudflareSourceConfig]):
             name=ExternalDataSourceType.CLOUDFLARE,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Cloudflare",
-            caption="""Enter your Cloudflare API token to pull your Cloudflare configuration, security, and usage data into the PostHog Data warehouse.
+            caption="""Enter your Cloudflare API token to pull your Cloudflare configuration, security, and usage data into the Flind Data warehouse.
 
 Create an API token in the [Cloudflare dashboard](https://dash.cloudflare.com/profile/api-tokens) with read permissions for the areas you want to sync, such as Account Settings, Zone, Zone Analytics, DNS, Firewall Services, Logs, Workers, and Access. Zone tables are synced from every zone the token can read, and account tables from every account. Zones and accounts the token can't read are skipped.""",
             iconPath="/static/services/cloudflare.svg",
@@ -283,7 +283,7 @@ Create an API token in the [Cloudflare dashboard](https://dash.cloudflare.com/pr
         return (
             False,
             f"Cloudflare rejected your API token.{detail} Check the token is still active, isn't "
-            "restricted to IP addresses that exclude PostHog, and hasn't expired, then reconnect.",
+            "restricted to IP addresses that exclude Flind, and hasn't expired, then reconnect.",
         )
 
     def source_for_pipeline(self, config: CloudflareSourceConfig, inputs: SourceInputs) -> SourceResponse:

@@ -101,7 +101,7 @@ export type aiFirstHandoffLogicType = MakeLogicType<
 >
 
 /**
- * The MCP exec path keeps the created record on the result's metadata for PostHog AI runs, even when the
+ * The MCP exec path keeps the created record on the result's metadata for Flind AI runs, even when the
  * text the model reads is truncated. Its `id` is the only exact correlation; a name lookup is a guess.
  */
 function createdIdFromOutput(event: ToolStreamEvent): string | null {

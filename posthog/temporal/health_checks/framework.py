@@ -53,7 +53,7 @@ class AlertContent:
 
     title: str
     summary: str
-    # Relative path inside the PostHog app (e.g. "/health/sdk-health").
+    # Relative path inside the Flind app (e.g. "/health/sdk-health").
     # HogFunction templates concatenate this onto {project.url}.
     link: str
 
@@ -252,7 +252,7 @@ class HealthCheck:
     #
     # Set it to a Remediation with two naturally-indented triple-quoted strings
     # (the Remediation constructor normalises the indentation):
-    #   - human: how to fix it in the PostHog UI (no need to repeat the
+    #   - human: how to fix it in the Flind UI (no need to repeat the
     #     "what's wrong" — title/summary already cover that).
     #   - agent: how an agent should investigate (which MCP tools to call) and,
     #     where the fix lives in the user's codebase, how to apply it directly

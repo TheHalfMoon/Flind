@@ -52,7 +52,7 @@ Bring evidence, not seniority.
 - **Current position:** no chat input in the picker.
 - **Evidence:** chat isn't discoverable: you have to know what to ask.
   Research shows natural-language interfaces are faster but less accurate, and users trust them too much.
-  Some users already rescue themselves by asking PostHog AI.
+  Some users already rescue themselves by asking Flind AI.
 - **To test:** let search accept a sentence and show the interpreted filter, editable.
   Measure pick rate and the share of interpreted filters the user edits or undoes.
 

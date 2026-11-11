@@ -16,7 +16,7 @@ async function createRepoTemplate(): Promise<string> {
   const dir = await mkdtemp(path.join(tmpdir(), "posthog-code-checkpoint-"));
   const git = createGitClient(dir);
   await git.init();
-  await git.addConfig("user.name", "PostHog Code Test");
+  await git.addConfig("user.name", "Flind Code Test");
   await git.addConfig("user.email", "posthog-code-test@example.com");
   await git.addConfig("commit.gpgsign", "false");
 
@@ -275,7 +275,7 @@ describe("checkpoint sagas", () => {
     await withRepo(async (repoPath) => {
       const subGit = createGitClient(subRepo);
       await subGit.init();
-      await subGit.addConfig("user.name", "PostHog Code Test");
+      await subGit.addConfig("user.name", "Flind Code Test");
       await subGit.addConfig("user.email", "posthog-code-test@example.com");
       await subGit.addConfig("commit.gpgsign", "false");
       await writeFile(path.join(subRepo, "sub.txt"), "sub\n");
@@ -347,7 +347,7 @@ describe("checkpoint sagas", () => {
     try {
       const git = createGitClient(repoPath);
       await git.init();
-      await git.addConfig("user.name", "PostHog Code Test");
+      await git.addConfig("user.name", "Flind Code Test");
       await git.addConfig("user.email", "posthog-code-test@example.com");
 
       await writeFile(path.join(repoPath, "x.txt"), "one\n");

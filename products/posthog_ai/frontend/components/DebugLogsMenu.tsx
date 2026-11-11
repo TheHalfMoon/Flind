@@ -19,7 +19,7 @@ export interface DebugLogsMenuProps {
 
 /**
  * Overflow menu carrying the debug-logs preference for hosts that have no scene chrome to hang it on.
- * The `/tasks` runner uses the scene menu bar and scene panel instead; this is the form the PostHog AI
+ * The `/tasks` runner uses the scene menu bar and scene panel instead; this is the form the Flind AI
  * scene and side panel use, where the only surface is a hand-rolled header.
  *
  * Renders nothing unless the current user may control debug logs, so a non-staff viewer never sees an

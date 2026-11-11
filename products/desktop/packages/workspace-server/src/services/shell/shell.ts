@@ -136,7 +136,7 @@ function buildShellEnv(
   }
 
   Object.assign(env, {
-    TERM_PROGRAM: "PostHog",
+    TERM_PROGRAM: "Flind",
     COLORTERM: "truecolor",
     FORCE_COLOR: "3",
     ...additionalEnv,

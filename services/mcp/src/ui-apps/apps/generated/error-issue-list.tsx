@@ -11,7 +11,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function ErrorIssueListApp(): JSX.Element {
     return (
-        <AppWrapper<ErrorIssueListData> appName="PostHog Error Issue List">
+        <AppWrapper<ErrorIssueListData> appName="Flind Error Issue List">
             {({ data, app }) => <ErrorIssueListContent data={data!} app={app} />}
         </AppWrapper>
     )

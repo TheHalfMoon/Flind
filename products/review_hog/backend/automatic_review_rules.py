@@ -56,7 +56,7 @@ def is_bot_login(github_login: str) -> bool:
 
 @frozen
 class AuthorChoice:
-    # None when the GitHub author maps to no PostHog user.
+    # None when the GitHub author maps to no Flind user.
     user_id: int | None
     is_bot: bool
     default_mode: DefaultReviewMode

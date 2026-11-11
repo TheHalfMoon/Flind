@@ -25,7 +25,7 @@ export function renderExtracted(out: Output, result: ExtractReport & { dryRun: b
 }
 
 export default defineCommand({
-    description: 'Unpack a symbol set file, such as one PostHog stored',
+    description: 'Unpack a symbol set file, such as one Flind stored',
     writes: true,
     args: {
         file: { description: 'The symbol set file' },

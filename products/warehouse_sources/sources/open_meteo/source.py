@@ -25,7 +25,7 @@ from products.warehouse_sources.sources.sdk import (
     detect,
 )
 
-CAPTION = """Pull weather and air quality data from [Open-Meteo](https://open-meteo.com) into the PostHog Data warehouse, so you can join it against your own events.
+CAPTION = """Pull weather and air quality data from [Open-Meteo](https://open-meteo.com) into the Flind Data warehouse, so you can join it against your own events.
 
 Open-Meteo is free for non-commercial use and needs no API key. Commercial plans issue a key that also routes requests to Open-Meteo's reserved-capacity hosts, so add one below if you have it.
 

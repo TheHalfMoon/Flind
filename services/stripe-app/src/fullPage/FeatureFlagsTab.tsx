@@ -78,7 +78,7 @@ const FeatureFlagsTab = ({ client, projectId }: Props): JSX.Element => {
             <Banner
                 type="caution"
                 title="Project not linked"
-                description="A PostHog project_id isn't stored yet — reconnect to load feature flags."
+                description="A Flind project_id isn't stored yet — reconnect to load feature flags."
             />
         )
     }
@@ -94,7 +94,7 @@ const FeatureFlagsTab = ({ client, projectId }: Props): JSX.Element => {
     }
     if (!loading && flags.length === 0) {
         return (
-            <Banner type="default" title="No feature flags yet" description="Create one in PostHog to see it here." />
+            <Banner type="default" title="No feature flags yet" description="Create one in Flind to see it here." />
         )
     }
 
@@ -158,7 +158,7 @@ const FeatureFlagsTab = ({ client, projectId }: Props): JSX.Element => {
                     </Box>
                 )}
                 <Box css={{ paddingX: 'medium' }}>
-                    <ExternalLink href={`${posthogBase}/feature-flags`}>View in PostHog</ExternalLink>
+                    <ExternalLink href={`${posthogBase}/feature-flags`}>View in Flind</ExternalLink>
                 </Box>
             </Box>
         </>

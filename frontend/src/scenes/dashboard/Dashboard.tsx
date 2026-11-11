@@ -73,7 +73,7 @@ interface DashboardProps {
     headerActions?: JSX.Element
     /** Uses less vertical space above the tiles, for a page where the dashboard is a product's home. */
     compact?: boolean
-    /** The parent page reloads the dashboard when PostHog AI adds charts to it, so the header does not. */
+    /** The parent page reloads the dashboard when Flind AI adds charts to it, so the header does not. */
     parentReloadsOnAIChanges?: boolean
 }
 

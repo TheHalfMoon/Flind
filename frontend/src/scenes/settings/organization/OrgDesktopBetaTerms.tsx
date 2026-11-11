@@ -19,7 +19,7 @@ export function OrganizationDesktopBetaTerms(): JSX.Element {
     const disabledReason = restrictionReason
         ? ORG_ADMIN_REQUIRED_TOOLTIP
         : desktopBetaTermsAccepted
-          ? 'The PostHog Desktop beta terms have already been accepted for this organization.'
+          ? 'The Flind Desktop beta terms have already been accepted for this organization.'
           : undefined
 
     return (

@@ -171,7 +171,7 @@ class TestCheckProductAccess:
             ("conversations", "oauth_access_token", "any-app-id", "claude-sonnet-5", False, "not authorized"),
             ("conversations", "oauth_access_token", POSTHOG_CODE_US_APP_ID, "claude-sonnet-5", True, None),
             ("conversations", "oauth_access_token", POSTHOG_CODE_EU_APP_ID, "claude-sonnet-4-6", True, None),
-            # posthog_ai allows API keys with any model and OAuth from the PostHog AI app.
+            # posthog_ai allows API keys with any model and OAuth from the Flind AI app.
             ("posthog_ai", "personal_api_key", None, "claude-sonnet-4-5", True, None),
             ("posthog_ai", "personal_api_key", None, "gpt-5.3-codex", True, None),
             ("posthog_ai", "oauth_access_token", "any-app-id", "claude-sonnet-4-5", False, "not authorized"),
@@ -641,7 +641,7 @@ class TestServerCredentialConfigInvariant:
     @pytest.mark.parametrize("product", [p for p in _CODE_APP_PRODUCTS if p != "posthog_code"])
     def test_internal_code_app_products_require_a_server_credential(self, product: str):
         assert PRODUCTS[product].requires_server_credential, (
-            f"'{product}' accepts the PostHog Desktop OAuth app but doesn't require a server-minted "
+            f"'{product}' accepts the Flind Desktop OAuth app but doesn't require a server-minted "
             "credential, so a user's own Desktop OAuth token could reach it and route around the "
             "posthog_code free-tier model gate"
         )

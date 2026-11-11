@@ -6,7 +6,7 @@ type FilteredFlag = flagsToolbarLogicValues['filteredFlags'][number]
 export interface FlagInfo {
     key: string
     id: number | null
-    /** The value PostHog evaluates for the signed-in user. Choosing it again removes the override. */
+    /** The value Flind evaluates for the signed-in user. Choosing it again removes the override. */
     value: string | boolean
     currentValue: string | boolean
     hasOverride: boolean

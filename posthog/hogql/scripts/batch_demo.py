@@ -1,4 +1,4 @@
-"""Compare separate and batched HogQL queries against an existing local PostHog database."""
+"""Compare separate and batched HogQL queries against an existing local Flind database."""
 
 import json
 import argparse
@@ -282,7 +282,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--queries", type=Path, help="JSON object mapping query IDs to HogQL strings")
     parser.add_argument("--sharing", action="store_true", help="Try extensible sharing rules; defaults to a top-N pair")
-    parser.add_argument("--team-id", type=int, help="Existing PostHog project ID (required for database execution)")
+    parser.add_argument("--team-id", type=int, help="Existing Flind project ID (required for database execution)")
     parser.add_argument(
         "--synthetic", action="store_true", help="Use generated events instead of the existing database"
     )

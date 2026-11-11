@@ -70,7 +70,7 @@ class InstagramSource(ResumableSource[InstagramSourceConfig, InstagramResumeConf
             name=ExternalDataSourceType.INSTAGRAM,
             category=DataWarehouseSourceCategory.COMMUNICATION,
             label="Instagram",
-            caption="""Pull posts, stories, comments and insights from an Instagram professional (Business or Creator) account into the PostHog Data warehouse.
+            caption="""Pull posts, stories, comments and insights from an Instagram professional (Business or Creator) account into the Flind Data warehouse.
 
 Connect your Instagram account, then pick the professional account you want to sync. The account has to be linked to a Facebook page, and you'll be asked to grant access to that page along with Instagram insights and comments.""",
             iconPath="/static/services/instagram.png",

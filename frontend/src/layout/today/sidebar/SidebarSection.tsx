@@ -16,7 +16,7 @@ const TRIGGER_CLASS_NAME =
 
 export interface SidebarSectionProps {
     label: string
-    /** Shows before the label, for a section whose source matters, such as the PostHog mark. */
+    /** Shows before the label, for a section whose source matters, such as the Flind mark. */
     icon?: JSX.Element | null
     open: boolean
     count: number

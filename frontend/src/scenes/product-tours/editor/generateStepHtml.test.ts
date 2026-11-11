@@ -127,13 +127,13 @@ describe('generateStepHtml', () => {
                             {
                                 type: 'text',
                                 marks: [{ type: 'link', attrs: { href: 'https://posthog.com' } }],
-                                text: 'PostHog',
+                                text: 'Flind',
                             },
                         ],
                     },
                 ],
             },
-            '<p><a href="https://posthog.com">PostHog</a></p>',
+            '<p><a href="https://posthog.com">Flind</a></p>',
         ],
         [
             'bold text',

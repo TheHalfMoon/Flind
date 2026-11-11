@@ -39,7 +39,7 @@ function decodeBase64Urlsafe(secret: string): Buffer {
 }
 
 /**
- * Fernet-compatible encryption codec that matches PostHog's Python EncryptionCodec.
+ * Fernet-compatible encryption codec that matches Flind's Python EncryptionCodec.
  *
  * The Python side (posthog/temporal/common/codec.py) derives each Fernet key by
  * zero-padding to 32 bytes, then base64url-encoding. The first 16 decoded bytes

@@ -45,7 +45,7 @@ def create_audit_task(*, team_id: int, user_id: int, skill: SkillPrompt, noteboo
         description=(
             f"{skill.body}\n\nThe audited project ID is {team_id}. "
             f"Use this project for every query. Save the audit to the existing notebook {notebook_short_id} "
-            "with PostHog MCP, even if the skill asks you to create a notebook. "
+            "with Flind MCP, even if the skill asks you to create a notebook. "
             "Read the saved notebook before you return its short ID as notebook_short_id."
         ),
         profile=ACCOUNT_AUDIT,

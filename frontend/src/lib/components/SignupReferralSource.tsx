@@ -187,7 +187,7 @@ export default function SignupReferralSource({ disabled }: { disabled: boolean }
                                 <LemonField
                                     className="pt-4"
                                     name="referral_source_influencer"
-                                    label="Which account or person led you to PostHog?"
+                                    label="Which account or person led you to Flind?"
                                     help="Name the account, channel, or person if you remember"
                                     showOptional
                                 >

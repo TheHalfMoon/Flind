@@ -186,7 +186,7 @@ def _resolve_edited_questions(
 
 
 def _save_through_survey_api(tool: MaxTool, data: dict[str, Any], survey: Survey | None = None) -> Survey:
-    """Save with the serializer behind the survey API, so PostHog AI gets the API's validation and side effects."""
+    """Save with the serializer behind the survey API, so Flind AI gets the API's validation and side effects."""
     team = tool._team
     serializer = SurveySerializerCreateUpdateOnly(
         survey,

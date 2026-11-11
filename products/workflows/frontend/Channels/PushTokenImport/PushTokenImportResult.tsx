@@ -24,7 +24,7 @@ export function PushTokenImportResult(): JSX.Element | null {
                 <span className="text-sm">
                     {unknown_person_devices.toLocaleString()}{' '}
                     {pluralize(unknown_person_devices, 'device has', 'devices have', false)} a distinct ID that no
-                    person in PostHog has. Check that it's the ID your app passes to identify. If the IDs are right,
+                    person in Flind has. Check that it's the ID your app passes to identify. If the IDs are right,
                     import them anyway to create those persons.
                 </span>
             ) : null}

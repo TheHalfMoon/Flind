@@ -55,7 +55,7 @@ export function parseEvidenceLink(
 }
 
 /**
- * Project-relative PostHog web path for an evidence target, or null when the
+ * Project-relative Flind web path for an evidence target, or null when the
  * kind has no canonical page to open. Paths come from the kind registry.
  */
 export function evidenceWebPath(kind: string, id: string): string | null {

@@ -174,7 +174,7 @@ describe('todayLogic', () => {
             ],
         },
     ])(
-        'sends PostHog AI the question with $shown as context',
+        'sends Flind AI the question with $shown as context',
         async ({ report, current, sample, fromReportPage, expected, absent }) => {
             listResponse = [200, { results: [makeReport({ id: 'r-1' })], count: 1 }]
             reportResponse = current ?? (report ? [200, report] : null)

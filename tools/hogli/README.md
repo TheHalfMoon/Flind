@@ -121,7 +121,7 @@ For complex logic, define plain Click commands and reference them from `hogli.ya
 
 Click command modules are lazy-loaded. Top-level `hogli --help` uses the manifest description without importing Python command modules; `hogli <command> --help` and command execution import the target on demand.
 
-The Click command name must match the manifest key — drift surfaces as a `ClickException` on resolution. The framework follows Click's recommendation that lazy loading be paired with a test that runs `--help` on each subcommand; PostHog's test suite parametrizes over every `click:` entry in `hogli.yaml` to do exactly that.
+The Click command name must match the manifest key — drift surfaces as a `ClickException` on resolution. The framework follows Click's recommendation that lazy loading be paired with a test that runs `--help` on each subcommand; Flind's test suite parametrizes over every `click:` entry in `hogli.yaml` to do exactly that.
 
 Mark commands hidden via `hidden: true` in `hogli.yaml`. Don't use `@click.command(hidden=True)` — the manifest is the single source of truth.
 
@@ -192,7 +192,7 @@ build:
     description: Run build pipelines
 ```
 
-The dashed outer dir + underscored inner package follows PEP 8 (dashed project name, underscored import name). This is the layout PostHog itself uses.
+The dashed outer dir + underscored inner package follows PEP 8 (dashed project name, underscored import name). This is the layout Flind itself uses.
 
 ## Extension Hooks
 

@@ -515,7 +515,7 @@ def test_read_only_transaction_disables_the_schema_only_when_the_source_raised_i
             "attempts, new connections are temporarily blocked",
             TRANSIENT_POOLER_MESSAGE,
         ),
-        # PostHog's own egress proxy refusing or throttling the CONNECT.
+        # Flind's own egress proxy refusing or throttling the CONNECT.
         (
             "egress_proxy_bad_gateway",
             ExternalDataSourceType.SALESFORCE,

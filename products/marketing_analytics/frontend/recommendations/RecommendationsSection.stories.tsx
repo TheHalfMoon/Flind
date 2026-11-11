@@ -232,7 +232,7 @@ const RESULTS: MarketingAnalyticsRecommendation[] = [
         level: 'account',
         subject: 'Acme Ads',
         action: "Add utm_term={keyword} to the account's Final URL suffix",
-        reason: "98% of the project's 4,310 Google Ads sessions in the selected dates have no utm_term, so PostHog conversion goals cannot be tied to the keyword that brought each visitor.",
+        reason: "98% of the project's 4,310 Google Ads sessions in the selected dates have no utm_term, so Flind conversion goals cannot be tied to the keyword that brought each visitor.",
         impactDirection: 'gain',
     }),
 ]

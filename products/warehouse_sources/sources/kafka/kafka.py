@@ -60,20 +60,20 @@ AUTHENTICATION_FAILED_MESSAGE = (
 )
 MISSING_SASL_CREDENTIALS_MESSAGE = "Enter a username and password, or choose no authentication."
 TLS_FAILED_MESSAGE = (
-    "PostHog could not open a TLS connection to your Kafka brokers. Check that the brokers accept TLS "
+    "Flind could not open a TLS connection to your Kafka brokers. Check that the brokers accept TLS "
     "on these ports, and add your CA certificate if a public certificate authority did not sign theirs."
 )
 UNREACHABLE_MESSAGE = (
-    "PostHog could not connect to your Kafka brokers. Check the bootstrap servers, and that the brokers "
+    "Flind could not connect to your Kafka brokers. Check the bootstrap servers, and that the brokers "
     "accept connections from the internet."
 )
 NO_TOPICS_MESSAGE = (
-    "PostHog connected to Kafka but found no topics. Check that this user has permission to describe "
+    "Flind connected to Kafka but found no topics. Check that this user has permission to describe "
     "and read the topics you want to import."
 )
 TOPIC_NOT_FOUND_MESSAGE = "The Kafka topic for this table no longer exists, or this user can no longer read it."
 KAFKA_CLOUD_UNAVAILABLE_MESSAGE = (
-    "Kafka sources are not available on PostHog Cloud because the Kafka client cannot pin broker DNS addresses."
+    "Kafka sources are not available on Flind Cloud because the Kafka client cannot pin broker DNS addresses."
 )
 
 _SASL_MECHANISMS: dict[str, str] = {

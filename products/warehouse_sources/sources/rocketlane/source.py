@@ -46,7 +46,7 @@ class RocketlaneSource(ResumableSource[RocketlaneSourceConfig, RocketlaneResumeC
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Rocketlane",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Rocketlane API key to pull your Rocketlane data into the PostHog Data warehouse.
+            caption="""Enter your Rocketlane API key to pull your Rocketlane data into the Flind Data warehouse.
 
 You can generate an API key under **Settings → API** in the [Rocketlane app](https://app.rocketlane.com/). This single key grants read access to your projects, phases, spaces, tasks, time entries, time-offs, resource allocations, users, fields, and invoices.
 """,

@@ -86,7 +86,7 @@ class DocusignSource(ResumableSource[DocusignSourceConfig, DocusignResumeConfig]
             name=ExternalDataSourceType.DOCUSIGN,
             category=DataWarehouseSourceCategory.SALES,
             label="DocuSign",
-            caption="""Connect your DocuSign account to pull envelopes, recipients, documents, custom fields, form data, audit events, templates, bulk send batches and their envelopes, PowerForms and their form data, billing invoices, users, and folders into the PostHog Data warehouse.
+            caption="""Connect your DocuSign account to pull envelopes, recipients, documents, custom fields, form data, audit events, templates, bulk send batches and their envelopes, PowerForms and their form data, billing invoices, users, and folders into the Flind Data warehouse.
 
 Create an integration key in [DocuSign Apps and Keys](https://apps.docusign.com/admin/apps-and-keys). JWT grant is the option to pick: add an RSA keypair to the key, grant consent once for the user you want to impersonate, and paste that user's API user ID. Production keys have to pass DocuSign's go-live review before they work outside the demo environment.
 

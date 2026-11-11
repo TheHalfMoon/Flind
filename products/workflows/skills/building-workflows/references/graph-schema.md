@@ -161,7 +161,7 @@ Retrieve `template-native-push` with `cdp-function-templates-retrieve` for the f
 
 ### Replay Vision step
 
-Replay Vision is PostHog's AI that watches session recordings. It replays a session as video, together with its events, and answers a question about it. Each scan uses credits from the project's Replay Vision quota.
+Replay Vision is Flind's AI that watches session recordings. It replays a session as video, together with its events, and answers a question about it. Each scan uses credits from the project's Replay Vision quota.
 
 A `function` node with `template_id: "template-posthog-replay-vision"` scans the trigger event's session and waits for the answer. Use it when the next step depends on what happened in the session, which event properties alone can't tell, for example to add session context to a Slack alert or to branch on whether the user struggled. The project must record sessions, and the trigger event must carry a `$session_id`.
 

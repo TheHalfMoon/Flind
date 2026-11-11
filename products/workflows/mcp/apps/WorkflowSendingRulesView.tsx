@@ -87,7 +87,7 @@ export function WorkflowSendingRulesView({
                     </Rule>
                     <Rule
                         title="Engagement events"
-                        description="Sends, opens, clicks and bounces as PostHog events. They count toward event usage."
+                        description="Sends, opens, clicks and bounces as Flind events. They count toward event usage."
                     >
                         <Switch
                             checked={data.capture_workflows_engagement_events}

@@ -74,7 +74,7 @@ async def test_deliver_slack_explains_missing_file_upload_scope(team, user) -> N
     await sync_to_async(subscription.refresh_from_db)()
     assert subscription.enabled is False
     assert result.recipient_results[0].error == {
-        "message": "PostHog can no longer upload files to Slack",
+        "message": "Flind can no longer upload files to Slack",
         "type": "slack_file_upload_permission_revoked",
     }
 

@@ -165,7 +165,7 @@ class WizardSessionViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
         query_serializer=WizardSessionListQuerySerializer,
         description=(
             "List wizard sessions for the project, ordered by started_at desc. "
-            "This should only be called by the PostHog Wizard. "
+            "This should only be called by the Flind Wizard. "
             "Optional filters: ?workflow_id=<id> and ?skill_id=<id>."
         ),
         responses={200: WizardSessionSerializer(many=True)},

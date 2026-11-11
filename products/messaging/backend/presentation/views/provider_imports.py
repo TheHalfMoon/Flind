@@ -33,7 +33,7 @@ class ImportStepOptionSerializer(serializers.Serializer):
         help_text="Step key to send in `steps` when starting an import, for example `suppressions`."
     )
     label = serializers.CharField(help_text="Display name of the step.")  # type: ignore[assignment]  # field named `label` shadows DRF Field.label
-    description = serializers.CharField(help_text="What the step imports and where it lands in PostHog.")
+    description = serializers.CharField(help_text="What the step imports and where it lands in Flind.")
 
 
 class ImportProviderOptionSerializer(serializers.Serializer):
@@ -53,7 +53,7 @@ class ImportStepProgressSerializer(serializers.Serializer):
     )
     processed = serializers.IntegerField(help_text="How many records the step read from the provider so far.")
     imported = serializers.IntegerField(
-        help_text="How many records the step added or updated in PostHog so far. Records that already existed and need no change may not count."
+        help_text="How many records the step added or updated in Flind so far. Records that already existed and need no change may not count."
     )
     warnings = serializers.ListField(
         child=serializers.CharField(), help_text="Problems with single records that did not fail the step."

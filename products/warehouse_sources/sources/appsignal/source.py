@@ -69,7 +69,7 @@ class AppsignalSource(ResumableSource[AppsignalSourceConfig, AppsignalResumeConf
             name=ExternalDataSourceType.APPSIGNAL,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="AppSignal",
-            caption="""Enter your AppSignal personal API token and app ID to pull your AppSignal errors, performance data, logs, metrics and traces into the PostHog Data warehouse.
+            caption="""Enter your AppSignal personal API token and app ID to pull your AppSignal errors, performance data, logs, metrics and traces into the Flind Data warehouse.
 
 Your personal API token is in your [AppSignal personal settings](https://appsignal.com/users/edit) under "API key". The app ID is the identifier in your app's AppSignal URL: `https://appsignal.com/<organization>/sites/<app ID>`.""",
             iconPath="/static/services/appsignal.png",

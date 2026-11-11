@@ -132,7 +132,7 @@ def _build_snapshot_image_tables(run: Run, repo: Repo) -> str:
     Changed and removed snapshots share one table (removed ones leave the *after*
     cell empty); new snapshots get their own table (empty *before* cell). Capped
     at ``_MAX_COMMENT_IMAGES`` rows total, prioritizing changed/removed diffs;
-    anything beyond links back to PostHog. Returns "" when no image could be
+    anything beyond links back to Flind. Returns "" when no image could be
     resolved (e.g. object storage disabled) so the comment stays text-only.
     """
     snapshots = list(
@@ -181,7 +181,7 @@ def _build_snapshot_image_tables(run: Run, repo: Repo) -> str:
 
     sections = [table(heading, rows) for heading, rows in (("Changed", changed_rows), ("New", new_rows)) if rows]
     if shown < total:
-        sections.append(f"…and {total - shown} more — [view all in PostHog]({app_urls.run_url(run, repo)}).")
+        sections.append(f"…and {total - shown} more — [view all in Flind]({app_urls.run_url(run, repo)}).")
 
     return "\n\n".join(sections)
 
@@ -198,7 +198,7 @@ def _build_review_prompt_body(run: Run, repo: Repo) -> str:
     """Build the markdown body of the PR comment that asks for a visual review."""
     return (
         "👋 **Visual changes detected** for this PR.\n\n"
-        f"[Review and approve in PostHog Visual Review]({app_urls.run_url(run, repo)})\n\n"
+        f"[Review and approve in Flind Visual Review]({app_urls.run_url(run, repo)})\n\n"
         "If these changes are unexpected, they may be caused by a flaky test or a "
         "broken snapshot on master. Don't approve — rerun the job or wait for a fix.\n\n"
         f"{_EXTENSION_FOOTER}"
@@ -244,7 +244,7 @@ def _build_approval_comment_body(run: Run, repo: Repo, approver: _Approver | Non
 
     sections = [
         f"✅ **Visual changes approved** by {approver_text}{sha_text}.",
-        f"[View this run in PostHog]({app_urls.run_url(run, repo)})",
+        f"[View this run in Flind]({app_urls.run_url(run, repo)})",
     ]
     if summary:
         sections.append(f"{summary}.")

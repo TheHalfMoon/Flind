@@ -11,9 +11,9 @@ import type {
 import { ScoutGroupKey } from '../../../utils/scoutGroups'
 
 /**
- * What a retirement PostHog announced for this scout says, in one tag. A scout that is on its way
+ * What a retirement Flind announced for this scout says, in one tag. A scout that is on its way
  * out otherwise looks identical to a healthy one until the day it stops, and a retired one looks
- * like a scout somebody switched off. Nothing renders for a scout PostHog still ships, or for a
+ * like a scout somebody switched off. Nothing renders for a scout Flind still ships, or for a
  * project's own edited copy of one, which keeps running.
  */
 export function ScoutDeprecationBadge({ config }: { config: SignalScoutConfig }): JSX.Element | null {
@@ -26,10 +26,10 @@ export function ScoutDeprecationBadge({ config }: { config: SignalScoutConfig })
     const announced = deprecation.phase === 'announced' && sunsetOn
     const label = announced ? `Retiring on ${sunsetOn}` : 'Retired'
     const headline = announced
-        ? `PostHog is retiring this scout on ${sunsetOn}.`
+        ? `Flind is retiring this scout on ${sunsetOn}.`
         : sunsetOn
-          ? `PostHog retired this scout on ${sunsetOn}.`
-          : 'PostHog retired this scout.'
+          ? `Flind retired this scout on ${sunsetOn}.`
+          : 'Flind retired this scout.'
     return (
         <Tooltip title={`${headline} ${deprecation.reason}`.trim()}>
             <LemonTag type={announced ? 'caution' : 'danger'} size="small">
@@ -107,7 +107,7 @@ export function ScoutLifecycleBadge({ config }: { config: SignalScoutConfig }): 
 
 /**
  * Why the inactivity sweep leaves this scout alone, in the terms the exemption came from: the role
- * PostHog ships it with, or a choice someone made on this project. Nothing renders for a scout the
+ * Flind ships it with, or a choice someone made on this project. Nothing renders for a scout the
  * sweep still judges. The role shows in any group, because it says what the scout is rather
  * than how its run window went.
  */
@@ -137,13 +137,13 @@ export function ScoutExemptionBadge({
     return null
 }
 
-/** Canonical (PostHog-maintained) vs Custom (team-authored) scout badge. */
+/** Canonical (Flind-maintained) vs Custom (team-authored) scout badge. */
 export function ScoutOriginBadge({ origin }: { origin: ScoutOriginEnumApi }): JSX.Element {
     return (
         <Tooltip
             title={
                 origin === 'canonical'
-                    ? 'Part of the standard scout troop built and maintained by PostHog'
+                    ? 'Part of the standard scout troop built and maintained by Flind'
                     : 'A scout your team created as a skill in this project'
             }
         >

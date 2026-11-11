@@ -44,7 +44,7 @@ function RNSetupSnippet({ includeReplay }: RNSetupProps): JSX.Element {
     return (
         <>
             <p>
-                PostHog is most easily used via the <code>PostHogProvider</code> component but if you need to
+                Flind is most easily used via the <code>PostHogProvider</code> component but if you need to
                 instantiate it directly,{' '}
                 <Link to="https://posthog.com/docs/libraries/react-native#without-the-posthogprovider">
                     check out the docs

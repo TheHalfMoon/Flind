@@ -19,7 +19,7 @@ export const DATA_CATALOG_CAPABILITY_CONTEXT: AttachedContextItem[] = [
         hidden: true,
         dismissGroup: SKILL_DISMISS_GROUP,
         value:
-            `Use the PostHog data catalog for governed definitions and relationships. Load the ${SETTING_UP_DATA_CATALOG_SKILL} skill before your ` +
+            `Use the Flind data catalog for governed definitions and relationships. Load the ${SETTING_UP_DATA_CATALOG_SKILL} skill before your ` +
             'first tool call. Act through the data-catalog MCP tools (the exec `data-catalog-*` commands plus ' +
             'metric-list and metric-describe: discover metrics with metric-list and inspect one with ' +
             'metric-describe). Do not search for tools; use the exec `info <tool>` command when you need a full ' +

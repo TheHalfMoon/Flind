@@ -54,7 +54,7 @@ async function callInternalAccountApi(
     // which the log viewer parses as entity chips and would swallow.
     if (!context.customerAnalyticsAccountsJwt.enabled) {
         throw new Error(
-            `This PostHog deployment has no CUSTOMER_ANALYTICS_ACCOUNTS_JWT_SECRET configured, so ` +
+            `This Flind deployment has no CUSTOMER_ANALYTICS_ACCOUNTS_JWT_SECRET configured, so ` +
                 `${ACCOUNT_ACTIONS} can't authenticate. Set the same value for the web service and the CDP worker.`
         )
     }

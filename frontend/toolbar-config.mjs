@@ -350,20 +350,20 @@ export function getToolbarExtensionScriptsBuildConfig(dirname) {
 function buildToolbarExtensionManifest() {
     return {
         manifest_version: 3,
-        name: 'PostHog',
-        description: 'Use the PostHog toolbar in a side panel next to your website.',
+        name: 'Flind',
+        description: 'Use the Flind toolbar in a side panel next to your website.',
         version: TOOLBAR_EXTENSION_VERSION,
         icons: TOOLBAR_EXTENSION_ICONS,
         action: {
-            default_title: 'Open PostHog',
+            default_title: 'Open Flind',
             default_icon: TOOLBAR_EXTENSION_ICONS,
         },
         permissions: ['scripting', 'storage', 'sidePanel'],
         host_permissions: ['http://*/*', 'https://*/*'],
         web_accessible_resources: [{ resources: ['content.css', 'assets/*'], matches: ['http://*/*', 'https://*/*'] }],
         side_panel: { default_path: 'panel.html' },
-        // The PostHog app asks whether the extension is installed, and asks it to open an authorized URL. Only the cloud
-        // app hosts, because a sender also sets the extension's PostHog host.
+        // The Flind app asks whether the extension is installed, and asks it to open an authorized URL. Only the cloud
+        // app hosts, because a sender also sets the extension's Flind host.
         externally_connectable: {
             matches: ['https://us.posthog.com/*', 'https://eu.posthog.com/*', 'https://app.posthog.com/*'],
         },

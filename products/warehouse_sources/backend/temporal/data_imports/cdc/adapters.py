@@ -73,7 +73,7 @@ class CDCSourceAdapter(Protocol[CDCConfigT_co]):
         ...
 
     def drop_stream(self, conn: Any, source: ExternalDataSource) -> None:
-        """Best-effort drop of the source's engine-side change stream and the resources PostHog owns
+        """Best-effort drop of the source's engine-side change stream and the resources Flind owns
         with it (PG: the slot and the publication). Logs a refused drop instead of raising."""
         ...
 
@@ -96,7 +96,7 @@ class CDCSourceAdapter(Protocol[CDCConfigT_co]):
     def is_connection_error(self, exc: BaseException) -> bool:
         """Whether the exception is an expected failure to reach the source DB (unreachable
         host, connect timeout, refused, dropped, or a tunnel that can't be established) rather
-        than a bug in PostHog's own code. Callers use it to avoid capturing expected
+        than a bug in Flind's own code. Callers use it to avoid capturing expected
         customer/upstream connection failures as error-tracking noise."""
         ...
 
@@ -115,7 +115,7 @@ class CDCSourceAdapter(Protocol[CDCConfigT_co]):
 
     def recreate_stream(self, source: ExternalDataSource, tables: list[str]) -> dict[str, Any]:
         """Drop and recreate the change-stream resource after invalidation, against the
-        existing capture definition (recreating it when PostHog owns it). ``tables`` is
+        existing capture definition (recreating it when Flind owns it). ``tables`` is
         the schema-qualified (``schema.table``) capture set used if the definition must be
         recreated. Returns ``cdc_*`` job_inputs updates (e.g. the new consistent point).
         Raises when recreation isn't possible (e.g. a customer-owned publication is
@@ -141,11 +141,11 @@ class CDCSourceAdapter(Protocol[CDCConfigT_co]):
         ...
 
     def cleanup_resources(self, source: ExternalDataSource) -> None:
-        """Drop engine-side CDC resources owned by PostHog for the source.
+        """Drop engine-side CDC resources owned by Flind for the source.
 
         Best-effort: logs and continues on errors. Must NOT touch resources owned
         by the customer (e.g. self-managed publications). No-op when the source
-        has no CDC config or no PostHog-owned resources to drop.
+        has no CDC config or no Flind-owned resources to drop.
         """
         ...
 
@@ -168,7 +168,7 @@ class CDCSourceAdapter(Protocol[CDCConfigT_co]):
 
     def add_table(self, source: ExternalDataSource, schema: str, table: str) -> None:
         """Include a table in the change-capture set (PG: ALTER PUBLICATION ADD TABLE).
-        No-op when PostHog doesn't own the capture definition (e.g. self-managed).
+        No-op when Flind doesn't own the capture definition (e.g. self-managed).
 
         Raises when the table can't be added. A CDC table outside the capture set never receives
         a change, so every sync of it repeats the full snapshot. Callers refuse the switch instead."""
@@ -179,7 +179,7 @@ class CDCSourceAdapter(Protocol[CDCConfigT_co]):
         ...
 
     def manages_capture_set(self, source: ExternalDataSource) -> bool:
-        """Whether PostHog owns the source's change-capture set (PG: a PostHog-managed publication),
+        """Whether Flind owns the source's change-capture set (PG: a Flind-managed publication),
         so ``add_table`` and ``remove_table`` change it."""
         ...
 
@@ -255,7 +255,7 @@ def add_table_failure_message(
     table: str,
 ) -> str:
     """User-facing message for an ``add_table`` failure. Captures only the failures that
-    point at a PostHog bug, because the customer fixes ownership, grants and reachability."""
+    point at a Flind bug, because the customer fixes ownership, grants and reachability."""
     if fixable := adapter.customer_fixable_error_message(exc):
         return fixable
     if adapter.is_connection_error(exc):

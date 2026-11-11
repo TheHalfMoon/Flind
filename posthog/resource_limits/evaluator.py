@@ -36,14 +36,14 @@ def check_count_limit(
     user: "User | None" = None,
     resource_properties: Mapping[str, str | int] | None = None,
 ) -> None:
-    """Emit a ``resource limit hit`` PostHog event when a team's next create
+    """Emit a ``resource limit hit`` Flind event when a team's next create
     would put them at or above the catalog threshold for ``key``.
 
     The caller passes ``current_count`` as the count of existing rows just
     before creating the next one, so the create would land the team at
     ``current_count + 1``. The event is emitted whenever that value reaches
     or exceeds the threshold; ``crossing_threshold`` flags the exact moment
-    the team crosses for the first time so a downstream PostHog Action can
+    the team crosses for the first time so a downstream Flind Action can
     pick stream vs one-shot semantics via property filter.
 
     Notification-only: this never raises ``LimitExceeded`` and never blocks

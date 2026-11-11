@@ -82,7 +82,7 @@ class FlagEditAuthor(StrEnum):
     AGENT = "agent"
     # A scheduled change applied the edit.
     SCHEDULED_CHANGE = "scheduled_change"
-    # PostHog saved the flag outside a user request.
+    # Flind saved the flag outside a user request.
     SYSTEM = "system"
 
 

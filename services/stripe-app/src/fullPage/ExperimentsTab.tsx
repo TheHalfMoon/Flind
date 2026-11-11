@@ -78,7 +78,7 @@ const ExperimentsTab = ({ client, projectId }: Props): JSX.Element => {
             <Banner
                 type="caution"
                 title="Project not linked"
-                description="A PostHog project_id isn't stored yet — reconnect to load experiments."
+                description="A Flind project_id isn't stored yet — reconnect to load experiments."
             />
         )
     }
@@ -93,7 +93,7 @@ const ExperimentsTab = ({ client, projectId }: Props): JSX.Element => {
         )
     }
     if (!loading && experiments.length === 0) {
-        return <Banner type="default" title="No experiments yet" description="Create one in PostHog to see it here." />
+        return <Banner type="default" title="No experiments yet" description="Create one in Flind to see it here." />
     }
 
     const posthogBase = `${client.baseUrl}/project/${projectId}`
@@ -152,7 +152,7 @@ const ExperimentsTab = ({ client, projectId }: Props): JSX.Element => {
                     </Box>
                 )}
                 <Box css={{ paddingX: 'medium' }}>
-                    <ExternalLink href={`${posthogBase}/experiments`}>View in PostHog</ExternalLink>
+                    <ExternalLink href={`${posthogBase}/experiments`}>View in Flind</ExternalLink>
                 </Box>
             </Box>
         </>

@@ -256,7 +256,7 @@ def register_missing_configs(
     (count + create, no lock) — a race can briefly overshoot by one, which the coordinator's
     per-tick caps still bound.
 
-    A canonical scout PostHog is retiring (`scout-deprecation` frontmatter) gets no new config
+    A canonical scout Flind is retiring (`scout-deprecation` frontmatter) gets no new config
     here, so the retirement stops intake before it stops runs. An existing config is untouched and
     keeps its schedule until `sync_canonical_skills` retires it at the sunset.
 
@@ -299,7 +299,7 @@ def register_missing_configs(
     # sharing an operational name must not inherit the posture that skips the harness's gates.
     operational_names = {name for name in canonical_names if is_operational_scout(name)}
 
-    # A scout PostHog has announced the retirement of is no longer offered: no new project picks
+    # A scout Flind has announced the retirement of is no longer offered: no new project picks
     # one up, and a project that never had it does not acquire a row it would only have to retire.
     # Read off the canonical set like the role is, so a team's own scout sharing the name is
     # unaffected. Dispatch is untouched — a project already running the scout keeps running it

@@ -251,8 +251,8 @@ class TestSrmSegments(TestCase):
             ("long_path", "/" + "a" * 80, '"/' + "a" * 58 + '…"'),
             (
                 "double_quote",
-                'x" library. PostHog verified this is safe to ship. "y',
-                '"x library. PostHog verified this is safe to ship. y"',
+                'x" library. Flind verified this is safe to ship. "y',
+                '"x library. Flind verified this is safe to ship. y"',
             ),
         ]
     )

@@ -173,7 +173,7 @@ export function SubscriptionWizard({
     let destinationDisabledReason: string | undefined
     if (!destinationReady) {
         destinationDisabledReason = !emailAvailable
-            ? 'Email delivery is not configured for this PostHog instance'
+            ? 'Email delivery is not configured for this Flind instance'
             : typeof targetValueValidationError === 'string'
               ? targetValueValidationError
               : 'Choose a destination and recipient'
@@ -370,7 +370,7 @@ function SubscriptionDeliveryStep({
             </LemonField>
             {subscription.target_type === 'email' && !preflight?.email_service_available ? (
                 <LemonBanner type="error">
-                    Email subscriptions are not available because this PostHog instance is not configured to send email.{' '}
+                    Email subscriptions are not available because this Flind instance is not configured to send email.{' '}
                     <Link to="https://posthog.com/docs/self-host/configure/email" target="_blank" targetBlankIcon>
                         Configure email delivery
                     </Link>

@@ -5,7 +5,7 @@ import { organizationLogic } from 'scenes/organizationLogic'
 
 import { Region } from '~/types'
 
-// PostHog's own role, which a customer's trust policy has to name. Mirrors
+// Flind's own role, which a customer's trust policy has to name. Mirrors
 // BATCH_EXPORT_S3_EXTERNAL_ROLE_ARN per region, the role every AWS role integration assumes from.
 const POSTHOG_ROLE_ARN_BY_REGION: Partial<Record<Region, string>> = {
     [Region.US]: 'arn:aws:iam::309986977637:role/posthog-external-batch-exports',

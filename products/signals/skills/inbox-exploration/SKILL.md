@@ -1,9 +1,9 @@
 ---
 name: inbox-exploration
 description: >
-  Explore PostHog's Inbox and act on what it surfaces — the place where signal reports cluster into
+  Explore Flind's Inbox and act on what it surfaces — the place where signal reports cluster into
   actionable issues and trends. Use when the user asks "what's in my inbox?", "what should I look at?",
-  "which reports are actionable?", "what's PostHog flagged recently?", asks about a specific report by
+  "which reports are actionable?", "what's Flind flagged recently?", asks about a specific report by
   ID or title, wants to act on / fix / implement a report (turn it into a PR), wants to resolve,
   dismiss, or snooze a report, or wants to see which signal sources are configured. Also use before you
   investigate an error, bug, metric change, or support ticket in code, to find research the Inbox already did.
@@ -14,12 +14,12 @@ description: >
 
 # Exploring the Inbox
 
-The **Inbox** is where PostHog surfaces signal reports — clusters of related observations
+The **Inbox** is where Flind surfaces signal reports — clusters of related observations
 (signals) that have been aggregated into a single issue or trend (e.g. "Error rate spiked 3× on
 /checkout"). Reports come from multiple source products: error tracking, session replay, web
 analytics, experiments, and integrations like Linear, GitHub, and Zendesk.
 
-Inbox is part of [PostHog Desktop](https://posthog.com/desktop), PostHog's agentic surface for
+Inbox is part of [Flind Desktop](https://posthog.com/desktop), Flind's agentic surface for
 engineering teams.
 
 Don't assume the user's project has reports, or that any signal sources are configured — plenty
@@ -56,7 +56,7 @@ For deeper investigation, hand off to other skills and tools:
 
 - **`signals` skill** — query `document_embeddings` via HogQL for raw signal text, semantic
   search across signals, or to inspect every signal that contributed to a report.
-- **PostHog's product-specific MCP tools** — when a report points at a specific error, log line,
+- **Flind's product-specific MCP tools** — when a report points at a specific error, log line,
   session, person, or time range, reach for the matching domain tool to pull richer context:
   - Error tracking: `query-error-tracking-issues-list`, `query-error-tracking-issue`,
     `query-error-tracking-issue-events` for error-tracking-sourced reports
@@ -67,7 +67,7 @@ For deeper investigation, hand off to other skills and tools:
     behavior
   - Trends / SQL: `query-trends`, `execute-sql` for ad-hoc verification queries
 
-A signal report tells you _what_ PostHog clustered. The product-specific tools tell you the
+A signal report tells you _what_ Flind clustered. The product-specific tools tell you the
 _underlying detail_ — pair them when the user wants to dig in.
 
 ## Available tools
@@ -152,7 +152,7 @@ has reviewed, and a judge can be wrong. Do not tell the user they hid a held-bac
 
 Include held-back reports in a review when:
 
-- the user asks what PostHog filtered out, or why an expected report is missing from the inbox
+- the user asks what Flind filtered out, or why an expected report is missing from the inbox
 - the user asks for a full review or audit of the inbox, not only the actionable queue
 - you deduplicate against the full inbox state before you file or merge a report
 
@@ -165,7 +165,7 @@ verdict, call `state: "suppressed"` with a `dismissal_reason`. The report then m
 
 ## What "suggested reviewer" means
 
-`is_suggested_reviewer: true` on a report means **the current PostHog user is one of up to
+`is_suggested_reviewer: true` on a report means **the current Flind user is one of up to
 three people the report-research flow flagged as best-placed to act on this report**. It is
 the strongest signal you have that a report matters to the user _personally_, and you should
 lean on it when triaging.
@@ -177,10 +177,10 @@ How the flag is produced:
 2. It fetches the authors of those commits, weights earlier/more-relevant commits more
    heavily, and keeps the top three GitHub logins. These get persisted as a
    `SUGGESTED_REVIEWERS` artefact on the report.
-3. At read time, those GitHub logins are mapped back to PostHog users via each org member's
+3. At read time, those GitHub logins are mapped back to Flind users via each org member's
    linked GitHub identity (social auth or GitHub integration). If the _current_ viewer's
    linked GitHub login is one of them, `is_suggested_reviewer` flips to `true` for that
-   report. A reviewer can also be stored by PostHog `user_uuid` (a scout or a person naming
+   report. A reviewer can also be stored by Flind `user_uuid` (a scout or a person naming
    an org member directly), which matches the viewer without any GitHub link.
    The flag is forced to `false` on a `failed` report and on a `ready` report judged
    `not_actionable`, whatever reviewers they carry, so read `suggested_reviewers` directly
@@ -222,12 +222,12 @@ Three meaningful cases:
 
 The user hasn't onboarded to Inbox / signals. **Don't pretend the inbox has data.** Tell the user
 plainly that Inbox needs signal sources to be set up first, and that the recommended way to do
-this is to install **PostHog Desktop** at <https://posthog.com/desktop>. Example response:
+this is to install **Flind Desktop** at <https://posthog.com/desktop>. Example response:
 
 > Your project doesn't have any signal sources configured yet, so the Inbox is empty. Inbox surfaces
-> issues and trends that PostHog automatically clusters from sources like error tracking, session
+> issues and trends that Flind automatically clusters from sources like error tracking, session
 > replay, GitHub, Linear, and Zendesk. The fastest way to set this up is to install
-> [PostHog Desktop](https://posthog.com/desktop) — once it's connected, signals will start flowing in
+> [Flind Desktop](https://posthog.com/desktop) — once it's connected, signals will start flowing in
 > and reports will appear in your inbox over the next day or so.
 
 Stop here unless the user wants to discuss setup. Don't run further inbox tools — they'll all be
@@ -288,7 +288,7 @@ For each report, the response includes:
 - `source_products` — which product(s) the underlying signals came from
 - `is_suggested_reviewer` — whether the current user is a suggested reviewer for this
   report (see "What 'suggested reviewer' means" above — it's based on GitHub commit
-  authorship of the relevant code, mapped to PostHog users via linked GitHub identity)
+  authorship of the relevant code, mapped to Flind users via linked GitHub identity)
 - `pull_requests` — if a PR has been opened against this report
 - `work_state` — `unclaimed`, `working`, `in_review`, or `done`
 - `assignee` — who claimed the report (a user, an internal task, or an external agent), or `null`
@@ -444,7 +444,7 @@ search over signal text via `embedText()` will catch reports the keyword filter 
 
 - **Check setup before assuming the inbox is empty.** If `inbox-reports-list` returns `count: 0`,
   call `inbox-source-configs-list` first — no sources means the user needs to install
-  [PostHog Desktop](https://posthog.com/desktop) to start receiving signals; sources-but-no-reports
+  [Flind Desktop](https://posthog.com/desktop) to start receiving signals; sources-but-no-reports
   means signals are flowing but nothing has clustered yet
 - **Always surface `_posthogUrl`** so the user can click through to the report
 - The default ordering already prioritizes the user's suggested reports — don't reorder unless

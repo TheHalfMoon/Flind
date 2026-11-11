@@ -1,4 +1,4 @@
-"""Links to an inbox report that PostHog writes into other surfaces.
+"""Links to an inbox report that Flind writes into other surfaces.
 
 Each link carries a `link_source` query param. The inbox reads it, records it on
 `Inbox report opened`, and removes it from the address bar. The inbox filters already use `source`. The values must match

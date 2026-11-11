@@ -297,8 +297,8 @@ class BigQuerySource(SQLSource[BigQuerySourceConfig]):
             BIGQUERY_MISSING_KEY_FILE_FIELDS_ERROR: BIGQUERY_MISSING_KEY_FILE_FIELDS_ERROR,
             BIGQUERY_IMPERSONATION_UNAVAILABLE_ERROR: BIGQUERY_IMPERSONATION_UNAVAILABLE_ERROR,
             BIGQUERY_NO_CREDENTIALS_ERROR: BIGQUERY_NO_CREDENTIALS_ERROR,
-            # Raised when PostHog impersonates the customer's service account but Google Cloud
-            # rejects the ownership check that guards impersonation — the account is gone, PostHog
+            # Raised when Flind impersonates the customer's service account but Google Cloud
+            # rejects the ownership check that guards impersonation — the account is gone, Flind
             # can't read it, or its description doesn't name the connecting organization. All three
             # need a change in the customer's Google Cloud project, so retrying can't recover them.
             BIGQUERY_SERVICE_ACCOUNT_NOT_FOUND_ERROR: BIGQUERY_SERVICE_ACCOUNT_NOT_FOUND_ERROR,
@@ -322,7 +322,7 @@ class BigQuerySource(SQLSource[BigQuerySourceConfig]):
             BIGQUERY_OWNERSHIP_UNVERIFIED_ERROR_PREFIX: None,
             # Matched on the stable wording, not the volatile vpcServiceControlsUniqueIdentifier.
             "VPC Service Controls": BIGQUERY_VPC_SERVICE_CONTROLS_ERROR,
-            # Writing query results into the `__posthog_import_...` temp tables PostHog creates
+            # Writing query results into the `__posthog_import_...` temp tables Flind creates
             # (`WRITE_TRUNCATE` in `_run_destination_query_with_job_retry`, on incremental / view /
             # row-filtered reads) needs write access on the dataset those tables live in. When the
             # service account only has read access, BigQuery rejects the copy with "Permission
@@ -333,7 +333,7 @@ class BigQuerySource(SQLSource[BigQuerySourceConfig]):
             # guidance wins. Deterministic IAM config problem — retrying can't grant the permission.
             # Matched on the stable permission name (also covers `bigquery.tables.updateData`), not
             # the volatile temp-table id.
-            "bigquery.tables.update": "BigQuery denied write access to a temporary table PostHog creates in your dataset. PostHog copies query results into temporary tables before reading them, so read access alone isn't enough. Please grant your service account write access (for example the BigQuery Data Editor role) on the dataset where these temporary tables are created — your main dataset, or the temporary dataset if you configured one — then reconnect the source.",
+            "bigquery.tables.update": "BigQuery denied write access to a temporary table Flind creates in your dataset. Flind copies query results into temporary tables before reading them, so read access alone isn't enough. Please grant your service account write access (for example the BigQuery Data Editor role) on the dataset where these temporary tables are created — your main dataset, or the temporary dataset if you configured one — then reconnect the source.",
             # Creating the `__posthog_import_...` temp tables (the `WRITE_TRUNCATE` destination in
             # `_run_destination_query_with_job_retry`, on incremental / view / row-filtered reads) needs
             # create access on the dataset those tables live in. When the service account only has read
@@ -343,7 +343,7 @@ class BigQuerySource(SQLSource[BigQuerySourceConfig]):
             # to grant *read* access (Data Viewer), which can't fix a *create* failure. Deterministic IAM
             # config problem — retrying can't grant the permission. Matched on the stable permission name,
             # not the volatile dataset id.
-            "bigquery.tables.create": "BigQuery denied permission to create a temporary table PostHog needs in your dataset. PostHog copies query results into temporary tables before reading them, so read access alone isn't enough. Please grant your service account permission to create tables (for example the BigQuery Data Editor role) on the dataset where these temporary tables are created — your main dataset, or the temporary dataset if you configured one — then reconnect the source.",
+            "bigquery.tables.create": "BigQuery denied permission to create a temporary table Flind needs in your dataset. Flind copies query results into temporary tables before reading them, so read access alone isn't enough. Please grant your service account permission to create tables (for example the BigQuery Data Editor role) on the dataset where these temporary tables are created — your main dataset, or the temporary dataset if you configured one — then reconnect the source.",
             # BigQuery rejects query-job creation (POST .../jobs) with "Access Denied: Project <id>:
             # User does not have bigquery.jobs.create permission in project <id>." when the service
             # account can read the data but can't run query jobs in the project the jobs bill to. We
@@ -353,7 +353,7 @@ class BigQuerySource(SQLSource[BigQuerySourceConfig]):
             # *read* access (Data Viewer), which can't grant job creation — so keep this key above it.
             # Deterministic IAM config problem; retrying can't grant the permission. Matched on the
             # stable permission name, not the volatile project id.
-            "bigquery.jobs.create": "BigQuery denied your service account permission to run query jobs — it's missing the bigquery.jobs.create permission on the project it queries. Read access alone isn't enough, because PostHog runs query jobs to sync your data. Please grant your service account permission to run jobs (for example the BigQuery Job User role) on that project, then reconnect the source.",
+            "bigquery.jobs.create": "BigQuery denied your service account permission to run query jobs — it's missing the bigquery.jobs.create permission on the project it queries. Read access alone isn't enough, because Flind runs query jobs to sync your data. Please grant your service account permission to run jobs (for example the BigQuery Job User role) on that project, then reconnect the source.",
             # Raised as a 403 Forbidden when a table or view being synced reads through a BigQuery
             # connection (used for federated queries or BigLake external tables) that the service
             # account isn't authorized to use, e.g. "Access Denied: Connection projects/<p>/
@@ -523,14 +523,14 @@ class BigQuerySource(SQLSource[BigQuerySourceConfig]):
             # offline-endpoint code rather than the volatile tunnel subdomain in the page.
             "ERR_NGROK_3200": "We couldn't authenticate with BigQuery — your service account key's token_uri points at an offline endpoint, not Google's OAuth token endpoint. Please re-upload your service account key file and verify its token_uri.",
             # A service-account key whose `token_uri` points at a non-globally-routable address
-            # (for example a cloud metadata endpoint). PostHog's egress proxy denies the request
+            # (for example a cloud metadata endpoint). Flind's egress proxy denies the request
             # before it leaves our network and google-auth surfaces that denial as a `RefreshError`
             # naming the proxy's stable rule. The proxy rejects the same non-public host on every
             # retry, so retrying just hammers a request that can never succeed. Google's real OAuth
             # token endpoint is always a public host, so this is a misconfigured `token_uri` — the
             # user must fix their key file. Matched on the proxy's stable rule name rather than the
             # volatile denied host.
-            "denied by rule 'Deny: Not Global Unicast'": "We couldn't authenticate with BigQuery — your service account key's token_uri points at an address PostHog can't reach. Please re-upload your service account key file and verify its token_uri is Google's OAuth token endpoint.",
+            "denied by rule 'Deny: Not Global Unicast'": "We couldn't authenticate with BigQuery — your service account key's token_uri points at an address Flind can't reach. Please re-upload your service account key file and verify its token_uri is Google's OAuth token endpoint.",
             # Raised as a `Forbidden` (403, reason `quotaExceeded`) when the customer's BigQuery
             # project hits an administrator-configured custom cost control, e.g. "Custom quota
             # exceeded: Your usage exceeded the custom quota for QueryUsagePerDay, which is set by
@@ -702,10 +702,10 @@ class BigQuerySource(SQLSource[BigQuerySourceConfig]):
             featured=True,
             iconPath="/static/services/bigquery.png",
             caption=(
-                "Enter your BigQuery credentials to automatically pull your BigQuery data into the PostHog Data "
-                "warehouse. To send PostHog data to BigQuery instead, set up a batch export.\n\n"
+                "Enter your BigQuery credentials to automatically pull your BigQuery data into the Flind Data "
+                "warehouse. To send Flind data to BigQuery instead, set up a batch export.\n\n"
                 "To use a service account, select **Choose Google Cloud service account connection**, then "
-                "**Configure new Google Cloud service account**. It shows how to let PostHog use your service account.\n\n"
+                "**Configure new Google Cloud service account**. It shows how to let Flind use your service account.\n\n"
                 "Your service account also needs these BigQuery roles: **BigQuery Job User** and **BigQuery Read "
                 "Session User** on the project, and **BigQuery Data Editor** on the dataset you sync. If you use a "
                 "separate dataset for temporary tables, grant **BigQuery Data Editor** there instead and **BigQuery "

@@ -12,7 +12,7 @@ import { billingJson } from '~/mocks/fixtures/_billing'
  * makes and the filters it carries, the project filter while its list loads, which export the menu
  * names, the sentence shown when billing refuses a read, and the date presets on offer.
  *
- * Run against a local PostHog:
+ * Run against a local Flind:
  *
  *   BASE_URL=http://localhost:8010 \
  *     pnpm --filter=@flind/playwright exec playwright test products/billing/frontend/e2e/billing-usage-spend.spec.ts

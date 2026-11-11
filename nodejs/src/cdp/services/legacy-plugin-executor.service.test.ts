@@ -253,7 +253,7 @@ describe('LegacyPluginExecutorService', () => {
                       "body": undefined,
                       "headers": {
                         "Authorization": "Basic MTIzNDU2Nzg5MDpjaW8tdG9rZW4=",
-                        "User-Agent": "PostHog Customer.io App",
+                        "User-Agent": "Flind Customer.io App",
                       },
                       "maxResponseBytes": 5242880,
                       "method": "GET",
@@ -266,7 +266,7 @@ describe('LegacyPluginExecutorService', () => {
                       "headers": {
                         "Authorization": "Basic MTIzNDU2Nzg5MDpjaW8tdG9rZW4=",
                         "Content-Type": "application/json",
-                        "User-Agent": "PostHog Customer.io App",
+                        "User-Agent": "Flind Customer.io App",
                       },
                       "maxResponseBytes": 5242880,
                       "method": "PUT",
@@ -279,7 +279,7 @@ describe('LegacyPluginExecutorService', () => {
                       "headers": {
                         "Authorization": "Basic MTIzNDU2Nzg5MDpjaW8tdG9rZW4=",
                         "Content-Type": "application/json",
-                        "User-Agent": "PostHog Customer.io App",
+                        "User-Agent": "Flind Customer.io App",
                       },
                       "maxResponseBytes": 5242880,
                       "method": "POST",

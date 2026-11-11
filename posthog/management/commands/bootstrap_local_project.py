@@ -29,8 +29,8 @@ def _format_bytes(num: int) -> str:
 
 class Command(BaseCommand):
     help = (
-        "Bootstrap a local PostHog project from an S3 dump of the events and/or persons tables. "
-        "The dump must be in the PostHog batch-export format (Parquet or JSONLines, optionally "
+        "Bootstrap a local Flind project from an S3 dump of the events and/or persons tables. "
+        "The dump must be in the Flind batch-export format (Parquet or JSONLines, optionally "
         "compressed). Events go to ClickHouse; persons go to Postgres and ClickHouse."
     )
 

@@ -73,7 +73,7 @@ export function TodayContextPanelFloating(): JSX.Element {
                     if (!open && (details.reason === 'outside-press' || details.reason === 'focus-out')) {
                         return
                     }
-                    // The button is the way to PostHog AI. Over another tab it switches the card to chat instead of
+                    // The button is the way to Flind AI. Over another tab it switches the card to chat instead of
                     // closing it, and it always opens on chat.
                     if (floatingActiveTab !== SidePanelTab.Max) {
                         setFloatingTab(SidePanelTab.Max)

@@ -82,19 +82,19 @@ export type State = {
 
 export type Env = {
     /**
-     * Custom API base URL for self-hosted PostHog instances.
+     * Custom API base URL for self-hosted Flind instances.
      *
-     * WARNING: In PostHog Production, this should NOT be set.
+     * WARNING: In Flind Production, this should NOT be set.
      * The code automatically handles US/EU region routing via getAuthorizationServerUrl().
-     * Only set this for self-hosted PostHog deployments.
+     * Only set this for self-hosted Flind deployments.
      */
     POSTHOG_API_BASE_URL: string | undefined
     /**
-     * Public-facing PostHog URL used when rendering links the user clicks
+     * Public-facing Flind URL used when rendering links the user clicks
      * (e.g. `_posthogUrl` in tool responses).
      *
      * When `POSTHOG_API_BASE_URL` is set to a cluster-internal hostname for outbound
-     * API traffic (the Hono deployment in PostHog Production), this should be set to
+     * API traffic (the Hono deployment in Flind Production), this should be set to
      * the corresponding public URL (e.g. https://us.posthog.com) so rendered links
      * remain clickable. Falls back to `POSTHOG_API_BASE_URL` when unset.
      */
@@ -106,21 +106,21 @@ export type Env = {
      */
     MCP_APPS_BASE_URL: string | undefined
     /**
-     * PostHog base URL for MCP Apps analytics (used for CSP and analytics ingestion).
+     * Flind base URL for MCP Apps analytics (used for CSP and analytics ingestion).
      * For local development, set to http://localhost:8010.
      */
     POSTHOG_MCP_APPS_ANALYTICS_BASE_URL: string | undefined
     /**
-     * PostHog API token for MCP Apps analytics (used for CSP and analytics ingestion).
+     * Flind API token for MCP Apps analytics (used for CSP and analytics ingestion).
      */
     POSTHOG_UI_APPS_TOKEN: string | undefined
     /**
-     * PostHog API key for dev/self-hosted analytics.
+     * Flind API key for dev/self-hosted analytics.
      * Falls back to the production US key if not set.
      */
     POSTHOG_ANALYTICS_API_KEY: string | undefined
     /**
-     * PostHog host for dev/self-hosted analytics.
+     * Flind host for dev/self-hosted analytics.
      * Falls back to the production US host if not set.
      */
     POSTHOG_ANALYTICS_HOST: string | undefined
@@ -139,13 +139,13 @@ export type Context = {
     stateManager: StateManager
     sessionManager: SessionManager
     /**
-     * Resolve the current user's PostHog distinct ID. Cached by the MCP class —
+     * Resolve the current user's Flind distinct ID. Cached by the MCP class —
      * safe to call repeatedly. Exposed on the context so tool handlers (e.g. the
      * exec wrapper) can attach `_analytics` without depending on the MCP class.
      */
     getDistinctId: () => Promise<string>
     /**
-     * Capture a PostHog analytics event with the same context (mcp_client_name,
+     * Capture a Flind analytics event with the same context (mcp_client_name,
      * session id, $groups, etc.) that the MCP class attaches to its own events.
      * Best-effort — never throws and silently swallows failures so analytics
      * cannot fail a tool call. Workspace context is auto-resolved from the
@@ -153,7 +153,7 @@ export type Context = {
      */
     trackEvent: (event: AnalyticsEvent, properties?: Record<string, unknown>) => Promise<void>
     /**
-     * Which PostHog connection this context runs through, when it runs through one at all. Set only
+     * Which Flind connection this context runs through, when it runs through one at all. Set only
      * by the forwarded context (see lib/connection-forwarding.ts); absent on a local call.
      */
     connection?: {
@@ -174,7 +174,7 @@ export type Tool<TSchema extends z.ZodType = z.ZodType, TResult = unknown> = {
      * JSON Schema to advertise instead of deriving one from `schema`. Set for proxied
      * third-party tools, whose contract is defined upstream as JSON Schema: their `schema`
      * is permissive (the upstream server validates), so deriving from it would describe
-     * nothing. PostHog's own tools leave this unset and stay Zod-derived.
+     * nothing. Flind's own tools leave this unset and stay Zod-derived.
      */
     rawInputSchema?: Record<string, unknown>
     handler: (context: Context, params: z.infer<TSchema>) => Promise<TResult>
@@ -225,6 +225,6 @@ export type ToolMeta = {
     // New non-legacy key for MCP Apps
     ui?: ToolUiMeta
 
-    /** PostHog-specific tool metadata under a namespaced key. */
+    /** Flind-specific tool metadata under a namespaced key. */
     [POSTHOG_META_KEY]?: PostHogToolMeta
 }

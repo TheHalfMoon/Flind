@@ -164,7 +164,7 @@ def lookup_slack_user_id_by_email(
     integration: IntegrationRecord,
     email: str,
 ) -> str | None:
-    """Resolve a Slack user ID from a PostHog user email.
+    """Resolve a Slack user ID from a Flind user email.
 
     Uses ``SlackUserProfileCache`` (populated by ``resolve_slack_user`` and prior lookups),
     then ``users.lookupByEmail``.

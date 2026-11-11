@@ -9,7 +9,7 @@ from products.cdp.backend.models.hog_functions.hog_function import HogFunction
 
 def migrate_hooks(hook_ids: list[str], team_ids: list[int], dry_run: bool = False):
     if not EE_AVAILABLE:
-        print("This command is only available in PostHog EE")  # noqa: T201
+        print("This command is only available in Flind EE")  # noqa: T201
         return
 
     from products.cdp.backend.api.hooks import create_zapier_hog_function

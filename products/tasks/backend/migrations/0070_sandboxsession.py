@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
                             ("slack", "Slack"),
                             ("support_queue", "Support Queue"),
                             ("session_summaries", "Session Summaries"),
-                            ("posthog_ai", "PostHog AI"),
+                            ("posthog_ai", "Flind AI"),
                             ("experiments", "Experiments"),
                             ("signal_report", "Signal Report"),
                             ("signals_scout", "Signals Scout"),

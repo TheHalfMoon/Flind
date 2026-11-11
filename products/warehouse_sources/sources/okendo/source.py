@@ -49,7 +49,7 @@ class OkendoSource(ResumableSource[OkendoSourceConfig, OkendoResumeConfig]):
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="Okendo",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Okendo user ID and API key to pull your Okendo reviews and loyalty data into the PostHog Data warehouse.
+            caption="""Enter your Okendo user ID and API key to pull your Okendo reviews and loyalty data into the Flind Data warehouse.
 
 You can find both in the integration settings section of the Okendo app.
 """,

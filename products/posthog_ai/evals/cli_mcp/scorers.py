@@ -1110,7 +1110,7 @@ class DidNotRenderUi(Scorer):
 # query result when the client already displays that result's UI app inline.
 INLINE_VIEW_NOTE = "already sees this result as an interactive view"
 
-# A Markdown link alone in its paragraph, which PostHog Desktop draws as a full-size chart card.
+# A Markdown link alone in its paragraph, which Flind Desktop draws as a full-size chart card.
 # The URL runs to the closing parenthesis because SQL in ``open_query`` keeps unencoded ``(`` and ``)``.
 _CHART_LINK_RE = re.compile(r'^\[[^\]]+\]\((https?://\S+?)(?:\s+"[^"]*")?\)$')
 # A block-display object tag alone in its paragraph, the other chart syntax in
@@ -1331,7 +1331,7 @@ def _render_matches_query(render: ToolCall, calls: list[ToolCall]) -> bool:
 
 
 def _native_query_chart(call: ToolCall) -> bool:
-    """PostHog AI's extractQueryResult widget reads metadata without an inline-view text note."""
+    """Flind AI's extractQueryResult widget reads metadata without an inline-view text note."""
     try:
         payload = json.loads(call.output)
     except (ValueError, TypeError):
@@ -1428,9 +1428,9 @@ class ChartFromTypedQuery(Scorer):
     ``expected = {"chart_from_typed_query": {"tool_name_any_of": ["query-trends"]}}``
 
     An agent that answers with ``query-trends`` and then links a hand-written SQL chart shows
-    numbers computed by a different query, without PostHog's standard definitions such as the
+    numbers computed by a different query, without Flind's standard definitions such as the
     project timezone or test-account filtering. Score 1.0 when any chart comes from
-    a native PostHog AI widget, ``render-ui``, the inline view, or a saved insight that holds a typed query; 0.0 when every
+    a native Flind AI widget, ``render-ui``, the inline view, or a saved insight that holds a typed query; 0.0 when every
     chart is a SQL query. ``None`` when no chart was shown (graded by ``ChartShown``), when the only
     other charts are saved insights whose query kind no tool call showed, or the spec is absent.
     """
@@ -1531,7 +1531,7 @@ class _TableSources(TraversingVisitor):
 
 
 def is_catalog_sql(call: ToolCall) -> bool:
-    """True when an ``execute-sql`` call reads only PostHog entity tables (``system.*``).
+    """True when an ``execute-sql`` call reads only Flind entity tables (``system.*``).
 
     Catalog lookups, such as checking for a saved insight or an action, are justified SQL
     under the routing rules, so they never count as an analytics query. A query that the

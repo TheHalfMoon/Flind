@@ -65,7 +65,7 @@ describe('workload credentials', () => {
         expect(credentials.source).toBe(source)
     })
 
-    test('a posthog.json host outside PostHog Cloud stops the job instead of getting a token', async () => {
+    test('a posthog.json host outside Flind Cloud stops the job instead of getting a token', async () => {
         const runtime = runtimeWith({ env: IN_CI, respond: () => exchanged(WORKLOAD_TOKEN) })
 
         const error = await resolveCredentials(runtime, {
@@ -145,7 +145,7 @@ describe('workload credentials', () => {
             'https://us.posthog.com/approve/1',
         ],
         [
-            'the token is for another PostHog address',
+            'the token is for another Flind address',
             {
                 error: 'invalid_grant',
                 error_description: "The OIDC token's audience must be https://us.posthog.com.",
@@ -251,7 +251,7 @@ describe('workload credentials', () => {
         })
     })
 
-    test('a provider token fixed for the run is not exchanged again before the PostHog token expires', async () => {
+    test('a provider token fixed for the run is not exchanged again before the Flind token expires', async () => {
         // Each answer arrives a little later than whole seconds, so it reads like a later expiry.
         const lifetimes = [120, 60, 21]
         let exchangeCount = 0
@@ -293,7 +293,7 @@ describe('workload credentials', () => {
 
     test.each([
         ['exchanges once more when the token is about to expire', 600, 560, 200, 2],
-        ['exchanges once more when PostHog rejects the token', 600, 0, 401, 2],
+        ['exchanges once more when Flind rejects the token', 600, 0, 401, 2],
         ['keeps a token with time left', 600, 0, 200, 1],
         ['keeps a short-lived token until half its life is over', 30, 0, 200, 1],
     ])(

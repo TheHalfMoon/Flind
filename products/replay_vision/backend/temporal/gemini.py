@@ -42,7 +42,7 @@ def describe_gemini_error(error: BaseException) -> str:
     if isinstance(error, APIError):
         status = f" {error.status}" if error.status else ""
         return f"The AI provider returned HTTP {error.code}{status}"
-    return f"PostHog could not reach the AI provider ({type(error).__name__})"
+    return f"Flind could not reach the AI provider ({type(error).__name__})"
 
 
 def classify_gemini_error(error: BaseException) -> FailureKind | None:
@@ -57,7 +57,7 @@ def classify_gemini_error(error: BaseException) -> FailureKind | None:
         return FailureKind.PROVIDER_TRANSIENT
     if not isinstance(error, APIError):
         return None
-    # A gateway refusal is a PostHog-side fault, never the input's.
+    # A gateway refusal is a Flind-side fault, never the input's.
     if is_gateway_refusal(error):
         return FailureKind.INFRA_TRANSIENT if error.code in _GATEWAY_CLEARING_CODES else FailureKind.INTERNAL_ERROR
     if error.code in _TRANSIENT_STATUS_CODES:

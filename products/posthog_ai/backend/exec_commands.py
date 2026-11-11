@@ -1,6 +1,6 @@
-"""Parsing for the single-exec PostHog MCP tool, shared by the backend and the eval harness.
+"""Parsing for the single-exec Flind MCP tool, shared by the backend and the eval harness.
 
-In single-exec mode the agent reaches every PostHog tool through one ``exec`` call, so the tool the
+In single-exec mode the agent reaches every Flind tool through one ``exec`` call, so the tool the
 agent meant is only in the command string.
 """
 
@@ -39,7 +39,7 @@ def parse_exec_command(command: str) -> tuple[str, dict[str, Any]] | None:
     """Split a CLI-style ``exec`` command string into ``(virtual_name, input)``.
 
     Recognised shapes (produced by single-exec mode where the agent talks to
-    the PostHog MCP through one ``exec`` tool):
+    the Flind MCP through one ``exec`` tool):
       - ``"info <tool>"``                    → ``("__info__:<tool>", {})``
       - ``"call [--json] [--confirm] [--no-skills] <tool> <json>"`` → ``("<tool>", parsed_json)``
 

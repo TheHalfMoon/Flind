@@ -158,7 +158,7 @@ class Opportunity(PulseModel):
 
 
 class ResourceLink(PulseModel):
-    """Evidence link from an opportunity to a PostHog resource it cites.
+    """Evidence link from an opportunity to a Flind resource it cites.
 
     One opportunity has many links. Per-type nullable FKs (not a GenericForeignKey, which is
     rejected repo-wide) point at the cited resource; the cached `resource_type`/`ref`/`label`/`url`

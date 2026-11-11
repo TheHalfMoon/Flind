@@ -25,19 +25,19 @@ function copyFor(
 ): { title: string; body: string } {
     if (reason === 'unknown') {
         return {
-            title: "Couldn't check PostHog AI access",
+            title: "Couldn't check Flind AI access",
             body: 'Check your connection, then try again.',
         }
     }
     return {
-        title: `PostHog AI is off for ${organizationName ?? 'this organization'}`,
+        title: `Flind AI is off for ${organizationName ?? 'this organization'}`,
         body: canApprove
             ? 'As an admin or owner, you can allow third-party AI services in organization settings.'
             : 'Ask an admin or owner to allow third-party AI services in organization settings, then check again.',
     }
 }
 
-/** Takes the composer's place while the organization does not allow PostHog AI, as the web blocks its chat. */
+/** Takes the composer's place while the organization does not allow Flind AI, as the web blocks its chat. */
 export function AiOrgNotice({
     reason,
     organizationName,

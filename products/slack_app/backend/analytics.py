@@ -43,7 +43,7 @@ def slack_session_id(slack_team_id: str, channel: str, thread_ts: str) -> str:
 
 
 def slack_distinct_id(integration: WorkspaceIntegration, slack_user_id: str) -> str:
-    """The distinct id of a Slack user that no PostHog user has been resolved for yet."""
+    """The distinct id of a Slack user that no Flind user has been resolved for yet."""
     return f"slack:{integration.integration_id}:{slack_user_id}"
 
 
@@ -57,7 +57,7 @@ def capture_slack_event(
 ) -> None:
     """Capture a Slack app event with org/team groups. Best-effort: analytics never breaks the flow.
 
-    ``distinct_id`` ladder: a resolved PostHog user's distinct id, else a stable Slack-derived id
+    ``distinct_id`` ladder: a resolved Flind user's distinct id, else a stable Slack-derived id
     (``slack:{team}:{user}``) when the acting Slack user is known, else the team uuid — matching
     the mention funnel's attribution so per-user analysis works across every Slack app event.
     """
@@ -87,10 +87,10 @@ def capture_slack_event(
 
 
 def alias_slack_user(integration: WorkspaceIntegration, slack_user_id: str, posthog_user: User) -> None:
-    """Merge a Slack user's anonymous person into their PostHog user's person. Best-effort.
+    """Merge a Slack user's anonymous person into their Flind user's person. Best-effort.
 
     Events captured before the Slack user was linked use ``slack_distinct_id``. After the merge,
-    per-user analysis counts that history toward the PostHog user.
+    per-user analysis counts that history toward the Flind user.
     """
     if not posthog_user.distinct_id:
         return

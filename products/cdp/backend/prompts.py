@@ -84,7 +84,7 @@ NOTE: When calling the `create_hog_function_filters` tool, do not provide any re
 After the tool completes, do NOT repeat the filter configuration, as the user can see it. Only summarize the changes, comprehensively, but in only one brief sentence.
 """
 
-IDENTITY_MESSAGE_HOG = """Hog is PostHog's own programming language. You write Hog code based on a prompt. You don't help with other knowledge.
+IDENTITY_MESSAGE_HOG = """Hog is Flind's own programming language. You write Hog code based on a prompt. You don't help with other knowledge.
 
 Here is the Hog standard library. Dont use any other functions since they are not supported in Hog:
 
@@ -584,7 +584,7 @@ while (i <= length(propertiesToFilter)) {
 return returnEvent"""
 
 
-TRANSFORMATION_LIMITATIONS_MESSAGE = """PostHog Transformations can only modify individual incoming events. They cannot access or read person properties, historical data, or global state, because they run before person resolution. Their only purpose is to transform the structure of a single event (e.g., add properties, rename fields, enrich data) before ingestion. This means they cannot perform logic that depends on previous values, such as incrementing a count or checking if a property already exists."""
+TRANSFORMATION_LIMITATIONS_MESSAGE = """Flind Transformations can only modify individual incoming events. They cannot access or read person properties, historical data, or global state, because they run before person resolution. Their only purpose is to transform the structure of a single event (e.g., add properties, rename fields, enrich data) before ingestion. This means they cannot perform logic that depends on previous values, such as incrementing a count or checking if a property already exists."""
 
 TRANSFORMATION_STRUCTURE_MESSAGE = """A Hog transformation is a top-level script, NOT a wrapped function.
 
@@ -607,7 +607,7 @@ Correct structure:
     // ...modifications on returnEvent...
     return returnEvent
 """
-DESTINATION_LIMITATIONS_MESSAGE = """PostHog Destinations have access to the event properties, including person properties and group properties. Just like Transformations they cannot perform logic that depends on previous values, such as incrementing a count or checking if a property already exists."""
+DESTINATION_LIMITATIONS_MESSAGE = """Flind Destinations have access to the event properties, including person properties and group properties. Just like Transformations they cannot perform logic that depends on previous values, such as incrementing a count or checking if a property already exists."""
 
 HOG_GRAMMAR_MESSAGE = """
 Here is the grammar for Hog:
@@ -990,7 +990,7 @@ def render_filter_operator_taxonomy(function_type: str) -> str:
     return ET.tostring(root, encoding="unicode")
 
 
-HOG_FUNCTION_FILTERS_SYSTEM_PROMPT = """You are an expert at creating filters for PostHog hog functions.
+HOG_FUNCTION_FILTERS_SYSTEM_PROMPT = """You are an expert at creating filters for Flind hog functions.
 
 Create filters based on the user's instructions. Return the filters as a JSON object with the following structure:
 {
@@ -1047,7 +1047,7 @@ def render_filters_system_prompt(function_type: str, current_filters: str) -> st
     )
 
 
-HOG_FUNCTION_INPUTS_SYSTEM_PROMPT = """You are an expert at creating input variable schemas for PostHog hog functions.
+HOG_FUNCTION_INPUTS_SYSTEM_PROMPT = """You are an expert at creating input variable schemas for Flind hog functions.
 
 Your task is to analyze the hog code and create appropriate input variable schemas based on the instructions.
 CRITICAL: You must extract the EXACT variable names used in the hog code. Look for patterns like:

@@ -486,7 +486,7 @@ describe("AgentService", () => {
 
   it("lists models from the legacy gateway when the proxy cannot start", async () => {
     deps.agentAuthAdapter.ensureGatewayProxy.mockRejectedValueOnce(
-      new Error("PostHog session ended"),
+      new Error("Flind session ended"),
     );
 
     await service.getPreviewConfigOptions("https://us.posthog.com", "claude");
@@ -1539,7 +1539,7 @@ describe("AgentService", () => {
         expect(prompt).toContain(PRODUCT_ENGINEER_PROMPT);
         expect(prompt).toContain(RICH_OUTPUT_PROMPT_LEAD);
         expect(prompt.indexOf(PRODUCT_ENGINEER_PROMPT)).toBeLessThan(
-          prompt.indexOf(systemPromptOverride ?? "PostHog context:"),
+          prompt.indexOf(systemPromptOverride ?? "Flind context:"),
         );
       },
     );

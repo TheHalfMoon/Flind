@@ -1,6 +1,6 @@
 """Which teams' data the inbox-ranking dags may train on.
 
-`Organization.is_ai_training_opted_in` is the organization's consent to train PostHog AI models on
+`Organization.is_ai_training_opted_in` is the organization's consent to train Flind AI models on
 its data. Only `True` is consent: the column is nullable, and every other surface reads null as
 opted out, so `False` and `None` both keep a team out.
 """

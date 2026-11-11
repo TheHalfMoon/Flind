@@ -230,7 +230,7 @@ def _score_and_mirror(
                 # at 0 same as at None), so it must not shadow a real Clearbit band.
                 est_revenue=clay.est_revenue or clearbit.est_revenue,
                 role=ctx.role_at_organization,
-                # Clay never projects its GitHub column into PostHog, so this input is always
+                # Clay never projects its GitHub column into Flind, so this input is always
                 # absent here — product-role orgs score 3, not 6, until v-next substitutes the
                 # signup's own GitHub auth. Kept on IcpScoreInputs for formula fidelity.
                 github_profile_url=None,

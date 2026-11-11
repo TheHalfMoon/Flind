@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function SessionRecordingApp(): JSX.Element {
     return (
-        <AppWrapper<SessionRecordingData> appName="PostHog Session Recording">
+        <AppWrapper<SessionRecordingData> appName="Flind Session Recording">
             {({ data }) => <SessionRecordingView recording={data!} />}
         </AppWrapper>
     )

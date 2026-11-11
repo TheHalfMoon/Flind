@@ -217,7 +217,7 @@ class TestIsHostSafe(SimpleTestCase):
             valid, error = _is_host_safe("evil.example.com", team_id=999)
             assert not valid
             assert error == (
-                "This host points to an internal or private IP address, which PostHog can't reach. "
+                "This host points to an internal or private IP address, which Flind can't reach. "
                 "Use a host that's reachable from the public internet."
             )
 

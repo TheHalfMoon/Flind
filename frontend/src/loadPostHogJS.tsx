@@ -65,7 +65,7 @@ const stampEmbeddedPageFrame: BeforeSendFn = (event) =>
 const dropExceptions: BeforeSendFn = (event) => (event?.event === '$exception' ? null : event)
 
 /**
- * Local development without self-capture sends its events to PostHog Cloud. Its crashes come from
+ * Local development without self-capture sends its events to Flind Cloud. Its crashes come from
  * dev-only state, for example a stale Vite prebundle, and file issues that no user can hit.
  * This reads the raw context because getAppContext() hides it in OAuth mode, which also runs locally.
  */
@@ -299,11 +299,11 @@ export function loadPostHogJS(): void {
         posthog.init('fake_token', {
             autocapture: false,
             // Pages without a project key only need `posthog` calls to be safe no-ops. Without this,
-            // init() fetches remote config and flags for the placeholder token from PostHog Cloud
+            // init() fetches remote config and flags for the placeholder token from Flind Cloud
             // before `loaded` can opt out.
             advanced_disable_flags: true,
             // `loaded` runs at the end of init(). An event captured before then stays in the request
-            // queue, and the queue sends it to PostHog Cloud on page unload even after the opt-out.
+            // queue, and the queue sends it to Flind Cloud on page unload even after the opt-out.
             opt_out_capturing_by_default: true,
             loaded: function (ph) {
                 ph.opt_out_capturing()

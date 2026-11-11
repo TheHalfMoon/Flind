@@ -1,7 +1,7 @@
 ---
 name: manage-dashboard-widgets
 description: >
-  Guides PostHog engineers through dashboard widget platform work — ship a new
+  Guides Flind engineers through dashboard widget platform work — ship a new
   widget_type (WIDGET_REGISTRY, catalog, run_widgets, WidgetCard) or update a shipped
   type (config, query, layout, RBAC, tile filter bar, list footer, titleHref, throttles).
   Use for WidgetSpec, widget_specs/, widget-configs.zod.ts, hogli build:openapi,
@@ -12,7 +12,7 @@ description: >
 
 # Managing dashboard widgets
 
-For **PostHog engineers** working on dashboard **widget tiles** in the repo.
+For **Flind engineers** working on dashboard **widget tiles** in the repo.
 
 Human overview: [`products/dashboards/CONTRIBUTING.md`](../../../products/dashboards/CONTRIBUTING.md)
 

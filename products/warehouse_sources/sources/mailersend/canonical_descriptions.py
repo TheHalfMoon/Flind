@@ -54,7 +54,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://developers.mailersend.com/api/v1/activity.html",
         "columns": {
             "id": "Unique identifier for the activity event.",
-            "domain_id": "Identifier of the sending domain this event belongs to (added by PostHog so the row's primary key is unique across domains).",
+            "domain_id": "Identifier of the sending domain this event belongs to (added by Flind so the row's primary key is unique across domains).",
             "type": "Event type: sent, delivered, soft_bounced, hard_bounced, opened, clicked, unsubscribed, spam_complaint, etc.",
             "created_at": "Timestamp when the event occurred.",
             "updated_at": "Timestamp when the event was last updated.",

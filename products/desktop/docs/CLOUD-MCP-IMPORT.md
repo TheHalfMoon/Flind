@@ -7,7 +7,7 @@ before.
 
 ## Problem
 
-A local task run gets all of the user's MCP servers: the PostHog MCP plus
+A local task run gets all of the user's MCP servers: the Flind MCP plus
 `MCPServerInstallation` records (built by `AgentAuthAdapter.buildMcpServers` in
 `packages/workspace-server/src/services/agent/auth-adapter.ts`), and — for the
 Claude adapter — the user's own servers from `~/.claude.json`
@@ -98,7 +98,7 @@ support the field:
 - `url` must parse, scheme `http`/`https`, host must not be loopback /
   RFC1918 / link-local / CGNAT / IPv6 ULA (re-validate server-side; the
   client's classification is a UX aid, not a security boundary). This matters
-  because the sandbox egresses from PostHog infrastructure: a private URL
+  because the sandbox egresses from Flind infrastructure: a private URL
   here is a user-controlled SSRF vector against whatever the sandbox network
   can reach.
 - Each header value ≤ 4 KB; whole field ≤ 32 KB serialized.
@@ -111,7 +111,7 @@ Store them like other run secrets — encrypted at rest, write-only (never
 echoed back from the run detail API), and excluded from logs/analytics.
 
 **Spawn**: append the validated list to the `--mcpServers` array after the
-PostHog MCP and installation-derived servers. No other transformation — the
+Flind MCP and installation-derived servers. No other transformation — the
 payload shape is already `remoteMcpServerSchema`.
 
 **Adapter caveat (resolved for Codex via the relay)**: codex-acp hard-fails a

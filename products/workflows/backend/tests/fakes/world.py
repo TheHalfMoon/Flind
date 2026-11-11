@@ -13,7 +13,7 @@ from products.workflows.backend.tests.fakes.faults import FaultInjector
 
 
 class EmailDomainWorld:
-    """Everything outside PostHog that the email domain setup talks to, sharing one DNS and one fault injector."""
+    """Everything outside Flind that the email domain setup talks to, sharing one DNS and one fault injector."""
 
     def __init__(self) -> None:
         self.faults = FaultInjector()

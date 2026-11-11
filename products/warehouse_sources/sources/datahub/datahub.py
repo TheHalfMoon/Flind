@@ -125,7 +125,7 @@ def _validated_hostname(base_url: str) -> Optional[str]:
     if parsed.scheme not in ("http", "https") or "@" in parsed.netloc:
         return None
     # The PAT rides in the Authorization header on every request, so plaintext http would leak
-    # it to any network observer. On PostHog Cloud the request egresses over the public
+    # it to any network observer. On Flind Cloud the request egresses over the public
     # internet, so require https. Self-hosted operators control their own network path (e.g. a
     # GMS reachable only over http), so http stays allowed there — mirroring how host IP safety
     # is only enforced on cloud.

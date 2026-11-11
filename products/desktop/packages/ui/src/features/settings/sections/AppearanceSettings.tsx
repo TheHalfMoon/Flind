@@ -111,7 +111,7 @@ export function AppearanceSettings() {
         <SettingsCard>
           <SettingsCardRow
             label="Mission Control overlay"
-            description="Show the PostHog logo over the window in macOS Mission Control"
+            description="Show the Flind logo over the window in macOS Mission Control"
           >
             <Switch
               size="sm"

@@ -6,7 +6,7 @@ export interface ComposerOverride {
     subheadline?: string | null
     /** Hide the repository and branch picker when the task never touches a repo. */
     hideRepositorySelector?: boolean
-    /** Hide the generic "Try PostHog AI for…" row when the host renders its own suggestions. */
+    /** Hide the generic "Try Flind AI for…" row when the host renders its own suggestions. */
     hideSuggestions?: boolean
     /** Hide the recent-tasks list under the composer. */
     hideRecentTasks?: boolean

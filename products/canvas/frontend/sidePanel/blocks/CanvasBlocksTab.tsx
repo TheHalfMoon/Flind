@@ -14,7 +14,7 @@ import { CanvasSourceInspector } from './inspector/CanvasSourceInspector'
 
 /**
  * The Blocks tab of an edited canvas: the library to add blocks from, or the inspector for the
- * selected block, with any save problem on top. Like PostHog Desktop's Blocks panel.
+ * selected block, with any save problem on top. Like Flind Desktop's Blocks panel.
  * The save state itself shows in the canvas header.
  */
 export function CanvasBlocksTab({ canvasId }: { canvasId: string }): JSX.Element {

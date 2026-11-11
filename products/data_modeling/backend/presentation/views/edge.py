@@ -45,7 +45,7 @@ class EdgeSerializer(serializers.ModelSerializer):
         # sync path maintains them directly via the ORM and bypasses this serializer. Block users
         # from editing those edges via the API.
         if self.instance is not None and self.instance.target.belongs_to_managed_viewset:
-            raise serializers.ValidationError("Edges into views PostHog manages cannot be modified.")
+            raise serializers.ValidationError("Edges into views Flind manages cannot be modified.")
         if self.instance is not None and _connects_a_metric(self.instance):
             raise serializers.ValidationError(_METRIC_EDGE_REFUSAL)
         return attrs
@@ -96,7 +96,7 @@ class EdgeViewSet(
         self._require_warehouse_access(level="editor", message=DELETE_DENIED)
         self._require_view_edit_access(instance.source.saved_query, instance.target.saved_query)
         if instance.target.belongs_to_managed_viewset:
-            raise serializers.ValidationError("Edges into views PostHog manages cannot be deleted.")
+            raise serializers.ValidationError("Edges into views Flind manages cannot be deleted.")
         if _connects_a_metric(instance):
             raise serializers.ValidationError(_METRIC_EDGE_REFUSAL)
         instance.delete()

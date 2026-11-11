@@ -55,7 +55,7 @@ SEARCH_BUDGET = Budget(burst=10, per_hour=600)
 MIN_MESSAGES = 5
 MAX_MESSAGE_CHARS = 500
 
-# Onboarding promotes PostHog, so its model calls must not spend the team's AI credits.
+# Onboarding promotes Flind, so its model calls must not spend the team's AI credits.
 WORK_FOCUS_AI_PRODUCT = "slack_app_onboarding"
 # Jev ranks the messages, because a judgment costs far less than generated text, and only the few messages it keeps
 # reach the model that writes. One question for each message, and a request takes 32 questions at most.
@@ -66,11 +66,11 @@ RANK_TIMEOUT_SECONDS = 15.0
 MAX_CANDIDATES = 5
 RANK_INSTRUCTIONS = (
     "`messages` holds Slack messages that a person wrote or that mention them. For the message this question names, "
-    "decide whether it describes work that PostHog could do for this person now: answer a product data question, "
+    "decide whether it describes work that Flind could do for this person now: answer a product data question, "
     "investigate a bug or an error, or change code in a connected repository."
 )
 RANK_TRUE = "The message asks for, reports or plans work of that kind."
-RANK_FALSE = "The message is chat, a greeting, a status note or work that PostHog cannot help with."
+RANK_FALSE = "The message is chat, a greeting, a status note or work that Flind cannot help with."
 
 WRITE_MODEL = "gpt-6-luna"
 WRITE_TIMEOUT_SECONDS = 30.0
@@ -87,7 +87,7 @@ _CHANNEL_TYPE_SCOPES = {
     "mpim": "search:read.mpim",
 }
 
-WRITE_INSTRUCTIONS = """You write a short, friendly direct message from PostHog to one person in Slack. PostHog is an \
+WRITE_INSTRUCTIONS = """You write a short, friendly direct message from Flind to one person in Slack. Flind is an \
 AI agent that answers questions from product data (analytics, session replay, errors, feature flags, experiments) and \
 opens pull requests in connected repositories. The numbered messages are recent Slack messages that the person wrote \
 or that mention them.
@@ -96,15 +96,15 @@ Return:
 - "intro": one short, warm sentence to the person, in the second person, that names what their recent work is \
 about. Start it with one fitting emoji. At most 120 characters. For example: "👀 Looks like your week is all about \
 Slack handoffs and feature tips."
-- "suggestions": at most 3 tasks that PostHog could do for them, the most useful first. Each task has:
+- "suggestions": at most 3 tasks that Flind could do for them, the most useful first. Each task has:
   - "offer": one short line in the second person that ends with a question. Start it with one emoji that fits the \
 task. At most 100 characters. For example: "📈 Chart previews ignore edited query params. Want me to find out why?"
-  - "request": the full task, written as the person would ask PostHog, such as "Find out why chart link previews \
+  - "request": the full task, written as the person would ask Flind, such as "Find out why chart link previews \
 ignore edited query parameters, and open a pull request with the fix." At most 500 characters.
   - "source": the number of the message the task comes from.
 
 Keep it short and friendly, and never use em dashes. Never quote a message, never name a person, and never copy \
-private details. Suggest nothing when no message shows work that PostHog can help with."""
+private details. Suggest nothing when no message shows work that Flind can help with."""
 
 _RESPONSE_FORMAT: ResponseFormatJSONSchema = {
     "type": "json_schema",
@@ -306,7 +306,7 @@ def _collect(found: dict[tuple[str, str], _FoundMessage], message: dict[str, Any
 
 
 def _rank(integration: WorkspaceIntegration, messages: list[_FoundMessage]) -> list[_FoundMessage]:
-    """The messages most likely to hold work for PostHog, most likely first."""
+    """The messages most likely to hold work for Flind, most likely first."""
     # No TypeSafe fallback: the messages are customer text, and TypeSafe is a third party.
     client = build_system_one_client(
         model=RANK_MODEL,
@@ -392,7 +392,7 @@ def _clean_suggestions(raw: Any, candidates: list[_FoundMessage]) -> list[WorkFo
 
 def source_line(suggestion: WorkFocusSuggestion, slack_user_id: str) -> str | None:
     """A link to the message a suggestion came from. The author shows as a mention, so Slack renders the name and
-    PostHog keeps none."""
+    Flind keeps none."""
     if not suggestion.source_permalink:
         return None
     where = f" in #{suggestion.source_channel_name}" if suggestion.source_channel_name else ""

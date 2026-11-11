@@ -58,7 +58,7 @@ class TawkToSource(ResumableSource[TawkToSourceConfig, TawkToResumeConfig]):
             label="tawk.to",
             releaseStatus=ReleaseStatus.GA,
             keywords=["tawkto", "live chat"],
-            caption="""Enter your tawk.to REST API key to pull your chats, tickets, properties, and property members into the PostHog Data warehouse.
+            caption="""Enter your tawk.to REST API key to pull your chats, tickets, properties, and property members into the Flind Data warehouse.
 
 tawk.to's REST API is available by request: submit the [REST API Access Request Form](https://help.tawk.to/article/rest-api), then generate an API key under **Edit Profile → REST API Keys**. The key needs read access to properties, chat history, tickets, and members.""",
             iconPath="/static/services/tawk_to.png",
@@ -130,7 +130,7 @@ tawk.to's REST API is available by request: submit the [REST API Access Request 
         except TawkToCredentialsError as e:
             return False, str(e)
         except (TawkToRetryableError, requests.RequestException):
-            return False, "PostHog couldn't reach tawk.to to check your API key. Wait a few minutes, then try again."
+            return False, "Flind couldn't reach tawk.to to check your API key. Wait a few minutes, then try again."
 
     def get_resumable_source_manager(self, inputs: SourceInputs) -> ResumableSourceManager[TawkToResumeConfig]:
         return ResumableSourceManager[TawkToResumeConfig](inputs, TawkToResumeConfig)

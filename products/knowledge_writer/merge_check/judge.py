@@ -11,7 +11,7 @@ MAX_DIFF_CHARACTERS = 600_000
 JUDGE_TIMEOUT_SECONDS = 120
 JUDGE_MAX_RETRIES = 1
 
-JUDGE_INSTRUCTIONS = """You decide whether a change merged into PostHog's product code needs a posthog.com docs change.
+JUDGE_INSTRUCTIONS = """You decide whether a change merged into Flind's product code needs a posthog.com docs change.
 Docs need a change when the merge adds, renames, removes, or changes behavior that a customer reads about or configures.
 Refactors, internal tooling, tests, and fixes that restore documented behavior need no docs change.
 Pick change_kind update for an existing page, create when no listed page covers the feature, remove when a feature or option is gone.

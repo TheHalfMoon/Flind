@@ -84,7 +84,7 @@ export function deriveFromCoreFilterDefinitions<T>(derive: () => T): () => T {
 }
 
 /**
- * these are properties that PostHog add to events they track for their own purposes
+ * these are properties that Flind add to events they track for their own purposes
  * not part of the general taxonomy
  * but often more numerous than actual properties set on events and useful to hide
  * to make those properties discoverable

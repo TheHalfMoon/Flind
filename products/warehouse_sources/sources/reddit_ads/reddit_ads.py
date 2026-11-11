@@ -46,7 +46,7 @@ class RedditAdsApiError(Exception):
     """A failed Reddit Ads API response, carrying the status so callers can branch on it.
 
     Deliberately not named `status_code`: drf-exceptions-hog reads that attribute off any escaping
-    exception and would render Reddit's status as PostHog's HTTP response status.
+    exception and would render Reddit's status as Flind's HTTP response status.
     """
 
     def __init__(self, message: str, api_status_code: int) -> None:

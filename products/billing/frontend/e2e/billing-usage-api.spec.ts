@@ -2,9 +2,9 @@ import { PlaywrightWorkspaceSetupResult, expect, test } from '@playwright-utils/
 import { APIRequestContext, APIResponse } from '@playwright/test'
 
 /**
- * The usage and spend API through a running PostHog with a billing service behind it.
+ * The usage and spend API through a running Flind with a billing service behind it.
  *
- * Billing's own routes have their live suite in the billing repo. This one covers what PostHog adds
+ * Billing's own routes have their live suite in the billing repo. This one covers what Flind adds
  * on top: the token it mints for a real organization, the parameters it validates before billing is
  * asked, the projects it lets a key see, the named errors it answers with, and the files it streams.
  *
@@ -65,7 +65,7 @@ async function expectCsv(response: Promise<APIResponse>, kind: 'usage' | 'spend'
 }
 
 test.describe('Billing usage and spend API', () => {
-    test.skip(!process.env.RUN_BILLING_E2E, 'needs a billing service behind PostHog; set RUN_BILLING_E2E=1')
+    test.skip(!process.env.RUN_BILLING_E2E, 'needs a billing service behind Flind; set RUN_BILLING_E2E=1')
 
     test.describe('a fresh organization', () => {
         let workspace: PlaywrightWorkspaceSetupResult
@@ -107,7 +107,7 @@ test.describe('Billing usage and spend API', () => {
             expect((await outside.json()).detail).toBe('One or more requested projects are not in this organization.')
         })
 
-        test("billing's refusal of a range over a year arrives as PostHog's own error", async ({ request }) => {
+        test("billing's refusal of a range over a year arrives as Flind's own error", async ({ request }) => {
             const get = billing(request, workspace.personal_api_key)
             for (const kind of ['usage', 'spend']) {
                 const refused = await get(`${kind}/`, { start_date: day(-400), end_date: day(-1) })

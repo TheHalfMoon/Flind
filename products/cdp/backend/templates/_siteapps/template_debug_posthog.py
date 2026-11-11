@@ -5,7 +5,7 @@ template: HogFunctionTemplateDC = HogFunctionTemplateDC(
     free=True,
     type="site_app",
     id="template-debug-posthog-js",
-    name="PostHog JS debugger",
+    name="Flind JS debugger",
     description="Enable extra debugging tools on your posthog-js",
     icon_url="https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/builder_hog_01_955c082cad.png",
     category=["Custom"],
@@ -13,7 +13,7 @@ template: HogFunctionTemplateDC = HogFunctionTemplateDC(
     code="""
 export function onLoad({ inputs, posthog }) {
     if (inputs.enable_debugging) {
-        console.log("[PostHog JS debugger site app] Enabling PostHog.js debugging", posthog)
+        console.log("[Flind JS debugger site app] Enabling Flind.js debugging", posthog)
         globalThis.POSTHOG_DEBUG = true
         globalThis.__POSTHOG_JS_DEBUGGER_ENABLED = true
     }

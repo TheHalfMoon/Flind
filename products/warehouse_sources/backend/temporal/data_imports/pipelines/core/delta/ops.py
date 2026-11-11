@@ -57,17 +57,17 @@ OBJECT_STORE_PERMISSION_DENIED_ERRORS = (
 _PERMISSION_DENIED_CLIENT_ERROR_CODES = ("SignatureDoesNotMatch",)
 
 # Reaches the customer as the sync run's error text, so it names neither the bucket nor the object
-# key. The data warehouse bucket is PostHog's own and the worker authenticates to it with its own
+# key. The data warehouse bucket is Flind's own and the worker authenticates to it with its own
 # role, which means a refusal here is never caused by the customer's source or credentials.
 OBJECT_STORE_PERMISSION_DENIED_MESSAGE = (
-    "PostHog could not read or write this table's files in its own storage. This is a problem on "
-    "PostHog's side, not with your source. Contact support if it keeps happening."
+    "Flind could not read or write this table's files in its own storage. This is a problem on "
+    "Flind's side, not with your source. Contact support if it keeps happening."
 )
 
 # Same reasoning as OBJECT_STORE_PERMISSION_DENIED_MESSAGE: this is what a customer reads if every
 # retry is exhausted, so it names neither the bucket nor the object key either.
 OBJECT_STORE_TRANSIENT_MESSAGE = (
-    "PostHog hit a temporary problem reading or writing this table's files in its own storage. "
+    "Flind hit a temporary problem reading or writing this table's files in its own storage. "
     "The next scheduled run will try again."
 )
 

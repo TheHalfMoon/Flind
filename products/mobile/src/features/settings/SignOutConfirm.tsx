@@ -45,7 +45,7 @@ export function SignOutConfirm({
 
     return (
         <View style={[styles.confirm, style]} testID={`${testIDPrefix}-sign-out-confirm`}>
-            <Text style={styles.title}>Sign out of {host ? host.replace(/^https?:\/\//, '') : 'PostHog'}?</Text>
+            <Text style={styles.title}>Sign out of {host ? host.replace(/^https?:\/\//, '') : 'Flind'}?</Text>
             <Text style={styles.body}>This device stops getting push notifications until you sign in again.</Text>
             {error ? <Text style={styles.error}>{error}</Text> : null}
             <View style={styles.actions}>

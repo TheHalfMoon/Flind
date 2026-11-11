@@ -206,7 +206,7 @@ function describeResult(built: BuiltExplanation, chapterCount: number): string {
     const lines = [`The explanation of "${name}" has ${chapterCount} chapters.`]
     if (chart.linkableInsightId !== null) {
         lines.push(
-            'Where the person cannot see it rendered inline, call explain-chart-save with the same arguments for a link that opens it beside the chart in PostHog.'
+            'Where the person cannot see it rendered inline, call explain-chart-save with the same arguments for a link that opens it beside the chart in Flind.'
         )
     }
     if (warnings.length) {

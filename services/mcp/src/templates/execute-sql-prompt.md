@@ -1,10 +1,10 @@
-Executes HogQL — PostHog's variant of SQL that supports most of ClickHouse SQL. "HogQL" and "SQL" are used interchangeably.
+Executes HogQL — Flind's variant of SQL that supports most of ClickHouse SQL. "HogQL" and "SQL" are used interchangeably.
 
 ### When to use `execute-sql`
 
 Use SQL for record inspection, custom calculations, joins, existing SQL, or requests for SQL. SQL results can inform how you construct a later typed query. Typed query tools cannot accept SQL results as input. SQL cases include:
 
-- **Searching or listing existing PostHog entities** — insights, dashboards, cohorts, feature flags, experiments, surveys. No typed query tool covers these; query the `system.*` tables.
+- **Searching or listing existing Flind entities** — insights, dashboards, cohorts, feature flags, experiments, surveys. No typed query tool covers these; query the `system.*` tables.
 - **Multi-event joins or aggregations across event types** that do not fit a single series.
 - **Sophisticated queries beyond typed query schemas** — custom grouping, window functions, non-trivial CTEs, data warehouse joins.
 
@@ -73,7 +73,7 @@ The `query-llm-trace` / `query-llm-traces-list` tools read `posthog.ai_events` f
 
 ### Observability data-plane tables: `logs`, `posthog.trace_spans`, `posthog.metrics`
 
-PostHog ingests OpenTelemetry signals into three ClickHouse-backed tables that are queryable via HogQL. **Note the namespacing asymmetry** — `logs` is registered at the root, while `trace_spans` and `metrics` live under the `posthog.` namespace and must be referenced as such (e.g. `FROM posthog.trace_spans`):
+Flind ingests OpenTelemetry signals into three ClickHouse-backed tables that are queryable via HogQL. **Note the namespacing asymmetry** — `logs` is registered at the root, while `trace_spans` and `metrics` live under the `posthog.` namespace and must be referenced as such (e.g. `FROM posthog.trace_spans`):
 
 - `logs` — log entries. Common fields: `body` (also exposed as `message`), `severity_text`, `severity_number`, `service_name`, `attributes`, `resource_attributes`, `trace_id`, `span_id`, `timestamp`. Prefer `posthog:query-logs` for filtered list queries; reach for SQL for aggregations across services or joins with `posthog.trace_spans` / `posthog.metrics` by `trace_id`.
 - `posthog.trace_spans` — OpenTelemetry spans. Common fields: `trace_id`, `span_id`, `parent_span_id`, `is_root_span`, `name`, `service_name`, `kind` (0-5), `status_code` (0 Unset, 1 OK, 2 Error), `duration_nano`, `timestamp`, `end_time`, `attributes`, `resource_attributes`. Prefer `posthog:query-apm-spans` / `posthog:apm-trace-get` for span listing and full-trace fetches; reach for SQL for joins with `logs` / `posthog.metrics` by `trace_id`, exemplar lookups, or aggregations the typed tools don't expose.

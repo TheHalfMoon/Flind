@@ -192,7 +192,7 @@ export type todayAiChatLogicType = MakeLogicType<
     todayAiChatLogicMeta
 >
 
-/** The context panel's PostHog AI chat: which chat is open, its recent chats, and moving it to full screen. */
+/** The context panel's Flind AI chat: which chat is open, its recent chats, and moving it to full screen. */
 export const todayAiChatLogic = kea<todayAiChatLogicType>([
     path(['layout', 'today', 'todayAiChatLogic']),
     connect(() => ({

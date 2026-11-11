@@ -128,14 +128,14 @@ def _datetime_timezone(name: str, arguments: str) -> str | None:
     try:
         ZoneInfo(timezone)
     except (ZoneInfoNotFoundError, ValueError) as e:
-        raise UnsupportedCsvColumnError(f"the column '{name}' has a time zone '{timezone}' PostHog can't read") from e
+        raise UnsupportedCsvColumnError(f"the column '{name}' has a time zone '{timezone}' Flind can't read") from e
     return None if timezone == _UTC else timezone
 
 
 def _decimal_type(name: str, base: str, arguments: str) -> CsvColumnType:
     match = _DECIMAL_ARGUMENTS.match(arguments)
     if match is None:
-        raise UnsupportedCsvColumnError(f"the column '{name}' has a decimal type PostHog can't read")
+        raise UnsupportedCsvColumnError(f"the column '{name}' has a decimal type Flind can't read")
     fixed_precision = _DECIMAL_PRECISIONS[base]
     if fixed_precision is None:
         precision, scale = int(match.group("first")), int(match.group("second") or 0)
@@ -156,7 +156,7 @@ def csv_column_type(name: str, clickhouse_type: str) -> CsvColumnType | None:
     parsed = _unwrap(clickhouse_type)
     base, arguments = parsed.base, parsed.arguments
     if base in _WIDE_INTEGERS:
-        raise UnsupportedCsvColumnError(f"the column '{name}' is a {base}, which PostHog can't store")
+        raise UnsupportedCsvColumnError(f"the column '{name}' is a {base}, which Flind can't store")
     if base in _DECIMAL_PRECISIONS:
         return _decimal_type(name, base, arguments)
     kind = _CLICKHOUSE_KINDS.get(base)

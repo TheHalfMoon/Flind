@@ -189,7 +189,7 @@ export const NEW_WORKFLOW: HogFlow = {
 export const PERSON_DEPENDENT_ACTION_TYPES = new Set(['wait_until_condition', 'random_cohort_branch'])
 
 // Trigger types whose runs have no person attached: a synced warehouse row, a materialized view
-// row, and an internal event are all things no PostHog person is attached to. Keep in sync with
+// row, and an internal event are all things no Flind person is attached to. Keep in sync with
 // the backend's ROW_SCOPED_TRIGGER_TYPES, which is the authoritative check.
 export const ROW_SCOPED_TRIGGER_TYPES = new Set(['data-warehouse-table', 'data-warehouse-view', 'internal-event'])
 
@@ -4374,7 +4374,7 @@ export const workflowLogic = kea<workflowLogicType>([
             (s) => [s.originalWorkflow],
             (originalWorkflow: HogFlow | null): string => originalWorkflow?.email_sending_paused_reason ?? '',
         ],
-        // "staff" means only PostHog staff can lift the pause, so the banner hides the resume button.
+        // "staff" means only Flind staff can lift the pause, so the banner hides the resume button.
         emailSendingPausedByStaff: [
             (s) => [s.originalWorkflow],
             (originalWorkflow: HogFlow | null): boolean => originalWorkflow?.email_sending_paused_by === 'staff',

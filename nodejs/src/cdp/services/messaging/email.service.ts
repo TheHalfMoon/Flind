@@ -555,7 +555,7 @@ export class EmailService {
                 // past in the run logs. The run itself still continues; a pause is policy, not a
                 // fault, so it must not enter retry or abort handling.
                 const skipReason = workflowPause.byStaff
-                    ? `Skipping send: PostHog staff paused email sending for this workflow.${pauseDetail} Contact support to get sending re-enabled.`
+                    ? `Skipping send: Flind staff paused email sending for this workflow.${pauseDetail} Contact support to get sending re-enabled.`
                     : `Skipping send: email sending is paused for this workflow.${pauseDetail} Resume it from the workflow page once the audience is cleaned up.`
                 addLog('error', skipReason)
                 result.emailSendResult = { status: 'skipped', reason: skipReason }

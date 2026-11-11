@@ -416,7 +416,7 @@ if the user is explicit about wanting to keep historical bucketing comparable.
 **Symptom (in the user's vocabulary):** "exposures stopped growing and the experiment still says running", "after the freeze some users lost the variant", "can I freeze this experiment", "the freeze was refused".
 
 **Behavior.** Freezing stops enrollment and keeps measuring.
-PostHog saves the people exposed so far as a static cohort and narrows every release condition of the flag to that cohort.
+Flind saves the people exposed so far as a static cohort and narrows every release condition of the flag to that cohort.
 The variant split and the end date stay untouched. `status` reads `exposure_frozen`, and no banner appears.
 
 - New people get no variant.

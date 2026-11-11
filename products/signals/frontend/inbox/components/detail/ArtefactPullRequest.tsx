@@ -46,10 +46,10 @@ export function ArtefactPullRequest({
             {outcome ? (
                 <span className="block text-xs text-secondary">
                     {outcome === 'skipped'
-                        ? 'Not closed by PostHog'
+                        ? 'Not closed by Flind'
                         : outcome === 'already_closed'
                           ? 'Already closed at replacement'
-                          : 'Closed by PostHog'}
+                          : 'Closed by Flind'}
                 </span>
             ) : null}
         </div>

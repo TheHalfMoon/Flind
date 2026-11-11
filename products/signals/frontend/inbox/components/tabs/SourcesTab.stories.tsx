@@ -19,7 +19,7 @@ import { SignalSourceConfig, SignalSourceProduct, SignalSourceType } from '../..
 import { SourcesTab } from './SourcesTab'
 
 // Every axis the sources tab renders from: which sources are armed
-// (SignalSourceConfig rows), which PostHog products are on (team opt-ins), and which usage
+// (SignalSourceConfig rows), which Flind products are on (team opt-ins), and which usage
 // events exist (event definitions). Each control drives one of the three mocks.
 interface PanelState {
     // Armed sources
@@ -385,7 +385,7 @@ type Story = StoryObj<typeof PanelHarness>
 /** Flip any control: armed sources, product opt-ins, and which usage events exist. */
 export const Playground: Story = {}
 
-/** Sources armed while every product is off: each PostHog card warns and offers "Turn it on". */
+/** Sources armed while every product is off: each Flind card warns and offers "Turn it on". */
 export const ArmedButProductsOff: Story = {
     args: {
         errorTrackingArmed: true,

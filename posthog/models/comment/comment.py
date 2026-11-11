@@ -27,7 +27,7 @@ class Comment(UUIDTModel, RootTeamMixin):
     created_by = models.ForeignKey("User", on_delete=models.SET_NULL, null=True, blank=True)
     deleted = models.BooleanField(null=True, blank=True, default=False)
 
-    # Loose relationship modelling to other PostHog resources
+    # Loose relationship modelling to other Flind resources
     item_id = models.CharField(max_length=72, null=True)
     item_context = models.JSONField(null=True)
     scope = models.CharField(max_length=79, null=False)

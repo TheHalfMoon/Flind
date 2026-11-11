@@ -4,9 +4,9 @@ import { isRecord } from '@/lib/records'
 
 import type { ChatError } from './types'
 
-const DESKTOP_ACCESS_REQUIRED = 'PostHog Desktop access is required to run tasks in the cloud.'
-const DESKTOP_ACCESS_UNVERIFIED = "We couldn't verify PostHog Desktop access. Try again."
-const DESKTOP_USAGE_LIMIT = "You've reached your PostHog Desktop usage limit."
+const DESKTOP_ACCESS_REQUIRED = 'Flind Desktop access is required to run tasks in the cloud.'
+const DESKTOP_ACCESS_UNVERIFIED = "We couldn't verify Flind Desktop access. Try again."
+const DESKTOP_USAGE_LIMIT = "You've reached your Flind Desktop usage limit."
 const NOT_QUEUED = "Your message didn't reach the agent. Try again in a moment."
 const REPORT_TASK_CAP = 'This report has reached its chat limit. Try again later.'
 
@@ -20,7 +20,7 @@ function retryHint(seconds: number | undefined): string {
     return `Try again in ${Math.ceil(seconds / 60)} minutes.`
 }
 
-/** The tasks API's PostHog Desktop gate and limits. Their copy is under `error`, which `ApiError.detail` carries. */
+/** The tasks API's Flind Desktop gate and limits. Their copy is under `error`, which `ApiError.detail` carries. */
 function taskRunError(error: ApiError): ChatError | undefined {
     const type = isRecord(error.body) ? error.body.type : undefined
     if (error.status === 403 && error.code === 'code_access_required') {
@@ -68,14 +68,14 @@ export function toChatError(error: unknown): ChatError {
             case 403:
                 return {
                     kind: 'auth',
-                    message: "Your sign-in can't use PostHog AI in this project. Sign out and sign in again.",
+                    message: "Your sign-in can't use Flind AI in this project. Sign out and sign in again.",
                 }
             case 404:
                 return { kind: 'not_found', message: 'This chat no longer exists. Start a new chat.' }
             case 409:
                 return {
                     kind: 'busy',
-                    message: 'PostHog AI is still answering your last message. Try again when it finishes.',
+                    message: 'Flind AI is still answering your last message. Try again when it finishes.',
                 }
             case 429:
                 return {
@@ -87,18 +87,18 @@ export function toChatError(error: unknown): ChatError {
             case 503:
                 return {
                     kind: 'unavailable',
-                    message: `PostHog AI is busy right now. ${retryHint(error.retryAfterSeconds)}`,
+                    message: `Flind AI is busy right now. ${retryHint(error.retryAfterSeconds)}`,
                     retryAfterSeconds: error.retryAfterSeconds,
                 }
             case 400:
                 return {
                     kind: 'invalid',
                     // Such as "Invalid resume_from_run_id" or a model the account cannot use.
-                    message: error.detail ?? "PostHog AI couldn't take this message. Start a new chat and try again.",
+                    message: error.detail ?? "Flind AI couldn't take this message. Start a new chat and try again.",
                 }
             default:
                 if (error.status >= 500) {
-                    return { kind: 'unavailable', message: 'PostHog AI ran into a problem. Try again.' }
+                    return { kind: 'unavailable', message: 'Flind AI ran into a problem. Try again.' }
                 }
                 return { kind: 'unknown', message: 'Something went wrong. Try again.' }
         }

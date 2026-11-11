@@ -51,7 +51,7 @@ def discovery_options_from(config: FileOptionsConfig) -> DiscoveryOptions:
 
 def source_caption(store: str) -> str:
     return (
-        f"Import CSV, JSON Lines and Parquet files, and Delta Lake tables, from {store}. PostHog creates one "
+        f"Import CSV, JSON Lines and Parquet files, and Delta Lake tables, from {store}. Flind creates one "
         "table per folder, one per file directly in the folder the URL points to, and one per Delta table. A full "
         "refresh reads every file again, so the table matches the files. An incremental sync reads only new "
         "and changed files, and removes the rows of files you delete. For a Delta table, it also applies "

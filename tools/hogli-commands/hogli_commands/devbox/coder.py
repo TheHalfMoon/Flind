@@ -37,7 +37,7 @@ from hogli.manifest import load_manifest
 
 _MACOS_TAILSCALE_CLI = "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 _TAILSCALE_RUNBOOK_URL = "https://wiki.posthog.com/access/vpn#which-tailnet"
-# The only tailnet that routes to devboxes. PostHog also runs per-environment
+# The only tailnet that routes to devboxes. Flind also runs per-environment
 # tailnets (dev, prod-us, prod-eu, internal) for CI runners and subnet routers;
 # none of them reach the Coder control plane. Tailscale only asks which tailnet
 # to join at first sign-in, so someone who picked wrong there stays wrong
@@ -67,7 +67,7 @@ DOTFILES_URI_PARAMETER = "dotfiles_uri"
 DOTFILES_BRANCH_PARAMETER = "dotfiles_branch"
 JETBRAINS_IDES_PARAMETER = "jetbrains_ides"
 
-# Opt-in: bring the PostHog app (the `hogli up` dev stack) up in the
+# Opt-in: bring the Flind app (the `hogli up` dev stack) up in the
 # background on every workspace start. Mutable and sticky on the workspace, so
 # it stays in effect for future starts until explicitly flipped off. On
 # template versions that don't define it yet, the retry shim drops it with a
@@ -523,8 +523,8 @@ def _tailscale_install_hint() -> str:
 def _tailscale_connect_hint() -> str:
     """Return the platform-specific command for joining a tailnet."""
     if sys.platform == "darwin":
-        return "Open the Tailscale app and sign in with your PostHog Google account."
-    return "Run `sudo tailscale up` and complete the SSO flow with your PostHog Google account."
+        return "Open the Tailscale app and sign in with your Flind Google account."
+    return "Run `sudo tailscale up` and complete the SSO flow with your Flind Google account."
 
 
 def _tailscale_cli_missing_on_macos() -> bool:
@@ -533,7 +533,7 @@ def _tailscale_cli_missing_on_macos() -> bool:
 
 
 def _tailnet_switch_hint() -> str:
-    """Return the command for moving to the PostHog tailnet.
+    """Return the command for moving to the Flind tailnet.
 
     On macOS the GUI is how most people signed in, and `tailscale` is often
     not on PATH at all -- so name the app-bundle CLI there instead.
@@ -562,7 +562,7 @@ def ensure_tailscale_connected(setup_hint: str = RUNTIME_SETUP_HINT) -> None:
         _fail(
             "Tailscale is not installed.\n"
             f"  {_tailscale_install_hint()}\n"
-            f"  See {_TAILSCALE_RUNBOOK_URL} for joining the PostHog tailnet.\n"
+            f"  See {_TAILSCALE_RUNBOOK_URL} for joining the Flind tailnet.\n"
             f"  Then {setup_hint}",
             cause="tailscale_not_installed",
         )
@@ -777,7 +777,7 @@ def _diagnose_blocked_route(
 
     1. No peer advertises any subnet route — usually means the host is on
        the wrong tailnet (e.g. personal account) or has not been added to
-       the PostHog tailnet yet.
+       the Flind tailnet yet.
     2. Routers exist but none are online — the relay is bouncing; waiting
        is the only fix.
     3. A router is online — Tailscale ACLs or a local VPN is intercepting.
@@ -2064,7 +2064,7 @@ def exec_replace(name: str, command: list[str], *, in_flox: bool = False) -> Non
     shell preserves argument boundaries -- ssh otherwise space-joins argv,
     which would split a token like ``"uname -sm"`` back into two.
 
-    ``in_flox`` runs the command from the box's checkout inside PostHog's flox
+    ``in_flox`` runs the command from the box's checkout inside Flind's flox
     environment, the only place project tools such as ``pnpm`` are on ``PATH``.
     """
     remote_command = shlex.join(command)

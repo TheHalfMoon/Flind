@@ -1,4 +1,4 @@
-// The canvas platform contract, vendored from the PostHog repo's single source
+// The canvas platform contract, vendored from the Flind repo's single source
 // of truth: products/canvas/packages/canvas_builder/manifest.json. The server
 // builds and validates against that file; this copy exists so the client's
 // legacy import map (freeformWhitelist) is contract-tested against the same

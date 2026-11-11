@@ -44,7 +44,7 @@ describe('terminal rm wrapper', () => {
         (target) => {
             const result = run(['-rf', target])
             expect(result.status).toBe(1)
-            expect(result.stderr).toContain('Refusing to remove the PostHog mount')
+            expect(result.stderr).toContain('Refusing to remove the Flind mount')
             expect(readFileSync(trace, 'utf8')).toBe('')
         }
     )

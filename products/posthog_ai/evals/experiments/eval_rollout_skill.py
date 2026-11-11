@@ -9,7 +9,7 @@ cheap to reproduce while iterating on the skill's description.
 Maps to stress-test finding #7 (skills rarely auto-load), specifically
 the variant-split rows (2.5, 5.3, 5.4, 5.5) in STEP_1_HARNESS.md. Uses
 ``SandboxedEval`` with ``send_to_posthog=True`` to publish results
-only to PostHog. The harness still requires a Braintrust API key for its
+only to Flind. The harness still requires a Braintrust API key for its
 evaluation engine, but Braintrust result uploads remain disabled.
 
 To run:

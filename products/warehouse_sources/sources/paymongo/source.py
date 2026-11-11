@@ -81,7 +81,7 @@ class PaymongoSource(ResumableSource[PaymongoSourceConfig, PaymongoResumeConfig]
                 ],
             ),
             releaseStatus=ReleaseStatus.GA,
-            webhookSetupCaption="PostHog registers payment webhooks automatically. For manual setup, add the URL below in PayMongo, select payment.paid, payment.failed, payment.refunded, and payment.refund.updated, then copy the signing secret below. Disconnecting disables the webhook in PayMongo.",
+            webhookSetupCaption="Flind registers payment webhooks automatically. For manual setup, add the URL below in PayMongo, select payment.paid, payment.failed, payment.refunded, and payment.refund.updated, then copy the signing secret below. Disconnecting disables the webhook in PayMongo.",
             webhookFields=cast(
                 list[FieldType],
                 [

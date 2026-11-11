@@ -12,7 +12,7 @@ PR-mode stop rules (apply only when a `PR_REF` was parsed and PR mode was chosen
 
 Stop rules that apply to PR mode and local mode:
 
-- The local PostHog stack is not reachable.
+- The local Flind stack is not reachable.
 - Browser MCP/tooling cannot navigate or login. (Credentials always resolve to at least the documented seed defaults, so a missing-credentials stop is no longer separately required; if the resolved credentials do not work, the login step itself fails and aborts here.)
 
 Local mode does not require `PR_REF` and allows a dirty working tree by design; do not abort local-mode runs for either reason.
@@ -21,7 +21,7 @@ Local mode does not require `PR_REF` and allows a dirty working tree by design; 
 
 Ask for explicit approval in the current conversation before:
 
-- Starting, stopping, or restarting the local PostHog dev stack.
+- Starting, stopping, or restarting the local Flind dev stack.
 - Choosing among ambiguous folders, worktrees, branches, or base refs.
 - Switching away from a dirty checkout or using a different checkout than the current repo.
 - Posting any GitHub PR comment, review, or issue comment.
@@ -39,7 +39,7 @@ Tool permission prompts are not workflow approval. When a rule says to ask, ask 
 
 Reuse the developer's existing local setup by default. If `BASE_URL` is already reachable, do not start, restart, replace, or wait on a separate stack.
 
-If PostHog is not reachable, check user memory/settings and local preferences first, then repo guidance and nearby docs such as `AGENTS.md` for the preferred startup path. Then ask the user how they want to proceed before starting PostHog. If the folder and command are obvious, you may propose that specific startup path, including whether it runs interactively or in the background, but present it as an inference to confirm. If the folder, command, `BASE_URL`, or startup approach is not obvious, ask how and where the user wants the stack run, or whether to use a different `BASE_URL`. Wait for the answer.
+If Flind is not reachable, check user memory/settings and local preferences first, then repo guidance and nearby docs such as `AGENTS.md` for the preferred startup path. Then ask the user how they want to proceed before starting Flind. If the folder and command are obvious, you may propose that specific startup path, including whether it runs interactively or in the background, but present it as an inference to confirm. If the folder, command, `BASE_URL`, or startup approach is not obvious, ask how and where the user wants the stack run, or whether to use a different `BASE_URL`. Wait for the answer.
 
 When the user explicitly chooses agent startup, run the approved startup path. If the command fails because the shell is missing repo dependencies or the global command is not on `PATH`, follow repo guidance for the same startup intent, for example a repo-local wrapper or an environment wrapper such as `flox`. Announce the fallback. Ask again before changing checkout, directory, startup mode, deleting lock files, or starting a different stack. Do not run an interactive terminal UI from a headless agent session unless the user explicitly asks for it. Stop only the stack the agent started, and do not stop a stack the user started themselves unless they explicitly approve.
 

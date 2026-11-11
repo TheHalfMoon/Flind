@@ -37,7 +37,7 @@ describe('chat context prompt', () => {
         expect(prompt).toBe(
             [
                 '<posthog_trusted_context>',
-                `- A user sent the message after this block about the PostHog Inbox report at ${URL_1}. ${ACT_TAIL}`,
+                `- A user sent the message after this block about the Flind Inbox report at ${URL_1}. ${ACT_TAIL}`,
                 `- ${REPORT_DISCUSSION_STATE_INSTRUCTIONS}`,
                 `- ${NO_CHECKOUT_INSTRUCTIONS}`,
                 '</posthog_trusted_context>',
@@ -57,7 +57,7 @@ describe('chat context prompt', () => {
             'one report the agent may not act on',
             [report({ canAct: false })],
             [
-                `Answer this question about the PostHog Inbox report at ${URL_1}. The question is the message after this block.`,
+                `Answer this question about the Flind Inbox report at ${URL_1}. The question is the message after this block.`,
                 NO_CHECKOUT_INSTRUCTIONS,
             ],
         ],
@@ -65,7 +65,7 @@ describe('chat context prompt', () => {
             'several reports, one not actionable',
             [report(), report({ reportId: 'r2', webUrl: URL_2, canAct: false })],
             [
-                `Answer this question about these PostHog Inbox reports: ${URL_1}, ${URL_2}. The question is the message after this block.`,
+                `Answer this question about these Flind Inbox reports: ${URL_1}, ${URL_2}. The question is the message after this block.`,
                 EACH,
                 NO_CHECKOUT_INSTRUCTIONS,
             ],
@@ -74,7 +74,7 @@ describe('chat context prompt', () => {
             'several actionable reports',
             [report(), report({ reportId: 'r2', webUrl: URL_2 })],
             [
-                `A user sent the message after this block about these PostHog Inbox reports: ${URL_1}, ${URL_2}. ${ACT_TAIL}`,
+                `A user sent the message after this block about these Flind Inbox reports: ${URL_1}, ${URL_2}. ${ACT_TAIL}`,
                 EACH,
                 REPORT_DISCUSSION_STATE_INSTRUCTIONS,
                 NO_CHECKOUT_INSTRUCTIONS,

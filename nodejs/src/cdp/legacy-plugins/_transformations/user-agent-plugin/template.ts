@@ -12,7 +12,7 @@ export const userAgentPlugin: LegacyTransformationPlugin = {
         id: 'plugin-user-agent-plugin',
         name: 'User Agent Populator',
         description:
-            "Enhances events with user agent details. User Agent plugin allows you to populate events with the $browser, $browser_version for PostHog Clients that don't  typically populate these properties",
+            "Enhances events with user agent details. User Agent plugin allows you to populate events with the $browser, $browser_version for Flind Clients that don't  typically populate these properties",
         icon_url: '/static/transformations/user-agent.png',
         category: ['Transformation'],
         code_language: 'javascript',

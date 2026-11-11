@@ -1068,7 +1068,7 @@ describe('insightLogic', () => {
         })
     })
 
-    describe('PostHog AI suggestions', () => {
+    describe('Flind AI suggestions', () => {
         const suggestedQuery: InsightVizNode = {
             kind: NodeKind.InsightVizNode,
             source: {

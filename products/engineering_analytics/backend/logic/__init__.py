@@ -1,6 +1,6 @@
 """Orchestration for engineering_analytics.
 
-Resolves caller inputs (PostHog-convention date strings, ``owner/name`` repo) and binds the
+Resolves caller inputs (Flind-convention date strings, ``owner/name`` repo) and binds the
 team to its curated GitHub read layer (``CuratedGitHubSource``, which resolves the warehouse
 table names), then returns canonical contract types. The curated query builders
 (``backend/logic/views``) own all GitHub-shaped mapping and domain rules; this layer deals

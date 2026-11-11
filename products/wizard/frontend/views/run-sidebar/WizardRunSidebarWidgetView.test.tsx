@@ -10,7 +10,7 @@ import { initKeaTests } from '~/test/init'
 import type { WizardRunApi } from '../../generated/api.schemas'
 import { WizardRunSidebarWidgetView } from './WizardRunSidebarWidgetView'
 
-const runs: WizardRunApi[] = ['PostHog integration', 'Analytics audit', 'Error tracking audit'].map((name, index) => ({
+const runs: WizardRunApi[] = ['Flind integration', 'Analytics audit', 'Error tracking audit'].map((name, index) => ({
     id: `run-${index}`,
     team_id: 1,
     created_by_id: 1,
@@ -68,9 +68,9 @@ describe('WizardRunSidebarWidgetView', () => {
         render(<Sidebar onDismiss={dismiss} onStateClick={click} />)
         expect(screen.getByText('3 completed')).toBeInTheDocument()
         expect(screen.queryByText('Wizard runs (3)')).not.toBeInTheDocument()
-        fireEvent.click(screen.getByText('PostHog integration'))
+        fireEvent.click(screen.getByText('Flind integration'))
         const panel = await screen.findByRole('dialog')
-        fireEvent.click(within(panel).getByLabelText('Select PostHog integration'))
+        fireEvent.click(within(panel).getByLabelText('Select Flind integration'))
         fireEvent.click(within(panel).getByLabelText('Select Analytics audit'))
         fireEvent.click(within(panel).getByText('Dismiss selected (2)'))
         expect(dismiss).toHaveBeenLastCalledWith(['run-0', 'run-1'])
@@ -99,7 +99,7 @@ describe('WizardRunSidebarWidgetView', () => {
     it('tracks the single-run card click while preserving its run link', () => {
         const click = jest.fn()
         render(<WizardRunSidebarWidgetView runs={[runs[0]]} onStateClick={click} onDismissRuns={jest.fn()} />)
-        const link = screen.getByText('PostHog integration').closest('a')!
+        const link = screen.getByText('Flind integration').closest('a')!
         expect(link).toHaveAttribute('href', `/project/${MOCK_DEFAULT_TEAM.id}/wizard/runs?run=run-0`)
         fireEvent.click(link)
         expect(click).toHaveBeenCalledTimes(1)

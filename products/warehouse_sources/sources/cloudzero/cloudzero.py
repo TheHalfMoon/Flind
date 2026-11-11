@@ -189,7 +189,7 @@ KEY_REJECTED_MESSAGE = (
 # `validate_via_probe` reports a transport failure as a `None` status, so anything CloudZero did not
 # answer itself leaves the key unjudged. Calling it invalid sends someone off to mint a replacement
 # that fails the same way.
-PROBE_FAILED_MESSAGE = "PostHog couldn't check your API key with CloudZero. Wait a few minutes and try again."
+PROBE_FAILED_MESSAGE = "Flind couldn't check your API key with CloudZero. Wait a few minutes and try again."
 
 
 def validate_credentials(api_key: str) -> tuple[bool, str | None]:

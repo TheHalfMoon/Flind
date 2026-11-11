@@ -101,7 +101,7 @@ class DashboardImportSummarySerializer(serializers.Serializer):
     imported = serializers.IntegerField(help_text="Panels imported with the same meaning.")
     approximated = serializers.IntegerField(help_text="Panels imported with a change in what they show.")
     failed = serializers.IntegerField(help_text="Panels that have no working query.")
-    skipped = serializers.IntegerField(help_text="Panels with no PostHog equivalent.")
+    skipped = serializers.IntegerField(help_text="Panels with no Flind equivalent.")
 
 
 class DashboardImportPanelSerializer(serializers.Serializer):
@@ -116,7 +116,7 @@ class DashboardImportPanelProgressSerializer(serializers.Serializer):
     title = serializers.CharField(help_text="Panel title.")
     state = serializers.ChoiceField(
         choices=PanelProgressState.choices,
-        help_text="'waiting' before the agent checked the panel, 'working' while its checks fail, 'done' once a check passed, 'skipped' when PostHog has no equivalent.",
+        help_text="'waiting' before the agent checked the panel, 'working' while its checks fail, 'done' once a check passed, 'skipped' when Flind has no equivalent.",
     )
 
 

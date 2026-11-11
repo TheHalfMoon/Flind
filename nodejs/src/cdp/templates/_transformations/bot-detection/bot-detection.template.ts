@@ -12,7 +12,7 @@ export const template: HogFunctionTemplate = {
     category: ['Custom'],
     code_language: 'hog',
     code: `
-// PostHog's curated bot UA and IP lists are tuned for browser traffic. Server-side
+// Flind's curated bot UA and IP lists are tuned for browser traffic. Server-side
 // SDKs (posthog-python, posthog-node, ...) send HTTP-client UAs like 'python-httpx'
 // and backend IPs that match those lists but are not bots. Treat anything other than
 // the browser SDKs ($lib in {web, js}) as non-browser and skip the curated checks.
@@ -96,7 +96,7 @@ return event
             type: 'boolean',
             label: 'Filter out known bot user agents',
             description:
-                "Filter out known bot user agents using PostHog's known bot user agents list. This is kept up to date dynamically.",
+                "Filter out known bot user agents using Flind's known bot user agents list. This is kept up to date dynamically.",
             default: true,
             secret: false,
             required: true,
@@ -115,7 +115,7 @@ return event
             type: 'boolean',
             label: 'Filter out known bot ips',
             description:
-                "Filter out known bot ips using PostHog's known bot ips list. This is kept up to date dynamically.",
+                "Filter out known bot ips using Flind's known bot ips list. This is kept up to date dynamically.",
             default: true,
             secret: false,
             required: true,

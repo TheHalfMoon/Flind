@@ -3,7 +3,7 @@
 This package contains the standalone framework code for hogli.
 Developers should only need to interact with this package when working on core functionality.
 
-For adding new PostHog-specific commands, use:
+For adding new Flind-specific commands, use:
 - tools/hogli-commands/hogli_commands/ - for Python Click commands
 - hogli.yaml - for bin scripts, shell commands, and compositions
 """

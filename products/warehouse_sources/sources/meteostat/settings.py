@@ -172,7 +172,7 @@ UNITS_OPTIONS = (
 )
 DEFAULT_UNITS = "metric"
 
-# A weather station has no PostHog-visible creation date, so there's no vendor-documented
+# A weather station has no Flind-visible creation date, so there's no vendor-documented
 # earliest-record date to default to. This bounds how far back a first (full-refresh) sync
 # reaches, keeping the request count predictable against the RapidAPI free tier's 500
 # requests/month cap. Users can set an earlier start date once they've sized their plan.

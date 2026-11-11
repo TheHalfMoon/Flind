@@ -198,7 +198,7 @@ export function directToolbarUrl(
 /**
  * Schemes allowed to be rendered in the Site preview iframe. That iframe runs with
  * `allow-scripts allow-same-origin`, so a `javascript:`/`data:`/`blob:` src would execute in the
- * PostHog origin. Only ever frame an http(s) URL the team has explicitly authorized.
+ * Flind origin. Only ever frame an http(s) URL the team has explicitly authorized.
  */
 const FRAMEABLE_URL_SCHEME = /^https?:\/\//i
 

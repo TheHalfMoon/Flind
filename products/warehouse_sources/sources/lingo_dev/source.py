@@ -47,7 +47,7 @@ class LingoDevSource(ResumableSource[LingoDevSourceConfig, LingoDevResumeConfig]
             name=ExternalDataSourceType.LINGODEV,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Lingo.dev",
-            caption="""Enter your Lingo.dev API key to automatically pull your Lingo.dev localization job data into the PostHog Data warehouse.
+            caption="""Enter your Lingo.dev API key to automatically pull your Lingo.dev localization job data into the Flind Data warehouse.
 
 You can create an API key in your [Lingo.dev dashboard](https://lingo.dev/app). API keys are scoped to an organization and are only shown once at creation.
 """,

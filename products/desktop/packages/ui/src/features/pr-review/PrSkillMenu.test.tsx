@@ -66,7 +66,7 @@ describe("PrSkillMenu", () => {
     ).not.toBeInTheDocument();
     await user.click(screen.getByRole("option", { name: "pr-shepherd" }));
     expect(openTaskInput).toHaveBeenCalledWith({
-      initialPrompt: `Run the pr-shepherd skill from the PostHog skills store for this pull request: ${prUrl}`,
+      initialPrompt: `Run the pr-shepherd skill from the Flind skills store for this pull request: ${prUrl}`,
       initialCloudRepository: "PostHog/posthog",
     });
     expect(usePrSkillUsageStore.getState().countsByScope[scope]).toEqual({
@@ -175,7 +175,7 @@ describe("PrSkillMenu", () => {
     );
 
     expect(openTaskInput).toHaveBeenCalledWith({
-      initialPrompt: `Run the pr-shepherd skill from the PostHog skills store for this pull request: ${prUrl}`,
+      initialPrompt: `Run the pr-shepherd skill from the Flind skills store for this pull request: ${prUrl}`,
       initialCloudRepository: "PostHog/posthog",
     });
   });

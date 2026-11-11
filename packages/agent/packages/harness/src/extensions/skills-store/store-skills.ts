@@ -108,11 +108,11 @@ export function renderStoreSkillStub(stub: StoreSkillStub): string {
     `  source: ${STORE_SKILL_SOURCE}`,
     "---",
     "",
-    "This skill lives in the PostHog skills store. This file is a pointer for discovery, not the skill itself.",
+    "This skill lives in the Flind skills store. This file is a pointer for discovery, not the skill itself.",
     "",
     "Before you act on it:",
     "",
-    `1. Run \`${skillGet}\` with the PostHog MCP \`exec\` tool. Note the \`version\` in the response and pass it to every later call for this skill, so a publish in the meantime cannot mix two versions.`,
+    `1. Run \`${skillGet}\` with the Flind MCP \`exec\` tool. Note the \`version\` in the response and pass it to every later call for this skill, so a publish in the meantime cannot mix two versions.`,
     '2. If the response has a non-null `body_next_offset`, call `skill-get` again with `"version"` set to that version and `"body_offset"` set to `body_next_offset`, and append the returned `body`. Repeat until `body_next_offset` is null.',
     "3. Follow the complete `body` as the instructions for this skill.",
     `4. If the body references bundled files, fetch each one with \`${skillFileGet}\` and write it into this directory before you use it.`,
@@ -124,7 +124,7 @@ export function renderStoreSkillStub(stub: StoreSkillStub): string {
 export function renderStoreBridgeSkill(): string {
   const name = STORE_BRIDGE_SKILL_NAME;
   const description =
-    "Run any skill from the PostHog skills store by name, including a teammate's skill that is not installed here. " +
+    "Run any skill from the Flind skills store by name, including a teammate's skill that is not installed here. " +
     `Use when the user types /${name} <skill-name> [arguments], asks to run a store skill that is not installed, or asks which store skills exist.`;
   return [
     "---",
@@ -135,9 +135,9 @@ export function renderStoreBridgeSkill(): string {
     "  role: bridge",
     "---",
     "",
-    "This skill runs skills from the PostHog skills store. It only reads and runs them. To create, edit or publish a skill, follow the `skills-store` guidance instead.",
+    "This skill runs skills from the Flind skills store. It only reads and runs them. To create, edit or publish a skill, follow the `skills-store` guidance instead.",
     "",
-    `Read the text the user gave after \`${name}\`. The first word selects what to do, and the rest is the arguments. Run every call below with the PostHog MCP \`exec\` tool.`,
+    `Read the text the user gave after \`${name}\`. The first word selects what to do, and the rest is the arguments. Run every call below with the Flind MCP \`exec\` tool.`,
     "",
     "## List skills",
     "",
@@ -238,7 +238,7 @@ export interface InstallStoreSkillStubsOptions {
  * stub from an earlier install that the list no longer contains, so a skill
  * the user lost is not advertised on the next session. A directory that
  * already holds a skill not written by the store is never replaced: the
- * sandbox image ships bundled PostHog skills into the same roots, and a stub
+ * sandbox image ships bundled Flind skills into the same roots, and a stub
  * must not shadow a real skill of the same name.
  *
  * Each root is handled on its own: a read-only or missing root is reported in
@@ -360,7 +360,7 @@ export function buildStoreSkillsInstructions(
   const sections: string[] = [];
   if (listing.installedCount > 0) {
     sections.push(
-      `${listing.installedCount} of the user's skills from the PostHog skills store are installed as local skills. Each one's SKILL.md is a pointer, not the skill: when you invoke one, follow the pointer and fetch the skill body with the PostHog MCP \`skill-get\` tool before you act. Never improvise the skill from the pointer text.`,
+      `${listing.installedCount} of the user's skills from the Flind skills store are installed as local skills. Each one's SKILL.md is a pointer, not the skill: when you invoke one, follow the pointer and fetch the skill body with the Flind MCP \`skill-get\` tool before you act. Never improvise the skill from the pointer text.`,
     );
   }
   if (listing.bridge) {
@@ -372,7 +372,7 @@ export function buildStoreSkillsInstructions(
     return "";
   }
   return `
-## Skills from the PostHog skills store
+## Skills from the Flind skills store
 ${sections.join("\n")}`;
 }
 

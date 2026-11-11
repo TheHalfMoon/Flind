@@ -1,6 +1,6 @@
 # Slack local setup guide
 
-How to point a real Slack workspace at your local PostHog so you can test the **PostHog Desktop**
+How to point a real Slack workspace at your local Flind so you can test the **Flind Desktop**
 coding agent (`@PostHog <task>` → sandbox run) end to end. The same tunnel + workspace works for
 the other Slack integrations too, but this guide only documents what we verified.
 
@@ -8,7 +8,7 @@ Slack is SaaS-only: there's no self-hosted Slack. So "local testing" means a rea
 (throwaway) Slack workspace + app whose webhooks and OAuth callback reach your laptop
 through a tunnel. This guide captures a setup that has been verified end to end.
 
-> Prerequisite: the PostHog Desktop stack must already work locally — GitHub App, temporal
+> Prerequisite: the Flind Desktop stack must already work locally — GitHub App, temporal
 > worker, sandboxes. If you haven't done that yet, follow
 > [sandboxes-setup-guide.md](./sandboxes-setup-guide.md) first and come back here.
 
@@ -25,7 +25,7 @@ Slack  ──HTTPS──▶  ngrok edge  ──▶  ngrok agent (laptop)  ──
 ```
 
 - Everything Slack needs — the event webhook, the interactivity callback, the OAuth
-  redirect, and the PostHog UI — is served by **Caddy on port 8010** (the dev proxy that
+  redirect, and the Flind UI — is served by **Caddy on port 8010** (the dev proxy that
   `hogli start` runs). Port 8000 is Django direct and does **not** serve the frontend.
 - The dev Caddy only answers for the `localhost` host (`${CADDY_HOST:-http://localhost:8000}`
   in `docker-compose.dev.yml`). A request arriving with `Host: <you>.ngrok.dev` falls
@@ -71,7 +71,7 @@ body with `server: Caddy`, the `host_header` rewrite is missing or the domain is
 actually bound — fix that before continuing.
 
 > **Modal sandboxes:** this single Caddy tunnel is enough for Slack. Modal sandboxes
-> reach PostHog over the public URL and work fine through Caddy, so you do **not** need a
+> reach Flind over the public URL and work fine through Caddy, so you do **not** need a
 > separate `:8000` tunnel for the Slack flow. If you're _also_ testing Modal sandboxes,
 > keep your existing `gateway` (3308) and `mcp` (8787) tunnels — they're independent of
 > this one. See the [sandbox guide](./sandboxes-setup-guide.md#tunnel-gateway-api-and-mcp).
@@ -153,7 +153,7 @@ Django must be up at that moment.
 
 > The `app_home` block + `app_home_opened` bot event power the App Home tab. With the
 > `slack-app-onboarding` flag on, the same event, an install, a reinstall, a `team_join` and a person's first `@PostHog` mention start the
-> `slack-app-onboarding` Temporal workflow, which posts a person's onboarding thread in the PostHog DM
+> `slack-app-onboarding` Temporal workflow, which posts a person's onboarding thread in the Flind DM
 > once. It needs the Temporal worker running. The thread checks each step again before it shows it,
 > so a person who already linked their account or chose a model sees that step as already set.
 > To see the thread again in a dev workspace, clear the `onboarding` field of your row in
@@ -178,7 +178,7 @@ Django must be up at that moment.
 
 ## Step 3 — backend credentials and `SITE_URL`
 
-PostHog Desktop reuses the regular Slack notifications app, so set the standard
+Flind Desktop reuses the regular Slack notifications app, so set the standard
 `SLACK_APP_*` credentials in `.env` and restart the `django` +
 `temporal-django-worker` processes so it reloads. These are dynamic settings
 seeded from the env on boot (`posthog/settings/dynamic_settings.py`):
@@ -229,9 +229,9 @@ connected, `@PostHog` events reach the agent unconditionally.
 
 ## Step 5 — connect the integrations
 
-**Slack.** PostHog Desktop piggybacks on the regular Slack notifications install — there's no
-separate "PostHog Desktop Slack" install anymore. Go to **Settings → Project → Integrations**,
-find Slack, click **Connect to Slack**, and authorize in your dev workspace. The PostHog Desktop
+**Slack.** Flind Desktop piggybacks on the regular Slack notifications install — there's no
+separate "Flind Desktop Slack" install anymore. Go to **Settings → Project → Integrations**,
+find Slack, click **Connect to Slack**, and authorize in your dev workspace. The Flind Desktop
 agent reads the same `Integration` row that the notifications product writes. Verify:
 
 ```bash
@@ -256,9 +256,9 @@ the repo cascade has nothing to pick and creates a no-repo task), and connect yo
 GitHub under User → Personal integrations (otherwise the task parks behind a "Connect GitHub"
 button before the agent runs).
 
-## Step 6 — Slack user → PostHog user
+## Step 6 — Slack user → Flind user
 
-`resolve_slack_user` matches your Slack profile email to a PostHog org member. Locally this is
+`resolve_slack_user` matches your Slack profile email to a Flind org member. Locally this is
 handled for you: a `DEBUG` branch (`products/slack_app/backend/api.py:417-419`) forces the email
 to `test@posthog.com`, which is the default local dev user — so resolution works out of the box.
 If your local user has a different email, point that branch (or your user's email) at it.
@@ -288,7 +288,7 @@ It does not move bot events to production or change the production Slack app's c
 
 1. Add `https://us.posthog.com/api/mcp_store/oauth_redirect/` to the development app's OAuth redirect URLs for US production.
    Keep its existing dev redirect URLs and event callbacks.
-   For another region, use that region's PostHog origin instead.
+   For another region, use that region's Flind origin instead.
 2. Provision the existing development app's client ID and client secret as the `SLACK_DEV_APP_CLIENT_ID` and `SLACK_DEV_APP_CLIENT_SECRET` instance settings in the target region.
    Do not replace `SLACK_APP_CLIENT_ID`, `SLACK_APP_CLIENT_SECRET`, or `SLACK_APP_SIGNING_SECRET`.
 3. Set `MCP_STORE_SLACK_DEV_ALLOWED_TEAM_IDS` to a comma-separated list of permitted project IDs in that region's server configuration.
@@ -298,16 +298,16 @@ It does not move bot events to production or change the production Slack app's c
    Apply the same configuration to the web processes and workers.
    Production deployments must also add these variables to `posthog/charts` and provision their values through `posthog/secrets`.
    Adding the settings in this repository does not configure production.
-4. Enable the `mcp-slack-dev` feature flag for PostHog users.
+4. Enable the `mcp-slack-dev` feature flag for Flind users.
    Target users whose email ends with `@posthog.com`.
    Use that email condition, not a cohort or an early access list.
    The check evaluates the flag locally and treats targeting it cannot resolve as off.
    For local testing, add `mcp-slack-dev` to `POSTHOG_FEATURE_FLAGS_FORCE_ENABLED` and restart Django.
 5. Run `python manage.py sync_mcp_server_templates` in that environment.
-   The existing Slack MCP entry becomes **Slack via PostHog (dev)** and uses the separate credentials.
+   The existing Slack MCP entry becomes **Slack via Flind (dev)** and uses the separate credentials.
    It activates only after the shared-client probe passes.
    Existing Slack MCP installations block a change of OAuth app; do not disconnect them without their owners' approval.
-6. In an allowed project, connect **Slack via PostHog (dev)** from the MCP store, finish Slack authorization, and confirm that a channel search returns results and an accessible canvas can be read.
+6. In an allowed project, connect **Slack via Flind (dev)** from the MCP store, finish Slack authorization, and confirm that a channel search returns results and an accessible canvas can be read.
    Confirm that another project cannot list or authorize this entry.
 
 Reconnect an installation that was authorized before a new reviewed scope was synced. Existing OAuth tokens do not gain the new scope automatically.

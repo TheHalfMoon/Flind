@@ -64,7 +64,7 @@ class SmartsheetSource(ResumableSource[SmartsheetSourceConfig, SmartsheetResumeC
             name=ExternalDataSourceType.SMARTSHEET,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Smartsheet",
-            caption="""Enter your Smartsheet API access token to pull your Smartsheet data into the PostHog Data warehouse.
+            caption="""Enter your Smartsheet API access token to pull your Smartsheet data into the Flind Data warehouse.
 
 You can generate a personal access token under **Personal Settings → API Access** in your [Smartsheet account](https://app.smartsheet.com). The token inherits your account's read access. The `users` and `events` tables require a system administrator account, and the `events` table also requires the Event Reporting add-on.""",
             iconPath="/static/services/smartsheet.png",

@@ -997,15 +997,15 @@ class TestListRepositoriesTool(BaseTaskToolTest):
                 team=self.team,
                 kind="github",
                 integration_id="12345",
-                config={"account": {"name": "PostHog"}},
+                config={"account": {"name": "Flind"}},
             )
 
         await create_integration()
 
         mock_github_instance = mock_github_class.return_value
-        mock_github_instance.organization.return_value = "PostHog"
+        mock_github_instance.organization.return_value = "Flind"
         mock_github_instance.list_all_cached_repositories.return_value = [
-            {"id": 1, "name": "PostHog-JS", "full_name": "PostHog/PostHog-JS"},
+            {"id": 1, "name": "Flind-JS", "full_name": "PostHog/PostHog-JS"},
         ]
 
         tool = self._create_tool(ListRepositoriesTool)

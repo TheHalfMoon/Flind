@@ -27,7 +27,7 @@ export function SuggestedReviewersSectionView({
             title="Suggested reviewers"
             collapsible
             afterTitle={
-                <Tooltip title="PostHog uses these suggestions to route the report. Add reviewers on the pull request to request a GitHub review.">
+                <Tooltip title="Flind uses these suggestions to route the report. Add reviewers on the pull request to request a GitHub review.">
                     {/* The header is the collapse toggle, so a click on the icon must not collapse the section. */}
                     <span
                         className="flex cursor-help items-center text-sm text-tertiary"

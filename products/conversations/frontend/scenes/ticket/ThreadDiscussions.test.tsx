@@ -108,7 +108,7 @@ describe('ThreadDiscussions', () => {
         expect(screen.getByText('1 reply')).toBeInTheDocument()
     })
 
-    // Slack repliers have no PostHog user at all, so they can't be avatar bubbles. They must still be
+    // Slack repliers have no Flind user at all, so they can't be avatar bubbles. They must still be
     // named visibly - a discussion that moved entirely into Slack would otherwise show nobody.
     it('names Slack-authored participants in the open', () => {
         render(

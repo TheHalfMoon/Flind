@@ -1,6 +1,6 @@
 # MCP Integration Architecture
 
-This directory contains PostHog's MCP (Model Context Protocol) server. The protocol is served by the **Hono runtime** (Node, deployed to our k8s clusters). A thin **Cloudflare Worker** sits in front of it as a stateless edge router that terminates OAuth, validates tokens, and proxies `/mcp` traffic to the regional Hono deployment.
+This directory contains Flind's MCP (Model Context Protocol) server. The protocol is served by the **Hono runtime** (Node, deployed to our k8s clusters). A thin **Cloudflare Worker** sits in front of it as a stateless edge router that terminates OAuth, validates tokens, and proxies `/mcp` traffic to the regional Hono deployment.
 
 ## Overview
 
@@ -61,7 +61,7 @@ if (url.pathname.startsWith('/mcp')) {
 
 ### End user IP
 
-The PostHog API sees the Hono pod as the caller, so the activity log would record that pod's address.
+The Flind API sees the Hono pod as the caller, so the activity log would record that pod's address.
 The end user IP travels as a signed header on each hop (`src/lib/client-ip-signature.ts`, the same HMAC format as Django's `verify_signed_client_ip`):
 
 1. The Worker removes any client-sent IP headers, signs `CF-Connecting-IP` with the key list of the target region, and sends `X-PostHog-Edge-Client-IP*` to Hono.
@@ -105,8 +105,8 @@ This produces one structured JSON log per request, making it easier to query in 
 
 There are three independent layers that emit signals about each MCP request:
 
-1. **PostHog analytics events** — `$mcp_tool_call` and friends, captured for product analytics.
-2. **Outbound API headers** — propagated when the MCP server calls PostHog's Django backend, so backend log lines and OTLP spans can correlate with the originating MCP request.
+1. **Flind analytics events** — `$mcp_tool_call` and friends, captured for product analytics.
+2. **Outbound API headers** — propagated when the MCP server calls Flind's Django backend, so backend log lines and OTLP spans can correlate with the originating MCP request.
 3. **Wide structured logs** — single JSON record per request from the Worker itself (see [Wide Logging Pattern](#wide-logging-pattern) above).
 
 #### MCP Analytics SDK integration
@@ -126,7 +126,7 @@ New `$mcp_*` events and properties belong in the SDK, not in this server.
 Private scout credentials derive capture suppression from their server-issued OAuth scope.
 The existing SDK `beforeSend` hook drops those events; request headers and tool arguments cannot enable this policy.
 Operator trial launch/result tools also omit analytics, including calls through `exec`.
-Private task reads are marked by the PostHog API's response header, including lists and connected-project responses.
+Private task reads are marked by the Flind API's response header, including lists and connected-project responses.
 The MCP client applies suppression to that call only, keeping ordinary task telemetry unchanged.
 
 #### Three correlation identifiers
@@ -143,7 +143,7 @@ Crucially, **`sessionId` and `mcpSessionId` are different concepts** and will no
 
 #### Forwarding session and conversation IDs to Django
 
-When the Worker calls PostHog's Django backend (any `ApiClient.fetch`), the outbound request carries:
+When the Worker calls Flind's Django backend (any `ApiClient.fetch`), the outbound request carries:
 
 - `X-Posthog-Mcp-Session-Id: <mcpSessionId>` — when set on `ApiClient.config`
 - `X-Posthog-Mcp-Conversation-Id: <mcpConversationId>` — when set on `ApiClient.config`

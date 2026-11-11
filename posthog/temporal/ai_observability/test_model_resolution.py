@@ -114,7 +114,7 @@ class TestExplicitModelSpec:
         assert "disabled" not in exc_info.value.message
 
     def test_keyless_requires_provider_key(self, team):
-        # No pinned key: resolution has no PostHog-funded fallback and must ask for a key.
+        # No pinned key: resolution has no Flind-funded fallback and must ask for a key.
         with pytest.raises(ApplicationError) as exc_info:
             ExplicitModelSpec("openai", "gpt-5-mini", None).resolve(team.id)
         assert _error_type(exc_info) == "provider_key_required"

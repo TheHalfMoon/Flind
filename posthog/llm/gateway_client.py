@@ -143,7 +143,7 @@ def get_llm_client(
             and for per-product rate-limit / model-restriction policies on the gateway.
             Must be one of the values in the `Product` literal above and registered in
             `services/llm-gateway/src/llm_gateway/products/config.py`.
-        team_id: Optional PostHog team to attribute the captured `$ai_generation` event to.
+        team_id: Optional Flind team to attribute the captured `$ai_generation` event to.
             When provided, sent on every request as the `x-posthog-property-team_id` header;
             when omitted, the event is attributed to the gateway key owner's team.
         api_key: Optional short-lived credential to use instead of `LLM_GATEWAY_API_KEY`.

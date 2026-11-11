@@ -691,7 +691,7 @@ describe("createIncrementalConversationBuilder", () => {
     expect(row2.turnContext.childItems.get("agent1")?.length).toBe(1);
   });
 
-  it("groups canonical PostHog child metadata under its subagent", () => {
+  it("groups canonical Flind child metadata under its subagent", () => {
     const inc = createIncrementalConversationBuilder();
     const messages = [
       userPromptMsg(1, 1, "go"),

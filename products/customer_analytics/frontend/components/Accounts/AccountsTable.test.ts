@@ -93,7 +93,7 @@ describe('isCustomPropertyEditable', () => {
         ['canonical', createCustomPropertyDefinition({ is_canonical: true }), false],
         ['data warehouse managed', createCustomPropertyDefinition({ source: createCustomPropertySource() }), false],
         ['workflow managed', createCustomPropertyDefinition({ has_workflow_reference: true }), true],
-    ])('marks %s definitions editable unless PostHog or the warehouse manages their values', (_, value, expected) => {
+    ])('marks %s definitions editable unless Flind or the warehouse manages their values', (_, value, expected) => {
         expect(isCustomPropertyEditable(value)).toBe(expected)
     })
 })

@@ -266,7 +266,7 @@ class TestBackoffOnlyRetryAfter:
 
             async def allow_request(self, context: ThrottleContext) -> ThrottleResult:
                 return ThrottleResult.deny(
-                    detail="Your team has used its monthly PostHog AI credits.",
+                    detail="Your team has used its monthly Flind AI credits.",
                     scope=self.scope,
                     retry_after=60,
                     retry_after_resets_limit=False,

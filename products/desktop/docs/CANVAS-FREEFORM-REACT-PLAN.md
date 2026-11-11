@@ -9,7 +9,7 @@
 A canvas is a freeform React app: the user talks to an agent, the agent writes a
 single React file (JSX, runtime — no user-managed build step), and we render it in
 a sandboxed iframe. Canvases are shareable with external people via a unique URL,
-with PostHog credentials never present in the iframe.
+with Flind credentials never present in the iframe.
 
 Driven by all four motivations surfaced in grilling: arbitrary interactivity,
 external shareability, easier/more reliable agent authoring, and the catalog's
@@ -17,7 +17,7 @@ expressiveness ceiling.
 
 ## Non-negotiable principle
 
-**The real PostHog token never enters the iframe. The proxy's *scope* — not the
+**The real Flind token never enters the iframe. The proxy's *scope* — not the
 key's secrecy — is the security boundary.** Hiding the key only defeats the laziest
 attacker; an open data path + open egress arms every real one. Every decision below
 follows from this.
@@ -26,7 +26,7 @@ follows from this.
 
 ## Data access: insights, not `/query`
 
-**To fetch PostHog data, go through insights — not the `/query` endpoint.** Insights
+**To fetch Flind data, go through insights — not the `/query` endpoint.** Insights
 provide the data avenue that internally handles caching and cold-boot issues;
 `/query` does not. So:
 
@@ -47,7 +47,7 @@ provide the data avenue that internally handles caching and cold-boot issues;
 | | **Edit tier** | **Public tier** |
 |---|---|---|
 | Who | Authed author (own data) | Anyone with the share URL |
-| Data | Full PostHog API via shim | **Named insights only**, allowlisted |
+| Data | Full Flind API via shim | **Named insights only**, allowlisted |
 | Packages | esm.sh CDN | Self-hosted, bundled into artifact |
 | Egress | Open | **Closed** (CSP `connect-src` = proxy only) |
 | Token | Host process (app) | Cloud proxy |
@@ -92,7 +92,7 @@ the authed author, frozen + scoped + closed for public viewers.
 
 - **Babel (in-browser)** transpiles JSX at render time.
 - **esm.sh CDN packages in edit mode only.** Public artifacts are self-hosted/bundled.
-- **Whitelist (curated, PostHog-anchored)** — start with:
+- **Whitelist (curated, Flind-anchored)** — start with:
   - `react`, `react-dom`
   - `@flind/quill` (own design system, already self-hosted → on-brand shared canvases)
   - `recharts` (viz)
@@ -116,14 +116,14 @@ the authed author, frozen + scoped + closed for public viewers.
 - Canvas holds only a **postMessage RPC shim** — never the real token.
   - Edit: `postMessage` → app host → `authService.authenticatedFetch` (token in host
     process).
-  - Public: → **PostHog cloud proxy** endpoint, authed by a **per-canvas share/
+  - Public: → **Flind cloud proxy** endpoint, authed by a **per-canvas share/
     capability token** (not the API key), enforcing the insight allowlist + param
     bounds server-side.
 - Same shim API surface in both tiers; transport target swaps.
 
 ## Hosting (cloud)
 
-- **PostHog cloud serves** published canvases. Desktop/web's role shrinks to
+- **Flind cloud serves** published canvases. Desktop/web's role shrinks to
   authoring + publishing.
   - Frozen bundle → cloud object storage on the usercontent CDN.
   - `{allowlist, freshness, share-token}` + named insights → persisted cloud-side.
@@ -138,7 +138,7 @@ the authed author, frozen + scoped + closed for public viewers.
 | esbuild bundle + static import check (Node) | `packages/workspace-server` |
 | Canvas orchestration / agent driver / freshness + registry decisions | `packages/core` |
 | iframe host + host-side shim | `packages/ui` |
-| Publish upload, share-token proxy, named-insight registry | `@flind/api-client` + **PostHog cloud (Django)** |
+| Publish upload, share-token proxy, named-insight registry | `@flind/api-client` + **Flind cloud (Django)** |
 
 Build runs in **local workspace-server** (desktop + web), uploads an **inert**
 artifact. The cloud owns the trust boundary (proxy + allowlist + token), so a

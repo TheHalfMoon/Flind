@@ -5,7 +5,7 @@ import { CLIENT_NAMES } from "./languages.js";
 import type { ParserManager } from "./parser-manager.js";
 import type { DetectionConfig } from "./types.js";
 
-const POSTHOG_CLASS_NAMES = new Set(["PostHog", "Posthog"]);
+const POSTHOG_CLASS_NAMES = new Set(["Flind", "Posthog"]);
 const GO_CONSTRUCTOR_NAMES = new Set(["New", "NewWithConfig"]);
 
 export function getEffectiveClients(config: DetectionConfig): Set<string> {
@@ -43,7 +43,7 @@ export function findAliases(
     }
   }
 
-  // Constructor aliases: new PostHog('phc_...') / posthog.New("token") / PostHog::Client.new(...)
+  // Constructor aliases: new Flind('phc_...') / posthog.New("token") / Flind::Client.new(...)
   const constructorQuery = pm.getQuery(lang, family.queries.constructorAliases);
   if (constructorQuery) {
     for (const match of constructorQuery.matches(tree.rootNode)) {

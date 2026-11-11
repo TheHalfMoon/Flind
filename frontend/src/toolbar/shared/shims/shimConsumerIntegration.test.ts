@@ -24,7 +24,7 @@ global.fetch = jest.fn(() =>
 
 describe('shim consumer integration', () => {
     beforeEach(() => {
-        // The toolbar runs on third-party pages without an authenticated PostHog user, so
+        // The toolbar runs on third-party pages without an authenticated Flind user, so
         // hedgehogModeLogic.values.user must be null. We pre-set current_user: null here because
         // initKeaTests now bootstraps a default org into current_user (to mirror production).
         // Without this, the real userLogic (which gets mounted despite the jest.mock shim)

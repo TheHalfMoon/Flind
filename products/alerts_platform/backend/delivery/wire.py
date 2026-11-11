@@ -68,7 +68,7 @@ def post_json(url: str, body: dict[str, Any], *, display_name: str, headers: dic
             response.close()
     except SSRFBlockedError:
         raise DeliveryError(
-            f"The {display_name} destination URL points to an address PostHog does not send to."
+            f"The {display_name} destination URL points to an address Flind does not send to."
         ) from None
     except requests.RequestException as error:
         # Only the class name, and `from None` to keep the original out of the failure chain:

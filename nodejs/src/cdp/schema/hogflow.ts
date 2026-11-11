@@ -365,7 +365,7 @@ export const HogFlowSchema = z.object({
     // User-configured email pacing for deliverability. The email worker holds this flow's sends
     // under the limit by rescheduling over-limit sends, never dropping them.
     email_sending_rate_limit: HogFlowEmailSendingRateLimitSchema.optional().nullable(),
-    // Set when PostHog paused this flow's email automatically because its spam complaint or hard
+    // Set when Flind paused this flow's email automatically because its spam complaint or hard
     // bounce rate breached a threshold. Non-null means the email service skips every send for this
     // flow, including test sends. Same value shapes as `updated_at`: pg returns a Date, fixtures
     // use epoch millis or an ISO string.

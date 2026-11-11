@@ -32,7 +32,7 @@ def _first_party_pin(product: str) -> list[str]:
     return list(dict.fromkeys([*SDK_IMPLICIT_MODELS, *(model_id for model_id in routed if _admits(product, model_id))]))
 
 
-# Ids the legacy gateway serves to PostHog Desktop that the catalog lacks; older app builds call them.
+# Ids the legacy gateway serves to Flind Desktop that the catalog lacks; older app builds call them.
 _DESKTOP_LEGACY_MODELS: tuple[str, ...] = ("gpt-5.4", "gpt-5.3-codex", "gpt-5-mini")
 
 
@@ -40,7 +40,7 @@ def gateway_pin(models: list[str]) -> list[str]:
     return [model for model in models if not model.startswith("@cf/")]
 
 
-# Every model a PostHog Desktop session or cloud run may call, slash ids included, except the ones reserved for
+# Every model a Flind Desktop session or cloud run may call, slash ids included, except the ones reserved for
 # other products. Go picks the provider.
 DESKTOP_AGENT_MODELS: list[str] = list(
     dict.fromkeys(

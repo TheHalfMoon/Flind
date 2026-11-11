@@ -7,7 +7,7 @@ denial semantics are domain-agnostic and live here; each third-party API subclas
 ``observability`` at its metric set, and fills the gate hooks (the limiter draw and the
 budget-exhausted exception). See :mod:`posthog.egress.github.transport` for the reference domain.
 
-:class:`RecordedEgressClient` is the same transport without the gate, for an API PostHog observes but
+:class:`RecordedEgressClient` is the same transport without the gate, for an API Flind observes but
 does not budget, because the API publishes no request limit that a rate budget can model.
 
 :class:`AsyncEgressClient` is the gated algorithm for an aiohttp-based domain (see

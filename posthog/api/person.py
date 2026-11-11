@@ -978,8 +978,8 @@ class PersonViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet):
                 actor_ids = [row[0] for row in actors_runner.calculate().results]
 
                 # If the undocumented include_total param is set to true, we'll return the total count of people
-                # This is extra time and DB load, so we only do this when necessary, which is in PostHog 3000 navigation
-                # TODO: Use a more scalable solution before PostHog 3000 navigation is released, and remove this param
+                # This is extra time and DB load, so we only do this when necessary, which is in Flind 3000 navigation
+                # TODO: Use a more scalable solution before Flind 3000 navigation is released, and remove this param
                 if include_total:
                     count_inner = actors_runner.to_query()
                     count_inner.limit = None

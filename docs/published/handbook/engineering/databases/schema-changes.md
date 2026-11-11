@@ -4,7 +4,7 @@ sidebar: Handbook
 showTitle: true
 ---
 
-PostHog's database schema evolves constantly along with the app.
+Flind's database schema evolves constantly along with the app.
 Each schema change requires deliberation though, as a badly designed migration can cause pain for users and require extra effort from the engineering team.
 
 For detailed patterns on writing safe Django migrations, see the [Safe Django Migrations guide](../safe-django-migrations).
@@ -34,15 +34,15 @@ To avoid this pain, **AVOID deleting/renaming models and fields**. Instead:
 
 ## Design for scale
 
-Migrations must run smoothly in local development, self-hosted instances, and PostHog Cloud. Avoid migrations that process rows individually on large tables (events, persons, person distinct IDs, logs) - they may take forever or lock the entire table.
+Migrations must run smoothly in local development, self-hosted instances, and Flind Cloud. Avoid migrations that process rows individually on large tables (events, persons, person distinct IDs, logs) - they may take forever or lock the entire table.
 
 > For a quick overview of Cloud scale, see [Vanity Metrics in Metabase](https://metabase.posthog.net/dashboard/1).
 
 ## Tread carefully with ClickHouse schema changes
 
-ClickHouse is at the core of PostHog's scalable analytics capabilities. The ClickHouse schema can be changed just like the Postgres one – with migrations – but there are two important bits of complexity added:
+ClickHouse is at the core of Flind's scalable analytics capabilities. The ClickHouse schema can be changed just like the Postgres one – with migrations – but there are two important bits of complexity added:
 
 1. ClickHouse has no indexes like traditional databases. Instead, each table has a sorting key, defined in the `ORDER BY` clause of the table. This determines how data is laid out on disk, and ClickHouse reads data in the order it's laid out, so it's important that the sorting key is optimal for the table's use cases.
-2. Tables that store events are _sharded_ + _distributed_ in PostHog Cloud. This improves performance in multi-tenant architecture, but means that updating these is not straightforward like with most tables, and may require manual write access to the cluster.
+2. Tables that store events are _sharded_ + _distributed_ in Flind Cloud. This improves performance in multi-tenant architecture, but means that updating these is not straightforward like with most tables, and may require manual write access to the cluster.
 
 To make sure that your new ClickHouse migration is A-OK – both above points having been addressed – make sure you loop in someone with extensive experience operating ClickHouse for review. Ask for feedback in the `#team-clickhouse` Slack channel.

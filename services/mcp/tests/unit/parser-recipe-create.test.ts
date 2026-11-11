@@ -209,7 +209,7 @@ describe('llma-parser-recipe-create handler', () => {
                 retryAfterSeconds: 45,
             }),
             expected:
-                'Cluster busy The PostHog API is temporarily unavailable. Wait at least 45 seconds before retrying this request.',
+                'Cluster busy The Flind API is temporarily unavailable. Wait at least 45 seconds before retrying this request.',
         },
     ])('reports a persistence failure with recovery guidance: $expected', async ({ error, expected }) => {
         const request = vi.fn().mockResolvedValueOnce({ results: [] }).mockRejectedValueOnce(error)

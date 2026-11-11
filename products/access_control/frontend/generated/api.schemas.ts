@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -303,7 +303,7 @@ export const ScopeObjectEnumApi = {
 export interface ProjectAccessSourceApi {
     /** The access level that applies. */
     access_level: string
-    /** How the level was derived: a rule on the object, its parent object, the resource, the parent resource, the PostHog default, an organization admin's or a creator's full access, or organization membership when the object is the organization itself.
+    /** How the level was derived: a rule on the object, its parent object, the resource, the parent resource, the Flind default, an organization admin's or a creator's full access, or organization membership when the object is the organization itself.
      *
      * * `object` - object
      * * `parent_object` - parent_object
@@ -872,7 +872,7 @@ export interface AccessControlStoredRuleApi {
 
 export interface AccessControlResourceDefaultApi {
     /**
-     * The stored default level for this resource type. Null when the PostHog default applies.
+     * The stored default level for this resource type. Null when the Flind default applies.
      * @nullable
      */
     access_level: string | null
@@ -1164,7 +1164,7 @@ export const OrganizationMembershipLevelEnumApi = {
 export interface ResolvedAccessApi {
     /** The access level that applies. */
     access_level: string
-    /** How the level was derived: a rule on the object, its parent object, the resource, the parent resource, the PostHog default, an organization admin's or a creator's full access, or organization membership when the object is the organization itself.
+    /** How the level was derived: a rule on the object, its parent object, the resource, the parent resource, the Flind default, an organization admin's or a creator's full access, or organization membership when the object is the organization itself.
      *
      * * `object` - object
      * * `parent_object` - parent_object

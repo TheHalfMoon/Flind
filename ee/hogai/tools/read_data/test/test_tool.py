@@ -517,7 +517,7 @@ class TestReadDataTool(BaseTest):
             assert insights_data[0].short_id == active_insight.short_id
 
     async def test_list_tables_returns_core_tables_with_schema(self):
-        """Test that data_warehouse_schema returns core PostHog tables with their field schemas."""
+        """Test that data_warehouse_schema returns core Flind tables with their field schemas."""
         state = AssistantState(messages=[], root_tool_call_id=str(uuid4()))
         context_manager = MagicMock()
         context_manager.check_user_has_billing_access = AsyncMock(return_value=False)
@@ -532,7 +532,7 @@ class TestReadDataTool(BaseTest):
 
         result, artifact = await tool._arun_impl({"kind": "data_warehouse_schema"})
 
-        assert "# Core PostHog tables" in result
+        assert "# Core Flind tables" in result
         assert "## Table `events`" in result
         assert "- event (string)" in result
         assert "- timestamp (datetime)" in result
@@ -631,7 +631,7 @@ class TestReadDataTool(BaseTest):
         assert "- revenue_summary" in result
 
     async def test_list_tables_includes_core_table_descriptions(self):
-        """data_warehouse_schema annotates core PostHog table columns with their curated descriptions
+        """data_warehouse_schema annotates core Flind table columns with their curated descriptions
         — a separate path from the per-table detail view, and the one an agent hits when listing."""
         state = AssistantState(messages=[], root_tool_call_id=str(uuid4()))
         context_manager = MagicMock()
@@ -913,7 +913,7 @@ class TestReadDataTool(BaseTest):
         assert "- event (string)" in result
 
     async def test_table_schema_returns_posthog_table_fields(self):
-        """Test that data_warehouse_table returns schema for core PostHog tables."""
+        """Test that data_warehouse_table returns schema for core Flind tables."""
         state = AssistantState(messages=[], root_tool_call_id=str(uuid4()))
         context_manager = MagicMock()
         context_manager.check_user_has_billing_access = AsyncMock(return_value=False)

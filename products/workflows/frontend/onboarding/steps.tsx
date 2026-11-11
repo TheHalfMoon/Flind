@@ -36,7 +36,7 @@ const WorkflowsInstallHeader = (): JSX.Element => {
                         <div className="flex flex-col p-2">
                             <p className="font-normal pb-1">
                                 The fastest way to get started. Run this command from your project root — it
-                                automatically detects your framework, installs PostHog, and sets up event capture.
+                                automatically detects your framework, installs Flind, and sets up event capture.
                             </p>
                             <CodeSnippet language={Language.Bash}>{wizardCommand}</CodeSnippet>
                         </div>

@@ -35,7 +35,7 @@ function AnalyticsItemIcon({ type }: { type: AnalyticsType }): JSX.Element {
 }
 
 /**
- * The Analytics sub-nav, drawn from the person's layout: sections of links, buttons, metrics and the lists PostHog
+ * The Analytics sub-nav, drawn from the person's layout: sections of links, buttons, metrics and the lists Flind
  * fills. The default layout is one more layout, so it draws the same way.
  */
 export function TodayAnalyticsSidebar(): JSX.Element {

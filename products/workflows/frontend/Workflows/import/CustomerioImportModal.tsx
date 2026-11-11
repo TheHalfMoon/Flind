@@ -11,7 +11,7 @@ import { WorkflowImportResultApi } from 'products/workflows/frontend/generated/a
 import { customerioImportLogic } from './customerioImportLogic'
 
 const AGENT_PROMPT =
-    'Migrate my Customer.io automations to PostHog workflows. Use the migrating-from-customer-io skill: read each ' +
+    'Migrate my Customer.io automations to Flind workflows. Use the migrating-from-customer-io skill: read each ' +
     'automation with the Customer.io MCP, preview the import with workflows-import-customerio, show me the notes, ' +
     'then import them as drafts.'
 
@@ -88,7 +88,7 @@ export function CustomerioImportModal(): JSX.Element {
                 <section className="flex flex-col gap-2">
                     <h4 className="mb-0">Ask your AI agent</h4>
                     <p className="mb-0 text-secondary">
-                        With the Customer.io and PostHog MCP servers connected, paste this into your agent. It reads
+                        With the Customer.io and Flind MCP servers connected, paste this into your agent. It reads
                         your automations and imports them for you.
                     </p>
                     <CodeSnippet language={Language.Text} wrap thing="prompt">
@@ -99,7 +99,7 @@ export function CustomerioImportModal(): JSX.Element {
                     <h4 className="mb-0">Or upload files from the Customer.io CLI</h4>
                     <p className="mb-0 text-secondary">
                         Save each automation, then add the files here. If you imported opt-outs from Customer.io,
-                        PostHog reads the message content with that API key. Otherwise, save the templates its messages
+                        Flind reads the message content with that API key. Otherwise, save the templates its messages
                         use too.
                     </p>
                     <CodeSnippet language={Language.Bash}>{CLI_EXAMPLE}</CodeSnippet>
@@ -131,7 +131,7 @@ export function CustomerioImportModal(): JSX.Element {
                 </section>
                 {results?.content_fetched && (
                     <span className="text-secondary" data-attr="customerio-import-content-fetched">
-                        PostHog read the message content from Customer.io with your stored API key.
+                        Flind read the message content from Customer.io with your stored API key.
                     </span>
                 )}
                 {replacing > 0 && (

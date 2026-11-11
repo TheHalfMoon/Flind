@@ -188,18 +188,18 @@ INTERNAL_API_SCOPE_OBJECTS: frozenset[APIScopeObject] = frozenset(
         # separate from internal_run because read-only runs carry that marker.
         "context_layer_internal",
         # Files a suggestion on a workflow, and nothing else. Programmatic-only so no personal key,
-        # OAuth app or logged-in session can queue one: PostHog's own scout is the only producer, and
+        # OAuth app or logged-in session can queue one: Flind's own scout is the only producer, and
         # a person resolves suggestions rather than writing them.
         "hog_flow_proposal",
         # Narrows `internal_run`: the run behind this token was started by a person
-        # pressing a button, not by one of PostHog's own schedulers. Both markers are
+        # pressing a button, not by one of Flind's own schedulers. Both markers are
         # minted server-side, so neither can be self-granted; the LLM gateway meters
         # user-started runs against their own, much smaller budget because their volume
         # is chosen by the customer rather than by us.
         "interactive_run",
         # Provenance marker on tokens minted server-side for a sandbox/agent run
         # (never via the consent flow or a personal API key). The LLM gateway requires
-        # it on the internal products that share the PostHog Desktop OAuth app so a user's
+        # it on the internal products that share the Flind Desktop OAuth app so a user's
         # own credential can't reach them — see services/llm-gateway products/config.py.
         "internal_run",
         # Marks a sandbox OAuth token as belonging to a trusted built-in agent.
@@ -598,7 +598,7 @@ def scopes_within_ceiling(
 
     `allow_wildcard_under_empty_ceiling` is the only resolution difference between
     the callers: `/authorize` passes `True` to grandfather legacy `*` clients (the
-    PostHog Desktop CLI) until wildcard retirement; provisioning leaves it `False`
+    Flind Desktop CLI) until wildcard retirement; provisioning leaves it `False`
     (the default) since it never granted wildcard, so an unseeded ceiling must not
     silently become one.
     """

@@ -54,7 +54,7 @@ interface GenerateContextInput {
 // Launches the session that builds a context's CONTEXT.md. The task runs
 // repo-less (the agent attaches a repo lazily and asks to clarify if it can't
 // find the right one) and unattended in auto mode, seeded by the user's
-// description, so it publishes via the PostHog MCP without a round trip.
+// description, so it publishes via the Flind MCP without a round trip.
 // Defaults to a cloud run so generation never ties up (or depends on) the local
 // machine. Returns the created task, or null on failure.
 //

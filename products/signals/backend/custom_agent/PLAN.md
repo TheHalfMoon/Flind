@@ -1,6 +1,6 @@
 # Custom Signal Agent
 
-Reference doc for the `products/signals/backend/custom_agent/` package: a thin abstraction that lets PostHog engineers ship one-off Signals-style agents that produce final READY reports in the Code Inbox without writing Temporal, sandbox, repo-selection, or persistence code.
+Reference doc for the `products/signals/backend/custom_agent/` package: a thin abstraction that lets Flind engineers ship one-off Signals-style agents that produce final READY reports in the Code Inbox without writing Temporal, sandbox, repo-selection, or persistence code.
 
 Status: feature-complete locally. No production pilot yet. No automated tests â€” the test file was deleted along with the `session_factory` DI seam because it was contorting the public interface; manual testing through the management command is the current bar.
 
@@ -8,7 +8,7 @@ Status: feature-complete locally. No production pilot yet. No automated tests â€
 
 You want to write an LLM-backed agent that:
 
-- Runs against a PostHog team (with or without a target GitHub repository).
+- Runs against a Flind team (with or without a target GitHub repository).
 - Optionally clones one repo into a sandbox, runs `gh`, SQL, MCP, etc.
 - Produces a single final report (title, description, actionability, priority, assignees).
 - Surfaces in the Code Inbox as a `SignalReport(status=READY)` with compatible artefacts.
@@ -230,7 +230,7 @@ To skip all default resolution, register everything in `run()` (and before each 
 
 `products/signals/backend/auto_start.py::maybe_autostart_implementation_task` is the shared entry point. The custom agent's `_finalize_and_persist_current_report` calls it after persistence (wrapped in try/except so autostart failures don't fail the report). It's skipped entirely when there's no selected repo. Custom-agent assignees are mapped to `ReviewerContent` dicts in the agent's `_maybe_autostart` helper.
 
-Any future fix to the autostart hacks (assignment-by-self-opt-in, GitHub-login â†’ PostHog-user resolution, `interaction_origin="signal_report"` magic string, non-transactional task creation) lands in that one module and benefits both code paths.
+Any future fix to the autostart hacks (assignment-by-self-opt-in, GitHub-login â†’ Flind-user resolution, `interaction_origin="signal_report"` magic string, non-transactional task creation) lands in that one module and benefits both code paths.
 
 ## Adding a new agent
 
@@ -243,7 +243,7 @@ Any future fix to the autostart hacks (assignment-by-self-opt-in, GitHub-login â
 
 ## Known limitations and decisions
 
-- **GitHub integration required end-to-end.** `resolve_user_id_for_team` raises when the team has no GitHub integration, including for `NO_REPO` runs. Intentional: custom agents are a PostHog-eng tool right now and every relevant team has a GitHub integration.
+- **GitHub integration required end-to-end.** `resolve_user_id_for_team` raises when the team has no GitHub integration, including for `NO_REPO` runs. Intentional: custom agents are a Flind-eng tool right now and every relevant team has a GitHub integration.
 - **AI data processing consent required.** `arun_agent` refuses to launch for organizations with `is_ai_data_processing_approved=False`, raising `AIDataProcessingNotApprovedError`. Mirrors the `emit_signal` gate. Checked only at the launcher boundary; not re-checked inside the activity.
 - **No validation retry on repo selection.** If the free-form repo selector returns malformed JSON, the activity fails and no report is produced.
 - **`SignalReport.metadata` is not persisted.** Product / type / run_id / workflow_id live in workflow input and structured logs only. Filtering Code Inbox by source product for custom-agent reports doesn't work yet. Revisit when needed.

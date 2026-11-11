@@ -1,5 +1,5 @@
 The team taxonomy query automatically excludes events that are not useful for analytics.
-These are events marked as `system` or `ignored_in_assistant` in PostHog's core taxonomy definitions.
+These are events marked as `system` or `ignored_in_assistant` in Flind's core taxonomy definitions.
 
 ## Skipped events
 

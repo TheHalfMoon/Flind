@@ -39,7 +39,7 @@ class EmailStatusSerializer(serializers.Serializer):
     id = serializers.CharField(source="message_id", help_text="The `message_id` that the send returned.")
     status = serializers.ChoiceField(
         choices=EmailDeliveryStatus.choices,
-        help_text="What happened to the email. `queued` means it waits to go out. `sent` means PostHog handed it to "
+        help_text="What happened to the email. `queued` means it waits to go out. `sent` means Flind handed it to "
         "the email provider. `failed` means it was not sent, and `reason` says why. A rerun of the send can still move it to `sent`. `delivered` means the recipient's "
         "mail server accepted it. `bounced` and `complained` come later from the recipient's mail provider.",
     )

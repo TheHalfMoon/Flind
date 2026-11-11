@@ -237,7 +237,7 @@ const listResponse = (results: Task[]): Record<string, unknown> => ({
 const GITHUB_INTEGRATION = {
     id: 1,
     kind: 'github',
-    display_name: 'PostHog',
+    display_name: 'Flind',
     icon_url: '',
     config: {},
     created_by: null,
@@ -280,7 +280,7 @@ function UnifiedNavigationStory({ viewMode = 'new' }: { viewMode?: 'new' | 'lega
     return <App />
 }
 
-// The list and composer need PostHog AI 2.0 access, or the scene sends the user to classic PostHog AI.
+// The list and composer need Flind AI 2.0 access, or the scene sends the user to classic Flind AI.
 const WITH_POSTHOG_AI_ACCESS = [FEATURE_FLAGS.TASKS, FEATURE_FLAGS.PHAI_SANDBOX_MODE]
 
 const meta: Meta = {

@@ -60,7 +60,7 @@ export class TriggerHandler implements ActionHandler {
                 return { finished: true, skipped: true }
             }
 
-            // Mirrors the consumer's own-app exclusion: a message PostHog's own connected Slack
+            // Mirrors the consumer's own-app exclusion: a message Flind's own connected Slack
             // app posted never reaches a real invocation, so a workflow can't retrigger itself
             // off its own reply. Without this, a hand-written payload naming that app passes.
             if (
@@ -70,7 +70,7 @@ export class TriggerHandler implements ActionHandler {
                 result.logs.push({
                     level: 'info',
                     timestamp: DateTime.now(),
-                    message: "Messages PostHog's own connected Slack app posted would not trigger this workflow.",
+                    message: "Messages Flind's own connected Slack app posted would not trigger this workflow.",
                 })
                 return { finished: true, skipped: true }
             }
@@ -81,7 +81,7 @@ export class TriggerHandler implements ActionHandler {
                 result.logs.push({
                     level: 'info',
                     timestamp: DateTime.now(),
-                    message: "Activity from PostHog's own GitHub App would not trigger this workflow.",
+                    message: "Activity from Flind's own GitHub App would not trigger this workflow.",
                 })
                 return { finished: true, skipped: true }
             }

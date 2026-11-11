@@ -53,7 +53,7 @@ BILLING_SKIPPED_COUNTER = Counter(
 
 AI_GATEWAY_FALLBACK_COUNTER = Counter(
     "posthog_ai_gateway_fallback_total",
-    "PostHog AI model calls that fell back from the Go ai-gateway to the direct provider",
+    "Flind AI model calls that fell back from the Go ai-gateway to the direct provider",
     ["reason"],
 )
 
@@ -81,7 +81,7 @@ AI_GATEWAY_BILLABLE_PRODUCTS = frozenset(
 PROJECT_ORG_USER_CONTEXT_PROMPT = """
 You are currently in project {{{project_name}}}, which is part of the {{{organization_name}}} organization.
 The user's name appears to be {{{user_full_name}}} ({{{user_email}}}). Feel free to use their first name when greeting. DO NOT use this name if it appears possibly fake.
-All PostHog app URLs must use root-relative paths starting with `/`, without a domain (no us.posthog.com, eu.posthog.com, app.posthog.com), and omit the `/project/:id/` prefix. Never include `/-/` in URLs. Never use relative paths like `../` or `./` — always start with `/`.
+All Flind app URLs must use root-relative paths starting with `/`, without a domain (no us.posthog.com, eu.posthog.com, app.posthog.com), and omit the `/project/:id/` prefix. Never include `/-/` in URLs. Never use relative paths like `../` or `./` — always start with `/`.
 Use Markdown with descriptive anchor text, for example "[Cohorts view](/cohorts)".
 
 Key URL patterns:
@@ -274,7 +274,7 @@ class MaxChatMixin(BaseModel):
     """
     posthog_properties: dict[str, Any] | None = None
     """
-    Additional PostHog properties to be added to the $ai_generation event.
+    Additional Flind properties to be added to the $ai_generation event.
     These will be merged with the standard properties like $ai_billable and team_id.
     """
     posthog_provider: ClassVar[str]
@@ -361,7 +361,7 @@ class MaxChatMixin(BaseModel):
         self,
         kwargs: Mapping[str, Any] | None = None,
     ) -> dict[str, Any]:
-        """Return a shallow copy of kwargs with PostHog properties, billable flag, and team_id injected into metadata."""
+        """Return a shallow copy of kwargs with Flind properties, billable flag, and team_id injected into metadata."""
         new_kwargs = dict(kwargs or {})
         metadata = dict(new_kwargs.get("metadata") or {})
 
@@ -597,7 +597,7 @@ class MaxChatMixin(BaseModel):
 
 
 class MaxChatOpenAI(MaxChatMixin, ChatOpenAI):
-    """PostHog-tuned subclass of ChatOpenAI.
+    """Flind-tuned subclass of ChatOpenAI.
 
     This subclass automatically injects project, organization, and user context as the final part of the system prompt.
     It also makes sure we retry automatically in case of an OpenAI API error.
@@ -691,7 +691,7 @@ class MaxChatOpenAI(MaxChatMixin, ChatOpenAI):
 
 
 class MaxChatAnthropic(MaxChatMixin, ChatAnthropic):
-    """PostHog-tuned subclass of ChatAnthropic.
+    """Flind-tuned subclass of ChatAnthropic.
 
     This subclass automatically injects project, organization, and user context as the final part of the system prompt.
     It also makes sure we retry automatically in case of errors.

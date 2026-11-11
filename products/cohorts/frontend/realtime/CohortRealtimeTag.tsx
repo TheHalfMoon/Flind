@@ -26,13 +26,13 @@ const TAG_BY_STATE: Partial<Record<CohortRealtimeStateEnumApi, TagContent>> = {
         label: 'Realtime · preparing',
         icon: <Spinner textColored />,
         explanation:
-            "A realtime cohort. PostHog is still preparing it, so feature flags can't target it yet. Open the cohort to see the progress.",
+            "A realtime cohort. Flind is still preparing it, so feature flags can't target it yet. Open the cohort to see the progress.",
     },
     rebuilding: {
         label: 'Realtime · preparing',
         icon: <Spinner textColored />,
         explanation:
-            "A realtime cohort. The criteria changed, so PostHog is preparing it again and feature flags can't target it until that finishes. Open the cohort to see the progress.",
+            "A realtime cohort. The criteria changed, so Flind is preparing it again and feature flags can't target it until that finishes. Open the cohort to see the progress.",
     },
     needs_attention: {
         label: 'Realtime · unavailable',

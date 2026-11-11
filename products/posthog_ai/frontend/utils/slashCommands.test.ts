@@ -8,7 +8,7 @@ describe('slashCommands', () => {
         { name: 'security-review', description: 'Review the branch' },
         { name: 'mcp:posthog:query', description: 'MCP prompt' },
         { name: 'usage', description: 'Show plan usage limits' },
-        { name: 'querying-posthog-data', description: 'Query PostHog data', hint: 'question' },
+        { name: 'querying-posthog-data', description: 'Query Flind data', hint: 'question' },
     ]
 
     it('keeps clear, compact, and skills from the agent, and hides harness built-ins', () => {

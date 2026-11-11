@@ -85,7 +85,7 @@ export function CalendarSyncConfig(): JSX.Element {
                         'data-attr': 'reconnect-google-account',
                     }}
                 >
-                    Reconnect your Google account to let PostHog sync customer email as well as calendar meetings.
+                    Reconnect your Google account to let Flind sync customer email as well as calendar meetings.
                 </LemonBanner>
             )}
             <div className="flex">

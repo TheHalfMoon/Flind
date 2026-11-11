@@ -168,7 +168,7 @@ def fetch_depot_job_log(
 ) -> str | None:
     """Return the Depot CI attempt's log text (capped at ``max_bytes``), or None if Depot has none (404).
 
-    ``api_token`` is the team's own Depot organization token, so no shared PostHog egress budget
+    ``api_token`` is the team's own Depot organization token, so no shared Flind egress budget
     applies. A 429 passes Depot's ``Retry-After`` to the Temporal retry instead.
 
     The pages stop after ``max_read_bytes`` of responses, so a job that prints an unbounded log

@@ -8,7 +8,7 @@ import {
 } from "./objectKinds.generated";
 
 // Object tags are the message-side counterpart of the `<file path="..."/>`
-// attachment convention: agents embed references to PostHog objects in their
+// attachment convention: agents embed references to Flind objects in their
 // replies, and hosts render them as live chips instead of raw text.
 //
 //   <insight id="9pQx3">checkout funnel</insight>
@@ -26,7 +26,7 @@ export interface ObjectKindMeta {
   /** Product the object comes from, e.g. "Product analytics". */
   source: string;
   /**
-   * Project-relative PostHog web path. Returns null when this id has no direct
+   * Project-relative Flind web path. Returns null when this id has no direct
    * page; omitted when the kind has no canonical page at all.
    */
   webPath?: (encodedId: string, rawId: string) => string | null;
@@ -69,7 +69,7 @@ export function getObjectKind(kind: string): ObjectKindMeta {
   return OBJECT_KINDS[kind] ?? GENERIC_OBJECT_KIND;
 }
 
-/** Project-relative PostHog web path for a reference, or null when it has none. */
+/** Project-relative Flind web path for a reference, or null when it has none. */
 export function objectWebPath(kind: string, id: string): string | null {
   const build = getObjectKind(kind).webPath;
   return build ? build(encodeURIComponent(id), id) : null;

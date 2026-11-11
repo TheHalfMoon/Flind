@@ -53,7 +53,7 @@ class CodaSource(ResumableSource[CodaSourceConfig, CodaResumeConfig]):
             name=ExternalDataSourceType.CODA,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Coda",
-            caption="""Enter your Coda API token to pull your docs, tables, and rows into the PostHog Data warehouse.
+            caption="""Enter your Coda API token to pull your docs, tables, and rows into the Flind Data warehouse.
 
 You can generate an API token in [Coda account settings](https://coda.io/account). The token only sees docs its creator can access. Rows are synced from every table of every doc — note Coda's doc-listing rate limit makes large workspaces slow to sync. Workspace users and role activity sync only for workspaces where the token's creator is an admin.""",
             iconPath="/static/services/coda.png",

@@ -8,7 +8,7 @@ from prometheus_client import Counter
 #         so a webhook-side event loss only showed up as a capture-rate dip in analytics.
 GITHUB_WEBHOOK_PR_EVENT_DROPPED_TOTAL = Counter(
     "posthog_tasks_github_webhook_pr_event_dropped_total",
-    "GitHub PR webhook events that never reached PostHog capture, labeled by event and drop reason",
+    "GitHub PR webhook events that never reached Flind capture, labeled by event and drop reason",
     labelnames=["analytics_event", "reason"],
 )
 

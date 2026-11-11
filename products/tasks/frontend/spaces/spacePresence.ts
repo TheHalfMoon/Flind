@@ -1,6 +1,6 @@
 import { TaskListItemApi, TaskUserBasicInfoApi } from '../generated/api.schemas'
 
-// The same windows as PostHog Desktop, so both apps show the same faces.
+// The same windows as Flind Desktop, so both apps show the same faces.
 /** A face pulses while its person was active this recently: work is happening now. */
 export const PRESENCE_LIVE_WINDOW_MS = 3 * 60_000
 /** A face stays, without the pulse, this long after its person's last activity. */

@@ -34,7 +34,7 @@ export function ComposerAttachments({
                 icon={<IconPlus className="text-secondary" />}
                 aria-label="Attach files"
                 disabledReason={addDisabledReason}
-                tooltip="Attach files for PostHog AI to read"
+                tooltip="Attach files for Flind AI to read"
                 onClick={openPicker}
                 data-attr="posthog-ai-attach-file"
             />

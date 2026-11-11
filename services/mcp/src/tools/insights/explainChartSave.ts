@@ -60,7 +60,7 @@ export const explainChartSaveHandler: ToolBase<typeof schema, Result>['handler']
             explanationId: saved.data.id,
             _posthogUrl: url,
             [POSTHOG_FORMATTED_RESULTS_OVERRIDE_KEY]: [
-                `Give the person this link, which opens the explanation beside the chart in PostHog: ${url}`,
+                `Give the person this link, which opens the explanation beside the chart in Flind: ${url}`,
                 `To fix this explanation, call explain-chart-save again with explanationId "${saved.data.id}", so the link shows the fix.`,
             ].join(' '),
         }

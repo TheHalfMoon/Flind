@@ -5,7 +5,7 @@ import { createRecordStore } from "./web-local-store";
 //
 // On desktop, archiving is a LOCAL operation: it trashes the task's local
 // worktree and records the task in a local archive registry — the task still
-// exists on the PostHog server. The cloud-only web host has no worktree, so
+// exists on the Flind server. The cloud-only web host has no worktree, so
 // archiving is purely "hide this task from my sidebar on this device", which
 // this store persists. Shape mirrors the workspace store (web-workspace-store).
 

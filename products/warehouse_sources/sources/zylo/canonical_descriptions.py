@@ -178,7 +178,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         ),
     },
     "Suppliers": {
-        "description": "A supplier (vendor) that PostHog customers buy software or services from.",
+        "description": "A supplier (vendor) that Flind customers buy software or services from.",
         "docs_url": "https://developer.zylo.com/reference/supplierscontroller_getsuppliers",
         "columns": _columns(
             id="Unique identifier for the supplier.",

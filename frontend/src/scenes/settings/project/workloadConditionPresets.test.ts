@@ -115,7 +115,7 @@ describe('workload condition presets', () => {
         expect(rowsFromConditions(conditions, PROVIDER)).toEqual(rows)
     })
 
-    it('starts a new policy with the default presets, in the order PostHog gives them', () => {
+    it('starts a new policy with the default presets, in the order Flind gives them', () => {
         const provider = { ...PROVIDER, default_presets: ['environment', 'branch_push'] } as WorkloadProviderApi
 
         expect(defaultConditionRows(provider)).toEqual([

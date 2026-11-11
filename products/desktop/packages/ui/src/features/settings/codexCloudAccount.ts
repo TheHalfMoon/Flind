@@ -24,7 +24,7 @@ export function useCodexCloudAccount(): UseQueryResult<UserCodexIntegration> {
   return useQuery({
     queryKey: codexCloudAccountQueryKey,
     queryFn: () => {
-      if (!client) throw new Error("Log in to PostHog first.");
+      if (!client) throw new Error("Log in to Flind first.");
       return client.getCodexUserIntegration();
     },
     enabled: !!client,
@@ -48,7 +48,7 @@ export function useConnectCodexCloudAccount(): UseMutationResult<
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (attemptId) => {
-      if (!client) throw new Error("Log in to PostHog first.");
+      if (!client) throw new Error("Log in to Flind first.");
       if (!service)
         throw new Error("ChatGPT login is unavailable on this device.");
       return service.connect(attemptId, client);
@@ -76,7 +76,7 @@ export function useDisconnectCodexCloudAccount(): UseMutationResult<
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: () => {
-      if (!client) throw new Error("Log in to PostHog first.");
+      if (!client) throw new Error("Log in to Flind first.");
       return client.disconnectCodexUserIntegration();
     },
     onSuccess: () => {

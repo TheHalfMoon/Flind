@@ -247,7 +247,7 @@ class WorkloadConditionsSerializerMixin(serializers.Serializer):
     provider = serializers.ChoiceField(
         choices=WorkloadProviderKey.choices,
         read_only=True,
-        help_text="The key of the workload provider the issuer belongs to. PostHog sets it from the issuer.",
+        help_text="The key of the workload provider the issuer belongs to. Flind sets it from the issuer.",
     )
     subject_name = serializers.CharField(
         max_length=255,
@@ -414,13 +414,13 @@ class WorkloadProviderSerializer(serializers.Serializer):
         child=serializers.CharField(), help_text="Keys of the presets a new policy starts with, in display order."
     )
     can_resolve_subject = serializers.SerializerMethodField(
-        help_text="Whether PostHog can look up the subject from its name with resolve_subject."
+        help_text="Whether Flind can look up the subject from its name with resolve_subject."
     )
     subject_lookup_conditions = serializers.SerializerMethodField(
         help_text="Condition values a policy must have for resolve_subject to find its subject. Empty when any policy works."
     )
     setup_snippet = serializers.SerializerMethodField(
-        help_text="The CI config a job needs to get a token for PostHog, empty when the provider has none."
+        help_text="The CI config a job needs to get a token for Flind, empty when the provider has none."
     )
 
     def get_can_resolve_subject(self, provider: WorkloadProvider) -> bool:
@@ -436,10 +436,10 @@ class WorkloadProviderSerializer(serializers.Serializer):
 
 
 class WorkloadJobSettingsSerializer(serializers.Serializer):
-    host = serializers.CharField(help_text="The PostHog address a job sends its token to, which is its audience.")
+    host = serializers.CharField(help_text="The Flind address a job sends its token to, which is its audience.")
     project_id = serializers.IntegerField(help_text="The project a job's token works in.")
     host_in_posthog_json = serializers.BooleanField(
-        help_text="Whether hog reads the host from posthog.json. It does only for PostHog Cloud, so other hosts need HOG_HOST."
+        help_text="Whether hog reads the host from posthog.json. It does only for Flind Cloud, so other hosts need HOG_HOST."
     )
 
 
@@ -508,7 +508,7 @@ class BrowserSessionWritePermission(BasePermission):
     """Writes need a browser session. Every token type gets a 403, because a token can only ask for a
     policy, which an admin then approves in the browser."""
 
-    message = "Workload trust policies can only be changed in the PostHog app, by an organization admin."
+    message = "Workload trust policies can only be changed in the Flind app, by an organization admin."
 
     def has_permission(self, request: Request, view: APIView) -> bool:
         if request.method in SAFE_METHODS:
@@ -569,7 +569,7 @@ class WorkloadTrustPolicyRequestSerializer(WorkloadConditionsSerializerMixin, se
         help_text="The name of the OAuth app the request came through, or null for other credentials."
     )
     requested_via_verified = serializers.SerializerMethodField(
-        help_text="Whether PostHog verified the OAuth app the request came through, or null for other credentials."
+        help_text="Whether Flind verified the OAuth app the request came through, or null for other credentials."
     )
     approval_url = serializers.SerializerMethodField(help_text="The link to send to an admin to approve the request.")
     can_approve = serializers.SerializerMethodField(
@@ -688,7 +688,7 @@ class ResolveWorkloadSubjectQuerySerializer(serializers.Serializer):
         child=serializers.CharField(max_length=500),
         required=False,
         default=list,
-        help_text="The policy's conditions as claim=value, repeated. PostHog refuses a lookup they rule out, like a repository on a forge the lookup doesn't ask.",
+        help_text="The policy's conditions as claim=value, repeated. Flind refuses a lookup they rule out, like a repository on a forge the lookup doesn't ask.",
     )
 
     def validate_issuer(self, value: str) -> str:
@@ -700,7 +700,7 @@ class ResolvedWorkloadSubjectSerializer(serializers.Serializer):
     subject_name = serializers.CharField(
         help_text="The provider's exact spelling of the name, which the token carries, for the policy's subject name."
     )
-    found_via = serializers.CharField(help_text="Where PostHog found the workload, to show the user.")
+    found_via = serializers.CharField(help_text="Where Flind found the workload, to show the user.")
 
 
 class WorkloadTrustPolicyRequestResolutionPermission(BasePermission):
@@ -708,7 +708,7 @@ class WorkloadTrustPolicyRequestResolutionPermission(BasePermission):
     for a policy is open to every member, so the check applies to the resolving actions only."""
 
     message = (
-        "Only an organization admin or owner can approve or reject a workload trust policy request, in the PostHog app."
+        "Only an organization admin or owner can approve or reject a workload trust policy request, in the Flind app."
     )
 
     def has_permission(self, request: Request, view: APIView) -> bool:
@@ -840,7 +840,7 @@ class WorkloadTrustPolicyRequestViewSet(
         query_serializer=ResolveWorkloadSubjectQuerySerializer,
         responses={
             200: ResolvedWorkloadSubjectSerializer,
-            404: OpenApiResponse(description="The provider has no such workload, or PostHog can't ask it."),
+            404: OpenApiResponse(description="The provider has no such workload, or Flind can't ask it."),
             503: OpenApiResponse(description="The provider didn't answer."),
         },
     )
@@ -850,7 +850,7 @@ class WorkloadTrustPolicyRequestViewSet(
         to ask for or write a policy."""
         provider = supported_provider_for(request.validated_query_data["issuer"])
         if provider.resolve_subject is None:
-            raise NotFound(f"PostHog can't look up {provider.subject_claim.label} for {provider.name}.")
+            raise NotFound(f"Flind can't look up {provider.subject_claim.label} for {provider.name}.")
         # Generated clients join a list into one comma-separated value, so each value may hold several entries.
         entries = [part for value in request.validated_query_data["condition"] for part in value.split(",")]
         given = dict(entry.split("=", 1) for entry in entries if "=" in entry)
@@ -858,7 +858,7 @@ class WorkloadTrustPolicyRequestViewSet(
         if unmet:
             claim, value = unmet[0]
             label = condition_claim_labels(provider).get(claim, claim)
-            raise NotFound(f"PostHog can look up {provider.subject_claim.label} only when {label} is {value}.")
+            raise NotFound(f"Flind can look up {provider.subject_claim.label} only when {label} is {value}.")
         try:
             resolved = provider.resolve_subject(self.team_id, request.validated_query_data["subject_name"])
         except WorkloadSubjectNotFound as e:

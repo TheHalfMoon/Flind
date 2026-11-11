@@ -7,11 +7,11 @@ Model choice matches `products/mcp_analytics/backend/intent_generation.py`,
 which already uses gpt-4.1-mini for the closest existing job (summarizing a
 session's intents), so the two stay comparable.
 
-PostHog employees only: the key comes from the repo's .env.local, which holds
+Flind employees only: the key comes from the repo's .env.local, which holds
 1Password references rather than literal secrets.
 
 CONSENT: the `opening` column is customer-authored intent text, and this script
-sends it to a third-party model. PostHog's backend gates the same class of text
+sends it to a third-party model. Flind's backend gates the same class of text
 on `organization.is_ai_data_processing_approved` (see intent_generation.py and
 failure_classification.py); restrict the corpus to consenting organizations
 before running this. The sibling scripts only ever see generated goal labels.
@@ -39,7 +39,7 @@ from pydantic import BaseModel, Field, create_model
 MODEL = "gpt-4.1-mini"
 WORKERS = 8
 
-SYSTEM = """You are analyzing telemetry from PostHog's MCP server: sequences of tool calls an AI agent made on a user's behalf. Each session ended with the agent calling {tool}.
+SYSTEM = """You are analyzing telemetry from Flind's MCP server: sequences of tool calls an AI agent made on a user's behalf. Each session ended with the agent calling {tool}.
 
 Recover the USER'S STARTING POINT — what the person set out to accomplish when the session began. This is upstream of the tool call: reaching {tool} is usually where the work landed, not the goal itself.
 

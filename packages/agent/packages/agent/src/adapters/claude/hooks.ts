@@ -114,9 +114,9 @@ export const createReadEnrichmentHook =
       hookSpecificOutput: {
         hookEventName: "PostToolUse" as const,
         additionalContext: [
-          `## PostHog metadata for ${filePath}`,
+          `## Flind metadata for ${filePath}`,
           "",
-          "The file below is annotated with live data from the user's PostHog project:",
+          "The file below is annotated with live data from the user's Flind project:",
           "flag type / rollout / staleness / linked experiment, and for events the verification status,",
           "30-day volume, and unique-user count. Treat these as authoritative product context —",
           "they describe what is actually running in production.",
@@ -200,7 +200,7 @@ export type OnModeChange = (mode: CodeExecutionMode) => Promise<void>;
 
 interface CreatePostToolUseHookParams {
   onModeChange?: OnModeChange;
-  /** Called after a PostHog MCP `call` exec executes, with the sub-tool name
+  /** Called after a Flind MCP `call` exec executes, with the sub-tool name
    *  and the raw command (the command embeds the SQL for execute-sql). */
   onPostHogResourceUsed?: (subTool: string, commandText?: string) => void;
 }
@@ -221,7 +221,7 @@ export const createPostToolUseHook =
         await onModeChange("plan");
       }
 
-      // Record PostHog product usage from the MCP exec dispatcher. Only the
+      // Record Flind product usage from the MCP exec dispatcher. Only the
       // `call <sub-tool>` verb counts as "used a resource" — extractPostHogSubTool
       // matches that verb and ignores introspection (tools/info/schema/search).
       if (onPostHogResourceUsed && isPostHogExecTool(toolName)) {
@@ -397,7 +397,7 @@ export const createPreToolUseHook =
       );
     }
 
-    // Defer destructive PostHog exec sub-tools to canUseTool so the
+    // Defer destructive Flind exec sub-tools to canUseTool so the
     // sub-tool gate can re-prompt. Returning `{ continue: true }` is
     // not enough — the SDK then falls back to its default permission
     // flow which re-checks the same allow rule. We must force "ask"
@@ -417,7 +417,7 @@ export const createPreToolUseHook =
           hookSpecificOutput: {
             hookEventName: "PreToolUse" as const,
             permissionDecision: "ask" as const,
-            permissionDecisionReason: `PostHog sub-tool '${subTool}' matches the configured permission regex`,
+            permissionDecisionReason: `Flind sub-tool '${subTool}' matches the configured permission regex`,
           },
         };
       }

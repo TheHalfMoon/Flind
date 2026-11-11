@@ -23,7 +23,7 @@ export function EventsRetentionSupportPeriod({
     return (
         <>
             <span className="font-semibold">{retentionPeriodLabel(modalProps.supportMonths)}</span>
-            <LemonTag>Set by PostHog support</LemonTag>
+            <LemonTag>Set by Flind support</LemonTag>
             <LemonButton
                 type="secondary"
                 size="small"

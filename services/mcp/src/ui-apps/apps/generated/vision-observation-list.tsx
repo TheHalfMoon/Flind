@@ -15,7 +15,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function VisionObservationListApp(): JSX.Element {
     return (
-        <AppWrapper<VisionObservationListData> appName="PostHog Vision Observation List">
+        <AppWrapper<VisionObservationListData> appName="Flind Vision Observation List">
             {({ data, app }) => <VisionObservationListContent data={data!} app={app} />}
         </AppWrapper>
     )

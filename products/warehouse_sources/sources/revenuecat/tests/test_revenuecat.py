@@ -339,7 +339,7 @@ class TestGetExternalWebhookInfo:
                 "id": "wh_1",
                 "url": "https://example.com/h",
                 "event_types": ["initial_purchase", "renewal"],
-                "name": "PostHog data warehouse",
+                "name": "Flind data warehouse",
                 "created_at": 1658399423658,
             }
         ]
@@ -352,7 +352,7 @@ class TestGetExternalWebhookInfo:
         assert info.url == "https://example.com/h"
         assert info.enabled_events == ["initial_purchase", "renewal"]
         assert info.status == "enabled"
-        assert info.description == "PostHog data warehouse"
+        assert info.description == "Flind data warehouse"
 
     @patch("products.warehouse_sources.sources.revenuecat.revenuecat._list_webhook_integrations")
     def test_returns_not_found_when_no_match(self, mock_list):

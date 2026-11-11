@@ -2,9 +2,9 @@ import { electronStorage } from "@flind/ui/shell/rendererStorage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-// Tracks whether the "Before you head to PostHog web" feedback intercept has
+// Tracks whether the "Before you head to Flind web" feedback intercept has
 // already run once. After the user submits, skips, or dismisses it, going back
-// to PostHog web navigates straight there instead of prompting again.
+// to Flind web navigates straight there instead of prompting again.
 interface PostHogWebFeedbackState {
   hasSeen: boolean;
   // Storage is read asynchronously (Electron IPC); hasSeen exposes its default

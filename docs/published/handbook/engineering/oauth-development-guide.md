@@ -6,7 +6,7 @@ showTitle: true
 
 # OAuth Development Guide
 
-This guide helps developers set up and test PostHog's OAuth apps locally.
+This guide helps developers set up and test Flind's OAuth apps locally.
 
 ## Quick Start
 
@@ -29,7 +29,7 @@ openssl genrsa 2048 | openssl pkcs8 -topk8 -nocrypt -outform PEM | \
 # Add to .env as OIDC_RSA_PRIVATE_KEY="<generated_key>"
 ```
 
-Without this key, PostHog cannot create OAuth applications.
+Without this key, Flind cannot create OAuth applications.
 Django's system checks print warning `posthog.oauth.W001` at startup.
 Client ID metadata document clients, dynamic client registration and toolbar sign-in get an OAuth `server_error` that names the missing setting.
 
@@ -70,7 +70,7 @@ You can view and test the OAuth flow from Django admin:
 
 - Display name for the application
 - Shown to users during authorization
-- Example: "PostHog Mobile App", "Analytics Dashboard"
+- Example: "Flind Mobile App", "Analytics Dashboard"
 
 **Client ID** (auto-generated)
 
@@ -103,7 +103,7 @@ See [Client Types](#client-types) section for detailed explanation.
 **Redirect URIs** (required)
 
 - Whitespace-separated list of valid redirect URIs
-- PostHog will only redirect to these URIs after authorization
+- Flind will only redirect to these URIs after authorization
 - **HTTPS required** for non-localhost URIs
 - **HTTP allowed** only for localhost/loopback addresses (127.0.0.1)
 - No fragments (#) allowed
@@ -126,7 +126,7 @@ See [Client Types](#client-types) section for detailed explanation.
 
 **User**
 
-- The PostHog user who created the application
+- The Flind user who created the application
 - Not used for access control
 - Helps track who created the app
 
@@ -343,20 +343,20 @@ print(tokens)
 
 ## First-party client metadata documents
 
-PostHog's own public clients (hogli, the Visual Review Chrome extension, and internal tools) authenticate with client ID metadata documents (CIMD) rather than a registered application or dynamic client registration. Their documents live in the [posthog.com repo](https://github.com/PostHog/posthog.com) at `static/.well-known/oauth/<app>/client-metadata.json`, served at `https://posthog.com/.well-known/oauth/<app>/client-metadata.json`. That URL is the `client_id`, so one ID works on US, EU, and self-hosted.
+Flind's own public clients (hogli, the Visual Review Chrome extension, and internal tools) authenticate with client ID metadata documents (CIMD) rather than a registered application or dynamic client registration. Their documents live in the [posthog.com repo](https://github.com/PostHog/posthog.com) at `static/.well-known/oauth/<app>/client-metadata.json`, served at `https://posthog.com/.well-known/oauth/<app>/client-metadata.json`. That URL is the `client_id`, so one ID works on US, EU, and self-hosted.
 
 To add one, create a JSON file there with `client_id` set to its own URL. The CIMD fetcher follows no redirects, so the URL has to answer with a 200 directly. Put the scope ceiling in `com.posthog.scopes`. A client that only signs people in can list only `openid`, `profile`, and `email`, and gets no resource scope. A new document is an unverified, not-first-party client until someone sets `is_verified` or `is_first_party` on its application in Django admin, in each region.
 
 ## Self-registered client logos
 
-Both self-registration paths accept a `logo_uri`, and PostHog shows it on the consent screen and on the login, signup, and email verification screens. A client without a logo gets the first letter of its name instead.
+Both self-registration paths accept a `logo_uri`, and Flind shows it on the consent screen and on the login, signup, and email verification screens. A client without a logo gets the first letter of its name instead.
 
 - Dynamic client registration (`POST /oauth/register/`, RFC 7591): send `logo_uri` alongside `redirect_uris`. The response echoes it back.
 - Client ID metadata documents: put `logo_uri` in the document. A document without one gets `https://<client_id host>/apple-touch-icon.png`, the touch icon of the host that serves the document. It never comes from `client_uri`, which the document asserts about itself, so a client cannot borrow another site's icon. Where the host has no such icon, the screens fall back to the first letter. A refresh keeps a stored logo when the document still has none.
 
 The URI must be `https` and must pass `is_url_allowed`, the same SSRF guard the rest of the codebase uses. That rejects a loopback, private, metadata or internal-domain host, and it resolves the name, so a public hostname pointing at a private address is rejected too. A URI that fails either check is dropped and left out of the registration response. It never fails the registration, since a client can complete every OAuth flow without a logo.
 
-The host check protects the visitor rather than PostHog. PostHog never fetches a logo: the browser does, and a self-hosted deployment renders these pages to people inside a trusted network. An unchecked logo would make each of those browsers probe its own network from a PostHog page.
+The host check protects the visitor rather than Flind. Flind never fetches a logo: the browser does, and a self-hosted deployment renders these pages to people inside a trusted network. An unchecked logo would make each of those browsers probe its own network from a Flind page.
 
 ## Signed-out visitors
 
@@ -365,7 +365,7 @@ The host check protects the visitor rather than PostHog. PostHog never fetches a
 The redirect also sets the `ph_pending_oauth_connection` cookie so those screens can name the application:
 
 - Value: percent-encoded JSON with `client_name` and `client_id`, plus `logo_uri` and `redirect_host` (host of the registered redirect URI, web redirects only) when known. It holds public application metadata only, the same the consent screen shows.
-- Scope: `Domain=posthog.com` on PostHog Cloud, so the website can read it too. Host-only on any other host. `SameSite=Lax`, readable by JavaScript, lifetime 60 minutes.
+- Scope: `Domain=posthog.com` on Flind Cloud, so the website can read it too. Host-only on any other host. `SameSite=Lax`, readable by JavaScript, lifetime 60 minutes.
 - Cleared when the person grants or denies the authorization.
 - A CIMD client seen for the first time has no application row yet, so the cookie carries the host of its `client_id` URL as the name.
 

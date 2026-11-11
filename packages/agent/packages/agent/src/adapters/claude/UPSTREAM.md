@@ -10,7 +10,7 @@ Fork of `@anthropic-ai/claude-agent-acp`. Upstream repo: https://github.com/anth
 
 ## File Mapping
 
-| PostHog | Upstream |
+| Flind | Upstream |
 |---|---|
 | `conversion/tool-use-to-acp.ts` | `tools.ts` |
 | `conversion/sdk-to-acp.ts` | inline in `acp-agent.ts` |
@@ -22,9 +22,9 @@ Fork of `@anthropic-ai/claude-agent-acp`. Upstream repo: https://github.com/anth
 | `hooks.ts` | `tools.ts` |
 | `types.ts` | inline |
 
-## PostHog-Only Code (Do Not Sync)
+## Flind-Only Code (Do Not Sync)
 
-- PostHog analytics (`_posthog/*` ext notifications, `_posthog/usage_update`)
+- Flind analytics (`_posthog/*` ext notifications, `_posthog/usage_update`)
 - Process lifecycle (spawn wrappers, PID tracking, `onProcessSpawned`/`onProcessExited`)
 - Plan mode (`plan/`, EnterPlanMode/ExitPlanMode handlers, plan validation)
 - Gateway models (`session/models.ts`, `base-acp-agent.ts`, `fetchGatewayModels`)
@@ -37,7 +37,7 @@ Fork of `@anthropic-ai/claude-agent-acp`. Upstream repo: https://github.com/anth
 - Steer mode: `_meta.steer` maps to `priority:"next"` in `promptToClaude` (`acp-to-sdk.ts`). A mid-turn branch in `prompt()` pushes the message into the running turn's input and returns immediately with a benign `end_turn` instead of queueing a new turn. Advertised via `_meta.posthog.steering:"native"` in `initialize()`
 - `SYSTEM_REMINDER` stripping from Read tool results
 - WebFetch `resourceLink` content enrichment
-- `customTitle` in listSessions (PostHog is ahead of upstream here)
+- `customTitle` in listSessions (Flind is ahead of upstream here)
 - Refusal support: `Options.fallbackModel` defaults to `FALLBACK_MODEL` in
   `session/options.ts`; `model_refusal_fallback` system messages emit a
   `_posthog/status` notification (`refusal_fallback`) in `sdk-to-acp.ts`; a
@@ -50,13 +50,13 @@ Fork of `@anthropic-ai/claude-agent-acp`. Upstream repo: https://github.com/anth
 - `ELECTRON_RUN_AS_NODE` / `ENABLE_TOOL_SEARCH` env vars
 - `machine-auth.ts` (`MachineClaudeAuth`, `applyMachineClaudeAuth`): strips gateway/telemetry env
   and sets `CLAUDE_CONFIG_DIR` or `CLAUDE_CODE_OAUTH_TOKEN` so a session bills the user's own
-  Claude plan instead of the PostHog gateway
+  Claude plan instead of the Flind gateway
 
 ## Intentional Divergences
 
-| Area | Upstream | PostHog | Reason |
+| Area | Upstream | Flind | Reason |
 |---|---|---|---|
-| AskUserQuestion | Always disallowed | Enabled via env var + permission handler | PostHog supports structured questions |
+| AskUserQuestion | Always disallowed | Enabled via env var + permission handler | Flind supports structured questions |
 | Model resolution | `initializationResult.models` from SDK | `fetchGatewayModels()` from gateway API | Different model backend |
 | Context window | `[1m]` model variants from `supportedModels()`; size from `modelUsage[].contextWindow` | Size from `getContextUsage({ detail: "summary" }).rawMaxTokens` after start, model switch and window switch, seeded from the gateway; a 200k choice sets `CLAUDE_CODE_DISABLE_1M_CONTEXT=1` at spawn and through `applyFlagSettings({ env })`; no `betas` | Current Claude models are natively 1M, so a `[1m]` variant or the beta does not change the window. The env var is the documented 200K switch and the CLI reads it live. A summary read makes no API call |
 | permissionMode | Hardcoded `"default"` | Reads from `meta.permissionMode` | More flexible mode selection |
@@ -139,7 +139,7 @@ Fork of `@anthropic-ai/claude-agent-acp`. Upstream repo: https://github.com/anth
   were not adopted — the renderer consumes selects; revisit if it advertises
   `sessionConfigOptions.boolean`.
 - **ReportFindings tool rendering** (#826, ef42c46): Not ported to `toolInfoFromToolUse` — see
-  Skipped (the fork renders unknown tools generically and PostHog has no code-review
+  Skipped (the fork renders unknown tools generically and Flind has no code-review
   ReportFindings flow); re-evaluate if the SDK starts emitting it in our sessions.
 - **Test mock**: added `setMcpPermissionModeOverride` and `reinitialize` to the SDK `MockQuery`
   (new methods on the SDK `Query` interface by 0.3.197).
@@ -153,16 +153,16 @@ Fork of `@anthropic-ai/claude-agent-acp`. Upstream repo: https://github.com/anth
   ACP's unstable elicitation API; ours uses its own `questions/` machinery behind the permission
   flow and the renderer does not advertise elicitation. Same standing skip as the v0.44 sync.
 - **ACP logout support** (#816, 0a0468c): Fork returns empty `authMethods` (auth handled
-  externally by PostHog); there is no CLI credential store to clear from the embedded agent.
+  externally by Flind); there is no CLI credential store to clear from the embedded agent.
 - **Version flag handling** (#813, 9616bda): `src/index.ts` CLI-entrypoint concern; the fork is
   embedded in the agent server and has no standalone binary.
 - **Agent selection dropdown** (#794, 5729c47): Surfaces custom main-thread agent personas
-  (`supportedAgents()` minus built-ins) as an `agent` config option. PostHog drives its own
+  (`supportedAgents()` minus built-ins) as an `agent` config option. Flind drives its own
   agent concepts; defer until product wants persona selection in the picker.
 - **availableModels allowlist fixes** (#768 cc2885f, #827 98c284b) and **1M inference from model
   descriptions** (#799, 508453c): All operate on upstream's SDK-settings model pipeline
   (`ANTHROPIC_CUSTOM_MODEL_OPTION`, `modelOverrides`, `ModelInfo.description` scans). The fork's
-  models and context windows come from the PostHog gateway (`fetchGatewayModels`,
+  models and context windows come from the Flind gateway (`fetchGatewayModels`,
   `getContextWindowForModel`), which has none of those inputs.
 - **ReportFindings rendering** (#826): See above — no ReportFindings flow reaches the fork today;
   the generic tool_call rendering is acceptable if it ever does.
@@ -370,7 +370,7 @@ Fork of `@anthropic-ai/claude-agent-acp`. Upstream repo: https://github.com/anth
 - **Model alias version match** (#702, e1e1c69): Refuse cross-version alias matches in `resolveModelPreference`
   so `claude-opus-4-6` doesn't get copied onto the `opus` alias when it resolves to 4.7.
 - **Hide /clear** (#705, cfce130): `/clear` removed from advertised commands; clients should use
-  `session/new` for the same effect. Superseded: PostHog Code now implements `/clear` itself in
+  `session/new` for the same effect. Superseded: Flind Code now implements `/clear` itself in
   `clearConversation` (prompt() intercepts it and swaps in a fresh SDK session; a
   `_posthog/conversation_cleared` log marker bounds rehydration), still never forwarding it to the SDK.
   A build that predates this marker skips it as an unrecognized notification and keeps rendering
@@ -389,14 +389,14 @@ Fork of `@anthropic-ai/claude-agent-acp`. Upstream repo: https://github.com/anth
 
 ## Skipped in v0.30.0 Sync
 
-- **Separate auth methods** (v0.25.0): PostHog returns empty authMethods
-- **Session fingerprinting** (v0.25.3): PostHog uses explicit `refreshSession()` instead
-- **Process exit on ACP close** (v0.27.0): PostHog embeds agent in server
+- **Separate auth methods** (v0.25.0): Flind returns empty authMethods
+- **Session fingerprinting** (v0.25.3): Flind uses explicit `refreshSession()` instead
+- **Process exit on ACP close** (v0.27.0): Flind embeds agent in server
 
 ## Next Sync
 
 1. Check upstream changelog since v0.54.1
-2. Diff upstream source against PostHog using the file mapping above
+2. Diff upstream source against Flind using the file mapping above
 3. Port in phases: bug fixes first, then features
 4. After each phase: `pnpm --filter agent typecheck && pnpm --filter agent build && pnpm lint`
 5. After all phases: `pnpm typecheck && pnpm test`

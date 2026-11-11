@@ -57,7 +57,7 @@ class SonarCloudSource(ResumableSource[SonarCloudSourceConfig, SonarCloudResumeC
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Sonar Cloud",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your SonarQube Cloud user token and organization key to sync code-quality data into the PostHog Data warehouse.
+            caption="""Enter your SonarQube Cloud user token and organization key to sync code-quality data into the Flind Data warehouse.
 
 Generate a **user token** under **My Account → Security** in SonarQube Cloud, and find your **organization key** on your organization's homepage.
 """,

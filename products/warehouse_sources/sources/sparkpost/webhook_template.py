@@ -32,7 +32,7 @@ if (not inputs.bypass_authorization_check) {
   }
 
   // SparkPost authenticates every delivery with the basic-auth credentials set on the webhook
-  // (`auth_type: "basic"`). PostHog generates those credentials at registration time and stores
+  // (`auth_type: "basic"`). Flind generates those credentials at registration time and stores
   // the exact header value SparkPost will send, so verifying is a string comparison.
   let providedHeader := request.headers['authorization']
 
@@ -89,7 +89,7 @@ produceToWarehouseWebhooks({'sparkpost_webhook_batch': jsonStringify(request.bod
             "hidden": False,
             "description": (
                 "The exact value SparkPost sends in the Authorization header on each delivery "
-                "(e.g. `Basic dXNlcjpwYXNz`). PostHog rejects deliveries whose header does not match."
+                "(e.g. `Basic dXNlcjpwYXNz`). Flind rejects deliveries whose header does not match."
             ),
         },
         {

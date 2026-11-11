@@ -1,4 +1,4 @@
-"""The tools the wizard can detect in a codebase, and what each one means to PostHog.
+"""The tools the wizard can detect in a codebase, and what each one means to Flind.
 
 Each warehouse source declares its own `codebase_detection`. The image build renders the catalog to
 `products/wizard/tool-catalog.json` with `manage.py render_wizard_tool_catalog`. The public

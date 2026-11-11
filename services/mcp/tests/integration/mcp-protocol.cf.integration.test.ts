@@ -6,10 +6,10 @@ import { defineAuthTests, type ProtocolTestHarness } from './mcp-protocol-suite'
 
 // Auth-boundary test against the Cloudflare Workers entry point.
 //   - Real workerd via `wrangler unstable_dev`
-//   - Real PostHog stack at `TEST_POSTHOG_API_BASE_URL` (defaults to localhost:8010)
+//   - Real Flind stack at `TEST_POSTHOG_API_BASE_URL` (defaults to localhost:8010)
 //   - Real personal API key from `TEST_POSTHOG_PERSONAL_API_KEY`
 //
-// Boot the local PostHog stack with `./bin/start` before running this suite.
+// Boot the local Flind stack with `./bin/start` before running this suite.
 //
 // The worker proxies all `/mcp` traffic to the Hono runtime — protocol,
 // resilience, resource-catalog and tool-behavior suites run against the runtime

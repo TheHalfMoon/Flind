@@ -28,7 +28,7 @@ PRODUCTION_REGIONS = frozenset({"US", "EU"})
 
 
 class Command(BaseCommand):
-    help = "Create the Array and PostHog AI OAuth applications task sandboxes mint tokens under"
+    help = "Create the Array and Flind AI OAuth applications task sandboxes mint tokens under"
 
     def handle(self, *args, **options):
         region = get_instance_region()
@@ -51,7 +51,7 @@ class Command(BaseCommand):
             POSTHOG_AI_APP_CLIENT_ID_DEV,
             {
                 "id": POSTHOG_AI_APP_ID_DEV,
-                "name": "PostHog AI Dev App",
+                "name": "Flind AI Dev App",
                 "client_type": OAuthApplication.CLIENT_CONFIDENTIAL,
                 "authorization_grant_type": OAuthApplication.GRANT_AUTHORIZATION_CODE,
                 "redirect_uris": POSTHOG_AI_REDIRECT_URIS,

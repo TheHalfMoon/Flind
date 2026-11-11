@@ -651,19 +651,19 @@ def get_community_skills_publisher() -> GitHubIntegration | None:
 
 
 def _community_pr_body(*, name: str, slug: str, author_handle: str) -> str:
-    # No PostHog user PII here — this PR is public. Attribution is only the GitHub handle the
+    # No Flind user PII here — this PR is public. Attribution is only the GitHub handle the
     # publisher explicitly provided for public sharing.
     # The handle is self-reported, so say so: a maintainer must not read it as a verified identity.
     credit = (
-        f"Published from the PostHog skills marketplace. The publisher gave @{author_handle} as the author handle"
+        f"Published from the Flind skills marketplace. The publisher gave @{author_handle} as the author handle"
         if author_handle
-        else "Published from the PostHog skills marketplace"
+        else "Published from the Flind skills marketplace"
     )
     return (
         f"Adds the **{name}** community skill (`skills/{slug}/`).\n\n"
         f"{credit} via the in-product *Publish to community* flow.\n\n"
         "A maintainer should review the instructions for safety before merging; "
-        "set `trust_tier` on review. On merge, CI regenerates `registry.json` and PostHog syncs it."
+        "set `trust_tier` on review. On merge, CI regenerates `registry.json` and Flind syncs it."
     )
 
 

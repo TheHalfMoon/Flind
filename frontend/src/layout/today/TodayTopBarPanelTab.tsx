@@ -22,7 +22,7 @@ export function TodayTopBarPanelTab({ tab }: { tab: SidePanelTab }): JSX.Element
     const { activeTab, docked, floatingOpen, launcherHintVisible } = useValues(todayContextPanelLogic)
     const { togglePanelTab, hideLauncherHint } = useActions(todayContextPanelLogic)
     const { unreadCount } = useValues(sidePanelNotificationsLogic)
-    // Controlled, so PostHog AI's tooltip can also point here after the user dismisses the floating button.
+    // Controlled, so Flind AI's tooltip can also point here after the user dismisses the floating button.
     const [hovered, setHovered] = useState(false)
     const launcherHint = tab === SidePanelTab.Max && launcherHintVisible
 
@@ -54,7 +54,7 @@ export function TodayTopBarPanelTab({ tab }: { tab: SidePanelTab }): JSX.Element
                             aria-pressed={pressed}
                             className="text-muted-foreground hover:text-foreground aria-pressed:bg-[var(--fill-selected)] aria-pressed:text-foreground"
                             onClick={() => togglePanelTab(tab)}
-                            // pinned: the PostHog AI button keeps the side panel button's data-attr
+                            // pinned: the Flind AI button keeps the side panel button's data-attr
                             data-attr={
                                 tab === SidePanelTab.Max ? 'today-top-bar-side-panel' : `today-top-bar-panel-tab-${tab}`
                             }

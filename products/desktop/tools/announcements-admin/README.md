@@ -1,15 +1,15 @@
 # Desktop announcements admin
 
-Internal tool for publishing PostHog Desktop in-app announcements. It edits the
+Internal tool for publishing Flind Desktop in-app announcements. It edits the
 JSON payload of the `posthog-desktop-announcements` feature flag (project 2)
-via the PostHog REST API — nothing else. The release condition / rollout %
-stays managed in the PostHog UI.
+via the Flind REST API — nothing else. The release condition / rollout %
+stays managed in the Flind UI.
 
 Live (employee-gated): https://desktop-announcements-admin.hosthog.dev
 
 ## Auth
 
-"Log in with PostHog" — an OAuth authorization-code + PKCE flow using a
+"Log in with Flind" — an OAuth authorization-code + PKCE flow using a
 [client ID metadata document](https://posthog.com/.well-known/oauth/desktop-announcements-admin/client-metadata.json)
 (the `client_id` is that document's URL, so no OAuth app registration and no
 API keys). The document lives in PostHog/posthog.com at
@@ -30,7 +30,7 @@ Shared with the app: `@flind/shared/announcements`
 
 Set `VITE_POSTHOG_API_KEY`, `VITE_POSTHOG_API_HOST`, and
 `VITE_POSTHOG_UI_HOST` in the build environment to send audit events to
-PostHog. The tool does not capture announcement content or URLs.
+Flind. The tool does not capture announcement content or URLs.
 
 The site is not deployed by CI.
 Rebuild and republish it from `master` after any change to this tool, `@flind/shared`, or the `@posthog/brand` catalog version.

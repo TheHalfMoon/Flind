@@ -80,7 +80,7 @@ export function ErrorBoundaryFallback({
         <div className="flex w-full flex-col items-center gap-2">
           <Heading size="lg">Something went wrong</Heading>
           <Text size="sm" variant="muted" className="text-balance">
-            PostHog hit an error it could not recover from. Refresh the app to
+            Flind hit an error it could not recover from. Refresh the app to
             try again. If it keeps happening, copy the error details and send
             them to us.
           </Text>

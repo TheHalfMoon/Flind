@@ -567,7 +567,7 @@ def resume_task_in_cloud_workflow(run_id: str, workflow_id: str) -> None:
 def execute_bake_dev_stack_image_workflow(
     publish_name: str = DEV_STACK_IMAGE_NAME, *, trigger: Literal["nightly", "base_changed", "manual"] = "manual"
 ) -> None:
-    """Start (or restart) the bake of the prebaked PostHog dev-stack VM image.
+    """Start (or restart) the bake of the prebaked Flind dev-stack VM image.
 
     TERMINATE_IF_RUNNING: a bake stuck from the previous night gets replaced by the
     fresh one instead of blocking it.

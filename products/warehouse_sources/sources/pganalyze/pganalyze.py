@@ -38,7 +38,7 @@ def _resolve_api_url(api_url: str | None) -> str:
 
     Why: api_url is a free-text input on the source config, so without validation any
     authenticated user could point pganalyze sync at internal-network targets (cloud
-    metadata services, private IPs, RFC1918 hosts) and use PostHog as an SSRF gadget.
+    metadata services, private IPs, RFC1918 hosts) and use Flind as an SSRF gadget.
     """
     candidate = (api_url or "").strip() or PGANALYZE_API_URL
     allowed, reason = is_url_allowed(candidate)

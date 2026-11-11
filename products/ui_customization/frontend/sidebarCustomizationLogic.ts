@@ -50,7 +50,7 @@ const SIDEBAR_REQUEST_TIMEOUT_MS = 30_000
 
 const WRITE_FAILURE_TITLES: Record<'reset' | 'restore', string> = {
     reset: 'Couldn’t reset the sidebar. Try again.',
-    restore: 'Couldn’t bring back your sidebar. Ask PostHog AI to build it again.',
+    restore: 'Couldn’t bring back your sidebar. Ask Flind AI to build it again.',
 }
 
 type SidebarRequest =
@@ -230,7 +230,7 @@ export const sidebarCustomizationLogic: LogicWrapper<sidebarCustomizationLogicTy
         })),
         listeners(({ actions, asyncActions, cache, values, props }) => ({
             [userLogic.actionTypes.logout]: () => actions.invalidateSession(),
-            // PostHog AI can save while its conversation is closed or the person is on another tab, and then no tool
+            // Flind AI can save while its conversation is closed or the person is on another tab, and then no tool
             // event reaches this pane, so a pane that stays open reloads when the person comes back or moves on.
             [router.actionTypes.locationChanged]: () => actions.refreshSidebar(),
             refreshSidebar: () => {

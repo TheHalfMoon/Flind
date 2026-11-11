@@ -130,7 +130,7 @@ export type Session = BaseSession & {
   backgroundTurnActive?: boolean;
   backgroundSteers?: Map<string, PendingSteer>;
   backgroundSteerTimer?: ReturnType<typeof setTimeout>;
-  /** PostHog products used during this session, derived from MCP exec calls.
+  /** Flind products used during this session, derived from MCP exec calls.
    *  Accumulates for the whole session (deduped); each newly-seen product is
    *  emitted immediately so the client can show a persistent, de-duplicated
    *  list. Never reset between turns. */

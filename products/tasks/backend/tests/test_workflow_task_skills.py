@@ -55,7 +55,7 @@ class TestRenderSkillsManifest(SimpleTestCase):
     def test_the_agent_is_told_to_fetch_a_body_over_mcp(self) -> None:
         manifest = render_skills_manifest([_skill("error-triage", version=4)])
 
-        # Single-exec mode is the only shape the task sandbox's PostHog MCP accepts.
+        # Single-exec mode is the only shape the task sandbox's Flind MCP accepts.
         self.assertIn("call skill-get", manifest)
         self.assertIn("body_next_offset", manifest)
 

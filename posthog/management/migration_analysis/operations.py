@@ -453,7 +453,7 @@ class AddConstraintAnalyzer(OperationAnalyzer):
             score=3,
             reason="Adding constraint may lock table (use NOT VALID pattern)",
             details={"model": model_name},
-            guidance=f"""Add constraints in 2 phases without locking, using the PostHog helpers:
+            guidance=f"""Add constraints in 2 phases without locking, using the Flind helpers:
 1. AddConstraintNotValid (instant, validates new rows only, no table scan)
 2. ValidateConstraint in a separate migration (scans table with non-blocking lock)
 
@@ -941,7 +941,7 @@ Use RunSQL wrapped in SeparateDatabaseAndState:
 
 
 class _SafeConcurrentIndexAnalyzer(OperationAnalyzer):
-    """Base for the PostHog concurrent-index helpers.
+    """Base for the Flind concurrent-index helpers.
 
     All of them (the raw-SQL CreateIndexConcurrently / DropIndexConcurrently and
     the state-aware SafeAddIndexConcurrently / SafeRemoveIndexConcurrently /
@@ -954,7 +954,7 @@ class _SafeConcurrentIndexAnalyzer(OperationAnalyzer):
     """
 
     default_score = 1
-    safe_reason = "PostHog concurrent-index helper: idempotent (timeout disabling + invalid-leftover recovery)"
+    safe_reason = "Flind concurrent-index helper: idempotent (timeout disabling + invalid-leftover recovery)"
 
     @staticmethod
     def _index_name(op) -> str | None:

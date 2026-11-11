@@ -3,7 +3,7 @@
  *  eats, where it lives, how it moves, and the spines. The whimsical words that
  *  came before are kept below them.
  *  A new word earns its place by being funny on sight. If the joke needs trivia
- *  or a PostHog product noun to land, it is not a joke.
+ *  or a Flind product noun to land, it is not a joke.
  *  `products/posthog_ai/frontend/utils/thinkingMessages.ts` keeps the same list
  *  for Max in the web app, annotated — keep the two together. */
 export const THINKING_ACTIVITIES = [

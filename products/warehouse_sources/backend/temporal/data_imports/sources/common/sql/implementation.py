@@ -4,7 +4,7 @@
 It owns the *driver-shaped* parts of the source — connection lifecycle,
 `information_schema`-style metadata queries, per-cursor streaming
 metadata, and the dlt pipeline build — so that `SQLSource` (the
-PostHog-layer wrapper) stays a thin template over the driver.
+Flind-layer wrapper) stays a thin template over the driver.
 
 One implementation per driver, per-instance stateless: each public
 method takes the `config` it needs. `SQLSource.get_schemas` opens the

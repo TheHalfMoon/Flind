@@ -8,7 +8,7 @@ class TestParseCompanyDomain:
     @parameterized.expand(
         [
             ("bare", "posthog.com", "posthog.com"),
-            ("uppercase", "PostHog.COM", "posthog.com"),
+            ("uppercase", "Flind.COM", "posthog.com"),
             ("surrounding whitespace", "  posthog.com  ", "posthog.com"),
             ("email suffix", "@posthog.com", "posthog.com"),
             ("www prefix", "www.posthog.com", "posthog.com"),

@@ -94,7 +94,7 @@ STAMPHOG_GITHUB_APP_CLIENT_SECRET = get_from_env("STAMPHOG_GITHUB_APP_CLIENT_SEC
 # the App is provisioned, in which case the install-info endpoint returns a blank install URL.
 STAMPHOG_GITHUB_APP_SLUG = get_from_env("STAMPHOG_GITHUB_APP_SLUG", "")
 # Extra outbound domains the review sandbox may reach, on top of the built-in allowlist (GitHub,
-# PyPI, the LLM gateway host, the PostHog capture host). Comma-separated; an ops escape hatch for
+# PyPI, the LLM gateway host, the Flind capture host). Comma-separated; an ops escape hatch for
 # when a legitimate dependency host is missing — never a way to open the sandbox wide.
 STAMPHOG_SANDBOX_EXTRA_EGRESS_DOMAINS = get_list(get_from_env("STAMPHOG_SANDBOX_EXTRA_EGRESS_DOMAINS", ""))
 # The review engine's entrypoint, whose PEP 723 header lists the engine's pinned deps. A settings
@@ -109,7 +109,7 @@ STAMPHOG_REVIEW_ENGINE_SCRIPT = os.path.join(
 STAMPHOG_REVIEWER_TOKEN_ALLOWED_MODELS = get_list(get_from_env("STAMPHOG_REVIEWER_TOKEN_ALLOWED_MODELS", ""))
 # The in-product "Publish to community" flow runs as its own dedicated GitHub App, installed on the
 # PostHog/community-skills repo alone. It does not fall back to the core GITHUB_APP_* App above,
-# which is installed across the whole PostHog org: a dedicated App cannot reach another repository
+# which is installed across the whole Flind org: a dedicated App cannot reach another repository
 # whatever the publish path asks it for. One App serves every region, so the client id and the
 # installation id below hold the same value everywhere, and only the private key is per-region.
 COMMUNITY_SKILLS_GITHUB_APP_CLIENT_ID = get_from_env("COMMUNITY_SKILLS_GITHUB_APP_CLIENT_ID", "")
@@ -156,18 +156,18 @@ ATLASSIAN_APP_CLIENT_ID = get_from_env("ATLASSIAN_APP_CLIENT_ID", "")
 ATLASSIAN_APP_CLIENT_SECRET = get_from_env("ATLASSIAN_APP_CLIENT_SECRET", "")
 
 # Stripe requires a more complex OAuth setup: we authenticate with Stripe, then exchange tokens
-# with our internal OAuth system to allow the Stripe app to make API calls to users' PostHog instances.
+# with our internal OAuth system to allow the Stripe app to make API calls to users' Flind instances.
 # We also support their agentic provisioning protocol which requires us to check even more stuff
 # - STRIPE_APP_CLIENT_ID: The app's public client ID, used in the OAuth authorize redirect URL
 # - STRIPE_APP_OVERRIDE_AUTHORIZE_URL: Optional override for testing (e.g., with a channel link URL)
 # - STRIPE_APP_SECRET_KEY: API secret key used for HTTP Basic auth during live token exchange/refresh
-# - STRIPE_POSTHOG_OAUTH_CLIENT_ID: Client ID of the PostHog OAuthApplication the provisioning
+# - STRIPE_POSTHOG_OAUTH_CLIENT_ID: Client ID of the Flind OAuthApplication the provisioning
 #   orchestrator authenticates as. Tokens on this application may mint deep-link login sessions.
-# - STRIPE_MARKETPLACE_OAUTH_CLIENT_ID: Client ID of a separate PostHog OAuthApplication for the
+# - STRIPE_MARKETPLACE_OAUTH_CLIENT_ID: Client ID of a separate Flind OAuthApplication for the
 #   marketplace app's own token. That token is written into the customer's Stripe Secret Store at
 #   account scope, so every member of their Stripe account can read it. It must not share an
 #   application with the orchestrator, because the provisioning namespace authorizes on application
-#   identity alone. Left unset, a new install gets no PostHog credential.
+#   identity alone. Left unset, a new install gets no Flind credential.
 # - STRIPE_SIGNING_SECRET: Used to verify the authenticity of incoming webhook/agentic provisioning requests from Stripe
 STRIPE_APP_CLIENT_ID = get_from_env("STRIPE_APP_CLIENT_ID", "")
 STRIPE_APP_OVERRIDE_AUTHORIZE_URL = get_from_env("STRIPE_APP_OVERRIDE_AUTHORIZE_URL", "")
@@ -236,7 +236,7 @@ LIGHTHOUSE_BROWSERLESS_CONNECT_TIMEOUT_MS = get_from_env(
 # mirroring `HEATMAP_SCREENSHOT_MAX_BYTES`.
 LIGHTHOUSE_REPORT_MAX_BYTES = get_from_env("LIGHTHOUSE_REPORT_MAX_BYTES", 32 * 1024 * 1024, type_cast=int)
 
-# PostHog connect — lets a user connect (via the target's OAuth consent flow) to another PostHog
+# Flind connect — lets a user connect (via the target's OAuth consent flow) to another Flind
 # project to drive its APIs, e.g. dispatching a Task that must run in that project (including one in
 # another region, to reach region-resident data). The target may be in a different region OR the
 # same one as the connecting project — same-region is just "target region == your region". The

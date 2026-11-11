@@ -34,17 +34,17 @@ const buildMcpPrompt = ({
         ? `- DNS host detected from the nameservers: ${dnsHost.name}${supportsDomainConnect ? ' (supports Domain Connect)' : ''}`
         : '- DNS host: unknown. Ask me where the DNS for this domain is managed before you change anything.'
     return [
-        `Get the email sending domain ${domain} verified for PostHog Workflows.`,
+        `Get the email sending domain ${domain} verified for Flind Workflows.`,
         '',
         'Facts',
-        `- PostHog project id: ${projectId}`,
+        `- Flind project id: ${projectId}`,
         `- Email sender (integration) id: ${integrationId}. It already exists. Do not create it again with integrations-create; re-creating it marks it unverified.`,
         `- Domain: ${domain}`,
         `- MAIL FROM subdomain: ${mailFromSubdomain}.${domain}. It applies to every sender on this domain. Never pick a new one; changing it needs new DNS records and breaks the other senders until they are published.`,
         hostLine,
         '',
         'Steps',
-        `1. Read the current records and status with integrations-email-status-retrieve (project ${projectId}, integration ${integrationId}). If the PostHog MCP is not available, use the records listed below.`,
+        `1. Read the current records and status with integrations-email-status-retrieve (project ${projectId}, integration ${integrationId}). If the Flind MCP is not available, use the records listed below.`,
         `2. If the host supports Domain Connect, ask me to open ${pageUrl} and click the button that adds the records at the host. I approve the change there. Wait for me.`,
         '3. Otherwise add the records at the DNS host yourself. Paste names and values exactly. If the host appends the domain to the name field, enter only the part before the domain. Always publish both SPF TXT records, merging include:amazonses.com into an existing SPF record at the same name instead of adding a second one. Never add a second _dmarc record; keep an existing one.',
         '4. Poll integrations-email-status-retrieve every 30 seconds until the status is "verified". Stop after 30 minutes and tell me which records are still missing.',
@@ -60,7 +60,7 @@ const buildBrowserPrompt = ({ domain, dnsHost, records, pageUrl }: SetupPromptIn
         ? `The DNS for this domain is managed at ${dnsHost.name}. Open ${dnsHost.dns_settings_url} in the browser. I am already signed in.`
         : 'Ask me where the DNS for this domain is managed, then open that provider in the browser. I am already signed in.'
     return [
-        `Use the browser to add the DNS records below for ${domain}, then verify the domain in PostHog.`,
+        `Use the browser to add the DNS records below for ${domain}, then verify the domain in Flind.`,
         '',
         hostLine,
         '',

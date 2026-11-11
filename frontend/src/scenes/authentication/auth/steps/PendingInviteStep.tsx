@@ -21,7 +21,7 @@ export function PendingInviteStep(): JSX.Element {
                     <span>
                         <b className="text-primary">{org}</b> <span>invited</span>{' '}
                         <span className="AuthScene__mono">{signupEmail}</span>{' '}
-                        <span>to join them on PostHog. The invite link is in your inbox.</span>
+                        <span>to join them on Flind. The invite link is in your inbox.</span>
                     </span>
                 }
                 className="mb-5"

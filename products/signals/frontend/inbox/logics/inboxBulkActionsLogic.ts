@@ -221,7 +221,7 @@ export const inboxBulkActionsLogic = kea<inboxBulkActionsLogicType>([
         /** Broadcast that a write to these reports failed. A write that timed out or lost its response can still
          * have saved, so every mounted list and the open report reload from the server. */
         reportWriteFailed: (reportIds: string[]) => ({ reportIds }),
-        /** Broadcast that a report's suggested reviewers were saved, with the PostHog user uuids now on
+        /** Broadcast that a report's suggested reviewers were saved, with the Flind user uuids now on
          * it, so a list scoped to a reviewer who is no longer on the report drops the row in place. */
         reportReviewersChanged: (reportId: string, reviewerUuids: string[]) => ({ reportId, reviewerUuids }),
         /** Broadcast that a report was claimed or released elsewhere (the detail pane, a row menu), with the

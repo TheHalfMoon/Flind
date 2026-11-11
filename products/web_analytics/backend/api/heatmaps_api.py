@@ -1726,7 +1726,7 @@ class HeatmapPreflightResponseSerializer(serializers.Serializer):
     http_status = serializers.IntegerField(
         allow_null=True,
         help_text="HTTP status the page returned to us. A 4xx or 5xx here points at the customer's host or CDN "
-        "rather than at PostHog. Null when the page could not be reached at all.",
+        "rather than at Flind. Null when the page could not be reached at all.",
     )
     body_excerpt = serializers.CharField(
         allow_null=True,
@@ -2263,7 +2263,7 @@ class SavedHeatmapViewSet(
         "iframe, plus the HTTP status it returned. The live preview loads the customer's site directly in their "
         "browser, so a site that sends X-Frame-Options or a restrictive frame-ancestors will never render, and a "
         "4xx or 5xx from the site's own host or CDN leaves an empty frame with no explanation. This endpoint makes "
-        "both cases explainable. The fetch comes from PostHog's own network rather than from the screenshot "
+        "both cases explainable. The fetch comes from Flind's own network rather than from the screenshot "
         "renderer, so a host that varies its response by IP or user agent can answer this differently than it "
         "answers a screenshot render. Settled verdicts are cached briefly, so repeat checks for the same URL do "
         "not refetch it.",

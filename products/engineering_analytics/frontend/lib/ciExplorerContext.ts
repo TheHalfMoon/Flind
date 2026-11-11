@@ -112,7 +112,7 @@ export function deltaPercent(selection: CIContextSelection, context: CITimingCon
     return Math.round((selection.currentSeconds / context.average_seconds - 1) * 100)
 }
 
-/** Where a matched run can be read at its source. Depot CI has no public page for a run, so that one stays in PostHog. */
+/** Where a matched run can be read at its source. Depot CI has no public page for a run, so that one stays in Flind. */
 export function sampleUrl(
     repoOwner: string,
     repoName: string,

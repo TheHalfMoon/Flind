@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -55,7 +55,7 @@ export interface BatchImportPartsProgressApi {
 }
 
 /**
- * Compact cross-team diagnostics view of a batch import job for PostHog support staff.
+ * Compact cross-team diagnostics view of a batch import job for Flind support staff.
  *
  * Excludes the raw `state` / `import_config` blobs (see the detail serializer) and never
  * exposes the encrypted `secrets` column.
@@ -82,7 +82,7 @@ export interface BatchImportSupportListApi {
      */
     readonly status_message: string | null
     /**
-     * Customer-facing status message shown in the PostHog UI. Embedded URLs are redacted the same way as status_message.
+     * Customer-facing status message shown in the Flind UI. Embedded URLs are redacted the same way as status_message.
      * @nullable
      */
     readonly display_status_message: string | null
@@ -197,7 +197,7 @@ export interface BatchImportSupportDetailApi {
      */
     readonly status_message: string | null
     /**
-     * Customer-facing status message shown in the PostHog UI. Embedded URLs are redacted the same way as status_message.
+     * Customer-facing status message shown in the Flind UI. Embedded URLs are redacted the same way as status_message.
      * @nullable
      */
     readonly display_status_message: string | null
@@ -383,11 +383,11 @@ export interface TrialRecordsResponseApi {
  * Values a customer needs to configure cross-account IAM role access for S3 imports.
  */
 export interface BatchImportAWSIAMSetupApi {
-    /** Whether IAM role authentication is available on this PostHog deployment. */
+    /** Whether IAM role authentication is available on this Flind deployment. */
     available: boolean
     /** External ID to pin in the role trust policy's sts:ExternalId condition. Stable per project. */
     external_id: string
-    /** ARN of PostHog's import role -- the principal your role must trust. */
+    /** ARN of Flind's import role -- the principal your role must trust. */
     posthog_role_arn: string
     /** Ready-to-paste IAM trust policy JSON for the role in your AWS account. */
     trust_policy: string

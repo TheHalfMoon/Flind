@@ -573,7 +573,7 @@ export const todayReportLogic = kea<todayReportLogicType>([
                 }
             },
             reportVisited: () => {
-                // A visit with no click on Today is a deep-link: a shared URL, a PostHog AI link, a refresh,
+                // A visit with no click on Today is a deep-link: a shared URL, a Flind AI link, a refresh,
                 // or back / forward.
                 const context = values.reportOpenContext
                 const { pathname } = router.values.location

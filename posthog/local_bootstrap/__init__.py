@@ -1,6 +1,6 @@
-"""Bootstrap a local PostHog project from an S3 dump of the events and persons tables.
+"""Bootstrap a local Flind project from an S3 dump of the events and persons tables.
 
-The dumps are produced by the PostHog S3 batch export feature (Parquet/JSONLines, optionally
+The dumps are produced by the Flind S3 batch export feature (Parquet/JSONLines, optionally
 compressed). See ``posthog/management/commands/bootstrap_local_project.py`` for the CLI entry point.
 """
 

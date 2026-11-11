@@ -1,6 +1,6 @@
 # Fixing `person_properties_size_violation`
 
-A person-properties update was **rejected**: applying it would push the person's stored properties past PostHog's size limit (on the order of 1MB of JSON).
+A person-properties update was **rejected**: applying it would push the person's stored properties past Flind's size limit (on the order of 1MB of JSON).
 Category `size`, severity `error`: the event itself was ingested, but the `$set`/`$set_once` payload it carried was **not applied** — the person's profile is now silently stale.
 
 ## Three things that make this warning treacherous

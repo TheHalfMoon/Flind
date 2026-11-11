@@ -1,7 +1,7 @@
 # Toolbar telemetry events
 
-All events are sent via `toolbarPosthogJS`, the toolbar's internal PostHog instance,
-unless noted otherwise. Events go to PostHog's internal project (prod) or `localhost:8000` (dev).
+All events are sent via `toolbarPosthogJS`, the toolbar's internal Flind instance,
+unless noted otherwise. Events go to Flind's internal project (prod) or `localhost:8000` (dev).
 
 ## Lifecycle
 
@@ -12,8 +12,8 @@ Fired once when the toolbar finishes initialization.
 | Property                   | Type                                   | Description                                                                    |
 | -------------------------- | -------------------------------------- | ------------------------------------------------------------------------------ |
 | `is_authenticated`         | `boolean`                              | Whether the user had valid tokens at load time                                 |
-| `source`                   | `'url' \| 'localstorage' \| 'unknown'` | Whether the toolbar was launched from PostHog or auto-loaded from localStorage |
-| `ui_host`                  | `string`                               | Resolved PostHog UI host                                                       |
+| `source`                   | `'url' \| 'localstorage' \| 'unknown'` | Whether the toolbar was launched from Flind or auto-loaded from localStorage |
+| `ui_host`                  | `string`                               | Resolved Flind UI host                                                       |
 | `api_host`                 | `string`                               | Resolved API host                                                              |
 | `ui_host_explicit`         | `boolean`                              | Whether `uiHost` was explicitly provided in toolbar params                     |
 | `ui_host_matches_api_host` | `boolean`                              | Whether UI and API hosts are the same                                          |
@@ -23,7 +23,7 @@ Fired once when the toolbar finishes initialization.
 
 ### `toolbar ui host check`
 
-Fired after the CORS reachability check to the PostHog app.
+Fired after the CORS reachability check to the Flind app.
 
 | Property           | Type              | Description                                                          |
 | ------------------ | ----------------- | -------------------------------------------------------------------- |

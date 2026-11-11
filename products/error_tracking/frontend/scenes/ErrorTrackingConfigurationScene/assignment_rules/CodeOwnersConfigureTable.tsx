@@ -29,7 +29,7 @@ export function CodeOwnersConfigureTable(): JSX.Element {
                 <TableHeader>
                     <TableRow>
                         <TableHead className="px-0">Owner</TableHead>
-                        <TableHead className="px-0 text-right">PostHog role / user</TableHead>
+                        <TableHead className="px-0 text-right">Flind role / user</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -103,7 +103,7 @@ export function CodeOwnersImpactTable(): JSX.Element {
         <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead className="px-0 text-left">PostHog role / user</TableHead>
+                    <TableHead className="px-0 text-left">Flind role / user</TableHead>
                     <TableHead className="px-0 text-left">Exceptions</TableHead>
                     <TableHead className="px-0 text-left">Issues</TableHead>
                 </TableRow>

@@ -18,7 +18,7 @@ interface ExtensionEntityListProps {
     onSearch: (searchTerm: string) => void
     onSelect: (id: number) => void
     onCreate: () => void
-    /** The item the page just saved, with its page in PostHog. */
+    /** The item the page just saved, with its page in Flind. */
     saved: { name: string | null; url: string } | null
     viewAllUrl: string
     emptyText: string
@@ -52,7 +52,7 @@ export function ExtensionEntityList({
                 <LemonBanner
                     type="success"
                     action={{
-                        children: 'Open in PostHog',
+                        children: 'Open in Flind',
                         to: saved.url,
                         targetBlank: true,
                         'data-attr': dataAttrs.openSaved,

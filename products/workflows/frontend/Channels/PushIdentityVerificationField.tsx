@@ -38,7 +38,7 @@ export function PushIdentityVerificationField({ mode }: { mode: PushIdentityVeri
                 <LemonField
                     name="identityPublicKey"
                     label="Public key"
-                    info="Paste the EC (P-256) public key that pairs with your backend's signing key. Your backend signs each identity token (ES256) with the private key; PostHog verifies it with this public key, which never leaves your control."
+                    info="Paste the EC (P-256) public key that pairs with your backend's signing key. Your backend signs each identity token (ES256) with the private key; Flind verifies it with this public key, which never leaves your control."
                 >
                     <LemonTextArea
                         placeholder={'-----BEGIN PUBLIC KEY-----\n...\n-----END PUBLIC KEY-----'}

@@ -74,7 +74,7 @@ class MondaySource(SimpleSource[MondaySourceConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             keywords=["monday.com"],
             label="monday.com",
-            caption="""Enter your monday.com API token to pull your boards and items into the PostHog Data warehouse.
+            caption="""Enter your monday.com API token to pull your boards and items into the Flind Data warehouse.
 
 You can find your personal API token in monday.com under your avatar > Developers > My access tokens (admins can also use the account API token). Items are synced from every board the token can access.""",
             iconPath="/static/services/monday.png",

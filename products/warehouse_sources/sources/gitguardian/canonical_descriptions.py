@@ -229,7 +229,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "A public location where the secret of a secret incident was found leaked, such as a GitHub repository, issue, or gist.",
         "docs_url": "https://api.gitguardian.com/docs#tag/Secret-Incidents",
         "columns": {
-            "incident_id": "Identifier of the secret incident the leak belongs to. Added by PostHog from the parent incident.",
+            "incident_id": "Identifier of the secret incident the leak belongs to. Added by Flind from the parent incident.",
             "source": "Type of public source the secret leaked to (github, github_issue, github_gist, unknown).",
             "name": "Name of the public source (e.g. the repository name).",
             "url": "URL of the public location where the secret leaked.",
@@ -239,7 +239,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "A monitored source that belongs to a team's perimeter. Joins the sources table to the teams table.",
         "docs_url": "https://api.gitguardian.com/docs#tag/Team-Sources",
         "columns": {
-            "team_id": "Identifier of the team whose perimeter includes the source. Added by PostHog from the parent team.",
+            "team_id": "Identifier of the team whose perimeter includes the source. Added by Flind from the parent team.",
             "id": "Identifier of the source.",
             "url": "URL of the source on its provider.",
             "type": "Type of the source (e.g. github, gitlab, bitbucket).",

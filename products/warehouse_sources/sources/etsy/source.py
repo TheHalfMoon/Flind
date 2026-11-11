@@ -58,7 +58,7 @@ class EtsySource(ResumableSource[EtsySourceConfig, EtsyResumeConfig]):
             label="Etsy",
             releaseStatus=ReleaseStatus.GA,
             keywords=["etsy", "receipts", "orders", "marketplace"],
-            caption="""Sync your Etsy shop's orders, listings, reviews and payment ledger into the PostHog Data warehouse.
+            caption="""Sync your Etsy shop's orders, listings, reviews and payment ledger into the Flind Data warehouse.
 
 Register a personal app in the [Etsy developer portal](https://www.etsy.com/developers/your-apps) to get a keystring and its shared secret, then run Etsy's OAuth flow to grant your shop and keep the refresh token it returns. The token needs the `transactions_r`, `listings_r` and `shops_r` scopes — add `billing_r` if you want the payment ledger. Leave the shop ID blank and we'll use the shop the token belongs to.""",
             iconPath="/static/services/etsy.png",
@@ -120,7 +120,7 @@ Register a personal app in the [Etsy developer portal](https://www.etsy.com/deve
     def get_retryable_errors(self) -> set[str]:
         # EtsyClient reads over the tracked session, whose `DEFAULT_RETRY` adapter already retries
         # a 429 or 5xx three times. A response that still reaches us here is an exhausted upstream
-        # blip — transient, not a PostHog bug — and Temporal retries the whole activity, so the
+        # blip — transient, not a Flind bug — and Temporal retries the whole activity, so the
         # sync self-recovers. `raise_for_status` derives these prefixes from the status code alone,
         # not the vendor's reason text, so they're stable to match on (see mailchimp/impact sources
         # for the same pattern). The token exchange is a POST, which the adapter does not retry, so

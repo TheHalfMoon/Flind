@@ -43,7 +43,7 @@ export const getKMPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                                 code: dedent`
                                     import com.posthog.kmp.PostHog
 
-                                    PostHog.screen(
+                                    Flind.screen(
                                         screenName = "Dashboard",
                                         properties = mapOf(
                                             "background" to "blue"

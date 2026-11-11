@@ -36,7 +36,7 @@ export interface TopicBadgesProps {
 // pinned: the `capability-*` data-attr values below predate the topic naming and are frozen;
 // autocapture dashboards depend on them, so the rename stops at code symbols.
 
-/** Row of PostHog AI topic badges (+ the Desktop beta badge). Selection is owned by the parent. */
+/** Row of Flind AI topic badges (+ the Desktop beta badge). Selection is owned by the parent. */
 export function TopicBadges({ topics, selectedKey, onSelect, className }: TopicBadgesProps): JSX.Element | null {
     const codeBadge = useCodeBadge()
 

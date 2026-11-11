@@ -239,7 +239,7 @@ describe('humanizeActivity', () => {
             isSystem: true,
             jobType: 'scheduled_event_definition_deletion',
             action: 'Deleted the event definition after its ingestion was stopped',
-            description: 'PostHog deleted event definition spam_event after its ingestion was stopped',
+            description: 'Flind deleted event definition spam_event after its ingestion was stopped',
         },
         {
             activity: 'deleted',

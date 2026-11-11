@@ -28,7 +28,7 @@ describe('<SDKSetupInstructions />', () => {
         fireEvent.click(screen.getByText('Python'))
 
         expect(screen.getByText('Install the package')).toBeInTheDocument()
-        expect(screen.getByText('Initialize PostHog')).toBeInTheDocument()
+        expect(screen.getByText('Initialize Flind')).toBeInTheDocument()
         expect(screen.getByText(new RegExp(MOCK_DEFAULT_TEAM.api_token))).toBeInTheDocument()
     })
 })

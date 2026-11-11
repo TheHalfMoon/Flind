@@ -263,7 +263,7 @@ describe('NotebookSQLEditor', () => {
 
     it('keeps the selected connection while the code cell is edited', async () => {
         // The bug: every keystroke rebuilt the source query from scratch, dropping the connection
-        // the user had picked — so the selector snapped back to PostHog mid-typing.
+        // the user had picked — so the selector snapped back to Flind mid-typing.
         initKeaTests()
         const tabId = 'notebook-sql-connection-keystroke'
         const logic = stubSqlEditorLogic({ tabId })

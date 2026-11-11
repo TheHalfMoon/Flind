@@ -163,7 +163,7 @@ from posthog.models.signals import model_activity_signal
 experiment_changed = sys.modules["products.experiments.backend.facade.change_signals"].experiment_changed
 
 _SIGNALS = ["pre_save", "post_save", "pre_delete", "post_delete", "m2m_changed", "pre_init", "post_init"]
-# model_activity_signal is PostHog's custom audit-log signal, not a django.db.models one. Its
+# model_activity_signal is Flind's custom audit-log signal, not a django.db.models one. Its
 # `handle_*_change` receivers live in viewset modules, so they are exactly the kind that the eager
 # router used to wire as a side effect — include it or this whole class of regression is invisible.
 # Auth signals are included for parity with the setup-receivers baseline: an auth receiver wired

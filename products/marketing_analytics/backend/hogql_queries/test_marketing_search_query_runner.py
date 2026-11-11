@@ -998,7 +998,7 @@ class TestMarketingSearchConversionBudget(BaseTest):
         assert result.posthogConversionsWarning is not None
         assert "'All Events' cannot be used" in result.posthogConversionsWarning
         assert "'Deleted action' skipped: its action no longer exists" in result.posthogConversionsWarning
-        assert ("first 5 supported PostHog goals" in result.posthogConversionsWarning) == (goal_count > expected_count)
+        assert ("first 5 supported Flind goals" in result.posthogConversionsWarning) == (goal_count > expected_count)
 
 
 @pytest.mark.ee

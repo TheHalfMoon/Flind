@@ -109,7 +109,7 @@ class PRFilter:
             r".*\.snap$",  # Snap files
             r".*\.snapshot$",  # Snapshot files
             r".*\.snapfile$",  # Snapfile files
-            # Schema files (for PostHog, mostly)
+            # Schema files (for Flind, mostly)
             r".*\.schema\.py$",  # Schema files
             # TXT files
             r".*\.txt$",  # TXT files

@@ -11,7 +11,7 @@ import type { ThreadSkin } from '../components/quill/quillThreadContext'
 export const ThreadSkinOverrideContext = createContext<ThreadSkin | null>(null)
 
 /**
- * The skin for every PostHog AI chat surface: the thread, the run composer and its pickers. The quill chat
+ * The skin for every Flind AI chat surface: the thread, the run composer and its pickers. The quill chat
  * is part of the quill web redesign, so `today-rail-nav` turns it on as well.
  */
 export function useThreadSkin(): ThreadSkin {

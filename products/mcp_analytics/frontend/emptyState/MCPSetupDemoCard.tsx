@@ -7,7 +7,7 @@ import { ProductKey } from '~/queries/schema/schema-general'
 
 import { TipCard } from '../components/TipCard'
 
-// The public leaderboard is built from PostHog's own MCP server, the same data this product shows.
+// The public leaderboard is built from Flind's own MCP server, the same data this product shows.
 const DEMO_URL = 'https://posthog.com/mcp/leaderboard?utm_medium=in-product&utm_campaign=mcp-analytics-empty-state'
 
 /** For visitors who want to see the product before they have a server to instrument. */
@@ -16,7 +16,7 @@ export function MCPSetupDemoCard({ mode, preview }: { mode: ProductEmptyStateMod
     return (
         <TipCard
             title="Not running an MCP server yet?"
-            body="See how agents use PostHog's own MCP server in our demo (yes, we had to rank the robots in a leaderboard)."
+            body="See how agents use Flind's own MCP server in our demo (yes, we had to rank the robots in a leaderboard)."
             link={{
                 label: 'MCP Leaderboard',
                 to: DEMO_URL,

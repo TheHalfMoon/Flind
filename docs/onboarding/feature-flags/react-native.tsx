@@ -18,7 +18,7 @@ export const getReactNativeSteps = (ctx: OnboardingComponentsContext): StepDefin
                 <>
                     <Markdown>
                         {dedent`
-                            PostHog provides hooks to make it easy to use feature flags in your React Native app. Use \`useFeatureFlagEnabled\` for boolean flags:
+                            Flind provides hooks to make it easy to use feature flags in your React Native app. Use \`useFeatureFlagEnabled\` for boolean flags:
                         `}
                     </Markdown>
                     <CodeBlock
@@ -85,7 +85,7 @@ export const getReactNativeSteps = (ctx: OnboardingComponentsContext): StepDefin
             content: (
                 <Markdown>
                     {dedent`
-                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the PostHog dashboard.
+                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the Flind dashboard.
                     `}
                 </Markdown>
             ),

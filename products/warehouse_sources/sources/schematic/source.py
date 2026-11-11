@@ -57,7 +57,7 @@ class SchematicSource(ResumableSource[SchematicSourceConfig, SchematicResumeConf
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Schematic",
             keywords=["schematichq", "entitlements"],
-            caption="""Sync your Schematic companies, users, features, flags, plans, entitlements and billing catalog into the PostHog Data warehouse.
+            caption="""Sync your Schematic companies, users, features, flags, plans, entitlements and billing catalog into the Flind Data warehouse.
 
 Use a secret API key for the environment you want to sync, created under **Settings > API keys** in Schematic. Publishable keys can't list data.""",
             iconPath="/static/services/schematic.png",

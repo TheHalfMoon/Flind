@@ -107,7 +107,7 @@ function getConnectionEngine(
 export function getConnectionOptionLabel(source: ExternalDataSourceConnectionOptionApi): string {
     const engine = getConnectionEngine(source)
     if (isManagedWarehouseConnection(source)) {
-        return 'PostHog (Managed warehouse)'
+        return 'Flind (Managed warehouse)'
     }
     const isSynced = source.access_method === 'warehouse'
     // Prefer the user-set description, then the prefix; fall back to the source type name (never the raw UUID).
@@ -352,7 +352,7 @@ export const connectionSelectorLogic = kea<connectionSelectorLogicType>([
                         options: [
                             {
                                 value: POSTHOG_WAREHOUSE,
-                                label: 'PostHog (ClickHouse)',
+                                label: 'Flind (ClickHouse)',
                                 iconSrc: IconPostHog,
                             },
                             ...sourceOptions,

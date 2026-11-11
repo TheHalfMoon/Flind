@@ -26,7 +26,7 @@ export function MissingReleaseIdBanner({ eventId, runtime }: MissingReleaseIdBan
                 }}
                 className="m-2"
             >
-                This exception has no release attached. Please update your PostHog SDK to the latest version.
+                This exception has no release attached. Please update your Flind SDK to the latest version.
             </LemonBanner>
             <MissingReleaseIdModal eventId={eventId} runtime={runtime} />
         </>

@@ -27,7 +27,7 @@ class ThreadedWorker(Worker):
     def run_in_thread(self, *, startup_timeout: float = 30.0, shutdown_timeout: float = 60.0):
         """Run a Temporal Worker in a thread.
 
-        Don't use this outside of tests. Once PostHog is fully async we can get rid of this.
+        Don't use this outside of tests. Once Flind is fully async we can get rid of this.
         """
         loop = asyncio.new_event_loop()
         startup_error: list[Exception] = []

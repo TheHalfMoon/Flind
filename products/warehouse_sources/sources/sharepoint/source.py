@@ -87,10 +87,10 @@ class SharePointSource(ResumableSource[SharePointSourceConfig, SharePointResumeC
             INVALID_SITE_URL_ERROR: None,
             FILE_NOT_FOUND_ERROR: "The SharePoint file is missing. Refresh the source's tables or restore the file.",
             FORMAT_ERROR: (
-                "PostHog could not read the file format. Use a CSV, TSV, or XLSX file and refresh the source's tables."
+                "Flind could not read the file format. Use a CSV, TSV, or XLSX file and refresh the source's tables."
             ),
             EXCEL_ERROR: (
-                "PostHog could not read the Excel worksheet. Check that the worksheet exists and the file is under 100 MB. "
+                "Flind could not read the Excel worksheet. Check that the worksheet exists and the file is under 100 MB. "
                 "Save it as .xlsx again, then refresh the source's tables."
             ),
             PATTERN_ERROR: "The file pattern is not a valid regular expression. Fix the pattern and try again.",

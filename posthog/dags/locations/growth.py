@@ -33,7 +33,7 @@ schedules = [
     ai_enrichment.ai_enrichment_schedule,
     sdk_versions_rollup.sdk_versions_daily_rollup.schedule,
 ]
-# Identity matching processes internal PostHog data that only exists on Cloud US (team 2),
+# Identity matching processes internal Flind data that only exists on Cloud US (team 2),
 # so the job is not registered on Cloud EU.
 if identity_matching.is_identity_matching_registered():
     jobs.append(identity_matching.identity_matching_job)

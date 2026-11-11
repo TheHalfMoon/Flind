@@ -155,34 +155,34 @@ BOT_DEFINITIONS: dict[str, BotDefinition] = {
         "NotebookLM", "ai_assistant", "AI Agent", "Google", documentation_url="https://notebooklm.google.com/"
     ),
     "Shap-User": BotDefinition("Shap", "ai_assistant", "AI Agent", "Shap"),
-    # PostHog Desktop clients (Electron desktop, React Native mobile, agent CLI, cloud agent server).
+    # Flind Desktop clients (Electron desktop, React Native mobile, agent CLI, cloud agent server).
     # Dots are escaped because keys are evaluated as re2 regex by the REGEXP_TREE dictionary.
     r"desktop\.hog\.dev": BotDefinition(
-        "PostHog Desktop",
+        "Flind Desktop",
         "ai_assistant",
         "AI Agent",
-        "PostHog",
+        "Flind",
         documentation_url="https://posthog.com/desktop",
     ),
     r"mobile\.hog\.dev": BotDefinition(
-        "PostHog Mobile",
+        "Flind Mobile",
         "ai_assistant",
         "AI Agent",
-        "PostHog",
+        "Flind",
         documentation_url="https://posthog.com/desktop",
     ),
     r"agent\.hog\.dev": BotDefinition(
-        "PostHog Desktop Agent",
+        "Flind Desktop Agent",
         "ai_assistant",
         "AI Agent",
-        "PostHog",
+        "Flind",
         documentation_url="https://posthog.com/desktop",
     ),
     r"cloud\.hog\.dev": BotDefinition(
-        "PostHog Desktop Cloud",
+        "Flind Desktop Cloud",
         "ai_assistant",
         "AI Agent",
-        "PostHog",
+        "Flind",
         documentation_url="https://posthog.com/desktop",
     ),
     # Agent desktop app embedded browsers (Electron leaks the app name into the UA).
@@ -768,8 +768,8 @@ BOT_DEFINITIONS: dict[str, BotDefinition] = {
         "WhichAPI", "ai_crawler", "AI Agent", "WhichAPI", documentation_url="https://whichapi.ai/bot"
     ),
     "Codex-YCB2B": BotDefinition("Codex public research", "ai_crawler", "AI Agent", "OpenAI"),
-    "PostHog-BusinessKnowledge": BotDefinition(
-        "PostHog BusinessKnowledge", "ai_crawler", "AI Agent", "PostHog", documentation_url="https://posthog.com"
+    "Flind-BusinessKnowledge": BotDefinition(
+        "Flind BusinessKnowledge", "ai_crawler", "AI Agent", "Flind", documentation_url="https://posthog.com"
     ),
     "LlmsTxtBot": BotDefinition(
         "LlmsTxtBot",
@@ -1146,10 +1146,10 @@ BOT_DEFINITIONS: dict[str, BotDefinition] = {
         "MrAnandPortfolio", "http_client", "Bot", "mranand.com", documentation_url="https://mranand.com"
     ),
     "PostHogImageFetcherBot": BotDefinition(
-        "PostHog Image Fetcher",
+        "Flind Image Fetcher",
         "http_client",
         "Bot",
-        "PostHog",
+        "Flind",
         documentation_url="https://posthog.com/docs/ai-research/image-fetcher-bot",
     ),
     "1nsight-logo-fetcher": BotDefinition(

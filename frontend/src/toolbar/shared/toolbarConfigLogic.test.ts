@@ -253,7 +253,7 @@ describe('toolbar toolbarConfigLogic', () => {
             expect(logic.values.isTrustedUiHost).toBe(expected)
         })
 
-        it('skips the confirm modal and authenticates directly for PostHog Cloud hosts', async () => {
+        it('skips the confirm modal and authenticates directly for Flind Cloud hosts', async () => {
             mockTokenExchangeSuccess()
             const logic = toolbarConfigLogic.build({ uiHost: 'https://us.posthog.com' } as any)
             logic.mount()
@@ -329,7 +329,7 @@ describe('toolbar toolbarConfigLogic', () => {
     })
 
     describe('reachability check gating', () => {
-        it('skips the HEAD check entirely for trusted PostHog Cloud hosts', () => {
+        it('skips the HEAD check entirely for trusted Flind Cloud hosts', () => {
             const logic = toolbarConfigLogic.build({ uiHost: 'https://us.posthog.com' } as any)
             logic.mount()
             expect(logic.values.authStatus).toBe('idle')
@@ -483,7 +483,7 @@ describe('toolbar toolbarConfigLogic', () => {
             })
         })
 
-        it('restores legacy tokens (no stored uiHost) on trusted PostHog Cloud hosts', () => {
+        it('restores legacy tokens (no stored uiHost) on trusted Flind Cloud hosts', () => {
             // Tokens stored before the uiHost binding was added
             localStorage.setItem(
                 OAUTH_LOCALSTORAGE_KEY,
@@ -1437,7 +1437,7 @@ describe('toolbar toolbarConfigLogic', () => {
         })
 
         it('preserves the URL path for reverse-proxy deployments', () => {
-            // Self-hosted customers routing PostHog through a reverse proxy at a
+            // Self-hosted customers routing Flind through a reverse proxy at a
             // sub-path like /ingest rely on apiHost keeping that prefix — it gets
             // concatenated with /static/toolbar.css and /i/v1/logs.
             const logic = toolbarConfigLogic.build({ apiURL: 'https://proxy.example.com/ingest/' } as any)

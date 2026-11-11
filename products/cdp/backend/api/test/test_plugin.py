@@ -654,7 +654,7 @@ class TestPluginAPI(APIBaseTest, QueryMatchingTest):
             self.assertEqual(response.status_code, 400)
             self.assertEqual(
                 cast(dict[str, str], response.json())["detail"],
-                f'Currently running PostHog version {FROZEN_POSTHOG_VERSION} does not match this plugin\'s semantic version requirement "{FROZEN_POSTHOG_VERSION.next_minor()}".',
+                f'Currently running Flind version {FROZEN_POSTHOG_VERSION} does not match this plugin\'s semantic version requirement "{FROZEN_POSTHOG_VERSION.next_minor()}".',
             )
 
     def test_create_plugin_version_range_gt_current(self, mock_get, mock_reload):
@@ -676,7 +676,7 @@ class TestPluginAPI(APIBaseTest, QueryMatchingTest):
             self.assertEqual(response.status_code, 400)
             self.assertEqual(
                 cast(dict[str, str], response.json())["detail"],
-                f'Currently running PostHog version {FROZEN_POSTHOG_VERSION} does not match this plugin\'s semantic version requirement ">= {FROZEN_POSTHOG_VERSION.next_major()}".',
+                f'Currently running Flind version {FROZEN_POSTHOG_VERSION} does not match this plugin\'s semantic version requirement ">= {FROZEN_POSTHOG_VERSION.next_major()}".',
             )
 
     def test_create_plugin_version_range_lt_current(self, mock_get, mock_reload):
@@ -688,7 +688,7 @@ class TestPluginAPI(APIBaseTest, QueryMatchingTest):
             self.assertEqual(response.status_code, 400)
             self.assertEqual(
                 cast(dict[str, str], response.json())["detail"],
-                f'Currently running PostHog version {FROZEN_POSTHOG_VERSION} does not match this plugin\'s semantic version requirement "< {FROZEN_POSTHOG_VERSION}".',
+                f'Currently running Flind version {FROZEN_POSTHOG_VERSION} does not match this plugin\'s semantic version requirement "< {FROZEN_POSTHOG_VERSION}".',
             )
 
     def test_create_plugin_version_range_lt_next_major(self, mock_get, mock_reload):
@@ -710,7 +710,7 @@ class TestPluginAPI(APIBaseTest, QueryMatchingTest):
             self.assertEqual(response.status_code, 400)
             self.assertEqual(
                 cast(dict[str, str], response.json())["detail"],
-                'Invalid PostHog semantic version requirement "< ..."!',
+                'Invalid Flind semantic version requirement "< ..."!',
             )
 
     def test_create_plugin_version_range_gt_next_major_ignore_on_cloud(self, mock_get, mock_reload):

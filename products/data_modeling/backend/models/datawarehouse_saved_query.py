@@ -107,7 +107,7 @@ def validate_saved_query_name(value: str) -> None:
 
     if value in table_names:
         raise ValidationError(
-            f"{value} is not a valid view name. View names cannot overlap with PostHog table names.",
+            f"{value} is not a valid view name. View names cannot overlap with Flind table names.",
             params={"value": value},
         )
 

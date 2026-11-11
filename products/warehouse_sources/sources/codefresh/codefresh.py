@@ -31,7 +31,7 @@ REQUEST_TIMEOUT_SECONDS = 10.0
 ACCOUNT_LOOKUP_FAILED = "Could not resolve the Codefresh account for this API key"
 
 ACCOUNT_LOOKUP_MESSAGE = (
-    "PostHog could not work out which Codefresh account this API key belongs to, so the users table "
+    "Flind could not work out which Codefresh account this API key belongs to, so the users table "
     "cannot sync. Give the key access to your teams, then try again."
 )
 

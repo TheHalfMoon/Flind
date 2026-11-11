@@ -119,7 +119,7 @@ export function ReviewerSearchList({
             return
         }
         const optimisticEntry: EnrichedReviewer = {
-            // The picker adds a PostHog member, whose GitHub login (if any) the server fills in.
+            // The picker adds a Flind member, whose GitHub login (if any) the server fills in.
             github_login: null,
             user_uuid: option.user_uuid,
             github_name: option.name || null,
@@ -138,7 +138,7 @@ export function ReviewerSearchList({
             report,
             actionType: 'add_suggested_reviewer',
             surface,
-            // The web option carries only the PostHog user uuid, never a GitHub login, so record it
+            // The web option carries only the Flind user uuid, never a GitHub login, so record it
             // under suggested_reviewer_uuid to match the shared cross-client event contract.
             extra: { suggested_reviewer_uuid: option.user_uuid },
         })

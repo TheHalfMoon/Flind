@@ -146,7 +146,7 @@ def test_parses_panels_into_queries_displays_and_a_grid_without_overlaps() -> No
         Threshold(color="success", value=-0.95),
         Threshold(color="danger", value=0.05),
     ]
-    assert panels["p4"].skip_reason == 'PostHog has no "news" panel.'
+    assert panels["p4"].skip_reason == 'Flind has no "news" panel.'
     assert panels["p6"].targets[0].language == "logql"
     assert panels["p7"].text == "Runbook: see the wiki"
     assert panels["p8"].targets[0].unresolved_variables == ["cluster"]

@@ -82,7 +82,7 @@ class MailchimpSource(ResumableSource[MailchimpSourceConfig, MailchimpResumeConf
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Mailchimp",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Mailchimp API key to automatically pull your Mailchimp data into the PostHog Data warehouse.
+            caption="""Enter your Mailchimp API key to automatically pull your Mailchimp data into the Flind Data warehouse.
 
 You can create an API key in your [Mailchimp account settings](https://us1.admin.mailchimp.com/account/api/).
 

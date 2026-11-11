@@ -1,6 +1,6 @@
 # Releasing Updates
 
-PostHog uses semantic versioning with git tags. Patch versions are automatically computed from commit counts.
+Flind uses semantic versioning with git tags. Patch versions are automatically computed from commit counts.
 
 The version in `apps/code/package.json` is set to `0.0.0-dev` - this is intentional. CI injects the real version at build time from git tags.
 
@@ -13,7 +13,7 @@ The version in `apps/code/package.json` is set to `0.0.0-dev` - this is intentio
 
 ## Auto-Update Mechanism
 
-PostHog uses [electron-updater](https://www.electron.build/auto-update) (the npm package, not the built-in Electron autoUpdater) with the generic provider. On startup the app checks for updates against the update feed at `https://desktop-releases.posthog.com/stable`, baked into `app-update.yml` inside the app bundle at package time.
+Flind uses [electron-updater](https://www.electron.build/auto-update) (the npm package, not the built-in Electron autoUpdater) with the generic provider. On startup the app checks for updates against the update feed at `https://desktop-releases.posthog.com/stable`, baked into `app-update.yml` inside the app bundle at package time.
 
 Release CI uploads the binaries and blockmaps to the feed from each platform job, then the finalize job uploads the channel files (`latest-mac.yml`, `latest.yml`) last. Updaters only see a release once the channel files change, so that upload is the publish step. The finalize job also injects the generated release notes into the channel files (the generic provider fetches nothing from GitHub, so `UpdateInfo.releaseNotes` comes from the manifest) and publishes `releases.json`, which powers the in-app release notes and What's New history. `releases.json` is built by prepending this release's generated notes to the previously published feed, so the S3 feed (not the GitHub releases API) is the source of truth for in-app notes.
 

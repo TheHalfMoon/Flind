@@ -765,7 +765,7 @@ def feature_flag_generated_insight_q() -> Q:
     """Match the generated insights on a feature flag usage dashboard.
 
     A name on its own is not provenance, because a person can type any of these. This query
-    therefore pairs each name with the description that PostHog generated beside it. That makes
+    therefore pairs each name with the description that Flind generated beside it. That makes
     this narrower than `delete_feature_flag_usage_insights._classifier_q`, which matches a name or a
     description so a cleanup sweep still reaches rows an older template version wrote.
     """

@@ -174,7 +174,7 @@ async def _run_full_review_pr_workflow(
 ) -> dict:
     # Runs the real ReviewPRWorkflow with activity stand-ins, recording what fanned out + published.
     # already_published / empty_diff drive the early-exit gates; acting_user_id None means the author
-    # isn't a PostHog user, so the workflow skips the review. review_inbox_prs is the inbox
+    # isn't a Flind user, so the workflow skips the review. review_inbox_prs is the inbox
     # trigger's opt-in; input_acting_user_id is the explicit
     # override on the workflow input (CLI / inbox). meta_pr_number is the publish destination fetch
     # resolved (None = branch target with no PR → store-only); fail_dedup forces a mid-run failure so

@@ -154,13 +154,13 @@ export const webmcpLogic = kea<webmcpLogicType>([
                 await modelContext.registerTool(
                     {
                         name: tool.name,
-                        title: 'PostHog',
+                        title: 'Flind',
                         description: tool.description,
                         inputSchema: tool.inputSchema,
                         annotations: {
                             // Event and person properties come from end users, so results can carry prompt injection.
                             untrustedContentHint: true,
-                            // One tool runs every PostHog command, including the ones that write.
+                            // One tool runs every Flind command, including the ones that write.
                             consequentialHint: true,
                         },
                         execute: async (input, options) => {

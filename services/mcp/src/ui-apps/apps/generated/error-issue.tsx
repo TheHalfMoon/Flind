@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function ErrorIssueApp(): JSX.Element {
     return (
-        <AppWrapper<ErrorIssueData> appName="PostHog Error Issue">
+        <AppWrapper<ErrorIssueData> appName="Flind Error Issue">
             {({ data }) => <ErrorIssueView issue={data!} />}
         </AppWrapper>
     )

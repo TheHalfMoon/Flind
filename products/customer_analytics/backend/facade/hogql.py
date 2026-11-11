@@ -1005,7 +1005,7 @@ account_relationship_definitions: PostgresTable = PostgresTable(
     access_scope="account",
     # Team-level definitions shared by every account, so a per-account grant never keys these rows.
     resource_level_access_only=True,
-    description="Customer analytics account relationship definitions: team-defined relationship types between PostHog users and accounts (CSM, Account executive, ...), one row per definition. Per-account assignments live in system.account_relationships and via the system.accounts.relationships lazy join.",
+    description="Customer analytics account relationship definitions: team-defined relationship types between Flind users and accounts (CSM, Account executive, ...), one row per definition. Per-account assignments live in system.account_relationships and via the system.accounts.relationships lazy join.",
     fields={
         "id": UUIDDatabaseField(name="id", description="Relationship definition UUID."),
         "team_id": IntegerDatabaseField(name="team_id"),
@@ -1022,7 +1022,7 @@ account_relationship_definitions: PostgresTable = PostgresTable(
             description="1 if only one user can hold this relationship per account at a time, 0 otherwise.",
         ),
         "created_by_id": IntegerDatabaseField(
-            name="created_by_id", nullable=True, description="PostHog user who created the definition."
+            name="created_by_id", nullable=True, description="Flind user who created the definition."
         ),
         "created_at": DateTimeDatabaseField(name="created_at", description="When the definition was created."),
         "updated_at": DateTimeDatabaseField(
@@ -1051,9 +1051,9 @@ account_relationships: PostgresTable = PostgresTable(
         "account_id": UUIDDatabaseField(
             name="account_id", description="Account the assignment belongs to; join to `system.accounts.id`."
         ),
-        "user_id": IntegerDatabaseField(name="user_id", nullable=True, description="Assigned PostHog user id."),
+        "user_id": IntegerDatabaseField(name="user_id", nullable=True, description="Assigned Flind user id."),
         "created_by_id": IntegerDatabaseField(
-            name="created_by_id", nullable=True, description="PostHog user who made the assignment."
+            name="created_by_id", nullable=True, description="Flind user who made the assignment."
         ),
         "started_at": DateTimeDatabaseField(name="started_at", description="When the assignment became effective."),
         "ended_at": DateTimeDatabaseField(
@@ -1150,10 +1150,10 @@ feature_request_product_areas: PostgresTable = PostgresTable(
             description="1 if editors can select this area for new requests, 0 otherwise.",
         ),
         "created_by_id": IntegerDatabaseField(
-            name="created_by_id", nullable=True, description="PostHog user who created the product area."
+            name="created_by_id", nullable=True, description="Flind user who created the product area."
         ),
         "updated_by_id": IntegerDatabaseField(
-            name="updated_by_id", nullable=True, description="PostHog user who last updated the product area."
+            name="updated_by_id", nullable=True, description="Flind user who last updated the product area."
         ),
         "created_at": DateTimeDatabaseField(name="created_at", description="When the product area was created."),
         "updated_at": DateTimeDatabaseField(name="updated_at", description="When the product area was last updated."),
@@ -1209,16 +1209,16 @@ feature_requests: PostgresTable = PostgresTable(
             name="archived_at", nullable=True, description="When the request was archived. NULL while active."
         ),
         "archived_by_id": IntegerDatabaseField(
-            name="archived_by_id", nullable=True, description="PostHog user who archived the request."
+            name="archived_by_id", nullable=True, description="Flind user who archived the request."
         ),
         "version": IntegerDatabaseField(
             name="version", description="Version required for optimistic concurrency on mutations."
         ),
         "created_by_id": IntegerDatabaseField(
-            name="created_by_id", nullable=True, description="PostHog user who created the request."
+            name="created_by_id", nullable=True, description="Flind user who created the request."
         ),
         "updated_by_id": IntegerDatabaseField(
-            name="updated_by_id", nullable=True, description="PostHog user who last updated the request."
+            name="updated_by_id", nullable=True, description="Flind user who last updated the request."
         ),
         "created_at": DateTimeDatabaseField(name="created_at", description="When the request was created."),
         "updated_at": DateTimeDatabaseField(name="updated_at", description="When the request was last updated."),
@@ -1257,10 +1257,10 @@ feature_request_evidence: PostgresTable = PostgresTable(
             description="Uploaded image UUIDs attached to this evidence item, in display order.",
         ),
         "created_by_id": IntegerDatabaseField(
-            name="created_by_id", nullable=True, description="PostHog user who added the evidence."
+            name="created_by_id", nullable=True, description="Flind user who added the evidence."
         ),
         "updated_by_id": IntegerDatabaseField(
-            name="updated_by_id", nullable=True, description="PostHog user who last updated the evidence."
+            name="updated_by_id", nullable=True, description="Flind user who last updated the evidence."
         ),
         "created_at": DateTimeDatabaseField(name="created_at", description="When the evidence was added."),
         "updated_at": DateTimeDatabaseField(name="updated_at", description="When the evidence was last updated."),
@@ -1314,7 +1314,7 @@ feature_request_history: PostgresTable = PostgresTable(
         ),
         "source": StringDatabaseField(name="source", description="System that recorded the change."),
         "actor_id": IntegerDatabaseField(
-            name="actor_id", nullable=True, description="PostHog user who changed the request."
+            name="actor_id", nullable=True, description="Flind user who changed the request."
         ),
         "changed_at": DateTimeDatabaseField(name="changed_at", description="When the request changed."),
     },

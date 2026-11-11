@@ -1,4 +1,4 @@
-"""PostHog-specific hogli commands, loaded lazily by the hogli framework.
+"""Flind-specific hogli commands, loaded lazily by the hogli framework.
 
 Each command module is imported on first invoke via the ``click:`` import
 strings in ``hogli.yaml``. Boot-time registrations (prechecks, telemetry

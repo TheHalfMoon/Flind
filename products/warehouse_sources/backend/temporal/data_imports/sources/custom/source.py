@@ -361,7 +361,7 @@ def _validate_resource_graph(manifest: dict[str, Any]) -> dict[str, Optional[lis
     On top of the engine's rules, nesting is capped at one level: a parent must
     itself be top-level. The engine supports deeper chains, but each extra level
     multiplies the per-sync request volume by the parent's row count and every
-    ancestor full-scans on every run — and no shipped fan-out source (PostHog
+    ancestor full-scans on every run — and no shipped fan-out source (Flind
     built-ins, or any of Airbyte's declarative connectors) uses more than one
     level. Starting strict is deliberately cheap to relax later; loosening the
     cap is backwards-compatible, tightening it would break stored manifests.
@@ -656,7 +656,7 @@ def _format_validation_errors(exc: ValidationError) -> str:
 def validate_manifest_urls(manifest: dict[str, Any], team_id: int) -> tuple[bool, str | None]:
     """Walk every URL field in the manifest and reject internal/private hosts.
 
-    Also enforces ``https://`` on PostHog Cloud. Self-hosted instances skip
+    Also enforces ``https://`` on Flind Cloud. Self-hosted instances skip
     the host check via :func:`_is_host_safe` (which is itself a no-op
     outside of cloud).
     """
@@ -730,7 +730,7 @@ def _check_url(url: str, team_id: int) -> tuple[bool, str | None]:
             )
         return False, "Enter a full URL that includes the host, for example https://api.example.com."
     if is_cloud() and urlparse(url).scheme != "https":
-        return False, "Enter a URL that starts with https://. PostHog Cloud does not connect over plain http."
+        return False, "Enter a URL that starts with https://. Flind Cloud does not connect over plain http."
     return _is_host_safe(hostname, team_id)
 
 
@@ -1044,7 +1044,7 @@ class CustomSource(SimpleSource[CustomSourceConfig]):
             caption=(
                 "Set up a source using custom configured mappings. "
                 "Define a REST API source by providing a manifest that follows the same shape "
-                "as PostHog's built-in REST sources — see the docs for the field reference."
+                "as Flind's built-in REST sources — see the docs for the field reference."
             ),
             iconPath="/static/posthog-icon.svg",
             docsUrl=None,
@@ -1141,13 +1141,13 @@ class CustomSource(SimpleSource[CustomSourceConfig]):
             # The upstream account's plan doesn't cover this endpoint. The plan only changes on the
             # customer's side, so every retry gets the same refusal.
             "402 Client Error": "Your API provider requires a paid plan for this data. Upgrade or reactivate your plan with them, or turn off syncing for this table, then re-enable the sync.",
-            # A network proxy rejected the request before it reached the upstream API. On PostHog
+            # A network proxy rejected the request before it reached the upstream API. On Flind
             # Cloud this is the egress proxy refusing a URL it isn't allowed to reach (a private or
             # internal address); it can also be an upstream proxy in front of the customer's API
             # demanding credentials. The manifest-driven request recurs identically on every retry,
             # so stop and point at the manifest URLs. The message omits the URL, which carries the
             # customer's hostname.
-            "407 Client Error": "A network proxy rejected the request before it reached the upstream API (HTTP 407). This usually means a URL in the manifest points at an address PostHog can't reach (for example a private or internal address), or the API sits behind a proxy that needs credentials. Check the URLs in the manifest, then try again.",
+            "407 Client Error": "A network proxy rejected the request before it reached the upstream API (HTTP 407). This usually means a URL in the manifest points at an address Flind can't reach (for example a private or internal address), or the API sits behind a proxy that needs credentials. Check the URLs in the manifest, then try again.",
             # A schema points to a resource the manifest no longer defines (renamed or removed
             # in an edit while the table's sync stayed scheduled). Permanent until the config is
             # fixed — match the stable suffix, not the variable resource name in the message.

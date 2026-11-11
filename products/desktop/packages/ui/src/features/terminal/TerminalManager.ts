@@ -21,7 +21,7 @@ function getParkingContainer(): HTMLElement {
   if (!parkingContainer) {
     parkingContainer = document.createElement("div");
     parkingContainer.id = "terminal-parking";
-    // Parked terminals keep live WebGL canvases; ph-no-capture stops PostHog
+    // Parked terminals keep live WebGL canvases; ph-no-capture stops Flind
     // session replay snapshotting every one of them at canvasFps forever.
     parkingContainer.className = "ph-no-capture";
     parkingContainer.style.position = "absolute";

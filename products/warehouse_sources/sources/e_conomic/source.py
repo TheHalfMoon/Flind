@@ -46,7 +46,7 @@ class EConomicSource(ResumableSource[EConomicSourceConfig, EConomicResumeConfig]
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="e-conomic",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Visma e-conomic API tokens to pull your accounting data into the PostHog Data warehouse.
+            caption="""Enter your Visma e-conomic API tokens to pull your accounting data into the Flind Data warehouse.
 
 e-conomic authenticates with two tokens sent as request headers:
 - **App secret token** — your app's secret, from the [e-conomic Developer portal](https://www.e-conomic.com/developer).

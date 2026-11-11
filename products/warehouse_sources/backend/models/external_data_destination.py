@@ -7,7 +7,7 @@ from posthog.models.utils import DeletedMetaFields, UpdatedMetaFields, UUIDTMode
 class ExternalDataDestination(TeamScopedRootMixin, UpdatedMetaFields, DeletedMetaFields, UUIDTModel):
     """Somewhere a warehouse source writes its synced rows.
 
-    The PostHog warehouse is one of these, not a special case: a schema's destination set
+    The Flind warehouse is one of these, not a special case: a schema's destination set
     decides where its rows land, and an empty set resolves to the team's warehouse row so
     sources configured before this feature keep their existing behavior.
 
@@ -16,7 +16,7 @@ class ExternalDataDestination(TeamScopedRootMixin, UpdatedMetaFields, DeletedMet
     """
 
     class Type(models.TextChoices):
-        POSTHOG_WAREHOUSE = "PostHogWarehouse", "PostHog warehouse"
+        POSTHOG_WAREHOUSE = "PostHogWarehouse", "Flind warehouse"
         # Values match `BatchExportDestination.Destination` so a destination type resolves to
         # the same writer vocabulary in both products. Spelled out rather than imported to
         # keep a model migration from depending on another product's enum.
@@ -31,7 +31,7 @@ class ExternalDataDestination(TeamScopedRootMixin, UpdatedMetaFields, DeletedMet
     class Status(models.TextChoices):
         HEALTHY = "healthy", "Healthy"
         FAILING = "failing", "Failing"
-        # PostHog turned off every link to this destination after repeated configuration errors.
+        # Flind turned off every link to this destination after repeated configuration errors.
         PAUSED = "paused", "Paused"
 
     # `db_constraint=False`: a real FK constraint to the hot `posthog_team` table would
@@ -52,7 +52,7 @@ class ExternalDataDestination(TeamScopedRootMixin, UpdatedMetaFields, DeletedMet
         null=True,
         blank=True,
         related_name="+",
-        help_text="Credentials for this destination. Null for the PostHog warehouse.",
+        help_text="Credentials for this destination. Null for the Flind warehouse.",
     )
     # `db_constraint=False`: `posthog_user` is a hot table, same reasoning as `team`.
     created_by = models.ForeignKey(
@@ -64,7 +64,7 @@ class ExternalDataDestination(TeamScopedRootMixin, UpdatedMetaFields, DeletedMet
         choices=Status,
         default=Status.HEALTHY,
         db_default=Status.HEALTHY,
-        help_text="Whether the last delivery to this destination worked, failed, or PostHog paused it.",
+        help_text="Whether the last delivery to this destination worked, failed, or Flind paused it.",
     )
     latest_error = models.TextField(
         null=True,
@@ -75,7 +75,7 @@ class ExternalDataDestination(TeamScopedRootMixin, UpdatedMetaFields, DeletedMet
     consecutive_configuration_failures = models.IntegerField(
         default=0,
         db_default=0,
-        help_text="Configuration errors since the last successful delivery. At the threshold, PostHog pauses the destination.",
+        help_text="Configuration errors since the last successful delivery. At the threshold, Flind pauses the destination.",
     )
 
     __repr__ = sane_repr("id", "team_id", "type", "name", "status")
@@ -149,11 +149,11 @@ class ExternalDataSchemaDestination(TeamScopedRootMixin, UpdatedMetaFields, UUID
         ]
 
 
-DEFAULT_WAREHOUSE_DESTINATION_NAME = "PostHog warehouse"
+DEFAULT_WAREHOUSE_DESTINATION_NAME = "Flind warehouse"
 
 
 def get_or_create_warehouse_destination(team_id: int) -> ExternalDataDestination:
-    """Return the team's PostHog warehouse destination, creating it on first use.
+    """Return the team's Flind warehouse destination, creating it on first use.
 
     Rows are created lazily rather than backfilled: a team that never opts into extra
     destinations never needs one, and `resolve_destinations` only reaches here when a
@@ -176,7 +176,7 @@ def resolve_destinations(schema: "ExternalDataSchema") -> list[ExternalDataDesti
     `ExternalDataSchema.api_version` uses against the source pin.
 
     No links at either level means the source predates destinations, which must keep
-    syncing to the PostHog warehouse exactly as it did before.
+    syncing to the Flind warehouse exactly as it did before.
 
     Queried through `for_team` rather than `schema.destination_links`: the related manager
     is the fail-closed one, so traversing it raises `TeamScopeError` in the Temporal

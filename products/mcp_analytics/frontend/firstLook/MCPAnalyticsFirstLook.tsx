@@ -80,7 +80,7 @@ export function MCPAnalyticsFirstLook(): JSX.Element | null {
                 )}
                 <div className="flex flex-wrap items-center gap-2">
                     <LemonButton type="primary" icon={<IconSparkles />} onClick={dismissAndAskMax}>
-                        Ask PostHog AI
+                        Ask Flind AI
                     </LemonButton>
                     <LemonButton
                         type="tertiary"
@@ -95,7 +95,7 @@ export function MCPAnalyticsFirstLook(): JSX.Element | null {
                 {editorExpanded && (
                     <div className="flex flex-col gap-2 rounded border border-border bg-surface-primary p-3">
                         <p className="m-0 text-xs text-muted">
-                            {editorPrompt.label}, or any agent with the PostHog MCP installed:
+                            {editorPrompt.label}, or any agent with the Flind MCP installed:
                         </p>
                         <div className="flex items-start gap-2 rounded bg-surface-secondary px-2.5 py-1.5">
                             <span className="flex-1 font-mono text-xs text-primary">{editorPrompt.prompt}</span>
@@ -106,7 +106,7 @@ export function MCPAnalyticsFirstLook(): JSX.Element | null {
                             />
                         </div>
                         <p className="m-0 text-xs text-muted">
-                            Needs the PostHog MCP in your editor.{' '}
+                            Needs the Flind MCP in your editor.{' '}
                             <Link to="https://posthog.com/docs/model-context-protocol" target="_blank">
                                 Set it up
                             </Link>

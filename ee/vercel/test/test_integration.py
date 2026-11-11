@@ -170,7 +170,7 @@ class TestVercelIntegration(TestCase):
 
     def test_get_installation_billing_plan(self):
         result = VercelIntegration.get_installation_billing_plan(self.installation_id)
-        # Returns empty dict - billing handled through PostHog, not Vercel
+        # Returns empty dict - billing handled through Flind, not Vercel
         assert result == {}
 
     def test_update_installation_not_found(self):
@@ -423,7 +423,7 @@ class TestVercelIntegration(TestCase):
     def test_sso_requires_login_for_unverified_existing_email(self, mock_report):
         from ee.vercel.integration import RequiresExistingUserLogin
 
-        # Create an existing PostHog user (not through Vercel)
+        # Create an existing Flind user (not through Vercel)
         existing_user = User.objects.create_user(
             email="external@example.com", password="external", first_name="External"
         )
@@ -1265,7 +1265,7 @@ class TestVercelInstallationRegressions(TestCase):
         """
         Regression test for: https://github.com/PostHog/posthog/pull/46107
 
-        Bug: When an existing PostHog user (without any prior Vercel mappings) installed
+        Bug: When an existing Flind user (without any prior Vercel mappings) installed
         the Vercel integration, they were NOT added to the newly created organization.
         This caused the installation to fail from Vercel's perspective.
 
@@ -1276,7 +1276,7 @@ class TestVercelInstallationRegressions(TestCase):
         Security note: User mapping is still only created for trusted users (those with
         existing Vercel mappings). External users must prove ownership via SSO login.
         """
-        # Create a PostHog user who has never used Vercel before
+        # Create a Flind user who has never used Vercel before
         existing_user = User.objects.create_user(
             email=self.payload["account"]["contact"]["email"],
             password="existing_password",

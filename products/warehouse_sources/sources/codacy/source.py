@@ -52,7 +52,7 @@ class CodacySource(SimpleSource[CodacySourceConfig]):
             label="Codacy",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["code quality", "static analysis", "code coverage"],
-            caption="""Enter your Codacy account API token to automatically pull your Codacy code quality data into the PostHog Data warehouse.
+            caption="""Enter your Codacy account API token to automatically pull your Codacy code quality data into the Flind Data warehouse.
 
 You can generate an account API token in your [Codacy account settings](https://app.codacy.com/account/access-management). The token grants access to the organizations and repositories your Codacy account can see.
 """,

@@ -13,7 +13,7 @@ export const getClaudeCodeSteps = (ctx: OnboardingComponentsContext): StepDefini
                 <>
                     <Markdown>
                         {dedent`
-                            [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) is Anthropic's agentic coding tool that runs in your terminal. The [PostHog plugin](https://github.com/PostHog/ai-plugin) captures every Claude Code session as structured AI Observability events: generations, tool executions, and traces. You can install the full plugin, or a second plugin that only captures sessions.
+                            [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) is Anthropic's agentic coding tool that runs in your terminal. The [Flind plugin](https://github.com/PostHog/ai-plugin) captures every Claude Code session as structured AI Observability events: generations, tool executions, and traces. You can install the full plugin, or a second plugin that only captures sessions.
 
                             This is useful for:
 
@@ -25,18 +25,18 @@ export const getClaudeCodeSteps = (ctx: OnboardingComponentsContext): StepDefini
                             You need:
 
                             - [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) installed
-                            - A [PostHog account](https://app.posthog.com/signup) with a project token
+                            - A [Flind account](https://app.posthog.com/signup) with a project token
                         `}
                     </Markdown>
                 </>
             ),
         },
         {
-            title: 'Install the PostHog plugin',
+            title: 'Install the Flind plugin',
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog plugin for Claude Code:</Markdown>
+                    <Markdown>Install the Flind plugin for Claude Code:</Markdown>
                     <CodeBlock
                         language="bash"
                         code={dedent`
@@ -44,15 +44,15 @@ export const getClaudeCodeSteps = (ctx: OnboardingComponentsContext): StepDefini
                         `}
                     />
                     <Markdown>
-                        This adds a `SessionEnd` hook that parses your session logs and sends events to PostHog when
-                        each session finishes. The plugin also loads PostHog skills, slash commands, and the PostHog MCP
+                        This adds a `SessionEnd` hook that parses your session logs and sends events to Flind when
+                        each session finishes. The plugin also loads Flind skills, slash commands, and the Flind MCP
                         server into every session.
                     </Markdown>
                     <Markdown>
                         {dedent`
                             ### Install session capture on its own
 
-                            To capture sessions without the skills, slash commands, and MCP server, install PostHog session capture instead of the full plugin. It registers the \`SessionEnd\` hook and nothing else, so it adds nothing to what Claude reads at the start of each session.
+                            To capture sessions without the skills, slash commands, and MCP server, install Flind session capture instead of the full plugin. It registers the \`SessionEnd\` hook and nothing else, so it adds nothing to what Claude reads at the start of each session.
                         `}
                     </Markdown>
                     <CodeBlock
@@ -64,12 +64,12 @@ export const getClaudeCodeSteps = (ctx: OnboardingComponentsContext): StepDefini
                     />
                     <Markdown>
                         Both plugins send the same `$ai_generation`, `$ai_span`, and `$ai_trace` events, and they read
-                        the same environment variables. PostHog session capture needs the Python standard library only.
+                        the same environment variables. Flind session capture needs the Python standard library only.
                     </Markdown>
                     <Blockquote>
                         <Markdown>
                             **Note:** Install one or the other. Both register the same hook, so both upload every
-                            session. PostHog keeps one copy of each event, but the upload happens twice. To switch,
+                            session. Flind keeps one copy of each event, but the upload happens twice. To switch,
                             remove the one you no longer want with `claude plugin uninstall`.
                         </Markdown>
                     </Blockquote>
@@ -77,13 +77,13 @@ export const getClaudeCodeSteps = (ctx: OnboardingComponentsContext): StepDefini
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Set environment variables with your PostHog project token and enable the integration. You can
-                        find your project token in your [PostHog project
+                        Set environment variables with your Flind project token and enable the integration. You can
+                        find your project token in your [Flind project
                         settings](https://app.posthog.com/settings/project).
                     </Markdown>
                     <CodeBlock
@@ -114,7 +114,7 @@ export const getClaudeCodeSteps = (ctx: OnboardingComponentsContext): StepDefini
                             }
                         `}
                     />
-                    <Markdown>If you use PostHog EU, set the host as well:</Markdown>
+                    <Markdown>If you use Flind EU, set the host as well:</Markdown>
                     <CodeBlock
                         language="bash"
                         code={dedent`
@@ -137,7 +137,7 @@ export const getClaudeCodeSteps = (ctx: OnboardingComponentsContext): StepDefini
                         `}
                     />
                     <Markdown>
-                        When the session ends, the hook parses the session log file and sends events to PostHog. No
+                        When the session ends, the hook parses the session log file and sends events to Flind. No
                         changes to your workflow are needed.
                     </Markdown>
                     <Markdown>
@@ -164,10 +164,10 @@ export const getClaudeCodeSteps = (ctx: OnboardingComponentsContext): StepDefini
 
                             | Variable | Default | Description |
                             | --- | --- | --- |
-                            | \`POSTHOG_API_KEY\` | _(required)_ | Your PostHog project token |
+                            | \`POSTHOG_API_KEY\` | _(required)_ | Your Flind project token |
                             | \`POSTHOG_LLMA_CC_ENABLED\` | \`false\` | Set to \`true\` to enable the integration |
-                            | \`POSTHOG_HOST\` | \`https://us.i.posthog.com\` | PostHog ingestion host |
-                            | \`POSTHOG_LLMA_PRIVACY_MODE\` | \`false\` | When \`true\`, LLM input and output content is not sent to PostHog. Token counts, costs, latency, and model metadata are still captured. |
+                            | \`POSTHOG_HOST\` | \`https://us.i.posthog.com\` | Flind ingestion host |
+                            | \`POSTHOG_LLMA_PRIVACY_MODE\` | \`false\` | When \`true\`, LLM input and output content is not sent to Flind. Token counts, costs, latency, and model metadata are still captured. |
                             | \`POSTHOG_LLMA_DISTINCT_ID\` | git user email | Distinct ID for events. Falls back to \`claude-code:{session_id}\` if no git email is found. |
                             | \`POSTHOG_LLMA_TRACE_GROUPING\` | \`session\` | \`session\`: one trace per Claude Code session. \`message\`: one trace per user prompt. |
                             | \`POSTHOG_LLMA_MAX_ATTRIBUTE_LENGTH\` | \`12000\` | Maximum character length for serialized tool input and output attributes |
@@ -193,7 +193,7 @@ export const getClaudeCodeSteps = (ctx: OnboardingComponentsContext): StepDefini
                         `}
                     />
                     <Markdown>
-                        PostHog session capture ships no slash commands. To backfill with it, clone the repository and
+                        Flind session capture ships no slash commands. To backfill with it, clone the repository and
                         run the ingestion script. List the recent sessions first, then send one:
                     </Markdown>
                     <CodeBlock

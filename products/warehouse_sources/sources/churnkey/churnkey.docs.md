@@ -10,7 +10,7 @@ import SourceSetupIntro from "../\_snippets/source-setup-intro.mdx"
 import SyncModes from "../\_snippets/sync-modes.mdx"
 import TroubleshootingLink from "../\_snippets/dw-troubleshooting-link.mdx"
 
-[Churnkey](https://churnkey.co) is a churn-prevention and failed-payment-recovery platform for subscription businesses. This source syncs your Churnkey cancel-flow **sessions** into the PostHog Data warehouse, so you can analyze why customers cancel, which retention offers they accept, and how your cancel flow performs alongside the rest of your product data.
+[Churnkey](https://churnkey.co) is a churn-prevention and failed-payment-recovery platform for subscription businesses. This source syncs your Churnkey cancel-flow **sessions** into the Flind Data warehouse, so you can analyze why customers cancel, which retention offers they accept, and how your cancel flow performs alongside the rest of your product data.
 
 ## Prerequisites
 

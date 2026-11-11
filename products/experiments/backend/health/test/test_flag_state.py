@@ -472,7 +472,7 @@ class TestFlagState(TestCase):
                 "flag_not_called_since_the_end",
                 _context(ENDED, active=True, filters=MULTIVARIANT, flag_called_after_end=False),
                 "The experiment ended on October 14, 2026 at 10:30 AM CEST, and the linked feature flag is still "
-                "active with multiple variants. PostHog hasn't recorded a call of the flag since then. Reading only a "
+                "active with multiple variants. Flind hasn't recorded a call of the flag since then. Reading only a "
                 "payload or a list of all flags records no call, and neither does a call with send_event set to "
                 "false, so your code may still read the flag that way. If nothing reads the flag anymore, disable or "
                 "archive it to clean up.",
@@ -488,7 +488,7 @@ class TestFlagState(TestCase):
                     flag_last_called_at=datetime(2026, 10, 17, 18, 0, tzinfo=UTC),
                 ),
                 "The experiment ended on October 14, 2026 at 10:30 AM CEST, and the linked feature flag is still "
-                "active with multiple variants. PostHog last recorded a call of the flag on October 17, 2026 at 8:00 "
+                "active with multiple variants. Flind last recorded a call of the flag on October 17, 2026 at 8:00 "
                 "PM CEST, and none in the last 3 days. Reading only a payload or a list of all flags records no call, "
                 "and neither does a call with send_event set to false, so your code may still read the flag that way. "
                 "If nothing reads the flag anymore, disable or archive it to clean up.",
@@ -527,11 +527,11 @@ class TestFlagState(TestCase):
             (finding.severity, finding.title, finding.detail, dict(finding.evidence)),
             (
                 ExperimentHealthFindingSeverity.INFO,
-                "Variants are assigned outside PostHog",
-                "The linked feature flag has a 0% rollout, so PostHog assigns no variants. But 1,234 users got a "
-                "variant since October 12, 2026 at 4:04 PM CEST from flag calls that PostHog didn't evaluate, so your "
+                "Variants are assigned outside Flind",
+                "The linked feature flag has a 0% rollout, so Flind assigns no variants. But 1,234 users got a "
+                "variant since October 12, 2026 at 4:04 PM CEST from flag calls that Flind didn't evaluate, so your "
                 "own code assigns the variants, directly or through a bootstrap. These users count in the results. "
-                "The flag's release conditions and variant split don't decide who gets which variant. If PostHog "
+                "The flag's release conditions and variant split don't decide who gets which variant. If Flind "
                 "should assign the variants, increase the rollout and stop assigning them in your code.",
                 {"people_assigned_outside": 1234, "assigned_outside_since": "2026-10-12T14:04:00+00:00"},
             ),

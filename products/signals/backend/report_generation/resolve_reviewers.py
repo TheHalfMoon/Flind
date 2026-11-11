@@ -131,7 +131,7 @@ def enrich_reviewer_dicts_with_org_members(
     manual_adders: Sequence[User | None] | None = None,
     user_authored: bool = False,
 ) -> list[dict]:
-    """Enrich reviewer dicts (from artefact content) with fresh PostHog user info.
+    """Enrich reviewer dicts (from artefact content) with fresh Flind user info.
 
     Called at read time so that users who connect their GitHub account after the
     artefact was created show up properly.
@@ -465,7 +465,7 @@ class ReviewerPayloadIndex:
     """Reviewer payloads looked up by either identity, for merging a new list onto a stored one.
 
     A stored entry and the entry replacing it may not share an identity field: the stored one can
-    predate `user_uuid` and carry only a login, while the new one names a PostHog user whose GitHub
+    predate `user_uuid` and carry only a login, while the new one names a Flind user whose GitHub
     account is gone. Matching on the uuid first and the login second lets the two still recognize
     each other, so a reviewer keeps their commit evidence, display name, and reason across an edit.
     """
@@ -938,7 +938,7 @@ def resolve_org_users_by_uuid(team_id: int, user_uuids: Iterable[str]) -> dict[s
     """Map user UUID -> org member ``User`` for the team's organization, GitHub-linked or not.
 
     The uuid counterpart of ``resolve_org_github_login_to_users``: reviewer entries route to a
-    PostHog user, so this is what resolves one without asking whether they connected GitHub.
+    Flind user, so this is what resolves one without asking whether they connected GitHub.
     """
     wanted = {u for u in (_normalized_reviewer_user_uuid(raw) for raw in user_uuids) if u}
     if not wanted:
@@ -988,7 +988,7 @@ def search_org_member_users_by_uuid(team_id: int, *, query: str = "", limit: int
 
 
 def get_org_member_github_logins_by_user_uuid(team_id: int, user_uuids: list[str]) -> dict[str, str]:
-    """Build a mapping of PostHog user UUID string -> GitHub login for org members on the team."""
+    """Build a mapping of Flind user UUID string -> GitHub login for org members on the team."""
     if not user_uuids:
         return {}
 

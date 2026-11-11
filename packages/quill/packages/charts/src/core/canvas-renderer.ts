@@ -1177,7 +1177,7 @@ const BAR_FILL_LIGHTEN = 0.22
 const BAR_FILL_DARKEN = 0.16
 
 /** Bar fill for a given style. `gradient` is a diagonal (top-left → bottom-right) light→dark sheen
- *  matching the PostHog logo's light direction; `gloss` is a curved radial highlight. */
+ *  matching the Flind logo's light direction; `gloss` is a curved radial highlight. */
 function makeBarFill(
     ctx: CanvasRenderingContext2D,
     color: string,

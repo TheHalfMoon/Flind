@@ -36,7 +36,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "batch_id": "The ID of the batch, if the run was initialized via a batch of events.",
             "original_run_id": "The run ID of the original run, if this run is a replay.",
             "cron": "The cron expression that scheduled the run, if it was initialized via a cron trigger.",
-            "event_received_at": "When the triggering event was received by Inngest (added by PostHog to drive incremental sync).",
+            "event_received_at": "When the triggering event was received by Inngest (added by Flind to drive incremental sync).",
         },
     },
     "runs": {
@@ -60,7 +60,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.inngest.com/v2/functions/V2_GetFunctions",
         "columns": {
             "id": "The ID of the function.",
-            "app_id": "The ID of the app the function belongs to (added by PostHog from the parent app).",
+            "app_id": "The ID of the app the function belongs to (added by Flind from the parent app).",
             "app": "The app the function belongs to (`id`).",
             "name": "The function name.",
             "slug": "The function slug.",
@@ -139,7 +139,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.inngest.com/v2/sessions/V2_ListSessions",
         "columns": {
             "id": "The session ID, unique within its session key.",
-            "session_key": "The session key the session belongs to (added by PostHog from the parent key).",
+            "session_key": "The session key the session belongs to (added by Flind from the parent key).",
             "runCount": "Number of runs in the session.",
             "failedRunCount": "Number of failed runs in the session.",
             "failureRate": "Share of the session's runs that failed.",
@@ -152,8 +152,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://api-docs.inngest.com/v2/sessions/V2_ListSessionRuns",
         "columns": {
             "id": "The ID of the function run.",
-            "session_key": "The session key (added by PostHog from the parent session).",
-            "session_id": "The session ID (added by PostHog from the parent session).",
+            "session_key": "The session key (added by Flind from the parent session).",
+            "session_id": "The session ID (added by Flind from the parent session).",
             "function": "The function that ran (`id`, `name` and its `app`).",
             "eventName": "The name of the event that triggered the run.",
             "status": "The run status: QUEUED, RUNNING, COMPLETED, FAILED, or CANCELLED.",

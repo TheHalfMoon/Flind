@@ -11,10 +11,10 @@ description: >
 
 # Setting up a data warehouse source
 
-Use this skill when the user wants to connect an external data source to PostHog's data warehouse for the first time.
+Use this skill when the user wants to connect an external data source to Flind's data warehouse for the first time.
 
 Use `AmazonS3` for Amazon S3, `GoogleCloudStorage` for Google Cloud Storage, `AzureBlob` for Azure Blob, and
-`CloudflareR2` for Cloudflare R2. For a local file, direct the user to upload it in the PostHog app. That flow
+`CloudflareR2` for Cloudflare R2. For a local file, direct the user to upload it in the Flind app. That flow
 creates a `FileUpload` source. No MCP tool uploads files.
 
 Bucket sources use `full_refresh` by default.
@@ -29,7 +29,7 @@ hand-pick which tables sync or set non-default sync types per table.
 
 - The user wants to connect a new source: "connect Stripe", "import my Postgres orders table", "sync Hubspot contacts"
 - The user wants to import bucket files or upload a local file
-- The user isn't sure what source types PostHog supports
+- The user isn't sure what source types Flind supports
 - The user has credentials but doesn't know how to structure the `schemas` payload
 - The user wants guidance on which sync method to pick per table
 
@@ -48,12 +48,12 @@ hand-pick which tables sync or set non-default sync types per table.
 | `external-data-sources-update-webhook-inputs-create`   | Supply the signing secret manually when auto-registration failed                                                          |
 | `external-data-sources-list`                           | After creation, confirm the source is listed and see its initial status                                                   |
 | `external-data-schemas-list`                           | See per-table sync status once the source is created                                                                      |
-| `external-data-destinations-list`                      | See existing destinations, including the PostHog warehouse                                                                |
+| `external-data-destinations-list`                      | See existing destinations, including the Flind warehouse                                                                |
 | `external-data-destinations-connect-link`              | Secure browser link where the user enters a destination's credentials; returns nothing secret                             |
 | `external-data-destinations-connect-link-status`       | Poll with the link's `connect_token` to get the integration the user saved                                                |
 | `external-data-destinations-create`                    | Create a destination from the integration the connect page saved                                                          |
 | `external-data-destinations-add-sources`               | Attach existing sources to a destination                                                                                  |
-| `external-data-sources-destinations-update`            | Set a source's full destination list, for example to keep the PostHog warehouse before attaching                          |
+| `external-data-sources-destinations-update`            | Set a source's full destination list, for example to keep the Flind warehouse before attaching                          |
 | `external-data-destinations-test-connection`           | Diagnose a destination that is failing or paused (does not resume it)                                                     |
 
 ## Pre-flight: credential gotchas that cause most failures
@@ -61,9 +61,9 @@ hand-pick which tables sync or set non-default sync types per table.
 Surface these **before** collecting credentials — they're the top reasons setup fails on the first try. Validating
 against them up front avoids burning credential prompts on retries.
 
-- **The host must be reachable from PostHog's network.** `localhost`, `127.0.0.1`, and private/RFC-1918 hosts
-  (`10.x`, `192.168.x`, `172.16–31.x`) are rejected — PostHog runs the connection from its own infrastructure, not the
-  user's machine. Serverless/managed Postgres (Neon, Supabase, RDS behind strict rules) often also needs PostHog's
+- **The host must be reachable from Flind's network.** `localhost`, `127.0.0.1`, and private/RFC-1918 hosts
+  (`10.x`, `192.168.x`, `172.16–31.x`) are rejected — Flind runs the connection from its own infrastructure, not the
+  user's machine. Serverless/managed Postgres (Neon, Supabase, RDS behind strict rules) often also needs Flind's
   egress IPs allowlisted first. If the DB isn't publicly reachable, route to the browser deep-link
   (`data-warehouse-source-connect-link`) or an SSH tunnel rather than collecting credentials that can't validate.
 - **Supabase is Postgres — don't collect it twice.** Use the **Session pooler** connection, not the direct host (the
@@ -81,7 +81,7 @@ against them up front avoids burning credential prompts on retries.
   - **Mailchimp** — the key carries its datacenter suffix (`key-usX`).
   - For send-only services (Resend, Mailgun), the key already in the project env is often restricted; the warehouse
     import needs a full/read-access key.
-- **Never pass an unresolved secret reference.** If a credential field is still a `{"secretRef": ...}` object, PostHog
+- **Never pass an unresolved secret reference.** If a credential field is still a `{"secretRef": ...}` object, Flind
   can't resolve it — the create/db-schema/setup calls reject it with a clear error. Resolve it to the real value
   first, or collect credentials via `data-warehouse-source-connect-link` and pass the resulting `credential_id`.
 
@@ -167,7 +167,7 @@ For bucket files, use the canonical `source_type`: `AmazonS3`, `GoogleCloudStora
 For a local file, use the app's upload flow. It creates a `FileUpload` source after the user uploads the file.
 
 For OAuth-based sources (Hubspot, Salesforce, Google Ads), the wizard entry hints at an OAuth flow. These typically
-need the user to authorize in the PostHog UI rather than pasting credentials — explain this and direct them to the
+need the user to authorize in the Flind UI rather than pasting credentials — explain this and direct them to the
 source setup page rather than trying to collect tokens in chat. OAuth is about _authentication_, not about how data
 flows; OAuth sources still use polling bulk sync, not webhooks.
 
@@ -289,7 +289,7 @@ On success you'll get back a source with a new `id`. The first sync is triggered
 ### Step 6 — Register a webhook (only when any schema is `sync_type: "webhook"`)
 
 Webhook-type schemas don't start receiving data just by existing — the external service needs to know where to POST
-events, and PostHog needs to know how to verify them. This is a second call after source creation, not part of the
+events, and Flind needs to know how to verify them. This is a second call after source creation, not part of the
 `external-data-sources-create` payload. Do this **before** telling the user the setup is complete, otherwise they
 hear "syncs are running" while the push channel is still unregistered.
 
@@ -300,9 +300,9 @@ Before calling create-webhook, check `external-data-sources-webhook-info-retriev
 `exists: true`, do NOT call create-webhook again — each successful call registers a new external endpoint and would
 result in duplicate deliveries.
 
-1. Call `external-data-sources-create-webhook-create({id})`. PostHog:
+1. Call `external-data-sources-create-webhook-create({id})`. Flind:
    - creates the HogFunction that will receive webhook POSTs,
-   - builds a schema_mapping from external event types to PostHog schema ids,
+   - builds a schema_mapping from external event types to Flind schema ids,
    - calls the source's API (e.g. Stripe) to register the webhook URL and subscribe to the relevant events,
    - on Stripe, auto-captures the `signing_secret` and stores it securely.
 
@@ -355,23 +355,23 @@ Azure Blob storage. These tools exist only when the feature is on for the projec
    when its `status` is `healthy`. A `failing` or `paused` one needs fixing first (see the end of this section).
 2. Call `external-data-destinations-connect-link` with the `destination_type` (for S3-compatible storage such as R2 or
    MinIO, also pass `integration_kind: "s3-compatible"`). Share `connect_url`. The user must open it while logged in
-   to PostHog as the same user this session acts as. The page saves an integration.
+   to Flind as the same user this session acts as. The page saves an integration.
 3. Call `external-data-destinations-connect-link-status` with the returned `connect_token` every few seconds until
    `status` is `connected` or `expired`. When it is `connected`, confirm `display_name` with the user and use
-   `integration_id`. When it is `expired`, get a new link. If the user saved the connection as another PostHog user,
+   `integration_id`. When it is `expired`, get a new link. If the user saved the connection as another Flind user,
    the page shows the integration id instead: ask the user for it.
 4. Ask the user for the target (database and schema, dataset, bucket and prefix, and so on), then call
    `external-data-destinations-create` with `type`, `name`, `integration` and `config`. Creation tests the
    connection for every type except Redshift, and a 400 names the field to fix. A wrong Redshift target only shows up
    when the first sync fails. The target cannot change later, so confirm it before creating.
 5. Before you attach a source, check two things and tell the user what you find:
-   - Call `external-data-sources-destinations-retrieve`. When `destination_ids` holds only the PostHog warehouse
+   - Call `external-data-sources-destinations-retrieve`. When `destination_ids` holds only the Flind warehouse
      destination (`is_posthog_warehouse` in `external-data-destinations-list`), the source may write there by
-     default, and attaching would stop its PostHog tables updating. If the user wants to keep them, call
+     default, and attaching would stop its Flind tables updating. If the user wants to keep them, call
      `external-data-sources-destinations-update` with that same list before step 6: it makes the warehouse an
      explicit link. Skip that call while any destination in `external-data-destinations-list` is paused, because it
      would delete a hidden link to that destination. Tell the user instead. When `destination_ids` is empty, tell
-     the user the PostHog tables stop updating.
+     the user the Flind tables stop updating.
    - Tables with their own destination override keep it and ignore the new source link. Call
      `external-data-schemas-destinations-retrieve` for the source's tables. Those with `inherits_from_source: false`
      will not reach the new destination.
@@ -394,7 +394,7 @@ fixes the problem and saves it on the warehouse destinations page.
   — row counts and relevance matter for billing. Let the user opt in explicitly.
 - **Don't invent schemas.** Every entry in the `schemas` array must correspond to a real table from the db-schema
   response. You can't "also add an orders table" unless db-schema found one.
-- **A new source syncs to the PostHog warehouse.** That is the default and it needs no setup: a source nobody
+- **A new source syncs to the Flind warehouse.** That is the default and it needs no setup: a source nobody
   configured destinations for writes here and nowhere else. Some projects can also send a source's tables to their
   own database (`external-data-sources-destinations-retrieve` shows where a source writes, when the feature is on for
   the project). Setting that up is a separate step (see "Sending a source to the user's own warehouse") and never something to do as part of creating a source — adding a

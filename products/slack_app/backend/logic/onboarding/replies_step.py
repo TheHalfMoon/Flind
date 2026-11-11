@@ -32,7 +32,7 @@ class RepliesInThreadsStep(OnboardingStep):
         return [
             section_block(
                 "*Replies in threads you start*\n"
-                "When someone replies in a thread you started and doesn't tag @PostHog, what should PostHog do? "
+                "When someone replies in a thread you started and doesn't tag @PostHog, what should Flind do? "
                 "This applies to your own replies too."
             ),
             {"type": "actions", "elements": [*buttons, skip_button(ctx, self.key)]},

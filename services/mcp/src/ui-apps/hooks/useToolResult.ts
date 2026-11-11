@@ -6,7 +6,7 @@
  * - Receive tool result notifications
  * - Apply host styling
  * - Handle errors and loading states
- * - Track analytics events via PostHog
+ * - Track analytics events via Flind
  *
  * Usage:
  * ```tsx
@@ -173,7 +173,7 @@ function extractContainerDimensions(ctx: Record<string, unknown> | undefined | n
 }
 
 function log(...args: any[]): void {
-    console.debug('[PostHog MCP App]', ...args)
+    console.debug('[Flind MCP App]', ...args)
 }
 
 /**
@@ -195,9 +195,9 @@ export function useToolResult<T = unknown>({
     const [containerDimensions, setContainerDimensions] = useState<ContainerDimensions | null>(null)
     const hasLoggedConnection = useRef(false)
 
-    // Initialize PostHog on first render
+    // Initialize Flind on first render
     useEffect(() => {
-        log('Initializing PostHog', { appName, appVersion })
+        log('Initializing Flind', { appName, appVersion })
         initPostHog(appName, appVersion)
     }, [appName, appVersion])
 
@@ -271,12 +271,12 @@ export function useToolResult<T = unknown>({
                         setParseError(null)
                     } else {
                         const err = new Error(params.isError ? TOOL_ERROR_MESSAGE : PARSE_ERROR_MESSAGE)
-                        console.error('[PostHog MCP App UI] Parse error:', err)
+                        console.error('[Flind MCP App UI] Parse error:', err)
                         setParseError(err)
                     }
                 } catch (e) {
                     const err = e instanceof Error ? e : new Error(String(e))
-                    console.error('[PostHog MCP App UI] Exception:', err)
+                    console.error('[Flind MCP App UI] Exception:', err)
                     setParseError(err)
                 }
             }
@@ -289,7 +289,7 @@ export function useToolResult<T = unknown>({
     // Track connection state and errors
     useEffect(() => {
         if (connectionError && !hasLoggedConnection.current) {
-            console.error('[PostHog MCP App UI] Connection error:', connectionError)
+            console.error('[Flind MCP App UI] Connection error:', connectionError)
             captureAppConnectionError(connectionError)
             hasLoggedConnection.current = true
         }

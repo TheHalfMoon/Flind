@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -193,7 +193,7 @@ export const getGrowthEnrichmentRescoreCreateUrl = () => {
 }
 
 /**
- * Called by a PostHog realtime destination, not by API clients. Requires the X-PostHog-Webhook-Secret header to match the GROWTH_RESCORE_WEBHOOK_SECRET instance setting.
+ * Called by a Flind realtime destination, not by API clients. Requires the X-PostHog-Webhook-Secret header to match the GROWTH_RESCORE_WEBHOOK_SECRET instance setting.
  * @summary Re-score an organization's ICP fit after its wizard AI-SDK stamp lands.
  */
 export const growthEnrichmentRescoreCreate = async (
@@ -368,7 +368,7 @@ export const getSdkHealthReportRetrieveUrl = (projectId: string, params?: SdkHea
 }
 
 /**
- * Returns a pre-digested health assessment of the PostHog SDKs the project is using. Covers which SDKs are current vs outdated (smart-semver rules with grace periods and traffic-percentage thresholds), per-version breakdown, and a human-readable reason for each assessment. Use this to diagnose SDK version issues, surface upgrade recommendations, or check overall SDK health.
+ * Returns a pre-digested health assessment of the Flind SDKs the project is using. Covers which SDKs are current vs outdated (smart-semver rules with grace periods and traffic-percentage thresholds), per-version breakdown, and a human-readable reason for each assessment. Use this to diagnose SDK version issues, surface upgrade recommendations, or check overall SDK health.
  * @summary Get SDK health report for a project
  */
 export const sdkHealthReportRetrieve = async (

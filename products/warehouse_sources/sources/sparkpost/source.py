@@ -83,7 +83,7 @@ class SparkPostSource(
             releaseStatus=ReleaseStatus.BETA,
             # Kept hidden for now: the implementation follows the public SparkPost docs but its
             # end-to-end sync behaviour hasn't been exercised against a live account yet.
-            caption="""Connect your SparkPost account to sync message events, deliverability metrics, suppression lists, recipient lists, templates, sending domains, subaccounts, and webhooks into the PostHog Data warehouse.
+            caption="""Connect your SparkPost account to sync message events, deliverability metrics, suppression lists, recipient lists, templates, sending domains, subaccounts, and webhooks into the Flind Data warehouse.
 
 Create an API key in your [SparkPost account settings](https://app.sparkpost.com/account/api-keys) (or the EU console at app.eu.sparkpost.com). Grant the read permissions for the data you want to sync, for example:
 - `Events: Read-only`
@@ -122,7 +122,7 @@ SparkPost runs independent US and EU stacks that do not share data — pick the 
                 ],
             ),
             webhookSetupCaption=(
-                "PostHog registers an event webhook on your SparkPost account and subscribes it to the "
+                "Flind registers an event webhook on your SparkPost account and subscribes it to the "
                 "message events the Events API also returns, so pushed events land in the same table as "
                 "the backfill. The API key needs the `Webhooks: Read/Write` permission.\n\n"
                 "Because SparkPost only keeps message events for 10 days, the webhook is the only way to "
@@ -133,7 +133,7 @@ SparkPost runs independent US and EU stacks that do not share data — pick the 
                 "2. Subscribe it to the message events you want, for example `delivery`, `bounce`, `open` "
                 "and `click`\n"
                 "3. Set authentication to **Basic auth** and choose a username and password\n\n"
-                "Then paste the matching `Basic ...` header value into the field below so PostHog can "
+                "Then paste the matching `Basic ...` header value into the field below so Flind can "
                 "verify each delivery."
             ),
             webhookFields=cast(
@@ -146,7 +146,7 @@ SparkPost runs independent US and EU stacks that do not share data — pick the 
                         required=True,
                         placeholder="Basic dXNlcjpwYXNz",
                         caption=(
-                            "The exact value SparkPost sends in the Authorization header. PostHog fills "
+                            "The exact value SparkPost sends in the Authorization header. Flind fills "
                             "this in when it registers the webhook for you."
                         ),
                         secret=True,

@@ -200,7 +200,7 @@ export function SDKInstallNextJSInstructions({ hideWizard }: { hideWizard?: bool
                         <Link to="https://nextjs.org/docs/app" target="_blank">
                             app router
                         </Link>
-                        , you can integrate PostHog by creating a <code>providers</code> file in your <code>app</code>{' '}
+                        , you can integrate Flind by creating a <code>providers</code> file in your <code>app</code>{' '}
                         folder. This is because the <code>posthog-js</code> library needs to be initialized on the
                         client-side using the Next.js{' '}
                         <Link
@@ -226,7 +226,7 @@ export function SDKInstallNextJSInstructions({ hideWizard }: { hideWizard?: bool
                         <Link to="https://nextjs.org/docs/pages" target="_blank">
                             pages router
                         </Link>
-                        , you can integrate PostHog at the root of your app.
+                        , you can integrate Flind at the root of your app.
                     </p>
                     <NextPagesRouterPageViewSnippet />
                 </>

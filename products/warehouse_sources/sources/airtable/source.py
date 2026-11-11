@@ -58,7 +58,7 @@ class AirtableSource(SimpleSource[AirtableSourceConfig]):
             name=ExternalDataSourceType.AIRTABLE,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Airtable",
-            caption="""Enter your Airtable personal access token to pull your Airtable bases into the PostHog Data warehouse.
+            caption="""Enter your Airtable personal access token to pull your Airtable bases into the Flind Data warehouse.
 
 Create a personal access token at [airtable.com/create/tokens](https://airtable.com/create/tokens) with the `data.records:read` and `schema.bases:read` scopes, and grant it access to the bases you want to sync. Records are synced from every table of every base the token can access.""",
             iconPath="/static/services/airtable.png",

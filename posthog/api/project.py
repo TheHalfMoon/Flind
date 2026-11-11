@@ -647,7 +647,7 @@ class ProjectBackwardCompatSerializer(
     person_on_events_querying_enabled = serializers.BooleanField(read_only=True)  # Compat with TeamSerializer
     api_host = serializers.SerializerMethodField(  # Compat with TeamSerializer
         help_text=(
-            "Host the PostHog SDKs send events to, set as their `api_host` option. It is "
+            "Host the Flind SDKs send events to, set as their `api_host` option. It is "
             "`https://us.i.posthog.com` on US Cloud, `https://eu.i.posthog.com` on EU Cloud, "
             "and the instance URL when self-hosted."
         )
@@ -956,7 +956,7 @@ class ProjectBackwardCompatSerializer(
                     "Origins permitted to record session replays and heatmaps. Empty list allows all origins."
                 )
             },
-            "anonymize_ips": {"help_text": "When true, PostHog drops the IP address from every ingested event."},
+            "anonymize_ips": {"help_text": "When true, Flind drops the IP address from every ingested event."},
             "timezone": {
                 "help_text": "IANA timezone used for date-based filters and reporting (e.g. `America/Los_Angeles`)."
             },

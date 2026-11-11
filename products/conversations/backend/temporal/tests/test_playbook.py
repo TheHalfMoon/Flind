@@ -32,7 +32,7 @@ class TestComposeSupportPlaybook(SimpleTestCase):
         assert playbook.layers == (LAYER_DEFAULT,)
         assert DEFAULT_SUPPORT_REPLY_INSTRUCTIONS.strip() in playbook.inherited_text
         assert POSTHOG_SUPPORT_REPLY_INSTRUCTIONS.strip() not in playbook.inherited_text
-        assert "Do not assume the product is PostHog." in playbook.inherited_text
+        assert "Do not assume the product is Flind." in playbook.inherited_text
         assert "diagnosing-missing-recordings" not in playbook.inherited_text
         assert playbook.mcp_exclude_tools == (DOCS_SEARCH_TOOL_NAME,)
         assert playbook.posthog_overlay_version is None
@@ -77,7 +77,7 @@ class TestComposeSupportPlaybook(SimpleTestCase):
         prefixed = compose_support_playbook(custom_instructions=f"{inherited}\n\nAlways greet first.")
         assert prefixed.custom_text == "Always greet first."
         assert prefixed.layers[-1] == LAYER_CUSTOM
-        assert prefixed.text.count("Do not assume the product is PostHog.") == 1
+        assert prefixed.text.count("Do not assume the product is Flind.") == 1
 
     def test_strips_layer_tags_from_custom(self):
         playbook = compose_support_playbook(
@@ -184,7 +184,7 @@ class TestDraftPlaybookHelpers(SimpleTestCase):
     )
     def test_docs_search_advertised_only_in_posthog_mode(self, _name, docs_source, auto, data, expect_docs):
         block = tools_you_have_block(docs_source=docs_source, auto_publishable=auto, grants_customer_data=data)
-        advertised = "docs-search: searches the official PostHog" in block
+        advertised = "docs-search: searches the official Flind" in block
         assert advertised is expect_docs
         assert ("You do not have docs-search" in block) is (not expect_docs)
         assert "business-knowledge-documents-search" in block

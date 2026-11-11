@@ -35,9 +35,9 @@ def send_subscription_delivery_failure_email(subscription: Subscription, failure
 
     title = subscription.title or "your subscription"
     subject = (
-        f'PostHog subscription "{subscription.title}" could not be delivered'
+        f'Flind subscription "{subscription.title}" could not be delivered'
         if subscription.title
-        else "Your PostHog subscription could not be delivered"
+        else "Your Flind subscription could not be delivered"
     )
     message = EmailMessage(
         campaign_key=f"subscription-delivery-failed-notification-{failure_id or uuid.uuid4()}",
@@ -85,7 +85,7 @@ def create_subscription_delivery_failure_notification(
             priority=Priority.NORMAL,
             title=notification_title,
             body=(
-                f"PostHog could not deliver this subscription scheduled for {scheduled_at}. "
+                f"Flind could not deliver this subscription scheduled for {scheduled_at}. "
                 "We will try again at its next scheduled delivery."
             ),
             target_type=TargetType.USER,

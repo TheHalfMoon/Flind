@@ -1044,7 +1044,7 @@ def _tasks_gate(pipeline: AutoresearchPipeline) -> str | None:
     team_id = pipeline.team_id
     decision = get_desktop_access_decision(creator, organization)
     if not decision.allowed:
-        return f"PostHog Desktop access: {decision.value}"
+        return f"Flind Desktop access: {decision.value}"
     if task_run_usage_limited(creator, team_id):
         return "The Tasks usage limit is reached"
     return None

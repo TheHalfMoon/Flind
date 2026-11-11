@@ -1,5 +1,5 @@
 /**
- * PostHog Design System — Shadow Tokens
+ * Flind Design System — Shadow Tokens
  */
 
 import { cssVars } from './css'

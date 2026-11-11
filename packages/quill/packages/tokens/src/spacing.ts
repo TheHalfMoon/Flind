@@ -1,5 +1,5 @@
 /**
- * PostHog Design System — Spacing
+ * Flind Design System — Spacing
  *
  * Quill follows Tailwind v4's single-base spacing model: every spacing
  * utility (padding, margin, gap, inset, size) resolves to

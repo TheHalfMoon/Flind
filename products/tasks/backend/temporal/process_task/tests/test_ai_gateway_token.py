@@ -1620,7 +1620,7 @@ class TestWorkflowsMint:
         mint.assert_called_once()
 
     def test_team_out_of_ai_credits_fails_the_run_instead_of_degrading(self, mint_settings):
-        with pytest.raises(GatewayTokenUnavailableError, match="used its monthly PostHog AI credits"):
+        with pytest.raises(GatewayTokenUnavailableError, match="used its monthly Flind AI credits"):
             self._env(mint_settings, over_quota=True)
 
     def test_credit_lookup_failure_does_not_mint(self, mint_settings):
@@ -1764,7 +1764,7 @@ class TestPosthogCodeSandboxMint:
         organization = Organization.objects.create(name="Code Org")
         if paid:
             organization.available_product_features = [
-                {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "PostHog Desktop usage billing"}
+                {"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "Flind Desktop usage billing"}
             ]
             organization.save()
         return Team.objects.create(organization=organization, name="Code Team")
@@ -1892,7 +1892,7 @@ class TestPosthogCodeSandboxMint:
                 None,
                 "phe_abc",
                 GatewayTokenUnavailableError,
-                "isn't available for PostHog Code",
+                "isn't available for Flind Code",
                 "model_outside_pin",
             ),
             (

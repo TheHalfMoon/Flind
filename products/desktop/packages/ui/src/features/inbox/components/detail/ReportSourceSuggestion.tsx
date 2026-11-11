@@ -26,7 +26,7 @@ function suggestionEventProperties(report: SignalReport, product: string) {
 
 /**
  * A product the team doesn't use that would have given this report better
- * evidence, shown after the evidence with a link to the product in PostHog.
+ * evidence, shown after the evidence with a link to the product in Flind.
  */
 export function ReportSourceSuggestion({
   report,

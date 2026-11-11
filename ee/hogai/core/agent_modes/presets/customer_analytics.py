@@ -20,7 +20,7 @@ CUSTOMER_ANALYTICS_MODE_DESCRIPTION = (
     "executive, account owner), set external-system identifiers and tags, and save and update notes "
     "(call recaps, meeting summaries, investigation recaps) on an account. "
     "When the user asks about an account's usage, volume, spikes, growth, cost, or spend, they mean "
-    "the account's CONSUMPTION of PostHog as a product — events ingested, data-warehouse rows synced, "
+    "the account's CONSUMPTION of Flind as a product — events ingested, data-warehouse rows synced, "
     "recordings, feature-flag requests, exceptions, MRR, spend — which lives in warehouse-synced billing "
     "data, surfaced by the account's saved Usage and Spend insights (and the Usage/Spend tabs in the "
     "Accounts list). This is the DEFAULT for usage questions: look up the account, read the relevant "
@@ -81,7 +81,7 @@ Assistant: Let me check Acme Corp's consumption.
 """.strip()
 
 POSITIVE_EXAMPLE_ACCOUNT_USAGE_SPIKE_REASONING = """
-1. "Usage spike" is a consumption question — it's about how much of PostHog the account consumes (events ingested, rows synced), which lives in the warehouse billing data, not in the account's event stream (that would measure the account's people using the product).
+1. "Usage spike" is a consumption question — it's about how much of Flind the account consumes (events ingested, rows synced), which lives in the warehouse billing data, not in the account's event stream (that would measure the account's people using the product).
 2. Reading the saved Usage insight first gives the exact warehouse query to adapt, so the analysis stays consistent with the Usage tab instead of being rebuilt from scratch.
 3. The analysis itself runs in SQL mode after the switch, scoped to the account, comparing periods to locate the spike.
 """.strip()

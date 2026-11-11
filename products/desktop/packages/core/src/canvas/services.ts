@@ -115,9 +115,9 @@ export interface IDashboardsService {
     verb: string;
     payload: Record<string, unknown>;
   }): Promise<CanvasActionResult>;
-  // The PostHog MCP tools a canvas may declare.
+  // The Flind MCP tools a canvas may declare.
   listTools(): Promise<CanvasToolDefinition[]>;
-  // Run one declared PostHog MCP tool as the viewer.
+  // Run one declared Flind MCP tool as the viewer.
   invokeTool(input: {
     id: string;
     tool: string;

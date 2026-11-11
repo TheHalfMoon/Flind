@@ -193,7 +193,7 @@ describe("getLlmGatewayUrl", () => {
     expect(getLlmGatewayUrl(posthogHost)).toBe(expected);
   });
 
-  it("uses the PostHog AI product route when requested", () => {
+  it("uses the Flind AI product route when requested", () => {
     expect(getLlmGatewayUrl("http://localhost:8000", "posthog_ai")).toBe(
       "http://localhost:3308/posthog_ai",
     );

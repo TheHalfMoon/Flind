@@ -158,7 +158,7 @@ def render_skills_manifest(skills: list[AttachedSkill]) -> str:
     the agent calls. The prompt is rendered once at fire time and the call happens minutes later,
     so an unpinned fetch could mix two versions of one procedure into a single run.
 
-    The `call <tool> {json}` form is required because the task sandbox mounts the PostHog MCP in
+    The `call <tool> {json}` form is required because the task sandbox mounts the Flind MCP in
     single-exec mode. It matches the skill stubs the store already ships into task sandboxes.
     """
     if not skills:
@@ -169,7 +169,7 @@ def render_skills_manifest(skills: list[AttachedSkill]) -> str:
         "of instructions for a specific job, and the text after its name says when it applies.\n\n"
         f"{listing}\n\n"
         "When you reach work one of these covers, read it before you act on it, and not before. Run\n"
-        '`call skill-get {"skill_name": "<name>", "version": <version>}` with the PostHog MCP `exec` tool.\n'
+        '`call skill-get {"skill_name": "<name>", "version": <version>}` with the Flind MCP `exec` tool.\n'
         "Pass the version listed above, so a version published while this run is in flight cannot mix two\n"
         "versions into one procedure. If the response has a non-null `body_next_offset`, call `skill-get`\n"
         "again with the same version and `body_offset` set to that value, and append the returned `body`\n"

@@ -31,7 +31,7 @@ export function TaskPanelSkeleton(): JSX.Element {
     )
 }
 
-/** Skeleton for the title-bar action buttons (Open in PostHog Desktop / View PR / Run). */
+/** Skeleton for the title-bar action buttons (Open in Flind Desktop / View PR / Run). */
 export function TaskHeaderActionsSkeleton(): JSX.Element {
     const skin = useThreadSkin()
     if (skin === 'quill') {

@@ -45,9 +45,9 @@ def validate_experiment_warehouse_native_sources(
     user: Any,
     resolve_connection: bool = True,
 ) -> str | None:
-    """An experiment reads one kind of data: PostHog events, or the customer's warehouse through one
+    """An experiment reads one kind of data: Flind events, or the customer's warehouse through one
     connection. A warehouse-native exposure needs warehouse-native metrics, because nothing can join
-    warehouse ids to PostHog persons. Returns the connection id of the warehouse-native sources, if any.
+    warehouse ids to Flind persons. Returns the connection id of the warehouse-native sources, if any.
     A caller that checks several experiments on one connection resolves it once, with `resolve_connection`
     off."""
     exposure_config = warehouse_native_exposure_config(exposure_criteria)
@@ -61,7 +61,7 @@ def validate_experiment_warehouse_native_sources(
     if exposure_config is not None and len(native_nodes) < len(nodes):
         raise ValidationError(
             "An experiment with a warehouse-native exposure can only use warehouse-native metrics. "
-            "Remove the metrics that read PostHog events or synced warehouse tables."
+            "Remove the metrics that read Flind events or synced warehouse tables."
         )
     sources = [exposure_config, *native_nodes] if exposure_config is not None else native_nodes
     connection_id = warehouse_native_sources_agree(sources)
@@ -76,7 +76,7 @@ def validate_metric_warehouse_native_sources(metrics: list[dict[str, Any]], *, t
     native_nodes = [node for node in nodes if node.get("kind") == WAREHOUSE_NATIVE_NODE_KIND]
     if native_nodes and len(native_nodes) < len(nodes):
         raise ValidationError(
-            "A metric cannot mix a warehouse-native source with PostHog events or synced warehouse tables."
+            "A metric cannot mix a warehouse-native source with Flind events or synced warehouse tables."
         )
     connection_id = warehouse_native_sources_agree(native_nodes)
     if connection_id is not None:

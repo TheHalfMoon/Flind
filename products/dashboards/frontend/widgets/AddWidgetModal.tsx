@@ -120,7 +120,7 @@ export function AddWidgetModal({ isOpen, onClose, loading, onAdd }: AddWidgetMod
             title="Add widget"
             description={
                 <>
-                    <span>Bring context from your different PostHog products into one dashboard.</span>
+                    <span>Bring context from your different Flind products into one dashboard.</span>
                     <span className="mt-2 flex flex-wrap gap-2" data-attr="dashboard-widget-product-badges">
                         {[...pickerGroups]
                             .sort((a, b) => a.groupLabel.localeCompare(b.groupLabel))

@@ -17,7 +17,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
         content: (
             <>
                 <Markdown>
-                    Capture a structured log record with `captureLog`. Records are batched and shipped to PostHog's logs
+                    Capture a structured log record with `captureLog`. Records are batched and shipped to Flind's logs
                     product.
                 </Markdown>
                 <CodeBlock
@@ -26,7 +26,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                             language: 'swift',
                             file: 'Swift',
                             code: dedent`
-                                import PostHog
+                                import Flind
 
                                 PostHogSDK.shared.captureLog("Server started", level: .info, attributes: [
                                     "server.port": 3000,
@@ -38,7 +38,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                 />
                 <Markdown>
                     {dedent`
-                        Logs appear in PostHog within a few seconds. Use the [Logs page](https://app.posthog.com/logs) to search and filter
+                        Logs appear in Flind within a few seconds. Use the [Logs page](https://app.posthog.com/logs) to search and filter
                         by service name, severity, or any attribute you attach.
                     `}
                 </Markdown>

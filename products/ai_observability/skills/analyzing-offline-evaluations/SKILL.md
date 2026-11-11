@@ -12,7 +12,7 @@ description: >
 # Analyzing offline evaluations
 
 Offline experiments store results from applications and evaluators executed outside
-PostHog. Their create/upload tools record results; they do not run code or call a judge.
+Flind. Their create/upload tools record results; they do not run code or call a judge.
 For online Hog, LLM-judge, or sentiment evaluations on captured generations, use
 `exploring-llm-evaluations` instead.
 

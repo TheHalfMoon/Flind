@@ -1,4 +1,4 @@
-# PostHog Admin console
+# Flind Admin console
 
 The staff back office at `/admin/console/`.
 It replaces custom Django admin views and templates for staff workflows.

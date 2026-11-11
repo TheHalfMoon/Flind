@@ -970,7 +970,7 @@ describe("ReasoningLevelSelector", () => {
     expect(onModelChange).not.toHaveBeenCalled();
   }, 20000);
 
-  it("lets every model through on PostHog credits", async () => {
+  it("lets every model through on Flind credits", async () => {
     const onModelChange = vi.fn();
     const user = userEvent.setup({ pointerEventsCheck: 0 });
     render(
@@ -1064,7 +1064,7 @@ describe("ReasoningLevelSelector", () => {
   );
 
   it("shows the login note only when the logged-out billing pick needs it", async () => {
-    // Persisted billing is PostHog, account is logged out: no login prompt.
+    // Persisted billing is Flind, account is logged out: no login prompt.
     useAdapterSubscription.mockReturnValue(
       subscriptionState({ subscriptionOn: false, loggedIn: false }),
     );

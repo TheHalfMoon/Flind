@@ -165,7 +165,7 @@ describe('mcpDashboardOverviewLogic', () => {
             'opencode',
             'Kiro',
             'Desktop Commander',
-            'PostHog CLI',
+            'Flind CLI',
         ]
 
         it.each(EXPECTED_HARNESS_LABELS)('HARNESS_BY_LABEL has an entry for backend label %s', (label) => {
@@ -175,7 +175,7 @@ describe('mcpDashboardOverviewLogic', () => {
         it('HARNESS_BY_LABEL has no key the backend does not reserve', () => {
             // Mirrors MARKED_CLIENT_NAMES in mcp_harness.py. The backend rejects custom harness names
             // in both lists, because a custom harness with one of these names would lose its icon.
-            const MARKED_CLIENT_NAMES = ['PostHog AI', 'Slack']
+            const MARKED_CLIENT_NAMES = ['Flind AI', 'Slack']
             expect(Object.keys(HARNESS_BY_LABEL).sort()).toEqual(
                 [...EXPECTED_HARNESS_LABELS, ...MARKED_CLIENT_NAMES].sort()
             )
@@ -199,7 +199,7 @@ describe('mcpDashboardOverviewLogic', () => {
             'Antigravity',
             'Anthropic API',
             'Kiro',
-            'PostHog CLI',
+            'Flind CLI',
             'Poke',
             'Desktop Commander',
         ])('resolves a brand mark for the %s category', (category) => {

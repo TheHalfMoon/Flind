@@ -2,11 +2,11 @@
 name: signals-scout-replay-vision
 scout-display-name: Replay vision
 description: >
-  Signals scout for PostHog Replay Vision scanners. Watches that enabled scanners keep observing
+  Signals scout for Flind Replay Vision scanners. Watches that enabled scanners keep observing
   (throughput and quota cliffs) and that aggregate score shifts and recurring themes get
   surfaced.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus the replay-vision tools in
   the MCP tools section (execute-sql over `$recording_observed`, read-data-schema, and the
   feature-gated vision-scanners-list / -get / -observations-list / vision-observations-list /

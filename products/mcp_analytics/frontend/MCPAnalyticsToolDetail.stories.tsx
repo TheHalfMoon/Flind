@@ -76,7 +76,7 @@ const NEIGHBORS_AFTER = [
 // harness's total sessions across all tools, spanning a high, mid, and low share.
 const BY_HARNESS = [
     {
-        harness: 'PostHog AI',
+        harness: 'Flind AI',
         total_calls: 3100,
         errors: 98,
         error_rate_pct: 3.2,
@@ -94,7 +94,7 @@ const TOP_USERS = [
         calls: 890,
         errors: 22,
         error_rate_pct: 2.5,
-        harnesses: ['PostHog AI', 'Claude Code'],
+        harnesses: ['Flind AI', 'Claude Code'],
         last_seen: '2026-06-07T10:04:00Z',
     },
     {
@@ -135,7 +135,7 @@ const FAILURE_BUCKETS = [
         error_status: '500',
         occurrences: 12,
         last_seen: '2026-06-06T22:10:00Z',
-        harnesses: ['PostHog AI'],
+        harnesses: ['Flind AI'],
         cause: '',
         sample_message: '',
     },

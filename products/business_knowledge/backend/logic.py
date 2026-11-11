@@ -128,7 +128,7 @@ SUPERSEDED_SOURCE_MESSAGE = "This source was replaced by a newer answer from a l
 EVIDENCE_REVISION_AT_KEY = "evidence_revision_at"
 GENERATED_SOURCE_MULTIPLE_DOCUMENTS_MESSAGE = (
     "This learned source has more than one document, so it cannot be edited. "
-    "Delete it, then let PostHog learn from the ticket again."
+    "Delete it, then let Flind learn from the ticket again."
 )
 MAX_ANALYSIS_VERSION_LENGTH = 128
 MAX_PROVIDER_LENGTH = 64
@@ -383,12 +383,12 @@ def _count_learned_sources(team_id: int) -> int:
 
 def _ensure_user_managed_source(source: KnowledgeSource) -> None:
     if source.is_generated:
-        raise GeneratedSourceReadOnlyError("Generated sources are managed by PostHog.")
+        raise GeneratedSourceReadOnlyError("Generated sources are managed by Flind.")
 
 
 def _ensure_editable_text_source(source: KnowledgeSource) -> None:
     if source.is_generated and source.source_type != SourceType.TEXT:
-        raise GeneratedSourceReadOnlyError("Generated sources are managed by PostHog.")
+        raise GeneratedSourceReadOnlyError("Generated sources are managed by Flind.")
 
 
 def _require_single_generated_document(*, team_id: int, source_id: UUID) -> KnowledgeDocument:
@@ -2744,7 +2744,7 @@ def search_knowledge(
     Run one knowledge search, metered as one query when ``trace`` is given.
 
     Every product surface passes its ``RetrievalTrace``, so every retrieval is metered, whatever it
-    returns, except PostHog's internal docs-shadow comparison (see ``billing.UNMETERED_SURFACES``).
+    returns, except Flind's internal docs-shadow comparison (see ``billing.UNMETERED_SURFACES``).
     Only offline evals and tests search without a trace. A search that raises meters nothing.
     The query is metered to ``usage_team_id`` (the canonical team) when given, else to ``team_id``.
     """

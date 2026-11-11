@@ -1,4 +1,4 @@
-"""Data setup for the PostHog AI eval harness."""
+"""Data setup for the Flind AI eval harness."""
 
 from __future__ import annotations
 

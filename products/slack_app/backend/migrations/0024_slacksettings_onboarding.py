@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name="onboarding",
             field=models.JSONField(
                 blank=True,
-                help_text="This user's onboarding thread in the PostHog DM, and whether they finished it.",
+                help_text="This user's onboarding thread in the Flind DM, and whether they finished it.",
                 null=True,
             ),
         ),

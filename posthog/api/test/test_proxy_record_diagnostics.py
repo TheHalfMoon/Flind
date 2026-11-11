@@ -419,7 +419,7 @@ class TestIsReservedProxyDomain(SimpleTestCase):
             ("mixed_case", "App.PostHog.COM"),
             # The literal Cloudflare CNAME target every other tenant's domain already
             # points to (CLOUDFLARE_PROXY_BASE_CNAME in prod-eu). Claiming it collides
-            # with every other customer's proxy routing, not just PostHog's own traffic.
+            # with every other customer's proxy routing, not just Flind's own traffic.
             ("shared_cloudflare_target", "cf-prod-eu-proxy.europehog.com"),
         ]
     )

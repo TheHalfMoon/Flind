@@ -12,12 +12,12 @@ export const getPiSteps = (ctx: OnboardingComponentsContext): StepDefinition[] =
             content: (
                 <Markdown>
                     {dedent`
-                        [Pi](https://github.com/badlogic/pi-mono) is an open-source coding agent that runs in your terminal. The \`@posthog/pi\` extension captures LLM generations, tool executions, and conversation traces as \`$ai_generation\`, \`$ai_span\`, and \`$ai_trace\` events and sends them to PostHog.
+                        [Pi](https://github.com/badlogic/pi-mono) is an open-source coding agent that runs in your terminal. The \`@posthog/pi\` extension captures LLM generations, tool executions, and conversation traces as \`$ai_generation\`, \`$ai_span\`, and \`$ai_trace\` events and sends them to Flind.
 
                         You need:
 
                         - [Pi](https://github.com/badlogic/pi-mono) coding agent installed. The extension requires Node.js 22 or later.
-                        - A [PostHog account](https://app.posthog.com/signup) with a project token.
+                        - A [Flind account](https://app.posthog.com/signup) with a project token.
                     `}
                 </Markdown>
             ),
@@ -27,7 +27,7 @@ export const getPiSteps = (ctx: OnboardingComponentsContext): StepDefinition[] =
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog extension globally:</Markdown>
+                    <Markdown>Install the Flind extension globally:</Markdown>
                     <CodeBlock
                         language="bash"
                         code={dedent`
@@ -45,13 +45,13 @@ export const getPiSteps = (ctx: OnboardingComponentsContext): StepDefinition[] =
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Set environment variables with your PostHog project token and host. You can find these in your
-                        [PostHog project settings](https://app.posthog.com/settings/project).
+                        Set environment variables with your Flind project token and host. You can find these in your
+                        [Flind project settings](https://app.posthog.com/settings/project).
                     </Markdown>
                     <CodeBlock
                         language="bash"
@@ -90,9 +90,9 @@ export const getPiSteps = (ctx: OnboardingComponentsContext): StepDefinition[] =
 
                         | Variable | Default | Description |
                         | --- | --- | --- |
-                        | \`POSTHOG_API_KEY\` | _(required)_ | Your PostHog project token |
-                        | \`POSTHOG_HOST\` | \`https://us.i.posthog.com\` | PostHog ingestion host |
-                        | \`POSTHOG_PRIVACY_MODE\` | \`false\` | When \`true\`, LLM input and output content is not sent to PostHog. Token counts, costs, latency, and model metadata are still captured. |
+                        | \`POSTHOG_API_KEY\` | _(required)_ | Your Flind project token |
+                        | \`POSTHOG_HOST\` | \`https://us.i.posthog.com\` | Flind ingestion host |
+                        | \`POSTHOG_PRIVACY_MODE\` | \`false\` | When \`true\`, LLM input and output content is not sent to Flind. Token counts, costs, latency, and model metadata are still captured. |
                         | \`POSTHOG_ENABLED\` | \`true\` | Set to \`false\` to disable the extension |
                         | \`POSTHOG_TRACE_GROUPING\` | \`message\` | \`message\`: one trace per user prompt. \`session\`: group all generations in a session into one trace. |
                         | \`POSTHOG_SESSION_WINDOW_MINUTES\` | \`60\` | Minutes of inactivity before starting a new session window |

@@ -107,7 +107,7 @@ class ExposureQueryBuilder:
 
         With `with_library` and without an activation, the `exposed_by_library` column counts the entities of each row
         by the SDK library (`$lib`) of their first exposure, as a (libraries, counts) pair of arrays. A library outside
-        PostHog's own SDKs counts under BREAKDOWN_OTHER_STRING_LABEL, and a missing one under
+        Flind's own SDKs counts under BREAKDOWN_OTHER_STRING_LABEL, and a missing one under
         BREAKDOWN_NULL_STRING_LABEL.
         """
         with_library = with_library and self.context.activation_config is None
@@ -299,7 +299,7 @@ class ExposureQueryBuilder:
             [(_, library_expr)] = BreakdownInjector(
                 [Breakdown(property="$lib", type=MultipleBreakdownType.EVENT)]
             ).build_breakdown_exprs()
-            # Any sender can set `$lib`, so the column keeps only the names of PostHog's own SDKs. That bounds the
+            # Any sender can set `$lib`, so the column keeps only the names of Flind's own SDKs. That bounds the
             # distinct values before any grouping, however many values the events carry.
             query.select.append(
                 ast.Alias(

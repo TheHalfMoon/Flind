@@ -180,7 +180,7 @@ class OrganizationBulkDeactivationTool(ConsoleTool):
             blocks=(
                 Notice(
                     text=(
-                        "Members of a deactivated organization cannot use PostHog until staff reactivate it. "
+                        "Members of a deactivated organization cannot use Flind until staff reactivate it. "
                         "You see the organizations and what happens to each before anything changes."
                     )
                 ),

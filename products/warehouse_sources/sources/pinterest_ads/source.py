@@ -94,7 +94,7 @@ class PinterestAdsSource(ResumableSource[PinterestAdsSourceConfig, PinterestAdsR
             name=ExternalDataSourceType.PINTERESTADS,
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="Pinterest Ads",
-            caption="Collect campaign data, ad performance, and advertising metrics from Pinterest Ads. Ensure you have granted PostHog access to your Pinterest Ads account, learn how to do this in [the documentation](https://posthog.com/docs/cdp/sources/pinterest-ads).",
+            caption="Collect campaign data, ad performance, and advertising metrics from Pinterest Ads. Ensure you have granted Flind access to your Pinterest Ads account, learn how to do this in [the documentation](https://posthog.com/docs/cdp/sources/pinterest-ads).",
             releaseStatus=ReleaseStatus.GA,
             iconPath="/static/services/pinterest_ads.png",
             docsUrl="https://posthog.com/docs/cdp/sources/pinterest-ads",

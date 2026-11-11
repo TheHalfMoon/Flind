@@ -497,7 +497,7 @@ class TestZendeskImportBatchActivity(BaseTest):
 
     def test_distinct_id_is_the_zendesk_requester_email(self) -> None:
         # Access-control invariant: the imported ticket's distinct_id must be the Zendesk requester
-        # email verbatim, never a distinct_id resolved from a PostHog person's `properties.email`.
+        # email verbatim, never a distinct_id resolved from a Flind person's `properties.email`.
         # That analytics field is attacker-settable, so resolving through it would let an attacker
         # seed a profile with a victim's email and inherit the victim's imported ticket history
         # (identity poisoning). The email comes from the authenticated Zendesk API, so it's trusted.

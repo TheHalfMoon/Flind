@@ -51,7 +51,7 @@ class LessAnnoyingCRMSource(ResumableSource[LessAnnoyingCRMSourceConfig, LessAnn
             name=ExternalDataSourceType.LESSANNOYINGCRM,
             category=DataWarehouseSourceCategory.CRM,
             label="Less Annoying CRM",
-            caption="""Enter your Less Annoying CRM API key to pull your CRM data into the PostHog Data warehouse.
+            caption="""Enter your Less Annoying CRM API key to pull your CRM data into the Flind Data warehouse.
 
 Create an API key on the [Programmer API settings page](https://account.lessannoyingcrm.com/app/Settings/Api). Grant the key **read** access — the tables sync via the `GetUsers`, `GetTeams`, `GetContacts`, `GetTasks`, `GetNotes`, `GetEvents`, `GetPipelines`, `GetPipelineStatuses`, `GetPipelineItems`, `GetGroups` and `GetContactsInGroup` functions.
 

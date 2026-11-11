@@ -21,7 +21,7 @@ export type SlackDestinationPickerProps = {
     onConnectClick?: () => void
 }
 
-/** Slack workspace + channel picker shared by the comment composer, the send-to-Slack modal and PostHog AI cards. */
+/** Slack workspace + channel picker shared by the comment composer, the send-to-Slack modal and Flind AI cards. */
 export function SlackDestinationPicker({
     integrationId,
     channel,

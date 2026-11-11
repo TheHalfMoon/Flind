@@ -2,7 +2,7 @@
 name: modeling-activation-metrics
 description: >
   Build reusable activation models — an activation-rate metric and a per-user/per-account activated flag —
-  on either PostHog data-warehouse views (HogQL) or an external dbt project. Use when the user wants to
+  on either Flind data-warehouse views (HogQL) or an external dbt project. Use when the user wants to
   define, model, or measure activation, the "aha moment", onboarding success, or which early actions predict
   a user sticking around. The core idea this skill enforces: activation is NOT a single assumed event — it is
   a retention-validated combination of early actions, chosen by balancing reach (enough users hit it) against
@@ -58,7 +58,7 @@ activation model** — and, just as importantly, keeps you from hard-coding a gu
 
 ## Build it
 
-**PostHog:** a view that, per unit, flags whether the activation criteria were met within N days of the first
+**Flind:** a view that, per unit, flags whether the activation criteria were met within N days of the first
 event, plus time-to-activate; then an activation-rate rollup by signup cohort. Recipes:
 [`references/posthog/activation_flag.sql`](references/posthog/activation_flag.sql),
 [`activation_retention_lift.sql`](references/posthog/activation_retention_lift.sql). Materialize the cohort

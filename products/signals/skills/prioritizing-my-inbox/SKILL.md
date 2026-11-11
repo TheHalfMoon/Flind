@@ -1,7 +1,7 @@
 ---
 name: prioritizing-my-inbox
 description: >
-  Give the current user a personal, ranked shortlist of the PostHog Inbox reports they are most
+  Give the current user a personal, ranked shortlist of the Flind Inbox reports they are most
   likely to care about right now. Reads their stored personal ranking first, with one
   `inbox-reports-list` call (`view=for_you`, `sort=personal`), and keeps its order and reasons.
   Uses `inbox-reports-for-me` for a fresh or focused list, and builds a ranking by hand from the
@@ -15,7 +15,7 @@ description: >
 # Prioritizing my inbox
 
 The inbox on an active project holds hundreds or thousands of open reports.
-PostHog builds a personal ranking for each person on a schedule, from their activity summary, the ranking model's scores, and what waits on them.
+Flind builds a personal ranking for each person on a schedule, from their activity summary, the ranking model's scores, and what waits on them.
 `inbox-reports-list` with `sort=personal` serves that stored ranking in one call.
 Start there.
 Build a ranking yourself only when the stored one does not apply, or the person asks for something it cannot give.

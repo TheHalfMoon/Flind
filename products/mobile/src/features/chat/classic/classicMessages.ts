@@ -46,7 +46,7 @@ function approvalFrom(value: unknown): ClassicApproval | null {
         ? {
               id: data.proposal_id,
               preview: typeof data.preview === 'string' ? data.preview : 'Allow this change?',
-              toolName: typeof data.tool_name === 'string' ? data.tool_name : 'PostHog AI',
+              toolName: typeof data.tool_name === 'string' ? data.tool_name : 'Flind AI',
           }
         : null
 }
@@ -116,7 +116,7 @@ export function appendClassicMessage(state: ClassicState, data: Record<string, u
         progress: data.type === 'ai' ? null : state.progress,
         error:
             data.type === 'ai/failure'
-                ? String(data.content || 'PostHog AI ran into a problem. Try again.')
+                ? String(data.content || 'Flind AI ran into a problem. Try again.')
                 : state.error,
     }
 }
@@ -165,7 +165,7 @@ export function reduceClassicEvent(state: ClassicState, event: SseEvent): Classi
             return { ...state, approval: approvalFrom(data) }
         case 'status':
             return data.type === 'generation_error'
-                ? { ...state, error: 'PostHog AI ran into a problem. Try again.' }
+                ? { ...state, error: 'Flind AI ran into a problem. Try again.' }
                 : state
         default:
             return state

@@ -63,10 +63,10 @@ const MESSAGES: Record<OAuthErrorKind, string> = {
     denied: "Access wasn't granted. Sign in again and allow access to continue.",
     in_progress: 'A sign-in page is already open. Finish or close it, then try again.',
     state_mismatch: "Sign in couldn't be verified. Try again.",
-    network: "Couldn't reach PostHog. Check your connection and try again.",
-    rejected: "PostHog didn't accept the sign-in. Try again, and check the host and client ID if it keeps happening.",
+    network: "Couldn't reach Flind. Check your connection and try again.",
+    rejected: "Flind didn't accept the sign-in. Try again, and check the host and client ID if it keeps happening.",
     missing_scope: "This app's OAuth registration is missing a permission. Ask an admin to update it.",
-    server: 'PostHog had a problem signing you in. Try again in a moment.',
+    server: 'Flind had a problem signing you in. Try again in a moment.',
     session_expired: 'Your session ended. Sign in again.',
     unsupported: 'Sign in works in the iOS and Android apps. Open the app to log in.',
 }

@@ -20,7 +20,7 @@ def comment_commands_enabled(team_id: int) -> bool:
 
 def draft_review_notice(comment_commands_on: bool) -> str:
     """The note an automatic review of a draft ends with: the push gate skips the draft's later pushes."""
-    trigger = "Comment `@posthog review`" if comment_commands_on else "Start a review in PostHog Review"
+    trigger = "Comment `@posthog review`" if comment_commands_on else "Start a review in Flind Review"
     return (
         "This is the only automatic review while this pull request is a draft. "
         f"{trigger} to review new changes sooner. "
@@ -30,7 +30,7 @@ def draft_review_notice(comment_commands_on: bool) -> str:
 
 def first_review_note(review_link: str, deep_command: bool) -> str:
     """The note the first review on a pull request ends with: where to see the review, and how to ask for Deep."""
-    note = f"See this review and its findings in [PostHog Review]({review_link})."
+    note = f"See this review and its findings in [Flind Review]({review_link})."
     if deep_command:
         note = (
             f"{note} Comment `@posthog review --deep` for a Deep review. "

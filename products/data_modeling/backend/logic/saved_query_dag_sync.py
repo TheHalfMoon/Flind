@@ -88,11 +88,11 @@ def resolve_dependency_to_node(
     """
     Resolve a dependency name to a Node following HogQL's resolution priority.
 
-    Creates TABLE nodes as needed for warehouse and PostHog system tables.
+    Creates TABLE nodes as needed for warehouse and Flind system tables.
     For SavedQuery views and matviews, we only find existing nodes or error.
 
     Resolution order:
-    1. PostHog system table (events, persons, etc.)
+    1. Flind system table (events, persons, etc.)
     2. SavedQuery view or matview, or a TABLE node for a product's in-memory view
     3. DataWarehouse table (postgres, stripe, etc.)
 

@@ -79,7 +79,7 @@ class LemonSqueezySource(
             label="Lemon Squeezy",
             caption=(
                 "Connect your Lemon Squeezy account to sync stores, orders, subscriptions, "
-                "customers, license keys, and more into PostHog. Create an API key under "
+                "customers, license keys, and more into Flind. Create an API key under "
                 f"[Settings > API]({LEMON_SQUEEZY_API_SETTINGS_URL}) in your Lemon Squeezy dashboard. "
                 "Note that Lemon Squeezy API keys expire after one year, and test-mode keys return "
                 "test-mode data only."
@@ -106,7 +106,7 @@ class LemonSqueezySource(
             ),
             releaseStatus=ReleaseStatus.GA,
             webhookSetupCaption=(
-                "PostHog tries to register a webhook on each of your Lemon Squeezy stores using "
+                "Flind tries to register a webhook on each of your Lemon Squeezy stores using "
                 "your API key, with a generated signing secret used to verify deliveries.\n\n"
                 "**Manual setup** (only needed if automatic registration failed):\n\n"
                 "1. Go to [Settings > Webhooks](https://app.lemonsqueezy.com/settings/webhooks) in "
@@ -114,7 +114,7 @@ class LemonSqueezySource(
                 "2. Click **+** to add a webhook and paste the webhook URL shown below into the "
                 "**Callback URL** field\n"
                 "3. Set a **Signing secret** (6-40 characters) and paste the same value into the "
-                "field below so PostHog can verify deliveries\n"
+                "field below so Flind can verify deliveries\n"
                 "4. Select the order, subscription, subscription payment, and license key events "
                 "matching the tables you sync\n"
                 "5. Click **Save webhook**, repeating for each store you want to sync"
@@ -129,7 +129,7 @@ class LemonSqueezySource(
                         required=True,
                         placeholder="",
                         caption=(
-                            "The signing secret configured on the Lemon Squeezy webhook. PostHog "
+                            "The signing secret configured on the Lemon Squeezy webhook. Flind "
                             "uses it to verify the X-Signature header on every delivery."
                         ),
                         secret=True,

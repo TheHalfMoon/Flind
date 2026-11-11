@@ -85,7 +85,7 @@ describe('stripe webhook template', () => {
         expect(response.capturedPostHogEvents[0].properties).toMatchObject({
             $hog_function_execution_count: 1,
             account_country: 'US',
-            account_name: 'PostHog - modified',
+            account_name: 'Flind - modified',
         })
     })
 

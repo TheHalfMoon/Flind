@@ -1563,7 +1563,7 @@ class DataWarehouseTableFormat(LabeledStrEnum):
 class DataWarehouseTableCreatedVia(LabeledStrEnum):
     # The first five mirror `ExternalDataSource.CreatedVia` value-for-value, so table and source
     # attribution can be counted together. The last three have no source equivalent — they cover
-    # the tables PostHog creates itself, which a request surface would otherwise misattribute to
+    # the tables Flind creates itself, which a request surface would otherwise misattribute to
     # whoever happened to trigger the run.
     WEB = "web", "web"
     API = "api", "api"

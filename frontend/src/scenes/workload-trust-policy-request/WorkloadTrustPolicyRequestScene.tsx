@@ -45,13 +45,13 @@ function RequesterLine({ policyRequest }: { policyRequest: WorkloadTrustPolicyRe
             {requester ? ` (${requester.email})` : ''}
             {policyRequest.requested_via ? ` through ${policyRequest.requested_via}` : ''}{' '}
             {policyRequest.requested_via_verified === true ? (
-                <Tooltip title="This application has been verified by PostHog.">
+                <Tooltip title="This application has been verified by Flind.">
                     <LemonTag type="success" size="small">
                         Verified
                     </LemonTag>
                 </Tooltip>
             ) : policyRequest.requested_via_verified === false ? (
-                <Tooltip title="This application has not been verified by PostHog. Only approve if you recognize the requester and the application.">
+                <Tooltip title="This application has not been verified by Flind. Only approve if you recognize the requester and the application.">
                     <LemonTag type="warning" size="small">
                         Unverified application
                     </LemonTag>

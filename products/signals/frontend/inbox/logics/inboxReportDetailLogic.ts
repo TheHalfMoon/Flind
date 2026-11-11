@@ -1482,7 +1482,7 @@ export const inboxReportDetailLogic = kea<inboxReportDetailLogicType>([
         ],
         // The current user's GitHub login (from their personal connection) — used to attribute optimistic
         // comments and to tell which comments/reactions are the user's own (editable/removable). Note this
-        // is `github_login`, NOT `account.name` (which is the installation's org/user, e.g. "PostHog").
+        // is `github_login`, NOT `account.name` (which is the installation's org/user, e.g. "Flind").
         currentUserGithubLogin: [
             (s) => [s.personalIntegrations],
             (personalIntegrations: PersonalGitHubIntegration[]): string | null =>

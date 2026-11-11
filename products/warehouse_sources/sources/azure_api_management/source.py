@@ -62,7 +62,7 @@ class AzureApiManagementSource(LogAnalyticsWorkspaceSource[AzureApiManagementSou
             label="Microsoft Azure API Management",
             keywords=["apim", "api gateway", "ai gateway"],
             releaseStatus=ReleaseStatus.ALPHA,
-            caption="""Sync Azure API Management gateway logs into the PostHog Data warehouse: requests, LLM token usage, and WebSocket connections.
+            caption="""Sync Azure API Management gateway logs into the Flind Data warehouse: requests, LLM token usage, and WebSocket connections.
 
 API Management must send its logs to a Log Analytics workspace. In the API Management instance, add a diagnostic setting that sends the `GatewayLogs`, `GatewayLlmLogs` and `WebSocketConnectionLogs` categories to the workspace, with **Resource specific** as the destination table.
 

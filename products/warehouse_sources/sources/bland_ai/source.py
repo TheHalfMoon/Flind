@@ -48,7 +48,7 @@ class BlandAISource(ResumableSource[BlandAISourceConfig, BlandAIResumeConfig]):
             releaseStatus=ReleaseStatus.BETA,
             caption=(
                 "Enter your Bland AI API key to sync your AI phone calls, transcripts, and "
-                "conversational pathways into the PostHog Data warehouse. Find your key in the "
+                "conversational pathways into the Flind Data warehouse. Find your key in the "
                 "[Bland dashboard](https://app.bland.ai/) under **Settings → API keys**."
             ),
             iconPath="/static/services/bland_ai.svg",

@@ -51,7 +51,7 @@ class WorldBankSource(ResumableSource[WorldBankSourceConfig, WorldBankResumeConf
             label="World Bank Open Data",
             releaseStatus=ReleaseStatus.GA,
             keywords=["world bank", "indicators", "gdp", "economic data"],
-            caption="""Pull country-level development statistics from the [World Bank Indicators API](https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information) into the PostHog Data warehouse.
+            caption="""Pull country-level development statistics from the [World Bank Indicators API](https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information) into the Flind Data warehouse.
 
 The API is open, so no credentials are required. The World Bank publishes around 16,000 indicator series, which is far too much to sync wholesale, so enter the indicator codes you want (up to 50), one per line. For example:
 

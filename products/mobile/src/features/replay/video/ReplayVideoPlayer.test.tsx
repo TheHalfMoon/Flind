@@ -129,7 +129,7 @@ describe('ReplayVideoPlayer', () => {
         expect(screen.getByText("Couldn't play this video. Try again.")).toBeTruthy()
         fireEvent.press(screen.getByTestId('replay-video-error-action'))
         expect(controls.retry).toHaveBeenCalledTimes(1)
-        fireEvent.press(screen.getByText('Open in PostHog'))
+        fireEvent.press(screen.getByText('Open in Flind'))
         expect(onOpenWeb).toHaveBeenCalledTimes(1)
     })
 
@@ -287,15 +287,15 @@ describe('ReplayVideoPlayer', () => {
 
     test.each([
         { kind: 'render_failed', primary: 'Try again', offersRetry: true },
-        { kind: 'limit_reached', primary: 'Open in PostHog', offersRetry: false },
-        { kind: 'missing_scope', primary: 'Open in PostHog', offersRetry: false },
+        { kind: 'limit_reached', primary: 'Open in Flind', offersRetry: false },
+        { kind: 'missing_scope', primary: 'Open in Flind', offersRetry: false },
     ] as const)('a $kind error leads with $primary', ({ kind, primary, offersRetry }) => {
         const { onOpenWeb } = renderPlayer({ status: 'error', kind, message: 'The server said no.' })
 
         expect(screen.getByText('The server said no.')).toBeTruthy()
         expect(screen.getByTestId('replay-video-error-action')).toHaveTextContent(primary)
         expect(screen.queryByText('Try again') !== null).toBe(offersRetry)
-        fireEvent.press(screen.getByText('Open in PostHog'))
+        fireEvent.press(screen.getByText('Open in Flind'))
         expect(onOpenWeb).toHaveBeenCalledTimes(1)
     })
 })

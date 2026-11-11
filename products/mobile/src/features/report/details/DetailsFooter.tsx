@@ -11,7 +11,7 @@ export function DetailsFooter({ webUrl, reportId }: { webUrl: string; reportId: 
     return (
         <View style={styles.footer}>
             <TextLinkRow
-                label="Open in PostHog"
+                label="Open in Flind"
                 external
                 onPress={() => openDetailsLink(webUrl, reportId, 'web')}
                 testID="report-details-open-web"

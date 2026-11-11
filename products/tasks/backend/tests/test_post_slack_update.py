@@ -336,7 +336,7 @@ class TestPostSlackUpdate(TestCase):
 
     @parameterized.expand(
         [
-            ("PostHog setup wizard timed out after 30 minutes",),
+            ("Flind setup wizard timed out after 30 minutes",),
             ("Sandbox request timed out",),
             ("Execution timed out after 600 seconds",),
         ]

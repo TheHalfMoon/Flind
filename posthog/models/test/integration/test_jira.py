@@ -169,7 +169,7 @@ class TestJiraIntegrationModel:
                     {
                         "type": "paragraph",
                         "content": [
-                            {"type": "text", "text": "PostHog issue: "},
+                            {"type": "text", "text": "Flind issue: "},
                             {
                                 "type": "text",
                                 "text": "https://example.com/issue/1",

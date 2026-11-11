@@ -14,7 +14,7 @@ export function MissingParentSpanNotice({
             <p className="m-0">
                 Spans in this trace have a parent span that we can't find. This can happen if the parent span is recent
                 and we're still processing it, or if it comes from a separate service that doesn't send spans to
-                PostHog.
+                Flind.
             </p>
             <div className="flex items-center gap-x-3 gap-y-1 flex-wrap text-xs text-muted">
                 <CopyableId label="Missing span ID" value={parentSpanId} />

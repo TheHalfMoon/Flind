@@ -382,9 +382,9 @@ PR_READY_EMAIL_PR_URL_STATE_KEY = "pr_ready_email_pr_url"
 
 
 class TaskClientProvenance(models.TextChoices):
-    POSTHOG_DESKTOP = "posthog_desktop", "PostHog Desktop"
-    POSTHOG_MOBILE = "posthog_mobile", "PostHog Mobile"
-    POSTHOG_WEB = "posthog_web", "PostHog Web"
+    POSTHOG_DESKTOP = "posthog_desktop", "Flind Desktop"
+    POSTHOG_MOBILE = "posthog_mobile", "Flind Mobile"
+    POSTHOG_WEB = "posthog_web", "Flind Web"
 
 
 def task_client_provenance_choices() -> list[tuple[str, str | Promise]]:
@@ -434,7 +434,7 @@ class Task(Taggable, DeletedMetaFields, models.Model):
         SLACK = "slack", "Slack"
         SUPPORT_QUEUE = "support_queue", "Support Queue"
         SESSION_SUMMARIES = "session_summaries", "Session Summaries"
-        POSTHOG_AI = "posthog_ai", "PostHog AI"
+        POSTHOG_AI = "posthog_ai", "Flind AI"
         EXPERIMENTS = "experiments", "Experiments"
         # Unlike the others (which indicate direct creation from that product, e.g. a "fix this error" button),
         # signal report tasks originate indirectly via signals from other products.
@@ -461,7 +461,7 @@ class Task(Taggable, DeletedMetaFields, models.Model):
         MCP_ANALYTICS = "mcp_analytics", "MCP Analytics"
         # Inbox scout-chat kickoffs ("Suggest a scout", fleet overview, recent signals),
         # minted server-side by products/signals so the origin proves the run is entitled
-        # through the generally-available Inbox rather than PostHog Desktop.
+        # through the generally-available Inbox rather than Flind Desktop.
         SIGNALS_CHAT = "signals_chat", "Signals Chat"
         TASK_ANALYSIS = "task_analysis", "Task Analysis"
         # A workflow's "Create AI task" action. Unattended; the run executes as the workflow's creator.
@@ -635,7 +635,7 @@ class Task(Taggable, DeletedMetaFields, models.Model):
     archived = models.BooleanField(
         default=False,
         help_text=(
-            "If true, the task is hidden from default list responses. Used by PostHog Desktop clients "
+            "If true, the task is hidden from default list responses. Used by Flind Desktop clients "
             "to share archive state across desktop and mobile."
         ),
     )
@@ -833,7 +833,7 @@ class Task(Taggable, DeletedMetaFields, models.Model):
 
     @property
     def mcp_tool_allowlist(self) -> list[str] | None:
-        """PostHog MCP tool names the run picked, stamped once at dispatch.
+        """Flind MCP tool names the run picked, stamped once at dispatch.
 
         None (no snapshot) means the run is not narrowed to a tool list. Once a snapshot
         exists, a malformed value fails closed to an empty list, so the run holds only what
@@ -2497,7 +2497,7 @@ def project_task_created_activity(sender, instance: Task, created: bool, **kwarg
 
 class ChannelFeedMessage(TeamScopedRootMixin):
     """A durable, team-visible announcement in a channel's feed — rendered alongside
-    task cards as a "PostHog agent" system row (e.g. "Adam created this context").
+    task cards as a "Flind agent" system row (e.g. "Adam created this context").
     The channel feed is otherwise a task list, so these give channel lifecycle events
     a home without shoe-horning them into tasks. ``author`` is the user whose action
     produced the row (for "Adam …"); ``author_kind`` says who authored it."""
@@ -2694,7 +2694,7 @@ class TaskRun(models.Model):
         help_text="Run state data for resuming or tracking execution state",
     )
 
-    # Local url-based MCP servers imported from the creating client (PostHog Desktop),
+    # Local url-based MCP servers imported from the creating client (Flind Desktop),
     # merged into the sandbox agent server's --mcpServers at spawn. Encrypted because
     # header values carry credentials; never exposed through API responses.
     imported_mcp_servers = EncryptedJSONStringField(
@@ -3322,7 +3322,7 @@ class TaskRun(models.Model):
         self.state = TaskRun.mutate_state_atomic(self.id, _mutator)
 
     def _mirror_logs_to_posthog_logs(self, entries: list[dict]) -> None:
-        """Mirror persisted entries into the PostHog Logs product via stdout (dogfooding).
+        """Mirror persisted entries into the Flind Logs product via stdout (dogfooding).
 
         Fire-and-forget: mirroring failures must never break the run's log write.
         """
@@ -4009,7 +4009,7 @@ class SandboxSession(TeamScopedRootMixin, UUIDModel):
     provisioning activity so activity retries stay idempotent. Rows record raw usage
     only — pricing/credit conversion happens downstream at aggregation time
     (see logic/services/sandbox_usage.py). Pre-warmed sandboxes stay unattributed
-    (``user_attributed_at`` NULL, on PostHog's dime) until a user claims the run with
+    (``user_attributed_at`` NULL, on Flind's dime) until a user claims the run with
     their first message; the boundary timestamps are deliberately redundant so any
     future billable-window policy (wall-clock, active-plus-grace, ...) can be computed
     from the ledger without a backfill.
@@ -4545,7 +4545,7 @@ TASK_PRESENCE_TTL_SECONDS = 60
 class TaskPresence(TeamScopedRootMixin):
     """Per-device 'this user is actively watching this task' beacon.
 
-    Created/refreshed by the desktop and mobile PostHog Desktop clients while a
+    Created/refreshed by the desktop and mobile Flind Desktop clients while a
     task screen is foregrounded. The push fanout consults this table to skip
     devices that are demonstrably already watching the task, so we don't fire
     phantom notifications at a phone while the user is mid-conversation with

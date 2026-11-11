@@ -485,7 +485,7 @@ export const explainChartLogic: LogicWrapper<explainChartLogicType> = kea<explai
                         reason: 'unsupported_shape',
                     })
                     lemonToast.error(
-                        'This chart explanation needs a newer version of PostHog. Refresh the page to see it.'
+                        'This chart explanation needs a newer version of Flind. Refresh the page to see it.'
                     )
                     return
                 }

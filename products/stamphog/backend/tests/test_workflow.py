@@ -32,7 +32,7 @@ def _stub_activities(
         polls = calls.count("list_in_flight_reviewer_bots")
         in_flight = polls <= in_flight_polls
         return {
-            "in_flight": ["PostHog Review"] if in_flight else [],
+            "in_flight": ["Flind Review"] if in_flight else [],
             "reviews_completed": reviews_completed and not in_flight,
         }
 

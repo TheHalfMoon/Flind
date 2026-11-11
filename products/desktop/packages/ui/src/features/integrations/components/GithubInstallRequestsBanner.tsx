@@ -56,7 +56,7 @@ export function GithubInstallRequestsBanner({
           className="flex flex-wrap items-center justify-between gap-2 rounded-(--radius-2) border border-(--green-6) bg-(--green-2) px-3 py-2"
         >
           <Text size="sm">
-            An organization owner approved the PostHog app for{" "}
+            An organization owner approved the Flind app for{" "}
             <span className="font-medium">
               {request.account_login ||
                 request.github_login ||
@@ -100,7 +100,7 @@ export function GithubInstallRequestsBanner({
                 (as <span className="font-medium">{request.github_login}</span>)
               </>
             ) : null}{" "}
-            to your organization owners. Once an owner approves the PostHog app,
+            to your organization owners. Once an owner approves the Flind app,
             we'll finish connecting here.
           </Text>
           {installUrl ? (

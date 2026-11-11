@@ -76,7 +76,7 @@ def finish_node_run(
 def touch_run_progress(team_id: int, notebook_short_id: str, run_id: str) -> None:
     """Record that the kernel is still working on `run_id`, resetting its watchdog clock.
 
-    Called from the data plane, which is the kernel's only way back to PostHog during a run:
+    Called from the data plane, which is the kernel's only way back to Flind during a run:
     every uncached HogQL input it materializes lands there. Without this the watchdog would
     measure total runtime from dispatch, and a cell with several inputs would outrun the
     budget while working correctly.

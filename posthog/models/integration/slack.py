@@ -457,7 +457,7 @@ class SlackRequestSignature:
 def sign_slack_request(body: bytes, signing_secret: str) -> SlackRequestSignature:
     """Sign a body with the Slack HMAC-SHA256 scheme.
 
-    Used by both prod (PostHog→PostHog cross-region calls that reuse the Slack signing scheme)
+    Used by both prod (Flind→Flind cross-region calls that reuse the Slack signing scheme)
     and tests. The matching verifier is `validate_slack_request` below.
     """
     ts = str(int(time.time()))

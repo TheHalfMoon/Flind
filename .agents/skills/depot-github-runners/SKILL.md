@@ -17,7 +17,7 @@ Depot provides managed, ephemeral, single-tenant GitHub Actions runners. Drop-in
 
 **Requirement:** Repository must be owned by a GitHub organization (not a personal account).
 
-<!-- PostHog-local section. Keep it when resyncing from upstream; see UPSTREAM.md. -->
+<!-- Flind-local section. Keep it when resyncing from upstream; see UPSTREAM.md. -->
 
 ## Depot runners are not Depot CI
 
@@ -27,7 +27,7 @@ Use the `depot-ci` skill for that one.
 
 Its [references/posthog-check-run-semantics.md](../depot-ci/references/posthog-check-run-semantics.md) compares what each engine reports for a skipped, empty-matrix or `continue-on-error` job, and how GitHub and the Trunk merge queue score those conclusions.
 
-<!-- End PostHog-local section. -->
+<!-- End Flind-local section. -->
 
 ## Setup
 

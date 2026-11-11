@@ -1,6 +1,6 @@
 # HogQL Queries for Web Analytics
 
-This document explains how web analytics queries work in PostHog and how to view and test them.
+This document explains how web analytics queries work in Flind and how to view and test them.
 
 ## Viewing Query Examples
 
@@ -29,16 +29,16 @@ The snapshots are stored in:
 
 ## Testing Queries with the API
 
-You can test web analytics queries directly using PostHog's `/query` API endpoint.
+You can test web analytics queries directly using Flind's `/query` API endpoint.
 
 **Resources:**
 
-- [PostHog Query API Documentation](https://posthog.com/docs/api/query)
+- [Flind Query API Documentation](https://posthog.com/docs/api/query)
 - [API Schema (Swagger UI)](https://app.posthog.com/api/schema/swagger-ui)
 
 ### 1. Create a personal API key
 
-1. Go to your PostHog instance → Settings → Personal API keys (`/project/<project_id>/settings/user-api-keys`)
+1. Go to your Flind instance → Settings → Personal API keys (`/project/<project_id>/settings/user-api-keys`)
 2. Click "Create personal API key"
 3. Give it a name and select the appropriate scopes (At least 'Query: Read' is required)
 4. Copy the token
@@ -189,7 +189,7 @@ EOF
 
 The easiest way to test and modify HogQL queries:
 
-1. Navigate to **PostHog → Data Management → SQL Editor** (or `/project/:project_id/hogql`)
+1. Navigate to **Flind → Data Management → SQL Editor** (or `/project/:project_id/hogql`)
 2. Paste the HogQL query from the snapshot file
 3. Click "Run query"
 4. Modify the query as needed
@@ -316,8 +316,8 @@ LIMIT 100  -- Instead of 50000
 
 **Tracking Queries:**
 
-- Use `client_query_id` to track your queries in PostHog's query log
-- Check query performance in PostHog → Settings → System → Query Log
+- Use `client_query_id` to track your queries in Flind's query log
+- Check query performance in Flind → Settings → System → Query Log
 
 **Response Structure:**
 

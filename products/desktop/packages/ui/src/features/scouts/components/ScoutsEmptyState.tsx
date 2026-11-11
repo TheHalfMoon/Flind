@@ -21,7 +21,7 @@ export function ScoutsEmptyState({ onNewAgent }: { onNewAgent: () => void }) {
         <EmptyDescription>
           Agents run on a schedule, watch one thing about your product, and send
           what they find to Self-driving. Describe the first one in a sentence
-          and PostHog drafts it for you.
+          and Flind drafts it for you.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>

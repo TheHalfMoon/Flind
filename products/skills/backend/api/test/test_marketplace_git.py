@@ -35,7 +35,7 @@ def _marketplace_tree(epoch: int) -> dict[str, str]:
         plugin_name="posthog-skill-store",
         plugin_description="Team skills",
         plugin_version=compute_plugin_version(epoch),
-        owner_name="PostHog",
+        owner_name="Flind",
         marketplace_name="posthog-skill-store-marketplace",
         skills=[skill],
     )
@@ -46,7 +46,7 @@ class _GitServer:
         self._epoch = 1700000000
 
         def repo():
-            return git.synthesize_repo(_marketplace_tree(self._epoch), author="PostHog", message="marketplace")
+            return git.synthesize_repo(_marketplace_tree(self._epoch), author="Flind", message="marketplace")
 
         class Handler(BaseHTTPRequestHandler):
             def log_message(self, *args):

@@ -8,7 +8,7 @@ import { SlackNotificationsSection } from './SlackNotificationsSection'
 const WORKSPACE = {
     id: 1,
     kind: 'slack',
-    display_name: 'PostHog',
+    display_name: 'Flind',
     config: { scope: 'chat:write,channels:read,users:read' },
     created_at: '2026-01-01T00:00:00Z',
 }
@@ -20,7 +20,7 @@ const CHANNELS = [
 
 interface CardsState {
     connected?: boolean
-    /** A workspace installed before PostHog asked for the scope a direct message needs. */
+    /** A workspace installed before Flind asked for the scope a direct message needs. */
     cannotLookUpMembers?: boolean
     teamChannel?: string | null
     teamMinPriority?: SignalReportPriority | null

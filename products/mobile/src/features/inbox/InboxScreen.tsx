@@ -175,7 +175,7 @@ export function InboxScreen(): ReactElement {
             <StateView
                 icon={<InboxIcon size={iconSizes.empty} color={colors.tertiary} />}
                 title="Nothing needs you right now"
-                message="New reports show up here when PostHog finds something worth a look."
+                message="New reports show up here when Flind finds something worth a look."
                 testID="inbox-empty"
             />
         )

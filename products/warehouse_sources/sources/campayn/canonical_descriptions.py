@@ -26,7 +26,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": f"{_DOCS_BASE}/contacts.md",
         "columns": {
             "id": "Unique identifier for the contact.",
-            "list_id": "Identifier of the list this contact row was fetched from (injected by PostHog).",
+            "list_id": "Identifier of the list this contact row was fetched from (injected by Flind).",
             "email": "The contact's email address.",
             "first_name": "The contact's first name.",
             "last_name": "The contact's last name.",
@@ -38,7 +38,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": f"{_DOCS_BASE}/forms.md",
         "columns": {
             "id": "Unique identifier for the form.",
-            "list_id": "Identifier of the list this form row was fetched from (injected by PostHog).",
+            "list_id": "Identifier of the list this form row was fetched from (injected by Flind).",
             "contact_list_id": "Identifier of the list the form is associated with.",
             "form_title": "Display title of the form.",
             "form_type": "Form type code: 0 signup page, 1 embed signup, 2 WordPress signup, 3 Facebook signup.",

@@ -1,6 +1,6 @@
 # hog
 
-`hog` is the PostHog command line, version 1.
+`hog` is the Flind command line, version 1.
 It replaces `posthog-cli` (version 0, in `cli/`), which keeps working until `hog` covers everything it does.
 
 `hog` is written in TypeScript and compiles to a single binary with [Bun](https://bun.sh).
@@ -16,12 +16,12 @@ The commands `posthog-cli` keeps under `exp` (`query`, `endpoints`, `logs`, `tas
 | `hog auth login`                          | Logs in through the browser and saves a personal API key. Agents finish with `hog auth login --wait`.                   |
 | `hog auth add <scope...>`                 | Adds scopes to your login, approved in the browser. Agents finish with `hog auth add --wait`.                           |
 | `hog auth status`                         | Shows whether hog is logged in, whose key it is, and where the key comes from. Exits with code 1 without a working key. |
-| `hog auth logout`                         | Removes the stored key. The key stays valid in PostHog until you delete it there.                                       |
+| `hog auth logout`                         | Removes the stored key. The key stays valid in Flind until you delete it there.                                       |
 | `hog auth migrate`                        | Moves the key `posthog-cli login` saved into hog's store, so you don't have to log in again.                            |
 | `hog ci setup`                            | Asks an admin to trust this repository's CI jobs, so they use their OIDC token instead of a stored key.                 |
 | `hog query run <query>`                   | Runs a HogQL query. `-` reads the query from stdin.                                                                     |
 | `hog query check <query>`                 | Checks a query without running it. Exits with code 1 when the query has errors.                                         |
-| `hog api groups`, `hog api tools [group]` | List the PostHog MCP tools by group, with the scopes the key is missing for each.                                       |
+| `hog api groups`, `hog api tools [group]` | List the Flind MCP tools by group, with the scopes the key is missing for each.                                       |
 | `hog api search`, `info`, `schema`        | Find a tool, see what it does and the input it takes.                                                                   |
 | `hog api call <tool> [input]`             | Calls a tool with JSON input. `--dry-run` only checks the input, and destructive tools need `--confirm`.                |
 | `hog api access`                          | Shows the key's scopes and the missing scopes that block the most tools.                                                |
@@ -30,13 +30,13 @@ The commands `posthog-cli` keeps under `exp` (`query`, `endpoints`, `logs`, `tas
 | `hog error-tracking upload [paths...]`    | Uploads symbols for readable stack traces: JavaScript sourcemaps, Hermes maps, ProGuard mappings, dSYMs and ELF files.  |
 | `hog error-tracking process [paths...]`   | Runs `inject`, then `upload`. Use it in CI after the build.                                                             |
 | `hog error-tracking release`              | Finds or creates the release for this build. `-o text` prints just its ID.                                              |
-| `hog error-tracking download <id/ref>`    | Downloads a symbol set from PostHog and unpacks it.                                                                     |
+| `hog error-tracking download <id/ref>`    | Downloads a symbol set from Flind and unpacks it.                                                                     |
 | `hog error-tracking extract <file>`       | Unpacks a symbol set file.                                                                                              |
-| `hog endpoints list`, `get`, `open`       | List your endpoints a page at a time, show one, or open it in PostHog.                                                  |
+| `hog endpoints list`, `get`, `open`       | List your endpoints a page at a time, show one, or open it in Flind.                                                  |
 | `hog endpoints run [name]`                | Runs an endpoint, or the query in a local file with `--file`. `--var name=value` sets variables.                        |
 | `hog endpoints pull`, `diff`, `push`      | Keep endpoints as YAML files: pull them, see how they differ, and push changes. `diff` exits with code 1 on drift.      |
 | `hog schema pull`                         | Generates a typed SDK (TypeScript, Go or Python) from your event definitions, and records it in `posthog.json`.         |
-| `hog schema status`                       | Checks each generated SDK against PostHog. Exits with code 1 when one is missing or out of date.                        |
+| `hog schema status`                       | Checks each generated SDK against Flind. Exits with code 1 when one is missing or out of date.                        |
 | `hog config check`, `hog config schema`   | Check `posthog.json` against its schema, or print the schema.                                                           |
 | `hog commands`                            | Lists every command, its arguments, options and scopes.                                                                 |
 | Everything else                           | Not ported yet. Exits with code 1 and prints the `posthog-cli` command to run instead, with the same arguments.         |
@@ -88,14 +88,14 @@ A flag beats the environment variable, which beats `posthog.json`.
 
 | Option                    | Environment                        | `posthog.json`  | What it does                                                                                                                  |
 | ------------------------- | ---------------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `--host <url>`            | `HOG_HOST`                         | `host`          | The PostHog host to use instead of the one in your credentials                                                                |
+| `--host <url>`            | `HOG_HOST`                         | `host`          | The Flind host to use instead of the one in your credentials                                                                |
 |                           | `HOG_PROJECT_ID`                   | `projectId`     | The project a personal API key or a CI job's token works in                                                                   |
 | `--dotenv-file <path>`    | `HOG_DOTENV_FILE`                  |                 | Read credentials from this file when the environment has none                                                                 |
 | `-o, --output <format>`   | `HOG_OUTPUT`                       |                 | `text` or `json`                                                                                                              |
 | `--raw`                   | `HOG_RAW`                          |                 | Print a command's full result as JSON                                                                                         |
 | `--debug`                 | `HOG_DEBUG`                        |                 | Print each HTTP request, its status and duration to stderr                                                                    |
 | `--no-fail`               | `HOG_NO_FAIL`                      | `cli.noFail`    | Exit with code 0 when a command fails or reports a problem, such as `diff` finding drift. Usage errors still exit with code 2 |
-| `--skip-ssl-verification` | `HOG_SKIP_SSL_VERIFICATION`        |                 | Accept any TLS certificate, for a self-signed self-hosted PostHog                                                             |
+| `--skip-ssl-verification` | `HOG_SKIP_SSL_VERIFICATION`        |                 | Accept any TLS certificate, for a self-signed self-hosted Flind                                                             |
 | `--no-telemetry`          | `HOG_NO_TELEMETRY`, `DO_NOT_TRACK` | `cli.telemetry` | Send no anonymous usage data. See [Telemetry](#telemetry)                                                                     |
 | `--rate-limit <requests>` | `HOG_RATE_LIMIT`                   | `cli.rateLimit` | The most requests per minute. No limit by default                                                                             |
 |                           | `HOG_DRY_RUN`                      |                 | Turns on `--dry-run` for every command that has one, and fails the commands that write without one                            |
@@ -106,19 +106,19 @@ hog reads only the `HOG_` names. posthog-cli's `POSTHOG_CLI_` variables, `POSTHO
 
 ## Telemetry
 
-hog sends usage events to PostHog, so the team can see who uses which commands and where they fail.
+hog sends usage events to Flind, so the team can see who uses which commands and where they fail.
 
 - `posthog cli command run`, once per command, the same event posthog-cli sends: the command, exit code, duration, the names of the options passed, the detected agent, the CI provider and runner (such as GitHub Actions on Depot or Blacksmith), the OS, and counts from the result, such as rows returned or endpoints pushed.
 - `$exception` when a command fails, with the error code, message, hint and HTTP status. A message can name a file, or quote part of a query or an API answer.
 - `error_tracking_cli_sourcemaps_upload_started`, `_finished` and `_endpoint_fallback`, as in posthog-cli.
 
-With a PostHog Cloud key, events belong to your PostHog user, organization and project, the same ones the web app uses.
+With a Flind Cloud key, events belong to your Flind user, organization and project, the same ones the web app uses.
 hog looks them up once per key with `/api/users/@me/` and `/api/projects/<id>/`, and keeps the answer in `~/.posthog/hog-telemetry-identity.json` for 30 days.
 A CI job that uses its OIDC token counts as its workload instead: events carry an ID hashed from the provider and the repository, the provider's name and your organization, and no person.
-Without a key, with a self-hosted PostHog, or with a key that can't read those, events belong to a random ID in `~/.posthog/hog-telemetry-id`.
+Without a key, with a self-hosted Flind, or with a key that can't read those, events belong to a random ID in `~/.posthog/hog-telemetry-id`.
 Usage events never carry argument or option values or API keys.
 
-Telemetry is on by default and goes to the same PostHog project as posthog-cli's.
+Telemetry is on by default and goes to the same Flind project as posthog-cli's.
 Turn it off with `--no-telemetry`, `HOG_NO_TELEMETRY=1`, `DO_NOT_TRACK=1`, or `"cli": { "telemetry": false }` in `posthog.json`.
 
 ## posthog.json
@@ -182,7 +182,7 @@ hog uploads the same bytes and content hashes as posthog-cli, so either CLI can 
 - native releases come from the flags, `posthog.json` or git, as in `posthog-cli symbol-sets upload`. hog doesn't read the release from the dSYM's `Info.plist`, as `posthog-cli dsym upload` does
 - `upload` sends only Hermes maps it detects. posthog-cli treats every JSON file in the folder as a map, and fails when it finds Metro's map there
 - hog walks folders in sorted order and skips `node_modules`, `.git` and symlinks, so two machines visit the same files in the same order
-- `--dry-run` shows the plan and the content hashes without writing files or contacting PostHog. posthog-cli's `--dry-run` skips the whole command.
+- `--dry-run` shows the plan and the content hashes without writing files or contacting Flind. posthog-cli's `--dry-run` skips the whole command.
 
 ## Credentials
 
@@ -202,36 +202,36 @@ hog's folder is `~/Library/Application Support/hog` on macOS, `$XDG_CONFIG_HOME/
 
 ### CI without a stored key
 
-A CI job can trade the OIDC token its provider issues for a PostHog token, so no key is stored in the CI provider.
+A CI job can trade the OIDC token its provider issues for a Flind token, so no key is stored in the CI provider.
 hog supports GitHub Actions, GitLab.com and Depot CI.
 An organization admin trusts the repository once, and each run of the job then gets a token that lives a few minutes.
 
-1. In the repository, logged in with `hog auth login`, run `hog ci setup --scope error_tracking:write`, listing every scope the job needs, separated by commas, like `--scope error_tracking:write,query:read`. hog asks which runs may get a token, such as pushes to a branch or deploys to an environment, with the presets and explanations PostHog offers for the provider. Pass them as options instead, like `--preset branch_push=main`. An agent gets the list of presets it still needs, with the same explanations.
-2. hog finds the CI provider and the repository from the origin remote, and asks PostHog to trust it in your project. When the repository has config for more than one provider, such as `.github/workflows` next to `.depot/workflows`, pass `--provider depot_ci` or `--provider github_actions`. PostHog looks up the repository's ID, so a deleted and re-created repository with the same name doesn't match.
+1. In the repository, logged in with `hog auth login`, run `hog ci setup --scope error_tracking:write`, listing every scope the job needs, separated by commas, like `--scope error_tracking:write,query:read`. hog asks which runs may get a token, such as pushes to a branch or deploys to an environment, with the presets and explanations Flind offers for the provider. Pass them as options instead, like `--preset branch_push=main`. An agent gets the list of presets it still needs, with the same explanations.
+2. hog finds the CI provider and the repository from the origin remote, and asks Flind to trust it in your project. When the repository has config for more than one provider, such as `.github/workflows` next to `.depot/workflows`, pass `--provider depot_ci` or `--provider github_actions`. Flind looks up the repository's ID, so a deleted and re-created repository with the same name doesn't match.
 3. An organization admin approves the request in the browser. When you are one, hog opens the page and waits. Otherwise it names the admins and prints the link to send them. `hog ci setup --wait` checks on the request later.
-4. Add the `host` and `projectId` hog prints to `posthog.json`, and the snippet it prints to the job, which gives the job an OIDC token. Setting `HOG_HOST` and `HOG_PROJECT_ID` in the job works too, and a self-hosted PostHog needs `HOG_HOST`.
+4. Add the `host` and `projectId` hog prints to `posthog.json`, and the snippet it prints to the job, which gives the job an OIDC token. Setting `HOG_HOST` and `HOG_PROJECT_ID` in the job works too, and a self-hosted Flind needs `HOG_HOST`.
 
 In the job:
 
-- hog asks the provider for a token whose audience is the PostHog host, and exchanges it for a token that works in the project with the scopes the admin allowed.
+- hog asks the provider for a token whose audience is the Flind host, and exchanges it for a token that works in the project with the scopes the admin allowed.
 - Put the project ID and the host in `posthog.json` as `projectId` and `host`, which is simpler than setting `HOG_PROJECT_ID` and `HOG_HOST` in every job. The environment variables win when both are set.
-- A `host` in `posthog.json` counts here only when it is PostHog Cloud (`https://us.posthog.com` or `https://eu.posthog.com`), so a change to the file can't send the job's token elsewhere. A self-hosted PostHog needs `HOG_HOST`, and a job stops when posthog.json names one without it. Without either, hog uses `https://us.posthog.com`.
+- A `host` in `posthog.json` counts here only when it is Flind Cloud (`https://us.posthog.com` or `https://eu.posthog.com`), so a change to the file can't send the job's token elsewhere. A self-hosted Flind needs `HOG_HOST`, and a job stops when posthog.json names one without it. Without either, hog uses `https://us.posthog.com`.
 - The token lives a few minutes. hog keeps it in memory for the run, never on disk, and exchanges again before it expires.
 - `HOG_PERSONAL_API_KEY` still wins when it is set.
 
 ### Logging in and out
 
-- At a terminal, `hog auth login` asks where your PostHog account is hosted, opens the browser, and waits for you to approve. The address PostHog opens at, us.posthog.com or eu.posthog.com, tells you which to pick.
+- At a terminal, `hog auth login` asks where your Flind account is hosted, opens the browser, and waits for you to approve. The address Flind opens at, us.posthog.com or eu.posthog.com, tells you which to pick.
 - On the approval page you check the code, pick a project and see what hog will be able to do. The token only works in that project; to use another one, log in again. hog renews the token by itself.
 - `hog auth login --read-only` asks only for read access. To change something later, run `hog auth add` with the write scopes you need.
 - `hog auth add insight:write dashboard:write` adds scopes to your login. hog asks for the scopes you already have plus the new ones, and the approval page keeps the new ones ticked. In the same project, commands that are still running keep working with the new token. Agents finish with `hog auth add --wait`.
-- When PostHog refuses a request because your login lacks a scope, hog asks at a terminal whether to add it with `hog auth add`, then sends the request again. Agents get the error `step_up_required` with the `hog auth add` command to run. A personal API key gets the scopes to add to the key in PostHog.
+- When Flind refuses a request because your login lacks a scope, hog asks at a terminal whether to add it with `hog auth add`, then sends the request again. Agents get the error `step_up_required` with the `hog auth add` command to run. A personal API key gets the scopes to add to the key in Flind.
 - `hog error-tracking upload`, `hog error-tracking process`, `hog endpoints push` and `hog api call` check your scopes before they change anything, so they don't stop halfway.
 - An agent or a script cannot answer prompts, so `hog auth login --region us` returns at once with a link and a code for a person to approve. `hog auth login --wait` then saves the token. Running `hog auth login` again before the code expires returns the same link.
 - Each login checks that hog can use the keychain, and records where it stored the token in `settings.json` in hog's folder, so other commands don't check again. The keychain, or the credentials file, keeps only the secrets. The rest of the login, such as the project and the scopes, is in `settings.json`. When the keychain shows a dialog, choose "Always Allow".
-- Self-hosted PostHog has to reach posthog.com to log hog in, because hog's OAuth client is described there. Without that, set the environment variables above.
+- Self-hosted Flind has to reach posthog.com to log hog in, because hog's OAuth client is described there. Without that, set the environment variables above.
 - In CI, skip login. Use the job's OIDC token (below), or set the environment variables above.
-- `hog auth status` checks the credentials against PostHog, and names where they come from, their scopes and when the token expires. `hog auth logout` revokes the login on this machine in PostHog and removes it from this machine. `hog auth logout --all` does the same for every login hog stored. Both warn when an environment variable still holds a key.
+- `hog auth status` checks the credentials against Flind, and names where they come from, their scopes and when the token expires. `hog auth logout` revokes the login on this machine in Flind and removes it from this machine. `hog auth logout --all` does the same for every login hog stored. Both warn when an environment variable still holds a key.
 
 ## Develop
 

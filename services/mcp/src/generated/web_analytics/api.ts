@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 13 enabled ops
+ * Flind API - MCP 13 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -480,7 +480,7 @@ export const WebAnalyticsBotRulesCreateBody = () => zod.object({
     name: zod
         .string()
         .describe(
-            'Label reported by the `Bot name` property when the rule matches. Also the operator for a rule on a bot PostHog does not know.'
+            'Label reported by the `Bot name` property when the rule matches. Also the operator for a rule on a bot Flind does not know.'
         ),
     category: zod
         .string()

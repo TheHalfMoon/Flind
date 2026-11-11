@@ -1484,7 +1484,7 @@ class TestDirectPostgresQuery(APIBaseTest):
 
         self.assertEqual(
             str(error.exception),
-            "This host points to an internal or private IP address, which PostHog can't reach. "
+            "This host points to an internal or private IP address, which Flind can't reach. "
             "Use a host that's reachable from the public internet. "
             "If your database isn't publicly reachable, connect through an SSH tunnel.",
         )
@@ -1549,7 +1549,7 @@ class TestDirectPostgresQuery(APIBaseTest):
         "products.warehouse_sources.backend.temporal.data_imports.sources.common.mixins.pinned_host_kwargs",
         side_effect=HostNotAllowedError(
             "Database host not allowed: This host points to an internal or private IP address, "
-            "which PostHog can't reach. Use a host that's reachable from the public internet."
+            "which Flind can't reach. Use a host that's reachable from the public internet."
         ),
     )
     @patch("posthog.hogql.direct_sql.postgres_adapter.psycopg.connect")
@@ -1593,7 +1593,7 @@ class TestDirectPostgresQuery(APIBaseTest):
         self.assertEqual(
             str(error.exception),
             "Database host not allowed: This host points to an internal or private IP address, "
-            "which PostHog can't reach. Use a host that's reachable from the public internet.",
+            "which Flind can't reach. Use a host that's reachable from the public internet.",
         )
         mock_connect.assert_not_called()
 
@@ -1643,7 +1643,7 @@ class TestDirectPostgresQuery(APIBaseTest):
 
         host_rejection = HostNotAllowedError(
             "Database host not allowed: This host points to an internal or private IP address, "
-            "which PostHog can't reach. Use a host that's reachable from the public internet."
+            "which Flind can't reach. Use a host that's reachable from the public internet."
         )
         # Validation passes (host resolves public); the connect-time tunnel open rejects it.
         with (

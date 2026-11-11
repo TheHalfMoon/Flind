@@ -39,7 +39,7 @@ describe('spacesSceneLogic', () => {
         expect(isLockedSpace(identity as ChannelDTOApi)).toBe(locked)
     })
 
-    // Matches PostHog Desktop, which names the personal space "personal" whatever its stored name is.
+    // Matches Flind Desktop, which names the personal space "personal" whatever its stored name is.
     it.each([
         ['the personal space', space('me', 'me', false, 'personal'), 'personal'],
         ['a shared space', space('billing', 'billing', false), 'billing'],

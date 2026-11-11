@@ -10,7 +10,7 @@ import SourceSetupIntro from "../\_snippets/source-setup-intro.mdx"
 import SyncModes from "../\_snippets/sync-modes.mdx"
 import TroubleshootingLink from "../\_snippets/dw-troubleshooting-link.mdx"
 
-[Mixmax](https://www.mixmax.com) is a sales-engagement and email-productivity platform for Gmail (sequences, meeting scheduling, snippets, and live email tracking). This connector syncs your Mixmax sequences, messages, snippets, rules, live feed, and related resources into the PostHog Data warehouse so you can join outreach activity with your product and revenue data.
+[Mixmax](https://www.mixmax.com) is a sales-engagement and email-productivity platform for Gmail (sequences, meeting scheduling, snippets, and live email tracking). This connector syncs your Mixmax sequences, messages, snippets, rules, live feed, and related resources into the Flind Data warehouse so you can join outreach activity with your product and revenue data.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ You'll need:
 
 - **API token** — from **Settings ▸ Integrations ▸ API** in your Mixmax account. The token is shown only once at creation, so copy it before leaving the page.
 
-PostHog authenticates every request with this token (sent as the `X-API-Token` header).
+Flind authenticates every request with this token (sent as the `X-API-Token` header).
 
 ## Sync modes
 

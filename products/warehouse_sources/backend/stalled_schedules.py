@@ -61,7 +61,7 @@ _AWARE_ISO_TIMESTAMP = r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?([+-]\d{2}:
 # Replaces the stale Running status on a repaired schema. The row keeps a visible record of the
 # gap, and the schema's own next tick clears it.
 REPAIRED_SCHEMA_ERROR = (
-    "This sync stopped running on its schedule. PostHog restarted it, and the next sync runs on schedule."
+    "This sync stopped running on its schedule. Flind restarted it, and the next sync runs on schedule."
 )
 
 

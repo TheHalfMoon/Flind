@@ -4,7 +4,7 @@ Builds the full digest for an organization (every project with exceptions this w
 no per-user notification filtering) and delivers it through the digest workflow webhook.
 
 Usage:
-    # Recipient is a PostHog user in exactly one org
+    # Recipient is a Flind user in exactly one org
     python manage.py send_error_tracking_weekly_digest --email user@example.com
 
     # Explicit org (required when the recipient isn't a user or belongs to multiple orgs)

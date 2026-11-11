@@ -42,7 +42,7 @@ class BasetenSource(ResumableSource[BasetenSourceConfig, BasetenResumeConfig]):
             label="Baseten",
             releaseStatus=ReleaseStatus.BETA,
             unreleasedSource=True,
-            caption="""Enter your Baseten API key to sync your Baseten workspace data into the PostHog Data warehouse.
+            caption="""Enter your Baseten API key to sync your Baseten workspace data into the Flind Data warehouse.
 
 Create an API key in your [Baseten workspace settings](https://app.baseten.co/settings/api_keys). The key is workspace-scoped and read access to your models, deployments, chains, and training resources is sufficient.""",
             iconPath="/static/services/baseten.png",

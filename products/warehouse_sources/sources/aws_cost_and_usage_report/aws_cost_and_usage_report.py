@@ -499,7 +499,7 @@ def iter_data_file(
             parquet_file = pq.ParquetFile(destination)
             if uses_brotli_compression(parquet_file.metadata):
                 raise AwsCostAndUsageReportError(
-                    f"{ERROR_PREFIX}: {UNSUPPORTED_COMPRESSION} - {key} uses Brotli compression, which PostHog can't read",
+                    f"{ERROR_PREFIX}: {UNSUPPORTED_COMPRESSION} - {key} uses Brotli compression, which Flind can't read",
                     UNSUPPORTED_COMPRESSION,
                 )
             for batch in parquet_file.iter_batches(batch_size=ROWS_PER_BATCH):

@@ -468,25 +468,25 @@ DesktopAccessOutcome = Literal[
 # the local deactivated-organization check blocked the run before any gateway call.
 CODE_USAGE_GATE_CHECK_TOTAL = Counter(
     "posthog_tasks_code_usage_gate_check_total",
-    "Cloud usage-gate check outcomes for PostHog Code runs",
+    "Cloud usage-gate check outcomes for Flind Code runs",
     labelnames=["outcome"],
 )
 
 COMPUTE_QUOTA_CHECK_TOTAL = Counter(
     "posthog_tasks_compute_quota_check_total",
-    "Compute quota-check outcomes for billable PostHog Desktop runs",
+    "Compute quota-check outcomes for billable Flind Desktop runs",
     labelnames=["outcome"],
 )
 
 DESKTOP_ACCESS_DECISIONS_TOTAL = Counter(
     "posthog_tasks_desktop_access_decisions_total",
-    "PostHog Desktop access decisions by bounded outcome",
+    "Flind Desktop access decisions by bounded outcome",
     labelnames=["outcome"],
 )
 
 DESKTOP_ACCESS_FLAG_UNRESOLVED_TOTAL = Counter(
     "posthog_tasks_desktop_access_flag_unresolved_total",
-    "PostHog Desktop access flag evaluations that returned no boolean value",
+    "Flind Desktop access flag evaluations that returned no boolean value",
     labelnames=["flag"],
 )
 

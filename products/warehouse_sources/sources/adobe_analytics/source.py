@@ -146,7 +146,7 @@ class AdobeAnalyticsSource(ResumableSource[AdobeAnalyticsSourceConfig, AdobeAnal
             name=ExternalDataSourceType.ADOBEANALYTICS,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Adobe Analytics",
-            caption="""Pull Adobe Analytics report data and metadata into the PostHog Data warehouse.
+            caption="""Pull Adobe Analytics report data and metadata into the Flind Data warehouse.
 
 Create an **OAuth Server-to-Server** credential in the [Adobe Developer Console](https://developer.adobe.com/console), add the Adobe Analytics API to the project, and assign a product profile that can read the report suite you want. Then enter the credential's client ID and secret.
 

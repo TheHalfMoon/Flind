@@ -233,7 +233,7 @@ describe("xmlToContent", () => {
   it.each([
     ["dashboard", "17"],
     ["report", "rep-1"],
-  ] as const)("parses a %s tag into a PostHog object chip", (kind, id) => {
+  ] as const)("parses a %s tag into a Flind object chip", (kind, id) => {
     expect(xmlToContent(`<${kind} id="${id}" />`).segments).toEqual([
       {
         type: "chip",
@@ -442,7 +442,7 @@ describe("xmlToContent", () => {
   });
 });
 
-describe("PostHog object kind prompt", () => {
+describe("Flind object kind prompt", () => {
   it.each(POSTHOG_OBJECT_KINDS)(
     "teaches agents to link the %s page",
     (kind) => {

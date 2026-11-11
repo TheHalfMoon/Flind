@@ -46,13 +46,13 @@ class ReverseProxyCheck(RollupHealthCheck):
     remediation = Remediation(
         human="""
             Set up a reverse proxy that forwards a path on your own domain (e.g. https://ph.example.com or
-            https://example.com/ingest) to PostHog, then point your SDK's `api_host` at that proxy URL and
-            redeploy. PostHog supports several options (managed reverse proxy, Cloudflare, Vercel, AWS
+            https://example.com/ingest) to Flind, then point your SDK's `api_host` at that proxy URL and
+            redeploy. Flind supports several options (managed reverse proxy, Cloudflare, Vercel, AWS
             CloudFront, nginx, etc.).
         """,
         agent="""
             Confirm traffic isn't proxied with `execute-sql` (check recent events'
-            `properties.$lib_custom_api_host`). Then either stand up a PostHog-managed reverse proxy with
+            `properties.$lib_custom_api_host`). Then either stand up a Flind-managed reverse proxy with
             `proxy-create` (use `proxy-list` / `proxy-diagnose` to get the CNAME target and check
             provisioning) and have the user add the DNS record, or implement a proxy in the user's
             codebase — add the rewrite/route for their stack (e.g. `rewrites` in next.config.js, a
@@ -77,7 +77,7 @@ class ReverseProxyCheck(RollupHealthCheck):
         summary = issue.payload.get("reason", "Ad blockers may affect tracking accuracy.")
         return SignalContent(
             description=(
-                "PostHog isn't receiving events through a reverse proxy for this project. "
+                "Flind isn't receiving events through a reverse proxy for this project. "
                 "Without one, ad blockers can silently drop a meaningful share of "
                 "`$pageview` / `$screen` events, undercounting traffic and skewing web analytics. "
                 "Recommend serving capture from a first-party domain via a reverse proxy."

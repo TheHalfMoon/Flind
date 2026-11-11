@@ -8,7 +8,7 @@ warehouse views read, to JSON files next to this script:
 - github_pull_requests.json
 - github_workflow_runs.json
 
-Load the result into a local PostHog stack with:
+Load the result into a local Flind stack with:
 
     python manage.py seed_engineering_analytics --team-id <id>
 

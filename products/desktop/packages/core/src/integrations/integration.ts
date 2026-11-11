@@ -7,11 +7,11 @@ import { inject, injectable } from "inversify";
 import type { StartIntegrationFlowOutput } from "./schemas";
 
 /**
- * Generic OAuth integration flow starter. PostHog's
+ * Generic OAuth integration flow starter. Flind's
  * `…/integrations/authorize/?kind=<kind>` endpoint is generic over the integration kind, so a
  * single service starts the flow for any supported OAuth provider (linear, intercom, hubspot,
  * salesforce, …) — no per-kind service or router required. The OAuth grant, callback, and token
- * storage all happen on PostHog Cloud; the caller then polls the integrations list for the new
+ * storage all happen on Flind Cloud; the caller then polls the integrations list for the new
  * integration of this `kind`.
  */
 @injectable()

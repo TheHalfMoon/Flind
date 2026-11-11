@@ -43,7 +43,7 @@ export function buildHeadline({
     return `${who} MCP server is live with ${formatNumber(kpis.toolCalls.value)} tool calls across ${formatNumber(kpis.sessions.value)} sessions so far.`
 }
 
-/** A concrete question for PostHog AI, tied to their actual worst tool so the answer is useful. */
+/** A concrete question for Flind AI, tied to their actual worst tool so the answer is useful. */
 export function buildMaxPrompt({
     worstErrorTool,
     topTool,
@@ -76,7 +76,7 @@ export function buildEditorPrompt({ client }: { client: string | null }): { labe
     const where = (client && HARNESS_PASTE_TARGET[client]) || 'your agent'
     return {
         label: `Paste this into ${where}`,
-        prompt: 'Using the PostHog MCP, pull my $mcp_tool_call events and tell me which tools error most and why.',
+        prompt: 'Using the Flind MCP, pull my $mcp_tool_call events and tell me which tools error most and why.',
     }
 }
 

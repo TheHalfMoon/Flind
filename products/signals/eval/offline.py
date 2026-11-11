@@ -58,7 +58,7 @@ class SignalsEvalRecorder:
             self._report(f"uploads disabled: {error}")
 
     def _report(self, message: str) -> None:
-        tqdm.write(f"PostHog offline ({self.suite.key}): {message}", file=sys.stderr)
+        tqdm.write(f"Flind offline ({self.suite.key}): {message}", file=sys.stderr)
 
     @staticmethod
     def _metric_name(stage: str, metric: str) -> str:

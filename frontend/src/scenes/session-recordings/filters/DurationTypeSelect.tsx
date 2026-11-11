@@ -5,7 +5,7 @@ import { LemonSelect } from '@flind/lemon-ui'
 import { DurationType } from '~/types'
 
 interface DurationTypeFilterProps {
-    // what to call this when reporting analytics to PostHog
+    // what to call this when reporting analytics to Flind
     onChangeEventDescription?: string
     onChange: (newFilter: DurationType) => void
     value?: DurationType

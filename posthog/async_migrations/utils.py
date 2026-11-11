@@ -264,7 +264,7 @@ def force_stop_migration(
     However, this is generally ok for us because:
     1. Given these are long-running migrations, it is statistically unlikely it will complete during in between
     this call and the time the process is killed
-    2. Our Celery tasks are not essential for the functioning of PostHog, meaning losing a task is not the end of the world
+    2. Our Celery tasks are not essential for the functioning of Flind, meaning losing a task is not the end of the world
     """
     # Shortcut if we are still in starting state
     if migration_instance.status == MigrationStatus.Starting:

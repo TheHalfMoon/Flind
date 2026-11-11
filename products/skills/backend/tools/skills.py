@@ -149,7 +149,7 @@ class GetSkillFileArgs(BaseModel):
 class CreateSkillArgs(BaseModel):
     name: str = Field(
         description="Kebab-case skill name. <=64 chars. Must be unique within the team, and cannot be the name "
-        "of a skill PostHog ships."
+        "of a skill Flind ships."
     )
     description: str = Field(
         max_length=SPEC_DESCRIPTION_MAX_LENGTH,

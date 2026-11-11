@@ -44,7 +44,7 @@ class MetaplaneSource(ResumableSource[MetaplaneSourceConfig, MetaplaneResumeConf
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Metaplane by Datadog",
             keywords=["data observability", "data quality", "datadog"],
-            caption="""Enter your Metaplane API key to pull your data observability monitors and their evaluation history into the PostHog Data warehouse.
+            caption="""Enter your Metaplane API key to pull your data observability monitors and their evaluation history into the Flind Data warehouse.
 
 You can generate an API key in your Metaplane account settings. A paid Metaplane plan is required for API access.
 """,

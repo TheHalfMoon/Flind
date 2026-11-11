@@ -33,7 +33,7 @@ function isDraftChanged(draft: AIRunPreferenceDraft, stored: AIRunPreferenceDraf
     return draft.model !== stored.model || draft.reasoning_effort !== stored.reasoning_effort
 }
 
-// A Pi default is authored in PostHog Desktop, and its models are not in this catalogue, so it
+// A Pi default is authored in Flind Desktop, and its models are not in this catalogue, so it
 // cannot be edited here. Seeding it as empty keeps the editor on ACP, and any save made here
 // moves the stored default to ACP rather than blocking the person.
 function draftFromStored(stored: TasksAIRunPreferencesApi | null | undefined): AIRunPreferenceDraft {

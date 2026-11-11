@@ -38,7 +38,7 @@ class FunnelDWValidator:
 
         if not node.events_join_key:
             errors.append(
-                f"Step {step_index}: events_join_key is required to specify the field in PostHog events "
+                f"Step {step_index}: events_join_key is required to specify the field in Flind events "
                 "(e.g., 'properties.$user_id', 'distinct_id')"
             )
 

@@ -68,7 +68,7 @@ export function WarehouseWizardHint({
             </div>
             <div className="text-sm text-default">
                 Skip the manual setup — run this in your project and the wizard auto-detects your databases and APIs and
-                connects them to PostHog.
+                connects them to Flind.
             </div>
             <div className="pt-1">
                 <CommandBlock

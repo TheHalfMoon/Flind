@@ -160,7 +160,7 @@ describe('MessageList', () => {
             id,
             content: `Draft ${id}`,
             authorType: 'AI',
-            authorName: 'PostHog Assistant',
+            authorName: 'Flind Assistant',
             createdAt,
             isPrivate: true,
             persistAs: 'reply',

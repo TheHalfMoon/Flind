@@ -54,7 +54,7 @@ class SquarespaceSource(ResumableSource[SquarespaceSourceConfig, SquarespaceResu
             name=ExternalDataSourceType.SQUARESPACE,
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="Squarespace",
-            caption="""Enter a Squarespace API key to pull your Squarespace Commerce data into the PostHog Data warehouse.
+            caption="""Enter a Squarespace API key to pull your Squarespace Commerce data into the Flind Data warehouse.
 
 Create an **API key** in your Squarespace site under **Settings → Advanced → Developer API Keys**, granting read access to the data you want to sync:
 - **Orders** (orders, transactions)

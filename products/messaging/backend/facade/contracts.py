@@ -111,7 +111,7 @@ class FieldNotAccepted(TransactionalEmailError):
     code = "field_not_accepted"
 
     def __init__(self, field: str) -> None:
-        super().__init__(f"PostHog doesn't take `{field}` yet.")
+        super().__init__(f"Flind doesn't take `{field}` yet.")
         self.field = field
 
 

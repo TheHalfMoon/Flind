@@ -49,7 +49,7 @@ class RenderSource(ResumableSource[RenderSourceConfig, RenderResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Render",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Render API key to pull your services, deploys, jobs, and databases into the PostHog Data warehouse.
+            caption="""Enter your Render API key to pull your services, deploys, jobs, and databases into the Flind Data warehouse.
 
 You can create an API key in your [Render account settings](https://dashboard.render.com/settings#api-keys).
 

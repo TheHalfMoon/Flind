@@ -22,7 +22,7 @@ export const ContentAutopilotSiteFields = ({ draft }: { draft: ContentAutopilotP
                     fullWidth
                 />
             </LemonField.Pure>
-            <LemonField.Pure label="Site name" help="Leave blank and PostHog will infer it.">
+            <LemonField.Pure label="Site name" help="Leave blank and Flind will infer it.">
                 <LemonInput
                     value={draft.name}
                     onChange={(name) => setProfileDraft({ name })}

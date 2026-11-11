@@ -1391,7 +1391,7 @@ def _attribution_params(config: MetaAdsSourceConfig) -> dict[str, str]:
 
     Omitted entirely when unset, so existing connections keep Meta's default attribution and
     produce byte-for-byte the same request as before. When set, they let a user reconcile
-    PostHog's spend and conversion numbers with what Ads Manager shows.
+    Flind's spend and conversion numbers with what Ads Manager shows.
 
     - ``action_attribution_windows``: a comma-separated list in config (e.g. ``7d_click,1d_view``),
       normalized by ``_normalize_attribution_windows`` and sent JSON-encoded the way Meta's Graph

@@ -20,7 +20,7 @@ export interface SurveyProvenance {
 }
 
 export const SURVEY_CHANNEL_LABELS: Record<SurveyChannel, string> = {
-    app: 'the PostHog app',
+    app: 'the Flind app',
     mcp: 'MCP',
     api: 'the API',
     scout: 'a scout',

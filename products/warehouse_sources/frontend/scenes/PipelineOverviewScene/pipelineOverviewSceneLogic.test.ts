@@ -225,7 +225,7 @@ describe('pipelineOverviewSceneLogic', () => {
         logic.unmount()
         wsApi.externalDataDestinationsList.mockResolvedValue({
             results: [
-                { id: 'dest-1', name: 'PostHog warehouse', type: 'PostHogWarehouse' },
+                { id: 'dest-1', name: 'Flind warehouse', type: 'PostHogWarehouse' },
                 { id: 'dest-2', name: 'Analytics Postgres', type: 'Postgres' },
             ],
         })
@@ -319,7 +319,7 @@ describe('pipelineOverviewSceneLogic', () => {
         logic.unmount()
         wsApi.externalDataDestinationsList.mockResolvedValue({
             results: [
-                { id: 'wh', name: 'PostHog warehouse', type: 'PostHogWarehouse' },
+                { id: 'wh', name: 'Flind warehouse', type: 'PostHogWarehouse' },
                 { id: 'pg', name: 'Analytics Postgres', type: 'Postgres' },
             ],
         })
@@ -343,7 +343,7 @@ describe('pipelineOverviewSceneLogic', () => {
         await expectLogic(logic).toFinishAllListeners()
 
         const byLabel = Object.fromEntries(logic.values.rowsByDestination.map((s: any) => [s.label, s.data]))
-        expect(byLabel['PostHog warehouse']).toEqual([80, 80])
+        expect(byLabel['Flind warehouse']).toEqual([80, 80])
         expect(byLabel['Analytics Postgres']).toEqual([20, 20])
     })
 })

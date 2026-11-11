@@ -59,7 +59,7 @@ export function ExtensionExperimentEditor(): JSX.Element | null {
                             target="_blank"
                             className="text-xs"
                         >
-                            Open in PostHog <IconOpenInNew />
+                            Open in Flind <IconOpenInNew />
                         </Link>
                     )}
                 </div>

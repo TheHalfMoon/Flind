@@ -94,7 +94,7 @@ pulling the token from the Basic credential and reusing the standard Personal AP
 
 **Why a Personal API Key, not a Project Secret API Key.** The credential must die with the
 user's access — no manual revocation, no offboarding checklist. A user-tied credential gets that
-for free: PostHog re-evaluates membership on every request, so the clone stops working the moment
+for free: Flind re-evaluates membership on every request, so the clone stops working the moment
 the user leaves the team or loses access. A PSAK is deliberately user-_less_ (built to outlive
 the people who make it), which is exactly the wrong property here. It's still _dedicated and
 read-only_ — one minted-for-this-purpose key per `(user, team)`, scoped to only `llm_skill:read`

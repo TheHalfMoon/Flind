@@ -221,7 +221,7 @@ class AnnotationSerializer(serializers.Serializer):
         required=False,
         allow_null=True,
         help_text=(
-            "When true, the annotation is hidden from the PostHog UI (charts and the annotations list) "
+            "When true, the annotation is hidden from the Flind UI (charts and the annotations list) "
             "but still readable over the API and MCP. Use for high-frequency markers like deployments "
             "that would otherwise crowd the UI. Null (the default) means the annotation is shown."
         ),

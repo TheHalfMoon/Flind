@@ -608,7 +608,7 @@ export interface DeepLinkChannelProperties {
   task_id?: string;
 }
 
-// PostHog's reserved LLM analytics feedback events, same shape as the PostHog AI
+// Flind's reserved LLM analytics feedback events, same shape as the Flind AI
 // web client (products/posthog_ai/frontend/utils/feedbackEvents.ts).
 // `$ai_session_id` is the task id because every `$ai_generation` of a run
 // carries it as `task_id`; `$ai_trace_id` is null until the sandbox exposes
@@ -1009,7 +1009,7 @@ export interface InboxReportActionResultProperties {
 /**
  * A report's product suggestion was rendered under its evidence, or its link
  * to the product was followed. Mirrors cloud's `Inbox report source
- * suggestion shown` / `clicked`, so the clients are comparable in one PostHog
+ * suggestion shown` / `clicked`, so the clients are comparable in one Flind
  * project.
  */
 export interface InboxReportSourceSuggestionProperties {
@@ -1029,7 +1029,7 @@ export interface InboxReportSourceSuggestionProperties {
  * against, so it carries the same report classification as the impression and
  * open events. Mirrors cloud's `Inbox report feedback`
  * (`frontend/src/scenes/inbox/inboxAnalytics.ts`) so the clients are
- * comparable in one PostHog project.
+ * comparable in one Flind project.
  */
 export interface InboxReportFeedbackProperties {
   report_id: string;
@@ -1703,7 +1703,7 @@ export const ANALYTICS_EVENTS = {
   COMMAND_CENTER_CANVAS_VIEWED: "Command center canvas viewed",
   BRAINROT_ACTIVATED: "Brainrot activated",
   BRAINROT_PLAYER_ERROR: "Brainrot player error",
-  POSTHOG_WEB_OPENED: "PostHog web opened",
+  POSTHOG_WEB_OPENED: "Flind web opened",
   SIDEBAR_NAV_ITEM_CLICKED: "Sidebar nav item clicked",
   TASK_LIST_GROUPING_CHANGED: "Task list grouping changed",
   TASK_LIST_APPEARANCE_CHANGED: "Task list appearance changed",
@@ -2116,8 +2116,8 @@ export type EventPropertyMap = {
 
 /**
  * The inbox event family. Every host stamps an `inbox_client` property (e.g.
- * "code" on desktop, "mobile" on the mobile app, "cloud" on the PostHog web
- * frontend) on exactly these events so the shared PostHog project can be sliced
+ * "code" on desktop, "mobile" on the mobile app, "cloud" on the Flind web
+ * frontend) on exactly these events so the shared Flind project can be sliced
  * by surface. Mirrors posthog's `frontend/src/scenes/inbox/inboxAnalytics.ts`.
  *
  * Keep this in sync with the inbox entries in `EventPropertyMap` above.

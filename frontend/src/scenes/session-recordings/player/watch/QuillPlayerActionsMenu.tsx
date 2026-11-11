@@ -92,11 +92,11 @@ export function QuillPlayerActionsMenu({ extraItems = [] }: { extraItems?: Lemon
             'data-attr': 'mute-audio-menu-item',
         },
         isStandardMode && {
-            label: 'PostHog .json',
+            label: 'Flind .json',
             icon: <IconDownload />,
             onClick: () => exportRecordingToFile(),
             tooltip:
-                'Export PostHog recording data to a JSON file. This can be loaded later into PostHog for playback.',
+                'Export Flind recording data to a JSON file. This can be loaded later into Flind for playback.',
             disabledReason: exportAccessControlDisabledReason ?? undefined,
             'data-attr': 'replay-export-posthog-json',
         },
@@ -104,7 +104,7 @@ export function QuillPlayerActionsMenu({ extraItems = [] }: { extraItems?: Lemon
             label: 'Export to MP4',
             icon: <IconDownload />,
             onClick: () => exportRecordingToVideoFile(),
-            tooltip: exportLimitReason ?? 'Export PostHog recording data to MP4 video file.',
+            tooltip: exportLimitReason ?? 'Export Flind recording data to MP4 video file.',
             disabledReason:
                 exportLimitReason ?? tooLongToExportReason ?? exportAccessControlDisabledReason ?? undefined,
             'data-attr': 'replay-export-mp4',

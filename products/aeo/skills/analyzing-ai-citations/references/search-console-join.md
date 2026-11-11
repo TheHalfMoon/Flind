@@ -1,6 +1,6 @@
 # Joining citations to Google Search Console
 
-Search Console data reaches PostHog through a `GoogleSearchConsole` data warehouse source.
+Search Console data reaches Flind through a `GoogleSearchConsole` data warehouse source.
 Once synced, its tables are plain HogQL tables and join to `system.aeo_citation_checks` and
 to `sessions` like any other.
 

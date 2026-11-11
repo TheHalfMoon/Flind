@@ -385,7 +385,7 @@ describe('RequestContext', () => {
             expect(result).toMatchObject({
                 $ai_product: 'mcp',
                 $mcp_source: 'posthog_mcp_analytics',
-                $mcp_server_name: 'PostHog',
+                $mcp_server_name: 'Flind',
                 $mcp_server_version: '1.0.0',
                 $mcp_client_name: 'claude-code',
                 $mcp_client_version: '2.0',
@@ -460,7 +460,7 @@ describe('RequestContext', () => {
             expect(result).toMatchObject({
                 $ai_product: 'mcp',
                 $mcp_source: 'posthog_mcp_analytics',
-                $mcp_server_name: 'PostHog',
+                $mcp_server_name: 'Flind',
                 $mcp_server_version: '1.0.0',
                 mcp_runtime: 'hono',
             })

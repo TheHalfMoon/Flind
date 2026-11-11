@@ -79,11 +79,11 @@ def _oauth_accounts_cache_key(team_id: int, integration_id: int) -> str:
     return f"@dwh/google_ads/{team_id}/{integration_id}/oauth_accounts"
 
 
-# The connected Google login granted PostHog an OAuth token without the adwords scope, so
+# The connected Google login granted Flind an OAuth token without the adwords scope, so
 # nothing it asks for will be authorized. The wizard and the sync both surface this, and
 # reconnecting is the only fix, so both paths read from one string.
 _SCOPE_INSUFFICIENT_ERROR = (
-    "Your Google Ads connection is missing the access PostHog needs. Reconnect your Google Ads "
+    "Your Google Ads connection is missing the access Flind needs. Reconnect your Google Ads "
     "account and allow access to your Google Ads data."
 )
 
@@ -306,7 +306,7 @@ class GoogleAdsSource(
             featured=True,
             keywords=["adwords"],
             label="Google Ads",
-            caption="Ensure you have granted PostHog access to your Google Ads account, learn how to do this in [the docs](https://posthog.com/docs/cdp/sources/google-ads).",
+            caption="Ensure you have granted Flind access to your Google Ads account, learn how to do this in [the docs](https://posthog.com/docs/cdp/sources/google-ads).",
             releaseStatus=ReleaseStatus.GA,
             iconPath="/static/services/google-ads.png",
             docsUrl="https://posthog.com/docs/cdp/sources/google-ads",
@@ -604,7 +604,7 @@ class GoogleAdsSource(
             if "PERMISSION_DENIED" in error_message or "caller does not have permission" in error_message:
                 return (
                     False,
-                    "PostHog doesn't have permission to access this Google Ads account. Verify the "
+                    "Flind doesn't have permission to access this Google Ads account. Verify the "
                     "customer ID (and manager account, if using an MCC) is accessible to the connected "
                     "Google login, then reconnect your Google Ads account.",
                 )

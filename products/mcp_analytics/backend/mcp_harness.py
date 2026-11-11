@@ -51,7 +51,7 @@ _UA_TOKEN = f"trim(concat({_UA_PRODUCT}, ' ', extract(toString(properties.$mcp_c
 
 # The x-anthropic-client vendor header, coalesced across both wire keys it is
 # captured under: `$mcp_vendor_client` (the SDK name) and the unprefixed
-# `mcp_vendor_client` (PostHog's own server). The unprefixed arm is load-bearing,
+# `mcp_vendor_client` (Flind's own server). The unprefixed arm is load-bearing,
 # not cosmetic: rows carrying only it often self-report a wrong clientInfo.name
 # (Claude Code as "Anthropic/ClaudeAI"), so without it they misattribute.
 _VENDOR = (
@@ -202,11 +202,11 @@ def _label_multi_if(token_col: str, fallback_sql: str, custom_rules: Sequence[Cu
         {token_col} = 'opencode', 'opencode',
         startsWith({token_col}, 'kiro'), 'Kiro',
         startsWith({token_col}, 'desktop-commander'), 'Desktop Commander',
-        -- PostHog's own CLI (`services/mcp/src/cli/context.ts` hard-codes this name).
+        -- Flind's own CLI (`services/mcp/src/cli/context.ts` hard-codes this name).
         -- It is a wrapper, not a terminal client: agents are told to shell out to it by
         -- the AGENTS.md snippet it installs, and it forwards no identity for whoever
         -- invoked it, so these calls can only ever be attributed to the CLI itself.
-        {token_col} = 'posthog-cli', 'PostHog CLI',
+        {token_col} = 'posthog-cli', 'Flind CLI',
         {fallback_sql}
     )"""
 
@@ -247,10 +247,10 @@ HARNESS_LABELS: tuple[str, ...] = (
     "opencode",
     "Kiro",
     "Desktop Commander",
-    "PostHog CLI",
+    "Flind CLI",
     "Other",
 )
 
 # Client names the classifier keeps as they are, but that the frontend shows with a brand mark
 # (`HARNESS_BY_LABEL` in harnessRegistry.ts). A frontend test pins that map to these two tuples.
-MARKED_CLIENT_NAMES: tuple[str, ...] = ("PostHog AI", "Slack")
+MARKED_CLIENT_NAMES: tuple[str, ...] = ("Flind AI", "Slack")

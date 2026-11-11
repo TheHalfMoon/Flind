@@ -11,7 +11,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function FeatureFlagListApp(): JSX.Element {
     return (
-        <AppWrapper<FeatureFlagListData> appName="PostHog Feature Flag List">
+        <AppWrapper<FeatureFlagListData> appName="Flind Feature Flag List">
             {({ data, app }) => <FeatureFlagListContent data={data!} app={app} />}
         </AppWrapper>
     )

@@ -446,7 +446,7 @@ export const AIGenerationEvent: Story = {
                 $ai_input: [
                     {
                         content:
-                            "You are Max, PostHog's AI assistant. Be friendly, direct, and helpful. Use tools to analyze data and answer questions.",
+                            "You are Max, Flind's AI assistant. Be friendly, direct, and helpful. Use tools to analyze data and answer questions.",
                         role: 'system',
                     },
                     {
@@ -463,7 +463,7 @@ export const AIGenerationEvent: Story = {
                     },
                     {
                         content:
-                            'You are currently in project Example Project, which is part of the Example Organization.\nThe user\'s name appears to be Jane Doe (jane@example.com). Feel free to use their first name when greeting. DO NOT use this name if it appears possibly fake.\nThe user is accessing the PostHog App from the "us" region, therefore all PostHog App URLs should be prefixed with the region, e.g. https://us.posthog.com\nCurrent time in the project\'s timezone, UTC: 2025-09-21 14:02:43.',
+                            'You are currently in project Example Project, which is part of the Example Organization.\nThe user\'s name appears to be Jane Doe (jane@example.com). Feel free to use their first name when greeting. DO NOT use this name if it appears possibly fake.\nThe user is accessing the Flind App from the "us" region, therefore all Flind App URLs should be prefixed with the region, e.g. https://us.posthog.com\nCurrent time in the project\'s timezone, UTC: 2025-09-21 14:02:43.',
                         role: 'system',
                     },
                     {

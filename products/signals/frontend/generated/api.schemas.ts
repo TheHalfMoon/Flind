@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -227,9 +227,9 @@ export interface ActivitySummaryComputedApi {
     pages: ActivitySummaryPageVisitsApi[]
     /** The products the user works in and the products they only visit. */
     products: ActivitySummaryProductSplitApi
-    /** The number of tasks the user gave to PostHog AI or the Slack agent. */
+    /** The number of tasks the user gave to Flind AI or the Slack agent. */
     task_count: number
-    /** Tasks the user gave to PostHog AI or the Slack agent that the summary input showed, oldest first. Empty on summaries from before task refs existed. */
+    /** Tasks the user gave to Flind AI or the Slack agent that the summary input showed, oldest first. Empty on summaries from before task refs existed. */
     tasks: ActivitySummaryLineRefApi[]
     /** Sessions of the user's AI agent over MCP that the summary input showed, oldest first. Empty on summaries from before MCP refs existed. */
     mcp_sessions: ActivitySummaryLineRefApi[]
@@ -784,7 +784,7 @@ export interface SignalTeamConfigApi {
     autostart_enabled?: boolean | null
     default_autostart_priority?: AutonomyPriorityEnumApi
     /**
-     * Default Slack channel for this team's signal inbox notifications, in the same `channel_id|#channel-name` shape PostHog uses elsewhere (only the channel id is required). Null means no team-level default; per-user channels still apply.
+     * Default Slack channel for this team's signal inbox notifications, in the same `channel_id|#channel-name` shape Flind uses elsewhere (only the channel id is required). Null means no team-level default; per-user channels still apply.
      * @maxLength 255
      * @nullable
      */
@@ -853,7 +853,7 @@ export interface SignalTeamConfigApi {
     implementation_repositories?: string[]
     /** Whether anomaly scoring runs while the Product analytics source (analytics / anomaly_investigation) is on. Scoring checks this project's active trends insights for anomalies and writes the results as $anomaly_score events, which are not billed. True by default. False stops new scores and keeps alert signals; events written before stay. Turning the source off stops scoring whatever this value is, and turning the source on again keeps this value. Turning it on does not enroll a project that anomaly_scoring_available reports as not covered. */
     anomaly_scoring_enabled?: boolean
-    /** Whether the anomaly scoring rollout covers this project. PostHog decides which projects it covers. A covered project is scored only while its Product analytics source is on. */
+    /** Whether the anomaly scoring rollout covers this project. Flind decides which projects it covers. A covered project is scored only while its Product analytics source is on. */
     readonly anomaly_scoring_available: boolean
     /**
      * How many reports first became visible in the inbox during the current project-timezone day. This is the count the daily report limit compares against.
@@ -1490,7 +1490,7 @@ export const ConfidenceTierEnumApi = {
 export interface ScoutSuggestionItemApi {
     /** Stable id of this suggestion within the batch; use it to dismiss. */
     id: string
-    /** `canonical`: enable a PostHog-authored scout that exists but is off. `custom`: create a drafted scout.
+    /** `canonical`: enable a Flind-authored scout that exists but is off. `custom`: create a drafted scout.
      *
      * * `canonical` - canonical
      * * `custom` - custom */
@@ -2256,9 +2256,9 @@ export const RefundIneligibilityReasonEnumApi = {
 } as const
 
 /**
- * * `posthog_health_check` - PostHog health check
- * * `posthog_onboarding` - PostHog onboarding
- * * `posthog_system` - PostHog system
+ * * `posthog_health_check` - Flind health check
+ * * `posthog_onboarding` - Flind onboarding
+ * * `posthog_system` - Flind system
  */
 export type SignalReportBillingExemptReasonEnumApi =
     (typeof SignalReportBillingExemptReasonEnumApi)[keyof typeof SignalReportBillingExemptReasonEnumApi]
@@ -2526,11 +2526,11 @@ export interface SignalReportListApi {
     readonly refund: SignalReportRefundApi | null
     /** Why refunding this report's PR would be rejected right now, or null when a refund would be accepted (see the field's schema for the reason values). */
     readonly refund_ineligibility_reason: RefundIneligibilityReasonEnumApi | null
-    /** Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) — its implementation PRs are free and cannot be refunded because nothing was charged.
+    /** Non-null when this report is system-marked never-billable (Flind-system origin, e.g. a health-check scout finding) — its implementation PRs are free and cannot be refunded because nothing was charged.
      *
-     * * `posthog_health_check` - PostHog health check
-     * * `posthog_onboarding` - PostHog onboarding
-     * * `posthog_system` - PostHog system */
+     * * `posthog_health_check` - Flind health check
+     * * `posthog_onboarding` - Flind onboarding
+     * * `posthog_system` - Flind system */
     readonly billing_exempt_reason: SignalReportBillingExemptReasonEnumApi | null
     /**
      * The space (task channel) this report is assigned to, or null when unassigned. The general view lists every report regardless of this value.
@@ -2615,7 +2615,7 @@ export const ActionabilityEnumApi = {
 /**
  * One suggested reviewer — identified by `github_login`, `user_uuid`, or both.
  *
- * A reviewer is a PostHog user, so a `user_uuid` only has to name an org member of this team: a
+ * A reviewer is a Flind user, so a `user_uuid` only has to name an org member of this team: a
  * member with no linked GitHub account routes the report like anyone else. A `user_uuid` that
  * isn't an org member of this team is rejected — so a reviewer is never silently dropped.
  */
@@ -2625,7 +2625,7 @@ export interface SuggestedReviewerApi {
      * @maxLength 200
      */
     github_login?: string
-    /** PostHog user UUID (e.g. from `scout-members-list`, or an entity's `created_by`). Use this when you know the PostHog user, whether or not they have a GitHub handle — every member is routable this way. Must be a concrete UUID; the `@me` alias is not valid here. */
+    /** Flind user UUID (e.g. from `scout-members-list`, or an entity's `created_by`). Use this when you know the Flind user, whether or not they have a GitHub handle — every member is routable this way. Must be a concrete UUID; the `@me` alias is not valid here. */
     user_uuid?: string
     /**
      * One sentence of evidence for WHY this person: what ties them to the affected surface (e.g. 'authored 4 of the last 10 commits touching products/tracing/mcp/', 'human correction routed the prior tracing report to them'). Persisted on the report so the routing is auditable — always set it when you can name the evidence; 'precedent' alone is weak, prefer code-derived ownership.
@@ -3153,11 +3153,11 @@ export interface SignalReportApi {
     readonly refund: SignalReportRefundApi | null
     /** Why refunding this report's PR would be rejected right now, or null when a refund would be accepted (see the field's schema for the reason values). */
     readonly refund_ineligibility_reason: RefundIneligibilityReasonEnumApi | null
-    /** Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) — its implementation PRs are free and cannot be refunded because nothing was charged.
+    /** Non-null when this report is system-marked never-billable (Flind-system origin, e.g. a health-check scout finding) — its implementation PRs are free and cannot be refunded because nothing was charged.
      *
-     * * `posthog_health_check` - PostHog health check
-     * * `posthog_onboarding` - PostHog onboarding
-     * * `posthog_system` - PostHog system */
+     * * `posthog_health_check` - Flind health check
+     * * `posthog_onboarding` - Flind onboarding
+     * * `posthog_system` - Flind system */
     readonly billing_exempt_reason: SignalReportBillingExemptReasonEnumApi | null
     /**
      * The space (task channel) this report is assigned to, or null when unassigned. The general view lists every report regardless of this value.
@@ -3292,7 +3292,7 @@ export interface SignalReportTaskActionRunResponseApi {
      * @nullable
      */
     run_id: string | null
-    /** Link to the task in PostHog. */
+    /** Link to the task in Flind. */
     task_url: string
     /**
      * Why the run did not start. Null when it started. The task exists either way.
@@ -3778,7 +3778,7 @@ export interface SuggestedReviewerEntryWriteApi {
      * @maxLength 200
      */
     github_login?: string
-    /** PostHog user UUID. Must be an org member on this team; a linked GitHub account is not required. Required unless `github_login` is given. If supplied together with `github_login`, the user's own identity wins. */
+    /** Flind user UUID. Must be an org member on this team; a linked GitHub account is not required. Required unless `github_login` is given. If supplied together with `github_login`, the user's own identity wins. */
     user_uuid?: string
     /**
      * Optional human-readable display name. Not backfilled from GitHub by the server.
@@ -3878,7 +3878,7 @@ export interface SuggestedReviewerEntryReadApi {
      */
     github_login: string | null
     /**
-     * PostHog user this entry routes to. Null on entries written before reviewers had one.
+     * Flind user this entry routes to. Null on entries written before reviewers had one.
      * @nullable
      */
     user_uuid: string | null
@@ -5732,7 +5732,7 @@ export const SignalReportStateEnumApi = {
  * * `wrong_repo` - Agent picked the wrong repository
  * * `wontfix_intentional` - Won't fix - intentional behavior
  * * `wontfix_irrelevant` - Not relevant to this project
- * * `fixed_outside_posthog` - Fixed outside PostHog
+ * * `fixed_outside_posthog` - Fixed outside Flind
  * * `verified_manually` - Verified manually
  * * `no_action_needed` - No action needed
  * * `pr_merged` - PR was merged
@@ -5772,7 +5772,7 @@ export interface SignalReportStateRequestApi {
      * * `wrong_repo` - Agent picked the wrong repository
      * * `wontfix_intentional` - Won't fix - intentional behavior
      * * `wontfix_irrelevant` - Not relevant to this project
-     * * `fixed_outside_posthog` - Fixed outside PostHog
+     * * `fixed_outside_posthog` - Fixed outside Flind
      * * `verified_manually` - Verified manually
      * * `no_action_needed` - No action needed
      * * `pr_merged` - PR was merged
@@ -6524,7 +6524,7 @@ export interface SignalReportBulkStateRequestApi {
      * * `wrong_repo` - Agent picked the wrong repository
      * * `wontfix_intentional` - Won't fix - intentional behavior
      * * `wontfix_irrelevant` - Not relevant to this project
-     * * `fixed_outside_posthog` - Fixed outside PostHog
+     * * `fixed_outside_posthog` - Fixed outside Flind
      * * `verified_manually` - Verified manually
      * * `no_action_needed` - No action needed
      * * `pr_merged` - PR was merged
@@ -7184,7 +7184,7 @@ export interface SignalScoutSlackDestinationApi {
      */
     channel?: string | null
     /**
-     * Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the PostHog app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel.
+     * Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the Flind app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel.
      * @minItems 1
      * @maxItems 5
      * @nullable
@@ -7294,7 +7294,7 @@ export interface SignalScoutConfigOptionsApi {
     run_interval_minutes?: number
     /** Destinations that receive each finding or report this scout emits. Empty by default. */
     output_destinations?: SignalScoutOutputDestinationsApi
-    /** What the scout's sandbox can reach over the network while it runs. Defaults to `trusted`, the platform's trusted-domain allowlist (PostHog, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers.
+    /** What the scout's sandbox can reach over the network while it runs. Defaults to `trusted`, the platform's trusted-domain allowlist (Flind, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers.
      *
      * * `trusted` - Trusted domains only
      * * `full` - Full */
@@ -7370,7 +7370,7 @@ export const ScoutDeprecationPhaseEnumApi = {
 } as const
 
 /**
- * What PostHog has said about retiring this scout, for the chip and the banner to render.
+ * What Flind has said about retiring this scout, for the chip and the banner to render.
  */
 export interface ScoutDeprecationApi {
     /** How far the retirement has got: `announced` while the scout still runs, `retired` once its sunset has passed. A retired scout is paused and does not run again.
@@ -7378,7 +7378,7 @@ export interface ScoutDeprecationApi {
      * * `announced` - announced
      * * `retired` - retired */
     phase: ScoutDeprecationPhaseEnumApi
-    /** Why PostHog is retiring the scout, written to be shown to a person as-is. */
+    /** Why Flind is retiring the scout, written to be shown to a person as-is. */
     reason: string
     /** Skill name of the scout that takes over, or blank when nothing replaces it. */
     superseded_by: string
@@ -7534,11 +7534,11 @@ export interface SignalScoutConfigApi {
      * @maxLength 200
      */
     display_name?: string
-    /** Where this scout came from: `canonical` for a scout PostHog ships and maintains (seeded from `products/signals/skills/`), or `custom` for one a team hand-authored on this project. Use it to badge built-in vs custom scouts instead of a hardcoded name list. Defaults to `custom` if the skill is not currently present on the team. */
+    /** Where this scout came from: `canonical` for a scout Flind ships and maintains (seeded from `products/signals/skills/`), or `custom` for one a team hand-authored on this project. Use it to badge built-in vs custom scouts instead of a hardcoded name list. Defaults to `custom` if the skill is not currently present on the team. */
     readonly scout_origin: ScoutOriginEnumApi
-    /** What this scout is to the harness: `specialist` for one that watches a product surface, or `operational` for one PostHog ships to watch the self-driving system itself. An operational scout is exempt from the inactivity sweep and from the enabled-scout cap, and is not a scout a project should delete. Always `specialist` for a custom scout. */
+    /** What this scout is to the harness: `specialist` for one that watches a product surface, or `operational` for one Flind ships to watch the self-driving system itself. An operational scout is exempt from the inactivity sweep and from the enabled-scout cap, and is not a scout a project should delete. Always `specialist` for a custom scout. */
     readonly scout_role: ScoutRoleEnumApi
-    /** Set when PostHog is retiring this scout, and null otherwise. Carries the phase, the reason to show, what replaces the scout, and when it stops running. Only a canonical scout the project has not edited is ever marked: a project's own copy keeps running and reads as null. */
+    /** Set when Flind is retiring this scout, and null otherwise. Carries the phase, the reason to show, what replaces the scout, and when it stops running. Only a canonical scout the project has not edited is ever marked: a project's own copy keeps running and reads as null. */
     readonly deprecation: ScoutDeprecationApi | null
     /** Who answers for this scout, seed-creator first. Ownership is recorded on the scout's skill rather than on this config, so editing the skill or toggling the scout leaves it unchanged. Reports the scout files suggest these people as reviewers. Prefer this over `created_by`-style fields, which only say who last flipped a switch. Empty when nobody owns the scout, when the owners are no longer members with access to the project, or when the caller is a scout sandbox token: owners are member PII, and a scout reads them through the skill API instead. */
     readonly owners: readonly UserBasicApi[]
@@ -7551,7 +7551,7 @@ export interface SignalScoutConfigApi {
      * * `paused_by_system` - Paused by system
      * * `paused_by_user` - Paused by user */
     readonly status: SignalScoutConfigStatusEnumApi
-    /** Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), `repeated_failures` (consecutive failed runs), `retired` (PostHog retired the scout), or `background_removed` (the background lane stopped managing the scout). Null unless `status` is `pending_pause` or `paused_by_system`.
+    /** Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), `repeated_failures` (consecutive failed runs), `retired` (Flind retired the scout), or `background_removed` (the background lane stopped managing the scout). Null unless `status` is `pending_pause` or `paused_by_system`.
      *
      * * `no_output` - No output
      * * `ignored` - Ignored
@@ -7560,7 +7560,7 @@ export interface SignalScoutConfigApi {
      * * `retired` - Retired
      * * `background_removed` - Background removed */
     readonly pause_reason: SignalScoutConfigPauseReasonEnumApi | null
-    /** Who controls this scout now. `team`: a person set it up or has changed it. `background`: PostHog runs it in the background and no person has edited it yet. Any edit through this API changes `background` to `team`.
+    /** Who controls this scout now. `team`: a person set it up or has changed it. `background`: Flind runs it in the background and no person has edited it yet. Any edit through this API changes `background` to `team`.
      *
      * * `team` - Team
      * * `background` - Background */
@@ -7585,7 +7585,7 @@ export interface SignalScoutConfigApi {
      * @nullable
      */
     readonly structured_output_schema: SignalScoutConfigApiStructuredOutputSchema
-    /** What the scout's sandbox can reach over the network while it runs. `trusted` (the default) restricts runs to the platform's trusted-domain allowlist (PostHog, GitHub, common package registries). `full` lets the scout reach any site, for skills that read external sources such as documentation or papers.
+    /** What the scout's sandbox can reach over the network while it runs. `trusted` (the default) restricts runs to the platform's trusted-domain allowlist (Flind, GitHub, common package registries). `full` lets the scout reach any site, for skills that read external sources such as documentation or papers.
      *
      * * `trusted` - Trusted domains only
      * * `full` - Full */
@@ -7805,7 +7805,7 @@ export interface SignalScoutConfigCreateApi {
     run_interval_minutes?: number
     /** Destinations that receive each finding or report this scout emits. Empty by default. */
     output_destinations?: SignalScoutOutputDestinationsApi
-    /** What the scout's sandbox can reach over the network while it runs. Defaults to `trusted`, the platform's trusted-domain allowlist (PostHog, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers.
+    /** What the scout's sandbox can reach over the network while it runs. Defaults to `trusted`, the platform's trusted-domain allowlist (Flind, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers.
      *
      * * `trusted` - Trusted domains only
      * * `full` - Full */
@@ -7849,7 +7849,7 @@ export interface SignalScoutSlackDestinationUpdateApi {
      */
     channel?: string | null
     /**
-     * Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the PostHog app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel.
+     * Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the Flind app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel.
      * @minItems 1
      * @maxItems 5
      * @nullable
@@ -7902,7 +7902,7 @@ export interface PatchedSignalScoutConfigUpdateApi {
      * @nullable
      */
     structured_output_schema?: PatchedSignalScoutConfigUpdateApiStructuredOutputSchema
-    /** What the scout's sandbox can reach over the network while it runs. `trusted` (the default) restricts runs to the platform's trusted-domain allowlist (PostHog, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers. Applies from the scout's next run.
+    /** What the scout's sandbox can reach over the network while it runs. `trusted` (the default) restricts runs to the platform's trusted-domain allowlist (Flind, GitHub, common package registries). Set `full` to let this scout reach any site, for skills that read external sources such as documentation or papers. Applies from the scout's next run.
      *
      * * `trusted` - Trusted domains only
      * * `full` - Full */
@@ -8920,7 +8920,7 @@ export interface ScoutMemberActivityApi {
  * One project member's routing identity, for picking a `suggested_reviewers` entry on a report.
  */
 export interface ScoutMemberApi {
-    /** The member's stable PostHog user UUID — the same id that appears as `created_by.uuid` on entities they own. A durable handle for this person across runs. */
+    /** The member's stable Flind user UUID — the same id that appears as `created_by.uuid` on entities they own. A durable handle for this person across runs. */
     user_uuid: string
     /** The member's email — use to match a finding's owner by name/email. */
     email: string
@@ -9316,7 +9316,7 @@ export interface RecentDashboardEntryApi {
     /** Dashboard name (may be blank if unnamed). */
     name: string
     /**
-     * ISO-8601 timestamp of the most recent view in the PostHog UI.
+     * ISO-8601 timestamp of the most recent view in the Flind UI.
      * @nullable
      */
     last_accessed_at: string | null
@@ -10601,7 +10601,7 @@ export const FormFactorEnumApi = {
  */
 export interface LighthouseAuditRequestApi {
     /**
-     * The page to audit. Must be an https url on an allowed host — public PostHog pages only. Pages behind a login cannot be audited: the browser signs in to nothing, so it would measure the login screen and report its numbers as the page's. A url that redirects off the allowed hosts is rejected for the same reason.
+     * The page to audit. Must be an https url on an allowed host — public Flind pages only. Pages behind a login cannot be audited: the browser signs in to nothing, so it would measure the login screen and report its numbers as the page's. A url that redirects off the allowed hosts is rejected for the same reason.
      * @maxLength 2000
      */
     url: string
@@ -11420,7 +11420,7 @@ export interface SignalUserAutonomyConfigApi {
      */
     readonly slack_notification_integration_id: number | null
     /**
-     * Where the reviewer ping goes, in the same `id|name` shape PostHog uses elsewhere (only the id is required): a channel (`C0123ABC456|#alerts`), or a workspace member (`U0123ABC456|@sam`) who is sent a direct message. Null disables Slack notifications.
+     * Where the reviewer ping goes, in the same `id|name` shape Flind uses elsewhere (only the id is required): a channel (`C0123ABC456|#alerts`), or a workspace member (`U0123ABC456|@sam`) who is sent a direct message. Null disables Slack notifications.
      * @maxLength 255
      * @nullable
      */
@@ -11457,7 +11457,7 @@ export interface SignalUserAutonomyConfigCreateApi {
      * @nullable
      */
     slack_notification_channel?: string | null
-    /** Set true to send the ping as a direct message from the PostHog app. The caller's own member id is resolved in the connected workspace and stored in `slack_notification_channel`, so nothing has to be picked. Rejected when the workspace has no eligible account for the caller, and cannot be combined with `slack_notification_channel`. */
+    /** Set true to send the ping as a direct message from the Flind app. The caller's own member id is resolved in the connected workspace and stored in `slack_notification_channel`, so nothing has to be picked. Rejected when the workspace has no eligible account for the caller, and cannot be combined with `slack_notification_channel`. */
     slack_notification_direct_message?: boolean
     /** P0 is highest. Null = notify for every priority. When set, reports without a priority judgment do not notify.
      *
@@ -11817,7 +11817,7 @@ export type SignalsReportsListParams = {
      */
     status?: string
     /**
-     * Comma-separated list of PostHog user UUIDs. Reports are kept if their suggested reviewers include any of the given users.
+     * Comma-separated list of Flind user UUIDs. Reports are kept if their suggested reviewers include any of the given users.
      */
     suggested_reviewers?: string
     /**
@@ -11825,7 +11825,7 @@ export type SignalsReportsListParams = {
      */
     task_id?: string
     /**
-     * PostHog user UUID used when scope=teammate.
+     * Flind user UUID used when scope=teammate.
      */
     teammate_uuid?: string
     /**
@@ -12094,7 +12094,7 @@ export type SignalsReportsSectionCountsRetrieveParams = {
      */
     source_product?: string
     /**
-     * Comma-separated list of PostHog user UUIDs. Reports are kept if their suggested reviewers include any of the given users.
+     * Comma-separated list of Flind user UUIDs. Reports are kept if their suggested reviewers include any of the given users.
      */
     suggested_reviewers?: string
     /**
@@ -12102,7 +12102,7 @@ export type SignalsReportsSectionCountsRetrieveParams = {
      */
     task_id?: string
     /**
-     * PostHog user UUID used when scope=teammate.
+     * Flind user UUID used when scope=teammate.
      */
     teammate_uuid?: string
     /**

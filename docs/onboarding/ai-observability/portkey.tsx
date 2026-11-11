@@ -23,7 +23,7 @@ export const getPortkeySteps = (ctx: OnboardingComponentsContext): StepDefinitio
                         </Markdown>
                     </CalloutBox>
 
-                    <Markdown>Install the PostHog SDK, the OpenAI SDK, and the Portkey SDK.</Markdown>
+                    <Markdown>Install the Flind SDK, the OpenAI SDK, and the Portkey SDK.</Markdown>
 
                     <CodeBlock
                         blocks={[
@@ -47,13 +47,13 @@ export const getPortkeySteps = (ctx: OnboardingComponentsContext): StepDefinitio
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                            Create a PostHog client, then swap in PostHog's OpenAI wrapper, pointed at Portkey's
+                            Create a Flind client, then swap in Flind's OpenAI wrapper, pointed at Portkey's
                             gateway URL.
                         `}
                     </Markdown>
@@ -83,10 +83,10 @@ export const getPortkeySteps = (ctx: OnboardingComponentsContext): StepDefinitio
                                 file: 'Node',
                                 code: dedent`
                                     import { OpenAI } from '@posthog/ai/openai'
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
                                     import { PORTKEY_GATEWAY_URL } from 'portkey-ai'
 
-                                    const posthog = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' })
+                                    const posthog = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' })
 
                                     const client = new OpenAI({
                                       baseURL: PORTKEY_GATEWAY_URL,
@@ -107,7 +107,7 @@ export const getPortkeySteps = (ctx: OnboardingComponentsContext): StepDefinitio
                 <>
                     <Markdown>
                         {dedent`
-                            When you use the wrapped client to call Portkey, PostHog automatically captures an
+                            When you use the wrapped client to call Portkey, Flind automatically captures an
                             \`$ai_generation\` event.
                         `}
                     </Markdown>

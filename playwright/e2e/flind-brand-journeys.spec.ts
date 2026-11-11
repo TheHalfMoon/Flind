@@ -24,15 +24,18 @@ test.describe('Flind rebranded journeys', () => {
         await expect(page.locator('body')).not.toContainText(FLIND_LEGAL_CLAIM)
     })
 
-    test('SDK onboarding names the PostHog SDK that sends data to Flind', async ({ page }) => {
+    // Neutral until Flind ships its own SDK packages (rename stage 3); it must not claim a Flind SDK yet.
+    test('SDK onboarding uses neutral SDK copy', async ({ page }) => {
         await page.goto('/onboarding/product_analytics?step=install&sdk=react')
         // The install step leads with the setup wizard; the SDK snippet is behind manual setup.
         // Manual setup opens the SDK grid in a dialog; each SDK card is identified by its logo.
         await page.getByRole('button', { name: 'Need to set up manually?' }).click()
         await page.getByRole('dialog').getByAltText('React logo').click()
 
-        await expect(page.getByRole('heading', { name: 'Send React data to Flind with the PostHog SDK' })).toBeVisible()
-        await expect(page.getByText('Read the PostHog SDK docs')).toBeVisible()
+        await expect(
+            page.getByRole('heading', { name: 'Send React data to Flind using the integration SDK' })
+        ).toBeVisible()
+        await expect(page.getByText('Read the SDK documentation')).toBeVisible()
     })
 
     test('billing renders without legal claims attached to Flind', async ({ page }) => {

@@ -225,7 +225,7 @@ class TestQuery(ClickhouseTestMixin, APIBaseTest):
                 (
                     storage_error,
                     499,
-                    "PostHog couldn't read from storage while running this query. Wait a few minutes, "
+                    "Flind couldn't read from storage while running this query. Wait a few minutes, "
                     "then run the query again. If the problem continues, contact support.",
                     f"DB::Exception: {storage_error} reading managed/table.parquet (S3_ERROR)",
                 )

@@ -33,7 +33,7 @@ export const APP_COMMANDS: AppCommand[] = [
     { name: 'bad', description: 'Send negative feedback', hint: 'optional comment', source: 'app' },
     {
         name: 'feedback',
-        description: 'Send feedback about PostHog AI',
+        description: 'Send feedback about Flind AI',
         hint: 'your feedback',
         source: 'app',
         requiredInputError: 'Add your feedback after /feedback. To rate without a comment, use /good or /bad.',

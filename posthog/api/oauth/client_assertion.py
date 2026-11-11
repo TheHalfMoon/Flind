@@ -214,7 +214,7 @@ def load_jwks(jwks_uri: str, *, force_refresh: bool = False, max_keys: int = JWK
     turn each of its requests into an outbound fetch.
     """
     # A row stored before its host was listed still names it until the next metadata refresh,
-    # so the host is refused here too, before the cache and before PostHog sends it a request.
+    # so the host is refused here too, before the cache and before Flind sends it a request.
     # This is not a JWKSUnavailableError, because a retry cannot succeed.
     if is_throwaway_host(jwks_uri):
         logger.warning("client_assertion_jwks_throwaway_host_refused", jwks_uri=jwks_uri)

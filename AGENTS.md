@@ -1,4 +1,4 @@
-# PostHog Development Guide
+# Flind Development Guide
 
 ## Codebase Structure
 
@@ -28,7 +28,7 @@
 - Build:
   - Frontend: `pnpm --filter=@flind/frontend build`
   - Start dev: `./bin/start` or `hogli start` (interactive TUI). Detached mode: `hogli up -d` paired with `hogli wait` / `hogli down`
-    - In a PostHog Tasks cloud run (`POSTHOG_TASK_RUN_ID` set), the boot sequence, prewarmed test database and scoped-test rules differ — read [Cloud task sandbox](docs/internal/cloud-task-sandbox.md) before starting the stack or running tests there
+    - In a Flind Tasks cloud run (`POSTHOG_TASK_RUN_ID` set), the boot sequence, prewarmed test database and scoped-test rules differ — read [Cloud task sandbox](docs/internal/cloud-task-sandbox.md) before starting the stack or running tests there
 - OpenAPI/types: `hogli build:openapi` (regenerate after changing serializers/viewsets)
 - Dev experience feedback: `hogli devex:feedback "<message>"` sends feedback about repo tooling — hogli, the dev stack, tests, CI, migrations, this setup — straight to the devex team as a `hogli_feedback` event (add `-c bug|idea|praise|question`).
   **Local agents must use it too**: when a hogli command or local dev workflow is broken, slow, or confusing, run it — e.g. `hogli devex:feedback -c bug "migrations:run failed with <error>"`. Do not run it from cloud tasks or agent-server sandboxes; the command is a no-op there.
@@ -38,7 +38,7 @@
 - Use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for all commit messages and PR titles.
 - When a change touches user-facing behavior, an API, a config/setting, or a documented workflow, update an existing doc under `docs/` **whose scope covers that behavior** in the same PR. If none exists, make no docs change and put PR-specific context in the PR description. `project-structure.md` is a high-level directory map; feature behavior, UI controls, command usage, and worktree notes do not belong there.
 - A new `docs/**` file requires a person to request that specific document in the current conversation. Existing related docs, PR checklists, and general docs requirements do not authorize one. Put PR-specific context in the PR description.
-- When triaging review bot findings, react to each PostHog Review finding comment (`posthog[bot]`) with 👍 if it is valid or 👎 if not, so review metrics can tell acted-on findings from noise.
+- When triaging review bot findings, react to each Flind Review finding comment (`posthog[bot]`) with 👍 if it is valid or 👎 if not, so review metrics can tell acted-on findings from noise.
 
 ### Commit types
 
@@ -67,7 +67,7 @@ Invoke `/writing-pr-descriptions` before writing the body — it carries the sha
 Always fill the `## 🤖 Agent context` section, including the exact model that wrote the code.
 NEVER put sensitive information in a PR description or comment. A user may share sensitive data in an agent session; none of it belongs on the PR.
 
-**Screenshots:** Show frontend/visual changes with a screenshot, or with a feature reel when `/writing-pr-descriptions` calls for one. Run `hogli pr:upload-image <file>`: with an open PR it attaches the image to the description, otherwise it prints markdown to embed. The first run only warns and uploads nothing; re-run with `--yes` to confirm. Only PostHog employees can upload, but the public can permanently view these assets, so only upload the image if you're certain it doesn't contain customer data (including customer names), secrets, or sensitive internal info.
+**Screenshots:** Show frontend/visual changes with a screenshot, or with a feature reel when `/writing-pr-descriptions` calls for one. Run `hogli pr:upload-image <file>`: with an open PR it attaches the image to the description, otherwise it prints markdown to embed. The first run only warns and uploads nothing; re-run with `--yes` to confirm. Only Flind employees can upload, but the public can permanently view these assets, so only upload the image if you're certain it doesn't contain customer data (including customer names), secrets, or sensitive internal info.
 
 ### Rules
 
@@ -125,7 +125,7 @@ Once approved, follow `/merging-prs` for the enqueue, watch and failure loop. It
 This repository is public, and everything you push is public with it: source, tests, fixtures and sample data, comments and docstrings, branch names, commit messages, PR titles, descriptions, and comments, and uploaded screenshots.
 Anything you were given as context that is not already in this repository — a customer conversation, a support ticket, a log, an internal thread — has to clear that bar before any of it reaches a file, a message, or a description.
 
-- Never mention internal-only systems, private incidents, customer data, Slack thread contents, unreleased roadmap details, or security-sensitive implementation details. Slack thread links and channel references are fine to include — they sit behind PostHog auth and are useful as origin context — but do not quote or paraphrase what was said in the thread.
+- Never mention internal-only systems, private incidents, customer data, Slack thread contents, unreleased roadmap details, or security-sensitive implementation details. Slack thread links and channel references are fine to include — they sit behind Flind auth and are useful as origin context — but do not quote or paraphrase what was said in the thread.
 - **Derived is not synthetic.** Swapping out names, domains, and identifiers does not make real customer material publishable. The prose, the typos, the error IDs, and the order of events are still theirs, and still disclose what they told us. If you started from real material and edited it, it is derived, however much you changed.
 - **Sample data that has to read like the real thing gets invented, not transcribed.** List the properties a case must exercise, then write the case from that list with the real material closed. Use reserved domains (`example.com`), invented identifiers, and obviously fake tokens — customers paste credentials and cookies into support chats, and those must not survive the trip even in fragments.
 - **Do not claim a provenance you have not checked.** "Written fresh" in a commit message is a factual claim a reviewer will rely on. If you are unsure, compare your text against the source: any shared run of ~40 characters or more means derived, not fresh.
@@ -235,14 +235,14 @@ ALWAYS invoke the matching skill **first** — do not skip it, and do not attemp
 - `/placing-product-frontend-code` — adding a frontend file or directory for a product, or deciding between `products/<name>/frontend/` and `frontend/src/scenes/<name>/`
 - `/building-the-toolbar`: any change under `frontend/src/toolbar/`, floating toolbar or extension. Build and check both, and keep them in sync
 - `/organizing-conversations-code` — adding, moving, renaming, or reviewing files under `products/conversations/`
-- `/integrating-with-posthog-ai` — making a product surface work with PostHog AI: injecting scene context or custom instructions, reacting to the agent's tool calls, or rendering your product's tool cards in a thread
+- `/integrating-with-posthog-ai` — making a product surface work with Flind AI: injecting scene context or custom instructions, reacting to the agent's tool calls, or rendering your product's tool cards in a thread
 - `/sending-notifications` — adding notification support
-- `/extending-the-admin-console` — adding or changing a panel, staff action or tool in a `console.py`, adding a Django admin action, or moving one into PostHog Admin
+- `/extending-the-admin-console` — adding or changing a panel, staff action or tool in a `console.py`, adding a Django admin action, or moving one into Flind Admin
 - `/routing-outbound-api-calls` — adding or changing Python code that calls a third-party HTTP API, or changing any domain under `posthog/egress/` (budget, lanes, identity, metrics, headers)
 - `/authenticating-to-clickhouse` — adding a service, sidecar, or container that connects to ClickHouse, adding a `ClickHouseUser`, or building or changing a ClickHouse pool or client by hand; it must stay token-aware (a native pool carries the credential provider, an HTTP client resolves the token per call) or it silently uses the static password
 - `/writing-clickhouse-queries` — adding or changing a ClickHouse call site (`sync_execute`, `execute_hogql_query`, a `QueryRunner`), including the `Workload` it passes
 - `/adding-activity-logging` — adding activity logging (the audit trail) to a model, writing or changing a `model_activity_signal` receiver or an activity describer, auditing which write paths of a model are logged, or debugging a change that is missing from the activity log
-- `/adding-inbound-webhooks` — adding a webhook endpoint for a third party that sends to PostHog, adding a consumer for a provider that already has an endpoint, or migrating a verifier the `inbound-webhooks-go-through-ingress` rule flags
+- `/adding-inbound-webhooks` — adding a webhook endpoint for a third party that sends to Flind, adding a consumer for a provider that already has an endpoint, or migrating a verifier the `inbound-webhooks-go-through-ingress` rule flags
 - `/writing-skills` — creating or updating skills in `.agents/skills/`
 - `/editing-agents-md` — adding, editing or removing a rule in any `AGENTS.md` or `CLAUDE.md`, root or nested
 - `/writing-evals` — adding or changing eval suites, cases, scorers, or seeders under `products/posthog_ai/evals/` or `products/*/evals/`, touching the harness in `products/posthog_ai/eval_harness/`, or running those evals

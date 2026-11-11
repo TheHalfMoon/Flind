@@ -101,7 +101,7 @@ class SelectStarSource(ResumableSource[SelectStarSourceConfig, SelectStarResumeC
             label="Select Star",
             releaseStatus=ReleaseStatus.BETA,
             caption=(
-                "Enter your Select Star API token to pull your data catalog into the PostHog Data warehouse.\n\n"
+                "Enter your Select Star API token to pull your data catalog into the Flind Data warehouse.\n\n"
                 "Create a token in Select Star under **Account Settings > Client API Token > Manage API Tokens "
                 "> Create**. The token never expires and inherits the creating user's role. **Viewer** access "
                 "is enough to read tables, columns, databases, schemas, tags, and BI dashboards."

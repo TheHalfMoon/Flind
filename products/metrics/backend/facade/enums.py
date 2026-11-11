@@ -137,7 +137,7 @@ class PanelImportOutcome(LabeledStrEnum):
 
 
 class DashboardImportPhase(LabeledStrEnum):
-    """The step of an import that runs: the agent starts, the agent matches panels, PostHog builds the dashboard,
+    """The step of an import that runs: the agent starts, the agent matches panels, Flind builds the dashboard,
     and for a screenshot the agent compares pictures of the dashboard with the screenshot."""
 
     STARTING = "starting"

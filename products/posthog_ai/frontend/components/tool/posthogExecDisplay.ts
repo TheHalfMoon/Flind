@@ -1,11 +1,11 @@
 /**
- * Shared display helpers for the PostHog single-exec MCP tool. The `posthog` MCP server exposes one
+ * Shared display helpers for the Flind single-exec MCP tool. The `posthog` MCP server exposes one
  * outer `exec` tool whose `command` string carries the real intent (`tools` / `search` / `info` /
  * `schema` / `call <sub-tool>`). Both the thread tool-card renderer and the permission card need the
  * same human-friendly label + input preview, so the parsing lives here — one source of truth.
  */
 
-/** Matches the PostHog single-exec MCP tool (`mcp__posthog__exec`, plus plugin/regional variants). */
+/** Matches the Flind single-exec MCP tool (`mcp__posthog__exec`, plus plugin/regional variants). */
 export const POSTHOG_EXEC_TOOL_RE = /^mcp__(?:plugin_)?posthog(?:_[^_]+)*__exec$/
 
 export function isPostHogExecTool(toolName: string): boolean {

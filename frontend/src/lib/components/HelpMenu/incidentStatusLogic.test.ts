@@ -54,7 +54,7 @@ describe('incidentStatusLogic', () => {
 
     it.each([
         ['a well-formed body', { ongoing_incidents: [outageInUs], in_progress_maintenances: [] }, 'partial_outage'],
-        ['a body without the incident arrays', { page_title: 'PostHog' }, 'operational'],
+        ['a body without the incident arrays', { page_title: 'Flind' }, 'operational'],
         [
             'an incident that has no affected components',
             { ongoing_incidents: [{ name: 'Outage' }], in_progress_maintenances: [] },

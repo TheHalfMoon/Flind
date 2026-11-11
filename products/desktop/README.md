@@ -1,13 +1,13 @@
 > [!IMPORTANT]
-> Interested in the PostHog desktop app? [Join the waitlist](https://posthog.com/desktop) or hop into our [Discord](https://discord.gg/aSrHKVNVdR).
+> Interested in the Flind desktop app? [Join the waitlist](https://posthog.com/desktop) or hop into our [Discord](https://discord.gg/aSrHKVNVdR).
 
 **[Download the latest version](https://github.com/PostHog/posthog/releases?q=desktop-v)**
 
-Found a bug or want to share feedback? Open the account menu in PostHog Desktop and select **Send feedback…**, or [open an issue](https://github.com/PostHog/posthog/issues/new) on GitHub.
+Found a bug or want to share feedback? Open the account menu in Flind Desktop and select **Send feedback…**, or [open an issue](https://github.com/PostHog/posthog/issues/new) on GitHub.
 
-# PostHog Desktop
+# Flind Desktop
 
-This is the source for the PostHog desktop and web hosts and the agent framework that powers them.
+This is the source for the Flind desktop and web hosts and the agent framework that powers them.
 
 > [!NOTE]
 > This directory lives at `products/desktop` inside [posthog/posthog](https://github.com/PostHog/posthog). If you already have that repo checked out, there is no separate clone: `cd products/desktop` and follow the setup below. It is a standalone pnpm workspace with its own lockfile and Node version.
@@ -50,7 +50,7 @@ pnpm dev:code   # Run code app
 pnpm dev:mprocs
 ```
 
-> **Want to connect to a local PostHog instance?** See [docs/LOCAL-DEVELOPMENT.md](./docs/LOCAL-DEVELOPMENT.md) for OAuth setup and connecting to localhost:8010.
+> **Want to connect to a local Flind instance?** See [docs/LOCAL-DEVELOPMENT.md](./docs/LOCAL-DEVELOPMENT.md) for OAuth setup and connecting to localhost:8010.
 
 ### Utility scripts
 
@@ -58,8 +58,8 @@ Scripts in `scripts/` for development and debugging:
 
 | Script | Description |
 |--------|-------------|
-| `scripts/clean-posthog-code-macos.sh` | Remove all PostHog app data from macOS (caches, preferences, logs, saved state). Use `--app` flag to also delete PostHog.app from /Applications. |
-| `scripts/test-access-token.js` | Validate a PostHog OAuth access token by testing API endpoints. Usage: `node scripts/test-access-token.js <token> <project_id> [region]` |
+| `scripts/clean-posthog-code-macos.sh` | Remove all Flind app data from macOS (caches, preferences, logs, saved state). Use `--app` flag to also delete Flind.app from /Applications. |
+| `scripts/test-access-token.js` | Validate a Flind OAuth access token by testing API endpoints. Usage: `node scripts/test-access-token.js <token> <project_id> [region]` |
 
 ## Project structure
 
@@ -85,7 +85,7 @@ products/desktop/
 | [Desktop app guide](./apps/code/README.md) | Building, signing, distribution, and workspace configuration |
 | [Proposed mobile replacement](https://github.com/PostHog/posthog/pull/118584) | Independent native app proposed for `products/mobile` |
 | [Architecture and code rules](./AGENTS.md) | Source of truth for architecture, code style, and testing rules |
-| [Contributing](./CONTRIBUTING.md) | How to contribute to PostHog Desktop |
+| [Contributing](./CONTRIBUTING.md) | How to contribute to Flind Desktop |
 
 ## Contributing
 

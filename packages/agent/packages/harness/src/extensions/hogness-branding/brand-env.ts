@@ -72,7 +72,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 export const HOGNESS_APP_NAME = "hogness";
-export const HOGNESS_BRAND_TAGLINE = "A Pi distribution by PostHog";
+export const HOGNESS_BRAND_TAGLINE = "A Pi distribution by Flind";
 // Keep pi's own on-disk config dir name so existing pi credentials,
 // sessions, and MCP auth continue to work unchanged.
 export const HOGNESS_CONFIG_DIR_NAME = ".pi";
@@ -158,7 +158,7 @@ export function installHognessBrandEnv(): void {
 }
 
 /**
- * One-line brand banner (`hogness (A Pi distribution by PostHog) vX.Y.Z`),
+ * One-line brand banner (`hogness (A Pi distribution by Flind) vX.Y.Z`),
  * matching the TUI header's `brandLine()` in `./extension.ts` but as plain
  * text — for non-interactive surfaces like `--help` output, which pi
  * generates itself (see `cli/args.js`'s `printHelp()`) and only rebrands

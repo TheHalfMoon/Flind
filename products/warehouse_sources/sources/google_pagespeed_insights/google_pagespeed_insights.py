@@ -60,7 +60,7 @@ _PRIVATE_HOST_SUFFIXES = (".localhost", ".local", ".internal")
 def _is_private_host(host: str) -> bool:
     """True for hosts that name a private, loopback, link-local, or otherwise non-public address.
 
-    The runPagespeed fetch is executed by Google's servers (not PostHog's egress), so a private or
+    The runPagespeed fetch is executed by Google's servers (not Flind's egress), so a private or
     internal URL is unreachable there rather than a server-side request forgery against our network.
     This rejection is defense-in-depth: it fails such URLs early with a clear message and keeps the
     connector from being pointed at internal-looking hosts.

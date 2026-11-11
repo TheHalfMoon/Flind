@@ -10,7 +10,7 @@ Most security fixes do not justify that cost.
 Before you create a branch or PR, choose the route:
 
 - **The weakness exists only in an open, unmerged public PR:** fix it in that same PR before merge, including its tests. Do not open a private PR for it.
-- **Severe vulnerability that needs an embargo:** use `PostHog/posthog-private` on a `security/` branch only when team-security agrees an embargo is necessary. Severe means an attacker can exploit PostHog Cloud remotely today, without special access, to do serious harm. Examples are cross-tenant data access, authentication bypass, remote code execution on our infrastructure, or exposure of credentials or secrets. The severity label does not necessarily decide the route: a high finding that does not meet this bar can go public. Keep the finding, reproduction, and vulnerable paths in private channels until disclosure is approved.
+- **Severe vulnerability that needs an embargo:** use `PostHog/posthog-private` on a `security/` branch only when team-security agrees an embargo is necessary. Severe means an attacker can exploit Flind Cloud remotely today, without special access, to do serious harm. Examples are cross-tenant data access, authentication bypass, remote code execution on our infrastructure, or exposure of credentials or secrets. The severity label does not necessarily decide the route: a high finding that does not meet this bar can go public. Keep the finding, reproduction, and vulnerable paths in private channels until disclosure is approved.
 - **Every other security fix:** open a normal PR in `PostHog/posthog`. This includes hardening, defense in depth, input validation, consistency fixes between code paths, access checks with low impact, issues that need privileged or same-team access, issues in local tools such as a CLI or SDK that need a non-default setup like a custom host, and missing rate limits.
 
 A public security fix is a normal fix with a neutral description.
@@ -194,7 +194,7 @@ docker run --rm -v "${PWD}:/src" semgrep/semgrep semgrep --test /src/.semgrep/ru
 
 ## Outbound requests and SSRF
 
-PostHog Cloud sends production egress through a Smokescreen proxy. On a code path that goes
+Flind Cloud sends production egress through a Smokescreen proxy. On a code path that goes
 through the proxy, treat raw SSRF, such as a request to an internal IP or to cloud metadata, as
 mitigated. A code path that bypasses the proxy, and a self-hosted deployment, do not have this
 control. A request that probes or trusts an attacker-controlled server is always in scope. The
@@ -202,7 +202,7 @@ SSRF rule in `.agents/skills/security-audit/SKILL.md` says which control is load
 
 ## Deployment config
 
-PostHog/charts holds the deployment config for PostHog Cloud. A review of PostHog/posthog-private
+PostHog/charts holds the deployment config for Flind Cloud. A review of PostHog/posthog-private
 gets a read-only copy of it at `$CONTEXT_DIR/related/PostHog/charts`; a review of this public
 repository does not. When the copy is there, start with these paths:
 
@@ -274,7 +274,7 @@ A refused resource produces no user-visible error, so the feature simply does no
 
 Three policies exist, and a change lands in whichever one covers the page:
 
-- **The app policy** governs every SPA page. On PostHog Cloud and in local development, it is enforced for every visitor, signed-in or not. A self-hosted install only reports it, because its violations reach nobody. Embeddable documents, such as shared dashboards, get the policy without `frame-ancestors`, because customers frame them on their own sites. Two routes in `REPORT_ONLY_ROUTES` stay report-only. The bare `/exporter` render document stays report-only, because a replay export can run an `eval` in a frame of the render, and an enforced policy would refuse it. It stays report-only until the caller of that `eval` is traced. `/external_surveys/<id>` stays report-only on a response that the survey view did not build.
+- **The app policy** governs every SPA page. On Flind Cloud and in local development, it is enforced for every visitor, signed-in or not. A self-hosted install only reports it, because its violations reach nobody. Embeddable documents, such as shared dashboards, get the policy without `frame-ancestors`, because customers frame them on their own sites. Two routes in `REPORT_ONLY_ROUTES` stay report-only. The bare `/exporter` render document stays report-only, because a replay export can run an `eval` in a frame of the render, and an enforced policy would refuse it. It stays report-only until the caller of that `eval` is traced. `/external_surveys/<id>` stays report-only on a response that the survey view did not build.
 - **The admin policy** governs `/admin/`. It is enforced for every staff member, so a mistake here breaks admin immediately.
 - **A view may set its own policy.** The canvas artifact and the workflow asset endpoint do this to sandbox untrusted HTML. `CSPMiddleware` returns a response that already carries the header unchanged, so do not expect the app policy on those documents.
 
@@ -300,12 +300,12 @@ Three policies exist, and a change lands in whichever one covers the page:
 
 Add the source to the policy that covers the document, which is not always `CSPMiddleware`.
 An app or admin page takes the matching list in `CSPMiddleware`.
-On PostHog Cloud, the app policy's `script-src`, `connect-src`, `style-src` and `font-src` name each PostHog host instead of `*.posthog.com`.
-A script, stylesheet or font from another PostHog subdomain, or a request to one, needs its host in the lists that `CSPMiddleware` passes to `narrowed_app_policy()`.
+On Flind Cloud, the app policy's `script-src`, `connect-src`, `style-src` and `font-src` name each Flind host instead of `*.posthog.com`.
+A script, stylesheet or font from another Flind subdomain, or a request to one, needs its host in the lists that `CSPMiddleware` passes to `narrowed_app_policy()`.
 Local runs, E2E runs and self-hosted installs keep the wildcards, so a missing host breaks only production.
-On PostHog Cloud, each app document also sends a report-only policy that holds only `img-src`, without `https:` and with each PostHog host named instead of `*.posthog.com`.
+On Flind Cloud, each app document also sends a report-only policy that holds only `img-src`, without `https:` and with each Flind host named instead of `*.posthog.com`.
 It blocks nothing, and its reports (`$csp_version` 7) list the image hosts that only `https:` or `*.posthog.com` admits.
-An image from another PostHog subdomain needs its host in the list in `img_src_shadow_policy()`, or each load of it reports.
+An image from another Flind subdomain needs its host in the list in `img_src_shadow_policy()`, or each load of it reports.
 Name a new image host in `img-src` anyway, so that removing `https:` later does not break it.
 A canvas artifact takes `artifact_csp()` in `products/canvas/backend/contract.py`, and a workflow message asset takes the header its endpoint sets in `products/workflows/backend/presentation/views/hog_flow.py`.
 `CSPMiddleware` returns a view-set header untouched, so widening the app policy does nothing for those two.

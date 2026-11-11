@@ -16,7 +16,7 @@ import { HomeTab } from './HomeTab'
 import { homeTabDashboardProps } from './homeTabDashboardLogic'
 
 jest.mock('./HomeTabDefault', () => ({
-    HomeTabDefault: () => <div>PostHog Home</div>,
+    HomeTabDefault: () => <div>Flind Home</div>,
 }))
 jest.mock('scenes/dashboard/Dashboard', () => ({
     Dashboard: ({
@@ -44,7 +44,7 @@ describe('HomeTab', () => {
     afterEach(cleanup)
 
     it.each([
-        ['the opinionated Home dashboard', null, undefined, ['PostHog Home']],
+        ['the opinionated Home dashboard', null, undefined, ['Flind Home']],
         [
             'a selected dashboard inside the Insights tab',
             42,
@@ -130,7 +130,7 @@ describe('HomeTab', () => {
         expect(Object.keys(toolStreamEventsLogic.values.toolListeners)).toEqual(listenersOnEmptyDashboard)
     })
 
-    it('falls back to PostHog Home and reloads the team when the selected dashboard is gone', () => {
+    it('falls back to Flind Home and reloads the team when the selected dashboard is gone', () => {
         initKeaTests()
         teamLogic.mount()
         teamLogic.actions.loadCurrentTeamSuccess({
@@ -143,7 +143,7 @@ describe('HomeTab', () => {
             dashboardLogic(homeTabDashboardProps(42)).actions.dashboardNotFound()
         })
 
-        expect(screen.getByText('PostHog Home')).toBeInTheDocument()
+        expect(screen.getByText('Flind Home')).toBeInTheDocument()
         expect(teamLogic.values.currentTeamLoading).toBe(true)
     })
 
@@ -172,6 +172,6 @@ describe('HomeTab', () => {
         render(<HomeTab />)
 
         expect(screen.getByLabelText('Loading product analytics Home')).toBeInTheDocument()
-        expect(screen.queryByText('PostHog Home')).not.toBeInTheDocument()
+        expect(screen.queryByText('Flind Home')).not.toBeInTheDocument()
     })
 })

@@ -105,7 +105,7 @@ class LagoSource(ResumableSource[LagoSourceConfig, LagoResumeConfig]):
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Lago",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Lago API key to pull your billing data into the PostHog Data warehouse.
+            caption="""Enter your Lago API key to pull your billing data into the Flind Data warehouse.
 
 You can create an API key in the Lago dashboard under **Developers > API keys**.
 

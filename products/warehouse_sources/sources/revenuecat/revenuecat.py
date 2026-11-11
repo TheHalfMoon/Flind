@@ -181,7 +181,7 @@ UNSUPPORTED_KEY_CHARACTER_MESSAGE = (
 )
 
 # A transport failure leaves the key unjudged, so it must not read as a credential problem.
-UNREACHABLE_MESSAGE = "PostHog couldn't reach RevenueCat. Wait a few minutes and try again."
+UNREACHABLE_MESSAGE = "Flind couldn't reach RevenueCat. Wait a few minutes and try again."
 
 
 def _format_http_error(error: requests.HTTPError, forbidden_hint: str | None = None) -> str:

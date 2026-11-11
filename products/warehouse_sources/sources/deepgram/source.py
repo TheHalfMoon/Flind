@@ -51,7 +51,7 @@ class DeepgramSource(ResumableSource[DeepgramSourceConfig, DeepgramResumeConfig]
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Deepgram",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Deepgram API key to sync your Deepgram Management API data into the PostHog Data warehouse.
+            caption="""Enter your Deepgram API key to sync your Deepgram Management API data into the Flind Data warehouse.
 
 You can create an API key in your [Deepgram Console](https://console.deepgram.com/) under **Settings → API Keys**. A key with a read-capable scope (e.g. `member`) is sufficient — the source only reads projects, members, keys, balances, invites, and the request log.""",
             iconPath="/static/services/deepgram.png",
@@ -83,7 +83,7 @@ You can create an API key in your [Deepgram Console](https://console.deepgram.co
             "403 Client Error: Forbidden for url: https://api.deepgram.com": "Your Deepgram API key is missing the scope needed to sync this data. Grant a read-capable scope in your Deepgram Console, then reconnect.",
             # Deepgram returns 400 for a request it cannot accept. The same request always fails the
             # same way, so retrying cannot fix it. Fail the sync and point the user to support.
-            "400 Client Error: Bad Request for url: https://api.deepgram.com": "Deepgram rejected this sync request with a 400 Bad Request, so the sync cannot continue. Contact PostHog support with your Deepgram source details so we can investigate.",
+            "400 Client Error: Bad Request for url: https://api.deepgram.com": "Deepgram rejected this sync request with a 400 Bad Request, so the sync cannot continue. Contact Flind support with your Deepgram source details so we can investigate.",
         }
 
     def get_schemas(

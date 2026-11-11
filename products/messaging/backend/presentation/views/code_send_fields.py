@@ -41,7 +41,7 @@ CODE_SEND_EXTRA_FIELDS = (*ADDRESS_FIELDS, "attachments")
 def validate_pipeline_address(address: str) -> None:
     if not PIPELINE_ADDRESS_PATTERN.fullmatch(address):
         raise serializers.ValidationError(
-            "Enter an address PostHog can send to, like jane@example.com. Quoted names, IP addresses and "
+            "Enter an address Flind can send to, like jane@example.com. Quoted names, IP addresses and "
             "non-ASCII domains aren't supported."
         )
 
@@ -205,11 +205,11 @@ class _Reason:
 
 
 _ADDRESS_REASON = _Reason(
-    why="PostHog sends a copy to every address in `cc` and `bcc`, so each one must be a single address.",
+    why="Flind sends a copy to every address in `cc` and `bcc`, so each one must be a single address.",
     fix="Send one address or a list of up to 10 bare addresses, such as `jane@example.com`.",
 )
 _ATTACHMENT_REASON = _Reason(
-    why="PostHog attaches each file as it is sent, so each one needs a file name and base64 content.",
+    why="Flind attaches each file as it is sent, so each one needs a file name and base64 content.",
     fix="Send each attachment as `{filename, content}`, with `content` in base64.",
 )
 _ATTACHMENT_LIMIT_REASON = _Reason(
@@ -224,7 +224,7 @@ _COPY_LIMIT_REASON = _Reason(
 )
 _HEADER_LENGTH_REASONS = {
     field: _Reason(
-        why=f"PostHog puts `{field}` into the email's headers, which take at most {limit} characters for it.",
+        why=f"Flind puts `{field}` into the email's headers, which take at most {limit} characters for it.",
         fix=f"Shorten `{field}` to {limit} characters or fewer.",
     )
     for field, limit in (
@@ -261,9 +261,9 @@ _REASONS_BY_CODE = {
         fix="Send the bare ID, such as `logo`, and reference it as `cid:logo` in the HTML.",
     ),
     "field_not_accepted": _Reason(
-        why="This PostHog version doesn't take the field yet, so it refused the email instead of sending it "
+        why="This Flind version doesn't take the field yet, so it refused the email instead of sending it "
         "without it.",
-        fix="Send the email without this field, or send it again once PostHog takes the field.",
+        fix="Send the email without this field, or send it again once Flind takes the field.",
     ),
     "template_key_only": _Reason(
         why="A send with `template_id` takes its recipients and content from the template.",
@@ -274,7 +274,7 @@ _REASONS_BY_CODE = {
 
 def field_not_accepted_refusal(field: str) -> serializers.ValidationError:
     return serializers.ValidationError(
-        {field: "PostHog doesn't take this field yet, so it didn't send the email."}, code="field_not_accepted"
+        {field: "Flind doesn't take this field yet, so it didn't send the email."}, code="field_not_accepted"
     )
 
 

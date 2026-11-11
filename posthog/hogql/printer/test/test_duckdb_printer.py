@@ -208,7 +208,7 @@ class TestDuckDBPrinter(SimpleTestCase):
     def test_dollar_prefixed_property_renders_as_jsonpath_member(self):
         # DuckDB's JSON arrow operator reads a key beginning with `$` as a JSONPath root marker, so the
         # inherited Postgres form `(properties) ->> '$ai_session_id'` fails to bind on duckgres with
-        # "JSON path error near 'ai_session_id'". Every PostHog built-in property is `$`-prefixed, so
+        # "JSON path error near 'ai_session_id'". Every Flind built-in property is `$`-prefixed, so
         # DuckDB must emit the key as a quoted JSONPath member instead: `$."$ai_session_id"`.
         context = HogQLContext(team_id=self.team_id, enable_select_queries=True)
         printed = self._expr("properties.$ai_session_id", context=context)

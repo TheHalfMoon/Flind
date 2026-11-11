@@ -2,7 +2,7 @@
 
 Every metric is emitted twice from one `record_*` helper: a Prometheus instrument
 (auto-scraped by the worker's combined metrics server, feeds Grafana) and an OTLP twin
-with the same name and attributes pushed into the PostHog Metrics product via
+with the same name and attributes pushed into the Flind Metrics product via
 posthog/otel_metrics.py (no-op unless OTEL_METRICS_EXPORT_URL/TOKEN are configured).
 The twin derives its name and description from the prom instrument, and its recording
 is swallowed so telemetry can never fail an activity.

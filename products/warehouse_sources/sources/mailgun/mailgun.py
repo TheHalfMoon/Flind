@@ -48,7 +48,7 @@ REGION_BASE_URLS = {
 REQUEST_TIMEOUT_SECONDS = 60
 WEBHOOK_REQUEST_TIMEOUT_SECONDS = 30
 # Mailgun rejects a fourth URL on a webhook type, so a domain already fanned out to three
-# other consumers has to have one removed by hand before PostHog can be added.
+# other consumers has to have one removed by hand before Flind can be added.
 MAX_WEBHOOK_URLS_PER_TYPE = 3
 # Registration is one listing plus up to len(WEBHOOK_TYPES) writes per domain, so a very large
 # account is bounded rather than left to issue thousands of calls inside one request.
@@ -856,7 +856,7 @@ def _register_webhook(
         return
 
     if len(existing_urls) >= MAX_WEBHOOK_URLS_PER_TYPE:
-        raise ValueError(f"already has {MAX_WEBHOOK_URLS_PER_TYPE} URLs, remove one in Mailgun before adding PostHog")
+        raise ValueError(f"already has {MAX_WEBHOOK_URLS_PER_TYPE} URLs, remove one in Mailgun before adding Flind")
 
     _put_webhook_urls(session, base_url, api_key, domain, webhook_type, [*existing_urls, webhook_url])
 
@@ -866,7 +866,7 @@ def _webhook_domains(api_key: str, base_url: str) -> list[str]:
 
 
 def create_webhook(api_key: str, region: str, webhook_url: str) -> WebhookCreationResult:
-    """Register PostHog on every Mailgun webhook type, on every sending domain of the account.
+    """Register Flind on every Mailgun webhook type, on every sending domain of the account.
 
     Mailgun scopes webhooks per domain, so a source that syncs a whole account has to fan the
     registration out. Re-running is safe: a type already pointing at `webhook_url` is left alone."""
@@ -964,7 +964,7 @@ def get_external_webhook_info(api_key: str, region: str, webhook_url: str) -> Ex
 
 
 def delete_webhook(api_key: str, region: str, webhook_url: str) -> WebhookDeletionResult:
-    """Remove PostHog from every webhook type it was registered on, leaving other consumers'
+    """Remove Flind from every webhook type it was registered on, leaving other consumers'
     URLs in place."""
     base_url = base_url_for_region(region)
     session = make_tracked_session(redact_values=(api_key,))

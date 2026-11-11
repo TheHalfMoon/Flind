@@ -30,8 +30,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "columns": {
             "id": "Numeric identifier of the tag assigned by Docker Hub.",
             "name": "Name of the tag, unique within its repository.",
-            "namespace": "Namespace (user or organization) that owns the repository. Added by PostHog to every row.",
-            "repository_name": "Name of the repository the tag belongs to. Added by PostHog to every row.",
+            "namespace": "Namespace (user or organization) that owns the repository. Added by Flind to every row.",
+            "repository_name": "Name of the repository the tag belongs to. Added by Flind to every row.",
             "repository": "Numeric identifier of the repository the tag belongs to.",
             "creator": "Numeric identifier of the user who created the tag.",
             "images": "Per-architecture images the tag points at, including digest, os, architecture, and size.",
@@ -88,7 +88,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "An audit log event for the configured Docker Hub organization, such as an image push, a permission change, or a deletion.",
         "docs_url": "https://docs.docker.com/reference/api/hub/latest/#tag/audit-logs/operation/AuditLogs_ListAuditLogs",
         "columns": {
-            "id": "A synthetic identifier PostHog derives from the event's fields, since Docker Hub returns no event id.",
+            "id": "A synthetic identifier Flind derives from the event's fields, since Docker Hub returns no event id.",
             "account": "Namespace the event belongs to.",
             "action": "Action that was performed, e.g. repo.tag.push. Joins to audit_log_actions.qualified_name.",
             "action_description": "Human-readable sentence describing what happened.",
@@ -102,10 +102,10 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "The catalog of audit log action types, used to categorize and filter audit log events.",
         "docs_url": "https://docs.docker.com/reference/api/hub/latest/#tag/audit-logs/operation/AuditLogs_ListAuditActions",
         "columns": {
-            "action_group": "Group the action belongs to, e.g. repo or org. Added by PostHog from the response's action map key.",
-            "action_group_label": "Human-readable name of the action group, e.g. Repository. Added by PostHog to every row.",
+            "action_group": "Group the action belongs to, e.g. repo or org. Added by Flind from the response's action map key.",
+            "action_group_label": "Human-readable name of the action group, e.g. Repository. Added by Flind to every row.",
             "name": "Name of the action within its group, e.g. tag.push.",
-            "qualified_name": "The group and name joined with a dot, e.g. repo.tag.push. Added by PostHog, and the form audit_logs.action uses.",
+            "qualified_name": "The group and name joined with a dot, e.g. repo.tag.push. Added by Flind, and the form audit_logs.action uses.",
             "label": "Human-readable name of the action, e.g. Tag Pushed.",
             "description": "Explanation of when the action is recorded.",
         },

@@ -210,7 +210,7 @@ class JiraIntegration:
     def list_assignees(self, project_key: str, search: str = "") -> list[Assignee]:
         """Active users who can be assigned issues in the project, matching ``search``.
 
-        Raises ReconnectRequired for a connection made before PostHog requested read:jira-user.
+        Raises ReconnectRequired for a connection made before Flind requested read:jira-user.
         """
         cloud_id = self.cloud_id()
         if not cloud_id:

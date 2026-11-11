@@ -6,7 +6,7 @@ const MAX_ONBOARDED_PRODUCTS = 12
 
 /**
  * Per-product enablement facts for the active project, so an agent knows which
- * PostHog products it can rely on (and which are off) without calling
+ * Flind products it can rely on (and which are off) without calling
  * `project-get` and interpreting a raw settings payload. Facts only, stated
  * neutrally: whether to recommend enabling something is the agent's call.
  */
@@ -127,12 +127,12 @@ export function buildActiveEnvironmentContextPrompt(
 
 /**
  * The tools the MCP actually advertises in single-exec mode. Without this the domain
- * index is the only list in the payload, and it names PostHog resources rather than
+ * index is the only list in the payload, and it names Flind resources rather than
  * callable tools — so a model that reads `scout|survey|…` as the tool list has no
  * callable name to reach for. `render-ui` is listed only where it is mounted.
  */
 export function buildAvailableToolsBlock(renderUiEnabled?: boolean): string {
-    const lines = ['exec – run any PostHog command; its `command` description has the syntax.']
+    const lines = ['exec – run any Flind command; its `command` description has the syntax.']
     if (renderUiEnabled) {
         lines.push('render-ui – show a tool result as an interactive app.')
     }

@@ -19,11 +19,11 @@ const CREDENTIAL_TYPE_LABELS: Record<ActivityLogCredentialTypeEnumApi, string> =
     gateway_agent: 'MCP gateway agent',
     export_renderer: 'Export',
     webhook: 'Webhook',
-    internal_jwt: 'PostHog service',
-    service_jwt: 'PostHog service',
-    internal_api_secret: 'PostHog service',
-    cross_region_signature: 'PostHog service',
-    billing_service: 'PostHog billing',
+    internal_jwt: 'Flind service',
+    service_jwt: 'Flind service',
+    internal_api_secret: 'Flind service',
+    cross_region_signature: 'Flind service',
+    billing_service: 'Flind billing',
     unattributed: 'Unknown',
 }
 

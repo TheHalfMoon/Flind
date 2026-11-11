@@ -51,11 +51,11 @@ Capture keeps a span only if its attributes match a known AI provider convention
 
 Almost always one of:
 
-- **OTLP traces are being exported to PostHog wholesale.** A generic tracing setup was pointed at `/i/v0/ai/otel` without filtering, so HTTP and database spans arrive with no AI spans among them. Restrict the exporter to the AI instrumentation, or accept that non-AI batches produce nothing.
+- **OTLP traces are being exported to Flind wholesale.** A generic tracing setup was pointed at `/i/v0/ai/otel` without filtering, so HTTP and database spans arrive with no AI spans among them. Restrict the exporter to the AI instrumentation, or accept that non-AI batches produce nothing.
 - **The LLM instrumentation isn't loaded.** The exporter works, but the library that adds `gen_ai.*` attributes isn't installed or initialized, so the LLM calls emit plain spans. Confirm the AI instrumentation package is registered before the provider client is constructed.
 - **A custom or unsupported convention.** Hand-rolled spans using in-house attribute names won't match. Rename them to the `gen_ai.*` semantic conventions.
 
-To see what is actually arriving, pull the spans' attribute keys from your own tracing backend rather than from PostHog. Nothing reached PostHog to inspect.
+To see what is actually arriving, pull the spans' attribute keys from your own tracing backend rather than from Flind. Nothing reached Flind to inspect.
 
 A mixed batch that contains at least one AI span does **not** warn, so a team seeing this occasionally alongside successful ingestion is sending some batches with no AI activity in them. That is usually benign. Sustained firing with no AI events landing is the case worth acting on.
 

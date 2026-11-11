@@ -33,7 +33,7 @@ export interface TodayWorkItem {
     /** The latest run's execution mode, `interactive` or `background`. */
     runMode?: string | null
     originProduct: string | null
-    /** What filed it: a session's origin product, or PostHog AI for a chat. */
+    /** What filed it: a session's origin product, or Flind AI for a chat. */
     source: string | null
     repository: string | null
     /** The latest run's branch. */
@@ -227,7 +227,7 @@ export function sessionBadges(
     return badges
 }
 
-/** "2h ago", with the exact time for the tooltip. The same scale as PostHog Desktop's row details. */
+/** "2h ago", with the exact time for the tooltip. The same scale as Flind Desktop's row details. */
 export function activityDetail(
     timestamp: string | null,
     now: Dayjs = dayjs()

@@ -141,7 +141,7 @@ def save_export_asset_content_from_file(
 
 
 # The limit contexts an export writer can pin, keyed by the string it stores in export_context.
-# The API rejects this key from clients, so only PostHog's own writers reach this map.
+# The API rejects this key from clients, so only Flind's own writers reach this map.
 _PINNABLE_EXPORT_LIMIT_CONTEXTS = {"posthog_ai": LimitContext.POSTHOG_AI}
 
 

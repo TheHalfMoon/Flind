@@ -145,14 +145,14 @@ These recovery operations require release access and are exceptional; routine pu
 
 ## Store records this app uses
 
-This app replaces the existing "PostHog" iOS app and uses a new Google Play app record.
+This app replaces the existing "Flind" iOS app and uses a new Google Play app record.
 The iOS store build keeps the existing identity, so an update replaces the old app on people's phones.
 Android uses `com.posthog.mobile`, which installs separately from the older `com.posthog.code.mobile` app.
 Development and preview builds use their own identities, see [Build variants](#build-variants).
 
 | Field                             | Value                                  |
 | --------------------------------- | -------------------------------------- |
-| App name                          | PostHog                                |
+| App name                          | Flind                                |
 | iOS bundle id                     | `com.posthog.code.mobile`              |
 | Android package                   | `com.posthog.mobile`                   |
 | Expo owner and slug               | `posthog` / `posthog`                  |
@@ -217,9 +217,9 @@ The names, id suffixes and schemes are in `src/lib/appVariants.json`.
 
 | Variant       | Profile       | App name        | iOS bundle id                     | Android package              | URL scheme        | iOS App Group                           | Icon                                           |
 | ------------- | ------------- | --------------- | --------------------------------- | ---------------------------- | ----------------- | --------------------------------------- | ---------------------------------------------- |
-| `development` | `development` | PostHog Dev     | `com.posthog.code.mobile.dev`     | `com.posthog.mobile.dev`     | `posthog-dev`     | `group.com.posthog.code.mobile.dev`     | `app-dev.icon` on iOS, amber DEV band          |
-| `preview`     | `preview`     | PostHog Preview | `com.posthog.code.mobile.preview` | `com.posthog.mobile.preview` | `posthog-preview` | `group.com.posthog.code.mobile.preview` | `app-preview.icon` on iOS, purple PREVIEW band |
-| `production`  | `production`  | PostHog         | `com.posthog.code.mobile`         | `com.posthog.mobile`         | `posthog`         | `group.com.posthog.code.mobile`         | `app.icon` on iOS                              |
+| `development` | `development` | Flind Dev     | `com.posthog.code.mobile.dev`     | `com.posthog.mobile.dev`     | `posthog-dev`     | `group.com.posthog.code.mobile.dev`     | `app-dev.icon` on iOS, amber DEV band          |
+| `preview`     | `preview`     | Flind Preview | `com.posthog.code.mobile.preview` | `com.posthog.mobile.preview` | `posthog-preview` | `group.com.posthog.code.mobile.preview` | `app-preview.icon` on iOS, purple PREVIEW band |
+| `production`  | `production`  | Flind         | `com.posthog.code.mobile`         | `com.posthog.mobile`         | `posthog`         | `group.com.posthog.code.mobile`         | `app.icon` on iOS                              |
 
 - The widget extension's bundle id is the app's id plus `.HedgehogWidget`, for example `com.posthog.code.mobile.dev.HedgehogWidget`.
 - The production profile also sets `EXPO_PUBLIC_SIGNUP_LINK=0`, so store builds hide "Create an account".
@@ -230,7 +230,7 @@ The names, id suffixes and schemes are in `src/lib/appVariants.json`.
 - Development and preview builds show an environment ribbon on the sign-in screen and in Settings, and a Settings Environment group.
   They accept HTTP on `localhost`, `127.0.0.1` and `[::1]`, and prefill the local dev OAuth client id. Store builds do none of this.
   Android's release network policy allows those exact loopback hosts only in development and preview variants; production release binaries deny cleartext. Local debug builds retain Expo's cleartext allowance for Metro on the local network, including with the store identity. A native rebuild is needed to change either policy.
-  A store build shows a red ribbon only when the session's host is not PostHog Cloud.
+  A store build shows a red ribbon only when the session's host is not Flind Cloud.
 
 ## One-time setup
 
@@ -238,8 +238,8 @@ Someone with these accounts does each step once. An agent cannot do them.
 
 1. Get access:
    - Membership of the `posthog` organization on [expo.dev](https://expo.dev).
-   - The App Manager or Admin role for the PostHog app in App Store Connect, in the PostHog Apple Developer team.
-   - Release manager access to the PostHog app in the Google Play Console.
+   - The App Manager or Admin role for the Flind app in App Store Connect, in the Flind Apple Developer team.
+   - Release manager access to the Flind app in the Google Play Console.
 2. Install the EAS CLI and sign in:
 
    ```sh
@@ -316,7 +316,7 @@ It loads JavaScript from Metro on your Mac, so you rebuild it only when native c
 For Android, use the same workflow with profile `development` and platform `android`, then install the APK from the EAS build page.
 No device registration is needed.
 
-The development build installs as "PostHog Dev" next to the store app, and shows an amber "Dev build" ribbon on the sign-in screen and in Settings.
+The development build installs as "Flind Dev" next to the store app, and shows an amber "Dev build" ribbon on the sign-in screen and in Settings.
 
 Rebuild the development build after a change to native code:
 a new native module, a config plugin, or a native field in `app.config.ts`.

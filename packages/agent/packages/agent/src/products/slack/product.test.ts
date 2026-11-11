@@ -100,7 +100,7 @@ describe("Slack product", () => {
       });
 
       expect(deliveryInstructions).toContain("insights/new#q=<query>");
-      expect(deliveryInstructions).toContain("the only PostHog link");
+      expect(deliveryInstructions).toContain("the only Flind link");
       expect(deliveryInstructions).not.toContain("living_artifacts/chart/");
     },
   );
@@ -116,7 +116,7 @@ describe("Slack product", () => {
       const session = await configure(launchOptions, origin);
 
       expect(
-        (session.identityInstructions ?? "").includes("PostHog Slack app"),
+        (session.identityInstructions ?? "").includes("Flind Slack app"),
       ).toBe(slackReply);
       expect(session.replySurface).toBe(slackReply ? "slack" : undefined);
       expect(session.closingInstructions).toBe(
@@ -146,13 +146,13 @@ describe("Slack product", () => {
       "slack",
       { slack_thread_url: "https://example.com/t" },
       true,
-      "*Created with [PostHog](https://posthog.com?ref=pr) from a [Slack thread](https://example.com/t)*",
+      "*Created with [Flind](https://posthog.com?ref=pr) from a [Slack thread](https://example.com/t)*",
     ],
     [
       "workflow",
       { slack_reply_context: true },
       false,
-      "*Created with [PostHog Desktop](https://posthog.com/desktop?ref=pr)*",
+      "*Created with [Flind Desktop](https://posthog.com/desktop?ref=pr)*",
     ],
   ] as const)(
     "publishes only for the Slack app origin (origin: %s)",

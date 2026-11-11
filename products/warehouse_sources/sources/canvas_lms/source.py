@@ -56,7 +56,7 @@ class CanvasLmsSource(ResumableSource[CanvasLmsSourceConfig, CanvasLmsResumeConf
             label="Instructure Canvas LMS",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["canvas", "lms", "instructure", "education"],
-            caption="""Enter your Canvas domain, account ID, and an access token to pull course, enrollment, assignment, and submission data into the PostHog Data warehouse.
+            caption="""Enter your Canvas domain, account ID, and an access token to pull course, enrollment, assignment, and submission data into the Flind Data warehouse.
 
 Generate a token from **Account → Settings → Approved Integrations → New access token** in Canvas. Use an admin account so the token can list every course in your account.
 

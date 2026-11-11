@@ -70,7 +70,7 @@ class TestRoleExternalReferenceAPI(APILicensedTest):
     @parameterized.expand(
         [
             ({"provider_role_id": "67890"},),
-            ({"provider_role_slug": "Frontend-Team", "provider_organization_id": "PostHog"},),
+            ({"provider_role_slug": "Frontend-Team", "provider_organization_id": "Flind"},),
         ]
     )
     def test_unique_constraint_on_role_slug(self, overrides: dict[str, str]) -> None:

@@ -1,7 +1,7 @@
 """Compact transcript of a sandbox conversation's latest turn, folded from raw agent-run stream frames.
 
 The stream carries every ACP frame the agent-server emitted. The turn classifier only needs three
-things from it: what the user asked, what the assistant answered, and which PostHog tools ran with
+things from it: what the user asked, what the assistant answered, and which Flind tools ran with
 their inner names resolved out of the single-exec ``mcp__posthog__exec`` wrapper.
 """
 
@@ -17,7 +17,7 @@ from products.posthog_ai.backend.exec_commands import INFO_SYNTHETIC_PREFIX, nor
 from products.posthog_ai.backend.wire_types import NotificationFrame, is_user_message_params, parse_log_entry
 
 POSTHOG_EXEC_TOOL_RE = re.compile(r"^mcp__(?:plugin_)?posthog(?:_[^_]+)*__exec$")
-# The PostHog MCP server puts a tool's handler payload here; its text content is a lossy rendering.
+# The Flind MCP server puts a tool's handler payload here; its text content is a lossy rendering.
 MCP_APP_DATA_META_KEY = "com.posthog.mcp/app_data"
 
 # The send path prefixes user text with context blocks the user never sees. The legacy

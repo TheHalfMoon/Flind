@@ -20,7 +20,7 @@ export interface RateLimitResult {
     resetSeconds: number
 }
 
-// Match PostHog's default REST API throttle (BurstRateThrottle /
+// Match Flind's default REST API throttle (BurstRateThrottle /
 // SustainedRateThrottle in posthog/rate_limit.py).
 export const DEFAULT_BURST_LIMIT: RateLimitConfig = {
     scope: 'mcp_burst',

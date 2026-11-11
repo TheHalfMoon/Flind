@@ -47,7 +47,7 @@ class GongSource(ResumableSource[GongSourceConfig, GongResumeConfig]):
             category=DataWarehouseSourceCategory.SALES,
             label="Gong",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Gong API credentials to pull your Gong data into the PostHog Data warehouse.
+            caption="""Enter your Gong API credentials to pull your Gong data into the Flind Data warehouse.
 
 Create an **Access Key** and **Access Key Secret** in Gong under **Company Settings > Ecosystem > API**.
 

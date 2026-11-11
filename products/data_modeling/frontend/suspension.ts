@@ -11,7 +11,7 @@ export function servingSuspension(suspended: NodeApiSuspended | undefined | null
 }
 
 /**
- * "Suspended" is PostHog stopping the schedule after repeated failures. "Paused" is the user
+ * "Suspended" is Flind stopping the schedule after repeated failures. "Paused" is the user
  * setting the cadence to never. The two states offer different actions, so the copy keeps the
  * two words apart.
  */

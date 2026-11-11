@@ -62,7 +62,7 @@ STALE_TURN_SALVAGE_SECONDS = 300
 # Notification method the sandbox agent emits on a terminal failure. The agent
 # classifies upstream failures (rate limits, stream/connection drops, provider
 # errors) via classifyAgentError() and writes the category + raw message here, so
-# the PostHog side can surface the real cause instead of Temporal's opaque
+# the Flind side can surface the real cause instead of Temporal's opaque
 # "Activity task failed" wrapper.
 AGENT_ERROR_METHOD = "_posthog/error"
 
@@ -178,7 +178,7 @@ class CustomPromptSandboxContext:
     prompt the surface really ships. ``None`` leaves the run originless, like a plain task."""
     system_prompt: dict[str, str] | None = None
     mcp_exclude_tools: tuple[str, ...] = ()
-    """Tool names to omit from the PostHog MCP catalog for this run (``x-posthog-exclude-tools``).
+    """Tool names to omit from the Flind MCP catalog for this run (``x-posthog-exclude-tools``).
     Used when a scope grant is broader than the tools this caller should advertise, e.g. hiding
     ``docs-search`` from a non-PostHog support draft."""
 

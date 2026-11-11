@@ -5,7 +5,7 @@ import { urls } from 'scenes/urls'
 import type { ActiveCreation } from '~/layout/ai/runnerPanelLogic'
 
 export interface MainFocusUrlInput {
-    /** Whether the panel is running the new PostHog AI view rather than the legacy Max chat. */
+    /** Whether the panel is running the new Flind AI view rather than the legacy Max chat. */
     isNewView: boolean
     /** The run the new view's panel has open, if any. */
     activeCreation: ActiveCreation | null

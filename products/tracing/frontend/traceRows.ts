@@ -4,7 +4,7 @@ import type { TracingOrderBy, TracingOrderDirection } from './tracingFiltersLogi
 import type { Span } from './types'
 
 // One row per trace. If the root span never arrived (e.g. an upstream service started the trace
-// but doesn't export to PostHog), the top loaded span stands in for it.
+// but doesn't export to Flind), the top loaded span stands in for it.
 export function traceRows(spans: Span[], orderBy: TracingOrderBy, orderDirection: TracingOrderDirection): Span[] {
     const rootByTrace = new Map<string, Span>()
     let hasMultiRootTrace = false

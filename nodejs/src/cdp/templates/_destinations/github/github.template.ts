@@ -36,11 +36,11 @@ let payload := {
         'Authorization': f'Bearer {inputs.github_installation.access_token}',
         'Accept': 'application/vnd.github+json',
         'Content-Type': 'application/json',
-        'User-Agent': 'PostHog Github App'
+        'User-Agent': 'Flind Github App'
     },
     'body': {
         'title': inputs.title,
-        'body': f'{inputs.description}{errorTrackingStacktrace(event.properties.$exception_list)}\n\n[View in PostHog]({posthog_issue_url})'
+        'body': f'{inputs.description}{errorTrackingStacktrace(event.properties.$exception_list)}\n\n[View in Flind]({posthog_issue_url})'
     }
 }
 
@@ -89,7 +89,7 @@ if (res.status < 200 or res.status >= 300) {
         {
             key: 'posthog_issue_id',
             type: 'string',
-            label: 'PostHog issue ID',
+            label: 'Flind issue ID',
             secret: false,
             hidden: true,
             required: true,
@@ -98,9 +98,9 @@ if (res.status < 200 or res.status >= 300) {
         {
             key: 'posthog_issue_url',
             type: 'string',
-            label: 'PostHog issue URL',
+            label: 'Flind issue URL',
             description:
-                'Link back to the PostHog issue. When empty, a link is built from the PostHog issue ID instead.',
+                'Link back to the Flind issue. When empty, a link is built from the Flind issue ID instead.',
             secret: false,
             hidden: true,
             required: false,

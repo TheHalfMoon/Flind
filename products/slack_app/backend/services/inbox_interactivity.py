@@ -85,13 +85,13 @@ def _inbox_integration_from_payload(payload: dict) -> WorkspaceIntegration | Non
 
 def _reconnect_hint() -> str:
     return (
-        "PostHog needs the `channels:manage` permission for this. "
+        "Flind needs the `channels:manage` permission for this. "
         f"Ask a project admin to reconnect Slack ({settings.SITE_URL}/settings/project-integrations), then try again."
     )
 
 
 def handle_inbox_create(payload: dict) -> HttpResponse:
-    """'Create the PostHog inbox channel' button: create #posthog-inbox and invite the clicker."""
+    """'Create the Flind inbox channel' button: create #posthog-inbox and invite the clicker."""
     integration = _inbox_integration_from_payload(payload)
     slack_user_id = payload.get("user", {}).get("id", "")
     response_url = payload.get("response_url", "")

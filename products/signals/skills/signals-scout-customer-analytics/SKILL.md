@@ -2,11 +2,11 @@
 name: signals-scout-customer-analytics
 scout-display-name: Customer analytics
 description: >
-  Signals scout for PostHog Customer analytics (Accounts). Watches per-account engagement for
+  Signals scout for Flind Customer analytics (Accounts). Watches per-account engagement for
   churn-risk shapes — engagement cliffs, dormancy, champion departure — and the expansion
   inverse.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus the customer-analytics tools
   in the MCP tools section (execute-sql over `system.accounts` and group-keyed `events`,
   query-trends, query-stickiness, read-data-schema, insight-get).

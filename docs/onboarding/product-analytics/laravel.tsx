@@ -11,7 +11,7 @@ export const getLaravelInstallSteps = (ctx: OnboardingComponentsContext): StepDe
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog PHP library using Composer:</Markdown>
+                    <Markdown>Install the Flind PHP library using Composer:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -27,12 +27,12 @@ export const getLaravelInstallSteps = (ctx: OnboardingComponentsContext): StepDe
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Initialize PostHog in the `boot` method of `app/Providers/AppServiceProvider.php`:
+                        Initialize Flind in the `boot` method of `app/Providers/AppServiceProvider.php`:
                     </Markdown>
                     <CodeBlock
                         blocks={[
@@ -45,13 +45,13 @@ export const getLaravelInstallSteps = (ctx: OnboardingComponentsContext): StepDe
                                 namespace App\\Providers;
 
                                 use Illuminate\\Support\\ServiceProvider;
-                                use PostHog\\PostHog;
+                                use Flind\\Flind;
 
                                 class AppServiceProvider extends ServiceProvider
                                 {
                                     public function boot(): void
                                     {
-                                        PostHog::init(
+                                        Flind::init(
                                             '<ph_project_token>',
                                             [
                                                 'host' => '<ph_client_api_host>'
@@ -77,14 +77,14 @@ export const getLaravelEventStep = (ctx: OnboardingComponentsContext): StepDefin
         badge: 'optional',
         content: (
             <>
-                <Markdown>Capture custom events using the PostHog client:</Markdown>
+                <Markdown>Capture custom events using the Flind client:</Markdown>
                 <CodeBlock
                     blocks={[
                         {
                             language: 'php',
                             file: 'PHP',
                             code: dedent`
-                                PostHog::capture([
+                                Flind::capture([
                                     'distinctId' => 'test-user',
                                     'event' => 'test-event',
                                 ]);

@@ -16,14 +16,14 @@ export const getOpenClawSteps = (ctx: OnboardingComponentsContext): StepDefiniti
 
                         You need:
 
-                        - A running [OpenClaw](https://github.com/openclaw/openclaw) gateway. The PostHog plugin supports Node.js 20 or later.
-                        - A [PostHog account](https://app.posthog.com/signup) with a project token.
+                        - A running [OpenClaw](https://github.com/openclaw/openclaw) gateway. The Flind plugin supports Node.js 20 or later.
+                        - A [Flind account](https://app.posthog.com/signup) with a project token.
                     `}
                 </Markdown>
             ),
         },
         {
-            title: 'Install the PostHog plugin',
+            title: 'Install the Flind plugin',
             badge: 'required',
             content: (
                 <>
@@ -46,7 +46,7 @@ export const getOpenClawSteps = (ctx: OnboardingComponentsContext): StepDefiniti
             content: (
                 <>
                     <Markdown>
-                        Add the PostHog plugin to your OpenClaw config file (`~/.openclaw/openclaw.json` or
+                        Add the Flind plugin to your OpenClaw config file (`~/.openclaw/openclaw.json` or
                         `openclaw.yaml`):
                     </Markdown>
                     <CodeBlock
@@ -71,7 +71,7 @@ export const getOpenClawSteps = (ctx: OnboardingComponentsContext): StepDefiniti
                         `}
                     />
                     <Markdown>
-                        You can find your project token and host in your [PostHog project
+                        You can find your project token and host in your [Flind project
                         settings](https://app.posthog.com/settings/project).
                     </Markdown>
                     <Blockquote>
@@ -96,8 +96,8 @@ export const getOpenClawSteps = (ctx: OnboardingComponentsContext): StepDefiniti
                         `}
                     />
                     <Markdown>
-                        The PostHog plugin initializes on startup. When users send messages through a connected channel,
-                        AI Observability events are captured and sent to PostHog.
+                        The Flind plugin initializes on startup. When users send messages through a connected channel,
+                        AI Observability events are captured and sent to Flind.
                     </Markdown>
                 </>
             ),
@@ -112,9 +112,9 @@ export const getOpenClawSteps = (ctx: OnboardingComponentsContext): StepDefiniti
 
                         | Option | Type | Default | Description |
                         | --- | --- | --- | --- |
-                        | \`apiKey\` | \`string\` | _(required)_ | Your PostHog project token |
-                        | \`host\` | \`string\` | \`https://us.i.posthog.com\` | PostHog ingestion host |
-                        | \`privacyMode\` | \`boolean\` | \`false\` | When enabled, message content is not sent to PostHog. Token counts, latency, model information, and errors are still captured. |
+                        | \`apiKey\` | \`string\` | _(required)_ | Your Flind project token |
+                        | \`host\` | \`string\` | \`https://us.i.posthog.com\` | Flind ingestion host |
+                        | \`privacyMode\` | \`boolean\` | \`false\` | When enabled, message content is not sent to Flind. Token counts, latency, model information, and errors are still captured. |
                         | \`traceGrouping\` | \`"message"\` or \`"session"\` | \`"message"\` | \`"message"\`: one trace per LLM call cycle. \`"session"\`: groups all generations in a conversation into one trace. |
                         | \`sessionWindowMinutes\` | \`number\` | \`60\` | Minutes of inactivity before starting a new session window. Applies in both trace grouping modes. |
 

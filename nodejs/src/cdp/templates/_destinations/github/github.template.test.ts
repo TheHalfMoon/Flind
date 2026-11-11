@@ -10,7 +10,7 @@ describe('github template', () => {
     })
 
     const baseInputs = {
-        github_installation: { access_token: 'token', account: { name: 'PostHog' } },
+        github_installation: { access_token: 'token', account: { name: 'Flind' } },
         repository: 'posthog',
         title: 'TypeError',
         description: 'Something broke',
@@ -33,7 +33,7 @@ describe('github template', () => {
 
         expect(response.error).toBeUndefined()
         const body = parseJSON((response.invocation.queueParameters as any).body)
-        expect(body.body).toContain(`[View in PostHog](`)
+        expect(body.body).toContain(`[View in Flind](`)
         expect(body.body).toContain(expectedLinkPart)
     })
 
@@ -183,7 +183,7 @@ describe('github template', () => {
             expect(JSON.stringify(body)).not.toContain(secret)
         }
         expect(body.body).toEqual(
-            `${expectedDescription}\n\n[View in PostHog](https://us.posthog.com/projects/1/error-tracking/issue-uuid)`
+            `${expectedDescription}\n\n[View in Flind](https://us.posthog.com/projects/1/error-tracking/issue-uuid)`
         )
     })
 })

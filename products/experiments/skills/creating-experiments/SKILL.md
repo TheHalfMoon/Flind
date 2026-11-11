@@ -67,9 +67,9 @@ Gather these before calling `experiment-create`:
 - **Hypothesis** — what you expect to happen (goes in `description`)
 - **Feature flag key** — kebab-case. Infer a new key unless the user names an existing flag.
   The flag is auto-created — do NOT create one separately. The one exception is device-id bucketing, which `experiment-create` cannot set (see the recipe in `configuring-experiment-rollout`).
-- **Type** — leave empty (will internally default to `"product"`. The `"web"` value is reserved for no-code experiments configured visually with the PostHog
+- **Type** — leave empty (will internally default to `"product"`. The `"web"` value is reserved for no-code experiments configured visually with the Flind
   toolbar in a browser; it cannot be meaningfully driven via MCP. If a user asks for a
-  no-code/toolbar experiment, point them to the PostHog UI instead of creating one here.)
+  no-code/toolbar experiment, point them to the Flind UI instead of creating one here.)
 
 If the user gives enough context to infer these, don't ask — just proceed.
 

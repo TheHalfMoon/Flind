@@ -60,7 +60,7 @@ class PretixSource(ResumableSource[PretixSourceConfig, PretixResumeConfig]):
             label="Pretix",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["ticketing", "events", "tickets"],
-            caption="""Enter your pretix API token to pull your event ticketing data into the PostHog Data warehouse.
+            caption="""Enter your pretix API token to pull your event ticketing data into the Flind Data warehouse.
 
 You can create a team API token in pretix under **Organizer settings → Teams → your team → Create API token**. The token is scoped to one organizer; enter that organizer's short name (slug) below. The token's team needs read permission for the resources you want to sync (for example *Can view orders* for orders and invoices, *Can view vouchers* for vouchers).
 

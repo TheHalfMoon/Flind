@@ -20,7 +20,7 @@ MAX_AI_EVENTS_PER_TRACE = 500
 AI_EVENT_KINDS = ["$ai_generation", "$ai_span", "$ai_embedding"]
 
 
-# OTel ingestion stamps an event with the span's start, while the PostHog AI SDKs and the LLM
+# OTel ingestion stamps an event with the span's start, while the Flind AI SDKs and the LLM
 # gateway stamp it when the call finished. The source marker tells the two apart.
 OTEL_INGESTION_SOURCE = "otel"
 

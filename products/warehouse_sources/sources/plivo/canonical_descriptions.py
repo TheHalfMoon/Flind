@@ -141,7 +141,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Billed usage and other charges for one day, with usage broken down by product, type, country and direction.",
         "docs_url": "https://www.plivo.com/docs/account/api/usage-summary",
         "columns": {
-            "id": "Identifier PostHog derives from the row's dimensions (date, product, type, country, direction and so on).",
+            "id": "Identifier Flind derives from the row's dimensions (date, product, type, country, direction and so on).",
             "from_date": "Start of the day the usage covers (inclusive).",
             "to_date": "End of the day the usage covers (exclusive).",
             "product": "Plivo product the usage is for: message, voice, zentrunk, or transcription.",

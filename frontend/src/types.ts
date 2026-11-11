@@ -1082,7 +1082,7 @@ export interface ToolbarParams {
     dataAttributes?: string[]
     toolbarFlagsKey?: string
     productTourId?: string
-    uiHost?: string /** PostHog app URL, used for OAuth and UI links */
+    uiHost?: string /** Flind app URL, used for OAuth and UI links */
 }
 
 export interface ToolbarProps extends ToolbarParams {
@@ -1755,7 +1755,7 @@ export interface PersonListParams {
     search?: string
     cohort?: number
     distinct_id?: string
-    include_total?: boolean // PostHog 3000-only
+    include_total?: boolean // Flind 3000-only
     limit?: number
     /** Names the ClickHouse query so `api.cancelQuery` can stop it. Up to 128 characters. */
     client_query_id?: string
@@ -4789,7 +4789,7 @@ export interface PreflightStatus {
     initiated: boolean
     /** Org creation is allowed on Cloud OR initiated self-hosted organizations with a license and MULTI_ORG_ENABLED. */
     can_create_org: boolean
-    /** Whether this is PostHog Cloud. */
+    /** Whether this is Flind Cloud. */
     cloud: boolean
     /** Whether this is a managed demo environment. */
     demo: boolean
@@ -4812,11 +4812,11 @@ export interface PreflightStatus {
             client_id?: string
         }
     }
-    /** Whether PostHog is running in settings.DEBUG or settings.E2E_TESTING. */
+    /** Whether Flind is running in settings.DEBUG or settings.E2E_TESTING. */
     is_debug?: boolean
     /** Whether one-click dev login is enabled (DEBUG and ALLOW_DEV_LOGIN). */
     allow_dev_login?: boolean
-    /** Whether PostHog is running with settings.TEST. */
+    /** Whether Flind is running with settings.TEST. */
     is_test?: boolean
     licensed_users_available?: number | null
     openai_available?: boolean
@@ -4940,7 +4940,7 @@ export interface EventDefinition {
     default_columns?: string[]
     enforcement_mode?: SchemaEnforcementMode
     media_preview_urls?: string[]
-    /** Name of a single property on this event to display alongside it in PostHog UI surfaces. */
+    /** Name of a single property on this event to display alongside it in Flind UI surfaces. */
     primary_property?: string | null
 }
 
@@ -5249,7 +5249,7 @@ export interface CoreFilterDefinition {
     type?: PropertyType
     /** Virtual properties are not "sent as", because they are calculated from other properties or SQL expressions **/
     virtual?: boolean
-    /** whether this is a property PostHog adds to aid with debugging */
+    /** whether this is a property Flind adds to aid with debugging */
     used_for_debug?: boolean
     /** Name of a single property on events of this name that UIs should display alongside the event. */
     primary_property?: string
@@ -5295,7 +5295,7 @@ export interface AppContext {
      * record to pin specific multivariate variants (e.g. an experiment arm) for a story.
      */
     persisted_feature_flags?: string[] | Record<string, string | boolean>
-    /** Whether the server's access gate gives this user PostHog AI 2.0. Absent when no user is signed in. */
+    /** Whether the server's access gate gives this user Flind AI 2.0. Absent when no user is signed in. */
     posthog_ai_access?: boolean
     anonymous: boolean
     effective_resource_access_control: Record<AccessControlResourceType, AccessControlLevel>
@@ -5695,7 +5695,7 @@ export const INTEGRATION_KINDS = [
 
 export type IntegrationKind = (typeof INTEGRATION_KINDS)[number]
 
-// Canonical bot scopes PostHog requests during the Slack OAuth install flow. Single source of
+// Canonical bot scopes Flind requests during the Slack OAuth install flow. Single source of
 // truth for both the frontend (app-manifest snippet + IntegrationView scope-mismatch banner)
 // and the backend (`POSTHOG_SLACK_SCOPE` in posthog/models/integration/oauth.py, via posthog/schema.py).
 // Widening this list will surface the "Required scopes are missing" banner for any workspace
@@ -5763,7 +5763,7 @@ export interface IntegrationType {
     installation_shared?: IntegrationConfigApi['installation_shared']
     /** GitHub only. `unavailable` once the App was removed or suspended on GitHub. */
     installation_status?: IntegrationConfigApi['installation_status']
-    /** Linear only. True when the workspace last authorized PostHog before the app had webhooks. */
+    /** Linear only. True when the workspace last authorized Flind before the app had webhooks. */
     needs_webhook_reconnect?: IntegrationConfigApi['needs_webhook_reconnect']
 }
 
@@ -6798,7 +6798,7 @@ export interface ExternalDataJob {
     billable?: boolean | null
     /**
      * Destinations this run delivered to, snapshotted when it started. Empty on runs that predate
-     * destinations, which wrote to the PostHog warehouse alone. `rows_synced` counts the rows read
+     * destinations, which wrote to the Flind warehouse alone. `rows_synced` counts the rows read
      * from the source once, not once per destination.
      */
     destination_ids?: string[]

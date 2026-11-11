@@ -4,7 +4,7 @@ from django.utils import timezone
 from posthog.models.utils import UniqueConstraintByExpression, UUIDTModel
 
 
-# NOTE: This model is deprecated. It was created as an attempt to track all of the domains that are using PostHog.
+# NOTE: This model is deprecated. It was created as an attempt to track all of the domains that are using Flind.
 # This wasn't very performant inside propdefs, and for that reason it was sunsetted.
 #
 # # TODO: Enable `@deprecated` once we move to Python 3.13

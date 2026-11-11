@@ -29,7 +29,7 @@ class PartnerTier(StrEnum):
     set, or a client secret) sits in the JWKS rows; a PKCE-public client, whose client_id
     anyone can send, sits in the PUBLIC rows. Attested axis: the app presented a valid
     ``posthog_verification_token`` at CIMD registration, so abuse is traceable to a real
-    PostHog organization.
+    Flind organization.
 
     Derived, never stored: a partner moves tier the moment it publishes a key set or
     attests, with no admin involvement and no persisted value to go stale.

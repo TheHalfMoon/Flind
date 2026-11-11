@@ -301,7 +301,7 @@ export function WorkspaceModeSelect({
                   <ItemContent variant="menuItem">
                     <ItemTitle>Cloud</ItemTitle>
                     <ItemDescription className="whitespace-nowrap leading-none">
-                      Runs on PostHog servers. Your local files do not change.
+                      Runs on Flind servers. Your local files do not change.
                     </ItemDescription>
                   </ItemContent>
                   <ItemActions className="mr-1.5 ml-auto self-center">

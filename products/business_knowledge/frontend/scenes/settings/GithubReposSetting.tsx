@@ -32,7 +32,7 @@ export function GithubReposSetting(): JSX.Element {
         if (githubIntegrations.length === 0) {
             return (
                 <p className="m-0">
-                    <Link to={urls.settings('project-integrations')}>Install the PostHog GitHub App</Link>, then come
+                    <Link to={urls.settings('project-integrations')}>Install the Flind GitHub App</Link>, then come
                     back here to choose repositories.
                 </p>
             )

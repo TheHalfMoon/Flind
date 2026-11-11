@@ -90,7 +90,7 @@ class PreviewLineSerializer(DataclassSerializer):
 
 
 class PageLinkSerializer(DataclassSerializer):
-    url = serializers.CharField(help_text="Where the link goes, outside PostHog.")
+    url = serializers.CharField(help_text="Where the link goes, outside Flind.")
     text = serializers.CharField(help_text="The link text.")
 
     class Meta:
@@ -145,7 +145,7 @@ class SignalViewSerializer(DataclassSerializer):
         choices=CitedSource.choices, allow_null=True, help_text="What a scout finding cites: code or a Slack thread."
     )
     recording = RecordingTargetSerializer(allow_null=True, help_text="The recording the signal plays, if any.")
-    link = PageLinkSerializer(allow_null=True, help_text="Where a scout finding links outside PostHog, if anywhere.")
+    link = PageLinkSerializer(allow_null=True, help_text="Where a scout finding links outside Flind, if anywhere.")
     preview = SignalPreviewSerializer(allow_null=True, help_text="What expanding the signal shows, if anything.")
 
     class Meta:

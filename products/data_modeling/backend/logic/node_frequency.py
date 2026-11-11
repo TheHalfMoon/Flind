@@ -272,7 +272,7 @@ def resolve_source_intervals(source_nodes: list[Node]) -> tuple[dict[str, timede
 
     Returns (source_intervals, best_effort_source_ids). A best-effort source is treated as
     STREAMING (no floor) but flagged so the wiring layer can warn that its downstream freshness
-    is not actually guaranteed: streamed PostHog builtins are genuinely continuous, but a
+    is not actually guaranteed: streamed Flind builtins are genuinely continuous, but a
     manual/paused/unresolvable import only *looks* fresh.
     """
     warehouse_intervals = _resolve_warehouse_source_intervals(

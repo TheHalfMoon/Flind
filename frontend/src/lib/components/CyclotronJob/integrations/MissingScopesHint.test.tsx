@@ -11,7 +11,7 @@ import { CyclotronJobInputs } from '../CyclotronJobInputs'
 const slackIntegration = (scope: string): Record<string, any> => ({
     id: 1,
     kind: 'slack',
-    display_name: 'PostHog HQ',
+    display_name: 'Flind HQ',
     icon_url: '',
     config: { scope },
     created_by: null,

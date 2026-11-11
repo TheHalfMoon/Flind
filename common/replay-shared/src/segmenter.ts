@@ -196,7 +196,7 @@ export const createSegments = (
 /**
  * Merge runs of consecutive inactive segments into single segments.
  * Active segments pass through unchanged. This produces output similar
- * to the PostHog frontend's merged regions — fewer, coarser periods
+ * to the Flind frontend's merged regions — fewer, coarser periods
  * that are easier to skip over and less noisy for consumers.
  */
 export const mergeInactiveSegments = (segments: RecordingSegment[]): RecordingSegment[] => {

@@ -52,7 +52,7 @@ class BluetallySource(ResumableSource[BluetallySourceConfig, BluetallyResumeConf
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="BlueTally",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your BlueTally API key to sync your IT asset management data into the PostHog Data warehouse.
+            caption="""Enter your BlueTally API key to sync your IT asset management data into the Flind Data warehouse.
 
 Create an API key in BlueTally under **Settings → API Keys**, then paste it here.
 

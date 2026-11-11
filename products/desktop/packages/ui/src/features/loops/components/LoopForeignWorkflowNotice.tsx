@@ -19,7 +19,7 @@ export function LoopForeignWorkflowNotice({
       </span>
       <span className="text-(--amber-11) text-[12px] leading-snug">
         It now has steps or triggers the loop editor can't show. Open it in
-        PostHog to change it, or delete it here. Run history and the pause
+        Flind to change it, or delete it here. Run history and the pause
         toggle still work.
       </span>
       {workflowUrl ? (
@@ -30,7 +30,7 @@ export function LoopForeignWorkflowNotice({
           onClick={() => openExternalUrl(workflowUrl)}
         >
           <ArrowSquareOut size={14} />
-          Open in PostHog
+          Open in Flind
         </Button>
       ) : null}
     </div>

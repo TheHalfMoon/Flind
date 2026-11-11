@@ -192,7 +192,7 @@ class CustomSignalAgent:
         without a subject repo, or ``None`` to defer to free-form selection at
         :py:meth:`start` time.
 
-        ``user_id``: PostHog user the sandbox actions are attributed to. When
+        ``user_id``: Flind user the sandbox actions are attributed to. When
         ``None``, :py:meth:`start` resolves the team's GitHub-integration
         owner via :func:`resolve_user_id_for_team` (which requires a GitHub
         integration on the team).
@@ -628,7 +628,7 @@ involvement — the ranking handles that.
                 "No subject repository was pre-selected for this run. But if the task does turn out to involve "
                 "a specific repository, clone it yourself (`gh repo clone <org>/<repo>`). Cloning a repo is cheap."
             )
-        return f"""You are running as a custom PostHog Signals agent.
+        return f"""You are running as a custom Flind Signals agent.
 
 ## Initial request
 {self.initial_prompt}

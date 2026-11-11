@@ -88,7 +88,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Account audit trail, one row per recorded change or action by a user or API token.",
         "docs_url": "https://api-docs.logz.io/docs/logz/list-account-audit-trails-filtered",
         "columns": {
-            "audit_event_id": "Hash of the audit event's content. The API returns no event id, so PostHog derives one.",
+            "audit_event_id": "Hash of the audit event's content. The API returns no event id, so Flind derives one.",
             "auditEventUser": "The user or API token that performed the action.",
             "date": "When the event happened, as a Unix timestamp.",
             "auditEventTypeTitle": "Type of the audit event.",

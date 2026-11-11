@@ -51,7 +51,7 @@ class RecruiteeSource(ResumableSource[RecruiteeSourceConfig, RecruiteeResumeConf
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="Recruitee",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Recruitee company ID and API token to pull your recruiting data into the PostHog Data warehouse.
+            caption="""Enter your Recruitee company ID and API token to pull your recruiting data into the Flind Data warehouse.
 
 Find your company ID and create a personal API token under **Settings → Apps and plugins → Personal API tokens** in [Recruitee](https://app.recruitee.com/). The token grants read access to your candidates, candidate notes, offers, departments, locations, and placements. All tables sync via full refresh.
 """,

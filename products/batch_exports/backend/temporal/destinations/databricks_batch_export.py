@@ -372,7 +372,7 @@ class DatabricksClient:
                 http_path=self.http_path,
                 credentials_provider=get_credential_provider,
                 # user agent can be used for usage tracking
-                user_agent_entry="PostHog batch exports",
+                user_agent_entry="Flind batch exports",
                 enable_telemetry=False,
                 # Per-RPC, not per-query — long queries poll via repeated status RPCs.
                 _socket_timeout=ONE_MINUTE,
@@ -661,7 +661,7 @@ class DatabricksClient:
                 {field_ddl}
             )
             USING DELTA
-            COMMENT 'PostHog generated table'
+            COMMENT 'Flind generated table'
             """
         async with handle_common_errors(f"CREATE TABLE {table_name}", timeout):
             await self.execute_query(query, fetch_results=False, timeout=timeout)
@@ -773,7 +773,7 @@ class DatabricksClient:
         timeout = FIVE_MINUTES
         async with handle_common_errors(f"CREATE VOLUME {volume}", timeout):
             await self.execute_query(
-                f"CREATE VOLUME IF NOT EXISTS `{volume}` COMMENT 'PostHog generated volume'",
+                f"CREATE VOLUME IF NOT EXISTS `{volume}` COMMENT 'Flind generated volume'",
                 fetch_results=False,
                 timeout=timeout,
             )

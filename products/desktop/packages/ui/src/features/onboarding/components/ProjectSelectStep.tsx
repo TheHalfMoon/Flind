@@ -99,7 +99,7 @@ export function ProjectSelectStep({ onNext, onBack }: ProjectSelectStepProps) {
             Choose a project
           </Heading>
           <Text size="sm" variant="muted">
-            Choose the PostHog project you want to use with Desktop.
+            Choose the Flind project you want to use with Desktop.
           </Text>
         </div>
 

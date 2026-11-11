@@ -58,7 +58,7 @@ class OrttoSource(ResumableSource[OrttoSourceConfig, OrttoResumeConfig]):
             name=ExternalDataSourceType.ORTTO,
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Ortto",
-            caption="""Connect your Ortto account to pull your marketing data into the PostHog Data warehouse.
+            caption="""Connect your Ortto account to pull your marketing data into the Flind Data warehouse.
 
 Create a custom API key in Ortto under Settings > API keys, and pick the region your Ortto instance lives in. Ortto's API has no updated-since filter, so all tables fully refresh on each sync.""",
             iconPath="/static/services/ortto.png",

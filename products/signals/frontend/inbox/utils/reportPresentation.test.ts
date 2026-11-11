@@ -19,7 +19,7 @@ describe('deriveHeadline', () => {
 describe('parsePrUrlParts', () => {
     it('parses a canonical GitHub PR URL', () => {
         expect(parsePrUrlParts('https://github.com/PostHog/posthog/pull/123/files')).toEqual({
-            owner: 'PostHog',
+            owner: 'Flind',
             repo: 'posthog',
             number: '123',
             repoSlug: 'PostHog/posthog',

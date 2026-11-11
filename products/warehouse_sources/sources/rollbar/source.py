@@ -141,9 +141,9 @@ class RollbarSource(ResumableSource[RollbarSourceConfig, RollbarResumeConfig]):
             name=ExternalDataSourceType.ROLLBAR,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Rollbar",
-            caption="""Enter your Rollbar project access token to pull your Rollbar error data into the PostHog Data warehouse.
+            caption="""Enter your Rollbar project access token to pull your Rollbar error data into the Flind Data warehouse.
 
-You can find or create a project access token in your Rollbar project under Settings > Project Access Tokens. A token with the `read` scope is sufficient. Each PostHog source connects to one Rollbar project — add one source per project.""",
+You can find or create a project access token in your Rollbar project under Settings > Project Access Tokens. A token with the `read` scope is sufficient. Each Flind source connects to one Rollbar project — add one source per project.""",
             iconPath="/static/services/rollbar.png",
             docsUrl="https://posthog.com/docs/cdp/sources/rollbar",
             releaseStatus=ReleaseStatus.GA,

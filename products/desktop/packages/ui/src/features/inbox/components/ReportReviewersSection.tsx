@@ -119,7 +119,7 @@ export function ReportReviewersSectionView({
             <InfoIcon size={12} />
           </TooltipTrigger>
           <TooltipContent side="top" className="max-w-80">
-            PostHog uses these suggestions to route the report. Add reviewers on
+            Flind uses these suggestions to route the report. Add reviewers on
             the pull request to request a GitHub review.
           </TooltipContent>
         </Tooltip>

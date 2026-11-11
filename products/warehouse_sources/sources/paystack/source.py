@@ -62,7 +62,7 @@ class PaystackSource(ResumableSource[PaystackSourceConfig, PaystackResumeConfig]
             name=ExternalDataSourceType.PAYSTACK,
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Paystack",
-            caption="""Enter your Paystack secret API key to pull your Paystack data into the PostHog Data warehouse.
+            caption="""Enter your Paystack secret API key to pull your Paystack data into the Flind Data warehouse.
 
 You can find your secret key (it starts with `sk_live_` or `sk_test_`) under **Settings → API Keys & Webhooks** in your [Paystack dashboard](https://dashboard.paystack.com/#/settings/developers). The key has read access to your integration's data.""",
             iconPath="/static/services/paystack.png",

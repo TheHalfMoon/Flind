@@ -52,7 +52,7 @@ export const aiObservabilityOnboarding: ProductOnboardingProvider = {
                     teamPropertyToVerify={VERIFY_AI_EVENTS}
                     wizardOverrides={{
                         subcommand: 'ai-observability',
-                        intro: 'The setup agent detects your LLM provider, installs the PostHog AI SDK, and instruments your AI calls automatically.',
+                        intro: 'The setup agent detects your LLM provider, installs the Flind AI SDK, and instruments your AI calls automatically.',
                         description:
                             "Detects your LLM SDK and wires up tracing so generations, costs, and latency show up in AI observability. Commit the changes and open a PR when you're ready.",
                         supports: AIO_WIZARD_SUPPORTS,

@@ -24,11 +24,11 @@ from products.canvas.backend.source import synthetic_source_project
 TEACHING_CANVAS_TEMPLATE_ID = "desktop-onboarding-teaching"
 
 # Template ids the create API refuses, so a user-created canvas can never be
-# mistaken for (or pre-claim and suppress) a PostHog-seeded one.
+# mistaken for (or pre-claim and suppress) a Flind-seeded one.
 RESERVED_TEMPLATE_IDS = frozenset({TEACHING_CANVAS_TEMPLATE_ID})
 
 TEACHING_CANVAS_DESCRIPTION = (
-    "A short tour of PostHog Desktop for new users: spaces, the agent, space context, Self-driving, and canvases."
+    "A short tour of Flind Desktop for new users: spaces, the agent, space context, Self-driving, and canvases."
 )
 
 TEACHING_CANVAS_CODE = """\
@@ -75,7 +75,7 @@ const TOPICS = [
       "Every message you send in a space starts a task. The agent can query your product data, investigate errors, watch for problems, and open pull requests in your repos.",
       "You can follow along while it works, steer it mid-task, and pick up the thread later.",
     ],
-    prompts: ["What are our top errors this week?", "Add PostHog to my repo and open a pull request."],
+    prompts: ["What are our top errors this week?", "Add Flind to my repo and open a pull request."],
   },
   {
     id: "context",
@@ -92,9 +92,9 @@ const TOPICS = [
     id: "self-driving",
     icon: Radar,
     title: "Self-driving",
-    tagline: "PostHog watches for problems on its own",
+    tagline: "Flind watches for problems on its own",
     body: [
-      "PostHog watches this project for things like errors, failing health checks, support tickets and metric swings. When something looks wrong, it writes up what it found and what it would do about it.",
+      "Flind watches this project for things like errors, failing health checks, support tickets and metric swings. When something looks wrong, it writes up what it found and what it would do about it.",
       "Those write-ups go to Self-driving, the inbox in the left sidebar. Some arrive with a pull request already open for you to review.",
     ],
     prompts: ["What's waiting for me in Self-driving?"],
@@ -105,7 +105,7 @@ const TOPICS = [
     title: "Canvases",
     tagline: "Small apps that live in a space",
     body: [
-      "Canvases are apps the agent builds for you: dashboards, forms, tools, prototypes. They can run live queries against your PostHog data.",
+      "Canvases are apps the agent builds for you: dashboards, forms, tools, prototypes. They can run live queries against your Flind data.",
       "This page is a canvas, and the chart below is a live query running against your project as you read this. To make a canvas of your own, or change this one, ask the agent.",
     ],
     prompts: ["Build a canvas that charts signups by week."],
@@ -242,7 +242,7 @@ function LiveUsersCard() {
           </div>
         ) : empty ? (
           <Text size="sm" variant="muted">
-            No events yet. Once your project sends data to PostHog, this chart fills in on its own.
+            No events yet. Once your project sends data to Flind, this chart fills in on its own.
           </Text>
         ) : (
           <div className="h-[160px]">
@@ -268,7 +268,7 @@ function HomeView({ onOpen, seen, seenCount, allSeen }) {
       <div className="flex items-start justify-between gap-3">
         <div className="flex flex-col gap-1.5">
           <Heading size="2xl" render={<h1 />}>
-            Explore PostHog Desktop
+            Explore Flind Desktop
           </Heading>
           <Text variant="muted">A quick tour in five stops. Pick one.</Text>
         </div>

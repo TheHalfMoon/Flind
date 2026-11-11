@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface ActivateRequestApi {
@@ -719,7 +719,7 @@ export interface SdkReleaseAssessmentApi {
     status_reason: string
     /** SQL SELECT statement for drilling into events for this SDK version over the last 7 days. Suitable to pass to the execute-sql tool or to display as a copy-paste snippet. */
     sql_query: string
-    /** Relative URL path (starting with /project/{id}/) for the Activity > Explore page pre-filtered to events captured with this lib and lib_version over the last 7 days. Combine with the user's PostHog host (e.g. us.posthog.com) for a clickable link. */
+    /** Relative URL path (starting with /project/{id}/) for the Activity > Explore page pre-filtered to events captured with this lib and lib_version over the last 7 days. Combine with the user's Flind host (e.g. us.posthog.com) for a clickable link. */
     activity_page_url: string
 }
 
@@ -807,7 +807,7 @@ export interface SdkHealthReportApi {
     health: SdkHealthReportHealthEnumApi
     /** Number of SDKs that need updating. */
     needs_updating_count: number
-    /** Number of distinct PostHog SDKs the project is actively using. */
+    /** Number of distinct Flind SDKs the project is actively using. */
     team_sdk_count: number
     /** Per-SDK health assessments. */
     sdks: SdkAssessmentApi[]

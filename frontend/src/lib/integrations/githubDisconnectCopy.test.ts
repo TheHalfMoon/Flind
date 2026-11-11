@@ -6,7 +6,7 @@ describe('buildGithubDisconnectDescription', () => {
             'project scope, last reference',
             false,
             'project' as const,
-            'This uninstalls the Flind app from PostHog on GitHub and disconnects it from every Flind project and personal account that uses it.',
+            'This uninstalls the Flind app from Flind on GitHub and disconnects it from every Flind project and personal account that uses it.',
         ],
         [
             'project scope, shared',
@@ -24,9 +24,9 @@ describe('buildGithubDisconnectDescription', () => {
             'account scope, last reference',
             false,
             'account' as const,
-            'This uninstalls the Flind app from PostHog on GitHub and disconnects it from every Flind project and personal account that uses it.',
+            'This uninstalls the Flind app from Flind on GitHub and disconnects it from every Flind project and personal account that uses it.',
         ],
     ])('%s', (_name, installationShared, scope, expected) => {
-        expect(buildGithubDisconnectDescription('PostHog', installationShared, scope)).toBe(expected)
+        expect(buildGithubDisconnectDescription('Flind', installationShared, scope)).toBe(expected)
     })
 })

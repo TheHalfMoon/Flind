@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from owners_yaml.github import GitHubLookupError, GitHubOrg
 
-_ORG = GitHubOrg("PostHog")
+_ORG = GitHubOrg("Flind")
 
 
 def get_team_slugs() -> tuple[set[str] | None, str]:
-    """Fetch GitHub team slugs visible in the PostHog org. Cached after the first call.
+    """Fetch GitHub team slugs visible in the Flind org. Cached after the first call.
 
     The org lookup is broader than repo access. assign-reviewers.js covers a team that exists
     in the org but lacks repo access with its 422 fallback, which retries each team individually

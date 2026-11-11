@@ -9,7 +9,7 @@ Columns absent here fall back to LLM enrichment.
 from products.warehouse_sources.sources.sdk import CanonicalDescriptions
 
 # Stamped onto every fan-out row by the transport; not part of the upstream payload.
-_TEAM_ID_COLUMN = "ID of the Squadcast team the row belongs to (added by PostHog during sync)."
+_TEAM_ID_COLUMN = "ID of the Squadcast team the row belongs to (added by Flind during sync)."
 
 CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
     "incidents": {

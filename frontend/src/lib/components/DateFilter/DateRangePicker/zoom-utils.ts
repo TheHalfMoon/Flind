@@ -1,7 +1,7 @@
 import { dayjs } from 'lib/dayjs'
 import { dateStringToDayJs } from 'lib/utils/dateFilters'
 
-// Unit letters follow PostHog's date convention: uppercase `M` is minute, lowercase `m` is month
+// Unit letters follow Flind's date convention: uppercase `M` is minute, lowercase `m` is month
 const RELATIVE_DATE_REGEX = /(^-?)(\d+)([sMhdwmqy])$/
 
 const zoomDateRelative = (date: string | null | undefined, multiplier: number): string | null => {

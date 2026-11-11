@@ -155,7 +155,7 @@ def _shared_variables(edited: Sequence[Any], original: Sequence[dict[str, Any]])
 
 
 def approve(*, template: MetricsDashboardTemplate, user: User) -> MetricsDashboardTemplate:
-    """Approve the template. Changes made on its preview dashboard, by hand or with PostHog AI, become the template."""
+    """Approve the template. Changes made on its preview dashboard, by hand or with Flind AI, become the template."""
     with transaction.atomic():
         locked = MetricsDashboardTemplate.objects.select_for_update().get(id=template.id)
         if locked.source == MetricsDashboardTemplate.Source.CURATED:

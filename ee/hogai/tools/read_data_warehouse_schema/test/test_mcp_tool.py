@@ -21,7 +21,7 @@ class TestReadDataWarehouseSchemaMCPTool(NonAtomicBaseTest):
             ReadDataWarehouseSchemaMCPToolArgs(query={"kind": "data_warehouse_schema"}),
         )
 
-        self.assertIn("# Core PostHog tables", content)
+        self.assertIn("# Core Flind tables", content)
         for table in ("events", "groups", "persons", "sessions"):
             self.assertIn(f"## Table `{table}`", content)
 

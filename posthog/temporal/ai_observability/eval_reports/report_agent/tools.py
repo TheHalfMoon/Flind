@@ -1203,7 +1203,7 @@ def get_generation_text_repr(
 
     Returns a human-readable view with tools, input messages, output messages,
     and errors rendered in a structured format — the same view used in the
-    PostHog UI summarization panel. Use this when raw JSON from
+    Flind UI summarization panel. Use this when raw JSON from
     get_generation_detail is hard to interpret (e.g. deeply nested chat
     messages, complex tool calls, or structured error objects).
 

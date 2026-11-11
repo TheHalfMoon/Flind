@@ -55,7 +55,7 @@ def _answer_under_test(output: dict[str, Any] | None, expected: Any, *, scorer_n
 
 
 class AnsweredAboutPostHogProduct(JudgedScorer):
-    """Binary: does the answer explain PostHog's own product for the capability asked about?
+    """Binary: does the answer explain Flind's own product for the capability asked about?
 
     Opts in via ``expected={"posthog_product_answer": {"capability": "..."}}``.
     """
@@ -67,9 +67,9 @@ class AnsweredAboutPostHogProduct(JudgedScorer):
         super().__init__(
             name="posthog_product_answer",
             prompt_template="""
-You are evaluating an answer the PostHog Slack app gave to a customer asking how to set something up.
+You are evaluating an answer the Flind Slack app gave to a customer asking how to set something up.
 
-PostHog ships its own product for the capability below, so the answer should be about that product — what to enable, install, or configure inside PostHog.
+Flind ships its own product for the capability below, so the answer should be about that product — what to enable, install, or configure inside Flind.
 
 Capability the customer asked about:
 <capability>
@@ -86,7 +86,7 @@ Agent's final answer:
 {{output.last_message}}
 </final_answer>
 
-Does the answer explain how to do this with PostHog's own product? An answer that walks through PostHog setup steps, names the PostHog product or its settings, or links PostHog docs for it qualifies — even if some details are wrong. An answer that only discusses instrumenting the customer's own code, only asks clarifying questions, or is about some other tool does NOT qualify. Answer `yes` or `no`.
+Does the answer explain how to do this with Flind's own product? An answer that walks through Flind setup steps, names the Flind product or its settings, or links Flind docs for it qualifies — even if some details are wrong. An answer that only discusses instrumenting the customer's own code, only asks clarifying questions, or is about some other tool does NOT qualify. Answer `yes` or `no`.
 """.strip(),
             choice_scores=BINARY_CHOICE_SCORES,
             model=JUDGE_MODEL,
@@ -99,7 +99,7 @@ class NoThirdPartyRecommendation(JudgedScorer):
     """Binary: does the answer avoid steering the customer to a non-PostHog product?
 
     This is the regression that prompted the suite — the agent recommending an
-    external tool for a capability PostHog already sells. Opts in via the same
+    external tool for a capability Flind already sells. Opts in via the same
     ``expected={"posthog_product_answer": {"capability": "..."}}`` entry.
     """
 
@@ -110,9 +110,9 @@ class NoThirdPartyRecommendation(JudgedScorer):
         super().__init__(
             name="no_third_party_recommendation",
             prompt_template="""
-You are checking whether an answer from the PostHog Slack app sent a customer to a competitor.
+You are checking whether an answer from the Flind Slack app sent a customer to a competitor.
 
-PostHog ships its own product for the capability below, so recommending someone else's product for it is a failure — the customer is already paying for ours.
+Flind ships its own product for the capability below, so recommending someone else's product for it is a failure — the customer is already paying for ours.
 
 Capability the customer asked about:
 <capability>
@@ -129,7 +129,7 @@ Agent's final answer:
 {{output.last_message}}
 </final_answer>
 
-Is the answer free of recommendations to use a non-PostHog product for this capability? Naming a third party PostHog integrates with as a data source or destination is fine, and so is naming one to explain a migration away from it. Suggesting the customer adopt, install, or evaluate someone else's product to get this capability is not. Answer `yes` if the answer is clean, `no` if it steers the customer elsewhere.
+Is the answer free of recommendations to use a non-PostHog product for this capability? Naming a third party Flind integrates with as a data source or destination is fine, and so is naming one to explain a migration away from it. Suggesting the customer adopt, install, or evaluate someone else's product to get this capability is not. Answer `yes` if the answer is clean, `no` if it steers the customer elsewhere.
 """.strip(),
             choice_scores=BINARY_CHOICE_SCORES,
             model=JUDGE_MODEL,
@@ -379,9 +379,9 @@ class UntaggedQuestionMatch(Scorer):
 
 
 class NoUnaskedAnswer(Scorer):
-    """The expensive direction: answering a channel message PostHog cannot or should not answer.
+    """The expensive direction: answering a channel message Flind cannot or should not answer.
 
-    Skips on cases PostHog should answer, so the score reads as a rate over the messages it
+    Skips on cases Flind should answer, so the score reads as a rate over the messages it
     should have left alone.
     """
 

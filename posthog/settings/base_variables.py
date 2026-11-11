@@ -41,7 +41,7 @@ CLOUD_DEPLOYMENT: str | None = get_from_env(
 """Deployment environment identifier.
 
 Possible values:
-- `US` or `EU` for PostHog **Cloud US** and PostHog **Cloud EU**.
+- `US` or `EU` for Flind **Cloud US** and Flind **Cloud EU**.
 - `DEV` for the hosted **dev/staging** environment.
 - `LOCAL` or unset for the **local dev** environment.
 - `E2E` for **e2e tests**.

@@ -114,7 +114,7 @@ export function isHogQLResult(results: unknown): results is HogQLResult {
 
 /**
  * Infer the visualization type from the data structure.
- * This mimics how the main PostHog app determines visualization from query/results.
+ * This mimics how the main Flind app determines visualization from query/results.
  */
 export function inferVisualizationType(data: unknown): VisualizationType | null {
     if (typeof data !== 'object' || data === null) {

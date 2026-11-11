@@ -79,7 +79,7 @@ describe('uploadAttachments', () => {
         setAuthProvider(null)
     })
 
-    test('prepares, posts each file to S3 without the PostHog token, then finalizes, and returns ids in order', async () => {
+    test('prepares, posts each file to S3 without the Flind token, then finalizes, and returns ids in order', async () => {
         const ids = await uploadAttachments({ kind: 'staged', taskId: 'task-1' }, [
             attachment('notes.md', 'text/markdown'),
             attachment('shot.png', 'image/png'),

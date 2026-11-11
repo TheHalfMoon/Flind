@@ -20,7 +20,7 @@ def test_build_logs_link_filters_logs_by_workflow_id(settings):
     link = build_logs_link("a-workflow-id")
 
     assert link is not None
-    markdown_match = re.fullmatch(r"\[View logs in PostHog\]\((.+)\)", link)
+    markdown_match = re.fullmatch(r"\[View logs in Flind\]\((.+)\)", link)
     assert markdown_match is not None
 
     url = urlparse(markdown_match.group(1))

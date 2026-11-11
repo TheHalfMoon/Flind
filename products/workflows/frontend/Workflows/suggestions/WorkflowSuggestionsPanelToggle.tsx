@@ -38,7 +38,7 @@ export function WorkflowSuggestionsPanelToggle({ id }: { id: string }): JSX.Elem
                         turnOnDisabledReason ??
                         (optimizationUnreadable
                             ? 'Could not read whether suggestions are on for this workflow. Reload the page to try again.'
-                            : 'PostHog reads how this workflow performs and suggests changes for you to review. Nothing reaches anyone until you approve a suggestion and publish it.')
+                            : 'Flind reads how this workflow performs and suggests changes for you to review. Nothing reaches anyone until you approve a suggestion and publish it.')
                     }
                     fullWidth
                     label="Suggest improvements"

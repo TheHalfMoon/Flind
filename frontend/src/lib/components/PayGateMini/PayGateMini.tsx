@@ -286,7 +286,7 @@ const renderGateVariantMessage = (
     isAddonProduct?: boolean
 ): JSX.Element => {
     if (gateVariant === 'move-to-cloud') {
-        return <>This feature is only available on PostHog Cloud.</>
+        return <>This feature is only available on Flind Cloud.</>
     } else if (isAddonProduct) {
         return (
             <>

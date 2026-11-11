@@ -62,7 +62,7 @@ export interface HandoffActions {
 
 export function answerErrorMessage(error: unknown): string {
     if (error instanceof CommandFailedError) {
-        return "PostHog didn't accept your answer. Try again."
+        return "Flind didn't accept your answer. Try again."
     }
     return "Couldn't send your answer. Try again."
 }
@@ -143,7 +143,7 @@ export function useHandoffActions(reportId: string): HandoffActions {
                 reportId,
                 outcome === 'ended'
                     ? "This run has ended, so your answer wasn't sent. Open the chat to continue."
-                    : 'PostHog already moved on from this question.'
+                    : 'Flind already moved on from this question.'
             )
             store.requestRefresh(reportId)
             refreshReport()

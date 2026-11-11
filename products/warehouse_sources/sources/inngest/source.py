@@ -58,11 +58,11 @@ class InngestSource(ResumableSource[InngestSourceConfig, InngestResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Inngest",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Inngest signing key to pull your Inngest data into the PostHog Data warehouse.
+            caption="""Enter your Inngest signing key to pull your Inngest data into the Flind Data warehouse.
 
 Find the signing key for your environment (it starts with `signkey-`) in your [Inngest dashboard](https://app.inngest.com/) under **Settings** → **Signing key**. A signing key authenticates both the v1 and v2 REST APIs, so no extra scopes are required. To pull a branch environment instead, also enter its name in the **Environment** field.
 
-Inngest retains event and run history for a plan-dependent window (from 24 hours up to 90 days), so schedule frequent syncs to keep a complete history in PostHog.""",
+Inngest retains event and run history for a plan-dependent window (from 24 hours up to 90 days), so schedule frequent syncs to keep a complete history in Flind.""",
             iconPath="/static/services/inngest.svg",
             docsUrl="https://posthog.com/docs/cdp/sources/inngest",
             keywords=["workflow", "queue", "durable execution", "events"],

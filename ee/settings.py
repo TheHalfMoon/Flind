@@ -1,5 +1,5 @@
 """
-Django settings for PostHog Enterprise Edition.
+Django settings for Flind Enterprise Edition.
 """
 
 import os
@@ -29,9 +29,9 @@ SOCIAL_AUTH_SAML_SECURITY_CONFIG = {
 # Attributes below are required for the SAML integration from social_core to work properly
 SOCIAL_AUTH_SAML_SP_PUBLIC_CERT = ""
 SOCIAL_AUTH_SAML_SP_PRIVATE_KEY = ""
-SOCIAL_AUTH_SAML_ORG_INFO = {"en-US": {"name": "posthog", "displayname": "PostHog", "url": "https://posthog.com"}}
+SOCIAL_AUTH_SAML_ORG_INFO = {"en-US": {"name": "posthog", "displayname": "Flind", "url": "https://posthog.com"}}
 SOCIAL_AUTH_SAML_TECHNICAL_CONTACT = {
-    "givenName": "PostHog Support",
+    "givenName": "Flind Support",
     "emailAddress": "hey@posthog.com",
 }
 SOCIAL_AUTH_SAML_SUPPORT_CONTACT = SOCIAL_AUTH_SAML_TECHNICAL_CONTACT
@@ -45,7 +45,7 @@ if "SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS" in os.environ:
         "SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS"
     ].split(",")
 elif DEMO:
-    # Only PostHog team members can use social auth in the demo environment
+    # Only Flind team members can use social auth in the demo environment
     # This is because in the demo env social signups get is_staff=True to facilitate instance management
     SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ["posthog.com"]
 
@@ -82,7 +82,7 @@ MATERIALIZE_COLUMNS_BACKFILL_PERIOD_DAYS = get_from_env("MATERIALIZE_COLUMNS_BAC
 MATERIALIZE_COLUMNS_MAX_AT_ONCE = get_from_env("MATERIALIZE_COLUMNS_MAX_AT_ONCE", 100, type_cast=int)
 
 BILLING_SERVICE_URL = get_from_env("BILLING_SERVICE_URL", "https://billing.posthog.com")
-# Lifetime of the access token PostHog mints for the public billing API (ee/billing/access_token.py).
+# Lifetime of the access token Flind mints for the public billing API (ee/billing/access_token.py).
 BILLING_ACCESS_TOKEN_TTL_SECONDS: int = get_from_env("BILLING_ACCESS_TOKEN_TTL_SECONDS", 15 * 60, type_cast=int)
 
 # Whether to enable the admin portal. Default false for self-hosted as if not setup properly can pose security issues.

@@ -1007,7 +1007,7 @@ class EnterpriseExperimentsViewSet(
         the metric or the experiment), `not_enough_data`, `experiment_too_old` (the experiment
         started too long ago to calculate again) or `unexpected_error`. Each metric is in the
         `evidence` keys `metric_N`, `metric_N_role`, `metric_N_failure` (the kind), `metric_N_error`
-        (the limit, or the family of a setting) and `metric_N_message` (only a message that PostHog
+        (the limit, or the family of a setting) and `metric_N_message` (only a message that Flind
         wrote for users), and `calculated_at` is when the calculation finished. It is a
         warning when a primary metric fails for a kind that a change fixes (`query_limit`,
         `settings`, `experiment_too_old`), also after the end, because the calculation after the fix
@@ -1052,7 +1052,7 @@ class EnterpriseExperimentsViewSet(
         because that variant's results show only the pinned users, unless the experiment
         excludes the variant from the analysis.
 
-        Two findings say that the variants are assigned outside PostHog, as info. A running
+        Two findings say that the variants are assigned outside Flind, as info. A running
         experiment whose flag has a 0% rollout gets `assigned_outside_flag_service` instead of
         `running_but_no_rollout` when 10 or more people got a variant from flag calls without a
         flag version that are no local evaluation, from an hour after the window starts. When

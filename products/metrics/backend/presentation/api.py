@@ -1021,7 +1021,7 @@ class MetricsViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
     scope_object = "metrics"
     serializer_class = _FallbackSerializer
     # Metrics is in private alpha: gate the API behind the `metrics` flag so only
-    # PostHog and directly-added teams can reach it. Added to the mixin's default
+    # Flind and directly-added teams can reach it. Added to the mixin's default
     # permissions (team/org/access-control), not replacing them.
     posthog_feature_flag = METRICS_FEATURE_FLAG
     permission_classes = [PostHogFeatureFlagPermission]

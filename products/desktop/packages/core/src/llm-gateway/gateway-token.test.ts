@@ -19,9 +19,9 @@ import type { GatewayTokenHost, LlmGatewayHost } from "./identifiers";
 
 const API_HOST = "https://us.posthog.com";
 const MINT_URL = `${API_HOST}/api/projects/42/desktop/gateway_token/`;
-const TRANSIENT = "Couldn't reach PostHog AI. Retrying shortly.";
-const UNAVAILABLE = "PostHog AI isn't available for this project right now.";
-const SIGN_IN = "Sign in to PostHog again to use PostHog AI.";
+const TRANSIENT = "Couldn't reach Flind AI. Retrying shortly.";
+const UNAVAILABLE = "Flind AI isn't available for this project right now.";
+const SIGN_IN = "Sign in to Flind again to use Flind AI.";
 
 function minted(token: string, expiresInMs = 3_600_000) {
   return {
@@ -199,7 +199,7 @@ describe("GatewayTokenService.getRoute", () => {
       { enabled: false, reason: "desktop_access_blocked" },
       "desktop_access_blocked",
       403,
-      "PostHog Desktop access is required.",
+      "Flind Desktop access is required.",
       GATEWAY_BLOCKED_RECHECK_MS,
     ],
     [
@@ -207,7 +207,7 @@ describe("GatewayTokenService.getRoute", () => {
       { enabled: false, reason: "email_unverified" },
       "email_unverified",
       403,
-      "Verify your email to use PostHog AI.",
+      "Verify your email to use Flind AI.",
       GATEWAY_ACTION_RECHECK_MS,
     ],
     // Django's billing-limit 429: without its row this would read as throttled.
@@ -236,7 +236,7 @@ describe("GatewayTokenService.getRoute", () => {
       { enabled: false, reason: "throttled", detail: "Try later." },
       "throttled",
       429,
-      "Too many PostHog AI sign-in attempts. Try again in a few minutes.",
+      "Too many Flind AI sign-in attempts. Try again in a few minutes.",
       GATEWAY_THROTTLED_RECHECK_MS,
     ],
     [
@@ -300,7 +300,7 @@ describe("GatewayTokenService.getRoute", () => {
       { type: "billing_limit", code: "usage_limit_reached" },
       "usage_limit_reached",
       429,
-      "Too many PostHog AI sign-in attempts. Try again in a few minutes.",
+      "Too many Flind AI sign-in attempts. Try again in a few minutes.",
       GATEWAY_THROTTLED_RECHECK_MS,
     ],
     [
@@ -434,7 +434,7 @@ describe("GatewayTokenService.getRoute", () => {
   it("treats an exhausted credit bucket as a 402 that only clears on a refill", async () => {
     const t = setup();
     const sentence =
-      "Your organization has reached its PostHog Desktop usage limit";
+      "Your organization has reached its Flind Desktop usage limit";
     t.mintResponses.push(() =>
       json(
         { enabled: false, reason: "credit_bucket_exhausted", detail: sentence },
@@ -814,7 +814,7 @@ describe("GatewayTokenService.getRoute", () => {
     expect(await t.service.getRoute()).toEqual({
       mode: "blocked",
       reason: "host_unsupported",
-      detail: "PostHog AI helpers aren't available in the web app yet.",
+      detail: "Flind AI helpers aren't available in the web app yet.",
       status: 403,
     });
     expect(t.authenticatedFetch).not.toHaveBeenCalled();
@@ -826,7 +826,7 @@ describe("GatewayTokenService.getRoute", () => {
     expect(await t.service.getRoute()).toEqual({
       mode: "blocked",
       reason: "no_project",
-      detail: "Select a project to use PostHog AI.",
+      detail: "Select a project to use Flind AI.",
       status: 403,
     });
   });

@@ -6,7 +6,7 @@ asks — sessions started before the bypass mode rolled out, or a runtime that a
 despite it — would stall until the run's inactivity timeout now that Slack has no
 approval surface, so the relay answers every such request here with the default
 allow option, authenticated as the run's credential user. Requests from other
-origin surfaces (web UI, PostHog AI) are left untouched; those surfaces read the
+origin surfaces (web UI, Flind AI) are left untouched; those surfaces read the
 event stream and answer directly.
 """
 

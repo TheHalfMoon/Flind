@@ -164,7 +164,7 @@ def _header(
         "alice",
         "https://avatars/alice",
         is_bot,
-        "PostHog",
+        "Flind",
         "posthog",
         head_sha,
     )

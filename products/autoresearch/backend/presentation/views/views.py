@@ -203,11 +203,11 @@ class AutoresearchPipelineViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet)
         # rule to its own launches.
         if self.action == "start_training":
             raise PermissionDenied(
-                "Training cannot be started from inside a sandbox. Start training from the pipeline's page in PostHog."
+                "Training cannot be started from inside a sandbox. Start training from the pipeline's page in Flind."
             )
         # A sandbox token carries team-wide autoresearch:write, and the training agent writes only
         # through its run, so a confused or injected agent must not reach pipeline writes. A
-        # user-driven sandbox, such as a PostHog AI task, can do what its user can do.
+        # user-driven sandbox, such as a Flind AI task, can do what its user can do.
         if _is_training_agent_sandbox(request, self.team_id):
             raise PermissionDenied("Pipelines cannot be changed from inside a sandbox.")
 
@@ -456,7 +456,7 @@ class AutoresearchPipelineViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet)
             ),
             403: OpenApiResponse(
                 description=(
-                    "The caller has no PostHog Desktop access, which cloud runs need, "
+                    "The caller has no Flind Desktop access, which cloud runs need, "
                     "or the request comes from inside a sandbox."
                 )
             ),
@@ -465,10 +465,10 @@ class AutoresearchPipelineViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet)
                 response=TrainingRunCapReachedSerializer,
                 description=(
                     "The project started its limit of training runs in the last 24 hours (this body), "
-                    "or the team is over its PostHog Desktop usage limit."
+                    "or the team is over its Flind Desktop usage limit."
                 ),
             ),
-            503: OpenApiResponse(description="PostHog Desktop access could not be checked. Try again."),
+            503: OpenApiResponse(description="Flind Desktop access could not be checked. Try again."),
         },
         summary="Start a training run",
         description=(

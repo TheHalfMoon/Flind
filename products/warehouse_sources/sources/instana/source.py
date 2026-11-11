@@ -81,7 +81,7 @@ class InstanaSource(ResumableSource[InstanaSourceConfig, InstanaResumeConfig]):
             label="IBM Instana Observability",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["ibm", "apm", "observability", "monitoring"],
-            caption="""Enter your Instana tenant URL and API token to pull your Instana data into the PostHog Data warehouse.
+            caption="""Enter your Instana tenant URL and API token to pull your Instana data into the Flind Data warehouse.
 
 Your base URL is the address you use to open the Instana UI, e.g. `https://unit-tenant.instana.io` (or your self-hosted domain). Create an API token under **Settings → Team Settings → API Tokens**; the token's permission scopes control which tables can be synced.""",
             iconPath="/static/services/instana.png",

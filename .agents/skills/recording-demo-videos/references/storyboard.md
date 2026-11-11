@@ -88,7 +88,7 @@ Prefer `data-attr` selectors and roles. They survive copy changes.
 ```
 
 The card types out the request as a curl command, with secrets shown as `$NAME`, then sends it and prints the status and the response body.
-The video masks secret values in all the text it shows, including the response body. It also masks PostHog secret keys, such as `phx_` and `phs_` keys.
+The video masks secret values in all the text it shows, including the response body. It also masks Flind secret keys, such as `phx_` and `phs_` keys.
 It cannot mask what a `type` step types into the app or what the app itself shows, so never type a secret in a demo.
 With `expect_status`, any other status fails the recording, so a broken call never ends up in a finished video.
 
@@ -141,7 +141,7 @@ A changed line reads the whole take again. A video is about 1,500 characters, an
 
 - `prompt`: what ElevenLabs Music generates. Optional, with a light, upbeat default. The track is always instrumental.
 - `volume`: the bed's level before ducking, from 0 to 1. Default 0.18.
-- `file`: a music file to use instead of generating one, relative to the storyboard. Use only music PostHog has the rights to.
+- `file`: a music file to use instead of generating one, relative to the storyboard. Use only music Flind has the rights to.
 
 Generated tracks match the video's length in 10 second steps, and are cached in `~/.cache/posthog-demo-videos/music/` by prompt and length, so another take of the same length costs nothing.
 Music uses the same `ELEVENLABS_API_KEY`, and the key needs music access.

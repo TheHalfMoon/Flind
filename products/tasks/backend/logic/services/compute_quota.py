@@ -69,7 +69,7 @@ def get_compute_quota_denial_reason(task: Task) -> ComputeQuotaDenialReason | No
     except Exception:
         observe_compute_quota_check("fail_open")
         logger.warning(
-            "compute_quota: PostHog Code quota state unavailable",
+            "compute_quota: Flind Code quota state unavailable",
             extra={"team_id": task.team_id, "task_id": str(task.id)},
             exc_info=True,
         )

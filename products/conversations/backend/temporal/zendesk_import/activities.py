@@ -496,7 +496,7 @@ def _build_ticket(
     distinct_id = requester_email
 
     # Populate anonymous_traits so the customer renders as their name/email instead of "Anonymous
-    # user" when no PostHog person matched — same shape as the other import paths (Slack/email/
+    # user" when no Flind person matched — same shape as the other import paths (Slack/email/
     # GitHub). The email is from the authenticated Zendesk API, not public widget input, so it's
     # trustworthy for restore-by-email.
     anonymous_traits: dict[str, str] = {}
@@ -524,7 +524,7 @@ def _build_ticket(
         zendesk_ticket_id=zendesk_id,
     )
 
-    # Zendesk tags are plain strings on the ticket payload; PostHog tags are per-team Tag rows,
+    # Zendesk tags are plain strings on the ticket payload; Flind tags are per-team Tag rows,
     # so normalize the same way the live tagging API does (tagify).
     zendesk_tags = {tagify(_strip_nul(str(t)))[:255] for t in (zendesk_ticket.get("tags") or [])}
     tag_names = sorted(t for t in zendesk_tags if t)

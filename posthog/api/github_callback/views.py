@@ -48,7 +48,7 @@ def _is_personal_github_setup_update(user: User, ctx: CallbackContext) -> bool:
     # personal-update flow should route here — any team-side flow (install, update,
     # oauth recovery) must fall through to finish_team_setup. The UserIntegration
     # fallback below only applies when state is missing (e.g. user opened GitHub
-    # directly without going through PostHog UI).
+    # directly without going through Flind UI).
     if ctx.flow is not None:
         return ctx.flow == FlowKind.PERSONAL_UPDATE
     if not ctx.installation_id:

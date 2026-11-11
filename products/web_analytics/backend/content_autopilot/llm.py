@@ -18,7 +18,7 @@ DEFAULT_TIMEOUT_SECONDS = 300.0
 RETRY_DELAYS_SECONDS = (2.0, 8.0)
 TRANSIENT_ERRORS = (httpx.HTTPError, APIConnectionError, InternalServerError, RateLimitError)
 UNREACHABLE_MESSAGE = "The AI model couldn't finish this draft. Regenerate to try again."
-UNREADABLE_MESSAGE = "The AI model sent back a draft PostHog couldn't read. Regenerate to try again."
+UNREADABLE_MESSAGE = "The AI model sent back a draft Flind couldn't read. Regenerate to try again."
 TIMED_OUT_MESSAGE = "The AI model took too long to respond. Regenerate to try again."
 
 

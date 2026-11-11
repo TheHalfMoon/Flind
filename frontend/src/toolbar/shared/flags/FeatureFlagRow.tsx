@@ -48,7 +48,7 @@ export function FeatureFlagRow({
     const { key, value, currentValue, hasOverride, variants, payloadOverride } = flag
     const hasPayloadOverride = payloadOverride !== null && payloadOverride !== undefined
 
-    // Choosing the value PostHog evaluates removes the override instead of pinning that value.
+    // Choosing the value Flind evaluates removes the override instead of pinning that value.
     const choose = (newValue: string | boolean): void => {
         if (newValue === value && hasOverride) {
             onRemoveOverride()

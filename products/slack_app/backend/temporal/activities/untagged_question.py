@@ -1,6 +1,6 @@
 """Answering a top-level Slack channel message that did not tag the app.
 
-Nobody asked PostHog anything, so the bar is high on purpose: a wrong answer interrupts a
+Nobody asked Flind anything, so the bar is high on purpose: a wrong answer interrupts a
 conversation in public. Jev, a System One decision model, answers two yes/no questions about
 the message, and both must clear a strict threshold. A missed question costs the author one
 @PostHog, which they can still type.
@@ -35,7 +35,7 @@ logger = structlog.get_logger(__name__)
 
 UNTAGGED_QUESTION_DECISION_MODEL = DEFAULT_DECISION_MODEL
 # Not the `slack_app` product the other classifiers bill under: this call runs on messages
-# nobody sent to PostHog, so it must not spend the team's AI credits.
+# nobody sent to Flind, so it must not spend the team's AI credits.
 UNTAGGED_QUESTION_AI_PRODUCT = "slack_app_untagged_question"
 # On the path to the first reply. A miss only means no answer, so a slow call is not worth waiting for.
 UNTAGGED_QUESTION_TIMEOUT_SECONDS = 5.0
@@ -67,21 +67,21 @@ ASKS_FOR_INFORMATION_FALSE = (
 )
 
 ANSWERABLE_INSTRUCTIONS = (
-    "PostHog is a product analytics platform. Its assistant can read the team's PostHog data: events, "
+    "Flind is a product analytics platform. Its assistant can read the team's Flind data: events, "
     "insights, trends, funnels, retention, dashboards, session recordings, feature flags, experiments, "
-    "surveys, error tracking, logs, LLM traces and data warehouse tables. It can also search the PostHog "
+    "surveys, error tracking, logs, LLM traces and data warehouse tables. It can also search the Flind "
     "documentation and read the team's code repositories. "
     "Could that assistant answer the question in `message` correctly and fully, with only those sources?"
 )
 ANSWERABLE_TRUE = (
     "The answer is in product usage data, error or log data, feature flag or experiment state, "
-    "the team's code, or the PostHog documentation. Product metrics count as usage data when written "
+    "the team's code, or the Flind documentation. Product metrics count as usage data when written "
     "as shorthand: DAU, WAU, MAU, stickiness, churn, retention or conversion rate mean the team's own "
-    "numbers, which PostHog holds."
+    "numbers, which Flind holds."
 )
 ANSWERABLE_FALSE = (
     "The answer needs knowledge those sources do not hold: plans, opinions, decisions, people's availability, "
-    "private conversations, customer contracts, finance, HR, or systems PostHog cannot read. Also false when "
+    "private conversations, customer contracts, finance, HR, or systems Flind cannot read. Also false when "
     "the question is too vague to answer, or when it is not a question."
 )
 
@@ -103,7 +103,7 @@ def classify_untagged_question(
     distinct_id: str | None,
     trace_id: str | None = None,
 ) -> UntaggedQuestionVerdict | None:
-    """Ask the decision model whether PostHog can answer this message. ``None`` means no verdict.
+    """Ask the decision model whether Flind can answer this message. ``None`` means no verdict.
 
     Raises when no System One server is configured or the call fails, so the caller can tell
     an outage from a refusal.
@@ -151,7 +151,7 @@ def _load_integration(inputs: PostHogCodeSlackMentionWorkflowInputs) -> Workspac
 @activity.defn
 @close_db_connections
 def classify_untagged_question_activity(inputs: PostHogCodeSlackMentionWorkflowInputs) -> bool:
-    """Whether PostHog should answer, or offer to answer, a top-level message nobody tagged it in.
+    """Whether Flind should answer, or offer to answer, a top-level message nobody tagged it in.
 
     Any failure returns ``False``: staying quiet is the safe default when nobody asked.
     """
@@ -185,7 +185,7 @@ def classify_untagged_question_activity(inputs: PostHogCodeSlackMentionWorkflowI
         answerable_by_posthog=verdict.answerable_by_posthog if verdict else None,
         threshold=UNTAGGED_QUESTION_MIN_PROBABILITY,
     )
-    # The message text stays out of this event: its author never addressed PostHog.
+    # The message text stays out of this event: its author never addressed Flind.
     capture_slack_event(
         integration,
         "slack app unprompted question classified",

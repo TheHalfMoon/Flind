@@ -92,17 +92,17 @@ The detail editor PATCHes only changed fields on existing evaluations. Re-enabli
 Explicit method selection requires a selected model, including for legacy evaluations that use the project's default connection.
 Projects use their saved provider keys or configure a System One-compatible deployment and its authentication.
 Evaluation connections never fall back to an instance credential or gateway configuration.
-The configured endpoint authorizes the supplied credential, including connections to PostHog's regional AI gateway endpoints.
+The configured endpoint authorizes the supplied credential, including connections to Flind's regional AI gateway endpoints.
 Connection validation and every evaluation check these gates; an absent flag or failed flag lookup blocks the call.
 Turning the flag off stops subsequent runs, including queued work, without disabling the saved evaluation.
 Keep the experimental flag limited to staff projects during rollout.
 OpenRouter decision models, including Jev, appear under an existing OpenRouter key in the evaluation model picker when this flag is enabled.
 They use OpenRouter's alpha `/api/alpha/decisions` endpoint with that key; no custom endpoint or System One connection is needed.
-These requests send the same PostHog attribution headers as OpenRouter chat requests.
+These requests send the same Flind attribution headers as OpenRouter chat requests.
 The picker discovers models through the catalogue's `decisions` output modality, so new models and versions appear without a code change.
 The picker does not exclude individual decision models. Listed models may not support every evaluation output type.
 The catalogue does not expose supported question types. If a model rejects a request, the run is skipped without retrying, with a reason to check output-type and criteria compatibility.
-Support added by a provider works on subsequent runs without a PostHog code change.
+Support added by a provider works on subsequent runs without a Flind code change.
 Chat models such as Jev Router keep using chat completions.
 Models without text output are excluded from the playground and tagger model pickers. Models supporting both text and decisions remain available for both judge methods and for chat.
 The catalogue refreshes hourly and keeps its last successful response when a refresh fails, retrying refreshes after one minute.
@@ -144,7 +144,7 @@ Select the connection and configured model on each evaluation; these connections
 Provider keys keep the provider they were created with; switching providers requires a new key.
 The evaluation integration uses Noul for boolean outputs, with the same formatted text for generation, trace, and session targets.
 The product client reuses the request builder and response parser in `posthog/llm/system_one.py` and constructs a DNS-pinned client from `posthog/security/pinned_httpx.py` with the bounded transport.
-Customer connections do not consume PostHog's TypeSafe account budgets or emit TypeSafe egress metrics.
+Customer connections do not consume Flind's TypeSafe account budgets or emit TypeSafe egress metrics.
 The selected connection supplies its own endpoint and credential; it never falls back to instance gateway settings.
 Categorical evaluations use a native Choice question for single selection, with option keys mapped to their labels.
 Multiple selection uses one Noul question per option and includes each category with probability at least 0.5.
@@ -319,7 +319,7 @@ Source-property rules do not automatically apply to evaluation outputs. To keep 
 - Restrict Evaluations viewer access to the intended report audience. Stored report API responses follow evaluation RBAC;
   property rules on report events protect the event copy, not the stored report narrative.
 - Choose report email recipients and Slack channels with the same audience in mind. Deliveries contain report text and do
-  not check each recipient's PostHog property permissions.
+  not check each recipient's Flind property permissions.
 - Evaluation-report Inbox summaries are suppressed when the project has any event-property denial or a denial of access
   to the evaluation, including default, member, and role rules. Inbox copies cannot enforce those source permissions.
 

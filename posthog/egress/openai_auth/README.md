@@ -29,7 +29,7 @@ The counter is `openai_auth_api_requests_total`, labeled `scope, method, endpoin
 ## Auth
 
 The refresh token of the connected ChatGPT account, sent in the request body with the public Codex client id.
-No PostHog-owned credential.
+No Flind-owned credential.
 
 ## Sources
 

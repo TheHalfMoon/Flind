@@ -1,4 +1,4 @@
-"""PostHog-specific migration policies.
+"""Flind-specific migration policies.
 
 These are team coding guidelines, not database safety issues.
 Policies enforce architectural decisions and coding standards.
@@ -81,12 +81,12 @@ def _runs_sql(op) -> bool:
     return True
 
 
-# Apps owned by PostHog where policies are enforced
+# Apps owned by Flind where policies are enforced
 POSTHOG_OWNED_APPS = ["posthog", "ee"]
 
 
 def is_posthog_app(app_label: str, migration=None) -> bool:
-    """Check if app is owned by PostHog (vs third-party dependency).
+    """Check if app is owned by Flind (vs third-party dependency).
 
     Args:
         app_label: The Django app label (e.g., 'posthog', 'endpoints')
@@ -106,7 +106,7 @@ def is_posthog_app(app_label: str, migration=None) -> bool:
 
 
 class MigrationPolicy(ABC):
-    """Base class for PostHog migration policies."""
+    """Base class for Flind migration policies."""
 
     @abstractmethod
     def check_operation(self, op) -> list[str]:
@@ -131,7 +131,7 @@ class MigrationPolicy(ABC):
 
 class UUIDPrimaryKeyPolicy(MigrationPolicy):
     """
-    PostHog policy: All new models must use UUID primary keys.
+    Flind policy: All new models must use UUID primary keys.
 
     Rationale:
     - Better for distributed systems (no coordination needed)
@@ -158,7 +158,7 @@ class UUIDPrimaryKeyPolicy(MigrationPolicy):
                     return []
                 return [
                     f"Model '{op.name}' uses integer ID ({field_type}). "
-                    "PostHog requires UUID primary keys. "
+                    "Flind requires UUID primary keys. "
                     "Use `from posthog.models.utils import UUIDModel` and inherit from UUIDModel."
                 ]
 
@@ -176,7 +176,7 @@ class UUIDPrimaryKeyPolicy(MigrationPolicy):
         return False
 
     def check_migration(self, migration) -> list[str]:
-        """Only enforce on PostHog-owned apps."""
+        """Only enforce on Flind-owned apps."""
         if not is_posthog_app(migration.app_label, migration):
             return []
 
@@ -201,7 +201,7 @@ class AtomicFalsePolicy(MigrationPolicy):
     CONCURRENT_OP_TYPES = {
         "AddIndexConcurrently",
         "RemoveIndexConcurrently",
-        # PostHog helpers (see posthog/migration_helpers/concurrent_index.py)
+        # Flind helpers (see posthog/migration_helpers/concurrent_index.py)
         "CreateIndexConcurrently",
         "DropFieldIndexesConcurrently",
         "DropIndexConcurrently",
@@ -381,7 +381,7 @@ class ConcurrentIndexIdempotencyPolicy(MigrationPolicy):
 
     DJANGO_CONCURRENT_OPS = {"AddIndexConcurrently", "RemoveIndexConcurrently"}
 
-    # The PostHog helpers in posthog/migration_helpers/concurrent_index.py
+    # The Flind helpers in posthog/migration_helpers/concurrent_index.py
     # encode the idempotency guarantees this policy enforces (indisvalid
     # recovery + IF [NOT] EXISTS + timeout disabling) at the operation
     # level, so they are explicitly exempt from the static SQL check.
@@ -752,7 +752,7 @@ class HotTableAlterPolicy(MigrationPolicy):
 # message reaches for one import; a wall of hand-written RunSQL with caveats reopens the
 # incident class. Prefer the helper-plus-pointer over documenting complexity.
 
-# Registry of all PostHog policies
+# Registry of all Flind policies
 _HOT_TABLES = {"posthog_team", "posthog_user", "posthog_organization", "posthog_project"}
 
 # Passing no connection keeps this off the database, so the policy still runs in CI against a

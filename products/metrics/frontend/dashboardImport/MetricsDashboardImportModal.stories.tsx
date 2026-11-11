@@ -30,7 +30,7 @@ const COMPLETED_IMPORT: DashboardImportApi = {
         },
         { key: 'p4', title: 'Pod restarts', outcome: 'failed', reason: 'This project has no metric for pod restarts.' },
         { key: 'p5', title: 'Error logs', outcome: 'imported', reason: '' },
-        { key: 'p6', title: 'Service map', outcome: 'skipped', reason: 'PostHog has no node graph panel.' },
+        { key: 'p6', title: 'Service map', outcome: 'skipped', reason: 'Flind has no node graph panel.' },
     ],
 }
 

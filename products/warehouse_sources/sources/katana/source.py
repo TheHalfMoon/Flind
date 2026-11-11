@@ -48,7 +48,7 @@ class KatanaSource(ResumableSource[KatanaSourceConfig, KatanaResumeConfig]):
             label="Katana",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["katana", "mrp", "erp", "inventory", "manufacturing"],
-            caption="""Enter your Katana API key to sync your Katana Cloud Inventory (MRP) data into the PostHog Data warehouse.
+            caption="""Enter your Katana API key to sync your Katana Cloud Inventory (MRP) data into the Flind Data warehouse.
 
 Generate an API key in Katana under **Settings > API** (an active API access add-on / Professional plan is required). The key is sent as a Bearer token and has read access to your factory's data.""",
             iconPath="/static/services/katana.png",

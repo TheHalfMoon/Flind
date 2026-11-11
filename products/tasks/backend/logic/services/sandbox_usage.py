@@ -4,7 +4,7 @@ One ``SandboxSession`` row per provisioned sandbox records its resource shape an
 the boundary timestamps of its lifetime (provisioned / user-attributed / last user
 activity / ended). The ledger stores raw usage only — no pricing or credit
 conversion — so any billable-window policy can be computed later without a
-backfill. Pre-warm time is PostHog's cost: a warm sandbox stays unattributed until
+backfill. Pre-warm time is Flind's cost: a warm sandbox stays unattributed until
 a user claims its run with their first message.
 
 The write helpers swallow and log every failure: the ledger must never break

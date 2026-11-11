@@ -64,7 +64,7 @@ _MAX_MESSAGE_LENGTH = 1000
 
 class _Outcome(StrEnum):
     COMPILES = "compiles"
-    # The compile raised an error that names no problem of the metric, such as a defect of PostHog.
+    # The compile raised an error that names no problem of the metric, such as a defect of Flind.
     UNKNOWN = "unknown"
     # The metric reads a warehouse table or view that the reader may not query.
     NO_ACCESS = "no_access"
@@ -185,7 +185,7 @@ class _MetricCompiler:
         except pydantic.ValidationError as error:
             return _failure(ExperimentHealthMetricCompileErrorKind.DEFINITION, _definition_message(error))
         if metric_uses_warehouse_native_source(metric):
-            # No query runs in the customer's warehouse yet, so the compile would report a defect of PostHog.
+            # No query runs in the customer's warehouse yet, so the compile would report a defect of Flind.
             return _Outcome.UNKNOWN
         runner = ExperimentQueryRunner(
             query=ExperimentQuery(experiment_id=self.experiment.id, metric=metric),
@@ -261,7 +261,7 @@ def _definition_message(error: pydantic.ValidationError) -> str:
     )
     if len(details) == 1:
         return f"{locations[0]}: {details[0]['msg']}"
-    return f"PostHog doesn't accept the value of {', '.join(locations[:3])}"
+    return f"Flind doesn't accept the value of {', '.join(locations[:3])}"
 
 
 def _cache_key(team_id: int, user: User | None, calculation_config: MetricCalculationConfig) -> str:

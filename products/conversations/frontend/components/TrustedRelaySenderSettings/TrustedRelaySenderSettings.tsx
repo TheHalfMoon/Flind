@@ -30,7 +30,7 @@ export function TrustedRelaySenderSettings({
         <div className="border-t pt-3">
             <LemonLabel htmlFor={`trusted-relay-sender-${configId}`}>Trusted relay sender</LemonLabel>
             <p className="text-xs text-muted-alt mb-2">
-                Enter the exact From address used by your email relay. PostHog will identify the customer from
+                Enter the exact From address used by your email relay. Flind will identify the customer from
                 X-PostHog-Requester or Reply-To only for authenticated email from this address. Clear the field to
                 disable this behavior.
             </p>

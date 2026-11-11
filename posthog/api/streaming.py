@@ -272,7 +272,7 @@ def _release_request_connections() -> None:
     autocommit connection is always safe; Django reopens on next use.
 
     Connections inside an atomic block are skipped: severing an open transaction
-    corrupts it. PostHog never streams from inside ``transaction.atomic()``, so in
+    corrupts it. Flind never streams from inside ``transaction.atomic()``, so in
     production this closes everything; the case that does hit the guard is Django
     ``TestCase``'s per-test transaction wrapper, which the test client only shields
     from the signal-dispatched ``close_old_connections``, not from direct calls
@@ -324,7 +324,7 @@ def sse_streaming_response(
         sync DB work before a long-lived SSE stream must release its connection
         before streaming starts.
 
-    PostHog runs with ``CONN_MAX_AGE = 0``, so any connection still open when the
+    Flind runs with ``CONN_MAX_AGE = 0``, so any connection still open when the
     stream begins (from authentication, team resolution, ``get_object``, or
     serializer/ORM reads in the sync view) stays pinned to a pgbouncer client
     slot for the *entire* stream — ``request_finished`` only frees it once the

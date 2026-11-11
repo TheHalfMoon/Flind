@@ -86,8 +86,8 @@ def _handle_help(
         f'`{command_prefix} rules add "description" org/repo` — Add a routing rule',
         f'`{command_prefix} rules add "description"` — Add a routing rule (pick repo from list)',
         f"`{command_prefix} rules remove <number(s)>` — Remove routing rules by number (e.g. `remove 1` or `remove 1,2`)",
-        f"`{command_prefix} project` — Show which PostHog project your mentions route to in this workspace",
-        f"`{command_prefix} project <id>` — Set the PostHog project your mentions route to in this workspace",
+        f"`{command_prefix} project` — Show which Flind project your mentions route to in this workspace",
+        f"`{command_prefix} project <id>` — Set the Flind project your mentions route to in this workspace",
     ]
 
     lines.append(f"`{command_prefix} welcome` — Show where my welcome message goes when someone adds me to a channel")
@@ -325,7 +325,7 @@ def _handle_project_show(
             channel=channel,
             user=slack_user_id,
             thread_ts=thread_ts,
-            text=("I couldn't find your PostHog account in any organization connected to this Slack workspace."),
+            text=("I couldn't find your Flind account in any organization connected to this Slack workspace."),
         )
         return
 

@@ -29,7 +29,7 @@ def backfill_provisioning_config(apps, schema_editor):
     lost_wizard_runs = []
     updated = []
     for app in candidates.iterator(chunk_size=BATCH_SIZE):
-        # provisioning_partner_type was doing double duty as the marker for a partner PostHog
+        # provisioning_partner_type was doing double duty as the marker for a partner Flind
         # vouched for, and it is the only signal available here for who keeps the two elevated
         # capabilities. A self-registered CIMD partner never had one set, so it does not get
         # them - which is the restriction this change exists to introduce.

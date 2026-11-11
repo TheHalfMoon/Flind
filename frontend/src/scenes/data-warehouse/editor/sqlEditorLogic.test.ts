@@ -2950,7 +2950,7 @@ describe('sqlEditorLogic', () => {
             }
         )
 
-        it('ignores send raw query from hash for PostHog warehouse', async () => {
+        it('ignores send raw query from hash for Flind warehouse', async () => {
             logic = sqlEditorLogic({
                 tabId: TAB_ID,
                 monaco: createMockMonaco(),
@@ -3206,7 +3206,7 @@ describe('sqlEditorLogic', () => {
             ).toEqual(false)
         })
 
-        it("doesn't enable send raw query for PostHog warehouse", async () => {
+        it("doesn't enable send raw query for Flind warehouse", async () => {
             logic = sqlEditorLogic({
                 tabId: TAB_ID,
                 monaco: createMockMonaco(),
@@ -3398,7 +3398,7 @@ describe('sqlEditorLogic', () => {
             }
         )
 
-        it("doesn't pass sendRawQuery when running against PostHog warehouse", async () => {
+        it("doesn't pass sendRawQuery when running against Flind warehouse", async () => {
             const performQuerySpy = jest
                 .spyOn(queryRunner, 'performQuery')
                 .mockResolvedValue({ results: [], columns: [], types: [] } as never)

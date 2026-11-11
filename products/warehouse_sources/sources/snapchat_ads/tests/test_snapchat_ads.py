@@ -343,10 +343,10 @@ class TestListAdAccounts:
                 {
                     "sub_request_status": "SUCCESS",
                     "organization": {
-                        "name": "PostHog",
+                        "name": "Flind",
                         "ad_accounts": [
-                            {"id": "acc-1", "name": "PostHog Self Service", "status": "PENDING"},
-                            {"id": "acc-2", "name": "PostHog", "status": "ACTIVE"},
+                            {"id": "acc-1", "name": "Flind Self Service", "status": "PENDING"},
+                            {"id": "acc-2", "name": "Flind", "status": "ACTIVE"},
                         ],
                     },
                 },
@@ -359,8 +359,8 @@ class TestListAdAccounts:
             result = list_ad_accounts("token")
 
         assert [(account["id"], org_name) for account, org_name in result] == [
-            ("acc-1", "PostHog"),
-            ("acc-2", "PostHog"),
+            ("acc-1", "Flind"),
+            ("acc-2", "Flind"),
         ]
         assert network.requests_log[0].path == "/v1/me/organizations"
         assert network.requests_log[0].query == {
@@ -418,7 +418,7 @@ class TestListAdAccounts:
         # A looping/oversized next_link must fail closed rather than return the accounts collected so
         # far as if complete — that would silently present a truncated (or cursor-duplicated) picker.
         page = self._organizations_page(
-            "PostHog", "acc-1", next_link="https://adsapi.snapchat.com/v1/me/organizations?cursor=loop"
+            "Flind", "acc-1", next_link="https://adsapi.snapchat.com/v1/me/organizations?cursor=loop"
         )
 
         with (
@@ -442,7 +442,7 @@ class TestListAdAccounts:
         # The bearer token rides on each pagination request, so a next_link off Snapchat's HTTPS API
         # host must be rejected before we re-attach the token to it.
         script = [
-            ScriptedResponse(json=self._organizations_page("PostHog", "acc-1", next_link=next_link)),
+            ScriptedResponse(json=self._organizations_page("Flind", "acc-1", next_link=next_link)),
             ScriptedResponse(json=self._organizations_page("Agency", "acc-2")),
         ]
 

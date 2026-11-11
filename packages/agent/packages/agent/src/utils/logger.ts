@@ -24,7 +24,7 @@ export class Logger {
 
   constructor(config: LoggerConfig = {}) {
     this.debugEnabled = config.debug ?? false;
-    this.prefix = config.prefix ?? "[PostHog Agent]";
+    this.prefix = config.prefix ?? "[Flind Agent]";
     this.scope = config.scope ?? "agent";
     this.onLog = config.onLog;
   }

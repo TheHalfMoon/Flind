@@ -1,4 +1,4 @@
-// Mirrors PostHog Desktop's built-in canvas templates. The backend exposes no template
+// Mirrors Flind Desktop's built-in canvas templates. The backend exposes no template
 // endpoint, so the picker reads this list.
 
 // pinned: template id stored on the canvas record and read by the generation prompt

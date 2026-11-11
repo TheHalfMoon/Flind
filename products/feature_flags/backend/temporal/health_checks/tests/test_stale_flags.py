@@ -986,7 +986,7 @@ class TestStaleFlagsContract(SimpleTestCase):
             )
         )
         assert content.title == "Feature flag 'checkout-v2' may be ready for cleanup"
-        assert "PostHog has not received a call for this flag in 45 days" in content.summary
+        assert "Flind has not received a call for this flag in 45 days" in content.summary
         assert "fully rolled out" in content.summary
         assert "Review code references" in content.summary
         assert content.link == "/feature-flags/42"
@@ -1002,7 +1002,7 @@ class TestStaleFlagsContract(SimpleTestCase):
             )
         )
         assert content.title == f"Feature flag '{'k' * 200}' may be ready for cleanup"
-        assert "PostHog has not received a call for this flag recently" in content.summary
+        assert "Flind has not received a call for this flag recently" in content.summary
         assert "The flag is" not in content.summary
 
     def test_render_alert_for_config_evidence(self) -> None:
@@ -1032,7 +1032,7 @@ class TestStaleFlagsContract(SimpleTestCase):
                 }
             )
         )
-        assert "PostHog still receives calls for this flag" in content.summary
+        assert "Flind still receives calls for this flag" in content.summary
         assert "fully rolled out" in content.summary
         # days_since_evidence is the flag's age on this class, so it must not be narrated as a
         # gap since the last call.

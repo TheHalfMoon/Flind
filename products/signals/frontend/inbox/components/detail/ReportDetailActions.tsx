@@ -209,7 +209,7 @@ export function useReportDetailActions(report: SignalReport): ReportDetailAction
                       label: 'Start monitoring',
                       icon: <IconClock />,
                       loading: reportStateSaving,
-                      tooltip: 'PostHog watches to make sure the fix works',
+                      tooltip: 'Flind watches to make sure the fix works',
                       onClick: () => changeReportState('monitoring'),
                   },
               ]

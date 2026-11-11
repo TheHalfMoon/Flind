@@ -29,7 +29,7 @@ export function KnowledgeSourceNameCell({ source }: { source: KnowledgeSource })
                 {source.is_generated ? (
                     <LemonTag
                         type="highlight"
-                        title="PostHog added this from a resolved support ticket. You can edit or delete it."
+                        title="Flind added this from a resolved support ticket. You can edit or delete it."
                     >
                         Learned
                     </LemonTag>

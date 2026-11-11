@@ -72,7 +72,7 @@ class PullRequestRef:
 
 @frozen
 class ErrorTrackingIssueRef:
-    """An error tracking issue as a PostHog URL names it, before anything about it is checked.
+    """An error tracking issue as a Flind URL names it, before anything about it is checked.
 
     The URL names the issue by id, or by a fingerprint that follows the issue through merges, as the
     links in error tracking's Slack alerts do. Exactly one of the two is set.
@@ -187,6 +187,6 @@ class CommandContext:
 class CommandOutcome:
     accepted: bool
     # Markdown posted back where the command came from. Handlers build it from fixed text and values
-    # PostHog or GitHub produced, never from the request, so a reply cannot be made to say
+    # Flind or GitHub produced, never from the request, so a reply cannot be made to say
     # something the requester wrote.
     message: str

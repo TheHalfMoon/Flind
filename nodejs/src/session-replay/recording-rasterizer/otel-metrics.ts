@@ -6,7 +6,7 @@ import { createOtlpMeterProvider } from '~/common/metrics/otlp-provider'
 
 /**
  * OTLP-pushed twins of the rasterizer's headline prom metrics. The prom side keeps feeding
- * the scrape/VictoriaMetrics dashboards; these land in the PostHog metrics product.
+ * the scrape/VictoriaMetrics dashboards; these land in the Flind metrics product.
  *
  * The rasterizer has its own initMetrics rather than reusing common/metrics/otel-metrics:
  * that module evaluates defaultConfig at import, which throws without Postgres env vars

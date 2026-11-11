@@ -134,7 +134,7 @@ class TaggerModelConfigurationWriteSerializer(serializers.Serializer):
         allow_null=True,
         help_text=(
             "Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key "
-            "ID returned by PostHog, or omit/null when no provider key should be pinned."
+            "ID returned by Flind, or omit/null when no provider key should be pinned."
         ),
     )
 

@@ -14,7 +14,7 @@ from sandbox_addons import REGISTRY_DIR
 ENV_FILE = REGISTRY_DIR / "sandbox.env"
 
 TEMPLATE = """\
-# Secrets for your PostHog dev sandboxes, injected as environment variables.
+# Secrets for your Flind dev sandboxes, injected as environment variables.
 #
 # One KEY=value per line. The `# comment` lines directly above a KEY become the
 # description the in-sandbox agent sees in its CLAUDE.md. The values are set in
@@ -94,7 +94,7 @@ def render_context_markdown(env_vars: list[tuple[str, str]], tools: list[tuple[s
     lines = [
         "## Sandbox environment",
         "",
-        "You are running in an isolated PostHog dev sandbox. The items below are provisioned for you.",
+        "You are running in an isolated Flind dev sandbox. The items below are provisioned for you.",
     ]
 
     if env_vars:

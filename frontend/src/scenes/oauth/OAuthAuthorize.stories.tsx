@@ -165,7 +165,7 @@ export const WithRequiredScopes: Story = {
     parameters: authorizeParameters('feature_flag:read query:read dashboard:write'),
 }
 
-// Wildcard request: a single "All PostHog data" row where Read expands to every grantable
+// Wildcard request: a single "All Flind data" row where Read expands to every grantable
 // object's read scope and Write grants `*`.
 export const WildcardScope: Story = {
     decorators: [withOAuthApplication({ required_scopes: [] })],
@@ -209,7 +209,7 @@ export const ManyOptionalScopesNarrow: Story = {
 
 const everyScopeRequest = ['openid', 'profile', 'email', ...API_SCOPES.map(({ key }) => `${key}:write`)].join(' ')
 
-// The worst case for the layout: a client that asks for every scope PostHog has, which is one
+// The worst case for the layout: a client that asks for every scope Flind has, which is one
 // permission row per scope object. The rows scroll inside the card, and the action row keeps
 // Cancel and Authorize on screen the whole way down.
 export const EveryScopeRequested: Story = {

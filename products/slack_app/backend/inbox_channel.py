@@ -24,7 +24,7 @@ INBOX_ONBOARDING_REQUIRED_SCOPES: frozenset[str] = INBOX_CHANNEL_REQUIRED_SCOPES
 # Just long enough to absorb a concurrent install/join racing to create the same channel.
 _CHANNEL_CLAIM_TTL_SECONDS = 60
 _INBOX_MEMBER_TTL_SECONDS = 60 * 60
-# A no can turn into a yes elsewhere, so it holds only briefly. An invite from PostHog records the yes at once.
+# A no can turn into a yes elsewhere, so it holds only briefly. An invite from Flind records the yes at once.
 _INBOX_NON_MEMBER_TTL_SECONDS = 10 * 60
 
 # Cap the channel scan so a huge workspace (or a non-advancing cursor) can't loop unbounded.

@@ -1,4 +1,4 @@
-/** The HTTP statuses a refused PostHog AI gateway route answers with. */
+/** The HTTP statuses a refused Flind AI gateway route answers with. */
 export type GatewayBlockedStatus = 401 | 402 | 403 | 429 | 503;
 
 /**
@@ -15,4 +15,4 @@ export const GATEWAY_BLOCKED_ERROR_TYPES: Record<GatewayBlockedStatus, string> =
   };
 
 export const GATEWAY_TRANSIENT_DETAIL =
-  "Couldn't reach PostHog AI. Retrying shortly.";
+  "Couldn't reach Flind AI. Retrying shortly.";

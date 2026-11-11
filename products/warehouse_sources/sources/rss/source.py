@@ -44,7 +44,7 @@ class RssSource(ResumableSource[RssSourceConfig, RssResumeConfig]):
             label="RSS.com",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["podcast", "podcasting"],
-            caption="""Enter your RSS.com API key to pull your podcast and episode data into the PostHog Data warehouse.
+            caption="""Enter your RSS.com API key to pull your podcast and episode data into the Flind Data warehouse.
 
 The RSS.com API is available on Network plans. You can create an API key under **Profile → API Access** in [RSS.com](https://rss.com).
 """,

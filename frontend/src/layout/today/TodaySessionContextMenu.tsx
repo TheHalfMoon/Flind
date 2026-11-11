@@ -28,7 +28,7 @@ interface TodaySessionContextMenuProps {
     children: ReactNode
 }
 
-/** The session's actions on right-click, like PostHog Desktop. Its dialogs belong to the owner of `target.menuId`. */
+/** The session's actions on right-click, like Flind Desktop. Its dialogs belong to the owner of `target.menuId`. */
 export function TodaySessionContextMenu({
     target,
     surface,

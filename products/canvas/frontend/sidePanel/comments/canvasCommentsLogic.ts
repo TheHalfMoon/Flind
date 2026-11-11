@@ -324,7 +324,7 @@ export const canvasCommentsLogic = kea<canvasCommentsLogicType>([
                     versions.map((version) => ({ taskId: version.task_id }))
                 ),
         ],
-        // Like PostHog Desktop: the flag turns comments on, and a canvas an agent wrote always has them.
+        // Like Flind Desktop: the flag turns comments on, and a canvas an agent wrote always has them.
         commentsEnabled: [
             (s) => [s.featureFlags, s.commentTaskId],
             (featureFlags: FeatureFlagsSet, commentTaskId: string | null): boolean =>

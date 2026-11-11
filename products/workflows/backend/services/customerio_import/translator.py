@@ -1,7 +1,7 @@
-"""A Customer.io automation, as its Journeys UI API returns it, turned into a draft PostHog workflow.
+"""A Customer.io automation, as its Journeys UI API returns it, turned into a draft Flind workflow.
 
 The input is `GET /v1/environments/:id/campaigns/:id` (the `campaign` and top-level `actions`), plus the templates
-its message actions point at. Every setting that has no PostHog equivalent is left out and named in the notes, so
+its message actions point at. Every setting that has no Flind equivalent is left out and named in the notes, so
 the team can review the draft before enabling it. Nothing about people is read.
 """
 
@@ -156,8 +156,8 @@ class _Builder:
             if self.campaign.get("event_type") not in (None, "", "event"):
                 self.note(
                     NoteLevel.UNSUPPORTED,
-                    f"Customer.io starts this automation on a {self.campaign['event_type']} event, which PostHog "
-                    "does not receive. Pick the event that starts it in PostHog.",
+                    f"Customer.io starts this automation on a {self.campaign['event_type']} event, which Flind "
+                    "does not receive. Pick the event that starts it in Flind.",
                 )
                 return _empty_trigger()
             name = str(self.campaign["event"])
@@ -183,7 +183,7 @@ class _Builder:
         self.note(
             NoteLevel.UNSUPPORTED,
             f"Customer.io starts this automation on {labels.get(str(kind), f'a `{kind}` trigger')}, which has no "
-            "PostHog trigger yet. Pick how it starts in PostHog.",
+            "Flind trigger yet. Pick how it starts in Flind.",
         )
         return _empty_trigger()
 
@@ -255,7 +255,7 @@ class _Builder:
             # A flat AND list can't hold "any of", and dropping the OR would make the goal match nothing.
             self.note(
                 NoteLevel.UNSUPPORTED,
-                "The goal's event filters match any of several conditions, which PostHog goals can't express. "
+                "The goal's event filters match any of several conditions, which Flind goals can't express. "
                 "They were left out, so every conversion event counts. Narrow the goal by hand.",
             )
             event_filters = None
@@ -271,7 +271,7 @@ class _Builder:
             self.note(
                 NoteLevel.APPROXIMATED,
                 f"Customer.io counts a conversion only after the person is {self.campaign['conversion_action']} a "
-                "message. PostHog counts every conversion inside the window.",
+                "message. Flind counts every conversion inside the window.",
             )
         conversion: dict[str, Any] = {"filters": [], "events": [{"name": name, "filters": {"events": [event]}}]}
         if window:
@@ -305,7 +305,7 @@ class _Builder:
                 self.note(
                     NoteLevel.UNSUPPORTED,
                     f"Customer.io removes people from this automation when: {conditions.describe(exit_condition)}. "
-                    "PostHog can exit people on the conversion goal or when they stop matching the trigger.",
+                    "Flind can exit people on the conversion goal or when they stop matching the trigger.",
                 )
         return matched
 
@@ -313,7 +313,7 @@ class _Builder:
         if self.campaign.get("frequency_cap_id") or self.campaign.get("use_message_limits"):
             self.note(
                 NoteLevel.APPROXIMATED,
-                "Customer.io message limits apply to this automation. Set them in PostHog's sending rules.",
+                "Customer.io message limits apply to this automation. Set them in Flind's sending rules.",
             )
         throttle = self.campaign.get("message_throttle") or {}
         if throttle.get("enabled"):
@@ -376,7 +376,7 @@ class _Builder:
                 self.note(
                     NoteLevel.APPROXIMATED,
                     f"Customer.io waits a random time between {_duration(low)} and {_duration(high)}. "
-                    f"PostHog waits {_duration(middle)}.",
+                    f"Flind waits {_duration(middle)}.",
                     base,
                 )
             case "delay_time_window_action":
@@ -399,13 +399,13 @@ class _Builder:
                 )
                 return None
             case "filter_match_delay_action":
-                # People pass straight through to the only next step in PostHog.
+                # People pass straight through to the only next step in Flind.
                 return None
             case _:
                 label = _CHANNEL_NAMES.get(str(kind), f"`{kind}` step")
                 self.note(
                     NoteLevel.UNSUPPORTED,
-                    f"The {label} `{name}` has no PostHog equivalent and was left out.",
+                    f"The {label} `{name}` has no Flind equivalent and was left out.",
                 )
                 return None
         if translated is not None:
@@ -432,7 +432,7 @@ class _Builder:
         if template is None:
             self.note(
                 NoteLevel.NEEDS_INPUT,
-                "The message content was not part of the import. Write it in PostHog, or import again with the "
+                "The message content was not part of the import. Write it in Flind, or import again with the "
                 f"Customer.io template {template_id}.",
                 action,
             )
@@ -452,7 +452,7 @@ class _Builder:
         for name in rewritten.unsupported_globals:
             self.note(
                 NoteLevel.UNSUPPORTED,
-                f"The {field} uses Customer.io's `{name}` Liquid variables, which PostHog does not have.",
+                f"The {field} uses Customer.io's `{name}` Liquid variables, which Flind does not have.",
                 action,
             )
         return rewritten.text
@@ -479,14 +479,14 @@ class _Builder:
         if template.get("editor") in ("bee", "parcel", "wysiwyg"):
             self.note(
                 NoteLevel.APPROXIMATED,
-                "The email is imported as HTML. The Customer.io visual design is not editable in PostHog's "
+                "The email is imported as HTML. The Customer.io visual design is not editable in Flind's "
                 "visual editor, so edit it in the code editor.",
                 action,
             )
         if source.get("sending_state") == "draft":
             self.note(
                 NoteLevel.APPROXIMATED,
-                "Customer.io holds this message for review before sending. PostHog sends it as soon as the step runs.",
+                "Customer.io holds this message for review before sending. Flind sends it as soon as the step runs.",
                 action,
             )
         config: dict[str, Any] = {
@@ -549,7 +549,7 @@ class _Builder:
         if found.email:
             self.note(
                 NoteLevel.NEEDS_INPUT,
-                f"Customer.io sends this email from {found.email}, which is not a PostHog email sender yet. Add it "
+                f"Customer.io sends this email from {found.email}, which is not a Flind email sender yet. Add it "
                 "as a sender, or choose another one.",
                 action,
             )
@@ -570,7 +570,7 @@ class _Builder:
                 return
             self.note(
                 NoteLevel.NEEDS_INPUT,
-                f"Customer.io sends this email under subscription topic {topic_id}, which has no PostHog message "
+                f"Customer.io sends this email under subscription topic {topic_id}, which has no Flind message "
                 "category. Import your Customer.io topics with Import from Customer.io on the Opt-outs tab, then "
                 "import again, or pick a category.",
                 action,
@@ -629,7 +629,7 @@ class _Builder:
         if source.get("sub_type") == "journey_attr_update":
             self.note(
                 NoteLevel.UNSUPPORTED,
-                f"`{base['name']}` sets a journey attribute, which PostHog has no equivalent for. It was left out.",
+                f"`{base['name']}` sets a journey attribute, which Flind has no equivalent for. It was left out.",
             )
             return None
         properties = self._template_properties(self._template(source, base), base)
@@ -742,7 +742,7 @@ class _Builder:
             for description in translated.skipped:
                 self.note(NoteLevel.UNSUPPORTED, f"The wait for `{description}` was left out.", base)
             if translated.events:
-                # Properties next to a waited-for event filter that event, which PostHog puts on the event itself.
+                # Properties next to a waited-for event filter that event, which Flind puts on the event itself.
                 for event in translated.events:
                     event["properties"] = [*event.get("properties", []), *translated.properties]
                 events.extend({"name": event["name"], "filters": {"events": [event]}} for event in translated.events)
@@ -753,7 +753,7 @@ class _Builder:
         if property_conditions > 1:
             self.note(
                 NoteLevel.APPROXIMATED,
-                "Customer.io waits for any of several property conditions. PostHog waits for the first one only.",
+                "Customer.io waits for any of several property conditions. Flind waits for the first one only.",
                 base,
             )
         if source.get("delay_event_attr"):
@@ -767,7 +767,7 @@ class _Builder:
         if delay <= 0 or source.get("exit_type") == "never":
             self.note(
                 NoteLevel.APPROXIMATED,
-                "Customer.io waits with no time limit. PostHog waits at most 30 days, then takes the timeout path.",
+                "Customer.io waits with no time limit. Flind waits at most 30 days, then takes the timeout path.",
                 base,
             )
             delay = _MAX_WAIT_SECONDS
@@ -775,7 +775,7 @@ class _Builder:
             self.note(NoteLevel.APPROXIMATED, f"Waits are capped at 30 days, so {_duration(delay)} became 30d.", base)
             delay = _MAX_WAIT_SECONDS
 
-        # Customer.io gives each condition its own path and puts the timeout last. PostHog has one path for
+        # Customer.io gives each condition its own path and puts the timeout last. Flind has one path for
         # "the condition matched", so every condition path has to lead to the same step.
         links = sorted(self.links.get(str(source["id"]), []), key=lambda link: link[2] or 0)
         condition_count = len(encoded)
@@ -784,7 +784,7 @@ class _Builder:
         if len(set(condition_targets)) > 1:
             self.note(
                 NoteLevel.APPROXIMATED,
-                "Each wait condition leads to a different step in Customer.io. In PostHog every match takes the "
+                "Each wait condition leads to a different step in Customer.io. In Flind every match takes the "
                 "first condition's path, so check the other paths.",
                 base,
             )
@@ -815,13 +815,13 @@ class _Builder:
                 detail = f" `{'; '.join(parts)}`" if parts else ""
                 self.note(
                     NoteLevel.NEEDS_INPUT,
-                    f"Branch {index + 1}'s condition{detail} has no PostHog equivalent. Set it before enabling.",
+                    f"Branch {index + 1}'s condition{detail} has no Flind equivalent. Set it before enabling.",
                     base,
                 )
             posthog_conditions.append(
                 {"filters": {"properties": list(translated.properties)}, "name": f"Condition {index + 1}"}
             )
-        # Customer.io puts the "no match" path last. PostHog takes the continue edge when nothing matches.
+        # Customer.io puts the "no match" path last. Flind takes the continue edge when nothing matches.
         links = self.links.get(str(source["id"]), [])
         new_links: list[tuple[str, str, int | None]] = []
         default_target = _EXIT_ID
@@ -854,7 +854,7 @@ class _Builder:
 
     def _edges(self, roots: list[str]) -> list[dict[str, Any]]:
         def resolve(source_id: str) -> str:
-            """The PostHog step a link to `source_id` lands on, following steps that were left out."""
+            """The Flind step a link to `source_id` lands on, following steps that were left out."""
             seen: set[str] = set()
             while source_id != _EXIT_ID and source_id not in self.actions:
                 outgoing = self.links.get(source_id, [])

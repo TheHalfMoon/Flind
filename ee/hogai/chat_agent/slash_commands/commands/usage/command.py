@@ -25,7 +25,7 @@ from ee.hogai.utils.types import AssistantState, PartialAssistantState
 class UsageCommand(SlashCommand):
     """
     Handles the /usage slash command.
-    Shows PostHog AI credit usage for the current conversation and billing period.
+    Shows Flind AI credit usage for the current conversation and billing period.
     """
 
     async def execute(self, config: RunnableConfig, state: AssistantState) -> PartialAssistantState:

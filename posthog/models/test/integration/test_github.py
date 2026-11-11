@@ -331,7 +331,7 @@ class TestGitHubIntegrationModel(BaseTest):
             else:
                 mock_response.status_code = 200
                 mock_response.json.return_value = {
-                    "account": {"type": "Organization", "login": "PostHog"},
+                    "account": {"type": "Organization", "login": "Flind"},
                     **({"permissions": permissions} if permissions is not None else {}),
                 }
             return mock_response
@@ -502,7 +502,7 @@ class TestGitHubIntegrationModel(BaseTest):
 
     def _github_for_org(self) -> GitHubIntegration:
         integration = self.create_integration(
-            config={"account": {"name": "PostHog"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
+            config={"account": {"name": "Flind"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
         )
         return GitHubIntegration(integration, source="test", priority=Priority.CRITICAL)
 
@@ -661,7 +661,7 @@ class TestGitHubIntegrationModel(BaseTest):
         assert result == "master"
         # Query is scoped to open PRs whose head is the branch, in the repo owner's namespace.
         assert mock_get.call_args.kwargs["params"] == {
-            "head": "PostHog:posthog-code/fix",
+            "head": "Flind:posthog-code/fix",
             "state": "open",
             "per_page": 1,
         }
@@ -1054,7 +1054,7 @@ class TestGitHubIntegrationModel(BaseTest):
     def test_close_pull_request_patches_state_closed(self, _name, repository, expected_url):
         # account.name lets a bare repo name resolve to {org}/{repo} via organization().
         integration = self.create_integration(
-            config={"account": {"name": "PostHog"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
+            config={"account": {"name": "Flind"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
         )
         github = GitHubIntegration(integration, source="test", priority=Priority.CRITICAL)
         mock_response = MagicMock(status_code=200)
@@ -1095,7 +1095,7 @@ class TestGitHubIntegrationModel(BaseTest):
         # Search-syntax operators in the query (e.g. "foo OR bar") can escape the repo:
         # qualifier, so results must be filtered by the repository they actually belong to.
         integration = self.create_integration(
-            config={"account": {"name": "PostHog"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
+            config={"account": {"name": "Flind"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
         )
         github = GitHubIntegration(integration, source="test", priority=Priority.CRITICAL)
         mock_response = MagicMock(status_code=200)
@@ -1133,7 +1133,7 @@ class TestGitHubIntegrationModel(BaseTest):
 
     def test_search_issues_retrieves_an_issue_by_number(self):
         integration = self.create_integration(
-            config={"account": {"name": "PostHog"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
+            config={"account": {"name": "Flind"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
         )
         github = GitHubIntegration(integration, source="test", priority=Priority.CRITICAL)
         mock_response = MagicMock(status_code=200)
@@ -1158,7 +1158,7 @@ class TestGitHubIntegrationModel(BaseTest):
 
     def test_search_issues_falls_back_to_title_search_when_number_is_not_found(self):
         integration = self.create_integration(
-            config={"account": {"name": "PostHog"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
+            config={"account": {"name": "Flind"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
         )
         github = GitHubIntegration(integration, source="test", priority=Priority.CRITICAL)
         not_found_response = MagicMock(status_code=404)
@@ -1195,7 +1195,7 @@ class TestGitHubIntegrationModel(BaseTest):
 
     def test_get_pull_request_includes_requested_reviewers_and_teams(self):
         integration = self.create_integration(
-            config={"account": {"name": "PostHog"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
+            config={"account": {"name": "Flind"}}, sensitive_config={"access_token": "ACCESS_TOKEN"}
         )
         github = GitHubIntegration(integration, source="test", priority=Priority.CRITICAL)
         mock_response = MagicMock(status_code=200)
@@ -1532,7 +1532,7 @@ class TestGitHubIntegrationModel(BaseTest):
         with patch.object(
             github, "_installation_authenticated_get_pages", return_value=([first, second], complete)
         ) as mock_pages:
-            result = github.list_team_members("PostHog", "team-devex")
+            result = github.list_team_members("Flind", "team-devex")
         assert {key: result[key] for key in expected} == expected
         assert mock_pages.call_args.args[0] == "https://api.github.com/orgs/PostHog/teams/team-devex/members"
 
@@ -1615,7 +1615,7 @@ class TestGitHubIntegrationModel(BaseTest):
         # registry that isn't reset between methods, so a shared id would make the no_headers "== None"
         # assertion depend on parametrize ordering (another case sets the same (id, "unknown") series).
         integration = self.create_integration(
-            {"installation_id": f"INSTALL-{_name}", "account": {"name": "PostHog"}},
+            {"installation_id": f"INSTALL-{_name}", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         response = MagicMock()
@@ -1665,7 +1665,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.egress.transport.transport.requests.request")
     def test_github_api_request_metrics_include_request_exceptions(self, mock_get):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         mock_get.side_effect = requests.RequestException("network failure")
@@ -1722,7 +1722,7 @@ class TestGitHubIntegrationModel(BaseTest):
         assert integration.config == {
             "installation_id": "INSTALLATION_ID",
             "account": {
-                "name": "PostHog",
+                "name": "Flind",
                 "type": "Organization",
             },
             "repository_selection": "all",
@@ -1783,7 +1783,7 @@ class TestGitHubIntegrationModel(BaseTest):
             else:
                 response.status_code = info_status
                 response.json.return_value = (
-                    {"account": {"login": "PostHog", "type": "Organization"}}
+                    {"account": {"login": "Flind", "type": "Organization"}}
                     if info_status == 200
                     else {"message": "Service unavailable"}
                 )
@@ -1798,9 +1798,9 @@ class TestGitHubIntegrationModel(BaseTest):
 
     @parameterized.expand(
         [
-            ("numeric_placeholder", {"type": None, "name": "INSTALL"}, True, "PostHog"),
-            ("missing_account", None, True, "PostHog"),
-            ("already_resolved", {"type": "Organization", "name": "PostHog"}, False, "PostHog"),
+            ("numeric_placeholder", {"type": None, "name": "INSTALL"}, True, "Flind"),
+            ("missing_account", None, True, "Flind"),
+            ("already_resolved", {"type": "Organization", "name": "Flind"}, False, "Flind"),
         ]
     )
     @patch("posthog.models.github_integration_base.GitHubIntegrationBase.client_request")
@@ -1808,7 +1808,7 @@ class TestGitHubIntegrationModel(BaseTest):
         self, _name, account, expects_fetch, expected_name, mock_client_request
     ):
         mock_client_request.return_value = MagicMock(
-            status_code=200, json=lambda: {"account": {"login": "PostHog", "type": "Organization"}}
+            status_code=200, json=lambda: {"account": {"login": "Flind", "type": "Organization"}}
         )
         config = {"installation_id": "INSTALL"}
         if account is not None:
@@ -1868,14 +1868,14 @@ class TestGitHubIntegrationModel(BaseTest):
             Integration.objects.filter(id=integration.id).update(
                 config={**stored.config, "repository_selection": "selected"}
             )
-            return MagicMock(status_code=200, json=lambda: {"account": {"login": "PostHog", "type": "Organization"}})
+            return MagicMock(status_code=200, json=lambda: {"account": {"login": "Flind", "type": "Organization"}})
 
         mock_client_request.side_effect = _client_request
 
         assert GitHubIntegration(integration, source="test", priority=Priority.CRITICAL).ensure_account_name() is True
 
         integration.refresh_from_db()
-        assert integration.config["account"]["name"] == "PostHog"
+        assert integration.config["account"]["name"] == "Flind"
         assert integration.config["repository_selection"] == "selected"
 
     @patch("posthog.models.github_integration_base.GitHubIntegrationBase.client_request")
@@ -1892,7 +1892,7 @@ class TestGitHubIntegrationModel(BaseTest):
             landed_mid_call.append(
                 GitHubIntegration(reread, source="test", priority=Priority.CRITICAL).ensure_account_name()
             )
-            return MagicMock(status_code=200, json=lambda: {"account": {"login": "PostHog", "type": "Organization"}})
+            return MagicMock(status_code=200, json=lambda: {"account": {"login": "Flind", "type": "Organization"}})
 
         mock_client_request.side_effect = _client_request
 
@@ -2013,7 +2013,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.access_token_expired", return_value=False)
     def test_list_repositories_retries_transient_non_json_response(self, _mock_expired, mock_get):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
 
@@ -2045,7 +2045,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.access_token_expired", return_value=False)
     def test_list_repositories_raises_after_repeated_transient_non_json(self, _mock_expired, mock_get):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
 
@@ -2069,7 +2069,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.access_token_expired", return_value=False)
     def test_list_all_repositories_raises_when_later_page_fails(self, _mock_expired, mock_get):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
 
@@ -2095,7 +2095,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.list_repositories")
     def test_list_all_repositories_fetches_all_pages(self, mock_list):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
 
@@ -2122,7 +2122,7 @@ class TestGitHubIntegrationModel(BaseTest):
             {"id": 2, "name": "posthog-js", "full_name": "PostHog/posthog-js"},
         ]
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         integration.repository_cache = cached_repositories
@@ -2163,7 +2163,7 @@ class TestGitHubIntegrationModel(BaseTest):
             {"id": 2, "name": "legacy", "full_name": "PostHog/legacy"},
         ]
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         integration.repository_cache = cached_repositories
@@ -2194,7 +2194,7 @@ class TestGitHubIntegrationModel(BaseTest):
             {"id": 2, "name": "posthog-js", "full_name": "PostHog/posthog-js"},
         ]
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         integration.repository_cache = cached_repositories
@@ -2215,7 +2215,7 @@ class TestGitHubIntegrationModel(BaseTest):
             {"id": 2, "name": "posthog-js", "full_name": "PostHog/posthog-js"},
         ]
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         original_updated_at = timezone.now() - timedelta(minutes=5)
@@ -2241,7 +2241,7 @@ class TestGitHubIntegrationModel(BaseTest):
             {"id": 2, "name": "posthog-js", "full_name": "PostHog/posthog-js"},
         ]
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         mock_list_all.return_value = fetched_repositories
@@ -2273,7 +2273,7 @@ class TestGitHubIntegrationModel(BaseTest):
             {"id": 2, "name": "posthog-js", "full_name": "PostHog/posthog-js"},
         ]
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         integration.repository_cache = stale_repositories
@@ -2296,7 +2296,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.list_all_repositories")
     def test_list_cached_repositories_raises_on_refresh_error_without_cache(self, mock_list_all):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         mock_list_all.side_effect = Exception("GitHub is slow")
@@ -2313,7 +2313,7 @@ class TestGitHubIntegrationModel(BaseTest):
 
     def test_invalidate_github_repository_caches_for_installation_clears_team_and_personal_rows(self):
         team_integration = self.create_integration(
-            {"installation_id": "12345", "account": {"name": "PostHog"}},
+            {"installation_id": "12345", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         team_integration.integration_id = "12345"
@@ -2339,7 +2339,7 @@ class TestGitHubIntegrationModel(BaseTest):
     def test_list_cached_repositories_pages_with_full_cached_snapshot(self, mock_list_all):
         fetched_repositories = [{"id": i, "name": f"repo-{i}", "full_name": f"PostHog/repo-{i}"} for i in range(650)]
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         mock_list_all.return_value = fetched_repositories
@@ -2378,7 +2378,7 @@ class TestGitHubIntegrationModel(BaseTest):
             {"id": 4, "name": "posthog-python", "full_name": "PostHog/posthog-python"},
         ]
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         mock_list_all.return_value = fetched_repositories
@@ -2399,7 +2399,7 @@ class TestGitHubIntegrationModel(BaseTest):
             {"id": 3, "name": "code", "full_name": "Acme/code"},
         ]
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         github = GitHubIntegration(integration, source="test", priority=Priority.CRITICAL)
@@ -2416,7 +2416,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.get_default_branch")
     def test_list_cached_branches_uses_cached_data_when_fresh(self, mock_default_branch, mock_list_branches):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         repo = "posthog/posthog"
@@ -2457,7 +2457,7 @@ class TestGitHubIntegrationModel(BaseTest):
         mock_default_branch.return_value = "main"
         repo = "posthog/posthog"
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         user_integration = self.create_user_integration("INSTALL")
@@ -2475,7 +2475,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.get_default_branch")
     def test_list_cached_branches_filters_search_before_pagination(self, mock_default_branch, mock_list_branches):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         repo = "posthog/posthog"
@@ -2507,7 +2507,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.get_default_branch")
     def test_list_cached_branches_populates_cache_on_miss(self, mock_default_branch, mock_list_branches):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         repo = "posthog/posthog"
@@ -2544,7 +2544,7 @@ class TestGitHubIntegrationModel(BaseTest):
         self, mock_list_branches: MagicMock, mock_refresh_delay: MagicMock
     ) -> None:
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         repo = "posthog/posthog"
@@ -2579,7 +2579,7 @@ class TestGitHubIntegrationModel(BaseTest):
         self, _mock_redis: MagicMock
     ) -> None:
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         repo = "posthog/posthog"
@@ -2604,7 +2604,7 @@ class TestGitHubIntegrationModel(BaseTest):
         self, mock_list_branches: MagicMock, _mock_default_branch: MagicMock
     ) -> None:
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         repo = "posthog/posthog"
@@ -2624,7 +2624,7 @@ class TestGitHubIntegrationModel(BaseTest):
         self, mock_default_branch, mock_list_branches
     ):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         repo = "posthog/posthog"
@@ -2651,7 +2651,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.list_branches")
     def test_list_cached_branches_raises_on_refresh_error_without_cache(self, mock_list_branches):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         repo = "posthog/posthog"
@@ -2667,7 +2667,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.list_branches")
     def test_list_all_branches_fetches_all_pages(self, mock_list_branches):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         repo = "posthog/posthog"
@@ -2690,7 +2690,7 @@ class TestGitHubIntegrationModel(BaseTest):
     @patch("posthog.models.integration.github.GitHubIntegration.get_default_branch")
     def test_list_cached_branches_pages_with_full_cached_snapshot(self, mock_default_branch, mock_list_branches):
         integration = self.create_integration(
-            {"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+            {"installation_id": "INSTALL", "account": {"name": "Flind"}},
             {"access_token": "ACCESS_TOKEN"},
         )
         repo = "posthog/posthog"
@@ -2830,7 +2830,7 @@ def _create_github_integration(team) -> Integration:
         team=team,
         kind="github",
         integration_id="INSTALL",
-        config={"installation_id": "INSTALL", "account": {"name": "PostHog"}},
+        config={"installation_id": "INSTALL", "account": {"name": "Flind"}},
         sensitive_config={"access_token": "ACCESS_TOKEN"},
     )
 

@@ -7,7 +7,7 @@ import { processEvent } from './index'
  * Given a url, construct a page view event.
  *
  * @param $current_url The current url of the page view
- * @returns A new PostHog page view event
+ * @returns A new Flind page view event
  */
 function buildPageViewEvent($current_url: string): PluginEvent {
     const event: PluginEvent = {

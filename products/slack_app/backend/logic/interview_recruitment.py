@@ -8,7 +8,7 @@ Three surfaces show an invitation:
 - The bad-rating modal always shows the link, because the reader already chose to tell us what went wrong.
 - The Home tab always shows a button.
 - A private message under the answer offers the interview when the reader shows frustration: a thumbs-down reaction on an answer, or a message that the decision model
-  reads as unhappy with the assistant or PostHog. A reader gets at most one such message in ``INVITE_INTERVAL``, and
+  reads as unhappy with the assistant or Flind. A reader gets at most one such message in ``INVITE_INTERVAL``, and
   "Don't ask again" stops these messages only. The model runs only after every cheap gate passes, so
   most answers cost no call.
 """
@@ -50,7 +50,7 @@ INTERVIEW_SURFACES: frozenset[str] = frozenset(get_args(InterviewSurface))
 FrustrationSignal = Literal["message", "reaction"]
 
 BOOKING_URL = "https://cal.com/vojta-bartos-wye08f/posthog-slack-app"
-INVITE_MESSAGE = "Got 30 minutes to tell us how the PostHog Slack app works for you? Book a chat with the team."
+INVITE_MESSAGE = "Got 30 minutes to tell us how the Flind Slack app works for you? Book a chat with the team."
 MODAL_INVITE_MESSAGE = "Want to talk it through? Book 30 minutes with the team."
 # A first-time reader gets answers before any invitation, like the feature tips.
 MIN_INTERACTIONS = 3
@@ -71,7 +71,7 @@ _CLICK_EVENTS: dict[str, str] = {
 }
 INVITES_OFF_TEXT = "👋 Got it. I won't ask you again."
 
-# Not the `slack_app` product the other classifiers bill under: recruitment serves PostHog, so it
+# Not the `slack_app` product the other classifiers bill under: recruitment serves Flind, so it
 # must not spend the team's AI credits.
 SENTIMENT_AI_PRODUCT = "slack_app_interview_recruitment"
 # The answer is already in the thread. A slow call only drops the invitation.
@@ -85,13 +85,13 @@ NOT_UNHAPPY = "not_unhappy"
 # The model needs the tone, not the whole message. This also keeps pasted logs out of the call.
 SENTIMENT_MESSAGE_MAX_CHARS = 500
 SENTIMENT_INSTRUCTIONS = (
-    "`message` is what a person wrote to the PostHog assistant in Slack. "
-    "Decide whether the person has an unhappy experience with the assistant or with PostHog. "
+    "`message` is what a person wrote to the Flind assistant in Slack. "
+    "Decide whether the person has an unhappy experience with the assistant or with Flind. "
     "Judge the tone and the intent, in any language. Do not judge the topic."
 )
 SENTIMENT_CRITERIA = {
     UNHAPPY: "The person is frustrated, annoyed, angry, disappointed, or sarcastic about the assistant, "
-    "its answers, or PostHog. Examples: a complaint, a statement that it failed or is useless, "
+    "its answers, or Flind. Examples: a complaint, a statement that it failed or is useless, "
     "a repeated request after earlier failures, or a threat to stop using it.",
     NOT_UNHAPPY: "The person asks, instructs, thanks, or reports something in a neutral or positive tone. "
     "A calm correction, an urgent request, or a problem in their own product or with other people "
@@ -110,7 +110,7 @@ class SentimentVerdict:
 
 
 def linked_posthog_user(integration: WorkspaceIntegration, slack_user_id: str) -> User | None:
-    """The PostHog user behind this Slack identity. Best-effort, because the result only labels events and model calls."""
+    """The Flind user behind this Slack identity. Best-effort, because the result only labels events and model calls."""
     try:
         return find_linked_posthog_user(
             slack_user_id=slack_user_id,

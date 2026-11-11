@@ -1,8 +1,8 @@
 """
-Emit PostHog analytics events for account changes.
+Emit Flind analytics events for account changes.
 
 These events power workflow triggers (e.g. "when the 'churn risk' tag is added
-to an account, notify its CSM"). Events are sent to the customer's PostHog
+to an account, notify its CSM"). Events are sent to the customer's Flind
 project via their team's API token.
 """
 

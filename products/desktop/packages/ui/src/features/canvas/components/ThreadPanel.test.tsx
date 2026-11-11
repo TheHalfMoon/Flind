@@ -186,7 +186,7 @@ describe("ThreadArtifactRow", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("opens a canvas from another PostHog instance externally", () => {
+  it("opens a canvas from another Flind instance externally", () => {
     const url = "https://eu.posthog.com/code/canvas/channel-1/dash-1";
 
     render(

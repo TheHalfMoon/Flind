@@ -13,7 +13,7 @@ class PlaidEndpointConfig:
     description: str | None = None
 
 
-# One PostHog source connects one Plaid Item (the access token the user
+# One Flind source connects one Plaid Item (the access token the user
 # obtained via Plaid Link). Transactions use /transactions/get with the
 # server-side start_date filter — /transactions/sync's opaque cursor can't be
 # expressed as a row-field watermark in this framework.

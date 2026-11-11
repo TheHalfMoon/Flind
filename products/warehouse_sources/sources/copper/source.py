@@ -113,7 +113,7 @@ class CopperSource(ResumableSource[CopperSourceConfig, CopperResumeConfig]):
             category=DataWarehouseSourceCategory.CRM,
             label="Copper",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Sync your Copper CRM data into the PostHog Data warehouse.
+            caption="""Sync your Copper CRM data into the Flind Data warehouse.
 
 Generate an API key in Copper under **Settings → Integrations → API Keys**. The email below must be the email of the user the API key belongs to.""",
             iconPath="/static/services/copper.png",

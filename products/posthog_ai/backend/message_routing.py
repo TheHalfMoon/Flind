@@ -53,7 +53,7 @@ logger = structlog.get_logger(__name__)
 DEFAULT_INITIAL_PERMISSION_MODE: InitialPermissionMode = "auto"
 POSTHOG_AI_INTERACTION_ORIGIN = tasks_facade.TaskOriginProduct.POSTHOG_AI.value
 
-# A PostHog AI sandbox session is a live chat: if the user goes quiet for this long
+# A Flind AI sandbox session is a live chat: if the user goes quiet for this long
 # they've moved on, so the Run's workflow times out and reclaims the sandbox. Passed
 # as the per-task `inactivity_timeout_seconds` override on every Run we create, so the
 # workflow's idle timer and the SSE relay's freshness window both honor it (both read
@@ -223,7 +223,7 @@ class SandboxSession(BaseSandboxService):
 
         # Conversation lock released. The facade provisions under its own Task-row lock and
         # dispatches the workflow on commit; it is idempotent (an existing non-terminal Run is returned
-        # as-is). `systemPrompt` is the one PostHog AI-specific Run-state key the generic warmer can't know.
+        # as-is). `systemPrompt` is the one Flind AI-specific Run-state key the generic warmer can't know.
         try:
             result = warm_facade.warm_task_run(
                 task_id,
@@ -280,7 +280,7 @@ class SandboxSession(BaseSandboxService):
             mode="interactive",
             interaction_origin=POSTHOG_AI_INTERACTION_ORIGIN,
             inactivity_timeout_seconds=SANDBOX_INACTIVITY_TIMEOUT_SECONDS,
-            # Defer the workflow so the initial run state can carry the PostHog AI keys.
+            # Defer the workflow so the initial run state can carry the Flind AI keys.
             start_workflow=False,
         )
 
@@ -288,7 +288,7 @@ class SandboxSession(BaseSandboxService):
         if run_dto is None:
             raise exceptions.ValidationError("Failed to create sandbox task run.")
 
-        # Seed the PostHog AI per-Run state keys. `attached_context` keeps the full,
+        # Seed the Flind AI per-Run state keys. `attached_context` keeps the full,
         # undeduped list. These aren't `create_and_run` arguments, so merge them into the
         # run state here, before the workflow starts and reads it. `exclude_unset` keeps the
         # merge limited to exactly these keys — model defaults must not leak into the bag.

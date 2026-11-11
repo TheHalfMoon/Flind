@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -133,7 +133,7 @@ export const LearningBackfillStatusEnumApi = {
 } as const
 
 export interface LearningBackfillProgressApi {
-    /** `running` while PostHog reads past tickets. `completed` once every ticket in the window is read.
+    /** `running` while Flind reads past tickets. `completed` once every ticket in the window is read.
      *
      * * `running` - Reading past tickets
      * * `completed` - Read every past ticket */
@@ -154,7 +154,7 @@ export interface LearningBackfillProgressApi {
 }
 
 export interface BusinessKnowledgeSettingsApi {
-    /** When true, PostHog learns reusable knowledge from public human replies on resolved support tickets. Requires Support to be enabled for this environment. */
+    /** When true, Flind learns reusable knowledge from public human replies on resolved support tickets. Requires Support to be enabled for this environment. */
     learn_from_support_enabled: boolean
     /** Whether Support is enabled for this environment. Learning cannot be turned on while this is false. */
     readonly support_enabled: boolean
@@ -445,7 +445,7 @@ export interface SandboxRunStartedApi {
 }
 
 export interface PatchedBusinessKnowledgeSettingsUpdateApi {
-    /** When true, PostHog learns reusable knowledge from public human replies on resolved support tickets. Rejected when Support is off for this environment. */
+    /** When true, Flind learns reusable knowledge from public human replies on resolved support tickets. Rejected when Support is off for this environment. */
     learn_from_support_enabled?: boolean
 }
 
@@ -535,7 +535,7 @@ export interface KnowledgeSourceApi {
     readonly team_id: number
     readonly name: string
     readonly source_type: SourceTypeEnumApi
-    /** Whether PostHog manages this source with knowledge learned from resolved support tickets. */
+    /** Whether Flind manages this source with knowledge learned from resolved support tickets. */
     readonly is_generated: boolean
     readonly status: SourceStatusEnumApi
     readonly error_message: string

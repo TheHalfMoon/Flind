@@ -44,7 +44,7 @@ class ClockifySource(ResumableSource[ClockifySourceConfig, ClockifyResumeConfig]
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Clockify",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Clockify API key to sync your Clockify data into the PostHog Data warehouse.
+            caption="""Enter your Clockify API key to sync your Clockify data into the Flind Data warehouse.
 
 You can generate an API key on your [Clockify profile settings](https://app.clockify.me/user/settings) page.
 

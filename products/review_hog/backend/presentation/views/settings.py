@@ -78,7 +78,7 @@ class ReviewUserSettingsSerializer(serializers.Serializer):
     review_inbox_prs = serializers.BooleanField(
         required=False,
         help_text="Review the pull requests the agent opens for Inbox reports assigned to the user: "
-        "PostHog Review reviews each one and posts its findings to the pull request. Off by default.",
+        "Flind Review reviews each one and posts its findings to the pull request. Off by default.",
     )
     stamphog_review_inbox_prs = serializers.BooleanField(
         required=False,
@@ -105,7 +105,7 @@ class ReviewUserSettingsSerializer(serializers.Serializer):
 
 
 class ReviewUserSettingsViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
-    """The requesting user's PostHog Review preferences for a project.
+    """The requesting user's Flind Review preferences for a project.
 
     Sibling of the perspective/validator/blind-spots config viewsets: skills control *how* a review
     runs, these preferences control *what gets reviewed* and *how strict publishing is*. Only the

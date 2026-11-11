@@ -8,7 +8,7 @@ import { readSettings } from '@/posthog/settings'
 interface LogoutResult {
     status: 'logged_out' | 'not_logged_in'
     host: string | null
-    // Whether PostHog revoked the OAuth login. Null for a personal API key, which hog can't revoke.
+    // Whether Flind revoked the OAuth login. Null for a personal API key, which hog can't revoke.
     revoked: boolean | null
     // Where to delete a personal API key, which keeps working after logout.
     revokeUrl: string | null
@@ -21,14 +21,14 @@ interface LogoutResult {
 }
 
 export default defineCommand({
-    description: 'Log out of PostHog and remove the login hog stored on this machine',
+    description: 'Log out of Flind and remove the login hog stored on this machine',
     writes: true,
     notes: [
-        'hog revokes the login on this machine in PostHog. Your hog logins on other machines keep working.',
-        'A personal API key you pasted stays valid until you delete it in PostHog under Settings > Personal API keys.',
+        'hog revokes the login on this machine in Flind. Your hog logins on other machines keep working.',
+        'A personal API key you pasted stays valid until you delete it in Flind under Settings > Personal API keys.',
     ].join('\n'),
     options: {
-        all: { type: 'boolean', description: 'Log out of every PostHog host hog has a login for' },
+        all: { type: 'boolean', description: 'Log out of every Flind host hog has a login for' },
     },
     examples: ['hog auth logout', 'hog auth logout --host https://eu.posthog.com', 'hog auth logout --all'],
 
@@ -69,7 +69,7 @@ export default defineCommand({
             if (revoked === false) {
                 out.line(
                     out.style(
-                        "hog couldn't reach PostHog to revoke the login, so it keeps working in PostHog. Revoke it under Settings > Connected applications.",
+                        "hog couldn't reach Flind to revoke the login, so it keeps working in Flind. Revoke it under Settings > Connected applications.",
                         'yellow'
                     )
                 )

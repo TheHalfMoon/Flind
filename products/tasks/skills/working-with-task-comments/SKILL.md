@@ -1,17 +1,17 @@
 ---
 name: working-with-task-comments
 description: >-
-  Read and use comments attached to the current PostHog task, its artifacts, and any canvas through
-  the PostHog MCP exec dispatcher. Use when the user mentions task comments, artifact or canvas
+  Read and use comments attached to the current Flind task, its artifacts, and any canvas through
+  the Flind MCP exec dispatcher. Use when the user mentions task comments, artifact or canvas
   comments, annotations, selected-text feedback, replies, unresolved comments, or asks an agent to
-  inspect or act on feedback left in PostHog Desktop. Covers exec discovery and calls, target filtering,
+  inspect or act on feedback left in Flind Desktop. Covers exec discovery and calls, target filtering,
   pagination, full-thread retrieval, anchor/version context, task-scoped access, and standalone
   canvas comments that have no task.
 ---
 
 # Working with task comments
 
-Use the canonical PostHog MCP tool `posthog:exec` for every task-comment operation. A client or
+Use the canonical Flind MCP tool `posthog:exec` for every task-comment operation. A client or
 harness may render that canonical name differently. `tasks-comments-list` and the related names are
 inner tools, not separately registered MCP tools.
 
@@ -37,10 +37,10 @@ The expected inner tools are:
 | `canvas-comments-list`     | Every root on one canvas, whichever task or person wrote it         |
 | `canvas-comments-retrieve` | One thread from `canvas-comments-list`                              |
 
-The `tasks-*` tools need PostHog Desktop task context. The `canvas-*` tools need only a canvas id.
+The `tasks-*` tools need Flind Desktop task context. The `canvas-*` tools need only a canvas id.
 A user can leave a canvas comment without a task. The `tasks-*` tools do not return that comment.
 
-If the client exposes no tool corresponding to canonical `posthog:exec`, the PostHog MCP server is
+If the client exposes no tool corresponding to canonical `posthog:exec`, the Flind MCP server is
 unavailable in the run. Report that comments cannot be accessed only when `exec search` returns no
 tool for the target:
 

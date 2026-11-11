@@ -41,7 +41,7 @@ export function pushPlanLines(plan: PlannedItem[], style: Styler): string[] {
 }
 
 export default defineCommand({
-    description: 'Create or update PostHog endpoints from local YAML files',
+    description: 'Create or update Flind endpoints from local YAML files',
     args: {
         paths: {
             description: 'Endpoint files, folders of them, or glob patterns. Defaults to endpoints.dir in posthog.json',
@@ -51,7 +51,7 @@ export default defineCommand({
     },
     options: CONFIRM_OPTIONS,
     scopes: SCOPES_WRITE,
-    notes: 'hog shows the changes and asks before it makes them. Agents and scripts pass --yes. hog creates the insight variables a file uses that the project lacks. Exits with code 1 when a file is invalid, PostHog would reject it, or an endpoint fails to save.',
+    notes: 'hog shows the changes and asks before it makes them. Agents and scripts pass --yes. hog creates the insight variables a file uses that the project lacks. Exits with code 1 when a file is invalid, Flind would reject it, or an endpoint fails to save.',
     examples: [
         'hog endpoints push endpoints/',
         'hog endpoints push daily-signups.yaml --dry-run',
@@ -84,7 +84,7 @@ export default defineCommand({
         }
         const style = (text: string, ...styles: Parameters<Styler>[1][]): string =>
             new Output(ctx.runtime, ctx.mode).style(text, ...styles)
-        const question = `Push ${plural(pending.length, 'endpoint')} to PostHog?`
+        const question = `Push ${plural(pending.length, 'endpoint')} to Flind?`
         if (!(await confirm(ctx, options, pushPlanLines(pending, style), question))) {
             return { status: 'cancelled', plan, outcomes: [], problems }
         }
@@ -114,8 +114,8 @@ export default defineCommand({
         }
         pushPlanLines(result.plan, style).forEach((line) => out.line(line))
         const messages = {
-            preview: 'Dry run: nothing changed in PostHog.',
-            cancelled: 'Cancelled: nothing changed in PostHog.',
+            preview: 'Dry run: nothing changed in Flind.',
+            cancelled: 'Cancelled: nothing changed in Flind.',
             nothing_to_do: 'Nothing to push.',
         }
         out.line(out.style(messages[result.status], 'dim'))

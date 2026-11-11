@@ -33,7 +33,7 @@ const PROMPT_WITH_CANVAS_INSTRUCTIONS =
   "add a retention chart\n\n<canvas_generation_instructions>\nauthoring contract\n</canvas_generation_instructions>";
 
 const PROMPT_WITH_POSTHOG_CONTEXT =
-  '<posthog_trusted_context>\n- You are running alongside the PostHog app.\n</posthog_trusted_context>\n<posthog_untrusted_context>\n- dashboard 42 ("Weekly active users")\n</posthog_untrusted_context>\n\nHow many monthly active users do we have';
+  '<posthog_trusted_context>\n- You are running alongside the Flind app.\n</posthog_trusted_context>\n<posthog_untrusted_context>\n- dashboard 42 ("Weekly active users")\n</posthog_untrusted_context>\n\nHow many monthly active users do we have';
 
 const PROMPT_WITH_PI_SKILL =
   '<skill name="code-review" location="/skills/code-review/SKILL.md">\nReferences are relative to /skills/code-review.\n\n# Review\n\nInspect the diff.\n</skill>\n\nReview this pull request.';
@@ -77,7 +77,7 @@ describe("UserMessage", () => {
     );
 
     expect(
-      screen.getByText("Getting started with PostHog Desktop"),
+      screen.getByText("Getting started with Flind Desktop"),
     ).toBeInTheDocument();
     // The brief is the entire message, so a bare strip would leave an empty bubble.
     expect(screen.queryByText(/onboarding_brief/)).not.toBeInTheDocument();
@@ -108,7 +108,7 @@ describe("UserMessage", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("shows the PostHog context tag and strips the raw blocks", () => {
+  it("shows the Flind context tag and strips the raw blocks", () => {
     renderMessage(
       <UserMessage content={PROMPT_WITH_POSTHOG_CONTEXT} taskId="task-1" />,
     );
@@ -116,7 +116,7 @@ describe("UserMessage", () => {
     expect(
       screen.getByText("How many monthly active users do we have"),
     ).toBeInTheDocument();
-    expect(screen.getByText("PostHog context")).toBeInTheDocument();
+    expect(screen.getByText("Flind context")).toBeInTheDocument();
     expect(
       screen.queryByText(/posthog_trusted_context/),
     ).not.toBeInTheDocument();

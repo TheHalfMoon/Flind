@@ -25,7 +25,7 @@ This policy covers unsolicited interruptions. Elicitation needed to complete the
 ## MCP Analytics
 
 - Before adding or changing MCP Analytics instrumentation, read the [tracking and observability architecture](ARCHITECTURE.md#tracking-and-observability).
-- Prefer `@posthog/mcp-analytics` for all MCP telemetry it supports. The SDK should own reusable MCP Analytics behavior. Server code should only provide the relevant typed data and PostHog-specific integration.
+- Prefer `@posthog/mcp-analytics` for all MCP telemetry it supports. The SDK should own reusable MCP Analytics behavior. Server code should only provide the relevant typed data and Flind-specific integration.
 - Do not duplicate SDK behavior with custom event capture, property mapping, session handling, identity handling, or other parallel instrumentation.
 - Event and property names beginning with `$mcp_` are owned by MCP Analytics SDKs. Do not invent, add, rename, reinterpret, or manually populate `$mcp_*` fields in server code unless the SDK explicitly exposes them for that purpose.
 - Before introducing a new MCP Analytics event, property, or concept, check whether the SDK already supports it or whether it belongs in the SDK.

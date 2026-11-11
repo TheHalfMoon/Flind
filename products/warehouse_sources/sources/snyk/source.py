@@ -54,7 +54,7 @@ class SnykSource(ResumableSource[SnykSourceConfig, SnykResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Snyk",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Connect your Snyk account to sync organizations, projects, targets, vulnerability issues, memberships, collections, container images, and audit logs into the PostHog Data warehouse.
+            caption="""Connect your Snyk account to sync organizations, projects, targets, vulnerability issues, memberships, collections, container images, and audit logs into the Flind Data warehouse.
 
 Generate an API token from your [Snyk account settings](https://app.snyk.io/account) (or use a service account token from your organization or group settings). The token is sent as `Authorization: token <token>` and can read every organization it has access to. The group memberships and group organizations tables need a token that can view the group. The audit log tables need an Enterprise plan and a token that can view audit logs, and Snyk keeps audit logs for 90 days.
 

@@ -18,7 +18,7 @@ Level 0 is the multi-tenancy boundary and applies to every query. Levels 1 to 3 
 
 ## 0. Tenant isolation: the `team_id` guard
 
-PostHog's ClickHouse tables (`events`, `persons`, `sessions`, ...) are shared: one physical table holds the rows for every team, keyed by a `team_id` column.
+Flind's ClickHouse tables (`events`, `persons`, `sessions`, ...) are shared: one physical table holds the rows for every team, keyed by a `team_id` column.
 Multi-tenancy therefore depends on every query being scoped to a single team.
 HogQL guarantees this by injecting a mandatory `team_id = <context.team_id>` filter onto **every** table it reads that holds team data, so a query can never see another team's rows even if it tries.
 
@@ -264,7 +264,7 @@ event-property rules, so configure report access, recipients, and channels for t
 are suppressed when the project has an event-property denial or a denial of access to the evaluation, including member and role rules.
 See [evaluation access configuration](../../docs/internal/ai-observability-judge-inputs.md#run-history-and-reports).
 
-Summary caches use the caller's current property restrictions, including cached titles and summaries read by PostHog AI.
+Summary caches use the caller's current property restrictions, including cached titles and summaries read by Flind AI.
 When the caller has event-property restrictions, summaries generated from client-supplied data refetch the source with the caller's permissions.
 For client-supplied events, omitted lookup dates use a window from one day before to one day after the event's `timestamp`.
 Explicit `date_from` and `date_to` values take precedence; events without a valid timestamp keep the default lookup dates.

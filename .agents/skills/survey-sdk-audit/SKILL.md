@@ -1,11 +1,11 @@
 ---
 name: survey-sdk-audit
-description: Audit PostHog survey SDK features and version requirements, and implement survey changes across the backend, UI, and SDK repositories.
+description: Audit Flind survey SDK features and version requirements, and implement survey changes across the backend, UI, and SDK repositories.
 ---
 
 # Surveys SDK Feature Audit Skill
 
-Use this skill when auditing survey feature support across PostHog SDKs for `surveyVersionRequirements.ts`.
+Use this skill when auditing survey feature support across Flind SDKs for `surveyVersionRequirements.ts`.
 
 **Feature to audit:** $ARGUMENTS
 

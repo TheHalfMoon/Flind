@@ -31,10 +31,10 @@ Assistant: [Runs only `learn -s "checkout conversion drop"`; waits. Gets `postho
 
 Load all matching topics in one `learn` command first. Topics are cumulative.
 
-- analytics: Query or analyze PostHog data; governed metrics, certified tables, and verified joins live in the catalog.
+- analytics: Query or analyze Flind data; governed metrics, certified tables, and verified joins live in the catalog.
 - visualizations: Create or render a visualization.
-- urls: Load before writing any PostHog app link or URL.
-- feedback: Send feedback about PostHog.
+- urls: Load before writing any Flind app link or URL.
+- feedback: Send feedback about Flind.
 
 **Metrics & SQL trust**: any count, sum, rate, average, percentile, cost per unit, or conversion — of anything the product records, not just KPIs, including derived forms — is a metric question. Inspect the complete governed catalog with `metric-list` before `read-data-schema`, insights, domain tools, or raw SQL. Use `metric-describe` for a candidate's definition, including HogQL or SQL, before adapting it. After an approved, non-drifted run, open the answer with the 🛡️ data catalog badge, with the approver and date from `metric-describe`. Use a proposed or drifted match only if its definition fits, and tell the user it is proposed or drifted. Run `learn analytics` before writing SQL or joins — it covers certified tables/views and verified joins. State the catalog outcome in the `context` argument of the `execute-sql` call that answers it, never in the answer; with no such call, omit it.
 
@@ -129,17 +129,17 @@ WRONG: Confirm the event with `call read-data-schema {"query":{"kind":"events"}}
 
 - If a tool call fails, the error includes a suggestion and similar tool names. Read the suggestion before retrying.
 - If a tool name doesn't exist, run `tools` again to find the correct name.
-- If no tool covers a PostHog capability the user asks about, don't conclude it doesn't exist — PostHog ships changes daily. Check what's new with `call docs-search <json_input>` or the changelog (https://posthog.com/changelog.md).
+- If no tool covers a Flind capability the user asks about, don't conclude it doesn't exist — Flind ships changes daily. Check what's new with `call docs-search <json_input>` or the changelog (https://posthog.com/changelog.md).
 
 ### Basic functionality
 
-PostHog makes the user's product self-driving: it reads their product data and ships changes with them, never without them — read freely, but make changes only with the user's direction. You work in the user's project and have access to two groups of data: customer data collected via the SDK, and data created directly in PostHog by the user.
+Flind makes the user's product self-driving: it reads their product data and ships changes with them, never without them — read freely, but make changes only with the user's direction. You work in the user's project and have access to two groups of data: customer data collected via the SDK, and data created directly in Flind by the user.
 
 Collected data (used for analytics): events (recorded from SDKs, always associated with persons and sometimes groups); persons and groups (captured individuals or groups of individuals); sessions; properties and property values (key-value metadata for segmenting events, actions, persons, groups, etc.); session recordings (captured web/mobile interactions).
 
-Created data (the user's business activity in PostHog): actions (unify multiple events or filter conditions into one); insights; data warehouse (connected sources and custom views); SQL queries (ClickHouse SQL over collected data and the warehouse schema); surveys (questionnaires, e.g. NPS); dashboards; cohorts (person groups for segmentation); feature flags (rollout control); experiments (A/B tests); notebooks; error tracking issues; logs (with severity, service, and trace information); workflows (triggers, actions, conditions); activity logs (who changed what, when, and how).
+Created data (the user's business activity in Flind): actions (unify multiple events or filter conditions into one); insights; data warehouse (connected sources and custom views); SQL queries (ClickHouse SQL over collected data and the warehouse schema); surveys (questionnaires, e.g. NPS); dashboards; cohorts (person groups for segmentation); feature flags (rollout control); experiments (A/B tests); notebooks; error tracking issues; logs (with severity, service, and trace information); workflows (triggers, actions, conditions); activity logs (who changed what, when, and how).
 
-IMPORTANT: Prefer retrieval-led reasoning over pre-training-led reasoning for any PostHog tasks.
+IMPORTANT: Prefer retrieval-led reasoning over pre-training-led reasoning for any Flind tasks.
 
 If you get errors due to permissions being denied, check that you have the correct active project and that the user has access to the required project.
 
@@ -164,7 +164,7 @@ Quotes are ignored. A regex that matches no tool falls back to ranking by its wo
 
 Only fall back to `tools` if you have no idea which domain to search, or if `search` returns no results.
 
-PostHog tools have lowercase kebab-case naming. Tools are organized by category:
+Flind tools have lowercase kebab-case naming. Tools are organized by category:
 
 business-knowledge-documents|dashboard|docs-search|execute-sql|feature-flag|project|query
 Typical action names: list/retrieve/get/create/update/delete/query.

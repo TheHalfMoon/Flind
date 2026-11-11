@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import { parseOrThrow, type ParseFailure } from '@/core/schema'
 
-// What each prefix PostHog issues means, from posthog/models/utils.py. Project secret API keys and
+// What each prefix Flind issues means, from posthog/models/utils.py. Project secret API keys and
 // team secret tokens share `phs_`, so hog can't tell them apart.
 const KNOWN_PREFIXES: Record<string, string> = {
     phx_: 'a personal API key',
@@ -30,7 +30,7 @@ function prefixedToken(prefix: string, name: string): z.ZodString {
     })
 }
 
-// PostHog also accepts a custom project token, with or without the prefix and with any characters,
+// Flind also accepts a custom project token, with or without the prefix and with any characters,
 // so only an empty token or one with another kind's prefix fails.
 function projectTokenError(value: string): string | undefined {
     if (value === '' || value === 'phc_') {
@@ -62,7 +62,7 @@ function jwt(name: string): z.ZodString {
     })
 }
 
-// A workload token is a JWT, which has no PostHog prefix.
+// A workload token is a JWT, which has no Flind prefix.
 export const WorkloadTokenSchema = jwt('a workload token').brand<'WorkloadToken'>()
 export const ProviderIdTokenSchema = jwt('an OIDC token').brand<'ProviderIdToken'>()
 
@@ -83,7 +83,7 @@ const PROJECT_SETTINGS = 'Copy it again from your project settings: https://app.
 export function parsePersonalApiKey(raw: unknown, failure?: Partial<ParseFailure>): PersonalApiKey {
     return parseOrThrow(PersonalApiKeySchema, raw, {
         code: 'invalid_personal_api_key',
-        hint: 'Create a personal API key in PostHog: https://app.posthog.com/settings/user-api-keys',
+        hint: 'Create a personal API key in Flind: https://app.posthog.com/settings/user-api-keys',
         ...failure,
     })
 }

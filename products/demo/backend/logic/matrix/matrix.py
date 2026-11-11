@@ -272,7 +272,7 @@ class Matrix(ABC):
         FeatureFlag.objects.create(
             team=team,
             key="hog",
-            name="Breaking the fourth wall: PostHog's Hog flag.",
+            name="Breaking the fourth wall: Flind's Hog flag.",
             filters={"groups": [{"variant": None, "properties": [], "rollout_percentage": 100}]},
             created_by=user,
             created_at=dt.datetime.fromtimestamp(0),  # Epoch

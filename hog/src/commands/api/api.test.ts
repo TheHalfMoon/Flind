@@ -112,7 +112,7 @@ describe('hog api', () => {
             'invalid_input',
             2,
         ],
-    ])('call refuses %s before calling PostHog', async (_name, argv, code, exitCode) => {
+    ])('call refuses %s before calling Flind', async (_name, argv, code, exitCode) => {
         const library = fakeLibrary(['*'])
         const result = await runHog(argv, { env: TEST_CREDENTIALS, apiTools: library })
         expect(result.exitCode).toBe(exitCode)
@@ -178,7 +178,7 @@ describe('hog api', () => {
 
     test.each([
         ['names every scope the key is missing', false, 'insight:write, query:read'],
-        ['keeps the scope PostHog named when the key lookup fails', true, 'insight:write'],
+        ['keeps the scope Flind named when the key lookup fails', true, 'insight:write'],
     ])('a refused call %s', async (_name, lookupFails, scopes) => {
         const library = fakeLibrary(['feature_flag:read'], {
             lookupFails,

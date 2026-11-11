@@ -339,7 +339,7 @@ def _read_sources(team_id: int, checks: Sequence[PlatformAlertCheckInput]) -> _R
         query = query.filter(source_id__in=scoped)
     schemas = list(
         query
-        # A schema the user turned off keeps its last status, and is not failing. One PostHog
+        # A schema the user turned off keeps its last status, and is not failing. One Flind
         # turned off after an error it cannot retry past is.
         .filter(Q(should_sync=True) | Q(auto_disabled_at__isnull=False))
         .select_related("source")
@@ -359,7 +359,7 @@ def _read_sources(team_id: int, checks: Sequence[PlatformAlertCheckInput]) -> _R
         if schema.status in BILLING_LIMIT_STATUSES:
             reason = _BILLING_REASONS[schema.status]
         elif schema.latest_error:
-            # The error can quote a connection string or a request URL, and the message leaves PostHog.
+            # The error can quote a connection string or a request URL, and the message leaves Flind.
             reason = (
                 redact_error_message(schema.latest_error, secrets.get(source_id, frozenset())) or _FAILED_WITHOUT_ERROR
             )

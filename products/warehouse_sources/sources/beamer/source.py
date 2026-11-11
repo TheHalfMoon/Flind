@@ -47,7 +47,7 @@ class BeamerSource(ResumableSource[BeamerSourceConfig, BeamerResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Beamer",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Beamer API key to sync your changelog posts, feature requests, comments, votes, reactions, and NPS responses into the PostHog Data warehouse.
+            caption="""Enter your Beamer API key to sync your changelog posts, feature requests, comments, votes, reactions, and NPS responses into the Flind Data warehouse.
 
 You can find your API key in your [Beamer account settings](https://app.getbeamer.com/settings#api). Beamer sends it in the `Beamer-Api-Key` header.
 

@@ -1,12 +1,12 @@
 # Data quality checks
 
-Data quality checks audit warehouse tables, saved views, catalog metrics, and the PostHog tables `events`, `persons`, and `groups`. Checks keep their identity and history when their assertion changes.
+Data quality checks audit warehouse tables, saved views, catalog metrics, and the Flind tables `events`, `persons`, and `groups`. Checks keep their identity and history when their assertion changes.
 
 ## Authorization
 
-Every check is authored, read, run and scheduled through the project-wide `data_quality_checks` and `data_quality_runs` routes, whichever kind of subject it audits. A request names its subject in the body on create, and by check id after that; `subject_type` and `subject_uuid` query parameters narrow a listing, a health rollup, a run history, or a schedule to one subject. A PostHog table has no database row, so its `subject_uuid` is a fixed id derived from the table name and is the same in every project.
+Every check is authored, read, run and scheduled through the project-wide `data_quality_checks` and `data_quality_runs` routes, whichever kind of subject it audits. A request names its subject in the body on create, and by check id after that; `subject_type` and `subject_uuid` query parameters narrow a listing, a health rollup, a run history, or a schedule to one subject. A Flind table has no database row, so its `subject_uuid` is a fixed id derived from the table name and is the same in every project.
 
-Check and run routes require project membership, query access, and access to the subject. The static check-type catalog needs no access to any subject. Metric checks use catalog permissions. Table and view checks use their respective warehouse object permissions, including explicit object grants and inherited source grants. A PostHog table has no object to grant, so a check on one answers to project query access and the warehouse table resource level. A failing check on a PostHog table notifies members with query access and links to the data quality overview, because these tables have no page of their own. A resource-wide denial does not discard a more specific grant that the canonical access-control rules permit.
+Check and run routes require project membership, query access, and access to the subject. The static check-type catalog needs no access to any subject. Metric checks use catalog permissions. Table and view checks use their respective warehouse object permissions, including explicit object grants and inherited source grants. A Flind table has no object to grant, so a check on one answers to project query access and the warehouse table resource level. A failing check on a Flind table notifies members with query access and links to the data quality overview, because these tables have no page of their own. A resource-wide denial does not discard a more specific grant that the canonical access-control rules permit.
 
 Reading checks, health, and run history requires viewer access. Creating, editing, deleting, or manually running checks requires editor access to their subject. Referenced subjects require viewer access. These checks apply even when the warehouse query-enforcement feature flag is disabled.
 
@@ -14,9 +14,9 @@ Checks and suites are polymorphic: a catalog-only member can read a teammate's m
 
 Restricted callers must have access to both the stored and proposed definitions before PUT or PATCH can save anything, including presentation-only edits. Authorization is repeated if a concurrent edit changes the definition accepted by the transaction. An edit makes three attempts. After three attempts it writes nothing and returns HTTP 400 with the code `concurrent_edit`. An unavailable reference fails closed. An authorized caller can still disable a stale check without revalidating its assertion.
 
-A check that reads more than its own subject executes as a user, and so does every check on a PostHog table, because property restrictions and warehouse joins on those tables resolve per user. A manual run executes as the user who started it, and an automated run executes as the user who last wrote the definition. If neither user is available, the run records an error and executes no SQL.
+A check that reads more than its own subject executes as a user, and so does every check on a Flind table, because property restrictions and warehouse joins on those tables resolve per user. A manual run executes as the user who started it, and an automated run executes as the user who last wrote the definition. If neither user is available, the run records an error and executes no SQL.
 
-A check on a PostHog table names a column the registry lists for that table. A dotted name reaches into a JSON column only, so `properties.$browser` is accepted and `person.properties.email` or a warehouse join is refused at authoring time. The same rule applies to the `to_column` of a relationships check that points at a PostHog table.
+A check on a Flind table names a column the registry lists for that table. A dotted name reaches into a JSON column only, so `properties.$browser` is accepted and `person.properties.email` or a warehouse join is refused at authoring time. The same rule applies to the `to_column` of a relationships check that points at a Flind table.
 
 ## Token scopes
 
@@ -24,7 +24,7 @@ All routes below also require `query:read`. Write scopes include read access; re
 
 | Subject kind                        | Read scope                                         | Write scope                                          |
 | ----------------------------------- | -------------------------------------------------- | ---------------------------------------------------- |
-| Warehouse tables and PostHog tables | `warehouse_objects:read` or `warehouse_table:read` | `warehouse_objects:write` or `warehouse_table:write` |
+| Warehouse tables and Flind tables | `warehouse_objects:read` or `warehouse_table:read` | `warehouse_objects:write` or `warehouse_table:write` |
 | Warehouse views                     | `warehouse_objects:read` or `warehouse_view:read`  | `warehouse_objects:write` or `warehouse_view:write`  |
 | Catalog metrics                     | `data_catalog:read`                                | `data_catalog:write`                                 |
 
@@ -76,14 +76,14 @@ The caller must resolve an immutable model revision, or configure a deployment r
 Authorization must run before replaying any checkpoint or reading decisions.
 The run deadline is checked before every chunk and before the final result, so a replayed checkpoint or a fully cached chunk cannot outlast it.
 An inference reservation is spent only after the gateway accepts the run, so a disabled flag, an exhausted credit budget, or a missing gateway leaves the allowance untouched.
-Staged views, PostHog tables, warning-only authoring, and results UI require the subsequent integration.
+Staged views, Flind tables, warning-only authoring, and results UI require the subsequent integration.
 
 ## Lookback window
 
 A check may carry `lookback_hours`, which counts only the rows from the last N hours by the subject's own time column.
 It is optional.
 Without it, a check reads every row the subject holds.
-Only the PostHog tables carry a time column today: `events` bounds on `timestamp`, and `persons` and `groups` bound on `created_at`, which is when each was first seen rather than when it last changed.
+Only the Flind tables carry a time column today: `events` bounds on `timestamp`, and `persons` and `groups` bound on `created_at`, which is when each was first seen rather than when it last changed.
 
 A `relationships` check bounds each side on its own, with `lookback_hours` for the rows it checks and `to_lookback_hours` for the rows it looks for a match among.
 Custom SQL takes no window, because bounding a query the author wrote would mean rewriting it. Put the filter in the query instead.
@@ -124,11 +124,11 @@ Every table node keeps its Lineage tab. Loading the Data quality subject does no
 
 A model in the lineage graph can also open a Data quality tab. The tab reads the checks of the model's own subject. A saved view answers as a view. An imported warehouse table answers as a table. The node carries the table identifier. The dependency sync refreshes this identifier when it resolves a saved query. A table that is deleted and imported again then uses its new row.
 
-PostHog tables use the subject catalog API. The frontend matches the node name to a `posthog_table` subject from that API. It passes the returned subject id, subject type, and columns to the checks panel. It does not calculate the subject id. The Data quality panel shows a loading, request-error, access-denied, or unsupported-table state when the catalog cannot provide a supported subject.
+Flind tables use the subject catalog API. The frontend matches the node name to a `posthog_table` subject from that API. It passes the returned subject id, subject type, and columns to the checks panel. It does not calculate the subject id. The Data quality panel shows a loading, request-error, access-denied, or unsupported-table state when the catalog cannot provide a supported subject.
 
 ## Subject schedules
 
-A subject whose checks run on a recurring schedule has one Temporal Schedule in its canonical project. Metrics and PostHog tables are those subjects; a warehouse table's and a view's checks run when their data changes instead. A PostHog table is never synced or materialized, so a schedule is the only trigger its checks have. The first check creates an enabled daily schedule after the check transaction commits and starts an initial run. Available intervals are one hour, six hours, twelve hours, one day, and one week. A deterministic offset spreads recurring executions across each interval.
+A subject whose checks run on a recurring schedule has one Temporal Schedule in its canonical project. Metrics and Flind tables are those subjects; a warehouse table's and a view's checks run when their data changes instead. A Flind table is never synced or materialized, so a schedule is the only trigger its checks have. The first check creates an enabled daily schedule after the check transaction commits and starts an initial run. Available intervals are one hour, six hours, twelve hours, one day, and one week. A deterministic offset spreads recurring executions across each interval.
 
 Temporal owns the interval, pause state, and next execution time. The schedule endpoint reads and updates Temporal directly. Paused schedules return `next_run_at: null`. An unavailable schedule service returns HTTP 503; reload the schedule before retrying an update whose outcome is unknown. Last scheduled run information comes from the caller's readable suite history. Manual runs do not change it.
 

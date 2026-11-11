@@ -372,7 +372,7 @@ const DISMISSAL_LABELS: Record<string, string> = {
     wrong_repo: 'Wrong repository',
     wontfix_intentional: "Won't fix",
     wontfix_irrelevant: "Won't fix",
-    fixed_outside_posthog: 'Fixed outside PostHog',
+    fixed_outside_posthog: 'Fixed outside Flind',
     pr_merged: 'PR was merged',
 }
 const RESOLVING_REASONS: ReadonlySet<string> = new Set(['already_fixed', 'fixed_outside_posthog', 'pr_merged'])

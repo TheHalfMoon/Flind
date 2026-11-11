@@ -9,10 +9,10 @@ import type { ConnectedAppApi } from '~/generated/core/api.schemas'
 const POLL_INTERVAL_MS = 3000
 
 /**
- * Whether the user has an agent connected to PostHog. MCP clients register themselves when they
+ * Whether the user has an agent connected to Flind. MCP clients register themselves when they
  * sign in over OAuth, so a self-registered connection stands in for a connected agent.
  *
- * Not foolproof: any OAuth client can register itself, and an MCP client that PostHog registered
+ * Not foolproof: any OAuth client can register itself, and an MCP client that Flind registered
  * by hand is missed. Nothing records which connections serve the MCP server, so this is the
  * closest signal available for now.
  */

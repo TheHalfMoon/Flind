@@ -5,7 +5,7 @@ read its own group property back and score on it. That keeps our scores bit-comp
 Clay's on the orgs it also scores.
 
 The formula's third Clay-owned input, its GitHub profile lookup, is deliberately NOT read
-here: Clay never projects that column into PostHog at all (verified against live group and
+here: Clay never projects that column into Flind at all (verified against live group and
 person writes), so product-role orgs score 3 rather than 6 until v-next substitutes a
 first-party signal.
 
@@ -36,7 +36,7 @@ from products.wizard.backend.facade import api as wizard_facade
 
 CLAY_EST_REVENUE_PROPERTY = "icp_est_revenue"
 CLAY_COMPANY_TYPE_PROPERTY = "icp_company_type"
-# Set by wizards before they reported scans to PostHog. Still read, so those orgs keep the input.
+# Set by wizards before they reported scans to Flind. Still read, so those orgs keep the input.
 WIZARD_AI_SDK_DETECTED_PROPERTY = "wizard_ai_sdk_detected"
 # Tool kinds from the wizard's scan that mean the org builds with LLMs. This list is the scoring
 # decision, so it lives here rather than in the wizard's tool catalog.

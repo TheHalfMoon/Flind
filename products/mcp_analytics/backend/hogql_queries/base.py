@@ -47,7 +47,7 @@ EFFECTIVE_DESCRIPTION_SQL = (
     f"if(({EFFECTIVE_TOOL_SQL}) = toString(properties.$mcp_tool_name), "
     "toString(properties.$mcp_tool_description), NULL))"
 )
-# One MCP conversation: the SDK's own session id, falling back to the PostHog session id.
+# One MCP conversation: the SDK's own session id, falling back to the Flind session id.
 CONVERSATION_ID_SQL = "coalesce(nullIf(toString(properties.$mcp_session_id), ''), toString(properties.$session_id))"
 # Marker the posthog-node MCP analytics SDK stamps on the events it sends.
 NEW_SDK_SOURCE = "posthog_mcp_analytics"

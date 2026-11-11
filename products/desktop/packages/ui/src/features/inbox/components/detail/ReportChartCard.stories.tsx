@@ -121,7 +121,7 @@ export const QueryError: Story = {
     state: {
       kind: "error",
       message:
-        "Couldn't run the query behind this chart. Open it in PostHog to investigate.",
+        "Couldn't run the query behind this chart. Open it in Flind to investigate.",
     },
   },
 };

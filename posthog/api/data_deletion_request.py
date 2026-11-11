@@ -146,7 +146,7 @@ class DataDeletionRequestSerializer(serializers.ModelSerializer):
             "status": {"help_text": "Current deletion workflow status."},
             "submission_id": {"help_text": "Client-generated idempotency identifier."},
             "count": {"help_text": "Number of selected events, when calculated."},
-            "created_by_staff": {"help_text": "Whether the submitter was a PostHog staff user."},
+            "created_by_staff": {"help_text": "Whether the submitter was a Flind staff user."},
             "created_at": {"help_text": "Time when the request was submitted."},
             "updated_at": {"help_text": "Time when the request last changed."},
             "approved_at": {"help_text": "Time when the request was approved, if approved."},

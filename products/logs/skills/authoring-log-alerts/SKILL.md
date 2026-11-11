@@ -1,7 +1,7 @@
 ---
 name: authoring-log-alerts
 description: >
-  Author useful, low-noise log alerts on services in a PostHog project. Use when the user asks to set up
+  Author useful, low-noise log alerts on services in a Flind project. Use when the user asks to set up
   alerts for their logs, suggest alerts they should add, or evaluate whether a service is worth monitoring.
   Covers service triage, baseline characterisation, threshold drafting, back-testing via simulate, and
   shipping with a notification destination.

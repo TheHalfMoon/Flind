@@ -1,7 +1,7 @@
 """Auth proxy for Streamlit apps in Modal sandboxes.
 
 Listens on port 8080 (Modal connect token port), reverse proxies to Streamlit on localhost:8501.
-Validates PostHog OAuth access tokens via the /oauth/introspect endpoint on every request,
+Validates Flind OAuth access tokens via the /oauth/introspect endpoint on every request,
 caching introspection results by token hash to avoid per-request overhead.
 
 Modal requires `_modal_connect_token` on every HTTP request through the tunnel, but strips
@@ -13,7 +13,7 @@ end-to-end (Modal tunnel AND our proxy) without relying on session cookies (whic
 reliably in cross-origin iframes).
 
 Bridge endpoint (port 8181, 127.0.0.1-only): exposes /_bridge/query, used by the in-sandbox
-posthog_apps.query() shim to run HogQL via PostHog. The bridge forwarder reads its bearer
+posthog_apps.query() shim to run HogQL via Flind. The bridge forwarder reads its bearer
 token from /run/bridge_token at startup, then unlinks the file. The token is never available
 through the tunneled port.
 """
@@ -54,7 +54,7 @@ STREAM_CHUNK_SIZE = 64 * 1024
 MAX_REQUEST_BODY_BYTES = 256 * 1024 * 1024  # 256 MB
 BRIDGE_QUERY_MAX_BODY_BYTES = 16 * 1024
 BRIDGE_QUERY_TIMEOUT = ClientTimeout(total=60)
-# Raised from aiohttp's 8190 default: localhost-served sandboxes receive PostHog's
+# Raised from aiohttp's 8190 default: localhost-served sandboxes receive Flind's
 # large same-domain cookies on every request (see _run_both_apps).
 MAX_HEADER_BYTES = 64 * 1024
 
@@ -156,7 +156,7 @@ class _IntrospectionCircuit:
 
 _introspection_circuit = _IntrospectionCircuit()
 
-# Bridge token for the sandbox → PostHog HogQL hop. Loaded once at startup from
+# Bridge token for the sandbox → Flind HogQL hop. Loaded once at startup from
 # /run/bridge_token (file then unlinked) and kept only in process memory.
 _bridge_token: str | None = None
 
@@ -313,7 +313,7 @@ async def _introspect_token(
     expected_client_id: str,
     expected_scope_component: str,
 ) -> dict | None:
-    """Validate an OAuth token via PostHog /oauth/introspect (self-introspection), with caching.
+    """Validate an OAuth token via Flind /oauth/introspect (self-introspection), with caching.
 
     Rejects tokens whose scoped_teams, client_id, or scope don't match the
     caller-supplied expectations — per-sandbox team binding, cross-application
@@ -588,7 +588,7 @@ async def _proxy_websocket(request: web.Request, target: str) -> web.WebSocketRe
 
 
 async def _bridge_query_handler(request: web.Request) -> web.Response:
-    """Forward in-sandbox HogQL queries from posthog_apps.query() to PostHog.
+    """Forward in-sandbox HogQL queries from posthog_apps.query() to Flind.
 
     The bearer token (loaded once at startup, file unlinked) is mediated here so
     user code never sees it. The route is bound to 127.0.0.1 on a separate port
@@ -707,7 +707,7 @@ async def _run_both_apps(
 ) -> None:
     """Serve the main proxy on 0.0.0.0 and the bridge on 127.0.0.1 (not tunneled)."""
     # aiohttp's default 8190-byte header cap is too small for local-dev: when the
-    # sandbox is served from localhost (Docker), the browser attaches PostHog's
+    # sandbox is served from localhost (Docker), the browser attaches Flind's
     # large same-domain analytics cookies to every proxied request, overflowing
     # the limit. Raise both line and field caps so the request parses.
     main_runner = web.AppRunner(main_app, max_line_size=MAX_HEADER_BYTES, max_field_size=MAX_HEADER_BYTES)

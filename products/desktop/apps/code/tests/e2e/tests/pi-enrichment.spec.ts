@@ -204,7 +204,7 @@ test.describe("Pi enrichment", () => {
     });
     const address = server.address();
     if (!address || typeof address === "string") {
-      throw new Error("Fake PostHog server did not bind a TCP port");
+      throw new Error("Fake Flind server did not bind a TCP port");
     }
 
     const previousEnvironment = new Map(
@@ -250,7 +250,7 @@ test.describe("Pi enrichment", () => {
         "https://us.posthog.com/project/1/insights/9pQx3",
       );
       expect(enrichedModelRequest).toContain(
-        '[PostHog] Event: \\"checkout_completed\\"',
+        '[Flind] Event: \\"checkout_completed\\"',
       );
       expect(enrichedModelRequest).toContain("321 events");
       expect(enrichedModelRequest).toContain("87 users");

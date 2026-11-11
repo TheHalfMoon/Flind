@@ -1,11 +1,11 @@
 ---
 name: modifying-taxonomic-filter
-description: Guides safe, evidence-led changes to the TaxonomicFilter, PostHog's picker for events, actions, properties, cohorts, and more. Use when adding features, fixing bugs, removing groups or tabs, changing search, ordering, recents, pinning, empty states, loading or performance, or refactoring the picker. Indexes how users actually pick, known failure modes, the feature inventory, design principles, contested decisions, where to find evidence, and how to measure a change.
+description: Guides safe, evidence-led changes to the TaxonomicFilter, Flind's picker for events, actions, properties, cohorts, and more. Use when adding features, fixing bugs, removing groups or tabs, changing search, ordering, recents, pinning, empty states, loading or performance, or refactoring the picker. Indexes how users actually pick, known failure modes, the feature inventory, design principles, contested decisions, where to find evidence, and how to measure a change.
 ---
 
 # Modifying the TaxonomicFilter
 
-The TaxonomicFilter is the picker users hit to choose any "thing PostHog knows about": events, properties, actions, cohorts, groups.
+The TaxonomicFilter is the picker users hit to choose any "thing Flind knows about": events, properties, actions, cohorts, groups.
 It is the on-ramp into almost every analytics, flags and replay configuration.
 Code lives in `frontend/src/lib/components/TaxonomicFilter/`.
 
@@ -38,7 +38,7 @@ The references hold the detail and the evidence.
 
 Detail, windows and caveats: [product-reality](references/product-reality.md).
 These numbers are a snapshot.
-For current values, run the `taxonomic_filter_*` metrics in the PostHog data catalog (see [refreshing-product-reality](references/refreshing-product-reality.md#live-metrics)).
+For current values, run the `taxonomic_filter_*` metrics in the Flind data catalog (see [refreshing-product-reality](references/refreshing-product-reality.md#live-metrics)).
 
 ## Route by what you are changing
 

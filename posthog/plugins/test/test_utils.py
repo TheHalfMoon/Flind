@@ -32,7 +32,7 @@ class TestPluginsUtils(SimpleTestCase):
     def test_parse_github_urls(self, mock_get, mock_github_request):
         parsed_url = parse_url("https://github.com/PostHog/posthog")
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url.get("tag", None), None)
         self.assertEqual(parsed_url.get("path", None), None)
@@ -41,7 +41,7 @@ class TestPluginsUtils(SimpleTestCase):
 
         parsed_url = parse_url("https://github.com/PostHog/posthog", get_latest_if_none=True)
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "MOCKLATESTCOMMIT")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -58,7 +58,7 @@ class TestPluginsUtils(SimpleTestCase):
 
         parsed_url = parse_url("https://github.com/PostHog/posthog/tree/82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -70,7 +70,7 @@ class TestPluginsUtils(SimpleTestCase):
             get_latest_if_none=True,
         )
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -82,7 +82,7 @@ class TestPluginsUtils(SimpleTestCase):
             get_latest_if_none=True,
         )
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url["path"], "test/path/in/repo")
@@ -91,7 +91,7 @@ class TestPluginsUtils(SimpleTestCase):
 
         parsed_url = parse_url("https://github.com/PostHog/posthog/tree/main", get_latest_if_none=True)
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "MOCKLATESTCOMMIT")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -111,7 +111,7 @@ class TestPluginsUtils(SimpleTestCase):
             get_latest_if_none=True,
         )
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "MOCKLATESTCOMMIT")
         self.assertEqual(parsed_url["path"], "test/path/in/repo")
@@ -128,7 +128,7 @@ class TestPluginsUtils(SimpleTestCase):
 
         parsed_url = parse_url("https://www.github.com/PostHog/posthog/commit/82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -140,7 +140,7 @@ class TestPluginsUtils(SimpleTestCase):
             get_latest_if_none=True,
         )
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -151,7 +151,7 @@ class TestPluginsUtils(SimpleTestCase):
             "https://github.com/PostHog/posthog/releases/tag/82c9218ee40f561b7f37a22d6b6a0ca82887ee3e"
         )
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -162,7 +162,7 @@ class TestPluginsUtils(SimpleTestCase):
             "https://www.github.com/PostHog/posthog/archive/82c9218ee40f561b7f37a22d6b6a0ca82887ee3e.zip"
         )
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -173,7 +173,7 @@ class TestPluginsUtils(SimpleTestCase):
             "https://github.com/PostHog/posthog/archive/82c9218ee40f561b7f37a22d6b6a0ca82887ee3e.tar.gz"
         )
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -183,7 +183,7 @@ class TestPluginsUtils(SimpleTestCase):
         # private tokens
         parsed_url = parse_url("https://github.com/PostHog/posthog?private_token=TOKEN")
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url.get("tag", None), None)
         self.assertEqual(parsed_url.get("path", None), None)
@@ -196,7 +196,7 @@ class TestPluginsUtils(SimpleTestCase):
             get_latest_if_none=True,
         )
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "MOCKLATESTCOMMIT")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -215,7 +215,7 @@ class TestPluginsUtils(SimpleTestCase):
             "https://github.com/PostHog/posthog/tree/82c9218ee40f561b7f37a22d6b6a0ca82887ee3e?private_token=TOKEN"
         )
         self.assertEqual(parsed_url["type"], "github")
-        self.assertEqual(parsed_url["user"], "PostHog")
+        self.assertEqual(parsed_url["user"], "Flind")
         self.assertEqual(parsed_url["repo"], "posthog")
         self.assertEqual(parsed_url["tag"], "82c9218ee40f561b7f37a22d6b6a0ca82887ee3e")
         self.assertEqual(parsed_url.get("path", None), None)
@@ -227,7 +227,7 @@ class TestPluginsUtils(SimpleTestCase):
         with self.settings(GITHUB_TOKEN="MY_GITHUB_TOKEN"):
             parsed_url = parse_url("https://github.com/PostHog/posthog", get_latest_if_none=True)
             self.assertEqual(parsed_url["type"], "github")
-            self.assertEqual(parsed_url["user"], "PostHog")
+            self.assertEqual(parsed_url["user"], "Flind")
             self.assertEqual(parsed_url["repo"], "posthog")
             self.assertEqual(parsed_url["tag"], "MOCKLATESTCOMMIT")
             self.assertEqual(parsed_url.get("path", None), None)
@@ -248,7 +248,7 @@ class TestPluginsUtils(SimpleTestCase):
                 get_latest_if_none=True,
             )
             self.assertEqual(parsed_url["type"], "github")
-            self.assertEqual(parsed_url["user"], "PostHog")
+            self.assertEqual(parsed_url["user"], "Flind")
             self.assertEqual(parsed_url["repo"], "posthog")
             self.assertEqual(parsed_url["tag"], "MOCKLATESTCOMMIT")
             self.assertEqual(parsed_url.get("path", None), None)

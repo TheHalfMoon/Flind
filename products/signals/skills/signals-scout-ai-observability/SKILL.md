@@ -2,10 +2,10 @@
 name: signals-scout-ai-observability
 scout-display-name: AI observability
 description: >
-  Signals scout for PostHog AI observability. Watches LLM traces for cost, latency, error,
+  Signals scout for Flind AI observability. Watches LLM traces for cost, latency, error,
   volume, and eval-performance regressions.
 compatibility: >
-  Designed for the PostHog Signals agent in a Claude sandbox with PostHog MCP scopes:
+  Designed for the Flind Signals agent in a Claude sandbox with Flind MCP scopes:
   read-only analytics plus signal_scout_internal:write (for scratchpad) +
   signal_scout_report:write (for emit-report/edit-report, granted because this scout authors
   reports directly via the report channel). Assumes the signals-scout MCP tool family, the LLM
@@ -127,7 +127,7 @@ If a prior run already covered the topic, default to edit-or-skip + memory refre
 - **Cost spikes during scheduled batch jobs** — recurring nightly bench runs show as cost spikes. Memory should record their cadence.
 - **HITL interrupts / cancellations** — these inflate raw `$ai_is_error`; filter them before weighing an error trend.
 - **Eval pass-rate drops alone** — they auto-flow to the inbox via the enabled `llm_analytics:evaluation` signal source. Only author when you've localized a cause the auto-flow won't.
-- **Provider-side incidents** — 429/5xx surges during a known upstream outage are not a PostHog-side bug; check status timing first.
+- **Provider-side incidents** — 429/5xx surges during a known upstream outage are not a Flind-side bug; check status timing first.
 
 When in doubt, write a memory entry instead of filing a report. Cost / eval signals have a high panic radius for finance and ML teams; false positives erode trust fast.
 

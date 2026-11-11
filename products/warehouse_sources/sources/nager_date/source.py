@@ -51,7 +51,7 @@ class NagerDateSource(ResumableSource[NagerDateSourceConfig, NagerDateResumeConf
             label="Nager.Date",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["holidays", "public holidays", "calendar"],
-            caption="""Pull public holiday data from the free [Nager.Date](https://date.nager.at) API into the PostHog Data warehouse.
+            caption="""Pull public holiday data from the free [Nager.Date](https://date.nager.at) API into the Flind Data warehouse.
 
 The API is open, so no credentials are required. Enter the ISO 3166-1 alpha-2 country codes you want to track, one per line or comma separated. For example:
 

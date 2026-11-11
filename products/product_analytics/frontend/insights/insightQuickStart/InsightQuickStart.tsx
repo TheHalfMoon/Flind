@@ -188,7 +188,7 @@ export function InsightQuickStart(): JSX.Element {
             >
                 <InsightOptionCard
                     name="AI"
-                    description="Ask PostHog AI to create insights using natural language and query any of your data."
+                    description="Ask Flind AI to create insights using natural language and query any of your data."
                     icon={IconSparkles}
                     iconClassName="text-ai"
                     url={urls.ai()}

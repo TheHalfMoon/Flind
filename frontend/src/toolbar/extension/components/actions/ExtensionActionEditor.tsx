@@ -56,7 +56,7 @@ export function ExtensionActionEditor(): JSX.Element | null {
                     <span className="font-semibold flex-1">{isNew ? 'New action' : 'Edit action'}</span>
                     {!isNew && (
                         <Link to={projectUrl(urls.action(selectedActionId))} target="_blank" className="text-xs">
-                            Open in PostHog <IconOpenInNew />
+                            Open in Flind <IconOpenInNew />
                         </Link>
                     )}
                 </div>

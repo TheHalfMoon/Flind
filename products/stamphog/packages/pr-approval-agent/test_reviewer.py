@@ -145,7 +145,7 @@ def test_prompt_truncates_long_review_body() -> None:
 
 _COMPLETED_REVIEW = {
     "state": "completed",
-    "reviewer": "PostHog Review",
+    "reviewer": "Flind Review",
     "review_kind": "Deep",
     "findings_count": 0,
     "published": False,
@@ -182,7 +182,7 @@ _COMPLETED_REVIEW = {
                 "discussion": 0,
                 "head_review_evidence": [{**_COMPLETED_REVIEW, "findings_count": 2, "published": True}],
             },
-            "Assurance: PostHog Review (Deep) reviewed the current head: 2 findings, posted on the PR; "
+            "Assurance: Flind Review (Deep) reviewed the current head: 2 findings, posted on the PR; "
             "2 unresolved inline threads",
             id="completed-automated-review",
         ),
@@ -194,7 +194,7 @@ _COMPLETED_REVIEW = {
                 "discussion": 0,
                 "head_review_evidence": [{**_COMPLETED_REVIEW, "skipped_paths": ["a.lock", "b.py", "c.py"]}],
             },
-            "Assurance: PostHog Review (Deep) reviewed the current head (no findings) but skipped 3 changed "
+            "Assurance: Flind Review (Deep) reviewed the current head (no findings) but skipped 3 changed "
             "files, so it does not count as assurance",
             id="automated-review-with-skipped-files",
         ),

@@ -405,7 +405,7 @@ def create_webhook(api_key: str, webhook_url: str) -> WebhookCreationResult:
             error=(
                 "Every UpPromote webhook event is already subscribed to a different URL: "
                 f"{', '.join(taken)}. UpPromote allows one subscription per event — free up the "
-                "events you want PostHog to receive, or set the webhook up manually."
+                "events you want Flind to receive, or set the webhook up manually."
             ),
         )
 

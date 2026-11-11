@@ -1,7 +1,7 @@
 ---
 name: running-mobile-demo-flows
 description: >
-  Runs the PostHog mobile app's Argent demo flows (demo-smoke and views-smoke) on a local iOS simulator
+  Runs the Flind mobile app's Argent demo flows (demo-smoke and views-smoke) on a local iOS simulator
   against a bundled Release build, and reads their results. Use before reporting a change under
   products/mobile that touches a screen, navigation, the demo fixtures, a testID, or a flow file as done,
   and when asked to smoke-test the mobile app. CI does not run these flows, so the local run is the only
@@ -68,7 +68,7 @@ The bundled build is slow to rebuild. While you edit a flow or a screen, use Met
 3. Make sure demo mode is off (Settings, **Exit demo**).
 4. `argent flow run demo-smoke --platform ios` from `products/mobile`. Add `--device <udid>` when more than one simulator is booted.
 
-Known traps: a system "Open in PostHog?" alert after a deep link is invisible to Argent selectors, so dismiss it with a raw tap.
+Known traps: a system "Open in Flind?" alert after a deep link is invisible to Argent selectors, so dismiss it with a raw tap.
 If every selector step times out with a ViewInspector RPC error, drive by normalized coordinates and screenshots instead.
 [TESTING.md](../../../products/mobile/docs/TESTING.md#troubleshooting) has the rest.
 

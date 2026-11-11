@@ -132,11 +132,11 @@ class ActivitySummaryComputedSerializer(serializers.Serializer):
         help_text="The products the user works in and the products they only visit."
     )
     task_count = serializers.IntegerField(
-        help_text="The number of tasks the user gave to PostHog AI or the Slack agent."
+        help_text="The number of tasks the user gave to Flind AI or the Slack agent."
     )
     tasks = ActivitySummaryLineRefSerializer(
         many=True,
-        help_text="Tasks the user gave to PostHog AI or the Slack agent that the summary input showed, oldest first. "
+        help_text="Tasks the user gave to Flind AI or the Slack agent that the summary input showed, oldest first. "
         "Empty on summaries from before task refs existed.",
     )
     mcp_sessions = ActivitySummaryLineRefSerializer(

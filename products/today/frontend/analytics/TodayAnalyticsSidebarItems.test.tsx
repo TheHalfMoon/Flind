@@ -62,7 +62,7 @@ describe('Analytics sidebar options', () => {
         expect(SidebarAgentListener).not.toHaveBeenCalled()
     })
 
-    it('offers only personalization before a layout is saved, and opens PostHog AI in the side panel', () => {
+    it('offers only personalization before a layout is saved, and opens Flind AI in the side panel', () => {
         featureFlagLogic.actions.setFeatureFlags([], {
             [FEATURE_FLAGS.UI_CUSTOMIZATION]: true,
             [FEATURE_FLAGS.PHAI_SANDBOX_MODE]: true,

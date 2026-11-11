@@ -175,7 +175,7 @@ describe('InstructionsFormatter prompt snapshots', () => {
     // whose serialized `inputSchema` crosses ~16,384 chars (2^14). The total entry
     // size and the top-level `description` are NOT capped (bisected 2026-07-10:
     // schema 13,996 passed, 17,799 dropped; a 31k-total entry with a 787-char
-    // schema survived intact). The exec tool IS the PostHog MCP in single-exec mode,
+    // schema survived intact). The exec tool IS the Flind MCP in single-exec mode,
     // so a dropped `inputSchema` breaks the entire MCP for those users with no error
     // anywhere (claude.ai surfaced only `render-ui` while `exec` vanished).
     //
@@ -207,7 +207,7 @@ describe('InstructionsFormatter prompt snapshots', () => {
         const inputSchemaSize = JSON.stringify(finalEntry.inputSchema).length
 
         expect(properties).toHaveProperty('context')
-        expect(entry.description).toContain('### PostHog knowledge sources')
+        expect(entry.description).toContain('### Flind knowledge sources')
         expect(inputSchemaSize).toBeLessThan(16_384)
     })
 

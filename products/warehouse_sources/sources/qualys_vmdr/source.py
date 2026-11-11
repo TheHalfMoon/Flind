@@ -72,7 +72,7 @@ class QualysVmdrSource(ResumableSource[QualysVmdrSourceConfig, QualysVmdrResumeC
             label="Qualys VMDR",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["qualys", "vmdr", "vulnerability management", "security"],
-            caption="""Enter your Qualys API credentials to sync your VMDR vulnerability management data into the PostHog Data warehouse.
+            caption="""Enter your Qualys API credentials to sync your VMDR vulnerability management data into the Flind Data warehouse.
 
 Use your account's regional API server URL (for example `qualysapi.qualys.com`, `qualysapi.qg2.apps.qualys.com`, or `qualysapi.qualys.eu`) — you can find it under **Help > About** in the Qualys UI. The user needs API access enabled (a Manager role, or a role granted API access).
 

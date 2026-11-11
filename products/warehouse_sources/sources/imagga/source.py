@@ -39,7 +39,7 @@ class ImaggaSource(SimpleSource[ImaggaSourceConfig]):
             label="Imagga",
             releaseStatus=ReleaseStatus.BETA,
             unreleasedSource=True,
-            caption="""Enter your Imagga API credentials to pull your account's usage statistics into the PostHog Data warehouse.
+            caption="""Enter your Imagga API credentials to pull your account's usage statistics into the Flind Data warehouse.
 
 Find your API key and secret in the [Imagga dashboard](https://imagga.com/profile/dashboard).
 

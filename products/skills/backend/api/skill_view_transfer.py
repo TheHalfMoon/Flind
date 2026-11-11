@@ -1,4 +1,4 @@
-"""Moving a skill in and out of PostHog as a zip: export, bundle, and import."""
+"""Moving a skill in and out of Flind as a zip: export, bundle, and import."""
 
 from typing import Any, cast
 

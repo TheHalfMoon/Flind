@@ -22,7 +22,7 @@ function makeService(
 }
 
 const detected: DetectedRepoFullName = {
-  organization: "PostHog",
+  organization: "Flind",
   repository: "posthog",
 };
 

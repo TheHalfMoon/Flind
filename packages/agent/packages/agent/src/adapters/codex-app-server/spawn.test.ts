@@ -31,7 +31,7 @@ vi.mock("node:fs", async (importOriginal) => {
 });
 
 describe("buildAppServerArgs", () => {
-  it("launches the app-server subcommand routed through the PostHog gateway", () => {
+  it("launches the app-server subcommand routed through the Flind gateway", () => {
     const args = buildAppServerArgs({
       binaryPath: "/bundle/codex",
       apiBaseUrl: "https://gateway.example/v1",
@@ -265,7 +265,7 @@ describe("buildAppServerArgs", () => {
   it("does not set instructions at spawn (developer_instructions are per-thread)", () => {
     const args = buildAppServerArgs({
       binaryPath: "/bundle/codex",
-      developerInstructions: "Follow PostHog rules.",
+      developerInstructions: "Follow Flind rules.",
     });
 
     expect(args.some((arg) => arg.startsWith("developer_instructions="))).toBe(

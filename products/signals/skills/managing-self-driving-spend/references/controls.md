@@ -14,7 +14,7 @@ Knowing where money is spent tells you which control can reduce it.
   Scout spend grows with the number of runs, so a scout's schedule matters more than what it finds.
   A pre-check can skip a scheduled run before it costs anything.
 - **Automatic pull requests.** An implementation run for an actionable report costs money. Its finalized usage appears in the monthly tool's `implementation_credits` and in `system.signal_spend`.
-  A fix that a person starts from a report is metered as PostHog AI, so it is not in these numbers.
+  A fix that a person starts from a report is metered as Flind AI, so it is not in these numbers.
 
 There are two kinds of control:
 

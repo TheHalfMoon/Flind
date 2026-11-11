@@ -143,7 +143,7 @@ TOOL_DESCRIPTIONS = {
     "dashboard_get": "Fetch a dashboard and the insights tiled on it.",
     "feature_flag_get": "Look up a feature flag's configuration and rollout conditions.",
     "error_tracking_issue_get": "Fetch an error-tracking issue and its impact.",
-    "docs_search": "Search the PostHog documentation and return the matching sections.",
+    "docs_search": "Search the Flind documentation and return the matching sections.",
     "logs_query": "Search the project's logs by service, level and text.",
     "person_get": "Look up a person and their properties by distinct id.",
     "experiment_get": "Fetch an experiment's setup and current results.",
@@ -977,7 +977,7 @@ OTHER_FEEDBACK: list[_FeedbackText] = [
         suggested_improvement="Return the active project name in the first tool result.",
     ),
     _FeedbackText(
-        summary="Tool results use a different date format from the PostHog app.",
+        summary="Tool results use a different date format from the Flind app.",
         suggested_improvement="Use ISO 8601 in every result and state the timezone.",
     ),
     _FeedbackText(
@@ -1276,7 +1276,7 @@ class Command(BaseCommand):
     def handle(self, *args: Any, **options: Any) -> None:
         if run_mode().is_deployed_cloud:
             raise CommandError(
-                "seed_mcp_sessions writes fabricated events and persons; it does not run on PostHog Cloud."
+                "seed_mcp_sessions writes fabricated events and persons; it does not run on Flind Cloud."
             )
         team_id: int = options["team_id"]
         session_count: int = options["sessions"]

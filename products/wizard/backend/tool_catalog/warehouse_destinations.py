@@ -3,7 +3,7 @@ from products.warehouse_sources.backend.facade.types import ExternalDataSourceTy
 
 DestinationType = ExternalDataDestination.Type
 
-# Tools that are also an analytics warehouse PostHog can send data to, keyed by tool kind.
+# Tools that are also an analytics warehouse Flind can send data to, keyed by tool kind.
 # Postgres is left out: in a codebase it is almost always the app's own database.
 WAREHOUSE_DESTINATION_BY_KIND: dict[str, str] = {
     ExternalDataSourceType.BIGQUERY.value: DestinationType.BIGQUERY.value,
@@ -14,7 +14,7 @@ WAREHOUSE_DESTINATION_BY_KIND: dict[str, str] = {
     ExternalDataSourceType.AZUREBLOB.value: DestinationType.AZURE_BLOB.value,
 }
 
-# The catalog advertises every destination except PostHog's own.
+# The catalog advertises every destination except Flind's own.
 CATALOG_DESTINATION_CHOICES: list[tuple[str, str]] = [
     (value, str(label)) for value, label in DestinationType.choices if value != DestinationType.POSTHOG_WAREHOUSE.value
 ]

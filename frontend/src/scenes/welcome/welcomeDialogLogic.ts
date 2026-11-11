@@ -269,7 +269,7 @@ export const welcomeDialogLogic = kea<welcomeDialogLogicType>([
                                 : undefined
                         console.warn('Failed to load welcome data', error)
                         actions.setWelcomeDataError(true)
-                        // Surface in PostHog so fleet-level error rate is observable; console.warn
+                        // Surface in Flind so fleet-level error rate is observable; console.warn
                         // alone is invisible at scale.
                         posthog.capture('welcome_screen_load_failed', { status })
                         return EMPTY_PAYLOAD

@@ -45,7 +45,7 @@ const CONFIG: AccountTrackRulesConfigApi = {
                 {
                     field: { kind: 'account_field', field: 'name' },
                     operator: 'icontains',
-                    values: ['PostHog'],
+                    values: ['Flind'],
                 },
             ],
         },

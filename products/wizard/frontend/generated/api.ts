@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -39,7 +39,7 @@ export const getWizardInstallsCreateUrl = (projectId: string) => {
 }
 
 /**
- * Start the setup agent in the cloud on a GitHub repository of this project. It adds PostHog to the code and opens a pull request. Each user can have one setup run active per project at a time.
+ * Start the setup agent in the cloud on a GitHub repository of this project. It adds Flind to the code and opens a pull request. Each user can have one setup run active per project at a time.
  * @summary Start a setup run
  */
 export const wizardInstallsCreate = async (
@@ -345,7 +345,7 @@ export const getWizardSessionsListUrl = (projectId: string, params?: WizardSessi
 }
 
 /**
- * List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=<id> and ?skill_id=<id>.
+ * List wizard sessions for the project, ordered by started_at desc. This should only be called by the Flind Wizard. Optional filters: ?workflow_id=<id> and ?skill_id=<id>.
  */
 export const wizardSessionsList = async (
     projectId: string,

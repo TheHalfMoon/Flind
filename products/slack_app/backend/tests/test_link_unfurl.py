@@ -637,7 +637,7 @@ class TestHandlePosthogLinkUnfurl(APIBaseTest):
         mock_resolve: MagicMock,
     ) -> None:
         # Slack credits a bot-posted message to our bot user or to a placeholder author, and neither
-        # resolves to a PostHog user, so without this path a chart link in the agent's answer never
+        # resolves to a Flind user, so without this path a chart link in the agent's answer never
         # unfurls. The attribution stays narrow: a thread whose run was told to share links, and the
         # actor is the one the run recorded rather than the mapping's stale column.
         write_auth_state_ok(self.integration.id, bot_user_id="U_OUR_BOT")

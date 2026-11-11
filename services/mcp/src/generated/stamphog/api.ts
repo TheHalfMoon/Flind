@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 11 enabled ops
+ * Flind API - MCP 11 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -116,7 +116,7 @@ export const StamphogReviewRunsListQueryParams = () => zod.object({
     limit: zod.number().optional().describe('Number of results to return per page.'),
     offset: zod.number().optional().describe('The initial index from which to return the results.'),
     pr_number: zod.number().optional().describe('Filter by pull request number.'),
-    repository: zod.string().optional().describe("Filter by repository full name, e.g. 'PostHog\/posthog'."),
+    repository: zod.string().optional().describe("Filter by repository full name, e.g. 'Flind\/posthog'."),
     status: zod.string().optional().describe('Filter by review run status.'),
     trigger: zod
         .enum(['all', 'label', 'manual', 'self_driving'])
@@ -142,7 +142,7 @@ export const StamphogReviewRunsCreateBody = () => zod
         repository: zod
             .string()
             .describe(
-                "Full name of the GitHub repository, e.g. 'PostHog\/posthog'. It must be connected and enabled in Stamphog."
+                "Full name of the GitHub repository, e.g. 'Flind\/posthog'. It must be connected and enabled in Stamphog."
             ),
         pr_number: zod.number().min(1).describe('Pull request number on GitHub.'),
     })
@@ -219,7 +219,7 @@ export const StamphogRoutingRunsListQueryParams = () => zod.object({
         .describe(
             'Keep only runs where an owner was kept or cut for this reason. With `owner`, that owner must have it.\n\n\* `sensitive` - Owns a sensitive path\n\* `new_path` - Owns a new path\n\* `largest_owner` - Has the largest part\n\* `diff_not_seen` - Diff not shown to the model\n\* `cut_skipped` - Cut step skipped\n\* `model_kept` - Kept by the model\n\* `model_cut` - Cut by the model\n\* `stamphog_approved` - Stamphog approved'
         ),
-    repository: zod.string().min(1).optional().describe("Filter by repository full name, e.g. 'PostHog\/posthog'."),
+    repository: zod.string().min(1).optional().describe("Filter by repository full name, e.g. 'Flind\/posthog'."),
 })
 
 /**

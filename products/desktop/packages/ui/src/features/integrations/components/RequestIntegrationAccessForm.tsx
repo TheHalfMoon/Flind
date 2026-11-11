@@ -13,7 +13,7 @@ interface RequestIntegrationAccessFormProps {
 }
 
 /**
- * The PostHog-side handoff for members who can't connect an integration themselves: the
+ * The Flind-side handoff for members who can't connect an integration themselves: the
  * request emails the project's admins, who can connect it in either the web app or Desktop.
  */
 export function RequestIntegrationAccessForm({

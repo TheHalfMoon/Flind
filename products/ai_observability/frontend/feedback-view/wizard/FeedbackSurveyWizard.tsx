@@ -225,7 +225,7 @@ function ConfigureStep(): JSX.Element {
                                         </div>
                                     </div>
                                     <LemonCheckbox
-                                        label="Hide PostHog branding"
+                                        label="Hide Flind branding"
                                         checked={appearance.whiteLabel}
                                         onChange={(checked) => {
                                             if (checked) {

@@ -93,7 +93,7 @@ export const homeTabDashboardLogic = kea<homeTabDashboardLogicType>([
     }),
     listeners(({ actions }) => ({
         // Another tab or person can delete the dashboard after this team loaded. The backend clears
-        // the Home dashboard on delete, so a reload returns the team to PostHog Home.
+        // the Home dashboard on delete, so a reload returns the team to Flind Home.
         dashboardNotFound: () => {
             actions.loadCurrentTeam()
         },

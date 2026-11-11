@@ -102,7 +102,7 @@ class TeamSerializer(serializers.ModelSerializer, UserPermissionsSerializerMixin
     available_setup_task_ids = serializers.SerializerMethodField()
     api_host = serializers.SerializerMethodField(
         help_text=(
-            "Host the PostHog SDKs send events to, set as their `api_host` option. It is "
+            "Host the Flind SDKs send events to, set as their `api_host` option. It is "
             "`https://us.i.posthog.com` on US Cloud, `https://eu.i.posthog.com` on EU Cloud, "
             "and the instance URL when self-hosted."
         )

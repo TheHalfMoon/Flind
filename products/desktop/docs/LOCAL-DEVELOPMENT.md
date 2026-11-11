@@ -1,8 +1,8 @@
-# Connect PostHog Desktop to a development environment
+# Connect Flind Desktop to a development environment
 
-Development builds can connect to a local PostHog instance or the hosted Dev Cloud deployment.
+Development builds can connect to a local Flind instance or the hosted Dev Cloud deployment.
 
-| Choice | PostHog host | Use it for |
+| Choice | Flind host | Use it for |
 | --- | --- | --- |
 | Local development | `http://localhost:8010` | Local backend changes and local test data |
 | Dev Cloud | `https://app.dev.posthog.dev` | Code deployed to the shared development environment |
@@ -11,20 +11,20 @@ Production builds show only US Cloud and EU Cloud. The two development choices a
 
 ## Prerequisites
 
-- For Local development, a running PostHog instance at `http://localhost:8010` ([PostHog local development docs](https://posthog.com/handbook/engineering/developing-locally))
+- For Local development, a running Flind instance at `http://localhost:8010` ([Flind local development docs](https://posthog.com/handbook/engineering/developing-locally))
 - For Dev Cloud, access to `https://app.dev.posthog.dev`
 - Node.js 22+
 - pnpm 10+
 
 ## Local development setup
 
-### 1. Set up the OAuth application in PostHog
+### 1. Set up the OAuth application in Flind
 
-The desktop app authenticates with PostHog via OAuth. Your local PostHog instance needs an OAuth application registered for the app to connect to it.
+The desktop app authenticates with Flind via OAuth. Your local Flind instance needs an OAuth application registered for the app to connect to it.
 
 #### Option A: Generate demo data
 
-PostHog's demo data generator creates a pre-configured OAuth application with the correct client ID:
+Flind's demo data generator creates a pre-configured OAuth application with the correct client ID:
 
 ```bash
 # In your PostHog repo
@@ -50,9 +50,9 @@ This creates an OAuth application with:
 
 > **Important**: The client ID must be exactly `DC5uRLVbGI02YQ82grxgnK6Qn12SXWpCqdPb60oZ`. The value is defined in `packages/agent/packages/agent-contracts/src/oauth.ts`.
 
-### 2. Configure RSA keys in PostHog
+### 2. Configure RSA keys in Flind
 
-OAuth token signing requires an RSA private key. In your PostHog repo:
+OAuth token signing requires an RSA private key. In your Flind repo:
 
 ```bash
 # Copy the RSA key from .env.example to your .env
@@ -124,9 +124,9 @@ Each new sandbox gets its own skill copy. Skill edits do not change running task
 ## Connect
 
 1. Select **Local development** for `localhost:8010`, or select **Dev Cloud** for `app.dev.posthog.dev`.
-2. Desktop opens the selected PostHog host for OAuth authorization.
+2. Desktop opens the selected Flind host for OAuth authorization.
 3. Authorize the application and select the project/organization access level
-4. PostHog redirects to Desktop on its existing localhost callback port.
+4. Flind redirects to Desktop on its existing localhost callback port.
 
 ## How it works
 
@@ -139,7 +139,7 @@ Keeping both values preserves stored Local development sessions. Dev Cloud agent
 
 ## Custom cloud
 
-The **Custom** region points at any PostHog instance, for example a self-hosted deployment. The fields appear when you select it, and each one has an information icon.
+The **Custom** region points at any Flind instance, for example a self-hosted deployment. The fields appear when you select it, and each one has an information icon.
 The region list holds **Custom** as its last entry in a development build, and in a test build from the **Desktop Build Test** workflow (the `desktop-build-installer` label on a PR).
 A release build does not show it, and a release build ignores a stored target.
 A packaged test build keeps its own user data, under `posthog-code-test`, so its sessions and settings stay apart from a release build on the same machine.
@@ -162,10 +162,10 @@ A packaged test build keeps its own user data, under `posthog-code-test`, so its
 5. Sign in. The app keeps the values, and applies them to sign-in, API requests, and agent runs.
 
 Agent runs need an LLM gateway that accepts a token from your instance, so give the **LLM gateway URL** field the address of a gateway that reads your instance's database (see `services/llm-gateway`).
-A PostHog Cloud gateway cannot serve a custom instance: it resolves a token against the Cloud database, and its `posthog_code` product refuses a personal API key.
+A Flind Cloud gateway cannot serve a custom instance: it resolves a token against the Cloud database, and its `posthog_code` product refuses a personal API key.
 With the field empty, the app derives a gateway from the host, and for an unknown host that is the US gateway, which returns 403.
 
-The PostHog MCP server is absent for a custom instance, because `mcp.posthog.com` cannot read a token from your instance either. `POSTHOG_MCP_URL` names one that can.
+The Flind MCP server is absent for a custom instance, because `mcp.posthog.com` cannot read a token from your instance either. `POSTHOG_MCP_URL` names one that can.
 
 The `us`, `eu`, `dev`, and `dev-cloud` regions never read these values, and the instance URL field refuses their hosts.
 
@@ -186,10 +186,10 @@ Source: `apps/code/src/renderer/features/inbox/devtools/inboxDemoConsole.ts`.
 ## Feature flags in local dev
 
 Feature flags are read through posthog-js, configured by the `VITE_POSTHOG_*`
-vars in `.env`. By default these point at PostHog's internal analytics instance,
+vars in `.env`. By default these point at Flind's internal analytics instance,
 so flags you create locally never resolve in the dev build.
 
-To point the flags/analytics client at your local PostHog so locally-synced
+To point the flags/analytics client at your local Flind so locally-synced
 flags take effect:
 
 ```bash
@@ -237,7 +237,7 @@ posthog.featureFlags.override({ "posthog-desktop-onboarding-test-tools": true })
 ### Feature flags never enabled (flag-gated UI missing)
 
 If flag-gated surfaces (e.g. the MCP gateway behind `mcp-gateway`) never show up
-even though the flag is enabled in your PostHog project, check
+even though the flag is enabled in your Flind project, check
 `VITE_POSTHOG_API_HOST` in `.env`: it must include the scheme
 (`http://localhost:8010`, not `localhost:8010`). posthog-js concatenates the
 host into request URLs verbatim, so a scheme-less value produces URLs like
@@ -257,11 +257,11 @@ posthog.isFeatureEnabled("mcp-gateway"); // undefined ⇒ flags never loaded
 
 ### "Invalid client_id" error during OAuth
 
-The OAuth application in your local PostHog must have the client ID `DC5uRLVbGI02YQ82grxgnK6Qn12SXWpCqdPb60oZ`. Verify at http://localhost:8010/admin/posthog/oauthapplication/.
+The OAuth application in your local Flind must have the client ID `DC5uRLVbGI02YQ82grxgnK6Qn12SXWpCqdPb60oZ`. Verify at http://localhost:8010/admin/posthog/oauthapplication/.
 
 ### "OAuth error: invalid_scope" or "Couldn't check Desktop access"
 
-PostHog Desktop requests an explicit scope list (`OAUTH_SCOPES` in `packages/agent/packages/agent-contracts/src/oauth.ts`),
+Flind Desktop requests an explicit scope list (`OAUTH_SCOPES` in `packages/agent/packages/agent-contracts/src/oauth.ts`),
 which includes the privileged scope `llm_gateway:read`.
 `/authorize` never rejects a request over scopes: it clamps the request to the application's
 scope ceiling (`OAuthApplication.scopes`) and grants whatever falls inside
@@ -271,13 +271,13 @@ So an app created manually (option B above) or by an older demo data generator s
 but issues a token without that scope.
 `GET /api/projects/:id/desktop/access/` requires it (`required_scopes` on the desktop access endpoint),
 so the request returns 403 and the app shows "Couldn't check Desktop access".
-On older PostHog checkouts the same misconfiguration failed sign-in with `invalid_scope` instead.
+On older Flind checkouts the same misconfiguration failed sign-in with `invalid_scope` instead.
 Once the token has this scope, authenticated users are allowed through the access policy while
 Django runs with `DEBUG=True`; local development does not depend on production billing or flag services.
 (A current `generate_demo_data` seeds a ceiling that already covers the scope.)
 
 Fix: seed the ceiling with the defaults plus that one privileged scope,
-which matches how the production Desktop app is configured. In your PostHog repo:
+which matches how the production Desktop app is configured. In your Flind repo:
 
 ```bash
 python manage.py seed_oauth_app_scopes \
@@ -295,11 +295,11 @@ Make sure the OAuth application's redirect URIs include `http://localhost:8237/c
 
 ### OAuth authorization page fails to load
 
-Ensure your local PostHog instance is running at `http://localhost:8010` and that the RSA key is configured (see step 2).
+Ensure your local Flind instance is running at `http://localhost:8010` and that the RSA key is configured (see step 2).
 
 ### Existing projects not showing up
 
-After connecting, the app will show projects from your local PostHog instance. If you need test data, run `python manage.py generate_demo_data` in your PostHog repo.
+After connecting, the app will show projects from your local Flind instance. If you need test data, run `python manage.py generate_demo_data` in your Flind repo.
 
 ### 431 error
 
@@ -307,4 +307,4 @@ Clean up `localhost` cookies in your browser, as you probably accumulated too ma
 
 ## Further reading
 
-- [PostHog OAuth Development Guide](https://github.com/PostHog/posthog/blob/master/docs/published/handbook/engineering/oauth-development-guide.md) — full OAuth spec, scopes, token introspection, and more
+- [Flind OAuth Development Guide](https://github.com/PostHog/posthog/blob/master/docs/published/handbook/engineering/oauth-development-guide.md) — full OAuth spec, scopes, token introspection, and more

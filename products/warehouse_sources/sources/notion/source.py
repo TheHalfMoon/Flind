@@ -115,7 +115,7 @@ class NotionSource(ResumableSource[NotionSourceConfig, NotionResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Notion",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Notion internal integration token to pull your Notion data into the PostHog Data warehouse.
+            caption="""Enter your Notion internal integration token to pull your Notion data into the Flind Data warehouse.
 
 Create an internal integration at [notion.so/my-integrations](https://www.notion.so/my-integrations) and copy its token (starts with `ntn_` or `secret_`).
 

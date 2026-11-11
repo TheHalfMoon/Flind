@@ -1,6 +1,6 @@
 /**
  * The billing service owns `name`, so a product can be billed under a name the app stopped using.
- * Override it here, keyed by product type, so billing calls a product what the rest of PostHog
+ * Override it here, keyed by product type, so billing calls a product what the rest of Flind
  * calls it — otherwise people search billing for a product they can see in the nav and miss it.
  */
 const DISPLAY_NAME_BY_PRODUCT_TYPE: Record<string, string> = {

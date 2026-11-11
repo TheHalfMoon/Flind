@@ -41,7 +41,7 @@ function validateEventTimestamp(event: PluginEvent): { timestamp: ISOTimestamp; 
  *
  * When Cymbal encounters processing errors (e.g., missing sourcemaps, invalid properties,
  * empty exception list), it attaches them to $cymbal_errors and still returns the event.
- * We convert these to ingestion warnings so users can see them in the PostHog UI.
+ * We convert these to ingestion warnings so users can see them in the Flind UI.
  */
 function getCymbalProcessingWarnings(response: CymbalResponse, eventUuid: string): PipelineWarning[] {
     const cymbalErrors = response.properties.$cymbal_errors

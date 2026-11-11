@@ -87,7 +87,7 @@ class TestPipedriveWarehouseWebhookTemplate(BaseHogFunctionTemplateSimpleTest):
         self.mock_produce_to_warehouse_webhooks.assert_called_once_with(globals["request"]["body"], expected_schema_id)
 
     def test_missing_http_auth_credentials_drops_delivery(self) -> None:
-        # PostHog creates the subscription before the credentials are stored, so a delivery can
+        # Flind creates the subscription before the credentials are stored, so a delivery can
         # arrive with nothing to check it against. A 4xx would only start Pipedrive's retry loop.
         globals = self._request(self._payload(), headers={"authorization": "Basic x"})
 

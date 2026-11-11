@@ -24,7 +24,7 @@
 
 | id   | cluster | real | kept | severity (truth) | prio (validator→) | title                                                               |
 | ---- | ------- | ---- | ---- | ---------------- | ----------------- | ------------------------------------------------------------------- |
-| XA1  | 75      | yes  | yes  | must_fix         | must_fix          | Restrict the webhook carve-out to the PostHog Code bot              |
+| XA1  | 75      | yes  | yes  | must_fix         | must_fix          | Restrict the webhook carve-out to the Flind Code bot              |
 | XA2  | 6       | yes  | yes  | must_fix         | must_fix          | Validate the self-driving PR shape before bypassing hard gates      |
 | XA3  | 18      | yes  | yes  | consider         | should_fix        | Align the connected flag with the worker's config resolution        |
 | XA4  | 4       | no   | no   | –                | should_fix        | Suppress author familiarity for self-driving prompts                |

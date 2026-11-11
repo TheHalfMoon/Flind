@@ -125,7 +125,7 @@ produceToWarehouseWebhooks(row, schemaId)""",
             "secret": True,
             "hidden": False,
             "description": (
-                "The Authorization header PostHog expects on every Mailjet delivery. PostHog generates it "
+                "The Authorization header Flind expects on every Mailjet delivery. Flind generates it "
                 "and registers the matching basic-auth credentials on the Mailjet callback URL."
             ),
         },

@@ -1,4 +1,4 @@
-"""Registry of callbacks that hear about a PostHog Review turn once it completes, or fails for good.
+"""Registry of callbacks that hear about a Flind Review turn once it completes, or fails for good.
 
 A product that asks for a review registers a callback from its ``AppConfig.ready()``, for example
 to tell the person who asked how it went. review_hog cannot import such a product when that product

@@ -211,7 +211,7 @@ describe("parseGitHubIssueUrl", () => {
   it("parses a valid issue URL", () => {
     expect(
       parseGitHubIssueUrl("https://github.com/PostHog/posthog/issues/123"),
-    ).toEqual({ owner: "PostHog", repo: "posthog", number: 123 });
+    ).toEqual({ owner: "Flind", repo: "posthog", number: 123 });
   });
 
   it("rejects non-github hosts", () => {

@@ -110,7 +110,7 @@ describe('MCP auth instrumentation', () => {
 
     it('leaves the tool-call failure vocabulary alone', () => {
         // `$mcp_is_error` and `$mcp_error_status` mean "a tool call failed against the
-        // PostHog API"; setting them here would fold auth refusals into tool error rates.
+        // Flind API"; setting them here would fold auth refusals into tool error rates.
         handleCatchError(permissionError('insight:read'), makeProps())
 
         const properties = mockCapture.mock.calls[0]![0].properties

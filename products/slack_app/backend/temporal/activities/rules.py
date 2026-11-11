@@ -123,12 +123,12 @@ def handle_posthog_code_slack_mention_command_activity(
         # "multiple projects available" so users get an actionable hint.
         if not result.candidates:
             text = (
-                "You don't have access to any PostHog project connected to this Slack workspace. "
+                "You don't have access to any Flind project connected to this Slack workspace. "
                 "Ask an admin to grant you access, then try again."
             )
         else:
             text = (
-                "This Slack workspace is connected to multiple PostHog projects. "
+                "This Slack workspace is connected to multiple Flind projects. "
                 f"Use `{inputs.command_prefix} project <id>` to set a default first, then re-run your command."
             )
         post_slack_ephemeral(

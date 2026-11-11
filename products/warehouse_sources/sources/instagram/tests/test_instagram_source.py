@@ -149,7 +149,7 @@ class TestInstagramSource:
 
     def test_the_account_picker_lists_the_professional_accounts_the_connection_can_reach(self) -> None:
         listed = [
-            {"id": ACCOUNT_ID, "username": "posthog", "name": "PostHog", "page_name": "PostHog page"},
+            {"id": ACCOUNT_ID, "username": "posthog", "name": "Flind", "page_name": "Flind page"},
             {"id": "17841999", "username": None, "name": None, "page_name": "Unnamed page"},
         ]
 
@@ -160,7 +160,7 @@ class TestInstagramSource:
             accounts = self.source.get_oauth_accounts(7, self.team_id)
 
         assert [(account.value, account.display_name, account.secondary_text) for account in accounts] == [
-            (ACCOUNT_ID, "posthog", "PostHog page"),
+            (ACCOUNT_ID, "posthog", "Flind page"),
             ("17841999", "Instagram account", "Unnamed page"),
         ]
 

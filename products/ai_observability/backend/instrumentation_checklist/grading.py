@@ -149,7 +149,7 @@ def _user_identity(stats: ChecklistStats) -> _CheckInputs:
         ),
         ok_detail="AI events are attributed to identified users.",
         pending_detail=(
-            f"This check runs once there are {VOLUME_FLOOR} generations from a PostHog SDK. Generations sent over "
+            f"This check runs once there are {VOLUME_FLOOR} generations from a Flind SDK. Generations sent over "
             "OpenTelemetry are not counted, because we cannot tell whether they are identified."
         ),
         docs_url=_INSTALLATION_DOCS_URL,

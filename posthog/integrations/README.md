@@ -57,7 +57,7 @@ Reads:
 - `find(team_id, external_id=..., where={...})` returns the oldest matching row or `None`.
 - `list(team_id, external_id=..., where={...}, newest_first=False)` and `exists(...)`.
 - `find` and `exists` also take `team_ids=[...]` instead of `team_id`, for example the teams of an organization. Pass exactly one of the two. An empty `team_ids` matches no row.
-- `usages(team_id, id)` returns the PostHog objects that use the row.
+- `usages(team_id, id)` returns the Flind objects that use the row.
 
 These reads go across teams, for example to the teams that share one GitHub installation:
 

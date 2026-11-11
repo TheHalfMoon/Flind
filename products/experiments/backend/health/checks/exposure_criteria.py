@@ -64,7 +64,7 @@ def _exposure_event_cannot_match(ctx: HealthContext, events: ExposureEvents) -> 
             return not_applicable(NOT_AFTER_END)
         received = ctx.events_received.get(event)
         if received is None:
-            return not_checked("Couldn't check because PostHog keeps no record of this event name")
+            return not_checked("Couldn't check because Flind keeps no record of this event name")
         return None if received else _exposure_event_not_ingested(ctx, event)
     flag_key = events.required_flag_key
     if flag_key is None:
@@ -82,7 +82,7 @@ def _property_filter_cannot_match(ctx: HealthContext, events: ExposureEvents) ->
     if missing:
         return _filter_on_property_not_ingested(ctx, missing)
     if any(not f.definition_recorded or (f.type, f.key) not in received for f in filters):
-        return not_checked("Couldn't check because PostHog can't tell whether the project received a filter's property")
+        return not_checked("Couldn't check because Flind can't tell whether the project received a filter's property")
     return None
 
 

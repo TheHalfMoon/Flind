@@ -8,7 +8,7 @@ This guide explains how to safely perform dangerous Django migration operations 
 
 > **Rule of thumb:** Never run a migration that drops, renames, or removes anything while any running code could still reference it. Use a two-phase approach: remove references → wait → drop.
 
-**Context:** These guidelines are written for zero-downtime, rolling-deploy environments like PostHog's production setup. In single-instance or development setups, you can take shortcuts at your own risk — but these patterns prevent downtime in production.
+**Context:** These guidelines are written for zero-downtime, rolling-deploy environments like Flind's production setup. In single-instance or development setups, you can take shortcuts at your own risk — but these patterns prevent downtime in production.
 
 ## Table of Contents
 

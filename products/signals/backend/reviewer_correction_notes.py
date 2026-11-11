@@ -1,6 +1,6 @@
 """Send scoped reviewer edits and claims to the scouts that produced the report or hold its routing memory.
 
-Notes use the same GitHub logins or PostHog user UUIDs as the correction activity log.
+Notes use the same GitHub logins or Flind user UUIDs as the correction activity log.
 They are searchable by other scouts and research through the existing notes tools.
 Forwarding is best effort after commit, with the editor's steering permissions. A note
 asks agents to check the source report; it does not establish a standing ownership rule.
@@ -87,7 +87,7 @@ _MAX_AGENT_CHARS = 60
 class ReviewerCorrection:
     """One human reviewer edit that changed the set, in the terms the scouts need to hear it.
 
-    Reviewers use the activity log's GitHub login or PostHog user UUID labels.
+    Reviewers use the activity log's GitHub login or Flind user UUID labels.
     `scoped_team_ids` is the editing token's `scoped_teams` (None for session auth), read off the
     request by the caller so this stays independent of HTTP.
     """
@@ -305,7 +305,7 @@ def _forward_claim(*, team: Team, claim: ReviewerClaim) -> ForwardedCorrectionNo
     if author is None:
         return _NOTHING_FORWARDED
     # The login is what scouts route on, so the note names it first. A memory can still name the
-    # PostHog user UUID, from before the login was linked, so holders are searched on both.
+    # Flind user UUID, from before the login was linked, so holders are searched on both.
     claimant = _renderable([identity for identity in (author.actor_login, str(author.actor.uuid)) if identity])
     if not claimant:
         return _NOTHING_FORWARDED
@@ -556,7 +556,7 @@ def _build_claim_note_content(
 
 
 _IDENTITY_FOOTER = (
-    "Reviewers are identified by GitHub login or PostHog user UUID. Check current project membership "
+    "Reviewers are identified by GitHub login or Flind user UUID. Check current project membership "
     "with `scout-members-list`; a GitHub account is not required for Inbox assignment."
 )
 

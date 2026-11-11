@@ -3,7 +3,7 @@
 /**
  * Amplitude Test Data Generator
  *
- * This script generates comprehensive test data for the PostHog Amplitude identify logic.
+ * This script generates comprehensive test data for the Flind Amplitude identify logic.
  * It creates various scenarios to test:
  * - First-time user-device combinations (should generate identify events)
  * - Duplicate user-device combinations (should NOT generate duplicate identify events)
@@ -1427,14 +1427,14 @@ async function main() {
         console.log('2. The script automatically sends both regular events AND group identify events to Amplitude');
         console.log('3. Export this data from Amplitude using their export API');
         if (groupsOnly) {
-            console.log('4. Run PostHog batch import with generate_group_identify_events=true');
+            console.log('4. Run Flind batch import with generate_group_identify_events=true');
             console.log('5. Verify exactly 38 group identify events are created');
         } else {
-            console.log('4. Run PostHog batch import with generate_identify_events=true and generate_group_identify_events=true');
+            console.log('4. Run Flind batch import with generate_identify_events=true and generate_group_identify_events=true');
             console.log('5. Verify exactly 30 identify events + 38 group identify events are created');
         }
         console.log('6. Check that regular events have $groups property with correct group references');
-        console.log('7. Verify group properties are correctly mapped to PostHog $group_set\n');
+        console.log('7. Verify group properties are correctly mapped to Flind $group_set\n');
 
     } catch (error) {
         console.error('❌ Error during test data generation:', error);

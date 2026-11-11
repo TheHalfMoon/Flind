@@ -1,4 +1,4 @@
-"""The workload providers whose OIDC tokens PostHog can exchange for a project token.
+"""The workload providers whose OIDC tokens Flind can exchange for a project token.
 
 Trust policy validation, the token exchange and the policy settings UI read providers only from
 this registry, so no provider name or issuer appears anywhere else in the backend. A provider is
@@ -90,7 +90,7 @@ class WorkloadProvider:
     run_url_template: str | None
     docs_url: str
     # Looks the subject up from its name, so people don't have to find an immutable ID by hand. `None`
-    # when the provider has no API PostHog can ask.
+    # when the provider has no API Flind can ask.
     resolve_subject: SubjectResolver | None = None
     condition_presets: tuple[ConditionPreset, ...] = ()
     # Condition claims every policy must set, for a subject that is unique only together with them.
@@ -102,7 +102,7 @@ class WorkloadProvider:
     # A claim that must carry the subject too, so a job running in another workload's context isn't trusted.
     subject_also_in_claim: str | None = None
     condition_companions: tuple[ConditionCompanions, ...] = ()
-    # The CI config that gives a job an OIDC token, with SNIPPET_HOST where the PostHog host goes.
+    # The CI config that gives a job an OIDC token, with SNIPPET_HOST where the Flind host goes.
     setup_snippet: str = ""
 
     @property
@@ -153,7 +153,7 @@ class WorkloadProvider:
 
 
 _ACTIONS_JOB_SNIPPET = """permissions:
-  id-token: write # lets hog get an OIDC token for PostHog
+  id-token: write # lets hog get an OIDC token for Flind
   contents: read
 """
 
@@ -165,7 +165,7 @@ GITHUB_ACTIONS = WorkloadProvider(
     subject_claim=WorkloadClaim(
         name="repository_id",
         label="Repository ID",
-        help_text="GitHub's number for the repository. PostHog looks it up from the repository name.",
+        help_text="GitHub's number for the repository. Flind looks it up from the repository name.",
         placeholder="123456789",
     ),
     subject_name_claim=WorkloadClaim(
@@ -271,7 +271,7 @@ GITLAB = WorkloadProvider(
     subject_claim=WorkloadClaim(
         name="project_id",
         label="Project ID",
-        help_text="GitLab's number for the project. PostHog looks it up from the project path.",
+        help_text="GitLab's number for the project. Flind looks it up from the project path.",
         placeholder="12345678",
     ),
     subject_name_claim=WorkloadClaim(
@@ -382,7 +382,7 @@ GITLAB = WorkloadProvider(
     ),
     setup_snippet=f"""your-job:
   id_tokens:
-    HOG_ID_TOKEN: # lets hog get a PostHog token
+    HOG_ID_TOKEN: # lets hog get a Flind token
       aud: {SNIPPET_HOST}
 """,
 )
@@ -395,7 +395,7 @@ DEPOT_CI = WorkloadProvider(
     subject_claim=WorkloadClaim(
         name="repository_id",
         label="Repository ID",
-        help_text="The forge's number for the repository, GitHub's for a GitHub repository. PostHog looks it up from the repository name.",
+        help_text="The forge's number for the repository, GitHub's for a GitHub repository. Flind looks it up from the repository name.",
         placeholder="123456789",
     ),
     subject_name_claim=WorkloadClaim(
@@ -487,7 +487,7 @@ DEPOT_CI = WorkloadProvider(
 )
 
 # Can't be supported with this design:
-# - Bitbucket Pipelines fixes the token's audience per workspace, so a token can't name this PostHog instance.
+# - Bitbucket Pipelines fixes the token's audience per workspace, so a token can't name this Flind instance.
 # - Self-managed GitLab makes each instance its own issuer, and only the issuers listed here are trusted.
 # - GitHub Enterprise Cloud with a customized issuer sends https://token.actions.githubusercontent.com/<enterprise>,
 #   an issuer per enterprise.

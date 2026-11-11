@@ -19,7 +19,7 @@ from .metrics import llma_track_latency
 class ClusteringConfigSerializer(serializers.ModelSerializer):
     event_filters = serializers.ListField(
         child=serializers.DictField(child=serializers.JSONField()),
-        help_text="PostHog property filters that scope automated clustering jobs. Empty array means no saved filters.",
+        help_text="Flind property filters that scope automated clustering jobs. Empty array means no saved filters.",
     )
 
     class Meta:
@@ -38,7 +38,7 @@ class ClusteringConfigSerializer(serializers.ModelSerializer):
 class ClusteringConfigSetEventFiltersSerializer(serializers.Serializer):
     event_filters = serializers.ListField(
         child=serializers.DictField(child=serializers.JSONField()),
-        help_text="PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters.",
+        help_text="Flind property filters to save for automated clustering jobs. Pass an empty array to clear filters.",
     )
 
 

@@ -40,11 +40,11 @@ export type TabData =
       type: "artifact";
       runId: string;
       artifactId: string;
-      /** PostHog object kind (e.g. "flag") when the artifact is a PostHog reference. */
+      /** Flind object kind (e.g. "flag") when the artifact is a Flind reference. */
       objectKind?: string;
     }
   | {
-      // A PostHog object opened from an inline reference chip; renders the
+      // A Flind object opened from an inline reference chip; renders the
       // object page straight from kind + id, with no run artifact behind it.
       type: "posthog-object";
       objectKind: string;

@@ -115,7 +115,7 @@ export function ImplementButton({
                     event.preventDefault()
                     openReportTask(report, task.id, run.id)
                 }}
-                tooltip="Open this task in the PostHog AI sidebar"
+                tooltip="Open this task in the Flind AI sidebar"
                 data-attr="inbox-report-open-task"
             >
                 View task
@@ -133,7 +133,7 @@ export function ImplementButton({
                 onClick={() => submit(instructions)}
                 loading={isCreatingPr}
                 disabledReason={disabledReason}
-                tooltip="Start a PostHog agent to implement this report"
+                tooltip="Start a Flind agent to implement this report"
                 data-attr={surface === 'triage_mode' ? 'inbox-triage-create-pr' : 'inbox-report-create-pr'}
                 sideAction={{
                     tooltip: 'More implementation options',
@@ -152,7 +152,7 @@ export function ImplementButton({
                         overlay: (
                             <div className="flex w-128 max-w-full flex-col gap-2 p-2">
                                 <span className="text-xs font-semibold text-tertiary">
-                                    Add instructions for the PostHog agent
+                                    Add instructions for the Flind agent
                                 </span>
                                 <LemonTextArea
                                     autoComplete="off"
@@ -164,7 +164,7 @@ export function ImplementButton({
                                     value={instructions}
                                     onChange={setInstructions}
                                     onPressEnter={submit}
-                                    placeholder="Add instructions for the PostHog agent (optional)"
+                                    placeholder="Add instructions for the Flind agent (optional)"
                                     maxLength={4000}
                                     rows={4}
                                     autoFocus
@@ -228,7 +228,7 @@ export function ImplementButton({
                                         disabledReason={disabledReason}
                                         data-attr="inbox-report-create-pr-submit"
                                     >
-                                        Implement with PostHog
+                                        Implement with Flind
                                     </LemonButton>
                                 </div>
                             </div>

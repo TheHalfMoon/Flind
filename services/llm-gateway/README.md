@@ -62,7 +62,7 @@ python manage.py setup_local_api_key --add-scopes llm_gateway:read
 
 ## Database access
 
-The gateway connects to the PostHog Postgres as a least-privilege role whose SELECT
+The gateway connects to the Flind Postgres as a least-privilege role whose SELECT
 grants are a per-table allowlist maintained in posthog-cloud-infra. The tables the
 gateway reads are declared in `src/llm_gateway/db/required_tables.py`, and
 `tests/test_required_tables.py` binds that declaration to the SQL in the package.
@@ -130,11 +130,11 @@ response = client.messages.create(
 
 ## Feature flags
 
-The gateway supports feature flags via the `X-POSTHOG-FLAG-*` headers. Feature flags are sent as `X-POSTHOG-FLAG-<FLAG_KEY>: <VALUE>` headers and appear on PostHog events as `$feature/<FLAG_KEY>: <VALUE>`.
+The gateway supports feature flags via the `X-POSTHOG-FLAG-*` headers. Feature flags are sent as `X-POSTHOG-FLAG-<FLAG_KEY>: <VALUE>` headers and appear on Flind events as `$feature/<FLAG_KEY>: <VALUE>`.
 
 ## Custom event properties
 
-The gateway supports capturing additional event properties to PostHog via the `X-POSTHOG-PROPERTY-*` headers. Event properties are sent as `X-POSTHOG-PROPERTY-<PROPERTY_KEY>: <VALUE>` headers and appear on PostHog events as `<PROPERTY_KEY>: <VALUE>`.
+The gateway supports capturing additional event properties to Flind via the `X-POSTHOG-PROPERTY-*` headers. Event properties are sent as `X-POSTHOG-PROPERTY-<PROPERTY_KEY>: <VALUE>` headers and appear on Flind events as `<PROPERTY_KEY>: <VALUE>`.
 
 ## API endpoints
 
@@ -210,11 +210,11 @@ Use your runtime's standard AWS authentication mechanism (e.g. IAM role, IRSA, E
 The gateway exposes models consistently across Anthropic Messages, chat/completions, and Responses while choosing their inference provider internally in `src/llm_gateway/inference_routing.py`.
 
 - **GLM 5.2** (`@cf/zai-org/glm-5.2`) can run on Cloudflare Workers AI, Modal, or Baseten.
-- **GLM 5.3** (`zai-org/glm-5.3`) runs only on Baseten and is available to ReviewHog and PostHog Desktop.
+- **GLM 5.3** (`zai-org/glm-5.3`) runs only on Baseten and is available to ReviewHog and Flind Desktop.
   The deployment slug, context window, and contract rate in `model_cost_overrides.py` / `model_registry.py` are confirmed against `inference.baseten.co/v1/models`: the rate is pinned, so a wrong placeholder bills at the wrong price with no automatic correction.
-- **GLM 5.3 Flash** (`zai-org/glm-5.3-flash`) runs only on Baseten and is available to ReviewHog and PostHog Desktop.
+- **GLM 5.3 Flash** (`zai-org/glm-5.3-flash`) runs only on Baseten and is available to ReviewHog and Flind Desktop.
   Contract rate and 1M context window come from the Baseten listing and are pinned in `model_cost_overrides.py` / `model_registry.py`.
-- **DeepSeek V4 Flash** (`deepseek-ai/deepseek-v4-flash-0731`) runs only on Baseten and is available to ReviewHog and PostHog Desktop.
+- **DeepSeek V4 Flash** (`deepseek-ai/deepseek-v4-flash-0731`) runs only on Baseten and is available to ReviewHog and Flind Desktop.
 
 A model still in rollout is named in `MODEL_ACCESS_FLAGS` (`src/llm_gateway/products/config.py`), which both blocks selection and drops the model from the listing while the flag is off for the caller.
 That gate fails closed, so remove the entry once the flag reaches everyone: a caller whose flags cannot be evaluated loses the model otherwise.
@@ -229,7 +229,7 @@ GLM 5.2 traffic goes to Baseten whenever its API key is configured. No feature f
 
 Two knobs opt traffic into Modal (OR semantics, both default off):
 
-- The `tasks-glm-modal-inference` feature flag, evaluated server-side against PostHog (`LLM_GATEWAY_POSTHOG_PROJECT_TOKEN`/`_HOST`) with a short per-user cache and a brief global backoff when evaluation fails. Caller-forwarded flag headers are not trusted for routing.
+- The `tasks-glm-modal-inference` feature flag, evaluated server-side against Flind (`LLM_GATEWAY_POSTHOG_PROJECT_TOKEN`/`_HOST`) with a short per-user cache and a brief global backoff when evaluation fails. Caller-forwarded flag headers are not trusted for routing.
 - `LLM_GATEWAY_GLM_MODAL_TRAFFIC_FRACTION` (0..1, default 0), bucketed deterministically by user id; `LLM_GATEWAY_GLM_MODAL_PRODUCT_TRAFFIC_FRACTIONS` (e.g. `{"posthog_code": 0.25}`) overrides it per product.
 
 If Cloudflare credentials are absent, Modal serves all GLM traffic regardless of the knobs.
@@ -261,7 +261,7 @@ OAuth access is permitted only for products with an explicit `allowed_applicatio
 
 Aliases: `twig`, `array` resolve to `posthog_code`; `slack-twig` resolves to `slack-posthog-code`.
 
-`posthog_code` additionally requires a project-scoped PostHog Desktop decision. The OAuth application allowlist only proves that the Desktop app issued the token. It does not grant Desktop access.
+`posthog_code` additionally requires a project-scoped Flind Desktop decision. The OAuth application allowlist only proves that the Desktop app issued the token. It does not grant Desktop access.
 
 After OAuth validates the selected project, the gateway asks Django at `GET /api/projects/{project_id}/desktop/access/`. Django applies `posthog-desktop-access-override` before Startup-program and prepaid-credit restrictions. The gateway preserves `code_access_required` as its error code and forwards `startup_plan` or `prepaid_credits` when Django provides a reason. Server-minted credentials carrying `internal_run:read` bypass the human gate because their run already passed Django's trusted task path.
 
@@ -269,7 +269,7 @@ The check fails closed. Django transport errors, 404, 429, 5xx responses, and ma
 
 `signals` is authorized for its own OAuth application, so a Signals run's token cannot be spent as `posthog_code` or `background_agents` by declaring a different product in the path.
 Its US, EU, and dev application ids are pinned in `products/config.py` alongside every other first-party app.
-The PostHog Code application ids are no longer accepted for `signals`, so a region whose runs still mint under the Code app rejects every Signals OAuth run at the gateway.
+The Flind Code application ids are no longer accepted for `signals`, so a region whose runs still mint under the Code app rejects every Signals OAuth run at the gateway.
 
 ### Adding a new product
 
@@ -365,7 +365,7 @@ Errors follow OpenAI's format:
 
 ## Internal Django integration
 
-For calling from PostHog Django:
+For calling from Flind Django:
 
 ```python
 from posthog.llm.gateway_client import get_llm_client

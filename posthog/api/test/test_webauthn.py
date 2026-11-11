@@ -74,7 +74,7 @@ class TestWebAuthnRegistration(APIBaseTest):
         self.assertIn("timeout", data)
         self.assertIn("authenticatorSelection", data)
 
-        self.assertEqual(data["rp"]["name"], "PostHog")
+        self.assertEqual(data["rp"]["name"], "Flind")
         self.assertEqual(data["user"]["name"], self.user.email)
         self.assertEqual(data["authenticatorSelection"]["residentKey"], "required")
 

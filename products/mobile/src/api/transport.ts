@@ -4,7 +4,7 @@ export const REQUEST_TIMEOUT_MS = 30_000
 
 export class TransportError extends Error {
     constructor() {
-        super("Couldn't reach PostHog. Check your connection and try again.")
+        super("Couldn't reach Flind. Check your connection and try again.")
         this.name = 'TransportError'
     }
 }

@@ -1,18 +1,18 @@
 # Offline evaluation result reporting
 
 The evaluation harness in `products/posthog_ai/eval_harness/` uses Braintrust locally to execute and score cases. It never uploads results or traces to Braintrust.
-Suites under `products/posthog_ai/evals/` and the product-owned `products/*/evals/` trees also publish those results to PostHog's offline experiment API when a publishing credential is configured.
+Suites under `products/posthog_ai/evals/` and the product-owned `products/*/evals/` trees also publish those results to Flind's offline experiment API when a publishing credential is configured.
 The Signals pytest suites reuse the same publisher for their completed results.
 Agent and judge trace capture remains available.
 Reporting does not run the agent or scorers again.
-Use `hogli evals` to run PostHog AI 2.0 suites. See the [eval harness guide](../../products/posthog_ai/eval_harness/README.md) for suite discovery and execution.
+Use `hogli evals` to run Flind AI 2.0 suites. See the [eval harness guide](../../products/posthog_ai/eval_harness/README.md) for suite discovery and execution.
 
 ## Capture settings
 
-`SandboxedEval` and `OneShotEval` publish completed results to PostHog when `offline_suite` and a publishing credential are configured.
+`SandboxedEval` and `OneShotEval` publish completed results to Flind when `offline_suite` and a publishing credential are configured.
 `send_to_posthog` defaults to `True`; set it to `False` for local-only results. Local logs are always written.
 The Braintrust engine always runs with `no_send_logs=True` internally. Suites cannot enable Braintrust uploads, and no Braintrust credential is required.
-Autoevals judges use an explicit OpenAI client, including nested judges and runs without PostHog trace capture.
+Autoevals judges use an explicit OpenAI client, including nested judges and runs without Flind trace capture.
 They require `OPENAI_API_KEY` and honor `OPENAI_BASE_URL` when set; they do not fall back to Braintrust's model proxy or API key.
 Scorer models and other provider credentials are unchanged.
 
@@ -51,7 +51,7 @@ The [first-report scout suite](../../products/posthog_ai/eval_harness/README.md#
 After scoring, the harness prepares the completed results in memory and queues delivery through the Python SDK's `AsyncOfflineEvaluations` client. It does not execute another agent run or judge call.
 Set `send_to_posthog=False` to suppress this upload.
 
-The [PostHog AI catalog](../../products/posthog_ai/evals/offline_config.py) and each product's `evals/offline_config.py` pin destination project `2`, scorer kinds, immutable version UUIDs, and component tags.
+The [Flind AI catalog](../../products/posthog_ai/evals/offline_config.py) and each product's `evals/offline_config.py` pin destination project `2`, scorer kinds, immutable version UUIDs, and component tags.
 Suites select their own metrics from the catalog; sandboxed suites also include the harness-provided `exit_code_zero` metric.
 The SQL suite retains its seven existing scorer versions.
 The discovery-wide enrollment test checks every enrolled suite's publishing flag, stable key, scorer coverage, pinned UUIDs and ownership tags without executing agents or judges.
@@ -118,9 +118,9 @@ Without an API key, each enrolled suite reports that offline uploads are disable
 Keys containing whitespace are rejected before evaluation starts; remove any spaces, tabs, or pasted trailing newlines.
 Invalid configuration produces a warning and skips this destination; local reporting continues.
 An upload failure also warns without changing the evaluation's score gate.
-The final summary shows a PostHog results link only after a successful offline upload; otherwise it shows the upload status.
+The final summary shows a Flind results link only after a successful offline upload; otherwise it shows the upload status.
 
-### Testing uploads against local PostHog
+### Testing uploads against local Flind
 
 Set `POSTHOG_OFFLINE_EVAL_HOST=http://localhost:8010` and use a personal API key created in that local instance.
 HTTP is accepted only for `localhost`, `127.0.0.1`, and `::1`; other hosts require HTTPS.
@@ -145,7 +145,7 @@ The file is gitignored by the `.env*` rule. Local configuration is accepted only
 An unreadable, invalid, or incomplete file disables the upload with an error; it never falls back to the production catalog.
 
 Run through `hogli evals` to load `.env.local`; existing shell variables take precedence.
-Every suite runs without Braintrust reporting credentials. PostHog publishing depends only on its own configuration.
+Every suite runs without Braintrust reporting credentials. Flind publishing depends only on its own configuration.
 Set `OPT_OUT_CAPTURE=1` to suppress ordinary SDK/trace capture while retaining explicit offline-result uploads.
 
 ### Scorer and experiment tags
@@ -154,7 +154,7 @@ Score definitions and experiment runs use the same team and component tags:
 
 | Suites               | Tags                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------- |
-| PostHog AI           | `team:surfaces`, `component:posthog-ai/<domain>` (for example `sql` or `product-analytics`) |
+| Flind AI           | `team:surfaces`, `component:posthog-ai/<domain>` (for example `sql` or `product-analytics`) |
 | Slack app            | `team:surfaces`, `component:slack-app/<area>` (for example `followup-classifier`)           |
 | Conversations        | `team:conversations`, `component:conversations`                                             |
 | Business Knowledge   | `team:conversations`, `component:business-knowledge`                                        |
@@ -523,7 +523,7 @@ The deadline is the earliest cleanup eligibility time, not a promise of immediat
 Entries past that deadline but not yet expired are labeled **Eligible for deletion** and can still be extended; already expired data cannot be restored this way.
 Cleanup emits a `dataset retention run` event with expiry and deletion counts, duration, completion status, and whether the time budget was exhausted.
 
-Staff can pause or resume cleanup in the **AI observability** tool of PostHog Admin (`/admin/console/tools/ai-observability/`). The `AI_OBSERVABILITY_DATASET_RETENTION_ENABLED` instance setting defaults to enabled and applies separately to each region. Disabling stops both new expiry and unfinished deletion; a running sweep checks the setting before each dataset and finishes its current dataset before stopping. Re-enabling resumes the hourly schedule. Disabling does not restore deleted content or make already expired datasets available. Successful expiry/deletion logs include the team and dataset IDs after the transaction commits, and setting changes log the staff user and old/new state.
+Staff can pause or resume cleanup in the **AI observability** tool of Flind Admin (`/admin/console/tools/ai-observability/`). The `AI_OBSERVABILITY_DATASET_RETENTION_ENABLED` instance setting defaults to enabled and applies separately to each region. Disabling stops both new expiry and unfinished deletion; a running sweep checks the setting before each dataset and finishes its current dataset before stopping. Re-enabling resumes the hourly schedule. Disabling does not restore deleted content or make already expired datasets available. Successful expiry/deletion logs include the team and dataset IDs after the transaction commits, and setting changes log the staff user and old/new state.
 
 Candidate selection skips expired revisions that are retained only for shared versions or evaluation provenance, while continuing unfinished version and reference deletion. HogQL's `system.datasets` and `system.dataset_revisions` expose `expired_at`; queries must check the dataset and requested snapshot are available. Do not filter out a version solely because its introducing revision expired: retained snapshots can still need that version. HogQL queries and listing metadata do not refresh usage.
 

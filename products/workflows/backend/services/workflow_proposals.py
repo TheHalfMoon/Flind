@@ -665,7 +665,7 @@ class AbsoluteWindow:
 def absolute_window(window: object, now: datetime) -> Optional[AbsoluteWindow]:
     """The bounds of an ISO 8601 interval such as "2026-10-07T22:00:00Z/2026-10-14T22:00:00Z", or None.
 
-    A producer that reads only closed days names them this way, so PostHog must read the same days back."""
+    A producer that reads only closed days names them this way, so Flind must read the same days back."""
     if not isinstance(window, str) or window.count("/") != 1:
         return None
     try:

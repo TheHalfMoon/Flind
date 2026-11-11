@@ -23,7 +23,7 @@ export function buildHogboxPreviewSection({
             status: 'info',
             summary: 'building',
             body: [
-                "Spinning up PostHog for this PR on a hogland hogbox. This section updates in place when it's ready (usually a few minutes).",
+                "Spinning up Flind for this PR on a hogland hogbox. This section updates in place when it's ready (usually a few minutes).",
                 '',
                 `<sub>commit \`${commit}\` &middot; <a href="${runUrl}">build log</a></sub>`,
             ].join('\n'),
@@ -56,8 +56,8 @@ export function buildHogboxPreviewSection({
 
     // A backend-only preview serves the :master SPA, so only claim the PR's frontend when it was swapped in.
     const running = frontendSwapped
-        ? "this PR's backend **and** frontend, on the PostHog `:master` base"
-        : "this PR's backend on the PostHog `:master` base (frontend unchanged by this PR)"
+        ? "this PR's backend **and** frontend, on the Flind `:master` base"
+        : "this PR's backend on the Flind `:master` base (frontend unchanged by this PR)"
     // The CLI parser can surface a missing pen id as the literal string 'None'.
     const adminUrl =
         consoleHost && penId && penId !== 'None' ? `https://${consoleHost}/console/fleet/pens/${penId}` : null
@@ -74,7 +74,7 @@ export function buildHogboxPreviewSection({
             '| 🔑 **Login** | `test@posthog.com` / `12345678` (demo data) |',
             `| 🧩 **Running** | ${running} |`,
             '| 🔗 **Link** | **stable across rebuilds**: a re-push swaps the box underneath, the URL stays |',
-            '| 🔒 **Access** | tailnet only (PostHog VPN) |',
+            '| 🔒 **Access** | tailnet only (Flind VPN) |',
             ...(adminUrl ? [`| 🛠️ **Admin** | [inspect & debug state in hogland](${adminUrl}) |`] : []),
             '| 💤 **Idle** | sleeps after ~30 min idle (snapshot to S3, zero node cost) and wakes on your next visit in ~30s, behind a brief "waking up" screen |',
             '',

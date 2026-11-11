@@ -51,7 +51,7 @@ class FaireSource(ResumableSource[FaireSourceConfig, FaireResumeConfig]):
             label="Faire",
             releaseStatus=ReleaseStatus.BETA,
             caption="Enter your Faire API access token to sync your brand's orders and product "
-            "catalog into the PostHog Data warehouse.\n\nGenerate a token from the developer or "
+            "catalog into the Flind Data warehouse.\n\nGenerate a token from the developer or "
             "API access settings in your Faire Brand Portal.",
             iconPath="/static/services/faire.png",
             docsUrl="https://posthog.com/docs/cdp/sources/faire",

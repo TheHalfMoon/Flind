@@ -36,7 +36,7 @@ export function WorkflowEmailPauseBanner(): JSX.Element | null {
         return (
             <LemonBanner type="error" className="shrink-0" data-attr="workflow-email-paused-banner">
                 {emailSendingPausedByStaff
-                    ? 'PostHog staff paused email sending for this workflow to protect delivery for everyone.'
+                    ? 'Flind staff paused email sending for this workflow to protect delivery for everyone.'
                     : 'Email sending for this workflow was paused again soon after it was resumed.'}{' '}
                 Its other steps still run. {emailSendingPausedReason} Remove old or bought addresses from the audience,
                 then contact support to get sending re-enabled.

@@ -543,7 +543,7 @@ export function PersonScene(): JSX.Element | null {
                                 id={person.id}
                                 caption={
                                     <LemonBanner type="info">
-                                        This page only shows changes made by users in the PostHog site. Automatic
+                                        This page only shows changes made by users in the Flind site. Automatic
                                         changes from the API aren't shown here.
                                     </LemonBanner>
                                 }

@@ -65,7 +65,7 @@ class BrexSource(ResumableSource[BrexSourceConfig, BrexResumeConfig]):
             name=ExternalDataSourceType.BREX,
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="Brex",
-            caption="""Enter your Brex API user token to pull your Brex data into the PostHog Data warehouse.
+            caption="""Enter your Brex API user token to pull your Brex data into the Flind Data warehouse.
 
 You can create a token in your [Brex dashboard](https://dashboard.brex.com/settings/developer) under Settings → Developer. Grant read access to the data you want to sync: Transactions and Accounts (card and cash transactions, card and cash accounts), Expenses, Team (users, departments, locations, titles, cost centers, cards), Payments (vendors, transfers), Budgets (budgets, budget programs, spend limits), and Fields (custom fields and their values).
 

@@ -47,7 +47,7 @@ export function UsageButton() {
   if (!billingEnabled) return null;
 
   // Same-size placeholder while usage loads, so the button doesn't pop in and
-  // shift the PostHog Web button after boot.
+  // shift the Flind Web button after boot.
   if (meter.kind === "hidden") {
     if (!isLoading) return null;
     return (

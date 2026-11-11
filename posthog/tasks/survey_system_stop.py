@@ -9,7 +9,7 @@ def log_survey_stopped_by_system(survey: Survey, job_type: str, payload: dict[st
     log_activity(
         organization_id=survey.team.organization_id,
         team_id=survey.team_id,
-        user=None,  # system action: renders as PostHog in the activity log
+        user=None,  # system action: renders as Flind in the activity log
         was_impersonated=False,
         item_id=survey.id,
         scope="Survey",

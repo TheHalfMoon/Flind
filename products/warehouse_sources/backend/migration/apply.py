@@ -44,12 +44,12 @@ def with_table_overrides(
     """Apply the mapping the user confirmed: rename a planned table, add an unmatched one, or drop one.
 
     An unmatched table keeps the column exclusions and row filters it has in `vendor_tables`, and any
-    restriction PostHog cannot keep adds a caveat to `caveats`.
+    restriction Flind cannot keep adds a caveat to `caveats`.
     """
     if not overrides:
         return proposal
     if proposal.schemas is None:
-        raise TableOverrideError("This plan uses PostHog's default tables, so it takes no table overrides.")
+        raise TableOverrideError("This plan uses Flind's default tables, so it takes no table overrides.")
     repeated = sorted(name for name, count in Counter(o.vendor_table for o in overrides).items() if count > 1)
     if repeated:
         raise TableOverrideError(f"`{repeated[0]}` appears in more than one table override.")
@@ -93,20 +93,20 @@ def with_table_overrides(
 class PlannedSchemas:
     # The `schemas` payload for source creation, one entry per discovered table.
     schemas: list[dict[str, Any]]
-    # Planned tables that PostHog did not find or cannot sync with these credentials.
+    # Planned tables that Flind did not find or cannot sync with these credentials.
     unavailable: tuple[str, ...]
     # Planned tables that only sync through a webhook, so they start off until one is registered.
     webhook_only: tuple[str, ...]
     # Discovered tables the plan covers, so a webhook may turn on these and no others.
     planned: tuple[str, ...]
-    # Planned tables that skip columns PostHog would still read, so they stay off.
+    # Planned tables that skip columns Flind would still read, so they stay off.
     kept_off: tuple[str, ...] = ()
 
 
 def build_planned_schemas(
     proposal: ItemProposal, source_schemas: list[SourceSchema], permission_errors: Mapping[str, str | None]
 ) -> PlannedSchemas:
-    """Turn the plan into a create payload: PostHog defaults per table, narrowed to what Fivetran synced."""
+    """Turn the plan into a create payload: Flind defaults per table, narrowed to what Fivetran synced."""
     if proposal.schemas is None:
         defaults = build_default_schemas(source_schemas, permission_errors=permission_errors)
         if proposal.start_paused:

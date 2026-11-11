@@ -37,7 +37,7 @@ export interface CodexOptions {
    */
   serviceTier?: string;
   /**
-   * Static HTTP headers forwarded on every request to the PostHog gateway
+   * Static HTTP headers forwarded on every request to the Flind gateway
    * (the codex equivalent of Claude's `ANTHROPIC_CUSTOM_HEADERS`). Carries the
    * `x-posthog-property-*` attribution headers the gateway lifts onto the
    * `$ai_generation` event (team_id, ai_stage, task metadata).
@@ -79,7 +79,7 @@ export interface CodexAppServerProcessOptions {
   /** Guidance appended to Codex's base prompt via `developer_instructions`. */
   developerInstructions?: string;
   /**
-   * Static HTTP headers forwarded on every request to the PostHog gateway, set
+   * Static HTTP headers forwarded on every request to the Flind gateway, set
    * as `model_providers.posthog.http_headers`. Codex equivalent of Claude's
    * `ANTHROPIC_CUSTOM_HEADERS` (see {@link CodexOptions.httpHeaders}).
    */
@@ -161,12 +161,12 @@ export function buildAppServerArgs(
   args.push("-c", "features.remote_models=false");
 
   // Ambient plugins from the user's config.toml inject MCP servers and
-  // session-start hooks into PostHog sessions (e.g. an unauthenticated plugin
+  // session-start hooks into Flind sessions (e.g. an unauthenticated plugin
   // MCP failing every thread, hooks wedging turns). Threads only get the MCP
-  // servers PostHog injects, so disable the plugin system outright.
+  // servers Flind injects, so disable the plugin system outright.
   args.push("-c", "features.plugins=false");
 
-  // PostHog owns these integrations. Do not run user hooks or send task data
+  // Flind owns these integrations. Do not run user hooks or send task data
   // to telemetry exporters from the user's Codex config.
   args.push("-c", "mcp_servers={}");
   const taskRunSandbox = isTaskRunSandbox(environment);
@@ -217,7 +217,7 @@ export function buildAppServerArgs(
 
   if (options.apiBaseUrl) {
     args.push("-c", `model_provider="posthog"`);
-    args.push("-c", `model_providers.posthog.name="PostHog Gateway"`);
+    args.push("-c", `model_providers.posthog.name="Flind Gateway"`);
     // The loopback proxy URL carries a secret path token, and argv is readable
     // by any local user, so a desktop session names it in CODEX_HOME instead.
     if (options.apiBaseUrlInConfig && !options.codexHome) {
@@ -293,7 +293,7 @@ export function spawnCodexAppServerProcess(
   // Codex hands its environment to every shell the exec tools run, so an
   // ambient provider key would be readable by any script the agent executes.
   // Neither auth mode needs them: gateway mode pins model_provider to the
-  // PostHog provider (env_key=POSTHOG_GATEWAY_API_KEY), machine auth uses the
+  // Flind provider (env_key=POSTHOG_GATEWAY_API_KEY), machine auth uses the
   // ChatGPT login state.
   delete env.CODEX_ACCESS_TOKEN;
   delete env.CODEX_API_KEY;

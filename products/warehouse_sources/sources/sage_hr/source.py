@@ -51,7 +51,7 @@ class SageHRSource(ResumableSource[SageHRSourceConfig, SageHRResumeConfig]):
             label="Sage HR",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["cakehr", "hris"],
-            caption="""Enter your Sage HR company subdomain and API key to pull your HR data into the PostHog Data warehouse.
+            caption="""Enter your Sage HR company subdomain and API key to pull your HR data into the Flind Data warehouse.
 
 An admin must first enable API access under **Settings → Integrations → API** in Sage HR, which generates the API key. Requests go to your own subdomain — for `https://yourcompany.sage.hr` the subdomain is `yourcompany`.""",
             iconPath="/static/services/sage_hr.png",

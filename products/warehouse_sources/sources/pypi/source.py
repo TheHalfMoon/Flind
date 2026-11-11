@@ -48,7 +48,7 @@ class PyPISource(SimpleSource[PyPISourceConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="PyPI",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Pull metadata for Python packages from the [PyPI](https://pypi.org) JSON API into the PostHog Data warehouse.
+            caption="""Pull metadata for Python packages from the [PyPI](https://pypi.org) JSON API into the Flind Data warehouse.
 
 PyPI's read APIs are public, so no credentials are required. There is no list endpoint, so enter the package names you want to track, one per line (or comma-separated). For example:
 

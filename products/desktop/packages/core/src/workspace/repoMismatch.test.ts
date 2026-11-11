@@ -8,7 +8,7 @@ describe("detectRepoFullName", () => {
 
   it("joins organization and repository", () => {
     expect(
-      detectRepoFullName({ organization: "PostHog", repository: "posthog" }),
+      detectRepoFullName({ organization: "Flind", repository: "posthog" }),
     ).toBe("PostHog/posthog");
   });
 });

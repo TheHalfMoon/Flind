@@ -16,7 +16,7 @@ import { broadcastAudienceSuggestionsLogic } from './broadcastAudienceSuggestion
 const LOADING_CARD_COUNT = 3
 
 function audienceRule(suggestion: AudienceSuggestionApi): JSX.Element {
-    // PostHog's own events show their label, like "Pageview", rather than "$pageview".
+    // Flind's own events show their label, like "Pageview", rather than "$pageview".
     const label = (name: string): string => getFilterLabel(name, TaxonomicFilterGroupType.Events)
     const event = <code className="text-primary">{label(suggestion.event)}</code>
     const days = `${suggestion.window_days} days`

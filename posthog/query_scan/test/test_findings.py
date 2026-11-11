@@ -175,7 +175,7 @@ class TestFindings(SimpleTestCase):
                 QueryScanFindingKind.PERSONS_JOIN,
                 {},
                 "TrendsQuery",
-                'PostHog recommends "Use person properties from the time of the event"',
+                'Flind recommends "Use person properties from the time of the event"',
                 "do not propose an edit",
             ),
         ]

@@ -96,7 +96,7 @@ function assertCredentialsMatchCustomCloud(
     credentials.customOauthClientId !== target.oauthClientId
   ) {
     throw new Error(
-      "The custom PostHog instance changed since sign-in. Sign in again to continue.",
+      "The custom Flind instance changed since sign-in. Sign in again to continue.",
     );
   }
 }
@@ -118,7 +118,7 @@ async function postToken(
   if (!response.ok) {
     const detail = await response.text().catch(() => "");
     throw new Error(
-      `PostHog token request failed: ${response.status} ${response.statusText} ${detail}`.trim(),
+      `Flind token request failed: ${response.status} ${response.statusText} ${detail}`.trim(),
     );
   }
   return (await response.json()) as OAuthTokenResponse;
@@ -134,8 +134,8 @@ function openBrowser(url: string): void {
   } catch {}
 }
 
-const SUCCESS_PAGE = `<!doctype html><html><head><meta charset="utf-8"><title>PostHog</title></head><body style="font-family:system-ui;text-align:center;padding-top:20vh"><h1>Authentication complete</h1><p>You can close this window and return to your terminal.</p></body></html>`;
-const ERROR_PAGE = `<!doctype html><html><head><meta charset="utf-8"><title>PostHog</title></head><body style="font-family:system-ui;text-align:center;padding-top:20vh"><h1>Authentication failed</h1><p>Please return to your terminal and try again.</p></body></html>`;
+const SUCCESS_PAGE = `<!doctype html><html><head><meta charset="utf-8"><title>Flind</title></head><body style="font-family:system-ui;text-align:center;padding-top:20vh"><h1>Authentication complete</h1><p>You can close this window and return to your terminal.</p></body></html>`;
+const ERROR_PAGE = `<!doctype html><html><head><meta charset="utf-8"><title>Flind</title></head><body style="font-family:system-ui;text-align:center;padding-top:20vh"><h1>Authentication failed</h1><p>Please return to your terminal and try again.</p></body></html>`;
 
 function waitForCallbackCode(options: {
   port: number;
@@ -159,11 +159,11 @@ function waitForCallbackCode(options: {
       // shows "Authentication complete" on a path we're about to reject (an
       // OAuth error, a missing code, or a state mismatch).
       const failureReason = error
-        ? `PostHog OAuth error: ${error}`
+        ? `Flind OAuth error: ${error}`
         : !code
-          ? "PostHog OAuth callback missing code"
+          ? "Flind OAuth callback missing code"
           : expectedState && state !== expectedState
-            ? "PostHog OAuth state mismatch"
+            ? "Flind OAuth state mismatch"
             : undefined;
       res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
       res.end(failureReason ? ERROR_PAGE : SUCCESS_PAGE);
@@ -178,12 +178,12 @@ function waitForCallbackCode(options: {
 
     const timeout = setTimeout(() => {
       cleanup();
-      reject(new Error("PostHog OAuth timed out"));
+      reject(new Error("Flind OAuth timed out"));
     }, OAUTH_TIMEOUT_MS);
 
     const onAbort = () => {
       cleanup();
-      reject(new Error("PostHog OAuth cancelled"));
+      reject(new Error("Flind OAuth cancelled"));
     };
 
     function cleanup(): void {
@@ -212,7 +212,7 @@ const REGION_LOGIN_OPTIONS: { id: CloudRegion; label: string }[] = [
 ];
 
 /**
- * Prompts the user to pick their PostHog region via the login callbacks'
+ * Prompts the user to pick their Flind region via the login callbacks'
  * selector. Development regions are intentionally not offered here; they stay
  * reachable only through an explicit `POSTHOG_REGION`.
  */
@@ -220,17 +220,17 @@ async function selectRegion(
   callbacks: OAuthLoginCallbacks,
 ): Promise<CloudRegion> {
   const picked = await callbacks.onSelect({
-    message: "Select your PostHog region",
+    message: "Select your Flind region",
     options: REGION_LOGIN_OPTIONS,
   });
   if (picked !== "us" && picked !== "eu") {
-    throw new Error("PostHog region selection cancelled");
+    throw new Error("Flind region selection cancelled");
   }
   return picked;
 }
 
 /**
- * Logs in to PostHog. When `explicitRegion` is provided (an explicit option
+ * Logs in to Flind. When `explicitRegion` is provided (an explicit option
  * or `POSTHOG_REGION`), that region is used directly; otherwise the user is
  * prompted to choose between the supported regions.
  */
@@ -257,7 +257,7 @@ export async function loginPosthog(
       callbacks.onAuth({
         url: authUrlString,
         instructions:
-          "Opening your browser to sign in to PostHog. If it doesn't open, visit the URL above.",
+          "Opening your browser to sign in to Flind. If it doesn't open, visit the URL above.",
       });
       openBrowser(authUrlString);
     },

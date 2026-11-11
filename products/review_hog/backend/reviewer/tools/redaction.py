@@ -1,6 +1,6 @@
 """Scrub credential shapes out of agent-authored text before it reaches GitHub.
 
-The resolution sandbox holds a GitHub installation token and a PostHog personal API key, and its
+The resolution sandbox holds a GitHub installation token and a Flind personal API key, and its
 git remote carries the token inline, so command output an agent pastes into a verdict can contain
 a live credential. Matching on token shapes needs no access to the live values, which the delivery
 step does not have.

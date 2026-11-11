@@ -116,11 +116,11 @@ def slack_app_command_handler(request: HttpRequest) -> HttpResponse:
     # ``None`` means handle locally; the ROUTE_* values are terminal exits.
     if region_route == ROUTE_NO_INTEGRATION:
         return _ephemeral_response(
-            "This Slack workspace isn't connected to a PostHog organization. "
+            "This Slack workspace isn't connected to a Flind organization. "
             "Connect it from a project's *Integrations* page first."
         )
     if region_route == ROUTE_PROXY_FAILED:
-        return _ephemeral_response("Couldn't reach the PostHog backend — try again in a moment.")
+        return _ephemeral_response("Couldn't reach the Flind backend — try again in a moment.")
     if region_route is not None:
         # ROUTE_PROXIED: the sibling region already accepted the forwarded payload
         # and will post the bot's reply through its own Slack client. Ack with 200.

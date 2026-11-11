@@ -5,7 +5,7 @@ description: >
   Follow-up Signals scout for recently merged pull requests.
   Works out whether each one has deployed, then checks the project's telemetry for whether it did what it claimed, had the impact it expected, or caused a side effect that needs a look.
 compatibility: >
-  PostHog Signals agent (Claude sandbox).
+  Flind Signals agent (Claude sandbox).
   Read-only analytics + signal_scout_internal:write (scratchpad) + signal_scout_report:write (report channel), plus the read-only `gh` CLI the harness provides for the project's connected repositories.
   Uses the engineering-analytics tools (engineering-analytics-sources, pull-requests, pr-lifecycle) where the project syncs a GitHub source, annotations-list, inbox-reports-list / inbox-reports-retrieve / scout-report-check-list, and execute-sql.
   Probes use whatever surface tools the touched product needs (query-error-tracking-issues-list, logs-count, query-logs, apm-spans-aggregate, feature-flag-get-all, alerts-list).

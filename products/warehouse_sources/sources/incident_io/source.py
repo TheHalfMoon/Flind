@@ -34,7 +34,7 @@ from products.warehouse_sources.sources.sdk import (
     detect,
 )
 
-FOLLOW_UPS_V2_REMOVED_MESSAGE = "incident.io removed the follow-ups endpoint that API version v1 reads. Contact PostHog support to move this source to API version v3."
+FOLLOW_UPS_V2_REMOVED_MESSAGE = "incident.io removed the follow-ups endpoint that API version v1 reads. Contact Flind support to move this source to API version v3."
 
 
 @SourceRegistry.register
@@ -78,7 +78,7 @@ class IncidentIoSource(ResumableSource[IncidentIoSourceConfig, IncidentIoResumeC
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             keywords=["incident.io"],
             label="incident.io",
-            caption="""Enter your incident.io API key to pull your incident data into the PostHog Data warehouse.
+            caption="""Enter your incident.io API key to pull your incident data into the Flind Data warehouse.
 
 You can create an API key in your [incident.io dashboard](https://app.incident.io/settings/api-keys). API keys have per-resource permissions — grant the `view` scope for each resource you want to sync (incidents, follow-ups, alerts, users, and so on).""",
             iconPath="/static/services/incident_io.png",

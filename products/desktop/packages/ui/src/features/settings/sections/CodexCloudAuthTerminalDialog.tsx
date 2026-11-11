@@ -44,7 +44,7 @@ export function CodexCloudAuthTerminalDialog({
     if (!stopped) return "Finish the login in this terminal.";
     if (connected)
       return "ChatGPT account connected. You can close this window.";
-    return "Handing the login to PostHog.";
+    return "Handing the login to Flind.";
   })();
 
   const handleExit = useCallback(
@@ -72,7 +72,7 @@ export function CodexCloudAuthTerminalDialog({
         <DialogBody className="flex flex-col gap-3">
           <p className="text-muted-foreground text-xs leading-relaxed">
             Follow the steps in this terminal. Desktop hands the login to
-            PostHog when it finishes. This login is separate from your local
+            Flind when it finishes. This login is separate from your local
             codex login.
           </p>
 

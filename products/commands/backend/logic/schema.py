@@ -146,7 +146,7 @@ class Grammar:
 
 @frozen
 class ResourceAccess:
-    """A PostHog access-control resource the commenter needs on a project for the command."""
+    """A Flind access-control resource the commenter needs on a project for the command."""
 
     resource: APIScopeObject
     level: AccessLevel
@@ -272,7 +272,7 @@ REVIEW = CommandDeclaration(
     verb="review",
     summary="Start a Standard review of this pull request.",
     args=ReviewArgs,
-    dispatches_to="PostHog Review",
+    dispatches_to="Flind Review",
     access=ResourceAccess(resource="review_hog", level="editor"),
 )
 STAMP = CommandDeclaration(
@@ -285,9 +285,9 @@ STAMP = CommandDeclaration(
 )
 QA = CommandDeclaration(
     verb="qa",
-    summary="Run frontend QA on this pull request in PostHog Code and post a report.",
+    summary="Run frontend QA on this pull request in Flind Code and post a report.",
     args=QaArgs,
-    dispatches_to="PostHog Code",
+    dispatches_to="Flind Code",
     access=ResourceAccess(resource="task", level="editor"),
 )
 LOOP = CommandDeclaration(
@@ -321,7 +321,7 @@ DOCS = CommandDeclaration(
     access=ResourceAccess(resource="task", level="editor"),
     pull_request_states=("merged",),
 )
-# Answered by dispatch itself: it needs no PostHog account, project or pull request state.
+# Answered by dispatch itself: it needs no Flind account, project or pull request state.
 HELP = CommandDeclaration(
     verb=HELP_VERB,
     summary="List these commands.",

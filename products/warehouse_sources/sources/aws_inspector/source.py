@@ -120,7 +120,7 @@ class AwsInspectorSource(ResumableSource[AwsInspectorSourceConfig, AwsInspectorR
             name=ExternalDataSourceType.AWSINSPECTOR,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="AWS Inspector",
-            caption="""Sync Amazon Inspector findings, scan coverage, and CIS scans into the PostHog Data warehouse.
+            caption="""Sync Amazon Inspector findings, scan coverage, and CIS scans into the Flind Data warehouse.
 
 Enable Amazon Inspector in the region you select. Grant these IAM permissions for the tables you select:
 

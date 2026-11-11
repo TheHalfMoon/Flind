@@ -80,7 +80,7 @@ def test_build_events_matches_the_action_event_shape() -> None:
             "runNumber": None,
             "runId": 42,
             "repository": "posthog",
-            "repositoryOwner": "PostHog",
+            "repositoryOwner": "Flind",
             "actor": "octocat",
             "actor_type": "human",
             "eventName": "pull_request",

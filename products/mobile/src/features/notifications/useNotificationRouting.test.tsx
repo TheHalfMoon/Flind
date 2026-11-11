@@ -44,7 +44,7 @@ function notification(identifier: string): Notifications.Notification {
             identifier,
             trigger: { type: 'push' },
             content: {
-                title: 'PostHog',
+                title: 'Flind',
                 subtitle: null,
                 body: 'Report update',
                 data: reportData,

@@ -84,7 +84,7 @@ class PreferencesLinkSerializer(serializers.Serializer):
 
 
 class WebhookUrlSerializer(serializers.Serializer):
-    url = serializers.URLField(help_text="URL to register in Customer.io so it posts subscription changes to PostHog.")
+    url = serializers.URLField(help_text="URL to register in Customer.io so it posts subscription changes to Flind.")
 
 
 class MessagingErrorSerializer(serializers.Serializer):

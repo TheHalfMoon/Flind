@@ -45,7 +45,7 @@ class ExternalDataJob(CreatedMetaFields, UpdatedMetaFields, UUIDTModel):
     billable = models.BooleanField(default=True, null=True, blank=True)
     # The destinations this run delivers to, snapshotted when the run started so a config
     # change mid-run cannot alter where an in-flight run lands or what it bills. Empty means
-    # the PostHog warehouse alone, which is every run that predates destinations.
+    # the Flind warehouse alone, which is every run that predates destinations.
     destination_ids = models.JSONField(default=list, blank=True, db_default=[])
     finished_at = models.DateTimeField(null=True, blank=True)
     storage_delta_mib = models.FloatField(null=True, blank=True, default=0)
@@ -181,7 +181,7 @@ def get_latest_run_if_exists(team_id: int, pipeline_id: UUID) -> ExternalDataJob
 def billable_destination_multiplier() -> Greatest:
     """How many destinations a run billed for, derived from the ids it snapshotted.
 
-    An empty list means the PostHog warehouse alone, so the floor is one. Derived rather than
+    An empty list means the Flind warehouse alone, so the floor is one. Derived rather than
     stored beside the ids: the count is exactly `len(destination_ids)`, and a second column
     holding the same fact can drift from it without anything noticing.
     """

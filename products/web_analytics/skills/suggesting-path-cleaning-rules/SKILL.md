@@ -76,7 +76,7 @@ review). To hand-author or directly apply rules, use the `managing-path-cleaning
   `PATCH .../health_issues/{id}/` with `{"dismissed": true}`).
 - **Health page**: the check renders on `/web/health` alongside the other web-analytics checks, with
   remediation guidance for humans and agents.
-- **PostHog AI (Max)**: generate/apply are exposed as MCP tools in
+- **Flind AI (Max)**: generate/apply are exposed as MCP tools in
   `products/web_analytics/mcp/tools.yaml` (`web-analytics-path-cleaning-suggestions-{generate,apply}`),
   so a user can ask Max to suggest path-cleaning rules and apply them conversationally. Apply is
   `destructive` (it changes historical chart numbers), so the MCP confirmation gate applies.

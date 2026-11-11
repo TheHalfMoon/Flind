@@ -9,7 +9,7 @@ describe('slack template', () => {
     const commonInputs = {
         slack_workspace: { access_token: 'xoxb-1234' },
         icon_emoji: ':hedgehog:',
-        username: 'PostHog',
+        username: 'Flind',
         channel: 'channel',
         blocks: [],
         text: 'hello',
@@ -46,7 +46,7 @@ describe('slack template', () => {
         expect(bodyOf(response.invocation.queueParameters)).toEqual({
             channel: 'channel',
             icon_emoji: ':hedgehog:',
-            username: 'PostHog',
+            username: 'Flind',
             blocks: [],
             text: 'hello',
         })

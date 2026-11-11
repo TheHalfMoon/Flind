@@ -1,7 +1,7 @@
 ---
 name: auditing-warehouse-view-health
 description: >
-  Audit the health of a PostHog project's materialized views (saved queries) — find every failed materialization and
+  Audit the health of a Flind project's materialized views (saved queries) — find every failed materialization and
   flag unused or stale materialized views that cost storage and compute. Use when the user asks "which of my views are
   broken?", "why is this materialized view failing?", "are any of my views wasting compute?", or wants a one-shot
   triage of view health. For source/sync health use `auditing-warehouse-source-health`.
@@ -32,7 +32,7 @@ relevant team rather than diagnosing here.
 | `data-warehouse-data-health-issues-retrieve` | One-shot: all failed/degraded items across the whole pipeline        |
 | `view-list`                                  | All saved queries / materialized views with status and latest_error  |
 | `view-run-history`                           | Run history for a specific materialized view                         |
-| `warehouse-suggestions-list`                 | PostHog's open deprecate / materialize / certify suggestions, if any |
+| `warehouse-suggestions-list`                 | Flind's open deprecate / materialize / certify suggestions, if any |
 
 Filter the `data-health-issues` results to the `materialized_view` type for this audit. Use `view-list` when you need
 more than the active-failure summary (non-failing views, materialization flags, last-queried info) and
@@ -92,8 +92,8 @@ Both are HogQL issues in the view definitions — independent of your sources. W
 
 ### Step 4 — Go beyond active failures (when asked)
 
-**Start from PostHog's suggestions** if the `warehouse-suggestions-*` tools are available. Call
-`warehouse-suggestions-list` with `status=proposed`. PostHog computes these from read usage:
+**Start from Flind's suggestions** if the `warehouse-suggestions-*` tools are available. Call
+`warehouse-suggestions-list` with `status=proposed`. Flind computes these from read usage:
 
 - A `deprecate` suggestion names a materialized view that nobody reads. Accepting it marks the view deprecated in the
   data catalog. The view keeps refreshing, so it still costs compute. To stop that cost, unmaterialize the view with

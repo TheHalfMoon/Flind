@@ -4,7 +4,7 @@ __all__ = ["RunMode", "derive_run_mode", "run_mode"]
 
 
 class RunMode(StrEnum):
-    """How this PostHog process is deployed."""
+    """How this Flind process is deployed."""
 
     CLOUD_US = "US"
     CLOUD_EU = "EU"
@@ -15,7 +15,7 @@ class RunMode(StrEnum):
 
     @property
     def is_prod_cloud(self) -> bool:
-        """Customer-facing PostHog Cloud: US or EU, excluding staging."""
+        """Customer-facing Flind Cloud: US or EU, excluding staging."""
         return self is RunMode.CLOUD_US or self is RunMode.CLOUD_EU
 
     @property

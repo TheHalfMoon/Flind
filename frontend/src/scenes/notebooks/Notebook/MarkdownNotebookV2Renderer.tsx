@@ -567,7 +567,7 @@ export function MarkdownNotebookV2({
                 return node ? [node] : null
             }
 
-            // Entity links (`Link`) drag with only their href: map recognized PostHog resource
+            // Entity links (`Link`) drag with only their href: map recognized Flind resource
             // URLs to their component node, and keep anything else as a plain link block.
             const draggedUrl = (dataTransfer.getData('text/uri-list') ?? '')
                 .split('\n')

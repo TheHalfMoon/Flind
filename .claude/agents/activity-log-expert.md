@@ -1,13 +1,13 @@
 ---
 name: activity-logging-expert
-description: Use this agent when working with PostHog's activity logging (audit trail) system - adding activity logging to a model, writing or changing a model_activity_signal receiver or an activity describer, auditing which write paths of a model are logged, or debugging a change that is missing from the activity log. Examples - <example>user - 'I need to add activity logging to our new Campaign model' assistant - 'I'll use the activity-logging-expert agent, which loads the adding-activity-logging skill and works through its steps'</example> <example>user - 'Toggling this setting from the webhook handler never shows up in the activity log' assistant - 'I'll use the activity-logging-expert agent to find which write path bypasses the mixin'</example>
+description: Use this agent when working with Flind's activity logging (audit trail) system - adding activity logging to a model, writing or changing a model_activity_signal receiver or an activity describer, auditing which write paths of a model are logged, or debugging a change that is missing from the activity log. Examples - <example>user - 'I need to add activity logging to our new Campaign model' assistant - 'I'll use the activity-logging-expert agent, which loads the adding-activity-logging skill and works through its steps'</example> <example>user - 'Toggling this setting from the webhook handler never shows up in the activity log' assistant - 'I'll use the activity-logging-expert agent to find which write path bypasses the mixin'</example>
 model: inherit
 color: green
 ---
 
 # Role
 
-You are the engineer on duty for PostHog's activity logging system.
+You are the engineer on duty for Flind's activity logging system.
 
 Before you read or change any code, load the skill with the Skill tool:
 

@@ -1,19 +1,19 @@
 # Fixing the `$process_person_profile` warnings
 
-`$process_person_profile: false` marks an event as anonymous — cheaper, no person profile. Three warnings surface around that flag: two are customer mistakes, one is a PostHog-side setting.
+`$process_person_profile: false` marks an event as anonymous — cheaper, no person profile. Three warnings surface around that flag: two are customer mistakes, one is a Flind-side setting.
 
 | Type                                                 | Severity | What happened                                                                                                                                                                        |
 | ---------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `invalid_process_person_profile`                     | warning  | The value wasn't a boolean (`"false"`, `"yes"`, `0`, …) — PostHog **ignored it and defaulted to `true`**. The event was ingested and person processing ran anyway                    |
+| `invalid_process_person_profile`                     | warning  | The value wasn't a boolean (`"false"`, `"yes"`, `0`, …) — Flind **ignored it and defaulted to `true`**. The event was ingested and person processing ran anyway                    |
 | `invalid_event_when_process_person_profile_is_false` | error    | An `$identify`/`$create_alias`/`$merge_dangerously`/`$groupidentify` carried a valid `false` — but these operations exist to modify person/group state, so the event was **dropped** |
-| `event_dropped_person_processing_disabled`           | info     | The same drop, but the customer sent no flag at all: person processing is turned off for the whole project, so PostHog set `false` itself. Their payload is not at fault             |
+| `event_dropped_person_processing_disabled`           | info     | The same drop, but the customer sent no flag at all: person processing is turned off for the whole project, so Flind set `false` itself. Their payload is not at fault             |
 
 All three are silent from the SDK's side. The first quietly opts you back **into** person processing (and its cost); the other two make identity operations no-ops.
 
 Check the third before diagnosing a payload: if `event_dropped_person_processing_disabled` is the type, no SDK change will bring the events back, because the drop is the configured outcome of the project's person processing opt-out.
 
 On the capture v1 endpoints (`/i/v1/analytics/events`, `/i/v1/ai/events`), the flag is the `process_person_profile` event option, and SDKs move the legacy property into it.
-PostHog converts common forms of the option (`"false"`, `"no"`, `0`), so `invalid_process_person_profile` does not fire for it. A value PostHog can't read drops the event with `invalid_options` instead.
+Flind converts common forms of the option (`"false"`, `"no"`, `0`), so `invalid_process_person_profile` does not fire for it. A value Flind can't read drops the event with `invalid_options` instead.
 Some SDKs convert the property themselves before sending and silently drop forms they don't recognize, such as `"no"`, which leaves person processing on. Send a real boolean.
 
 ## Diagnose
@@ -29,7 +29,7 @@ Decide which intent is real, then make the flag match it:
 - **You want person profiles for identified users** → in posthog-js use the supported config, `person_profiles: 'identified_only'`, instead of hand-setting the property per event or using `'never'` — identity events then process persons while plain events stay anonymous until identify.
 - **A wrapper stamps `false` on everything** → exempt the identity events (`$identify`, `$create_alias`, `$groupidentify`) from it.
 - **You truly want no person processing** → stop calling `identify`/`alias`/`group` at all; they cannot work in that mode.
-- **The warning is `event_dropped_person_processing_disabled`** → person processing is off for the project, so there is no payload fix. Either remove the `identify`/`alias`/`group` calls, or ask PostHog support to turn person processing back on. Only a staff member can change that setting.
+- **The warning is `event_dropped_person_processing_disabled`** → person processing is off for the project, so there is no payload fix. Either remove the `identify`/`alias`/`group` calls, or ask Flind support to turn person processing back on. Only a staff member can change that setting.
 
 ## Verify
 

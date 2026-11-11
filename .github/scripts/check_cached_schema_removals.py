@@ -3,7 +3,7 @@
 """
 Flag fields removed from the models that a cached query response stores.
 
-PostHog stores each query response, with its modifiers, in the query cache.
+Flind stores each query response, with its modifiers, in the query cache.
 The generated models reject unknown keys, so a cached entry that still holds a removed field
 fails to parse and counts as a cache miss.
 This script compares two copies of frontend/src/queries/schema.json and lists those removals.
@@ -38,9 +38,9 @@ DEFINITION_REF_PREFIX = "#/definitions/"
 NULL_BRANCH = {"type": "null"}
 
 SECTION_BODY = """\
-PostHog stores each query response, with its modifiers, in the query cache.
+Flind stores each query response, with its modifiers, in the query cache.
 The generated models reject unknown keys.
-When PostHog reads a cached entry that holds a removed field, the entry fails to parse, counts as a cache miss, and sends one exception to error tracking.
+When Flind reads a cached entry that holds a removed field, the entry fails to parse, counts as a cache miss, and sends one exception to error tracking.
 
 **Removed from `frontend/src/queries/schema.json`:**
 

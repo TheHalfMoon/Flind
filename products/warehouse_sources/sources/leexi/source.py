@@ -49,7 +49,7 @@ class LeexiSource(ResumableSource[LeexiSourceConfig, LeexiResumeConfig]):
             label="Leexi",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["notetaker", "call recording", "conversation intelligence", "transcription"],
-            caption="""Enter a Leexi API key pair to pull your Leexi calls, notes, meeting events, users, and teams into the PostHog Data warehouse.
+            caption="""Enter a Leexi API key pair to pull your Leexi calls, notes, meeting events, users, and teams into the Flind Data warehouse.
 
 You can create an API key in Leexi under Settings > Company settings > API keys (requires an admin account).
 

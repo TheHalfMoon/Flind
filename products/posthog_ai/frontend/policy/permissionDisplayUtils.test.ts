@@ -25,7 +25,7 @@ function makeRequest(overrides: Partial<PermissionRequestRecord> = {}): Permissi
 }
 
 describe('permissionDisplayUtils', () => {
-    it('unwraps PostHog exec call commands into an MCP title and pretty JSON payload', () => {
+    it('unwraps Flind exec call commands into an MCP title and pretty JSON payload', () => {
         const display = getPermissionDisplay(
             makeRequest({
                 rawToolCall: {
@@ -41,7 +41,7 @@ describe('permissionDisplayUtils', () => {
         })
     })
 
-    it('prefers explicit PostHog exec input when present', () => {
+    it('prefers explicit Flind exec input when present', () => {
         expect(
             getPostHogExecDisplay({
                 command: 'call execute-sql {"query":"wrapped"}',
@@ -53,7 +53,7 @@ describe('permissionDisplayUtils', () => {
         })
     })
 
-    it('keeps non-JSON PostHog exec args displayable', () => {
+    it('keeps non-JSON Flind exec args displayable', () => {
         const display = getPermissionDisplay(
             makeRequest({
                 rawToolCall: {
@@ -77,14 +77,14 @@ describe('permissionDisplayUtils', () => {
                     ...rawToolCall,
                     rawServerName: 'github',
                     rawToolName: 'create_issue',
-                    input: { owner: 'PostHog', repo: 'posthog' },
+                    input: { owner: 'Flind', repo: 'posthog' },
                 },
             })
         )
 
         expect(display).toEqual({
             title: 'github - create_issue (MCP)',
-            payload: '{\n  "owner": "PostHog",\n  "repo": "posthog"\n}',
+            payload: '{\n  "owner": "Flind",\n  "repo": "posthog"\n}',
         })
     })
 })

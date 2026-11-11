@@ -6,7 +6,7 @@ import { track } from "@flind/ui/shell/analytics";
 import { Text } from "@radix-ui/themes";
 import { Link } from "@tanstack/react-router";
 
-// The two official scout helper skills are bundled with the PostHog plugin, so
+// The two official scout helper skills are bundled with the Flind plugin, so
 // they open in the in-app Skills view rather than linking out to GitHub. `name`
 // is the skill's frontmatter name, used to select it once Skills loads.
 const HELPER_SKILLS = [

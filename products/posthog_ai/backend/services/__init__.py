@@ -1,1 +1,1 @@
-"""Sandbox-runtime services for PostHog AI."""
+"""Sandbox-runtime services for Flind AI."""

@@ -29,7 +29,7 @@ export function ScoutsEmptyState(): JSX.Element {
             <h3 className="m-0 text-base font-semibold">No scouts on this project yet</h3>
             <p className="m-0 max-w-md text-sm text-tertiary">
                 {hasPicks
-                    ? 'Here is what PostHog would watch on this project. Turn one on, or write your own.'
+                    ? 'Here is what Flind would watch on this project. Turn one on, or write your own.'
                     : 'Create a scout to investigate a recurring signal or behavior on a schedule.'}
             </p>
             {hasPicks && (

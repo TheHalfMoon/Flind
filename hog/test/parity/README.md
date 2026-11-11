@@ -1,7 +1,7 @@
 # Parity with posthog-cli
 
 `hog error-tracking` must upload exactly what `posthog-cli` uploads.
-PostHog stores a content hash per chunk ID, and a re-upload with a different hash fails with `content_hash_mismatch`.
+Flind stores a content hash per chunk ID, and a re-upload with a different hash fails with `content_hash_mismatch`.
 So a byte that differs between the two CLIs breaks every customer who switches from one to the other.
 
 These tests compare hog against goldens recorded from the Rust code.
@@ -17,7 +17,7 @@ The goldens are checked in, so the tests need no Rust toolchain.
 The container inputs sit on every boundary where libzstd's streaming output can differ from one-shot compression: exact multiples of the 128 KiB block, the 2 MiB window, and inputs up to 32 MiB.
 `inputs.ts` generates them from a seed, so large inputs are never checked in.
 
-The end-to-end scenarios cover a first upload, a re-upload of chunks PostHog already has, the multipart POST path, content and release conflicts with and without `--force` and `--skip-on-conflict`, check and start failures, and releases from flags and from git.
+The end-to-end scenarios cover a first upload, a re-upload of chunks Flind already has, the multipart POST path, content and release conflicts with and without `--force` and `--skip-on-conflict`, check and start failures, and releases from flags and from git.
 
 JavaScript scenarios also compare every file in the folder after the run, because `inject` rewrites bundles and maps, and `--delete-after` removes references and maps.
 They run on real bundler output in `bundles/` (esbuild, rollup, webpack and terser, with and without native debug IDs) and on the edge cases in `js-fixtures.ts`.

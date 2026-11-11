@@ -38,11 +38,11 @@ from products.warehouse_sources.sources.sdk import (
     detect,
 )
 
-CAPTION = """Enter your Adobe Commerce (Magento 2) store URL and API credentials to pull your store data into the PostHog Data warehouse.
+CAPTION = """Enter your Adobe Commerce (Magento 2) store URL and API credentials to pull your store data into the Flind Data warehouse.
 
 The recommended way to connect is an integration access token: in the admin go to **System > Extensions > Integrations**, create an integration, grant it read access to Sales, Catalog, Customers and Carts, then activate it and copy the **Access Token**.
 
-On Magento 2.4.4 and later, integration tokens are rejected as bearer tokens until you set **Stores > Configuration > Services > OAuth > Access Token Expiration > Allow OAuth Access Tokens to be used as standalone Bearer tokens** to **Yes**. If you can't change that setting, connect with an admin username and password instead and PostHog will mint a short-lived admin token for each sync."""
+On Magento 2.4.4 and later, integration tokens are rejected as bearer tokens until you set **Stores > Configuration > Services > OAuth > Access Token Expiration > Allow OAuth Access Tokens to be used as standalone Bearer tokens** to **Yes**. If you can't change that setting, connect with an admin username and password instead and Flind will mint a short-lived admin token for each sync."""
 
 
 def _credentials_from_config(config: AdobeCommerceSourceConfig) -> AdobeCommerceCredentials:

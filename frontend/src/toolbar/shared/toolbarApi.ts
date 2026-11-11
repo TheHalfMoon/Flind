@@ -10,7 +10,7 @@ import type { ElementsEventType, WebExperiment } from '~/toolbar/shared/types'
 import type { ActionType, CombinedFeatureFlagAndValueType, EventDefinition, ProductTour } from '~/types'
 
 /**
- * The single, blessed way to talk to the PostHog API from the toolbar.
+ * The single, blessed way to talk to the Flind API from the toolbar.
  *
  * Every authenticated data request should go through `toolbarApi` — preferably one of its
  * resource namespaces (`toolbarApi.actions.list()`, `toolbarApi.productTours.delete(id, …)`), which
@@ -234,7 +234,7 @@ const PROJECT = '/api/projects/@current'
 const ENVIRONMENT = '/api/environments/@current'
 
 /**
- * `toolbarApi` is the single entry point for talking to the PostHog API from the toolbar.
+ * `toolbarApi` is the single entry point for talking to the Flind API from the toolbar.
  *
  * Prefer the resource namespaces (`toolbarApi.actions.list()`, `toolbarApi.productTours.delete(id, …)`):
  * they own the route strings so every `/api/projects/@current/…` path lives in exactly one place

@@ -107,7 +107,7 @@ def _truncate_result_for_judge(result: str) -> str:
 SQL_SCHEMA_ALIGNMENT_PROMPT = """
 You are an expert ClickHouse SQL auditor judging whether an agent-produced HogQL query would equally answer the user's question, compared to a reference "ideal" query.
 
-HogQL is an SQL flavor derived from ClickHouse SQL, with PostHog-specific syntax:
+HogQL is an SQL flavor derived from ClickHouse SQL, with Flind-specific syntax:
 - JSON property access via `.`, like `SELECT properties.$browser FROM events`
 - Nested table access, like `SELECT person.properties.foo FROM events`
 - `sessions` table with session-level fields (`session.$session_duration` etc.)

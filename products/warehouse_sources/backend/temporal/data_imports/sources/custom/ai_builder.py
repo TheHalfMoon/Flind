@@ -62,7 +62,7 @@ MAX_DRAFT_ATTEMPTS = 4
 # byte cap and a connect/read timeout so a hostile or slow server can't hang or exhaust memory.
 DOCS_FETCH_TIMEOUT = (5, 20)  # (connect, read) seconds
 DOCS_FETCH_MAX_BYTES = 2_000_000
-DOCS_FETCH_USER_AGENT = "PostHog-CustomSourceBuilder/1.0"
+DOCS_FETCH_USER_AGENT = "Flind-CustomSourceBuilder/1.0"
 
 # The skill is the single source of truth for the prompt; load it from its canonical repo path
 # rather than duplicating the grammar here. parents[5] is the `warehouse_sources` product root.
@@ -146,7 +146,7 @@ def _docs_fetch_error_message(exc: requests.RequestException) -> str:
         return f"There is no page at that address. Check the link, or {_CONFIGURE_MANUALLY}."
     if isinstance(exc, requests.Timeout):
         return f"That docs page took too long to answer. Try again, or {_CONFIGURE_MANUALLY}."
-    return f"PostHog couldn't reach that docs page. Check the link, or {_CONFIGURE_MANUALLY}."
+    return f"Flind couldn't reach that docs page. Check the link, or {_CONFIGURE_MANUALLY}."
 
 
 def fetch_docs_text(url: str) -> str:
@@ -222,8 +222,8 @@ def build_system_prompt(reference_text: str) -> str:
     """The model's instructions: author a manifest from docs, using the skill as the grammar."""
     return "\n".join(
         [
-            "You are an expert at connecting REST APIs to PostHog's data warehouse. Given an API's "
-            "documentation, you author a single RESTAPIConfig manifest (JSON) that PostHog's generic "
+            "You are an expert at connecting REST APIs to Flind's data warehouse. Given an API's "
+            "documentation, you author a single RESTAPIConfig manifest (JSON) that Flind's generic "
             "REST engine uses to import the API into queryable tables — with no per-source code.",
             "",
             "Use the reference below as the authoritative grammar. Choose auth type, paginator, "

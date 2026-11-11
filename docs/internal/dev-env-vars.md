@@ -57,4 +57,4 @@ To work on the legacy mode, set `PERSON_ON_EVENTS_V2_ENABLED=0` in `.env.local`,
 The frontend reads `person_on_events_querying_enabled` from the server-rendered `window.POSTHOG_APP_CONTEXT`, which `teamLogic` seeds once on mount.
 A change to the setting or to a team's modifiers therefore needs a full page reload. Navigating within the app keeps the stale value.
 
-See also [sandboxes-setup-guide.md](sandboxes-setup-guide.md) for the PostHog Desktop sandbox providers.
+See also [sandboxes-setup-guide.md](sandboxes-setup-guide.md) for the Flind Desktop sandbox providers.

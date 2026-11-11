@@ -424,7 +424,7 @@ def _post_ticket_link(
                 # their own list, so the copy stays true either way. Replying always works.
                 text = (
                     f"Ticket #{ticket.ticket_number} is with our support team. "
-                    f"If you raised it, follow it in <{my_tickets_link(ticket)}|your PostHog tickets>, "
+                    f"If you raised it, follow it in <{my_tickets_link(ticket)}|your Flind tickets>, "
                     "or just reply in this thread."
                 )
         client.chat_postEphemeral(channel=channel, user=clicker, thread_ts=thread_ts or None, text=text)

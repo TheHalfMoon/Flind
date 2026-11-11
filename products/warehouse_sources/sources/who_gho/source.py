@@ -55,7 +55,7 @@ class WhoGhoSource(ResumableSource[WhoGhoSourceConfig, WhoGhoResumeConfig]):
             label="World Health Organization Global Health Observatory (GHO)",
             releaseStatus=ReleaseStatus.GA,
             keywords=["who", "health", "gho", "indicators"],
-            caption="""Pull public health statistics from the [WHO Global Health Observatory](https://www.who.int/data/gho) into the PostHog Data warehouse.
+            caption="""Pull public health statistics from the [WHO Global Health Observatory](https://www.who.int/data/gho) into the Flind Data warehouse.
 
 The API is open, so no credentials are required. WHO publishes over 2,000 indicator series, which is far too much to sync wholesale, so enter the indicator codes you want, one per line. For example:
 

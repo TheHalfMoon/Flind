@@ -48,7 +48,7 @@ export function MissingLinkInvestigate({
             <LemonMenu
                 items={[
                     isMaxAvailable && {
-                        label: 'PostHog AI',
+                        label: 'Flind AI',
                         icon: <IconSparkles />,
                         onClick: () =>
                             startTask(buildMissingLinkPrompt(log, missing), onLeave ?? (() => {}), eventContext),

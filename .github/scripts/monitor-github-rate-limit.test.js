@@ -52,7 +52,7 @@ const createCore = () => ({ info: recordingFn(), warning: recordingFn(), setOutp
 
 const fetchOk = () => Promise.resolve({ ok: true, status: 200, text: () => Promise.resolve('ok') })
 
-const context = { repo: { owner: 'PostHog', repo: 'posthog' } }
+const context = { repo: { owner: 'Flind', repo: 'posthog' } }
 
 describe('monitor-github-rate-limit', () => {
     beforeEach(() => {
@@ -188,7 +188,7 @@ describe('monitor-github-rate-limit', () => {
         const github = createGithubMock({ core: snapshot({ remaining: 3000, limit: 15000 }) })
         const core = createCore()
         const prContext = {
-            repo: { owner: 'PostHog', repo: 'posthog' },
+            repo: { owner: 'Flind', repo: 'posthog' },
             eventName: 'pull_request',
             payload: {
                 action: 'synchronize',

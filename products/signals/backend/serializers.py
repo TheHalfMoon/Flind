@@ -698,7 +698,7 @@ class SignalTeamConfigSerializer(serializers.ModelSerializer):
     )
     anomaly_scoring_available = serializers.SerializerMethodField(
         help_text=(
-            "Whether the anomaly scoring rollout covers this project. PostHog decides which projects it "
+            "Whether the anomaly scoring rollout covers this project. Flind decides which projects it "
             "covers. A covered project is scored only while its Product analytics source is on."
         )
     )
@@ -735,7 +735,7 @@ class SignalTeamConfigSerializer(serializers.ModelSerializer):
         if missing:
             raise serializers.ValidationError(
                 f"The project's GitHub connection can't reach {', '.join(missing)}. "
-                "Give the PostHog GitHub App access to it in your GitHub installation settings, then try again."
+                "Give the Flind GitHub App access to it in your GitHub installation settings, then try again."
             )
         return repositories
 
@@ -818,7 +818,7 @@ class SignalTeamConfigSerializer(serializers.ModelSerializer):
             "default_slack_notification_channel": {
                 "help_text": (
                     "Default Slack channel for this team's signal inbox notifications, in the same "
-                    "`channel_id|#channel-name` shape PostHog uses elsewhere (only the channel id is required). "
+                    "`channel_id|#channel-name` shape Flind uses elsewhere (only the channel id is required). "
                     "Null means no team-level default; per-user channels still apply."
                 )
             },
@@ -1050,7 +1050,7 @@ class SignalUserAutonomyConfigSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "slack_notification_channel": {
                 "help_text": (
-                    "Where the reviewer ping goes, in the same `id|name` shape PostHog uses elsewhere (only "
+                    "Where the reviewer ping goes, in the same `id|name` shape Flind uses elsewhere (only "
                     "the id is required): a channel (`C0123ABC456|#alerts`), or a workspace member "
                     "(`U0123ABC456|@sam`) who is sent a direct message. Null disables Slack notifications."
                 )
@@ -1103,7 +1103,7 @@ class SignalUserAutonomyConfigCreateSerializer(serializers.Serializer):
     slack_notification_direct_message = serializers.BooleanField(
         required=False,
         help_text=(
-            "Set true to send the ping as a direct message from the PostHog app. The caller's own member id is "
+            "Set true to send the ping as a direct message from the Flind app. The caller's own member id is "
             "resolved in the connected workspace and stored in `slack_notification_channel`, so nothing has to be "
             "picked. Rejected when the workspace has no eligible account for the caller, and cannot be combined "
             "with `slack_notification_channel`."
@@ -2380,7 +2380,7 @@ class SignalReportSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "billing_exempt_reason": {
                 "help_text": (
-                    "Non-null when this report is system-marked never-billable (PostHog-system origin, "
+                    "Non-null when this report is system-marked never-billable (Flind-system origin, "
                     "e.g. a health-check scout finding) — its implementation PRs are free and cannot be "
                     "refunded because nothing was charged."
                 )
@@ -3647,7 +3647,7 @@ class SignalReportArtefactSerializer(serializers.ModelSerializer):
         except (json.JSONDecodeError, ValueError):
             return {}
 
-        # Enrich suggested_reviewers with fresh PostHog user info at read time
+        # Enrich suggested_reviewers with fresh Flind user info at read time
         if obj.type == SignalReportArtefact.ArtefactType.SUGGESTED_REVIEWERS and isinstance(parsed, list):
             reviewer_login_map = cast(
                 Mapping[str, User] | None,
@@ -3789,7 +3789,7 @@ class SuggestedReviewerEntryWriteSerializer(serializers.Serializer):
     user_uuid = serializers.UUIDField(
         required=False,
         help_text=(
-            "PostHog user UUID. Must be an org member on this team; a linked GitHub account is not "
+            "Flind user UUID. Must be an org member on this team; a linked GitHub account is not "
             "required. Required unless `github_login` is given. If supplied together with "
             "`github_login`, the user's own identity wins."
         ),
@@ -3837,7 +3837,7 @@ class SuggestedReviewerEntryReadSerializer(serializers.Serializer):
     )
     user_uuid = serializers.CharField(
         allow_null=True,
-        help_text="PostHog user this entry routes to. Null on entries written before reviewers had one.",
+        help_text="Flind user this entry routes to. Null on entries written before reviewers had one.",
     )
     github_name = serializers.CharField(allow_null=True, help_text="Display name, when the writer supplied one.")
     relevant_commits = SuggestedReviewerCommitSerializer(
@@ -4357,7 +4357,7 @@ class SignalReportTaskActionRunRequestSerializer(serializers.Serializer):
 class SignalReportTaskActionRunResponseSerializer(serializers.Serializer):
     task_id = serializers.UUIDField(help_text="The task the action created. It is linked to the report.")
     run_id = serializers.UUIDField(allow_null=True, help_text="The background run that started, if one did.")
-    task_url = serializers.CharField(help_text="Link to the task in PostHog.")
+    task_url = serializers.CharField(help_text="Link to the task in Flind.")
     run_error = serializers.CharField(
         allow_null=True, help_text="Why the run did not start. Null when it started. The task exists either way."
     )

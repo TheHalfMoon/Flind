@@ -56,7 +56,7 @@ class TestPersonsSeedHelpers:
         conn = MagicMock()
         with (
             patch("posthog.settings.CLOUD_DEPLOYMENT", "US"),
-            pytest.raises(RuntimeError, match="deployed PostHog Cloud"),
+            pytest.raises(RuntimeError, match="deployed Flind Cloud"),
         ):
             write(conn)
         conn.cursor.assert_not_called()

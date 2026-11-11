@@ -7,7 +7,7 @@ interface QuillPersonAvatarProps {
     name: string
     email?: string
     size?: 'xs' | 'sm' | 'default'
-    /** PostHog itself, or staff acting as the user, rather than a person. */
+    /** Flind itself, or staff acting as the user, rather than a person. */
     system?: boolean
 }
 

@@ -6,7 +6,7 @@ test.describe("Main Process", () => {
       return app.getName();
     });
 
-    expect(appName).toBe("PostHog");
+    expect(appName).toBe("Flind");
   });
 
   test("app is packaged correctly", async ({ electronApp }) => {

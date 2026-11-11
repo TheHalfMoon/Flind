@@ -46,7 +46,7 @@ class PartnerizeSource(ResumableSource[PartnerizeSourceConfig, PartnerizeResumeC
             label="Partnerize",
             releaseStatus=ReleaseStatus.GA,
             keywords=["affiliate", "performance horizon", "ascend"],
-            caption="""Enter your Partnerize API credentials to pull your partnership and affiliate marketing data into the PostHog Data warehouse.
+            caption="""Enter your Partnerize API credentials to pull your partnership and affiliate marketing data into the Flind Data warehouse.
 
 You can find your **user application key** and **user API key** under **Account settings** in the [Partnerize platform](https://console.partnerize.com). The publisher ID identifies the partner account whose campaigns, conversions, and clicks are synced.
 """,

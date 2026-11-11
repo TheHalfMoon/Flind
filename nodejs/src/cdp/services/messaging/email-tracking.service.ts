@@ -109,7 +109,7 @@ end
 return grew
 `
 
-// Allowlist of metrics that surface as PostHog events when engagement-event capture is enabled.
+// Allowlist of metrics that surface as Flind events when engagement-event capture is enabled.
 // Metrics not in this map are deliberately ignored (no `$messaging_${metricName}` fallback) so a new
 // internal metric can't silently leak into customers' event streams.
 export const METRIC_NAME_TO_EVENT_NAME: Partial<Record<MinimalAppMetric['metric_name'], string>> = {

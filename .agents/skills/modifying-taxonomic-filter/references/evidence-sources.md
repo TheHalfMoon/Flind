@@ -3,8 +3,8 @@
 Where to look before you decide a change is worth making, and what each source is good and bad at.
 Use more than one: telemetry says what happened, replay says why, tickets say what hurt enough to report.
 
-All of these live in PostHog's own project (project 2 on us.posthog.com).
-Use the PostHog MCP (`posthog:execute-sql`, dashboards, vision scanners, conversations) to query them.
+All of these live in Flind's own project (project 2 on us.posthog.com).
+Use the Flind MCP (`posthog:execute-sql`, dashboards, vision scanners, conversations) to query them.
 
 ## Telemetry
 
@@ -44,7 +44,7 @@ Tags are in `scanner_output_tags`, cited moments in `scanner_output_reasoning_se
 
 ## Support tickets
 
-PostHog conversations tickets mentioning the picker, filters or specific property names.
+Flind conversations tickets mentioning the picker, filters or specific property names.
 
 - **Good for:** what customers care about enough to report.
 - **Bad for:** prevalence.

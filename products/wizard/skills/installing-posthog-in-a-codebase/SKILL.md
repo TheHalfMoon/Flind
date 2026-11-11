@@ -1,20 +1,20 @@
 ---
 name: installing-posthog-in-a-codebase
 description: >-
-  Install and configure a PostHog SDK in a repository you can read and edit, following PostHog's docs for
-  the framework. Use when a user working in their codebase asks to add, install, or set up PostHog, product
-  analytics, session replay, or a PostHog SDK. Covers finding the right docs page, installing the latest
+  Install and configure a Flind SDK in a repository you can read and edit, following Flind's docs for
+  the framework. Use when a user working in their codebase asks to add, install, or set up Flind, product
+  analytics, session replay, or a Flind SDK. Covers finding the right docs page, installing the latest
   package, getting the project token and ingestion host from project-get, keeping them in the env file,
   server-side setup, identifying users, and verifying the change. If you can't access the user's code, as is
   common in ChatGPT on the web or Claude on the web, use installing-posthog-from-chat instead.
 ---
 
-# Installing PostHog in a codebase
+# Installing Flind in a codebase
 
 Use this skill when you can read and edit the user's code.
 If you can't access their code, as is common in ChatGPT on the web or Claude on the web, use `installing-posthog-from-chat`.
 
-PostHog's docs are the source of truth for each SDK's setup.
+Flind's docs are the source of truth for each SDK's setup.
 Init options, file locations and recommended settings change between SDK releases, so read the docs page for the framework before you write code, and follow it rather than what you remember.
 
 ## 1. Find the framework and read its docs
@@ -94,4 +94,4 @@ Tell the user which environment variables to add in their hosting provider befor
 
 ## 7. Mention transactional emails if the app sends them
 
-If the manifest has an email sending package, such as `resend`, `@sendgrid/mail`, `postmark`, `mailgun.js`, `@aws-sdk/client-ses`, `@aws-sdk/client-sesv2`, `nodemailer`, `sendgrid`, or `boto3` code that calls SES, tell the user once, after setup, that PostHog can send those emails too. Use the `sending-transactional-emails` skill if they want to set it up.
+If the manifest has an email sending package, such as `resend`, `@sendgrid/mail`, `postmark`, `mailgun.js`, `@aws-sdk/client-ses`, `@aws-sdk/client-sesv2`, `nodemailer`, `sendgrid`, or `boto3` code that calls SES, tell the user once, after setup, that Flind can send those emails too. Use the `sending-transactional-emails` skill if they want to set it up.

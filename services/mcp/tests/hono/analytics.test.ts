@@ -391,7 +391,7 @@ describe('Hono MCP analytics contexts', () => {
         expect(properties.mcp_gateway_server).toBe('linear')
     })
 
-    it('leaves a PostHog tool without a gateway server', async () => {
+    it('leaves a Flind tool without a gateway server', async () => {
         await trackToolCall('user-get', 12, false, makeState())
 
         expect(mockCaptureToolCall.mock.calls[0]![0].properties.mcp_gateway_server).toBeUndefined()
@@ -642,7 +642,7 @@ describe('Hono MCP analytics contexts', () => {
             // A proxied vendor tool's args and result are the customer's content passing
             // through the gateway. Key-based redaction only catches credential-shaped
             // fields, so capturing the payload would put arbitrary third-party content in
-            // analytics to serve evaluations that target PostHog's own tools.
+            // analytics to serve evaluations that target Flind's own tools.
             ['a proxied third-party tool', 'linear__create_issue', { title: 'Customer escalation' }, false],
             // Its result is a live presigned S3 POST (policy, signature, credential) — output
             // fields, not secret-shaped keys, so key-based redaction can't catch them.
@@ -718,7 +718,7 @@ describe('Hono MCP analytics contexts', () => {
                 false,
             ],
             [
-                'an email send forwarded through a PostHog connection',
+                'an email send forwarded through a Flind connection',
                 'exec',
                 {
                     command:

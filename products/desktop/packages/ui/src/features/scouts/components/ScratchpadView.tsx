@@ -36,7 +36,7 @@ const NO_GROUPS: ReturnType<typeof groupScratchpadEntries> = [];
  * or clustered by topic, and search it. Read-only: the harness writes the notes
  * on internal scope; humans inspect them here.
  *
- * Mirrors the PostHog Cloud `ScratchpadPanel`, kept structurally aligned so the
+ * Mirrors the Flind Cloud `ScratchpadPanel`, kept structurally aligned so the
  * two surfaces stay in parity as the backend evolves.
  */
 export function ScratchpadView() {
@@ -122,7 +122,7 @@ export function ScratchpadView() {
         <Empty className="py-10">
           <EmptyHeader>
             <EmptyDescription>
-              Couldn't load these notes. PostHog may be unavailable, or this
+              Couldn't load these notes. Flind may be unavailable, or this
               project may not be set up for agents yet.
             </EmptyDescription>
           </EmptyHeader>

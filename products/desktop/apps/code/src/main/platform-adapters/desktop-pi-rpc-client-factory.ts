@@ -62,12 +62,12 @@ export class DesktopPiRpcClientFactory implements PiRpcClientFactory {
   ): Promise<PiRpcClient> {
     const credentials = await this.auth.getOAuthCredentials();
     if (!credentials) {
-      throw new Error("Pi requires PostHog authentication");
+      throw new Error("Pi requires Flind authentication");
     }
 
     const projectId = this.auth.getState().currentProjectId;
     if (!projectId) {
-      throw new Error("Pi requires a selected PostHog project");
+      throw new Error("Pi requires a selected Flind project");
     }
     const access = await this.auth.getValidAccessToken();
     // Four independent round-trips: proxy URL, auth proxy, MCP config, wiki mount.

@@ -1,5 +1,5 @@
 /**
- * Third-party MCP tools, reachable through the PostHog MCP.
+ * Third-party MCP tools, reachable through the Flind MCP.
  *
  * The MCP gateway (`products/mcp_store`) already holds the credentials, per-tool policy
  * and audit trail for the servers a team has connected. This module surfaces those tools
@@ -18,7 +18,7 @@ import type { Schemas } from '@/api/generated'
 import { ExecCommandError } from '@/lib/errors'
 import type { Context, Tool, ZodObjectAny } from '@/tools/types'
 
-/** Separates the server slug from the upstream tool name. PostHog's own tool names are
+/** Separates the server slug from the upstream tool name. Flind's own tool names are
  *  kebab-case and never contain `__`, so a namespaced name can't collide with one. */
 export const GATEWAY_TOOL_SEPARATOR = '__'
 
@@ -40,12 +40,12 @@ export function gatewayToolName(slug: string, toolName: string): string {
     return `${slug}${GATEWAY_TOOL_SEPARATOR}${toolName}`
 }
 
-/** Whether a tool name came from a connected third-party server rather than PostHog. */
+/** Whether a tool name came from a connected third-party server rather than Flind. */
 export function isGatewayToolName(name: string): boolean {
     return name.includes(GATEWAY_TOOL_SEPARATOR)
 }
 
-/** The server slug a namespaced tool name routes to, or undefined for a PostHog tool. */
+/** The server slug a namespaced tool name routes to, or undefined for a Flind tool. */
 export function gatewayServerSlug(name: string): string | undefined {
     if (!isGatewayToolName(name)) {
         return undefined
@@ -77,9 +77,9 @@ function annotationsFor(tool: AvailableTool): Tool['annotations'] {
 function describeTool(server: AvailableServer, tool: AvailableTool): string {
     const base = tool.description?.trim() || `Tool exposed by ${server.name}.`
     if (tool.approval_state === 'needs_approval') {
-        return `${base}\n\n[Not yet approved: calling this will fail until someone approves it in PostHog under Settings → MCP servers.]`
+        return `${base}\n\n[Not yet approved: calling this will fail until someone approves it in Flind under Settings → MCP servers.]`
     }
-    return `${base}\n\n[Runs on ${server.name} via your PostHog MCP connection.]`
+    return `${base}\n\n[Runs on ${server.name} via your Flind MCP connection.]`
 }
 
 function extractText(content: Record<string, unknown>[]): string {
@@ -184,7 +184,7 @@ export function buildGatewayTools(
 /**
  * Resolve the caller's third-party tools, cached per project for a short window so a
  * newly connected server shows up without a session restart. Never throws: a gateway
- * that is unreachable or disabled must not take PostHog's own tools down with it.
+ * that is unreachable or disabled must not take Flind's own tools down with it.
  */
 export async function resolveGatewayTools(context: Context, projectId: string): Promise<Tool<ZodObjectAny>[]> {
     const payload = await context.stateManager.getOrFetchGatewayTools(projectId)

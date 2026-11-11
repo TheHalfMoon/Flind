@@ -233,7 +233,7 @@ export const OAUTH_SCOPES = [
   "web_analytics:write",
   "webhook:read",
   "webhook:write",
-  // Privileged: embedded agent model calls go through PostHog's LLM gateway
+  // Privileged: embedded agent model calls go through Flind's LLM gateway
   // (gateway.{region}.posthog.com), which requires this scope. Not in the
   // advertised set above; granted via this app's seeded ceiling.
   "llm_gateway:read",

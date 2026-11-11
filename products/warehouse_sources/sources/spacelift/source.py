@@ -55,7 +55,7 @@ class SpaceliftSource(ResumableSource[SpaceliftSourceConfig, SpaceliftResumeConf
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Spacelift",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Spacelift API key to pull your infrastructure-as-code stacks, runs, policies, and managed resources into the PostHog Data warehouse.
+            caption="""Enter your Spacelift API key to pull your infrastructure-as-code stacks, runs, policies, and managed resources into the Flind Data warehouse.
 
 Create an API key under **Organization settings** → **API keys** in your Spacelift account. Grant it at least read access to the spaces you want to sync.
 

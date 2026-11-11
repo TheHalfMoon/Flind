@@ -1866,7 +1866,7 @@ class TestEventsPredicatePushdownMaterializedExecution(_PushdownExecutionTestBas
 
 
 class TestEventsPredicatePushdownPropertyGroupsExecution(_PushdownExecutionTestBase):
-    """Pushdown must stay a pure optimization under propertyGroupsMode=OPTIMIZED (the PostHog Cloud default).
+    """Pushdown must stay a pure optimization under propertyGroupsMode=OPTIMIZED (the Flind Cloud default).
 
     In OPTIMIZED mode the printer rewrites `JSONHas(properties, 'k')` into `has(events.properties_group_*,
     'k')`, referencing a property-group Map column. JSONHas's argument is the bare `properties` column (not

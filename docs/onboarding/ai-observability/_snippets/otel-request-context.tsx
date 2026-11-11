@@ -26,9 +26,9 @@ const NODE_SETUP_VARIABLES = { NodeSDK: 'sdk', NodeTracerProvider: 'provider' }
 const getNodeCode = (tracerSetup: 'NodeSDK' | 'NodeTracerProvider'): string =>
     `
 // Requires @posthog/ai 8.14.0 and posthog-node 5.15.0 or later
-import { PostHog } from 'posthog-node'
+import { Flind } from 'posthog-node'
 
-const posthog = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' })
+const posthog = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' })
 
 const ${NODE_SETUP_VARIABLES[tracerSetup]} = new ${tracerSetup}({
   // ...the rest of your setup from the earlier step
@@ -96,7 +96,7 @@ export const getOtelRequestContextStep = (
                 <Markdown>
                     {dedent`
                         A server usually handles requests for many users, so a resource attribute can't say who
-                        each trace belongs to. Wrap each request in a PostHog context instead. The PostHog span
+                        each trace belongs to. Wrap each request in a Flind context instead. The Flind span
                         processor adds the context's distinct ID and properties to every AI span started inside it.
                         Other span processors and exporters on the same provider don't see them.
 
@@ -132,7 +132,7 @@ export const getOtelRequestContextStep = (
                     {dedent`
                         A distinct ID set this way takes priority over a \`posthog.distinct_id\` resource attribute,
                         so you can keep the resource attribute as the fallback for work outside a request. If your
-                        instrumentation already sets the \`gen_ai.conversation.id\` attribute, PostHog uses it as
+                        instrumentation already sets the \`gen_ai.conversation.id\` attribute, Flind uses it as
                         the session ID, and an explicit \`$ai_session_id\` takes priority over it.
                     `}
                 </Markdown>

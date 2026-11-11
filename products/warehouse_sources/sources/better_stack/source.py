@@ -84,7 +84,7 @@ class BetterStackSource(ResumableSource[BetterStackSourceConfig, BetterStackResu
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Better Stack",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Better Stack API token to automatically pull your uptime monitoring and incident data into the PostHog Data warehouse.
+            caption="""Enter your Better Stack API token to automatically pull your uptime monitoring and incident data into the Flind Data warehouse.
 
 You can create an Uptime API token in your [Better Stack dashboard](https://uptime.betterstack.com) under Integrations → API tokens. A team-scoped token syncs that team's data; a global token spans all teams.""",
             iconPath="/static/services/better_stack.png",

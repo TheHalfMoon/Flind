@@ -84,7 +84,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "An individual real user page view, with the metric values, page, device, and location recorded for it.",
         "docs_url": "https://www.debugbear.com/docs/rum-api",
         "columns": {
-            "id": "Identifier PostHog derives from the page view's contents, because DebugBear returns no identifier for a page view.",
+            "id": "Identifier Flind derives from the page view's contents, because DebugBear returns no identifier for a page view.",
             "project_id": "Identifier of the DebugBear project the page view was recorded for.",
             "project_name": "Display name of the DebugBear project the page view was recorded for.",
             "date": "Date and time the page view happened.",

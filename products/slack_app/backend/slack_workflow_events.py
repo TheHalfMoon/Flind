@@ -1,6 +1,6 @@
 """Forward Slack channel messages onto the internal events topic.
 
-Deliberately dumb: check Slack is telling us about a new post, resolve the PostHog projects behind
+Deliberately dumb: check Slack is telling us about a new post, resolve the Flind projects behind
 the Slack workspace, then write the message out as-is. A workflow's trigger config decides what it
 wants, and the CDP consumer evaluates that, so nothing here needs to know a trigger exists.
 """
@@ -34,8 +34,8 @@ def _event_properties(
 ) -> dict[str, Any]:
     thread_ts = event.get("thread_ts")
     return {
-        # The PostHog Slack connection this copy belongs to. The CDP consumer reads its stored
-        # app id from here to recognize, and ignore, a message PostHog itself posted.
+        # The Flind Slack connection this copy belongs to. The CDP consumer reads its stored
+        # app id from here to recognize, and ignore, a message Flind itself posted.
         "integration_id": integration_id,
         "channel": event.get("channel"),
         "channel_type": event.get("channel_type"),
@@ -73,7 +73,7 @@ def emit_slack_message_event(
     event_id: str | None,
     is_ext_shared_channel: bool,
 ) -> bool:
-    """Write one internal event per PostHog project connected to this Slack workspace.
+    """Write one internal event per Flind project connected to this Slack workspace.
 
     Returns whether the event still needs a home: True only when a workflow could have triggered on
     it and no connection in this region holds the workspace. The caller turns that into a

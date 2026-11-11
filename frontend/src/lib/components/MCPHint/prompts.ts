@@ -521,7 +521,7 @@ export interface ResolveOptions {
 }
 
 function buildSqlExamplesFromEvents(topEvents: string[]): string[] {
-    // Filter out PostHog-internal events (lead with `$`) so we surface the user's own product events,
+    // Filter out Flind-internal events (lead with `$`) so we surface the user's own product events,
     // also be conservative to avoid surface events that look like SQL injection vectors.
     const owned = topEvents
         .filter((name) => name && !name.startsWith('$') && /^[A-Za-z0-9_.:-]{1,80}$/.test(name))
@@ -567,7 +567,7 @@ export function formatDerivedToastPrompt(prompt: string): string {
 
 /**
  * Turns a displayed example into the prompt an external agent receives. The agent may not have the
- * PostHog MCP server yet, so the prompt tells it to ask for the install instead of guessing.
+ * Flind MCP server yet, so the prompt tells it to ask for the install instead of guessing.
  */
 export function stripDisplayQuotes(example: string): string {
     return example.trim().replace(/^["']|["']$/g, '')

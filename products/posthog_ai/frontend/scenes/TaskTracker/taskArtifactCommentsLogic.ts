@@ -213,7 +213,7 @@ export type taskArtifactCommentsLogicType = MakeLogicType<
 
 /**
  * Comment threads on one artifact version: comments on the whole file, pins on an image, and comments on a
- * text selection. The rows are the ones PostHog Desktop reads and writes.
+ * text selection. The rows are the ones Flind Desktop reads and writes.
  */
 export const taskArtifactCommentsLogic = kea<taskArtifactCommentsLogicType>([
     props({} as TaskArtifactCommentsLogicProps),
@@ -334,7 +334,7 @@ export const taskArtifactCommentsLogic = kea<taskArtifactCommentsLogicType>([
             (comments: CommentApi[] | null): ArtifactCommentThread[] | null =>
                 comments ? buildArtifactCommentThreads(comments) : null,
         ],
-        /** Oldest thread first, like PostHog Desktop, so pins list in number order. Resolved threads show only when asked for. */
+        /** Oldest thread first, like Flind Desktop, so pins list in number order. Resolved threads show only when asked for. */
         visibleThreads: [
             (s) => [s.threads, s.showResolved],
             (threads: ArtifactCommentThread[] | null, showResolved: boolean): ArtifactCommentThread[] | null =>

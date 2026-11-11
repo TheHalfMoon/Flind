@@ -38,8 +38,8 @@ const multiContents =
 const numItems = '{arrayReduce((acc, curr) -> acc + curr.quantity, event.properties.products ?? [], 0)}'
 
 // Meta's _fbc cookie value, `fb.<subdomainIndex>.<clickTimeMs>.<fbclid>`. Sources in order: a value
-// the site stores itself, the $fbc PostHog stamps when it sees the fbclid, and an fbclid on this
-// event. The last one only applies when the person holds no $fbc, because a click PostHog already
+// the site stores itself, the $fbc Flind stamps when it sees the fbclid, and an fbclid on this
+// event. The last one only applies when the person holds no $fbc, because a click Flind already
 // dated must not come back undated. The code drops a value Meta would reject as too old.
 const fbc =
     "{person.properties.fbc ?? person.properties.$fbc ?? (not empty(event.properties.fbclid) ? f'fb.1.{toUnixTimestampMilli(event.timestamp)}.{event.properties.fbclid}' : '')}"
@@ -48,7 +48,7 @@ const NINETY_DAYS_MS = 90 * 24 * 60 * 60 * 1000
 const CLOCK_SKEW_TOLERANCE_MS = 5 * 60 * 1000
 
 // Meta's _fbp cookie value, `fb.<subdomainIndex>.<creationTimeMs>.<randomNumber>`. It identifies a
-// browser rather than a click, so PostHog cannot derive it. Sources in order: a value the site
+// browser rather than a click, so Flind cannot derive it. Sources in order: a value the site
 // stores itself, and the $fbp the SDK reads from the cookie the pixel mints.
 const fbp = "{person.properties.fbp ?? person.properties.$fbp ?? ''}"
 

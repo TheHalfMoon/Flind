@@ -47,7 +47,7 @@ class TransistorSource(ResumableSource[TransistorSourceConfig, TransistorResumeC
             label="Transistor.fm",
             keywords=["podcast", "transistor fm"],
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Sync your shows, episodes, private podcast subscribers, and daily download analytics from [Transistor](https://transistor.fm) into the PostHog Data warehouse.
+            caption="""Sync your shows, episodes, private podcast subscribers, and daily download analytics from [Transistor](https://transistor.fm) into the Flind Data warehouse.
 
 Create an API key in your Transistor account settings, then paste it below. The key has access to every show your Transistor user can see.
 

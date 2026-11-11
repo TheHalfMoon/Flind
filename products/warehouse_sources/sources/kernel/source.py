@@ -49,7 +49,7 @@ class KernelSource(ResumableSource[KernelSourceConfig, KernelResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Kernel",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Kernel API key to sync your Kernel browser-infrastructure data into the PostHog Data warehouse.
+            caption="""Enter your Kernel API key to sync your Kernel browser-infrastructure data into the Flind Data warehouse.
 
 You can create an API key in your [Kernel dashboard](https://dashboard.onkernel.com) under API keys. Kernel keys are long-lived and grant organization-wide read access.""",
             iconPath="/static/services/kernel.png",

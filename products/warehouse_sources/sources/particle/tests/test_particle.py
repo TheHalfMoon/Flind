@@ -162,7 +162,7 @@ class TestWebhooks:
     @pytest.mark.parametrize("status", [403, 500])
     def test_create_rolls_back_new_hooks_and_keeps_old_ones_when_a_later_hook_fails(self, status):
         # The first hook registers, the second fails: the first must not stay active with a
-        # secret PostHog never stored, and the stale hook from the previous setup must survive.
+        # secret Flind never stored, and the stale hook from the previous setup must survive.
         with scripted_network(
             [
                 ScriptedResponse(json=[_hook("stale")]),

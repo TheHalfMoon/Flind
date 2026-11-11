@@ -224,17 +224,17 @@ describe('replayObservationLogic', () => {
             expected: '/replay/home?filters=x#panel=a',
         },
         {
-            label: 'the page under the PostHog AI panel',
+            label: 'the page under the Flind AI panel',
             params: { from: 'ai', return_to: '/dashboard/1' },
             expected: '/dashboard/1',
         },
         {
-            label: 'PostHog AI, not a protocol-relative host',
+            label: 'Flind AI, not a protocol-relative host',
             params: { from: 'ai', return_to: '//example.com/x' },
             expected: '/ai',
         },
         {
-            label: 'PostHog AI, not a backslash host',
+            label: 'Flind AI, not a backslash host',
             params: { from: 'ai', return_to: '/\\example.com' },
             expected: '/ai',
         },

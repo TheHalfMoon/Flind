@@ -1,10 +1,10 @@
-"""Snowflake driver for PostHog's data-warehouse import pipeline.
+"""Snowflake driver for Flind's data-warehouse import pipeline.
 
 Everything Snowflake-specific — connection lifecycle (with password vs
 keypair auth and the keypair tempfile dance), schema listing, per-cursor
 metadata, and the dlt pipeline build — lives on
 `SnowflakeImplementation`. The source-class `SnowflakeSource` is a thin
-PostHog-layer wrapper that just holds an instance and validates
+Flind-layer wrapper that just holds an instance and validates
 credentials.
 """
 

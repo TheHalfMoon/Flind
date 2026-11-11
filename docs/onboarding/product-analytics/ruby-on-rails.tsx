@@ -50,7 +50,7 @@ export const getRubyOnRailsInstallSteps = (ctx: OnboardingComponentsContext): St
                 <>
                     <Markdown>
                         {dedent`
-                            Run the install generator to create the PostHog initializer:
+                            Run the install generator to create the Flind initializer:
                         `}
                     </Markdown>
                     <CodeBlock
@@ -73,7 +73,7 @@ export const getRubyOnRailsInstallSteps = (ctx: OnboardingComponentsContext): St
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
@@ -88,7 +88,7 @@ export const getRubyOnRailsInstallSteps = (ctx: OnboardingComponentsContext): St
                                 language: 'ruby',
                                 file: 'config/initializers/posthog.rb',
                                 code: dedent`
-                                    PostHog.init do |config|
+                                    Flind.init do |config|
                                       config.api_key = '<ph_project_token>'
                                       config.host = '<ph_client_api_host>'
                                     end
@@ -117,7 +117,7 @@ export const getRubyOnRailsEventStep = (ctx: OnboardingComponentsContext): StepD
                             language: 'ruby',
                             file: 'Ruby',
                             code: dedent`
-                                    PostHog.capture({
+                                    Flind.capture({
                                         distinct_id: 'user_123',
                                         event: 'button_clicked',
                                         properties: {

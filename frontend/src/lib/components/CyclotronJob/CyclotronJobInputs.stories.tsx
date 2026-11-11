@@ -49,7 +49,7 @@ const SLACK_INPUTS = {
     slack_workspace: { value: 1 },
     channel: { value: 'C1' },
     icon_emoji: { value: ':hedgehog:' },
-    username: { value: 'PostHog' },
+    username: { value: 'Flind' },
 }
 
 const EVERY_SCOPE = 'channels:read groups:read chat:write chat:write.customize'
@@ -57,9 +57,9 @@ const EVERY_SCOPE = 'channels:read groups:read chat:write chat:write.customize'
 const slackIntegration = (scope: string): IntegrationType => ({
     id: 1,
     kind: 'slack',
-    display_name: 'PostHog HQ',
+    display_name: 'Flind HQ',
     icon_url: '',
-    config: { scope, team: { id: '123', name: 'PostHog' } },
+    config: { scope, team: { id: '123', name: 'Flind' } },
     created_at: '2024-01-01T00:00:00Z',
     created_by: mockBasicUser,
 })

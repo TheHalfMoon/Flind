@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -131,7 +131,7 @@ export const ConversationsOpenCreateBody = /* @__PURE__ */ zod
                     )
             )
             .optional()
-            .describe('Typed PostHog entities (and free text) attached to this message.'),
+            .describe('Typed Flind entities (and free text) attached to this message.'),
         initial_permission_mode: zod
             .enum(['default', 'acceptEdits', 'plan', 'bypassPermissions', 'auto'])
             .describe(
@@ -229,19 +229,19 @@ export const McpToolsCreateBody = /* @__PURE__ */ zod.object({
 })
 
 /**
- * Run a hybrid (semantic + full-text) RAG search over the PostHog documentation via Inkeep. Returns a markdown body with title, URL, and excerpt for each match for the agent to cite back to the user.
- * @summary Search PostHog documentation
+ * Run a hybrid (semantic + full-text) RAG search over the Flind documentation via Inkeep. Returns a markdown body with title, URL, and excerpt for each match for the agent to cite back to the user.
+ * @summary Search Flind documentation
  */
 export const DocsSearchBody = /* @__PURE__ */ zod.object({
     query: zod
         .string()
         .describe(
-            'Natural-language description of what to find in the PostHog documentation. Inkeep performs hybrid (semantic + full-text) RAG, so phrase the query the way a user would ask the question.'
+            'Natural-language description of what to find in the Flind documentation. Inkeep performs hybrid (semantic + full-text) RAG, so phrase the query the way a user would ask the question.'
         ),
 })
 
 /**
- * Stream a terminal model response through PostHog AI. Requires organization approval for AI data processing. SDK consumers must use getTerminalAiCreateUrl() with streaming fetch. The generated JSON client buffers the response and cannot parse SSE.
+ * Stream a terminal model response through Flind AI. Requires organization approval for AI data processing. SDK consumers must use getTerminalAiCreateUrl() with streaming fetch. The generated JSON client buffers the response and cannot parse SSE.
  */
 export const terminalAiCreateBodyMessagesMax = 1000
 
@@ -261,7 +261,7 @@ export const terminalAiCreateBodyTemperatureOneMax = 1
 export const TerminalAiCreateBody = /* @__PURE__ */ zod.object({
     model: zod
         .enum(['claude-opus-5', 'claude-sonnet-5', 'claude-sonnet-4-6', 'claude-haiku-4-5'])
-        .describe('Model served by the PostHog provider.'),
+        .describe('Model served by the Flind provider.'),
     messages: zod
         .array(
             zod.object({
@@ -320,12 +320,12 @@ export const TerminalAiCreateBody = /* @__PURE__ */ zod.object({
 })
 
 /**
- * @summary Record what the user did with a PostHog AI turn suggestion card
+ * @summary Record what the user did with a Flind AI turn suggestion card
  */
 export const turnSuggestionsResolveCreateBodyTurnIndexMin = 0
 
 export const TurnSuggestionsResolveCreateBody = /* @__PURE__ */ zod.object({
-    task_id: zod.uuid().describe('ID of the PostHog AI conversation (task) the suggestion card belongs to.'),
+    task_id: zod.uuid().describe('ID of the Flind AI conversation (task) the suggestion card belongs to.'),
     turn_index: zod
         .number()
         .min(turnSuggestionsResolveCreateBodyTurnIndexMin)

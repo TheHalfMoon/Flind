@@ -17,7 +17,7 @@ export const UnderAnEventDescription: Story = {
     render: () => (
         // DefinitionPopover.scss caps the definition popover at this width (20rem), so the notice wraps as it does there.
         <div className="w-80 border rounded p-3 bg-surface-primary">
-            <p>Sent by PostHog SDKs each time a feature flag is evaluated.</p>
+            <p>Sent by Flind SDKs each time a feature flag is evaluated.</p>
             <FlagCalledMoveNotice name="$feature_flag_called" groupType={TaxonomicFilterGroupType.Events} />
         </div>
     ),

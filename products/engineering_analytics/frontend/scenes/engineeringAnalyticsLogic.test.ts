@@ -71,7 +71,7 @@ const QUARANTINE: QuarantineFileApi = {
     entries: [],
     parse_errors: [],
     parse_warnings: [],
-    repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+    repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
     source_url: 'https://github.com/PostHog/posthog/blob/HEAD/.test_quarantine.json',
     generated_at: '2026-06-12T00:00:00Z',
 }
@@ -593,7 +593,7 @@ describe('engineeringAnalyticsLogic', () => {
             'a link to another repository without the source and repo of this one',
             PICKED,
             'https://github.com/PostHog/posthog.com/pull/42/files',
-            urls.engineeringAnalyticsCIExplorer('PostHog', 'posthog.com', 42),
+            urls.engineeringAnalyticsCIExplorer('Flind', 'posthog.com', 42),
             { date_from: '-30d' },
             'link',
         ],
@@ -638,7 +638,7 @@ describe('engineeringAnalyticsLogic', () => {
         logic.actions.setPullRequestJumpText('PostHog/posthog#42')
         expect(logic.values.pullRequestJumpFailure).toBeNull()
         logic.actions.submitPullRequestJump()
-        expect(routedPath()).toBe(urls.engineeringAnalyticsCIExplorer('PostHog', 'posthog', 42))
+        expect(routedPath()).toBe(urls.engineeringAnalyticsCIExplorer('Flind', 'posthog', 42))
     })
 
     it.each([

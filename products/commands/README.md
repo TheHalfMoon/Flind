@@ -1,6 +1,6 @@
 # Commands
 
-People with write access to a repository can ask PostHog to do something on a pull request by commenting a command on it:
+People with write access to a repository can ask Flind to do something on a pull request by commenting a command on it:
 
 ```text
 @posthog review
@@ -16,7 +16,7 @@ This product owns the parsing, the checks and the replies, and owns no work of i
 
 A command comes in through a channel and acts on a subject.
 The channels are GitHub pull request comments and Slack mentions.
-The subjects are pull requests and, from Slack, PostHog error tracking issues.
+The subjects are pull requests and, from Slack, Flind error tracking issues.
 
 [`COMMANDS.generated.md`](COMMANDS.generated.md) lists every command, and [`commands.generated.json`](commands.generated.json) is the same reference for tools.
 Both are generated from `backend/logic/schema.py`, like the `@posthog help` reply.
@@ -40,8 +40,8 @@ Both are generated from `backend/logic/schema.py`, like the `@posthog help` repl
 
 ## Commands from Slack
 
-The same commands run from a Slack message that mentions the PostHog app and names the subject by its URL, before or after the command.
-A pull request is named by its GitHub URL, and an error tracking issue by its URL in this PostHog instance:
+The same commands run from a Slack message that mentions the Flind app and names the subject by its URL, before or after the command.
+A pull request is named by its GitHub URL, and an error tracking issue by its URL in this Flind instance:
 
 ```text
 @PostHog review --deep https://github.com/PostHog/posthog/pull/123
@@ -56,9 +56,9 @@ A pull request is named by its GitHub URL, and an error tracking issue by its UR
 - Every command that ran gets an answer in the thread, refusals included, because the message no longer reaches the agent.
 - When the work a command started ends, its result follows in the same thread: the review's findings count, Stamphog's outcome, or the end of the QA run. A pull request comment needs no follow-up, because the work posts its result on the pull request.
 - The Slack app asks `may_hold_command` first, a check with no queries, so most mentions never reach this product. It hands the rest to `accept_slack_mention` inside its webhook, as plain text. This product reads it (`channels/slack/`), runs it in its own task like a pull request comment, and answers in the thread through the Slack integration the mention came in on.
-- A Slack command has no GitHub permission check. It runs as a PostHog account that is a member of the project, like the review trigger in the PostHog API and MCP.
-- It may run as the accounts the Slack app resolves for the person, the ones its agent acts as: first their linked PostHog account, else the member of a connected organization with their Slack email, then every other account linked to their Slack user. The command picks the project first, and the first of these accounts that is a member of it acts there.
-- It reaches only projects of organizations that connected that Slack workspace, the same scope the agent has. In a shared channel that has not approved PostHog, the message goes to the agent, whose approval gate applies.
+- A Slack command has no GitHub permission check. It runs as a Flind account that is a member of the project, like the review trigger in the Flind API and MCP.
+- It may run as the accounts the Slack app resolves for the person, the ones its agent acts as: first their linked Flind account, else the member of a connected organization with their Slack email, then every other account linked to their Slack user. The command picks the project first, and the first of these accounts that is a member of it acts there.
+- It reaches only projects of organizations that connected that Slack workspace, the same scope the agent has. In a shared channel that has not approved Flind, the message goes to the agent, whose approval gate applies.
 
 ## Subjects
 
@@ -88,7 +88,7 @@ To add a kind of subject:
 
 The first answer says that the work started.
 A channel that wants the result later gives an address (`follow_up` on the channel), and the handler saves it with `logic/follow_ups.py` before the work ends.
-The products report the end without importing this product: Stamphog and PostHog Review call the callbacks registered in their `facade/finished_review_hooks.py`, and a QA run's terminal save fires the task run signal.
+The products report the end without importing this product: Stamphog and Flind Review call the callbacks registered in their `facade/finished_review_hooks.py`, and a QA run's terminal save fires the task run signal.
 `receivers.py` registers all three at app start, builds the message in `logic/results.py`, and queues it.
 A follow-up record lives in the cache for a day, so a lost record loses only the follow-up message.
 
@@ -96,7 +96,7 @@ A follow-up record lives in the cache for a day, so a lost record loses only the
 
 Declare the command in `logic/schema.py`: an args dataclass built with `flag()`, `option()` and `text()`, and a `CommandDeclaration` in `COMMAND_DECLARATIONS`.
 Set `subject_kinds` to the kinds of subject the command acts on. The default is pull requests only.
-Set `access` when the target product has a resource in PostHog access control, at the level its own API asks for the same action.
+Set `access` when the target product has a resource in Flind access control, at the level its own API asks for the same action.
 Leave `allows_forks` off unless the command reads nothing from the pull request head.
 Write a handler in `logic/handlers.py` that takes the args dataclass and calls the target product's facade, then bind the two in `logic/registry.py`.
 Run `hogli build:projections` and commit the regenerated command reference.
@@ -106,16 +106,16 @@ It needs a facade function that takes a project, a user and the subject's identi
 
 ## Trust model
 
-A command runs as the commenter's own PostHog user, in a project they are a member of.
-So a command can only do what the commenter could already do in PostHog, and a comment gives nobody access they did not have.
+A command runs as the commenter's own Flind user, in a project they are a member of.
+So a command can only do what the commenter could already do in Flind, and a comment gives nobody access they did not have.
 
 The checks that make that true:
 
 - **Who is asking.** The webhook's `author_association` filters out outside contributors before a task is queued. The task then asks GitHub for the commenter's permission on the repository and requires write access, for the commenter's numeric account id, so a login that changed hands does not count.
-- **Which PostHog user.** The match is on GitHub's numeric user id, never on the login, and only through identities GitHub confirmed to PostHog: a connected GitHub account or GitHub login. A GitHub account can be linked to several PostHog accounts, for example a work and a personal one. The command picks the project first, and the linked account that is a member of it acts there. When two linked accounts are members of that project, the one linked most recently acts.
-- **Which project.** Only projects whose GitHub integration uses the installation the comment came from, that the user is a member of, and that are in the `github-commands` rollout. For an environment, the user must also be a member of its parent project. An organization that enforces verified email domains gives no project to a user whose email is outside them, as the product APIs do. `review` runs only in the project that owns the repository in PostHog Review, and the commenter must be a member of it.
-- **Which product gates.** A command applies the gates the target product's own API applies. `loop` needs Loops access, and `qa` needs PostHog Code access for the commenter's organization and PostHog Code credits left.
-- **What the person typed.** Only a new comment counts, so an edit cannot turn a reviewed comment into a command. Comments by bots, and comments a GitHub App posted with a person's token, never run a command. That covers PostHog's own replies and coding agents that act as a user.
+- **Which Flind user.** The match is on GitHub's numeric user id, never on the login, and only through identities GitHub confirmed to Flind: a connected GitHub account or GitHub login. A GitHub account can be linked to several Flind accounts, for example a work and a personal one. The command picks the project first, and the linked account that is a member of it acts there. When two linked accounts are members of that project, the one linked most recently acts.
+- **Which project.** Only projects whose GitHub integration uses the installation the comment came from, that the user is a member of, and that are in the `github-commands` rollout. For an environment, the user must also be a member of its parent project. An organization that enforces verified email domains gives no project to a user whose email is outside them, as the product APIs do. `review` runs only in the project that owns the repository in Flind Review, and the commenter must be a member of it.
+- **Which product gates.** A command applies the gates the target product's own API applies. `loop` needs Loops access, and `qa` needs Flind Code access for the commenter's organization and Flind Code credits left.
+- **What the person typed.** Only a new comment counts, so an edit cannot turn a reviewed comment into a command. Comments by bots, and comments a GitHub App posted with a person's token, never run a command. That covers Flind's own replies and coding agents that act as a user.
 - **One run per comment.** Ingress dedups the delivery, and dispatch claims the comment id. If the claim cannot be written, the command does not run, so a redelivery cannot start a second paid run. When GitHub cannot answer the permission lookup, dispatch releases the claim, because nothing ran.
 - **Cost.** Each commenter has a rate limit, checked before any GitHub call. A commenter over the limit gets no reaction and no reply.
 
@@ -133,11 +133,11 @@ The defenses do not depend on an agent ignoring instructions:
 - Fork pull requests are refused by every command that runs or reviews code.
 - The QA task gets the head commit seen at request time, and is told to stop if the branch moved since.
 - A loop fires only for its owner, because a loop runs with its owner's credentials and its payload becomes part of its prompt.
-- Replies are built from fixed text and values PostHog or GitHub produced. A reply never repeats what the comment said, so nobody can make the bot post their text.
+- Replies are built from fixed text and values Flind or GitHub produced. A reply never repeats what the comment said, so nobody can make the bot post their text.
 - People without write access get no reply, so the bot is no oracle and no amplifier for them.
 
 ## Not built yet
 
-- `@posthog fix`: a PostHog Code task that pushes to the pull request branch. It needs Tasks to support committing to an existing pull request head.
+- `@posthog fix`: a Flind Code task that pushes to the pull request branch. It needs Tasks to support committing to an existing pull request head.
 - Commands in review threads (`pull_request_review_comment`), which the GitHub App is not subscribed to yet.
 - Commands on issues.

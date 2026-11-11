@@ -210,10 +210,10 @@ _REDACTED_METADATA = {
     "logging": [
         {
             "callback_name": "langfuse",
-            "callback_vars": {"langfuse_secret_key": "[redacted by PostHog]", "langfuse_host": "[redacted by PostHog]"},
+            "callback_vars": {"langfuse_secret_key": "[redacted by Flind]", "langfuse_host": "[redacted by Flind]"},
         }
     ],
-    "callback_settings": {"callback_vars": {"langsmith_api_key": "[redacted by PostHog]"}},
+    "callback_settings": {"callback_vars": {"langsmith_api_key": "[redacted by Flind]"}},
     "owner": "growth",
 }
 

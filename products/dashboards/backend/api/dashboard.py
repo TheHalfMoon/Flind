@@ -238,7 +238,7 @@ if TYPE_CHECKING:
 
 AGENT_CONTEXT_HELP_TEXT = (
     "Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, "
-    "data sources, tile-specific query assumptions, caveats, or editing guidance. PostHog's Data Catalog is the "
+    "data sources, tile-specific query assumptions, caveats, or editing guidance. Flind's Data Catalog is the "
     "semantic layer. Store canonical metric definitions there, not in this field. "
     "An empty string or null means there is no agent context. Shared and exported dashboards, and organizations "
     "without AI data processing approval, omit this field. Max 10000 characters."
@@ -3099,7 +3099,7 @@ class DashboardSubscribeNudgeResponseSerializer(serializers.Serializer):
                 "exclude_generated",
                 OpenApiTypes.BOOL,
                 location=OpenApiParameter.QUERY,
-                description="Optional. Exclude dashboards that PostHog generated.",
+                description="Optional. Exclude dashboards that Flind generated.",
             ),
             OpenApiParameter(
                 "created_by",

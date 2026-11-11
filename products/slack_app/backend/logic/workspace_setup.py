@@ -169,10 +169,10 @@ def join_channels(
 
     if not _can_change_workspace_settings(integration, user):
         raise WorkspaceSettingsError(
-            "Only the person who installed Slack or a project admin can add PostHog to channels."
+            "Only the person who installed Slack or a project admin can add Flind to channels."
         )
     if not has_scopes(integration, [CHANNELS_JOIN_SCOPE]):
-        raise WorkspaceSettingsError("This Slack install can't join channels. Invite PostHog with /invite @PostHog.")
+        raise WorkspaceSettingsError("This Slack install can't join channels. Invite Flind with /invite @PostHog.")
 
     # The ids come from the browser, so only channels from the same list the page showed are joined.
     allowed = {option.id for option in public_channel_options(integration)}

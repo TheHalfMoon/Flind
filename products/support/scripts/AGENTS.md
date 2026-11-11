@@ -1,6 +1,6 @@
 # Support scripts
 
-One-off operational CLIs that support and staff run against a live PostHog project
+One-off operational CLIs that support and staff run against a live Flind project
 (scrub person properties, prune property definitions, and so on).
 They talk to the public REST and query APIs over the network and are never imported by the app.
 Shared plumbing lives in `lib/`, so a new script is mostly its own discovery/mutation logic plus a thin `main()`.

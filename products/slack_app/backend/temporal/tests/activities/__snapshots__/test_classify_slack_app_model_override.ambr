@@ -1,7 +1,7 @@
 # serializer version: 1
 # name: TestClassifySlackAppModelOverride.test_prompt_snapshot_matches
   '''
-  You are routing a Slack message addressed to the PostHog agent. Decide whether the author asked for THIS task to run on a particular model or reasoning effort.
+  You are routing a Slack message addressed to the Flind agent. Decide whether the author asked for THIS task to run on a particular model or reasoning effort.
   
   Only these models can be selected — copy the id exactly as written:
   Claude (Anthropic) runtime:

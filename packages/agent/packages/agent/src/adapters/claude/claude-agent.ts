@@ -1595,7 +1595,7 @@ export class ClaudeAcpAgent extends BaseAcpAgent {
                     sessionUpdate: "agent_message_chunk",
                     content: {
                       type: "text",
-                      text: `Unsupported slash command: \`${cmd}\`. PostHog does not implement this command.`,
+                      text: `Unsupported slash command: \`${cmd}\`. Flind does not implement this command.`,
                     },
                   },
                 });
@@ -3242,7 +3242,7 @@ export class ClaudeAcpAgent extends BaseAcpAgent {
 
   // Backs the `finish` local tool: marks the task run terminal so the Temporal
   // workflow tears the sandbox down. Only wired when we have both the run
-  // identifiers and a PostHog API config, i.e. a real cloud run.
+  // identifiers and a Flind API config, i.e. a real cloud run.
   private buildRequestFinish(
     taskId: string | undefined,
     taskRunId: string | undefined,
@@ -3900,15 +3900,15 @@ export class ClaudeAcpAgent extends BaseAcpAgent {
     };
   }
 
-  /** Records the PostHog product behind an executed MCP exec `call` and emits
+  /** Records the Flind product behind an executed MCP exec `call` and emits
    *  any newly-seen product so the client's persistent list can update live. */
   private createOnPostHogResourceUsed() {
     return (subTool: string, commandText?: string) => {
-      // Surface PostHog calls whose domain we don't recognize yet, so the gap
+      // Surface Flind calls whose domain we don't recognize yet, so the gap
       // can be closed in `DOMAIN_PRODUCT` rather than the call silently
       // surfacing no chip. Deliberately-suppressed admin domains don't log.
       if (isUnclassifiedPostHogSubTool(subTool)) {
-        this.logger.debug("Unclassified PostHog MCP sub-tool", { subTool });
+        this.logger.debug("Unclassified Flind MCP sub-tool", { subTool });
       }
       this.recordSessionResources(
         classifyPostHogExecCall(subTool, commandText),
@@ -3927,11 +3927,11 @@ export class ClaudeAcpAgent extends BaseAcpAgent {
     for (const product of added) sessionResources.add(product);
     void this.emitResourcesUsed(added).catch((error) => {
       for (const product of added) sessionResources.delete(product);
-      this.logger.warn("Failed to report used PostHog products", { error });
+      this.logger.warn("Failed to report used Flind products", { error });
     });
   }
 
-  /** Emits newly-seen PostHog products as soon as they're used, so the client
+  /** Emits newly-seen Flind products as soon as they're used, so the client
    *  can append them to a persistent, de-duplicated list in real time. */
   private async emitResourcesUsed(added: PostHogProductId[]): Promise<void> {
     const products = added.map((id) => ({ id, label: POSTHOG_PRODUCTS[id] }));

@@ -240,7 +240,7 @@ export function LoopForm({
   const reportForeignWorkflow = () => {
     toast.error("This loop was changed in the workflow editor", {
       description:
-        "Open it in PostHog to change it. Saving here would replace those changes.",
+        "Open it in Flind to change it. Saving here would replace those changes.",
     });
   };
 

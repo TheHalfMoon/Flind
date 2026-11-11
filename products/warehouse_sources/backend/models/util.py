@@ -739,7 +739,7 @@ _VIRTUAL_HOSTED_STORAGE_HOST = re.compile(rf"^(?P<bucket>.+?)\.{_STORAGE_ENDPOIN
 _GLOB_METACHARACTERS = frozenset("*?{}[]")
 
 _NOT_OUR_STORAGE = (
-    "This URL points to PostHog's internal storage and can't be used as a source. "
+    "This URL points to Flind's internal storage and can't be used as a source. "
     "Enter the location of your own bucket instead."
 )
 
@@ -807,7 +807,7 @@ _POSTHOG_OWNED_BUCKET_SETTING_NAMES = (
 # that way, with the same "ClickHouse uses its EC2 instance role, no credentials needed" shape. The
 # load-bearing control against that class is TableSerializer requiring a credential whenever
 # url_pattern is set or changed (products/data_warehouse/backend/presentation/views/table.py), not
-# this list - this registry only backstops the credential-less-by-design tables PostHog's own code
+# this list - this registry only backstops the credential-less-by-design tables Flind's own code
 # creates (self-managed uploads, pipeline syncs), where the URL is known in advance.
 _BUCKET_SETTINGS_NOT_READABLE_BY_THE_NODE_ROLE = {
     "AGENT_BUNDLES_S3_BUCKET": "no reader found in this codebase; defaults to OBJECT_STORAGE_BUCKET",
@@ -827,7 +827,7 @@ _BUCKET_SETTINGS_NOT_READABLE_BY_THE_NODE_ROLE = {
 
 
 def _posthog_owned_bucket_names() -> set[str]:
-    """Buckets PostHog owns, so a table must never be pointed at one.
+    """Buckets Flind owns, so a table must never be pointed at one.
 
     A self-managed table reads through ClickHouse, which falls back to its node IAM role when the
     table carries no credential. These are the buckets that role can reach, and they hold every
@@ -850,7 +850,7 @@ def _posthog_owned_bucket_names() -> set[str]:
 def _validate_url_pattern_is_not_posthog_storage(
     url_pattern: str, normalized_hostname: str, path: str
 ) -> tuple[bool, str]:
-    """Reject a URL that addresses PostHog's own object storage, in any of the forms S3 accepts.
+    """Reject a URL that addresses Flind's own object storage, in any of the forms S3 accepts.
 
     A bucket answers to both a virtual-hosted host (`<bucket>.s3.<region>.amazonaws.com`) and a
     path-style one (`s3.<region>.amazonaws.com/<bucket>`), so a host check alone leaves the same

@@ -151,14 +151,14 @@ export function SourceSetupPanel({
                 {state === 'empty' && (
                     <p className="text-secondary text-sm mb-4">
                         Make sure your ad links include UTM parameters, such as utm_source and utm_medium, and that
-                        PostHog captures them.
+                        Flind captures them.
                     </p>
                 )}
                 {!busy && !compact && (
                     <div className="space-y-1">
                         <strong className="text-sm">Your marketing data in one place</strong>
                         <p className="text-secondary text-sm mb-0">
-                            Compare campaign performance across your marketing sources. Use PostHog events as conversion
+                            Compare campaign performance across your marketing sources. Use Flind events as conversion
                             goals to measure conversion costs and ROAS.
                         </p>
                         {featureFlags[FEATURE_FLAGS.MARKETING_ANALYTICS_ORGANIC_KEYWORDS] && (

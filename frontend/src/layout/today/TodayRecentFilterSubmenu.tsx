@@ -9,7 +9,7 @@ interface TodayRecentFilterSubmenuProps {
     label: string
     /** The choice in force, shown beside the label. */
     value: string
-    /** The choice differs from the default, so the value takes the primary color, like PostHog Desktop. */
+    /** The choice differs from the default, so the value takes the primary color, like Flind Desktop. */
     narrowed?: boolean
     children: ReactNode
 }

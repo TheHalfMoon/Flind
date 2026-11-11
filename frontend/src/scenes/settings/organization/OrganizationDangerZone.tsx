@@ -87,7 +87,7 @@ export function OrganizationDangerZone(): JSX.Element {
             <div className="text-danger">
                 {!restrictionReason && (
                     <p className="text-danger">
-                        This deletes the organization, all its projects and all its data for every member. Your PostHog
+                        This deletes the organization, all its projects and all its data for every member. Your Flind
                         account is not deleted. This is <b>irreversible</b>.
                     </p>
                 )}

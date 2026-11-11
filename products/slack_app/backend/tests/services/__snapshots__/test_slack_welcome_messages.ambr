@@ -1,7 +1,7 @@
 # serializer version: 1
 # name: test_assistant_pane_welcome_copy
   '''
-  Hi! I'm PostHog, an AI agent. Ask me about your product data, or tell me what to fix and I'll open a pull request in a connected repo.
+  Hi! I'm Flind, an AI agent. Ask me about your product data, or tell me what to fix and I'll open a pull request in a connected repo.
   • Keep replying here while I'm working and I'll pick up what you say.
   • Want a different model? Say so: `use fable for this one`.
   • Answering from the wrong project? Name the one you want: `give me DAU for Staging please`.
@@ -10,11 +10,11 @@
 # ---
 # name: test_welcome_copy[channel]
   '''
-  Hey, I'm PostHog. Tag me with @PostHog to get started.
+  Hey, I'm Flind. Tag me with @PostHog to get started.
   
   ---
   
-  :wave: Hey, I'm PostHog. Tag me with `@PostHog` and I'll dig into your product data, poke around your codebase, or open a pull request to fix something.
+  :wave: Hey, I'm Flind. Tag me with `@PostHog` and I'll dig into your product data, poke around your codebase, or open a pull request to fix something.
   
   *Try asking me*
   • `@PostHog why did signups drop in the EU last week?`
@@ -29,18 +29,18 @@
   *Tell me when I get it wrong*
   Hit the thumbs under my replies. A thumbs down asks what went wrong, and that goes straight to the team building me. You can also react with :thumbsup: or :thumbsdown:.
   
-  I also unfurl PostHog links shared in this channel. `/posthog` lists my commands, and your default model and thread follow-ups live in <slack://app?team=T_WELCOME&id=A_WELCOME&tab=home|my Home tab>.
+  I also unfurl Flind links shared in this channel. `/posthog` lists my commands, and your default model and thread follow-ups live in <slack://app?team=T_WELCOME&id=A_WELCOME&tab=home|my Home tab>.
   
   [Read the docs](https://posthog.com/docs/slack-app)
   '''
 # ---
 # name: test_welcome_copy[team_join]
   '''
-  Hey, welcome! I'm PostHog. Message me to get started.
+  Hey, welcome! I'm Flind. Message me to get started.
   
   ---
   
-  :wave: Hey, welcome! I'm PostHog, an AI agent your team already uses here. Message me, or tag `@PostHog` in any channel, and I'll dig into your product data or open a pull request in a connected repo.
+  :wave: Hey, welcome! I'm Flind, an AI agent your team already uses here. Message me, or tag `@PostHog` in any channel, and I'll dig into your product data or open a pull request in a connected repo.
   
   *Try asking me*
   • `why did signups drop in the EU last week?`
@@ -60,11 +60,11 @@
 # ---
 # name: TestOnboardingDm.test_onboarding_dm_copy
   '''
-  Set up PostHog - self-driving for your product
+  Set up Flind - self-driving for your product
   
   ---
   
-  👋 *Hi, I'm PostHog - self-driving for your product*
+  👋 *Hi, I'm Flind - self-driving for your product*
   I'm an AI agent on autopilot: I watch your product for problems, investigate them myself, and open pull requests to fix them - so issues get handled before they reach your backlog.
   
   💬 *You can also just talk to me*

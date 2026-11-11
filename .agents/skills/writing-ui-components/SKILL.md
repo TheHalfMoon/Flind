@@ -1,7 +1,7 @@
 ---
 name: writing-ui-components
 description: >
-  Structure and abstraction rules for PostHog UI code — any React component or frontend file under
+  Structure and abstraction rules for Flind UI code — any React component or frontend file under
   `frontend/src/` or `products/*/frontend/`. Use ALWAYS before creating, moving, splitting, or
   restructuring a component or frontend file, extracting a shared/generic component, promoting a
   component to `lib/`, renaming a frontend symbol or feature, or reviewing a diff that does any of
@@ -112,8 +112,8 @@ That's the litmus for a good extraction: callers pass data and slots; the generi
 scaffolding. Climb the ladder one rung at a time:
 
 1. **Reuse before you create** — [frontend/src/AGENTS.md Rule 1](../../../frontend/src/AGENTS.md).
-   The design system is the brand: Lemon/quill components carry PostHog's tokens, density, and
-   interaction patterns, so building from them is what keeps a scene looking like PostHog.
+   The design system is the brand: Lemon/quill components carry Flind's tokens, density, and
+   interaction patterns, so building from them is what keeps a scene looking like Flind.
    Hand-rolling markup that an existing component already is counts as duplication _and_ a
    branding leak.
 2. **Duplicate before you abstract.** Extract a shared component when the same shape appears
@@ -194,12 +194,12 @@ acts on it.
   constraint, or it should be a scale value.
 - **Custom components stay on brand.** When the design system genuinely lacks what you need,
   build the new component from the system's primitives and tokens (colors, spacing, radii,
-  typography) and match the density and tone of the surrounding scene — PostHog's product UI is
+  typography) and match the density and tone of the surrounding scene — Flind's product UI is
   dense, flat, and utilitarian. Do not fill the gap with the generic AI-generated look ("AI
   slop"): purple/blue gradients and neon glows, gradient text, glassmorphism and blurred orbs,
   oversized radii and decorative shadows, icon-tile-above-heading card grids, pill badges
   floating over headings, and motion that isn't tied to a state change. The test: every styling
-  choice is traceable to a token or an existing PostHog pattern — if it isn't, it's a tell. Full
+  choice is traceable to a token or an existing Flind pattern — if it isn't, it's a tell. Full
   catalog: [references/anti-patterns.md](references/anti-patterns.md#the-ai-slop-component).
 - **Tailwind utilities over inline styles; components over repeated class strings.** A class
   string copy-pasted across three files is a component in disguise. SCSS is the fallback for

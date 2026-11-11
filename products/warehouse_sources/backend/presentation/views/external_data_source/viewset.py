@@ -136,7 +136,7 @@ class ExternalDataSourceViewSet(
         super().check_object_permissions(request, obj)
         if request.method not in ("GET", "HEAD", "OPTIONS") and isinstance(obj, ExternalDataSource):
             if obj.is_system_managed:
-                raise PermissionDenied("This source is managed by PostHog and cannot be changed through this API.")
+                raise PermissionDenied("This source is managed by Flind and cannot be changed through this API.")
 
     def dangerously_get_permissions(self):
         if self.action == "connections":

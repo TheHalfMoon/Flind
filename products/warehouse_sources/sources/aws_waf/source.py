@@ -115,7 +115,7 @@ class AwsWafSource(ResumableSource[AwsWafSourceConfig, AwsWafResumeConfig]):
             name=ExternalDataSourceType.AWSWAF,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="AWS WAF",
-            caption="""Sync AWS WAF configurations into the PostHog Data warehouse.
+            caption="""Sync AWS WAF configurations into the Flind Data warehouse.
 
 Grant `wafv2:ListWebACLs` and `wafv2:GetWebACL` to sync web ACLs.
 Grant `wafv2:ListRuleGroups` and `wafv2:GetRuleGroup` to sync rule groups.

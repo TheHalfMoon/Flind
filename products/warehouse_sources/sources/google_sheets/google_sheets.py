@@ -46,9 +46,9 @@ GOOGLE_SHEETS_API_VERSION_V4 = "v4"
 
 
 class GoogleSheetsServiceAccountKeyInvalidError(CredentialsSecretError):
-    """PostHog's own Google Sheets service account key does not parse, for example it is not valid PEM.
+    """Flind's own Google Sheets service account key does not parse, for example it is not valid PEM.
 
-    Not reportable: the key is PostHog's, so the customer can't fix it, and a bad read clears when
+    Not reportable: the key is Flind's, so the customer can't fix it, and a bad read clears when
     the key is good again. The sync activities log it as a warning and Temporal retries them.
     """
 
@@ -122,7 +122,7 @@ _RETRYABLE_API_ERROR_CODES = {409, 429, 500, 502, 503, 504}
 # `str(PermissionError())` is an empty string, which means the non-retryable error
 # matcher (substring match over `str(e)`) has nothing to match on. Re-raise with a
 # stable, descriptive message so downstream matching can identify it.
-_PERMISSION_DENIED_MESSAGE = "Spreadsheet access denied. Please share the spreadsheet with the PostHog service account."
+_PERMISSION_DENIED_MESSAGE = "Spreadsheet access denied. Please share the spreadsheet with the Flind service account."
 
 # gspread converts the Sheets API 404 into `SpreadsheetNotFound` — see gspread/client.py
 # `open_by_key`: `raise SpreadsheetNotFound(ex.response) from ex`. Its `str()` is just the bare
@@ -132,7 +132,7 @@ _PERMISSION_DENIED_MESSAGE = "Spreadsheet access denied. Please share the spread
 # stable, descriptive message (mirroring `_PERMISSION_DENIED_MESSAGE` above) so it stops retrying.
 _SPREADSHEET_NOT_FOUND_MESSAGE = (
     "Spreadsheet not found. The Google Sheet could not be found — it may have been deleted or "
-    "moved, or is no longer shared with the PostHog service account."
+    "moved, or is no longer shared with the Flind service account."
 )
 
 T = TypeVar("T")
@@ -156,7 +156,7 @@ def _assert_unique_normalized_column_names(headers: list[str]) -> None:
         if previous is not None and previous != header:
             raise Exception(
                 f'Column headers "{previous}" and "{header}" collapse to the same column name '
-                f'"{normalized}" when synced. Column headers must stay unique after PostHog normalizes '
+                f'"{normalized}" when synced. Column headers must stay unique after Flind normalizes '
                 f"them (it ignores case and punctuation, and drops characters outside a-z and 0-9, so "
                 f"headers written entirely in another script all end up with the same name). Give one of "
                 f"them a name that differs in its letters or digits, then resync."
@@ -385,7 +385,7 @@ def discover_worksheet_schemas(
     """List the worksheets once and read the header rows in as few batched requests as the URL allows.
 
     Discovery runs while the user waits in the source wizard, and every Sheets request spends a quota
-    that all PostHog customers share. One read per worksheet lets a spreadsheet with many tabs outlast
+    that all Flind customers share. One read per worksheet lets a spreadsheet with many tabs outlast
     the request timeout."""
     spreadsheet, handles = _list_worksheets(config, _DISCOVERY_RETRY_BUDGET)
     selected = [handle for handle in handles if names is None or _discovered_worksheet(handle).name in names]

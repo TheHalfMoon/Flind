@@ -66,7 +66,7 @@ const OFF_PAGE_CHANNELS = [
 ]
 const OFF_PAGE_CHANNEL = OFF_PAGE_CHANNELS[0]
 
-// The channel someone picks before inviting the PostHog app to it.
+// The channel someone picks before inviting the Flind app to it.
 const NOT_JOINED_CHANNEL = {
     id: 'CNOTJOINED1',
     name: 'not-joined',

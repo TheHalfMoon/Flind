@@ -99,7 +99,7 @@ def create_migration(*, team_id: int, user_id: int, provider: str, api_key: str,
 
 
 def start_upload(*, team_id: int, user_id: int, provider: str) -> WarehouseMigration:
-    """A migration that an agent fills by uploading what it read from the vendor. PostHog gets no vendor key."""
+    """A migration that an agent fills by uploading what it read from the vendor. Flind gets no vendor key."""
     return WarehouseMigration.objects.for_team(team_id).create(
         team_id=team_id, created_by_id=user_id, provider=provider, status=WarehouseMigration.Status.READY
     )
@@ -236,7 +236,7 @@ def _start_crawl(migration: WarehouseMigration) -> None:
         # Conditional, so a crawl that did start and already set `crawling` keeps its status.
         rows.filter(status=WarehouseMigration.Status.PENDING).update(
             status=WarehouseMigration.Status.FAILED,
-            latest_error="PostHog could not start reading the Fivetran account. Try again.",
+            latest_error="Flind could not start reading the Fivetran account. Try again.",
             updated_at=timezone.now(),
         )
         migration.refresh_from_db(fields=["status", "latest_error", "updated_at"])

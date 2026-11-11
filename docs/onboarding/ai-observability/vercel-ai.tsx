@@ -14,7 +14,7 @@ export const getVercelAISteps = (ctx: OnboardingComponentsContext): StepDefiniti
             content: (
                 <>
                     <Markdown>
-                        Use Node.js 22.22 or later. Install the PostHog AI package, the Vercel AI SDK, its OpenTelemetry
+                        Use Node.js 22.22 or later. Install the Flind AI package, the Vercel AI SDK, its OpenTelemetry
                         integration, the OpenTelemetry SDK, and Zod for defining tool schemas.
                     </Markdown>
 
@@ -33,7 +33,7 @@ export const getVercelAISteps = (ctx: OnboardingComponentsContext): StepDefiniti
             content: (
                 <>
                     <Markdown>
-                        Create `instrumentation.ts`. Initialize the OpenTelemetry SDK with PostHog's
+                        Create `instrumentation.ts`. Initialize the OpenTelemetry SDK with Flind's
                         `PostHogSpanProcessor`, then register the Vercel AI SDK integration. Both setup calls must
                         finish before the first AI SDK call. Their relative order does not matter because the
                         integration obtains a lazy OpenTelemetry tracer.
@@ -108,7 +108,7 @@ export const getVercelAISteps = (ctx: OnboardingComponentsContext): StepDefiniti
                     <Blockquote>
                         <Markdown>
                             **Vercel AI SDK versions:** This OpenTelemetry integration is the supported path for Vercel
-                            AI SDK v7. The legacy PostHog `withTracing` wrapper supports the v5 and v6 provider
+                            AI SDK v7. The legacy Flind `withTracing` wrapper supports the v5 and v6 provider
                             interfaces and rejects v7 models.
                         </Markdown>
                     </Blockquote>
@@ -178,7 +178,7 @@ export const getVercelAISteps = (ctx: OnboardingComponentsContext): StepDefiniti
                               console.log(await runWeatherAgent())
                             } finally {
                               // Spans are still queued in the batch processor when this script exits,
-                              // so without this flush they never reach PostHog.
+                              // so without this flush they never reach Flind.
                               await posthogSpanProcessor.forceFlush()
                             }
                         `}
@@ -187,13 +187,13 @@ export const getVercelAISteps = (ctx: OnboardingComponentsContext): StepDefiniti
                     <Blockquote>
                         <Markdown>
                             **Identity:** Provide `distinctId` for stable user attribution. Omitting it does not make
-                            capture anonymous. PostHog assigns fallback IDs when no distinct ID is present.
+                            capture anonymous. Flind assigns fallback IDs when no distinct ID is present.
                         </Markdown>
                     </Blockquote>
 
                     <Blockquote>
                         <Markdown>
-                            **Groups and custom properties:** PostHog ingestion converts the JSON-string `$groups`
+                            **Groups and custom properties:** Flind ingestion converts the JSON-string `$groups`
                             attribute into native group associations. Other scalar attributes returned by `enrichSpan`,
                             such as `environment`, remain filterable custom properties.
                         </Markdown>
@@ -202,7 +202,7 @@ export const getVercelAISteps = (ctx: OnboardingComponentsContext): StepDefiniti
                     <Blockquote>
                         <Markdown>
                             **Trace and session names:** `$ai_session_id` groups calls in AI observability. Trace names
-                            are not configurable on the v7 OpenTelemetry path yet. PostHog derives the displayed trace
+                            are not configurable on the v7 OpenTelemetry path yet. Flind derives the displayed trace
                             name from the OpenTelemetry span name, which takes precedence over `$ai_trace_name`.
                             `functionId` is emitted as `gen_ai.agent.name` and does not set the trace name either.
                         </Markdown>
@@ -220,7 +220,7 @@ export const getVercelAISteps = (ctx: OnboardingComponentsContext): StepDefiniti
                         <Markdown>
                             **Privacy:** Vercel AI SDK v7 records prompts and outputs by default. Set `recordInputs:
                             false` or `recordOutputs: false` in `telemetry` to disable either field. The OpenTelemetry
-                            path does not have a separate PostHog privacy switch for text content, so these flags are
+                            path does not have a separate Flind privacy switch for text content, so these flags are
                             the control for prompt and output recording.
                         </Markdown>
                     </Blockquote>

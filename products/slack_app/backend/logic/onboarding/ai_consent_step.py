@@ -36,7 +36,7 @@ class AiConsentStep(OnboardingStep):
             return [
                 section_block(
                     f"*Allow AI data processing*\n{AI_DATA_PROCESSING_TEXT}\n"
-                    "Only an organization admin can allow it. Ask one to allow it in PostHog, then press Continue."
+                    "Only an organization admin can allow it. Ask one to allow it in Flind, then press Continue."
                 ),
                 {"type": "actions", "elements": [button(ctx, "Continue", CONTINUE_ACTION_ID, step=self.key)]},
             ]

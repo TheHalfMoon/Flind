@@ -851,7 +851,7 @@ export class ToolExecutor {
     /**
      * Third-party MCP tools for this caller, or none if the gateway can't be reached.
      * Swallows failures on purpose: a connected server having a bad day must not stop
-     * PostHog's own tools from working.
+     * Flind's own tools from working.
      */
     private async gatewayToolsFor(state: ResolvedState): Promise<Tool<ZodObjectAny>[]> {
         const projectId = await state.context.stateManager.getProjectId().catch(() => undefined)
@@ -867,7 +867,7 @@ export class ToolExecutor {
     }
 
     /**
-     * What this connection knows about the built-in PostHog skill catalog.
+     * What this connection knows about the built-in Flind skill catalog.
      *
      * Read from the catalog the server loads at startup, not from the `learn`
      * catalog: that one is undefined exactly when the `learn` command is off, which
@@ -893,7 +893,7 @@ export class ToolExecutor {
         const trackInnerCall: ExecInnerCallTracker = (toolName, properties) => {
             // Record which inner tool actually dispatched so `callExecTool` can attribute
             // the canonical `$mcp_tool_call` event to the real tool instead of the `exec`
-            // dispatcher. The PostHog event is intentionally NOT emitted here: the wrapper
+            // dispatcher. The Flind event is intentionally NOT emitted here: the wrapper
             // event (now relabelled to the inner tool name, with the inner tool's category
             // derived from it) already carries this call, so a second emit would double-count.
             execMetrics.innerToolName = toolName
@@ -1112,7 +1112,7 @@ type ToolErrorType =
 
 interface ToolErrorClassification {
     errorType: ToolErrorType
-    /** Upstream HTTP status, when the failure came from a PostHog API error. */
+    /** Upstream HTTP status, when the failure came from a Flind API error. */
     status?: number
     /** Value-free descriptors of a schema rejection (offending field+code). */
     validationFields?: string[]

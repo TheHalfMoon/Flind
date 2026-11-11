@@ -111,7 +111,7 @@ class Servicem8Source(ResumableSource[Servicem8SourceConfig, ServiceM8ResumeConf
             name=ExternalDataSourceType.SERVICEM8,
             category=DataWarehouseSourceCategory.CRM,
             label="ServiceM8",
-            caption="Enter an API key from your ServiceM8 account (Settings -> API Keys) to sync jobs, clients, staff, and job activity into the PostHog Data warehouse.",
+            caption="Enter an API key from your ServiceM8 account (Settings -> API Keys) to sync jobs, clients, staff, and job activity into the Flind Data warehouse.",
             docsUrl="https://posthog.com/docs/cdp/sources/servicem8",
             iconPath="/static/services/servicem8.png",
             releaseStatus=ReleaseStatus.GA,

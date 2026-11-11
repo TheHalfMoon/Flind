@@ -1,6 +1,6 @@
 # Response rates by survey design
 
-These comparisons come from PostHog popover surveys over one week in October 2026.
+These comparisons come from Flind popover surveys over one week in October 2026.
 Response rate is the share of people who saw a survey and answered at least one question.
 Each survey counts once, so a few high-traffic surveys do not dominate.
 

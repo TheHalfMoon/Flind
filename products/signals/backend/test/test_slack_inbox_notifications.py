@@ -176,7 +176,7 @@ def test_build_message_blocks_includes_recipient_and_open_in_posthog_button(use_
     assert implement["action_id"] == "slack_app_implement_report"
     assert json.loads(implement["value"]) == {"integration_id": 7}
     assert "url" not in implement
-    assert review["text"]["text"] == "Review in PostHog"
+    assert review["text"]["text"] == "Review in Flind"
     assert review["url"] == report_url
     assert text == "Checkout errors spiked"
 
@@ -637,7 +637,7 @@ def test_dispatch_posts_team_channel_through_the_workspace_that_owns_it(org_and_
 )
 @pytest.mark.django_db
 def test_dispatch_records_the_notification_thread_for_the_report(org_and_team, target, posted_channel):
-    # The message invites a reply mentioning PostHog, which starts a task. Dropping the posted
+    # The message invites a reply mentioning Flind, which starts a task. Dropping the posted
     # `ts`, or storing the id we sent instead of the one Slack answered with, leaves that task
     # with no way back to the report it discusses.
     org, team = org_and_team

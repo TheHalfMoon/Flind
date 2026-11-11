@@ -294,7 +294,7 @@ class TestJobCostsViewParity(ClickhouseTestMixin, BaseTest):
 
         # Every row is attributed, whichever attempt it belongs to — this is the regression.
         for row in rows:
-            assert (row[2], row[3], row[4]) == ("PostHog", "posthog", pr_number), row[0]
+            assert (row[2], row[3], row[4]) == ("Flind", "posthog", pr_number), row[0]
 
         # The attempt-1 job that really ran keeps its cost...
         assert not by_attempt[("passed", 1)][5]

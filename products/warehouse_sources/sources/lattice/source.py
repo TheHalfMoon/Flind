@@ -60,7 +60,7 @@ class LatticeSource(ResumableSource[LatticeSourceConfig, LatticeResumeConfig]):
             name=ExternalDataSourceType.LATTICE,
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="Lattice",
-            caption="""Enter your Lattice API key to pull your Lattice performance management data into the PostHog Data warehouse.
+            caption="""Enter your Lattice API key to pull your Lattice performance management data into the Flind Data warehouse.
 
 A Lattice admin can generate an API key under Admin > Settings > API Keys (Lattice may require requesting API access first). Pick the region that matches your Lattice data residency.""",
             iconPath="/static/services/lattice.png",

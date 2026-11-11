@@ -29,7 +29,7 @@ import { maxLogic } from './maxLogic'
 
 /**
  * One investigation, three chats: the legacy chat as the flag-off majority sees it, the same chat in the quill
- * skin that `today-rail-nav` turns on, and the sandbox runner ("PostHog AI 2.0") in the same skin. The gaps
+ * skin that `today-rail-nav` turns on, and the sandbox runner ("Flind AI 2.0") in the same skin. The gaps
  * list under each quill column names what still renders in LemonUI there.
  */
 
@@ -189,7 +189,7 @@ function SideBySideComparison(): JSX.Element {
             </div>
             <div className="flex items-start gap-6 overflow-x-auto">
                 <Column
-                    title="PostHog AI now"
+                    title="Flind AI now"
                     caption="Flag off, the majority today: the LangGraph conversation in LemonUI."
                     skin="lemon"
                     width={width}
@@ -197,7 +197,7 @@ function SideBySideComparison(): JSX.Element {
                     <LegacyChat />
                 </Column>
                 <Column
-                    title="PostHog AI quill"
+                    title="Flind AI quill"
                     caption="phai-quill or today-rail-nav on: the same LangGraph conversation in the quill skin."
                     gaps={LEGACY_QUILL_GAPS}
                     skin="quill"
@@ -206,7 +206,7 @@ function SideBySideComparison(): JSX.Element {
                     <LegacyChat />
                 </Column>
                 <Column
-                    title="PostHog AI 2.0 quill"
+                    title="Flind AI 2.0 quill"
                     caption="phai-sandbox-mode and today-rail-nav on: the sandbox runner in the quill skin."
                     gaps={SANDBOX_QUILL_GAPS}
                     skin="quill"

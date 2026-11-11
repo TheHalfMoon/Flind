@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function InlineScanApp(): JSX.Element {
     return (
-        <AppWrapper<InlineScanData> appName="PostHog Inline Scan">
+        <AppWrapper<InlineScanData> appName="Flind Inline Scan">
             {({ data }) => <InlineScanView data={data!} />}
         </AppWrapper>
     )

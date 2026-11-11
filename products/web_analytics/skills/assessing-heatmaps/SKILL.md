@@ -1,6 +1,6 @@
 ---
 name: assessing-heatmaps
-description: "Assesses what a page's heatmap is telling you and recommends concrete changes. Pulls click / rageclick / scroll-depth data for a URL, names the hot elements by cross-referencing autocapture events on the same page, and can create a saved heatmap the user opens in PostHog, then summarizes the behavior and proposes improvements.\nTRIGGER when: user asks what a heatmap shows, why people aren't clicking something, where users rage-click, how far they scroll, what to change on a page based on heatmap/click data, or to 'analyze/assess/review the heatmap' for a URL.\nDO NOT TRIGGER when: the user only wants to create a saved heatmap screenshot with no analysis (use heatmaps-saved-create directly), or is asking about session replay in general (use investigating-replay)."
+description: "Assesses what a page's heatmap is telling you and recommends concrete changes. Pulls click / rageclick / scroll-depth data for a URL, names the hot elements by cross-referencing autocapture events on the same page, and can create a saved heatmap the user opens in Flind, then summarizes the behavior and proposes improvements.\nTRIGGER when: user asks what a heatmap shows, why people aren't clicking something, where users rage-click, how far they scroll, what to change on a page based on heatmap/click data, or to 'analyze/assess/review the heatmap' for a URL.\nDO NOT TRIGGER when: the user only wants to create a saved heatmap screenshot with no analysis (use heatmaps-saved-create directly), or is asking about session replay in general (use investigating-replay)."
 ---
 
 # Assessing heatmaps
@@ -21,7 +21,7 @@ leans on autocapture to supply the layout/identity you can't see:
    is what turns coordinates into meaning; without it you only have dots.
 
 When the user wants to _see_ the heatmap, create a saved heatmap (Step 4) — that renders the page with the
-data overlaid for them to open in PostHog. You reason from the data; they look at the picture.
+data overlaid for them to open in Flind. You reason from the data; they look at the picture.
 
 ## The flow
 
@@ -95,12 +95,12 @@ clickable" finding.
 ### Step 4: Give the user a heatmap to look at (optional)
 
 You can't see the page, but the user can. When a visual would help them follow your findings, create a saved
-heatmap so they can open the rendered page with the data overlaid in PostHog:
+heatmap so they can open the rendered page with the data overlaid in Flind:
 
 1. `heatmaps-saved-create` with the page `url` (type defaults to `screenshot`). This enqueues a headless
    render — it is asynchronous. Pass `widths` matching the viewport band you analyzed in Step 2.
 2. Poll `heatmaps-saved-get` (by the returned `short_id`) until `status` is `completed`, then tell the user
-   it's ready to view in PostHog.
+   it's ready to view in Flind.
 
 This is for the human's benefit — your own reasoning still comes from the Step 2 data and the Step 3
 autocapture identity, not from the picture.
@@ -140,7 +140,7 @@ Produce a short, concrete report:
   engagement".
 - **Coordinates are scaled** by a factor of 16 in storage; the API already returns CSS-pixel `pointer_y` and
   relative x, so use the API/tool values directly rather than the raw table columns.
-- **You can't see the screenshot.** The saved-heatmap render is for the user to open in PostHog; don't claim
+- **You can't see the screenshot.** The saved-heatmap render is for the user to open in Flind; don't claim
   to have looked at the page. Ground every layout claim in autocapture identity + coordinates, not vision.
 - **Saved-heatmap rendering is async.** After `heatmaps-saved-create`, poll `heatmaps-saved-get` until
   `status` is `completed` before telling the user it's viewable. Only `screenshot`-type heatmaps render an

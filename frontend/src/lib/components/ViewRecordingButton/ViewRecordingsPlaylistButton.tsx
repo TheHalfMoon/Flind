@@ -19,7 +19,7 @@ type ViewRecordingsPlaylistButtonProps = {
 
 /**
  * Button for opening the Session Replay page with filters applied.
- * Opens in a new PostHog tab to view a filtered playlist of recordings.
+ * Opens in a new Flind tab to view a filtered playlist of recordings.
  */
 export default function ViewRecordingsPlaylistButton({
     filters,

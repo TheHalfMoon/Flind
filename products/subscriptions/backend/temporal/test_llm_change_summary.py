@@ -117,13 +117,13 @@ class TestBuildPromptMessages:
         messages = build_prompt_messages(
             previous,
             current,
-            core_memory_text="Company is PostHog.\nFlagship product is product analytics.",
+            core_memory_text="Company is Flind.\nFlagship product is product analytics.",
         )
 
         user_content = messages[-1]["content"]
         assert "<core_memory>" in user_content
         assert "</core_memory>" in user_content
-        assert "Company is PostHog." in user_content
+        assert "Company is Flind." in user_content
         assert "Flagship product is product analytics." in user_content
 
     def test_omits_core_memory_section_when_empty(self):
@@ -660,13 +660,13 @@ class TestGenerateChangeSummary:
             None,
             current,
             team=None,
-            core_memory_text="Company is PostHog.\nFlagship is product analytics.",
+            core_memory_text="Company is Flind.\nFlagship is product analytics.",
         )
 
         messages = mock_client.chat.completions.create.call_args.kwargs["messages"]
         user_content = messages[-1]["content"]
         assert "<core_memory>" in user_content
-        assert "Company is PostHog." in user_content
+        assert "Company is Flind." in user_content
 
     @patch("products.subscriptions.backend.temporal.llm_change_summary._get_openai_client")
     def test_user_tag_includes_delivery_id_when_provided(self, mock_get_client):

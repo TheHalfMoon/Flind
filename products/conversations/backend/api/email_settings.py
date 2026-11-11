@@ -74,11 +74,11 @@ MAILGUN_DOMAIN_REGISTERED_ELSEWHERE_ERROR = (
     "remove it and try again. If you cannot find it, contact Mailgun support."
 )
 MAILGUN_DOMAIN_CONFLICT_ERROR = (
-    "{domain} is already registered with Mailgun, but PostHog could not safely reuse it. Contact PostHog support."
+    "{domain} is already registered with Mailgun, but Flind could not safely reuse it. Contact Flind support."
 )
 MAILGUN_DOMAIN_CHECK_FAILED_ERROR = (
-    "PostHog could not check the existing Mailgun registration for {domain}. Try again. "
-    "If it keeps happening, contact PostHog support."
+    "Flind could not check the existing Mailgun registration for {domain}. Try again. "
+    "If it keeps happening, contact Flind support."
 )
 
 FORWARDING_CHALLENGE_BASE_COOLDOWN_SECONDS = 30
@@ -443,7 +443,7 @@ class EmailChannelConfigSerializer(serializers.Serializer):
     forwarding_address = serializers.EmailField(
         read_only=True,
         allow_null=True,
-        help_text="PostHog address to configure as a forwarding destination.",
+        help_text="Flind address to configure as a forwarding destination.",
     )
     domain = serializers.CharField(read_only=True, help_text="Sending domain registered with Mailgun.")
     domain_verified = serializers.BooleanField(read_only=True, help_text="Whether Mailgun verified the domain.")
@@ -497,7 +497,7 @@ class EmailChannelOperationResponseSerializer(serializers.Serializer):
 class EmailConfirmForwardingResponseSerializer(EmailChannelOperationResponseSerializer):
     confirmation_url = serializers.URLField(
         read_only=True,
-        help_text="Authenticated Google forwarding confirmation URL. Opening it does not verify forwarding to PostHog.",
+        help_text="Authenticated Google forwarding confirmation URL. Opening it does not verify forwarding to Flind.",
     )
 
 
@@ -834,7 +834,7 @@ class EmailSendTestView(APIView):
         from_addr = formataddr((config.from_name, config.from_email))
 
         email_message = mail.EmailMultiAlternatives(
-            subject="Test email from PostHog Support",
+            subject="Test email from Flind Support",
             body="This is a test email to confirm your outbound email is working correctly.",
             from_email=from_addr,
             to=[user.email],
@@ -985,7 +985,7 @@ class EmailVerifyForwardingView(APIView):
 
         if not is_smtp_email_service_available():
             return Response(
-                {"error": "Email verification is not configured on this PostHog instance."},
+                {"error": "Email verification is not configured on this Flind instance."},
                 status=503,
             )
 
@@ -1018,7 +1018,7 @@ class EmailVerifyForwardingView(APIView):
         try:
             message = EmailMessage(
                 campaign_key=challenge.campaign_key,
-                subject="Verify email forwarding to PostHog",
+                subject="Verify email forwarding to Flind",
                 template_name="customer_email_forwarding_verification",
                 template_context={"forwarding_challenge": challenge.token},
                 headers={FORWARDING_CHALLENGE_HEADER: challenge.token},
@@ -1028,7 +1028,7 @@ class EmailVerifyForwardingView(APIView):
         except exceptions.ImproperlyConfigured:
             cache.delete(rate_limit_keys.cooldown)
             return Response(
-                {"error": "Email verification is not configured on this PostHog instance."},
+                {"error": "Email verification is not configured on this Flind instance."},
                 status=503,
             )
         except Exception:

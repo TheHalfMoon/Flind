@@ -160,7 +160,7 @@ export const TraceEvent = (): JSX.Element => {
                 {dedent`
                     ### Pseudo-trace Events
 
-                    When you send generation (\`$ai_generation\`), span (\`$ai_span\`), or embedding (\`$ai_embedding\`) events with a \`$ai_trace_id\`, PostHog automatically creates a pseudo-trace event that appears in the dashboard as a parent grouping. These pseudo-traces:
+                    When you send generation (\`$ai_generation\`), span (\`$ai_span\`), or embedding (\`$ai_embedding\`) events with a \`$ai_trace_id\`, Flind automatically creates a pseudo-trace event that appears in the dashboard as a parent grouping. These pseudo-traces:
 
                     - Are not actual events in your data
                     - Automatically aggregate metrics from child events (latency, tokens, costs)
@@ -169,7 +169,7 @@ export const TraceEvent = (): JSX.Element => {
 
                     This means you can either:
                     1. Send explicit \`$ai_trace\` events to control the trace metadata
-                    2. Let PostHog automatically create pseudo-traces from your generation/span events
+                    2. Let Flind automatically create pseudo-traces from your generation/span events
                 `}
             </Markdown>
         </>

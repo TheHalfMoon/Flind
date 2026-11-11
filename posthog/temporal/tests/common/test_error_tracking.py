@@ -1,4 +1,4 @@
-"""Test that we capture exceptions in activities and workflows to PostHog."""
+"""Test that we capture exceptions in activities and workflows to Flind."""
 
 import uuid
 import datetime as dt

@@ -46,7 +46,7 @@ class BatchImportPartsProgressSerializer(serializers.Serializer):
 
 
 class BatchImportSupportListSerializer(serializers.ModelSerializer):
-    """Compact cross-team diagnostics view of a batch import job for PostHog support staff.
+    """Compact cross-team diagnostics view of a batch import job for Flind support staff.
 
     Excludes the raw `state` / `import_config` blobs (see the detail serializer) and never
     exposes the encrypted `secrets` column.
@@ -58,7 +58,7 @@ class BatchImportSupportListSerializer(serializers.ModelSerializer):
         help_text="Developer-facing status message written by the worker or an operator - the primary debugging signal. Not shown to the customer. Embedded URLs have their query string and userinfo redacted, since url_list part keys can carry presigned tokens or credentials."
     )
     display_status_message = serializers.SerializerMethodField(
-        help_text="Customer-facing status message shown in the PostHog UI. Embedded URLs are redacted the same way as status_message."
+        help_text="Customer-facing status message shown in the Flind UI. Embedded URLs are redacted the same way as status_message."
     )
     display_status = serializers.SerializerMethodField(
         help_text="Effective status: 'waiting_to_start' when the job is running but no worker has claimed it yet (lease_id is null), otherwise the raw status."
@@ -240,10 +240,10 @@ class UnscopedPersonalAPIKeyPermission(BasePermission):
 
 @extend_schema_view(
     list=extend_schema(
-        description="List batch import (managed migration) jobs across all teams. PostHog staff only.",
+        description="List batch import (managed migration) jobs across all teams. Flind staff only.",
     ),
     retrieve=extend_schema(
-        description="Get one batch import job with its raw worker state and import config. PostHog staff only.",
+        description="Get one batch import job with its raw worker state and import config. Flind staff only.",
     ),
 )
 class BatchImportSupportViewSet(viewsets.ReadOnlyModelViewSet):

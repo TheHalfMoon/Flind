@@ -84,7 +84,7 @@ describe('useTerraformExport', () => {
             expect(result.current.result).toBeNull()
         })
 
-        it('captures errors to PostHog with context', async () => {
+        it('captures errors to Flind with context', async () => {
             const insightResource: TerraformExportResource = {
                 type: 'insight',
                 data: {

@@ -118,7 +118,7 @@ class WasabiSource(ResumableSource[WasabiSourceConfig, WasabiResumeConfig]):
             name=ExternalDataSourceType.WASABI,
             category=DataWarehouseSourceCategory.FILE_STORAGE,
             label="Wasabi",
-            caption="""Import sub-account, usage, and invoice data from the Wasabi Account Control API (WACA) into the PostHog Data warehouse.
+            caption="""Import sub-account, usage, and invoice data from the Wasabi Account Control API (WACA) into the Flind Data warehouse.
 
 WACA is available to Wasabi Control Accounts (partners managing sub-accounts). To get an API key, enable Wasabi Account Control API access on your Control Account — see [Wasabi's documentation](https://docs.wasabi.com/apidocs/account-control-api) for details.
 """,

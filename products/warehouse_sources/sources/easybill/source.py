@@ -47,7 +47,7 @@ class EasybillSource(ResumableSource[EasybillSourceConfig, EasybillResumeConfig]
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="easybill",
             releaseStatus=ReleaseStatus.GA,
-            caption="Enter your easybill API key to sync your invoices, customers and accounting records into the PostHog data warehouse. Generate a key from your easybill account under **username menu > Profil und Einstellungen**.",
+            caption="Enter your easybill API key to sync your invoices, customers and accounting records into the Flind data warehouse. Generate a key from your easybill account under **username menu > Profil und Einstellungen**.",
             iconPath="/static/services/easybill.png",
             docsUrl="https://posthog.com/docs/cdp/sources/easybill",
             keywords=["invoicing", "billing", "accounting", "germany", "gobd"],

@@ -45,11 +45,11 @@ _INVITE_UTM_TAGS = "utm_source=posthog&utm_campaign=eval_report&utm_medium=slack
 _SLACK_RECONNECT_HINT = "The Slack connection no longer works. Reconnect Slack in your project settings."
 # Slack errors that no retry can fix, each with the step the user must take.
 _SLACK_CONFIG_ERROR_HINTS = {
-    "not_in_channel": "The PostHog app is not in this channel. Invite it with /invite @PostHog.",
+    "not_in_channel": "The Flind app is not in this channel. Invite it with /invite @PostHog.",
     "is_archived": "This channel is archived. Pick a different channel for this report.",
     # Slack also returns channel_not_found for a private channel that the app is not a member of.
     "channel_not_found": (
-        "Slack can't find this channel. If the channel is private, invite the PostHog app with /invite @PostHog. "
+        "Slack can't find this channel. If the channel is private, invite the Flind app with /invite @PostHog. "
         "Otherwise, pick a different channel for this report."
     ),
     **dict.fromkeys(

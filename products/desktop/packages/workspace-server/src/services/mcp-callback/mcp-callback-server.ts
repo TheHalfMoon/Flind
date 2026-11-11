@@ -110,8 +110,8 @@ function callbackHtml(status: "success" | "error"): string {
     error: "Authorization failed",
   };
   const messages = {
-    success: "You can close this window and return to the PostHog desktop app.",
-    error: "You can close this window and return to the PostHog desktop app.",
+    success: "You can close this window and return to the Flind desktop app.",
+    error: "You can close this window and return to the Flind desktop app.",
   };
 
   return `<!DOCTYPE html>

@@ -48,7 +48,7 @@ class CreateLegalDocumentInput:
 
     organization_id: UUID
     created_by_id: int
-    # Distinct ID of the submitting user, used to fire the PostHog event on create.
+    # Distinct ID of the submitting user, used to fire the Flind event on create.
     distinct_id: str
     document_type: str
     company_name: str

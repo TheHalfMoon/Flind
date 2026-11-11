@@ -85,13 +85,13 @@ _Avoid_: Sends, Campaigns
 ### Setup
 
 **Channel**:
-A medium that PostHog can send through, which is Email, SMS, Push or Slack.
+A medium that Flind can send through, which is Email, SMS, Push or Slack.
 Slack stays a channel even though a Slack-only workflow is an automation.
 _Avoid_: Connection, Sender, Integration (as the section name)
 
 **Sending domain**:
 The setup of the email channel.
-It is a verified domain that PostHog sends email from.
+It is a verified domain that Flind sends email from.
 
 **Recipients** (Messaging home):
 The area that decides who may receive your messages.
@@ -113,11 +113,11 @@ A person's choice to stop one topic or all marketing messages, made on the **pre
 _Avoid_: Unsubscribe list (as a noun for the area)
 
 **Suppression list**:
-The email addresses PostHog stops sending to, from bounces, complaints or manual adds.
+The email addresses Flind stops sending to, from bounces, complaints or manual adds.
 An email with the transactional mark still reaches a suppressed address unless that address hard-bounced.
 A **suppressed address** is one entry.
 _Avoid_: Blocklist
 
 **Deliverability** (Messaging home):
-The area for whether mail arrives and how much PostHog may send.
+The area for whether mail arrives and how much Flind may send.
 It holds Reputation and the sending limits, which are the daily limit and the frequency cap.

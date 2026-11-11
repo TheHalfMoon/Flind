@@ -1,6 +1,6 @@
 # Inbound ingress: verification, dispatch, transport
 
-General-purpose controls for the webhooks third parties send _in_ to PostHog.
+General-purpose controls for the webhooks third parties send _in_ to Flind.
 A new inbound webhook that needs signature verification or fan-out belongs here as a `<provider>/` incarnation (see [Adding a provider](#adding-a-provider)), never hand-rolled around `hmac` in a view.
 A verifier the vendor ships in its SDK is not hand-rolled and is not a migration: it stays, and a scheme here calls it rather than reimplementing the compare.
 Four lanes:
@@ -12,8 +12,8 @@ Four lanes:
 
 Two more modules sit at the package root because every lane and every incarnation speaks them: `contracts.py` holds the three values (`WebhookDelivery`, `WebhookConsumer`, `ProviderSpec`), and `providers.py` holds the `WebhookProvider` base each incarnation subclasses plus the lazy import list that finds the incarnations.
 
-This is _inbound_ ingress — what PostHog receives.
-It is the sibling of `posthog/egress/`, which is what PostHog sends, and unrelated to `posthog.rate_limit`, which throttles inbound DRF requests from PostHog's own clients.
+This is _inbound_ ingress — what Flind receives.
+It is the sibling of `posthog/egress/`, which is what Flind sends, and unrelated to `posthog.rate_limit`, which throttles inbound DRF requests from Flind's own clients.
 
 All four lanes are **provider-generic**; each third party is an incarnation under its own subpackage, supplying header names, a scheme, and how to read an event type and a delivery id off the request.
 Each provider has a `README.md` in its folder, which holds its headers, its scheme, its apps and secrets, its quirks and its consumers.
@@ -93,13 +93,13 @@ The Teams endpoint is the only one that caps request volume: its provider sets `
 This section records what ingress does not do, and why.
 
 **Ingress does not store a delivery log.**
-A delivery record's footprint tracks inbound volume, which is set by the third party rather than by PostHog, so it has no natural ceiling.
+A delivery record's footprint tracks inbound volume, which is set by the third party rather than by Flind, so it has no natural ceiling.
 Storing one therefore needs a size budget, an eviction policy, and a store of its own.
 The dedup mark is the opposite: it is O(1) per delivery, expires on its own, and holds no payload.
 A consumer that needs the payload later writes its own receipt, as conversations already does.
 
 **Ingress does not queue, retry, or dead-letter.**
-The provider already retries, and it knows things PostHog does not: how many attempts are left, and when to give up.
+The provider already retries, and it knows things Flind does not: how many attempts are left, and when to give up.
 A second retry layer on this side would deliver the same event twice under two different clocks.
 A consumer that wants asynchronous work enqueues its own task and answers immediately, which is what conversations and stamphog do.
 

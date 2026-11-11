@@ -113,7 +113,7 @@ class GitHubExternalReferenceJob:
 
     def __post_init__(self) -> None:
         if (self.issue_id is None) == (self.fingerprint is None):
-            raise ValueError("Provide exactly one PostHog issue identifier.")
+            raise ValueError("Provide exactly one Flind issue identifier.")
 
 
 @dataclass(frozen=True)
@@ -401,7 +401,7 @@ class MissingSymbolsReason(LabeledStrEnum):
     FILE_NOT_REACHABLE = "file_not_reachable", "Script or source map not reachable"
     INVALID_SOURCE_MAP = "invalid_source_map", "Source map URL returns something else"
     TOO_LARGE_TO_FETCH = "too_large_to_fetch", "Too large to fetch"
-    BUNDLE_NOT_INJECTED = "bundle_not_injected", "Bundle not processed by the PostHog CLI"
+    BUNDLE_NOT_INJECTED = "bundle_not_injected", "Bundle not processed by the Flind CLI"
     MAPPING_NOT_UPLOADED = "mapping_not_uploaded", "Mapping file not uploaded"
     DSYM_NOT_UPLOADED = "dsym_not_uploaded", "dSYM not uploaded"
     DEBUG_SYMBOLS_NOT_UPLOADED = "debug_symbols_not_uploaded", "Debug symbols not uploaded"

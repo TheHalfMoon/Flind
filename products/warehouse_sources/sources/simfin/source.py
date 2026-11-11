@@ -140,7 +140,7 @@ class SimFinSource(ResumableSource[SimFinSourceConfig, SimFinResumeConfig]):
             label="SimFin",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["financial data", "fundamentals", "stocks", "equities", "share prices"],
-            caption="""Enter your SimFin API key and the stock tickers you want to track to pull standardized financial statements, share prices and company data into the PostHog Data warehouse.
+            caption="""Enter your SimFin API key and the stock tickers you want to track to pull standardized financial statements, share prices and company data into the Flind Data warehouse.
 
 You can find your API key in the [SimFin app](https://app.simfin.com/data-api) (confirm your account e-mail first).
 

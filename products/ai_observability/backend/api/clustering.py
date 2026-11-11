@@ -141,7 +141,7 @@ class ClusteringRunRequestSerializer(serializers.Serializer):
         child=serializers.DictField(),
         required=False,
         default=list,
-        help_text="Property filters to scope which traces are included in clustering (PostHog standard format)",
+        help_text="Property filters to scope which traces are included in clustering (Flind standard format)",
     )
 
     # Optional: run using a saved clustering job's configuration

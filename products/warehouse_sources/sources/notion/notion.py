@@ -245,7 +245,7 @@ MISSING_CAPABILITIES_ERROR = (
 )
 # The raw exception, and Notion's own error body, carry request URLs and response detail that mean
 # nothing to the person filling in the form. Capture them instead and show fixed guidance.
-TOKEN_CHECK_FAILED_ERROR = "PostHog could not check your Notion token. Wait a few minutes, then try again."
+TOKEN_CHECK_FAILED_ERROR = "Flind could not check your Notion token. Wait a few minutes, then try again."
 
 
 def validate_credentials(token: str, api_version: str) -> tuple[bool, str | None]:

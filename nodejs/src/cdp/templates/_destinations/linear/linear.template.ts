@@ -44,7 +44,7 @@ let attachment_url := inputs.posthog_issue_url;
 if (empty(attachment_url)) {
   attachment_url := f'{project.url}/error-tracking/{inputs.posthog_issue_id}';
 }
-let attachment_mutation := f'mutation AttachmentCreate \\{ attachmentCreate(input: \\{ issueId: "{linear_issue_id}", title: "PostHog issue", url: "{attachment_url}" }) \\{ success } }';
+let attachment_mutation := f'mutation AttachmentCreate \\{ attachmentCreate(input: \\{ issueId: "{linear_issue_id}", title: "Flind issue", url: "{attachment_url}" }) \\{ success } }';
 
 query(attachment_mutation);`,
     inputs_schema: [
@@ -88,7 +88,7 @@ query(attachment_mutation);`,
         {
             key: 'posthog_issue_id',
             type: 'string',
-            label: 'PostHog issue ID',
+            label: 'Flind issue ID',
             secret: false,
             hidden: true,
             required: true,
@@ -97,9 +97,9 @@ query(attachment_mutation);`,
         {
             key: 'posthog_issue_url',
             type: 'string',
-            label: 'PostHog issue URL',
+            label: 'Flind issue URL',
             description:
-                'Link back to the PostHog issue. When empty, a link is built from the PostHog issue ID instead.',
+                'Link back to the Flind issue. When empty, a link is built from the Flind issue ID instead.',
             secret: false,
             hidden: true,
             required: false,

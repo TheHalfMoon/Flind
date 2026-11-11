@@ -35,7 +35,7 @@ export interface GitHubBranchComboboxProps {
 const CREATE_BRANCH_PREFIX = '__create__:'
 
 /**
- * GitHub branch picker built on Quill's Combobox, mirroring the PostHog Desktop branch picker: a button
+ * GitHub branch picker built on Quill's Combobox, mirroring the Flind Desktop branch picker: a button
  * trigger, in-popover server-side search, a paginated "Load more" footer, and a refresh control. It
  * auto-selects the repository's default branch, and lets the user type a brand-new branch name (committed
  * via a synthetic "Use \"x\" as branch name" item). Searching/pagination are delegated to

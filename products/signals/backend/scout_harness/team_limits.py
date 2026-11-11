@@ -47,7 +47,7 @@ SIGNALS_SCOUT_DOGFOOD_FLAG = "signals-scout"
 # Fixed distinct_id for the payload read — enrollment is team-list-in-payload, not per-user.
 SIGNALS_SCOUT_DISCOVERY_DISTINCT_ID = "internal_signals_scout_team_discovery"
 
-# Fail-safe allowlist used when the flag payload is missing/invalid — but only on PostHog
+# Fail-safe allowlist used when the flag payload is missing/invalid — but only on Flind
 # Cloud or local dev (see `_fallback_team_ids`). 1 (local dev), 2 (internal), 148051 (dev).
 DEFAULT_ENROLLED_TEAM_IDS: list[int] = [1, 2, 148051]
 
@@ -126,7 +126,7 @@ SIGNALS_SCOUT_BANNER_KEY = "scouts_banner_message"
 
 
 def _fallback_team_ids() -> list[int]:
-    """Default allowlist when the flag payload is absent/unreadable — gated to PostHog Cloud
+    """Default allowlist when the flag payload is absent/unreadable — gated to Flind Cloud
     and local dev. A self-hosted instance (where teams 1/2 exist but no one opted into scouts)
     fails closed instead, so the coordinator never starts LLM scout runs for an unintended
     tenant; a self-hoster opts in by setting the payload explicitly."""
@@ -230,7 +230,7 @@ def _parse_enrollment(payload: dict | None) -> Enrollment:
     return Enrollment(wildcard=wildcard, explicit=explicit, skip=skip, drained=payload.get("guaranteed_team_ids") == [])
 
 
-# Flag payload blocks that enroll a cohort in scouts that PostHog sets up without a person asking.
+# Flag payload blocks that enroll a cohort in scouts that Flind sets up without a person asking.
 # Separate from `guaranteed_team_ids`: a background team gets one config per lane skill, not the
 # full catalog seed. `background_lanes` holds one lane per skill. The older single `background`
 # block parses as one lane and applies only when `background_lanes` is absent.

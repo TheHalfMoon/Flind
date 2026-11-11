@@ -43,7 +43,7 @@ const deprecatedColors = {
     'danger-3000-button-border-light': 'var(--danger-3000-button-border-light)',
     'danger-3000-button-border-hover-light': 'var(--danger-3000-button-border-hover-light)',
 
-    // PostHog 3000 - Dark mode
+    // Flind 3000 - Dark mode
     'text-3000-dark': 'var(--text-3000-dark)',
     'text-secondary-3000-dark': 'var(--color-text-secondary-3000-dark)',
     'muted-3000-dark': 'var(--muted-3000-dark)',

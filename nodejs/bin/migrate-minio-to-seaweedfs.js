@@ -106,7 +106,7 @@ const SERVICES = {
     // (tasks, legal documents, notebook frames, identity matching, and every prefix a
     // product adds later), so a salvage that copies only those loses the rest. This
     // service covers the bucket and carves out what belongs elsewhere: session
-    // recordings live in the SeaweedFS replay store, and PostHog rebuilds the query cache.
+    // recordings live in the SeaweedFS replay store, and Flind rebuilds the query cache.
     'general-storage': {
         bucket: 'posthog',
         prefix: '',

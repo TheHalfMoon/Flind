@@ -58,7 +58,7 @@ class E2BSource(ResumableSource[E2BSourceConfig, E2BResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="E2B",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your E2B API key to sync your sandbox infrastructure data into the PostHog Data warehouse.
+            caption="""Enter your E2B API key to sync your sandbox infrastructure data into the Flind Data warehouse.
 
 You can create a team-scoped API key (prefixed `e2b_`) in your [E2B dashboard](https://e2b.dev/dashboard).
 

@@ -86,7 +86,7 @@ export interface CatalogItem {
     featured?: boolean
 }
 
-// PostHog's own event sources aren't warehouse connectors, so they never reach this catalog
+// Flind's own event sources aren't warehouse connectors, so they never reach this catalog
 // through `availableSources` — but it's where people look for them, and the only other entry point
 // is the sources list. Gated on the same preview flag as that list's section.
 const EVENT_SOURCE_CATALOG_ITEMS: CatalogItem[] = [
@@ -94,7 +94,7 @@ const EVENT_SOURCE_CATALOG_ITEMS: CatalogItem[] = [
         name: 'event-webhook',
         label: 'Incoming webhook',
         description: 'Turn HTTP requests from any service into events.',
-        iconType: 'PostHog',
+        iconType: 'Flind',
         category: 'Engineering & monitoring',
         keywords: ['webhook', 'webhooks', 'http', 'https', 'endpoint', 'events', 'incoming', 'custom', 'real time'],
         status: 'stable',
@@ -105,7 +105,7 @@ const EVENT_SOURCE_CATALOG_ITEMS: CatalogItem[] = [
         name: 'event-tracking-pixel',
         label: 'Tracking pixel',
         description: 'Capture an event each time an email or page loads a 1x1 image.',
-        iconType: 'PostHog',
+        iconType: 'Flind',
         category: 'Engineering & monitoring',
         keywords: ['pixel', 'tracking pixel', 'image', 'gif', 'email', 'open tracking', 'beacon', 'events'],
         status: 'stable',

@@ -43,7 +43,7 @@ standing credential. General mechanics live in the
    hogli metabase:databases --region eu
    ```
 
-   Pick **"PostHog ClickHouse PROD <REGION> Data Tier"** (the data tier, not
+   Pick **"Flind ClickHouse PROD <REGION> Data Tier"** (the data tier, not
    the query tier — tophog lives with the events data).
 
 3. Run queries; the cookie is read internally and never enters the transcript:

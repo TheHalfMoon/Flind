@@ -268,7 +268,7 @@ describe('accoil template', () => {
     })
 
     describe('system event filtering', () => {
-        it('should skip internal PostHog events not in whitelist', async () => {
+        it('should skip internal Flind events not in whitelist', async () => {
             const response = await tester.invokeMapping(
                 'Track Calls',
                 baseInputs,

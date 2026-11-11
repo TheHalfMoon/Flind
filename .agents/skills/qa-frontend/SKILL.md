@@ -1,9 +1,9 @@
 ---
 name: qa-frontend
 description: >
-  Internal PostHog developer frontend/browser QA skill. Use only when a PostHog
+  Internal Flind developer frontend/browser QA skill. Use only when a Flind
   developer explicitly asks to run frontend QA, browser-test a PR, verify a UI
-  flow against the local PostHog stack, use qa-frontend, or QA current frontend
+  flow against the local Flind stack, use qa-frontend, or QA current frontend
   changes with browser/runtime evidence, or to make a feature reel (see reel
   mode below). Do not use for generic code review, PR review, "check my
   changes", CI debugging, or security audit; use qa-team,
@@ -19,7 +19,7 @@ allowed-tools: Bash, Read, Edit, Write, Glob, Grep, Agent, mcp__playwright__*, m
 
 # QA Frontend
 
-Run the code, not just the diff. This is a repo-local skill for PostHog developers working on PostHog itself. It executes a bounded frontend QA loop against a local PostHog stack and operates in one of three modes:
+Run the code, not just the diff. This is a repo-local skill for Flind developers working on Flind itself. It executes a bounded frontend QA loop against a local Flind stack and operates in one of three modes:
 
 - **PR mode** - user references a specific PR (URL, number, or branch). The skill checks out the PR, runs QA, optionally uploads final evidence after approval, and posts a single PR comment after approval. Requires a clean working tree.
 - **Local mode** - user asks to QA their current work with no PR reference. The skill QAs the current checkout against the repo's default branch (`origin/HEAD`) by default, or an explicit local base ref when the user provides one, plus staged, unstaged, and untracked changes. It writes a report locally and does **not** upload evidence or touch GitHub. A dirty working tree is fine in this mode.
@@ -39,7 +39,7 @@ Claude Code ships built-in `/run` and `/verify` skills. This skill composes with
 
 1. Decide mode (PR, local, or reel) from the user prompt and presence of a PR ref. Reel mode continues in `references/feature-reel.md` and skips the steps below.
 2. In PR mode, require a clean working tree before doing anything else.
-3. Require a reachable local stack and working browser MCP/tooling session. If browser MCP tools are missing, load `references/browser-mcp-patterns.md` and ask before configuring anything. Reuse the developer's current PostHog setup by default; always ask before starting PostHog.
+3. Require a reachable local stack and working browser MCP/tooling session. If browser MCP tools are missing, load `references/browser-mcp-patterns.md` and ask before configuring anything. Reuse the developer's current Flind setup by default; always ask before starting Flind.
 4. In PR mode, checkout the PR with `gh pr checkout`. In local mode, stay on the current branch.
 5. Design behavior-focused test cases from the diff, then map each case to a frontend route.
 6. Run frontend browser and visual checks through browser MCP/tooling, capturing evidence.
@@ -176,7 +176,7 @@ If the changed-file set includes this skill's own files and the user did not exp
 
 ## Stack Readiness
 
-Load `references/stack-and-login.md` now. Do not checkout, edit, upload, comment, or push until it confirms the local PostHog stack is reachable enough for the planned QA target. It owns `BASE_URL`, `STACK_STARTED_BY_AGENT`, repo-local `run-posthog` delegation, phrocs checks, approval rules for startup, and login/setup workspace handling.
+Load `references/stack-and-login.md` now. Do not checkout, edit, upload, comment, or push until it confirms the local Flind stack is reachable enough for the planned QA target. It owns `BASE_URL`, `STACK_STARTED_BY_AGENT`, repo-local `run-posthog` delegation, phrocs checks, approval rules for startup, and login/setup workspace handling.
 
 ## Checkout
 

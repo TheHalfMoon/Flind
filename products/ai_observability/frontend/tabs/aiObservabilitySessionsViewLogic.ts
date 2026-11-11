@@ -238,7 +238,7 @@ export const aiObservabilitySessionsViewLogic = kea<aiObservabilitySessionsViewL
                 loadMoreSessionsRequestId++
                 const source = values.sessionsQuery.source as HogQLQuery
                 try {
-                    // Default loads use cache (fast, PostHog convention); the Refresh button forces a recompute
+                    // Default loads use cache (fast, Flind convention); the Refresh button forces a recompute
                     const response = await api.query(source, { refresh })
                     if (requestId !== loadSessionsRequestId) {
                         return

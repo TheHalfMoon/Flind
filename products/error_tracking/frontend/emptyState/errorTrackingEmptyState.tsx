@@ -26,7 +26,7 @@ export const errorTrackingEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Catch the errors your users actually hit',
-                lead: 'PostHog captures exceptions from your app and groups them into issues, with stack traces, affected users, and alerts. Triage, assign, and resolve them next to the rest of your product data.',
+                lead: 'Flind captures exceptions from your app and groups them into issues, with stack traces, affected users, and alerts. Triage, assign, and resolve them next to the rest of your product data.',
                 hint: 'Already using posthog-js? One click and errors start flowing:',
             },
             'waiting-for-data': {

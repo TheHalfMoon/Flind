@@ -323,7 +323,7 @@ def set_state(
         raise CanvasRequestRejected(
             status.HTTP_400_BAD_REQUEST,
             f"State values are capped at {CANVAS_STATE_MAX_VALUE_BYTES // 1024} KB serialized. "
-            "Store large data in PostHog (insights, the warehouse) and reference it.",
+            "Store large data in Flind (insights, the warehouse) and reference it.",
         )
     with transaction.atomic():
         # The key-count check needs a mutex: without it, concurrent new-key writes

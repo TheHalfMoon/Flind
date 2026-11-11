@@ -59,8 +59,8 @@ export const getSvelteSteps = (ctx: OnboardingComponentsContext): StepDefinition
                             file: 'src/hooks.server.ts',
                             code: dedent`
                               import type { HandleServerError } from '@sveltejs/kit';
-                              import { PostHog } from 'posthog-node';
-                              const client = new PostHog(
+                              import { Flind } from 'posthog-node';
+                              const client = new Flind(
                                 '<ph_project_token>',
                                 { host: 'https://us.i.posthog.com' }
                               )
@@ -85,9 +85,9 @@ export const getSvelteSteps = (ctx: OnboardingComponentsContext): StepDefinition
         content: (
             <Markdown>
                 {dedent`
-                    Before proceeding, let's make sure exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Before proceeding, let's make sure exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),

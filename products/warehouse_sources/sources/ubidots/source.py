@@ -56,7 +56,7 @@ class UbidotsSource(ResumableSource[UbidotsSourceConfig, UbidotsResumeConfig]):
             label="Ubidots",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["iot", "sensors", "telemetry"],
-            caption="""Enter your Ubidots API token to pull your IoT devices, variables, and sensor values into the PostHog Data warehouse.
+            caption="""Enter your Ubidots API token to pull your IoT devices, variables, and sensor values into the Flind Data warehouse.
 
 Use the permanent token from **your profile → API Credentials** in Ubidots — tokens minted via the temporary-token endpoint expire after a few hours and will break syncs. Industrial and enterprise accounts use the default API base URL; pick `https://things.ubidots.com` only for legacy STEM accounts.
 """,

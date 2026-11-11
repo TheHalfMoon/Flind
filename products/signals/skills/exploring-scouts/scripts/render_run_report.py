@@ -3,7 +3,7 @@
 """Render a plain-text terminal report for a single Signals scout run.
 
 This is a *pure formatter*: it does no network I/O. You (the agent) fetch the raw
-data through the PostHog MCP with `call --json` and save each payload to a file,
+data through the Flind MCP with `call --json` and save each payload to a file,
 then point this script at those files. This split exists because the run-list and
 session-log MCP tools routinely overflow an MCP client's token budget — they are
 meant to be offloaded to a file and parsed, not read inline.
@@ -48,7 +48,7 @@ WIDTH = 66
 # the obligatory hedgehog
 HEDGEHOG = r"""
          /////////,
-       ///////////// .            PostHog · Signals
+       ///////////// .            Flind · Signals
      ///////////////  `.            scout run report
     ////////////////  o  `.
     `````````````````   `-.>

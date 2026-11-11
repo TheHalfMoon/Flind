@@ -49,7 +49,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Users available as assignees on a project, one row per project/user pair.",
         "docs_url": "https://help.usersnap.com/reference/rest-api",
         "columns": {
-            "project_id": "Identifier of the project (added by PostHog during the per-project fan-out).",
+            "project_id": "Identifier of the project (added by Flind during the per-project fan-out).",
             "user_id": "Unique identifier of the user.",
             "first_name": "First name of the user.",
             "last_name": "Last name of the user.",

@@ -2,7 +2,7 @@
 // Ported in place (TypeScript, no formatting reflow) so we can carry a fix that
 // is still unmerged upstream.
 //
-// PostHog modifications:
+// Flind modifications:
 //   - Guard against combinatorial explosion before materializing the candidate
 //     paths in `search()`. On DOMs with many classes across many levels the
 //     cross-product of `combinations(stack)` can reach hundreds of millions of
@@ -20,7 +20,7 @@
 //     identical candidates in identical order.
 //   - Added an optional `onCombinationsCapped` callback so callers can observe
 //     when the guard trips (cutting the candidate search short, which may force
-//     a positional fallback) without coupling this vendored file to any PostHog
+//     a positional fallback) without coupling this vendored file to any Flind
 //     logging. It receives the level count reached so callers can record how
 //     deep the offending element was.
 //
@@ -101,14 +101,14 @@ export type Options = {
     /** Maximum number of path checks. */
     maxNumberOfPathChecks: number
     /**
-     * PostHog addition: maximum size of the candidate cross-product to
+     * Flind addition: maximum size of the candidate cross-product to
      * materialize per search level. Caps the combinatorial blow-up described in
      * antonmedv/finder#85 before it can exhaust memory. Defaults to a value far
      * above what normal elements ever need, so it only trips on pathological DOMs.
      */
     maxCombinations: number
     /**
-     * PostHog addition: invoked when `maxCombinations` is exceeded and the
+     * Flind addition: invoked when `maxCombinations` is exceeded and the
      * candidate search is cut short — which may force a positional fallback, but
      * a stable selector found before the cap can still win. Receives the number
      * of levels (ancestor depth) reached when the guard tripped. Optional and
@@ -162,7 +162,7 @@ export function finder(input: Element, options?: Partial<Options>): string {
     }
 
     if (!foundPath) {
-        // PostHog: when the combinatorial guard in `search()` cuts the walk short
+        // Flind: when the combinatorial guard in `search()` cuts the walk short
         // there may be no unique short selector. Fall back to a positional
         // nth-of-type path (matching upstream antonmedv/finder#84's "return
         // fallback" behaviour) so callers still get a working selector instead of
@@ -196,7 +196,7 @@ function* search(input: Element, config: Options, rootDocument: Element | Docume
         current = current.parentElement
         i++
 
-        // PostHog: bail before the cross-product explodes (antonmedv/finder#85).
+        // Flind: bail before the cross-product explodes (antonmedv/finder#85).
         // The product of level sizes is the number of paths `combinations(stack)`
         // would emit; computing it is O(levels) and lets us stop before the
         // O(product) materialization below allocates an unbounded array.

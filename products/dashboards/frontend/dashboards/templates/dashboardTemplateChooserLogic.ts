@@ -19,7 +19,7 @@ function availabilityContextsKey(contexts: DashboardTemplateProps['availabilityC
     return [...contexts].sort().join(',')
 }
 
-// Customer-authored templates (team- or organization-scoped) as opposed to PostHog's official/global ones.
+// Customer-authored templates (team- or organization-scoped) as opposed to Flind's official/global ones.
 // Both share the chooser's "Team templates" bucket; org-scoped cards are tagged "Organization" in the UI.
 function isCustomerTemplate(template: DashboardTemplateType): boolean {
     return template.scope === 'team' || template.scope === 'organization'

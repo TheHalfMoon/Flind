@@ -1,1 +1,1 @@
-"""System-prompt service for the PostHog AI sandbox."""
+"""System-prompt service for the Flind AI sandbox."""

@@ -139,6 +139,6 @@ export function subjectLookupBlocked(
         ([claim, value]) => conditions[claim] !== value
     )
     return unmet
-        ? `PostHog can look up the ID only when ${claimLabel(provider, unmet[0])} is ${unmet[1]}. Enter it by hand.`
+        ? `Flind can look up the ID only when ${claimLabel(provider, unmet[0])} is ${unmet[1]}. Enter it by hand.`
         : undefined
 }

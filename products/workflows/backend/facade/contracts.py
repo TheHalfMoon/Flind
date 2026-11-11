@@ -1077,7 +1077,7 @@ class CampaignSource:
 
 @frozen
 class ImportSender:
-    """A PostHog email sender that an imported email sends from."""
+    """A Flind email sender that an imported email sends from."""
 
     integration_id: int
     email: str
@@ -1086,7 +1086,7 @@ class ImportSender:
 
 @frozen
 class ImportCategory:
-    """The PostHog message category that stands in for a Customer.io subscription topic."""
+    """The Flind message category that stands in for a Customer.io subscription topic."""
 
     id: str
     category_type: str
@@ -1103,15 +1103,15 @@ class ImportSegment:
 class ImportOptions:
     # Customer.io snippet name to its content, inlined wherever a message includes the snippet.
     snippets: dict[str, str]
-    # Customer.io segment id to the PostHog cohort that stands in for it.
+    # Customer.io segment id to the Flind cohort that stands in for it.
     segment_cohorts: dict[str, int]
     # Customer.io layout id to its HTML, which wraps the email body at `{{ content }}`.
     layouts: dict[str, str] = field(default_factory=dict)
     # Customer.io sender identity id to its email address.
     sender_addresses: dict[str, str] = field(default_factory=dict)
-    # Lower-cased email address to the team's PostHog sender for it.
+    # Lower-cased email address to the team's Flind sender for it.
     senders: dict[str, ImportSender] = field(default_factory=dict)
-    # Customer.io subscription topic id to the PostHog category made from it.
+    # Customer.io subscription topic id to the Flind category made from it.
     topic_categories: dict[str, ImportCategory] = field(default_factory=dict)
     # Customer.io segment id to its name and type.
     segments: dict[str, ImportSegment] = field(default_factory=dict)
@@ -1119,7 +1119,7 @@ class ImportOptions:
 
 @frozen
 class ImportContent:
-    """Automations with the content PostHog read for them, and the options to translate them with."""
+    """Automations with the content Flind read for them, and the options to translate them with."""
 
     sources: list[CampaignSource]
     options: ImportOptions

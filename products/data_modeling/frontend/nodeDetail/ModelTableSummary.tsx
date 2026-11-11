@@ -46,11 +46,11 @@ export function ModelTableSummary({
         return (
             <ModelSummaryCard metadata={metadata} dataAttr="node-detail-table">
                 <div className="flex flex-col gap-3">
-                    <span className="font-semibold">Managed by PostHog</span>
+                    <span className="font-semibold">Managed by Flind</span>
                     <dl className="flex flex-wrap gap-x-10 gap-y-3 mb-0 text-sm">
                         <div>
                             <dt className="text-secondary mb-1">Source</dt>
-                            <dd className="mb-0">PostHog</dd>
+                            <dd className="mb-0">Flind</dd>
                         </div>
                         {downstream}
                     </dl>

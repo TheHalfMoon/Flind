@@ -1,6 +1,6 @@
 # Unlayer design JSON schema
 
-Schema for `content.email.design` — the Unlayer design document that is the source of truth for a template. You author and edit the design; on save, the server renders the sent email from it with Unlayer's export API (the same renderer PostHog's visual editor uses), and the editor opens it as editable blocks. Don't supply rendered output yourself — that's the visual editor's save path.
+Schema for `content.email.design` — the Unlayer design document that is the source of truth for a template. You author and edit the design; on save, the server renders the sent email from it with Unlayer's export API (the same renderer Flind's visual editor uses), and the editor opens it as editable blocks. Don't supply rendered output yourself — that's the visual editor's save path.
 
 Adapted from [unlayer/unlayer-skills](https://github.com/unlayer/unlayer-skills) (`unlayer-export/references/design-json.md`), MIT License, Copyright (c) Unlayer.
 

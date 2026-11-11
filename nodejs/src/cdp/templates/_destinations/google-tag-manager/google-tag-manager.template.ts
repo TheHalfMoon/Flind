@@ -20,12 +20,12 @@ export async function onLoad({ inputs, posthog }) {
     initSnippet(inputs.containerId);
     
     if (posthog.config.debug) {
-        console.log('[PostHog] Google Tag Manager init', inputs.containerId);
+        console.log('[Flind] Google Tag Manager init', inputs.containerId);
     }
 }
 export function onEvent({ inputs, posthog }) {
     if (posthog.config.debug) {
-        console.log('[PostHog] Google Tag Manager track', inputs.containerId, inputs.payload);
+        console.log('[Flind] Google Tag Manager track', inputs.containerId, inputs.payload);
     }
     dataLayer.push(inputs.payload);
 }

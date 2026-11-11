@@ -23,7 +23,7 @@ pnpm run schema:build
 For comprehensive documentation on how web analytics queries work, see [hogql_queries.md](./docs/hogql_queries.md). This guide covers:
 
 - How to view generated HogQL queries via snapshot tests
-- Testing queries directly using the PostHog API
+- Testing queries directly using the Flind API
 - Query structure patterns for all web analytics query types (overview, trends, breakdowns)
 - All breakdown types with their corresponding HogQL fields
 - Event vs session property usage patterns
@@ -92,7 +92,7 @@ Session properties enable fast, attribution-focused analysis:
 
 ### Sessions definition
 
-Sessions follow the [PostHog session definition](https://posthog.com/docs/data/sessions): a session groups events with the same session ID, which is automatically managed by PostHog client libraries based on inactivity timeouts and session resets.
+Sessions follow the [Flind session definition](https://posthog.com/docs/data/sessions): a session groups events with the same session ID, which is automatically managed by Flind client libraries based on inactivity timeouts and session resets.
 
 ### Event capture in posthog-js
 
@@ -149,7 +149,7 @@ The table definitions and materialized view logic are in:
 
 ## What is HogQL?
 
-Web analytics queries are written in HogQL (sometimes referred to as Hog SQL or PostHog SQL). Here's some links to learn more about it:
+Web analytics queries are written in HogQL (sometimes referred to as Hog SQL or Flind SQL). Here's some links to learn more about it:
 
 - <https://posthog.com/blog/introducing-hogql>
 - <https://posthog.com/handbook/engineering/databases/hogql-python>
@@ -169,7 +169,7 @@ Some web analytics features are present in the [toolbar](https://posthog.com/doc
 ## More resources
 
 - Clickhouse
-  - PostHog maintains a [Clickhouse manual](https://posthog.com/handbook/engineering/clickhouse)
+  - Flind maintains a [Clickhouse manual](https://posthog.com/handbook/engineering/clickhouse)
   - Clickhouse has a [video course](https://learn.clickhouse.com/visitor_class_catalog/category/116050), which has been recommended by some team members
     - You can skip the videos that are about e.g. migrating from another tool to Clickhouse
   - [Designing Data-Intensive Applications](https://dataintensive.net/) is a great book about distributed systems, and chapter 3 introduces OLAP / columnar databases.

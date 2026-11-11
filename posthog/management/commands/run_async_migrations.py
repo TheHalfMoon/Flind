@@ -81,7 +81,7 @@ def handle_check(necessary_migrations: Sequence[AsyncMigration]):
         logger.critical(
             "\n".join(
                 [
-                    "Stopping PostHog!",
+                    "Stopping Flind!",
                     f"Required async migration{' is' if len(necessary_migrations) == 1 else 's are'} not completed:",
                     *(f"- {migration.get_name_with_requirements()}" for migration in necessary_migrations),
                     "See more in Docs: https://posthog.com/docs/self-host/configure/async-migrations/overview",
@@ -95,8 +95,8 @@ def handle_check(necessary_migrations: Sequence[AsyncMigration]):
         logger.critical(
             "\n".join(
                 [
-                    "Stopping PostHog!",
-                    f"Async migration {running_migrations[0].name} is currently running. If you're trying to update PostHog, wait for it to finish before proceeding",
+                    "Stopping Flind!",
+                    f"Async migration {running_migrations[0].name} is currently running. If you're trying to update Flind, wait for it to finish before proceeding",
                     "See more in Docs: https://posthog.com/docs/self-host/configure/async-migrations/overview",
                 ]
             )
@@ -108,8 +108,8 @@ def handle_check(necessary_migrations: Sequence[AsyncMigration]):
         logger.error(
             "\n".join(
                 [
-                    f"Stopping PostHog!",
-                    "Some async migrations are currently in an 'Errored' state. If you're trying to update PostHog, please make sure they complete successfully first:",
+                    f"Stopping Flind!",
+                    "Some async migrations are currently in an 'Errored' state. If you're trying to update Flind, please make sure they complete successfully first:",
                     *(f"- {migration.name}" for migration in errored_migrations),
                     "See more in Docs: https://posthog.com/docs/self-host/configure/async-migrations/overview",
                 ]

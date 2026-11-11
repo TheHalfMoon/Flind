@@ -11,7 +11,7 @@ export const getGoInstallSteps = (ctx: OnboardingComponentsContext): StepDefinit
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog Go library:</Markdown>
+                    <Markdown>Install the Flind Go library:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -27,11 +27,11 @@ export const getGoInstallSteps = (ctx: OnboardingComponentsContext): StepDefinit
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Initialize the PostHog client with your project token and host:</Markdown>
+                    <Markdown>Initialize the Flind client with your project token and host:</Markdown>
                     <CodeBlock
                         blocks={[
                             {

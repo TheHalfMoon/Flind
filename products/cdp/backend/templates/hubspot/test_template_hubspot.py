@@ -21,7 +21,7 @@ class TestTemplateHubspot(BaseHogFunctionTemplateTest):
             "oauth": {"access_token": "TOKEN"},
             "email": "example@posthog.com",
             "properties": {
-                "company": "PostHog",
+                "company": "Flind",
             },
         }
         inputs.update(kwargs)
@@ -43,7 +43,7 @@ class TestTemplateHubspot(BaseHogFunctionTemplateTest):
                     "body": {
                         "inputs": [
                             {
-                                "properties": {"company": "PostHog", "email": "example@posthog.com"},
+                                "properties": {"company": "Flind", "email": "example@posthog.com"},
                                 "id": "example@posthog.com",
                                 "idProperty": "email",
                             }
@@ -176,26 +176,26 @@ class TestTemplateHubspotEvent(BaseHogFunctionTemplateTest):
                 "body": {
                     "label": "sign_up",
                     "name": "sign_up",
-                    "description": "sign_up - (created by PostHog)",
+                    "description": "sign_up - (created by Flind)",
                     "primaryObject": "CONTACT",
                     "propertyDefinitions": [
                         {
                             "name": "price",
                             "label": "price",
                             "type": "number",
-                            "description": "price - (created by PostHog)",
+                            "description": "price - (created by Flind)",
                         },
                         {
                             "name": "currency",
                             "label": "currency",
                             "type": "string",
-                            "description": "currency - (created by PostHog)",
+                            "description": "currency - (created by Flind)",
                         },
                         {
                             "name": "expressDelivery",
                             "label": "expressDelivery",
                             "type": "enumeration",
-                            "description": "expressDelivery - (created by PostHog)",
+                            "description": "expressDelivery - (created by Flind)",
                             "options": [
                                 {
                                     "label": "true",
@@ -266,7 +266,7 @@ class TestTemplateHubspotEvent(BaseHogFunctionTemplateTest):
                     "name": "expressDelivery",
                     "label": "expressDelivery",
                     "type": "enumeration",
-                    "description": "expressDelivery - (created by PostHog)",
+                    "description": "expressDelivery - (created by Flind)",
                     "options": [
                         {"label": "true", "value": True, "hidden": False, "description": "True", "displayOrder": 1},
                         {
@@ -290,7 +290,7 @@ class TestTemplateHubspotEvent(BaseHogFunctionTemplateTest):
                     "name": "location",
                     "label": "location",
                     "type": "string",
-                    "description": "location - (created by PostHog)",
+                    "description": "location - (created by Flind)",
                 },
             },
         )
@@ -304,7 +304,7 @@ class TestTemplateHubspotEvent(BaseHogFunctionTemplateTest):
                     "name": "timestamp",
                     "label": "timestamp",
                     "type": "datetime",
-                    "description": "timestamp - (created by PostHog)",
+                    "description": "timestamp - (created by Flind)",
                 },
             },
         )

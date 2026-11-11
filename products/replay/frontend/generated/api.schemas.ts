@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -127,7 +127,7 @@ export interface SessionRecordingPlaylistApi {
     /** Return whether this is a synthetic playlist */
     readonly is_synthetic: boolean
     _create_in_folder?: string
-    /** How the PostHog app created the playlist, for product analytics. Not stored.
+    /** How the Flind app created the playlist, for product analytics. Not stored.
      *
      * * `new` - new
      * * `pin` - pin
@@ -183,7 +183,7 @@ export interface PatchedSessionRecordingPlaylistApi {
     /** Return whether this is a synthetic playlist */
     readonly is_synthetic?: boolean
     _create_in_folder?: string
-    /** How the PostHog app created the playlist, for product analytics. Not stored.
+    /** How the Flind app created the playlist, for product analytics. Not stored.
      *
      * * `new` - new
      * * `pin` - pin

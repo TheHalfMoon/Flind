@@ -46,9 +46,9 @@ class CampfireSource(ResumableSource[CampfireSourceConfig, CampfireResumeConfig]
             label="Campfire",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["erp", "meetcampfire"],
-            caption="""Enter your Campfire API key to pull your accounting data into the PostHog Data warehouse.
+            caption="""Enter your Campfire API key to pull your accounting data into the Flind Data warehouse.
 
-Create an API user and key on the [API keys page](https://app.meetcampfire.com/v2/settings/api-keys) in your Campfire settings. A `view only` role is enough, since PostHog only reads data. The key is shown once, so copy it when you create it.
+Create an API user and key on the [API keys page](https://app.meetcampfire.com/v2/settings/api-keys) in your Campfire settings. A `view only` role is enough, since Flind only reads data. The key is shown once, so copy it when you create it.
 """,
             iconPath="/static/services/campfire.png",
             docsUrl="https://posthog.com/docs/cdp/sources/campfire",

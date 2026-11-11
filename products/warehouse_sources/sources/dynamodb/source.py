@@ -76,7 +76,7 @@ class DynamoDBSource(ResumableSource[DynamoDBSourceConfig, DynamoDBResumeConfig]
             name=ExternalDataSourceType.DYNAMODB,
             category=DataWarehouseSourceCategory.DATABASES,
             label="DynamoDB",
-            caption="""Enter an AWS access key with read access to DynamoDB to import your tables into the PostHog Data warehouse.
+            caption="""Enter an AWS access key with read access to DynamoDB to import your tables into the Flind Data warehouse.
 
 Create an IAM user whose policy allows `dynamodb:ListTables`, `dynamodb:DescribeTable` and `dynamodb:Scan`, then paste its access key below. Tables are read with a full table scan, so every sync uses read capacity on the table.""",
             iconPath="/static/services/dynamodb.png",

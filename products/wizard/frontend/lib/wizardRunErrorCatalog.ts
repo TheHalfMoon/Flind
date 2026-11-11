@@ -8,7 +8,7 @@ const WIZARD_RUN_ERROR_CATALOG: Record<string, WizardRunErrorDetails> = {
     PHW_CLI_NODE_VERSION: {
         title: 'The Node.js version is not supported',
         description: 'The Wizard cannot run with the Node.js version in this workspace.',
-        resolution: 'Run the program again. If it keeps failing, contact PostHog support.',
+        resolution: 'Run the program again. If it keeps failing, contact Flind support.',
     },
     PHW_CLI_BAD_ARGS: {
         title: 'The Wizard command is invalid',
@@ -21,11 +21,11 @@ const WIZARD_RUN_ERROR_CATALOG: Record<string, WizardRunErrorDetails> = {
     PHW_CLI_INTERACTIVE_REQUIRED: {
         title: 'This program needs an interactive terminal',
         description: 'The program cannot run unattended in the cloud.',
-        resolution: 'Run the program again. If it still fails, contact PostHog support.',
+        resolution: 'Run the program again. If it still fails, contact Flind support.',
     },
     PHW_ARGS_MISSING_API_KEY: {
         title: 'The Wizard could not authenticate',
-        description: 'The run did not receive a PostHog API key.',
+        description: 'The run did not receive a Flind API key.',
     },
     PHW_ARGS_MISSING_INSTALL_DIR: {
         title: 'The project folder is missing',
@@ -36,44 +36,44 @@ const WIZARD_RUN_ERROR_CATALOG: Record<string, WizardRunErrorDetails> = {
         description: 'The selected signup flow needs an email address.',
     },
     PHW_ARGS_SIGNUP_PROVISION_FAILED: {
-        title: 'PostHog account setup failed',
+        title: 'Flind account setup failed',
         description: 'The Wizard could not finish account setup.',
-        resolution: 'Try the program again. If it still fails, contact PostHog support.',
+        resolution: 'Try the program again. If it still fails, contact Flind support.',
     },
     PHW_AUTH_KEY_TYPE: {
         title: 'The API key type is not supported',
         description: 'The Wizard received a key that cannot authenticate this program.',
-        resolution: 'Run the program again. If it still fails, contact PostHog support.',
+        resolution: 'Run the program again. If it still fails, contact Flind support.',
     },
     PHW_AUTH_MISSING_SCOPE: {
         title: 'The API key needs more access',
         description: 'The current key does not include a scope required by this program.',
-        resolution: 'Run the program again. If it still fails, contact PostHog support.',
+        resolution: 'Run the program again. If it still fails, contact Flind support.',
     },
     PHW_AUTH_REGION_MISMATCH: {
-        title: 'The PostHog region does not match',
-        description: 'The credentials belong to a different PostHog region.',
-        resolution: 'Run the program again. If it still fails, contact PostHog support.',
+        title: 'The Flind region does not match',
+        description: 'The credentials belong to a different Flind region.',
+        resolution: 'Run the program again. If it still fails, contact Flind support.',
     },
     PHW_AUTH_INVALID_OR_EXPIRED: {
-        title: 'The PostHog credentials are invalid or expired',
+        title: 'The Flind credentials are invalid or expired',
         description: 'The Wizard could not use the current credentials.',
-        resolution: 'Run the program again. If it still fails, contact PostHog support.',
+        resolution: 'Run the program again. If it still fails, contact Flind support.',
     },
     PHW_AUTH_SETTINGS_CONFLICT: {
-        title: 'Local settings override PostHog authentication',
+        title: 'Local settings override Flind authentication',
         description: 'A Claude settings file replaces the credentials provided by the Wizard.',
-        resolution: 'Run the program again. If it still fails, contact PostHog support.',
+        resolution: 'Run the program again. If it still fails, contact Flind support.',
     },
     PHW_AUTH_STORED_LOGIN_CONFLICT: {
-        title: 'A stored Claude login overrides PostHog authentication',
+        title: 'A stored Claude login overrides Flind authentication',
         description: 'The agent used a stored login instead of the credentials provided by the Wizard.',
-        resolution: 'Run the program again. If it still fails, contact PostHog support.',
+        resolution: 'Run the program again. If it still fails, contact Flind support.',
     },
     PHW_AUTH_PROJECT_FETCH_FAILED: {
-        title: 'The Wizard could not load the PostHog project',
-        description: 'PostHog project data was unavailable during the run.',
-        resolution: 'Try the program again. If it still fails, contact PostHog support.',
+        title: 'The Wizard could not load the Flind project',
+        description: 'Flind project data was unavailable during the run.',
+        resolution: 'Try the program again. If it still fails, contact Flind support.',
     },
     PHW_ENV_LOCAL_SERVICES_DOWN: {
         title: 'Required local services are not running',
@@ -106,9 +106,9 @@ const WIZARD_RUN_ERROR_CATALOG: Record<string, WizardRunErrorDetails> = {
         resolution: 'Choose a program that supports this project, or follow the manual setup guide.',
     },
     PHW_DETECT_NO_POSTHOG_SDK: {
-        title: 'No PostHog SDK was found',
-        description: 'This program needs an existing PostHog SDK installation.',
-        resolution: 'Run the PostHog integration program first, merge its pull request, then run this program again.',
+        title: 'No Flind SDK was found',
+        description: 'This program needs an existing Flind SDK installation.',
+        resolution: 'Run the Flind integration program first, merge its pull request, then run this program again.',
     },
     PHW_DETECT_NO_PROJECT_FILES: {
         title: 'No project files were found',
@@ -118,7 +118,7 @@ const WIZARD_RUN_ERROR_CATALOG: Record<string, WizardRunErrorDetails> = {
     PHW_DETECT_NO_SOURCES: {
         title: 'No data warehouse sources were found',
         description: 'This program needs at least one connected data warehouse source.',
-        resolution: 'Connect a data warehouse source in PostHog, then run the program again.',
+        resolution: 'Connect a data warehouse source in Flind, then run the program again.',
     },
     PHW_DETECT_NO_PACKAGE_JSON: {
         title: 'No package.json was found',
@@ -128,20 +128,20 @@ const WIZARD_RUN_ERROR_CATALOG: Record<string, WizardRunErrorDetails> = {
             'Select a repository that contains your Node.js or TypeScript project root, then run the program again.',
     },
     PHW_DETECT_NO_SDKS: {
-        title: 'No PostHog or Stripe SDK was found',
-        description: 'The program scanned the repository and found neither a PostHog SDK nor a Stripe SDK.',
+        title: 'No Flind or Stripe SDK was found',
+        description: 'The program scanned the repository and found neither a Flind SDK nor a Stripe SDK.',
         resolution:
-            'Run the PostHog integration program first, install a Stripe SDK in your project, then run this program again.',
+            'Run the Flind integration program first, install a Stripe SDK in your project, then run this program again.',
     },
     PHW_DETECT_MISSING_STRIPE: {
         title: 'No Stripe SDK was found',
-        description: 'The program found a PostHog SDK, but revenue analytics currently supports Stripe only.',
+        description: 'The program found a Flind SDK, but revenue analytics currently supports Stripe only.',
         resolution: 'Install a Stripe SDK in your project, then run the program again.',
     },
     PHW_DETECT_UNCLASSIFIED: {
         title: 'The Wizard could not inspect this project',
         description: 'The project inspection step failed before the Wizard could classify the project.',
-        resolution: 'Run the program again. If it still fails, contact PostHog support.',
+        resolution: 'Run the program again. If it still fails, contact Flind support.',
     },
     PHW_SKILL_MENU_FETCH_FAILED: {
         title: 'The Wizard could not load its setup programs',
@@ -164,8 +164,8 @@ const WIZARD_RUN_ERROR_CATALOG: Record<string, WizardRunErrorDetails> = {
         resolution: 'Review the project requirements, then run the program again.',
     },
     PHW_AGENT_MCP_MISSING: {
-        title: 'The setup agent could not connect to PostHog',
-        description: 'The PostHog tools required by the agent were unavailable.',
+        title: 'The setup agent could not connect to Flind',
+        description: 'The Flind tools required by the agent were unavailable.',
         resolution: 'Wait a few minutes, then run the program again.',
     },
     PHW_AGENT_RESOURCE_MISSING: {
@@ -190,7 +190,7 @@ const WIZARD_RUN_ERROR_CATALOG: Record<string, WizardRunErrorDetails> = {
     PHW_AGENT_NO_PROGRESS: {
         title: 'The setup agent made no changes',
         description: 'The agent stopped before it could inspect or update the project.',
-        resolution: 'Run the program again. If it still fails, contact PostHog support.',
+        resolution: 'Run the program again. If it still fails, contact Flind support.',
     },
     PHW_AGENT_INCOMPLETE_TASKS: {
         title: 'The setup agent did not finish every task',
@@ -219,7 +219,7 @@ const WIZARD_RUN_ERROR_CATALOG: Record<string, WizardRunErrorDetails> = {
     PHW_INTERNAL_UNHANDLED: {
         title: 'The Wizard encountered an unexpected error',
         description: 'The program stopped because of an error that the Wizard did not recognize.',
-        resolution: 'Run the program again. If it still fails, contact PostHog support.',
+        resolution: 'Run the program again. If it still fails, contact Flind support.',
     },
 }
 

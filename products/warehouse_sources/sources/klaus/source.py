@@ -50,7 +50,7 @@ class KlausSource(ResumableSource[KlausSourceConfig, KlausResumeConfig]):
             label="Klaus",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["zendesk qa", "zendesk", "quality assurance", "conversation reviews"],
-            caption="""Sync your Zendesk QA (formerly Klaus) reviews, AutoQA results, CSAT, disputes, and quality data into the PostHog Data warehouse.
+            caption="""Sync your Zendesk QA (formerly Klaus) reviews, AutoQA results, CSAT, disputes, and quality data into the Flind Data warehouse.
 
 You need an API token, which an admin or account manager can generate in Zendesk QA under **Settings > Auto QA and integrations > API**. The subdomain is the first part of your Zendesk URL (for `yourcompany.zendesk.com`, enter `yourcompany`).
 

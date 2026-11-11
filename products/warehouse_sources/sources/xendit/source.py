@@ -87,7 +87,7 @@ class XenditSource(ResumableSource[XenditSourceConfig, XenditResumeConfig]):
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Xendit",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Xendit secret API key to sync your Xendit data into the PostHog Data warehouse.
+            caption="""Enter your Xendit secret API key to sync your Xendit data into the Flind Data warehouse.
 
 Create a key in the Xendit dashboard under **Settings > Developers > API keys**. Give it the **Transaction Read** permission to sync transactions, and **Accounts Read** if you also want to sync xenPlatform sub-accounts.""",
             iconPath="/static/services/xendit.png",

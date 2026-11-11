@@ -80,7 +80,7 @@ const meta: Meta<typeof TerminalScene> = {
                 view.options.cursorBlink = false
                 await new Promise<void>((resolve) =>
                     view.write(
-                        'PostHog terminal\r\n\r\n' +
+                        'Flind terminal\r\n\r\n' +
                             '\x1b[32mposthog\x1b[0m:\x1b[34m/posthog/files\x1b[0m $ ls\r\n' +
                             'Objects  Research\r\n' +
                             '\x1b[32mposthog\x1b[0m:\x1b[34m/posthog/files\x1b[0m $ ',
@@ -105,7 +105,7 @@ const meta: Meta<typeof TerminalScene> = {
                 content: [
                     {
                         type: 'ph-markdown-notebook',
-                        attrs: { markdown: '# Welcome\n\nExplore PostHog with ordinary Unix tools.\n' },
+                        attrs: { markdown: '# Welcome\n\nExplore Flind with ordinary Unix tools.\n' },
                     },
                 ],
             },
@@ -444,9 +444,9 @@ export const DeleteConfirmation: StoryObj<typeof TerminalScene> = {
         await waitFor(() => expect(terminalLogic.values.status).toBe('ready'))
         void terminalLogic.cache.filesystem
             .confirmOperation({
-                title: 'Delete PostHog files and folders?',
+                title: 'Delete Flind files and folders?',
                 description:
-                    'Remove 4 files and folders from project 1. Removing the last file reference also deletes the PostHog object. This affects everyone in the project.',
+                    'Remove 4 files and folders from project 1. Removing the last file reference also deletes the Flind object. This affects everyone in the project.',
                 items: [
                     '/posthog/files/Research/Welcome.md (notebook: demonote)',
                     '/posthog/files/Research/Overview.json (dashboard: 101)',
@@ -486,6 +486,6 @@ export const LiveClassics: StoryObj<typeof TerminalScene> = {
     parameters: { liveRuntime: true },
     play: async () => {
         await waitFor(() => expect(terminalLogic.values.status).toBe('ready'), { timeout: 120_000 })
-        window.posthogTerminal?.write('figlet PostHog\n')
+        window.posthogTerminal?.write('figlet Flind\n')
     },
 }

@@ -5,7 +5,7 @@ It is intentionally not an implementation proposal for one huge PR.
 The goal is to document where we are, where type information is lost today, and what TODOs would let us safely optimize away redundant casts, wrappers, JSON extraction work, lazy joins, and other defensive query shapes.
 
 This document is about HogQL expression and SQL runtime types.
-It is not about the PostHog TypeScript/Python query schema type generation pipeline described in `docs/published/handbook/engineering/type-system.md`.
+It is not about the Flind TypeScript/Python query schema type generation pipeline described in `docs/published/handbook/engineering/type-system.md`.
 
 HogQL has multiple print targets.
 ClickHouse is the highest-value optimization target today, but the type system should account for `clickhouse`, `postgres`, and `duckdb` output from the start.
@@ -178,7 +178,7 @@ It performs several jobs at once:
 - Resolves table and field names.
 - Resolves CTEs, aliases, subqueries, joins, and lazy table scope.
 - Expands asterisk expressions.
-- Rewrites selected PostHog-specific functions into lower-level AST.
+- Rewrites selected Flind-specific functions into lower-level AST.
 - Assigns `type` metadata onto returned AST nodes.
 - Handles dialect-specific behavior for ClickHouse and the Postgres-family targets (`postgres` and `duckdb`).
 
@@ -232,7 +232,7 @@ Some high-value function groups are partially typed:
 - Many date/time functions have signatures.
 - JSON functions use `generate_json_path_signatures`.
 - Some string and geo functions have signatures.
-- Some PostHog extension functions have signatures.
+- Some Flind extension functions have signatures.
 
 Many high-value groups are now typed through generic inference, including logical/comparison functions, common conditionals, common array/map helpers, common string and URL helpers, and common scalar aggregates.
 The remaining gaps are more specific:
@@ -359,7 +359,7 @@ TODO:
   - [x] functions where nullability depends on specific arguments
   - [x] `assumeNotNull`, `toNullable`, `ifNull`, `coalesce`, `nullIf`, and `*OrNull` behavior
 - [x] Add numeric promotion rules matching common ClickHouse paths well enough for first optimizer decisions.
-- [ ] Add string/date/datetime coercion rules for PostHog-supported syntax by dialect.
+- [ ] Add string/date/datetime coercion rules for Flind-supported syntax by dialect.
 - [x] Add array element unification rules.
 - [x] Add tuple element lookup rules.
 - [x] Add named tuple lookup rules.
@@ -441,7 +441,7 @@ TODO:
   - [x] remaining `JSONExtract*` family-specific precision
   - [x] `JSON_VALUE`
   - [x] `JSONHas`, `JSONType`, `JSONLength`
-  - [ ] PostHog property extraction wrappers if any are introduced
+  - [ ] Flind property extraction wrappers if any are introduced
 - [x] Cover array functions:
   - [x] constructors and element access
   - [x] `arrayConcat`, `arraySlice`, `arrayJoin`, `arrayMap`, `arrayFilter`, `arrayExists`, `arrayAll`, `arrayFirst`, `arrayLast`
@@ -733,7 +733,7 @@ TODO:
 - [x] Type common URL helpers that unblock nullability-wrapper simplification in emitted SQL.
 - [x] Type array element access and common higher-order array functions.
 - [x] Type JSON extraction functions with parsed return type literals.
-- [ ] Type core PostHog extension functions.
+- [ ] Type core Flind extension functions.
 
 This phase should reduce `UnknownType` rates enough to make selective optimizations viable.
 
@@ -781,7 +781,7 @@ It should not become the default behavior for user-authored HogQL unless there i
 - [ ] Should typed property conversion happen during resolution, a planning pass, or printing?
 - [ ] How do we expose inferred types to users or debug tooling without making them a user-facing compatibility contract?
 - [ ] Should UDFs be optimizer barriers until typed explicitly?
-- [ ] Can ClickHouse function metadata be generated or validated from upstream docs/system tables, or should PostHog curate only the subset it exposes?
+- [ ] Can ClickHouse function metadata be generated or validated from upstream docs/system tables, or should Flind curate only the subset it exposes?
 
 ## Non-Goals
 

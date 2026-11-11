@@ -55,7 +55,7 @@ class AsanaSource(ResumableSource[AsanaSourceConfig, AsanaResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Asana",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter an Asana personal access token to pull your Asana data into the PostHog Data warehouse.
+            caption="""Enter an Asana personal access token to pull your Asana data into the Flind Data warehouse.
 
 You can create a personal access token from the [developer console](https://app.asana.com/0/my-apps).
 

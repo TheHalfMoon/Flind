@@ -1,4 +1,4 @@
-/** Matrix grouping for GitHub Actions jobs, derived from real PostHog run shapes.
+/** Matrix grouping for GitHub Actions jobs, derived from real Flind run shapes.
  *
  *  A master-push Backend CI run carries ~80 jobs; most are matrix shards. Grouping rules:
  *  - a trailing "(G/N)" shard suffix is stripped — including when nested inside another paren

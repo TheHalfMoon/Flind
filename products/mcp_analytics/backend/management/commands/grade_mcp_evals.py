@@ -2,7 +2,7 @@
 
 The same trials can be graded again by other graders to compare them. ``jev`` sends the request,
 the success criteria and the agent's answer to a System One model. On TypeSafe, which is approved
-only for experiments that send no customer data, grade runs against synthetic or PostHog-owned
+only for experiments that send no customer data, grade runs against synthetic or Flind-owned
 projects.
 """
 

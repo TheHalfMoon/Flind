@@ -73,7 +73,7 @@ class ConektaSource(ResumableSource[ConektaSourceConfig, ConektaResumeConfig]):
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Conekta",
             caption=(
-                "Sync orders, charges, customers, and payouts from Conekta into PostHog. Use the "
+                "Sync orders, charges, customers, and payouts from Conekta into Flind. Use the "
                 f"private key from [Developers > API keys]({CONEKTA_API_KEYS_URL}) in your Conekta "
                 "panel. Production and test keys return different data, so pick the environment "
                 "you want to sync."

@@ -92,7 +92,7 @@ export function DestinationsPreview(): JSX.Element {
                         <div className="DestinationsPreview__when-on DestinationsPreview__message">
                             <span className="DestinationsPreview__avatar" />
                             <span className="DestinationsPreview__message-body">
-                                <span className="DestinationsPreview__message-author">PostHog</span>
+                                <span className="DestinationsPreview__message-author">Flind</span>
                                 <span className="DestinationsPreview__message-text">
                                     Payment failed for <b>acme.example.com</b>. Card declined, 3rd attempt.
                                 </span>

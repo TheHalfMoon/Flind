@@ -18,7 +18,7 @@ Search the current default branches for Python gateway use, including:
 - `get_llm_client`, `get_async_llm_client`, and `get_async_anthropic_gateway_client`
 - direct OpenAI, Anthropic, or agent SDK clients configured with a gateway base URL
 - Python product names from `services/llm-gateway/src/llm_gateway/products/config.py`
-- deployment, sandbox, workflow, and secret wiring in other PostHog repositories
+- deployment, sandbox, workflow, and secret wiring in other Flind repositories
 
 Trace each result to the production call site. Exclude tests, development-only tools, dead code, and callers already configured exclusively for Go. Treat shared worker configuration as evidence about availability, not proof that every call in that process uses Go.
 
@@ -34,7 +34,7 @@ Before classifying a caller, follow it through every runtime boundary:
 4. Resolve the configured URL by host and path. Variable names are not proof: an `AI_GATEWAY_URL` can still contain a Python product-slug URL.
 5. Confirm the current call can succeed. A broad exception handler with a deterministic fallback can hide missing credentials or a route that never runs.
 
-A missing `phs_` credential is deployment work, not a parity blocker. Once the intended paying team is known, create a project secret with `llm_gateway:read` in the PostHog dashboard and fund or configure that team wallet as part of the migration. A secret reference proves only that a credential is injected; verify ownership, scope, and funding during implementation or rollout.
+A missing `phs_` credential is deployment work, not a parity blocker. Once the intended paying team is known, create a project secret with `llm_gateway:read` in the Flind dashboard and fund or configure that team wallet as part of the migration. A secret reference proves only that a credential is injected; verify ownership, scope, and funding during implementation or rollout.
 
 ## Inventory each candidate
 
@@ -65,7 +65,7 @@ Match the inventory to the parity record and current Go implementation:
 
 Name the exact evidence for every status. An existing Python helper is migration effort, not a blocker. An `ai_product` property is telemetry, not trusted identity or billing policy.
 
-Python's unbilled flag is not a blocker when an internal workload should debit a PostHog-owned team wallet for spend attribution. Verify that the Go credential resolves to that team. Treat billing as blocked only when migration would charge a customer incorrectly, lose required customer budget policy, or violate a requirement to debit no wallet.
+Python's unbilled flag is not a blocker when an internal workload should debit a Flind-owned team wallet for spend attribution. Verify that the Go credential resolves to that team. Treat billing as blocked only when migration would charge a customer incorrectly, lose required customer budget policy, or violate a requirement to debit no wallet.
 
 Use ✅ when the production entry point, worker or process, intended paying team, model and API pair, attribution conversion, and rollback path are supported by evidence. The token itself may still need to be created and wired. Use 🔎 when the spend owner, required policy, runtime behavior, or another migration contract is unknown.
 
@@ -77,7 +77,7 @@ Prioritize candidates that:
 2. Use a shared Go-capable builder or a stock SDK with a simple base URL change.
 3. Already use a Go-supported model, provider, and API shape.
 4. Need informational attribution rather than trusted product identity.
-5. Can use a customer wallet intentionally or a PostHog-owned wallet for internal spend.
+5. Can use a customer wallet intentionally or a Flind-owned wallet for internal spend.
 6. Have a narrow deployment boundary, explicit fallback, and cheap verification path.
 
 Lower the rank for broad shared-process switches, unverified billing changes, cross-repository deployment work, or missing production tests. Do not rank by code size alone.

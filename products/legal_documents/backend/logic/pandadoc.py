@@ -68,7 +68,7 @@ class PandaDocRole(StrEnum):
     """
 
     CLIENT = "Client"
-    POSTHOG = "PostHog"
+    POSTHOG = "Flind"
 
 
 @dataclass(frozen=True)

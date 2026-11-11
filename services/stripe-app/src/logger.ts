@@ -1,5 +1,5 @@
 /* oxlint-disable no-console */
-const PREFIX = '[PostHog]'
+const PREFIX = '[Flind]'
 
 export const logger = {
     debug(...args: unknown[]): void {

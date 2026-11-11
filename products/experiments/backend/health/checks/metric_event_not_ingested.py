@@ -26,7 +26,7 @@ def metric_event_not_ingested(ctx: HealthContext) -> CheckOutcome:
     if not names:
         return not_applicable("Runs once a metric uses an event")
     if not names & ctx.events_received.keys():
-        return not_checked("Couldn't check because PostHog keeps no record of these event names")
+        return not_checked("Couldn't check because Flind keeps no record of these event names")
     affected = [
         (metric, missing)
         for metric in ctx.metric_events

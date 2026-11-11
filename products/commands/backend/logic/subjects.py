@@ -44,7 +44,7 @@ def _wrong_state_message(declaration: CommandDeclaration[Any]) -> str:
 
 
 class PullRequestSubject:
-    not_member_message = "You aren't a member of a PostHog project that uses pull request commands on this repository."
+    not_member_message = "You aren't a member of a Flind project that uses pull request commands on this repository."
 
     def __init__(self, ref: PullRequestRef, github: CommandGitHub) -> None:
         self._ref = ref
@@ -76,7 +76,7 @@ class PullRequestSubject:
 
 
 class ErrorTrackingIssueSubject:
-    not_member_message = "You aren't a member of the PostHog project this issue belongs to."
+    not_member_message = "You aren't a member of the Flind project this issue belongs to."
 
     def __init__(self, ref: ErrorTrackingIssueRef) -> None:
         self._ref = ref
@@ -128,7 +128,7 @@ def rollout_key(ref: SubjectRef) -> str:
 
 
 def open_subject(ref: SubjectRef, team_ids: tuple[int, ...], github: CommandGitHub | None = None) -> Subject | Answer:
-    """The subject, ready to read, or the answer when PostHog cannot reach it.
+    """The subject, ready to read, or the answer when Flind cannot reach it.
 
     ``github`` is a client the channel already holds. Without one, a pull request makes its own
     through a row of one of ``team_ids``.

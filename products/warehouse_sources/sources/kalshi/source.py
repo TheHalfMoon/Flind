@@ -94,7 +94,7 @@ To sync your own fills, orders, positions, settlements, and credit history, add 
         return {
             # There is no credential to fix, so a 403 means Kalshi is refusing this caller (most
             # often a geo-block on the exchange). Retrying can't change that.
-            "403 Client Error: Forbidden for url: https://api.elections.kalshi.com": "Kalshi refused the request. The exchange restricts access from some regions, so this source may not be usable from where PostHog runs.",
+            "403 Client Error: Forbidden for url: https://api.elections.kalshi.com": "Kalshi refused the request. The exchange restricts access from some regions, so this source may not be usable from where Flind runs.",
             "401 Client Error: Unauthorized for url: https://api.elections.kalshi.com": "Kalshi rejected the API key. Check the key ID and private key, or create a new key and update the source.",
             MISSING_CREDENTIALS_MESSAGE: "Portfolio tables need a Kalshi API key. Add the key ID and private key to the source, or turn off the portfolio tables.",
             "The Kalshi private key is not a valid": "The Kalshi private key could not be read. Paste the full contents of the private key file, including the BEGIN and END lines.",

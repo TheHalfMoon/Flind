@@ -115,7 +115,7 @@ class FlagsmithSource(ResumableSource[FlagsmithSourceConfig, FlagsmithResumeConf
             keywords=["feature flags", "remote config"],
             label="Flagsmith",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Flagsmith organisation API key to pull your projects, environments, feature flags, flag states, segments, identities, and audit log into the PostHog Data warehouse.
+            caption="""Enter your Flagsmith organisation API key to pull your projects, environments, feature flags, flag states, segments, identities, and audit log into the Flind Data warehouse.
 
 Create an organisation API key under **Organisation Settings > API Keys** in your Flagsmith dashboard. Note that organisation API keys grant admin access to every project in the organisation, so store them carefully.
 

@@ -1,6 +1,6 @@
 # Fixing `message_size_too_large`
 
-The event was **dropped during ingestion** — it never reached PostHog's events table — because the fully-enriched Kafka message exceeded the ~1MB size limit.
+The event was **dropped during ingestion** — it never reached Flind's events table — because the fully-enriched Kafka message exceeded the ~1MB size limit.
 Category `size`, severity `error`: this is data loss, not a cosmetic warning.
 
 ## The critical insight: the limit applies AFTER enrichment
@@ -8,7 +8,7 @@ Category `size`, severity `error`: this is data loss, not a cosmetic warning.
 There are two distinct failure modes, and they look completely different from the app's side:
 
 1. **Rejected at capture** — the event is already too large when sent. The SDK gets an HTTP 413 back, so the failure is visible in SDK logs/error handlers. When the raw event exceeds the Kafka message limit at capture's producer, capture also emits this warning (`source` = `capture`, `pipeline_step` = `capture_validation`, and on the legacy endpoints the `count` covers the whole rejected batch); request-body-level 413s still produce no warning.
-2. **Dropped in the pipeline (this warning)** — the event passed capture fine (SDK saw success), but during ingestion PostHog copies the person's properties **and the properties of every group the event belongs to** onto the event. If those have accumulated large values, that enrichment pushes the message past the limit and it is dropped **silently** — the client believes it succeeded.
+2. **Dropped in the pipeline (this warning)** — the event passed capture fine (SDK saw success), but during ingestion Flind copies the person's properties **and the properties of every group the event belongs to** onto the event. If those have accumulated large values, that enrichment pushes the message past the limit and it is dropped **silently** — the client believes it succeeded.
 
 The total budget is shared: `event properties + person properties + group properties < ~1MB`.
 Three consequences:

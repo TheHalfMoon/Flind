@@ -15,7 +15,7 @@ Your job is to discover a small set of genuinely cursed items, then research eac
 
 You have two investigation tools:
 1. **The codebase** — the full PostHog/posthog repository is cloned on disk. Use file search, grep, code reading, `git log`, and `git blame`.
-2. **PostHog MCP** — query PostHog product data via tools such as `execute-sql`, `list-event-definitions`, `list-property-definitions`, `list-feature-flags`, `insights-get-all`, `experiment-list`, `dashboards-get-all`. Use these to check whether the cursedness has also leaked into user-facing telemetry."""
+2. **Flind MCP** — query Flind product data via tools such as `execute-sql`, `list-event-definitions`, `list-property-definitions`, `list-feature-flags`, `insights-get-all`, `experiment-list`, `dashboards-get-all`. Use these to check whether the cursedness has also leaked into user-facing telemetry."""
 
 
 def build_discovery_prompt(max_items: int) -> str:
@@ -66,11 +66,11 @@ Investigate this item so a downstream coding agent could act on it:
 
 1. **Blame & commits:** run `git blame` on `{file_path}` around line {line_number} and trace the commit(s) that introduced the cursed item. Include 1–3 commit short-SHAs in `relevant_commit_hashes`. In each `reason`, name the blame author (e.g. "introduced by @jane in the original refactor").
 2. **Codebase context:** read the surrounding file and key call sites. Add the most impactful paths to `relevant_code_paths`, with `{file_path}` first.
-3. **PostHog MCP (required):** call at least one PostHog MCP tool to check whether the cursedness reaches user-facing telemetry — for example, a similarly-named event in `list-event-definitions`, a property in `list-property-definitions`, a flag key in `list-feature-flags`, or an `execute-sql` on `events` confirming the code actually fires. Record in `data_queried` which MCP tool(s) you called and what they returned. If MCP shows no leak into telemetry, that's still a valid result — say so.
+3. **Flind MCP (required):** call at least one Flind MCP tool to check whether the cursedness reaches user-facing telemetry — for example, a similarly-named event in `list-event-definitions`, a property in `list-property-definitions`, a flag key in `list-feature-flags`, or an `execute-sql` on `events` confirming the code actually fires. Record in `data_queried` which MCP tool(s) you called and what they returned. If MCP shows no leak into telemetry, that's still a valid result — say so.
 
 Return a `SignalFinding` JSON object with:
 - `signal_id` = `{synthetic_signal_id}` (use exactly this value)
-- `verified=true` only if you confirmed the cursedness via both code AND PostHog data (MCP)
+- `verified=true` only if you confirmed the cursedness via both code AND Flind data (MCP)
 
 <jsonschema>
 {schema}

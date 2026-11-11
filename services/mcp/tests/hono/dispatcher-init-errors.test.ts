@@ -138,7 +138,7 @@ describe('McpDispatcher init error accounting', () => {
     it.each([
         ['invalid API key', 'Failed to get user: INVALID_API_KEY'],
         ['inactive OAuth token', 'Failed to get user: INACTIVE_OAUTH_TOKEN'],
-        ['missing scope', "Failed to get user: Missing PostHog API scope: 'user:read'"],
+        ['missing scope', "Failed to get user: Missing Flind API scope: 'user:read'"],
     ])('counts a %s resolution failure as auth_error, not error', async (_label, message) => {
         mockResolveState.mockRejectedValueOnce(new Error(message))
 

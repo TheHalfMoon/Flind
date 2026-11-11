@@ -36,6 +36,6 @@ export const LongDisabledReason: Story = {
         onApprove: noop,
         onDismiss: noop,
         approvalDisabledReason:
-            'Only organization owners and admins can approve AI data processing for MockHog. Ask Alice, Bob, or Carol to approve this for your team so you can start using PostHog AI features.',
+            'Only organization owners and admins can approve AI data processing for MockHog. Ask Alice, Bob, or Carol to approve this for your team so you can start using Flind AI features.',
     },
 }

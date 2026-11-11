@@ -50,7 +50,7 @@ const ExperimentEventExposureConfigSchema = z.object({
 })
 
 // Action-based exposure: the experiment counts a user as exposed when they match a
-// PostHog action (kind 'ActionsNode', identified by numeric `id`) rather than a custom
+// Flind action (kind 'ActionsNode', identified by numeric `id`) rather than a custom
 // event. The backend resolves the action by id, so id + properties round-trip faithfully
 // into the ExperimentExposureQuery.
 const ExperimentActionExposureConfigSchema = z.object({
@@ -252,7 +252,7 @@ function toMetricSummary(
  * the saved query and serves the result as `effective_query`. The field is null for a legacy shared
  * metric, which takes no overrides.
  *
- * A PostHog server that predates the field, such as an older self-hosted instance, omits it. For that
+ * A Flind server that predates the field, such as an older self-hosted instance, omits it. For that
  * server this function applies the overrides itself. It copies the rules of
  * `apply_saved_metric_overrides` in products/experiments/backend/metric_resolution.py as those
  * servers run them. A server that serves `effective_query` never reaches that code, so a later change

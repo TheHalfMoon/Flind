@@ -3,7 +3,7 @@
 A ``PreviewBackend`` is "a box we can run a docker stack inside and reach over
 HTTP". Swapping the layer — hogland today, DigitalOcean before that, something
 else next — means writing one new backend. Everything about *what* runs in the
-box (the PostHog stack: compose, image, migrate, seed) lives in ``stack.py`` and
+box (the Flind stack: compose, image, migrate, seed) lives in ``stack.py`` and
 never changes when the layer changes.
 
 The split, concretely:
@@ -52,7 +52,7 @@ class SSHTarget:
 
 
 class PreviewBackend(abc.ABC):
-    """A box that can host the PostHog docker stack and serve it over HTTP.
+    """A box that can host the Flind docker stack and serve it over HTTP.
 
     ``web_port`` is the in-guest port the stack listens on; the backend exposes
     it at ``web_url`` (for hogland, the box-front edge; for a droplet, its

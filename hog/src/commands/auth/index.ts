@@ -7,6 +7,6 @@ import migrate from './migrate'
 import status from './status'
 
 export default defineGroup({
-    description: 'Log in to PostHog, add scopes, log out, and check who hog is logged in as',
+    description: 'Log in to Flind, add scopes, log out, and check who hog is logged in as',
     commands: { login, add, logout, migrate, status },
 })

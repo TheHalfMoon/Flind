@@ -95,7 +95,7 @@ export function MaterializationRunActions({
     // renders this component without it, and an endpoint-origin view then looks like a plain one.
     // The saved query names its owner, and deleting through it either fails or breaks that product.
     const ownerReason = savedQuery.managed_viewset_kind
-        ? 'PostHog manages this view. Turn the managed viewset off to delete it.'
+        ? 'Flind manages this view. Turn the managed viewset off to delete it.'
         : savedQuery.origin === DataWarehouseSavedQueryOrigin.ENDPOINT
           ? 'This view belongs to an endpoint. Delete the endpoint instead.'
           : undefined

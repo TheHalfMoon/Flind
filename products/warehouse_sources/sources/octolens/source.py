@@ -44,7 +44,7 @@ class OctolensSource(ResumableSource[OctolensSourceConfig, OctolensResumeConfig]
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Octolens",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Octolens API key to pull your brand and keyword mentions into the PostHog Data warehouse.
+            caption="""Enter your Octolens API key to pull your brand and keyword mentions into the Flind Data warehouse.
 
 Create a key under **Settings → API** in Octolens. A key with the `read` scope is enough for every table this source syncs.""",
             iconPath="/static/services/octolens.png",

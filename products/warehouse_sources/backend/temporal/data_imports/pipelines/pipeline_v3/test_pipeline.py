@@ -1472,7 +1472,7 @@ class TestColumnNamesReachTheWrite:
         [
             (False, {}, ["order_id", "total_amount", "_ph_debug"]),
             (True, {}, ["Order ID", "totalAmount", "_ph_debug"]),
-            # A Delta table PostHog wrote, read back from a bucket, already holds the columns the pipeline adds.
+            # A Delta table Flind wrote, read back from a bucket, already holds the columns the pipeline adds.
             (
                 False,
                 {"_ph_debug": '{"load_id": 1}', "_ph_partition_key": "2024-05"},

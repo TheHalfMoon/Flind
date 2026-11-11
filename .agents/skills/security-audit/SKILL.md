@@ -68,7 +68,7 @@ Focus on threats that are realistic for this change.
 Do not force exhaustive STRIDE coverage.
 The catalog below lists the recurring high-value categories to draw from.
 
-### PostHog environment defaults
+### Flind environment defaults
 
 - Production egress goes through the Smokescreen proxy. Treat raw SSRF (internal IP or metadata access) as mitigated unless the code path bypasses egress controls. Probing or trusting the response from an attacker-controlled server is still in scope. The SSRF bullet in the catalog states which control is load-bearing.
 - `team_id` scoping is the primary tenant-isolation boundary.

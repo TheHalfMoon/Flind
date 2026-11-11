@@ -38,7 +38,7 @@ const RECORDING_METRIC_KEYS = new Set([
     'snapshot_source',
 ])
 
-/** Attaches the open list's filters to PostHog AI and mirrors what it produces back onto the list. */
+/** Attaches the open list's filters to Flind AI and mirrors what it produces back onto the list. */
 export function useRecordingFiltersAssist({
     filters,
     setFilters,

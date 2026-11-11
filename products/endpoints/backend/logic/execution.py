@@ -1064,7 +1064,7 @@ class EndpointExecutionService(PydanticModelMixin):
     # ------------------------------------------------------------------
 
     def _is_interactive_session(self) -> bool:
-        """Whether this request came from the PostHog UI (session auth) rather than a
+        """Whether this request came from the Flind UI (session auth) rather than a
         programmatic credential (personal API key, OAuth, project secret API key, ...).
 
         Same idiom as get_event_source (posthog/event_usage.py) minus its session-cookie

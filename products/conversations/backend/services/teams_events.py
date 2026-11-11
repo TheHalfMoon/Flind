@@ -106,7 +106,7 @@ def _is_from_the_bot_itself(activity: dict[str, Any]) -> bool:
 def _accept_conversation_update(activity: dict[str, Any], activity_id: str) -> None:
     """The proactive welcome on install (Teams Store cert 11.4.4.3).
 
-    No PostHog-side team match is needed: the customer hasn't necessarily completed the OAuth
+    No Flind-side team match is needed: the customer hasn't necessarily completed the OAuth
     flow yet, and the welcome card uses only the global Bot Framework token.
     """
     if not is_bot_added_event(activity):
@@ -118,7 +118,7 @@ def _accept_conversation_update(activity: dict[str, Any], activity_id: str) -> N
 
 def _accept_message(activity: dict[str, Any], activity_id: str) -> None:
     # Generic-command guarantee (Teams Store cert 11.4.4.3): "Hi", "Hello", "Help", etc. must
-    # always get a valid response, even from tenants that haven't completed PostHog OAuth yet
+    # always get a valid response, even from tenants that haven't completed Flind OAuth yet
     # (this is exactly the path the AppSource validators run against). Reply with the help card
     # before the team-config gate, then bail without creating a ticket.
     if is_command_message(activity):

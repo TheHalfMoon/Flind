@@ -218,7 +218,7 @@ const RULES: GuidanceRule[] = [
         text: [
             'This project has no error tracking issues at all, so exception capture is probably not set up.',
             'If the user wants error tracking, call `docs-search` to find the setup steps for their SDK.',
-            'If the user expected errors here, tell them that no exceptions have reached PostHog.',
+            'If the user expected errors here, tell them that no exceptions have reached Flind.',
         ].join(' '),
     },
     {

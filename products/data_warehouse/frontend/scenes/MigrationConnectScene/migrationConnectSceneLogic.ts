@@ -89,9 +89,9 @@ function keyErrorMessage(e: any): string {
         return e.detail
     }
     if (!e?.status) {
-        return "PostHog couldn't reach the server. An ad blocker or browser extension may be blocking the request. Pause it or switch networks, then try again."
+        return "Flind couldn't reach the server. An ad blocker or browser extension may be blocking the request. Pause it or switch networks, then try again."
     }
-    return "PostHog couldn't save the key. Try again in a minute."
+    return "Flind couldn't save the key. Try again in a minute."
 }
 
 export const migrationConnectSceneLogic = kea<migrationConnectSceneLogicType>([

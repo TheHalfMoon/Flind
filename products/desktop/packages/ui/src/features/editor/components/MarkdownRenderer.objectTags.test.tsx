@@ -175,7 +175,7 @@ describe("object tags in agent markdown", () => {
   });
 });
 
-describe("PostHog object links in agent markdown", () => {
+describe("Flind object links in agent markdown", () => {
   beforeEach(() => {
     useAuthStore.setState({
       authState: {

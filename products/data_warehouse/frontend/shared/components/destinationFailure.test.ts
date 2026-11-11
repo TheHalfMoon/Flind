@@ -19,7 +19,7 @@ const MY_PROD: ExternalDataDestinationApi = { ...PROD, id: 'my-prod', name: 'My 
 const WAREHOUSE: ExternalDataDestinationApi = {
     ...PROD,
     id: 'warehouse',
-    name: 'PostHog warehouse',
+    name: 'Flind warehouse',
     type: 'PostHogWarehouse',
     is_posthog_warehouse: true,
 }
@@ -70,7 +70,7 @@ describe('failedDestinationFor', () => {
         },
         {
             description: 'a warehouse row',
-            error: 'PostHog warehouse: boom',
+            error: 'Flind warehouse: boom',
             candidates: [WAREHOUSE.id],
             expected: null,
         },

@@ -2,11 +2,11 @@
 name: signals-scout-apm
 scout-display-name: APM
 description: >
-  Signals scout for PostHog distributed tracing (APM / OpenTelemetry spans). Watches per-service
+  Signals scout for Flind distributed tracing (APM / OpenTelemetry spans). Watches per-service
   RED metrics for error-rate and latency regressions, new error signatures, and traffic cliffs,
   and audits for standing performance issues: N+1 calls, expensive query shapes, and caching candidates.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus the apm-* tool family
   (apm-service-health, query-apm-spans, apm-trace-get, apm-spans-aggregate, apm-spans-tree,
   apm-spans-count, apm-spans-sparkline, apm-spans-duration-histogram, apm-attribute-breakdown,

@@ -305,7 +305,7 @@ export const SyncMethodForm = forwardRef<SyncMethodFormHandle, SyncMethodFormPro
                         {!schema.supports_webhooks && <LemonTag type="success">Recommended</LemonTag>}
                     </div>
                     <p className="mb-2">
-                        Capture inserts, updates, and deletes in real-time via logical replication. Keeps PostHog in
+                        Capture inserts, updates, and deletes in real-time via logical replication. Keeps Flind in
                         sync with the source continuously and handles row deletes — unlike incremental or append.
                         Requires a primary key on the source table.
                     </p>
@@ -494,7 +494,7 @@ export const SyncMethodForm = forwardRef<SyncMethodFormHandle, SyncMethodFormPro
                                     <>
                                         <p className="mt-4 mb-2">
                                             Optionally, select one or more columns to use as the primary key for
-                                            deduplication. If not set, PostHog will attempt to auto-detect the primary
+                                            deduplication. If not set, Flind will attempt to auto-detect the primary
                                             key from the source.
                                         </p>
                                         <LemonInputSelect

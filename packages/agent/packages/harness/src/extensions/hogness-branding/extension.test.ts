@@ -81,7 +81,7 @@ describe("createHognessBrandingExtension", () => {
     const lines = component.render(80);
 
     expect(lines[0]).toContain("Hog");
-    expect(lines[0]).toContain("A Pi distribution by PostHog");
+    expect(lines[0]).toContain("A Pi distribution by Flind");
     expect(lines[0]).toContain("v9.9.9");
   });
 

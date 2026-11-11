@@ -65,7 +65,7 @@ class HetznerSource(ResumableSource[HetznerSourceConfig, HetznerResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Hetzner Cloud",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter a Hetzner Cloud API token to sync your Hetzner Cloud project into the PostHog Data warehouse.
+            caption="""Enter a Hetzner Cloud API token to sync your Hetzner Cloud project into the Flind Data warehouse.
 
 Create a token under **Security > API tokens** in the [Hetzner Cloud Console](https://console.hetzner.cloud/). A `Read` token is enough. Each token is scoped to a single project, so connect one source per project you want to sync.""",
             iconPath="/static/services/hetzner.svg",

@@ -45,7 +45,7 @@ export interface AgentPromptAction {
     icon?: React.ReactElement
     /** Returns the prompt text for this action */
     buildPrompt: () => string
-    /** Content that is not an agent prompt, like a raw stack trace, so it goes out without the PostHog MCP instructions. */
+    /** Content that is not an agent prompt, like a raw stack trace, so it goes out without the Flind MCP instructions. */
     raw?: boolean
 }
 
@@ -213,7 +213,7 @@ const AGENTS: AgentDef[] = [
     },
     {
         key: 'posthog-code',
-        name: 'PostHog Desktop',
+        name: 'Flind Desktop',
         logo: <IconLogomark className="size-4 shrink-0" />,
         verb: 'Open',
         open: openDeepLink(buildPostHogCodeDeepLink),
@@ -281,8 +281,8 @@ export function buildAgentPrompt(
     isCloudOrDev: boolean
 ): string {
     const prompt = action.buildPrompt()
-    // PostHog AI reads PostHog data directly, so it has no use for the MCP server.
-    // Self-hosted instances have no PostHog MCP server to connect to.
+    // Flind AI reads Flind data directly, so it has no use for the MCP server.
+    // Self-hosted instances have no Flind MCP server to connect to.
     if (action.raw || agentKey === 'posthog-ai' || !isCloudOrDev) {
         return prompt
     }

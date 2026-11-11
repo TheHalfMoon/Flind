@@ -164,7 +164,7 @@ def get_allowed_resources() -> list[str]:
     Always includes SITE_URL; Cloud adds extra resource servers via ID_JAG_ALLOWED_RESOURCES.
     Also used by the resource server (posthog.auth) to validate the minted token's `aud`.
 
-    Billing is left out of this list on purpose. PostHog mints billing-audience tokens only on
+    Billing is left out of this list on purpose. Flind mints billing-audience tokens only on
     the server (ee.billing.access_token), so the token endpoint has no way to hand one to a
     client."""
     billing_audience = (getattr(settings, "BILLING_SERVICE_URL", "") or "").rstrip("/")
@@ -268,7 +268,7 @@ def _resolve_resource(claim_resource: str | None, requested_resource: str | None
     The ID-JAG draft makes the `resource` claim optional, and the token request can carry the
     RFC 8707 `resource` parameter instead. Claude-issued assertions use only the parameter, and
     an IdP adds the claim only when the client asked it to. With neither, the token is for this
-    deployment, which the PostHog API and the MCP server both accept.
+    deployment, which the Flind API and the MCP server both accept.
     """
     claim = (claim_resource or "").rstrip("/")
     requested = (requested_resource or "").rstrip("/")
@@ -566,7 +566,7 @@ def _construct_access_token(payload: dict[str, Any], token_type: str = ACCESS_TO
 
 def sign_access_token(payload: dict[str, Any], token_type: str = ACCESS_TOKEN_TYPE) -> str:
     """Sign an access token with the OIDC key. Shared by the ID-JAG token endpoint, the billing
-    token PostHog mints server-side and the workload token exchange, so all verify against the same JWKS.
+    token Flind mints server-side and the workload token exchange, so all verify against the same JWKS.
     A token type other than `at+jwt` keeps a token from being accepted where an ID-JAG one is."""
     return _construct_access_token(payload, token_type)
 

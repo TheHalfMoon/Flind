@@ -422,7 +422,7 @@ def _recent_dashboards(team: Team) -> list[dict[str, Any]]:
 
     Sorted by `Dashboard.last_accessed_at` desc — recency, not popularity. We don't
     have a per-dashboard view *count* in Postgres (the `viewed dashboard` event would
-    give us counts but only for PostHog-internal teams via project 2), so this surfaces
+    give us counts but only for Flind-internal teams via project 2), so this surfaces
     "what's the team currently looking at" rather than "what's most trafficked." The
     name reflects what we actually have.
     """
@@ -441,7 +441,7 @@ def _recent_dashboards(team: Team) -> list[dict[str, Any]]:
 def _recent_surveys(team: Team) -> dict[str, Any]:
     """Surveys orientation — total + active count, plus the 5 most recently modified.
 
-    "Active" matches PostHog's running semantics: not archived, already started
+    "Active" matches Flind's running semantics: not archived, already started
     (`start_date <= now`), and not yet ended. Drafts (`start_date IS NULL`) and
     future-scheduled surveys count as not-active. Sort by `updated_at` so freshly-edited
     surveys surface first; falls through to creation recency for never-edited rows.

@@ -158,7 +158,7 @@ describe('WindowTitlePlugin', () => {
                                                 tagName: 'title',
                                                 attributes: {},
                                                 childNodes: [
-                                                    { id: 123456789, type: 3, textContent: 'Recordings • PostHog' },
+                                                    { id: 123456789, type: 3, textContent: 'Recordings • Flind' },
                                                 ],
                                             },
                                         ],
@@ -172,7 +172,7 @@ describe('WindowTitlePlugin', () => {
             true,
             { replayer: null as unknown as any }
         )
-        expect(mockCallback).toHaveBeenCalledWith('0191dd6c-cd35-71ad-9114-264ebef5ab38', 'Recordings • PostHog')
+        expect(mockCallback).toHaveBeenCalledWith('0191dd6c-cd35-71ad-9114-264ebef5ab38', 'Recordings • Flind')
 
         mockCallback.mockClear()
 
@@ -180,7 +180,7 @@ describe('WindowTitlePlugin', () => {
             {
                 type: 3,
                 windowId: '0191dd6c-cd35-71ad-9114-264ebef5ab38',
-                data: { texts: [{ id: 123, value: 'PostHog • A new title' }] },
+                data: { texts: [{ id: 123, value: 'Flind • A new title' }] },
             } as any,
             true,
             { replayer: null as unknown as any }
@@ -192,12 +192,12 @@ describe('WindowTitlePlugin', () => {
             {
                 type: 3,
                 windowId: '0191dd6c-cd35-71ad-9114-264ebef5ab38',
-                data: { source: 0, texts: [{ id: 123456789, value: 'PostHog • A new title' }] },
+                data: { source: 0, texts: [{ id: 123456789, value: 'Flind • A new title' }] },
             } as any,
             true,
             { replayer: null as unknown as any }
         )
-        expect(mockCallback).toHaveBeenCalledWith('0191dd6c-cd35-71ad-9114-264ebef5ab38', 'PostHog • A new title')
+        expect(mockCallback).toHaveBeenCalledWith('0191dd6c-cd35-71ad-9114-264ebef5ab38', 'Flind • A new title')
 
         // new full snapshot clears title references
         mockCallback.mockClear()
@@ -215,7 +215,7 @@ describe('WindowTitlePlugin', () => {
             {
                 type: 3,
                 windowId: '0191dd6c-cd35-71ad-9114-264ebef5ab38',
-                data: { source: 0, texts: [{ id: 123456789, value: 'PostHog • A new title' }] },
+                data: { source: 0, texts: [{ id: 123456789, value: 'Flind • A new title' }] },
             } as any,
             true,
             { replayer: null as unknown as any }
@@ -247,7 +247,7 @@ describe('WindowTitlePlugin', () => {
                                                 type: 2,
                                                 tagName: 'title',
                                                 attributes: {},
-                                                childNodes: [{ type: 3, textContent: 'Recordings • PostHog' }],
+                                                childNodes: [{ type: 3, textContent: 'Recordings • Flind' }],
                                             },
                                         ],
                                     },

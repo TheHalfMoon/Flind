@@ -86,13 +86,13 @@ const threeThousand = [
     ['bg-border-bold', 'bg-red-500'],
     ['bg-transparent', 'bg-red-500'],
     ['bg-link', 'bg-red-500'],
-    // Colors of the PostHog logo
+    // Colors of the Flind logo
     ['bg-brand-blue', 'bg-red-500'],
     ['bg-brand-red', 'bg-red-500'],
     ['bg-brand-yellow', 'bg-red-500'],
     ['bg-brand-key', 'bg-red-500'],
 
-    // PostHog 3000
+    // Flind 3000
     ['bg-text-3000-light', 'bg-red-500'],
     ['bg-text-secondary-3000-light', 'bg-red-500'],
     ['bg-muted-3000-light', 'bg-red-500'],

@@ -94,7 +94,7 @@ class TestWarmTaskSandbox(APIBaseTest):
     def setUp(self) -> None:
         super().setUp()
         self.integration = Integration.objects.create(team=self.team, kind="github", config={})
-        # The warm endpoint gates on Desktop and PostHog AI access; these tests cover warm forwarding, not the gates.
+        # The warm endpoint gates on Desktop and Flind AI access; these tests cover warm forwarding, not the gates.
         _allow_desktop_access(self)
         _allow_posthog_ai_access(self)
 
@@ -252,7 +252,7 @@ class TestWarmTaskSandbox(APIBaseTest):
     @parameterized.expand(
         [
             ("without_integration", False),
-            # The PostHog AI composer sends the team's integration even with no repo picked.
+            # The Flind AI composer sends the team's integration even with no repo picked.
             ("with_integration", True),
         ]
     )
@@ -1371,7 +1371,7 @@ class TestCreateTaskWarmReuse(APIBaseTest):
     @parameterized.expand(
         [
             ("without_integration", False),
-            # The PostHog AI composer submits a repo-less task with the team's integration attached;
+            # The Flind AI composer submits a repo-less task with the team's integration attached;
             # the warm it booted seconds earlier carries the same pair and must be the run it lands on.
             ("with_integration", True),
         ]

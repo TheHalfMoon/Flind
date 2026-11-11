@@ -13,7 +13,7 @@ const FALLBACK_FAILED = "We couldn't save the sending rules or ask in the chat. 
 
 function WorkflowSendingRulesApp(): JSX.Element {
     return (
-        <AppWrapper<WorkflowSendingRulesData> appName="PostHog Sending Rules">
+        <AppWrapper<WorkflowSendingRulesData> appName="Flind Sending Rules">
             {({ data, app }) => (data ? <WorkflowSendingRulesContent initial={data} app={app} /> : null)}
         </AppWrapper>
     )

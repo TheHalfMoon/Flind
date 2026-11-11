@@ -145,7 +145,7 @@ describe('chat navigation', () => {
                     identifier: `background-${name}`,
                     trigger: { type: 'push' },
                     content: {
-                        title: 'PostHog',
+                        title: 'Flind',
                         subtitle: null,
                         body: 'Chat update',
                         data: { type: 'task', taskId: 'task-a', projectId: 2 },

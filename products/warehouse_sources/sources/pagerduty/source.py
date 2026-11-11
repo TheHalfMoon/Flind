@@ -54,7 +54,7 @@ class PagerDutySource(ResumableSource[PagerDutySourceConfig, PagerDutyResumeConf
             name=ExternalDataSourceType.PAGERDUTY,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="PagerDuty",
-            caption="""Enter your PagerDuty REST API key to pull your PagerDuty data into the PostHog Data warehouse.
+            caption="""Enter your PagerDuty REST API key to pull your PagerDuty data into the Flind Data warehouse.
 
 You can create an account-level API key in your PagerDuty account under **Integrations → API Access Keys**. A **Read-only** key syncs every table except `incident_analytics`, because the PagerDuty Analytics API only accepts POST requests. To sync `incident_analytics`, create a full access key instead.""",
             iconPath="/static/services/pagerduty.svg",

@@ -182,7 +182,7 @@ class MemberOffboardingResourceSerializer(serializers.Serializer):
         required=False, allow_null=True, help_text="Subscription recipients, Slack channels, or safe webhook host."
     )
     password_protected = serializers.BooleanField(help_text="Whether all active public links require a password.")
-    url = serializers.CharField(allow_null=True, help_text="Project-scoped path to open the resource in PostHog.")
+    url = serializers.CharField(allow_null=True, help_text="Project-scoped path to open the resource in Flind.")
 
 
 @extend_schema(extensions={"x-product": "platform_features"})

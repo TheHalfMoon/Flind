@@ -47,7 +47,7 @@ If you quote a user, a log, or a document, quote it as it is.
 | Lists                       | Use a list for 3 or more steps or conditions                         | A sequence buried in one sentence                           |
 | Jargon                      | Keep the technical term you need, and define it once                 | Use an internal name the reader has never seen              |
 
-PostHog house style sits on top of these rules and wins where the two disagree.
+Flind house style sits on top of these rules and wins where the two disagree.
 We use American English, sentence case, and the Oxford comma.
 We do not use the em-dash.
 

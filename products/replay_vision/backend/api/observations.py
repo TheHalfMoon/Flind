@@ -173,7 +173,7 @@ class ScannerResultSerializer(serializers.Serializer):
     )
     signals_count = serializers.IntegerField(
         min_value=0,
-        help_text="Number of PostHog Signals emitted from this observation.",
+        help_text="Number of Flind Signals emitted from this observation.",
     )
     experiment_variant = serializers.CharField(
         required=False,
@@ -1017,10 +1017,10 @@ _ORDER_BY_PARAMETER = OpenApiParameter(
 
 
 class CreateTaskFromObservationResponseSerializer(serializers.Serializer):
-    """The PostHog Task created from an observation."""
+    """The Flind Task created from an observation."""
 
     task_id = serializers.UUIDField(
-        help_text="ID of the PostHog Task holding this observation's finding, created now (201) or by an earlier call (200).",
+        help_text="ID of the Flind Task holding this observation's finding, created now (201) or by an earlier call (200).",
     )
 
 
@@ -1256,7 +1256,7 @@ class ReplayObservationViewSet(
             200: CreateTaskFromObservationResponseSerializer,
         },
         description=(
-            "Create a PostHog Task from this observation's finding so it can be triaged and fixed. "
+            "Create a Flind Task from this observation's finding so it can be triaged and fixed. "
             "Title and description are derived from the scanner and its result. Record-only: this does "
             "not start the coding agent. Idempotent per observation: once a task exists, repeat calls "
             "return its id with a 200 instead of creating a duplicate."

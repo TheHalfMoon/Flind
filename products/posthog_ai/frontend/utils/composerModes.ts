@@ -43,7 +43,7 @@ export const MODE_OPTIONS: ComposerModeOption[] = [
         value: InitialPermissionModeEnumApi.Auto,
         label: 'Auto',
         description:
-            'Accepts file edits and shell commands automatically. Always asks before PostHog tools that change live data. Creating or publishing content asks only while you watch the run.',
+            'Accepts file edits and shell commands automatically. Always asks before Flind tools that change live data. Creating or publishing content asks only while you watch the run.',
     },
     {
         value: InitialPermissionModeEnumApi.BypassPermissions,

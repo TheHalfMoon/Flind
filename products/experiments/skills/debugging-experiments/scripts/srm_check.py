@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Localize a confirmed experiment SRM to assignment-side vs capture-side.
 
-Recomputes each user's variant from PostHog's deterministic flag hash, then decomposes the
+Recomputes each user's variant from Flind's deterministic flag hash, then decomposes the
 observed gap between the recorded split and the configured split into the two halves it can
 come from. See "The decisive test" in `pulling-the-data.md` for the full diagnostic.
 
@@ -17,7 +17,7 @@ measures how much something moved users between arms after assignment. The scrip
 components, each with a significance test, and only names a side when one of them both dominates
 the gap and is statistically distinguishable from zero. Otherwise it says so.
 
-Algorithm is byte-exact with the PostHog implementation in
+Algorithm is byte-exact with the Flind implementation in
 `rust/feature-flags/src/flags/flag_matching.rs` (get_matching_variant) and
 `flag_matching_utils.rs` (calculate_hash). Run `--selftest` first — it checks every part a wrong
 verdict would come from, and exits non-zero on any mismatch:
@@ -28,14 +28,14 @@ verdict would come from, and exits non-zero on any mismatch:
     statistics       chi-squared tail against known critical values, Wilson interval
     verdict          synthetic pure-capture and pure-assignment samples route correctly
 
-Stdlib only (hashlib, csv, math, argparse) — no PostHog install required. distinct_ids are
+Stdlib only (hashlib, csv, math, argparse) — no Flind install required. distinct_ids are
 often emails; run this customer-side and paste back only the aggregate lines it prints.
 
     ./srm_check.py --selftest
     ./srm_check.py --flag-key my-flag --variants-file variants.json --csv exposures.csv
 
 Prefer --variants-file: save the flag's `filters.multivariate.variants` array to a file and pass
-the path. Variant keys are only charset-validated in the PostHog UI, not by the API, so a key
+the path. Variant keys are only charset-validated in the Flind UI, not by the API, so a key
 reaching you through a ticket can contain shell metacharacters or quotes — keep it out of the
 command line entirely rather than trying to quote it. --variants is the convenience form for keys
 you have already eyeballed.
@@ -61,7 +61,7 @@ from dataclasses import dataclass
 # 0xfffffffffffffff == 15 hex digits == LONG_SCALE in flag_matching_utils.rs
 __LONG_SCALE__ = 0xFFFFFFFFFFFFFFF
 
-# PostHog treats an SRM as real below this p (see the chi-squared section in pulling-the-data.md).
+# Flind treats an SRM as real below this p (see the chi-squared section in pulling-the-data.md).
 SRM_ALPHA = 0.001
 # A component has to carry at least this much of the gap before it names a side on its own.
 DOMINANT_SHARE = 2.0 / 3.0
@@ -72,7 +72,7 @@ def hash_of(hash_key: str) -> float:
     chars of sha1(hash_key), divided by LONG_SCALE. Deterministic, in [0, 1).
 
     SHA1 here is a compatibility requirement, not a security choice: it is the hash
-    PostHog's flag matcher buckets users with, so this has to reproduce it bit for bit.
+    Flind's flag matcher buckets users with, so this has to reproduce it bit for bit.
     Do not take semgrep's SHA256 autofix — it would still compute a number and still
     print a verdict, just a wrong one, which is the worst failure this script has."""
     # nosemgrep: python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1 (reproduces flag bucketing, not a signature)
@@ -254,7 +254,7 @@ def chance_agreement(variants: list[tuple[str, float]]) -> float:
 def printable(value: str) -> str:
     """Escape anything non-printable in a variant key before it reaches the report.
 
-    Variant keys are charset-validated in the PostHog UI but not by the API, and the recorded
+    Variant keys are charset-validated in the Flind UI but not by the API, and the recorded
     values come from the customer's own CSV, so neither is trustworthy. Printed verbatim, a key
     carrying a newline can forge a verdict line in a report an operator reads to pick a
     diagnosis, and one carrying an escape sequence can drive their terminal. Printable
@@ -423,7 +423,7 @@ def judge(
 
 # Golden vectors from rust/feature-flags/src/flags/flag_matching_utils.rs
 # (test_calculate_hash: prefix="holdout-", salt=""). If these fail, the local
-# hashing does not match PostHog and any verdict below would be meaningless.
+# hashing does not match Flind and any verdict below would be meaningless.
 # They cover the sha1 -> first-15-hex -> LONG_SCALE pipeline only.
 _GOLDEN = [
     ("some_distinct_id", 0.7270002403585725),

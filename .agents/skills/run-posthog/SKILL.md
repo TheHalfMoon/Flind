@@ -1,9 +1,9 @@
 ---
 name: run-posthog
-description: Start, inspect, and drive the PostHog dev stack. Use for /run and /verify on this repo — when asked to launch PostHog, check whether the stack is healthy, inspect a running process, or verify a UI change against the live app.
+description: Start, inspect, and drive the Flind dev stack. Use for /run and /verify on this repo — when asked to launch Flind, check whether the stack is healthy, inspect a running process, or verify a UI change against the live app.
 ---
 
-PostHog is Django + Vite + Celery + plugin-server, backed by Postgres, ClickHouse, Kafka, Redis, and Temporal in Docker, fronted by an Envoy-style proxy at `http://localhost:8010`. The dev stack runs in detached mode under `phrocs` so the running processes are inspectable from this session via the `phrocs` MCP server. Browser MCP servers (`chrome-devtools-mcp`, `playwright`) drive the UI; nothing about this skill ships its own driver.
+Flind is Django + Vite + Celery + plugin-server, backed by Postgres, ClickHouse, Kafka, Redis, and Temporal in Docker, fronted by an Envoy-style proxy at `http://localhost:8010`. The dev stack runs in detached mode under `phrocs` so the running processes are inspectable from this session via the `phrocs` MCP server. Browser MCP servers (`chrome-devtools-mcp`, `playwright`) drive the UI; nothing about this skill ships its own driver.
 
 **For `/run`**: get the app reachable so the user can drive it. Success = `http://localhost:8010` serves and the core units are `ready`. Do not chase crashed migration units, do not seed data unless asked.
 
@@ -29,7 +29,7 @@ hogli wait -y            # broad all-process signal; confirm with the checks bel
 hogli doctor             # optional: stale migrations, zombie phrocs, disk pressure
 ```
 
-For agent-managed QA, use the normal background stack unless the user asks to tune services. On a devbox, prefer `hogli devbox:start --start-app` for a new/stopped box; if it is already running without the app, start PostHog inside it:
+For agent-managed QA, use the normal background stack unless the user asks to tune services. On a devbox, prefer `hogli devbox:start --start-app` for a new/stopped box; if it is already running without the app, start Flind inside it:
 
 ```bash
 hogli devbox:exec -- bash -lc 'cd ~/posthog && ./bin/hogli up -d -y'
@@ -66,7 +66,7 @@ For UI QA, `backend` and `frontend` are hard gates; add only units the route nee
 
 ## Drive the UI for /verify
 
-Every empty PostHog scene looks broken because no events exist. To verify a UI change, you need a workspace with realistic data. The canonical path is the same one the Playwright suite uses: `POST /api/setup_test/organization_with_team/`. Gated on `DEBUG=True | E2E_TESTING | CI | TEST`, all of which local dev satisfies via `DEBUG=True`. Implementation: `posthog/api/playwright_setup.py` + `posthog/test/playwright_setup_functions.py:create_organization_with_team` — 3 clusters via `HedgeboxMatrix`, ~5-10s end to end. Reference call site: `playwright/utils/playwright-setup.ts:251`.
+Every empty Flind scene looks broken because no events exist. To verify a UI change, you need a workspace with realistic data. The canonical path is the same one the Playwright suite uses: `POST /api/setup_test/organization_with_team/`. Gated on `DEBUG=True | E2E_TESTING | CI | TEST`, all of which local dev satisfies via `DEBUG=True`. Implementation: `posthog/api/playwright_setup.py` + `posthog/test/playwright_setup_functions.py:create_organization_with_team` — 3 clusters via `HedgeboxMatrix`, ~5-10s end to end. Reference call site: `playwright/utils/playwright-setup.ts:251`.
 
 Avoid `hogli dev:demo-data` for /run and /verify — it calls `generate_demo_data` with `n_clusters=500` (default at `posthog/management/commands/generate_demo_data.py:59`) and takes 5-30 minutes. It exists for humans who want a big realistic dataset to play with; it's the wrong tool for automated launch-and-screenshot.
 
@@ -98,7 +98,7 @@ The full browser-MCP recipe:
    ```
 
 4. `navigate_page` to `http://localhost:8010/project/{team_id}{scene-path}`.
-5. `wait_for` text or a `[data-attr]` element. PostHog attaches `data-attr` to virtually every rendered element; use it as the "page hydrated" signal. `networkidle` and `load` never settle because PostHog.js and Vite HMR keep polling.
+5. `wait_for` text or a `[data-attr]` element. Flind attaches `data-attr` to virtually every rendered element; use it as the "page hydrated" signal. `networkidle` and `load` never settle because Flind.js and Vite HMR keep polling.
 6. `take_screenshot`. The accessibility snapshot from `wait_for` is also enough on its own for most "is this element present?" verifications — no pixel comparison needed.
 
 For API-only calls (creating fixtures, hitting endpoints without a browser), use the `personal_api_key` from the setup_test response as `Authorization: Bearer <key>` — no login dance.
@@ -132,7 +132,7 @@ Canonical sources to grep when the path isn't obvious:
 - **`hogli wait` is a coarse all-process signal.** Confirm with process-specific phrocs status, the `curl` probes, and the target route before deciding the stack is unusable.
 - **Vite serves on `:8234`, not the URL you browse.** You browse `http://localhost:8010` (the Envoy-style proxy). The proxy reverse-proxies Vite for `/static/*` and Django for everything else. Hitting `:8234/` directly returns 404 because Vite has no index route at the dev-server root.
 - **Worktrees share Docker containers but compete for ports.** All worktrees on the same machine resolve to the same `posthog-clickhouse-1` / `posthog-db-1` containers, so DB state is global. But ports 8000/8010/8234 can only be held by one worktree at a time — kill the granian/vite/phrocs of the other worktree before `hogli up -d` here.
-- **CSP warnings and 401s in the browser console are normal pre-auth.** The preflight/login page tries to fetch `/api/projects/@current`, `/api/users/@me/`, and PostHog.js remote config — all 401 until you sign up. WASM/CSP "Report Only" warnings come from the dev CSP.
+- **CSP warnings and 401s in the browser console are normal pre-auth.** The preflight/login page tries to fetch `/api/projects/@current`, `/api/users/@me/`, and Flind.js remote config — all 401 until you sign up. WASM/CSP "Report Only" warnings come from the dev CSP.
 - **Direct `curl -X POST /api/login/` returns 403 (CSRF).** Session login must run in-page via `browser_evaluate` so cookies and CSRF tokens flow. For non-browser API calls, use the `personal_api_key` from the `setup_test` response as `Authorization: Bearer <key>` — no CSRF on token auth.
 - **`.env.local` may use 1Password refs.** Without `op` installed, refs become literal strings (e.g. `OPENAI_API_KEY=op://...`) and downstream services fail with cryptic auth errors. Install `op` or replace with literals.
 

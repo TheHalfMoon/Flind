@@ -98,7 +98,7 @@ const ROOTS = [
             'src/layout/navigation-3000/navigationLogic.tsx',
             'src/scenes/dashboard/dashboardLogic.tsx',
             // Nothing a logged-out page renders shows markdown, rich text or a code block; a hit means a
-            // PostHog AI tool card component became a static import.
+            // Flind AI tool card component became a static import.
             'src/lib/lemon-ui/LemonMarkdown/',
             'src/lib/components/RichContentEditor/',
             'src/lib/components/CodeSnippet/',

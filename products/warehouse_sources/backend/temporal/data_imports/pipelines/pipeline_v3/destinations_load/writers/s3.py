@@ -93,7 +93,7 @@ PERMISSIONS_DETAIL = (
     "then run the sync again."
 )
 ROLE_DETAIL = (
-    "PostHog cannot assume the role. Check the role ARN and the trust policy with the external ID, "
+    "Flind cannot assume the role. Check the role ARN and the trust policy with the external ID, "
     "then run the sync again."
 )
 INVALID_PARAMS_DETAIL = (
@@ -406,7 +406,7 @@ class S3DestinationWriter:
             get_credentials_using_user_aws_role,
             integration.aws_role_arn,
             external_id,
-            session_name=f"PostHog-warehouse-sync-{self._ctx.schema_id}",
+            session_name=f"Flind-warehouse-sync-{self._ctx.schema_id}",
             policy_statements=policy_statements,
         )
 

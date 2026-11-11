@@ -98,7 +98,7 @@ class TestMCPServerTemplateIconKeyNormalization(TestCase):
         [
             ("simple_lowercase", "notion", "notion"),
             ("titlecase", "Notion", "notion"),
-            ("multi_word", "PostHog MCP", "posthog_mcp"),
+            ("multi_word", "Flind MCP", "posthog_mcp"),
             ("multi_space", "Cisco   ThousandEyes", "cisco_thousandeyes"),
             ("leading_trailing_whitespace", "  Linear  ", "linear"),
             ("empty", "", ""),
@@ -416,7 +416,7 @@ class TestMCPGatewayServerAPI(APIBaseTest):
         template.save(update_fields=["oauth_credentials_source", "updated_at"])
         server = MCPGatewayServer.objects.for_team(self.team.id).create(
             team=self.team,
-            name="Slack via PostHog (dev)",
+            name="Slack via Flind (dev)",
             url=template.url,
             template=template,
             created_by=self.user,
@@ -2552,7 +2552,7 @@ class TestMCPServiceAccountAPI(APIBaseTest):
     def test_removed_slack_dev_project_serializes_agent_grant_unreachable(self) -> None:
         account = self._active_scout_account()
         template = MCPServerTemplate.objects.create(
-            name="Slack via PostHog (dev)",
+            name="Slack via Flind (dev)",
             url="https://mcp.slack.com/mcp",
             oauth_credentials_source="slack_dev_app",
             is_active=True,
@@ -2759,15 +2759,15 @@ class TestMCPServerInstallationAPI(ClickhouseTestMixin, APIBaseTest, QueryMatchi
     def test_list_installation_icon_fields_from_template(self):
         # Pass non-normalized icon values to confirm the model's save() normalizes them and
         # both flow through the serializer — icon_key must stay exposed alongside icon_domain
-        # until PostHog Desktop stops reading it.
+        # until Flind Desktop stops reading it.
         template = MCPServerTemplate.objects.create(
-            name="PostHog MCP",
+            name="Flind MCP",
             url="https://mcp.notion.example/mcp",
             description="d",
             auth_type="api_key",
             is_active=True,
             icon_domain="HTTPS://Notion.example/",
-            icon_key="PostHog MCP",
+            icon_key="Flind MCP",
         )
         MCPServerInstallation.objects.create(
             team=self.team,
@@ -3484,7 +3484,7 @@ class TestOAuthCallback(ClickhouseTestMixin, APIBaseTest, QueryMatchingTest):
     def test_callback_rejects_state_for_different_authenticated_user(self, _is_dev):
         """State created by user A cannot be consumed by user B in the same browser.
 
-        Covers the scenario where the victim IS logged into PostHog but as a
+        Covers the scenario where the victim IS logged into Flind but as a
         different account than the attacker who created the state row.
         """
         from posthog.models import User
@@ -4216,7 +4216,7 @@ class TestBuildAuthorizeUrlFromMetadata(SimpleTestCase):
         assert params["state"] == ["test-state"]
         assert params["code_challenge"] == ["test-challenge"]
         assert params["code_challenge_method"] == ["S256"]
-        # PostHog's PRM resource must win over the AS-baked issuer resource
+        # Flind's PRM resource must win over the AS-baked issuer resource
         assert params["resource"] == ["https://mcp.railway.com"]
 
     @parameterized.expand(

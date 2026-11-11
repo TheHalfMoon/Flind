@@ -340,7 +340,7 @@ class MprocsGenerator(ConfigGenerator):
         process_count = len(resolved.units)
         products = sorted(resolved.intents) if resolved.intents else ["(none)"]
 
-        # ANSI color codes matching PostHog brand
+        # ANSI color codes matching Flind brand
         orange = r"\033[38;2;245;78;0m"  # #F54E00
         blue = r"\033[38;2;29;74;255m"  # #1D4AFF
         gray = r"\033[38;5;245m"
@@ -366,7 +366,7 @@ class MprocsGenerator(ConfigGenerator):
 
         shell = f"""\
 echo ''
-printf '{orange}{bold}  PostHog Dev Environment{reset}\\n'
+printf '{orange}{bold}  Flind Dev Environment{reset}\\n'
 printf '{gray}  ─────────────────────────────────────{reset}\\n'
 echo ''
 _news=$(curl -sf --max-time 2 '{news_url}' 2>/dev/null || cat {news_local} 2>/dev/null || true)
@@ -515,7 +515,7 @@ printf '  {gray}Run {reset}{blue}hogli dev:setup{reset}{gray} to tailor this to 
     _SANDBOX_UNSANDBOXED_PREFIXES = ("bin/dev-open-when-ready",)
 
     # Procs excluded from the sandbox by default: they need the docker socket the
-    # profile denies (e.g. temporal-worker running PostHog Desktop tasks with
+    # profile denies (e.g. temporal-worker running Flind Desktop tasks with
     # SANDBOX_PROVIDER=docker). POSTHOG_DEV_SANDBOX_EXCLUDE adds more on top.
     _SANDBOX_DEFAULT_EXCLUDES = frozenset({"temporal-worker"})
 
@@ -533,7 +533,7 @@ printf '  {gray}Run {reset}{blue}hogli dev:setup{reset}{gray} to tailor this to 
 
         Some procs are excluded by default (``_SANDBOX_DEFAULT_EXCLUDES``) because
         they need the docker socket the profile denies, e.g. temporal-worker running
-        PostHog Desktop tasks with SANDBOX_PROVIDER=docker. POSTHOG_DEV_SANDBOX_EXCLUDE
+        Flind Desktop tasks with SANDBOX_PROVIDER=docker. POSTHOG_DEV_SANDBOX_EXCLUDE
         (comma-separated proc names) opts additional procs back out. Excluded procs
         run fully unsandboxed, so the dependency-isolation guarantee no longer covers
         them.

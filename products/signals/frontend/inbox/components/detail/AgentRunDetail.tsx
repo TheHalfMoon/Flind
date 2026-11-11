@@ -211,9 +211,9 @@ function TaskLogBody({
 }
 
 /**
- * "Open task": continues the selected task in a new PostHog AI chat bound to it — the chat's first
+ * "Open task": continues the selected task in a new Flind AI chat bound to it — the chat's first
  * message creates a conversation linked to this task and resumes its run interactively. A plain click
- * opens PostHog AI in the side panel (staying in the inbox); cmd/ctrl/middle-click follows the href to
+ * opens Flind AI in the side panel (staying in the inbox); cmd/ctrl/middle-click follows the href to
  * open a new tab, carrying the bind via the `bind_task` URL param. Gated to a terminal run — the live
  * Task log already covers an in-progress run, and taking over a running automation run is out of scope.
  */
@@ -245,7 +245,7 @@ export function OpenTaskButton({
                 openSidePanelMaxWithTaskBind(taskId)
             }}
             disabledReason={isTerminal ? undefined : 'Available once the run finishes'}
-            tooltip="Continue this task in a new PostHog AI chat"
+            tooltip="Continue this task in a new Flind AI chat"
         >
             Open task
         </LemonButton>
@@ -256,7 +256,7 @@ export function OpenTaskButton({
  * Inline "Task log": the selected linked task's agent transcript, rendered with the shared
  * `ReadonlyRunSurface` — live for an in-progress run, static replay once terminal. A `LemonSelect`
  * switches between linked tasks (research / implementation) when there's more than one; "Open task"
- * continues the task in a new PostHog AI chat. Mirrors desktop `AgentRunDetail`'s Task-log section.
+ * continues the task in a new Flind AI chat. Mirrors desktop `AgentRunDetail`'s Task-log section.
  */
 function TaskLogSection({ report }: { report: SignalReport }): JSX.Element {
     const { reportTasks, reportTasksLoading, selectedTask } = useValues(

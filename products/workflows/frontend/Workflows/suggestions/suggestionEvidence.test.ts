@@ -47,7 +47,7 @@ describe('suggestionEvidence', () => {
         ['a number a whole point off', { unit: 'rate', current_value: 0.09, n: 132 }, true],
         ['a different denominator', { unit: 'rate', current_value: 0.076, n: 500 }, true],
         ['a count, which is not compared', { unit: 'count', current_value: 10, n: 132 }, false],
-    ])('flags %s against what PostHog measured', (_name, evidence, expected) => {
+    ])('flags %s against what Flind measured', (_name, evidence, expected) => {
         expect(evidenceDisagrees(evidence, measured)).toBe(expected)
     })
 })

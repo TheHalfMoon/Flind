@@ -107,7 +107,7 @@ beforeEach(() => {
 });
 
 describe("SetupRunService enricher", () => {
-  it("adds the sdk-health suggestion + stale flags when PostHog is initialized", async () => {
+  it("adds the sdk-health suggestion + stale flags when Flind is initialized", async () => {
     const port = makePort({
       detectPosthogInstallState: vi.fn(async () => "initialized" as const),
       findStaleFlagSuggestions: vi.fn(async () => [
@@ -129,7 +129,7 @@ describe("SetupRunService enricher", () => {
     expect(store.getEnricherStatus(REPO)).toBe("done");
   });
 
-  it("adds the posthog-setup suggestion when PostHog is not installed", async () => {
+  it("adds the posthog-setup suggestion when Flind is not installed", async () => {
     const port = makePort({
       detectPosthogInstallState: vi.fn(async () => "not_installed" as const),
     });

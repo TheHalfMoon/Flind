@@ -51,7 +51,7 @@ export function MaxChangelogSettings(): JSX.Element {
                 </div>
                 <p className="text-muted text-sm mt-3">
                     See the{' '}
-                    <Link to="https://posthog.com/changelog?team=PostHog+AI" target="_blank">
+                    <Link to="https://posthog.com/changelog?team=Flind+AI" target="_blank">
                         complete changelog
                     </Link>{' '}
                     for all Flind AI updates.

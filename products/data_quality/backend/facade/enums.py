@@ -78,7 +78,7 @@ class SubjectType(LabeledStrEnum):
     """Kind of catalog object a check targets.
 
     On the check itself the subject is a foreign key (``saved_query``, ``table``, or ``metric``), or
-    the name of a PostHog table; run history denormalizes it as loose
+    the name of a Flind table; run history denormalizes it as loose
     ``(subject_type, subject_uuid, name)`` tuples so it outlives hard deletes.
     """
 

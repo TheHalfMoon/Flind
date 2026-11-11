@@ -61,7 +61,7 @@ describe("FolderPicker", () => {
 
   it("shows feedback synchronously while the dialog is open, then commits the path", async () => {
     // The synchronous "Opening..." state both reassures the user and gives
-    // PostHog a DOM mutation, so the open native dialog stops being logged as a
+    // Flind a DOM mutation, so the open native dialog stops being logged as a
     // dead click.
     const user = userEvent.setup();
     const pending = deferred<string | null>();

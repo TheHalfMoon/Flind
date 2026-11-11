@@ -60,7 +60,7 @@ What shadow mode suppresses, and why:
 | Metric-rule OTLP push | Reported as sent, nothing is sent | It would create customer metrics twice. The emitter stays present, because its presence decides whether a buffer is decoded, and so the DLQ routing. |
 | Hog transformations and their function logs | Not run (not ported) | They write to `log_entries`. |
 | Rate-limit and sampling buckets | Kept under `@posthog-logs-rust-shadow/` in Node's logs or traces Redis | Spending Node's tokens would drop Node's traffic. The shadow sees the same traffic, so its buckets drain at the same rate. |
-| Quota limits | Read from the production PostHog Redis (`POSTHOG_REDIS_*`), as Node does | This is a deliberate read of production state. It is `ZRANGEBYSCORE` only, so it writes nothing, and the shadow needs the same quota decisions as Node for parity. |
+| Quota limits | Read from the production Flind Redis (`POSTHOG_REDIS_*`), as Node does | This is a deliberate read of production state. It is `ZRANGEBYSCORE` only, so it writes nothing, and the shadow needs the same quota decisions as Node for parity. |
 
 The shadow `logs` output carries `source_offset` next to Node's `source_topic` and `source_partition`, so each output names its input message exactly. Primary mode never writes it. The DLQ already carries all three in both implementations.
 

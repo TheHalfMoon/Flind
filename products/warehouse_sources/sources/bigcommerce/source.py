@@ -182,7 +182,7 @@ class BigCommerceSource(ResumableSource[BigCommerceSourceConfig, BigCommerceResu
             label="BigCommerce",
             caption=(
                 "Enter your BigCommerce store hash and API access token to pull your store data into "
-                "the PostHog Data warehouse. Create an API account under **Settings → API → "
+                "the Flind Data warehouse. Create an API account under **Settings → API → "
                 "Store-level API accounts** with `read-only` scope for **Products**, **Orders** and "
                 "**Customers**. To sync channels and order transactions, also grant `read-only` scope for "
                 "**Channel Settings** and **Order Transactions**."

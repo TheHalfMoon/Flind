@@ -1495,7 +1495,7 @@ class TestResolver(BaseTest):
             name="created_at",
             array=None,
             nullable=False,
-            description="When the person was first seen by PostHog.",
+            description="When the person was first seen by Flind.",
         )
 
     def test_visit_hogqlx_tag(self):

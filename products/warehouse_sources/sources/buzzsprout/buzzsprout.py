@@ -23,7 +23,7 @@ from products.warehouse_sources.sources.sdk import (
 BUZZSPROUT_BASE_URL = "https://www.buzzsprout.com/api"
 
 # Buzzsprout blocks requests sent with a default/bot User-Agent, so we identify ourselves explicitly.
-USER_AGENT = "PostHog Data Warehouse (https://posthog.com)"
+USER_AGENT = "Flind Data Warehouse (https://posthog.com)"
 
 # Buzzsprout allows 60 requests a minute per token. The downloads table makes one request per day of
 # history and outruns that window, so the extra attempts let the backoff wait the window out.

@@ -31,11 +31,11 @@ describe('workflowSwitcherLogic', () => {
         ApiConfig.setCurrentProjectId(1)
         jest.clearAllMocks()
         mockWorkflowHealth.mockResolvedValue([
-            healthItem('PostHog', 'posthog', 'Frontend CI'),
-            healthItem('PostHog', 'posthog', 'Backend CI'),
-            healthItem('PostHog', 'posthog.com', 'Deploy'),
+            healthItem('Flind', 'posthog', 'Frontend CI'),
+            healthItem('Flind', 'posthog', 'Backend CI'),
+            healthItem('Flind', 'posthog.com', 'Deploy'),
         ])
-        logic = workflowSwitcherLogic({ repoOwner: 'PostHog', repoName: 'posthog', sourceId: null })
+        logic = workflowSwitcherLogic({ repoOwner: 'Flind', repoName: 'posthog', sourceId: null })
         logic.mount()
     })
 

@@ -107,18 +107,18 @@ The MCP server instructs the agent to read data through a unified HogQL interfac
 (list and get tools are generally excluded),
 which unlocks flexibility in data retrieval, search, and manipulation.
 Additionally, the consumer has access to a skill that provides schema references and example patterns,
-giving it richer context about PostHog's data model.
+giving it richer context about Flind's data model.
 
 Here, "SQL-first" describes entity retrieval, not a preference for every analytics task.
 Choose typed queries or SQL from the required calculation and output, as described in [query selection guidance](./writing-skills.md#query-selection-guidance).
 
-Primarily oriented toward coding agents (PostHog Desktop, PostHog AI, Claude Code).
+Primarily oriented toward coding agents (Flind Desktop, Flind AI, Claude Code).
 
 ### Knowledge source checks
 
 When the MCP server advertises documentation search, its agent instructions pick a search by the topic of the request.
 A question about the user's own company, product, internal terms, or policies goes to Business Knowledge.
-A question about PostHog features, SDKs, or setup goes to PostHog documentation.
+A question about Flind features, SDKs, or setup goes to Flind documentation.
 A request to query or build something from project data runs neither search, unless it names a company term that no event or property explains.
 The Business Knowledge lines appear only for content the project holds: document search when it has sources, and repository search when it has selected GitHub repositories.
 A project with neither gets no Business Knowledge guidance.
@@ -220,7 +220,7 @@ elicitation support and enforces its surface and task exclusions independently o
 Use the flag for rollout and any additional audience filters. Alternative condition groups are OR
 conditions.
 
-Only requests classified as `mcp` can recruit. Other surfaces, including PostHog AI and recognized
+Only requests classified as `mcp` can recruit. Other surfaces, including Flind AI and recognized
 self-driving OAuth applications, always skip recruitment. Task-bound requests and credentials with
 `internal_run:read` also skip recruitment even if their source is `mcp` and the flag is enabled.
 Client names and consumer headers are self-reported; they do not prove a human is present.
@@ -252,7 +252,7 @@ completion notification; see the [SDK protocol notes](https://ts.sdk.modelcontex
 Responses are JSON records in the MCP server's shared Redis, under
 `mcp:interview:{<identity hash>}:response`. The identity hash is the SHA-256 hex digest of
 `JSON.stringify([publicPostHogBaseUrl, distinctId])`; it scopes the preference to the authenticated
-user and PostHog instance, across tokens, sessions, and projects. Submitted records contain
+user and Flind instance, across tokens, sessions, and projects. Submitted records contain
 `distinct_id`, `campaign_id`, `response`, and `responded_at`. Suppression is shared across campaigns. Use `SCAN MATCH 'mcp:interview:*:response'` and `GET`
 to inspect responses. This implementation records the invitation response; it does not send an email or track completed bookings.
 
@@ -264,7 +264,7 @@ Redis failures skip new invitations. On `2026-07-28`, a response write must succ
 original tool runs; the client can retry the continuation if that write fails. Earlier protocols
 already completed the tool, so an invitation reply only updates suppression and never reruns it.
 
-Recruitment analytics use the existing PostHog SDK and the MCP server's analytics project:
+Recruitment analytics use the existing Flind SDK and the MCP server's analytics project:
 
 | Event                                | Meaning                                                                                                               |
 | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
@@ -319,7 +319,7 @@ and are bound to the original token, tool arguments, organization, and project. 
 rejects the continuation before the tool runs. Consumed continuations retain a ten-minute marker
 and cannot run again. Expired or consumed errors require checking the original tool's outcome
 before retrying, because a write may already have succeeded. Replies on earlier protocols expire
-after ten minutes and are bound to the authenticated user, PostHog instance, invitation, and original
+after ten minutes and are bound to the authenticated user, Flind instance, invitation, and original
 token. They remain valid after project changes or flag changes because they cannot execute a tool.
 Duplicate, expired, and mismatched replies do not update suppression or emit response events.
 
@@ -347,7 +347,7 @@ The server's tool instructions resolve an ambiguous target project before skill 
 
 Claude web and desktop silently drop a tool when its serialized `inputSchema` reaches 16,384 characters, so the final `exec` input schema has a test budget below that limit.
 Keep only guidance needed on nearly every call inline, including the compact tool-domain index.
-Everything else belongs in the `learn` catalog: Claude web and desktop guides, and, behind the `mcp-exec-skills` flag, PostHog and project skills.
+Everything else belongs in the `learn` catalog: Claude web and desktop guides, and, behind the `mcp-exec-skills` flag, Flind and project skills.
 Skill names, descriptions, and bodies never go into the tool schema; agents discover them with `learn -s "<query>"` and read them with `learn <source>:<skill> [path]`.
 Project skill search applies the caller's per-skill read permissions before ranking and limiting results; restricted skills contribute no metadata or excerpts.
 The search endpoint uses dedicated burst and sustained budgets at the standard API rates (480 requests/minute and 4,800/hour). Personal API keys have separate budgets; OAuth and browser sessions share a budget per user. Exceeding either budget returns HTTP 429 with `Retry-After`, before the search runs.
@@ -401,10 +401,10 @@ A candidate alert expression is `time() - mcp_skill_archive_last_validated_times
 ## SQL-first MCP: HogQL system tables
 
 Most list/get endpoints exposed as MCP tools should have a corresponding HogQL system table.
-This lets agents query PostHog data via SQL in addition to (or instead of) the REST API tools.
+This lets agents query Flind data via SQL in addition to (or instead of) the REST API tools.
 
 Exceptions are OK when the tool intentionally proxies service-owned data,
-aggregates data that is not represented as a team-scoped PostHog table,
+aggregates data that is not represented as a team-scoped Flind table,
 or returns a curated API shape that would be awkward or unsafe to rebuild in SQL.
 For these tools, keep the surface narrow and document the source and shape in the YAML description.
 
@@ -723,7 +723,7 @@ Product teams own their definitions and control which operations are exposed as 
    `src/tools/featureFlags/updateFeatureFlagHooks.ts` is the reference.
    Do not shadow a generated tool with a hand-written tool of the same name.
 
-   The Logs tools use `logs/redactCredentialsHooks` to mask credentials in response strings and structured fields. This covers credential parameters, JSON and header values, URL passwords, bearer tokens, private PostHog and GitHub tokens, credential command-line flags such as `--password VALUE` and `-u user:pass`, and private key blocks inside one string. Nested URL encoding and JSON escaping do not bypass masking. The hook preserves unrelated text, except that strings with more than eight encoding layers are masked in full to bound parsing work. It does not change stored logs or responses outside MCP.
+   The Logs tools use `logs/redactCredentialsHooks` to mask credentials in response strings and structured fields. This covers credential parameters, JSON and header values, URL passwords, bearer tokens, private Flind and GitHub tokens, credential command-line flags such as `--password VALUE` and `-u user:pass`, and private key blocks inside one string. Nested URL encoding and JSON escaping do not bypass masking. The hook preserves unrelated text, except that strings with more than eight encoding layers are masked in full to bound parsing work. It does not change stored logs or responses outside MCP.
 
    The Engineering analytics CI failure-log tools and the broken-tests tool use `engineeringAnalytics/redactFailureLogsHooks`. It applies the same masking, but with a narrower list of credential names: CI output uses names such as `key`, `code` and `input_tokens` for diagnostics. It also masks the lines of a private key that spans several log lines in one job, including body lines next to an omitted gap, and keeps each line's original line number.
 
@@ -793,7 +793,7 @@ The limit includes the echoed query, warnings, and serialization of the MCP text
 Summary previews use a 600-character budget per value.
 These character budgets reduce response size but do not guarantee a token count; client limits and tokenization vary, so clients may still truncate responses or save them to a file.
 Both modes can omit events, and large echoed filters or warnings can also be shortened.
-Omission markers direct the agent to narrow the query or open the complete trace in PostHog.
+Omission markers direct the agent to narrow the query or open the complete trace in Flind.
 
 See [How to develop and test](/handbook/engineering/ai/implementation#how-to-develop-and-test)
 for instructions on running the MCP server locally and verifying tools end-to-end.

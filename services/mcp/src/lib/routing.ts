@@ -48,7 +48,7 @@ function parseHost(protocol: string, host: string): URL | null {
 // See: https://github.com/anthropics/claude-code/issues/2267
 //
 // By using a region-pinned subdomain, we can route the OAuth fallback to the
-// correct PostHog authorization server.
+// correct Flind authorization server.
 export function getRegionFromHostname(request: Request): CloudRegion | undefined {
     const hostname = getPublicUrl(request).hostname.toLowerCase()
     if (hostname === 'mcp-eu.posthog.com' || hostname === 'mcp.eu.posthog.com') {
@@ -75,14 +75,14 @@ export function getRegionFromRequest(request: Request): CloudRegion | null {
 // Authorization server redirect routes.
 // MCP clients sometimes hit OAuth endpoints directly on this server instead of following
 // the authorization server URLs from the protected resource metadata. Each entry defines
-// a path pattern that should be redirected to the PostHog authorization server.
+// a path pattern that should be redirected to the Flind authorization server.
 
 type RedirectStatus = 301 | 302 | 307
 type AuthRedirect = {
     status: RedirectStatus
     // Optional path rewrite: if set, replaces the matched path in the redirect URL.
     // Used when the MCP spec fallback paths (e.g. /register) differ from the
-    // PostHog backend paths (e.g. /oauth/register).
+    // Flind backend paths (e.g. /oauth/register).
     rewriteTo?: string
 } & ({ match: string } | { prefix: string })
 
@@ -95,7 +95,7 @@ const AUTH_SERVER_REDIRECTS: AuthRedirect[] = [
     // OAuth endpoints (authorize, token, register, revoke, introspect, userinfo)
     { prefix: '/oauth/', status: 301 },
     // MCP 3/26 spec fallback endpoints - clients hit these directly when the authorization
-    // server metadata is not available. PostHog serves these under /oauth/ so we rewrite.
+    // server metadata is not available. Flind serves these under /oauth/ so we rewrite.
     // /register and /token use 307 to preserve POST method and body across the redirect.
     // /authorize uses 302 as it's a GET request.
     { match: '/register', status: 307, rewriteTo: '/oauth/register' },

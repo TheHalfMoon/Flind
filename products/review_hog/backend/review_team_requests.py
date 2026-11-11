@@ -1,12 +1,12 @@
 """Reviews asked for by requesting the `posthog-review` team as a reviewer on a pull request.
 
 GitHub cannot list a GitHub App as a requested reviewer, so a team with no members stands in for
-PostHog Review. `pull_request_events.py` queues the request, and the task runs it here:
+Flind Review. `pull_request_events.py` queues the request, and the task runs it here:
 
 1. The review runs in the project that owns the repository (`ownership.py`).
 2. GitHub says the requester's account, matched by its numeric id, can write to the repository.
-3. `posthog.github.requesters` finds the requester's PostHog account in that project, under the
-   same rules as an `@posthog review` comment, and the account needs editor access to PostHog Review.
+3. `posthog.github.requesters` finds the requester's Flind account in that project, under the
+   same rules as an `@posthog review` comment, and the account needs editor access to Flind Review.
 4. The review is Standard, or Deep once the pull request has a published Deep review, and runs as
    the requester.
 
@@ -73,21 +73,21 @@ REVIEW_TEAM_REQUEST_TOTAL = Counter(
 )
 
 UNLINKED_MESSAGE = (
-    "Your GitHub account isn't linked to a PostHog account, so PostHog Review can't tell who to run this "
-    "review as. Connect GitHub in your PostHog personal settings, then request the review again."
+    "Your GitHub account isn't linked to a Flind account, so Flind Review can't tell who to run this "
+    "review as. Connect GitHub in your Flind personal settings, then request the review again."
 )
-ACCOUNT_REFUSED_MESSAGE = "PostHog Review can't run reviews for your PostHog account."
+ACCOUNT_REFUSED_MESSAGE = "Flind Review can't run reviews for your Flind account."
 NO_PROJECT_MESSAGE = (
-    "You aren't a member of the PostHog project that reviews this repository. "
+    "You aren't a member of the Flind project that reviews this repository. "
     "Ask a project admin to add you, then request the review again."
 )
 ACCESS_DENIED_MESSAGE = (
-    "You need editor access to PostHog Review in the project that reviews this repository. "
+    "You need editor access to Flind Review in the project that reviews this repository. "
     "Ask a project admin for access, then request the review again."
 )
-NO_WRITE_ACCESS_MESSAGE = "You need write access to this repository to request a PostHog Review."
-ALREADY_REVIEWED_MESSAGE = "PostHog Review already reviewed the current commit."
-FAILED_MESSAGE = "PostHog Review couldn't start this review. Request the review again in a few minutes."
+NO_WRITE_ACCESS_MESSAGE = "You need write access to this repository to request a Flind Review."
+ALREADY_REVIEWED_MESSAGE = "Flind Review already reviewed the current commit."
+FAILED_MESSAGE = "Flind Review couldn't start this review. Request the review again in a few minutes."
 
 
 def _observe(outcome: ReviewTeamRequestOutcome) -> None:
@@ -175,7 +175,7 @@ class ReviewTeamRequest:
             return "already_reviewed"
         if outcome.started:
             return "started"
-        self._reply(github, outcome.error or "PostHog Review can't review this pull request.")
+        self._reply(github, outcome.error or "Flind Review can't review this pull request.")
         return "refused"
 
     def _reply(self, github: GitHubIntegration, message: str) -> None:

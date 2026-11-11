@@ -1,6 +1,6 @@
 # Importing historical logs from Loki
 
-`posthog-cli exp logs import loki` reads a time range out of Grafana Loki and sends it to PostHog
+`posthog-cli exp logs import loki` reads a time range out of Grafana Loki and sends it to Flind
 as OTLP.
 
 Loki guarantees only three things per entry: a nanosecond timestamp, a log line, and a set of
@@ -20,7 +20,7 @@ posthog-cli exp logs import loki --config loki-import.yaml --checkpoint /data/im
 ```
 
 Self-hosted Loki behind a bearer token uses `LOKI_BEARER_TOKEN` instead of the username and
-password. The PostHog host comes from `--host`, or from `posthog-cli login`, so an EU project needs
+password. The Flind host comes from `--host`, or from `posthog-cli login`, so an EU project needs
 no extra setting.
 
 `POSTHOG_PROJECT_API_KEY` is the project write key, not a personal API token. The intake rejects a
@@ -31,8 +31,8 @@ Log in to the same project that `POSTHOG_PROJECT_API_KEY` belongs to. The retent
 reads the logged-in project, so the import stops before sending anything when the two projects
 differ.
 
-PostHog keeps backdated logs only for teams with historical imports turned on. For any other team,
-intake drops them after answering 200, so contact PostHog support before the first import.
+Flind keeps backdated logs only for teams with historical imports turned on. For any other team,
+intake drops them after answering 200, so contact Flind support before the first import.
 
 Always run `--dry-run` first. It sizes the job and reports how many sampled records each extraction
 rule actually matched. A rule that matches nothing reports `NOT FOUND`, which is the only warning
@@ -51,7 +51,7 @@ install the certificate into the image, or mount it and set `SSL_CERT_FILE` to t
 
 Setting either variable replaces the machine's trust store instead of adding to it. The public
 authorities are compiled into the CLI and stay trusted either way, so pointing `SSL_CERT_FILE` at
-a single internal root does not break the connection to PostHog.
+a single internal root does not break the connection to Flind.
 
 A certificate the CLI cannot verify stops the run on its first request, with
 `invalid peer certificate: UnknownIssuer`. Add the root certificate through one of the routes
@@ -121,7 +121,7 @@ Widening `range.from` discards the checkpoint and re-imports everything, and say
 
 ## Retention
 
-PostHog keeps only the records that are still inside the project's retention. A record whose
+Flind keeps only the records that are still inside the project's retention. A record whose
 timestamp plus the retention is already in the past is dropped at intake, even though the request
 succeeds, so a range older than the retention adds nothing but transfer time.
 

@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import { parseOrThrow, type ParseFailure } from '@/core/schema'
 
-// An http or https origin, plus the path a self-hosted PostHog can sit under. It is normalized, so
+// An http or https origin, plus the path a self-hosted Flind can sit under. It is normalized, so
 // two ways to write one host compare equal.
 export const HostSchema = z
     .string({ error: 'The host must be a URL, like https://us.posthog.com.' })
@@ -45,7 +45,7 @@ export function parseHost(raw: unknown, failure?: Partial<ParseFailure>): Host {
 
 export const REGIONS = { us: parseHost('https://us.posthog.com'), eu: parseHost('https://eu.posthog.com') }
 
-// A posthog.json comes with the repository, so it only picks between the PostHog Cloud regions. Any
+// A posthog.json comes with the repository, so it only picks between the Flind Cloud regions. Any
 // other host needs --host or HOG_HOST, so a repository can't send a person's login or a CI job's
 // token elsewhere.
 export function cloudRegion(host: Host | undefined): Host | undefined {
@@ -60,7 +60,7 @@ export function hostKey(host: Host): HostKey {
     return new URL(host).origin as HostKey
 }
 
-// Keeps the path a self-hosted PostHog can sit under, such as https://example.com/posthog.
+// Keeps the path a self-hosted Flind can sit under, such as https://example.com/posthog.
 export function hostUrl(host: Host, path: string): URL {
     return new URL(path, `${host}/`)
 }

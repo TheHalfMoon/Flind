@@ -1217,7 +1217,7 @@ class _DeniedPrefixS3(_ModelStoreS3):
     [
         (True, False, DISTINCT_ID, "US"),
         (False, True, LOCAL_DISTINCT_ID, "local"),  # a laptop run lands on the dashboard, marked
-        (False, False, None, None),  # a self-hosted instance never reports into PostHog's project
+        (False, False, None, None),  # a self-hosted instance never reports into Flind's project
     ],
 )
 def test_training_events_capture_gate_and_local_marking(

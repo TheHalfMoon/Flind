@@ -223,7 +223,7 @@ export const mcpFirstLookLogic = kea<mcpFirstLookLogicType>([
             posthog.captureRaw('mcp analytics first look ask ai clicked', values.eventProperties)
             // Prefill, don't auto-submit: the prompt embeds tool names from `$mcp_tool_call`
             // events, which anyone with the project token can set — auto-running it would let a
-            // seeded tool name reach PostHog AI as an instruction. The user reviews, then sends.
+            // seeded tool name reach Flind AI as an instruction. The user reviews, then sends.
             sidePanelStateLogic.findMounted()?.actions.openSidePanel(SidePanelTab.Max, values.maxPrompt)
         },
         dismissAndAskMax: () => {

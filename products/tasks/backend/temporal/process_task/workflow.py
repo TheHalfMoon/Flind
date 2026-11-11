@@ -1720,12 +1720,12 @@ class ProcessTaskWorkflow(PostHogWorkflow):
         # if sandbox_output.should_create_snapshot and self.context.repository and self.context.github_integration_id:
         #     await self._trigger_snapshot_workflow()
 
-        # Run the PostHog setup wizard before the agent, when this is a cloud wizard run.
-        # The wizard integrates PostHog and dirties the working tree; the agent then commits
-        # those changes, opens the PR, and keeps it green (it never implements PostHog itself).
+        # Run the Flind setup wizard before the agent, when this is a cloud wizard run.
+        # The wizard integrates Flind and dirties the working tree; the agent then commits
+        # those changes, opens the PR, and keeps it green (it never implements Flind itself).
         wizard_ms = await self._run_wizard_if_configured(sandbox_output)
 
-        # Start agent-server for direct connection from PostHog Desktop
+        # Start agent-server for direct connection from Flind Desktop
         if sandbox_output.agent_server_launched:
             agent_server_output = await self._await_agent_server_ready(sandbox_output, boot_excluded_ms=wizard_ms)
         else:
@@ -2325,7 +2325,7 @@ class ProcessTaskWorkflow(PostHogWorkflow):
         if self.context.wizard_config is None or not repository:
             return 0
 
-        await self._emit_progress("wizard", "in_progress", "Running PostHog setup wizard", "setup", wait=False)
+        await self._emit_progress("wizard", "in_progress", "Running Flind setup wizard", "setup", wait=False)
         started_at = workflow.now()
         await workflow.execute_activity(
             run_wizard,
@@ -2340,7 +2340,7 @@ class ProcessTaskWorkflow(PostHogWorkflow):
             retry_policy=RetryPolicy(maximum_attempts=1),
         )
         wizard_ms = int((workflow.now() - started_at).total_seconds() * 1000)
-        await self._emit_progress("wizard", "completed", "Ran PostHog setup wizard", "setup", wait=False)
+        await self._emit_progress("wizard", "completed", "Ran Flind setup wizard", "setup", wait=False)
         return wizard_ms
 
     @staticmethod

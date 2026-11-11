@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 def _build_category_to_topic_map(team_id: int) -> dict[str, str]:
-    """Map PostHog category UUID -> Customer.io topic key for customerio_* categories only.
+    """Map Flind category UUID -> Customer.io topic key for customerio_* categories only.
 
     Restricted to marketing categories: transactional sends bypass opt-outs on our side, so a
     stored preference on a transactional category must not be pushed to Customer.io, where it

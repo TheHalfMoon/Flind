@@ -13,7 +13,7 @@ const MAX_TARGETING_VALUE_LENGTH = 4096
 const MAX_DESCRIPTION_LENGTH = 400
 
 /**
- * Describes a saved flag to PostHog AI: a keyed reference that renders as the composer chip, plus a
+ * Describes a saved flag to Flind AI: a keyed reference that renders as the composer chip, plus a
  * separate keyless item carrying the targeting as JSON.
  *
  * These have to stay two items. `formatItem` in posthogContextBlock renders a keyed item as its
@@ -71,7 +71,7 @@ function targetingValue(featureFlag: FeatureFlagType): string {
     })
 }
 
-/** Skill the "Review cleanup with AI" action asks PostHog AI to load; bundled into the agent sandbox image. */
+/** Skill the "Review cleanup with AI" action asks Flind AI to load; bundled into the agent sandbox image. */
 export const FEATURE_FLAG_CLEANUP_SKILL = 'cleaning-up-stale-feature-flags'
 
 export const FEATURE_FLAG_CLEANUP_ASSESSMENT_PROMPT = 'Assess this feature flag for cleanup.'

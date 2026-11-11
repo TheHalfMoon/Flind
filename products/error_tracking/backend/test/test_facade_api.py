@@ -495,7 +495,7 @@ class TestErrorTrackingFacadeAPI(BaseTest):
         )
 
         assert mock_create_issue.call_args.args[0]["body"] == expected_body.format(
-            url=url, link=f"**PostHog issue:** {url}"
+            url=url, link=f"**Flind issue:** {url}"
         )
 
     def test_search_external_issues_requires_repository_for_github(self):

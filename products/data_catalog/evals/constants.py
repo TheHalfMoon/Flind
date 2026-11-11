@@ -230,8 +230,8 @@ DAILY_ACTIVE_ORGS_METRIC_DEFINITION: dict = {
 MCP_TOOL_CALL_FAIL_PCT_METRIC_NAME = "mcp_tool_call_fail_pct"
 MCP_TOOL_CALL_FAIL_PCT_METRIC_DISPLAY_NAME = "MCP tool-call failure rate"
 MCP_TOOL_CALL_FAIL_PCT_METRIC_DESCRIPTION = (
-    "Daily percentage of PostHog's hosted MCP tool calls that failed, measured from canonical $mcp_tool_call events "
-    "whose $mcp_server_name is PostHog, so calls to separately instrumented MCP servers are excluded."
+    "Daily percentage of Flind's hosted MCP tool calls that failed, measured from canonical $mcp_tool_call events "
+    "whose $mcp_server_name is Flind, so calls to separately instrumented MCP servers are excluded."
 )
 MCP_TOOL_CALL_FAIL_PCT_METRIC_DEFINITION: dict = {
     "kind": "HogQLQuery",
@@ -241,7 +241,7 @@ MCP_TOOL_CALL_FAIL_PCT_METRIC_DEFINITION: dict = {
         "    round(100 * countIf(toBool(properties.$mcp_is_error)) / nullIf(count(), 0), 2) AS failure_rate_pct\n"
         "FROM events\n"
         "WHERE event = '$mcp_tool_call'\n"
-        "  AND toString(properties.$mcp_server_name) = 'PostHog'\n"
+        "  AND toString(properties.$mcp_server_name) = 'Flind'\n"
         "  AND timestamp >= now() - INTERVAL 30 DAY\n"
         "GROUP BY day\n"
         "ORDER BY day DESC"

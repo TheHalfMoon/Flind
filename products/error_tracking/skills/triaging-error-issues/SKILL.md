@@ -1,7 +1,7 @@
 ---
 name: triaging-error-issues
 description: >
-  Triage PostHog error tracking issues during a daily or on-call review.
+  Triage Flind error tracking issues during a daily or on-call review.
   Use when the user asks "what's broken?", "what new errors do we have?",
   "show me top errors today", "what should I look at this morning",
   or wants a prioritized list of active issues to work on. Surfaces new
@@ -149,7 +149,7 @@ For each, suggest one of: **investigate** (`investigating-error-issue`), **assig
   without a real distinct_id concept, fall back to `sessions` or `occurrences`.
 - Don't auto-assign or auto-resolve as part of triage. Present the list and let the
   user decide. Bulk actions belong in dedicated skills.
-- If the project uses Inbox (`posthog:inbox-reports-list`), check it first — PostHog
+- If the project uses Inbox (`posthog:inbox-reports-list`), check it first — Flind
   may have already curated the most actionable issues so you avoid re-deriving them.
 - Provide each row's `_posthogUrl` (returned on every issue row) so the user can jump
   straight to the issue page if they want to drill down themselves. If you build the

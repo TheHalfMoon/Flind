@@ -17,7 +17,7 @@ function getSurveysFlutterSteps(ctx: OnboardingComponentsContext): StepDefinitio
                 <>
                     <Markdown>
                         For surveys to be shown, you need to add the PosthogObserver to your app. The observer allows
-                        PostHog to determine the appropriate context for displaying surveys.
+                        Flind to determine the appropriate context for displaying surveys.
                     </Markdown>
                     <CodeBlock
                         blocks={[

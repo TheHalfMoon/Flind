@@ -62,14 +62,14 @@ export function createPosthogMcpPolicyExtension(
       if (policy.approvalState === "do_not_use") {
         return {
           block: true,
-          reason: `The ${policy.serverName} tool ${policy.toolName} is disabled in PostHog MCP settings.`,
+          reason: `The ${policy.serverName} tool ${policy.toolName} is disabled in Flind MCP settings.`,
         };
       }
 
       if (!options.requestMcpToolPermission) {
         return {
           block: true,
-          reason: `The ${policy.serverName} tool ${policy.toolName} requires approval in PostHog MCP settings.`,
+          reason: `The ${policy.serverName} tool ${policy.toolName} requires approval in Flind MCP settings.`,
         };
       }
 

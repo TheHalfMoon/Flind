@@ -15,7 +15,7 @@ export const getPHPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             <>
                 <Markdown>
                     {dedent`
-                        Enable PHP error tracking when initializing PostHog to capture exceptions, PHP errors, and fatal shutdown errors.
+                        Enable PHP error tracking when initializing Flind to capture exceptions, PHP errors, and fatal shutdown errors.
                     `}
                 </Markdown>
                 <CodeBlock
@@ -24,7 +24,7 @@ export const getPHPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                             language: 'php',
                             file: 'PHP',
                             code: dedent`
-                                PostHog\\PostHog::init('<ph_project_token>', [
+                                Flind\\Flind::init('<ph_project_token>', [
                                     'host' => '<ph_client_api_host>',
                                     'error_tracking' => [
                                         'enabled' => true,
@@ -69,7 +69,7 @@ export const getPHPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                                 try {
                                     throw new Exception('Something went wrong');
                                 } catch (Exception $exception) {
-                                    PostHog\\PostHog::captureException($exception, 'user_distinct_id', [
+                                    Flind\\Flind::captureException($exception, 'user_distinct_id', [
                                         '$current_url' => 'https://example.com/checkout',
                                     ]);
                                 }
@@ -88,9 +88,9 @@ export const getPHPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
         content: (
             <Markdown>
                 {dedent`
-                    Confirm exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Confirm exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),

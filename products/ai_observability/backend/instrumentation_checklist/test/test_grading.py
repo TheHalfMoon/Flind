@@ -36,7 +36,7 @@ USER_IDENTITY_WARNING = (
 )
 USER_IDENTITY_OK = "AI events are attributed to identified users."
 USER_IDENTITY_PENDING = (
-    "This check runs once there are 20 generations from a PostHog SDK. Generations sent over OpenTelemetry are not "
+    "This check runs once there are 20 generations from a Flind SDK. Generations sent over OpenTelemetry are not "
     "counted, because we cannot tell whether they are identified."
 )
 TRACE_STRUCTURE_WARNING = (

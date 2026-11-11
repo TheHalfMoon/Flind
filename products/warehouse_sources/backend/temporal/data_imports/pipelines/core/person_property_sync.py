@@ -187,7 +187,7 @@ def _json_safe(value: Any) -> Any:
     """Coerce a warehouse column value into something ``json.dumps`` accepts. Timestamp/date/time
     columns arrive as datetime objects and numeric columns as Decimal — neither is JSON-serializable,
     so the Kafka produce (which serializes the intent with plain ``json.dumps``) would raise. Mirrors
-    ``bundle_hash``'s ``default=str`` posture: temporal types get an ISO-8601 string PostHog reads as a
+    ``bundle_hash``'s ``default=str`` posture: temporal types get an ISO-8601 string Flind reads as a
     DateTime property, decimals become floats, and anything else falls back to ``str``."""
     if value is None or isinstance(value, (str, bool, int, float)):
         return value

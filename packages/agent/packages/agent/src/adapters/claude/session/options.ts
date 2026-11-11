@@ -93,7 +93,7 @@ export type GatewayEnv = {
    * uses the separate `X-PostHog-Project-Id` header.
    */
   openaiCustomHeaders?: Record<string, string>;
-  /** PostHog project ID used to build the gateway project-scope header. */
+  /** Flind project ID used to build the gateway project-scope header. */
   posthogProjectId?: string;
   isAiGateway?: boolean;
 };
@@ -123,7 +123,7 @@ export interface BuildOptionsParams {
   contextWindow?: ContextWindowChoice;
   enrichmentDeps?: FileEnrichmentDeps;
   enrichedReadCache?: EnrichedReadCache;
-  /** Records PostHog product usage from MCP exec calls (deduped, session-wide). */
+  /** Records Flind product usage from MCP exec calls (deduped, session-wide). */
   onPostHogResourceUsed?: (subTool: string, commandText?: string) => void;
   /** Cloud task session — enables the signed-commit guard. */
   cloudMode?: boolean;
@@ -210,7 +210,7 @@ function buildEnvironment(
   contextWindow?: ContextWindowChoice,
 ): Record<string, string> {
   // SDK 0.3.142 made MCP servers connect in the background by default. That
-  // default is what we want: a slow or unreachable user MCP server (PostHog
+  // default is what we want: a slow or unreachable user MCP server (Flind
   // MCP, custom stdio servers) would otherwise stall turn 1 by up to ~5s per
   // server. We honor an explicit override from the caller's environment for
   // sessions that genuinely need MCP tools available on turn 1.
@@ -245,7 +245,7 @@ function buildEnvironment(
 
 /**
  * `CLAUDE_CODE_USE_BEDROCK` puts the CLI on the direct-Bedrock path: it
- * SigV4-signs its requests and calls bedrock-runtime directly, with no PostHog
+ * SigV4-signs its requests and calls bedrock-runtime directly, with no Flind
  * LLM gateway in the request path. Any set, non-falsy value enables it
  * (hogland's guest profile sets it to "1").
  */

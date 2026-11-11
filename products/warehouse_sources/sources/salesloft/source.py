@@ -58,7 +58,7 @@ class SalesLoftSource(ResumableSource[SalesLoftSourceConfig, SalesloftResumeConf
             category=DataWarehouseSourceCategory.SALES,
             label="Salesloft",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Salesloft API key to pull your Salesloft data into the PostHog Data warehouse.
+            caption="""Enter your Salesloft API key to pull your Salesloft data into the Flind Data warehouse.
 
 You can create an API key in your [Salesloft account](https://accounts.salesloft.com/oauth/applications) under **Settings → Integrations → API**. Paste the **API key** (a Bearer token) below.""",
             iconPath="/static/services/salesloft.png",

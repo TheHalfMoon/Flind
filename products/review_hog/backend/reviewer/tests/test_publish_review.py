@@ -30,9 +30,9 @@ _LOAD_FINDINGS = "products.review_hog.backend.reviewer.tools.publish_review.load
 _POST = "products.review_hog.backend.reviewer.tools.publish_review._post_github_review"
 _ADD_REACTION = "products.review_hog.backend.reviewer.tools.publish_review.add_pr_reaction"
 _REMOVE_REACTIONS = "products.review_hog.backend.reviewer.tools.publish_review.remove_own_pr_reactions"
-_CLEAN = "**PostHog Review · Standard · reviewed `sha`**: no findings."
+_CLEAN = "**Flind Review · Standard · reviewed `sha`**: no findings."
 _LARGE_NOTE = (
-    "**PostHog Review · Standard · reviewed `sha`**: no findings. This pull request is large, so the"
+    "**Flind Review · Standard · reviewed `sha`**: no findings. This pull request is large, so the"
     " review ran in 3 parts with less depth than usual."
 )
 
@@ -320,7 +320,7 @@ class TestPublishReviewGate:
 
     def _wire_report(self, mock_report_cls: MagicMock, published_head_sha: str | None = None) -> None:
         mock_report = MagicMock()
-        mock_report.report_markdown = "# PostHog Review"
+        mock_report.report_markdown = "# Flind Review"
         mock_report.published_head_sha = published_head_sha
         mock_report_cls.objects.for_team.return_value.get.return_value = mock_report
 
@@ -341,7 +341,7 @@ class TestPublishReviewGate:
                 None,
                 "",
                 "",
-                "**PostHog Review · Standard · reviewed `sha`**: 1 Should fix.\n\n",
+                "**Flind Review · Standard · reviewed `sha`**: 1 Should fix.\n\n",
                 False,
             ),
             ("standard_mixed", [1, 240], 1, "flash", None, "", "", None, False),
@@ -353,7 +353,7 @@ class TestPublishReviewGate:
                 3,
                 "",
                 "",
-                "**PostHog Review · Standard · reviewed `sha`**: 1 Should fix. This pull request is large, so the"
+                "**Flind Review · Standard · reviewed `sha`**: 1 Should fix. This pull request is large, so the"
                 " review ran in 3 parts with less depth than usual.\n\n",
                 True,
             ),
@@ -378,7 +378,7 @@ class TestPublishReviewGate:
                 None,
                 "Comment `@posthog help`.",
                 "",
-                "**PostHog Review · Standard · reviewed `sha`**: 1 Should fix.\n\nComment `@posthog help`.\n\n",
+                "**Flind Review · Standard · reviewed `sha`**: 1 Should fix.\n\nComment `@posthog help`.\n\n",
                 False,
             ),
             ("footer_mixed", [1, 240], 1, "full", None, "Comment `@posthog help`.", "", None, False),
@@ -390,7 +390,7 @@ class TestPublishReviewGate:
                 None,
                 "Comment `@posthog help`.",
                 "Draft notice.",
-                "**PostHog Review · Standard · reviewed `sha`**: 1 Should fix.\n\nComment `@posthog help`.\n\n"
+                "**Flind Review · Standard · reviewed `sha`**: 1 Should fix.\n\nComment `@posthog help`.\n\n"
                 "Draft notice.\n\n",
                 False,
             ),

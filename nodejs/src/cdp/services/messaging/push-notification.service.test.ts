@@ -45,7 +45,7 @@ const createSendPushNotificationInvocation = (
         distinctId: 'test-distinct-id',
         payload: {
             title: 'Test notification',
-            body: 'Hello from PostHog',
+            body: 'Hello from Flind',
         },
     } as any
 

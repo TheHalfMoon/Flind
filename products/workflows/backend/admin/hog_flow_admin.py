@@ -19,7 +19,7 @@ logger = structlog.get_logger(__name__)
 # What the customer is told when staff pause a workflow by hand rather than the detector doing it.
 # Deliberately vague about the trigger: staff reach for this for reasons the detector cannot see,
 # such as a report from a mailbox provider.
-STAFF_PAUSE_REASON = "PostHog staff paused this workflow's email to protect delivery for everyone."
+STAFF_PAUSE_REASON = "Flind staff paused this workflow's email to protect delivery for everyone."
 
 
 class HogFlowScheduleInline(admin.TabularInline):

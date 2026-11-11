@@ -14,14 +14,14 @@ class TestExtractPosthogEventsFromConsole:
         [
             ([], []),
             (
-                [cli.ConsoleLine(timestamp="t", type="log", text='[PostHog.js] send "$pageview"', is_posthog=True)],
+                [cli.ConsoleLine(timestamp="t", type="log", text='[Flind.js] send "$pageview"', is_posthog=True)],
                 ["$pageview"],
             ),
             (
                 [
-                    cli.ConsoleLine(timestamp="t", type="log", text='[PostHog.js] send "$pageview"', is_posthog=True),
+                    cli.ConsoleLine(timestamp="t", type="log", text='[Flind.js] send "$pageview"', is_posthog=True),
                     cli.ConsoleLine(
-                        timestamp="t", type="log", text='[PostHog.js] send "$autocapture"', is_posthog=True
+                        timestamp="t", type="log", text='[Flind.js] send "$autocapture"', is_posthog=True
                     ),
                 ],
                 ["$pageview", "$autocapture"],
@@ -30,14 +30,14 @@ class TestExtractPosthogEventsFromConsole:
                 # Custom event names without $ prefix.
                 [
                     cli.ConsoleLine(
-                        timestamp="t", type="log", text='[PostHog.js] send "signup_completed"', is_posthog=True
+                        timestamp="t", type="log", text='[Flind.js] send "signup_completed"', is_posthog=True
                     )
                 ],
                 ["signup_completed"],
             ),
             (
                 # Non-posthog console lines are ignored even if they look similar.
-                [cli.ConsoleLine(timestamp="t", type="log", text='[PostHog.js] send "$pageview"', is_posthog=False)],
+                [cli.ConsoleLine(timestamp="t", type="log", text='[Flind.js] send "$pageview"', is_posthog=False)],
                 [],
             ),
         ],

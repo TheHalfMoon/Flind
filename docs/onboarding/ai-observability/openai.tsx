@@ -23,7 +23,7 @@ export const getOpenAISteps = (ctx: OnboardingComponentsContext): StepDefinition
                         </Markdown>
                     </CalloutBox>
 
-                    <Markdown>Install the PostHog SDK and the OpenAI SDK.</Markdown>
+                    <Markdown>Install the Flind SDK and the OpenAI SDK.</Markdown>
 
                     <CodeBlock
                         blocks={[
@@ -48,13 +48,13 @@ export const getOpenAISteps = (ctx: OnboardingComponentsContext): StepDefinition
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                            Create a PostHog client, then swap in PostHog's OpenAI wrapper.
+                            Create a Flind client, then swap in Flind's OpenAI wrapper.
                         `}
                     </Markdown>
 
@@ -81,9 +81,9 @@ export const getOpenAISteps = (ctx: OnboardingComponentsContext): StepDefinition
                                 file: 'Node',
                                 code: dedent`
                                     import { OpenAI } from '@posthog/ai/openai'
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
 
-                                    const posthog = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' })
+                                    const posthog = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' })
 
                                     const client = new OpenAI({
                                       apiKey: 'your_openai_api_key',
@@ -103,7 +103,7 @@ export const getOpenAISteps = (ctx: OnboardingComponentsContext): StepDefinition
                 <>
                     <Markdown>
                         {dedent`
-                            When you use the wrapped client to call OpenAI, PostHog automatically captures an
+                            When you use the wrapped client to call OpenAI, Flind automatically captures an
                             \`$ai_generation\` event.
                         `}
                     </Markdown>
@@ -250,7 +250,7 @@ export const getOpenAISteps = (ctx: OnboardingComponentsContext): StepDefinition
             content: (
                 <>
                     <Markdown>
-                        PostHog can also capture embedding generations as `$ai_embedding` events. The wrapped client
+                        Flind can also capture embedding generations as `$ai_embedding` events. The wrapped client
                         captures these automatically when you use the embeddings API:
                     </Markdown>
 

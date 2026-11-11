@@ -8,7 +8,7 @@
  * client. Register an application at https://discord.com/developers, upload the
  * art assets, then drop its ID here.
  */
-/** Public Discord Application ID for the "PostHog Code" Rich Presence app. */
+/** Public Discord Application ID for the "Flind Code" Rich Presence app. */
 const DISCORD_CLIENT_ID = "1511709200017920020";
 
 export function getDiscordClientId(): string {

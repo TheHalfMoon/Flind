@@ -42,10 +42,10 @@ function LayoutCodeSnippet(): JSX.Element {
     return (
         <CodeSnippet language={Language.JavaScript}>
             {`---
-import PostHog from '../components/posthog.astro'
+import Flind from '../components/posthog.astro'
 ---
 <head>
-    <PostHog />
+    <Flind />
 </head>`}
         </CodeSnippet>
     )
@@ -68,13 +68,13 @@ export function SDKInstallAstroInstructions({ hideWizard }: { hideWizard?: boole
     return (
         <>
             <SetupWizardBanner integrationName="Astro" hide={hideWizard} />
-            <h3>1. Create the PostHog component</h3>
+            <h3>1. Create the Flind component</h3>
             <p>
                 In your <code>src/components</code> folder, create a <code>posthog.astro</code> file:
             </p>
             <CreatePostHogAstroFileSnippet />
             <p>
-                In this file, add your PostHog web snippet. Be sure to include the <code>is:inline</code> directive{' '}
+                In this file, add your Flind web snippet. Be sure to include the <code>is:inline</code> directive{' '}
                 <Link
                     to="https://docs.astro.build/en/guides/client-side-scripts/#opting-out-of-processing"
                     target="_blank"

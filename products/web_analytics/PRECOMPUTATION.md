@@ -1,6 +1,6 @@
 # Web analytics precomputation
 
-PostHog web analytics has two production precomputation systems, plus an experimental third (the dimensional tables).
+Flind web analytics has two production precomputation systems, plus an experimental third (the dimensional tables).
 They target the same problem (avoid scanning raw events on every dashboard load) but use different mechanisms and apply to different query shapes.
 
 For how these tiers fit into the full serving ladder (fast paths, full join, dispatch order, query_type tags), see [docs/internal/web-analytics-query-serving.md](../../docs/internal/web-analytics-query-serving.md).
@@ -57,7 +57,7 @@ Schema: `posthog/clickhouse/preaggregation/web_*_dimensional_preaggregated_sql.p
 
 ### Lazy computation
 
-The newer general-purpose framework at `products/analytics_platform/backend/lazy_computation/`. Builds precomputed buckets in the background, caches them in a dedicated CH table per query family, and serves reads from the cache; a user read that misses serves the live path and enqueues a debounced background warm. Gated per-org by the `web-analytics-precompute-toggle` PostHog feature flag (evaluated against the team's organization).
+The newer general-purpose framework at `products/analytics_platform/backend/lazy_computation/`. Builds precomputed buckets in the background, caches them in a dedicated CH table per query family, and serves reads from the cache; a user read that misses serves the live path and enqueues a debounced background warm. Gated per-org by the `web-analytics-precompute-toggle` Flind feature flag (evaluated against the team's organization).
 
 - **Owned by**: web analytics team, riding on the analytics_platform framework
 - **Population**: background-only since #72959 — user reads never build inline; a miss serves live and enqueues a debounced background warm. The hourly demand-driven warmer (`dags/cache_warming.py`) and stale revalidation keep hot shapes fresh
@@ -118,7 +118,7 @@ The 24 h pad matches the JS SDK's hard `SESSION_LENGTH_LIMIT` and covers effecti
 
 `can_use_lazy_precompute(runner)` in `web_overview_lazy_precompute.py`. Refuses when any of:
 
-- The `web-analytics-precompute-toggle` PostHog feature flag is off for the team's organization
+- The `web-analytics-precompute-toggle` Flind feature flag is off for the team's organization
 - Team timezone has a non-whole-hour UTC offset
 - `query.conversionGoal` is set
 - `query.sampling.enabled` is True
@@ -314,7 +314,7 @@ A cold or expired shape's first read serves the live path and only warms in the 
 - **Matrix per team**: `WebOverviewQuery` + `WebGoalsQuery` + `WebVitalsPathBreakdownQuery` + one `WebStatsTableQuery` per `WebStatsBreakdown` rendered by the dashboard (~23 breakdowns including `FrustrationMetrics`).
 - **Per-query toggle**: every warmer query sets `useWebAnalyticsPrecompute=True` explicitly. Precompute now defaults on for enrolled teams (only an explicit `False` opts out), so this is redundant — kept to make the warmer's intent explicit.
 - **Freshness handoff**: each payload is dispatched via `get_query_runner(...).run(...)`. The runner routes through its family's `*_lazy_precompute.py` module, which calls `ensure_*_precomputed` — already idempotent. The DAG does not enumerate windows or inspect job state; the runner is the source of truth for what's stale.
-- **Audience**: teams belonging to organizations rolled out on the `web-analytics-precompute-toggle` feature flag — the same flag the runtime lazy read path checks. The job parses the flag's `Match organizations against id equals <uuid>` group conditions and resolves them to teams via `Team.objects.filter(organization_id__in=...)`. The flag lives on PostHog's internal dogfooding project; self-hosted instances are gated out via `is_cloud()` so a same-keyed flag on someone else's team-2 doesn't trigger anything.
+- **Audience**: teams belonging to organizations rolled out on the `web-analytics-precompute-toggle` feature flag — the same flag the runtime lazy read path checks. The job parses the flag's `Match organizations against id equals <uuid>` group conditions and resolves them to teams via `Team.objects.filter(organization_id__in=...)`. The flag lives on Flind's internal dogfooding project; self-hosted instances are gated out via `is_cloud()` so a same-keyed flag on someone else's team-2 doesn't trigger anything.
 - **Audience cap**: 200 teams. A typo in the flag config fails-loudly (op returns with `skipped=N` and zero warmed) rather than silently overloading ClickHouse.
 - **Cycle budget**: 45 minutes of wall-clock; remaining teams are reported as `skipped` if the budget is exhausted. The concurrency guard absorbs the next tick.
 
@@ -329,7 +329,7 @@ The dashboard's graph tiles run vanilla `TrendsQuery`, routed at dispatch to `We
 Rollout gates, in order:
 
 1. `WEB_ANALYTICS_TRENDS_PRECOMPUTE_TEAM_IDS` (env, deploy-time) — dogfooding list that short-circuits the flag.
-2. `web-analytics-trends-precompute` PostHog feature flag — the percentage ramp; also folded into the runner's cache key so disabling it invalidates cached precompute-served results immediately.
+2. `web-analytics-trends-precompute` Flind feature flag — the percentage ramp; also folded into the runner's cache key so disabling it invalidates cached precompute-served results immediately.
 3. The shared enrollment gate (`web-analytics-precompute-toggle` / `WEB_ANALYTICS_LAZY_PRECOMPUTE_TEAM_IDS`) still applies underneath.
 
 Accepted semantic differences vs vanilla trends (the tiles align with the overview tile instead): session-start-hour attribution, HLL uniques, `$pageview + $screen` counted together, sessionless events excluded. The per-query "Allow precompute" opt-out does not reach trend tiles (TrendsQuery deliberately carries no web-analytics fields); the flag is the kill switch.

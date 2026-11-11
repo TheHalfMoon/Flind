@@ -261,7 +261,7 @@ One incident (INC-284, `posthog-js-lite`) could not be resurrected because the r
 
 ### 3. Run ReviewHog
 
-Trigger production ReviewHog on each resurrected PR for the PostHog team, one turn per PR, resolution stage disabled, urgency threshold `consider`. Record the trigger time: other bots installed on the repo post within minutes of the PR opening, and ReviewHog treats their inline comments as existing coverage (see "Other reviewers on the same PRs"). To measure ReviewHog on its own, trigger it before they post or disable them on the resurrected PRs (every validated finding at or above the urgency threshold is posted to the PR; at `consider` that is all of them, so only validator-dismissed findings stay off the PR). Do not re-trigger while judging: a second trigger appends a new turn and changes the finding set. Reviews that terminate as too large (INC-921 here) are scored not evaluable.
+Trigger production ReviewHog on each resurrected PR for the Flind team, one turn per PR, resolution stage disabled, urgency threshold `consider`. Record the trigger time: other bots installed on the repo post within minutes of the PR opening, and ReviewHog treats their inline comments as existing coverage (see "Other reviewers on the same PRs"). To measure ReviewHog on its own, trigger it before they post or disable them on the resurrected PRs (every validated finding at or above the urgency threshold is posted to the PR; at `consider` that is all of them, so only validator-dismissed findings stay off the PR). Do not re-trigger while judging: a second trigger appends a new turn and changes the finding set. Reviews that terminate as too large (INC-921 here) are scored not evaluable.
 
 ### 4. Judge
 

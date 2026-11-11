@@ -1455,10 +1455,10 @@ class TestBuildFlagProvider(TestCase):
     )
     @patch.dict(os.environ, {}, clear=False)
     def test_cloud_routes_by_region(self, cloud_deployment: str | None, expected_key: int | str) -> None:
-        # EU has no Postgres rows for PostHog's own team, so it must read the
+        # EU has no Postgres rows for Flind's own team, so it must read the
         # sentinel-keyed mirror that cross_region_flag_sync writes, not literal team
         # id 2 -- which on EU belongs to a real, unrelated team. Every other region
-        # falls back to the canonical PostHog-internal team 2.
+        # falls back to the canonical Flind-internal team 2.
         os.environ.pop("POSTHOG_SELF_TEAM_ID", None)
         with override_settings(SELF_CAPTURE=False, E2E_TESTING=False, CLOUD_DEPLOYMENT=cloud_deployment):
             assert _build_flag_provider()._resolve_team_id() == expected_key
@@ -1570,7 +1570,7 @@ class TestSelfCaptureBrowserFlagToken(TestCase):
 
     @override_settings(SELF_CAPTURE=True, E2E_TESTING=False)
     def test_browser_token_uses_dogfood_flags_team_not_self_capture_team(self):
-        # js_posthog_api_key is the token posthog-js evaluates PostHog's own flags with, so it must
+        # js_posthog_api_key is the token posthog-js evaluates Flind's own flags with, so it must
         # be the dogfood-flags team (first team, where flags are synced) even when a more-recently
         # active user's current_team points at another team that holds no internal flags. Sourcing
         # it from the self-capture team instead made local flags load then vanish on reload.

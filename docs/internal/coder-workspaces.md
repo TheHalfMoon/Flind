@@ -1,7 +1,7 @@
 # Coder Workspaces
 
-PostHog has an internal Coder deployment for cloud-hosted development workspaces.
-Use this when you want a remote PostHog dev environment instead of running the full stack on your laptop.
+Flind has an internal Coder deployment for cloud-hosted development workspaces.
+Use this when you want a remote Flind dev environment instead of running the full stack on your laptop.
 
 ## When to use it
 
@@ -19,7 +19,7 @@ hogli devbox:doctor              # read-only health check: tailnet access, reach
 hogli devbox:exec -- bash -lc 'gh auth status'   # run one command on the box and get its exit code
 ```
 
-Project tools such as `pnpm` and `pytest` are on `PATH` only inside PostHog's flox environment.
+Project tools such as `pnpm` and `pytest` are on `PATH` only inside Flind's flox environment.
 Add `--flox` to run the command in `~/posthog` inside it, for example `hogli devbox:exec --flox -- pnpm --filter=@flind/frontend typescript:check`.
 
 `devbox:doctor` is the first thing to run when a devbox command misbehaves. It names the likely cause, most often the wrong tailnet, instead of failing cryptically.
@@ -43,7 +43,7 @@ Herdr users pick one of two ways to work:
 - **Agents on your laptop.** Run `hogli devbox:worktree --auto herdr`. Each worktree that Herdr creates on your laptop gets its own devbox, with its own dev stack. The mirror copies your edits to the box, so edit locally. `hogli devbox:open --herdr <label>` opens a space on a worktree's box to run the stack and tests there.
 
 **Running the dev stack in detached mode** —
-Start the PostHog dev stack in the background without an interactive terminal:
+Start the Flind dev stack in the background without an interactive terminal:
 
 ```bash
 hogli up -d          # start in detached mode
@@ -66,7 +66,7 @@ hogli devbox:share bob-box --list           # see who has access
 Once shared, the teammate can target your workspace with `@user[/label]` syntax (e.g. `hogli devbox:ssh @bob/bob-box`).
 
 **Editing locally while running on the devbox** —
-Mirror your local PostHog checkout to a devbox with `hogli devbox:sync`. Local is the source of truth (one-way-safe); remote-only files like the AMI's prewarmed `node_modules` and `.venv` are left untouched. Useful for agentic loops or when you want to keep using your normal local editor without pushing every iteration:
+Mirror your local Flind checkout to a devbox with `hogli devbox:sync`. Local is the source of truth (one-way-safe); remote-only files like the AMI's prewarmed `node_modules` and `.venv` are left untouched. Useful for agentic loops or when you want to keep using your normal local editor without pushing every iteration:
 
 ```bash
 hogli devbox:start                                   # ensure the box is running
@@ -99,7 +99,7 @@ To make Hogland the default, including for automatic boxes, pass `--provider hog
 
 ## Prerequisites
 
-- Access to the PostHog Tailscale tailnet (on macOS, the Tailscale app bundle CLI is detected automatically if `tailscale` isn't on PATH)
+- Access to the Flind Tailscale tailnet (on macOS, the Tailscale app bundle CLI is detected automatically if `tailscale` isn't on PATH)
 - Access to the internal Coder deployment at `https://coder.dev.posthog.dev`
 - `hogli` available locally
 
@@ -155,7 +155,7 @@ Run `hogli devbox` to see all available commands, and `hogli <command> --help` f
 
 Region selection is available for `devbox:start` via `--region` (`us-east-1` or `eu-central-1`, default `us-east-1`). The region is set once at creation and cannot be changed. Workspaces in `eu-central-1` get an `-eu` name suffix (e.g. `devbox-alice-eu`). `devbox:list` and `devbox:status` show which region a workspace is in.
 
-`devbox:start --start-app` opts a workspace into bringing the PostHog app up (`hogli up`) in the background on every start — useful for scripted, ephemeral devboxes that should be usable without an interactive `hogli up`. The setting is stored as a workspace parameter (`auto_start_app`), so it stays in effect for future starts. The flag applies only when hogli creates the devbox; on an existing devbox hogli refuses it, and the parameter can be changed in the Coder dashboard. Requires a template version that defines the parameter; on older templates hogli drops it with a warning.
+`devbox:start --start-app` opts a workspace into bringing the Flind app up (`hogli up`) in the background on every start — useful for scripted, ephemeral devboxes that should be usable without an interactive `hogli up`. The setting is stored as a workspace parameter (`auto_start_app`), so it stays in effect for future starts. The flag applies only when hogli creates the devbox; on an existing devbox hogli refuses it, and the parameter can be changed in the Coder dashboard. Requires a template version that defines the parameter; on older templates hogli drops it with a warning.
 
 When a build fails with `InsufficientInstanceCapacity`, AWS has no free capacity for the box's instance type in its availability zone.
 `devbox:start`, `devbox:restart` and `devbox:update` then start the box on the template's other instance types in turn, through the Coder build API, because the Coder CLI keeps a parameter's last-build value.

@@ -1,4 +1,4 @@
-// Dependency-free ids shared by the app shell and PostHog AI. Shell code imports them from here, so it does
+// Dependency-free ids shared by the app shell and Flind AI. Shell code imports them from here, so it does
 // not statically load the AI panel components or the signals inbox logics to read a string.
 
 // The client-side key for the embedded `taskTrackerSceneLogic` (and paired `runnerPanelLogic`) instance
@@ -15,7 +15,7 @@ export const REPORT_AI_PANEL = 'inbox-report'
 export const SCOUT_AI_PANEL = 'inbox-scout'
 
 /**
- * Which PostHog AI implementation the Max scene renders. `'new'` is the posthog_ai/frontend surface
+ * Which Flind AI implementation the Max scene renders. `'new'` is the posthog_ai/frontend surface
  * (the tasks product on `/ai`, the new composer + thread viewer in the side panel); `'legacy'` is the
  * existing Max chat. Only meaningful while the `PHAI_SANDBOX_MODE` flag is on. See `effectivePhaiView`
  * in `aiShellLogic`.

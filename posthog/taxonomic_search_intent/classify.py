@@ -176,7 +176,7 @@ def _number_run_end(words: list[str], start: int) -> int:
 
 
 def search_intent_state(query: str, active_group_type: str, scene: str | None) -> str:
-    lines = ["A person uses the filter picker in PostHog, a product analytics tool."]
+    lines = ["A person uses the filter picker in Flind, a product analytics tool."]
     if scene and _SCENE.match(scene):
         lines.append(f"Page: {scene}")
     lines.append(f"Open tab: {active_group_type}")

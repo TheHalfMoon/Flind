@@ -131,7 +131,7 @@ class EventsTable(EventsRetentionTable):
         "created_at": DateTimeDatabaseField(
             name="created_at",
             nullable=False,
-            description="When the event was ingested by PostHog (server timestamp); differs from `timestamp`.",
+            description="When the event was ingested by Flind (server timestamp); differs from `timestamp`.",
         ),
         "$session_id": StringDatabaseField(
             name="$session_id", nullable=False, description="Session this event belongs to; join to `sessions`."

@@ -82,8 +82,8 @@ class TestWizardRunViewSet(APIBaseTest):
                 "workspace": {"type": "local_folder", "project_name": "example-project"},
                 "program": {
                     "id": "posthog-integration",
-                    "name": "PostHog integration",
-                    "description": "Set up PostHog SDK integration",
+                    "name": "Flind integration",
+                    "description": "Set up Flind SDK integration",
                     "wizard_version": DEFAULT_WIZARD_VERSION,
                     "command": [],
                     "tags": [],

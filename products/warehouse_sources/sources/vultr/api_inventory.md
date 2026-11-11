@@ -6,7 +6,7 @@ Source: Vultr API v2 (<https://www.vultr.com/api/>), cross-checked against the o
 - **Base URL:** `https://api.vultr.com` (single global host, no regional variants).
 - **Auth:** `Authorization: Bearer <api_key>`. One personal access token per account, generated in the
   customer portal (**Account > API**). Grants full account access (no per-product scopes). The portal
-  offers an IP access-control list, so a customer may need to allowlist PostHog egress IPs.
+  offers an IP access-control list, so a customer may need to allowlist Flind egress IPs.
 - **Pagination:** cursor in the response body at `meta.links.next` (empty string when exhausted),
   replayed as the `cursor` query param. Page size via `per_page` (default 100, max 500).
 - **Rate limit:** ~30 req/s per source IP; HTTP 429 above that.

@@ -15,8 +15,8 @@ class TestWizardRegistryViewSet(APIBaseTest):
         programs = [
             {
                 "id": "posthog-integration",
-                "name": "PostHog integration",
-                "description": "Set up the PostHog SDK integration",
+                "name": "Flind integration",
+                "description": "Set up the Flind SDK integration",
                 "wizard_version": "2.60.0",
                 "command": [],
                 "tags": ["setup", "product-analytics"],

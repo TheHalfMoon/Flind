@@ -7,7 +7,7 @@ import { libraryLabel } from './libraryCatalog'
 
 // A drag starts in the host (a library item) or in the frame (a block on the canvas), and
 // the pointer crosses between them, so the host drives it. It forwards the pointer into the
-// frame, which answers with the drop target under it. Ported from PostHog Desktop's sourceDrag.
+// frame, which answers with the drop target under it. Ported from Flind Desktop's sourceDrag.
 
 export type SourceDragSource = { kind: 'new'; blockType: string } | { kind: 'move'; selection: CanvasEditSelection }
 

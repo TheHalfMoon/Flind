@@ -85,7 +85,7 @@ class DuckDBPrinter(PostgresPrinter):
         return
 
     def _json_property_args(self, chain) -> list[str]:
-        # DuckDB reads a JSON key beginning with `$` as a JSONPath root marker, so PostHog's
+        # DuckDB reads a JSON key beginning with `$` as a JSONPath root marker, so Flind's
         # `$`-prefixed property keys break the inherited Postgres `->>` arrow form. Bind the whole
         # chain as one quoted JSONPath member expression (`$."k1"."k2"`) instead, forcing plain-key
         # semantics for every key. The path is a bound value (not inlined), so this is not an

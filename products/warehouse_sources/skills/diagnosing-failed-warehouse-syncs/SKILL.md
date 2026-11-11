@@ -177,7 +177,7 @@ The recovery action depends on root cause, not just status. Match the user's sit
   5. If payloads are arriving but failing signature verification → the signing secret was rotated. Get the new
      one from the source's dashboard and call `update-webhook-inputs-create({source_id}, {inputs:
 {signing_secret: "..."}})`.
-- After any fix, check the source's webhook logs (on their side) to confirm PostHog is now responding 2xx.
+- After any fix, check the source's webhook logs (on their side) to confirm Flind is now responding 2xx.
 
 ### Step 5 — Confirm before destructive actions
 
@@ -229,10 +229,10 @@ Agent:
   `delete-data` + `reload` over `resync` + new schema entry — it keeps the configured sync_type / incremental_field
   / PK setup. `delete-data` turns syncing off, so set `should_sync: true` before the reload.
 - **A failure can belong to a destination, not the source.** Some projects sync a source to their own database as
-  well as to PostHog. When they do, `latest_error` is prefixed with the destination's name, e.g.
+  well as to Flind. When they do, `latest_error` is prefixed with the destination's name, e.g.
   `customer postgres: connection refused`. That is the customer's database refusing the write, not the source failing
   to extract — check their database and its credentials rather than the source's. Every destination shares one
-  lifecycle, so one unreachable destination holds up the whole sync, PostHog included.
+  lifecycle, so one unreachable destination holds up the whole sync, Flind included.
 - **Billing limits aren't technical failures.** Don't try to retry or reconfigure your way out. Route to billing.
 - **Webhook failures can hide behind a green status.** A webhook-type schema whose bulk fallback sync succeeded looks
   `Completed` even when the push channel is broken. When users say "my data is hours behind" on a webhook schema,

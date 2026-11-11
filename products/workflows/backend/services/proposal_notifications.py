@@ -1,4 +1,4 @@
-"""Tells one person when PostHog files a suggestion on a workflow, in the app and by email."""
+"""Tells one person when Flind files a suggestion on a workflow, in the app and by email."""
 
 import html
 from uuid import UUID
@@ -91,7 +91,7 @@ def _send_email(user: User, team: Team, hog_flow: HogFlow, proposal: WorkflowPro
     message = EmailMessage(
         campaign_key=campaign_key,
         template_name="workflow_suggestion_filed",
-        subject=f"PostHog suggested a change to {workflow_name}",
+        subject=f"Flind suggested a change to {workflow_name}",
         template_context={
             "workflow_name": workflow_name,
             "suggestion_title": _defanged(proposal.title),

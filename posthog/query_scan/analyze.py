@@ -274,7 +274,7 @@ def _unfiltered_cause(tree: TreeFacts | None, *, is_sql: bool, sibling_uses_even
     condition stands in for an event name unless the query groups by event, whose answer is the
     set of events itself. None is the plain case: nothing in the query says which events it is about.
     """
-    # An insight's reads are PostHog's own code, so only a SQL author can add a filter to a helper read.
+    # An insight's reads are Flind's own code, so only a SQL author can add a filter to a helper read.
     if is_sql and sibling_uses_event_key:
         return FindingCause.UNFILTERED_HELPER_READ
     if tree is not None and tree.property_filter and not tree.groups_by_event:

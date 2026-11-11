@@ -294,7 +294,7 @@ def _sync_issue(issue: ErrorTrackingIssue, job: contracts.LinearStatusSyncJob, l
             )
     elif trigger_state in _OPEN_STATE_TYPES:
         # Only a move out of a closed state is a reopen. A ticket that moves from "Todo" to
-        # "In Progress" must not reactivate an issue that someone resolved in PostHog.
+        # "In Progress" must not reactivate an issue that someone resolved in Flind.
         if linear_reads.previous_state_type(rows[trigger_references[0].integration_id]) in _CLOSED_STATE_TYPES:
             _transition(
                 issue,

@@ -70,7 +70,7 @@ class Migration(migrations.Migration):
             name="integration",
             field=models.ForeignKey(
                 blank=True,
-                help_text="Credentials for this destination. Null for the PostHog warehouse.",
+                help_text="Credentials for this destination. Null for the Flind warehouse.",
                 null=True,
                 on_delete=django.db.models.deletion.SET_NULL,
                 related_name="+",

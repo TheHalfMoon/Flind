@@ -147,7 +147,7 @@ class TestGatewayExecTools(APIBaseTest):
         assert not mock_call.called
 
     def _read_scoped_token_client(self) -> APIClient:
-        """A `project:read` OAuth client, which is how the PostHog MCP authenticates.
+        """A `project:read` OAuth client, which is how the Flind MCP authenticates.
         Session auth takes a different branch through APIScopePermission, so it cannot
         catch an action that derives no scope."""
         application = OAuthApplication.objects.create(

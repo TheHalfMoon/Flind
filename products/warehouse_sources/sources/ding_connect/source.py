@@ -113,7 +113,7 @@ class DingConnectSource(ResumableSource[DingConnectSourceConfig, DingConnectResu
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="DingConnect",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your DingConnect API key to pull your DingConnect data into the PostHog Data warehouse.
+            caption="""Enter your DingConnect API key to pull your DingConnect data into the Flind Data warehouse.
 
 You can generate an API key under the **Developer** tab of your [DingConnect account settings](https://www.dingconnect.com/Account/Settings).""",
             iconPath="/static/services/ding_connect.png",

@@ -72,7 +72,7 @@ def encode_jwt(
     audiences should always pass one.
     """
     if not isinstance(audience, PosthogJwtAudience):
-        raise Exception("Audience must be in the list of PostHog-supported audiences")
+        raise Exception("Audience must be in the list of Flind-supported audiences")
 
     return jwt.encode(
         {

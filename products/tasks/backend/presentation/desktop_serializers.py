@@ -9,7 +9,7 @@ from products.tasks.backend.facade.contracts import DesktopBetaTermsAcceptanceDT
 class DesktopBetaTermsAcceptanceSerializer(DataclassSerializer):
     is_desktop_beta_terms_accepted = serializers.BooleanField(
         read_only=True,
-        help_text="Whether the organization has accepted the PostHog Desktop beta terms.",
+        help_text="Whether the organization has accepted the Flind Desktop beta terms.",
     )
 
     class Meta:

@@ -193,7 +193,7 @@ They represent the most common classes of user-facing issues that ship to produc
   instructions to locations that no longer exist.
 - **Misleading or confusing text** — Date formats that prioritize less-useful information
   (e.g., "first seen" before "last seen"), error messages with internal jargon
-  ("premium PostHog offering"), copy that doesn't match the actual product behavior.
+  ("premium Flind offering"), copy that doesn't match the actual product behavior.
 - **Non-selectable or non-copyable text** — Error messages in tooltips that disappear on
   hover-off. Text rendered on canvas elements that can't be selected. JSON values that
   include surrounding quotes when copied.

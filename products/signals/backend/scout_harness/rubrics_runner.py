@@ -67,7 +67,7 @@ Research first:
   sections, parse the JSON and read manageable chunks rather than dumping the whole file at once.
   This captured version defines the job even if the live skill has since changed. If you cannot
   read the attachment, say so instead of replacing it with a newer live version or guessing.
-- Use the PostHog MCP exec tool to inspect relevant ordinary scout runs, their task transcripts,
+- Use the Flind MCP exec tool to inspect relevant ordinary scout runs, their task transcripts,
   emitted reports and saved notes. The supplied recent runs are starting points, not the complete
   history. Discover tool schemas before calling them. Start with a few informative examples and
   follow evidence when it reveals a meaningful gap; do not read the whole fleet or grade trials.

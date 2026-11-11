@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -137,7 +137,7 @@ export interface OrganizationApi {
     members_can_see_org_members?: boolean
     allow_publicly_shared_resources?: boolean
     /**
-     * When True, requests through the PostHog MCP server can read but not change this organization's data.
+     * When True, requests through the Flind MCP server can read but not change this organization's data.
      * @nullable
      */
     read_only_mcp_access?: boolean | null
@@ -147,7 +147,7 @@ export interface OrganizationApi {
     /** @nullable */
     is_ai_data_processing_approved?: boolean | null
     /**
-     * When True, this organization allows its data to be used to train PostHog AI models.
+     * When True, this organization allows its data to be used to train Flind AI models.
      * @nullable
      */
     is_ai_training_opted_in?: boolean | null
@@ -263,7 +263,7 @@ export interface PatchedOrganizationApi {
     members_can_see_org_members?: boolean
     allow_publicly_shared_resources?: boolean
     /**
-     * When True, requests through the PostHog MCP server can read but not change this organization's data.
+     * When True, requests through the Flind MCP server can read but not change this organization's data.
      * @nullable
      */
     read_only_mcp_access?: boolean | null
@@ -273,7 +273,7 @@ export interface PatchedOrganizationApi {
     /** @nullable */
     is_ai_data_processing_approved?: boolean | null
     /**
-     * When True, this organization allows its data to be used to train PostHog AI models.
+     * When True, this organization allows its data to be used to train Flind AI models.
      * @nullable
      */
     is_ai_training_opted_in?: boolean | null
@@ -555,7 +555,7 @@ export interface MemberOffboardingResourceApi {
     /** Whether all active public links require a password. */
     password_protected: boolean
     /**
-     * Project-scoped path to open the resource in PostHog.
+     * Project-scoped path to open the resource in Flind.
      * @nullable
      */
     url: string | null
@@ -991,7 +991,7 @@ export interface ActivityLogApi {
     client?: string | null
     /** @nullable */
     ip_address?: string | null
-    /** Kind of credential that authenticated the request that made the change. 'unattributed' means the request recorded no credential. Null for changes made outside a request, such as background jobs, and for entries recorded before PostHog stored the credential.
+    /** Kind of credential that authenticated the request that made the change. 'unattributed' means the request recorded no credential. Null for changes made outside a request, such as background jobs, and for entries recorded before Flind stored the credential.
      *
      * * `session` - session
      * * `personal_api_key` - personal_api_key
@@ -1426,14 +1426,14 @@ export interface PinnedSceneTabApi {
 export interface PinnedSceneTabsApi {
     /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
     tabs?: PinnedSceneTabApi[]
-    /** Tab descriptor for the user's chosen home page — the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
+    /** Tab descriptor for the user's chosen home page — the destination opened when they click the Flind logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
     homepage?: PinnedSceneTabApi | null
 }
 
 export interface PatchedPinnedSceneTabsApi {
     /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
     tabs?: PinnedSceneTabApi[]
-    /** Tab descriptor for the user's chosen home page — the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
+    /** Tab descriptor for the user's chosen home page — the destination opened when they click the Flind logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
     homepage?: PinnedSceneTabApi | null
 }
 
@@ -2059,7 +2059,7 @@ export type AdvancedActivityLogsListParams = {
      */
     page_size?: number
     /**
-     * Response format. Set to ocsf to return Open Cybersecurity Schema Framework events for ingestion into a security tool. Omit for the default PostHog format.
+     * Response format. Set to ocsf to return Open Cybersecurity Schema Framework events for ingestion into a security tool. Omit for the default Flind format.
      *
      * * `ocsf` - ocsf
      * @minLength 1

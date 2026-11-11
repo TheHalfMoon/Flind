@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function EmailTemplateApp(): JSX.Element {
     return (
-        <AppWrapper<EmailTemplateData> appName="PostHog Email Template">
+        <AppWrapper<EmailTemplateData> appName="Flind Email Template">
             {({ data }) => <EmailTemplateView template={data!} />}
         </AppWrapper>
     )

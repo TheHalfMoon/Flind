@@ -25,7 +25,7 @@ if TYPE_CHECKING:
     from products.logs.backend.alert_state_machine import AlertSnapshot
 
 
-# Default log attribute key whose value matches a PostHog person's distinct_id. Mirrors
+# Default log attribute key whose value matches a Flind person's distinct_id. Mirrors
 # the convention documented at https://posthog.com/docs/logs/link-session-replay: the
 # posthog-js / posthog-react-native SDKs auto-attach `posthogDistinctId` to every log
 # they emit, and the docs instruct OTel-emitting backends to set the same key. Customers
@@ -59,7 +59,7 @@ DISTINCT_ID_ATTRIBUTE_KEY_CONVENTIONS = [
 ]
 
 
-# Default log attribute keys whose values hold the PostHog session ID. `sessionId` is what
+# Default log attribute keys whose values hold the Flind session ID. `sessionId` is what
 # the posthog-js / posthog-react-native SDKs emit and what
 # https://posthog.com/docs/logs/link-session-replay tells backends to send. Ordered:
 # detection checks keys in list order and the first match wins. Customers whose pipeline
@@ -136,7 +136,7 @@ class TeamLogsConfig(models.Model):
         db_default=DEFAULT_LOGS_DISTINCT_ID_ATTRIBUTE_KEY,
     )
 
-    # Log attribute keys whose values match a PostHog person's distinct_id — a log links
+    # Log attribute keys whose values match a Flind person's distinct_id — a log links
     # to a person when any of these attributes equals one of the person's distinct IDs.
     # Used by the person profile Logs tab and the `query-logs` MCP tool to filter logs
     # to a single user without needing per-team prompt engineering.
@@ -146,7 +146,7 @@ class TeamLogsConfig(models.Model):
         db_default=Value("{posthogDistinctId}"),
     )
 
-    # Ordered list of log attribute keys whose values hold the PostHog session ID.
+    # Ordered list of log attribute keys whose values hold the Flind session ID.
     # Detection checks keys in order; the first key with a value wins. Used to link
     # logs to session replay and error tracking sessions.
     logs_session_id_attribute_keys = ArrayField(

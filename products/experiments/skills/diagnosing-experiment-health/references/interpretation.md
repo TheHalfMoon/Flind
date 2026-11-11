@@ -1,6 +1,6 @@
 # Significance & interpretation traps
 
-How to read PostHog experiment results without falling into common interpretation pitfalls.
+How to read Flind experiment results without falling into common interpretation pitfalls.
 
 Read the statistics settings before any result (Step 1 of `SKILL.md`): the method, the confidence level, sequential testing, CUPED and the baseline variant.
 C5 to C7 cover the method and the confidence level. C13 covers sequential testing, CUPED and the baseline variant.
@@ -17,7 +17,7 @@ C5 to C7 cover the method and the confidence level. C13 covers sequential testin
 - C8 — Inconclusive but trending — when is it ok to ship?
 - C9 — "Significance reached" notification is not a green light to ship
 - C10 — Ship-variant choice does not consider any metric result
-- C11 — External calculator disagrees with PostHog
+- C11 — External calculator disagrees with Flind
 - C12 — "Target reached" on the running-time estimate is not a result
 - C13 — Statistics settings that change how a result reads (sequential testing, CUPED, baseline variant)
 
@@ -61,7 +61,7 @@ In the early days of the experiment, significance can flip back and forth a lot:
 
 - Predetermine duration _before_ launching. Use the running-time calculator on the experiment.
 - Or turn on sequential testing before launch, when the team wants to read results continuously.
-- Frequentist: PostHog uses α=0.05 by default → a single metric has ~5% chance of false-positive
+- Frequentist: Flind uses α=0.05 by default → a single metric has ~5% chance of false-positive
   significance even when nothing changed.
 - Don't treat 0.05 as a hard cliff. It's a convention, not a meaningful threshold by itself —
   results just below and just above are close to equivalent in evidence.
@@ -73,7 +73,7 @@ roughly 2-to-1 skew at a few dozen exposures can be chance alone: 30 against 16 
 
 **Mechanism:** With low samples per variant (rule of thumb: under a thousand), the visible split can
 swing widely from the configured ratio — deterministic-hash variance is large at small samples.
-PostHog's calculations account for this; the visible ratio is not a bug.
+Flind's calculations account for this; the visible ratio is not a bug.
 Whether a split is a real mismatch is the sample ratio test's call, not the eye's (A2 in `bias-and-skew.md`).
 
 **Validity gates** `[HIGH]`. A variant gets no result, and the metric reads "Not enough data yet", until:
@@ -134,7 +134,7 @@ assuming the methodology is wrong.
 
 ## C4 — Multiple comparisons (no correction across variants or metrics) [HIGH]
 
-PostHog **does not** apply multiple-comparisons correction:
+Flind **does not** apply multiple-comparisons correction:
 
 - Across variants — each test variant is compared to the baseline independently
 - Across metrics — each metric is tested independently
@@ -158,7 +158,7 @@ So with many metrics or many variants, the chance of _some_ spurious significanc
 
 ## C5 — Bayesian interpretation traps [HIGH]
 
-PostHog defaults to Bayesian, unless the project's default method says otherwise (C7). Common misreads:
+Flind defaults to Bayesian, unless the project's default method says otherwise (C7). Common misreads:
 
 - **"96% chance to win"** is about _direction_ (test is better than the baseline), **not** the magnitude of
   the lift. Read the **credible interval** alongside it.
@@ -178,7 +178,7 @@ PostHog defaults to Bayesian, unless the project's default method says otherwise
   That is the Frequentist rule.
   Under Bayesian, the "Significant" column and the "Won" or "Lost" tag follow the chance to win.
 - **Don't ship the moment chance-to-win flips green** — early flips are within the noise band (C1).
-- **Flat priors.** PostHog uses a non-informative prior. Early swings
+- **Flat priors.** Flind uses a non-informative prior. Early swings
   aren't the prior pushing things around — they're the data being sparse.
 - **The displayed effect is relative** to the baseline: 10% against 12% conversion reads as +20%.
 - **Legacy experiments.** Legacy experiments (`is_legacy` in `experiment-get`) no longer show results.
@@ -189,10 +189,10 @@ credible_interval in products/experiments/stats/bayesian/utils.py. -->
 
 ## C6 — Frequentist interpretation traps [HIGH]
 
-PostHog has Frequentist support. Set in `stats_config.method`. Quick rules:
+Flind has Frequentist support. Set in `stats_config.method`. Quick rules:
 
 - The confidence interval **doesn't cross 0** → significant vs the baseline. It **crosses 0** → not significant.
-- PostHog uses **Welch's t-test** as the default — it handles unequal variance between groups, unlike
+- Flind uses **Welch's t-test** as the default — it handles unequal variance between groups, unlike
   Student's t-test (which assumes equal variance).
   With sequential testing on, a sequential test replaces it (C13).
 - α = 0.05 by default → ~5% chance of false-positive on a single metric.
@@ -242,7 +242,7 @@ is the right tool when the call is "primary metric is up, no guardrail regressio
 
 ## C9 — "Significance reached" notification is not a green light to ship [HIGH]
 
-PostHog can mark a metric as significant and send a notification well before the experiment has
+Flind can mark a metric as significant and send a notification well before the experiment has
 accumulated enough data for the result to be stable. The verdict can revert as the sample grows,
 and no notification is sent when it does.
 Treat the notification as a _prompt to review_, not an _instruction to ship_.
@@ -310,21 +310,21 @@ If any guardrail is trending negative, or the primary isn't actually significant
 is to keep control rather than ship the test variant. This matters most for sophisticated
 users who set guardrails for a reason.
 
-## C11 — External calculator disagrees with PostHog [MEDIUM]
+## C11 — External calculator disagrees with Flind [MEDIUM]
 
 A common case: conversion counts from the experiment page get pasted into an online A/B
-calculator, or another AI assistant is asked for the numbers, and the answer differs from PostHog's
+calculator, or another AI assistant is asked for the numbers, and the answer differs from Flind's
 ("not significant" vs "significant", a different count, a different winner).
 
 Three questions to ask before debugging stats:
 
-1. **Which methodology?** PostHog is **Bayesian by default**. Most online calculators are
+1. **Which methodology?** Flind is **Bayesian by default**. Most online calculators are
    Frequentist. The two answer different questions; they will not agree on borderline cases. If the
    user wants a Frequentist comparison, change `stats_config.method` and re-read (see C6).
 2. **Are the inputs actually the same?** The numbers on the experiment page are post-scope —
    `$multiple` excluded, test accounts filtered, exposure-bounded date range, per-user aggregation
    for means, the conversion window applied. An online calculator gets none of that — if
-   the user typed in raw event counts they grabbed from SQL, the calculator and PostHog are
+   the user typed in raw event counts they grabbed from SQL, the calculator and Flind are
    computing on **different populations**, and disagreement is expected.
    An assistant that counts a metric's events without the experiment's scope answers a different question too (D1 in `numbers-vs-sql.md`).
 3. **Does the experiment adjust the values?** Outlier handling, CUPED and sequential testing change the estimate or the interval (C13).
@@ -401,7 +401,7 @@ Sequential testing and CUPED fall back to the project default where the experime
 - The p-value and the interval stay valid however often the result is read.
   C1's peeking warning does not apply.
 - The price is a wider interval than a fixed-horizon test gives on the same data.
-  "The calculator says significant and PostHog does not" is expected (C11).
+  "The calculator says significant and Flind does not" is expected (C11).
 - The interval narrows as the sample grows.
   Its extra width over a fixed-horizon interval is smallest when the two arms of a comparison together hold about the tuning parameter's sample size (`sequential_tuning_parameter`, default 5,000 or the project's default), and larger far from it.
   An experiment with a much larger sample and the default value has a wider interval than it needs.

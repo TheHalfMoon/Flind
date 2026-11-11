@@ -396,7 +396,7 @@ def _no_data_event_names(team: Team, limit: int) -> list[str]:
     # table (which only contains events that fired). An event whose `last_seen_at` predates the dormancy
     # cutoff — or was never seen — is treated as dormant. `last_seen_at` is maintained on ingestion so it
     # can lag slightly, but it's the authoritative taxonomy signal and stops the LLM fabricating a
-    # plausible list of dormant events from its general knowledge of PostHog event names. The cutoff is a
+    # plausible list of dormant events from its general knowledge of Flind event names. The cutoff is a
     # fixed lookback, decoupled from the report window: dormancy is a property of the event, not the run.
     cutoff = datetime.now(tz=UTC) - timedelta(days=NO_DATA_LOOKBACK_DAYS)
     names = (

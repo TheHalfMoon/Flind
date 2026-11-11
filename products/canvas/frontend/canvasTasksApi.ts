@@ -78,7 +78,7 @@ export function canvasSpaceLabel(space: Pick<CanvasSpace, 'name' | 'system_role'
 
 /**
  * Starts the cloud task that builds a canvas. The run is unattended, so it bypasses
- * permission prompts the same way PostHog Desktop's canvas generation does. The model
+ * permission prompts the same way Flind Desktop's canvas generation does. The model
  * is left to the server default. The server titles the task synchronously.
  */
 export async function createCanvasGenerationTask(

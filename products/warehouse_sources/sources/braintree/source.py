@@ -89,7 +89,7 @@ class BraintreeSource(ResumableSource[BraintreeSourceConfig, BraintreeResumeConf
             name=ExternalDataSourceType.BRAINTREE,
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Braintree",
-            caption="""Enter your Braintree API keys to pull your payments data into the PostHog Data warehouse.
+            caption="""Enter your Braintree API keys to pull your payments data into the Flind Data warehouse.
 
 You can find your public and private keys in the [Braintree control panel](https://www.braintreegateway.com/) under Settings > API Keys. Sandbox and production use separate keys — make sure the environment matches.""",
             iconPath="/static/services/braintree.png",

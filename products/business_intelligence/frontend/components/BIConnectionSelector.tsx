@@ -21,7 +21,7 @@ export function BIConnectionSelector({ tabId }: { tabId: string }): JSX.Element 
             onChange={selectConnection}
             loading={connectionOptionsLoading}
             options={[
-                { value: null, label: 'PostHog warehouse' },
+                { value: null, label: 'Flind warehouse' },
                 ...(connectionOptions ?? []).map((source) => ({
                     value: source.id,
                     label: getConnectionOptionLabel(source),

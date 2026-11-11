@@ -99,7 +99,7 @@ def _property_filter(
 
 
 NOT_CHECKED_PROPERTY = not_checked(
-    "Couldn't check because PostHog can't tell whether the project received a filter's property"
+    "Couldn't check because Flind can't tell whether the project received a filter's property"
 )
 
 
@@ -194,7 +194,7 @@ class TestExposureCriteriaCannotMatch(TestCase):
             (
                 "custom_event_without_a_definition",
                 _custom_event({}),
-                not_checked("Couldn't check because PostHog keeps no record of this event name"),
+                not_checked("Couldn't check because Flind keeps no record of this event name"),
             ),
             (
                 "custom_event_after_the_end",

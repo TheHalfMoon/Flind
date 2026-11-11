@@ -87,7 +87,7 @@ class DeprecatePayloadSerializer(DataclassSerializer):
 @extend_schema_serializer(component_name="WarehouseSuggestionMaterializePayload")
 class MaterializePayloadSerializer(DataclassSerializer):
     live_sources = VisibleSourcesSerializer(
-        help_text="Sources that are always current, such as PostHog tables and direct connections."
+        help_text="Sources that are always current, such as Flind tables and direct connections."
     )
     unknown_sources = VisibleSourcesSerializer(
         help_text="Sources with no sync schedule, so their freshness is unknown."
@@ -102,7 +102,7 @@ class MaterializePayloadSerializer(DataclassSerializer):
         choices=WarehouseSuggestionRefreshIntervalBasis.choices,
         allow_null=True,
         help_text="Why the interval is not shorter. source_sync: the view's sources sync no faster. "
-        "fastest_schedule: PostHog refreshes views no more often. read_rate: people read the view no more often. "
+        "fastest_schedule: Flind refreshes views no more often. read_rate: people read the view no more often. "
         "consumer_refresh: the materialized views that read it refresh no more often. "
         "savings: a shorter interval would cost more than it saves. Null on suggestions made before this was "
         "recorded.",
@@ -221,7 +221,7 @@ class SuggestionEvidenceSerializer(serializers.Serializer):
     days_with_data = serializers.IntegerField(
         required=False,
         help_text=(
-            "Days of the 30-day usage window that PostHog has read history for. It counts days with reads in any "
+            "Days of the 30-day usage window that Flind has read history for. It counts days with reads in any "
             "project, so it shows how much history exists, not how active this project is."
         ),
     )
@@ -232,7 +232,7 @@ class SuggestionEvidenceSerializer(serializers.Serializer):
     human_days = serializers.IntegerField(required=False, help_text="Days on which people read the subject.")
     background_requests = serializers.IntegerField(
         required=False,
-        help_text="Queries PostHog ran on its own that read the subject, such as cache warming and alerts.",
+        help_text="Queries Flind ran on its own that read the subject, such as cache warming and alerts.",
     )
     requests_by_surface = serializers.DictField(
         child=serializers.IntegerField(),
@@ -241,7 +241,7 @@ class SuggestionEvidenceSerializer(serializers.Serializer):
     )
     last_read_at = serializers.DateTimeField(
         required=False,
-        help_text="When any query last read the subject, including queries PostHog ran on its own.",
+        help_text="When any query last read the subject, including queries Flind ran on its own.",
     )
 
 

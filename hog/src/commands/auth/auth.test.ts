@@ -11,7 +11,7 @@ const SETTINGS_FILE = '/home/test/.config/hog/settings.json'
 const HOG_CREDENTIALS_FILE = '/home/test/.config/hog/credentials.json'
 const PENDING_FILE = '/home/test/.config/hog/pending-auth-login.json'
 const DEVICE_CODE = 'device-secret-123'
-// Tokens as long as the ones PostHog issues, so the size check below is realistic.
+// Tokens as long as the ones Flind issues, so the size check below is realistic.
 const ACCESS_TOKEN = `pha_${'a'.repeat(43)}`
 const REFRESH_TOKEN = `phr_${'r'.repeat(43)}`
 
@@ -129,7 +129,7 @@ describe('hog auth login', () => {
         expect(result.requests.map((request) => request.url)).toEqual([`${loginHost}/oauth/device-authorization/`])
     })
 
-    test('a posthog.json host outside PostHog Cloud never starts a login', async () => {
+    test('a posthog.json host outside Flind Cloud never starts a login', async () => {
         const result = await runHog(['auth', 'login'], {
             env: { CLAUDECODE: '1' },
             files: { '/work/posthog.json': JSON.stringify({ host: 'https://login.example.com' }) },
@@ -292,10 +292,10 @@ describe('hog auth login', () => {
             false,
         ],
         [
-            "stops with PostHog's reason when it refuses the client, and forgets it",
+            "stops with Flind's reason when it refuses the client, and forgets it",
             {
                 status: 400,
-                body: { error: 'unauthorized_client', error_description: "PostHog hasn't verified this app." },
+                body: { error: 'unauthorized_client', error_description: "Flind hasn't verified this app." },
             },
             { code: 'login_unavailable', message: expect.stringContaining("hasn't verified this app") },
             false,
@@ -344,7 +344,7 @@ describe('hog auth login', () => {
         expect(result.stdout).toContain('Try it: hog query run')
     })
 
-    test('a pasted personal API key that PostHog rejects is not saved', async () => {
+    test('a pasted personal API key that Flind rejects is not saved', async () => {
         const result = await runHog(['auth', 'login'], {
             stdoutIsTTY: true,
             env: { NO_COLOR: '1' },
@@ -579,8 +579,8 @@ describe('hog auth login', () => {
     })
 
     test.each([
-        ['revokes an OAuth login in PostHog before it removes it', 200, true],
-        ['says when PostHog could not revoke the login, and still removes it', 503, false],
+        ['revokes an OAuth login in Flind before it removes it', 200, true],
+        ['says when Flind could not revoke the login, and still removes it', 503, false],
     ])('logout %s', async (_name, status, revoked) => {
         const result = await runHog(['auth', 'logout'], {
             env: { CLAUDECODE: '1' },
@@ -720,7 +720,7 @@ describe('hog auth login', () => {
             { code: 'invalid_legacy_credentials', hint: expect.any(String) },
         ],
         [
-            'a self-hosted key is checked under the path PostHog sits under',
+            'a self-hosted key is checked under the path Flind sits under',
             {
                 [LEGACY_CLI_FILE]: JSON.stringify({
                     host: 'https://example.com/posthog',
@@ -733,7 +733,7 @@ describe('hog auth login', () => {
             { status: 'migrated', host: 'https://example.com/posthog', store: 'keychain' },
         ],
         [
-            'a key PostHog rejects stays out of the store',
+            'a key Flind rejects stays out of the store',
             { [LEGACY_CLI_FILE]: STORED },
             401,
             1,
@@ -844,7 +844,7 @@ describe('hog auth login', () => {
         expect(result.files[ADD_PENDING_FILE]).toBeUndefined()
     })
 
-    test('add --wait keeps the current login when PostHog drops a required scope', async () => {
+    test('add --wait keeps the current login when Flind drops a required scope', async () => {
         const result = await runHog(['auth', 'add', '--wait'], {
             env: { CLAUDECODE: '1' },
             files: {
@@ -909,7 +909,7 @@ describe('hog auth login', () => {
             {},
             { code: 'unknown_scope', hint: expect.stringContaining('insight:write') },
         ],
-        ['a scope PostHog does not have', ['insight:admin'], {}, { code: 'unknown_scope' }],
+        ['a scope Flind does not have', ['insight:admin'], {}, { code: 'unknown_scope' }],
         [
             'a scope this hog does not know',
             ['newthing:read'],
@@ -922,7 +922,7 @@ describe('hog auth login', () => {
             { HOG_PERSONAL_API_KEY: 'phx_secret', HOG_PROJECT_ID: '42' },
             { code: 'step_up_unavailable', hint: expect.stringContaining('insight:write') },
         ],
-    ])('add refuses %s without asking PostHog', async (_name, scopes, env, expected) => {
+    ])('add refuses %s without asking Flind', async (_name, scopes, env, expected) => {
         const result = await runHog(['auth', 'add', ...scopes], {
             env: { CLAUDECODE: '1', ...env },
             ...OAUTH_LOGIN,
@@ -1025,7 +1025,7 @@ describe('hog auth login', () => {
     test.each([
         ['an endpoint', 'name: daily\nquery: SELECT 1\n', 'endpoint:write'],
         [
-            'an endpoint with a variable PostHog lacks',
+            'an endpoint with a variable Flind lacks',
             'name: daily\nquery: SELECT {variables.day}\nvariables:\n  - name: day\n    type: String\n',
             'endpoint:write insight_variable:write',
         ],

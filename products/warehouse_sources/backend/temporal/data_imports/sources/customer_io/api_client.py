@@ -68,7 +68,7 @@ def _session(api_key: str) -> requests.Session:
 
 
 def _events_for_resources(resource_names: list[str]) -> list[str]:
-    """Expand PostHog resource names into the full Customer.io event list.
+    """Expand Flind resource names into the full Customer.io event list.
 
     Resource names that aren't in `RESOURCE_TO_CIO_OBJECT_TYPE` (or whose object_type
     has no entries in `CIO_OBJECT_TYPE_TO_EVENTS`) are silently skipped.
@@ -267,7 +267,7 @@ def enable_webhook(api_key: str, region: str | None, webhook_url: str) -> tuple[
     """Flip the matching reporting webhook to ``disabled: false`` on Customer.io.
 
     Webhooks are created in a disabled state so Customer.io doesn't start firing
-    against the endpoint before PostHog has the signing secret to verify
+    against the endpoint before Flind has the signing secret to verify
     deliveries. This is called from ``webhook_inputs_updated`` once the user
     provides that secret.
     """

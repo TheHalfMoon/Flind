@@ -6,7 +6,7 @@ export const template: HogFunctionTemplate = {
     type: 'source_webhook',
     id: 'template-source-vercel-log-drain',
     name: 'Vercel logs',
-    description: 'Capture Vercel deployment logs as PostHog events',
+    description: 'Capture Vercel deployment logs as Flind events',
     icon_url: '/static/services/webhook.svg',
     category: ['Infrastructure', 'Monitoring'],
     code_language: 'hog',
@@ -224,7 +224,7 @@ let activeStrategy := strategy
 let distinctId := ''
 
 // Hashed strategies emit a 22-char unpadded base64 prefix of sha256, matching
-// the visual format of PostHog cookieless distinct IDs (132 bits of entropy —
+// the visual format of Flind cookieless distinct IDs (132 bits of entropy —
 // far more than needed for collision resistance, and short enough to be readable).
 fun shortHash(input) {
     return substring(sha256(input, 'base64'), 1, 22)
@@ -278,9 +278,9 @@ let props := {
     // Set the "Person processing" input to "identified" to create person profiles for stitching.
     '$process_person_profile': inputs.person_processing == 'identified',
 
-    // PostHog standard properties. $ip and $raw_user_agent are appended
+    // Flind standard properties. $ip and $raw_user_agent are appended
     // below when forward_ip_and_user_agent is enabled (default on, since
-    // PostHog's GeoIP and UA enrichment depend on them); flip the toggle
+    // Flind's GeoIP and UA enrichment depend on them); flip the toggle
     // off to keep raw client identifiers off the emitted event.
     '$distinct_id_strategy': activeStrategy,
     '$current_url': f'{scheme}://{host}{path}',
@@ -476,7 +476,7 @@ return {
             type: 'boolean',
             label: 'Forward client IP and user agent',
             description:
-                'When enabled (default), $ip, $raw_user_agent, proxy_client_ip, and proxy_user_agent are emitted on each event so PostHog can run GeoIP and user-agent enrichment. Disable if you want raw client identifiers stripped — distinct_id derivation still uses them as inputs, but they will not appear on the emitted event.',
+                'When enabled (default), $ip, $raw_user_agent, proxy_client_ip, and proxy_user_agent are emitted on each event so Flind can run GeoIP and user-agent enrichment. Disable if you want raw client identifiers stripped — distinct_id derivation still uses them as inputs, but they will not appear on the emitted event.',
             secret: false,
             required: false,
             default: true,

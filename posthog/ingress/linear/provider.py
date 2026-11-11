@@ -1,6 +1,6 @@
 """Linear OAuth App deliveries.
 
-Linear creates one webhook per workspace that authorizes the PostHog Linear App, and every one of
+Linear creates one webhook per workspace that authorizes the Flind Linear App, and every one of
 them posts to the URL in the App's webhook settings, signed with the App's one signing secret.
 """
 

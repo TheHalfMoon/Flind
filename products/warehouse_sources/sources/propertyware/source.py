@@ -54,7 +54,7 @@ class PropertywareSource(ResumableSource[PropertywareSourceConfig, PropertywareR
             label="Propertyware (RealPage)",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["property management", "rentals", "realpage"],
-            caption="""Enter your Propertyware API credentials to sync property, lease, and accounting data into the PostHog Data warehouse.
+            caption="""Enter your Propertyware API credentials to sync property, lease, and accounting data into the Flind Data warehouse.
 
 Find your **client ID**, **client secret**, and **organization ID** in Propertyware under **Administration Setup > API Keys** (you'll need an administrator role to access this page). The client secret is shown only once when the key is created, so store it somewhere safe before closing the dialog.""",
             docsUrl="https://posthog.com/docs/cdp/sources/propertyware",

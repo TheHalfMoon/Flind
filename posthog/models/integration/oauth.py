@@ -77,14 +77,14 @@ _INVALID_GRANT_MESSAGE = (
 )
 
 _STRIPE_MODE_MISMATCH_MESSAGE = (
-    "Stripe approved this connection in test mode or a sandbox, but PostHog can only connect live mode Stripe accounts. "
+    "Stripe approved this connection in test mode or a sandbox, but Flind can only connect live mode Stripe accounts. "
     "Starting the connection again won't fix this. To sync your live data, change Authentication type to "
     "Restricted API key and use a key you create in live mode."
 )
 
 
 _CLIENT_CREDENTIALS_REJECTED_MESSAGE = (
-    "This connection failed because of a problem on PostHog's side, and nothing in your account needs to change. "
+    "This connection failed because of a problem on Flind's side, and nothing in your account needs to change. "
     "Contact support so we can fix it."
 )
 
@@ -103,7 +103,7 @@ def _oauth_error_code(res: requests.Response) -> str | None:
 
 
 def _is_client_credentials_rejected(res: requests.Response) -> bool:
-    # The provider refused PostHog's client id or secret, so starting the connection again fails the same way.
+    # The provider refused Flind's client id or secret, so starting the connection again fails the same way.
     if _oauth_error_code(res) == "invalid_client":
         return True
     try:
@@ -317,8 +317,8 @@ def resolve_aliased_oauth_kind(path_kind: str, state: str) -> str:
     return path_kind
 
 
-# PostHog connect. Unlike every other OAuth kind — which points at a fixed third-party provider —
-# the `posthog` kind points at *another PostHog project*, in a region chosen by the user at connect
+# Flind connect. Unlike every other OAuth kind — which points at a fixed third-party provider —
+# the `posthog` kind points at *another Flind project*, in a region chosen by the user at connect
 # time. That region may differ from the connecting project's or be the same one (same-region is just
 # region == your own). So its authorize/token/userinfo URLs and client credentials are resolved per
 # target region rather than baked into a static config. The connecting side is the OAuth client; the
@@ -369,7 +369,7 @@ def _posthog_connect_target(region: str | None) -> _PosthogConnectTarget:
     if normalized == "DEV" and not _POSTHOG_CONNECT_ALLOW_DEV:
         # Defense in depth: even if a `DEV` region row somehow reaches here in production, refuse to
         # resolve it so the backend never POSTs a token exchange to the dev base URL.
-        raise NotImplementedError("PostHog connect DEV region is only available in dev/test")
+        raise NotImplementedError("Flind connect DEV region is only available in dev/test")
     targets = {
         "US": (
             settings.POSTHOG_CONNECT_BASE_URL_US,
@@ -388,10 +388,10 @@ def _posthog_connect_target(region: str | None) -> _PosthogConnectTarget:
         ),
     }
     if normalized not in targets:
-        raise NotImplementedError(f"PostHog connect OAuth not supported for region {region!r}")
+        raise NotImplementedError(f"Flind connect OAuth not supported for region {region!r}")
     base_url, client_id_key, client_secret_key = targets[normalized]
     if not base_url:
-        raise NotImplementedError(f"PostHog connect app not configured for region {normalized}")
+        raise NotImplementedError(f"Flind connect app not configured for region {normalized}")
     return _PosthogConnectTarget(
         region=normalized,
         base_url=base_url.rstrip("/"),
@@ -600,7 +600,7 @@ class OauthIntegration:
 
     @classmethod
     def client_credentials_for_kind(cls, kind: str, region: str | None = None) -> common.OauthClientCredentials:
-        """PostHog's OAuth client id and secret for `kind`, read from the credentials service.
+        """Flind's OAuth client id and secret for `kind`, read from the credentials service.
 
         Not cached, on purpose: a rotation must land on the next call, and the service can only tell
         when an old value is safe to retire if every use reads it again. So call this only where the
@@ -612,7 +612,7 @@ class OauthIntegration:
             target = _posthog_connect_target(region)
             values = get_many_or_settings([target.client_id_key, target.client_secret_key], CREDENTIALS_CALLER)
             client_id, client_secret = values[target.client_id_key], values[target.client_secret_key]
-            not_configured = f"PostHog connect app not configured for region {target.region}"
+            not_configured = f"Flind connect app not configured for region {target.region}"
         elif kind == "slack":
             values = get_many_or_instance_settings(SLACK_APP_CLIENT_CREDENTIAL_KEYS, CREDENTIALS_CALLER)
             client_id, client_secret = values["SLACK_APP_CLIENT_ID"], values["SLACK_APP_CLIENT_SECRET"]
@@ -1002,7 +1002,7 @@ class OauthIntegration:
             )
 
         elif kind == "apple-ads":
-            # Apple's service provider flow, where a PostHog registration acts on behalf of an
+            # Apple's service provider flow, where a Flind registration acts on behalf of an
             # Apple Ads user who grants access. The first-party flow the warehouse source also
             # supports is a different thing: it uses the customer's own key pair with
             # `client_credentials` and the `searchadsorg` scope, and never reaches this code.
@@ -1435,7 +1435,7 @@ class OauthIntegration:
                 logger.exception("Failed to fetch Stripe account name")
                 config["account_name"] = str(integration_id)
 
-        # Persist the target region and namespace the dedup key by it, so the same PostHog account
+        # Persist the target region and namespace the dedup key by it, so the same Flind account
         # connected in two different cells yields two distinct integrations instead of colliding on
         # `sub`. `region` also drives config/refresh/revoke lookups for the lifetime of the row.
         if kind == "posthog" and integration_id:
@@ -1551,7 +1551,7 @@ class OauthIntegration:
         """Revoke the OAuth grant at the provider, for kinds with a revoke endpoint.
 
         Revoking the refresh token also invalidates its access tokens (per RFC 7009 and
-        Salesforce's revoke semantics), so the provider no longer considers PostHog authorized
+        Salesforce's revoke semantics), so the provider no longer considers Flind authorized
         after a disconnect. Callers treat this as best-effort — the local deletion proceeds
         regardless.
         """
@@ -1579,7 +1579,7 @@ class OauthIntegration:
 
         data = {"token": token}
         if self.integration.kind == "resend":
-            # Resend registers PostHog as a confidential client (token_endpoint_auth_method=
+            # Resend registers Flind as a confidential client (token_endpoint_auth_method=
             # client_secret_post) and requires client authentication on revocation. Without it
             # the endpoint rejects the request and the grant survives the disconnect. The hint
             # tells the provider which token type it received (RFC 7009).

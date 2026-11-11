@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -1032,7 +1032,7 @@ export const ErrorTrackingQueryIssuesListCreateBody = /* @__PURE__ */ zod.object
         .max(errorTrackingQueryIssuesListCreateBodyUserMax)
         .optional()
         .describe('Search user\/email text.'),
-    personId: zod.uuid().optional().describe('Filter by exact PostHog person UUID.'),
+    personId: zod.uuid().optional().describe('Filter by exact Flind person UUID.'),
     url: zod
         .string()
         .max(errorTrackingQueryIssuesListCreateBodyUrlMax)

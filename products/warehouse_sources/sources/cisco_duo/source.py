@@ -58,7 +58,7 @@ class CiscoDuoSource(ResumableSource[CiscoDuoSourceConfig, CiscoDuoResumeConfig]
             label="Cisco Duo",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["duo", "duo security", "mfa", "2fa"],
-            caption="""Enter your Duo Admin API credentials to pull your Cisco Duo authentication, administrator, telephony, and activity logs into the PostHog Data warehouse, along with users, groups, group memberships, phones, endpoints, admins, integrations, and policies.
+            caption="""Enter your Duo Admin API credentials to pull your Cisco Duo authentication, administrator, telephony, and activity logs into the Flind Data warehouse, along with users, groups, group memberships, phones, endpoints, admins, integrations, and policies.
 
 In the [Duo Admin Panel](https://admin.duosecurity.com/), go to **Applications**, click **Protect an Application**, and protect the **Admin API** application. That gives you the integration key, secret key, and API hostname.
 

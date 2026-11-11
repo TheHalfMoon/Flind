@@ -1095,7 +1095,7 @@ async def _get_redshift_client_inputs_from_integration(
         port=inputs.connection.port,
         database=inputs.connection.database,
         team_id=inputs.batch_export.team_id,
-        session_name=f"PostHog-batch-exports-{inputs.batch_export.batch_export_id}",
+        session_name=f"Flind-batch-exports-{inputs.batch_export.batch_export_id}",
     )
 
 
@@ -1607,7 +1607,7 @@ async def _assume_role_for_stage_bucket(
     return await get_credentials_using_user_aws_role(
         aws_role_arn,
         external_id,
-        session_name=f"PostHog-batch-exports-{inputs.batch_export.batch_export_id}",
+        session_name=f"Flind-batch-exports-{inputs.batch_export.batch_export_id}",
         policy_statements=policy_statements,
     )
 

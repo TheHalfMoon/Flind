@@ -7,7 +7,7 @@ Read this before writing any response query: getting either trap wrong silently 
 
 ## Resolving the response value — coalesce both key schemes
 
-PostHog writes each answer under two property keys and the product reads them with a
+Flind writes each answer under two property keys and the product reads them with a
 `coalesce` (`getSurveyResponse()` in `frontend/src/scenes/surveys/utils.ts`). Query the
 same way or you will miss responses. Read `survey-get` for the question's `id` **and**
 its position in the `questions` array:

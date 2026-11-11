@@ -1,4 +1,4 @@
-// PostHog API response types. Keep in sync with:
+// Flind API response types. Keep in sync with:
 //   - frontend/src/queries/schema/schema-general.ts (WebOverviewItem)
 //   - posthog/api/feature_flag.py / posthog/api/experiment.py
 

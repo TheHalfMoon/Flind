@@ -68,7 +68,7 @@ class OpenRouterSource(ResumableSource[OpenRouterSourceConfig, OpenRouterResumeC
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="OpenRouter",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your OpenRouter API key to pull your OpenRouter usage and account data into the PostHog Data warehouse.
+            caption="""Enter your OpenRouter API key to pull your OpenRouter usage and account data into the Flind Data warehouse.
 
 Use a **management API key** (create one under [Settings -> Management Keys](https://openrouter.ai/settings/keys)) so the activity, API keys, credits, end users, organization members, workspaces, and workspace members tables can sync. A regular inference key can read only the models, model endpoints, providers, task classifications, session costs, and batches tables.
 

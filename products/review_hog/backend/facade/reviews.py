@@ -1,4 +1,4 @@
-"""Facade for starting a review a PostHog user asked for, and for reading where a pull request's runs stand.
+"""Facade for starting a review a Flind user asked for, and for reading where a pull request's runs stand.
 
 Lives apart from ``github.py`` and ``api.py`` because this path imports the Temporal client, which
 the webhook enqueue in ``github.py`` must not load.

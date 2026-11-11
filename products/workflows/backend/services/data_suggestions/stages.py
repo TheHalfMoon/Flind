@@ -48,7 +48,7 @@ def classify_event_stages(*, team_id: int, event_names: Sequence[str]) -> dict[s
     if not names:
         return {}
     try:
-        # Without team_id the gateway bills PostHog, so the classification never draws on the customer's credits.
+        # Without team_id the gateway bills Flind, so the classification never draws on the customer's credits.
         client = build_system_one_client(
             model=STAGE_MODEL.current(),
             ai_product="workflows",

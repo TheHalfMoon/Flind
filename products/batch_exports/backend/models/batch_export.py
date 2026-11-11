@@ -46,7 +46,7 @@ class DayOfWeek(IntEnum):
 
 
 class BatchExportDestination(UUIDTModel):
-    """A model for the destination that a PostHog BatchExport will target.
+    """A model for the destination that a Flind BatchExport will target.
 
     This model answers the question: where are we exporting data? It contains
     all the necessary information to interact with a specific destination. As we
@@ -108,7 +108,7 @@ class BatchExportDestination(UUIDTModel):
 
 
 class BatchExportSource(TeamScopedRootMixin, UUIDTModel):
-    """A model for the source of the data that a PostHog BatchExport will export.
+    """A model for the source of the data that a Flind BatchExport will export.
 
     This model answers the question: what data are we exporting? For now it holds a
     HogQL query whose results are exported, but it's designed to grow into the single
@@ -169,7 +169,7 @@ class BatchExportSource(TeamScopedRootMixin, UUIDTModel):
 
 
 class BatchExportRun(UUIDTModel):
-    """A single run of a PostHog batch export defined by its data interval bounds.
+    """A single run of a Flind batch export defined by its data interval bounds.
 
     It is used to keep track of the status of the export and once it finishes to
     store any result metadata, and errors that may have occurred during the process.
@@ -284,9 +284,9 @@ BATCH_EXPORT_INTERVAL_TO_START_JITTER = {
 
 
 class BatchExport(ModelActivityMixin, UUIDTModel):
-    """A model for a PostHog batch export that runs on a schedule.
+    """A model for a Flind batch export that runs on a schedule.
 
-    A batch export exports data from PostHog to the configured destination on a
+    A batch export exports data from Flind to the configured destination on a
     schedule given by its `interval`, `interval_offset`, and `timezone`.
 
     An instance of a batch export for a particular period of the schedule is called a
@@ -450,7 +450,7 @@ class BatchExport(ModelActivityMixin, UUIDTModel):
         """Return the offset day for this batch export.
 
         For a weekly schedule, this is the day of the week to start at (0-6, where 0 is Sunday).
-        Sunday is 0 since this is what is used by Temporal and Sunday is also the default week start day in PostHog.
+        Sunday is 0 since this is what is used by Temporal and Sunday is also the default week start day in Flind.
         For all other intervals, this is None.
         """
         if self.interval == "week":
@@ -717,7 +717,7 @@ class BatchExportFileDownload(ModelActivityMixin, UUIDTModel):
 
 
 class BatchExportOnDemand(TeamScopedRootMixin, ModelActivityMixin, UUIDTModel):
-    """A model for a PostHog batch export triggered on demand.
+    """A model for a Flind batch export triggered on demand.
 
     Shares a lot of similarities with a `BatchExport`, with the big difference that
     an on demand batch export does not run on a schedule.

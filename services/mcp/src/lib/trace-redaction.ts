@@ -7,10 +7,10 @@
  * application and its framework put there, including credentials and user
  * identity. A rule that names what to drop always trails the data, so this is
  * an allowlist. A withheld property is reported by name, so an agent can see
- * that it exists and read it in PostHog.
+ * that it exists and read it in Flind.
  *
  * This is a client-boundary safeguard on these two tools only. Stored events,
- * the PostHog UI, and property filters keep the complete bag, so a query can
+ * the Flind UI, and property filters keep the complete bag, so a query can
  * still filter on a property it cannot read back.
  */
 

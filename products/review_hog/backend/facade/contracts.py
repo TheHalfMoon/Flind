@@ -1,4 +1,4 @@
-"""What PostHog Review hands to other products and to its own views. No Django here."""
+"""What Flind Review hands to other products and to its own views. No Django here."""
 
 from collections.abc import Mapping, Sequence
 from datetime import datetime

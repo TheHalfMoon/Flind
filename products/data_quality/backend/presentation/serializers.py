@@ -39,7 +39,7 @@ class DataQualitySubjectRefSerializer(serializers.Serializer):
         choices=[(t.value, t.value) for t in SubjectType],
         help_text="Kind of object: 'table', 'view', 'metric', or 'posthog_table'.",
     )
-    subject_uuid = serializers.UUIDField(help_text="Id of the table, view, metric, or PostHog table.")
+    subject_uuid = serializers.UUIDField(help_text="Id of the table, view, metric, or Flind table.")
 
 
 @extend_schema_serializer(component_name="DataQualitySubject")
@@ -128,7 +128,7 @@ class DataQualityCheckSerializer(serializers.ModelSerializer):
     subject_uuid = serializers.UUIDField(
         read_only=True,
         allow_null=True,
-        help_text="Id of the table, view, metric, or PostHog table being checked. Null once the subject is deleted.",
+        help_text="Id of the table, view, metric, or Flind table being checked. Null once the subject is deleted.",
     )
     check_type = serializers.ChoiceField(
         choices=[(t.value, t.value) for t in CheckType],
@@ -294,7 +294,7 @@ class DataQualityCheckCreateSerializer(DataQualityCheckSerializer):
         choices=[(t.value, t.value) for t in SubjectType],
         help_text="Kind of object to check: 'table', 'view', 'metric', or 'posthog_table'.",
     )
-    subject_uuid = serializers.UUIDField(help_text="Id of the table, view, metric, or PostHog table to check.")
+    subject_uuid = serializers.UUIDField(help_text="Id of the table, view, metric, or Flind table to check.")
 
 
 @extend_schema_serializer(component_name="DataQualityOverviewCheck")
@@ -307,7 +307,7 @@ class DataQualityOverviewCheckSerializer(DataQualityCheckSerializer):
     """
 
     subject_node_id = serializers.SerializerMethodField(
-        help_text="Data modeling node of the view or PostHog table this check audits, or null when it is on "
+        help_text="Data modeling node of the view or Flind table this check audits, or null when it is on "
         "no DAG or the subject is a warehouse table."
     )
     subject_source_id = serializers.SerializerMethodField(
@@ -392,7 +392,7 @@ class DataQualitySubjectScheduleSerializer(DataQualityCheckScheduleSerializer):
     subject_type = serializers.ChoiceField(
         choices=[(t.value, t.value) for t in SubjectType], read_only=True, help_text="'metric' or 'posthog_table'."
     )
-    subject_uuid = serializers.UUIDField(read_only=True, help_text="Id of the metric or PostHog table.")
+    subject_uuid = serializers.UUIDField(read_only=True, help_text="Id of the metric or Flind table.")
 
     def to_representation(self, instance: api.SubjectSchedule) -> dict[str, Any]:
         row = super().to_representation(instance.schedule)
@@ -520,7 +520,7 @@ class SubjectHealthSerializer(serializers.Serializer):
     """Per-subject rollup, the same rule the information_schema.data_quality_health table uses."""
 
     subject_type = serializers.CharField(help_text="'table', 'view', 'metric', or 'posthog_table'.")
-    subject_uuid = serializers.CharField(help_text="Id of the table, view, metric, or PostHog table.")
+    subject_uuid = serializers.CharField(help_text="Id of the table, view, metric, or Flind table.")
     health = serializers.CharField(
         help_text="failing (an error-severity check failed), erroring (a check could not run), "
         "warn (only warn-severity failures), healthy, or unknown (nothing has run yet)."

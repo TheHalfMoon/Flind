@@ -55,7 +55,7 @@ class FactorialSource(ResumableSource[FactorialSourceConfig, FactorialResumeConf
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="Factorial",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Factorial API key to sync your HR, time-off, attendance, payroll, and recruiting data into the PostHog Data warehouse.
+            caption="""Enter your Factorial API key to sync your HR, time-off, attendance, payroll, and recruiting data into the Flind Data warehouse.
 
 Create an API key in your Factorial account under **Settings > API keys** (or **Integrations > Public API**). The key grants read access to your company's data across every table listed below.""",
             iconPath="/static/services/factorial.png",

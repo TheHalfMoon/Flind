@@ -43,7 +43,7 @@ def start_async_migration(
     Returns whether migration was successful
     Checks:
     1. We're not over the concurrent migrations limit
-    2. The migration can be run with the current PostHog version
+    2. The migration can be run with the current Flind version
     3. The migration is not already running
     4. The migration is required given the instance configuration
     5. The service version requirements are met (e.g. X < ClickHouse version < Y)
@@ -72,7 +72,7 @@ def start_async_migration(
     ):
         process_error(
             migration_instance,
-            f"Migration is not available on this PostHog version",
+            f"Migration is not available on this Flind version",
             status=MigrationStatus.FailedAtStartup,
             rollback=False,
         )

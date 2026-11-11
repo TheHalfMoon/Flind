@@ -38,7 +38,7 @@ export function QuillContextPicker(): JSX.Element {
                         variant="default"
                         size={showLabel ? 'sm' : 'icon-sm'}
                         aria-label="Add context"
-                        tooltip="Add context to help PostHog AI answer your question"
+                        tooltip="Add context to help Flind AI answer your question"
                         disabledReason={contextDisabledReason}
                         data-attr="max-context-picker"
                     >

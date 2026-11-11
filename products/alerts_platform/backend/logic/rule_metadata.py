@@ -40,7 +40,7 @@ def validate_labels(labels: Mapping[str, str]) -> None:
     for name, value in labels.items():
         _check_name(name, "label")
         if name in _RESERVED_LABELS:
-            raise InvalidRuleMetadata(f"`{name}` is set by PostHog and cannot be a label.")
+            raise InvalidRuleMetadata(f"`{name}` is set by Flind and cannot be a label.")
         _check_value(name, value, _MAX_LABEL_VALUE_BYTES)
         if "{{" in value:
             raise InvalidRuleMetadata(f"Label `{name}` cannot use a template. Only annotations can.")
@@ -108,7 +108,7 @@ def _check_name(name: str, kind: str) -> None:
             f"start with a letter or underscore, and use at most {_MAX_NAME_LENGTH} characters."
         )
     if name.startswith(_RESERVED_PREFIX):
-        raise InvalidRuleMetadata(f"`{name}` uses the `{_RESERVED_PREFIX}` prefix, which PostHog reserves.")
+        raise InvalidRuleMetadata(f"`{name}` uses the `{_RESERVED_PREFIX}` prefix, which Flind reserves.")
 
 
 def _check_value(name: str, value: str, max_bytes: int) -> None:

@@ -80,7 +80,7 @@ async def eval_midrun_changes(ctx: EvalContext) -> None:
             setup=seed_ended_experiment_with_flag_flip,
             expected={
                 "diagnosis_group": (
-                    "The flag was rewritten when the experiment was ended via ship-variant — PostHog "
+                    "The flag was rewritten when the experiment was ended via ship-variant — Flind "
                     "rewrites the multivariate distribution to 0/100 in favour of the shipped variant "
                     "and, in the 'all users' mode, prepends a release condition with the description "
                     "'Added automatically when the experiment was ended to keep only one variant.'. "

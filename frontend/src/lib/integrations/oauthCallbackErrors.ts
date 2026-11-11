@@ -8,7 +8,7 @@
 // pinned: URL search param — the callback redirect and the landing page both read it.
 export const INTEGRATION_ERROR_PARAM = 'integration_error'
 
-// Not a provider code: PostHog's own CSRF state cookie outlived the authorization round-trip, so
+// Not a provider code: Flind's own CSRF state cookie outlived the authorization round-trip, so
 // the callback can't be verified. It rides the same param as the provider codes to reach whichever
 // page the user lands on.
 // pinned: URL search param value — the callback redirect and the landing page both read it.

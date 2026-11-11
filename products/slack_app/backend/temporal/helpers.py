@@ -1,4 +1,4 @@
-"""Shared helpers used across PostHog Slack App Temporal activities.
+"""Shared helpers used across Flind Slack App Temporal activities.
 
 These helpers exist outside the activity modules so that any activity in
 ``slack_app.activities.*`` can use them without forcing a cross-module import
@@ -26,7 +26,7 @@ def block_if_team_over_quota(
     next to the Slack-posting helpers, while the quota lookup lives here so
     activity modules can compose both without each one re-importing
     ``ee.billing``. Returns True when the team was blocked. Pass
-    ``post_denial=False`` for a turn nobody asked PostHog for, so the refusal
+    ``post_denial=False`` for a turn nobody asked Flind for, so the refusal
     stops the run without a message in the thread.
     """
     from products.slack_app.backend.api import post_quota_exhausted_denial
@@ -65,7 +65,7 @@ def block_if_ai_processing_not_approved(
     """Refuse a Slack-bot turn when the organization has not approved AI data processing.
 
     Every turn sends Slack content to external AI services, so it needs the same org
-    consent as PostHog AI in the web app. A null consent counts as not approved, as in
+    consent as Flind AI in the web app. A null consent counts as not approved, as in
     the settings toggle. Returns True when the turn was blocked.
     """
     from products.slack_app.backend.api import post_ai_processing_not_approved_denial

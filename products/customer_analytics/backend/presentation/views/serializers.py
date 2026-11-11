@@ -1197,7 +1197,7 @@ class AccountSerializer(DataclassSerializer):
 
 class AccountPresenceViewerSerializer(DataclassSerializer):
     user_id = serializers.IntegerField(
-        read_only=True, help_text="PostHog user ID of the teammate viewing this account."
+        read_only=True, help_text="Flind user ID of the teammate viewing this account."
     )
     display_name = serializers.CharField(read_only=True, help_text="Display name of the teammate viewing this account.")
 
@@ -1393,7 +1393,7 @@ class ConversationMessageSenderSerializer(DataclassSerializer):
     person_id = serializers.UUIDField(
         read_only=True,
         allow_null=True,
-        help_text="UUID of the matched PostHog person, when available.",
+        help_text="UUID of the matched Flind person, when available.",
     )
     distinct_id = serializers.CharField(
         read_only=True,
@@ -1413,7 +1413,7 @@ class ConversationMessageSummarySerializer(DataclassSerializer):
     direction = serializers.ChoiceField(
         read_only=True,
         choices=[("inbound", "Inbound"), ("outbound", "Outbound")],
-        help_text="Whether PostHog received or sent the message.",
+        help_text="Whether Flind received or sent the message.",
     )
 
     class Meta:
@@ -1429,7 +1429,7 @@ class SupportTicketMessageSerializer(DataclassSerializer):
     direction = serializers.ChoiceField(
         read_only=True,
         choices=[("inbound", "Inbound"), ("outbound", "Outbound")],
-        help_text="Whether PostHog received or sent the message.",
+        help_text="Whether Flind received or sent the message.",
     )
     is_private = serializers.BooleanField(
         read_only=True,
@@ -1492,12 +1492,12 @@ class EmailThreadParticipantSerializer(DataclassSerializer):
     kind = serializers.ChoiceField(
         read_only=True,
         choices=[("internal", "Internal"), ("customer", "Customer")],
-        help_text="Whether the participant belongs to the PostHog organization or the customer.",
+        help_text="Whether the participant belongs to the Flind organization or the customer.",
     )
     person_id = serializers.UUIDField(
         read_only=True,
         allow_null=True,
-        help_text="UUID of the matched PostHog person for a customer participant, when available.",
+        help_text="UUID of the matched Flind person for a customer participant, when available.",
     )
 
     class Meta:
@@ -1591,7 +1591,7 @@ class AccountEmailThreadMessageSerializer(DataclassSerializer):
     direction = serializers.ChoiceField(
         read_only=True,
         choices=[("inbound", "Inbound"), ("outbound", "Outbound")],
-        help_text="Whether PostHog received or sent the message.",
+        help_text="Whether Flind received or sent the message.",
     )
     content = serializers.CharField(read_only=True, allow_blank=True, help_text="Plain-text email content.")
 
@@ -1681,7 +1681,7 @@ class MeetingParticipantSerializer(DataclassSerializer):
     )
     is_organizer = serializers.BooleanField(read_only=True, help_text="Whether this attendee organized the meeting.")
     person_id = serializers.UUIDField(
-        read_only=True, allow_null=True, help_text="UUID of the PostHog person resolved for this attendee, if any."
+        read_only=True, allow_null=True, help_text="UUID of the Flind person resolved for this attendee, if any."
     )
 
     class Meta:
@@ -2121,7 +2121,7 @@ class CustomPropertyDefinitionSerializer(DataclassSerializer):
     is_canonical = serializers.BooleanField(
         read_only=True,
         help_text=(
-            "True when PostHog writes this property itself. Its name and display type are fixed — "
+            "True when Flind writes this property itself. Its name and display type are fixed — "
             "an update changing either is rejected."
         ),
     )
@@ -2398,7 +2398,7 @@ class AccountRelationshipDefinitionSerializer(DataclassSerializer):
 class AccountAssignmentSerializer(DataclassSerializer):
     """A user assigned to an account relationship (read shape)."""
 
-    id = serializers.IntegerField(read_only=True, help_text="PostHog user id of the assignee.")
+    id = serializers.IntegerField(read_only=True, help_text="Flind user id of the assignee.")
     email = serializers.EmailField(read_only=True, help_text="Email of the assignee.")
 
     class Meta:
@@ -2441,7 +2441,7 @@ class AccountRelationshipWriteSerializer(serializers.Serializer):
 
     definition = serializers.UUIDField(help_text="Id of the relationship definition to assign.")
     user = serializers.IntegerField(
-        help_text="PostHog user id of the assignee. Must be a member of the account's organization."
+        help_text="Flind user id of the assignee. Must be a member of the account's organization."
     )
 
 

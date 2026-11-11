@@ -20,7 +20,7 @@ export const canvasCreatorSchema = z.object({
 });
 export type CanvasCreator = z.infer<typeof canvasCreatorSchema>;
 
-// A canvas record from the PostHog canvases API, normalized to camelCase and
+// A canvas record from the Flind canvases API, normalized to camelCase and
 // epoch-ms timestamps. Source code and version history are NOT part of the
 // record — they live behind the source/versions endpoints, and the rendered
 // output behind the build lifecycle.
@@ -266,7 +266,7 @@ export const canvasActionResultSchema = z.object({
 });
 export type CanvasActionResult = z.infer<typeof canvasActionResultSchema>;
 
-// One PostHog MCP tool a canvas may run, as the host renders it before running it.
+// One Flind MCP tool a canvas may run, as the host renders it before running it.
 export const canvasToolDefinitionSchema = z.object({
   name: z.string(),
   summary: z.string(),

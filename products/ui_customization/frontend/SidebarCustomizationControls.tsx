@@ -25,7 +25,7 @@ export function SidebarCustomizationControls(props: SidebarCustomizationControls
     const { resetSidebar } = useActions(logic)
     const { openSidePanel } = useActions(sidePanelStateLogic)
     const { featureFlags } = useValues(featureFlagLogic)
-    // Only the PostHog AI that runs in a sandbox has the tools that save a layout.
+    // Only the Flind AI that runs in a sandbox has the tools that save a layout.
     const canCustomize = !!featureFlags[FEATURE_FLAGS.PHAI_SANDBOX_MODE]
 
     if (!sidebarCustomizationEnabled || (!canCustomize && !sidebarCustomized)) {
@@ -43,7 +43,7 @@ export function SidebarCustomizationControls(props: SidebarCustomizationControls
                                 className="text-muted-foreground"
                                 onClick={() => {
                                     posthog.capture(props.customizeEvent, { customized: sidebarCustomized })
-                                    // The side panel keeps the sidebar in view while PostHog AI changes it.
+                                    // The side panel keeps the sidebar in view while Flind AI changes it.
                                     openSidePanel(SidePanelTab.Max, autoRunMaxPrompt(props.customizePrompt))
                                 }}
                                 data-attr={`${props.dataAttrPrefix}-customize`}
@@ -51,7 +51,7 @@ export function SidebarCustomizationControls(props: SidebarCustomizationControls
                         }
                     >
                         <IconSparkles />
-                        Personalize with PostHog AI
+                        Personalize with Flind AI
                     </TooltipTrigger>
                     <TooltipContent side="right">GenUI, so hot right now</TooltipContent>
                 </Tooltip>

@@ -63,7 +63,7 @@ def make_duckgres_conninfo(
     ``application_name`` is forwarded to duckgres as a standard libpq startup
     param and echoed into its analytics events, so callers should pass a
     caller-identifying slug (e.g. ``"ducklake-register"``) instead of relying
-    on the ``"posthog"`` default — that default only distinguishes PostHog's
+    on the ``"posthog"`` default — that default only distinguishes Flind's
     own connections in aggregate from customer clients (psql, their own
     application_name).
     """

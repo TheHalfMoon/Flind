@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 export interface WizardInstallStartRequestApi {
@@ -53,7 +53,7 @@ export interface WizardInstallStartApi {
      * * `failed` - failed
      * * `cancelled` - cancelled */
     readonly status: WizardRunStatusEnumApi
-    /** PostHog page where the user can follow their setup runs. */
+    /** Flind page where the user can follow their setup runs. */
     readonly url: string
 }
 
@@ -833,7 +833,7 @@ export interface WizardCatalogToolApi {
      * @nullable
      */
     warehouse_source_type: string | null
-    /** Warehouse destination PostHog can send data to when the tool is that warehouse, or null for any other tool.
+    /** Warehouse destination Flind can send data to when the tool is that warehouse, or null for any other tool.
      *
      * * `Redshift` - Redshift
      * * `Snowflake` - Snowflake
@@ -848,7 +848,7 @@ export interface WizardCatalogToolApi {
      * * `in-cli` - In the terminal
      * * `deep-link` - In the app */
     wizard_setup_mode: WizardSetupModeEnumApi | null
-    /** PostHog products this tool is an alternative to. */
+    /** Flind products this tool is an alternative to. */
     alternative_to: string[]
     /** Kinds that reach the same data through a more specific source. When one of them also matches, the wizard drops this tool. */
     superseded_by: string[]

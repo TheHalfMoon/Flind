@@ -10,7 +10,7 @@ vi.mock('@/lib/env', () => ({
     },
 }))
 
-describe('PostHog client', () => {
+describe('Flind client', () => {
     afterEach(() => {
         vi.unstubAllGlobals()
     })

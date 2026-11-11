@@ -6,7 +6,7 @@ import { appVariant, environmentBadge } from '@/lib/environment'
 import { environmentRibbonColors, radii, type } from './tokens'
 
 interface EnvironmentRibbonProps {
-    /** The PostHog host the screen talks to, or null when there is none yet. */
+    /** The Flind host the screen talks to, or null when there is none yet. */
     host: string | null
     style?: StyleProp<ViewStyle>
 }

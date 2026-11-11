@@ -7,7 +7,7 @@ SCOPE_DOCS = (
         object="streamlit_app",
         name="Streamlit app",
         plural="Streamlit apps",
-        description="Streamlit apps that run on your PostHog data, including their source, versions, and running state.",
+        description="Streamlit apps that run on your Flind data, including their source, versions, and running state.",
         group="Data warehouse & pipelines",
     ),
 )

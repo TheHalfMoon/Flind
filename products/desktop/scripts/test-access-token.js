@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Test script to validate a PostHog access token.
+ * Test script to validate a Flind access token.
  *
  * Usage:
  *   node scripts/test-access-token.js <access_token> <project_id> [region]
@@ -90,7 +90,7 @@ if (args.length < 2) {
   console.log("");
   console.log("Arguments:");
   console.log("  access_token   Your OAuth access token");
-  console.log("  project_id     Your PostHog project ID");
+  console.log("  project_id     Your Flind project ID");
   console.log("  region         us, eu, or dev (default: us)");
   console.log("");
   console.log("Example:");

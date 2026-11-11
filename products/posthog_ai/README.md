@@ -1,10 +1,10 @@
-# PostHog AI
+# Flind AI
 
-PostHog AI is the agent that works alongside the user inside PostHog. This README is for **engineers on other product teams**: read it to make your product work with the agent.
+Flind AI is the agent that works alongside the user inside Flind. This README is for **engineers on other product teams**: read it to make your product work with the agent.
 
 > Building the agent surface itself? That's [`frontend/AGENTS.md`](./frontend/AGENTS.md). Consuming the run UI in detail? [`frontend/README.md`](./frontend/README.md). This file is the integration entry point.
 
-## Where PostHog AI renders
+## Where Flind AI renders
 
 Your integration can show up in any of these:
 
@@ -18,15 +18,15 @@ Your integration can show up in any of these:
 
 There are two runtimes, picked per conversation by `conversation.agent_runtime`. **`sandbox` is where all new work goes.** `langgraph` is the legacy runtime and is frozen — do not extend it.
 
-## Testing PostHog AI
+## Testing Flind AI
 
-Use the [eval harness](eval_harness/README.md) to test PostHog AI 2.0 with the real sandbox agent.
+Use the [eval harness](eval_harness/README.md) to test Flind AI 2.0 with the real sandbox agent.
 Run `hogli evals --list` to find suites and `hogli evals <selector>` to run them.
 Add suites under `products/posthog_ai/evals/` or `products/<product>/evals/` and follow [`/writing-evals`](../../.agents/skills/writing-evals/SKILL.md).
 
 ## There is no backend integration API
 
-Nothing you build here talks to a PostHog AI backend. An integration has two halves:
+Nothing you build here talks to a Flind AI backend. An integration has two halves:
 
 1. **Give the agent the capability** — ship **MCP tools** for your product. That is how the agent reads and writes your entities. See [`/implementing-mcp-tools`](../../.agents/skills/implementing-mcp-tools/SKILL.md) and `products/<name>/mcp/tools.yaml`.
 2. **Make your UI cooperate** — the frontend seams below.
@@ -100,7 +100,7 @@ useToolStreamListener({
 })
 ```
 
-**Apply an agent edit back into an open form** — `useMcpToolApplyBack`. This is the one to reach for when the side panel is open next to your editor: the user asks PostHog AI to change a feature flag, and the open form updates instead of going stale.
+**Apply an agent edit back into an open form** — `useMcpToolApplyBack`. This is the one to reach for when the side panel is open next to your editor: the user asks Flind AI to change a feature flag, and the open form updates instead of going stale.
 
 ```tsx
 useMcpToolApplyBack({
@@ -120,7 +120,7 @@ Apply-back is gated to the run the user is actually watching, excludes replay, a
 Two caveats for both hooks:
 
 - **Replay events are suppressed by default.** A page reload replays the run's history; without suppression your handler would re-fire on every reload. Opt in with `includeReplay` only if you want that.
-- **`toolName` is unreliable at `phase: 'started'`** for exec-wrapped PostHog tools — the command streams in via updates, so it can still be `__posthog_exec_unknown__`. Match on `'completed'` when you need certainty.
+- **`toolName` is unreliable at `phase: 'started'`** for exec-wrapped Flind tools — the command streams in via updates, so it can still be `__posthog_exec_unknown__`. Match on `'completed'` when you need certainty.
 
 From a kea logic, either listen to `toolStreamEventsLogic.actionTypes.emitToolEvent` and filter `event.source` yourself, or register via `registerToolListener` / `deregisterToolListener` in a disposable — again with `pauseOnPageHidden: false`, since missed live events are not redelivered.
 
@@ -157,7 +157,7 @@ export const posthogAiToolRenderers: ToolRegistryEntry[] = [
 
 `key` is the inner exec tool name. `Renderer` draws the result card; `PermissionPreview` draws the approval evidence before a write runs.
 Either component can use `lazyWithRetry`; importing declarations never evaluates their implementations.
-Set `requiresPostHogOrigin: true` for PostHog entities so colliding third-party tool names retain generic cards and evidence.
+Set `requiresPostHogOrigin: true` for Flind entities so colliding third-party tool names retain generic cards and evidence.
 Unknown tools and preview-only entries keep the generic result card.
 
 `PermissionPreview` receives `{ request, fallback }`, typed as `PermissionPreviewProps` from `api/tools`.
@@ -171,7 +171,7 @@ Errors retain the `posthog_ai_permission_preview` feature tag, and a new permiss
 
 Insights, dashboards, recordings, notebooks, and query widgets live in `frontend/components/tool/widgets/`, with declarations in `frontend/posthogAiToolRenderers.tsx`. The query renderer also handles `insight-query` saved-insight results. Error tracking owns its widgets under `products/error_tracking/frontend/posthogAi/` and declares them in its frontend-root `posthogAiToolRenderers.tsx`. Replay vision owns its scan widget and polling logic under `products/replay_vision/frontend/posthogAi/`; Max composes that widget directly. CDP declares its preview in `products/cdp/frontend/posthogAiToolRenderers.tsx`.
 
-> **MCP UI apps are a different mechanism.** The `@posthog/mcp-ui` components under `products/*/mcp/apps/` render tool results in _external_ clients like Claude Desktop, served through `services/mcp/`. They do not render inside PostHog AI threads. See [`/implementing-mcp-ui-apps`](../../.agents/skills/implementing-mcp-ui-apps/SKILL.md).
+> **MCP UI apps are a different mechanism.** The `@posthog/mcp-ui` components under `products/*/mcp/apps/` render tool results in _external_ clients like Claude Desktop, served through `services/mcp/`. They do not render inside Flind AI threads. See [`/implementing-mcp-ui-apps`](../../.agents/skills/implementing-mcp-ui-apps/SKILL.md).
 
 ## Seam 5 (advanced) — build a custom UI on the run primitives
 

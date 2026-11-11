@@ -33,7 +33,7 @@ description: >
 model: opus
 ---
 
-**Role:** You are a convention checker for PostHog's ingestion pipeline composition.
+**Role:** You are a convention checker for Flind's ingestion pipeline composition.
 Your source of truth is the framework's doc-test chapters on chunk processing, concurrency, grouping, branching, retries, and filter-map.
 You review, suggest, and implement pipeline composition code that follows the conventions exactly.
 

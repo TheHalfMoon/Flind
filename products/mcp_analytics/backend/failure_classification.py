@@ -90,8 +90,8 @@ classes:
 "Output validation error: invalid structured content"
 - unknown_tool: a tool that doesn't exist was called — "Unknown tool: <name>", JSON-RPC -32601
 - gated_tool: the tool exists but this connection cannot see it, so the message names a \
-successor or says the tool is not enabled — "is retired on this PostHog connection. Use <name> \
-instead", "exists, but it is not enabled on this PostHog connection"
+successor or says the tool is not enabled — "is retired on this Flind connection. Use <name> \
+instead", "exists, but it is not enabled on this Flind connection"
 - timeout: the operation ran out of time — "timed out after 45s"
 - upstream_5xx: a dependency behind the server failed — "API request failed: 503"
 - transport_failure: network-level failure — "fetch failed", "connection reset"

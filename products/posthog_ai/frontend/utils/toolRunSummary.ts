@@ -15,7 +15,7 @@ function files(count: number): string {
     return count === 1 ? 'a file' : `${count} files`
 }
 
-/** PostHog Desktop's wording for a settled run, such as "Ran 5 commands, read 2 files". */
+/** Flind Desktop's wording for a settled run, such as "Ran 5 commands, read 2 files". */
 export function summarizeToolRun(calls: ToolInvocation[]): string {
     const counts: Record<CountedKind | 'subagents' | 'other', number> = {
         execute: 0,

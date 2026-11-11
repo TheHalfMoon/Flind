@@ -24,7 +24,7 @@ import { type Adapter, customModelMeta } from "@flind/shared";
 
 // Web port of AgentService.getPreviewConfigOptions (workspace-server). The
 // desktop host runs this in the Node main process; the browser can run the exact
-// same logic because it's a plain fetch to the PostHog LLM gateway (CORS-open,
+// same logic because it's a plain fetch to the Flind LLM gateway (CORS-open,
 // access-control-allow-origin: *) plus pure option-building. Kept here in the
 // host so the web router stays a thin forward and packages/* are untouched.
 export async function getWebPreviewConfigOptions(

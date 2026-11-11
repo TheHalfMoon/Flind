@@ -38,7 +38,7 @@ class _EvalUvicornServer(uvicorn.Server):
 class EvalLiveServer:
     """Session-lifetime ASGI server backed by the eval test database.
 
-    Serving PostHog's full ASGI application keeps the sandbox event-ingest route
+    Serving Flind's full ASGI application keeps the sandbox event-ingest route
     available alongside normal Django URLs. Docker sandboxes reach the listener
     through ``host.docker.internal``.
     """

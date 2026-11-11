@@ -33,7 +33,7 @@ export const manifest: ProductManifest = {
             import: () => import('./frontend/CommunitySkillsScene'),
             projectBased: true,
             name: 'Community skills',
-            description: 'Discover and install agent skills shared by the PostHog community.',
+            description: 'Discover and install agent skills shared by the Flind community.',
             layout: 'app-container',
             iconType: 'llm_prompts',
         },

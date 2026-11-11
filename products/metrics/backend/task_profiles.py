@@ -11,7 +11,7 @@ from products.tasks.backend.facade.profiles import (
     register_task_profiles,
 )
 
-# The PostHog MCP server reads the user and the project to start a session, so it needs user:read and
+# The Flind MCP server reads the user and the project to start a session, so it needs user:read and
 # project:read. The rest lets the agent read metrics, logs and traces. Nothing lets it write.
 AGENT_MCP_SCOPES = ["metrics:read", "logs:read", "tracing:read", "user:read", "project:read"]
 # Read tools that the internal scopes unlock but the conversion never needs. The input can carry planted

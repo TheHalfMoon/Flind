@@ -48,7 +48,7 @@ class PersistIqSource(ResumableSource[PersistIqSourceConfig, PersistiqResumeConf
             category=DataWarehouseSourceCategory.SALES,
             label="PersistIq",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your PersistIQ API key to pull your sales engagement data into the PostHog Data warehouse.
+            caption="""Enter your PersistIQ API key to pull your sales engagement data into the Flind Data warehouse.
 
 You can find your API key under **Profile → Integrations → PersistIQ API** in [PersistIQ](https://app.persistiq.com). The key grants read access to your leads, users, campaigns, events, and account settings.
 """,

@@ -155,7 +155,7 @@ def validate_aws_role_arn(aws_role_arn: str, our_aws_role_arn: str, external_id:
     try:
         first_response = sts.assume_role(
             RoleArn=our_aws_role_arn,
-            RoleSessionName="PostHog-validate-aws-role-arn",
+            RoleSessionName="Flind-validate-aws-role-arn",
             Policy=json.dumps(
                 # Narrow permissions to only allow assuming provided role with this
                 # session.
@@ -187,7 +187,7 @@ def validate_aws_role_arn(aws_role_arn: str, our_aws_role_arn: str, external_id:
     try:
         _ = external_sts.assume_role(
             RoleArn=aws_role_arn,
-            RoleSessionName="PostHog-validate-aws-role-arn",
+            RoleSessionName="Flind-validate-aws-role-arn",
             ExternalId=f"posthog-{secrets.token_hex(67)}",
         )
     except Exception:
@@ -200,7 +200,7 @@ def validate_aws_role_arn(aws_role_arn: str, our_aws_role_arn: str, external_id:
     try:
         _ = external_sts.assume_role(
             RoleArn=aws_role_arn,
-            RoleSessionName="PostHog-validate-aws-role-arn",
+            RoleSessionName="Flind-validate-aws-role-arn",
         )
     except Exception:
         pass
@@ -212,7 +212,7 @@ def validate_aws_role_arn(aws_role_arn: str, our_aws_role_arn: str, external_id:
     try:
         _ = external_sts.assume_role(
             RoleArn=aws_role_arn,
-            RoleSessionName="PostHog-validate-aws-role-arn",
+            RoleSessionName="Flind-validate-aws-role-arn",
             ExternalId=external_id,
         )
     except ClientError:

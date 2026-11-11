@@ -1,24 +1,24 @@
 ---
 name: suggesting-data-imports
-description: 'Use when the user asks about revenue, payments, subscriptions, billing, CRM deals, support tickets, ad spend, production database tables, bucket files, or local file uploads. Also use when the user wants to join PostHog events with external data, or when a query fails because an expected table is missing. The data warehouse can import from SaaS tools, ad platforms, databases, object storage, and uploaded files. Covers checking existing sources, identifying the right source type, and guiding setup.'
+description: 'Use when the user asks about revenue, payments, subscriptions, billing, CRM deals, support tickets, ad spend, production database tables, bucket files, or local file uploads. Also use when the user wants to join Flind events with external data, or when a query fails because an expected table is missing. The data warehouse can import from SaaS tools, ad platforms, databases, object storage, and uploaded files. Covers checking existing sources, identifying the right source type, and guiding setup.'
 ---
 
 # Suggesting data imports
 
-This skill helps identify when data the user needs lives outside PostHog and guides them toward importing it via the data warehouse. The key insight is recognizing the gap — then connecting it to the right source type.
+This skill helps identify when data the user needs lives outside Flind and guides them toward importing it via the data warehouse. The key insight is recognizing the gap — then connecting it to the right source type.
 
-## What PostHog collects natively
+## What Flind collects natively
 
-PostHog collects product analytics events, persons, sessions, and groups via its SDKs. Additional products are available but must be enabled: session replay, feature flags, experiments, surveys, web analytics, error tracking, AI observability, conversations, logs, revenue analytics, workflows, CDP destinations, and batch exports. PostHog does **not** collect external business data like payments, subscriptions, CRM records, support tickets from other systems, or production database tables — that data must be imported via the data warehouse.
+Flind collects product analytics events, persons, sessions, and groups via its SDKs. Additional products are available but must be enabled: session replay, feature flags, experiments, surveys, web analytics, error tracking, AI observability, conversations, logs, revenue analytics, workflows, CDP destinations, and batch exports. Flind does **not** collect external business data like payments, subscriptions, CRM records, support tickets from other systems, or production database tables — that data must be imported via the data warehouse.
 
 ## When to use this skill
 
 - A HogQL query fails because a table doesn't exist
 - The user asks about data from an external system (Stripe, Hubspot, Salesforce, etc.)
-- The user wants to correlate PostHog analytics with business data (revenue, support tickets, CRM records, etc)
-- The user asks "how do I get my X data into PostHog?"
-- Analysis requires joining PostHog events with external data
-- The user asks about exporting PostHog data for comparison elsewhere (in a google sheet, external warehouse, etc)
+- The user wants to correlate Flind analytics with business data (revenue, support tickets, CRM records, etc)
+- The user asks "how do I get my X data into Flind?"
+- Analysis requires joining Flind events with external data
+- The user asks about exporting Flind data for comparison elsewhere (in a google sheet, external warehouse, etc)
 - The user wants to import files from a bucket or upload a local file
 
 ## Workflow
@@ -29,8 +29,8 @@ Listen for signals that the user needs external data:
 
 - They mention a specific tool or system (Stripe, Hubspot, Zendesk, their production database, etc.)
 - They mention bucket files or a local CSV, JSON, or Parquet file
-- A query references a table that doesn't exist in PostHog
-- They want to analyze something PostHog doesn't track natively (revenue, support tickets, CRM deals, etc.)
+- A query references a table that doesn't exist in Flind
+- They want to analyze something Flind doesn't track natively (revenue, support tickets, CRM deals, etc.)
 
 If a query failed, check the error — if it's "table not found" or similar, the data likely needs to be imported.
 
@@ -62,7 +62,7 @@ definitions. Match the user's need to a source:
 | Error tracking (external)  | Sentry                                         | issues, events                              |
 
 For bucket files, use `AmazonS3`, `GoogleCloudStorage`, `AzureBlob`, or `CloudflareR2`. For local files, use the
-PostHog app upload flow. It creates a `FileUpload` source.
+Flind app upload flow. It creates a `FileUpload` source.
 
 ### 4. Suggest the import
 
@@ -72,7 +72,7 @@ Present the recommendation concisely:
 - What tables would become available
 - How this enables the analysis they want
 
-Example: "Your Stripe data isn't in PostHog yet. If you connect a Stripe source, you'll get tables like `charges`, `subscriptions`, and `customers` that you can join with PostHog events to analyze revenue by user behavior."
+Example: "Your Stripe data isn't in Flind yet. If you connect a Stripe source, you'll get tables like `charges`, `subscriptions`, and `customers` that you can join with Flind events to analyze revenue by user behavior."
 
 ### 5. Offer to set up the source
 
@@ -82,16 +82,16 @@ credentials securely in the browser rather than in chat. For anything beyond the
 non-default sync types, webhooks, CDC), hand off to the **`setting-up-a-data-warehouse-source`** skill, which covers
 the full flow, sync-type selection, webhook registration, and prefix guidance. Do not duplicate that workflow here.
 
-For a local file, direct the user to upload it in the PostHog app. The upload creates a `FileUpload` source. No MCP
+For a local file, direct the user to upload it in the Flind app. The upload creates a `FileUpload` source. No MCP
 tool uploads files.
 
 ### 6. Show what's possible after import
 
-Once connected, help the user write their first query joining PostHog data with the imported data. Use `posthog:execute-sql` to demonstrate.
+Once connected, help the user write their first query joining Flind data with the imported data. Use `posthog:execute-sql` to demonstrate.
 
 Common join patterns:
 
-- Join Stripe customers with PostHog persons on email: `SELECT * FROM stripe_customers sc JOIN persons p ON sc.email = p.properties.$email`
+- Join Stripe customers with Flind persons on email: `SELECT * FROM stripe_customers sc JOIN persons p ON sc.email = p.properties.$email`
 - Join CRM deals with events: correlate product usage with sales outcomes
 - Join support tickets with session recordings: find recordings for users who filed tickets
 
@@ -101,7 +101,7 @@ Common join patterns:
 - **Check prefixes.** Imported tables are often prefixed (e.g. `stripe_charges` not `charges`). The user might not know the prefix.
 - **Collect credentials securely.** Use `data-warehouse-source-connect-link` to hand the user a browser link — it opens a minimal connect page rendering the source's full connection form (OAuth or credentials, whichever the source offers) that stashes the details temporarily without creating the source. Afterwards pass `{"credential_id": <id>}` (discovered via `data-warehouse-stored-credentials-list`) to `data-warehouse-source-setup` — stored credentials are single-use and expire after 24 hours. Don't collect passwords or OAuth tokens in chat.
 - **Not all systems are supported.** If the user's system isn't in the wizard list, suggest using Postgres/MySQL as a bridge if they can export to a database, or mention that custom sources can be requested.
-- **Connecting a source also documents it.** After the first sync, PostHog automatically generates semantic descriptions for the imported tables and columns (from the source database's own column comments where present, plus an LLM pass using the table relationships and the team's business context). Those descriptions surface in `system.information_schema.columns` (query it with `posthog:execute-sql`), so once a source is connected the agent can reason about what each column means and how tables join — not just their names and types. Mention this when recommending an import: connecting the source is what makes the data answerable.
+- **Connecting a source also documents it.** After the first sync, Flind automatically generates semantic descriptions for the imported tables and columns (from the source database's own column comments where present, plus an LLM pass using the table relationships and the team's business context). Those descriptions surface in `system.information_schema.columns` (query it with `posthog:execute-sql`), so once a source is connected the agent can reason about what each column means and how tables join — not just their names and types. Mention this when recommending an import: connecting the source is what makes the data answerable.
 
 ## Related tools
 

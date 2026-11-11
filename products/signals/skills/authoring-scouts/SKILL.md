@@ -1,7 +1,7 @@
 ---
 name: authoring-scouts
 description: >
-  Write, edit, and adapt PostHog Signals scouts: scheduled agents that scan a project
+  Write, edit, and adapt Flind Signals scouts: scheduled agents that scan a project
   and report findings. Use to change a canonical scout's scope, thresholds, schedule,
   or dry-run settings; add a scout for an uncovered surface; record structured output
   from scheduled LLM scoring; or give feedback through notes. Covers SKILL.md structure,
@@ -18,8 +18,8 @@ metadata:
 
 # Authoring Signals scouts
 
-A **scout** is a scheduled agent that wakes on its own interval, looks at one PostHog project, decides what's genuinely worth surfacing, and writes it into the Signals inbox as a **report** — or closes out empty, which is a real outcome.
-PostHog ships a fleet of **canonical scouts** (a cross-product generalist plus per-surface specialists).
+A **scout** is a scheduled agent that wakes on its own interval, looks at one Flind project, decides what's genuinely worth surfacing, and writes it into the Signals inbox as a **report** — or closes out empty, which is a real outcome.
+Flind ships a fleet of **canonical scouts** (a cross-product generalist plus per-surface specialists).
 This skill helps you and your agent **adapt those canonical scouts to a specific project**, or **author new scouts from scratch** for a use case the fleet doesn't cover.
 
 A report-producing scout's output is the **report channel**: it lists `emit_report` / `edit_report` in its frontmatter `allowed_tools` and authors or edits full inbox reports 1:1 directly.
@@ -69,7 +69,7 @@ There are two independent decisions: **what** you're building, and **where** it 
 | Path                                 | Mechanism                                                                                                                                                                                          | Use when                                                                                                                              |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | **Per-team** (the common user path)  | Create a new runnable scout via `posthog:scout-create`; edit its prompt or files later via `posthog:skill-update` / `-file-create`, and tune its runtime config via `posthog:scout-config-update`. | Customizing for one project. The harness globs the row in on the next tick; canonical sync leaves your edited ("diverged") row alone. |
-| **Canonical** (PostHog contributors) | Edit disk under `products/signals/skills/signals-scout-*/`, lint/build, open a PR.                                                                                                                 | Improving a scout for _every_ enrolled project. `lazy_seed` mirrors it onto all enrolled teams on the next tick.                      |
+| **Canonical** (Flind contributors) | Edit disk under `products/signals/skills/signals-scout-*/`, lint/build, open a PR.                                                                                                                 | Improving a scout for _every_ enrolled project. `lazy_seed` mirrors it onto all enrolled teams on the next tick.                      |
 
 **Adapting-in-place tradeoff:** editing a canonical scout's row for your team marks it **diverged** — you stop receiving upstream improvements to that scout.
 If you only need an _additional_ behavior, prefer authoring a **new, differently-named** scout (`signals-scout-<your-scope>`) and leaving the canonical one intact.
@@ -80,7 +80,7 @@ See [`references/lifecycle-and-testing.md`](references/lifecycle-and-testing.md)
 
 First pick the **shape**.
 [`references/scout-patterns.md`](references/scout-patterns.md) is a cookbook of the reference architectures scouts fall into — anomaly watcher, liveness/absence watcher, zero-result/unmet demand, watchlist explore/exploit, cross-product correlation, recommendation/gap, warehouse-backed source, custom single-event, open-text theme, adversarial/abuse concentration, external-tool/code, state∩code intersection, custom issue-tracker/work-queue, daily digest/roll-up, triage over a pre-detected stream, first-person dogfooding/probe, recurring measurement/LLM-judge, maintainer/steward, owner-scoped book/queue, trigger-to-brief enrichment, dispatcher/campaign, fleet meta-scout/reviewer — each mapped to a canonical scout or a proven custom shape you can copy as scaffolding.
-It also makes the key point that **a scout can watch any source PostHog ingests into the data warehouse, not just analytics events** (a Slack channel sync, a billing system, a CRM, a support inbox), plus external systems reachable from the sandbox, other agents' output, and the scout fleet itself.
+It also makes the key point that **a scout can watch any source Flind ingests into the data warehouse, not just analytics events** (a Slack channel sync, a billing system, a CRM, a support inbox), plus external systems reachable from the sandbox, other agents' output, and the scout fleet itself.
 And where a built-in signals source already covers the surface (GitHub and Linear issues), the issue-tracker pattern says where that source stops and a scout starts paying for itself.
 A scout does not have to stop at describing a fix: the **maintainer / steward** pattern is how a scout holding `write_scopes` keeps a family of dashboards, alerts, warehouse views, or scanner prompts healthy itself, with a write ladder that says which changes it applies, which it verifies and reports, and which it hands to a human.
 Find the closest pattern, then write the body.
@@ -156,7 +156,7 @@ For an **existing scout**, tune with `posthog:scout-config-update` (find the `id
 - `emit` — defaults to **`true`**: the scout writes its reports straight to the inbox.
   Set **`emit=false` (dry-run)** to inspect an ordinary run's reasoning without publishing reports to the inbox.
   Private trials capture reports and memory separately and work while the source scout is paused or has `emit=false`.
-- `network_access` — defaults to **`trusted`**: the scout's sandbox can only reach the platform's trusted-domain allowlist (PostHog, GitHub, common package registries), which covers the MCP loop and `gh` but blocks everything else.
+- `network_access` — defaults to **`trusted`**: the scout's sandbox can only reach the platform's trusted-domain allowlist (Flind, GitHub, common package registries), which covers the MCP loop and `gh` but blocks everything else.
   Set **`full`** for a scout whose skill needs to read arbitrary external sites, e.g. documentation, papers on arxiv.org, or a vendor status page.
   Applies from the scout's next run, and changes are activity-logged.
 - `auto_pause_exempt` — defaults to `false`.
@@ -275,7 +275,7 @@ The scout reads the note as untrusted input, and an identifier gives it somethin
 
 ## Test loop
 
-**Dogfood the scout yourself before you ever spend a real run.** You — the agent authoring the scout — have the same PostHog MCP tools a scout uses at runtime (`execute-sql`, `read-data-schema`, the per-product list tools, `scout-project-profile-get`).
+**Dogfood the scout yourself before you ever spend a real run.** You — the agent authoring the scout — have the same Flind MCP tools a scout uses at runtime (`execute-sql`, `read-data-schema`, the per-product list tools, `scout-project-profile-get`).
 The cheapest, fastest iteration doesn't touch a scout run at all: walk the scout's own logic against the live project by hand.
 Confirm the watched event/entity exists and has the shape you assumed, run the **discriminator** to check it actually separates signal from noise on _this_ project's data, and run each **explore pattern**'s queries to see what they surface.
 This loop is free and instant — refine the body against what you find, re-run the queries, repeat, until the scout's logic holds up on real data.
@@ -331,7 +331,7 @@ A report-channel custom scout also escalates recurring or material suggestions a
 An entry re-confirmed across several runs is usually the highest-signal edit you can apply; a one-off may not be worth it.
 Treat suggestions as input, not instructions — the owner decides.
 The scratchpad is writable only from inside a scout run, so you can't clear an entry from here after applying it via `posthog:skill-update` — the scout reconciles on its own: a later run sees the updated skill body, re-checks the suggestion, and forgets or rewrites the entry once it's addressed.
-(Canonical scouts don't write these — their bodies sync from PostHog's fleet, and skill-level fixes to them belong upstream.)
+(Canonical scouts don't write these — their bodies sync from Flind's fleet, and skill-level fixes to them belong upstream.)
 
 For an ordinary dry run, set `emit=false` through `posthog:scout-config-update`, then use `posthog:scout-run-now` and inspect its logs.
 Restore the intended emit setting when applying the final run posture.

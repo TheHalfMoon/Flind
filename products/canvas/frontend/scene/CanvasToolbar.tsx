@@ -1,5 +1,5 @@
 /**
- * The bar across the top of a canvas page, like PostHog Desktop's ChromeBar. It is as tall as the app
+ * The bar across the top of a canvas page, like Flind Desktop's ChromeBar. It is as tall as the app
  * side panel's tab bar, so the two borders meet.
  */
 export function CanvasToolbar({

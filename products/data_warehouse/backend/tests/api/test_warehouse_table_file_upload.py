@@ -244,7 +244,7 @@ class TestCreateTableFromUpload(APIBaseTest):
 
     def test_an_uploaded_table_cannot_be_repointed_at_another_location(self) -> None:
         # An uploaded table carries no credential, so it is read with the ClickHouse node's own role
-        # rather than a key the team supplied. That only holds while PostHog owns the URL, so a hosted
+        # rather than a key the team supplied. That only holds while Flind owns the URL, so a hosted
         # table must not be movable. The target below is an ordinary customer bucket that nothing else
         # in the request would object to, so what this pins is the hosted-table rule itself.
         upload_id = self._upload()

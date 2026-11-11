@@ -1359,7 +1359,7 @@ export const hogFunctionConfigurationLogic = kea<hogFunctionConfigurationLogicTy
                     }
                 }
 
-                // A new email destination is offered as PostHog workflows first. "Continue" in that modal submits again.
+                // A new email destination is offered as Flind workflows first. "Continue" in that modal submits again.
                 if (
                     (!props.id || props.id === 'new') &&
                     values.template &&

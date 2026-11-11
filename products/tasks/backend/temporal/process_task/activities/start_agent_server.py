@@ -564,7 +564,7 @@ def _prepare_launch(ctx: TaskProcessingContext, scopes: PosthogMcpScopes, sandbo
         emit_agent_log(
             ctx.run_id,
             "warn",
-            "No MCP configs were resolved for this run. PostHog MCP tools will be unavailable in the agent session.",
+            "No MCP configs were resolved for this run. Flind MCP tools will be unavailable in the agent session.",
         )
 
     agentsh_domains = _agentsh_domains_for(ctx)
@@ -716,7 +716,7 @@ def _enforce_subscription_support(sandbox: SandboxBase, ctx: TaskProcessingConte
     if result.exit_code != 0:
         raise ProcessTaskFatalError(
             f"This sandbox build cannot use your {plan_name} yet. Start a new task. "
-            f'To use PostHog credits instead, turn off "Use your {plan_name} for cloud tasks".',
+            f'To use Flind credits instead, turn off "Use your {plan_name} for cloud tasks".',
             {"task_id": ctx.task_id, "run_id": ctx.run_id},
             cause=RuntimeError(f"agent-server lacks {flag}"),
             capture=False,

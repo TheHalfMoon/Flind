@@ -156,10 +156,10 @@ export function NavMenu({
                                 accessibilityRole="link"
                                 accessibilityLabel={
                                     statusUpdate
-                                        ? `PostHog status: ${statusUpdate}`
+                                        ? `Flind status: ${statusUpdate}`
                                         : indicatorColor
-                                          ? 'PostHog status: All systems operational'
-                                          : 'PostHog status'
+                                          ? 'Flind status: All systems operational'
+                                          : 'Flind status'
                                 }
                                 pressedBackground={colors.sunken}
                                 style={styles.row}
@@ -174,7 +174,7 @@ export function NavMenu({
                                     <GlobeIcon size={iconSizes.control} />
                                 )}
                                 <View style={styles.statusBody}>
-                                    <Text style={styles.statusTitle}>PostHog status</Text>
+                                    <Text style={styles.statusTitle}>Flind status</Text>
                                     {statusUpdate ? (
                                         <Text style={styles.statusSummary} numberOfLines={2}>
                                             {statusUpdate}

@@ -2,7 +2,7 @@ import { BASE_CATEGORY_ENUM } from "@flind/core/setup/types";
 
 const DISCOVERY_PROMPT_BASE = `You are analyzing this codebase to find the highest-value first tasks for the developer.
 
-Scan the codebase for issues in two tiers. Tier 1 applies to every repo. Tier 2 only applies when PostHog is already installed (look for posthog-js, posthog-node, posthog-react-native or similar PostHog SDK imports).
+Scan the codebase for issues in two tiers. Tier 1 applies to every repo. Tier 2 only applies when Flind is already installed (look for posthog-js, posthog-node, posthog-react-native or similar Flind SDK imports).
 
 ## Tier 1 -- Code health (always)
 
@@ -12,7 +12,7 @@ Scan the codebase for issues in two tiers. Tier 1 applies to every repo. Tier 2 
 - **Bugs**: Null dereferences, race conditions, unchecked array access, off-by-one errors, unhandled promise rejections around I/O. Category: bug
 - **Performance anti-patterns**: N+1 queries, unbounded loops, synchronous blocking on hot paths, missing pagination. Category: performance
 
-## Tier 2 -- PostHog-specific (only when PostHog SDK is detected)
+## Tier 2 -- Flind-specific (only when Flind SDK is detected)
 
 - **Stale feature flags**: Flags that are always evaluated the same way, flags referenced in code but never toggled, flags guarding code that shipped long ago. Category: stale_feature_flag
 - **Error tracking gaps**: Catch blocks that swallow errors without reporting, missing error boundaries, untracked 5xx responses. Category: error_tracking
@@ -21,14 +21,14 @@ Scan the codebase for issues in two tiers. Tier 1 applies to every repo. Tier 2 
 
 const DISCOVERY_PROMPT_EXPERIMENT_TIER = `
 
-## Tier 3 -- Experiment opportunities (only when PostHog SDK is detected)
+## Tier 3 -- Experiment opportunities (only when Flind SDK is detected)
 
 - **Experimentable surfaces**: User-facing surfaces where an A/B test would meaningfully inform a product decision — pricing pages, paywalls, primary CTAs, signup/onboarding flows, empty states, recommendation lists, upgrade prompts. Category: experiment
   - Title: a one-line hypothesis ("Test 'Get started free' vs 'Sign up' on landing CTA")
   - Description: state the hypothesis as a sentence — what you would change and why you think it would move the metric
   - Impact: name the primary metric you would measure (e.g. "Sign-up conversion on /landing") and what a winning variant would look like
   - Recommendation: describe the control and test variants concretely (exact copy, layout change, or behavior), and note any flag wiring required (\`posthog.getFeatureFlag\`)
-  - Only suggest experiments where: (a) the surface is in code you can point at, (b) the variant is implementable without backend changes you can't see, and (c) the metric is something a typical PostHog event would capture
+  - Only suggest experiments where: (a) the surface is in code you can point at, (b) the variant is implementable without backend changes you can't see, and (c) the metric is something a typical Flind event would capture
 
 If you find at least one credible Tier 3 experiment opportunity, include at least one experiment-category task in your output — even if doing so displaces a lower-impact Tier 1/2 finding. Do not fabricate an experiment to fill the slot: if no credible candidate exists, omit the category entirely.`;
 

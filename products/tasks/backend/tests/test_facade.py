@@ -355,7 +355,7 @@ class TestFacadeReadsAndMappers(TestCase):
                 "end_run_when_done": True,
                 "store_skills": [{"name": "my-skill", "description": "Mine.", "version": 1}],
                 "store_skills_bridge": True,
-                "systemPrompt": {"type": "preset", "preset": "claude_code", "append": "PostHog AI"},
+                "systemPrompt": {"type": "preset", "preset": "claude_code", "append": "Flind AI"},
                 "sandbox_jwt_kid": "secret",
                 "unknown_server_context": {"title": "Saved context"},
                 "posthog_mcp_scopes": "read_only",
@@ -1118,7 +1118,7 @@ class TestFacadeReadsAndMappers(TestCase):
         )
 
         # The runs this path prefetches already carry the earlier PR, so finding it costs
-        # no second trip to the database. One of the four is the read exclusion PostHog AI registers.
+        # no second trip to the database. One of the four is the read exclusion Flind AI registers.
         with self.assertNumQueries(4):
             dto = facade.get_task_detail(task.id, self.team.id, self.user.id)
 
@@ -1371,7 +1371,7 @@ class TestFacadeReadsAndMappers(TestCase):
             TaskRun.objects.create(task=task, team=self.team, status=TaskRun.Status.COMPLETED)
 
         # The page costs one inherited-PR query, whatever the number of tasks on it. One of the
-        # seven is the read exclusion PostHog AI registers.
+        # seven is the read exclusion Flind AI registers.
         with self.assertNumQueries(7):
             dtos = facade.list_tasks(self.team.id, self.user.id, filters={})
 
@@ -2626,7 +2626,7 @@ class TestRecentWizardCloudRunTimes(TestCase):
     ) -> TaskRun:
         task = Task.objects.create(
             team=team or self.team,
-            title="Set up PostHog",
+            title="Set up Flind",
             description="wizard",
             origin_product=origin_product,
             created_by=created_by or self.user,

@@ -73,7 +73,7 @@ class BuildkiteSource(ResumableSource[BuildkiteSourceConfig, BuildkiteResumeConf
             label="Buildkite",
             releaseStatus=ReleaseStatus.GA,
             docsUrl="https://posthog.com/docs/cdp/sources/buildkite",
-            caption="""Enter your Buildkite API access token and organization slug to sync your CI/CD data into the PostHog Data warehouse.
+            caption="""Enter your Buildkite API access token and organization slug to sync your CI/CD data into the Flind Data warehouse.
 
 You can create an API access token in your [Buildkite account settings](https://buildkite.com/user/api-access-tokens).
 

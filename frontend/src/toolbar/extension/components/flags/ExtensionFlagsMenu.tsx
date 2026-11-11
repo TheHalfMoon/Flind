@@ -54,7 +54,7 @@ export function ExtensionFlagsMenu(): JSX.Element {
     return (
         <div className="flex flex-col gap-2">
             {!available && (
-                <NoPagePosthogBanner consequence="the toolbar can't override its flags. The list shows the values PostHog evaluates for you." />
+                <NoPagePosthogBanner consequence="the toolbar can't override its flags. The list shows the values Flind evaluates for you." />
             )}
             {mutationError && (
                 <LemonBanner type="error">

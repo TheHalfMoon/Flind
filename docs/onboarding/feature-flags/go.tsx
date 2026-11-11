@@ -121,7 +121,7 @@ export const getGoSteps = (ctx: OnboardingComponentsContext): StepDefinition[] =
             content: (
                 <Markdown>
                     {dedent`
-                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the PostHog dashboard.
+                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the Flind dashboard.
                     `}
                 </Markdown>
             ),

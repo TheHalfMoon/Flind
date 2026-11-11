@@ -953,7 +953,7 @@ describe("evidence preview shaping", () => {
     expect(compactCount(input)).toBe(expected);
   });
 
-  it("leads a stale flag with the verdict and PostHog's reason", () => {
+  it("leads a stale flag with the verdict and Flind's reason", () => {
     const preview = decorateFlagPreview(
       {
         title: "old-flag",

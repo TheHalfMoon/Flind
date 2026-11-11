@@ -340,7 +340,7 @@ export function SignalSourceToggles({
       {/* PostHog data */}
       <section className="flex min-w-0 flex-col gap-2">
         <span className="font-medium text-(--gray-9) text-[13px]">
-          PostHog data
+          Flind data
         </span>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <SignalSourceToggleCard
@@ -451,7 +451,7 @@ export function SignalSourceTogglesSkeleton() {
     <div className="flex flex-col gap-5">
       <section className="flex min-w-0 flex-col gap-2">
         <span className="font-medium text-(--gray-9) text-[13px]">
-          PostHog data
+          Flind data
         </span>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {Array.from({ length: 4 }).map((_, index) => (

@@ -62,7 +62,7 @@ describe('getUsageLimitConsequence', () => {
     })
 
     it('should return the Flind AI message for the inherited billing product name', () => {
-        expect(getUsageLimitConsequence('PostHog AI')).toEqual('Flind AI will be unavailable')
+        expect(getUsageLimitConsequence('Flind AI')).toEqual('Flind AI will be unavailable')
     })
 
     it('should return specific message for the self-driving inbox', () => {

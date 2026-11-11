@@ -788,7 +788,7 @@ def _segment_place(segment: ExposureSegment) -> str:
 
 def _segment_label(value: str) -> str:
     """The value quoted for the detail. It comes from an event property, so anyone with the project's token writes
-    it, and agents read the detail as PostHog's own words. A double quote would end the quotes early, so the label
+    it, and agents read the detail as Flind's own words. A double quote would end the quotes early, so the label
     drops it. The evidence keeps the raw value."""
     printable = "".join(char for char in value if char != '"' and not unicodedata.category(char).startswith("C"))
     if len(printable) > SEGMENT_LABEL_MAX_LENGTH:

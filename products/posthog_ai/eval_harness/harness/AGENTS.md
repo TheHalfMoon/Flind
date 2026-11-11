@@ -15,7 +15,7 @@ If you add an import to one of those modules, check that `--list` still runs.
 
 ## Concurrency
 
-The Braintrust-specific knobs below (`timeout`, `max_concurrency`, `QUIET_REPORTER`, `no_send_logs=True`) are applied in one place — `BraintrustEngine.run_experiment` in [`../engines/braintrust.py`](../engines/braintrust.py), the sole `EvalEngine` implementation — and documented as obligations in its docstring. `_BaseEvalRun.run()` only hands the engine the cases, task, scorers, and metadata. A future engine (e.g. a PostHog-native one) owns its own equivalents.
+The Braintrust-specific knobs below (`timeout`, `max_concurrency`, `QUIET_REPORTER`, `no_send_logs=True`) are applied in one place — `BraintrustEngine.run_experiment` in [`../engines/braintrust.py`](../engines/braintrust.py), the sole `EvalEngine` implementation — and documented as obligations in its docstring. `_BaseEvalRun.run()` only hands the engine the cases, task, scorers, and metadata. A future engine (e.g. a Flind-native one) owns its own equivalents.
 
 - **Never give Braintrust a `timeout`.** `EvalAsync`'s timeout wraps the whole task invocation, including time queued on our concurrency semaphores, so it would kill cases that never started. The budget belongs in the `asyncio.wait_for` inside the slot.
 - **Never let Braintrust's `max_concurrency` bind.** It is set to the case count so that the harness's own semaphores are the only limiters.

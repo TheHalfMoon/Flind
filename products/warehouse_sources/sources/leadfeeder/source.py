@@ -61,7 +61,7 @@ class LeadfeederSource(ResumableSource[LeadfeederSourceConfig, LeadfeederResumeC
             label="Leadfeeder",
             releaseStatus=ReleaseStatus.GA,
             keywords=["dealfront"],
-            caption="""Enter your Dealfront (Leadfeeder) API key to pull your website visitor and lead data into the PostHog data warehouse. This syncs the **Accounts**, **Custom feeds**, **Leads**, and **Visits** tables.
+            caption="""Enter your Dealfront (Leadfeeder) API key to pull your website visitor and lead data into the Flind data warehouse. This syncs the **Accounts**, **Custom feeds**, **Leads**, and **Visits** tables.
 
 New connections use the unified Dealfront API. Create an API key in your Dealfront platform settings, under Personal, API keys.
 

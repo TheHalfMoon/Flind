@@ -75,7 +75,7 @@ Builders inherit the running query's table choice; an explicit query modifier ta
 
 ## Marketing search performance
 
-Search metrics and PostHog landing-page conversions load in separate requests.
+Search metrics and Flind landing-page conversions load in separate requests.
 The table shows search metrics while conversion columns load, and a conversion error leaves those metrics visible with its own query ID and retry action.
 Both requests use the same normalized landing URLs and filters.
 The conversion request still uses the search query runner, so it repeats the source aggregation before calculating attribution.

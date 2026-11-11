@@ -53,7 +53,7 @@ class DagsterCloudSource(ResumableSource[DagsterCloudSourceConfig, DagsterCloudR
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Dagster+ (Dagster Cloud)",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Connect your Dagster+ deployment to sync run history, backfills, and your asset catalog into the PostHog Data warehouse.
+            caption="""Connect your Dagster+ deployment to sync run history, backfills, and your asset catalog into the Flind Data warehouse.
 
 Create a user token under **Organization settings → Tokens** in Dagster+, then enter your organization name, deployment name, and the token below.""",
             iconPath="/static/services/dagster_cloud.png",

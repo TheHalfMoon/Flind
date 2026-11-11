@@ -18,7 +18,7 @@ import { todayShellLogic } from '~/layout/today/todayShellLogic'
 import { SidePanelTab } from '~/types'
 
 /**
- * The click on the PostHog AI button is the only proof the handler ran. Every route into the
+ * The click on the Flind AI button is the only proof the handler ran. Every route into the
  * panel captures `sidebar opened` afterwards, so a click without that follow-up event marks a
  * click that never reached `openSidePanel`. Scene id is read off `sceneLogic` without
  * subscribing so capture never triggers a re-render.

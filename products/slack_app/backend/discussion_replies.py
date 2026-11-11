@@ -1,6 +1,6 @@
-"""Ingest Slack thread replies on mirrored discussion threads back into PostHog as comments.
+"""Ingest Slack thread replies on mirrored discussion threads back into Flind as comments.
 
-The outbound half (PostHog discussion -> Slack thread) lives in posthog/helpers/slack_thread_mirror.py
+The outbound half (Flind discussion -> Slack thread) lives in posthog/helpers/slack_thread_mirror.py
 and the send_to_slack action. This is the inbound half: when someone replies in a Slack thread that a
 discussion is mirrored to, save their message as a reply Comment on that discussion. Only the routing
 decision happens here, on the webhook request thread — the Slack profile lookup and comment write run

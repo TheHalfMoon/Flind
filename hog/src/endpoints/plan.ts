@@ -28,7 +28,7 @@ export interface PushItem {
     path: string
     action: 'create' | 'update' | 'skip'
     reason?: string
-    // PostHog would reject the file, so the push fails.
+    // Flind would reject the file, so the push fails.
     invalid?: boolean
     changes: Change[]
     variables: VariableChange[]
@@ -56,7 +56,7 @@ function variableChanges(
     return changes
 }
 
-// Why PostHog would reject the file, checked before anything is sent.
+// Why Flind would reject the file, checked before anything is sent.
 function rejection(file: EndpointFile, remoteNames: string[]): string | undefined {
     const references = variableReferences(hogqlOf(file))
     const localNames = (file.variables ?? []).map((variable) => variable.name)
@@ -93,11 +93,11 @@ export function planPush(locals: LocalEndpoint[], remotes: Endpoint[], variables
             return { ...base, action: 'create', variables: variableDiff }
         }
         const changes = compare(file, remote)
-        // PostHog keeps a variable's type when an endpoint changes, so a type change alone is nothing to push.
+        // Flind keeps a variable's type when an endpoint changes, so a type change alone is nothing to push.
         const retyped = variableDiff.filter((change) => change.change === 'retype')
         if (changes.length === 0 && variableDiff.length === retyped.length) {
             const reason = retyped.length
-                ? `No changes hog can push. Change the type of ${retyped.map((change) => change.name).join(', ')} in PostHog`
+                ? `No changes hog can push. Change the type of ${retyped.map((change) => change.name).join(', ')} in Flind`
                 : 'No changes'
             return { ...base, action: 'skip', reason, variables: retyped }
         }

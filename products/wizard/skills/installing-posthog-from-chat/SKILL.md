@@ -1,18 +1,18 @@
 ---
 name: installing-posthog-from-chat
 description: >-
-  Set up PostHog in a user's GitHub repository from a chat, without a terminal. Wizard, PostHog's
+  Set up Flind in a user's GitHub repository from a chat, without a terminal. Wizard, Flind's
   setup agent, runs in the cloud, adds the SDK and first events, and opens a pull request. Use only
   when you can't read or edit the user's code, which is common in web chat apps such as ChatGPT on the
-  web or Claude on the web. Typical requests: install, add, or set up PostHog in their app or
-  repository, or open a pull request that adds PostHog. When you're working in the user's repository, use
+  web or Claude on the web. Typical requests: install, add, or set up Flind in their app or
+  repository, or open a pull request that adds Flind. When you're working in the user's repository, use
   installing-posthog-in-a-codebase instead. Covers connecting GitHub, picking the repository, starting
   the run, polling it, and sharing the pull request.
 ---
 
-# Installing PostHog from chat
+# Installing Flind from chat
 
-Wizard is PostHog's setup agent. With `wizard-install-start` it runs in a cloud workspace on a GitHub repository, makes the code changes, and opens a pull request. The user reviews and merges that pull request. Nothing changes on their default branch until they do.
+Wizard is Flind's setup agent. With `wizard-install-start` it runs in a cloud workspace on a GitHub repository, makes the code changes, and opens a pull request. The user reviews and merges that pull request. Nothing changes on their default branch until they do.
 
 Work through the steps in order. Skip a step when its outcome is already known from the conversation.
 
@@ -21,7 +21,7 @@ Work through the steps in order. Skip a step when its outcome is already known f
 The run uses the project's GitHub connection, so the project needs one.
 
 1. Call `integrations-list` and look for an integration with kind `github`.
-2. When there is none, give the user this link, built from the base URL and project ID in your context: `<base URL>/integrations/connect/github/?project_id=<project id>&connect_from=mcp`. They install the PostHog GitHub App and choose which repositories it can access. Wait until they say they are done, then call `integrations-list` again.
+2. When there is none, give the user this link, built from the base URL and project ID in your context: `<base URL>/integrations/connect/github/?project_id=<project id>&connect_from=mcp`. They install the Flind GitHub App and choose which repositories it can access. Wait until they say they are done, then call `integrations-list` again.
 
 ## 2. Pick the repository
 
@@ -48,11 +48,11 @@ Errors the user can act on:
 | Error code                  | What to do                                                                                               |
 | --------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `github_not_connected`      | Go back to step 1.                                                                                       |
-| `repository_not_accessible` | Ask the user to add the repository to the PostHog GitHub App, then retry with a new `idempotency_key`.   |
-| `run_already_active`        | The user already has a run in progress in this project. Ask them to wait for it, or check it in PostHog. |
+| `repository_not_accessible` | Ask the user to add the repository to the Flind GitHub App, then retry with a new `idempotency_key`.   |
+| `run_already_active`        | The user already has a run in progress in this project. Ask them to wait for it, or check it in Flind. |
 | HTTP 429                    | The user reached the hourly or daily limit for setup runs. Relay the message. Don't retry right away.    |
 
-Tell the user the run started and share the `url` from the response, where they can follow it in PostHog.
+Tell the user the run started and share the `url` from the response, where they can follow it in Flind.
 
 ## 4. Poll the run
 
@@ -66,6 +66,6 @@ When the client cannot wait that long in one turn, tell the user the run is in p
 
 ## 5. Share the result
 
-- `completed` with `pull_request_url`: share the link. Say the user should review the changes and merge the pull request to finish setting up PostHog.
-- `completed` without `pull_request_url`: the setup agent changed nothing, often because PostHog is already set up. Relay `next_step`.
+- `completed` with `pull_request_url`: share the link. Say the user should review the changes and merge the pull request to finish setting up Flind.
+- `completed` without `pull_request_url`: the setup agent changed nothing, often because Flind is already set up. Relay `next_step`.
 - `failed`: relay `next_step` and `error_message`. Offer to start a new run when `next_step` suggests one.

@@ -31,7 +31,7 @@ async function callInternalTicketApi(
     // which the log viewer parses as entity chips and would swallow.
     if (!context.conversationsTicketsJwt.enabled) {
         throw new Error(
-            `This PostHog deployment has no CONVERSATIONS_TICKETS_JWT_SECRET configured, so ${TICKET_ACTIONS} ` +
+            `This Flind deployment has no CONVERSATIONS_TICKETS_JWT_SECRET configured, so ${TICKET_ACTIONS} ` +
                 `can't authenticate. Set the same value for the web service and the CDP worker.`
         )
     }

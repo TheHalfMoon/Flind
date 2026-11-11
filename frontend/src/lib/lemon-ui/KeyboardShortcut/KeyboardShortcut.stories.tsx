@@ -6,7 +6,7 @@ import { Tooltip } from '@flind/lemon-ui'
 import { KeyboardShortcut, KeyboardShortcutProps } from './KeyboardShortcut'
 
 const meta: Meta<KeyboardShortcutProps> = {
-    title: 'PostHog 3000/Keyboard Shortcut',
+    title: 'Flind 3000/Keyboard Shortcut',
     component: KeyboardShortcut,
     tags: ['autodocs'],
 }

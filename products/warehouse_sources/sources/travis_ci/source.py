@@ -71,7 +71,7 @@ class TravisCISource(ResumableSource[TravisCISourceConfig, TravisCIResumeConfig]
             label="Travis CI (Idera)",
             releaseStatus=ReleaseStatus.BETA,
             docsUrl="https://posthog.com/docs/cdp/sources/travis-ci",
-            caption="""Enter your Travis CI API token to sync your CI/CD build history into the PostHog Data warehouse.
+            caption="""Enter your Travis CI API token to sync your CI/CD build history into the Flind Data warehouse.
 
 You can find or generate the token in your [Travis CI settings](https://app.travis-ci.com/account/preferences) under **API authentication**, or with the Travis CI CLI: `travis token --com`.
 

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -37,7 +37,7 @@ export const MessagingPreferencesCreateBody = /* @__PURE__ */ zod.object({
 })
 
 /**
- * Send one transactional email to one recipient. Name a template made transactional in `template_id`, and `message_data` fills its `{{ variables.* }}` placeholders. Or send content your code rendered with a `template_key`, a `subject` and `html` or `text`: PostHog sends it as is, and its metrics and run history group under the key. Transactional emails skip opt-outs and frequency caps. Send an `Idempotency-Key` header to retry safely without sending the email twice. Needs the `transactional_email:write` scope. A key with `hog_flow:write` also works, but that scope reaches the rest of Workflows too.
+ * Send one transactional email to one recipient. Name a template made transactional in `template_id`, and `message_data` fills its `{{ variables.* }}` placeholders. Or send content your code rendered with a `template_key`, a `subject` and `html` or `text`: Flind sends it as is, and its metrics and run history group under the key. Transactional emails skip opt-outs and frequency caps. Send an `Idempotency-Key` header to retry safely without sending the email twice. Needs the `transactional_email:write` scope. A key with `hog_flow:write` also works, but that scope reaches the rest of Workflows too.
  * @summary Send a transactional email
  */
 export const messagingSendEmailCreateBodyTemplateKeyMax = 400
@@ -81,7 +81,7 @@ export const MessagingSendEmailCreateBody = /* @__PURE__ */ zod.object({
         .regex(messagingSendEmailCreateBodyTemplateKeyRegExp)
         .optional()
         .describe(
-            'Names an email whose content your code rendered, such as `order-shipped`, so its metrics, logs and status group under it. Letters, numbers, hyphens (-) and underscores (_) only. Send it with `subject` and `html` or `text`. PostHog sends the content as is and never stores it as a template.'
+            'Names an email whose content your code rendered, such as `order-shipped`, so its metrics, logs and status group under it. Letters, numbers, hyphens (-) and underscores (_) only. Send it with `subject` and `html` or `text`. Flind sends the content as is and never stores it as a template.'
         ),
     distinct_id: zod
         .string()
@@ -96,7 +96,7 @@ export const MessagingSendEmailCreateBody = /* @__PURE__ */ zod.object({
         .string()
         .optional()
         .describe(
-            'Plain text body of the email your code rendered, at most 5 MiB as UTF-8. Without it, PostHog derives the text from `html`.'
+            'Plain text body of the email your code rendered, at most 5 MiB as UTF-8. Without it, Flind derives the text from `html`.'
         ),
     reply_to: zod
         .array(zod.email())
@@ -175,7 +175,7 @@ export const MessagingCategoriesCreateBody = /* @__PURE__ */ zod.object({
     name: zod
         .string()
         .max(messagingCategoriesCreateBodyNameMax)
-        .describe('Display name of the category, shown in the PostHog app.'),
+        .describe('Display name of the category, shown in the Flind app.'),
     description: zod
         .string()
         .optional()
@@ -211,7 +211,7 @@ export const MessagingCategoriesUpdateBody = /* @__PURE__ */ zod.object({
     name: zod
         .string()
         .max(messagingCategoriesUpdateBodyNameMax)
-        .describe('Display name of the category, shown in the PostHog app.'),
+        .describe('Display name of the category, shown in the Flind app.'),
     description: zod
         .string()
         .optional()
@@ -249,7 +249,7 @@ export const MessagingCategoriesPartialUpdateBody = /* @__PURE__ */ zod.object({
         .string()
         .max(messagingCategoriesPartialUpdateBodyNameMax)
         .optional()
-        .describe('Display name of the category, shown in the PostHog app.'),
+        .describe('Display name of the category, shown in the Flind app.'),
     description: zod
         .string()
         .optional()
@@ -290,7 +290,7 @@ export const MessagingCategoriesImportFromCustomerioCreateBody = /* @__PURE__ */
     name: zod
         .string()
         .max(messagingCategoriesImportFromCustomerioCreateBodyNameMax)
-        .describe('Display name of the category, shown in the PostHog app.'),
+        .describe('Display name of the category, shown in the Flind app.'),
     description: zod
         .string()
         .optional()
@@ -330,7 +330,7 @@ export const MessagingCategoriesImportPreferencesCsvCreateBody = /* @__PURE__ */
     name: zod
         .string()
         .max(messagingCategoriesImportPreferencesCsvCreateBodyNameMax)
-        .describe('Display name of the category, shown in the PostHog app.'),
+        .describe('Display name of the category, shown in the Flind app.'),
     description: zod
         .string()
         .optional()
@@ -375,7 +375,7 @@ export const MessagingCategoriesSaveTrackConfigCreateBody = /* @__PURE__ */ zod.
     name: zod
         .string()
         .max(messagingCategoriesSaveTrackConfigCreateBodyNameMax)
-        .describe('Display name of the category, shown in the PostHog app.'),
+        .describe('Display name of the category, shown in the Flind app.'),
     description: zod
         .string()
         .optional()
@@ -418,7 +418,7 @@ export const MessagingCategoriesSaveWebhookConfigCreateBody = /* @__PURE__ */ zo
     name: zod
         .string()
         .max(messagingCategoriesSaveWebhookConfigCreateBodyNameMax)
-        .describe('Display name of the category, shown in the PostHog app.'),
+        .describe('Display name of the category, shown in the Flind app.'),
     description: zod
         .string()
         .optional()
@@ -722,7 +722,7 @@ export const MessagingTemplatesCreateBody = /* @__PURE__ */ zod.object({
                             })
                             .optional()
                             .describe(
-                                "Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
+                                "Design JSON for Flind's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
                             ),
                         from: zod
                             .object({
@@ -777,7 +777,7 @@ export const MessagingTemplatesCreateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            "For emails that carry login codes, reset links or other secrets. PostHog keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time."
+            "For emails that carry login codes, reset links or other secrets. Flind keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time."
         ),
     draft_content: zod
         .union([
@@ -842,7 +842,7 @@ export const MessagingTemplatesCreateBody = /* @__PURE__ */ zod.object({
                                 })
                                 .optional()
                                 .describe(
-                                    "Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
+                                    "Design JSON for Flind's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
                                 ),
                             from: zod
                                 .object({
@@ -978,7 +978,7 @@ export const MessagingTemplatesUpdateBody = /* @__PURE__ */ zod.object({
                             })
                             .optional()
                             .describe(
-                                "Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
+                                "Design JSON for Flind's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
                             ),
                         from: zod
                             .object({
@@ -1033,7 +1033,7 @@ export const MessagingTemplatesUpdateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            "For emails that carry login codes, reset links or other secrets. PostHog keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time."
+            "For emails that carry login codes, reset links or other secrets. Flind keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time."
         ),
     draft_content: zod
         .union([
@@ -1098,7 +1098,7 @@ export const MessagingTemplatesUpdateBody = /* @__PURE__ */ zod.object({
                                 })
                                 .optional()
                                 .describe(
-                                    "Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
+                                    "Design JSON for Flind's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
                                 ),
                             from: zod
                                 .object({
@@ -1235,7 +1235,7 @@ export const MessagingTemplatesPartialUpdateBody = /* @__PURE__ */ zod.object({
                             })
                             .optional()
                             .describe(
-                                "Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
+                                "Design JSON for Flind's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
                             ),
                         from: zod
                             .object({
@@ -1290,7 +1290,7 @@ export const MessagingTemplatesPartialUpdateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .optional()
         .describe(
-            "For emails that carry login codes, reset links or other secrets. PostHog keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time."
+            "For emails that carry login codes, reset links or other secrets. Flind keeps no copy of each sent email's body or filled-in subject, and clicked links keep only the site address. Can change at any time."
         ),
     draft_content: zod
         .union([
@@ -1355,7 +1355,7 @@ export const MessagingTemplatesPartialUpdateBody = /* @__PURE__ */ zod.object({
                                 })
                                 .optional()
                                 .describe(
-                                    "Design JSON for PostHog's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
+                                    "Design JSON for Flind's visual email editor — the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill."
                                 ),
                             from: zod
                                 .object({

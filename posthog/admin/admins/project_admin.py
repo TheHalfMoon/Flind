@@ -93,7 +93,7 @@ class ProjectAdmin(admin.ModelAdmin):
                         "Before triggering, make sure no deletion workflow is already running for this project. "
                         "Starting a second one while another is mid-flight can cause clashing deletes. If a "
                         "previous attempt failed, this project may still show as pending deletion. Retriggering "
-                        "is safe: PostHog won't start a duplicate workflow if one is still running."
+                        "is safe: Flind won't start a duplicate workflow if one is still running."
                     ),
                 },
                 request=request,

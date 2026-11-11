@@ -48,7 +48,7 @@ class FinancialModellingSource(ResumableSource[FinancialModellingSourceConfig, F
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="Financial Modeling Prep",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Financial Modeling Prep API key to pull market and company financial data into the PostHog Data warehouse.
+            caption="""Enter your Financial Modeling Prep API key to pull market and company financial data into the Flind Data warehouse.
 
 You can find your API key in your [Financial Modeling Prep dashboard](https://site.financialmodelingprep.com/developer/docs/dashboard).
 

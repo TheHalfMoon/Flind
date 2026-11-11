@@ -11,7 +11,7 @@ const inSync = (item: { action: string; reason?: string }): boolean =>
     item.action === 'skip' && item.reason === 'No changes'
 
 export default defineCommand({
-    description: 'Show how local endpoint files differ from PostHog',
+    description: 'Show how local endpoint files differ from Flind',
     args: {
         paths: {
             description: 'Endpoint files, folders of them, or glob patterns. Defaults to endpoints.dir in posthog.json',
@@ -20,10 +20,10 @@ export default defineCommand({
         },
     },
     options: {
-        verbose: { type: 'boolean', description: 'List the endpoints that match PostHog too' },
+        verbose: { type: 'boolean', description: 'List the endpoints that match Flind too' },
     },
     scopes: SCOPES_READ,
-    notes: 'Exits with code 1 when a file differs from PostHog or is invalid, like `git diff --exit-code`, so CI can catch drift. `hog endpoints push` applies the changes.',
+    notes: 'Exits with code 1 when a file differs from Flind or is invalid, like `git diff --exit-code`, so CI can catch drift. `hog endpoints push` applies the changes.',
     examples: ['hog endpoints diff endpoints/', 'hog endpoints diff'],
 
     async run({ args, ctx }) {

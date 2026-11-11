@@ -79,8 +79,8 @@ export function LinkedReportsSection({ reports, open, onToggle }: LinkedReportsS
                 preview={<LemonBadge.Number count={reports.length} status="muted" size="small" maxDigits={2} />}
                 dataAttr="error-tracking-issue-reports-toggle"
                 trailing={
-                    <Tooltip title="A PostHog agent that investigates errors against your codebase. Not a teammate.">
-                        <span className="shrink-0 text-xs text-muted-alt">PostHog agent</span>
+                    <Tooltip title="A Flind agent that investigates errors against your codebase. Not a teammate.">
+                        <span className="shrink-0 text-xs text-muted-alt">Flind agent</span>
                     </Tooltip>
                 }
             />

@@ -1,6 +1,6 @@
 """Dedicated GitHub App client for Stamphog.
 
-Stamphog runs as its own GitHub App (separate identity from PostHog's product-integration App), so it
+Stamphog runs as its own GitHub App (separate identity from Flind's product-integration App), so it
 mints its own installation tokens from ``STAMPHOG_GITHUB_APP_CLIENT_ID`` (or ``STAMPHOG_GITHUB_APP_ID``
 as a fallback) / ``STAMPHOG_GITHUB_APP_PRIVATE_KEY``.
 Every outbound call goes through the shared egress transport (:func:`posthog.egress.github.transport.github_request`),
@@ -270,7 +270,7 @@ def _build_app_jwt() -> str:
 #
 # Binding an installation's repos to a team is only safe if the caller can prove they own that GitHub
 # App installation. A bare installation_id is caller-supplied and forgeable, so we mirror the shared
-# PostHog App's flow: exchange the post-install OAuth `code` for the *user's* own access token, then
+# Flind App's flow: exchange the post-install OAuth `code` for the *user's* own access token, then
 # confirm the installation is one that user can actually reach.
 
 
@@ -292,7 +292,7 @@ def exchange_oauth_code_for_user_token(code: str) -> str | None:
         return None
 
     # github.com/login is the App's OAuth host, not api.github.com, so it goes over plain requests
-    # (identical to how the shared PostHog App exchanges its code) rather than the REST egress transport.
+    # (identical to how the shared Flind App exchanges its code) rather than the REST egress transport.
     response = requests.post(
         "https://github.com/login/oauth/access_token",
         json={"client_id": client_id, "client_secret": client_secret, "code": code},

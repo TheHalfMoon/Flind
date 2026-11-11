@@ -70,7 +70,7 @@ class UpPromoteSource(
             releaseStatus=ReleaseStatus.BETA,
             caption=(
                 "Enter your UpPromote API key to pull your affiliate programs, affiliates, "
-                "referrals, coupons, and payments into the PostHog Data warehouse.\n\n"
+                "referrals, coupons, and payments into the Flind Data warehouse.\n\n"
                 "You can create an API key in the UpPromote app under **Settings** > "
                 "**Integrations** > **API Key** (available on the Professional plan and above)."
             ),
@@ -91,7 +91,7 @@ class UpPromoteSource(
                 ],
             ),
             webhookSetupCaption=(
-                "PostHog subscribes to UpPromote's referral, affiliate, and payment webhook "
+                "Flind subscribes to UpPromote's referral, affiliate, and payment webhook "
                 "events for you using your API key, including the signing secret — no manual "
                 "steps needed.\n\n"
                 "**Manual setup** (only needed if auto-registration failed, e.g. an event is "

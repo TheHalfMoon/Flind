@@ -1,5 +1,5 @@
-// Tier 1 — the PostHog AI onboarding takeover: the full-screen "what changed" walkthrough a user sees once
-// on their first open of the new PostHog AI, plus the replay affordance that reopens it.
+// Tier 1 — the Flind AI onboarding takeover: the full-screen "what changed" walkthrough a user sees once
+// on their first open of the new Flind AI, plus the replay affordance that reopens it.
 //
 // `AiOnboarding` is the lazy wrapper: the dialog pulls quill's dialog chunk and the step media, and the host
 // that mounts it (`GlobalModals`) is downloaded on every logged-in page, so the impl is reached only through

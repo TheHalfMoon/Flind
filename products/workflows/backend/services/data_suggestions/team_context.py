@@ -113,7 +113,7 @@ def email_templates(team: Team) -> tuple[EmailTemplateSummary, ...]:
 
 
 def event_property_names(team: Team, event: str) -> tuple[str, ...]:
-    """The properties the project sends on `event`, except PostHog's own `$` properties."""
+    """The properties the project sends on `event`, except Flind's own `$` properties."""
     names = (
         # Matches the leading column of the (coalesce(project_id, team_id), event, property) unique index, so the
         # lookup is an index seek.

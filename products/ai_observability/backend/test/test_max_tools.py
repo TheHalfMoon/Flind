@@ -117,7 +117,7 @@ class TestCreateParserRecipeTool(BaseTest):
         with patch("ee.hogai.tool.interrupt") as mock_interrupt:
             mock_interrupt.return_value = {
                 "action": "client_tool_result",
-                "result": {"client_execution_error": "The PostHog view that executes this tool is no longer open."},
+                "result": {"client_execution_error": "The Flind view that executes this tool is no longer open."},
             }
 
             content, artifact = await tool._arun_impl(name="My SDK", yaml_source=VALID_RECIPE, event_uuid="event-1")

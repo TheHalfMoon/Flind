@@ -169,7 +169,7 @@ export function SettingsBackupView({
             <div>
               <h4 className="m-0 font-semibold text-[13px]">Review import</h4>
               <p className="mt-1 mb-0 break-words text-[12px] text-muted-foreground">
-                Exported from PostHog Desktop {review.backup.appVersion} on{" "}
+                Exported from Flind Desktop {review.backup.appVersion} on{" "}
                 {new Date(review.backup.exportedAt).toLocaleDateString()}.
               </p>
             </div>

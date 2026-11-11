@@ -2,7 +2,7 @@
 name: authoring-ci-workflows
 description: >
   Use when adding or editing a GitHub Actions workflow, composite action, reusable workflow, or `actions.lock` under `.github/`: new CI jobs, triggers, matrices, checkout/clone tuning, action pinning and lockfiles, GitHub App token auth, concurrency groups, `timeout-minutes`, `paths` filters, caching, or runner choice.
-  Covers PostHog's workflow-authoring conventions and the reasons behind them: the 500-runs/10s dispatch cap, shallow vs full clone, per-SHA push concurrency, dedicated App-token rate-limit buckets, and fork-safe secrets on a public repo.
+  Covers Flind's workflow-authoring conventions and the reasons behind them: the 500-runs/10s dispatch cap, shallow vs full clone, per-SHA push concurrency, dedicated App-token rate-limit buckets, and fork-safe secrets on a public repo.
   Points to the linters (`bin/hogli lint:workflows`, actionlint) that enforce the mechanical rules, and to the narrower skills for production deploys, secrets, and Depot runners.
   Not for debugging red CI (use debugging-ci-failures) or wiring a new secret end to end (use managing-github-actions-secrets).
 ---
@@ -212,7 +212,7 @@ Three cases behave in ways the name does not suggest:
 
 Most required checks in this repo's `master` ruleset are pinned to the `github-actions` app, `integration_id: 15368`.
 Backend CI has two exceptions.
-`Backend CI on Depot / Test results` is pinned to the PostHog tests app, `2492437`.
+`Backend CI on Depot / Test results` is pinned to the Flind tests app, `2492437`.
 `Backend CI on Depot / Django Tests Pass on Depot` has no app pin because Depot posts it from more than one app.
 A check from another app cannot satisfy a pinned requirement, even when its name matches.
 See [`/depot-ci`](../depot-ci/references/posthog-check-run-semantics.md) for measurements and the rulesets query.

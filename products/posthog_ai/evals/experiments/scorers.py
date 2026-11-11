@@ -420,7 +420,7 @@ class CitesDiagnosticGroup(JudgedScorer):
         super().__init__(
             name="diagnosis_group",
             prompt_template="""
-You are evaluating whether an agent correctly diagnosed the cause of a problem the user described with their PostHog experiment.
+You are evaluating whether an agent correctly diagnosed the cause of a problem the user described with their Flind experiment.
 
 The expected diagnosis for this case (paraphrased) is:
 <expected_diagnosis>
@@ -437,7 +437,7 @@ Agent's final message:
 {{output.last_message}}
 </final_message>
 
-Answer `yes` if the agent's final message clearly identifies this diagnostic — the same root cause, in substance, paraphrasing is fine. The agent does not need to use the exact wording from the expected diagnosis, but they must name the same mechanism (e.g. naming "uneven split with multiple-variant exclusion" or equivalent for an A1 case; naming "feature flag is not active so no exposures can fire" for an inactive-flag case; naming "sample size too small, observed difference is likely noise" for a C case; naming "test-account filter" or "default exclusion" causing PostHog to count fewer events than raw SQL for a D case; naming "ship-variant rewrote the flag to 0/100" for an E7 case).
+Answer `yes` if the agent's final message clearly identifies this diagnostic — the same root cause, in substance, paraphrasing is fine. The agent does not need to use the exact wording from the expected diagnosis, but they must name the same mechanism (e.g. naming "uneven split with multiple-variant exclusion" or equivalent for an A1 case; naming "feature flag is not active so no exposures can fire" for an inactive-flag case; naming "sample size too small, observed difference is likely noise" for a C case; naming "test-account filter" or "default exclusion" causing Flind to count fewer events than raw SQL for a D case; naming "ship-variant rewrote the flag to 0/100" for an E7 case).
 
 Answer `no` if the agent listed a different diagnostic as the primary cause, if it asked a clarifying question instead of producing a diagnosis, or if it gave a vague "could be many things" answer without anchoring on the expected mechanism.
 """.strip(),
@@ -547,7 +547,7 @@ class DoesNotRecommendEdit(JudgedScorer):
         super().__init__(
             name="does_not_recommend_edit",
             prompt_template="""
-You are evaluating an agent's response to a user asking "why did X happen?" about an already-stopped or archived PostHog experiment.
+You are evaluating an agent's response to a user asking "why did X happen?" about an already-stopped or archived Flind experiment.
 
 The skill the agent should follow says: "Lead with explanation of what happened. If reversal mechanics are included, they MUST be strongly qualified and MUST NOT be presented as the obvious next step. Unsolicited 'want me to revert?' offers fail the rule."
 
@@ -777,7 +777,7 @@ class AdvisesAgainstShipping(JudgedScorer):
         super().__init__(
             name="advises_against_shipping",
             prompt_template="""
-You are judging whether an agent gave the user clear "don't ship yet" guidance on a PostHog experiment where the evidence does NOT support a confident ship.
+You are judging whether an agent gave the user clear "don't ship yet" guidance on a Flind experiment where the evidence does NOT support a confident ship.
 
 The user is asking some variant of "should I ship?" or "is this a real signal?". The correct answer is to advise AGAINST shipping (or to recommend waiting / gathering more data / holding to control) — not to greenlight a ship and not to hedge into a non-answer the user will read as permission.
 

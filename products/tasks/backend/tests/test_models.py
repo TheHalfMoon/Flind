@@ -1278,7 +1278,7 @@ class TestTask(TestCase):
             self.captureOnCommitCallbacks(execute=True),
         ):
             task = Task.create_and_run(
-                team=self.team, title="PostHog AI", description="Repo-less", profile=profile, user_id=user.id
+                team=self.team, title="Flind AI", description="Repo-less", profile=profile, user_id=user.id
             )
 
         self.assertIsNone(task.github_integration)
@@ -1563,7 +1563,7 @@ class TestTaskSlug(TestCase):
             ("JonathanLab", "JON"),
             ("Test Team", "TES"),
             ("ABC", "ABC"),
-            ("PostHog", "POS"),
+            ("Flind", "POS"),
             ("my team", "MYT"),
             ("123test", "123"),
             ("test", "TES"),

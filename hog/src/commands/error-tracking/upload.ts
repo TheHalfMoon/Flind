@@ -15,7 +15,7 @@ import {
 } from './shared'
 
 export default defineCommand({
-    description: 'Upload symbols so PostHog can show readable stack traces',
+    description: 'Upload symbols so Flind can show readable stack traces',
     args: PATHS,
     options: { ...SELECTION_OPTIONS, ...UPLOAD_OPTIONS, ...RELEASE_OPTIONS, ...DRY_RUN_OPTION },
     scopes: UPLOAD_SCOPES,

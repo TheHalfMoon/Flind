@@ -7,7 +7,7 @@ export const template: HogFunctionTemplate = {
     id: 'template-close',
     name: 'Close',
     description:
-        'Sync PostHog persons to Close as contacts. Creates a new lead when no contact with the same email exists yet.',
+        'Sync Flind persons to Close as contacts. Creates a new lead when no contact with the same email exists yet.',
     icon_url: '/static/services/close.png',
     category: ['CRM', 'Customer Success'],
     code_language: 'hog',

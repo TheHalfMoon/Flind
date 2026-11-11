@@ -140,10 +140,10 @@ def _sanitize_context(
 class WidgetMessageSerializer(WidgetAuthSerializer):
     """Serializer for incoming widget messages."""
 
-    distinct_id = serializers.CharField(required=False, max_length=400, help_text="PostHog distinct_id")
+    distinct_id = serializers.CharField(required=False, max_length=400, help_text="Flind distinct_id")
     message = serializers.CharField(required=True, max_length=10000, help_text="Message content")
     traits = serializers.DictField(required=False, default=dict, help_text="Customer traits")
-    session_id = serializers.CharField(required=False, max_length=64, allow_null=True, help_text="PostHog session ID")
+    session_id = serializers.CharField(required=False, max_length=64, allow_null=True, help_text="Flind session ID")
     session_context = serializers.DictField(
         required=False, default=dict, help_text="Session context (replay URL, current URL, etc.)"
     )

@@ -83,7 +83,7 @@ function resolveDetailApp(
     return {
         type: 'detail',
         view_prop: raw.view_prop,
-        app_name: raw.app_name ?? `PostHog ${kebabToTitle(appKey)}`,
+        app_name: raw.app_name ?? `Flind ${kebabToTitle(appKey)}`,
         description: raw.description ?? `${kebabToTitle(appKey)} detail view`,
         component_import: raw.component_import ?? componentImport,
         data_type: raw.data_type ?? `${pascal}Data`,
@@ -108,7 +108,7 @@ function resolveListApp(
         item_name_field: raw.item_name_field ?? 'name',
         click_prop: raw.click_prop ?? `on${singularPascal}Click`,
         entity_label: raw.entity_label ?? singularKey.replace(/-/g, ' '),
-        app_name: raw.app_name ?? `PostHog ${kebabToTitle(appKey)}`,
+        app_name: raw.app_name ?? `Flind ${kebabToTitle(appKey)}`,
         description: raw.description ?? `${kebabToTitle(appKey)} view`,
         component_import: raw.component_import ?? componentImport,
         list_data_type: raw.list_data_type ?? `${singularPascal}ListData`,

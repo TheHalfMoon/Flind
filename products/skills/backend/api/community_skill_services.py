@@ -15,7 +15,7 @@ from .skill_serializers import validate_allowed_tool, validate_new_skill_name_va
 from .skill_services import HARNESS_OWNED_METADATA_KEYS, MAX_SKILL_FILE_BYTES, create_skill
 from .skill_template_services import parse_template_variables, render_template_skill
 
-# Namespaces where PostHog auto-registers and runs a skill under privileged scopes on an enrolled
+# Namespaces where Flind auto-registers and runs a skill under privileged scopes on an enrolled
 # team: Signals scouts on the scout coordinator, ReviewHog's review skills on a team's first PR
 # review. An install landing on one of these names would auto-run a contributor's instructions
 # against the installing team, so the whole prefix is reserved — the canonical skills in each
@@ -25,8 +25,8 @@ from .skill_template_services import parse_template_variables, render_template_s
 # can't drift as either namespace grows. A community skill named in one of these spaces is still
 # installable under a different `new_name`.
 RESERVED_INSTALL_NAME_PREFIXES: dict[str, str] = {
-    "signals-scout-": "PostHog-managed Signals scouts",
-    "review-hog-": "PostHog-managed review skills",
+    "signals-scout-": "Flind-managed Signals scouts",
+    "review-hog-": "Flind-managed review skills",
 }
 
 

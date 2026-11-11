@@ -103,7 +103,7 @@ class SignalFinding(BaseModel):
     )
     data_queried: str = Field(
         description=(
-            "What PostHog MCP queries you ran (e.g. execute-sql, query-run, insight-query) "
+            "What Flind MCP queries you ran (e.g. execute-sql, query-run, insight-query) "
             "and what the results showed. If no relevant queries could be run, explain why."
         ),
     )
@@ -224,7 +224,7 @@ class RelevantCommit(BaseModel):
 class SuggestedReviewerEntry(BaseModel):
     """One reviewer in a `suggested_reviewers` artefact's content list.
 
-    A reviewer is a PostHog user; a GitHub login is an attribute some of them have. An entry carries
+    A reviewer is a Flind user; a GitHub login is an attribute some of them have. An entry carries
     `user_uuid`, `github_login`, or both, and readers match on either — so a teammate who never
     connected GitHub still routes a report. Entries written before `user_uuid` existed carry a login
     alone, and read-time enrichment resolves those the way it always did.
@@ -239,7 +239,7 @@ class SuggestedReviewerEntry(BaseModel):
     )
     user_uuid: str | None = Field(
         default=None,
-        description="UUID of the PostHog user this entry routes to. Null on entries written before reviewers carried one.",
+        description="UUID of the Flind user this entry routes to. Null on entries written before reviewers carried one.",
     )
     github_name: str | None = Field(default=None, description="Optional human-readable display name.")
     relevant_commits: list[RelevantCommit] = Field(
@@ -1047,7 +1047,7 @@ class ImplementationTarget(BaseModel):
 
 class ImplementationAssessment(BaseModel):
     obsolete_pr_urls: list[str] = Field(
-        description="Only URLs from the supplied PostHog candidates whose fixes must be replaced. Empty means keep them all."
+        description="Only URLs from the supplied Flind candidates whose fixes must be replaced. Empty means keep them all."
     )
     reason: str = Field(min_length=1, description="What changed and why these specific fixes no longer fit.")
 

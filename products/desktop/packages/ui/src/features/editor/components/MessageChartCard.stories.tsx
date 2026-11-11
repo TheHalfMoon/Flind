@@ -18,7 +18,7 @@ type Story = StoryObj<typeof MessageChartCard>;
 /**
  * What a resolved chart card looks like: the query ran and came back as a
  * single series, so the header carries the headline value and step change.
- * (Storybook has no PostHog session, so the live-query stories below show
+ * (Storybook has no Flind session, so the live-query stories below show
  * the loading state instead.)
  */
 export const ResolvedCard: Story = {

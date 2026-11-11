@@ -39,14 +39,14 @@ class AnnouncementRateLimited(Exception):
 def _resolve_user_sender(team_id: int, user: User) -> SupportSlackSender:
     """The Slack profile to post under when someone sends an announcement as themselves.
 
-    Matches by email, so a user whose Slack email differs from their PostHog one has no
+    Matches by email, so a user whose Slack email differs from their Flind one has no
     identity to post under — say so instead of quietly falling back to the bot, which is
     the exact outcome the option exists to avoid.
     """
     email = (user.email or "").strip()
     if not email:
         raise AnnouncementValidationError(
-            {"send_as": "Your PostHog account has no email address, so we cannot find your Slack profile."}
+            {"send_as": "Your Flind account has no email address, so we cannot find your Slack profile."}
         )
     # The email address is the only thing binding this person to the Slack profile we post under,
     # and on an instance with no email delivery an address change is written straight to the
@@ -57,7 +57,7 @@ def _resolve_user_sender(team_id: int, user: User) -> SupportSlackSender:
     if user.is_email_verified is not True:
         raise AnnouncementValidationError(
             {
-                "send_as": "Verify your email address before sending as yourself — until then PostHog "
+                "send_as": "Verify your email address before sending as yourself — until then Flind "
                 "cannot confirm that Slack profile is yours. Send as SupportHog instead."
             }
         )
@@ -69,7 +69,7 @@ def _resolve_user_sender(team_id: int, user: User) -> SupportSlackSender:
         # Every channel would fail the same way at post time, so stop before the first one.
         raise AnnouncementValidationError(
             {
-                "send_as": "This Slack workspace was connected before PostHog could post under your "
+                "send_as": "This Slack workspace was connected before Flind could post under your "
                 "name, so reconnect the SupportHog bot in Support settings — or send as SupportHog."
             }
         )

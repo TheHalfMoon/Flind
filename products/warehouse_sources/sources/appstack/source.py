@@ -57,7 +57,7 @@ class AppstackSource(ResumableSource[AppstackSourceConfig, AppstackResumeConfig]
             category=DataWarehouseSourceCategory.ADVERTISING,
             keywords=["mobile attribution", "mmp", "ad attribution"],
             label="Appstack",
-            caption="""Enter your Appstack API key to pull your attributed mobile events into the PostHog Data warehouse.
+            caption="""Enter your Appstack API key to pull your attributed mobile events into the Flind Data warehouse.
 
 You can find the API key in your Appstack dashboard settings. API keys are scoped to a single app, so add one source per app.""",
             iconPath="/static/services/appstack.png",

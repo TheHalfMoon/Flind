@@ -85,7 +85,7 @@ def _validate_entry_shape(entry: dict[str, Any]) -> None:
     slug = entry.get("slug", "")
     # The slug is both the catalog URL segment and the default installed-skill name, so it must
     # satisfy the skill-name rules — lowercase alnum + single hyphens, neither reserved nor a name
-    # PostHog bundles (an entry under a bundled name would install to a name the agent host cannot
+    # Flind bundles (an entry under a bundled name would install to a name the agent host cannot
     # tell from the bundled skill). This also keeps DRF's default lookup regex (which rejects
     # '.'/'/') able to route detail/install URLs, and means the default-name install can never
     # raise an uncaught name ValidationError.

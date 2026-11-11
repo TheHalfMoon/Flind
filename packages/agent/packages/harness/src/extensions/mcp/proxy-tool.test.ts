@@ -133,7 +133,7 @@ describe("mcp proxy tool", () => {
   it("forwards a result's structured fields on details so a host UI can render them (regression)", async () => {
     const UI_TOOL = {
       name: "exec",
-      description: "Run a PostHog tool",
+      description: "Run a Flind tool",
       inputSchema: {
         type: "object",
         properties: { command: { type: "string" } },
@@ -190,7 +190,7 @@ describe("mcp proxy tool", () => {
   it("drops an oversized result's structured fields from details, keeping only the UI routing metadata (regression)", async () => {
     const UI_TOOL = {
       name: "exec",
-      description: "Run a PostHog tool",
+      description: "Run a Flind tool",
       inputSchema: {
         type: "object",
         properties: { command: { type: "string" } },
@@ -353,7 +353,7 @@ describe("mcp proxy tool", () => {
 
   it("never dumps a large catalog into context on connect-by-server-name (regression)", async () => {
     // Real-world trigger: a server with hundreds of tools and long
-    // descriptions (e.g. PostHog's MCP, ~650 tools) previously blew the
+    // descriptions (e.g. Flind's MCP, ~650 tools) previously blew the
     // discovery response past 500KB in one tool result.
     const manyTools = Array.from({ length: 200 }, (_, i) => ({
       name: `tool_${i}`,

@@ -1304,7 +1304,7 @@ class DataWarehouseViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
                     "status": serializers.CharField(
                         help_text="Provisioning lifecycle message, e.g. 'provisioning started'"
                     ),
-                    "org": serializers.CharField(help_text="duckgres org identifier (the PostHog organization id)"),
+                    "org": serializers.CharField(help_text="duckgres org identifier (the Flind organization id)"),
                     "username": serializers.CharField(help_text="Root database username"),
                     "password": serializers.CharField(
                         help_text="Root database password — returned only here at provision time and on reset-password"
@@ -1376,7 +1376,7 @@ class DataWarehouseViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
                     "status": serializers.CharField(
                         help_text="Deprovisioning lifecycle message, e.g. 'deprovisioning started'"
                     ),
-                    "org": serializers.CharField(help_text="duckgres org identifier (the PostHog organization id)"),
+                    "org": serializers.CharField(help_text="duckgres org identifier (the Flind organization id)"),
                 },
             )
         },
@@ -1399,7 +1399,7 @@ class DataWarehouseViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
                     ),
                     "org": serializers.CharField(
                         required=False,
-                        help_text="duckgres org identifier (the PostHog organization id)",
+                        help_text="duckgres org identifier (the Flind organization id)",
                     ),
                 },
             )
@@ -1424,7 +1424,7 @@ class DataWarehouseViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
             200: inline_serializer(
                 "WarehouseStatusResponse",
                 fields={
-                    "org_id": serializers.CharField(help_text="duckgres org identifier (the PostHog organization id)"),
+                    "org_id": serializers.CharField(help_text="duckgres org identifier (the Flind organization id)"),
                     "state": serializers.ChoiceField(
                         choices=["pending", "provisioning", "ready", "failed", "deleting", "deleted"],
                         help_text="Overall provisioning lifecycle state",

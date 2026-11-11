@@ -1,6 +1,6 @@
 """Ingestion acceptance test Temporal workflow.
 
-This workflow runs acceptance tests against the PostHog ingestion pipeline
+This workflow runs acceptance tests against the Flind ingestion pipeline
 to verify that events can be captured and queried successfully.
 """
 

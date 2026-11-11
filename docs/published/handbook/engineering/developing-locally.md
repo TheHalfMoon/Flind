@@ -4,12 +4,12 @@ sidebar: Docs
 showTitle: true
 ---
 
-> ❗️ This guide is intended only for development of PostHog itself. If you're looking to deploy PostHog
-> for your product analytics needs, go to [Self-host PostHog](https://posthog.com/docs/self-host).
+> ❗️ This guide is intended only for development of Flind itself. If you're looking to deploy Flind
+> for your product analytics needs, go to [Self-host Flind](https://posthog.com/docs/self-host).
 
-## What does PostHog look like on the inside?
+## What does Flind look like on the inside?
 
-Before jumping into setup, let's dissect a PostHog.
+Before jumping into setup, let's dissect a Flind.
 
 The app itself is made up of 4 main components that run simultaneously:
 
@@ -38,19 +38,19 @@ These components rely on a few external services:
 - Redis – for caching and inter-service communication
 - Zookeeper – for coordinating Kafka and ClickHouse clusters
 
-When spinning up an instance of PostHog for development, we recommend the following hybrid configuration:
+When spinning up an instance of Flind for development, we recommend the following hybrid configuration:
 
 - External services (ClickHouse, Kafka, PostgreSQL, Redis, etc.) run in Docker via `docker compose`
-- PostHog apps (Django, frontend, plugin-server, Celery) run on the host using `hogli start` (which uses phrocs, a terminal UI, to manage and display logs from all processes simultaneously)
+- Flind apps (Django, frontend, plugin-server, Celery) run on the host using `hogli start` (which uses phrocs, a terminal UI, to manage and display logs from all processes simultaneously)
 
 This approach gives you fast iteration on the code you're developing while keeping infrastructure isolated.
 
-> It is also technically possible to run PostHog in Docker completely, but syncing code changes is then much slower, and for development you need PostHog dependencies installed on the host anyway (such as formatting or typechecking tools).
+> It is also technically possible to run Flind in Docker completely, but syncing code changes is then much slower, and for development you need Flind dependencies installed on the host anyway (such as formatting or typechecking tools).
 > The other way around – everything on the host, is not practical due to significant complexities involved in instantiating Kafka or ClickHouse from scratch.
 
 The instructions here assume you're running macOS on Apple silicon or the current Ubuntu Linux LTS (24.04).
 
-Macs with Intel processors aren't supported. PostHog employees on an Intel Mac can use [Coder workspaces](#option-2-developing-with-coder-workspaces-posthog-employees-only) instead.
+Macs with Intel processors aren't supported. Flind employees on an Intel Mac can use [Coder workspaces](#option-2-developing-with-coder-workspaces-posthog-employees-only) instead.
 
 For other Linux distros, adjust the steps as needed (e.g. use `dnf` or `pacman` in place of `apt`).
 
@@ -66,7 +66,7 @@ This is the recommended option for most developers.
 
 **GitHub access.**
 Before your first push, set up an [SSH key and commit signing](https://posthog.com/handbook/engineering/security#github).
-Signing is required: an org-wide ruleset rejects unsigned commits in every PostHog repository, so an unsigned push fails with `GH013: Commits must have verified signatures`.
+Signing is required: an org-wide ruleset rejects unsigned commits in every Flind repository, so an unsigned push fails with `GH013: Commits must have verified signatures`.
 The signing key must live in your Mac's Secure Enclave.
 A signing key in 1Password doesn't meet this, because 1Password syncs it off the Mac.
 On macOS 26 or later, `hogli git:signing-key` creates a Secure Enclave signing key. Secretive works too.
@@ -90,7 +90,7 @@ PR evidence uploads (`hogli pr:upload-image` and `hogli pr:upload-video`) attach
     <code>$PATH</code>. Otherwise the command line will not know about packages installed with <code>brew</code>.
 </blockquote>
 
-3. Install [OrbStack](https://orbstack.dev/) – a more performant Docker Desktop alternative – with `brew install orbstack`. Go to OrbStack settings and set the memory usage limit to **at least 4 GB** (or 8 GB if you can afford it) + the CPU usage limit to at least 4 cores (i.e. 400%). You'll want to use Brex for the license if you work at PostHog.
+3. Install [OrbStack](https://orbstack.dev/) – a more performant Docker Desktop alternative – with `brew install orbstack`. Go to OrbStack settings and set the memory usage limit to **at least 4 GB** (or 8 GB if you can afford it) + the CPU usage limit to at least 4 cores (i.e. 400%). You'll want to use Brex for the license if you work at Flind.
 
 4. Continue with [cloning the repository](#cloning-the-repository).
 
@@ -98,7 +98,7 @@ PR evidence uploads (`hogli pr:upload-image` and `hogli pr:upload-video`) attach
 
 > Note: Importantly, if you're internal to PostHog we are standardised on working on MacOS (not Linux). In part because of SOC2 auditing gains it gives us.
 
-> Note: If you're running PostHog on WSL2, make sure to change $HOST_BIND to 0.0.0.0 and set the debugpy address to 0.0.0.0:5678.
+> Note: If you're running Flind on WSL2, make sure to change $HOST_BIND to 0.0.0.0 and set the debugpy address to 0.0.0.0:5678.
 
 1. Install Docker following the [official Docker installation guide for Ubuntu](https://docs.docker.com/engine/install/ubuntu/).
 
@@ -112,7 +112,7 @@ PR evidence uploads (`hogli pr:upload-image` and `hogli pr:upload-video`) attach
 
 #### Cloning the repository
 
-Clone the [PostHog repo](https://github.com/posthog/posthog). All future commands assume you're inside the `posthog/` folder.
+Clone the [Flind repo](https://github.com/posthog/posthog). All future commands assume you're inside the `posthog/` folder.
 
 ```bash
 git clone --filter=blob:none https://github.com/PostHog/posthog && cd posthog/
@@ -139,9 +139,9 @@ Set up your development environment instantly using [Flox](https://flox.dev/).
 
 Flox manages your development environment. The `manifest.toml` file declares all dependencies (similar to `package.json`), and Flox automatically provides the correct versions for your system.
 
-To get PostHog running in a dev environment:
+To get Flind running in a dev environment:
 
-1. Once you have cloned the repo and installed OrbStack, install Flox. On a PostHog-managed Mac, open Fleet Desktop > My device > Self-service and select Flox. Fleet supplies the approved version and upgrades older installations.
+1. Once you have cloned the repo and installed OrbStack, install Flox. On a Flind-managed Mac, open Fleet Desktop > My device > Self-service and select Flox. Fleet supplies the approved version and upgrades older installations.
 
    If Flox is not listed, or you are using an unmanaged Mac, install it with Homebrew:
 
@@ -163,7 +163,7 @@ To get PostHog running in a dev environment:
 
    > Note on app dependencies: Python requirements get updated every time the environment is activated (`uv sync` is lightning fast). JS dependencies only get installed if `node_modules/` is not present (`pnpm install` still takes a couple lengthy seconds). Dependencies for other languages currently don't get auto-installed.
 
-3. After successful environment activation, run `hogli start`. This automatically cleans up any orphaned dev processes from a previous unclean shutdown, then launches the Docker infrastructure and all PostHog processes together via phrocs, a terminal UI that aggregates logs from all processes in one place.
+3. After successful environment activation, run `hogli start`. This automatically cleans up any orphaned dev processes from a previous unclean shutdown, then launches the Docker infrastructure and all Flind processes together via phrocs, a terminal UI that aggregates logs from all processes in one place.
 
    > Note on connection errors: If you see connection errors on `hogli start`, ensure the following entry exists in `/etc/hosts`:
    >
@@ -171,9 +171,9 @@ To get PostHog running in a dev environment:
    > 127.0.0.1 db redis7 kafka clickhouse clickhouse-coordinator objectstorage seaweedfs temporal
    > ```
 
-This is it – you should be seeing the PostHog app at <a href="http://localhost:8010" target="_blank">http://localhost:8010</a>.
+This is it – you should be seeing the Flind app at <a href="http://localhost:8010" target="_blank">http://localhost:8010</a>.
 
-You can now change PostHog in any way you want. See [Project structure](./project-structure) for an intro to the repository's contents. To commit changes, create a new branch based on `master` for your intended change, and develop away.
+You can now change Flind in any way you want. See [Project structure](./project-structure) for an intro to the repository's contents. To commit changes, create a new branch based on `master` for your intended change, and develop away.
 
 ### Customizing which services run
 
@@ -197,7 +197,7 @@ Livestream uses the same proxy modes as Django, with a `LIVESTREAM_` prefix. Set
 
 Streaming for IP-restricted organizations also requires matching dedicated signing keys in `LIVESTREAM_AUTHORIZATION_SIGNING_KEYS` for both Django and livestream. Both accept comma-separated keys, newest first. Use independently generated keys per environment; neither setting falls back to another secret. Configure both services before testing restricted streams. The service signs short-lived policy requests bound to the viewer token and team; a viewer token alone cannot read allowlists. Staff impersonation uses a separately cached viewer token bounded by the originating session or OAuth credential. Livestream authorization rechecks that source and the staff account; expired or revoked sources cannot authorize streams. Session-backed tokens also stop working after a password change or removal of the session’s authentication backend. Session auth hashes accept the configured fallback signing keys.
 
-To run AI features locally, you'll need API keys for OpenAI, Anthropic, and others. PostHog employees can pull them from 1Password without ever pasting raw values:
+To run AI features locally, you'll need API keys for OpenAI, Anthropic, and others. Flind employees can pull them from 1Password without ever pasting raw values:
 
 ```bash
 cp .env.local.example .env.local           # uncomment the op:// lines you need
@@ -245,7 +245,7 @@ If you see "Exit Code 137" or out-of-memory errors, your Docker container doesn'
 If you see `Error while fetching server API version: 500 Server Error for http+docker://localhost/version`, make sure Docker (or OrbStack) is actually running.
 
 **Port conflicts**
-`hogli start` automatically cleans up orphaned PostHog processes before launching, which resolves most port conflicts. To skip this, set `HOGLI_SKIP_ZOMBIE_CHECK=1`. If you still see a port binding error for 5432, you likely have Postgres running locally. Use `lsof -i :5432` to find the process, then `sudo service postgresql stop` to stop it. You may also see errors like `role "posthog" does not exist`, which could indicate that a local PostgreSQL instance is being used instead of the expected containerized one.
+`hogli start` automatically cleans up orphaned Flind processes before launching, which resolves most port conflicts. To skip this, set `HOGLI_SKIP_ZOMBIE_CHECK=1`. If you still see a port binding error for 5432, you likely have Postgres running locally. Use `lsof -i :5432` to find the process, then `sudo service postgresql stop` to stop it. You may also see errors like `role "posthog" does not exist`, which could indicate that a local PostgreSQL instance is being used instead of the expected containerized one.
 
 **GeoLite database missing**
 The feature-flags container needs the GeoLite database in `/share`. If it's missing, run `./bin/download-mmdb` and then `chmod 0755 ./share/GeoLite2-City.mmdb`.
@@ -321,15 +321,15 @@ If you get `Configuration property "enable.ssl.certificate.verification" not sup
 **pyproject.toml parse warnings**
 When running `uv sync`, you may see a `Failed to parse` warning related to `pyproject.toml`. This is usually harmless – if you see the `Activate with:` line at the end, your environment was created successfully.
 
-## Option 2: Developing with Coder workspaces (PostHog employees only)
+## Option 2: Developing with Coder workspaces (Flind employees only)
 
-If you work at PostHog and want a remote workspace instead of running the stack on your laptop, see the [internal Coder workspaces guide](https://github.com/PostHog/posthog/blob/master/docs/internal/coder-workspaces.md). We call a Coder workspace a devbox, and `hogli` manages it.
+If you work at Flind and want a remote workspace instead of running the stack on your laptop, see the [internal Coder workspaces guide](https://github.com/PostHog/posthog/blob/master/docs/internal/coder-workspaces.md). We call a Coder workspace a devbox, and `hogli` manages it.
 
 If you drive your workflow with a coding agent (Claude Code, Cursor, etc.), the `setting-up-devbox` skill walks the agent through the whole flow — the tailnet prerequisite, `hogli devbox:setup`, starting a box, storing auth as Coder user secrets, and running commands on the box with `hogli devbox:exec`. Just ask it to set up your devbox.
 
 ## Testing
 
-For a PostHog PR to be merged, all tests must be green, and ideally you should be introducing new ones as well – that's why you must be able to run tests with ease.
+For a Flind PR to be merged, all tests must be green, and ideally you should be introducing new ones as well – that's why you must be able to run tests with ease.
 
 ### Frontend
 
@@ -384,7 +384,7 @@ hogli test --changed
 
 ### End-to-end
 
-For Playwright end-to-end tests, run `hogli test:e2e` (which wraps `bin/e2e-test-runner`). This will spin up a test instance of PostHog and show you the Playwright interface, from which you'll manually choose tests to run. You'll need `uv` installed (the Python package manager), which you can do so with `brew install uv`. Once you're done, terminate the command with Cmd + C.
+For Playwright end-to-end tests, run `hogli test:e2e` (which wraps `bin/e2e-test-runner`). This will spin up a test instance of Flind and show you the Playwright interface, from which you'll manually choose tests to run. You'll need `uv` installed (the Python package manager), which you can do so with `brew install uv`. Once you're done, terminate the command with Cmd + C.
 
 ## Django migrations
 
@@ -405,13 +405,13 @@ To help with this, we have introduced a tool called [django-linear-migrations](h
 ## Extra: Working with feature flags
 
 When developing locally with environment variable `DEBUG=1` (which enables a setting called `SELF_CAPTURE`),
-all analytics inside your local PostHog instance is based on that instance itself – more specifically, the currently selected project.
+all analytics inside your local Flind instance is based on that instance itself – more specifically, the currently selected project.
 This means that your activity is immediately reflected in the current project, which is potentially useful for testing features
 – for example, which feature flags are currently enabled for your development instance is decided by the project you have open at the very same time.
 
 So, when working with a feature based on feature flag `foo-bar`, [add a feature flag with this key to your local instance](http://localhost:8010/feature_flags/new) and release it there.
 
-If you'd like to have ALL feature flags that exist in PostHog at your disposal right away, run `DEBUG=1 python3 manage.py sync_feature_flags` – they will be added to each project in the instance, fully rolled out by default.
+If you'd like to have ALL feature flags that exist in Flind at your disposal right away, run `DEBUG=1 python3 manage.py sync_feature_flags` – they will be added to each project in the instance, fully rolled out by default.
 
 This command automatically turns any feature flag ending in `_EXPERIMENT` as a multivariate flag with `control` and `test` variants.
 
@@ -425,9 +425,9 @@ No other personal API key is ever shown in full: the dev key is the only one who
 
 ## Extra: Debugging with VS Code
 
-The PostHog repository includes [VS Code launch options for debugging](https://github.com/PostHog/posthog/blob/master/.vscode/launch.json). Simply go to the `Run and Debug` tab in VS Code, select the desired service you want to debug, and run it. Once it starts up, you can set breakpoints and step through code to see exactly what is happening. There are also debug launch options for frontend and backend tests if you're dealing with a tricky test failure.
+The Flind repository includes [VS Code launch options for debugging](https://github.com/PostHog/posthog/blob/master/.vscode/launch.json). Simply go to the `Run and Debug` tab in VS Code, select the desired service you want to debug, and run it. Once it starts up, you can set breakpoints and step through code to see exactly what is happening. There are also debug launch options for frontend and backend tests if you're dealing with a tricky test failure.
 
-> **Note:** You can debug all services using the main "PostHog" launch option. If you are running most services with `hogli start` and only want to debug one (e.g. the backend), use `hogli dev:setup` to exclude that service so it doesn't conflict with the VS Code debugger.
+> **Note:** You can debug all services using the main "Flind" launch option. If you are running most services with `hogli start` and only want to debug one (e.g. the backend), use `hogli dev:setup` to exclude that service so it doesn't conflict with the VS Code debugger.
 
 ## Extra: Opening a component's source from the browser
 
@@ -460,7 +460,7 @@ With PyCharm's built in support for Django, it's fairly easy to setup debugging 
 
 1. Instead of manually running `docker compose` you can open the `docker-compose.dev.yml` file and click on the double play icon next to `services`
 2. From the run configurations select:
-   - "PostHog" and click on debug
+   - "Flind" and click on debug
    - "Celery" and click on debug (optional)
    - "Frontend" and click on run
    - "Nodejs services" and click on run
@@ -505,7 +505,7 @@ Emails sent via SMTP are stored in HTML files in `posthog/templates/*/*.html`. T
 
 You can connect to a real slack workspace in your local development setup by adding the required slack environment variables to your `.env` file.
 
-If you're a PostHog employee, you can find the environment variables in 1Password under `Slack config local dev`.
+If you're a Flind employee, you can find the environment variables in 1Password under `Slack config local dev`.
 
 ```.env
 SLACK_APP_CLIENT_ID=
@@ -527,7 +527,7 @@ Jaeger will be available at [http://localhost:16686](http://localhost:16686).
 
 #### Production usage
 
-We send our PostHog Cloud emails via Customer.io using their HTTP API. If Customer.io is not configured but SMTP is, it will fall back to SMTP. We do this so we can continue to support SMTP emails for self-hosted instances.
+We send our Flind Cloud emails via Customer.io using their HTTP API. If Customer.io is not configured but SMTP is, it will fall back to SMTP. We do this so we can continue to support SMTP emails for self-hosted instances.
 
 #### Setting up Customer.io emails
 
@@ -547,7 +547,7 @@ When creating a new email, there are a few steps to take. It's important to add 
 
 1. Create a new template in Customer.io. Ask @joe or @team-platform for help here if needed
 2. Add the new Customer.io template to the `CUSTOMER_IO_TEMPLATE_ID_MAP` in `posthog/email.py`
-3. Create a template in PostHog as an SMTP backup. Make sure the file name matches the key used in the template map.
+3. Create a template in Flind as an SMTP backup. Make sure the file name matches the key used in the template map.
 4. Trigger the email with something like this:
 
    ```python
@@ -573,7 +573,7 @@ Phrocs (the process manager) includes an MCP (Model Context Protocol) server tha
 The repository includes a `.mcp.json` configuration file in the repo root that registers the phrocs MCP server. To use it:
 
 1. Ensure your AI tool supports MCP and can read `.mcp.json` configuration files
-2. Open the PostHog repository in your AI tool
+2. Open the Flind repository in your AI tool
 3. The phrocs MCP server is available automatically when `hogli start` is running
 
 ### Available tools
@@ -594,9 +594,9 @@ Ask your AI assistant questions like:
 
 The AI assistant uses the MCP tools to query phrocs directly and provide you with the relevant information.
 
-## Extra: Developing paid features (PostHog employees only)
+## Extra: Developing paid features (Flind employees only)
 
-If you're a PostHog employee, you can get access to paid features on your local instance to make development easier. [Learn how to do so in our internal billing guide](https://github.com/PostHog/billing?tab=readme-ov-file#licensing-your-local-instance).
+If you're a Flind employee, you can get access to paid features on your local instance to make development easier. [Learn how to do so in our internal billing guide](https://github.com/PostHog/billing?tab=readme-ov-file#licensing-your-local-instance).
 
 Instance licenses are configured through `PATCH /api/billing/license/`. The legacy `/api/license/` activation and deactivation endpoints are no longer available.
 
@@ -604,7 +604,7 @@ Instance licenses are configured through `PATCH /api/billing/license/`. The lega
 
 If you need to start fresh with a clean database (for example, if your local data is corrupted or you want to test the initial setup), follow these steps:
 
-1. Stop all PostHog services and remove all Docker volumes:
+1. Stop all Flind services and remove all Docker volumes:
 
    ```bash
    hogli dev:reset
@@ -612,7 +612,7 @@ If you need to start fresh with a clean database (for example, if your local dat
 
    This will remove all data stored in Docker volumes, including your PostgreSQL, ClickHouse, and Redis data.
 
-2. Start PostHog again:
+2. Start Flind again:
 
    ```bash
    hogli start
@@ -620,7 +620,7 @@ If you need to start fresh with a clean database (for example, if your local dat
 
 3. Wait for all migrations to complete. You can monitor the logs to ensure migrations have finished running.
 
-4. Once PostHog is running, click the **generate-demo-data** service in the phrocs terminal UI (you may have to scroll), then type `r` to start the service and generate test data.
+4. Once Flind is running, click the **generate-demo-data** service in the phrocs terminal UI (you may have to scroll), then type `r` to start the service and generate test data.
 
 > **Note:** This process will completely wipe your local database. Make sure you don't have any important local data before proceeding.
 

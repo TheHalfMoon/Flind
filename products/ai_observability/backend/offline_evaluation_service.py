@@ -143,7 +143,7 @@ def _check_fingerprint(actual: str, expected: str, *, field: str) -> None:
 
 def _provenance_identifier(submitted: str | None, derived: str, *, field: str) -> str:
     if submitted is not None and submitted != derived:
-        raise OfflineEvaluationValidationError(field, "This identifier does not match the linked PostHog dataset.")
+        raise OfflineEvaluationValidationError(field, "This identifier does not match the linked Flind dataset.")
     return derived
 
 
@@ -201,7 +201,7 @@ class OfflineExperimentService(_OfflineEvaluationService):
         fields: dict[str, object] = asdict(submission)
         if submission.dataset_revision_id is None:
             if submission.dataset_source == "posthog":
-                raise OfflineEvaluationValidationError("dataset_revision_id", "Select a PostHog dataset revision.")
+                raise OfflineEvaluationValidationError("dataset_revision_id", "Select a Flind dataset revision.")
             return fields
         revision = self._dataset_revisions().filter(id=submission.dataset_revision_id).first()
         if revision is None:
@@ -312,7 +312,7 @@ class OfflineEvaluationIngestionService(_OfflineEvaluationService):
         if experiment.dataset_source != "posthog":
             if linked_ids:
                 raise OfflineEvaluationValidationError(
-                    "items", "PostHog item versions require a linked experiment revision."
+                    "items", "Flind item versions require a linked experiment revision."
                 )
             return {}
         revision_id = experiment.dataset_revision_id

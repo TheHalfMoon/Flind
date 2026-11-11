@@ -44,7 +44,7 @@ class SessionRecording(UUIDTModel):
     class Meta:
         unique_together = ("team", "session_id")
 
-    # Note: UUIDT is the PostHog standard, but session_id's are generated with a different util in posthog-js
+    # Note: UUIDT is the Flind standard, but session_id's are generated with a different util in posthog-js
     # https://github.com/PostHog/posthog-js/blob/e0dc2c005cfb5dd62b7c876676bcffe1654417a7/src/utils.ts#L457-L458
     # We create recording objects with both UUIDT and a unique session_id field to remain backwards compatible.
     # All other models related to the session recording model uses this unique `session_id` to create the link.

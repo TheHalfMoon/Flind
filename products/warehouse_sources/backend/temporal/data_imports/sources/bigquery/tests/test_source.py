@@ -669,7 +669,7 @@ def test_non_retryable_errors_match_rejected_credentials(observed_error):
 @pytest.mark.parametrize(
     "observed_error",
     [
-        # token_uri pointed at the cloud metadata endpoint — PostHog's egress proxy denies it.
+        # token_uri pointed at the cloud metadata endpoint — Flind's egress proxy denies it.
         "RefreshError: Egress proxying is denied to host '169.254.169.254': no valid IP found "
         "among resolved addresses - 169.254.169.254 denied by rule 'Deny: Not Global Unicast'. .",
         # Different denied host — the match must not rely on the volatile host/IP.
@@ -1085,7 +1085,7 @@ def test_non_retryable_errors_match_permission_denied(observed_error):
 @pytest.mark.parametrize(
     "observed_error,expected_key,expected_word",
     [
-        # Overwriting a PostHog temp table — denied with bigquery.tables.update on the table.
+        # Overwriting a Flind temp table — denied with bigquery.tables.update on the table.
         (
             str(
                 Forbidden(
@@ -1096,7 +1096,7 @@ def test_non_retryable_errors_match_permission_denied(observed_error):
             "bigquery.tables.update",
             "write access",
         ),
-        # Creating a PostHog temp table — denied with bigquery.tables.create on the dataset.
+        # Creating a Flind temp table — denied with bigquery.tables.create on the dataset.
         (
             str(
                 Forbidden(
@@ -1620,7 +1620,7 @@ def test_bigquery_source_declares_v2_as_default():
 
 
 # A BigQuery source authenticates either with a Google Cloud service account integration (shared
-# across the team, and keyless when PostHog impersonates the account) or with a JSON key file
+# across the team, and keyless when Flind impersonates the account) or with a JSON key file
 # uploaded onto the source itself. `resolve_bigquery_auth` picks between them once per run, and
 # every client the run opens signs with what it returns.
 
@@ -1648,9 +1648,9 @@ def _google_cloud_integration(team, *, with_key: bool, email: str = "sa@my-proje
 
 @pytest.mark.django_db
 def test_bigquery_auth_from_keyless_integration_impersonates_only_after_ownership_is_verified(team, settings):
-    """A keyless integration means PostHog signs as the customer's service account using its own
+    """A keyless integration means Flind signs as the customer's service account using its own
     identity. Without the ownership check, a team that merely knows another org's service account
-    email could have PostHog read that org's data on its behalf."""
+    email could have Flind read that org's data on its behalf."""
     settings.BATCH_EXPORT_BIGQUERY_STS_AUDIENCE_FIELD = "//iam.googleapis.com/projects/1/locations/global"
     settings.BATCH_EXPORT_BIGQUERY_SERVICE_ACCOUNT = "posthog@posthog.iam.gserviceaccount.com"
     integration = _google_cloud_integration(team, with_key=False)
@@ -1680,7 +1680,7 @@ _OWNERSHIP_ERROR = ServiceAccountOwnershipError("sa@my-project.iam.gserviceaccou
         # The customer has to change their service account description, so the sync must stop
         # rather than retry the same rejection every run.
         pytest.param(None, _OWNERSHIP_ERROR, str(_OWNERSHIP_ERROR), True, True, id="ownership_unverified"),
-        # PostHog's worker cannot get its own Google Cloud credentials. The ownership check would
+        # Flind's worker cannot get its own Google Cloud credentials. The ownership check would
         # fail with the same "getAccessToken denied" text as a missing customer grant, which is
         # non-retryable and tells the customer to fix IAM. Nothing on their side can fix this.
         pytest.param(

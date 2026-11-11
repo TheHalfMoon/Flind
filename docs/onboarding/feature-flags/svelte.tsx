@@ -31,7 +31,7 @@ export const getSvelteSteps = (ctx: OnboardingComponentsContext): StepDefinition
             content: (
                 <>
                     <Markdown>
-                        Use `posthog-node` to evaluate feature flags on the server. Initialize PostHog in your server
+                        Use `posthog-node` to evaluate feature flags on the server. Initialize Flind in your server
                         load function:
                     </Markdown>
                     <CodeBlock
@@ -40,9 +40,9 @@ export const getSvelteSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                 language: 'javascript',
                                 file: 'src/routes/+page.server.js',
                                 code: dedent`
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
 
-                                    const posthog = new PostHog('<ph_project_token>', {
+                                    const posthog = new Flind('<ph_project_token>', {
                                         host: '<ph_client_api_host>'
                                     })
                                 `,
@@ -62,7 +62,7 @@ export const getSvelteSteps = (ctx: OnboardingComponentsContext): StepDefinition
             content: (
                 <Markdown>
                     Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run
-                    an experiment by creating a new experiment in the PostHog dashboard.
+                    an experiment by creating a new experiment in the Flind dashboard.
                 </Markdown>
             ),
         },

@@ -1,6 +1,6 @@
 """Single source of truth for the agent object-tag kind registry.
 
-Agents cite PostHog objects in their replies with XML-style tags
+Agents cite Flind objects in their replies with XML-style tags
 (``<insight id="9pQx3">checkout funnel</insight>``). Each surface renders them
 its own way — desktop as chips with hover previews, Slack and the web app as
 markdown links — but they all share one vocabulary: the kinds, aliases, labels
@@ -157,7 +157,7 @@ RESERVED_URL_IDS: tuple[str, ...] = ("new", "home", "playlists", "settings", "co
 APP_HOST_ALIASES: dict[str, str] = {"app.posthog.com": "us.posthog.com"}
 
 # Rendering fallback for a tag whose kind nobody registered.
-FALLBACK_OBJECT_KIND = ObjectKindSpec(kind_label="Evidence", source="PostHog")
+FALLBACK_OBJECT_KIND = ObjectKindSpec(kind_label="Evidence", source="Flind")
 
 
 def resolve_object_kind(name: str) -> ObjectKindSpec | None:

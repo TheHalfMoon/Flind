@@ -17,7 +17,7 @@ export function ExceptionIngestionSettings(): JSX.Element {
         LemonDialog.open({
             title: 'Stop ingesting exceptions?',
             description:
-                "PostHog will drop every exception this project sends until you turn ingestion back on. You can't recover dropped exceptions.",
+                "Flind will drop every exception this project sends until you turn ingestion back on. You can't recover dropped exceptions.",
             primaryButton: {
                 children: 'Stop ingesting',
                 status: 'danger',
@@ -33,7 +33,7 @@ export function ExceptionIngestionSettings(): JSX.Element {
             <div>
                 <h3 className="font-semibold text-base mb-1">Exception ingestion</h3>
                 <p className="text-muted-foreground">
-                    When this is off, PostHog drops every exception this project sends. Dropped exceptions aren't stored
+                    When this is off, Flind drops every exception this project sends. Dropped exceptions aren't stored
                     or billed, and you can't recover them. Changes take up to a minute to apply.
                 </p>
             </div>

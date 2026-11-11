@@ -55,7 +55,7 @@ WEBAUTHN_SIGNUP_USER_UUID_KEY = "webauthn_signup_user_uuid"
 WEBAUTHN_LOGIN_CHALLENGE_KEY = "webauthn_login_challenge"
 
 PASSKEY_NOT_REGISTERED_ERROR = (
-    "This passkey isn't registered with PostHog. It may have been removed from your account. "
+    "This passkey isn't registered with Flind. It may have been removed from your account. "
     "Choose another passkey, or sign in another way."
 )
 PASSKEY_NOT_VERIFIED_ERROR = "We couldn't verify this passkey. Try again, or sign in another way."

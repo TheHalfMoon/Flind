@@ -1,6 +1,6 @@
 """TypeSafe egress budget.
 
-A PostHog instance holds a single TypeSafe API key, so the whole instance draws from one shared
+A Flind instance holds a single TypeSafe API key, so the whole instance draws from one shared
 budget under a constant scope. The per-minute default stays at half of TypeSafe's published request
 limit, because TypeSafe changes its limits without notice. The hourly default is an operator ceiling
 on spend, because TypeSafe bills every input token.

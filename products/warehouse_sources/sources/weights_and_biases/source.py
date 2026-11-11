@@ -58,7 +58,7 @@ class WeightsAndBiasesSource(ResumableSource[WeightsAndBiasesSourceConfig, Weigh
             label="Weights & Biases",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["wandb", "ml", "experiment tracking", "mlops"],
-            caption="""Enter your Weights & Biases API key to pull your experiment tracking data into the PostHog Data warehouse.
+            caption="""Enter your Weights & Biases API key to pull your experiment tracking data into the Flind Data warehouse.
 
 You can find your API key at [wandb.ai/authorize](https://wandb.ai/authorize). The entity is the username or team whose projects you want to sync.
 

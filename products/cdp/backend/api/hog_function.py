@@ -588,7 +588,7 @@ class HogFunctionSerializer(HogFunctionMinimalSerializer):
             names = ", ".join(sorted(unexpected))
             raise serializers.ValidationError(
                 {
-                    "hog": f"Reserved for PostHog's own use and not callable from a function's code: {names}. "
+                    "hog": f"Reserved for Flind's own use and not callable from a function's code: {names}. "
                     "Use the matching workflow step or destination template instead."
                 }
             )

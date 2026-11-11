@@ -6,7 +6,7 @@ ingestion Kafka topics — USE THIS!  The capture-rs pipeline handles deduplicat
 quotas, billing, and routing; bypassing it creates safety and correctness problems.
 
 NOTE: This is for submitting events ON BEHALF OF A CUSTOMER TEAM.  It is NOT for
-submitting SDK-style internal telemetry events for PostHog's own team (team 2) — the
+submitting SDK-style internal telemetry events for Flind's own team (team 2) — the
 posthoganalytics SDK integration handles that separately.
 
 Session replay events ($snapshot, $performance_event, $snapshot_items) are NOT SUPPORTED.
@@ -242,10 +242,10 @@ def _build_v1_headers(token: str, attempt: int) -> dict[str, str]:
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
         "User-Agent": SDK_INFO,
-        "PostHog-Sdk-Info": SDK_INFO,
-        "PostHog-Attempt": str(attempt),
-        "PostHog-Request-Id": str(uuid4()),
-        "PostHog-Request-Timestamp": datetime.now(UTC).isoformat(),
+        "Flind-Sdk-Info": SDK_INFO,
+        "Flind-Attempt": str(attempt),
+        "Flind-Request-Id": str(uuid4()),
+        "Flind-Request-Timestamp": datetime.now(UTC).isoformat(),
     }
 
 
@@ -588,7 +588,7 @@ def _submit_batch_chunk(
                     "capture_internal_transport_error",
                     event_source=event_source,
                     lane=lane,
-                    request_id=headers.get("PostHog-Request-Id", ""),
+                    request_id=headers.get("Flind-Request-Id", ""),
                     batch_size=len(pending_batch),
                     error=str(exc),
                 )
@@ -618,7 +618,7 @@ def _submit_batch_chunk(
                     "capture_internal_request_failed",
                     event_source=event_source,
                     lane=lane,
-                    request_id=headers.get("PostHog-Request-Id", ""),
+                    request_id=headers.get("Flind-Request-Id", ""),
                     status_code=resp.status_code,
                     batch_size=len(pending_batch),
                     error=error_body.get("error", "unknown"),
@@ -883,7 +883,7 @@ def capture_batch_internal(
     bypassing it creates safety and correctness problems.
 
     NOTE: This is for submitting events ON BEHALF OF A CUSTOMER TEAM.  It is NOT for
-    submitting SDK-style internal telemetry events for PostHog's own team (team 2) — the
+    submitting SDK-style internal telemetry events for Flind's own team (team 2) — the
     posthoganalytics SDK integration handles that separately.
 
     Submits events as true batch POSTs to the v1 analytics endpoint.  capture-rs returns
@@ -1089,7 +1089,7 @@ def capture_internal(
     quotas, billing, and routing; bypassing it creates safety and correctness problems.
 
     NOTE: This is for submitting events ON BEHALF OF A CUSTOMER TEAM.  It is NOT for
-    submitting SDK-style internal telemetry events for PostHog's own team (team 2) — the
+    submitting SDK-style internal telemetry events for Flind's own team (team 2) — the
     posthoganalytics SDK integration handles that separately.
 
     Wraps the event into a 1-element batch and delegates to capture_batch_internal.

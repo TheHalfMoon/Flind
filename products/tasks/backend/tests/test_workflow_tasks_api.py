@@ -492,7 +492,7 @@ class TestWorkflowTasksAPI(APIBaseTest):
         [
             # Any non-None reply from the Desktop usage gate means blocked.
             ("owner_over_usage_limit", "usage_limit_response", object(), "usage limit"),
-            ("team_out_of_ai_credits", "is_team_over_credit_budget", True, "monthly PostHog AI credits"),
+            ("team_out_of_ai_credits", "is_team_over_credit_budget", True, "monthly Flind AI credits"),
         ]
     )
     def test_rejects_creation_when_usage_is_blocked(self, _name: str, gate: str, blocked: Any, detail: str) -> None:

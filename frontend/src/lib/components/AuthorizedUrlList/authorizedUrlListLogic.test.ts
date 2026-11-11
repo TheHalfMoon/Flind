@@ -416,7 +416,7 @@ describe('the authorized urls list logic', () => {
 
         it('uiHost is window.location.origin regardless of apiURL option', () => {
             // Simulates reverse proxy customer: their api_host is their proxy,
-            // but uiHost should always be window.location.origin (the PostHog app)
+            // but uiHost should always be window.location.origin (the Flind app)
             const params = parseHash(directToolbarUrl('https://customer.com'))
             expect(params.uiHost).toBe('http://localhost')
             expect(params.apiURL).toBeUndefined()

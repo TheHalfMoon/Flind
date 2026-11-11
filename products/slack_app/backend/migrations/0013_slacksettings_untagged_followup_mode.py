@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                     ("ask", "Ask before picking it up"),
                     ("never", "Never pick it up"),
                 ],
-                help_text="What PostHog does with untagged replies in threads this user started.",
+                help_text="What Flind does with untagged replies in threads this user started.",
                 max_length=16,
                 null=True,
             ),

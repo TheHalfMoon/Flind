@@ -132,7 +132,7 @@ describe('RateLimiter', () => {
         expect(redis.expire).toHaveBeenCalledWith('mcp:rl:burst:user-a', 60)
     })
 
-    it('matches PostHog REST API default throttle (480/min, 4800/hour)', () => {
+    it('matches Flind REST API default throttle (480/min, 4800/hour)', () => {
         expect(DEFAULT_BURST_LIMIT).toEqual({ scope: 'mcp_burst', limit: 480, windowSeconds: 60 })
         expect(DEFAULT_SUSTAINED_LIMIT).toEqual({ scope: 'mcp_sustained', limit: 4800, windowSeconds: 3600 })
     })

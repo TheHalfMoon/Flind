@@ -1,7 +1,7 @@
 ---
 name: creating-online-evaluations
 description: >
-  Author continuously-running online evaluations in PostHog AI observability, grounded in real failure
+  Author continuously-running online evaluations in Flind AI observability, grounded in real failure
   modes you've identified. Use when the user wants evaluations that automatically score new generations or
   whole traces going forward — "create an eval to catch X", "continuously check that responses do Y",
   "turn these failures into evals", or after reading traces finds a recurring failure. Covers letting the explored data decide how many evals to create,
@@ -162,7 +162,7 @@ Then choose what one run returns. `hog` and `llm_judge` support all three output
 - Without a passing rule, numeric and categorical results are still recorded, but there are no pass rates
   or reports.
 
-When an `llm_judge` returns `numeric` or `categorical`, PostHog tells the judge the output format. The prompt
+When an `llm_judge` returns `numeric` or `categorical`, Flind tells the judge the output format. The prompt
 only describes what each score or category means. Full config fields:
 [references/evaluation-payload.md](references/evaluation-payload.md).
 
@@ -197,7 +197,7 @@ A `session` target takes the same settle config with session-sized bounds, and d
 
 A session evaluation only fires for events that carry `$ai_session_id`. Producers either set it on
 every generation or on none, so an SDK that does not set it will never trigger a session
-evaluation. `$ai_session_id` is not `$session_id`: the second is PostHog's product-analytics
+evaluation. `$ai_session_id` is not `$session_id`: the second is Flind's product-analytics
 session and is unrelated.
 
 A session evaluation can also come back skipped rather than graded. The emitted `$ai_evaluation`
@@ -258,7 +258,7 @@ posthog:llma-evaluation-judge-models      // {} → every provider and its model
 
 Confirm the provider and model with `llma-evaluation-judge-models`.
 Call it with no arguments to see the whole catalog at once.
-Providers PostHog funds no models for come back empty unless you pass `key_id` for one of the team's keys; the response's `providers` list flags which ones those are.
+Providers Flind funds no models for come back empty unless you pass `key_id` for one of the team's keys; the response's `providers` list flags which ones those are.
 A listed model is not a free model. Running any `llm_judge` needs one of the team's own provider keys, so enabling fails until a usable key exists.
 Prefer pinning the chosen key so a later team-wide active-key change does not change how the evaluation runs.
 Leave `provider_key_id` as `null` to run on the team's active key; before enabling, confirm with
@@ -385,7 +385,7 @@ One backfill runs per evaluation at a time.
 
 `conditions` is a **list** of condition sets — **OR between sets, AND within a set's `properties`**. Each
 set is `{ id, rollout_percentage, properties[] }`. There is no time window inside conditions; sampling is
-only `rollout_percentage` (0–100). Property filters use the standard PostHog shape
+only `rollout_percentage` (0–100). Property filters use the standard Flind shape
 (`key`, `type`, `operator`, `value`). For trace targets, these filters still select the generation that
 triggers the eventual whole-trace evaluation.
 

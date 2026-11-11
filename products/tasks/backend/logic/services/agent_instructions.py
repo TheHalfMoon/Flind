@@ -1,6 +1,6 @@
 """Project and personal agent instructions, written into cloud runs as each agent's user-level AGENTS.md.
 
-Stored apart from PostHog AI memory.
+Stored apart from Flind AI memory.
 """
 
 import structlog

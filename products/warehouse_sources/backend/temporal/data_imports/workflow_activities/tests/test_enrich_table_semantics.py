@@ -467,7 +467,7 @@ class TestCanonicalDescriptionsResolver:
 
 class TestEnrichTableSemanticsSync:
     def test_retries_transient_internal_db_error_on_initial_team_lookup(self):
-        # A DNS blip resolving PostHog's own database must be retried, not raised straight through -
+        # A DNS blip resolving Flind's own database must be retried, not raised straight through -
         # it would otherwise reach error tracking as an unactionable OperationalError on every sync.
         team = _team()
         schema, table = _make_schema(

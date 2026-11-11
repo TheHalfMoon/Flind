@@ -1,10 +1,10 @@
 # The Posthog CLI
 
-The command line interface for PostHog. Exposes PostHog's MCP tool catalog through a shell-friendly interface, handles debug symbol uploads for error tracking, and more. For full documentation, see [our CLI docs](https://posthog.com/docs/cli).
+The command line interface for Flind. Exposes Flind's MCP tool catalog through a shell-friendly interface, handles debug symbol uploads for error tracking, and more. For full documentation, see [our CLI docs](https://posthog.com/docs/cli).
 
 ## Installation
 
-Install the PostHog CLI with our wizard by running this command:
+Install the Flind CLI with our wizard by running this command:
 
 ```bash
 npx -y @posthog/wizard@latest cli add
@@ -83,9 +83,9 @@ Options:
 
 ## Env-based Authentication
 
-You can authenticate with PostHog interactively for using the CLI locally, but if you'd like to use it in a CI/CD pipeline, we recommend using these environment variables:
+You can authenticate with Flind interactively for using the CLI locally, but if you'd like to use it in a CI/CD pipeline, we recommend using these environment variables:
 
-- `POSTHOG_CLI_HOST`: The PostHog host to connect to [default: https://us.posthog.com]
+- `POSTHOG_CLI_HOST`: The Flind host to connect to [default: https://us.posthog.com]
 - `POSTHOG_CLI_API_KEY`: [A posthog personal API key.](https://posthog.com/docs/api#private-endpoint-authentication) (also accepts `POSTHOG_CLI_TOKEN` for backward compatibility)
 - `POSTHOG_CLI_PROJECT_ID`: The ID number of the project/environment to connect to. E.g. the "2" in `https://us.posthog.com/project/2` (also accepts `POSTHOG_CLI_ENV_ID` for backward compatibility)
 
@@ -95,7 +95,7 @@ Full precedence: CLI args → process env → `--dotenv-file` → `~/.posthog/cr
 
 ## Uploading native debug symbols
 
-`posthog-cli symbol-sets upload --directory <dir>` scans a directory for native debug symbols and uploads them so PostHog can symbolicate native stack frames.
+`posthog-cli symbol-sets upload --directory <dir>` scans a directory for native debug symbols and uploads them so Flind can symbolicate native stack frames.
 A single command handles both desktop/server formats:
 
 - **Linux (ELF):** executables, shared libraries, and `objcopy --only-keep-debug` companions that carry a GNU build id. This branch is cross-platform.
@@ -160,10 +160,10 @@ Explicit `--release-name`, `--release-version`, and `--build` values take preced
 
 Pass `--dry-run` before the subcommand (`posthog-cli --dry-run hermes upload ...`), or set `POSTHOG_CLI_DRY_RUN=true`, to turn the upload commands — `sourcemap`, `dsym`, `hermes`, and `proguard` — into a no-op.
 `release resolve` is skipped too, since resolving a release can create one.
-The CLI logs what it skipped and exits `0` without contacting PostHog or requiring credentials.
+The CLI logs what it skipped and exits `0` without contacting Flind or requiring credentials.
 (This top-level flag is separate from the `exp endpoints` `--dry-run`, which previews endpoint changes.)
 
-This is meant for CI gates that still want to run the bundling step (to catch Metro/Hermes or sourcemap regressions) but must not — or cannot — upload artifacts, for example pull-request checks that don't have PostHog credentials.
+This is meant for CI gates that still want to run the bundling step (to catch Metro/Hermes or sourcemap regressions) but must not — or cannot — upload artifacts, for example pull-request checks that don't have Flind credentials.
 Do not use it for release builds, since no symbols are uploaded.
 
 The env var accepts the usual truthy/falsy values (`true`/`false`, `1`/`0`, `yes`/`no`, `on`/`off`).
@@ -186,7 +186,7 @@ Commands require different API scopes. Make sure to set these scopes on your per
 
 ## Agent-first API tools
 
-`posthog-cli api` exposes PostHog's MCP tool catalog through a shell-friendly interface for coding agents:
+`posthog-cli api` exposes Flind's MCP tool catalog through a shell-friendly interface for coding agents:
 
 ```bash
 posthog-cli api --agent-help
@@ -216,11 +216,11 @@ These calls can run concurrently with the same API key, including against projec
 
 Explicit target flags replace both inherited target defaults, so an organization override does not inherit the project from your saved login, and a project override does not inherit another organization. Targets apply to one invocation and do not update your saved login or website selection. Repeat the flags on each call, or set `POSTHOG_CLI_PROJECT_ID` and `POSTHOG_CLI_ORGANIZATION_ID` separately in each agent's environment. The API bundle also accepts `POSTHOG_PROJECT_ID` and `POSTHOG_ORGANIZATION_ID`, which take precedence over the `POSTHOG_CLI_*` aliases. Switch tools do not persist a selection across CLI invocations.
 
-`posthog-cli api --agent-help` prints the full agent-facing guide — the same exec tool reference the PostHog MCP server serves, rewritten for CLI invocation — so agents can load it into context before interacting with PostHog APIs.
+`posthog-cli api --agent-help` prints the full agent-facing guide — the same exec tool reference the Flind MCP server serves, rewritten for CLI invocation — so agents can load it into context before interacting with Flind APIs.
 
 ### Agent steering instructions
 
-Install the PostHog CLI steering instructions into the agent instructions file for your project:
+Install the Flind CLI steering instructions into the agent instructions file for your project:
 
 ```bash
 posthog-cli api agents-md install

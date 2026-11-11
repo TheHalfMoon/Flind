@@ -47,7 +47,7 @@ _MISSING_INTEGRATION_ERROR = (
 # The catch-all this backs also covers a transient database failure, which a reconnect never fixes,
 # so lead with the retry and keep reconnecting as the fallback.
 _CONNECTION_CHECK_ERROR = (
-    "PostHog couldn't check your LinkedIn Ads connection. Try again in a few minutes, "
+    "Flind couldn't check your LinkedIn Ads connection. Try again in a few minutes, "
     "and reconnect your LinkedIn Ads account if it keeps failing."
 )
 
@@ -125,17 +125,17 @@ class LinkedInAdsSource(ResumableSource[LinkedinAdsSourceConfig, LinkedInAdsResu
             # LinkedIn returns a 404 with this stable error code when the requested ad account /
             # resource can't be resolved — typically a deleted account, a wrong Account ID, or lost
             # access. Retrying can't recover it, so stop syncing instead of looping the 404.
-            "RESOURCE_NOT_FOUND": "LinkedIn could not find the requested ad account. It may have been deleted, the configured Account ID may be wrong, or PostHog may have lost access. Check the Account ID and re-authorize the LinkedIn Ads integration.",
+            "RESOURCE_NOT_FOUND": "LinkedIn could not find the requested ad account. It may have been deleted, the configured Account ID may be wrong, or Flind may have lost access. Check the Account ID and re-authorize the LinkedIn Ads integration.",
             # LinkedIn returns a plain 404 with this generic error code (no "RESOURCE_" prefix) for
             # the same underlying condition — a deleted account, a wrong Account ID, or lost access
             # to it. Match the quoted JSON key/value so this never also matches "RESOURCE_NOT_FOUND"
             # above, which carries a more specific message.
-            '"code":"NOT_FOUND"': "LinkedIn could not find the requested ad account. It may have been deleted, the configured Account ID may be wrong, or PostHog may have lost access. Check the Account ID and re-authorize the LinkedIn Ads integration.",
+            '"code":"NOT_FOUND"': "LinkedIn could not find the requested ad account. It may have been deleted, the configured Account ID may be wrong, or Flind may have lost access. Check the Account ID and re-authorize the LinkedIn Ads integration.",
             # LinkedIn returns a 401 with this stable error code when the member who authorized the
             # integration has been restricted on LinkedIn's side (suspended / flagged account). The
             # token can't be used until LinkedIn lifts the restriction, so retrying never recovers —
             # stop syncing and tell the user to resolve it with LinkedIn and re-authorize.
-            "RESTRICTED_MEMBER": "LinkedIn has restricted the account that authorized this integration, so PostHog can no longer access your ad data. Resolve the restriction with LinkedIn, then re-authorize the LinkedIn Ads integration.",
+            "RESTRICTED_MEMBER": "LinkedIn has restricted the account that authorized this integration, so Flind can no longer access your ad data. Resolve the restriction with LinkedIn, then re-authorize the LinkedIn Ads integration.",
             # LinkedIn returns a 401 with this stable error code when it rejects the access token
             # itself (invalid, malformed, or simply no longer accepted) — distinct from the more
             # specific REVOKED_ACCESS_TOKEN / RESTRICTED_MEMBER cases above. Retrying can't recover;
@@ -157,7 +157,7 @@ class LinkedInAdsSource(ResumableSource[LinkedinAdsSourceConfig, LinkedInAdsResu
             # LinkedIn rejects a deprecated/sunset version header with this stable code (see
             # `deprecated_versions`). It happens on every call under that pin regardless of resource
             # or account, so retrying can never succeed — only repinning to a supported version does.
-            "NONEXISTENT_VERSION": "PostHog is using a LinkedIn Ads API version that LinkedIn has sunset. This is being fixed on our side — no action is needed from you.",
+            "NONEXISTENT_VERSION": "Flind is using a LinkedIn Ads API version that LinkedIn has sunset. This is being fixed on our side — no action is needed from you.",
         }
 
     def get_retryable_errors(self) -> set[str]:
@@ -180,7 +180,7 @@ class LinkedInAdsSource(ResumableSource[LinkedinAdsSourceConfig, LinkedInAdsResu
             featured=True,
             keywords=["linkedin advertising"],
             label="LinkedIn Ads",
-            caption="Ensure you have granted PostHog access to your LinkedIn Ads account, learn how to do this in [the documentation](https://posthog.com/docs/cdp/sources/linkedin-ads).",
+            caption="Ensure you have granted Flind access to your LinkedIn Ads account, learn how to do this in [the documentation](https://posthog.com/docs/cdp/sources/linkedin-ads).",
             releaseStatus=ReleaseStatus.GA,
             iconPath="/static/services/linkedin.png",
             docsUrl="https://posthog.com/docs/cdp/sources/linkedin-ads",

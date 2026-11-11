@@ -4,7 +4,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     # `AddIndexConcurrently` requires atomic=False. Lives in its own migration per
-    # PostHog policy (don't mix CONCURRENTLY operations with regular DDL).
+    # Flind policy (don't mix CONCURRENTLY operations with regular DDL).
     atomic = False
     dependencies = [("posthog", "1159_materializedcolumnslot_team_slot_index_concurrent")]
 

@@ -184,7 +184,7 @@ def post_permission_delivery_failure_notice(input: PostPermissionDeliveryFailure
     handler = SlackThreadHandler(context)
     handler.post_thread_message(
         "⚠️ I couldn't deliver that permission response to the agent — it may still be waiting on the request. "
-        "Please respond from the task page in PostHog if the run doesn't continue."
+        "Please respond from the task page in Flind if the run doesn't continue."
     )
     logger.warning(
         "permission_response_delivery_failure_notice_posted",

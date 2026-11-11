@@ -100,7 +100,7 @@ function StepTriggerConfigurationSlackMessage({ node }: { node: any }): JSX.Elem
             <LemonField.Pure
                 label="Channels"
                 error={validationResult?.errors?.channel}
-                info="PostHog only receives messages from channels the Slack bot has been invited to."
+                info="Flind only receives messages from channels the Slack bot has been invited to."
             >
                 <SlackChannelPicker
                     integration={integrations[0]}
@@ -112,7 +112,7 @@ function StepTriggerConfigurationSlackMessage({ node }: { node: any }): JSX.Elem
 
             <LemonField.Pure
                 label="Who can start a run"
-                info="Messages posted by PostHog never start a run, so a workflow can reply in Slack without triggering itself."
+                info="Messages posted by Flind never start a run, so a workflow can reply in Slack without triggering itself."
             >
                 <LemonSelect<SlackPosterMode>
                     value={filters.posterMode}

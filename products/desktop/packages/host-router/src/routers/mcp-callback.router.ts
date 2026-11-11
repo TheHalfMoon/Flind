@@ -11,7 +11,7 @@ import {
 export const mcpCallbackRouter = router({
   /**
    * Get the callback URL for MCP OAuth (dev: http://localhost:8238/..., prod: deep link via the app-registered URL scheme).
-   * Call this before making the install_custom API call to PostHog.
+   * Call this before making the install_custom API call to Flind.
    */
   getCallbackUrl: publicProcedure
     .output(getCallbackUrlOutput)

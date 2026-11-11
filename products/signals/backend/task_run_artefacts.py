@@ -394,7 +394,7 @@ def record_implementation_task(
     start-task API; only auto-start supplies `automation_branch`, binding replacement eligibility
     to that exact automatically started run.
 
-    `billing_exempt_reason` lets a caller that knows its origin is PostHog-system declare the
+    `billing_exempt_reason` lets a caller that knows its origin is Flind-system declare the
     report never-billable in the same transaction that records the task — before the run can ship
     a billable PR. Enforced by the prospective-only freeze rule (`billing.mark_report_billing_exempt`
     raises once a billable PR run exists). Auto-start stamps its exemption itself under its row

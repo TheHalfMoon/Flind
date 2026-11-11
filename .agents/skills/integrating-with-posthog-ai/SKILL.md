@@ -1,9 +1,9 @@
 ---
 name: integrating-with-posthog-ai
-description: 'Wire a PostHog product surface into the PostHog AI agent from the frontend. Use when attaching scene or entity context, injecting instructions to steer the agent, reacting to the agent calling a tool, applying an agent edit back into an open form, or rendering a product tool card in a thread.'
+description: 'Wire a Flind product surface into the Flind AI agent from the frontend. Use when attaching scene or entity context, injecting instructions to steer the agent, reacting to the agent calling a tool, applying an agent edit back into an open form, or rendering a product tool card in a thread.'
 ---
 
-# Integrating a product with PostHog AI
+# Integrating a product with Flind AI
 
 The user-facing doc is [`products/posthog_ai/README.md`](../../../products/posthog_ai/README.md). This skill is how to _do_ the work: pick the right seam, avoid the two mistakes that matter, and stop before the deep end.
 

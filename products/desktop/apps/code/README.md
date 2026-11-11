@@ -1,10 +1,10 @@
-# PostHog
+# Flind
 
 The agentic workspace for product builders
 
 ## The Goal
 
-Free product engineers from distractions so they can focus on what they love: building great features. By using agents to transform all data collected across PostHog's products into actionable "tasks," then exposing them with that context through a single interface, we can automate all the chores and save developers hours every day, giving them more time to ship.
+Free product engineers from distractions so they can focus on what they love: building great features. By using agents to transform all data collected across Flind's products into actionable "tasks," then exposing them with that context through a single interface, we can automate all the chores and save developers hours every day, giving them more time to ship.
 
 ## Development
 
@@ -68,7 +68,7 @@ pnpm build-native
 
 ### Auto Updates & Releases
 
-PostHog auto-updates on macOS and Windows. Current builds use `electron-updater`, which reads the `latest-mac.yml` and `latest.yml` manifests published with each non-draft GitHub release and downloads the matching archive. Builds made by the old Electron Forge toolchain (`v0.55.x` and earlier) take a single bridge update through the public `update.electronjs.org` service, which serves the same GitHub releases to their built-in Squirrel client, and become `electron-updater` clients from the next launch. See [docs/UPDATES.md](../../docs/UPDATES.md) and [docs/AUTO-UPDATE-TESTING.md](../../docs/AUTO-UPDATE-TESTING.md).
+Flind auto-updates on macOS and Windows. Current builds use `electron-updater`, which reads the `latest-mac.yml` and `latest.yml` manifests published with each non-draft GitHub release and downloads the matching archive. Builds made by the old Electron Forge toolchain (`v0.55.x` and earlier) take a single bridge update through the public `update.electronjs.org` service, which serves the same GitHub releases to their built-in Squirrel client, and become `electron-updater` clients from the next launch. See [docs/UPDATES.md](../../docs/UPDATES.md) and [docs/AUTO-UPDATE-TESTING.md](../../docs/AUTO-UPDATE-TESTING.md).
 
 There are two ways a release can fire:
 
@@ -138,11 +138,11 @@ The certificate subject is set as `publisherName` in `electron-builder.ts` and b
 
 ## Workspace Configuration (posthog-code.json)
 
-PostHog supports per-repository configuration through a `posthog-code.json` file. This lets you define scripts that run automatically when workspaces are created or destroyed.
+Flind supports per-repository configuration through a `posthog-code.json` file. This lets you define scripts that run automatically when workspaces are created or destroyed.
 
 ### File Locations
 
-PostHog searches for configuration in this order (first match wins):
+Flind searches for configuration in this order (first match wins):
 
 1. `.posthog-code/{workspace-name}/posthog-code.json` - Workspace-specific config
 2. `posthog-code.json` - Repository root config
@@ -199,7 +199,7 @@ Clean up Docker containers:
 
 ## Workspace Environment Variables
 
-PostHog automatically sets environment variables in all workspace terminals and scripts. These are available in `init`, `start`, and `destroy` scripts, as well as any terminal sessions opened within a workspace.
+Flind automatically sets environment variables in all workspace terminals and scripts. These are available in `init`, `start`, and `destroy` scripts, as well as any terminal sessions opened within a workspace.
 
 | Variable | Description | Example |
 |----------|-------------|---------|
@@ -240,4 +240,4 @@ echo "Root repo: $POSTHOG_CODE_ROOT_PATH"
 
 ### "Plan & usage" tab is missing
 
-The app couldn't reach PostHog, usually because of a restrictive network, firewall, or tracker blocker. Connect to a VPN (or fix the network) and restart the app.
+The app couldn't reach Flind, usually because of a restrictive network, firewall, or tracker blocker. Connect to a VPN (or fix the network) and restart the app.

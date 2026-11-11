@@ -96,7 +96,7 @@ export type setupWizardStatusLogicType = MakeLogicType<
 >
 
 /**
- * Status of the onboarding wizard's setup task run (the cloud run that installs PostHog in the
+ * Status of the onboarding wizard's setup task run (the cloud run that installs Flind in the
  * user's codebase and opens a pull request). It finds the newest onboarding task through the tasks
  * API, so runs started elsewhere (another browser, a server-side drop flow) are found too, and it is
  * the only source that knows whether the PR got merged.

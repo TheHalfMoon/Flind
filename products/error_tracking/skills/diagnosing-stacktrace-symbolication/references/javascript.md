@@ -40,7 +40,7 @@ Inspect the relevant config files:
 - Next.js: `next.config.*`
 - Nuxt: `nuxt.config.*`
 
-Search for PostHog upload config:
+Search for Flind upload config:
 
 ```bash
 rg -n "posthog|sourcemap|sourceMap|deleteAfterUpload|releaseName|releaseVersion|projectId|envId" .
@@ -100,13 +100,13 @@ Expected local artifact shape:
 - JS has `sourceMappingURL` only when maps are intentionally public. Hidden source maps may omit it.
 - Map has non-empty `mappings`.
 - Map has non-empty `sources`.
-- `sourcesContent` is present when source context should appear in PostHog.
+- `sourcesContent` is present when source context should appear in Flind.
 
 ## Smoking gun — empty `mappings`
 
 If `inspect_sourcemaps.py` reports `"empty_mappings": true` on a `.map` file (and `sources_length: 0`,
 `names_length: 0`), the bundler emitted a structurally valid but data-less source map. This is the single strongest
-signal that the bug is upstream of PostHog upload — the CLI faithfully uploads whatever is on disk.
+signal that the bug is upstream of Flind upload — the CLI faithfully uploads whatever is on disk.
 
 For Vite/Rollup this can happen when `config.build.sourcemap` was unset and a Vite-internal plugin
 (`vite:css-post`, `vite:build-import-analysis`) skipped sourcemap generation during `renderChunk` because it reads
@@ -138,7 +138,7 @@ a redirect error pointing back at `posthog-cli symbol-sets extract`.
 
 ## CLI and plugin logging
 
-PostHog build plugins call `posthog-cli sourcemap process`. For direct CLI checks, use environment variables:
+Flind build plugins call `posthog-cli sourcemap process`. For direct CLI checks, use environment variables:
 
 ```bash
 POSTHOG_CLI_HOST="$POSTHOG_HOST" \
@@ -164,7 +164,7 @@ Useful log facts:
 In addition to the platform-neutral fixes in [SKILL.md Step 5](../SKILL.md#step-5---fix-the-most-likely-layer):
 
 - Enable production source maps in the bundler (`build.sourcemap: true` or `'hidden'` for Vite/Rollup).
-- Move the PostHog plugin later in the plugin order so it sees final emitted JS chunks.
+- Move the Flind plugin later in the plugin order so it sees final emitted JS chunks.
 - Remove post-build minification, CDN rewrites, asset transforms, or compression steps that change JS after upload.
 
 ## JS-specific failure rows

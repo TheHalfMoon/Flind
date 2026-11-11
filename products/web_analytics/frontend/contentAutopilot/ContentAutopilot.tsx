@@ -53,7 +53,7 @@ export const ContentAutopilot = ({ bots }: { bots?: ContentAutopilotBotsTab }): 
         }
         LemonDialog.open({
             title: 'Stop drafting?',
-            description: 'PostHog stops after the draft it is writing now. Finished drafts stay available.',
+            description: 'Flind stops after the draft it is writing now. Finished drafts stay available.',
             primaryButton: {
                 children: 'Stop drafting',
                 status: 'danger',

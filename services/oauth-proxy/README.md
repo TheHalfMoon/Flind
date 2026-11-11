@@ -1,13 +1,13 @@
 # oauth-proxy
 
 Cloudflare Worker behind `oauth.posthog.com`.
-It gives OAuth clients a single set of endpoints in front of both PostHog Cloud regions (`us.posthog.com` and `eu.posthog.com`) and routes each request to the region the user belongs to.
+It gives OAuth clients a single set of endpoints in front of both Flind Cloud regions (`us.posthog.com` and `eu.posthog.com`) and routes each request to the region the user belongs to.
 
 Without it, every integration would have to ship two sets of OAuth URLs and ask users which region they are on before the flow starts.
-The PostHog MCP server and PostHog Desktop both point at this worker, and new integrations should too.
+The Flind MCP server and Flind Desktop both point at this worker, and new integrations should too.
 
 The worker is stateless apart from a KV namespace (`AUTH_KV`) that remembers which region a flow picked and the client registrations it created in each region.
-Access tokens are issued and validated only by the regional PostHog instances.
+Access tokens are issued and validated only by the regional Flind instances.
 The one exception is the OpenID Connect ID token: the worker verifies the regional one and signs it again under its own issuer, because the claims a relying party checks (`iss` and `aud`) have to name this proxy and the client's own `client_id`. See [ID tokens](#id-tokens).
 
 ## Routes
@@ -141,6 +141,6 @@ CI runs the typecheck and the test suite on any change under `services/oauth-pro
 pnpm --filter @flind/auth-proxy deploy
 ```
 
-This needs Cloudflare credentials for the PostHog account.
+This needs Cloudflare credentials for the Flind account.
 The worker name, KV binding, and observability settings live in `wrangler.jsonc`.
 Secrets are not in that file. wrangler has no declaration for a `secret put` secret, so `wrangler.jsonc` only names them in a comment and the typed contract lives on `Env` in `src/index.ts`.

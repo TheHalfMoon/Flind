@@ -5,7 +5,7 @@ description: >
   assistant does with its upsert-dashboard tool, but over MCP. Use when a user asks to create a dashboard,
   put several metrics/charts together on one page, assemble a dashboard for a topic (product analytics,
   retention, revenue, activation, etc.), or add/remove/replace insights on a dashboard they already have.
-  Covers deciding create vs update, reusing existing insights vs creating new ones, and using PostHog's
+  Covers deciding create vs update, reusing existing insights vs creating new ones, and using Flind's
   vetted dashboard templates as reference for what a strong dashboard on a topic looks like.
 ---
 
@@ -18,7 +18,7 @@ When the dashboard needs explanatory text, keep user copy and agent context sepa
 `writing-user-facing-copy` skill for text that people read. Use `agent_context` for information that an agent needs to
 maintain the dashboard.
 
-PostHog's Data Catalog is the semantic layer. Store canonical metric definitions there. Never use `agent_context` as
+Flind's Data Catalog is the semantic layer. Store canonical metric definitions there. Never use `agent_context` as
 a substitute for a Data Catalog metric.
 
 ## Create vs update
@@ -33,7 +33,7 @@ First work out whether you're creating a new dashboard or changing an existing o
 
 ## Use templates as reference
 
-PostHog ships vetted dashboard templates for common topics, and orgs can share their own. Consult them before you
+Flind ships vetted dashboard templates for common topics, and orgs can share their own. Consult them before you
 build — they're a strong signal of which insights pair well on a topic.
 
 1. `dashboard-templates-list` — browse templates (use `search` for a topic, `scope` to narrow to global / team /
@@ -65,7 +65,7 @@ Prefer reusing existing insights over recreating them.
 
 ## Use Data Catalog for reusable metrics
 
-Use PostHog's Data Catalog as the source of truth for reusable business and telemetry metrics. Do this before you
+Use Flind's Data Catalog as the source of truth for reusable business and telemetry metrics. Do this before you
 derive a metric from raw data or copy a definition from an existing dashboard:
 
 1. Call `posthog:metric-list` and follow pagination until you have checked the complete catalog.
@@ -139,6 +139,6 @@ Use `dashboard-create-tile` with `type: text` when a dashboard needs a heading, 
 
 ## Related skills
 
-- **`setting-up-data-catalog`** — create or maintain canonical metrics in PostHog's semantic layer
+- **`setting-up-data-catalog`** — create or maintain canonical metrics in Flind's semantic layer
 - **`managing-subscriptions`** — deliver the finished dashboard to email or Slack on a schedule
 - **`creating-ai-subscription`** — a recurring AI-written report, when prose beats a wall of charts

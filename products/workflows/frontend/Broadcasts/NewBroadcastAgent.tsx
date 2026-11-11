@@ -15,7 +15,7 @@ export function NewBroadcastAgent(): JSX.Element {
     return (
         <AiFirstCreateScene
             handoff={NEW_BROADCAST_HANDOFF}
-            banner="We're trialling writing broadcasts with PostHog AI. Describe what you want to send and to whom, and it drafts the broadcast for you to review before it goes out."
+            banner="We're trialling writing broadcasts with Flind AI. Describe what you want to send and to whom, and it drafts the broadcast for you to review before it goes out."
             escapeHatchLabel="Set it up step by step instead"
             onEscapeHatch={openWizardFromAiComposer}
             suggestions={NEW_BROADCAST_SUGGESTIONS}

@@ -210,7 +210,7 @@ describe("FreeformCanvas", () => {
       Reflect.deleteProperty(navigator, "userActivation");
     });
 
-    it("opens PostHog https URLs during a user activation", () => {
+    it("opens Flind https URLs during a user activation", () => {
       const iframe = renderCanvas();
 
       postFromCanvas(iframe, "https://posthog.com/docs");

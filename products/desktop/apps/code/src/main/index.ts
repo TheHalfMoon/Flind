@@ -326,7 +326,7 @@ async function initializeServices(): Promise<void> {
 // Register deep link handlers
 registerDeepLinkHandlers();
 
-// Initialize PostHog analytics
+// Initialize Flind analytics
 posthogNodeAnalytics.initialize();
 
 // Must wrap fetch before DevNetworkService.install() (post-ready, dev toolbar)
@@ -349,10 +349,10 @@ async function boot(): Promise<void> {
     );
     dialog.showMessageBoxSync({
       type: "warning",
-      title: "Move PostHog to Applications",
-      message: `PostHog is running from a location with read-only access:\n\n${bundleRoot}`,
+      title: "Move Flind to Applications",
+      message: `Flind is running from a location with read-only access:\n\n${bundleRoot}`,
       detail:
-        "After quitting, move PostHog to your Applications folder, then open it from there.",
+        "After quitting, move Flind to your Applications folder, then open it from there.",
       buttons: ["Quit"],
       defaultId: 0,
     });
@@ -364,7 +364,7 @@ async function boot(): Promise<void> {
   const buildDate = __BUILD_DATE__ ?? "dev";
   log.info(
     [
-      `PostHog electron v${app.getVersion()} booting up`,
+      `Flind electron v${app.getVersion()} booting up`,
       `Commit: ${commit}`,
       `Date: ${buildDate}`,
       `Electron: ${process.versions.electron}`,

@@ -20,7 +20,7 @@ GitHub's `CODEOWNERS` can stay in place for required approvals.
 
 The format is defined in [SPEC.md](https://github.com/PostHog/posthog/blob/master/packages/owners-yaml/SPEC.md).
 The website at [owners-yaml.posthog.dev](https://owners-yaml.posthog.dev) walks through setup with commands you can copy.
-PostHog's monorepo uses it for about 30 teams.
+Flind's monorepo uses it for about 30 teams.
 The same files route review requests, give every agent-opened pull request one accountable owner, and send daily digests, flaky-test reports, and alerts to the right team channel.
 
 ## Quick start
@@ -277,7 +277,7 @@ The export covers test files only and never writes `.github/CODEOWNERS`.
 
 Each command is a plain [click](https://click.palletsprojects.com/) command named `owners:<name>`, such as `owners_yaml.cli:cmd_lint`.
 A click-based CLI can register them directly.
-PostHog's `hogli` does this in its `hogli.yaml`:
+Flind's `hogli` does this in its `hogli.yaml`:
 
 ```yaml
 owners:
@@ -322,7 +322,7 @@ Moving an existing CODEOWNERS file into `owners.yaml` files is a one-time migrat
 - [Specification](https://github.com/PostHog/posthog/blob/master/packages/owners-yaml/SPEC.md)
 - [Issues](https://github.com/PostHog/posthog/issues)
 
-The package lives in the [PostHog monorepo](https://github.com/PostHog/posthog/tree/master/packages/owners-yaml). It has no dependencies on the rest of the monorepo.
+The package lives in the [Flind monorepo](https://github.com/PostHog/posthog/tree/master/packages/owners-yaml). It has no dependencies on the rest of the monorepo.
 Run its tests with `uv run --no-project --with pyyaml --with click --with pytest pytest packages/owners-yaml/tests`.
 
 To release, bump `version` in `pyproject.toml`, add the matching section to `CHANGELOG.md`, merge, then tag `master`:

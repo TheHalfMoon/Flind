@@ -131,10 +131,10 @@ class TestExtractMessageText:
                     "text": "",
                     "blocks": [],
                     "attachments": [
-                        {"fallback": "PostHog alert: signups dropped 30% week over week"},
+                        {"fallback": "Flind alert: signups dropped 30% week over week"},
                     ],
                 },
-                "PostHog alert: signups dropped 30% week over week",
+                "Flind alert: signups dropped 30% week over week",
             ),
             (
                 "whitespace_text_treated_as_empty",
@@ -415,12 +415,12 @@ class TestCollectThreadMessages:
         self.slack.client.conversations_replies.return_value = {"messages": messages}
 
     def test_alert_blocks_only_message_is_included(self):
-        # PostHog alert: substantive content lives only in blocks, no text field.
+        # Flind alert: substantive content lives only in blocks, no text field.
         self._set_thread(
             [
                 {
                     "bot_id": "B_ALERTS",
-                    "bot_profile": {"name": "PostHog"},
+                    "bot_profile": {"name": "Flind"},
                     "text": "",
                     "blocks": [
                         {
@@ -444,7 +444,7 @@ class TestCollectThreadMessages:
         result = collect_thread_messages(self.slack, self.integration, "C001", "1.234", our_bot_id="B_OUR_CODE_BOT")
 
         assert len(result) == 2
-        assert result[0].user == "PostHog"
+        assert result[0].user == "Flind"
         assert "🔴 Log alert 'High Error Rate' is firing" in result[0].text
         assert "Result count *42* exceeded threshold *10*" in result[0].text
         assert result[1].user == "andy"
@@ -519,7 +519,7 @@ class TestCollectThreadMessages:
             [
                 {
                     "bot_id": "B_OUR_CODE_BOT",
-                    "bot_profile": {"name": "PostHog"},
+                    "bot_profile": {"name": "Flind"},
                     "text": "",
                     "blocks": [
                         {
@@ -544,7 +544,7 @@ class TestCollectThreadMessages:
         result = collect_thread_messages(self.slack, self.integration, "C001", "1.234", our_bot_id="B_OUR_CODE_BOT")
 
         assert len(result) == 2
-        assert result[0].user == "PostHog"
+        assert result[0].user == "Flind"
         assert "Alert 'Headline anomaly: Trial activated'" in result[0].text
         assert result[1].user == "andy"
 
@@ -568,11 +568,11 @@ class TestCollectThreadMessages:
         self.mock_get_user_info.assert_not_called()
 
     def test_bot_without_profile_falls_back_to_username_field(self):
-        self._set_thread([{"bot_id": "B_HOOK", "username": "PostHog Webhook", "text": "ping", "ts": "2.000"}])
+        self._set_thread([{"bot_id": "B_HOOK", "username": "Flind Webhook", "text": "ping", "ts": "2.000"}])
 
         result = collect_thread_messages(self.slack, self.integration, "C001", "1.234", our_bot_id=None)
 
-        assert result == [SlackThreadMessage(user="PostHog Webhook", text="ping", ts="2.000")]
+        assert result == [SlackThreadMessage(user="Flind Webhook", text="ping", ts="2.000")]
 
     def test_includes_raw_user_id_for_real_users(self):
         # Downstream prompt builders render each message author as a labeled
@@ -611,7 +611,7 @@ class TestCollectThreadMessages:
         # Defensive: if auth_test() somehow returned no bot_id we still process the thread.
         self._set_thread(
             [
-                {"bot_id": "B_ALERT", "bot_profile": {"name": "PostHog"}, "text": "alert"},
+                {"bot_id": "B_ALERT", "bot_profile": {"name": "Flind"}, "text": "alert"},
                 {"user": "U_ANDY", "text": "follow up"},
             ]
         )
@@ -619,7 +619,7 @@ class TestCollectThreadMessages:
 
         result = collect_thread_messages(self.slack, self.integration, "C001", "1.234", our_bot_id=None)
 
-        assert [m.user for m in result] == ["PostHog", "andy"]
+        assert [m.user for m in result] == ["Flind", "andy"]
 
     def test_registers_rate_limit_retry_handler(self):
         self.slack.client.retry_handlers = []
@@ -638,7 +638,7 @@ class TestCollectThreadMessages:
             [
                 {
                     "bot_id": "B_ALERT",
-                    "bot_profile": {"name": "PostHog"},
+                    "bot_profile": {"name": "Flind"},
                     "text": "",
                     "blocks": [{"type": "section"}],
                 },
@@ -654,7 +654,7 @@ class TestCollectThreadMessages:
             result = collect_thread_messages(self.slack, self.integration, "C001", "1.234", our_bot_id="B_OUR")
 
         assert len(result) == 2
-        assert result[0].user == "PostHog"
+        assert result[0].user == "Flind"
         assert result[1].text == "still here"
 
     @parameterized.expand(["thread_not_found", "message_not_found"])

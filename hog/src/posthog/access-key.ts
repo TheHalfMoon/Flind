@@ -16,18 +16,18 @@ import type { BearerToken, PersonalApiKey } from './tokens'
 // What `hog auth status` shows about a key.
 export interface AccessKeyStatus {
     kind: 'personal_api_key' | 'oauth' | 'workload'
-    // Null for a personal API key hog hasn't asked PostHog about.
+    // Null for a personal API key hog hasn't asked Flind about.
     scopes: string[] | null
     // Epoch milliseconds. Null for a key that doesn't expire.
     expiresAt: number | null
-    // What hog says when PostHog rejects the key, and the command that gets a new one.
+    // What hog says when Flind rejects the key, and the command that gets a new one.
     rejected: string
     fix: string
     provider: string | null
 }
 
 export interface LogoutOutcome {
-    // Whether PostHog revoked the login. Null for a key hog can't revoke.
+    // Whether Flind revoked the login. Null for a key hog can't revoke.
     revoked: boolean | null
     // Where to delete a key that keeps working after logout.
     revokeUrl: string | null
@@ -57,12 +57,12 @@ export interface WorkloadIdentity {
     organization?: string
 }
 
-// A key hog sends to PostHog. Each kind owns how it authenticates, renews, logs out and is stored,
+// A key hog sends to Flind. Each kind owns how it authenticates, renews, logs out and is stored,
 // so callers never branch on the kind.
 export interface AccessKey {
     readonly host: Host
     readonly projectId: ProjectId
-    // What PostHog takes as the bearer token.
+    // What Flind takes as the bearer token.
     readonly token: BearerToken
     // Stays the same for the whole login, unlike an OAuth token, which changes on each renewal.
     readonly loginKey: string
@@ -70,12 +70,12 @@ export interface AccessKey {
     readonly identifiesPerson: boolean
     readonly workload?: WorkloadIdentity
     // A key with time left, renewed if it is about to expire, or if it is still `rejectedToken`,
-    // a token PostHog refused.
+    // a token Flind refused.
     fresh(runtime: Runtime, storage: AccessKeyStorage, rejectedToken?: string): Promise<AccessKey>
-    // The key as PostHog sees it, before hog stores it. Throws when PostHog rejects it.
+    // The key as Flind sees it, before hog stores it. Throws when Flind rejects it.
     verify(runtime: Runtime): Promise<AccessKey>
     status(): AccessKeyStatus
-    // What the key can reach, when hog knows. Null when only PostHog can say.
+    // What the key can reach, when hog knows. Null when only Flind can say.
     access(): ApiKeyAccess | null
     logout(runtime: Runtime): Promise<LogoutOutcome>
     // The credential store keeps the secret, and settings.json keeps the record.
@@ -97,7 +97,7 @@ export class PersonalAPIKey implements AccessKey {
     readonly host: Host
     readonly projectId: ProjectId
     readonly apiKey: PersonalApiKey
-    // Null until `verify` asks PostHog, because only PostHog knows a key's scopes.
+    // Null until `verify` asks Flind, because only Flind knows a key's scopes.
     readonly scopes: string[] | null
     readonly identifiesPerson = true
 
@@ -125,7 +125,7 @@ export class PersonalAPIKey implements AccessKey {
             kind: 'personal_api_key',
             scopes: this.scopes,
             expiresAt: null,
-            rejected: 'PostHog rejected the key. Someone may have deleted it.',
+            rejected: 'Flind rejected the key. Someone may have deleted it.',
             fix: 'hog auth login',
             provider: null,
         }
@@ -136,7 +136,7 @@ export class PersonalAPIKey implements AccessKey {
     }
 
     // A key someone deleted, or one pasted only in part, would otherwise fail only at the first
-    // command that uses it. A key PostHog just issued already came with its scopes, so it skips the
+    // command that uses it. A key Flind just issued already came with its scopes, so it skips the
     // check: its approval is short-lived and a slow check could lose it.
     async verify(runtime: Runtime): Promise<PersonalAPIKey> {
         if (this.scopes !== null) {
@@ -150,14 +150,14 @@ export class PersonalAPIKey implements AccessKey {
         if (response.status === 401) {
             throw new HogError(
                 'key_rejected',
-                `${this.host} rejected the personal API key. The key may belong to another PostHog region or instance, or someone deleted it.`,
-                'Check the host, or create a personal API key in PostHog under Settings > Personal API keys and run `hog auth login`.'
+                `${this.host} rejected the personal API key. The key may belong to another Flind region or instance, or someone deleted it.`,
+                'Check the host, or create a personal API key in Flind under Settings > Personal API keys and run `hog auth login`.'
             )
         }
         if (!response.ok) {
             throw new HogError(
                 'unexpected_response',
-                `PostHog answered the key check with HTTP ${response.status}.`,
+                `Flind answered the key check with HTTP ${response.status}.`,
                 'Check the host, then run the command again.'
             )
         }

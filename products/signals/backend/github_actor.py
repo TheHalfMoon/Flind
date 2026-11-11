@@ -5,7 +5,7 @@ through the team's GitHub App, so GitHub credits the App for both closes and the
 the call is invisible on GitHub. The comment we leave next to the close is the only place that can
 carry them, and this module renders the mention it uses.
 
-Only a GitHub login is ever rendered. A PostHog name or email address would put an identity into a
+Only a GitHub login is ever rendered. A Flind name or email address would put an identity into a
 repository whose audience we do not know, and it would link to nothing on GitHub.
 
 Best-effort by contract: the report is already dismissed by the time any of this runs, so a handle

@@ -1,11 +1,11 @@
-"""MotherDuck driver for PostHog's data-warehouse import pipeline.
+"""MotherDuck driver for Flind's data-warehouse import pipeline.
 
 MotherDuck is DuckDB served from the cloud, so the client is the ordinary
 `duckdb` package pointed at an `md:<database>` connection string carrying a
 MotherDuck access token. Everything MotherDuck-specific — connection string
 assembly, `information_schema` discovery, and the pipeline build — lives on
 `MotherDuckImplementation`. The source-class `MotherduckSource` is a thin
-PostHog-layer wrapper that holds an instance and validates credentials.
+Flind-layer wrapper that holds an instance and validates credentials.
 
 The database name is optional. Left blank, the connection is account-wide
 (`md:`) and discovery spans every catalog the token can see, qualifying tables
@@ -99,7 +99,7 @@ MOTHERDUCK_TRANSIENT_ERRORS = (
 )
 
 MOTHERDUCK_UNAVAILABLE_MESSAGE = (
-    "MotherDuck is temporarily unavailable, so PostHog couldn't connect. This isn't a problem with "
+    "MotherDuck is temporarily unavailable, so Flind couldn't connect. This isn't a problem with "
     "your database name or access token. Try again in a few minutes."
 )
 

@@ -23,7 +23,7 @@ export function MCPHintActions({
     const { isCloudOrDev } = useValues(preflightLogic)
     const { reportAgentOpened } = useActions(mcpHintLogic)
 
-    // The PostHog MCP server only serves cloud and dev instances, so a self-hosted user has nothing to connect to.
+    // The Flind MCP server only serves cloud and dev instances, so a self-hosted user has nothing to connect to.
     if (!isCloudOrDev) {
         return null
     }

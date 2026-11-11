@@ -1,4 +1,4 @@
-"""Typed client for the Firecrawl endpoints PostHog calls: a single-page scrape and a web search.
+"""Typed client for the Firecrawl endpoints Flind calls: a single-page scrape and a web search.
 
 Firecrawl fetches and renders a page server-side and returns the extracted formats plus page
 metadata for ``POST /v2/scrape``, and ranked web results for ``POST /v2/search``. Crawl and map are

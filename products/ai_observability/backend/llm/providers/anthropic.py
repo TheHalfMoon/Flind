@@ -102,7 +102,7 @@ def foundry_base_url(azure_endpoint: str) -> str:
 
 
 class _AnthropicFoundry(anthropic.AnthropicFoundry):
-    """Foundry client that captures generations to PostHog, like the SDK's Bedrock and Vertex wrappers."""
+    """Foundry client that captures generations to Flind, like the SDK's Bedrock and Vertex wrappers."""
 
     _ph_client: PostHogClient
 
@@ -151,7 +151,7 @@ class AnthropicConfig:
         "claude-sonnet-4-0",
     ]
 
-    # Models available in the PostHog-funded playground. Excludes expensive
+    # Models available in the Flind-funded playground. Excludes expensive
     # opus tiers and includes one flagship sonnet for quality evaluation.
     PLAYGROUND_MODELS: list[str] = [
         "claude-sonnet-4-6",
@@ -595,7 +595,7 @@ class AnthropicAdapter:
         return transform_schema(response_format)
 
     def _build_analytics_kwargs(self, analytics: AnalyticsContext, client) -> dict:
-        """Build PostHog analytics kwargs if using instrumented client."""
+        """Build Flind analytics kwargs if using instrumented client."""
         if analytics.capture and isinstance(client, Anthropic | _AnthropicFoundry):
             return {
                 "posthog_distinct_id": analytics.distinct_id,

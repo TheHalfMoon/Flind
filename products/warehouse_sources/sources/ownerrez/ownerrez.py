@@ -23,7 +23,7 @@ from products.warehouse_sources.sources.sdk import (
 BASE_URL = "https://api.ownerrez.com"
 OWNERREZ_API_HOST = "api.ownerrez.com"
 # Required per the vendor's auth guide: "Use a user-agent header to identify yourself on all calls."
-USER_AGENT = "PostHog Data Warehouse (+https://posthog.com)"
+USER_AGENT = "Flind Data Warehouse (+https://posthog.com)"
 
 # OwnerRez versions by URL path only. "v1" is the framework's legacy unversioned label, not the
 # vendor's v1.1 API: this client has always called /v2 paths, so both labels send identical requests.

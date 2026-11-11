@@ -37,7 +37,7 @@ function NotCheckedYet(): JSX.Element {
     const horizon = pluralize(pipeline?.horizon_days ?? 0, 'day')
     return (
         <EmptyTab icon={<IconGraph />} title="Not checked against real outcomes yet" cta={<ScoreNowButton />}>
-            PostHog checks each prediction against what people really did, {horizon} after the prediction.{' '}
+            Flind checks each prediction against what people really did, {horizon} after the prediction.{' '}
             {!firstCheck
                 ? `Score the model to start. The first check comes ${horizon} after the first scoring run.`
                 : firstCheck.isAfter(dayjs())

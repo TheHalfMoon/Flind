@@ -1,5 +1,5 @@
 /**
- * PostHog Design System — Typography Tokens
+ * Flind Design System — Typography Tokens
  */
 
 import { fontFamilyValue } from './css'

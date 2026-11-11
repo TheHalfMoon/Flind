@@ -195,7 +195,7 @@ describe('Query Wrapper Integration Tests', { concurrent: false }, () => {
             expect(result[POSTHOG_FORMATTED_RESULTS_OVERRIDE_KEY]).toContain('|')
         })
 
-        it('should generate a valid PostHog URL with StickinessQuery kind', async () => {
+        it('should generate a valid Flind URL with StickinessQuery kind', async () => {
             const tool = getToolByName(GENERATED_TOOLS, 'query-stickiness')
             const result = (await tool.handler(context, {
                 series: [{ kind: 'EventsNode', event: '$pageview' }],

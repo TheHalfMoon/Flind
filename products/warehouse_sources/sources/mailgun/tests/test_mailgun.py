@@ -754,7 +754,7 @@ class TestWebhookManagement:
         ]
 
     def test_create_leaves_a_full_event_type_alone_and_carries_on(self):
-        # Mailgun caps a webhook type at three URLs, so this one can't take PostHog as well.
+        # Mailgun caps a webhook type at three URLs, so this one can't take Flind as well.
         full = {"delivered": {"urls": ["https://a/1", "https://b/2", "https://c/3"]}}
 
         def answer(request: RecordedRequest) -> ScriptedResponse:

@@ -9,8 +9,8 @@ through the Slack integration the mention came in on.
 
 The message names its subject by URL. For a pull request, the GitHub App installation on the
 repository owner tells which projects may act on it. An error tracking issue URL names its project. A Slack command needs no GitHub permission
-check: it runs as a PostHog account that is a member of the project, the same as the review
-trigger in the PostHog API and MCP. It reaches only projects of organizations that connected this
+check: it runs as a Flind account that is a member of the project, the same as the review
+trigger in the Flind API and MCP. It reaches only projects of organizations that connected this
 Slack workspace, the same scope the agent has.
 """
 
@@ -70,7 +70,7 @@ class SlackCommandRequest:
 
 
 def _installation_id(owner: str, organization_ids: Collection[str]) -> str | None:
-    """The PostHog GitHub App installation on the repository owner, in one of these organizations."""
+    """The Flind GitHub App installation on the repository owner, in one of these organizations."""
     # nosemgrep: github-installation-first-team -- only the installation id is read; the newest row wins over one left from an earlier install
     integration = (
         Integration.objects.filter(
@@ -84,7 +84,7 @@ def _installation_id(owner: str, organization_ids: Collection[str]) -> str | Non
 
 
 def _subject_ref(url: SubjectUrl, organization_ids: Collection[str]) -> SubjectRef | None:
-    """Where the subject lives for PostHog, or None when no connected organization reaches it.
+    """Where the subject lives for Flind, or None when no connected organization reaches it.
 
     An issue URL names its project. The rollout check after this keeps only a project of a
     connected organization.
@@ -185,8 +185,8 @@ def post_in_thread(thread: SlackThread, message: str) -> None:
 class SlackMentionChannel:
     name = "slack"
     unlinked_message = (
-        "Your Slack account is not linked to a PostHog account, so I can't tell who to run this as. "
-        "Connect Slack in your PostHog personal settings, then try again."
+        "Your Slack account is not linked to a Flind account, so I can't tell who to run this as. "
+        "Connect Slack in your Flind personal settings, then try again."
     )
 
     def __init__(self, command: SlackCommandRequest, github: CommandGitHub | None = None) -> None:

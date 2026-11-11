@@ -2,13 +2,13 @@
 
 Notebooks can generate interactive widgets from instructions and the notebook's SQL and Python dataframe context.
 
-Generated widgets are in beta. Generation uses PostHog AI credits based on model token costs plus a 20% markup, including security review and retries.
+Generated widgets are in beta. Generation uses Flind AI credits based on model token costs plus a 20% markup, including security review and retries.
 The insert menu, notebook widget toolbar, generation dialog, and reusable widget page show a **BETA** label.
-Before generating, improving, or regenerating a widget, the form says "Generation uses PostHog AI credits".
+Before generating, improving, or regenerating a widget, the form says "Generation uses Flind AI credits".
 The ungenerated widget preview includes a model selector directly above **Generate widget**, synchronized with the model in the edit panel.
 The notebook edit panel and reusable widget page show the selected version's estimated generation charge as a small USD amount beside the version controls.
 The info tooltip explains that the estimate includes all model requests in that successful generation job.
-Costs come from recorded gateway usage and include the same markup as PostHog AI credit billing; final credits can differ because billing rounds aggregated usage.
+Costs come from recorded gateway usage and include the same markup as Flind AI credit billing; final credits can differ because billing rounds aggregated usage.
 Older versions and generations without available usage records do not show a cost.
 The estimate does not include separate failed or canceled generation jobs, or notebook compute.
 
@@ -160,15 +160,15 @@ The notebook's inline **Ask AI** uses LangGraph and receives widget authoring in
 The bookmark toggle **Keep question with answer** is on by default, retaining the question and the submitting user's name above the answer. Turning it off saves `keepQuestion={false}` on that prompt.
 **Ask AI** is disabled until the organization approves AI data processing, including submission from saved prompt blocks.
 
-**BTW** opens a separate PostHog AI conversation for side questions in a sidebar beside the notebook.
+**BTW** opens a separate Flind AI conversation for side questions in a sidebar beside the notebook.
 When the notebook area is too narrow for both, the conversation opens in a modal.
 Resizing between these layouts keeps the conversation and any unsent question.
 It is the second option in the notebook's `/` menu, after **Ask AI**, and the last action in the text selection toolbar and a component block's **More actions** menu.
 The conversation receives a snapshot of the notebook and any selected content from when BTW was opened, including unsaved changes at that time.
 Later notebook edits do not update that snapshot; replies are not inserted into the notebook.
 The agent is instructed to answer without edits, but BTW does not enforce a separate read-only tool permission policy.
-Sent messages are saved in PostHog AI history separately from the notebook.
-Closing BTW or refreshing the page closes the panel; reopen the saved conversation from PostHog AI history.
+Sent messages are saved in Flind AI history separately from the notebook.
+Closing BTW or refreshing the page closes the panel; reopen the saved conversation from Flind AI history.
 It requires the same AI data processing consent as **Ask AI**.
 Inline notebook artifacts update the open notebook without saving a second copy, even when the tool requests a save.
 Full-notebook replacements preserve the retained question when **Keep question with answer** is on.
@@ -193,7 +193,7 @@ These responses wrap status, errors, and security findings as untrusted referenc
 
 In notebooks, the widget title's **More actions** (`…`) menu contains **Open reusable widget**, **View source**, the automated review result, and the selected build identifier. Running widgets show their preview without a source and review toolbar. Widgets that require approval still show the review gate before running.
 
-Generated widget source is arbitrary React and JavaScript. It is not a restricted widget schema, and PostHog does not claim to make it safe by parsing an AST, matching source text, or blocking selected syntax. JavaScript can construct equivalent behavior dynamically, so source-shape validation would create a false security boundary while breaking legitimate widgets.
+Generated widget source is arbitrary React and JavaScript. It is not a restricted widget schema, and Flind does not claim to make it safe by parsing an AST, matching source text, or blocking selected syntax. JavaScript can construct equivalent behavior dynamically, so source-shape validation would create a false security boundary while breaking legitimate widgets.
 
 The generated-code trust flow works as follows:
 
@@ -205,7 +205,7 @@ The generated-code trust flow works as follows:
 6. Builds with dataframe access, reviews with findings, and legacy versions without a persisted review stop before execution and require exact-build consent.
 7. Canvas records a SHA-256 over the complete frozen artifact manifest. The hash covers artifact contents only, with no build or version id, so a build with different contents has a different hash and requires a new execution decision when gated. A build with identical contents keeps the same hash and reuses the earlier decision.
 
-Exact-build execution choices are stored in the browser, partitioned by PostHog user ID. Generated widgets are not rendered in publicly shared notebooks. This client-side consent state is a user-experience boundary; server authorization remains the data boundary.
+Exact-build execution choices are stored in the browser, partitioned by Flind user ID. Generated widgets are not rendered in publicly shared notebooks. This client-side consent state is a user-experience boundary; server authorization remains the data boundary.
 
 Ordinary `<Embed>` blocks accept absolute HTTP or HTTPS URLs.
 Public sharing removes invalid embed sources before serving notebook markdown.

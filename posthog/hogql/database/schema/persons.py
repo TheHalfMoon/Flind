@@ -40,7 +40,7 @@ PERSONS_FIELDS: dict[str, FieldOrTable] = {
         name="id", nullable=False, description="Stable person identifier; join target for `events.person_id`."
     ),
     "created_at": DateTimeDatabaseField(
-        name="created_at", nullable=False, description="When the person was first seen by PostHog."
+        name="created_at", nullable=False, description="When the person was first seen by Flind."
     ),
     "team_id": IntegerDatabaseField(name="team_id", nullable=False),
     "properties": StringJSONDatabaseField(

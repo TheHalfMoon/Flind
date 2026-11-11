@@ -32,10 +32,10 @@ describe('resolveTitleFromInputs', () => {
         const genInput = [
             { role: 'system', content: 'You are an expert in crisp conversation titles.' },
             { role: 'system', content: 'You are currently in project Default project.' },
-            { role: 'user', content: 'I have connected PostHog Web Tracking and need a dashboard' },
+            { role: 'user', content: 'I have connected Flind Web Tracking and need a dashboard' },
         ]
         expect(resolveTitleFromInputs(null, genInput)).toBe(
-            'I have connected PostHog Web Tracking and need a dashboard'
+            'I have connected Flind Web Tracking and need a dashboard'
         )
     })
 

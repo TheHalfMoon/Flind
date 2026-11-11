@@ -5,7 +5,7 @@ first-class questions ("was skill X called?", "give me every call to tool X
 with input + result") instead of re-walking the flat message list with
 ad-hoc helpers.
 
-Pure data layer — no Braintrust, PostHog, or model dependency. Same
+Pure data layer — no Braintrust, Flind, or model dependency. Same
 contract as ``acp_log`` so this is exercised by the same lightweight unit
 test config.
 """
@@ -30,7 +30,7 @@ EXECUTE_SQL_TOOL_NAME = "execute-sql"
 def describe_tool_use(name: str | None, tool_input: dict[str, Any]) -> tuple[str, dict[str, Any]]:
     """Resolve a raw ``tool_use`` name and input to the tool the agent actually invoked.
 
-    Single-exec mode routes every PostHog tool through one ``exec`` call, so the raw
+    Single-exec mode routes every Flind tool through one ``exec`` call, so the raw
     name says ``exec`` for all of them and only the command string tells them apart.
     Falls back to the normalized raw name for command shapes that wrap no inner tool
     (``search``, ``tools``, ``schema``).

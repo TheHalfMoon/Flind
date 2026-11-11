@@ -501,7 +501,7 @@ class TestMCPToolsAPI(APIBaseTest):
                 None,
                 None,
                 "S3_ERROR",
-                "Tool failed: MaxToolRetryableError: PostHog couldn't read from storage while running this query. "
+                "Tool failed: MaxToolRetryableError: Flind couldn't read from storage while running this query. "
                 "Wait a few minutes, then run the query again. If the problem continues, contact support.. "
                 "You may retry with adjusted inputs.",
                 expected_error_code="s3_error",

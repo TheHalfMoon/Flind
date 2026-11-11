@@ -108,7 +108,7 @@ from products.warehouse_sources.backend.presentation.views.external_data_source.
 # the small form fields sent alongside the file.
 MAX_UPLOAD_REQUEST_BODY_BYTES = MAX_FILE_UPLOAD_SIZE_BYTES + 1024 * 1024
 
-# Which request surface each transport attributes a table to. The PostHog apps and the headless
+# Which request surface each transport attributes a table to. The Flind apps and the headless
 # agents share `self_driving`, matching how the source path collapses them. Agent transports that
 # wrap MCP but aren't separately tracked (the CLI, Slack, Max, WebMCP) land on `mcp` alongside plain MCP
 # clients, and anything without a surface of its own is a plain API caller.
@@ -127,7 +127,7 @@ _EVENT_SOURCE_TO_CREATED_VIA = {
 
 
 SELF_MANAGED_CREATE_BLOCKED_MESSAGE = (
-    "PostHog no longer links tables that read your bucket directly. "
+    "Flind no longer links tables that read your bucket directly. "
     "Add an Amazon S3, Google Cloud Storage, Azure Blob or Cloudflare R2 source instead."
 )
 
@@ -194,7 +194,7 @@ def _unreadable_upload_response(file_format: str) -> response.Response:
 
 
 def _delete_hosted_upload_file(table: DataWarehouseTable) -> None:
-    """Best-effort removal of a self-managed table's backing file from PostHog's own bucket.
+    """Best-effort removal of a self-managed table's backing file from Flind's own bucket.
 
     Only ever touches files we host: `hosted_upload_s3_path` returns `None` for a customer-linked
     bucket, and a stored credential (the mark of a user-supplied bucket) is a further guard. Failures
@@ -366,7 +366,7 @@ class TableSerializer(UserAccessControlSerializerMixin, serializers.ModelSeriali
             "url_pattern": {
                 "help_text": "HTTPS URL of the files to read, with `*` matching any part of a path "
                 "segment (e.g. `https://your-bucket.s3.amazonaws.com/orders/*.parquet`). All matched "
-                "files are read as one table. Must point at a bucket you control, not at PostHog's "
+                "files are read as one table. Must point at a bucket you control, not at Flind's "
                 "own storage.",
             },
             "deleted": {"help_text": "Whether the table is soft-deleted and hidden from queries."},
@@ -439,7 +439,7 @@ class TableSerializer(UserAccessControlSerializerMixin, serializers.ModelSeriali
         return SimpleExternalDataSchemaSerializer(schema, read_only=True).data
 
     def validate_url_pattern(self, url_pattern):
-        # A credential-less table reads from PostHog's own storage by design - PostHog built the URL
+        # A credential-less table reads from Flind's own storage by design - Flind built the URL
         # when the file was uploaded. Editing anything else about such a table resubmits that URL
         # unchanged, so checking it against the owned-bucket rule below would reject every edit with
         # an instruction the user can't follow.
@@ -456,7 +456,7 @@ class TableSerializer(UserAccessControlSerializerMixin, serializers.ModelSeriali
             raise serializers.ValidationError(error_message)
 
         # A table with no credential is read with the ClickHouse node's own role rather than a key
-        # the team supplied, so the URL is only trustworthy because PostHog built it. `create`
+        # the team supplied, so the URL is only trustworthy because Flind built it. `create`
         # refuses that combination outright, and an update has to hold the same line.
         if (
             self.instance is not None
@@ -464,7 +464,7 @@ class TableSerializer(UserAccessControlSerializerMixin, serializers.ModelSeriali
             and url_pattern != self.instance.url_pattern
         ):
             raise serializers.ValidationError(
-                "PostHog manages where this table reads from, so its URL can't be changed. "
+                "Flind manages where this table reads from, so its URL can't be changed. "
                 "To read from your own bucket, add a managed Amazon S3, Google Cloud Storage, "
                 "Azure Blob, or Cloudflare R2 source."
             )
@@ -708,7 +708,7 @@ class TableViewSet(TeamAndOrgViewSetMixin, AccessControlViewSetMixin, viewsets.M
         if credential_data:
             if instance.credential is None:
                 raise serializers.ValidationError(
-                    {"credential": "This table reads from PostHog's own storage, so it has no credential to change."}
+                    {"credential": "This table reads from Flind's own storage, so it has no credential to change."}
                 )
             access_key = credential_data.get("access_key")
             access_secret = credential_data.get("access_secret")
@@ -868,7 +868,7 @@ class TableViewSet(TeamAndOrgViewSetMixin, AccessControlViewSetMixin, viewsets.M
             "Re-introspect an existing direct-read warehouse table's schema from its underlying "
             "source files and overwrite its stored column list. Use when the source schema has evolved "
             "(e.g. new columns in the underlying Delta/Parquet/CSV files) but queries still can't see the "
-            "new columns, because PostHog serves a cached column snapshot until the table is refreshed. "
+            "new columns, because Flind serves a cached column snapshot until the table is refreshed. "
             "This applies only to existing direct-read tables. New direct-read tables cannot be created. "
             "Tables managed by an external data source sync refresh on their own schedule."
         ),
@@ -1004,7 +1004,7 @@ class TableViewSet(TeamAndOrgViewSetMixin, AccessControlViewSetMixin, viewsets.M
     def create_from_upload(self, request: request.Request, *args: Any, **kwargs: Any) -> response.Response:
         """Turn a previously uploaded file into a warehouse table with a FileUpload source.
 
-        The file already sits in PostHog's own bucket (see `upload_file`), so the table points straight
+        The file already sits in Flind's own bucket (see `upload_file`), so the table points straight
         at it for the initial direct read. The source imports it on its first sync. The read location
         is always derived from the caller's own team, so a client-supplied
         `upload_id` can only resolve inside that team's folder, and the table carries no credential (reads

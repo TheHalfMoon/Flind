@@ -69,11 +69,11 @@ class SFTPSource(SimpleSource[SFTPSourceConfig], ValidateDatabaseHostMixin):
                 "-----BEGIN and -----END lines, and check the passphrase if the key is encrypted."
             ),
             CONNECTION_FAILED_ERROR: (
-                "PostHog couldn't reach the SFTP server. Check the host and port, and that the server "
+                "Flind couldn't reach the SFTP server. Check the host and port, and that the server "
                 "allows connections from the public internet."
             ),
             DIRECTORY_ERROR: (
-                "PostHog couldn't read the remote folder. Check that the path exists and that this user "
+                "Flind couldn't read the remote folder. Check that the path exists and that this user "
                 "has permission to list it."
             ),
             PATTERN_ERROR: "The file pattern isn't a valid regular expression. Fix the pattern and try again.",
@@ -82,7 +82,7 @@ class SFTPSource(SimpleSource[SFTPSourceConfig], ValidateDatabaseHostMixin):
                 "Fix the delimiter and try again."
             ),
             FORMAT_ERROR: (
-                "PostHog couldn't work out the format of a remote file. Set the file format explicitly, "
+                "Flind couldn't work out the format of a remote file. Set the file format explicitly, "
                 "or restrict the file pattern to .csv, .json, or .jsonl files."
             ),
             NO_FILES_ERROR: (
@@ -98,7 +98,7 @@ class SFTPSource(SimpleSource[SFTPSourceConfig], ValidateDatabaseHostMixin):
             category=DataWarehouseSourceCategory.FILE_STORAGE,
             label="SFTP",
             caption=(
-                "Import CSV and JSON files from an SFTP server. PostHog lists the files in the folder you "
+                "Import CSV and JSON files from an SFTP server. Flind lists the files in the folder you "
                 "point it at, including subfolders, and creates one table per file, or one combined table "
                 "if you prefer. Every sync reads the files in full, so each table matches what's on the "
                 "server right now."

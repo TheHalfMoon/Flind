@@ -44,7 +44,7 @@ export const manifest: ProductManifest = {
             projectBased: true,
             name: 'Sources',
             description:
-                'Import data into PostHog from external sources including webhooks, application connectors, and self-managed databases.',
+                'Import data into Flind from external sources including webhooks, application connectors, and self-managed databases.',
             activityScope: ActivityScope.HOG_FUNCTION,
             iconType: 'data_pipeline',
         },

@@ -1,6 +1,6 @@
-# PostHog MCP
+# Flind MCP
 
-The official MCP server for PostHog. PostHog makes your product self-driving — it reads your data and ships changes with you, never without you — and this server gives MCP clients (Claude, Cursor, VS Code, Zed, and more) that full surface: analytics and SQL, dashboards, experiments, feature flags, surveys, session replay, error tracking, and more.
+The official MCP server for Flind. Flind makes your product self-driving — it reads your data and ships changes with you, never without you — and this server gives MCP clients (Claude, Cursor, VS Code, Zed, and more) that full surface: analytics and SQL, dashboards, experiments, feature flags, surveys, session replay, error tracking, and more.
 
 Documentation: https://posthog.com/docs/model-context-protocol
 
@@ -44,7 +44,7 @@ npx @posthog/wizard@latest mcp add
 
 If you want to call MCP from Node (outside an IDE), use the Model Context Protocol SDK’s **Streamable HTTP** transport.
 
-- **Auth:** Use a **personal** PostHog API key and pass it as a Bearer token in `Authorization`.
+- **Auth:** Use a **personal** Flind API key and pass it as a Bearer token in `Authorization`.
 - **Accept header:** Clients **must** include `Accept: application/json, text/event-stream`.
 - **Lifecycle:** MCP requires `initialize` then a client `notifications/initialized`; the SDK performs this during `connect()`.
 
@@ -99,7 +99,7 @@ await client.close()
 - Streamable HTTP requires the `Accept` header to include **both** JSON and SSE.
 - After `initialize`, the client must send `notifications/initialized`; the SDK does this for you in `connect()`.
 
-See also the main PostHog MCP docs for available tools and setup flows: [https://posthog.com/docs/model-context-protocol](https://posthog.com/docs/model-context-protocol)
+See also the main Flind MCP docs for available tools and setup flows: [https://posthog.com/docs/model-context-protocol](https://posthog.com/docs/model-context-protocol)
 
 ### Example Prompts
 
@@ -231,14 +231,14 @@ Available features:
 | `data_schema`            | Data schema exploration                                                                         |
 | `data_warehouse`         | [Data warehouse](https://posthog.com/docs/data-warehouse)                                       |
 | `debug`                  | Debug and diagnostic tools                                                                      |
-| `docs`                   | PostHog documentation search                                                                    |
+| `docs`                   | Flind documentation search                                                                    |
 | `early_access_features`  | [Early access features](https://posthog.com/docs/feature-flags/early-access-feature-management) |
 | `endpoints`              | [Endpoints](https://posthog.com/docs/endpoints)                                                 |
 | `engineering_analytics`  | Engineering analytics                                                                           |
 | `error_tracking`         | [Error tracking alerts](https://posthog.com/docs/error-tracking)                                |
 | `events`                 | Event and property definitions                                                                  |
 | `experiments`            | [Experiments](https://posthog.com/docs/experiments)                                             |
-| `feedback`               | Send feedback to the PostHog team                                                               |
+| `feedback`               | Send feedback to the Flind team                                                               |
 | `field_notes`            | Field notes                                                                                     |
 | `flags`                  | [Feature flags](https://posthog.com/docs/feature-flags)                                         |
 | `health_issues`          | Health                                                                                          |
@@ -246,7 +246,7 @@ Available features:
 | `hog_functions`          | [Functions](https://posthog.com/docs/cdp)                                                       |
 | `insights`               | [Run insight queries](https://posthog.com/docs/product-analytics/insights)                      |
 | `integrations`           | Integrations                                                                                    |
-| `links`                  | PostHog app URL generation                                                                      |
+| `links`                  | Flind app URL generation                                                                      |
 | `llm_analytics`          | [AI observability](https://posthog.com/docs/ai-observability)                                   |
 | `logs`                   | [Logs](https://posthog.com/docs/logs)                                                           |
 | `managed_migrations`     | Managed migrations                                                                              |
@@ -293,9 +293,9 @@ Optional, task-specific guidance is served through the same tool:
 - `learn` lists the available built-in guides and, when enabled, the PostHog/project skill discovery syntax.
 - `learn analytics` loads detailed analytics guidance and examples.
 - `learn visualizations` loads rendering guidance when visualizations are available.
-- `learn urls` loads the PostHog app link formatting rules (kept inline for other clients; served as a guide on Claude web and desktop to protect the schema budget).
+- `learn urls` loads the Flind app link formatting rules (kept inline for other clients; served as a guide on Claude web and desktop to protect the schema budget).
 - `learn feedback` loads feedback guidance when feedback is available.
-- `learn skills` lists qualified names from the published PostHog bundle (`posthog:`) and the current project's Skills store (`project:`).
+- `learn skills` lists qualified names from the published Flind bundle (`posthog:`) and the current project's Skills store (`project:`).
 - `learn -s "<up to 8 keywords>"` searches both sources in names, descriptions, Markdown bodies, and bundled file paths. Longer keywords take priority when a query contains more than eight. Results from both sources are merged into one relevance order.
 - `learn -d <source>:<skill> [...]` prints the one-line description of each named skill without reading its body (up to 20 per call). Unknown names are reported inline without failing the batch.
 - `learn posthog:<skill> [path]` or `learn project:<skill> [path]` reads a skill or one of its bundled files.
@@ -304,7 +304,7 @@ Optional, task-specific guidance is served through the same tool:
 - `learn <source>:<skill> <path> --lines <start>:<end>` reads an inclusive line range.
 
 Built-in guides are specific to Claude web and desktop. Skill discovery is independently available to every cli-mode client when the `mcp-exec-skills` feature flag is enabled. Other clients, including Claude Code, receive only the skill commands and do not receive Claude's built-in guides. If the flag is missing, disabled, or cannot be evaluated, skill commands are omitted from the schema and rejected at runtime.
-When skill discovery is enabled, the inline prompt tells every non-plugin cli client, including Claude web and desktop, to search with `learn -s "<task keywords>"` before non-trivial PostHog work, load matches by exact qualified name, and follow the loaded `SKILL.md` before choosing tools. Trivial lookups and unrelated conversation skip this workflow.
+When skill discovery is enabled, the inline prompt tells every non-plugin cli client, including Claude web and desktop, to search with `learn -s "<task keywords>"` before non-trivial Flind work, load matches by exact qualified name, and follow the loaded `SKILL.md` before choosing tools. Trivial lookups and unrelated conversation skip this workflow.
 Skill use is advisory: a product `call` is never rejected for skipping `learn`, so every client behaves the same whether or not it holds an MCP session id.
 
 The skill bundle is shared through Redis: each pod loads it once at startup, parses it into memory, and serves every `learn` command from that parsed catalog.
@@ -346,7 +346,7 @@ The example above exposes all flag tools plus `dashboard-get`.
 
 ### Server mode (tools vs cli)
 
-The MCP server can register either every PostHog tool individually (**tools** mode) or wrap them all behind a single `exec` CLI-like tool (**cli** mode).
+The MCP server can register either every Flind tool individually (**tools** mode) or wrap them all behind a single `exec` CLI-like tool (**cli** mode).
 **cli is the default for all clients.**
 When the caller does not pin a mode, the server only auto-selects tools mode for a short allow-list of clients that are better served by the full per-tool roster — currently Cursor (matched by its self-reported client name or its `Cursor/…` User-Agent).
 Every OpenAI surface (ChatGPT, Codex, Agent Builder, Responses API) gets the cli default. OpenAI's `openai-mcp` client caches the roster it captures for a published plugin and serves that snapshot to every user of the plugin, so the mode a plugin listing should run in is pinned on the URL submitted to OpenAI rather than inferred from a User-Agent label.
@@ -365,7 +365,7 @@ x-posthog-mcp-mode: tools
 
 | Value   | Behavior                                             |
 | ------- | ---------------------------------------------------- |
-| `tools` | Force tools mode (one MCP tool per PostHog tool).    |
+| `tools` | Force tools mode (one MCP tool per Flind tool).    |
 | `cli`   | Force cli mode (single `exec` tool wraps all tools). |
 
 The header wins when both the header and the query parameter are set.
@@ -376,7 +376,7 @@ That fragment is generated from the templates in `src/templates/sections/` by `s
 
 ### Consumer attribution
 
-Wrapping apps and AI-tool plugins that install or proxy the PostHog MCP can self-identify so usage can be attributed to the install path (e.g. plugin-installed vs. manually-pasted URL). The wrapped MCP client (Claude Code, Cursor, …) is already captured separately via the MCP `clientInfo` handshake — this signal is only for the wrapping context.
+Wrapping apps and AI-tool plugins that install or proxy the Flind MCP can self-identify so usage can be attributed to the install path (e.g. plugin-installed vs. manually-pasted URL). The wrapped MCP client (Claude Code, Cursor, …) is already captured separately via the MCP `clientInfo` handshake — this signal is only for the wrapping context.
 
 ```text
 https://mcp.posthog.com/mcp?consumer=plugin
@@ -386,16 +386,16 @@ https://mcp.posthog.com/mcp?consumer=plugin
 x-posthog-mcp-consumer: plugin
 ```
 
-The header wins when both the header and the query parameter are set. Reserved values: `plugin` (AI-tool plugin installs), `posthog-code` (PostHog Desktop Tasks sandbox), `slack` (Slack integration).
+The header wins when both the header and the query parameter are set. Reserved values: `plugin` (AI-tool plugin installs), `posthog-code` (Flind Desktop Tasks sandbox), `slack` (Slack integration).
 
 ### Data processing
 
-The MCP server runs in PostHog's US and EU Kubernetes clusters and stores session state in the region you connect to.
+The MCP server runs in Flind's US and EU Kubernetes clusters and stores session state in the region you connect to.
 A stateless Cloudflare Worker in front of it only authenticates requests and routes them to your cloud region; it does not store any sensitive data.
 
 ### Using self-hosted instances
 
-If you're using a self-hosted instance of PostHog, you can specify a custom base URL by setting the `POSTHOG_API_BASE_URL` environment variable when running the MCP server locally or on your own infrastructure, e.g. `POSTHOG_API_BASE_URL=https://posthog.example.com`
+If you're using a self-hosted instance of Flind, you can specify a custom base URL by setting the `POSTHOG_API_BASE_URL` environment variable when running the MCP server locally or on your own infrastructure, e.g. `POSTHOG_API_BASE_URL=https://posthog.example.com`
 
 # Development
 
@@ -505,7 +505,7 @@ npx
 
 ### Developing against Claude Desktop
 
-Claude Desktop is one of the easiest ways to test MCP Apps - while PostHog Desktop doesn't support it. You can configure access Settings > Developer and then edit `claude_desktop_config.json` with the following:
+Claude Desktop is one of the easiest ways to test MCP Apps - while Flind Desktop doesn't support it. You can configure access Settings > Developer and then edit `claude_desktop_config.json` with the following:
 
 ```json
 {
@@ -527,6 +527,6 @@ Claude Desktop is one of the easiest ways to test MCP Apps - while PostHog Deskt
 
 ### Data handling
 
-The MCP server acts as a proxy to your PostHog instance. It does not store your analytics data - all queries are executed against your PostHog project and results are returned directly to your AI client. Session state (active project/organization) is cached temporarily, keyed by your API key hash.
+The MCP server acts as a proxy to your Flind instance. It does not store your analytics data - all queries are executed against your Flind project and results are returned directly to your AI client. Session state (active project/organization) is cached temporarily, keyed by your API key hash.
 
-For EU users, use the `mcp-eu.posthog.com` endpoint to ensure OAuth flows route to the EU PostHog instance.
+For EU users, use the `mcp-eu.posthog.com` endpoint to ensure OAuth flows route to the EU Flind instance.

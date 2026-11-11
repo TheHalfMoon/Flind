@@ -44,7 +44,7 @@ function deviceErrorMessage(error: unknown): string {
             return error.detail
         }
     }
-    return "Couldn't reach PostHog. Check your connection and try again."
+    return "Couldn't reach Flind. Check your connection and try again."
 }
 
 // The server's answer for a code that is wrong, expired or already used. Retrying it can't work.

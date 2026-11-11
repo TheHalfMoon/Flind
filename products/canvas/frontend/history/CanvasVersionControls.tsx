@@ -53,7 +53,7 @@ export function CanvasVersionControls(): JSX.Element | null {
     const { sourceEditing, canUndoEdit, canRedoEdit } = useValues(canvasEditLogic)
     const { undoEdit, redoEdit } = useActions(canvasEditLogic)
 
-    // While editing, undo and redo step through local edits instead of published versions, like PostHog Desktop.
+    // While editing, undo and redo step through local edits instead of published versions, like Flind Desktop.
     if (sourceEditing) {
         return (
             <div

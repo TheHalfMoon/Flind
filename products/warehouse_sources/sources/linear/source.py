@@ -86,7 +86,7 @@ class LinearSource(ResumableSource[LinearSourceConfig, LinearResumeConfig], OAut
             # ask the user to reconnect. Matched as a substring; the trailing integration id varies.
             "Integration not found": "The linked Linear integration no longer exists. Please reconnect your Linear account.",
             # "Linear app not configured" is not here on purpose. It means the worker that ran the job
-            # has no Linear client credentials, which is a PostHog fault that the customer can't fix,
+            # has no Linear client credentials, which is a Flind fault that the customer can't fix,
             # so it must not disable the schema.
         }
 

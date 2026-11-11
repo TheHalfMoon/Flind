@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -130,7 +130,7 @@ export interface RoleExternalReferenceApi {
      * @maxLength 255
      */
     provider_role_name: string
-    /** PostHog role UUID this external role maps to. */
+    /** Flind role UUID this external role maps to. */
     role: string
     readonly created_at: string
     readonly created_by: UserBasicApi
@@ -180,7 +180,7 @@ export const InstallationStatusEnumApi = {
 export interface IntegrationConfigApi {
     readonly id: number
     /**
-     * The provider of the integration, for example 'slack' or 'github'. A create accepts only the kinds that PostHog connects here. Data warehouse sources also store their typed-in credentials as integrations, under a kind per source type.
+     * The provider of the integration, for example 'slack' or 'github'. A create accepts only the kinds that Flind connects here. Data warehouse sources also store their typed-in credentials as integrations, under a kind per source type.
      * @maxLength 32
      */
     kind: string
@@ -202,10 +202,10 @@ export interface IntegrationConfigApi {
      * @nullable
      */
     readonly installation_shared: boolean | null
-    /** GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise. */
+    /** GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub and Flind can no longer mint tokens for it; `connected` otherwise. */
     readonly installation_status: InstallationStatusEnumApi | null
     /**
-     * Linear only, null otherwise. True when the workspace last authorized PostHog before the Linear app had webhooks, so linked error tracking issues may not follow their tickets until someone reconnects it.
+     * Linear only, null otherwise. True when the workspace last authorized Flind before the Linear app had webhooks, so linked error tracking issues may not follow their tickets until someone reconnects it.
      * @nullable
      */
     readonly needs_webhook_reconnect: boolean | null
@@ -403,10 +403,10 @@ export interface IntegrationConfigCreateApi {
      * @nullable
      */
     readonly installation_shared: boolean | null
-    /** GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise. */
+    /** GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub and Flind can no longer mint tokens for it; `connected` otherwise. */
     readonly installation_status: InstallationStatusEnumApi | null
     /**
-     * Linear only, null otherwise. True when the workspace last authorized PostHog before the Linear app had webhooks, so linked error tracking issues may not follow their tickets until someone reconnects it.
+     * Linear only, null otherwise. True when the workspace last authorized Flind before the Linear app had webhooks, so linked error tracking issues may not follow their tickets until someone reconnects it.
      * @nullable
      */
     readonly needs_webhook_reconnect: boolean | null
@@ -419,11 +419,11 @@ export interface SlackChannelApi {
     name: string
     /** True if the channel is private. */
     is_private: boolean
-    /** True if the PostHog Slack app is a member of the channel and can post to it. */
+    /** True if the Flind Slack app is a member of the channel and can post to it. */
     is_member: boolean
     /** True if the channel is shared with another Slack workspace. */
     is_ext_shared: boolean
-    /** True if the channel is private and the PostHog Slack app cannot access it. */
+    /** True if the channel is private and the Flind Slack app cannot access it. */
     is_private_without_access: boolean
 }
 
@@ -441,7 +441,7 @@ export interface SlackChannelsResponseApi {
      * @nullable
      */
     readonly previous: string | null
-    /** Slack channels visible to the PostHog Slack app. */
+    /** Slack channels visible to the Flind Slack app. */
     channels: SlackChannelApi[]
     /**
      * ISO 8601 timestamp of the last full Slack API refresh (only set on full lists, not single-channel lookups).
@@ -458,7 +458,7 @@ export interface SlackChannelsResponseApi {
 export interface PatchedIntegrationConfigApi {
     readonly id?: number
     /**
-     * The provider of the integration, for example 'slack' or 'github'. A create accepts only the kinds that PostHog connects here. Data warehouse sources also store their typed-in credentials as integrations, under a kind per source type.
+     * The provider of the integration, for example 'slack' or 'github'. A create accepts only the kinds that Flind connects here. Data warehouse sources also store their typed-in credentials as integrations, under a kind per source type.
      * @maxLength 32
      */
     kind?: string
@@ -480,10 +480,10 @@ export interface PatchedIntegrationConfigApi {
      * @nullable
      */
     readonly installation_shared?: boolean | null
-    /** GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise. */
+    /** GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub and Flind can no longer mint tokens for it; `connected` otherwise. */
     readonly installation_status?: InstallationStatusEnumApi | null
     /**
-     * Linear only, null otherwise. True when the workspace last authorized PostHog before the Linear app had webhooks, so linked error tracking issues may not follow their tickets until someone reconnects it.
+     * Linear only, null otherwise. True when the workspace last authorized Flind before the Linear app had webhooks, so linked error tracking issues may not follow their tickets until someone reconnects it.
      * @nullable
      */
     readonly needs_webhook_reconnect?: boolean | null
@@ -749,7 +749,7 @@ export interface GitHubRepoApi {
     pushed_at?: string
     /** Whether the repository is archived. */
     archived?: boolean
-    /** Whether the PostHog GitHub App has write access — required to open pull requests. */
+    /** Whether the Flind GitHub App has write access — required to open pull requests. */
     can_push?: boolean
 }
 
@@ -949,7 +949,7 @@ export interface SlackUsersResponseApi {
      * @nullable
      */
     readonly previous: string | null
-    /** Human Slack workspace members the PostHog Slack app can DM. */
+    /** Human Slack workspace members the Flind Slack app can DM. */
     users: SlackUserApi[]
     /**
      * ISO 8601 timestamp of the last full Slack API refresh (only set on full lists, not single-member lookups).
@@ -1095,7 +1095,7 @@ export interface GitHubOAuthAuthorizeResponseApi {
 }
 
 export interface GitHubPrepareCallbackRequestApi {
-    /** Relative URL to redirect to after GitHub setup completes (e.g. account-connected for PostHog Desktop). */
+    /** Relative URL to redirect to after GitHub setup completes (e.g. account-connected for Flind Desktop). */
     next?: string
     /** GitHub installation ID being managed; binds the seeded update state so a callback can't swap in a different installation. */
     installation_id?: string

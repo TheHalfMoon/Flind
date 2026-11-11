@@ -3,7 +3,7 @@ import { parse as parseYaml } from 'yaml'
 
 export const LEARN_OUTPUT_CHAR_LIMIT = 44_000
 
-// Also the cap applied after merging PostHog and project results in `learn -s`.
+// Also the cap applied after merging Flind and project results in `learn -s`.
 export const MAX_GLOBAL_SKILLS = 10
 const MAX_GLOBAL_SNIPPETS = 2
 const MAX_SCOPED_MATCHES = 50

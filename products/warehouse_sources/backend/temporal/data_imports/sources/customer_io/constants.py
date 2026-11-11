@@ -8,7 +8,7 @@ SLACK_RESOURCE_NAME = "slack_events"
 WEBHOOK_RESOURCE_NAME = "webhook_events"
 CUSTOMER_RESOURCE_NAME = "customer_events"
 
-# Maps PostHog webhook-backed schema name -> Customer.io reporting webhook `object_type`
+# Maps Flind webhook-backed schema name -> Customer.io reporting webhook `object_type`
 # value. The webhook payload's `object_type` field is matched against this map's values
 # (via `webhook_resource_map` on the source) to route incoming events into the right
 # warehouse table. Reporting-webhook docs:
@@ -105,7 +105,7 @@ CIO_US_BASE_URL = "https://api.customer.io"
 CIO_EU_BASE_URL = "https://api-eu.customer.io"
 
 # Default name used when auto-creating the reporting webhook in Customer.io.
-CIO_AUTO_WEBHOOK_NAME = "PostHog data warehouse"
+CIO_AUTO_WEBHOOK_NAME = "Flind data warehouse"
 
 
 PartitionMode = Literal["md5", "numerical", "datetime"]

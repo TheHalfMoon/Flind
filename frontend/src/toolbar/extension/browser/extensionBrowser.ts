@@ -114,7 +114,7 @@ interface ExtensionBrowserApi {
 const extensionBrowser = ((globalThis as unknown as { browser?: ExtensionBrowserApi }).browser ??
     (globalThis as unknown as { chrome: ExtensionBrowserApi }).chrome) as ExtensionBrowserApi
 
-// pinned: extension storage key, renaming it resets the saved PostHog host
+// pinned: extension storage key, renaming it resets the saved Flind host
 const UI_HOST_STORAGE_KEY = 'posthogUiHost'
 
 const CONTENT_SCRIPT_FILE = 'content.js'
@@ -123,7 +123,7 @@ export function openPanelFromToolbarButton(): void {
     void extensionBrowser.sidePanel.setPanelBehavior({ openPanelOnActionClick: true })
 }
 
-/** Answers the PostHog app, which the manifest lets message the extension through `externally_connectable`. */
+/** Answers the Flind app, which the manifest lets message the extension through `externally_connectable`. */
 export function listenForAppMessages(): void {
     extensionBrowser.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
         const response = respondToAppMessage(message, sender)

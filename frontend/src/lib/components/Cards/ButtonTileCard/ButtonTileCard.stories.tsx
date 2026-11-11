@@ -48,7 +48,7 @@ export const Template: Story = {
                 <div className="relative w-fit">
                     <h5>Primary button (left)</h5>
                     <ButtonTileCard
-                        buttonTile={makeButtonTile('https://posthog.com', 'Visit PostHog')}
+                        buttonTile={makeButtonTile('https://posthog.com', 'Visit Flind')}
                         placement={DashboardPlacement.Dashboard}
                     />
                 </div>
@@ -71,7 +71,7 @@ export const Template: Story = {
                     <ButtonTileCard
                         className={gridItemStoryClassName}
                         showResizeHandles={true}
-                        buttonTile={makeButtonTile('https://posthog.com', 'Visit PostHog')}
+                        buttonTile={makeButtonTile('https://posthog.com', 'Visit Flind')}
                         placement={DashboardPlacement.Dashboard}
                     />
                 </div>
@@ -87,7 +87,7 @@ export const TransparentBackground: Story = {
                 <div className="relative w-fit">
                     <h5>Transparent background (view mode)</h5>
                     <ButtonTileCard
-                        buttonTile={makeButtonTile('https://posthog.com', 'Visit PostHog', {
+                        buttonTile={makeButtonTile('https://posthog.com', 'Visit Flind', {
                             transparentBackground: true,
                         })}
                         placement={DashboardPlacement.Dashboard}
@@ -98,7 +98,7 @@ export const TransparentBackground: Story = {
                     <ButtonTileCard
                         className={gridItemStoryClassName}
                         showResizeHandles={true}
-                        buttonTile={makeButtonTile('https://posthog.com', 'Visit PostHog', {
+                        buttonTile={makeButtonTile('https://posthog.com', 'Visit Flind', {
                             transparentBackground: true,
                         })}
                         placement={DashboardPlacement.Dashboard}
@@ -114,7 +114,7 @@ export const WithMoreButton: Story = {
         return (
             <div className="relative w-fit">
                 <ButtonTileCard
-                    buttonTile={makeButtonTile('https://posthog.com', 'Visit PostHog')}
+                    buttonTile={makeButtonTile('https://posthog.com', 'Visit Flind')}
                     moreButtonOverlay={<div>more button</div>}
                     placement={DashboardPlacement.Dashboard}
                 />
@@ -128,7 +128,7 @@ export const WithMoreButtonPlacedInPublic: Story = {
         return (
             <div className="relative w-fit">
                 <ButtonTileCard
-                    buttonTile={makeButtonTile('https://posthog.com', 'Visit PostHog (more button hidden)')}
+                    buttonTile={makeButtonTile('https://posthog.com', 'Visit Flind (more button hidden)')}
                     moreButtonOverlay={<div>more button</div>}
                     placement={DashboardPlacement.Public}
                 />

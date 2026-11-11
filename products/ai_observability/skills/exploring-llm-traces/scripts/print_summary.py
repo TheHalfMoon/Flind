@@ -65,7 +65,7 @@ def print_collection_summary(traces, metadata):
     print(f"  Tokens out: {int(sum(as_float(t.get('outputTokens')) for t in traces))}")
     print(f"  Errors:    {int(sum(as_float(t.get('errorCount')) for t in traces))}")
     if metadata.get("_posthogUrl"):
-        print(f"  PostHog URL: {metadata['_posthogUrl']}")
+        print(f"  Flind URL: {metadata['_posthogUrl']}")
     print()
 
 

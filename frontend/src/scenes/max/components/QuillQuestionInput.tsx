@@ -142,7 +142,7 @@ function QuillContextChips(): JSX.Element | null {
 }
 
 /**
- * The legacy PostHog AI composer in the quill skin, drawn like the sandbox runner's composer: one bordered
+ * The legacy Flind AI composer in the quill skin, drawn like the sandbox runner's composer: one bordered
  * input group with an inline send button and a controls row beneath. Behavior comes from `useQuestionInput`,
  * which the lemon `QuestionInput` shares.
  */
@@ -375,7 +375,7 @@ export const QuillQuestionInput = React.forwardRef<HTMLDivElement, QuillQuestion
                                                     size="icon-sm"
                                                     variant="default"
                                                     aria-label="Attach files"
-                                                    tooltip="Attach files in new PostHog AI. Your draft moves with you."
+                                                    tooltip="Attach files in new Flind AI. Your draft moves with you."
                                                     onClick={() => attachmentInputRef.current?.click()}
                                                     data-attr="max-new-chat-attach-file"
                                                 >

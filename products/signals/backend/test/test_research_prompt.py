@@ -61,7 +61,7 @@ class TestRenderSignalForResearch:
     def test_research_only_requests_code_evidence_when_available(self, code_available):
         prompt = build_initial_research_prompt(_make_signal({}), 1, code_available=code_available)
         assert ("**Git blame:**" in prompt) is code_available
-        assert ("full PostHog repository is available" in prompt) is code_available
+        assert ("full Flind repository is available" in prompt) is code_available
         assert ("No repository is checked out for this run." in prompt) is not code_available
         for guidance in [
             "<writing_guide>",

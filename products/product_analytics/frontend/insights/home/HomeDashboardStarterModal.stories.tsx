@@ -36,7 +36,7 @@ export const CreatingWithAI: Story = {
 }
 
 export const AIUnavailable: Story = {
-    args: { aiDisabledReason: 'Approve AI data processing to use PostHog AI' },
+    args: { aiDisabledReason: 'Approve AI data processing to use Flind AI' },
 }
 
 export const Narrow: Story = {

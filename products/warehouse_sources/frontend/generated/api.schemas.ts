@@ -4,11 +4,11 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
- * * `PostHogWarehouse` - PostHog warehouse
+ * * `PostHogWarehouse` - Flind warehouse
  * * `Redshift` - Redshift
  * * `Snowflake` - Snowflake
  * * `BigQuery` - BigQuery
@@ -61,9 +61,9 @@ export const ExternalDataDestinationStatusEnumApi = {
 
 export interface ExternalDataDestinationApi {
     readonly id: string
-    /** Where synced rows are written. The PostHog warehouse is managed for you, so you cannot create one here.
+    /** Where synced rows are written. The Flind warehouse is managed for you, so you cannot create one here.
      *
-     * * `PostHogWarehouse` - PostHog warehouse
+     * * `PostHogWarehouse` - Flind warehouse
      * * `Redshift` - Redshift
      * * `Snowflake` - Snowflake
      * * `BigQuery` - BigQuery
@@ -80,22 +80,22 @@ export interface ExternalDataDestinationApi {
     /** Settings for this destination: target database, schema or dataset, bucket and prefix, file format. Credentials are not stored here. They live on the linked integration. */
     config?: unknown
     /**
-     * Integration holding this destination's credentials. Required for every type except the PostHog warehouse.
+     * Integration holding this destination's credentials. Required for every type except the Flind warehouse.
      * @nullable
      */
     integration?: number | null
-    /** The warehouse migration item that planned this destination. The integration must keep every setting the connect page prefilled from it, or creation fails before PostHog connects anywhere. */
+    /** The warehouse migration item that planned this destination. The integration must keep every setting the connect page prefilled from it, or creation fails before Flind connects anywhere. */
     migration_item_id?: string
-    /** Whether this is the managed PostHog warehouse destination. */
+    /** Whether this is the managed Flind warehouse destination. */
     readonly is_posthog_warehouse: boolean
     readonly created_at: string
     /** @nullable */
     readonly created_by: number | null
     /** @nullable */
     readonly updated_at: string | null
-    /** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and — for the PostHog warehouse — sources that write there by default because nothing else was configured. */
+    /** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and — for the Flind warehouse — sources that write there by default because nothing else was configured. */
     readonly synced_sources: readonly SyncedSourceApi[]
-    /** Whether delivery to this destination works. `healthy`: the last delivery worked. `failing`: the last delivery failed. `paused`: PostHog stopped syncing to it after repeated configuration errors. Edit the destination to turn it back on.
+    /** Whether delivery to this destination works. `healthy`: the last delivery worked. `failing`: the last delivery failed. `paused`: Flind stopped syncing to it after repeated configuration errors. Edit the destination to turn it back on.
      *
      * * `healthy` - Healthy
      * * `failing` - Failing
@@ -124,9 +124,9 @@ export interface PaginatedExternalDataDestinationListApi {
 
 export interface PatchedExternalDataDestinationApi {
     readonly id?: string
-    /** Where synced rows are written. The PostHog warehouse is managed for you, so you cannot create one here.
+    /** Where synced rows are written. The Flind warehouse is managed for you, so you cannot create one here.
      *
-     * * `PostHogWarehouse` - PostHog warehouse
+     * * `PostHogWarehouse` - Flind warehouse
      * * `Redshift` - Redshift
      * * `Snowflake` - Snowflake
      * * `BigQuery` - BigQuery
@@ -143,22 +143,22 @@ export interface PatchedExternalDataDestinationApi {
     /** Settings for this destination: target database, schema or dataset, bucket and prefix, file format. Credentials are not stored here. They live on the linked integration. */
     config?: unknown
     /**
-     * Integration holding this destination's credentials. Required for every type except the PostHog warehouse.
+     * Integration holding this destination's credentials. Required for every type except the Flind warehouse.
      * @nullable
      */
     integration?: number | null
-    /** The warehouse migration item that planned this destination. The integration must keep every setting the connect page prefilled from it, or creation fails before PostHog connects anywhere. */
+    /** The warehouse migration item that planned this destination. The integration must keep every setting the connect page prefilled from it, or creation fails before Flind connects anywhere. */
     migration_item_id?: string
-    /** Whether this is the managed PostHog warehouse destination. */
+    /** Whether this is the managed Flind warehouse destination. */
     readonly is_posthog_warehouse?: boolean
     readonly created_at?: string
     /** @nullable */
     readonly created_by?: number | null
     /** @nullable */
     readonly updated_at?: string | null
-    /** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and — for the PostHog warehouse — sources that write there by default because nothing else was configured. */
+    /** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and — for the Flind warehouse — sources that write there by default because nothing else was configured. */
     readonly synced_sources?: readonly SyncedSourceApi[]
-    /** Whether delivery to this destination works. `healthy`: the last delivery worked. `failing`: the last delivery failed. `paused`: PostHog stopped syncing to it after repeated configuration errors. Edit the destination to turn it back on.
+    /** Whether delivery to this destination works. `healthy`: the last delivery worked. `failing`: the last delivery failed. `paused`: Flind stopped syncing to it after repeated configuration errors. Edit the destination to turn it back on.
      *
      * * `healthy` - Healthy
      * * `failing` - Failing
@@ -261,7 +261,7 @@ export interface DestinationConnectLinkApi {
     destination_type: string
     /** The integration kind the page creates. */
     integration_kind: string
-    /** Full URL to share with the user. It opens the connection form for this integration kind in PostHog, so credentials never pass through the agent or the chat. */
+    /** Full URL to share with the user. It opens the connection form for this integration kind in Flind, so credentials never pass through the agent or the chat. */
     connect_url: string
     /** Secret token in the link. Pass it to the connect link status endpoint to learn which integration the user saved. Only the user who asked for the link can read its status. */
     connect_token: string
@@ -1004,7 +1004,7 @@ export interface ExternalDataSourceSerializersApi {
     readonly created_at: string
     /** @nullable */
     readonly created_by: string | null
-    /** How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.
+    /** How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.
      *
      * * `web` - web
      * * `api` - api
@@ -1120,7 +1120,7 @@ export interface ExternalDataSourceCreateApi {
     /** Connection credentials. Keys depend on source_type. Add a 'schemas' array to pick which tables sync; omit it and every discovered table syncs with default settings. */
     payload: ExternalDataSourceCreateApiPayload
     /**
-     * Prefix added to the table names PostHog creates in HogQL. Does not filter which tables are imported.
+     * Prefix added to the table names Flind creates in HogQL. Does not filter which tables are imported.
      * @maxLength 100
      * @nullable
      */
@@ -1136,7 +1136,7 @@ export interface ExternalDataSourceCreateApi {
      * * `warehouse` - warehouse
      * * `direct` - direct */
     access_method?: ExternalDataSourceAccessMethodEnumApi
-    /** Where the request came from: `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls. `wizard` and `self_driving` cannot be set directly — they are derived server-side for wizard- and PostHog Desktop-driven MCP calls. Defaults to `api`.
+    /** Where the request came from: `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls. `wizard` and `self_driving` cannot be set directly — they are derived server-side for wizard- and Flind Desktop-driven MCP calls. Defaults to `api`.
      *
      * * `web` - web
      * * `api` - api
@@ -1144,7 +1144,7 @@ export interface ExternalDataSourceCreateApi {
     created_via?: ExternalDataSourceCreateCreatedViaEnumApi
     /** Whether a synced source should also be live-queryable via direct connection. Defaults to false; ignored for pure direct-query sources. */
     direct_query_enabled?: boolean
-    /** Destinations every table on this source writes to. Set here rather than afterwards, so the opening sync already carries them. Omit to write to the PostHog warehouse only. */
+    /** Destinations every table on this source writes to. Set here rather than afterwards, so the opening sync already carries them. Omit to write to the Flind warehouse only. */
     destination_ids?: string[]
 }
 
@@ -1163,7 +1163,7 @@ export interface PatchedExternalDataSourceSerializersApi {
     readonly created_at?: string
     /** @nullable */
     readonly created_by?: string | null
-    /** How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller's user agent). Ignored on update.
+    /** How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the Flind Desktop app (both derived server-side from the caller's user agent). Ignored on update.
      *
      * * `web` - web
      * * `api` - api
@@ -1348,14 +1348,14 @@ export const ManagementModeEnumApi = {
 export interface CdcStatusApi {
     /** Whether CDC is enabled on this source. */
     enabled: boolean
-    /** Who owns the slot and publication: PostHog or the customer.
+    /** Who owns the slot and publication: Flind or the customer.
      *
      * * `posthog` - posthog
      * * `self_managed` - self_managed */
     management_mode?: ManagementModeEnumApi
-    /** Replication slot PostHog consumes from. Empty when unset. */
+    /** Replication slot Flind consumes from. Empty when unset. */
     slot_name?: string
-    /** Publication PostHog reads changes from. Empty when unset. */
+    /** Publication Flind reads changes from. Empty when unset. */
     publication_name?: string
     /** Lag in MB above which the UI warns. */
     lag_warning_threshold_mb?: number
@@ -1380,7 +1380,7 @@ export interface CreateWebhookResponseApi {
     /** Whether the webhook was created and registered with the source. */
     success: boolean
     /**
-     * The PostHog endpoint the external service delivers events to.
+     * The Flind endpoint the external service delivers events to.
      * @nullable
      */
     webhook_url: string | null
@@ -1469,7 +1469,7 @@ export interface ExternalDataJobSerializersApi {
      * @nullable
      */
     readonly billable: boolean | null
-    /** Destinations this run delivered to, snapshotted when it started. Empty on runs that predate destinations, which wrote to the PostHog warehouse alone. `rows_synced` counts the rows read from the source once, not once per destination. */
+    /** Destinations this run delivered to, snapshotted when it started. Empty on runs that predate destinations, which wrote to the Flind warehouse alone. `rows_synced` counts the rows read from the source once, not once per destination. */
     readonly destination_ids: readonly string[]
 }
 
@@ -1570,7 +1570,7 @@ export interface WebhookExternalStatusApi {
 export interface WebhookInfoResponseApi {
     /** Whether the source type supports webhooks at all. When false, the other fields are absent. */
     supports_webhooks: boolean
-    /** Whether a PostHog webhook delivery function exists for this source yet. */
+    /** Whether a Flind webhook delivery function exists for this source yet. */
     exists: boolean
     /**
      * Set when the connection's credentials can never create the webhook, so only manual setup is left. Null means 'not known to be blocked'.
@@ -1580,7 +1580,7 @@ export interface WebhookInfoResponseApi {
     /** The webhook delivery function, present once the webhook exists. */
     hog_function: WebhookHogFunctionApi | null
     /**
-     * The PostHog endpoint the external service delivers events to.
+     * The Flind endpoint the external service delivers events to.
      * @nullable
      */
     webhook_url: string | null
@@ -1600,23 +1600,23 @@ export interface MigrationTableOverrideApi {
     /** A Fivetran table from the item: a planned table's `vendor_table`, or one of `unmatched_tables`. */
     vendor_table: string
     /**
-     * The PostHog table to sync it as. Null leaves the table out.
+     * The Flind table to sync it as. Null leaves the table out.
      * @nullable
      */
     posthog_table: string | null
 }
 
 export interface ApplyMigrationItemApi {
-    /** The migration item to create a PostHog source for. */
+    /** The migration item to create a Flind source for. */
     item_id: string
-    /** Stored credential from the source connect page, for the item's PostHog source type. */
+    /** Stored credential from the source connect page, for the item's Flind source type. */
     credential_id: string
     /**
      * Table name prefix to use instead of the planned one, for example when the planned one is taken.
      * @maxLength 100
      */
     prefix?: string
-    /** Destinations to write the new source to. Omit to write to the PostHog warehouse. */
+    /** Destinations to write the new source to. Omit to write to the Flind warehouse. */
     destination_ids?: string[]
     /** Changes to the planned tables that the user confirmed: rename an inferred pair, map an unmatched table, or leave a table out. */
     table_overrides?: MigrationTableOverrideApi[]
@@ -1629,7 +1629,7 @@ export interface ApplyMigrationItemApi {
 }
 
 export interface ApplyMigrationItemResponseApi {
-    /** The PostHog source created for the item. */
+    /** The Flind source created for the item. */
     source_id: string
     /** Every difference from the Fivetran connection, including new ones. */
     caveats: string[]
@@ -1661,7 +1661,7 @@ export interface SourceConnectLinkApi {
      * * `oauth` - oauth
      * * `credentials` - credentials */
     auth_method: AuthMethodEnumApi
-    /** Full URL to share with the user. It opens the source's connection form in PostHog — credentials never pass through the agent or the chat. */
+    /** Full URL to share with the user. It opens the source's connection form in Flind — credentials never pass through the agent or the chat. */
     connect_url: string
     /** Next steps for the agent to relay to the user. */
     instructions: string
@@ -1687,7 +1687,7 @@ export interface ExternalDataSourceConnectionOptionApi {
     readonly access_method: ExternalDataSourceAccessMethodEnumApi
     /** Whether HogQL queries compile for this connection. When false, only raw SQL (sendRawQuery) works. */
     readonly supports_hogql: boolean
-    /** Whether this option is the built-in PostHog managed warehouse connection. */
+    /** Whether this option is the built-in Flind managed warehouse connection. */
     readonly is_builtin_managed_warehouse: boolean
     /**
      * User-set description of the source, shown as its display name in the connection picker when set.
@@ -1885,7 +1885,7 @@ export interface SourceSetupApi {
     /** Connection details as flat keys for the source_type (discover required fields with the wizard tool). Prefer references over raw secrets: pass {'credential_id': <id>} referencing the connection details the user stored via the connect-link page (discover ids with the stored_credentials endpoint) — they are merged in server-side and deleted once consumed. An already-connected OAuth integration can be passed via its id key instead (e.g. {'hubspot_integration_id': 123}). For source_type 'Custom' (a user-defined REST API) the keys are 'manifest_json' (a stringified RESTAPIConfig describing client.base_url, auth, and resources) plus the credential for the auth type the manifest declares — 'auth_token' (bearer), 'auth_api_key' (api_key), or 'auth_password' (http_basic); keep secrets in these auth_* keys, never inline in the manifest. A 'schemas' array is NOT required — all discovered tables are enabled automatically with sensible sync defaults. */
     payload?: SourceSetupApiPayload
     /**
-     * Prefix added to the table names PostHog creates in HogQL, e.g. 'stripe' produces stripe_charges. Does not filter which tables are imported. Defaults to the source type.
+     * Prefix added to the table names Flind creates in HogQL, e.g. 'stripe' produces stripe_charges. Does not filter which tables are imported. Defaults to the source type.
      * @maxLength 100
      * @nullable
      */
@@ -1904,7 +1904,7 @@ export interface SourceSetupWebhookApi {
     /** Whether the webhook was registered with the external service. When true, webhook-capable tables (including webhook-only ones) sync via real-time webhooks; when false, tables fall back to the polling sync defaults and webhook-only tables stay disabled. */
     success: boolean
     /**
-     * The PostHog endpoint the external service delivers events to.
+     * The Flind endpoint the external service delivers events to.
      * @nullable
      */
     webhook_url: string | null
@@ -1934,7 +1934,7 @@ export interface SourceCredentialCreateApi {
     source_type: string
     /** Connection details as flat keys for the source_type — the same fields the create flow accepts (host, port, password, API key, …). Checked against a live connection before being stored. */
     payload: SourceCredentialCreateApiPayload
-    /** The migration item whose prefilled settings the connect page showed. Every prefilled setting must keep its value, or the request is rejected before PostHog connects anywhere. */
+    /** The migration item whose prefilled settings the connect page showed. Every prefilled setting must keep its value, or the request is rejected before Flind connects anywhere. */
     migration_item_id?: string
 }
 
@@ -2435,13 +2435,13 @@ export const WarehouseMigrationStatusEnumApi = {
 } as const
 
 export interface WarehouseMigrationItemCountsApi {
-    /** Connections that move to PostHog as they are. */
+    /** Connections that move to Flind as they are. */
     as_is: number
     /** Connections that move with differences the user should review. */
     caveats: number
-    /** Connections PostHog cannot create yet. */
+    /** Connections Flind cannot create yet. */
     unsupported: number
-    /** Connections already created as PostHog sources. */
+    /** Connections already created as Flind sources. */
     applied: number
     /** Connections the user chose not to move. */
     skipped: number
@@ -2534,12 +2534,12 @@ export interface WarehouseMigrationUploadConnectionsApi {
      */
     account?: WarehouseMigrationUploadConnectionsApiAccount
     /**
-     * Fivetran destination details responses, unchanged. Send them before the connections that use them, so PostHog reads each connection's sync time in its destination's time zone.
+     * Fivetran destination details responses, unchanged. Send them before the connections that use them, so Flind reads each connection's sync time in its destination's time zone.
      * @maxItems 100
      */
     destinations?: WarehouseMigrationUploadConnectionsApiDestinationsItem[]
     /**
-     * At most 25 connections. A connection uploaded again replaces its plan, unless it is already created in PostHog or skipped.
+     * At most 25 connections. A connection uploaded again replaces its plan, unless it is already created in Flind or skipped.
      * @maxItems 25
      */
     connections?: WarehouseMigrationUploadedConnectionApi[]
@@ -2569,16 +2569,16 @@ export interface ProposedRowFilterApi {
 }
 
 export interface ProposedSchemaApi {
-    /** PostHog table name. */
+    /** Flind table name. */
     name: string
     /** Whether the table syncs. */
     should_sync: boolean
     /**
-     * Planned sync type. Null means PostHog picks its default for the table.
+     * Planned sync type. Null means Flind picks its default for the table.
      * @nullable
      */
     sync_type: string | null
-    /** Columns Fivetran skipped, which PostHog skips too. */
+    /** Columns Fivetran skipped, which Flind skips too. */
     disabled_columns: string[]
     /** Row filters copied from Fivetran. */
     row_filters: ProposedRowFilterApi[]
@@ -2601,14 +2601,14 @@ export interface ProposedDestinationApi {
     type: string
     /** Non-secret destination settings copied from Fivetran. */
     config: ProposedDestinationApiConfig
-    /** The schemas Fivetran writes this connection into. Use another schema in the PostHog destination. */
+    /** The schemas Fivetran writes this connection into. Use another schema in the Flind destination. */
     vendor_schemas: string[]
 }
 
 export interface TablePairApi {
     /** The Fivetran table. */
     vendor_table: string
-    /** The PostHog table it was paired with. */
+    /** The Flind table it was paired with. */
     posthog_table: string
 }
 
@@ -2618,14 +2618,14 @@ export interface TablePairApi {
 export type ItemProposalApiPrefill = { [key: string]: unknown }
 
 export interface ItemProposalApi {
-    /** The PostHog source type this connection becomes. */
+    /** The Flind source type this connection becomes. */
     source_type: string
     /** Table name prefix for the new source, taken from the Fivetran connection name. */
     prefix: string
     /** Non-secret connection settings copied from Fivetran, shaped like the source payload. */
     prefill: ItemProposalApiPrefill
     /**
-     * Tables to sync, with their planned sync settings. Null means PostHog uses its default tables.
+     * Tables to sync, with their planned sync settings. Null means Flind uses its default tables.
      * @nullable
      */
     schemas: ProposedSchemaApi[] | null
@@ -2642,9 +2642,9 @@ export interface ItemProposalApi {
     start_paused: boolean
     /** Tables that a naming rule paired. Ask the user to confirm each pair before applying. */
     inferred_tables?: TablePairApi[]
-    /** Fivetran tables with no PostHog table. Compare them with the source's PostHog tables and propose one, or leave them out. */
+    /** Fivetran tables with no Flind table. Compare them with the source's Flind tables and propose one, or leave them out. */
     unmatched_tables?: string[]
-    /** The source's PostHog tables that no Fivetran table maps to. Choose from these for the unmatched tables. Empty when every table matched. */
+    /** The source's Flind tables that no Fivetran table maps to. Choose from these for the unmatched tables. Empty when every table matched. */
     unused_posthog_tables?: string[]
 }
 
@@ -2688,9 +2688,9 @@ export interface WarehouseMigrationItemApi {
      * * `caveats` - Moves with caveats
      * * `unsupported` - Not supported */
     verdict: WarehouseMigrationItemVerdictEnumApi
-    /** Differences between Fivetran and PostHog for this connection. */
+    /** Differences between Fivetran and Flind for this connection. */
     caveats: string[]
-    /** What PostHog creates for this connection. Null when the connection is not supported. */
+    /** What Flind creates for this connection. Null when the connection is not supported. */
     proposal: ItemProposalApi | null
     /** `pending` until the source is created (`applied`) or the user skips it.
      *
@@ -2701,7 +2701,7 @@ export interface WarehouseMigrationItemApi {
      * * `failed` - Failed */
     status: WarehouseMigrationItemStatusEnumApi
     /**
-     * The PostHog source created for this connection, if any.
+     * The Flind source created for this connection, if any.
      * @nullable
      */
     external_data_source_id: string | null
@@ -2738,7 +2738,7 @@ export interface WarehouseMigrationSkipItemsApi {
 export interface WarehouseMigrationSkipItemsResponseApi {
     /** Items that are now skipped, including ones skipped before. */
     skipped_item_ids: string[]
-    /** Items that stay as they are because they are being created or are already PostHog sources. */
+    /** Items that stay as they are because they are being created or are already Flind sources. */
     not_skipped_item_ids: string[]
 }
 
@@ -2747,7 +2747,7 @@ export interface WarehouseMigrationConnectLinkApi {
      *
      * * `fivetran` - Fivetran */
     provider: WarehouseMigrationProviderEnumApi
-    /** Link the user opens to enter their vendor API key in PostHog. */
+    /** Link the user opens to enter their vendor API key in Flind. */
     connect_url: string
     /** What the agent should tell the user and do next. */
     instructions: string

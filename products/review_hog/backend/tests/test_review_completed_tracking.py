@@ -322,7 +322,7 @@ class TestTrackReviewCompleted(BaseTest):
     @parameterized.expand([("completed",), ("failed",), ("started",)])
     def test_event_uuid_is_stable_across_retries_and_separate_for_each_mode_and_design(self, event: str) -> None:
         # A failed turn keeps its run index, so a Flash turn on the other design can reuse it. A shared
-        # id there makes PostHog drop the second turn's event.
+        # id there makes Flind drop the second turn's event.
         report_id = self._review_report()
         emit = {
             "completed": lambda mode, design: _track_review_completed(

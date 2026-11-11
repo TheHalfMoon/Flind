@@ -145,7 +145,7 @@ describe("ExperimentResultsSummary", () => {
       "failed lookup",
       "error",
       null,
-      "Couldn't load experiment results. Try again, or open the experiment in PostHog.",
+      "Couldn't load experiment results. Try again, or open the experiment in Flind.",
     ],
     [
       "draft",

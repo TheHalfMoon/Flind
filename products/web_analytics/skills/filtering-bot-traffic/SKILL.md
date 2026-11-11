@@ -1,11 +1,11 @@
 ---
 name: filtering-bot-traffic
-description: 'Identify, measure, and exclude bot / crawler / AI-agent traffic in PostHog web and product analytics using the traffic classification surface (the isLikelyBot / getTrafficType HogQL functions and the $virt_* virtual properties). Use when the user asks to "exclude bots", "filter out crawlers", "remove bot traffic from my numbers", "how much of my traffic is bots / AI crawlers", "is GPTBot / ChatGPT / Claude hitting my site", "break down traffic by human vs bot", or wants clean human-only counts in an insight or dashboard. For the real-time Live tab bot tiles, use exploring-live-traffic instead.'
+description: 'Identify, measure, and exclude bot / crawler / AI-agent traffic in Flind web and product analytics using the traffic classification surface (the isLikelyBot / getTrafficType HogQL functions and the $virt_* virtual properties). Use when the user asks to "exclude bots", "filter out crawlers", "remove bot traffic from my numbers", "how much of my traffic is bots / AI crawlers", "is GPTBot / ChatGPT / Claude hitting my site", "break down traffic by human vs bot", or wants clean human-only counts in an insight or dashboard. For the real-time Live tab bot tiles, use exploring-live-traffic instead.'
 ---
 
 # Filtering and measuring bot traffic
 
-PostHog classifies every request by user agent so you can tell humans apart from bots,
+Flind classifies every request by user agent so you can tell humans apart from bots,
 crawlers, and AI agents anywhere HogQL runs — the SQL editor, insights, trends, and Web
 analytics breakdowns. This skill teaches you (the agent) how to use that classification to:
 
@@ -148,9 +148,9 @@ GROUP BY bot, operator
 ORDER BY hits DESC
 ```
 
-## Adding a bot PostHog doesn't know yet
+## Adding a bot Flind doesn't know yet
 
-The built-in list only covers self-declared user agents PostHog already knows. When a
+The built-in list only covers self-declared user agents Flind already knows. When a
 scraper matters to a project but isn't detected — an internal load test, a partner
 integration, a niche crawler — add a **custom bot rule** instead of waiting for the
 built-in list to catch up. Rules extend the same classification surface, so `Is bot`
@@ -168,7 +168,7 @@ Three ways to manage rules:
 
 - **Settings UI** — Settings → Environment → Custom bots.
 - **MCP tools** — `web-analytics-bot-rules-list`, `web-analytics-bot-rules-create`,
-  `web-analytics-bot-rules-destroy`. Prefer these when driving PostHog through an agent.
+  `web-analytics-bot-rules-destroy`. Prefer these when driving Flind through an agent.
 - **REST API** — `GET/POST /api/projects/{project_id}/web_analytics_bot_rules/` and
   `DELETE /api/projects/{project_id}/web_analytics_bot_rules/{id}/`.
 

@@ -1,5 +1,5 @@
 /**
- * PostHog analytics for MCP UI Apps.
+ * Flind analytics for MCP UI Apps.
  *
  * Uses posthog-js-lite for minimal footprint - we only need capture functionality.
  * Events are only captured if POSTHOG_UI_APPS_TOKEN is set at build time.
@@ -19,11 +19,11 @@ let client: PostHog | null = null
 let currentDistinctId: string | null = null
 
 const log = (...args: any[]): void => {
-    console.debug('[PostHog Analytics]', ...args)
+    console.debug('[Flind Analytics]', ...args)
 }
 
 /**
- * Initialize PostHog for UI Apps tracking.
+ * Initialize Flind for UI Apps tracking.
  * Only initializes if POSTHOG_UI_APPS_TOKEN is set.
  */
 export function initPostHog(appName: string, appVersion: string): void {
@@ -35,12 +35,12 @@ export function initPostHog(appName: string, appVersion: string): void {
         return
     }
 
-    log('Initializing PostHog client', { token: POSTHOG_TOKEN, host: POSTHOG_HOST, appName, appVersion })
+    log('Initializing Flind client', { token: POSTHOG_TOKEN, host: POSTHOG_HOST, appName, appVersion })
     try {
         // posthog-js-lite reads localStorage during construction, which can fail in a sandboxed iframe.
         client = new PostHog(POSTHOG_TOKEN, { host: POSTHOG_HOST })
     } catch (error) {
-        log('PostHog client initialization failed', error)
+        log('Flind client initialization failed', error)
         client = null
         return
     }
@@ -52,7 +52,7 @@ export function initPostHog(appName: string, appVersion: string): void {
             $mcp_app_instance_id: newId(),
         })
     } catch (error) {
-        log('PostHog register failed', error)
+        log('Flind register failed', error)
     }
 }
 
@@ -64,11 +64,11 @@ export function newId(): string {
 }
 
 /**
- * Identify the user with their PostHog distinct ID from the MCP server.
+ * Identify the user with their Flind distinct ID from the MCP server.
  */
 export function identifyUser(distinctId: string, toolName?: string, mcpClientName?: string): void {
     if (!client) {
-        log('PostHog client not initialized while attempting to identify user', { distinctId, toolName })
+        log('Flind client not initialized while attempting to identify user', { distinctId, toolName })
         return
     }
 

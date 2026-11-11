@@ -1,6 +1,6 @@
 // This test deliberately crosses the toolbar/app boundary: it exists to catch the toolbar's
 // duplicated url helpers drifting from the app's real routes (e.g. a product manifest changing
-// its path shape), which would break every "open in PostHog" link the toolbar renders.
+// its path shape), which would break every "open in Flind" link the toolbar renders.
 import { urls as appUrls } from 'scenes/urls'
 
 import { urls as toolbarUrls } from '~/toolbar/shared/urls'

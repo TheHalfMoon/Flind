@@ -3898,7 +3898,7 @@ export const featureFlagLogic = kea<featureFlagLogicType>([
                         retrievedFlag = await api.featureFlags.get(props.id)
                     } catch (error) {
                         // A mount-path failure stays silent, because that path is a background
-                        // reconciliation. An agent-path failure cannot: PostHog AI has already told
+                        // reconciliation. An agent-path failure cannot: Flind AI has already told
                         // the reader the flag changed.
                         if (!payload.afterAgentChange) {
                             return null

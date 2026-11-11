@@ -1,6 +1,6 @@
 # Deploying OAuth app credentials (register → code → charts → secrets)
 
-A PostHog-registered OAuth source (`SourceFieldOauthConfig`, `OAuthMixin`, a new `IntegrationKind`)
+A Flind-registered OAuth source (`SourceFieldOauthConfig`, `OAuthMixin`, a new `IntegrationKind`)
 needs the OAuth **app** `client_id` / `client_secret` wired through four places. The connector stays
 dormant and the OAuth auth method fails closed (`"<Source> app not configured"`) until the last step
 lands, so code + charts can merge ahead of the secret values.
@@ -11,7 +11,7 @@ Worked example: the Resend source — posthog/posthog **#73107** (code) and Post
 ## 1. Register the OAuth client with the provider
 
 Get a `client_id` / `client_secret` from the provider (their dashboard, or a dynamic-registration API
-like Resend's `POST /oauth/register`). Register **all** PostHog callbacks up front — providers pin
+like Resend's `POST /oauth/register`). Register **all** Flind callbacks up front — providers pin
 `redirect_uri` to an exact match:
 
 - `https://us.posthog.com/integrations/<kind>/callback`
@@ -69,7 +69,7 @@ vars on the web app and the data-warehouse worker — nothing else.
 `PostHog/secrets` is a **web UI and CLI over AWS Secrets Manager — values are never committed to git.**
 
 The [secrets UI](https://secrets-ui.hedgehog-kitefin.ts.net/) is the preferred way to write secrets: it
-only needs the PostHog tailnet (Tailscale) — no local install, AWS profile, or SSO login — and it can add
+only needs the Flind tailnet (Tailscale) — no local install, AWS profile, or SSO login — and it can add
 a key across environments from one place.
 
 **Two things this step needs are not in the UI yet** (planned, but CLI-only today): bulk multi-store /
@@ -112,7 +112,7 @@ Notes:
   change. Creating a **brand-new** secret store also needs an EKS-access grant in
   `terraform/modules/eks/external-secrets.tf` (posthog-cloud-infra).
 - ExternalSecrets sync from AWS SM to Kubernetes hourly; the CLI offers an immediate Argo force-sync
-  after writing (needs the PostHog tailnet), else `kubectl annotate es <name> force-sync=$(date +%s) --overwrite -n posthog`.
+  after writing (needs the Flind tailnet), else `kubectl annotate es <name> force-sync=$(date +%s) --overwrite -n posthog`.
   The UI does not force-sync — after writing there, force it via ArgoCD or wait for the hourly sync.
 - UI/CLI parity gaps that matter beyond this step: force-sync, search-by-value, `blame`/`--who`
   attribution, and bulk `template` writes are all CLI-only for now. The wiki tracks the current list

@@ -311,7 +311,7 @@ def get_node_ids_for_saved_queries(team_id: int, saved_query_ids: Iterable[UUID 
 
 
 def get_node_ids_for_posthog_tables(team_id: int, table_names: Iterable[str]) -> dict[str, str]:
-    """The DAG node each of these PostHog tables sits on, as one query. A table no view reads has none."""
+    """The DAG node each of these Flind tables sits on, as one query. A table no view reads has none."""
     names = list(table_names)
     if not names:
         return {}

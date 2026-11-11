@@ -8,12 +8,12 @@ Every command passes the same steps, in this order, before its handler runs:
    not leave the person waiting. Everyone past it gets a reply that says what happened.
 2. The request holds exactly one command, the command exists, and its arguments match its grammar.
 3. The command's product names the projects it acts in, out of the rolled-out candidates: for
-   ``review``, the project that owns the repository in PostHog Review. Membership and access are
+   ``review``, the project that owns the repository in Flind Review. Membership and access are
    checked only there, and the requester's linked accounts must include a member of one of them.
    With several linked accounts, the member the channel lists first acts.
 4. The command accepts the kind of subject, and the subject allows the command: for a pull request,
    it is open, and the command allows forks if the head is a fork.
-5. The account has the access the command declares on the project, in PostHog access control.
+5. The account has the access the command declares on the project, in Flind access control.
 """
 
 from typing import Any, Protocol
@@ -66,7 +66,7 @@ class CommandChannel(Protocol):
         ...
 
     def linked_users(self) -> list[User]:
-        """The active PostHog users the requester may act as, the channel's first choice first."""
+        """The active Flind users the requester may act as, the channel's first choice first."""
         ...
 
     def reply(self, message: str) -> None: ...
@@ -111,7 +111,7 @@ class CommandDispatcher:
         return self._run(command, admission)
 
     def _runnable_command(self, spec: CommandSpec[Any] | None) -> Invocation[Any] | Answer:
-        """The command to run, or the answer to a request that needs no PostHog account: help, and
+        """The command to run, or the answer to a request that needs no Flind account: help, and
         requests with no runnable command."""
         request = self._channel.request
         if request.ambiguous:
@@ -148,7 +148,7 @@ class CommandDispatcher:
         requester = resolve_requester(users, team_ids, call_site="command")
         if not isinstance(requester, Requester):
             if requester.reason == "refused":
-                return Answer(outcome="account_refused", message="I can't run commands for your PostHog account.")
+                return Answer(outcome="account_refused", message="I can't run commands for your Flind account.")
             return Answer(outcome="unlinked", message=self._channel.unlinked_message)
         members = requester.members
         if not members:
@@ -164,7 +164,7 @@ class CommandDispatcher:
             if not members:
                 return Answer(
                     outcome="access_denied",
-                    message=f"You need {access.level} access to {access.resource} in PostHog to use `{declaration.verb}`.",
+                    message=f"You need {access.level} access to {access.resource} in Flind to use `{declaration.verb}`.",
                 )
         return CommandContext(request=request, subject=subject, members=members, follow_up=self._channel.follow_up)
 
@@ -178,7 +178,7 @@ class CommandDispatcher:
                 return context.outcome
             outcome = command.run(context)
         except GitHubRateLimitError:
-            self._channel.reply("GitHub is limiting how fast PostHog can work right now. Try again in a few minutes.")
+            self._channel.reply("GitHub is limiting how fast Flind can work right now. Try again in a few minutes.")
             return "failed"
         except Exception as error:
             capture_exception(error)

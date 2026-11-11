@@ -98,7 +98,7 @@ class PlausibleSource(ResumableSource[PlausibleSourceConfig, PlausibleResumeConf
             name=ExternalDataSourceType.PLAUSIBLE,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Plausible",
-            caption="""Connect Plausible Analytics to pull your web analytics into the PostHog Data warehouse.
+            caption="""Connect Plausible Analytics to pull your web analytics into the Flind Data warehouse.
 
 Works with Plausible Cloud and self-hosted instances. Create an API key under **Account settings → API keys** with the `stats read` scope, then enter your site's domain (e.g. `example.com`). Leave the host blank for Plausible Cloud, or set it to your instance URL for self-hosted (e.g. `https://plausible.example.com`).""",
             iconPath="/static/services/plausible.png",

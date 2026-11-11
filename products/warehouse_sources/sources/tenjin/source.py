@@ -129,7 +129,7 @@ class TenjinSource(ResumableSource[TenjinSourceConfig, TenjinResumeConfig]):
             name=ExternalDataSourceType.TENJIN,
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="Tenjin",
-            caption="""Enter your Tenjin API access token to pull daily user-acquisition spend, ad revenue, and SKAdNetwork reports into the PostHog Data warehouse.
+            caption="""Enter your Tenjin API access token to pull daily user-acquisition spend, ad revenue, and SKAdNetwork reports into the Flind Data warehouse.
 
 Generate a token in the Tenjin dashboard under Automate > API Access Tokens. The token must have the Reporting Metrics API permission.
 

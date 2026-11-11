@@ -73,7 +73,7 @@ for context when validating a finding in production code).
 
 - Performance optimizations and error-handling completeness → Performance & Reliability
 - Security vulnerabilities and API-contract changes → Contracts & Security
-- Code style or formatting → not a PostHog Review concern
+- Code style or formatting → not a Flind Review concern
 
 ## Key questions
 

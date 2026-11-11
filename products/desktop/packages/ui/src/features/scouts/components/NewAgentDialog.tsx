@@ -21,7 +21,7 @@ const EXAMPLES = [
 ];
 
 /**
- * Describe an agent in a sentence; PostHog drafts it as a scout skill in a
+ * Describe an agent in a sentence; Flind drafts it as a scout skill in a
  * cloud task and opens that task for review.
  */
 export function NewAgentDialog({
@@ -59,7 +59,7 @@ export function NewAgentDialog({
         <DialogHeader>
           <DialogTitle>New agent</DialogTitle>
           <DialogDescription>
-            Say what to watch and what to do when it finds something. PostHog
+            Say what to watch and what to do when it finds something. Flind
             drafts the agent in a task and opens it for you.
           </DialogDescription>
         </DialogHeader>

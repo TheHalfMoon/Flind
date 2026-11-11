@@ -104,7 +104,7 @@ class TestSlackSubscriptionsTasks(APIBaseTest):
                 "elements": [
                     {
                         "type": "button",
-                        "text": {"type": "plain_text", "text": "View in PostHog"},
+                        "text": {"type": "plain_text", "text": "View in Flind"},
                         "url": "http://localhost:8010/insights/123456?utm_source=posthog&utm_campaign=subscription_report&utm_medium=slack",
                     },
                     {
@@ -143,13 +143,13 @@ class TestSlackSubscriptionsTasks(APIBaseTest):
                 "new_without_title",
                 None,
                 True,
-                "This channel has been subscribed to the Insight *My Test subscription* on PostHog! 🎉\n\nThe next one will be sent on Wednesday February 02, 2022",
+                "This channel has been subscribed to the Insight *My Test subscription* on Flind! 🎉\n\nThe next one will be sent on Wednesday February 02, 2022",
             ),
             (
                 "new_with_title",
                 "Weekly KPI Report",
                 True,
-                "This channel has been subscribed to *Weekly KPI Report* (Insight: My Test subscription) on PostHog! 🎉\n\nThe next one will be sent on Wednesday February 02, 2022",
+                "This channel has been subscribed to *Weekly KPI Report* (Insight: My Test subscription) on Flind! 🎉\n\nThe next one will be sent on Wednesday February 02, 2022",
             ),
             (
                 "recurring_with_failed_export",
@@ -269,7 +269,7 @@ class TestSlackSubscriptionsTasks(APIBaseTest):
                 "elements": [
                     {
                         "type": "button",
-                        "text": {"type": "plain_text", "text": "View in PostHog"},
+                        "text": {"type": "plain_text", "text": "View in Flind"},
                         "url": f"http://localhost:8010/dashboard/{self.dashboard.id}?utm_source=posthog&utm_campaign=subscription_report&utm_medium=slack",
                     },
                     {
@@ -337,7 +337,7 @@ class TestSlackSubscriptionsTasks(APIBaseTest):
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"Showing 3 of 10 Insights. <http://localhost:8010/dashboard/{self.dashboard.id}?utm_source=posthog&utm_campaign=subscription_report&utm_medium=slack|View the rest in PostHog>",
+                    "text": f"Showing 3 of 10 Insights. <http://localhost:8010/dashboard/{self.dashboard.id}?utm_source=posthog&utm_campaign=subscription_report&utm_medium=slack|View the rest in Flind>",
                 },
             }
         ]
@@ -984,7 +984,7 @@ class TestSlackPostAllInMainMessage(APIBaseTest):
             }
         ]
         assert links == (expected_links if is_dashboard else [])
-        assert "View in PostHog" in gallery.initial_comment
+        assert "View in Flind" in gallery.initial_comment
         # Failed assets are listed by name with a "Could not generate" notice
         assert "Could not generate" in gallery.initial_comment
         assert "Second insight" in gallery.initial_comment

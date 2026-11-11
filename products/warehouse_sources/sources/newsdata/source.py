@@ -52,7 +52,7 @@ class NewsDataSource(ResumableSource[NewsDataSourceConfig, NewsDataResumeConfig]
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="NewsData.io",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your NewsData.io API key to pull news articles into the PostHog Data warehouse.
+            caption="""Enter your NewsData.io API key to pull news articles into the Flind Data warehouse.
 
 You can find your API key on your [NewsData.io dashboard](https://newsdata.io/dashboard).
 

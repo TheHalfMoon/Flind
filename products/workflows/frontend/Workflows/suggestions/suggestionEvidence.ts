@@ -39,7 +39,7 @@ export interface MeasuredReading {
     below_minimum_sample: boolean
 }
 
-/** PostHog's own read of the step at `base_version`, stored by the server when the suggestion was filed. */
+/** Flind's own read of the step at `base_version`, stored by the server when the suggestion was filed. */
 export interface MeasuredEvidence {
     version: number
     window: string

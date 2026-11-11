@@ -26,7 +26,7 @@ The health dashboard (see [evidence-sources](evidence-sources.md)) has most of t
 
 ## Experiments
 
-- Ship behind a feature flag and use a PostHog experiment when the change touches defaults, ordering or what Suggested shows.
+- Ship behind a feature flag and use a Flind experiment when the change touches defaults, ordering or what Suggested shows.
 - Run long enough to include returning users.
   Effects on new users can disappear once existing users are included.
 - Prefer a real control arm.

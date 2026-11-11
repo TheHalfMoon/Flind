@@ -1,4 +1,4 @@
-/** The details a sidebar session row can show under its title, in PostHog Desktop's order. */
+/** The details a sidebar session row can show under its title, in Flind Desktop's order. */
 export const TODAY_LIST_ITEM_FIELDS = ['space', 'repository', 'branch', 'creator', 'activity'] as const
 
 export type TodayListItemField = (typeof TODAY_LIST_ITEM_FIELDS)[number]

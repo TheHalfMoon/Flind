@@ -196,7 +196,7 @@ If the node type does not exist yet, create the notebook node first under `front
 
 ### Adding named views to a real notebook node
 
-Use named views when one PostHog object needs multiple notebook presentations.
+Use named views when one Flind object needs multiple notebook presentations.
 The `view` prop selects the presentation, while the node's existing `Component` remains the default when `view` is absent or unknown.
 
 Export the view definitions from the product or scene that owns the UI:
@@ -229,7 +229,7 @@ export const NotebookNodeFeatureFlag = createPostHogWidgetNode<FeatureFlagAttrib
 ```
 
 Add the component, ProseMirror node type, identity prop, default view, and named view descriptions to `products/notebooks/notebook-widget-catalog.json` first.
-The frontend registration helpers, PostHog MCP, and Max all consume that catalog.
+The frontend registration helpers, Flind MCP, and Max all consume that catalog.
 
 The notebook filters panel adds the View dropdown automatically.
 Selecting `defaultView` removes the `view` prop, while agents can use its key explicitly.
@@ -269,7 +269,7 @@ Use a specialized view when it directly answers the task.
 - [x] Actions: `summary`, `detail`, `editor`
 - [x] Workflows: `summary`, `detail`, `editor`, `results`
 
-Named views run trusted, compiled PostHog UI.
+Named views run trusted, compiled Flind UI.
 Do not execute agent-generated React through this registry.
 Generated charts and freeform widgets should use an isolated renderer based on the Bluebird canvas iframe and data bridge, then expose that renderer as its own notebook component.
 

@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function SurveyStatsApp(): JSX.Element {
     return (
-        <AppWrapper<SurveyStatsData> appName="PostHog Survey Stats">
+        <AppWrapper<SurveyStatsData> appName="Flind Survey Stats">
             {({ data }) => <SurveyStatsView data={data!} />}
         </AppWrapper>
     )

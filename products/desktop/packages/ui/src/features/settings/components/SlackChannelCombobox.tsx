@@ -115,7 +115,7 @@ export function SlackChannelCombobox({
       <ComboboxEmpty>
         {searchPending
           ? "Loading channels…"
-          : "No channels match — make sure PostHog is in the channel."}
+          : "No channels match — make sure Flind is in the channel."}
       </ComboboxEmpty>
       <ComboboxList className="max-h-[min(18rem,calc(var(--available-height,18rem)-5rem))]">
         {(itemValue: string) => {

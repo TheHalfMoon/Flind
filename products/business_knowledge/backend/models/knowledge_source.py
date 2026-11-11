@@ -21,7 +21,7 @@ class KnowledgeSource(ModelActivityMixin, CreatedMetaFields, UpdatedMetaFields, 
     is_generated = models.BooleanField(
         default=False,
         db_default=False,
-        help_text="Whether PostHog manages this source with knowledge learned from resolved support tickets.",
+        help_text="Whether Flind manages this source with knowledge learned from resolved support tickets.",
     )
     status = models.CharField(max_length=16, choices=SourceStatus.choices, default=SourceStatus.PENDING)
     # Human-facing failure reason. Empty when status != ERROR.

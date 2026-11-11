@@ -281,7 +281,7 @@ The reader is `score_reports` in `products/signals/backend/ranking/scorer.py`. I
 
 ### Overrides
 
-An owner can change serving without a training run or a Dagster launch, through the payload of the `inbox-ranking-overrides` feature flag in the internal PostHog project. The flag is inert by default. When the flag is off, the payload is empty, or the lookup fails, the sweep and the dag run as they do without the flag. The parser is `products/signals/backend/ranking/overrides.py`, and the sweep and the dag share it.
+An owner can change serving without a training run or a Dagster launch, through the payload of the `inbox-ranking-overrides` feature flag in the internal Flind project. The flag is inert by default. When the flag is off, the payload is empty, or the lookup fails, the sweep and the dag run as they do without the flag. The parser is `products/signals/backend/ranking/overrides.py`, and the sweep and the dag share it.
 
 Every key is optional, but no key applies without `expires_at`:
 
@@ -343,8 +343,8 @@ The Today home sends the same client events as the Inbox, with `surface: 'today'
 The Today report page sends `Inbox report opened` once per visit, when the report loads.
 A click on a list row sends `open_method: 'click'` with the row's `list`, `rank` and `list_size`, and `source` (`list` or `more`).
 The previous / next control sends `source: 'step'`, with the position in the report queue as `rank` and the queue length as `list_size`, and no `list`.
-Every other visit (a shared URL, a PostHog AI link, a refresh, back / forward) sends `open_method: 'deeplink'` with a null `list`, `rank` and `list_size`.
-`link_source` comes from the URL, and PostHog AI writes `link_source=today` on the Today report links it shows.
+Every other visit (a shared URL, a Flind AI link, a refresh, back / forward) sends `open_method: 'deeplink'` with a null `list`, `rank` and `list_size`.
+`link_source` comes from the URL, and Flind AI writes `link_source=today` on the Today report links it shows.
 A list row opened in place sends `Inbox report action` with `action_type: 'expand_preview'`, `list` and `rank`.
 No head reads `expand_preview`, and it is not in `ACTION_TYPES`.
 Sample reports send no `Inbox` events.

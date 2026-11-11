@@ -132,7 +132,7 @@ _MAX_TOKEN_REFRESH_ATTEMPTS = 4
 
 
 def _salesforce_app_credentials() -> dict[str, str]:
-    """PostHog's own Salesforce connected-app key and secret, named as the token endpoint wants."""
+    """Flind's own Salesforce connected-app key and secret, named as the token endpoint wants."""
     resolved = credentials_service.get_secrets(["SALESFORCE_CONSUMER_KEY", "SALESFORCE_CONSUMER_SECRET"])
     return {
         "client_id": resolved["SALESFORCE_CONSUMER_KEY"],
@@ -160,7 +160,7 @@ def salesforce_refresh_access_token(refresh_token: str, instance_url: str, *, ca
                 },
             )
         except (RequestsConnectionError, RequestsTimeout):
-            # A failed connection or timeout reaching the token endpoint — most often PostHog's
+            # A failed connection or timeout reaching the token endpoint — most often Flind's
             # egress proxy returning a transient 502 on CONNECT — never minted a token, so it's safe
             # to reissue. Without this in-process retry a single proxy blip fails the whole import
             # activity before it reads a row, and the sync restarts from scratch.

@@ -412,7 +412,7 @@ PrCloseReason = Literal["suppressed", "snoozed", "resolved", "superseded"]
 
 _SUPERSEDED_COMMENT = (
     "Closing this PR because later research changed the fix. "
-    "PostHog completed the replacement implementation: {replacement}.\n\n"
+    "Flind completed the replacement implementation: {replacement}.\n\n"
     "The replacement explains what changed. If this PR should remain open, reopen it and review "
     "the linked report before changing the replacement PRs."
 )
@@ -450,7 +450,7 @@ def _pr_close_comment(
         if actor_mention
         else f"🔕 Closing this PR because the {report_link} was {reason}."
     )
-    return f"{opening}\n\nIf that wasn't intended, restore the report in PostHog and reopen this PR."
+    return f"{opening}\n\nIf that wasn't intended, restore the report in Flind and reopen this PR."
 
 
 def _close_implementation_pr(
@@ -545,7 +545,7 @@ def _close_implementation_pr(
             return False
         comment = _pr_close_comment(
             reason,
-            report_link=f"[linked PostHog report]({build_report_url(team_id, report_id, ReportLinkSource.GITHUB_PR)})",
+            report_link=f"[linked Flind report]({build_report_url(team_id, report_id, ReportLinkSource.GITHUB_PR)})",
             actor_mention=github_mention_for_user(actor_user_id),
             replacement_pr_url=replacement_pr_url,
         )

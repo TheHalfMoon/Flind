@@ -169,14 +169,14 @@ class TaskProfile:
     # gets that agent's MCP servers instead of its creator's MCP store connections. None means the
     # task uses its creator's connections.
     mcp_agent: str | None
-    # The widest PostHog MCP scope preset the agent can get. TaskRunOptions.mcp_scopes can narrow it
+    # The widest Flind MCP scope preset the agent can get. TaskRunOptions.mcp_scopes can narrow it
     # but never widen it.
     mcp_scopes: PosthogMcpScopes
     # True installs the team's MCP store servers in the sandbox. False installs none, personal
     # servers included.
     mcp_store_servers: bool
     mcp_exclude_tools: tuple[str, ...]
-    # The OAuth application that mints the sandbox's PostHog tokens. The LLM gateway pins billing
+    # The OAuth application that mints the sandbox's Flind tokens. The LLM gateway pins billing
     # products per application, so a token from a shared application is valid for every product on
     # it. A product with its own billing needs its own application.
     oauth_app: OAuthApp

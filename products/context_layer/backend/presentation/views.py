@@ -360,9 +360,9 @@ def _land_commits(organization_id, request: Request) -> Response:  # noqa: ANN00
 
 @extend_schema(tags=["context_layer"])
 class ContextLayerViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
-    """The organization's context wiki: a git repo of Markdown pages hosted by PostHog."""
+    """The organization's context wiki: a git repo of Markdown pages hosted by Flind."""
 
-    # No authentication_classes override: the mixin already appends PostHog's
+    # No authentication_classes override: the mixin already appends Flind's
     # session/PAT/OAuth authenticators, and DRF's stock SessionAuthentication
     # would run first and skip enforce_two_factor.
     # The flag is the rollout boundary: the whole surface stays off until the

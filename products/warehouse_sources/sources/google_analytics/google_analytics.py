@@ -280,7 +280,7 @@ def _run_report(
             if is_quota:
                 logger.warning("ga4_runreport_quota_exhausted", property_id=pid)
                 raise GoogleAnalyticsQuotaExceededError(
-                    f"Google Analytics Data API quota for property '{pid}' is used up. PostHog will retry "
+                    f"Google Analytics Data API quota for property '{pid}' is used up. Flind will retry "
                     "when the quota refills. If this keeps happening, set a lower 'Days of history to sync "
                     "initially' value on the source, or remove high-cardinality dimensions from your custom "
                     "reports (retryable)"

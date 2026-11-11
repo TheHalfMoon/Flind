@@ -80,14 +80,14 @@ class BillingExemptionError(Exception):
     """A report can no longer be exempted — a billable PR run already exists (use a refund)."""
 
 
-# PostHog-system scout skills whose reports must never bill — users must not pay for PRs that fix
-# problems in PostHog's own systems. v1 policy is this code constant; the report→scout link is the
+# Flind-system scout skills whose reports must never bill — users must not pay for PRs that fix
+# problems in Flind's own systems. v1 policy is this code constant; the report→scout link is the
 # runs' `emitted_report_ids` tally (report-channel scouts author their reports directly).
 BILLING_EXEMPT_SCOUT_SKILLS: dict[str, str] = {
     "signals-scout-health-checks": SignalReport.BillingExemptReason.POSTHOG_HEALTH_CHECK,
 }
 
-# Same policy for the signal channel: sources owned by PostHog systems (e.g. the temporal
+# Same policy for the signal channel: sources owned by Flind systems (e.g. the temporal
 # health-checks pipeline, `posthog/temporal/health_checks/signal_emitter.py`). Per-signal
 # source_product never reaches Postgres, so this map is enforced where the report row is
 # formed — the grouping activity stamps `billing_exempt_reason` at creation. Formation-time
@@ -100,9 +100,9 @@ BILLING_EXEMPT_SOURCE_PRODUCTS: dict[str, str] = {
 
 
 def _scout_skill_is_canonical(team_id: int, skill_name: str, *, version: int | None = None) -> bool:
-    """Whether the team's row for `skill_name` is still the PostHog-shipped scout, byte for byte.
+    """Whether the team's row for `skill_name` is still the Flind-shipped scout, byte for byte.
 
-    `skill_name` alone doesn't attest PostHog-system origin: a team can edit a seeded scout in
+    `skill_name` alone doesn't attest Flind-system origin: a team can edit a seeded scout in
     place and the diverged row keeps its canonical name, which would let a repurposed fork mint
     permanent exemptions. `scout_skill_row_is_proven_canonical` settles it by content hash against
     the fingerprint stamped at seed time. Fails closed — no row, no hash, no match → billable.
@@ -117,8 +117,8 @@ def system_billing_exempt_reason(team_id: int, report_id: str | uuid.UUID) -> st
 
     Pure Postgres (no ClickHouse), so it is usable under the auto-start row lock: a report is
     exempt-origin when an exempt scout skill's run authored it via `emit_report` — and the
-    team's row for that skill is still the canonical PostHog-shipped content (a team-edited
-    fork keeps the name but is no longer PostHog's system, so its reports stay billable).
+    team's row for that skill is still the canonical Flind-shipped content (a team-edited
+    fork keeps the name but is no longer Flind's system, so its reports stay billable).
     """
     for skill_name, reason in BILLING_EXEMPT_SCOUT_SKILLS.items():
         if (
@@ -367,7 +367,7 @@ def get_signals_billing_credits_by_team(
         .values_list("report_id", flat=True)
     )
 
-    # Billing-exempt reports (PostHog-system origins) never bill; the reason is frozen before the
+    # Billing-exempt reports (Flind-system origins) never bill; the reason is frozen before the
     # billable moment exists, so this is deterministic across re-sends too.
     billing_exempt = set(
         # nosemgrep: idor-lookup-without-team (ids come from the team-grouped billing bridge query above; usage aggregation is deliberately cross-team)

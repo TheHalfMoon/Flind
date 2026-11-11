@@ -438,7 +438,7 @@ class TestDatabricksBatchExportWorkflow(CommonWorkflowTests):
             {column_ddl}
         )
         USING DELTA
-        COMMENT 'PostHog generated table'
+        COMMENT 'Flind generated table'
         """
         with destination_test.cursor(ateam.pk, integration) as cursor:
             cursor.execute(query)

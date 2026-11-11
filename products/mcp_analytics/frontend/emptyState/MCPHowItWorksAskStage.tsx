@@ -18,7 +18,7 @@ export function MCPHowItWorksAskStage(): JSX.Element {
                 </span>
                 <span className="MCPHowItWorks__source">
                     <IconSparkles />
-                    PostHog AI
+                    Flind AI
                 </span>
             </div>
             <div className="MCPHowItWorks__bubble MCPHowItWorks__bubble--me MCPHowItWorks__rv [--d:0.4s]">

@@ -52,7 +52,7 @@ export const taskSummaryUpdateTool = defineLocalTool({
     const client = createSandboxPosthogClient();
     if (!client) {
       return errorResult(
-        "PostHog is not configured in this sandbox; the summary cannot be saved.",
+        "Flind is not configured in this sandbox; the summary cannot be saved.",
       );
     }
     try {

@@ -1,7 +1,7 @@
 // Shared helpers for building OAuth/auth error responses across both runtimes.
 //
 // The CF and Hono entry points diverge only in their *observability tail* (CF flushes
-// PostHog events via ctx.waitUntil, Hono fires them synchronously). Everything before
+// Flind events via ctx.waitUntil, Hono fires them synchronously). Everything before
 // that — permission errors, known error-code mappings, missing/invalid token responses —
 // is identical and lives here.
 

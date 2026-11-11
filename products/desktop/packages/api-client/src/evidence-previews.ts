@@ -1,5 +1,5 @@
 // Evidence previews — resolve an `evidence:<kind>/<id>` citation in an agent
-// message to a small live summary of the PostHog object it points at. The
+// message to a small live summary of the Flind object it points at. The
 // citation carries only the reference; names and status are fetched when the
 // preview is shown, so transcripts never embed a stale copy of the data.
 //
@@ -79,7 +79,7 @@ export interface ExperimentMetricQueryResult {
 }
 
 export interface EvidencePreview {
-  /** The object's name in PostHog. */
+  /** The object's name in Flind. */
   title: string;
   /** One line of context, e.g. the object's description or timeline. */
   detail?: string;
@@ -1049,7 +1049,7 @@ export function exposureFact(rows: unknown[][]): string | null {
 
 /**
  * Fold the status check and 7-day call volume into a flag preview. A stale
- * flag leads with that verdict: PostHog's reason ("rolled out to 100% for 30+
+ * flag leads with that verdict: Flind's reason ("rolled out to 100% for 30+
  * days") replaces the name echo because it says what to do about the flag.
  */
 export function decorateFlagPreview(
@@ -1268,7 +1268,7 @@ export function shapeRecordingPreview(
 // refresh, and those queries share no concurrency limit, so an uncapped list
 // opens one long-running request per tile at once when the page mounts. Bound
 // the preview to a handful of tiles, matching the Insights section; the whole
-// dashboard stays one "Open in PostHog" click away.
+// dashboard stays one "Open in Flind" click away.
 const MAX_DASHBOARD_CHART_TILES = 6;
 
 export function shapeDashboardPreview(

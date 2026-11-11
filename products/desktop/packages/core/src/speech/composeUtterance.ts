@@ -1,5 +1,5 @@
 const TASK_TITLE_MAX = 40;
-const TASK_PREFIX = "PostHog task";
+const TASK_PREFIX = "Flind task";
 const TASK_PREFIX_GUARD = new RegExp(`^\\s*${TASK_PREFIX}`, "i");
 
 export interface ComposeInput {

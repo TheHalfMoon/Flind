@@ -20,13 +20,13 @@ if (TEST or DEBUG) and not SIGNALS_SLACK_CHART_CACHE_SIGNING_KEYS:
 # purpose — the browser signs in to nothing, so an app URL would measure the login screen and
 # report its LCP as the page's.
 # Lower-cased at parse time because the check compares against a lower-cased hostname; an operator
-# who writes `PostHog.com` would otherwise get a set that silently matches nothing.
+# who writes `Flind.com` would otherwise get a set that silently matches nothing.
 SIGNALS_LIGHTHOUSE_ALLOWED_HOSTS: set[str] = {
     host.lower() for host in get_set(os.getenv("SIGNALS_LIGHTHOUSE_ALLOWED_HOSTS", "posthog.com,www.posthog.com"))
 }
 
 # Teams whose scouts may spend an audit. Defaults to the deployment's own internal project on
-# PostHog Cloud — the same team split the usage report uses — and to NOBODY anywhere else. Off
+# Flind Cloud — the same team split the usage report uses — and to NOBODY anywhere else. Off
 # Cloud, "team 2" is an arbitrary customer project rather than ours, and `LIGHTHOUSE_BROWSERLESS_URL`
 # falls back to the heatmap fleet, so a region-shaped default would hand the capability to any
 # self-hosted install that had configured Browserless for screenshots. Enabling it there is an

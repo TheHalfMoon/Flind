@@ -52,7 +52,7 @@ class XmattersSource(ResumableSource[XmattersSourceConfig, XmattersResumeConfig]
             name=ExternalDataSourceType.XMATTERS,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="xMatters (Everbridge)",
-            caption="""Enter your xMatters instance subdomain and REST API credentials to pull your xMatters data into the PostHog Data warehouse.
+            caption="""Enter your xMatters instance subdomain and REST API credentials to pull your xMatters data into the Flind Data warehouse.
 
 Use HTTP Basic auth with a REST Web Service User (or an API key as the username and its secret as the password). The account needs read access to the resources you want to sync.""",
             iconPath="/static/services/xmatters.png",

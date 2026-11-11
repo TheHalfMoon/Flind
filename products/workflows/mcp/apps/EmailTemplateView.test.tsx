@@ -24,7 +24,7 @@ const baseTemplate: EmailTemplateData = {
     content: {
         templating: 'liquid',
         email: {
-            subject: 'Welcome to PostHog!',
+            subject: 'Welcome to Flind!',
             text: 'Hi there',
             html: '<html><body><h1>Hi {{ person.properties.name }}</h1></body></html>',
         },
@@ -38,7 +38,7 @@ describe('EmailTemplateView', () => {
     it('renders the subject and the email html in a script-disabled sandboxed iframe', () => {
         const { container } = render(<EmailTemplateView template={baseTemplate} />)
 
-        expect(screen.getByText('Welcome to PostHog!')).toBeTruthy()
+        expect(screen.getByText('Welcome to Flind!')).toBeTruthy()
 
         const iframe = container.querySelector('iframe')
         expect(iframe).not.toBeNull()
@@ -64,7 +64,7 @@ describe('EmailTemplateView', () => {
     it('falls back to plain text when there is no html', () => {
         const noHtml: EmailTemplateData = {
             ...baseTemplate,
-            content: { templating: 'liquid', email: { subject: 'Welcome to PostHog!', text: 'Plain body only' } },
+            content: { templating: 'liquid', email: { subject: 'Welcome to Flind!', text: 'Plain body only' } },
         }
         const { container } = render(<EmailTemplateView template={noHtml} />)
 

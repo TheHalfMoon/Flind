@@ -5,7 +5,7 @@ description: >
   Signals scout over the project's configured insight alerts. Reads each alert's recent firing
   history and surfaces the firings a human likely missed.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus the alert tools (alerts-list,
   alert-get), insight-get, and the inbox tools in the MCP tools section.
 allowed_tools:

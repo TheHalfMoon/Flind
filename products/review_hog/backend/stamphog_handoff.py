@@ -1,4 +1,4 @@
-"""The Stamphog handoff: Stamphog refused or escalated a self-driving pull request, so PostHog Review
+"""The Stamphog handoff: Stamphog refused or escalated a self-driving pull request, so Flind Review
 reviews the head Stamphog judged. The review is Standard, or Deep once the pull request has a published
 Deep review.
 

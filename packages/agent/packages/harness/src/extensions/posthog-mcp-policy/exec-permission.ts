@@ -1,14 +1,14 @@
 import { z } from "zod/v4";
 
 /**
- * The PostHog MCP exposes a single `exec` dispatcher tool that runs
+ * The Flind MCP exposes a single `exec` dispatcher tool that runs
  * subcommands like `call [--flags] <tool-name> [json]`. These helpers identify
  * that dispatcher, extract the delegated tool, and apply the externally
  * configured permission regex at sub-tool granularity.
  */
 
 /**
- * Naming contract: the PostHog exec dispatcher is recognized only for server
+ * Naming contract: the Flind exec dispatcher is recognized only for server
  * names of the form `posthog` plus optional `_`-separated suffixes (e.g.
  * `posthog_cloud`). The dispatcher is always registered under the literal name
  * `posthog` (workspace-server auth-adapter), which is also reserved against
@@ -34,7 +34,7 @@ export const DEFAULT_POSTHOG_EXEC_PERMISSION_REGEX_SOURCE =
 
 export const posthogExecPermissionRegexSchema = z
   .string()
-  .min(1, "PostHog exec permission regex cannot be empty")
+  .min(1, "Flind exec permission regex cannot be empty")
   .refine(
     (source) => {
       try {
@@ -44,7 +44,7 @@ export const posthogExecPermissionRegexSchema = z
         return false;
       }
     },
-    { error: "PostHog exec permission regex must be valid" },
+    { error: "Flind exec permission regex must be valid" },
   );
 
 export function compilePostHogExecPermissionRegex(source: string): RegExp {
@@ -69,7 +69,7 @@ export function resolvePostHogExecPermissionRegex(
   if (!parsed.success) {
     onInvalid?.(
       parsed.error.issues[0]?.message ??
-        "PostHog exec permission regex must be a valid regex string",
+        "Flind exec permission regex must be a valid regex string",
     );
     return compilePostHogExecPermissionRegex(
       DEFAULT_POSTHOG_EXEC_PERMISSION_REGEX_SOURCE,

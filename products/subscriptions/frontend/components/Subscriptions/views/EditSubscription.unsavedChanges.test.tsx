@@ -28,8 +28,8 @@ const DASHBOARD = {
 const SLACK_INTEGRATION = {
     id: 7,
     kind: 'slack',
-    config: { team: { id: '123', name: 'PostHog' } },
-    display_name: 'PostHog',
+    config: { team: { id: '123', name: 'Flind' } },
+    display_name: 'Flind',
     icon_url: '',
     created_at: '2022-01-01T00:09:00',
 }

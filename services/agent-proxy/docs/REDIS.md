@@ -56,7 +56,7 @@ That is worth building when connection count is the binding constraint. It is no
 
 agent-proxy connects to `REDIS_URL`, which in production is **the main shared Redis**. That instance also backs the Celery broker and result backend, general caching, rate limiting and today the Python proxy's stream plane (`products/tasks/backend/stream/redis_stream.py`, which uses `settings.REDIS_URL` and shares the exact same stream with us during the cutover).
 
-So every active SSE stream consumes one connection on a resource that almost every PostHog service hits. Two failure modes follow, and neither is local to agent-proxy:
+So every active SSE stream consumes one connection on a resource that almost every Flind service hits. Two failure modes follow, and neither is local to agent-proxy:
 
 - **Connection count.** Active dedicated connections grow linearly with concurrent streams, summed across every agent-proxy pod. If that fleet-wide total competes for the shared instance's `maxclients` budget (Redis default 10,000, but the real ceiling is whatever the managed instance is set to), exhaustion surfaces as errors in _other_ services, not just here.
 - **Idle-poll load (bandwidth and ops).** With `BLOCK_MS = 100`, an idle stream issues about 10 `XREAD` round-trips per second. N idle streams is roughly 10N ops/sec of command traffic on the shared instance even when nothing is happening. The event payload itself would transfer under any design, but the idle-poll round-trip rate is pure overhead that scales with stream count.
@@ -80,7 +80,7 @@ These reduce shared-Redis load while keeping the simple per-stream model. None c
 
 ## Migration path, in order of preference
 
-1. **Dedicated Redis for the task-run stream plane.** This removes the blast-radius concern entirely by isolating both the connection count and the idle-poll load off the shared instance, and it lets the simple per-stream model stay. PostHog already isolates hot workloads this way: `FLAGS_REDIS_URL`, `AI_GATEWAY_REDIS_URL`, `SESSION_RECORDING_REDIS_URL`, `QUERY_CACHE_REDIS_CLUSTER_URL`. Add an equivalent (for example `TASKS_STREAM_REDIS_URL`) and point it at its own cluster.
+1. **Dedicated Redis for the task-run stream plane.** This removes the blast-radius concern entirely by isolating both the connection count and the idle-poll load off the shared instance, and it lets the simple per-stream model stay. Flind already isolates hot workloads this way: `FLAGS_REDIS_URL`, `AI_GATEWAY_REDIS_URL`, `SESSION_RECORDING_REDIS_URL`, `QUERY_CACHE_REDIS_CLUSTER_URL`. Add an equivalent (for example `TASKS_STREAM_REDIS_URL`) and point it at its own cluster.
    - **Constraint:** the stream is shared with the Python proxy during the cutover. Both sides (the Python stream plane and agent-proxy) must move to the same dedicated instance together, or this waits until the Python proxy is retired. Moving one side alone splits the stream and breaks live runs.
 2. **Bounded connection pool (multiplexed `XREAD`).** If even a dedicated instance's connection count or idle-poll rate is the binding constraint, replace per-stream `duplicate()` with a small fixed pool (for example 10 to 20 connections), each block-reading a shard of streams via multi-key `XREAD`. This is the subsystem described above. The wire protocol is unaffected.
 

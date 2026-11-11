@@ -236,4 +236,4 @@ Compare dashboards with a similar tile count, because large dashboards set the s
 - [Dashboard engineering skill](../../.agents/skills/managing-dashboards/SKILL.md) for access, queries, and surface contracts.
 
 Read other dashboard implementations to form hypotheses about architecture and scheduling.
-Check their library versions and workload before transferring an approach. Measure the result in PostHog.
+Check their library versions and workload before transferring an approach. Measure the result in Flind.

@@ -2,11 +2,11 @@
 name: signals-scout-session-replay
 scout-display-name: Session replay
 description: >
-  Signals scout for PostHog session replay. Watches that sessions keep recording (capture
+  Signals scout for Flind session replay. Watches that sessions keep recording (capture
   cliffs) and surfaces friction inside recordings — rage/dead-click clusters, error-after-
   interaction cohorts.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus the session-replay tools in
   the MCP tools section (execute-sql over raw_session_replay_events / session_replay_features /
   events, read-data-schema, advanced-activity-logs-list, query-session-recordings-list, the

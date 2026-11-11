@@ -81,7 +81,7 @@ describe('report view adapter', () => {
         expect(reportView(input).repository).toBeUndefined()
     })
 
-    test('an unidentified external claimant is not named PostHog', () => {
+    test('an unidentified external claimant is not named Flind', () => {
         const view = reportView({
             report: reportFixture({
                 assignee: { kind: 'agent', agent: null, user: null, task_id: null, claimed_at: NOW.toISOString() },
@@ -251,20 +251,20 @@ describe('report view adapter', () => {
             },
         ])
         expect(view.since).toBe('Mon 7:21 AM')
-        expect(view.owner).toEqual({ kind: 'agent', name: 'PostHog' })
+        expect(view.owner).toEqual({ kind: 'agent', name: 'Flind' })
         expect(view.facts).toEqual([
             { key: 'Impact', title: '612 affected users', sub: 'Across 51 organizations', tone: 'default' },
         ])
         expect(view.activity.map((event) => event.text)).toEqual([
-            'PostHog created the report',
-            'PostHog started working',
-            'Alex Kim handed off to **PostHog**',
-            'PostHog opened **PR #4190**',
+            'Flind created the report',
+            'Flind started working',
+            'Alex Kim handed off to **Flind**',
+            'Flind opened **PR #4190**',
             'Alex Kim changed reviewers to **Sana Patel, octo-dev**',
         ])
         expect(view.work).toMatchObject({
             state: 'in_review',
-            assignee: { kind: 'task', name: 'PostHog', taskId: 'task-1' },
+            assignee: { kind: 'task', name: 'Flind', taskId: 'task-1' },
             pullRequest: {
                 url: 'https://github.com/example/app/pull/4190',
                 number: 4190,

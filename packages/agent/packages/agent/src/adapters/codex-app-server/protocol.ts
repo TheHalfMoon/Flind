@@ -6,7 +6,7 @@
 
 export const CODEX_CLIENT_INFO = {
   name: "posthog-code",
-  title: "PostHog",
+  title: "Flind",
   version: "0.1.0",
 } as const;
 

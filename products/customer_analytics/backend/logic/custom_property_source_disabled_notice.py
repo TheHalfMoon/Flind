@@ -33,7 +33,7 @@ TITLE_MAX_LENGTH = 255
 TASK_NAME_MAX_LENGTH = 400
 CONFIGURATION_ACCOUNTS_PATH = "/customer_analytics/configuration?tab=customer-analytics-accounts"
 DISABLED_BODY = (
-    "PostHog disabled this sync after five consecutive failures. Review the latest run, fix the "
+    "Flind disabled this sync after five consecutive failures. Review the latest run, fix the "
     "source, then re-enable the sync."
 )
 

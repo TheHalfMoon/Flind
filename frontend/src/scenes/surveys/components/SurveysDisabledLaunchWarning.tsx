@@ -13,7 +13,7 @@ import { SurveyType } from '~/types'
 export function SurveysDisabledLaunchWarning({ surveyType }: { surveyType: SurveyType }): JSX.Element | null {
     const { currentTeam } = useValues(teamLogic)
 
-    // PostHog hosts and renders these surveys, so they do not depend on the project's surveys_opt_in setting.
+    // Flind hosts and renders these surveys, so they do not depend on the project's surveys_opt_in setting.
     if (surveyType === SurveyType.ExternalSurvey || currentTeam?.surveys_opt_in) {
         return null
     }

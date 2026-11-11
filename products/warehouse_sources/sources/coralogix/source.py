@@ -72,7 +72,7 @@ class CoralogixSource(ResumableSource[CoralogixSourceConfig, CoralogixResumeConf
             label="Coralogix",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["logs", "observability", "traces", "dataprime"],
-            caption="""Enter a Coralogix API key to pull your logs and spans into the PostHog Data warehouse via the DataPrime query API.
+            caption="""Enter a Coralogix API key to pull your logs and spans into the Flind Data warehouse via the DataPrime query API.
 
 Create a personal or team API key in Coralogix under **Settings** → **API keys** and grant it the **DataQuerying** permission preset.
 

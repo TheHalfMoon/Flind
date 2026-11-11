@@ -1,4 +1,4 @@
-"""Eval: agent handles PostHog-vs-SQL divergence in three shapes — scope mismatch, anti-routing and population mismatch.
+"""Eval: agent handles Flind-vs-SQL divergence in three shapes — scope mismatch, anti-routing and population mismatch.
 
 Carrier scenarios for diagnostic group D from
 ``products/experiments/skills/diagnosing-experiment-health/SKILL.md``.
@@ -6,7 +6,7 @@ Carrier scenarios for diagnostic group D from
 Three cases:
 
 1. ``posthog_count_below_raw_sql`` — the user's hand-written SQL counts more
-   events than PostHog's experiment view. The skill lists the canonical
+   events than Flind's experiment view. The skill lists the canonical
    reasons (exposure scope, ``$multiple`` exclusion, test-account filter,
    date range) — agent should name at least one without treating SQL as
    ground truth.
@@ -53,7 +53,7 @@ async def eval_numbers_vs_sql(ctx: EvalContext) -> None:
             prompt=(
                 f"My experiment '{ROLLOUT_EXPERIMENT_NAME}' shows about 500 users in the metric on the "
                 "experiment page, but when I run my own SQL (`SELECT count(DISTINCT person_id) FROM "
-                "events WHERE event = '$pageview' AND timestamp >= <start_date>`) I get 1000. PostHog "
+                "events WHERE event = '$pageview' AND timestamp >= <start_date>`) I get 1000. Flind "
                 "seems to be missing half my users. Which number is right and why don't they match?"
             ),
             setup=seed_running_experiment,
@@ -65,13 +65,13 @@ async def eval_numbers_vs_sql(ctx: EvalContext) -> None:
                 # surface that as a B-group finding. The skill's anti-bundle rule explicitly wants
                 # multiple findings surfaced; this scorer should not penalize that.
                 "diagnosis_group": (
-                    "The agent names AT LEAST ONE of the scope filters that the PostHog experiment "
+                    "The agent names AT LEAST ONE of the scope filters that the Flind experiment "
                     "view applies but raw SQL does not replicate — any of: (a) the test-account "
                     "filter (excluded by default), (b) the $multiple variant exclusion, (c) the "
                     "exposure-event scope (the experiment counts users who fired "
                     "$feature_flag_called, not arbitrary pageview users), or (d) the experiment's "
-                    "date range. The agent must also frame the gap as 'PostHog and raw SQL measure "
-                    "different populations' — i.e. PostHog's number is not wrong, the SQL is "
+                    "date range. The agent must also frame the gap as 'Flind and raw SQL measure "
+                    "different populations' — i.e. Flind's number is not wrong, the SQL is "
                     "missing scope filters. Surfacing the scope-filter mechanism ALONGSIDE other "
                     "findings (e.g. that the flag may not actually be called) qualifies; the "
                     "scope-filter explanation does not need to be the response's primary focus, "

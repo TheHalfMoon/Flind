@@ -80,7 +80,7 @@ class BingAdsSource(ResumableSource[BingAdsSourceConfig, BingAdsResumeConfig], O
         # original exception class and stay retryable — see BingAdsClient.get_customer_id,
         # which wraps the underlying error as `ValueError("Failed to fetch customer ID: <ExcType>: <msg>")`.
         auth_friendly = (
-            "PostHog could not authenticate with Bing Ads. The connected account's OAuth credentials "
+            "Flind could not authenticate with Bing Ads. The connected account's OAuth credentials "
             "are revoked, expired, or no longer have access. Please reconnect your Bing Ads integration."
         )
         # Specific Azure AD error code surfaced when the tenant lacks a service principal for the
@@ -90,16 +90,16 @@ class BingAdsSource(ResumableSource[BingAdsSourceConfig, BingAdsResumeConfig], O
         # so both "OAuthTokenRequestException" and "invalid_client" are substrings of the same message —
         # handle_non_retryable picks the first matching dict entry, so AADSTS650052 has to come before both.
         service_principal_friendly = (
-            "Your Microsoft tenant has not consented to PostHog's Bing Ads connector "
+            "Your Microsoft tenant has not consented to Flind's Bing Ads connector "
             "(error AADSTS650052: missing service principal for the Microsoft Advertising API). "
             "Ask a Microsoft 365 administrator to grant admin consent to the application for your tenant, "
             "then reconnect your Bing Ads integration."
         )
         return {
             "AADSTS650052": service_principal_friendly,
-            # PostHog's own Azure AD application secret (BING_ADS_CLIENT_SECRET) is invalid or expired —
+            # Flind's own Azure AD application secret (BING_ADS_CLIENT_SECRET) is invalid or expired —
             # Microsoft rejects the token request with AADSTS7000215 for the app itself, not the connected
-            # account. Reconnecting the integration can't fix it; only rotating PostHog's app secret can, so
+            # account. Reconnecting the integration can't fix it; only rotating Flind's app secret can, so
             # this is internal config (None message), not customer-actionable. Wrapped by the SDK as
             # `OAuthTokenRequestException: invalid_client AADSTS7000215: …`, so it shares those two generic
             # substrings — it must precede both so handle_non_retryable doesn't surface the misleading
@@ -130,7 +130,7 @@ class BingAdsSource(ResumableSource[BingAdsSourceConfig, BingAdsResumeConfig], O
             # Match the stable phrase only; the TrackingId is volatile. This does not catch transient Bing
             # faults like "Server raised fault: 'Internal Error'".
             "Invalid client data": (
-                "PostHog could not use the connected Bing Ads account (Microsoft returned 'Invalid client data'). "
+                "Flind could not use the connected Bing Ads account (Microsoft returned 'Invalid client data'). "
                 "This usually means the configured Account ID is incorrect, the connected account's credentials are "
                 "no longer valid, or it does not have access to the Microsoft Advertising account. Please check the "
                 "Account ID in your source settings and reconnect your Bing Ads integration, making sure the "
@@ -159,7 +159,7 @@ class BingAdsSource(ResumableSource[BingAdsSourceConfig, BingAdsResumeConfig], O
             # field_names in schemas.py can resolve it, so it's internal config (None message), not
             # customer-actionable.
             "InvalidReportColumn": None,
-            # PostHog's Bing Ads OAuth application credentials aren't configured — an empty client_id makes
+            # Flind's Bing Ads OAuth application credentials aren't configured — an empty client_id makes
             # Microsoft reject the token request with AADSTS900144. Internal config, not customer-actionable.
             "Bing Ads OAuth application credentials not configured": None,
         }
@@ -195,7 +195,7 @@ class BingAdsSource(ResumableSource[BingAdsSourceConfig, BingAdsResumeConfig], O
             category=DataWarehouseSourceCategory.ADVERTISING,
             keywords=["microsoft ads", "microsoft advertising"],
             label="Bing Ads",
-            caption="Ensure you have granted PostHog access to your Bing Ads account, learn how to do this in [the documentation](https://posthog.com/docs/cdp/sources/bing-ads).",
+            caption="Ensure you have granted Flind access to your Bing Ads account, learn how to do this in [the documentation](https://posthog.com/docs/cdp/sources/bing-ads).",
             releaseStatus=ReleaseStatus.GA,
             iconPath="/static/services/bing-ads.svg",
             docsUrl="https://posthog.com/docs/cdp/sources/bing-ads",

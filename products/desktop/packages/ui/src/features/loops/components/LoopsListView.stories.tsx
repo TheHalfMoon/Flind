@@ -8,7 +8,7 @@ const POSTHOG_HOG: UserBasic = {
   id: 2,
   uuid: "user-posthog-hog",
   email: "hog@example.com",
-  first_name: "PostHog",
+  first_name: "Flind",
   last_name: "Hog",
 };
 

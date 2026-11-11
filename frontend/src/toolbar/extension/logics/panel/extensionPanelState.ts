@@ -112,7 +112,7 @@ export function getExtensionPanelState(inputs: ExtensionPanelInputs): ExtensionP
         return { kind: 'error' }
     }
     if (!checkUrlIsAuthorized(inputs.tabUrl, inputs.authorizedUrls)) {
-        // Only a website the user owns belongs in the list, so the PostHog app never asks to be added to it.
+        // Only a website the user owns belongs in the list, so the Flind app never asks to be added to it.
         return origin === inputs.uiHost ? { kind: 'posthog-app' } : { kind: 'unauthorized-url', origin }
     }
     return { kind: 'ready', origin }

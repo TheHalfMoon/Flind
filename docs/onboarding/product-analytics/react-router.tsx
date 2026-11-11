@@ -13,7 +13,7 @@ export const getReactRouterInstallSteps = (ctx: OnboardingComponentsContext): St
             content: (
                 <>
                     <Markdown>
-                        Install the PostHog JavaScript library and React SDK using your package manager:
+                        Install the Flind JavaScript library and React SDK using your package manager:
                     </Markdown>
                     <CodeBlock
                         blocks={[
@@ -86,7 +86,7 @@ export const getReactRouterInstallSteps = (ctx: OnboardingComponentsContext): St
             content: (
                 <>
                     <Markdown>
-                        Initialize PostHog and wrap your app with the `PostHogProvider` in your `app/entry.client.tsx`
+                        Initialize Flind and wrap your app with the `PostHogProvider` in your `app/entry.client.tsx`
                         file:
                     </Markdown>
                     <CodeBlock

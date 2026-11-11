@@ -10,7 +10,7 @@ import SourceSetupIntro from "../\_snippets/source-setup-intro.mdx"
 import SyncModes from "../\_snippets/sync-modes.mdx"
 import TroubleshootingLink from "../\_snippets/dw-troubleshooting-link.mdx"
 
-Sync your [Twelve Labs](https://www.twelvelabs.io) video understanding library into PostHog. This
+Sync your [Twelve Labs](https://www.twelvelabs.io) video understanding library into Flind. This
 connector imports your indexes, the videos in each index, the video indexing tasks that track the
 upload and indexing lifecycle, the transcriptions of your video and audio assets, and the tags on
 your knowledge store video items, so you can analyze library growth, indexing throughput, indexing failures, and spoken content alongside the rest

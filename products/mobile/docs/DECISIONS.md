@@ -89,13 +89,13 @@ Choices the build contract left open, with the reason for each.
   is the most recent Monday one to seven days back, so the timeline prints the prototype's text.
 - **Fixture 3** (report load time) starts `unclaimed` so its footer is idle, as in the reference
   screenshot, even though its owner chip says Claude Code.
-- **One agent.** New demo activity says "PostHog". Historic fixture entries keep Codex and Claude
+- **One agent.** New demo activity says "Flind". Historic fixture entries keep Codex and Claude
   Code verbatim. All agent marks are `ph`.
 - **Inbox rows** show `{source} • {time}` only, like the prototype template. A snoozed row shows
   "Snoozed until …" in place of the time (README). `progressLabel` and `agent` stay in the model
   for later.
-- **Hand-off sheet** keeps the selected-row styling for its single PostHog row. Its meta line reads
-  "PostHog agent · opens a PR in your repo", which says what handing off does, because the app offers one agent.
+- **Hand-off sheet** keeps the selected-row styling for its single Flind row. Its meta line reads
+  "Flind agent · opens a PR in your repo", which says what handing off does, because the app offers one agent.
 - **Pull to refresh replaces the prototype's Reset.** Pull to refresh is the only manual refresh: it refetches the
   inbox, and in demo mode it also resets the demo, which is what Reset did, so one gesture covers both modes. The
   headers have no refresh button, because every list already supports pull to refresh.
@@ -118,7 +118,7 @@ Choices the build contract left open, with the reason for each.
 - **Mark read** runs when a report opens and again on Prev/Next. Read state is not styled.
 - **Settings** shows the version to everyone. Internal builds (dev, preview, or any Metro session) add an
   Environment group: build variant, update channel, update id and time from `expo-updates`, and the API host kind.
-  Store builds show nothing about environments unless the session's host is not PostHog Cloud.
+  Store builds show nothing about environments unless the session's host is not Flind Cloud.
 
 ## Verification
 
@@ -211,8 +211,8 @@ See [DATA.md](DATA.md) for the endpoint map and every adapter rule.
   The cache only removes the loading screen.
 - **Headline number** comes from the title first, then from the Today lead's first sentence (at most 120 characters). A report with neither shows the title with no number.
 - **Hot bars** start at the first bar more than 15% of the spread away from the median of the first quarter, and a tail of two or more bars back at the baseline is cold. It matches the prototype's bars except one edge bar.
-- **Owner for an external agent claim** names the MCP client ("Claude Code") instead of "PostHog", because that agent is not the PostHog agent. Task and system claims say "PostHog".
-- **Reviewer activity** reads "changed reviewers to", as the server calls them. Pipeline writes read "PostHog suggested **A** as reviewers".
+- **Owner for an external agent claim** names the MCP client ("Claude Code") instead of "Flind", because that agent is not the Flind agent. Task and system claims say "Flind".
+- **Reviewer activity** reads "changed reviewers to", as the server calls them. Pipeline writes read "Flind suggested **A** as reviewers".
 - **GitHub-only reviewers** are sent back unchanged when the sheet saves, because the PUT replaces the whole list and the sheet cannot show them.
 - **Signal snoozes are remembered on the device** with the server's `signals_at_run` threshold, so the row reads "Snoozed until more signals" until the list refetches without it.
 - **Opening a report ends its time snooze** and cancels the reminder. Prev/Next counts as opening.
@@ -265,7 +265,7 @@ See [DATA.md](DATA.md) for the endpoint map and every adapter rule.
 - **One run follows per report screen.** The current claim's task wins over local starts and historical artefacts. A user or external claim suppresses historical execution. The run is `GET tasks/{id}/`'s `latest_run`, because an artefact's run id can be stale.
 - **Live state lives in a zustand store** (`handoffStore.ts`), keyed by report, so the answer action can read the pending request and mark it handled while the stream keeps writing. Screens subscribe with an equality check (`sameVisibleEntry`) so message chunks do not re-render the screen many times a second.
 - **The overlay hook is `useReportWithLiveRun` in its own file**, not in `handoff/hooks.ts`, because `report/hooks.ts` imports `useHandoffActions` from there and the overlay imports `useReport` from `report/hooks.ts`.
-- **Every relayed approval stays manual**, including built-in tools, PostHog operations, external tools and unrecognized tool names in every mode. The server decides which calls need approval. Replayed requests are never answered automatically. Each approval shows the original request details as selectable plain text.
+- **Every relayed approval stays manual**, including built-in tools, Flind operations, external tools and unrecognized tool names in every mode. The server decides which calls need approval. Replayed requests are never answered automatically. Each approval shows the original request details as selectable plain text.
 - **Replayed requests show as decisions.** On first connect the durable log replays. A request still unresolved at the end is something the agent waits on, so the card shows it, like the web.
 - **Another client's answer clears a live card** when the asked-about tool call completes or fails, or the turn or run ends, because resolution frames only appear in the replay.
 - **A completed turn is idle, not an input request.** Only a structured outstanding question, plan or permission produces the Needs your answer row and decision sheet. Continue the implementation in its task chat; report discussion remains a separate conversation.
@@ -302,7 +302,7 @@ See [DATA.md](DATA.md) for the endpoint map and every adapter rule.
 - **iOS uses two-second keyframes; Android plays a closed animation loop.** iOS saves the scheduled timeline and resumes it across taps and refreshes. Each hop or flip completes in one animation, and every saved entry rests upright on the ground so delayed updates cannot strand it mid-flip. Walking uses uninterrupted two-second position animations, isolated from button content changes; reversing does not insert a stationary beat. Android keeps one loop per placed widget, interpolates the standard script at 30 ms intervals, and reuses stable frame views on Android 12+, preserving the visible frame across updates. Older versions restore the tapped frame index on character changes.
 - **`@bacons/apple-targets` owns the widget extension target** (`targets/HedgehogWidget/`), so the target survives `expo prebuild`. Its pod is named `PostHogHedgehogWidget`, because the appex already owns the Swift module name `HedgehogWidget`.
 - **The widget target needs iOS 17**, for `Button(intent:)` and animated entry transitions, so iOS 16 users see no widget. The app's own minimum is unchanged.
-- **A tap on the hog cycles its character and keeps it selected.** Selection persists per iOS widget family or Android widget ID, independently of daily choreography. Taps change the artwork without interrupting the route; background taps open the app. Both widgets bundle the grass layer of PostHog’s Keyboard Garden wallpaper. Dialogue is hidden, including in legacy scripts.
+- **A tap on the hog cycles its character and keeps it selected.** Selection persists per iOS widget family or Android widget ID, independently of daily choreography. Taps change the artwork without interrupting the route; background taps open the app. Both widgets bundle the grass layer of Flind’s Keyboard Garden wallpaper. Dialogue is hidden, including in legacy scripts.
 - **Sprites are committed PNGs** cut from the `@posthog/hedgehog-mode` atlas by `scripts/extract_hedgehog_sprites.py` at 2x nearest-neighbour. Android also gets mirrored `_l` copies, because `RemoteViews` cannot flip an `ImageView`.
 - **`.gitignore` anchors `/ios/` and `/android/`**, so the module's native folders are tracked and only the prebuild output at the root is ignored.
 
@@ -395,12 +395,12 @@ See [DATA.md](DATA.md) for the endpoint map and every adapter rule.
   observations every 5 seconds while it is focused and the app is active, for 2 minutes. Then it says "Still working.
   Check back in a minute." with Check again.
 - **Frames load from the signed URL, never through a header.** The thumbnail endpoint redirects to object storage. A
-  request with `redirect: 'manual'` reads the `Location`, so the bearer token stays on the PostHog host, and
+  request with `redirect: 'manual'` reads the `Location`, so the bearer token stays on the Flind host, and
   `<Image>` loads the signed URL. Cached for 4 minutes, because signed URLs expire.
 - **"Open full replay" appears once**, in the top-right pill. More holds "Share link at m:ss" (the native share sheet
   with the web URL at the linked `t`, else the key moment, else the start) and "Copy session ID". Open full replay
   opens at the same moment: a `t` from a report or link is what the person came to see.
-  With `mobile-replay-video` on, the pill button is Watch replay, and More starts with Open in PostHog for the web player.
+  With `mobile-replay-video` on, the pill button is Watch replay, and More starts with Open in Flind for the web player.
 - **Watch replay plays a server-rendered MP4 in `expo-video`, behind `mobile-replay-video`.**
   The video is the web's Export to MP4 render, so the app bundles no rrweb renderer, WebView page or build step.
   It adds one Expo-owned native module, and the player is the platform's own, with fullscreen and Picture in Picture.
@@ -410,7 +410,7 @@ See [DATA.md](DATA.md) for the endpoint map and every adapter rule.
   Recordings longer than 3 hours do not render.
   The render keeps going on the server when the player closes, so the next open picks it up.
   Playback starts at the same moment as the share link, mapped onto the video through the export's inactivity periods, because the render skips idle time.
-  The error state offers Open in PostHog, and leads with it when the export cap or the length rules out a render.
+  The error state offers Open in Flind, and leads with it when the export cap or the length rules out a render.
   With the flag off, the pill button opens the web player as before.
   Events: `mobile_replay_video_requested`, `mobile_replay_video_ready` (wait and reuse), `mobile_replay_video_failed` (the error kind, `playback` for a player error) and `mobile_replay_video_closed` (the status at close).
 - **The Chat button matches the report's.** A round ink button with the compose glyph, bottom right, the one agent

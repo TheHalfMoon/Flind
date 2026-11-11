@@ -127,7 +127,7 @@ describe('sceneDashboardChoiceModalLogic', () => {
             })
         })
 
-        it('can restore PostHog Home', async () => {
+        it('can restore Flind Home', async () => {
             await expectLogic(logic, () => {
                 logic.actions.setSceneDashboardChoice(null)
             })

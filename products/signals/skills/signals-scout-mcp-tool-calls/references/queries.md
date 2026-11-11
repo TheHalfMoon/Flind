@@ -25,7 +25,7 @@ throughout:
 - Use **only** `event = '$mcp_tool_call'` — never `IN ('$mcp_tool_call', 'mcp_tool_call')`,
   which double-counts via the transition-shim alias.
 - Filter `properties.$mcp_source = 'posthog_mcp_analytics'` — keeps SDK-instrumented events
-  (both PostHog's hono server and external customer servers), excludes pre-SDK legacy events.
+  (both Flind's hono server and external customer servers), excludes pre-SDK legacy events.
   If a project's counts look suspiciously low, re-run the coverage probe without this filter
   to check for legacy-only instrumentation.
 - Effective tool name: prefer the dispatched inner tool, then a known target rejected before dispatch.

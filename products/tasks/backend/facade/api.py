@@ -1442,7 +1442,7 @@ def get_task_creator_ids(task_ids: Iterable[str | UUID], team_ids: Iterable[int]
 
 
 def task_exempt_from_code_access(task_id: str | UUID, team_id: int) -> bool:
-    """Whether this task's cloud runs are entitled outside PostHog Desktop.
+    """Whether this task's cloud runs are entitled outside Flind Desktop.
 
     The run/command endpoints gate on Desktop access (``code_access_required_response``) but
     also serve the generally-available Inbox, whose tasks must run without the waitlist. Only
@@ -1756,7 +1756,7 @@ def get_active_wizard_cloud_run(team_id: int) -> contracts.WizardCloudRunDTO | N
     The drop flow starts the wizard cloud run server-side (``create_wizard_cloud_run``),
     so a freshly-signed-in user has no client-side handle. Returns the most recent run
     across the team's onboarding (``ORIGIN_PRODUCT == ONBOARDING``) tasks that's still
-    running, or completed within the last day (so we can show "PostHog is wired up" +
+    running, or completed within the last day (so we can show "Flind is wired up" +
     the PR); otherwise ``None``. Team-scoped.
     """
     onboarding_task_ids = Task.objects.filter(
@@ -2306,11 +2306,11 @@ def create_wizard_cloud_run(
 ) -> contracts.CreatedTaskDTO:
     """Create + run a cloud setup-wizard task.
 
-    The workflow runs the published wizard in the sandbox (it integrates PostHog), then the agent
+    The workflow runs the published wizard in the sandbox (it integrates Flind), then the agent
     commits the changes, opens a PR on the user's repo, and keeps it green — it never implements
-    PostHog itself (see the wizard PR agent prompt). The wizard authenticates with its own scoped
+    Flind itself (see the wizard PR agent prompt). The wizard authenticates with its own scoped
     token (see ``create_wizard_oauth_access_token``), independent of the agent's sandbox token, so
-    the agent runs with read-only PostHog scopes.``wizard_config`` marks the run so the workflow runs the wizard pre-agent step.
+    the agent runs with read-only Flind scopes.``wizard_config`` marks the run so the workflow runs the wizard pre-agent step.
 
     ``user_id`` is the person going through onboarding; it becomes the task's ``created_by`` so the
     run is explicitly attributed to them.
@@ -2321,13 +2321,13 @@ def create_wizard_cloud_run(
 
     The model is pinned rather than left to the agent's default because these runs bill to nobody:
     they route to the unbilled ``onboarding`` gateway product, whose model allowlist is narrow, and
-    PostHog absorbs the cost. Keep the pin inside that allowlist or the run fails at the gateway.
+    Flind absorbs the cost. Keep the pin inside that allowlist or the run fails at the gateway.
     """
     head_branch = generate_wizard_head_branch()
     prompt = build_wizard_pr_agent_prompt(head_branch)
     return create_and_run_task(
         team=team,
-        title="Set up PostHog",
+        title="Set up Flind",
         description=prompt,
         profile=WIZARD,
         user_id=user_id,
@@ -2742,7 +2742,7 @@ def revoke_desktop_beta_terms(organization_id: UUID, user: User) -> contracts.De
                         Change(
                             type="Organization",
                             action="revoked",
-                            field="PostHog Desktop beta terms",
+                            field="Flind Desktop beta terms",
                             before={
                                 "accepted_by_user_id": acceptance.accepted_by_user_id,
                                 "accepted_at": acceptance.accepted_at.isoformat(),
@@ -4424,7 +4424,7 @@ def _delete_task_session_object(task_session_id: UUID, object_storage_key: str) 
 
 
 def get_run_plan(state: dict[str, Any] | None) -> contracts.RunPlan | None:
-    """The plan a run bills to, or `None` for a run on PostHog credits."""
+    """The plan a run bills to, or `None` for a run on Flind credits."""
     try:
         access = resolve_model_access(state or {})
     except InvalidModelAccess:
@@ -4435,7 +4435,7 @@ def get_run_plan(state: dict[str, Any] | None) -> contracts.RunPlan | None:
 
 
 def ensure_subscription_owner(state: dict[str, Any] | None, actor_user_id: int | None) -> None:
-    """Refuse anyone but the owner of the plan a run bills to. A run on PostHog credits allows everyone."""
+    """Refuse anyone but the owner of the plan a run bills to. A run on Flind credits allows everyone."""
     run_state = state or {}
     for adapter, plan_name in SUBSCRIPTION_PLAN_NAMES.items():
         if (
@@ -5526,7 +5526,7 @@ def read_task_run_artifact(
 
 
 def analyze_task_run(run_id: str | UUID, task_id: str | UUID, team_id: int, *, user_id: int) -> tuple[str, bool] | None:
-    """Create (or return the existing) PostHog-funded analysis task for a run.
+    """Create (or return the existing) Flind-funded analysis task for a run.
 
     Returns ``(analysis_task_id, created)``, or ``None`` when the run is not visible.
     Raises ``TaskAnalysisError`` with a caller-safe message when the run cannot be analyzed
@@ -6401,7 +6401,7 @@ def is_hogland_sandbox_url(sandbox_url: str | None) -> bool:
     return _is_hogland_sandbox_url(sandbox_url)
 
 
-# Relay control verbs whose outcome PostHog AI funnels track. Captured here (gated on
+# Relay control verbs whose outcome Flind AI funnels track. Captured here (gated on
 # origin_product) so the generic relay stays product-agnostic while the conversation layer stops
 # firing them as the renderer drives permission/cancel through `runs/{run}/command/`.
 _POSTHOG_AI_RELAY_TELEMETRY_METHODS: frozenset[str] = frozenset({"cancel", "permission_response"})
@@ -6416,12 +6416,12 @@ def capture_relay_command_telemetry(
     params: dict | None,
     success: bool,
 ) -> None:
-    """Emit PostHog AI control-verb telemetry for a relayed agent command.
+    """Emit Flind AI control-verb telemetry for a relayed agent command.
 
     Preserves the ``task_run_cancelled`` / ``permission_responded`` funnels once the renderer moves
     permission/cancel onto the generic relay. ``conversation_id`` is intentionally null (the relay
     has no conversation); ``TaskRun.capture_event`` stamps ``origin_product``/``run_id`` so
-    generic-task usage stays out of the PostHog AI funnels. Mirrors the old conversation-layer
+    generic-task usage stays out of the Flind AI funnels. Mirrors the old conversation-layer
     semantics: a cancel is recorded only when it actually reached the agent, while a permission
     response is recorded with its forward ``success`` either way.
     """
@@ -7202,7 +7202,7 @@ def channel_queryset():
 
 
 def is_internal_debug_team(team_id: int | None) -> bool:
-    """Whether the team is the PostHog-internal debugging team. Mirrors the original view helper."""
+    """Whether the team is the Flind-internal debugging team. Mirrors the original view helper."""
     from django.conf import settings  # noqa: PLC0415
 
     if settings.DEBUG and not settings.TEST:
@@ -7314,7 +7314,7 @@ def get_conversation_task_dtos(
 
 
 def task_analysis_enabled(team: Team, user: User) -> bool:
-    """Rollout gate for the PostHog-funded analysis endpoint, fail-closed like the Pi gates."""
+    """Rollout gate for the Flind-funded analysis endpoint, fail-closed like the Pi gates."""
     distinct_id = user.distinct_id or f"user_{user.id}"
     organization_id = str(team.organization_id)
     try:
@@ -7526,7 +7526,7 @@ def _task_sources_q(sources: list[str]) -> Q:
                 client_provenance__in=[TaskClientProvenance.POSTHOG_MOBILE, TaskClientProvenance.POSTHOG_WEB]
             )
         elif source == TaskClientProvenance.POSTHOG_WEB:
-            # PostHog AI runs in the web app, so the desktop app shows its tasks as web tasks too.
+            # Flind AI runs in the web app, so the desktop app shows its tasks as web tasks too.
             matches |= (user_created & Q(client_provenance=source)) | Q(origin_product=Task.OriginProduct.POSTHOG_AI)
         elif source in TaskClientProvenance.values:
             matches |= user_created & Q(client_provenance=source)
@@ -9288,7 +9288,7 @@ def _attach_staged_artifacts_to_run(
 REPORT_WARM_RUN_NOT_ACTIVATED = "This sandbox is waiting for the report's Ask AI question. Send it from the report."
 REPORT_IMPLEMENTATION_REPOSITORY_UNRESOLVED = (
     "Couldn't tell which GitHub repository this report is about, so there is nowhere to open a PR. "
-    "Name the repository in the instructions for the PostHog agent (for example, owner/repo) and try again."
+    "Name the repository in the instructions for the Flind agent (for example, owner/repo) and try again."
 )
 
 
@@ -10091,7 +10091,7 @@ def run_task(
             error=contracts.TaskValidationError(
                 kind="validation_error",
                 code="invalid_input",
-                detail="Scheduled runs must use the PostHog gateway.",
+                detail="Scheduled runs must use the Flind gateway.",
                 attr="codex_model_access" if codex_model_access == "own-subscription" else "claude_model_access",
             )
         )
@@ -10676,7 +10676,7 @@ def _slack_queue_workflow_id(slack_workspace_id: str | None, channel: str, threa
 def _admin_change_url(instance: Model, *, build_url) -> str:
     """Django admin change-page URL for a model row, built from the stable admin URL
     layout instead of `reverse` — the admin URLconf is only mounted when
-    ``ADMIN_PORTAL_ENABLED``, and this endpoint only serves PostHog Cloud US, where the
+    ``ADMIN_PORTAL_ENABLED``, and this endpoint only serves Flind Cloud US, where the
     portal is always on."""
     meta = instance._meta
     return build_url(f"/admin/{meta.app_label}/{meta.model_name}/{instance.pk}/change/")
@@ -11586,7 +11586,7 @@ def task_can_publish_channel_instructions(task_id: str | UUID, team_id: int) -> 
 
 
 def mcp_tool_allowlist_for_task(task_id: str | UUID) -> list[str] | None:
-    """The PostHog MCP tools a run picked at dispatch, or None when the run is not narrowed.
+    """The Flind MCP tools a run picked at dispatch, or None when the run is not narrowed.
 
     Scoped by task rather than by team, because the caller's authority here is a run token
     minted for exactly this task. A malformed snapshot reads as an empty list, so callers fail

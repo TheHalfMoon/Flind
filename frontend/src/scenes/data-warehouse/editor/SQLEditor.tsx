@@ -590,9 +590,9 @@ function SQLEditorSceneTitle(): JSX.Element | null {
         AccessControlLevel.Editor
     )
 
-    // A direct connection's table names only resolve while it is selected, and an endpoint serves data from PostHog.
+    // A direct connection's table names only resolve while it is selected, and an endpoint serves data from Flind.
     const saveAsEndpointDisabledReason = selectedConnectionId
-        ? "Endpoints can't query a direct connection. Switch the connection to PostHog (ClickHouse) and query a synced table instead."
+        ? "Endpoints can't query a direct connection. Switch the connection to Flind (ClickHouse) and query a synced table instead."
         : saveAsEndpointAccessDisabledReason
 
     const continueInNotebookAccessDisabledReason = getAccessControlDisabledReason(

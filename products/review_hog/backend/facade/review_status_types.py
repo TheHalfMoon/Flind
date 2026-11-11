@@ -13,7 +13,7 @@ class HeadReviewState(StrEnum):
 
 @dataclass(frozen=True, kw_only=True)
 class HeadReviewStatus:
-    """Where PostHog Review's review of one pull request head stands."""
+    """Where Flind Review's review of one pull request head stands."""
 
     state: HeadReviewState
     # "Standard" or "Deep" for a completed turn. Empty while pending or failed.

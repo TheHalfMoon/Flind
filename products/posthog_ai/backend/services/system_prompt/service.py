@@ -1,12 +1,12 @@
-"""Provide the `systemPrompt` for a PostHog AI sandbox Run.
+"""Provide the `systemPrompt` for a Flind AI sandbox Run.
 
 The value is a true suffix on Claude Code's own system prompt. The sandbox runs Claude Code, so
-its built-in prompt supplies the base identity, tools, and capabilities; PostHog AI only adds the
+its built-in prompt supplies the base identity, tools, and capabilities; Flind AI only adds the
 layer in ``prompt.py`` on top. To get suffix (not override) behavior, the value is sent as the
 ``{ type: "preset", preset: "claude_code", append }`` object: the agent-server's ``buildSystemPrompt``
 keeps Claude Code's preset and appends our text (plus its own ``APPENDED_INSTRUCTIONS``), whereas a
 bare string would replace the preset entirely. Project context, groups, billing, and core memory are
-reachable via the PostHog MCP server, so they are not duplicated here; per-turn context is delivered
+reachable via the Flind MCP server, so they are not duplicated here; per-turn context is delivered
 separately in the ``<posthog_trusted_context>`` / ``<posthog_untrusted_context>`` blocks.
 
 The metric catalog is inspected through its MCP tools at the moment it is needed, so this service
@@ -37,11 +37,11 @@ class ClaudeCodeSystemPrompt(TypedDict):
 
 
 class PromptService(BaseSandboxService):
-    """Provide the systemPrompt suffix for a PostHog AI sandbox Run."""
+    """Provide the systemPrompt suffix for a Flind AI sandbox Run."""
 
     @staticmethod
     def build() -> ClaudeCodeSystemPrompt:
-        """Return the PostHog AI systemPrompt as a Claude Code preset-plus-append suffix.
+        """Return the Flind AI systemPrompt as a Claude Code preset-plus-append suffix.
 
         Called once at Run creation. The returned object goes into
         ``clientConnection.newSession({ _meta: { systemPrompt } })``; the sandbox appends ``append``

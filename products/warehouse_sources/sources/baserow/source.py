@@ -54,7 +54,7 @@ class BaserowSource(ResumableSource[BaserowSourceConfig, BaserowResumeConfig], V
             name=ExternalDataSourceType.BASEROW,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Baserow",
-            caption="""Sync the tables from your Baserow databases into the PostHog Data warehouse — each Baserow table becomes its own warehouse table.
+            caption="""Sync the tables from your Baserow databases into the Flind Data warehouse — each Baserow table becomes its own warehouse table.
 
 Create a database token in Baserow under **Settings > Database tokens** and make sure **read** permission is enabled for the tables you want to sync. Leave the instance URL blank to use Baserow's hosted service; self-hosted instances must be reachable over https.""",
             iconPath="/static/services/baserow.png",

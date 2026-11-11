@@ -1,4 +1,4 @@
-"""PostHog SDK calls that read a feature flag.
+"""Flind SDK calls that read a feature flag.
 
 Agents that search a repository for a flag's checks get this list in their prompt, besides the flag key:
 the flag code analysis and the experiment flag cleanup.

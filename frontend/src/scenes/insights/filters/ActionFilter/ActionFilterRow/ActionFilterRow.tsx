@@ -203,7 +203,7 @@ export function ActionFilterRow({
     const isDataWarehouseFilter = isWarehouseSeriesNode(node)
     // A flag calls series stands in for the event, so the picker reopens on the event row, not on the table.
     const isFlagCallsSeries = isDataWarehouseFilter && node.table_name === FLAG_EVALUATIONS_TABLE
-    // The data warehouse map leaves out PostHog tables, which a flag calls series reads.
+    // The data warehouse map leaves out Flind tables, which a flag calls series reads.
     const seriesTable = isDataWarehouseFilter ? allTablesMap[node.table_name] : undefined
     // The property values endpoint only serves warehouse tables and views.
     const seriesValuesTableName =

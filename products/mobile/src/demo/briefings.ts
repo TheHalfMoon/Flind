@@ -163,7 +163,7 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             filters: 1,
         },
         activity: [
-            ['PostHog created the report', 'Mon 7:21 AM'],
+            ['Flind created the report', 'Mon 7:21 AM'],
             [`${DEMO_USER_NAME} changed assignee to **Sana Patel**`, 'Mon 7:40 AM'],
             [
                 'Claude Code linked commit **c71b20** and changed status from **Open** to **Resolved**',
@@ -262,7 +262,7 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             { id: 'errors-by-release', title: 'Errors by release', caption: 'A SQL table the app links to' },
         ],
         activity: [
-            ['PostHog created the report', 'Today 9:04 AM'],
+            ['Flind created the report', 'Today 9:04 AM'],
             [`${DEMO_USER_NAME} handed off to **Claude Code**`, 'Today 9:12 AM'],
             ['Claude Code changed status from **Open** to **Investigating**', 'Today 9:13 AM', MCP_VIA],
             ['Claude Code asked for a decision and changed status to **Waiting on you**', 'Today 11:38 AM', MCP_VIA],
@@ -363,7 +363,7 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             { id: 'load-time-by-browser', title: 'Load time by browser', caption: 'A breakdown the app links to' },
         ],
         activity: [
-            ['PostHog created the report', 'Mon 3:05 PM'],
+            ['Flind created the report', 'Mon 3:05 PM'],
             [`${DEMO_USER_NAME} handed off to **Claude Code**`, 'Today 9:12 AM'],
             ['Claude Code changed status from **Open** to **In progress**', 'Today 9:12 AM', MCP_VIA],
         ],
@@ -439,9 +439,9 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             filters: 1,
         },
         activity: [
-            ['PostHog created the report', 'Mon 2:31 PM'],
-            ['PostHog linked **PR #4182** as the likely cause', 'Mon 2:31 PM'],
-            ['PostHog attached **3 support tickets**', 'Tue 10:15 AM'],
+            ['Flind created the report', 'Mon 2:31 PM'],
+            ['Flind linked **PR #4182** as the likely cause', 'Mon 2:31 PM'],
+            ['Flind attached **3 support tickets**', 'Tue 10:15 AM'],
         ],
         contextNote: 'Sends the #4182 diff, click data and 21 replays as context',
         prompt: 'PR #4182 removed ResolveButton from IssueHeader.tsx. Restore it; it was clicked 1,900 times a week.',
@@ -506,8 +506,8 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             filters: 0,
         },
         activity: [
-            ['PostHog created the report', 'Sun 6:14 AM'],
-            ['PostHog changed priority from **Medium** to **High**', 'Mon 6:05 AM'],
+            ['Flind created the report', 'Sun 6:14 AM'],
+            ['Flind changed priority from **Medium** to **High**', 'Mon 6:05 AM'],
         ],
         contextNote: 'Sends the worker log and the queue config as context',
         prompt: 'The report_digest queue stopped running after the worker restart on Sunday 5:58 AM. Re-register it in workers/index.ts.',
@@ -579,7 +579,7 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             ['Share on Safari', 82, 'percentage'],
         ],
         activity: [
-            ['PostHog created the report', 'Mon 2:10 PM'],
+            ['Flind created the report', 'Mon 2:10 PM'],
             [`${DEMO_USER_NAME} handed off to **Codex**`, 'Today 9:30 AM'],
             ['Codex changed status from **Open** to **In progress**', 'Today 9:31 AM', MCP_VIA],
             ['Codex opened **PR #4190** and changed status to **Ready for review**', 'Today 9:41 AM', MCP_VIA],
@@ -660,8 +660,8 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             filters: 0,
         },
         activity: [
-            ['PostHog created the report', 'Thu 4:52 PM'],
-            ['PostHog attached **2 survey replies**', 'Today 8:20 AM'],
+            ['Flind created the report', 'Thu 4:52 PM'],
+            ['Flind attached **2 survey replies**', 'Today 8:20 AM'],
         ],
         contextNote: 'Sends the 7 quotes, the orgs and the Export code path as context',
         prompt: '7 customers asked to copy a report as an image to the clipboard. Export already renders a PNG server-side. Scope a Copy image button on top of it.',
@@ -723,8 +723,8 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             filters: 2,
         },
         activity: [
-            ['PostHog created the report', 'Sun 9:02 AM'],
-            ['PostHog attached **87 replays**', 'Today 6:40 AM'],
+            ['Flind created the report', 'Sun 9:02 AM'],
+            ['Flind attached **87 replays**', 'Today 6:40 AM'],
         ],
         contextNote: 'Sends 87 replays, the banner component and the billing page layout as context',
         prompt: 'The cookie banner covers the Upgrade plan button on viewports under 768px. Dead clicks on it went from 1% to 38% of upgrade attempts. Fix the stacking so the button stays reachable.',
@@ -803,9 +803,9 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             },
         ],
         activity: [
-            ['PostHog created the report', 'Fri 8:10 AM'],
+            ['Flind created the report', 'Fri 8:10 AM'],
             [`${DEMO_USER_NAME} changed assignee to **Mateo Ruiz**`, 'Fri 9:25 AM'],
-            ['PostHog changed priority from **Medium** to **High**', 'Today 7:00 AM'],
+            ['Flind changed priority from **Medium** to **High**', 'Today 7:00 AM'],
         ],
         contextNote: 'Sends 20 traces, the e40b9d diff and the daily cost breakdown as context',
         prompt: 'summarize_report input grew from 9,800 to 41,200 tokens after e40b9d. buildSummaryPrompt in ai/summary.ts:64 now sends every event. Restore the top-50 cap without losing answer quality.',
@@ -871,7 +871,7 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             filters: 1,
         },
         activity: [
-            ['PostHog created the report', 'Mon 11:24 AM'],
+            ['Flind created the report', 'Mon 11:24 AM'],
             [`${DEMO_USER_NAME} changed assignee to **Marcus Lee**`, 'Mon 12:05 PM'],
             ['Marcus Lee changed status from **Open** to **Resolved**', 'Today 7:50 AM'],
         ],
@@ -941,8 +941,8 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             filters: 0,
         },
         activity: [
-            ['PostHog created the report', 'Wed 2:18 PM'],
-            ['PostHog attached **3 more tickets**', 'Fri 11:02 AM'],
+            ['Flind created the report', 'Wed 2:18 PM'],
+            ['Flind attached **3 more tickets**', 'Fri 11:02 AM'],
         ],
         contextNote: 'Sends the 12 tickets, the orgs and the shared dashboard theme code as context',
         prompt: '12 customers asked for dark mode on shared dashboard links. The app already has a dark theme. Scope a theme option for shared links.',
@@ -1006,7 +1006,7 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             filters: 1,
         },
         activity: [
-            ['PostHog created the report', 'Sat 11:06 PM'],
+            ['Flind created the report', 'Sat 11:06 PM'],
             ['Marcus Lee changed status from **Open** to **Resolved**', 'Sun 2:30 AM'],
         ],
         contextNote: 'Sends the delivery log and the secret rotation history as context',
@@ -1074,9 +1074,9 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             filters: 2,
         },
         activity: [
-            ['PostHog created the report', 'Fri 4:30 PM'],
-            ['PostHog linked commit **b17d52** as the likely cause', 'Fri 4:31 PM'],
-            ['PostHog attached **33 replays**', 'Today 8:45 AM'],
+            ['Flind created the report', 'Fri 4:30 PM'],
+            ['Flind linked commit **b17d52** as the likely cause', 'Fri 4:31 PM'],
+            ['Flind attached **33 replays**', 'Today 8:45 AM'],
         ],
         contextNote: 'Sends the trace, the b17d52 diff and 33 replays as context',
         prompt: 'reorderSteps in FunnelSteps.tsx:203 recurses without end on funnels with 10 or more steps. Started after b17d52. Fix it and keep drag to reorder working.',
@@ -1140,7 +1140,7 @@ export const DEMO_BRIEFINGS: readonly DemoBriefing[] = [
             ['Drop-off at Pick your framework', 61, 'percentage'],
         ],
         activity: [
-            ['PostHog created the report', 'Wed 9:30 AM'],
+            ['Flind created the report', 'Wed 9:30 AM'],
             [`${DEMO_USER_NAME} changed assignee to **Ines Moreau**`, 'Wed 10:12 AM'],
         ],
         contextNote: 'Sends the setup funnel, 45 replays and the wizard step config as context',

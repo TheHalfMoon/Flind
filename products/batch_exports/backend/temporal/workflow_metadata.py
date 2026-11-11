@@ -89,7 +89,7 @@ def build_logs_link(workflow_id: str) -> str | None:
         },
         quote_via=quote,
     )
-    return f"[View logs in PostHog]({base_url}?{query_string})"
+    return f"[View logs in Flind]({base_url}?{query_string})"
 
 
 class WorkflowDetails:

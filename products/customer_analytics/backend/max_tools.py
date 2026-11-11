@@ -101,7 +101,7 @@ class OpenAccountTool(MaxTool):
 UPSERT_ACCOUNT_TOOL_DESCRIPTION = dedent("""
     Use this tool to create a new customer account or update an existing one.
 
-    An account represents a customer organization. Its `external_id` must be the id PostHog uses to
+    An account represents a customer organization. Its `external_id` must be the id Flind uses to
     identify that organization in group analytics (its group key) — this is what links the account to
     its usage and activity data, so it must match exactly. Do NOT put a CRM or billing id here; record
     those with the dedicated properties (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id,
@@ -122,7 +122,7 @@ UPSERT_ACCOUNT_TOOL_DESCRIPTION = dedent("""
 
     # Relationships
     Pass `relationships` to assign users to the account's relationships (CSM, Account executive, or
-    any definition the team has created), keyed by definition name: the value is the PostHog user id,
+    any definition the team has created), keyed by definition name: the value is the Flind user id,
     or null to end the current assignment. Only the named definitions are changed. A controlled
     relationship that Customer analytics manages for the account cannot be changed through this
     tool; the change is made from the account page.
@@ -131,7 +131,7 @@ UPSERT_ACCOUNT_TOOL_DESCRIPTION = dedent("""
     Pass `tags` to set the account's tags. On update this REPLACES the existing tag set.
 
     # Examples
-    - "Add an account for Acme Corp whose PostHog group key is acme-123": action=create, name="Acme Corp", external_id="acme-123"
+    - "Add an account for Acme Corp whose Flind group key is acme-123": action=create, name="Acme Corp", external_id="acme-123"
     - "Assign Jane (user 42) as CSM for that account": action=update, account_id=<uuid>,
       relationships={CSM: 42}
     - "Tag it enterprise and priority": action=update, account_id=<uuid>, tags=["enterprise", "priority"]
@@ -157,7 +157,7 @@ class CreateAccountAction(BaseModel):
     external_id: str | None = Field(
         default=None,
         description=(
-            "The id PostHog uses to identify this organization in group analytics (its group key). "
+            "The id Flind uses to identify this organization in group analytics (its group key). "
             "Links the account to its usage and activity data, so it must match exactly. Do not put a "
             "CRM/billing id here — record those with the properties fields. Optional but strongly "
             "recommended."
@@ -169,7 +169,7 @@ class CreateAccountAction(BaseModel):
         default=None,
         description=(
             "Relationship assignments keyed by definition name (e.g. 'CSM'); each value is the "
-            "PostHog user id to assign, or null to end the current assignment."
+            "Flind user id to assign, or null to end the current assignment."
         ),
     )
 
@@ -180,7 +180,7 @@ class UpdateAccountAction(BaseModel):
     name: str | None = Field(default=None, description="New account name")
     external_id: str | None = Field(
         default=None,
-        description="New external id — the organization's group key in PostHog, not a CRM/billing id.",
+        description="New external id — the organization's group key in Flind, not a CRM/billing id.",
     )
     tags: list[str] | None = Field(default=None, description="Replaces the account's existing tags")
     properties: AccountPropertiesInput | None = Field(
@@ -190,7 +190,7 @@ class UpdateAccountAction(BaseModel):
         default=None,
         description=(
             "Relationship assignments keyed by definition name (e.g. 'CSM'); each value is the "
-            "PostHog user id to assign, or null to end the current assignment. Only the named "
+            "Flind user id to assign, or null to end the current assignment. Only the named "
             "definitions are changed."
         ),
     )

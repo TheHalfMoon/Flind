@@ -127,7 +127,7 @@ export interface TableForm {
     start_param: string
     // strftime pattern for the outgoing watermark; empty → ISO-8601 default
     datetime_format: string
-    // Fan-out (parent/child): when `parent_table` is set, PostHog fetches that
+    // Fan-out (parent/child): when `parent_table` is set, Flind fetches that
     // table first and calls this one once per parent row, injecting
     // `parent_resolve_field` into the `{parent_path_param}` placeholder in the
     // path. `include_from_parent` lists parent fields copied onto each child row.

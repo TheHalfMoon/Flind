@@ -486,7 +486,7 @@ Diffed against: <https://www.alphavantage.co/documentation/>
 - [x] `ETF_PROFILE` — ETF holdings and sector breakdown, the ETF counterpart to company_overview (medium)
 - [x] `REAL_GDP, CPI, TREASURY_YIELD, FEDERAL_FUNDS_RATE, UNEMPLOYMENT` — macro indicator series commonly joined against equity data (medium)
 
-Note: Single /query endpoint parameterized by `function=`; the docs page exposes ~140 anchored functions and PostHog surfaces 17. Beyond the listed gaps, TIME_SERIES_INTRADAY, TIME_SERIES_WEEKLY_ADJUSTED/MONTHLY_ADJUSTED, the FX and digital-currency series, the commodities family and ~60 technical indicators are also absent, though indicators are cheaply derivable in the warehouse.
+Note: Single /query endpoint parameterized by `function=`; the docs page exposes ~140 anchored functions and Flind surfaces 17. Beyond the listed gaps, TIME_SERIES_INTRADAY, TIME_SERIES_WEEKLY_ADJUSTED/MONTHLY_ADJUSTED, the FX and digital-currency series, the commodities family and ~60 technical indicators are also absent, though indicators are cheaply derivable in the warehouse.
 
 ## Amazon SES — gaps
 
@@ -641,7 +641,7 @@ Diffed against: <https://docs.apollo.io/reference/organization-search>
 - [ ] `/notes` — note history attached to CRM records (medium)
 - [ ] `/typed_custom_fields` — lookup naming the custom field IDs that appear on synced records (low)
 
-Note: Reference index (96 slugs) read from the docs nav; each path below confirmed by re-fetching the individual reference page and reading its embedded "path" field. PostHog syncs only the three core CRM search endpoints; every lookup table and activity object is absent.
+Note: Reference index (96 slugs) read from the docs nav; each path below confirmed by re-fetching the individual reference page and reading its embedded "path" field. Flind syncs only the three core CRM search endpoints; every lookup table and activity object is absent.
 
 ## Appdynamics — gaps
 
@@ -710,7 +710,7 @@ Diffed against: <https://docs.api.appfollow.io/reference/app_collections_list_ap
 - [ ] `/api/v2/meta/ratings/console/gp` — Google Play Console ratings, more accurate than scraped store ratings (medium)
 - [ ] `/api/v2/aso/featured` — App Store featuring events that drive install spikes (low)
 
-Note: Full v2 endpoint list read from the docs nav (slugs encode the HTTP path). PostHog covers account management plus reviews and ratings history; the ASO and review-analytics halves of the product are unmapped.
+Note: Full v2 endpoint list read from the docs nav (slugs encode the HTTP path). Flind covers account management plus reviews and ratings history; the ASO and review-analytics halves of the product are unmapped.
 
 ## Apple (App Store Connect) — gaps
 
@@ -782,7 +782,7 @@ Diffed against: <https://dev.appsflyer.com/hc/reference>
 - [ ] `/api/raw-data/export/app/{app_id}/reinstalls/v5 and reinstalls_organic/v5` — reinstall/resurrection cohorts, a distinct lifecycle state from installs (medium)
 - [ ] `/api/agg-data/export/app/{app_id}/geo_by_date_report/v5 and partners_by_date_report/v5` — daily time series of the geo and partner breakdowns we currently sync only as period totals (medium)
 
-Note: PostHog exposes three aggregate Pull API v5 reports (daily, geo, partners), the raw-data install and in-app-event reports in their non-organic, organic and retargeting variants, uninstalls, all three ad revenue raw reports, the Protect360 blocked-install, blocked-event and post-attribution reports, and the Master API LTV report. Still absent: reinstalls, SKAN and the partner postback reports. The retargeting slugs are hyphenated (`installs-retarget`, `in-app-events-retarget`), not underscored as listed above. Reference index enumerated from the docs nav (~160 slugs).
+Note: Flind exposes three aggregate Pull API v5 reports (daily, geo, partners), the raw-data install and in-app-event reports in their non-organic, organic and retargeting variants, uninstalls, all three ad revenue raw reports, the Protect360 blocked-install, blocked-event and post-attribution reports, and the Master API LTV report. Still absent: reinstalls, SKAN and the partner postback reports. The retargeting slugs are hyphenated (`installs-retarget`, `in-app-events-retarget`), not underscored as listed above. Reference index enumerated from the docs nav (~160 slugs).
 
 ## Appsignal — gaps
 
@@ -804,7 +804,7 @@ Diffed against: <https://docs.appsignal.com/api/v2/overview>
 - [ ] `uptime monitors (GraphQL)` — uptime check results, a separate monitoring signal from incidents (medium)
 - [ ] `check-ins / cron (GraphQL)` — scheduled-job execution history — misses and late runs (medium)
 
-Note: AppSignal split its API in two: GraphQL for models (apps, incidents, markers, dashboards, alerts, uptime monitors, check-ins) and a REST Public API V2 for bulk data (metrics, logs, traces, Kubernetes, deploy stats). PostHog reads the legacy /api/{app_id}/\*.json endpoints, all four GraphQL incident types and the app list, plus the V2 logs, metrics, deploy-stats and tracing endpoints; Kubernetes, uptime monitors and check-ins are still unmapped. `POST /api/v2/tracing/action_edges` is deliberately skipped: its `namespace` argument takes a "<service>/<namespace>" pair and no endpoint we sync reports the service half, so site_edges covers service dependencies instead.
+Note: AppSignal split its API in two: GraphQL for models (apps, incidents, markers, dashboards, alerts, uptime monitors, check-ins) and a REST Public API V2 for bulk data (metrics, logs, traces, Kubernetes, deploy stats). Flind reads the legacy /api/{app_id}/\*.json endpoints, all four GraphQL incident types and the app list, plus the V2 logs, metrics, deploy-stats and tracing endpoints; Kubernetes, uptime monitors and check-ins are still unmapped. `POST /api/v2/tracing/action_edges` is deliberately skipped: its `namespace` argument takes a "<service>/<namespace>" pair and no endpoint we sync reports the service half, so site_edges covers service dependencies instead.
 
 ## Appstack — adequate
 
@@ -814,7 +814,7 @@ Diffed against: <https://docs.appstack.tech/api/export>
 
 No material gaps found.
 
-Note: Genuinely a one-endpoint API, not a thin implementation. The docs sitemap lists exactly one page under /api (the Exports API, GET https://api.appstack.tech/api/v1/export); everything else is SDK and integration documentation. PostHog's single `events` table maps to that endpoint, with offset paging and a timestamp window, so coverage is complete. No dynamic table discovery in the source.
+Note: Genuinely a one-endpoint API, not a thin implementation. The docs sitemap lists exactly one page under /api (the Exports API, GET https://api.appstack.tech/api/v1/export); everything else is SDK and integration documentation. Flind's single `events` table maps to that endpoint, with offset paging and a timestamp window, so coverage is complete. No dynamic table discovery in the source.
 
 ## Apptio Cloudability (IBM) — gaps
 
@@ -863,7 +863,7 @@ Diffed against: <https://raw.githubusercontent.com/argoproj/argo-cd/master/asset
 - [ ] `/api/v1/applications/{name}/revisions/{revision}/chartdetails` — Helm chart version and metadata per deployed revision (low)
 - [ ] `/api/v1/repositories/{repo}/refs` — branch/tag refs available per repo, for joining deployed revisions to source branches (low)
 
-Note: Diffed against the upstream swagger spec (82 paths). PostHog's deployment_history is derived from status.history on the applications resource rather than a separate endpoint, so the revision-metadata lookup below is the natural companion. Most remaining unmapped paths are config/plumbing (certificates, gpgkeys, repocreds, notifications, session, settings, account tokens) and are excluded.
+Note: Diffed against the upstream swagger spec (82 paths). Flind's deployment_history is derived from status.history on the applications resource rather than a separate endpoint, so the revision-metadata lookup below is the natural companion. Most remaining unmapped paths are config/plumbing (certificates, gpgkeys, repocreds, notifications, session, settings, account tokens) and are excluded.
 
 ## Asaas — **thin**
 
@@ -2000,7 +2000,7 @@ Diffed against: <https://docs.buildbetter.ai/pages/api/data-access.md>
 - [x] `tag (interview tags)` — lookup for the tag references on calls, needed for any segmentation by tag (medium)
 - [ ] `recordings` — REST recording resource with public UUID, duration, source, and transcript_status — the supported successor to the interview asset fields (medium). Deferred: this resource only exists on the REST API at `https://api.buildbetter.app/v3/rest`, which this source does not talk to — it is pinned to GraphQL v1. Adding it means adding a second vendor API version, which is the `warehouse-source-new-version` workflow. The recording fields themselves (`asset_url`, `asset_duration_seconds`, `asset_is_audio`, `transcript_status`) already sync on `interviews`; the list projection carries neither duration nor transcript status.
 
-Note: PostHog's registered api_docs_url (https://docs.buildbetter.app/) no longer resolves — DNS fails. The live docs are at https://docs.buildbetter.ai (llms.txt index at https://docs.buildbetter.ai/llms.txt). The GraphQL endpoint (api.buildbetter.app/v1/graphql) that this source uses is explicitly deprecated for customer integrations in favor of a REST API at https://api.buildbetter.app/v3/rest; unauthenticated introspection returns 'no_queries_available', so the resource list came from the docs, not the schema. Worth a follow-up to re-point the source at REST before GraphQL is retired.
+Note: Flind's registered api_docs_url (https://docs.buildbetter.app/) no longer resolves — DNS fails. The live docs are at https://docs.buildbetter.ai (llms.txt index at https://docs.buildbetter.ai/llms.txt). The GraphQL endpoint (api.buildbetter.app/v1/graphql) that this source uses is explicitly deprecated for customer integrations in favor of a REST API at https://api.buildbetter.app/v3/rest; unauthenticated introspection returns 'no_queries_available', so the resource list came from the docs, not the schema. Worth a follow-up to re-point the source at REST before GraphQL is retired.
 
 ## Buildium (RealPage) — **thin**
 
@@ -2066,7 +2066,7 @@ Diffed against: <https://core-api-public-docs.b-cdn.net/docs/v3/public.json>
 - [ ] `GET /pullzone/{pullZoneId}/optimizer/statistics` — image optimizer usage per pull zone, a breakdown of the traffic we would otherwise only see in aggregate (low)
 - [ ] `GET /pullzone/{pullZoneId}/safehop/statistics and /originshield/queuestatistics` — origin reliability and shield queue behavior per pull zone (low)
 
-Note: Bunny splits its API across several specs, all fetched this run: Core (core-api-public-docs.b-cdn.net/docs/v3/public.json), Stream (video.bunnycdn.com/openapi/bunnynet-video-api.public.json), and CDN Logging (logging.bunnycdn.com/docs/all/swagger.json). PostHog syncs only the four top-level zone/library objects — every statistics and child resource in all three specs is missing, so the source currently carries configuration objects but none of the usage data that is the point of a CDN import.
+Note: Bunny splits its API across several specs, all fetched this run: Core (core-api-public-docs.b-cdn.net/docs/v3/public.json), Stream (video.bunnycdn.com/openapi/bunnynet-video-api.public.json), and CDN Logging (logging.bunnycdn.com/docs/all/swagger.json). Flind syncs only the four top-level zone/library objects — every statistics and child resource in all three specs is missing, so the source currently carries configuration objects but none of the usage data that is the point of a CDN import.
 
 ## Buttondown — gaps
 
@@ -2201,7 +2201,7 @@ Diffed against: <https://github.com/nebojsac/Campayn-API/blob/master/README.md>
 
 No material gaps found.
 
-Note: The official API docs list exactly six endpoint groups: Lists, Contacts, Forms, Emails, Reports, Signup. PostHog exposes all five readable ones (contacts, emails, forms, lists, reports); Signup is a write-only POST subscribe endpoint. Sub-resources are just nesting of the same collections (/lists/{id}/contacts, /lists/{id}/forms) and /reports/calendar.json is the only report shape the API offers. Nothing meaningful is missing.
+Note: The official API docs list exactly six endpoint groups: Lists, Contacts, Forms, Emails, Reports, Signup. Flind exposes all five readable ones (contacts, emails, forms, lists, reports); Signup is a write-only POST subscribe endpoint. Sub-resources are just nesting of the same collections (/lists/{id}/contacts, /lists/{id}/forms) and /reports/calendar.json is the only report shape the API offers. Nothing meaningful is missing.
 
 ## Campfire — gaps
 
@@ -2256,7 +2256,7 @@ Diffed against: <https://developer.capsulecrm.com/v2/operations/Party>
 - [ ] `Party employees (GET /api/v2/parties/{id}/people, listEmployees)` — organisation-to-person hierarchy for account rollups (low)
 - [ ] `listDeletedParties / listDeletedOpportunities` — tombstones needed to keep an incremental warehouse copy from drifting (low)
 
-Note: The `kases` table PostHog already exposes is the legacy alias for Projects (the Case doc page is now just a pointer to Project), so Projects are NOT a gap. Country/currency reference lists under Internationalization were excluded as static reference data.
+Note: The `kases` table Flind already exposes is the legacy alias for Projects (the Case doc page is now just a pointer to Project), so Projects are NOT a gap. Country/currency reference lists under Internationalization were excluded as static reference data.
 
 ## CareQualityCommission — gaps
 
@@ -2405,7 +2405,7 @@ Diffed against: <https://api.charthop.com/swagger.json>
 - [ ] `/v1/user` — lookup mapping ChartHop user accounts to person ids for adoption analysis (medium)
 - [ ] `/v1/org/{orgId}/scenario` — headcount planning scenarios, needed to compare planned vs actual hiring (medium)
 
-Note: Full OpenAPI 3 spec (2 MB, 541 paths) is served unauthenticated at api.charthop.com/swagger.json. PostHog covers the core org-chart entities, comp bands, comp change history, and time-off policies. Still uncovered: equity grants, comp review cycles, the performance surface, and the time-off ledger.
+Note: Full OpenAPI 3 spec (2 MB, 541 paths) is served unauthenticated at api.charthop.com/swagger.json. Flind covers the core org-chart entities, comp bands, comp change history, and time-off policies. Still uncovered: equity grants, comp review cycles, the performance surface, and the time-off ledger.
 
 ## ChartMogul — gaps
 
@@ -2536,7 +2536,7 @@ Diffed against: <https://et.water.ca.gov/Rest/Index>
 
 No material gaps found.
 
-Note: The CIMIS Web API has exactly four REST services: /api/data (daily and hourly data items for stations, zip codes, coordinates or addresses), /api/station, /api/stationzipcode and /api/spatialzipcode. PostHog's five tables map 1:1 onto those - daily_data and hourly_data are the two data-item classes of /api/data. There is no other queryable resource.
+Note: The CIMIS Web API has exactly four REST services: /api/data (daily and hourly data items for stations, zip codes, coordinates or addresses), /api/station, /api/stationzipcode and /api/spatialzipcode. Flind's five tables map 1:1 onto those - daily_data and hourly_data are the two data-item classes of /api/data. There is no other queryable resource.
 
 ## CircleCI — gaps
 
@@ -3010,7 +3010,7 @@ Diffed against: <https://docs.enterprise.codescene.io/latest/integrations/rest-a
 - [ ] `active-authors` — authoritative author roster; a lookup table for the author ids appearing in analyses (medium)
 - [ ] `projects/{project-id}/analyses/latest/experience/languages` — author language experience, used for knowledge-risk and bus-factor reporting (low)
 
-Note: Static endpoint list; no dynamic table discovery in products/warehouse_sources/sources/codescene/settings.py (hardcoded CODESCENE_ENDPOINTS). The v2 API exposes ~100 paths; PostHog covers 11. The per-analysis tables still read the 'latest' analysis only, but `Analyses` now carries the run history so an analysis id can be pinned.
+Note: Static endpoint list; no dynamic table discovery in products/warehouse_sources/sources/codescene/settings.py (hardcoded CODESCENE_ENDPOINTS). The v2 API exposes ~100 paths; Flind covers 11. The per-analysis tables still read the 'latest' analysis only, but `Analyses` now carries the run history so an analysis id can be pinned.
 
 ## Cody — adequate
 
@@ -3020,7 +3020,7 @@ Diffed against: <https://sourcegraph.com/docs/analytics/api.md>
 
 - [x] `user_registry (GET /api/reports/user-registry)` — CSV snapshot of instance users with service account and site admin flags, documented after the sweep (medium)
 
-Note: The Sourcegraph Analytics API has three endpoints: GET /api/reports/by-user-client-date (granularity = by_user | by_user_month | by_user_day | by_user_day_client_language), GET /api/reports/user-registry, and GET /api/credits. PostHog's six tables map 1:1 onto all four granularities plus the user registry and credits, so coverage is complete. Note the docs page is client-rendered; the .md variant of the URL returns the full text.
+Note: The Sourcegraph Analytics API has three endpoints: GET /api/reports/by-user-client-date (granularity = by_user | by_user_month | by_user_day | by_user_day_client_language), GET /api/reports/user-registry, and GET /api/credits. Flind's six tables map 1:1 onto all four granularities plus the user registry and credits, so coverage is complete. Note the docs page is client-rendered; the .md variant of the URL returns the full text.
 
 ## Cohere — gaps
 
@@ -3032,7 +3032,7 @@ Diffed against: <https://raw.githubusercontent.com/cohere-ai/cohere-developer-ex
 - [ ] `GET /v1/finetuning/finetuned-models/{id}/events (ListEvents)` — fine-tune job state-transition history; resolves how a synced finetuned_model reached its status (medium)
 - [ ] `GET /v1/finetuning/finetuned-models/{id}/training-step-metrics (ListTrainingStepMetrics)` — per-step training loss/accuracy for evaluating fine-tunes (medium)
 
-Note: Cohere's API is overwhelmingly POST inference (chat, embed, rerank, classify, summarize, tokenize) which is not warehouse material. Of the GET list endpoints in the spec, PostHog already syncs datasets, connectors, models, finetuned-models and embed-jobs; the three above are the genuine remainder. /v1/datasets/usage is a single-row quota reading and /v1/check-api-key is auth plumbing, both excluded.
+Note: Cohere's API is overwhelmingly POST inference (chat, embed, rerank, classify, summarize, tokenize) which is not warehouse material. Of the GET list endpoints in the spec, Flind already syncs datasets, connectors, models, finetuned-models and embed-jobs; the three above are the genuine remainder. /v1/datasets/usage is a single-row quota reading and /v1/check-api-key is auth plumbing, both excluded.
 
 ## CoinApi — gaps
 
@@ -3363,7 +3363,7 @@ Diffed against: <https://compass.coupa.com/en-us/products/product-documentation/
 - [ ] `Order Line Allocations and Req Line Allocation APIs` — cost-center/account splits per line - the breakdown dimension for allocated spend (medium)
 - [ ] `/purchase_orders/{id}/changes (Purchase Order Change / Revisions API)` — PO amendment history for change-order and cycle-time analysis (medium)
 
-Note: Coupa Core API is very large (several hundred documented resources across Reference, Shared, and Transactional groups). PostHog exposes 8 header-level objects plus PO and expense lines, and no lookup tables, so most analytical grain is still missing. Coupa documents many line-level resources that have no endpoint of their own and are only reachable inside their parent object, so a gap naming a nested path is worth checking against the resource page before building it. The linked doc in the payload is the legacy Compass page; the maintained index is docs.coupa.com. A GraphQL API and flat-file (CSV) export path also exist.
+Note: Coupa Core API is very large (several hundred documented resources across Reference, Shared, and Transactional groups). Flind exposes 8 header-level objects plus PO and expense lines, and no lookup tables, so most analytical grain is still missing. Coupa documents many line-level resources that have no endpoint of their own and are only reachable inside their parent object, so a gap naming a nested path is worth checking against the resource page before building it. The linked doc in the payload is the legacy Compass page; the maintained index is docs.coupa.com. A GraphQL API and flat-file (CSV) export path also exist.
 
 ## Courier — gaps
 
@@ -3394,7 +3394,7 @@ Diffed against: <https://docs.coveralls.io/api-introduction>
 
 No material gaps found.
 
-Note: Coveralls has an unusually small read surface: only GET /api/v1/repos is a real read endpoint (/jobs is POST-only, plus two write webhooks). Everything else is 'JSON-Format Web Data' - appending .json to a web URL. PostHog's repositories + builds tables cover both listable feeds. The remaining resources (jobs/{id}.json, files/{id}.json per-line coverage arrays) have no listing endpoint and are documented as requiring a logged-in web session OAuth token rather than the API token, so they are not practically syncable. Source is static (products/warehouse_sources/sources/coveralls), no dynamic discovery, but that matches the API.
+Note: Coveralls has an unusually small read surface: only GET /api/v1/repos is a real read endpoint (/jobs is POST-only, plus two write webhooks). Everything else is 'JSON-Format Web Data' - appending .json to a web URL. Flind's repositories + builds tables cover both listable feeds. The remaining resources (jobs/{id}.json, files/{id}.json per-line coverage arrays) have no listing endpoint and are documented as requiring a logged-in web session OAuth token rather than the API token, so they are not practically syncable. Source is static (products/warehouse_sources/sources/coveralls), no dynamic discovery, but that matches the API.
 
 ## CratesIO — gaps
 
@@ -3409,7 +3409,7 @@ Diffed against: <https://crates.io/api/openapi.json>
 - [ ] `/api/v1/users/{user} and /api/v1/teams/{team}` — lookup resolving the user/team IDs returned by the owners endpoints (low). Not synced: the owners endpoint already returns the full user and team records (id, login, name, avatar, url, kind), and these endpoints look up by login, so a lookup table would only add the user `created_at`.
 - [x] `/api/v1/crates/{name}/{version}/downloads` — per-version download series, finer grain than the crate-level downloads table (low). Synced as `version_downloads` for the 25 most recently published versions of each crate.
 
-Note: Verified against the live OpenAPI document at https://crates.io/api/openapi.json (returns 403 without a descriptive User-Agent - crates.io requires one). The payload's https://crates.io/data-access page now 404s. Source is static: the user supplies a crate list and PostHog fans out per crate.
+Note: Verified against the live OpenAPI document at https://crates.io/api/openapi.json (returns 403 without a descriptive User-Agent - crates.io requires one). The payload's https://crates.io/data-access page now 404s. Source is static: the user supplies a crate list and Flind fans out per crate.
 
 ## Cronitor — gaps
 
@@ -3466,7 +3466,7 @@ Diffed against: <https://api.cultureamp.com/spec>
 
 No material gaps found.
 
-Note: The OpenAPI 3 spec at https://api.cultureamp.com/spec declares exactly three top-level paths - /employees, /performance-cycles, /manager-reviews - plus the per-employee demographics sub-resource. PostHog's four tables cover all of them. The survey endpoints in the docs index (surveys, questions, responses, factors, sections) are marked 'Deprecated - No Longer Available' and redirect users to the separate Reporting API. The payload's developer.cultureamp.com URLs are dead/auth-gated; the live docs are at docs.api.cultureamp.com (llms.txt available). Future upside would come from the separate Reporting API and the GraphQL endpoint at api.cultureamp.com/graphql, neither of which is covered by this REST spec.
+Note: The OpenAPI 3 spec at https://api.cultureamp.com/spec declares exactly three top-level paths - /employees, /performance-cycles, /manager-reviews - plus the per-employee demographics sub-resource. Flind's four tables cover all of them. The survey endpoints in the docs index (surveys, questions, responses, factors, sections) are marked 'Deprecated - No Longer Available' and redirect users to the separate Reporting API. The payload's developer.cultureamp.com URLs are dead/auth-gated; the live docs are at docs.api.cultureamp.com (llms.txt available). Future upside would come from the separate Reporting API and the GraphQL endpoint at api.cultureamp.com/graphql, neither of which is covered by this REST spec.
 
 ## Cursor — **thin**
 
@@ -3487,7 +3487,7 @@ Diffed against: <https://cursor.com/docs/account/teams/analytics-api.md>
 - [x] `GET /analytics/team/conversation-insights` — aggregated conversation topics and outcomes (medium). Shipped as `conversation_insights`, one row per day per slice value from each slice's `timeSeries` (incremental on `date`). The range totals (`distribution`, `topValues`, `subcategories`) are left out because they change with the window
 - [x] `GET /teams/audit-logs` — admin action history for access and compliance reporting (medium). Shipped as `audit_logs` (incremental on `timestamp`, 30-day `startTime`/`endTime` windows)
 
-Note: PostHog covers the four Admin API data endpoints (members, daily-usage-data, spend, filtered-usage-events) plus the agent-edits, tabs, dau, models and top-file-extensions team metrics, their four by-user breakdowns, and both AI Code Tracking grains (commits and changes). The adoption metrics (bugbot, conversation insights, leaderboard, mcp, commands, plans, skills, ask-mode, client-versions), the team groups and audit-log endpoints, and the Cloud Agents API are still unmapped. Admin API endpoints verified at https://cursor.com/docs/account/teams/admin-api.md and AI code tracking at https://cursor.com/docs/account/teams/ai-code-tracking-api.md. Repo blocklists and spend-limit endpoints excluded as configuration. Correcting the original sweep: every Analytics API and AI Code Tracking endpoint is a plain GET with query params, not a POST with a body, and the Analytics API caps a range at 30 inclusive calendar days.
+Note: Flind covers the four Admin API data endpoints (members, daily-usage-data, spend, filtered-usage-events) plus the agent-edits, tabs, dau, models and top-file-extensions team metrics, their four by-user breakdowns, and both AI Code Tracking grains (commits and changes). The adoption metrics (bugbot, conversation insights, leaderboard, mcp, commands, plans, skills, ask-mode, client-versions), the team groups and audit-log endpoints, and the Cloud Agents API are still unmapped. Admin API endpoints verified at https://cursor.com/docs/account/teams/admin-api.md and AI code tracking at https://cursor.com/docs/account/teams/ai-code-tracking-api.md. Repo blocklists and spend-limit endpoints excluded as configuration. Correcting the original sweep: every Analytics API and AI Code Tracking endpoint is a plain GET with query params, not a POST with a body, and the Analytics API caps a range at 30 inclusive calendar days.
 
 ## Customerly — gaps
 
@@ -4410,7 +4410,7 @@ Diffed against: <https://jsapi.apiary.io/apis/publiceventeeapi/api-description-d
 
 No material gaps found.
 
-Note: The Public Eventee API has only five GET endpoints: /content, /reviews, /groups, /participants, /registrations. /content returns a single payload containing halls, lectures, speakers, tracks, workshops, pauses and partners — exactly the tables PostHog already exposes. Everything else in the API is write-only (POST/PATCH/DELETE on hall, lecture, speaker, label, pause, partner, attendee invite/checkin). Coverage is complete. The apiary.io docs page is a JS shell; the blueprint JSON is at the jsapi.apiary.io URL above.
+Note: The Public Eventee API has only five GET endpoints: /content, /reviews, /groups, /participants, /registrations. /content returns a single payload containing halls, lectures, speakers, tracks, workshops, pauses and partners — exactly the tables Flind already exposes. Everything else in the API is write-only (POST/PATCH/DELETE on hall, lecture, speaker, label, pause, partner, attendee invite/checkin). Coverage is complete. The apiary.io docs page is a JS shell; the blueprint JSON is at the jsapi.apiary.io URL above.
 
 ## Eventzilla — adequate
 
@@ -4510,7 +4510,7 @@ Diffed against: <https://apidoc.factorialhr.com/reference>
 - [x] `attendance/overtime_requests` — overtime volume and approval state per employee (medium)
 - [x] `job_catalog/roles and job_catalog/levels` — lookup tables for role and level ids used in compensation banding (medium)
 
-Note: The reference exposes roughly 140 list endpoints across ATS, attendance, contracts, finance, payroll, performance, procurement, project management, time off, trainings and work schedules; PostHog covers 26. Other notable untapped families: performance review evaluations/scores, banking transactions, finance journal entries/lines, procurement purchase orders, trainings sessions/attendances, shift management, custom field values. The docs hub is readme.io with no downloadable OpenAPI - the resource list was read off the /reference sidebar route slugs (api-2026-07-01).
+Note: The reference exposes roughly 140 list endpoints across ATS, attendance, contracts, finance, payroll, performance, procurement, project management, time off, trainings and work schedules; Flind covers 26. Other notable untapped families: performance review evaluations/scores, banking transactions, finance journal entries/lines, procurement purchase orders, trainings sessions/attendances, shift management, custom field values. The docs hub is readme.io with no downloadable OpenAPI - the resource list was read off the /reference sidebar route slugs (api-2026-07-01).
 
 ## Faire — could not verify
 
@@ -4564,7 +4564,7 @@ Diffed against: <https://developers.featurebase.app/llms.txt>
 - [ ] `support/conversations/{id}/participants` — participant membership per conversation. No read endpoint exists: the participants subresource only exposes add and remove, and the conversation row already carries its participants (medium)
 - [ ] `help_center/collections` — lookup grouping articles into collections (low)
 
-Note: Featurebase has grown well past the feedback board: the reference now spans Support (conversations + tickets), Help Center, Surveys, Reports and Audit Logs. PostHog's 10 tables cover the Feedback pillar plus admins/companies/contacts only. Reports is a query API (list_datasets/query/drill_in) rather than a fixed collection, so it is not listed as a table gap. llms.txt at developers.featurebase.app gives the complete language-neutral resource tree.
+Note: Featurebase has grown well past the feedback board: the reference now spans Support (conversations + tickets), Help Center, Surveys, Reports and Audit Logs. Flind's 10 tables cover the Feedback pillar plus admins/companies/contacts only. Reports is a query API (list_datasets/query/drill_in) rather than a fixed collection, so it is not listed as a table gap. llms.txt at developers.featurebase.app gives the complete language-neutral resource tree.
 
 ## FieldPulse — **thin**
 
@@ -4635,7 +4635,7 @@ Diffed against: <https://site.financialmodelingprep.com/developer/docs/stable>
 - [ ] `/stable/insider-trading/search and /insider-trading/statistics` — insider transaction records, a widely used signal table (medium)
 - [ ] `/stable/revenue-product-segmentation and /stable/revenue-geographic-segmentation` — revenue breakdown dimensions that the income statement alone cannot provide (medium)
 
-Note: The stable docs page lists ~230 endpoints; PostHog exposes 21. None of the key-metrics, ratios, dividends or earnings paths accept a `from`/`to` filter — they take `symbol`, `limit` (capped at 1000, no page cursor) and, on the non-TTM pair, `period` — so all six sync as full refresh. The TTM endpoints return a single always-current row per symbol with no fiscal date, so they are keyed on `symbol` alone and carry no partition key. Of the later additions, only `/historical-market-capitalization` takes `from`/`to`, so it is the one that syncs incrementally on `date`; `/splits`, `/market-capitalization` and the three `available-*` lookups are full refresh. `/symbol-positions-summary` requires `year` and `quarter`, so it is fetched once per symbol per quarter over the last eight completed quarters and ships off by default. Other sizeable untapped families: financial-growth and \*-growth, enterprise-values, DCF endpoints, financial-scores, grades/ratings-historical, SEC filings search, ETF and fund holdings, economic-indicators and treasury-rates, congressional trading, index constituents, news, technical indicators, and the \*-bulk endpoints that would make warehouse-scale loads far cheaper. financialmodelingprep.com/stable/openapi.json exists but returns 401 without a key, and the site 403s default curl user agents - a browser UA on the docs page returns the full endpoint list.
+Note: The stable docs page lists ~230 endpoints; Flind exposes 21. None of the key-metrics, ratios, dividends or earnings paths accept a `from`/`to` filter — they take `symbol`, `limit` (capped at 1000, no page cursor) and, on the non-TTM pair, `period` — so all six sync as full refresh. The TTM endpoints return a single always-current row per symbol with no fiscal date, so they are keyed on `symbol` alone and carry no partition key. Of the later additions, only `/historical-market-capitalization` takes `from`/`to`, so it is the one that syncs incrementally on `date`; `/splits`, `/market-capitalization` and the three `available-*` lookups are full refresh. `/symbol-positions-summary` requires `year` and `quarter`, so it is fetched once per symbol per quarter over the last eight completed quarters and ships off by default. Other sizeable untapped families: financial-growth and \*-growth, enterprise-values, DCF endpoints, financial-scores, grades/ratings-historical, SEC filings search, ETF and fund holdings, economic-indicators and treasury-rates, congressional trading, index constituents, news, technical indicators, and the \*-bulk endpoints that would make warehouse-scale loads far cheaper. financialmodelingprep.com/stable/openapi.json exists but returns 401 without a key, and the site 403s default curl user agents - a browser UA on the docs page returns the full endpoint list.
 
 ## Finnhub — **thin**
 
@@ -4656,7 +4656,7 @@ Diffed against: <https://finnhub.io/static/swagger.json>
 - [x] `/index/constituents` — lookup table mapping indices to member symbols, enabling index-level roll-ups of synced symbols (medium) — added as `index_constituents`, fanned out over a new indices field
 - [x] `/calendar/economic` — macro event calendar; earnings and IPO calendars are already synced but the economic one is not (medium) — added as `economic_calendar`, full refresh over a rolling past+future window
 
-Note: Finnhub's public swagger exposes ~115 GET resources; PostHog syncs 11. Ownership (/stock/ownership, /stock/fund-ownership, /institutional/ownership), transcripts (/stock/transcripts/list), ETF/mutual-fund holdings, historical market cap and revenue breakdowns are also absent but ranked below the 12 above.
+Note: Finnhub's public swagger exposes ~115 GET resources; Flind syncs 11. Ownership (/stock/ownership, /stock/fund-ownership, /institutional/ownership), transcripts (/stock/transcripts/list), ETF/mutual-fund holdings, historical market cap and revenue breakdowns are also absent but ranked below the 12 above.
 
 ## Finnworlds — gaps
 
@@ -4717,7 +4717,7 @@ Diffed against: <https://docs.firecrawl.dev/llms.txt>
 
 No material gaps found.
 
-Note: Firecrawl's v2 API is action-oriented: nearly every endpoint is a POST job (scrape, crawl, batch-scrape, map, search, extract, parse) whose results are fetched per job ID, not a queryable collection. The listable GET collections are activity, crawl/active, credit-usage(+historical), token-usage(+historical), monitors and monitor checks - and PostHog syncs six of them. The only unsynced GETs are the current credit/token balance snapshots (the historical variants are already synced), team queue-status, threat-protection policy (config), Interact browser session listing, and per-job crawl/batch-scrape error lists, none of which justify a table.
+Note: Firecrawl's v2 API is action-oriented: nearly every endpoint is a POST job (scrape, crawl, batch-scrape, map, search, extract, parse) whose results are fetched per job ID, not a queryable collection. The listable GET collections are activity, crawl/active, credit-usage(+historical), token-usage(+historical), monitors and monitor checks - and Flind syncs six of them. The only unsynced GETs are the current credit/token balance snapshots (the historical variants are already synced), team queue-status, threat-protection policy (config), Interact browser session listing, and per-job crawl/batch-scrape error lists, none of which justify a table.
 
 ## FireHydrant — gaps
 
@@ -4843,7 +4843,7 @@ Diffed against: <https://developer.float.com/swagger-api-v3.yaml>
 - [x] `/public-holidays` — region public holidays; distinct from the team /holidays table already synced, needed for correct capacity math (medium)
 - [x] `/currencies` — lookup for currency codes on rate cards and project budgets (low)
 
-Note: Machine-readable OpenAPI at /swagger-api-v3.yaml enumerates 26 resources; PostHog covers 24. /project-templates was excluded as config.
+Note: Machine-readable OpenAPI at /swagger-api-v3.yaml enumerates 26 resources; Flind covers 24. /project-templates was excluded as config.
 
 ## Flowlu — **thin**
 
@@ -4864,7 +4864,7 @@ Diffed against: <https://www.flowlu.com/api/json/openapien.json>
 - [x] `/fin/organization/list` — lookup resolving the billing organization on invoices/transactions (medium) — added as `billing_organizations`
 - [x] `/crm/loss_reason/list` — lookup resolving loss reason IDs on closed-lost leads (medium) — added as `loss_reasons`
 
-Note: developers.flowlu.com is the API host, not docs (returns 404/api-key errors). The real spec is the ReDoc document at https://www.flowlu.com/api/json/openapien.json: 608 paths, 124 of them `/list` collections. PostHog exposes 21, so this is a small fraction - other untouched clusters include knowledgebase/\*, businessprocess/\*, telephony/calls, im/\* (chat threads and messages), products/pricelist_item and company/absences.
+Note: developers.flowlu.com is the API host, not docs (returns 404/api-key errors). The real spec is the ReDoc document at https://www.flowlu.com/api/json/openapien.json: 608 paths, 124 of them `/list` collections. Flind exposes 21, so this is a small fraction - other untouched clusters include knowledgebase/\*, businessprocess/\*, telephony/calls, im/\* (chat threads and messages), products/pricelist_item and company/absences.
 
 ## Flutterwave — gaps
 
@@ -4894,7 +4894,7 @@ Diffed against: <https://docs.machines.dev/spec/openapi3.json>
 - [x] `/apps/{app_name}/volumes/{volume_id}/snapshots` — snapshot history per volume for backup coverage reporting (medium)
 - [ ] `/postgres` — managed Postgres cluster inventory (plus /postgres/{id}/databases) missing from the infra picture (low)
 
-Note: PostHog syncs machines/volumes via the org-wide /orgs/{org_slug}/... routes. Events, versions and volume snapshots only exist per app resource, so each fans out over its org-wide parent listing and carries the parent's app name and id onto every row. Those three endpoints return a bare array with no cursor, so each sync stores the history the API returns at that moment. secrets/secretkeys, certificates and lease endpoints excluded as plumbing.
+Note: Flind syncs machines/volumes via the org-wide /orgs/{org_slug}/... routes. Events, versions and volume snapshots only exist per app resource, so each fans out over its org-wide parent listing and carries the parent's app name and id onto every row. Those three endpoints return a bare array with no cursor, so each sync stores the history the API returns at that moment. secrets/secretkeys, certificates and lease endpoints excluded as plumbing.
 
 ## Folk — gaps
 
@@ -4965,7 +4965,7 @@ Diffed against: <https://developers.freshcaller.com/api/>
 
 - [x] `/api/v1/user-statuses` — lookup resolving the custom agent status IDs on users and call legs (available/break/etc) (medium)
 
-Note: Freshcaller's public API is genuinely small - calls, call_metrics (with include=life_cycle), teams, users, user-statuses, plus recording download/delete and an account export job. PostHog covers 4 of the 5 listable collections; call recordings are per-call binaries, not a queryable collection.
+Note: Freshcaller's public API is genuinely small - calls, call_metrics (with include=life_cycle), teams, users, user-statuses, plus recording download/delete and an account export job. Flind covers 4 of the 5 listable collections; call recordings are per-call binaries, not a queryable collection.
 
 ## Freshchat — gaps
 
@@ -5022,7 +5022,7 @@ Diffed against: <https://developers.freshworks.com/crm/api/>
 - [ ] `/api/cpq/cpq_documents (+ /{id}/related_products)` — quotes/documents with their product line items - quoted vs won revenue (medium)
 - [ ] `/api/contacts/{id}/activities.json` — per-contact activity timeline (notes, calls, emails) not reachable from any synced table (medium)
 
-Note: The `/api/selector/\*` family is a set of ~18 small lookup collections (also deal_reasons, deal_types, industry_types, business_types, campaigns, currencies, designations, deal_payment_statuses) that resolve nearly every foreign key on the objects PostHog already syncs - cheap to add and the highest leverage here. `/api/settings/{module}/fields` additionally exposes custom-field metadata and dropdown choices. Notes have no list endpoint (create/read/update/delete only), so they are only reachable via the contact activities sub-resource.
+Note: The `/api/selector/\*` family is a set of ~18 small lookup collections (also deal_reasons, deal_types, industry_types, business_types, campaigns, currencies, designations, deal_payment_statuses) that resolve nearly every foreign key on the objects Flind already syncs - cheap to add and the highest leverage here. `/api/settings/{module}/fields` additionally exposes custom-field metadata and dropdown choices. Notes have no list endpoint (create/read/update/delete only), so they are only reachable via the contact activities sub-resource.
 
 ## Freshservice — gaps
 
@@ -5105,7 +5105,7 @@ Diffed against: <https://docs.fulcrumapp.com/reference/records-intro>
 - [ ] `attachments` — arbitrary file attachments linked to records, with metadata for completeness checks (low)
 - [ ] `layers` — reference data layers that records join against for spatial context (low)
 
-Note: Fulcrum's REST reference nav lists 182 pages. PostHog covers nearly every top-level collection with a get-all; the misses are mostly history and grouping resources.
+Note: Fulcrum's REST reference nav lists 182 pages. Flind covers nearly every top-level collection with a get-all; the misses are mostly history and grouping resources.
 
 ## FullStory — **thin**
 
@@ -5189,7 +5189,7 @@ Diffed against: <https://jsapi.apiary.io/apis/gainsightpx.apib>
 - [ ] `feature/adoption/{featureId}` — vendor-precomputed adoption statistics per feature — a breakdown dimension that is expensive to recompute (medium)
 - [ ] `events/lead` — lead capture events from in-product forms, for acquisition attribution (low)
 
-Note: Fetched the Swagger 2.0 spec behind the Apiary docs (api.aptrinsic.com). PostHog syncs the seven entity/config objects but none of the /v1/events/\* streams, which are the bulk of what Gainsight PX actually captures and where all the product-analytics value sits.
+Note: Fetched the Swagger 2.0 spec behind the Apiary docs (api.aptrinsic.com). Flind syncs the seven entity/config objects but none of the /v1/events/\* streams, which are the bulk of what Gainsight PX actually captures and where all the product-analytics value sits.
 
 ## Gcore — gaps
 
@@ -5369,7 +5369,7 @@ Diffed against: <https://developer.gladly.com/rest/>
 - [ ] `/api/v1/audiences` — lookup resolving audience IDs on answers (low)
 - [ ] `/api/v1/tasks/{taskId}/comments` — task discussion thread (low)
 
-Note: Important: PostHog does not use Gladly's REST list endpoints — it ingests the file-based Export API (scheduled jobs producing JSONL, 14-day retention), and the spec confirms the export ships exactly four files: agents.jsonl, conversation_items.jsonl, customers.jsonl, topics.jsonl. So export coverage is complete; every gap below requires adding REST calls alongside the export path, and several Gladly REST resources are per-ID only with no list-all endpoint. Endpoint list extracted from the embedded Redoc spec (\_\_redoc_state) on the docs page, not from the summarized page text.
+Note: Important: Flind does not use Gladly's REST list endpoints — it ingests the file-based Export API (scheduled jobs producing JSONL, 14-day retention), and the spec confirms the export ships exactly four files: agents.jsonl, conversation_items.jsonl, customers.jsonl, topics.jsonl. So export coverage is complete; every gap below requires adding REST calls alongside the export path, and several Gladly REST resources are per-ID only with no list-all endpoint. Endpoint list extracted from the embedded Redoc spec (\_\_redoc_state) on the docs page, not from the summarized page text.
 
 ## Glassfrog — gaps
 
@@ -5388,7 +5388,7 @@ Diffed against: <https://app.glassfrog.com/api/v3/docs/spec.yaml>
 - [ ] `/organizations` — top-level org lookup that scopes every other table (medium)
 - [ ] `/triggers` — role triggers (when-then rules) attached to roles and people (low)
 
-Note: The docs page at /api/v3/docs is a Swagger UI shell; the real spec is at /api/v3/docs/spec.yaml, which is what was diffed. GlassFrog exposes 18 listable top-level collections and PostHog covers 12.
+Note: The docs page at /api/v3/docs is a Swagger UI shell; the real spec is at /api/v3/docs/spec.yaml, which is what was diffed. GlassFrog exposes 18 listable top-level collections and Flind covers 12.
 
 ## GLEIF (Global Legal Entity Identifier Foundation) — gaps
 
@@ -5511,7 +5511,7 @@ Diffed against: <https://pagespeedonline.googleapis.com/$discovery/rest?version=
 
 No material gaps found.
 
-Note: The v5 discovery document exposes exactly one method, pagespeedapi.runPagespeed. PostHog's two tables are the desktop/mobile strategy variants of that single call, so coverage is complete at the endpoint level. Only remaining lever is the `category` request param (accessibility, seo, best-practices, pwa) - a parameter, not a missing endpoint.
+Note: The v5 discovery document exposes exactly one method, pagespeedapi.runPagespeed. Flind's two tables are the desktop/mobile strategy variants of that single call, so coverage is complete at the endpoint level. Only remaining lever is the `category` request param (accessibility, seo, best-practices, pwa) - a parameter, not a missing endpoint.
 
 ## GoogleWebfonts — adequate
 
@@ -5585,7 +5585,7 @@ Diffed against: <https://docs.granola.ai/api-reference/openapi.json>
 - [x] `transcripts (GET /v1/notes/{note_id}/transcript)` — cursor-paginated transcript items per note, added in API v1.4.0 for transcripts too large to return inline. Shipped as `transcripts`, fanned out over the notes listing (full refresh).
 - [x] `spaces (GET /v1/spaces)` — cursor-paginated list of the spaces the API key can access, added in API v1.6.0; resolves the `space_id` now carried on folders. Shipped as `spaces` (full refresh, no timestamp fields or time filter).
 
-Note: PostHog's folders, notes, spaces and transcripts tables cover the note-data resources in the public OpenAPI. The remaining paths are single-note lookups and webhook-endpoint, audit and legal-hold management.
+Note: Flind's folders, notes, spaces and transcripts tables cover the note-data resources in the public OpenAPI. The remaining paths are single-note lookups and webhook-endpoint, audit and legal-hold management.
 
 ## Greenhouse — gaps
 
@@ -5663,7 +5663,7 @@ Diffed against: <https://open-platform.theguardian.com/documentation/md/index.md
 
 No material gaps found.
 
-Note: The Content API documents exactly five endpoints: content (/search), tags, sections, editions and single item (/{item-id}). PostHog syncs the four list endpoints; single item is an ID lookup into content, not a separate collection. Depth options (show-fields, show-tags, show-blocks) are query parameters on /search rather than distinct resources.
+Note: The Content API documents exactly five endpoints: content (/search), tags, sections, editions and single item (/{item-id}). Flind syncs the four list endpoints; single item is an ID lookup into content, not a separate collection. Depth options (show-fields, show-tags, show-blocks) are query parameters on /search rather than distinct resources.
 
 ## Gumroad — gaps
 
@@ -5797,7 +5797,7 @@ Diffed against: <https://healthchecks.io/docs/api/>
 
 No material gaps found.
 
-Note: The Management API v3 exposes exactly: list/get checks, list pings, get ping body, list flips, list channels, list badges and a status endpoint. PostHog syncs checks, pings, flips and channels - all four analytical collections. Badges returns per-tag SVG/JSON badge URLs (presentation plumbing) and /status is a service health probe, neither of which is a warehouse table. Remaining endpoints are writes (create/update/delete/pause/resume).
+Note: The Management API v3 exposes exactly: list/get checks, list pings, get ping body, list flips, list channels, list badges and a status endpoint. Flind syncs checks, pings, flips and channels - all four analytical collections. Badges returns per-tag SVG/JSON badge URLs (presentation plumbing) and /status is a service health probe, neither of which is a warehouse table. Remaining endpoints are writes (create/update/delete/pause/resume).
 
 ## Height — could not verify
 
@@ -5807,7 +5807,7 @@ Diffed against: <https://height.notion.site/API-documentation-643aea5bf01742de92
 
 No reachable API reference found during the sweep. Needs a manual pass.
 
-Note: Could not reach any vendor-hosted doc this run: the Notion doc URL in the payload returns Cloudflare 403 to curl and an empty page to WebFetch, the Notion private API (loadPageChunk/getPublicPageData) reports publicAccessRole=none, and height.app / api.height.app / docs.height.app do not resolve at all from this host (curl exit 0 bytes), suggesting the product may be gone. Two non-vendor sources agree and both point at a large gap: Airbyte's Height connector doc (raw.githubusercontent.com/airbytehq/airbyte/master/docs/integrations/sources/height.md) lists streams workspace, lists, tasks, activities, field_templates, users, groups, search; and a third-party Redoc mirror (https://height-api.xyz/redocusaurus/default.yaml) lists /lists, /tasks, /tasks/move, /activities, /fieldTemplates, /fieldTemplates/:id/options, /taskForms/:id/answers, /users, /groups, /securityLogEvents, /workspace. PostHog exposes only field_templates, lists, users (products/warehouse_sources/sources/height/settings.py, static ENDPOINTS, no dynamic discovery) — so /tasks (the core object) and /activities (task events/messages/status changes) look like high-priority gaps, plus /groups and /fieldTemplates/:id/options as lookup tables. Not reported as gaps because the vendor spec itself could not be read.
+Note: Could not reach any vendor-hosted doc this run: the Notion doc URL in the payload returns Cloudflare 403 to curl and an empty page to WebFetch, the Notion private API (loadPageChunk/getPublicPageData) reports publicAccessRole=none, and height.app / api.height.app / docs.height.app do not resolve at all from this host (curl exit 0 bytes), suggesting the product may be gone. Two non-vendor sources agree and both point at a large gap: Airbyte's Height connector doc (raw.githubusercontent.com/airbytehq/airbyte/master/docs/integrations/sources/height.md) lists streams workspace, lists, tasks, activities, field_templates, users, groups, search; and a third-party Redoc mirror (https://height-api.xyz/redocusaurus/default.yaml) lists /lists, /tasks, /tasks/move, /activities, /fieldTemplates, /fieldTemplates/:id/options, /taskForms/:id/answers, /users, /groups, /securityLogEvents, /workspace. Flind exposes only field_templates, lists, users (products/warehouse_sources/sources/height/settings.py, static ENDPOINTS, no dynamic discovery) — so /tasks (the core object) and /activities (task events/messages/status changes) look like high-priority gaps, plus /groups and /fieldTemplates/:id/options as lookup tables. Not reported as gaps because the vendor spec itself could not be read.
 
 ## Helicone — gaps
 
@@ -5972,7 +5972,7 @@ Diffed against: <https://apidocs.hibob.com/reference/get_tasks>
 - [x] `POST /employers/search` and `POST /employers/{employerId}/work-locations/search` — employer legal entities and their work locations from the Employer API (medium). Added as `employers` and `work_locations`; work locations fan out over employer ids, full refresh.
 - [x] `POST /skills/search` and `GET /skills/proficiency-levels` — the Skills API catalog and its proficiency levels lookup (low). Added as `skills` and `skill_proficiency_levels`, full refresh. The search only returns skills created through the Public API.
 
-Note: PostHog exposes only employees (POST /v1/people/search) and tasks (GET /v1/tasks) from a very large HR API — the reference nav on apidocs.hibob.com lists roughly 190 operations across people, time off, attendance, hiring, goals, job catalog, payroll, documents and workforce planning. Endpoints are static in hibob/settings.py with no dynamic table discovery. Note most read endpoints are POST /...\/search rather than GET, which the implementation will need to handle.
+Note: Flind exposes only employees (POST /v1/people/search) and tasks (GET /v1/tasks) from a very large HR API — the reference nav on apidocs.hibob.com lists roughly 190 operations across people, time off, attendance, hiring, goals, job catalog, payroll, documents and workforce planning. Endpoints are static in hibob/settings.py with no dynamic table discovery. Note most read endpoints are POST /...\/search rather than GET, which the implementation will need to handle.
 
 ## Hightouch — gaps
 
@@ -6140,7 +6140,7 @@ Diffed against: <https://huggingface.co/.well-known/openapi.json>
 - [ ] `/api/models|datasets/{namespace}/{repo}/refs` — branches and tags per repo, needed to interpret revision-scoped data (low)
 - [ ] `/api/models|datasets/{namespace}/{repo}/lfs-files` — per-file storage footprint for repo size analysis (low)
 
-Note: PostHog exposes only 3 tables against a 252-path API. Diffed against the official machine-readable spec at https://huggingface.co/.well-known/openapi.json. Note the spec does not itself document the /api/models, /api/datasets and /api/spaces list endpoints PostHog already uses, so the spec undercounts rather than overcounts. Source dir products/warehouse_sources/.../hugging_face uses a static ENDPOINTS tuple - no dynamic discovery.
+Note: Flind exposes only 3 tables against a 252-path API. Diffed against the official machine-readable spec at https://huggingface.co/.well-known/openapi.json. Note the spec does not itself document the /api/models, /api/datasets and /api/spaces list endpoints Flind already uses, so the spec undercounts rather than overcounts. Source dir products/warehouse_sources/.../hugging_face uses a static ENDPOINTS tuple - no dynamic discovery.
 
 ## Humanitec — **thin**
 
@@ -6172,7 +6172,7 @@ Diffed against: <https://api.humanitix.com/v1/documentation/json>
 - [x] `/v1/events/{eventId}/check-in-count` — attendance vs sold counts per event, the headline event-day metric (medium). Added as `check_in_counts` (one request per non-deleted date in each event's `dates`). The API marks it beta.
 - [ ] `/v1/global/event-dates` — occurrence/date rows for recurring events, needed to attribute orders to a specific date (medium). Skipped: it lists event dates from across the whole Humanitix platform rather than the account's own, and needs a permission Humanitix grants by hand. Orders and tickets already carry `eventDateId`, and `events.dates` lists each event's dates.
 
-Note: Fetched the OpenAPI 3.0 spec directly. Orders and tickets are nested under /v1/events/{eventId}, so PostHog syncs them with a per-event fan-out over `events`.
+Note: Fetched the OpenAPI 3.0 spec directly. Orders and tickets are nested under /v1/events/{eventId}, so Flind syncs them with a per-event fan-out over `events`.
 
 ## Huntr — gaps
 
@@ -6237,7 +6237,7 @@ Diffed against: <https://docs.imagga.com/>
 
 No material gaps found.
 
-Note: docs.imagga.com is a JS SPA that ships no server-rendered resource list, no llms.txt, no sitemap and no OpenAPI file, so I enumerated the API surface by probing api.imagga.com/v2 unauthenticated (401 = real endpoint, 404 = not a route). Confirmed real: /tags, /categories, /categorizers, /croppings, /colors, /faces/detections, /faces/similarity, /faces/groupings, /text, /barcodes, /uploads, /usage. Every one except /usage and /categorizers is per-image inference requiring an image_url/image param — there is nothing record-oriented to list, no cursors, no collections. /v2/categorizers is a tiny static lookup of trained categorizer names, not worth a table. PostHog's `usage` + `daily\_usage` split of GET /v2/usage is the whole warehouse-queryable surface, and the source's own settings.py already documents this reasoning.
+Note: docs.imagga.com is a JS SPA that ships no server-rendered resource list, no llms.txt, no sitemap and no OpenAPI file, so I enumerated the API surface by probing api.imagga.com/v2 unauthenticated (401 = real endpoint, 404 = not a route). Confirmed real: /tags, /categories, /categorizers, /croppings, /colors, /faces/detections, /faces/similarity, /faces/groupings, /text, /barcodes, /uploads, /usage. Every one except /usage and /categorizers is per-image inference requiring an image_url/image param — there is nothing record-oriented to list, no cursors, no collections. /v2/categorizers is a tiny static lookup of trained categorizer names, not worth a table. Flind's `usage` + `daily\_usage` split of GET /v2/usage is the whole warehouse-queryable surface, and the source's own settings.py already documents this reasoning.
 
 ## impact.com — **thin**
 
@@ -6313,7 +6313,7 @@ Diffed against: <https://api-docs.incident.io/>
 - [x] `/v2/status_page_incidents and /v2/status_page_incident_updates` — customer-facing incident communications, separate objects from internal incidents (medium). Added as `status_page_incidents` (fan-out over `status_pages`, since `status_page_id` is a required query param). `/v2/status_page_incident_updates` is create-only (no list operation); the updates arrive in each incident's `updates` column.
 - [x] `/v2/status_pages` — status page lookup, and the parent the status page incident fan-out iterates. Added as `status_pages`.
 
-Note: The Mintlify docs site serves the same 537KB SPA shell for every path (including /openapi.json, /llms.txt, /docs.json), but that shell embeds the full route table plus a per-tag spec manifest (openapi/tags/\*.json, 53 tags). I diffed against that. Note the API spans three versions concurrently - v1 (severities, incident_statuses, incident_types, custom_field_options, postmortem_documents, maintenance_windows), v2 (most things) and v3 (catalog, teams, alert_routes) - and the existing PostHog source already mixes v1 and v2, so adding v3 paths is consistent. Excluded as config/plumbing: alert_routes, workflows, secrets, api_keys, ip_allowlists, heartbeat, telemetry, notification methods/rules, schedule sync rules/targets.
+Note: The Mintlify docs site serves the same 537KB SPA shell for every path (including /openapi.json, /llms.txt, /docs.json), but that shell embeds the full route table plus a per-tag spec manifest (openapi/tags/\*.json, 53 tags). I diffed against that. Note the API spans three versions concurrently - v1 (severities, incident_statuses, incident_types, custom_field_options, postmortem_documents, maintenance_windows), v2 (most things) and v3 (catalog, teams, alert_routes) - and the existing Flind source already mixes v1 and v2, so adding v3 paths is consistent. Excluded as config/plumbing: alert_routes, workflows, secrets, api_keys, ip_allowlists, heartbeat, telemetry, notification methods/rules, schedule sync rules/targets.
 
 ## Infisical — gaps
 
@@ -6558,7 +6558,7 @@ Diffed against: <https://www.ip2whois.com/developers-api>
 
 No material gaps found.
 
-Note: IP2WHOIS's Domain WHOIS product is literally one endpoint: GET https://api.ip2whois.com/v2?key=&domain=&format=. PostHog's `whois` table covers it fully (the source takes a user-configured domain list and does one lookup per domain). The vendor nav on the fetched page links a second product, 'Hosted Domains API' (/developers-domains-api, sibling of the /domains-lookup UI, returns domains sharing an IP/registrant). I could not read that page — Cloudflare returns 403 to non-browser clients on that path only — so I am not reporting it as a gap: I could not confirm its request shape or whether it shares the IP2WHOIS license key. Worth a manual look if someone wants to widen this source.
+Note: IP2WHOIS's Domain WHOIS product is literally one endpoint: GET https://api.ip2whois.com/v2?key=&domain=&format=. Flind's `whois` table covers it fully (the source takes a user-configured domain list and does one lookup per domain). The vendor nav on the fetched page links a second product, 'Hosted Domains API' (/developers-domains-api, sibling of the /domains-lookup UI, returns domains sharing an IP/registrant). I could not read that page — Cloudflare returns 403 to non-browser clients on that path only — so I am not reporting it as a gap: I could not confirm its request shape or whether it shares the IP2WHOIS license key. Worth a manual look if someone wants to widen this source.
 
 ## Iterable — **thin**
 
@@ -6774,7 +6774,7 @@ Diffed against: <https://developers.justsift.com>
 
 No material gaps found.
 
-Note: The Sift API is tiny: the inline ReDoc OpenAPI spec (extracted from \_\_redoc_state on developers.justsift.com) exposes only 4 paths — /people/{idOrEmail}, /search/people (GET+POST), /fields/person, and /media/people/{idOrEmail}/{mediaKind}. PostHog's `people` and `fields` tables cover both queryable collections; /media is binary profile imagery and /search/people returns the same person records.
+Note: The Sift API is tiny: the inline ReDoc OpenAPI spec (extracted from \_\_redoc_state on developers.justsift.com) exposes only 4 paths — /people/{idOrEmail}, /search/people (GET+POST), /fields/person, and /media/people/{idOrEmail}/{mediaKind}. Flind's `people` and `fields` tables cover both queryable collections; /media is binary profile imagery and /search/people returns the same person records.
 
 ## K6Cloud — gaps
 
@@ -6789,7 +6789,7 @@ Diffed against: <https://api.k6.io/cloud/v6/openapi>
 - [x] `labels` — lookup table of the organization's label keys (id, key, description); the values set on projects are not returned by this endpoint (medium)
 - [ ] `test_runs/{id}/labels` — label dimensions present on a run's metrics (url, status, scenario, method), needed to slice metric data (medium)
 
-Note: Two API versions in play: the resource endpoints PostHog syncs are /cloud/v6/\* (spec at https://api.k6.io/cloud/v6/openapi), but all metrics endpoints are /cloud/v5/\* and are documented only in prose at https://grafana.com/docs/grafana-cloud/testing/k6/reference/cloud-rest-api/metrics/ — not in the OpenAPI file. The v5 metrics endpoints use an unusual OData-ish call syntax, e.g. /cloud/v5/test_runs/:id/query_aggregate_k6(:parameters), and offer an /ms alias to dodge ad blockers.
+Note: Two API versions in play: the resource endpoints Flind syncs are /cloud/v6/\* (spec at https://api.k6.io/cloud/v6/openapi), but all metrics endpoints are /cloud/v5/\* and are documented only in prose at https://grafana.com/docs/grafana-cloud/testing/k6/reference/cloud-rest-api/metrics/ — not in the OpenAPI file. The v5 metrics endpoints use an unusual OData-ish call syntax, e.g. /cloud/v5/test_runs/:id/query_aggregate_k6(:parameters), and offer an /ms alias to dodge ad blockers.
 
 ## Kalshi — **thin**
 
@@ -6831,7 +6831,7 @@ Diffed against: <https://documenter.gw.postman.com/api/collections/15284493/TzCT
 - [ ] `tags` — lookup table for the tags used to segment devices (medium)
 - [ ] `devices/{device_id}/commands` — MDM command history per device, for troubleshooting and success-rate reporting (medium)
 
-Note: Docs are a published Postman collection (api-docs.kandji.io is a Postman documenter page, not OpenAPI — /openapi.json 404s); the machine-readable form is the collection JSON linked above. Product is being rebranded to 'Iru Endpoint Management' in the collection title. PostHog's 5 tables cover devices plus three per-device sub-resources and blueprints, while the collection exposes ~130 requests; the entire Prism reporting surface (the part designed for exactly this kind of export) is absent.
+Note: Docs are a published Postman collection (api-docs.kandji.io is a Postman documenter page, not OpenAPI — /openapi.json 404s); the machine-readable form is the collection JSON linked above. Product is being rebranded to 'Iru Endpoint Management' in the collection title. Flind's 5 tables cover devices plus three per-device sub-resources and blueprints, while the collection exposes ~130 requests; the entire Prism reporting surface (the part designed for exactly this kind of export) is absent.
 
 ## kapa.ai — adequate
 
@@ -6862,7 +6862,7 @@ Diffed against: <https://api.katanamrp.com/v1/openapi.json>
 - [x] `bin_locations and bin_inventory` — bin-level stock lookup and on-hand quantities below the location grain we already sync (medium)
 - [x] `operators` — lookup table resolving operator IDs referenced by manufacturing order operations (medium)
 
-Note: The docs site (developer.katanamrp.com) is a ReadMe app, but the live gateway serves a full OpenAPI 3.0 document at https://api.katanamrp.com/v1/openapi.json — 120 paths. PostHog's 18 tables cover almost every header-level object but essentially none of the row/line-item children, which is where most manufacturing analytics lives. Also unsynced but lower value: serial_numbers, batch_stocks, additional_costs, po_additional_cost_rows, demand_forecasts, negative_stock, custom_field_definitions, customer_addresses, supplier_addresses.
+Note: The docs site (developer.katanamrp.com) is a ReadMe app, but the live gateway serves a full OpenAPI 3.0 document at https://api.katanamrp.com/v1/openapi.json — 120 paths. Flind's 18 tables cover almost every header-level object but essentially none of the row/line-item children, which is where most manufacturing analytics lives. Also unsynced but lower value: serial_numbers, batch_stocks, additional_costs, po_additional_cost_rows, demand_forecasts, negative_stock, custom_field_definitions, customer_addresses, supplier_addresses.
 
 ## Kernel — gaps
 
@@ -6935,7 +6935,7 @@ Diffed against: <https://pub.klausapp.com/public-export-api.swagger.json>
 - [x] `/api/export/quizzes/{id}/overview` — per-quiz aggregate results, the vendor's own summary view (medium). Added as `quiz_overviews` (fan-out over `quizzes`).
 - [x] `/api/export/quizzes/leaderboard` — agent ranking dimension across quizzes (medium). Added as `quiz_leaderboard`.
 
-Note: Now branded Zendesk QA. pub.klausapp.com hosts two Swagger 2.0 specs; the relevant one is public-export-api.swagger.json (18 paths) — the sibling public-import-api.swagger.json is write-only ingestion and irrelevant here. PostHog's 10 tables map 1:1 onto the workspace-scoped export endpoints; the only genuine holes are the quiz sub-resources and the POST-based conversation search (which needs a request body, so it is more work than the plain GET exports).
+Note: Now branded Zendesk QA. pub.klausapp.com hosts two Swagger 2.0 specs; the relevant one is public-export-api.swagger.json (18 paths) — the sibling public-import-api.swagger.json is write-only ingestion and irrelevant here. Flind's 10 tables map 1:1 onto the workspace-scoped export endpoints; the only genuine holes are the quiz sub-resources and the POST-based conversation search (which needs a request body, so it is more work than the plain GET exports).
 
 ## Klaviyo — adequate
 
@@ -6981,7 +6981,7 @@ Diffed against: <https://developer.knowbe4.com/elvis-swagger.yml>
 - [ ] `/v1/training/store_purchases` — lookup resolving the ModStore content IDs referenced by training campaigns (low)
 - [ ] `/events, /event_types, /statuses (User Events API)` — custom user risk events plus their type and status lookup tables, feeding into Risk Score (low)
 
-Note: developer.knowbe4.com is a Vue+ReDoc SPA with no visible spec link; the specs are served as static files found in /js/app.e2f7b1e2.js — /elvis-swagger.yml is the Reporting API (what PostHog syncs, 24 paths) and /echelon-swagger.yml is the separate User Events API (different base host and API key, hence the low priority on events/event_types/statuses). PostHog's 8 tables cover the Reporting API's collection endpoints well; what is missing is almost entirely the risk_score_history sub-resources, which are per-entity fan-outs but carry the product's defining metric.
+Note: developer.knowbe4.com is a Vue+ReDoc SPA with no visible spec link; the specs are served as static files found in /js/app.e2f7b1e2.js — /elvis-swagger.yml is the Reporting API (what Flind syncs, 24 paths) and /echelon-swagger.yml is the separate User Events API (different base host and API key, hence the low priority on events/event_types/statuses). Flind's 8 tables cover the Reporting API's collection endpoints well; what is missing is almost entirely the risk_score_history sub-resources, which are per-entity fan-outs but carry the product's defining metric.
 
 ## Kommo — gaps
 
@@ -7034,7 +7034,7 @@ Diffed against: <https://raw.githubusercontent.com/Kong/developer.konghq.com/mai
 - [x] `/control-planes/{id}/core-entities/upstreams and /targets` — upstream/target topology behind each service for latency attribution (low)
 - [x] `/openmeter/meters and /openmeter/subscriptions (Metering & Billing v3)` — metered usage and subscription state for cost-per-request analysis (low)
 
-Note: Kong publishes 25 separate Konnect OpenAPI specs under https://github.com/Kong/developer.konghq.com/tree/main/api-specs/konnect; PostHog implements one path (/api-requests) from analytics-requests/v2. Other specs diffed this run: control-planes/v2, control-planes-config/v2, analytics-metrics/v2, api-products/v2, consumers/v1, service-catalog/v1, audit-logs/v3, metering-and-billing/v3. The audit-logs v3 spec only exposes webhook/destination config, so there is no queryable audit-log table to add.
+Note: Kong publishes 25 separate Konnect OpenAPI specs under https://github.com/Kong/developer.konghq.com/tree/main/api-specs/konnect; Flind implements one path (/api-requests) from analytics-requests/v2. Other specs diffed this run: control-planes/v2, control-planes-config/v2, analytics-metrics/v2, api-products/v2, consumers/v1, service-catalog/v1, audit-logs/v3, metering-and-billing/v3. The audit-logs v3 spec only exposes webhook/destination config, so there is no queryable audit-log table to add.
 
 ## Koyeb — gaps
 
@@ -7050,7 +7050,7 @@ Diffed against: <https://raw.githubusercontent.com/koyeb/koyeb-api-client-go/mai
 - [ ] `/v1/regional_deployment_events` — per-region deployment transition history to explain rollout failures (medium)
 - [ ] `/v1/catalog/datacenters` — lookup mapping datacenter ids on regional deployments to physical locations (medium)
 - [ ] `/v1/organizations` — lookup for organization_id on nearly every synced record (medium)
-- [ ] `/v1/instance_snapshots` — instance snapshot inventory; PostHog syncs only volume /v1/snapshots (medium)
+- [ ] `/v1/instance_snapshots` — instance snapshot inventory; Flind syncs only volume /v1/snapshots (medium)
 - [ ] `/v1/instance_snapshot_events` — snapshot lifecycle transitions (low)
 - [ ] `/v1/organizations/{organization_id}/quotas and /v1/quotas/capacity` — quota headroom vs. actual instance counts (low)
 - [ ] `/v1/archives` — build archive metadata linking deployments to source bundles (low)
@@ -7074,7 +7074,7 @@ Diffed against: <https://docs.kubecost.com/apis/apis-overview>
 - [ ] `GET /model/forecast (Forecast API)` — predicted future spend for allocation, assets and cloud cost (low)
 - [ ] `GET /model/projectDisks and /model/projectAddresses` — orphaned disk and IP inventory driving waste cleanup (low)
 
-Note: All four PostHog tables come from just two paths (/model/allocation with three aggregate values, and /model/assets) per products/warehouse_sources/sources/kubecost/settings.py. The docs are now IBM-hosted; docs.kubecost.com/apis/monitoring-apis/README.html 404s but individual API pages resolve.
+Note: All four Flind tables come from just two paths (/model/allocation with three aggregate values, and /model/assets) per products/warehouse_sources/sources/kubecost/settings.py. The docs are now IBM-hosted; docs.kubecost.com/apis/monitoring-apis/README.html 404s but individual API pages resolve.
 
 ## Kustomer — gaps
 
@@ -7180,7 +7180,7 @@ Diffed against: <https://api.smith.langchain.com/openapi.json>
 - [ ] `GET /api/v1/runs/rules and /api/v1/runs/rules/{rule_id}/logs` — the automation rules that generate feedback and queue entries, plus their firing history (low)
 - [ ] `GET /api/v1/audit-logs` — workspace configuration and access change history (low)
 
-Note: The spec has 365 paths. PostHog's `projects` table maps to /api/v1/sessions and `runs` to POST /api/v1/runs/query, so the core tracing surface is covered; the gaps are mostly one level down (queue contents, dataset versions) or lookup tables.
+Note: The spec has 365 paths. Flind's `projects` table maps to /api/v1/sessions and `runs` to POST /api/v1/runs/query, so the core tracing surface is covered; the gaps are mostly one level down (queue contents, dataset versions) or lookup tables.
 
 ## Lattice — gaps
 
@@ -7229,7 +7229,7 @@ Diffed against: <https://docs.leadfeeder.com/api/>
 
 - [x] `GET /accounts/{account_id}/custom_feeds (and GET /accounts/{account_id}/custom_feeds/{id}/leads)` — custom feeds are the saved lead segments; syncing them resolves feed ids and lets leads be attributed to a segment (medium)
 
-Note: The docs page PostHog targets is explicitly labelled the legacy Leadfeeder API and points new integrations at the newer Dealfront platform API (https://docs.dealfront.com/api/public), which the page says exposes richer company/contact data, financials, signals, tags, lists and CRM relationships. That newer API is hosted on Apidog with no fetchable spec, so its resource list is unverified and not enumerated here - but the connector is built on a deprecated API and is worth a migration review. Legacy API resources are only accounts, custom feeds, leads, visits and feed exports; PostHog covers three of the four queryable ones.
+Note: The docs page Flind targets is explicitly labelled the legacy Leadfeeder API and points new integrations at the newer Dealfront platform API (https://docs.dealfront.com/api/public), which the page says exposes richer company/contact data, financials, signals, tags, lists and CRM relationships. That newer API is hosted on Apidog with no fetchable spec, so its resource list is unverified and not enumerated here - but the connector is built on a deprecated API and is worth a migration review. Legacy API resources are only accounts, custom feeds, leads, visits and feed exports; Flind covers three of the four queryable ones.
 
 ## Leexi — adequate
 
@@ -7308,7 +7308,7 @@ Diffed against: <https://hire.lever.co/developer/documentation>
 - [ ] `opportunities/{id}/forms` — profile form responses hold structured screening answers (low)
 - [ ] `opportunities/{id}/resumes` — parsed resume metadata (schools, employers) for candidate-source analysis (low)
 
-Note: Most Lever gaps are sub-resources nested under /opportunities/{id}, which PostHog already syncs, so they can be fanned out from the existing opportunities table. /v1/contacts has retrieve+update only (no list), so it is not syncable. EEO responses exist (/v1/eeo/responses) but were excluded as sensitive PII rather than analytical.
+Note: Most Lever gaps are sub-resources nested under /opportunities/{id}, which Flind already syncs, so they can be fanned out from the existing opportunities table. /v1/contacts has retrieve+update only (no list), so it is not syncable. EEO responses exist (/v1/eeo/responses) but were excluded as sensitive PII rather than analytical.
 
 ## Lexware Office (formerly lexoffice), Haufe-Lexware GmbH — gaps
 
@@ -7349,10 +7349,10 @@ Today (12): `accounts`, `contacts`, `custom_objects`, `emails`, `field_definitio
 
 Diffed against: <https://docs.lightfield.app/api/resources/object/methods/list/>
 
-- [x] `objects/{entitySlug} (custom object records)` — customer-defined CRM objects - the only entity type with records that PostHog does not expose at all (high)
+- [x] `objects/{entitySlug} (custom object records)` — customer-defined CRM objects - the only entity type with records that Flind does not expose at all (high)
 - [x] `{resource}/definitions (account, contact, opportunity, meeting, note, task, object)` — field/attribute definitions - the lookup that resolves the custom field slugs appearing inside the fields map on every record we already sync (medium)
 
-Note: Lightfield's full resource list is account, contact, email, file, list, meeting, member, note, object, opportunity, task (plus auth/merge helpers), so PostHog already covers 9 of 11. Custom objects are addressed dynamically by entitySlug (GET /v1/objects/{entitySlug}), so implementing them requires discovering the slugs at sync time rather than a static table list. File endpoints were excluded as uploads/plumbing.
+Note: Lightfield's full resource list is account, contact, email, file, list, meeting, member, note, object, opportunity, task (plus auth/merge helpers), so Flind already covers 9 of 11. Custom objects are addressed dynamically by entitySlug (GET /v1/objects/{entitySlug}), so implementing them requires discovering the slugs at sync time rather than a static table list. File endpoints were excluded as uploads/plumbing.
 
 ## LightspeedRetail — gaps
 
@@ -7383,7 +7383,7 @@ Diffed against: <https://docs.linearb.io/api-overview/>
 
 - [x] `incidents (GET /api/v1/incidents/search and /api/v1/incidents)` — incident records are the input to change failure rate and MTTR, two of the four DORA metrics LinearB is built around (high)
 
-Note: LinearB's public API reference lists only measurements v2, deployments, incidents, external custom metrics, teams v1/v2, users, services, jobs and health. PostHog already covers deployments, measurements, services, teams and users. External custom metrics is write-only (report a metric), jobs is an async job-status poll and health is a liveness probe, so incidents is the only genuine readable gap.
+Note: LinearB's public API reference lists only measurements v2, deployments, incidents, external custom metrics, teams v1/v2, users, services, jobs and health. Flind already covers deployments, measurements, services, teams and users. External custom metrics is write-only (report a metric), jobs is an async job-status poll and health is a liveness probe, so incidents is the only genuine readable gap.
 
 ## LingoDev — gaps
 
@@ -7393,7 +7393,7 @@ Diffed against: <https://lingo.dev/en/docs/api/localization/list>
 
 - [ ] `jobs/localization/{jobId} pipeline steps[]` — per-stage record (which pipeline stage ran, status, and cost) is only returned by the single-job GET; the list endpoint returns id/status/engineId/createdAt/targetLocale only, so cost and quality-stage analysis is impossible today (medium)
 
-Note: Lingo.dev's public REST API is genuinely tiny: the only listable collection is GET /jobs/localization, which PostHog already syncs. The other GETs are all keyed lookups - GET /jobs/localization/{jobId}, GET /jobs/localization/groups/{groupId}, GET /engines/{id}/suggestions - and there is no engines list endpoint, so engines cannot be synced as a lookup table. Everything else is POST (localize, recognize, create jobs, provisioning) or WebSocket/webhook. The source implementation uses a static endpoint map (LINGO_DEV_ENDPOINTS), no dynamic table discovery, so the single table reflects the API rather than under-coverage.
+Note: Lingo.dev's public REST API is genuinely tiny: the only listable collection is GET /jobs/localization, which Flind already syncs. The other GETs are all keyed lookups - GET /jobs/localization/{jobId}, GET /jobs/localization/groups/{groupId}, GET /engines/{id}/suggestions - and there is no engines list endpoint, so engines cannot be synced as a lookup table. Everything else is POST (localize, recognize, create jobs, provisioning) or WebSocket/webhook. The source implementation uses a static endpoint map (LINGO_DEV_ENDPOINTS), no dynamic table discovery, so the single table reflects the API rather than under-coverage.
 
 ## Linkrunner — adequate
 
@@ -7403,7 +7403,7 @@ Diffed against: <https://docs.linkrunner.io/api-reference/data-apis.md>
 
 No material gaps found.
 
-Note: The Linkrunner server API exposes exactly three listable GET collections - /campaigns, /attributed-users and /reporting/campaigns - and PostHog syncs all three. The only other GET is /get-attribution-result, a per-device/per-user attribution lookup that requires a device_identifier or user_id and returns a single record, so it is not a syncable table. Everything else (/create-campaign, /capture-payment, /capture-event) is write-only ingestion. Caution for implementers: the openapi.json linked from docs.linkrunner.io/llms.txt is still the Mintlify 'Plant Store' placeholder, not a real spec.
+Note: The Linkrunner server API exposes exactly three listable GET collections - /campaigns, /attributed-users and /reporting/campaigns - and Flind syncs all three. The only other GET is /get-attribution-result, a per-device/per-user attribution lookup that requires a device_identifier or user_id and returns a single record, so it is not a syncable table. Everything else (/create-campaign, /capture-payment, /capture-event) is write-only ingestion. Caution for implementers: the openapi.json linked from docs.linkrunner.io/llms.txt is still the Mintlify 'Plant Store' placeholder, not a real spec.
 
 ## Linode — gaps
 
@@ -7659,7 +7659,7 @@ Diffed against: <https://dev.mailjet.com/email/reference/messages/>
 - [ ] `listrecipientstatistics` — Engagement metrics per list subscription, joining to the listrecipient rows we sync (medium)
 - [ ] `toplinkclicked` — Link-level click breakdown per campaign (medium)
 
-Note: The dev.mailjet.com Gatsby site 404s on most direct HTML fetches; the full REST resource nav is readable from https://dev.mailjet.com/page-data/email/reference/messages/page-data.json. Cross-checked against the vendor's official PHP wrapper resource registry (https://raw.githubusercontent.com/mailjet/mailjet-apiv3-php/master/src/Mailjet/Resources.php), which enumerates ~90 v3 resources. PostHog exposes 10 static tables; the entire statistics family is absent.
+Note: The dev.mailjet.com Gatsby site 404s on most direct HTML fetches; the full REST resource nav is readable from https://dev.mailjet.com/page-data/email/reference/messages/page-data.json. Cross-checked against the vendor's official PHP wrapper resource registry (https://raw.githubusercontent.com/mailjet/mailjet-apiv3-php/master/src/Mailjet/Resources.php), which enumerates ~90 v3 resources. Flind exposes 10 static tables; the entire statistics family is absent.
 
 ## Mailosaur — adequate
 
@@ -7669,7 +7669,7 @@ Diffed against: <https://mailosaur.com/docs/api/>
 
 No material gaps found.
 
-Note: The API surface is small: analysis/deliverability, devices, files, messages, servers, usage/limits, usage/transactions. PostHog covers messages, servers and usage transactions - i.e. every list-shaped analytical resource. The remainder is 2FA test devices (config), file/attachment downloads (excluded per the rules), a per-message deliverability analysis call, and usage/limits (a quota lookup).
+Note: The API surface is small: analysis/deliverability, devices, files, messages, servers, usage/limits, usage/transactions. Flind covers messages, servers and usage transactions - i.e. every list-shaped analytical resource. The remainder is 2FA test devices (config), file/attachment downloads (excluded per the rules), a per-message deliverability analysis call, and usage/limits (a quota lookup).
 
 ## Mailtrap — **thin**
 
@@ -7690,7 +7690,7 @@ Diffed against: <https://github.com/mailtrap/mailtrap-openapi/tree/main/specs>
 - [ ] `/api/stats/email_service_providers` — Deliverability broken down by recipient ESP (Gmail, Outlook, etc.) (medium)
 - [ ] `/api/sandboxes` — Lookup table resolving sandbox IDs on sandbox messages (with /api/projects as its parent) (low)
 
-Note: Mailtrap publishes 10 OpenAPI specs covering five distinct products (email sending, sandbox, inbound, promotional/contacts, templates). PostHog exposes 6 tables and misses the contacts, email campaigns and stats surfaces entirely. Note the email-campaigns spec was fetched from specs/email-campaigns.openapi.yml and the stats paths from specs/email-sending.openapi.yml.
+Note: Mailtrap publishes 10 OpenAPI specs covering five distinct products (email sending, sandbox, inbound, promotional/contacts, templates). Flind exposes 6 tables and misses the contacts, email campaigns and stats surfaces entirely. Note the email-campaigns spec was fetched from specs/email-campaigns.openapi.yml and the stats paths from specs/email-sending.openapi.yml.
 
 ## Marketo — gaps
 
@@ -7727,7 +7727,7 @@ Diffed against: <https://api.swaggerhub.com/apis/apilayer-863/MarketstackAPIv2/2
 - [ ] `/bondlist and /bond` — Bond reference and pricing data for fixed-income coverage (low)
 - [ ] `/etflist` — Lookup table of ETFs that etfholdings rows reference (low)
 
-Note: PostHog deliberately targets API v1 (MARKETSTACK_BASE_URL is pinned to /v1, with an in-code comment that v1 is free-plan-available), and coverage of v1 is complete - https://marketstack.com/documentation lists exactly the 8 endpoints already synced. All gaps below are v2-only, so acting on them means a version bump; the source's warehouse-source-new-version path exists for that.
+Note: Flind deliberately targets API v1 (MARKETSTACK_BASE_URL is pinned to /v1, with an in-code comment that v1 is free-plan-available), and coverage of v1 is complete - https://marketstack.com/documentation lists exactly the 8 endpoints already synced. All gaps below are v2-only, so acting on them means a version bump; the source's warehouse-source-new-version path exists for that.
 
 ## Matomo — **thin**
 
@@ -7738,7 +7738,7 @@ Diffed against: <https://demo.matomo.cloud/index.php?module=API&method=API.getRe
 - [x] `Actions.getPageUrls` — Page-level traffic report; actions_summary only carries site-wide totals (high)
 - [x] `Goals.get` — Goal conversions and revenue, Matomo's headline conversion metric (high)
 - [x] `Goals.getGoals` — Lookup table resolving the goal IDs that conversion reports key on (high)
-- [x] `Events.getCategory / getAction / getName` — Custom event reports - the closest analogue to PostHog's own event model (high)
+- [x] `Events.getCategory / getAction / getName` — Custom event reports - the closest analogue to Flind's own event model (high)
 - [x] `Actions.getEntryPageUrls / getExitPageUrls` — Entry and exit page breakdowns for landing-page and drop-off analysis (medium)
 - [x] `Referrers.getReferrerType / getSearchEngines / getWebsites / getSocials` — Channel-level referrer breakdowns; referrers today is only the flat getAll roll-up (medium)
 - [x] `DevicesDetection.getType / getBrowsers / getOsFamilies` — Device, browser and OS breakdown dimensions (medium)
@@ -7748,7 +7748,7 @@ Diffed against: <https://demo.matomo.cloud/index.php?module=API&method=API.getRe
 - [ ] `Actions.getPageTitles and getSiteSearchKeywords` — Page title and on-site search reporting (low)
 - [ ] `VisitFrequency.get and VisitorInterest.*` — Returning-visitor and engagement-depth metrics (low)
 
-Note: Matomo's reference site is JS-rendered, so I read the authoritative report catalog from a live instance via API.getReportMetadata on the public demo - it returns 100 reports across 25 modules. PostHog exposes 5 static tables (Live.getLastVisitsDetails plus 4 report methods) and MATOMO_ENDPOINTS is a static dict, so there is no dynamic discovery. Goals.getGoals and SegmentEditor.getAll were separately confirmed live on the demo instance (SitesManager.getAllSites requires superuser and 401s).
+Note: Matomo's reference site is JS-rendered, so I read the authoritative report catalog from a live instance via API.getReportMetadata on the public demo - it returns 100 reports across 25 modules. Flind exposes 5 static tables (Live.getLastVisitsDetails plus 4 report methods) and MATOMO_ENDPOINTS is a static dict, so there is no dynamic discovery. Goals.getGoals and SegmentEditor.getAll were separately confirmed live on the demo instance (SitesManager.getAllSites requires superuser and 401s).
 
 ## Maxio — gaps
 
@@ -7769,7 +7769,7 @@ Diffed against: <https://github.com/maxio-com/ab-python-sdk/tree/main/doc/contro
 - [ ] `subscription-invoice-account: List Prepayments / List Service Credits` — Prepayment and service credit ledger, needed to reconcile account balances (medium)
 - [ ] `custom-fields: List Metafields / List Metadata` — Custom field definitions and their per-resource values on customers and subscriptions (medium)
 
-Note: Read the vendor SDK's controller docs (32 controllers) and enumerated the list-shaped operations in each. PostHog covers 10 controllers' primary objects but misses the price-point lookups, usage/allocation history and the Insights (MRR) surface entirely.
+Note: Read the vendor SDK's controller docs (32 controllers) and enumerated the list-shaped operations in each. Flind covers 10 controllers' primary objects but misses the price-point lookups, usage/allocation history and the Insights (MRR) surface entirely.
 
 ## Medusa — gaps
 
@@ -7896,7 +7896,7 @@ Diffed against: <https://docs.metaplane.dev/llms.txt>
 
 No material gaps found.
 
-Note: The public API reference lists only four read-oriented collections — connections, connection sync status, monitors, and monitor evaluation history — and PostHog exposes all four. The remaining endpoints are mutations (create/update monitor, run monitors, ingest datapoint, tag/untag). Tags look like a lookup candidate but there is no list-all-tags endpoint; the tag reads (fetchtagdefinitions, fetchtaggedobjects, fetchtaggedmonitors) all require tag names as input, so they are not syncable as a table.
+Note: The public API reference lists only four read-oriented collections — connections, connection sync status, monitors, and monitor evaluation history — and Flind exposes all four. The remaining endpoints are mutations (create/update monitor, run monitors, ingest datapoint, tag/untag). Tags look like a lookup candidate but there is no list-all-tags endpoint; the tag reads (fetchtagdefinitions, fetchtaggedobjects, fetchtaggedmonitors) all require tag names as input, so they are not syncable as a table.
 
 ## Meteostat — gaps
 
@@ -8051,7 +8051,7 @@ Diffed against: <https://learn.microsoft.com/en-us/clarity/setup-and-installatio
 
 No material gaps found.
 
-Note: The Clarity Data Export API has exactly one endpoint: GET https://www.clarity.ms/export-data/api/v1/project-live-insights. PostHog's single project_live_insights table is full coverage. Constraints worth knowing: max 10 requests per project per day, only the last 1-3 days of data, max 3 dimension breakdowns per call, and responses capped at 1,000 unpaginated rows — so the only meaningful extension would be additional dimension-combination variants of the same endpoint, not new endpoints.
+Note: The Clarity Data Export API has exactly one endpoint: GET https://www.clarity.ms/export-data/api/v1/project-live-insights. Flind's single project_live_insights table is full coverage. Constraints worth knowing: max 10 requests per project per day, only the last 1-3 days of data, max 3 dimension breakdowns per call, and responses capped at 1,000 unpaginated rows — so the only meaningful extension would be additional dimension-combination variants of the same endpoint, not new endpoints.
 
 ## Mighty Networks — gaps
 
@@ -8102,7 +8102,7 @@ Diffed against: <https://docs.mistral.ai/openapi.yaml>
 - [ ] `observability campaigns and judges (GET /v1/observability/campaigns, /v1/observability/judges)` — eval campaign definitions and results (low)
 - [ ] `prompts and skills with versions (GET /v2/prompts, /v2/prompts/{id}/versions, /v2/skills, /v2/skills/{id}/versions)` — managed prompt/skill registry and its version lineage (low)
 
-Note: Spec has ~230 paths. Excluded inference endpoints (chat/embeddings/ocr/moderation), connector credential and auth paths, api-keys, and rate/spend-limit config. Also note the spec exposes /v1/fine_tuning/models/{model_id} but no /v1/fine_tuning/jobs list path, even though PostHog surfaces a fine_tuning_jobs table — worth double-checking that table's source endpoint against a newer spec revision.
+Note: Spec has ~230 paths. Excluded inference endpoints (chat/embeddings/ocr/moderation), connector credential and auth paths, api-keys, and rate/spend-limit config. Also note the spec exposes /v1/fine_tuning/models/{model_id} but no /v1/fine_tuning/jobs list path, even though Flind surfaces a fine_tuning_jobs table — worth double-checking that table's source endpoint against a newer spec revision.
 
 ## MixMax — gaps
 
@@ -8258,7 +8258,7 @@ Diffed against: <https://apidocs.getmontecarlo.com/>
 - [ ] `getAuthorizationGroups + getAccountRoles` — user group/role membership lookup for the users table already synced (medium)
 - [ ] `getAccountAuditLogs / getMonitorAuditLogs` — who changed which monitor and when (low)
 
-Note: The GraphQL API exposes 661 documented queries (counted from spectaql anchors at apidocs.getmontecarlo.com); PostHog exposes 5 tables. Many of those queries are integration/config plumbing, but the core observability objects (incidents, events, domains, dbt results) are absent.
+Note: The GraphQL API exposes 661 documented queries (counted from spectaql anchors at apidocs.getmontecarlo.com); Flind exposes 5 tables. Many of those queries are integration/config plumbing, but the core observability objects (incidents, events, domains, dbt results) are absent.
 
 ## Motion — gaps
 
@@ -8411,7 +8411,7 @@ Diffed against: <https://docs.newrelic.com/attribute-dictionary/>
 - [ ] `AjaxRequest / PageViewTiming / BrowserInteraction` — browser performance breakdowns that page_views alone cannot express (low)
 - [ ] `NrAuditEvent` — account audit trail of who changed what (low)
 
-Note: Source is NRQL-over-NerdGraph: each event table is just a `nrql\_table` entry in settings.py, so every gap below is a config-only addition (`SELECT \* FROM <EventType>`). The attribute dictionary enumerates 81 queryable NRQL event types; PostHog wires up 5 of them plus 3 NerdGraph config/entity tables. Incidents/issues are the notable structural gap: alert_policies and alert_conditions are synced, but nothing records what those conditions actually fired.
+Note: Source is NRQL-over-NerdGraph: each event table is just a `nrql\_table` entry in settings.py, so every gap below is a config-only addition (`SELECT \* FROM <EventType>`). The attribute dictionary enumerates 81 queryable NRQL event types; Flind wires up 5 of them plus 3 NerdGraph config/entity tables. Incidents/issues are the notable structural gap: alert_policies and alert_conditions are synced, but nothing records what those conditions actually fired.
 
 ## NewsApi — adequate
 
@@ -8434,7 +8434,7 @@ Diffed against: <https://newsdata.io/llms.txt>
 - [ ] `/api/1/crypto/count` — same aggregation over the crypto corpus already synced (low)
 - [ ] `/api/1/market/count` — same aggregation over the market corpus (low)
 
-Note: newsdata.io/documentation is a client-rendered SPA that returns no endpoint text to curl; the vendor publishes a machine-readable llms.txt at the domain root which enumerates all 8 endpoints. PostHog covers 4 of 8. /news is documented as a legacy alias of /latest, so it is not a gap.
+Note: newsdata.io/documentation is a client-rendered SPA that returns no endpoint text to curl; the vendor publishes a machine-readable llms.txt at the domain root which enumerates all 8 endpoints. Flind covers 4 of 8. /news is documented as a legacy alias of /latest, so it is not a gap.
 
 ## NewYorkTimes — gaps
 
@@ -8454,7 +8454,7 @@ Diffed against: <https://github.com/nytimes/public_api_specs>
 - [ ] `semantic concepts (/svc/semantic/v2/concept/search.json)` — taxonomy lookup resolving the person/subject/location tags carried on articles (low)
 - [ ] `times tags (/svc/suggest/v1/timestags)` — controlled-vocabulary tag dictionary for normalizing article keywords (low)
 
-Note: Diffed against the NYT org's own OpenAPI JSON specs (archive_api, books_api, community, movie_reviews, semantic_api, times_tags, timeswire, top_stories, most_popular). PostHog covers 3 of the 9 published APIs. Also note top_stories is pinned to path /svc/topstories/v2/home.json and most_popular to the 7-day window - section and time-period are path segments in the spec, so the current tables expose one slice of each.
+Note: Diffed against the NYT org's own OpenAPI JSON specs (archive_api, books_api, community, movie_reviews, semantic_api, times_tags, timeswire, top_stories, most_popular). Flind covers 3 of the 9 published APIs. Also note top_stories is pinned to path /svc/topstories/v2/home.json and most_popular to the 7-day window - section and time-period are path segments in the spec, so the current tables expose one slice of each.
 
 ## NOAA Climate Data Online (NCEI) — adequate
 
@@ -8502,7 +8502,7 @@ Diffed against: <https://northflank.com/docs/sitemap.xml>
 - [ ] `GET /v1/clusters and /v1/clusters/{id}/nodes` — BYOC cluster and node inventory - the infrastructure dimension services are scheduled onto (medium)
 - [ ] `GET /v1/projects/{projectId}/services/{serviceId}/containers` — running container instances per service, the replica-level detail behind service state (low)
 
-Note: Northflank publishes no OpenAPI document (api.northflank.com/v1/openapi.json 404s); enumerated the ~170 API reference pages from the docs sitemap and spot-verified the actual HTTP paths on list-service-builds, get-job-runs, list-plans and list-usage. PostHog syncs the five top-level resource inventories but none of the run/build/usage history that makes them analytically useful.
+Note: Northflank publishes no OpenAPI document (api.northflank.com/v1/openapi.json 404s); enumerated the ~170 API reference pages from the docs sitemap and spot-verified the actual HTTP paths on list-service-builds, get-job-runs, list-plans and list-usage. Flind syncs the five top-level resource inventories but none of the run/build/usage history that makes them analytically useful.
 
 ## NorthpassLMS — gaps
 
@@ -8523,7 +8523,7 @@ Diffed against: <https://developers.northpass.com/reference/get_v2-courses>
 - [x] `GET /v2/properties/people and /v2/properties/courses` — custom properties on people and courses plus /v2/properties/property-definitions as the schema lookup - the segmentation dimensions customers configure (medium)
 - [ ] `GET /v2/quiz-attempts/{quiz_attempt_uuid}/answers and /v2/question-banks` — per-question answer detail and the question bank lookup; quizzes are synced but nothing about how learners answered (low)
 
-Note: Enumerated every /reference/get_v2-\* route from the ReadMe-hosted reference page (no public OpenAPI file is served). PostHog covers the 6 core objects plus 2 enrollment fan-outs; the learner-activity and assessment halves of the API are entirely absent.
+Note: Enumerated every /reference/get_v2-\* route from the ReadMe-hosted reference page (no public OpenAPI file is served). Flind covers the 6 core objects plus 2 enrollment fan-outs; the learner-activity and assessment halves of the API are entirely absent.
 
 ## Notion — gaps
 
@@ -8544,7 +8544,7 @@ Diffed against: <https://raw.githubusercontent.com/npm/registry/master/docs/REGI
 - [ ] `GET https://api.npmjs.org/downloads/point/{period}/{pkg1},{pkg2}` — bulk point downloads for up to 128 packages in one call - same data as Downloads but far cheaper for large package lists (low)
 - [ ] `GET / (registry meta)` — registry-wide doc_count and update_seq, useful only as a sync watermark (low)
 
-Note: Also diffed against https://raw.githubusercontent.com/npm/registry/master/docs/download-counts.md. The public registry API is genuinely small (packument, version doc, search, meta) plus the downloads service (point, range, per-version). PostHog's Versions table comes from the packument and Downloads from /downloads/range, so 2 of roughly 4 useful data shapes are covered. Tables are static per source; the user supplies the package list, so breadth here is packages, not endpoints.
+Note: Also diffed against https://raw.githubusercontent.com/npm/registry/master/docs/download-counts.md. The public registry API is genuinely small (packument, version doc, search, meta) plus the downloads service (point, range, per-version). Flind's Versions table comes from the packument and Downloads from /downloads/range, so 2 of roughly 4 useful data shapes are covered. Tables are static per source; the user supplies the package list, so breadth here is packages, not endpoints.
 
 ## Nuget — gaps
 
@@ -8914,7 +8914,7 @@ Diffed against: <https://api.opinionstage.com/api-docs/api/v2/openapi.yaml>
 - [x] `/api/v2/items/{itemId}/responses` — the actual respondent-level answer data — the entire point of the Public Result API; today only the widget list is synced (high)
 - [x] `/api/v2/items/{itemId}/questions` — lookup table resolving the question IDs carried on response rows (high)
 
-Note: The vendor OpenAPI spec (title 'Public Result API') defines exactly 5 operations: list items, get item, list responses, get response, list questions. PostHog implements only list items. products/warehouse_sources/sources/opinion_stage/settings.py explicitly defers responses and questions as 'fan-out (they require an item id) and are intentionally excluded from v1' — so the gap is known and deliberate, but it is the whole analytical payload.
+Note: The vendor OpenAPI spec (title 'Public Result API') defines exactly 5 operations: list items, get item, list responses, get response, list questions. Flind implements only list items. products/warehouse_sources/sources/opinion_stage/settings.py explicitly defers responses and questions as 'fan-out (they require an item id) and are intentionally excluded from v1' — so the gap is known and deliberate, but it is the whole analytical payload.
 
 ## Opn Payments (formerly Omise) — gaps
 
@@ -9017,7 +9017,7 @@ Diffed against: <https://help.ortto.com/developer/latest/api-reference/index.htm
 
 No material gaps found.
 
-Note: Ortto's public REST API has only seven entities (person, organizations/accounts, audiences, tags, custom-field, activity definitions, activities) and the read operations are exactly: POST /v1/person/get, /v1/organizations/get, /v1/audiences/get, /v1/tags/get, /v1/person/custom-field/get, /v1/organization/custom-field/get. PostHog's six tables cover all of them. Everything else in the API is write-only (activities/create, activity definition create/modify/delete, audience subscribe, person merge/archive) — there is no read endpoint for activity events, campaigns, journeys or emails, so nothing further is syncable. Section list verified by probing /developer/latest/api-reference/<entity>/index.html (200 for activities, activity, audiences, custom-field, organizations, person, tags; 404 for campaigns, journeys, forms, webhooks, reports, etc.).
+Note: Ortto's public REST API has only seven entities (person, organizations/accounts, audiences, tags, custom-field, activity definitions, activities) and the read operations are exactly: POST /v1/person/get, /v1/organizations/get, /v1/audiences/get, /v1/tags/get, /v1/person/custom-field/get, /v1/organization/custom-field/get. Flind's six tables cover all of them. Everything else in the API is write-only (activities/create, activity definition create/modify/delete, audience subscribe, person merge/archive) — there is no read endpoint for activity events, campaigns, journeys or emails, so nothing further is syncable. Section list verified by probing /developer/latest/api-reference/<entity>/index.html (200 for activities, activity, audiences, custom-field, organizations, person, tags; 404 for campaigns, journeys, forms, webhooks, reports, etc.).
 
 ## Oura — gaps
 
@@ -9056,7 +9056,7 @@ Diffed against: <https://jsapi.apiary.io/apis/amplifyv01/api-description-documen
 - [ ] `/marketers/{id}/engagementMetrics` — marketer-level engagement metrics not present in the periodic report (low)
 - [ ] `/campaigns/{campaignId}/promotedLinksSequences` — sequence grouping for promoted links (low)
 
-Note: Static endpoint list in settings.py (6 paths: /marketers, /marketers/{id}/campaigns, /marketers/{id}/budgets, /campaigns/{id}/promotedLinks, /reports/marketers/{id}/periodic, /reports/marketers/{id}/campaigns) - no dynamic table discovery. The apiary HTML site 502s; the machine-readable API Blueprint JSON at the jsapi.apiary.io URL above works and was parsed for the full resource list. Outbrain's Performance Reporting group is by far the largest part of the API and PostHog currently exposes only 2 of its ~20 report endpoints.
+Note: Static endpoint list in settings.py (6 paths: /marketers, /marketers/{id}/campaigns, /marketers/{id}/budgets, /campaigns/{id}/promotedLinks, /reports/marketers/{id}/periodic, /reports/marketers/{id}/campaigns) - no dynamic table discovery. The apiary HTML site 502s; the machine-readable API Blueprint JSON at the jsapi.apiary.io URL above works and was parsed for the full resource list. Outbrain's Performance Reporting group is by far the largest part of the API and Flind currently exposes only 2 of its ~20 report endpoints.
 
 ## OwnerRez — gaps
 
@@ -9214,7 +9214,7 @@ Diffed against: <https://api-docs.partnerize.com/partner/>
 - [ ] `/user/publisher/{publisher_id}/creative` — creative dimension for breaking down clicks and conversions (medium)
 - [ ] `/v3/partner/{partnerId}/participations` — partner-to-campaign membership table (medium)
 
-Note: The docs page embeds a full OpenAPI document (91 operationIds) which I parsed out of the HTML. PostHog implements the publisher/partner API and already covers every /reference/\* lookup table (country, currency, timezone, device, user_context, traffic_source, conversion_type, conversion_metric, partnership_model) plus campaigns/clicks/conversions via /reporting/report_publisher. The remaining surface is mostly commercial (payables, self-bills, commission rate cards) and the v3 analytics endpoints.
+Note: The docs page embeds a full OpenAPI document (91 operationIds) which I parsed out of the HTML. Flind implements the publisher/partner API and already covers every /reference/\* lookup table (country, currency, timezone, device, user_context, traffic_source, conversion_type, conversion_metric, partnership_model) plus campaigns/clicks/conversions via /reporting/report_publisher. The remaining surface is mostly commercial (payables, self-bills, commission rate cards) and the v3 analytics endpoints.
 
 ## PartnerStack — **thin**
 
@@ -9322,7 +9322,7 @@ Diffed against: <https://engageapi.pendo.io/api/collections/16265887/Tzm6jvKG>
 - [x] `GET /api/v1/report and /api/v1/report/{reportId}/results.json` — saved report definitions plus their materialized results (medium) (definitions only; results.json has a different column set per report and re-projects the visitors and accounts tables)
 - [ ] `GET /api/v1/guide/{guideId}/history` — guide state/version transition history (low)
 
-Note: engageapi.pendo.io is a Postman-published doc; I pulled the raw collection JSON from the documenter API it loads. PostHog does NOT discover tables dynamically - PENDO_ENDPOINTS in products/warehouse_sources/sources/pendo/settings.py is a fixed dict of 5. It already POSTs to /api/v1/aggregation for visitors and accounts, so every aggregation event source below is a config-level addition on machinery that already exists. Pendo's entire behavioral dataset (events, pageEvents, featureEvents, trackEvents, guideEvents, pollEvents, surveyResponses) is currently unavailable, so the source syncs only the object metadata and none of the usage.
+Note: engageapi.pendo.io is a Postman-published doc; I pulled the raw collection JSON from the documenter API it loads. Flind does NOT discover tables dynamically - PENDO_ENDPOINTS in products/warehouse_sources/sources/pendo/settings.py is a fixed dict of 5. It already POSTs to /api/v1/aggregation for visitors and accounts, so every aggregation event source below is a config-level addition on machinery that already exists. Pendo's entire behavioral dataset (events, pageEvents, featureEvents, trackEvents, guideEvents, pollEvents, surveyResponses) is currently unavailable, so the source syncs only the object metadata and none of the usage.
 
 ## Perigon — gaps
 
@@ -9526,7 +9526,7 @@ Diffed against: <https://pipelinercrm.eu.apidog.com/>
 - [ ] `Calls and TextMessages` — call and SMS touchpoints not represented by tasks or appointments (medium)
 - [ ] `Tags and TagRelations` — tag lookup plus the polymorphic join that attaches tags to accounts, contacts and opportunities (medium)
 
-Note: The vendor's GitBook docs site (developers.pipelinersales.com/api-docs) only carries concepts and tutorials; the actual REST entity reference it links to is the Apidog site above, which enumerates 204 /entities/{Name} resources. PostHog exposes 11 of them. Other credible-but-lower-priority entities: ProductPriceLists/ProductPriceListPrices/ProductCategories, OpptyRevenueSchedules and periods, AccountKPIs/ContactKPIs/LeadOpptyKPIs, EntityFitnesses/EntityHealths/EntityScorings, Projects/ProjectObjectives, MasterRights and SalesRoles, Memos, CloudObjects (documents), Reports. Note the product is being rebranded to Coevera in the docs.
+Note: The vendor's GitBook docs site (developers.pipelinersales.com/api-docs) only carries concepts and tutorials; the actual REST entity reference it links to is the Apidog site above, which enumerates 204 /entities/{Name} resources. Flind exposes 11 of them. Other credible-but-lower-priority entities: ProductPriceLists/ProductPriceListPrices/ProductCategories, OpptyRevenueSchedules and periods, AccountKPIs/ContactKPIs/LeadOpptyKPIs, EntityFitnesses/EntityHealths/EntityScorings, Projects/ProjectObjectives, MasterRights and SalesRoles, Memos, CloudObjects (documents), Reports. Note the product is being rebranded to Coevera in the docs.
 
 ## Plaid — **thin**
 
@@ -9547,7 +9547,7 @@ Diffed against: <https://raw.githubusercontent.com/plaid/plaid-openapi/master/20
 - [ ] `/statements/list` — available bank statement metadata per account for reconciliation coverage checks (low)
 - [ ] `/categories/get` — legacy category taxonomy resolving the category IDs on synced transactions (low)
 
-Note: Plaid's spec is enormous (~280 operations) but most of it is Link/onboarding plumbing, sandbox simulation, CRA/credit reporting and processor-token flows that are correctly out of scope. One PostHog source connects one Plaid Item, and which of these endpoints actually returns data depends on the products that item was linked with - investments, liabilities and transfer will 400 for items without them, so they need to fail soft. The source deliberately uses /transactions/get rather than /transactions/sync (documented in settings.py: the sync cursor can't be expressed as a row-field watermark), which means transaction updates and removals are not captured - worth revisiting separately from endpoint coverage. /categories/get is legacy; Plaid now ships personal_finance_category inline on transactions.
+Note: Plaid's spec is enormous (~280 operations) but most of it is Link/onboarding plumbing, sandbox simulation, CRA/credit reporting and processor-token flows that are correctly out of scope. One Flind source connects one Plaid Item, and which of these endpoints actually returns data depends on the products that item was linked with - investments, liabilities and transfer will 400 for items without them, so they need to fail soft. The source deliberately uses /transactions/get rather than /transactions/sync (documented in settings.py: the sync cursor can't be expressed as a row-field watermark), which means transaction updates and removals are not captured - worth revisiting separately from endpoint coverage. /categories/get is legacy; Plaid now ships personal_finance_category inline on transactions.
 
 ## Plain — **thin**
 
@@ -9569,7 +9569,7 @@ Diffed against: <https://core-api.uk.plain.com/graphql/v1/schema.graphql>
 - [ ] `threadFieldSchemas` — lookup defining the custom thread fields whose values appear on threads (medium)
 - [ ] `knowledgeGaps` — AI knowledge-gap records for content prioritization (low)
 
-Note: Plain is GraphQL-only; I enumerated every \*Connection field on type Query from the published SDL. 62 paginated collections exist against the 3 tables PostHog exposes. Non-analytical Connections (webhookTargets, workspaceSlackIntegrations, serviceAuthorizations, savedThreadsViews, chatApps, roles, billingPlans) were deliberately excluded as config/plumbing.
+Note: Plain is GraphQL-only; I enumerated every \*Connection field on type Query from the published SDL. 62 paginated collections exist against the 3 tables Flind exposes. Non-analytical Connections (webhookTargets, workspaceSlackIntegrations, serviceAuthorizations, savedThreadsViews, chatApps, roles, billingPlans) were deliberately excluded as config/plumbing.
 
 ## Planhat — **thin**
 
@@ -9611,7 +9611,7 @@ Diffed against: <https://meta.upsun.com/openapi-spec>
 - [ ] `/organizations/{organization_id}/orders` — order history behind the subscriptions already synced (medium)
 - [ ] `/organizations/{organization_id}/subscriptions/{subscription_id}/current_usage` — in-period usage per subscription for run-rate tracking (medium)
 
-Note: api.platform.sh/docs now 301s to developer.upsun.com/api, which renders the spec at meta.upsun.com/openapi-spec. I cross-checked that this spec's paths match what the PostHog source already calls against https://api.platform.sh (/organizations, /projects/{id}/environments, /projects/{id}/activities, /organizations/{id}/members, /organizations/{id}/subscriptions), so the spec is applicable. Config/plumbing paths (variables, integrations, certificates, ssh_keys, api-tokens, provisioners, domain-claims) were excluded.
+Note: api.platform.sh/docs now 301s to developer.upsun.com/api, which renders the spec at meta.upsun.com/openapi-spec. I cross-checked that this spec's paths match what the Flind source already calls against https://api.platform.sh (/organizations, /projects/{id}/environments, /projects/{id}/activities, /organizations/{id}/members, /organizations/{id}/subscriptions), so the spec is applicable. Config/plumbing paths (variables, integrations, certificates, ssh_keys, api-tokens, provisioners, domain-claims) were excluded.
 
 ## Plausible — gaps
 
@@ -9626,7 +9626,7 @@ Diffed against: <https://plausible.io/docs/stats-api>
 - [x] `visit:os_version` — OS version breakdown for compatibility analysis (low)
 - [ ] `visit:entry_page_hostname / visit:exit_page_hostname` — hostname-qualified entry and exit pages for multi-domain sites (low)
 
-Note: Plausible's Stats API v2 is a single POST /api/v2/query endpoint; a PostHog 'table' is one breakdown dimension. Coverage is close to complete — 18 of the 24 documented dimensions are already exposed. Custom properties (event:props:\*) are open-ended per site, so implementing them would need dynamic table discovery rather than a fixed table.
+Note: Plausible's Stats API v2 is a single POST /api/v2/query endpoint; a Flind 'table' is one breakdown dimension. Coverage is close to complete — 18 of the 24 documented dimensions are already exposed. Custom properties (event:props:\*) are open-ended per site, so implementing them would need dynamic table discovery rather than a fixed table.
 
 ## Plivo — gaps
 
@@ -9657,7 +9657,7 @@ Diffed against: <https://docs.useplunk.com/openapi.json>
 
 No material gaps found.
 
-Note: The entire published Plunk API is seven operations: four listable collections (contacts, campaigns, templates, segments) plus three write-only actions (POST /v1/send, POST /v1/track, POST /v1/verify). PostHog already exposes all four listable collections, so there is nothing left to sync. Workflows and events are documented as product concepts but have no REST endpoints in the spec or in the API reference section of https://docs.useplunk.com/llms.txt.
+Note: The entire published Plunk API is seven operations: four listable collections (contacts, campaigns, templates, segments) plus three write-only actions (POST /v1/send, POST /v1/track, POST /v1/verify). Flind already exposes all four listable collections, so there is nothing left to sync. Workflows and events are documented as product concepts but have no REST endpoints in the spec or in the API reference section of https://docs.useplunk.com/llms.txt.
 
 ## Pluralsight Flow — **thin**
 
@@ -9747,7 +9747,7 @@ Diffed against: <https://api.prefect.cloud/api/openapi.json>
 - [ ] `POST /deployments/{id}/versions/paginate` — deployment version history, so run outcomes can be attributed to a code version (medium)
 - [ ] `POST /variables/filter` — workspace variables referenced by deployment parameters (low)
 
-Note: The PostHog source is scoped to a single configured workspace and posts to /{...}/filter paths, matching the spec exactly. Account-level tags (Bots, Invitations, Rate Limits, SSO, Billing) and block/webhook config were excluded as plumbing.
+Note: The Flind source is scoped to a single configured workspace and posts to /{...}/filter paths, matching the spec exactly. Account-level tags (Bots, Invitations, Rate Limits, SSO, Billing) and block/webhook config were excluded as plumbing.
 
 ## Pretix — gaps
 
@@ -9768,7 +9768,7 @@ Diffed against: <https://docs.pretix.eu/dev/api/resources/index.html>
 - [ ] `/organizers/{org}/events/{event}/questions/{id}/options/` — lookup resolving the option IDs stored in order-position answers to the questions already synced (medium)
 - [ ] `/organizers/{org}/events/{event}/seats/` — seat inventory and occupancy for seated events (medium)
 
-Note: The PostHog source deliberately skips a dedicated order-positions stream because positions arrive embedded in each order's `positions` array (see the comment in pretix/settings.py), so that gap is a normalization convenience rather than missing data — hence medium, not high. Payments, refunds, transactions and check-in history are genuinely separate resources with no embedded equivalent. Config and plumbing resources (webhooks, devices, teams, exporters, scheduled_exports, shredders, badges, sendmail_rules, auto_checkin_rules, imported_secrets, certificates) were excluded.
+Note: The Flind source deliberately skips a dedicated order-positions stream because positions arrive embedded in each order's `positions` array (see the comment in pretix/settings.py), so that gap is a normalization convenience rather than missing data — hence medium, not high. Payments, refunds, transactions and check-in history are genuinely separate resources with no embedded equivalent. Config and plumbing resources (webhooks, devices, teams, exporters, scheduled_exports, shredders, badges, sendmail_rules, auto_checkin_rules, imported_secrets, certificates) were excluded.
 
 ## Printify — gaps
 
@@ -10043,7 +10043,7 @@ Diffed against: <https://backboard.railway.com/graphql/v2>
 - [ ] `httpLogs / deploymentLogs` — Request and deployment log streams for error and traffic analysis (low)
 - [ ] `regions` — Small lookup resolving region codes on services and volumes (low)
 
-Note: No published SDL file; I ran an unauthenticated GraphQL introspection query against the public API endpoint (backboard.railway.com/graphql/v2) and read the 137 root Query fields. PostHog's source issues 6 static GraphQL queries (products/warehouse_sources/.../sources/railway/) with no dynamic discovery. Railway's biggest analytical surfaces (cost/usage and metrics) are entirely absent today.
+Note: No published SDL file; I ran an unauthenticated GraphQL introspection query against the public API endpoint (backboard.railway.com/graphql/v2) and read the 137 root Query fields. Flind's source issues 6 static GraphQL queries (products/warehouse_sources/.../sources/railway/) with no dynamic discovery. Railway's biggest analytical surfaces (cost/usage and metrics) are entirely absent today.
 
 ## Ramp — **thin**
 
@@ -10065,7 +10065,7 @@ Diffed against: <https://docs.ramp.com/openapi/developer-api.json>
 - [ ] `spend-programs / unified-requests` — Spend limits and the approval-request stream that explains why spend was allowed or blocked (medium)
 - [x] `billing/statements` — Ramp billing statements per statement period, with the amount due and statement PDF link (medium)
 
-Note: Ramp publishes a full OpenAPI spec (2.1 MB) plus llms-api.txt; the docs HTML explicitly points machine readers at /openapi/developer-api.json. The spec has ~95 GET paths across ~40 resources; PostHog exposes 5. Also note PostHog syncs the legacy /cards path, which no longer appears in the current spec (now /cards/physical and /cards/virtual) - worth confirming it still returns data.
+Note: Ramp publishes a full OpenAPI spec (2.1 MB) plus llms-api.txt; the docs HTML explicitly points machine readers at /openapi/developer-api.json. The spec has ~95 GET paths across ~40 resources; Flind exposes 5. Also note Flind syncs the legacy /cards path, which no longer appears in the current spec (now /cards/physical and /cards/virtual) - worth confirming it still returns data.
 
 ## Rapid7 InsightVM — gaps
 
@@ -10075,7 +10075,7 @@ Diffed against: <https://help.rapid7.com/insightvm/en-us/api/insightvm-api-v4.js
 - [x] `scan (GET /vm/v4/integration/scan)` — Scan history - when each site was assessed, which is needed to judge how stale asset and vulnerability data is (medium)
 - [x] `scan/engine` — Lookup resolving the engine that produced each scan (low)
 
-Note: PostHog targets the InsightVM Cloud Integrations API (/vm/v4/integration on \*.api.insight.rapid7.com), whose spec exposes only 5 resources: assets, sites, vulnerabilities, scan and scan/engine. So 2 of 5 is not as thin as it looks. The much larger on-prem console API v3 (207 paths - solutions, tags, asset_groups, policies, exploits, vulnerability_exceptions, per-asset findings) is a different product surface at help.rapid7.com/insightvm/en-us/api/api-v3.json requiring a console host and Basic auth; adding it would be a new source variant, not extra endpoints on this one. Endpoints are static (products/warehouse_sources/.../sources/rapid7_insightvm/settings.py), no dynamic discovery.
+Note: Flind targets the InsightVM Cloud Integrations API (/vm/v4/integration on \*.api.insight.rapid7.com), whose spec exposes only 5 resources: assets, sites, vulnerabilities, scan and scan/engine. So 2 of 5 is not as thin as it looks. The much larger on-prem console API v3 (207 paths - solutions, tags, asset_groups, policies, exploits, vulnerability_exceptions, per-asset findings) is a different product surface at help.rapid7.com/insightvm/en-us/api/api-v3.json requiring a console host and Basic auth; adding it would be a new source variant, not extra endpoints on this one. Endpoints are static (products/warehouse_sources/.../sources/rapid7_insightvm/settings.py), no dynamic discovery.
 
 ## Raygun — gaps
 
@@ -10139,7 +10139,7 @@ Diffed against: <https://developer.rechargepayments.com/2021-11>
 - [ ] `metafields` — Custom key-value fields attached to customers, subscriptions and addresses that often hold merchant-specific segmentation (low)
 - [ ] `notifications` — Transactional notification history per customer, useful for correlating comms with churn (low)
 
-Note: No OpenAPI spec is served (openapi.json 404s). The docs are a Nuxt SSR app; I extracted the complete 2021-11 reference nav from the embedded \_\_NUXT\_\_ payload - 24 API sections. PostHog covers 10 of them. Note the repo already carries products/warehouse_sources/.../sources/recharge/api_inventory.md, which may pre-date some of these.
+Note: No OpenAPI spec is served (openapi.json 404s). The docs are a Nuxt SSR app; I extracted the complete 2021-11 reference nav from the embedded \_\_NUXT\_\_ payload - 24 API sections. Flind covers 10 of them. Note the repo already carries products/warehouse_sources/.../sources/recharge/api_inventory.md, which may pre-date some of these.
 
 ## Recreation.gov — gaps
 
@@ -10165,7 +10165,7 @@ Diffed against: <https://docs.recruitee.com/reference>
 - ~~`POST /analytics (job campaign analytics)` — Sourcing and job-campaign performance breakdowns - the vendor's own reporting dimensions (medium)~~ — skipped: the same partner-only API at `/i/p/{partner}/analytics`, which needs the partner secret and a list of UTM campaign IDs, so a company token cannot call it
 - ~~`GET /candidates/{id}/reports` — Assessment and screening report results attached to candidates (low)~~ — skipped: the reference documents no such read call on the company ATS API. Reports exist only in the Partners API, where an assessment partner updates its own report with `PATCH /api/p/{codename}/reports/{report_id}` and a partner secret
 
-Note: The two URLs recorded in the source config (docs.recruitee.com/reference/candidates-index, /departments-index) both 404 - the docs were re-slugged. I enumerated the live ReadMe sidebar tree from the /reference page payload: the public ATS API documents candidates (+notes, +search), offers, locations, departments, attachments, timeline and analytics. PostHog also syncs /placements, which is not in the public reference at all, so the vendor's published surface is narrower than what the source actually reaches - treat the doc as a lower bound.
+Note: The two URLs recorded in the source config (docs.recruitee.com/reference/candidates-index, /departments-index) both 404 - the docs were re-slugged. I enumerated the live ReadMe sidebar tree from the /reference page payload: the public ATS API documents candidates (+notes, +search), offers, locations, departments, attachments, timeline and analytics. Flind also syncs /placements, which is not in the public reference at all, so the vendor's published surface is narrower than what the source actually reaches - treat the doc as a lower bound.
 
 ## Recurly — gaps
 
@@ -10342,7 +10342,7 @@ Diffed against: <https://developer.rippling.com/sitemap.xml>
 - [ ] `list-time-cards` — approved timesheet totals per period, the aggregate view of time entries (medium)
 - [x] `list-variable-compensation-payouts` — per-worker variable compensation payouts (bonuses, commissions, one-off pay) with status and scheduled dates (medium)
 
-Note: Rippling exposes three distinct API surfaces (base-api, company-api, rest-api). The PostHog tables match the modern rest-api (Rippling Platform API), so the diff was taken against the ~230 rest-api reference pages in the sitemap; the base-api/company-api surfaces are older equivalents and were not counted as gaps.
+Note: Rippling exposes three distinct API surfaces (base-api, company-api, rest-api). The Flind tables match the modern rest-api (Rippling Platform API), so the diff was taken against the ~230 rest-api reference pages in the sitemap; the base-api/company-api surfaces are older equivalents and were not counted as gaps.
 
 ## RKICovid — gaps
 
@@ -10606,7 +10606,7 @@ Diffed against: <https://developers.savvycal.com/api/events>
 
 No material gaps found.
 
-Note: The whole REST API is six resource groups: Events, Scheduling Links, Current User, Time Zones, Webhooks, Workflows. PostHog already syncs four of them. The only remaining list endpoints are workflow rules (a sub-resource of workflows), the static IANA time-zone table, and the single-object current-user endpoint — none warrant a warehouse table.
+Note: The whole REST API is six resource groups: Events, Scheduling Links, Current User, Time Zones, Webhooks, Workflows. Flind already syncs four of them. The only remaining list endpoints are workflow rules (a sub-resource of workflows), the static IANA time-zone table, and the single-object current-user endpoint — none warrant a warehouse table.
 
 ## ScaleAI — gaps
 
@@ -10846,7 +10846,7 @@ Today (5): `activities`, `agents`, `groups`, `sites`, `threats`
 
 No reachable API reference found during the sweep. Needs a manual pass.
 
-Note: SentinelOne publishes no public API reference. The console API doc (https://<tenant>.sentinelone.net/api-doc/) is an authenticated SPA — every probed spec path (/api-doc/openapi.json, /api-doc/swagger.json, /apidoc/openapi.json, /web/api/v2.1/swagger.json) returns either the JS shell or 401/404. docs.sentinelone.com does not resolve, and there is no vendor-published OpenAPI on GitHub (only third-party PowerShell/Python wrappers and Shuffle's community spec, which are not authoritative). Reporting no gaps rather than guessing endpoint names. The PostHog source is a static 5-endpoint list (activities, agents, groups, sites, threats) over /web/api/v2.1 with no dynamic discovery, so it is very likely thin against a ~300-function API — but that cannot be substantiated without an authenticated console.
+Note: SentinelOne publishes no public API reference. The console API doc (https://<tenant>.sentinelone.net/api-doc/) is an authenticated SPA — every probed spec path (/api-doc/openapi.json, /api-doc/swagger.json, /apidoc/openapi.json, /web/api/v2.1/swagger.json) returns either the JS shell or 401/404. docs.sentinelone.com does not resolve, and there is no vendor-published OpenAPI on GitHub (only third-party PowerShell/Python wrappers and Shuffle's community spec, which are not authoritative). Reporting no gaps rather than guessing endpoint names. The Flind source is a static 5-endpoint list (activities, agents, groups, sites, threats) over /web/api/v2.1 with no dynamic discovery, so it is very likely thin against a ~300-function API — but that cannot be substantiated without an authenticated console.
 
 ## Sequenzy — **thin**
 
@@ -10918,7 +10918,7 @@ Diffed against: <https://www.servicenow.com/docs/r/zurich/it-service-management/
 - [x] `cmdb_ci_service_business and cmdb_ci_service_technical (Business Service / Technology Management Service)` — Service dimension referenced by incidents and changes; configuration_items (cmdb_ci) does not cover the service classes used for business-impact reporting (medium)
 - [x] `Group Members (user-to-group membership related list on sys_user_group)` — users and user_groups are both synced but the many-to-many join between them is not, so assignment-group headcount and workload-per-member cannot be computed (medium)
 
-Note: ServiceNow's Table API is generic — /api/now/table/{table} can query any table — but the PostHog source hardcodes 13 ITSM tables in settings.py (SERVICENOW_ENDPOINTS) and get_schemas returns build_endpoint_schemas(ENDPOINTS, ...) with no dynamic table discovery. Adding a table is a one-line settings entry, so these gaps are cheap to close. ServiceNow's docs site is a JavaScript-only Fluid Topics app; the resource content above was read via its content API (https://www.servicenow.com/docs/api/khub/maps/{mapId}/topics/{topicId}/content), not the HTML pages. Field-level change history (the audit/history tables) is very likely another high-value gap but I could not confirm its exact table name in a vendor doc, so it is not listed.
+Note: ServiceNow's Table API is generic — /api/now/table/{table} can query any table — but the Flind source hardcodes 13 ITSM tables in settings.py (SERVICENOW_ENDPOINTS) and get_schemas returns build_endpoint_schemas(ENDPOINTS, ...) with no dynamic table discovery. Adding a table is a one-line settings entry, so these gaps are cheap to close. ServiceNow's docs site is a JavaScript-only Fluid Topics app; the resource content above was read via its content API (https://www.servicenow.com/docs/api/khub/maps/{mapId}/topics/{topicId}/content), not the HTML pages. Field-level change history (the audit/history tables) is very likely another high-value gap but I could not confirm its exact table name in a vendor doc, so it is not listed.
 
 ## sevDesk (sevDesk GmbH) — gaps
 
@@ -11115,7 +11115,7 @@ Diffed against: <https://signoz.io/docs/metrics-management/query-range-api/>
 - [ ] `metrics time series (POST /api/v5/query_range, signal=metrics)` — the third telemetry pillar; a warehouse user syncing an observability tool will expect metric series alongside logs and traces (medium)
 - [ ] `meter metrics (POST /api/v5/query_range over signoz.meter.log.count/.size, signoz.meter.span.count/.size, signoz.meter.metric.datapoint.count)` — daily ingestion volume and cost broken down by service.name or environment — the vendor's own billing-analysis use case (medium)
 
-Note: SigNoz's public API surface is small and PostHog covers most of it: logs and traces via POST /api/v5/query_range, plus /api/v1/rules, /api/v1/dashboards, /api/v1/channels. The metrics signal is excluded on purpose — settings.py documents that the v5 raw request type only supports logs and traces, so metrics need a per-metric aggregation query that does not map to a generic table. There is no publicly documented REST endpoint for alerts history, planned maintenance, or routing policies (those docs describe the UI only), so I did not report them. Note /api/v2/dashboards now exists alongside the v1 path in use.
+Note: SigNoz's public API surface is small and Flind covers most of it: logs and traces via POST /api/v5/query_range, plus /api/v1/rules, /api/v1/dashboards, /api/v1/channels. The metrics signal is excluded on purpose — settings.py documents that the v5 raw request type only supports logs and traces, so metrics need a per-metric aggregation query that does not map to a generic table. There is no publicly documented REST endpoint for alerts history, planned maintenance, or routing policies (those docs describe the UI only), so I did not report them. Note /api/v2/dashboards now exists alongside the v1 path in use.
 
 ## Sim — **thin**
 
@@ -11194,7 +11194,7 @@ Diffed against: <https://developer.simplesat.io/api/Simplesat%20API%20(v1)%20Ope
 
 - [x] `customers (GET /api/v1/customers)` — lookup table resolving the customer referenced on every synced response, so CSAT/NPS can be sliced by account (high)
 
-Note: The v1 OpenAPI defines only six resources: answers, customers, team-members, responses, surveys, questions. PostHog syncs four of them, so coverage is proportionate — only customers is a real miss. team-members exposes GET /api/v1/team-members/{team_member_id} but no list endpoint (the collection path is POST-only), so it cannot be synced as a table without hydrating ids from responses; I did not list it as a gap for that reason.
+Note: The v1 OpenAPI defines only six resources: answers, customers, team-members, responses, surveys, questions. Flind syncs four of them, so coverage is proportionate — only customers is a real miss. team-members exposes GET /api/v1/team-members/{team_member_id} but no list endpoint (the collection path is POST-only), so it cannot be synced as a table without hydrating ids from responses; I did not list it as a gap for that reason.
 
 ## SingleStore, Inc. — gaps
 
@@ -11259,7 +11259,7 @@ Diffed against: <https://api.skyvern.com/openapi.json>
 - [ ] `GET /v1/scripts (and /v1/scripts/{script_id})` — generated scripts deployed from workflows; joins to runs executed in script mode (low)
 - [ ] `GET /v1/agents/{workflow_permanent_id}/tags/history` — tag change history on a workflow (low)
 
-Note: PostHog's `workflows` table maps to /v1/agents and `runs` fans out over /v1/agents/{wpid}/runs. Config-only surfaces (custom-llms, upload_file, webhook retry, version) were excluded.
+Note: Flind's `workflows` table maps to /v1/agents and `runs` fans out over /v1/agents/{wpid}/runs. Config-only surfaces (custom-llms, upload_file, webhook retry, version) were excluded.
 
 ## Slash — gaps
 
@@ -11310,7 +11310,7 @@ Diffed against: <http://web.archive.org/web/20240615141100/https://smartengage.c
 
 No material gaps found.
 
-Note: smartengage.com/docs and docs.smartengage.com both return Cloudflare 521 right now; diffed against the archived vendor reference. The API exposes exactly four list endpoints (/avatars/list, /tags/list, /customfields/list, /sequences/list) and PostHog syncs all four. Everything else (tags/add, tags/create, tags/delete, customfields/create, customfields/update, sequences/add, sequences/remove, subscribers/add, subscribers/update) is write-only - there is no subscriber list endpoint to sync.
+Note: smartengage.com/docs and docs.smartengage.com both return Cloudflare 521 right now; diffed against the archived vendor reference. The API exposes exactly four list endpoints (/avatars/list, /tags/list, /customfields/list, /sequences/list) and Flind syncs all four. Everything else (tags/add, tags/create, tags/delete, customfields/create, customfields/update, sequences/add, sequences/remove, subscribers/add, subscribers/update) is write-only - there is no subscriber list endpoint to sync.
 
 ## Smartlead — **thin**
 
@@ -11653,7 +11653,7 @@ Diffed against: <https://support.reallysimplesystems.com/api-v4/>
 - [x] `campaignstages` — lookup table resolving the stage a campaign or campaign member sits in (high)
 - [x] `campaigndetails` — the per-campaign membership/detail rows linking contacts to campaigns (high)
 
-Note: The v4 API documents exactly 11 CRUD objects; PostHog exposes 9 of them, so coverage is nearly complete. The two missing ones are both marketing-tool objects. Also available but not table-shaped: GET /datadictionary/{object} and GET /lookup/{object}/{field} for dropdown values.
+Note: The v4 API documents exactly 11 CRUD objects; Flind exposes 9 of them, so coverage is nearly complete. The two missing ones are both marketing-tool objects. Also available but not table-shaped: GET /datadictionary/{object} and GET /lookup/{object}/{field} for dropdown values.
 
 ## Sprig — gaps
 
@@ -11705,7 +11705,7 @@ Diffed against: <https://raw.githubusercontent.com/square/connect-api-specificat
 - [ ] `GET /v2/customers/groups and GET /v2/customers/segments` — lookup tables resolving the group and segment ids on the customers we already sync (medium)
 - [ ] `GET /v2/bookings and GET /v2/bookings/team-member-booking-profiles` — appointment bookings for service merchants, an entire unexposed vertical (medium)
 
-Note: Square's OpenAPI 3.0 spec has 255 paths; PostHog exposes 5 tables and none of them is Orders, which is the object most Square analytics starts from. Many of the highest-value collections are POST search endpoints (SearchOrders, SearchInvoices, SearchSubscriptions, SearchTeamMembers) rather than GET lists, which may be why they were skipped. Also unexposed but lower value: merchants, vendors, cash drawer shifts, devices, transfer orders, terminal checkouts.
+Note: Square's OpenAPI 3.0 spec has 255 paths; Flind exposes 5 tables and none of them is Orders, which is the object most Square analytics starts from. Many of the highest-value collections are POST search endpoints (SearchOrders, SearchInvoices, SearchSubscriptions, SearchTeamMembers) rather than GET lists, which may be why they were skipped. Also unexposed but lower value: merchants, vendors, cash drawer shifts, devices, transfer orders, terminal checkouts.
 
 ## Squarespace — gaps
 
@@ -11719,7 +11719,7 @@ Diffed against: <https://developers.squarespace.com/commerce-apis/overview>
 - [x] `GET /v1/fulfillments/fulfillment-options (Discounts API)` — lookup of a site's shipping option IDs and carrier services, the targets of free shipping discounts (low)
 - ~~`POST /v1/analytics/transaction-summaries` — per-contact lifetime order/donation/refund totals, though it requires supplying contactIds so it only works as a follow-on to a contacts sync (low)~~ — skipped: it returns the same `TransactionsSummary` object that the `profiles` table already syncs for each contact (a profile id is the contact id)
 
-Note: Squarespace's public Commerce API is small: Contacts, Analytics, Discounts, Products, Websites (store pages), Inventory, Orders, Transactions, Profiles, WebhookSubscriptions. PostHog covers 6 of the 8 data-bearing ones. Order fulfillments and inventory adjustments exist but are POST-only writes, not readable collections.
+Note: Squarespace's public Commerce API is small: Contacts, Analytics, Discounts, Products, Websites (store pages), Inventory, Orders, Transactions, Profiles, WebhookSubscriptions. Flind covers 6 of the 8 data-bearing ones. Order fulfillments and inventory adjustments exist but are POST-only writes, not readable collections.
 
 ## StackOverflowForTeams — gaps
 
@@ -11747,7 +11747,7 @@ Diffed against: <https://developers.statuscake.com/api/>
 
 - [ ] `list-pagespeed-monitoring-locations (GET /pagespeed/locations)` — lookup table resolving the monitoring location codes carried on pagespeed_history rows; uptime_locations is already synced but its pagespeed twin is not (medium)
 
-Note: Enumerated every operationId from the vendor's Redoc page (36 operations across contact-groups, heartbeat, locations, maintenance-windows, pagespeed, ssl, uptime). PostHog covers every list operation except the pagespeed locations lookup; no machine-readable spec is published (openapi.yaml / statuscake-go repo paths 404).
+Note: Enumerated every operationId from the vendor's Redoc page (36 operations across contact-groups, heartbeat, locations, maintenance-windows, pagespeed, ssl, uptime). Flind covers every list operation except the pagespeed locations lookup; no machine-readable spec is published (openapi.yaml / statuscake-go repo paths 404).
 
 ## Statuspage — gaps
 
@@ -11819,7 +11819,7 @@ Diffed against: <https://www.stockdata.org/documentation>
 - [ ] `/v1/data/intraday/adjusted` — split/dividend-adjusted intraday bars; the synced intraday table uses the unadjusted /data/intraday endpoint, so long-range series are discontinuous (medium)
 - [ ] `/v1/entity/type/list` — entity type lookup (stock, etf, index, crypto, currency) (low)
 
-Note: Confirmed against the PostHog source settings that the synced `intraday` table hits /data/intraday (unadjusted), so /data/intraday/adjusted is a real second dataset rather than a duplicate. The crypto/forex EOD section reuses /data/eod with a currency symbol, so it is already covered.
+Note: Confirmed against the Flind source settings that the synced `intraday` table hits /data/intraday (unadjusted), so /data/intraday/adjusted is a real second dataset rather than a duplicate. The crypto/forex EOD section reuses /data/eod with a currency symbol, so it is already covered.
 
 ## STRATO — gaps
 
@@ -11949,7 +11949,7 @@ Diffed against: <https://developers.surveysparrow.com/rest-apis>
 - [ ] `GET /v3/survey_subjects, /v3/survey_subject_evaluators, /v3/survey_subject_report` — Employee 360 subject/evaluator membership and scores - the entire 360-review dataset (medium)
 - [ ] `GET /v3/reputation_platforms and /v3/reputation_app_platforms` — Lookup tables resolving the platform IDs on reputation reviews (medium)
 
-Note: Static endpoint list in products/warehouse_sources/sources/surveysparrow/settings.py (5 paths, no dynamic discovery). Full v3 GET-endpoint list enumerated from https://developers.surveysparrow.com/sitemap.xml, whose `get-v-3-\*` slugs map 1:1 to endpoints. The v3 API has ~30 resource categories; PostHog exposes 5.
+Note: Static endpoint list in products/warehouse_sources/sources/surveysparrow/settings.py (5 paths, no dynamic discovery). Full v3 GET-endpoint list enumerated from https://developers.surveysparrow.com/sitemap.xml, whose `get-v-3-\*` slugs map 1:1 to endpoints. The v3 API has ~30 resource categories; Flind exposes 5.
 
 ## Survicate — gaps
 
@@ -12098,7 +12098,7 @@ Diffed against: <https://docs.tavus.io/openapi.yaml>
 - [ ] `GET /v2/replacements` — Replacement (background swap) jobs with status (low)
 - [x] `GET /v2/memory-stores` — Memory stores, one per PAL and participant tag, showing which participants each PAL keeps memory for (medium)
 
-Note: Important: the current spec no longer contains /v2/personas or /v2/replicas - they have been superseded by /v2/pals and /v2/faces. Two of PostHog's four synced tables therefore target endpoints absent from today's API reference and should be re-verified against a live account. Static 4-endpoint config in sources/tavus/settings.py, no dynamic discovery; the spec exposes 20 GET list endpoints.
+Note: Important: the current spec no longer contains /v2/personas or /v2/replicas - they have been superseded by /v2/pals and /v2/faces. Two of Flind's four synced tables therefore target endpoints absent from today's API reference and should be re-verified against a live account. Static 4-endpoint config in sources/tavus/settings.py, no dynamic discovery; the spec exposes 20 GET list endpoints.
 
 ## TawkTo — gaps
 
@@ -12109,7 +12109,7 @@ Diffed against: <https://help.tawk.to/article/rest-api>
 - [ ] `chat statistics report (by agent, tag, department, date)` — the vendor's headline aggregate for support performance; also exposes agent/tag/department as breakdown dimensions we have no table for (high)
 - [ ] `knowledge base articles (list)` — lets a warehouse user join deflection and self-serve content against chats and tickets (low)
 
-Note: tawk.to's full REST reference is access-gated (you must be approved before you get the docs link), so no public endpoint list exists. The only public vendor page enumerates capabilities in prose. PostHog's own settings.py says the same. Gaps below are quoted from that page's capability list, not from a spec — exact RPC method names (the API is POST-only RPC style, e.g. `chat.list`) cannot be confirmed without approved access, so an implementer must obtain API access first.
+Note: tawk.to's full REST reference is access-gated (you must be approved before you get the docs link), so no public endpoint list exists. The only public vendor page enumerates capabilities in prose. Flind's own settings.py says the same. Gaps below are quoted from that page's capability list, not from a spec — exact RPC method names (the API is POST-only RPC style, e.g. `chat.list`) cannot be confirmed without approved access, so an implementer must obtain API access first.
 
 ## Teachable — gaps
 
@@ -12165,7 +12165,7 @@ Diffed against: <https://docs.teamtailor.com/api/collections/14157246/TVzSiGxA>
 - [ ] `stage-types` — lookup classifying stages into kinds, needed to compare funnels across differently-named pipelines (medium)
 - [x] `interview-kits` — read-only lookup of the interview templates (name, created-at) used to structure interviews and scorecards
 
-Note: docs.teamtailor.com is a published Postman collection, not an OpenAPI site — the resource list was read from the collection JSON at the URL above (~35 GET collections on https://api.teamtailor.com/v1). PostHog covers 5 of them, and every pipeline lookup table is missing.
+Note: docs.teamtailor.com is a published Postman collection, not an OpenAPI site — the resource list was read from the collection JSON at the URL above (~35 GET collections on https://api.teamtailor.com/v1). Flind covers 5 of them, and every pipeline lookup table is missing.
 
 ## TeamUp Fitness — **thin**
 
@@ -12236,7 +12236,7 @@ Diffed against: <https://raw.githubusercontent.com/team-telnyx/openapi/master/op
 - [ ] `/recordings and /recording_transcriptions` — recording inventory and transcripts tied to calls already in the detail records (medium)
 - [ ] `/porting_orders and /portouts` — number-porting pipeline with state transitions (low)
 
-Note: PostHog exposes only the seven `record\_type` variants of GET /v2/detail_records. Telnyx's public OpenAPI 2.0.0 spec has 791 paths (~230 listable collections). The usage fact tables are the right core, but every dimension table that resolves the IDs inside those records is absent, so the synced data can't be joined to anything human-readable.
+Note: Flind exposes only the seven `record\_type` variants of GET /v2/detail_records. Telnyx's public OpenAPI 2.0.0 spec has 791 paths (~230 listable collections). The usage fact tables are the right core, but every dimension table that resolves the IDs inside those records is absent, so the synced data can't be joined to anything human-readable.
 
 ## Tempo — gaps
 
@@ -12426,7 +12426,7 @@ Diffed against: <https://developers.thinkific.com/openapi/thinkific-admin-api-v1
 - [ ] `GET /products/{id}/related` — product relationship graph used for cross-sell reporting (low)
 - [ ] `GET /product_publish_requests` — publication request state per product, useful for content-pipeline reporting (low)
 
-Note: Same vendor API as the Thinkific source; this variant already covers coupons and course_reviews, so the remaining gaps are curriculum depth and the lookup tables. Worth flagging that two PostHog sources point at one Thinkific Admin API v1 with overlapping-but-unequal table sets.
+Note: Same vendor API as the Thinkific source; this variant already covers coupons and course_reviews, so the remaining gaps are curriculum depth and the lookup tables. Worth flagging that two Flind sources point at one Thinkific Admin API v1 with overlapping-but-unequal table sets.
 
 ## Ticketmaster — gaps
 
@@ -12464,7 +12464,7 @@ Diffed against: <https://docs.tinyemail.com/sitemap.xml>
 - [ ] `POST /report/audience/new-subscriber-engagement` — new-subscriber engagement stats per audience; note the 7-day max window and 10-audience cap force windowed fan-out (medium)
 - [ ] `GET /audiences/{id}/clean-history` — list-hygiene history per audience, explains membership drops between syncs (low)
 
-Note: Docusaurus site; sitemap enumerated the full operation list and individual pages were fetched to confirm paths and response shapes. PostHog's `contacts` table is GET /contacts, which returns audience lists (id/name/numberOfMembers) — the same shape as GET /audiences — so audiences are effectively already covered. The Segment API has no list-all-segments endpoint (only PUT-body summary/filter calls keyed by a segment id), so segments are not syncable as a table. tinyEmail exposes no per-recipient event stream and no server-side updated-after filter on any endpoint.
+Note: Docusaurus site; sitemap enumerated the full operation list and individual pages were fetched to confirm paths and response shapes. Flind's `contacts` table is GET /contacts, which returns audience lists (id/name/numberOfMembers) — the same shape as GET /audiences — so audiences are effectively already covered. The Segment API has no list-all-segments endpoint (only PUT-body summary/filter calls keyed by a segment id), so segments are not syncable as a table. tinyEmail exposes no per-recipient event stream and no server-side updated-after filter on any endpoint.
 
 ## TMDb — gaps
 
@@ -12742,7 +12742,7 @@ Diffed against: <https://docs.twelvelabs.io/openapi.json>
 - [ ] `connection imports (GET /connections/{connection_id}/imports)` — per-import job records for bulk ingestion runs (low)
 - [x] `knowledge store item tags (GET /knowledge-stores/{knowledge_store_id}/items/{item_id}/tags)` — moment and range tags with custom metadata on knowledge store video items (medium)
 
-Note: Fetched the live OpenAPI (server https://api.twelvelabs.io/v1.3 — same version the PostHog source targets). The API has grown well past indexes/tasks/videos: assets, analysis tasks/batches, embeddings, entity collections and knowledge stores are all listable.
+Note: Fetched the live OpenAPI (server https://api.twelvelabs.io/v1.3 — same version the Flind source targets). The API has grown well past indexes/tasks/videos: assets, analysis tasks/batches, embeddings, entity collections and knowledge stores are all listable.
 
 ## Twenty — gaps
 
@@ -12820,7 +12820,7 @@ Diffed against: <https://raw.githubusercontent.com/tyntec/api-collection/master/
 
 No material gaps found.
 
-Note: The rendered reference at api.tyntec.com/reference/sms/current.html points at the tyntec/api-collection GitHub spec; the SMS v1 API has only five path groups (/messaging/v1/sms + message status, /incoming, /byon/phonebook/v1/numbers, /byon/contacts/v1, /byon/provisioning/v1) and PostHog's four tables cover every readable one. The sibling APIs in that repo (account, verify, voice, conversations) are separate products, and account only exposes ip-restriction and keys, which are config.
+Note: The rendered reference at api.tyntec.com/reference/sms/current.html points at the tyntec/api-collection GitHub spec; the SMS v1 API has only five path groups (/messaging/v1/sms + message status, /incoming, /byon/phonebook/v1/numbers, /byon/contacts/v1, /byon/provisioning/v1) and Flind's four tables cover every readable one. The sibling APIs in that repo (account, verify, voice, conversations) are separate products, and account only exposes ip-restriction and keys, which are config.
 
 ## Ubidots — gaps
 
@@ -13680,7 +13680,7 @@ Diffed against: <https://docs.zenloop.com/reference>
 - [ ] `survey group summary (Get Summary of Survey Groups)` — group-level NPS aggregate, the comparison dimension for group reporting (medium)
 - [ ] `roles (Get roles)` — lookup for user role assignments (low)
 
-Note: docs.zenloop.com is a ReadMe.io site that aggressively rate-limits and 404s the deep-link URLs recorded in the payload (get-properties, get-survey-groups). The /reference index still serves the embedded page manifest, which lists every endpoint with its HTTP method - that is what I diffed against. Only 8 GET endpoints exist in the whole API; PostHog syncs 3 of them, and the missing `answers` endpoint is the one that carries all the response data, so this connector is effectively metadata-only today.
+Note: docs.zenloop.com is a ReadMe.io site that aggressively rate-limits and 404s the deep-link URLs recorded in the payload (get-properties, get-survey-groups). The /reference index still serves the embedded page manifest, which lists every endpoint with its HTTP method - that is what I diffed against. Only 8 GET endpoints exist in the whole API; Flind syncs 3 of them, and the missing `answers` endpoint is the one that carries all the response data, so this connector is effectively metadata-only today.
 
 ## Zep — **thin**
 

@@ -22,7 +22,7 @@ import { GenerationChecks } from './GenerationChecks'
 import { metricsDashboardReviewSceneLogic } from './metricsDashboardReviewSceneLogic'
 import { QuillDashboardTemplateDetailActions } from './QuillDashboardTemplateDetailActions'
 
-// PostHog AI edits the preview with these tools. The embedded dashboard reloads after each one.
+// Flind AI edits the preview with these tools. The embedded dashboard reloads after each one.
 const DASHBOARD_EDIT_TOOLS = [
     'insight-create',
     'insight-update',
@@ -88,7 +88,7 @@ export function DashboardTemplateDetail(): JSX.Element {
                                           ? 'Open the preview first'
                                           : !dataProcessingAccepted
                                             ? (dataProcessingApprovalDisabledReason ??
-                                              'Approve AI data processing to use PostHog AI')
+                                              'Approve AI data processing to use Flind AI')
                                             : undefined
                                 }
                                 data-attr="metrics-dashboard-review-edit-with-ai"
@@ -99,7 +99,7 @@ export function DashboardTemplateDetail(): JSX.Element {
                                         !inStorybook() && 'rainbow-text-animating'
                                     )}
                                 >
-                                    Edit with PostHog AI
+                                    Edit with Flind AI
                                 </span>
                             </LemonButton>
                             {regenerable && (

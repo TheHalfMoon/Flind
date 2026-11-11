@@ -619,6 +619,6 @@ class UnknownParentError(Exception):
 
     def __init__(self, parent: str, query: str):
         super().__init__(
-            f"The parent name {parent} does not correspond to an existing PostHog table, Data Warehouse Table, or Data Warehouse Saved Query."
+            f"The parent name {parent} does not correspond to an existing Flind table, Data Warehouse Table, or Data Warehouse Saved Query."
         )
         self.query = query

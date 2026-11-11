@@ -25,7 +25,7 @@ export const getAndroidSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                 <Markdown>
                     {dedent`
                         You can autocapture exceptions by setting the \`errorTrackingConfig.autoCapture\` 
-                        argument to \`true\` when initializing the PostHog SDK.
+                        argument to \`true\` when initializing the Flind SDK.
                     `}
                 </Markdown>
                 <CodeBlock
@@ -81,7 +81,7 @@ export const getAndroidSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                             language: 'kotlin',
                             file: 'Kotlin',
                             code: dedent`
-                              PostHog.captureException(
+                              Flind.captureException(
                                   exception,
                                   properties = additionalProperties
                               )
@@ -105,9 +105,9 @@ export const getAndroidSteps = (ctx: OnboardingComponentsContext): StepDefinitio
         content: (
             <Markdown>
                 {dedent`
-                    Before proceeding, let's make sure exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Before proceeding, let's make sure exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),

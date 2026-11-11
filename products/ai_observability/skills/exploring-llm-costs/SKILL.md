@@ -1,7 +1,7 @@
 ---
 name: exploring-llm-costs
 description: >
-  Investigate LLM spend in PostHog — total cost over time, cost by model,
+  Investigate LLM spend in Flind — total cost over time, cost by model,
   provider, user, trace, or custom dimension, token and cache-hit economics,
   and cost regressions. Use when the user asks "how much are we spending on
   LLMs?", "which model / user / feature is most expensive?", "why did cost
@@ -11,7 +11,7 @@ description: >
 
 # Exploring LLM costs
 
-PostHog attaches per-call cost metadata to every `$ai_generation` and `$ai_embedding`
+Flind attaches per-call cost metadata to every `$ai_generation` and `$ai_embedding`
 event at ingestion time. Every cost question reduces to an aggregation over those
 two event types — the interesting variation is only in how you group, filter, and
 compare.

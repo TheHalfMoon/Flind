@@ -150,7 +150,7 @@ export const SSH_FIELD: SourceFieldSwitchGroupConfigApi = {
             placeholder: 'ssh-ed25519 AAAA...',
             secret: false,
             caption:
-                'Paste one public host key line for the tunnel server, and PostHog verifies its identity on every connect. Get it from your server administrator, or run `ssh-keyscan -p <port> <host>` and pick one of the lines it prints, then confirm that line through a channel you trust. Leave blank to connect without verifying the server.',
+                'Paste one public host key line for the tunnel server, and Flind verifies its identity on every connect. Get it from your server administrator, or run `ssh-keyscan -p <port> <host>` and pick one of the lines it prints, then confirm that line through a channel you trust. Leave blank to connect without verifying the server.',
         },
         {
             name: 'require_tls',
@@ -317,7 +317,7 @@ export class UnusableUploadedFileError extends Error {
 }
 
 export const WRONG_UPLOADED_FILE_MESSAGE =
-    'This JSON file is missing the fields PostHog needs. Upload the key file exactly as it was generated, without editing its contents.'
+    'This JSON file is missing the fields Flind needs. Upload the key file exactly as it was generated, without editing its contents.'
 
 // Mirrors the backend `prefix_required` check: a second unprefixed source of the same type would
 // write to the same table names, so the API rejects it.
@@ -335,12 +335,12 @@ export function resolveConnectErrorMessage(e: any): string {
         return apiMessage
     }
     if (e?.status === undefined || e?.status === null || e?.status === 0) {
-        return "PostHog couldn't reach the server to set up your source. This is often an ad blocker or browser extension blocking the request. Try pausing it or switching networks, then try again."
+        return "Flind couldn't reach the server to set up your source. This is often an ad blocker or browser extension blocking the request. Try pausing it or switching networks, then try again."
     }
     if (e?.status >= 500) {
         // Every source reaches this branch, including ones with no database behind them, so the
         // message can't name a cause only some of them have.
-        return "PostHog couldn't set up your source. Check that the details you entered are correct and that the source is reachable, then try again."
+        return "Flind couldn't set up your source. Check that the details you entered are correct and that the source is reachable, then try again."
     }
     // A 4xx without a message body would otherwise toast "undefined".
     return e?.message ?? 'Something went wrong setting up your source. Please try again.'
@@ -1547,7 +1547,7 @@ export const sourceWizardLogic = kea<sourceWizardLogicType>([
                                 source_type: (values.selectedConnector?.name || 'Postgres') as ExternalDataSourceType,
                                 ...connectionPayload,
                                 cdc_management_mode: 'self_managed',
-                                // PostHog creates the slot itself — only verify the publication.
+                                // Flind creates the slot itself — only verify the publication.
                                 cdc_slot_name: null,
                                 cdc_publication_name: pubName,
                                 tables: cdcTableNames,

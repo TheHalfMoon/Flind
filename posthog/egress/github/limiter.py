@@ -1,7 +1,7 @@
 """GitHub egress — the first consumer of the outbound rate limiter.
 
 A GitHub App installation gets 5,000–15,000 REST requests/hour on the ``core`` resource
-depending on the account's plan tier, shared across every PostHog consumer of that
+depending on the account's plan tier, shared across every Flind consumer of that
 installation (warehouse sources, Tasks, Code, Conversations, Visual review). GitHub meters
 its other REST resources on their own separate, per-installation counters — ``search`` at a
 fixed 30/min and ``code_search`` at a fixed 10/min, regardless of plan. So each resource

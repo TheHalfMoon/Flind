@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -13,7 +13,7 @@
 export type ExternalAccountApiProperties = { [key: string]: unknown }
 
 export interface ExternalAccountAssignmentApi {
-    /** PostHog user id of the assigned user. */
+    /** Flind user id of the assigned user. */
     user_id: number
     /** Email address of the assigned user. */
     email: string
@@ -45,7 +45,7 @@ export const OwnershipRoleStateEnumApi = {
 } as const
 
 export interface ExternalAccountOwnershipHolderApi {
-    /** PostHog user id of the holder. */
+    /** Flind user id of the holder. */
     user_id: number
     /**
      * Current email address of the holder; null for a holder outside the organization.
@@ -59,7 +59,7 @@ export interface ExternalAccountOwnershipHolderApi {
     name: string | null
     /** Whether the holder is currently a member of the project's organization. */
     is_organization_member: boolean
-    /** Whether the holder's PostHog user account is active. */
+    /** Whether the holder's Flind user account is active. */
     is_active: boolean
 }
 
@@ -116,7 +116,7 @@ export interface ExternalAccountOwnershipApi {
      */
     external_id: string | null
     /**
-     * Region of this PostHog instance (`us`, `eu`), or null when self-hosted.
+     * Region of this Flind instance (`us`, `eu`), or null when self-hosted.
      * @nullable
      */
     region: string | null
@@ -213,7 +213,7 @@ export interface ExternalAccountCreateApi {
 }
 
 export interface ExternalAccountListAssignmentApi {
-    /** PostHog user id of the assigned user. */
+    /** Flind user id of the assigned user. */
     user_id: number
     /** Current email address of the assigned user. */
     email: string
@@ -882,7 +882,7 @@ export interface PatchedAccountNotebookUpdateApi {
  * A user assigned to an account relationship (read shape).
  */
 export interface AccountAssignmentApi {
-    /** PostHog user id of the assignee. */
+    /** Flind user id of the assignee. */
     readonly id: number
     /** Email of the assignee. */
     readonly email: string
@@ -939,7 +939,7 @@ export interface AccountRelationshipApi {
 export interface AccountRelationshipWriteApi {
     /** Id of the relationship definition to assign. */
     definition: string
-    /** PostHog user id of the assignee. Must be a member of the account's organization. */
+    /** Flind user id of the assignee. Must be a member of the account's organization. */
     user: number
 }
 
@@ -2153,7 +2153,7 @@ export interface ConversationMessageSenderApi {
      */
     readonly email: string | null
     /**
-     * UUID of the matched PostHog person, when available.
+     * UUID of the matched Flind person, when available.
      * @nullable
      */
     readonly person_id: string | null
@@ -2181,7 +2181,7 @@ export interface ConversationMessageSummaryApi {
     readonly sender: ConversationMessageSenderApi
     /** Timestamp from the message source. */
     readonly sent_at: string
-    /** Whether PostHog received or sent the message.
+    /** Whether Flind received or sent the message.
      *
      * * `inbound` - Inbound
      * * `outbound` - Outbound */
@@ -2205,13 +2205,13 @@ export interface AccountEmailThreadParticipantApi {
     readonly email: string
     /** Display name from the captured email headers. */
     readonly display_name: string
-    /** Whether the participant belongs to the PostHog organization or the customer.
+    /** Whether the participant belongs to the Flind organization or the customer.
      *
      * * `internal` - Internal
      * * `customer` - Customer */
     readonly kind: EmailThreadParticipantKindEnumApi
     /**
-     * UUID of the matched PostHog person for a customer participant, when available.
+     * UUID of the matched Flind person for a customer participant, when available.
      * @nullable
      */
     readonly person_id: string | null
@@ -2273,7 +2273,7 @@ export interface AccountEmailThreadMessageApi {
     readonly cc_recipients: readonly AccountEmailThreadAddressApi[]
     /** Whether Mailgun authentication verified the sender domain. */
     readonly sender_authenticated: boolean
-    /** Whether PostHog received or sent the message.
+    /** Whether Flind received or sent the message.
      *
      * * `inbound` - Inbound
      * * `outbound` - Outbound */
@@ -2304,7 +2304,7 @@ export interface MeetingParticipantApi {
     /** Whether this attendee organized the meeting. */
     readonly is_organizer: boolean
     /**
-     * UUID of the PostHog person resolved for this attendee, if any.
+     * UUID of the Flind person resolved for this attendee, if any.
      * @nullable
      */
     readonly person_id: string | null
@@ -2350,7 +2350,7 @@ export interface PaginatedMeetingListApi {
 }
 
 export interface AccountPresenceViewerApi {
-    /** PostHog user ID of the teammate viewing this account. */
+    /** Flind user ID of the teammate viewing this account. */
     readonly user_id: number
     /** Display name of the teammate viewing this account. */
     readonly display_name: string
@@ -2444,7 +2444,7 @@ export interface AccountSupportTicketMessageApi {
     readonly content: string
     /** Display name of the message author. */
     readonly author_name: string
-    /** Whether PostHog received or sent the message.
+    /** Whether Flind received or sent the message.
      *
      * * `inbound` - Inbound
      * * `outbound` - Outbound */
@@ -2998,7 +2998,7 @@ export interface AnnouncementApi {
      * * `partially_failed` - Partially failed
      * * `failed` - Failed */
     readonly status: AnnouncementStatusEnumApi
-    /** Slack identity the message is posted under: 'bot' posts as SupportHog, 'user' posts under the Slack name and avatar of the person sending it (matched by their PostHog email).
+    /** Slack identity the message is posted under: 'bot' posts as SupportHog, 'user' posts under the Slack name and avatar of the person sending it (matched by their Flind email).
      *
      * * `bot` - SupportHog
      * * `user` - The person who created it */
@@ -3452,7 +3452,7 @@ export interface CustomPropertyDefinitionApi {
     group_type_index?: number | null
     /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */
     is_big_number?: boolean
-    /** True when PostHog writes this property itself. Its name and display type are fixed — an update changing either is rejected. */
+    /** True when Flind writes this property itself. Its name and display type are fixed — an update changing either is rejected. */
     readonly is_canonical: boolean
     /**
      * For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types.
@@ -3526,7 +3526,7 @@ export interface PatchedCustomPropertyDefinitionApi {
     group_type_index?: number | null
     /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */
     is_big_number?: boolean
-    /** True when PostHog writes this property itself. Its name and display type are fixed — an update changing either is rejected. */
+    /** True when Flind writes this property itself. Its name and display type are fixed — an update changing either is rejected. */
     readonly is_canonical?: boolean
     /**
      * For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types.
@@ -3768,7 +3768,7 @@ export const CustomerTaskStatusEnumApi = {
 } as const
 
 export interface CustomerTaskUserApi {
-    /** PostHog user ID. */
+    /** Flind user ID. */
     readonly id: number
     /** Email address of the user. */
     readonly email: string
@@ -3862,7 +3862,7 @@ export interface CustomerTaskCreateApi {
      */
     description?: string | null
     /**
-     * PostHog user ID to assign, or null to leave unassigned.
+     * Flind user ID to assign, or null to leave unassigned.
      * @nullable
      */
     assigned_to_id?: number | null

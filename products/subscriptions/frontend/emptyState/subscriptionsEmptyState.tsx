@@ -24,7 +24,7 @@ export const subscriptionsEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Send the numbers to the people who need them',
-                lead: 'A subscription re-runs an insight or a dashboard on a schedule and delivers the result to Slack or email. The people who read it never have to open PostHog, and you can ask for a written report from a prompt instead of a chart.',
+                lead: 'A subscription re-runs an insight or a dashboard on a schedule and delivers the result to Slack or email. The people who read it never have to open Flind, and you can ask for a written report from a prompt instead of a chart.',
             },
         },
         PrimaryAction: SubscriptionsPrimaryAction,

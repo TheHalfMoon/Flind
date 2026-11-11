@@ -7,10 +7,10 @@ export interface GithubConnectError {
 }
 
 export const GITHUB_CONNECT_TIMEOUT_MESSAGE =
-  "We didn't hear back from GitHub. If your organization requires approval to install the PostHog app, ask a GitHub org owner to approve it, then connect again.";
+  "We didn't hear back from GitHub. If your organization requires approval to install the Flind app, ask a GitHub org owner to approve it, then connect again.";
 
 export const GITHUB_INSTALL_PENDING_MESSAGE =
-  "GitHub sent your request to your organization owners. Once an owner approves the PostHog app, we'll finish connecting here.";
+  "GitHub sent your request to your organization owners. Once an owner approves the Flind app, we'll finish connecting here.";
 
 export const GITHUB_CONNECTION_REQUIRED_MESSAGE =
   "Connect GitHub to investigate signals with code context.";
@@ -19,10 +19,10 @@ export const GITHUB_CLOUD_TASK_CONNECTION_REQUIRED_MESSAGE =
   "Connect GitHub to run this cloud task with code context.";
 
 export const GITHUB_CODE_CONTEXT_MESSAGE =
-  "PostHog reads the GitHub repositories you authorize so agents can use their latest code. Code changes are sent in a pull request for your review.";
+  "Flind reads the GitHub repositories you authorize so agents can use their latest code. Code changes are sent in a pull request for your review.";
 
 export const GITHUB_ADMIN_ACCESS_REQUEST =
-  "PostHog needs read access to diagnose product changes using code context and keep investigations current. When a task changes code, it also needs permission to create branches and open pull requests for review.";
+  "Flind needs read access to diagnose product changes using code context and keep investigations current. When a task changes code, it also needs permission to create branches and open pull requests for review.";
 
 const GITHUB_CONNECTION_REQUIRED_PATTERNS = [
   /github_authorization_required/i,
@@ -66,7 +66,7 @@ export function isAlreadyDisconnectedError(error: unknown): boolean {
 
 const GITHUB_CONNECT_ERROR_MESSAGES: Record<string, string> = {
   access_denied:
-    "You declined access on GitHub. Try again to grant the permissions PostHog needs.",
+    "You declined access on GitHub. Try again to grant the permissions Flind needs.",
   github_oauth_error: "GitHub returned an error during sign-in. Please retry.",
   missing_params: "GitHub returned an incomplete response. Please retry.",
   invalid_state:
@@ -90,7 +90,7 @@ const GITHUB_CONNECT_ERROR_MESSAGES: Record<string, string> = {
   integration_create_failed:
     "Couldn't save the GitHub connection. Please retry.",
   github_install_pending:
-    "PostHog needs approval from a GitHub org owner. We sent the request. Until it's approved, your tasks run on your machine. Once it's approved, connect again.",
+    "Flind needs approval from a GitHub org owner. We sent the request. Until it's approved, your tasks run on your machine. Once it's approved, connect again.",
 };
 
 export const GITHUB_CONNECT_PENDING_APPROVAL_CODE = "github_install_pending";

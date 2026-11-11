@@ -58,7 +58,7 @@ from products.product_analytics.backend.facade.enums import EventsRetentionMonth
 
 NOT_A_STANDARD_PERIOD_MESSAGE = (
     f"Events retention has to be {', '.join(map(str, EventsRetentionMonths.values[:-1]))} or "
-    f"{EventsRetentionMonths.values[-1]} months. Contact PostHog support to set another period."
+    f"{EventsRetentionMonths.values[-1]} months. Contact Flind support to set another period."
 )
 EVENTS_DELETED_QUERY_SECONDS = 10
 EVENTS_DELETED_CACHE_SECONDS = 24 * 60 * 60

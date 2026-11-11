@@ -1188,7 +1188,7 @@ class ProductYamlCheck(ProductCheck):
 
 
 class ProductYamlOwnersCheck(ProductCheck):
-    """Validates product.yaml owner slugs against GitHub team slugs in the PostHog org.
+    """Validates product.yaml owner slugs against GitHub team slugs in the Flind org.
 
     Not part of the default CHECKS list — pays a GitHub API call per run, so it's
     only invoked via the dedicated ``product:lint:owners`` subcommand. CI gates
@@ -1244,7 +1244,7 @@ class ProductYamlOwnersCheck(ProductCheck):
                 continue
             if owner not in gh_teams:
                 result.issues.append(
-                    f"owner '{owner}' is not a GitHub team in the PostHog org. "
+                    f"owner '{owner}' is not a GitHub team in the Flind org. "
                     f"See https://github.com/orgs/PostHog/teams"
                 )
 

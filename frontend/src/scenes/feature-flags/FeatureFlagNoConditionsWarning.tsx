@@ -6,7 +6,7 @@ export interface FeatureFlagNoConditionsWarningProps {
 }
 
 // A flag with no release conditions matches nobody, so it always evaluates to false.
-// Server-side SDKs that evaluate locally return that false without asking the PostHog
+// Server-side SDKs that evaluate locally return that false without asking the Flind
 // API, so this warning makes the outcome visible where the conditions are shown.
 export function FeatureFlagNoConditionsWarning({
     conditionSetCount,

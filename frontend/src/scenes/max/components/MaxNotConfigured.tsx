@@ -5,7 +5,7 @@ import { Logomark } from 'lib/brand'
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 
 /**
- * Shown when PostHog AI (Max) is rendered on a self-hosted instance with no LLM provider key
+ * Shown when Flind AI (Max) is rendered on a self-hosted instance with no LLM provider key
  * configured. Max runs on Anthropic, so without ANTHROPIC_API_KEY it would otherwise fail at
  * call time — here we tell the user how to enable it instead.
  */

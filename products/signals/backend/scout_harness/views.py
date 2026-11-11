@@ -1,10 +1,10 @@
 """DRF viewsets exposing the Signals scout surface over HTTP for MCP consumption.
 
 These wrap the sync Python tools in `scout_harness/tools/` so the headless scout
-(and any other agent on the team's PostHog MCP) can call the scout
+(and any other agent on the team's Flind MCP) can call the scout
 tools — `runs-list`, `runs-retrieve`, `runs-findings-create`, `memory-list`,
 `memory-create`, `memory-delete`, `project-profile-get`, and `members-list` — over
-the standard PostHog MCP plumbing.
+the standard Flind MCP plumbing.
 
 Auth uses two dedicated scope objects: `signal_scout:read` is user-grantable
 via the personal-API-key picker (so a team can introspect runs/scratchpad from
@@ -50,7 +50,7 @@ from posthog.api.routing import TeamAndOrgViewSetMixin
 from posthog.auth import OAuthAccessTokenAuthentication, PersonalAPIKeyAuthentication, SessionAuthentication
 from posthog.clickhouse.query_tagging import tag_queries
 
-# PostHog's `SessionAuthentication` (not DRF's) calls `enforce_two_factor()`.
+# Flind's `SessionAuthentication` (not DRF's) calls `enforce_two_factor()`.
 # Authenticators are tried in order and a browser-session request authenticates on
 # the first matching class, so DRF's plain `SessionAuthentication` would let a
 # password-only user in a 2FA-enforced org read scout runs/scratchpad without
@@ -1585,7 +1585,7 @@ class SignalScoutRunViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             "Load one page in a real browser and return what makes it slow — most usefully the element "
             "the browser chose as the Largest Contentful Paint, and where the LCP time went. Field data "
             "says a route is slow; this says which element and why, so a finding can name it instead of "
-            "guessing from source. Restricted to public PostHog pages: the browser signs in to nothing, "
+            "guessing from source. Restricted to public Flind pages: the browser signs in to nothing, "
             "so a page behind a login would report the login screen's numbers. One throttled cold load "
             "is not a p75 over real users — corroborate a field finding with it, never replace one. "
             f"Capped at {MAX_AUDITS_PER_RUN} audits per run."
@@ -3057,7 +3057,7 @@ class _ScoutSkillInfo:
     description: str
     origin: str  # "canonical" | "custom" — see `lazy_seed.scout_skill_origin`.
     role: str  # "specialist" | "operational" — see `lazy_seed.is_operational_scout`.
-    # The retirement PostHog announced for this scout, as the sync stored it on the row, plus the
+    # The retirement Flind announced for this scout, as the sync stored it on the row, plus the
     # phase computed against now. None when the scout is not being retired.
     deprecation: dict | None
 

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -402,7 +402,7 @@ export const SavedCaptureCreateBody = /* @__PURE__ */ zod.object({
 })
 
 /**
- * Fetch a page URL server-side and report whether it allows being embedded in the live preview iframe, plus the HTTP status it returned. The live preview loads the customer's site directly in their browser, so a site that sends X-Frame-Options or a restrictive frame-ancestors will never render, and a 4xx or 5xx from the site's own host or CDN leaves an empty frame with no explanation. This endpoint makes both cases explainable. The fetch comes from PostHog's own network rather than from the screenshot renderer, so a host that varies its response by IP or user agent can answer this differently than it answers a screenshot render. Settled verdicts are cached briefly, so repeat checks for the same URL do not refetch it.
+ * Fetch a page URL server-side and report whether it allows being embedded in the live preview iframe, plus the HTTP status it returned. The live preview loads the customer's site directly in their browser, so a site that sends X-Frame-Options or a restrictive frame-ancestors will never render, and a 4xx or 5xx from the site's own host or CDN leaves an empty frame with no explanation. This endpoint makes both cases explainable. The fetch comes from Flind's own network rather than from the screenshot renderer, so a host that varies its response by IP or user agent can answer this differently than it answers a screenshot render. Settled verdicts are cached briefly, so repeat checks for the same URL do not refetch it.
  * @summary Check whether a page can back a heatmap
  */
 export const SavedPreflightCreateBody = /* @__PURE__ */ zod.object({
@@ -494,7 +494,7 @@ export const WebAnalyticsBotRulesCreateBody = /* @__PURE__ */ zod.object({
     name: zod
         .string()
         .describe(
-            'Label reported by the `Bot name` property when the rule matches. Also the operator for a rule on a bot PostHog does not know.'
+            'Label reported by the `Bot name` property when the rule matches. Also the operator for a rule on a bot Flind does not know.'
         ),
     category: zod
         .string()

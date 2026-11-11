@@ -18,7 +18,7 @@ const ENTRY_HTML = `<!doctype html>
 </html>
 `
 
-// Matches PostHog Desktop's "Blank" starter, so a blank canvas edits the same way in both apps.
+// Matches Flind Desktop's "Blank" starter, so a blank canvas edits the same way in both apps.
 const BLANK_CANVAS = `import { DateRange } from "./blocks/DateRange";
 
 export default function Canvas() {

@@ -2,7 +2,7 @@
 
 The sandbox agent reads ``TaskRun.state["store_skills"]`` when its session starts and writes one
 pointer ``SKILL.md`` per entry into its skill roots, so ``/<name>`` works there the way a local
-skill does. The skill body still crosses the PostHog MCP only when the skill is invoked. The
+skill does. The skill body still crosses the Flind MCP only when the skill is invoked. The
 selection runs here, in the worker, so the sandbox makes no request of its own for it on the
 session boot path. The list is the acting user's, so it is resolved again whenever that user
 changes: a warm run activated by someone other than its creator, or a shared Slack task whose
@@ -49,7 +49,7 @@ def resolve_store_skills_state(team: Team, user: User, *, run_id: str) -> dict[s
 
     ``None`` means the flag service did not answer. The caller then leaves both keys alone, so a
     sandbox that resumes with stubs from an earlier session keeps them instead of losing them to an
-    outage. ``user`` is whoever the sandbox's PostHog credential belongs to, because that is the
+    outage. ``user`` is whoever the sandbox's Flind credential belongs to, because that is the
     identity ``skill-get`` will run as.
     """
     flag_value = posthog_feature_flag_value(

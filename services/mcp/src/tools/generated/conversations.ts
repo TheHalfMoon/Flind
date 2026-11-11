@@ -389,7 +389,7 @@ const conversationsTicketsRetrieve = (): ToolBase<
         ]) as typeof result
         return withAgentNote(
             await withPostHogUrl(context, filtered, `/support/tickets/${filtered.id}`),
-            "The PostHog Assistant may have investigated this ticket and written self-driving reports into the Inbox. To surface them, call inbox-reports-list with source_id set to this ticket's `id` and source_product=conversations (add include_all_statuses=true to include dismissed ones). Those reports hold the investigation and findings; the ticket's own messages do not."
+            "The Flind Assistant may have investigated this ticket and written self-driving reports into the Inbox. To surface them, call inbox-reports-list with source_id set to this ticket's `id` and source_product=conversations (add include_all_statuses=true to include dismissed ones). Those reports hold the investigation and findings; the ticket's own messages do not."
         )
     },
 })

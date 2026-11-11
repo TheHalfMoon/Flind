@@ -93,7 +93,7 @@ export function shouldShowManagedSourceMetricsTab(
     return metricsFeatureFlagEnabled && shouldShowManagedSourceSyncsTab(source)
 }
 
-// PostHog manages every input of a file upload source, so its configuration has nothing to edit.
+// Flind manages every input of a file upload source, so its configuration has nothing to edit.
 export function shouldShowManagedSourceConfigurationTab(
     source: Pick<ExternalDataSource, 'source_type'> | null | undefined
 ): boolean {
@@ -425,7 +425,7 @@ export function ApiVersionDeprecationBanner({
             {subject} syncs using {sourceType} API version {deprecation.version}, which the vendor has deprecated
             {deprecation.sunset_at ? ` and will stop serving on ${dayjs(deprecation.sunset_at).format('LL')}` : ''}.{' '}
             {cta ??
-                `Contact PostHog support to migrate this source to version ${deprecation.default_version} before syncs stop working.`}
+                `Contact Flind support to migrate this source to version ${deprecation.default_version} before syncs stop working.`}
         </LemonBanner>
     )
 }

@@ -80,7 +80,7 @@ export interface UseQuestionInputOptions {
 }
 
 /**
- * The behavior of the legacy PostHog AI composer, shared by its lemon and quill skins: the local draft and
+ * The behavior of the legacy Flind AI composer, shared by its lemon and quill skins: the local draft and
  * its debounced sync to kea, the slash-command autocomplete, the fill-in hint, the message queue, the
  * send/stop/queue decision, the length guard, and the sandbox pre-warm release on blur. Each skin only
  * draws what this returns.
@@ -242,7 +242,7 @@ export function useQuestionInput({ textAreaRef, onSubmit }: UseQuestionInputOpti
         }
         const shouldShow = isSlashCommand && !autocompleteDismissed
         if (shouldShow && !showAutocomplete) {
-            posthog.capture('Max slash command autocomplete shown') // [PostHog] Event: "Max slash command autocomplete shown"
+            posthog.capture('Max slash command autocomplete shown') // [Flind] Event: "Max slash command autocomplete shown"
         }
         setShowAutocomplete(shouldShow)
     }, [inputValue, showAutocomplete, autocompleteDismissed])

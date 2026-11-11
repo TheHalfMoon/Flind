@@ -51,7 +51,7 @@ class ReplicateSource(ResumableSource[ReplicateSourceConfig, ReplicateResumeConf
             label="Replicate",
             releaseStatus=ReleaseStatus.GA,
             keywords=["ml", "ai", "models", "inference"],
-            caption="""Enter your Replicate API token to automatically pull your Replicate data into the PostHog Data warehouse.
+            caption="""Enter your Replicate API token to automatically pull your Replicate data into the Flind Data warehouse.
 
 You can create an API token in your [Replicate account settings](https://replicate.com/account/api-tokens).""",
             iconPath="/static/services/replicate.svg",

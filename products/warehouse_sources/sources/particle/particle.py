@@ -9,7 +9,7 @@ Two tables:
   (`/v1/products/:id/devices`, paginated with `page`/`perPage` and `meta.total_pages`).
 - `events` only fills from webhooks. Particle keeps no event history to page through, so
   `create_webhook` registers one Particle webhook per event name prefix (Particle matches on prefix
-  and has no wildcard). The webhook template also captures each delivery as a PostHog event.
+  and has no wildcard). The webhook template also captures each delivery as a Flind event.
 
 Particle delivers webhooks at least once and retries a failed delivery twice before dropping it.
 """
@@ -52,7 +52,7 @@ WEBHOOK_AUTH_ERROR = (
     "`integrations:list`, `integrations:create` and `integrations:remove` scopes, then try again."
 )
 
-NO_PREFIXES_ERROR = "Add at least one Particle event name prefix so PostHog knows which events to receive."
+NO_PREFIXES_ERROR = "Add at least one Particle event name prefix so Flind knows which events to receive."
 
 
 def _product_id(config: ParticleSourceConfig) -> str | None:
@@ -192,7 +192,7 @@ def create_webhook(config: ParticleSourceConfig, webhook_url: str) -> WebhookCre
         stale_hooks = _list_our_hooks(session, config, webhook_url)
 
         # The secret is only stored when every hook exists, so a hook created before a later
-        # failure would deliver with a secret PostHog never accepts. Create first, and remove the
+        # failure would deliver with a secret Flind never accepts. Create first, and remove the
         # earlier setup's hooks last, so a failed setup leaves the previous configuration working.
         secret = secrets.token_urlsafe(32)
         for prefix in prefixes:
@@ -200,7 +200,7 @@ def create_webhook(config: ParticleSourceConfig, webhook_url: str) -> WebhookCre
                 base_url,
                 json={
                     "integration_type": "Webhook",
-                    "name": f"PostHog ({prefix})",
+                    "name": f"Flind ({prefix})",
                     "event": prefix,
                     "url": webhook_url,
                     "requestType": "POST",

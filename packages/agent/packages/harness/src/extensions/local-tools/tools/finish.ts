@@ -97,14 +97,14 @@ const FINISH_TOOL_DESCRIPTION =
 
 /**
  * Lets the model end its own background run. The handler calls back into the
- * adapter's `requestFinish`, which marks the task run terminal via the PostHog
+ * adapter's `requestFinish`, which marks the task run terminal via the Flind
  * API; the Temporal workflow observes the terminal status and tears the sandbox
  * down. Gated to cloud runs that actually own a sandbox — local sessions have
  * no `requestFinish` and no sandbox to reclaim, so the tool stays hidden there.
  */
 // Adapters that run local tools in a separate process (codex) cannot pass the
 // in-process `requestFinish` callback through the serialized tool context, so
-// the tool falls back to the same PostHog API PATCH that callback performs.
+// the tool falls back to the same Flind API PATCH that callback performs.
 function resolveRequestFinish(
   ctx: LocalToolCtx,
 ): LocalToolCtx["requestFinish"] {

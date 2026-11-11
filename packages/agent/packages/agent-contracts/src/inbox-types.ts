@@ -565,7 +565,7 @@ export type ExternalInboxSourceProduct =
   (typeof EXTERNAL_INBOX_SOURCES)[number]["product"];
 
 /**
- * Every backend `source_product`: the PostHog-native products (alphabetical) plus every
+ * Every backend `source_product`: the Flind-native products (alphabetical) plus every
  * warehouse source in EXTERNAL_INBOX_SOURCES.
  */
 export type SourceProduct =
@@ -594,7 +594,7 @@ export type ToggleableSourceProduct = Exclude<
 >;
 
 /**
- * Every backend signal `source_type`: the PostHog-native types (alphabetical) plus the
+ * Every backend signal `source_type`: the Flind-native types (alphabetical) plus the
  * warehouse record kinds.
  */
 export type SourceType =
@@ -630,7 +630,7 @@ const WAREHOUSE_SOURCE_PRODUCTS = new Set<string>(
  *
  * The registry carries every warehouse-backed integration (~40) while a project
  * runs a handful, so a warehouse source is kept only when it is switched on, plus
- * anything currently selected so an active filter is never invisible. PostHog's
+ * anything currently selected so an active filter is never invisible. Flind's
  * own products stay listed unconditionally. Pass `undefined` when the enabled set
  * is unknown (still loading, or the request failed) to hide nothing.
  */

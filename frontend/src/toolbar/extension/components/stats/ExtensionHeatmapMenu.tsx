@@ -71,7 +71,7 @@ function HeatmapSaveResultMessage({ heatmap }: { heatmap: PageToolbarHeatmapStat
                 onClick={() => openHeatmapInPostHog(result.shortId)}
                 data-attr="toolbar-extension-open-saved-heatmap"
             >
-                Open in PostHog
+                Open in Flind
             </LemonButton>
         </div>
     )
@@ -227,11 +227,11 @@ export function ExtensionHeatmapMenu(): JSX.Element {
                         >
                             {heatmap.savingHeatmap && heatmap.saveProgress
                                 ? `Capturing screen widths (${heatmap.saveProgress.done}/${heatmap.saveProgress.total})`
-                                : 'Save to PostHog'}
+                                : 'Save to Flind'}
                         </LemonButton>
                         <div className="text-xs text-secondary">
                             Captures this page at several screen widths and saves them with the heatmap, so you can open
-                            it in PostHog later. Works when the page is behind a login.
+                            it in Flind later. Works when the page is behind a login.
                         </div>
                         <HeatmapSaveResultMessage heatmap={heatmap} />
                     </>

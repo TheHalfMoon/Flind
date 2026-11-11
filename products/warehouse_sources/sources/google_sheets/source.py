@@ -74,7 +74,7 @@ class GoogleSheetsSource(SimpleSource[GoogleSheetsSourceConfig]):
             "collapse to the same column name": None,
             "can't be found": None,
             "must be real number, not str": "Import failed: a numeric column contains a non-numeric value. Ensure every cell in numeric columns is stored as a plain number.",
-            "Spreadsheet access denied": "Import failed: PostHog does not have access to this spreadsheet. Please share it with our service account as described at https://posthog.com/docs/cdp/sources/google-sheets",
+            "Spreadsheet access denied": "Import failed: Flind does not have access to this spreadsheet. Please share it with our service account as described at https://posthog.com/docs/cdp/sources/google-sheets",
             # gspread surfaces the Sheets API 404 (deleted/moved sheet, or access removed) as a
             # `SpreadsheetNotFound`, which `google_sheets.py` re-raises with this stable message —
             # `str(SpreadsheetNotFound)` is otherwise just `<Response [404]>`, with nothing to match.
@@ -173,7 +173,7 @@ class GoogleSheetsSource(SimpleSource[GoogleSheetsSourceConfig]):
             logger.exception("google_sheets_service_account_key_invalid", team_id=team_id)
             return (
                 False,
-                "The Google Sheets integration isn't configured correctly on this PostHog instance. "
+                "The Google Sheets integration isn't configured correctly on this Flind instance. "
                 "Ask your instance administrator to check the Google Sheets service account key.",
             )
         try:
@@ -194,14 +194,14 @@ class GoogleSheetsSource(SimpleSource[GoogleSheetsSourceConfig]):
             service_account_email = credentials_service.get_secret("GOOGLE_SHEETS_SERVICE_ACCOUNT_CLIENT_EMAIL")
             return (
                 False,
-                "PostHog couldn't find a sheet at that URL. Check the URL, and share the sheet with our service "
+                "Flind couldn't find a sheet at that URL. Check the URL, and share the sheet with our service "
                 f"account ({service_account_email}) as a Viewer.",
             )
         except PermissionError:
             service_account_email = credentials_service.get_secret("GOOGLE_SHEETS_SERVICE_ACCOUNT_CLIENT_EMAIL")
             return (
                 False,
-                "PostHog does not have access to this spreadsheet. Share it with our service account "
+                "Flind does not have access to this spreadsheet. Share it with our service account "
                 f"({service_account_email}) as a Viewer, then try again. "
                 "See https://posthog.com/docs/cdp/sources/google-sheets for more.",
             )
@@ -222,7 +222,7 @@ class GoogleSheetsSource(SimpleSource[GoogleSheetsSourceConfig]):
                 "with our service account as described at https://posthog.com/docs/cdp/sources/google-sheets",
             )
         except (google_auth_exceptions.RefreshError, google_auth_exceptions.TransportError) as e:
-            # These come from fetching PostHog's own service-account OAuth token (the user only shares
+            # These come from fetching Flind's own service-account OAuth token (the user only shares
             # their sheet with our service account), not from the user's credentials. google-auth flags
             # a transient Google-side blip as retryable; its str() is otherwise a raw server message like
             # "A server error occurred." A non-retryable failure (e.g. invalid_grant from a rotated key)
@@ -230,12 +230,12 @@ class GoogleSheetsSource(SimpleSource[GoogleSheetsSourceConfig]):
             if getattr(e, "retryable", False):
                 return (
                     False,
-                    "PostHog couldn't verify access to your Google Sheet right now because Google returned a "
+                    "Flind couldn't verify access to your Google Sheet right now because Google returned a "
                     "temporary error. Please try again in a moment.",
                 )
             return (
                 False,
-                "PostHog couldn't authenticate with Google to verify access to your Google Sheet. This looks "
+                "Flind couldn't authenticate with Google to verify access to your Google Sheet. This looks "
                 "like a problem on our side, so please contact support if it keeps happening.",
             )
         except Exception as e:
@@ -249,7 +249,7 @@ class GoogleSheetsSource(SimpleSource[GoogleSheetsSourceConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             keywords=["gsheet", "gsheets", "spreadsheet", "google sheet"],
             label="Google Sheets",
-            caption="Ensure you have granted PostHog access to your Google Sheet as instructed in the [documentation](https://posthog.com/docs/cdp/sources/google-sheets). The first row of each sheet must contain unique column headers, since PostHog reads it as the column names when syncing.",
+            caption="Ensure you have granted Flind access to your Google Sheet as instructed in the [documentation](https://posthog.com/docs/cdp/sources/google-sheets). The first row of each sheet must contain unique column headers, since Flind reads it as the column names when syncing.",
             releaseStatus=ReleaseStatus.GA,
             iconPath="/static/services/Google_Sheets.svg",
             docsUrl="https://posthog.com/docs/cdp/sources/google-sheets",

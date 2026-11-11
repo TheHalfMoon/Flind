@@ -45,7 +45,7 @@ from products.warehouse_sources.backend.temporal.data_imports.sources.mssql.mssq
 from products.warehouse_sources.backend.types import ExternalDataSourceType
 
 _FIREWALL_BLOCKED_ERROR = (
-    "Your SQL Server's firewall is blocking PostHog. Add a firewall rule allowing PostHog's IP "
+    "Your SQL Server's firewall is blocking Flind. Add a firewall rule allowing Flind's IP "
     "addresses to reach the server (on Azure SQL, use the portal or sp_set_firewall_rule), then "
     "try again. New rules can take a few minutes to take effect."
 )
@@ -55,12 +55,12 @@ _FIREWALL_BLOCKED_ERROR = (
 # or port and a server it cannot reach at all in the same words.
 _SERVER_UNREACHABLE_VALIDATION_ERROR = (
     "Could not reach your SQL Server on the host and port given. Check the host and port are "
-    "correct, and that PostHog's IP addresses are allowed through your firewall."
+    "correct, and that Flind's IP addresses are allowed through your firewall."
 )
 
 _CONNECTION_TIMED_OUT_ERROR = (
     "Connection timed out. Check that your server is reachable from the public internet and that "
-    "PostHog's IP addresses are allowed through your firewall. For a server that can't be exposed "
+    "Flind's IP addresses are allowed through your firewall. For a server that can't be exposed "
     "publicly, use the SSH tunnel option."
 )
 
@@ -69,7 +69,7 @@ _GENERIC_CONNECTION_ERROR = "Could not connect to MS SQL. Please check all conne
 # DB-Lib error 20002 at setup, usually paired with 20017 ("Unexpected EOF from the server"): the server
 # dropped the connection mid-handshake. Mirrors the Postgres source's wording for the same failure.
 _CONNECTION_DROPPED_ERROR = (
-    "Your SQL Server closed the connection while PostHog was connecting. Check your host, port, and "
+    "Your SQL Server closed the connection while Flind was connecting. Check your host, port, and "
     "encryption settings, and that no firewall or SSH tunnel is dropping the connection."
 )
 
@@ -198,7 +198,7 @@ class MSSQLSource(
 
     def get_non_retryable_errors(self) -> dict[str, str | None]:
         return {
-            # Azure SQL error 40615 — the server-level firewall rejected PostHog's client IP. This
+            # Azure SQL error 40615 — the server-level firewall rejected Flind's client IP. This
             # also surfaces "Adaptive Server connection failed" below, but that generic entry has no
             # message; keep this first so the actionable firewall guidance wins. Match the stable
             # phrase, not the volatile server name / client IP the rest of the message echoes.
@@ -206,10 +206,10 @@ class MSSQLSource(
             "Adaptive Server connection failed": None,
             # pymssql DB-Lib error 20009 — the server host can't be reached for the whole
             # connection attempt. On a managed instance this is a persistent connectivity issue
-            # (security group doesn't allow PostHog's IPs, the instance is stopped, or the
+            # (security group doesn't allow Flind's IPs, the instance is stopped, or the
             # hostname is wrong), not a momentary blip, so retrying the job won't recover it.
             "Adaptive Server is unavailable or does not exist": (
-                "PostHog couldn't reach your SQL Server. Check that it's running and that PostHog's IP addresses "
+                "Flind couldn't reach your SQL Server. Check that it's running and that Flind's IP addresses "
                 "are allowed through your firewall, then re-enable the sync."
             ),
             # SQL Server error 18456 — the login was rejected (wrong username/password, or the login
@@ -217,7 +217,7 @@ class MSSQLSource(
             # replays the same rejection; surface the same actionable wording as the validation path
             # instead of the raw driver string (which echoes the username back).
             "Login failed for user": "Invalid user or password",
-            # SQL Server error 229 — the login PostHog connects with was authenticated but lacks
+            # SQL Server error 229 — the login Flind connects with was authenticated but lacks
             # SELECT permission on a table/view being synced. This is a server-side GRANT the
             # customer has to make (db_datareader or an explicit GRANT SELECT); retrying with the
             # same login can never succeed. Match the stable message text, not the object/database
@@ -260,19 +260,19 @@ class MSSQLSource(
             "Conversion failed when converting": "A value in one of the tables or views you're syncing can't be converted to the type its query expects (SQL Server error 245) — for example a text value where a number is required. This usually comes from a view definition or computed column that casts or compares mismatched types. Fix the conversion at the source (correct the data or the view), then re-enable the sync.",
             # Raised by the `sshtunnel` library (via the shared `open_ssh_tunnel` helper) when the
             # SSH tunnel can't be brought up — the bastion host is unreachable, the host/port is
-            # wrong, the SSH key/credentials are rejected, or a firewall blocks PostHog's IPs. This
+            # wrong, the SSH key/credentials are rejected, or a firewall blocks Flind's IPs. This
             # is the customer's gateway configuration, not a momentary blip; the import retried it
             # across attempts and never recovered. `handle_non_retryable_error` still re-tries a few
             # times across runs before giving up, so a genuinely transient gateway reboot is
             # absorbed. Postgres already treats this identical error as non-retryable.
-            "Could not establish session to SSH gateway": "Could not connect to your SSH tunnel. Check that the SSH host, port, and credentials are correct, the bastion host is running and reachable, and that PostHog's IP addresses are allowed through its firewall.",
+            "Could not establish session to SSH gateway": "Could not connect to your SSH tunnel. Check that the SSH host, port, and credentials are correct, the bastion host is running and reachable, and that Flind's IP addresses are allowed through its firewall.",
             # paramiko raises a bare, message-less EOFError when the SSH gateway accepts the TCP
             # connection but drops it mid-handshake (a non-SSH service on the port, the bastion
-            # refusing PostHog's IPs, a proxy resetting the stream). sshtunnel doesn't wrap it, so
+            # refusing Flind's IPs, a proxy resetting the stream). sshtunnel doesn't wrap it, so
             # without translation it surfaces as an empty-message crash that matches no rule and
             # retries forever. `connect` re-raises it as `_SSH_HANDSHAKE_EOF_ERROR` — same
             # gateway-configuration class as "Could not establish session to SSH gateway" above.
-            _SSH_HANDSHAKE_EOF_ERROR: "Could not connect to your SSH tunnel — the gateway accepted the connection but closed it during the SSH handshake. Check that the SSH host and port point to an SSH server (not the database port), that the bastion is running and reachable, and that PostHog's IP addresses are allowed through its firewall, then re-enable the sync.",
+            _SSH_HANDSHAKE_EOF_ERROR: "Could not connect to your SSH tunnel — the gateway accepted the connection but closed it during the SSH handshake. Check that the SSH host and port point to an SSH server (not the database port), that the bastion is running and reachable, and that Flind's IP addresses are allowed through its firewall, then re-enable the sync.",
             # Raised from the shared `_decimal_array_from_values` fallback in
             # `pipelines/core/arrow_utils.py` when a numeric/decimal/money value exceeds Delta
             # Lake's decimal budget (precision > 76 or scale > 32). Fixed source-data shape —
@@ -295,7 +295,7 @@ class MSSQLSource(
             # a retry inside the job only holds a worker for longer. `handle_non_retryable_error`
             # still tries again on a few later runs before it gives up, which covers a server that
             # was briefly unreachable.
-            MSSQL_METADATA_TIMEOUT_ERROR: "Your SQL Server did not answer PostHog's connection or metadata queries in time. Check that the server is running and reachable, including through the SSH tunnel if you use one, and that no long-running transaction is holding locks on the tables being synced.",
+            MSSQL_METADATA_TIMEOUT_ERROR: "Your SQL Server did not answer Flind's connection or metadata queries in time. Check that the server is running and reachable, including through the SSH tunnel if you use one, and that no long-running transaction is holding locks on the tables being synced.",
             _TABLE_NOT_FOUND_ERROR: "One of the tables you're syncing no longer exists in your SQL Server — it was likely dropped or renamed after it was first discovered. Remove it from the sync or restore it at the source, then re-enable the sync.",
         }
 
@@ -338,7 +338,7 @@ class MSSQLSource(
             # or name carries "Azure", so a search for it fuzzy-matched unrelated sources instead.
             keywords=["sql server", "sql", "mssql", "azure", "azure sql", "azure sql database"],
             label="Microsoft SQL Server",
-            caption="Enter your Microsoft SQL Server/Azure SQL Server credentials to automatically pull your SQL data into the PostHog Data warehouse.",
+            caption="Enter your Microsoft SQL Server/Azure SQL Server credentials to automatically pull your SQL data into the Flind Data warehouse.",
             iconPath="/static/services/sql-azure.png",
             docsUrl="https://posthog.com/docs/cdp/sources/microsoft-sql-server",
             fields=cast(
@@ -359,7 +359,7 @@ class MSSQLSource(
                         required=True,
                         placeholder="db.example.com",
                         caption=(
-                            "Must be reachable from the public internet. Add PostHog's egress IP addresses to your "
+                            "Must be reachable from the public internet. Add Flind's egress IP addresses to your "
                             "firewall allowlist (see the docs above) and use a public host. `localhost` and private "
                             "IPs (10.x, 172.16-31.x, 192.168.x) can't be reached. For a database that can't be "
                             "exposed publicly, enable the SSH tunnel below."
@@ -415,7 +415,7 @@ class MSSQLSource(
                         converter=SourceFieldSelectConfigConverter.STR_TO_BOOL,
                         caption=(
                             "Refuse to connect unless the connection to your database is encrypted. "
-                            "PostHog does not verify the SQL Server certificate."
+                            "Flind does not verify the SQL Server certificate."
                         ),
                         options=[
                             SourceFieldSelectConfigOption(label="Yes", value="true"),
@@ -448,7 +448,7 @@ class MSSQLSource(
             return False, _CONNECTION_TIMED_OUT_ERROR
         except (HostNotAllowedError, TemporaryHostResolutionError) as e:
             # The host policy refused the host, or its lookup never answered. Both carry their own
-            # user-facing wording and neither is a PostHog defect, so they are not captured.
+            # user-facing wording and neither is a Flind defect, so they are not captured.
             return False, str(e)
         except OperationalError as e:
             error_msg = " ".join(str(n) for n in e.args)

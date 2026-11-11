@@ -83,7 +83,7 @@ export interface TodayReportOpenContext {
     source: TodayReportOpenSource | 'step'
 }
 
-/** Where a question to PostHog AI came from, sent with the `today ai asked` event. */
+/** Where a question to Flind AI came from, sent with the `today ai asked` event. */
 export type TodayAskSource = 'walk_through' | 'report_page'
 
 export type TodayList = 'for_you' | 'recents'
@@ -578,7 +578,7 @@ export const todayLogic = kea<todayLogicType>([
     reducers({
         // Turned on with `?sample=1` and kept until `?sample=0`, so the sample survives moving between pages.
         useSampleData: [false, { persist: true }, { setUseSampleData: (_, { useSampleData }) => useSampleData }],
-        // A question about a report waits for the report's current state before PostHog AI opens.
+        // A question about a report waits for the report's current state before Flind AI opens.
         askingAi: [false, { askAi: (_, { report }) => !!report, askAiFinished: () => false }],
         expandedReportRows: [
             {} as Record<string, boolean>,
@@ -835,7 +835,7 @@ export const todayLogic = kea<todayLogicType>([
             },
             askAi: async ({ prompt, source, report }, breakpoint) => {
                 let context: TodayAskContext
-                // Sample reports have ids that do not exist, so PostHog AI gets no context to look up. A real
+                // Sample reports have ids that do not exist, so Flind AI gets no context to look up. A real
                 // report can still open while sample mode is on, so a report decides by its own id.
                 if (report) {
                     context = isSampleReportId(report.id)

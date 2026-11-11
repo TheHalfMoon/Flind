@@ -64,7 +64,7 @@ LIMIT 10
 
 ### `matchesAction(action_name)`
 
-Filters events that match a named action. Actions are named event combinations defined in PostHog.
+Filters events that match a named action. Actions are named event combinations defined in Flind.
 
 ```sql
 SELECT count()

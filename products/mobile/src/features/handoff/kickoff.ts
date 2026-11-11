@@ -49,7 +49,7 @@ export async function withWarmRetry<T>(
 
 export class RunNotStartedError extends Error {
     constructor() {
-        super("PostHog created the task but couldn't start it. Try again.")
+        super("Flind created the task but couldn't start it. Try again.")
         this.name = 'RunNotStartedError'
     }
 }
@@ -193,7 +193,7 @@ export function handoffErrorMessage(error: unknown): string {
         case 'run_not_started':
             return (error as RunNotStartedError).message
         case 'network':
-            return "Couldn't reach PostHog. Check your connection and try again."
+            return "Couldn't reach Flind. Check your connection and try again."
         case 'free_trial':
             return server ?? FREE_TRIAL_COPY
         case 'pr_limit':
@@ -201,14 +201,14 @@ export function handoffErrorMessage(error: unknown): string {
         case 'task_limit':
             return server ?? TASK_LIMIT_COPY
         case 'busy':
-            return server ?? 'PostHog is busy. Try again in a few minutes.'
+            return server ?? 'Flind is busy. Try again in a few minutes.'
         case 'start_timeout':
-            return "PostHog couldn't start the agent in time. Try again."
+            return "Flind couldn't start the agent in time. Try again."
         case 'forbidden':
             return server ?? "You don't have access to hand off reports in this project."
         case 'not_found':
             return 'This report is no longer available.'
         case 'unknown':
-            return "Couldn't hand off to PostHog. Try again."
+            return "Couldn't hand off to Flind. Try again."
     }
 }

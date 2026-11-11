@@ -1,6 +1,6 @@
-# PostHog Hobby Installer
+# Flind Hobby Installer
 
-A TUI (Terminal User Interface) and CI-compatible installer for PostHog self-hosted hobby deployments. Built with Go using [Bubbletea](https://github.com/charmbracelet/bubbletea).
+A TUI (Terminal User Interface) and CI-compatible installer for Flind self-hosted hobby deployments. Built with Go using [Bubbletea](https://github.com/charmbracelet/bubbletea).
 
 ## Features
 
@@ -39,8 +39,8 @@ CI mode is automatically enabled when common CI environment variables are detect
 **Flags:**
 
 - `--ci` - Force non-interactive CI mode
-- `--domain` - Domain where PostHog will be accessible (required in CI mode unless already in `.env`)
-- `--version` - PostHog version to install (default: `latest`)
+- `--domain` - Domain where Flind will be accessible (required in CI mode unless already in `.env`)
+- `--version` - Flind version to install (default: `latest`)
 
 ## Building
 
@@ -127,7 +127,7 @@ Both `tui/` and `ci/` consume the same `core.GetChecks()` and `core.GetInstallSt
 ## Installation flow
 
 1. **Welcome** - Detect Install vs Upgrade mode
-2. **Version** - Select PostHog version (latest recommended)
+2. **Version** - Select Flind version (latest recommended)
 3. **Domain** - Enter domain for TLS certificate (skipped if already in `.env`)
 4. **Checks** - Verify system requirements
 5. **Install** - Clone repo, generate config, pull images, start Docker stack

@@ -153,7 +153,7 @@ class ExperimentSummaryDataService:
 
         variants = [v.get("key") for v in get_experiment_rule(experiment).variants if v.get("key")]
         stats_method = get_experiment_stats_method(experiment)
-        # PostHog AI gets one shot at the data — unlike the frontend it can't poll, so a
+        # Flind AI gets one shot at the data — unlike the frontend it can't poll, so a
         # stale metric returned as "pending" is silently dropped from the summary. Always
         # block on stale cache so every metric resolves inline.
         execution_mode = ExecutionMode.RECENT_CACHE_CALCULATE_BLOCKING_IF_STALE

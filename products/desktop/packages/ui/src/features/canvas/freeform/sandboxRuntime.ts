@@ -65,7 +65,7 @@ const TAILWIND_V4 = `<script type="module" src="https://cdn.jsdelivr.net/npm/@ta
 <style type="text/tailwindcss">
 @import "tailwindcss";
 /* Drive \`dark:\` off the \`.dark\` class the host toggles (not prefers-color-scheme),
-   so the canvas follows the user's PostHog theme even when it differs from the OS. */
+   so the canvas follows the user's Flind theme even when it differs from the OS. */
 @custom-variant dark (&:where(.dark, .dark *));
 @theme inline {
   --color-border: var(--border);
@@ -195,7 +195,7 @@ export function isInteractiveCanvasCommentTarget(target: unknown): boolean {
 }
 
 export function buildSandboxDocument(
-  // The PostHog host, when in-iframe analytics/replay is enabled. Opens CSP for
+  // The Flind host, when in-iframe analytics/replay is enabled. Opens CSP for
   // posthog-js to load its recorder and POST events/replay to ingest.
   analyticsApiHost?: string,
 ): string {
@@ -235,7 +235,7 @@ export function buildSandboxDocument(
       else if (!portOnly) parent.postMessage(message, "*");
     };
 
-    // --- data shim: the ONLY way canvas code reaches PostHog. No token here. ---
+    // --- data shim: the ONLY way canvas code reaches Flind. No token here. ---
     const pending = new Map();
     let reqSeq = 0;
     // The host caps how many requests run at once and queues the rest. Past
@@ -317,14 +317,14 @@ export function buildSandboxDocument(
           call("stateSet", { key, value: value === undefined ? null : value, scope: (opts && opts.scope) || "user" }),
         list: (opts) => call("stateList", { scope: opts && opts.scope }),
       },
-      // Write into PostHog as the viewer. Every verb must be declared in
+      // Write into Flind as the viewer. Every verb must be declared in
       // capabilities.posthog.actions; wire invocations to explicit user
       // gestures (a button), never to load or render:
       // \`ph.actions.invoke("tasks.create", { title, description })\`.
       actions: {
         invoke: (verb, payload) => call("actionInvoke", { verb, payload: payload ?? {} }),
       },
-      // Run a PostHog MCP tool as the viewer. Every tool must be declared in
+      // Run a Flind MCP tool as the viewer. Every tool must be declared in
       // capabilities.posthog.tools. \`read\` takes read-only tools and may run on
       // load; \`call\` changes data, so wire it to a click (the host confirms):
       // \`ph.tools.call("feature-flag-enable", { id })\`.
@@ -352,7 +352,7 @@ export function buildSandboxDocument(
       agent: {
         request: (prompt) => call("agentRequest", { prompt }),
       },
-      // Brokered by the host: PostHog and GitHub PR HTTPS URLs, rate-limited, and
+      // Brokered by the host: Flind and GitHub PR HTTPS URLs, rate-limited, and
       // ignored while the canvas is unfocused (no auto-opens on load).
       openExternal: (url) => post({ type: "open-external", url }),
       // Navigate the host app. Fire-and-forget: the host validates the intent
@@ -824,7 +824,7 @@ ${FREEFORM_QUILL_CSS_URLS.map(
 function contentSecurityPolicy(analyticsApiHost?: string): string {
   const esm = FREEFORM_ESM_HOST;
   // posthog-js posts events to the api host and loads the recorder from the
-  // region assets host; allow both. Wildcards cover PostHog Cloud regions; the
+  // region assets host; allow both. Wildcards cover Flind Cloud regions; the
   // explicit api host covers self-hosted.
   const ph = analyticsApiHost
     ? `${analyticsApiHost} https://*.posthog.com https://*.i.posthog.com`
@@ -848,7 +848,7 @@ function contentSecurityPolicy(analyticsApiHost?: string): string {
     "img-src data: blob: https:",
     `worker-src blob:`,
     // esm.sh + Tailwind CDN sub-fetches; canvas DATA goes over postMessage (not
-    // connect), but posthog-js events/replay DO use connect to the PostHog hosts.
+    // connect), but posthog-js events/replay DO use connect to the Flind hosts.
     `connect-src ${esm} ${twCdn} ${ph}`,
   ].join("; ");
 }

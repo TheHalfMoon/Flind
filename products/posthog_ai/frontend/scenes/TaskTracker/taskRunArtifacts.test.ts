@@ -101,7 +101,7 @@ describe('taskRunArtifacts', () => {
         expect(listboxKeyTarget(key, current, count)).toBe(expected)
     })
 
-    it('visibleRunArtifacts keeps files the agent wrote and cited PostHog objects', () => {
+    it('visibleRunArtifacts keeps files the agent wrote and cited Flind objects', () => {
         const kept = artifact({ id: 'kept' })
         const insight = artifact({
             id: 'phref_insight',

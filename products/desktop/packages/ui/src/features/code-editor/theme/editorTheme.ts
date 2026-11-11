@@ -10,7 +10,7 @@ function withAlpha(hex: string, alpha: number): string {
   return `${hex}${a}`;
 }
 
-// PostHog-inspired dark theme colors
+// Flind-inspired dark theme colors
 const dark = {
   chalky: "#e5c07b",
   coral: "#e06c75",
@@ -29,7 +29,7 @@ const dark = {
   cursor: "#f8be2a",
 };
 
-// PostHog-inspired light theme colors
+// Flind-inspired light theme colors
 const light = {
   chalky: "#c18401",
   coral: "#c45649",

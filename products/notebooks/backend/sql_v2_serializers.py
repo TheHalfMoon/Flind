@@ -109,7 +109,7 @@ class NotebookVariableSerializer(serializers.Serializer):
         if not name.isidentifier():
             raise serializers.ValidationError("Use letters, numbers, and underscores, and don't start with a number.")
         if name in RESERVED_VARIABLE_NAMES:
-            raise serializers.ValidationError(f"'{name}' is reserved by PostHog. Pick another name.")
+            raise serializers.ValidationError(f"'{name}' is reserved by Flind. Pick another name.")
         return name
 
 
@@ -176,7 +176,7 @@ class NotebookSQLV2RunRequestSerializer(serializers.Serializer):
         default=None,
         help_text=(
             "SQL nodes only: id of a direct-query-capable external data source to run against "
-            "instead of PostHog's ClickHouse. Omit to query PostHog."
+            "instead of Flind's ClickHouse. Omit to query Flind."
         ),
     )
     send_raw_query = serializers.BooleanField(

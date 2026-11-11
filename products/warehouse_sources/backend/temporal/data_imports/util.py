@@ -91,7 +91,7 @@ def _is_s3_throttling_error(error: BaseException) -> bool:
 
 
 class S3OperationError(Exception):
-    """An operation on PostHog's own data-warehouse bucket failed for a reason a retry cannot fix.
+    """An operation on Flind's own data-warehouse bucket failed for a reason a retry cannot fix.
 
     Denied permissions and a storage backend out of free space both reach us as the raw s3fs text,
     which names our bucket, one team's folder and the object key. That text is not only logged: an
@@ -107,7 +107,7 @@ class S3OperationError(Exception):
 
     def __init__(self, operation: str, cause: BaseException) -> None:
         super().__init__(
-            f"PostHog couldn't {operation}. The problem is in PostHog's own storage, not in "
+            f"Flind couldn't {operation}. The problem is in Flind's own storage, not in "
             "your data. The next scheduled run will try again."
         )
         self.operation = operation
@@ -133,7 +133,7 @@ class NonRetryableException(NonReportableError):
 
 
 class PostHogInternalDatabaseError(Exception):
-    """Raised when shared pipeline code fails to reach PostHog's own database.
+    """Raised when shared pipeline code fails to reach Flind's own database.
 
     A transient connectivity blip reaching our database (e.g. a DNS hiccup resolving our
     host) stringifies with the same wording (e.g. "Name or service not known") a customer's
@@ -144,7 +144,7 @@ class PostHogInternalDatabaseError(Exception):
     """
 
 
-# Transient failures reaching PostHog's own database, matched on the wording psycopg reports.
+# Transient failures reaching Flind's own database, matched on the wording psycopg reports.
 # `is_transient_db_error` deliberately leaves connect-time failures out, because it also classifies
 # errors raised against a customer-supplied host, where a name that does not resolve or a port that
 # refuses a connection is permanent misconfiguration. Code whose only database is ours reads the
@@ -181,7 +181,7 @@ _INTERNAL_DB_MAX_ATTEMPTS = 4
 
 
 def is_transient_internal_db_error(error: BaseException) -> bool:
-    """Whether `error` is a transient failure reaching PostHog's own database.
+    """Whether `error` is a transient failure reaching Flind's own database.
 
     Only for code that talks to our database. Never classify a connection to a customer's source
     database with this, because there the same psycopg wording means the customer's host is
@@ -196,7 +196,7 @@ def is_transient_internal_db_error(error: BaseException) -> bool:
 
 
 def retry_internal_db_operation(operation: Callable[[], T]) -> T:
-    """Run `operation`, and retry it with backoff while reaching PostHog's own database fails
+    """Run `operation`, and retry it with backoff while reaching Flind's own database fails
     transiently.
 
     An activity that reads our database at its start fails through no fault of its own when the
@@ -225,7 +225,7 @@ def retry_internal_db_operation(operation: Callable[[], T]) -> T:
             # and let the next attempt reconnect.
             close_stale_db_connections()
             LOGGER.warning(
-                f"Transient failure reaching PostHog's database (attempt {attempt}/{_INTERNAL_DB_MAX_ATTEMPTS}), retrying",
+                f"Transient failure reaching Flind's database (attempt {attempt}/{_INTERNAL_DB_MAX_ATTEMPTS}), retrying",
                 exc_info=e,
             )
             time.sleep(2**attempt)
@@ -233,7 +233,7 @@ def retry_internal_db_operation(operation: Callable[[], T]) -> T:
 
 def with_internal_db_retries(fn: Callable[P, T]) -> Callable[P, T]:
     """Decorator form of `retry_internal_db_operation`, for an activity whose whole body is
-    idempotent work against PostHog's own database. Stack it under `@activity.defn`:
+    idempotent work against Flind's own database. Stack it under `@activity.defn`:
 
         @activity.defn
         @with_internal_db_retries

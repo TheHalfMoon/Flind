@@ -322,7 +322,7 @@ class Migration(migrations.Migration):
                     "client_provenance",
                     models.CharField(
                         blank=True,
-                        choices=[("posthog_desktop", "PostHog Desktop")],
+                        choices=[("posthog_desktop", "Flind Desktop")],
                         editable=False,
                         max_length=32,
                         null=True,
@@ -721,7 +721,7 @@ class Migration(migrations.Migration):
                     "archived",
                     models.BooleanField(
                         default=False,
-                        help_text="If true, the task is hidden from default list responses. Used by PostHog Desktop clients to share archive state across desktop and mobile.",
+                        help_text="If true, the task is hidden from default list responses. Used by Flind Desktop clients to share archive state across desktop and mobile.",
                     ),
                 ),
                 ("archived_at", models.DateTimeField(blank=True, null=True)),
@@ -773,7 +773,7 @@ class Migration(migrations.Migration):
                     "client_provenance",
                     models.CharField(
                         blank=True,
-                        choices=[("posthog_desktop", "PostHog Desktop")],
+                        choices=[("posthog_desktop", "Flind Desktop")],
                         editable=False,
                         max_length=32,
                         null=True,
@@ -1793,7 +1793,7 @@ class Migration(migrations.Migration):
                     "client_provenance",
                     models.CharField(
                         blank=True,
-                        choices=[("posthog_desktop", "PostHog Desktop")],
+                        choices=[("posthog_desktop", "Flind Desktop")],
                         editable=False,
                         max_length=32,
                         null=True,

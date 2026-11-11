@@ -77,7 +77,7 @@ function Pill({
 }
 
 const CLIENT_TOOLTIPS: Record<EvalMode, string> = {
-    client: 'Exceptions are dropped by the SDK before being sent to PostHog',
+    client: 'Exceptions are dropped by the SDK before being sent to Flind',
     partial: 'Some filters can be evaluated client-side. If any match, the SDK drops the exception without sending it.',
     server: 'This rule cannot be evaluated client-side',
 }
@@ -85,7 +85,7 @@ const CLIENT_TOOLTIPS: Record<EvalMode, string> = {
 const SERVER_TOOLTIPS: Record<EvalMode, string> = {
     client: 'Also evaluated server-side during ingestion as a fallback',
     partial: 'Evaluated server-side during ingestion for filters that cannot run client-side',
-    server: 'Exceptions are sent to PostHog and evaluated during ingestion',
+    server: 'Exceptions are sent to Flind and evaluated during ingestion',
 }
 
 function DonutChart({

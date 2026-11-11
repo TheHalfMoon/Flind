@@ -5,7 +5,7 @@ Category `event`, severity `error` for all six types: the event cannot be ingest
 
 ## `cookieless_team_disabled`: the project setting is off
 
-The SDK sent the event in cookieless mode (`cookieless_mode: "always"` or `"on_reject"` in posthog-js, sentinel distinct ID `$posthog_cookieless`), but **Cookieless tracking** is disabled in the project settings (Settings → Web analytics → Cookieless tracking, stored as `cookieless_server_hash_mode`). Ingestion drops every such event before any identity is computed, so heatmap events and exception captures sent in cookieless mode are dropped the same way. The events still show in Live events, because that view reads the stream before the pipeline runs, which is why this looks like PostHog accepting data and losing it.
+The SDK sent the event in cookieless mode (`cookieless_mode: "always"` or `"on_reject"` in posthog-js, sentinel distinct ID `$posthog_cookieless`), but **Cookieless tracking** is disabled in the project settings (Settings → Web analytics → Cookieless tracking, stored as `cookieless_server_hash_mode`). Ingestion drops every such event before any identity is computed, so heatmap events and exception captures sent in cookieless mode are dropped the same way. The events still show in Live events, because that view reads the stream before the pipeline runs, which is why this looks like Flind accepting data and losing it.
 
 The server-side gate is deliberate: without it, anyone holding the public project token could force cookieless processing on a project that never opted in, which strips IP and user agent. So the fix is a settings change, not a code change:
 
@@ -18,7 +18,7 @@ The rest of this file covers the five hash-input warnings, which only fire once 
 
 ## How cookieless identity works (why these fields are mandatory)
 
-In cookieless mode the client stores nothing — events arrive with the sentinel distinct ID `$posthog_cookieless`, and PostHog computes a rotating anonymous ID server-side by hashing **calendar day + user agent + IP + host**. Every warning in this family is one missing hash input:
+In cookieless mode the client stores nothing — events arrive with the sentinel distinct ID `$posthog_cookieless`, and Flind computes a rotating anonymous ID server-side by hashing **calendar day + user agent + IP + host**. Every warning in this family is one missing hash input:
 
 | Type                                | Missing hash input                                                                                          |
 | ----------------------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -39,16 +39,16 @@ Which hash input is missing points at which layer is broken:
 1. Query the warnings with `posthog:execute-sql`: `SELECT timestamp, details FROM system.ingestion_warnings WHERE type IN ('cookieless_missing_timestamp', 'cookieless_timestamp_out_of_range', 'cookieless_missing_user_agent', 'cookieless_missing_ip', 'cookieless_missing_host') AND timestamp > now() - INTERVAL 7 DAY ORDER BY timestamp DESC LIMIT 20` (narrow to a single `type` to isolate one hash input). The `details` JSON carries the event name and UUID.
 2. Map the missing field to the layer:
    - **`$raw_user_agent` / `$host` missing** → the events aren't coming from stock posthog-js: a non-browser producer sending the cookieless sentinel, or middleware (`before_send`, a rewriting proxy) stripping properties.
-   - **`$ip` missing** → the capture path saw no client IP — a proxy/CDN in front of PostHog not passing the client address through, or middleware explicitly deleting `$ip` before the identity is computed.
+   - **`$ip` missing** → the capture path saw no client IP — a proxy/CDN in front of Flind not passing the client address through, or middleware explicitly deleting `$ip` before the identity is computed.
    - **timestamp missing** → server-side batching that strips timestamps.
    - **timestamp out of range** → a historical import routed through cookieless (can't work, see below), badly skewed client clocks, or offline queues flushing much later.
 3. If cookieless events produce **no events and only `cookieless_team_disabled` warnings**, the project setting is off — see the section above. Hash inputs are not checked until it is on.
 
 ## Fix
 
-- **Browser via stock posthog-js**: no properties to add — fix whatever strips them (a rewriting proxy, a `before_send` hook), and ensure any proxy in front of PostHog forwards the client IP.
+- **Browser via stock posthog-js**: no properties to add — fix whatever strips them (a rewriting proxy, a `before_send` hook), and ensure any proxy in front of Flind forwards the client IP.
 - **Server-side capture** (your backend relays browser traffic): explicitly set `$raw_user_agent`, `$host`, **and `$ip`** from the original browser request on every cookieless event, and timestamp at capture time. The `$ip` is mandatory here even though no warning demands it while your server's IP fills the gap: without it, every user hashes on the **server's** IP and collapses into shared identities — silently, with no warning at all.
-- **Privacy middleware**: if something scrubs `$ip` before PostHog, exempt cookieless events — the IP is a hash input, not stored as identity.
+- **Privacy middleware**: if something scrubs `$ip` before Flind, exempt cookieless events — the IP is a hash input, not stored as identity.
 - **Historical imports/backfills**: don't route them through cookieless — past calendar days can't be hashed. Imports need real distinct IDs.
 - **Late delivery**: cookieless requires timely arrival; events buffered for days will be dropped as out-of-range. If the client legitimately buffers that long, cookieless is the wrong mode for it.
 

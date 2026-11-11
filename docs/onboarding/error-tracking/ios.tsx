@@ -37,7 +37,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                 <Markdown>
                     {dedent`
                         You can autocapture exceptions by setting the \`errorTrackingConfig.autoCapture\` 
-                        argument to \`true\` when initializing the PostHog SDK.
+                        argument to \`true\` when initializing the Flind SDK.
                     `}
                 </Markdown>
                 <CodeBlock
@@ -46,7 +46,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                             language: 'swift',
                             file: 'Swift',
                             code: dedent`
-                              import PostHog
+                              import Flind
 
                               let config = PostHogConfig(
                                   projectToken: "<ph_project_token>",
@@ -92,7 +92,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                             language: 'swift',
                             file: 'Swift',
                             code: dedent`
-                              import PostHog
+                              import Flind
 
                               do {
                                   try FileManager.default.removeItem(at: badFileUrl)
@@ -116,7 +116,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                             language: 'objc',
                             file: 'Objective-C',
                             code: dedent`
-                              @import PostHog;
+                              @import Flind;
 
                               @try {
                                   [self riskyOperation];
@@ -168,7 +168,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             <>
                 <Markdown>
                     {dedent`
-                        By default, PostHog automatically marks your app's code as "in-app" in stack traces to help you focus on your code rather than system frameworks.
+                        By default, Flind automatically marks your app's code as "in-app" in stack traces to help you focus on your code rather than system frameworks.
                         
                         You can customize this behavior with \`errorTrackingConfig\`:
                     `}
@@ -179,7 +179,7 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                             language: 'swift',
                             file: 'Swift',
                             code: dedent`
-                              import PostHog
+                              import Flind
 
                               let config = PostHogConfig(
                                   projectToken: "<ph_project_token>",
@@ -232,9 +232,9 @@ export const getIOSSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
         content: (
             <Markdown>
                 {dedent`
-                    Before proceeding, let's make sure exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Before proceeding, let's make sure exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),

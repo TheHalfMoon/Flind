@@ -49,7 +49,7 @@ class BloggerSource(ResumableSource[BloggerSourceConfig, BloggerResumeConfig]):
             releaseStatus=ReleaseStatus.BETA,
             # Kept hidden for now: shipping in alpha behind the unreleased flag until it has had
             # an end-to-end sync verified against the live API with real credentials.
-            caption="""Enter a Google API key and a Blogger blog ID to pull your Blogger content into the PostHog Data warehouse.
+            caption="""Enter a Google API key and a Blogger blog ID to pull your Blogger content into the Flind Data warehouse.
 
 Create an API key in the [Google Cloud console](https://console.cloud.google.com/apis/credentials) and enable the **Blogger API v3** for the project.
 

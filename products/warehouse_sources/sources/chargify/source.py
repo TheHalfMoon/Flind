@@ -150,7 +150,7 @@ class ChargifySource(ResumableSource[ChargifySourceConfig, ChargifyResumeConfig]
             label="Chargify",
             keywords=["maxio", "advanced billing"],
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Chargify (Maxio Advanced Billing) API key and site subdomain to pull your billing data into the PostHog Data warehouse.
+            caption="""Enter your Chargify (Maxio Advanced Billing) API key and site subdomain to pull your billing data into the Flind Data warehouse.
 
 You can create an API key under **Settings → Integrations → API Access** in your Chargify site. Your subdomain is the first part of your site URL — for `acme.chargify.com` the subdomain is `acme`.""",
             iconPath="/static/services/chargify.png",

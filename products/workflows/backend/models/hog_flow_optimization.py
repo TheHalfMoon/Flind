@@ -7,7 +7,7 @@ from posthog.models.utils import UUIDModel
 
 
 class HogFlowOptimization(TeamScopedRootMixin, UUIDModel):
-    """One row per workflow whose owner asked PostHog to suggest improvements to it.
+    """One row per workflow whose owner asked Flind to suggest improvements to it.
 
     `enabled` is the opt-in: no row, or a disabled one, means no suggestion can be filed for the
     workflow, and the producer's work list leaves it out. Turning it off keeps the row, so

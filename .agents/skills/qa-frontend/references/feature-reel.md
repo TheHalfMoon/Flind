@@ -11,7 +11,7 @@ The camera zooms to the target of each step, a cursor glides there and clicks, a
 The motion is a pure function of the stills, so it is the same on every run, and the reel stays sharp on high-density screens.
 The scripts need only the repo's Playwright and Pillow. Do not install ffmpeg or other packages for this mode.
 
-Run every command below from the root of the PostHog checkout.
+Run every command below from the root of the Flind checkout.
 
 ## 1. Pick the source
 

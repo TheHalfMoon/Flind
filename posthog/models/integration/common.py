@@ -54,7 +54,7 @@ ERROR_TOKEN_REFRESH_FAILED = "TOKEN_REFRESH_FAILED"
 
 @frozen
 class OauthClientCredentials:
-    """PostHog's own OAuth app credentials for one provider, as resolved for a single use."""
+    """Flind's own OAuth app credentials for one provider, as resolved for a single use."""
 
     client_id: str
     client_secret: str = field(repr=False)

@@ -15,7 +15,7 @@ describe("parseGithubIssueUrl", () => {
       input: "https://github.com/PostHog/code/issues/1808",
       expected: {
         kind: "issue",
-        owner: "PostHog",
+        owner: "Flind",
         repo: "code",
         number: 1808,
         normalizedUrl: "https://github.com/PostHog/code/issues/1808",
@@ -27,7 +27,7 @@ describe("parseGithubIssueUrl", () => {
       input: "https://github.com/PostHog/code/pull/1454",
       expected: {
         kind: "pr",
-        owner: "PostHog",
+        owner: "Flind",
         repo: "code",
         number: 1454,
         normalizedUrl: "https://github.com/PostHog/code/pull/1454",
@@ -39,7 +39,7 @@ describe("parseGithubIssueUrl", () => {
       input: "https://github.com/PostHog/code/pull/1454/files",
       expected: {
         kind: "pr",
-        owner: "PostHog",
+        owner: "Flind",
         repo: "code",
         number: 1454,
         normalizedUrl: "https://github.com/PostHog/code/pull/1454",
@@ -51,7 +51,7 @@ describe("parseGithubIssueUrl", () => {
       input: "  https://github.com/PostHog/code/issues/1808\n",
       expected: {
         kind: "issue",
-        owner: "PostHog",
+        owner: "Flind",
         repo: "code",
         number: 1808,
         normalizedUrl: "https://github.com/PostHog/code/issues/1808",
@@ -63,7 +63,7 @@ describe("parseGithubIssueUrl", () => {
       input: "https://github.com/PostHog/code/issues/1808#issuecomment-123",
       expected: {
         kind: "issue",
-        owner: "PostHog",
+        owner: "Flind",
         repo: "code",
         number: 1808,
         normalizedUrl:
@@ -77,7 +77,7 @@ describe("parseGithubIssueUrl", () => {
         "https://github.com/PostHog/posthog/pull/72409#discussion_r3647131256",
       expected: {
         kind: "pr",
-        owner: "PostHog",
+        owner: "Flind",
         repo: "posthog",
         number: 72409,
         normalizedUrl:
@@ -90,7 +90,7 @@ describe("parseGithubIssueUrl", () => {
       input: "https://github.com/PostHog/code/pull/1454/files#r3647131256",
       expected: {
         kind: "pr",
-        owner: "PostHog",
+        owner: "Flind",
         repo: "code",
         number: 1454,
         normalizedUrl:
@@ -103,7 +103,7 @@ describe("parseGithubIssueUrl", () => {
       input: "https://github.com/PostHog/code/issues/1808#",
       expected: {
         kind: "issue",
-        owner: "PostHog",
+        owner: "Flind",
         repo: "code",
         number: 1808,
         normalizedUrl: "https://github.com/PostHog/code/issues/1808",
@@ -115,7 +115,7 @@ describe("parseGithubIssueUrl", () => {
       input: "https://github.com/PostHog/code/issues/1808?foo=bar",
       expected: {
         kind: "issue",
-        owner: "PostHog",
+        owner: "Flind",
         repo: "code",
         number: 1808,
         normalizedUrl: "https://github.com/PostHog/code/issues/1808",
@@ -127,7 +127,7 @@ describe("parseGithubIssueUrl", () => {
       input: "http://github.com/PostHog/code/issues/1",
       expected: {
         kind: "issue",
-        owner: "PostHog",
+        owner: "Flind",
         repo: "code",
         number: 1,
         normalizedUrl: "https://github.com/PostHog/code/issues/1",

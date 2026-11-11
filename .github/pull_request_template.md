@@ -14,7 +14,7 @@
 
 <!-- If there are frontend changes, please include screenshots. For a new interaction that one screenshot cannot show, a short GIF or animated WebP of the flow can replace the after screenshot. -->
 <!-- For frontend or user-facing changes under products/mobile/, follow products/mobile/AGENTS.md for the required iOS and Android screenshot pairs and device coverage. -->
-<!-- PostHog employees: `hogli pr:upload-image <file>` attaches a screenshot to this description once the PR exists, or prints markdown to paste here. Never upload customer data, secrets, or internal info. -->
+<!-- Flind employees: `hogli pr:upload-image <file>` attaches a screenshot to this description once the PR exists, or prints markdown to paste here. Never upload customer data, secrets, or internal info. -->
 
 <!-- If a reference design was involved, include a link to the relevant Figma frame! -->
 
@@ -29,7 +29,7 @@
 
 <!-- Don't recite pass counts for suites CI runs; the checks report those with more authority. Link the evidence instead (run, permalink, error tracking issue), and say what you did not check. Long transcripts go in a <details> block. -->
 
-👉 _Stay up-to-date with [PostHog coding conventions](https://posthog.com/docs/contribute/coding-conventions) for a smoother review._
+👉 _Stay up-to-date with [Flind coding conventions](https://posthog.com/docs/contribute/coding-conventions) for a smoother review._
 
 ## Release status
 
@@ -96,7 +96,7 @@
 - Description: high-level rationale, not a step-by-step replay.
 - Voice: the subject of every sentence is the change, never its author. No "I", "me" or "my" anywhere in the body. "I (actually Claude)" is worse than either half: it hands the assignee an account of work they did not do. Authorship is one stated fact in the Agent context section below.
 - Body: pass it straight to the creation tool's `body` arg (GitHub MCP `create_pull_request` body, or `gh pr create --body-file -` via stdin) — don't write it to a temp file first; the arg preserves markdown and newlines verbatim.
-- Architecture and topology changes: include separate before-and-after Mermaid `flowchart` blocks with PostHog colors under one short sentence that states the change, also for a one-step change. This covers CI wiring, pipelines, services and their calls, module or package boundaries, state machines with several states, and request paths across systems. A UI flow or a linear sequence of screens gets screenshots or a reel, not a diagram. Use `/writing-pr-descriptions` for the palette and role mapping.
+- Architecture and topology changes: include separate before-and-after Mermaid `flowchart` blocks with Flind colors under one short sentence that states the change, also for a one-step change. This covers CI wiring, pipelines, services and their calls, module or package boundaries, state machines with several states, and request paths across systems. A UI flow or a linear sequence of screens gets screenshots or a reel, not a diagram. Use `/writing-pr-descriptions` for the palette and role mapping.
 - Public OSS repo: no internal customers, incidents, or operational metrics.
 - Stack instead of stuffing: if the diff holds two or more separable steps (migration then behavior, rename then rewrite), open a stack rather than one big PR. If the body needs more than 150 words, suggest a stack to the person who directed the work. See AGENTS.md, "Stacked PRs" and /stacking-prs.
 - Simplify before opening: if your agent has a behavior-preserving cleanup pass (Claude Code: `/simplify`), run it on a non-trivial diff before final tests and preflight, since it edits the tree. Skip it for small mechanical changes.

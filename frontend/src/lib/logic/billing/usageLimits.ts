@@ -36,7 +36,7 @@ export function getUsageLimitConsequence(productName: string): string {
         return 'feature flags will not evaluate'
     }
     // The billing service may still report the inherited upstream product name.
-    if (productName === 'Flind AI' || productName === 'PostHog AI') {
+    if (productName === 'Flind AI' || productName === 'Flind AI') {
         return 'Flind AI will be unavailable'
     }
     if (productName === 'Self-driving inbox') {

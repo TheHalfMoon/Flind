@@ -25,15 +25,15 @@ const FLOWCHART = `flowchart LR
   Kafka --> Ingestion[Ingestion pipeline]
   Ingestion --> ClickHouse[(ClickHouse)]
   Ingestion --> Postgres[(Postgres)]
-  ClickHouse --> App[PostHog app]`;
+  ClickHouse --> App[Flind app]`;
 
 const SEQUENCE = `sequenceDiagram
   participant App as Desktop app
   participant Agent
-  participant PostHog
+  participant Flind
   App->>Agent: Start task
-  Agent->>PostHog: Query insights
-  PostHog-->>Agent: Results
+  Agent->>Flind: Query insights
+  Flind-->>Agent: Results
   Agent-->>App: Report with diagram`;
 
 export const Flowchart: Story = {

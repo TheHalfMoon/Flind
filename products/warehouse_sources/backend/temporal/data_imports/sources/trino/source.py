@@ -279,7 +279,7 @@ class TrinoSource(SQLSource[TrinoSourceConfig], ValidateDatabaseHostMixin):
     def get_non_retryable_errors(self) -> dict[str, str | None]:
         # Schema discovery hands back Trino's own verdict, so the API must show it. The message keys
         # match in every consumer, because `str(TrinoSchemaDiscoveryError(...))` is the message. The
-        # last key stops PostHog filing an unrecognized Trino-side failure, which is the remote
+        # last key stops Flind filing an unrecognized Trino-side failure, which is the remote
         # server's fault.
         #
         # NOTE: that last key only takes effect in the refresh-schemas classifier, which compares

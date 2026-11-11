@@ -17,7 +17,7 @@ import SourceSetupIntro from '../_snippets/source-setup-intro.mdx'
 import SyncModes from '../_snippets/sync-modes.mdx'
 import TroubleshootingLink from '../_snippets/dw-troubleshooting-link.mdx'
 
-[Automox](https://www.automox.com) is a cloud-native patch management and endpoint management platform. Linking it as a source syncs your device inventory, policies, patch history, software packages, and per-policy compliance counts into the PostHog Data warehouse, so you can trend remediation coverage and device compliance across your fleet alongside your product data.
+[Automox](https://www.automox.com) is a cloud-native patch management and endpoint management platform. Linking it as a source syncs your device inventory, policies, patch history, software packages, and per-policy compliance counts into the Flind Data warehouse, so you can trend remediation coverage and device compliance across your fleet alongside your product data.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ To connect Automox, you need:
 
 1. Open the Automox console and go to **Settings → API Keys**.
 2. Create a new API key and copy it.
-3. Paste the key into the **API key** field in PostHog.
+3. Paste the key into the **API key** field in Flind.
 4. If your key can access more than one organization, also enter the **Organization ID** the source should sync. Leave it blank when the key only belongs to one organization.
 
 ## Sync modes
@@ -58,7 +58,7 @@ Two tables are gathered per device or per report rather than from a single list 
 ## Troubleshooting
 
 - **"Automox authentication failed"** when connecting: the API key is wrong or has expired. Create a new key under **Settings → API Keys** in the Automox console and re-enter it.
-- **"Automox API key has access to multiple organizations"**: the key can access several organizations, so PostHog can't pick one for you. Enter the numeric organization ID on the source.
+- **"Automox API key has access to multiple organizations"**: the key can access several organizations, so Flind can't pick one for you. Enter the numeric organization ID on the source.
 - **"Automox organization not found"**: the configured organization ID doesn't match any organization the key can access. Check the ID under **Settings → Organization** in the Automox console.
 
 <TroubleshootingLink />

@@ -118,7 +118,7 @@ class WufooSource(ResumableSource[WufooSourceConfig, WufooResumeConfig]):
             name=ExternalDataSourceType.WUFOO,
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Wufoo",
-            caption="""Enter your Wufoo subdomain and API key to pull your Wufoo form data into the PostHog Data warehouse.
+            caption="""Enter your Wufoo subdomain and API key to pull your Wufoo form data into the Flind Data warehouse.
 
 Your **subdomain** is the account name in your Wufoo URL — e.g. `acme` for `acme.wufoo.com`.
 

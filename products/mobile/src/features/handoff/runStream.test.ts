@@ -153,7 +153,7 @@ describe('runStream', () => {
             'Editing b.ts',
         ],
         [
-            'a PostHog call by its inner tool, not the exec wrapper',
+            'a Flind call by its inner tool, not the exec wrapper',
             [
                 frame(
                     update({
@@ -168,7 +168,7 @@ describe('runStream', () => {
             'Call reports-get',
         ],
         [
-            'a bare update to a PostHog call keeps the inner tool, not the exec wrapper',
+            'a bare update to a Flind call keeps the inner tool, not the exec wrapper',
             [
                 frame(
                     update({

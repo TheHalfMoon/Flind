@@ -6,7 +6,7 @@ Each eval case gets its own isolated org/team/user, so cases never see each othe
 The harness builds product skills from the current checkout and uses native bundled skills by default.
 `--skill-delivery exec` instead packages those skills for MCP distribution, enables the exec skill prompt, and removes native skills from every sandbox so the two paths cannot satisfy the same case.
 
-This is the eval harness for PostHog AI 2.0. It does **not** run under pytest.
+This is the eval harness for Flind AI 2.0. It does **not** run under pytest.
 It runs on a standalone harness that boots the shared infrastructure once (test database, Django live server, AI gateway, MCP server, Temporal) and then runs every selected suite concurrently.
 See [`harness/README.md`](harness/README.md) for how that works internally.
 
@@ -78,7 +78,7 @@ No manual env sourcing is needed on either path.
 The harness loads the repo-root `.env` itself (shell values win), and `hogli evals` additionally layers in `.env.local` / `.env.development` / `.env.services` through hogli's standard env loading — including 1Password resolution when `.env.local` holds `op://` references.
 Before any infrastructure boots, a preflight validates that the required variables are set and fails with a one-line fix per missing variable.
 Required variables depend on the selected suite kinds. Braintrust runs locally and needs no reporting credential. Sandboxed suites require `SANDBOX_JWT_PRIVATE_KEY` and `LLM_GATEWAY_ANTHROPIC_API_KEY`, and need a [`PostHog/ai-gateway`](https://github.com/PostHog/ai-gateway) clone plus `go` on `PATH` (see [AI gateway](#ai-gateway)); one-shot suites require `LLM_GATEWAY_ANTHROPIC_API_KEY` (used directly, no gateway).
-Autoevals judges use a direct OpenAI client with `OPENAI_API_KEY`, including when PostHog trace capture is unavailable. `OPENAI_BASE_URL` can select an explicit provider endpoint. No judge falls back to Braintrust's model proxy or API key.
+Autoevals judges use a direct OpenAI client with `OPENAI_API_KEY`, including when Flind trace capture is unavailable. `OPENAI_BASE_URL` can select an explicit provider endpoint. No judge falls back to Braintrust's model proxy or API key.
 
 Selectors are substrings matched against a suite id of the form `<domain>/<module>::<fn>`, for example `experiments`, `sql`, or `eval_lifecycle_skills`.
 Omit them to run every suite.
@@ -161,7 +161,7 @@ Native subprocess output always goes to the transcript.
 
 ### AI gateway
 
-Sandboxed agents call their model through the Go [`PostHog/ai-gateway`](https://github.com/PostHog/ai-gateway), as PostHog AI runs do in production.
+Sandboxed agents call their model through the Go [`PostHog/ai-gateway`](https://github.com/PostHog/ai-gateway), as Flind AI runs do in production.
 The harness builds and starts it from a local clone at `~/Development/ai-gateway`, the same path `bin/start-ai-gateway` uses. Set `AI_GATEWAY_REPO` to use a clone at a different path.
 
 ```bash
@@ -229,7 +229,7 @@ The experiment metadata records `skill_delivery`; compare the shared `expected_s
 
 `--agent-runtime codex` runs the same agent-server with OpenAI's Codex harness instead of Claude, defaulting the model to `gpt-6.1-sol`.
 It requires `LLM_GATEWAY_OPENAI_API_KEY` in the environment (checked by preflight), which the harness's AI gateway uses to proxy the agent's OpenAI calls.
-Experiment names don't change with the runtime or skill delivery. Each local evaluation and every PostHog event records `agent_model`, `trials`, `git_sha` and `git_dirty`. Sandboxed runs add `agent_runtime`, `skill_delivery` and `reasoning_effort`. Use these fields to separate runs. A comparison across runtimes measures the model and runtime together.
+Experiment names don't change with the runtime or skill delivery. Each local evaluation and every Flind event records `agent_model`, `trials`, `git_sha` and `git_dirty`. Sandboxed runs add `agent_runtime`, `skill_delivery` and `reasoning_effort`. Use these fields to separate runs. A comparison across runtimes measures the model and runtime together.
 
 ### Claude and Codex smoke comparison
 
@@ -436,7 +436,7 @@ async def eval_my_generation(ctx: EvalContext) -> None:
 Bundle related cases into one suite function rather than splitting them across many.
 One suite is one experiment, which is what makes cross-case comparison and `--eval` filtering useful.
 
-`experiment_name` identifies the run in local output and PostHog; keep it stable across runs.
+`experiment_name` identifies the run in local output and Flind; keep it stable across runs.
 Existing suites end in `-cli` because the MCP server serves the `cli` surface; that suffix is kept so history lines up with earlier runs.
 
 Confirm discovery picked your suite up:
@@ -458,7 +458,7 @@ Use `--verbose` to show detailed service and agent logs in the console. The tran
 Warnings and errors use short console messages, including the exception type and message when available.
 Open the transcript for full tracebacks.
 
-The final summary gives labeled suite and case totals, the score gate, total duration, and one block per experiment with scorer averages, PostHog URLs, and the agent-log directory.
+The final summary gives labeled suite and case totals, the score gate, total duration, and one block per experiment with scorer averages, Flind URLs, and the agent-log directory.
 Each scorer line shows its score with a 95% confidence interval clustered by case. With `--trials N` a second line adds pass^N (every trial passed), pass@N (any trial passed) and the number of flaky cases, counting only cases scored on all N trials, so a noisy suite is distinguishable from a real score change.
 A crashed suite is labeled `CRASH` and makes the run exit nonzero without taking down the other suites.
 Its full traceback stays in the transcript. `--verbose` also shows the traceback in the final summary.
@@ -480,16 +480,16 @@ The summary includes the trial ID, the agent trace ID when available, phase dura
 Case names and `--eval` filters stay the same.
 
 `SandboxedEval` and `OneShotEval` always execute locally through Braintrust without reporting to its service.
-Configure `offline_suite` and `POSTHOG_OFFLINE_EVAL_API_KEY` to publish completed results to PostHog.
+Configure `offline_suite` and `POSTHOG_OFFLINE_EVAL_API_KEY` to publish completed results to Flind.
 `send_to_posthog` defaults to `True`; set it to `False` for local-only results.
-PostHog result uploads are independent of `OPT_OUT_CAPTURE`, which still applies to ordinary SDK and trace clients.
+Flind result uploads are independent of `OPT_OUT_CAPTURE`, which still applies to ordinary SDK and trace clients.
 See [evaluation result reporting](../../../docs/internal/ai-offline-evaluation-reporting.md) for capture settings and scope.
 
 ### SQL offline experiment pilot
 
-The `sql/eval_sql::eval_sql` suite can also send its seven scorer results to PostHog's offline experiment API.
+The `sql/eval_sql::eval_sql` suite can also send its seven scorer results to Flind's offline experiment API.
 It publishes the same completed case results through the Python SDK.
-PostHog AI and product-owned suites also opt into offline publishing with their own tagged scorer versions.
+Flind AI and product-owned suites also opt into offline publishing with their own tagged scorer versions.
 Agent and judge trace capture remains available. `send_to_posthog=False` suppresses offline result uploads.
 
 Set `POSTHOG_OFFLINE_EVAL_API_KEY` to a personal key with `offline_evaluation_ingestion:write`, `evaluation:write`, and access to project `2` to upload and tag results. An ingestion-only personal or project secret key can upload results, but tagging will warn and leave the run untagged.

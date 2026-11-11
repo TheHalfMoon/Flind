@@ -31,7 +31,7 @@ export type HogFunctionListFilters = {
     search?: string
     showPaused?: boolean
     createdBy?: string | null
-    /** Which PostHog product an `internal_destination` delivers notifications for. */
+    /** Which Flind product an `internal_destination` delivers notifications for. */
     notificationSource?: HogFunctionConfigurationContextId
 }
 

@@ -53,7 +53,7 @@ class TestNotifyExternalDataSyncFailures:
             should_sync=True,
             latest_error="transient error",
         )
-        # PostHog stopped this one itself after a non-retryable error, so it stays in the digest:
+        # Flind stopped this one itself after a non-retryable error, so it stays in the digest:
         # only the user can repair the source and turn syncing back on.
         ExternalDataSchema.objects.create(
             name="Invoice",
@@ -445,7 +445,7 @@ class TestGetTeamIdsWithRecentSyncFailures:
 
     @pytest.mark.parametrize("notified_age", [dt.timedelta(days=8), dt.timedelta(days=90)])
     def test_excludes_paused_schema_already_notified(self, notified_age):
-        # PostHog halted this schema itself, so it never runs again. Its one digest already went
+        # Flind halted this schema itself, so it never runs again. Its one digest already went
         # out, so the catch-up sweep must not pick it up again however old that email is.
         self._create_schema_with_job(
             schema_status=ExternalDataSchema.Status.FAILED,

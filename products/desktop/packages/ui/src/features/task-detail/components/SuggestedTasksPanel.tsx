@@ -272,7 +272,7 @@ export function SuggestedTasksPanel({ leading }: { leading?: ReactNode }) {
               icon={Lightning}
               color="amber"
               currentTool={null}
-              activeLabelOverride="Checking your PostHog setup…"
+              activeLabelOverride="Checking your Flind setup…"
               recentEntries={[]}
               isDone={false}
             />

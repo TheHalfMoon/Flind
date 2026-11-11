@@ -42,7 +42,7 @@ _MAX_ATTACHMENT_NAME_CHARS = 120
 _ALLOWED_SLACK_FILE_HOST_SUFFIXES = ("slack.com", "slack-edge.com", "slack-files.com")
 
 # Slack applies no file type rule of its own. The task artifact store decides what a
-# user may attach, so Slack, PostHog Desktop, and PostHog AI accept the same files.
+# user may attach, so Slack, Flind Desktop, and Flind AI accept the same files.
 
 SLACK_FILE_READ_SCOPE = "files:read"
 _HTML_MIME_TYPES = frozenset({"application/xhtml+xml", "text/html"})
@@ -355,7 +355,7 @@ def _prepare_files(
         return PreparedSlackAttachments(
             artifacts=[],
             skipped_messages=[
-                f"PostHog needs the `{SLACK_FILE_READ_SCOPE}` permission to read Slack attachments. "
+                f"Flind needs the `{SLACK_FILE_READ_SCOPE}` permission to read Slack attachments. "
                 f"Ask a project admin to reconnect Slack ({settings.SITE_URL}/settings/project-integrations), "
                 "then post the files again."
             ],

@@ -9,7 +9,7 @@ const meta: Meta = {
         docs: {
             description: {
                 component:
-                    'The PostHog logo, rendered from `@posthog/brand` via the theme-aware `lib/brand` wrapper. ' +
+                    'The Flind logo, rendered from `@posthog/brand` via the theme-aware `lib/brand` wrapper. ' +
                     'Pick the look with `variant` (gradient | print | mono), `layout` (landscape | stacked | logomark | wordmark), ' +
                     'and `color` (for mono). Size with the `size` token (`sm` | `md` | `lg`) — it sets the height, width follows. ' +
                     'The logomark can `jumpOnClick`.',

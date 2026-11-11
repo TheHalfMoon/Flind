@@ -1,7 +1,7 @@
 ---
 name: diagnosing-endpoint-performance
 description: >
-  Diagnose why a PostHog endpoint is slow or expensive and propose a concrete fix — bump the cache
+  Diagnose why a Flind endpoint is slow or expensive and propose a concrete fix — bump the cache
   TTL, enable materialisation, restructure variables, or rewrite the query. Use when the user says
   "this endpoint is slow", "my endpoint times out", "we're hitting the cost cap on this one", or
   asks "should I materialise this?". Focuses on a single named endpoint, not a project-wide audit.
@@ -187,5 +187,5 @@ Agent steps:
 - **The "right" fix depends on the SLA, not the query.** Always ask the user about acceptable
   staleness before recommending materialisation. A 15-minute-stale materialised view is wrong
   for a real-time dashboard, regardless of how cheap it'd be.
-- **Tell PostHog what's missing.** If the diagnosis runs into a product limitation (an eligibility
+- **Tell Flind what's missing.** If the diagnosis runs into a product limitation (an eligibility
   rule, the TTL enum, required variables), nudge the team via `agent-feedback`.

@@ -45,7 +45,7 @@ def _valid_request(**overrides: Any) -> dict[str, Any]:
         "change_kind": "update",
         "suggested_page_urls": [],
         "trigger_instructions": "",
-        "dedupe_id": "knowledge_writer:command_tag:PostHog.posthog#123",
+        "dedupe_id": "knowledge_writer:command_tag:Flind.posthog#123",
         **overrides,
     }
 
@@ -53,7 +53,7 @@ def _valid_request(**overrides: Any) -> dict[str, Any]:
 def _valid_verdict(**overrides: Any) -> dict[str, Any]:
     return {
         "source": "command_tag",
-        "subject_id": "PostHog.posthog#123",
+        "subject_id": "Flind.posthog#123",
         "needs_docs": True,
         "reason": "requested",
         "request": _valid_request(),
@@ -123,5 +123,5 @@ def test_intake_accepts_a_valid_verdict_as_plain_data() -> None:
         change_kind=DocsChangeKind.UPDATE,
         suggested_page_urls=(),
         trigger_instructions="",
-        dedupe_id="knowledge_writer:command_tag:PostHog.posthog#123",
+        dedupe_id="knowledge_writer:command_tag:Flind.posthog#123",
     )

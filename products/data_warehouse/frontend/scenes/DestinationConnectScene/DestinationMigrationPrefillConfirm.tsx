@@ -15,7 +15,7 @@ export function DestinationMigrationPrefillConfirm(): JSX.Element {
             confirmed={prefillConfirmed}
             onConfirmedChange={setPrefillConfirmed}
             noun="destination"
-            trustNote="PostHog sends the credentials you enter to this server, so only continue if you trust it."
+            trustNote="Flind sends the credentials you enter to this server, so only continue if you trust it."
             newSetupUrl={plainSetupUrl}
             className="mb-4"
         />

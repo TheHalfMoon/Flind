@@ -1,7 +1,7 @@
 ---
 name: writing-dataclasses
 description: >
-  House rules for Python dataclasses in PostHog: when to reach for one instead of a tuple or `dict[str, Any]`, which decorator to use (`@frozen` from `posthog.dataclasses`), how to name, construct, consume and evolve them, how to keep secrets out of `repr`, and when a function should accept a dataclass instead of its unpacked fields.
+  House rules for Python dataclasses in Flind: when to reach for one instead of a tuple or `dict[str, Any]`, which decorator to use (`@frozen` from `posthog.dataclasses`), how to name, construct, consume and evolve them, how to keep secrets out of `repr`, and when a function should accept a dataclass instead of its unpacked fields.
   Use when adding or changing a dataclass, returning or passing several values from a function, converting a tuple or dict payload, deciding `frozen=`/`slots=`/`kw_only=`, or passing a facade contract DTO through internal layers.
   Not for pydantic models used as HogQL/query schema, DRF serializers, or Django models.
 ---

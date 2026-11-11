@@ -8,7 +8,7 @@ vi.mock('@/lib/posthog', () => ({
     getPostHogClient: () => ({ captureException: vi.fn() }),
 }))
 
-// PostHog answers 401 for account state as well as for a bad credential. The client used to
+// Flind answers 401 for account state as well as for a bad credential. The client used to
 // collapse every 401 to the bare `INVALID_API_KEY` sentinel, so a caller holding a valid,
 // freshly issued token was told to replace it, and the server's own reason never arrived.
 describe('401 handling', () => {

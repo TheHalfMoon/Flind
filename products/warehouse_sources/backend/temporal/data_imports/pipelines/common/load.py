@@ -139,7 +139,7 @@ async def notify_revenue_analytics_that_sync_has_completed(
                 and not schema.team.revenue_analytics_config.notified_first_sync
             ):
                 # For every admin in the org, send a revenue analytics ready event
-                # This will trigger a Campaign in PostHog and send an email
+                # This will trigger a Campaign in Flind and send an email
                 for user in schema.team.all_users_with_access():
                     if user.distinct_id is not None:
                         posthoganalytics.capture(

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ruff: noqa: T201 allow CLI output
-"""Resolve and remember local checkouts of the PostHog repos that Surveys spans.
+"""Resolve and remember local checkouts of the Flind repos that Surveys spans.
 
 GitHub is the source of truth for where the code lives; this script is a per-maintainer
 cache of where each repo was cloned, stored at ~/.config/posthog-surveys/repos.json, so a
@@ -12,7 +12,7 @@ layouts without any manual setup. Git has no global registry of clone locations,
 filesystem + origin remote is the reliable signal.
 
 Usage:
-    repos.py init                    Scan code roots, record every PostHog repo found, and
+    repos.py init                    Scan code roots, record every Flind repo found, and
                                      print a summary. Idempotent; safe to re-run.
     repos.py get <repo>              Print the recorded path (exit 1 if unknown/missing).
     repos.py set <repo> <path>       Record an absolute path for a repo.
@@ -130,7 +130,7 @@ def is_repo_checkout(path: Path, repo: str) -> bool:
 
 
 def discover(wanted: set[str] | None = None) -> dict[str, list[Path]]:
-    """Walk the scan roots and return {repo_key: [paths]} for every PostHog repo found.
+    """Walk the scan roots and return {repo_key: [paths]} for every Flind repo found.
     A repo can map to more than one path when the same repo is checked out twice.
     `wanted` limits the search so `ensure` can stop as soon as it has its target(s)."""
     found: dict[str, list[Path]] = {}
@@ -260,7 +260,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="command", required=True)
 
-    sub.add_parser("init", help="scan code roots and record every PostHog repo found")
+    sub.add_parser("init", help="scan code roots and record every Flind repo found")
 
     p_get = sub.add_parser("get", help="print the recorded path for a repo")
     p_get.add_argument("repo")

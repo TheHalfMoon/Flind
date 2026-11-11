@@ -663,10 +663,10 @@ _INELIGIBLE_KINDS_WITH_DETAIL = frozenset(
 _FAILURE_REASONS: dict[str, str] = {
     FailureKind.PROVIDER_TRANSIENT: "The AI provider stayed unreachable across every automatic retry.",
     FailureKind.PROVIDER_REJECTED: "The AI provider wouldn't analyze this recording's video.",
-    FailureKind.RASTERIZATION_FAILED: "PostHog could not turn this recording into a video.",
+    FailureKind.RASTERIZATION_FAILED: "Flind could not turn this recording into a video.",
     FailureKind.VALIDATION_FAILED: "The AI could not answer in the requested format.",
-    FailureKind.INFRA_TRANSIENT: "A PostHog service was slow or unavailable while preparing this recording.",
-    FailureKind.INTERNAL_ERROR: "Something inside PostHog stopped this scan.",
+    FailureKind.INFRA_TRANSIENT: "A Flind service was slow or unavailable while preparing this recording.",
+    FailureKind.INTERNAL_ERROR: "Something inside Flind stopped this scan.",
     FailureKind.ORPHANED: "The scan was interrupted before it finished.",
     FailureKind.PII_DETECTED: "The AI's answer included personal data the scan didn't ask for, so it wasn't kept.",
 }

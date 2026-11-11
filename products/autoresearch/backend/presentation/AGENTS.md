@@ -1,6 +1,6 @@
 # API
 
-The HTTP surface — and, because of how PostHog's codegen works, considerably more than that.
+The HTTP surface — and, because of how Flind's codegen works, considerably more than that.
 
 These serializers are the source of truth for three downstream artifacts: the REST API itself, the generated frontend TypeScript types, and the 29 `autoresearch-*` MCP tools that the sandbox agent uses to drive its own training run.
 A vague `help_text` here becomes a vague tool description that a model has to guess at. Treat serializer annotations as agent-facing documentation, because they are.

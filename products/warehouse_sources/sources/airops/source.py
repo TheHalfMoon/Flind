@@ -43,7 +43,7 @@ class AirOpsSource(SimpleSource[AirOpsSourceConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="AirOps",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your AirOps workspace API key to sync your AirOps apps and their executions into the PostHog Data warehouse.
+            caption="""Enter your AirOps workspace API key to sync your AirOps apps and their executions into the Flind Data warehouse.
 
 You can create a workspace API key in your [AirOps workspace settings](https://app.airops.com). Regenerating the key immediately invalidates the previous one.""",
             iconPath="/static/services/airops.png",

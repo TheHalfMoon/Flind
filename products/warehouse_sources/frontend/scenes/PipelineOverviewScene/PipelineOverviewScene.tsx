@@ -147,7 +147,7 @@ export function PipelineOverviewScene(): JSX.Element {
 
             <SceneDivider />
 
-            <SceneSection title="Synced sources" description="Sources PostHog imports on a schedule.">
+            <SceneSection title="Synced sources" description="Sources Flind imports on a schedule.">
                 <ManagedSourcesTable />
             </SceneSection>
 

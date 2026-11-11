@@ -16,10 +16,10 @@ describe("buildTaskSystemPrompt", () => {
 
     expect(prompt).toContain("use project 42 on https://us.posthog.com");
     expect(prompt).toContain("This is task task-123");
-    expect(prompt).toContain("Generated-By: PostHog Desktop");
+    expect(prompt).toContain("Generated-By: Flind Desktop");
     expect(prompt).toContain("Task-Id: task-123");
     expect(prompt).toContain(
-      "*Created with [PostHog Desktop](https://posthog.com/desktop?ref=pr) from a [PostHog Desktop task](https://us.posthog.com/code/task/task-123)*",
+      "*Created with [Flind Desktop](https://posthog.com/desktop?ref=pr) from a [Flind Desktop task](https://us.posthog.com/code/task/task-123)*",
     );
     expect(prompt).toContain("Keep the patch small.");
     expect(prompt).toContain("<directory>/tmp/a&amp;b</directory>");
@@ -56,7 +56,7 @@ describe("buildTaskSystemPrompt", () => {
     });
 
     expect(prompt).toContain("git_signed_commit");
-    expect(prompt).toContain("Generated-By: PostHog Desktop");
+    expect(prompt).toContain("Generated-By: Flind Desktop");
     expect(prompt).toContain("Task-Id: task-123");
     expect(prompt).not.toContain('git commit -m "$(cat');
     expect(prompt).not.toContain("/code/task/");

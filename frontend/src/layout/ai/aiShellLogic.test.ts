@@ -27,7 +27,7 @@ describe('aiShellLogic', () => {
     describe('isMaxAvailable selector', () => {
         it.each([
             { realm: 'a not-yet-loaded preflight', preflight: null, expected: true },
-            { realm: 'PostHog Cloud', preflight: { cloud: true }, expected: true },
+            { realm: 'Flind Cloud', preflight: { cloud: true }, expected: true },
             {
                 realm: 'self-hosted with an Anthropic key',
                 preflight: { cloud: false, is_debug: false, anthropic_available: true },
@@ -48,7 +48,7 @@ describe('aiShellLogic', () => {
     // The flag is the only thing that may expose the new posthog_ai surface — without the gate a stored
     // preference (or a missing default) would leak it to every user. Lock in: flag off collapses to legacy
     // regardless of the stored mode; flag on passes the stored mode through. When the server sends its
-    // access decision, that decision replaces the flag: a denied user gets classic PostHog AI.
+    // access decision, that decision replaces the flag: a denied user gets classic Flind AI.
     describe('effectivePhaiView selector', () => {
         it.each([
             { flagOn: false, gate: undefined, mode: 'new', expected: 'legacy' },

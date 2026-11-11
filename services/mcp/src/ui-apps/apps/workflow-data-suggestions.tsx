@@ -29,7 +29,7 @@ interface BuildResult {
 
 function WorkflowDataSuggestionsApp(): JSX.Element {
     return (
-        <AppWrapper<WorkflowDataSuggestionsData | BuildResult> appName="PostHog Workflow Suggestions">
+        <AppWrapper<WorkflowDataSuggestionsData | BuildResult> appName="Flind Workflow Suggestions">
             {({ data, app }) =>
                 data && 'suggestions' in data ? (
                     <WorkflowDataSuggestionsContent data={data} app={app} />

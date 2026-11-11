@@ -15,7 +15,7 @@ export function WorkflowDataSuggestionBuildView({ build }: { build: WorkflowData
                 <span className="font-medium">Draft saved. It doesn't run until you enable it.</span>
                 {build.editorUrl ? (
                     <a className="text-link underline" href={build.editorUrl} target="_blank" rel="noopener noreferrer">
-                        Open in PostHog
+                        Open in Flind
                     </a>
                 ) : null}
             </div>

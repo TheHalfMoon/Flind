@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -1832,7 +1832,7 @@ export interface ErrorTrackingIssuesListQueryRequestApi {
      * @maxLength 500
      */
     user?: string
-    /** Filter by exact PostHog person UUID. */
+    /** Filter by exact Flind person UUID. */
     personId?: string
     /**
      * Filter by current URL substring.
@@ -1957,7 +1957,7 @@ export const SymbolsPlatformEnumApi = {
  * * `file_not_reachable` - Script or source map not reachable
  * * `invalid_source_map` - Source map URL returns something else
  * * `too_large_to_fetch` - Too large to fetch
- * * `bundle_not_injected` - Bundle not processed by the PostHog CLI
+ * * `bundle_not_injected` - Bundle not processed by the Flind CLI
  * * `mapping_not_uploaded` - Mapping file not uploaded
  * * `dsym_not_uploaded` - dSYM not uploaded
  * * `debug_symbols_not_uploaded` - Debug symbols not uploaded
@@ -2052,7 +2052,7 @@ export interface MissingSymbolsExampleApi {
      * * `file_not_reachable` - Script or source map not reachable
      * * `invalid_source_map` - Source map URL returns something else
      * * `too_large_to_fetch` - Too large to fetch
-     * * `bundle_not_injected` - Bundle not processed by the PostHog CLI
+     * * `bundle_not_injected` - Bundle not processed by the Flind CLI
      * * `mapping_not_uploaded` - Mapping file not uploaded
      * * `dsym_not_uploaded` - dSYM not uploaded
      * * `debug_symbols_not_uploaded` - Debug symbols not uploaded */

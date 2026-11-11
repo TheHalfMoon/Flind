@@ -32,7 +32,7 @@ export const Pills: Story = {
       { kind: "open_space", label: "Open #growth", channel_id: "chan-1" },
       {
         kind: "open_canvas",
-        label: "Explore PostHog Desktop",
+        label: "Explore Flind Desktop",
         channel_id: "chan-1",
         canvas_id: "canvas-1",
       },
@@ -48,16 +48,16 @@ export const CardsAndPills: Story = {
     toolCall: showActionsCall([
       {
         kind: "compose",
-        label: "Add PostHog to your app",
+        label: "Add Flind to your app",
         description:
           "Opens a task that instruments your codebase and files a PR to review",
-        prompt: "Add PostHog analytics to my app and open a pull request",
+        prompt: "Add Flind analytics to my app and open a pull request",
       },
       {
         kind: "compose",
         label: "Set up error tracking",
         description: "Wires exception capture into your existing SDK setup",
-        prompt: "Enable PostHog error tracking in my app",
+        prompt: "Enable Flind error tracking in my app",
       },
       { kind: "open_inbox", label: "Review findings" },
       { kind: "open_space", label: "Open #growth", channel_id: "chan-1" },
@@ -71,10 +71,10 @@ export const SingleCard: Story = {
     toolCall: showActionsCall([
       {
         kind: "compose",
-        label: "Add PostHog to your app",
+        label: "Add Flind to your app",
         description:
           "Opens a task that instruments your codebase and files a PR to review",
-        prompt: "Add PostHog analytics to my app and open a pull request",
+        prompt: "Add Flind analytics to my app and open a pull request",
       },
     ]),
     turnComplete: true,

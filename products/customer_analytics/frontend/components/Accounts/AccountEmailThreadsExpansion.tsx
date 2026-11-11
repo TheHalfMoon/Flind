@@ -87,7 +87,7 @@ function EmailMessage({ message }: { message: AccountEmailThreadMessageApi }): J
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                     {message.direction === 'inbound' && !message.sender_authenticated ? (
-                        <Tooltip title="PostHog couldn't verify this sender's domain. Check the sender before sharing account details.">
+                        <Tooltip title="Flind couldn't verify this sender's domain. Check the sender before sharing account details.">
                             <LemonTag type="warning">Unverified sender</LemonTag>
                         </Tooltip>
                     ) : null}

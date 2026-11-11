@@ -56,7 +56,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--yes-i-really-mean-it-in-prod",
             action="store_true",
-            help="Required alongside --all when running against PostHog Cloud / DEBUG=False.",
+            help="Required alongside --all when running against Flind Cloud / DEBUG=False.",
         )
         parser.add_argument(
             "--dry-run",
@@ -91,7 +91,7 @@ class Command(BaseCommand):
                 "is unique per team, not globally."
             )
 
-        # Prod guard for --all: PostHog Cloud and any non-DEBUG instance refuse
+        # Prod guard for --all: Flind Cloud and any non-DEBUG instance refuse
         # to wipe the table without an explicit acknowledgement.
         if clear_all and not dry_run:
             if is_cloud() or not settings.DEBUG:

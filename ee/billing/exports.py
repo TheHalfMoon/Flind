@@ -132,7 +132,7 @@ def _rewrite_csv_labels(chunks: Iterator[bytes], teams_map: dict[int, str]) -> I
             return line
         project, team_id = row[1], row[2]
         # Only a Project cell that is a bare id gets a name. The header, a row with no project, the
-        # folded "all other projects" row, and an id PostHog has no name for (a project deleted since
+        # folded "all other projects" row, and an id Flind has no name for (a project deleted since
         # the usage was recorded) pass through unchanged.
         if project != team_id or team_id not in names:
             return line

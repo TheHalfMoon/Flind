@@ -47,7 +47,7 @@ from products.tasks.backend.facade.contracts import SignalImplementationRunDTO
 
 REPO = "acme/widgets"
 INSTALLATION_ID = "1001"
-# The instance's PostHog Code App slug: genuine self-driving PRs are authored by <slug>[bot], the
+# The instance's Flind Code App slug: genuine self-driving PRs are authored by <slug>[bot], the
 # identity `_is_self_driving_pr` requires. The self-driving fixtures below author as this bot.
 APP_SLUG = "posthog-code"
 
@@ -860,7 +860,7 @@ def test_installation_uninstall_tombstones_every_owning_team(team, repo_config):
     assert (second_config.enabled, second_config.digest_enabled) == (False, False)
 
     # The uninstall runs as a queryset update, which the model signal cannot see, so the task logs
-    # it by hand. No PostHog user is behind a webhook, so each row is a system row, and the already
+    # it by hand. No Flind user is behind a webhook, so each row is a system row, and the already
     # disabled config moved nothing and gets no row.
     logs = list(ActivityLog.objects.filter(detail__trigger__job_id="delivery-multi-uninstall"))
     assert {log.item_id for log in logs} == {str(repo_config.id), str(second_config.id)}
@@ -1015,7 +1015,7 @@ def test_inbox_carve_out_scope(team, repo_config, carve_kwargs, find_result_team
 
 @pytest.mark.django_db(databases=PRODUCT_DATABASES)
 def test_inbox_carve_out_requires_task_linkage(team, repo_config):
-    # A bot-authored PR with no matching implementation run (dependabot, a wizard/manual PostHog Code
+    # A bot-authored PR with no matching implementation run (dependabot, a wizard/manual Flind Code
     # PR) must keep today's behavior byte-for-byte: skipped, no run, no review.
     _sync_repo_config(team.id, repo_config)
     with (

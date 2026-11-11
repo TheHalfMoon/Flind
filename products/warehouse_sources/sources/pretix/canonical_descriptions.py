@@ -94,7 +94,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.pretix.eu/en/latest/api/resources/subevents.html",
         "columns": {
             "id": "Internal ID of the sub-event.",
-            "event_slug": "The slug of the event series this sub-event belongs to (added by PostHog during sync).",
+            "event_slug": "The slug of the event series this sub-event belongs to (added by Flind during sync).",
             "name": "The sub-event's full name in every configured language.",
             "active": "Whether tickets for this date can be bought.",
             "date_from": "The sub-event's start date and time.",
@@ -131,7 +131,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.pretix.eu/en/latest/api/resources/items.html",
         "columns": {
             "id": "Internal ID of the item.",
-            "event_slug": "The slug of the event this item belongs to (added by PostHog during sync).",
+            "event_slug": "The slug of the event this item belongs to (added by Flind during sync).",
             "name": "The item's name in every configured language.",
             "internal_name": "An optional name used only internally.",
             "default_price": "The item price applied if no variation or voucher changes it.",
@@ -148,7 +148,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.pretix.eu/en/latest/api/resources/categories.html",
         "columns": {
             "id": "Internal ID of the category.",
-            "event_slug": "The slug of the event this category belongs to (added by PostHog during sync).",
+            "event_slug": "The slug of the event this category belongs to (added by Flind during sync).",
             "name": "The category's name in every configured language.",
             "internal_name": "An optional name used only internally.",
             "description": "A public description of the category.",
@@ -161,7 +161,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.pretix.eu/en/latest/api/resources/questions.html",
         "columns": {
             "id": "Internal ID of the question.",
-            "event_slug": "The slug of the event this question belongs to (added by PostHog during sync).",
+            "event_slug": "The slug of the event this question belongs to (added by Flind during sync).",
             "question": "The question text in every configured language.",
             "type": "The question's field type, for example S (string), N (number), or C (choice).",
             "required": "Whether an answer is required during checkout.",
@@ -175,7 +175,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.pretix.eu/en/latest/api/resources/quotas.html",
         "columns": {
             "id": "Internal ID of the quota.",
-            "event_slug": "The slug of the event this quota belongs to (added by PostHog during sync).",
+            "event_slug": "The slug of the event this quota belongs to (added by Flind during sync).",
             "name": "The internal name of the quota.",
             "size": "The size of the quota, with null meaning unlimited.",
             "items": "The IDs of the items this quota applies to.",
@@ -189,7 +189,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.pretix.eu/en/latest/api/resources/vouchers.html",
         "columns": {
             "id": "Internal ID of the voucher.",
-            "event_slug": "The slug of the event this voucher belongs to (added by PostHog during sync).",
+            "event_slug": "The slug of the event this voucher belongs to (added by Flind during sync).",
             "code": "The voucher code used to redeem it.",
             "max_usages": "The maximum number of times the voucher can be redeemed.",
             "redeemed": "The number of times the voucher has already been redeemed.",
@@ -205,7 +205,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.pretix.eu/en/latest/api/resources/checkinlists.html",
         "columns": {
             "id": "Internal ID of the check-in list.",
-            "event_slug": "The slug of the event this check-in list belongs to (added by PostHog during sync).",
+            "event_slug": "The slug of the event this check-in list belongs to (added by Flind during sync).",
             "name": "The internal name of the check-in list.",
             "all_products": "Whether the list includes tickets for all products.",
             "limit_products": "The IDs of the products the list is limited to.",
@@ -220,7 +220,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.pretix.eu/en/latest/api/resources/waitinglist.html",
         "columns": {
             "id": "Internal ID of the waiting list entry.",
-            "event_slug": "The slug of the event this entry belongs to (added by PostHog during sync).",
+            "event_slug": "The slug of the event this entry belongs to (added by Flind during sync).",
             "email": "The email address of the person on the waiting list.",
             "created": "The date and time the entry was created.",
             "item": "The ID of the item the person is waiting for.",
@@ -234,7 +234,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://docs.pretix.eu/en/latest/api/resources/taxrules.html",
         "columns": {
             "id": "Internal ID of the tax rule.",
-            "event_slug": "The slug of the event this tax rule belongs to (added by PostHog during sync).",
+            "event_slug": "The slug of the event this tax rule belongs to (added by Flind during sync).",
             "name": "The display name of the tax rule.",
             "rate": "The tax rate as a percentage.",
             "price_includes_tax": "Whether product prices are treated as including this tax.",

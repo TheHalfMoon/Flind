@@ -1008,7 +1008,7 @@ class TestEndpointsNewerThanThePinnedRevision:
             if error_message_matches(str(result.raised), [pattern])
         ]
         assert friendly and friendly[0] is not None
-        assert "Contact PostHog support" in friendly[0]
+        assert "Contact Flind support" in friendly[0]
 
 
 class TestValidateCredentialsResolvedPin:

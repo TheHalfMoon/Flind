@@ -65,7 +65,7 @@ export function regionalStatus(summary: Summary, region: 'us' | 'eu'): PostHogSt
     const maintenance = summary.in_progress_maintenances.find(relevant)
     const [ai] = incidents
         .flatMap((event) => {
-            const component = event.affected_components.find((item) => item.name === 'PostHog AI' && inRegion(item))
+            const component = event.affected_components.find((item) => item.name === 'Flind AI' && inRegion(item))
             return component ? [{ event, impact: component.current_status }] : []
         })
         .sort((a, b) => impactRank[b.impact] - impactRank[a.impact])

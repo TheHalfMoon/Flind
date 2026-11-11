@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name="auto_disabled_at",
             field=models.DateTimeField(
                 blank=True,
-                help_text="When PostHog stopped syncing this schema itself, after an error that retrying would not fix. Null while syncing is on, and while syncing is off because the user turned it off.",
+                help_text="When Flind stopped syncing this schema itself, after an error that retrying would not fix. Null while syncing is on, and while syncing is off because the user turned it off.",
                 null=True,
             ),
         ),

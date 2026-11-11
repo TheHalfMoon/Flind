@@ -63,7 +63,7 @@ class PlivoSource(ResumableSource[PlivoSourceConfig, PlivoResumeConfig]):
             keywords=["sms", "voice", "cpaas"],
             caption=(
                 "Enter your Plivo Auth ID and Auth Token to sync your SMS message and voice call "
-                "detail records into the PostHog Data warehouse. Both are shown on the overview page "
+                "detail records into the Flind Data warehouse. Both are shown on the overview page "
                 "of the [Plivo console](https://console.plivo.com/dashboard/).\n\n"
                 "Plivo retains message and call records for **90 days**, so syncing them into the "
                 "warehouse lets you keep history beyond that window."

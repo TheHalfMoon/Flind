@@ -410,14 +410,14 @@ class TestMonorepoPackageTagMatching(TestFetchSdkDataBase):
                 "3.23.0",
                 {"3.23.0", "3.6.1", "3.3.3"},
             ),
-            # posthog-dotnet moved to `PostHog-v*` tags; AspNetCore/AI package tags must not match
+            # posthog-dotnet moved to `Flind-v*` tags; AspNetCore/AI package tags must not match
             (
                 "posthog-dotnet",
                 "PostHog/posthog-dotnet",
                 [
-                    _release("PostHog.AspNetCore-v2.8.2", "2026-08-01T00:00:00Z"),
-                    _release("PostHog.AI-v0.1.4", "2026-07-31T00:00:00Z"),
-                    _release("PostHog-v2.13.0", "2026-07-30T00:00:00Z"),
+                    _release("Flind.AspNetCore-v2.8.2", "2026-08-01T00:00:00Z"),
+                    _release("Flind.AI-v0.1.4", "2026-07-31T00:00:00Z"),
+                    _release("Flind-v2.13.0", "2026-07-30T00:00:00Z"),
                     _release("2.6.0", "2025-09-30T00:00:00Z"),
                     _release("v2.4.1", "2025-08-30T00:00:00Z"),
                 ],
@@ -598,8 +598,8 @@ class TestMonorepoPackageTagMatching(TestFetchSdkDataBase):
                 "posthog-aspnetcore",
                 "PostHog/posthog-dotnet",
                 [
-                    _release("PostHog.AspNetCore-v2.8.2", "2026-08-01T00:00:00Z"),
-                    _release("PostHog-v2.13.0", "2026-08-01T00:00:00Z"),
+                    _release("Flind.AspNetCore-v2.8.2", "2026-08-01T00:00:00Z"),
+                    _release("Flind-v2.13.0", "2026-08-01T00:00:00Z"),
                     _release("v2.4.1", "2025-08-30T00:00:00Z"),
                 ],
                 "2.8.2",

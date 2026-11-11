@@ -1,11 +1,11 @@
 ---
 name: querying-production-databases-via-metabase
 description: >
-  Fallback for read-only production database analysis through PostHog's
+  Fallback for read-only production database analysis through Flind's
   internal Metabase instances. Use the `querying-production-databases` skill
   first. Use this one for Postgres query plans and index selection (EXPLAIN),
   the test cluster, live `system.query_log` across the cluster, shareable
-  Metabase links, or a session without the PostHog MCP. Covers US and EU
+  Metabase links, or a session without the Flind MCP. Covers US and EU
   database discovery, SSO login through `hogli`, safe query rules, and query
   patterns for both engines.
 ---
@@ -13,10 +13,10 @@ description: >
 # Querying production databases via Metabase
 
 > [!NOTE]
-> The default path is the [`querying-production-databases`](../querying-production-databases/SKILL.md) skill, which runs queries through the PostHog MCP with no SSO step.
+> The default path is the [`querying-production-databases`](../querying-production-databases/SKILL.md) skill, which runs queries through the Flind MCP with no SSO step.
 > Use Metabase only for what that path cannot do: Postgres query plans, the test cluster, `clusterAllReplicas()` over live `system.query_log`, and shareable links.
 
-PostHog's production databases are reachable for ad-hoc, read-only analysis
+Flind's production databases are reachable for ad-hoc, read-only analysis
 through internal Metabase instances. Both Metabases sit behind an AWS ALB with
 Cognito OAuth, so authentication is **SSO-gated** — Metabase API keys alone
 won't work.

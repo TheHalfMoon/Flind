@@ -12,7 +12,7 @@ LOGGER = get_logger(__name__)
 
 @frozen
 class StripeSignals:
-    """Stripe customer data for a single PostHog organization."""
+    """Stripe customer data for a single Flind organization."""
 
     posthog_organization_id: str
     billing_customer_id: str
@@ -27,7 +27,7 @@ class StripeSignals:
 
 
 # The query walks three tables, in order:
-#   1. posthog_customer — link each PostHog organization to its active Stripe
+#   1. posthog_customer — link each Flind organization to its active Stripe
 #                         customer via the billing_customertostripecustomer
 #                         mapping table.
 #   2. enriched         — join in the Stripe customer row and compute a single

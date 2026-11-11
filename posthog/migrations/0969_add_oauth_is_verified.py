@@ -12,6 +12,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="oauthapplication",
             name="is_verified",
-            field=models.BooleanField(default=False, help_text="True if this application has been verified by PostHog"),
+            field=models.BooleanField(default=False, help_text="True if this application has been verified by Flind"),
         ),
     ]

@@ -1165,7 +1165,7 @@ async def test_deliver_subscription_handles_slack_api_errors(team, user, slack_e
         assert result is not None
         assert result.recipient_results[0].status == "failed"
         assert result.recipient_results[0].error == {
-            "message": "PostHog can no longer post to this Slack channel",
+            "message": "Flind can no longer post to this Slack channel",
             "type": "slack_permission_revoked",
         }
     else:

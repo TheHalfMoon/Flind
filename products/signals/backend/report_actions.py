@@ -24,7 +24,7 @@ def suppress_report_from_slack(
     already-suppressed report is treated as success; returns False if the report
     doesn't exist or the transition isn't allowed.
 
-    `user_id` is the PostHog user the clicking Slack identity resolved to — the caller already
+    `user_id` is the Flind user the clicking Slack identity resolved to — the caller already
     resolves it to gate the dismiss to org members. When present the dismissal is attributed to
     them; the `slack_user_id` is kept in the content either way as the Slack-side trace.
     """
@@ -49,7 +49,7 @@ def suppress_report_from_slack(
             )
             return False
 
-        # Attribute to the resolved PostHog user when the caller mapped the Slack click to one;
+        # Attribute to the resolved Flind user when the caller mapped the Slack click to one;
         # fall back to system if not. The receivers name this actor in the GitHub comments and in
         # the status-change label. Either way the slack_user_id stays in the content as the
         # Slack-side trace.

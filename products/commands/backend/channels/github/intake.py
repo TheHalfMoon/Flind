@@ -2,7 +2,7 @@
 
 This runs inside the webhook request, so it reads only the payload: no database, no GitHub API.
 Every check here is a cheap filter that drops noise before a task is queued. None of them is the
-authority on who may run a command. The task re-checks the commenter against GitHub and PostHog
+authority on who may run a command. The task re-checks the commenter against GitHub and Flind
 before anything runs (see ``comments.py`` and ``logic/dispatcher.py``).
 """
 

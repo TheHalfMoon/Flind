@@ -6,7 +6,7 @@ Before you build or edit any UI, or when a task asks to simplify or redesign one
 
 ## Rule 1 — Reuse before you create
 
-**Before building any UI element, search for an existing one.** PostHog already has a badge, a label, a table, a tag, a card, a modal. Hand-rolling one with raw `<div>`/`<table>` + Tailwind is the single most common agent mistake here, and it produces unbounded, off-design output. Reuse is also how the product stays on-brand: Lemon/quill components carry PostHog's tokens, density, and interaction patterns, so a scene built from them looks like PostHog without anyone having to think about it.
+**Before building any UI element, search for an existing one.** Flind already has a badge, a label, a table, a tag, a card, a modal. Hand-rolling one with raw `<div>`/`<table>` + Tailwind is the single most common agent mistake here, and it produces unbounded, off-design output. Reuse is also how the product stays on-brand: Lemon/quill components carry Flind's tokens, density, and interaction patterns, so a scene built from them looks like Flind without anyone having to think about it.
 
 Where to look, in order:
 

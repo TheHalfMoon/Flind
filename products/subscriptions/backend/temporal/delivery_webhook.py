@@ -29,7 +29,7 @@ WEBHOOK_READ_TIMEOUT_SECONDS = SUBSCRIPTION_DELIVER_ATTEMPT_TIMEOUT.total_second
 
 # What a deleted or revoked Power Automate flow answers with. Retrying cannot recover any of them.
 _PERMANENT_WEBHOOK_STATUSES = frozenset({403, 404, 410})
-_WEBHOOK_UNREACHABLE_MESSAGE = "We couldn't reach your Teams channel. PostHog will try again on the next scheduled run."
+_WEBHOOK_UNREACHABLE_MESSAGE = "We couldn't reach your Teams channel. Flind will try again on the next scheduled run."
 
 _WEBHOOK_SEND_MAX_WORKERS: int = get_from_env(
     "SUBSCRIPTION_WEBHOOK_SEND_MAX_WORKERS", min(32, 4 * (os.cpu_count() or 1)), type_cast=int

@@ -39,7 +39,7 @@ TERMINAL_JOB_STATUSES: frozenset[str] = frozenset(_TERMINAL_STATUS_TO_METRIC)
 # so all comparisons must go through this constant rather than the literal.
 LOCK_TAKEOVER_LATEST_ERROR = (
     "A previous sync run did not shut down cleanly and was still marked as running. "
-    "PostHog cleaned it up so syncing can continue. No action is needed."
+    "Flind cleaned it up so syncing can continue. No action is needed."
 )
 
 

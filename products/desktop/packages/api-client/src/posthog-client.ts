@@ -520,7 +520,7 @@ export type CodexIntegrationStatus =
   | "connected"
   | "reauth_required";
 
-/** `GET /api/users/@me/integrations/codex/`: the ChatGPT account PostHog holds for the user's cloud Codex runs. */
+/** `GET /api/users/@me/integrations/codex/`: the ChatGPT account Flind holds for the user's cloud Codex runs. */
 export interface UserCodexIntegration {
   status: CodexIntegrationStatus;
   plan_type: string | null;
@@ -575,7 +575,7 @@ export interface GithubInstallRequestItem {
 
 export interface GithubInstallRequestsResponse {
   results: GithubInstallRequestItem[];
-  /** App install page with no PostHog state, for an org owner to open. */
+  /** App install page with no Flind state, for an org owner to open. */
   install_url?: string | null;
 }
 
@@ -695,7 +695,7 @@ export interface ScoutConfig {
    */
   description?: string;
   /**
-   * Where the scout came from: "canonical" for a scout PostHog ships and
+   * Where the scout came from: "canonical" for a scout Flind ships and
    * maintains (seeded from products/signals/skills), "custom" for one a team
    * hand-authored. The serializer defaults to "custom" when the skill is absent;
    * the field itself is absent entirely on backends predating it.
@@ -723,7 +723,7 @@ export interface ScoutSuggestionProposedConfig {
 
 export interface ScoutSuggestionItem {
   id: string;
-  /** `canonical` turns on a PostHog scout that is off; `custom` creates a drafted one. */
+  /** `canonical` turns on a Flind scout that is off; `custom` creates a drafted one. */
   kind: "canonical" | "custom";
   skill_name: string;
   title: string;
@@ -772,7 +772,7 @@ export interface ScoutRun {
   completed_at: string | null;
   task_id: string | null;
   task_run_id: string | null;
-  /** Relative PostHog cloud path to the backing task run. */
+  /** Relative Flind cloud path to the backing task run. */
   task_url: string | null;
   summary: string;
   emitted_count: number | null;
@@ -848,7 +848,7 @@ export interface ExternalDataSource {
 
 /**
  * Field-config variants for an external data source's connect form, as served
- * by the `external_data_sources/wizard/` endpoint. Mirrors PostHog Cloud's
+ * by the `external_data_sources/wizard/` endpoint. Mirrors Flind Cloud's
  * `SourceFieldConfig` union (`posthog/schema.py`). The backend is the single
  * source of truth for which credential fields a source needs, so forms can be
  * rendered generically instead of hardcoded per source.
@@ -2352,7 +2352,7 @@ export class PostHogAPIClient {
   }
 
   /**
-   * `POST /api/users/@me/integrations/codex/`. PostHog refreshes the chain once and keeps
+   * `POST /api/users/@me/integrations/codex/`. Flind refreshes the chain once and keeps
    * the rotated tokens, so the local `auth.json` is stale after this call.
    */
   async connectCodexUserIntegration(
@@ -2622,7 +2622,7 @@ export class PostHogAPIClient {
   /**
    * The project-wide default. Readable by any member; only project admins may change
    * it, which is why this client offers no writer for it — the settings page links to
-   * PostHog rather than presenting a control that would 403.
+   * Flind rather than presenting a control that would 403.
    */
   async getTeamTaskRunPreferences(
     projectId: number,
@@ -2886,7 +2886,7 @@ export class PostHogAPIClient {
   }
 
   /**
-   * The pre-computed "Suggested for this project" batch: PostHog scouts worth
+   * The pre-computed "Suggested for this project" batch: Flind scouts worth
    * turning on, and drafts worth creating, each with the evidence behind it.
    * A coordinator refreshes it on a schedule, so this read never waits on one.
    */
@@ -7991,7 +7991,7 @@ export class PostHogAPIClient {
           flag = page.results.find((entry) => entry.key === id);
         }
         if (!flag) return null;
-        // Depth: PostHog's own staleness verdict, whether anything still
+        // Depth: Flind's own staleness verdict, whether anything still
         // evaluates the flag (7-day call volume), and the people behind any
         // distinct ids the flag targets directly, so the page can name them.
         const [status, volume, people] = await Promise.all([
@@ -8108,7 +8108,7 @@ export class PostHogAPIClient {
           }).catch(() => ({})),
         ]);
         if (!("id" in issue))
-          throw new Error("This issue moved. Open it in PostHog.");
+          throw new Error("This issue moved. Open it in Flind.");
         const preview = shapeErrorIssuePreview(issue);
         const totalRow = gridRows(totals)[0];
         const facts = [...(preview.facts ?? [])];

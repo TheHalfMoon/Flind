@@ -1,4 +1,4 @@
-"""Bakes the prebaked PostHog dev-stack VM image.
+"""Bakes the prebaked Flind dev-stack VM image.
 
 Boots a plain VM-base sandbox, runs `bake-posthog-dev-stack.sh` inside it (install the
 dev toolchain the VM base lacks, pre-pull the dev compose images, bring the stack up,

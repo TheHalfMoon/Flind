@@ -1,7 +1,7 @@
 ---
 name: requesting-mobile-releases
 description: >
-  Decides whether a PostHog mobile app change can ship as an over-the-air (OTA) update or needs a native
+  Decides whether a Flind mobile app change can ship as an over-the-air (OTA) update or needs a native
   store release, then creates the release request file under products/mobile/releases/requests/. Use
   before creating or editing a mobile release request, when asked to ship, release, publish or push an
   update of the mobile app, and when a change under products/mobile touches package.json,

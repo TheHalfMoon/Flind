@@ -76,7 +76,7 @@ A change made on the report screen (resolve, dismiss, reviewers, priority, hand-
 
 `inboxFromReports(reports)`:
 
-- `needsInput` is `status === 'pending_input'`; `agent` is the PostHog badge when `assignee.kind` is `task` or `agent`;
+- `needsInput` is `status === 'pending_input'`; `agent` is the Flind badge when `assignee.kind` is `task` or `agent`;
 - `state` is `done` for resolved, `dismissed` for suppressed or deleted, else `open`;
 - `sourceProduct` is the first source that is not `signals_scout` or `signals_check`, else the first;
 - `sources` and `createdAt` carry `source_products` and `created_at` for the filters, and `modelScore` is `ranking.scores.pr_merged`, or null.
@@ -114,7 +114,7 @@ The screen reads `useReport(id)`, so it shares the report screen's cache and doe
 The Charts section follows the summary and shows the same chart titles, captions, and open links as the abbreviated report.
 The signals can arrive after the first render when a Today page exists, because the report screen does not wait for them then; the Signals section appears when they land.
 `mobile_report_details_opened` is sent once per open, with `report_id`, `has_summary` and `signal_count`.
-`mobile_report_details_link_opened` carries `report_id` and `target`: `web` (Open in PostHog), `replay` (a signal's Watch session) or `link` (a link in the summary or a signal).
+`mobile_report_details_link_opened` carries `report_id` and `target`: `web` (Open in Flind), `replay` (a signal's Watch session) or `link` (a link in the summary or a signal).
 `mobile_report_details_read` has the same properties as `mobile_report_read` and is sent when the full report unmounts.
 The report screen's dwell time pauses while the full report is on top, because that screen loses focus.
 
@@ -127,20 +127,20 @@ The report screen's dwell time pauses while the full report is on top, because t
 - **Evidence from signals** (no page). The first error signal is a `trace` with its first line and the frames of its fenced stack (`fn in path line N`, closest to the error first). Feedback signals become quotes ("Ticket #N" when `extra.ticket_number` is set). The first signal with `extra.session_id` is the `replay`, without a seek time.
 - **Signals.** Every signal from the signals endpoint, newest first as the API returns them, also when the Today page supplies the evidence. Each has its source (unknown sources map to `other`), the trimmed `content`, `timestamp`, the `extra.session_id` with its replay URL (`{host}/project/{id}/replay/{session_id}`, no seek time), and `extra.ticket_number` when it is a number. The full report shows them all, untruncated.
 - **Since.** `created_at` as activity time ("Mon 7:21 AM", "Today 9:04 AM", "Just now"). The byline under the headline reads it as "Since …".
-- **Owner.** `{ kind: 'user', name }` for a user claim; `{ kind: 'agent', name }` with "PostHog" for a task or system claim, or the MCP client ("Claude Code") for an external agent claim; `{ kind: 'none' }` when unclaimed. The owner chip under the byline shows it.
+- **Owner.** `{ kind: 'user', name }` for a user claim; `{ kind: 'agent', name }` with "Flind" for a task or system claim, or the MCP client ("Claude Code") for an external agent claim; `{ kind: 'none' }` when unclaimed. The owner chip under the byline shows it.
 - **Facts**, the rows the byline and chips do not show. The adapter emits only Impact, dropped when it has no source: the primary metric's value and title ("612 affected users", or "612 users" with the title under it when the metric has its own unit) and its caption; else the first Today impact number.
   The byline takes the source from `sourceProduct` and `sourceLabel`, so the facts carry no Source row.
 - **Observation, supporting metrics and charts.** See [Metrics and charts](#metrics-and-charts).
-- **Activity**, oldest first, starting with "PostHog created the report" at `created_at`:
-  - `work_claim`: "{name} handed off to **PostHog**" for a task claim when the task's creator is known, else "PostHog claimed the report"; "{actor} claimed the report" for users and agents.
-  - `task_run` of type `implementation`: "PostHog started working". Other run types are left out.
-  - `pull_request`: "PostHog opened **PR #N**", or "{actor} linked **PR #N**" when a person or agent attached it.
-  - `suggested_reviewers`: "{actor} changed reviewers to **A, B**" or "{actor} removed the reviewers"; "PostHog suggested **A, B** as reviewers" for pipeline writes.
+- **Activity**, oldest first, starting with "Flind created the report" at `created_at`:
+  - `work_claim`: "{name} handed off to **Flind**" for a task claim when the task's creator is known, else "Flind claimed the report"; "{actor} claimed the report" for users and agents.
+  - `task_run` of type `implementation`: "Flind started working". Other run types are left out.
+  - `pull_request`: "Flind opened **PR #N**", or "{actor} linked **PR #N**" when a person or agent attached it.
+  - `suggested_reviewers`: "{actor} changed reviewers to **A, B**" or "{actor} removed the reviewers"; "Flind suggested **A, B** as reviewers" for pipeline writes.
   - `dismissal`, `note`, `title_change`, `summary_change`: one sentence each. Every other artefact type is left out.
-  - The actor is the `created_by` user, the MCP client name for agent writes, else "PostHog". Agent writes carry `via PostHog MCP`.
+  - The actor is the `created_by` user, the MCP client name for agent writes, else "Flind". Agent writes carry `via PostHog MCP`.
 - **Work.** `work_state`, the assignee, and the pull request the server calls the implementation PR (else the first). A PR in state `unknown` counts as open, as the server does.
 - **Task.** The claim's task when a task owns the report, else the newest `implementation` task run. `runId`, `status` and `stage` come from the task's `latest_run`. The hand-off feature streams it from there.
-- **Reviewers.** The newest `suggested_reviewers` artefact, entries with a PostHog user only.
+- **Reviewers.** The newest `suggested_reviewers` artefact, entries with a Flind user only.
 - **Other fields.** `status` and `priority` when they are known values, `summary`, `webUrl` (`reportWebUrl()`: `{host}/project/{id}/inbox/reports/{report_id}`, also used for chat context), `canAct` (the web's `isActionCapableReport`: `ready` or `pending_input`, not already addressed, not `not_actionable`, no pull request), up to 3 `suggestedPrompts`, and the fixed `contextNote`. `useReport` adds `prompt`, the hand-off feature's implementation prompt for `webUrl`.
 
 ## Metrics and charts

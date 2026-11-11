@@ -49,13 +49,13 @@ import { usePostHogLinkContext } from "../usePostHogLinkContext";
  * reference on every wrapped line fragment.
  *
  * The reference carries only `kind/id`. Hovering or focusing mounts the card,
- * which resolves the object's live name and status through the PostHog API
+ * which resolves the object's live name and status through the Flind API
  * (for `hogql`, runs the query); report links open the report in the app.
- * Other links open a task object tab, or PostHog outside a task.
+ * Other links open a task object tab, or Flind outside a task.
  * Nothing about the object is stored in the message itself.
  *
  * The card is a Base UI popover, not a tooltip: it holds real controls (the
- * query toggle, "Open in PostHog"), so it must be a focus-managed overlay —
+ * query toggle, "Open in Flind"), so it must be a focus-managed overlay —
  * Tab moves from the chip into the card and operates its buttons, Escape
  * closes, and assistive tech sees an interactive popup rather than the whole
  * card flattened into description text.
@@ -64,7 +64,7 @@ import { usePostHogLinkContext } from "../usePostHogLinkContext";
 const SPARK_W = 100;
 const SPARK_H = 30;
 const SPARK_PAD = 2;
-// PostHog's first data-viz color, with a hex fallback because the tooltip
+// Flind's first data-viz color, with a hex fallback because the tooltip
 // portals outside the theme root.
 const SPARK_COLOR = "var(--data-color-1, #1d4aff)";
 
@@ -332,7 +332,7 @@ export function EvidenceHoverCard({
           )}
           {url && (
             <Button variant="link-muted" size="xs" onClick={() => onOpen(url)}>
-              Open in PostHog ↗
+              Open in Flind ↗
             </Button>
           )}
         </div>
@@ -414,7 +414,7 @@ function EvidenceHoverCardLoader({
   );
 }
 
-/** PostHog web URL for a reference in the current project, when it has one. */
+/** Flind web URL for a reference in the current project, when it has one. */
 export function useEvidenceUrl(kind: string, id: string): string | null {
   const links = usePostHogLinkContext();
   const path = evidenceWebPath(kind, id);
@@ -520,12 +520,12 @@ function EvidenceRefChipContent({
         nativeButton={false}
         // Focus opens the card the way the tooltip used to, so a keyboard
         // user can preview a linked reference whose Enter action navigates
-        // to PostHog instead of toggling the popover.
+        // to Flind instead of toggling the popover.
         onFocus={() => setOpen(true)}
         render={
           url || taskId || onOpenReport ? (
             // Keep the truthful role: Enter follows the link (opens the
-            // object's page in the app, or in PostHog outside a session), it
+            // object's page in the app, or in Flind outside a session), it
             // does not act as a popover button.
             // biome-ignore lint/a11y/useSemanticElements: the element already is an <a>; the explicit role restores link semantics the popover trigger's role="button" would override
             <a
@@ -541,7 +541,7 @@ function EvidenceRefChipContent({
           ) : (
             // No page to link to: the reference is a real popover trigger
             // (focusable, Enter/Space opens the card), since the card's
-            // "Open in PostHog" action is the only route to the object.
+            // "Open in Flind" action is the only route to the object.
             <span
               ref={setTriggerElement}
               className={`${refClass} cursor-pointer`}

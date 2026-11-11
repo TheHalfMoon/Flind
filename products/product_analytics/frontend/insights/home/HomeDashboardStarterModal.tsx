@@ -31,7 +31,7 @@ export function HomeDashboardStarterModal({
         {
             title: 'Copy and edit the default dashboard',
             description:
-                'Copy the charts on this page so you can edit, add, or remove them. You can reset to the PostHog default at any time.',
+                'Copy the charts on this page so you can edit, add, or remove them. You can reset to the Flind default at any time.',
             icon: <IconCopy />,
             onClick: onCopyPostHogHome,
             dataAttr: 'home-dashboard-copy-posthog-home',
@@ -39,8 +39,8 @@ export function HomeDashboardStarterModal({
             disabledReason: creationDisabledReason,
         },
         {
-            title: 'Talk to PostHog AI',
-            description: 'Describe what you want to track and let PostHog AI build it.',
+            title: 'Talk to Flind AI',
+            description: 'Describe what you want to track and let Flind AI build it.',
             icon: <IconSparkles />,
             onClick: onTalkToAI,
             dataAttr: 'home-dashboard-start-ai',
@@ -102,7 +102,7 @@ export function HomeDashboardStarterModal({
                         data-attr="home-dashboard-restore-posthog-home"
                     >
                         <span className="flex min-w-0 flex-col gap-0.5 py-1">
-                            <span className="font-semibold">Reset to PostHog default</span>
+                            <span className="font-semibold">Reset to Flind default</span>
                             <span className="whitespace-normal text-xs font-normal text-secondary">
                                 Go back to the default product analytics dashboard.
                             </span>

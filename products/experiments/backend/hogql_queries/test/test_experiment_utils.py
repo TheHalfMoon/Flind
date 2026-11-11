@@ -452,7 +452,7 @@ class TestGetVariantResult:
         assert stats.number_of_samples == 100
 
     def test_breakdown_with_posthog_null_label(self):
-        """Test that the special PostHog NULL label is preserved."""
+        """Test that the special Flind NULL label is preserved."""
         metric = ExperimentMeanMetric(
             source=EventsNode(event="$pageview", math=ExperimentMetricMathType.TOTAL),
             breakdownFilter=BreakdownFilter(breakdowns=[Breakdown(property="$browser")]),

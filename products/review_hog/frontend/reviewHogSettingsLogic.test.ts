@@ -281,7 +281,7 @@ describe('reviewHogSettingsLogic', () => {
             post: {
                 '/api/projects/:team_id/review_hog/reviews/trigger/': () => [
                     403,
-                    { error: "PostHog Review can't start reviews from this project yet" },
+                    { error: "Flind Review can't start reviews from this project yet" },
                 ],
             },
         })
@@ -444,7 +444,7 @@ describe('reviewHogSettingsLogic', () => {
 
     it('opens a review from ?review= and mirrors drawer state back to the URL', async () => {
         // ?review=<report id> is a permanent public contract: PR status comments bake this exact
-        // param into their "View them in PostHog" links, so renaming the param or dropping the URL
+        // param into their "View them in Flind" links, so renaming the param or dropping the URL
         // sync silently dead-ends every held-back-findings link already posted to GitHub.
         useMocks({
             get: {

@@ -3,7 +3,7 @@
 Measures per-partition size after a sync (cheap — read from the Delta log) and, when a table's
 largest partition outgrows the memory-safe budget, records a `repartition_pending` target on the
 schema. The next run's pre-extraction activity performs the rewrite (see `repartition.py` and
-`workflow_activities/repartition_table.py`). Everything is observable via PostHog events.
+`workflow_activities/repartition_table.py`). Everything is observable via Flind events.
 """
 
 from __future__ import annotations

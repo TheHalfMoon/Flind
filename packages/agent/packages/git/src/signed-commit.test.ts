@@ -98,10 +98,10 @@ describe("splitCommitMessage", () => {
     },
     {
       name: "preserves existing trailers in the body",
-      raw: "fix: x\n\nGenerated-By: PostHog Code\nTask-Id: abc",
+      raw: "fix: x\n\nGenerated-By: Flind Code\nTask-Id: abc",
       expected: {
         headline: "fix: x",
-        body: "Generated-By: PostHog Code\nTask-Id: abc",
+        body: "Generated-By: Flind Code\nTask-Id: abc",
       },
     },
     {

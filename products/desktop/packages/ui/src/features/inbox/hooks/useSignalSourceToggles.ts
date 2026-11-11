@@ -41,7 +41,7 @@ const ERROR_TRACKING_SOURCE_TYPES: SourceType[] = [
 ];
 
 const SOURCE_LABELS: Partial<Record<SourceKey, string>> = {
-  conversations: "PostHog Support",
+  conversations: "Flind Support",
   error_tracking: "Error tracking",
   health_checks: "Health checks",
   llm_analytics: "AI observability",
@@ -116,7 +116,7 @@ function computeValues(
  *  - Forcing `issues` (`should_sync=true`, `sync_type=full_refresh` for GitHub/Linear) when a source is turned on.
  *
  * Replay Vision is absent by design: each scanner's `emits_signals` flag is its own per-source
- * config, so there is no row here to switch. Scanners are set up in PostHog or by the Wizard.
+ * config, so there is no row here to switch. Scanners are set up in Flind or by the Wizard.
  */
 export function useSignalSourceToggles() {
   const client = useAuthenticatedClient();

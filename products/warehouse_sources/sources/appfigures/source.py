@@ -48,7 +48,7 @@ class AppfiguresSource(ResumableSource[AppfiguresSourceConfig, AppfiguresResumeC
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Appfigures",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter an Appfigures Personal Access Token to pull your app-store analytics into the PostHog Data warehouse.
+            caption="""Enter an Appfigures Personal Access Token to pull your app-store analytics into the Flind Data warehouse.
 
 Create an API client and Personal Access Token at [appfigures.com/developers/keys](https://appfigures.com/developers/keys). When creating the client, grant the data sets you want to sync:
 - `products:read` — Products

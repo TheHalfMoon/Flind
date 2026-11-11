@@ -176,7 +176,7 @@ export type {
 } from "./schemas";
 
 /**
- * A durable, team-visible "PostHog agent" announcement in a channel's feed —
+ * A durable, team-visible "Flind agent" announcement in a channel's feed —
  * rendered alongside task cards (e.g. "Adam created this context"). `author` is
  * the user whose action produced the row; `author_kind` says who authored it.
  * `payload` carries structured event data (e.g. `{ context_name }`) so rendering
@@ -965,9 +965,9 @@ export interface DismissalContent {
   reason: ReportStateReason;
   /** Optional free-form detail provided alongside the reason. */
   note: string;
-  /** PostHog numeric user id of the dismisser, when available. */
+  /** Flind numeric user id of the dismisser, when available. */
   user_id: number | null;
-  /** PostHog UUID of the dismisser, when available. */
+  /** Flind UUID of the dismisser, when available. */
   user_uuid: string | null;
 }
 
@@ -1255,7 +1255,7 @@ export interface SignalReportsQueryParams {
   ordering?: string;
   /** Comma-separated source products — only returns reports with signals from these sources. */
   source_product?: string;
-  /** Comma-separated PostHog user UUIDs — only returns reports with these suggested reviewers. */
+  /** Comma-separated Flind user UUIDs — only returns reports with these suggested reviewers. */
   suggested_reviewers?: string;
   /** Comma-separated `P0`–`P4` priorities — only returns reports with one of these priorities. */
   priority?: string;

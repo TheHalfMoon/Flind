@@ -6,7 +6,7 @@ from posthog.models.utils import CreatedMetaFields, UpdatedMetaFields, UUIDModel
 
 
 class WarehouseMigration(TeamScopedRootMixin, CreatedMetaFields, UpdatedMetaFields, UUIDModel):
-    """One import of a team's Fivetran account setup into PostHog sources.
+    """One import of a team's Fivetran account setup into Flind sources.
 
     `credentials` holds the customer's read-only vendor API key, encrypted, and is never returned by the
     API. `snapshot` is what we read from the vendor, with every secret already removed.
@@ -39,7 +39,7 @@ class WarehouseMigration(TeamScopedRootMixin, CreatedMetaFields, UpdatedMetaFiel
 
 
 class WarehouseMigrationItem(TeamScopedRootMixin, CreatedMetaFields, UpdatedMetaFields, UUIDModel):
-    """One vendor connection inside a `WarehouseMigration`, with what PostHog plans to create for it."""
+    """One vendor connection inside a `WarehouseMigration`, with what Flind plans to create for it."""
 
     class Verdict(models.TextChoices):
         AS_IS = "as_is", "Moves as is"
@@ -64,7 +64,7 @@ class WarehouseMigrationItem(TeamScopedRootMixin, CreatedMetaFields, UpdatedMeta
     name = models.CharField(max_length=400)
     verdict = models.CharField(max_length=32, choices=Verdict.choices)
     caveats = models.JSONField(default=list)
-    # An `ItemProposal` as JSON. Null when the connection cannot move to PostHog.
+    # An `ItemProposal` as JSON. Null when the connection cannot move to Flind.
     proposal = models.JSONField(null=True, blank=True)
     status = models.CharField(max_length=32, choices=Status.choices, default=Status.PENDING)
     external_data_source_id = models.UUIDField(null=True, blank=True)

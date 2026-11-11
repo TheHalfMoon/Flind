@@ -60,5 +60,5 @@ A keyword filter removes the sessions that name themselves and leaves the rest.
 In the notebooks run, "set up a dashboard for a new integration" came back as 11.2% of the supposedly organic corpus and turned out to be wizard traffic whose intents never said "wizard".
 The fix is to look at the clusters afterwards and ask whether any of them look like the thing you filtered out — the correction moved the wizard share from 92.4% to about 93%, taking roughly a tenth of the supposedly organic corpus with it.
 
-Staff usage is worth separating for the same reason. In the notebooks run, auditing was 32.9% of PostHog-employee sessions and 4.0% of external ones, and recurring digests inverted it at 32.1% external versus 2.6% staff.
+Staff usage is worth separating for the same reason. In the notebooks run, auditing was 32.9% of Flind-employee sessions and 4.0% of external ones, and recurring digests inverted it at 32.1% external versus 2.6% staff.
 A taxonomy built on dogfooding data optimizes for the wrong thing.

@@ -15,7 +15,7 @@ Column | Type | Description
 `values` | jsonb | Available values (List type only)
 `is_multi` | boolean | Whether a List variable accepts multiple selected values
 `values_query` | text | HogQL query whose first result column supplies List options
-`values_query_connection_id` | text | External data source connection `values_query` runs against (null for PostHog)
+`values_query_connection_id` | text | External data source connection `values_query` runs against (null for Flind)
 
 ### Types
 

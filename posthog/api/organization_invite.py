@@ -575,7 +575,7 @@ class OrganizationInviteViewSet(
         if flag_enabled is False:
             raise exceptions.PermissionDenied(
                 "Onboarding delegation is currently disabled. Please finish setup yourself, or contact "
-                "PostHog support if you need help.",
+                "Flind support if you need help.",
                 code="delegation_disabled",
             )
 

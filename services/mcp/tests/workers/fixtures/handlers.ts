@@ -10,7 +10,7 @@ const FIXTURES_DIR = dirname(fileURLToPath(import.meta.url))
 const fixture = (name: string): JsonBodyType =>
     JSON.parse(readFileSync(resolve(FIXTURES_DIR, name), 'utf-8')) as JsonBodyType
 
-// Real PostHog API responses captured from a freshly-seeded local dev server
+// Real Flind API responses captured from a freshly-seeded local dev server
 // (`./bin/start`) and sanitized — emails, distinct ids, project tokens, and
 // org/team uuids replaced with stable test values.
 const usersMe = fixture('api_users__me.json')
@@ -50,12 +50,12 @@ const contextMillManifest = {
     resources: [
         {
             id: 'test-guide',
-            name: 'PostHog Getting Started',
+            name: 'Flind Getting Started',
             uri: 'posthog://guide/getting-started',
             resource: {
                 mimeType: 'text/plain',
-                description: 'A guide to getting started with PostHog',
-                text: 'Welcome to PostHog. This is a test resource.',
+                description: 'A guide to getting started with Flind',
+                text: 'Welcome to Flind. This is a test resource.',
             },
         },
     ],

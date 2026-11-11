@@ -159,7 +159,7 @@ def _wrap_unknown_type_error(err: UnknownTypeError) -> "CHQueryErrorUnknownType"
     unreadable_type = err.message.removeprefix("Unknown type ")
     advice = _unreadable_type_advice(unreadable_type)
     return CHQueryErrorUnknownType(
-        f"This query returns a column of type `{unreadable_type}`, which PostHog can't send back in results. {advice}",
+        f"This query returns a column of type `{unreadable_type}`, which Flind can't send back in results. {advice}",
         code=err.code,
         code_name="unknown_type",
     )
@@ -507,7 +507,7 @@ CLICKHOUSE_ERROR_CODE_LOOKUP: dict[int, ErrorCodeMeta] = {
     ),  # WHERE/HAVING column is not boolean-convertible
     60: ErrorCodeMeta("UNKNOWN_TABLE", user_safe=True),
     # Stays internal: HogQL validates syntax before ClickHouse, so a raw CH syntax error means
-    # PostHog generated invalid SQL — a bug we want in error tracking, not hidden as user-safe.
+    # Flind generated invalid SQL — a bug we want in error tracking, not hidden as user-safe.
     62: ErrorCodeMeta("SYNTAX_ERROR", category=QueryErrorCategory.USER_ERROR),
     63: ErrorCodeMeta("UNKNOWN_AGGREGATE_FUNCTION", user_safe=True),
     68: ErrorCodeMeta("CANNOT_GET_SIZE_OF_FIELD"),
@@ -910,7 +910,7 @@ CLICKHOUSE_ERROR_CODE_LOOKUP: dict[int, ErrorCodeMeta] = {
     491: ErrorCodeMeta(
         "UNACCEPTABLE_URL",
         user_safe=(
-            "PostHog can't read from this storage host. Check the files URL pattern on the table points at "
+            "Flind can't read from this storage host. Check the files URL pattern on the table points at "
             "S3, Google Cloud Storage, Cloudflare R2, or Azure Blob Storage."
         ),
     ),
@@ -1208,7 +1208,7 @@ INTERNAL_CH_ERROR_USER_MESSAGES: dict[str, str] = {
     "SOCKET_TIMEOUT": _TEMPORARY_FAILURE_MESSAGE,
     "ALL_CONNECTION_TRIES_FAILED": _TEMPORARY_FAILURE_MESSAGE,
     "S3_ERROR": (
-        "PostHog couldn't read from storage while running this query. "
+        "Flind couldn't read from storage while running this query. "
         "Wait a few minutes, then run the query again. If the problem continues, contact support."
     ),
     "UNKNOWN_IDENTIFIER": (

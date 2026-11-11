@@ -28,7 +28,7 @@ class TrackWorkflowEventInput:
 
 @activity.defn
 def track_workflow_event(input: TrackWorkflowEventInput) -> None:
-    """Track workflow-level events to PostHog."""
+    """Track workflow-level events to Flind."""
     try:
         if input.event_name == "task_run_failed":
             observe_task_run_failed(input.properties)

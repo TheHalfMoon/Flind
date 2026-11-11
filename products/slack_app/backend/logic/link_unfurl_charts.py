@@ -138,7 +138,7 @@ def post_unfurl_charts(post: SlackAppUnfurlChartsPostInput, *, image_urls_by_key
     if user is None:
         failure_reason = "user_missing"
     elif not team.organization.allow_publicly_shared_resources:
-        # The image url opens without a PostHog login.
+        # The image url opens without a Flind login.
         failure_reason = "public_sharing_disabled"
     elif not has_project_access(user, team):
         failure_reason = "no_project_access"

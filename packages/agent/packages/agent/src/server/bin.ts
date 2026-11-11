@@ -34,7 +34,7 @@ const envSchema = z.object({
   POSTHOG_PERSONAL_API_KEY: z
     .string({
       error:
-        "POSTHOG_PERSONAL_API_KEY is required for authenticating with PostHog services",
+        "POSTHOG_PERSONAL_API_KEY is required for authenticating with Flind services",
     })
     .min(1, "POSTHOG_PERSONAL_API_KEY cannot be empty"),
   POSTHOG_PROJECT_ID: z
@@ -80,7 +80,7 @@ const envSchema = z.object({
     .transform((value) => value === "true")
     .optional(),
   POSTHOG_PI_CONVERSATION_FORMAT: z.enum(["acp", "pi"]).optional(),
-  // OTLP pair for shipping run metadata to PostHog Logs; telemetry stays off
+  // OTLP pair for shipping run metadata to Flind Logs; telemetry stays off
   // unless both are set. The traces URL additionally enables APM spans.
   POSTHOG_AGENT_OTEL_LOGS_URL: z.url().optional(),
   POSTHOG_AGENT_OTEL_LOGS_TOKEN: z.string().min(1).optional(),
@@ -177,7 +177,7 @@ function parseStringOption(
 
 program
   .name("agent-server")
-  .description("PostHog cloud agent server - runs in sandbox environments")
+  .description("Flind cloud agent server - runs in sandbox environments")
   .option("--port <port>", "HTTP server port", "3001")
   .option(
     "--mode <mode>",
@@ -206,7 +206,7 @@ program
   )
   .option(
     "--posthogExecPermissionRegex <regex>",
-    "Case-insensitive regex for PostHog exec sub-tools that require client approval",
+    "Case-insensitive regex for Flind exec sub-tools that require client approval",
     DEFAULT_POSTHOG_EXEC_PERMISSION_REGEX_SOURCE,
   )
   .option("--createPr <boolean>", "Whether this run may publish changes")

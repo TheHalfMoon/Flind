@@ -213,7 +213,7 @@ class LogsAlertDestinationConfigSerializer(LogsAlertDestinationResponseSerialize
     enabled = serializers.BooleanField(
         help_text=(
             "Whether every HogFunction in the group is enabled, so the destination notifies for all "
-            "alert event kinds. This is the stored setting: a destination PostHog stopped delivering "
+            "alert event kinds. This is the stored setting: a destination Flind stopped delivering "
             "to after repeated failures still reads as true."
         )
     )

@@ -1,7 +1,7 @@
 # Fixing `event_dropped_by_transformation`
 
 A **transformation configured by the team** (Data pipelines → Transformations) processed the event and dropped it.
-Category `transformation`, severity `info`: PostHog did exactly what the team's own configuration asked — the question is whether that configuration matches intent.
+Category `transformation`, severity `info`: Flind did exactly what the team's own configuration asked — the question is whether that configuration matches intent.
 
 ## Working as intended, or an over-broad filter?
 

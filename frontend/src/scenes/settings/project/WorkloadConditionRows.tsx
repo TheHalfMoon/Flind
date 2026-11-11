@@ -83,7 +83,7 @@ export function WorkloadConditionRows(): JSX.Element {
                                 claim?.help_text ||
                                 (preset || claim
                                     ? ''
-                                    : "PostHog doesn't support this condition anymore. Remove it to save.")}
+                                    : "Flind doesn't support this condition anymore. Remove it to save.")}
                         </div>
                     </div>
                 )

@@ -1,7 +1,7 @@
 ---
 name: routing-outbound-api-calls
 description: >
-  Use before adding or changing Python code that calls a third-party HTTP API from PostHog (a vendor
+  Use before adding or changing Python code that calls a third-party HTTP API from Flind (a vendor
   REST call, a vendor SDK client, a scraping or enrichment service), and before adding or changing a
   domain under posthog/egress/: its budget, priority lanes, identity, metrics, or rate-limit headers.
   Routes the call to an existing egress domain, a new gated domain, a record-only domain, or no domain
@@ -21,20 +21,20 @@ This skill holds the procedure and the traps.
 | Situation                                                                                                    | Route                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
 | A domain for the API exists (`ls posthog/egress/*/README.md`)                                                | Call its `<domain>_request` helper or typed client. Read its README for identity and lanes. Never add a second client. |
-| New API, PostHog owns the credential, and the vendor publishes a request limit or bills per call             | New gated domain: `EgressClient`, or `AsyncEgressClient` for an aiohttp client                                         |
-| New API, PostHog owns the credential, and the vendor publishes no request limit that a rate budget can model | New record-only domain: `RecordedEgressClient`                                                                         |
-| The customer owns the credential on their own vendor account, and no PostHog process shares it               | No domain. Honor `429` and `Retry-After` at the caller. See "who owns the token" in `/implementing-warehouse-sources`. |
-| Throttling requests that reach PostHog's own API                                                             | `posthog/rate_limit.py`, not egress                                                                                    |
+| New API, Flind owns the credential, and the vendor publishes a request limit or bills per call             | New gated domain: `EgressClient`, or `AsyncEgressClient` for an aiohttp client                                         |
+| New API, Flind owns the credential, and the vendor publishes no request limit that a rate budget can model | New record-only domain: `RecordedEgressClient`                                                                         |
+| The customer owns the credential on their own vendor account, and no Flind process shares it               | No domain. Honor `429` and `Retry-After` at the caller. See "who owns the token" in `/implementing-warehouse-sources`. |
+| Throttling requests that reach Flind's own API                                                             | `posthog/rate_limit.py`, not egress                                                                                    |
 | A budget that needs burst capacity, refunds, or a real per-caller `Retry-After`                              | `/using-redis-token-buckets`                                                                                           |
 | A secret-URL webhook (a Slack incoming webhook, an interactivity `response_url`)                             | Out of scope. The URL is the credential, so it must never become a metric label.                                       |
-| A vendor calls PostHog (an inbound webhook)                                                                  | `/adding-inbound-webhooks`                                                                                             |
+| A vendor calls Flind (an inbound webhook)                                                                  | `/adding-inbound-webhooks`                                                                                             |
 
 ## Decide before you write code
 
 Write these four answers into the domain `README.md` first.
 Take each answer from the vendor's documentation or from production traffic, never from a sibling domain.
 
-1. **Identity.** The budget owner in the vendor's own id space: an installation, an account, a fleet. Never a PostHog row id. A secret identity goes through `scope_fingerprint` before it becomes a scope.
+1. **Identity.** The budget owner in the vendor's own id space: an installation, an account, a fleet. Never a Flind row id. A secret identity goes through `scope_fingerprint` before it becomes a scope.
 2. **Budget.** A documented vendor limit means the budget stays under it. No documented limit means an operator ceiling on spend, read from settings. When the API already has a caller, check its peak requests per scope per minute and per hour before you pick numbers.
 3. **Lanes.** Keep the default reserve: `BATCH` is denied at 70% of a window, `NORMAL` at 90%. Pass `reserve={}` only when every caller runs on one lane, say why in the limiter docstring, and add the domain to `_FLAT_DOMAINS` in `posthog/egress/test/test_domains.py`. Give every caller an explicit lane: a person waiting gets `NORMAL`, background work gets `BATCH`. A call built from user-controlled input never runs `CRITICAL`, because `CRITICAL` is never shed.
 4. **Headers.** Parse only the rate-limit headers the vendor documents, and declare a gauge only for those. A header with an undocumented encoding (epoch or seconds) gets no gauge.
@@ -47,7 +47,7 @@ Each one goes into the domain `README.md` with its evidence under `## Sources`. 
 - **Cite the vendor's own page.** A PR description, a sibling domain, a code comment, a blog post, or a search-result summary is not a source. Open the page it points at and cite that.
 - **Render docs that need JavaScript.** WebFetch returns an empty shell for a single-page docs site and can get a 429. Open the page in a headless browser (the Playwright MCP) or fetch the site's `llms-full.txt`. A docs site that renders nothing is not proof that the vendor documents nothing.
 - **Write "unverified" when no source loads.** Never turn an unchecked fact into a confident sentence.
-- **Check the gauges after the first deploy.** Query the domain's rate-limit gauges once the domain has traffic. An empty gauge means the headers do not reach PostHog, even when the docs say they do.
+- **Check the gauges after the first deploy.** Query the domain's rate-limit gauges once the domain has traffic. An empty gauge means the headers do not reach Flind, even when the docs say they do.
 - **Rule out your own code before you blame the vendor.** Before you write that a header does not arrive, confirm three things: the recorder passes a scope, the parser reads the documented name, and the process exports other gauges.
 
 ## Build a new domain

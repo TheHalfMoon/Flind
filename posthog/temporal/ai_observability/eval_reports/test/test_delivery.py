@@ -712,7 +712,7 @@ class TestDeliverSlackReport(SimpleTestCase):
 
     @parameterized.expand(
         [
-            ("bot_not_in_channel", True, "not_in_channel", False, "#evals: The PostHog app is not in this channel"),
+            ("bot_not_in_channel", True, "not_in_channel", False, "#evals: The Flind app is not in this channel"),
             ("revoked_token", True, "token_revoked", False, "Reconnect Slack"),
             ("rate_limited", True, "ratelimited", True, "ratelimited"),
             ("integration_deleted", False, None, False, "Reconnect Slack"),

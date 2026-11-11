@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -19,7 +19,7 @@ export const SlackAppWorkspaceSetupDefaultProjectCreateBody = /* @__PURE__ */ zo
 })
 
 /**
- * @summary Add PostHog to public channels of a Slack app install
+ * @summary Add Flind to public channels of a Slack app install
  */
 export const slackAppWorkspaceSetupJoinChannelsCreateBodyChannelIdsMax = 20
 
@@ -30,9 +30,9 @@ export const SlackAppWorkspaceSetupJoinChannelsCreateBody = /* @__PURE__ */ zod.
         .array(zod.string())
         .min(1)
         .max(slackAppWorkspaceSetupJoinChannelsCreateBodyChannelIdsMax)
-        .describe('IDs of the public channels that PostHog joins.'),
+        .describe('IDs of the public channels that Flind joins.'),
     post_welcome: zod
         .boolean()
         .default(slackAppWorkspaceSetupJoinChannelsCreateBodyPostWelcomeDefault)
-        .describe('Whether PostHog posts its welcome message in each channel it joins. When false, it joins quietly.'),
+        .describe('Whether Flind posts its welcome message in each channel it joins. When false, it joins quietly.'),
 })

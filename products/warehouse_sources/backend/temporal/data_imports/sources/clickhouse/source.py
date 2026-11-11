@@ -60,7 +60,7 @@ if TYPE_CHECKING:
 # "check your details".
 GENERIC_CONNECTION_ERROR = (
     "Could not connect to ClickHouse. Check that the host and port are correct, the HTTPS setting matches "
-    "your server, and that PostHog's IP addresses are allowed through any firewall."
+    "your server, and that Flind's IP addresses are allowed through any firewall."
 )
 
 # A pasted URL or connection string in the host field otherwise fails DNS resolution with a
@@ -96,14 +96,14 @@ _INVALID_CREDENTIALS = (
 _SSH_GATEWAY_SESSION_ERROR = "Could not establish session to SSH gateway"
 _SSH_GATEWAY_UNREACHABLE_ERROR = (
     "Could not connect to your SSH tunnel. Check that the SSH host, port, and credentials are correct, the bastion "
-    "host is running and reachable, and that PostHog's IP addresses are allowed through its firewall."
+    "host is running and reachable, and that Flind's IP addresses are allowed through its firewall."
 )
 _SSH_TUNNEL_GENERIC_ERROR = (
     "Could not connect to ClickHouse through your SSH tunnel. Check the SSH tunnel settings for this source, then "
     "try again."
 )
 
-_HOST_NOT_RESOLVED = "Host could not be resolved. Check the host is spelled correctly and reachable from PostHog."
+_HOST_NOT_RESOLVED = "Host could not be resolved. Check the host is spelled correctly and reachable from Flind."
 
 # Error message → user-friendly translation. Matched as a substring of the
 # exception string. Patterns are lowercase-matched.
@@ -118,7 +118,7 @@ ClickHouseErrors: dict[str, str] = {
     "nodename nor servname provided": _HOST_NOT_RESOLVED,
     "name or service not known": _HOST_NOT_RESOLVED,
     "connection refused": "Could not connect to the host on the port given. Check the host and port are correct and the ClickHouse server is accepting connections.",
-    "connection timed out": "Connection to ClickHouse timed out. Check that your database is reachable from the public internet and that PostHog's egress IP addresses are allowed through your firewall (see the docs). For a database that can't be exposed publicly, use the SSH tunnel option.",
+    "connection timed out": "Connection to ClickHouse timed out. Check that your database is reachable from the public internet and that Flind's egress IP addresses are allowed through your firewall (see the docs). For a database that can't be exposed publicly, use the SSH tunnel option.",
     # Must stay above the generic "ssl" entry, which would otherwise match first and send the
     # user to the wrong toggle. Verification runs against the configured ClickHouse host even
     # over an SSH tunnel (server_hostname), so a mismatch is real: the certificate doesn't
@@ -248,7 +248,7 @@ class ClickHouseSource(SimpleSource[ClickHouseSourceConfig], SSHTunnelMixin, Val
         """Why this connection may skip the egress proxy, or None to stay proxied.
 
         Two cases, both of which the proxy would refuse. Internal teams may point a source at a
-        PostHog-internal host. And a tunneled connection is made to the tunnel's own loopback
+        Flind-internal host. And a tunneled connection is made to the tunnel's own loopback
         bind address, which the proxy blocks by design — clickhouse-connect honours HTTP_PROXY
         for every host including loopback, so the request would never reach the forwarded port
         and the tunnel would open no channel to the customer's ClickHouse. The tunnel claim is
@@ -273,7 +273,7 @@ class ClickHouseSource(SimpleSource[ClickHouseSourceConfig], SSHTunnelMixin, Val
             # almost always wants to sync their service's tables, which is this source.
             keywords=["sql", "clickhouse cloud", "self-hosted"],
             releaseStatus=ReleaseStatus.GA,
-            caption="Enter your ClickHouse connection details to pull data into the PostHog Data warehouse. Works with ClickHouse Cloud and with self-hosted ClickHouse. ClickHouse databases can be very large — we stream the data in Arrow batches to keep memory bounded.",
+            caption="Enter your ClickHouse connection details to pull data into the Flind Data warehouse. Works with ClickHouse Cloud and with self-hosted ClickHouse. ClickHouse databases can be very large — we stream the data in Arrow batches to keep memory bounded.",
             iconPath="/static/services/clickhouse.png",
             docsUrl="https://posthog.com/docs/cdp/sources/clickhouse",
             fields=cast(
@@ -294,7 +294,7 @@ class ClickHouseSource(SimpleSource[ClickHouseSourceConfig], SSHTunnelMixin, Val
                         required=True,
                         placeholder="play.clickhouse.com",
                         caption=(
-                            "Must be reachable from the public internet. Add PostHog's egress IP addresses to your "
+                            "Must be reachable from the public internet. Add Flind's egress IP addresses to your "
                             "firewall allowlist (see the docs above) and use a public host. `localhost` and private "
                             "IPs (10.x, 172.16-31.x, 192.168.x) can't be reached. For a database that can't be "
                             "exposed publicly, enable the SSH tunnel below."
@@ -370,7 +370,7 @@ class ClickHouseSource(SimpleSource[ClickHouseSourceConfig], SSHTunnelMixin, Val
             "Authentication failed": None,
             # Raised by the `sshtunnel` library (via the shared `open_ssh_tunnel` helper) when the
             # SSH tunnel can't be brought up — the bastion host is unreachable, the host/port is
-            # wrong, the SSH key/credentials are rejected, or a firewall blocks PostHog's IPs. It's
+            # wrong, the SSH key/credentials are rejected, or a firewall blocks Flind's IPs. It's
             # in `Any_Source_Errors`, but the import activity's `_handle_import_error` only consults
             # this per-source dict, so without the entry a down tunnel retries to the maximum and
             # reports the customer's gateway misconfig as error-tracking noise. Postgres, MySQL, and
@@ -428,7 +428,7 @@ class ClickHouseSource(SimpleSource[ClickHouseSourceConfig], SSHTunnelMixin, Val
             # name rather than "Code: 396" because some ClickHouse-compatible endpoints
             # (e.g. Tinybird) wrap this error without the usual "Code: NNN. DB::Exception:"
             # native wording.
-            "TOO_MANY_ROWS_OR_BYTES": "Your ClickHouse server's result size limit was exceeded while reading this table. Raise the max_result_bytes/max_result_rows limit for the user PostHog connects with, sync fewer columns, or switch this table to an incremental sync so each run reads a smaller window, then resume.",
+            "TOO_MANY_ROWS_OR_BYTES": "Your ClickHouse server's result size limit was exceeded while reading this table. Raise the max_result_bytes/max_result_rows limit for the user Flind connects with, sync fewer columns, or switch this table to an incremental sync so each run reads a smaller window, then resume.",
             # Raised from the shared `evolve_pyarrow_schema` in `pipelines/core/arrow_utils.py`
             # when an integer column's source type was widened (e.g. `Int32` → `Int64`) after
             # the destination table was created with the narrower type. Delta Lake can't widen
@@ -662,7 +662,7 @@ class ClickHouseSource(SimpleSource[ClickHouseSourceConfig], SSHTunnelMixin, Val
             self.get_schemas(config, team_id, names=[schema_name] if schema_name else None, api_version=api_version)
         except (HostNotAllowedError, TemporaryHostResolutionError) as e:
             # The host policy refused the host, or its lookup never answered. Both carry their own
-            # user-facing wording and neither is a PostHog defect, so they are not captured.
+            # user-facing wording and neither is a Flind defect, so they are not captured.
             return False, str(e)
         except BaseSSHTunnelForwarderError as e:
             if _SSH_GATEWAY_SESSION_ERROR in (e.value or ""):

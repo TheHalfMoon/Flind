@@ -485,7 +485,7 @@ def _is_rtk_enabled(
 ) -> bool:
     """rtk compression is on by default. The kill-switch flag wins over everything —
     a fleet-wide disable must not be pinned back on by a per-run override — and
-    otherwise the per-run state override (the user's toggle in PostHog Desktop settings)
+    otherwise the per-run state override (the user's toggle in Flind Desktop settings)
     applies. Fails open (enabled, override honored) on flag-service errors so the
     default posture is preserved."""
     disabled = _flag_enabled(flags, RTK_DISABLED_FEATURE_FLAG)
@@ -544,7 +544,7 @@ def _ensure_subscription_allowed(
     if not own_subscription_cloud_enabled(adapter, distinct_id=distinct_id, organization_id=organization_id):
         raise ProcessTaskFatalError(
             f"Using your {plan_name} for cloud tasks is unavailable. Try again later, "
-            f'or open {spec.settings_name} and turn off "Cloud tasks" to use PostHog credits.',
+            f'or open {spec.settings_name} and turn off "Cloud tasks" to use Flind credits.',
             {"run_id": run_id},
             cause=ValueError(f"{plan_name} rollout unavailable"),
             capture=False,

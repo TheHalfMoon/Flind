@@ -659,7 +659,7 @@ class MCPServiceAccountServerSerializer(serializers.Serializer):
 
 
 class MCPServiceAccountSerializer(serializers.ModelSerializer):
-    agent_key = serializers.SerializerMethodField(help_text="Stable PostHog agent identifier.")
+    agent_key = serializers.SerializerMethodField(help_text="Stable Flind agent identifier.")
     server_ids = serializers.SerializerMethodField(help_text="Gateway servers configured for this agent.")
     servers = serializers.SerializerMethodField(
         help_text="Credential-safe summaries of the gateway servers configured for this agent."
@@ -692,7 +692,7 @@ class MCPServiceAccountSerializer(serializers.ModelSerializer):
             "updated_at",
         ]
         extra_kwargs = {
-            "handle": {"help_text": "Stable internal identity handle for this PostHog agent."},
+            "handle": {"help_text": "Stable internal identity handle for this Flind agent."},
             "status": {"help_text": "active, or paused (all MCP access off)."},
             "last_active_at": {"help_text": "When the agent last made a call through the gateway."},
         }
@@ -1308,7 +1308,7 @@ class MCPServiceAccountViewSet(
     mixins.UpdateModelMixin,
     viewsets.GenericViewSet,
 ):
-    """PostHog's built-in agents and their MCP access grants.
+    """Flind's built-in agents and their MCP access grants.
 
     The catalog is fixed. Projects can pause an agent's MCP access and grant or
     revoke servers, but cannot create, rename, rotate, or delete agents.

@@ -298,7 +298,7 @@ class ClickHouseAdapter:
         try:
             with request.timings.measure("clickhouse_execute"), observe_direct_query("clickhouse"):
                 # The SSH tunnel (if any) is opened for the life of the query; the native driver
-                # connects to the external ClickHouse directly, never through PostHog's cluster.
+                # connects to the external ClickHouse directly, never through Flind's cluster.
                 with clickhouse_source.direct_query_client(
                     config,
                     request.team.pk,

@@ -293,7 +293,7 @@ class TestRenderCommunitySkillFiles:
     def test_rejects_bad_slug(self) -> None:
         # "new" and the category-tab slugs are rejected by ingest, so publishing one merges a pull
         # request whose skill never appears in the catalog. A trailing newline needs `fullmatch`.
-        # A catalog entry installs under its slug, so a slug PostHog bundles is refused here too.
+        # A catalog entry installs under its slug, so a slug Flind bundles is refused here too.
         for bad in [
             "Make-PR",
             "make_pr",
@@ -464,7 +464,7 @@ PUBLISHER_SETTINGS = {
     "COMMUNITY_SKILLS_GITHUB_APP_CLIENT_ID": "Iv23licommunity",
     "COMMUNITY_SKILLS_GITHUB_APP_PRIVATE_KEY": PUBLISHER_PRIVATE_KEY,
     # A usable core App, which the publish path must never fall back to: that App is installed
-    # across the whole PostHog org, so a fallback hands publishing a credential for every
+    # across the whole Flind org, so a fallback hands publishing a credential for every
     # repository in it. Configured here so every case below holds publishing to its own App.
     "GITHUB_APP_CLIENT_ID": "core",
     "GITHUB_APP_PRIVATE_KEY": PUBLISHER_PRIVATE_KEY,
@@ -482,7 +482,7 @@ class TestCommunitySkillsPublisher:
     @patch("products.skills.backend.api.community_publish_services._publisher_app_request")
     def test_mints_a_token_scoped_to_the_publish_repository(self, mock_request: MagicMock) -> None:
         mock_request.side_effect = [
-            self._response(200, {"account": {"login": "PostHog", "type": "Organization"}}),
+            self._response(200, {"account": {"login": "Flind", "type": "Organization"}}),
             self._response(201, {"token": "ghs_x"}),
         ]
 
@@ -516,7 +516,7 @@ class TestCommunitySkillsPublisher:
             patch("products.skills.backend.api.community_publish_services._publisher_app_request") as mock_request,
         ):
             mock_request.side_effect = [
-                self._response(200, {"account": {"login": "PostHog", "type": "Organization"}}),
+                self._response(200, {"account": {"login": "Flind", "type": "Organization"}}),
                 self._response(token_status, {}),
             ]
 
@@ -640,7 +640,7 @@ class TestPublishSkillToCommunity:
         [
             ("transient github failure", "GitHub said no", True),
             # A branch that already heads a pull request belongs to that review, not to this call.
-            ("pull request already exists", "A pull request already exists for PostHog:community-skill/x.", False),
+            ("pull request already exists", "A pull request already exists for Flind:community-skill/x.", False),
         ]
     )
     def test_branch_cleanup_when_the_pull_request_fails(self, _label: str, error: str, deleted: bool) -> None:
@@ -710,7 +710,7 @@ class TestPublishSkillToCommunity:
         publisher.get_open_pull_request_for_head.side_effect = [None, winner]
         publisher.create_pull_request.return_value = {
             "success": False,
-            "error": "A pull request already exists for PostHog:community-skill/x.",
+            "error": "A pull request already exists for Flind:community-skill/x.",
         }
 
         result = self._publish(publisher)

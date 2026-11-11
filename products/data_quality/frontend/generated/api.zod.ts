@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -40,7 +40,7 @@ export const DataQualityChecksCreateBody = /* @__PURE__ */ zod
             .describe(
                 "Kind of object to check: 'table', 'view', 'metric', or 'posthog_table'.\n\n\* `table` - table\n\* `view` - view\n\* `metric` - metric\n\* `posthog_table` - posthog_table"
             ),
-        subject_uuid: zod.uuid().describe('Id of the table, view, metric, or PostHog table to check.'),
+        subject_uuid: zod.uuid().describe('Id of the table, view, metric, or Flind table to check.'),
         column_name: zod
             .string()
             .max(dataQualityChecksCreateBodyColumnNameMax)
@@ -255,7 +255,7 @@ export const DataQualityChecksSchedulePartialUpdateBody = /* @__PURE__ */ zod
             .describe(
                 "Kind of object: 'table', 'view', 'metric', or 'posthog_table'.\n\n\* `table` - table\n\* `view` - view\n\* `metric` - metric\n\* `posthog_table` - posthog_table"
             ),
-        subject_uuid: zod.uuid().optional().describe('Id of the table, view, metric, or PostHog table.'),
+        subject_uuid: zod.uuid().optional().describe('Id of the table, view, metric, or Flind table.'),
         interval: zod
             .enum(['1hour', '6hour', '12hour', '24hour', '7day'])
             .describe(

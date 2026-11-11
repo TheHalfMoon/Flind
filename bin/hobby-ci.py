@@ -196,7 +196,7 @@ runcmd:
             "cd hobby",
             'echo "$LOG_PREFIX Setting up needrestart config"',
             "sed -i \"s/#\\$nrconf{restart} = 'i';/\\$nrconf{restart} = 'a';/g\" /etc/needrestart/needrestart.conf",
-            'echo "$LOG_PREFIX Cloning PostHog repository (shallow)"',
+            'echo "$LOG_PREFIX Cloning Flind repository (shallow)"',
             "git init posthog",
             "cd posthog",
             "git remote add origin https://github.com/PostHog/posthog.git",
@@ -279,7 +279,7 @@ runcmd:
         if self.pr_number and self.pr_number != "unknown":
             tags.append(f"pr:{self.pr_number}")
 
-        # Fallback candidates: try larger sizes first (PostHog needs ≥16 GB RAM),
+        # Fallback candidates: try larger sizes first (Flind needs ≥16 GB RAM),
         # then fall back across regions. sfo3 has had capacity issues since ~Mar 17 2026.
         fallback_candidates = list(
             dict.fromkeys(
@@ -1153,7 +1153,7 @@ runcmd:
                 logs = self.fetch_cloud_init_logs()
                 # FRAGILE: these strings come from bin/hobby-installer/core/install.go
                 # (~line 192 step name, ~line 198 detail). Changing them there breaks this.
-                if logs and "Start PostHog stack" in logs and "started" in logs:
+                if logs and "Start Flind stack" in logs and "started" in logs:
                     finished_at = datetime.datetime.now()
                     print(
                         f"\n📋 Stack started, skipping cloud-init health wait ({int(elapsed)}s elapsed)",
@@ -1179,7 +1179,7 @@ runcmd:
         stability_period: int = 300,
         startup_grace_seconds: int = 300,
     ) -> tuple[bool, dict]:
-        """Poll /_health until PostHog is stable.
+        """Poll /_health until Flind is stable.
 
         Returns (success, failure_details).
         """
@@ -1811,7 +1811,7 @@ def main():
                 )
                 ht.ensure_droplet(ssh_enabled=True)
                 print(
-                    "Preview instance has started. You will be able to access it here after PostHog boots (~15 minutes):",
+                    "Preview instance has started. You will be able to access it here after Flind boots (~15 minutes):",
                     flush=True,
                 )
                 print(f"🌐 URL: https://{ht.hostname}", flush=True)
@@ -1845,7 +1845,7 @@ def main():
             )
             ht.ensure_droplet(ssh_enabled=True)
             print(
-                "Instance has started. You will be able to access it here after PostHog boots (~15 minutes):",
+                "Instance has started. You will be able to access it here after Flind boots (~15 minutes):",
                 flush=True,
             )
             print(f"https://{ht.hostname}", flush=True)

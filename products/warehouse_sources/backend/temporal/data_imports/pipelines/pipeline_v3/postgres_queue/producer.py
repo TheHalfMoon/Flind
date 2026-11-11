@@ -56,14 +56,14 @@ def _connect_with_retry(database_url: str) -> psycopg.Connection:
 
 @contextmanager
 def _queue_db_errors() -> Iterator[None]:
-    # The queue lives in PostHog's own database, but a raw psycopg error from it reads exactly like
+    # The queue lives in Flind's own database, but a raw psycopg error from it reads exactly like
     # one from a customer's Postgres source. The source's non-retryable errors would then match it
     # and disable a healthy schema, telling the customer to fix a database that is working.
     try:
         yield
     except psycopg.Error as e:
         if is_transient_internal_db_error(e):
-            raise PostHogInternalDatabaseError("Failed to reach PostHog's sync queue database") from e
+            raise PostHogInternalDatabaseError("Failed to reach Flind's sync queue database") from e
         raise
 
 

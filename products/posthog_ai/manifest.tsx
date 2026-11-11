@@ -6,7 +6,7 @@ import { ProductItemCategory, ProductKey } from '~/queries/schema/schema-general
 import { ProductManifest } from '../../frontend/src/types'
 
 export const manifest: ProductManifest = {
-    name: 'PostHog AI',
+    name: 'Flind AI',
     scenes: {
         TaskTracker: {
             name: 'Tasks',

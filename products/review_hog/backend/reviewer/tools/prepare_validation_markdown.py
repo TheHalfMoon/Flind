@@ -95,7 +95,7 @@ def _render_review_body(
 ) -> str:
     """Render the review body: the severity tally plus any off-diff findings section."""
     lines = [
-        "# PostHog Review",
+        "# Flind Review",
         "",
     ]
 

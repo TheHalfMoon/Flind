@@ -383,7 +383,7 @@ NO_SYNC_FREQUENCY_ERROR = (
 # The stored source settings cannot be read, for example after the instance encryption keys change.
 # Only new settings from the user can fix this, so it is not a bug to report.
 UNREADABLE_SOURCE_CONFIG_ERROR = (
-    "PostHog could not read the saved settings for this source. Reconnect the source, then try again."
+    "Flind could not read the saved settings for this source. Reconnect the source, then try again."
 )
 
 # A CDC table's own schedule loads its captured changes, and the change buffer expires them after 14
@@ -593,7 +593,7 @@ SENSITIVITY_SCHEMA = {
 
 
 MASKING_KEY_UNAVAILABLE_ERROR = (
-    "Column masking isn't set up on this PostHog instance. "
+    "Column masking isn't set up on this Flind instance. "
     "Set WAREHOUSE_COLUMN_MASKING_KEY to a secret of at least 32 characters, then try again."
 )
 
@@ -811,7 +811,7 @@ def _refuse_reserved_columns(
     if taken:
         raise ValidationError(
             f"Change data capture can't sync the column {' or '.join(taken)}, because it loads under a name "
-            "PostHog writes. Rename the column on your database, leave it out of the synced columns, or change "
+            "Flind writes. Rename the column on your database, leave it out of the synced columns, or change "
             "this table's sync method or output tables."
         )
     if resolved is not None and is_history_table_mode(new_mode) and pinned_history_naming(instance) is None:
@@ -2580,7 +2580,7 @@ class ExternalDataSchemaListSerializer(serializers.ModelSerializer):
     the sync toggle, sync type, last sync, the latest error, and the synced table's name and row count.
     It skips column metadata, the rest of the sync configuration, and the per-schema SourceRegistry/HogQL
     work that the full `ExternalDataSchemaSerializer` computes, which otherwise dominates the request.
-    `sync_type` is kept as a plain stored field (no per-row recompute) because the PostHog Desktop app
+    `sync_type` is kept as a plain stored field (no per-row recompute) because the Flind Desktop app
     reads it from this list to decide whether a schema needs an update.
     """
 
@@ -2736,7 +2736,7 @@ class ExternalDataSchemaViewset(TeamAndOrgViewSetMixin, viewsets.ModelViewSet):
         super().check_object_permissions(request, obj)
         if request.method not in ("GET", "HEAD", "OPTIONS") and isinstance(obj, ExternalDataSchema):
             if obj.source.is_system_managed:
-                raise PermissionDenied("This schema is managed by PostHog and cannot be changed through this API.")
+                raise PermissionDenied("This schema is managed by Flind and cannot be changed through this API.")
 
     def _assert_can_resume_destinations(self, schemas: Iterable[ExternalDataSchema]) -> None:
         if is_service_auth(self.request):
@@ -3163,7 +3163,7 @@ class ExternalDataSchemaViewset(TeamAndOrgViewSetMixin, viewsets.ModelViewSet):
             return Response(
                 status=status.HTTP_503_SERVICE_UNAVAILABLE,
                 data={
-                    "detail": "PostHog couldn't delete all of the history table's files. Try again in a few minutes."
+                    "detail": "Flind couldn't delete all of the history table's files. Try again in a few minutes."
                 },
             )
         report_history_table_deleted(request.user, instance, trigger="delete_action", request=request)

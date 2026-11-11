@@ -18,7 +18,7 @@ const ENTITLEMENTS_PATH = '/api/user/toolbar_entitlements'
 // Matches the toolbar's other blocking check, the uiHost reachability HEAD request.
 const ENTITLEMENTS_TIMEOUT_MS = 5000
 
-/** Sends the PostHog session cookie. The extension panel makes the same request to check toolbar access. */
+/** Sends the Flind session cookie. The extension panel makes the same request to check toolbar access. */
 export function fetchToolbarEntitlements(uiHost: string): Promise<Response> {
     return safeFetch(`${uiHost}${ENTITLEMENTS_PATH}`, {
         credentials: 'include',

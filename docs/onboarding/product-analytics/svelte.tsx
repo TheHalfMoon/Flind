@@ -12,7 +12,7 @@ export const getSvelteClientSteps = (ctx: OnboardingComponentsContext): StepDefi
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Install the PostHog JavaScript library using your package manager:</Markdown>
+                    <Markdown>Install the Flind JavaScript library using your package manager:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -49,13 +49,13 @@ export const getSvelteClientSteps = (ctx: OnboardingComponentsContext): StepDefi
             ),
         },
         {
-            title: 'Initialize PostHog',
+            title: 'Initialize Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         If you haven't created a root layout already, create a new file called `+layout.js` in your
-                        `src/routes` folder. Check the environment is the browser, and initialize PostHog if so:
+                        `src/routes` folder. Check the environment is the browser, and initialize Flind if so:
                     </Markdown>
                     <CodeBlock
                         blocks={[
@@ -139,7 +139,7 @@ export const getSvelteServerSteps = (ctx: OnboardingComponentsContext): StepDefi
                         ]}
                     />
                     <Markdown>
-                        Then, initialize the PostHog Node client where you'd like to use it on the server side. For
+                        Then, initialize the Flind Node client where you'd like to use it on the server side. For
                         example, in a load function:
                     </Markdown>
                     <CodeBlock
@@ -148,10 +148,10 @@ export const getSvelteServerSteps = (ctx: OnboardingComponentsContext): StepDefi
                                 language: 'javascript',
                                 file: 'routes/+page.server.js',
                                 code: dedent`
-                                    import { PostHog } from 'posthog-node';
+                                    import { Flind } from 'posthog-node';
 
                                     export async function load() {
-                                      const posthog = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' });
+                                      const posthog = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' });
 
                                       posthog.capture({
                                         distinctId: 'distinct_id_of_the_user',
@@ -167,7 +167,7 @@ export const getSvelteServerSteps = (ctx: OnboardingComponentsContext): StepDefi
                     <CalloutBox type="fyi" title="Note">
                         <Markdown>
                             Make sure to always call `posthog.shutdown()` after capturing events from the server-side.
-                            PostHog queues events into larger batches, and this call forces all batched events to be
+                            Flind queues events into larger batches, and this call forces all batched events to be
                             flushed immediately.
                         </Markdown>
                     </CalloutBox>

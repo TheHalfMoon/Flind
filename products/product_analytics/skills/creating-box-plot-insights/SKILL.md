@@ -1,7 +1,7 @@
 ---
 name: creating-box-plot-insights
 description: >-
-  Creates product analytics or SQL-backed box plot insights in PostHog. Use when a user asks to create, build, or save a box plot, visualize a numeric distribution, compare quartiles or medians across dates or groups, or turn SQL results into a box plot. Chooses between a standard Trends box plot and a SQL insight, validates the distribution data, saves the insight, and verifies it.
+  Creates product analytics or SQL-backed box plot insights in Flind. Use when a user asks to create, build, or save a box plot, visualize a numeric distribution, compare quartiles or medians across dates or groups, or turn SQL results into a box plot. Chooses between a standard Trends box plot and a SQL insight, validates the distribution data, saves the insight, and verifies it.
 ---
 
 # Creating box plot insights
@@ -103,7 +103,7 @@ Use the actual aliases when the query uses different names. Do not map the six s
 3. Confirm the result still has the expected columns and one row per box.
 4. Report the insight link, the numeric value being distributed, and the grouping choices.
 
-If an individual row has a missing or invalid summary, PostHog omits that box while keeping valid boxes visible. Fix the SQL when omitted boxes are not expected.
+If an individual row has a missing or invalid summary, Flind omits that box while keeping valid boxes visible. Fix the SQL when omitted boxes are not expected.
 
 ## Related skills
 

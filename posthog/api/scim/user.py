@@ -37,7 +37,7 @@ def _validate_email_domain_is_verified(email: str, organization: Organization) -
 
 class PostHogSCIMUser(SCIMUser):
     """
-    Adapter to map SCIM User schema to PostHog User model.
+    Adapter to map SCIM User schema to Flind User model.
     Handles user provisioning scoped to a specific IdentityProviderConfig.
     """
 

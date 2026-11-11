@@ -139,7 +139,7 @@ def search_github_file(
     status code so callers can feed the public-token circuit breaker.
 
     ``installation_id`` is set on the integration-token path (private repos) so the installation's
-    rate-limit gauges are recorded; the public PostHog-token path leaves it None (no installation).
+    rate-limit gauges are recorded; the public Flind-token path leaves it None (no installation).
     ``priority`` lets the integration path yield to our egress limiter (NORMAL) instead of forcing
     the call through (CRITICAL) — a shed search degrades to not-found, which the endpoint tolerates."""
     code_query = prepare_github_search_query(code_sample)
@@ -283,7 +283,7 @@ class GitProviderFileLinksViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
 
         circuit = PublicGitHubTokenCircuit()
 
-        # Try with PostHog's token first (public repos). Skip while the circuit is open — a dead PAT
+        # Try with Flind's token first (public repos). Skip while the circuit is open — a dead PAT
         # would otherwise keep spamming 401s. Skipping is identical to GITHUB_TOKEN being unset.
         if settings.GITHUB_TOKEN and not circuit.is_open():
             outcome = search_github_file(
@@ -343,7 +343,7 @@ class GitProviderFileLinksViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
         code_sample = serializer.validated_data["code_sample"]
         file_name = serializer.validated_data["file_name"]
 
-        # Try with PostHog's token first (public repos on gitlab.com).
+        # Try with Flind's token first (public repos on gitlab.com).
         if settings.GITLAB_TOKEN:
             url = get_gitlab_file_url(
                 code_sample=code_sample,

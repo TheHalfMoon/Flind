@@ -51,7 +51,7 @@ class TestEnforcePostHogCodeBillingQuotaActivity(TestCase):
             ("confirmed_reply", True, True, False, False, True),
             ("mention", False, False, False, False, True),
             # A channel question nobody tagged us in is the same: a denial under it would
-            # announce in public that PostHog read a message nobody sent it.
+            # announce in public that Flind read a message nobody sent it.
             ("unconfirmed_untagged_question", False, False, True, False, False),
             ("confirmed_untagged_question", False, False, True, True, True),
         ]

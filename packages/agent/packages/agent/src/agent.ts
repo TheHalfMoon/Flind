@@ -40,7 +40,7 @@ export class Agent {
   constructor(config: AgentConfig) {
     this.logger = new Logger({
       debug: config.debug || false,
-      prefix: "[PostHog Agent]",
+      prefix: "[Flind Agent]",
       onLog: config.onLog,
     });
 
@@ -144,7 +144,7 @@ export class Agent {
 
     if (options.adapter === "codex" && !codexSubscription && !gatewayConfig) {
       throw new Error(
-        "Codex authentication is not ready. In Settings, select PostHog credits or connect your ChatGPT subscription, then try again.",
+        "Codex authentication is not ready. In Settings, select Flind credits or connect your ChatGPT subscription, then try again.",
       );
     }
 
@@ -286,9 +286,9 @@ export class Agent {
 
     if (!this.posthogAPI || !this.taskRunId) {
       const error = new Error(
-        "PostHog API not configured or no active run. Cannot attach PR to task.",
+        "Flind API not configured or no active run. Cannot attach PR to task.",
       );
-      this.logger.error("PostHog API not configured", error);
+      this.logger.error("Flind API not configured", error);
       throw error;
     }
 

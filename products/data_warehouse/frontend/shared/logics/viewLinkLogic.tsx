@@ -52,7 +52,7 @@ export interface TableOptionGroup {
 }
 
 const TABLE_GROUPS: { label: string; types: DatabaseSchemaTable['type'][] }[] = [
-    { label: 'PostHog tables', types: ['posthog', 'system'] },
+    { label: 'Flind tables', types: ['posthog', 'system'] },
     { label: 'Data warehouse', types: ['data_warehouse', 'batch_export'] },
     { label: 'Views', types: ['view', 'materialized_view', 'managed_view', 'endpoint'] },
 ]

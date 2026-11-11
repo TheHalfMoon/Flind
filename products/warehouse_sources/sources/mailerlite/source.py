@@ -98,7 +98,7 @@ class MailerLiteSource(
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="MailerLite",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your MailerLite API key to pull your MailerLite data into the PostHog Data warehouse.
+            caption="""Enter your MailerLite API key to pull your MailerLite data into the Flind Data warehouse.
 
 You can create an API key in your [MailerLite integrations settings](https://dashboard.mailerlite.com/integrations/api).""",
             iconPath="/static/services/mailerlite.png",
@@ -116,7 +116,7 @@ You can create an API key in your [MailerLite integrations settings](https://das
                     ),
                 ],
             ),
-            webhookSetupCaption="""PostHog registers a MailerLite webhook for your subscriber events using your API key. MailerLite generates the signing secret and returns it once, at creation, so PostHog stores it then and uses it to verify every delivery.
+            webhookSetupCaption="""Flind registers a MailerLite webhook for your subscriber events using your API key. MailerLite generates the signing secret and returns it once, at creation, so Flind stores it then and uses it to verify every delivery.
 
 **Manual setup** (only needed if automatic registration failed):
 
@@ -126,7 +126,7 @@ MailerLite only manages webhooks through its API, so create one with a request l
 curl -X POST https://connect.mailerlite.com/api/webhooks \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
-  -d '{"name": "PostHog Data warehouse", "url": "YOUR_WEBHOOK_URL", "events": ["subscriber.created", "subscriber.updated", "subscriber.unsubscribed", "subscriber.bounced", "subscriber.spam_reported", "subscriber.active", "subscriber.added_to_group", "subscriber.removed_from_group"]}'
+  -d '{"name": "Flind Data warehouse", "url": "YOUR_WEBHOOK_URL", "events": ["subscriber.created", "subscriber.updated", "subscriber.unsubscribed", "subscriber.bounced", "subscriber.spam_reported", "subscriber.active", "subscriber.added_to_group", "subscriber.removed_from_group"]}'
 ```
 
 Copy the `secret` from the response into the field below. MailerLite never returns it again, so if you lose it, delete the webhook and create a new one.""",
@@ -140,7 +140,7 @@ Copy the `secret` from the response into the field below. MailerLite never retur
                         required=True,
                         placeholder="",
                         caption=(
-                            "The secret MailerLite returned when the webhook was created. PostHog "
+                            "The secret MailerLite returned when the webhook was created. Flind "
                             "uses it to verify the Signature header on every delivery."
                         ),
                         secret=True,

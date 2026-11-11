@@ -34,7 +34,7 @@ export type RequestProperties = {
     mcpConversationId?: string | undefined
     viaSseRedirect?: boolean | undefined
     requestStartTime?: number | undefined
-    // Sandbox-provisioned task id: forwarded to the PostHog API as `X-PostHog-Task-Id` on every
+    // Sandbox-provisioned task id: forwarded to the Flind API as `X-PostHog-Task-Id` on every
     // call so writes can be attributed to the agent's task (validated server-side per team).
     taskId?: string | undefined
     // Origin product of the sandboxed task (`X-PostHog-Task-Origin`, e.g. `signals_scout`).

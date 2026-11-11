@@ -54,7 +54,7 @@ export interface IntegrationDefinition {
     banner?: string
     /** One-line subtitle shown under the title. */
     subtitle: string
-    /** Longer explanation of what PostHog does with this integration. */
+    /** Longer explanation of what Flind does with this integration. */
     description: string | JSX.Element
     /** Bullets shown on the success screen — what the user can do once connected. */
     capabilities: string[]

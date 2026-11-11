@@ -1,6 +1,6 @@
 """Agent tools for the anomaly investigation workflow.
 
-Each tool is a narrow, read-only wrapper around existing PostHog query machinery.
+Each tool is a narrow, read-only wrapper around existing Flind query machinery.
 All tools are bound to a team and enforce team isolation via the Team instance
 they hold — they do NOT accept arbitrary team IDs from the LLM.
 
@@ -29,7 +29,7 @@ MAX_HOGQL_ROWS = 50
 MAX_SERIES_POINTS = 120
 
 _DATE_HELP = (
-    "Accepts PostHog relative shorthands ('-7d', '-24h', 'now') — resolved to an "
+    "Accepts Flind relative shorthands ('-7d', '-24h', 'now') — resolved to an "
     "absolute ISO timestamp server-side before the query runs. Absolute dates "
     "('2024-04-01', '2024-04-01 12:00:00') also work."
 )
@@ -68,7 +68,7 @@ class FetchMetricSeriesArgs(BaseModel):
     date_from: str | None = Field(
         default=None,
         description=(
-            "Optional override for the series start. Accepts PostHog relative shorthands "
+            "Optional override for the series start. Accepts Flind relative shorthands "
             "('-30d', '-14d') or an ISO date. If omitted, uses the insight's configured range."
         ),
     )
@@ -262,7 +262,7 @@ def _escape_literal(value: str) -> str:
 
 
 def _resolve_date(value: str) -> str:
-    """Turn PostHog-style relative shorthands ('-7d', 'now') into ISO datetimes.
+    """Turn Flind-style relative shorthands ('-7d', 'now') into ISO datetimes.
 
     ClickHouse/HogQL can't implicit-cast '-7d' to a DateTime, so the agent's
     preferred date syntax has to be resolved in Python before being embedded as

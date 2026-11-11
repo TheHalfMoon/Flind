@@ -21,7 +21,7 @@ one is checking state and the other is changing it. That call is yours.
     python audit_intentions.py facets.jsonl --threshold 0.80
 
 Note the model name differs from the backend's `text-embedding-3-small-1536`.
-That is a PostHog gateway alias carrying a dimension count; calling OpenAI
+That is a Flind gateway alias carrying a dimension count; calling OpenAI
 directly needs the plain model id.
 """
 

@@ -255,7 +255,7 @@ def node_run_request_for(notebook_run: NotebookRun, index: int) -> NodeRunReques
         if earlier["cell_type"] == "python" and earlier["dataframe_name"]:
             refs.setdefault(earlier["dataframe_name"], RefSpec(node_id=earlier["node_id"], kind="local"))
 
-    # Only a SQL cell carries a connection; python always runs in the kernel against PostHog,
+    # Only a SQL cell carries a connection; python always runs in the kernel against Flind,
     # which is the same rule the single-cell endpoint applies.
     is_python = cell["cell_type"] == "python"
     connection_id = cell.get("connection_id") if not is_python else None

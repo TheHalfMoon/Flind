@@ -1,7 +1,7 @@
 ---
 name: debugging-mcp-analytics
 description: >
-  Debug, support, and build PostHog MCP Analytics — product analytics for MCP
+  Debug, support, and build Flind MCP Analytics — product analytics for MCP
   servers (the `@posthog/mcp` and `posthog.mcp` SDKs plus the mcp_analytics
   product). Use when MCP analytics data looks wrong or missing ("events aren't
   showing", "intent clusters are empty", "sessions are missing", "per-tool
@@ -18,7 +18,7 @@ description: >
 # Debugging MCP analytics
 
 **Product analytics for MCP servers.** A team ships an MCP server; the `@posthog/mcp` SDK
-wraps it in one line; every tool call, agent **intent**, and failure lands in PostHog as a
+wraps it in one line; every tool call, agent **intent**, and failure lands in Flind as a
 `$mcp_*` event you can query, chart, alert on, and cluster — plus a dedicated dashboard. The
 MCP-layer sibling of `@posthog/ai`.
 
@@ -27,7 +27,7 @@ churn cohort". Explicit non-goal: this does **not** replace LLM analytics / AI o
 — generation traces, prompt/response, and token cost belong there.
 
 Status: **beta**, TypeScript and Python SDKs shipped, available to every project.
-PostHog dogfoods it — its own MCP server instruments itself, and that data drives the
+Flind dogfoods it — its own MCP server instruments itself, and that data drives the
 dashboard. Public tracking: mega-issue **PostHog/posthog#64016**, which is the live source
 for roadmap and customer wishlist.
 
@@ -40,7 +40,7 @@ repos outside this monorepo, resolve a local checkout via
 | Concern                           | Repo                          | Where to look                                                                                                                                                                                                                                                                                 |
 | --------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Product / dashboard**           | `PostHog/posthog` (this repo) | `products/mcp_analytics/` — Django/DRF + HogQL query runners + Temporal, Kea frontend, the `query-mcp-*` tool registry, and the analysis skills                                                                                                                                               |
-| **Self-instrumented server**      | `PostHog/posthog` (this repo) | `services/mcp/` — PostHog's own MCP server (Hono); the dogfood event producer. Also hosts the _generated_ `query-mcp-*` handlers                                                                                                                                                              |
+| **Self-instrumented server**      | `PostHog/posthog` (this repo) | `services/mcp/` — Flind's own MCP server (Hono); the dogfood event producer. Also hosts the _generated_ `query-mcp-*` handlers                                                                                                                                                              |
 | **Shared query reference**        | `PostHog/posthog` (this repo) | [`models-mcp.md`](../../../products/posthog_ai/skills/querying-posthog-data/references/models-mcp.md) — `products/posthog_ai/skills/querying-posthog-data/references/`                                                                                                                        |
 | **TypeScript SDK** `@posthog/mcp` | `PostHog/posthog-js`          | `packages/mcp/` — the library customers install. Vocabulary source of truth: `src/extensions/constants.ts`. `docs/ARCHITECTURE.md` now covers conversation anchoring (ADR-0004) but trails the newest era handling — where it and `CHANGELOG.md` disagree, trust the changelog and the source |
 | **Python SDK** `posthog.mcp`      | `PostHog/posthog-python`      | `posthog/mcp/` — mirrors `posthog.ai`. Ships inside `posthog` (`pip install posthog`); `mcp`/`fastmcp` are lazily-imported peer deps, **no `[mcp]` extra**. At TS parity since 7.40.0-7.42.1 — MCP Python SDK v2, conversation anchoring, typed errors, client UA/vendor                      |
@@ -57,7 +57,7 @@ repos outside this monorepo, resolve a local checkout via
 - `products/mcp_store/` is the MCP server marketplace / team gateway, not this product. (Older
   notes also mention a `products/mcp/` build-tooling directory; it no longer exists — the server
   and its generation tooling live in `services/mcp/`.)
-- `wizard mcp add` installs the PostHog **MCP server** into a coding agent. That is NOT
+- `wizard mcp add` installs the Flind **MCP server** into a coding agent. That is NOT
   `wizard mcp-analytics`, which instruments the user's _own_ server.
 
 > Line numbers drift and this area moves fast — **grep for the symbol**, never trust a
@@ -97,7 +97,7 @@ These are the failure modes that produce a plausible-looking answer rather than 
    `services/mcp` consumes the SDK through the `@posthog/mcp-analytics` alias in its
    `package.json` (`npm:@posthog/mcp@0.25.0` at the last check) and the pin moves independently
    of the published version, so version-dependent properties (typed error types, `$lib`
-   identity, payload redaction) can be absent from PostHog's own data when it lags. A query
+   identity, payload redaction) can be absent from Flind's own data when it lags. A query
    filtering on `$lib = 'posthog-node-mcp'` silently excludes all dogfood traffic if that pin
    predates SDK 0.7.0. Note too that `services/mcp` uses the **custom-dispatcher**
    (`PostHogMCP`) path rather than `instrument()`, so behaviour living only in the
@@ -125,7 +125,7 @@ Every metric is an aggregation over `$mcp_tool_call`, usually grouped by `$sessi
 
 Source of truth for the SDK-emitted names is `packages/mcp/src/extensions/constants.ts` in
 `PostHog/posthog-js`, exported as `PostHogMCPAnalyticsEvent` / `PostHogMCPAnalyticsProperty`
-(import them for typesafe queries). PostHog-side descriptions — including the server-stamped
+(import them for typesafe queries). Flind-side descriptions — including the server-stamped
 and exec-mode properties the SDK does not define — live in `posthog/taxonomy/taxonomy.py`.
 
 **Events** (all `$`-prefixed; non-`$` names would be treated as customer events):
@@ -135,7 +135,7 @@ and exec-mode properties the SDK does not define — live in `posthog/taxonomy/t
 
 > **`$mcp_initialize` is not a reliable session anchor — but check whose server you're looking
 > at.** The 2026-07-28 revision removes the `initialize` handshake, so a customer server on the
-> SDK's `instrument()` path emits nothing for a stateless client. **PostHog's own server is the
+> SDK's `instrument()` path emits nothing for a stateless client. **Flind's own server is the
 > exception**: `services/mcp` fires the same `$mcp_initialize` event from `server/discover` as
 > from `initialize` (`dispatcher.ts::recordDiscoveryRequest` covers both entry points), so the
 > event is present in dogfood data either way. Treat its absence as meaningful only for
@@ -148,7 +148,7 @@ and exec-mode properties the SDK does not define — live in `posthog/taxonomy/t
 > `statusFromProbeDefinitions`. Projects on `services/mcp` are unaffected, since it emits the
 > event from `server/discover`.
 
-Full property tables — split by provenance (SDK-emitted vs stamped by PostHog's own server vs
+Full property tables — split by provenance (SDK-emitted vs stamped by Flind's own server vs
 exec-mode only), the identifier distinctions, per-version SDK behaviour, and TypeScript/Python
 parity — are in [references/event-vocabulary.md](references/event-vocabulary.md). Read that
 before writing queries or changing what gets captured.
@@ -249,7 +249,7 @@ carries the property reference and worked query examples.
    _Breaks:_ empty clusters almost always mean no `$mcp_intent` values in the lookback window
    (check the corpus before chasing summary generation); schedule flag off; stale embeddings.
    Also check the allowlist — `intent_clustering/team_discovery.py` currently returns a
-   hard-coded `GUARANTEED_TEAM_IDS = [2]`, so the daily schedule covers only PostHog's own
+   hard-coded `GUARANTEED_TEAM_IDS = [2]`, so the daily schedule covers only Flind's own
    project and enabling the flag elsewhere still produces nothing until that changes.
 7. **Serve** -> DRF viewsets at
    `/api/projects/{id}/mcp_analytics/{sessions,intent_clusters,feedback,missing_capabilities}`
@@ -297,7 +297,7 @@ Dashboard queries are cached, so a card loaded before seeding can stay empty: pi
 | SDK behaviour, events, options, instrumentation | `PostHog/posthog-js`                     | Work in `packages/mcp`. Run its unit tests, build, and lint. **Add a changeset.** Ships to npm; then bump the alias in `services/mcp/package.json` to pick it up.                                                                                                                                                                                                                        |
 | Dashboard, queries, clustering, API             | this repo                                | A new chart means a query runner in `backend/hogql_queries/` behind `validate_mcp_analytics_access` — never a SQL template. Obey Hard rules 1-3.                                                                                                                                                                                                                                         |
 | A new `query-mcp-*` agent tool                  | this repo (two places)                   | 1) an entry in `products/mcp_analytics/mcp/tools.yaml` with `schema_ref`, `scopes`, `description`, `feature_flag`; 2) the matching `<Name>Query` schema and `<Name>QueryRunner` in `backend/hogql_queries/`; 3) regenerate the tool handlers from `services/mcp` (see its `package.json` scripts). The generic `createQueryWrapper` handles the tool shape — no hand-written TypeScript. |
-| PostHog's own dogfood events                    | this repo                                | `services/mcp/src/hono/analytics.ts` + `tool-executor.ts`; client in `src/lib/posthog/client.ts`.                                                                                                                                                                                                                                                                                        |
+| Flind's own dogfood events                    | this repo                                | `services/mcp/src/hono/analytics.ts` + `tool-executor.ts`; client in `src/lib/posthog/client.ts`.                                                                                                                                                                                                                                                                                        |
 | Docs                                            | `PostHog/posthog.com`                    | Keep the event and property tables in `contents/docs/mcp-analytics/events.mdx` synced with **both** the TypeScript `constants.ts` and the Python `posthog/mcp/constants.py`.                                                                                                                                                                                                             |
 | The install codemod or the wizard command       | `PostHog/context-mill`, `PostHog/wizard` | See [references/wizard-and-onboarding.md](references/wizard-and-onboarding.md) — in particular the rule about which changes need a wizard release and which do not.                                                                                                                                                                                                                      |
 

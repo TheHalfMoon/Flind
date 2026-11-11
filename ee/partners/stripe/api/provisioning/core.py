@@ -55,10 +55,10 @@ logger = structlog.get_logger(__name__)
 PARTNER_LABEL = "Stripe"
 
 EMAIL_NOT_VERIFIED_MESSAGE = (
-    "Stripe hasn't verified this email address. Verify it with Stripe to link an existing PostHog account."
+    "Stripe hasn't verified this email address. Verify it with Stripe to link an existing Flind account."
 )
 ACCOUNT_NOT_LINKABLE_MESSAGE = (
-    "PostHog can't link this account. If you think this is a mistake, contact PostHog support."
+    "Flind can't link this account. If you think this is a mistake, contact Flind support."
 )
 
 

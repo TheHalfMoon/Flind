@@ -1,11 +1,11 @@
-# Contributing to PostHog MCP Server
+# Contributing to Flind MCP Server
 
-This guide covers local development setup for the PostHog MCP server, including the ext-apps UI integration.
+This guide covers local development setup for the Flind MCP server, including the ext-apps UI integration.
 
 ## Prerequisites
 
 - Flox environment (see repo root for setup)
-- A PostHog account with a personal API key
+- A Flind account with a personal API key
 
 ## Project Structure
 
@@ -119,7 +119,7 @@ Ask Claude to run a query:
 - "Show me the signup funnel"
 - "Query the events table"
 
-The UI should render inline showing charts or tables with a "View in PostHog" link.
+The UI should render inline showing charts or tables with a "View in Flind" link.
 
 ## Development Workflow
 
@@ -206,7 +206,7 @@ The visualization system is designed to be extractable to a standalone `@posthog
 
 **Other**:
 
-- **PostHogLink** - "View in PostHog" button
+- **PostHogLink** - "View in Flind" button
 - **PostHogLogo** - Logo mark shared by the app resolution states
 - **AppErrorState** / **AppLoadingState** - The states an app shows before, or instead of, content
 
@@ -230,7 +230,7 @@ Components use CSS variables from the ext-apps SDK that the host provides:
 - `--font-sans`, `--font-mono`
 - `--border-radius-sm`, `--border-radius-md`, `--border-radius-lg`
 
-Chart colors are PostHog-specific (`--posthog-chart-1` through `--posthog-chart-5`) since the ext-apps SDK doesn't provide chart colors.
+Chart colors are Flind-specific (`--posthog-chart-1` through `--posthog-chart-5`) since the ext-apps SDK doesn't provide chart colors.
 
 Default values are provided for light/dark mode via `prefers-color-scheme`.
 
@@ -364,7 +364,7 @@ For apps that need fully custom logic (like `debug.tsx` or `query-results.tsx`):
 
 ## Deployment
 
-The MCP server ships as the `posthog-mcp` Docker image to PostHog's US and EU Kubernetes clusters:
+The MCP server ships as the `posthog-mcp` Docker image to Flind's US and EU Kubernetes clusters:
 
 - **CI** (`.github/workflows/ci-mcp.yml`): Runs tests on PRs and master
 - **CD** (`.github/workflows/cd-mcp-image.yml`): Builds and pushes the image on master, then dispatches a deploy to the charts repo

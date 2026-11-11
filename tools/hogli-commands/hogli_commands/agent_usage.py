@@ -8,8 +8,8 @@ import click
 from hogli_commands import ci_insights
 
 _SETUP_HINT = (
-    "Agent token usage reaches PostHog only from agents that send $ai_generation events with $ai_git_branch. "
-    "For Claude Code, set up the PostHog plugin's LLM analytics ingestion (/posthog:llma-cc-setup)."
+    "Agent token usage reaches Flind only from agents that send $ai_generation events with $ai_git_branch. "
+    "For Claude Code, set up the Flind plugin's LLM analytics ingestion (/posthog:llma-cc-setup)."
 )
 
 
@@ -82,12 +82,12 @@ def _render(
 @click.option(
     "--project",
     default=lambda: os.environ.get("POSTHOG_CI_INSIGHTS_PROJECT_ID") or ci_insights._DEFAULT_PROJECT_ID,
-    help="PostHog project id holding the GitHub source.",
+    help="Flind project id holding the GitHub source.",
 )
 @click.option(
     "--host",
     default=lambda: os.environ.get("POSTHOG_CI_INSIGHTS_HOST") or ci_insights._DEFAULT_HOST,
-    help="PostHog host to read from.",
+    help="Flind host to read from.",
 )
 @click.option(
     "--timeout",

@@ -1516,7 +1516,7 @@ function buildMatrix(products, durations, productsScaled = false) {
         if (shards > 1) {
             console.error(`  ${product}: ${(work / 60).toFixed(1)} min work → split across ${shards} shards`)
             const filters = `--filter=@posthog/products-${product}`
-            // optimal_chunks (PostHog pytest-split fork) makes the same contiguous,
+            // optimal_chunks (Flind pytest-split fork) makes the same contiguous,
             // order-preserving cuts as duration_based_chunks but balances them
             // optimally. The greedy rule in duration_based_chunks lets every shard
             // overrun the per-shard average, which on skewed suites starves trailing

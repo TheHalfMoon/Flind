@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import { z as zod } from 'zod'
@@ -526,7 +526,7 @@ export const SdkReleaseAssessmentApi = zod.object({
     activity_page_url: zod
         .string()
         .describe(
-            "Relative URL path (starting with \/project\/{id}\/) for the Activity > Explore page pre-filtered to events captured with this lib and lib_version over the last 7 days. Combine with the user's PostHog host (e.g. us.posthog.com) for a clickable link."
+            "Relative URL path (starting with \/project\/{id}\/) for the Activity > Explore page pre-filtered to events captured with this lib and lib_version over the last 7 days. Combine with the user's Flind host (e.g. us.posthog.com) for a clickable link."
         ),
 })
 
@@ -639,7 +639,7 @@ export const SdkAssessmentApi = zod.object({
                 activity_page_url: zod
                     .string()
                     .describe(
-                        "Relative URL path (starting with \/project\/{id}\/) for the Activity > Explore page pre-filtered to events captured with this lib and lib_version over the last 7 days. Combine with the user's PostHog host (e.g. us.posthog.com) for a clickable link."
+                        "Relative URL path (starting with \/project\/{id}\/) for the Activity > Explore page pre-filtered to events captured with this lib and lib_version over the last 7 days. Combine with the user's Flind host (e.g. us.posthog.com) for a clickable link."
                     ),
             })
         )
@@ -677,7 +677,7 @@ export const SdkHealthReportApi = zod.object({
             "UI-level status — 'success' when healthy, 'warning' when some SDKs are outdated, 'danger' when the majority are outdated.\n\n\* `success` - success\n\* `warning` - warning\n\* `danger` - danger"
         ),
     needs_updating_count: zod.number().describe('Number of SDKs that need updating.'),
-    team_sdk_count: zod.number().describe('Number of distinct PostHog SDKs the project is actively using.'),
+    team_sdk_count: zod.number().describe('Number of distinct Flind SDKs the project is actively using.'),
     sdks: zod
         .array(
             zod.object({
@@ -786,7 +786,7 @@ export const SdkHealthReportApi = zod.object({
                             activity_page_url: zod
                                 .string()
                                 .describe(
-                                    "Relative URL path (starting with \/project\/{id}\/) for the Activity > Explore page pre-filtered to events captured with this lib and lib_version over the last 7 days. Combine with the user's PostHog host (e.g. us.posthog.com) for a clickable link."
+                                    "Relative URL path (starting with \/project\/{id}\/) for the Activity > Explore page pre-filtered to events captured with this lib and lib_version over the last 7 days. Combine with the user's Flind host (e.g. us.posthog.com) for a clickable link."
                                 ),
                         })
                     )

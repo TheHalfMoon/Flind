@@ -35,10 +35,10 @@ unit started:
 | **Dormant**      | Not active this interval, but active the previous interval (plotted negative). |
 
 - **When a unit started depends on the platform.**
-  - PostHog (`query-lifecycle` and the HogQL recipe): the person profile `created_at`.
+  - Flind (`query-lifecycle` and the HogQL recipe): the person profile `created_at`.
   - dbt or another warehouse: the first-ever chosen event over the full event history, or `created_at` from a
     users table if you have one.
-- On PostHog, a person created in an earlier interval than their first chosen event counts as resurrecting in
+- On Flind, a person created in an earlier interval than their first chosen event counts as resurrecting in
   that interval, not new.
 - Do not use "first event inside the analysis window" as new. It labels every existing user who is active at
   the window's start as new. Use the full history or a profile creation date.

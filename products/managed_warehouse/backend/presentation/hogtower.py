@@ -1,7 +1,7 @@
 """Hogtower adapter for the managed-warehouse control plane.
 
 Hogtower is the management plane that replaces duckgres' control plane. When
-``HOGTOWER_API_URL`` is set, every control-plane call PostHog makes goes to hogtower's
+``HOGTOWER_API_URL`` is set, every control-plane call Flind makes goes to hogtower's
 canonical ``/api/v2`` routes instead of duckgres' ``/api/v1`` routes; when it is unset
 nothing here runs and the duckgres client is unchanged. Flipping the env var is the
 switch.
@@ -284,7 +284,7 @@ def _upsert_team(call: _Call) -> TranslatedResponse:
     body = call.json_body or {}
     team_id = body.get("team_id")
     if not team_id:
-        return _bad_request("team_id is required (a positive PostHog team id)")
+        return _bad_request("team_id is required (a positive Flind team id)")
     return _unwrap_team(call.send("PUT", f"{call.warehouse}/teams/{quote(str(team_id), safe='')}", json_body=body))
 
 

@@ -9,13 +9,13 @@ export const getCrewAISteps = (ctx: OnboardingComponentsContext): StepDefinition
 
     return [
         {
-            title: 'Install the PostHog SDK',
+            title: 'Install the Flind SDK',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Setting up analytics starts with installing the PostHog SDK. CrewAI uses LiteLLM under the hood,
-                        and PostHog integrates with LiteLLM's callback system.
+                        Setting up analytics starts with installing the Flind SDK. CrewAI uses LiteLLM under the hood,
+                        and Flind integrates with LiteLLM's callback system.
                     </Markdown>
 
                     <CodeBlock
@@ -33,7 +33,7 @@ export const getCrewAISteps = (ctx: OnboardingComponentsContext): StepDefinition
             content: (
                 <>
                     <Markdown>
-                        Install CrewAI. PostHog instruments your LLM calls through LiteLLM's callback system that CrewAI
+                        Install CrewAI. Flind instruments your LLM calls through LiteLLM's callback system that CrewAI
                         uses natively.
                     </Markdown>
 
@@ -47,13 +47,13 @@ export const getCrewAISteps = (ctx: OnboardingComponentsContext): StepDefinition
             ),
         },
         {
-            title: 'Configure PostHog with LiteLLM',
+            title: 'Configure Flind with LiteLLM',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Set your PostHog project token and host as environment variables, then configure LiteLLM to use
-                        PostHog as a callback handler. You can find your project token in [your project
+                        Set your Flind project token and host as environment variables, then configure LiteLLM to use
+                        Flind as a callback handler. You can find your project token in [your project
                         settings](https://app.posthog.com/settings/project).
                     </Markdown>
 
@@ -64,11 +64,11 @@ export const getCrewAISteps = (ctx: OnboardingComponentsContext): StepDefinition
                             import litellm
                             from crewai import Agent, Task, Crew, LLM
 
-                            # Set PostHog environment variables
+                            # Set Flind environment variables
                             os.environ["POSTHOG_API_KEY"] = "<ph_project_token>"
                             os.environ["POSTHOG_API_URL"] = "<ph_client_api_host>"
 
-                            # Enable PostHog callbacks in LiteLLM
+                            # Enable Flind callbacks in LiteLLM
                             litellm.success_callback = ["posthog"]
                             litellm.failure_callback = ["posthog"]
                         `}
@@ -77,8 +77,8 @@ export const getCrewAISteps = (ctx: OnboardingComponentsContext): StepDefinition
                     <CalloutBox type="fyi" icon="IconInfo" title="How this works">
                         <Markdown>
                             CrewAI can route LLM calls either through its own provider clients or through LiteLLM.
-                            PostHog hooks into LiteLLM's callback system, so you need `is_litellm=True` on the `LLM` you
-                            pass to your agents. With it, PostHog captures every call as an `$ai_generation` event,
+                            Flind hooks into LiteLLM's callback system, so you need `is_litellm=True` on the `LLM` you
+                            pass to your agents. With it, Flind captures every call as an `$ai_generation` event,
                             without proxying your calls.
                         </Markdown>
                     </CalloutBox>
@@ -92,7 +92,7 @@ export const getCrewAISteps = (ctx: OnboardingComponentsContext): StepDefinition
                 <>
                     <Markdown>
                         {dedent`
-                            Run your CrewAI agents as normal. PostHog automatically captures an \`$ai_generation\`
+                            Run your CrewAI agents as normal. Flind automatically captures an \`$ai_generation\`
                             event for each LLM call. LiteLLM's callback does not see the tools your agents call.
                             Capture a tool's own execution as a span from inside the tool itself instead, as
                             \`my_tool\` does below.
@@ -131,7 +131,7 @@ export const getCrewAISteps = (ctx: OnboardingComponentsContext): StepDefinition
                                 )
                                 return result
 
-                            # is_litellm=True routes calls through LiteLLM so the PostHog
+                            # is_litellm=True routes calls through LiteLLM so the Flind
                             # callback fires. Without it, CrewAI uses its own provider client
                             # and no events are captured.
                             llm = LLM(

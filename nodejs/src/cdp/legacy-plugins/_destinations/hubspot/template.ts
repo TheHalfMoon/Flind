@@ -31,7 +31,7 @@ export const hubspotPlugin: LegacyDestinationPlugin = {
                 templating: false,
                 key: 'triggeringEvents',
                 description:
-                    'A comma-separated list of PostHog events you want to trigger Contact creation in HubSpot. By default, we recommend using the $identify event.',
+                    'A comma-separated list of Flind events you want to trigger Contact creation in HubSpot. By default, we recommend using the $identify event.',
                 label: 'Triggering events',
                 type: 'string',
                 default: '$identify',
@@ -41,8 +41,8 @@ export const hubspotPlugin: LegacyDestinationPlugin = {
                 templating: false,
                 key: 'additionalPropertyMappings',
                 description:
-                    'A mapping of additional PostHog event or person properties to map to newly created Hubspot Contacts. Provide a comma-separated mapping of: personPropertylabel:hubSpotPropertyName',
-                label: 'Additional PostHog to HubSpot property mappings',
+                    'A mapping of additional Flind event or person properties to map to newly created Hubspot Contacts. Provide a comma-separated mapping of: personPropertylabel:hubSpotPropertyName',
+                label: 'Additional Flind to HubSpot property mappings',
                 type: 'string',
                 default: '',
                 required: false,

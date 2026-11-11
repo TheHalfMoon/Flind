@@ -96,7 +96,7 @@ class WebflowSource(
             # slug renamed in Webflow, so at sync time the slug no longer resolves to a collection.
             # That's a deterministic upstream state change retrying can't fix. Match the stable
             # prefix, not the schema name and site id that follow it.
-            "Webflow collection for schema": "A Webflow CMS collection PostHog was syncing no longer exists on your site. It was deleted or renamed in Webflow. Refresh this source's schemas to pick up your current collections, then remove the table for the collection that's gone.",
+            "Webflow collection for schema": "A Webflow CMS collection Flind was syncing no longer exists on your site. It was deleted or renamed in Webflow. Refresh this source's schemas to pick up your current collections, then remove the table for the collection that's gone.",
         }
 
     def get_schemas(
@@ -204,7 +204,7 @@ class WebflowSource(
         complete = inputs.get("signing_secrets_complete", {}).get("value")
         if complete:
             return []
-        # Registered before PostHog recorded completeness. Keep the earlier reading, so a webhook
+        # Registered before Flind recorded completeness. Keep the earlier reading, so a webhook
         # the provider fully provisioned is not now reported as needing setup.
         if complete is None and inputs.get("signing_secrets", {}).get("secret"):
             return []
@@ -242,7 +242,7 @@ class WebflowSource(
             name=ExternalDataSourceType.WEBFLOW,
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="Webflow",
-            caption="""Enter your Webflow v2 API token and Site ID to pull your Webflow site data into the PostHog Data warehouse.
+            caption="""Enter your Webflow v2 API token and Site ID to pull your Webflow site data into the Flind Data warehouse.
 
 Create a **Site API token** in Webflow under **Site settings → Apps & integrations → API access**, and copy the **Site ID** from the same page (or from your site's URL in the Designer).
 
@@ -279,17 +279,17 @@ Grant the read scopes for the resources you want to sync:
                 ],
             ),
             webhookSetupCaption=(
-                "PostHog registers a Webflow webhook for each order event using your API token, "
+                "Flind registers a Webflow webhook for each order event using your API token, "
                 "which needs the `sites:write` scope. Webflow returns a secret key for each "
-                "registration, and PostHog uses those to verify deliveries.\n\n"
+                "registration, and Flind uses those to verify deliveries.\n\n"
                 "**Manual setup** (only needed if automatic registration failed):\n\n"
                 "1. Send a POST request to Webflow's [Create Webhook]"
                 "(https://developers.webflow.com/data/reference/webhooks/create) endpoint for "
                 'your site, once with `"triggerType": "ecomm_new_order"` and once with '
                 '`"triggerType": "ecomm_order_changed"`, using the webhook URL shown below\n'
                 "2. Copy the `secretKey` from a response and paste it into the field below so "
-                "PostHog can verify deliveries\n\n"
-                "Webhooks created from Webflow's site settings are not signed, so PostHog cannot "
+                "Flind can verify deliveries\n\n"
+                "Webhooks created from Webflow's site settings are not signed, so Flind cannot "
                 "accept them. Create them through the API."
             ),
             webhookFields=cast(
@@ -302,7 +302,7 @@ Grant the read scopes for the resources you want to sync:
                         required=True,
                         placeholder="",
                         caption=(
-                            "The `secretKey` Webflow returned when the webhook was created. PostHog "
+                            "The `secretKey` Webflow returned when the webhook was created. Flind "
                             "uses it to verify the x-webflow-signature header on every delivery."
                         ),
                         secret=True,

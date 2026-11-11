@@ -14,15 +14,15 @@ const SupportTab = ({ client, projectId }: Props): JSX.Element => {
     return (
         <Box css={{ width: 'fill', padding: 'large' }}>
             <PromoBanner hero>
-                <PromoBannerTitle>Support is coming to PostHog</PromoBannerTitle>
+                <PromoBannerTitle>Support is coming to Flind</PromoBannerTitle>
                 <PromoBannerText>
-                    Soon you'll be able to correlate your PostHog users with Stripe customers and respond to support
-                    tickets directly from PostHog — with full context from session replays, feature flags, and product
+                    Soon you'll be able to correlate your Flind users with Stripe customers and respond to support
+                    tickets directly from Flind — with full context from session replays, feature flags, and product
                     analytics already attached.
                 </PromoBannerText>
                 {posthogBase && (
                     <PromoBannerPrimaryLink href={`${posthogBase}/support`}>
-                        Learn more about PostHog Support
+                        Learn more about Flind Support
                     </PromoBannerPrimaryLink>
                 )}
             </PromoBanner>

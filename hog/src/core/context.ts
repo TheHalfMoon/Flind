@@ -41,7 +41,7 @@ export class Context {
         return person && this.runtime.stdinIsTTY && this.runtime.stdoutIsTTY ? this.runtime.prompts : undefined
     }
 
-    // The PostHog API client. Credentials resolve on first use, so commands that never call
+    // The Flind API client. Credentials resolve on first use, so commands that never call
     // the API work without them.
     async posthog(): Promise<PostHogApi> {
         this.api ??= new PostHogApi(await this.session(), this.runtime.fetch, (scopes) => this.stepUp(scopes))

@@ -10,7 +10,7 @@ export function LegalGroup({ accountHost }: { accountHost: string | null }): Rea
     return (
         <SettingsGroup
             title="Legal and support"
-            footer={accountHost ? 'Delete account opens your PostHog account settings in the browser.' : undefined}
+            footer={accountHost ? 'Delete account opens your Flind account settings in the browser.' : undefined}
             testID="settings-legal"
         >
             <SettingsLinkRow

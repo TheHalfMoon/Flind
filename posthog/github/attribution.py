@@ -58,7 +58,7 @@ def _resolve_github_login_distinct_id(login: str | None, team_id: int) -> str | 
 
 
 def _merged_by_attribution(payload: dict, team_id: int) -> tuple[dict, str | None]:
-    """Identity of the GitHub user who merged the PR, resolved to a PostHog user when possible.
+    """Identity of the GitHub user who merged the PR, resolved to a Flind user when possible.
 
     Merging is the one unambiguous personal act in the loop, so when the merger's GitHub
     login maps to an org member the pr_merged event attributes to them. Without a match the

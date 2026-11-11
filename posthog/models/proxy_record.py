@@ -13,7 +13,7 @@ MAX_PROXY_DOMAIN_LABEL_LENGTH = 63
 _LABEL = r"[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?"
 _PROXY_DOMAIN_RE = re.compile(rf"{_LABEL}(?:\.{_LABEL})*")
 
-# Every apex domain PostHog itself registers or serves production traffic on: the
+# Every apex domain Flind itself registers or serves production traffic on: the
 # Route53 zones in posthog-cloud-infra's terraform/environments/aws-accnt-root/route53-zones.tf,
 # plus postwh.com, posthogusercontent.com, and the literal CLOUDFLARE_PROXY_BASE_CNAME /
 # PROXY_BASE_CNAME targets from charts' shared/posthog-django/common.<env>.yaml (europehog.com,
@@ -82,23 +82,23 @@ def is_valid_proxy_domain(domain: str) -> bool:
 
 
 def is_reserved_proxy_domain(domain: str) -> bool:
-    """Whether `domain` is, or is a subdomain of, a domain PostHog itself owns.
+    """Whether `domain` is, or is a subdomain of, a domain Flind itself owns.
 
-    A registered `domain` is the Host this system will route through PostHog's shared
+    A registered `domain` is the Host this system will route through Flind's shared
     reverse-proxy ingress (Cloudflare custom hostnames, or the legacy Caddy CNAME target)
-    once the CNAME is verified. Letting an org claim one of PostHog's own domains would
+    once the CNAME is verified. Letting an org claim one of Flind's own domains would
     hand them routing, SNI matching, or certificate issuance for a hostname other
-    tenants', or PostHog's own, traffic depends on. See `RESERVED_PROXY_DOMAINS` for the
+    tenants', or Flind's own, traffic depends on. See `RESERVED_PROXY_DOMAINS` for the
     source of the list.
     """
     domain = domain.lower()
     return any(domain == reserved or domain.endswith(f".{reserved}") for reserved in RESERVED_PROXY_DOMAINS)
 
 
-# The only reserved apex an allowlisted org may still register under: PostHog's own
+# The only reserved apex an allowlisted org may still register under: Flind's own
 # customer-facing domain, for internal proxies such as internal-*.posthog.com. Every other
 # reserved entry (the shared Cloudflare/legacy CNAME targets other tenants already point at,
-# and PostHog's other apexes) stays unclaimable by everyone, so an allowlisted org cannot grab
+# and Flind's other apexes) stays unclaimable by everyone, so an allowlisted org cannot grab
 # a shared proxy hostname.
 RESERVED_PROXY_DOMAIN_EXCEPTION_APEXES = frozenset({"posthog.com"})
 
@@ -106,8 +106,8 @@ RESERVED_PROXY_DOMAIN_EXCEPTION_APEXES = frozenset({"posthog.com"})
 def org_may_register_reserved_domain(organization_id: str | UUID, domain: str) -> bool:
     """Whether `organization_id` may register the reserved `domain`.
 
-    `is_reserved_proxy_domain` keeps every org from claiming a PostHog-owned hostname. This is
-    its only exception: an org listed in `POSTHOG_INTERNAL_ORG_IDS` (PostHog's
+    `is_reserved_proxy_domain` keeps every org from claiming a Flind-owned hostname. This is
+    its only exception: an org listed in `POSTHOG_INTERNAL_ORG_IDS` (Flind's
     own org, set per environment) may register a domain under
     `RESERVED_PROXY_DOMAIN_EXCEPTION_APEXES` — i.e. a posthog.com subdomain, for internal
     proxies. A domain under any other reserved apex, and every non-allowlisted org, is still

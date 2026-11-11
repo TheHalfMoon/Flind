@@ -62,7 +62,7 @@ class PandaDocSource(ResumableSource[PandaDocSourceConfig, PandaDocResumeConfig]
             name=ExternalDataSourceType.PANDADOC,
             category=DataWarehouseSourceCategory.SALES,
             label="PandaDoc",
-            caption="""Enter your PandaDoc API key to pull your PandaDoc data into the PostHog Data warehouse.
+            caption="""Enter your PandaDoc API key to pull your PandaDoc data into the Flind Data warehouse.
 
 You can find your API key in the [PandaDoc developer dashboard](https://app.pandadoc.com/a/#/settings/api-dashboard/configuration). Use a production key — sandbox keys are heavily rate limited.""",
             iconPath="/static/services/pandadoc.png",

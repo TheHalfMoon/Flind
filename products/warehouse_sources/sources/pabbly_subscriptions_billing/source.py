@@ -46,7 +46,7 @@ class PabblySubscriptionsBillingSource(ResumableSource[PabblySubscriptionsBillin
             label="Pabbly Subscription Billing",
             keywords=["pabbly subscriptions"],
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Pabbly Subscription Billing API key and secret key to pull your billing data into the PostHog Data warehouse.
+            caption="""Enter your Pabbly Subscription Billing API key and secret key to pull your billing data into the Flind Data warehouse.
 
 You can generate both keys under **Settings → API Settings** in [Pabbly Subscription Billing](https://payments.pabbly.com). The keys grant read access to your customers, subscriptions, products, invoices, transactions, and related billing objects.
 """,

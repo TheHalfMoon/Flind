@@ -2,14 +2,14 @@
 name: signals-scout-tasks
 scout-display-name: Tasks
 description: >
-  Signals scout for PostHog Tasks. Watches delivery health — failing runs clustered by
+  Signals scout for Flind Tasks. Watches delivery health — failing runs clustered by
   repository and error class, retry storms — and, on a slower rotation, recurring demand across
   human-authored tasks. Skips the scout fleet's own runs.
 allowed_tools:
   - emit_report
   - edit_report
 compatibility: >
-  Designed for the PostHog Signals agent in a Claude sandbox with PostHog MCP scopes: read-only project
+  Designed for the Flind Signals agent in a Claude sandbox with Flind MCP scopes: read-only project
   reads (`task:read` covers both the tasks system tables and the `tasks-*` tools) plus
   signal_scout_internal:write (scratchpad) and signal_scout_report:write (report channel).
   Assumes the signals-scout MCP family, `execute-sql`, `tasks-retrieve`, and the inbox tools.

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 
 
 class WorkflowIdea(TeamScopedRootMixin, UUIDModel):
-    """A whole workflow PostHog suggests to a project, ready to become a draft.
+    """A whole workflow Flind suggests to a project, ready to become a draft.
 
     Accepting one creates a draft workflow from `definition`, so nothing reaches anyone until a person
     reviews the draft, picks a sender and enables it.

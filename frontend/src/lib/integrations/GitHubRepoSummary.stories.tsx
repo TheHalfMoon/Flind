@@ -8,7 +8,7 @@ const meta: Meta<typeof GitHubRepoSummary> = {
     args: {
         installationId: '12345',
         accountType: 'Organization',
-        accountName: 'PostHog',
+        accountName: 'Flind',
         loading: false,
         repoNames: [],
     },

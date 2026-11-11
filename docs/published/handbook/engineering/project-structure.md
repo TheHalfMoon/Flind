@@ -40,12 +40,12 @@ showTitle: true
 
 ### `frontend`
 
-The PostHog web application, built with React and TypeScript. Uses [Kea](https://github.com/keajs/kea) for state management.
+The Flind web application, built with React and TypeScript. Uses [Kea](https://github.com/keajs/kea) for state management.
 
 - `src/lib` – Reusable components and utilities
 - `src/scenes` – Page-specific components organized by feature
 - `src/queries` – Query builder and data visualization components
-- `src/toolbar` – Code for the [PostHog Toolbar](https://posthog.com/docs/user-guides/toolbar)
+- `src/toolbar` – Code for the [Flind Toolbar](https://posthog.com/docs/user-guides/toolbar)
 
 ### `posthog`
 
@@ -53,7 +53,7 @@ The Django backend application. Key subdirectories:
 
 - `api` – REST API endpoints and serializers
 - `clickhouse` – ClickHouse schema definitions and migrations
-- `hogql` – PostHog SQL query language compiler and executor
+- `hogql` – Flind SQL query language compiler and executor
 - `models` – Django ORM models (PostgreSQL)
 - `tasks` – Celery background tasks
 
@@ -84,7 +84,7 @@ High-performance Rust services including:
 
 Shared code used across the codebase:
 
-- `hogql_parser` – PostHog SQL parser (C++)
+- `hogql_parser` – Flind SQL parser (C++)
 - `hogvm` – Hog virtual machine
 - `tailwind` – Shared Tailwind configuration
 
@@ -93,7 +93,7 @@ Shared code used across the codebase:
 Developer and CI tooling, not imported by runtime code:
 
 - `hogli` – Developer CLI framework (PyPI-publishable)
-- `hogli-commands` – PostHog-specific hogli commands
+- `hogli-commands` – Flind-specific hogli commands
 - `openapi-codegen` – OpenAPI client/spec generation
 - (and others — see `tools/`)
 

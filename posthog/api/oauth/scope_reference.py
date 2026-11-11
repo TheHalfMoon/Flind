@@ -23,7 +23,7 @@ class ScopeActionSerializer(serializers.Serializer):
     action = serializers.CharField(help_text="The access level: `read` or `write`.")
     scope = serializers.CharField(help_text="The scope string a token carries, such as `feature_flag:read`.")
     oauth = serializers.BooleanField(
-        help_text="Whether OAuth apps can request it on their own. Privileged scopes are granted only by PostHog."
+        help_text="Whether OAuth apps can request it on their own. Privileged scopes are granted only by Flind."
     )
     warning = serializers.CharField(
         allow_null=True, help_text="What makes this scope risky to grant, when it is. Null otherwise."

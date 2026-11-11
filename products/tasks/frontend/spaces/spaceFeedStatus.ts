@@ -18,7 +18,7 @@ const RUN_STATUSES: Record<string, SpaceFeedStatus> = {
     cancelled: { label: 'Cancelled', variant: 'default' },
 }
 
-// Once a PR exists its GitHub state is the card's status, with PostHog Desktop's labels and colors.
+// Once a PR exists its GitHub state is the card's status, with Flind Desktop's labels and colors.
 const PR_STATUSES: Record<Exclude<PrStateEnumApi, 'unknown'>, SpaceFeedStatus> = {
     open: { label: 'PR ready', variant: 'info' },
     draft: { label: 'Draft PR', variant: 'default' },

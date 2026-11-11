@@ -23,11 +23,11 @@ const FALLBACK_LABELS: Record<ChatObjectType, string> = {
 // line adapts the web's replay-player instruction to a phone, which has no recording export to attach.
 const OBJECT_INSTRUCTIONS: Record<ChatObjectType, string> = {
     [ISSUE_OBJECT_TYPE]:
-        "The user has an error tracking issue open in the PostHog mobile app. The error_tracking_issue item's key is " +
+        "The user has an error tracking issue open in the Flind mobile app. The error_tracking_issue item's key is " +
         'the ID of that issue, and "this issue" or "this error" means that issue. Load the investigating-error-issue ' +
         'skill and fetch the issue with query-error-tracking-issue. Do not ask the user for the issue ID.',
     [RECORDING_OBJECT_TYPE]:
-        "The user has a session recording open in the PostHog mobile app. The session_recording item's key is the " +
+        "The user has a session recording open in the Flind mobile app. The session_recording item's key is the " +
         'session ID of that recording, and "this replay" or "this recording" means that session. Load the ' +
         'investigating-replay skill and fetch the recording with session-recording-get. Do not ask the user for the ' +
         'session ID.',

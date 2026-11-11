@@ -5,7 +5,7 @@ import { apiMutator } from '../../../../frontend/src/lib/api-orval-mutator'
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import type {
@@ -1236,7 +1236,7 @@ export const getExternalDataSourcesApplyMigrationItemCreateUrl = (projectId: str
 }
 
 /**
- * Create the planned PostHog source for one migration item, then set its sync schedule.
+ * Create the planned Flind source for one migration item, then set its sync schedule.
  */
 export const externalDataSourcesApplyMigrationItemCreate = async (
     projectId: string,
@@ -1556,7 +1556,7 @@ export const getExternalDataSourcesStoreCredentialsCreateUrl = (projectId: strin
 /**
  * Validate and store credentials for a data warehouse source without creating the source.
  *
- * Backs the source connect page: the user enters credentials directly in PostHog, they are
+ * Backs the source connect page: the user enters credentials directly in Flind, they are
  * checked against a live connection, then stashed encrypted in a temporary store. The returned
  * credential id can be passed to `setup` as {'credential_id': <id>} to create the source — so
  * secrets never travel through an agent conversation. The stash is single-use: it is deleted
@@ -1786,7 +1786,7 @@ export const getWarehouseMigrationsListUrl = (projectId: string, params?: Wareho
 }
 
 /**
- * Import a team's Fivetran setup and plan the PostHog sources that replace it.
+ * Import a team's Fivetran setup and plan the Flind sources that replace it.
  */
 export const warehouseMigrationsList = async (
     projectId: string,
@@ -1804,7 +1804,7 @@ export const getWarehouseMigrationsCreateUrl = (projectId: string) => {
 }
 
 /**
- * Import a team's Fivetran setup and plan the PostHog sources that replace it.
+ * Import a team's Fivetran setup and plan the Flind sources that replace it.
  */
 export const warehouseMigrationsCreate = async (
     projectId: string,
@@ -1824,7 +1824,7 @@ export const getWarehouseMigrationsRetrieveUrl = (projectId: string, id: string)
 }
 
 /**
- * Import a team's Fivetran setup and plan the PostHog sources that replace it.
+ * Import a team's Fivetran setup and plan the Flind sources that replace it.
  */
 export const warehouseMigrationsRetrieve = async (
     projectId: string,
@@ -1842,7 +1842,7 @@ export const getWarehouseMigrationsDestroyUrl = (projectId: string, id: string) 
 }
 
 /**
- * Import a team's Fivetran setup and plan the PostHog sources that replace it.
+ * Import a team's Fivetran setup and plan the Flind sources that replace it.
  */
 export const warehouseMigrationsDestroy = async (
     projectId: string,
@@ -1897,7 +1897,7 @@ export const getWarehouseMigrationsItemsListUrl = (
 }
 
 /**
- * Import a team's Fivetran setup and plan the PostHog sources that replace it.
+ * Import a team's Fivetran setup and plan the Flind sources that replace it.
  */
 export const warehouseMigrationsItemsList = async (
     projectId: string,
@@ -1919,7 +1919,7 @@ export const getWarehouseMigrationsItemsRetrieveUrl = (projectId: string, id: st
 }
 
 /**
- * Import a team's Fivetran setup and plan the PostHog sources that replace it.
+ * Import a team's Fivetran setup and plan the Flind sources that replace it.
  */
 export const warehouseMigrationsItemsRetrieve = async (
     projectId: string,
@@ -1938,7 +1938,7 @@ export const getWarehouseMigrationsItemsSkipCreateUrl = (projectId: string, id: 
 }
 
 /**
- * Import a team's Fivetran setup and plan the PostHog sources that replace it.
+ * Import a team's Fivetran setup and plan the Flind sources that replace it.
  */
 export const warehouseMigrationsItemsSkipCreate = async (
     projectId: string,
@@ -1981,7 +1981,7 @@ export const getWarehouseMigrationsRefreshCreateUrl = (projectId: string, id: st
 }
 
 /**
- * Import a team's Fivetran setup and plan the PostHog sources that replace it.
+ * Import a team's Fivetran setup and plan the Flind sources that replace it.
  */
 export const warehouseMigrationsRefreshCreate = async (
     projectId: string,
@@ -2014,7 +2014,7 @@ export const getWarehouseMigrationsConnectLinkRetrieveUrl = (
 }
 
 /**
- * Import a team's Fivetran setup and plan the PostHog sources that replace it.
+ * Import a team's Fivetran setup and plan the Flind sources that replace it.
  */
 export const warehouseMigrationsConnectLinkRetrieve = async (
     projectId: string,

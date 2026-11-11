@@ -37,7 +37,7 @@ def declared_actions(manifest: dict | None) -> set[str]:
 
 
 def declared_tools(manifest: dict | None) -> set[str]:
-    """The PostHog MCP tools a capabilities manifest declares for ph.tools."""
+    """The Flind MCP tools a capabilities manifest declares for ph.tools."""
     return set(_posthog_section(manifest).get("tools") or [])
 
 

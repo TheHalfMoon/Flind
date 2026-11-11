@@ -437,7 +437,7 @@ class ReviewTriggerRequestSerializer(serializers.Serializer):
         "runs the resolution stage on the PR's existing unresolved review threads, which needs the owner's "
         "opt-in; 'flash' runs a Standard review: a lower-cost model for the review passes and validation, never resolves "
         "comments, and is refused once the PR has a published Deep review. The owner is the PR's author, "
-        "or the Inbox reviewer of a pull request the PostHog app opened.",
+        "or the Inbox reviewer of a pull request the Flind app opened.",
     )
 
 
@@ -974,7 +974,7 @@ class ReviewRecentReviewsViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet
             429: OpenApiResponse(description="GitHub rate-limited the App's token; retry after the Retry-After delay."),
         },
         summary="Start a review of a pull request",
-        description="Start a PostHog Review run on any pull request the project's GitHub App installation can "
+        description="Start a Flind Review run on any pull request the project's GitHub App installation can "
         "access, and publish it back to the PR. The run appears under the requesting user's recent reviews. "
         "A Deep review uses the requester's enabled perspectives, blind-spot check, validator, and urgency "
         "threshold; a Standard review uses none of them. Resolution writes to the branch only when the pull "

@@ -59,7 +59,7 @@ def zero_trust_scores():
     return {resource.value: 0 for resource in QuotaResource}
 
 
-@override_settings(CLOUD_DEPLOYMENT="US")  # As PostHog Cloud
+@override_settings(CLOUD_DEPLOYMENT="US")  # As Flind Cloud
 class TestQuotaLimiting(BaseTest):
     CLASS_DATA_LEVEL_SETUP = False
 

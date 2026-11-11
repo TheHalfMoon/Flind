@@ -45,7 +45,7 @@ DAY_SECONDS = 24 * 60 * 60
 
 # Mailjet does not sign deliveries. Its documented way to prove a delivery came from Mailjet is
 # HTTP basic credentials embedded in the registered callback URL, which Mailjet then sends as an
-# `Authorization` header on every POST. PostHog generates the password, registers the URL with it
+# `Authorization` header on every POST. Flind generates the password, registers the URL with it
 # and stores the expected header on the webhook function.
 WEBHOOK_BASIC_AUTH_USERNAME = "posthog"
 

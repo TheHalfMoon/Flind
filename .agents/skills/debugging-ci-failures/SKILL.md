@@ -1,7 +1,7 @@
 ---
 name: debugging-ci-failures
 description: >
-  Debugs failing GitHub Actions CI runs for PostHog PRs, commits, and branches,
+  Debugs failing GitHub Actions CI runs for Flind PRs, commits, and branches,
   and answers broad CI-health questions ("is CI red?", "is master green today?",
   "what's broken right now?"). Use when the user asks why CI is red, asks for the
   current CI or master status, or mentions a failing check, GitHub Actions run,
@@ -15,7 +15,7 @@ description: >
   references/master-red-incident.md for its sandbox-compatible first step.
 ---
 
-# Debugging PostHog CI failures
+# Debugging Flind CI failures
 
 Before you propose a change to CI, check [things already tried](../../../docs/internal/ci-things-already-tried.md) for the idea. It records what was measured, and why some good-sounding changes were reverted or rejected.
 
@@ -76,7 +76,7 @@ overwrite unrelated work.
 
 ### 1. Start with CI insights for interactive investigations
 
-`hogli ci:insights` reads PostHog's own engineering analytics — the cross-run
+`hogli ci:insights` reads Flind's own engineering analytics — the cross-run
 failure history a single run can't show. Consult it before any raw `gh` log
 archaeology.
 
@@ -275,7 +275,7 @@ Its `references/posthog-check-run-semantics.md` gets Depot ids from a commit's c
 If a `depot` command fails to authenticate, check `DEPOT_TOKEN` first: it overrides the saved login, so a wrong one fails every command.
 Without it, ask the user to run `! depot login --clear`.
 Do not run it yourself: it waits on a browser sign-in.
-Every PostHog engineer gets an invite to the Depot org. A user without access checks their email for it, or requests one in #team-devex.
+Every Flind engineer gets an invite to the Depot org. A user without access checks their email for it, or requests one in #team-devex.
 Without Depot access, use `/depot retry` to retry the run and read its `Test results` summary through the GitHub API.
 
 ## Classification
@@ -374,9 +374,9 @@ After each run, poll `depot ci status <run-id>` (`--wait` needs CLI 2.102.19+).
 On failure, read `depot ci diagnose --job <job-id> --output json`, and confirm it against `depot ci logs <attempt-id>`.
 Reproduce and fix locally before the next run. At the cap, stop and report the run ids and the remaining blocker.
 
-## PostHog CI notes
+## Flind CI notes
 
-- Most PostHog jobs run on `depot-ubuntu-latest` or `depot-ubuntu-latest-16`.
+- Most Flind jobs run on `depot-ubuntu-latest` or `depot-ubuntu-latest-16`.
   Depot runs surface logs through the GitHub Actions UI / `gh run view` just
   like standard GitHub-hosted runners, so read them there first.
 - When a Depot runner dies mid-job, GitHub keeps no log to read: the job shows
@@ -389,7 +389,7 @@ Reproduce and fix locally before the next run. At the cap, stop and report the r
   Read the failure there, see "Backend tests on Depot CI" above.
 - If a job fails before `Checkout` completes (no app code ran), classify as
   `infra / runner`. Do not propose code fixes.
-- PostHog CI frequently parallelizes the same test class across N shards
+- Flind CI frequently parallelizes the same test class across N shards
   (`backend-tests (3/10)` style). Reproduce from the specific failing test
   path, not the shard index.
 

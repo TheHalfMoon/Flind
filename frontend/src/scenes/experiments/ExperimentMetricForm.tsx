@@ -381,7 +381,7 @@ export function ExperimentMetricForm({
                                     options={[
                                         {
                                             value: 'posthog',
-                                            label: 'PostHog data',
+                                            label: 'Flind data',
                                             disabledReason: warehouseExposure
                                                 ? "This experiment's exposure is a warehouse-native query, so its metrics must be warehouse-native too."
                                                 : undefined,

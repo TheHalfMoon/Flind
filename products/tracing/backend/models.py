@@ -24,7 +24,7 @@ if TYPE_CHECKING:
 # - Do not use ForeignKeys to models outside this app unless allowed, as you will make implicit dependencies.
 # - If you make a ForeignKey to a common model, disallow reverse relations with related_name='+'
 
-# Default span/resource attribute keys whose values match a PostHog person's distinct_id.
+# Default span/resource attribute keys whose values match a Flind person's distinct_id.
 # Mirrors the logs convention (https://posthog.com/docs/logs/link-session-replay): the
 # posthog-js / posthog-react-native SDKs attach `posthogDistinctId` to the OTel signals
 # they emit. Customers whose pipeline uses different keys can override via the
@@ -36,7 +36,7 @@ def default_tracing_distinct_id_attribute_keys() -> list[str]:
     return list(DEFAULT_TRACING_DISTINCT_ID_ATTRIBUTE_KEYS)
 
 
-# Default span/resource attribute keys whose values hold the PostHog session ID.
+# Default span/resource attribute keys whose values hold the Flind session ID.
 # `sessionId` is the key the posthog-js / posthog-react-native SDKs emit on OTel
 # signals. Ordered: detection checks keys in list order and the first match wins.
 DEFAULT_TRACING_SESSION_ID_ATTRIBUTE_KEYS = ["sessionId"]
@@ -121,7 +121,7 @@ class TeamTracingConfig(models.Model):
         "posthog.Team", on_delete=models.CASCADE, primary_key=True, db_constraint=False, related_name="+"
     )
 
-    # Span or resource attribute keys whose values match a PostHog person's distinct_id —
+    # Span or resource attribute keys whose values match a Flind person's distinct_id —
     # a span links to a person when any of these attributes holds their distinct ID.
     tracing_distinct_id_attribute_keys = ArrayField(
         models.CharField(max_length=200),
@@ -129,7 +129,7 @@ class TeamTracingConfig(models.Model):
         db_default=Value("{posthogDistinctId}"),
     )
 
-    # Ordered list of span or resource attribute keys whose values hold the PostHog
+    # Ordered list of span or resource attribute keys whose values hold the Flind
     # session ID. Detection checks keys in order; the first key with a value wins.
     # Used to link spans to session replay.
     tracing_session_id_attribute_keys = ArrayField(

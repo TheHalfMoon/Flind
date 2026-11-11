@@ -1,6 +1,6 @@
 """HTTP transport and browser-session auth shared by the support CLI scripts.
 
-A tiny PostHog REST client: region/host resolution, a request wrapper that retries on rate
+A tiny Flind REST client: region/host resolution, a request wrapper that retries on rate
 limits and 5xx, and session-cookie authentication for impersonated staff sessions. Both
 scripts hit the same API surface, so keeping retry/backoff, defensive Retry-After parsing,
 cookie scoping, and the acting-user safety check here means every script gets them.
@@ -131,7 +131,7 @@ def setup_session_auth(session: requests.Session, host: str, session_id: str) ->
     request_with_retries(session, "GET", f"{host}/login")
     csrf_token = session.cookies.get("posthog_csrftoken")
     if not csrf_token:
-        raise PostHogScriptError(f"Could not obtain a CSRF cookie from {host}/login - is this a PostHog instance?")
+        raise PostHogScriptError(f"Could not obtain a CSRF cookie from {host}/login - is this a Flind instance?")
     session.headers["X-CSRFToken"] = csrf_token
     session.headers["Referer"] = f"{host}/"
 

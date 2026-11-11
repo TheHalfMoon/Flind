@@ -10,7 +10,7 @@ import { buildLogsAgentContext, LOGS_AGENT_HEADLINES, logsQueryToViewerFilters }
 import { LOGS_SCENE_VIEWER_ID, logsSceneLogic } from './logsSceneLogic'
 
 /**
- * Scene-level PostHog AI integration for the logs viewer. Attaches the investigating-logs skill, the
+ * Scene-level Flind AI integration for the logs viewer. Attaches the investigating-logs skill, the
  * logs MCP tool catalog, and the live viewer filter state as agent context, and mirrors a query-logs
  * tool call back onto the open viewer so the user sees the agent's query both in chat and on screen.
  * Renders nothing.

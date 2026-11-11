@@ -6,7 +6,7 @@ Both may import this package.
 
 - `installations.py` reads the installation id off a payload and resolves the teams linked to it. Consumers call `installation_integrations()` or `installation_team_ids()` for that, which runs one capped query.
 - `attribution.py` resolves a GitHub login to an organization member, under a bounded statement timeout, so a slow lookup degrades to no attribution. Use it for analytics only.
-- `requesters.py` decides who may start work from GitHub: the PostHog accounts linked to a GitHub account by its numeric id, the projects they are members of, and their access. `@posthog` comment commands and the PostHog Review team request use it. Never use `attribution.py` for this, because a login can change owners.
+- `requesters.py` decides who may start work from GitHub: the Flind accounts linked to a GitHub account by its numeric id, the projects they are members of, and their access. `@posthog` comment commands and the Flind Review team request use it. Never use `attribution.py` for this, because a login can change owners.
 - `project_members.py` holds `ProjectMember`, the result type of `requesters.py`. It has no Django imports, so the commands grammar can load it before Django is set up.
 - `pull_request_events.py` emits the canonical `pr_created`, `pr_closed`, `pr_merged` and `pr_reviewed` analytics events.
 - `metrics.py` holds the Prometheus counters for dropped events and attribution outcomes.

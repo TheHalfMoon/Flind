@@ -100,7 +100,7 @@ class FreshchatSource(ResumableSource[FreshchatSourceConfig, FreshchatResumeConf
             name=ExternalDataSourceType.FRESHCHAT,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Freshchat",
-            caption="""Enter your Freshchat account domain and API token to pull your Freshchat messaging data into the PostHog Data warehouse.
+            caption="""Enter your Freshchat account domain and API token to pull your Freshchat messaging data into the Flind Data warehouse.
 
 Your **account domain** is the host of your Freshchat chat URL, e.g. `acme.freshchat.com`. Find it under **API settings** in your Freshchat admin console. If your Freshchat came with the Freshsales Suite, the chat URL has its own host, e.g. `acme-123-4567.myfreshworks.com`, which is not the domain you sign in to.
 

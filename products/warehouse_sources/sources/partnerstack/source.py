@@ -47,7 +47,7 @@ class PartnerStackSource(ResumableSource[PartnerStackSourceConfig, PartnerStackR
             category=DataWarehouseSourceCategory.SALES,
             label="PartnerStack",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your PartnerStack Vendor API keys to pull your partner program data into the PostHog Data warehouse.
+            caption="""Enter your PartnerStack Vendor API keys to pull your partner program data into the Flind Data warehouse.
 
 You can find your **public key** and **private key** under **Settings → Integrations → PartnerStack API Keys** in [PartnerStack](https://dash.partnerstack.com/). The keys grant read access to your partnerships, customers, deals, leads, transactions, rewards, and deal and lead sales-cycle stages.
 """,

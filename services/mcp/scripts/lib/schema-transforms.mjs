@@ -25,7 +25,7 @@ export function stripEnumMinLength(obj) {
 /**
  * Strip `format: "uuid"` from all string schemas.
  * Zod 4's `.uuid()` enforces strict RFC 4122 version/variant bits, which some
- * PostHog UUID generation paths don't satisfy (e.g. provider key ids with a
+ * Flind UUID generation paths don't satisfy (e.g. provider key ids with a
  * `-0000-` version group). These are request/response schemas, so there's no
  * value in re-validating the UUID format client-side.
  *

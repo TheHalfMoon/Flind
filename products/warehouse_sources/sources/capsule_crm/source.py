@@ -47,7 +47,7 @@ class CapsuleCRMSource(ResumableSource[CapsuleCRMSourceConfig, CapsuleCRMResumeC
             category=DataWarehouseSourceCategory.CRM,
             label="Capsule CRM",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Capsule CRM Personal Access Token to automatically pull your Capsule CRM data into the PostHog Data warehouse.
+            caption="""Enter your Capsule CRM Personal Access Token to automatically pull your Capsule CRM data into the Flind Data warehouse.
 
 You can create a Personal Access Token under **My Preferences → API Authentication Tokens** in your Capsule account.
 

@@ -319,7 +319,7 @@ export const dashboardTemplatesLogic = kea<dashboardTemplatesLogicType>([
                         ordering: useSearch ? undefined : values.templateNameOrdering || undefined,
                         ...logicProps.listQuery,
                     }
-                    // Customers can't manage PostHog's templates, so their "all" list is this project's plus the
+                    // Customers can't manage Flind's templates, so their "all" list is this project's plus the
                     // organization's. The API has no scope for that pair, so request both and merge. Staff keep the
                     // unscoped list.
                     if (logicProps.templatesTabList && listScope === undefined && !values.isStaffViewer) {

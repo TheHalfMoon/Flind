@@ -268,7 +268,7 @@ def _verify_stripe_install_signature(state: str, user_id: str, account_id: str, 
 
     Stripe signs the redirect with HMAC over the JSON object {state, user_id, account_id}
     in that exact key order using the app's signing secret. Without this check, a forged
-    callback URL could link an attacker's Stripe account onto a victim's PostHog team.
+    callback URL could link an attacker's Stripe account onto a victim's Flind team.
 
     See: https://docs.stripe.com/stripe-apps/install-links-oauth
     """
@@ -829,7 +829,7 @@ class IntegrationSerializer(serializers.ModelSerializer, UserAccessControlSerial
         trim_whitespace=False,
         help_text=(
             "The provider of the integration, for example 'slack' or 'github'. A create accepts only the kinds "
-            "that PostHog connects here. Data warehouse sources also store their typed-in credentials as "
+            "that Flind connects here. Data warehouse sources also store their typed-in credentials as "
             "integrations, under a kind per source type."
         ),
     )
@@ -861,7 +861,7 @@ class IntegrationSerializer(serializers.ModelSerializer, UserAccessControlSerial
     )
     needs_webhook_reconnect = serializers.SerializerMethodField(
         help_text=(
-            "Linear only, null otherwise. True when the workspace last authorized PostHog before the Linear app "
+            "Linear only, null otherwise. True when the workspace last authorized Flind before the Linear app "
             "had webhooks, so linked error tracking issues may not follow their tickets until someone reconnects it."
         )
     )
@@ -1367,7 +1367,7 @@ class IntegrationSerializer(serializers.ModelSerializer, UserAccessControlSerial
 
         elif validated_data["kind"] in OauthIntegration.supported_kinds:
             # Stripe marketplace installs redirect to /integrations/stripe/callback without
-            # a PostHog-minted CSRF state token — Stripe drives the OAuth flow itself.
+            # a Flind-minted CSRF state token — Stripe drives the OAuth flow itself.
             # Stripe's Connect-OAuth flow (used by stripe_api_access_type: oauth) does not
             # include `install_signature` in the redirect; that param is only emitted for
             # Stripe Apps install-link OAuth. If a signature is present we verify it; if
@@ -2030,7 +2030,7 @@ class IntegrationViewSet(
         if not authed_user:
             raise ValidationError("SlackIntegration: Missing authed_user_id in integration config")
 
-        # Key on the Integration row PK (unique per PostHog team × Slack workspace), not
+        # Key on the Integration row PK (unique per Flind team × Slack workspace), not
         # integration_id (the Slack workspace id, shared across teams). Two teams that
         # install the same workspace must not share cached private-channel lists.
         key = f"slack/{instance.id}/{should_include_private_channels}/channels"
@@ -2131,7 +2131,7 @@ class IntegrationViewSet(
         is_session_auth = isinstance(request.successful_authenticator, SessionAuthentication)
         force_refresh: bool = is_session_auth and query_serializer.validated_data["force_refresh"]
 
-        # Key on the Integration row PK (unique per PostHog team × Slack workspace), not
+        # Key on the Integration row PK (unique per Flind team × Slack workspace), not
         # integration_id (the Slack workspace id, shared across teams).
         key = f"slack/{instance.id}/users"
 
@@ -2602,7 +2602,7 @@ class IntegrationViewSet(
     def github_prepare_callback(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         """Seed GitHub setup callback state without redirecting to GitHub.
 
-        Used when the user opens an existing installation's settings on github.com (e.g. PostHog
+        Used when the user opens an existing installation's settings on github.com (e.g. Flind
         Code "Update in GitHub") so the subsequent Setup URL redirect can be validated.
         """
         serializer = GitHubPrepareCallbackRequestSerializer(data=request.data)
@@ -2636,7 +2636,7 @@ class IntegrationViewSet(
         exists, the client passes the chosen installation_id to github/link_existing. The list also
         includes installations the user's personal GitHub link can see but that aren't linked to any
         project yet (``source_team_id: null``) — orphan installations approved on GitHub outside
-        PostHog's callback, which ``github/link_existing`` can adopt.
+        Flind's callback, which ``github/link_existing`` can adopt.
         """
         user = cast(User, request.user)
         discovery = PersonalGitHubDiscovery(

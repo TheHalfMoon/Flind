@@ -19,7 +19,7 @@ import TroubleshootingLink from '../_snippets/dw-troubleshooting-link.mdx'
 
 [Semgrep](https://semgrep.dev) is a static analysis and application security platform that scans your
 repositories for code (SAST) findings, supply chain (SCA) vulnerabilities, and leaked secrets. Linking
-it as a source syncs your deployment, projects, and findings history into the PostHog Data warehouse so
+it as a source syncs your deployment, projects, and findings history into the Flind Data warehouse so
 you can trend your vulnerability backlog, fix rates, and scan coverage alongside your product data.
 
 ## Prerequisites
@@ -36,9 +36,9 @@ To connect Semgrep, you need:
 
 1. Open [Semgrep AppSec Platform](https://semgrep.dev) and go to **Settings → Tokens**.
 2. Create a new token and make sure the **Web API** scope is selected.
-3. Copy the token and paste it into the **API token** field in PostHog.
+3. Copy the token and paste it into the **API token** field in Flind.
 
-The token is scoped to a single Semgrep deployment (organization); PostHog syncs the data of the
+The token is scoped to a single Semgrep deployment (organization); Flind syncs the data of the
 deployment the token can access.
 
 ## Sync modes
@@ -59,9 +59,9 @@ re-reads the resource and merges on the primary key. Findings are deduplicated a
 <SourceTables />
 
 Rows in every table except `deployments` carry an extra `deployment_id` and `deployment_slug`
-column added by PostHog so you can join them back to the `deployments` table. Rows in the
+column added by Flind so you can join them back to the `deployments` table. Rows in the
 `dependency_lockfiles` table also carry `repository_id` and `repository_name`, and rows in the
-`dependencies` table carry a `dependency_key` column that PostHog computes, because Semgrep gives
+`dependencies` table carry a `dependency_key` column that Flind computes, because Semgrep gives
 dependencies no ID.
 
 The `scans` table holds the scans of the last 30 days, which is what Semgrep's API returns. The

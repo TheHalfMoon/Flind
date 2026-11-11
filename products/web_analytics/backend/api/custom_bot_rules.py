@@ -59,7 +59,7 @@ class WebAnalyticsBotConditionSerializer(serializers.Serializer):
 class WebAnalyticsBotRuleSerializer(serializers.Serializer):
     id = serializers.CharField(read_only=True, help_text="Stable id for the rule. Pass it to the delete endpoint.")
     name = serializers.CharField(
-        help_text="Label reported by the `Bot name` property when the rule matches. Also the operator for a rule on a bot PostHog does not know."
+        help_text="Label reported by the `Bot name` property when the rule matches. Also the operator for a rule on a bot Flind does not know."
     )
     category = serializers.CharField(
         required=False,
@@ -85,7 +85,7 @@ class WebAnalyticsBotRuleSerializer(serializers.Serializer):
 class CustomBotRuleViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
     """A project's own bot rules, stored on the team and read by `Is bot`, `Bot name`, and the
     traffic-type properties everywhere HogQL runs. A rule extends the built-in bot list rather than
-    replacing it, so a project can flag a scraper PostHog does not know about."""
+    replacing it, so a project can flag a scraper Flind does not know about."""
 
     scope_object = "web_analytics"
     serializer_class = WebAnalyticsBotRuleSerializer

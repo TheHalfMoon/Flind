@@ -698,7 +698,7 @@ function activityEventsResponse(select: string[]): Record<string, any> {
                         'claude-code': 'Claude',
                         'claude-ai': 'Claude',
                         cursor: 'Cursor',
-                        'posthog-cli': 'PostHog',
+                        'posthog-cli': 'Flind',
                         windsurf: 'Windsurf',
                     }[clientName] ?? 'Other harnesses'
                 return ['__hx_tag', 'BrandMarkLabel', 'label', clientName || 'Other', 'mark', mark]

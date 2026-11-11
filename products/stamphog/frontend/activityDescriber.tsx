@@ -13,7 +13,7 @@ import { ReviewModeEnumApi, RoutingModeEnumApi } from './generated/api.schemas'
 import { REVIEW_MODE_LABELS } from './reviewModeLabels'
 import { ROUTING_MODE_LABELS } from './routingModeLabels'
 
-// A GitHub installation webhook writes a system row, so the actor reads "PostHog". Say which
+// A GitHub installation webhook writes a system row, so the actor reads "Flind". Say which
 // GitHub event caused it, or the reader cannot tell why reviews stopped.
 const WEBHOOK_REASON: Record<string, string> = {
     removed: 'after GitHub removed it from the installation',

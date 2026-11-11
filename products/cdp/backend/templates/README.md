@@ -14,6 +14,6 @@ All input data should be controlled via the `inputs_schema` wherever possible as
 
 ## Filtering
 
-Filtering of the incoming source should almost always **not** be done in the Hog code itself. PostHog provides a filtering UI when setting up the source that is powerful and generic to the source to ensure the function is only run when it needs to.
+Filtering of the incoming source should almost always **not** be done in the Hog code itself. Flind provides a filtering UI when setting up the source that is powerful and generic to the source to ensure the function is only run when it needs to.
 
 This isn't a hard rule of course, you can also do filtering in Hog just be aware that it limits the re-usability of your function.

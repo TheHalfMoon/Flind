@@ -93,7 +93,7 @@ class DashboardTemplate(UUIDTModel, RootTeamMixin):
                     "transparent_background": True,
                     "body": (
                         "# 👋 Start here\n\n"
-                        "The charts below use pageviews, clicks, sessions, and location, which PostHog captures "
+                        "The charts below use pageviews, clicks, sessions, and location, which Flind captures "
                         "automatically. Set the retention and funnel tiles to use your own events. You can edit "
                         "any tile or duplicate the dashboard."
                     ),

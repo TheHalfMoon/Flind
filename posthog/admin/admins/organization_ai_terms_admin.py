@@ -19,7 +19,7 @@ def _desktop_beta_terms_accepted(organization: OrganizationAITerms) -> bool:
 class OrganizationAITermsForm(forms.ModelForm):
     revoke_desktop_beta_terms = forms.BooleanField(
         required=False,
-        label="Revoke PostHog Desktop beta terms",
+        label="Revoke Flind Desktop beta terms",
         help_text="An org admin can accept the terms again in organization settings.",
     )
 
@@ -51,7 +51,7 @@ class OrganizationAITermsAdmin(admin.ModelAdmin):
             return (*fields, "revoke_desktop_beta_terms")
         return fields
 
-    @admin.display(description="PostHog Desktop beta terms")
+    @admin.display(description="Flind Desktop beta terms")
     def desktop_beta_terms_display(self, organization: OrganizationAITerms) -> str:
         return "Accepted" if _desktop_beta_terms_accepted(organization) else "Not accepted"
 

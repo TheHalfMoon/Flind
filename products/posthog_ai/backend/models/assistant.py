@@ -311,7 +311,7 @@ class CoreMemory(UUIDTModel):
         if len(new_text) > CORE_MEMORY_MAX_CHARACTERS:
             raise ValueError(
                 f"Memory is full ({len(self.text)}/{CORE_MEMORY_MAX_CHARACTERS} characters used)."
-                " Please free up space in Settings → PostHog AI before adding new memories."
+                " Please free up space in Settings → Flind AI before adding new memories."
             )
         self.text = new_text
         await self.asave()
@@ -323,7 +323,7 @@ class CoreMemory(UUIDTModel):
         if len(new_text) > CORE_MEMORY_MAX_CHARACTERS:
             raise ValueError(
                 f"Replacement would exceed memory limit ({CORE_MEMORY_MAX_CHARACTERS} characters)."
-                " Please free up space in Settings → PostHog AI first."
+                " Please free up space in Settings → Flind AI first."
             )
         self.text = new_text
         await self.asave()

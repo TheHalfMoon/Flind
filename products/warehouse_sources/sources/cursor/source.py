@@ -49,7 +49,7 @@ class CursorSource(ResumableSource[CursorSourceConfig, CursorResumeConfig]):
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Cursor",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Cursor Admin API key to automatically pull your team's Cursor usage and spend data into the PostHog Data warehouse.
+            caption="""Enter your Cursor Admin API key to automatically pull your team's Cursor usage and spend data into the Flind Data warehouse.
 
 You need a Cursor team plan (Business or Enterprise). A team admin can create an API key in the [Cursor dashboard](https://cursor.com/dashboard) under Settings → Cursor Admin API Keys.
 """,

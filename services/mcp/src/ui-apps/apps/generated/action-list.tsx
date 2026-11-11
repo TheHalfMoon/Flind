@@ -11,7 +11,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function ActionListApp(): JSX.Element {
     return (
-        <AppWrapper<ActionListData> appName="PostHog Action List">
+        <AppWrapper<ActionListData> appName="Flind Action List">
             {({ data, app }) => <ActionListContent data={data!} app={app} />}
         </AppWrapper>
     )

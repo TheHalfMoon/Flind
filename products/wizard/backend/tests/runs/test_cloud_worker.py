@@ -506,7 +506,7 @@ def test_git_repository_handoff_captures_diff_and_publishes_pull_request(
         integration_id=request.github_integration_id,
         repository=request.repository,
         branch=branch,
-        message="Set up PostHog",
+        message="Set up Flind",
         source="wizard",
     )
     create_pull_request.assert_called_once_with(
@@ -515,7 +515,7 @@ def test_git_repository_handoff_captures_diff_and_publishes_pull_request(
         repository=request.repository,
         head_branch=branch,
         base_branch="release/next",
-        title="Instrument application with PostHog",
+        title="Instrument application with Flind",
         body="# Setup report\n\nAll done.",
         source="wizard",
     )
@@ -555,7 +555,7 @@ def test_git_repository_handoff_uses_generic_body_when_handoff_is_unavailable(
     create_git_repository_handoff(request)
 
     assert create_pull_request.call_args.kwargs["body"] == (
-        "This pull request contains changes created by Wizard, PostHog's setup agent."
+        "This pull request contains changes created by Wizard, Flind's setup agent."
     )
     handoff_body_fallback.assert_called_once_with(request.team_id, request.run_id)
 

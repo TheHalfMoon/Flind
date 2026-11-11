@@ -57,9 +57,9 @@ MAX_SELECT_COHORT_CALCULATION_LIMIT = 1000000000  # 1b persons
 MAX_SELECT_NOTEBOOK_MATERIALIZE_LIMIT = 500000  # 500k rows
 # Max limit for LLM traces
 MAX_SELECT_TRACES_LIMIT_EXPORT = 10000  # 10k traces
-# Max limit for PostHog AI queries
+# Max limit for Flind AI queries
 MAX_SELECT_POSTHOG_AI_LIMIT = 500  # 500 rows
-# Default limit for PostHog AI queries
+# Default limit for Flind AI queries
 DEFAULT_POSTHOG_AI_RETURNED_ROWS = 100
 MAX_SELECT_DATA_CATALOG_LIMIT = 10000
 DEFAULT_DATA_CATALOG_RETURNED_ROWS = 1000

@@ -219,7 +219,7 @@ def _host_from_url(base_url: str) -> str:
 def _is_scheme_safe(base_url: str) -> tuple[bool, str | None]:
     """On cloud, refuse to send the API key over plaintext HTTP.
 
-    Self-hosted PostHog may reach a private LangSmith instance over http on a trusted network, so —
+    Self-hosted Flind may reach a private LangSmith instance over http on a trusted network, so —
     as with the SSRF host check — this is only enforced on cloud, where a plaintext origin would
     leak the key in transit."""
     if urlparse(base_url).scheme == "https" or not is_cloud():
@@ -347,7 +347,7 @@ def validate_credentials(api_key: str, host: str | None, team_id: int | None = N
     if status_code == 404:
         return (
             False,
-            "PostHog reached this host but found no LangSmith API there. Check the host field, then try again.",
+            "Flind reached this host but found no LangSmith API there. Check the host field, then try again.",
         )
     # 429 (rate limit) and 5xx are transient LangSmith-side problems, not a bad key, so surface a
     # retry hint rather than telling the user to fix credentials they can't fix.

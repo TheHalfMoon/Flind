@@ -354,7 +354,7 @@ def handle_send_email_hook(team: Team, body: bytes, headers: Mapping[str, str]) 
         # email would leave the user without their link or code, so Supabase has to show the failure.
         if action.endswith("_notification"):
             return result(status=200, skipped=True)
-        return result(status=400, message=f"No PostHog template is set for the {action} email.")
+        return result(status=400, message=f"No Flind template is set for the {action} email.")
     # The template can change after it was mapped. A send through one that is no longer sensitive would store
     # sign-in codes and reset links.
     if UUID(template_id) not in _sendable_template_ids(team.id, {UUID(template_id)}):

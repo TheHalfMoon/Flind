@@ -12,13 +12,13 @@ surfaces:
 
 - **Remote evaluation** (``only_evaluate_locally=False``) — no deployment needs a
   local-evaluation personal API key for these to work; evaluation goes through
-  PostHog's flags endpoint with the project token.
-- **Organization targeting** — the PostHog organization rides along as a group, so a
+  Flind's flags endpoint with the project token.
+- **Organization targeting** — the Flind organization rides along as a group, so a
   rule like ``$group_key equals <org uuid>`` targets one customer.
 - **Region targeting** — the deployment region rides along as the ``region``
   person property (via ``_region_properties``) so a flag rule like
   ``region equals DEV`` can target a single Cloud region.
-- **Person targeting** — a gate told which PostHog user it is deciding for is keyed
+- **Person targeting** — a gate told which Flind user it is deciding for is keyed
   on that user, so the person's own record answers the rule. That makes the usual
   internal rollout rules work unchanged: ``email ends_with @posthog.com``, a cohort,
   any person property. Nothing here forwards those properties; the person already
@@ -54,7 +54,7 @@ SLACK_APP_LINK_SEARCH_SCOPES_FLAG = "slack-app-link-search-scopes"
 SLACK_APP_CONNECT_TOOL_FROM_CHAT_FLAG = "slack-app-connect-tool-from-chat"
 
 
-# Linking a Slack identity to a PostHog user resolves the Slack profile and its email.
+# Linking a Slack identity to a Flind user resolves the Slack profile and its email.
 OAUTH_REQUIRED_SCOPES: frozenset[str] = frozenset({"users:read", "users:read.email"})
 
 # The DM/agent surface needs the base coding-agent scopes plus the assistant container scopes.
@@ -86,7 +86,7 @@ def _workspace_flag_enabled(
     spells it out. A gate that needs more than a flag — scopes, say — checks that itself
     and calls this for the flag half.
 
-    ``distinct_id`` identifies the PostHog user the check is being made for, and becomes
+    ``distinct_id`` identifies the Flind user the check is being made for, and becomes
     the identity the flag resolves against. It is a distinct ID rather than a user id so
     a caller can pass what it already holds.
     Without one the gate falls back to the Slack workspace, which no person rule can
@@ -122,7 +122,7 @@ def is_slack_app_agent_design_enabled(integration: IntegrationRecord, distinct_i
     Posts through the ``chat:write`` the mention flow already requires, so this is the
     flag alone.
 
-    ``distinct_id`` identifies the PostHog user whose run this is. The decision is about
+    ``distinct_id`` identifies the Flind user whose run this is. The decision is about
     that person's run, so the flag resolves against them and an internal rollout can name
     them the way every other one does. Without it the gate falls back to the workspace.
     """
@@ -141,7 +141,7 @@ def is_slack_app_byos_enabled(
 
     Depends on the tasks rollout flag for that plan, which is checked first. A Slack run
     marked for a plan whose rollout is off fails when it starts, so Slack must never mark one.
-    ``distinct_id`` is the PostHog user whose plan the run would use.
+    ``distinct_id`` is the Flind user whose plan the run would use.
     """
     from products.tasks.backend.facade import api as tasks_facade  # noqa: PLC0415 — keeps tasks off this import path
 
@@ -205,7 +205,7 @@ def is_slack_app_connect_tool_from_chat_enabled(integration: IntegrationRecord) 
 
 
 def is_slack_app_onboarding_enabled(integration: IntegrationRecord) -> bool:
-    """Keyed on the workspace, because most people who get the onboarding thread are not linked to a PostHog user
+    """Keyed on the workspace, because most people who get the onboarding thread are not linked to a Flind user
     yet. Each step checks its own scopes."""
     return _workspace_flag_enabled(
         SLACK_APP_ONBOARDING_FLAG,

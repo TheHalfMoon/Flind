@@ -25,7 +25,7 @@ DOCUMENT_EMBEDDINGS_FIELDS: dict[str, FieldOrTable] = {
     "product": StringDatabaseField(
         name="product",
         nullable=False,
-        description="PostHog product the embedded document belongs to, e.g. 'error_tracking'.",
+        description="Flind product the embedded document belongs to, e.g. 'error_tracking'.",
     ),
     "document_type": StringDatabaseField(
         name="document_type", nullable=False, description="Type of document this embedding represents."
@@ -141,7 +141,7 @@ HOGQL_MODEL_TABLES = {table.to_printed_hogql(): table for table in HOGQL_EMBEDDI
 
 
 class DocumentEmbeddingsTable(LazyTable):
-    description: str = "Vector embeddings of PostHog documents for semantic search; queries must filter on `model_name` to route to the right model-specific table."
+    description: str = "Vector embeddings of Flind documents for semantic search; queries must filter on `model_name` to route to the right model-specific table."
     fields: dict[str, FieldOrTable] = DOCUMENT_EMBEDDINGS_FIELDS
 
     def lazy_select(

@@ -15,7 +15,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             <>
                 <Markdown>
                     Capture a structured log record with `Posthog().logger`. Requires `posthog_flutter` 5.27.0 or later.
-                    Records are batched and shipped to PostHog's logs product.
+                    Records are batched and shipped to Flind's logs product.
                 </Markdown>
                 <CodeBlock
                     blocks={[
@@ -34,7 +34,7 @@ export const getFlutterSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                 />
                 <Markdown>
                     {dedent`
-                        Logs appear in PostHog within a few seconds. Use the [Logs page](https://app.posthog.com/logs) to search and filter
+                        Logs appear in Flind within a few seconds. Use the [Logs page](https://app.posthog.com/logs) to search and filter
                         by service name, severity, or any attribute you attach.
                     `}
                 </Markdown>

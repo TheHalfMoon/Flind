@@ -9,7 +9,7 @@ import { createRequire } from 'node:module'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 
-// Resolve Playwright from the PostHog checkout the command runs in, since the skill can live outside it.
+// Resolve Playwright from the Flind checkout the command runs in, since the skill can live outside it.
 const { chromium } = createRequire(path.join(process.cwd(), 'package.json'))('playwright')
 
 const OUTPUT_SCALE = 2

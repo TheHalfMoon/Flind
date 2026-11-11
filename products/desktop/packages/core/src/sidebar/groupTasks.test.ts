@@ -46,7 +46,7 @@ describe("getRepositoryInfo", () => {
     expect(info).toEqual({
       fullPath: "posthog/code",
       name: "code",
-      organization: "PostHog",
+      organization: "Flind",
     });
   });
 
@@ -57,7 +57,7 @@ describe("getRepositoryInfo", () => {
     expect(info).toEqual({
       fullPath: "posthog/code",
       name: "code",
-      organization: "PostHog",
+      organization: "Flind",
     });
   });
 
@@ -79,7 +79,7 @@ describe("getRepositoryInfo", () => {
     expect(info).toEqual({
       fullPath: "posthog/code",
       name: "code",
-      organization: "PostHog",
+      organization: "Flind",
     });
   });
 
@@ -127,7 +127,7 @@ describe("groupByRepository", () => {
       task("t1", {
         fullPath: "posthog/code",
         name: "code",
-        organization: "PostHog",
+        organization: "Flind",
       }),
       task("t2"),
     ];
@@ -161,7 +161,7 @@ describe("groupByRepository", () => {
       task("t1", {
         fullPath: "posthog/code",
         name: "code",
-        organization: "PostHog",
+        organization: "Flind",
       }),
       task("t2", {
         fullPath: "posthog/code",
@@ -182,12 +182,12 @@ describe("groupByRepository", () => {
       task("t1", {
         fullPath: "posthog/posthog",
         name: "posthog",
-        organization: "PostHog",
+        organization: "Flind",
       }),
       task("t2", {
         fullPath: "posthog/code",
         name: "code",
-        organization: "PostHog",
+        organization: "Flind",
       }),
     ];
 
@@ -204,7 +204,7 @@ describe("groupByRepository", () => {
       task("t1", {
         fullPath: "posthog/shared",
         name: "shared",
-        organization: "PostHog",
+        organization: "Flind",
       }),
       task("t2", {
         fullPath: "acme/shared",
@@ -238,7 +238,7 @@ describe("groupByRepository", () => {
         repository: {
           fullPath: "posthog/code",
           name: "code",
-          organization: "PostHog",
+          organization: "Flind",
         },
         originProduct: "image_builder",
       },
@@ -246,7 +246,7 @@ describe("groupByRepository", () => {
       task("t4", {
         fullPath: "posthog/posthog",
         name: "posthog",
-        organization: "PostHog",
+        organization: "Flind",
       }),
     ];
 
@@ -266,7 +266,7 @@ describe("groupByRepository", () => {
       task("t1", {
         fullPath: "posthog/shared",
         name: "shared",
-        organization: "PostHog",
+        organization: "Flind",
       }),
       task("t2", {
         fullPath: "acme/shared",
@@ -287,12 +287,12 @@ describe("groupByRepository", () => {
       task("t1", {
         fullPath: "posthog/code",
         name: "code",
-        organization: "PostHog",
+        organization: "Flind",
       }),
       task("t2", {
         fullPath: "posthog/posthog",
         name: "posthog",
-        organization: "PostHog",
+        organization: "Flind",
       }),
     ];
 
@@ -312,12 +312,12 @@ describe("groupByRepository", () => {
       task("t1", {
         fullPath: "posthog/code",
         name: "code",
-        organization: "PostHog",
+        organization: "Flind",
       }),
       task("t2", {
         fullPath: "posthog/posthog",
         name: "posthog",
-        organization: "PostHog",
+        organization: "Flind",
       }),
       task("t3", {
         fullPath: "acme/alpha",
@@ -347,12 +347,12 @@ describe("groupByRepository", () => {
       task("t2", {
         fullPath: "posthog/zeta",
         name: "zeta",
-        organization: "PostHog",
+        organization: "Flind",
       }),
       task("t3", {
         fullPath: "posthog/alpha",
         name: "alpha",
-        organization: "PostHog",
+        organization: "Flind",
       }),
     ];
 
@@ -371,12 +371,12 @@ describe("groupByRepository", () => {
       task("t2", {
         fullPath: "posthog/code",
         name: "code",
-        organization: "PostHog",
+        organization: "Flind",
       }),
       task("t3", {
         fullPath: "posthog/posthog",
         name: "posthog",
-        organization: "PostHog",
+        organization: "Flind",
       }),
     ];
 

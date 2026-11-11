@@ -139,7 +139,7 @@ export function WebsiteChannelHome({
   // Marking this channel read lives in ChannelHeader (rendered by every channel
   // surface), so opening Artifacts or CONTEXT.md counts as reading it too.
 
-  // Durable "PostHog agent" rows (CONTEXT.md being built, …). The old chat
+  // Durable "Flind agent" rows (CONTEXT.md being built, …). The old chat
   // feed also injected a synthetic "joined" opener here; the newest-first feed
   // drops it — the intro header already attributes the channel's creation, and
   // the opener would dangle at the bottom as the oldest entry.

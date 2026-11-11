@@ -171,7 +171,7 @@ class PlatformShClient:
         return {
             "Authorization": f"Bearer {self._ensure_token()}",
             "Accept": "application/json",
-            "User-Agent": "PostHog",
+            "User-Agent": "Flind",
         }
 
     @retry_with_deadline(

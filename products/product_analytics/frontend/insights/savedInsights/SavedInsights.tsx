@@ -321,7 +321,7 @@ export function SavedInsights(): JSX.Element {
                             'data-attr': 'home-tab-choose-dashboard',
                         },
                         {
-                            label: 'Reset to PostHog default',
+                            label: 'Reset to Flind default',
                             onClick: restorePostHogHome,
                             'data-attr': 'home-tab-restore-posthog-home',
                         },

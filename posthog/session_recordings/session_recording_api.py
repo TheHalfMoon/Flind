@@ -2021,7 +2021,7 @@ class SessionRecordingViewSet(
         )
 
         if not openai_gateway_configured():
-            raise exceptions.ValidationError("AI features are only available in PostHog Cloud")
+            raise exceptions.ValidationError("AI features are only available in Flind Cloud")
 
         distinct_id = self._distinct_id_from_request(request)
         client = build_openai_client(

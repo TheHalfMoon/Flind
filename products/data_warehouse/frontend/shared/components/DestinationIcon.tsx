@@ -12,7 +12,7 @@ import IconSnowflake from 'public/services/snowflake.png'
 import { ExternalDataDestinationTypeEnumApi } from 'products/warehouse_sources/frontend/generated/api.schemas'
 
 // The same artwork batch exports uses for its destinations, so one warehouse shows the same logo
-// wherever a PostHog surface names it. Keyed off this product's own enum rather than shared with
+// wherever a Flind surface names it. Keyed off this product's own enum rather than shared with
 // `BATCH_EXPORT_ICON_MAP`, because the two enums spell S3 differently.
 export const DESTINATION_ICON_MAP: Record<ExternalDataDestinationTypeEnumApi, string> = {
     PostHogWarehouse: IconPostHog,
@@ -26,7 +26,7 @@ export const DESTINATION_ICON_MAP: Record<ExternalDataDestinationTypeEnumApi, st
 }
 
 const DESTINATION_TYPE_LABELS: Record<ExternalDataDestinationTypeEnumApi, string> = {
-    PostHogWarehouse: 'PostHog warehouse',
+    PostHogWarehouse: 'Flind warehouse',
     Postgres: 'Postgres',
     Redshift: 'Redshift',
     Snowflake: 'Snowflake',

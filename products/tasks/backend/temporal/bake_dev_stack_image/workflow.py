@@ -15,7 +15,7 @@ BAKE_ACTIVITY_TIMEOUT = timedelta(hours=3)
 
 @workflow.defn(name="bake-dev-stack-image")
 class BakeDevStackImageWorkflow(PostHogWorkflow):
-    """Bakes and republishes the prebaked PostHog dev-stack VM image.
+    """Bakes and republishes the prebaked Flind dev-stack VM image.
 
     Dispatched nightly (see `bake_dev_stack_image_task` in the tasks facade) so the
     baked migration state stays close to master and task-time `hogli start` only

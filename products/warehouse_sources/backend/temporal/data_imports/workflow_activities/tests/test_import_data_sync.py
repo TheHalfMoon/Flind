@@ -936,7 +936,7 @@ async def test_rest_client_retryable_error_logged_as_warning_without_source_opt_
         ("operational_error", OperationalError, "query_wait_timeout"),
         ("interface_error", InterfaceError, "connection already closed"),
         # Raised by shared pipeline code (e.g. cdp_producer's should_run check) when a lookup
-        # against PostHog's own app DB fails — already reclassified clear of wording a customer's
+        # against Flind's own app DB fails — already reclassified clear of wording a customer's
         # misconfigured source host would produce, so it must get the same NonReportableError
         # treatment as the Django exception types above, not fall through to the default branch.
         ("posthog_internal_database_error", PostHogInternalDatabaseError, "Failed to check hog function triggers"),
@@ -950,7 +950,7 @@ async def test_rest_client_retryable_error_logged_as_warning_without_source_opt_
 )
 @pytest.mark.asyncio
 async def test_app_db_connection_error_reraised_as_non_reportable(_name: str, error_cls: type[Exception], message: str):
-    # A Django OperationalError/InterfaceError here can only come from a lookup against PostHog's
+    # A Django OperationalError/InterfaceError here can only come from a lookup against Flind's
     # own app DB (e.g. resolving a team or CustomPropertySource for the person-property staging
     # hook) — sources talk to a customer's own database over a raw driver connection, never Django's
     # ORM. It's a transient connection-pool blip on our side (e.g. a PgBouncer query_wait_timeout
@@ -1095,7 +1095,7 @@ async def test_invalid_version_race_reraised_as_non_reportable():
 async def test_data_warehouse_redis_error_reraised_as_non_reportable(
     _name: str, error_cls: type[Exception], message: str
 ):
-    # ResumableSourceManager._get_redis (and row tracking, sync locks) talk to PostHog's own
+    # ResumableSourceManager._get_redis (and row tracking, sync locks) talk to Flind's own
     # DATA_WAREHOUSE_REDIS instance, never anything a customer's source touches. Left unclassified,
     # a connection blip there escapes the activity as a raw redis exception, spending the whole retry
     # budget as a captured error-tracking issue instead of the benign, self-recovering blip it is.
@@ -1775,7 +1775,7 @@ async def test_probe_never_runs_when_not_eligible_or_resetting(overrides: dict[s
     source.source_for_pipeline.assert_called_once()
 
 
-# Credentials the credentials service holds are PostHog's own — the OAuth app secrets and API keys
+# Credentials the credentials service holds are Flind's own — the OAuth app secrets and API keys
 # we own, not anything a customer configured. Every failure state it has is therefore ours, and
 # every one of them ends on its own (a key in recovery is re-provisioned, a missing key is added, an
 # unreachable service comes back). The classification has to reflect both facts: retry, and never

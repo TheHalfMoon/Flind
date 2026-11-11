@@ -55,7 +55,7 @@ prompts = PromptTemplates(Path(__file__).parent / "prompts")
 CLASSIFIER_THREAD_HISTORY_MESSAGES = 10
 CLASSIFIER_MODEL = "claude-haiku-4-5-20251001"
 
-# The classifiers bill the customer's PostHog AI credits, the same as the Slack agent's runs,
+# The classifiers bill the customer's Flind AI credits, the same as the Slack agent's runs,
 # so they share its product.
 CLASSIFIER_AI_PRODUCT = "slack_app"
 
@@ -155,7 +155,7 @@ def classify_task_needs_repo(
     """Classify whether a Slack conversation requires code repository access.
 
     Returns True if the task likely needs a repo (writing code, fixing bugs, PRs),
-    False if it does not (analytics, data queries, PostHog config).
+    False if it does not (analytics, data queries, Flind config).
 
     Biased toward False: a false negative answers an analytics ask with no repo
     (recoverable — the user re-asks with code intent), while a false positive
@@ -345,7 +345,7 @@ def classify_message_is_agent_directed(
     team_id: int | None = None,
 ) -> bool:
     """Classify whether an untagged Slack thread reply is an instruction to the running
-    PostHog Slack App, or people talking to each other.
+    Flind Slack App, or people talking to each other.
 
     Deliberately defensive. Waking the agent is not private: it reacts in the channel, so a
     thread of humans discussing the work watches it interject on messages nobody addressed

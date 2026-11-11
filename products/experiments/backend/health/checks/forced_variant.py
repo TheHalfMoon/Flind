@@ -48,7 +48,7 @@ ALL_CONDITIONS_PINNED = "all_conditions_pinned"
 # assignment, so they bias the comparison unless the analysis excludes them, for example as test users.
 SOME_CONDITIONS_PINNED = "some_conditions_pinned"
 # Every condition that includes users pins the variant that one property names, so the code that sets the
-# property assigns the variants. The comparison is valid if that code assigns at random, which PostHog can't see.
+# property assigns the variants. The comparison is valid if that code assigns at random, which Flind can't see.
 ASSIGNED_BY_PROPERTY = "assigned_by_property"
 # Every condition that includes users pins a variant and matches only some users, so only those users enter the
 # experiment and everyone else gets no variant. Usually a test set-up, such as a list of the team's own users.
@@ -105,7 +105,7 @@ def forced_variant_release_condition(ctx: HealthContext) -> CheckOutcome:
         return _finding(
             subcode=ASSIGNED_BY_PROPERTY,
             severity=ExperimentHealthFindingSeverity.INFO,
-            title="Variants are assigned outside PostHog",
+            title="Variants are assigned outside Flind",
             detail=_assigned_by_property_detail(variant_property.key, set_after_launch.sentence),
             pinned_numbers=pinned_numbers,
             pinned_keys=pinned_keys,
@@ -324,7 +324,7 @@ def _assigned_by_property_detail(variant_property: str, set_after_launch: str) -
     return (
         f'Each release condition that includes users matches the users whose property "{variant_property}" holds a '
         f'variant key, and serves them that variant. So the code that sets "{variant_property}" assigns the '
-        f"variants, not PostHog.{set_after_launch} If it assigns at random, each variant gets similar users. If it "
+        f"variants, not Flind.{set_after_launch} If it assigns at random, each variant gets similar users. If it "
         "assigns by who the users are, for example by plan or country, a difference in the results can come from "
         "those users and not from the variant."
     )

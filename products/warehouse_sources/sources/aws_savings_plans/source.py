@@ -107,7 +107,7 @@ class AwsSavingsPlansSource(ResumableSource[AwsSavingsPlansSourceConfig, AwsSavi
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="AWS Savings Plans",
             caption=(
-                "Sync Savings Plans, rates, commitment use, coverage, and purchase recommendations into the PostHog Data warehouse. "
+                "Sync Savings Plans, rates, commitment use, coverage, and purchase recommendations into the Flind Data warehouse. "
                 "Grant `savingsplans:DescribeSavingsPlans` for plan inventory. "
                 "Grant `ce:GetSavingsPlansUtilization` for daily utilization. "
                 "Grant `ce:GetSavingsPlansUtilizationDetails` for utilization details. "

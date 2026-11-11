@@ -21,7 +21,7 @@ import type {
 
 const HOUR = 3600 * 1000
 const HOUR_SECONDS = 3600
-const REPO = { provider: 'github', owner: 'PostHog', name: 'posthog' } as const
+const REPO = { provider: 'github', owner: 'Flind', name: 'posthog' } as const
 const AUTHOR = { handle: 'jane-dev', display_name: 'jane-dev', avatar_url: '', is_bot: false }
 
 function hoursAfter(start: string, hours: number): string {
@@ -294,7 +294,7 @@ const meta: Meta = {
         viewMode: 'story',
         mockDate: '2026-07-02',
         featureFlags: [FEATURE_FLAGS.ENGINEERING_ANALYTICS],
-        pageUrl: urls.engineeringAnalyticsPullRequest('PostHog', 'posthog', MERGED.number),
+        pageUrl: urls.engineeringAnalyticsPullRequest('Flind', 'posthog', MERGED.number),
         testOptions: {
             waitForSelector: '[data-attr="engineering-analytics-pr-delivery-timeline"]',
         },
@@ -324,7 +324,7 @@ export const Merged: Story = {
 export const OutOfTheMergeQueue: Story = {
     render: () => <App />,
     parameters: {
-        pageUrl: urls.engineeringAnalyticsPullRequest('PostHog', 'posthog', KICKED.number),
+        pageUrl: urls.engineeringAnalyticsPullRequest('Flind', 'posthog', KICKED.number),
     },
     decorators: [
         mswDecorator({

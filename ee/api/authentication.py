@@ -215,9 +215,9 @@ class BillingServiceUser:
 
 class BillingServiceAuthentication(ActivityCredentialMixin, authentication.BaseAuthentication):
     """
-    Authenticates requests from the billing service to PostHog.
+    Authenticates requests from the billing service to Flind.
 
-    The billing service signs JWTs using the shared license secret (same secret PostHog
+    The billing service signs JWTs using the shared license secret (same secret Flind
     uses when calling the billing service, but in reverse direction).
     """
 

@@ -8,7 +8,7 @@ from products.pulse.backend.models import Opportunity
 # synthesis prompt and the structured-output field description.
 KIND_DESCRIPTIONS: dict[str, str] = {
     Opportunity.Kind.BUILD.value: "a product opportunity",
-    Opportunity.Kind.FIX.value: "a broken PostHog resource",
+    Opportunity.Kind.FIX.value: "a broken Flind resource",
     Opportunity.Kind.INSTRUMENT.value: "missing tracking the team should add",
 }
 assert set(KIND_DESCRIPTIONS) == set(Opportunity.Kind.values)

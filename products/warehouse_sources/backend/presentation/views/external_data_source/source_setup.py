@@ -229,7 +229,7 @@ class ExternalDataSourceSerializers(UserAccessControlSerializerMixin, serializer
         help_text=(
             "How this source was created. Defaults to `api` on create when omitted. "
             "`web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, "
-            "`wizard` for the setup wizard and `self_driving` for the PostHog Desktop app "
+            "`wizard` for the setup wizard and `self_driving` for the Flind Desktop app "
             "(both derived server-side from the caller's user agent). "
             "Ignored on update."
         ),
@@ -914,7 +914,7 @@ class ExternalDataSourceCreateCreatedVia(TextChoices):
     `wizard` and `self_driving` are intentionally omitted: they are never accepted from a
     caller (that would let any client self-label as wizard- or self-driving-created). They
     are derived server-side by upgrading a machine-injected `mcp` value based on the request
-    transport (the wizard, PostHog Desktop, or the wizard's self-driving program).
+    transport (the wizard, Flind Desktop, or the wizard's self-driving program).
     """
 
     WEB = "web", "web"
@@ -937,7 +937,7 @@ class ExternalDataSourceCreateSerializer(serializers.Serializer):
         required=False,
         allow_null=True,
         allow_blank=True,
-        help_text="Prefix added to the table names PostHog creates in HogQL. Does not filter which tables are imported.",
+        help_text="Prefix added to the table names Flind creates in HogQL. Does not filter which tables are imported.",
     )
     description = serializers.CharField(
         max_length=400, required=False, allow_null=True, allow_blank=True, help_text="Human-readable description."
@@ -955,7 +955,7 @@ class ExternalDataSourceCreateSerializer(serializers.Serializer):
         help_text=(
             "Where the request came from: `web` for the in-app UI, `api` for direct API callers, "
             "`mcp` for agent/MCP tool calls. `wizard` and `self_driving` cannot be set directly — "
-            "they are derived server-side for wizard- and PostHog Desktop-driven MCP calls. Defaults to `api`."
+            "they are derived server-side for wizard- and Flind Desktop-driven MCP calls. Defaults to `api`."
         ),
     )
     direct_query_enabled = serializers.BooleanField(
@@ -971,7 +971,7 @@ class ExternalDataSourceCreateSerializer(serializers.Serializer):
         required=False,
         help_text=(
             "Destinations every table on this source writes to. Set here rather than afterwards, "
-            "so the opening sync already carries them. Omit to write to the PostHog warehouse only."
+            "so the opening sync already carries them. Omit to write to the Flind warehouse only."
         ),
     )
 
@@ -980,7 +980,7 @@ class ExternalDataSourceCreateSerializer(serializers.Serializer):
         # the source syncing nowhere. Rejected here, before the source is created, because
         # `set_source_destinations` runs after creation and swallows its own failures so that a bad
         # destination set never costs the user the source. Omitting the field keeps its meaning of
-        # "the PostHog warehouse", which is what callers written before destinations existed send.
+        # "the Flind warehouse", which is what callers written before destinations existed send.
         if not destination_ids:
             raise serializers.ValidationError(EMPTY_SET_MESSAGE)
         return destination_ids
@@ -1012,7 +1012,7 @@ class SourceSetupSerializer(serializers.Serializer):
         allow_null=True,
         allow_blank=True,
         help_text=(
-            "Prefix added to the table names PostHog creates in HogQL, e.g. 'stripe' produces stripe_charges. "
+            "Prefix added to the table names Flind creates in HogQL, e.g. 'stripe' produces stripe_charges. "
             "Does not filter which tables are imported. Defaults to the source type."
         ),
     )
@@ -1306,11 +1306,11 @@ class ExternalDataSourceSetupMixin(base.ExternalDataSourceViewSetBase):
         # It avoids a second live credential round-trip — and the confusing failure mode where the
         # first check passes but a transient blip fails the second, leaving nothing created.
 
-        # The setup wizard and PostHog's agent surfaces drive creation through the MCP tools, which
+        # The setup wizard and Flind's agent surfaces drive creation through the MCP tools, which
         # inject `created_via=mcp` before the request reaches us — the agent can't set the field
         # itself. Upgrade that machine-injected value when the transport identifies one of them, so
         # their runs are distinguishable from other MCP clients. Explicit `web`/`api` values are
-        # left alone. The PostHog apps and the headless agents all map to `self_driving`: the
+        # left alone. The Flind apps and the headless agents all map to `self_driving`: the
         # distinction between them is an analytics one, and splitting it here would need a new
         # stored value.
         if created_via == ExternalDataSource.CreatedVia.MCP:
@@ -1661,7 +1661,7 @@ class ExternalDataSourceSetupMixin(base.ExternalDataSourceViewSetBase):
                     status=status.HTTP_400_BAD_REQUEST,
                     data={
                         "message": (
-                            "Change data capture can't sync a column that loads under a name PostHog writes. Rename "
+                            "Change data capture can't sync a column that loads under a name Flind writes. Rename "
                             "the column on your database, leave it out of the synced columns, or change the sync "
                             f"method or output tables for these tables: {'; '.join(tables_with_reserved_column)}."
                         )
@@ -2094,7 +2094,7 @@ class ExternalDataSourceSetupMixin(base.ExternalDataSourceViewSetBase):
 
         # `source` (web/api/mcp/wizard/posthog_code) is derived from the request by report_user_action;
         # `created_via` is the caller's explicit intent (with one exception: the machine-injected `mcp`
-        # is upgraded above when the transport identifies the wizard or PostHog Desktop). They usually
+        # is upgraded above when the transport identifies the wizard or Flind Desktop). They usually
         # agree but are kept separate so a transport change (e.g. a new wrapper UA) doesn't silently
         # rewrite historical attribution.
         report_user_action(

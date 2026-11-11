@@ -264,7 +264,7 @@ export function GatewayServerScene({
             )}
             {connection && !connection.is_enabled && (
                 <LemonBanner type="info">
-                    This server is off for you. Turn it on to offer its tools to PostHog and your agents.
+                    This server is off for you. Turn it on to offer its tools to Flind and your agents.
                 </LemonBanner>
             )}
 

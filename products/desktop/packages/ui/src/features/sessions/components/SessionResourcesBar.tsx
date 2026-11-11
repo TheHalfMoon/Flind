@@ -23,7 +23,7 @@ import { type ComponentType, useMemo, useRef, useState } from "react";
 import { createSessionResourcesTracker } from "./accumulateSessionResources";
 
 /**
- * Icon per PostHog product. `Record<PostHogProductId, …>` keeps this exhaustive:
+ * Icon per Flind product. `Record<PostHogProductId, …>` keeps this exhaustive:
  * adding a product id in `@flind/agent` forces an icon here at compile time.
  */
 const PRODUCT_ICON: Record<PostHogProductId, ComponentType<IconProps>> = {
@@ -45,7 +45,7 @@ const PRODUCT_ICON: Record<PostHogProductId, ComponentType<IconProps>> = {
 /**
  * Docs page on posthog.com per product, so a chip links to the relevant
  * product docs. `Partial` on purpose — products without a dedicated docs page
- * (e.g. apm, which PostHog folds into LLM analytics / Logs) render as a plain,
+ * (e.g. apm, which Flind folds into LLM analytics / Logs) render as a plain,
  * non-clickable badge rather than linking somewhere misleading.
  */
 const PRODUCT_DOC_URL: Partial<Record<PostHogProductId, string>> = {
@@ -75,7 +75,7 @@ interface SessionResourcesBarProps {
 const MAX_VISIBLE_CHIPS = 6;
 
 /**
- * Persistent bar above the composer listing the PostHog products the agent has
+ * Persistent bar above the composer listing the Flind products the agent has
  * touched so far this session — via the MCP `exec` tool, or by reading a file
  * from the codebase (the "Code" chip). Each product appears once and is added
  * the moment it's first used. Hidden until at least one product has been used.
@@ -107,7 +107,7 @@ export function SessionResourcesBar({ events }: SessionResourcesBarProps) {
           className="overflow-hidden px-3 pt-2"
         >
           <Text color="gray" className="whitespace-nowrap text-[11px]">
-            PostHog resources used
+            Flind resources used
           </Text>
           {visibleProducts.map((product) => {
             const Icon = PRODUCT_ICON[product.id] ?? SparkleIcon;

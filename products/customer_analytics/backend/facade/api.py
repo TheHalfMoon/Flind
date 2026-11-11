@@ -947,7 +947,7 @@ class CustomPropertyDefinitionConflictError(Exception):
 
 
 class CanonicalCustomPropertyReadOnlyError(Exception):
-    """Canonical names and types identify the properties that PostHog records.
+    """Canonical names and types identify the properties that Flind records.
     Manual API writes must preserve those identifiers and their system-managed values.
     """
 
@@ -1659,7 +1659,7 @@ def create_custom_property_definition(
 
 
 def _assert_canonical_fields_unchanged(definition: CustomPropertyDefinition, fields: dict[str, Any]) -> None:
-    """Refuse a rename or a type change on a canonical property — PostHog owns both.
+    """Refuse a rename or a type change on a canonical property — Flind owns both.
 
     Everything else on the definition (description, position in a view) stays editable. Deleting
     it is allowed: the next recorded value recreates it.
@@ -1669,7 +1669,7 @@ def _assert_canonical_fields_unchanged(definition: CustomPropertyDefinition, fie
     for attr in ("name", "display_type"):
         if attr in fields and fields[attr] != getattr(definition, attr):
             raise CanonicalCustomPropertyReadOnlyError(
-                f"'{definition.name}' is set by PostHog, so its {attr.replace('_', ' ')} can't be changed."
+                f"'{definition.name}' is set by Flind, so its {attr.replace('_', ' ')} can't be changed."
             )
 
 
@@ -5226,7 +5226,7 @@ def set_custom_property_value(
     definition = _get_custom_property_definition(team_id, definition_id)
     if definition is not None and definition.name in CANONICAL_DISPLAY_TYPE_BY_NAME:
         raise CanonicalCustomPropertyReadOnlyError(
-            "This custom property is managed by PostHog and can't be edited manually."
+            "This custom property is managed by Flind and can't be edited manually."
         )
     if _source_backed_definition_ids(team_id, [definition_id]):
         raise CustomPropertyValueSourceManaged(
@@ -5253,7 +5253,7 @@ def clear_custom_property_value(
     definition = _get_custom_property_definition(team_id, definition_id)
     if definition is not None and definition.name in CANONICAL_DISPLAY_TYPE_BY_NAME:
         raise CanonicalCustomPropertyReadOnlyError(
-            "This custom property is managed by PostHog and can't be edited manually."
+            "This custom property is managed by Flind and can't be edited manually."
         )
     if _source_backed_definition_ids(team_id, [definition_id]):
         raise CustomPropertyValueSourceManaged(

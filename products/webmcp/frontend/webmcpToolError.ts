@@ -3,7 +3,7 @@ import type { BeforeSendFn } from 'posthog-js'
 // posthog-js reads the name, and minification would rename the class.
 const WEBMCP_TOOL_ERROR_NAME = 'WebMCPToolError'
 
-/** A PostHog command that failed, for example bad HogQL or a missing resource. The agent gets the message. */
+/** A Flind command that failed, for example bad HogQL or a missing resource. The agent gets the message. */
 export class WebMCPToolError extends Error {
     constructor(message: string) {
         super(message)

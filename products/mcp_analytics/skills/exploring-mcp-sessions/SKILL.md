@@ -1,7 +1,7 @@
 ---
 name: exploring-mcp-sessions
 description: >
-  Investigate individual PostHog MCP sessions — the sequence of tool calls a
+  Investigate individual Flind MCP sessions — the sequence of tool calls a
   single agent made in one run, what it was trying to do, and where it went
   wrong. Use when the user asks "what did this MCP session do?", "show me the
   tool calls for session X", "what was the agent's goal?", "which sessions had

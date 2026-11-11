@@ -160,7 +160,7 @@ class TestRetrievalMetering(_UsageTest):
         assert self._rows(KnowledgeUsageKey.QUERIES, team_id=child.id) == []
 
     def test_async_search_from_a_child_environment_searches_the_child_and_meters_the_parent(self) -> None:
-        # PostHog AI only authorizes the environment it runs in, so the search must not widen to the parent.
+        # Flind AI only authorizes the environment it runs in, so the search must not widen to the parent.
         child = Team.objects.create(
             organization=self.organization, parent_team=self.team, project=self.team.project, name="Child environment"
         )

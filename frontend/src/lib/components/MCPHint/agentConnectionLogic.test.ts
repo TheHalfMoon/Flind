@@ -20,7 +20,7 @@ const AGENT_APP: ConnectedAppApi = {
 const WIZARD_APP: ConnectedAppApi = {
     ...AGENT_APP,
     id: 'wizard',
-    name: 'PostHog Wizard',
+    name: 'Flind Wizard',
     is_first_party: true,
     is_self_registered: false,
 }

@@ -14,5 +14,5 @@ Resolution yield uses reports first shown at least 14 days ago, looking back 60 
 In the report, say "resolved" and never "settled". Explain it once: "Resolved: of reports first shown at least 14 days ago, the share that got resolved."
 Cost per resolved report is an estimate: period spend divided by reports created times the settled resolution rate. Its spend and report cohorts differ. Below about 3 expected resolved reports, write "too few reports to estimate".
 Automatic implementation costs are measured; savings from a proposed threshold or steering change still require an estimate.
-When you report implementation spend, say that it excludes fixes a person starts from a report, which are metered as PostHog AI.
+When you report implementation spend, say that it excludes fixes a person starts from a report, which are metered as Flind AI.
 Apply only changes the user explicitly confirms and read each setting back.

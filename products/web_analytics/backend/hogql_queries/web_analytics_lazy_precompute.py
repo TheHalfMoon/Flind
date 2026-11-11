@@ -280,8 +280,8 @@ def check_common_eligible(
     """
     query = runner.query
 
-    # Rollout gate: shared PostHog feature flag AND per-query opt-out.
-    #   - `web-analytics-precompute-toggle` (PostHog feature flag): the same
+    # Rollout gate: shared Flind feature flag AND per-query opt-out.
+    #   - `web-analytics-precompute-toggle` (Flind feature flag): the same
     #     flag the frontend already uses to show/hide the "Allow precompute"
     #     button in the Web Analytics ScenePanel. The flag is evaluated at the
     #     organization level. The SDK swallows its own exceptions and returns

@@ -1,6 +1,6 @@
-# Contributing to PostHog
+# Contributing to Flind
 
-We love contributions big and small. The PostHog desktop app is the IDE for understanding how users interact with your product -- and we want the community involved in shaping it.
+We love contributions big and small. The Flind desktop app is the IDE for understanding how users interact with your product -- and we want the community involved in shaping it.
 
 > [!NOTE]
 > This code lives at `products/desktop` inside [posthog/posthog](https://github.com/PostHog/posthog). If you already have that repo checked out, work there instead of cloning separately.
@@ -25,7 +25,7 @@ cp .env.example .env
 pnpm dev
 ```
 
-See [docs/LOCAL-DEVELOPMENT.md](./docs/LOCAL-DEVELOPMENT.md) for connecting to a local PostHog instance.
+See [docs/LOCAL-DEVELOPMENT.md](./docs/LOCAL-DEVELOPMENT.md) for connecting to a local Flind instance.
 
 ## Before submitting
 

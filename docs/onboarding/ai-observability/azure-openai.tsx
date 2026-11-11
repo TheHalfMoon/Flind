@@ -24,7 +24,7 @@ export const getAzureOpenAISteps = (ctx: OnboardingComponentsContext): StepDefin
                         </Markdown>
                     </CalloutBox>
 
-                    <Markdown>Install the PostHog SDK and the OpenAI SDK.</Markdown>
+                    <Markdown>Install the Flind SDK and the OpenAI SDK.</Markdown>
 
                     <CodeBlock
                         blocks={[
@@ -49,13 +49,13 @@ export const getAzureOpenAISteps = (ctx: OnboardingComponentsContext): StepDefin
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                            Create a PostHog client, then swap in PostHog's Azure OpenAI wrapper.
+                            Create a Flind client, then swap in Flind's Azure OpenAI wrapper.
                         `}
                     </Markdown>
 
@@ -84,9 +84,9 @@ export const getAzureOpenAISteps = (ctx: OnboardingComponentsContext): StepDefin
                                 file: 'Node',
                                 code: dedent`
                                     import { AzureOpenAI } from '@posthog/ai/openai'
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
 
-                                    const posthog = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' })
+                                    const posthog = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' })
 
                                     const client = new AzureOpenAI({
                                       apiKey: '<azure_openai_api_key>',
@@ -108,7 +108,7 @@ export const getAzureOpenAISteps = (ctx: OnboardingComponentsContext): StepDefin
                 <>
                     <Markdown>
                         {dedent`
-                            When you use the wrapped client to call Azure OpenAI, PostHog automatically captures an
+                            When you use the wrapped client to call Azure OpenAI, Flind automatically captures an
                             \`$ai_generation\` event.
                         `}
                     </Markdown>

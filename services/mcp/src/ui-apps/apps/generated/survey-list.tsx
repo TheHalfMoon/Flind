@@ -11,7 +11,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function SurveyListApp(): JSX.Element {
     return (
-        <AppWrapper<SurveyListData> appName="PostHog Survey List">
+        <AppWrapper<SurveyListData> appName="Flind Survey List">
             {({ data, app }) => <SurveyListContent data={data!} app={app} />}
         </AppWrapper>
     )

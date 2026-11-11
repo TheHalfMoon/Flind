@@ -177,7 +177,7 @@ class ClerkSource(
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Clerk",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Clerk secret key to automatically pull your Clerk data into the PostHog Data warehouse.
+            caption="""Enter your Clerk secret key to automatically pull your Clerk data into the Flind Data warehouse.
 
 You can find your secret key in your [Clerk Dashboard](https://dashboard.clerk.com/) under **API Keys**.
 
@@ -330,7 +330,7 @@ Clerk delete events only carry the record ID, so webhook sync doesn't remove del
     def delete_webhook(
         self, config: ClerkSourceConfig, webhook_url: str, team_id: int, api_version: str | None = None
     ) -> WebhookDeletionResult:
-        # PostHog never creates the Clerk endpoint, so there is nothing to remove on Clerk's side.
+        # Flind never creates the Clerk endpoint, so there is nothing to remove on Clerk's side.
         return WebhookDeletionResult(success=True)
 
     def source_for_pipeline(

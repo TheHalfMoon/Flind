@@ -23,7 +23,7 @@ HARVEST_API_HOST = "api.harvestapp.com"
 HARVEST_BASE_URL = f"https://{HARVEST_API_HOST}"
 
 # Harvest rejects requests without a descriptive User-Agent with a 400.
-HARVEST_USER_AGENT = "PostHog (https://posthog.com)"
+HARVEST_USER_AGENT = "Flind (https://posthog.com)"
 
 # Connect/read timeout per request, so a stalled response can't hold an import worker forever.
 REQUEST_TIMEOUT = (10.0, 60.0)

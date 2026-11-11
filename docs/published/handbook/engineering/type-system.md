@@ -4,7 +4,7 @@ sidebar: Docs
 showTitle: true
 ---
 
-PostHog has two type generation systems that keep frontend and backend in sync. This guide covers both directions and best practices for each.
+Flind has two type generation systems that keep frontend and backend in sync. This guide covers both directions and best practices for each.
 
 ## Overview
 

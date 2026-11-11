@@ -33,8 +33,8 @@ jest.mock('../../lib/wizardApi', () => ({
 const props = { projectId: String(MOCK_DEFAULT_TEAM.id), userId: MOCK_DEFAULT_USER.id }
 const program: WizardProgramApi = {
     id: 'posthog-integration',
-    name: 'PostHog integration',
-    description: 'Install PostHog',
+    name: 'Flind integration',
+    description: 'Install Flind',
     wizard_version: '2.67.0',
     command: [],
     tags: [],

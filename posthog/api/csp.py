@@ -274,12 +274,12 @@ def process_csp_report(request):
     Process a Reporting API payload from a browser.
 
     Takes the incoming report JSON (CSP violations, plus crash reports when the site
-    routes its `default` reporting endpoint here), formats each report as a PostHog
+    routes its `default` reporting endpoint here), formats each report as a Flind
     event, and returns them for ingestion through the regular event pipeline.
 
     Returns:
         tuple: (csp_report, error_response)
-            - csp_report: The formatted CSP report as a PostHog event, or None if processing failed
+            - csp_report: The formatted CSP report as a Flind event, or None if processing failed
             - error_response: An error response to return to the client if processing failed, or None if successful
     """
     try:

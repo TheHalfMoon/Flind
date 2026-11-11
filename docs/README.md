@@ -1,4 +1,4 @@
-# PostHog Documentation
+# Flind Documentation
 
 Developer-focused documentation alongside code. Update existing docs in the same PR as your code changes. Add a new doc only when a person asks for it.
 
@@ -48,7 +48,7 @@ The posthog.com Gatsby build uses gatsby-source-git to clone this monorepo and p
 
 - All published docs must have YAML frontmatter
 - Use relative links between docs: `../contributing/index.md`
-- Docs about PostHog internals → here
+- Docs about Flind internals → here
 - User product docs and tutorials → posthog.com repo
 
 ## Setup

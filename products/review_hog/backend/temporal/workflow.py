@@ -561,7 +561,7 @@ class ReviewPRWorkflow:
         )
         if acting.acting_user_id is None:
             workflow.logger.info(
-                f"PR author '{meta.author_login}' is not a PostHog org user on team {inputs.team_id}; "
+                f"PR author '{meta.author_login}' is not a Flind org user on team {inputs.team_id}; "
                 "skipping review (no perspectives to apply)"
             )
             return report_id

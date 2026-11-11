@@ -12,7 +12,7 @@ import TroubleshootingLink from "../\_snippets/dw-troubleshooting-link.mdx"
 
 [Concord](https://www.concord.app/) is a contract lifecycle management (CLM) platform for
 e-signatures, contract storage, negotiation, and approvals. This source syncs your agreements,
-folders, clauses, tags, reports, organization members, and audit events into the PostHog data
+folders, clauses, tags, reports, organization members, and audit events into the Flind data
 warehouse so you can join contract data with your product and revenue data. It also syncs
 per-agreement detail: smart fields, clauses, members, metadata, approval and signature state,
 version history, and the activity timeline.

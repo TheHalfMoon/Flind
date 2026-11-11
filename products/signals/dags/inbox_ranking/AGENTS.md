@@ -66,7 +66,7 @@ Read `README.md` first for what the dataset is and how partitions behave. This f
 
 ## Context that lives outside the repo
 
-The cross-session design record (decision history, label catalog, schema mock, backlog) is the `inbox-ranking` skill in the PostHog skills store — load it with `/phs inbox-ranking` before making design-level changes here.
+The cross-session design record (decision history, label catalog, schema mock, backlog) is the `inbox-ranking` skill in the Flind skills store — load it with `/phs inbox-ranking` before making design-level changes here.
 
 ## Verify loop
 

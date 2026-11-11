@@ -33,7 +33,7 @@
 //     tick refreshes the anchor duration only — no thread noise.
 //
 // GitHub API rate-limit observability is handled by the separate
-// monitor-github-rate-limit workflow, which emits to PostHog as time series.
+// monitor-github-rate-limit workflow, which emits to Flind as time series.
 
 const fs = require('node:fs')
 

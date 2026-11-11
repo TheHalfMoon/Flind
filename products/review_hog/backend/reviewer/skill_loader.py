@@ -4,7 +4,7 @@ ReviewHog's review **perspectives**, its **validation criteria**, and its **blin
 stored and synced the way Signals' scouts store theirs: canonical `SKILL.md` on disk
 (`products/review_hog/skills/`) mirrored into per-team `LLMSkill` rows by `lazy_seed.sync_canonical_*`.
 Each run pins the current version per skill. Both full and Flash prompts instruct the agent to pull
-bodies and bundled files over the PostHog MCP.
+bodies and bundled files over the Flind MCP.
 """
 
 from __future__ import annotations

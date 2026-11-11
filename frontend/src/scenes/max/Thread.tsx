@@ -138,7 +138,7 @@ export function Thread({ compact = false }: { compact?: boolean }): JSX.Element 
         active: panelId === SIDE_PANEL_PANEL_ID && rendersSandboxThread,
     })
 
-    // The quill thread spaces its rows like PostHog Desktop, with the 2.0 thread's side gutter; the lemon
+    // The quill thread spaces its rows like Flind Desktop, with the 2.0 thread's side gutter; the lemon
     // thread keeps its tighter rhythm.
     const containerClassName = cn(
         '@container/thread flex flex-col items-stretch w-full max-w-180 self-center grow mx-auto',
@@ -397,7 +397,7 @@ function LegacyThread({ showTrailers }: { showTrailers: boolean }): JSX.Element 
 
 /**
  * Persistent sandbox surfaces mounted between the thread and the sticky composer: the
- * "PostHog resources used" bar and the context-usage indicator. Both read `runStreamLogic`
+ * "Flind resources used" bar and the context-usage indicator. Both read `runStreamLogic`
  * values directly, so this binds the same logic instance `Thread`'s sandbox path uses. Renders
  * nothing for non-sandbox conversations; the inner components hide themselves when empty.
  */

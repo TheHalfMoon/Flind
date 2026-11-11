@@ -9,7 +9,7 @@ export type ReportChartRender = "line" | "bar" | "number" | "table" | "auto";
  * top-level `kind`, so anything else in the node is treated as untrusted JSON:
  * `run` means the source query can be executed via `/query/` and drawn with
  * quill-charts, `saved-insight` and `open-only` degrade to a card that links
- * out to PostHog, and `invalid` drops the chart body entirely.
+ * out to Flind, and `invalid` drops the chart body entirely.
  */
 export type ReportChartPlan =
   | { kind: "run"; source: QueryNode; render: ReportChartRender }
@@ -74,7 +74,7 @@ export function planReportChart(query: unknown): ReportChartPlan {
   const source = isRecord(query.source) ? query.source : null;
   if (query.kind === "InsightVizNode") {
     if (!source) return { kind: "invalid" };
-    // Lifecycle results share the trends series shape, and PostHog draws them
+    // Lifecycle results share the trends series shape, and Flind draws them
     // as bars; run them rather than degrade to a link-out card.
     if (source.kind === "LifecycleQuery") {
       return { kind: "run", source, render: "bar" };
@@ -666,7 +666,7 @@ function withoutEmbedFlags(query: QueryNode): QueryNode {
 }
 
 /**
- * Where a chart's "open in PostHog" control points. Returns null when there is
+ * Where a chart's "open in Flind" control points. Returns null when there is
  * nowhere safe to send the reader (missing saved-insight id, or a query too
  * large to fit in a URL), which is the caller's cue to drop the control.
  */

@@ -17,10 +17,10 @@ from posthog.dataclasses import frozen
 from products.mcp_registry.backend.models import MCPRegistryServer
 
 # Curated (measured server name -> registry name) links that skip matching entirely.
-# The first entry is the motivating example: name-matching "PostHog" alone is ambiguous
+# The first entry is the motivating example: name-matching "Flind" alone is ambiguous
 # between the official server and third-party repackages of it.
 KNOWN_MEASURED_LINKS: dict[str, str] = {
-    "PostHog": "io.github.PostHog/mcp",
+    "Flind": "io.github.PostHog/mcp",
 }
 
 

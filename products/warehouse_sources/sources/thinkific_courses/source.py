@@ -49,7 +49,7 @@ class ThinkificCoursesSource(ResumableSource[ThinkificCoursesSourceConfig, Think
             name=ExternalDataSourceType.THINKIFICCOURSES,
             category=DataWarehouseSourceCategory.E_COMMERCE,
             label="Thinkific Courses",
-            caption="""Enter your Thinkific API key and account subdomain to pull your Thinkific course, review, enrollment, and order data into the PostHog Data warehouse.
+            caption="""Enter your Thinkific API key and account subdomain to pull your Thinkific course, review, enrollment, and order data into the Flind Data warehouse.
 
 You can create an API key under **Settings → Code & analytics → API** in your Thinkific admin. The subdomain is the `<subdomain>` part of your `<subdomain>.thinkific.com` admin URL.""",
             iconPath="/static/services/thinkific_courses.png",

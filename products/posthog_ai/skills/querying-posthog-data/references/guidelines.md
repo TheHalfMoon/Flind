@@ -1,6 +1,6 @@
-### Querying data in PostHog
+### Querying data in Flind
 
-Use the `posthog:execute-sql` MCP tool to execute HogQL queries. HogQL is PostHog's variant of SQL that supports most of ClickHouse SQL. We use terms "HogQL" and "SQL" interchangeably. More info is available in the `querying-posthog-data` skill.
+Use the `posthog:execute-sql` MCP tool to execute HogQL queries. HogQL is Flind's variant of SQL that supports most of ClickHouse SQL. We use terms "HogQL" and "SQL" interchangeably. More info is available in the `querying-posthog-data` skill.
 
 Do not assume that data exists. Use `read-data-schema` to verify events and properties. For SQL tables, use `system.information_schema` as described below. Schema discovery does not determine which tool should run the analysis.
 
@@ -17,11 +17,11 @@ Before fuzzy-matching a property value, try `read-data-schema` (`event_property_
 
 #### Data Groups
 
-PostHog has two distinct groups of data you can query:
+Flind has two distinct groups of data you can query:
 
-##### 1. System Data (PostHog-Created Data)
+##### 1. System Data (Flind-Created Data)
 
-Data created directly in PostHog by users - metadata about PostHog setup.
+Data created directly in Flind by users - metadata about Flind setup.
 
 All these tables are prefixed with `system.`. The most-used entities are `system.insights`, `system.dashboards`, `system.cohorts`, `system.feature_flags`, `system.experiments`, `system.surveys`, `system.actions`, and `system.notebooks` — list the full, current set (it drifts as products are added) via `information_schema`, covered in **Schema discovery** below.
 
@@ -41,7 +41,7 @@ All entities are scoped by a team by default. You cannot access data of another 
 
 ##### 2. Captured Data (Analytics Data)
 
-Data collected via the PostHog SDK - used for analytics.
+Data collected via the Flind SDK - used for analytics.
 
 Table | Description
 `events` | Recorded events from SDKs

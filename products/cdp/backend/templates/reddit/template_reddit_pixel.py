@@ -56,7 +56,7 @@ export function onLoad({ inputs, posthog }) {
         }
     };
     if (posthog.config.debug) {
-        console.log('[PostHog] rdt init', inputs.pixelId, userProperties);
+        console.log('[Flind] rdt init', inputs.pixelId, userProperties);
     }
     rdt('init', inputs.pixelId, userProperties);
 }
@@ -76,7 +76,7 @@ export function onEvent({ inputs, posthog }) {
         eventProperties.customEventName = inputs.eventType;
     }
     if (posthog.config.debug) {
-        console.log('[PostHog] rdt track', eventName, eventProperties);
+        console.log('[Flind] rdt track', eventName, eventProperties);
     }
     rdt('track', eventName, eventProperties);
 }

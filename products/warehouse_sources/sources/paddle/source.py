@@ -41,7 +41,7 @@ INVALID_API_KEY_ERROR = (
 MISSING_PERMISSIONS_ERROR = (
     "Paddle denied the request. Give your API key read permission for the data you want to sync, then reconnect."
 )
-KEY_CHECK_FAILED_ERROR = "PostHog could not check your Paddle API key. Wait a few minutes, then try again."
+KEY_CHECK_FAILED_ERROR = "Flind could not check your Paddle API key. Wait a few minutes, then try again."
 
 
 @SourceRegistry.register

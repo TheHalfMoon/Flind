@@ -27,7 +27,7 @@ _CONNECT_HOST_EXAMPLE = "aws.connect.psdb.cloud"
 _HOST_CAPTION = (
     "In the PlanetScale dashboard, open your database, pick the branch, and click **Connect**. "
     "Create a password there and copy the host, username, and password it shows. The host looks "
-    f"like `{_CONNECT_HOST_EXAMPLE}`. PlanetScale always connects over TLS, which PostHog uses by "
+    f"like `{_CONNECT_HOST_EXAMPLE}`. PlanetScale always connects over TLS, which Flind uses by "
     "default. A read-only password is enough for syncing."
 )
 
@@ -129,7 +129,7 @@ class PlanetScaleMySQLSource(MySQLSource):
             category=DataWarehouseSourceCategory.DATABASES,
             keywords=["sql", "mysql", "vitess", "planetscale"],
             label="PlanetScale MySQL",
-            caption="Enter your PlanetScale MySQL branch credentials to pull your data into the PostHog Data warehouse.",
+            caption="Enter your PlanetScale MySQL branch credentials to pull your data into the Flind Data warehouse.",
             iconPath="/static/services/planetscale.svg",
             docsUrl="https://posthog.com/docs/cdp/sources/planetscale",
             fields=cast(

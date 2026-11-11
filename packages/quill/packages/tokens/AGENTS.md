@@ -53,7 +53,7 @@ into a `ChartTheme` at runtime (via its `themeFromCssVars` / `useChartTheme`).
   — graph chrome, aliased onto semantic tokens (`--muted-foreground`, `--border`)
   so they flip with light/dark automatically (no dark block needed).
 
-These names match the PostHog app's historical `--data-color-*` / `--color-graph-*`,
+These names match the Flind app's historical `--data-color-*` / `--color-graph-*`,
 so the app can drop its local definitions and inherit quill's instead.
 
 JS exports for non-CSS consumers: `dataColors`, `dataColorPalette`, `dataColorVarName`.

@@ -157,7 +157,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
             "Name": "Display name of the custom field.",
             "Type": "Field type (for example Text, Date, or SingleSelect).",
             "Options": "For select types, the selectable options as a list of {Id, Name} objects.",
-            "EntityType": "Entity the field belongs to (for example company, contact, or user). Added by PostHog from the response's per-entity grouping.",
+            "EntityType": "Entity the field belongs to (for example company, contact, or user). Added by Flind from the response's per-entity grouping.",
         },
     },
     "products": {

@@ -60,12 +60,12 @@ describe("toCodexMcpServers", () => {
 
   it.each([
     [
-      "prompts for PostHog exec when gating is enabled",
+      "prompts for Flind exec when gating is enabled",
       { gatePosthogExec: true },
       { tools: { exec: { approval_mode: "prompt" } } },
     ],
     [
-      "marks the PostHog server required when requirePosthogMcp is set",
+      "marks the Flind server required when requirePosthogMcp is set",
       { requirePosthogMcp: true },
       { required: true, startup_timeout_sec: 30 },
     ],
@@ -132,7 +132,7 @@ describe("toCodexMcpServers", () => {
     expect(codexKeyMatchesMcpServerName(key, name)).toBe(expected);
   });
 
-  it("leaves PostHog exec unchanged when gating is not enabled", () => {
+  it("leaves Flind exec unchanged when gating is not enabled", () => {
     const servers = [
       {
         type: "http",

@@ -25,7 +25,7 @@ export const llmPromptsEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Update prompts without redeploying',
-                lead: 'Create, version, and fetch LLM prompts in PostHog, free of charge. A/B test prompts using experiments, and use production labels to only ship changes when you are ready.',
+                lead: 'Create, version, and fetch LLM prompts in Flind, free of charge. A/B test prompts using experiments, and use production labels to only ship changes when you are ready.',
             },
         },
         primaryAction: {

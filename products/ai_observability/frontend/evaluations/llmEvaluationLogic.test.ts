@@ -974,7 +974,7 @@ return result`,
                 })
             })
 
-            it('returns null when evaluation uses the PostHog default key', async () => {
+            it('returns null when evaluation uses the Flind default key', async () => {
                 await expectLogic(logic).toDispatchActions(['loadEvaluationSuccess'])
 
                 logic.actions.loadEvaluationSuccess({

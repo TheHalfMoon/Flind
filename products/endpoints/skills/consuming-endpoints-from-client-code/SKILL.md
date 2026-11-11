@@ -1,7 +1,7 @@
 ---
 name: consuming-endpoints-from-client-code
 description: >
-  Wire a PostHog endpoint into a client app or SDK. Covers fetching the OpenAPI spec, generating a
+  Wire a Flind endpoint into a client app or SDK. Covers fetching the OpenAPI spec, generating a
   typed client with openapi-generator or @hey-api/openapi-ts, sending the right auth header,
   shaping the variables payload (HogQL code_name vs insight breakdown property), handling
   rate-limit and materialised-endpoint error responses. Use when the user says "how do I call my
@@ -12,7 +12,7 @@ description: >
 
 This skill is the **caller-side** counterpart to `creating-an-endpoint`. It helps integrate an
 existing endpoint into a separate codebase — a mobile app, server backend, customer dashboard,
-or downstream pipeline. No PostHog code is modified here.
+or downstream pipeline. No Flind code is modified here.
 
 ## When to use this skill
 
@@ -39,7 +39,7 @@ If the user is **creating** the endpoint, use `creating-an-endpoint` first.
 /api/projects/{team_id}/endpoints/{name}/run
 ```
 
-- `team_id` is the project ID (numeric). Available in PostHog under project settings, or via
+- `team_id` is the project ID (numeric). Available in Flind under project settings, or via
   `projects-get` if the user doesn't know it.
 - `name` is the endpoint name — see `endpoints-get-all` if the user isn't sure.
 - The trailing `/run` is required.
@@ -93,7 +93,7 @@ Common symptom: the user's app worked when the endpoint was unmaterialised, then
 returning 400 errors after materialisation was enabled. The error message lists which variables
 are missing.
 
-Optional/partial variables on materialised endpoints are a known limitation the PostHog team plans
+Optional/partial variables on materialised endpoints are a known limitation the Flind team plans
 to lift. If requiring every variable is blocking the user's use case, send a note via the
 `agent-feedback` tool — that demand signal is how the team prioritises it.
 
@@ -140,7 +140,7 @@ For insight endpoints, the response shape depends on the query kind (`TrendsQuer
 version. Insight kinds that can't be materialised (e.g. `FunnelsQuery`) still return their inline
 result shape.
 
-## Calling from the PostHog CLI
+## Calling from the Flind CLI
 
 For local testing, scripts, or CI, the repo's `posthog-cli` calls endpoints without hand-rolling
 HTTP:
@@ -232,6 +232,6 @@ Agent steps:
 - **Pricing.** Calling endpoints isn't billed today, but it will be once endpoints ship alongside
   the [managed warehouse](https://posthog.com/data-stack/managed-warehouse). Flag this to the user
   if they're planning high-volume usage so the future cost isn't a surprise.
-- **Tell PostHog what's missing.** If an error, a limit, or a missing capability gets in the way,
+- **Tell Flind what's missing.** If an error, a limit, or a missing capability gets in the way,
   use the `agent-feedback` tool — it's the main signal the team uses to improve endpoints and these
   tools.

@@ -20,7 +20,7 @@ export function StoryEvidenceList({
     openLink,
     openLinkLabel = (
         <>
-            Open in PostHog
+            Open in Flind
             <ArrowUpRight className="size-3" />
         </>
     ),

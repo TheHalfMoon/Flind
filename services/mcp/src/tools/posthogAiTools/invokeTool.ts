@@ -5,7 +5,7 @@ import type { Context } from '@/tools/types'
 export type McpToolResult = Schemas.MCPToolResponse
 
 /**
- * Invoke an MCP tool via the PostHog API.
+ * Invoke an MCP tool via the Flind API.
  *
  * Goes through `context.api.request` rather than calling `fetch` directly. That is the seam a
  * re-routed client overrides (see lib/connection-forwarding.ts), so a tool built on this reaches

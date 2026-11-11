@@ -248,7 +248,7 @@ export function CanvasAppWidget({
             return (
                 <CanvasAppWidgetMessage
                     title="No canvases yet"
-                    message="Build an app on your PostHog data, then show it on this dashboard."
+                    message="Build an app on your Flind data, then show it on this dashboard."
                     cta={
                         <LemonButton
                             type="primary"

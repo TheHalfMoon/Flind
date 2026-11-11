@@ -85,7 +85,7 @@ def test_summarize_assurance_excludes_author_self_review() -> None:
 
 
 _EVIDENCE = {
-    "reviewer": "PostHog Review",
+    "reviewer": "Flind Review",
     "review_kind": "Deep",
     "findings_count": 0,
     "published": False,
@@ -763,7 +763,7 @@ def test_capture_review_completed_includes_familiarity_and_provenance(
         pipeline.provenance = CommitProvenance(
             commit_count=3,
             agent_commit_count=2,
-            generated_by=("PostHog Desktop",),
+            generated_by=("Flind Desktop",),
             task_ids=("task-1", "task-2"),
         )
 
@@ -780,7 +780,7 @@ def test_capture_review_completed_includes_familiarity_and_provenance(
         assert props["stamphog_agent_authored"] is True
         assert props["stamphog_agent_commit_count"] == 2
         assert props["stamphog_commit_count"] == 3
-        assert props["stamphog_generated_by"] == ["PostHog Desktop"]
+        assert props["stamphog_generated_by"] == ["Flind Desktop"]
         assert props["stamphog_task_ids"] == ["task-1", "task-2"]
         assert props["stamphog_review_trigger"] == "manual"
         assert props["stamphog_reviewer_engine"] == "openai"

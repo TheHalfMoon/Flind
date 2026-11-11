@@ -82,7 +82,7 @@ describe("filterInboxSourceOptions", () => {
     ]);
   });
 
-  it("keeps PostHog's own products when nothing is switched on", () => {
+  it("keeps Flind's own products when nothing is switched on", () => {
     expect(values(new Set())).toEqual([
       "replay_vision",
       "error_tracking",

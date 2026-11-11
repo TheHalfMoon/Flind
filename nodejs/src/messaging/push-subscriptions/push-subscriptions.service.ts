@@ -135,7 +135,7 @@ export class PushSubscriptionsService {
                 'missing_api_key',
                 401,
                 'authentication_error',
-                'Project token not provided. You can find your project token in your PostHog project settings.'
+                'Project token not provided. You can find your project token in your Flind project settings.'
             )
         }
 

@@ -184,7 +184,7 @@ def test_create_signed_commit_strips_head_sha_and_supports_binary_files(
         integration_id=13,
         repository="posthog/posthog",
         branch="posthog/wizard-123",
-        message="Set up PostHog",
+        message="Set up Flind",
         source="wizard",
     )
 
@@ -233,7 +233,7 @@ def test_github_failures_are_retryable_only_for_transient_status_codes(
                 integration_id=13,
                 repository="posthog/posthog",
                 branch="posthog/wizard-123",
-                message="Set up PostHog",
+                message="Set up Flind",
                 source="wizard",
             )
         else:
@@ -243,7 +243,7 @@ def test_github_failures_are_retryable_only_for_transient_status_codes(
                 repository="posthog/posthog",
                 head_branch="posthog/wizard-123",
                 base_branch="main",
-                title="Set up PostHog",
+                title="Set up Flind",
                 body="Body",
                 source="wizard",
             )

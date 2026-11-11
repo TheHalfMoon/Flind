@@ -1,5 +1,5 @@
 // Blocks the agent tooling injects into a session prompt. They are instructions for the agent, not text the
-// person wrote, so a feed card must not show them. Mirrors the tag list PostHog Desktop strips.
+// person wrote, so a feed card must not show them. Mirrors the tag list Flind Desktop strips.
 const INJECTED_TAGS = [
     'channel_context',
     'canvas_generation_instructions',
@@ -12,7 +12,7 @@ const INJECTED_TAGS = [
 const CUSTOM_INSTRUCTIONS_TAG = 'user_custom_instructions'
 const CUSTOM_INSTRUCTIONS_PREAMBLE = 'The user has saved custom instructions that apply to all of their tasks.'
 
-// The mentions the composer writes into a prompt. A card shows each one as the label PostHog Desktop prints for it.
+// The mentions the composer writes into a prompt. A card shows each one as the label Flind Desktop prints for it.
 const ID_MENTION_TAGS = ['error', 'experiment', 'insight', 'feature_flag']
 const OBJECT_MENTION_TAGS = [
     'dashboard',
@@ -106,7 +106,7 @@ function mentionLabel(tag: string, attrs: Record<string, string>, body: string):
     if (tag === 'comment_context') {
         return attrs.label || 'Comment'
     }
-    // A PostHog object. A paired report carries its name as the tag body.
+    // A Flind object. A paired report carries its name as the tag body.
     return attrs.id ? unescapeXml(body).trim() || attrs.id : ''
 }
 

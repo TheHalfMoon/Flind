@@ -26,7 +26,7 @@ export function RedactedMediaPlaceholder({ kind, filename }: RedactedMediaPlaceh
             <div>
                 <div className="font-semibold">{KIND_LABELS[kind]} not captured.</div>
                 <div>
-                    PostHog redacts base64 media by default. Capturing it in full is in beta.{' '}
+                    Flind redacts base64 media by default. Capturing it in full is in beta.{' '}
                     <Link to={LARGE_EVENTS_DOCS_URL} target="_blank">
                         Learn more about large events
                     </Link>

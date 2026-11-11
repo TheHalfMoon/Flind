@@ -1,4 +1,4 @@
-# PostHog Metrics Capture Service
+# Flind Metrics Capture Service
 
 Receives OTLP metrics (`/i/v1/metrics`) and Prometheus remote-write (`/i/v1/prometheus/write`) and writes them to Kafka.
 

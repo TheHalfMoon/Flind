@@ -340,7 +340,7 @@ async function lookup<T>(request: () => Promise<T>, notFound?: string): Promise<
         if (error instanceof ApiFailure && (error.status === 401 || error.status === 403)) {
             throw new HogError(
                 'access_denied',
-                `PostHog answered ${error.status} to the symbol set lookup.`,
+                `Flind answered ${error.status} to the symbol set lookup.`,
                 'Check that the personal API key has the error_tracking:read scope and access to this project.'
             )
         }

@@ -11,7 +11,7 @@ from posthog.run_mode import run_mode
 
 DB = settings.CLICKHOUSE_LOGS_CLUSTER_DATABASE
 
-# `internal_source` marks a log row that PostHog wrote about a team's own use of PostHog. The
+# `internal_source` marks a log row that Flind wrote about a team's own use of Flind. The
 # ingestion consumer sets the `internal-source` Kafka header only after it verifies the batch
 # signature, and the Kafka MV copies the header into the column. A message without the header gets
 # '', because indexOf returns 0 and array index 0 returns the element type's default value.

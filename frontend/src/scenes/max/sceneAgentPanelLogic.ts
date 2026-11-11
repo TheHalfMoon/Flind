@@ -64,7 +64,7 @@ export type sceneAgentPanelLogicType = MakeLogicType<
 >
 
 /**
- * Auto-opens the PostHog AI side panel for scenes that opt in (via `useSceneAgentPanel`), with a
+ * Auto-opens the Flind AI side panel for scenes that opt in (via `useSceneAgentPanel`), with a
  * persisted per-scene opt-out: once the user closes the panel while such a scene is active, that
  * scene stops auto-opening on this device. Only ever opens the new (sandbox) view - the legacy Max
  * view has its own scene-context system and predates this behavior.

@@ -772,7 +772,7 @@ def test_create_implementation_task_if_absent_is_idempotent(organization, team, 
         # Other scouts and pipeline reports stay billable.
         ("signals-scout-general", None, None),
         (None, None, None),
-        # A caller that knows its PostHog-system origin can declare the exemption explicitly.
+        # A caller that knows its Flind-system origin can declare the exemption explicitly.
         (None, "posthog_onboarding", "posthog_onboarding"),
     ],
 )

@@ -59,7 +59,7 @@ class CallRailSource(ResumableSource[CallRailSourceConfig, CallRailResumeConfig]
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="CallRail",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your CallRail API key to automatically pull your CallRail call-tracking data into the PostHog Data warehouse.
+            caption="""Enter your CallRail API key to automatically pull your CallRail call-tracking data into the Flind Data warehouse.
 
 You can create an API key under **Account settings → Integrations → API Keys** in CallRail. API keys are scoped to the creating user, so the key only sees data that user can access.
 

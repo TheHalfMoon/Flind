@@ -123,7 +123,7 @@ def unevaluable_filters_as_validation_errors() -> Iterator[None]:
     # instead of an opaque 500. The release condition editor and the workflow batch trigger print
     # the 400 detail as it arrives. HogQL writes its messages for a person to read, so those are
     # echoed. ClickHouse writes its messages for the engine, so the caller sees only copy that
-    # PostHog wrote: an ErrorCodeMeta user_safe string, or the generic message. Only
+    # Flind wrote: an ErrorCodeMeta user_safe string, or the generic message. Only
     # deliberately-exposed error types are converted across query build and execution - plus
     # ObjectDoesNotExist from cohort lookups and PropertyValidationError from Property
     # construction during query build, whose message already names the offending property.

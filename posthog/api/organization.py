@@ -79,7 +79,7 @@ from products.legal_documents.backend.facade.api import SIGNED_BAA_ANNOTATION, a
 class PremiumMultiorganizationPermission(permissions.BasePermission):
     """Require user to have all necessary premium features on their plan for create access to the endpoint."""
 
-    message = "You must upgrade your PostHog plan to be able to create and manage multiple organizations."
+    message = "You must upgrade your Flind plan to be able to create and manage multiple organizations."
 
     def has_permission(self, request: Request, view) -> bool:
         user = cast(User, request.user)
@@ -641,7 +641,7 @@ class OrganizationSerializer(
             return None
         return (
             f"Your current IP address ({ip or 'unknown'}) is not in this allowlist, "
-            "so this session can no longer access PostHog. Ask another organization admin to update the list."
+            "so this session can no longer access Flind. Ask another organization admin to update the list."
         )
 
     def _validate_ip_restrictions_entitlement(self) -> None:
@@ -780,7 +780,7 @@ class OrganizationViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet):
 
             return update_permissions
 
-        # Any org member may ask an admin to enable PostHog AI — enabling still requires admin.
+        # Any org member may ask an admin to enable Flind AI — enabling still requires admin.
         if self.action == "request_ai_access":
             return [
                 permission()
@@ -964,18 +964,18 @@ class OrganizationViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet):
         throttle_classes=[PostHogAIAccessRequestUserThrottle, PostHogAIAccessRequestIPThrottle],
     )
     def request_ai_access(self, request: Request, **kwargs) -> Response:
-        """Notify organization admins that a member is requesting PostHog AI be enabled."""
+        """Notify organization admins that a member is requesting Flind AI be enabled."""
         organization = self.organization
         user = cast(User, request.user)
 
-        # Nothing to request if PostHog AI is already enabled for the org.
+        # Nothing to request if Flind AI is already enabled for the org.
         if organization.is_ai_data_processing_approved:
             raise exceptions.ValidationError("Flind AI is already enabled for this organization.")
 
-        # Members only — admins can enable PostHog AI themselves, so there's nobody to ask.
+        # Members only — admins can enable Flind AI themselves, so there's nobody to ask.
         membership = OrganizationMembership.objects.filter(user=user, organization=organization).first()
         if membership is None or membership.level >= OrganizationMembership.Level.ADMIN:
-            raise exceptions.PermissionDenied("Only members can request access; admins can enable PostHog AI directly.")
+            raise exceptions.PermissionDenied("Only members can request access; admins can enable Flind AI directly.")
 
         send_posthog_ai_access_request.delay(
             organization_id=str(organization.id),

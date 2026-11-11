@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function WorkflowSetupStatusApp(): JSX.Element {
     return (
-        <AppWrapper<WorkflowSetupStatusData> appName="PostHog Messaging Setup">
+        <AppWrapper<WorkflowSetupStatusData> appName="Flind Messaging Setup">
             {({ data, openLink }) => <WorkflowSetupStatusView data={data!} openLink={openLink} />}
         </AppWrapper>
     )

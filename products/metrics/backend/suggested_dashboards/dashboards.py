@@ -256,9 +256,9 @@ def create_dashboard(
 
 
 def panels_from_tiles(snapshots: Sequence[DashboardTileSnapshot]) -> list[TemplatePanel]:
-    """Template panels from the tiles of a dashboard that a person or PostHog AI changed. Unknown tiles are left out."""
+    """Template panels from the tiles of a dashboard that a person or Flind AI changed. Unknown tiles are left out."""
     panels: list[TemplatePanel] = []
-    # A tile that PostHog AI adds has no saved box yet. It goes below the others, two to a row.
+    # A tile that Flind AI adds has no saved box yet. It goes below the others, two to a row.
     bottom = max((snapshot.layout.y + snapshot.layout.h for snapshot in snapshots if snapshot.layout), default=0)
     unplaced = 0
     for index, snapshot in enumerate(snapshots):

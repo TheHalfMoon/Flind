@@ -641,7 +641,7 @@ class TestInformationSchema(ClickhouseTestMixin, APIBaseTest):
         assert by_column["amount"] == [None, None, None]
 
     def test_saved_query_view_appears_in_tables(self):
-        # A saved-query view must surface in the catalog as a discoverable table so PostHog AI can find
+        # A saved-query view must surface in the catalog as a discoverable table so Flind AI can find
         # it. Regression guard for the whole semantic-layer effort: if views stop being enumerated (or are
         # misclassified as posthog/data_warehouse), descriptions wired onto them later never reach the AI.
         self._create_saved_query_view(name="revenue_view")
@@ -672,7 +672,7 @@ class TestInformationSchema(ClickhouseTestMixin, APIBaseTest):
 
     def test_saved_query_view_descriptions_are_merged_from_annotations(self):
         # View- and column-level descriptions stored as DataWarehouseSavedQueryColumnAnnotation must
-        # surface in the catalog so PostHog AI can read them. Guards the metadata loader plus the
+        # surface in the catalog so Flind AI can read them. Guards the metadata loader plus the
         # `table_type == "view"` resolution branch: a regression (loader dropped, wrong key, or branch
         # gated on the wrong table_type) makes descriptions silently vanish from information_schema.
         view = self._create_saved_query_view(name="revenue_view")

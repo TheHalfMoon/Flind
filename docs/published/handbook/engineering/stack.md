@@ -34,7 +34,7 @@ showTitle: true
 
 ### Workflow orchestration
 
-We historically used Celery as our task worker. At PostHog’s current scale Celery can be unreliable for larger or long-running workflows, but it remains a practical fit for **small, low-latency background tasks** (e.g. sending emails or other quick async side-effects). New medium- and large-scale jobs should use Temporal or Dagster instead.
+We historically used Celery as our task worker. At Flind’s current scale Celery can be unreliable for larger or long-running workflows, but it remains a practical fit for **small, low-latency background tasks** (e.g. sending emails or other quick async side-effects). New medium- and large-scale jobs should use Temporal or Dagster instead.
 
 We use both **[Temporal](https://temporal.io/)** and **[Dagster](https://dagster.io/)** for more complex orchestration, each chosen for their specific strengths.
 

@@ -37,7 +37,7 @@ describe("ShowActionsRow", () => {
       { kind: "compose", label: "Fix the bug", prompt: "Fix the login bug" },
       {
         kind: "compose",
-        label: "Add PostHog",
+        label: "Add Flind",
         description: "Instruments the app and opens a task to review it",
         prompt: "/instrument",
       },
@@ -48,7 +48,7 @@ describe("ShowActionsRow", () => {
 
     expect(screen.getAllByRole("button")).toHaveLength(3);
     expect(screen.getByText("Fix the bug")).toBeTruthy();
-    expect(screen.getByText("Add PostHog")).toBeTruthy();
+    expect(screen.getByText("Add Flind")).toBeTruthy();
     expect(
       screen.getByText("Instruments the app and opens a task to review it"),
     ).toBeTruthy();
@@ -61,7 +61,7 @@ describe("ShowActionsRow", () => {
       { kind: "open_space", label: "Open the space", channel_id: "chan" },
       {
         kind: "compose",
-        label: "Add PostHog",
+        label: "Add Flind",
         description: "Instruments the app and opens a task to review it",
         prompt: "/instrument",
       },

@@ -52,7 +52,7 @@ export const BooleanFlagSnippet = memo(({ language = 'javascript' }: { language?
                 matched_flag_payload = posthog.get_feature_flag_payload('flag-key', 'distinct_id_of_your_user')
         `,
         php: dedent`
-            $isMyFlagEnabledForUser = PostHog::isFeatureEnabled('flag-key', 'distinct_id_of_your_user')
+            $isMyFlagEnabledForUser = Flind::isFeatureEnabled('flag-key', 'distinct_id_of_your_user')
             if ($isMyFlagEnabledForUser) {
                 // Do something differently for this user
             }

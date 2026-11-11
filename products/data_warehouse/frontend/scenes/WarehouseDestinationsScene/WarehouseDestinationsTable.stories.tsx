@@ -7,7 +7,7 @@ import { WarehouseDestinationsTable, WarehouseDestinationsTableProps } from './W
 const WAREHOUSE: ExternalDataDestinationApi = {
     id: '01a03e9c-1b76-0000-9079-2a0ee2186dea',
     type: 'PostHogWarehouse',
-    name: 'PostHog warehouse',
+    name: 'Flind warehouse',
     config: {},
     integration: null,
     is_posthog_warehouse: true,
@@ -73,7 +73,7 @@ Default.args = {
     onDelete: () => {},
 }
 
-// The PostHog warehouse row is managed, so both of its actions stay disabled.
+// The Flind warehouse row is managed, so both of its actions stay disabled.
 export const Deleting = Template.bind({})
 Deleting.args = {
     ...Default.args,
@@ -117,5 +117,5 @@ export const Empty = Template.bind({})
 Empty.args = {
     ...Default.args,
     destinations: [],
-    emptyState: 'No destinations yet. Your sources write to the PostHog warehouse until you add one.',
+    emptyState: 'No destinations yet. Your sources write to the Flind warehouse until you add one.',
 }

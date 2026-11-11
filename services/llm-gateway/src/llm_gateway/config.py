@@ -191,7 +191,7 @@ class Settings(BaseSettings):
     posthog_host: str = "https://us.i.posthog.com"
 
     # Optional secondary capture target — mirrors every $ai_generation after the primary,
-    # so the EU deployment lands EU events on EU PostHog (team_id=1) for regional billing.
+    # so the EU deployment lands EU events on EU Flind (team_id=1) for regional billing.
     posthog_secondary_project_token: str | None = None
     posthog_secondary_host: str | None = None
 
@@ -208,12 +208,12 @@ class Settings(BaseSettings):
 
     team_rate_limit_multipliers: dict[int, int] = {}
 
-    # Additional elevated cap for PostHog staff, keyed on the authenticated
+    # Additional elevated cap for Flind staff, keyed on the authenticated
     # user's is_staff flag rather than team id, so it survives impersonation.
     # Combined with the team multiplier by taking the larger of the two.
     staff_rate_limit_multiplier: int = 10
 
-    # When true, PostHog staff (authenticated is_staff) bypass the per-user
+    # When true, Flind staff (authenticated is_staff) bypass the per-user
     # burst/sustained cost caps entirely, on every product. Spend is still
     # recorded for observability — only enforcement and the reported usage
     # status treat staff as unlimited. Set false to fall back to the

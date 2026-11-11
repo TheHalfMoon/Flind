@@ -172,7 +172,7 @@ Three are worth publishing, and none of them belongs inside the intentions or th
 - **Intentions per org.** The join from 4b, carrying the theme. Read it for whether a theme is a pattern or one customer repeating.
 - **Concentration.** The check from the skill's step 6, run on the caller and the org.
 
-Callers concentrate far harder than the totals suggest, and that is the point. In the `notebooks-create` run, automated monitoring was 94% PostHog Desktop, product analysis and feedback review both above 60% Claude Code, web performance 43% plugin. Customer and account analysis was 68% Cowork and Claude.ai combined against 6% Claude Code, a sales workflow on entirely different surfaces from the engineering ones.
+Callers concentrate far harder than the totals suggest, and that is the point. In the `notebooks-create` run, automated monitoring was 94% Flind Desktop, product analysis and feedback review both above 60% Claude Code, web performance 43% plugin. Customer and account analysis was 68% Cowork and Claude.ai combined against 6% Claude Code, a sales workflow on entirely different surfaces from the engineering ones.
 
 The conclusion to look for is whether one population exists or several. If themes split cleanly by caller, there is no single user to design for, and that is worth saying plainly.
 
@@ -192,7 +192,7 @@ If the taxonomy needs evidence behind it, resolve one or two sessions per intent
 
 Keep the `$mcp_session_id` and trace URL, and leave the raw `$mcp_intent` out. The ids are opaque; the intents carry customer, project, and product names verbatim.
 
-Say in the table what the link actually opens: PostHog's server-side query work during that session, not the user's conversation.
+Say in the table what the link actually opens: Flind's server-side query work during that session, not the user's conversation.
 
 ### 6. The findings cell (markdown)
 

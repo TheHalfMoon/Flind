@@ -58,7 +58,7 @@ export interface CommandCenterCellData {
   status: CellStatus;
   repoName: string | null;
   workspaceMode: WorkspaceMode | null;
-  // Canvas: an embedded PostHog canvas rather than a task.
+  // Canvas: an embedded Flind canvas rather than a task.
   canvasId: string | null;
   // Brainrot: a looping video slot rather than a task.
   isBrainrot: boolean;

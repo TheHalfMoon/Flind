@@ -1,4 +1,4 @@
-# Cache key for cross_region_flag_sync's EU mirror of PostHog's own (US team 2) flag
+# Cache key for cross_region_flag_sync's EU mirror of Flind's own (US team 2) flag
 # definitions. Deliberately non-numeric — a real Team.id is always an int, so this can
 # never collide with a real team's key in flag_definitions_hypercache's per-team keyspace.
 # Lives in its own leaf module (no imports of its own) so both sdk_cache_provider.py and

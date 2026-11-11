@@ -609,7 +609,7 @@ function loopStatusBadgeVariant(
 /**
  * Shown in place of the configuration summary for an archived workflow. The
  * loop API has no archived state, so resuming from here would set the workflow
- * active instead of restoring it; restoring happens in PostHog.
+ * active instead of restoring it; restoring happens in Flind.
  */
 function LoopArchivedNotice({ workflowUrl }: { workflowUrl: string | null }) {
   return (
@@ -618,7 +618,7 @@ function LoopArchivedNotice({ workflowUrl }: { workflowUrl: string | null }) {
         This loop is archived
       </span>
       <span className="text-[12px] text-gray-11 leading-snug">
-        It no longer runs and can't be edited here. Restore it in PostHog to
+        It no longer runs and can't be edited here. Restore it in Flind to
         bring it back, or delete it here. Run history stays available.
       </span>
       {workflowUrl ? (
@@ -629,7 +629,7 @@ function LoopArchivedNotice({ workflowUrl }: { workflowUrl: string | null }) {
           onClick={() => openExternalUrl(workflowUrl)}
         >
           <ArrowSquareOutIcon size={14} />
-          Open in PostHog
+          Open in Flind
         </Button>
       ) : null}
     </div>

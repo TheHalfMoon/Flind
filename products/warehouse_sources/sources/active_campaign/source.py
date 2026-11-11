@@ -56,7 +56,7 @@ class ActiveCampaignSource(ResumableSource[ActiveCampaignSourceConfig, ActiveCam
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="ActiveCampaign",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your ActiveCampaign API URL and key to sync your CRM and marketing data into the PostHog Data warehouse.
+            caption="""Enter your ActiveCampaign API URL and key to sync your CRM and marketing data into the Flind Data warehouse.
 
 You can find both in your ActiveCampaign account under **Settings > Developer**. The API key is account-wide and grants read access to every endpoint listed below.""",
             iconPath="/static/services/activecampaign.png",
@@ -96,7 +96,7 @@ You can find both in your ActiveCampaign account under **Settings > Developer**.
             # validation — an unresolvable host (wrong account name), a private/internal host,
             # or a bad scheme. All are user-config problems retrying can't fix. Match the stable
             # prefix, not the appended reason (which can embed a resolved IP).
-            "ActiveCampaign API URL is not allowed": "PostHog couldn't reach the ActiveCampaign API URL you entered. Check that it's correct — it should look like https://youraccount.api-us1.com — and reconnect.",
+            "ActiveCampaign API URL is not allowed": "Flind couldn't reach the ActiveCampaign API URL you entered. Check that it's correct — it should look like https://youraccount.api-us1.com — and reconnect.",
         }
 
     def get_schemas(

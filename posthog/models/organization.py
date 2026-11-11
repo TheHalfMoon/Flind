@@ -210,7 +210,7 @@ class Organization(ModelActivityMixin, UUIDTModel):
             "Terms of service violation",
         )
         DESKTOP_ABUSE = (
-            "Suspected PostHog Desktop abuse. Contact PostHog support if you think this is a mistake.",
+            "Suspected Flind Desktop abuse. Contact Flind support if you think this is a mistake.",
             "Desktop abuse",
         )
 

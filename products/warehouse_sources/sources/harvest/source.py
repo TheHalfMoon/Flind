@@ -118,7 +118,7 @@ class HarvestSource(ResumableSource[HarvestSourceConfig, HarvestResumeConfig]):
             label="Harvest",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["time tracking", "timesheets", "invoicing"],
-            caption="""Enter your Harvest account ID and a personal access token to sync your time tracking and invoicing data into the PostHog Data warehouse.
+            caption="""Enter your Harvest account ID and a personal access token to sync your time tracking and invoicing data into the Flind Data warehouse.
 
 Create a token at [id.getharvest.com/developers](https://id.getharvest.com/developers), which shows the account ID alongside it. The token inherits the permissions of the user who created it, so connect a user who can see the data you want to sync. Listing users and roles needs an administrator.""",
             iconPath="/static/services/harvest.png",

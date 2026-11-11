@@ -1,7 +1,7 @@
 """
 The question, tab meanings, and model for a filter picker search.
 
-They live in PostHog's own prompt management, as `taxonomic-filter-search-intent` in the PostHog project,
+They live in Flind's own prompt management, as `taxonomic-filter-search-intent` in the Flind project,
 so a new wording ships by moving the `production` label and not by a deploy. The prompt text is the
 question. Its config holds the tab meanings as `options`, the `confident_threshold`, and `model`. The bundled
 copy below is the fallback when the managed prompt is unreachable or malformed; keep it close to the

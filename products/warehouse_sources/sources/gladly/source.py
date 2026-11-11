@@ -67,19 +67,19 @@ class GladlySource(ResumableSource[GladlySourceConfig, GladlyResumeConfig]):
             "403 Client Error: Forbidden for url": "Gladly denied access. Please check that the agent has the API User permission.",
             # Raised by `_report_rows` when a CSV report lacks a keyed column. The same window returns
             # the same header on a retry, so neither the sync nor the incremental-field picker can
-            # fix it. The copy names Gladly first and PostHog support as the fallback for the
+            # fix it. The copy names Gladly first and Flind support as the fallback for the
             # renamed-column case, where the report exists.
             "Gladly report is missing required columns": (
                 "Gladly returned data that doesn't match the report this table needs, so there was "
                 "no data to sync. This usually means Gladly could not build the report for your "
                 "account. Ask Gladly support to check the report is available for your account. If "
-                "Gladly confirms it is, contact PostHog support."
+                "Gladly confirms it is, contact Flind support."
             ),
             "Gladly report unavailable for this account": (
-                "Gladly returned an error every time PostHog asked for the report this table syncs "
+                "Gladly returned an error every time Flind asked for the report this table syncs "
                 "from, and the table has never synced. Ask Gladly support to make the report "
                 "available for your account, then re-enable this table. If Gladly confirms it is "
-                "available, contact PostHog support."
+                "available, contact Flind support."
             ),
         }
 
@@ -113,7 +113,7 @@ class GladlySource(ResumableSource[GladlySourceConfig, GladlyResumeConfig]):
             name=ExternalDataSourceType.GLADLY,
             category=DataWarehouseSourceCategory.CUSTOMER_SUPPORT,
             label="Gladly",
-            caption="""Connect your Gladly account to pull your customer service data into the PostHog Data warehouse.
+            caption="""Connect your Gladly account to pull your customer service data into the Flind Data warehouse.
 
 Your organization is the part of your Gladly URL before `.gladly.com`. For `myorg.gladly.com` enter `myorg`, and for `myorg.us-1.gladly.com` enter `myorg.us-1`. The API token must belong to an agent with the API User permission (Settings > API Tokens). Leave the domain on Production unless you are connecting a Gladly sandbox, which is served on `gladly.qa`. Data comes from Gladly's scheduled export jobs, which retain files for 14 days. History older than that requires asking Gladly support to regenerate exports. The voice transcripts table reads the calls and voicemails in those same exports and makes one request per call. The conversations and tasks tables are built from Gladly's Conversation Export and Task Export reports instead, so they are not limited to the 14-day export window. The conversation timestamps, contact timestamps, and work session events tables also come from Gladly's reports and reach back 90 days on their first sync. The teams, inboxes, and answers tables are read in full on every sync. Gladly keeps events for 24 hours only, so the events table needs to sync more often than once a day, for example every 12 hours, to keep a full history.""",
             iconPath="/static/services/gladly.png",

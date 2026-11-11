@@ -1,6 +1,6 @@
 """Proactive product enablement for self-driving Signals setup.
 
-Turns PostHog products ON so their signal sources have data to read. The wizard
+Turns Flind products ON so their signal sources have data to read. The wizard
 calls this (via the `products-enable` MCP tool) before it enables sources, so a
 freshly-instrumented project isn't left with empty inboxes.
 

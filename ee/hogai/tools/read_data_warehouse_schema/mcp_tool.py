@@ -19,7 +19,7 @@ class ReadDataWarehouseSchemaMCPToolArgs(BaseModel):
 @mcp_tool_registry.register(scopes=["warehouse_table:read", "warehouse_view:read"])
 class ReadDataWarehouseSchemaMCPTool(HogQLDatabaseMixin, MCPTool[ReadDataWarehouseSchemaMCPToolArgs]):
     """
-    MCP tool that returns core PostHog table schemas (events, groups, persons, sessions).
+    MCP tool that returns core Flind table schemas (events, groups, persons, sessions).
 
     This provides the data model information needed for writing HogQL queries.
     """
@@ -38,7 +38,7 @@ class ReadDataWarehouseSchemaMCPTool(HogQLDatabaseMixin, MCPTool[ReadDataWarehou
         core_tables = {"events", "groups", "persons", "sessions"}
         serialized = database.serialize(hogql_context, include_only=core_tables)
 
-        lines: list[str] = ["# Core PostHog tables", ""]
+        lines: list[str] = ["# Core Flind tables", ""]
 
         for table_name, table in serialized.items():
             lines.append(f"## Table `{table_name}`")
@@ -60,7 +60,7 @@ class ReadDataWarehouseSchemaMCPTool(HogQLDatabaseMixin, MCPTool[ReadDataWarehou
 
         extra_sections = (
             f"{section('Data warehouse tables', warehouse_tables)}"
-            f"{section('PostHog Postgres tables', system_tables)}"
+            f"{section('Flind Postgres tables', system_tables)}"
             f"{section('Data warehouse views', views)}"
         )
 

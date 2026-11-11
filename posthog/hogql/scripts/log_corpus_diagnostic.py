@@ -20,7 +20,7 @@ paginated download, parity grind and failure report are shared via
 2. **Download a redacted dump** via `hogli metabase:query` to the
    gitignored `posthog/hogql/scripts/.local/hogql_log_corpus.json`.
    The embedded SQL applies a chain of `replaceRegexpAll` redaction
-   passes (emails, UUIDs, IPv4/6, PostHog API tokens, plus
+   passes (emails, UUIDs, IPv4/6, Flind API tokens, plus
    defence-in-depth passes for JWT / Stripe / AWS / GitHub / Slack
    credentials, and a broad hex catch-all). Metabase caps responses at
    2000 rows, so larger pulls are paged.
@@ -96,7 +96,7 @@ _REDACTION_PASSES: list[tuple[str, str]] = [
         r"[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
         "<uuid>",
     ),
-    # PostHog API tokens: phc_/phx_/phs_ today, any future ph?_ prefix.
+    # Flind API tokens: phc_/phx_/phs_ today, any future ph?_ prefix.
     (r"\bph[a-z]_[A-Za-z0-9]{10,}", "<ph_token>"),
     # Credential shapes below ~never appear in HogQL text — kept as
     # defence-in-depth against a stray paste reaching the dump.
@@ -151,7 +151,7 @@ WHERE event_time > now() - INTERVAL 7 DAY
   AND type = 'QueryFinish'
   AND is_initial_query
   -- Only teams that have opted into AI data processing — this widens
-  -- the corpus beyond PostHog's own team 2 to any consenting team's
+  -- the corpus beyond Flind's own team 2 to any consenting team's
   -- real HogQL, while keeping queries from non-consenting teams out.
   AND JSONExtractString(log_comment, 'ai_data_processing_approved') = 'true'
   AND JSONExtractString(log_comment, 'query', 'kind') = 'HogQLQuery'

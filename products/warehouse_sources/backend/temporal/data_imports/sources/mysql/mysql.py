@@ -1,10 +1,10 @@
-"""MySQL driver for PostHog's data-warehouse import pipeline.
+"""MySQL driver for Flind's data-warehouse import pipeline.
 
 Everything MySQL-specific — connection lifecycle (with SSH tunnel),
 schema listing, per-cursor metadata for the streaming sync, the dlt
 pipeline build, type conversions, the `FORCE INDEX` bad-plan fallback —
 lives on `MySQLImplementation`. The source-class `MySQLSource` is a
-thin PostHog-layer wrapper that just holds an instance and validates
+thin Flind-layer wrapper that just holds an instance and validates
 credentials.
 
 Module-level free helpers (`_build_query`, `_sanitize_identifier`,
@@ -457,7 +457,7 @@ _SSL_CLOSED_WITH_BUFFERED_DATA_TOKEN = "Closed before TLS handshake with data in
 
 # paramiko raises a bare, message-less EOFError from `start_client` when the SSH gateway accepts
 # the TCP connection but closes it during the SSH handshake — a non-SSH service on the port, a
-# bastion refusing PostHog's IPs, or a proxy that resets the stream. sshtunnel doesn't wrap it
+# bastion refusing Flind's IPs, or a proxy that resets the stream. sshtunnel doesn't wrap it
 # (it only translates *auth* failures into BaseSSHTunnelForwarderError), so it escapes with an
 # empty `str()`, matching no non-retryable rule and retrying forever. `connect` translates it into
 # this stable, classifiable message (see `MySQLSource.get_non_retryable_errors`) — same

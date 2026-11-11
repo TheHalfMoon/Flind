@@ -97,7 +97,7 @@ describe('viewLinkLogic', () => {
         } as any)
 
         expect(logic.values.groupedTableOptions).toEqual([
-            { value: 'PostHog tables', items: ['events'] },
+            { value: 'Flind tables', items: ['events'] },
             { value: 'Data warehouse', items: ['stripe_customers'] },
             { value: 'Views', items: ['my_view'] },
             { value: 'Other', items: ['odd_one'] },

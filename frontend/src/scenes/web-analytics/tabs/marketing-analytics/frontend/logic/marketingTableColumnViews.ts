@@ -77,7 +77,7 @@ export function withoutDefaultPins(query: DataTableNode): DataTableNode {
     return query
 }
 
-/** Conversion goals and their cost per conversion, which PostHog calculates from events. */
+/** Conversion goals and their cost per conversion, which Flind calculates from events. */
 export function isPostHogColumn(column: string): boolean {
     return !DIMENSIONS.has(column) && !PLATFORM_METRICS.has(column)
 }

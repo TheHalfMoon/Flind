@@ -100,7 +100,7 @@ const SOURCE_LABELS: Record<string, string> = {
   [WEB_SOURCE]: "Web",
   hogdesk: "HogDesk",
   mcp_analytics: "MCP analytics",
-  posthog_code: "PostHog Desktop",
+  posthog_code: "Flind Desktop",
   review_hog: "ReviewHog",
 };
 

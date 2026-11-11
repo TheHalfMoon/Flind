@@ -209,7 +209,7 @@ describe('WizardInstallStep with wizardOverrides', () => {
             workspace: { type: 'local_folder', project_name: 'example-project' },
             program: {
                 id: 'posthog-integration',
-                name: 'PostHog integration',
+                name: 'Flind integration',
                 description: '',
                 command: [],
                 wizard_version: '1.0.0',

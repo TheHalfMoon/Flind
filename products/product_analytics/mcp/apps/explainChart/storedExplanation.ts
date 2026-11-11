@@ -1,7 +1,7 @@
 import type { ExplainChartData } from './explainChartTypes'
 import { storySeriesLabel } from './storySeries'
 
-// The page builds PostHog links from the query or insight id, so only GitHub links are stored.
+// The page builds Flind links from the query or insight id, so only GitHub links are stored.
 export function storedExplanation(data: ExplainChartData): ExplainChartData {
     return {
         ...data,

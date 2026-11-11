@@ -369,7 +369,7 @@ def _diagnose_one(
                 title=f"Verify UTM tagging for {display}",
                 detail=(
                     f"{display} is syncing fine but no events with matching utm_source arrived in the last 7 "
-                    "days. Check that ad URLs include the correct utm_source parameter, and that PostHog is "
+                    "days. Check that ad URLs include the correct utm_source parameter, and that Flind is "
                     "capturing events on the landing pages."
                 ),
                 severity="warning",

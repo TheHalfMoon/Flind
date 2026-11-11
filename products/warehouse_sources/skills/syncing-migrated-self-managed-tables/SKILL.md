@@ -1,27 +1,27 @@
 ---
 name: syncing-migrated-self-managed-tables
 description: >
-  Turn on syncing for warehouse tables that PostHog moved from self-managed tables to managed sources (Amazon S3,
+  Turn on syncing for warehouse tables that Flind moved from self-managed tables to managed sources (Amazon S3,
   Google Cloud Storage, Azure Blob, Cloudflare R2 or File upload). Use when the user asks "what happened to my
   self-managed tables", "how do I sync my migrated bucket tables", "why does my table say it is waiting for its first
   sync", "will I be billed for these tables", or when a migrated table fails its first sync with access denied, "No
-  files are available for table", or "PostHog did not replace the self-managed table".
+  files are available for table", or "Flind did not replace the self-managed table".
 ---
 
 # Syncing migrated self-managed tables
 
-PostHog no longer links tables that read a bucket directly. Eligible existing self-managed tables now have a managed
+Flind no longer links tables that read a bucket directly. Eligible existing self-managed tables now have a managed
 source and a schema that is turned off. The table keeps working and keeps its name. It costs nothing until someone turns
 syncing on. Turning syncing on starts billing, so the user must agree first.
 
 ## What happened
 
-- PostHog made one source for each bucket and key prefix. Tables that need different access rules get different
+- Flind made one source for each bucket and key prefix. Tables that need different access rules get different
   sources.
 - Each table got one schema with `should_sync` set to `false`. The schema reads the same files that the table read.
 - The table keeps its id and name. Queries, views and insights that use it keep working.
 - Until the first sync, ClickHouse still reads the user's bucket on every query. There is no charge for this.
-- The first successful sync "adopts" the table. PostHog copies the data into its own storage and points the same table
+- The first successful sync "adopts" the table. Flind copies the data into its own storage and points the same table
   row at the copy. After that, the table is a normal imported table and is billed like one.
 - Source descriptions show the origin: "Self-managed tables in <bucket>" for bucket sources and "Uploaded file for
   <name>" for file upload sources.
@@ -150,26 +150,26 @@ list and read objects in this bucket.` The key from the old table is no longer v
   table's folder. For a Delta table the message reads `... denied access to the bucket for the Delta table '<name>'.
 Check that the key can read its folder.` The key must list and read the table's whole path. This error turns syncing
   off and can show as `The storage provider rejected these credentials. ...`. Ask the user to fix the key's access in
-  their storage provider, or to enter new credentials for the source in the PostHog app. Do not ask for keys in the
+  their storage provider, or to enter new credentials for the source in the Flind app. Do not ask for keys in the
   chat or send them through a tool. Then turn syncing on again.
 - `No files are available for table '<name>'. No file in the bucket matches '<pattern>'.` No file matches the table's
   pattern now. The files may have been moved, renamed or removed. A variant says `The files it was discovered from may
 have been renamed, moved, or removed from the bucket.` Ask the user to check the bucket.
 - `No files are available for table '<name>'. The Delta table is no longer at its folder in the bucket.` A writer
-  replaced the table and its folder is missing. Within one sync, PostHog waits and retries a few times, because the
+  replaced the table and its folder is missing. Within one sync, Flind waits and retries a few times, because the
   table often comes back by itself.
 - Both `No files are available` errors turn syncing off when they fail the sync, and can show as
   `The files behind this table are no longer in the bucket. ...`. Ask the user to restore the files or the Delta
   folder, then turn syncing on again.
-- `PostHog did not replace the self-managed table '<name>', because <reason>. The table still reads its own files. To
+- `Flind did not replace the self-managed table '<name>', because <reason>. The table still reads its own files. To
 continue, an organization admin must make the access rules of this source the same as the rules of the table, then
-turn syncing on again. PostHog support can help with this.` Access rules changed after the move. The sync fails once
+turn syncing on again. Flind support can help with this.` Access rules changed after the move. The sync fails once
   and stops on purpose, and the table keeps reading the bucket. An organization admin must match the rules of the
   source to the rules of the table. Then turn syncing on again.
 
 ### Tables that were not migrated
 
-A table that was not migrated stays self-managed and keeps reading its bucket. PostHog skips a table when:
+A table that was not migrated stays self-managed and keeps reading its bucket. Flind skips a table when:
 
 - the URL is not a storage host that a managed source reads (it must be Amazon S3, Google Cloud Storage, Azure Blob or
   Cloudflare R2),
@@ -178,8 +178,8 @@ A table that was not migrated stays self-managed and keeps reading its bucket. P
   sources or for the warehouse, or the rules name too many roles),
 - the file format or a column type has no import equivalent, or a column has the name of a column that the import adds.
 
-PostHog does not create new self-managed tables any more. For these tables, tell the user to add the bucket as a new
-managed source, or to contact PostHog support.
+Flind does not create new self-managed tables any more. For these tables, tell the user to add the bucket as a new
+managed source, or to contact Flind support.
 
 ## Important notes
 

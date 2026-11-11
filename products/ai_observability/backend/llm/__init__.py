@@ -63,7 +63,7 @@ def get_default_models() -> list[ModelInfo]:
 
 
 def get_playground_models() -> list[ModelInfo]:
-    """Returns the models available in the PostHog-funded playground.
+    """Returns the models available in the Flind-funded playground.
 
     This is a curated subset excluding expensive models like pro/opus tiers
     while including one flagship per provider for quality evaluation.

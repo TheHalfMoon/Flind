@@ -94,7 +94,7 @@ def build_project_picker_blocks(
             "block_id": f"{PROJECT_PICKER_BLOCK_ID_PREFIX}:{context_token}",
             "text": {
                 "type": "mrkdwn",
-                "text": "This Slack workspace is connected to more than one PostHog project. Which one should I use?",
+                "text": "This Slack workspace is connected to more than one Flind project. Which one should I use?",
             },
         },
         {

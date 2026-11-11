@@ -115,7 +115,7 @@ class TestWrapClickhouseQueryError:
             (
                 491,
                 "UNACCEPTABLE_URL",
-                "PostHog can't read from this storage host. Check the files URL pattern on the table points at "
+                "Flind can't read from this storage host. Check the files URL pattern on the table points at "
                 "S3, Google Cloud Storage, Cloudflare R2, or Azure Blob Storage.",
             ),
             (675, "CANNOT_PARSE_IPV4", "Cannot parse an IPv4 address. Check the format of your IP addresses."),
@@ -187,13 +187,13 @@ class TestWrapClickhouseQueryError:
                 "aggregate_state",
                 "AggregateFunction(argMin, Nullable(String), DateTime64(6, 'UTC'))",
                 "This query returns a column of type `AggregateFunction(argMin, Nullable(String), DateTime64(6, 'UTC'))`, "
-                "which PostHog can't send back in results. The column holds a stored aggregate state. Wrap it in the "
+                "which Flind can't send back in results. The column holds a stored aggregate state. Wrap it in the "
                 "matching -Merge function, for example `argMinMerge(column)`, to get the final value.",
             ),
             (
                 "mixed_value_types",
                 "Variant(Int64, UInt64)",
-                "This query returns a column of type `Variant(Int64, UInt64)`, which PostHog can't send back in "
+                "This query returns a column of type `Variant(Int64, UInt64)`, which Flind can't send back in "
                 "results. The column mixes value types. This usually comes from `UNION ALL` branches, `coalesce()` "
                 "or `ifNull()` arguments, or `if()` branches that return different types. Make them return one "
                 "type, for example with `toString()` or `toFloat()`.",
@@ -201,7 +201,7 @@ class TestWrapClickhouseQueryError:
             (
                 "other_type",
                 "JSON",
-                "This query returns a column of type `JSON`, which PostHog can't send back in results. Convert the "
+                "This query returns a column of type `JSON`, which Flind can't send back in results. Convert the "
                 "column to a basic type such as a string, number, or date, or leave it out of the results.",
             ),
         ]
@@ -269,7 +269,7 @@ class TestWrapClickhouseQueryError:
             # NETWORK_ERROR (210) is a genuine server-side fault and must not be exposed.
             (210, "NETWORK_ERROR"),
             # SYNTAX_ERROR (62) stays internal: HogQL validates syntax first, so a raw CH syntax error
-            # signals a PostHog SQL-generation bug that belongs in error tracking.
+            # signals a Flind SQL-generation bug that belongs in error tracking.
             (62, "SYNTAX_ERROR"),
             (115, "UNKNOWN_SETTING"),
             (497, "ACCESS_DENIED"),

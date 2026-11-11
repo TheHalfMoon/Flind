@@ -41,7 +41,7 @@ jest.mock('products/product_analytics/frontend/generated/api', () => ({
     insightsList: jest.fn(),
 }))
 
-describe('PostHog filesystem projection', () => {
+describe('Flind filesystem projection', () => {
     const decoder = new TextDecoder()
     const entry = (id: string, path: string, type = 'notebook'): FileSystemApi => ({
         id,
@@ -557,14 +557,14 @@ describe('PostHog filesystem projection', () => {
     })
 
     it.each(['https://example.com', '//example.com', '/\\example.com', 'javascript:alert(1)', '/\n/example.com'])(
-        'rejects a file destination outside PostHog: %j',
+        'rejects a file destination outside Flind: %j',
         async (href) => {
             jest.mocked(fileSystemList).mockResolvedValue({
                 count: 1,
                 results: [{ ...entry('link', 'Link', 'unknown'), href }],
             })
             const fs = new PosthogFilesystem('42', new AbortController().signal)
-            await expect(fs.navigationUrl('Link.json', '/posthog/files')).rejects.toThrow('no PostHog page')
+            await expect(fs.navigationUrl('Link.json', '/posthog/files')).rejects.toThrow('no Flind page')
         }
     )
 

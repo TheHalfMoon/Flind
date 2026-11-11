@@ -62,7 +62,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "columns": {
             "id": "Unique identifier of the site.",
             "object": 'Type of object, always equal to "site".',
-            "organization_id": "ID of the organization owning this site (added by PostHog during sync).",
+            "organization_id": "ID of the organization owning this site (added by Flind during sync).",
             "title": "Title of the site.",
             "type": "The type of the site.",
             "hostname": "Custom hostname for the site, e.g. docs.mycompany.com.",
@@ -79,7 +79,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "columns": {
             "id": "Unique identifier for the user.",
             "object": 'Type of object, always equal to "member".',
-            "organization_id": "ID of the organization the membership belongs to (added by PostHog during sync).",
+            "organization_id": "ID of the organization the membership belongs to (added by Flind during sync).",
             "role": "The role of the member in the organization, null for guests.",
             "user": "Profile of the user: id, display name, email, and photo URL.",
             "disabled": "Whether the membership is disabled, preventing the user from accessing content.",
@@ -94,7 +94,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "columns": {
             "id": "Unique identifier for the team.",
             "object": 'Type of object, always equal to "team".',
-            "organization_id": "ID of the organization the team belongs to (added by PostHog during sync).",
+            "organization_id": "ID of the organization the team belongs to (added by Flind during sync).",
             "title": "Title of the team.",
             "members": "Count of members in this team.",
             "spaces": "Count of spaces this team has access to.",
@@ -107,7 +107,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "columns": {
             "id": "Unique identifier for the change request.",
             "object": 'Type of object, always equal to "change-request".',
-            "organization_id": "ID of the organization the change request belongs to (added by PostHog during sync).",
+            "organization_id": "ID of the organization the change request belongs to (added by Flind during sync).",
             "number": "Incremental identifier of the change request within its space.",
             "status": "Status of the change request: draft, open, merged, or archived.",
             "subject": "Subject of the change request.",
@@ -128,7 +128,7 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "columns": {
             "id": "Unique identifier for the comment.",
             "object": 'Type of object, always equal to "comment".',
-            "space_id": "ID of the space the comment was posted in (added by PostHog during sync).",
+            "space_id": "ID of the space the comment was posted in (added by Flind during sync).",
             "postedBy": "Profile of the user who posted the comment.",
             "postedAt": "Timestamp of when the comment was posted.",
             "editedAt": "Timestamp of when the comment was last edited.",
@@ -146,8 +146,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "docs_url": "https://gitbook.com/docs/developers/gitbook-api/api-reference/spaces/space-content",
         "columns": {
             "id": "Unique identifier for the page in the revision.",
-            "space_id": "ID of the space the page belongs to (added by PostHog during sync).",
-            "parent_page_id": "ID of the page or group this page is nested under, null for top-level pages (added by PostHog during sync).",
+            "space_id": "ID of the space the page belongs to (added by Flind during sync).",
+            "parent_page_id": "ID of the page or group this page is nested under, null for top-level pages (added by Flind during sync).",
             "type": "Type of page: document, group, link, or computed.",
             "title": "Title of the page.",
             "linkTitle": "Optional custom title for the page in the table of contents and mentions.",
@@ -172,8 +172,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "columns": {
             "id": "The ID of the site question.",
             "object": 'Type of object, always equal to "site-question".',
-            "organization_id": "ID of the organization owning the site (added by PostHog during sync).",
-            "site_id": "ID of the site the question was asked on (added by PostHog during sync).",
+            "organization_id": "ID of the organization owning the site (added by Flind during sync).",
+            "site_id": "ID of the site the question was asked on (added by Flind during sync).",
             "question": "Canonical text for the unique site question.",
             "type": "Type classification of the question: exploring, how-to, troubleshooting, reference, or unknown.",
             "createdAt": "Timestamp of when the canonical question was created.",
@@ -188,8 +188,8 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "columns": {
             "id": "The ID of the site question answer.",
             "object": 'Type of object, always equal to "site-question-answer".',
-            "organization_id": "ID of the organization owning the site (added by PostHog during sync).",
-            "site_id": "ID of the site the answer was generated on (added by PostHog during sync).",
+            "organization_id": "ID of the organization owning the site (added by Flind during sync).",
+            "site_id": "ID of the site the answer was generated on (added by Flind during sync).",
             "question": "The parent site question, with its ID and type.",
             "topics": "The IDs of the associated site topics.",
             "input": "The question as asked: normalized text and raw text.",
@@ -211,9 +211,9 @@ CANONICAL_DESCRIPTIONS: CanonicalDescriptions = {
         "description": "Membership of every team in every organization the token can access, with each member's role in the team.",
         "docs_url": "https://gitbook.com/docs/developers/gitbook-api/api-reference/teams",
         "columns": {
-            "organization_id": "ID of the organization the team belongs to (added by PostHog during sync).",
-            "team_id": "ID of the team (added by PostHog during sync).",
-            "user_id": "ID of the user who is a member of the team (added by PostHog during sync from organization.user.id).",
+            "organization_id": "ID of the organization the team belongs to (added by Flind during sync).",
+            "team_id": "ID of the team (added by Flind during sync).",
+            "user_id": "ID of the user who is a member of the team (added by Flind during sync from organization.user.id).",
             "organization": "The user's organization membership, including their user profile and organization role.",
             "team": "The user's membership in the team, including their team role.",
             "permissions": "The set of permissions the token has on the team member.",

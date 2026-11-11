@@ -72,7 +72,7 @@ interface CommandDefinition<Args, Options, Result> {
     args?: Args
     // The key becomes the flag: `dotenvFile` is `--dotenv-file`.
     options?: Options
-    // The command changes something in PostHog or on disk. HOG_DRY_RUN turns on its `dryRun` option,
+    // The command changes something in Flind or on disk. HOG_DRY_RUN turns on its `dryRun` option,
     // and fails it when it has none. Commands that only read run as usual in a dry run.
     writes?: boolean
     // The command runs when posthog.json is invalid, like `hog config check`, which reports why.

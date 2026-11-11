@@ -77,7 +77,7 @@ describe('openai template', () => {
         expect(fetchResponse.finished).toBe(true)
         expect(fetchResponse.error).toBeUndefined()
     })
-    it('sends a custom event named after the PostHog event by default', async () => {
+    it('sends a custom event named after the Flind event by default', async () => {
         const response = await tester.invokeMapping(
             'Custom',
             { pixelId: 'pixel-123', apiKey: 'api-key' },

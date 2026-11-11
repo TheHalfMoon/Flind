@@ -1,24 +1,24 @@
 ---
 name: querying-canvas-data
 description: >
-  Get PostHog data into a canvas correctly: the host-injected `ph` SDK (loadInsight, query,
+  Get Flind data into a canvas correctly: the host-injected `ph` SDK (loadInsight, query,
   capture, state, connectors, openExternal, navigate), the data hierarchy (saved insights first, typed query nodes
   second, inline HogQL last), verifiability (insight-backed metrics link their saved insight in
-  PostHog; ad-hoc queries expose the exact query that ran), per-insight-type result shapes,
+  Flind; ad-hoc queries expose the exact query that ran), per-insight-type result shapes,
   progressive per-query loading, date-range wiring, live third-party data through the viewer's own
   connections (ph.connectors), and event capture from a canvas. Use whenever a canvas shows
-  metrics, charts, tables, any PostHog data, or data from GitHub or an MCP server, or needs to send
+  metrics, charts, tables, any Flind data, or data from GitHub or an MCP server, or needs to send
   analytics events.
 ---
 
 # Querying canvas data
 
-The `ph` bridge is the only way a canvas talks to PostHog. Import it with
+The `ph` bridge is the only way a canvas talks to Flind. Import it with
 `import { ph } from "@posthog/canvas-sdk"` — a platform-provided module, so it needs no
 `dependencies` entry. The same object is also installed as the `window.ph` global, which existing
 canvases use; prefer the import in new code. Its typed surface is
 [references/canvas-sdk.d.ts](references/canvas-sdk.d.ts). Never initialize it: credentials stay in
-the host, and `fetch()`, posthog-js, and hand-rolled clients cannot reach PostHog from the sandbox.
+the host, and `fetch()`, posthog-js, and hand-rolled clients cannot reach Flind from the sandbox.
 External requests and resources require a non-PostHog origin declared in
 `capabilities.network.origins`, and work only in the published canvas — the edit-mode preview
 blocks all direct network access. This includes external stylesheets; remote scripts remain
@@ -26,12 +26,12 @@ blocked.
 
 ## Data hierarchy — back every metric with a saved insight
 
-1. **Preferred — save an insight, load it by reference.** Use the PostHog MCP insight tools to
+1. **Preferred — save an insight, load it by reference.** Use the Flind MCP insight tools to
    create/save an insight that computes the metric with an insight query type (TrendsQuery,
    FunnelsQuery, RetentionQuery, PathsQuery, or the web-analytics kinds WebOverviewQuery /
    WebStatsTableQuery — not raw SQL). Confirm its numbers, note the `short_id`, and render it with
    `await ph.loadInsight(shortId, { dateRange })`. These are proven queries — numbers match the
-   PostHog UI exactly (sessionization, unique users, breakdowns, bounce rate). Never fabricate a
+   Flind UI exactly (sessionization, unique users, breakdowns, bounce rate). Never fabricate a
    query or guess event/property names; discover and save them via MCP first.
 2. **Secondary — an ad-hoc typed node**: `ph.query({ kind: "TrendsQuery", series: [...], dateRange: {...} })`
    when saving an insight genuinely doesn't fit.
@@ -46,21 +46,21 @@ Whatever tier you use, **declare it in the project's `capabilities`** before pub
 `captureEvents`, and `inlineQueries: true` for any `ph.query` use. The host rejects undeclared
 calls at runtime, and validation fails on undeclared literals.
 
-## Verifiability — every claim must be checkable in PostHog
+## Verifiability — every claim must be checkable in Flind
 
 A number a viewer cannot verify is a number they cannot trust. Every data-backed figure a canvas
 shows — a KPI, a chart, a table, a stated conclusion — must carry the verification affordance for
 its tier:
 
-1. **Insight-backed metrics link the real insight in PostHog.** For a metric loaded from a saved
-   insight (the preferred tier), render a "View in PostHog" affordance that calls
+1. **Insight-backed metrics link the real insight in Flind.** For a metric loaded from a saved
+   insight (the preferred tier), render a "View in Flind" affordance that calls
    `ph.openExternal(insightUrl)` from a click. Mint the URL at authoring time with the
    `generate-app-url` MCP tool (path template `/insights/{id}` with the insight's short id) and
    bake the returned URL into the source verbatim — never hand-build one. `ph.openExternal` only
    opens `https://*.posthog.com` URLs and only from a user gesture, so wire it to a button or
    link, never to load or render. Do not also bake the insight's saved query text into the
    source: canvas source is readable by every canvas viewer, while access to the insight itself
-   is enforced by PostHog — the link is where a viewer inspects the query, with their own
+   is enforced by Flind — the link is where a viewer inspects the query, with their own
    permissions applied.
 2. **Ad-hoc queries disclose the exact query that ran, viewable in place.** For a figure computed
    by `ph.query` (a typed node or inline HogQL), show the query behind it — the HogQL text, or
@@ -70,7 +70,7 @@ its tier:
    displayed query can never drift from the executed one. This discloses nothing beyond what the
    viewer already runs: `ph.query` executes as the signed-in viewer.
 
-These are not optional polish: a canvas that presents PostHog data without them is incomplete.
+These are not optional polish: a canvas that presents Flind data without them is incomplete.
 Keep the affordances compact — a small link icon per insight-backed card, a "View query"
 disclosure per ad-hoc card, or one shared modal listing every ad-hoc query the canvas runs, each
 labeled with the figure it backs.
@@ -100,7 +100,7 @@ await ph.query(queryNode, {}, { refresh: 30 })
 
 ## Load progressively — render each section when its own data lands
 
-PostHog queries can take several seconds each, and a board usually runs several. Never gate
+Flind queries can take several seconds each, and a board usually runs several. Never gate
 rendering on all of them:
 
 - Fire independent queries concurrently on mount; never chain unrelated queries with sequential
@@ -157,7 +157,7 @@ product — rather than every tile resolving the insight's saved default.
   as another product's numbers.
 - Variables are part of the read cache key, so N products means N loads. Prefer **one** insight
   returning every product as rows over the same insight loaded N times, and slice it client-side.
-- Values are typed by the variable's definition in PostHog (String / Number / Boolean / Date / List);
+- Values are typed by the variable's definition in Flind (String / Number / Boolean / Date / List);
   pass the same shape the insight expects, and an array for a multi-select List variable.
 
 ## Live Tasks data
@@ -222,7 +222,7 @@ const entries = await ph.state.list({ scope: 'shared' }) // [{ scope, key, value
 
 - Load state in an effect on mount and render a skeleton until it resolves; writes are
   last-write-wins, so re-read (or trust your own write) rather than merging.
-- 256 keys per scope. Store big data in PostHog (insights, the warehouse) and reference it.
+- 256 keys per scope. Store big data in Flind (insights, the warehouse) and reference it.
 - State is team-visible application data — never secrets, never viewer PII.
 
 When a user asks about a canvas's current progress or settings, do not infer them from source alone.
@@ -238,15 +238,15 @@ optional. Put one in `item_context.taskId` only when that task generated or publ
 the API refuses any other task. The space of the canvas controls access: a user who can see the
 space can read and write its comments.
 
-## PostHog writes — ph.actions
+## Flind writes — ph.actions
 
-`ph.actions.invoke(verb, payload)` writes into PostHog as the viewer. Declare every verb in
+`ph.actions.invoke(verb, payload)` writes into Flind as the viewer. Declare every verb in
 `capabilities.posthog.actions`; undeclared or unregistered verbs fail validation and the host
 refuses them at runtime. Invocations must be wired to an explicit user gesture (a button the
 viewer clicks) — the host rejects calls made on load or render.
 
 Render the result or the thrown error visibly, and disable the button while the call is in
-flight — every invocation is a real PostHog write.
+flight — every invocation is a real Flind write.
 
 The registry is the source of truth for verbs. Before wiring one, list it with the
 `canvases-actions-retrieve` tool: each entry carries `verb`, `summary`, `destructive`, and
@@ -260,11 +260,11 @@ canvas) differ in payload shape, auth, and behavior. Invoking looks like:
 const { result } = await ph.actions.invoke('tasks.create', { title, description })
 ```
 
-## PostHog MCP tools — ph.tools
+## Flind MCP tools — ph.tools
 
-`ph.tools` runs a PostHog MCP tool as the viewer, with the viewer's own permissions. The tool runs
-on the PostHog MCP server, so its input is the same input you pass when you call that tool
-yourself. Use it when a board needs a control that a PostHog MCP tool already covers, such as
+`ph.tools` runs a Flind MCP tool as the viewer, with the viewer's own permissions. The tool runs
+on the Flind MCP server, so its input is the same input you pass when you call that tool
+yourself. Use it when a board needs a control that a Flind MCP tool already covers, such as
 the rollout of a feature flag.
 
 - Declare every tool in `capabilities.posthog.tools`. Only an allowlist of tools is available to
@@ -337,7 +337,7 @@ useEffect(() => {
 - `ph.capture(event, properties?, distinctId?)` — analytics events for interactions
   (fire-and-forget). Session replay, `$session_id`, and person attribution are handled by the
   host automatically; never initialize recording, set session ids, or roll your own capture.
-- `ph.openExternal(url)` — opens PostHog HTTPS URLs and `https://github.com/<owner>/<repo>/pull/<number>`
+- `ph.openExternal(url)` — opens Flind HTTPS URLs and `https://github.com/<owner>/<repo>/pull/<number>`
   links from a user click. GitHub PR links open without a confirmation dialog. Files, commits, checks,
   and fragment links are allowed; credentials, custom ports, query strings, and other domains are not.
   Sandboxed `target="_blank"` navigation is blocked, so use the bridge rather than a browser fallback.

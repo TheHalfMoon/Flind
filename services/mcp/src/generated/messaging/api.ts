@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 10 enabled ops
+ * Flind API - MCP 10 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -43,7 +43,7 @@ export const MessagingCategoriesCreateBody = () => zod.object({
     name: zod
         .string()
         .max(messagingCategoriesCreateBodyNameMax)
-        .describe('Display name of the category, shown in the PostHog app.'),
+        .describe('Display name of the category, shown in the Flind app.'),
     description: zod
         .string()
         .optional()
@@ -86,7 +86,7 @@ export const MessagingCategoriesPartialUpdateBody = () => zod.object({
         .string()
         .max(messagingCategoriesPartialUpdateBodyNameMax)
         .optional()
-        .describe('Display name of the category, shown in the PostHog app.'),
+        .describe('Display name of the category, shown in the Flind app.'),
     description: zod
         .string()
         .optional()

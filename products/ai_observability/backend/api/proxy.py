@@ -577,11 +577,11 @@ class LLMProxyViewSet(viewsets.ViewSet):
             except ValueError:
                 return Response({"error": "Invalid provider key configuration"}, status=400)
 
-            # Enforce playground model allowlist when using PostHog-funded keys
+            # Enforce playground model allowlist when using Flind-funded keys
             if provider_key is None and model not in PLAYGROUND_MODEL_IDS:
                 return Response(
                     {
-                        "error": f"Model '{model}' is not available on the PostHog-funded playground. Please add your own API key to use this model."
+                        "error": f"Model '{model}' is not available on the Flind-funded playground. Please add your own API key to use this model."
                     },
                     status=403,
                 )
@@ -589,7 +589,7 @@ class LLMProxyViewSet(viewsets.ViewSet):
             # Provider is always explicit from request
             provider = data.get("provider")
 
-            # Generate tracking parameters for PostHog analytics
+            # Generate tracking parameters for Flind analytics
             trace_id = str(uuid.uuid4())
             distinct_id = getattr(request.user, "email", "") if request.user and request.user.is_authenticated else ""
             properties = {"ai_product": "playground"}
@@ -752,7 +752,7 @@ class LLMProxyViewSet(viewsets.ViewSet):
         """Return a list of available models across providers.
 
         If provider_key_id is specified, returns models available for that key.
-        Otherwise, returns only playground-eligible models (PostHog pays for these).
+        Otherwise, returns only playground-eligible models (Flind pays for these).
         """
         provider_key_id = request.query_params.get("provider_key_id")
 
@@ -765,7 +765,7 @@ class LLMProxyViewSet(viewsets.ViewSet):
             if provider_key:
                 return Response(provider_key_models(provider_key))
 
-        # Default: return only playground-eligible models (PostHog pays for these)
+        # Default: return only playground-eligible models (Flind pays for these)
         return Response(get_playground_models())
 
     @action(detail=False, methods=["POST"])

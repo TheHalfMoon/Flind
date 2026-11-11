@@ -51,7 +51,7 @@ class MetabaseSource(ResumableSource[MetabaseSourceConfig, MetabaseResumeConfig]
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Metabase",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Metabase instance URL and credentials to pull your Metabase data into the PostHog Data warehouse.
+            caption="""Enter your Metabase instance URL and credentials to pull your Metabase data into the Flind Data warehouse.
 
 Create an API key in your Metabase under **Admin settings > Authentication > API keys** (Metabase v0.47+). Older instances can authenticate with a username and password instead.
 

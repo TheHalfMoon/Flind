@@ -210,7 +210,7 @@ const OverviewTab = ({ client, projectId }: Props): JSX.Element => {
     const seeInPostHog = (path: string): JSX.Element | null =>
         posthogBase ? (
             <Box css={{ paddingTop: 'small' }}>
-                <ExternalLink href={`${posthogBase}${path}`}>View in PostHog</ExternalLink>
+                <ExternalLink href={`${posthogBase}${path}`}>View in Flind</ExternalLink>
             </Box>
         ) : null
 
@@ -268,7 +268,7 @@ const OverviewTab = ({ client, projectId }: Props): JSX.Element => {
                         <PromoBannerText>
                             Define the key steps your users take — from sign-up to purchase — and see where they drop
                             off. View conversion rates across all users here, or drill into each journey for an
-                            individual customer inside PostHog.
+                            individual customer inside Flind.
                         </PromoBannerText>
                         {posthogBase && (
                             <PromoBannerPrimaryLink href={`${posthogBase}/customer_analytics/journeys`}>
@@ -282,7 +282,7 @@ const OverviewTab = ({ client, projectId }: Props): JSX.Element => {
                 <OverviewPageModule
                     key="journeys-header"
                     title="Customer journeys"
-                    subtitle="Define the key steps your users take — from sign-up to purchase — and see where they drop off. View each journey for an individual customer inside PostHog."
+                    subtitle="Define the key steps your users take — from sign-up to purchase — and see where they drop off. View each journey for an individual customer inside Flind."
                 />,
                 ...journeyFunnels.flatMap(({ funnel, conversionPct, chartData }) => [
                     <OverviewPageModule key={funnel.name} title={funnel.name}>
@@ -297,7 +297,7 @@ const OverviewTab = ({ client, projectId }: Props): JSX.Element => {
                         ? [
                               <Box key={`link-${funnel.name}`} css={{ paddingTop: 'xsmall' }}>
                                   <ExternalLink href={`${posthogBase}/customer_analytics/journeys/${funnel.id}/edit`}>
-                                      View in PostHog
+                                      View in Flind
                                   </ExternalLink>
                               </Box>,
                           ]

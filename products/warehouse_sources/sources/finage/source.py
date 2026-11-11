@@ -67,7 +67,7 @@ class FinageSource(SimpleSource[FinageSourceConfig]):
             category=DataWarehouseSourceCategory.FINANCE___ACCOUNTING,
             label="Finage",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Finage API key and the symbols you want to sync to pull market data into the PostHog Data warehouse.
+            caption="""Enter your Finage API key and the symbols you want to sync to pull market data into the Flind Data warehouse.
 
 You can find your API key in the [Finage dashboard](https://finage.co.uk/dashboard) after subscribing to a plan. The key needs access to the **US stocks** endpoints, plus **fundamentals** for the dividend, split, profile and financial statement tables, and **forex** or **crypto** if you sync those tables.""",
             iconPath="/static/services/finage.png",

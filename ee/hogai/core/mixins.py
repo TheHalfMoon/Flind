@@ -105,7 +105,7 @@ class AssistantContextMixin(ABC):
         return self._team.base_currency or CurrencyCode.USD.value
 
     def _get_debug_props(self, config: RunnableConfig) -> dict[str, Any]:
-        """Properties to be sent to PostHog SDK (error tracking, etc)."""
+        """Properties to be sent to Flind SDK (error tracking, etc)."""
         metadata = (config.get("configurable") or {}).get("sdk_metadata")
         debug_props = {
             "$session_id": self._get_session_id(config),

@@ -1,6 +1,6 @@
 // Undo and redo step through a canvas's version history (newest first) relative to the head.
 // After a revert the head can sit in the middle of the list, not at versions[0].
-// Ported from PostHog Desktop's canvasVersionNavigation.ts, so both hosts step the same way.
+// Ported from Flind Desktop's canvasVersionNavigation.ts, so both hosts step the same way.
 
 export interface CanvasVersionNavigation {
     /** Index of the head version in the newest-first list. 0 when the head is unknown. */

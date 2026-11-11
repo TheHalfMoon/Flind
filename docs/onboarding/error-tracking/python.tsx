@@ -9,7 +9,7 @@ export const getPythonSteps = (ctx: OnboardingComponentsContext): StepDefinition
     const installSteps = getPythonStepsPA(ctx)
 
     const verifyInitStep: StepDefinition = {
-        title: 'Verify PostHog is initialized',
+        title: 'Verify Flind is initialized',
         badge: 'recommended',
         checkpoint: true,
         content: (
@@ -28,7 +28,7 @@ export const getPythonSteps = (ctx: OnboardingComponentsContext): StepDefinition
             <>
                 <Markdown>
                     {dedent`
-                        Exception autocapture can be enabled during initialization of the PostHog client to automatically capture any unhandled exceptions thrown by your Python application. It works by setting Python's built-in exception hooks, such as \`sys.excepthook\` and \`threading.excepthook\`.
+                        Exception autocapture can be enabled during initialization of the Flind client to automatically capture any unhandled exceptions thrown by your Python application. It works by setting Python's built-in exception hooks, such as \`sys.excepthook\` and \`threading.excepthook\`.
                     `}
                 </Markdown>
                 <CodeBlock
@@ -61,7 +61,7 @@ export const getPythonSteps = (ctx: OnboardingComponentsContext): StepDefinition
             <>
                 <Markdown>
                     {dedent`
-                        For exceptions handled by your application that you would still like sent to PostHog, you can manually call the capture method:
+                        For exceptions handled by your application that you would still like sent to Flind, you can manually call the capture method:
                     `}
                 </Markdown>
                 <CodeBlock
@@ -91,9 +91,9 @@ export const getPythonSteps = (ctx: OnboardingComponentsContext): StepDefinition
         content: (
             <Markdown>
                 {dedent`
-                    Confirm exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Confirm exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),
@@ -121,7 +121,7 @@ export const getPythonSteps = (ctx: OnboardingComponentsContext): StepDefinition
                                 {dedent`
                                     Add the Django middleware to your settings. It wraps each request in a [context](https://posthog.com/docs/libraries/python#contexts) and captures exceptions raised by your views.
 
-                                    The middleware sends exceptions through the global \`posthog\` client. When you create your own client with \`Posthog(...)\`, set it as \`POSTHOG_MW_CLIENT\`. Otherwise the middleware sends exceptions to the unconfigured global client, and they don't reach PostHog:
+                                    The middleware sends exceptions through the global \`posthog\` client. When you create your own client with \`Posthog(...)\`, set it as \`POSTHOG_MW_CLIENT\`. Otherwise the middleware sends exceptions to the unconfigured global client, and they don't reach Flind:
                                 `}
                             </Markdown>
                             <CodeBlock

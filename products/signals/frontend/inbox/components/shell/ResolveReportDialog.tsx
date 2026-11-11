@@ -66,7 +66,7 @@ export function openResolveReportDialog({
         ? `Resolve ${selectedCount} ${isPlural ? 'reports' : 'report'}?`
         : `Resolve report "${reportTitle?.trim() ? reportTitle : 'Untitled report'}"?`
     const description = isMonitoring
-        ? `This stops remaining follow-up checks and resolves the report. PostHog will not record an automatic verification result or update the report's evidence.${hasOpenPr ? ' The pull request opened for this report will be closed.' : ''}`
+        ? `This stops remaining follow-up checks and resolves the report. Flind will not record an automatic verification result or update the report's evidence.${hasOpenPr ? ' The pull request opened for this report will be closed.' : ''}`
         : isPlural
           ? `Mark these useful reports as done. If an issue comes back, you get a new report linked to the old one.${hasOpenPr ? ' Any open pull request for these reports will be closed.' : ''}`
           : `This marks a useful report as done. If the issue comes back, you get a new report linked to this one.${

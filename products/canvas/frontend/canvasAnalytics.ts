@@ -1,6 +1,6 @@
 import posthog from 'posthog-js'
 
-// pinned: analytics event names and property names, shared with PostHog Desktop. Renaming breaks dashboards.
+// pinned: analytics event names and property names, shared with Flind Desktop. Renaming breaks dashboards.
 export const CANVAS_EVENTS = {
     dashboardAction: 'Dashboard action',
     promptSent: 'Canvas prompt sent',
@@ -9,7 +9,7 @@ export const CANVAS_EVENTS = {
     runtimeError: 'Canvas runtime error',
 } as const
 
-// pinned: `surface` values, shared with PostHog Desktop
+// pinned: `surface` values, shared with Flind Desktop
 export type CanvasSurface =
     | 'web_new_canvas_page'
     | 'web_canvas_scene'
@@ -18,7 +18,7 @@ export type CanvasSurface =
     | 'web_dashboard_widget'
 
 // pinned: `action_type` values of the Dashboard action event. "revert" and "edit_toggle" are shared
-// with PostHog Desktop. The rest name web actions Desktop does not track yet, so Desktop should reuse them.
+// with Flind Desktop. The rest name web actions Desktop does not track yet, so Desktop should reuse them.
 export type CanvasDashboardActionType =
     | 'revert'
     | 'edit_toggle'

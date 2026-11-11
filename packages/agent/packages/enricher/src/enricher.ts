@@ -77,7 +77,7 @@ export class PostHogEnricher {
   }
 
   /**
-   * Detect wrapper functions (functions that internally call a PostHog SDK
+   * Detect wrapper functions (functions that internally call a Flind SDK
    * method) defined in the given source. Used by callers like `enrichSource`
    * to pick up same-file wrappers such as `track(...)` without threading
    * through filesystem I/O.
@@ -100,7 +100,7 @@ export class PostHogEnricher {
   }
 
   /**
-   * Parse a file for wrapper definitions (functions that directly call PostHog SDK methods).
+   * Parse a file for wrapper definitions (functions that directly call Flind SDK methods).
    * Results are cached per absolute path + mtime so subsequent calls within the same session
    * are cheap. Returns [] for unsupported extensions, unreadable files, or files larger than
    * `MAX_WRAPPER_SOURCE_BYTES`.

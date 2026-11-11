@@ -6,7 +6,7 @@ cost in cross-product coupling.
 
 Today the facade exists for six jobs: letting core's OAuth callback invalidate
 the per-integration auth-state cache when a Slack install is reconnected,
-answering whether a channel has been approved for PostHog to speak in,
+answering whether a channel has been approved for Flind to speak in,
 telling a product that posts a report whether the bot can answer a follow-up,
 turning an agent's tool calls into the progress lines of a streamed Slack
 reply, recording that a Slack user used a feature, so feature tips skip it,
@@ -123,7 +123,7 @@ def invalidate_slack_integration_auth_state(integration_id: int) -> None:
 
 
 def slack_channel_is_approved(slack_workspace_id: str, slack_channel_id: str) -> bool:
-    """Whether someone in this channel has approved PostHog answering in it.
+    """Whether someone in this channel has approved Flind answering in it.
 
     Approval is only required for externally shared channels, where a reply is visible to
     members of another Slack workspace. Callers read that from the ``is_ext_shared_channel``

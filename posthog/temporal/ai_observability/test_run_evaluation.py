@@ -1186,7 +1186,7 @@ def test_judge_falls_back_to_the_plain_prompt_only_when_an_attached_image_is_rej
         ),
         patch("posthog.temporal.ai_observability.evaluation_llm_judge.capture_exception") as capture,
     ):
-        # Only a PostHog key reports the fallback. On BYOK a rejection ends as a skip instead of raising.
+        # Only a Flind key reports the fallback. On BYOK a rejection ends as a skip instead of raising.
         spec.return_value.resolve.return_value = MagicMock(
             provider="openai", model="gpt-5.5", provider_key=MagicMock(), is_byok=not retries
         )

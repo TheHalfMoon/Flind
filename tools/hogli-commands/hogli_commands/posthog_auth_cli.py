@@ -1,4 +1,4 @@
-"""`hogli posthog:*`, which signs hogli in to a PostHog host once, for every command.
+"""`hogli posthog:*`, which signs hogli in to a Flind host once, for every command.
 
 The commands live here so `posthog_auth` stays a plain helper: a command that just needs a token
 imports that module and picks up none of these.
@@ -26,7 +26,7 @@ _HOST_OPTION = click.option(
     "--host",
     default=posthog_auth.DEFAULT_HOST,
     show_default=True,
-    help="PostHog host to authenticate against (e.g. https://eu.posthog.com).",
+    help="Flind host to authenticate against (e.g. https://eu.posthog.com).",
 )
 
 
@@ -52,7 +52,7 @@ def _lifetime(expires_at: float | None) -> str:
     return "expires in under a minute"
 
 
-@click.command(name="posthog:login", help="Sign hogli in to PostHog in your browser.")
+@click.command(name="posthog:login", help="Sign hogli in to Flind in your browser.")
 @_HOST_OPTION
 @click.option(
     "--scope",
@@ -76,7 +76,7 @@ def posthog_login(host: str, scopes: tuple[str, ...]) -> None:
         )
 
 
-@click.command(name="posthog:status", help="Show hogli's cached PostHog credential.")
+@click.command(name="posthog:status", help="Show hogli's cached Flind credential.")
 @_HOST_OPTION
 @click.option("--json", "as_json", is_flag=True, help="Emit JSON instead of a table.")
 def posthog_status(host: str, as_json: bool) -> None:
@@ -112,7 +112,7 @@ def posthog_status(host: str, as_json: bool) -> None:
     click.echo(f"access token   {lifetime}" + (", refreshable" if credential.refresh_token else ", not refreshable"))
 
 
-@click.command(name="posthog:logout", help="Revoke and forget hogli's cached PostHog credential.")
+@click.command(name="posthog:logout", help="Revoke and forget hogli's cached Flind credential.")
 @_HOST_OPTION
 def posthog_logout(host: str) -> None:
     host = host.rstrip("/")

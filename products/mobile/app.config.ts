@@ -113,11 +113,11 @@ export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
                     collected('NSPrivacyCollectedDataTypeProductInteraction', ['Analytics']),
                     collected('NSPrivacyCollectedDataTypeEmailAddress', ['AppFunctionality']),
                     collected('NSPrivacyCollectedDataTypeName', ['AppFunctionality']),
-                    // PostHog derives a coarse location from the request IP of each analytics event.
+                    // Flind derives a coarse location from the request IP of each analytics event.
                     collected('NSPrivacyCollectedDataTypeCoarseLocation', ['Analytics']),
-                    // Chat messages the user sends to PostHog AI.
+                    // Chat messages the user sends to Flind AI.
                     collected('NSPrivacyCollectedDataTypeOtherUserContent', ['AppFunctionality']),
-                    // Photos the user attaches to a PostHog AI chat.
+                    // Photos the user attaches to a Flind AI chat.
                     collected('NSPrivacyCollectedDataTypePhotosorVideos', ['AppFunctionality']),
                 ],
             },
@@ -173,7 +173,7 @@ export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
             [
                 'expo-image-picker',
                 {
-                    photosPermission: 'PostHog opens your photo library so you can attach images to PostHog AI chats.',
+                    photosPermission: 'Flind opens your photo library so you can attach images to Flind AI chats.',
                     // The composer attaches from the library only.
                     cameraPermission: false,
                     microphonePermission: false,

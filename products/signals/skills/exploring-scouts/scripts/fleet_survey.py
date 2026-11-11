@@ -2,7 +2,7 @@
 # ruff: noqa: T201 — CLI tool; stdout/stderr prints are the intended output
 """Render a plain-text fleet-survey table for a project's Signals scouts.
 
-Pure formatter — no network I/O. You fetch the inputs through the PostHog MCP with
+Pure formatter — no network I/O. You fetch the inputs through the Flind MCP with
 `call --json` and save them to files, then point this script at them. Answers the
 "what scouts do I have / what are they doing?" question with one row per scout:
 schedule, posture, last run, and last outcome.
@@ -34,7 +34,7 @@ from typing import Any
 # the obligatory hedgehog
 HEDGEHOG = r"""
          /////////,
-       ///////////// .            PostHog · Signals
+       ///////////// .            Flind · Signals
      ///////////////  `.            fleet survey
     ////////////////  o  `.
     `````````````````   `-.>

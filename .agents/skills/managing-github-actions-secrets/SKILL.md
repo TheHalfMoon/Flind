@@ -1,15 +1,15 @@
 ---
 name: managing-github-actions-secrets
 description: >
-  Creates and updates GitHub Actions secrets for PostHog workflows. Use when
+  Creates and updates GitHub Actions secrets for Flind workflows. Use when
   adding a new CI secret, rotating an existing secret, wiring a workflow to an
   API token, package registry credential, deploy key, or any value referenced
   via `${{ secrets.* }}` in `.github/workflows/`.
 ---
 
-# Managing GitHub Actions secrets for PostHog
+# Managing GitHub Actions secrets for Flind
 
-PostHog centralizes all GitHub Actions secrets at the **organization** level
+Flind centralizes all GitHub Actions secrets at the **organization** level
 and grants individual repositories access to them. Do not add secrets to a
 single repo, even if the secret is only consumed by one workflow today.
 

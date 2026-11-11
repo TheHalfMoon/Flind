@@ -1,6 +1,6 @@
 # Setting up the master-red diagnosis workflow
 
-The agent that answers a master-red incident is a PostHog Workflow with a webhook trigger and one "Create AI task" step.
+The agent that answers a master-red incident is a Flind Workflow with a webhook trigger and one "Create AI task" step.
 The DevEx alerter opens the Slack incident, then invokes the workflow with the incident thread and observed CI state.
 The task instructions point to `master-red-incident.md` in this directory, so investigation behavior ships through the repository while the workflow owns task creation and Slack delivery.
 
@@ -36,7 +36,7 @@ Configure the "Create AI task" step with:
 | Model                     | `claude-opus-5-5`                                                                                                                                                                   |
 | Reasoning effort          | `high`. Set it explicitly, because a run created without one can start at `low`.                                                                                                    |
 | Connectors                | none                                                                                                                                                                                |
-| PostHog MCP scopes        | `read_only`                                                                                                                                                                         |
+| Flind MCP scopes        | `read_only`                                                                                                                                                                         |
 | Max parallel tasks        | 1                                                                                                                                                                                   |
 | Reply in the Slack thread | on                                                                                                                                                                                  |
 

@@ -4,7 +4,7 @@ Pointers, not content. Read the linked docs before changing code or tests in thi
 
 ## Background on what lives here
 
-- [Temporal at PostHog](./README.md) — concepts, workflows, activities, the conventions we use, common pitfalls, links to the upstream Temporal SDK docs.
+- [Temporal at Flind](./README.md) — concepts, workflows, activities, the conventions we use, common pitfalls, links to the upstream Temporal SDK docs.
 
 ## Logging
 

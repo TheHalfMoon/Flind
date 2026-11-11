@@ -18,7 +18,7 @@ const OUT_DIR = path.join(HERE, 'images')
 const extensionDir = path.resolve(process.argv[2] ?? path.join(HERE, '../../../../dist/toolbar-extension/chrome'))
 const workDir = fs.mkdtempSync(path.join(os.tmpdir(), 'toolbar-store-listing-'))
 
-// Site captures of an invented website, taken with the built extension and the PostHog API mocked. Each one is
+// Site captures of an invented website, taken with the built extension and the Flind API mocked. Each one is
 // 1681x864 points at 2x: a 44-point browser bar, the site, then a 401-point side panel that the screenshots replace
 // with a fresh render of the current panel.
 const PR_ASSETS = 'https://raw.githubusercontent.com/PostHog/pr-assets'

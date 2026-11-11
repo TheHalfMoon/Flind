@@ -1,6 +1,6 @@
 import { FREEFORM_TEMPLATE_ID } from '../canvasTemplates'
 
-// pinned: tag the task harness recognizes as injected canvas instructions, shared with PostHog Desktop
+// pinned: tag the task harness recognizes as injected canvas instructions, shared with Flind Desktop
 const CANVAS_INSTRUCTIONS_TAG = 'canvas_generation_instructions'
 
 function escapeXmlAttr(value: string): string {

@@ -122,7 +122,7 @@ class TestOnboardingSessionIdempotency(TestCase):
             ("free", [], "zai-org/glm-5.3-flash"),
             (
                 "paid",
-                [{"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "PostHog Desktop usage billing"}],
+                [{"key": AvailableFeature.POSTHOG_CODE_USAGE, "name": "Flind Desktop usage billing"}],
                 "claude-opus-4-8",
             ),
         ]

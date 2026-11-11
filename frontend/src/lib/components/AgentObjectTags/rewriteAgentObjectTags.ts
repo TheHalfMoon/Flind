@@ -1,7 +1,7 @@
 /**
  * Rewrite agent object tags into markdown the web app can render.
  *
- * Agents cite PostHog objects with XML-style tags
+ * Agents cite Flind objects with XML-style tags
  * (`<insight id="9pQx3">checkout funnel</insight>`,
  * `<insight id="x" display="block" title="…"/>`). The desktop app renders them
  * as chips; the web markdown pipeline (`ReactMarkdown` with `skipHtml`) drops

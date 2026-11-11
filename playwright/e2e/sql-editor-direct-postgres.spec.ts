@@ -51,7 +51,7 @@ test.describe('SQL Editor direct Postgres queries', () => {
                 await expect(page).toHaveURL(/.*\/data-warehouse\/new-source/)
                 await expect(page).toHaveURL(/kind=Postgres/)
                 await expect(page).toHaveURL(/access_method=direct/)
-                await expect(page.getByText('How should PostHog query this source?')).toBeVisible({ timeout: 60000 })
+                await expect(page.getByText('How should Flind query this source?')).toBeVisible({ timeout: 60000 })
                 await expect(page.getByText('Shown as:')).toBeVisible({ timeout: 60000 })
             })
 

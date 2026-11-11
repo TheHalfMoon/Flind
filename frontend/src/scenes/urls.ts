@@ -230,7 +230,7 @@ export const urls = {
     /** After linking a social provider to an existing session (OAuth `next`; see posthog/api/authentication.py sso_login). */
     accountSocialConnected: (): string => '/account/social-connected',
     /**
-     * PostHog Desktop / web return page after connecting an account. Use `github-login` (social SSO),
+     * Flind Desktop / web return page after connecting an account. Use `github-login` (social SSO),
      * `github-integration` (user GitHub App integration), or `slack-integration` (team Slack integration);
      * see `AccountConnected` and `posthog/api/authentication.py` / `user_integration.py`.
      */

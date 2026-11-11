@@ -47,7 +47,7 @@ class TestResolveGitHubRepository(SimpleTestCase):
                 _response(200, PUBLIC_REPO),
                 ResolvedWorkloadSubject(subject="1234", subject_name="Acme/Web", found_via="GitHub"),
             ),
-            # PostHog's own token can see repositories that aren't public, which a team must not learn about.
+            # Flind's own token can see repositories that aren't public, which a team must not learn about.
             (
                 "private_repository_seen_by_posthogs_token",
                 None,
@@ -205,7 +205,7 @@ class TestResolveGitLabProject(SimpleTestCase):
                 ResolvedWorkloadSubject(subject="42", subject_name="Acme/Tools/Web", found_via="GitLab"),
                 ["glpat-posthog"],
             ),
-            # PostHog's own token can see projects that aren't public, which a team must not learn about.
+            # Flind's own token can see projects that aren't public, which a team must not learn about.
             (
                 "private_project_seen_by_posthogs_token",
                 None,

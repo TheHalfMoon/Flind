@@ -156,7 +156,7 @@ export function SignInScreen(): ReactElement {
                                     value={clientId}
                                     onChangeText={setClientId}
                                     placeholder="OAuth client ID"
-                                    hint="The client ID of the PostHog mobile app registered on this instance."
+                                    hint="The client ID of the Flind mobile app registered on this instance."
                                     editable={!submit.pending}
                                     testID="sign-in-client-id"
                                 />
@@ -214,7 +214,7 @@ export function SignInScreen(): ReactElement {
                             testID="sign-in-self-hosted"
                         >
                             <Text style={styles.linkText}>
-                                {selfHosted ? 'Use PostHog Cloud instead' : 'Use a self-hosted instance'}
+                                {selfHosted ? 'Use Flind Cloud instead' : 'Use a self-hosted instance'}
                             </Text>
                         </Pressable44>
                     </View>
@@ -239,7 +239,7 @@ export function SignInScreen(): ReactElement {
                         testID="create-account"
                     >
                         <Text style={styles.footerText}>
-                            New to PostHog? <Text style={styles.footerLink}>Create an account →</Text>
+                            New to Flind? <Text style={styles.footerLink}>Create an account →</Text>
                         </Text>
                     </Pressable44>
                 ) : null}

@@ -211,9 +211,9 @@ def complete_signal_spend(run_id: str) -> None:
 def _capture_posthog_ai_chat_analytics(
     task_run: TaskRun, input: UpdateTaskRunStatusInput, *, termination_reason: Optional[str]
 ) -> None:
-    """Emit the PostHog AI chat outcome events, the sandbox counterpart to legacy `chat with ai`.
+    """Emit the Flind AI chat outcome events, the sandbox counterpart to legacy `chat with ai`.
 
-    PostHog AI usage series are built on `chat with ai`, which only the LangGraph runner emits
+    Flind AI usage series are built on `chat with ai`, which only the LangGraph runner emits
     (`ee/hogai/chat_agent/runner.py`). A sandbox conversation never reaches that runner, so without
     this the series decay to zero as conversations move over.
 
@@ -227,7 +227,7 @@ def _capture_posthog_ai_chat_analytics(
     if state.get("await_user_message"):
         # A prewarmed sandbox that idled out before anyone typed into it. The inactivity timeout
         # terminalizes it as completed, so without this guard, opening the panel and walking away
-        # counts as a chat. PostHog AI removes the key when it delivers the first message; that
+        # counts as a chat. Flind AI removes the key when it delivers the first message; that
         # removal is best-effort, so a failed one drops a real chat rather than inventing one.
         return
     properties = {

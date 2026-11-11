@@ -268,7 +268,7 @@ function createProgram(runtime: Runtime, mode: Mode, state: RunState, telemetry:
     }
 
     const program = new Commander('hog')
-        .description('The PostHog command line')
+        .description('The Flind command line')
         .version(VERSION, '-V, --version', 'Show the version')
         .helpOption('-h, --help', 'Show help')
         // Listed in help only: run() turns `hog help <command...>` into `hog <command...> --help`.

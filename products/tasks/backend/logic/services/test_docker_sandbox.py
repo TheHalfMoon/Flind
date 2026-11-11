@@ -330,7 +330,7 @@ class TestDockerSandboxUnit:
     @patch("products.tasks.backend.logic.services.docker_sandbox.subprocess.run")
     @patch("products.tasks.backend.logic.services.docker_sandbox.os.path.exists")
     def test_create_transforms_callback_url_env_vars(self, mock_exists, mock_run):
-        # Streamlit sandboxes call back to PostHog via POSTHOG_SITE_URL and the
+        # Streamlit sandboxes call back to Flind via POSTHOG_SITE_URL and the
         # OTEL endpoint. Inside Docker, localhost is the container itself, so
         # these must be rewritten to host.docker.internal or introspection and
         # bridge queries fail.

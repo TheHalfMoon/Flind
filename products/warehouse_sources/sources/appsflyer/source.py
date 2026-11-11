@@ -122,7 +122,7 @@ class AppsFlyerSource(ResumableSource[AppsFlyerSourceConfig, AppsFlyerResumeConf
             name=ExternalDataSourceType.APPSFLYER,
             category=DataWarehouseSourceCategory.ADVERTISING,
             label="AppsFlyer",
-            caption="""Enter your AppsFlyer credentials to pull aggregate performance reports and raw event data into the PostHog Data warehouse.
+            caption="""Enter your AppsFlyer credentials to pull aggregate performance reports and raw event data into the Flind Data warehouse.
 
 You can find your API token (V2) in AppsFlyer under your account menu > Security center > AppsFlyer API tokens. You can find your app ID in AppsFlyer on the My apps page, under the app name (e.g. `id123456789` for iOS or the package name for Android). Add one source per app.
 

@@ -28,7 +28,7 @@ test.describe('CRUD Survey', () => {
         page,
     }) => {
         await expect(page.locator('h1')).toContainText('Surveys')
-        await expect(page).toHaveTitle('Surveys • PostHog')
+        await expect(page).toHaveTitle('Surveys • Flind')
 
         await page.addInitScript(() => {
             localStorage.setItem('scenes.surveys.surveysLogic.preferredEditor', JSON.stringify('full'))

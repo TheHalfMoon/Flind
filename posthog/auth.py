@@ -645,7 +645,7 @@ def _bearer_token(request: Union[HttpRequest, Request]) -> Optional[str]:
 
 
 def _is_signed_jwt_of_type(token: str, token_type: str) -> bool:
-    """Whether a bearer token is a JWT whose `typ` header names one of PostHog's own stateless token
+    """Whether a bearer token is a JWT whose `typ` header names one of Flind's own stateless token
     types. Personal API key, OAuth and secret token prefixes are reserved for their own backends."""
     if token.startswith((PERSONAL_API_KEY_PREFIX, OAUTH_ACCESS_TOKEN_PREFIX, SECRET_API_TOKEN_PREFIX)):
         return False
@@ -1281,7 +1281,7 @@ class OAuthAccessTokenAuthentication(ActivityCredentialMixin, authentication.Bas
 
     @property
     def is_user_delegated(self) -> bool:
-        # Task-bound tokens represent PostHog-hosted workers, whose egress IP is not the user's.
+        # Task-bound tokens represent Flind-hosted workers, whose egress IP is not the user's.
         return self.access_token.sandbox_task_id is not None
 
     def authenticate(self, request: Union[HttpRequest, Request]) -> Optional[tuple[Any, None]]:
@@ -1656,7 +1656,7 @@ class InternalAPIAuthentication(ActivityCredentialMixin, authentication.BaseAuth
 
 
 class ScopedServiceJWTAuthentication(ActivityCredentialMixin, authentication.BaseAuthentication):
-    """DRF authentication for internal routes called by other PostHog services, verifying the
+    """DRF authentication for internal routes called by other Flind services, verifying the
     scoped per-purpose JWTs of posthog.scoped_service_jwt (the blessed replacement for
     INTERNAL_API_SECRET). Subclass per purpose:
 

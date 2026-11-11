@@ -1,6 +1,6 @@
 # @flind/agent
 
-The core runtime for PostHog cloud runs. Provides two things: an **Agent SDK** for running AI agents against PostHog tasks, and an **AgentServer** CLI that hosts the agent inside cloud sandboxes. Both are built on the [Agent Client Protocol (ACP)](https://github.com/anthropics/agent-client-protocol) for standardized agent ↔ client communication.
+The core runtime for Flind cloud runs. Provides two things: an **Agent SDK** for running AI agents against Flind tasks, and an **AgentServer** CLI that hosts the agent inside cloud sandboxes. Both are built on the [Agent Client Protocol (ACP)](https://github.com/anthropics/agent-client-protocol) for standardized agent ↔ client communication.
 
 ## Architecture
 
@@ -53,7 +53,7 @@ ACP is a standard protocol for agent ↔ client communication over ndJson stream
 
 The same ACP agent runs in both contexts. The difference is how it's connected:
 
-**Cloud (AgentServer):** The agent runs inside a sandbox. `AgentServer` is an HTTP server (Hono) that wraps the ACP connection. Clients connect via `GET /events` (SSE) and `POST /command` (JSON-RPC). Authentication uses JWT tokens (RS256) — the sandbox holds a public key, PostHog Django holds the private key. In background mode, the server auto-starts, prompts the agent with the task description, and signals completion via the PostHog API. In interactive mode, it stays open for conversation.
+**Cloud (AgentServer):** The agent runs inside a sandbox. `AgentServer` is an HTTP server (Hono) that wraps the ACP connection. Clients connect via `GET /events` (SSE) and `POST /command` (JSON-RPC). Authentication uses JWT tokens (RS256) — the sandbox holds a public key, Flind Django holds the private key. In background mode, the server auto-starts, prompts the agent with the task description, and signals completion via the Flind API. In interactive mode, it stays open for conversation.
 
 **Local (desktop):** The agent runs in-process. The desktop app calls `createAcpConnection()` directly — no HTTP server, no JWT. The bidirectional ACP streams connect client ↔ agent within the same process.
 
@@ -70,7 +70,7 @@ Four modes defined in `src/execution-mode.ts`:
 
 In cloud background mode, permissions are always auto-approved. In interactive mode, the permission system is active and configurable per session. Tool categorization lives in `src/adapters/claude/tools.ts` — each tool belongs to a group (read, write, bash, search, web, agent) and modes whitelist groups.
 
-Cloud provisioning can pass `--posthogExecPermissionRegex <regex>` to require one-time client approval for matching PostHog MCP `exec` sub-tools in every interactive cloud Claude and Codex permission mode. Non-matching sub-tools never prompt. Locally, hands-off modes stay hands-off: Claude `auto` and `bypassPermissions`, and Codex `auto` and `full-access`, auto-approve matching sub-tools; other local modes prompt. Matching is case-insensitive against the delegated name in `call [--json] <sub-tool> ...`. These prompts offer Claude users an always-allow choice remembered in local repository settings; Codex approvals remain one-time. An invalid or empty regex is logged and falls back to the default. Background runs keep their existing auto-approval behavior. The default is `(^|-)(partial-update|update|patch|delete|destroy)(-|$)`.
+Cloud provisioning can pass `--posthogExecPermissionRegex <regex>` to require one-time client approval for matching Flind MCP `exec` sub-tools in every interactive cloud Claude and Codex permission mode. Non-matching sub-tools never prompt. Locally, hands-off modes stay hands-off: Claude `auto` and `bypassPermissions`, and Codex `auto` and `full-access`, auto-approve matching sub-tools; other local modes prompt. Matching is case-insensitive against the delegated name in `call [--json] <sub-tool> ...`. These prompts offer Claude users an always-allow choice remembered in local repository settings; Codex approvals remain one-time. An invalid or empty regex is logged and falls back to the default. Background runs keep their existing auto-approval behavior. The default is `(^|-)(partial-update|update|patch|delete|destroy)(-|$)`.
 
 ## ACP connection layer
 
@@ -159,8 +159,8 @@ npx agent-server \
 Required environment variables (validated by zod in `src/server/bin.ts`):
 
 - `JWT_PUBLIC_KEY` — RS256 public key for sandbox auth
-- `POSTHOG_API_URL` — PostHog API base URL
-- `POSTHOG_PERSONAL_API_KEY` — API key for PostHog requests
+- `POSTHOG_API_URL` — Flind API base URL
+- `POSTHOG_PERSONAL_API_KEY` — API key for Flind requests
 - `POSTHOG_PROJECT_ID` — numeric project ID
 
 Optional behavior toggles:
@@ -175,7 +175,7 @@ Optional run telemetry (the logs pair must both be set, otherwise telemetry stay
 - `POSTHOG_AGENT_OTEL_LOGS_TOKEN` — project API key of the telemetry project
 - `POSTHOG_AGENT_OTEL_TRACES_URL` — full OTLP traces URL, e.g. `https://us.i.posthog.com/i/v1/traces`; additionally enables one APM trace per run
 
-When set, `AgentServer` ships an allowlisted metadata subset of the session log (run/turn/tool lifecycle, usage, error provenance — never message content, tool arguments, or raw error text; see `src/otel-telemetry.ts`) to PostHog Logs, tagged with `service.name=posthog-code-agent` and `run_id`/`task_id`/`team_id`/`user_id`/`distinct_id` resource attributes so cloud runs are filterable per user. With the traces URL set, each run also produces an APM trace (`task_run` root span, a `turn` span per prompt, a `tool_call:<kind>` span per tool call; see `src/otel-trace-builder.ts`), and log records carry the matching trace/span ids so Logs and APM cross-link.
+When set, `AgentServer` ships an allowlisted metadata subset of the session log (run/turn/tool lifecycle, usage, error provenance — never message content, tool arguments, or raw error text; see `src/otel-telemetry.ts`) to Flind Logs, tagged with `service.name=posthog-code-agent` and `run_id`/`task_id`/`team_id`/`user_id`/`distinct_id` resource attributes so cloud runs are filterable per user. With the traces URL set, each run also produces an APM trace (`task_run` root span, a `turn` span per prompt, a `tool_call:<kind>` span per tool call; see `src/otel-trace-builder.ts`), and log records carry the matching trace/span ids so Logs and APM cross-link.
 
 The trace id is the run UUID without dashes.
 The backend starts the run's `process-task` workflow under the same trace id and stamps it on mirrored run logs, so all three share one trace.
@@ -218,7 +218,7 @@ await agent.cleanup()
 
 Key difference from `AgentServer`: the SDK returns raw ACP streams for the caller to manage. There's no HTTP layer, no SSE broadcasting, and no auto-prompting. The caller is responsible for creating a `ClientSideConnection`, running the ACP handshake, and sending prompts. This is what the desktop app does when running agents locally.
 
-For Codex adapters, `agent.run()` also fetches available models from the PostHog gateway and filters to OpenAI-compatible models, passing the allowed set to the ACP connection for model list filtering.
+For Codex adapters, `agent.run()` also fetches available models from the Flind gateway and filters to OpenAI-compatible models, passing the allowed set to the ACP connection for model list filtering.
 
 ## Log pipeline and session resume
 
@@ -228,7 +228,7 @@ Logs serve two purposes: real-time observability and session resume. Every ACP m
 
 `SessionLogWriter` (`src/session-log-writer.ts`) is a per-session multiplexer that buffers raw ndJson lines. On flush (auto-scheduled 500ms after writes, or explicit), it POSTs batched `StoredNotification` entries to the Django API via `PostHogAPIClient.appendTaskRunLog()`; the API stores them in S3 as the task run's `log_url`. This S3 log is the source of truth for the full transcript and for session resume.
 
-Independently of that flush cycle, the writer tees every parsed non-chunk entry to optional `SessionLogSink`s at append time. In cloud, `OtelRunTelemetry` (`src/otel-telemetry.ts`) is wired as a sink and exports an allowlisted metadata subset (run/turn/tool lifecycle, usage, error provenance — never message content, tool arguments, or raw error text) to PostHog Logs, plus an APM trace per run when configured. See "Optional run telemetry" above for the env vars and behavior. Sink failures can never break S3 log persistence.
+Independently of that flush cycle, the writer tees every parsed non-chunk entry to optional `SessionLogSink`s at append time. In cloud, `OtelRunTelemetry` (`src/otel-telemetry.ts`) is wired as a sink and exports an allowlisted metadata subset (run/turn/tool lifecycle, usage, error provenance — never message content, tool arguments, or raw error text) to Flind Logs, plus an APM trace per run when configured. See "Optional run telemetry" above for the env vars and behavior. Sink failures can never break S3 log persistence.
 
 ### Resuming from logs
 
@@ -251,7 +251,7 @@ The result is a `ResumeState` containing the conversation history as `Conversati
 
 ## ACP extensions
 
-ACP defines standard methods like `session/prompt`, `session/update`, and `session/cancel`. PostHog extends the protocol with custom notifications in the `_posthog/` namespace (`src/acp-extensions.ts`). These serve three purposes:
+ACP defines standard methods like `session/prompt`, `session/update`, and `session/cancel`. Flind extends the protocol with custom notifications in the `_posthog/` namespace (`src/acp-extensions.ts`). These serve three purposes:
 
 **Session lifecycle** — events that track the run from start to finish. Clients use these to update UI state (show progress, enable/disable controls, display completion). The Django API uses `task_complete` to mark the run as finished.
 

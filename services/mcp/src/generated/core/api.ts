@@ -3,7 +3,7 @@
  * MCP service uses these Zod schemas for generated tool handlers.
  * To regenerate: hogli build:openapi
  *
- * PostHog API - MCP 16 enabled ops
+ * Flind API - MCP 16 enabled ops
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -411,7 +411,7 @@ export const OrganizationsProjectsCreateBody = () => zod
         anonymize_ips: zod
             .boolean()
             .optional()
-            .describe('When true, PostHog drops the IP address from every ingested event.'),
+            .describe('When true, Flind drops the IP address from every ingested event.'),
         completed_snippet_onboarding: zod.boolean().optional(),
         test_account_filters: zod
             .unknown()
@@ -2823,7 +2823,7 @@ export const OrganizationsProjectsCreateBody = () => zod
                     .boolean()
                     .optional()
                     .describe(
-                        'When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard PostHog events ($workflows_email_\*) alongside the existing workflow metrics.'
+                        'When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard Flind events ($workflows_email_\*) alongside the existing workflow metrics.'
                     ),
                 email_tracking_consent_mode: zod
                     .enum(['off', 'opt_out', 'opt_in'])
@@ -3304,7 +3304,7 @@ export const OrganizationsProjectsPartialUpdateBody = () => zod
         anonymize_ips: zod
             .boolean()
             .optional()
-            .describe('When true, PostHog drops the IP address from every ingested event.'),
+            .describe('When true, Flind drops the IP address from every ingested event.'),
         completed_snippet_onboarding: zod.boolean().optional(),
         test_account_filters: zod
             .unknown()
@@ -5722,7 +5722,7 @@ export const OrganizationsProjectsPartialUpdateBody = () => zod
                     .boolean()
                     .optional()
                     .describe(
-                        'When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard PostHog events ($workflows_email_\*) alongside the existing workflow metrics.'
+                        'When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard Flind events ($workflows_email_\*) alongside the existing workflow metrics.'
                     ),
                 email_tracking_consent_mode: zod
                     .enum(['off', 'opt_out', 'opt_in'])
@@ -6164,7 +6164,7 @@ export const UsersPartialUpdateBody = () => zod.object({
     anonymize_data: zod
         .boolean()
         .nullish()
-        .describe('Whether PostHog should anonymize events captured for this user when identified.'),
+        .describe('Whether Flind should anonymize events captured for this user when identified.'),
     allow_impersonation: zod.boolean().nullish(),
     toolbar_mode: zod
         .union([
@@ -6220,7 +6220,7 @@ export const UsersPartialUpdateBody = () => zod.object({
         .boolean()
         .optional()
         .describe(
-            'When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.'
+            'When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.'
         ),
     ui_configuration: zod
         .unknown()

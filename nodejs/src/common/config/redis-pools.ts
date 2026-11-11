@@ -35,7 +35,7 @@ export function createIngestionRedisConnectionConfig(
 }
 
 /**
- * Build the connection config for the PostHog Redis pool.
+ * Build the connection config for the Flind Redis pool.
  * Fallback chain: POSTHOG_REDIS_HOST → REDIS_URL
  */
 export function createPosthogRedisConnectionConfig(

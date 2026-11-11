@@ -741,14 +741,14 @@ continued line
     })
 
     it('round-trips markdown image blocks as image components', () => {
-        const markdown = '![PostHog engineering](https://res.cloudinary.com/demo/image/upload/posthog.png)'
+        const markdown = '![Flind engineering](https://res.cloudinary.com/demo/image/upload/posthog.png)'
         const document = parseMarkdownNotebook(markdown)
 
         expect(document.nodes[0]).toMatchObject({
             type: 'component',
             tagName: 'Image',
             props: {
-                alt: 'PostHog engineering',
+                alt: 'Flind engineering',
                 src: 'https://res.cloudinary.com/demo/image/upload/posthog.png',
             },
         })
@@ -759,10 +759,10 @@ continued line
         expect(
             serializeMarkdownNotebook(
                 parseMarkdownNotebook(
-                    '<Image src="https://res.cloudinary.com/demo/image/upload/posthog.png" alt="PostHog engineering" />'
+                    '<Image src="https://res.cloudinary.com/demo/image/upload/posthog.png" alt="Flind engineering" />'
                 )
             )
-        ).toEqual('![PostHog engineering](https://res.cloudinary.com/demo/image/upload/posthog.png)')
+        ).toEqual('![Flind engineering](https://res.cloudinary.com/demo/image/upload/posthog.png)')
     })
 
     it('round-trips nested markdown lists', () => {
@@ -2356,14 +2356,14 @@ Tail paragraph`
         ])
         const initialMarkdown = `# Embeds
 
-<Embed hideFilters src="https://posthog.com" title="PostHog" />`
+<Embed hideFilters src="https://posthog.com" title="Flind" />`
         const { rerender } = render(createElement(MarkdownNotebook, { value: initialMarkdown, registry }))
 
         rerender(
             createElement(MarkdownNotebook, {
                 value: `# Updated embeds
 
-<Embed hideFilters src="https://posthog.com" title="PostHog" />`,
+<Embed hideFilters src="https://posthog.com" title="Flind" />`,
                 registry,
             })
         )
@@ -2421,7 +2421,7 @@ Intro paragraph
             {
                 tagName: 'Broken',
                 label: 'Broken',
-                category: 'PostHog',
+                category: 'Flind',
                 ViewComponent: () => {
                     throw new Error('Broken node render failed')
                 },
@@ -2429,7 +2429,7 @@ Intro paragraph
             {
                 tagName: 'Safe',
                 label: 'Safe',
-                category: 'PostHog',
+                category: 'Flind',
                 ViewComponent: () => createElement('div', { 'data-testid': 'safe-component' }, 'Safe output'),
             },
         ])
@@ -2461,7 +2461,7 @@ Intro paragraph
                 tagName: 'Embed',
                 label: 'Embed',
                 category: 'Media',
-                defaultProps: { src: 'https://posthog.com', title: 'PostHog' },
+                defaultProps: { src: 'https://posthog.com', title: 'Flind' },
                 ViewComponent: () => {
                     renderComponent()
                     useEffect(() => {
@@ -2492,7 +2492,7 @@ Intro paragraph
 
         const savedMarkdown = onChange.mock.calls[onChange.mock.calls.length - 1][0]
         expect(savedMarkdown).toEqual(
-            `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n<Embed src="https://posthog.com" title="PostHog" />`
+            `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n<Embed src="https://posthog.com" title="Flind" />`
         )
 
         const renderCountBeforeRemoteSave = renderComponent.mock.calls.length
@@ -4221,7 +4221,7 @@ Current AI paragraph`),
         const onChange = jest.fn()
         const { container } = render(
             createElement(MarkdownNotebook, {
-                value: `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n<Prompt question="What is PostHog?" />`,
+                value: `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n<Prompt question="What is Flind?" />`,
                 onAskAI,
                 onChange,
                 aiPromptAuthorName: 'Avery',
@@ -4241,17 +4241,17 @@ Current AI paragraph`),
 
         expect(keepQuestionButton.getAttribute('aria-pressed')).toEqual('false')
         expect(onChange).toHaveBeenLastCalledWith(
-            `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n<Prompt question="What is PostHog?" keepQuestion={false} />`
+            `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n<Prompt question="What is Flind?" keepQuestion={false} />`
         )
 
         fireEvent.click(keepQuestionButton)
         expect(keepQuestionButton.getAttribute('aria-pressed')).toEqual('true')
         expect(onChange).toHaveBeenLastCalledWith(
-            `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n<Prompt question="What is PostHog?" keepQuestion />`
+            `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n<Prompt question="What is Flind?" keepQuestion />`
         )
         fireEvent.click(container.querySelector('[aria-label="Send prompt"]') as HTMLButtonElement)
 
-        const markdownWithResponse = `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n**Avery:** What is PostHog?\n\nThinking...`
+        const markdownWithResponse = `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n**Avery:** What is Flind?\n\nThinking...`
         expect(onChange).toHaveBeenLastCalledWith(markdownWithResponse)
         expect(onAskAI).toHaveBeenCalledWith(
             expect.objectContaining({
@@ -6171,7 +6171,7 @@ First paragraph
 
     it('adds a link from the formatting toolbar', () => {
         const onChange = jest.fn()
-        const { container } = render(createElement(MarkdownNotebook, { value: 'PostHog docs', onChange }))
+        const { container } = render(createElement(MarkdownNotebook, { value: 'Flind docs', onChange }))
         const textBlock = container.querySelector(NOTEBOOK_TEST_EDITABLE_SELECTOR) as HTMLElement
 
         selectTextNode(getFirstTextNode(textBlock), 0, 7, true)
@@ -6184,13 +6184,13 @@ First paragraph
         fireEvent.keyDown(linkInput, { key: 'Enter' })
 
         expect(textBlock.querySelector('a')?.getAttribute('href')).toEqual('https://posthog.com/docs')
-        expect(onChange).toHaveBeenLastCalledWith('# [PostHog](https://posthog.com/docs) docs')
+        expect(onChange).toHaveBeenLastCalledWith('# [Flind](https://posthog.com/docs) docs')
     })
 
     it('edits an existing link from the formatting toolbar', () => {
         const onChange = jest.fn()
         const { container } = render(
-            createElement(MarkdownNotebook, { value: '[PostHog](https://posthog.com) docs', onChange })
+            createElement(MarkdownNotebook, { value: '[Flind](https://posthog.com) docs', onChange })
         )
         const textBlock = container.querySelector(NOTEBOOK_TEST_EDITABLE_SELECTOR) as HTMLElement
         const linkedTextNode = textBlock.querySelector('a')?.firstChild
@@ -6211,11 +6211,11 @@ First paragraph
         )
 
         expect(textBlock.querySelector('a')?.getAttribute('href')).toEqual('https://posthog.com/docs')
-        expect(onChange).toHaveBeenLastCalledWith('# [PostHog](https://posthog.com/docs) docs')
+        expect(onChange).toHaveBeenLastCalledWith('# [Flind](https://posthog.com/docs) docs')
     })
 
     it('does not open the link editor for a collapsed selection inside an existing link', () => {
-        const { container } = render(createElement(MarkdownNotebook, { value: '[PostHog](https://posthog.com) docs' }))
+        const { container } = render(createElement(MarkdownNotebook, { value: '[Flind](https://posthog.com) docs' }))
         const textBlock = container.querySelector(NOTEBOOK_TEST_EDITABLE_SELECTOR) as HTMLElement
         const linkedTextNode = textBlock.querySelector('a')?.firstChild
 
@@ -6229,7 +6229,7 @@ First paragraph
     })
 
     it('shows the formatting toolbar when selecting text on a line containing a link', () => {
-        const { container } = render(createElement(MarkdownNotebook, { value: '[PostHog](https://posthog.com) docs' }))
+        const { container } = render(createElement(MarkdownNotebook, { value: '[Flind](https://posthog.com) docs' }))
         const textBlock = container.querySelector(NOTEBOOK_TEST_EDITABLE_SELECTOR) as HTMLElement
         const textAfterLink = textBlock.lastChild
 
@@ -6242,7 +6242,7 @@ First paragraph
     })
 
     it('keeps the formatting toolbar available after adding or removing a link on the row', () => {
-        const { container } = render(createElement(MarkdownNotebook, { value: 'PostHog docs' }))
+        const { container } = render(createElement(MarkdownNotebook, { value: 'Flind docs' }))
         const textBlock = container.querySelector(NOTEBOOK_TEST_EDITABLE_SELECTOR) as HTMLElement
 
         selectTextNode(getFirstTextNode(textBlock), 0, 7, true)
@@ -7415,21 +7415,21 @@ Tail with **bold** text`)
 
     it('pastes a URL over selected text as a link', () => {
         const onChange = jest.fn()
-        const { container } = render(createElement(MarkdownNotebook, { value: 'PostHog docs', onChange }))
+        const { container } = render(createElement(MarkdownNotebook, { value: 'Flind docs', onChange }))
         const textBlock = container.querySelector(NOTEBOOK_TEST_EDITABLE_SELECTOR) as HTMLElement
 
         selectTextInElement(textBlock, 0, 7)
         pastePlainText(textBlock, 'https://posthog.com/docs')
 
         expect(textBlock.querySelector('a')?.getAttribute('href')).toEqual('https://posthog.com/docs')
-        expect(textBlock.textContent).toEqual('PostHog docs')
-        expect(onChange).toHaveBeenLastCalledWith('# [PostHog](https://posthog.com/docs) docs')
+        expect(textBlock.textContent).toEqual('Flind docs')
+        expect(onChange).toHaveBeenLastCalledWith('# [Flind](https://posthog.com/docs) docs')
     })
 
     it('pastes a URL over selected list item text as a link', () => {
         const onChange = jest.fn()
         const { container } = render(
-            createElement(MarkdownNotebook, { value: withNotebookTitle('- PostHog docs'), onChange })
+            createElement(MarkdownNotebook, { value: withNotebookTitle('- Flind docs'), onChange })
         )
         const listItem = container.querySelector('.MarkdownNotebook__list-item-content') as HTMLElement
 
@@ -7437,9 +7437,9 @@ Tail with **bold** text`)
         pastePlainText(listItem, 'https://posthog.com/docs')
 
         expect(listItem.querySelector('a')?.getAttribute('href')).toEqual('https://posthog.com/docs')
-        expect(listItem.textContent).toEqual('PostHog docs')
+        expect(listItem.textContent).toEqual('Flind docs')
         expect(onChange).toHaveBeenLastCalledWith(
-            `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n- [PostHog](https://posthog.com/docs) docs`
+            `${TEST_NOTEBOOK_TITLE_MARKDOWN}\n\n- [Flind](https://posthog.com/docs) docs`
         )
     })
 
@@ -7449,7 +7449,7 @@ Tail with **bold** text`)
             createElement(MarkdownNotebook, {
                 value: withNotebookTitle(`| Name | Count |
 | --- | --- |
-| PostHog | 12 |`),
+| Flind | 12 |`),
                 onChange,
             })
         )
@@ -7459,12 +7459,12 @@ Tail with **bold** text`)
         pastePlainText(cells[2], 'https://posthog.com/docs')
 
         expect(cells[2].querySelector('a')?.getAttribute('href')).toEqual('https://posthog.com/docs')
-        expect(cells[2].textContent).toEqual('PostHog')
+        expect(cells[2].textContent).toEqual('Flind')
         expect(onChange).toHaveBeenLastCalledWith(`${TEST_NOTEBOOK_TITLE_MARKDOWN}
 
 | Name | Count |
 | --- | --- |
-| [PostHog](https://posthog.com/docs) | 12 |`)
+| [Flind](https://posthog.com/docs) | 12 |`)
     })
 
     it('renders nested lists as a single editable list surface', () => {
@@ -10119,7 +10119,7 @@ After component`,
     it('shows embed title before url in the filters panel', () => {
         const { container } = render(
             createElement(MarkdownNotebook, {
-                value: '<Embed showFilters hideResults src="https://posthog.com/docs" title="PostHog docs" />',
+                value: '<Embed showFilters hideResults src="https://posthog.com/docs" title="Flind docs" />',
             })
         )
         const inputs = Array.from(
@@ -10128,7 +10128,7 @@ After component`,
 
         expect(inputs).toHaveLength(2)
         expect(inputs[0].placeholder).toEqual('Title')
-        expect(inputs[0].value).toEqual('PostHog docs')
+        expect(inputs[0].value).toEqual('Flind docs')
         expect(inputs[1].placeholder).toEqual('https://example.com/embed')
         expect(inputs[1].value).toEqual('https://posthog.com/docs')
     })

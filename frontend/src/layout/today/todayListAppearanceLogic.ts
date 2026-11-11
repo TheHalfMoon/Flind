@@ -66,7 +66,7 @@ export type todayListAppearanceLogicType = MakeLogicType<
     todayListAppearanceLogicMeta
 >
 
-/** Which details the sidebar's session rows show under their titles, like PostHog Desktop's list item appearance. */
+/** Which details the sidebar's session rows show under their titles, like Flind Desktop's list item appearance. */
 export const todayListAppearanceLogic = kea<todayListAppearanceLogicType>([
     path(['layout', 'today', 'todayListAppearanceLogic']),
     actions({

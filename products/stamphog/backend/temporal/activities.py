@@ -354,7 +354,7 @@ def _sandbox_egress_allowlist(gateway_url: str) -> list[str]:
     reading untrusted PR content. Output scrubbing covers what the server persists, but nothing else
     stops a prompt-injected reviewer from POSTing what it holds to an arbitrary host — closing egress
     to the hosts a review actually needs removes that channel: github.com for the clone, PyPI for the
-    engine's pinned deps, the gateway for LLM calls, and the PostHog capture host for telemetry.
+    engine's pinned deps, the gateway for LLM calls, and the Flind capture host for telemetry.
     ``gateway_url`` is the URL handed to the sandbox, so egress cannot drift from the route it calls.
     STAMPHOG_SANDBOX_EXTRA_EGRESS_DOMAINS is the ops escape hatch for a missing legitimate host.
     The docker backend (local dev) ignores the allowlist.
@@ -2089,7 +2089,7 @@ def mark_review_failed(input: MarkReviewFailedInput) -> None:
 
     if marked_failed:
         # Last, because this step raises. A retry returns through the terminal guard, which posts the
-        # notice and nothing else, so the event above must reach PostHog on this attempt.
+        # notice and nothing else, so the event above must reach Flind on this attempt.
         _post_failure_notice(client, run, input.team_id)
 
 

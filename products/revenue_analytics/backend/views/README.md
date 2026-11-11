@@ -34,7 +34,7 @@ The system follows a builder pattern where:
 
 ### 2. Data Sources
 
-1. Events (`sources/events/`): Transforms PostHog events into revenue views using team-configured revenue events.
+1. Events (`sources/events/`): Transforms Flind events into revenue views using team-configured revenue events.
 2. Stripe (`sources/stripe/`)
 
 ### 3. Schema System
@@ -420,7 +420,7 @@ The view tests above are currently only testing Stripe and events. It's usually 
 
 ## View Registration
 
-Views are automatically registered in PostHog's HogQL database schema through the orchestrator. The system will:
+Views are automatically registered in Flind's HogQL database schema through the orchestrator. The system will:
 
 1. Discover your source through `ExternalDataSource` records
 2. Run your builders for each supported view type

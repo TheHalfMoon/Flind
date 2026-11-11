@@ -149,7 +149,7 @@ const PULL_REQUESTS: PullRequestListApi = {
     items: [
         {
             author: { handle: 'jane-dev', display_name: 'Jane Dev', avatar_url: '', is_bot: false },
-            repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+            repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
             ci: {
                 runs: 6,
                 passing: 4,
@@ -197,7 +197,7 @@ const PULL_REQUESTS: PullRequestListApi = {
         },
         {
             author: { handle: 'sam-eng', display_name: 'Sam Eng', avatar_url: '', is_bot: false },
-            repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+            repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
             ci: { runs: 5, passing: 5, failing: 0, pending: 0, inconclusive: 0 },
             push_history: [
                 {

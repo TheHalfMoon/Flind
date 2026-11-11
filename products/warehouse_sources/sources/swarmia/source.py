@@ -45,7 +45,7 @@ class SwarmiaSource(ResumableSource[SwarmiaSourceConfig, SwarmiaResumeConfig]):
             label="Swarmia",
             releaseStatus=ReleaseStatus.GA,
             keywords=["dora", "engineering metrics", "developer productivity"],
-            caption="""Enter your Swarmia API token to pull your engineering metrics reports (pull requests, DORA, investment balance, software capitalization, and effort) into the PostHog Data warehouse.
+            caption="""Enter your Swarmia API token to pull your engineering metrics reports (pull requests, DORA, investment balance, software capitalization, and effort) into the Flind Data warehouse.
 
 You can create an API token in your Swarmia workspace under **Settings** → **API tokens**.
 

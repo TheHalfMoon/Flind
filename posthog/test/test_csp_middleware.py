@@ -84,7 +84,7 @@ class TestCSPMiddleware(APIBaseTest):
     @parameterized.expand(
         [
             ("local", {}, "default-src 'self' http://localhost:8234;"),
-            # The bundle host alone. The rest of the policy names every PostHog subdomain, and a
+            # The bundle host alone. The rest of the policy names every Flind subdomain, and a
             # fallback that broad admits whatever a new directive forgets to restrict.
             (
                 "cloud",
@@ -258,7 +258,7 @@ class TestCSPMiddleware(APIBaseTest):
         ]
     )
     def test_no_endpoint_still_sends_the_policy_but_asks_for_no_reports(self, _name, overrides, header):
-        # A self-hosted install must not report to PostHog, and the policy itself must survive, so
+        # A self-hosted install must not report to Flind, and the policy itself must survive, so
         # dropping it here would silently remove a security control.
         with override_settings(**{"CSP_REPORT_ENDPOINT": None, **overrides}):
             response = self.client.get("/")
@@ -341,7 +341,7 @@ class TestCSPMiddleware(APIBaseTest):
                 },
                 ("eu", "us"),
             ),
-            # The named hosts and the config token are PostHog Cloud's, so another install that swapped
+            # The named hosts and the config token are Flind Cloud's, so another install that swapped
             # its wildcards for them would refuse loads from its own hosts.
             (
                 "self_hosted_with_reporting_on",
@@ -437,11 +437,11 @@ class TestCSPMiddleware(APIBaseTest):
         enforced = _parse_policies(response.get("Content-Security-Policy", ""))
         reported = _parse_policies(response.get("Content-Security-Policy-Report-Only", ""))
         (app_policy,) = [policy for policy in enforced + reported if "default-src" in policy]
-        # The app policy keeps `https:` and the PostHog wildcard, so the shadow reports images without blocking any.
+        # The app policy keeps `https:` and the Flind wildcard, so the shadow reports images without blocking any.
         assert {"https:", "https://*.posthog.com"} <= set(app_policy["img-src"])
         # Enforced, the shadow would block every image from a host it does not name.
         assert [policy for policy in enforced if _report_version(policy) == ["7"]] == []
-        # A v=5 report names an image that only `https:` admits. The image shadow also reports PostHog hosts the
+        # A v=5 report names an image that only `https:` admits. The image shadow also reports Flind hosts the
         # named list misses, so under 5 its reports would mix with the old ones in one query.
         assert [policy for policy in enforced + reported if _report_version(policy) == ["5"]] == []
         # The app policy enforces the named stylesheet and font hosts, so a v=6 policy would report each miss twice.
@@ -455,7 +455,7 @@ class TestCSPMiddleware(APIBaseTest):
         # Any other directive would make a v=7 report mean something besides "this image host is not named".
         assert set(image_shadow) == {"img-src", "report-uri"}
         img_src = set(image_shadow["img-src"])
-        # `https:` admits every host and the wildcard every PostHog host, so with either one a miss never reports.
+        # `https:` admits every host and the wildcard every Flind host, so with either one a miss never reports.
         assert not {"https:", "https://*.posthog.com"} & img_src
         # Without these, every page load reports its own bundle or the toolbar, and a real miss is lost.
         assert {_US_BUNDLE, "https://internal-cf.posthog.com/static/"} <= img_src
@@ -529,7 +529,7 @@ class TestAppCspHeaderName(SimpleTestCase):
         enforced = response.get("Content-Security-Policy", "")
         reported = response.get("Content-Security-Policy-Report-Only", "")
         assert ("default-src" in enforced, "default-src" in reported) == (expects_enforced, not expects_enforced)
-        # A customer's site frames each of these, and the app policy names only PostHog origins in
+        # A customer's site frames each of these, and the app policy names only Flind origins in
         # frame-ancestors. Enforced, the directive stops the document rendering on their page.
         # Reported, it sends a report for every embed.
         assert "frame-ancestors" not in enforced + reported

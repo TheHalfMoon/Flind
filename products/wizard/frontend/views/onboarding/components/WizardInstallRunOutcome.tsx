@@ -35,8 +35,8 @@ export function WizardInstallRunOutcome({
     return (
         <p className="mt-3 mb-0 text-xs">
             {run.environment === 'local'
-                ? 'PostHog setup is complete. Review the changes in your local project before committing them.'
-                : 'PostHog setup is complete. Review the changes before merging them.'}
+                ? 'Flind setup is complete. Review the changes in your local project before committing them.'
+                : 'Flind setup is complete. Review the changes before merging them.'}
         </p>
     )
 }

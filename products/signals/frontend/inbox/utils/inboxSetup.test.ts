@@ -66,7 +66,7 @@ describe('Inbox setup defaults', () => {
         expect(newInboxSetupDraft(sources, []).sources).toEqual([])
     })
 
-    it('drops warehouse-backed sources from a saved draft and keeps PostHog choices', () => {
+    it('drops warehouse-backed sources from a saved draft and keeps Flind choices', () => {
         const sources = setupSources([], {}, 0, false)
         const saved: InboxOnboardingDraftApi = {
             ...newInboxSetupDraft(sources, []),

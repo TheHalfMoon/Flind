@@ -1,4 +1,4 @@
-# PostHog Log Capture Service
+# Flind Log Capture Service
 
 A service that receives OpenTelemetry Protocol (OTLP) logs via HTTP and processes them based on team authentication.
 
@@ -44,7 +44,7 @@ Authorization: Bearer your-project-api-key
 POST /v1/logs?token=your-project-token
 ```
 
-The token is your PostHog project token.
+The token is your Flind project token.
 
 ## Backdated logs
 
@@ -157,7 +157,7 @@ Standard OTLP protobuf encoding is also supported.
 Requirements:
 
 1. Set the HTTP endpoint to `http://your-service-host:8000/v1/logs`
-2. Include your PostHog project token in the Authorization header or as a query parameter
+2. Include your Flind project token in the Authorization header or as a query parameter
 3. Use standard OTLP log format (JSON, JSONL, or Protobuf)
 
 ## Amazon Data Firehose (CloudWatch Logs)

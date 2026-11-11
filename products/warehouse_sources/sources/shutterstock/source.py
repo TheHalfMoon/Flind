@@ -65,7 +65,7 @@ class ShutterstockSource(ResumableSource[ShutterstockSourceConfig, ShutterstockR
             label="Shutterstock",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["stock photos", "stock media"],
-            caption="""Pull your Shutterstock media catalog and account data into the PostHog Data warehouse.
+            caption="""Pull your Shutterstock media catalog and account data into the Flind Data warehouse.
 
 Authenticate with your app's consumer key and secret (from [your Shutterstock apps page](https://www.shutterstock.com/account/developers/apps)) to sync the catalog feeds: categories and recently updated images and videos.
 

@@ -160,7 +160,7 @@ def _cache_drf_field_info() -> None:
 
 
 def _cache_url_resolution() -> None:
-    # URL resolution walks PostHog's very large nested router linearly on every request
+    # URL resolution walks Flind's very large nested router linearly on every request
     # (~thousands of pattern match attempts per resolve). Resolution is deterministic per
     # (resolver, path) and URLResolver instances are stable module-level objects, so memoize
     # matches. Keyed weakly by resolver so urlconf overrides (which build new resolvers)

@@ -86,7 +86,7 @@ def _decode_escapes(value: str) -> str:
 def parse_env_file(path: Path) -> dict[str, str]:
     """Parse a ``.env`` file with the stdlib (no python-dotenv dependency).
 
-    Handles what PostHog's env files actually use: blank lines, ``#`` comments,
+    Handles what Flind's env files actually use: blank lines, ``#`` comments,
     optional ``export`` prefixes, unquoted values with trailing inline comments,
     single-quoted literals, and double-quoted values with escape decoding
     (``"...\\n..."`` PEM keys) and multiline continuation.

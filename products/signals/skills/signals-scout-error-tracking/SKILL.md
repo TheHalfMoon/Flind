@@ -2,10 +2,10 @@
 name: signals-scout-error-tracking
 scout-display-name: Error tracking
 description: >
-  Signals scout for PostHog error tracking. Watches `$exception` bursts, stuck loops, multi-
+  Signals scout for Flind error tracking. Watches `$exception` bursts, stuck loops, multi-
   fingerprint clusters, and status regressions.
 compatibility: >
-  PostHog Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
+  Flind Signals agent (Claude sandbox). Read-only analytics + signal_scout_internal:write
   (scratchpad) + signal_scout_report:write (report channel), plus the error-tracking tools in
   the MCP tools section (query-error-tracking-issues-list / -issue, execute-sql over the
   events table, advanced-activity-logs-list).

@@ -29,13 +29,13 @@ describe('CLI AGENTS.md installer', () => {
         const target = path.join(dir, 'AGENTS.md')
         await fs.writeFile(
             target,
-            '# Project\n\n<posthog>\nOutdated PostHog guidance.\n</posthog>\n\nTrailing instructions.\n'
+            '# Project\n\n<posthog>\nOutdated Flind guidance.\n</posthog>\n\nTrailing instructions.\n'
         )
 
         await installAgentsMdSnippet({ filePath: target })
 
         const content = await fs.readFile(target, 'utf-8')
-        expect(content).not.toContain('Outdated PostHog guidance.')
+        expect(content).not.toContain('Outdated Flind guidance.')
         expect(content.match(/<posthog>/g)?.length).toBe(1)
         expect(content.indexOf('# Project')).toBeLessThan(content.indexOf('<posthog>'))
         expect(content.indexOf('</posthog>')).toBeLessThan(content.indexOf('Trailing instructions.'))

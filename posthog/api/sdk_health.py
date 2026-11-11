@@ -162,7 +162,7 @@ class SdkHealthViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
     @extend_schema(
         summary="Get SDK health report for a project",
         description=(
-            "Returns a pre-digested health assessment of the PostHog SDKs the project is using. "
+            "Returns a pre-digested health assessment of the Flind SDKs the project is using. "
             "Covers which SDKs are current vs outdated (smart-semver rules with grace periods "
             "and traffic-percentage thresholds), per-version breakdown, and a human-readable "
             "reason for each assessment. Use this to diagnose SDK version issues, surface upgrade "

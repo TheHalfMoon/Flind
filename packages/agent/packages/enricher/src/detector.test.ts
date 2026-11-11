@@ -79,9 +79,9 @@ describeWithGrammars("PostHogDetector", () => {
       ]);
     });
 
-    test("detects constructor alias (new PostHog)", async () => {
+    test("detects constructor alias (new Flind)", async () => {
       const code = [
-        `const client = new PostHog('phc_token');`,
+        `const client = new Flind('phc_token');`,
         `client.capture('ctor-event');`,
       ].join("\n");
 
@@ -93,7 +93,7 @@ describeWithGrammars("PostHogDetector", () => {
 
     test("detects Node SDK capture with object argument", async () => {
       const code = [
-        `const client = new PostHog('phc_token');`,
+        `const client = new Flind('phc_token');`,
         `client.capture({ distinctId: 'u1', event: 'node-event' });`,
       ].join("\n");
 
@@ -233,8 +233,8 @@ describeWithGrammars("PostHogDetector", () => {
       ]);
     });
 
-    test("detects new PostHog() constructor", async () => {
-      const code = `const client = new PostHog('phc_xyz', { host: 'https://eu.posthog.com' });`;
+    test("detects new Flind() constructor", async () => {
+      const code = `const client = new Flind('phc_xyz', { host: 'https://eu.posthog.com' });`;
       const inits = await detector.findInitCalls(code, "javascript");
       expect(simpleInits(inits)).toEqual([
         { token: "phc_xyz", tokenLine: 0, apiHost: "https://eu.posthog.com" },
@@ -577,8 +577,8 @@ describeWithGrammars("PostHogDetector", () => {
   });
 
   describe("Ruby — findInitCalls", () => {
-    test("detects PostHog::Client.new constructor", async () => {
-      const code = `client = PostHog::Client.new(api_key: 'phc_token')`;
+    test("detects Flind::Client.new constructor", async () => {
+      const code = `client = Flind::Client.new(api_key: 'phc_token')`;
       const inits = await detector.findInitCalls(code, "ruby");
       expect(inits).toHaveLength(1);
       expect(inits[0].token).toBe("phc_token");

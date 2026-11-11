@@ -39,7 +39,7 @@ class ClientDeadlineExceededError(Exception):
     """
 
     def __init__(self, timeout_seconds: float) -> None:
-        super().__init__(f"{CLIENT_DEADLINE_ERROR} within {timeout_seconds:g} seconds, so PostHog ended the statement")
+        super().__init__(f"{CLIENT_DEADLINE_ERROR} within {timeout_seconds:g} seconds, so Flind ended the statement")
         self.timeout_seconds = timeout_seconds
 
 

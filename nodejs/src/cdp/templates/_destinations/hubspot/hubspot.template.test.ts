@@ -96,7 +96,7 @@ describe('hubspot template', () => {
         expect(patchResponse.finished).toEqual(false)
         expect(patchResponse.invocation.queueParameters).toMatchInlineSnapshot(`
             {
-              "body": "{"name":"posthog_group_id","label":"PostHog Group ID","description":"Unique Property to map PostHog Group ID with a HubSpot Company Object","groupName":"companyinformation","type":"string","fieldType":"text","hidden":true,"displayOrder":-1,"hasUniqueValue":true,"formField":false}",
+              "body": "{"name":"posthog_group_id","label":"Flind Group ID","description":"Unique Property to map Flind Group ID with a HubSpot Company Object","groupName":"companyinformation","type":"string","fieldType":"text","hidden":true,"displayOrder":-1,"hasUniqueValue":true,"formField":false}",
               "headers": {
                 "Authorization": "Bearer access-token",
                 "Content-Type": "application/json",
@@ -160,7 +160,7 @@ describe('hubspot template', () => {
         expect(patchResponse.finished).toEqual(false)
         expect(patchResponse.invocation.queueParameters).toMatchInlineSnapshot(`
             {
-              "body": "{"name":"posthog_group_id","label":"PostHog Group ID","description":"Unique Property to map PostHog Group ID with a HubSpot Company Object","groupName":"companyinformation","type":"string","fieldType":"text","hidden":true,"displayOrder":-1,"hasUniqueValue":true,"formField":false}",
+              "body": "{"name":"posthog_group_id","label":"Flind Group ID","description":"Unique Property to map Flind Group ID with a HubSpot Company Object","groupName":"companyinformation","type":"string","fieldType":"text","hidden":true,"displayOrder":-1,"hasUniqueValue":true,"formField":false}",
               "headers": {
                 "Authorization": "Bearer access-token",
                 "Content-Type": "application/json",

@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -171,7 +171,7 @@ export interface CanvasApi {
     readonly created_by: UserBasicApi
     readonly created_at: string
     readonly updated_at: string
-    /** Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas — share this when pointing a user at it; never construct a canvas URL. */
+    /** Canonical link to the canvas in the Flind app. The only valid way to link to a canvas — share this when pointing a user at it; never construct a canvas URL. */
     readonly url: string
 }
 
@@ -737,7 +737,7 @@ export interface CanvasPostHogCapabilitiesApi {
      */
     actions?: string[]
     /**
-     * PostHog MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', 'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the promote review.
+     * Flind MCP tools the canvas may run via ph.tools (e.g. 'feature-flag-get-definition', 'feature-flag-set-release-condition-rollout'). Each runs as the viewer; declaring one shows it in the promote review.
      * @maxItems 32
      * @items.maxLength 200
      */
@@ -849,7 +849,7 @@ export interface CanvasCapabilityWideningApi {
     state_scopes_added: string[]
     /** Action verbs the draft newly declares it may invoke via ph.actions. */
     actions_added: string[]
-    /** PostHog MCP tools the draft newly declares it may run via ph.tools. */
+    /** Flind MCP tools the draft newly declares it may run via ph.tools. */
     tools_added: string[]
     /** Connector providers and tools the draft newly declares it may call via ph.connectors. */
     connectors_added: CanvasConnectorDeclarationApi[]
@@ -1004,7 +1004,7 @@ export interface CanvasSummaryApi {
     published_build_id: string | null
     /** When the canvas was created. */
     created_at: string
-    /** Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas — share this when pointing a user at it; never construct a canvas URL. */
+    /** Canonical link to the canvas in the Flind app. The only valid way to link to a canvas — share this when pointing a user at it; never construct a canvas URL. */
     readonly url: string
 }
 
@@ -1688,7 +1688,7 @@ export interface CanvasStateValueResponseApi {
 export type CanvasToolInvokeApiArguments = { [key: string]: unknown }
 
 /**
- * Payload for running one PostHog MCP tool.
+ * Payload for running one Flind MCP tool.
  */
 export interface CanvasToolInvokeApi {
     /**
@@ -1706,7 +1706,7 @@ export interface CanvasToolInvokeApi {
 export type CanvasToolResultApiResult = { [key: string]: unknown }
 
 /**
- * Result of one PostHog MCP tool run.
+ * Result of one Flind MCP tool run.
  */
 export interface CanvasToolResultApi {
     /** The tool that ran. */
@@ -1819,7 +1819,7 @@ export interface CanvasActionDefinitionApi {
 }
 
 /**
- * One PostHog MCP tool a canvas may declare, as the host renders it before running it.
+ * One Flind MCP tool a canvas may declare, as the host renders it before running it.
  */
 export interface CanvasToolDefinitionApi {
     /** MCP tool name, e.g. 'feature-flag-enable'. */
@@ -1835,12 +1835,12 @@ export interface CanvasToolDefinitionApi {
 }
 
 /**
- * The action registry: every verb and PostHog MCP tool a canvas may declare and invoke.
+ * The action registry: every verb and Flind MCP tool a canvas may declare and invoke.
  */
 export interface CanvasActionsResponseApi {
     /** Registered verbs, sorted by name. */
     actions: CanvasActionDefinitionApi[]
-    /** PostHog MCP tools a canvas may declare in capabilities.posthog.tools, sorted by name. Read each tool's input schema with the MCP `info` command. */
+    /** Flind MCP tools a canvas may declare in capabilities.posthog.tools, sorted by name. Read each tool's input schema with the MCP `info` command. */
     tools: CanvasToolDefinitionApi[]
 }
 
@@ -1884,7 +1884,7 @@ export interface CanvasConnectorApi {
     provider: string
     /** Display name of the provider. */
     display_name: string
-    /** 'native' runs through a PostHog personal integration; 'mcp' through an MCP store installation.
+    /** 'native' runs through a Flind personal integration; 'mcp' through an MCP store installation.
      *
      * * `native` - Native
      * * `mcp` - Mcp */

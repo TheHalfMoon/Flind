@@ -208,7 +208,7 @@ class SnowflakeSource(SQLSource[SnowflakeSourceConfig], ResumableSource[Snowflak
             name=ExternalDataSourceType.SNOWFLAKE,
             category=DataWarehouseSourceCategory.DATABASES,
             keywords=["sql"],
-            caption="Enter your Snowflake credentials to automatically pull your Snowflake data into the PostHog Data warehouse.",
+            caption="Enter your Snowflake credentials to automatically pull your Snowflake data into the Flind Data warehouse.",
             iconPath="/static/services/snowflake.png",
             docsUrl="https://posthog.com/docs/cdp/sources/snowflake",
             fields=cast(
@@ -388,9 +388,9 @@ class SnowflakeSource(SQLSource[SnowflakeSourceConfig], ResumableSource[Snowflak
             # the object or reconfigure the synced columns.
             "invalid identifier": "A Snowflake table or view you're syncing references a column that no longer exists (for example a stale view definition, or a column that was dropped or renamed). Please fix the table or view in Snowflake, or reconfigure the columns selected for this table, then resync.",
             # Snowflake error 250001 (08001): a network policy (IP allowlist) on the customer's account
-            # rejects the connection because PostHog's egress IP isn't permitted. Retrying can never
+            # rejects the connection because Flind's egress IP isn't permitted. Retrying can never
             # succeed until their admin allowlists our IPs, so stop retrying and surface what to do.
-            "is not allowed to access Snowflake": "Snowflake rejected the connection because a network policy (IP allowlist) on your account does not permit PostHog's IP address. Ask your Snowflake administrator to add PostHog's egress IP addresses to the network policy allowlist, then resync.",
+            "is not allowed to access Snowflake": "Snowflake rejected the connection because a network policy (IP allowlist) on your account does not permit Flind's IP address. Ask your Snowflake administrator to add Flind's egress IP addresses to the network policy allowlist, then resync.",
             # Snowflake error 250001 (08001): key-pair login was rejected because the JWT we signed with
             # the configured private key doesn't match the public key registered on the Snowflake user
             # (rotated/removed key, key assigned to a different user, or the wrong key pasted). Retrying
@@ -433,7 +433,7 @@ class SnowflakeSource(SQLSource[SnowflakeSourceConfig], ResumableSource[Snowflak
             # Snowflake connector error 290403 (ER_HTTP_GENERAL_ERROR + 403): a request to Snowflake
             # returned HTTP 403 Forbidden and kept doing so through the connector's own retry budget.
             # Two different conditions produce it. At connect, or early in a sync, it is access
-            # denied: a network policy, firewall, or proxy blocks PostHog, or the role's grant on
+            # denied: a network policy, firewall, or proxy blocks Flind, or the role's grant on
             # the data was revoked. Hours into a sync it is instead an expired result-chunk URL,
             # because the pre-signed URLs that `result_batch.py::_download` fetches have a limited
             # lifetime and a slow sync outlives them.

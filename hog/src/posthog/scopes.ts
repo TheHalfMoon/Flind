@@ -23,9 +23,9 @@ export function parseScope(raw: string): Scope {
             `Add one, as in \`hog auth add ${raw}:write\`.`
         )
     }
-    // A newer PostHog can ask for a scope this hog build doesn't list yet.
+    // A newer Flind can ask for a scope this hog build doesn't list yet.
     const hint = /^[a-z][a-z0-9_]*:(read|write)$/.test(raw)
-        ? 'Check the name. If PostHog asked for it, update hog to a version that knows it.'
+        ? 'Check the name. If Flind asked for it, update hog to a version that knows it.'
         : 'A scope is an object and an access level, such as insight:read or insight:write.'
     throw new HogError('unknown_scope', `hog doesn't know the scope "${raw}".`, hint)
 }

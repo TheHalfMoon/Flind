@@ -35,11 +35,11 @@ export async function finishStepUp(ctx: Context, approved: OAuthLogin): Promise<
 }
 
 // hog adds scopes by asking for a new browser approval, which only works for `hog auth login`. A personal
-// API key's scopes are set in PostHog, so hog can't change them.
+// API key's scopes are set in Flind, so hog can't change them.
 function personalKeyCantGainScopes(scopes: readonly string[]): HogError {
     return new HogError(
         'step_up_unavailable',
-        "You're using a personal API key, and hog can't add scopes to it. You choose a key's scopes in PostHog.",
+        "You're using a personal API key, and hog can't add scopes to it. You choose a key's scopes in Flind.",
         `${addToKeyHint(scopes)} Or run \`hog auth login\` to log in with the browser, and hog can then add scopes for you.`
     )
 }
@@ -105,7 +105,7 @@ export async function stepUp(ctx: Context, wanted: readonly string[]): Promise<S
     return result.status === 'pending' ? { ...result, host: key.host } : finishStepUp(ctx, result.value)
 }
 
-// Only a login knows its scopes without asking PostHog, so a personal API key meets the 403 instead.
+// Only a login knows its scopes without asking Flind, so a personal API key meets the 403 instead.
 export async function ensureScopes(ctx: Context, scopes: readonly string[], action = 'for this'): Promise<void> {
     const credentials = await ctx.credentials().catch(() => undefined)
     let login = await loginScopes(ctx, credentials, scopes)

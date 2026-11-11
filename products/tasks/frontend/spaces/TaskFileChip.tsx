@@ -12,7 +12,7 @@ interface TaskFileChipProps {
     onOpen: () => void
 }
 
-/** A file the agent handed back. It opens the session's Artifacts tab on that file, like PostHog Desktop. */
+/** A file the agent handed back. It opens the session's Artifacts tab on that file, like Flind Desktop. */
 export function TaskFileChip({ taskFile, onOpen }: TaskFileChipProps): JSX.Element {
     const { file, url } = taskFile
     return (

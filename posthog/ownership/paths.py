@@ -1,6 +1,6 @@
 """Which team owns each path of a repository, resolved from the repository's own ownership files.
 
-The answer comes from the repository as it stands, not from anything PostHog stores, so a caller
+The answer comes from the repository as it stands, not from anything Flind stores, so a caller
 needs no team and gets whoever owes the work now.
 """
 

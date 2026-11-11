@@ -265,7 +265,7 @@ class TestZeroExposures(TestCase):
                 None,
                 {"exposed_without_test_account_filter": 0},
                 "No users exposed, although the feature flag is called",
-                'PostHog has recorded calls of the feature flag "checkout-test" during the experiment, but none of them '
+                'Flind has recorded calls of the feature flag "checkout-test" during the experiment, but none of them '
                 "counts as an exposure. A call counts when the flag returns one of the experiment's variants and the "
                 "user passes the exposure criteria. Check that the flag's release conditions include your users, and "
                 "that the exposure criteria, such as the test account filter, don't leave them out.",

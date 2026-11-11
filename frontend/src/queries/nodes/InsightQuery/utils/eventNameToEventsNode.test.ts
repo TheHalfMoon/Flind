@@ -11,7 +11,7 @@ describe('eventNameToEventsNode', () => {
             expected: { kind: NodeKind.EventsNode, event: 'signed_up', name: 'signed_up' },
         },
         {
-            scenario: 'PostHog built-in event',
+            scenario: 'Flind built-in event',
             input: '$pageview',
             expected: { kind: NodeKind.EventsNode, event: '$pageview', name: '$pageview' },
         },

@@ -1,4 +1,4 @@
-"""The registry of the products that report which PostHog objects use an integration row.
+"""The registry of the products that report which Flind objects use an integration row.
 
 A product reports its usages from `products/<product>/backend/integration_usages.py`, with a function
 `integration_usages(team_id: int, integration_id: int) -> Iterable[IntegrationUsage]`. The SDK finds

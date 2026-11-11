@@ -61,7 +61,7 @@ FAN_OUT_PARENT_CAP_HITS = Counter(
     labelnames=["endpoint"],
 )
 
-# The reconcile cursor is a PostHog job timestamp compared against GitHub's updated_at, so allow
+# The reconcile cursor is a Flind job timestamp compared against GitHub's updated_at, so allow
 # for clock skew between the two before trusting it to skip a parent.
 _RECONCILE_SKEW_ALLOWANCE = timedelta(minutes=5)
 

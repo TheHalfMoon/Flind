@@ -283,7 +283,7 @@ class TestAgentToolkit(BaseTest):
         prompt_builder = ChatAgentPromptBuilder(team=self.team, user=self.user, context_manager=context_manager)
         system_prompt = prompt_builder._get_system_prompt()
 
-        self.assertIn("PostHog AI supports slash commands", system_prompt)
+        self.assertIn("Flind AI supports slash commands", system_prompt)
         self.assertIn("`/usage`", system_prompt)
         self.assertIn("Do not claim this command is fabricated", system_prompt)
 
@@ -305,7 +305,7 @@ class TestAgentToolkit(BaseTest):
 
         system_prompt = "\n\n".join(str(message.content) for message in messages if isinstance(message, SystemMessage))
 
-        self.assertIn("PostHog AI supports slash commands", system_prompt)
+        self.assertIn("Flind AI supports slash commands", system_prompt)
         self.assertIn("`/usage`", system_prompt)
         self.assertIn("Do not claim this command is fabricated", system_prompt)
 

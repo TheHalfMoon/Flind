@@ -38,8 +38,8 @@ export const SOURCE_CONFIG: Record<
   },
   bundled: {
     icon: PackageIcon,
-    label: "PostHog",
-    sectionTitle: "PostHog",
+    label: "Flind",
+    sectionTitle: "Flind",
     chipClass: "bg-orange-3 text-orange-11",
     dotClass: "bg-orange-9",
   },

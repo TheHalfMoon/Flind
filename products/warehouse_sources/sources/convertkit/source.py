@@ -48,7 +48,7 @@ class ConvertKitSource(ResumableSource[ConvertKitSourceConfig, ConvertKitResumeC
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             keywords=["kit"],
             label="ConvertKit",
-            caption="""Enter your Kit (formerly ConvertKit) API key to pull your Kit data into the PostHog Data warehouse.
+            caption="""Enter your Kit (formerly ConvertKit) API key to pull your Kit data into the Flind Data warehouse.
 
 You can create a v4 API key in your [Kit account settings](https://app.kit.com/account_settings/developer_settings).""",
             iconPath="/static/services/convertkit.png",

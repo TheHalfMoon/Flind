@@ -11,7 +11,7 @@ from ee.models.license import License, LicenseManager
 
 class LicensedTestMixin:
     """
-    Test API using Django REST Framework test suite, for licensed PostHog (mainly enterprise edition).
+    Test API using Django REST Framework test suite, for licensed Flind (mainly enterprise edition).
     """
 
     CONFIG_LICENSE_KEY: Optional[str] = "12345::67890"

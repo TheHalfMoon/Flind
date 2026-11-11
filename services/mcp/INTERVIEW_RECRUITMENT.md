@@ -85,7 +85,7 @@ Start or restart the local MCP server with those variables. This payload is acce
 API in `development` or `test`, with an explicit recruitment override. Production ignores it.
 Missing, malformed, or incomplete payloads skip recruitment. The example disables warmup only for
 local testing; production timing still comes from the flag payload. To verify event ingestion too,
-configure the existing analytics API key and host for your local PostHog project.
+configure the existing analytics API key and host for your local Flind project.
 
 For code changes, run the existing regression suites:
 

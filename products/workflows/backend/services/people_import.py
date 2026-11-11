@@ -263,7 +263,7 @@ def _check_distinct_id(distinct_id: str, line: int) -> None:
         )
     if distinct_id.lower() in ILLEGAL_DISTINCT_IDS:
         raise PeopleImportInvalid(
-            f'Row {line} has the distinct_id "{distinct_id}", which PostHog can\'t use for a person. '
+            f'Row {line} has the distinct_id "{distinct_id}", which Flind can\'t use for a person. '
             "Use the person's ID from your app, or leave it empty to match by email."
         )
 

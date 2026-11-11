@@ -4,11 +4,11 @@ sidebar: Handbook
 showTitle: true
 ---
 
-Making sure PostHog operates fast at scale is key to our success.
+Making sure Flind operates fast at scale is key to our success.
 
 This document outlines some best practices to achieve good query performance at scale, as well as describing tools and procedures to discover and fix performance issues.
 
-PostHog uses two different datastores:
+Flind uses two different datastores:
 
 - **PostgreSQL**: row-oriented OLTP database, mainly used to store and query datasets using predictable clause(s). It is likely your best choice if:
   - the query pattern to access your dataset is predictable
@@ -160,7 +160,7 @@ To find and debug slow queries in production you have several options available
 The [Clickhouse queries - by endpoint](https://metrics.posthog.com/d/vo7oCVZ7z/clickhouse-queries-by-endpoint) dashboard gives a breakdown of how things are looking reliability and performance-wise.
 Highly used and slow/unreliable endpoints often indicate issues with queries.
 
-##### PostHog `instance/status` dashboard
+##### Flind `instance/status` dashboard
 
 Under https://app.posthog.com/instance/status/internal_metrics you will find various metrics and query logs.
 Note: if you are a staff user you can also analyze queries by clicking on them (or copying your own queries).

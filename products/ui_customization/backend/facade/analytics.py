@@ -31,7 +31,7 @@ class AnalyticsPage(LabeledStrEnum):
 class AnalyticsListSource(LabeledStrEnum):
     PINNED = "pinned", "Items the person pinned"
     RECENTS = "recents", "Items the person opened recently"
-    BY_POSTHOG = "by_posthog", "Ready-made analytics by PostHog"
+    BY_POSTHOG = "by_posthog", "Ready-made analytics by Flind"
 
 
 ANALYTICS_SHORT_ID_PATTERN = r"^[A-Za-z0-9]{1,12}$"
@@ -43,7 +43,7 @@ MAX_ANALYTICS_METRICS = 4
 
 
 class AnalyticsPageTarget(FragmentModel):
-    """A PostHog page. It has its own label and icon."""
+    """A Flind page. It has its own label and icon."""
 
     kind: Literal["page"]
     page: AnalyticsPage

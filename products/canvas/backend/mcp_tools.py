@@ -1,6 +1,6 @@
-"""Canvas MCP tools: PostHog MCP tools a canvas may call as the viewer (ph.tools).
+"""Canvas MCP tools: Flind MCP tools a canvas may call as the viewer (ph.tools).
 
-The tool runs on the PostHog MCP server with a short-lived token minted for
+The tool runs on the Flind MCP server with a short-lived token minted for
 the viewer, so the canvas reuses the tool's own input handling, the viewer's
 permissions, approval policies and activity logging. A new capability is one
 line in the allowlist, not a new action verb.
@@ -100,12 +100,12 @@ def call_canvas_mcp_tool(team_id: int, user_id: int, tool: str, arguments: dict[
             ) from error
         logger.warning("canvas_mcp_tool_server_error", tool=tool, error=str(error))
         raise CanvasMcpToolError(
-            "The PostHog MCP server could not run this tool. Try again.", server_unavailable=True
+            "The Flind MCP server could not run this tool. Try again.", server_unavailable=True
         ) from error
     except McpServerError as error:
         logger.warning("canvas_mcp_tool_server_error", tool=tool, error=str(error))
         raise CanvasMcpToolError(
-            "The PostHog MCP server could not run this tool. Try again.", server_unavailable=True
+            "The Flind MCP server could not run this tool. Try again.", server_unavailable=True
         ) from error
     if outcome.is_error:
         raise CanvasMcpToolError(outcome.text or f'The tool "{tool}" failed.')

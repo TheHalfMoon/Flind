@@ -48,12 +48,12 @@ from products.tasks.backend.temporal.process_task.activities.post_slack_update i
         (
             "GitHub user integration for this run requires reauthorization",
             SLACK_RECOVERY_STRATEGY_RECONNECT_GITHUB,
-            "<http://localhost:8000/project/42/settings/user-personal-integrations|Connect your GitHub in PostHog settings>",
+            "<http://localhost:8000/project/42/settings/user-personal-integrations|Connect your GitHub in Flind settings>",
         ),
         (
             "GitHub user integration requires reauthorization and no team installation is available",
             SLACK_RECOVERY_STRATEGY_RECONNECT_GITHUB,
-            "<http://localhost:8000/project/42/settings/user-personal-integrations|Connect your GitHub in PostHog settings>",
+            "<http://localhost:8000/project/42/settings/user-personal-integrations|Connect your GitHub in Flind settings>",
         ),
         (
             "Linear integration requires reauthorization",

@@ -62,7 +62,7 @@ class HealthchecksSource(
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             keywords=["healthchecks.io", "cron monitoring", "uptime"],
             label="Healthchecks.io",
-            caption="""Enter your Healthchecks.io API key to pull your cron and scheduled-task monitoring data into the PostHog Data warehouse.
+            caption="""Enter your Healthchecks.io API key to pull your cron and scheduled-task monitoring data into the Flind Data warehouse.
 
 Create a project-scoped API key under **Project settings > API Access**. A read-only key is enough for the checks, channels, and flips tables; syncing the pings table requires a full-access (read-write) key.
 

@@ -46,7 +46,7 @@ class RequestPacer:
     returns and the source can hand the run off. `sleep` returns True to report that.
 
     The budget being protected belongs to the customer's own account on the vendor, so this is a
-    caller-side courtesy rather than a shared PostHog budget. An API whose credential PostHog owns
+    caller-side courtesy rather than a shared Flind budget. An API whose credential Flind owns
     belongs in `posthog/egress/` instead.
     """
 

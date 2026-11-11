@@ -9,7 +9,7 @@ import { AppWrapper } from '../../components/AppWrapper'
 
 function InsightActorsApp(): JSX.Element {
     return (
-        <AppWrapper<InsightActorsData> appName="PostHog Insight Actors">
+        <AppWrapper<InsightActorsData> appName="Flind Insight Actors">
             {({ data, openLink }) => <InsightActorsView data={data!} openLink={openLink} />}
         </AppWrapper>
     )

@@ -102,7 +102,7 @@ describe("Agent", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it("keeps gateway auth for a Claude session on PostHog credits", async () => {
+  it("keeps gateway auth for a Claude session on Flind credits", async () => {
     const agent = new Agent({
       posthog: {
         apiUrl: "https://us.posthog.com",

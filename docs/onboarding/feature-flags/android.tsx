@@ -27,11 +27,11 @@ export const getAndroidSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                                 language: 'kotlin',
                                 file: 'Kotlin',
                                 code: dedent`
-                                    val isMyFlagEnabled = PostHog.isFeatureEnabled("flag-key")
+                                    val isMyFlagEnabled = Flind.isFeatureEnabled("flag-key")
                                     if (isMyFlagEnabled) {
                                         // Do something differently for this user
                                         // Optional: fetch the payload
-                                        val matchedFlagPayload = PostHog.getFeatureFlagResult("flag-key", sendFeatureFlagEvent = false)?.payload
+                                        val matchedFlagPayload = Flind.getFeatureFlagResult("flag-key", sendFeatureFlagEvent = false)?.payload
                                     }
                                 `,
                             },
@@ -56,11 +56,11 @@ export const getAndroidSteps = (ctx: OnboardingComponentsContext): StepDefinitio
                                 language: 'kotlin',
                                 file: 'Kotlin',
                                 code: dedent`
-                                    val enabledVariant = PostHog.getFeatureFlag("flag-key")
+                                    val enabledVariant = Flind.getFeatureFlag("flag-key")
                                     if (enabledVariant == "variant-key") { // replace 'variant-key' with the key of your variant
                                         // Do something differently for this user
                                         // Optional: fetch the payload
-                                        val matchedFlagPayload = PostHog.getFeatureFlagResult("flag-key", sendFeatureFlagEvent = false)?.payload
+                                        val matchedFlagPayload = Flind.getFeatureFlagResult("flag-key", sendFeatureFlagEvent = false)?.payload
                                     }
                                 `,
                             },
@@ -75,7 +75,7 @@ export const getAndroidSteps = (ctx: OnboardingComponentsContext): StepDefinitio
             content: (
                 <Markdown>
                     {dedent`
-                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the PostHog dashboard.
+                        Experiments run on top of our feature flags. Once you've implemented the flag in your code, you run an experiment by creating a new experiment in the Flind dashboard.
                     `}
                 </Markdown>
             ),

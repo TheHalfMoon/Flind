@@ -91,7 +91,7 @@ Return ONLY a JSON object (no prose, no code fence) matching this schema:
 # Turn 3 mirrors the pipeline's own skill-fetch imperative (issues_review/prompt.jinja,
 # <your_review_perspective>) so the smoke measures what a real review unit will do on the
 # current MCP surface -- not a friendlier or stricter paraphrase of it.
-PROMPT_3 = f"""Follow-up turn. Your validation criteria for this task live in a skill you MUST read before answering. As your first step, call this over the PostHog MCP:
+PROMPT_3 = f"""Follow-up turn. Your validation criteria for this task live in a skill you MUST read before answering. As your first step, call this over the Flind MCP:
 
     skill-get(skill_name="{SKILL}", version=1)
 

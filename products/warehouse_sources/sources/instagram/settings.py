@@ -3,7 +3,7 @@ from typing import Optional
 
 from products.warehouse_sources.sources.sdk import IncrementalField, SortMode, frozen, incremental_field
 
-# PostHog's Meta app authorizes through Facebook Login, so the Instagram Platform surface is
+# Flind's Meta app authorizes through Facebook Login, so the Instagram Platform surface is
 # reached on graph.facebook.com. (graph.instagram.com serves the same edges, but only for
 # tokens minted by Instagram Login.)
 GRAPH_API_HOST = "https://graph.facebook.com"

@@ -65,7 +65,7 @@ export function ExtensionPanelSettings(): JSX.Element {
                             ) : null}
                         </>
                     ) : null}
-                    <LemonLabel>PostHog host</LemonLabel>
+                    <LemonLabel>Flind host</LemonLabel>
                     <LemonSelect
                         size="small"
                         fullWidth
@@ -77,8 +77,8 @@ export function ExtensionPanelSettings(): JSX.Element {
                             }
                         }}
                         options={[
-                            { value: 'https://us.posthog.com', label: 'PostHog Cloud US' },
-                            { value: 'https://eu.posthog.com', label: 'PostHog Cloud EU' },
+                            { value: 'https://us.posthog.com', label: 'Flind Cloud US' },
+                            { value: 'https://eu.posthog.com', label: 'Flind Cloud EU' },
                             { value: CUSTOM_HOST, label: isCloudHost ? 'Self-hosted' : new URL(uiHost).host },
                         ]}
                         data-attr="toolbar-extension-host"
@@ -95,7 +95,7 @@ export function ExtensionPanelSettings(): JSX.Element {
                             <LemonButton
                                 size="small"
                                 type="primary"
-                                disabledReason={canonicalCustomHost ? null : 'Enter the address of your PostHog app'}
+                                disabledReason={canonicalCustomHost ? null : 'Enter the address of your Flind app'}
                                 onClick={() => {
                                     if (canonicalCustomHost) {
                                         setUiHost(canonicalCustomHost)

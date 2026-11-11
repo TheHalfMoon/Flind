@@ -35,7 +35,7 @@ DEFAULT_LAYOUT = AnalyticsFragmentLayout(
         AnalyticsFragmentSection(id="recents", title="Recents", items=[_list(AnalyticsListSource.RECENTS)]),
         AnalyticsFragmentSection(
             id="by-posthog",
-            title="By PostHog",
+            title="By Flind",
             icon=FragmentIcon.POSTHOG,
             items=[_list(AnalyticsListSource.BY_POSTHOG)],
         ),

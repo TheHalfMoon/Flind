@@ -163,7 +163,7 @@ def test_pending_migration_check_waits_instead_of_refusing(monkeypatch) -> None:
     assert "Migration risk" in result["reviewer"]["reasoning"]
 
 
-def _evidence(state: str, head_sha: str, reviewer: str = "PostHog Review") -> dict:
+def _evidence(state: str, head_sha: str, reviewer: str = "Flind Review") -> dict:
     return {
         "state": state,
         "reviewer": reviewer,
@@ -227,12 +227,12 @@ _GIT_PROVENANCE = CommitProvenance(commit_count=3, agent_commit_count=2, generat
             id="git-log-without-server-messages",
         ),
         pytest.param(
-            {"commit_messages": ["feat: a\n\nGenerated-By: PostHog Code\nTask-Id: t-9", "fix: b"]},
+            {"commit_messages": ["feat: a\n\nGenerated-By: Flind Code\nTask-Id: t-9", "fix: b"]},
             {
                 "agent_authored": True,
                 "commit_count": 2,
                 "agent_commit_count": 1,
-                "generated_by": ["PostHog Code"],
+                "generated_by": ["Flind Code"],
                 "task_ids": ["t-9"],
             },
             id="server-messages",

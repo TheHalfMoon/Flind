@@ -40,7 +40,7 @@ const schema = z.object({
         .string()
         .describe(
             'A path template copied verbatim from the catalog below (e.g. `/persons/{uuid}`). Its ' +
-                "`{placeholders}` are filled from `params`. These slugs come from PostHog's canonical route " +
+                "`{placeholders}` are filled from `params`. These slugs come from Flind's canonical route " +
                 'table, so they are always correct — never pass a path that is not in this list.\n\n' +
                 URL_CATALOG
         ),
@@ -57,7 +57,7 @@ const schema = z.object({
 type Params = z.infer<typeof schema>
 
 interface AppUrlResult {
-    /** Full, canonical, clickable PostHog URL. Surface this verbatim — do not rewrite it. */
+    /** Full, canonical, clickable Flind URL. Surface this verbatim — do not rewrite it. */
     url: string
 }
 

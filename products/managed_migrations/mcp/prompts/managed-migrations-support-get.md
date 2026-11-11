@@ -1,4 +1,4 @@
-Get one batch import (managed migration) job by id, from any PostHog team, including the raw worker `state` and `import_config` blobs. PostHog staff only: the backend requires a staff user AND a personal API key explicitly carrying the `batch_import_support:read` scope (a full-access `*` key is rejected; OAuth sign-in can never grant it).
+Get one batch import (managed migration) job by id, from any Flind team, including the raw worker `state` and `import_config` blobs. Flind staff only: the backend requires a staff user AND a personal API key explicitly carrying the `batch_import_support:read` scope (a full-access `*` key is rejected; OAuth sign-in can never grant it).
 
 Adds to the list fields:
 

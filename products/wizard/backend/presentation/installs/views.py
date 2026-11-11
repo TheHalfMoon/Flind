@@ -70,7 +70,7 @@ class WizardInstallViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
         summary="Start a setup run",
         description=(
             "Start the setup agent in the cloud on a GitHub repository of this project. "
-            "It adds PostHog to the code and opens a pull request. "
+            "It adds Flind to the code and opens a pull request. "
             "Each user can have one setup run active per project at a time."
         ),
     )

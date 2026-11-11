@@ -31,7 +31,7 @@ def _load_llm_inputs(observation_id: UUID) -> ScannerLlmInputs | None:
 
 
 def _emit_observation_signals(inputs: EmitObservationSignalInputs) -> list[EmittedSignal]:
-    """Emit the observation's side-mission findings as PostHog Signals; fails soft, returns each signal it
+    """Emit the observation's side-mission findings as Flind Signals; fails soft, returns each signal it
     actually emitted, in emission order. Findings below the confidence floor and findings whose emission
     fails are left out, so the caller's count and types stay in step."""
     try:

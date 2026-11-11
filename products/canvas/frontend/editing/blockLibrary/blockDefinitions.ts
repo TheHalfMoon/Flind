@@ -144,7 +144,7 @@ const DEFINITIONS: Omit<BlockDefinition, 'component'>[] = [
     {
         type: 'Insight',
         label: 'Saved insight',
-        description: 'Any saved insight from PostHog, kept in sync',
+        description: 'Any saved insight from Flind, kept in sync',
         group: 'Data',
         presets: [{ span: 'wide' }],
         needsSetup: true,

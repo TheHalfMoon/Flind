@@ -18,7 +18,7 @@ test.describe('Early Access Management', () => {
     test('Early access feature new and list', async ({ page }) => {
         // load an empty early access feature page
         await expect(page.locator('h1')).toContainText('Early access features')
-        await expect(page).toHaveTitle('Early access features • PostHog')
+        await expect(page).toHaveTitle('Early access features • Flind')
 
         // go to create a new feature. This workspace has no features, so the scene renders its
         // setup empty state instead of the list; the create button on both carries this attr,

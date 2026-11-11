@@ -25,7 +25,7 @@ class TestPickPullRequestOwner(SimpleTestCase):
             ("mapped_author_wins_over_the_inbox", 1, True, 2, PullRequestOwner(user_id=1, source="author")),
             ("self_driving_pr", None, True, 2, PullRequestOwner(user_id=2, source="inbox_reviewer")),
             ("self_driving_pr_without_reviewer", None, True, None, PullRequestOwner(user_id=None, source="none")),
-            # Another bot can claim an Inbox branch name; only the PostHog app's pull requests link to a report.
+            # Another bot can claim an Inbox branch name; only the Flind app's pull requests link to a report.
             ("other_author_on_an_inbox_branch", None, False, 2, PullRequestOwner(user_id=None, source="none")),
         ]
     )

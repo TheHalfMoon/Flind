@@ -8,7 +8,7 @@ def create_inputs(**kwargs):
         "apiKey": "API_KEY",
         "email": "max@posthog.com",
         "firstName": "max",
-        "attributes": {"1": "PostHog", "2": "posthog.com"},
+        "attributes": {"1": "Flind", "2": "posthog.com"},
     }
     inputs.update(kwargs)
 
@@ -38,7 +38,7 @@ class TestTemplateActiveCampaign(BaseHogFunctionTemplateTest):
                     "contact": {
                         "email": "max@posthog.com",
                         "firstName": "max",
-                        "fieldValues": [{"field": "1", "value": "PostHog"}, {"field": "2", "value": "posthog.com"}],
+                        "fieldValues": [{"field": "1", "value": "Flind"}, {"field": "2", "value": "posthog.com"}],
                     }
                 },
             },

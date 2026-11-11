@@ -132,7 +132,7 @@ export function GatewayConnectionModal(): JSX.Element | null {
                                         <div className="flex flex-col gap-3">
                                             <LemonField.Pure
                                                 label="OAuth client ID"
-                                                help="Leave blank to let PostHog register a client for you."
+                                                help="Leave blank to let Flind register a client for you."
                                                 htmlFor="mcp-gateway-connection-client-id"
                                             >
                                                 <LemonInput

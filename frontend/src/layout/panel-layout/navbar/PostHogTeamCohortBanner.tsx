@@ -20,8 +20,8 @@ export function PostHogTeamCohortBanner({ isCollapsed }: { isCollapsed: boolean 
         return (
             <ButtonPrimitive
                 iconOnly
-                aria-label="Rejoin the PostHog Team cohort"
-                tooltip="You're out of the PostHog Team cohort. Click to rejoin."
+                aria-label="Rejoin the Flind Team cohort"
+                tooltip="You're out of the Flind Team cohort. Click to rejoin."
                 tooltipPlacement="right"
                 onClick={() => rejoinPostHogTeamCohort(true)}
                 data-attr="nav-posthog-team-cohort-rejoin"
@@ -36,7 +36,7 @@ export function PostHogTeamCohortBanner({ isCollapsed }: { isCollapsed: boolean 
             <div className="flex items-start justify-between gap-1">
                 <div className="flex min-w-0 items-start gap-1 pt-0.5">
                     <IconCohort className="mt-px shrink-0 text-sm text-warning" />
-                    <span className="min-w-0 font-semibold">You're out of the PostHog Team cohort</span>
+                    <span className="min-w-0 font-semibold">You're out of the Flind Team cohort</span>
                 </div>
                 <LemonButton
                     icon={<IconX />}

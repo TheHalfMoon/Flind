@@ -75,7 +75,7 @@ describe("parseRunArtifacts", () => {
 });
 
 describe("getPostHogObjectArtifactMetadata", () => {
-  it("accepts PostHog references without file storage fields", () => {
+  it("accepts Flind references without file storage fields", () => {
     expect(
       getPostHogObjectArtifactMetadata({
         type: "reference",

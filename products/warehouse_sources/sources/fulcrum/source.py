@@ -47,7 +47,7 @@ class FulcrumSource(ResumableSource[FulcrumSourceConfig, FulcrumResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Fulcrum",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Fulcrum API token to sync your Fulcrum (Spatial Networks) field data into the PostHog Data warehouse.
+            caption="""Enter your Fulcrum API token to sync your Fulcrum (Spatial Networks) field data into the Flind Data warehouse.
 
 You can create an API token in your [Fulcrum account settings](https://web.fulcrumapp.com/settings/api). API access requires the paid Developer Pack subscription, and each token is scoped to a single organization.""",
             iconPath="/static/services/fulcrum.png",

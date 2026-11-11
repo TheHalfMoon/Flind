@@ -40,7 +40,7 @@ EVIDENCE_NOT_CALLED_RECENTLY = "not_called_recently"
 # No call evidence at all; the flag is old enough and its configuration serves a fixed
 # result. This says nothing about whether SDKs still evaluate the flag.
 EVIDENCE_FULLY_ROLLED_OUT_WITHOUT_USAGE_DATA = "fully_rolled_out_without_usage_data"
-# The configuration serves one fixed result and PostHog received a call inside the stale window.
+# The configuration serves one fixed result and Flind received a call inside the stale window.
 # `filter_stale_flags` needs a call older than the threshold or no call data at all, so a flag at
 # 100% that SDKs evaluate every day falls outside both of its branches and only this class sees it.
 EVIDENCE_EFFECTIVELY_FULL_ROLLOUT = "effectively_full_rollout"
@@ -109,12 +109,12 @@ class StaleFeatureFlagsCheck(HealthCheck):
         days = payload.get("days_since_evidence")
         if payload.get("evidence_class") == EVIDENCE_NOT_CALLED_RECENTLY:
             evidence_text = (
-                f"PostHog has not received a call for this flag in {days} days"
+                f"Flind has not received a call for this flag in {days} days"
                 if isinstance(days, int)
-                else "PostHog has not received a call for this flag recently"
+                else "Flind has not received a call for this flag recently"
             )
         elif payload.get("evidence_class") == EVIDENCE_EFFECTIVELY_FULL_ROLLOUT:
-            evidence_text = "PostHog still receives calls for this flag"
+            evidence_text = "Flind still receives calls for this flag"
         else:
             evidence_text = "This flag has no usage data and its configuration serves a fixed result"
         rollout_text = _ROLLOUT_STATE_TEXT.get(payload.get("rollout_state"))
@@ -286,7 +286,7 @@ def _serves_more_than_one_result(flag: FeatureFlag) -> bool:
     the checker calls a flag whose conditions all aggregate on one group type fully rolled out,
     because every request it addresses carries the key, while this guard rejects any set index.
 
-    The other candidate source is left alone. A usage-stale row's evidence is that PostHog stopped
+    The other candidate source is left alone. A usage-stale row's evidence is that Flind stopped
     receiving calls, which none of this contradicts. `detect` confirms a never-called row with the
     checker's full-rollout verdict only, not with this function.
     """

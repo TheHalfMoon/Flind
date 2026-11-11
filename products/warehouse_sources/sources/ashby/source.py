@@ -48,7 +48,7 @@ class AshbySource(ResumableSource[AshbySourceConfig, AshbyResumeConfig]):
             category=DataWarehouseSourceCategory.HR___RECRUITING,
             label="Ashby",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Ashby API key to pull your Ashby (ATS) data into the PostHog Data warehouse.
+            caption="""Enter your Ashby API key to pull your Ashby (ATS) data into the Flind Data warehouse.
 
 You can create an API key under **Admin → API Keys** in Ashby. Grant read permissions for the data you want to sync, for example:
 - `candidatesRead`, `applicationsRead`, `jobsRead`, `offersRead`, `interviewsRead`, `usersRead`
@@ -85,7 +85,7 @@ You can create an API key under **Admin → API Keys** in Ashby. Grant read perm
         api_version: str | None = None,
     ) -> list[SourceSchema]:
         # Ashby exposes incremental sync only via an opaque syncToken and an unordered
-        # `createdAfter` filter — neither maps safely onto PostHog's timestamp-watermark
+        # `createdAfter` filter — neither maps safely onto Flind's timestamp-watermark
         # model — so every endpoint is full refresh for now.
         return build_endpoint_schemas(ENDPOINTS, {}, names)
 

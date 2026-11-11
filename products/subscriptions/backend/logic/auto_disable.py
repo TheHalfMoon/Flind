@@ -48,8 +48,8 @@ UNSUPPORTED_TARGET_DISABLE_REASON = DisableReason(
 )
 SLACK_PERMISSION_REVOKED_DISABLE_REASON = DisableReason(
     key="slack_permission_revoked",
-    description="PostHog can no longer post to this Slack channel",
-    user_message="Cannot re-enable {target_type} subscription: PostHog can't post to this Slack channel. Reconnect Slack or re-add the bot to the channel, then try again.",
+    description="Flind can no longer post to this Slack channel",
+    user_message="Cannot re-enable {target_type} subscription: Flind can't post to this Slack channel. Reconnect Slack or re-add the bot to the channel, then try again.",
 )
 WEBHOOK_REJECTED_DISABLE_REASON = DisableReason(
     key="webhook_rejected",
@@ -58,10 +58,10 @@ WEBHOOK_REJECTED_DISABLE_REASON = DisableReason(
 )
 SLACK_FILE_UPLOAD_PERMISSION_REVOKED_DISABLE_REASON = DisableReason(
     key="slack_file_upload_permission_revoked",
-    description="PostHog can no longer upload files to Slack",
+    description="Flind can no longer upload files to Slack",
     user_message=(
         "Cannot re-enable {target_type} subscription: the Slack app needs the files:write permission. "
-        "Add files:write to a custom Slack app, or reconnect PostHog's Slack app, then try again."
+        "Add files:write to a custom Slack app, or reconnect Flind's Slack app, then try again."
     ),
 )
 CREATOR_LEFT_DISABLE_REASON = DisableReason(
@@ -233,7 +233,7 @@ def create_subscription_auto_disabled_notification(subscription: Subscription, r
             # ("Microsoft Teams stopped accepting messages"), so it stands as its own sentence.
             # Folding it into a "because ..." clause needs it lowercased, which mangles the brand.
             body=(
-                f"PostHog automatically disabled this subscription. {reason.description}. "
+                f"Flind automatically disabled this subscription. {reason.description}. "
                 f"{reason.user_message.format(target_type=target_type_label(subscription.target_type))}"
             ),
             target_type=TargetType.USER,
@@ -257,9 +257,9 @@ def send_notifications_for_disabled_subscription(
 
     display_name = subscription.title or "your subscription"
     subject = (
-        f'PostHog subscription "{subscription.title}" has been automatically disabled'
+        f'Flind subscription "{subscription.title}" has been automatically disabled'
         if subscription.title
-        else "Your PostHog subscription has been automatically disabled"
+        else "Your Flind subscription has been automatically disabled"
     )
     campaign_key = f"subscription-disabled-notification-{subscription.id}-{uuid.uuid4()}"
 

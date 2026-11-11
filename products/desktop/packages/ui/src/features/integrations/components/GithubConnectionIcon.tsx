@@ -37,7 +37,7 @@ export function GithubConnectionIcon({
         <div
           key="connected"
           className="relative h-8 w-28"
-          aria-label="PostHog connected to GitHub"
+          aria-label="Flind connected to GitHub"
           role="img"
         >
           <m.span
@@ -105,7 +105,7 @@ export function GithubConnectionIcon({
       ) : paired && !loading ? (
         <div
           className="flex h-8 w-28 items-center justify-center gap-2"
-          aria-label="Connect PostHog to GitHub"
+          aria-label="Connect Flind to GitHub"
           role="img"
         >
           <span

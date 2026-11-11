@@ -123,7 +123,7 @@ class HoneycombSource(ResumableSource[HoneycombSourceConfig, HoneycombResumeConf
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Honeycomb",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter a Honeycomb configuration API key to pull your Honeycomb observability configuration — datasets, SLOs, burn alerts, triggers, markers, boards, and more — into the PostHog Data warehouse.
+            caption="""Enter a Honeycomb configuration API key to pull your Honeycomb observability configuration — datasets, SLOs, burn alerts, triggers, markers, boards, and more — into the Flind Data warehouse.
 
 You can create a configuration key under **Environment settings → API keys** in your [Honeycomb account](https://ui.honeycomb.io/). Grant read access for the resources you want to sync: Manage Queries and Columns, Manage SLOs, Manage Triggers, Manage Markers, Manage Boards, Manage Recipients, and Manage Signals.
 

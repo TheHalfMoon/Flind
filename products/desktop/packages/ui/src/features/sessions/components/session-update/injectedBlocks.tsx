@@ -58,11 +58,11 @@ export const INJECTED_BLOCK_PRESENTATION: Record<
   },
   "posthog-context": {
     icon: AppWindow,
-    label: () => "PostHog context",
+    label: () => "Flind context",
     chip: true,
     tab: {
       intro: () =>
-        "Sent with this message from PostHog, exactly as the agent received it.",
+        "Sent with this message from Flind, exactly as the agent received it.",
       format: "raw",
     },
   },
@@ -73,9 +73,9 @@ export const INJECTED_BLOCK_PRESENTATION: Record<
   },
   "onboarding-brief": {
     icon: Robot,
-    label: () => "Getting started with PostHog Desktop",
+    label: () => "Getting started with Flind Desktop",
     tooltip:
-      "The agent is looking over your project to help set up the PostHog Desktop experience.",
+      "The agent is looking over your project to help set up the Flind Desktop experience.",
     chip: true,
   },
   "slack-thread": {

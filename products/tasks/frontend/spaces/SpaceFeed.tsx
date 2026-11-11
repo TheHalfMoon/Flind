@@ -50,7 +50,7 @@ export function SpaceFeed({ id }: { id: string }): JSX.Element {
     const feedEmpty = !feedSections.length && !feedPending && emptyTypes.length > 0
 
     return (
-        // No gap: the cards' own margins and the separators' padding space the feed, like PostHog Desktop.
+        // No gap: the cards' own margins and the separators' padding space the feed, like Flind Desktop.
         <div className="flex flex-col">
             <SpaceFeedControls sourceOptions={feedSourceOptions} />
             <SpaceFeedSelectionBar spaceId={id} />
@@ -133,7 +133,7 @@ export function SpaceFeed({ id }: { id: string }): JSX.Element {
                                 </div>
                             ))}
                         {entries.map((entry, index) => {
-                            // List rows are ruled apart, like PostHog Desktop's.
+                            // List rows are ruled apart, like Flind Desktop's.
                             const rowClassName = cn(
                                 index < entries.length - 1 && 'border-b border-border/60',
                                 index % 2 === 1 && 'bg-fill-hover'

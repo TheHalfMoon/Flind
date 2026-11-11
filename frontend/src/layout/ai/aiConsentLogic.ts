@@ -17,7 +17,7 @@ import { requestAiAccessCreate } from 'products/platform_features/frontend/gener
 const AI_DATA_PROCESSING_DISMISSED_STORAGE_KEY = `posthog_ai_data_processing_dismissed_${dayjs().format('YYYY-MM')}`
 
 // Records, per organization, that this member has already asked an admin to enable
-// PostHog AI — so the request button doesn't invite repeated submissions.
+// Flind AI — so the request button doesn't invite repeated submissions.
 const AI_ACCESS_REQUESTED_STORAGE_KEY = 'posthog_ai_access_requested_by_org'
 
 // Survives the full-page SSO reauthentication redirect, which unloads the page before the approval

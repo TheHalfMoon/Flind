@@ -2,7 +2,7 @@ import { NinePReader, NinePWriter } from './ninepCodec'
 import { NinePServer } from './ninepServer'
 import { MAX_TERMINAL_FILE_BYTES, TerminalFilesystem } from './terminalFilesystem'
 
-describe('PostHog 9P filesystem', () => {
+describe('Flind 9P filesystem', () => {
     const encoder = new TextEncoder()
     const decoder = new TextDecoder()
     let filesystem: TerminalFilesystem
@@ -73,7 +73,7 @@ describe('PostHog 9P filesystem', () => {
         const response = await request(116, new NinePWriter().number(2, 4).number(2, 8).number(1024, 4))
         expect(decoder.decode(response.body.data(response.body.number(4)))).toBe('café 🦔\n')
         await request(120, new NinePWriter().number(2, 4))
-        saved = 'Changed in PostHog'
+        saved = 'Changed in Flind'
         await walk('note.md')
         await open(0)
         const fresh = await request(116, new NinePWriter().number(2, 4).number(0, 8).number(1024, 4))

@@ -516,7 +516,7 @@ const HOME_TAB_STAT_DASHBOARD_NAMES: Partial<Record<HomeTabMetricKey, string>> =
     session_duration: 'Avg. session duration',
 }
 
-/** PostHog Home as a dashboard template, so a copy keeps the Home charts and the user can edit them. */
+/** Flind Home as a dashboard template, so a copy keeps the Home charts and the user can edit them. */
 export function getHomeTabDashboardTemplate(): DashboardTemplateType {
     const dateRange = HOME_TAB_DEFAULT_DATE_RANGE
     const compare = true

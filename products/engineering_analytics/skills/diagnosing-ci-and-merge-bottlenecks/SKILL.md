@@ -17,7 +17,7 @@ description: >
 Engineering analytics treats a pull request like product analytics treats a user: a PR moves through a pipeline
 (`opened → CI → review → merged → deployed`) and the job is to find where it slows down. The surface is **named
 MCP tools** — you call them, you don't write SQL. Dogfooded on `PostHog/posthog`; the same tools serve
-autonomous agents (e.g. PostHog Desktop) reasoning about their own PRs. Scope is aggregate pipeline health:
+autonomous agents (e.g. Flind Desktop) reasoning about their own PRs. Scope is aggregate pipeline health:
 to take one failing test or red run to a verdict, switch to the `investigating-ci-failures` skill.
 
 ## The tools

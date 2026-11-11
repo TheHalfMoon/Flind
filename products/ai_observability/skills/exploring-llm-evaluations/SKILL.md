@@ -18,7 +18,7 @@ For stored offline experiment comparisons, scorer history, or externally compute
 result uploads, use `analyzing-offline-evaluations`. Offline experiments use pinned
 scorer configurations and separate result APIs from the online evaluations below.
 
-PostHog evaluations score `$ai_generation` events. Each evaluation is one of three
+Flind evaluations score `$ai_generation` events. Each evaluation is one of three
 types:
 
 - **`hog`** — deterministic Hog code that returns a boolean, numeric score, or categories (and optionally N/A).
@@ -103,7 +103,7 @@ Set it to `true` for detector-style evaluations where `true` means the evaluator
 
 ### The fail predicate
 
-Events store the raw result, not pass or fail. PostHog applies the evaluation's current `output_type` and
+Events store the raw result, not pass or fail. Flind applies the evaluation's current `output_type` and
 `output_config` when it reads them. Build `<fail predicate>` from the config that `llma-evaluation-get`
 returns, and use it wherever the queries below filter for fails:
 

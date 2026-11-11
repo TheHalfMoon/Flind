@@ -57,7 +57,7 @@ export const getReactInstallSteps = (ctx: OnboardingComponentsContext): StepDefi
             content: (
                 <>
                     <Markdown>
-                        Add your PostHog project token and host to your environment variables. For Vite-based React
+                        Add your Flind project token and host to your environment variables. For Vite-based React
                         apps, use the `VITE_` prefix to expose them to the client:
                     </Markdown>
                     <CodeBlock
@@ -76,7 +76,7 @@ export const getReactInstallSteps = (ctx: OnboardingComponentsContext): StepDefi
             ),
         },
         {
-            title: 'Initialize PostHog',
+            title: 'Initialize Flind',
             badge: 'required',
             content: (
                 <>
@@ -114,7 +114,7 @@ export const getReactInstallSteps = (ctx: OnboardingComponentsContext): StepDefi
                     />
                     <CalloutBox type="fyi" title="defaults option">
                         <Markdown>
-                            The `defaults` option automatically configures PostHog with recommended settings for new
+                            The `defaults` option automatically configures Flind with recommended settings for new
                             projects. See [SDK defaults](https://posthog.com/docs/libraries/js#sdk-defaults) for
                             details.
                         </Markdown>
@@ -123,12 +123,12 @@ export const getReactInstallSteps = (ctx: OnboardingComponentsContext): StepDefi
             ),
         },
         {
-            title: 'Accessing PostHog in your code',
+            title: 'Accessing Flind in your code',
             badge: 'recommended',
             content: (
                 <>
                     <Markdown>
-                        Use the `usePostHog` hook to access the PostHog instance in any component wrapped by
+                        Use the `usePostHog` hook to access the Flind instance in any component wrapped by
                         `PostHogProvider`:
                     </Markdown>
                     <CodeBlock

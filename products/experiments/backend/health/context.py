@@ -362,7 +362,7 @@ class MetricCompiles:
 
     metric_count: int
     failures: tuple[MetricCompileFailure, ...]
-    # The metrics whose compile raised an error that names no problem of the metric, such as a defect of PostHog.
+    # The metrics whose compile raised an error that names no problem of the metric, such as a defect of Flind.
     unknown_count: int
     # The metrics that read a warehouse table or view that the reader may not query.
     no_access_count: int
@@ -582,18 +582,18 @@ class HealthContext:
     archived: bool
     team_timezone: str
     flag: FlagState | None
-    # Whether PostHog has recorded a call of the flag. None when the experiment has no flag, or when PostHog can't
+    # Whether Flind has recorded a call of the flag. None when the experiment has no flag, or when Flind can't
     # record the calls of this organization's flags.
     flag_called: bool | None
-    # Whether PostHog has recorded a call of the flag between launch and the end, or until now while the experiment
+    # Whether Flind has recorded a call of the flag between launch and the end, or until now while the experiment
     # runs. A flag that served an earlier experiment can carry only calls from before launch, so `flag_called` doesn't
     # answer this. None before launch, when the experiment has no flag, when the flag's latest call came after the
-    # end, or when PostHog can't record the calls of this organization's flags.
+    # end, or when Flind can't record the calls of this organization's flags.
     flag_called_during_run: bool | None
-    # Whether PostHog has recorded a call of the flag after the end and in the last ENDED_FLAG_QUIET_PERIOD, so that
+    # Whether Flind has recorded a call of the flag after the end and in the last ENDED_FLAG_QUIET_PERIOD, so that
     # one stray call doesn't count as a flag that is still read. False only once that period after the end is over.
     # None before the end, when the experiment has no flag, before that period is over without a call, or when
-    # PostHog can't record the calls of this organization's flags.
+    # Flind can't record the calls of this organization's flags.
     flag_called_after_end: bool | None
     # The flag's latest recorded call. None when the experiment has no flag, or the flag has no recorded call.
     flag_last_called_at: datetime | None

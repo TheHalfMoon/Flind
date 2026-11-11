@@ -26,7 +26,7 @@ export function navigateToShareTarget(target: ShareLinkTarget): void {
 
 /**
  * The canvas or channel an href points at, but only when the link belongs to the
- * PostHog instance the user is signed in to. Canvas and channel ids are
+ * Flind instance the user is signed in to. Canvas and channel ids are
  * per-instance, so a link from another region names rows that don't exist here —
  * opening it in-app would land on an empty canvas. Those stay browser links.
  */

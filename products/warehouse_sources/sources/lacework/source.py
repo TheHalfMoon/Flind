@@ -55,7 +55,7 @@ class LaceworkSource(ResumableSource[LaceworkSourceConfig, LaceworkResumeConfig]
             label="Lacework FortiCNAPP (Fortinet)",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["forticnapp", "fortinet", "cnapp", "cloud security"],
-            caption="""Link your Lacework FortiCNAPP account to pull alerts, vulnerabilities, and compliance data into the PostHog Data warehouse.
+            caption="""Link your Lacework FortiCNAPP account to pull alerts, vulnerabilities, and compliance data into the Flind Data warehouse.
 
 Create an API key in the FortiCNAPP Console under **Settings > Configuration > API keys** (requires admin permission), then download it to get the key ID and secret key.
 

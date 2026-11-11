@@ -222,7 +222,7 @@ export function useMaxTool({
                       ;[opener, toolDefinitions] = await Promise.all([loadMaxToolOpener(), loadToolDefinitions()])
                   } catch (error) {
                       // Click handlers drop a rejected promise, and no error boundary sees it.
-                      lemonToast.error("Couldn't open PostHog AI. Reload the page to try again.", {
+                      lemonToast.error("Couldn't open Flind AI. Reload the page to try again.", {
                           button: { label: 'Reload', action: () => reloadAfterChunkLoadError(error) },
                       })
                       return

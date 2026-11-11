@@ -71,7 +71,7 @@ class GeminiConfig:
         "gemini-1.5-pro",
     ]
 
-    # Models available in the PostHog-funded playground. Excludes older/preview
+    # Models available in the Flind-funded playground. Excludes older/preview
     # pro tiers while keeping the current flagship (gemini-2.5-pro).
     PLAYGROUND_MODELS: list[str] = [
         "gemini-2.5-pro",
@@ -349,7 +349,7 @@ class GeminiAdapter:
         return config_kwargs
 
     def _build_analytics_kwargs(self, analytics: AnalyticsContext, client) -> dict:
-        """Build PostHog analytics kwargs if using instrumented client."""
+        """Build Flind analytics kwargs if using instrumented client."""
         if analytics.capture and isinstance(client, posthog_genai.Client):
             return {
                 "posthog_distinct_id": analytics.distinct_id,

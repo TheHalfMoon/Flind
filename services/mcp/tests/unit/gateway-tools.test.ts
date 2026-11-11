@@ -47,7 +47,7 @@ function posthogTool(): Tool<ZodObjectAny> {
     return {
         name: 'feature-flag-create',
         title: 'Create feature flag',
-        description: 'Create a PostHog feature flag',
+        description: 'Create a Flind feature flag',
         schema: z.object({ key: z.string() }),
         scopes: [],
         annotations: { destructiveHint: false, idempotentHint: false, openWorldHint: false, readOnlyHint: false },
@@ -120,7 +120,7 @@ describe('gateway tools', () => {
 
         expect(tools).toHaveLength(1)
         expect(tools[0]!.name).toBe('linear__create_issue')
-        // PostHog's own names are kebab-case and never contain `__`, so the prefix is what
+        // Flind's own names are kebab-case and never contain `__`, so the prefix is what
         // keeps a vendor tool from shadowing one of ours.
         expect(tools[0]!.name).toContain('__')
         expect(tools[0]!.rawInputSchema).toEqual(INPUT_SCHEMA)
@@ -174,16 +174,16 @@ describe('gateway tools', () => {
 
     it('turns a gateway refusal into an actionable error instead of a bare HTTP failure', async () => {
         // Without this the agent sees a 403 and retries forever, rather than learning it
-        // needs a human to approve the tool in PostHog.
+        // needs a human to approve the tool in Flind.
         const request = vi.fn(async () => {
             throw Object.assign(new Error('Forbidden'), {
-                body: JSON.stringify({ detail: 'Tool needs approval in PostHog.', reason: 'needs_approval' }),
+                body: JSON.stringify({ detail: 'Tool needs approval in Flind.', reason: 'needs_approval' }),
             })
         })
         const tools = buildGatewayTools(payload(), mockContext(request), '1')
 
         await expect(tools[0]!.handler(mockContext(), {})).rejects.toThrow(ExecCommandError)
-        await expect(tools[0]!.handler(mockContext(), {})).rejects.toThrow('needs approval in PostHog')
+        await expect(tools[0]!.handler(mockContext(), {})).rejects.toThrow('needs approval in Flind')
     })
 
     it('rethrows an unrecognized API failure untouched', async () => {
@@ -290,8 +290,8 @@ describe('gateway tools', () => {
         // nothing is the only record of a capability someone wanted and we lack. The
         // gateway count separates "we have this" from "a vendor has this".
         it.each([
-            ['matches both a PostHog and a gateway tool', 'create issue', 2, 1],
-            ['matches a PostHog tool only', 'feature flag', 1, 0],
+            ['matches both a Flind and a gateway tool', 'create issue', 2, 1],
+            ['matches a Flind tool only', 'feature flag', 1, 0],
             ['matches nothing', 'kubernetes', 0, 0],
         ])('reports a search that %s', async (_label, query, matchCount, gatewayMatchCount) => {
             const { exec, tracked } = createTrackedExec()

@@ -39,7 +39,7 @@ import {
 
 import { SHARED_DASHBOARD_AUTO_FORCE_IF_STALE_MINUTES } from './dashboardConstants'
 
-// The backend labels every transient capacity failure with this code, whatever its message: PostHog's
+// The backend labels every transient capacity failure with this code, whatever its message: Flind's
 // own per-org concurrency limit, and ClickHouse refusing the query because the cluster is busy.
 const RATE_LIMITED_ERROR_CODE = 'rate_limited'
 const RATE_LIMIT_ERROR_MESSAGE = 'concurrency_limit_exceeded'
@@ -56,7 +56,7 @@ export function getInsightQueryError(insight: InsightModel): ApiError | null {
     // A tile failure arrives without the HTTP status the query originally failed with, so the
     // status is rebuilt from the code. Out of memory must stay 513: as a 400 the tile tells the
     // user their query definition is broken, which sends them to fix a query that was never wrong.
-    // A capacity rejection must stay 429 for the same reason: the query is fine, PostHog is busy.
+    // A capacity rejection must stay 429 for the same reason: the query is fine, Flind is busy.
     const status = code === CLICKHOUSE_MEMORY_LIMIT_ERROR_CODE ? 513 : code === RATE_LIMITED_ERROR_CODE ? 429 : 400
     return new ApiError(undefined, status, undefined, {
         detail: parsedError.message === RATE_LIMIT_ERROR_MESSAGE ? RATE_LIMIT_USER_MESSAGE : parsedError.message,

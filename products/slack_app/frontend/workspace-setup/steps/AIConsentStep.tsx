@@ -47,8 +47,8 @@ export function AIConsentStep(): JSX.Element {
             <div className="flex flex-col items-center gap-1 text-center">
                 <h1 className="text-2xl font-bold m-0">Allow AI data processing</h1>
                 <p className="text-secondary m-0">
-                    PostHog in Slack uses AI models to answer from your PostHog data. An organization admin must allow
-                    this once for {currentOrganization?.name ?? 'your organization'}. Until then, PostHog can't answer
+                    Flind in Slack uses AI models to answer from your Flind data. An organization admin must allow
+                    this once for {currentOrganization?.name ?? 'your organization'}. Until then, Flind can't answer
                     in Slack.
                 </p>
             </div>

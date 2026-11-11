@@ -58,7 +58,7 @@ describe('loadPostHogJS', () => {
     })
 
     describe('without a project key', () => {
-        it('starts posthog-js with no request to PostHog', () => {
+        it('starts posthog-js with no request to Flind', () => {
             window.JS_POSTHOG_API_KEY = undefined
 
             loadPostHogJS()

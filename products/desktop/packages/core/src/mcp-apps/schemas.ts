@@ -68,12 +68,12 @@ export interface McpResourceUiMeta {
   };
 }
 
-// --- Built-in PostHog MCP server (single `exec` tool) ---
+// --- Built-in Flind MCP server (single `exec` tool) ---
 //
-// The built-in PostHog MCP server is registered under this name (see
+// The built-in Flind MCP server is registered under this name (see
 // `AgentAuthAdapter.buildMcpServers`). Unlike the MCP Apps spec — which binds a
 // tool to its UI app upfront via the tool's registration `_meta.ui.resourceUri`
-// — PostHog surfaces every UI app through a single generic `exec` tool and rides
+// — Flind surfaces every UI app through a single generic `exec` tool and rides
 // the `resourceUri` on each *tool-call response* `_meta` instead. Discovery via
 // `listTools()` therefore never sees it, so for this server + tool the host has
 // to resolve the UI app per call from the result metadata.
@@ -84,7 +84,7 @@ export const POSTHOG_EXEC_TOOL_KEY = `mcp__${BUILTIN_POSTHOG_SERVER_NAME}__${EXE
 /**
  * Legacy flat `_meta` key for a UI resource URI on a tool-call response. Mirrors
  * `RESOURCE_URI_META_KEY` from `@modelcontextprotocol/ext-apps`. The modern form
- * is the nested `_meta.ui.resourceUri`; servers may emit either (PostHog emits
+ * is the nested `_meta.ui.resourceUri`; servers may emit either (Flind emits
  * both). Hardcoded rather than imported so this module stays free of the
  * ext-apps server entrypoint.
  */
@@ -158,7 +158,7 @@ export const serverConfigChangedSubscriptionInput = z.object({
 });
 
 /**
- * Fetch a UI resource directly by URI. Used by the built-in PostHog `exec`
+ * Fetch a UI resource directly by URI. Used by the built-in Flind `exec`
  * path, where the renderer resolves the `ui://` URI from the tool result's
  * `_meta` (see {@link resolveResultResourceUri}) rather than a registered
  * tool->UI association.

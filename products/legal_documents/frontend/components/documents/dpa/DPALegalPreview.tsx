@@ -37,7 +37,7 @@ export function DPALegalPreview({ lawyerMode = false }: DPALegalPreviewProps): J
                 lawyerMode ? 'legal-document-preview--lawyer' : ''
             }`}
         >
-            {!lawyerMode && <img src={posthogLogo} alt="PostHog logo" width={157} className="my-6 not-prose" />}
+            {!lawyerMode && <img src={posthogLogo} alt="Flind logo" width={157} className="my-6 not-prose" />}
             <h3>Data Processing Agreement — PostHog Inc.</h3>
             <p>
                 This Data Processing Agreement ("<strong>Agreement</strong>") forms part of the Contract for Services ("

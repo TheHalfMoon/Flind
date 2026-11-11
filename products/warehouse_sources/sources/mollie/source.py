@@ -72,7 +72,7 @@ class MollieSource(ResumableSource[MollieSourceConfig, MollieResumeConfig]):
             name=ExternalDataSourceType.MOLLIE,
             category=DataWarehouseSourceCategory.PAYMENTS___BILLING,
             label="Mollie",
-            caption="""Enter your Mollie API key to pull your Mollie payments data into the PostHog Data warehouse.
+            caption="""Enter your Mollie API key to pull your Mollie payments data into the Flind Data warehouse.
 
 You can find your API key in the [Mollie dashboard](https://my.mollie.com/dashboard/developers/api-keys) under Developers > API keys. Use a live key (`live_...`) for production data — test keys only return test-mode data.
 

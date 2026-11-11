@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                     models.BooleanField(
                         db_default=False,
                         default=False,
-                        help_text="When true, PostHog learns reusable knowledge from public human replies on resolved support tickets. Requires Support to be enabled for this environment.",
+                        help_text="When true, Flind learns reusable knowledge from public human replies on resolved support tickets. Requires Support to be enabled for this environment.",
                     ),
                 ),
             ],

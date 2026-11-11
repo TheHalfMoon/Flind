@@ -21,7 +21,7 @@ describe('todayHomeComposerLogic', () => {
         expect(router.values.searchParams).toMatchObject({ task: 'task-1' })
     })
 
-    it('keeps the prompt and opens classic PostHog AI when the server refuses a new task', () => {
+    it('keeps the prompt and opens classic Flind AI when the server refuses a new task', () => {
         todayHomeComposerLogic().mount()
 
         runnerPanelLogic({ panelId: TODAY_HOME_PANEL_ID }).actions.handOffToClassic('Why did sign-ups drop?')

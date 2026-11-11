@@ -48,7 +48,7 @@ class TestSanitizeClientName(TestCase):
 class TestValidateClientName(TestCase):
     @parameterized.expand(
         [
-            ("prefix_posthog", "PostHog Client"),
+            ("prefix_posthog", "Flind Client"),
             ("prefix_posthog_lowercase", "posthog-integration"),
             ("word_official", "Official MCP Client"),
             ("word_verified", "My Verified App"),
@@ -72,8 +72,8 @@ class TestValidateClientName(TestCase):
 class TestValidateCimdClientName(TestCase):
     @parameterized.expand(
         [
-            ("prefix", "PostHog Client"),
-            ("suffix", "Claude for PostHog"),
+            ("prefix", "Flind Client"),
+            ("suffix", "Claude for Flind"),
             ("middle_lowercase", "acme posthog sync"),
             ("split_by_space", "Acme Post Hog"),
             ("split_by_punctuation", "Acme Post-Hog"),
@@ -93,15 +93,15 @@ class TestValidateCimdClientName(TestCase):
 
     def test_error_does_not_reveal_the_exemption(self):
         with self.assertRaises(serializers.ValidationError) as ctx:
-            validate_cimd_client_name("Claude for PostHog", "https://app.example.com/client.json")
-        self.assertEqual(ctx.exception.detail, ["Client name cannot contain 'PostHog'"])
+            validate_cimd_client_name("Claude for Flind", "https://app.example.com/client.json")
+        self.assertEqual(ctx.exception.detail, ["Client name cannot contain 'Flind'"])
 
     def test_allows_posthog_on_posthog_controlled_urls(self):
-        validate_cimd_client_name("PostHog Artifacts", "https://artifacts.posthog.com/oauth/client-metadata.json")
+        validate_cimd_client_name("Flind Artifacts", "https://artifacts.posthog.com/oauth/client-metadata.json")
 
     def test_blocked_words_apply_on_posthog_controlled_urls(self):
         with self.assertRaises(serializers.ValidationError):
-            validate_cimd_client_name("PostHog Official", "https://posthog.com/client.json")
+            validate_cimd_client_name("Flind Official", "https://posthog.com/client.json")
 
     def test_accepts_unrelated_name(self):
         validate_cimd_client_name("Acme Analytics", "https://app.example.com/client.json")

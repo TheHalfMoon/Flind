@@ -43,7 +43,7 @@ class JellyfishSource(ResumableSource[JellyfishSourceConfig, JellyfishResumeConf
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Jellyfish",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Jellyfish API token to pull your engineering-intelligence data (R&D allocations, delivery deliverables, engineering metrics, engineers, and teams) into the PostHog Data warehouse.
+            caption="""Enter your Jellyfish API token to pull your engineering-intelligence data (R&D allocations, delivery deliverables, engineering metrics, engineers, and teams) into the Flind Data warehouse.
 
 Generate a token in Jellyfish under **Settings → Data Connections → API Export** (requires the API Export feature on your plan and an Admin user role). Note that Jellyfish tokens are created with an expiry — reconnect with a fresh token when yours expires.""",
             iconPath="/static/services/jellyfish.png",

@@ -127,7 +127,7 @@ logger = structlog.get_logger(__name__)
 
 # Extended access-token TTL for clients that rarely re-authorize: dynamically
 # registered (DCR/CIMD) clients that don't reliably refresh, and first-party
-# PostHog apps. Safe to extend because these tokens stay opaque and DB-backed:
+# Flind apps. Safe to extend because these tokens stay opaque and DB-backed:
 # every request revalidates the token against the DB, so revoking an app's
 # sessions deletes its token rows and takes effect immediately regardless of TTL.
 EXTENDED_ACCESS_TOKEN_EXPIRE_SECONDS = 60 * 60 * 24 * 7  # 7 days
@@ -138,7 +138,7 @@ EXTENDED_ACCESS_TOKEN_EXPIRE_SECONDS = 60 * 60 * 24 * 7  # 7 days
 # against the app's client_id, which for a CIMD client is its metadata-document URL.
 CLIENT_IDS_WITHOUT_REFRESH_TOKEN: frozenset[str] = frozenset(
     {
-        # PostHog Wizard CLI (CIMD) — short-lived auth, no persistent session needed.
+        # Flind Wizard CLI (CIMD) — short-lived auth, no persistent session needed.
         "https://us.posthog.com/api/oauth/wizard/client-metadata",
         "https://eu.posthog.com/api/oauth/wizard/client-metadata",
     }
@@ -155,20 +155,20 @@ STANDARD_TOKEN_ENDPOINT_PATHS = ("/oauth/token/", "/oauth/token")
 
 
 def cloud_region() -> str | None:
-    """`US` or `EU` when running on PostHog Cloud, else None."""
+    """`US` or `EU` when running on Flind Cloud, else None."""
     cloud = get_instance_region()
     return cloud if cloud in ("US", "EU") else None
 
 
 def get_region_info() -> dict | None:
-    """Return region metadata if running on PostHog Cloud US/EU, else None."""
+    """Return region metadata if running on Flind Cloud US/EU, else None."""
     region = cloud_region()
     if region is None:
         return None
     return {"posthog_region": region.lower(), "posthog_base_url": settings.SITE_URL}
 
 
-# The host the other PostHog Cloud region answers on, so an unknown client_id can name it.
+# The host the other Flind Cloud region answers on, so an unknown client_id can name it.
 _OTHER_CLOUD_REGION_HOST = {"US": "https://eu.posthog.com", "EU": "https://us.posthog.com"}
 
 # Why the last CIMD client_id failed to resolve, as (client_id, reason). oauthlib's
@@ -195,10 +195,10 @@ def unknown_client_id_description(client_id: str | None, cimd_error: str | None 
     if is_cimd_client_id(client_id):
         if cimd_error:
             return (
-                f"PostHog could not use the client metadata document at this client_id: {cimd_error[:500].rstrip('.')}."
+                f"Flind could not use the client metadata document at this client_id: {cimd_error[:500].rstrip('.')}."
             )
         return (
-            "PostHog could not read the client metadata document at this client_id. "
+            "Flind could not read the client metadata document at this client_id. "
             "Check that the URL is reachable over HTTPS and returns valid client metadata."
         )
 
@@ -527,7 +527,7 @@ class OAuthValidator(OAuth2Validator):
         return getattr(client, "authorization_grant_type", None) == DEVICE_CODE_GRANT_TYPE
 
     def _is_first_party_client(self, request) -> bool:
-        """Check if the client is a first-party PostHog application."""
+        """Check if the client is a first-party Flind application."""
         if hasattr(request, "client") and request.client:
             return bool(getattr(request.client, "is_first_party", False))
         return False
@@ -723,7 +723,7 @@ class OAuthValidator(OAuth2Validator):
         request.verified_client_assertion = assertion.client_assertion
         return True
 
-    # PostHog deliberately does NOT support OIDC silent authentication (`prompt=none`). Every
+    # Flind deliberately does NOT support OIDC silent authentication (`prompt=none`). Every
     # authorization must go through the interactive login + consent prompt — we never issue a
     # token without showing UI. oauthlib gates `prompt=none` on two validators in sequence
     # (validate_silent_login then validate_silent_authorization); neither the base class nor
@@ -841,7 +841,7 @@ class OAuthValidator(OAuth2Validator):
         - a `*` request against a *seeded* (non-empty) ceiling, which resolves to
           the ceiling rather than staying a wildcard.
 
-        `*` is still accepted verbatim under an empty ceiling here (legacy PostHog
+        `*` is still accepted verbatim under an empty ceiling here (legacy Flind
         Desktop CLI) but never on the provisioning paths — see the flag.
 
         This never returns `False`. `/authorize` does not reject on scope grounds:
@@ -944,7 +944,7 @@ class OAuthValidator(OAuth2Validator):
         Returns access token expiry in seconds.
 
         Dynamically registered (DCR/CIMD) clients get an extended TTL since they
-        don't reliably refresh; first-party PostHog apps get the same extended TTL.
+        don't reliably refresh; first-party Flind apps get the same extended TTL.
         Device grant clients keep the default TTL: they often run on shared or headless
         machines, and they refresh like any other client.
         Impersonation-minted tokens are capped to the impersonation idle timeout so
@@ -1076,7 +1076,7 @@ class OAuthValidator(OAuth2Validator):
         ``/oauth/token`` request into hundreds of serial row-locking queries.
 
         Everything here is upstream line for line except the two blocks marked
-        "PostHog:" below. ``test_oauth_validator_fork.py`` pins the upstream sources this
+        "Flind:" below. ``test_oauth_validator_fork.py`` pins the upstream sources this
         fork was taken from, so a django-oauth-toolkit upgrade that touches any of them
         fails CI until this method is re-reviewed against the new upstream. Known hazards
         when moving to 3.4+: refresh tokens are looked up by SHA-256 ``token_checksum``
@@ -1096,7 +1096,7 @@ class OAuthValidator(OAuth2Validator):
             seconds=oauth2_settings.REFRESH_TOKEN_GRACE_PERIOD_SECONDS
         ):
             if oauth2_settings.REFRESH_TOKEN_REUSE_PROTECTION and rt.token_family:
-                # PostHog: upstream loops `related_rt.revoke()` over the whole family
+                # Flind: upstream loops `related_rt.revoke()` over the whole family
                 # here. This batched sweep is the reason the method is forked.
                 revoke_oauth_token_family(rt)
             return False
@@ -1107,7 +1107,7 @@ class OAuthValidator(OAuth2Validator):
         request.refresh_token = rt.token
         request.refresh_token_instance = rt
 
-        # PostHog: upstream returns `rt.application == client`. Django model equality is
+        # Flind: upstream returns `rt.application == client`. Django model equality is
         # pk-based and False against None, so this is equivalent while avoiding a lazy
         # load of the Application row.
         return client is not None and rt.application_id == client.pk
@@ -2458,13 +2458,13 @@ class OAuthTokenView(TokenView):
                     scoped_teams = list(access_token.scoped_teams or [])
                     scoped_organizations = list(access_token.scoped_organizations or [])
 
-                    # First-party clients (PostHog Desktop) read scoped_teams from /oauth/token
+                    # First-party clients (Flind Desktop) read scoped_teams from /oauth/token
                     # to populate the project selector. When the app is org-scoped only,
                     # access_token.scoped_teams is empty in the DB by design — derive teams
                     # from scoped_organizations so clients keep working without weakening
                     # the stored token scope. List only the teams the user can access, because
                     # access control can deny an org member some of the org's teams.
-                    # TODO(@charlesvien): remove this after a migration period in PostHog Desktop.
+                    # TODO(@charlesvien): remove this after a migration period in Flind Desktop.
                     if (
                         not scoped_teams
                         and scoped_organizations
@@ -2916,7 +2916,7 @@ class OAuthAuthorizationServerMetadataView(_PublicMetadataView):
     """
     OAuth 2.0 Authorization Server Metadata (RFC 8414).
 
-    This endpoint enables MCP clients to discover PostHog's OAuth endpoints,
+    This endpoint enables MCP clients to discover Flind's OAuth endpoints,
     including the DCR registration endpoint for dynamic client registration.
 
     Unlike OIDC Discovery (/.well-known/openid-configuration), this endpoint
@@ -2939,7 +2939,7 @@ class OAuthClientManifestView(_PublicMetadataView):
     auth.md agent-registration manifest (https://workos.com/auth-md).
 
     A Markdown document agents read to learn how to register and authenticate
-    against PostHog without a human-driven signup. Served at /auth.md, the
+    against Flind without a human-driven signup. Served at /auth.md, the
     location the authorization server metadata's `agent_auth.skill` points at.
     """
 

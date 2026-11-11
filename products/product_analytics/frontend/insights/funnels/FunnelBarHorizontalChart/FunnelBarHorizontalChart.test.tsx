@@ -97,7 +97,7 @@ describe('FunnelBarHorizontalChart', () => {
     })
 
     // A card-view bar used to render the hint while its click handler was withheld, so the tooltip
-    // promised a drill-in that never happened on dashboards, notebooks, and PostHog AI answers.
+    // promised a drill-in that never happened on dashboards, notebooks, and Flind AI answers.
     describe.each([
         ['the insight scene', false],
         ['a card view', true],

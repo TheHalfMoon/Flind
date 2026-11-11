@@ -24,7 +24,7 @@ export const SKILL_BUTTON_CATALOG: Record<
     actionTitle: "Adding analytics",
     actionDescription: "to measure how this change performs in production.",
     tooltip:
-      "Instrument PostHog events so you can measure this change in production",
+      "Instrument Flind events so you can measure this change in production",
   },
   "create-feature-flags": {
     id: "create-feature-flags",
@@ -35,19 +35,19 @@ export const SKILL_BUTTON_CATALOG: Record<
     actionDescription:
       "to roll this out safely and toggle it without a redeploy.",
     tooltip:
-      "Gate this change behind a PostHog feature flag for a safe rollout",
+      "Gate this change behind a Flind feature flag for a safe rollout",
   },
   "run-experiment": {
     id: "run-experiment",
     label: "Run experiment",
     prompt:
-      "Set up a PostHog experiment for the feature in this task. Use the PostHog MCP to create the feature flag with control and test variants, then create the experiment in draft with a clear hypothesis and primary metric tied to the feature's success. Wire the variant into the code via posthog.getFeatureFlag. Only launch the experiment if the feature is already live in production — otherwise leave it in draft and tell me to launch it after this is merged and deployed.",
+      "Set up a Flind experiment for the feature in this task. Use the Flind MCP to create the feature flag with control and test variants, then create the experiment in draft with a clear hypothesis and primary metric tied to the feature's success. Wire the variant into the code via posthog.getFeatureFlag. Only launch the experiment if the feature is already live in production — otherwise leave it in draft and tell me to launch it after this is merged and deployed.",
     color: "#B62AD9",
     actionTitle: "Setting up an experiment",
     actionDescription:
       "with control and test variants tied to a primary metric, ready to launch once this ships.",
     tooltip:
-      "Scaffold a PostHog A/B experiment with control and test variants tied to a primary metric",
+      "Scaffold a Flind A/B experiment with control and test variants tied to a primary metric",
   },
   "add-error-tracking": {
     id: "add-error-tracking",
@@ -56,9 +56,9 @@ export const SKILL_BUTTON_CATALOG: Record<
     color: "#BF8113",
     actionTitle: "Adding error tracking",
     actionDescription:
-      "so exceptions surface in PostHog with stack traces and source maps.",
+      "so exceptions surface in Flind with stack traces and source maps.",
     tooltip:
-      "Capture exceptions in PostHog with stack traces so issues surface quickly in production",
+      "Capture exceptions in Flind with stack traces so issues surface quickly in production",
   },
   "instrument-llm-calls": {
     id: "instrument-llm-calls",
@@ -78,9 +78,9 @@ export const SKILL_BUTTON_CATALOG: Record<
     color: "#C92474",
     actionTitle: "Adding logging",
     actionDescription:
-      "so structured log events flow into PostHog for inspection and debugging.",
+      "so structured log events flow into Flind for inspection and debugging.",
     tooltip:
-      "Capture structured application logs in PostHog for inspection and debugging",
+      "Capture structured application logs in Flind for inspection and debugging",
   },
 };
 

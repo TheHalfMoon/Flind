@@ -2,7 +2,7 @@
 
 1. free (plan) - generous free tier, no credit card required
 2. pay_as_you_go (plan) - usage-based pricing, no minimum commitment
-3. analytics (deployable) - provisions a PostHog project, pricing varies
+3. analytics (deployable) - provisions a Flind project, pricing varies
    by parent plan via component pricing
 
 The built catalog is cached instance-wide (see constants.py), so billing is
@@ -40,13 +40,13 @@ _EXCLUDED_PRODUCT_TYPES = {"platform_and_support", "integrations"}
 # the cached/static fallback is available.
 _BILLING_FETCH_TIMEOUT = (2, 10)
 
-_FALLBACK_DESCRIPTION = "PostHog — AI infrastructure for your product: product & web analytics, session replay, feature flags & experiments, error tracking, AI observability, logs & traces, and more."
+_FALLBACK_DESCRIPTION = "Flind — AI infrastructure for your product: product & web analytics, session replay, feature flags & experiments, error tracking, AI observability, logs & traces, and more."
 
 
 def _build_free_plan_service() -> dict[str, Any]:
     return {
         "id": FREE_PLAN_SERVICE_ID,
-        "description": "Free - generous free tier across all PostHog products, no credit card required.",
+        "description": "Free - generous free tier across all Flind products, no credit card required.",
         "categories": ALL_CATEGORIES,
         "pricing": {"type": "free"},
         "kind": "plan",
@@ -57,7 +57,7 @@ def _build_free_plan_service() -> dict[str, Any]:
 def _build_pay_as_you_go_service() -> dict[str, Any]:
     return {
         "id": PAY_AS_YOU_GO_SERVICE_ID,
-        "description": "Pay-as-you-go - usage-based pricing across all PostHog products with no minimum commitment.",
+        "description": "Pay-as-you-go - usage-based pricing across all Flind products with no minimum commitment.",
         "categories": ALL_CATEGORIES,
         "pricing": {
             "type": "paid",
@@ -119,7 +119,7 @@ def _fetch_services_from_billing() -> list[dict[str, Any]] | None:
         for p in products
         if p.get("type", "") not in _EXCLUDED_PRODUCT_TYPES and not p.get("inclusion_only")
     ]
-    description = f"PostHog — {', '.join(n for n in product_names if n).lower()}, and more."
+    description = f"Flind — {', '.join(n for n in product_names if n).lower()}, and more."
 
     return [_build_free_plan_service(), _build_pay_as_you_go_service(), _build_analytics_service(description)]
 

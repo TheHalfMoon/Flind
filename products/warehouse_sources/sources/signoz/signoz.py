@@ -39,14 +39,14 @@ NON_JSON_RESPONSE_ERROR = "SigNoz host returned a non-JSON response"
 
 INVALID_HOST_ERROR = (
     "Enter your SigNoz host as a domain name or IP address, for example example.signoz.io. "
-    "PostHog connects over HTTPS on port 443, so leave out any port."
+    "Flind connects over HTTPS on port 443, so leave out any port."
 )
 TLS_ERROR = (
-    "PostHog couldn't verify your SigNoz host's TLS certificate. "
+    "Flind couldn't verify your SigNoz host's TLS certificate. "
     "Use a host with a certificate that a public certificate authority signed, then try again."
 )
 CONNECTION_ERROR = (
-    "PostHog couldn't connect to your SigNoz host. "
+    "Flind couldn't connect to your SigNoz host. "
     "Check the host and that it's reachable from the internet over HTTPS, then try again."
 )
 UNEXPECTED_RESPONSE_ERROR = (

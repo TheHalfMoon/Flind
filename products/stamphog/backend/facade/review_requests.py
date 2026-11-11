@@ -1,4 +1,4 @@
-"""Facade for asking stamphog to review one pull request on a PostHog user's behalf.
+"""Facade for asking stamphog to review one pull request on a Flind user's behalf.
 
 Lives apart from ``api.py`` for the same reason ``tasks.py`` and ``github.py`` do: this path pulls
 the GitHub client and the Celery task module, which must stay off the module review_hog's settings

@@ -160,10 +160,10 @@ class MetaAdsSource(ResumableSource[MetaAdsSourceConfig, MetaAdsResumeConfig], O
             # Distinct from the generic re-authorize message above — re-authorizing can never grant
             # this scope, since the Meta OAuth consent only requests `ads_read` (see
             # `AD_ACCOUNT_FIELDS` in meta_ads.py). Only the account owner granting
-            # `business_management`, or PostHog dropping the field that needs it, fixes this.
+            # `business_management`, or Flind dropping the field that needs it, fixes this.
             "Requires business_management permission": (
-                "Meta needs the business_management permission for part of this table, which PostHog "
-                "doesn't request, so reconnecting won't fix it. Contact PostHog support about this table."
+                "Meta needs the business_management permission for part of this table, which Flind "
+                "doesn't request, so reconnecting won't fix it. Contact Flind support about this table."
             ),
             # Graph API code 100: the source's "Attribution windows for insights" setting (a
             # free-text field, see `SourceFieldInputConfig` above) contains a value Meta's
@@ -316,7 +316,7 @@ class MetaAdsSource(ResumableSource[MetaAdsSourceConfig, MetaAdsResumeConfig], O
                 "facebook business",
             ],
             label="Meta Ads",
-            caption="Ensure you have granted PostHog access to your Meta Ads account, learn how to do this in the [documentation](https://posthog.com/docs/cdp/sources/meta-ads).",
+            caption="Ensure you have granted Flind access to your Meta Ads account, learn how to do this in the [documentation](https://posthog.com/docs/cdp/sources/meta-ads).",
             iconPath="/static/services/meta-ads.png",
             fields=cast(
                 list[FieldType],
@@ -349,7 +349,7 @@ class MetaAdsSource(ResumableSource[MetaAdsSourceConfig, MetaAdsResumeConfig], O
                     ),
                     # Attribution settings for insights (spend/conversion) tables. Left unset, Meta
                     # applies its own default, so existing connections are unaffected. Set them to
-                    # reconcile PostHog's numbers with Ads Manager, which reports on a specific window.
+                    # reconcile Flind's numbers with Ads Manager, which reports on a specific window.
                     SourceFieldInputConfig(
                         name="action_attribution_windows",
                         sync_setting=True,

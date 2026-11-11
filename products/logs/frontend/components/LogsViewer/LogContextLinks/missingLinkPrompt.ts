@@ -31,7 +31,7 @@ function readResource(log: ParsedLogMessage, key: string): string | null {
 }
 
 /**
- * The same prompt goes to the clipboard, to the user's own agent and to PostHog AI, so every agent starts
+ * The same prompt goes to the clipboard, to the user's own agent and to Flind AI, so every agent starts
  * from identical context. Anyone with the project token can write a log, so its values are treated as untrusted.
  */
 export function buildMissingLinkPrompt(log: ParsedLogMessage, missing: MissingLink[]): string {
@@ -43,13 +43,13 @@ export function buildMissingLinkPrompt(log: ParsedLogMessage, missing: MissingLi
         .join(' ')
 
     const steps = [
-        'Find the code in the service named in the data block that emits its logs, and the OpenTelemetry or PostHog SDK setup it uses.',
+        'Find the code in the service named in the data block that emits its logs, and the OpenTelemetry or Flind SDK setup it uses.',
         ...(missing.includes('trace')
             ? ['Check that the active span context reaches the logger, so each log record carries a trace ID.']
             : []),
         ...(missing.includes('session') || missing.includes('person')
             ? [
-                  'Check whether the frontend sends the PostHog session and distinct IDs with each request, and whether this service adds them to its log attributes. See https://posthog.com/docs/logs/link-session-replay',
+                  'Check whether the frontend sends the Flind session and distinct IDs with each request, and whether this service adds them to its log attributes. See https://posthog.com/docs/logs/link-session-replay',
               ]
             : []),
     ]
@@ -57,7 +57,7 @@ export function buildMissingLinkPrompt(log: ParsedLogMessage, missing: MissingLi
     // The instructions hold no log values. Every value sits in the fenced block at the end, which a sanitized
     // value cannot close, so nothing a log carries reads as an instruction.
     return [
-        `A log in PostHog has no ${humanList(missing.map((link) => LINK_TARGETS[link].id))}, so PostHog can't link it to ${humanList(missing.map((link) => LINK_TARGETS[link].unlocks))}.`,
+        `A log in Flind has no ${humanList(missing.map((link) => LINK_TARGETS[link].id))}, so Flind can't link it to ${humanList(missing.map((link) => LINK_TARGETS[link].unlocks))}.`,
         'Find where that ID is lost in the service that wrote the log, and fix its instrumentation.',
         '',
         'Steps:',

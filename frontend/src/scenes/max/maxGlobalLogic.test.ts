@@ -52,7 +52,7 @@ describe('maxGlobalLogic', () => {
         jest.restoreAllMocks()
     })
 
-    // Every PostHog AI surface mounts this logic. Mounting it alone must not mount the task list,
+    // Every Flind AI surface mounts this logic. Mounting it alone must not mount the task list,
     // or every boot fetches tasks, and a boot where the task list cannot build crashes the app.
     it('mounts without mounting the task list', () => {
         expect(logic.isMounted()).toBe(true)

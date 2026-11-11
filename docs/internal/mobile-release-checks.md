@@ -47,7 +47,7 @@ Development and preview builds use [Mobile Build](../../products/mobile/docs/CI.
   and verify reports, chats and Views change together. Sign out and use another account; previous data,
   drafts and selections must not appear. Check canceled sign-in and an expired session.
 - **Inbox and reports.** Refresh and load older reports, open one and check its evidence and read state.
-  Resolve, dismiss and undo an action; confirm the result on the web. Start PostHog work and answer an
+  Resolve, dismiss and undo an action; confirm the result on the web. Start Flind work and answer an
   agent question. Check external handoff and Copy prompt; preparing a prompt must leave report state unchanged.
 - **Chats.** Start a chat, reopen it from Chats, and continue a report discussion. Send text and an
   attachment, check streamed replies and an agent question, and open a PR link. Queue a message while the
@@ -57,7 +57,7 @@ Development and preview builds use [Mobile Build](../../products/mobile/docs/CI.
   Pin and unpin a view, then confirm its star on the web. Check loading, empty, unavailable and retry states.
 - **Notifications.** Use a physical device with working APNs or FCM credentials. Start or actively continue
   a task from mobile, background the app, and check its notification opens the correct chat. Test a report
-  push and a tap after a cold start. Ordinary task alerts use the title "PostHog"; report alerts can have
+  push and a tap after a cold start. Ordinary task alerts use the title "Flind"; report alerts can have
   report-specific titles. Check the master and category controls in Settings, foreground suppression for
   the open chat, and a local snooze reminder. Report pushes also need `posthog-code-mobile-push`.
   See [Push notifications](../../products/mobile/docs/PUSH.md) for setup and routing checks.

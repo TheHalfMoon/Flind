@@ -269,7 +269,7 @@ async def aggregate_and_chunk_org_reports(inputs: AggregateInputs) -> AggregateR
                     DayRange(start=inputs.ctx.period_start, end=inputs.ctx.period_end)
                 )
 
-                # TODO(usage-reports-v2): re-enable PostHog product-analytics
+                # TODO(usage-reports-v2): re-enable Flind product-analytics
                 # `capture_report` per organization once the billing path is validated.
                 # That call updates organization group properties (member/project/dashboard
                 # counts) used by customer.io segmentation and emits the

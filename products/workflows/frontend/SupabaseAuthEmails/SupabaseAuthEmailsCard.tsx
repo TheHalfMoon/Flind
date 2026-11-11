@@ -32,7 +32,7 @@ export function SupabaseAuthEmailsCard({ status }: { status: SupabaseAuthEmailsS
                     </LemonTag>
                 </div>
                 <span className="text-secondary text-sm">
-                    Send your Supabase project's sign-up, magic link and password reset emails from PostHog.
+                    Send your Supabase project's sign-up, magic link and password reset emails from Flind.
                 </span>
                 {status !== 'not-set-up' && (
                     <span className="text-secondary text-xs">

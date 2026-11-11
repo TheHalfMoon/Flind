@@ -14,7 +14,7 @@ const LoginRecordBaseSchema = z.object({
     // another host.
     store: StoreChoiceSchema,
     projectId: ProjectIdSchema,
-    // The host the login was made for, with the path a self-hosted PostHog sits under. The login is
+    // The host the login was made for, with the path a self-hosted Flind sits under. The login is
     // keyed by origin, so a posthog.json path on the same origin can't send it elsewhere.
     host: HostSchema,
     // Set on a file login that replaced a keychain login while the keychain was unusable, so the old

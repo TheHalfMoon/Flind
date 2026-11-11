@@ -8,5 +8,5 @@ class SlackSetupStepKey(LabeledStrEnum):
 
 
 class SlackSetupEntry(LabeledStrEnum):
-    SLACK_PAGE = "slack_page", "The Slack page in PostHog"
+    SLACK_PAGE = "slack_page", "The Slack page in Flind"
     OTHER = "other", "Another place, such as a channel picker"

@@ -36,7 +36,7 @@ function choiceOption(
     if (months < minMonths || months > maxMonths) {
         return {
             ...option,
-            disabledReason: `This organization can keep events for ${retentionPeriodLabel(minMonths)} to ${retentionPeriodLabel(maxMonths)}. Contact PostHog support to change this.`,
+            disabledReason: `This organization can keep events for ${retentionPeriodLabel(minMonths)} to ${retentionPeriodLabel(maxMonths)}. Contact Flind support to change this.`,
         }
     }
     return option

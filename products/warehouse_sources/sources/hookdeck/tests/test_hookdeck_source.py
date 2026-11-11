@@ -12,7 +12,7 @@ from products.warehouse_sources.sources.sdk.testing import ScriptedResponse, Sou
 
 SOURCE_MODULE = "products.warehouse_sources.sources.hookdeck.source"
 UNREACHABLE_MESSAGE = (
-    "PostHog could not reach Hookdeck to check your API key. Wait a moment and try again, or "
+    "Flind could not reach Hookdeck to check your API key. Wait a moment and try again, or "
     "check Hookdeck's status page."
 )
 

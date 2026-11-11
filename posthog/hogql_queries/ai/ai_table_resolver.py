@@ -126,7 +126,7 @@ def query_ai_events(
     that signal does not fire — so callers that must run on a specific pool should not
     rely on it implicitly.
 
-    ``posthog_tables_only=True`` compiles against PostHog's built-in tables only. Pass it when the
+    ``posthog_tables_only=True`` compiles against Flind's built-in tables only. Pass it when the
     query and its placeholders reference no warehouse table, view or group type. Without it, every
     call builds the team's full HogQL catalog, and on a team with thousands of warehouse tables
     that build holds the GIL for longer than the query itself takes.

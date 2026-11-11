@@ -21,7 +21,7 @@ export function Releases(): JSX.Element {
         <div className="deprecated-space-y-4">
             <p>
                 Releases are versions of your application that have been deployed. They are automatically created when
-                you upload sourcemaps to PostHog.
+                you upload sourcemaps to Flind.
             </p>
             <p>
                 Each release can include git metadata such as the commit SHA, branch, and repository URL, which helps
@@ -112,7 +112,7 @@ const ReleasesTable = (): JSX.Element => {
         <div className="flex flex-col justify-center items-center gap-2 p-4 text-center">
             <div className="font-semibold">No releases found</div>
             <div className="text-secondary">
-                Releases are automatically created when PostHog detects version information in your error tracking data.
+                Releases are automatically created when Flind detects version information in your error tracking data.
                 Learn more in the{' '}
                 <Link to="https://posthog.com/docs/error-tracking" target="_blank">
                     docs

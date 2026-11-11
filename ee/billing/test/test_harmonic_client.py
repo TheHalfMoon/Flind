@@ -103,9 +103,9 @@ async def test_strict_reraises_on_http_error():
 @pytest.mark.asyncio
 async def test_strict_falls_back_to_second_variation_after_error():
     # First variation errors, second returns a company: the successful variation wins.
-    with patch(HARMONIC_REQUEST, new=AsyncMock(side_effect=[_http_500(), _found({"name": "PostHog"})])):
+    with patch(HARMONIC_REQUEST, new=AsyncMock(side_effect=[_http_500(), _found({"name": "Flind"})])):
         result = await _client().enrich_company_by_domain_strict("posthog.com")
-    assert result.company == {"name": "PostHog"}
+    assert result.company == {"name": "Flind"}
 
 
 @pytest.mark.asyncio
@@ -185,9 +185,9 @@ async def test_strict_not_found_surfaces_the_tracking_urn():
 )
 @pytest.mark.asyncio
 async def test_strict_found_surfaces_the_refresh_urn(_name, urn):
-    with patch(HARMONIC_REQUEST, new=AsyncMock(side_effect=[_found({"name": "PostHog"}, urn=urn)])):
+    with patch(HARMONIC_REQUEST, new=AsyncMock(side_effect=[_found({"name": "Flind"}, urn=urn)])):
         result = await _client().enrich_company_by_domain_strict("posthog.com")
-    assert result.company == {"name": "PostHog"}
+    assert result.company == {"name": "Flind"}
     assert result.enrichment_urn == urn
 
 
@@ -195,7 +195,7 @@ async def test_strict_found_surfaces_the_refresh_urn(_name, urn):
 async def test_strict_sends_api_key_as_header_not_in_url_or_params_and_uses_client_priority_and_source():
     client = _client(priority=Priority.BATCH)
     client.source = "billing_bulk"
-    mock_request = AsyncMock(side_effect=[_found({"name": "PostHog"})])
+    mock_request = AsyncMock(side_effect=[_found({"name": "Flind"})])
     with patch(HARMONIC_REQUEST, new=mock_request):
         await client.enrich_company_by_domain_strict("posthog.com")
 
@@ -236,7 +236,7 @@ async def test_strict_sends_the_query_the_client_was_built_with(
 
 @pytest.mark.asyncio
 async def test_non_strict_sends_api_key_as_header_not_in_url_or_params():
-    mock_request = AsyncMock(side_effect=[_found({"name": "PostHog"})])
+    mock_request = AsyncMock(side_effect=[_found({"name": "Flind"})])
     with patch(HARMONIC_REQUEST, new=mock_request):
         await _client().enrich_company_by_domain("posthog.com")
 
@@ -676,7 +676,7 @@ async def test_enrich_companies_batch_with_a_single_domain(mock_sleep, mock_pace
     # _enrich_specific_domain_debug calls enrich_companies_batch with exactly one domain; the
     # concurrency and retry machinery must not misbehave at that boundary.
     client = _client(priority=Priority.BATCH)
-    mock_request = AsyncMock(side_effect=[_found({"name": "PostHog"})])
+    mock_request = AsyncMock(side_effect=[_found({"name": "Flind"})])
     with patch(HARMONIC_REQUEST, new=mock_request):
         results = await client.enrich_companies_batch(["posthog.com"])
-    assert results == [{"name": "PostHog"}]
+    assert results == [{"name": "Flind"}]

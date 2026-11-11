@@ -46,7 +46,7 @@ describe('SidePanelRunnerImpl', () => {
 
     it('keeps a host composer on screen when the shared panel left history expanded', () => {
         // The report panel supplies its own composer and offers no way into the history list, so an
-        // expanded history from the PostHog AI panel must not take the composer's place.
+        // expanded history from the Flind AI panel must not take the composer's place.
         setValues(null, true)
 
         render(<SidePanelRunnerImpl panelId="panel" composer={<div data-attr="host-composer" />} />)

@@ -77,7 +77,7 @@ from products.batch_exports.backend.temporal.queue import RecordBatchQueue, wait
 from products.batch_exports.backend.temporal.utils import handle_non_retryable_errors
 
 # Errors that any write to S3 can raise, whichever bucket it targets. The file download
-# export shares these, since it runs the same write against a PostHog-owned bucket.
+# export shares these, since it runs the same write against a Flind-owned bucket.
 S3_WRITE_NON_RETRYABLE_ERROR_TYPES = (
     # S3 parameter validation failed.
     "ParamValidationError",
@@ -127,7 +127,7 @@ class ResolvedS3Credentials:
     """Everything a write needs to reach and authenticate against its target S3 endpoint.
 
     Resolved before the write starts, as each caller obtains credentials differently. Only an
-    S3-compatible provider needs an `endpoint_url`; AWS and PostHog's own bucket use the default.
+    S3-compatible provider needs an `endpoint_url`; AWS and Flind's own bucket use the default.
     `refresh_using` mints new credentials when temporary ones expire during a long upload.
     """
 
@@ -695,7 +695,7 @@ async def _resolve_credentials_from_integration(inputs: S3InsertInputs) -> Resol
         get_credentials_using_user_aws_role,
         integration.aws_role_arn,
         external_id,
-        session_name=f"PostHog-batch-exports-{inputs.batch_export_id}",
+        session_name=f"Flind-batch-exports-{inputs.batch_export_id}",
         policy_statements=policy_statements,
     )
     return ResolvedS3Credentials(credentials=await refresh_using(), refresh_using=refresh_using)
@@ -730,7 +730,7 @@ async def insert_into_s3_from_stage(
     """Write data staged in our internal S3 stage to a target S3 bucket.
 
     The caller resolves credentials first, because an export takes them from its Integration
-    while the file download export mints temporary ones for a PostHog-owned bucket. The caller
+    while the file download export mints temporary ones for a Flind-owned bucket. The caller
     is an activity, so it owns the heartbeater this runs under.
     """
     bind_contextvars(

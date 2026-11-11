@@ -1914,7 +1914,7 @@ describe("PostHogAPIClient", () => {
     );
   });
 
-  it("registers PostHog references without file upload fields", async () => {
+  it("registers Flind references without file upload fields", async () => {
     const fetch = vi.fn().mockResolvedValue({
       ok: true,
       json: async () => ({
@@ -2285,7 +2285,7 @@ describe("PostHogAPIClient", () => {
       const body = {
         type: "rate_limit",
         code: DESKTOP_BILLING_LIMIT_ERROR_CODE,
-        detail: "Your organization reached its PostHog Desktop usage limit.",
+        detail: "Your organization reached its Flind Desktop usage limit.",
       };
       const fetch = vi
         .fn()

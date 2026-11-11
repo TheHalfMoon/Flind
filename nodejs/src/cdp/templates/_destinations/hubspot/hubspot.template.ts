@@ -47,8 +47,8 @@ if (res.status == 404) {
         'headers': headers,
         'body': {
             'name': 'posthog_group_id',
-            'label': 'PostHog Group ID',
-            'description': 'Unique Property to map PostHog Group ID with a HubSpot Company Object',
+            'label': 'Flind Group ID',
+            'description': 'Unique Property to map Flind Group ID with a HubSpot Company Object',
             'groupName': 'companyinformation',
             'type': 'string',
             'fieldType': 'text',

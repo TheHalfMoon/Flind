@@ -13,7 +13,7 @@ export const getRobloxSteps = (ctx: OnboardingComponentsContext): StepDefinition
                 <>
                     <Markdown>
                         {dedent`
-                            Install PostHog through Wally, or download the latest \`posthog-roblox.rbxm\` from the [SDK releases](https://github.com/PostHog/posthog-roblox/releases) and insert it into \`ReplicatedStorage\`.
+                            Install Flind through Wally, or download the latest \`posthog-roblox.rbxm\` from the [SDK releases](https://github.com/PostHog/posthog-roblox/releases) and insert it into \`ReplicatedStorage\`.
 
                             For Wally and Rojo, add this dependency and run \`wally install\`:
                         `}
@@ -22,7 +22,7 @@ export const getRobloxSteps = (ctx: OnboardingComponentsContext): StepDefinition
                         language="toml"
                         code={dedent`
                             [dependencies]
-                            PostHog = "posthog/posthog-roblox@0.1.7"
+                            Flind = "posthog/posthog-roblox@0.1.7"
                         `}
                     />
                     <Markdown>
@@ -35,7 +35,7 @@ export const getRobloxSteps = (ctx: OnboardingComponentsContext): StepDefinition
                         code={dedent`
                             "ReplicatedStorage": {
                                 "$className": "ReplicatedStorage",
-                                "PostHog": { "$path": "Packages/PostHog" }
+                                "Flind": { "$path": "Packages/PostHog" }
                             }
                         `}
                     />
@@ -48,22 +48,22 @@ export const getRobloxSteps = (ctx: OnboardingComponentsContext): StepDefinition
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                            Initialize PostHog once from a server \`Script\`. Exception autocapture is enabled by default.
+                            Initialize Flind once from a server \`Script\`. Exception autocapture is enabled by default.
                         `}
                     </Markdown>
                     <CodeBlock
                         language="lua"
                         code={dedent`
                             local ReplicatedStorage = game:GetService("ReplicatedStorage")
-                            local PostHog = require(ReplicatedStorage:WaitForChild("PostHog"))
+                            local Flind = require(ReplicatedStorage:WaitForChild("Flind"))
 
-                            PostHog:Init({
+                            Flind:Init({
                                 apiKey = "<ph_project_token>",
                                 host = "<ph_client_api_host>",
                                 captureErrors = true,
@@ -99,7 +99,7 @@ export const getRobloxSteps = (ctx: OnboardingComponentsContext): StepDefinition
                             )
 
                             if not ok then
-                                PostHog:CaptureException(player, capturedMessage, capturedTraceback, {
+                                Flind:CaptureException(player, capturedMessage, capturedTraceback, {
                                     flow = "save_game",
                                 })
                             end

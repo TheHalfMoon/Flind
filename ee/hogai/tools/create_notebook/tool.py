@@ -62,7 +62,7 @@ You must use EXACTLY ONE of these parameters:
 You can use the <insight>insight_id</insight> tag to reference existing visualization insights.
 Use the list_data tool with kind=artifacts to retrieve artifact ids, when in doubt.
 
-# PostHog object widgets:
+# Flind object widgets:
 Add object widgets with component tags, for example `<FeatureFlag id={{123}} view="summary" />`.
 Use the identity prop and view that fit the task:
 

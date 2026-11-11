@@ -5,7 +5,7 @@ from posthog.dataclasses import frozen
 
 @frozen
 class ProjectMember:
-    """A project the requester may act in, and the requester's PostHog account that acts there."""
+    """A project the requester may act in, and the requester's Flind account that acts there."""
 
     team_id: int
     user_id: int

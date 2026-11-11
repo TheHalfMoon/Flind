@@ -1,13 +1,13 @@
 ---
 name: sending-notifications
-description: 'How to send real-time in-app notifications from PostHog backend code. Use when integrating notifications into a new feature, wiring up a notification source (alerts, comments, approvals, pipelines, issues), or choosing the right target type and priority for a notification.'
+description: 'How to send real-time in-app notifications from Flind backend code. Use when integrating notifications into a new feature, wiring up a notification source (alerts, comments, approvals, pipelines, issues), or choosing the right target type and priority for a notification.'
 ---
 
 # Sending real-time notifications
 
 ## When to use this
 
-You're adding notification support to a PostHog feature — for example, notifying a user when they're mentioned in a comment, when an alert fires, or when an approval is requested.
+You're adding notification support to a Flind feature — for example, notifying a user when they're mentioned in a comment, when an alert fires, or when an approval is requested.
 
 ## The facade API
 

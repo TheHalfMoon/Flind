@@ -277,7 +277,7 @@ export const OAuthAuthorize = (): JSX.Element => {
             <OAuthAuthorizeLayout>
                 <OAuthAuthorizeError
                     title="Create an organization to continue"
-                    description={`${appName} needs access to a PostHog organization, and your account doesn't belong to one yet. Create one here and PostHog adds a project to it. If your team already uses PostHog, ask an admin to invite you instead.`}
+                    description={`${appName} needs access to a Flind organization, and your account doesn't belong to one yet. Create one here and Flind adds a project to it. If your team already uses Flind, ask an admin to invite you instead.`}
                     action={
                         <div className="w-full flex flex-col items-center gap-2">
                             <div className="w-full text-left" data-attr="oauth-authorize-create-organization">

@@ -54,8 +54,8 @@ class TestNotebookAnalytics(BaseTest):
         self.assertEqual(extra, {})
 
     def test_classify_request_source_api_key_captures_mcp_client_identity(self):
-        # The MCP server forwards mcp_consumer (posthog-code -> PostHog Desktop), which is how
-        # PostHog Desktop is split from a customer's own MCP client.
+        # The MCP server forwards mcp_consumer (posthog-code -> Flind Desktop), which is how
+        # Flind Desktop is split from a customer's own MCP client.
         source, extra = classify_request_source(_fake_request(_FakeKeyAuth(), mcp_consumer="posthog-code"))
         self.assertEqual(source, NotebookCreationSource.MCP)
         self.assertEqual(extra, {"api_key_type": "_FakeKeyAuth", "mcp_consumer": "posthog-code"})

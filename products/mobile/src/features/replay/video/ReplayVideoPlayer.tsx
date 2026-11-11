@@ -140,7 +140,7 @@ function Preparing({ startedAt }: { startedAt: number | null }): ReactElement {
             {startedAt !== null ? (
                 <>
                     <Text style={styles.stateMessage}>
-                        PostHog is rendering this recording as a video. This usually takes a few minutes the first time.
+                        Flind is rendering this recording as a video. This usually takes a few minutes the first time.
                         You can close this and come back.
                     </Text>
                     <Elapsed startedAt={startedAt} />
@@ -229,7 +229,7 @@ interface VideoErrorProps {
 function VideoError({ kind, message, onRetry, onOpenWeb }: VideoErrorProps): ReactElement {
     const colors = useColors()
     const icon = <WarningIcon size={iconSizes.empty} color={colors.tertiary} />
-    const webLabel = onOpenWeb ? 'Open in PostHog' : undefined
+    const webLabel = onOpenWeb ? 'Open in Flind' : undefined
     if (FINAL_FAILURES.has(kind)) {
         return (
             <StateView
@@ -262,8 +262,8 @@ function NativeOnly({ onOpenWeb }: { onOpenWeb: (() => void) | null }): ReactEle
         <StateView
             icon={<RecordingIcon size={iconSizes.empty} color={colors.tertiary} />}
             title="Playback is available in the mobile app"
-            message={onOpenWeb ? 'Open this recording in PostHog to watch it in your browser.' : undefined}
-            actionLabel={onOpenWeb ? 'Open in PostHog' : undefined}
+            message={onOpenWeb ? 'Open this recording in Flind to watch it in your browser.' : undefined}
+            actionLabel={onOpenWeb ? 'Open in Flind' : undefined}
             onAction={onOpenWeb ?? undefined}
             testID="replay-video-web"
         />

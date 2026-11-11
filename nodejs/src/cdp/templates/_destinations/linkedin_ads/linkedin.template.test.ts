@@ -20,7 +20,7 @@ const buildInputs = (inputs: Record<string, any> = {}): Record<string, any> => {
             SHA256_EMAIL: '3edfaed7454eedb3c72bad566901af8bfbed1181816dde6db91dfff0f0cffa98',
             LINKEDIN_FIRST_PARTY_ADS_TRACKING_UUID: 'abc',
         },
-        userInfo: { lastName: 'AI', firstName: 'Max', companyName: 'PostHog', countryCode: 'US' },
+        userInfo: { lastName: 'AI', firstName: 'Max', companyName: 'Flind', countryCode: 'US' },
         ...inputs,
     }
 }
@@ -46,7 +46,7 @@ describe('linkedin template', () => {
         expect(response.finished).toEqual(false)
         expect(response.invocation.queueParameters).toMatchInlineSnapshot(`
             {
-              "body": "{"conversion":"urn:lla:llaPartnerConversion:conversion-rule-12345","conversionHappenedAt":1737464596570,"user":{"userIds":[{"idType":"SHA256_EMAIL","idValue":"3edfaed7454eedb3c72bad566901af8bfbed1181816dde6db91dfff0f0cffa98"},{"idType":"LINKEDIN_FIRST_PARTY_ADS_TRACKING_UUID","idValue":"abc"}],"userInfo":{"lastName":"AI","firstName":"Max","companyName":"PostHog","countryCode":"US"}},"eventId":"event-12345","conversionValue":{"currencyCode":"USD","amount":"100"}}",
+              "body": "{"conversion":"urn:lla:llaPartnerConversion:conversion-rule-12345","conversionHappenedAt":1737464596570,"user":{"userIds":[{"idType":"SHA256_EMAIL","idValue":"3edfaed7454eedb3c72bad566901af8bfbed1181816dde6db91dfff0f0cffa98"},{"idType":"LINKEDIN_FIRST_PARTY_ADS_TRACKING_UUID","idValue":"abc"}],"userInfo":{"lastName":"AI","firstName":"Max","companyName":"Flind","countryCode":"US"}},"eventId":"event-12345","conversionValue":{"currencyCode":"USD","amount":"100"}}",
               "headers": {
                 "Authorization": "Bearer oauth-1234",
                 "Content-Type": "application/json",

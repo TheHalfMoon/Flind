@@ -257,7 +257,7 @@ export function UserDangerZone(): JSX.Element {
             <div className="text-danger">
                 <div className="mt-4">
                     <p className="text-danger">
-                        This deletes your personal PostHog account. This is <b>irreversible</b>.
+                        This deletes your personal Flind account. This is <b>irreversible</b>.
                     </p>
                     {user?.organization && (
                         <p className="text-default">
@@ -272,7 +272,7 @@ export function UserDangerZone(): JSX.Element {
                         data-attr="delete-user-button"
                         icon={<IconTrash />}
                     >
-                        Delete my PostHog account
+                        Delete my Flind account
                     </LemonButton>
                 </div>
             </div>

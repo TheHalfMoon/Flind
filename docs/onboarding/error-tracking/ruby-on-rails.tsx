@@ -24,7 +24,7 @@ export const getRubyOnRailsSteps = (ctx: OnboardingComponentsContext): StepDefin
                             language: 'ruby',
                             file: 'config/initializers/posthog.rb',
                             code: dedent`
-                                PostHog::Rails.configure do |config|
+                                Flind::Rails.configure do |config|
                                   config.auto_capture_exceptions = true
                                   config.report_rescued_exceptions = true
                                   config.auto_instrument_active_job = true
@@ -116,7 +116,7 @@ export const getRubyOnRailsSteps = (ctx: OnboardingComponentsContext): StepDefin
                             language: 'ruby',
                             file: 'Ruby',
                             code: dedent`
-                                PostHog.capture_exception(
+                                Flind.capture_exception(
                                   exception,
                                   current_user.id,
                                   { custom_property: 'value' }
@@ -136,9 +136,9 @@ export const getRubyOnRailsSteps = (ctx: OnboardingComponentsContext): StepDefin
         content: (
             <Markdown>
                 {dedent`
-                    Confirm exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Confirm exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),

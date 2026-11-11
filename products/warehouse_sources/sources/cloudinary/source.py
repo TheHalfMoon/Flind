@@ -104,7 +104,7 @@ class CloudinarySource(ResumableSource[CloudinarySourceConfig, CloudinaryResumeC
             name=ExternalDataSourceType.CLOUDINARY,
             category=DataWarehouseSourceCategory.FILE_STORAGE,
             label="Cloudinary",
-            caption="""Enter your Cloudinary cloud name, API key, and API secret to sync your media library metadata into the PostHog Data warehouse: images, videos, raw files, folders, subfolders, transformations, upload presets, daily usage, and last access reports.
+            caption="""Enter your Cloudinary cloud name, API key, and API secret to sync your media library metadata into the Flind Data warehouse: images, videos, raw files, folders, subfolders, transformations, upload presets, daily usage, and last access reports.
 
 Find all three in your Cloudinary console under Settings, then API Keys. The source only reads metadata, so a key with read access is enough. Media files themselves are never downloaded.
 

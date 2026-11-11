@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
             name="created_task_id",
             field=models.UUIDField(
                 blank=True,
-                help_text="PostHog Task minted from this observation's finding. Repeat create_task calls return this id instead of creating a duplicate.",
+                help_text="Flind Task minted from this observation's finding. Repeat create_task calls return this id instead of creating a duplicate.",
                 null=True,
             ),
         ),

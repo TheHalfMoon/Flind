@@ -1247,7 +1247,7 @@ class TestComputeTableStatisticsActivity:
     @pytest.mark.parametrize("error_cls", [OperationalError, InterfaceError])
     async def test_activity_does_not_report_transient_app_db_error(self, error_cls: type[Exception]) -> None:
         # compute_table_statistics_sync's Team/ExternalDataSchema/ExternalDataJob lookups run against
-        # PostHog's own app DB through a connection pooler. A pooler blip under load (e.g. PgBouncer's
+        # Flind's own app DB through a connection pooler. A pooler blip under load (e.g. PgBouncer's
         # query_wait_timeout) surfaces as a Django OperationalError/InterfaceError that the activity
         # interceptor (posthog_client.py) already knows to keep out of error tracking via
         # is_transient_db_error — but only if nothing reports it first. This activity's own except

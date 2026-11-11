@@ -7,7 +7,7 @@ import { projectLogic } from 'scenes/projectLogic'
 
 import { insightsList } from 'products/product_analytics/frontend/generated/api'
 
-// The same lookups PostHog Desktop's block pickers run: the most common events and property keys, by volume.
+// The same lookups Flind Desktop's block pickers run: the most common events and property keys, by volume.
 const TOP_EVENTS_HOGQL = hogql`SELECT event, count() AS c FROM events WHERE timestamp > now() - INTERVAL 30 DAY GROUP BY event ORDER BY c DESC LIMIT 300`
 const TOP_EVENT_PROPERTIES_HOGQL = hogql`SELECT k, count() AS c FROM (SELECT arrayJoin(JSONExtractKeys(properties)) AS k FROM events WHERE timestamp > now() - INTERVAL 7 DAY LIMIT 20000) GROUP BY k ORDER BY c DESC LIMIT 200`
 const INSIGHT_SEARCH_DEBOUNCE_MS = 250

@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 const AUDIENCE = 'posthog:push_identity'
 
 /** ES256 only. The customer signs with an EC private key and registers the public half on the
- * channel, so PostHog never holds a key that can mint a token.
+ * channel, so Flind never holds a key that can mint a token.
  *
  * Verification is deliberately single-algorithm. An HS256 pass alongside this one is the JWT
  * algorithm-confusion attack waiting to happen: the public key is published on the channel, so

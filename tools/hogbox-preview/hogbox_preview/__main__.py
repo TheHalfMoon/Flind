@@ -1,7 +1,7 @@
 """CLI for hogbox previews. Mirrors bin/hobby-ci.py's subcommand shape so it
 slots into the same CI flow.
 
-    # one-shot: provision + bring PostHog up, print the URL
+    # one-shot: provision + bring Flind up, print the URL
     python -m hogbox_preview up --branch "$BRANCH" --host "$HOG_HOST"
 
     # granular (debug / staged CI), reusing a box:
@@ -183,7 +183,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--backend", default="hogland", help="preview layer (default: hogland)")
     p.add_argument("--host", default=DEFAULT_HOST, help="hogland API host")
     p.add_argument("--snapshot", default="alias:posthog-preview-golden", help="golden snapshot id/alias")
-    p.add_argument("--web-port", type=int, default=8000, help="in-guest port PostHog serves on")
+    p.add_argument("--web-port", type=int, default=8000, help="in-guest port Flind serves on")
     p.add_argument("--image", default=PostHogPreviewStack.IMAGE, help="published posthog image")
     p.add_argument(
         "--name",
@@ -207,7 +207,7 @@ def main(argv: list[str] | None = None) -> int:
 
     sub = p.add_subparsers(dest="cmd", required=True)
 
-    up = sub.add_parser("up", help="provision + bring PostHog up (one-shot)")
+    up = sub.add_parser("up", help="provision + bring Flind up (one-shot)")
     up.add_argument("--box-id", default=None, help="reuse an existing box instead of restoring a new one")
     up.add_argument("--branch", default=None, help="posthog branch to check out in the box")
     up.add_argument("--no-seed", action="store_true", help="skip demo-data seeding (generate_demo_data)")

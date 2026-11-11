@@ -23,7 +23,7 @@ export interface ToolCallSource {
 
 export interface ToolCallDescription {
     title?: string
-    /** The one-sentence intent the PostHog MCP asks the agent for on every call. */
+    /** The one-sentence intent the Flind MCP asks the agent for on every call. */
     detail?: string
 }
 
@@ -96,7 +96,7 @@ function rawToolNames(source: ToolCallSource): string[] {
     return [source.tool, extractAgentToolName(source.meta)].filter((name): name is string => !!name)
 }
 
-/** A row title for a tool call. A PostHog `exec` call is named after its command, never after the ACP title. */
+/** A row title for a tool call. A Flind `exec` call is named after its command, never after the ACP title. */
 export function describeToolCall(source: ToolCallSource, acpTitle?: string): ToolCallDescription {
     const { resolvedKey, innerToolName } = resolveToolCall({
         toolCallId: '',
@@ -105,7 +105,7 @@ export function describeToolCall(source: ToolCallSource, acpTitle?: string): Too
         input: source.input,
         meta: source.meta,
     })
-    // A PostHog call whose input has not streamed yet resolves to the bare exec tool; it reads as "Run command" until then.
+    // A Flind call whose input has not streamed yet resolves to the bare exec tool; it reads as "Run command" until then.
     if (innerToolName !== undefined || resolvedKey.startsWith('__posthog_exec_') || isPostHogExecTool(resolvedKey)) {
         const command = typeof source.input.command === 'string' ? source.input.command : ''
         const context = typeof source.input.context === 'string' ? source.input.context.trim() : ''

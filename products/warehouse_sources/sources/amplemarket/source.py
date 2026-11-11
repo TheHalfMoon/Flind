@@ -49,7 +49,7 @@ class AmplemarketSource(ResumableSource[AmplemarketSourceConfig, AmplemarketResu
             name=ExternalDataSourceType.AMPLEMARKET,
             category=DataWarehouseSourceCategory.SALES,
             label="Amplemarket",
-            caption="""Enter your Amplemarket API key to pull your Amplemarket data into the PostHog Data warehouse.
+            caption="""Enter your Amplemarket API key to pull your Amplemarket data into the Flind Data warehouse.
 
 You can generate an API key from your Amplemarket dashboard. See the [Amplemarket quickstart guide](https://docs.amplemarket.com/guides/quickstart) for details.""",
             iconPath="/static/services/amplemarket.png",

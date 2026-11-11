@@ -102,7 +102,7 @@ function NoReportsState(): JSX.Element {
 
                 <p className="m-0 text-xs text-tertiary">
                     {isCloudOrDev ? 'To configure reporting manually, set' : 'Set'} <code>reportMissing: true</code>{' '}
-                    when you initialize the PostHog MCP SDK, and agents get a <code>get_more_tools</code> tool they can
+                    when you initialize the Flind MCP SDK, and agents get a <code>get_more_tools</code> tool they can
                     call when they&apos;re stuck.
                 </p>
 

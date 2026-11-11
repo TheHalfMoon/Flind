@@ -434,7 +434,7 @@ def register_dcr_client(
         # Keep the name plain. Some strict RFC 7591 servers reject a client_name
         # with parentheses, or one that starts with "posthog", and fail
         # registration before authorization.
-        "client_name": "MCP Store by PostHog",
+        "client_name": "MCP Store by Flind",
         "redirect_uris": [redirect_uri],
         "grant_types": requested_oauth_grant_types(metadata),
         "response_types": ["code"],

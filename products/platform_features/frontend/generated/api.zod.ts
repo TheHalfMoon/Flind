@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import * as zod from 'zod'
@@ -50,7 +50,7 @@ export const CreateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .nullish()
         .describe(
-            "When True, requests through the PostHog MCP server can read but not change this organization's data."
+            "When True, requests through the Flind MCP server can read but not change this organization's data."
         ),
     member_notice: zod
         .union([
@@ -86,7 +86,7 @@ export const CreateBody = /* @__PURE__ */ zod.object({
     is_ai_training_opted_in: zod
         .boolean()
         .nullish()
-        .describe('When True, this organization allows its data to be used to train PostHog AI models.'),
+        .describe('When True, this organization allows its data to be used to train Flind AI models.'),
     default_anonymize_ips: zod
         .boolean()
         .optional()
@@ -147,7 +147,7 @@ export const UpdateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .nullish()
         .describe(
-            "When True, requests through the PostHog MCP server can read but not change this organization's data."
+            "When True, requests through the Flind MCP server can read but not change this organization's data."
         ),
     member_notice: zod
         .union([
@@ -183,7 +183,7 @@ export const UpdateBody = /* @__PURE__ */ zod.object({
     is_ai_training_opted_in: zod
         .boolean()
         .nullish()
-        .describe('When True, this organization allows its data to be used to train PostHog AI models.'),
+        .describe('When True, this organization allows its data to be used to train Flind AI models.'),
     default_anonymize_ips: zod
         .boolean()
         .optional()
@@ -244,7 +244,7 @@ export const PartialUpdateBody = /* @__PURE__ */ zod.object({
         .boolean()
         .nullish()
         .describe(
-            "When True, requests through the PostHog MCP server can read but not change this organization's data."
+            "When True, requests through the Flind MCP server can read but not change this organization's data."
         ),
     member_notice: zod
         .union([
@@ -280,7 +280,7 @@ export const PartialUpdateBody = /* @__PURE__ */ zod.object({
     is_ai_training_opted_in: zod
         .boolean()
         .nullish()
-        .describe('When True, this organization allows its data to be used to train PostHog AI models.'),
+        .describe('When True, this organization allows its data to be used to train Flind AI models.'),
     default_anonymize_ips: zod
         .boolean()
         .optional()
@@ -639,7 +639,7 @@ export const UserFacetSettingsPartialUpdateBody = /* @__PURE__ */ zod.object({
 })
 
 /**
- * Update the authenticated user's pinned sidebar tabs and/or homepage for the current team. Pass `@me` as the UUID. Send `tabs` to replace the pinned tab list, `homepage` to set the home destination (any PostHog URL — dashboard, insight, search results, scene). Either field may be omitted to leave it unchanged; sending `homepage: null` or `{}` clears the homepage.
+ * Update the authenticated user's pinned sidebar tabs and/or homepage for the current team. Pass `@me` as the UUID. Send `tabs` to replace the pinned tab list, `homepage` to set the home destination (any Flind URL — dashboard, insight, search results, scene). Either field may be omitted to leave it unchanged; sending `homepage: null` or `{}` clears the homepage.
  */
 export const UserHomeSettingsPartialUpdateBody = /* @__PURE__ */ zod.object({
     tabs: zod
@@ -779,6 +779,6 @@ export const UserHomeSettingsPartialUpdateBody = /* @__PURE__ */ zod.object({
         ])
         .optional()
         .describe(
-            "Tab descriptor for the user's chosen home page — the destination opened when they click the PostHog logo or hit `\/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default."
+            "Tab descriptor for the user's chosen home page — the destination opened when they click the Flind logo or hit `\/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default."
         ),
 })

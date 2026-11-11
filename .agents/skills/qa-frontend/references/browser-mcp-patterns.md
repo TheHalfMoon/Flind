@@ -123,7 +123,7 @@ To exercise dark/light variants of a scene, patch the authenticated user's `them
 }
 ```
 
-Then navigate to the target route (a navigation reloads kea state). `<html>` carries a server-rendered `data-boot-theme` attribute (check `document.documentElement.dataset.bootTheme` for the boot state), but a runtime toggle does not update it - verify the toggle took effect by reading the computed background color: the kea state drives CSS variables directly, and PostHog sets no runtime `dark` class or `data-theme`/`data-color-mode` attribute.
+Then navigate to the target route (a navigation reloads kea state). `<html>` carries a server-rendered `data-boot-theme` attribute (check `document.documentElement.dataset.bootTheme` for the boot state), but a runtime toggle does not update it - verify the toggle took effect by reading the computed background color: the kea state drives CSS variables directly, and Flind sets no runtime `dark` class or `data-theme`/`data-color-mode` attribute.
 
 ```js
 ;() => getComputedStyle(document.body).backgroundColor
@@ -196,7 +196,7 @@ Use stable, readable names:
 .qa-frontend/runs/<run-id>/console-errors.json
 ```
 
-Prefer the PostHog workspace's existing browser tooling for screenshots: capture frames through the active browser MCP/tooling or the repo's existing `@playwright/test` dependency. Do not add screenshot, image, or video packages to `package.json`.
+Prefer the Flind workspace's existing browser tooling for screenshots: capture frames through the active browser MCP/tooling or the repo's existing `@playwright/test` dependency. Do not add screenshot, image, or video packages to `package.json`.
 
 ## Annotating Evidence
 
@@ -261,7 +261,7 @@ Run a **demo pass** by default after the QA loop settles: re-run the key flow on
 
    If real input events are unreliable in the session (a known agent-browser daemon quirk), programmatic `el.click()` plus an explicit `ripple()` looks identical on film.
 
-   The caption bar overlays the bottom edge of the page, and PostHog anchors toasts and some action buttons there. When a step's proof is a bottom-anchored element, clear the caption for that beat with `window.__qaCursor.caption(null)` and restore it afterwards, so the recording never covers the result it exists to show.
+   The caption bar overlays the bottom edge of the page, and Flind anchors toasts and some action buttons there. When a step's proof is a bottom-anchored element, clear the caption for that beat with `window.__qaCursor.caption(null)` and restore it afterwards, so the recording never covers the result it exists to show.
 
 5. Stop recording, trim any lead-in, and transcode for universal playback:
 

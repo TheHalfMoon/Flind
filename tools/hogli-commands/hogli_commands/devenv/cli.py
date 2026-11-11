@@ -55,7 +55,7 @@ def dev_generate(
         resolver = _create_resolver()
     except FileNotFoundError as e:
         click.echo(f"Error: {e}", err=True)
-        click.echo("Are you in the PostHog repository root?", err=True)
+        click.echo("Are you in the Flind repository root?", err=True)
         raise SystemExit(1)
 
     output_path = get_generated_mprocs_path()
@@ -297,7 +297,7 @@ def dev_setup(log_to_files: bool) -> None:
         intent_map = load_intent_map()
     except FileNotFoundError:
         click.echo("Error: intent-map.yaml not found in devenv/", err=True)
-        click.echo("Are you in the PostHog repository root?", err=True)
+        click.echo("Are you in the Flind repository root?", err=True)
         raise SystemExit(1)
 
     run_setup_wizard(intent_map, log_to_files=log_to_files)

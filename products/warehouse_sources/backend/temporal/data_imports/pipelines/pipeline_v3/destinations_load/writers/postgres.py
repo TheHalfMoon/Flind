@@ -89,12 +89,12 @@ class UnrelatedTableExistsError(RuntimeError):
 HOST_RESOLUTION_TIMEOUT_SECONDS = 10
 
 IPV6_ONLY_HOST_DETAIL = (
-    "The host has only IPv6 addresses, and PostHog connects to destinations over IPv4. "
+    "The host has only IPv6 addresses, and Flind connects to destinations over IPv4. "
     "Use a host name or address that has an IPv4 address, then run the sync again."
 )
 HOST_NOT_FOUND_DETAIL = "The host name does not exist. Check the host on the destination, then run the sync again."
 NETWORK_UNREACHABLE_DETAIL = (
-    "PostHog cannot reach the host's network. Check that the host is reachable from the internet over IPv4, "
+    "Flind cannot reach the host's network. Check that the host is reachable from the internet over IPv4, "
     "then run the sync again."
 )
 AUTHENTICATION_FAILED_DETAIL = (
@@ -102,7 +102,7 @@ AUTHENTICATION_FAILED_DETAIL = (
     "then run the sync again."
 )
 ACCESS_RULE_DETAIL = (
-    "The database does not allow connections from PostHog. Allow PostHog's IP addresses in the database's "
+    "The database does not allow connections from Flind. Allow Flind's IP addresses in the database's "
     "access rules, then run the sync again."
 )
 UNKNOWN_DATABASE_DETAIL = (

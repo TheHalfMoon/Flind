@@ -1523,7 +1523,7 @@ class AlertCreateDestinationSerializer(serializers.Serializer):
         # is created and then silently never posts.
         team = self.context["get_team"]()
         if not IntegrationManager.slack.oauth.get_many(team.id, [attrs["slack_workspace_id"]]):
-            raise ValidationError({"slack_workspace_id": "Connect this Slack workspace to PostHog first."})
+            raise ValidationError({"slack_workspace_id": "Connect this Slack workspace to Flind first."})
         return attrs
 
 
@@ -2029,7 +2029,7 @@ class AlertViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet):
         if destination_count and trigger_alert_hog_functions(
             alert,
             {
-                "breaches": "Test alert from PostHog. No action is needed.",
+                "breaches": "Test alert from Flind. No action is needed.",
                 "is_test": True,
                 "alert_name": f"[TEST] {alert.name}",
             },

@@ -52,7 +52,7 @@ OUT_OF_MEMORY = "This query ran out of memory before it could finish."
 PLAN_FILTER = ExposureFilterWithoutColumn(type="group", key="plan", source=ExposureFilterSource.EXPOSURE_CRITERIA)
 DIRECT = ExposuresPath.DIRECT_SCAN
 PRECOMPUTED = ExposuresPath.PRECOMPUTED
-NO_CAUSE = (None, 'primary metric "Revenue" failed. Its query needed more memory than PostHog allows for one')
+NO_CAUSE = (None, 'primary metric "Revenue" failed. Its query needed more memory than Flind allows for one')
 CLICKHOUSE_MESSAGE = (
     "Code: 215. DB::Exception: Column `properties` is not under aggregate function and not in GROUP BY keys. "
     "In query SELECT properties FROM events"
@@ -117,7 +117,7 @@ class TestMetricCalculationFailed(TestCase):
                 "busy",
                 _failure("Queries are a little too busy right now.", error_type="rate_limited"),
                 {},
-                ("busy", INFO, None, "PostHog was too busy"),
+                ("busy", INFO, None, "Flind was too busy"),
             ),
             (
                 "busy_after_the_end_with_a_retry",
@@ -135,7 +135,7 @@ class TestMetricCalculationFailed(TestCase):
                 "cluster_out_of_memory",
                 _failure(str(ClickHouseClusterMemoryLimitExceeded()), error_type="out_of_memory", retriable=False),
                 {},
-                ("busy", INFO, None, "PostHog was too busy"),
+                ("busy", INFO, None, "Flind was too busy"),
             ),
             (
                 "read_limit_stored_as_a_builder_message",
@@ -145,13 +145,13 @@ class TestMetricCalculationFailed(TestCase):
                     error_type="validation_error",
                 ),
                 {},
-                ("query_limit", WARNING, "read_limit", "needed to read more data than PostHog allows"),
+                ("query_limit", WARNING, "read_limit", "needed to read more data than Flind allows"),
             ),
             (
                 "memory_limit_stored_without_a_class",
                 _failure("This query ran out of memory before it could finish.", error_type=None),
                 {},
-                ("query_limit", WARNING, "memory_limit", "needed more memory than PostHog allows for one calculation"),
+                ("query_limit", WARNING, "memory_limit", "needed more memory than Flind allows for one calculation"),
             ),
             (
                 "query_too_long",
@@ -166,7 +166,7 @@ class TestMetricCalculationFailed(TestCase):
                     error_type="timeout",
                 ),
                 {},
-                ("busy", INFO, None, "PostHog was too busy"),
+                ("busy", INFO, None, "Flind was too busy"),
             ),
             (
                 "builder_message",
@@ -357,7 +357,7 @@ class TestMetricCalculationFailed(TestCase):
                 (PLAN_FILTER,),
                 (
                     "exposure_criteria",
-                    'primary metric "Revenue" failed. Its query needed more memory than PostHog allows for one '
+                    'primary metric "Revenue" failed. Its query needed more memory than Flind allows for one '
                     'calculation. The likely cause is the exposure criteria\'s filter on the group property "plan"',
                 ),
             ),
@@ -379,7 +379,7 @@ class TestMetricCalculationFailed(TestCase):
                 ),
                 (
                     "exposure_criteria",
-                    "Every metric's query needed more resources than PostHog allows for one calculation. The likely "
+                    "Every metric's query needed more resources than Flind allows for one calculation. The likely "
                     'cause is the exposure criteria\'s filter on the group property "plan" and the test account filter '
                     'on the event property "$device", which make each query read all group and event properties. '
                     "Change these filters, or turn off the test account filter in the exposure criteria, or contact",
@@ -682,14 +682,14 @@ class TestMetricCalculationFailedFromStoredRuns(BaseTest):
                 ("rejected", "secondary"),
                 "direct_scan",
                 True,
-                (None, "read more data than PostHog allows for one calculation"),
+                (None, "read more data than Flind allows for one calculation"),
             ),
             (
                 "failures_stored_without_their_read",
                 (),
                 None,
                 False,
-                (None, "read more data than PostHog allows for one calculation"),
+                (None, "read more data than Flind allows for one calculation"),
             ),
         ]
     )

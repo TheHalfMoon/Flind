@@ -10,7 +10,7 @@ describe('spaceFeedPreview', () => {
             'Fix the flaky test',
         ],
         [
-            'PostHog context blocks around the prompt',
+            'Flind context blocks around the prompt',
             '<posthog_trusted_context>Rules</posthog_trusted_context>Why did signups drop?<posthog_untrusted_context>{}</posthog_untrusted_context>',
             'Why did signups drop?',
         ],

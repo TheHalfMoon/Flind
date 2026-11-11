@@ -1,6 +1,6 @@
 # Turn suggestion benchmark
 
-`turn_suggestions_benchmark` scores the turn suggestion judge against labeled PostHog AI turns.
+`turn_suggestions_benchmark` scores the turn suggestion judge against labeled Flind AI turns.
 Use it to check a prompt change, a new show threshold, or a new System One model before it reaches users.
 
 The cases live in [`turn_suggestions/benchmark_cases.yaml`](../../turn_suggestions/benchmark_cases.yaml).

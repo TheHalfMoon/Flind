@@ -6,7 +6,7 @@ Doctor names a wrong tailnet as its own cause, and a missing grant usually shows
 
 ## 1. The `posthog.com` tailnet
 
-PostHog runs several tailnets.
+Flind runs several tailnets.
 `dev`, `prod-us`, `prod-eu`, and `internal` serve CI runners and subnet routers, and none of them route to devboxes.
 People need `posthog.com`.
 

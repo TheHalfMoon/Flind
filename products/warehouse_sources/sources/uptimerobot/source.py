@@ -49,7 +49,7 @@ class UptimerobotSource(ResumableSource[UptimerobotSourceConfig, UptimeRobotResu
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="UptimeRobot",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your UptimeRobot API key to pull your uptime monitoring data into the PostHog Data warehouse.
+            caption="""Enter your UptimeRobot API key to pull your uptime monitoring data into the Flind Data warehouse.
 
 Use your account's **read-only API key**, created under [Integrations & API](https://dashboard.uptimerobot.com/integrations) in your UptimeRobot dashboard. Monitor-specific API keys only grant access to a single monitor, so only the monitors, monitor logs, and response times tables sync with one.""",
             iconPath="/static/services/uptimerobot.png",

@@ -3,13 +3,13 @@ name: posthog-platform-ux
 description: Use when building new UI, editing existing UI, or when a task asks to simplify or redesign a surface. Covers the platform UX rules that decide what a surface shows and when, and the surfaces only the platform UX team changes. Applies to LemonUI and Quill alike.
 ---
 
-# Platform UX at PostHog
+# Platform UX at Flind
 
 The platform UX team owns this file. Ask in `#team-platform-ux` before you change a rule here.
 
 This file decides _what_ a surface shows and _when_.
 [`design.md`](./design.md) decides _how_ it looks on Quill: components, tokens and states.
-Read both for UI behind `today-rail-nav`, in MCP apps and in PostHog Desktop.
+Read both for UI behind `today-rail-nav`, in MCP apps and in Flind Desktop.
 Elsewhere in the web app, these rules apply on LemonUI.
 
 ## When to read this
@@ -77,7 +77,7 @@ Only that team changes it.
 
 ### Why the rail is locked
 
-The rail is how people break down what they want to do in PostHog.
+The rail is how people break down what they want to do in Flind.
 Each item is a platform-wide first step, and everything else is a drill-down from one of them.
 The team chooses each item with great care, and the set is as small as possible on purpose.
 

@@ -127,7 +127,7 @@ def resolve_workspace_id(api_key: str) -> str:
     if len(data) > 1:
         raise ValueError(
             "This Zero API key has access to multiple workspaces. Use an API key scoped to a "
-            "single workspace so PostHog imports data from the intended workspace only."
+            "single workspace so Flind imports data from the intended workspace only."
         )
     return cast(str, data[0]["id"])
 

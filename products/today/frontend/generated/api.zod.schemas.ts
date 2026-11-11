@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 import { z as zod } from 'zod'
@@ -734,7 +734,7 @@ export type RecordingTargetApi = zod.input<typeof RecordingTargetApi>
 export type RecordingTargetApiOutput = zod.output<typeof RecordingTargetApi>
 
 export const PageLinkApi = zod.object({
-    url: zod.string().describe('Where the link goes, outside PostHog.'),
+    url: zod.string().describe('Where the link goes, outside Flind.'),
     text: zod.string().describe('The link text.'),
 })
 
@@ -780,7 +780,7 @@ export const SignalPreviewApi = zod.object({
     link: zod
         .union([
             zod.object({
-                url: zod.string().describe('Where the link goes, outside PostHog.'),
+                url: zod.string().describe('Where the link goes, outside Flind.'),
                 text: zod.string().describe('The link text.'),
             }),
             zod.null(),
@@ -830,12 +830,12 @@ export const SignalViewApi = zod.object({
     link: zod
         .union([
             zod.object({
-                url: zod.string().describe('Where the link goes, outside PostHog.'),
+                url: zod.string().describe('Where the link goes, outside Flind.'),
                 text: zod.string().describe('The link text.'),
             }),
             zod.null(),
         ])
-        .describe('Where a scout finding links outside PostHog, if anywhere.'),
+        .describe('Where a scout finding links outside Flind, if anywhere.'),
     preview: zod
         .union([
             zod.object({
@@ -861,7 +861,7 @@ export const SignalViewApi = zod.object({
                 link: zod
                     .union([
                         zod.object({
-                            url: zod.string().describe('Where the link goes, outside PostHog.'),
+                            url: zod.string().describe('Where the link goes, outside Flind.'),
                             text: zod.string().describe('The link text.'),
                         }),
                         zod.null(),
@@ -948,12 +948,12 @@ export const ImpactNumberApi = zod.object({
                 link: zod
                     .union([
                         zod.object({
-                            url: zod.string().describe('Where the link goes, outside PostHog.'),
+                            url: zod.string().describe('Where the link goes, outside Flind.'),
                             text: zod.string().describe('The link text.'),
                         }),
                         zod.null(),
                     ])
-                    .describe('Where a scout finding links outside PostHog, if anywhere.'),
+                    .describe('Where a scout finding links outside Flind, if anywhere.'),
                 preview: zod
                     .union([
                         zod.object({
@@ -983,7 +983,7 @@ export const ImpactNumberApi = zod.object({
                             link: zod
                                 .union([
                                     zod.object({
-                                        url: zod.string().describe('Where the link goes, outside PostHog.'),
+                                        url: zod.string().describe('Where the link goes, outside Flind.'),
                                         text: zod.string().describe('The link text.'),
                                     }),
                                     zod.null(),
@@ -1080,12 +1080,12 @@ export const ReportPageApi = zod.object({
                 link: zod
                     .union([
                         zod.object({
-                            url: zod.string().describe('Where the link goes, outside PostHog.'),
+                            url: zod.string().describe('Where the link goes, outside Flind.'),
                             text: zod.string().describe('The link text.'),
                         }),
                         zod.null(),
                     ])
-                    .describe('Where a scout finding links outside PostHog, if anywhere.'),
+                    .describe('Where a scout finding links outside Flind, if anywhere.'),
                 preview: zod
                     .union([
                         zod.object({
@@ -1115,7 +1115,7 @@ export const ReportPageApi = zod.object({
                             link: zod
                                 .union([
                                     zod.object({
-                                        url: zod.string().describe('Where the link goes, outside PostHog.'),
+                                        url: zod.string().describe('Where the link goes, outside Flind.'),
                                         text: zod.string().describe('The link text.'),
                                     }),
                                     zod.null(),
@@ -1202,12 +1202,12 @@ export const ReportPageApi = zod.object({
                             link: zod
                                 .union([
                                     zod.object({
-                                        url: zod.string().describe('Where the link goes, outside PostHog.'),
+                                        url: zod.string().describe('Where the link goes, outside Flind.'),
                                         text: zod.string().describe('The link text.'),
                                     }),
                                     zod.null(),
                                 ])
-                                .describe('Where a scout finding links outside PostHog, if anywhere.'),
+                                .describe('Where a scout finding links outside Flind, if anywhere.'),
                             preview: zod
                                 .union([
                                     zod.object({
@@ -1241,7 +1241,7 @@ export const ReportPageApi = zod.object({
                                         link: zod
                                             .union([
                                                 zod.object({
-                                                    url: zod.string().describe('Where the link goes, outside PostHog.'),
+                                                    url: zod.string().describe('Where the link goes, outside Flind.'),
                                                     text: zod.string().describe('The link text.'),
                                                 }),
                                                 zod.null(),

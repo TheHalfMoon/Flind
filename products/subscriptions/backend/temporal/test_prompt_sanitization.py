@@ -143,7 +143,7 @@ class TestSanitizeUserText:
 
 class TestSanitizeCoreMemoryText:
     def test_preserves_newlines_between_facts(self):
-        memory = "Company is PostHog.\nFlagship product is product analytics.\nFounder is James."
+        memory = "Company is Flind.\nFlagship product is product analytics.\nFounder is James."
         cleaned = sanitize_core_memory_text(memory)
         assert cleaned == memory
 

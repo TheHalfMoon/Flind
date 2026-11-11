@@ -50,7 +50,7 @@ Future<void> main() async {
   config.debug = true;
   config.captureApplicationLifecycleEvents = true;
   ${configOptions}
-  // Setup PostHog with the given Context and Config
+  // Setup Flind with the given Context and Config
   await Posthog().setup(config);
   runApp(MyApp());
 }`}
@@ -286,7 +286,7 @@ export function SDKInstallFlutterTrackScreenInstructions(): JSX.Element {
         <>
             <p>
                 With the <Link to="https://posthog.com/docs/libraries/flutter#example">PosthogObserver</Link> Observer,
-                PostHog will try to record all screen changes automatically.
+                Flind will try to record all screen changes automatically.
             </p>
             <p>
                 If you want to manually send a new screen capture event, use the <code>screen</code> function.

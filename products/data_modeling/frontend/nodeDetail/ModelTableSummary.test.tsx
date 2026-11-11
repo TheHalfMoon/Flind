@@ -18,11 +18,11 @@ const baseProps = {
 }
 
 describe('ModelTableSummary', () => {
-    it('shows PostHog ownership and downstream models for a PostHog table', () => {
+    it('shows Flind ownership and downstream models for a Flind table', () => {
         render(<ModelTableSummary {...baseProps} node={{ origin: 'posthog', downstream_count: 1 }} />)
 
-        expect(screen.getByText('Managed by PostHog')).toBeTruthy()
-        expect(screen.getByText('PostHog')).toBeTruthy()
+        expect(screen.getByText('Managed by Flind')).toBeTruthy()
+        expect(screen.getByText('Flind')).toBeTruthy()
         expect(screen.getByText('1 model')).toBeTruthy()
     })
 

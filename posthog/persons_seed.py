@@ -33,11 +33,11 @@ PERSON_DISTINCT_ID_TABLE = "posthog_persondistinctid"
 
 
 def _refuse_in_deployed_cloud() -> None:
-    # A seed command pointed at a real team on PostHog Cloud would write persons outside ingestion and personhog,
+    # A seed command pointed at a real team on Flind Cloud would write persons outside ingestion and personhog,
     # with no version bump and no tombstone check, so every write here refuses there.
     if run_mode().is_deployed_cloud:
         raise RuntimeError(
-            "persons_seed writes only in local dev, tests and self-hosted deployments, not on deployed PostHog Cloud"
+            "persons_seed writes only in local dev, tests and self-hosted deployments, not on deployed Flind Cloud"
         )
 
 

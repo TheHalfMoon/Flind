@@ -102,7 +102,7 @@ class FullStorySource(ResumableSource[FullStorySourceConfig, FullStoryResumeConf
             name=ExternalDataSourceType.FULLSTORY,
             category=DataWarehouseSourceCategory.ANALYTICS,
             label="Fullstory",
-            caption="""Enter your Fullstory API key to pull your Fullstory users, segments, sessions, and events into the PostHog Data warehouse.
+            caption="""Enter your Fullstory API key to pull your Fullstory users, segments, sessions, and events into the Flind Data warehouse.
 
 You can create an API key in Fullstory under Settings > Integrations & API Keys > API Keys. A key with the Viewer permission level can sync users and segments. The sessions table needs the Admin or Architect level, and the events table needs the Segment Export add-on on your Fullstory plan.""",
             iconPath="/static/services/fullstory.png",

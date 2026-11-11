@@ -471,7 +471,7 @@ def _demo_master_commits(anchor: datetime, merged_prs: Sequence[dict[str, Any]])
                     "pull_requests": [{"number": _FORK_PR_NUMBER, "base": {"repo": {"id": _FORK_REPO_ID}}}],
                     "head_commit": {
                         "message": subject,
-                        "author": {"name": "PostHog Bot", "email": "bot@posthog.com"},
+                        "author": {"name": "Flind Bot", "email": "bot@posthog.com"},
                     },
                 }
             )
@@ -1434,7 +1434,7 @@ class Command(BaseCommand):
                 prefix,
                 source_id=TRUNK_SEED_SOURCE_ID,
                 source_type=ExternalDataSourceType.TRUNKIO,
-                job_inputs={"org_url_slug": "posthog-inc", "repo_owner": "PostHog", "repo_name": "posthog"},
+                job_inputs={"org_url_slug": "posthog-inc", "repo_owner": "Flind", "repo_name": "posthog"},
             )
             self._upsert_schema_table(
                 team,

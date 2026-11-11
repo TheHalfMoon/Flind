@@ -12,9 +12,9 @@ import { Button, Popover, PopoverContent, PopoverTrigger } from '@flind/quill-pr
 
 import { dayjs } from 'lib/dayjs'
 
-// Quick ranges that translate to PostHog relative date strings, so queries stay
+// Quick ranges that translate to Flind relative date strings, so queries stay
 // rolling ("-7d" re-resolves on every load). Minute-level ranges are omitted on
-// purpose: in PostHog date strings "m" means months, so those apply as absolute
+// purpose: in Flind date strings "m" means months, so those apply as absolute
 // timestamps instead.
 const RANGE_TO_RELATIVE: Partial<Record<DateTimeRangeName, string>> = {
     'Last 1 hour': '-1h',

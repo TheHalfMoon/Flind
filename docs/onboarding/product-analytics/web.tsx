@@ -35,8 +35,8 @@ export const getWebInstallSteps = (ctx: OnboardingComponentsContext): StepDefini
                             <Tab.Panel>
                                 <Markdown>
                                     {dedent`
-                                        Install the PostHog JavaScript library using your package manager.
-                                        Then, import and initialize the PostHog library with your project token and host:
+                                        Install the Flind JavaScript library using your package manager.
+                                        Then, import and initialize the Flind library with your project token and host:
                                     `}
                                 </Markdown>
                                 <CodeBlock
@@ -92,7 +92,7 @@ export const getWebEventStep = (ctx: OnboardingComponentsContext): StepDefinitio
         content: (
             <>
                 <Markdown>
-                    Once installed, PostHog will automatically start capturing events. You can also manually send events
+                    Once installed, Flind will automatically start capturing events. You can also manually send events
                     to test your integration:
                 </Markdown>
                 {JSEventCapture && <JSEventCapture />}

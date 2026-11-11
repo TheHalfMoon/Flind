@@ -62,7 +62,7 @@ class ImportContext:
 
 @frozen
 class SavedPage:
-    # How many records the page added or changed in PostHog. Records that already match do not count.
+    # How many records the page added or changed in Flind. Records that already match do not count.
     imported: int
     # Problems with single records that do not fail the step.
     warnings: tuple[str, ...] = ()
@@ -72,7 +72,7 @@ class SavedPage:
 class ImportPage:
     # How many source records the page read.
     processed: int
-    # Writes the page to PostHog. The runner calls it in the transaction that saves the step's progress, so the page
+    # Writes the page to Flind. The runner calls it in the transaction that saves the step's progress, so the page
     # and its counts and checkpoint commit together.
     save: Callable[[], SavedPage]
     # Where to continue when the step runs again after this page. None on the last page of the step.

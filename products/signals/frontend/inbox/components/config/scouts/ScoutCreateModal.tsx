@@ -245,7 +245,7 @@ export function ScoutCreateModal({
                         label="Instructions"
                         help={
                             turningOn
-                                ? 'PostHog wrote this scout, so its instructions are read-only here. Use Refine with AI to make your own version.'
+                                ? 'Flind wrote this scout, so its instructions are read-only here. Use Refine with AI to make your own version.'
                                 : 'This markdown prompt is executed on every run.'
                         }
                     >

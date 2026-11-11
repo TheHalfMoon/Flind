@@ -53,7 +53,7 @@ class ZepSource(ResumableSource[ZepSourceConfig, ZepResumeConfig]):
             label="Zep",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["agent memory", "llm", "knowledge graph", "ai"],
-            caption="""Enter your Zep API key to sync your Zep agent-memory data into the PostHog Data warehouse.
+            caption="""Enter your Zep API key to sync your Zep agent-memory data into the Flind Data warehouse.
 
 You can create an API key in the [Zep dashboard](https://app.getzep.com/) under Project Settings. Keys are prefixed with `z_`.""",
             iconPath="/static/services/zep.png",

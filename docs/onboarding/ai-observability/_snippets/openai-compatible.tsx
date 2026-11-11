@@ -41,7 +41,7 @@ export const getOpenAICompatibleSteps = (
                         </Markdown>
                     </CalloutBox>
 
-                    <Markdown>Install the PostHog SDK and the OpenAI SDK.</Markdown>
+                    <Markdown>Install the Flind SDK and the OpenAI SDK.</Markdown>
 
                     <CodeBlock
                         blocks={[
@@ -66,13 +66,13 @@ export const getOpenAICompatibleSteps = (
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
                         {dedent`
-                            Create a PostHog client, then swap in PostHog's OpenAI wrapper, pointed at ${config.label}.
+                            Create a Flind client, then swap in Flind's OpenAI wrapper, pointed at ${config.label}.
                         `}
                     </Markdown>
 
@@ -100,9 +100,9 @@ export const getOpenAICompatibleSteps = (
                                 file: 'Node',
                                 code: dedent`
                                     import { OpenAI } from '@posthog/ai/openai'
-                                    import { PostHog } from 'posthog-node'
+                                    import { Flind } from 'posthog-node'
 
-                                    const posthog = new PostHog('<ph_project_token>', { host: '<ph_client_api_host>' })
+                                    const posthog = new Flind('<ph_project_token>', { host: '<ph_client_api_host>' })
 
                                     const client = new OpenAI({
                                       baseURL: '${config.baseUrl}',
@@ -123,7 +123,7 @@ export const getOpenAICompatibleSteps = (
                 <>
                     <Markdown>
                         {dedent`
-                            When you use the wrapped client to call ${config.label}, PostHog automatically captures
+                            When you use the wrapped client to call ${config.label}, Flind automatically captures
                             an \`$ai_generation\` event.
                         `}
                     </Markdown>

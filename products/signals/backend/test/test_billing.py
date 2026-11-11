@@ -563,7 +563,7 @@ class TestBillingExemptions(BaseTest):
         self.assertIsNone(system_billing_exempt_reason(self.team.id, other_scout_report.id))
         self.assertIsNone(system_billing_exempt_reason(self.team.id, pipeline_report.id))
 
-        # A team-edited fork keeps the canonical name but is no longer PostHog's system:
+        # A team-edited fork keeps the canonical name but is no longer Flind's system:
         # the diverged row must stop minting exemptions.
         skill.body = "team-edited body"
         skill.save(update_fields=["body"])

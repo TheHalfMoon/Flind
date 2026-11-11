@@ -1,7 +1,7 @@
 ---
 name: visualizing-change-over-time
 description: >
-  Helps PostHog engineers and agents pick the right chart when a request is about
+  Helps Flind engineers and agents pick the right chart when a request is about
   visualizing change over time, before/after comparisons, or period-over-period
   movement while building UI with @flind/quill-charts (dashboards, reports, the
   mcp_analytics frontend, custom visualizations). Use when a user asks how something

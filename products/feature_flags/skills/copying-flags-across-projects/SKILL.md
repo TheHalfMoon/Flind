@@ -1,11 +1,11 @@
 ---
 name: copying-flags-across-projects
-description: 'Copy a feature flag from one PostHog project to one or more target projects in the same organization. Use when the user wants to duplicate a flag, promote a flag from staging to production, sync flags across projects, or replicate a flag configuration in a different workspace. Covers cohort remapping, scheduled-change handling, encrypted payloads, and the safe defaults (disabled in target, no scheduled changes).'
+description: 'Copy a feature flag from one Flind project to one or more target projects in the same organization. Use when the user wants to duplicate a flag, promote a flag from staging to production, sync flags across projects, or replicate a flag configuration in a different workspace. Covers cohort remapping, scheduled-change handling, encrypted payloads, and the safe defaults (disabled in target, no scheduled changes).'
 ---
 
 # Copying feature flags across projects
 
-This skill guides you through duplicating a feature flag from a source project into one or more target projects within the same PostHog organization.
+This skill guides you through duplicating a feature flag from a source project into one or more target projects within the same Flind organization.
 
 ## When to use this skill
 
@@ -87,7 +87,7 @@ If any targets failed, ask the user whether to retry the failed ones, skip them,
 - **Encrypted payloads are preserved.** Remote-configuration flags with encrypted payloads keep their encryption when copied; the payload is re-encrypted under the target project's key.
 - **Scheduled changes copy with cohort remap too.** If `copy_schedule: true`, any scheduled cohort references are remapped just like the live filter conditions.
 - **Auth requirements.** The user's API key must include explicit `feature_flag:write` (or `feature_flag:*`) scope. A `*`-only key will be rejected — this endpoint is gated by an INTERNAL viewset and `*` consent does not satisfy it. Team-scoped keys cannot reach this endpoint either; an org-scoped or unscoped key is required.
-- **Editor access on the source.** The user must have at least editor-level access on the source flag's team. The endpoint enforces this via PostHog's access control before copying.
+- **Editor access on the source.** The user must have at least editor-level access on the source flag's team. The endpoint enforces this via Flind's access control before copying.
 - **Per-target access on targets.** Targets the user can't see are silently dropped from the result; targets they can see but lack edit rights on appear in the `failed` array with a permission error.
 - **No undo.** A copy creates a new flag in the target (or overwrites an existing flag with the same key). Always confirm with the user before issuing the copy, especially when the target is a production project.
 

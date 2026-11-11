@@ -40,7 +40,7 @@ class SurveyTranslationResponse(BaseModel):
     questions: list[SurveyQuestionTranslation] = Field(default_factory=list)
 
 
-SYSTEM_PROMPT = """You translate PostHog survey copy.
+SYSTEM_PROMPT = """You translate Flind survey copy.
 
 Return JSON that matches the requested schema.
 Rules:

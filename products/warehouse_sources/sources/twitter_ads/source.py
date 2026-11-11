@@ -73,7 +73,7 @@ class TwitterAdsSource(ResumableSource[TwitterAdsSourceConfig, TwitterAdsResumeC
             iconPath="/static/services/twitter_ads.png",
             docsUrl="https://posthog.com/docs/cdp/sources/twitter-ads",
             releaseStatus=ReleaseStatus.GA,
-            # Hidden until PostHog's X app is approved for Ads API access and its keys are deployed.
+            # Hidden until Flind's X app is approved for Ads API access and its keys are deployed.
             featureFlag="dwh-twitter-ads",
             suggestedTables=[
                 SuggestedTable(table="campaigns", tooltip="Required for campaign names in Marketing analytics."),

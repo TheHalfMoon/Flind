@@ -35,7 +35,7 @@ describe('pullRequestDetailLogic', () => {
         'shows cached failure labels and avoids duplicate job reads for %s',
         async (ciEngine) => {
             const run: WorkflowRunDetailApi = {
-                repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+                repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
                 id: 42,
                 ci_engine: ciEngine,
                 workflow_name: 'CI',
@@ -69,7 +69,7 @@ describe('pullRequestDetailLogic', () => {
             mockRuns.mockResolvedValue([run])
             mockJobs.mockResolvedValue([job])
             logic = pullRequestDetailLogic({
-                repoOwner: 'PostHog',
+                repoOwner: 'Flind',
                 repoName: 'posthog',
                 number: 10,
                 sourceId: null,

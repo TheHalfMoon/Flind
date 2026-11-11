@@ -34,7 +34,7 @@ export interface LocalWrapper {
   name: string;
   /** Whether this wrapper calls a capture method or a flag method. */
   methodKind: "capture" | "flag";
-  /** The underlying PostHog SDK method (`capture`, `getFeatureFlag`, `isFeatureEnabled`, …). */
+  /** The underlying Flind SDK method (`capture`, `getFeatureFlag`, `isFeatureEnabled`, …). */
   posthogMethod: string;
   classification: WrapperClassification;
   isDefaultExport?: boolean;
@@ -110,7 +110,7 @@ export const DEFAULT_CONFIG: DetectionConfig = {
 
 // ── Supported languages ──
 
-// ── PostHog entity types (for flag classification / stale detection) ──
+// ── Flind entity types (for flag classification / stale detection) ──
 
 export interface FeatureFlag {
   id: number;

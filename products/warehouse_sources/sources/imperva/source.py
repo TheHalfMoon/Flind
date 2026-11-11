@@ -60,7 +60,7 @@ class ImpervaSource(ResumableSource[ImpervaSourceConfig, ImpervaResumeConfig]):
             PLAN_ERROR: PLAN_ERROR,
             "Imperva returned API error 2.": "Imperva rejected the request. Check your account ID and sync settings.",
             "Imperva returned API error 13001.": "Imperva rejected the time range. Check your sync settings.",
-            "Imperva returned API error 13002.": "Imperva rejected the time interval. Contact PostHog support.",
+            "Imperva returned API error 13002.": "Imperva rejected the time interval. Contact Flind support.",
         }
 
     def get_canonical_descriptions(self) -> CanonicalDescriptions:

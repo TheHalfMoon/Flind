@@ -80,7 +80,7 @@ export function shouldEnableSpokenNarration(
 
 /**
  * Narrow the raw flag value to a known variant. An unmatched flag, an
- * unresolved one, or a variant added in PostHog that this build does not know
+ * unresolved one, or a variant added in Flind that this build does not know
  * about all yield undefined, which leaves the session on the gateway's default
  * provider rather than guessing.
  *

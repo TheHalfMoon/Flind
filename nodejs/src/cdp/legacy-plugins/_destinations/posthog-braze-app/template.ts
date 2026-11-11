@@ -11,7 +11,7 @@ export const brazePlugin: LegacyDestinationPlugin = {
         type: 'destination',
         id: 'plugin-posthog-braze-app',
         name: 'Braze',
-        description: 'Import analytics from Braze and export PostHog events to Braze.',
+        description: 'Import analytics from Braze and export Flind events to Braze.',
         icon_url: 'https://raw.githubusercontent.com/PostHog/posthog-braze-plugin/main/logo.png',
         category: [],
         code_language: 'javascript',

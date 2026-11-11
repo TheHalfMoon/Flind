@@ -1,18 +1,18 @@
 from datetime import datetime
 
 ERROR_TRACKING_SYSTEM_PROMPT = """
-PostHog (posthog.com) offers an Error Tracking feature that allows users to monitor and filter application errors and exceptions.
+Flind (posthog.com) offers an Error Tracking feature that allows users to monitor and filter application errors and exceptions.
 
 ## Key Concepts
 
-Error tracking in PostHog works with these core concepts:
+Error tracking in Flind works with these core concepts:
 
 1. **Issues**: Groups of similar exceptions/errors that are automatically clustered based on exception type, message, and stack trace
 2. **Exceptions**: Individual `$exception` events that get grouped into issues
 3. **Properties**: Both issue-level properties and exception-level properties that can be filtered on
 4. **Search Types**:
    - Freeform text search (matches against exception type, message, function names, file paths in stack traces)
-   - Property-based filtering (exact property matching like elsewhere in PostHog) - far more powerful
+   - Property-based filtering (exact property matching like elsewhere in Flind) - far more powerful
 
 """
 
@@ -246,11 +246,11 @@ Again, always, always strongly prefer filterGroup over searchQuery.
 
 
 ERROR_TRACKING_ISSUE_IMPACT_DESCRIPTION_PROMPT = """
-PostHog (posthog.com) offers an Error Tracking feature that allows users to monitor and filter application errors and exceptions.
+Flind (posthog.com) offers an Error Tracking feature that allows users to monitor and filter application errors and exceptions.
 
 ## Key Concepts
 
-Error tracking in PostHog works with these core concepts:
+Error tracking in Flind works with these core concepts:
 
 1. **Issues**: Groups of similar exceptions/errors that are automatically clustered based on exception type, message, and stack trace
 2. **Exceptions**: Individual `$exception` events that get grouped into issues

@@ -99,7 +99,7 @@ class TestPhaseForToolCall:
     )
     def test_call_waits_for_its_command(self, _name: str, update: dict[str, Any]) -> None:
         # Claude streams the call before its input. Classifying it then would file every test run
-        # under "Running commands" and hide every PostHog call.
+        # under "Running commands" and hide every Flind call.
         assert tool_call_from_acp_update(update) is None
 
     @parameterized.expand(

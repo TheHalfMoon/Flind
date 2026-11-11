@@ -573,7 +573,7 @@ def _find_source_artifact(
 
 def _require_shareable_source_artifact(artifact: dict[str, Any]) -> dict[str, Any]:
     # Run manifests also carry internal state (plans, context, tree snapshots, user
-    # uploads). Living artifacts are deliverables that leave PostHog, so only files
+    # uploads). Living artifacts are deliverables that leave Flind, so only files
     # the agent explicitly uploaded as run outputs may be used as a content source.
     if artifact.get("type") != "output" or artifact.get("source") != "agent_output":
         raise ValueError(
@@ -961,7 +961,7 @@ class SlackFileArtifactAdapter(LivingArtifactAdapter):
         mapping = _get_slack_mapping(run)
         slack_integration = _slack_integration_for_mapping(mapping)
         resolved_content_type = content_type or _guess_content_type(name)
-        # Chart images deliver as image blocks referencing a PostHog-hosted url, which needs no
+        # Chart images deliver as image blocks referencing a Flind-hosted url, which needs no
         # upload and therefore no files:write. Everything else (non-images, and images with no
         # resolvable export) goes out as an upload, so it needs the scope up front — accepting it
         # here would leave the artifact pending forever with the agent believing it was delivered.
@@ -1062,7 +1062,7 @@ def deliver_pending_slack_file_artifacts(
 
     Images compose into a single chat message together with ``answer_sections``
     (the relay's answer text): text sections first, then one card per
-    chart (title, image block, "Open in PostHog" button). Chart images reference a
+    chart (title, image block, "Open in Flind" button). Chart images reference a
     url minted here from their export asset — Slack's image proxy fetches the PNG
     from us, so no file upload (and no files:write scope) is involved; other images
     upload without a channel share and are referenced by file id. chat.postMessage
@@ -1549,7 +1549,7 @@ def _artifact_display_title(artifact: TaskArtifact) -> str:
 
 def _artifact_fallback_text(artifact: TaskArtifact) -> str:
     # Slack parses a message's top-level text as mrkdwn, so an artifact named `<@U…>` or
-    # `<!channel>` would notify from the PostHog bot — escape it like the title block does.
+    # `<!channel>` would notify from the Flind bot — escape it like the title block does.
     return escape_slack_mrkdwn(_artifact_display_title(artifact))
 
 
@@ -1568,7 +1568,7 @@ def _chart_card_blocks(card: _SlackImageCard) -> list[dict[str, Any]]:
     posthog_url = metadata.get("posthog_url")
     if isinstance(posthog_url, str) and posthog_url and not _is_posthog_origin_url(posthog_url):
         # Metadata is caller-writable through the generic living-artifact create/edit APIs, so an
-        # unchecked url would let a task writer publish a phishing button as the PostHog bot.
+        # unchecked url would let a task writer publish a phishing button as the Flind bot.
         logger.warning(
             "task_artifact.chart_url_untrusted_origin",
             artifact_id=str(artifact.id),
@@ -1580,7 +1580,7 @@ def _chart_card_blocks(card: _SlackImageCard) -> list[dict[str, Any]]:
                 "elements": [
                     {
                         "type": "button",
-                        "text": {"type": "plain_text", "text": "Open in PostHog", "emoji": True},
+                        "text": {"type": "plain_text", "text": "Open in Flind", "emoji": True},
                         "url": posthog_url,
                     }
                 ],

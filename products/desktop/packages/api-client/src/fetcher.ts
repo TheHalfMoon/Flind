@@ -15,7 +15,7 @@ type ApiFetcherConfig = {
 };
 
 /**
- * Non-2xx HTTP response from the PostHog API. Keeps the legacy
+ * Non-2xx HTTP response from the Flind API. Keeps the legacy
  * `Failed request: [<status>] <body>` message format — many catch sites
  * string-match on it — while exposing the status as a typed field.
  */

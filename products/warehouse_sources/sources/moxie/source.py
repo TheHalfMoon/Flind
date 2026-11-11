@@ -95,7 +95,7 @@ class MoxieSource(SimpleSource[MoxieSourceConfig]):
             label="Moxie",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["freelance crm", "invoicing", "time tracking"],
-            caption="""Enter your Moxie workspace base URL and API key to pull your clients, projects, invoices, and more into the PostHog Data warehouse.
+            caption="""Enter your Moxie workspace base URL and API key to pull your clients, projects, invoices, and more into the Flind Data warehouse.
 
 Go to **Workspace settings > Connected Apps > Integrations** in Moxie and click **Enable Custom Integration** to see your workspace's base URL and API key.""",
             iconPath="/static/services/moxie.png",

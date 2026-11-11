@@ -1,6 +1,6 @@
 ---
 name: isolating-product-facade-contracts
-description: Plan and execute product isolation migrations to a facade plus contract layer in PostHog, following the Visual review architecture. Use when a product still exposes internals (models/logic/views) across boundaries and needs migration toward contracts.py + facade/api.py + presentation separation, with a PR strategy that minimizes review latency and conflicts with parallel work.
+description: Plan and execute product isolation migrations to a facade plus contract layer in Flind, following the Visual review architecture. Use when a product still exposes internals (models/logic/views) across boundaries and needs migration toward contracts.py + facade/api.py + presentation separation, with a PR strategy that minimizes review latency and conflicts with parallel work.
 ---
 
 # Isolating a product with facade and contracts

@@ -391,7 +391,7 @@ describe("AgentServer.configureEnvironment", () => {
     );
   });
 
-  it("routes PostHog AI origin through the posthog_ai product", () => {
+  it("routes Flind AI origin through the posthog_ai product", () => {
     const env = buildServer("interactive").configureEnvironment({
       originProduct: "posthog_ai",
     });

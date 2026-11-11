@@ -1,4 +1,4 @@
-"""Convert between PostHog rich content/markdown and Slack payload formats."""
+"""Convert between Flind rich content/markdown and Slack payload formats."""
 
 import re
 import html as html_mod
@@ -572,7 +572,7 @@ def _preformatted_elements_to_text(elements: list[JSON], user_names: dict[str, s
 
 
 def slack_blocks_to_rich_content(blocks: list[JSON] | None, user_names: dict[str, str] | None = None) -> JSON | None:
-    """Parse Slack rich_text blocks into PostHog SupportEditor-compatible JSON."""
+    """Parse Slack rich_text blocks into Flind SupportEditor-compatible JSON."""
     if not blocks:
         return None
 
@@ -770,7 +770,7 @@ def _serialize_list_to_markdown(node: JSON, ordered: bool, indent: str, include_
 
 
 def rich_content_to_markdown(rich_content: JSON | None, include_images: bool = True) -> str:
-    """Serialize PostHog rich content JSON to markdown text."""
+    """Serialize Flind rich content JSON to markdown text."""
     if not rich_content:
         return ""
 
@@ -844,7 +844,7 @@ _SLACK_BLOCK_NODE_TYPES = {"paragraph", "codeBlock", "image"}
 
 
 def rich_content_to_slack_blocks(rich_content: JSON | None, include_images: bool = True) -> list[JSON] | None:
-    """Serialize PostHog rich content JSON into Slack rich_text blocks.
+    """Serialize Flind rich content JSON into Slack rich_text blocks.
 
     Returns None when the doc contains block nodes rich_text can't represent (lists,
     headings, blockquotes, ...) so callers fall back to the complete markdown text
@@ -1000,7 +1000,7 @@ def _escape_slack_file_name(name: object) -> str:
 def slack_files_to_placeholder_lines(files: list[Any] | None) -> list[str]:
     """Render one markdown placeholder line per file attached to an inbound Slack message.
 
-    PostHog never downloads the file: the discussion shows a link back to it in Slack, which
+    Flind never downloads the file: the discussion shows a link back to it in Slack, which
     needs nothing beyond the metadata Slack already puts in the message event. That keeps this
     working on installs that never granted ``files:read``, where downloading is impossible.
 
@@ -1142,7 +1142,7 @@ def _serialize_list_to_html(node: JSON, ordered: bool) -> str:
 
 
 def rich_content_to_html(rich_content: JSON | None) -> str:
-    """Serialize PostHog rich content JSON to email-safe HTML."""
+    """Serialize Flind rich content JSON to email-safe HTML."""
     if not rich_content or rich_content.get("type") != "doc":
         return ""
 

@@ -64,7 +64,7 @@ class TestClassifyAlertError(TestCase):
         assert result.code == "unknown"
         assert "DB::Exception" not in result.user_message
         assert "Syntax error" not in result.user_message
-        assert "PostHog" in result.user_message
+        assert "Flind" in result.user_message
 
     def test_user_error_message_is_truncated(self) -> None:
         exc = ExposedCHQueryError("x" * 5000, code=47)
@@ -77,7 +77,7 @@ class TestClassifyAlertError(TestCase):
         with _with_category(QueryErrorCategory.ERROR):
             result = classify_check_error(RuntimeError("something unexpected"))
 
-        assert "PostHog" in result.user_message
+        assert "Flind" in result.user_message
 
 
 class TestIsTransient(TestCase):

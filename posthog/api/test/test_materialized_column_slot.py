@@ -332,7 +332,7 @@ class TestMaterializedColumnSlotAPI(APIBaseTest):
         assert response.status_code == status.HTTP_201_CREATED, response.json()
 
     def test_assign_slot_system_property(self):
-        """Test error when trying to materialize PostHog system property."""
+        """Test error when trying to materialize Flind system property."""
         prop_def = PropertyDefinition.objects.create(
             team=self.team,
             name="$current_url",
@@ -346,7 +346,7 @@ class TestMaterializedColumnSlotAPI(APIBaseTest):
         )
 
         assert response.status_code == status.HTTP_400_BAD_REQUEST
-        assert "PostHog system properties cannot be materialized" in response.json()["error"]
+        assert "Flind system properties cannot be materialized" in response.json()["error"]
 
     def test_assign_slot_allows_feature_flags(self):
         """Test that feature flag properties CAN be materialized."""
@@ -382,7 +382,7 @@ class TestMaterializedColumnSlotAPI(APIBaseTest):
         )
 
         assert response.status_code == status.HTTP_400_BAD_REQUEST
-        assert "already auto-materialized by PostHog" in response.json()["error"]
+        assert "already auto-materialized by Flind" in response.json()["error"]
 
     def test_assign_slot_already_materialized(self):
         """Test error when property is already materialized."""

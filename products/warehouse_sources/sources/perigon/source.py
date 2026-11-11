@@ -51,7 +51,7 @@ class PerigonSource(ResumableSource[PerigonSourceConfig, PerigonResumeConfig]):
             label="Perigon",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["news", "media", "goperigon"],
-            caption="""Enter your Perigon API key to sync news articles, story clusters and their history, journalists, sources, source groups, people, companies, topics, and Wikipedia pages into the PostHog Data warehouse.
+            caption="""Enter your Perigon API key to sync news articles, story clusters and their history, journalists, sources, source groups, people, companies, topics, and Wikipedia pages into the Flind Data warehouse.
 
 You can find your API key on your [Perigon account dashboard](https://www.perigon.io/).
 

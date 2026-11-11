@@ -26,7 +26,7 @@ logger = structlog.get_logger(__name__)
 
 
 # Teams that always get a daily run regardless of sampling decisions.
-# 2 = PostHog Cloud US — the project this repo dogfoods against.
+# 2 = Flind Cloud US — the project this repo dogfoods against.
 GUARANTEED_TEAM_IDS: list[int] = [2]
 
 # Activity envelope — generous timeout in case we add the ClickHouse sample

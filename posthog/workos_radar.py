@@ -301,7 +301,7 @@ def _log_radar_event(
     call_site: Optional[str] = None,
 ) -> None:
     """
-    Log the Radar decision as a PostHog event for analysis.
+    Log the Radar decision as a Flind event for analysis.
     """
     distinct_id = user_id or f"pre_signup_{_hash_email(email)}"
 

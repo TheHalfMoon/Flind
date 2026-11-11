@@ -1,6 +1,6 @@
 /**
  * A Kafka message as the Rust consumer hands it to the worker. Values are raw
- * UTF-8 strings since PostHog Kafka messages are always JSON-encoded text.
+ * UTF-8 strings since Flind Kafka messages are always JSON-encoded text.
  */
 
 export interface SerializedKafkaMessage {

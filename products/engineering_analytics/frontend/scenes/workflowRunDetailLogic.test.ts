@@ -23,7 +23,7 @@ const mockJobs = engineeringAnalyticsWorkflowJobs as jest.MockedFunction<typeof 
 const mockLogs = engineeringAnalyticsRunFailureLogs as jest.MockedFunction<typeof engineeringAnalyticsRunFailureLogs>
 
 const RUN: WorkflowRunDetailApi = {
-    repo: { provider: 'github', owner: 'PostHog', name: 'posthog' },
+    repo: { provider: 'github', owner: 'Flind', name: 'posthog' },
     id: 42,
     workflow_name: 'CI',
     head_sha: 'abc123',
@@ -54,14 +54,14 @@ describe('workflowRunDetailLogic', () => {
 
     it('keeps colliding engine runs in separate logic instances and scopes all reads', async () => {
         const github = workflowRunDetailLogic({
-            repoOwner: 'PostHog',
+            repoOwner: 'Flind',
             repoName: 'posthog',
             runId: 42,
             ciEngine: 'github_actions',
             sourceId: null,
         })
         logic = workflowRunDetailLogic({
-            repoOwner: 'PostHog',
+            repoOwner: 'Flind',
             repoName: 'posthog',
             runId: 42,
             ciEngine: 'depot_ci',

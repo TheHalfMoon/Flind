@@ -73,7 +73,7 @@ export function MarketplaceView({
         <Flex direction="column" gap="1" className="min-w-0">
           <Heading className="font-bold text-2xl">Marketplace</Heading>
           <Text color="gray" className="text-sm">
-            Connect MCP servers to make them available to in PostHog on desktop
+            Connect MCP servers to make them available to in Flind on desktop
             and in the cloud.
           </Text>
         </Flex>

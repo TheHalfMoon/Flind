@@ -32,7 +32,7 @@ Match every required contract to the parity record and current code.
 
 An existing Python client or product route is not a blocker by itself.
 
-Python's unbilled flag is not a blocker when an internal workload should debit a PostHog-owned team wallet for spend attribution. Confirm that the Go credential resolves to that team. Stop only when migration would charge a customer incorrectly, lose required customer budget policy, or violate a requirement to debit no wallet.
+Python's unbilled flag is not a blocker when an internal workload should debit a Flind-owned team wallet for spend attribution. Confirm that the Go credential resolves to that team. Stop only when migration would charge a customer incorrectly, lose required customer budget policy, or violate a requirement to debit no wallet.
 
 ## Implement the migration
 
@@ -53,7 +53,7 @@ For sandbox callers, follow the existing `SANDBOX_AI_GATEWAY_URL` and product ro
 
 For internal products, check with the AI gateway team before adding deployment variables or secrets so existing shared configuration can be reused.
 
-If the target process does not have a Go credential, enable the `ai-gateway` feature flag for the intended paying team, then create a `phs_` project secret in the PostHog dashboard with `llm_gateway:read` and wire it through the existing deployment secret mechanism. Credential creation is normal migration work, not a parity exception.
+If the target process does not have a Go credential, enable the `ai-gateway` feature flag for the intended paying team, then create a `phs_` project secret in the Flind dashboard with `llm_gateway:read` and wire it through the existing deployment secret mechanism. Credential creation is normal migration work, not a parity exception.
 
 ## Update tests and docs
 

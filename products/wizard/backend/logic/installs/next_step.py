@@ -23,7 +23,7 @@ def next_step(run: WizardRunDTO, pull_request_url: str | None) -> str:
             )
         case WizardRunStatus.COMPLETED:
             return (
-                "The setup agent finished without changing any files. The repository may already have PostHog set up."
+                "The setup agent finished without changing any files. The repository may already have Flind set up."
             )
         case WizardRunStatus.CANCELLED:
             return f"This run was canceled. {_START_AGAIN}"
@@ -36,7 +36,7 @@ def _running_stage(stage: WizardRunStage | None) -> str:
         case WizardRunStage.PREPARING_WORKSPACE:
             return "The setup agent is cloning the repository."
         case WizardRunStage.EXECUTING_WIZARD:
-            return "The setup agent is adding PostHog to the code. This usually takes a few minutes."
+            return "The setup agent is adding Flind to the code. This usually takes a few minutes."
         case WizardRunStage.CREATING_ARTIFACTS:
             return "The setup agent is opening a pull request."
         case _:
@@ -47,16 +47,16 @@ def _failure(error_code: str | None) -> str:
     match error_code:
         case WizardRunErrorCode.REPOSITORY_ACCESS_FAILED:
             return (
-                "PostHog could not access the repository. Ask the user to give the PostHog GitHub App access to it, "
+                "Flind could not access the repository. Ask the user to give the Flind GitHub App access to it, "
                 "then start a new run."
             )
         case WizardRunErrorCode.WORKSPACE_PREPARATION_FAILED:
             return "The setup agent could not clone the repository. Check that the branch exists, then start a new run."
         case WizardRunErrorCode.PROVISIONING_FAILED | WizardRunErrorCode.DISPATCH_FAILED:
-            return "PostHog could not start a cloud workspace. Wait a few minutes, then start a new run."
+            return "Flind could not start a cloud workspace. Wait a few minutes, then start a new run."
         case WizardRunErrorCode.ARTIFACT_CREATION_FAILED:
             return (
-                "The setup agent made changes but could not open a pull request. Check that the PostHog GitHub App "
+                "The setup agent made changes but could not open a pull request. Check that the Flind GitHub App "
                 "can write to the repository, then start a new run."
             )
         case WizardRunErrorCode.TIMEOUT:

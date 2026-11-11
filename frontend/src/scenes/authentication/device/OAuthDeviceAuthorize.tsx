@@ -119,7 +119,7 @@ export function OAuthDeviceAuthorize(): JSX.Element {
                     title={
                         isStepUp
                             ? `${deviceGrant.client_name} wants more access`
-                            : `${deviceGrant.client_name} wants to access your PostHog account`
+                            : `${deviceGrant.client_name} wants to access your Flind account`
                     }
                     sub="Check that this code matches the one your terminal shows."
                 />

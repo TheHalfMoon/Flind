@@ -74,7 +74,7 @@ export function KnowledgeSourceDetails({
                     <DetailRow label="Origin">
                         <LemonTag
                             type="highlight"
-                            title="PostHog added this from a resolved support ticket. You can edit or delete it."
+                            title="Flind added this from a resolved support ticket. You can edit or delete it."
                         >
                             Learned
                         </LemonTag>

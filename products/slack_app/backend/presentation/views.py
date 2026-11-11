@@ -28,7 +28,7 @@ from products.slack_app.backend.facade.types import (
 
 class SlackAppProjectOptionSerializer(serializers.Serializer):
     integration_id = serializers.IntegerField(help_text="ID of the Slack integration that connects this project.")
-    project_name = serializers.CharField(help_text="Name of the PostHog project.")
+    project_name = serializers.CharField(help_text="Name of the Flind project.")
     organization_name = serializers.CharField(help_text="Name of the organization that owns the project.")
 
 
@@ -39,7 +39,7 @@ class SlackAppWorkspaceSetupSerializer(serializers.Serializer):
     )
     open_slack_url = serializers.URLField(
         allow_null=True,
-        help_text="Link that opens the PostHog app's direct message in this Slack workspace. Null when the install has no app ID.",
+        help_text="Link that opens the Flind app's direct message in this Slack workspace. Null when the install has no app ID.",
     )
     steps = serializers.ListField(
         child=serializers.ChoiceField(choices=SlackSetupStepKey.choices),
@@ -79,12 +79,12 @@ class SlackAppDefaultProjectSerializer(serializers.Serializer):
 class SlackAppChannelOptionSerializer(serializers.Serializer):
     id = serializers.CharField(help_text="Slack channel ID.")
     name = serializers.CharField(help_text="Channel name, without the leading #.")
-    is_member = serializers.BooleanField(help_text="Whether PostHog is already in the channel.")
+    is_member = serializers.BooleanField(help_text="Whether Flind is already in the channel.")
 
 
 class SlackAppChannelOptionsSerializer(serializers.Serializer):
     channels = SlackAppChannelOptionSerializer(
-        many=True, help_text="Public channels that PostHog can join. Shared channels are left out."
+        many=True, help_text="Public channels that Flind can join. Shared channels are left out."
     )
 
 
@@ -93,18 +93,18 @@ class SlackAppJoinChannelsSerializer(serializers.Serializer):
         child=serializers.CharField(),
         min_length=1,
         max_length=MAX_CHANNELS_TO_JOIN,
-        help_text="IDs of the public channels that PostHog joins.",
+        help_text="IDs of the public channels that Flind joins.",
     )
     post_welcome = serializers.BooleanField(
         default=True,
-        help_text="Whether PostHog posts its welcome message in each channel it joins. When false, it joins quietly.",
+        help_text="Whether Flind posts its welcome message in each channel it joins. When false, it joins quietly.",
     )
 
 
 class SlackAppChannelJoinResultSerializer(serializers.Serializer):
     channel_id = serializers.CharField(help_text="Slack channel ID.")
     error = serializers.CharField(
-        allow_null=True, help_text="Slack's error code when PostHog could not join, or null when it joined."
+        allow_null=True, help_text="Slack's error code when Flind could not join, or null when it joined."
     )
 
 
@@ -166,7 +166,7 @@ class SlackAppWorkspaceSetupViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
             200: OpenApiResponse(response=SlackAppChannelOptionsSerializer),
             429: OpenApiResponse(description=CHANNEL_LIST_THROTTLED),
         },
-        summary="List the public channels that PostHog can join for a Slack app install",
+        summary="List the public channels that Flind can join for a Slack app install",
     )
     @action(detail=True, methods=["get"], url_path="channels")
     def channels(self, request: Request, pk: str | None = None, **kwargs: Any) -> Response:
@@ -184,7 +184,7 @@ class SlackAppWorkspaceSetupViewSet(TeamAndOrgViewSetMixin, viewsets.ViewSet):
             200: OpenApiResponse(response=SlackAppJoinChannelsResultSerializer),
             429: OpenApiResponse(description=CHANNEL_LIST_THROTTLED),
         },
-        summary="Add PostHog to public channels of a Slack app install",
+        summary="Add Flind to public channels of a Slack app install",
     )
     @action(detail=True, methods=["post"], url_path="join_channels")
     def join_channels(self, request: Request, pk: str | None = None, **kwargs: Any) -> Response:

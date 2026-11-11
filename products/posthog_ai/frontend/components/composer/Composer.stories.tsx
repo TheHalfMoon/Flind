@@ -11,7 +11,7 @@ import { Composer } from './Composer'
 import { ComposerCommandMenu } from './ComposerCommandMenu'
 
 // The Composer primitives are logic-free and controlled, so the stories own the value/submit state and
-// assemble the parts the same way a real surface (the tasks run viewer, PostHog AI) does.
+// assemble the parts the same way a real surface (the tasks run viewer, Flind AI) does.
 interface ComposerStoryArgs {
     initialValue: string
     placeholder: string
@@ -162,7 +162,7 @@ const STORY_SLASH_COMMANDS = buildSlashCommands(APP_COMMANDS, [
     {
         name: 'querying-posthog-data',
         description:
-            'Required reading before writing any HogQL/SQL or calling execute-sql against PostHog. Use whenever the user wants to search, find, or do complex aggregations over PostHog entities and query analytics data.',
+            'Required reading before writing any HogQL/SQL or calling execute-sql against Flind. Use whenever the user wants to search, find, or do complex aggregations over Flind entities and query analytics data.',
         hint: 'question',
     },
 ])

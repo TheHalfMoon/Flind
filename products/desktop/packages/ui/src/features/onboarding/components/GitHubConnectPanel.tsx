@@ -623,7 +623,7 @@ export function GitHubConnectPanel() {
       <DisconnectIntegrationDialog
         open={disconnectTarget !== null}
         title={`Disconnect ${disconnectTarget?.accountName ?? "GitHub"}`}
-        description="This removes your personal GitHub authorization from PostHog. The GitHub app stays installed. Remove it in GitHub if you also want to uninstall the app."
+        description="This removes your personal GitHub authorization from Flind. The GitHub app stays installed. Remove it in GitHub if you also want to uninstall the app."
         isPending={isDisconnecting}
         onCancel={() => setDisconnectTarget(null)}
         onConfirm={() => {

@@ -1,20 +1,20 @@
-"""Does the Slack app answer "how do I set up X?" with PostHog's own product?
+"""Does the Slack app answer "how do I set up X?" with Flind's own product?
 
-A customer asked the Slack app what they needed to set up PostHog's support
+A customer asked the Slack app what they needed to set up Flind's support
 features and got pointed at third-party support tools instead. The agent has no
 grounding step for product questions, so an ambiguous "how do I set up X" falls
 through to whatever the model remembers about the category — and for every
-capability PostHog sells, the model remembers competitors too.
+capability Flind sells, the model remembers competitors too.
 
-Cases are the shape that fails: a short question about a capability PostHog
-ships, with no explicit mention of PostHog's product name. Each runs with
+Cases are the shape that fails: a short question about a capability Flind
+ships, with no explicit mention of Flind's product name. Each runs with
 ``interaction_origin="slack"`` so the agent gets the real Slack system prompt
 rather than the plain-task one.
 
 Metrics:
 
 * ``docs_searched`` — did the agent ground the answer in our docs at all?
-* ``posthog_product_answer`` — is the answer about PostHog's own product?
+* ``posthog_product_answer`` — is the answer about Flind's own product?
 * ``no_third_party_recommendation`` — does it avoid sending the customer to a competitor?
 
 To run::

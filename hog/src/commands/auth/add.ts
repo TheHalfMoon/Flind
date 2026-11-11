@@ -20,7 +20,7 @@ export default defineCommand({
     notes: [
         'hog asks for the scopes you already have plus the new ones. The approval page keeps the new ones ticked, and you can remove any of the others.',
         'Agents and scripts get a link and a code to hand to a person, then finish with `hog auth add --wait`.',
-        "hog can't add scopes to a personal API key. Add them to the key in PostHog under Settings, Personal API keys.",
+        "hog can't add scopes to a personal API key. Add them to the key in Flind under Settings, Personal API keys.",
     ].join('\n'),
     examples: ['hog auth add insight:write', 'hog auth add insight:write dashboard:write', 'hog auth add --wait'],
 
@@ -71,7 +71,7 @@ export default defineCommand({
                 if (result.replacedRevoked === false) {
                     out.line(
                         out.style(
-                            "PostHog didn't revoke your previous login. It stops working when it expires, or you can remove it in PostHog under Settings, Connected applications.",
+                            "Flind didn't revoke your previous login. It stops working when it expires, or you can remove it in Flind under Settings, Connected applications.",
                             'yellow'
                         )
                     )

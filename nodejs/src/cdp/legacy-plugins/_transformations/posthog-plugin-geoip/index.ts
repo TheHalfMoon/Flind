@@ -38,7 +38,7 @@ const defaultLocationSetOnceProps = Object.entries(props).reduce(
 
 export const processEvent = (event: PluginEvent, { geoip }: LegacyTransformationPluginMeta) => {
     if (!geoip) {
-        throw new Error('This PostHog version does not have GeoIP capabilities! Upgrade to PostHog 1.24.0 or later')
+        throw new Error('This Flind version does not have GeoIP capabilities! Upgrade to Flind 1.24.0 or later')
     }
     let ip = event.properties?.$ip || event.ip
     if (ip && !event.properties?.$geoip_disable) {

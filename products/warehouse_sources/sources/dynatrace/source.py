@@ -85,7 +85,7 @@ class DynatraceSource(ResumableSource[DynatraceSourceConfig, DynatraceResumeConf
             label="Dynatrace",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["apm", "observability", "monitoring"],
-            caption="""Enter your Dynatrace environment URL and an API access token to sync problems, events, entity inventory, tags, releases, audit logs, vulnerabilities, attacks, metrics, SLOs, and synthetic monitoring into the PostHog Data warehouse.
+            caption="""Enter your Dynatrace environment URL and an API access token to sync problems, events, entity inventory, tags, releases, audit logs, vulnerabilities, attacks, metrics, SLOs, and synthetic monitoring into the Flind Data warehouse.
 
 The environment URL is where you open Dynatrace — for SaaS it looks like `https://abc12345.live.dynatrace.com`; for Managed it's `https://your-domain/e/your-environment-id`.
 

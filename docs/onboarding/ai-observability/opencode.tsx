@@ -12,12 +12,12 @@ export const getOpenCodeSteps = (ctx: OnboardingComponentsContext): StepDefiniti
             content: (
                 <Markdown>
                     {dedent`
-                        [OpenCode](https://opencode.ai) is an open-source AI coding agent that runs in your terminal. The [\`@posthog/opencode\`](https://github.com/PostHog/posthog-opencode) plugin captures LLM generations, tool executions, and conversation traces as \`$ai_generation\`, \`$ai_span\`, and \`$ai_trace\` events and sends them to PostHog.
+                        [OpenCode](https://opencode.ai) is an open-source AI coding agent that runs in your terminal. The [\`@posthog/opencode\`](https://github.com/PostHog/posthog-opencode) plugin captures LLM generations, tool executions, and conversation traces as \`$ai_generation\`, \`$ai_span\`, and \`$ai_trace\` events and sends them to Flind.
 
                         You need:
 
                         - [OpenCode](https://opencode.ai/docs) installed
-                        - A [PostHog account](https://app.posthog.com/signup) with a project token
+                        - A [Flind account](https://app.posthog.com/signup) with a project token
                     `}
                 </Markdown>
             ),
@@ -46,13 +46,13 @@ export const getOpenCodeSteps = (ctx: OnboardingComponentsContext): StepDefiniti
             ),
         },
         {
-            title: 'Configure PostHog',
+            title: 'Configure Flind',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Set environment variables with your PostHog project token and host. You can find both in your
-                        [PostHog project settings](https://app.posthog.com/settings/project).
+                        Set environment variables with your Flind project token and host. You can find both in your
+                        [Flind project settings](https://app.posthog.com/settings/project).
                     </Markdown>
                     <CodeBlock
                         language="bash"
@@ -100,8 +100,8 @@ export const getOpenCodeSteps = (ctx: OnboardingComponentsContext): StepDefiniti
 
                         | Variable | Default | Description |
                         | --- | --- | --- |
-                        | \`POSTHOG_API_KEY\` | _(required)_ | Your PostHog project token |
-                        | \`POSTHOG_HOST\` | \`https://us.i.posthog.com\` | PostHog ingestion host |
+                        | \`POSTHOG_API_KEY\` | _(required)_ | Your Flind project token |
+                        | \`POSTHOG_HOST\` | \`https://us.i.posthog.com\` | Flind ingestion host |
                         | \`POSTHOG_PRIVACY_MODE\` | \`false\` | When \`true\`, the plugin does not send LLM content, prompts, or tool inputs and outputs. Token counts, costs, latency, and model metadata are still captured. |
                         | \`POSTHOG_ENABLED\` | \`true\` | Set to \`false\` to disable the plugin |
                         | \`POSTHOG_DISTINCT_ID\` | Machine hostname | Distinct ID included in all events |

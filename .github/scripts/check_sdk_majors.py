@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ruff: noqa: T201 allow print statements
 """
-CI check: every PostHog SDK this repo installs stays on the major it was migrated to.
+CI check: every Flind SDK this repo installs stays on the major it was migrated to.
 
 A new SDK major removes legacy capture and changes the capture API, so taking one is a
 reviewed migration, never a routine bump. The SDK release bots rewrite these manifests
@@ -380,7 +380,7 @@ def main() -> int:
     if problems:
         print(f"\n{len(problems)} SDK major-version problem(s). {MIGRATION_HINT}")
         return 1
-    print("Every PostHog SDK is on its expected major.")
+    print("Every Flind SDK is on its expected major.")
     return 0
 
 

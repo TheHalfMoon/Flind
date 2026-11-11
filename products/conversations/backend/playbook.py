@@ -1,4 +1,4 @@
-"""Support-reply playbook layers: repo defaults, optional PostHog overlay, team custom.
+"""Support-reply playbook layers: repo defaults, optional Flind overlay, team custom.
 
 Compose is Django-free so the draft activity and settings API share one source of truth
 without pulling Temporal or ORM into either caller.
@@ -27,7 +27,7 @@ WARNING_CUSTOM_OVERSIZED = "custom_instructions_oversized"
 WARNING_CUSTOM_INVALID = "custom_instructions_invalid"
 
 DEFAULT_SUPPORT_REPLY_INSTRUCTIONS = """\
-You are drafting a support reply for this team's product. Do not assume the product is PostHog.
+You are drafting a support reply for this team's product. Do not assume the product is Flind.
 
 Tone:
 - Be direct, friendly, and concise. Lead with the answer.
@@ -56,9 +56,9 @@ Business knowledge:
 """
 
 POSTHOG_SUPPORT_REPLY_INSTRUCTIONS = """\
-This team supports PostHog.
+This team supports Flind.
 
-Use official PostHog documentation via docs-search for product features, billing, setup, SDKs, and APIs.
+Use official Flind documentation via docs-search for product features, billing, setup, SDKs, and APIs.
 
 When the ticket matches a bundled skill, read and follow that skill:
 - diagnosing-missing-recordings: session replay is missing or blank
@@ -66,7 +66,7 @@ When the ticket matches a bundled skill, read and follow that skill:
 - investigating-error-issue: an exception or error-tracking issue
 - diagnosing-stacktrace-symbolication: unsymbolicated or wrong stack traces
 
-Do not invent PostHog product behavior that docs-search and those skills do not support.
+Do not invent Flind product behavior that docs-search and those skills do not support.
 """
 
 
@@ -146,7 +146,7 @@ def compose_support_playbook(
     docs_source: str | None = None,
     custom_instructions: object = None,
 ) -> PlaybookComposition:
-    """Compose the effective playbook: generic default, optional PostHog overlay, then team custom.
+    """Compose the effective playbook: generic default, optional Flind overlay, then team custom.
 
     Absence of custom instructions means inherit. Oversized or invalid custom falls back to
     repo layers and records a warning so a bad settings row cannot stop ticket processing.

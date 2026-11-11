@@ -11,7 +11,7 @@ import { workflowImportNotesLogic } from './workflowImportNotesLogic'
 
 const LEVEL_HEADINGS: Record<WorkflowImportNoteApi['level'], string> = {
     needs_input: 'Needs your input before you enable it',
-    approximated: 'Works differently in PostHog',
+    approximated: 'Works differently in Flind',
     unsupported: 'Left out',
 }
 const LEVEL_ORDER: WorkflowImportNoteApi['level'][] = ['needs_input', 'approximated', 'unsupported']

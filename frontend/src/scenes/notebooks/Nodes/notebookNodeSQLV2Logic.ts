@@ -126,8 +126,8 @@ export type NotebookNodeSQLV2DirectRows = {
 export interface RunQueryOptions {
     nodeType?: 'hogql' | 'python'
     outputName?: string
-    // SQL cells only: the data source to run against instead of PostHog, and whether to send the
-    // code to it verbatim. Absent means PostHog's own ClickHouse.
+    // SQL cells only: the data source to run against instead of Flind, and whether to send the
+    // code to it verbatim. Absent means Flind's own ClickHouse.
     connectionId?: string | null
     sendRawQuery?: boolean
 }
@@ -678,7 +678,7 @@ export const notebookNodeSQLV2Logic = kea<notebookNodeSQLV2LogicType>([
                         ...(variables.length ? { variables } : {}),
                         node_type: opts.nodeType,
                         output_name: opts.outputName,
-                        // Omitted entirely for a PostHog cell — the backend's defaults say the same
+                        // Omitted entirely for a Flind cell — the backend's defaults say the same
                         // thing, and every existing run body stays byte-identical.
                         ...(opts.connectionId
                             ? { connection_id: opts.connectionId, send_raw_query: !!opts.sendRawQuery }

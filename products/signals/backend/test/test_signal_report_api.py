@@ -5888,7 +5888,7 @@ class TestSignalReportPrEndpoints(APIBaseTest):
         assert response.json() == {
             "code": "github_repository_inaccessible",
             "error": (
-                "PostHog's GitHub connection can't access PostHog/posthog. A project admin must give the GitHub app "
+                "Flind's GitHub connection can't access PostHog/posthog. A project admin must give the GitHub app "
                 "access to this repository, or reconnect GitHub."
             ),
             "remediation_url": f"/project/{self.team.id}/settings/project-integrations",

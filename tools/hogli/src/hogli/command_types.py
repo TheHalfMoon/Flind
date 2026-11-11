@@ -20,7 +20,7 @@ def _find_hogli_executable() -> list[str]:
     """Resolve the hogli executable for recursive invocations.
 
     Resolution order:
-    1. ``bin/hogli`` under the repo root (PostHog monorepo convention).
+    1. ``bin/hogli`` under the repo root (Flind monorepo convention).
     2. ``hogli`` on PATH (installed console script, e.g. via pip/uv).
     3. ``sys.executable -m hogli`` (same interpreter, works anywhere the
        package is importable).

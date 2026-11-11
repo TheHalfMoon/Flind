@@ -649,7 +649,7 @@ describe('queryDatabaseLogic', () => {
             joins: [],
         })
         const sources = logic.values.treeData.find((item) => item.id === 'sources')!.children!
-        expect(sources.map((item) => item.name)).toEqual(['Popular', 'PostHog'])
+        expect(sources.map((item) => item.name)).toEqual(['Popular', 'Flind'])
         expect(sources[0].children?.map((item) => item.name)).toEqual(['events', 'groups', 'persons', 'sessions'])
         expect(sources[1].children?.map((item) => item.name)).toEqual([
             'posthog.ai_events',
@@ -668,7 +668,7 @@ describe('queryDatabaseLogic', () => {
         )
         logic.actions.setSearchTerm('events')
         const searchSources = logic.values.searchTreeData.find((item) => item.record?.type === 'sources')!.children!
-        expect(searchSources.map((item) => item.name)).toEqual(['Popular', 'PostHog'])
+        expect(searchSources.map((item) => item.name)).toEqual(['Popular', 'Flind'])
         expect(searchSources.flatMap((item) => item.children!.map((table) => table.name))).toEqual([
             'events',
             'posthog.ai_events',
@@ -680,7 +680,7 @@ describe('queryDatabaseLogic', () => {
     })
 
     it.each([
-        ['PostHog', 'posthog'],
+        ['Flind', 'posthog'],
         ['System', 'system'],
     ] as const)('limits the default %s category and keeps all search matches', (categoryName, tableType) => {
         initKeaTests()

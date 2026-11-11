@@ -79,7 +79,7 @@ class InsightVariableSerializer(serializers.ModelSerializer):
                 "help_text": "HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels."
             },
             "values_query_connection_id": {
-                "help_text": "ID of the external data source connection values_query runs against. Null runs it against PostHog."
+                "help_text": "ID of the external data source connection values_query runs against. Null runs it against Flind."
             },
         }
 

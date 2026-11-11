@@ -71,7 +71,7 @@ class TestClerkWarehouseWebhookTemplate(BaseHogFunctionTemplateSimpleTest):
     def test_acknowledges_events_it_does_not_store(
         self, _label: str, event_type: str, schema_mapping: dict, expected_body: str
     ) -> None:
-        # A non-200 makes Svix retry, then disable the endpoint, for events PostHog never stores.
+        # A non-200 makes Svix retry, then disable the endpoint, for events Flind never stores.
         result = self._run(self._request({"type": event_type, "data": {"id": "user_1"}}), schema_mapping)
 
         assert result.result["httpResponse"]["status"] == 200

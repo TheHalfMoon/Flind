@@ -160,11 +160,11 @@ class SkillStub:
 # improvises instead of fetching the real instructions, so the first line says what the file is
 # and the steps say exactly which MCP calls to make.
 _STUB_BODY = """\
-This skill lives in the PostHog skills store. This file is a pointer for discovery, not the skill itself.
+This skill lives in the Flind skills store. This file is a pointer for discovery, not the skill itself.
 
 Before you act on it:
 
-1. Run `call skill-get {{"skill_name": "{name}"}}` with the PostHog MCP `exec` tool. Note the `version` in the response and pass it to every later call for this skill, so a publish in the meantime cannot mix two versions.
+1. Run `call skill-get {{"skill_name": "{name}"}}` with the Flind MCP `exec` tool. Note the `version` in the response and pass it to every later call for this skill, so a publish in the meantime cannot mix two versions.
 2. If the response has a non-null `body_next_offset`, call `skill-get` again with `"version"` set to that version and `"body_offset"` set to `body_next_offset`, and append the returned `body`. Repeat until `body_next_offset` is null.
 3. Follow the complete `body` as the instructions for this skill.
 4. If the body references bundled files, fetch each one with `call skill-file-get {{"skill_name": "{name}", "file_path": "<path>", "version": <version>}}` and write it into this directory before you use it.

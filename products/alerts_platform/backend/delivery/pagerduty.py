@@ -8,7 +8,7 @@ The routing key is the credential, and it travels in the body. It never reaches 
 a log line or a metric label, and the thread store keys on a digest of it.
 
 These sends do not go through `posthog/egress`. The routing key belongs to the customer's own
-PagerDuty account, and PagerDuty limits events per integration key, so no PostHog-wide budget
+PagerDuty account, and PagerDuty limits events per integration key, so no Flind-wide budget
 models it. A 429 fails the send, and the activity's retry backs off.
 
 The thread store claims each send, so a retry of a send that already landed does not post again.
@@ -40,7 +40,7 @@ ENDPOINTS: Final[dict[PagerDutyRegion, str]] = {
 
 # Names the framework that sent an event, because a team on the pilot also receives the
 # HogFunction path's incident for the same firing.
-SOURCE: Final = "PostHog alerts platform"
+SOURCE: Final = "Flind alerts platform"
 
 _MAX_SUMMARY_LENGTH: Final = 1024
 _MAX_DEDUP_KEY_LENGTH: Final = 255
@@ -84,7 +84,7 @@ def pagerduty_body(message: AlertMessage, *, routing_key: str, severity: PagerDu
     if message.incident_action == IncidentAction.RESOLVE:
         return body
     transition = message.transition
-    body["client"] = "PostHog"
+    body["client"] = "Flind"
     body["client_url"] = message.alert_url
     if message.data_link is not None:
         body["links"] = [{"href": message.data_link.url, "text": message.data_link.label}]

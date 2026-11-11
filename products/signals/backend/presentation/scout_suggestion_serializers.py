@@ -34,7 +34,7 @@ class ScoutSuggestionItemSerializer(serializers.Serializer):
     id = serializers.CharField(help_text="Stable id of this suggestion within the batch; use it to dismiss.")
     kind = serializers.ChoiceField(
         choices=ScoutOrigin.choices,
-        help_text="`canonical`: enable a PostHog-authored scout that exists but is off. `custom`: create a drafted scout.",
+        help_text="`canonical`: enable a Flind-authored scout that exists but is off. `custom`: create a drafted scout.",
     )
     skill_name = serializers.CharField(
         help_text="The scout's `signals-scout-*` skill name (existing for canonical, proposed for custom)."

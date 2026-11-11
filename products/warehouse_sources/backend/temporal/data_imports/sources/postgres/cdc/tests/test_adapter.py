@@ -207,7 +207,7 @@ class TestSlotSetupErrorMessage:
 
     def test_undefined_table_points_at_renamed_or_dropped_table(self) -> None:
         # ALTER PUBLICATION ADD TABLE raises this when the table no longer exists on the
-        # source database, e.g. it was renamed or dropped after PostHog last synced the schema.
+        # source database, e.g. it was renamed or dropped after Flind last synced the schema.
         error = _slot_setup_error_message(psycopg.errors.UndefinedTable('relation "public.orders" does not exist'))
         assert 'relation "public.orders" does not exist' in error
         assert "doesn't exist on your database" in error

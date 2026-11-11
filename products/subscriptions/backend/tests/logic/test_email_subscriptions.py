@@ -74,7 +74,7 @@ class TestEmailSubscriptionsTasks(APIBaseTest):
         assert mocked_email_messages[0].send.call_count == 1
 
         assert "has subscribed you" in mocked_email_messages[0].html_body
-        assert "Someone subscribed you to a PostHog Insight" == mocked_email_messages[0].subject
+        assert "Someone subscribed you to a Flind Insight" == mocked_email_messages[0].subject
         self.subscription.refresh_from_db()
         next_delivery_date = self.subscription.next_delivery_date
         assert next_delivery_date is not None
@@ -99,7 +99,7 @@ class TestEmailSubscriptionsTasks(APIBaseTest):
         assert len(mocked_email_messages) == 1
         assert mocked_email_messages[0].send.call_count == 1
         assert "You have been subscribed" in mocked_email_messages[0].html_body
-        assert "You have been subscribed to a PostHog Insight" == mocked_email_messages[0].subject
+        assert "You have been subscribed to a Flind Insight" == mocked_email_messages[0].subject
 
     def test_sends_dashboard_subscription(self, MockEmailMessage: MagicMock) -> None:
         mocked_email_messages = mock_ee_email_messages(MockEmailMessage)
@@ -117,7 +117,7 @@ class TestEmailSubscriptionsTasks(APIBaseTest):
         assert len(mocked_email_messages) == 1
         assert mocked_email_messages[0].send.call_count == 1
         assert "You have been subscribed" in mocked_email_messages[0].html_body
-        assert "You have been subscribed to a PostHog Dashboard" == mocked_email_messages[0].subject
+        assert "You have been subscribed to a Flind Dashboard" == mocked_email_messages[0].subject
         assert f"SHOWING 1 OF 10 DASHBOARD INSIGHTS" in mocked_email_messages[0].html_body
 
     def test_dashboard_delivery_states_current_insight_limit(self, MockEmailMessage: MagicMock) -> None:

@@ -23,11 +23,11 @@ import TroubleshootingLink from '../_snippets/dw-troubleshooting-link.mdx'
 [Snowplow](https://snowplow.io/) is a behavioral data platform built around a customer-run event pipeline.
 This connector pulls the monitoring data from your Snowplow BDP Console — pipelines, failed-event metrics,
 data modeling job runs and their steps, data structures, the data catalog, data products, event specifications,
-source applications, data models, and Console users — into the PostHog
+source applications, data models, and Console users — into the Flind
 Data warehouse so you can track pipeline health and modeling SLAs alongside your product data.
 
 It syncs the Console (management) API, not your Snowplow event stream itself — your enriched events already
-land in your own warehouse, which you can connect to PostHog directly (e.g. via the Snowflake or BigQuery source).
+land in your own warehouse, which you can connect to Flind directly (e.g. via the Snowflake or BigQuery source).
 
 ## Prerequisites
 
@@ -70,6 +70,6 @@ backfill at most a week. The other tables are small current-state catalogs synce
 - **Snowplow API authentication failed** — the organization ID, API key ID, or API key is wrong or has been
   revoked. Check the values in your Snowplow Console settings and reconnect.
 - **Missing older job runs** — Snowplow's API only serves roughly the last week of runs; history beyond that
-  cannot be backfilled. Rows already synced to PostHog are kept.
+  cannot be backfilled. Rows already synced to Flind are kept.
 
 <TroubleshootingLink />

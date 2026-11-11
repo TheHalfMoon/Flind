@@ -30,13 +30,13 @@ _MAX_BRANCH_VALUES = 6
 _MAX_BRANCH_VALUE_LENGTH = 60
 # A share needs far fewer events than a ranking, so its scan reads about this many whatever the project's size.
 _SHARE_SAMPLE_EVENTS = 1_000_000
-# PostHog's own events that mark a real moment, unlike the generic `$` events the planner must skip.
+# Flind's own events that mark a real moment, unlike the generic `$` events the planner must skip.
 ALLOWED_POSTHOG_EVENTS = frozenset({"$conversation_ticket_created"})
 MOBILE_LIBS = frozenset({"posthog-ios", "posthog-android", "posthog-react-native", "posthog-flutter"})
 
 
 def weekly_counts(team: Team) -> dict[str, int]:
-    """How often each of the project's own events fired in the last week. PostHog's generic `$` events are left out,
+    """How often each of the project's own events fired in the last week. Flind's generic `$` events are left out,
     except the few that mark a real moment."""
     # Small teams get exact counts, since a quiet event could vanish from a sample. Large teams only need the
     # ranking, so a sample keeps the scan at about the size of a small team's.

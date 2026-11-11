@@ -1,1 +1,1 @@
-"""Commands from Slack messages that mention the PostHog app."""
+"""Commands from Slack messages that mention the Flind app."""

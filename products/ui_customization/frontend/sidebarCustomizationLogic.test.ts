@@ -484,7 +484,7 @@ describe('sidebarCustomizationLogic', () => {
         ['a completed save to this context', 'completed', 'analytics_sidebar', 2],
         ['a save that has only started', 'started', 'analytics_sidebar', 1],
         ['a completed save to another context', 'completed', 'other_sidebar', 1],
-    ] as const)('reloads after PostHog AI makes %s through exec', async (_name, phase, context, reads) => {
+    ] as const)('reloads after Flind AI makes %s through exec', async (_name, phase, context, reads) => {
         const props = configuration()
         await mounted(props)
         renderHook(() => SidebarAgentListener(props))

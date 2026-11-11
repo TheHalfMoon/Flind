@@ -69,7 +69,7 @@ describe("task response normalization", () => {
     });
   });
 
-  it("keeps PostHog reference metadata without requiring file storage", () => {
+  it("keeps Flind reference metadata without requiring file storage", () => {
     expect(
       normalizeTaskRunResponse(
         {

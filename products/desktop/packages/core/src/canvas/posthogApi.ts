@@ -1,7 +1,7 @@
 import type { AuthService } from "@flind/core/auth/auth";
 import type { SavedInsight } from "@flind/core/canvas/freeformSchemas";
 
-// Thin authenticated helpers over the PostHog HTTP API, shared by the canvas
+// Thin authenticated helpers over the Flind HTTP API, shared by the canvas
 // services so the HogQL-query and current-user round-trips aren't duplicated.
 // They take AuthService and use the ambient `fetch`; no caching here — callers
 // cache as they see fit.
@@ -75,7 +75,7 @@ async function postQuery(
   const { apiHost } = await authService.getValidAccessToken();
   const projectId = authService.getState().currentProjectId;
   if (projectId == null) {
-    throw new Error("No PostHog project selected");
+    throw new Error("No Flind project selected");
   }
   const response = await authService.authenticatedFetch(
     fetch,
@@ -186,7 +186,7 @@ async function fetchInsights(
   const { apiHost } = await authService.getValidAccessToken();
   const projectId = authService.getState().currentProjectId;
   if (projectId == null) {
-    throw new Error("No PostHog project selected");
+    throw new Error("No Flind project selected");
   }
   const response = await authService.authenticatedFetch(
     fetch,
@@ -202,7 +202,7 @@ async function fetchInsights(
 /**
  * Fetch a SAVED insight by `short_id` and return its STORED result straight from
  * the insights endpoint (`/insights/?short_id=…&refresh=blocking`) — the same
- * cache the PostHog UI reads, so the numbers match the insight as shown there.
+ * cache the Flind UI reads, so the numbers match the insight as shown there.
  * This is how a canvas loads a proven, saved insight instead of re-running a raw
  * query against `/query/`.
  *
@@ -266,7 +266,7 @@ export async function fetchInsightByShortId(
 }
 
 export interface CurrentUser {
-  /** The user's PostHog distinct_id (event attribution). */
+  /** The user's Flind distinct_id (event attribution). */
   distinctId?: string;
   /** Display label: full name, else email. */
   label?: string;

@@ -46,7 +46,7 @@ BAA_BLOCKED_STARTUP_PROGRAM_LABEL: StartupProgramLabel = "Startup"
 # Attribute `annotate_signed_baa` writes onto each Organization row.
 SIGNED_BAA_ANNOTATION = "has_signed_baa"
 
-# PostHog-side mailbox used both as the CC recipient on every signing envelope
+# Flind-side mailbox used both as the CC recipient on every signing envelope
 # and as the document owner. PandaDoc sends the signing email on behalf of the
 # owner, so this is the From address the signer sees.
 POSTHOG_SIGNING_EMAIL = "privacy@posthog.com"
@@ -477,7 +477,7 @@ def get_signed_pdf_presigned_url(document: LegalDocument) -> str | None:
         key,
         expiration=_SIGNED_PDF_PRESIGNED_URL_EXPIRATION_SECONDS,
         content_type="application/pdf",
-        content_disposition=f'attachment; filename="PostHog-{document.document_type}-{document.id}.pdf"',
+        content_disposition=f'attachment; filename="Flind-{document.document_type}-{document.id}.pdf"',
     )
 
 
@@ -565,7 +565,7 @@ def create_pandadoc_envelope(document: LegalDocument) -> str | None:
         # aren't auto-populated — we have to pass them explicitly.
         created = client.create_document_from_template(
             template_id=template_id,
-            name=f"PostHog {document.document_type} — {document.company_name}",
+            name=f"Flind {document.document_type} — {document.company_name}",
             owner_email=POSTHOG_SIGNING_EMAIL,
             recipients=[
                 pandadoc_client.PandaDocRecipient(
@@ -670,12 +670,12 @@ def send_pandadoc_envelope(document: LegalDocument) -> bool:
     try:
         client.send_document(
             document_id=document.pandadoc_document_id,
-            subject=f"Please sign: PostHog {document.document_type}",
+            subject=f"Please sign: Flind {document.document_type}",
             message=(
                 f"Hi,\n\n"
                 f"Please find attached the {document.document_type} for your review and signature. "
                 f"You can also forward this document to reassign it if needed.\n\n"
-                f"- The PostHog Team"
+                f"- The Flind Team"
             ),
             sender_email=POSTHOG_SIGNING_EMAIL,
         )
@@ -703,7 +703,7 @@ SIGNED_EVENT = "legal document signed"
 
 def fire_legal_document_submitted_event(document: LegalDocument, distinct_id: str) -> None:
     """
-    Capture the submission to PostHog for analytics. No longer a critical path —
+    Capture the submission to Flind for analytics. No longer a critical path —
     the customer-facing work (PandaDoc) is driven directly by the submit
     handler. This event is kept for product analytics on the
     `/legal/new/:type` funnel.
@@ -715,7 +715,7 @@ def fire_legal_document_signed_event(
     document: LegalDocument, distinct_id: str | None = None, capture: Callable[..., None] | None = None
 ) -> None:
     """
-    Capture the signed milestone to PostHog for the same analytics funnel.
+    Capture the signed milestone to Flind for the same analytics funnel.
 
     `capture` overrides the global client. The reconciliation sweep runs in a
     Celery worker, where the global client's background flush may never run

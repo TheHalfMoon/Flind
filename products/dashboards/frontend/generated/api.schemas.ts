@@ -4,7 +4,7 @@
  *   hogli build:openapi
  * Questions or issues? #team-devex on Slack
  *
- * PostHog API - generated
+ * Flind API - generated
  * OpenAPI spec version: 1.0.0
  */
 /**
@@ -687,7 +687,7 @@ export interface DashboardFiltersOpenApiApi {
      * @nullable
      */
     date_to?: string | null
-    /** Dashboard-level property filters applied to every tile (PostHog property filter group). */
+    /** Dashboard-level property filters applied to every tile (Flind property filter group). */
     properties?: unknown
     /** Dashboard-level breakdown applied to every tile that supports one, replacing the tile's own breakdown. Example: {"breakdown_type": "event", "breakdown": "$browser"}. Null clears it. */
     breakdown_filter?: BreakdownFilterApi | null
@@ -1558,7 +1558,7 @@ export interface CreateTextTileRequestApi {
      */
     body: string
     /**
-     * Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. PostHog's Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters.
+     * Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. Flind's Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters.
      * @maxLength 10000
      * @nullable
      */
@@ -4932,7 +4932,7 @@ export interface WebStatsTableQueryApi {
     samplingFactor?: number | null
     tags?: QueryLogTagsApi | null
     useSessionsTable?: boolean | null
-    /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+    /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. * */
     useWebAnalyticsPrecompute?: boolean | null
     /** version of the node, used for schema migrations */
     version?: number | null
@@ -5019,7 +5019,7 @@ export interface WebOverviewQueryApi {
     samplingFactor?: number | null
     tags?: QueryLogTagsApi | null
     useSessionsTable?: boolean | null
-    /** Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+    /** Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. * */
     useWebAnalyticsPrecompute?: boolean | null
     /** version of the node, used for schema migrations */
     version?: number | null
@@ -6698,7 +6698,7 @@ export interface ExperimentWarehouseNativeExposureConfigApi {
     /** The direct-query source (an ExternalDataSource id) the SQL is written for. */
     connection_id: string
     kind?: 'ExperimentWarehouseNativeExposureConfig'
-    /** Read-only SQL in the warehouse's dialect, returning one row per exposure with `entity_id`, `variant` and `timestamp` columns. PostHog keeps the first exposure per entity and applies the experiment's date range and multiple-variant handling. */
+    /** Read-only SQL in the warehouse's dialect, returning one row per exposure with `entity_id`, `variant` and `timestamp` columns. Flind keeps the first exposure per entity and applies the experiment's date range and multiple-variant handling. */
     query: string
     response?: ExperimentWarehouseNativeExposureConfigApiResponse
     unit: ExperimentWarehouseNativeUnitBindingApi
@@ -7631,7 +7631,7 @@ export interface WebGoalsQueryApi {
     samplingFactor?: number | null
     tags?: QueryLogTagsApi | null
     useSessionsTable?: boolean | null
-    /** Opt this specific query into the web_goals_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+    /** Opt this specific query into the web_goals_query precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. * */
     useWebAnalyticsPrecompute?: boolean | null
     /** version of the node, used for schema migrations */
     version?: number | null
@@ -7770,7 +7770,7 @@ export interface WebVitalsPathBreakdownQueryApi {
      */
     thresholds: number[]
     useSessionsTable?: boolean | null
-    /** Opt this specific query into the web vitals path breakdown precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+    /** Opt this specific query into the web vitals path breakdown precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. * */
     useWebAnalyticsPrecompute?: boolean | null
     /** version of the node, used for schema migrations */
     version?: number | null
@@ -10320,7 +10320,7 @@ export interface TextApi {
      */
     body?: string | null
     /**
-     * Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. PostHog's Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters.
+     * Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. Flind's Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters.
      * @maxLength 10000
      * @nullable
      */
@@ -10540,7 +10540,7 @@ export interface UpdateTextTileRequestApi {
      */
     body?: string
     /**
-     * Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. PostHog's Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters.
+     * Optional context that helps AI agents make consistent dashboard updates, such as Data Catalog metric names, data sources, tile-specific query assumptions, caveats, or editing guidance. Flind's Data Catalog is the semantic layer. Store canonical metric definitions there, not in this field. An empty string or null means there is no agent context. Shared and exported dashboards, and organizations without AI data processing approval, omit this field. Max 10000 characters.
      * @maxLength 10000
      * @nullable
      */
@@ -11170,7 +11170,7 @@ export type DashboardsListParams = {
      */
     created_by?: string
     /**
-     * Optional. Exclude dashboards that PostHog generated.
+     * Optional. Exclude dashboards that Flind generated.
      */
     exclude_generated?: boolean
     /**

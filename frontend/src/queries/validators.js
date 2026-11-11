@@ -11120,7 +11120,7 @@ function validate105(data, { instancePath = '', parentData, parentDataProperty, 
 const schema103 = {
     additionalProperties: false,
     description:
-        "Outcome rows that live in the customer's warehouse, read through a direct connection. PostHog joins them to the experiment's exposures and aggregates them inside the warehouse, so the SQL never mentions variants or exposures and only per-variant aggregates leave the warehouse. Distinct from `ExperimentDataWarehouseNode`, which reads tables synced into PostHog. It does not extend `EntityNode`: property filters and the other event settings cannot apply to SQL PostHog does not parse, so the shape lists every supported field. Only mean and ratio metrics accept it.",
+        "Outcome rows that live in the customer's warehouse, read through a direct connection. Flind joins them to the experiment's exposures and aggregates them inside the warehouse, so the SQL never mentions variants or exposures and only per-variant aggregates leave the warehouse. Distinct from `ExperimentDataWarehouseNode`, which reads tables synced into Flind. It does not extend `EntityNode`: property filters and the other event settings cannot apply to SQL Flind does not parse, so the shape lists every supported field. Only mean and ratio metrics accept it.",
     properties: {
         connection_id: {
             description: 'The direct-query source (an ExternalDataSource id) the SQL is written for.',

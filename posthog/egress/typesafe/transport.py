@@ -32,7 +32,7 @@ class TypeSafeClient(EgressClient):
 
     def _gate(self, scope: str | None, source: str, priority: Priority, url: str) -> None:
         if not typesafe_allowed():
-            raise SystemOneNotConfigured("TypeSafe is disabled on PostHog Cloud; use the ai-gateway System One model")
+            raise SystemOneNotConfigured("TypeSafe is disabled on Flind Cloud; use the ai-gateway System One model")
         super()._gate(scope, source, priority, url)
 
     def _standard_headers(self) -> dict[str, str]:

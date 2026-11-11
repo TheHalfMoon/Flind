@@ -197,7 +197,7 @@ def test_build_description_keeps_the_initiator_message_when_no_prompt_survived()
 
 def test_build_description_for_a_fork_keeps_every_message_and_claims_none_as_the_request():
     # A fork's context is a thread the requester never spoke in: no message in it is
-    # the ask, so none may be replaced by the placeholder, and the "tagged the PostHog
+    # the ask, so none may be replaced by the placeholder, and the "tagged the Flind
     # app" annotation must not appear and misattribute the request to a participant.
     out = _build_posthog_code_task_description(
         "catch me up",
@@ -211,7 +211,7 @@ def test_build_description_for_a_fork_keeps_every_message_and_claims_none_as_the
     assert _INITIATOR_PLACEHOLDER not in out
     assert "the retry logic looks wrong" in out
     assert "agreed, it double-counts" in out
-    assert "tagged the PostHog app" not in out
+    assert "tagged the Flind app" not in out
     assert "https://slack.test/archives/C1/p2" in out
     assert out.endswith("catch me up")
 
@@ -238,7 +238,7 @@ def test_build_description_for_a_fork_of_an_unworked_thread_names_no_task():
         None,
         fork_source_permalink="https://slack.test/archives/C1/p2",
     )
-    assert "PostHog task" not in out
+    assert "Flind task" not in out
 
 
 def test_build_description_for_a_fork_forbids_pinging_the_forked_participants():
@@ -269,7 +269,7 @@ def test_build_description_collapses_role_annotations_when_same_person():
         "2.000",
         mentioner_slack_user_id="U_GEORGIY",
     )
-    assert "Thread started by and tagged the PostHog app: <@U_GEORGIY|georgiy>" in out
+    assert "Thread started by and tagged the Flind app: <@U_GEORGIY|georgiy>" in out
     # The split form must NOT appear when the roles collapse
     assert "Thread started by:" not in out.replace("Thread started by and tagged", "")
 
@@ -287,7 +287,7 @@ def test_build_description_separates_role_annotations_when_different_people():
         mentioner_slack_user_id="U_THEO",
     )
     assert "Thread started by: <@U_MIRA|mira>" in out
-    assert "Tagged the PostHog app: <@U_THEO|theo lin>" in out
+    assert "Tagged the Flind app: <@U_THEO|theo lin>" in out
 
 
 def test_build_description_uses_mentioner_display_name_fallback_when_not_in_thread():
@@ -301,7 +301,7 @@ def test_build_description_uses_mentioner_display_name_fallback_when_not_in_thre
         mentioner_slack_user_id="U_THEO",
         mentioner_display_name="theo lin",
     )
-    assert "Tagged the PostHog app: <@U_THEO|theo lin>" in out
+    assert "Tagged the Flind app: <@U_THEO|theo lin>" in out
 
 
 def test_build_description_preserves_initiator_placeholder_chronologically():
@@ -383,7 +383,7 @@ def test_build_description_neutralizes_forged_closing_tag_in_attachment_name(fil
 
 
 def test_build_description_falls_back_to_plain_name_for_bot_authors():
-    # Bot posts (PostHog alerts, Grafana, etc.) arrive without a `U…` id. We want
+    # Bot posts (Flind alerts, Grafana, etc.) arrive without a `U…` id. We want
     # them attributed by name without producing a malformed `<@|name>` token.
     out = _build_posthog_code_task_description(
         "investigate the alert",

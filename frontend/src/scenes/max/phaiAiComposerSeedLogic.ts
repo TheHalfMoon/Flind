@@ -39,7 +39,7 @@ export type phaiAiComposerSeedLogicType = MakeLogicType<
 
 /**
  * Forwards the existing `/ai?ask=...` deep link into the new task composer. This logic is mounted only while
- * the new PostHog AI view is rendered, leaving the legacy `maxLogic` query handling unchanged.
+ * the new Flind AI view is rendered, leaving the legacy `maxLogic` query handling unchanged.
  */
 export const phaiAiComposerSeedLogic = kea<phaiAiComposerSeedLogicType>([
     path(['scenes', 'max', 'phaiAiComposerSeedLogic']),

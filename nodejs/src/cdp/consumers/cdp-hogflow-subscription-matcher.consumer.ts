@@ -184,7 +184,7 @@ type MatchedJob = {
     eventUuid?: string
     eventTimestamp?: string
     // Distinct id + name/uuid of the event that satisfied the conversion goal, so the matcher can
-    // emit the `$workflows_conversion` PostHog event for the converting person.
+    // emit the `$workflows_conversion` Flind event for the converting person.
     conversionDistinctId?: string
     conversionEventName?: string
     conversionEventUuid?: string

@@ -11,7 +11,7 @@ Each run reports a funnel. Read it left to right and stop at the first number th
 | ------------------------ | --------------------------------------------------------- | --------------------------------------------------------------- |
 | `rows_read`              | Rows the run read from the table                          | The table synced nothing, or the sync itself failed             |
 | `changed`                | Rows whose mapped values differ from the last snapshot    | Nothing changed since the previous run. Normal on a quiet table |
-| `existing`               | Changed rows whose key resolved to a real person or group | The key column does not hold identifiers PostHog knows          |
+| `existing`               | Changed rows whose key resolved to a real person or group | The key column does not hold identifiers Flind knows          |
 | `produced`               | Update intents sent onward                                | Rare if `existing` is non-zero. Check `error`                   |
 | `skipped_missing_person` | Changed rows dropped because the key did not resolve      | Nothing to fix                                                  |
 
@@ -35,9 +35,9 @@ Check, in order: the source's `is_enabled`, whether the underlying table is stil
 **`last_sync_error` is set, or `consecutive_failures` is climbing.**
 Read the error text on the source and on the most recent run. Treat a failing underlying warehouse sync as
 the first suspect, because the property update rides off that sync. Diagnose that with
-`diagnosing-failed-warehouse-syncs` before touching the mapping. After five consecutive failures, PostHog
+`diagnosing-failed-warehouse-syncs` before touching the mapping. After five consecutive failures, Flind
 disables the source and notifies the person who configured it. If Customer analytics tasks are available to
-that person, PostHog also assigns them a task due by the end of the next business day. The task enters an email
+that person, Flind also assigns them a task due by the end of the next business day. The task enters an email
 digest only when that person has enabled task digests.
 
 **"Sync now" is rejected with a monthly sync limit message.**

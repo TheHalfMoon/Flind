@@ -11,7 +11,7 @@ export const template: HogFunctionTemplate = {
     category: ['Custom'],
     code_language: 'hog',
     code: `
-// PostHog's own events (names starting with $) and survey events keep their names.
+// Flind's own events (names starting with $) and survey events keep their names.
 if (empty(event.event) or startsWith(event.event, '$')) {
     return event
 }

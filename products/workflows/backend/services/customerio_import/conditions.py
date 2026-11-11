@@ -1,4 +1,4 @@
-"""Customer.io conditions as PostHog property filters.
+"""Customer.io conditions as Flind property filters.
 
 Customer.io stores action conditions as a flat array, double encoded: JSON, then URL-encoded, then base64.
 Entry filters and exit conditions use a nested `and`/`or` tree instead. Both read the same leaf operators.
@@ -43,9 +43,9 @@ class Condition:
 
     # Person and event property filters, all of which must match.
     properties: tuple[dict[str, Any], ...] = ()
-    # Events to wait for. Each is a PostHog event filter that can carry its own properties.
+    # Events to wait for. Each is a Flind event filter that can carry its own properties.
     events: tuple[dict[str, Any], ...] = ()
-    # Readable descriptions of the parts that have no PostHog equivalent and were left out.
+    # Readable descriptions of the parts that have no Flind equivalent and were left out.
     skipped: tuple[str, ...] = ()
 
 
@@ -106,7 +106,7 @@ def translate_condition(conditions: list[dict[str, Any]], segment_cohorts: dict[
 def translate_filter_tree(tree: Any, property_type: str) -> tuple[list[dict[str, Any]], list[str]]:
     """Flattens an `and` tree of `{field, operator, value}` leaves into property filters.
 
-    PostHog event and trigger filters are a flat AND list, so an `or` is left out and described instead.
+    Flind event and trigger filters are a flat AND list, so an `or` is left out and described instead.
     """
     if not isinstance(tree, dict) or not tree:
         return [], []
@@ -125,7 +125,7 @@ def translate_filter_tree(tree: Any, property_type: str) -> tuple[list[dict[str,
 
 
 def property_filters(leaf: dict[str, Any], property_type: str, *, negate: bool = False) -> list[dict[str, Any]] | None:
-    """PostHog property filters for one Customer.io leaf, or None when the operator has no equivalent."""
+    """Flind property filters for one Customer.io leaf, or None when the operator has no equivalent."""
     field, operator, value, value2 = leaf.get("field"), leaf.get("operator"), leaf.get("value"), leaf.get("value2")
     if not isinstance(field, str) or not field or not isinstance(operator, str):
         return None

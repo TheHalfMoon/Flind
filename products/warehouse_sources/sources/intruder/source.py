@@ -47,7 +47,7 @@ class IntruderSource(ResumableSource[IntruderSourceConfig, IntruderResumeConfig]
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Intruder",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your Intruder API access token to pull your attack-surface and vulnerability data into the PostHog Data warehouse.
+            caption="""Enter your Intruder API access token to pull your attack-surface and vulnerability data into the Flind Data warehouse.
 
 Create an access token under **My account > API Access Tokens** in your [Intruder account](https://portal.intruder.io/). The token is shown only once, so copy it immediately. API scanning of targets requires the appropriate Intruder plan license.""",
             iconPath="/static/services/intruder.png",

@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
                 choices=[("healthy", "Healthy"), ("failing", "Failing"), ("paused", "Paused")],
                 db_default="healthy",
                 default="healthy",
-                help_text="Whether the last delivery to this destination worked, failed, or PostHog paused it.",
+                help_text="Whether the last delivery to this destination worked, failed, or Flind paused it.",
                 max_length=32,
             ),
         ),
@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 db_default=0,
                 default=0,
-                help_text="Configuration errors since the last successful delivery. At the threshold, PostHog pauses the destination.",
+                help_text="Configuration errors since the last successful delivery. At the threshold, Flind pauses the destination.",
             ),
         ),
     ]

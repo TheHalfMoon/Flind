@@ -28,7 +28,7 @@ export const WORKSPACE_SETUP_STEP_KEYS: WorkspaceSetupStepKey[] = ['ai_consent',
 
 export interface SlackAppWorkspaceSetupLogicProps {
     integrationId: number
-    /** Where the Slack install started. The Slack page in PostHog adds the optional steps. */
+    /** Where the Slack install started. The Slack page in Flind adds the optional steps. */
     entry?: SlackAppWorkspaceSetupRetrieveEntry
     returnTo?: SlackSetupReturnTarget
 }
@@ -344,7 +344,7 @@ export const slackAppWorkspaceSetupLogic = kea<slackAppWorkspaceSetupLogicType>(
             if (failed.length > 0) {
                 const failedNames = failed.map((result) => `#${names.get(result.channel_id) ?? result.channel_id}`)
                 lemonToast.warning(
-                    `PostHog couldn't join ${failedNames.join(', ')}. Invite it with /invite @PostHog in those channels.`
+                    `Flind couldn't join ${failedNames.join(', ')}. Invite it with /invite @PostHog in those channels.`
                 )
                 // Slack's refusals arrive in a successful response, so the loader's failure listener never sees them.
                 actions.stepFailed('channels', [...new Set(failed.map((result) => result.error))].join(', '))

@@ -78,7 +78,7 @@ describe("WorkspaceModeSelect", () => {
     expect(await screen.findByText("Run location")).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Runs on PostHog servers. Your local files do not change.",
+        "Runs on Flind servers. Your local files do not change.",
       ),
     ).toBeInTheDocument();
     expect(screen.getByText("Requires GitHub")).toBeInTheDocument();
@@ -150,7 +150,7 @@ describe("WorkspaceModeSelect", () => {
 
     expect(
       await screen.findByText(
-        "Runs on PostHog servers. Your local files do not change.",
+        "Runs on Flind servers. Your local files do not change.",
       ),
     ).toBeInTheDocument();
     expect(screen.queryByText("Connect GitHub")).not.toBeInTheDocument();
@@ -176,7 +176,7 @@ describe("WorkspaceModeSelect", () => {
 
     expect(
       await screen.findByText(
-        "Runs on PostHog servers. Your local files do not change.",
+        "Runs on Flind servers. Your local files do not change.",
       ),
     ).toBeInTheDocument();
     expect(screen.queryByText("Connect GitHub")).not.toBeInTheDocument();

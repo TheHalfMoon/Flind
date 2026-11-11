@@ -49,7 +49,7 @@ class RetentlySource(ResumableSource[RetentlySourceConfig, RetentlyResumeConfig]
             label="Retently",
             releaseStatus=ReleaseStatus.BETA,
             keywords=["nps", "csat", "ces", "survey", "customer feedback"],
-            caption="""Enter your Retently API key to pull your customer feedback data into the PostHog Data warehouse.
+            caption="""Enter your Retently API key to pull your customer feedback data into the Flind Data warehouse.
 
 You can create an API key under **Settings → Integrations → API** in [Retently](https://app.retently.com). A key with **read** permission is sufficient — this source only performs GET requests.
 """,

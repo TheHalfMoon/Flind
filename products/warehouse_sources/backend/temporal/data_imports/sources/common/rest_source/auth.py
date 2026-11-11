@@ -143,7 +143,7 @@ class OAuth2Auth(BearerTokenAuth):
     The customer brings their own OAuth2 client (``client_id`` / ``client_secret`` /
     ``token_url``); the worker mints a short-lived access token at request time, caches
     it in memory for the run, and re-mints on expiry — the same lazy, in-process
-    refresh as :class:`SalesforceAuth`, but config-driven (no PostHog-registered app
+    refresh as :class:`SalesforceAuth`, but config-driven (no Flind-registered app
     and no interactive consent flow). ``authorization_code`` is out of scope and is
     rejected at manifest validation, so only the two non-interactive grants reach here.
     """

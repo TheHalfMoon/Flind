@@ -41,7 +41,7 @@ class TestEtsySourceClass:
     def test_rate_limit_and_server_errors_are_retryable(self, message: str) -> None:
         # EtsyClient's tracked session already retries a 429/5xx three times before raise_for_status
         # can raise; an exhausted rate limit or server error reaching us here must stay out of error
-        # tracking as noise instead of being reported like a genuine PostHog bug.
+        # tracking as noise instead of being reported like a genuine Flind bug.
         retryable_errors = EtsySource().get_retryable_errors()
 
         assert any(pattern in message for pattern in retryable_errors)

@@ -12,7 +12,7 @@ export const getKMPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Add the PostHog KMP SDK to your shared module's `commonMain` source set:</Markdown>
+                    <Markdown>Add the Flind KMP SDK to your shared module's `commonMain` source set:</Markdown>
                     <CodeBlock
                         blocks={[
                             {
@@ -51,14 +51,14 @@ export const getKMPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
             content: (
                 <>
                     <Markdown>
-                        Go to your PostHog [Project Settings](https://us.posthog.com/settings/project-replay) and enable
+                        Go to your Flind [Project Settings](https://us.posthog.com/settings/project-replay) and enable
                         **Record user sessions**. Session recordings will not work without this setting enabled.
                     </Markdown>
                 </>
             ),
         },
         {
-            title: 'Configure PostHog with session replay',
+            title: 'Configure Flind with session replay',
             badge: 'required',
             content: (
                 <>
@@ -114,7 +114,7 @@ export const getKMPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                         ]}
                     />
                     <Markdown>
-                        Pass that config to `PostHog.setup()`. Android needs the `Application` instance, so it takes
+                        Pass that config to `Flind.setup()`. Android needs the `Application` instance, so it takes
                         `PostHogContext(application)` – every other target takes the no-argument `PostHogContext()`.
                     </Markdown>
                     <Tab.Group tabs={['Android', 'iOS and web']}>
@@ -132,7 +132,7 @@ export const getKMPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                                                     override fun onCreate() {
                                                         super.onCreate()
 
-                                                        PostHog.setup(config = config, context = PostHogContext(this))
+                                                        Flind.setup(config = config, context = PostHogContext(this))
                                                     }
                                                 }
                                             `,
@@ -147,7 +147,7 @@ export const getKMPSteps = (ctx: OnboardingComponentsContext): StepDefinition[] 
                                             language: 'kotlin',
                                             file: 'Kotlin',
                                             code: dedent`
-                                                PostHog.setup(config = config, context = PostHogContext())
+                                                Flind.setup(config = config, context = PostHogContext())
                                             `,
                                         },
                                     ]}

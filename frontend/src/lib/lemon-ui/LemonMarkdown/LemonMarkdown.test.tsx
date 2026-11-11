@@ -14,7 +14,7 @@ describe('LemonMarkdown utilities', () => {
 
         it.each([
             ['Hello, World!', 'hello-world'],
-            ['What is PostHog?', 'what-is-posthog'],
+            ['What is Flind?', 'what-is-posthog'],
             ['React & TypeScript', 'react-typescript'],
             ['React  &  TypeScript', 'react-typescript'],
             ['C++ Programming', 'c-programming'],

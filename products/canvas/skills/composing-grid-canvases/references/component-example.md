@@ -1,6 +1,6 @@
 # A known-good component
 
-This is a complete, buildable component project — the welcome checklist PostHog seeds onto new home canvases (`products/canvas/backend/welcome.py`, verified against the real canvas builder).
+This is a complete, buildable component project — the welcome checklist Flind seeds onto new home canvases (`products/canvas/backend/welcome.py`, verified against the real canvas builder).
 The envelope below shows the fields you author; its `index.html` and `dependencies` come from `canvas-source-retrieve` and are kept exactly as returned (see [validating-and-publishing-canvases](../../validating-and-publishing-canvases/SKILL.md)) — the placeholders below stand in for them.
 Start from it when building a checklist, settings, or any state-carrying widget, and keep its structure even when you replace the content: the project envelope, the placement contract, the capability declarations, and the defensive `ph.state` access are the parts that break when improvised.
 

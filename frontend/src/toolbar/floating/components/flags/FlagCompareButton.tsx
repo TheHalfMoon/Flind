@@ -27,7 +27,7 @@ export function FlagCompareButton({ flag, disabledReason }: FlagCompareButtonPro
             onClick={() => compareFlag(flag)}
             loading={isComparing}
             disabledReason={
-                isComparing ? null : (disabledReason ?? (posthog ? null : 'The page has no PostHog client'))
+                isComparing ? null : (disabledReason ?? (posthog ? null : 'The page has no Flind client'))
             }
             tooltip="Compare the page with this flag off and on"
             data-attr="toolbar-flag-compare"

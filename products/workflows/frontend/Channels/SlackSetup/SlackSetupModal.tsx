@@ -45,7 +45,7 @@ export const SlackSetupModal = (props: SlackSetupModalLogicProps): JSX.Element =
                     </Link>
                 ) : (
                     <p className="text-secondary">
-                        This PostHog instance is not configured for Slack. Please contact the instance owner to
+                        This Flind instance is not configured for Slack. Please contact the instance owner to
                         configure it.
                     </p>
                 )}

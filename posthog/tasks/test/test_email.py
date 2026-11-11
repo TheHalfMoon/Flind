@@ -527,8 +527,8 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
         task = Task.objects.create(
             team=team,
             created_by=user,
-            title="Install PostHog",
-            description="Set up PostHog",
+            title="Install Flind",
+            description="Set up Flind",
             origin_product=Task.OriginProduct.ONBOARDING,
             repository="posthog/posthog-js",
         )
@@ -579,8 +579,8 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
         task = Task.objects.create(
             team=team,
             created_by=user,
-            title="Install PostHog",
-            description="Set up PostHog",
+            title="Install Flind",
+            description="Set up Flind",
             origin_product=Task.OriginProduct.ONBOARDING,
             repository="posthog/posthog-js",
         )
@@ -611,8 +611,8 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
         task = Task.objects.create(
             team=team,
             created_by=user,
-            title="Install PostHog",
-            description="Set up PostHog",
+            title="Install Flind",
+            description="Set up Flind",
             origin_product=Task.OriginProduct.ONBOARDING,
             repository="posthog/posthog-js",
         )
@@ -2240,7 +2240,7 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
         message = mocked_email_messages[0]
         assert message.send.call_count == 1
         assert message.template_name == "posthog_ai_access_requested"
-        # The owner who can enable PostHog AI is notified, not the requesting member.
+        # The owner who can enable Flind AI is notified, not the requesting member.
         recipient_emails = {dest["raw_email"] for dest in message.to}
         assert recipient_emails == {"ai-owner@posthog.com"}
         assert message.properties["organization_name"] == org.name
@@ -2254,7 +2254,7 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
         mocked_email_messages = mock_email_messages(MockEmailMessage)
 
         org, owner = create_org_team_and_user("2022-01-02 00:00:00", "solo-member@posthog.com")
-        # Drop the only admin to a member so there's nobody who could enable PostHog AI.
+        # Drop the only admin to a member so there's nobody who could enable Flind AI.
         membership = OrganizationMembership.objects.get(organization=org, user=owner)
         membership.level = OrganizationMembership.Level.MEMBER
         membership.save()

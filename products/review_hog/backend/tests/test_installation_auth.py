@@ -28,7 +28,7 @@ class TestInstallationAuth(BaseTest):
     @patch(_CAN_ACCESS, return_value=True)
     def test_returns_the_token_and_the_github_installation_id(self, _can_access: MagicMock) -> None:
         # The egress budget must key on GitHub's installation id (Integration.integration_id), never
-        # the PostHog row pk — several rows can share one installation, which has ONE real budget.
+        # the Flind row pk — several rows can share one installation, which has ONE real budget.
         self._integration(installation_id="9876543")
 
         token, installation_id = _installation_auth(self.team.id, "PostHog/posthog")

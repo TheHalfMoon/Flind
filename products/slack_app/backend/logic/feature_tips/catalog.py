@@ -68,7 +68,7 @@ class TipContext:
 
     @cached_property
     def workspace_has_several_projects(self) -> bool:
-        # Every PostHog project connected to this Slack workspace has its own Slack integration row.
+        # Every Flind project connected to this Slack workspace has its own Slack integration row.
         return len(workspace_integrations(self.integration.integration_id)) > 1
 
     @cached_property
@@ -146,7 +146,7 @@ class ThreadFollowupTip(TipFeature):
     )
 
     def is_eligible(self, ctx: TipContext) -> bool:
-        # In a direct message every reply already goes to PostHog.
+        # In a direct message every reply already goes to Flind.
         return not ctx.in_direct_message
 
     def was_used(self, ctx: TipContext) -> bool:
@@ -160,7 +160,7 @@ class ThreadFollowupTip(TipFeature):
         set_untagged_followup_mode(integration.integration_id, slack_user_id, UntaggedFollowupMode.AUTO)
         return (
             "✅ Done. I'll pick up your replies in threads you start with me. "
-            "You can change this in the PostHog app Home tab."
+            "You can change this in the Flind app Home tab."
         )
 
 
@@ -216,7 +216,7 @@ class McpToolTip(TipFeature):
     title = "Connect MCP servers"
     text = (
         "I can also use MCP servers, such as Linear or Notion. "
-        "Connect them in PostHog, and I use them with your own access."
+        "Connect them in Flind, and I use them with your own access."
     )
     choice_criteria = (
         "Connecting other work tools such as Linear, Jira, Notion or Google Drive. Fits a message that mentions "
@@ -302,10 +302,10 @@ class InboxChannelTip(TipFeature):
     rank = 80
     has_action = True
     emoji = "📥"
-    title = "See what PostHog finds"
-    text = "Join the PostHog inbox channel to see the problems that PostHog finds in your product."
+    title = "See what Flind finds"
+    text = "Join the Flind inbox channel to see the problems that Flind finds in your product."
     choice_criteria = (
-        "A Slack channel with reports about problems PostHog finds on its own, such as new or spiking errors. "
+        "A Slack channel with reports about problems Flind finds on its own, such as new or spiking errors. "
         "Fits a message about errors, regressions, incidents, or keeping watch on the product."
     )
 
@@ -316,7 +316,7 @@ class InboxChannelTip(TipFeature):
         if ctx.inbox_channel_target is None:
             return self.text
         name = channel_name_from_target(ctx.inbox_channel_target)
-        return f"Join {name} to see the problems that PostHog finds in your product, such as new errors."
+        return f"Join {name} to see the problems that Flind finds in your product, such as new errors."
 
     def cta(self, ctx: TipContext) -> TipCta | None:
         return TipCta(label="Join the channel")
@@ -338,7 +338,7 @@ class ProjectInMentionTip(TipFeature):
     title = "Pick a project in your message"
     text = "Name a project in your message, and I use it for that request. For example: _@PostHog in the website project, why did signups drop?_"
     choice_criteria = (
-        "Naming a PostHog project in one request. Fits a message that names which of several apps, sites or "
+        "Naming a Flind project in one request. Fits a message that names which of several apps, sites or "
         'environments to look in, such as "in the mobile app" or "on staging". A platform used as a filter '
         'or breakdown, such as "for mobile", or a mention of "the app", names no project.'
     )
@@ -352,9 +352,9 @@ class AppHomeProjectTip(TipFeature):
     rank = 100
     emoji = "🏠"
     title = "Choose your default project"
-    text = "You can choose your default project in the Home tab of the PostHog app."
+    text = "You can choose your default project in the Home tab of the Flind app."
     choice_criteria = (
-        "Changing the default PostHog project. Fits a message that asks to switch projects, or says the "
+        "Changing the default Flind project. Fits a message that asks to switch projects, or says the "
         "person usually works in a project other than the one the assistant used."
     )
 
@@ -393,7 +393,7 @@ class AutoModelChoiceTip(TipFeature):
     )
 
     def is_eligible(self, ctx: TipContext) -> bool:
-        # Without a linked PostHog user the router cannot run, so the setting would do nothing.
+        # Without a linked Flind user the router cannot run, so the setting would do nothing.
         return ctx.posthog_user_id is not None
 
     def was_used(self, ctx: TipContext) -> bool:
@@ -404,7 +404,7 @@ class AutoModelChoiceTip(TipFeature):
 
     def apply_action(self, integration: WorkspaceIntegration, slack_user_id: str) -> str:
         set_auto_model_choice(integration.integration_id, slack_user_id, True)
-        return "✅ Done. I'll choose the model for each new task you start. You can change this in the PostHog app Home tab."
+        return "✅ Done. I'll choose the model for each new task you start. You can change this in the Flind app Home tab."
 
 
 class AppHomeTasksTip(TipFeature):
@@ -412,7 +412,7 @@ class AppHomeTasksTip(TipFeature):
     rank = 130
     emoji = "📋"
     title = "See all your tasks"
-    text = "The Home tab of the PostHog app lists your tasks and their status."
+    text = "The Home tab of the Flind app lists your tasks and their status."
     choice_criteria = (
         "A list of the person's tasks and their status. Fits a message that asks about an earlier request, "
         "a pull request in progress, or what the assistant is working on."
@@ -430,9 +430,9 @@ class InsightUnfurlTip(TipFeature):
     rank = 140
     emoji = "🔗"
     title = "Share insight links"
-    text = "Paste a link to a PostHog insight in Slack, and I show a preview of it."
+    text = "Paste a link to a Flind insight in Slack, and I show a preview of it."
     choice_criteria = (
-        "Previews of PostHog links pasted in Slack. Fits a message that shares or mentions an insight, "
+        "Previews of Flind links pasted in Slack. Fits a message that shares or mentions an insight, "
         "a dashboard, or a chart with the team."
     )
 
@@ -458,7 +458,7 @@ class UnpromptedAnswersTip(TipFeature):
     has_action = True
     emoji = "🙋"
     title = "Ask without tagging me"
-    text = "When you ask about PostHog in a channel without tagging me, I can offer to answer."
+    text = "When you ask about Flind in a channel without tagging me, I can offer to answer."
     choice_criteria = (
         "Answers to channel questions that do not tag the assistant. Fits a message that the person could "
         "have asked the whole channel, such as a quick data question."
@@ -476,8 +476,8 @@ class UnpromptedAnswersTip(TipFeature):
     def apply_action(self, integration: WorkspaceIntegration, slack_user_id: str) -> str:
         set_untagged_question_mode(integration.integration_id, slack_user_id, UntaggedFollowupMode.AUTO)
         return (
-            "✅ Done. I'll answer your questions about PostHog in channels, also when you don't tag me. "
-            "You can change this in the PostHog app Home tab."
+            "✅ Done. I'll answer your questions about Flind in channels, also when you don't tag me. "
+            "You can change this in the Flind app Home tab."
         )
 
 

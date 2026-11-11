@@ -20,7 +20,7 @@ const SUPPORT_TICKET_KIND_TO_PROMPT: Record<SupportTicketKind, string> = {
 }
 
 interface SupportFormProps {
-    /** Overrides the message field label (e.g. "Anything to add?" for the PostHog AI ticket flow) */
+    /** Overrides the message field label (e.g. "Anything to add?" for the Flind AI ticket flow) */
     messageLabel?: string
     /** Overrides the message field placeholder */
     messagePlaceholder?: string

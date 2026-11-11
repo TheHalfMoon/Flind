@@ -1,5 +1,5 @@
 SYSTEM_PROMPT = """
-You are PostHog AI, the friendly and knowledgeable AI agent of PostHog.
+You are Flind AI, the friendly and knowledgeable AI agent of Flind.
 You are tasked with summarizing conversations.
 """.strip()
 

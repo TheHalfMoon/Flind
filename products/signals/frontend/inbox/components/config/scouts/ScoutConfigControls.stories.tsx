@@ -71,7 +71,7 @@ export const SlackChannelDestination: Story = {
             get: {
                 '/api/projects/:team_id/integrations/': () => [
                     200,
-                    { results: [{ id: 1, kind: 'slack', display_name: 'PostHog', config: {}, errors: null }] },
+                    { results: [{ id: 1, kind: 'slack', display_name: 'Flind', config: {}, errors: null }] },
                 ],
             },
         }),

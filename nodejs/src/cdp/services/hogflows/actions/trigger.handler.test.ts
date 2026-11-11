@@ -84,7 +84,7 @@ describe('TriggerHandler', () => {
         ])
     })
 
-    it("skips an internal-event trigger for PostHog's own GitHub App activity", async () => {
+    it("skips an internal-event trigger for Flind's own GitHub App activity", async () => {
         const { result, logs } = await run(
             {
                 type: 'internal-event',
@@ -99,7 +99,7 @@ describe('TriggerHandler', () => {
         )
 
         expect(result).toEqual({ finished: true, skipped: true })
-        expect(logs).toEqual(["Activity from PostHog's own GitHub App would not trigger this workflow."])
+        expect(logs).toEqual(["Activity from Flind's own GitHub App would not trigger this workflow."])
     })
 
     it.each([
@@ -128,7 +128,7 @@ describe('TriggerHandler', () => {
         expect(result.nextAction?.id).toEqual('exit')
     })
 
-    it("skips a Slack-triggered workflow for a message PostHog's own connected app posted", async () => {
+    it("skips a Slack-triggered workflow for a message Flind's own connected app posted", async () => {
         const { result, logs } = await run(
             slackTrigger({ properties: [], bytecode: ['_h', 29] }),
             { event: '$slack_message_received', properties: { integration_id: 1, app_id: 'A_OWN_APP' } },
@@ -136,7 +136,7 @@ describe('TriggerHandler', () => {
         )
 
         expect(result).toEqual({ finished: true, skipped: true })
-        expect(logs).toEqual(["Messages PostHog's own connected Slack app posted would not trigger this workflow."])
+        expect(logs).toEqual(["Messages Flind's own connected Slack app posted would not trigger this workflow."])
     })
 
     it('continues a Slack-triggered workflow for a message from a different Slack app', async () => {

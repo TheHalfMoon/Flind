@@ -41,7 +41,7 @@ const WebOverviewCards = ({ items, loading }: Props): JSX.Element => {
                 <Box css={{ marginTop: 'small' }}>
                     <PromoBanner>
                         <PromoBannerText>
-                            No traffic detected in the last 30 days — add PostHog to your app to start tracking:
+                            No traffic detected in the last 30 days — add Flind to your app to start tracking:
                         </PromoBannerText>
                         <Inline css={{ font: 'body', fontFamily: 'monospace', color: 'info' }}>
                             npx @posthog/wizard

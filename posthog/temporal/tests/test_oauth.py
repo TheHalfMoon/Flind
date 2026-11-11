@@ -389,7 +389,7 @@ class TestCreateOAuthAccessTokenForUser(TestCase):
 
     @override_settings(CLOUD_DEPLOYMENT="DEV")
     def test_posthog_ai_application_uses_dev_app(self) -> None:
-        app = self._create_oauth_app(POSTHOG_AI_APP_CLIENT_ID_DEV, "PostHog AI Dev App")
+        app = self._create_oauth_app(POSTHOG_AI_APP_CLIENT_ID_DEV, "Flind AI Dev App")
         user, team = self._create_user_and_team()
 
         token = create_oauth_access_token_for_user(user, team.id, application="posthog_ai")
@@ -414,7 +414,7 @@ class TestCreateOAuthAccessTokenForUser(TestCase):
     def test_posthog_ai_application_requires_existing_app(self) -> None:
         user, team = self._create_user_and_team()
 
-        with self.assertRaisesRegex(RuntimeError, "PostHog AI app not found"):
+        with self.assertRaisesRegex(RuntimeError, "Flind AI app not found"):
             create_oauth_access_token_for_user(user, team.id, application="posthog_ai")
 
     @override_settings(CLOUD_DEPLOYMENT="DEV")
@@ -462,7 +462,7 @@ class TestCreateWizardOAuthAccessTokenForUser(TestCase):
     def _create_wizard_app(self, scopes: list[str]) -> OAuthApplication:
         return OAuthApplication.objects.create(
             client_id=_WIZARD_CLIENT_ID,
-            name="PostHog Wizard Test App",
+            name="Flind Wizard Test App",
             client_type=OAuthApplication.CLIENT_PUBLIC,
             authorization_grant_type=OAuthApplication.GRANT_AUTHORIZATION_CODE,
             redirect_uris="http://localhost:8237/callback",

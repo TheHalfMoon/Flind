@@ -226,7 +226,7 @@ def _usual_causes(metrics: list[ZeroMetric]) -> list[str]:
     reads_events = bool(events) or any(not metric.warehouse_tables for metric in metrics)
     counted = joined([*(["an event"] if reads_events else []), *(["a warehouse row"] if tables else [])], "or")
     sentences = [
-        f"PostHog counts {counted} only for the person or group that was exposed, and only after their first exposure."
+        f"Flind counts {counted} only for the person or group that was exposed, and only after their first exposure."
     ]
     if reads_events:
         event = f"the event {quoted(events)}" if len(events) == 1 else "the metric events"

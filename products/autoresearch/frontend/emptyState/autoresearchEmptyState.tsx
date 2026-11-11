@@ -27,7 +27,7 @@ export const autoresearchEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Predict what your users will do next',
-                lead: 'Pick a target event, a population, and a horizon. An agent trains and compares models until it finds the best one, then scores your users on a schedule and writes each prediction back to PostHog.',
+                lead: 'Pick a target event, a population, and a horizon. An agent trains and compares models until it finds the best one, then scores your users on a schedule and writes each prediction back to Flind.',
             },
         },
         primaryAction: { label: 'New model', to: urls.autoresearchNew() },

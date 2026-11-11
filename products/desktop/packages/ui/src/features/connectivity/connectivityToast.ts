@@ -15,7 +15,7 @@ export function showOfflineToast() {
   offlineToastId = toast.error("No internet connection", {
     duration: Number.POSITIVE_INFINITY,
     description:
-      "PostHog features that need the network are paused until you reconnect.",
+      "Flind features that need the network are paused until you reconnect.",
   });
 }
 

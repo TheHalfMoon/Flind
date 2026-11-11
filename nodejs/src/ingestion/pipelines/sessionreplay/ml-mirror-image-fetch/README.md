@@ -19,7 +19,7 @@ The [implementation notes](./IMPLEMENTATION_NOTES.md) list known differences in 
 
 ## TL;DR
 
-For PostHog accounts with AI training data enabled (note, you can check or modify an org's status in the [org settings](https://app.posthog.com/settings/organization-details)), we save a scrubbed copy of session recordings for use in [AI Research](https://posthog.com/blog/training-ai-models).
+For Flind accounts with AI training data enabled (note, you can check or modify an org's status in the [org settings](https://app.posthog.com/settings/organization-details)), we save a scrubbed copy of session recordings for use in [AI Research](https://posthog.com/blog/training-ai-models).
 
 The [upstream Kafka consumer](/nodejs/src/ingestion/pipelines/sessionreplay/ml-mirror) processes RRWeb events, scrubs them, and attaches a global ref to image tags with external URLs. It posts those external URLs to our topic. We fetch those URLs and write the images to another topic, where the [image scrubber](/nodejs/src/ingestion/pipelines/sessionreplay/ml-mirror-image-scrub) consumes them and writes them to S3, using the ref as a key. Then at data prep time, we can fetch the images for a given Session Recording by their key.
 
@@ -153,7 +153,7 @@ XMP is an opt-out for that image when it has one of these values:
 
 **3.2** The lane caches robots.txt for 24 hours. RFC 9309 says that a crawler should not use a cached copy for more than 24 hours unless the file is unreachable.
 
-**3.3** The lane caches tdmrep.json for 24 hours. TDMRep does not specify this duration. It is a PostHog policy.
+**3.3** The lane caches tdmrep.json for 24 hours. TDMRep does not specify this duration. It is a Flind policy.
 
 **3.4** To avoid interruptions, the lane starts to refresh robots.txt and tdmrep.json when the cached version is 23 hours old. The lane can use the current cached version while one refresh is in progress.
 
@@ -693,7 +693,7 @@ ai_research_session_replay_image_fetch_retry_1h
 | [RFC 8246](https://www.rfc-editor.org/rfc/rfc8246.html), HTTP Immutable Responses                                        | Requirement 12.9. The effect of `immutable` during and after a response's freshness lifetime                                                                          |
 | [DynamoDB BatchGetItem](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchGetItem.html)            | Requirement 15.6. Bulk reads, the 100-item request limit, and unprocessed keys                                                                                        |
 | [DynamoDB BatchWriteItem](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchWriteItem.html)        | Requirement 15.6. Bulk writes, the 25-item request limit, and unprocessed items                                                                                       |
-| [Google robots.txt behavior](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec)                     | Requirements 3.16 and 3.17. The places where PostHog follows or is more conservative than Google                                                                      |
+| [Google robots.txt behavior](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec)                     | Requirements 3.16 and 3.17. The places where Flind follows or is more conservative than Google                                                                      |
 | [Smokescreen](https://github.com/stripe/smokescreen)                                                                     | Section 6. The outbound proxy that enforces the production network boundary                                                                                           |
 | [Public Suffix List](https://publicsuffix.org/)                                                                          | The registrable and provider domains used for Kafka ownership and bounded metrics                                                                                     |
 

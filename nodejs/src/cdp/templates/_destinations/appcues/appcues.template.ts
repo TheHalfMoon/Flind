@@ -7,7 +7,7 @@ export const template: HogFunctionTemplate = {
     id: 'template-appcues',
     name: 'Appcues',
     description:
-        'Forward PostHog events and person properties to Appcues to power onboarding flows, in-app messages, and targeting.',
+        'Forward Flind events and person properties to Appcues to power onboarding flows, in-app messages, and targeting.',
     icon_url: '/static/services/appcues.png',
     category: ['User Engagement Platforms'],
     code_language: 'hog',
@@ -140,7 +140,7 @@ if (event.event in ('$identify', '$set')) {
             key: 'userId',
             type: 'string',
             label: 'User ID',
-            description: 'The identifier for the user in Appcues. Defaults to the PostHog distinct ID.',
+            description: 'The identifier for the user in Appcues. Defaults to the Flind distinct ID.',
             default: '{event.distinct_id}',
             secret: false,
             required: true,

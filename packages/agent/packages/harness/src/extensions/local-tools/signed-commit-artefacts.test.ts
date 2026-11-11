@@ -296,7 +296,7 @@ describe("reportCommitArtefacts", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it("is a no-op without sandbox PostHog credentials", async () => {
+  it("is a no-op without sandbox Flind credentials", async () => {
     await reportCommitArtefacts({
       taskId: "task-1",
       result: RESULT,

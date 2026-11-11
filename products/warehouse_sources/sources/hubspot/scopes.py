@@ -30,7 +30,7 @@ class HubspotForbiddenError(NonReportableError):
     """HubSpot answered 403.
 
     The grant can't read the requested object: a permission or plan problem on the connected
-    portal, never a PostHog defect. Subclasses NonReportableError so the job still fails with the
+    portal, never a Flind defect. Subclasses NonReportableError so the job still fails with the
     message (`get_non_retryable_errors` maps it to a friendly one) without minting an
     error-tracking issue per sync.
     """

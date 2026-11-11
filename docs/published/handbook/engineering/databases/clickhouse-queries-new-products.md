@@ -4,7 +4,7 @@ sidebar: Handbook
 showTitle: true
 ---
 
-This guide covers best practices for writing ClickHouse queries when shipping new products at PostHog.
+This guide covers best practices for writing ClickHouse queries when shipping new products at Flind.
 
 Related reading:
 
@@ -36,7 +36,7 @@ The `QueryRunner` base class gives you:
 
 - **Caching**: Built-in caching with configurable refresh intervals. Override [`_refresh_frequency()`](https://github.com/PostHog/posthog/blob/master/products/product_analytics/backend/hogql_queries/trends/trends_query_runner.py#L125-L142) to control how often results are refreshed. Cache keys are automatically derived from the query, team, modifiers, and timezone via `get_cache_key()`.
 
-- **Observability**: Query execution is automatically instrumented with Prometheus metrics (`QUERY_EXECUTION_TOTAL`, `QUERY_EXECUTION_DURATION`) and PostHog analytics events, giving you latency histograms and error breakdowns for free.
+- **Observability**: Query execution is automatically instrumented with Prometheus metrics (`QUERY_EXECUTION_TOTAL`, `QUERY_EXECUTION_DURATION`) and Flind analytics events, giving you latency histograms and error breakdowns for free.
 
 - **Testability**: Query runners are straightforward to unit test – instantiate the runner with a team and a query schema, call `calculate()`, and assert on the response. No HTTP layer needed.
 
@@ -167,7 +167,7 @@ To debug performance, you need the actual ClickHouse SQL that HogQL compiles to.
 
 - **From a query runner**: Call `runner.to_query()` to get the compiled SQL without executing it
 - **From `execute_hogql_query()`**: The returned `HogQLQueryResponse` includes a `.clickhouse` field with the compiled SQL
-- **From the PostHog UI**: Open the query in the SQL editor and click "Show ClickHouse SQL"
+- **From the Flind UI**: Open the query in the SQL editor and click "Show ClickHouse SQL"
 
 #### Step 3: Run EXPLAIN to check index and partition usage
 

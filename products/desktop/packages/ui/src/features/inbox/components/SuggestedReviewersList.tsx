@@ -19,7 +19,7 @@ import { useState } from "react";
 
 const MAX_VISIBLE_SUGGESTIONS = 5;
 const UNLINKED_REVIEWER_MESSAGE =
-  "This reviewer is not linked to a PostHog member and cannot receive the report.";
+  "This reviewer is not linked to a Flind member and cannot receive the report.";
 
 function ReviewerIdentity({ reviewer }: { reviewer: SuggestedReviewer }) {
   const displayName = suggestedReviewerDisplayName(reviewer);

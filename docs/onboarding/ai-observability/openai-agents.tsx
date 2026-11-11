@@ -9,11 +9,11 @@ export const getOpenAIAgentsSteps = (ctx: OnboardingComponentsContext): StepDefi
 
     return [
         {
-            title: 'Install the PostHog SDK',
+            title: 'Install the Flind SDK',
             badge: 'required',
             content: (
                 <>
-                    <Markdown>Setting up analytics starts with installing the PostHog Python SDK.</Markdown>
+                    <Markdown>Setting up analytics starts with installing the Flind Python SDK.</Markdown>
 
                     <CodeBlock
                         language="bash"
@@ -30,8 +30,8 @@ export const getOpenAIAgentsSteps = (ctx: OnboardingComponentsContext): StepDefi
             content: (
                 <>
                     <Markdown>
-                        Install the OpenAI Agents SDK. PostHog instruments your agent runs by registering a tracing
-                        processor. The PostHog SDK **does not** proxy your calls.
+                        Install the OpenAI Agents SDK. Flind instruments your agent runs by registering a tracing
+                        processor. The Flind SDK **does not** proxy your calls.
                     </Markdown>
 
                     <CodeBlock
@@ -43,7 +43,7 @@ export const getOpenAIAgentsSteps = (ctx: OnboardingComponentsContext): StepDefi
 
                     <CalloutBox type="fyi" icon="IconInfo" title="Proxy note">
                         <Markdown>
-                            These SDKs **do not** proxy your calls. They only fire off an async call to PostHog in the
+                            These SDKs **do not** proxy your calls. They only fire off an async call to Flind in the
                             background to send the data. You can also use AI observability with other SDKs or our API,
                             but you will need to capture the data in the right format. See the schema in the [manual
                             capture section](https://posthog.com/docs/ai-observability/installation/manual-capture) for
@@ -54,14 +54,14 @@ export const getOpenAIAgentsSteps = (ctx: OnboardingComponentsContext): StepDefi
             ),
         },
         {
-            title: 'Initialize PostHog tracing',
+            title: 'Initialize Flind tracing',
             badge: 'required',
             content: (
                 <>
                     <Markdown>
-                        Initialize PostHog with your project token and host from [your project
+                        Initialize Flind with your project token and host from [your project
                         settings](https://app.posthog.com/settings/project). Then call `instrument()` to register
-                        PostHog tracing with the OpenAI Agents SDK. This automatically captures all agent traces, spans,
+                        Flind tracing with the OpenAI Agents SDK. This automatically captures all agent traces, spans,
                         and LLM generations.
                     </Markdown>
 
@@ -102,7 +102,7 @@ export const getOpenAIAgentsSteps = (ctx: OnboardingComponentsContext): StepDefi
                 <>
                     <Markdown>
                         {dedent`
-                            Run your OpenAI agents as normal. PostHog automatically captures \`$ai_generation\`
+                            Run your OpenAI agents as normal. Flind automatically captures \`$ai_generation\`
                             events for LLM calls and \`$ai_span\` events for agent execution, tool calls, and
                             handoffs. Pass the user and conversation on the run's \`RunConfig\`:
 
@@ -160,7 +160,7 @@ export const getOpenAIAgentsSteps = (ctx: OnboardingComponentsContext): StepDefi
                 <>
                     <Markdown>
                         {dedent`
-                            PostHog captures the full trace hierarchy for complex agent workflows, including
+                            Flind captures the full trace hierarchy for complex agent workflows, including
                             handoffs between multiple agents.
                         `}
                     </Markdown>
@@ -203,7 +203,7 @@ export const getOpenAIAgentsSteps = (ctx: OnboardingComponentsContext): StepDefi
 
                     <Markdown>
                         {dedent`
-                            As with the single-agent example above, PostHog captures every span in that list
+                            As with the single-agent example above, Flind captures every span in that list
                             automatically. You write no extra code for the handoff itself.
                         `}
                     </Markdown>

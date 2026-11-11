@@ -70,7 +70,7 @@ import { canvasSidePanelLogic } from '../sidePanel/canvasSidePanelLogic'
 import { startCanvasGeneration } from '../startCanvasGeneration'
 import { deleteCanvasWithUndo } from './deleteCanvasWithUndo'
 
-// pinned: the path of the single-file component a draft renders, shared with PostHog Desktop
+// pinned: the path of the single-file component a draft renders, shared with Flind Desktop
 export const CANVAS_COMPONENT_PATH = 'src/canvas.tsx'
 const POLL_INTERVAL_MS = 3000
 

@@ -114,7 +114,7 @@ def validated_github_repository(repository: str) -> str:
 def _issue_body(*, summary: str, report_url: str, repository: str) -> str:
     return (
         f"{summary}\n\n"
-        f"PostHog self-driving is implementing this. The pull request will open against "
+        f"Flind self-driving is implementing this. The pull request will open against "
         f"`{repository}` and will link back to this issue.\n\n"
         f"Report: {report_url}"
     )
@@ -238,7 +238,7 @@ def create_tracker_issue_for_report(
             external_context = _create_provider_issue(
                 target,
                 # A report can reach dispatch before its research run writes a title.
-                title=report.title or "PostHog self-driving change",
+                title=report.title or "Flind self-driving change",
                 body=_issue_body(summary=report.summary or "", report_url=report_url, repository=repository),
                 report_url=report_url,
             )
@@ -359,8 +359,8 @@ def _close_notice(*, report_link: str, actor_mention: str | None) -> str:
     out under the team's GitHub App.
     """
     if actor_mention:
-        return f"🔕 {actor_mention} closed the {report_link} in PostHog, so this issue is closed too."
-    return f"🔕 The {report_link} was closed in PostHog, so this issue is closed too."
+        return f"🔕 {actor_mention} closed the {report_link} in Flind, so this issue is closed too."
+    return f"🔕 The {report_link} was closed in Flind, so this issue is closed too."
 
 
 def _comment_before_close(
@@ -503,7 +503,7 @@ def _close_tracker_issue_for_report(
         report_url = build_report_url(team_id, report_id, ReportLinkSource.TRACKER)
         _comment_before_close(
             tracker,
-            report_link=f"[linked PostHog report]({report_url})",
+            report_link=f"[linked Flind report]({report_url})",
             actor_mention=github_mention_for_user(actor_user_id),
             priority=priority,
         )

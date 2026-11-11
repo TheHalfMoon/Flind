@@ -54,7 +54,7 @@ class ChurnkeySource(ResumableSource[ChurnkeySourceConfig, ChurnkeyResumeConfig]
             label="Churnkey",
             releaseStatus=ReleaseStatus.GA,
             keywords=["churn", "retention", "cancellation"],
-            caption="""Enter your Churnkey **Data API** key and App ID to pull your cancel-flow session data into the PostHog Data warehouse.
+            caption="""Enter your Churnkey **Data API** key and App ID to pull your cancel-flow session data into the Flind Data warehouse.
 
 The Data API key is distinct from your Cancel Flow API key — request one from [support@churnkey.co](mailto:support@churnkey.co). Both the key and your App ID are shown in Churnkey under **Settings → Account**.""",
             iconPath="/static/services/churnkey.png",

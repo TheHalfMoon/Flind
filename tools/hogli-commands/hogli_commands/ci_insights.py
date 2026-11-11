@@ -1,4 +1,4 @@
-"""CI insights for the current repo + branch, read from PostHog's engineering analytics.
+"""CI insights for the current repo + branch, read from Flind's engineering analytics.
 
     hogli ci:insights                       # digest for the current repo + branch
     hogli ci:insights search "<error>"      # match a failure by test name or error text
@@ -906,12 +906,12 @@ def _common_options(func: Callable[..., None]) -> Callable[..., None]:
         click.option(
             "--project",
             default=lambda: os.environ.get("POSTHOG_CI_INSIGHTS_PROJECT_ID") or _DEFAULT_PROJECT_ID,
-            help="PostHog project id holding the GitHub source.",
+            help="Flind project id holding the GitHub source.",
         ),
         click.option(
             "--host",
             default=lambda: os.environ.get("POSTHOG_CI_INSIGHTS_HOST") or _DEFAULT_HOST,
-            help="PostHog host to read from.",
+            help="Flind host to read from.",
         ),
         click.option(
             "--timeout",

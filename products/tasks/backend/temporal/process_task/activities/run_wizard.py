@@ -56,7 +56,7 @@ def _wizard_region() -> str:
 
 
 def _format_wizard_output(result: ExecutionResult) -> str:
-    sections = [f"PostHog setup wizard output (exit code {result.exit_code})"]
+    sections = [f"Flind setup wizard output (exit code {result.exit_code})"]
     if result.stdout:
         sections += ["", "=== stdout ===", result.stdout]
     if result.stderr:
@@ -81,7 +81,7 @@ def _build_wizard_command(repo_path: str, project_id: int) -> str:
     ]
 
     if settings.DEBUG:
-        # Local dev: pin the wizard to the same PostHog instance the sandbox itself reaches, instead
+        # Local dev: pin the wizard to the same Flind instance the sandbox itself reaches, instead
         # of letting it infer a cloud region from the access token (which fails for a locally-minted
         # token). POSTHOG_API_URL is injected into the sandbox env and already carries the provider's
         # in-container rewrite (e.g. http://host.docker.internal:8000 for the Docker sandbox, since
@@ -95,9 +95,9 @@ def _build_wizard_command(repo_path: str, project_id: int) -> str:
 @activity.defn
 @asyncify
 def run_wizard(input: RunWizardInput) -> None:
-    """Run the PostHog setup wizard in the sandbox before the agent starts.
+    """Run the Flind setup wizard in the sandbox before the agent starts.
 
-    The wizard performs the real PostHog integration (modifies source, installs deps, writes
+    The wizard performs the real Flind integration (modifies source, installs deps, writes
     posthog-setup-report.md), leaving the changes uncommitted in the working tree. The downstream
     agent then only has to commit them, open a PR, and keep it green. A non-zero exit fails the run
     rather than handing a half-integrated tree to the agent.
@@ -112,7 +112,7 @@ def run_wizard(input: RunWizardInput) -> None:
         org, repo = input.repository.lower().split("/")
         repo_path = f"/tmp/workspace/repos/{org}/{repo}"
 
-        emit_agent_log(ctx.run_id, "info", "Running the PostHog setup wizard")
+        emit_agent_log(ctx.run_id, "info", "Running the Flind setup wizard")
         sandbox = get_sandbox_class_for_sandbox_id(input.sandbox_id).get_by_id(input.sandbox_id)
         command = _build_wizard_command(repo_path, ctx.team_id)
 
@@ -141,13 +141,13 @@ def run_wizard(input: RunWizardInput) -> None:
             emit_agent_log(ctx.run_id, "debug", result.stdout)
         if result.exit_code == WIZARD_TIMEOUT_EXIT_CODE:
             minutes = WIZARD_RUN_TIMEOUT_SECONDS // 60
-            emit_agent_log(ctx.run_id, "error", f"PostHog setup wizard timed out after {minutes} minutes")
-            raise RuntimeError(f"PostHog setup wizard timed out after {minutes} minutes")
+            emit_agent_log(ctx.run_id, "error", f"Flind setup wizard timed out after {minutes} minutes")
+            raise RuntimeError(f"Flind setup wizard timed out after {minutes} minutes")
         if result.exit_code != 0:
             # The wizard prints its fatal error to stdout (e.g. "Something went wrong: ..."); stderr is
             # mostly npm noise. Prefer the stdout tail so the real cause shows at error level.
             detail = (result.stdout or "").strip()[-2000:] or (result.stderr or "").strip()[-2000:]
-            emit_agent_log(ctx.run_id, "error", f"PostHog setup wizard failed (exit {result.exit_code}): {detail}")
-            raise RuntimeError(f"PostHog setup wizard failed (exit {result.exit_code}): {detail}")
+            emit_agent_log(ctx.run_id, "error", f"Flind setup wizard failed (exit {result.exit_code}): {detail}")
+            raise RuntimeError(f"Flind setup wizard failed (exit {result.exit_code}): {detail}")
 
-        emit_agent_log(ctx.run_id, "info", "PostHog setup wizard completed")
+        emit_agent_log(ctx.run_id, "info", "Flind setup wizard completed")

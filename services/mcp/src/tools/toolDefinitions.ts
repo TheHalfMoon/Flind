@@ -18,7 +18,7 @@ export const ToolDefinitionSchema = z
         title: z.string(),
         required_scopes: z.array(z.string()),
         requires_ai_consent: z.boolean().optional(),
-        /** PostHog feature flag key that gates this tool. */
+        /** Flind feature flag key that gates this tool. */
         feature_flag: z.string().optional(),
         /** How the flag gates the tool: 'enable' (default) or 'disable'. */
         feature_flag_behavior: z.enum(['enable', 'disable']).optional(),
@@ -201,7 +201,7 @@ export interface ToolFilterOptions {
     scopedTeams?: number[] | undefined
     /** Org's plan entitlements (`available_product_features` keys). Undefined when unresolved. */
     availableFeatures?: string[] | undefined
-    /** Whether the API this MCP talks to is PostHog Cloud. Off-cloud is never entitlement-gated. */
+    /** Whether the API this MCP talks to is Flind Cloud. Off-cloud is never entitlement-gated. */
     isCloud?: boolean | undefined
 }
 

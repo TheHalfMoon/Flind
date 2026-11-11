@@ -93,12 +93,12 @@ describe("classifyGatewayLimitError", () => {
   it.each([
     [
       // The gate 403 as the ACP layer surfaces it (full body embedded).
-      `Internal error: API Error: 403 {"error":{"message":"Model 'claude-opus-4-8' needs a paid PostHog plan. Models available on the free tier: @cf/zai-org/glm-5.2. Add a payment method to your organization to unlock all models. (rate_limit)","type":"permission_error","code":"model_gate"}}`,
+      `Internal error: API Error: 403 {"error":{"message":"Model 'claude-opus-4-8' needs a paid Flind plan. Models available on the free tier: @cf/zai-org/glm-5.2. Add a payment method to your organization to unlock all models. (rate_limit)","type":"permission_error","code":"model_gate"}}`,
       "model_gate",
     ],
     [
       // SDK surfaces that reduce the body to its message string.
-      "API Error: 403 Model 'gpt-5.5' needs a paid PostHog plan. (rate_limit)",
+      "API Error: 403 Model 'gpt-5.5' needs a paid Flind plan. (rate_limit)",
       "model_gate",
     ],
     [
@@ -119,16 +119,16 @@ describe("classifyGatewayLimitError", () => {
     ],
     [
       // Bare FastAPI detail from gateways predating the error envelope.
-      `Internal error: API Error: 403 {"detail":"Model 'claude-opus-4-8' needs a paid PostHog plan."}`,
+      `Internal error: API Error: 403 {"detail":"Model 'claude-opus-4-8' needs a paid Flind plan."}`,
       "model_gate",
     ],
     [
-      "Rate limit exceeded: Your team has reached its PostHog Desktop usage limit for this billing period. See https://app.posthog.com/organization/billing for your usage and limits.",
+      "Rate limit exceeded: Your team has reached its Flind Desktop usage limit for this billing period. See https://app.posthog.com/organization/billing for your usage and limits.",
       "org_limit",
     ],
     [
       // Pre-rename wording still sent by older gateway deployments.
-      "Rate limit exceeded: Your team has reached its PostHog Code usage limit for this billing period. See https://app.posthog.com/organization/billing for your usage and limits.",
+      "Rate limit exceeded: Your team has reached its Flind Code usage limit for this billing period. See https://app.posthog.com/organization/billing for your usage and limits.",
       "org_limit",
     ],
     [
@@ -162,14 +162,14 @@ describe("classifyGatewayLimitError", () => {
     expect(
       classifyGatewayLimitError(
         "Internal error",
-        "API Error: 403 Model 'gpt-5.5' needs a paid PostHog plan.",
+        "API Error: 403 Model 'gpt-5.5' needs a paid Flind plan.",
       ),
     ).toBe("model_gate");
   });
 
   it.each([
     [
-      'API Error: 402 {"error":{"code":"credit_bucket_exhausted","message":"Your organization has reached its PostHog Desktop usage limit"}}',
+      'API Error: 402 {"error":{"code":"credit_bucket_exhausted","message":"Your organization has reached its Flind Desktop usage limit"}}',
       "org_limit",
     ],
     [
@@ -225,7 +225,7 @@ describe("classifyGatewayLimitError", () => {
   it.each([
     "Rate limit exceeded",
     "Rate limit exceeded: Product rate limit exceeded",
-    "Your team has used its monthly PostHog AI credits.",
+    "Your team has used its monthly Flind AI credits.",
     "network down",
   ])("returns null for %j", (message) => {
     expect(classifyGatewayLimitError(message)).toBeNull();
@@ -439,7 +439,7 @@ describe("isFatalSessionError", () => {
     // model-gate exclusion rather than the rate-limit one.
     expect(
       isFatalSessionError(
-        `Internal error: API Error: 403 {"detail":"Model 'claude-opus-4-8' needs a paid PostHog plan."}`,
+        `Internal error: API Error: 403 {"detail":"Model 'claude-opus-4-8' needs a paid Flind plan."}`,
       ),
     ).toBe(false);
   });

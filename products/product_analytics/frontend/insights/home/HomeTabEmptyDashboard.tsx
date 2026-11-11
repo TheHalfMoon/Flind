@@ -21,7 +21,7 @@ export function HomeTabEmptyDashboard({
         >
             <h3 className="mb-0 text-base font-semibold">This dashboard has no charts yet</h3>
             <p className="mb-0 max-w-120 text-secondary">
-                Continue with PostHog AI to add charts, or reset to the PostHog default dashboard.
+                Continue with Flind AI to add charts, or reset to the Flind default dashboard.
             </p>
             <div className="flex flex-wrap justify-center gap-2">
                 <LemonButton
@@ -31,7 +31,7 @@ export function HomeTabEmptyDashboard({
                     disabledReason={aiDisabledReason || undefined}
                     data-attr="home-tab-empty-dashboard-continue-ai"
                 >
-                    Continue with PostHog AI
+                    Continue with Flind AI
                 </LemonButton>
                 <LemonButton
                     type="secondary"
@@ -40,7 +40,7 @@ export function HomeTabEmptyDashboard({
                     loading={resetting}
                     data-attr="home-tab-empty-dashboard-reset"
                 >
-                    Reset to PostHog default
+                    Reset to Flind default
                 </LemonButton>
             </div>
         </div>

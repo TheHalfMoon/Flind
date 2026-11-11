@@ -552,7 +552,7 @@ async def _run_import_attempt(inputs: ImportDataActivityInputs) -> PipelineResul
                 handoff_reason=progress.handoff_reason or "unknown",
             )
         except (OperationalError, InterfaceError, InternalError, PostHogInternalDatabaseError) as e:
-            # The setup phase (resolving the job/schema/source rows for this run) reads PostHog's
+            # The setup phase (resolving the job/schema/source rows for this run) reads Flind's
             # own app DB through the Django ORM before the source's error handling takes over. A
             # transient blip there — a PgBouncer server_login_retry cooldown, or a pooled connection
             # left on a demoted standby by a failover, which rejects our writes as InternalError —
@@ -860,7 +860,7 @@ async def _import_data_with_reporting(
             try:
                 config = new_source.parse_config(pipeline_job_inputs)
             except CredentialsServiceFailure as e:
-                # A source whose config carries a PostHog-owned credential resolves it here, so a
+                # A source whose config carries a Flind-owned credential resolves it here, so a
                 # failure at this point is ours and not a corrupt `job_inputs`. Route it through the
                 # shared policy: the branch below would read it as an unparseable config and disable
                 # the customer's schema over a rotation they can't see and didn't cause.
@@ -1003,7 +1003,7 @@ class ImportJobModels:
     schema: ExternalDataSchema
     source: ExternalDataSource
     table: DataWarehouseTable | None
-    # The run's destinations minus the PostHog warehouse. Resolved here because this is the
+    # The run's destinations minus the Flind warehouse. Resolved here because this is the
     # run's one async-safe ORM fetch: the pipeline is built inside an async activity, where
     # the same query raises `SynchronousOnlyOperation`.
     external_destination_ids: list[str] = dataclasses.field(default_factory=list)
@@ -1036,12 +1036,12 @@ def _get_models(
     )
 
 
-# What a customer reads when a PostHog-managed credential is unavailable. Deliberately says
+# What a customer reads when a Flind-managed credential is unavailable. Deliberately says
 # nothing about which credential: the name is ours (`HUBSPOT_APP_CLIENT_SECRET`), it means nothing
 # to them, and naming it invites them to go looking for a setting they do not have. The full
 # detail goes to the logs and, when a person needs to act, to error tracking.
 INTEGRATION_CREDENTIAL_UNAVAILABLE_MESSAGE = (
-    "A PostHog-managed credential for this source is temporarily unavailable. This sync will "
+    "A Flind-managed credential for this source is temporarily unavailable. This sync will "
     "retry automatically — no action is needed on your side."
 )
 
@@ -1053,14 +1053,14 @@ SOURCE_ROLLOUT_IN_PROGRESS_MESSAGE = (
 )
 
 
-# What a customer reads when a lookup against PostHog's own app DB fails. It deliberately repeats
+# What a customer reads when a lookup against Flind's own app DB fails. It deliberately repeats
 # none of the driver wording: the workflow hands whatever message escapes an activity to the
 # finalization activity, which substring-matches it against every source's non-retryable patterns,
 # and the Postgres map carries the same "in a read-only transaction" and "server login has been
 # failing" strings our own pooler and failovers produce. A raw message there disables a working
 # sync and tells the customer to go fix their database. The raw text stays in the logs.
 POSTHOG_DATABASE_UNAVAILABLE_MESSAGE = (
-    "This sync stopped because of a temporary problem on PostHog's side. Your source is fine, "
+    "This sync stopped because of a temporary problem on Flind's side. Your source is fine, "
     "and the sync will run again automatically."
 )
 
@@ -1166,7 +1166,7 @@ async def _handle_import_error(
             job_inputs.team_id, str(job_inputs.source_id), job_inputs.run_id, error_msg, logger, error
         )
 
-    # Every credential the credentials service holds is PostHog's own — the OAuth app secrets and
+    # Every credential the credentials service holds is Flind's own — the OAuth app secrets and
     # API keys we own, not anything the customer configured. So none of its failure states are
     # theirs to fix, and none are permanent: a key in recovery is re-provisioned, a missing key is
     # added, an unreachable service comes back. Retry, and if the budget runs out let the run fail
@@ -1184,7 +1184,7 @@ async def _handle_import_error(
     # even if something later leaks a raw HTTPError.
     if isinstance(error, CredentialsServiceFailure):
         if error.reportable:
-            # A gap only PostHog can close (a key never added for this environment, a
+            # A gap only Flind can close (a key never added for this environment, a
             # half-configured deployment). Capture explicitly rather than letting it escape raw:
             # the message the customer ends up reading must not carry an internal credential name,
             # and error tracking still needs the real exception to group and route it.
@@ -1262,7 +1262,7 @@ async def _handle_import_error(
         await logger.adebug("Temporary host resolution failure - re-raising for Temporal retry")
         raise NonReportableError(error_msg) from error
 
-    # PostHog's own egress proxy throttled or refused the connection, whichever source was talking.
+    # Flind's own egress proxy throttled or refused the connection, whichever source was talking.
     # The next attempt recovers and there is nothing on the customer's side to fix, so classify it
     # here rather than in each source's get_retryable_errors. The original text carries through so
     # `external_data_job.Transient_Error_Messages` still rewrites it for the customer.
@@ -1273,7 +1273,7 @@ async def _handle_import_error(
 
     # A transient S3/object-store hiccup talking to our own data-warehouse bucket (IMDS/STS
     # blip, SlowDown throttling) that surfaced during this run — e.g. resetting or opening the
-    # Delta table. Not a PostHog defect and not a customer credential problem (see
+    # Delta table. Not a Flind defect and not a customer credential problem (see
     # TRANSIENT_OBJECT_STORE_ERRORS), and retrying resolves it, so it shouldn't page anyone.
     if is_transient_object_store_error(error):
         await logger.awarning(error_msg)
@@ -1303,7 +1303,7 @@ async def _handle_import_error(
         raise NonReportableError(error_msg) from error
 
     # DATA_WAREHOUSE_REDIS backs resumable-source checkpoints, row tracking, and sync locks — it's
-    # PostHog's own instance, never anything a customer's source touches. A connectivity blip there
+    # Flind's own instance, never anything a customer's source touches. A connectivity blip there
     # (unreachable, refusing connections while restarting) clears on its own once the instance is
     # reachable again, so it shouldn't disable the schema or page anyone. Narrowed to
     # Connection/TimeoutError rather than the broader RedisError so a real command-level defect
@@ -1314,7 +1314,7 @@ async def _handle_import_error(
         raise NonReportableError(error_msg) from error
 
     # A Django OperationalError/InterfaceError/InternalError here comes from a lookup against
-    # PostHog's own app DB (e.g. resolving a team or CustomPropertySource for the person-property
+    # Flind's own app DB (e.g. resolving a team or CustomPropertySource for the person-property
     # staging hook) — every source that talks to a customer's own database (Postgres, MySQL,
     # Redshift) does so over a raw driver connection, never Django's ORM, so these exception types
     # can only mean a transient blip on our side, not a customer data or config problem. The blip is
@@ -1350,7 +1350,7 @@ async def _handle_import_error(
             job_inputs.team_id, str(job_inputs.source_id), job_inputs.run_id, error_msg, logger, error
         )
 
-    # Below the classified branches, which are PostHog-side or vendor-side blips that another
+    # Below the classified branches, which are Flind-side or vendor-side blips that another
     # attempt does clear. Raised `from error` so the finalizer still classifies the real failure
     # and the customer still reads its message rather than this decision.
     if _spent_resumable_cap_without_resuming(resumable_source_manager, on_resumable_retry_budget):

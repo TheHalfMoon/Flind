@@ -173,7 +173,7 @@ class TestBusinessKnowledgeGithubRepos(APIBaseTest):
             self.integration,
             BILLING,
             tree_paths="contents/handbook/story.md",
-            description="PostHog website and public handbook",
+            description="Flind website and public handbook",
         )
 
         response = self.client.get(f"{self.base}/search/", {"query": "anniversary"})
@@ -184,7 +184,7 @@ class TestBusinessKnowledgeGithubRepos(APIBaseTest):
                 "repo": BILLING,
                 "tree_truncated": False,
                 "cache_status": "ready",
-                "description": "PostHog website and public handbook",
+                "description": "Flind website and public handbook",
             }
         ]
 

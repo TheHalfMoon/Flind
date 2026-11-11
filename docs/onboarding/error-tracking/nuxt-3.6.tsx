@@ -15,7 +15,7 @@ export const getNuxt36Steps = (ctx: OnboardingComponentsContext): StepDefinition
             <>
                 <Markdown>
                     {dedent`
-                        To send errors directly using the PostHog client, import it and use the \`captureException\` method like this:
+                        To send errors directly using the Flind client, import it and use the \`captureException\` method like this:
                     `}
                 </Markdown>
                 <CodeBlock
@@ -47,7 +47,7 @@ export const getNuxt36Steps = (ctx: OnboardingComponentsContext): StepDefinition
                             file: 'server/api/example.js',
                             code: dedent`
                               const runtimeConfig = useRuntimeConfig()
-                              const posthog = new PostHog(
+                              const posthog = new Flind(
                                 runtimeConfig.public.posthogPublicKey,
                                 {
                                   host: runtimeConfig.public.posthogHost,
@@ -105,9 +105,9 @@ export const getNuxt36Steps = (ctx: OnboardingComponentsContext): StepDefinition
         content: (
             <Markdown>
                 {dedent`
-                    Before proceeding, let's make sure exception events are being captured and sent to PostHog. You should see events appear in the activity feed.
+                    Before proceeding, let's make sure exception events are being captured and sent to Flind. You should see events appear in the activity feed.
 
-                    [Check for exceptions in PostHog](https://app.posthog.com/activity/events)
+                    [Check for exceptions in Flind](https://app.posthog.com/activity/events)
                 `}
             </Markdown>
         ),

@@ -72,7 +72,7 @@ class TestPushDispatcher(TestCase):
         mock_delay.assert_called_once()
         user_id, title, body, data, suppressed = mock_delay.call_args.args
         self.assertEqual(user_id, self.user.id)
-        self.assertEqual(title, "PostHog")
+        self.assertEqual(title, "Flind")
         self.assertIn(expected_body_fragment, body)
         self.assertEqual(data["taskId"], str(self.task.id))
         self.assertEqual(data["projectId"], self.task.team_id)
@@ -310,7 +310,7 @@ class TestPushDispatcher(TestCase):
         with self.captureOnCommitCallbacks(execute=True):
             notify_task_run_completed(self.task_run)
         send_user_push(
-            self.user.id, "PostHog", "Finished", {"taskId": str(self.task.id), "projectId": self.task.team_id}
+            self.user.id, "Flind", "Finished", {"taskId": str(self.task.id), "projectId": self.task.team_id}
         )
         mock_delay.assert_not_called()
         mock_send.assert_not_called()
@@ -455,7 +455,7 @@ class TestPushDispatcher(TestCase):
                 )
             get_tasks_cache().clear()
         mock_delay.assert_called_once()
-        self.assertEqual(mock_delay.call_args.args[1:3], ("PostHog", f'"My Task" pull request was {outcome}'))
+        self.assertEqual(mock_delay.call_args.args[1:3], ("Flind", f'"My Task" pull request was {outcome}'))
         self.assertEqual(mock_delay.call_args.args[3]["pullRequestUrl"], pr_url)
         self.assertEqual(mock_delay.call_args.args[3]["notificationKind"], f"pr_{outcome}")
         with self.captureOnCommitCallbacks(execute=True):

@@ -141,7 +141,7 @@ export interface ReadStatesApi {
 }
 
 export interface ProjectScope {
-    /** Base URL of the PostHog instance, without a trailing slash. */
+    /** Base URL of the Flind instance, without a trailing slash. */
     host: string
     projectId: number
 }
@@ -412,7 +412,7 @@ export interface ReportArtefactWriteApi {
 }
 
 /** `PriorityAssessment` requires a non-empty explanation. */
-export const MANUAL_PRIORITY_EXPLANATION = 'Priority set by hand from the PostHog mobile app'
+export const MANUAL_PRIORITY_EXPLANATION = 'Priority set by hand from the Flind mobile app'
 
 /** `POST signals/reports/{id}/artefacts/` with a `priority_judgment`: the newest one is the report's priority. */
 export function postPriorityJudgment(

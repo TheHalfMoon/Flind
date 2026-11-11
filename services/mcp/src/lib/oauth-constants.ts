@@ -8,7 +8,7 @@ import type { CloudRegion } from '@/tools/types'
 import packageJson from '../../package.json'
 
 // posthog/auth.py mirrors the "posthog/mcp-server" prefix as MCP_USER_AGENT_MARKER.
-// PostHog matches it to apply the org-level MCP read-only policy. If the prefix
+// Flind matches it to apply the org-level MCP read-only policy. If the prefix
 // changes, the policy stops matching MCP traffic. Change both sides together.
 export const USER_AGENT = `posthog/mcp-server; version: ${packageJson.version}`
 
@@ -44,7 +44,7 @@ export function getUserAgent(opts: GetUserAgentOptions = {}): string {
     return parts.join(' ')
 }
 
-// The PostHog app on OpenAI's platform (ChatGPT connector and Codex plugin), same id in US
+// The Flind app on OpenAI's platform (ChatGPT connector and Codex plugin), same id in US
 // and EU. It's the URL of the app's metadata document, so it only changes if we re-register
 // the app. Django reads it off the token at introspection, so a client can't spoof it.
 // Codex CLI installs register their own ids under `chatgpt.com/oauth/codex/`.

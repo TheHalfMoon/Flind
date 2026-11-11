@@ -48,7 +48,7 @@ class ButtondownSource(ResumableSource[ButtondownSourceConfig, ButtondownResumeC
             category=DataWarehouseSourceCategory.MARKETING___EMAIL,
             label="Buttondown",
             releaseStatus=ReleaseStatus.GA,
-            caption="""Enter your Buttondown API key to sync your newsletter data into the PostHog data warehouse.
+            caption="""Enter your Buttondown API key to sync your newsletter data into the Flind data warehouse.
 
 You can find your API key on the [API page](https://buttondown.com/requests) in your Buttondown settings.
 """,

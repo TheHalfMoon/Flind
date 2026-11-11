@@ -63,7 +63,7 @@ def extract_token(request: Request) -> str | None:
 
 
 def upstream_auth_header(request: Request) -> str:
-    """Build the Authorization header to forward to PostHog for the request's token.
+    """Build the Authorization header to forward to Flind for the request's token.
 
     Mirrors :func:`extract_token`'s precedence (x-api-key wins over
     Authorization). Auth accepts either header, so any upstream check that

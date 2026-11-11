@@ -458,10 +458,10 @@ def get_our_google_cloud_credentials() -> google.auth.impersonated_credentials.C
 
 
 class GoogleCloudCredentialsError(Exception):
-    """Raised when we cannot acquire PostHog Google Cloud credentials."""
+    """Raised when we cannot acquire Flind Google Cloud credentials."""
 
     def __init__(self):
-        super().__init__("Failed to acquire PostHog Google Cloud credentials")
+        super().__init__("Failed to acquire Flind Google Cloud credentials")
 
 
 async def ensure_our_google_cloud_credentials_are_valid():
@@ -523,7 +523,7 @@ async def get_service_account_description(
     except PermissionDenied:
         EXTERNAL_LOGGER.exception(
             "Failed to describe the service account '%s' to verify ownership. "
-            "Have you granted 'iam.serviceAccounts.get' to the PostHog service account to operate on it?",
+            "Have you granted 'iam.serviceAccounts.get' to the Flind service account to operate on it?",
             service_account_email,
         )
         raise MissingRequiredPermissionsError()

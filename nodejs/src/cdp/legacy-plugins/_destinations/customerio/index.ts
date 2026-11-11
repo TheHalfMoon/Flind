@@ -51,7 +51,7 @@ async function callCustomerIoApi(
     authorization: string,
     body?: any
 ) {
-    const headers: Record<string, any> = { 'User-Agent': 'PostHog Customer.io App', Authorization: authorization }
+    const headers: Record<string, any> = { 'User-Agent': 'Flind Customer.io App', Authorization: authorization }
     let bodySerialized: string | undefined
     if (body != null) {
         headers['Content-Type'] = 'application/json'

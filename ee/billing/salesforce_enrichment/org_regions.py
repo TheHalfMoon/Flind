@@ -1,4 +1,4 @@
-"""Hosting region of PostHog organizations, read from billing licenses in the duckgres DWH."""
+"""Hosting region of Flind organizations, read from billing licenses in the duckgres DWH."""
 
 import uuid
 from collections import defaultdict

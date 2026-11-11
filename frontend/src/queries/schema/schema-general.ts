@@ -73,7 +73,7 @@ export { ChartDisplayCategory }
 export { SlackIntegrationScope, SlackIntegrationScopeInReview }
 
 /**
- * PostHog Query Schema definition.
+ * Flind Query Schema definition.
  *
  * This file acts as the source of truth for:
  *
@@ -2824,7 +2824,7 @@ export interface QueryRequest {
     /** @deprecated Use `refresh` instead. */
     async?: boolean
     /**
-     * Submit a JSON string representing a query for PostHog data analysis,
+     * Submit a JSON string representing a query for Flind data analysis,
      * for example a HogQL query.
      *
      * Example payload:
@@ -2836,7 +2836,7 @@ export interface QueryRequest {
      * ```
      *
      * For more details on HogQL queries,
-     * see the [PostHog HogQL documentation](/docs/hogql#api-access).
+     * see the [Flind HogQL documentation](/docs/hogql#api-access).
      */
     query: QuerySchema
     filters_override?: DashboardFilter
@@ -3594,7 +3594,7 @@ interface WebAnalyticsQueryBase<R extends Record<string, any>> extends DataNode<
 
 export interface WebOverviewQuery extends WebAnalyticsQueryBase<WebOverviewQueryResponse> {
     kind: NodeKind.WebOverviewQuery
-    /** Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. **/
+    /** Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. **/
     useWebAnalyticsPrecompute?: boolean
 }
 
@@ -4319,7 +4319,7 @@ export interface WebStatsTableQuery extends WebAnalyticsQueryBase<WebStatsTableQ
     includeHost?: boolean
     limit?: integer
     offset?: integer
-    /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. **/
+    /** Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. **/
     useWebAnalyticsPrecompute?: boolean
 }
 export interface WebStatsTableQueryResponse extends AnalyticsQueryResponseBase {
@@ -4493,7 +4493,7 @@ export type CachedWebPageDirectoryQueryResponse = CachedQueryResponse<WebPageDir
 export interface WebGoalsQuery extends WebAnalyticsQueryBase<WebGoalsQueryResponse> {
     kind: NodeKind.WebGoalsQuery
     limit?: integer
-    /** Opt this specific query into the web_goals_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. **/
+    /** Opt this specific query into the web_goals_query precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. **/
     useWebAnalyticsPrecompute?: boolean
 }
 
@@ -4556,7 +4556,7 @@ export interface WebVitalsPathBreakdownQuery extends WebAnalyticsQueryBase<WebVi
     // This tuple represents a [good, poor] threshold, where values below good are good and values above poor are poor
     // Values in between the two values are the threshold for needs_improvements
     thresholds: [number, number]
-    /** Opt this specific query into the web vitals path breakdown precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. **/
+    /** Opt this specific query into the web vitals path breakdown precompute path. Requires the `web-analytics-precompute-toggle` Flind feature flag to be on for the team's organization for the gate to pass. **/
     useWebAnalyticsPrecompute?: boolean
 }
 
@@ -6077,7 +6077,7 @@ export interface ExperimentWarehouseNativeExposureConfig extends Node {
     /** The direct-query source (an ExternalDataSource id) the SQL is written for. */
     connection_id: string
     /** Read-only SQL in the warehouse's dialect, returning one row per exposure with `entity_id`,
-     *  `variant` and `timestamp` columns. PostHog keeps the first exposure per entity and applies
+     *  `variant` and `timestamp` columns. Flind keeps the first exposure per entity and applies
      *  the experiment's date range and multiple-variant handling. */
     query: string
     unit: ExperimentWarehouseNativeUnitBinding
@@ -6349,11 +6349,11 @@ export enum ExperimentWarehouseNativeMathType {
     Sum = 'sum',
 }
 
-/** Outcome rows that live in the customer's warehouse, read through a direct connection. PostHog joins
+/** Outcome rows that live in the customer's warehouse, read through a direct connection. Flind joins
  *  them to the experiment's exposures and aggregates them inside the warehouse, so the SQL never
  *  mentions variants or exposures and only per-variant aggregates leave the warehouse. Distinct from
- *  `ExperimentDataWarehouseNode`, which reads tables synced into PostHog. It does not extend
- *  `EntityNode`: property filters and the other event settings cannot apply to SQL PostHog does not
+ *  `ExperimentDataWarehouseNode`, which reads tables synced into Flind. It does not extend
+ *  `EntityNode`: property filters and the other event settings cannot apply to SQL Flind does not
  *  parse, so the shape lists every supported field. Only mean and ratio metrics accept it. */
 export interface ExperimentWarehouseNativeNode extends Node {
     kind: NodeKind.ExperimentWarehouseNativeNode
@@ -6806,7 +6806,7 @@ export interface ExperimentExposureQueryResponse {
     health_findings?: ExperimentExposureHealthFinding[]
     /** The result of each check behind `health_findings`, so that a check that did not run is not read as passed. */
     health_checks?: ExperimentExposureHealthCheck[]
-    /** Exposed persons or groups by the SDK library (`$lib`) of their first exposure. A missing library reads as `$$_posthog_breakdown_null_$$`. Only the libraries of PostHog's own SDKs keep their own key; any other value counts under `$$_posthog_breakdown_other_$$`. Absent when the exposures come from the precomputed table or from an activation event, which carry no library. */
+    /** Exposed persons or groups by the SDK library (`$lib`) of their first exposure. A missing library reads as `$$_posthog_breakdown_null_$$`. Only the libraries of Flind's own SDKs keep their own key; any other value counts under `$$_posthog_breakdown_other_$$`. Absent when the exposures come from the precomputed table or from an activation event, which carry no library. */
     exposed_by_library?: Record<string, integer>
     /** Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics. */
     warnings?: DataWarehouseSyncWarning[]
@@ -7147,7 +7147,7 @@ export interface DatabaseSchemaQueryResponse {
 
 export interface DatabaseSchemaQuery extends DataNode<DatabaseSchemaQueryResponse> {
     kind: NodeKind.DatabaseSchemaQuery
-    /** Select the native managed Trino catalog instead of the default PostHog catalog. */
+    /** Select the native managed Trino catalog instead of the default Flind catalog. */
     executionTarget?: 'default' | 'managed_trino'
     /** Optional direct external data source id for schema introspection */
     connectionId?: string
@@ -7863,7 +7863,7 @@ export interface CustomBotCondition {
     id: string // the ID is only needed for the settings editor, so only needs to be unique within one rule
 }
 
-/** A bot a project defines itself, on top of PostHog's built-in bot list. */
+/** A bot a project defines itself, on top of Flind's built-in bot list. */
 export interface CustomBotRule {
     /** Reported by `$virt_bot_name` and `$virt_bot_operator` when the rule matches. */
     name: string

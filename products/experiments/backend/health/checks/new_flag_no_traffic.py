@@ -44,7 +44,7 @@ def new_flag_no_traffic(ctx: HealthContext) -> CheckOutcome:
     # and the finding's advice could not be followed.
     if ctx.team_has_active_flag is not True:
         return not_checked(
-            "Couldn't check because PostHog's JavaScript SDK only requests flags once a flag in this project is enabled"
+            "Couldn't check because Flind's JavaScript SDK only requests flags once a flag in this project is enabled"
         )
     return ExperimentHealthFinding(
         code=ExperimentHealthFindingCode.NEW_FLAG_NO_TRAFFIC,
@@ -52,7 +52,7 @@ def new_flag_no_traffic(ctx: HealthContext) -> CheckOutcome:
         severity=ExperimentHealthFindingSeverity.INFO,
         title="The feature flag has no traffic yet",
         detail=(
-            "PostHog hasn't recorded any calls to the linked feature flag yet. The experiment only counts users after "
+            "Flind hasn't recorded any calls to the linked feature flag yet. The experiment only counts users after "
             "your code evaluates the flag, so launch after the flag starts getting traffic. New calls can take up to "
             f"{LAST_CALLED_AT_LAG} to show up here."
         ),

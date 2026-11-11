@@ -112,7 +112,7 @@ describe("enrichFileForAgent", () => {
     expect(parseSpy).not.toHaveBeenCalled();
   });
 
-  test("returns null when no PostHog calls detected", async () => {
+  test("returns null when no Flind calls detected", async () => {
     const { deps, enrichFromApiSpy } = makeDeps({
       callsCount: 0,
       initCallsCount: 0,
@@ -282,14 +282,14 @@ describe("enrichFileForAgent", () => {
 
   test("returns enriched string when happy path completes", async () => {
     const { deps, enrichFromApiSpy, toInlineCommentsSpy } = makeDeps({
-      toInlineCommentsReturn: "posthog.capture('x'); // [PostHog] Event: \"x\"",
+      toInlineCommentsReturn: "posthog.capture('x'); // [Flind] Event: \"x\"",
     });
     const result = await enrichFileForAgent(
       deps,
       "/tmp/code.ts",
       "posthog.capture('x');",
     );
-    expect(result).toBe("posthog.capture('x'); // [PostHog] Event: \"x\"");
+    expect(result).toBe("posthog.capture('x'); // [Flind] Event: \"x\"");
     expect(toInlineCommentsSpy).toHaveBeenCalledWith({
       includeEventDescriptions: false,
       includeExperimentNames: false,

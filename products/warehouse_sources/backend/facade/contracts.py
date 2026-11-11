@@ -73,7 +73,7 @@ class SharedCredentialsEdit(StrEnum):
 
 
 class UnsupportedSyncTypeError(ValueError):
-    """The stored sync type is not a mode PostHog can run."""
+    """The stored sync type is not a mode Flind can run."""
 
 
 HISTORY_ACCESS_RULES_NOT_ALLOWED_MESSAGE = (
@@ -481,7 +481,7 @@ class UploadedFileRef:
 
 @dataclass(frozen=True)
 class UploadReadSettings:
-    """What PostHog learned about an uploaded file when it read the file in place."""
+    """What Flind learned about an uploaded file when it read the file in place."""
 
     columns: dict[str, Any]
     allow_double_quotes: bool | None = None
@@ -500,15 +500,15 @@ class WarehouseMigrationBusyError(ValueError):
 
 
 class WarehouseMigrationUploadedError(ValueError):
-    """An agent uploaded this migration, so PostHog has no vendor key to read the account again."""
+    """An agent uploaded this migration, so Flind has no vendor key to read the account again."""
 
 
 class WarehouseMigrationUploadTooLargeError(ValueError):
-    """The uploaded migration would grow past the size PostHog stores for an upload."""
+    """The uploaded migration would grow past the size Flind stores for an upload."""
 
 
 class WarehouseMigrationHasVendorKeyError(ValueError):
-    """PostHog reads this migration's vendor account with an API key, so it takes no uploads."""
+    """Flind reads this migration's vendor account with an API key, so it takes no uploads."""
 
 
 class WarehouseMigrationItemClaimedError(ValueError):
@@ -525,7 +525,7 @@ class WarehouseMigrationTableOverrideError(ValueError):
 
 @dataclass(frozen=True)
 class MigrationTableOverride:
-    """Map one Fivetran table to a PostHog table at apply, or drop it with `posthog_table=None`."""
+    """Map one Fivetran table to a Flind table at apply, or drop it with `posthog_table=None`."""
 
     vendor_table: str
     posthog_table: str | None
@@ -585,7 +585,7 @@ class WarehouseMigrationItem:
     name: str
     verdict: str
     caveats: list[str]
-    # The planned PostHog source as stored JSON, or None when the connection cannot move.
+    # The planned Flind source as stored JSON, or None when the connection cannot move.
     proposal: dict[str, Any] | None
     status: str
     external_data_source_id: UUID | None
@@ -596,7 +596,7 @@ class WarehouseMigrationItem:
 
 @dataclass(frozen=True)
 class MigrationConnectionUpload:
-    """One vendor connection as the vendor API returned it, secrets included until PostHog removes them."""
+    """One vendor connection as the vendor API returned it, secrets included until Flind removes them."""
 
     connection: dict[str, Any]
     # None when the vendor has no table list for the connection.
@@ -632,13 +632,13 @@ class ClaimedWarehouseMigrationItem:
 class PlannedMigrationSchemas:
     # The `schemas` payload for source creation, one entry per discovered table.
     schemas: list[dict[str, Any]]
-    # Planned tables that PostHog did not find or cannot sync with these credentials.
+    # Planned tables that Flind did not find or cannot sync with these credentials.
     unavailable: list[str]
     # Planned tables that only sync through a webhook.
     webhook_only: list[str]
     # Discovered tables the plan covers.
     planned: list[str]
-    # Planned tables that skip columns PostHog would still read, so they stay off.
+    # Planned tables that skip columns Flind would still read, so they stay off.
     kept_off: list[str]
 
 

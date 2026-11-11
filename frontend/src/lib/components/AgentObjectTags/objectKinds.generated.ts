@@ -186,7 +186,7 @@ export const OBJECT_KIND_ALIASES: Record<string, string> = {
 /** Rendering fallback for a tag whose kind nobody registered. */
 export const FALLBACK_OBJECT_KIND_DATA: ObjectKindData = {
     kindLabel: 'Evidence',
-    source: 'PostHog',
+    source: 'Flind',
     pathTemplate: null,
     idPattern: null,
     block: false,

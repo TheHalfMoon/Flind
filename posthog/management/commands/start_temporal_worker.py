@@ -534,7 +534,7 @@ _task_queue_specs = [
     ),
     (
         settings.TASKS_TASK_QUEUE,
-        # PostHog Desktop Slack workflows share this queue with ProcessTaskWorkflow,
+        # Flind Desktop Slack workflows share this queue with ProcessTaskWorkflow,
         # which they hand off to once a repo is picked.
         TASKS_WORKFLOWS + SLACK_APP_WORKFLOWS,
         TASKS_ACTIVITIES + SLACK_APP_ACTIVITIES,
@@ -609,7 +609,7 @@ _task_queue_specs = [
         REPLAY_VISION_WORKFLOWS,
         REPLAY_VISION_ACTIVITIES,
     ),
-    # The web-analytics digests share this queue with the PostHog-wide weekly digest: both are
+    # The web-analytics digests share this queue with the Flind-wide weekly digest: both are
     # weekly crons with the same shape, and the messaging queue they used to sit on has no other
     # workflows left, so a dedicated fleet for them isn't worth its reserved capacity.
     (

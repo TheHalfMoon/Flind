@@ -53,7 +53,7 @@ export function StatusBrief(): JSX.Element | null {
                     {scoredAlongside && (
                         <ModelScores
                             title="Scored alongside"
-                            tooltip="The newest model that PostHog scores next to the live one and checks against real outcomes. A run replaces the live model on its own when it wins."
+                            tooltip="The newest model that Flind scores next to the live one and checks against real outcomes. A run replaces the live model on its own when it wins."
                             model={scoredAlongside}
                         />
                     )}

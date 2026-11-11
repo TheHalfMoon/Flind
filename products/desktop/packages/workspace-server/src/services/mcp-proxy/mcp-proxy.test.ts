@@ -359,8 +359,8 @@ describe("McpProxyService", () => {
     });
 
     it("passes an installation credential failure through without refreshing", async () => {
-      // The failing credential belongs to the connected vendor, not to PostHog, so a
-      // PostHog token refresh cannot fix it and the retry only hides the real error.
+      // The failing credential belongs to the connected vendor, not to Flind, so a
+      // Flind token refresh cannot fix it and the retry only hides the real error.
       authServiceMock.authenticatedFetch.mockResolvedValue(
         new Response(JSON.stringify({ error: "Authentication failed" }), {
           status: 401,

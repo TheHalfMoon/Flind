@@ -331,7 +331,7 @@ export function ServerDetailPanel({ installation, template }: Props): JSX.Elemen
                                     title: `Share "${installation.name}" with the project?`,
                                     description: (
                                         <div className="max-w-120">
-                                            Everyone in this project, including the PostHog agent, can use{' '}
+                                            Everyone in this project, including the Flind agent, can use{' '}
                                             <strong>{installation.name}</strong> via your connection. Their actions will
                                             be attributed to your account. For better security, connect a service
                                             account. You can unshare anytime.

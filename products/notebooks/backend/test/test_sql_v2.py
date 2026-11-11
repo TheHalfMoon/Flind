@@ -1082,7 +1082,7 @@ class TestSQLV2RunOnAConnection(APIBaseTest):
     @patch("products.notebooks.backend.sql_v2_dispatch.start_sql_v2_run_workflow")
     def test_python_reading_a_connection_cell_says_what_to_do(self, mock_start, _mock_enabled):
         # A Python cell materializes upstream results through the data plane, which only reaches
-        # PostHog — so it must say that, not tell the user to move a Python cell onto a warehouse.
+        # Flind — so it must say that, not tell the user to move a Python cell onto a warehouse.
         self._record_done_run("node-wh", "select * from public.users", connection_id=str(self.source_id))
         response = self._post(
             code="print(wh_df.head())",
@@ -1090,7 +1090,7 @@ class TestSQLV2RunOnAConnection(APIBaseTest):
             refs={"wh_df": {"node_id": "node-wh"}},
         )
         self.assertEqual(response.status_code, 400)
-        self.assertIn("Python cells can only read PostHog results", response.json()["detail"])
+        self.assertIn("Python cells can only read Flind results", response.json()["detail"])
         mock_start.assert_not_called()
 
     @patch("products.notebooks.backend.sql_v2_direct.enqueue_process_query_task")

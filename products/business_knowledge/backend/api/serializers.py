@@ -683,7 +683,7 @@ class GapTopicActionResultSerializer(serializers.Serializer):
 class LearningBackfillProgressSerializer(serializers.Serializer):
     status = serializers.ChoiceField(
         choices=LearningBackfillStatus.choices,
-        help_text="`running` while PostHog reads past tickets. `completed` once every ticket in the window is read.",
+        help_text="`running` while Flind reads past tickets. `completed` once every ticket in the window is read.",
     )
     started_at = serializers.DateTimeField(help_text="When someone started learning from past tickets.")
     finished_at = serializers.DateTimeField(
@@ -702,7 +702,7 @@ class LearningBackfillProgressSerializer(serializers.Serializer):
 class BusinessKnowledgeSettingsSerializer(serializers.Serializer):
     learn_from_support_enabled = serializers.BooleanField(
         help_text=(
-            "When true, PostHog learns reusable knowledge from public human replies on resolved "
+            "When true, Flind learns reusable knowledge from public human replies on resolved "
             "support tickets. Requires Support to be enabled for this environment."
         ),
     )
@@ -721,7 +721,7 @@ class BusinessKnowledgeSettingsUpdateSerializer(serializers.Serializer):
     learn_from_support_enabled = serializers.BooleanField(
         required=False,
         help_text=(
-            "When true, PostHog learns reusable knowledge from public human replies on resolved "
+            "When true, Flind learns reusable knowledge from public human replies on resolved "
             "support tickets. Rejected when Support is off for this environment."
         ),
     )

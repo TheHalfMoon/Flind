@@ -25,6 +25,6 @@ export const PendingApproval: Story = {
     ...Default.args,
     approvalPending: true,
     connectionMessage:
-      "GitHub sent your request to your organization owners. Once an owner approves the PostHog app, we'll finish connecting here.",
+      "GitHub sent your request to your organization owners. Once an owner approves the Flind app, we'll finish connecting here.",
   },
 };

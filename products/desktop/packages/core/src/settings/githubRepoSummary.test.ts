@@ -11,13 +11,13 @@ describe("describeGithubRepoAccess", () => {
   it.each([
     [
       "all with total",
-      { selection: "all", total: 712, repos: ["a"], accountLabel: "PostHog" },
-      { kind: "all", label: "All repositories in PostHog (712)" },
+      { selection: "all", total: 712, repos: ["a"], accountLabel: "Flind" },
+      { kind: "all", label: "All repositories in Flind (712)" },
     ],
     [
       "all without total",
-      { selection: "all", total: null, repos: [], accountLabel: "PostHog" },
-      { kind: "all", label: "All repositories in PostHog" },
+      { selection: "all", total: null, repos: [], accountLabel: "Flind" },
+      { kind: "all", label: "All repositories in Flind" },
     ],
     [
       "selected repos",
@@ -46,7 +46,7 @@ describe("describeGithubRepoAccess", () => {
 
 describe("formatGithubAccountLabel", () => {
   it.each([
-    ["real name", { name: "PostHog", type: "Organization" }, "PostHog"],
+    ["real name", { name: "Flind", type: "Organization" }, "Flind"],
     ["blank name", { name: "  ", type: null }, "GitHub installation 152736578"],
     [
       "numeric placeholder",

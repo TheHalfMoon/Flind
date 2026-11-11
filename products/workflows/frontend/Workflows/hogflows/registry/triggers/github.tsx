@@ -97,7 +97,7 @@ function StepTriggerConfigurationGithubEvent({ node }: { node: any }): JSX.Eleme
             <LemonField.Pure
                 label="Repository"
                 error={validationResult?.errors?.repository}
-                info="PostHog only receives events from repositories the GitHub app is installed on."
+                info="Flind only receives events from repositories the GitHub app is installed on."
             >
                 <GitHubRepositoryPicker
                     integrationId={githubIntegrations[0].id}

@@ -256,7 +256,7 @@ def _no_rollout(*, observed: bool) -> ExperimentHealthFinding:
         subcode=RUNNING_BUT_NO_ROLLOUT,
         title="The experiment is running, but its feature flag has a 0% rollout",
         detail=(
-            "The linked feature flag has a 0% rollout, so PostHog serves no variant. Only users whose variant your "
+            "The linked feature flag has a 0% rollout, so Flind serves no variant. Only users whose variant your "
             "own code assigns are exposed. If your code doesn't assign variants, no new users are being exposed. "
             "Users exposed earlier are still included in the results. End the experiment with a conclusion, or "
             "increase the rollout percentage to expose users."
@@ -283,7 +283,7 @@ def _live_after_end(ctx: HealthContext, ended_at: datetime) -> ExperimentHealthF
         )
     if ctx.flag_called_after_end is False:
         return _ended_flag_not_called(ended_at, ctx.flag_last_called_at, ctx.team_timezone)
-    # Info, because only a recorded call shows that users still get a variant. PostHog can't tell yet in the first
+    # Info, because only a recorded call shows that users still get a variant. Flind can't tell yet in the first
     # days after the end, and never for an organization whose flag calls it can't read.
     return _finding(
         code=ExperimentHealthFindingCode.FLAG_LIVE_AFTER_END,
@@ -324,10 +324,10 @@ def _ended_flag_not_called(
     # Info, because a flag that nothing reads exposes nobody. The finding says only what `last_called_at` shows,
     # because reads that record no call can still get a variant.
     last_call = (
-        f"PostHog last recorded a call of the flag on {format_change_time(last_called_at, team_timezone)}, and none "
+        f"Flind last recorded a call of the flag on {format_change_time(last_called_at, team_timezone)}, and none "
         f"in the last {ENDED_FLAG_QUIET_PERIOD.days} days."
         if last_called_at is not None and last_called_at > ended_at
-        else "PostHog hasn't recorded a call of the flag since then."
+        else "Flind hasn't recorded a call of the flag since then."
     )
     return _finding(
         code=ExperimentHealthFindingCode.FLAG_LIVE_AFTER_END,
@@ -369,13 +369,13 @@ def _assigned_outside(traffic: ConditionSetTraffic) -> ExperimentHealthFinding:
         code=ExperimentHealthFindingCode.FLAG_OFF_WHILE_RUNNING,
         subcode=ASSIGNED_OUTSIDE_FLAG_SERVICE,
         severity=ExperimentHealthFindingSeverity.INFO,
-        title="Variants are assigned outside PostHog",
+        title="Variants are assigned outside Flind",
         detail=(
-            "The linked feature flag has a 0% rollout, so PostHog assigns no variants. But "
+            "The linked feature flag has a 0% rollout, so Flind assigns no variants. But "
             f"{people:,} {'user' if people == 1 else 'users'} got a variant since "
-            f"{format_change_time(since, traffic.team_timezone)} from flag calls that PostHog didn't evaluate, so "
+            f"{format_change_time(since, traffic.team_timezone)} from flag calls that Flind didn't evaluate, so "
             "your own code assigns the variants, directly or through a bootstrap. These users count in the results. "
-            "The flag's release conditions and variant split don't decide who gets which variant. If PostHog should "
+            "The flag's release conditions and variant split don't decide who gets which variant. If Flind should "
             "assign the variants, increase the rollout and stop assigning them in your code."
         ),
         evidence={"people_assigned_outside": people, "assigned_outside_since": since.astimezone(UTC).isoformat()},

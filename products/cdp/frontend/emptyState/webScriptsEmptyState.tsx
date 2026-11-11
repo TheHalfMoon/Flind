@@ -24,7 +24,7 @@ export const webScriptsEmptyState: SceneProductEmptyState = {
         text: {
             'needs-setup': {
                 headline: 'Add scripts to your site without redeploying',
-                lead: 'Web scripts run custom JavaScript on your site through the PostHog snippet you already have. Start from templates for banners, notifications, and chat-style widgets, or write your own. Enable, update, or disable each script from PostHog, with no code changes.',
+                lead: 'Web scripts run custom JavaScript on your site through the Flind snippet you already have. Start from templates for banners, notifications, and chat-style widgets, or write your own. Enable, update, or disable each script from Flind, with no code changes.',
             },
         },
         primaryAction: {

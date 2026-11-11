@@ -71,58 +71,58 @@ describe("parseGithubUrl", () => {
   describe("repo", () => {
     it.each([
       // HTTPS canonical forms
-      ["https://github.com/PostHog/code.git", "PostHog", "code"],
-      ["https://github.com/PostHog/code", "PostHog", "code"],
-      ["https://github.com/PostHog/code/", "PostHog", "code"],
-      ["https://github.com/PostHog/code.git/", "PostHog", "code"],
-      ["http://github.com/PostHog/code.git", "PostHog", "code"],
-      ["https://user:token@github.com/PostHog/code.git", "PostHog", "code"],
+      ["https://github.com/PostHog/code.git", "Flind", "code"],
+      ["https://github.com/PostHog/code", "Flind", "code"],
+      ["https://github.com/PostHog/code/", "Flind", "code"],
+      ["https://github.com/PostHog/code.git/", "Flind", "code"],
+      ["http://github.com/PostHog/code.git", "Flind", "code"],
+      ["https://user:token@github.com/PostHog/code.git", "Flind", "code"],
       // SCP-style SSH
-      ["git@github.com:PostHog/code.git", "PostHog", "code"],
-      ["git@github.com:PostHog/code", "PostHog", "code"],
+      ["git@github.com:PostHog/code.git", "Flind", "code"],
+      ["git@github.com:PostHog/code", "Flind", "code"],
       // ssh:// SSH variants
-      ["ssh://git@github.com/PostHog/code.git", "PostHog", "code"],
-      ["ssh://github.com/PostHog/code.git", "PostHog", "code"],
-      ["ssh://git@ssh.github.com:443/PostHog/code.git", "PostHog", "code"],
+      ["ssh://git@github.com/PostHog/code.git", "Flind", "code"],
+      ["ssh://github.com/PostHog/code.git", "Flind", "code"],
+      ["ssh://git@ssh.github.com:443/PostHog/code.git", "Flind", "code"],
       [
         "ssh://git@ssh.github.com:443/buildingapplications/bilt-landing.git",
         "buildingapplications",
         "bilt-landing",
       ],
-      ["ssh://git@github.com:22/PostHog/code.git", "PostHog", "code"],
+      ["ssh://git@github.com:22/PostHog/code.git", "Flind", "code"],
       // Other protocols
-      ["git://github.com/PostHog/code.git", "PostHog", "code"],
-      ["git+https://github.com/PostHog/code.git", "PostHog", "code"],
-      ["git+ssh://git@github.com/PostHog/code.git", "PostHog", "code"],
+      ["git://github.com/PostHog/code.git", "Flind", "code"],
+      ["git+https://github.com/PostHog/code.git", "Flind", "code"],
+      ["git+ssh://git@github.com/PostHog/code.git", "Flind", "code"],
       // Whitespace + shorthand
-      ["  https://github.com/PostHog/code.git\n", "PostHog", "code"],
-      ["\thttps://github.com/PostHog/code.git", "PostHog", "code"],
-      ["PostHog/code", "PostHog", "code"],
+      ["  https://github.com/PostHog/code.git\n", "Flind", "code"],
+      ["\thttps://github.com/PostHog/code.git", "Flind", "code"],
+      ["PostHog/code", "Flind", "code"],
       // Deep links resolve to the underlying repo
       [
         "https://github.com/PostHog/code/blob/main/README.md",
-        "PostHog",
+        "Flind",
         "code",
       ],
-      ["https://github.com/PostHog/code/tree/main", "PostHog", "code"],
-      ["https://github.com/PostHog/code/commit/abc123", "PostHog", "code"],
-      ["https://github.com/PostHog/code/wiki", "PostHog", "code"],
-      ["https://github.com/PostHog/code/actions", "PostHog", "code"],
+      ["https://github.com/PostHog/code/tree/main", "Flind", "code"],
+      ["https://github.com/PostHog/code/commit/abc123", "Flind", "code"],
+      ["https://github.com/PostHog/code/wiki", "Flind", "code"],
+      ["https://github.com/PostHog/code/actions", "Flind", "code"],
       [
         "https://github.com/PostHog/code/releases/tag/v1.0.0",
-        "PostHog",
+        "Flind",
         "code",
       ],
       // Mixed-case host (case in path is preserved)
-      ["git@GitHub.com:PostHog/Code.git", "PostHog", "Code"],
-      ["https://GITHUB.COM/PostHog/code.git", "PostHog", "code"],
-      ["HTTPS://github.com/PostHog/code.git", "PostHog", "code"],
+      ["git@GitHub.com:PostHog/Code.git", "Flind", "Code"],
+      ["https://GITHUB.COM/PostHog/code.git", "Flind", "code"],
+      ["HTTPS://github.com/PostHog/code.git", "Flind", "code"],
       // Query strings + fragments
-      ["https://github.com/PostHog/code.git?ref=main", "PostHog", "code"],
-      ["https://github.com/PostHog/code#readme", "PostHog", "code"],
+      ["https://github.com/PostHog/code.git?ref=main", "Flind", "code"],
+      ["https://github.com/PostHog/code#readme", "Flind", "code"],
       // Special characters
       ["https://github.com/post-hog/my-cool-repo", "post-hog", "my-cool-repo"],
-      ["https://github.com/PostHog/dotted.repo", "PostHog", "dotted.repo"],
+      ["https://github.com/PostHog/dotted.repo", "Flind", "dotted.repo"],
       ["https://github.com/Post_Hog/repo_name", "Post_Hog", "repo_name"],
       ["https://github.com/123/456", "123", "456"],
     ])("parses %s", (url, owner, repo) => {
@@ -134,28 +134,28 @@ describe("parseGithubUrl", () => {
     it.each([
       [
         "https://github.com/PostHog/posthog/issues/57021",
-        "PostHog",
+        "Flind",
         "posthog",
         57021,
       ],
-      ["http://github.com/PostHog/code/issues/1", "PostHog", "code", 1],
-      ["  https://github.com/PostHog/code/issues/7\n", "PostHog", "code", 7],
+      ["http://github.com/PostHog/code/issues/1", "Flind", "code", 1],
+      ["  https://github.com/PostHog/code/issues/7\n", "Flind", "code", 7],
       [
         "https://github.com/PostHog/code/issues/42?foo=bar",
-        "PostHog",
+        "Flind",
         "code",
         42,
       ],
       [
         "https://github.com/PostHog/code/issues/42#issuecomment-1",
-        "PostHog",
+        "Flind",
         "code",
         42,
       ],
-      ["https://GITHUB.COM/PostHog/code/issues/42", "PostHog", "code", 42],
+      ["https://GITHUB.COM/PostHog/code/issues/42", "Flind", "code", 42],
       [
         "https://github.com/PostHog/code/issues/999999",
-        "PostHog",
+        "Flind",
         "code",
         999999,
       ],
@@ -171,32 +171,32 @@ describe("parseGithubUrl", () => {
 
   describe("pr", () => {
     it.each([
-      ["https://github.com/PostHog/code/pull/42", "PostHog", "code", 42],
-      ["http://github.com/PostHog/code/pull/1", "PostHog", "code", 1],
-      ["  https://github.com/PostHog/code/pull/7\n", "PostHog", "code", 7],
+      ["https://github.com/PostHog/code/pull/42", "Flind", "code", 42],
+      ["http://github.com/PostHog/code/pull/1", "Flind", "code", 1],
+      ["  https://github.com/PostHog/code/pull/7\n", "Flind", "code", 7],
       // Sub-pages and tabs
-      ["https://github.com/PostHog/code/pull/42/files", "PostHog", "code", 42],
+      ["https://github.com/PostHog/code/pull/42/files", "Flind", "code", 42],
       [
         "https://github.com/PostHog/code/pull/42/commits/abc123",
-        "PostHog",
+        "Flind",
         "code",
         42,
       ],
-      ["https://github.com/PostHog/code/pull/42/checks", "PostHog", "code", 42],
+      ["https://github.com/PostHog/code/pull/42/checks", "Flind", "code", 42],
       // Query strings + fragments
       [
         "https://github.com/PostHog/code/pull/42?diff=split",
-        "PostHog",
+        "Flind",
         "code",
         42,
       ],
       [
         "https://github.com/PostHog/code/pull/42#discussion_r123",
-        "PostHog",
+        "Flind",
         "code",
         42,
       ],
-      ["https://GITHUB.COM/PostHog/code/pull/42", "PostHog", "code", 42],
+      ["https://GITHUB.COM/PostHog/code/pull/42", "Flind", "code", 42],
       [
         "https://github.com/post-hog/my-repo/pull/42",
         "post-hog",
@@ -205,7 +205,7 @@ describe("parseGithubUrl", () => {
       ],
       [
         "https://github.com/PostHog/code/pull/999999",
-        "PostHog",
+        "Flind",
         "code",
         999999,
       ],
@@ -224,7 +224,7 @@ describe("parseGithubUrl", () => {
       undefined,
       // Non-URL strings
       "not-a-url",
-      "PostHog",
+      "Flind",
       // Wrong host
       "https://gitlab.com/PostHog/code.git",
       "https://example.com/PostHog/code.git",

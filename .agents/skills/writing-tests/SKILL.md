@@ -28,7 +28,7 @@ A good answer sounds like: _"if someone makes `parse_filters` drop the `team_id`
 That is a test worth keeping.
 
 Aim each test at a failure mode we actually hit, not a hypothetical.
-The bugs PostHog ships and reverts cluster into a handful of shapes — cataloged with the test that catches each, and the failure modes no unit test should, in [references/mistakes-we-make.md](references/mistakes-we-make.md).
+The bugs Flind ships and reverts cluster into a handful of shapes — cataloged with the test that catches each, and the failure modes no unit test should, in [references/mistakes-we-make.md](references/mistakes-we-make.md).
 If your test doesn't map to one of them, be skeptical it's worth keeping.
 
 ### 2. Where does it go?

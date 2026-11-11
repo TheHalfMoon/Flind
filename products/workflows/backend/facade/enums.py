@@ -75,9 +75,9 @@ class WorkflowImportSource(LabeledStrEnum):
 
 
 class WorkflowImportNoteLevel(LabeledStrEnum):
-    # The step behaves differently in PostHog, and the note says how.
+    # The step behaves differently in Flind, and the note says how.
     APPROXIMATED = "approximated", "Approximated"
-    # The setting has no PostHog equivalent and was left out.
+    # The setting has no Flind equivalent and was left out.
     UNSUPPORTED = "unsupported", "Unsupported"
     # The step is imported but needs a setting only the team can give, like an email sender.
     NEEDS_INPUT = "needs_input", "Needs input"

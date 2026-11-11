@@ -1,6 +1,6 @@
 # Clickhouse query benchmarks
 
-This is the benchmark suite for PostHog clickhouse queries. It tracks performance improvements to clickhouse queries over time.
+This is the benchmark suite for Flind clickhouse queries. It tracks performance improvements to clickhouse queries over time.
 
 The benchmarks are run using [airspeed velocity](https://asv.readthedocs.io/).
 

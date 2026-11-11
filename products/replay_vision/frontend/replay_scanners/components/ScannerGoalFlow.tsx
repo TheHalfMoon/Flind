@@ -251,7 +251,7 @@ export function ScannerGoalFlow(): JSX.Element {
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-1.5 text-xs text-tertiary">
                                 <IconSparkles className="text-ai size-3.5" />
-                                <span>PostHog AI</span>
+                                <span>Flind AI</span>
                             </div>
                             <LemonButton
                                 type="primary"

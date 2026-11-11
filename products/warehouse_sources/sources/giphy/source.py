@@ -53,7 +53,7 @@ class GiphySource(ResumableSource[GiphySourceConfig, GiphyResumeConfig]):
             category=DataWarehouseSourceCategory.PRODUCTIVITY,
             label="Giphy",
             releaseStatus=ReleaseStatus.BETA,
-            caption="""Enter your GIPHY API key to pull trending content, search results, and the category taxonomy into the PostHog Data warehouse.
+            caption="""Enter your GIPHY API key to pull trending content, search results, and the category taxonomy into the Flind Data warehouse.
 
 Create an API key in the [GIPHY Developer Dashboard](https://developers.giphy.com/dashboard/). All GIPHY content is full-refresh only — the API has no incremental sync filter.
 

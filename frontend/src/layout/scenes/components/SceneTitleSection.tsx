@@ -133,7 +133,7 @@ export type SceneMainTitleProps = {
      * the AI button in the title section registers the tool with Max
      */
     maxToolProps?: Omit<UseMaxToolOptions, 'active'>
-    /** Optional label for the PostHog AI button. */
+    /** Optional label for the Flind AI button. */
     maxButtonLabel?: string
     /** Max character length for the description field */
     descriptionMaxLength?: number

@@ -41,7 +41,7 @@ _SHARED_RULE_CASES: list[tuple[str, dict[str, object], str]] = [
             "numerator": _WAREHOUSE_NATIVE_MEAN["source"],
             "denominator": {"kind": "EventsNode", "event": "$pageview"},
         },
-        "cannot mix a warehouse-native source with PostHog events",
+        "cannot mix a warehouse-native source with Flind events",
     ),
     (
         "funnel_without_steps",

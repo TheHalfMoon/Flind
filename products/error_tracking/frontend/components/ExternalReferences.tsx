@@ -281,7 +281,7 @@ function createGitHubIssueForm(
         shouldAwaitSubmit: true,
         initialValues: {
             title: issue.name,
-            body: `**PostHog issue:** ${issueUrl}`,
+            body: `**Flind issue:** ${issueUrl}`,
             includeStacktrace: true,
             integrationId: integration.id,
             repositories: [],
@@ -329,7 +329,7 @@ function createGitLabIssueForm(
         shouldAwaitSubmit: true,
         initialValues: {
             title: issue.name,
-            body: `**PostHog issue:** ${issueUrl}`,
+            body: `**Flind issue:** ${issueUrl}`,
             includeStacktrace: true,
             integrationId: integration.id,
             assignees: [],
@@ -416,7 +416,7 @@ function createJiraIssueForm(
         shouldAwaitSubmit: true,
         initialValues: {
             title: issue.name,
-            description: `PostHog issue: ${issueUrl}`,
+            description: `Flind issue: ${issueUrl}`,
             includeStacktrace: true,
             integrationId: integration.id,
             projectKeys: [],

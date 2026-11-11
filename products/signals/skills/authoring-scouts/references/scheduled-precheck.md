@@ -110,7 +110,7 @@ scout-precheck-query: |
   GROUP BY event
 ```
 
-- The harness reads the default from the canonical skill file that PostHog ships, not from a project's copy of the skill.
+- The harness reads the default from the canonical skill file that Flind ships, not from a project's copy of the skill.
   Adding `scout-precheck-query` to a custom scout or to a team's edited copy changes nothing. For those scouts, save `precheck_query` on the config.
 - A merged default does not apply to every project at once. A rollout setting decides which projects get it.
 - The project profile's `surfaces` section runs every canonical default too, and reads its rows as "this surface is in use". Keep a default a test of activity on the surface. A backstop row or a "new since the last run" filter changes that answer for every project. `surfaces` binds `{since}` and `{interval_minutes}` to a 30-day span. It binds `{managed_by}` to an empty string, because no config runs the query there.

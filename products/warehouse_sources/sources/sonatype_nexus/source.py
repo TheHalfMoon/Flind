@@ -52,7 +52,7 @@ class SonatypeNexusSource(
             name=ExternalDataSourceType.SONATYPENEXUS,
             category=DataWarehouseSourceCategory.ENGINEERING___MONITORING,
             label="Sonatype (Nexus Repository)",
-            caption="""Connect your Sonatype Nexus Repository instance to pull your artifact inventory into the PostHog Data warehouse.
+            caption="""Connect your Sonatype Nexus Repository instance to pull your artifact inventory into the Flind Data warehouse.
 
 Enter your instance URL (e.g. `https://nexus.example.com`) and the username and password of a user with read access to the repositories you want to sync. A [user token](https://help.sonatype.com/en/user-tokens.html) also works: use the token name code as the username and the pass code as the password.
 

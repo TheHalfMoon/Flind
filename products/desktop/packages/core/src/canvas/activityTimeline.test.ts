@@ -348,7 +348,7 @@ describe("activity events", () => {
     },
   );
 
-  it("keeps PostHog reference artifacts in the timeline", () => {
+  it("keeps Flind reference artifacts in the timeline", () => {
     expect(
       parseActivityEvent({
         event: "artifact_created",

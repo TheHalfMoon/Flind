@@ -17,7 +17,7 @@ import SourceSetupIntro from "../\_snippets/source-setup-intro.mdx"
 import SyncModes from "../\_snippets/sync-modes.mdx"
 import TroubleshootingLink from "../\_snippets/dw-troubleshooting-link.mdx"
 
-Sync your [Mistral AI](https://mistral.ai) platform data into PostHog: available and fine-tuned models,
+Sync your [Mistral AI](https://mistral.ai) platform data into Flind: available and fine-tuned models,
 uploaded files, fine-tuning jobs, and batch inference jobs (plus beta agents, conversations and their
 entries, libraries and their documents, and observability traces and spans). Use it to analyze fine-tuning progress, batch job throughput, and asset history alongside the
 rest of your product data.

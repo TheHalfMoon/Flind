@@ -1,6 +1,6 @@
 # Activity logging
 
-Activity logging is the audit trail of PostHog.
+Activity logging is the audit trail of Flind.
 A row in `posthog_activitylog` records who changed what, when, and how.
 Users read it in the Activity side panel, on an item's history tab, and on the advanced activity logs page.
 Notification destinations and workflows react to it through the `$activity_log_entry_created` internal event.
@@ -151,7 +151,7 @@ Rows written before a field joined `field_with_masked_contents` still store its 
 Guided Inbox onboarding first saves a draft when the sources step is completed; opening or editing that first step keeps the draft local.
 Later setup changes are recorded while masking the saved draft, including scout instructions and project evidence.
 Code that returns a row's `detail` to a user must read `ActivityLog.safe_detail`, which masks those fields in old rows too.
-The activity log API, the advanced activity logs API and its exports, the notifications feed, and the PostHog AI context all do.
+The activity log API, the advanced activity logs API and its exports, the notifications feed, and the Flind AI context all do.
 The `system.activity_logs` SQL table and the search filter read the stored `detail`, so old rows need rewriting to stay masked there.
 `python manage.py clean_destination_secrets --step activity-logs` rewrites them. It is a dry run until you pass `--commit`.
 These protections do not revoke exposed credentials.

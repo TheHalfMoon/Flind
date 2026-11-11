@@ -1,5 +1,5 @@
 EXECUTE_SQL_SYSTEM_PROMPT = """
-Use this tool to generate a HogQL query, which is PostHog's variant of SQL that supports most of ClickHouse SQL. We're going to use terms "HogQL" and "SQL" interchangeably.
+Use this tool to generate a HogQL query, which is Flind's variant of SQL that supports most of ClickHouse SQL. We're going to use terms "HogQL" and "SQL" interchangeably.
 
 # Important HogQL differences versus other SQL dialects
 - JSON properties are accessed using `properties.foo.bar` instead of `properties->foo->bar` for property keys without special characters.
@@ -46,7 +46,7 @@ Metadata (token counts, costs, model, $ai_trace_id, latency, error flags) stays 
 # Feature flag calls
 `$feature_flag_called` records a flag evaluation. `$feature_flag` holds the flag key, and `$feature_flag_response` holds the result: `true`, `false`, or a variant key.
 Some organizations keep these calls only in `posthog.flag_evaluations`, for 90 days, and no longer in `events`.
-- Read flag calls from `events` in a scan whose WHERE clause filters `event` to `$feature_flag_called` alone. That works for every organization, because PostHog reads such a scan from `posthog.flag_evaluations` when the organization keeps its calls there.
+- Read flag calls from `events` in a scan whose WHERE clause filters `event` to `$feature_flag_called` alone. That works for every organization, because Flind reads such a scan from `posthog.flag_evaluations` when the organization keeps its calls there.
 - A scan that filters `event` to flag calls and other events together, such as `event IN ('$feature_flag_called', '$pageview')`, or that has no `event` filter, can find no flag calls for those organizations and raise no error. Give the flag calls their own scan, for example their own branch of a `UNION ALL`.
 - An error that says the organization's `$feature_flag_called` events are only in `posthog.flag_evaluations` means that table exists. Select named columns instead of `*`, or query `posthog.flag_evaluations` directly. Its `flag_key` and `response` columns hold the flag key and the result.
 - Those organizations can have no definition of `$feature_flag_called` or its properties. A missing definition is not evidence that nothing calls a flag. Count the calls with SQL.
@@ -96,7 +96,7 @@ WHERE e.event IN (SELECT event FROM events WHERE ...)
   - To remove all editor filters while preserving the placeholder, pass an empty `filters` object (`{}`).
   - Do not replace the placeholder with explicit `timestamp` clauses when the user's request can be represented in `filters.dateRange`.
   - Supported filter placeholders are `{filters}`, `{filters.dateRange.from}`, `{filters.dateRange.to}`, and the column-bound form `{filters(expr AS key, ...)}`.
-  - Plain `{filters}` can be used only in SELECT queries that select from PostHog event-like tables: `events`, `ai_events`, `sessions`, `logs`, log attributes, traces, `groups`, or `persons`.
+  - Plain `{filters}` can be used only in SELECT queries that select from Flind event-like tables: `events`, `ai_events`, `sessions`, `logs`, log attributes, traces, `groups`, or `persons`.
   - Date filters map to `timestamp` for events/logs/traces, `$start_timestamp` for sessions, and `created_at` for groups and persons.
   - `filters` can include `dateRange` (`date_from`, `date_to`), `filterTestAccounts`, and `properties`. Property filters apply to event scope on event/log/trace queries, group scope on `groups`, person scope on queries selecting only `persons`, and session scope on `sessions` unless the query also includes `events`.
   - For any other table, view, or join (including data warehouse/source tables), use the column-bound form, for example `{filters(created_at AS timestamp, account_id AS 'account_id')}`:

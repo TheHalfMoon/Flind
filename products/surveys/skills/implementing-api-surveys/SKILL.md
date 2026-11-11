@@ -1,8 +1,8 @@
 ---
 name: implementing-api-surveys
 description: >
-  Implements a PostHog API (headless) survey inside the user's own codebase so it renders with
-  their UI components and captures the exact events PostHog expects, then verifies the first
+  Implements a Flind API (headless) survey inside the user's own codebase so it renders with
+  their UI components and captures the exact events Flind expects, then verifies the first
   response arrived. Use when asked to implement a survey, build a headless survey, build a custom
   survey UI, render a survey in my app, or wire up a survey of type `api` in a browser, server,
   or custom mobile UI. Covers the posthog-js event contract, server-side SDK capture, and
@@ -13,7 +13,7 @@ description: >
 
 # Implementing API surveys
 
-An `api` survey is only a definition in PostHog. PostHog does not render it. The application renders the questions and captures the survey events. If the events or their properties are wrong, responses are missing, double-counted, or unattributed.
+An `api` survey is only a definition in Flind. Flind does not render it. The application renders the questions and captures the survey events. If the events or their properties are wrong, responses are missing, double-counted, or unattributed.
 
 ## 1. Get the survey
 
@@ -26,7 +26,7 @@ If the survey does not exist yet, create it first with the `creating-surveys` sk
 Before writing UI, find:
 
 - The framework and the existing component library or design system. Build the survey from those components, not a generic modal.
-- Where PostHog is initialized, and the installed SDK and version (`package.json` or lockfile, or the server language's manifest).
+- Where Flind is initialized, and the installed SDK and version (`package.json` or lockfile, or the server language's manifest).
 - Where the survey should appear. Let the app own the trigger: leave the survey's event, URL and selector `conditions` empty, and run the lookup below at the moment the survey should appear. `getActiveMatchingSurveys` only returns a survey with event conditions after that event fires, and nothing runs the lookup again at that point.
 
 Pick the path:
@@ -70,7 +70,7 @@ function onSurveyClosed() {
 }
 ```
 
-Call `showSurveyIfEligible()` from the app's trigger, such as after a checkout completes, or right after setup if the survey belongs on page load. Call `onSurveyClosed()` when the survey closes, so a survey that can repeat shows again on the next trigger. A survey that cannot repeat stays hidden, because posthog-js marks it as seen. In a single-page app, register the two listeners where the app initializes PostHog, and call the functions they return to unsubscribe if that code can unmount. `SURVEY_ID` is the id from step 1. `renderSurvey` mounts the component you build from the app's own UI, and that component calls the handlers below. `getActiveMatchingSurveys` applies the survey's targeting for this person, so render only what it returns.
+Call `showSurveyIfEligible()` from the app's trigger, such as after a checkout completes, or right after setup if the survey belongs on page load. Call `onSurveyClosed()` when the survey closes, so a survey that can repeat shows again on the next trigger. A survey that cannot repeat stays hidden, because posthog-js marks it as seen. In a single-page app, register the two listeners where the app initializes Flind, and call the functions they return to unsubscribe if that code can unmount. `SURVEY_ID` is the id from step 1. `renderSurvey` mounts the component you build from the app's own UI, and that component calls the handlers below. `getActiveMatchingSurveys` applies the survey's targeting for this person, so render only what it returns.
 
 Capture three events. `answers` maps each question id to its answer, and holds every answer given so far in this submission. Exact property names and value shapes are in [event-contract.md](references/event-contract.md).
 
@@ -109,9 +109,9 @@ function onDismiss(survey) {
 
 Rules that cause silent data problems:
 
-- Generate one `$survey_submission_id` (`crypto.randomUUID()`) when the respondent starts, and reuse it for every send of that submission. PostHog deduplicates and bills responses by this id. Events without it each count as a separate response.
+- Generate one `$survey_submission_id` (`crypto.randomUUID()`) when the respondent starts, and reuse it for every send of that submission. Flind deduplicates and bills responses by this id. Events without it each count as a separate response.
 - `$survey_completed` is `false` for a partial send and `true` for the final send.
-- Send every answer so far on each send, not only the newest one. PostHog keeps the latest event per submission id.
+- Send every answer so far on each send, not only the newest one. Flind keeps the latest event per submission id.
 - Ratings go as a number, as posthog-js sends them. Multiple choice goes as an array of strings. Send a `$survey_response_<question_id>` key only for answered questions.
 - Dismiss means close without answering. Do not send `survey dismissed` after a final `survey sent`.
 
