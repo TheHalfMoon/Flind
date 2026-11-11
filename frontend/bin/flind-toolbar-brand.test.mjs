@@ -21,3 +21,8 @@ test('bundled Flind icon is a valid 128x128 PNG and comes with source vector', (
     assert.match(canonicalFlindLogo, /aria-label="Flind"/)
     assert.match(canonicalFlindLogo, /#FF7259/i)
 })
+
+test('Chrome extension archive is branded Flind rather than the inherited product', () => {
+    assert.match(extensionBuilder, /flind-toolbar-chrome-\$\{TOOLBAR_EXTENSION_VERSION\}\.zip/)
+    assert.doesNotMatch(extensionBuilder, /posthog-toolbar-chrome-/)
+})
