@@ -11,6 +11,7 @@ packages:
     - packages/llm-normalizer
     - packages/owners-yaml
     - packages/personhog-proto
+    - packages/siphash
     - packages/quill
     - packages/quill/apps/*
     - packages/quill/packages/*

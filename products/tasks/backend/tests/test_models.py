@@ -1563,7 +1563,7 @@ class TestTaskSlug(TestCase):
             ("JonathanLab", "JON"),
             ("Test Team", "TES"),
             ("ABC", "ABC"),
-            ("Flind", "POS"),
+            ("Flind", "FLI"),
             ("my team", "MYT"),
             ("123test", "123"),
             ("test", "TES"),

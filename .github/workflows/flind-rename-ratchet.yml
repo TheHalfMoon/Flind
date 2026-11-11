@@ -29,3 +29,7 @@ jobs:
               run: |
                   python3 tools/flind/rename_inventory.py --check | tee counts.json
                   { echo '## Remaining PostHog references'; echo '```json'; cat counts.json; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+            # Packages vendored from PostHog's published ones (rename stage 3) keep their own tests.
+            - name: Vendored package tests
+              run: node packages/siphash/test/flind.test.js

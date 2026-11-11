@@ -81,6 +81,7 @@ jobs:
             # Node tests carried by upstream changes that need the test databases (same services).
             FLIND_NODE_DB_TEST_TARGETS: >-
                 src/common/utils/team-manager.test.ts
+                src/ingestion/common/cookieless/cookieless-manager.test.ts
         steps:
             - uses: actions/checkout@v4
               with:
