@@ -57,6 +57,17 @@ jobs:
                   node --test frontend/bin/flind-toolbar-trusted-hosts.test.mjs
                   node --test frontend/bin/flind-toolbar-brand.test.mjs
 
+            # The extension imports Flind Quill styles and JS. A fresh runner has
+            # no dist/ output for workspace packages after pnpm install.
+            - name: Build Flind Quill workspace dependencies
+              run: |
+                  set -euo pipefail
+                  pnpm --dir packages/quill build
+                  test -f packages/quill/packages/quill/dist/tokens.scoped.css
+                  test -f packages/quill/packages/primitives/dist/index.js
+                  test -f packages/quill/packages/components/dist/index.js
+                  test -f packages/quill/packages/blocks/dist/index.js
+
             - name: Build Chrome extension
               run: |
                   set -euo pipefail
