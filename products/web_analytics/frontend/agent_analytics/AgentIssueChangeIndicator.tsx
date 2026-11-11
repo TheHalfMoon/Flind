@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconTrending } from '@posthog/icons'
+import { IconTrending } from '@flind/icons'
 import { LemonTag, LemonTagType, Tooltip } from '@flind/lemon-ui'
 
 import { IconTrendingDown, IconTrendingFlat } from 'lib/lemon-ui/icons'

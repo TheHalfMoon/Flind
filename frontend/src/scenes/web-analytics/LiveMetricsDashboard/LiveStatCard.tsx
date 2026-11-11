@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 const AnimatedNumber = ({ value, duration = 300 }: { value: number; duration?: number }): JSX.Element => {

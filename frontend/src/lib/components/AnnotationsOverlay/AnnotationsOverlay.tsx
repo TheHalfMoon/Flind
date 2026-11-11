@@ -4,7 +4,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import React, { Suspense, useEffect, useRef, useState } from 'react'
 
-import { IconPencil, IconPlusSmall, IconTrash } from '@posthog/icons'
+import { IconPencil, IconPlusSmall, IconTrash } from '@flind/icons'
 
 import { LazyTextContent } from 'lib/components/RichContentEditor/LazyRichContent'
 import { dayjs } from 'lib/dayjs'

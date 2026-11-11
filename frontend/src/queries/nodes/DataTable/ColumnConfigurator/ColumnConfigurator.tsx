@@ -7,7 +7,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { BindLogic, useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconPencil, IconX } from '@posthog/icons'
+import { IconPencil, IconX } from '@flind/icons'
 
 import { AutoSizer } from 'lib/components/AutoSizer'
 import { PropertyFilterIcon } from 'lib/components/PropertyFilters/components/PropertyFilterIcon'

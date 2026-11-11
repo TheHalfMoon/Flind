@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
 import * as organizedPng from '@posthog/brand/hoggies/png/organized'
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 import { LemonBadge, LemonButton, LemonSkeleton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

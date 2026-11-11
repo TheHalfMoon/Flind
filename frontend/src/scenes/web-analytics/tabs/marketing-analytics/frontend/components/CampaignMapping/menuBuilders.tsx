@@ -1,4 +1,4 @@
-import { IconChevronRight, IconTrash } from '@posthog/icons'
+import { IconChevronRight, IconTrash } from '@flind/icons'
 
 import { IconLink } from 'lib/lemon-ui/icons'
 import { LemonMenuItem, LemonMenuItems } from 'lib/lemon-ui/LemonMenu'

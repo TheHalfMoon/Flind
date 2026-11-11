@@ -3,7 +3,7 @@ import { CSS } from '@dnd-kit/utilities'
 import clsx from 'clsx'
 import { useState } from 'react'
 
-import { IconArrowCircleRight } from '@posthog/icons'
+import { IconArrowCircleRight } from '@flind/icons'
 import { LemonSnack, Tooltip } from '@flind/lemon-ui'
 import { Chip, ChipClose, cn } from '@flind/quill'
 

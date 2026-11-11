@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRewindPlay } from '@posthog/icons'
+import { IconRewindPlay } from '@flind/icons'
 
 import { DropdownMenuCheckboxItem, DropdownMenuGroup, DropdownMenuLabel } from 'lib/ui/quill'
 

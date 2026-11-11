@@ -1,4 +1,4 @@
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { NewAnalyticsMenu } from 'scenes/analytics/NewAnalyticsMenu'

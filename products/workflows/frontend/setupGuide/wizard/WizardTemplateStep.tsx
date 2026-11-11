@@ -2,7 +2,7 @@ import '../../Workflows/templates/WorkflowTemplateChooser.scss'
 
 import { useActions, useValues } from 'kea'
 
-import { IconArrowLeft, IconPlus } from '@posthog/icons'
+import { IconArrowLeft, IconPlus } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { Spinner } from 'lib/lemon-ui/Spinner'

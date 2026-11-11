@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChevronDown, IconCopy, IconSearch, IconSparkles } from '@posthog/icons'
+import { IconChevronDown, IconCopy, IconSearch, IconSparkles } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

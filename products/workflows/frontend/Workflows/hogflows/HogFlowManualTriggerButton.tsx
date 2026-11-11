@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlayFilled } from '@posthog/icons'
-import { IconChevronDown } from '@posthog/icons'
+import { IconPlayFilled } from '@flind/icons'
+import { IconChevronDown } from '@flind/icons'
 import { LemonButton, LemonInput, Popover } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

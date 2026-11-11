@@ -2,7 +2,7 @@ import { LemonButton, LemonCard, Link, Spinner } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconCheckCircle } from '@posthog/icons'
+import { IconCheckCircle } from '@flind/icons'
 
 import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { urls } from 'scenes/urls'

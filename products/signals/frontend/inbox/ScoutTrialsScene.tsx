@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconArrowLeft } from '@posthog/icons'
+import { IconArrowLeft } from '@flind/icons'
 import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

@@ -1,4 +1,4 @@
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import type { FlakinessEntryApi } from '../generated/api.schemas'

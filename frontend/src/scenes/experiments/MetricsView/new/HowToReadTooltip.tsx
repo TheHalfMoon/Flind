@@ -1,7 +1,7 @@
 import { Tooltip as BaseTooltip } from '@base-ui/react/tooltip'
 import { useValues } from 'kea'
 
-import { IconTrending } from '@posthog/icons'
+import { IconTrending } from '@flind/icons'
 import { LemonDivider } from '@flind/lemon-ui'
 
 import { IconTrendingDown } from 'lib/lemon-ui/icons'

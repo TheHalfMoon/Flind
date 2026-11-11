@@ -1,4 +1,4 @@
-import { IconPlayFilled } from '@posthog/icons'
+import { IconPlayFilled } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { EXAMPLE_CLIPS } from './ExampleObservations'

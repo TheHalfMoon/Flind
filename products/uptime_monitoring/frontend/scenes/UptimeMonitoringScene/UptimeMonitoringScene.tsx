@@ -1,4 +1,4 @@
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonButton, LemonTable, LemonTableColumns } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

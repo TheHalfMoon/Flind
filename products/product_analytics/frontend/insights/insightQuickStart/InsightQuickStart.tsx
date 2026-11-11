@@ -5,7 +5,7 @@ import { router } from 'kea-router'
 import posthog from 'posthog-js'
 import { useState } from 'react'
 
-import { IconPlay, IconSparkles } from '@posthog/icons'
+import { IconPlay, IconSparkles } from '@flind/icons'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'
 import { Link } from 'lib/lemon-ui/Link'

@@ -1,4 +1,4 @@
-import { IconCursorClick, IconPencil } from '@posthog/icons'
+import { IconCursorClick, IconPencil } from '@flind/icons'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'

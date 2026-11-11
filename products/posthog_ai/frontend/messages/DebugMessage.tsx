@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { IconCopy, IconTerminal } from '@posthog/icons'
+import { IconCopy, IconTerminal } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

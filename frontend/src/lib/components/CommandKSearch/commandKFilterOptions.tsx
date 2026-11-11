@@ -1,6 +1,6 @@
 import { combineUrl } from 'kea-router'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 
 import { SearchItem } from 'lib/components/Search/searchItems'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

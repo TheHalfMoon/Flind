@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Fragment } from 'react'
 
-import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight } from '@flind/icons'
 import { LemonButton, LemonSegmentedButton, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { FlaggedFeature } from 'lib/components/FlaggedFeature'

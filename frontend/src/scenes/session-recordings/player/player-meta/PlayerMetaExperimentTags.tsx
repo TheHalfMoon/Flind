@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconFlask } from '@posthog/icons'
+import { IconFlask } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

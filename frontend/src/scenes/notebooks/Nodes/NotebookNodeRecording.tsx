@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconPerson } from '@posthog/icons'
+import { IconPerson } from '@flind/icons'
 import { LemonInput, LemonSwitch } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

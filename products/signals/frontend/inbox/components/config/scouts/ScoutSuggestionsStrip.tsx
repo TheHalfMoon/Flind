@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
-import { IconChevronDown, IconRefresh, IconSparkles, IconX } from '@posthog/icons'
+import { IconChevronDown, IconRefresh, IconSparkles, IconX } from '@flind/icons'
 import { LemonButton, LemonSkeleton, Link, Spinner } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

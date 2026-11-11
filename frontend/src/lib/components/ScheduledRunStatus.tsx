@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconCalendar, IconClock } from '@posthog/icons'
+import { IconCalendar, IconClock } from '@flind/icons'
 import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { shortTimeZone } from 'lib/utils/timezones'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconCheck, IconWarning, IconX } from '@posthog/icons'
+import { IconCheck, IconWarning, IconX } from '@flind/icons'
 import { LemonDivider } from '@flind/lemon-ui'
 
 import { DangerousOperationResponse } from '~/queries/schema/schema-assistant-messages'

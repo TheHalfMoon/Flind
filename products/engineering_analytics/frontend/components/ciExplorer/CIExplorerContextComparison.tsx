@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconCheckCircle, IconExternal, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconExternal, IconWarning } from '@flind/icons'
 import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

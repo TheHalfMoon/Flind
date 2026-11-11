@@ -3,7 +3,7 @@ import { combineUrl, router } from 'kea-router'
 import posthog from 'posthog-js'
 import React from 'react'
 
-import { IconLlmPromptManagement } from '@posthog/icons'
+import { IconLlmPromptManagement } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonDropdown, LemonInput } from '@flind/lemon-ui'
 
 import { LemonDialog } from 'lib/lemon-ui/LemonDialog'

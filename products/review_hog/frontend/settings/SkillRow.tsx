@@ -1,4 +1,4 @@
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'

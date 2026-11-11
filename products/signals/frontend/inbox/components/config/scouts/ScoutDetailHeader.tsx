@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconArrowLeft, IconExternal, IconRefresh, IconUpload } from '@posthog/icons'
+import { IconArrowLeft, IconExternal, IconRefresh, IconUpload } from '@flind/icons'
 import { LemonButton, LemonTag, LemonTextArea, Link, Tooltip } from '@flind/lemon-ui'
 
 import { openPublishToCommunityDialog } from 'lib/components/openPublishToCommunityDialog'

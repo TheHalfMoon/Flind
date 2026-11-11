@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ReactNode } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import { Button, Heading, Skeleton } from '@flind/quill'
 
 import { PropertyIcon } from 'lib/components/PropertyIcon/PropertyIcon'

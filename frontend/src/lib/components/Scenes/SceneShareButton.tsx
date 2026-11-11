@@ -1,4 +1,4 @@
-import { IconShare } from '@posthog/icons'
+import { IconShare } from '@flind/icons'
 
 import { ButtonPrimitive, ButtonPrimitiveProps, DisabledReasonsObject } from 'lib/ui/Button/ButtonPrimitives'
 

@@ -1,4 +1,4 @@
-import { IconFilter, IconTrash } from '@posthog/icons'
+import { IconFilter, IconTrash } from '@flind/icons'
 import { Badge, Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Text } from '@flind/quill'
 
 export interface ExclusionStepOption {

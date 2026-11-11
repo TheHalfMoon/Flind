@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { CodeSnippet } from 'lib/components/CodeSnippet/CodeSnippet'

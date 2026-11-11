@@ -1,5 +1,5 @@
+import { IconSend } from '@flind/icons'
 import * as trafficControllerPng from '@posthog/brand/hoggies/png/traffic-controller'
-import { IconSend } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

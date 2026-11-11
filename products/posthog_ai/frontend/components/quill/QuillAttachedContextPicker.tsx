@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { type RefObject, useId, useState } from 'react'
 
-import { IconAtSign, IconChevronLeft } from '@posthog/icons'
+import { IconAtSign, IconChevronLeft } from '@flind/icons'
 import {
     Button,
     Dialog,

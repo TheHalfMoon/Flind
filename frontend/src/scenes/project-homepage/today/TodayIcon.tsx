@@ -16,7 +16,7 @@ import {
     IconTelescope,
     IconTrends,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { IconSlack } from 'lib/lemon-ui/icons'
 

@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
-import { IconInfo, IconOpenSidebar, IconUnlock } from '@posthog/icons'
+import { IconInfo, IconOpenSidebar, IconUnlock } from '@flind/icons'
 import { LemonButton, LemonSkeleton, Link, Tooltip } from '@flind/lemon-ui'
 
 import { billingLogic } from 'lib/logic/billing/billingLogic'

@@ -13,7 +13,7 @@ import {
     IconSearch,
     IconTrash,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     LemonBadge,
     LemonBanner,

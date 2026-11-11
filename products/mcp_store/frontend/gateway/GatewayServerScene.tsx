@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconArrowLeft, IconExternal, IconLock, IconRefresh, IconTrash, IconX } from '@posthog/icons'
+import { IconArrowLeft, IconExternal, IconLock, IconRefresh, IconTrash, IconX } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

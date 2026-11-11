@@ -12,7 +12,7 @@ import {
     IconLogomark,
     IconTerminal,
     IconVideoCamera,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { getExceptionAttributes } from 'lib/components/Errors/utils'

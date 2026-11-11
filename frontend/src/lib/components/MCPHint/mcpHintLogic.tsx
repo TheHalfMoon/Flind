@@ -3,7 +3,7 @@ import { loaders } from 'kea-loaders'
 import posthog from 'posthog-js'
 import { toast } from 'react-toastify'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import api from 'lib/api'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

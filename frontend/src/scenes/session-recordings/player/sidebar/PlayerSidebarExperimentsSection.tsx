@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useEffect, useRef } from 'react'
 
-import { IconCollapse, IconExpand, IconExternal, IconInfo, IconMinus, IconWarning } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconExternal, IconInfo, IconMinus, IconWarning } from '@flind/icons'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

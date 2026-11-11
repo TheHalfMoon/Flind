@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRewindPlay, IconX } from '@posthog/icons'
+import { IconRewindPlay, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import 'lib/components/UniversalFilters/UniversalFilterButton.scss'

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 import * as businessEvolutionPng from '@posthog/brand/hoggies/png/business-evolution'
-import { IconGear, IconPin } from '@posthog/icons'
+import { IconGear, IconPin } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

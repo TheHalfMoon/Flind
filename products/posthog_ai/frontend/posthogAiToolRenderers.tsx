@@ -11,7 +11,7 @@ import {
     IconStickiness,
     IconTrends,
     IconUserPaths,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 

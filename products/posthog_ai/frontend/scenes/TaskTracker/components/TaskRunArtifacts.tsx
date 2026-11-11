@@ -15,7 +15,7 @@ import {
     IconPencil,
     IconShare,
     IconHide,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     Badge,
     Button,

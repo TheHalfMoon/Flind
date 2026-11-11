@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { IconBell } from '@posthog/icons'
+import { IconBell } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { dashboardLogic } from 'scenes/dashboard/dashboardLogic'

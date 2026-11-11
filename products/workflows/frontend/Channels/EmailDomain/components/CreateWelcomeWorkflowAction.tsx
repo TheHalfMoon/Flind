@@ -1,6 +1,6 @@
 import { router } from 'kea-router'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { urls } from 'scenes/urls'
 

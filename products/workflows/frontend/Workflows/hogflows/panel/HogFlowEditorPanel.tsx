@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArrowLeft, IconX } from '@posthog/icons'
+import { IconArrowLeft, IconX } from '@flind/icons'
 import { LemonBadge, LemonButton, LemonTab, LemonTabs } from '@flind/lemon-ui'
 
 import { capitalizeFirstLetter } from 'lib/utils/strings'

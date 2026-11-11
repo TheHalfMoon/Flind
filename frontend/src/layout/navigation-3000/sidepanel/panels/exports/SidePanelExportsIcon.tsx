@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconDownload } from '@posthog/icons'
+import { IconDownload } from '@flind/icons'
 
 import { IconWithCount } from 'lib/lemon-ui/icons'
 

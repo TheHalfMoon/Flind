@@ -11,7 +11,7 @@ import {
     IconStar,
     IconTerminal,
     IconTrash,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { linkToLogic } from 'lib/components/FileSystem/LinkTo/linkToLogic'
 import { moveToLogic } from 'lib/components/FileSystem/MoveTo/moveToLogic'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArrowLeft } from '@posthog/icons'
+import { IconArrowLeft } from '@flind/icons'
 import { Button, Heading, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { sidepanelTicketsLogic } from '../SidePanel/sidepanelTicketsLogic'

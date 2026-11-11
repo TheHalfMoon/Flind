@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconChevronRight, IconEllipsis, IconExternal } from '@posthog/icons'
+import { IconChevronRight, IconEllipsis, IconExternal } from '@flind/icons'
 import { LemonButton, LemonMenu, Link } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconCopy, IconPullRequest } from '@posthog/icons'
+import { IconCopy, IconPullRequest } from '@flind/icons'
 import { LemonButton, LemonMenuOverlay, lemonToast } from '@flind/lemon-ui'
 
 import type { AgentPromptDestination } from 'lib/components/AgentPromptButton'

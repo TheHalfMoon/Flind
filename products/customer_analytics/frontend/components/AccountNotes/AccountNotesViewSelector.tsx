@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconChevronDown, IconGlobe, IconPencil, IconPlus, IconTrash, IconUser } from '@posthog/icons'
+import { IconChevronDown, IconGlobe, IconPencil, IconPlus, IconTrash, IconUser } from '@flind/icons'
 import {
     LemonButton,
     LemonInput,

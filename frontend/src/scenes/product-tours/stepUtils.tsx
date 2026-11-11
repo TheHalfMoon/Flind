@@ -1,6 +1,6 @@
 import { JSONContent } from '@tiptap/core'
 
-import { IconMessage, IconQuestion } from '@posthog/icons'
+import { IconMessage, IconQuestion } from '@flind/icons'
 
 import { uuid } from 'lib/utils/dom'
 

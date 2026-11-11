@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { forwardRef } from 'react'
 
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

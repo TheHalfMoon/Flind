@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { KeyboardEvent, useState } from 'react'
 
-import { IconEllipsis, IconExternal, IconGithub, IconPencil, IconEmojiAdd, IconTrash } from '@posthog/icons'
+import { IconEllipsis, IconExternal, IconGithub, IconPencil, IconEmojiAdd, IconTrash } from '@flind/icons'
 import { LemonButton, LemonMenu, LemonTextArea, Link, Popover, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

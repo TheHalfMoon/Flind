@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { useQuillSurface } from 'lib/components/QuillSurface/quillSurfaceContext'

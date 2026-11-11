@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import { LemonProgress } from 'lib/lemon-ui/LemonProgress'

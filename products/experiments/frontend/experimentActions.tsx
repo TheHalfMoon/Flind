@@ -1,4 +1,4 @@
-import { IconClock } from '@posthog/icons'
+import { IconClock } from '@flind/icons'
 import { LemonBanner, LemonCheckbox, LemonDialog } from '@flind/lemon-ui'
 
 import { deleteWithUndo } from 'lib/utils/deleteWithUndo'

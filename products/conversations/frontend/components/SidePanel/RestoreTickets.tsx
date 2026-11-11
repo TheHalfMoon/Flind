@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconArrowLeft, IconCheckCircle } from '@posthog/icons'
+import { IconArrowLeft, IconCheckCircle } from '@flind/icons'
 import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { sidepanelTicketsLogic } from './sidepanelTicketsLogic'

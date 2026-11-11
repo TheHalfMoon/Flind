@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconUpload } from '@posthog/icons'
+import { IconUpload } from '@flind/icons'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'

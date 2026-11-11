@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-import { IconUpload } from '@posthog/icons'
+import { IconUpload } from '@flind/icons'
 import { LemonButton, LemonFileInput, LemonInput, LemonSkeleton, Popover, Spinner, lemonToast } from '@flind/lemon-ui'
 
 import { HogFunctionIconLogicProps, hogFunctionIconLogic } from './hogFunctionIconLogic'

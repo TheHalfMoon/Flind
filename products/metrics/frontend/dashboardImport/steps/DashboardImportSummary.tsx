@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useValues } from 'kea'
 
-import { IconCheck, IconMinus, IconWarning, IconX } from '@posthog/icons'
+import { IconCheck, IconMinus, IconWarning, IconX } from '@flind/icons'
 import { LemonBanner } from '@flind/lemon-ui'
 
 import type { PanelImportOutcomeEnumApi } from 'products/metrics/frontend/generated/api.schemas'

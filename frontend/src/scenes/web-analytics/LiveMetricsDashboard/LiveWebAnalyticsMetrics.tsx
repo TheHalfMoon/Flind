@@ -12,7 +12,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { ReactNode, useEffect, useMemo, useState } from 'react'
 
-import { IconDrag, IconFilter, IconGlobe, IconPencil, IconRefresh, IconX } from '@posthog/icons'
+import { IconDrag, IconFilter, IconGlobe, IconPencil, IconRefresh, IconX } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDivider, Popover, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { FilterBar } from 'lib/components/FilterBar'

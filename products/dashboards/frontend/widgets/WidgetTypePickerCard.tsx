@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconCheck, IconStarFilled } from '@posthog/icons'
+import { IconCheck, IconStarFilled } from '@flind/icons'
 
 import { LemonTag } from 'lib/lemon-ui/LemonTag'
 

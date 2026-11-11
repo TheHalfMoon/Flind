@@ -1,7 +1,7 @@
 import { cva } from 'cva'
 import { createContext, forwardRef, useContext } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 import {

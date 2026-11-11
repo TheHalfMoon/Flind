@@ -1,4 +1,4 @@
-import { IconExpand } from '@posthog/icons'
+import { IconExpand } from '@flind/icons'
 import { Button, Card, CardContent, CardHeader, CardTitle } from '@flind/quill'
 
 import { cn } from 'lib/utils/css-classes'

@@ -1,4 +1,4 @@
-import { IconBook } from '@posthog/icons'
+import { IconBook } from '@flind/icons'
 
 import { FileSystemIconType } from '~/queries/schema/schema-general'
 

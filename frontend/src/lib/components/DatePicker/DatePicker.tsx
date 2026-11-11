@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconCalendar, IconX } from '@posthog/icons'
+import { IconCalendar, IconX } from '@flind/icons'
 import { Button, cn, DatePicker as QuillDatePicker, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'

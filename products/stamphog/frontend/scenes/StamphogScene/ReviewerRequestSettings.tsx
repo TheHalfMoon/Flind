@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconCheckCircle, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconWarning } from '@flind/icons'
 import { LemonSelect, LemonSwitch, Spinner } from '@flind/lemon-ui'
 
 import { toAccessControlLevel } from 'lib/utils/accessControlUtils'

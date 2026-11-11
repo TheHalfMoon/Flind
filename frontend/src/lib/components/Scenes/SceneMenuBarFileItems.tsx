@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconFolderMove, IconFolderOpen, IconStar, IconStarFilled } from '@posthog/icons'
+import { IconFolderMove, IconFolderOpen, IconStar, IconStarFilled } from '@flind/icons'
 
 import { panelLayoutLogic } from '~/layout/panel-layout/panelLayoutLogic'
 import { projectTreeDataLogic } from '~/layout/panel-layout/ProjectTree/projectTreeDataLogic'

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconHome, IconPerson } from '@posthog/icons'
+import { IconHome, IconPerson } from '@flind/icons'
 
 import { DashboardCompatibleScenes } from 'lib/components/SceneDashboardChoice/sceneDashboardChoiceModalLogic'
 import { Scene } from 'scenes/sceneTypes'

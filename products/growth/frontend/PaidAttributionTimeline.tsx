@@ -1,4 +1,4 @@
-import { IconArrowRight, IconExternal, IconTarget } from '@posthog/icons'
+import { IconArrowRight, IconExternal, IconTarget } from '@flind/icons'
 import { LemonButton, LemonTable, LemonTableColumns, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

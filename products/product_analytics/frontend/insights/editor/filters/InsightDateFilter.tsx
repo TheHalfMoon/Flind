@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
-import { IconCalendar } from '@posthog/icons'
+import { IconCalendar } from '@flind/icons'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { type DateFilterExclusions } from 'lib/components/DateFilter/DateFilterExclusionsControl'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 import type { ReactNode } from 'react'
 
-import { IconCalendar, IconDatabase, IconPlus, IconQuestion, IconUser, IconWarning } from '@posthog/icons'
+import { IconCalendar, IconDatabase, IconPlus, IconQuestion, IconUser, IconWarning } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

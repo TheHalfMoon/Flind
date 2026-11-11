@@ -1,4 +1,4 @@
-import { IconCode } from '@posthog/icons'
+import { IconCode } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { IconLink } from 'lib/lemon-ui/icons'

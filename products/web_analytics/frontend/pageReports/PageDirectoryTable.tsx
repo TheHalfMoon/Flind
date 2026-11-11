@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import useResizeObserver from 'use-resize-observer'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { LemonSkeleton, LemonTable, LemonTableColumns, Link, Tooltip } from '@flind/lemon-ui'
 
 import { humanFriendlyDuration } from 'lib/utils/durations'

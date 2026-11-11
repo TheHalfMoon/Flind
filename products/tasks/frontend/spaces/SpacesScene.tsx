@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ChangeEvent } from 'react'
 
-import { IconChat, IconPlus, IconSearch } from '@posthog/icons'
+import { IconChat, IconPlus, IconSearch } from '@flind/icons'
 import {
     Button,
     Empty,

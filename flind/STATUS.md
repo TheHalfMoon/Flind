@@ -6,6 +6,13 @@ run or test result on that commit; anything else is marked as planned or unverif
 
 Last updated: 2026-11-11.
 
+## Current stage 3 checkpoint (2026-11-11)
+
+- Rename PRs #20 (user-facing Flind copy), #21 (legacy legal-documents feature off), and #22 (`@flind/siphash`) have merged; `main` was verified at `66cc22360e50ce5835f834dbbaf091e8339cac5c` before this icons work.
+- Next stage: local working branch `flind-ci/rename-03b-icons` prepares an `@flind/icons` workspace package and replaces inherited icon imports. This branch remains **unqualified** at this checkpoint, and must remain unmerged until lockfile, CI, branding, and runtime checks complete.
+- **Founder rights representation:** on 2026-11-11 the founder explicitly stated they have full permission to take and rebrand the bundled third-party icon source and artwork for Flind. The permission documents have not been independently inspected or stored in this repository. Retain legally required original licensing and provenance; use **Flind** for active product-facing branding.
+- Existing upstream brand and mascot packages remain separate follow-up tasks; no icon conversion alone means the complete application has been rebranded.
+
 ## Release gates
 
 | Gate | State |

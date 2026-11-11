@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { PropertyMatchType } from 'posthog-js'
 import { useMemo } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonCard, LemonCheckbox, LemonCollapse } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'

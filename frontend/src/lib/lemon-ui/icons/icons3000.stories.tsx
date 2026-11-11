@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import * as packageIcons from '@posthog/icons'
+import * as packageIcons from '@flind/icons'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useId } from 'react'
 
-import { IconPlus, IconTrash } from '@posthog/icons'
+import { IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

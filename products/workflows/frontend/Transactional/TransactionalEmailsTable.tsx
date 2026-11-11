@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { LemonInput, LemonTag, Link } from '@flind/lemon-ui'
 
 import { AppMetricsSparkline } from 'lib/components/AppMetrics/AppMetricsSparkline'

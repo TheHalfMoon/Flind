@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { RefObject } from 'react'
 
-import { IconAtSign, IconGithub, IconPlus, IconUpload } from '@posthog/icons'
+import { IconAtSign, IconGithub, IconPlus, IconUpload } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

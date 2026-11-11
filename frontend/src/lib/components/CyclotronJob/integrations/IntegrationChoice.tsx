@@ -4,7 +4,7 @@ import './integrationSetups'
 import { useActions, useValues } from 'kea'
 import { useEffect, useId, useRef } from 'react'
 
-import { IconExternal, IconTrash, IconX } from '@posthog/icons'
+import { IconExternal, IconTrash, IconX } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonMenu, LemonSkeleton } from '@flind/lemon-ui'
 
 import api from 'lib/api'

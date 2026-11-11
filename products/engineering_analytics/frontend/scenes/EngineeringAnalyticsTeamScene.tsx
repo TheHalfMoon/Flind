@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPeople } from '@posthog/icons'
+import { IconPeople } from '@flind/icons'
 import { LemonBanner, LemonSkeleton, LemonTable, LemonTableColumns, LemonTag, Tooltip } from '@flind/lemon-ui'
 import { TimeSeriesLineChart, useChartTheme } from '@flind/quill-charts'
 

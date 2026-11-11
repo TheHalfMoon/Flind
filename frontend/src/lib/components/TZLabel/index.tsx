@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import React, { forwardRef, useCallback, useEffect, useMemo, useState } from 'react'
 
-import { IconClock, IconCopy, IconGear, IconHome, IconLaptop } from '@posthog/icons'
+import { IconClock, IconCopy, IconGear, IconHome, IconLaptop } from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonDropdownProps } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

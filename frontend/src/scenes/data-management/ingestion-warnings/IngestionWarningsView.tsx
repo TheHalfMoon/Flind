@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import * as readingIsMagicPng from '@posthog/brand/hoggies/png/reading-is-magic'
-import { IconOpenSidebar } from '@posthog/icons'
+import { IconOpenSidebar } from '@flind/icons'
 import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

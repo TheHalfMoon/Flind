@@ -1,4 +1,4 @@
-import { IconChevronRight, IconCopy, IconDashboard, IconHome, IconSparkles } from '@posthog/icons'
+import { IconChevronRight, IconCopy, IconDashboard, IconHome, IconSparkles } from '@flind/icons'
 import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 export interface HomeDashboardStarterModalProps {

@@ -2,7 +2,7 @@ import './SavedInsights.scss'
 
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconPlus, IconX } from '@posthog/icons'
+import { IconCheck, IconPlus, IconX } from '@flind/icons'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'
 import { TZLabel } from 'lib/components/TZLabel'

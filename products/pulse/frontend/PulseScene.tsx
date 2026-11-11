@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPencil, IconPlus, IconPlusSmall, IconPulse, IconTrash } from '@posthog/icons'
+import { IconPencil, IconPlus, IconPlusSmall, IconPulse, IconTrash } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { NotFound } from 'lib/components/NotFound'

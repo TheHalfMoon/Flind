@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconChat, IconPerson, IconSearch, IconSparkles } from '@posthog/icons'
+import { IconChat, IconPerson, IconSearch, IconSparkles } from '@flind/icons'
 
 import { IconSlack } from 'lib/lemon-ui/icons'
 

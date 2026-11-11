@@ -3,7 +3,7 @@ import { BuiltLogic, LogicWrapper, useActions, useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
 import * as starPng from '@posthog/brand/hoggies/png/star'
-import { IconChevronDown, IconTrending, IconUndo, IconWarning } from '@posthog/icons'
+import { IconChevronDown, IconTrending, IconUndo, IconWarning } from '@flind/icons'
 import { LemonSegmentedButton, LemonSelect, Link, Tooltip } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

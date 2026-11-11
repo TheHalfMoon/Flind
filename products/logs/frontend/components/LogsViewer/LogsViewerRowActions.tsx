@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconCopy } from '@posthog/icons'
+import { IconCopy } from '@flind/icons'
 
 import { IconLink } from 'lib/lemon-ui/icons'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

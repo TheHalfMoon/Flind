@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonButton, LemonSkeleton, LemonTag, Link, Spinner } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

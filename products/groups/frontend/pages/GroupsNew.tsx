@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form, Group, capitalizeFirstLetter } from 'kea-forms'
 import { router } from 'kea-router'
 
-import { IconPlus, IconTrash } from '@posthog/icons'
+import { IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonInput, LemonSegmentedButton } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

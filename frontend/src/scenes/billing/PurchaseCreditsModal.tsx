@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconCheckCircle } from '@posthog/icons'
+import { IconCheckCircle } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonInput, LemonModal, LemonTable, Link } from '@flind/lemon-ui'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'

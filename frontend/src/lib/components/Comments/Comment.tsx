@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useEffect, useMemo, useRef } from 'react'
 
-import { IconChevronRight, IconEllipsis, IconEye, IconPencil, IconShare, IconTrash } from '@posthog/icons'
+import { IconChevronRight, IconEllipsis, IconEye, IconPencil, IconShare, IconTrash } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonMenu, LemonTag, ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { SentenceList } from 'lib/components/ActivityLog/SentenceList'

@@ -1,6 +1,6 @@
 import { useActions, useAsyncActions, useValues } from 'kea'
 
-import { IconEllipsis, IconPencil, IconPlay } from '@posthog/icons'
+import { IconEllipsis, IconPencil, IconPlay } from '@flind/icons'
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

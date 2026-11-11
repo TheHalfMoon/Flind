@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 import { PostHogCaptureOnViewed } from '@posthog/react'
 

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconReceipt } from '@posthog/icons'
+import { IconReceipt } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'

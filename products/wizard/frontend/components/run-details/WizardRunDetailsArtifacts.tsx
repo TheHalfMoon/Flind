@@ -1,4 +1,4 @@
-import { IconArrowRight, IconExternal, IconGitBranch, IconGithub } from '@posthog/icons'
+import { IconArrowRight, IconExternal, IconGitBranch, IconGithub } from '@flind/icons'
 import {
     Button,
     Item,

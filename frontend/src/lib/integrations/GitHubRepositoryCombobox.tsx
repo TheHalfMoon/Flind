@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useId, useRef, useState } from 'react'
 
-import { IconGithub } from '@posthog/icons'
+import { IconGithub } from '@flind/icons'
 import {
     Button,
     Combobox,

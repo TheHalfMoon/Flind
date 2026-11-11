@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useId } from 'react'
 
-import { IconGitBranch } from '@posthog/icons'
+import { IconGitBranch } from '@flind/icons'
 import {
     Badge,
     Card,

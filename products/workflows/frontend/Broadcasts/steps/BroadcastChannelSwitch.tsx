@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBell, IconLetter } from '@posthog/icons'
+import { IconBell, IconLetter } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { broadcastWizardLogic } from '../broadcastWizardLogic'

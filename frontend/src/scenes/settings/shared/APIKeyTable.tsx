@@ -1,4 +1,4 @@
-import { IconEllipsis } from '@posthog/icons'
+import { IconEllipsis } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonMenu, LemonTable, LemonTableColumn, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'

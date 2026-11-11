@@ -6,7 +6,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { Fragment, ReactNode, useState } from 'react'
 
-import { IconChevronDown, IconX } from '@posthog/icons'
+import { IconChevronDown, IconX } from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonInput, LemonSegmentedButton, Link, Spinner } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

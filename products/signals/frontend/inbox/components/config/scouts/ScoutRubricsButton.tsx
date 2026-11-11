@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconListCheck } from '@posthog/icons'
+import { IconListCheck } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'

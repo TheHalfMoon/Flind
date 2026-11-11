@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 
 import 'scenes/surveys/SurveyView.scss'

@@ -18,7 +18,7 @@ import {
 import { combineUrl } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { IconCursor, IconFlag, IconServer } from '@posthog/icons'
+import { IconCursor, IconFlag, IconServer } from '@flind/icons'
 
 import {
     buildAutocaptureSeriesShortcuts,

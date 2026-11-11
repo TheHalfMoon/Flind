@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react'
 
-import { IconCalculator, IconDatabase, IconEndpoints, IconGraph } from '@posthog/icons'
+import { IconCalculator, IconDatabase, IconEndpoints, IconGraph } from '@flind/icons'
 
 export type SaveAsTargetId = 'insight' | 'view' | 'endpoint' | 'metric'
 

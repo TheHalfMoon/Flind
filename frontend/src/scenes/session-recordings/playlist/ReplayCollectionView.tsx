@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useMountedLogic, useValues } from 'kea'
 
-import { IconArrowLeft, IconExternal, IconPlus } from '@posthog/icons'
+import { IconArrowLeft, IconExternal, IconPlus } from '@flind/icons'
 import { Badge, Button, Item, ItemContent, ItemDescription, Skeleton } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

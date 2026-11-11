@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconArchive, IconPencil } from '@posthog/icons'
+import { IconArchive, IconPencil } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

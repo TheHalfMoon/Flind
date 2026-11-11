@@ -1,4 +1,4 @@
-import { IconNotebook } from '@posthog/icons'
+import { IconNotebook } from '@flind/icons'
 import { ChatTask } from '@flind/quill'
 
 import { Activity } from 'products/posthog_ai/frontend/api/primitives'

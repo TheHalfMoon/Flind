@@ -10,7 +10,7 @@ import {
     IconSearch,
     IconTerminal,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, Link, LemonSelect, LemonSkeleton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

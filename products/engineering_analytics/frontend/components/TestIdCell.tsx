@@ -1,4 +1,4 @@
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { Link, Tooltip } from '@flind/lemon-ui'
 
 /** The test-id cell every test table shares: a truncating mono id, linked out when a URL

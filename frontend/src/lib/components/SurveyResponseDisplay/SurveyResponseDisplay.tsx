@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconArchive, IconCode, IconGlobe, IconLaptop, IconPin } from '@posthog/icons'
+import { IconArchive, IconCode, IconGlobe, IconLaptop, IconPin } from '@flind/icons'
 import { LemonDivider, LemonTag, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

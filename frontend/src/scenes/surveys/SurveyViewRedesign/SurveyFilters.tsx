@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconCopy, IconEllipsis, IconFilter, IconGraph, IconX } from '@posthog/icons'
+import { IconCopy, IconEllipsis, IconFilter, IconGraph, IconX } from '@flind/icons'
 import { LemonBadge, LemonButton, LemonMenu, LemonSelect, LemonSelectOptions, LemonSwitch } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

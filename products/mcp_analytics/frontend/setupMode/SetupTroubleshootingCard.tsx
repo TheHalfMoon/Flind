@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconCopy, IconExternal } from '@posthog/icons'
+import { IconCopy, IconExternal } from '@flind/icons'
 import { LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import { apiHostOrigin } from 'lib/utils/apiHost'

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { IconBug, IconInfo, IconSearch } from '@posthog/icons'
+import { IconBug, IconInfo, IconSearch } from '@flind/icons'
 
 import { AgentPromptButton } from './AgentPromptButton'
 

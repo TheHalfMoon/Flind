@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { Progress, Spinner } from '@flind/quill'
 
 import { DISPLAY_PHASES } from '../observations/observationProgress'

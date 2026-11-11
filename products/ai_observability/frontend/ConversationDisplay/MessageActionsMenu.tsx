@@ -2,7 +2,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 import type { MutableRefObject } from 'react'
 
-import { IconEllipsis } from '@posthog/icons'
+import { IconEllipsis } from '@flind/icons'
 import { LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 
 import { commentsLogic } from 'lib/components/Comments/commentsLogic'

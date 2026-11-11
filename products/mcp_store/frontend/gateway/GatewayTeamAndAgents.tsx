@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, kea, path, reducers, useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconChevronRight, IconSparkles } from '@posthog/icons'
+import { IconChevronRight, IconSparkles } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSwitch, LemonTable, LemonTag, ProfilePicture, Spinner } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'

@@ -1,4 +1,4 @@
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 
 import { AlertCalculationInterval } from '~/queries/schema/schema-general'
 

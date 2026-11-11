@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconStar, IconStarFilled } from '@posthog/icons'
+import { IconStar, IconStarFilled } from '@flind/icons'
 import { LemonButton, LemonInput, LemonLabel, Spinner } from '@flind/lemon-ui'
 
 import { projectTreeDataLogic } from '../../ProjectTree/projectTreeDataLogic'

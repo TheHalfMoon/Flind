@@ -1,7 +1,7 @@
 import * as errorPng from '@posthog/brand/hoggies/png/error'
 import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
 import * as partyPng from '@posthog/brand/hoggies/png/party'
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonBanner, LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

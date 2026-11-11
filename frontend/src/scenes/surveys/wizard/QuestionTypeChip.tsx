@@ -1,6 +1,6 @@
 import { cloneElement } from 'react'
 
-import { IconChevronDown, IconComment } from '@posthog/icons'
+import { IconChevronDown, IconComment } from '@flind/icons'
 import { LemonDropdown } from '@flind/lemon-ui'
 
 import { SurveyQuestionType } from '~/types'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconPlusSmall } from '@posthog/icons'
+import { IconPlusSmall } from '@flind/icons'
 import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { insertPromptReferenceLogic } from './insertPromptReferenceLogic'

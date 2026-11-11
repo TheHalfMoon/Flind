@@ -1,4 +1,4 @@
-import { IconCheck, IconWarning } from '@posthog/icons'
+import { IconCheck, IconWarning } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import type { OAuthScopeGroup, OAuthScopeRow } from 'lib/oauthScopeRows'

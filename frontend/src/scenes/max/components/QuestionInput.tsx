@@ -4,7 +4,7 @@ import { offset } from '@floating-ui/react'
 import { useActions } from 'kea'
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
 
-import { IconArrowRight, IconCheck, IconPencil, IconStopFilled, IconTrash, IconUpload, IconX } from '@posthog/icons'
+import { IconArrowRight, IconCheck, IconPencil, IconStopFilled, IconTrash, IconUpload, IconX } from '@flind/icons'
 import { LemonButton, LemonSwitch, LemonTextArea, Spinner } from '@flind/lemon-ui'
 
 import { KeyboardShortcut } from 'lib/lemon-ui/KeyboardShortcut/KeyboardShortcut'

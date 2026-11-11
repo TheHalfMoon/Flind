@@ -1,4 +1,4 @@
-import { IconTrash, IconWarning } from '@posthog/icons'
+import { IconTrash, IconWarning } from '@flind/icons'
 import { LemonButton, LemonDialog } from '@flind/lemon-ui'
 
 interface LegacyTranslationKeysPanelProps {

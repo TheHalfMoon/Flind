@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconStar, IconStarFilled } from '@posthog/icons'
+import { IconStar, IconStarFilled } from '@flind/icons'
 import {
     Button,
     Empty,

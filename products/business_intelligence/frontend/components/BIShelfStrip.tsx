@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { biEditorLogic } from 'products/business_intelligence/frontend/biEditorLogic'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { createRef } from 'react'
 
-import { IconImage } from '@posthog/icons'
+import { IconImage } from '@flind/icons'
 import { LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

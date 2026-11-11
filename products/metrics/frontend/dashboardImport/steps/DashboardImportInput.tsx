@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconUpload } from '@posthog/icons'
+import { IconUpload } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonFileInput, LemonInput, LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'

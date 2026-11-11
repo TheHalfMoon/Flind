@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconBell, IconGraph, IconList, IconPulse, IconTarget } from '@posthog/icons'
+import { IconBell, IconGraph, IconList, IconPulse, IconTarget } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonModal, LemonSwitch } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'

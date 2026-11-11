@@ -1,4 +1,4 @@
-import { IconCheck } from '@posthog/icons'
+import { IconCheck } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 interface SnapshotStatusIndicatorProps {

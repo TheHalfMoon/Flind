@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { Button, Spinner, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { cn } from 'lib/utils/css-classes'

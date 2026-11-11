@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconRefresh } from '@posthog/icons'
+import { IconCheck, IconRefresh } from '@flind/icons'
 import { ThreadItemAction, ThreadItemGroup } from '@flind/quill'
 
 import { CanvasCommentEntry } from './CanvasCommentEntry'

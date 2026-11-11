@@ -18,7 +18,7 @@ import {
     IconPercentage,
     IconTarget,
     IconWebhooks,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { IconTwilio } from 'lib/lemon-ui/icons'
 import { getNotificationDescription } from 'scenes/hog-functions/list/notificationDescription'

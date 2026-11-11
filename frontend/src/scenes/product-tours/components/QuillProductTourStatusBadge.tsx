@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconCircleDashed } from '@posthog/icons'
+import { IconCheckCircle, IconCircleDashed } from '@flind/icons'
 import { Badge, Spinner } from '@flind/quill'
 
 import { ProductTour, ProgressStatus } from '~/types'

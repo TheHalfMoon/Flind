@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useMountedLogic, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconChevronDown, IconLetter } from '@posthog/icons'
+import { IconChevronDown, IconLetter } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDialog, LemonDivider, LemonInput } from '@flind/lemon-ui'
 
 import PropertyFiltersDisplay from 'lib/components/PropertyFilters/components/PropertyFiltersDisplay'

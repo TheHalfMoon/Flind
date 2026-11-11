@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 // eslint-disable-next-line import/no-cycle
 import { LemonButton } from '@flind/lemon-ui'
 

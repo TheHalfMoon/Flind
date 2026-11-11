@@ -8,7 +8,7 @@ import {
     IconFolder,
     IconRefresh,
     IconTarget,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonInputSelect, LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 
 import { MemberSelectMultiplePopover } from 'lib/components/MemberSelectMultiplePopover'

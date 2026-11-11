@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGlobe } from '@posthog/icons'
+import { IconGlobe } from '@flind/icons'
 import {
     AlertDialog,
     AlertDialogContent,

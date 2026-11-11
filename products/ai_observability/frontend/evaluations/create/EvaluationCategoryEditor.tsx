@@ -1,4 +1,4 @@
-import { IconPlus, IconTrash } from '@posthog/icons'
+import { IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonInput, Tooltip } from '@flind/lemon-ui'
 
 import { MAX_CATEGORICAL_OPTIONS } from '../constants'

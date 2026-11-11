@@ -1,5 +1,5 @@
+import { IconFlask } from '@flind/icons'
 import * as experimentPng from '@posthog/brand/hoggies/png/experiment'
-import { IconFlask } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

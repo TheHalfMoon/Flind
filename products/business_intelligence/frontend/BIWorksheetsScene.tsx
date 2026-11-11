@@ -1,6 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { IconHeart, IconHeartFilled, IconPlus } from '@posthog/icons'
+import { IconHeart, IconHeartFilled, IconPlus } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonSegmentedButton, LemonTable, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

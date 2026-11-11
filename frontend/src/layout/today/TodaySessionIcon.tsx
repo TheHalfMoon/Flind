@@ -1,4 +1,4 @@
-import { IconChat } from '@posthog/icons'
+import { IconChat } from '@flind/icons'
 
 import { todaySessionDot } from './todaySessionDot'
 import { TodaySessionStatusDot } from './TodaySessionStatusDot'

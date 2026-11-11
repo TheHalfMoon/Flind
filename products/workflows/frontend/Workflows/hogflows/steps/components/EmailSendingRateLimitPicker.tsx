@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { IconClock, IconInfo } from '@posthog/icons'
+import { IconClock, IconInfo } from '@flind/icons'
 import { LemonCheckbox, LemonInput, LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import type { HogFlowEmailSendingRateLimitApi } from 'products/workflows/frontend/generated/api.schemas'

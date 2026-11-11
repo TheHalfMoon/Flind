@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconClock, IconCompass } from '@posthog/icons'
+import { IconClock, IconCompass } from '@flind/icons'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { teamLogic } from 'scenes/teamLogic'

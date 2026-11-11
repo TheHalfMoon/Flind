@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 import { LemonButton, LemonSegmentedButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import { getColorVar } from 'lib/colors'

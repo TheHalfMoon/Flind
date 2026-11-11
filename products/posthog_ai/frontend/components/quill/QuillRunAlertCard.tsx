@@ -1,4 +1,4 @@
-import { IconCopy, IconWarning } from '@posthog/icons'
+import { IconCopy, IconWarning } from '@flind/icons'
 import { Button, Card, CardContent, CardFooter, CardHeader, CardTitle } from '@flind/quill-primitives'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

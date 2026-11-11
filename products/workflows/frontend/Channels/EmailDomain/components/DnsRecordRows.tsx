@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import posthog from 'posthog-js'
 
-import { IconCheck, IconCopy, IconHourglass, IconWarning } from '@posthog/icons'
+import { IconCheck, IconCopy, IconHourglass, IconWarning } from '@flind/icons'
 import { LemonButton, LemonTag, lemonToast } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

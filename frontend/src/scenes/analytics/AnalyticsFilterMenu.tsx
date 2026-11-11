@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconTrends } from '@posthog/icons'
+import { IconTrends } from '@flind/icons'
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,

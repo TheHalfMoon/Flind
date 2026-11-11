@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IconCopy, IconMinusSquare, IconPlusSquare } from '@posthog/icons'
+import { IconCopy, IconMinusSquare, IconPlusSquare } from '@flind/icons'
 import { LemonButton, LemonDropdown } from '@flind/lemon-ui'
 
 import { IconTableChart } from 'lib/lemon-ui/icons'

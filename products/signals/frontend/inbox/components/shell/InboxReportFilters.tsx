@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCalendar } from '@posthog/icons'
+import { IconCalendar } from '@flind/icons'
 import { LemonSelect } from '@flind/lemon-ui'
 
 import { INBOX_CREATED_WINDOW_OPTIONS } from '../../filterOptions'

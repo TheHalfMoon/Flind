@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { propertyDefinitionsModel } from '~/models/propertyDefinitionsModel'

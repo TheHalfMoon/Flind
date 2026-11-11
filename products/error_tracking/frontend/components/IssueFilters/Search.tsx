@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ChangeEvent, ReactNode } from 'react'
 
-import { IconSearch } from '@posthog/icons'
+import { IconSearch } from '@flind/icons'
 
 import { InputGroup, InputGroupAddon, InputGroupInput } from 'lib/ui/quill'
 import { cn } from 'lib/utils/css-classes'

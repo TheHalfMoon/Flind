@@ -30,7 +30,7 @@ import {
     IconPlus,
     IconServer,
     IconTrash,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

@@ -18,7 +18,7 @@ import {
     IconTarget,
     IconTrending,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { Logomark } from 'lib/brand'
 

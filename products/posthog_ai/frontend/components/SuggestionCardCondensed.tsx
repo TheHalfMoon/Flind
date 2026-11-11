@@ -1,4 +1,4 @@
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 
 export interface SuggestionCardCondensedProps {
     icon: JSX.Element

@@ -13,7 +13,7 @@ import {
     IconRewindPlay,
     IconSupport,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import type { ProductEmptyStateMode } from 'lib/components/ProductEmptyState/types'
 import { flindDocsUrl } from 'lib/flindPublicLinks'

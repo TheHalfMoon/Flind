@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconBell } from '@posthog/icons'
+import { IconBell } from '@flind/icons'
 import { LemonBanner, Link } from '@flind/lemon-ui'
 
 import { MemberSelectMultiple } from 'lib/components/MemberSelectMultiple'

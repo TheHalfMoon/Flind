@@ -1,4 +1,4 @@
-import { IconPerson } from '@posthog/icons'
+import { IconPerson } from '@flind/icons'
 import type { LemonSelectOption } from '@flind/lemon-ui'
 
 import type { ChoiceOption } from './repositoryChoices'

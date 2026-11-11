@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconChevronDown, IconCopy, IconPin, IconPinFilled } from '@posthog/icons'
+import { IconChevronDown, IconCopy, IconPin, IconPinFilled } from '@flind/icons'
 
 import { PropertyKeyInfo } from 'lib/components/PropertyKeyInfo'
 import { SimpleKeyValueList } from 'lib/components/SimpleKeyValueList'

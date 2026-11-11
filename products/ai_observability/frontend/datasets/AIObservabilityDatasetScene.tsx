@@ -3,7 +3,7 @@ import { Form } from 'kea-forms'
 import { router } from 'kea-router'
 import { useEffect } from 'react'
 
-import { IconArchive, IconArrowLeft, IconDownload, IconInfo } from '@posthog/icons'
+import { IconArchive, IconArrowLeft, IconDownload, IconInfo } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonTag } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

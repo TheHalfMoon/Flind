@@ -2,7 +2,7 @@ import { deepEqual as equal } from 'fast-equals'
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconFilter, IconRefresh } from '@posthog/icons'
+import { IconFilter, IconRefresh } from '@flind/icons'
 import { Badge, Button, Toggle, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { useMaxTool } from 'scenes/max/useMaxTool'

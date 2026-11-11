@@ -16,7 +16,7 @@ import {
     IconDatabase,
     IconExternal,
     IconPlusSmall,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonDialog, Tooltip } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

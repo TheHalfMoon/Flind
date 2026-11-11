@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { Text } from '@flind/quill-primitives'
 
 import { CodeEditor } from 'lib/monaco/CodeEditor'

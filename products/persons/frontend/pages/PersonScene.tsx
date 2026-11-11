@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { memo } from 'react'
 
-import { IconChevronDown, IconCopy, IconInfo, IconRefresh, IconTrash } from '@posthog/icons'
+import { IconChevronDown, IconCopy, IconInfo, IconRefresh, IconTrash } from '@flind/icons'
 import { LemonButton, LemonButtonProps, LemonDivider, LemonMenu, LemonSelect, LemonTag, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

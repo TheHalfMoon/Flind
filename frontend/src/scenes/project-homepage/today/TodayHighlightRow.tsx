@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconHide } from '@posthog/icons'
+import { IconHide } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import type { HighlightItemApi } from 'products/today/frontend/generated/api.schemas'

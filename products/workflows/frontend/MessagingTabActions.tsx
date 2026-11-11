@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconApple, IconAndroid, IconLetter, IconPlusSmall } from '@posthog/icons'
+import { IconApple, IconAndroid, IconLetter, IconPlusSmall } from '@flind/icons'
 import { LemonButton, LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 
 import api from 'lib/api'

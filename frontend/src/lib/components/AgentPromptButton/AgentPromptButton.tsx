@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconChevronDown, IconCopy, IconLogomark, IconSparkles } from '@posthog/icons'
+import { IconChevronDown, IconCopy, IconLogomark, IconSparkles } from '@flind/icons'
 
 import { MCP_INSTALL_COMMAND } from 'lib/components/MCPHint/constants'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

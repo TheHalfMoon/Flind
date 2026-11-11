@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 
-import { IconArchive, IconCopy, IconPlusSmall, IconRewind, IconSend, IconTrash } from '@posthog/icons'
+import { IconArchive, IconCopy, IconPlusSmall, IconRewind, IconSend, IconTrash } from '@flind/icons'
 import { LemonSkeleton } from '@flind/lemon-ui'
 import { Badge, Button } from '@flind/quill'
 

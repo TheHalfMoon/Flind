@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useState, type HTMLAttributes } from 'react'
 
-import { IconEye, IconLock, IconPause, IconPencil, IconShield, IconUnlock } from '@posthog/icons'
+import { IconEye, IconLock, IconPause, IconPencil, IconShield, IconUnlock } from '@flind/icons'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@flind/quill-primitives'
 
 import {

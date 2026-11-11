@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconVideoCamera } from '@posthog/icons'
+import { IconVideoCamera } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { LemonModal } from 'lib/lemon-ui/LemonModal'

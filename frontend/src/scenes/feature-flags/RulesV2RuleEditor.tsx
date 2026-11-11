@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { memo, useRef } from 'react'
 
-import { IconCopy, IconEllipsis, IconPause, IconPlay, IconTrash } from '@posthog/icons'
+import { IconCopy, IconEllipsis, IconPause, IconPlay, IconTrash } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonMenu, LemonSelect } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'

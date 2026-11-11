@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { IconChevronRight, IconSpinner } from '@posthog/icons'
+import { IconChevronRight, IconSpinner } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { ActivityDisclosure } from './ActivityDisclosure'

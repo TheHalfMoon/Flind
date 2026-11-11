@@ -5,7 +5,7 @@ import { combineUrl } from 'kea-router'
 import posthog from 'posthog-js'
 import { useState } from 'react'
 
-import { IconArrowRight, IconCheckCircle } from '@posthog/icons'
+import { IconArrowRight, IconCheckCircle } from '@flind/icons'
 import { LemonButton, LemonCheckbox, ProfilePicture, SpinnerOverlay, lemonToast } from '@flind/lemon-ui'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

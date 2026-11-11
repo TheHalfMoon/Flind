@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { Button } from '@flind/quill-primitives'
 
 import { useChartTheme } from 'lib/charts/hooks'

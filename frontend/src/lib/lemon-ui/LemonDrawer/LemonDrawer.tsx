@@ -5,7 +5,7 @@ import { useValues } from 'kea'
 import { useCallback, useId, useRef } from 'react'
 import Modal from 'react-modal'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { useFloatingContainer } from 'lib/hooks/useFloatingContainerContext'
 import { KeyboardShortcut } from 'lib/lemon-ui/KeyboardShortcut/KeyboardShortcut'

@@ -36,7 +36,7 @@ import {
     IconTrends,
     IconWarning,
     IconSupport,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { iconForType } from '~/layout/panel-layout/ProjectTree/defaultTree'
 import { FileSystemIconType } from '~/queries/schema/schema-general'

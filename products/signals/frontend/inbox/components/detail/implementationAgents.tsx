@@ -1,4 +1,4 @@
-import { IconLogomark } from '@posthog/icons'
+import { IconLogomark } from '@flind/icons'
 
 import {
     buildClaudeCodeDeepLink,

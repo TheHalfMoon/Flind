@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useCallback, useEffect, useState } from 'react'
 
-import { IconBrackets, IconNotebook, IconSparkles, IconTerminal } from '@posthog/icons'
+import { IconBrackets, IconNotebook, IconSparkles, IconTerminal } from '@flind/icons'
 import { LemonButton, LemonButtonProps, LemonTag } from '@flind/lemon-ui'
 
 import { IconDocumentExpand } from 'lib/lemon-ui/icons'

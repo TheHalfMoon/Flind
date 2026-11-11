@@ -1,4 +1,4 @@
-import { IconChevronRight, IconCopy } from '@posthog/icons'
+import { IconChevronRight, IconCopy } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

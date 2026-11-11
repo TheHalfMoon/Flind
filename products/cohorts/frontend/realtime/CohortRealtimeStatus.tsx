@@ -1,4 +1,4 @@
-import { IconBolt, IconInfo } from '@posthog/icons'
+import { IconBolt, IconInfo } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

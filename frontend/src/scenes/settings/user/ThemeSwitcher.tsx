@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconDay, IconLaptop, IconNight, IconPalette } from '@posthog/icons'
+import { IconDay, IconLaptop, IconNight, IconPalette } from '@flind/icons'
 import { LemonSelect, LemonSelectOptions, LemonSelectProps } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'

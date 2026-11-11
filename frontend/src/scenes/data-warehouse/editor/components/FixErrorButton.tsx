@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useMemo } from 'react'
 
-import { IconSparkles, IconWarning } from '@posthog/icons'
+import { IconSparkles, IconWarning } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import { LemonButton, LemonButtonProps } from 'lib/lemon-ui/LemonButton'

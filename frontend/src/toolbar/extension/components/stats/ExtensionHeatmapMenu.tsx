@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconMagicWand, IconTarget } from '@posthog/icons'
+import { IconMagicWand, IconTarget } from '@flind/icons'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { HeatmapsSettings } from 'lib/components/heatmaps/HeatMapsSettings'

@@ -3,7 +3,7 @@ import './CardMeta.scss'
 import clsx from 'clsx'
 import React, { useEffect, useState } from 'react'
 
-import { IconPieChart } from '@posthog/icons'
+import { IconPieChart } from '@flind/icons'
 
 import { useResizeObserver } from 'lib/hooks/useResizeObserver'
 import { IconSubtitles, IconSubtitlesOff } from 'lib/lemon-ui/icons'

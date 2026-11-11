@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArchive, IconArrowRight, IconNotification } from '@posthog/icons'
+import { IconArchive, IconArrowRight, IconNotification } from '@flind/icons'
 import { LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import { ScrollableShadows } from 'lib/lemon-ui/ScrollableShadows/ScrollableShadows'

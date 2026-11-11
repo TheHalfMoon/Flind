@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconDocument, IconFolder, IconFolderOpen, IconPlusSmall, IconStack } from '@posthog/icons'
+import { IconDocument, IconFolder, IconFolderOpen, IconPlusSmall, IconStack } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonMenu } from '@flind/lemon-ui'
 
 import { LIBRARY_SCOPE_ALL, LIBRARY_SCOPE_UNFILED, businessKnowledgeLogic } from './businessKnowledgeLogic'

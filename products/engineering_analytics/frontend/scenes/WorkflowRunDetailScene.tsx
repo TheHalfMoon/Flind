@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconCheckCircle, IconExternal, IconHourglass, IconPause, IconXCircle } from '@posthog/icons'
+import { IconCheckCircle, IconExternal, IconHourglass, IconPause, IconXCircle } from '@flind/icons'
 import { LemonButton, LemonSkeleton, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

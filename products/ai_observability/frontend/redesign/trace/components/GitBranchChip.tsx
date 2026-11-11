@@ -1,4 +1,4 @@
-import { IconGitBranch } from '@posthog/icons'
+import { IconGitBranch } from '@flind/icons'
 import { LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import type { TraceGitApi } from '../../../generated/api.schemas'

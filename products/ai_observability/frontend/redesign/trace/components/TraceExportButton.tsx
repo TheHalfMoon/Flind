@@ -1,4 +1,4 @@
-import { IconDownload } from '@posthog/icons'
+import { IconDownload } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 export interface TraceExportButtonProps {

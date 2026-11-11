@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBell, IconCheck, IconInfo } from '@posthog/icons'
+import { IconBell, IconCheck, IconInfo } from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 import { useAnimatedNumber } from '@flind/quill-charts'
 

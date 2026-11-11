@@ -1,4 +1,4 @@
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { LemonSkeleton, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { OrganizationFeatureFlag } from '~/types'

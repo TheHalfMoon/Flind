@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { IconExpand } from '@posthog/icons'
+import { IconExpand } from '@flind/icons'
 
 import { humanFriendlyLargeNumber } from 'lib/utils/numbers'
 

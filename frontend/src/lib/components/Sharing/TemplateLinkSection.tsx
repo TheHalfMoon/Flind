@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 import { TextMorph } from 'torph/react'
 
-import { IconChevronRight, IconInfo } from '@posthog/icons'
+import { IconChevronRight, IconInfo } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

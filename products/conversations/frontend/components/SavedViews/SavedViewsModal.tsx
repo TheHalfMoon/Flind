@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconHeart, IconHeartFilled } from '@posthog/icons'
+import { IconHeart, IconHeartFilled } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonInput, LemonModal, LemonTable, LemonTableColumns } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

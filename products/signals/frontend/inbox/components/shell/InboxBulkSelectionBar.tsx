@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { hasOpenImplementationPr } from '@flind/agent-contracts/signal-report-state'
-import { IconCheckCircle, IconHide, IconLeave, IconPerson, IconX } from '@posthog/icons'
+import { IconCheckCircle, IconHide, IconLeave, IconPerson, IconX } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { userLogic } from 'scenes/userLogic'

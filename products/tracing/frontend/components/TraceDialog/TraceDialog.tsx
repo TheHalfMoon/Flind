@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonBanner, LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { RecordingPlayerType } from 'lib/components/ViewRecordingButton/ViewRecordingButton'

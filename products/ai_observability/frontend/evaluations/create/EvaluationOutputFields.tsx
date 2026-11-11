@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconList, IconListCheck, IconStar, IconThumbsUp } from '@posthog/icons'
+import { IconList, IconListCheck, IconStar, IconThumbsUp } from '@flind/icons'
 import { LemonCheckbox, LemonInput, LemonSegmentedButton, LemonTag } from '@flind/lemon-ui'
 
 import { DecisionThresholdInput } from '../components/DecisionThresholdInput'

@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import React, { useCallback, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import { IconCollapse, IconExpand } from '@posthog/icons'
+import { IconCollapse, IconExpand } from '@flind/icons'
 import {
     LemonBadge,
     LemonBanner,

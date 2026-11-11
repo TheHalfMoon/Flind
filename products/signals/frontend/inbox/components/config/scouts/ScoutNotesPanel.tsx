@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconChevronDown, IconChevronRight, IconPencil, IconTrash } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight, IconPencil, IconTrash } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

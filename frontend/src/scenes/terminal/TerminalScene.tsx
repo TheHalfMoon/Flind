@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconTerminal } from '@posthog/icons'
+import { IconTerminal } from '@flind/icons'
 
 import { NotFound } from 'lib/components/NotFound'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCopy, IconEllipsis, IconTrash } from '@posthog/icons'
+import { IconCopy, IconEllipsis, IconTrash } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

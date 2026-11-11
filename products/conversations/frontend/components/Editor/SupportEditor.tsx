@@ -21,7 +21,7 @@ import { common, createLowlight } from 'lowlight'
 import posthog from 'posthog-js'
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 
-import { IconCode, IconCopy, IconDocument, IconImage, IconList, IconTerminal } from '@posthog/icons'
+import { IconCode, IconCopy, IconDocument, IconImage, IconList, IconTerminal } from '@flind/icons'
 
 import { EmojiPickerPopover } from 'lib/components/EmojiPicker/EmojiPickerPopover'
 import { useRichContentEditor } from 'lib/components/RichContentEditor'

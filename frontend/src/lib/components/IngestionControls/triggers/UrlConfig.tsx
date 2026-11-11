@@ -1,7 +1,7 @@
 import { LogicWrapper, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconCheck, IconPencil, IconPlus, IconTrash, IconX } from '@posthog/icons'
+import { IconCheck, IconPencil, IconPlus, IconTrash, IconX } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDialog, LemonInput, LemonLabel, lemonToast } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { Popover } from 'lib/lemon-ui/Popover'
 import { cn } from 'lib/utils/css-classes'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconSend } from '@posthog/icons'
+import { IconCheck, IconSend } from '@flind/icons'
 import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { emailDomainSenderLogic } from '../emailDomainSenderLogic'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconCursorClick, IconEye, IconRefresh, IconSearch } from '@posthog/icons'
+import { IconCursorClick, IconEye, IconRefresh, IconSearch } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonSelect, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

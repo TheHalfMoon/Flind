@@ -2,7 +2,7 @@ import './PlayerInspectorList.scss'
 
 import { useActions, useValues } from 'kea'
 
-import { BaseIcon, IconCheck } from '@posthog/icons'
+import { BaseIcon, IconCheck } from '@flind/icons'
 
 import { SettingsBar, SettingsMenu, SettingsToggle } from 'lib/components/PanelSettings/PanelSettings'
 import { userPreferencesLogic } from 'lib/logic/userPreferencesLogic'

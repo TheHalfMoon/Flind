@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconLetter, IconNotification } from '@posthog/icons'
+import { IconLetter, IconNotification } from '@flind/icons'
 import { LemonButton, LemonSegmentedButton, LemonTable, LemonTableColumns, Link } from '@flind/lemon-ui'
 
 import { humanFriendlyNumber, percentage } from 'lib/utils/numbers'

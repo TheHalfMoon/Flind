@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBolt, IconPlus, IconPlusSmall, IconX } from '@posthog/icons'
+import { IconBolt, IconPlus, IconPlusSmall, IconX } from '@flind/icons'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { TeamMembershipLevel } from 'lib/constants'

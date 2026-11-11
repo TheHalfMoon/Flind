@@ -81,13 +81,14 @@ class FlindUserFacingBrandTests(unittest.TestCase):
         self.assertNotIn("posthog-logo.png", html)
 
     def test_compatibility_imports_remain_intact(self) -> None:
-        # Rebranding cannot silently rename loaded SDK/protocol modules.
+        # Rebranding cannot silently rename loaded SDK/protocol modules. The icon set is the exception:
+        # it is vendored as the @flind/icons workspace package (rename stage 3, packages/icons).
         self.assertIn(
-            "from '@posthog/icons'",
+            "from '@flind/icons'",
             read("frontend/src/scenes/onboarding/welcome/WelcomeAiPanel.tsx"),
         )
         self.assertIn(
-            "import { IconArrowRight } from '@posthog/icons'",
+            "import { IconArrowRight } from '@flind/icons'",
             read("frontend/src/scenes/onboarding/exit/OnboardingExitModal.tsx"),
         )
 

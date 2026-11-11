@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import posthog from 'posthog-js'
 
 import * as cursorPng from '@posthog/brand/hoggies/png/cursor'
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { Button, Card, CardContent, Text } from '@flind/quill'
 
 import { pngHoggie } from 'lib/brand/hoggies'

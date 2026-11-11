@@ -1,4 +1,4 @@
-import { BaseIcon, IconCheck, IconLogomark, IconVideoCamera } from '@posthog/icons'
+import { BaseIcon, IconCheck, IconLogomark, IconVideoCamera } from '@flind/icons'
 
 import { IconUnverifiedEvent } from 'lib/lemon-ui/icons'
 import { LemonMenuItem } from 'lib/lemon-ui/LemonMenu'

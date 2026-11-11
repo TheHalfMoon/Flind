@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react'
 
-import { IconCollapse, IconExpand } from '@posthog/icons'
+import { IconCollapse, IconExpand } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 interface DetailSectionProps {

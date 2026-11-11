@@ -2,7 +2,7 @@ import { useActions } from 'kea'
 import { useCallback, useRef, useState } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonTabs, Spinner } from '@flind/lemon-ui'
 
 import { MultiQuestionForm, MultiQuestionFormQuestion } from '~/queries/schema/schema-assistant-messages'

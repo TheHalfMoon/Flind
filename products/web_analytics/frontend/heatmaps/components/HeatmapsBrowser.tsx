@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
 import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
-import { IconDownload, IconGear, IconRevert } from '@posthog/icons'
+import { IconDownload, IconGear, IconRevert } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDivider, LemonInput, LemonLabel, LemonSkeleton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

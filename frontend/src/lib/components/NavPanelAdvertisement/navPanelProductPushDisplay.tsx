@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 
+import { IconGithub } from '@flind/icons'
 import * as chart from '@posthog/brand/hoggies/png/chart'
 import * as codeBubble from '@posthog/brand/hoggies/png/code-bubble'
 import * as cursor from '@posthog/brand/hoggies/png/cursor'
@@ -22,7 +23,6 @@ import * as trafficController from '@posthog/brand/hoggies/png/traffic-controlle
 import * as transformer from '@posthog/brand/hoggies/png/transformer'
 import * as workflows from '@posthog/brand/hoggies/png/workflows'
 import * as xRay from '@posthog/brand/hoggies/png/x-ray'
-import { IconGithub } from '@posthog/icons'
 import { PostHogErrorBoundary } from '@posthog/react'
 
 import { pngHoggie } from 'lib/brand/hoggies'

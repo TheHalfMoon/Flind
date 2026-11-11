@@ -3,7 +3,7 @@ import './LemonTag.scss'
 import clsx from 'clsx'
 import { HTMLProps, forwardRef } from 'react'
 
-import { IconEllipsis, IconX } from '@posthog/icons'
+import { IconEllipsis, IconX } from '@flind/icons'
 
 import { LemonButton, LemonButtonWithDropdown } from 'lib/lemon-ui/LemonButton'
 import { LemonButtonDropdown } from 'lib/lemon-ui/LemonButton'

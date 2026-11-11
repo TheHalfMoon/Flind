@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconLive } from '@posthog/icons'
+import { IconLive } from '@flind/icons'
 import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

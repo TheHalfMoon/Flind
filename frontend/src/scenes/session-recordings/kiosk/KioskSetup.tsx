@@ -3,7 +3,7 @@ import './KioskSetup.scss'
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconPlay } from '@posthog/icons'
+import { IconPlay } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { sessionRecordingsKioskLogic } from './sessionRecordingsKioskLogic'

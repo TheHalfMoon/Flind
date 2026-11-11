@@ -1,4 +1,4 @@
-import { IconCloud, IconGlobe } from '@posthog/icons'
+import { IconCloud, IconGlobe } from '@flind/icons'
 
 import { AnthropicLogo } from 'scenes/onboarding/shared/logos/AnthropicLogo'
 import geminiImage from 'scenes/onboarding/shared/logos/gemini.svg'

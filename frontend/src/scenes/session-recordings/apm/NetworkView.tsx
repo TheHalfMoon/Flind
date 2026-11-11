@@ -3,7 +3,7 @@ import './NetworkView.scss'
 import { BindLogic, useActions, useValues } from 'kea'
 import { useCallback, useRef, useState } from 'react'
 
-import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight } from '@flind/icons'
 import { LemonTable, Link } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

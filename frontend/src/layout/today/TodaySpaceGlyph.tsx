@@ -1,4 +1,4 @@
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { cn } from '@flind/quill'
 
 /** A lock for a space only some people can see, a `#` for the rest. */

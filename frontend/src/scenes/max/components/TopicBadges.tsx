@@ -1,4 +1,4 @@
-import { IconCode } from '@posthog/icons'
+import { IconCode } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

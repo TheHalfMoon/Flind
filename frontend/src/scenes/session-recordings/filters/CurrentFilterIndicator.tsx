@@ -1,7 +1,7 @@
 import { deepEqual as equal } from 'fast-equals'
 import { useActions, useValues } from 'kea'
 
-import { IconFilter } from '@posthog/icons'
+import { IconFilter } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { sessionRecordingsPlaylistLogic } from '../playlist/sessionRecordingsPlaylistLogic'

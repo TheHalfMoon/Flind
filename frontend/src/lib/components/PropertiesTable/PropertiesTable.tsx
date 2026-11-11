@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 import { useMemo, useState } from 'react'
 
-import { IconPencil, IconTrash, IconWarning } from '@posthog/icons'
+import { IconPencil, IconTrash, IconWarning } from '@flind/icons'
 import { LemonCheckbox, LemonDialog, LemonInput, LemonMenu, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

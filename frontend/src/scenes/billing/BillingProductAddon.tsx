@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { ReactNode, useRef } from 'react'
 
-import { IconCheckCircle, IconInfo } from '@posthog/icons'
+import { IconCheckCircle, IconInfo } from '@flind/icons'
 import { LemonSelectOptions, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { billingLogic } from 'lib/logic/billing/billingLogic'

@@ -2,7 +2,7 @@ import { LemonBanner, LemonButton, LemonCard, LemonDivider, LemonSelect, LemonTa
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 
 import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

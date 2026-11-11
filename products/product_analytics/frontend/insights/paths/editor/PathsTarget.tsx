@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { Button, ButtonGroup } from '@flind/quill'
 
 import { PathItemSelector } from 'lib/components/PropertyFilters/components/PathItemSelector'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArchive, IconEllipsis, IconUndo } from '@posthog/icons'
+import { IconArchive, IconEllipsis, IconUndo } from '@flind/icons'
 import { LemonButton, LemonMenu, type LemonMenuItems } from '@flind/lemon-ui'
 
 import type { CustomerTaskApi } from 'products/customer_analytics/frontend/generated/api.schemas'

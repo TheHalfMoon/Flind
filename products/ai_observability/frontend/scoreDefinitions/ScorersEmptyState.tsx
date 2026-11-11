@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import * as organizedPng from '@posthog/brand/hoggies/png/organized'
-import { IconBook, IconListCheck } from '@posthog/icons'
+import { IconBook, IconListCheck } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

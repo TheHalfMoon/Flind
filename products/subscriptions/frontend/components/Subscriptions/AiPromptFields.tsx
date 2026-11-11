@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from 'react'
 
-import { IconLineGraph, IconPulse, IconTrending, IconWarning } from '@posthog/icons'
+import { IconLineGraph, IconPulse, IconTrending, IconWarning } from '@flind/icons'
 
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

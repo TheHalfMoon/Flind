@@ -7,7 +7,7 @@ import clsx from 'clsx'
 import { BindLogic, useActions, useValues } from 'kea'
 import React, { useEffect } from 'react'
 
-import { IconPlus, IconPlusSmall } from '@posthog/icons'
+import { IconPlus, IconPlusSmall } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { useQuillSurface } from 'lib/components/QuillSurface/quillSurfaceContext'

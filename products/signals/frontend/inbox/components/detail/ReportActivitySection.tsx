@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconClockRewind } from '@posthog/icons'
+import { IconClockRewind } from '@flind/icons'
 
 import { inboxReportDetailLogic } from '../../logics/inboxReportDetailLogic'
 import { SignalReport } from '../../types'

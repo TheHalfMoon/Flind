@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconEllipsis, IconTrash } from '@posthog/icons'
+import { IconEllipsis, IconTrash } from '@flind/icons'
 import { LemonButton, LemonInput, LemonTag } from '@flind/lemon-ui'
 
 import { MemberSelect } from 'lib/components/MemberSelect'

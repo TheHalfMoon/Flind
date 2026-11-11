@@ -8,7 +8,7 @@ import {
     IconShare,
     type IconComponent,
     type IconProps,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonTag, LemonTagProps, Link, Tooltip } from '@flind/lemon-ui'
 
 import { ErrorTrackingRelease, ReleaseGitMetadata } from 'lib/components/Errors/types'

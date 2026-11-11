@@ -14,7 +14,7 @@ import {
     type MutableRefObject,
 } from 'react'
 
-import { IconCode, IconImage, IconList, IconMinus, IconQuote } from '@posthog/icons'
+import { IconCode, IconImage, IconList, IconMinus, IconQuote } from '@flind/icons'
 import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 
 import { IconBold, IconItalic, IconLink, IconTextSize } from 'lib/lemon-ui/icons'

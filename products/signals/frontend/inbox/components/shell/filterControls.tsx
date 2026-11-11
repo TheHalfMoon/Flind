@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconCheck, IconChevronDown } from '@posthog/icons'
+import { IconCheck, IconChevronDown } from '@flind/icons'
 import { LemonDropdown } from '@flind/lemon-ui'
 
 /** A single filter trigger + dropdown overlay, matching desktop's `InboxFilterPopover`. */

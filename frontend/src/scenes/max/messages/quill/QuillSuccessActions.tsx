@@ -8,7 +8,7 @@ import {
     IconThumbsUp,
     IconThumbsUpFilled,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { Button, ChatMessageFooter, Input, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useMemo, useRef } from 'react'
 
-import { IconSearch } from '@posthog/icons'
+import { IconSearch } from '@flind/icons'
 
 import { resolveQuickFilterOption, withSelectedOption } from 'lib/components/QuickFilters/quickFilterOptions'
 import { discoveredValuesMessage, quickFilterValuesLogic } from 'lib/components/QuickFilters/quickFilterValuesLogic'

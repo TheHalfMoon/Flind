@@ -1,4 +1,4 @@
-import { IconLogomark } from '@posthog/icons'
+import { IconLogomark } from '@flind/icons'
 
 /** The name takes the AI color, which is how the app marks the work its own software did. */
 export function IssuePaneSectionName({ name }: { name: string }): JSX.Element {

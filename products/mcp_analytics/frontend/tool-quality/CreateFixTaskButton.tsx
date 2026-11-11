@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconWrench } from '@posthog/icons'
+import { IconWrench } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonInput, LemonTextArea, lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'

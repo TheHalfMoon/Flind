@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconCalendar, IconEye, IconList, IconRefresh, IconSearch, IconTableOfContents } from '@posthog/icons'
+import { IconCalendar, IconEye, IconList, IconRefresh, IconSearch, IconTableOfContents } from '@flind/icons'
 import {
     LemonButton,
     LemonInput,

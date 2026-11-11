@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconUndo, IconX } from '@posthog/icons'
+import { IconUndo, IconX } from '@flind/icons'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { FEATURE_FLAGS, TeamMembershipLevel } from 'lib/constants'

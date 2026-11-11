@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { IconCopy, IconPencil, IconPlus, IconTrash } from '@posthog/icons'
+import { IconCopy, IconPencil, IconPlus, IconTrash } from '@flind/icons'
 
 import { TeamMembershipLevel } from 'lib/constants'
 import { IconOpenInApp } from 'lib/lemon-ui/icons'

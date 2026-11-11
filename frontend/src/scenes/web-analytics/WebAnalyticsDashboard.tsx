@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { BindLogic, useActions, useMountedLogic, useValues } from 'kea'
 import React, { Suspense, useEffect, useState } from 'react'
 
-import { IconExpand45, IconInfo, IconLineGraph, IconOpenSidebar, IconX } from '@posthog/icons'
+import { IconExpand45, IconInfo, IconLineGraph, IconOpenSidebar, IconX } from '@flind/icons'
 import { LemonSegmentedButton, LemonSegmentedDropdown, LemonSelect, LemonSkeleton } from '@flind/lemon-ui'
 
 import { IntervalFilterStandalone } from 'lib/components/IntervalFilter/IntervalFilter'

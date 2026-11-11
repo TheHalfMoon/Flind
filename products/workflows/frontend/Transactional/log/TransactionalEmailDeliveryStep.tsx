@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconCheck, IconInfo, IconMinus, IconX } from '@posthog/icons'
+import { IconCheck, IconInfo, IconMinus, IconX } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

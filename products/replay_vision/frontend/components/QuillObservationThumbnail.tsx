@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconVideoCamera } from '@posthog/icons'
+import { IconVideoCamera } from '@flind/icons'
 import { Skeleton } from '@flind/quill'
 
 import { teamLogic } from 'scenes/teamLogic'

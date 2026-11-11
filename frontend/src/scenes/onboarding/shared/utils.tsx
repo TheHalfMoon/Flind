@@ -1,15 +1,3 @@
-import * as chart from '@posthog/brand/hoggies/png/chart'
-import * as construction from '@posthog/brand/hoggies/png/construction-1'
-import * as director from '@posthog/brand/hoggies/png/director'
-import * as experiment from '@posthog/brand/hoggies/png/experiment'
-import * as explorerPng from '@posthog/brand/hoggies/png/explorer'
-import * as magnifyingGlass from '@posthog/brand/hoggies/png/magnifying-glass'
-import * as mailboxPng from '@posthog/brand/hoggies/png/mailbox'
-import * as puzzle from '@posthog/brand/hoggies/png/puzzle'
-import * as readingIsMagic from '@posthog/brand/hoggies/png/reading-is-magic'
-import * as reporter from '@posthog/brand/hoggies/png/reporter'
-import * as robot from '@posthog/brand/hoggies/png/robot'
-import * as trafficController from '@posthog/brand/hoggies/png/traffic-controller'
 import {
     IconBolt,
     IconBuilding,
@@ -39,7 +27,19 @@ import {
     IconToggle,
     IconUnlock,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
+import * as chart from '@posthog/brand/hoggies/png/chart'
+import * as construction from '@posthog/brand/hoggies/png/construction-1'
+import * as director from '@posthog/brand/hoggies/png/director'
+import * as experiment from '@posthog/brand/hoggies/png/experiment'
+import * as explorerPng from '@posthog/brand/hoggies/png/explorer'
+import * as magnifyingGlass from '@posthog/brand/hoggies/png/magnifying-glass'
+import * as mailboxPng from '@posthog/brand/hoggies/png/mailbox'
+import * as puzzle from '@posthog/brand/hoggies/png/puzzle'
+import * as readingIsMagic from '@posthog/brand/hoggies/png/reading-is-magic'
+import * as reporter from '@posthog/brand/hoggies/png/reporter'
+import * as robot from '@posthog/brand/hoggies/png/robot'
+import * as trafficController from '@posthog/brand/hoggies/png/traffic-controller'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { Scene } from 'scenes/sceneTypes'

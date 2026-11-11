@@ -1,4 +1,4 @@
-import { IconDashboard, IconGraph, IconNotebook, IconPalette } from '@posthog/icons'
+import { IconDashboard, IconGraph, IconNotebook, IconPalette } from '@flind/icons'
 
 import { AnalyticsType } from './analyticsUtils'
 

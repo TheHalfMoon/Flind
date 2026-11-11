@@ -5,7 +5,7 @@
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests -v --tb=short"
     },
     "dependencies": {
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@flind/quill": "workspace:*",
         "@flind/quill-charts": "workspace:*",
         "@flind/quill-components": "workspace:*",
@@ -23,8 +23,8 @@
         "kea-test-utils": "catalog:"
     },
     "peerDependencies": {
+        "@flind/icons": "workspace:*",
         "@posthog/brand": "catalog:",
-        "@posthog/icons": "catalog:",
         "@storybook/react": "catalog:",
         "@testing-library/dom": "*",
         "@testing-library/user-event": "*",

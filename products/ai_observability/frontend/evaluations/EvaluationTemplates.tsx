@@ -4,7 +4,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import * as judgePng from '@posthog/brand/hoggies/png/judge'
-import { IconArrowLeft, IconPlus } from '@posthog/icons'
+import { IconArrowLeft, IconPlus } from '@flind/icons'
 import { LemonButton, LemonTabs, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

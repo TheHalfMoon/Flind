@@ -15,7 +15,7 @@ import {
     IconSort,
     IconUser,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { Lettermark, LettermarkColor, Tooltip } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

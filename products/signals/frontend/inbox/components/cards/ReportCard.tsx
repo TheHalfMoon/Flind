@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { memo } from 'react'
 
-import { IconEye, IconHide, IconUndo } from '@posthog/icons'
+import { IconEye, IconHide, IconUndo } from '@flind/icons'
 import { LemonButton, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

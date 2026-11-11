@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPinFilled } from '@posthog/icons'
+import { IconPinFilled } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { TaxonomicFilter } from 'lib/components/TaxonomicFilter/TaxonomicFilter'

@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconClock, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconClock, IconWarning } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

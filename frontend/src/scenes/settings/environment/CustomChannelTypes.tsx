@@ -2,7 +2,7 @@ import { deepEqual as equal } from 'fast-equals'
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { PropertyValue } from 'lib/components/PropertyFilters/components/PropertyValue'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

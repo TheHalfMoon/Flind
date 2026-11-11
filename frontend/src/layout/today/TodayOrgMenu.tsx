@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGear, IconPlusSmall, IconReceipt } from '@posthog/icons'
+import { IconGear, IconPlusSmall, IconReceipt } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { newAccountMenuLogic } from 'lib/components/Account/newAccountMenuLogic'

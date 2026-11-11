@@ -3,7 +3,7 @@ import './Variables.scss'
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconCodeInsert, IconCopy, IconGear, IconTrash, IconX } from '@posthog/icons'
+import { IconCodeInsert, IconCopy, IconGear, IconTrash, IconX } from '@flind/icons'
 import {
     LemonButton,
     LemonDivider,

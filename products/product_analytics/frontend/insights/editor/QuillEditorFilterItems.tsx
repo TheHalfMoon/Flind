@@ -1,4 +1,4 @@
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { Field, FieldTitle, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { QuillSurfaceContext } from 'lib/components/QuillSurface/quillSurfaceContext'

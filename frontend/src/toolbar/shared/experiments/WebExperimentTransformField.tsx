@@ -1,4 +1,4 @@
-import { IconCursorClick } from '@posthog/icons'
+import { IconCursorClick } from '@flind/icons'
 import { LemonLabel, LemonSelect } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

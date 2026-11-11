@@ -1,6 +1,6 @@
 import { ChangeEvent, PointerEvent, useMemo, useState } from 'react'
 
-import { IconSearch, IconSparkles } from '@posthog/icons'
+import { IconSearch, IconSparkles } from '@flind/icons'
 import {
     Button,
     Empty,

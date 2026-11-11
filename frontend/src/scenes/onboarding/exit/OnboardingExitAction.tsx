@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import * as mailboxPng from '@posthog/brand/hoggies/png/mailbox'
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

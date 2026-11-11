@@ -1,4 +1,4 @@
-import { IconDatabase, IconDocument } from '@posthog/icons'
+import { IconDatabase, IconDocument } from '@flind/icons'
 
 import { TreeDataItem } from 'lib/lemon-ui/LemonTree/LemonTree'
 

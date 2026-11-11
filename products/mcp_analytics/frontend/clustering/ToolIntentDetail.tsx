@@ -1,4 +1,4 @@
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 import {
     Badge,

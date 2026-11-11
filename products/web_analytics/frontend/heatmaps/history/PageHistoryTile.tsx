@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconCamera, IconCheck, IconClock, IconWarning } from '@posthog/icons'
+import { IconCamera, IconCheck, IconClock, IconWarning } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

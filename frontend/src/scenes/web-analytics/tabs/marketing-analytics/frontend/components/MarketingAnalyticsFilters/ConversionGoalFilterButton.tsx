@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBookmark, IconPencil, IconPlus, IconTrash } from '@posthog/icons'
+import { IconBookmark, IconPencil, IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { marketingAnalyticsLogic } from '../../logic/marketingAnalyticsLogic'

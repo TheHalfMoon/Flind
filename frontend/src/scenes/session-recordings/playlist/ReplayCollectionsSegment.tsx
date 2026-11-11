@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPin, IconPinFilled, IconPlus } from '@posthog/icons'
+import { IconPin, IconPinFilled, IconPlus } from '@flind/icons'
 import { Badge, Button, Input, Item, ItemContent, ItemDescription, Skeleton, Text } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

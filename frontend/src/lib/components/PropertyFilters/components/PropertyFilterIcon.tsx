@@ -1,4 +1,4 @@
-import { IconBuilding, IconCursorClick, IconPeople, IconPerson, IconPiggyBank } from '@posthog/icons'
+import { IconBuilding, IconCursorClick, IconPeople, IconPerson, IconPiggyBank } from '@flind/icons'
 import { Tooltip as QuillTooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { useQuillSurface } from 'lib/components/QuillSurface/quillSurfaceContext'

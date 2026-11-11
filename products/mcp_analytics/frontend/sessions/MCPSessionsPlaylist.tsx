@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { memo, useRef } from 'react'
 
-import { IconBolt, IconClock, IconSparkles, IconWarning } from '@posthog/icons'
+import { IconBolt, IconClock, IconSparkles, IconWarning } from '@flind/icons'
 import {
     Button,
     Select,

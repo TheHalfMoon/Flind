@@ -1,6 +1,6 @@
 import posthog from 'posthog-js'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { LemonDialog, Link } from '@flind/lemon-ui'
 
 import { capitalizeFirstLetter } from 'lib/utils/strings'

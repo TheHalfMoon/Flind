@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconLetter, IconPhone } from '@posthog/icons'
+import { IconLetter, IconPhone } from '@flind/icons'
 import { LemonCheckbox } from '@flind/lemon-ui'
 
 import { workflowsSetupGuideLogic } from '../workflowsSetupGuideLogic'

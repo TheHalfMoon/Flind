@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconCollapse, IconPlayFilled, IconX } from '@posthog/icons'
+import { IconCollapse, IconPlayFilled, IconX } from '@flind/icons'
 import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { EntityFilterInfo } from 'lib/components/EntityFilterInfo'

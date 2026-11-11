@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconAtSign, IconBug, IconDashboard, IconGraph, IconNotebook, IconX } from '@posthog/icons'
+import { IconAtSign, IconBug, IconDashboard, IconGraph, IconNotebook, IconX } from '@flind/icons'
 import { LemonButton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { EmailPreviewThumbnail } from 'lib/components/EmailPreviewThumbnail/EmailPreviewThumbnail'

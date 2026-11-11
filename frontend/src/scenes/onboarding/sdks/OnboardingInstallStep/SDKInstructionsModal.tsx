@@ -1,4 +1,4 @@
-import { IconArrowLeft } from '@posthog/icons'
+import { IconArrowLeft } from '@flind/icons'
 import { LemonButton, LemonModal, SpinnerOverlay } from '@flind/lemon-ui'
 
 import { type SDK, SDKInstructionsMap } from '~/types'

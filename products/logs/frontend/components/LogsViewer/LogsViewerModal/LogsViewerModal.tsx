@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useCallback, useState } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { FloatingContainerContext } from 'lib/hooks/useFloatingContainerContext'

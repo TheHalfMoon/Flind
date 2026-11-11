@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconPlay } from '@posthog/icons'
+import { IconPlay } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSelect, LemonTextArea } from '@flind/lemon-ui'
 
 import { NextScheduledRun } from 'lib/components/ScheduledRunStatus'

@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { BindLogic, useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconEllipsis, IconX } from '@posthog/icons'
+import { IconEllipsis, IconX } from '@flind/icons'
 import { LemonButton, LemonButtonDropdown, LemonButtonWithDropdown } from '@flind/lemon-ui'
 
 import { useQuillSurface } from 'lib/components/QuillSurface/quillSurfaceContext'

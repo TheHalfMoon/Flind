@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconArrowLeft } from '@posthog/icons'
+import { IconArrowLeft } from '@flind/icons'
 import { LemonButton, LemonSkeleton, LemonTabs } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'

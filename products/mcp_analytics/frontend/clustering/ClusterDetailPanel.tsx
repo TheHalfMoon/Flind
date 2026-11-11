@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconArrowRight, IconRefresh, IconWarning } from '@posthog/icons'
+import { IconArrowRight, IconRefresh, IconWarning } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 import {
     Badge,

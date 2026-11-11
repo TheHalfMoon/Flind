@@ -1,4 +1,4 @@
-import { IconMessage, IconThumbsDown, IconThumbsUp } from '@posthog/icons'
+import { IconMessage, IconThumbsDown, IconThumbsUp } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { FeedbackChipData } from '../types'

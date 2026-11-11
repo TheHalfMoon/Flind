@@ -1,4 +1,4 @@
-import { IconDatabase, IconInfo, IconX } from '@posthog/icons'
+import { IconDatabase, IconInfo, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { DataModelingNodeType } from '~/types'

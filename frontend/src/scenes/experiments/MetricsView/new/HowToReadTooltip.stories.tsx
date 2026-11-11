@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useActions } from 'kea'
 import { useEffect } from 'react'
 
-import { IconTrending } from '@posthog/icons'
+import { IconTrending } from '@flind/icons'
 
 import { getSeriesColor } from 'lib/colors'
 import { IconTrendingDown } from 'lib/lemon-ui/icons'

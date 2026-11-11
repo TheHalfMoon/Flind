@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconClock, IconX, IconXCircle } from '@posthog/icons'
+import { IconCheckCircle, IconClock, IconX, IconXCircle } from '@flind/icons'
 import { Badge, Spinner } from '@flind/quill-primitives'
 
 import type { WizardRunApi } from '../../generated/api.schemas'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRefresh, IconSparkles } from '@posthog/icons'
+import { IconRefresh, IconSparkles } from '@flind/icons'
 import { LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import { AIConsentPopoverWrapper } from 'scenes/settings/organization/AIConsentPopoverWrapper'

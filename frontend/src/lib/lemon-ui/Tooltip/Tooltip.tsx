@@ -4,7 +4,7 @@ import { Tooltip as BaseTooltip } from '@base-ui/react/tooltip'
 import { Placement } from '@floating-ui/react'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 
 import { useFloatingContainer } from 'lib/hooks/useFloatingContainerContext'
 import { cn } from 'lib/utils/css-classes'

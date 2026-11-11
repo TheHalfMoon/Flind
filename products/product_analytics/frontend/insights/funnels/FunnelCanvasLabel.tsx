@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconInfo, IconTestTube } from '@posthog/icons'
+import { IconInfo, IconTestTube } from '@flind/icons'
 import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

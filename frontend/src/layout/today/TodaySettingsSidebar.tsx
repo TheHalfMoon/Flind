@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconChevronDown, IconChevronRight } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight } from '@flind/icons'
 import { MenuLabel, Tabs, TabsList, TabsTrigger, Text } from '@flind/quill'
 
 import { removeProjectIdIfPresent } from 'lib/utils/kea-router'

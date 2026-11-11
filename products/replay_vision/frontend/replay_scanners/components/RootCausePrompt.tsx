@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconSparkles, IconX } from '@posthog/icons'
+import { IconSparkles, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { lemonBannerLogic } from 'lib/lemon-ui/LemonBanner/lemonBannerLogic'

@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { router } from 'kea-router'
 import { type ReactNode, useEffect } from 'react'
 
-import { IconCheckCircle, IconHourglass, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconHourglass, IconWarning } from '@flind/icons'
 
 import { SSO_PROVIDER_NAMES } from 'lib/constants'
 import {

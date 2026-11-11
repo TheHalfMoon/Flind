@@ -1,4 +1,4 @@
-import { IconComment } from '@posthog/icons'
+import { IconComment } from '@flind/icons'
 
 import { IconAreaChart, IconGridView, IconLink, IconListView } from 'lib/lemon-ui/icons'
 import { allOperatorsMapping } from 'lib/utils/operators'

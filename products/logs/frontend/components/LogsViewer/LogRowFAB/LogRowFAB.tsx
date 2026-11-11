@@ -9,7 +9,7 @@ import {
     IconListTree,
     IconPin,
     IconPinFilled,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import ViewRecordingButton, { RecordingPlayerType } from 'lib/components/ViewRecordingButton/ViewRecordingButton'

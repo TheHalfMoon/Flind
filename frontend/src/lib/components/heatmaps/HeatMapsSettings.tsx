@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 
 import { HEATMAP_COLOR_PALETTE_OPTIONS, HEATMAP_TYPE_OPTIONS } from 'lib/components/heatmaps/heatmapDataLogic'
 import { HeatmapFilters, HeatmapFixedPositionMode, ScrollDepthPosthogJsError } from 'lib/components/heatmaps/types'

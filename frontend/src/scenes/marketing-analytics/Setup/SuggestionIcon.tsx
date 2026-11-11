@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconInfo, IconWarning } from '@posthog/icons'
+import { IconInfo, IconWarning } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import type { Suggestion } from 'scenes/web-analytics/tabs/marketing-analytics/frontend/logic/setupPlanLogic'

@@ -1,6 +1,6 @@
 import { useActions, useValues, useMountedLogic } from 'kea'
 
-import { IconSort } from '@posthog/icons'
+import { IconSort } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { IconArrowDown, IconArrowUp, IconSwapHoriz } from 'lib/lemon-ui/icons'

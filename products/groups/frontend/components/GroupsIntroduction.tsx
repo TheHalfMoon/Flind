@@ -1,4 +1,4 @@
-import { IconOpenSidebar } from '@posthog/icons'
+import { IconOpenSidebar } from '@flind/icons'
 import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'

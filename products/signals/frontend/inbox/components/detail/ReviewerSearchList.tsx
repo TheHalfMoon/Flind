@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconCheck } from '@posthog/icons'
+import { IconCheck } from '@flind/icons'
 import { LemonInput, Spinner } from '@flind/lemon-ui'
 
 import { PersonDisplay } from 'products/persons/frontend/components/PersonDisplay'

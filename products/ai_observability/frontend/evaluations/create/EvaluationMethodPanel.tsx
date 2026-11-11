@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBolt, IconCode, IconEmoji, IconSparkles } from '@posthog/icons'
+import { IconBolt, IconCode, IconEmoji, IconSparkles } from '@flind/icons'
 
 import { modelPickerLogic } from '../../modelPickerLogic'
 import { llmEvaluationLogic } from '../llmEvaluationLogic'

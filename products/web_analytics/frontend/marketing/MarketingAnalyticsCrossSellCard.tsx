@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArrowRight, IconMegaphone, IconX } from '@posthog/icons'
+import { IconArrowRight, IconMegaphone, IconX } from '@flind/icons'
 import { LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import { captureMarketingCrossSellClick } from 'lib/marketingCrossSell'

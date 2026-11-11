@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 
 import { showsFlagCalledMoveNotice } from 'lib/components/FlagCalledMoveNotice/showsFlagCalledMoveNotice'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

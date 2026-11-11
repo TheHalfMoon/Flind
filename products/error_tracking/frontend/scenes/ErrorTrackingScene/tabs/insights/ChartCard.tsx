@@ -1,4 +1,4 @@
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from 'lib/ui/quill'

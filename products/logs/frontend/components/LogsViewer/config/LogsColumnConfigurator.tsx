@@ -4,7 +4,7 @@ import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-
 import { CSS } from '@dnd-kit/utilities'
 import { useActions, useValues } from 'kea'
 
-import { IconPencil, IconPlusSmall, IconX } from '@posthog/icons'
+import { IconPencil, IconPlusSmall, IconX } from '@flind/icons'
 import { LemonButton, LemonInput, LemonModal, LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'

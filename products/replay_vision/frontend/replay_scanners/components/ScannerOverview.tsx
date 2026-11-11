@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPeople } from '@posthog/icons'
+import { IconPeople } from '@flind/icons'
 import { LemonButton, LemonTag, LemonTagType, Spinner } from '@flind/lemon-ui'
 import { BarChart } from '@flind/quill-charts'
 

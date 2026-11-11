@@ -15,8 +15,8 @@
         "@testing-library/react": "^14.3.1"
     },
     "peerDependencies": {
+        "@flind/icons": "workspace:*",
         "@posthog/brand": "catalog:",
-        "@posthog/icons": "catalog:",
         "@types/react": "*",
         "clsx": "*",
         "react": "*"

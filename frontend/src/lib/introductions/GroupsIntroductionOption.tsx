@@ -1,4 +1,4 @@
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 
 import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { Link } from 'lib/lemon-ui/Link'

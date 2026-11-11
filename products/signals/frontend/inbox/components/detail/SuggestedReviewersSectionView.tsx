@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { IconInfo, IconPeople } from '@posthog/icons'
+import { IconInfo, IconPeople } from '@flind/icons'
 import { Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { EnrichedReviewer, ReviewerRemoval } from '../../types'

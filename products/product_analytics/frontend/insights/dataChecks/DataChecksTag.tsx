@@ -1,4 +1,4 @@
-import { IconCheck, IconCircleDashed, IconWarning } from '@posthog/icons'
+import { IconCheck, IconCircleDashed, IconWarning } from '@flind/icons'
 import { LemonTag, LemonTagType } from '@flind/lemon-ui'
 
 import { Spinner } from 'lib/lemon-ui/Spinner'

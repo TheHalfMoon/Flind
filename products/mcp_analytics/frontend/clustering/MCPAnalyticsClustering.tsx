@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRefresh, IconSparkles } from '@posthog/icons'
+import { IconRefresh, IconSparkles } from '@flind/icons'
 import { Button, Skeleton, Spinner } from '@flind/quill-primitives'
 
 import { TagsCombobox } from 'lib/components/Scenes/TagsCombobox'

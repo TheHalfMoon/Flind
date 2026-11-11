@@ -1,7 +1,7 @@
 import { router } from 'kea-router'
 import { useState } from 'react'
 
-import { IconExternal, IconRefresh } from '@posthog/icons'
+import { IconExternal, IconRefresh } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonSkeleton, LemonTable } from '@flind/lemon-ui'
 
 import { LemonSegmentedButton } from 'lib/lemon-ui/LemonSegmentedButton'

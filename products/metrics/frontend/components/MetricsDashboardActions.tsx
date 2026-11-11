@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheckCircle, IconChevronDown, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconChevronDown, IconWarning } from '@flind/icons'
 import { LemonButton, LemonMenu, LemonMenuItem, Spinner } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

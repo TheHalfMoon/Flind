@@ -1,5 +1,5 @@
+import { IconScatter } from '@flind/icons'
 import * as scientistPng from '@posthog/brand/hoggies/png/scientist'
-import { IconScatter } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

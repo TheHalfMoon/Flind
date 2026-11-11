@@ -3,7 +3,7 @@ import './ImpersonationNotice.scss'
 import { useActions, useValues } from 'kea'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { IconChevronDown, IconCollapse, IconRefresh, IconWarning } from '@posthog/icons'
+import { IconChevronDown, IconCollapse, IconRefresh, IconWarning } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonMenu, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { DraggableWithSnapZones, DraggableWithSnapZonesRef } from 'lib/components/DraggableWithSnapZones'

@@ -1,4 +1,4 @@
-import { IconCopy, IconEllipsis, IconListCheck, IconRefresh, IconStopFilled } from '@posthog/icons'
+import { IconCopy, IconEllipsis, IconListCheck, IconRefresh, IconStopFilled } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

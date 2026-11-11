@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useMountedLogic, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
-import { IconArrowLeft, IconPlus } from '@posthog/icons'
+import { IconArrowLeft, IconPlus } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonModal, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

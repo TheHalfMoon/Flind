@@ -1,4 +1,4 @@
-import { IconPlayFilled } from '@posthog/icons'
+import { IconPlayFilled } from '@flind/icons'
 
 import { scannerTypeLabel } from '../types'
 import { COLUMN_EXAMPLE_COUNT, EXAMPLE_CLIPS } from './ExampleObservations'

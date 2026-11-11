@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { Fragment, useMemo, useState } from 'react'
 
-import { IconBox, IconChevronRight } from '@posthog/icons'
+import { IconBox, IconChevronRight } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'

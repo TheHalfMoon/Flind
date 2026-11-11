@@ -26,7 +26,7 @@
         "@dnd-kit/sortable": "*",
         "@dnd-kit/utilities": "*",
         "@posthog/brand": "catalog:",
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@flind/lemon-ui": "workspace:*",
         "@storybook/react": "catalog:",
         "@testing-library/jest-dom": "*",

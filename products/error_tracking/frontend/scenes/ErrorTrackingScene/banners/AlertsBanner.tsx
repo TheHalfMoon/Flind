@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { ReactNode } from 'react'
 
-import { IconBell } from '@posthog/icons'
+import { IconBell } from '@flind/icons'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 

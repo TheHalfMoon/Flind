@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconComment } from '@posthog/icons'
+import { IconComment } from '@flind/icons'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 

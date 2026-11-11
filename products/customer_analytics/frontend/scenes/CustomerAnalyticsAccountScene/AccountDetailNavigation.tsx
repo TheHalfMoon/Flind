@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconPencil } from '@posthog/icons'
+import { IconPencil } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonSkeleton, LemonTabs } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

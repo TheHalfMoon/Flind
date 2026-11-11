@@ -3,7 +3,7 @@ import { within } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 import { type ReactNode, useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import {
     Button as QuillButton,
     Label as QuillLabel,

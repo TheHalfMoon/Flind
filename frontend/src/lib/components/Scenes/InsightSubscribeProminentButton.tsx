@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { IconBell, IconWarning } from '@posthog/icons'
+import { IconBell, IconWarning } from '@flind/icons'
 
 import { IconWithCount } from 'lib/lemon-ui/icons/icons'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

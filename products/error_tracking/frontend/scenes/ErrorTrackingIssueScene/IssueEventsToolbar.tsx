@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from 'lib/ui/quill'
 

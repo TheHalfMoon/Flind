@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconCalendar } from '@posthog/icons'
+import { IconCalendar } from '@flind/icons'
 import {
     CUSTOM_RANGE,
     DateTimePicker,

@@ -16,7 +16,7 @@ import {
     IconPerson,
     IconPullRequest,
     IconUndo,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 import {

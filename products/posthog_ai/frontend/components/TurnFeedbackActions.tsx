@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useContext, memo } from 'react'
 
-import { IconCopy, IconThumbsDown, IconThumbsDownFilled, IconThumbsUp, IconThumbsUpFilled, IconX } from '@posthog/icons'
+import { IconCopy, IconThumbsDown, IconThumbsDownFilled, IconThumbsUp, IconThumbsUpFilled, IconX } from '@flind/icons'
 import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import React, { useState } from 'react'
 
-import { IconLock, IconPencil } from '@posthog/icons'
+import { IconLock, IconPencil } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconChevronDown, IconDocument, IconInfo } from '@posthog/icons'
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronDown, IconDocument, IconInfo } from '@flind/icons'
+import { IconChevronRight } from '@flind/icons'
 import { LemonButton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { BillingUpgradeCTA } from 'lib/components/BillingUpgradeCTA'

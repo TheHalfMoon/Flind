@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconImage, IconX } from '@posthog/icons'
+import { IconImage, IconX } from '@flind/icons'
 import { LemonButton, LemonFileInput, LemonLabel } from '@flind/lemon-ui'
 
 import { preflightLogic } from 'lib/logic/preflightLogic'

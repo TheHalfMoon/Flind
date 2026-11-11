@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { IconTarget } from '@posthog/icons'
+import { IconTarget } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LemonBadge } from 'lib/lemon-ui/LemonBadge'

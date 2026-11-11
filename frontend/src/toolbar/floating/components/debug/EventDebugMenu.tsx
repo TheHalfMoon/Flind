@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { IconClock, IconDownload, IconEye, IconHide, IconPause, IconPlay, IconTrash, IconX } from '@posthog/icons'
+import { IconClock, IconDownload, IconEye, IconHide, IconPause, IconPlay, IconTrash, IconX } from '@flind/icons'
 
 import { SettingsBar, SettingsMenu } from 'lib/components/PanelSettings/PanelSettings'
 import { LemonInput } from 'lib/lemon-ui/LemonInput'

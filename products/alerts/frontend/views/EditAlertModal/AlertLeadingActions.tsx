@@ -1,4 +1,4 @@
-import { IconClock, IconX } from '@posthog/icons'
+import { IconClock, IconX } from '@flind/icons'
 import { LemonDialog } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

@@ -2,7 +2,7 @@
  * Component for rendering nested content that may contain truncated segments
  * Used for expandable sections within the main text view
  */
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { VISIBLE_TOOLS_COUNT } from '../constants'

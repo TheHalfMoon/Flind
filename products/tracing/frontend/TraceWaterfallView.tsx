@@ -1,7 +1,7 @@
 import { CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { List, useDynamicRowHeight, useListRef } from 'react-window'
 
-import { IconChevronRight, IconCollapse, IconExpand, IconWarning } from '@posthog/icons'
+import { IconChevronRight, IconCollapse, IconExpand, IconWarning } from '@flind/icons'
 import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { getSeriesColor } from 'lib/colors'

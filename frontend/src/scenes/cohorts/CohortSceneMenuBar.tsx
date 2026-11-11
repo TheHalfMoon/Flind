@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconClock, IconCopy, IconLetter, IconPlus, IconRefresh, IconSend, IconTrash } from '@posthog/icons'
+import { IconClock, IconCopy, IconLetter, IconPlus, IconRefresh, IconSend, IconTrash } from '@flind/icons'
 
 import { SceneMenuBarAddToNotebook } from 'lib/components/Scenes/SceneMenuBarAddToNotebook'
 import { SceneMenuBarFileItems } from 'lib/components/Scenes/SceneMenuBarFileItems'

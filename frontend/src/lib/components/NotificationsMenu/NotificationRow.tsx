@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArchive, IconCheckCircle } from '@posthog/icons'
+import { IconArchive, IconCheckCircle } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import {

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArrowRight, IconCheck } from '@posthog/icons'
+import { IconArrowRight, IconCheck } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { aiConsentLogic } from '~/layout/ai/aiConsentLogic'

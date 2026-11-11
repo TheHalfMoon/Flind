@@ -4,7 +4,7 @@ import { router } from 'kea-router'
 import type { LocationChangedPayload } from 'kea-router/lib/types'
 import posthog from 'posthog-js'
 
-import { IconDocument, IconFolder, IconPlus } from '@posthog/icons'
+import { IconDocument, IconFolder, IconPlus } from '@flind/icons'
 import { LemonDialog } from '@flind/lemon-ui'
 
 import api from 'lib/api'

@@ -22,7 +22,7 @@
         "msw": "*"
     },
     "peerDependencies": {
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@storybook/react": "catalog:",
         "@testing-library/dom": "*",
         "@types/react": "*",

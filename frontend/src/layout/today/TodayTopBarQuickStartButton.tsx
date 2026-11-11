@@ -1,4 +1,4 @@
-import { IconTarget } from '@posthog/icons'
+import { IconTarget } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { ProductSetupPopover } from 'lib/components/ProductSetup'

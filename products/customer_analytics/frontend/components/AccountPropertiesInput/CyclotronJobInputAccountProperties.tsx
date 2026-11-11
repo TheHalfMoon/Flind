@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useRef, useState } from 'react'
 
-import { IconPlus, IconX } from '@posthog/icons'
+import { IconPlus, IconX } from '@flind/icons'
 import { LemonButton, LemonColorGlyph, LemonSelect } from '@flind/lemon-ui'
 
 import type { DataColorToken } from 'lib/colors'

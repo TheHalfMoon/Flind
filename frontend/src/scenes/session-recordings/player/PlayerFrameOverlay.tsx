@@ -3,7 +3,7 @@ import './PlayerFrameOverlay.scss'
 import { useActions, useValues } from 'kea'
 import { MouseEvent } from 'react'
 
-import { IconEmoji, IconPlay, IconRewindPlay, IconWarning } from '@posthog/icons'
+import { IconEmoji, IconPlay, IconRewindPlay, IconWarning } from '@flind/icons'
 
 import { openInAppSupport } from 'lib/components/Support/openInAppSupport'
 import { IconSkipBackward } from 'lib/lemon-ui/icons'

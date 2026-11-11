@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconEllipsis, IconSidePanel } from '@posthog/icons'
+import { IconEllipsis, IconSidePanel } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

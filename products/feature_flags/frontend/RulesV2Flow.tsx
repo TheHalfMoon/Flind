@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconCornerDownRight, IconFlask, IconPause, IconPieChart, IconTarget } from '@posthog/icons'
+import { IconCornerDownRight, IconFlask, IconPause, IconPieChart, IconTarget } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { getSeriesColor } from 'lib/colors'

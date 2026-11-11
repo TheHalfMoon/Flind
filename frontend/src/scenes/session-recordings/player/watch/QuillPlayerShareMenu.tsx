@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconExternal, IconGlobe, IconShare, IconShield } from '@posthog/icons'
+import { IconExternal, IconGlobe, IconShare, IconShield } from '@flind/icons'
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@flind/quill'
 
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'

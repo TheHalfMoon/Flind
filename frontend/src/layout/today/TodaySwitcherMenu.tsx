@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconSearch } from '@posthog/icons'
+import { IconSearch } from '@flind/icons'
 import {
     Combobox,
     ComboboxCollection,

@@ -1,4 +1,4 @@
-import { IconFilter, IconList, IconSort } from '@posthog/icons'
+import { IconFilter, IconList, IconSort } from '@flind/icons'
 
 import { LemonTag } from 'lib/lemon-ui/LemonTag/LemonTag'
 import { pluralize } from 'lib/utils/strings'

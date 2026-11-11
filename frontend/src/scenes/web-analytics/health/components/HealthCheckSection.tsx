@@ -1,4 +1,4 @@
-import { IconChevronDown, IconGear, IconGraph, IconPulse } from '@posthog/icons'
+import { IconChevronDown, IconGear, IconGraph, IconPulse } from '@flind/icons'
 import { LemonCollapse, LemonTag } from '@flind/lemon-ui'
 
 import { HealthCheck, HealthCheckCategory } from '../healthCheckTypes'

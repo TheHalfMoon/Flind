@@ -12,7 +12,7 @@ import {
     IconTarget,
     IconWarning,
     IconWebhooks,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import React, { useMemo, useState } from 'react'
 
-import { IconCollapse, IconExpand, IconEye, IconHide, IconWarning } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconEye, IconHide, IconWarning } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import {

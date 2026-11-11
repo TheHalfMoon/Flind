@@ -6,7 +6,7 @@ import { BindLogic, useActions, useMountedLogic, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useEffect, useMemo, useState } from 'react'
 
-import { IconGitBranch, IconInfo, IconPlus, IconTrash, IconWarning } from '@posthog/icons'
+import { IconGitBranch, IconInfo, IconPlus, IconTrash, IconWarning } from '@flind/icons'
 import {
     LemonButton,
     LemonCalendarSelect,

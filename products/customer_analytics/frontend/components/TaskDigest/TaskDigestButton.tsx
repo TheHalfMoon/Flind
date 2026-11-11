@@ -1,7 +1,7 @@
 import posthog from 'posthog-js'
 import { useState } from 'react'
 
-import { IconBell } from '@posthog/icons'
+import { IconBell } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

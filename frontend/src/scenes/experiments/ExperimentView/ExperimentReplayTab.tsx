@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Fragment } from 'react'
 
-import { IconChevronDown, IconInfo } from '@posthog/icons'
+import { IconChevronDown, IconInfo } from '@flind/icons'
 import { LemonBanner, LemonSegmentedButton, LemonSkeleton } from '@flind/lemon-ui'
 import {
     DropdownMenu,

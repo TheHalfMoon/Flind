@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React, { useState } from 'react'
 
-import { IconCollapse, IconExpand, IconEye, IconHide } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconEye, IconHide } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import {

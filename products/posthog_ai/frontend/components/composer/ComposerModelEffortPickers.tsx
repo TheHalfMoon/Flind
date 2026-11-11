@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 
-import { IconChevronDown, IconChevronLeft, IconGear, IconRevert } from '@posthog/icons'
+import { IconChevronDown, IconChevronLeft, IconGear, IconRevert } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

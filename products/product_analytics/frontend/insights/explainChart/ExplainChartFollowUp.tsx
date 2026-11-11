@@ -1,4 +1,4 @@
-import { IconMessage } from '@posthog/icons'
+import { IconMessage } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 export function ExplainChartFollowUp({ onClick }: { onClick: () => void }): JSX.Element {

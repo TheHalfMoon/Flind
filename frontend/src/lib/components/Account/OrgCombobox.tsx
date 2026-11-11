@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconPlusSmall } from '@posthog/icons'
+import { IconCheck, IconPlusSmall } from '@flind/icons'
 
 import { IconBlank } from 'lib/lemon-ui/icons'
 import { UploadedLogo } from 'lib/lemon-ui/UploadedLogo'

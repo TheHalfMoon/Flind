@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconMagicWand, IconTarget } from '@posthog/icons'
+import { IconMagicWand, IconTarget } from '@flind/icons'
 import { LemonButton, LemonSnack, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

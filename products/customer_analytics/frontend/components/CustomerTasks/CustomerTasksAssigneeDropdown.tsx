@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonInput, ProfilePicture } from '@flind/lemon-ui'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

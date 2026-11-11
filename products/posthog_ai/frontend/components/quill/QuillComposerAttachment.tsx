@@ -1,4 +1,4 @@
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { Spinner, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 import { formatFileSize } from '../../utils/attachments'

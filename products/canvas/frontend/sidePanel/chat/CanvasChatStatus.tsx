@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconCheckCircle, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconWarning } from '@flind/icons'
 import { Button, ChatMarker, ChatMarkerContent, ChatMarkerIcon, Spinner, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

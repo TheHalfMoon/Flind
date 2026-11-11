@@ -9,7 +9,7 @@ import {
     IconThumbsUp,
     IconThumbsUpFilled,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { copyToClipboard } from '~/lib/utils/copyToClipboard'

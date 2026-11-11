@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGithub } from '@posthog/icons'
+import { IconGithub } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

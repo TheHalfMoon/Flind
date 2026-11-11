@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconMinus, IconPlus, IconX } from '@posthog/icons'
+import { IconMinus, IconPlus, IconX } from '@flind/icons'
 import { Button, CardHeader, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { SIDE_PANEL_TABS } from '~/layout/navigation-3000/sidepanel/sidePanelTabs'

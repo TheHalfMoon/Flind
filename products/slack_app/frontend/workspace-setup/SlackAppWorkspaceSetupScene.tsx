@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconArrowLeft } from '@posthog/icons'
+import { IconArrowLeft } from '@flind/icons'
 import { LemonBanner, Link, Spinner } from '@flind/lemon-ui'
 
 import { LemonProgress } from 'lib/lemon-ui/LemonProgress'

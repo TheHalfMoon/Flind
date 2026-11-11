@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { IconTerminal } from '@posthog/icons'
+import { IconTerminal } from '@flind/icons'
 
 import { TaskRunStatus } from 'products/posthog_ai/frontend/types/taskTypes'
 

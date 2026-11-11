@@ -1,4 +1,4 @@
-import { IconEye } from '@posthog/icons'
+import { IconEye } from '@flind/icons'
 
 import { ErrorTrackingRuntime } from 'lib/components/Errors/types'
 

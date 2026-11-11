@@ -3,7 +3,7 @@ import './SessionTimeline.scss'
 import { cva } from 'cva'
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
-import { IconCollapse, IconEllipsis, IconExpand } from '@posthog/icons'
+import { IconCollapse, IconEllipsis, IconExpand } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import { Dayjs } from 'lib/dayjs'

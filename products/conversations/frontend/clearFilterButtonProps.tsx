@@ -1,4 +1,4 @@
-import { IconChevronDown, IconX } from '@posthog/icons'
+import { IconChevronDown, IconX } from '@flind/icons'
 import { SideAction } from '@flind/lemon-ui'
 
 export function clearFilterButtonProps(

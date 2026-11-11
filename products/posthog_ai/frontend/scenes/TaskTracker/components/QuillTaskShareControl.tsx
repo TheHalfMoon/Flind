@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { RefObject, useRef } from 'react'
 
-import { IconChevronDown, IconGlobe, IconLock, IconPeople, IconRefresh, IconShare } from '@posthog/icons'
+import { IconChevronDown, IconGlobe, IconLock, IconPeople, IconRefresh, IconShare } from '@flind/icons'
 import {
     AlertDialog,
     AlertDialogContent,

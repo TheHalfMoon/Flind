@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconFlag } from '@posthog/icons'
+import { IconFlag } from '@flind/icons'
 
 import { experimentLogic } from '~/scenes/experiments/experimentLogic'
 import { createPostHogWidgetNode } from '~/scenes/notebooks/Nodes/NodeWrapper'

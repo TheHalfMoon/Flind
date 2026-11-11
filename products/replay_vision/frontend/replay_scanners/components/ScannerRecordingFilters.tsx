@@ -1,4 +1,4 @@
-import { IconClock, IconPeople } from '@posthog/icons'
+import { IconClock, IconPeople } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { PropertyFilterButton } from 'lib/components/PropertyFilters/components/PropertyFilterButton'

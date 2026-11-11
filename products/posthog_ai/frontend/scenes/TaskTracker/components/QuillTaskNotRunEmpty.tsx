@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlay } from '@posthog/icons'
+import { IconPlay } from '@flind/icons'
 import {
     Button,
     Empty,

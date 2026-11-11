@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconInfo, IconX } from '@posthog/icons'
+import { IconInfo, IconX } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonInput, LemonSegmentedButton, LemonSnack } from '@flind/lemon-ui'
 
 import { GuidedWizardPanel } from 'lib/components/GuidedWizard/GuidedWizardPanel'

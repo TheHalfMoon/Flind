@@ -9,7 +9,7 @@ import {
     IconRefresh,
     IconRevert,
     IconUpload,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonModal, LemonTable, LemonTableColumns } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

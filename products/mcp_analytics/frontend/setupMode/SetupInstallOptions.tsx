@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCopy } from '@posthog/icons'
+import { IconCopy } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { TerminalCard } from 'lib/components/CommandBlock/TerminalCard'

@@ -1,5 +1,5 @@
 import * as xRayPng from '@posthog/brand/hoggies/png/x-ray'
-import { IconEye } from '@posthog/icons'
+import { IconEye } from '@flind/icons'
 import { LemonCard, LemonSwitch } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

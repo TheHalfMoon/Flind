@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconCheck, IconWarning, IconX } from '@posthog/icons'
+import { IconCheck, IconWarning, IconX } from '@flind/icons'
 import { LemonButton, LemonModal, Spinner } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

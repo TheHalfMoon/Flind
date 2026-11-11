@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconBrackets, IconClock, IconDatabase, IconInfo, IconList, IconRefresh } from '@posthog/icons'
+import { IconBrackets, IconClock, IconDatabase, IconInfo, IconList, IconRefresh } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlusSmall } from '@posthog/icons'
+import { IconPlusSmall } from '@flind/icons'
 import { LemonBadge, LemonButton } from '@flind/lemon-ui'
 
 import { ChartOptionSections } from 'lib/components/ChartOptions/ChartOptionSections'

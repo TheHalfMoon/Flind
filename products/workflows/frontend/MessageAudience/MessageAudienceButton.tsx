@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconSend } from '@posthog/icons'
+import { IconSend } from '@flind/icons'
 import { LemonButton, LemonButtonProps, LemonMenu } from '@flind/lemon-ui'
 
 import { MessageAudience, MessageAudienceDestination, messageAudienceAccessDisabledReason } from './messageAudience'

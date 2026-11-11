@@ -1,4 +1,4 @@
-import { IconPalette } from '@posthog/icons'
+import { IconPalette } from '@flind/icons'
 import { EmptyMedia, Heading, Text } from '@flind/quill'
 
 /** The centered start of a canvas with nothing in it yet, like Flind Desktop: a heading, a line of help, and the composer. */

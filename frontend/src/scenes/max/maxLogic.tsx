@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, afterMount, connect, kea, key, listeners, path, props, reducers, selectors } from 'kea'
 import { router, urlToAction } from 'kea-router'
 
-import { IconBook } from '@posthog/icons'
+import { IconBook } from '@flind/icons'
 
 import api from 'lib/api'
 import { dayjs } from 'lib/dayjs'

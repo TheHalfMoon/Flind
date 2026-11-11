@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react'
 
-import { IconArrowCircleRight, IconBuilding, IconDocument, IconFlag, IconFolder, IconPencil } from '@posthog/icons'
+import { IconArrowCircleRight, IconBuilding, IconDocument, IconFlag, IconFolder, IconPencil } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCard, LemonSkeleton } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

@@ -1,7 +1,7 @@
 import { BindLogic, useValues } from 'kea'
 import { useMemo, useRef } from 'react'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

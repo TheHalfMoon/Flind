@@ -1,4 +1,4 @@
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { LemonCheckbox } from '@flind/lemon-ui'
 
 import type { ReplayVisionScannerOptionProps } from './types'

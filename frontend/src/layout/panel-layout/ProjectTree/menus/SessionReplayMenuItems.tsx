@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'

@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { forwardRef, useEffect, useRef, useState } from 'react'
 
-import { IconCalendar, IconInfo } from '@posthog/icons'
+import { IconCalendar, IconInfo } from '@flind/icons'
 import { LemonButton, LemonButtonProps, LemonDivider, LemonSwitch, Popover } from '@flind/lemon-ui'
 import { Button, SelectTriggerIcon } from '@flind/quill'
 

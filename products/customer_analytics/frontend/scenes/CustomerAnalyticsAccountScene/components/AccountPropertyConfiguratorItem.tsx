@@ -1,7 +1,7 @@
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { SortableDragIcon } from 'lib/lemon-ui/icons'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useMemo } from 'react'
 
-import { IconFolder, IconHome, IconLock, IconPin, IconPinFilled, IconShare, IconTrash } from '@posthog/icons'
+import { IconFolder, IconHome, IconLock, IconPin, IconPinFilled, IconShare, IconTrash } from '@flind/icons'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { BulkUpdateTagsButton } from 'lib/components/BulkActions/BulkUpdateTagsButton'

@@ -15,7 +15,7 @@ import {
     IconStack,
     IconSupport,
     IconReceipt,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { EXTERNAL_SIGNAL_SOURCES } from '../../externalSignalSources'
 import { SignalSourceProduct } from '../../types'

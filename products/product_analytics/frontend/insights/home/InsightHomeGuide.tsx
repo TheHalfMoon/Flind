@@ -4,7 +4,7 @@ import { router } from 'kea-router'
 import * as chartPng from '@posthog/brand/hoggies/png/chart'
 import * as explorerPng from '@posthog/brand/hoggies/png/explorer'
 import * as loopsPng from '@posthog/brand/hoggies/png/loops'
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

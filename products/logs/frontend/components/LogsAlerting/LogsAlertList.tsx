@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBell, IconEllipsis } from '@posthog/icons'
+import { IconBell, IconEllipsis } from '@flind/icons'
 import {
     LemonButton,
     LemonDialog,

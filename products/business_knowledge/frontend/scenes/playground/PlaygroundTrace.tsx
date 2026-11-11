@@ -1,4 +1,4 @@
-import { IconDocument, IconGithub, IconSearch } from '@posthog/icons'
+import { IconDocument, IconGithub, IconSearch } from '@flind/icons'
 
 import { Thread } from 'products/posthog_ai/frontend/api/primitives'
 

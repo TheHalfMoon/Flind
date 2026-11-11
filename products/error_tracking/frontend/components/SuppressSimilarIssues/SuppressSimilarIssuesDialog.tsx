@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconInfo, IconLaptop } from '@posthog/icons'
+import { IconInfo, IconLaptop } from '@flind/icons'
 
 import {
     Badge,

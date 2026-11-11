@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 import { Text, cn } from '@flind/quill'
 
 import { MarkdownMessage } from 'products/posthog_ai/frontend/api/primitives'

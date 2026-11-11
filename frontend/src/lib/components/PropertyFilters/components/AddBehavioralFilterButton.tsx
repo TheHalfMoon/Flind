@@ -1,4 +1,4 @@
-import { IconPlus, IconPlusSmall } from '@posthog/icons'
+import { IconPlus, IconPlusSmall } from '@flind/icons'
 
 import { newBehavioralFilter } from 'lib/components/PropertyFilters/utils'
 import { useQuillSurface } from 'lib/components/QuillSurface/quillSurfaceContext'

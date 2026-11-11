@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
-import { IconExternal, IconPlus, IconTrash } from '@posthog/icons'
+import { IconExternal, IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonSkeleton, LemonTag, Link, Spinner } from '@flind/lemon-ui'
 
 import { ProductIntroduction } from 'lib/components/ProductIntroduction/ProductIntroduction'

@@ -1,7 +1,7 @@
 import { Placement } from '@floating-ui/react'
 import { Ref, forwardRef, useEffect, useId, useState } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { DisplayableEntity } from 'lib/components/EntityFilterInfo'
 import { useQuillSurface } from 'lib/components/QuillSurface/quillSurfaceContext'

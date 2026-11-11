@@ -3,7 +3,7 @@ import './LiveEventsTable.scss'
 import clsx from 'clsx'
 import { type ReactNode, useMemo } from 'react'
 
-import { IconPauseFilled } from '@posthog/icons'
+import { IconPauseFilled } from '@flind/icons'
 import { Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { PropertyKeyInfo } from 'lib/components/PropertyKeyInfo'

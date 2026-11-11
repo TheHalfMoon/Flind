@@ -1,4 +1,4 @@
-import { IconBalance, IconInfo } from '@posthog/icons'
+import { IconBalance, IconInfo } from '@flind/icons'
 
 import { getSeriesColor } from 'lib/colors'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

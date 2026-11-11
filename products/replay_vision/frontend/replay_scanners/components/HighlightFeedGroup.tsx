@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 import { useState } from 'react'
 
-import { IconChevronDown, IconPlayFilled } from '@posthog/icons'
+import { IconChevronDown, IconPlayFilled } from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonSkeleton, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

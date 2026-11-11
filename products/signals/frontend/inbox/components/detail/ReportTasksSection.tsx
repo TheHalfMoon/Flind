@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconTerminal } from '@posthog/icons'
+import { IconTerminal } from '@flind/icons'
 import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { inboxReportDetailLogic, ReportTaskEntry } from '../../logics/inboxReportDetailLogic'

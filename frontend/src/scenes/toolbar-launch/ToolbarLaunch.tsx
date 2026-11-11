@@ -7,7 +7,7 @@ import {
     IconPieChart,
     IconSearch,
     IconToggle,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     Button,
     Card,

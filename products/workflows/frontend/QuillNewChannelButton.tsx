@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconApple, IconAndroid, IconLetter, IconPlus } from '@posthog/icons'
+import { IconApple, IconAndroid, IconLetter, IconPlus } from '@flind/icons'
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@flind/quill'
 
 import api from 'lib/api'

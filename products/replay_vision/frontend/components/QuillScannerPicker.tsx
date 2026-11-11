@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChevronDown, IconEye } from '@posthog/icons'
+import { IconChevronDown, IconEye } from '@flind/icons'
 import { Button, Input, Popover, PopoverContent, PopoverTrigger, Spinner } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

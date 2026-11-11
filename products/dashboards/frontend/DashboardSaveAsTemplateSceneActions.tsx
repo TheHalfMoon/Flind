@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconScreen } from '@posthog/icons'
+import { IconScreen } from '@flind/icons'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 import { getAccessControlDisabledReason, userHasAccess } from 'lib/utils/accessControlUtils'

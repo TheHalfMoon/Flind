@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconCheck, IconPencil } from '@posthog/icons'
+import { IconCheck, IconPencil } from '@flind/icons'
 
 import { experimentLogic } from '../experimentLogic'
 

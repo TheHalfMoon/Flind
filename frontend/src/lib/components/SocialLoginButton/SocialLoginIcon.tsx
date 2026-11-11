@@ -1,4 +1,4 @@
-import { IconGithub } from '@posthog/icons'
+import { IconGithub } from '@flind/icons'
 
 import { IconGitlab, IconGoogle, IconKey } from 'lib/lemon-ui/icons'
 

@@ -1,4 +1,4 @@
-import { IconCopy } from '@posthog/icons'
+import { IconCopy } from '@flind/icons'
 import { lemonToast } from '@flind/lemon-ui'
 
 import { writeToClipboard } from 'lib/utils/writeToClipboard'

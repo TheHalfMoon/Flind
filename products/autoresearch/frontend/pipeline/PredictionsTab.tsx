@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 import { LemonCollapse, LemonSkeleton } from '@flind/lemon-ui'
 
 import { autoresearchPipelineLogic } from '../autoresearchPipelineLogic'

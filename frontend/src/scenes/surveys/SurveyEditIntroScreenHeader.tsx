@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconTrash, IconWarning } from '@posthog/icons'
+import { IconTrash, IconWarning } from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { INTRO_SCREEN_TEXT_FIELDS } from './constants'

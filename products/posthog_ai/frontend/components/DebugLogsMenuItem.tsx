@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBug } from '@posthog/icons'
+import { IconBug } from '@flind/icons'
 
 import type { TodayMenuParts } from '~/layout/today/todayMenuParts'
 

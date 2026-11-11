@@ -1,4 +1,4 @@
-import { IconGithub } from '@posthog/icons'
+import { IconGithub } from '@flind/icons'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 export interface QuillRunRepositoryChipProps {

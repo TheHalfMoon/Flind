@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonTable, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

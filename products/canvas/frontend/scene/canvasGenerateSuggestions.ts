@@ -1,4 +1,4 @@
-import { IconFunnels, IconGraph, IconPeople, IconPiggyBank, IconRetention, IconTrends } from '@posthog/icons'
+import { IconFunnels, IconGraph, IconPeople, IconPiggyBank, IconRetention, IconTrends } from '@flind/icons'
 
 export interface CanvasGenerateSuggestion {
     label: string

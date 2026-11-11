@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconCheck, IconDownload, IconEllipsis, IconNotebook, IconTrash } from '@posthog/icons'
+import { IconCheck, IconDownload, IconEllipsis, IconNotebook, IconTrash } from '@flind/icons'
 import {
     AlertDialog,
     AlertDialogContent,

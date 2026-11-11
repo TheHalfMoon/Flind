@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconPlus, IconSparkles } from '@posthog/icons'
+import { IconPlus, IconSparkles } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSegmentedButton, LemonTextArea, Link } from '@flind/lemon-ui'
 
 import { PopoverReferenceContext } from 'lib/lemon-ui/Popover/Popover'

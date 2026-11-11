@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useMemo } from 'react'
 
 import * as greekPng from '@posthog/brand/hoggies/png/greek'
-import { IconLetter } from '@posthog/icons'
+import { IconLetter } from '@flind/icons'
 import { LemonButton, LemonCollapse, LemonSelect, LemonSelectOptions, ProfilePicture, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

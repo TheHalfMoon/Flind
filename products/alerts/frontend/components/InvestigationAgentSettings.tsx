@@ -1,4 +1,4 @@
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonCheckbox, LemonSegmentedButton, Tooltip } from '@flind/lemon-ui'
 
 import { AlertFormType } from 'products/alerts/frontend/logic/alertFormLogic'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPin, IconPinFilled } from '@posthog/icons'
+import { IconPin, IconPinFilled } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { PinTarget, analyticsPinnedLogic, pinKey } from './analyticsPinnedLogic'

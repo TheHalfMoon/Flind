@@ -1,4 +1,4 @@
-import { IconGear, IconTrash } from '@posthog/icons'
+import { IconGear, IconTrash } from '@flind/icons'
 import {
     LemonColorGlyph,
     LemonColorPicker,

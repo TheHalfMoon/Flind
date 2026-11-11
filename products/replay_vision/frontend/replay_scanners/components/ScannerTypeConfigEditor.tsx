@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useCallback } from 'react'
 
-import { IconAI } from '@posthog/icons'
+import { IconAI } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSegmentedButton, LemonSwitch, LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'

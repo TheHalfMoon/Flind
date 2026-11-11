@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 import { useCallback, useMemo } from 'react'
 
-import { IconBell } from '@posthog/icons'
+import { IconBell } from '@flind/icons'
 import {
     LemonBadge,
     LemonButton,

@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import posthog from 'posthog-js'
 
 import * as explorerPng from '@posthog/brand/hoggies/png/explorer'
-import { IconDocument, IconGear, IconHeadset } from '@posthog/icons'
+import { IconDocument, IconGear, IconHeadset } from '@flind/icons'
 import { LemonButton, LemonSegmentedButton, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 import { PostHogCaptureOnViewed } from '@posthog/react'

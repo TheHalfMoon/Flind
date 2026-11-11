@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo, useState } from 'react'
 
-import { IconShare } from '@posthog/icons'
+import { IconShare } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonSelect, LemonTable, LemonTag, Tooltip } from '@flind/lemon-ui'
 import type { LemonTableColumns } from '@flind/lemon-ui'
 

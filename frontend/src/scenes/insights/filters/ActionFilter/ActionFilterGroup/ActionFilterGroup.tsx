@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconCopy, IconEllipsis, IconPencil, IconPlus, IconPlusSmall, IconTrash, IconUndo } from '@posthog/icons'
+import { IconCopy, IconEllipsis, IconPencil, IconPlus, IconPlusSmall, IconTrash, IconUndo } from '@flind/icons'
 import { LemonButton, LemonMenu, Tooltip } from '@flind/lemon-ui'
 
 import { HogQLEditor } from 'lib/components/HogQLEditor/HogQLEditor'

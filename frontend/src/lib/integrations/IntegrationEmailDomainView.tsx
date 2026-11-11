@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useState } from 'react'
 
-import { IconCollapse, IconExpand, IconGear, IconLetter, IconTrash } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconGear, IconLetter, IconTrash } from '@flind/icons'
 import { LemonButton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'

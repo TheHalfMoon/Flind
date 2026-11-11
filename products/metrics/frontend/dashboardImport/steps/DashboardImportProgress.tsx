@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useValues } from 'kea'
 
-import { IconCheck, IconCheckCircle, IconCircleDashed, IconMinus } from '@posthog/icons'
+import { IconCheck, IconCheckCircle, IconCircleDashed, IconMinus } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import { LemonProgress } from 'lib/lemon-ui/LemonProgress'

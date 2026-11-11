@@ -1,4 +1,4 @@
-import { IconCheck, IconEllipsis, IconRefresh, IconServer } from '@posthog/icons'
+import { IconCheck, IconEllipsis, IconRefresh, IconServer } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonMenu, LemonTag, Link } from '@flind/lemon-ui'
 
 import { openInAppSupport } from 'lib/components/Support/openInAppSupport'

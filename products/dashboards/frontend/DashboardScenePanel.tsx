@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconCode2, IconCopy, IconNotebook, IconPalette, IconTrash } from '@posthog/icons'
+import { IconCode2, IconCopy, IconNotebook, IconPalette, IconTrash } from '@flind/icons'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { SceneExportDropdownMenu } from 'lib/components/Scenes/InsightOrDashboard/SceneExportDropdownMenu'

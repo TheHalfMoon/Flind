@@ -1,4 +1,4 @@
-import { IconSend, IconThumbsDown, IconThumbsUp } from '@posthog/icons'
+import { IconSend, IconThumbsDown, IconThumbsUp } from '@flind/icons'
 import {
     LemonButton,
     LemonDivider,

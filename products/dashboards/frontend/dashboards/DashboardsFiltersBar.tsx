@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChevronDown, IconFolder, IconPin, IconPinFilled, IconShare, IconX } from '@posthog/icons'
+import { IconChevronDown, IconFolder, IconPin, IconPinFilled, IconShare, IconX } from '@flind/icons'
 import { LemonInput, Popover } from '@flind/lemon-ui'
 
 import { MemberSelectMultiplePopover } from 'lib/components/MemberSelectMultiplePopover'

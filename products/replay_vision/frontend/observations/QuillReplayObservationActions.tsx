@@ -1,4 +1,4 @@
-import { IconArrowLeft, IconArrowRight } from '@posthog/icons'
+import { IconArrowLeft, IconArrowRight } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { KeyboardShortcut } from 'lib/lemon-ui/KeyboardShortcut/KeyboardShortcut'

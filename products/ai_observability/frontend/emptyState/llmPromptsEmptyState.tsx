@@ -1,5 +1,5 @@
+import { IconLlmPromptManagement } from '@flind/icons'
 import * as deskWizardPng from '@posthog/brand/hoggies/png/desk-wizard'
-import { IconLlmPromptManagement } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconQuestion } from '@posthog/icons'
+import { IconQuestion } from '@flind/icons'
 import { LemonButton, LemonSkeleton, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'

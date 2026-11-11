@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconArrowLeft, IconArrowRight } from '@posthog/icons'
+import { IconArrowLeft, IconArrowRight } from '@flind/icons'
 import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { GuidedWizardPanel } from 'lib/components/GuidedWizard/GuidedWizardPanel'

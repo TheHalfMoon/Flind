@@ -1,4 +1,4 @@
-import { IconGitLab, IconGithub } from '@posthog/icons'
+import { IconGitLab, IconGithub } from '@flind/icons'
 
 import type { WorkloadProviderKeyEnumApi } from '~/generated/core/api.schemas'
 

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconDownload, IconGear, IconSearch, IconStar, IconTarget, IconX } from '@posthog/icons'
+import { IconDownload, IconGear, IconSearch, IconStar, IconTarget, IconX } from '@flind/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { LemonSwitch } from 'lib/lemon-ui/LemonSwitch'

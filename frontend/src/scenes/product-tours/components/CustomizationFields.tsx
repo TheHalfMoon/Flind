@@ -1,4 +1,4 @@
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import { LemonColorPicker } from 'lib/lemon-ui/LemonColor/LemonColorPicker'

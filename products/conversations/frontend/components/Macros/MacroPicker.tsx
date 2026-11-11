@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconDocument } from '@posthog/icons'
+import { IconDocument } from '@flind/icons'
 import { LemonButton, LemonInput, LemonMenu, Link } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'

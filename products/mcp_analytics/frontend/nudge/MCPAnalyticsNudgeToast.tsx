@@ -1,7 +1,7 @@
 import { router } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { IconMCP } from '@posthog/icons'
+import { IconMCP } from '@flind/icons'
 
 import { CommandBlock } from 'lib/components/CommandBlock/CommandBlock'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

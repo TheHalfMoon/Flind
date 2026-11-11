@@ -18,7 +18,7 @@ import {
     IconTextWidth,
     IconTrending,
     IconTrends,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { BLOCK_DEFINITIONS, BlockDefinition, BlockGroup, blockDefinition } from './blockLibrary/blockDefinitions'
 import { componentLabel } from './blockLibrary/params'

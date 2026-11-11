@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconCompass, IconSignal } from '@posthog/icons'
+import { IconCompass, IconSignal } from '@flind/icons'
 import { LemonTag, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

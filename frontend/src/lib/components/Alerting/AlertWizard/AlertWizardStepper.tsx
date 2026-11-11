@@ -1,4 +1,4 @@
-import { IconCheckCircle } from '@posthog/icons'
+import { IconCheckCircle } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

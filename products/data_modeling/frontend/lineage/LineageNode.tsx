@@ -14,7 +14,7 @@ import {
     IconPlayFilled,
     IconTarget,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonSkeleton, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

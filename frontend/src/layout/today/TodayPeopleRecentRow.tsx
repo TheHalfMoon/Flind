@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { IconBuilding, IconPeople, IconPerson, IconSupport } from '@posthog/icons'
+import { IconBuilding, IconPeople, IconPerson, IconSupport } from '@flind/icons'
 
 import { SidebarRow } from '~/layout/today/sidebar/SidebarRow'
 

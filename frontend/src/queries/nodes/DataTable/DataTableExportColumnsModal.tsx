@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconCopy, IconDownload } from '@posthog/icons'
+import { IconCopy, IconDownload } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonDivider, LemonModal } from '@flind/lemon-ui'
 
 import { extractExpressionComment } from '~/queries/nodes/DataTable/utils'

@@ -31,7 +31,7 @@ import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'rea
 import { createPortal } from 'react-dom'
 import { useDebouncedCallback } from 'use-debounce'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { IconDragHandle } from 'lib/lemon-ui/icons'

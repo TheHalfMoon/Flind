@@ -1,4 +1,4 @@
-import { IconCheck, IconInfo, IconX } from '@posthog/icons'
+import { IconCheck, IconInfo, IconX } from '@flind/icons'
 import { Button, Dot, Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { pluralize } from 'lib/utils/strings'

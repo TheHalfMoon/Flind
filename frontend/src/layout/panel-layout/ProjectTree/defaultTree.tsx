@@ -81,7 +81,7 @@ import {
     IconUpload,
     IconUser,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import {
     IconSQL,

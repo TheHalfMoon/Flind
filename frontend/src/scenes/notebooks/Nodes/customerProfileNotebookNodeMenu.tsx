@@ -1,4 +1,4 @@
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import type { LemonMenuItem } from '@flind/lemon-ui'
 
 import { customerProfileLogic } from 'products/customer_analytics/frontend/customerProfileLogic'

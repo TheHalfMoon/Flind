@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { emailDomainAutoConfigureLogic } from '../emailDomainAutoConfigureLogic'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBalance, IconCheckCircle, IconPlusSmall, IconTrash, IconWarning } from '@posthog/icons'
+import { IconBalance, IconCheckCircle, IconPlusSmall, IconTrash, IconWarning } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSwitch } from '@flind/lemon-ui'
 
 import { IconArrowDown, IconArrowUp } from 'lib/lemon-ui/icons'

@@ -3,7 +3,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 import React from 'react'
 
-import { IconAtSign, IconDashboard, IconGraph, IconNotebook, IconPageChart } from '@posthog/icons'
+import { IconAtSign, IconDashboard, IconGraph, IconNotebook, IconPageChart } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { TaxonomicPopover } from 'lib/components/TaxonomicPopover/TaxonomicPopover'

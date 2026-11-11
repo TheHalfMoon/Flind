@@ -6,7 +6,7 @@ import { router } from 'kea-router'
 import type { editor as importedEditor } from 'monaco-editor'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconMagicWand } from '@posthog/icons'
+import { IconMagicWand } from '@flind/icons'
 
 import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

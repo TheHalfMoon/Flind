@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconExternal, IconLogomark } from '@posthog/icons'
+import { IconExternal, IconLogomark } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { useInterval } from 'lib/hooks/useInterval'

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { Popover, Spinner } from '@flind/lemon-ui'
 
 import api from 'lib/api'

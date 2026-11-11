@@ -1,6 +1,6 @@
 import { ReactNode, RefCallback, useId } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import { AutocompleteItem, Button, cn } from '@flind/quill'
 
 import { SidebarSectionResizeHandle } from './SidebarSectionResizeHandle'

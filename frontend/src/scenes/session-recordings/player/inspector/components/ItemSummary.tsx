@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconCursor, IconKeyboard, IconWarning } from '@posthog/icons'
+import { IconCursor, IconKeyboard, IconWarning } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'

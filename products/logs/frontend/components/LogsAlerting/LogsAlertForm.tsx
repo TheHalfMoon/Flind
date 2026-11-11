@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { memo, useCallback, useMemo, useRef, useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonDropdown, LemonInput, LemonSegmentedButton, LemonSelect } from '@flind/lemon-ui'
 
 import { InfiniteSelectResults } from 'lib/components/TaxonomicFilter/InfiniteSelectResults'

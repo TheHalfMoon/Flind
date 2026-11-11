@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconFilter, IconX } from '@posthog/icons'
+import { IconFilter, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 import { Button, ButtonGroup, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 

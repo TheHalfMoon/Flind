@@ -11,6 +11,7 @@ packages:
     - packages/llm-normalizer
     - packages/owners-yaml
     - packages/personhog-proto
+    - packages/icons
     - packages/siphash
     - packages/quill
     - packages/quill/apps/*
@@ -195,7 +196,6 @@ catalog:
     kea-waitfor: ^0.2.1
     kea-window-values: ^3.0.1
     # PostHog packages
-    '@posthog/icons': ^0.39.0
     '@posthog/brand': 0.17.0
     '@posthog/react': ^1.11.3
     posthog-js: ^1.447.1

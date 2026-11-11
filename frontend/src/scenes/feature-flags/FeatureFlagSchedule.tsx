@@ -11,7 +11,7 @@ import {
     IconToggle,
     IconTrash,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

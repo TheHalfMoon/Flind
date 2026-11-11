@@ -21,9 +21,6 @@ catalogs:
     '@posthog/brand':
       specifier: 0.17.0
       version: 0.17.0
-    '@posthog/icons':
-      specifier: ^0.39.0
-      version: 0.39.0
     '@posthog/react':
       specifier: ^1.11.3
       version: 1.11.3
@@ -895,9 +892,9 @@ importers:
       '@posthog/hedgehog-mode':
         specifier: ^0.0.63
         version: 0.0.63(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../packages/icons
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -2038,6 +2035,8 @@ importers:
         specifier: ^4.23.15
         version: 4.23.15
 
+  packages/icons: {}
+
   packages/llm-normalizer:
     dependencies:
       yaml:
@@ -2446,9 +2445,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -2522,9 +2521,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -2621,9 +2620,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -2676,9 +2675,9 @@ importers:
       '@flind/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@testing-library/dom':
         specifier: '*'
         version: 10.4.0
@@ -2713,9 +2712,9 @@ importers:
 
   products/analytics_platform:
     dependencies:
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -2737,9 +2736,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@testing-library/dom':
         specifier: '*'
         version: 10.4.0
@@ -2774,9 +2773,9 @@ importers:
 
   products/apm:
     dependencies:
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -2824,9 +2823,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@testing-library/dom':
         specifier: '*'
         version: 10.4.0
@@ -2877,9 +2876,9 @@ importers:
       '@flind/lemon-ui':
         specifier: workspace:*
         version: link:../../frontend/flind/lemon-ui
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -2907,9 +2906,9 @@ importers:
       '@flind/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@testing-library/dom':
         specifier: '*'
         version: 10.4.0
@@ -2959,9 +2958,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -3002,9 +3001,9 @@ importers:
       '@flind/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -3054,9 +3053,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -3088,9 +3087,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -3159,9 +3158,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -3264,9 +3263,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -3325,9 +3324,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -3388,9 +3387,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -3464,9 +3463,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -3522,9 +3521,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@testing-library/dom':
         specifier: '*'
         version: 10.4.0
@@ -3580,9 +3579,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -3628,9 +3627,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -3679,9 +3678,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -3725,9 +3724,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -3777,9 +3776,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -3841,9 +3840,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -3943,9 +3942,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@testing-library/dom':
         specifier: '*'
         version: 10.4.0
@@ -4009,9 +4008,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@testing-library/jest-dom':
         specifier: '*'
         version: 5.17.0
@@ -4054,9 +4053,9 @@ importers:
 
   products/games:
     dependencies:
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -4088,9 +4087,9 @@ importers:
       '@flind/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -4131,9 +4130,9 @@ importers:
 
   products/growth:
     dependencies:
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -4182,9 +4181,9 @@ importers:
       '@flind/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -4252,9 +4251,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -4343,9 +4342,9 @@ importers:
       '@flind/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -4375,9 +4374,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@testing-library/dom':
         specifier: '*'
         version: 10.4.0
@@ -4427,9 +4426,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -4497,9 +4496,9 @@ importers:
 
   products/mcp_store:
     dependencies:
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -4545,9 +4544,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -4594,9 +4593,9 @@ importers:
 
   products/ml_inference:
     dependencies:
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -4622,9 +4621,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@testing-library/dom':
         specifier: '*'
         version: 10.4.0
@@ -4683,9 +4682,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -4728,9 +4727,9 @@ importers:
       '@flind/quill-primitives':
         specifier: workspace:*
         version: link:../../packages/quill/packages/primitives
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -4819,9 +4818,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/d3':
         specifier: '*'
         version: 7.4.3
@@ -4919,9 +4918,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -4953,9 +4952,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -4989,9 +4988,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -5032,9 +5031,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -5096,9 +5095,9 @@ importers:
       '@flind/quill-charts':
         specifier: workspace:*
         version: link:../../packages/quill/packages/charts
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -5126,9 +5125,9 @@ importers:
 
   products/review_hog:
     dependencies:
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@testing-library/dom':
         specifier: '*'
         version: 10.4.0
@@ -5189,9 +5188,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -5256,9 +5255,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -5299,9 +5298,9 @@ importers:
       '@flind/lemon-ui':
         specifier: workspace:*
         version: link:../../frontend/flind/lemon-ui
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -5333,9 +5332,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -5379,9 +5378,9 @@ importers:
       '@flind/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -5406,9 +5405,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -5467,9 +5466,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -5510,9 +5509,9 @@ importers:
       '@flind/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -5568,9 +5567,9 @@ importers:
       '@flind/quill-components':
         specifier: workspace:*
         version: link:../../packages/quill/packages/components
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -5615,9 +5614,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -5670,9 +5669,9 @@ importers:
       '@flind/quill-components':
         specifier: workspace:*
         version: link:../../packages/quill/packages/components
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -5700,9 +5699,9 @@ importers:
 
   products/uptime_monitoring:
     dependencies:
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -5720,9 +5719,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -5769,9 +5768,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -5811,9 +5810,9 @@ importers:
 
   products/warehouse_suggestions:
     dependencies:
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31
@@ -5860,9 +5859,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -5955,9 +5954,9 @@ importers:
       '@pierre/diffs':
         specifier: 1.2.11
         version: 1.2.11(@shikijs/themes@4.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@storybook/react':
         specifier: 'catalog:'
         version: 10.6.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.6.1(@types/react@18.3.31)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(typescript@6.0.3)
@@ -6007,9 +6006,9 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.17.0(react@18.3.1)
-      '@posthog/icons':
-        specifier: 'catalog:'
-        version: 0.39.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@flind/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@types/react':
         specifier: 18.3.31
         version: 18.3.31

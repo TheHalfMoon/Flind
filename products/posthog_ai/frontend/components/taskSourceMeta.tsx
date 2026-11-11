@@ -15,7 +15,7 @@ import {
     IconSupport,
     IconTelescope,
     IconTestTube,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { IconSlack } from 'lib/lemon-ui/icons'
 

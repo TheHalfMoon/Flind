@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 import { LemonBadge, LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { workflowLogic } from '../../workflowLogic'

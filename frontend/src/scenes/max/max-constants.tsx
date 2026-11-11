@@ -14,7 +14,7 @@ import {
     IconPlug,
     IconSearch,
     IconShuffle,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { IconQuestionAnswer, IconRobot } from 'lib/lemon-ui/icons'

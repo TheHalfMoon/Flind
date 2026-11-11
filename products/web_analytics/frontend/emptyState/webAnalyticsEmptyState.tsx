@@ -1,5 +1,5 @@
+import { IconPieChart } from '@flind/icons'
 import * as explorerPng from '@posthog/brand/hoggies/png/explorer'
-import { IconPieChart } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

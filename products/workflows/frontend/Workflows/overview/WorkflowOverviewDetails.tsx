@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconBolt, IconChevronRight, IconClock, IconLeave, IconTarget } from '@posthog/icons'
+import { IconBolt, IconChevronRight, IconClock, IconLeave, IconTarget } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import PropertyFiltersDisplay from 'lib/components/PropertyFilters/components/PropertyFiltersDisplay'

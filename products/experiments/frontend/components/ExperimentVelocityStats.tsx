@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconInfo, IconTrending } from '@posthog/icons'
+import { IconInfo, IconTrending } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { IconTrendingDown } from 'lib/lemon-ui/icons'

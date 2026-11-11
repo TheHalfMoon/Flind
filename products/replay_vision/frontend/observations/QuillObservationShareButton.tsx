@@ -1,4 +1,4 @@
-import { IconShare } from '@posthog/icons'
+import { IconShare } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { ObservationShareButtonProps, openObservationShareDialog } from './ObservationShareButton'

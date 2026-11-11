@@ -1,4 +1,4 @@
-import { IconEye, IconFlask, IconNotebook, IconPulse, IconTarget } from '@posthog/icons'
+import { IconEye, IconFlask, IconNotebook, IconPulse, IconTarget } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { SCANNER_TYPE_TAG_TYPE, ScannerType, scannerTypeLabel } from '../replay_scanners/types'

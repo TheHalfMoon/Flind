@@ -5,7 +5,7 @@
             "scenes/*": ["./frontend/src/scenes/*"],
             "@flind/lemon-ui": ["./frontend/flind/lemon-ui/src/index"],
             "@flind/lemon-ui/*": ["./frontend/flind/lemon-ui/src/*"],
-            "@posthog/icons": ["./frontend/node_modules/@posthog/icons"],
+            "@flind/icons": ["./packages/icons/index.d.ts"],
             "@posthog/shared-onboarding/*": ["./docs/onboarding/*"],
             "storybook/*": ["./.storybook/*"],
             "~/*": ["./frontend/src/*"],

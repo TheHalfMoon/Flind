@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 
-import { IconCode, IconWarning, IconX } from '@posthog/icons'
+import { IconCode, IconWarning, IconX } from '@flind/icons'
 import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

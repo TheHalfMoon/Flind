@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconLogomark } from '@posthog/icons'
+import { IconLogomark } from '@flind/icons'
 import { Chip, ChipClose } from '@flind/quill'
 
 import { EntityFilterInfo } from 'lib/components/EntityFilterInfo'

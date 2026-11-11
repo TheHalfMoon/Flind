@@ -1,4 +1,4 @@
-import { IconChevronDown, IconTrash } from '@posthog/icons'
+import { IconChevronDown, IconTrash } from '@flind/icons'
 import {
     Button,
     ButtonGroup,

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { ModelDownstreamSummary } from './ModelDownstreamSummary'

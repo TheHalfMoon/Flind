@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
 
-import { IconPlusSmall, IconSparkles, IconWrench } from '@posthog/icons'
+import { IconPlusSmall, IconSparkles, IconWrench } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import type { ToolDefinition, ToolRegistration } from './max-constants'

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { Button, Field, FieldTitle, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { FunnelStepOrderPicker } from 'products/product_analytics/frontend/insights/funnels/filters/FunnelStepOrderPicker'

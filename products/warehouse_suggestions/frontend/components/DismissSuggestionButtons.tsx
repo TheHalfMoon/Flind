@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconClock, IconX } from '@posthog/icons'
+import { IconClock, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { notNowCondition } from '../suggestionCopy'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBuilding, IconExternal } from '@posthog/icons'
+import { IconBuilding, IconExternal } from '@flind/icons'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link/Link'
 import {

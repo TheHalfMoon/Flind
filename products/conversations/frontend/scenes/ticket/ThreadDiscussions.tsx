@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useCallback, useEffect, useMemo } from 'react'
 
-import { IconChat } from '@posthog/icons'
+import { IconChat } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { getCommentAuthorName } from 'lib/components/Comments/Comment'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconCode } from '@posthog/icons'
+import { IconCode } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSelect, Link } from '@flind/lemon-ui'
 
 import { ScopeAccessRow } from 'lib/components/ScopeAccessRow/ScopeAccessRow'

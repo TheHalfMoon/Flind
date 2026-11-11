@@ -1,4 +1,4 @@
-import { IconAI } from '@posthog/icons'
+import { IconAI } from '@flind/icons'
 
 import {
     extractSandboxQuestionAnswer,

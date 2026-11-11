@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconPlusSmall } from '@posthog/icons'
+import { IconPlusSmall } from '@flind/icons'
 import { LemonButton, LemonButtonPropsBase } from '@flind/lemon-ui'
 
 import { inviteLogic } from 'lib/logic/inviteLogic'

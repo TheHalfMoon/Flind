@@ -3,7 +3,7 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import clsx from 'clsx'
 
-import { IconDrag } from '@posthog/icons'
+import { IconDrag } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 const MetricDragHandle = ({

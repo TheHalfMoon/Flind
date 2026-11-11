@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconSparkles, IconX } from '@posthog/icons'
+import { IconSparkles, IconX } from '@flind/icons'
 import { Button, PopoverTrigger, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { TodayLauncherAlign, todayContextPanelLogic } from './todayContextPanelLogic'

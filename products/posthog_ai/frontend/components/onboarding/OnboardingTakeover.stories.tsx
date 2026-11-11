@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
-import { IconGithub } from '@posthog/icons'
+import { IconGithub } from '@flind/icons'
 import { Button } from '@flind/quill-primitives'
 
 import { DEFAULT_ONBOARDING_STEPS, DEFAULT_STARTER_PROMPTS } from './onboardingSteps'

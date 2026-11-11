@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useLayoutEffect, useMemo, useRef, useState } from 'react'
 
-import { IconGraph, IconNotebook } from '@posthog/icons'
+import { IconGraph, IconNotebook } from '@flind/icons'
 import {
     LemonButton,
     LemonSegmentedButton,

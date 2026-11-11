@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconPencil } from '@posthog/icons'
+import { IconPencil } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { Popover } from 'lib/lemon-ui/Popover'

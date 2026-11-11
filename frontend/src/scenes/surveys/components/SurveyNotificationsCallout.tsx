@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBell } from '@posthog/icons'
+import { IconBell } from '@flind/icons'
 import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { NEW_SURVEY } from 'scenes/surveys/constants'

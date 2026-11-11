@@ -1,4 +1,4 @@
-import { IconChevronDown, IconCursorClick, IconPencil } from '@posthog/icons'
+import { IconChevronDown, IconCursorClick, IconPencil } from '@flind/icons'
 import {
     Button,
     ButtonGroup,

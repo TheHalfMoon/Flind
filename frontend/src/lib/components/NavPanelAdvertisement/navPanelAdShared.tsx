@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
+import { IconX } from '@flind/icons'
 import type { AssetSvgProps } from '@posthog/brand'
-import { IconX } from '@posthog/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 

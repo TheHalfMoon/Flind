@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { IconCursorClick, IconPhone, IconSearch, IconSparkles } from '@posthog/icons'
+import { IconCursorClick, IconPhone, IconSearch, IconSparkles } from '@flind/icons'
 
 import { IconErrorOutline } from 'lib/lemon-ui/icons'
 

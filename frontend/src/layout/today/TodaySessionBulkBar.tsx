@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArchive, IconPin, IconPinFilled, IconX } from '@posthog/icons'
+import { IconArchive, IconPin, IconPinFilled, IconX } from '@flind/icons'
 import { Button, Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { TodaySessionBulkArchiveDialog } from './TodaySessionBulkArchiveDialog'

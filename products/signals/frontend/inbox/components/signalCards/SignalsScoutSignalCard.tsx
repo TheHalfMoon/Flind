@@ -1,7 +1,7 @@
 import { combineUrl } from 'kea-router'
 import { useState } from 'react'
 
-import { IconExternal, IconList } from '@posthog/icons'
+import { IconExternal, IconList } from '@flind/icons'
 import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'

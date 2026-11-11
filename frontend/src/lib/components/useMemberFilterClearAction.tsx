@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useRef } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { SideAction } from 'lib/lemon-ui/LemonButton'
 

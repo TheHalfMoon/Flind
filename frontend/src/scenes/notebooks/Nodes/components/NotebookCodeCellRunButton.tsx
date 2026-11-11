@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useCallback } from 'react'
 
-import { IconPlayFilled } from '@posthog/icons'
+import { IconPlayFilled } from '@flind/icons'
 
 import { usePublishNotebookComponentRunHandler } from 'lib/components/MarkdownNotebook/componentRunHandlers'
 import type { NotebookComponentToolbarProps } from 'lib/components/MarkdownNotebook/types'

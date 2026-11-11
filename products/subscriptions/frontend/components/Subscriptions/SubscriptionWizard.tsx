@@ -3,7 +3,7 @@ import { Form } from 'kea-forms'
 import posthog from 'posthog-js'
 import { useState } from 'react'
 
-import { IconChevronLeft, IconGraph } from '@posthog/icons'
+import { IconChevronLeft, IconGraph } from '@flind/icons'
 import { LemonInput, LemonTextArea, Link } from '@flind/lemon-ui'
 import { useFeatureFlagVariantKey } from '@posthog/react'
 

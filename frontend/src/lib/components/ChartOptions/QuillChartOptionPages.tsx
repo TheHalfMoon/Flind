@@ -1,6 +1,6 @@
 import { ReactNode, useLayoutEffect, useRef, useState } from 'react'
 
-import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight } from '@flind/icons'
 import { Badge, Button, Separator, Text, cn } from '@flind/quill'
 
 export interface ChartOptionPage {

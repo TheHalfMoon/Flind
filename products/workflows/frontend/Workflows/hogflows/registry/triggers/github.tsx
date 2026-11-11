@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGithub } from '@posthog/icons'
+import { IconGithub } from '@flind/icons'
 import { LemonBanner, LemonInputSelect, LemonSelect } from '@flind/lemon-ui'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { TextMorph } from 'torph/react'
 
 import * as researchPng from '@posthog/brand/hoggies/png/research'
-import { IconChevronDown, IconChevronRight, IconInfo, IconSparkles, IconWarning } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight, IconInfo, IconSparkles, IconWarning } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonSkeleton, LemonSnack, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

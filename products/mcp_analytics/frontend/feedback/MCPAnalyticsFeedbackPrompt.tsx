@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useId } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-import { IconThumbsDown, IconThumbsUp } from '@posthog/icons'
+import { IconThumbsDown, IconThumbsUp } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonLabel, LemonTextArea } from '@flind/lemon-ui'
 
 import { usePageVisibility } from 'lib/hooks/usePageVisibility'

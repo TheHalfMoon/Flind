@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconUpload } from '@posthog/icons'
+import { IconUpload } from '@flind/icons'
 import { LemonBanner } from '@flind/lemon-ui'
 
 import { LemonFileInput } from 'lib/lemon-ui/LemonFileInput'

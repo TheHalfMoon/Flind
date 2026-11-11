@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconDownload } from '@posthog/icons'
+import { IconDownload } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonInput, LemonMenu } from '@flind/lemon-ui'
 
 import { TriggerExportProps } from 'lib/components/ExportButton/exporter'

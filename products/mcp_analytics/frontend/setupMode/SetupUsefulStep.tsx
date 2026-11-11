@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconArrowRight, IconBell, IconLetter, IconSparkles } from '@posthog/icons'
+import { IconArrowRight, IconBell, IconLetter, IconSparkles } from '@flind/icons'
 import { LemonButton, LemonCard, Spinner } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'

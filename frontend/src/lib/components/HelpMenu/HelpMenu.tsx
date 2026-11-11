@@ -1,7 +1,7 @@
 import { Menu } from '@base-ui/react/menu'
 import { useActions, useValues } from 'kea'
 
-import { IconCopy, IconDatabase, IconOpenSidebar, IconServer, IconShieldLock, IconSparkles } from '@posthog/icons'
+import { IconCopy, IconDatabase, IconOpenSidebar, IconServer, IconShieldLock, IconSparkles } from '@flind/icons'
 import { ProfilePicture } from '@flind/lemon-ui'
 
 import { IconMenu, IconWithBadge } from 'lib/lemon-ui/icons'

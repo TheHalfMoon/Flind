@@ -1,4 +1,4 @@
-import { IconClock, IconLive } from '@posthog/icons'
+import { IconClock, IconLive } from '@flind/icons'
 import { LemonSelectOptions, LemonTag } from '@flind/lemon-ui'
 
 import { HogFunctionDeliveryType, getHogFunctionDeliveryType } from '../hog-function-utils'

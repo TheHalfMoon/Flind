@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { Fragment } from 'react'
 
-import { IconChevronDown, IconChevronRight, IconLightBulb } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight, IconLightBulb } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { LemonDivider } from 'lib/lemon-ui/LemonDivider'

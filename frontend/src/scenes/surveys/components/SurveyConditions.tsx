@@ -9,7 +9,7 @@ import {
     IconGlobe,
     IconLaptop,
     IconPerson,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { SurveyConditionSummary, SurveyConditionType } from 'scenes/surveys/utils'

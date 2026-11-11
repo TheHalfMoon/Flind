@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconLogomark } from '@posthog/icons'
+import { IconLogomark } from '@flind/icons'
 import { LemonButton, ProfilePicture } from '@flind/lemon-ui'
 
 import { AccountMenu } from 'lib/components/Account/AccountMenu'

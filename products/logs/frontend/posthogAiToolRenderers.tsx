@@ -7,7 +7,7 @@ import {
     IconServer,
     IconStack,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 

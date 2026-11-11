@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGridMasonry } from '@posthog/icons'
+import { IconGridMasonry } from '@flind/icons'
 
 import { DashboardEventSource } from 'lib/utils/eventUsageLogic'
 import { dashboardLogic } from 'scenes/dashboard/dashboardLogic'

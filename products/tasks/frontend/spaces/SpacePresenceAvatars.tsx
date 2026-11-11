@@ -1,4 +1,4 @@
-import { IconCrown } from '@posthog/icons'
+import { IconCrown } from '@flind/icons'
 import { AvatarGroup, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { SpacePresence } from './spacePresence'

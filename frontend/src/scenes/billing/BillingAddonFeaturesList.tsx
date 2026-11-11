@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconX } from '@posthog/icons'
+import { IconCheckCircle, IconX } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { BillingFeatureType } from '~/types'

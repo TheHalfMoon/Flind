@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconEllipsis, IconPlus } from '@posthog/icons'
+import { IconEllipsis, IconPlus } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonMenu, LemonSwitch, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import { TimeSensitiveAuthenticationArea } from 'lib/components/TimeSensitiveAuthentication/TimeSensitiveAuthentication'

@@ -1,7 +1,7 @@
 import { Menu } from '@base-ui/react/menu'
 import { useActions, useValues } from 'kea'
 
-import { IconDay, IconLaptop, IconNight, IconPalette } from '@posthog/icons'
+import { IconDay, IconLaptop, IconNight, IconPalette } from '@flind/icons'
 
 import { LemonTag } from 'lib/lemon-ui/LemonTag/LemonTag'
 import { Link } from 'lib/lemon-ui/Link/Link'

@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { IconCommit, IconGitBranch, IconGithub } from '@posthog/icons'
+import { IconCommit, IconGitBranch, IconGithub } from '@flind/icons'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { pluralize } from 'lib/utils/strings'

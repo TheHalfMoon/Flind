@@ -1,4 +1,4 @@
-import { IconChevronDown, IconClock, IconGitBranch, IconGitRepository, IconPerson } from '@posthog/icons'
+import { IconChevronDown, IconClock, IconGitBranch, IconGitRepository, IconPerson } from '@flind/icons'
 import {
     Button,
     Checkbox,

@@ -1,4 +1,4 @@
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDialog, LemonLabel, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

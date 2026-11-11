@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconNotification } from '@posthog/icons'
+import { IconNotification } from '@flind/icons'
 
 import { notificationsMenuLogic } from 'lib/components/NotificationsMenu/notificationsMenuLogic'
 import { IconWithCount } from 'lib/lemon-ui/icons'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { ReactNode, useRef, useState } from 'react'
 
-import { IconFolder, IconFolderOpen } from '@posthog/icons'
+import { IconFolder, IconFolderOpen } from '@flind/icons'
 
 import { dayjs } from 'lib/dayjs'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

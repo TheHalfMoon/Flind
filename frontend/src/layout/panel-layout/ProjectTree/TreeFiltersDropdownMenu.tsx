@@ -1,4 +1,4 @@
-import { IconFilter } from '@posthog/icons'
+import { IconFilter } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { ProjectTreeLogicProps } from './projectTreeLogic'

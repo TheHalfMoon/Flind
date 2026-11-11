@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCompass } from '@posthog/icons'
+import { IconCompass } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

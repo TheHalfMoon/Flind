@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconPencil } from '@posthog/icons'
+import { IconCheck, IconPencil } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { canvasEditLogic } from './canvasEditLogic'

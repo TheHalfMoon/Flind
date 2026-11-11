@@ -19,7 +19,7 @@
         "kea-test-utils": "catalog:"
     },
     "peerDependencies": {
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@posthog/react": "catalog:",
         "@storybook/react": "catalog:",
         "@testing-library/jest-dom": "*",

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconPlus, IconSparkles, IconX } from '@posthog/icons'
+import { IconCheck, IconPlus, IconSparkles, IconX } from '@flind/icons'
 import {
     LemonButton,
     LemonModal,

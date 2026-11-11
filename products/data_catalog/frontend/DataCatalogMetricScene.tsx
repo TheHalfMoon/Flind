@@ -11,7 +11,7 @@ import {
     IconServer,
     IconSparkles,
     IconTrash,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDialog, LemonDivider, LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

@@ -1,6 +1,6 @@
 import { BindLogic, useValues } from 'kea'
 
-import { IconInfo, IconLock } from '@posthog/icons'
+import { IconInfo, IconLock } from '@flind/icons'
 import {
     Button,
     Heading,

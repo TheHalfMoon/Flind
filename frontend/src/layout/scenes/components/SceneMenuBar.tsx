@@ -4,7 +4,7 @@ import posthog from 'posthog-js'
 import { Children, ComponentProps, ReactNode, useContext, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
-import { IconExternal, IconGear, IconSidePanel, IconSparkles } from '@posthog/icons'
+import { IconExternal, IconGear, IconSidePanel, IconSparkles } from '@flind/icons'
 import {
     Badge,
     Button,

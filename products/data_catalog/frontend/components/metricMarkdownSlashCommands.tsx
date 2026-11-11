@@ -1,7 +1,7 @@
 import type { Editor } from '@tiptap/core'
 import type { MutableRefObject } from 'react'
 
-import { IconCode, IconGraph, IconServer } from '@posthog/icons'
+import { IconCode, IconGraph, IconServer } from '@flind/icons'
 
 import {
     DEFAULT_INLINE_MARKDOWN_SLASH_COMMANDS,

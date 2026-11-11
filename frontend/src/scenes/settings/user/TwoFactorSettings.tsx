@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheckCircle, IconCopy, IconInfo, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconCopy, IconInfo, IconWarning } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,
