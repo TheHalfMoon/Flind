@@ -2440,15 +2440,6 @@ export const SETTINGS_MAP: SettingSection[] = [
     },
     {
         level: 'organization',
-        id: 'organization-legal-documents',
-        hideSelfHost: true,
-        title: 'Legal documents',
-        to: urls.legalDocuments(),
-        settings: [],
-        minimumAccessLevel: OrganizationMembershipLevel.Admin,
-    },
-    {
-        level: 'organization',
         id: 'organization-proxy',
         title: 'Managed reverse proxy',
         settings: [

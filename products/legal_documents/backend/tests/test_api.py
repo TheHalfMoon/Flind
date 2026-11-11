@@ -54,6 +54,39 @@ def _billing_with_addons(addon_types_subscribed: set[str], startup_program_label
 
 
 @override_settings(CLOUD_DEPLOYMENT="US")
+class TestLegalDocumentsOffInFlind(APIBaseTest):
+    """The inherited agreements are with PostHog Inc., so Flind serves none of this unless an operator opts in."""
+
+    def setUp(self) -> None:
+        super().setUp()
+        self.organization_membership.level = OrganizationMembership.Level.ADMIN
+        self.organization_membership.save()
+
+    @parameterized.expand(
+        [
+            ("list", "get", "legal_documents/"),
+            ("create", "post", "legal_documents/"),
+            ("download", "get", "legal_documents/00000000-0000-0000-0000-000000000000/download/"),
+        ]
+    )
+    def test_api_is_not_found_by_default(self, _name: str, method: str, path: str) -> None:
+        payload = BAA_PAYLOAD if method == "post" else None
+        response = getattr(self.client, method)(
+            f"/api/organizations/{self.organization.id}/{path}", payload, format="json"
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertFalse(LegalDocument.objects.exists())
+
+    def test_signature_webhook_is_not_found_by_default(self) -> None:
+        self.client.logout()
+
+        response = self.client.post("/api/legal_documents/pandadoc", [], format="json")
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+
+@override_settings(CLOUD_DEPLOYMENT="US", FLIND_LEGAL_DOCUMENTS_ENABLED=True)
 class TestLegalDocumentAPI(APIBaseTest):
     def setUp(self) -> None:
         super().setUp()
@@ -298,7 +331,7 @@ class TestLegalDocumentAPI(APIBaseTest):
             )
 
 
-@override_settings(CLOUD_DEPLOYMENT="US")
+@override_settings(CLOUD_DEPLOYMENT="US", FLIND_LEGAL_DOCUMENTS_ENABLED=True)
 class TestLegalDocumentDownloadEndpoint(APIBaseTest):
     """
     The `GET .../download` proxy hands back a short-lived presigned URL to the
@@ -391,7 +424,7 @@ class TestLegalDocumentDownloadEndpoint(APIBaseTest):
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
 
 
-@override_settings(CLOUD_DEPLOYMENT="US")
+@override_settings(CLOUD_DEPLOYMENT="US", FLIND_LEGAL_DOCUMENTS_ENABLED=True)
 class TestLegalDocumentDeleteEndpoint(APIBaseTest):
     """
     Self-serve DELETE for an unsigned legal document. Voids the underlying
@@ -529,7 +562,7 @@ class TestLegalDocumentDeleteEndpoint(APIBaseTest):
         self.assertTrue(LegalDocument.objects.filter(id=self.document.id).exists())
 
 
-@override_settings(CLOUD_DEPLOYMENT="US")
+@override_settings(CLOUD_DEPLOYMENT="US", FLIND_LEGAL_DOCUMENTS_ENABLED=True)
 class TestLegalDocumentPandaDocWebhook(APIBaseTest):
     SECRET = "pandadoc-test-secret"
     BAA_TEMPLATE_ID = "tpl_baa"
@@ -908,7 +941,7 @@ class TestLegalDocumentPandaDocWebhook(APIBaseTest):
         self.assertFalse(self.organization.is_ai_data_processing_approved)
 
 
-@override_settings(CLOUD_DEPLOYMENT="US")
+@override_settings(CLOUD_DEPLOYMENT="US", FLIND_LEGAL_DOCUMENTS_ENABLED=True)
 class TestLegalDocumentReconciliation(APIBaseTest):
     """
     The reconciliation sweep and the background archive task — the safety net

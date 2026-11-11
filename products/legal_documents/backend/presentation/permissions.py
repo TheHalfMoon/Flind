@@ -1,5 +1,7 @@
 from typing import cast
 
+from django.conf import settings
+
 from rest_framework import exceptions
 from rest_framework.permissions import BasePermission
 from rest_framework.request import Request
@@ -18,10 +20,11 @@ class IsCloudOrDevDeployment(BasePermission):
     something customers run on their own infrastructure.
     """
 
-    message = "Legal documents are only available on Flind Cloud."
+    message = "Legal documents are not available."
 
     def has_permission(self, request: Request, view: APIView) -> bool:
-        if not (is_cloud() or is_dev_mode()):
+        # The inherited agreements are with PostHog Inc., so Flind keeps them off unless an operator opts in.
+        if not settings.FLIND_LEGAL_DOCUMENTS_ENABLED or not (is_cloud() or is_dev_mode()):
             raise exceptions.NotFound("Not found.")
         return True
 

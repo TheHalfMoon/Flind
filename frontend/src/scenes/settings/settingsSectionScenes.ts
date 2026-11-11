@@ -17,12 +17,6 @@ export const SETTINGS_SECTION_SCENES: SettingsSectionScene[] = [
     { sectionId: 'environment-exports', level: 'project', url: urls.exports() },
     { sectionId: 'organization-billing', level: 'organization', url: urls.organizationBilling() },
     {
-        sectionId: 'organization-legal-documents',
-        level: 'organization',
-        url: urls.organizationLegalDocuments(),
-        legacyUrl: urls.legalDocuments(),
-    },
-    {
         sectionId: 'organization-startup-program',
         level: 'organization',
         url: urls.organizationStartups(),

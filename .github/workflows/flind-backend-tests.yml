@@ -42,6 +42,8 @@ jobs:
                 posthog/api/test/test_proxy_record.py
                 posthog/api/test/test_leaked_key.py
                 ee/api/test/test_billing.py
+                products/legal_documents/backend/tests/test_api.py
+                posthog/workload_identity/test/test_token_exchange.py
         steps:
             - uses: actions/checkout@v4
               with:
