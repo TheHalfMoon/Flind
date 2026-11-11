@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonInput, LemonSelect, LemonSwitch, Tooltip } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

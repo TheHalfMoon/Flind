@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconCode2, IconCopy, IconEndpoints, IconGraph, IconPencil, IconPeople } from '@posthog/icons'
+import { IconCode2, IconCopy, IconEndpoints, IconGraph, IconPencil, IconPeople } from '@flind/icons'
 
 import { exportsLogic } from 'lib/components/ExportButton/exportsLogic'
 import { captureImageLogic } from 'lib/components/Scenes/InsightOrDashboard/captureImageLogic'

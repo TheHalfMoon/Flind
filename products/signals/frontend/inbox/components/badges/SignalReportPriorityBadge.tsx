@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconQuestion } from '@posthog/icons'
+import { IconQuestion } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { PRIORITY_ACCENT, PRIORITY_MEANING } from '../../filterOptions'

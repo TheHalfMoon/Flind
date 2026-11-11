@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { Button, Popover, PopoverContent, PopoverTrigger, Skeleton } from '@flind/quill'
 
 import { PropertyIcon } from 'lib/components/PropertyIcon/PropertyIcon'

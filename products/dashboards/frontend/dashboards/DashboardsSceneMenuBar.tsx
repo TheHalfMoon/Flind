@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
-import { IconPencil, IconPlusSmall } from '@posthog/icons'
+import { IconPencil, IconPlusSmall } from '@flind/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

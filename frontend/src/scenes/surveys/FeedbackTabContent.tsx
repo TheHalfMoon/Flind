@@ -1,6 +1,6 @@
 import { BindLogic, useValues } from 'kea'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonBanner, LemonTable, LemonTableColumn, Link, Spinner } from '@flind/lemon-ui'
 
 import { createdAtColumn } from 'lib/lemon-ui/LemonTable/columnUtils'

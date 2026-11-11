@@ -1,4 +1,4 @@
-import { IconEllipsis, IconX } from '@posthog/icons'
+import { IconEllipsis, IconX } from '@flind/icons'
 import { Button, ButtonGroup, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

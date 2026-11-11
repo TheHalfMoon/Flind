@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { ReactNode } from 'react'
 
-import { IconCornerDownRight } from '@posthog/icons'
+import { IconCornerDownRight } from '@flind/icons'
 
 import { useComponentPanelState } from 'lib/components/MarkdownNotebook/componentPanelContext'
 import { useNotebookJupyterCommands } from 'lib/components/MarkdownNotebook/jupyterMode'

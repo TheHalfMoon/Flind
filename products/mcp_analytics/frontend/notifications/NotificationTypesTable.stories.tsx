@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { IconCalendar, IconPlus, IconWarning } from '@posthog/icons'
+import { IconCalendar, IconPlus, IconWarning } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { NotificationSlackPreview } from 'scenes/hog-functions/sub-templates/NotificationSlackPreview'

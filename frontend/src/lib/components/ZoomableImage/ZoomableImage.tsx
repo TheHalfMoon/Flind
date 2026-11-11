@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { IconMinus, IconPlus, IconRefresh } from '@posthog/icons'
+import { IconMinus, IconPlus, IconRefresh } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 const MIN_SCALE = 1

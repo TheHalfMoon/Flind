@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 import { useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonBanner, LemonCheckbox, Link } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

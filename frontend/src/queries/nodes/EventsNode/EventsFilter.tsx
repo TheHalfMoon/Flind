@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconPlusSmall, IconX } from '@posthog/icons'
+import { IconPlusSmall, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { PropertyKeyInfo } from 'lib/components/PropertyKeyInfo'

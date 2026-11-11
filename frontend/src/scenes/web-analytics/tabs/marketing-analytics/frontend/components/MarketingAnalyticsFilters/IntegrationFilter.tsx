@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconFilter } from '@posthog/icons'
+import { IconFilter } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonDropdown } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

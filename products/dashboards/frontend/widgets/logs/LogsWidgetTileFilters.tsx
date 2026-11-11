@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 
 import { LemonSelect } from 'lib/lemon-ui/LemonSelect'
 import { urls } from 'scenes/urls'

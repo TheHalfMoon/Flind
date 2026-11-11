@@ -1,7 +1,7 @@
 import { JSONContent } from '@tiptap/core'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonInput, LemonSwitch, Tooltip } from '@flind/lemon-ui'
 
 import { RichContentEditorType } from 'lib/components/RichContentEditor/types'

@@ -1,5 +1,5 @@
+import { IconDatabase } from '@flind/icons'
 import * as organizedPng from '@posthog/brand/hoggies/png/organized'
-import { IconDatabase } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

@@ -1,4 +1,4 @@
-import { IconCopy } from '@posthog/icons'
+import { IconCopy } from '@flind/icons'
 
 import { SceneComment } from 'lib/components/Scenes/SceneComment'
 import { SceneActivityIndicator } from 'lib/components/Scenes/SceneUpdateActivityInfo'

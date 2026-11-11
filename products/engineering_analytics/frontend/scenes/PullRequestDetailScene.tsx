@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
-import { IconExternal, IconPullRequest } from '@posthog/icons'
+import { IconExternal, IconPullRequest } from '@flind/icons'
 import {
     LemonButton,
     LemonInput,

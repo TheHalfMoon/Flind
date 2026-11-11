@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPencil } from '@posthog/icons'
+import { IconPencil } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonSelect, LemonTag, Link } from '@flind/lemon-ui'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'

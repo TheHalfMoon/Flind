@@ -1,4 +1,4 @@
-import { IconBolt, IconBook, IconGithub, IconList, IconSparkles } from '@posthog/icons'
+import { IconBolt, IconBook, IconGithub, IconList, IconSparkles } from '@flind/icons'
 
 // Default, overridable content for the Flind AI onboarding takeover. Five steps, in order: reset the
 // user's prediction of the old assistant, then one step per capability, ending on a real prompt. Pass your

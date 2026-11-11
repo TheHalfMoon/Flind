@@ -1,7 +1,7 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import * as React from 'react'
 
-import { IconCheck } from '@posthog/icons'
+import { IconCheck } from '@flind/icons'
 
 import { ScrollableShadows } from 'lib/lemon-ui/ScrollableShadows/ScrollableShadows'
 import { cn } from 'lib/utils/css-classes'

@@ -10,7 +10,7 @@ import {
     IconPlus,
     IconShare,
     IconSidePanel,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBanner, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 import { Button, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@flind/quill'
 

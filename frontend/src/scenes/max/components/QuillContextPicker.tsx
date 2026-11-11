@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useId, useState } from 'react'
 
-import { IconAtSign } from '@posthog/icons'
+import { IconAtSign } from '@flind/icons'
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 
 import { TaxonomicFilter } from 'lib/components/TaxonomicFilter/TaxonomicFilter'

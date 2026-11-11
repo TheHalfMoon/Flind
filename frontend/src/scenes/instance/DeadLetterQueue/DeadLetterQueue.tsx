@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconDatabase } from '@posthog/icons'
+import { IconDatabase } from '@flind/icons'
 
 import { LemonTabs } from 'lib/lemon-ui/LemonTabs'
 import { SceneExport } from 'scenes/sceneTypes'

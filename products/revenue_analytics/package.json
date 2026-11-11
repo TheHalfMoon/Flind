@@ -12,7 +12,7 @@
         "kea-router": "catalog:"
     },
     "peerDependencies": {
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@storybook/react": "catalog:",
         "@types/react": "*",
         "clsx": "*",

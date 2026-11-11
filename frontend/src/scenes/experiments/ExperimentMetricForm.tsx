@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { IconInfo, IconPencil } from '@posthog/icons'
+import { IconInfo, IconPencil } from '@flind/icons'
 import { LemonBanner, LemonInput } from '@flind/lemon-ui'
 
 import { DataWarehousePopoverField } from 'lib/components/TaxonomicFilter/types'

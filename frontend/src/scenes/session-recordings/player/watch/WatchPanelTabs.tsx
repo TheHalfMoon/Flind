@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { ReactNode } from 'react'
 
-import { IconChevronDown, IconSidePanel, IconSparkles } from '@posthog/icons'
+import { IconChevronDown, IconSidePanel, IconSparkles } from '@flind/icons'
 import { Badge, Button } from '@flind/quill'
 
 import { PaneTab, PaneTabBar } from 'scenes/session-recordings/components/PaneTabBar'

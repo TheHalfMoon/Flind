@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { IconDocument, IconImage } from '@posthog/icons'
+import { IconDocument, IconImage } from '@flind/icons'
 
 import { getFileExtension, isImageAttachment } from '../../utils/attachments'
 

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 
 import { useDelayedOnMountEffect } from 'lib/hooks/useOnMountEffect'
 

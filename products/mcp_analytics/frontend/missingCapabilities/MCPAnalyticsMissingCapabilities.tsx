@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import * as puzzlePng from '@posthog/brand/hoggies/png/puzzle'
-import { IconBook, IconMCP } from '@posthog/icons'
+import { IconBook, IconMCP } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonTable } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

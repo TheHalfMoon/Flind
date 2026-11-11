@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useId } from 'react'
 
-import { IconPlus, IconPlusSmall, IconWarning } from '@posthog/icons'
+import { IconPlus, IconPlusSmall, IconWarning } from '@flind/icons'
 import { LemonButton, LemonDropdown, Link } from '@flind/lemon-ui'
 
 import { LazyFeatureFlagPopoverInfo } from 'lib/components/DefinitionPopover/LazyFeatureFlagPopoverInfo'

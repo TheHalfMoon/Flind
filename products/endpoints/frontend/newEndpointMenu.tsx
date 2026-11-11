@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { router } from 'kea-router'
 
-import { IconGraph, IconServer } from '@posthog/icons'
+import { IconGraph, IconServer } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

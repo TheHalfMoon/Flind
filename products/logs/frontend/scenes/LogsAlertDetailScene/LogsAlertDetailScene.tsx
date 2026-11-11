@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconChevronDown, IconTestTube } from '@posthog/icons'
+import { IconChevronDown, IconTestTube } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCard, LemonModal, LemonTabs } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

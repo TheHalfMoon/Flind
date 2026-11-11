@@ -1,4 +1,4 @@
-import { IconPlus, IconX } from '@posthog/icons'
+import { IconPlus, IconX } from '@flind/icons'
 import { Button, Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { EventPicker } from './EventPicker'

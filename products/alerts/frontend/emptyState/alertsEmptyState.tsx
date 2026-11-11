@@ -1,5 +1,5 @@
+import { IconBell } from '@flind/icons'
 import * as lifeguardPng from '@posthog/brand/hoggies/png/lifeguard'
-import { IconBell } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

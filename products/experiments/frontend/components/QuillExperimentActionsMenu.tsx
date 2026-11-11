@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

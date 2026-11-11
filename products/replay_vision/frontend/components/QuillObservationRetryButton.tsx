@@ -1,4 +1,4 @@
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { AccessControlLevel } from '~/types'

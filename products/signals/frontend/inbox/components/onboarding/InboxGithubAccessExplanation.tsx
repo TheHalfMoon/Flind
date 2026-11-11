@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { type ReactNode, useCallback, useId, useRef, useState } from 'react'
 
-import { IconLock, IconQuestion, IconX } from '@posthog/icons'
+import { IconLock, IconQuestion, IconX } from '@flind/icons'
 import { LemonButton, Popover } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

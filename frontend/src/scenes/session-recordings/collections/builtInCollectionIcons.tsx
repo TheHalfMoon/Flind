@@ -1,4 +1,4 @@
-import { IconClock, IconComment, IconDownload, IconRewindPlay, IconShare, IconWarning } from '@posthog/icons'
+import { IconClock, IconComment, IconDownload, IconRewindPlay, IconShare, IconWarning } from '@flind/icons'
 
 export const BUILT_IN_COLLECTION_ICONS: Record<string, JSX.Element> = {
     'synthetic-watch-history': <IconRewindPlay />,

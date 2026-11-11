@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconGithub, IconPlus, IconRefresh, IconTrash } from '@posthog/icons'
+import { IconGithub, IconPlus, IconRefresh, IconTrash } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDialog, LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

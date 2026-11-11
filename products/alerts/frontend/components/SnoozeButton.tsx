@@ -1,4 +1,4 @@
-import { IconCalendar } from '@posthog/icons'
+import { IconCalendar } from '@flind/icons'
 import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

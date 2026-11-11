@@ -1,7 +1,7 @@
 import { useActions, useAsyncActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
-import { IconPlus, IconPlusSmall } from '@posthog/icons'
+import { IconPlus, IconPlusSmall } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

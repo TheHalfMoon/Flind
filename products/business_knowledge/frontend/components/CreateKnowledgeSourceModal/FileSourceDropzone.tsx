@@ -1,4 +1,4 @@
-import { IconDocument, IconUpload } from '@posthog/icons'
+import { IconDocument, IconUpload } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LemonFileInput } from 'lib/lemon-ui/LemonFileInput'

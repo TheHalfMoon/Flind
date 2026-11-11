@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconArrowRight, IconAtSign, IconSparkles } from '@posthog/icons'
+import { IconArrowRight, IconAtSign, IconSparkles } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { useHogfetti } from 'lib/components/Hogfetti/Hogfetti'

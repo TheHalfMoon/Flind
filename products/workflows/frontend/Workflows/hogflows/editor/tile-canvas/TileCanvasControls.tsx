@@ -1,7 +1,7 @@
 import { ControlButton, Controls, useReactFlow, useStore } from '@xyflow/react'
 import { useActions } from 'kea'
 
-import { IconExpand45, IconMinus, IconPlus } from '@posthog/icons'
+import { IconExpand45, IconMinus, IconPlus } from '@flind/icons'
 
 import { tileCanvasLogic } from './tileCanvasLogic'
 

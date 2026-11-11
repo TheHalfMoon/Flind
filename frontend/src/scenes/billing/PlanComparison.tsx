@@ -5,7 +5,7 @@ import { useValues } from 'kea'
 import React, { useState } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
-import { IconCheckCircle, IconWarning, IconX } from '@posthog/icons'
+import { IconCheckCircle, IconWarning, IconX } from '@flind/icons'
 import { LemonModal, LemonTag, Link } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

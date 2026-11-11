@@ -1,4 +1,4 @@
-import { IconGitBranch } from '@posthog/icons'
+import { IconGitBranch } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import posthogIcon from 'public/posthog-icon.svg'

@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { Field as KeaField } from 'kea-forms'
 
-import { IconCopy, IconTrash } from '@posthog/icons'
+import { IconCopy, IconTrash } from '@flind/icons'
 import { LemonDivider, Tooltip } from '@flind/lemon-ui'
 
 import { eventsWithMoveNotice, moveAnnouncementUrl } from 'lib/components/TaxonomicFilter/utils/hiddenEvents'

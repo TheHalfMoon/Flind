@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import { LemonButton, LemonInput, Tooltip } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

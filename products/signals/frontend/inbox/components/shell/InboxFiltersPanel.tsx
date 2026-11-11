@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconFilter } from '@posthog/icons'
+import { IconFilter } from '@flind/icons'
 import { LemonBadge, LemonButton, LemonDivider, LemonDropdown } from '@flind/lemon-ui'
 
 import { inboxFiltersLogic } from '../../logics/inboxFiltersLogic'

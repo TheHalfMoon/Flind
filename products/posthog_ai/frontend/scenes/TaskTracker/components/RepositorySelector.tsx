@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGitBranch, IconGithub } from '@posthog/icons'
+import { IconGitBranch, IconGithub } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 import { Button, ButtonGroup } from '@flind/quill-primitives'
 

@@ -1,4 +1,4 @@
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 import { LemonButton, LemonButtonProps } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

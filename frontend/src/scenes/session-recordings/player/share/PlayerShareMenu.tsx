@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconExternal, IconGlobe, IconShare, IconShield } from '@posthog/icons'
+import { IconExternal, IconGlobe, IconShare, IconShield } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'

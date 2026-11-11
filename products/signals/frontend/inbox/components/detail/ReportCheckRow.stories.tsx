@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { IconTarget } from '@posthog/icons'
+import { IconTarget } from '@flind/icons'
 
 import type { SignalReportCheckApi, SignalReportStatusEnumApi } from 'products/signals/frontend/generated/api.schemas'
 

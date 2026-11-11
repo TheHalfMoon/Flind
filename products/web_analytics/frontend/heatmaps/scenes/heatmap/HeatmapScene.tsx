@@ -5,7 +5,7 @@ import { useRef } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
 import * as directorPng from '@posthog/brand/hoggies/png/director'
-import { IconBrowser, IconDownload } from '@posthog/icons'
+import { IconBrowser, IconDownload } from '@flind/icons'
 import { Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

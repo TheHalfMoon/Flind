@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconClock, IconHome, IconLaptop } from '@posthog/icons'
+import { IconClock, IconHome, IconLaptop } from '@flind/icons'
 import { TooltipFooter, TooltipSurface, TooltipSwatch } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'

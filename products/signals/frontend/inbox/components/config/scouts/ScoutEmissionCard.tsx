@@ -1,6 +1,6 @@
 import { memo, useEffect, useRef, useState } from 'react'
 
-import { IconArrowRight, IconChevronDown, IconExternal } from '@posthog/icons'
+import { IconArrowRight, IconChevronDown, IconExternal } from '@flind/icons'
 import { LemonButton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { IconLink } from 'lib/lemon-ui/icons'

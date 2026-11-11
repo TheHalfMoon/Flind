@@ -10,7 +10,7 @@ import {
     IconTrends,
     IconUserPaths,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 export enum WebAnalyticsConcern {
     TRAFFIC = 'traffic',

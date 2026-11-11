@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconEllipsis } from '@posthog/icons'
+import { IconCheck, IconEllipsis } from '@flind/icons'
 import { LemonButton, LemonInput, LemonMenu, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { pipelineStatusSceneLogic } from './pipelineStatusSceneLogic'

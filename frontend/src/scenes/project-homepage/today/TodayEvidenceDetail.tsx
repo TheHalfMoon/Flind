@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconArrowRight, IconExternal } from '@posthog/icons'
+import { IconArrowRight, IconExternal } from '@flind/icons'
 import { Button, Text, cn } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'

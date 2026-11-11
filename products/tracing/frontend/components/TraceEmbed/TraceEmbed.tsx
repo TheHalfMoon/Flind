@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { IconExternal, IconSidebarClose, IconSidebarOpen } from '@posthog/icons'
+import { IconExternal, IconSidebarClose, IconSidebarOpen } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { traceUrl, type TraceLinkParams } from 'lib/components/ViewTraceButton/traceUrl'

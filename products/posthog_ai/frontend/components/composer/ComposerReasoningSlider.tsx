@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import { Slider } from '@flind/quill-primitives'
 
 import { cn } from 'lib/utils/css-classes'

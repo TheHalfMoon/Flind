@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useValues } from 'kea'
 
-import { IconBolt, IconDatabaseBolt } from '@posthog/icons'
+import { IconBolt, IconDatabaseBolt } from '@flind/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { dayjs } from 'lib/dayjs'

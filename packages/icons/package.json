@@ -1,0 +1,28 @@
+{
+    "name": "@flind/icons",
+    "version": "0.39.0",
+    "private": true,
+    "description": "Flind's React icon set (vendored upstream build; see NOTICE.md)",
+    "license": "MIT",
+    "main": "./index.cjs",
+    "module": "./index.mjs",
+    "types": "./index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.mjs",
+            "require": "./index.cjs"
+        }
+    },
+    "files": [
+        "dist/",
+        "index.cjs",
+        "index.d.ts",
+        "index.mjs"
+    ],
+    "sideEffects": false,
+    "peerDependencies": {
+        "react": ">=16.14.0",
+        "react-dom": ">=16.14.0"
+    }
+}

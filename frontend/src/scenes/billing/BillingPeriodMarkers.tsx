@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { useChartLayout } from '@flind/quill-charts'
 
 import { Dayjs, dayjs } from 'lib/dayjs'

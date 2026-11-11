@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconNotebook } from '@posthog/icons'
+import { IconNotebook } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { useNotebookNode } from 'scenes/notebooks/Nodes/NotebookNodeContext'

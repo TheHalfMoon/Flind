@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 import { useState } from 'react'
 
-import { IconPencil, IconPlus, IconSearch, IconTrash, IconWarning } from '@posthog/icons'
+import { IconPencil, IconPlus, IconSearch, IconTrash, IconWarning } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

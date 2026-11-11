@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { BindLogic, useActions, useValues } from 'kea'
 import React, { useMemo } from 'react'
 
-import { IconCopy, IconPlus, IconPlusSmall, IconTrash } from '@posthog/icons'
+import { IconCopy, IconPlus, IconPlusSmall, IconTrash } from '@flind/icons'
 import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 import { Button, Separator } from '@flind/quill'
 

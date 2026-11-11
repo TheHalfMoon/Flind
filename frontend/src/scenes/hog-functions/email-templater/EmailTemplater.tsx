@@ -5,7 +5,7 @@ import { ReactNode, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import EmailEditor, { EditorRef } from 'react-email-editor'
 
-import { IconCollapse, IconExpand, IconExternal, IconPlus, IconX } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconExternal, IconPlus, IconX } from '@flind/icons'
 import {
     LemonButton,
     LemonCard,

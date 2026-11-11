@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheckCircle, IconCircleDashed } from '@posthog/icons'
+import { IconCheckCircle, IconCircleDashed } from '@flind/icons'
 import { LemonCheckbox, Link } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

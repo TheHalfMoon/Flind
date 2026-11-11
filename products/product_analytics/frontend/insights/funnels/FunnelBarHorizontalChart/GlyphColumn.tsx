@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconInfinity } from '@posthog/icons'
+import { IconInfinity } from '@flind/icons'
 
 import { SeriesGlyph } from 'lib/components/SeriesGlyph'
 

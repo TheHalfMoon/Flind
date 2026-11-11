@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCopy, IconExternal } from '@posthog/icons'
+import { IconCopy, IconExternal } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonModal } from '@flind/lemon-ui'
 
 import { emailDomainAgentLogic } from '../emailDomainAgentLogic'

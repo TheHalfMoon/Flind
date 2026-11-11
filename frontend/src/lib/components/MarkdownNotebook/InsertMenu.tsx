@@ -16,7 +16,7 @@ import {
     IconStickiness,
     IconTrends,
     IconUserPaths,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { Scene } from 'scenes/sceneTypes'
 

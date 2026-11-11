@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconClock, IconFilter, IconTrending } from '@posthog/icons'
+import { IconClock, IconFilter, IconTrending } from '@flind/icons'
 
 import { FunnelsFilter } from '~/queries/schema/schema-general'
 import { EditorFilterProps, FunnelVizType as VizType } from '~/types'

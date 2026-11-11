@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { ReactElement } from 'react'
 
-import { IconGear, IconPencil } from '@posthog/icons'
+import { IconGear, IconPencil } from '@flind/icons'
 import { Separator } from '@flind/quill'
 
 import { useQuillSurface } from 'lib/components/QuillSurface/quillSurfaceContext'

@@ -4,7 +4,7 @@ import { Form } from 'kea-forms'
 import { MarkerSeverity, editor as monacoEditor } from 'monaco-editor'
 import { useRef } from 'react'
 
-import { IconInfo, IconX } from '@posthog/icons'
+import { IconInfo, IconX } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

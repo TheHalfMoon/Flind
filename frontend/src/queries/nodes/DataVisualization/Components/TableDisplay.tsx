@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGraph, IconLifecycle, IconPieChart, IconScatter, IconTrends } from '@posthog/icons'
+import { IconGraph, IconLifecycle, IconPieChart, IconScatter, IconTrends } from '@flind/icons'
 import { LemonSelect, LemonSelectOptions, LemonSelectProps } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

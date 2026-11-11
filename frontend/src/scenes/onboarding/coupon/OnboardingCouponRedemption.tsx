@@ -1,6 +1,6 @@
 import { router } from 'kea-router'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { CouponRedemption } from 'scenes/coupons/CouponRedemption'

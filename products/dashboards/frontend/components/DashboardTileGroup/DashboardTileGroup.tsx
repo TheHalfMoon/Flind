@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 
 import type { DashboardWidgetPlacementDestination } from 'lib/components/Cards/InsightCard/DashboardWidgetPlacementMenu'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

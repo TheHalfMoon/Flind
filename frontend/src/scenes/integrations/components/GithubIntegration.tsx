@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconChevronDown, IconGithub } from '@posthog/icons'
+import { IconChevronDown, IconGithub } from '@flind/icons'
 import { LemonBanner, LemonButton, Link } from '@flind/lemon-ui'
 
 import api from 'lib/api'

@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useEffect, useState } from 'react'
 
-import { IconOpenSidebar } from '@posthog/icons'
+import { IconOpenSidebar } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { AccessDenied } from 'lib/components/AccessDenied'

@@ -1,4 +1,4 @@
-import { IconInfo, IconSearch } from '@posthog/icons'
+import { IconInfo, IconSearch } from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

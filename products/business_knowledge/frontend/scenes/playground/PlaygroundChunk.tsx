@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconCopy } from '@posthog/icons'
+import { IconCopy } from '@flind/icons'
 import { LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'

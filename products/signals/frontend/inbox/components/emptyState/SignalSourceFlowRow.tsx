@@ -1,4 +1,4 @@
-import { IconArrowRight, IconBolt } from '@posthog/icons'
+import { IconArrowRight, IconBolt } from '@flind/icons'
 
 import { SignalSourceConfig } from '../../types'
 import { getSourceProductMeta } from '../badges/sourceProductIcons'

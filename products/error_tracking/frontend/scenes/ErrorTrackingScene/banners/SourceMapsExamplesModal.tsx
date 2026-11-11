@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconExternal, IconMagicWand } from '@posthog/icons'
+import { IconExternal, IconMagicWand } from '@flind/icons'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import {

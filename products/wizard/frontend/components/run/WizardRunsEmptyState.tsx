@@ -1,4 +1,4 @@
-import { IconDocument } from '@posthog/icons'
+import { IconDocument } from '@flind/icons'
 import {
     Button,
     Empty,

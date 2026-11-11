@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
-import { IconCdCase, IconDocument, IconPlug, IconUser } from '@posthog/icons'
+import { IconCdCase, IconDocument, IconPlug, IconUser } from '@flind/icons'
 
 import { SearchAutocomplete } from 'lib/components/SearchAutocomplete/SearchAutocomplete'
 import { LemonTreeRef } from 'lib/lemon-ui/LemonTree/LemonTree'

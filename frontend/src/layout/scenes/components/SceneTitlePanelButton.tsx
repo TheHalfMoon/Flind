@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconBrackets, IconSidePanel, IconSparkles, IconWrench } from '@posthog/icons'
+import { IconBrackets, IconSidePanel, IconSparkles, IconWrench } from '@flind/icons'
 
 import { RenderKeybind } from 'lib/components/Shortcuts/RenderKeybind'
 import { keyBinds } from 'lib/components/Shortcuts/shortcuts'

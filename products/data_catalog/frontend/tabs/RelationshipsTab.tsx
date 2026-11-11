@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlus, IconRefresh } from '@posthog/icons'
+import { IconPlus, IconRefresh } from '@flind/icons'
 import { LemonButton, LemonDialog } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet/CodeSnippet'

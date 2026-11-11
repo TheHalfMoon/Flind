@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconLetter } from '@posthog/icons'
+import { IconLetter } from '@flind/icons'
 import { LemonModal, Link } from '@flind/lemon-ui'
 
 import { HogFlow } from './hogflows/types'

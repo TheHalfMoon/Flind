@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import posthog from 'posthog-js'
 import { ReactNode, useState } from 'react'
 
-import { IconSparkles, IconX } from '@posthog/icons'
+import { IconSparkles, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { CommandBlock } from 'lib/components/CommandBlock/CommandBlock'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useId } from 'react'
 
-import { IconThumbsDown, IconThumbsUp, IconX } from '@posthog/icons'
+import { IconThumbsDown, IconThumbsUp, IconX } from '@flind/icons'
 import { Button, Field, FieldLabel, Text, Textarea } from '@flind/quill'
 
 import { DATA_CHECKS_FEEDBACK_RATINGS, dataChecksFeedbackLogic } from './dataChecksFeedbackLogic'

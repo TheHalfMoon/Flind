@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconInfo, IconPencil, IconPlus, IconX } from '@posthog/icons'
+import { IconCheck, IconInfo, IconPencil, IconPlus, IconX } from '@flind/icons'
 
 import { LemonInputSelect } from 'lib/lemon-ui/LemonInputSelect'
 import { LemonTag } from 'lib/lemon-ui/LemonTag'

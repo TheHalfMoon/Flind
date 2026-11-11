@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useCallback, useMemo, useState } from 'react'
 
-import { IconCalendar } from '@posthog/icons'
+import { IconCalendar } from '@flind/icons'
 import {
     LemonButton,
     LemonCalendarSelectInput,

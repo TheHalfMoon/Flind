@@ -11,7 +11,7 @@ import {
     IconPieChart,
     IconRewindPlay,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { flindPublicUrl } from 'lib/flindPublicLinks'
 

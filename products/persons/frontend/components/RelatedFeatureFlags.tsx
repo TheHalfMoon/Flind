@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonInput, LemonSelect, LemonSnack, LemonTable, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { LemonTableColumns } from 'lib/lemon-ui/LemonTable'

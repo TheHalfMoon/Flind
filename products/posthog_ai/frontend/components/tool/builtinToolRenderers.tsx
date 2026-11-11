@@ -12,7 +12,7 @@ import {
     IconSearch,
     IconTerminal,
     IconWrench,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 // IconRobot is not exported from @posthog/icons — it lives only in the legacy lib icon set.
 import { IconRobot } from 'lib/lemon-ui/icons'

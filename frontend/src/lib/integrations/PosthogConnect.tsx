@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconLogomark, IconPlus, IconTrash } from '@posthog/icons'
+import { IconLogomark, IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonInput, LemonModal, LemonSelect, LemonSkeleton } from '@flind/lemon-ui'
 
 import api from 'lib/api'

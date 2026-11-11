@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonSelect } from '@flind/lemon-ui'
 
 import { HogQLEditor } from 'lib/components/HogQLEditor/HogQLEditor'

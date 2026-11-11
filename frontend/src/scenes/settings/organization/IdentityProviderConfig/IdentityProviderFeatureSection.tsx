@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheckCircle, IconCircleDashed, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconCircleDashed, IconWarning } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCard, LemonSkeleton } from '@flind/lemon-ui'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'

@@ -1,4 +1,4 @@
-import { IconBook, IconCode } from '@posthog/icons'
+import { IconBook, IconCode } from '@flind/icons'
 
 import { urls } from 'scenes/urls'
 

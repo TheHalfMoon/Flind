@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 import { LemonButton, LemonDropdown, LemonInput } from '@flind/lemon-ui'
 
 import { BIN_COUNT_AUTO } from 'lib/constants'

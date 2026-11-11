@@ -1,4 +1,4 @@
-import { IconCode } from '@posthog/icons'
+import { IconCode } from '@flind/icons'
 import { Badge, Button, Card, CardGroup, Text, cn } from '@flind/quill'
 
 import { iconForType } from '~/layout/panel-layout/ProjectTree/defaultTree'

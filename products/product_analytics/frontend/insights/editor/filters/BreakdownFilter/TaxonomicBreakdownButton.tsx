@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { ReactElement, useState } from 'react'
 
-import { IconPlus, IconPlusSmall } from '@posthog/icons'
+import { IconPlus, IconPlusSmall } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

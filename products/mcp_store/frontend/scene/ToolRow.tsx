@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconChevronRight, IconLock } from '@posthog/icons'
+import { IconChevronRight, IconLock } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { isPolicyStateAllowedByCeiling } from '../gateway/gatewayPolicyUtils'

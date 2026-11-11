@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { IconOpenInNew } from 'lib/lemon-ui/icons'

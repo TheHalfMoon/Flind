@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconBell } from '@posthog/icons'
+import { IconBell } from '@flind/icons'
 import { LemonButton, LemonButtonProps } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

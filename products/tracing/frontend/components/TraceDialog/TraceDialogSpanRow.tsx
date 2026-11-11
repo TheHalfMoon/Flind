@@ -1,6 +1,6 @@
 import { type MouseEvent, useMemo } from 'react'
 
-import { IconChevronRight, IconWarning } from '@posthog/icons'
+import { IconChevronRight, IconWarning } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { getSeriesColor } from 'lib/colors'

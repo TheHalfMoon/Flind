@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 
-import { IconFilter } from '@posthog/icons'
+import { IconFilter } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { SceneStickyBar } from '~/layout/scenes/components/SceneStickyBar'

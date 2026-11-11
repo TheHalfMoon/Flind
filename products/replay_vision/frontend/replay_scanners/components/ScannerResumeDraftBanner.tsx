@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
-import { IconPencil, IconTrash } from '@posthog/icons'
+import { IconPencil, IconTrash } from '@flind/icons'
 import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

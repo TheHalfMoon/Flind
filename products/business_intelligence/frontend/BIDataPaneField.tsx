@@ -1,6 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { IconCalendar, IconEllipsis, IconInfo } from '@posthog/icons'
+import { IconCalendar, IconEllipsis, IconInfo } from '@flind/icons'
 import { LemonButton, LemonMenu, Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

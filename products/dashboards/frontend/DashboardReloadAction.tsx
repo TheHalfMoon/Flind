@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconX } from '@posthog/icons'
-import { IconRefresh } from '@posthog/icons'
+import { IconCheck, IconX } from '@flind/icons'
+import { IconRefresh } from '@flind/icons'
 import { LemonBadge, LemonButton, LemonSwitch, Spinner } from '@flind/lemon-ui'
 
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'

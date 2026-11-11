@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { IconFlag, IconInfo } from '@posthog/icons'
+import { IconFlag, IconInfo } from '@flind/icons'
 
 import { LemonTag as LemonTagComponent, LemonTagProps, LemonTagType } from './LemonTag'
 

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconDatabaseBolt } from '@posthog/icons'
+import { IconDatabaseBolt } from '@flind/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

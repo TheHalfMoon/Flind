@@ -1,4 +1,4 @@
-import { IconChevronDown, IconChevronRight } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight } from '@flind/icons'
 import { LemonButton, LemonTable, Link, Tooltip } from '@flind/lemon-ui'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'

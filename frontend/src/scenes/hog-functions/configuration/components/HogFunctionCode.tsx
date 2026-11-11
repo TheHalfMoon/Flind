@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDropdown, Link } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'

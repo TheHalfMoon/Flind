@@ -1,6 +1,6 @@
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
-import { IconShield, IconShieldEmpty, IconShieldExclamation } from '@posthog/icons'
+import { IconShield, IconShieldEmpty, IconShieldExclamation } from '@flind/icons'
 
 import { flindDocsUrl } from 'lib/flindPublicLinks'
 

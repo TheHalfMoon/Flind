@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconInfo, IconWarning } from '@posthog/icons'
+import { IconInfo, IconWarning } from '@flind/icons'
 
 import { LemonCollapse } from 'lib/lemon-ui/LemonCollapse'
 

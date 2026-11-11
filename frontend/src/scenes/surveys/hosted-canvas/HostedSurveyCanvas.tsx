@@ -6,7 +6,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { useActions, useValues } from 'kea'
 import { type CSSProperties } from 'react'
 
-import { IconPlus, IconThumbsDown, IconThumbsUp, IconTrash } from '@posthog/icons'
+import { IconPlus, IconThumbsDown, IconThumbsUp, IconTrash } from '@flind/icons'
 
 import { SortableDragIcon } from 'lib/lemon-ui/icons'
 import { platformCommandControlKey } from 'lib/utils/dom'

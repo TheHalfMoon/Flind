@@ -3,7 +3,7 @@ import './NotebookPanel.scss'
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconExpand45 } from '@posthog/icons'
+import { IconExpand45 } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { useResizeBreakpoints } from 'lib/hooks/useResizeObserver'

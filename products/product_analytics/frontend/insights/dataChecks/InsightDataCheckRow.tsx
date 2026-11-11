@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconWarning } from '@posthog/icons'
+import { IconCheck, IconWarning } from '@flind/icons'
 import { AccordionContent, AccordionItem, AccordionTrigger, Dot, Skeleton, Spinner, Text } from '@flind/quill'
 
 import type { InsightLogicProps } from '~/types'

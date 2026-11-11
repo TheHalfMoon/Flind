@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react'
 
-import { IconCheck } from '@posthog/icons'
+import { IconCheck } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { ComponentProps, CSSProperties, useId, useState } from 'react'
 
-import { IconPencil, IconPlus } from '@posthog/icons'
+import { IconPencil, IconPlus } from '@flind/icons'
 import { LemonButton, LemonInputSelect, LemonTag, LemonTagType, Popover } from '@flind/lemon-ui'
 
 import { objectTagsLogic } from 'lib/components/ObjectTags/objectTagsLogic'

@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react'
 
-import { IconLive } from '@posthog/icons'
+import { IconLive } from '@flind/icons'
 import { Badge, Collapsible, CollapsibleContent, CollapsibleTrigger } from '@flind/quill'
 
 export function OngoingRecordingsGroup({

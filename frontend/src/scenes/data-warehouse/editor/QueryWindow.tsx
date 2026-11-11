@@ -4,7 +4,7 @@ import type { editor as importedEditor } from 'monaco-editor'
 import posthog from 'posthog-js'
 import { memo, useCallback, useMemo, useRef } from 'react'
 
-import { IconDatabase, IconGear, IconInfo, IconSidebarClose } from '@posthog/icons'
+import { IconDatabase, IconGear, IconInfo, IconSidebarClose } from '@flind/icons'
 import { LemonDivider } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

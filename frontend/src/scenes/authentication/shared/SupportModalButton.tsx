@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBug, IconQuestion } from '@posthog/icons'
+import { IconBug, IconQuestion } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { SupportTicketKind, supportLogic } from 'lib/components/Support/supportLogic'

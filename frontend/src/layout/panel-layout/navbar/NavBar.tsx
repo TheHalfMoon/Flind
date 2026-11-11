@@ -4,7 +4,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { memo, Suspense, useRef } from 'react'
 
-import { IconApps, IconChat, IconFolderOpen } from '@posthog/icons'
+import { IconApps, IconChat, IconFolderOpen } from '@flind/icons'
 
 import { NewAccountMenu } from 'lib/components/Account/NewAccountMenu'
 import { commandLogic } from 'lib/components/Command/commandLogic'

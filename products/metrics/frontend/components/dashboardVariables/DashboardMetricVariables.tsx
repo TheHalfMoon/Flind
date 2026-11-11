@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { DashboardEventSource } from 'lib/utils/eventUsageLogic'

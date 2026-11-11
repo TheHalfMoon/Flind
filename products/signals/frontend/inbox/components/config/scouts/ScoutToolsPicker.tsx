@@ -1,7 +1,7 @@
 import { useMountedLogic, useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconCheck } from '@posthog/icons'
+import { IconCheck } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonInput, LemonModal, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import type { ScoutToolCatalogueApi, ToolPresetEnumApi } from 'products/signals/frontend/generated/api.schemas'

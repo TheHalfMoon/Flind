@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { IconArrowLeft } from '@posthog/icons'
+import { IconArrowLeft } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LabeledLink } from '../types'

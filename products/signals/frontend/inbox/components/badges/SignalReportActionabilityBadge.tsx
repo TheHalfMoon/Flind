@@ -1,4 +1,4 @@
-import { IconQuestion } from '@posthog/icons'
+import { IconQuestion } from '@flind/icons'
 import { LemonTag, LemonTagType, Tooltip } from '@flind/lemon-ui'
 
 import { SignalReportActionability } from '../../types'

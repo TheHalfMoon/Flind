@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
-import { IconCopy, IconDrag, IconTrash } from '@posthog/icons'
+import { IconCopy, IconDrag, IconTrash } from '@flind/icons'
 
 import { LemonMenu } from 'lib/lemon-ui/LemonMenu'
 

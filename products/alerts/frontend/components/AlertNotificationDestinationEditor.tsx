@@ -1,6 +1,6 @@
 import { KeyboardEvent, ReactNode } from 'react'
 
-import { IconExternal, IconTrash } from '@posthog/icons'
+import { IconExternal, IconTrash } from '@flind/icons'
 import {
     LemonButton,
     LemonBanner,

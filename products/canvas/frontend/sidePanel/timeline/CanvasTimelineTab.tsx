@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconClock, IconPencil, IconSparkles, IconUser } from '@posthog/icons'
+import { IconClock, IconPencil, IconSparkles, IconUser } from '@flind/icons'
 import {
     Badge,
     Button,

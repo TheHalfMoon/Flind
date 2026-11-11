@@ -1,4 +1,4 @@
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import { LemonCollapse } from '@flind/lemon-ui'
 
 import { isValidRegexp } from 'lib/utils/regexp'

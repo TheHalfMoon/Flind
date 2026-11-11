@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { IconCheckCircle, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconWarning } from '@flind/icons'
 import { LemonBanner } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconGear, IconPlus, IconTrash } from '@posthog/icons'
+import { IconGear, IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, lemonToast } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

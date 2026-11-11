@@ -2,7 +2,7 @@ import './TerminalCard.scss'
 
 import { useState } from 'react'
 
-import { IconCheck, IconCopy } from '@posthog/icons'
+import { IconCheck, IconCopy } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

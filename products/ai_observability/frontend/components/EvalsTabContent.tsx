@@ -1,6 +1,6 @@
 import { BuiltLogic, useActions, useMountedLogic, useValues } from 'kea'
 
-import { IconCheckCircle, IconPlus, IconRefresh } from '@posthog/icons'
+import { IconCheckCircle, IconPlus, IconRefresh } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'

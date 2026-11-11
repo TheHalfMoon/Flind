@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useMemo, useState } from 'react'
 
 import * as construction2Png from '@posthog/brand/hoggies/png/construction-2'
-import { IconDownload, IconPlus } from '@posthog/icons'
+import { IconDownload, IconPlus } from '@flind/icons'
 import { LemonButton, LemonCollapse, LemonDialog, LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

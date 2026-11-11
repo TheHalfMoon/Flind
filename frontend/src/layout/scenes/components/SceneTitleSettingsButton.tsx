@@ -1,7 +1,7 @@
 import posthog from 'posthog-js'
 import { useContext } from 'react'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

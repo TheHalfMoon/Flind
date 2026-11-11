@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Fragment, useEffect, useState } from 'react'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 import { LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import { getCookie } from 'lib/api'

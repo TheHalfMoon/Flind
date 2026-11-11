@@ -1,7 +1,7 @@
 import { BindLogic } from 'kea'
 import { useActions, useValues } from 'kea'
 
-import { IconGear, IconPencil } from '@posthog/icons'
+import { IconGear, IconPencil } from '@flind/icons'
 import { LemonButton, LemonDivider, Popover } from '@flind/lemon-ui'
 
 import { CompareFilter } from 'lib/components/CompareFilter/CompareFilter'

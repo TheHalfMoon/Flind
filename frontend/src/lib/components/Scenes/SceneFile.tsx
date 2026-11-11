@@ -1,6 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { IconFolderMove, IconFolderOpen, IconStar, IconStarFilled } from '@posthog/icons'
+import { IconFolderMove, IconFolderOpen, IconStar, IconStarFilled } from '@flind/icons'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 import {

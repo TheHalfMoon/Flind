@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 
 import { DashboardWidgetPlacementMenu } from 'lib/components/Cards/InsightCard/DashboardWidgetPlacementMenu'
 import type { DashboardWidgetPlacementDestination } from 'lib/components/Cards/InsightCard/DashboardWidgetPlacementMenu'

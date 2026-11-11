@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconNotification } from '@posthog/icons'
+import { IconNotification } from '@flind/icons'
 import {
     Empty,
     EmptyDescription,

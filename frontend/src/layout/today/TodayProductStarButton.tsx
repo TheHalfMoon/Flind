@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconStar, IconStarFilled } from '@posthog/icons'
+import { IconStar, IconStarFilled } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { projectTreeDataLogic } from '~/layout/panel-layout/ProjectTree/projectTreeDataLogic'

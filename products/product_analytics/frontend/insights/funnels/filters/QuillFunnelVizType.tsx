@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconFunnels, IconGraph, IconLineGraph } from '@posthog/icons'
+import { IconFunnels, IconGraph, IconLineGraph } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { router } from 'kea-router'
 import React, { useMemo, useState } from 'react'
 
-import { IconCopy } from '@posthog/icons'
+import { IconCopy } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'

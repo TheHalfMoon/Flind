@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPinFilled } from '@posthog/icons'
+import { IconPinFilled } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonModal, LemonSearchableSelect, Tooltip } from '@flind/lemon-ui'
 
 import { fullName, fullNameOrEmail } from 'lib/utils/strings'

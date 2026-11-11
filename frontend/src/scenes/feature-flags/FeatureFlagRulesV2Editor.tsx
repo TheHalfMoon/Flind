@@ -16,7 +16,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { Fragment, Ref, useCallback, useId, useMemo, useRef } from 'react'
 
-import { IconCalculator, IconCheckCircle, IconCode, IconLetter, IconPlusSmall, IconToggle } from '@posthog/icons'
+import { IconCalculator, IconCheckCircle, IconCode, IconLetter, IconPlusSmall, IconToggle } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDialog, LemonInput, LemonMenu, LemonTextArea, Tooltip } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

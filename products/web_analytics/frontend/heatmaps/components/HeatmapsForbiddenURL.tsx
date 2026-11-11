@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonBanner } from '@flind/lemon-ui'
 
 import {

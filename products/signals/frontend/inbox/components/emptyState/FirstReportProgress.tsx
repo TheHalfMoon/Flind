@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconClock, IconHourglass, IconInfo, IconLetter, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconClock, IconHourglass, IconInfo, IconLetter, IconWarning } from '@flind/icons'
 import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

@@ -12,7 +12,7 @@ import {
     IconPlayFilled,
     IconSparkles,
     IconX,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, Link, Tooltip } from '@flind/lemon-ui'
 
 import { useAutoMarkRead } from 'lib/components/NotificationsMenu/useAutoMarkRead'

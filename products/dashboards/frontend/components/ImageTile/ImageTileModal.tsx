@@ -5,7 +5,7 @@ import posthog from 'posthog-js'
 import { useEffect, useRef, useState } from 'react'
 import type { KeyboardEvent, PointerEvent, RefObject } from 'react'
 
-import { IconImage } from '@posthog/icons'
+import { IconImage } from '@flind/icons'
 
 import { textCardConverter } from 'lib/components/Cards/TextCard/textCardMarkdown'
 import { textCardModalLogic } from 'lib/components/Cards/TextCard/textCardModalLogic'

@@ -1,7 +1,7 @@
 import posthog from 'posthog-js'
 import { type ErrorInfo, type ReactNode, useMemo } from 'react'
 
-import { IconArrowRight, IconInfo } from '@posthog/icons'
+import { IconArrowRight, IconInfo } from '@flind/icons'
 import { createTooltipDateFormatter, useChartTheme, type MetricChange, type Series } from '@flind/quill-charts'
 import {
     Metric,

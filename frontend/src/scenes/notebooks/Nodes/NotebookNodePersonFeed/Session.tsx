@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconCollapse, IconExpand, IconRewindPlay } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconRewindPlay } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

@@ -1,4 +1,4 @@
-import { IconBuilding } from '@posthog/icons'
+import { IconBuilding } from '@flind/icons'
 import type { LemonTagType } from '@flind/lemon-ui'
 
 import { getEntryAccessDisabledReason } from 'lib/utils/accessControlUtils'

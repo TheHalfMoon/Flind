@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { IconEllipsis } from '@posthog/icons'
+import { IconEllipsis } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

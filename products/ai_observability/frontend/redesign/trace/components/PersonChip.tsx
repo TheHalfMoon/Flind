@@ -1,4 +1,4 @@
-import { IconPerson } from '@posthog/icons'
+import { IconPerson } from '@flind/icons'
 import { LemonTag, Link } from '@flind/lemon-ui'
 
 import { LabeledLink } from '../types'

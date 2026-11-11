@@ -1,4 +1,4 @@
-import { IconCheckCircle } from '@posthog/icons'
+import { IconCheckCircle } from '@flind/icons'
 import { DropdownMenuItem, Spinner } from '@flind/quill'
 
 import type { MetricsSuggestedDashboardApi } from 'products/metrics/frontend/generated/api.schemas'

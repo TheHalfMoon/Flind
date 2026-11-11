@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconShieldLock, IconTrash } from '@posthog/icons'
+import { IconShieldLock, IconTrash } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDivider, LemonModal, Spinner } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

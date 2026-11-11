@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { IconChevronLeft, IconChevronRight, IconTrash } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight, IconTrash } from '@flind/icons'
 import { LemonButton, LemonDialog, Spinner } from '@flind/lemon-ui'
 
 export interface ImageCarouselProps {

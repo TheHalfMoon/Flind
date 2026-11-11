@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBrain } from '@posthog/icons'
+import { IconBrain } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { LemonMenu } from 'lib/lemon-ui/LemonMenu'

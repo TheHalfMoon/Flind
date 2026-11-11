@@ -1,4 +1,4 @@
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { Logo } from 'lib/brand'

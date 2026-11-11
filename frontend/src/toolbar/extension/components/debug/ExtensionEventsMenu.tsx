@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconClock, IconDownload, IconEye, IconHide, IconPause, IconPlay, IconTrash } from '@posthog/icons'
+import { IconClock, IconDownload, IconEye, IconHide, IconPause, IconPlay, IconTrash } from '@flind/icons'
 
 import { SettingsBar, SettingsMenu } from 'lib/components/PanelSettings/PanelSettings'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

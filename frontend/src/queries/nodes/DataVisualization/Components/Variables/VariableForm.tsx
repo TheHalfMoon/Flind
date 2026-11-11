@@ -1,4 +1,4 @@
-import { IconCopy, IconInfo } from '@posthog/icons'
+import { IconCopy, IconInfo } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'

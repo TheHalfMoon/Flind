@@ -11,7 +11,7 @@ import { NotebookNodeLogicProps, notebookNodeLogic } from './notebookNodeLogic'
 import { KNOWN_NODES } from '../utils'
 import { NotebookNodeTitle } from './components/NotebookNodeTitle'
 import { NotebookNodeContext } from './NotebookNodeContext'
-import { IconCollapse, IconEllipsis, IconExpand, IconPencil } from '@posthog/icons'
+import { IconCollapse, IconEllipsis, IconExpand, IconPencil } from '@flind/icons'
 import {
     CreatePostHogWidgetNodeOptions,
     CustomNotebookNodeAttributes,

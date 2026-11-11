@@ -1,4 +1,4 @@
-import { IconPerson } from '@posthog/icons'
+import { IconPerson } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

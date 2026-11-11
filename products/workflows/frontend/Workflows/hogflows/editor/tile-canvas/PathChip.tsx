@@ -1,7 +1,7 @@
 import { NodeProps } from '@xyflow/react'
 import { useActions } from 'kea'
 
-import { IconCollapse } from '@posthog/icons'
+import { IconCollapse } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

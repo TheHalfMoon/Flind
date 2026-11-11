@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { IconChevronLeft } from '@posthog/icons'
+import { IconChevronLeft } from '@flind/icons'
 import { LemonCheckbox, LemonInput, LemonSkeleton } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

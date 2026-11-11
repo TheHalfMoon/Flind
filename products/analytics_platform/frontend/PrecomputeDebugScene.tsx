@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRefresh, IconTrash } from '@posthog/icons'
+import { IconRefresh, IconTrash } from '@flind/icons'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { TZLabel } from 'lib/components/TZLabel'

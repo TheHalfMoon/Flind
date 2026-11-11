@@ -1,4 +1,4 @@
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { Button, ButtonGroup } from '@flind/quill'
 
 import { FeedbackSurveyButton } from 'lib/components/FeedbackSurveyButton/FeedbackSurveyButton'

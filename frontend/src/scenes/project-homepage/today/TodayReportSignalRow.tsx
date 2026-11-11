@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconChevronDown, IconExternal, IconPlay } from '@posthog/icons'
+import { IconChevronDown, IconExternal, IconPlay } from '@flind/icons'
 import { Item, ItemActions, ItemContent, ItemTitle, Text, cn } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'

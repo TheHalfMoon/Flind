@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useValues } from 'kea'
 import React from 'react'
 
-import { IconFilter, IconLogomark, IconX } from '@posthog/icons'
+import { IconFilter, IconLogomark, IconX } from '@flind/icons'
 import { LemonButton, PopoverReferenceContext } from '@flind/lemon-ui'
 
 import { PropertyFilterIcon } from 'lib/components/PropertyFilters/components/PropertyFilterIcon'

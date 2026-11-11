@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 
 import { IconPremium } from 'lib/lemon-ui/icons'
 

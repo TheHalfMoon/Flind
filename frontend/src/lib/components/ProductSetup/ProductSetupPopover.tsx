@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-import { IconCheck, IconExternal, IconLock, IconTarget } from '@posthog/icons'
+import { IconCheck, IconExternal, IconLock, IconTarget } from '@flind/icons'
 import { LemonButton, LemonSelect, Link } from '@flind/lemon-ui'
 
 import { useHogfetti } from 'lib/components/Hogfetti/Hogfetti'

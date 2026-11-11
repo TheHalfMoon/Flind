@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { IconPulse, IconWarning } from '@posthog/icons'
+import { IconPulse, IconWarning } from '@flind/icons'
 
 import { IconUnverifiedEvent } from 'lib/lemon-ui/icons'
 import { PaneTab, PaneTabBar } from 'scenes/session-recordings/components/PaneTabBar'

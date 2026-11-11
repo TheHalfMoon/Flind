@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { KeyboardShortcut, KeyboardShortcutProps } from './KeyboardShortcut'

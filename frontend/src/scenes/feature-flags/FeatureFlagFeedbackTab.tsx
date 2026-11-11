@@ -1,4 +1,4 @@
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { FeedbackTabContent } from 'scenes/surveys/FeedbackTabContent'

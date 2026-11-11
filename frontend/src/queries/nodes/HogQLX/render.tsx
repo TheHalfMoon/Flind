@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IconAI } from '@posthog/icons'
+import { IconAI } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { JSONViewer } from 'lib/components/JSONViewer'

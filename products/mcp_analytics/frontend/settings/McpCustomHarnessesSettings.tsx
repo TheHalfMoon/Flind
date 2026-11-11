@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPencil, IconPlus, IconTrash } from '@posthog/icons'
+import { IconPencil, IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonSkeleton } from '@flind/lemon-ui'
 
 import { CustomHarnessIcon } from '../components/CustomHarnessIcon'

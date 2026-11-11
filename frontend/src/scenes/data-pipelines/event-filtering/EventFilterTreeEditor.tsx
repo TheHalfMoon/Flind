@@ -4,7 +4,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { useActions, useValues } from 'kea'
 import React, { useState } from 'react'
 
-import { IconPlusSmall, IconTrash } from '@posthog/icons'
+import { IconPlusSmall, IconTrash } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { IconDragHandle } from 'lib/lemon-ui/icons'

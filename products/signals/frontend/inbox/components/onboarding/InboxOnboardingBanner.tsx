@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconPause, IconX } from '@posthog/icons'
+import { IconPause, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { inboxOnboardingLogic } from '../../logics/inboxOnboardingLogic'

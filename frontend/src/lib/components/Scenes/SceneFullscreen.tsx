@@ -1,4 +1,4 @@
-import { IconExpand45 } from '@posthog/icons'
+import { IconExpand45 } from '@flind/icons'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 

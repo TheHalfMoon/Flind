@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Group } from 'kea-forms'
 
-import { IconPhone, IconPlusSmall, IconTrash } from '@posthog/icons'
+import { IconPhone, IconPlusSmall, IconTrash } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

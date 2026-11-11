@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React, { useLayoutEffect, useState } from 'react'
 
-import { IconCollapse, IconExpand } from '@posthog/icons'
+import { IconCollapse, IconExpand } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { insightLogic } from 'scenes/insights/insightLogic'

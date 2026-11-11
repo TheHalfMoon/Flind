@@ -2,7 +2,7 @@ import { useDndContext, useDraggable, useDroppable } from '@dnd-kit/core'
 import { getEventCoordinates } from '@dnd-kit/utilities'
 import { CSSProperties, useEffect, useRef, useState } from 'react'
 
-import { IconChevronRight, IconCircleDashed, IconDocument, IconFolder, IconFolderOpenFilled } from '@posthog/icons'
+import { IconChevronRight, IconCircleDashed, IconDocument, IconFolder, IconFolderOpenFilled } from '@flind/icons'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { buttonPrimitiveVariants } from 'lib/ui/Button/ButtonPrimitives'

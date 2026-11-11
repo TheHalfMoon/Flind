@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonTextArea } from '@flind/lemon-ui'
 
 import { ElementHighlight } from '~/toolbar/shared/product-tours/ElementHighlight'

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconBug, IconCode, IconMessage, IconPalette, IconPiggyBank, IconTrending } from '@posthog/icons'
+import { IconBug, IconCode, IconMessage, IconPalette, IconPiggyBank, IconTrending } from '@flind/icons'
 import {
     IconStack,
     IconStackItem,

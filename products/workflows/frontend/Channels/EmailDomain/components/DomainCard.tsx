@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconCheck } from '@posthog/icons'
+import { IconCheck } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { InferredDomain } from '../inferDomains'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconCopy, IconSearch } from '@posthog/icons'
+import { IconCopy, IconSearch } from '@flind/icons'
 import { LemonButton, LemonInput, LemonModal, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { HighlightedJSONViewer } from 'lib/components/HighlightedJSONViewer'

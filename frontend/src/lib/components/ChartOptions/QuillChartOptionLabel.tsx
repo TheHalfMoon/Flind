@@ -1,4 +1,4 @@
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { FieldLabel, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

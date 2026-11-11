@@ -1,4 +1,4 @@
-import { IconCheck, IconMCP } from '@posthog/icons'
+import { IconCheck, IconMCP } from '@flind/icons'
 import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

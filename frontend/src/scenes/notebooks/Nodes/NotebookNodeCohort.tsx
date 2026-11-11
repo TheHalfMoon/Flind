@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
-import { IconPerson, IconTrends } from '@posthog/icons'
+import { IconPerson, IconTrends } from '@flind/icons'
 import { LemonDivider } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

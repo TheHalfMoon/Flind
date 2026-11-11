@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { router } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { Chip, ChipClose, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

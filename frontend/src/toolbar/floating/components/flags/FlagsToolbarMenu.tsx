@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPerson } from '@posthog/icons'
+import { IconPerson } from '@flind/icons'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

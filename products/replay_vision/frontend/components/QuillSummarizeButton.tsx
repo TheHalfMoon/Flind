@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useState } from 'react'
 
-import { IconChevronDown, IconLogomark, IconNotebook } from '@posthog/icons'
+import { IconChevronDown, IconLogomark, IconNotebook } from '@flind/icons'
 import { Button, ButtonGroup, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@flind/quill'
 
 import { LemonMenuItems } from 'lib/lemon-ui/LemonMenu/LemonMenu'

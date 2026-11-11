@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChevronDown, IconSearch, IconX } from '@posthog/icons'
+import { IconChevronDown, IconSearch, IconX } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCheckbox, LemonInput, LemonModal, LemonSkeleton } from '@flind/lemon-ui'
 
 import { offlineExperimentsLogic, type OfflineExperimentsLogicProps } from './offlineExperimentsLogic'

@@ -24,7 +24,7 @@ import {
     IconInfo,
     IconPullRequest,
     IconTrending,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonCard, LemonTag, type LemonTagType, Link, ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

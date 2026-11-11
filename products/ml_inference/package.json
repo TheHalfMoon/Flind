@@ -6,7 +6,7 @@
         "backend:contract-check": "echo 'Contract files unchanged'"
     },
     "dependencies": {
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "kea": "catalog:",
         "kea-loaders": "catalog:"
     },

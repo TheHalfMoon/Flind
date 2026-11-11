@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 
-import { IconCheck, IconCopy } from '@posthog/icons'
+import { IconCheck, IconCopy } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

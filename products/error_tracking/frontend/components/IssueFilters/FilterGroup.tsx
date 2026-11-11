@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 import type { ReactNode } from 'react'
 
-import { IconFilter } from '@posthog/icons'
+import { IconFilter } from '@flind/icons'
 import { Popover } from '@flind/lemon-ui'
 
 import { TaxonomicFilter } from 'lib/components/TaxonomicFilter/TaxonomicFilter'

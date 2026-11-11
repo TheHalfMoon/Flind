@@ -1,4 +1,4 @@
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { LemonBanner } from '@flind/lemon-ui'
 
 import { checkSelectorFragilityCached } from '~/toolbar/shared/utils/selectorQuality'

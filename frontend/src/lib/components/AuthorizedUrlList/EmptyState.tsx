@@ -2,7 +2,7 @@ import { useActions } from 'kea'
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 

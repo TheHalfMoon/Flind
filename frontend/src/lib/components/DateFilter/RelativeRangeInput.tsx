@@ -1,4 +1,4 @@
-import { IconMinus, IconPlus } from '@posthog/icons'
+import { IconMinus, IconPlus } from '@flind/icons'
 import {
     cn,
     InputGroup,

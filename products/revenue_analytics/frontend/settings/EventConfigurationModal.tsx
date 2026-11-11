@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonModal, LemonSelect, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { CurrencyDropdown } from 'lib/components/BaseCurrency/CurrencyDropdown'

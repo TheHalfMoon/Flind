@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { IconChevronDown, IconChevronRight } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonTable } from '@flind/lemon-ui'
 
 import { getContrastingTextClass } from '~/queries/nodes/DataVisualization/colorUtils'

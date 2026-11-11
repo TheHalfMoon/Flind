@@ -9,7 +9,7 @@ import {
     IconToggle,
     IconTrends,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { SignalReport } from 'products/signals/frontend/inbox/types'
 import type { HighlightItemApi } from 'products/today/frontend/generated/api.schemas'

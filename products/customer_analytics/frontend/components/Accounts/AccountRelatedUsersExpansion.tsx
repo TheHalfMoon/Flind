@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useState } from 'react'
 
-import { IconCopy } from '@posthog/icons'
+import { IconCopy } from '@flind/icons'
 import { LemonButton, LemonInput, LemonTable, LemonTableColumns, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

@@ -3,7 +3,7 @@ import './LiveUserCount.scss'
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconPerson } from '@posthog/icons'
+import { IconPerson } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { usePageVisibility } from 'lib/hooks/usePageVisibility'

@@ -2,7 +2,7 @@ import './TileFiltersOverride.scss'
 
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { IconCalendar, IconGear } from '@posthog/icons'
+import { IconCalendar, IconGear } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonSegmentedButton, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

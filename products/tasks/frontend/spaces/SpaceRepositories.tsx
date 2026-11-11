@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconGitRepository, IconGithub, IconX } from '@posthog/icons'
+import { IconGitRepository, IconGithub, IconX } from '@flind/icons'
 import {
     Button,
     Card,

@@ -1,4 +1,4 @@
-import { IconCheck, IconClock, IconMinus, IconX } from '@posthog/icons'
+import { IconCheck, IconClock, IconMinus, IconX } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { CIRollup } from '../lib/ci'

@@ -1,5 +1,5 @@
+import { IconDocument } from '@flind/icons'
 import * as researchPng from '@posthog/brand/hoggies/png/research'
-import { IconDocument } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

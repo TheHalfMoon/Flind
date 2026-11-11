@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import {
     Button,
     Empty,

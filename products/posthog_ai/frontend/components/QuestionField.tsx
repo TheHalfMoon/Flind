@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonInput, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { LemonSlider } from 'lib/lemon-ui/LemonSlider/LemonSlider'

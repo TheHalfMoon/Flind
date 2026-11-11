@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconCheckCircle, IconHide } from '@posthog/icons'
+import { IconCheckCircle, IconHide } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { isSampleReportId } from './todaySampleReports'

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconServer } from '@posthog/icons'
+import { IconServer } from '@flind/icons'
 import { LemonSwitch, LemonTag, Link, Spinner } from '@flind/lemon-ui'
 import { ServerIcon } from '@flind/products-mcp-store/frontend/scene/icons'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconPullRequest, IconX } from '@posthog/icons'
+import { IconPullRequest, IconX } from '@flind/icons'
 import { LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

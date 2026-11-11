@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChevronDown, IconGlobe, IconLock, IconPeople } from '@posthog/icons'
+import { IconChevronDown, IconGlobe, IconLock, IconPeople } from '@flind/icons'
 import {
     Badge,
     Button,

@@ -1,12 +1,12 @@
 {
-  "capitalised_PostHog": 26438,
-  "occurrences_config": 19811,
-  "occurrences_docs": 7663,
+  "capitalised_PostHog": 26439,
+  "occurrences_config": 19739,
+  "occurrences_docs": 7659,
   "occurrences_go": 609,
-  "occurrences_js_ts": 37279,
-  "occurrences_other": 13647,
-  "occurrences_python": 98165,
+  "occurrences_js_ts": 34540,
+  "occurrences_other": 13650,
+  "occurrences_python": 98163,
   "occurrences_rust": 2997,
   "occurrences_templates_snapshots": 69274,
-  "paths": 7427
+  "paths": 7431
 }

@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconLive } from '@posthog/icons'
+import { IconLive } from '@flind/icons'
 import { LemonButton, LemonButtonProps } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

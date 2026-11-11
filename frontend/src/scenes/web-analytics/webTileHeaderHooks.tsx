@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconExpand45 } from '@posthog/icons'
+import { IconExpand45 } from '@flind/icons'
 import { LemonButtonProps, LemonMenuItem } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

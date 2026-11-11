@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconFlask } from '@posthog/icons'
+import { IconFlask } from '@flind/icons'
 import { LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import type { ExperimentBasicApi } from 'products/experiments/frontend/generated/api.schemas'

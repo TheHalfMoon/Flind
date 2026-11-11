@@ -1,5 +1,5 @@
+import { IconCursorClick } from '@flind/icons'
 import * as cursorPng from '@posthog/brand/hoggies/png/cursor'
-import { IconCursorClick } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React, { useState } from 'react'
 
-import { IconCursorClick } from '@posthog/icons'
+import { IconCursorClick } from '@flind/icons'
 import { LemonButton, LemonSwitch, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { Popover } from 'lib/lemon-ui/Popover'

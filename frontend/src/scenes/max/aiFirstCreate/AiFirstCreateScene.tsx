@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

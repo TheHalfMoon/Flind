@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconChevronDown, IconChevronRight } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { getRuntimeFromLib } from 'lib/components/Errors/utils'

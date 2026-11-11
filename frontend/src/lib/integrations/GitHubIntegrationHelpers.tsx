@@ -21,7 +21,7 @@ import {
     IconRuby,
     IconRust,
     IconSwift,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonInputSelect, LemonInputSelectOption, LemonTag } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { memo } from 'react'
 
-import { IconMegaphone, IconPlusSmall } from '@posthog/icons'
+import { IconMegaphone, IconPlusSmall } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonModal, LemonTag, LemonTextArea, Link } from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

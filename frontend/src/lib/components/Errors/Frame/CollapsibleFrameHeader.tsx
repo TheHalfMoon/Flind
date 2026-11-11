@@ -5,7 +5,7 @@ import posthog from 'posthog-js'
 import { ReactNode, useEffect, useRef } from 'react'
 import { P, match } from 'ts-pattern'
 
-import { IconBox, IconEllipsis, IconSpinner, IconWarning } from '@posthog/icons'
+import { IconBox, IconEllipsis, IconSpinner, IconWarning } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { Collapsible } from 'lib/ui/Collapsible/Collapsible'

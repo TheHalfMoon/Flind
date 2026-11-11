@@ -3,7 +3,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import type { editor as importedEditor } from 'monaco-editor'
 import { ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 
-import { IconBook, IconChevronDown, IconDownload, IconNotebook, IconX } from '@posthog/icons'
+import { IconBook, IconChevronDown, IconDownload, IconNotebook, IconX } from '@flind/icons'
 import { LemonModal, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

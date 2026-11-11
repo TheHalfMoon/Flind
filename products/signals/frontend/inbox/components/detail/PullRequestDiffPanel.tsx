@@ -2,7 +2,7 @@ import { type DiffLineAnnotation } from '@pierre/diffs'
 import { useActions, useValues } from 'kea'
 import { useCallback, useMemo, useState } from 'react'
 
-import { IconChat, IconGitBranch } from '@posthog/icons'
+import { IconChat, IconGitBranch } from '@flind/icons'
 import { LemonSegmentedButton, LemonSkeleton, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { DraftThread, inboxReportDetailLogic, ReviewThread, threadKey } from '../../logics/inboxReportDetailLogic'

@@ -1,4 +1,4 @@
-import { IconCalendar, IconLetter, IconPeople } from '@posthog/icons'
+import { IconCalendar, IconLetter, IconPeople } from '@flind/icons'
 
 const NEXT_STEPS = [
     { icon: <IconPeople />, title: 'Recipients', description: 'Pick a cohort, or filter people by their properties.' },

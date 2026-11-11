@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import { LemonButton, LemonSegmentedButton, Spinner } from '@flind/lemon-ui'
 
 import { CompareFilter } from 'lib/components/CompareFilter/CompareFilter'

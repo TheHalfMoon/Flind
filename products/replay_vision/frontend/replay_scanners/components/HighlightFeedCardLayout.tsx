@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { IconFlag } from '@posthog/icons'
+import { IconFlag } from '@flind/icons'
 import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

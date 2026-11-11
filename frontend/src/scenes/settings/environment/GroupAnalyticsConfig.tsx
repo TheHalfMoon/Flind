@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonInput, Link } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { ReactNode } from 'react'
 
-import { IconChevronLeft, IconInfo, IconSend } from '@posthog/icons'
+import { IconChevronLeft, IconInfo, IconSend } from '@flind/icons'
 import { LemonInput, LemonTextArea, Link } from '@flind/lemon-ui'
 
 import api from 'lib/api'

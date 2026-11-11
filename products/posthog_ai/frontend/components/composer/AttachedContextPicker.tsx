@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconAtSign } from '@posthog/icons'
+import { IconAtSign } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

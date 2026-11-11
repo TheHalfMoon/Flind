@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { IconEllipsis } from '@posthog/icons'
+import { IconEllipsis } from '@flind/icons'
 
 import { LemonButtonWithDropdown } from '.'
 import { PopoverProps } from '../Popover/Popover'

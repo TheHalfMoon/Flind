@@ -1,6 +1,6 @@
 import { ReactNode, useMemo, useState } from 'react'
 
-import { IconChevronDown, IconChevronRight } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight } from '@flind/icons'
 import { LemonTable, LemonTableColumns, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

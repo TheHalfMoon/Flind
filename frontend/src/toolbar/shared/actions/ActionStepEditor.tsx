@@ -1,4 +1,4 @@
-import { IconPencil, IconSearch, IconTrash } from '@posthog/icons'
+import { IconPencil, IconSearch, IconTrash } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

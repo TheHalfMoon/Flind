@@ -11,7 +11,7 @@ import {
     IconPeople,
     IconPiggyBank,
     IconReceipt,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonLabel, LemonSkeleton, ProfilePicture } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

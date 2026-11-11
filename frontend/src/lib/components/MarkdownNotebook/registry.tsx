@@ -13,7 +13,7 @@ import {
     IconPencil,
     IconRewindPlay,
     IconUpload,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonInput, LemonTextArea } from '@flind/lemon-ui'
 
 import { wasNotebookNodeJustInserted } from './freshlyInserted'

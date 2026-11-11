@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { IconSearch, IconX } from '@posthog/icons'
+import { IconSearch, IconX } from '@flind/icons'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText } from '@flind/quill'
 
 /** The search field of the Analytics pages, with a clear button once there is text, like the chat search. */

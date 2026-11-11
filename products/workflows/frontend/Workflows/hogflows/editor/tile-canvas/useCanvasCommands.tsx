@@ -12,7 +12,7 @@ import {
     IconPlay,
     IconPlusSquare,
     IconScreen,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { tileCanvasLogic, TileCanvasPanelMode } from './tileCanvasLogic'
 import type { PaletteCommand } from './tileCanvasModel'

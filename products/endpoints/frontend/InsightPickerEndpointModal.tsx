@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { BindLogic } from 'kea'
 
-import { IconEndpoints, IconPlus } from '@posthog/icons'
+import { IconEndpoints, IconPlus } from '@flind/icons'
 
 import { IconInsightRetention, IconInsightTrends } from 'lib/lemon-ui/icons'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

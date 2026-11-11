@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ChangeEvent, ComponentProps } from 'react'
 
-import { IconSearch } from '@posthog/icons'
+import { IconSearch } from '@flind/icons'
 
 import { errorPropertiesLogic } from 'lib/components/Errors/errorPropertiesLogic'
 import { JSONViewer } from 'lib/components/JSONViewer'

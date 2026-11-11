@@ -2,7 +2,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 import { lemonToast } from '@flind/lemon-ui'
 
 import {

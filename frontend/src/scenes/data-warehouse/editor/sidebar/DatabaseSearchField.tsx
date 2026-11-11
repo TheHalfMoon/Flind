@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconFilter } from '@posthog/icons'
+import { IconFilter } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonMenu } from '@flind/lemon-ui'
 
 import { SearchAutocomplete } from 'lib/components/SearchAutocomplete/SearchAutocomplete'

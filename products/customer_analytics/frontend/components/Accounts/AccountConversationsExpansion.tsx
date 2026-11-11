@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import * as businessEvolutionPng from '@posthog/brand/hoggies/png/business-evolution'
-import { IconChevronDown, IconLock, IconSupport } from '@posthog/icons'
+import { IconChevronDown, IconLock, IconSupport } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

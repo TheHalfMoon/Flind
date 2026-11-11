@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 import { Badge, Button, Heading, Popover, PopoverContent, PopoverTrigger, Text } from '@flind/quill'
 
 export interface CanvasStatusIssueProps {

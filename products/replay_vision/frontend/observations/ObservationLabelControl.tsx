@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconThumbsDown, IconThumbsDownFilled, IconThumbsUp, IconThumbsUpFilled } from '@posthog/icons'
+import { IconThumbsDown, IconThumbsDownFilled, IconThumbsUp, IconThumbsUpFilled } from '@flind/icons'
 import { LemonButton, LemonTextArea, Popover } from '@flind/lemon-ui'
 
 import { useKeyboardHotkeys } from 'lib/hooks/useKeyboardHotkeys'

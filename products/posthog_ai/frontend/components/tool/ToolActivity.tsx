@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react'
 
-import { IconWarning, IconWrench } from '@posthog/icons'
+import { IconWarning, IconWrench } from '@flind/icons'
 
 import type { ToolCallMessage } from 'products/posthog_ai/frontend/types/toolTypes'
 

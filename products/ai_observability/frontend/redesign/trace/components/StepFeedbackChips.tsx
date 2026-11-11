@@ -1,4 +1,4 @@
-import { IconMessage } from '@posthog/icons'
+import { IconMessage } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { StepFeedback } from '../types'

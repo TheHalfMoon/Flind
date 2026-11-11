@@ -2,7 +2,7 @@ import { cva } from 'cva'
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { memo } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { IconMenu } from 'lib/lemon-ui/icons'
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'

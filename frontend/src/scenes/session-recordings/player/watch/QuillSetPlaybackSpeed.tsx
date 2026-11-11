@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRabbit, IconTortoise } from '@posthog/icons'
+import { IconRabbit, IconTortoise } from '@flind/icons'
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@flind/quill'
 
 import { humanFriendlyDuration } from 'lib/utils/durations'

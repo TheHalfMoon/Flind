@@ -10,7 +10,7 @@ import {
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight } from '@flind/icons'
 import { LemonButton, LemonSegmentedButton, LemonSelect } from '@flind/lemon-ui'
 
 import { Spinner } from 'lib/lemon-ui/Spinner'

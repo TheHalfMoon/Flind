@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { LemonModal, Link } from '@flind/lemon-ui'
 
 import { getDefaultFunnelMetric } from 'scenes/experiments/utils'

@@ -1,4 +1,4 @@
-import { IconChevronDown, IconExpand45, IconX } from '@posthog/icons'
+import { IconChevronDown, IconExpand45, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { KeyboardShortcut } from 'lib/lemon-ui/KeyboardShortcut/KeyboardShortcut'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

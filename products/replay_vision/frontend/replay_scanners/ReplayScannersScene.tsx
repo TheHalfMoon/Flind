@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import posthog from 'posthog-js'
 
 import * as explorerPng from '@posthog/brand/hoggies/png/explorer'
-import { IconRefresh, IconSearch } from '@posthog/icons'
+import { IconRefresh, IconSearch } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

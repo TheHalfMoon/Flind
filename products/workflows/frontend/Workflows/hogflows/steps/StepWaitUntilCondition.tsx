@@ -1,7 +1,7 @@
 import { Node } from '@xyflow/react'
 import { useActions } from 'kea'
 
-import { IconCursor, IconPeople, IconPerson } from '@posthog/icons'
+import { IconCursor, IconPeople, IconPerson } from '@flind/icons'
 import { LemonDivider, LemonLabel } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

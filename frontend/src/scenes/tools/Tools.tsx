@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconSearch, IconWrench } from '@posthog/icons'
+import { IconSearch, IconWrench } from '@flind/icons'
 import {
     InputGroup,
     InputGroupAddon,

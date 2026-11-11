@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 
-import { IconFolder, IconGithub } from '@posthog/icons'
+import { IconFolder, IconGithub } from '@flind/icons'
 import type { DataTableProps } from '@flind/quill-components'
 import { DataTable } from '@flind/quill-components'
 import {

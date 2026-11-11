@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import React from 'react'
 
 import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
-import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonSkeleton, Link } from '@flind/lemon-ui'
 import { PostHogCaptureOnViewed } from '@posthog/react'
 

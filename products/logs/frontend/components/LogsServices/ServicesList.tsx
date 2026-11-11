@@ -1,7 +1,7 @@
 import { CSSProperties, useMemo } from 'react'
 import { List } from 'react-window'
 
-import { IconShare } from '@posthog/icons'
+import { IconShare } from '@flind/icons'
 import { LemonButton, LemonTag, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'

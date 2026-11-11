@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconTarget } from '@posthog/icons'
+import { IconTarget } from '@flind/icons'
 import { LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import { inboxTaskKickoffLogic } from '../../inboxTaskKickoffLogic'

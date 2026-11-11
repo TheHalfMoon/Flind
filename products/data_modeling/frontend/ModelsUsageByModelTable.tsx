@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconSort } from '@posthog/icons'
+import { IconSort } from '@flind/icons'
 
 import { IconArrowDown, IconArrowUp } from 'lib/lemon-ui/icons'
 import { LinkPrimitive } from 'lib/lemon-ui/Link/Link'

@@ -9,7 +9,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useRef, useState } from 'react'
 
-import { IconEye, IconImage, IconPencil } from '@posthog/icons'
+import { IconEye, IconImage, IconPencil } from '@flind/icons'
 
 import { TextContent } from 'lib/components/Cards/TextCard/TextContent'
 import { EmojiPickerPopover } from 'lib/components/EmojiPicker/EmojiPickerPopover'

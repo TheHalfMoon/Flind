@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 
-import { IconCopy } from '@posthog/icons'
+import { IconCopy } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { Popover } from 'lib/lemon-ui/Popover/Popover'

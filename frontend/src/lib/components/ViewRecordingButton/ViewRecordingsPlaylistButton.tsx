@@ -1,6 +1,6 @@
 import { isValidElement, ReactNode } from 'react'
 
-import { IconRewindPlay } from '@posthog/icons'
+import { IconRewindPlay } from '@flind/icons'
 import { LemonButton, LemonButtonProps, Tooltip } from '@flind/lemon-ui'
 
 import { newInternalTab } from 'lib/utils/newInternalTab'

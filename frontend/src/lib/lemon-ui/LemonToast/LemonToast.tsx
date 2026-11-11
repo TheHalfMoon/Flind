@@ -2,7 +2,7 @@ import posthog from 'posthog-js'
 import { useRef } from 'react'
 import { toast, type ToastOptions, type UpdateOptions } from 'react-toastify'
 
-import { IconCheckCircle, IconCopy, IconInfo, IconWarning, IconX } from '@posthog/icons'
+import { IconCheckCircle, IconCopy, IconInfo, IconWarning, IconX } from '@flind/icons'
 
 import { getIncidentStatus, STATUS_PAGE_BASE } from 'lib/lemon-ui/LemonToast/incidentStatus'
 import { flindSupportMailto } from 'lib/flindSupportMailto'

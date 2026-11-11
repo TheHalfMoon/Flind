@@ -1,4 +1,4 @@
-import { IconFilter } from '@posthog/icons'
+import { IconFilter } from '@flind/icons'
 import { LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 import { Metric, MetricSubtitle, MetricTitle, MetricValue } from '@flind/quill-components/metric'
 

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconEllipsis, IconExternal, IconRefresh, IconWarning } from '@posthog/icons'
+import { IconCheck, IconEllipsis, IconExternal, IconRefresh, IconWarning } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonCollapse, LemonMenu, LemonSkeleton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { SceneExport } from 'scenes/sceneTypes'

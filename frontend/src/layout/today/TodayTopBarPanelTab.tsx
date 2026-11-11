@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ComponentType, useState } from 'react'
 
-import { IconPulse, IconSparkles, IconSupport } from '@posthog/icons'
+import { IconPulse, IconSparkles, IconSupport } from '@flind/icons'
 import { Button, Kbd, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { sidePanelNotificationsLogic } from '~/layout/navigation-3000/sidepanel/panels/activity/sidePanelNotificationsLogic'

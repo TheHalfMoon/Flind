@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconChevronDown, IconChevronRight } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight } from '@flind/icons'
 import { LemonButton, LemonTag, Link, Spinner } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

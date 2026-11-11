@@ -1,4 +1,4 @@
-import { IconBox } from '@posthog/icons'
+import { IconBox } from '@flind/icons'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 

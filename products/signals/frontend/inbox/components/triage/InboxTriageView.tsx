@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useEffect, useRef } from 'react'
 
-import { IconArrowLeft, IconCheckCircle } from '@posthog/icons'
+import { IconArrowLeft, IconCheckCircle } from '@flind/icons'
 import { LemonButton, LemonSkeleton, Link, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

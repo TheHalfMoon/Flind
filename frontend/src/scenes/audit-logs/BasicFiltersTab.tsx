@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCollapse, IconExpand, IconInfo } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconInfo } from '@flind/icons'
 import { LemonBadge, LemonButton, LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import { activityClientLabel } from 'lib/components/ActivityLog/activityClientLabel'

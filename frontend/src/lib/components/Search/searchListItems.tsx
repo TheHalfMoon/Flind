@@ -1,6 +1,6 @@
 import { router } from 'kea-router'
 
-import { IconClock, IconDownload, IconLeave, IconNotification, IconSupport, IconTerminal } from '@posthog/icons'
+import { IconClock, IconDownload, IconLeave, IconNotification, IconSupport, IconTerminal } from '@flind/icons'
 
 import type { FeatureFlagsSet } from 'lib/logic/featureFlagLogic'
 import { getProductAccessDisabledReason } from 'lib/utils/accessControlUtils'

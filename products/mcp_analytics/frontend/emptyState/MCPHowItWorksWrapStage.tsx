@@ -3,7 +3,7 @@ import './MCPHowItWorksWrapStage.scss'
 import { useActions } from 'kea'
 import { useState } from 'react'
 
-import { IconCheck, IconCopy, IconLogomark, IconMCP, IconWrench } from '@posthog/icons'
+import { IconCheck, IconCopy, IconLogomark, IconMCP, IconWrench } from '@flind/icons'
 
 import { condenseCommand } from 'lib/components/CommandBlock/CommandBlock'
 import { productSetupStatusLogic } from 'lib/components/ProductEmptyState/productSetupStatusLogic'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'

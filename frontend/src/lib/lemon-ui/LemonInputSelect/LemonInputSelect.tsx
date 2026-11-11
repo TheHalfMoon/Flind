@@ -8,7 +8,7 @@ import Fuse from 'fuse.js'
 import { CSSProperties, MouseEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { List } from 'react-window'
 
-import { IconCheck, IconPencil, IconX } from '@posthog/icons'
+import { IconCheck, IconPencil, IconX } from '@flind/icons'
 import { LemonCheckbox, Tooltip } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'

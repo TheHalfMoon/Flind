@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheck } from '@posthog/icons'
+import { IconCheck } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { iconForType } from '~/layout/panel-layout/ProjectTree/defaultTree'

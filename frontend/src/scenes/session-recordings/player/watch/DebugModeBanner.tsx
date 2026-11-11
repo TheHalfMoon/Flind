@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { Button, Item, ItemActions, ItemContent, ItemDescription } from '@flind/quill'
 
 import { playerSettingsLogic } from 'scenes/session-recordings/player/playerSettingsLogic'

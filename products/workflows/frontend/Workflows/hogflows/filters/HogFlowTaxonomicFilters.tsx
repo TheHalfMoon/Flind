@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconCode } from '@posthog/icons'
+import { IconCode } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { infiniteListLogic } from 'lib/components/TaxonomicFilter/infiniteListLogic'

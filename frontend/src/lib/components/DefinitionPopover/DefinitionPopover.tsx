@@ -3,7 +3,7 @@ import './DefinitionPopover.scss'
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { IconPin, IconPinFilled } from '@posthog/icons'
+import { IconPin, IconPinFilled } from '@flind/icons'
 import { LemonButton, LemonDivider, ProfilePicture } from '@flind/lemon-ui'
 
 import { DefinitionPopoverCard } from 'lib/components/DefinitionPopover/DefinitionPopoverCard'

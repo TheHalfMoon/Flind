@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconRevert, IconX } from '@posthog/icons'
+import { IconRevert, IconX } from '@flind/icons'
 
 import { SettingsBar, SettingsButton } from 'lib/components/PanelSettings/PanelSettings'
 import { useResizeObserver } from 'lib/hooks/useResizeObserver'

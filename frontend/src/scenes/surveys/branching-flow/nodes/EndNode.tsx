@@ -1,6 +1,6 @@
 import { Handle, NodeProps, Position } from '@xyflow/react'
 
-import { IconCheckCircle } from '@posthog/icons'
+import { IconCheckCircle } from '@flind/icons'
 
 import { SurveyAppearancePreview } from '../../SurveyAppearancePreview'
 import { END_NODE_SIMPLE_HEIGHT, END_NODE_SIMPLE_WIDTH } from '../constants'

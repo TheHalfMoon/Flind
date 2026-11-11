@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { useMemo } from 'react'
 
-import { IconCopy, IconPinFilled, IconPullRequest } from '@posthog/icons'
+import { IconCopy, IconPinFilled, IconPullRequest } from '@flind/icons'
 import {
     Button,
     Item,

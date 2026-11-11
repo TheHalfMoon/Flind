@@ -18,7 +18,7 @@ import {
     IconRewind,
     IconServer,
     IconTrash,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBanner, LemonDialog, LemonDivider } from '@flind/lemon-ui'
 
 import { ActivityLog } from 'lib/components/ActivityLog/ActivityLog'

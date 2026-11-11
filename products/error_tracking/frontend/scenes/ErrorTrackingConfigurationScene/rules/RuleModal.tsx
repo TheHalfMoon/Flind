@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 
-import { IconFlask } from '@posthog/icons'
+import { IconFlask } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonModal, LemonSegmentedButton, Spinner } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'

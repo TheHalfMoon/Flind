@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

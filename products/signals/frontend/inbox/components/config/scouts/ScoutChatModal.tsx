@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconDocument } from '@posthog/icons'
+import { IconDocument } from '@flind/icons'
 import { LemonButton, LemonModal, LemonTextArea } from '@flind/lemon-ui'
 
 import type { ScoutChatRequest } from '../../../logics/scoutFleetLogic'

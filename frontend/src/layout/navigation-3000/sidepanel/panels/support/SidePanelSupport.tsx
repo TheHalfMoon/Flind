@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import React from 'react'
 
-import { IconExpand45, IconFeatures, IconWarning } from '@posthog/icons'
+import { IconExpand45, IconFeatures, IconWarning } from '@flind/icons'
 import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { incidentStatusLogic } from 'lib/components/HelpMenu/incidentStatusLogic'

@@ -1,4 +1,4 @@
-import { IconChevronDown, IconX } from '@posthog/icons'
+import { IconChevronDown, IconX } from '@flind/icons'
 import { LemonButton, LemonDropdown } from '@flind/lemon-ui'
 
 import { MemberSelectMultiple } from 'lib/components/MemberSelectMultiple'

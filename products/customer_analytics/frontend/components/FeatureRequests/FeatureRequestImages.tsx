@@ -1,4 +1,4 @@
-import { IconImage } from '@posthog/icons'
+import { IconImage } from '@flind/icons'
 import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { backendAssetUrl } from 'lib/utils/apiHost'

@@ -1,6 +1,6 @@
 import { Fragment, forwardRef, useEffect, useRef, useState } from 'react'
 
-import { IconInfo, IconMinusSmall, IconSearch, IconX } from '@posthog/icons'
+import { IconInfo, IconMinusSmall, IconSearch, IconX } from '@flind/icons'
 
 import { LemonInput } from 'lib/lemon-ui/LemonInput'
 import { ScrollableShadows } from 'lib/lemon-ui/ScrollableShadows/ScrollableShadows'

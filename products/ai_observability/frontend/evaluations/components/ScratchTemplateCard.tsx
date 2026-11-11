@@ -1,4 +1,4 @@
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 export function ScratchTemplateCard({ onSelect }: { onSelect: () => void }): JSX.Element {
     return (

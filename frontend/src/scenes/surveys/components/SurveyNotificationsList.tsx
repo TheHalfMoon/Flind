@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import * as mailboxPng from '@posthog/brand/hoggies/png/mailbox'
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDropdown, LemonInput, LemonSkeleton, LemonSwitch } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

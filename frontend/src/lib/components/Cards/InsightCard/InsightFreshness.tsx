@@ -1,4 +1,4 @@
-import { IconClock, IconWarning } from '@posthog/icons'
+import { IconClock, IconWarning } from '@flind/icons'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { dayjs } from 'lib/dayjs'

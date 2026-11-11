@@ -19,7 +19,7 @@ import {
     IconRedux,
     IconTarget,
     IconTerminal,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 
 import { Dayjs } from 'lib/dayjs'

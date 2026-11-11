@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconHome, IconInfo, IconPlus } from '@posthog/icons'
+import { IconHome, IconInfo, IconPlus } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonDropdown, LemonModal, LemonSelect, Link, Tooltip } from '@flind/lemon-ui'
 
 import { getAccessControlTooltip } from 'lib/utils/accessControlUtils'

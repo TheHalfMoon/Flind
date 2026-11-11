@@ -2,7 +2,7 @@ import { MakeLogicType, actions, afterMount, kea, path, reducers, selectors, use
 import { loaders } from 'kea-loaders'
 import { useMemo, useState } from 'react'
 
-import { IconCodeInsert, IconCopy, IconRefresh } from '@posthog/icons'
+import { IconCodeInsert, IconCopy, IconRefresh } from '@flind/icons'
 import { TimeSeriesComboChart } from '@flind/quill-charts'
 import type { Series } from '@flind/quill-charts'
 

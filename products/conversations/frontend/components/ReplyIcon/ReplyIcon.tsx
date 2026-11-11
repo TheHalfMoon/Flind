@@ -1,4 +1,4 @@
-import { IconLock, IconSend } from '@posthog/icons'
+import { IconLock, IconSend } from '@flind/icons'
 
 import type { TicketChannel } from '../../types'
 import { channelIcon } from '../Channels/ChannelsTag'

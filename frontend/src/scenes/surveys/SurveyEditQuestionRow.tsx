@@ -5,7 +5,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { useActions, useValues } from 'kea'
 import { Group } from 'kea-forms'
 
-import { IconPlusSmall, IconTrash, IconWarning } from '@posthog/icons'
+import { IconPlusSmall, IconTrash, IconWarning } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonDialog, LemonInput, LemonSelect, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'

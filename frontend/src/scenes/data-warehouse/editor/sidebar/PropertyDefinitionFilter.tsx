@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconSearch } from '@posthog/icons'
+import { IconSearch } from '@flind/icons'
 import { LemonButton, LemonInput, LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconCheck, IconX } from '@posthog/icons'
+import { IconCheck, IconX } from '@flind/icons'
 
 import { EntityFilterInfo } from 'lib/components/EntityFilterInfo'
 import { Lettermark, LettermarkColor } from 'lib/lemon-ui/Lettermark'

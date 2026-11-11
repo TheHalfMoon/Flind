@@ -2,7 +2,7 @@ import { useActions } from 'kea'
 import posthog from 'posthog-js'
 import { ReactNode } from 'react'
 
-import { IconMagicWand } from '@posthog/icons'
+import { IconMagicWand } from '@flind/icons'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { Link } from 'lib/lemon-ui/Link'

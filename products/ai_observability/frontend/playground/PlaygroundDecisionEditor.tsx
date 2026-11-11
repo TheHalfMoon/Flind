@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { DecisionQuestionEditor } from './DecisionQuestionEditor'

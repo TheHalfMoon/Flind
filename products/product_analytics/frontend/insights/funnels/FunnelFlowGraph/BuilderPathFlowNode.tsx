@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { insightLogic } from 'scenes/insights/insightLogic'

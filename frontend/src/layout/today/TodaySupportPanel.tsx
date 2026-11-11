@@ -1,6 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { IconExternal, IconFeatures } from '@posthog/icons'
+import { IconExternal, IconFeatures } from '@flind/icons'
 import { Button, Heading, Skeleton, Text, cn } from '@flind/quill'
 
 import { flindPublicUrl } from 'lib/flindPublicLinks'

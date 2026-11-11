@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { ReactNode } from 'react'
 
-import { IconCalendar } from '@posthog/icons'
+import { IconCalendar } from '@flind/icons'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { dateMapping } from 'lib/utils/dateFilters'

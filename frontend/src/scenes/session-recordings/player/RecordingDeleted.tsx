@@ -1,4 +1,4 @@
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 
 import { dayjs } from 'lib/dayjs'
 

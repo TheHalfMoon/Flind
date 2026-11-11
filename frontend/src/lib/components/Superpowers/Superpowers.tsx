@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import * as superheroPng from '@posthog/brand/hoggies/png/superhero'
-import { IconArrowLeft, IconChevronRight, IconTrash } from '@posthog/icons'
+import { IconArrowLeft, IconChevronRight, IconTrash } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonSelect, LemonSwitch, LemonTag } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

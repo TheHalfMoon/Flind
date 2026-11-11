@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { IconRefresh, IconTrash } from '@posthog/icons'
+import { IconRefresh, IconTrash } from '@flind/icons'
 import { LemonButton, LemonCard, LemonDialog, LemonTag, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

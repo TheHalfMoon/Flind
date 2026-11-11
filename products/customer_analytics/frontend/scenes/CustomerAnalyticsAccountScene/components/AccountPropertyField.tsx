@@ -1,4 +1,4 @@
-import { IconBolt, IconDatabase, IconLogomark, IconPencil } from '@posthog/icons'
+import { IconBolt, IconDatabase, IconLogomark, IconPencil } from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { AccountCustomPropertyEditor } from './AccountCustomPropertyEditor'

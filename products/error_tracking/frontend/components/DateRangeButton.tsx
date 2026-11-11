@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconCalendar } from '@posthog/icons'
+import { IconCalendar } from '@flind/icons'
 
 import { dateRangeForSelection, selectionForDateRange } from 'lib/components/DateFilter/dateRangeSelection'
 import { QuillDateFilter } from 'lib/components/DateFilter/QuillDateFilter'

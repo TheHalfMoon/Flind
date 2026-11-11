@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconSidePanel } from '@posthog/icons'
+import { IconSidePanel } from '@flind/icons'
 
 import { IconUndockPanel } from 'lib/lemon-ui/icons'
 

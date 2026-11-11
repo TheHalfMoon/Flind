@@ -28,8 +28,8 @@
     },
     "peerDependencies": {
         "@dnd-kit/core": "*",
+        "@flind/icons": "workspace:*",
         "@posthog/brand": "catalog:",
-        "@posthog/icons": "catalog:",
         "@types/react": "*",
         "@xyflow/react": "*",
         "clsx": "*",

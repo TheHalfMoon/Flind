@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import useResizeObserver from 'use-resize-observer'
 
-import { IconBrowser, IconCheckCircle, IconImage, IconWarning } from '@posthog/icons'
+import { IconBrowser, IconCheckCircle, IconImage, IconWarning } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

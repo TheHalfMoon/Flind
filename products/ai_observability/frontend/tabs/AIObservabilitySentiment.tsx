@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
-import { IconPlus, IconRefresh } from '@posthog/icons'
+import { IconPlus, IconRefresh } from '@flind/icons'
 import { LemonButton, LemonSelect, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

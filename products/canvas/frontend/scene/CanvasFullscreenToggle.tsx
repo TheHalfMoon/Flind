@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconExpand45 } from '@posthog/icons'
+import { IconExpand45 } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { canvasEditLogic } from '../editing/canvasEditLogic'

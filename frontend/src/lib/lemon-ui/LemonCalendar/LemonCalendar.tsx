@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useValues } from 'kea'
 import { Ref, forwardRef, useEffect, useState } from 'react'
 
-import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight } from '@flind/icons'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonButton, LemonButtonProps } from 'lib/lemon-ui/LemonButton'

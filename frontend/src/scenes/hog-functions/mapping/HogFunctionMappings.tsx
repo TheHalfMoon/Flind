@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { Group } from 'kea-forms'
 import { memo, useEffect, useState } from 'react'
 
-import { IconArrowRight, IconEllipsis, IconFilter, IconPlus } from '@posthog/icons'
+import { IconArrowRight, IconEllipsis, IconFilter, IconPlus } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

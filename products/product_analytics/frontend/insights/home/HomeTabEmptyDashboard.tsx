@@ -1,4 +1,4 @@
-import { IconHome, IconSparkles } from '@posthog/icons'
+import { IconHome, IconSparkles } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 export interface HomeTabEmptyDashboardProps {

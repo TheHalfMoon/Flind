@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 
 import { PANE_LEFT, PANE_RIGHT, PANE_ROW } from './paneClasses'
 import { FLASH_FOR_OPTIONS, describeResult, describeSource } from './repositoryChoices'

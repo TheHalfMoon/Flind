@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconArrowRight, IconExternal, IconPlay, IconTrends } from '@posthog/icons'
+import { IconArrowRight, IconExternal, IconPlay, IconTrends } from '@flind/icons'
 import { Button, Text } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'

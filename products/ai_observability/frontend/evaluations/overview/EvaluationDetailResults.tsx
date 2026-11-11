@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconClockRewind } from '@posthog/icons'
+import { IconClockRewind } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'

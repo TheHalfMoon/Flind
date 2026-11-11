@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconPeople } from '@posthog/icons'
+import { IconPeople } from '@flind/icons'
 
 import { NotFound } from 'lib/components/NotFound'
 import { LemonSkeleton } from 'lib/lemon-ui/LemonSkeleton'

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { memo, useState } from 'react'
 
-import { IconDocument } from '@posthog/icons'
+import { IconDocument } from '@flind/icons'
 import { LemonSkeleton, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { projectLogic } from 'scenes/projectLogic'

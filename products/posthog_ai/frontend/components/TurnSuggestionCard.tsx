@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconBell, IconCalendar, IconNotebook, IconTelescope, IconWarning } from '@posthog/icons'
+import { IconBell, IconCalendar, IconNotebook, IconTelescope, IconWarning } from '@flind/icons'
 
 import { TurnSuggestionLogicProps, turnSuggestionLogic } from '../logics/turnSuggestionLogic'
 import type { TurnSuggestion } from '../types/streamTypes'

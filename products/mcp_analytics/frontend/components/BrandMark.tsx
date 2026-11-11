@@ -1,6 +1,6 @@
 import { type SVGProps } from 'react'
 
-import { IconBrain, IconLaptop, IconLogomark, IconQuestion } from '@posthog/icons'
+import { IconBrain, IconLaptop, IconLogomark, IconQuestion } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

@@ -2,7 +2,7 @@ import { Combobox } from '@base-ui/react/combobox'
 import { useActions, useValues } from 'kea'
 import { useCallback, useRef } from 'react'
 
-import { IconCheck, IconPlusSmall, IconSearch, IconX } from '@posthog/icons'
+import { IconCheck, IconPlusSmall, IconSearch, IconX } from '@flind/icons'
 
 import { upgradeModalLogic } from 'lib/components/UpgradeModal/upgradeModalLogic'
 import { IconBlank } from 'lib/lemon-ui/icons'

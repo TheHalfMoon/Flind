@@ -1,4 +1,4 @@
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonCheckbox } from '@flind/lemon-ui'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 import * as climber1Png from '@posthog/brand/hoggies/png/climber-1'
 import * as hogpatchPng from '@posthog/brand/hoggies/png/hogpatch'
-import { IconArrowRight, IconCheck, IconInfo, IconWarning } from '@posthog/icons'
+import { IconArrowRight, IconCheck, IconInfo, IconWarning } from '@flind/icons'
 import {
     Button,
     Card,

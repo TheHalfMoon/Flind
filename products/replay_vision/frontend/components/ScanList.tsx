@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useMemo } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import { LemonButton, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { useResizeObserver } from 'lib/hooks/useResizeObserver'

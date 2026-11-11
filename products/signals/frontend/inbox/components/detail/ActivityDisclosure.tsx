@@ -1,4 +1,4 @@
-import { IconChevronDown, IconChevronRight } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

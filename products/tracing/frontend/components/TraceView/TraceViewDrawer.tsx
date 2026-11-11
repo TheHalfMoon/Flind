@@ -1,7 +1,7 @@
 import { BindLogic, useValues } from 'kea'
 import { useCallback, useState } from 'react'
 
-import { IconCollapse45, IconExpand45, IconSidebarClose, IconSidebarOpen } from '@posthog/icons'
+import { IconCollapse45, IconExpand45, IconSidebarClose, IconSidebarOpen } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { FloatingContainerContext } from 'lib/hooks/useFloatingContainerContext'

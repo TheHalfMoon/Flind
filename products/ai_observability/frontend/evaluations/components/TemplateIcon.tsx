@@ -19,7 +19,7 @@ import {
     IconUndo,
     IconWarning,
     IconWrench,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import type { EvaluationTemplate } from '../templates'
 

@@ -9,7 +9,7 @@ import * as moneyPng from '@posthog/brand/hoggies/png/money'
 import * as reporterPng from '@posthog/brand/hoggies/png/reporter'
 import * as trenchcoatPng from '@posthog/brand/hoggies/png/trenchcoat'
 import * as xRayPng from '@posthog/brand/hoggies/png/x-ray'
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import {
     LemonButton,
     LemonCard,

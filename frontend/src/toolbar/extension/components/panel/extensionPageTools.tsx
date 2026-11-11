@@ -1,4 +1,4 @@
-import { IconBolt, IconCursorClick, IconFlask, IconLive, IconPieChart, IconSearch, IconToggle } from '@posthog/icons'
+import { IconBolt, IconCursorClick, IconFlask, IconLive, IconPieChart, IconSearch, IconToggle } from '@flind/icons'
 
 import { IconMenu } from 'lib/lemon-ui/icons'
 

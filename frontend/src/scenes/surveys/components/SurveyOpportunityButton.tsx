@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import posthog from 'posthog-js'
 import { useEffect, useState } from 'react'
 
-import { IconMessage } from '@posthog/icons'
+import { IconMessage } from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

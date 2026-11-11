@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconCollapse, IconExpand, IconVideoCamera } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconVideoCamera } from '@flind/icons'
 import { LemonButton, LemonCard, Spinner } from '@flind/lemon-ui'
 
 import { ReplayCaptureDiagnosticsPanel } from 'scenes/session-recordings/components/ReplayCaptureDiagnosticsPanel'

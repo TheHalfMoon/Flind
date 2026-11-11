@@ -1,4 +1,4 @@
-import { IconLive } from '@posthog/icons'
+import { IconLive } from '@flind/icons'
 
 import api from 'lib/api'
 import { Dayjs, dayjs } from 'lib/dayjs'

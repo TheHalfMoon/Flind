@@ -1,4 +1,4 @@
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 /** A label-above-content row used across the readonly config and observation detail cards. */

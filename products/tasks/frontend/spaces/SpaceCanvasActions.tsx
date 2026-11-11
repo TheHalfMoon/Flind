@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCopy, IconPin, IconPinFilled, IconTrash } from '@posthog/icons'
+import { IconCopy, IconPin, IconPinFilled, IconTrash } from '@flind/icons'
 
 import { TodayMenuParts } from '~/layout/today/todayMenuParts'
 

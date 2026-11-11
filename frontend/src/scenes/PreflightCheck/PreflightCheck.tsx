@@ -3,7 +3,7 @@ import './PreflightCheck.scss'
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { IconCheckCircle, IconCollapse, IconExpand, IconRefresh, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconCollapse, IconExpand, IconRefresh, IconWarning } from '@flind/icons'
 import { Link, Spinner } from '@flind/lemon-ui'
 
 import { AnimatedCollapsible } from 'lib/components/AnimatedCollapsible'

@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconArrowLeft, IconClock, IconSparkles } from '@posthog/icons'
+import { IconArrowLeft, IconClock, IconSparkles } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonSwitch, LemonTable, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

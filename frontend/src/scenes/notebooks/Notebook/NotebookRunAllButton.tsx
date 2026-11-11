@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlay, IconStopFilled } from '@posthog/icons'
+import { IconPlay, IconStopFilled } from '@flind/icons'
 import { LemonButton, LemonButtonProps } from '@flind/lemon-ui'
 
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

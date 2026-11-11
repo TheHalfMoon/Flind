@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useMemo, useRef } from 'react'
 
-import { IconPlusSmall, IconSearch, IconX } from '@posthog/icons'
+import { IconPlusSmall, IconSearch, IconX } from '@flind/icons'
 
 import {
     Button,

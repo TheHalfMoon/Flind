@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-import { IconCheck, IconColumns, IconMinusSquare, IconPlusSquare } from '@posthog/icons'
+import { IconCheck, IconColumns, IconMinusSquare, IconPlusSquare } from '@flind/icons'
 import { LemonButton, LemonTable, Tooltip } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

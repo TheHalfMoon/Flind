@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useRef } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { cn } from 'lib/utils/css-classes'
 

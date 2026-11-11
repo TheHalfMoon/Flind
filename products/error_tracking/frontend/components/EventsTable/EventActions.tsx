@@ -1,6 +1,6 @@
 import { router } from 'kea-router'
 
-import { IconAI, IconEllipsis, IconLive } from '@posthog/icons'
+import { IconAI, IconEllipsis, IconLive } from '@flind/icons'
 
 import { ErrorEventType } from 'lib/components/Errors/types'
 import { getRecordingStatus, getSessionId } from 'lib/components/Errors/utils'

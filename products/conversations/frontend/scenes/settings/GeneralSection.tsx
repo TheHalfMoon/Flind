@@ -1,7 +1,7 @@
 import { LemonButton, LemonCard, LemonDivider, LemonSwitch } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 
 import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { FEATURE_FLAGS } from 'lib/constants'

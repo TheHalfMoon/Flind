@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSelect, Link } from '@flind/lemon-ui'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

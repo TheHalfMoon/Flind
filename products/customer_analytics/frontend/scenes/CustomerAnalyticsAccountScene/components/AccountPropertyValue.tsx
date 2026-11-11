@@ -1,4 +1,4 @@
-import { IconCheck, IconX } from '@posthog/icons'
+import { IconCheck, IconX } from '@flind/icons'
 import { LemonColorGlyph, Link, ProfilePicture } from '@flind/lemon-ui'
 
 import { DataColorToken } from 'lib/colors'

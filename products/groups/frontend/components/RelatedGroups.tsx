@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconPerson } from '@posthog/icons'
+import { IconPerson } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { LemonTable, LemonTableColumns } from 'lib/lemon-ui/LemonTable'

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { IconBook, IconCalculator, IconCalendar, IconGear } from '@posthog/icons'
+import { IconBook, IconCalculator, IconCalendar, IconGear } from '@flind/icons'
 
 import { LemonSegmentedSelect, LemonSegmentedSelectProps } from './LemonSegmentedSelect'
 

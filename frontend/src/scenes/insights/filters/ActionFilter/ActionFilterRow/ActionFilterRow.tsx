@@ -8,7 +8,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useCallback, useEffect } from 'react'
 
-import { IconCopy, IconFilter, IconGroupIntersect, IconPencil, IconTrash } from '@posthog/icons'
+import { IconCopy, IconFilter, IconGroupIntersect, IconPencil, IconTrash } from '@flind/icons'
 import { lemonToast } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

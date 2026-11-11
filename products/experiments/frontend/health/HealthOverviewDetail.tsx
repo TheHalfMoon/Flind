@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconInfo, IconWarning } from '@posthog/icons'
+import { IconInfo, IconWarning } from '@flind/icons'
 
 import { capitalizeFirstLetter, pluralize } from 'lib/utils/strings'
 import { BREAKDOWN_NULL_STRING_LABEL, BREAKDOWN_OTHER_STRING_LABEL } from 'scenes/insights/utils'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { DomainConnectProviderName } from '~/queries/schema/schema-general'

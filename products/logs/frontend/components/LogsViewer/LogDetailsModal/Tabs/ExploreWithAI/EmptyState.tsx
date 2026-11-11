@@ -1,4 +1,4 @@
-import { IconAIText } from '@posthog/icons'
+import { IconAIText } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { AIConsentPopoverWrapper } from 'scenes/settings/organization/AIConsentPopoverWrapper'

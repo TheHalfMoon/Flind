@@ -10,7 +10,7 @@ import {
     IconSidebarClose,
     IconSidebarOpen,
     IconTrends,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonBanner, LemonButton, LemonTabs, LemonSelect, Link } from '@flind/lemon-ui'
 
 import { FlaggedFeature } from 'lib/components/FlaggedFeature'

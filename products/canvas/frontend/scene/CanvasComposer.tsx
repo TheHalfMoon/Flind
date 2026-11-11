@@ -1,6 +1,6 @@
 import { ChangeEvent, KeyboardEvent, useRef } from 'react'
 
-import { IconSend } from '@posthog/icons'
+import { IconSend } from '@flind/icons'
 import {
     Button,
     InputGroup,

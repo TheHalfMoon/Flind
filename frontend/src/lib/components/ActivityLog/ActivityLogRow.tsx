@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { router } from 'kea-router'
 import { useEffect, useId, useRef, useState } from 'react'
 
-import { IconCollapse, IconExpand } from '@posthog/icons'
+import { IconCollapse, IconExpand } from '@flind/icons'
 import { LemonButton, LemonTabs, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

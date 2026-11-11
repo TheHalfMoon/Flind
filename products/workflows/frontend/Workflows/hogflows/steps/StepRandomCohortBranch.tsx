@@ -2,7 +2,7 @@ import { Node } from '@xyflow/react'
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { IconBalance, IconPlus } from '@posthog/icons'
+import { IconBalance, IconPlus } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 

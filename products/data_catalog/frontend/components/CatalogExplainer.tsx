@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
+import { IconBook, IconInfo, IconX } from '@flind/icons'
 import * as stampApprovedPng from '@posthog/brand/hoggies/png/stamp-approved'
-import { IconBook, IconInfo, IconX } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { LemonCollapse } from 'lib/lemon-ui/LemonCollapse'

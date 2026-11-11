@@ -1,4 +1,4 @@
-import { IconDatabase, IconPlug, IconRevert, IconServer, IconX } from '@posthog/icons'
+import { IconDatabase, IconPlug, IconRevert, IconServer, IconX } from '@flind/icons'
 import { LemonButton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { openInAppSupport } from 'lib/components/Support/openInAppSupport'

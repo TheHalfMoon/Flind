@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { Item, ItemContent, ItemFooter, ItemMedia, ItemTitle, Text } from '@flind/quill'
 
 /** A problem with saving, shown above the library or inspector with the actions that resolve it. */

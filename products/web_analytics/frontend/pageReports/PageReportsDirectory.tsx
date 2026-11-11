@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { pageReportsLogic } from 'scenes/web-analytics/pageReportsLogic'

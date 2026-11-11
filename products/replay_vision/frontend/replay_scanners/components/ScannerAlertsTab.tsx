@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { IconPlus, IconRefresh } from '@posthog/icons'
+import { IconPlus, IconRefresh } from '@flind/icons'
 import { LemonButton, LemonSwitch, LemonTable, LemonTag, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

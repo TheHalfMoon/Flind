@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useId } from 'react'
 
-import { IconCheck, IconX } from '@posthog/icons'
+import { IconCheck, IconX } from '@flind/icons'
 import {
     LemonButton,
     LemonCheckbox,

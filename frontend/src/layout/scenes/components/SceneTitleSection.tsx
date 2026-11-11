@@ -3,7 +3,7 @@ import '../../panel-layout/ProjectTree/defaultTree'
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-import { IconCollapse, IconExpand, IconPencil } from '@posthog/icons'
+import { IconCollapse, IconExpand, IconPencil } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import { ProductSetupButton } from 'lib/components/ProductSetup'

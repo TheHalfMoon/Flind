@@ -1,4 +1,4 @@
-import { IconCopy } from '@posthog/icons'
+import { IconCopy } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 export interface TraceCopyButtonProps {

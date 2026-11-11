@@ -3,7 +3,7 @@ import './FilterRow.scss'
 import clsx from 'clsx'
 import React, { useState } from 'react'
 
-import { IconPlus, IconPlusSmall, IconTrash, IconX } from '@posthog/icons'
+import { IconPlus, IconPlusSmall, IconTrash, IconX } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { isValidPropertyFilter } from 'lib/components/PropertyFilters/utils'

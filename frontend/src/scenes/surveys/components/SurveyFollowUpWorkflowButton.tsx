@@ -1,6 +1,6 @@
 import { router } from 'kea-router'
 
-import { IconSend } from '@posthog/icons'
+import { IconSend } from '@flind/icons'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconCode, IconInfo, IconWrench } from '@posthog/icons'
+import { IconCode, IconInfo, IconWrench } from '@flind/icons'
 
 import { AgentPromptButton } from 'lib/components/AgentPromptButton'
 import { errorPropertiesLogic } from 'lib/components/Errors/errorPropertiesLogic'

@@ -4,7 +4,7 @@ import posthog from 'posthog-js'
 import React, { memo, useEffect, useMemo } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
-import { IconComment } from '@posthog/icons'
+import { IconComment } from '@flind/icons'
 
 import { PropertyKeyInfo } from 'lib/components/PropertyKeyInfo'
 import { LazyRichContentPreview, LazyTextContent } from 'lib/components/RichContentEditor/LazyRichContent'

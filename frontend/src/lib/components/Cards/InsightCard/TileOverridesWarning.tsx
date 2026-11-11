@@ -1,4 +1,4 @@
-import { IconFilter, IconWarning } from '@posthog/icons'
+import { IconFilter, IconWarning } from '@flind/icons'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'
 

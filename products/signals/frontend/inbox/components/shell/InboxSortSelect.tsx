@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconSort } from '@posthog/icons'
+import { IconSort } from '@flind/icons'
 import { LemonSelect } from '@flind/lemon-ui'
 
 import {

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconEllipsis, IconEye } from '@posthog/icons'
+import { IconEllipsis, IconEye } from '@flind/icons'
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@flind/quill'
 
 import { LemonMenuItem, LemonMenuItemLeafCallback } from 'lib/lemon-ui/LemonMenu/LemonMenu'

@@ -1,4 +1,4 @@
-import { IconCloud, IconGithub, IconLaptop } from '@posthog/icons'
+import { IconCloud, IconGithub, IconLaptop } from '@flind/icons'
 import {
     Badge,
     Button,

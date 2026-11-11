@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import type React from 'react'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 import { type ChartTheme, type MetricChange } from '@flind/quill-charts'
 

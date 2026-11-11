@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconArrowLeft } from '@posthog/icons'
+import { IconArrowLeft } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { MessageInput } from '../Chat/MessageInput'

@@ -15,7 +15,7 @@ import {
     useState,
 } from 'react'
 
-import { IconDay, IconNight, IconSearch, IconSparkles, IconX } from '@posthog/icons'
+import { IconDay, IconNight, IconSearch, IconSparkles, IconX } from '@flind/icons'
 import { LemonTag, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { filterSearchItems } from 'lib/components/Search/utils'

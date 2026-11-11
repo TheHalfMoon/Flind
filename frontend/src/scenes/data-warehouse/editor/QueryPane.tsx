@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconCheck, IconX } from '@posthog/icons'
+import { IconCheck, IconX } from '@flind/icons'
 import { Spinner } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'

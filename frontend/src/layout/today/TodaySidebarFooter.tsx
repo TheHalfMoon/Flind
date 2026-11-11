@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { ComponentProps } from 'react'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { NewAccountMenu } from 'lib/components/Account/NewAccountMenu'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconFilter, IconMinusSquare, IconPlusSquare } from '@posthog/icons'
+import { IconFilter, IconMinusSquare, IconPlusSquare } from '@flind/icons'
 import { LemonButton, LemonTable } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

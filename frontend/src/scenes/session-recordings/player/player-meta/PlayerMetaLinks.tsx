@@ -9,7 +9,7 @@ import {
     IconNotebook,
     IconPlusSmall,
     IconTrash,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonButtonProps, LemonDialog, LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

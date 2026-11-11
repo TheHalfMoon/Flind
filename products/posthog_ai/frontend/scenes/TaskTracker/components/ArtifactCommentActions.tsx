@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPin } from '@posthog/icons'
+import { IconPin } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill-primitives'
 
 import { TaskArtifactCommentsLogicProps, taskArtifactCommentsLogic } from '../taskArtifactCommentsLogic'

@@ -1,4 +1,4 @@
-import { IconPlus, IconTrash } from '@posthog/icons'
+import { IconPlus, IconTrash } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import type { AlertRouteMatcherApi } from '../generated/api.schemas'

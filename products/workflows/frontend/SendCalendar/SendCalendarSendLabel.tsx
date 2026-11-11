@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconCheck, IconPause, IconRefresh, IconSend, IconWarning } from '@posthog/icons'
+import { IconCheck, IconPause, IconRefresh, IconSend, IconWarning } from '@flind/icons'
 
 import { CalendarSend } from './sendCalendarUtils'
 

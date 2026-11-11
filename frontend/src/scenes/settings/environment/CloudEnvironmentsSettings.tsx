@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconEllipsis, IconPlus } from '@posthog/icons'
+import { IconEllipsis, IconPlus } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonDialog, LemonMenu, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import type { SandboxEnvironmentDTOApi } from 'products/tasks/frontend/generated/api.schemas'

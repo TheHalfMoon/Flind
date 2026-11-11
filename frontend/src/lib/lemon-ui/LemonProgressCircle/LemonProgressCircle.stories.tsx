@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useEffect, useState } from 'react'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 
 import { LemonButton } from '../LemonButton'
 import { LemonCheckbox } from '../LemonCheckbox'

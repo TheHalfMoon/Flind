@@ -1,4 +1,4 @@
-import { IconArchive, IconPin, IconPinFilled } from '@posthog/icons'
+import { IconArchive, IconPin, IconPinFilled } from '@flind/icons'
 
 import { TodayMenuParts } from './todayMenuParts'
 import { sessionsLabel } from './todaySessionSelection'

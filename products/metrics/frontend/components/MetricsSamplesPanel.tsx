@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { Fragment, useEffect, useRef, useState } from 'react'
 
-import { IconCollapse, IconExpand } from '@posthog/icons'
+import { IconCollapse, IconExpand } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonTable, LemonTabs, Link, Tooltip } from '@flind/lemon-ui'
 
 import { getColorVar } from 'lib/colors'

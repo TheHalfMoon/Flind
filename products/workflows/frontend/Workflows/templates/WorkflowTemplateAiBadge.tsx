@@ -1,4 +1,4 @@
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 
 /** Marks a template that hands work to an AI agent. Uses the same purple as AI surfaces elsewhere. */
 export function WorkflowTemplateAiBadge(): JSX.Element {

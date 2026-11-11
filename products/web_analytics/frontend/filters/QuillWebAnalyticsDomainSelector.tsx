@@ -1,6 +1,6 @@
 import { useId, useState } from 'react'
 
-import { IconGlobe } from '@posthog/icons'
+import { IconGlobe } from '@flind/icons'
 import {
     Button,
     Label,

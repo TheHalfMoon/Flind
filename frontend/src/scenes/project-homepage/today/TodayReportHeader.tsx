@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { hasOpenImplementationPr } from '@flind/agent-contracts/signal-report-state'
-import { IconCheckCircle, IconDocument, IconEllipsis, IconHide } from '@posthog/icons'
+import { IconCheckCircle, IconDocument, IconEllipsis, IconHide } from '@flind/icons'
 import { Badge, Button, Heading, IconStack, IconStackItem, Text, cn } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'

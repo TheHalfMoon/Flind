@@ -1,7 +1,7 @@
 import { LemonBanner, LemonButton, LemonSkeleton, Link } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 
-import { IconCheck, IconPlus } from '@posthog/icons'
+import { IconCheck, IconPlus } from '@flind/icons'
 
 import { GuidedWizardSection } from 'lib/components/GuidedWizard/GuidedWizardSection'
 import { flindDocsUrl } from 'lib/flindPublicLinks'

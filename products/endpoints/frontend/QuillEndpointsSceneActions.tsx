@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { router } from 'kea-router'
 
-import { IconChevronDown, IconGraph, IconPlus, IconServer } from '@posthog/icons'
+import { IconChevronDown, IconGraph, IconPlus, IconServer } from '@flind/icons'
 import {
     Button,
     ButtonGroup,

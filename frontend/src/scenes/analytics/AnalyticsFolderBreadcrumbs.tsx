@@ -1,4 +1,4 @@
-import { IconChevronRight, IconFolder } from '@posthog/icons'
+import { IconChevronRight, IconFolder } from '@flind/icons'
 import { Button, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

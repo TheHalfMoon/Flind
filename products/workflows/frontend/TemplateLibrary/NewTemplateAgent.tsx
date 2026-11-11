@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconLetter } from '@posthog/icons'
+import { IconLetter } from '@flind/icons'
 
 import { AiFirstCreateScene } from 'scenes/max/aiFirstCreate/AiFirstCreateScene'
 import { aiFirstHandoffLogic } from 'scenes/max/aiFirstCreate/aiFirstHandoffLogic'

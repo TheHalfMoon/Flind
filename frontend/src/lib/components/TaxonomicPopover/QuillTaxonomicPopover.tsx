@@ -1,7 +1,7 @@
 import type { Placement } from '@floating-ui/react'
 import { forwardRef } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { Button, ButtonGroup, Popover, PopoverContent, PopoverTrigger, SelectTriggerIcon, cn } from '@flind/quill'
 
 import type { LemonButtonProps } from 'lib/lemon-ui/LemonButton'

@@ -1,4 +1,4 @@
-import { IconAIText } from '@posthog/icons'
+import { IconAIText } from '@flind/icons'
 import { LemonSkeleton } from '@flind/lemon-ui'
 
 export function LoadingState(): JSX.Element {

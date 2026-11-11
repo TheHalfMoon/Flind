@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconCheckCircle } from '@posthog/icons'
+import { IconCheckCircle } from '@flind/icons'
 import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { slackAppWorkspaceSetupLogic } from './slackAppWorkspaceSetupLogic'

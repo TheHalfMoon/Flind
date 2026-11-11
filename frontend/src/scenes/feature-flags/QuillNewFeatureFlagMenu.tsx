@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconChevronDown, IconCode, IconFlag, IconFlask, IconSparkles, IconWrench } from '@posthog/icons'
+import { IconChevronDown, IconCode, IconFlag, IconFlask, IconSparkles, IconWrench } from '@flind/icons'
 import {
     Button,
     DropdownMenu,

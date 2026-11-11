@@ -1,4 +1,4 @@
-import { IconInfo, IconPinFilled, IconRabbit, IconTortoise, IconX } from '@posthog/icons'
+import { IconInfo, IconPinFilled, IconRabbit, IconTortoise, IconX } from '@flind/icons'
 import { LemonLabel, LemonSegmentedButton, LemonSegmentedButtonOption, Spinner } from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

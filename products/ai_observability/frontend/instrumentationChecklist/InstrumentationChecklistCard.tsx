@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { IconCheckCircle, IconClock, IconMinusSquare, IconRefresh, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconClock, IconMinusSquare, IconRefresh, IconWarning } from '@flind/icons'
 import { LemonButton, LemonCollapse, LemonTag, Link } from '@flind/lemon-ui'
 
 import { InstrumentationCheckApi, InstrumentationCheckStatusEnumApi } from '../generated/api.schemas'

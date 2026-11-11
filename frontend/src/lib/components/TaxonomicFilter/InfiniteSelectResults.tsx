@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconSidebarClose } from '@posthog/icons'
+import { IconSidebarClose } from '@flind/icons'
 import { LemonButton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { InfiniteList } from 'lib/components/TaxonomicFilter/InfiniteList'

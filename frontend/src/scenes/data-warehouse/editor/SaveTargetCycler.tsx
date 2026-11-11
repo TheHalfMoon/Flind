@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
-import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
+import { IconChevronLeft, IconChevronRight } from '@flind/icons'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

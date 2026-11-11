@@ -1,4 +1,4 @@
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { Link } from '@flind/lemon-ui'
 
 import { Logomark } from 'lib/brand'

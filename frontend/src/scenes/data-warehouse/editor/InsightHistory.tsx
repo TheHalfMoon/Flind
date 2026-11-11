@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useRef, useState } from 'react'
 
-import { IconRevert } from '@posthog/icons'
+import { IconRevert } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { SkeletonLog } from 'lib/components/ActivityLog/ActivityLog'

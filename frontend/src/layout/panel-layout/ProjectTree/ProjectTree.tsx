@@ -11,7 +11,7 @@ import {
     IconHome,
     IconPlusSmall,
     IconStar,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { itemSelectModalLogic } from 'lib/components/FileSystem/ItemSelectModal/itemSelectModalLogic'
 import { dayjs } from 'lib/dayjs'

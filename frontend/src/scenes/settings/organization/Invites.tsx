@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

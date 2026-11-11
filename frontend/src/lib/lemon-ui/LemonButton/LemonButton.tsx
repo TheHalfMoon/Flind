@@ -3,7 +3,7 @@ import './LemonButton.scss'
 import clsx from 'clsx'
 import React, { useContext } from 'react'
 
-import { IconChevronDown, IconChevronRight, IconExternal } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight, IconExternal } from '@flind/icons'
 
 import { LemonDropdown, LemonDropdownProps } from '../LemonDropdown'
 import { INTERACTIVE_CLOSE_DELAY_MS } from '../LemonInput/LemonInput'

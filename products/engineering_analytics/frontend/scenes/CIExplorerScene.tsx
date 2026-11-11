@@ -1,6 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { IconPullRequest, IconRefresh } from '@posthog/icons'
+import { IconPullRequest, IconRefresh } from '@flind/icons'
 import { LemonButton, LemonSkeleton, LemonTabs, Link, Tooltip } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

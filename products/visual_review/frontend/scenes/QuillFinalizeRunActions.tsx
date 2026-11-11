@@ -1,4 +1,4 @@
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { Button, Checkbox, Label, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 export interface QuillFinalizeRunActionsProps {

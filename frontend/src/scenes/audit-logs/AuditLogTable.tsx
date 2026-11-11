@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonTabs, LemonTag } from '@flind/lemon-ui'
 
 import { ActivityClientTag } from 'lib/components/ActivityLog/ActivityClientTag'

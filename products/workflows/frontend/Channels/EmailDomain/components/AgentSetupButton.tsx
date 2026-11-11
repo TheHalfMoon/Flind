@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconSparkles } from '@posthog/icons'
+import { IconSparkles } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { emailDomainAgentLogic } from '../emailDomainAgentLogic'

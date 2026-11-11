@@ -15,7 +15,7 @@ import {
     IconPlus,
     IconSearch,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonButton, LemonDivider, LemonTag } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useId, useState } from 'react'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { Button, Input, Label, RadioGroup, RadioGroupItem, Separator, Text } from '@flind/quill'
 
 import { QuillChartOptionSwitch } from 'lib/components/ChartOptions/QuillChartOptionSwitch'

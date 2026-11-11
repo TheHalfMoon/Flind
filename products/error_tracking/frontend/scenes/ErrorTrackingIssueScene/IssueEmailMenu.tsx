@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { RefObject } from 'react'
 
-import { IconChevronDown, IconSend } from '@posthog/icons'
+import { IconChevronDown, IconSend } from '@flind/icons'
 
 import {
     Button,

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonButton, LemonInput, Spinner } from '@flind/lemon-ui'
 
 import { BIConnections } from 'products/business_intelligence/frontend/BIConnections'

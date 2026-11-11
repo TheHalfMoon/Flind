@@ -3,7 +3,7 @@ import './CodeSnippet.scss'
 import clsx from 'clsx'
 import React, { Suspense, lazy, useState } from 'react'
 
-import { IconCollapse, IconCopy, IconExpand } from '@posthog/icons'
+import { IconCollapse, IconCopy, IconExpand } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

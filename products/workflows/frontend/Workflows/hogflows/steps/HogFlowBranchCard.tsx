@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 

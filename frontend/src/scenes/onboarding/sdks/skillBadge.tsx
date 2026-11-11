@@ -1,4 +1,4 @@
-import { IconCode } from '@posthog/icons'
+import { IconCode } from '@flind/icons'
 
 import { SDKKey, type SDK } from '~/types'
 

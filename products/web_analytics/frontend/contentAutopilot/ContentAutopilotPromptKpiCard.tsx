@@ -1,4 +1,4 @@
-import { IconInfo, IconTrending } from '@posthog/icons'
+import { IconInfo, IconTrending } from '@flind/icons'
 import { LemonCard, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { IconTrendingDown, IconTrendingFlat } from 'lib/lemon-ui/icons'

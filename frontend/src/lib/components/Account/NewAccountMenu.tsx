@@ -12,7 +12,7 @@ import {
     IconServer,
     IconShieldLock,
     IconToggle,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { Link } from 'lib/lemon-ui/Link/Link'
 import { ProfilePicture } from 'lib/lemon-ui/ProfilePicture/ProfilePicture'

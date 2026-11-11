@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconDashboard, IconGraph, IconLock, IconNotebook, IconRewindPlay, IconBell, IconLetter } from '@posthog/icons'
+import { IconDashboard, IconGraph, IconLock, IconNotebook, IconRewindPlay, IconBell, IconLetter } from '@flind/icons'
 import { LemonButton, LemonSwitch, LemonTable } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

@@ -2,7 +2,7 @@ import './CommandBlock.scss'
 
 import { useRef, useState } from 'react'
 
-import { IconCopy, IconTerminal } from '@posthog/icons'
+import { IconCopy, IconTerminal } from '@flind/icons'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 import { cn } from 'lib/utils/css-classes'

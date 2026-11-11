@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconInfo } from '@posthog/icons'
+import { IconInfo } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { dashboardLogic } from 'scenes/dashboard/dashboardLogic'

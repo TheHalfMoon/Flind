@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconNotebook, IconTarget, IconThumbsDown, IconWarning } from '@posthog/icons'
+import { IconCheckCircle, IconNotebook, IconTarget, IconThumbsDown, IconWarning } from '@flind/icons'
 
 export interface ScannerGoalStarter {
     // pinned: sent as `template_key` on replay_vision_scanner_creation_started and used in the starter's data-attr

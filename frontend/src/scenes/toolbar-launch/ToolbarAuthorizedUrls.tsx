@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ChangeEvent } from 'react'
 
-import { IconCopy, IconEllipsis, IconExternal, IconPencil, IconPlus, IconRefresh, IconTrash } from '@posthog/icons'
+import { IconCopy, IconEllipsis, IconExternal, IconPencil, IconPlus, IconRefresh, IconTrash } from '@flind/icons'
 import {
     AlertDialog,
     AlertDialogClose,

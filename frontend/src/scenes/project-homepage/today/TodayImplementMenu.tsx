@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconChevronDown, IconCode, IconCopy, IconLogomark, IconSearch } from '@posthog/icons'
+import { IconChevronDown, IconCode, IconCopy, IconLogomark, IconSearch } from '@flind/icons'
 import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, Text } from '@flind/quill'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

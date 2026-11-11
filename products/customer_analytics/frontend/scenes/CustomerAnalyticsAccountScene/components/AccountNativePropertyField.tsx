@@ -1,4 +1,4 @@
-import { IconPencil } from '@posthog/icons'
+import { IconPencil } from '@flind/icons'
 import { LemonButton, LemonInput, LemonInputSelect } from '@flind/lemon-ui'
 
 import {

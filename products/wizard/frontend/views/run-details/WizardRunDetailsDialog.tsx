@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Suspense } from 'react'
 
-import { IconArrowLeft, IconCopy, IconFolder, IconGithub, IconRefresh, IconStopFilled } from '@posthog/icons'
+import { IconArrowLeft, IconCopy, IconFolder, IconGithub, IconRefresh, IconStopFilled } from '@flind/icons'
 import {
     Button,
     Dialog,

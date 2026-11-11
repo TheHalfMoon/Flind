@@ -1,4 +1,4 @@
-import { IconHeart, IconHeartFilled } from '@posthog/icons'
+import { IconHeart, IconHeartFilled } from '@flind/icons'
 
 import { ButtonPrimitive, DisabledReasonsObject } from 'lib/ui/Button/ButtonPrimitives'
 

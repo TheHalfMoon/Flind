@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

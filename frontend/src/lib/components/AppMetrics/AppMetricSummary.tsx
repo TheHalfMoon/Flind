@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 import { LemonLabel, LemonSkeleton, SpinnerOverlay, Tooltip } from '@flind/lemon-ui'
 
 import { formatPercentageDiff, humanFriendlyNumber } from 'lib/utils/numbers'

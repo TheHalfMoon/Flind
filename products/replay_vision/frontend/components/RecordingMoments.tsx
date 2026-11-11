@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo, useRef } from 'react'
 
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 import { LemonButton, LemonSwitch, Spinner } from '@flind/lemon-ui'
 
 import { useResizeObserver } from 'lib/hooks/useResizeObserver'

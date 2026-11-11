@@ -1,4 +1,4 @@
-import { IconPauseFilled, IconXCircle } from '@posthog/icons'
+import { IconPauseFilled, IconXCircle } from '@flind/icons'
 import { Tooltip } from '@flind/lemon-ui'
 
 import type { DataWarehouseSavedQuerySummary } from 'scenes/data-warehouse/saved_queries/dataWarehouseViewsLogic'

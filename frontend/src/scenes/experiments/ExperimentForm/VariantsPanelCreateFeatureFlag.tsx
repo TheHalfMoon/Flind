@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconBalance, IconInfo, IconPencil, IconPlus, IconTrash } from '@posthog/icons'
+import { IconBalance, IconInfo, IconPencil, IconPlus, IconTrash } from '@flind/icons'
 
 import { MAX_EXPERIMENT_VARIANTS } from 'lib/constants'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'

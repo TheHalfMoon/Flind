@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { PropsWithChildren, UIEvent } from 'react'
 
-import { IconClock, IconListTree, IconRocket } from '@posthog/icons'
+import { IconClock, IconListTree, IconRocket } from '@flind/icons'
 
 import { IconFingerprint } from 'lib/lemon-ui/icons'
 import {

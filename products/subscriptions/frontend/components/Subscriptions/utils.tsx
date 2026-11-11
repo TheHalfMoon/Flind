@@ -1,4 +1,4 @@
-import { IconLetter } from '@posthog/icons'
+import { IconLetter } from '@flind/icons'
 import { LemonSelectOption, LemonSelectOptionLeaf, LemonSelectOptions } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

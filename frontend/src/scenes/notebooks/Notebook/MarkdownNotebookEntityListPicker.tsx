@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react'
 
-import { IconPlus } from '@posthog/icons'
+import { IconPlus } from '@flind/icons'
 import { LemonButton, LemonInput, Tooltip } from '@flind/lemon-ui'
 
 import { LemonModal } from 'lib/lemon-ui/LemonModal'

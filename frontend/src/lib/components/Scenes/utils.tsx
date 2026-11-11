@@ -1,4 +1,4 @@
-import { IconCheck, IconLoading, IconX } from '@posthog/icons'
+import { IconCheck, IconLoading, IconX } from '@flind/icons'
 
 import { ButtonPrimitive, DisabledReasonsObject } from 'lib/ui/Button/ButtonPrimitives'
 import { SelectPrimitiveItemProps } from 'lib/ui/SelectPrimitive/SelectPrimitive'

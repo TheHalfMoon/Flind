@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconEllipsis, IconRefresh } from '@posthog/icons'
+import { IconEllipsis, IconRefresh } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonMenu } from '@flind/lemon-ui'
 
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'

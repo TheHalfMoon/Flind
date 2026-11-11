@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { IconGraph } from '@posthog/icons'
+import { IconGraph } from '@flind/icons'
 import { type ChartTheme, type TooltipContext } from '@flind/quill-charts'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

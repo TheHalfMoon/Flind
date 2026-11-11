@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconFilter, IconTrash } from '@posthog/icons'
+import { IconFilter, IconTrash } from '@flind/icons'
 import { LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import { useQuillSurface } from 'lib/components/QuillSurface/quillSurfaceContext'

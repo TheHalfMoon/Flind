@@ -11,7 +11,7 @@ import {
     IconSearch,
     IconSend,
     IconStopFilled,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

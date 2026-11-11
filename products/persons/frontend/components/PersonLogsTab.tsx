@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'

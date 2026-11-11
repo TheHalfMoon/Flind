@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { signalCardSourceLine } from 'lib/signals/signalCardSourceLine'

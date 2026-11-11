@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { IconMinus, IconPlus } from '@posthog/icons'
+import { IconMinus, IconPlus } from '@flind/icons'
 import { LemonBanner, LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { marketingAnalyticsSettingsLogic } from 'scenes/web-analytics/tabs/marketing-analytics/frontend/logic/marketingAnalyticsSettingsLogic'

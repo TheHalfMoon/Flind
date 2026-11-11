@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { IconCopy, IconFilter } from '@posthog/icons'
+import { IconCopy, IconFilter } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

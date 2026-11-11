@@ -1,7 +1,7 @@
 import { BindLogic } from 'kea'
 import { useRef, useState } from 'react'
 
-import { IconChevronDown, IconChevronRight } from '@posthog/icons'
+import { IconChevronDown, IconChevronRight } from '@flind/icons'
 import {
     LemonBadge,
     LemonBanner,

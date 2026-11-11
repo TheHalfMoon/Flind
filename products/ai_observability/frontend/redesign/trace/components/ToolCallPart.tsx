@@ -1,4 +1,4 @@
-import { IconWrench } from '@posthog/icons'
+import { IconWrench } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { ToolCallValue } from './ToolCallValue'

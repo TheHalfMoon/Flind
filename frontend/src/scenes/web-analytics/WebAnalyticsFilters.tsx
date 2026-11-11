@@ -4,7 +4,7 @@ import { Form } from 'kea-forms'
 import posthog from 'posthog-js'
 import { useMemo, useState } from 'react'
 
-import { IconFilter, IconGlobe, IconPhone, IconPlus } from '@posthog/icons'
+import { IconFilter, IconGlobe, IconPhone, IconPlus } from '@flind/icons'
 import { Button, SelectTriggerIcon } from '@flind/quill'
 
 import { AuthorizedUrlListType, authorizedUrlListLogic } from 'lib/components/AuthorizedUrlList/authorizedUrlListLogic'

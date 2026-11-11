@@ -1,4 +1,4 @@
-import { IconDocument, IconGraph, IconLineGraph, IconPalette } from '@posthog/icons'
+import { IconDocument, IconGraph, IconLineGraph, IconPalette } from '@flind/icons'
 
 import type { CanvasApi } from 'products/canvas/frontend/generated/api.schemas'
 

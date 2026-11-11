@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { router } from 'kea-router'
 
-import { IconArrowLeft } from '@posthog/icons'
+import { IconArrowLeft } from '@flind/icons'
 import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'

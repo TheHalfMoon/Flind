@@ -1,4 +1,4 @@
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 

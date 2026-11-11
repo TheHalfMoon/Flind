@@ -14,7 +14,7 @@ import {
     IconRefresh,
     IconTrash,
     IconUnlock,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { LemonMenuItemLeafCallback } from 'lib/lemon-ui/LemonMenu'
 import { userHasAccess } from 'lib/utils/accessControlUtils'

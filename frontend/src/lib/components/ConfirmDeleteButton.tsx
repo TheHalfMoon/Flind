@@ -2,7 +2,7 @@ import { AnimatePresence, useReducedMotion } from 'motion/react'
 import * as motion from 'motion/react-client'
 import { useEffect, useState } from 'react'
 
-import { IconTrash } from '@posthog/icons'
+import { IconTrash } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 const CONFIRM_RESET_MS = 5000

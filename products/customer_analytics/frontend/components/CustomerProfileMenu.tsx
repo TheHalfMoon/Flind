@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { LemonButton, LemonMenu, LemonMenuSection, LemonSwitch } from '@flind/lemon-ui'
 
 import { customerProfileLogic } from '../customerProfileLogic'

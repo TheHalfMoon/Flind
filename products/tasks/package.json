@@ -16,7 +16,7 @@
         "tailwindcss": "4.3.0"
     },
     "peerDependencies": {
-        "@posthog/icons": "catalog:",
+        "@flind/icons": "workspace:*",
         "@storybook/react": "catalog:",
         "@types/react": "*",
         "@types/react-dom": "*",

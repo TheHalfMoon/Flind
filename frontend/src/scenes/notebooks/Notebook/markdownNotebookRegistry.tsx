@@ -46,7 +46,7 @@ import {
 } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-import { IconComment, IconImage } from '@posthog/icons'
+import { IconComment, IconImage } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSelect, LemonTextArea, lemonToast } from '@flind/lemon-ui'
 
 import {

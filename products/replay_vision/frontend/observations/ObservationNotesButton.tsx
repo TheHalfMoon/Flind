@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChat } from '@posthog/icons'
+import { IconChat } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { sidePanelDiscussionLogic } from '~/layout/navigation-3000/sidepanel/panels/discussion/sidePanelDiscussionLogic'

@@ -1,4 +1,4 @@
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { Button } from 'lib/ui/quill'
 

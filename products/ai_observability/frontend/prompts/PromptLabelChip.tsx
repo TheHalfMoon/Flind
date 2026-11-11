@@ -1,4 +1,4 @@
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 // A removable token, not a status badge: one box owns all spacing (the X is a glyph
 // in the text flow, not a nested button component), fixed height on the 4px grid,

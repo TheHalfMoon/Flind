@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Fragment } from 'react'
 
-import { IconComment, IconPin, IconWarning } from '@posthog/icons'
+import { IconComment, IconPin, IconWarning } from '@flind/icons'
 import {
     Avatar,
     AvatarFallback,

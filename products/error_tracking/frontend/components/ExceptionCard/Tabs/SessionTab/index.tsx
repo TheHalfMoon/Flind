@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { P, match } from 'ts-pattern'
 
-import { IconExternal } from '@posthog/icons'
+import { IconExternal } from '@flind/icons'
 import { LemonBanner, Link } from '@flind/lemon-ui'
 
 import { EmptyMessage } from 'lib/components/EmptyMessage/EmptyMessage'

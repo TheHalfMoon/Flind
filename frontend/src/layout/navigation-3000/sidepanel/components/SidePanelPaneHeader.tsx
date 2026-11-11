@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 import { cn } from 'lib/utils/css-classes'

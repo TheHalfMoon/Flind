@@ -1,4 +1,4 @@
-import { IconChevronRight } from '@posthog/icons'
+import { IconChevronRight } from '@flind/icons'
 
 export function CollapsibleChevronIcon({ collapsed }: { collapsed: boolean }): JSX.Element {
     return (

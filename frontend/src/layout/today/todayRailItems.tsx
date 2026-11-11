@@ -1,4 +1,4 @@
-import { IconApps, IconChat, IconGear, IconHome, IconPeople, IconSidebarClose, IconSidebarOpen } from '@posthog/icons'
+import { IconApps, IconChat, IconGear, IconHome, IconPeople, IconSidebarClose, IconSidebarOpen } from '@flind/icons'
 
 import { IconAnalyticsBars } from 'lib/lemon-ui/icons'
 import { isMac } from 'lib/utils/dom'

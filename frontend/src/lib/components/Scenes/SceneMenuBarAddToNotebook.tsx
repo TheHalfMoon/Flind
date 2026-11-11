@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconNotebook, IconPlusSmall } from '@posthog/icons'
+import { IconNotebook, IconPlusSmall } from '@flind/icons'
 
 import { dayjs } from 'lib/dayjs'
 import {

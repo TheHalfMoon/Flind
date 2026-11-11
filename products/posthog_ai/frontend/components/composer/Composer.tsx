@@ -14,7 +14,7 @@ import {
     useRef,
 } from 'react'
 
-import { IconArrowRight, IconStopFilled } from '@posthog/icons'
+import { IconArrowRight, IconStopFilled } from '@flind/icons'
 import { LemonButton, LemonTextArea } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

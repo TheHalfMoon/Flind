@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { IconMessage } from '@posthog/icons'
+import { IconMessage } from '@flind/icons'
 import { LemonButton, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { MessagesOpening, NodeContent } from '../types'

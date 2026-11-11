@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 
-import { IconCheck, IconX } from '@posthog/icons'
+import { IconCheck, IconX } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'

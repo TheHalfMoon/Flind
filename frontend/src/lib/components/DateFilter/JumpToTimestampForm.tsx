@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react'
 
-import { IconCheck, IconWarning } from '@posthog/icons'
+import { IconCheck, IconWarning } from '@flind/icons'
 import { LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

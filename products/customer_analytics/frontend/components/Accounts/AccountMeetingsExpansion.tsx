@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
 import * as businessEvolutionPng from '@posthog/brand/hoggies/png/business-evolution'
-import { IconCheck, IconPencil, IconX } from '@posthog/icons'
+import { IconCheck, IconPencil, IconX } from '@flind/icons'
 import {
     LemonButton,
     LemonInput,

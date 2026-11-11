@@ -1,4 +1,4 @@
-import { IconWrench } from '@posthog/icons'
+import { IconWrench } from '@flind/icons'
 import { Button, cn } from '@flind/quill-primitives'
 
 import type { ToolInvocation } from '../../types/streamTypes'

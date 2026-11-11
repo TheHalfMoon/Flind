@@ -4,7 +4,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import * as readingIsMagicPng from '@posthog/brand/hoggies/png/reading-is-magic'
-import { IconPlus, IconTrash } from '@posthog/icons'
+import { IconPlus, IconTrash } from '@flind/icons'
 import { LemonCheckbox } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

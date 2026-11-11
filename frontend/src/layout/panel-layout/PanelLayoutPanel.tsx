@@ -2,7 +2,7 @@ import { cva } from 'cva'
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { IconEllipsis, IconX } from '@posthog/icons'
+import { IconEllipsis, IconX } from '@flind/icons'
 
 import { ResizableElement } from 'lib/components/ResizeElement/ResizeElement'
 import { ButtonPrimitive, ButtonPrimitiveProps } from 'lib/ui/Button/ButtonPrimitives'

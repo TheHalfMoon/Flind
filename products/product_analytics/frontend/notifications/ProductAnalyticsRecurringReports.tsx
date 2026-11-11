@@ -1,4 +1,4 @@
-import { IconCalendar, IconOpenSidebar } from '@posthog/icons'
+import { IconCalendar, IconOpenSidebar } from '@flind/icons'
 import { LemonButton, LemonCard, LemonTag, Link } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

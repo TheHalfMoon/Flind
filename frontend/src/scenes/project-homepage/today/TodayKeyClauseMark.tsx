@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconArrowRight, IconSparkles } from '@posthog/icons'
+import { IconArrowRight, IconSparkles } from '@flind/icons'
 import { Button, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconArrowLeft } from '@posthog/icons'
+import { IconArrowLeft } from '@flind/icons'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { summarizeInsightQuery } from 'scenes/insights/summarizeInsight'

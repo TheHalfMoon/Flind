@@ -1,4 +1,4 @@
-import { IconSearch } from '@posthog/icons'
+import { IconSearch } from '@flind/icons'
 import {
     Button,
     Card,

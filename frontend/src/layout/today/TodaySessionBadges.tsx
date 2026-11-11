@@ -1,4 +1,4 @@
-import { IconArrowRightDown, IconLaptop, IconPinFilled, IconPullRequest } from '@posthog/icons'
+import { IconArrowRightDown, IconLaptop, IconPinFilled, IconPullRequest } from '@flind/icons'
 import { Avatar, AvatarFallback, AvatarGroup, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { IconSlack } from 'lib/lemon-ui/icons'

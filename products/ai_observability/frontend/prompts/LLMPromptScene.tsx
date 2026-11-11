@@ -2,7 +2,7 @@ import { useActions, useAsyncActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { combineUrl, router } from 'kea-router'
 
-import { IconPencil, IconPlay } from '@posthog/icons'
+import { IconPencil, IconPlay } from '@flind/icons'
 import { LemonButton, LemonTabs } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

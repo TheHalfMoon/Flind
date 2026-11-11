@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import type React from 'react'
 
 import * as construction2 from '@posthog/brand/hoggies/png/construction-2'
-import { IconOpenSidebar, IconPlus } from '@posthog/icons'
+import { IconOpenSidebar, IconPlus } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'

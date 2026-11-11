@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IconBolt, IconChevronDown, IconCopy, IconWarning } from '@posthog/icons'
+import { IconBolt, IconChevronDown, IconCopy, IconWarning } from '@flind/icons'
 import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

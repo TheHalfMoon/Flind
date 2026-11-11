@@ -1,4 +1,4 @@
-import { IconActivity, IconMemory, IconRocket, IconSupport, IconThumbsUp } from '@posthog/icons'
+import { IconActivity, IconMemory, IconRocket, IconSupport, IconThumbsUp } from '@flind/icons'
 
 import { FeatureFlagKey } from 'lib/constants'
 

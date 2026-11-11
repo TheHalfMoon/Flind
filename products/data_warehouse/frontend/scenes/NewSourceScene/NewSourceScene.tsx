@@ -2,7 +2,7 @@ import { MakeLogicType, BindLogic, connect, kea, path, selectors, useActions, us
 import posthog from 'posthog-js'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
-import { IconCopy, IconQuestion } from '@posthog/icons'
+import { IconCopy, IconQuestion } from '@flind/icons'
 import {
     LemonButton,
     LemonCheckbox,

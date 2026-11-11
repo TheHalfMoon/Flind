@@ -19,7 +19,7 @@ import {
     IconToggle,
     IconVideoCamera,
     IconWarning,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import type { TaskRunArtifactResponseApi } from 'products/tasks/frontend/generated/api.schemas'
 

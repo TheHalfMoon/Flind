@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconInfo, IconRefresh } from '@posthog/icons'
+import { IconInfo, IconRefresh } from '@flind/icons'
 import { LemonButton, LemonDialog } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 

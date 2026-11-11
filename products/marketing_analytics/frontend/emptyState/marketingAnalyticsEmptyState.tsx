@@ -1,5 +1,5 @@
+import { IconMegaphone } from '@flind/icons'
 import * as megaphonePng from '@posthog/brand/hoggies/png/megaphone'
-import { IconMegaphone } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { productSetupStatusLogic } from 'lib/components/ProductEmptyState/productSetupStatusLogic'

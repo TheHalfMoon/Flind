@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPin, IconPinFilled } from '@posthog/icons'
+import { IconPin, IconPinFilled } from '@flind/icons'
 import { Button, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { todayShellLogic } from './todayShellLogic'

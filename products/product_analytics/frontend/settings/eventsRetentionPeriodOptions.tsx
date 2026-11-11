@@ -1,4 +1,4 @@
-import { IconLock } from '@posthog/icons'
+import { IconLock } from '@flind/icons'
 import { LemonSelectOption, LemonSelectSection } from '@flind/lemon-ui'
 
 import { retentionPeriodLabel } from './retentionPeriodLabel'

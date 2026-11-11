@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPlus, IconTrash } from '@posthog/icons'
+import { IconPlus, IconTrash } from '@flind/icons'
 import { LemonButton, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { CUSTOM_CONDITION, rowForPreset, type WorkloadConditionRow } from './workloadConditionPresets'

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconCheck } from '@posthog/icons'
+import { IconCheck } from '@flind/icons'
 
 import { SurveyTheme, surveyThemes } from '../constants'
 

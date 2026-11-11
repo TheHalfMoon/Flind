@@ -2,7 +2,7 @@ import './quillProse.scss'
 
 import { memo, type ReactNode, useContext, useEffect, useRef, useState } from 'react'
 
-import { IconChevronDown } from '@posthog/icons'
+import { IconChevronDown } from '@flind/icons'
 import {
     ChatBubble,
     ChatBubbleContent,

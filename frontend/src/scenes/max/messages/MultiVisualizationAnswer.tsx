@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { IconExpand } from '@posthog/icons'
+import { IconExpand } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'

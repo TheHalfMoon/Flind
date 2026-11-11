@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconPause, IconPlay } from '@posthog/icons'
+import { IconPause, IconPlay } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { autoresearchPipelineLogic } from '../autoresearchPipelineLogic'

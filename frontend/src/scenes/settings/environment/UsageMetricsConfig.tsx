@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { IconEllipsis, IconPlusSmall } from '@posthog/icons'
+import { IconEllipsis, IconPlusSmall } from '@flind/icons'
 import {
     LemonButton,
     LemonDialog,

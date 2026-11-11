@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import posthog from 'posthog-js'
 
-import { IconGear, IconInfo, IconPlusSmall, IconTrash } from '@posthog/icons'
+import { IconGear, IconInfo, IconPlusSmall, IconTrash } from '@flind/icons'
 import {
     LemonButton,
     LemonColorButton,

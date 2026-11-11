@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconPlusSmall, IconRefresh } from '@posthog/icons'
+import { IconPlusSmall, IconRefresh } from '@flind/icons'
 
 import { ProductIntroduction } from 'lib/components/ProductIntroduction/ProductIntroduction'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

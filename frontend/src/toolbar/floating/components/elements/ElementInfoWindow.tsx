@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { ElementInfo } from '~/toolbar/floating/components/elements/ElementInfo'
 import { elementsLogic } from '~/toolbar/shared/elements/elementsLogic'

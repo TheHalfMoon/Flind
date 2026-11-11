@@ -13,7 +13,7 @@ import {
     IconPeople,
     IconPerson,
     IconPulse,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { FeatureFlagsSet } from 'lib/logic/featureFlagLogic'

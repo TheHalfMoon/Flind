@@ -10,7 +10,7 @@ import {
     IconPerson,
     IconPieChart,
     IconPlus,
-} from '@posthog/icons'
+} from '@flind/icons'
 
 import { urls } from 'scenes/urls'
 

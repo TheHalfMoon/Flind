@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconDocument, IconFolder, IconFolderOpen, IconGithub, IconPencil, IconTrash } from '@posthog/icons'
+import { IconDocument, IconFolder, IconFolderOpen, IconGithub, IconPencil, IconTrash } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonTag } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { LemonButton, LemonDivider, LemonModal, LemonSelect, LemonSwitch, LemonTabs } from '@flind/lemon-ui'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'

@@ -2,7 +2,7 @@ import { DismissableLayer } from '@radix-ui/react-dismissable-layer'
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 import { LemonButton, LemonModal } from '@flind/lemon-ui'
 import { Text } from '@flind/quill'
 

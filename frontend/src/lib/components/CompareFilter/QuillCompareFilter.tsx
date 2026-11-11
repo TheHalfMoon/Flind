@@ -1,6 +1,6 @@
 import { useId, useState } from 'react'
 
-import { IconClock } from '@posthog/icons'
+import { IconClock } from '@flind/icons'
 import {
     Button,
     Label,

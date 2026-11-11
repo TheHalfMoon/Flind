@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useState } from 'react'
 
-import { IconGithub } from '@posthog/icons'
+import { IconGithub } from '@flind/icons'
 import { LemonButton, LemonSelect, LemonSnack } from '@flind/lemon-ui'
 
 import api from 'lib/api'

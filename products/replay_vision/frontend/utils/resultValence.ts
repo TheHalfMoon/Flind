@@ -1,4 +1,4 @@
-import { IconCheckCircle, IconQuestion, IconXCircle } from '@posthog/icons'
+import { IconCheckCircle, IconQuestion, IconXCircle } from '@flind/icons'
 
 import type { PromptValenceEnumApi, ReplayObservationApi } from '../generated/api.schemas'
 import { configFromSnapshot, type ScorerScannerConfig } from '../replay_scanners/types'

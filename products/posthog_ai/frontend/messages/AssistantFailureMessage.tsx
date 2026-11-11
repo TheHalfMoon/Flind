@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IconWarning } from '@posthog/icons'
+import { IconWarning } from '@flind/icons'
 import { ChatBubble, ChatBubbleContent, ChatMessage, ChatMessageContent } from '@flind/quill-primitives'
 
 import { QuillAssistantMarkdown } from '../components/quill/QuillMessages'

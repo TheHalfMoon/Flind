@@ -1,5 +1,5 @@
+import { IconLetter } from '@flind/icons'
 import * as townCrierPng from '@posthog/brand/hoggies/png/town-crier'
-import { IconLetter } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'

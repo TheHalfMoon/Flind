@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useAsyncActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconInfo, IconTrash } from '@posthog/icons'
+import { IconInfo, IconTrash } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

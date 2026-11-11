@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import React, { ReactNode, useEffect, useId, useMemo, useRef, useState } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
-import { IconCollapse, IconExpand } from '@posthog/icons'
+import { IconCollapse, IconExpand } from '@flind/icons'
 
 import { useAnimatedPresence } from 'lib/hooks/useAnimatedPresence'
 

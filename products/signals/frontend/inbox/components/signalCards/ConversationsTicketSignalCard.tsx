@@ -1,7 +1,7 @@
 import { Link } from '@flind/lemon-ui'
 import { useState } from 'react'
 
-import { IconChevronRight, IconImage } from '@posthog/icons'
+import { IconChevronRight, IconImage } from '@flind/icons'
 
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'
 import { isTrustedFlindUrl } from 'lib/utils/trustedUrl'

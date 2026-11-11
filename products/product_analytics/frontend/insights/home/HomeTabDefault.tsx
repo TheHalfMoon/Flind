@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { IconCalendar } from '@posthog/icons'
+import { IconCalendar } from '@flind/icons'
 import { LemonSelect } from '@flind/lemon-ui'
 
 import { CompareFilter } from 'lib/components/CompareFilter/CompareFilter'

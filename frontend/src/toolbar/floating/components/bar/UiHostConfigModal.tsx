@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { createPortal } from 'react-dom'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { Logomark } from 'lib/brand'
 import { useFloatingContainer } from 'lib/hooks/useFloatingContainerContext'

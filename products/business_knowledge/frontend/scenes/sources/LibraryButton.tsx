@@ -1,4 +1,4 @@
-import { IconFolder, IconFolderOpen } from '@posthog/icons'
+import { IconFolder, IconFolderOpen } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import type { KnowledgeLibrary } from '../../api'

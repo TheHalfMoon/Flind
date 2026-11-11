@@ -1,4 +1,4 @@
-import { IconDrag } from '@posthog/icons'
+import { IconDrag } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import type { CreateActionType } from '../../hogFlowEditorLogic'

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { IconPerson } from '@posthog/icons'
+import { IconPerson } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { LabeledChipValue } from './LabeledChipValue'

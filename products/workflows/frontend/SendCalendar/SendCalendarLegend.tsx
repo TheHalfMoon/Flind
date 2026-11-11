@@ -1,4 +1,4 @@
-import { IconCheck, IconPause, IconRefresh, IconSend, IconWarning } from '@posthog/icons'
+import { IconCheck, IconPause, IconRefresh, IconSend, IconWarning } from '@flind/icons'
 
 export function SendCalendarLegend(): JSX.Element {
     return (

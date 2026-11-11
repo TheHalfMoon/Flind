@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo, useState } from 'react'
 
-import { IconInfo, IconPlusSmall, IconTrash, IconWarning } from '@posthog/icons'
+import { IconInfo, IconPlusSmall, IconTrash, IconWarning } from '@flind/icons'
 import { LemonButton, LemonInputSelect, LemonSelect, LemonTag, LemonTextArea, Tooltip } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

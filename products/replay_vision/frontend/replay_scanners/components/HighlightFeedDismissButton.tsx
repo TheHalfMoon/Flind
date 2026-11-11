@@ -1,4 +1,4 @@
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import type { FeedDismissalReasonEnumApi } from '../../generated/api.schemas'

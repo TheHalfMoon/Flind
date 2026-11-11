@@ -1,6 +1,6 @@
 import { useActions, useAsyncActions, useValues } from 'kea'
 
-import { IconRefresh } from '@posthog/icons'
+import { IconRefresh } from '@flind/icons'
 import { LemonButton, lemonToast } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

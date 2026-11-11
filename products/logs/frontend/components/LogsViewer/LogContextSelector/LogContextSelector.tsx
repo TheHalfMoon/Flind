@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { IconList } from '@posthog/icons'
+import { IconList } from '@flind/icons'
 import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { logsConfigLogic } from 'products/logs/frontend/logsConfigLogic'

@@ -1,6 +1,6 @@
 import { match } from 'ts-pattern'
 
-import { IconCheck, IconCircleDashed } from '@posthog/icons'
+import { IconCheck, IconCircleDashed } from '@flind/icons'
 import { LemonBanner, Link } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'

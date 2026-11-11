@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Fragment } from 'react'
 
-import { IconCheck, IconChevronDown, IconExternal, IconMinus, IconSparkles, IconWarning, IconX } from '@posthog/icons'
+import { IconCheck, IconChevronDown, IconExternal, IconMinus, IconSparkles, IconWarning, IconX } from '@flind/icons'
 import { LemonButton, LemonCollapse, LemonTable, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { LemonMenu, LemonMenuItem } from 'lib/lemon-ui/LemonMenu'

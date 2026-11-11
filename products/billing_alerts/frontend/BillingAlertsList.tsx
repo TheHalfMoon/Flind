@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconBell, IconPlay, IconPlus } from '@posthog/icons'
+import { IconBell, IconPlay, IconPlus } from '@flind/icons'
 import { LemonButton, LemonDialog, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'

@@ -1,4 +1,4 @@
-import { IconLlmAnalytics } from '@posthog/icons'
+import { IconLlmAnalytics } from '@flind/icons'
 
 import { ErrorDisplay, idFrom } from 'lib/components/Errors/ErrorDisplay'
 import { ErrorEventType } from 'lib/components/Errors/types'

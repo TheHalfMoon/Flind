@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Fragment } from 'react'
 import { toast } from 'react-toastify'
 
-import { IconInfo, IconPlus, IconPlusSmall, IconTrash } from '@posthog/icons'
+import { IconInfo, IconPlus, IconPlusSmall, IconTrash } from '@flind/icons'
 import { LemonButton, LemonCheckbox, LemonInput, LemonSelect } from '@flind/lemon-ui'
 import { Button, Checkbox, Field, FieldLabel, Input, Text } from '@flind/quill'
 

@@ -1,4 +1,4 @@
-import { IconThumbsDown, IconThumbsUp } from '@posthog/icons'
+import { IconThumbsDown, IconThumbsUp } from '@flind/icons'
 
 import { SurveyQuestion } from '~/types'
 

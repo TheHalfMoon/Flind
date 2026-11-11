@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconKeyboard } from '@posthog/icons'
+import { IconKeyboard } from '@flind/icons'
 import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'

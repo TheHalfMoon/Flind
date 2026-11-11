@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useRef, useState } from 'react'
 
-import { IconChat, IconSparkles } from '@posthog/icons'
+import { IconChat, IconSparkles } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useValues } from 'kea'
 import type React from 'react'
 
-import { IconTrending, IconWarning } from '@posthog/icons'
+import { IconTrending, IconWarning } from '@flind/icons'
 import { LemonBanner, LemonSkeleton, Link } from '@flind/lemon-ui'
 
 import { getColorVar } from 'lib/colors'

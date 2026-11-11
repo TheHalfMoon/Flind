@@ -28,7 +28,7 @@ import {
     useState,
 } from 'react'
 
-import { IconArchive, IconExpand45, IconRefresh } from '@posthog/icons'
+import { IconArchive, IconExpand45, IconRefresh } from '@flind/icons'
 
 import { themeLogic } from '~/layout/navigation-3000/themeLogic'
 import { DataModelingNode } from '~/types'

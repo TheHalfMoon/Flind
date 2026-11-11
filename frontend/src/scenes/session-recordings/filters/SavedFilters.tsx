@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
-import { IconShare, IconTrash } from '@posthog/icons'
+import { IconShare, IconTrash } from '@flind/icons'
 import {
     LemonBadge,
     LemonButton,

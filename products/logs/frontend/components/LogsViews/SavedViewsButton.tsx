@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { IconBookmark } from '@posthog/icons'
+import { IconBookmark } from '@flind/icons'
 import { LemonButton } from '@flind/lemon-ui'
 
 import { logsViewsListLogic } from './logsViewsListLogic'

@@ -3,7 +3,7 @@ import { useActions, useAsyncActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { useMemo } from 'react'
 
-import { IconCheckCircle, IconEllipsis, IconInfo, IconWarning, IconX } from '@posthog/icons'
+import { IconCheckCircle, IconEllipsis, IconInfo, IconWarning, IconX } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

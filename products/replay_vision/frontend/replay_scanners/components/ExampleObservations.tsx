@@ -1,4 +1,4 @@
-import { IconPlayFilled } from '@posthog/icons'
+import { IconPlayFilled } from '@flind/icons'
 import { LemonTag } from '@flind/lemon-ui'
 
 import { ScannerType, scannerTypeLabel } from '../types'

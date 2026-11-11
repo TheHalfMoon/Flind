@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { IconX } from '@posthog/icons'
+import { IconX } from '@flind/icons'
 
 import { useEventListener } from 'lib/hooks/useEventListener'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { capitalizeFirstLetter } from 'kea-forms'
 
-import { IconPencil } from '@posthog/icons'
+import { IconPencil } from '@flind/icons'
 import { LemonButton, LemonTable, LemonTableColumns, LemonTag, ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { resourceLabel } from 'lib/utils/accessControlUtils'

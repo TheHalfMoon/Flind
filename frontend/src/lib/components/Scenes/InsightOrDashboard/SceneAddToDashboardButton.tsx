@@ -1,4 +1,4 @@
-import { IconPlusSmall } from '@posthog/icons'
+import { IconPlusSmall } from '@flind/icons'
 
 import { ButtonPrimitive, ButtonPrimitiveProps } from 'lib/ui/Button/ButtonPrimitives'
 

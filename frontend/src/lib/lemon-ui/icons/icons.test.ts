@@ -1,4 +1,4 @@
-import * as packageIcons from '@posthog/icons'
+import * as packageIcons from '@flind/icons'
 
 import { ELEMENTS, OBJECTS, TEAMS_AND_COMPANIES, TECHNOLOGY } from './categories'
 import { IconCollection } from './icons3000.stories'

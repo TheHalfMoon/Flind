@@ -18,7 +18,7 @@ import {
     IconStack,
     IconStar,
     IconSupport,
-} from '@posthog/icons'
+} from '@flind/icons'
 import { LemonTagType } from '@flind/lemon-ui'
 
 import type {

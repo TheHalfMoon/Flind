@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { IconChat, IconMessage, IconStack } from '@posthog/icons'
+import { IconChat, IconMessage, IconStack } from '@flind/icons'
 import { LemonCollapse } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'

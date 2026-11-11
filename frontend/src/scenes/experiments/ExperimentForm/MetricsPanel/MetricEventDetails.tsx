@@ -1,6 +1,6 @@
 import { match } from 'ts-pattern'
 
-import { IconArrowRight } from '@posthog/icons'
+import { IconArrowRight } from '@flind/icons'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'
 

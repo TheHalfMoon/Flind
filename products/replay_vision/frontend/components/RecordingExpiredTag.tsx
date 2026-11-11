@@ -1,4 +1,4 @@
-import { IconClock } from '@posthog/icons'
+import { IconClock } from '@flind/icons'
 import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 /**

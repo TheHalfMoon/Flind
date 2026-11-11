@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { IconChevronLeft, IconSidePanel } from '@posthog/icons'
+import { IconChevronLeft, IconSidePanel } from '@flind/icons'
 import { Button } from '@flind/quill'
 
 import { sidePanelStateLogic } from '~/layout/navigation-3000/sidepanel/sidePanelStateLogic'

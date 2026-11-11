@@ -1,4 +1,4 @@
-import { IconClock } from '@posthog/icons'
+import { IconClock } from '@flind/icons'
 import { LemonCard } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'

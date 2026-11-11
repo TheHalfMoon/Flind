@@ -22,7 +22,7 @@ import { subscriptions } from 'kea-subscriptions'
 import { windowValues } from 'kea-window-values'
 import posthog from 'posthog-js'
 
-import { IconGear } from '@posthog/icons'
+import { IconGear } from '@flind/icons'
 
 import api from 'lib/api'
 import { AuthorizedUrlListType, authorizedUrlListLogic } from 'lib/components/AuthorizedUrlList/authorizedUrlListLogic'

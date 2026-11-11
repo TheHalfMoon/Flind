@@ -1,4 +1,4 @@
-import { IconExternal, IconRefresh } from '@posthog/icons'
+import { IconExternal, IconRefresh } from '@flind/icons'
 import {
     LemonBanner,
     LemonButton,

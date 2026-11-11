@@ -6,7 +6,7 @@ import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-
 import { CSS } from '@dnd-kit/utilities'
 import { useActions, useValues } from 'kea'
 
-import { IconPencil, IconX } from '@posthog/icons'
+import { IconPencil, IconX } from '@flind/icons'
 import {
     LemonButton,
     LemonInput,

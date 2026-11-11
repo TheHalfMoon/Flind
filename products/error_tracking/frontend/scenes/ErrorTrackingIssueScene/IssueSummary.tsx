@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { IconArrowRight, IconBug, IconPeople, IconSearch, IconThumbsDown, IconThumbsUp } from '@posthog/icons'
+import { IconArrowRight, IconBug, IconPeople, IconSearch, IconThumbsDown, IconThumbsUp } from '@flind/icons'
 import { LemonButton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'

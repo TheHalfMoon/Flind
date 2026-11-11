@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { IconEllipsis, IconHeart, IconHeartFilled, IconTrash } from '@posthog/icons'
+import { IconEllipsis, IconHeart, IconHeartFilled, IconTrash } from '@flind/icons'
 
 import 'scenes/saved-insights/SavedInsights.scss'
 import { AccessControlAction } from 'lib/components/AccessControlAction'
