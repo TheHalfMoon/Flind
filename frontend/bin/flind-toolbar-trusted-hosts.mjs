@@ -45,3 +45,12 @@ export function getTrustedFlindAppMatches(value = process.env.FLIND_TOOLBAR_TRUS
     }
     return [...matches].sort()
 }
+
+/**
+ * Return only a bounded opt-in manifest fragment. No inherited third-party
+ * web origin can reach the extension when this fragment is absent.
+ */
+export function getFlindExternalConnectable(value = process.env.FLIND_TOOLBAR_TRUSTED_ORIGINS ?? '') {
+    const matches = getTrustedFlindAppMatches(value)
+    return matches.length ? { externally_connectable: { matches } } : {}
+}
