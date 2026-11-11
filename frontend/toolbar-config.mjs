@@ -1,7 +1,7 @@
 import { zipSync } from 'fflate'
 import * as fs from 'fs'
 import * as path from 'path'
-import { getTrustedFlindAppMatches } from './bin/flind-toolbar-trusted-hosts.mjs'
+import { getFlindExternalConnectable } from './bin/flind-toolbar-trusted-hosts.mjs'
 
 import { commonConfig, copyRRWebWorkerFiles, createHashlessEntrypoints, esbuildBuild, isDev } from '@flind/esbuilder'
 
@@ -365,9 +365,7 @@ function buildToolbarExtensionManifest() {
         side_panel: { default_path: 'panel.html' },
         // Never grant inherited upstream domains access to a Flind extension. Only an explicit
         // customer-managed allowlist can expose the external-messaging surface to web pages.
-        ...(getTrustedFlindAppMatches().length > 0
-            ? { externally_connectable: { matches: getTrustedFlindAppMatches() } }
-            : {}),
+        ...getFlindExternalConnectable(),
         // 116 is the first release with `sidePanel.setPanelBehavior`, which opens the panel from the toolbar button.
         minimum_chrome_version: '116',
         background: { service_worker: 'background.js' },
