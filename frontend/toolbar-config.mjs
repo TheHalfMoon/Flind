@@ -270,7 +270,7 @@ const TOOLBAR_EXTENSION_BUILD_DIR = 'toolbar-extension-build'
 const TOOLBAR_EXTENSION_ICONS = {
     16: 'icons/favicon-16x16.png',
     32: 'icons/favicon-32x32.png',
-    128: 'icons/posthog-128x128.png',
+    128: 'icons/flind-128x128.png',
     192: 'icons/android-chrome-192x192.png',
 }
 
