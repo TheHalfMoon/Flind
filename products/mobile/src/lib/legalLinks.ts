@@ -18,7 +18,8 @@ export function ownedLegalUrl(value: string | undefined): string | null {
             parsed.username ||
             parsed.password ||
             isInheritedProviderHostname(parsed.hostname)
-        ) return null
+        )
+            return null
         return parsed.toString()
     } catch {
         return null
