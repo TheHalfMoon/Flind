@@ -587,8 +587,10 @@ class TestSourceMapsRecommendationForDigest(APIBaseTest):
         assert result is not None
         assert result["unresolved_percent"] == 72
         assert result["lookback_hours"] == 24
-        assert result["wizard_command"] == "npx -y @posthog/wizard@latest upload-source-maps"
-        assert result["docs_url"].startswith("https://posthog.com/docs/error-tracking/upload-source-maps")
+        assert result["wizard_command"] is None
+        assert result["docs_url"] is None
+        assert "Flind administrator" in result["setup_guidance"]
+        assert "do not send source maps" in result["setup_guidance"]
 
     def test_only_returns_recommendation_for_the_given_team(self):
         other_team = Team.objects.create(organization=self.organization, name="Other")

@@ -4,7 +4,7 @@ import { pluralize } from 'lib/utils/strings'
 
 import type { MissingSymbolsExampleApi, MissingSymbolsExamplesApi } from '../../../generated/api.schemas'
 import { SourceMapsExampleDetail } from './SourceMapsExampleDetail'
-import { SOURCE_MAPS_PLATFORM_LABELS } from './sourceMapsFixWizardLogic'
+import { SOURCE_MAPS_PLATFORM_LABELS } from './sourceMapsPlatforms'
 
 function exampleSummary(example: MissingSymbolsExampleApi, exceptionsLoaded: boolean): string {
     const frames = pluralize(example.frames, 'frame')

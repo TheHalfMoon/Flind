@@ -9,9 +9,6 @@ from products.error_tracking.backend.logic.recommendations.source_maps import PL
 from products.error_tracking.backend.models import ErrorTrackingRecommendation
 
 RECOMMENDATIONS_PATH = "/error-tracking?activeTab=recommendations"
-SOURCE_MAPS_DOCS_URL = "https://posthog.com/docs/error-tracking/upload-source-maps"
-# Same command the source maps fix wizard modal shows (sourceMapsFixWizardLogic.wizardCommand).
-WIZARD_COMMAND = "npx -y @posthog/wizard@latest upload-source-maps"
 
 
 class MissingSourceMapsCheck(HealthCheck):
@@ -31,15 +28,15 @@ class MissingSourceMapsCheck(HealthCheck):
     policy = HealthExecutionPolicy(batch_size=250, max_concurrent=2)
     schedule = "0 7 * * *"
     remediation = Remediation(
-        human=f"""
-            Run the source maps wizard in your project: `{WIZARD_COMMAND}`,
-            or follow the docs at {SOURCE_MAPS_DOCS_URL}.
-        """,
-        agent=f"""
-            Tell the user to run `{WIZARD_COMMAND}` in their project — the wizard is
-            interactive, so don't run it yourself. Alternatively, set up uploads
-            manually following {SOURCE_MAPS_DOCS_URL}.
-        """,
+        human=(
+            "Source maps are missing. Ask your Flind administrator for a verified instance-specific "
+            "upload process before sharing source maps or symbols. Do not use a CLI for a different analytics provider."
+        ),
+        agent=(
+            "Explain that this Flind instance needs source maps or debug symbols. "
+            "Ask the administrator for the approved instance-specific upload method. "
+            "Do not run a third-party upload wizard or send build artifacts to an unrelated provider."
+        ),
     )
 
     @classmethod

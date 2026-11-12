@@ -1,0 +1,37 @@
+name: Flind source-map upload isolation
+
+on:
+    push:
+        branches:
+            - 'flind-ci/source-maps-trust-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-source-maps-trust-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    guard:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: 3.14.7
+            - name: Check source map UI and cross-surface guidance
+              run: |
+                  node --check frontend/bin/flind-source-maps-trust.test.mjs
+                  node --test frontend/bin/flind-source-maps-trust.test.mjs
+            - name: Compile affected Python modules
+              run: |
+                  python -m py_compile products/error_tracking/backend/facade/contracts.py
+                  python -m py_compile products/error_tracking/backend/weekly_digest.py
+                  python -m py_compile products/error_tracking/backend/temporal/health_checks/missing_source_maps.py
+                  python -m py_compile products/error_tracking/backend/test/test_weekly_digest.py
