@@ -102,3 +102,8 @@ Last updated: 2026-11-12.
 - Added an independent /batch/ path assertion to the local HTTP wire validator and a synthetic negative-control packet at /unexpected/ that must be rejected. This supplements pinned SDK parity; it does not prove global outbound network isolation.
 - Windows Node 24 syntax check and git diff --check passed; full Node 26 workflow and independent review remain required before merging.
 - No public Flind release or deployment authorized.
+
+### 2026-11-12: Node SDK outbound socket guard (PR #41 follow-up)
+- Scoped Node wire test guard intercepts Node TCP socket connects during synthetic SDK capture and permits only the ephemeral 127.0.0.1 HTTP test-server port. Negative controls reject an external hostname and a wrong loopback port before dialing. The original Socket.connect is restored in finally.
+- This is a process-level Node socket guard, not OS-level network isolation; independent review must assess alternate transports and DNS behavior. Node 26 CI is the authoritative runtime qualification; Windows Node 24 syntax and git diff checks alone do not prove SDK E2E success.
+- No release, deployment, or merge until all applicable exact-SHA checks and review complete.

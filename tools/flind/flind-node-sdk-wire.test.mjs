@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { createServer } from 'node:http'
+import { Socket } from 'node:net'
 import { gunzipSync } from 'node:zlib'
 import test from 'node:test'
 import { once } from 'node:events'
@@ -11,6 +12,24 @@ import { PostHog as PinnedPostHog } from 'posthog-node'
 // never receives real project tokens or personally identifying information.
 const API_TOKEN = 'phc_flind_wire_test_synthetic'
 const EVENT_NAME = 'flind_node_sdk_wire_e2e'
+
+// Fail closed before DNS or TCP connection creation. Restore the original method
+// after each capture so unrelated test processes are unaffected.
+function restrictSocketsToLoopback(port) {
+    const original = Socket.prototype.connect
+    Socket.prototype.connect = function (...args) {
+        const first = args[0]
+        const options = typeof first === 'object' && first !== null
+            ? first
+            : { port: first, host: typeof args[1] === 'string' ? args[1] : undefined }
+        const host = options.host ?? options.hostname ?? 'localhost'
+        if (Number(options.port) !== port || !['127.0.0.1', '::1', 'localhost'].includes(host)) {
+            throw new Error('Flind wire test blocked outbound socket')
+        }
+        return original.apply(this, args)
+    }
+    return () => { Socket.prototype.connect = original }
+}
 
 async function captureLocally(Implementation) {
     const packets = []
@@ -40,6 +59,7 @@ async function captureLocally(Implementation) {
         requestTimeout: 5000,
         enableExceptionAutocapture: false,
     })
+    const restoreSockets = restrictSocketsToLoopback(address.port)
     try {
         client.capture({
             distinctId: 'synthetic-local-user',
@@ -50,6 +70,7 @@ async function captureLocally(Implementation) {
         await client.shutdown()
         return packets
     } finally {
+        restoreSockets()
         server.closeAllConnections()
         await new Promise((resolve) => server.close(resolve))
     }
@@ -78,6 +99,16 @@ function decodedEvent(packets) {
     assert.equal(event.properties.flind_wire_test, true)
     return { path: match.path, event: event.event, distinct_id: event.distinct_id, api_key: match.json.api_key }
 }
+
+test('socket guard rejects non-loopback and incorrect-port connections before dialing', () => {
+    const restore = restrictSocketsToLoopback(54321)
+    try {
+        assert.throws(() => new Socket().connect(443, 'example.com'), /blocked outbound socket/)
+        assert.throws(() => new Socket().connect(54322, '127.0.0.1'), /blocked outbound socket/)
+    } finally {
+        restore()
+    }
+})
 
 test('wire validator rejects an event delivered to an incorrect ingestion path', () => {
     const invalidPacket = {
