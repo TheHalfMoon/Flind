@@ -54,7 +54,10 @@ describe("otel-log-transport", () => {
   describe("initOtelTransport", () => {
     it("returns a no-op transport when API key is missing", async () => {
       vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "");
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
 
       const { initOtelTransport } = await import(
         "@main/utils/otel-log-transport"
@@ -83,16 +86,24 @@ describe("otel-log-transport", () => {
       "http://telemetry.flind.example",
       "https://admin:secret@telemetry.flind.example",
       "https://telemetry.flind.example/logs",
-    ])("disables external Electron logs for an invalid Flind collector: %s", async (host) => {
-      vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "test-key");
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", host);
-      const { initOtelTransport } = await import("@main/utils/otel-log-transport");
-      expect(initOtelTransport("info").level).toBe(false);
-    });
+    ])(
+      "disables external Electron logs for an invalid Flind collector: %s",
+      async (host) => {
+        vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "test-key");
+        vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", host);
+        const { initOtelTransport } = await import(
+          "@main/utils/otel-log-transport"
+        );
+        expect(initOtelTransport("info").level).toBe(false);
+      },
+    );
 
     it("creates a transport when API key is present", async () => {
       vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "phc_test123");
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
 
       const { initOtelTransport } = await import(
         "@main/utils/otel-log-transport"
@@ -105,7 +116,10 @@ describe("otel-log-transport", () => {
 
     it("maps all electron-log severity levels correctly", async () => {
       vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "phc_test123");
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
 
       const { initOtelTransport } = await import(
         "@main/utils/otel-log-transport"
@@ -139,7 +153,10 @@ describe("otel-log-transport", () => {
 
     it("includes scope in attributes when present", async () => {
       vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "phc_test123");
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
 
       const { initOtelTransport } = await import(
         "@main/utils/otel-log-transport"
@@ -162,7 +179,10 @@ describe("otel-log-transport", () => {
 
     it("omits scope from attributes when not present", async () => {
       vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "phc_test123");
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
 
       const { initOtelTransport } = await import(
         "@main/utils/otel-log-transport"
@@ -184,7 +204,10 @@ describe("otel-log-transport", () => {
 
     it("formats mixed data types in body", async () => {
       vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "phc_test123");
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
 
       const { initOtelTransport } = await import(
         "@main/utils/otel-log-transport"
@@ -206,7 +229,10 @@ describe("otel-log-transport", () => {
 
     it("redacts tokens, secret headers and the proxy path token before export", async () => {
       vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "phc_test123");
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
 
       const { initOtelTransport } = await import(
         "@main/utils/otel-log-transport"
@@ -265,7 +291,10 @@ describe("otel-log-transport", () => {
 
     it("formats Error objects with message and stack", async () => {
       vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "phc_test123");
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
 
       const { initOtelTransport } = await import(
         "@main/utils/otel-log-transport"
@@ -288,7 +317,10 @@ describe("otel-log-transport", () => {
   describe("shutdownOtelTransport", () => {
     it("flushes and shuts down the provider", async () => {
       vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "phc_test123");
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
 
       const { initOtelTransport, shutdownOtelTransport } = await import(
         "@main/utils/otel-log-transport"
