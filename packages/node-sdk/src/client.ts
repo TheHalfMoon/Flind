@@ -251,7 +251,7 @@ export abstract class PostHogBackendClient extends PostHogCoreStateless implemen
    * // Basic initialization
    * const client = new PostHogBackendClient(
    *   'your-api-key',
-   *   { host: 'https://app.posthog.com' }
+   *   { host: 'https://collector.flind.example' }
    * )
    * ```
    *
@@ -261,7 +261,7 @@ export abstract class PostHogBackendClient extends PostHogCoreStateless implemen
    * const client = new PostHogBackendClient(
    *   'your-api-key',
    *   {
-   *     host: 'https://app.posthog.com',
+   *     host: 'https://collector.flind.example',
    *     secretKey: 'your-secret-key'
    *   }
    * )
