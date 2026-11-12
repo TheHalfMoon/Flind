@@ -38,6 +38,10 @@ export function RegionSelect({ value, onChange, disabled }: RegionSelectProps): 
         trigger.current?.measureInWindow((x, y, width, height) => setAnchor({ x, y, width, height }))
     }
 
+    if (!selected) {
+        return <></>
+    }
+
     return (
         <>
             <Pressable44
