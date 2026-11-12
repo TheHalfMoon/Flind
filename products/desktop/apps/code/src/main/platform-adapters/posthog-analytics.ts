@@ -3,6 +3,7 @@ import type {
   IAnalytics,
 } from "@flind/platform/analytics";
 import { PostHog } from "posthog-node";
+import { flindAnalyticsOrigin } from "@flind/shared";
 import { getAppVersion } from "../utils/env";
 import { uuidv7 } from "../utils/uuidv7";
 
@@ -16,15 +17,17 @@ class PosthogNodeAnalytics implements IAnalytics {
       return;
     }
 
-    const apiKey = process.env.VITE_POSTHOG_API_KEY;
-    const apiHost = process.env.VITE_POSTHOG_API_HOST;
+    const apiKey = process.env.VITE_FLIND_ANALYTICS_KEY?.trim();
+    const apiHost = flindAnalyticsOrigin(
+      process.env.VITE_FLIND_ANALYTICS_HOST,
+    );
 
-    if (!apiKey) {
+    if (!apiKey || !apiHost) {
       return;
     }
 
     this.client = new PostHog(apiKey, {
-      host: apiHost || "https://internal-c.posthog.com",
+      host: apiHost,
       enableExceptionAutocapture: true,
     });
 
