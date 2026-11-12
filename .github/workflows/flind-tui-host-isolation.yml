@@ -26,4 +26,4 @@ jobs:
             - name: Verify token routing and hostname protection
               working-directory: livestream
               run: |
-                  go test ./tui/auth ./tui/config
+                  go test ./tui/auth ./tui/config ./tui/sse
