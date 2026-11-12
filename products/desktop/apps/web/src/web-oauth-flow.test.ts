@@ -1,6 +1,6 @@
+import type { RootLogger } from "@flind/di/logger";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { WebOAuthFlowService } from "./web-oauth-flow";
-import type { RootLogger } from "@flind/di/logger";
 
 const log = {
   info: vi.fn(),
@@ -89,9 +89,11 @@ describe("Flind Web OAuth fail-closed Cloud identity", () => {
   it("rejects a browser redirect error without retrying the OAuth token body", async () => {
     vi.stubEnv("FLIND_US_CLOUD_URL", "https://us.flind.example");
     vi.stubEnv("FLIND_US_OAUTH_CLIENT_ID", "flind-owned-client");
-    const fetcher = vi.fn().mockRejectedValue(
-      new TypeError("Fetch blocked redirect by request policy"),
-    );
+    const fetcher = vi
+      .fn()
+      .mockRejectedValue(
+        new TypeError("Fetch blocked redirect by request policy"),
+      );
     vi.stubGlobal("fetch", fetcher);
     const result = await new WebOAuthFlowService(log).refreshToken(
       "synthetic-refresh-secret",
