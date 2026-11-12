@@ -1,0 +1,26 @@
+name: Flind mobile Expo target isolation
+
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-expo-target-isolation-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-expo-targets-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    guard:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '26'
+            - name: Verify no inherited Expo publishing recipients
+              run: node --test tools/flind/qualify_mobile_expo_targets.mjs
