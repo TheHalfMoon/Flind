@@ -1,0 +1,22 @@
+name: Flind mobile Tasks runtime owner isolation guard
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-task-runtime-ownership-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-mobile-task-host-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    guard:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '26'
+            - name: Reject inherited Tasks project routing
+              run: node --test tools/flind/qualify_mobile_task_host.mjs

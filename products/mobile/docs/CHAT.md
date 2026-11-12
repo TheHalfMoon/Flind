@@ -2,11 +2,18 @@
 
 ## Choosing the chat version
 
-New general chats use the Tasks agent only in project 2 on `https://us.posthog.com`.
-Every other project uses classic Flind AI through the existing `conversations/` API.
-This temporary routing rule is local to the mobile app. It does not evaluate rollout flags
-or request an AI access field from the server. Organization approval and personal consent
-still apply before sending messages.
+New general chats use the Tasks agent only when the Flind operator explicitly
+configures both `EXPO_PUBLIC_FLIND_TASKS_HOST` and `EXPO_PUBLIC_FLIND_TASKS_PROJECT_ID`,
+and they match the currently signed-in host and project. The host must be an HTTPS
+Flind-owned origin, never an inherited donor domain. Development builds alone may
+use an HTTP loopback origin. Otherwise, new chats use the classic Flind AI
+`conversations/` API. This removes the inherited first-party service host/project
+special case without enabling unsupported Tasks endpoints on every installation.
+
+Saved conversations continue to use the backend-reported runtime. No model provider
+or Tasks service is created by the setting. Organization approval and personal consent
+still apply before sending messages; a production operator must deploy and qualify the
+Tasks runtime before setting the two build-time configuration variables.
 
 Saved conversation links read their runtime from the existing conversation detail response.
 Report discussions and existing task links keep the Tasks path and its report-specific access
