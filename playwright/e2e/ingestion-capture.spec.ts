@@ -7,7 +7,7 @@ const PROXY_BASE_URL = process.env.E2E_PROXY_URL || 'http://localhost:8010'
 
 test.describe('Event ingestion', () => {
     test('an event sent to the real capture endpoint becomes queryable', async ({ request, playwrightSetup }) => {
-        test.setTimeout(120_000)
+        test.setTimeout(180_000)
         const workspace = await playwrightSetup.createWorkspace({ skip_onboarding: true, no_demo_data: true })
         const eventName = randomString('e2e_ingestion_')
         const authHeaders = { Authorization: `Bearer ${workspace.personal_api_key}` }
@@ -57,6 +57,27 @@ test.describe('Event ingestion', () => {
                     { timeout: 90_000, intervals: [2_000, 5_000] }
                 )
                 .toBeGreaterThan(0)
+        })
+
+        await test.step('another organization cannot query the captured event', async () => {
+            // The positive capture/query assertion above establishes the event is committed.
+            // Now query the same event using a completely separate Flind workspace.
+            // A zero result is meaningful only after the original tenant can see it.
+            const other = await playwrightSetup.createWorkspace({ skip_onboarding: true, no_demo_data: true })
+            expect(other.team_id).not.toBe(workspace.team_id)
+            const resp = await request.post(`/api/environments/${other.team_id}/query/`, {
+                headers: { Authorization: `Bearer ${other.personal_api_key}` },
+                data: {
+                    refresh: 'force_blocking',
+                    query: {
+                        kind: 'HogQLQuery',
+                        query: `SELECT count() FROM events WHERE event = '${eventName}'`,
+                    },
+                },
+            })
+            expect(resp.ok(), `other-tenant query failed: ${resp.status()}`).toBe(true)
+            const body = await resp.json()
+            expect(Number(body.results?.[0]?.[0] ?? 0)).toBe(0)
         })
     })
 })
