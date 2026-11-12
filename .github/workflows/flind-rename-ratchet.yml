@@ -40,3 +40,4 @@ jobs:
                   node --check frontend/bin/flind-toolbar-trusted-hosts.mjs
                   node --test frontend/bin/flind-toolbar-trusted-hosts.test.mjs
                   node --test frontend/bin/flind-toolbar-brand.test.mjs
+                  node --test frontend/bin/flind-toolbar-doc-links.test.mjs
