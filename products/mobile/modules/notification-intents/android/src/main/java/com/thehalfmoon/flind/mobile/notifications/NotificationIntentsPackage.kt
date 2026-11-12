@@ -1,4 +1,4 @@
-package com.posthog.mobile.notifications
+package com.thehalfmoon.flind.mobile.notifications
 
 import android.app.Application
 import android.app.NotificationManager

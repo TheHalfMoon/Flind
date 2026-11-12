@@ -1,4 +1,4 @@
-package com.posthog.mobile.notifications
+package com.thehalfmoon.flind.mobile.notifications
 
 import android.content.Context
 import android.content.Intent
@@ -18,7 +18,7 @@ object NotificationIntentStore {
     private val routingKeys = listOf("type", "report_id", "project_id", "taskId", "projectId", "notificationKind")
 
     fun handleIntent(context: Context, intent: Intent, initial: Boolean) {
-        if (intent.component?.className == "com.posthog.mobile.notifications.NotificationTapActivity") {
+        if (intent.component?.className == "com.thehalfmoon.flind.mobile.notifications.NotificationTapActivity") {
             val response = NotificationsService.getNotificationResponseFromOpenIntent(intent)
             if (capture(context, intent, initial, response)) {
                 if (response != null) {

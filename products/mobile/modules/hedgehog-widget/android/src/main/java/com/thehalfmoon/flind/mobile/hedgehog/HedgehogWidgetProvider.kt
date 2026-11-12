@@ -1,4 +1,4 @@
-package com.posthog.code.mobile.hedgehog
+package com.thehalfmoon.flind.mobile.hedgehog
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider

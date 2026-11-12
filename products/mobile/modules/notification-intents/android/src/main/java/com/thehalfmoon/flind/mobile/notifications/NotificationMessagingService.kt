@@ -1,4 +1,4 @@
-package com.posthog.mobile.notifications
+package com.thehalfmoon.flind.mobile.notifications
 
 import android.content.Intent
 import com.google.firebase.messaging.RemoteMessage
@@ -10,7 +10,7 @@ class NotificationMessagingService : ExpoFirebaseMessagingService() {
             val notification = intent.extras?.let { RemoteMessage(it).notification }
             if (notification != null && notification.clickAction.isNullOrEmpty() && notification.link == null) {
                 // Firebase creates this PendingIntent as our UID, so it can open the private alias.
-                intent.putExtra("gcm.n.click_action", "com.posthog.mobile.notifications.OPEN_FCM_NOTIFICATION")
+                intent.putExtra("gcm.n.click_action", "com.thehalfmoon.flind.mobile.notifications.OPEN_FCM_NOTIFICATION")
             }
         }
         super.handleIntent(intent)

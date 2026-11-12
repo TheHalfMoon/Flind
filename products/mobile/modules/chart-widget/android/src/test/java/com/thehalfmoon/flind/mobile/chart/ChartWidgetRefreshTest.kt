@@ -1,4 +1,4 @@
-package com.posthog.code.mobile.chart
+package com.thehalfmoon.flind.mobile.chart
 
 import android.app.Activity
 import android.appwidget.AppWidgetManager
