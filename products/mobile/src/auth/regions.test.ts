@@ -19,59 +19,56 @@ describe('defaultCloudRegion', () => {
 })
 
 describe('regions', () => {
-    const originalUsClientId = process.env.EXPO_PUBLIC_OAUTH_US_CLIENT_ID
-    const originalEuClientId = process.env.EXPO_PUBLIC_OAUTH_EU_CLIENT_ID
+    const original = {
+        usHost: process.env.EXPO_PUBLIC_FLIND_US_HOST,
+        euHost: process.env.EXPO_PUBLIC_FLIND_EU_HOST,
+        usClient: process.env.EXPO_PUBLIC_FLIND_US_CLIENT_ID,
+        euClient: process.env.EXPO_PUBLIC_FLIND_EU_CLIENT_ID,
+    }
 
     afterEach(() => {
-        if (originalUsClientId === undefined) {
-            delete process.env.EXPO_PUBLIC_OAUTH_US_CLIENT_ID
-        } else {
-            process.env.EXPO_PUBLIC_OAUTH_US_CLIENT_ID = originalUsClientId
+        const all = {
+            EXPO_PUBLIC_FLIND_US_HOST: original.usHost,
+            EXPO_PUBLIC_FLIND_EU_HOST: original.euHost,
+            EXPO_PUBLIC_FLIND_US_CLIENT_ID: original.usClient,
+            EXPO_PUBLIC_FLIND_EU_CLIENT_ID: original.euClient,
         }
-        if (originalEuClientId === undefined) {
-            delete process.env.EXPO_PUBLIC_OAUTH_EU_CLIENT_ID
-        } else {
-            process.env.EXPO_PUBLIC_OAUTH_EU_CLIENT_ID = originalEuClientId
+        for (const [key, value] of Object.entries(all)) {
+            if (value === undefined) delete process.env[key]
+            else process.env[key] = value
         }
         jest.dontMock('@/lib/environment')
     })
 
-    test.each(['production', 'development', 'preview'] as const)(
-        '%s builds select the matching cloud OAuth registration',
-        (variant) => {
-            jest.isolateModules(() => {
-                jest.doMock('@/lib/environment', () => ({
-                    ...jest.requireActual('@/lib/environment'),
-                    buildVariant: variant,
-                }))
-                process.env.EXPO_PUBLIC_OAUTH_US_CLIENT_ID = 'internal-us-client'
-                process.env.EXPO_PUBLIC_OAUTH_EU_CLIENT_ID = 'internal-eu-client'
-                const { CLOUD_REGIONS } = jest.requireActual<typeof import('./regions')>('./regions')
-                expect(CLOUD_REGIONS.map((region) => region.clientId)).toEqual(
-                    variant === 'production'
-                        ? ['a5TY7w9IjFYfes6dkPgZe6envclWw3bm2UD8ZTlm', '1A7vO138Fh5sYmJislicN4F5HnttI6urmFttxPDU']
-                        : ['internal-us-client', 'internal-eu-client']
-                )
-            })
-        }
-    )
-
-    test('an unconfigured internal build has no production cloud client fallback', () => {
+    test.each(['production', 'development', 'preview'] as const)('%s configures only Flind-owned OAuth endpoints', (variant) => {
         jest.isolateModules(() => {
-            jest.doMock('@/lib/environment', () => ({
-                ...jest.requireActual('@/lib/environment'),
-                buildVariant: 'preview',
-            }))
-            delete process.env.EXPO_PUBLIC_OAUTH_US_CLIENT_ID
-            delete process.env.EXPO_PUBLIC_OAUTH_EU_CLIENT_ID
+            jest.doMock('@/lib/environment', () => ({ ...jest.requireActual('@/lib/environment'), buildVariant: variant }))
+            process.env.EXPO_PUBLIC_FLIND_US_HOST = 'https://us.flind.example'
+            process.env.EXPO_PUBLIC_FLIND_EU_HOST = 'https://eu.flind.example'
+            process.env.EXPO_PUBLIC_FLIND_US_CLIENT_ID = 'flind-us-client'
+            process.env.EXPO_PUBLIC_FLIND_EU_CLIENT_ID = 'flind-eu-client'
             const { CLOUD_REGIONS } = jest.requireActual<typeof import('./regions')>('./regions')
-            expect(CLOUD_REGIONS.map((region) => region.clientId)).toEqual(['', ''])
+            expect(CLOUD_REGIONS.map((r) => [r.host, r.clientId])).toEqual([
+                ['https://us.flind.example', 'flind-us-client'],
+                ['https://eu.flind.example', 'flind-eu-client'],
+            ])
+        })
+    })
+
+    test('unconfigured Flind cloud exposes no inherited provider host or OAuth registration', () => {
+        jest.isolateModules(() => {
+            delete process.env.EXPO_PUBLIC_FLIND_US_HOST
+            delete process.env.EXPO_PUBLIC_FLIND_EU_HOST
+            delete process.env.EXPO_PUBLIC_FLIND_US_CLIENT_ID
+            delete process.env.EXPO_PUBLIC_FLIND_EU_CLIENT_ID
+            const { CLOUD_REGIONS } = jest.requireActual<typeof import('./regions')>('./regions')
+            expect(CLOUD_REGIONS).toEqual([])
         })
     })
 
     test.each([
-        ['us.posthog.com', 'https://us.posthog.com'],
-        ['https://posthog.example.com/project/2/', 'https://posthog.example.com'],
+        ['flind.example.com', 'https://flind.example.com'],
+        ['https://flind.example.com/project/2/', 'https://flind.example.com'],
         ['http://localhost:8010', 'http://localhost:8010'],
         ['http://127.0.0.1:8000', 'http://127.0.0.1:8000'],
         ['http://[::1]:8010', 'http://[::1]:8010'],
@@ -82,12 +79,17 @@ describe('regions', () => {
 
     test.each([
         ['an empty value', '  '],
-        ['plain http to a remote host', 'http://posthog.example.com'],
+        ['inherited US cloud', 'https://us.posthog.com'],
+        ['inherited EU cloud', 'https://eu.posthog.com'],
+        ['inherited origin', 'https://posthog.com'],
+        ['inherited development', 'https://app.dev.posthog.dev'],
+        ['URL username/password', 'https://user:pwd@flind.example.com'],
+        ['plain http to a remote host', 'http://flind.example.com'],
         ['another loopback address outside the native allowlist', 'http://127.0.0.2:8010'],
         ['the emulator host alias', 'http://10.0.2.2:8010'],
         ['a localhost subdomain', 'http://app.localhost:8010'],
         ['an IPv4-mapped IPv6 address', 'http://[::ffff:127.0.0.1]:8010'],
-        ['a non-web scheme', 'ftp://posthog.example.com'],
+        ['a non-web scheme', 'ftp://flind.example.com'],
         ['a script URL', 'javascript:alert(1)'],
     ])('rejects %s', (_name, input) => {
         expect(validateHost(input)).toMatchObject({ ok: false })
