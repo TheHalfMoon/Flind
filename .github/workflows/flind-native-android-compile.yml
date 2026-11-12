@@ -1,0 +1,44 @@
+name: Flind Android native Kotlin compile
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-native-identity-migration-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-native-android-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    android:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 45
+        defaults:
+            run:
+                working-directory: products/mobile
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: products/mobile/.node-version
+            - uses: actions/setup-java@v4
+              with:
+                  distribution: temurin
+                  java-version: '17'
+            - name: Use only SDK tooling preinstalled on GitHub runner
+              run: |
+                  test -d "${ANDROID_HOME:?Android SDK is required}"
+                  echo "ANDROID_HOME=$ANDROID_HOME"
+            - name: Install pinned package manager
+              run: npm install --global pnpm@10.29.3
+            - name: Install frozen mobile JavaScript workspace
+              run: pnpm install --frozen-lockfile
+            - name: Generate local Android project without EAS/signing
+              run: pnpm exec expo prebuild --platform android --clean --no-install
+              env:
+                  APP_VARIANT: development
+                  EXPO_NO_TELEMETRY: '1'
+            - name: Compile app, widgets and notification modules
+              run: |
+                  cd android
+                  ./gradlew :app:compileDebugKotlin --no-daemon --stacktrace
