@@ -111,12 +111,15 @@ export function regionalStatus(
         summary: incident
             ? `${impact ?? 'Incident'}${count} · ${incident.name}`
             : maintenance && `Maintenance in progress · ${maintenance.name}`,
-        aiIncident: ai && statusOrigin ? {
-            title: ai.event.name,
-            color: incidentColor(ai.impact),
-            status: ai.event.status,
-            url: `${statusOrigin}/incidents/${encodeURIComponent(ai.event.id)}`,
-        },
+        aiIncident:
+            ai && statusOrigin
+                ? {
+                      title: ai.event.name,
+                      color: incidentColor(ai.impact),
+                      status: ai.event.status,
+                      url: `${statusOrigin}/incidents/${encodeURIComponent(ai.event.id)}`,
+                  }
+                : undefined,
     }
 }
 
