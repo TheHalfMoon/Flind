@@ -1,7 +1,10 @@
 # Toolbar telemetry events
 
-All events are sent via `toolbarPosthogJS`, the toolbar's internal Flind instance,
-unless noted otherwise. Events go to Flind's internal project (prod) or `localhost:8000` (dev).
+Toolbar telemetry events use the `toolbarPosthogJS` client, but **only when the toolbar module runs inside the Flind web app** with a server-rendered Flind project key. The configured Flind ingestion host determines the destination.
+
+When imported in a browser extension, on an arbitrary customer page, or without a Flind app context and project key, toolbar telemetry is **disabled**. The client uses no inherited third-party key or telemetry host; event callbacks drop captures locally, and feature flag / decide requests are disabled. This holds even if extension lifecycle code later calls `opt_in_capturing()`. The normal toolbar's authenticated requests to the Flind API (e.g. project queries) are separate from telemetry and remain functional.
+
+These rules govern **toolbar analytics only**. They are not a blanket statement that the whole product makes no external requests, nor do they replace privacy audits of other SDK clients.
 
 ## Lifecycle
 
