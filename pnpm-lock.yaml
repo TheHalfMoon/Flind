@@ -2463,6 +2463,9 @@ importers:
       '@flind/frontend':
         specifier: workspace:*
         version: link:../frontend
+      '@flind/node':
+        specifier: workspace:*
+        version: link:../packages/node-sdk
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.60.0

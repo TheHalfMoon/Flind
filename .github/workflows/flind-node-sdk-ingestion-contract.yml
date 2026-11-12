@@ -1,0 +1,28 @@
+name: Flind Node SDK full-ingestion contract
+
+on:
+    push:
+        branches:
+            - 'flind-ci/node-sdk-ingestion-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-node-sdk-ingestion-contract-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Assert local Node SDK capture and tenant-isolation assertions are present
+              run: |
+                  node --check frontend/bin/flind-node-sdk-ingestion-contract.test.mjs
+                  node --test frontend/bin/flind-node-sdk-ingestion-contract.test.mjs
