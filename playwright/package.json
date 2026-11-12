@@ -8,6 +8,7 @@
     "dependencies": {
         "@playwright/test": "catalog:",
         "@flind/frontend": "workspace:*",
+        "@flind/node": "workspace:*",
         "snappyjs": "^0.7.0"
     },
     "peerDependencies": {}
