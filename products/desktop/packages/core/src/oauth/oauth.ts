@@ -417,7 +417,9 @@ export class OAuthService {
       if (response.status >= 300 && response.status < 400) {
         // A native/server adapter that exposes the redirect must fail closed.
         // Do not retry the same one-time code after an invalid redirect.
-        throw new Error("Flind OAuth token endpoint attempted a prohibited redirect");
+        throw new Error(
+          "Flind OAuth token endpoint attempted a prohibited redirect",
+        );
       }
 
       if (response.ok) {
