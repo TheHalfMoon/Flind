@@ -8,18 +8,23 @@ Last updated: 2026-11-12.
 
 ## Project and experiment documentation isolation (2026-11-12)
 
-- **Branch:** `flind-ci/project-experiment-docs-isolation-20261112`, based on main `48def4f74f922ad3a90b4d695d253171bb78773c` at creation. Independent of active PR #29 toolbar, #32 source-map security, and #33 ingestion E2E. No SDK or runtime data schema changes.
+- **Branch:** `flind-ci/project-experiment-docs-isolation-20261112`, based on main `48def4f74f922ad3a90b4d695d253171bb78773c` at creation. Independent of merged PR #29, #32 and #33 changes. No SDK or runtime data schema changes.
 - **Changes:** project creation guidance no longer links to unowned donor documentation while preserving project-isolation and conversion advice; the experiment results 'How to read' tooltip remains a local help trigger, rather than navigating to an unowned donor site. Both features retain their existing actions and explanatory content.
-- **Verification:** exact-branch files fetched into a temporary Windows directory; `python tools/flind/test_project_experiment_docs_isolation.py -v` passed **2/2** assertions. This is source-level verification, not React runtime or browser E2E. Temporary files were removed. A dedicated CI brand-audit step was added; its outcome is not yet claimed.
-- **Required before merge:** exact-head CI brand audit, frontend typecheck/Jest and browser E2E where applicable; independent review, branch protection and source attribution preserved. No release or deployment.
+- **Verification:** exact-branch files fetched into a temporary Windows directory; `python tools/flind/test_project_experiment_docs_isolation.py -v` passed **2/2** assertions. This is source-level verification, not React runtime or browser E2E. Temporary files were removed. The brand audit, frontend, E2E, runtime migrations and rename ratchet passed on `579a0c0cc`; this merge commit still requires renewed CI.
+- **Required before merge:** fresh exact-head CI brand audit, frontend typecheck/Jest and browser E2E where applicable; independent review, branch protection and source attribution preserved. No release or deployment.
+
+## Toolbar documentation isolation (2026-11-12)
+
+- **PR #29:** removes three inherited documentation links from Chrome extension menus and fragile-selector warnings; local metrics navigation, reload, screenshot/PII/debug controls, and inline selector guidance remain.
+- **Prior exact-head CI** on `70bce0470`: frontend, E2E, brand audit, rename ratchet and runtime migrations all passed. This merge commit still requires fresh CI qualification.
+- **No release** is authorized; other hosted donor links remain separate follow-ups.
 
 
 ## Activity UI rebrand checkpoint (2026-11-12)
 
-- **PR #30 (draft):** removes inherited upstream documentation destinations from Persons/Cohorts tooltips and person-property Event Details; removes promotion of the donor `posthog-live` CLI in Live Events. Internal navigation, property tables, stream controls and event feed remain. No Flind docs or CLI endpoint is invented.
-- **Local verification:** Windows isolated fetch of exact PR commit `9299c8b37f46a9f844a6d5db6c7ffd40c695f8a5`: Python test module syntax compiled and 7 focused source-level assertions passed. This is **not** a frontend runtime or browser E2E pass.
-- **CI requested:** brand-audit run 43144011412 and E2E run 43144015708 were dispatched for the PR branch; results pending when this checkpoint was written. After this ledger commit, those runs will target the earlier head, so exact-final-head requalification remains required.
-- **Merge/release:** independent review and all applicable exact-head checks required. No merge or public release authorized.
+- **PR #30 merged** into `main` as `76f95d7d426e9efde331fd30849b8add7747c619` after five CI paths passed on exact PR head `ea187e5d9ac033f24442e3a93e206d729c72f0d0`.
+- It removes inherited documentation links from Persons/Cohorts tooltips and Event Details and donor CLI promotion from Live Events. The event feed and navigation remain.
+- No Flind documentation endpoint or CLI is invented.
 
 ## Stage 3 qualification checkpoint (2026-11-12)
 

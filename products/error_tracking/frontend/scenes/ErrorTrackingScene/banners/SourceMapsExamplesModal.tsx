@@ -1,9 +1,4 @@
 import { useActions, useValues } from 'kea'
-import { useRef } from 'react'
-
-import { IconExternal, IconMagicWand } from '@flind/icons'
-
-import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import {
     Button,
     Dialog,
@@ -23,14 +18,12 @@ import {
 
 import { SourceMapsExamplesBrowser } from './SourceMapsExamplesBrowser'
 import { sourceMapsExamplesLogic } from './sourceMapsExamplesLogic'
-import { SOURCE_MAPS_DOCS_URL, SOURCE_MAPS_PLATFORM_LABELS, sourceMapsFixWizardLogic } from './sourceMapsFixWizardLogic'
+import { SOURCE_MAPS_PLATFORM_LABELS } from './sourceMapsPlatforms'
 
 export function SourceMapsExamplesModal(): JSX.Element {
     const { isOpen, platform, examples, examplesLoading, examplesFailed, selectedExampleIndex } =
         useValues(sourceMapsExamplesLogic)
     const { closeExamples, loadExamples, selectExample } = useActions(sourceMapsExamplesLogic)
-    const { openModal } = useActions(sourceMapsFixWizardLogic)
-    const wizardRef = useRef<HTMLButtonElement>(null)
     const labels = SOURCE_MAPS_PLATFORM_LABELS[platform ?? 'javascript']
     const lookbackHours = examples?.lookback_hours ?? 24
     const retry = (): void => {
@@ -41,7 +34,7 @@ export function SourceMapsExamplesModal(): JSX.Element {
 
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && closeExamples()}>
-            <DialogContent size="wide" initialFocus={wizardRef}>
+            <DialogContent size="wide">
                 <DialogHeader>
                     <DialogTitle>{`${labels.platform} frames missing ${labels.symbols}`}</DialogTitle>
                     <DialogDescription>
@@ -82,21 +75,8 @@ export function SourceMapsExamplesModal(): JSX.Element {
                     )}
                 </DialogBody>
                 <DialogFooter>
-                    <Button variant="outline" render={<LinkPrimitive to={SOURCE_MAPS_DOCS_URL} target="_blank" />}>
-                        Read docs
-                        <IconExternal />
-                    </Button>
-                    <Button
-                        ref={wizardRef}
-                        variant="primary"
-                        onClick={() => {
-                            closeExamples()
-                            openModal('source_maps_examples')
-                        }}
-                        data-attr="error-tracking-source-maps-examples-wizard"
-                    >
-                        <IconMagicWand />
-                        Fix with Wizard
+                    <Button variant="outline" onClick={closeExamples}>
+                        Close
                     </Button>
                 </DialogFooter>
             </DialogContent>
