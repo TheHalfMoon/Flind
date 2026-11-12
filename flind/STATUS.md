@@ -97,3 +97,27 @@ Last updated: 2026-11-12.
 - Removed the donor-hosted documentation link from the live destination template suggestion panel. Retained function suggestions, Hog/Liquid selection, and the third-party Liquid language reference.
 - Added dependency-free regression coverage to the existing Brand Audit suite. One focused test passed locally; complete CI and independent review are required before merge.
 - No deployment or public release authorized.
+
+### 2026-11-12: Node SDK ingestion path negative-control (PR #41 follow-up)
+- Added an independent /batch/ path assertion to the local HTTP wire validator and a synthetic negative-control packet at /unexpected/ that must be rejected. This supplements pinned SDK parity; it does not prove global outbound network isolation.
+- Windows Node 24 syntax check and git diff --check passed; full Node 26 workflow and independent review remain required before merging.
+- No public Flind release or deployment authorized.
+
+### 2026-11-12: Node SDK outbound socket guard (PR #41 follow-up)
+- Scoped Node wire test guard intercepts Node TCP socket connects during synthetic SDK capture and permits only the ephemeral 127.0.0.1 HTTP test-server port. Negative controls reject an external hostname and a wrong loopback port before dialing. The original Socket.connect is restored in finally.
+- This is a process-level Node socket guard, not OS-level network isolation; independent review must assess alternate transports and DNS behavior. Node 26 CI is the authoritative runtime qualification; Windows Node 24 syntax and git diff checks alone do not prove SDK E2E success.
+- No release, deployment, or merge until all applicable exact-SHA checks and review complete.
+
+### 2026-11-12: Node SDK socket normalization repair (PR #41)
+- Exact SHA 698ecafc9 CI wire-parity failed: both positive captures raised PostHogFetchNetworkError because the guard rejected Node net.createConnection normalized [options, callback] arguments. Negative controls passed; rename and migration checks passed.
+- Updated the guard to unwrap normalized connection arguments before validating host and ephemeral loopback port. Added negative controls for normalized external-host and incorrect-port destinations. This is a narrow test-harness fix, not a relaxation of permitted network destinations.
+- Windows Node 24 syntax and git diff --check passed; Node 26 CI and independent review are still required. No merge or public release.
+
+### 2026-11-12 Node wire capture strictness (PR #41)
+- At df6881851, GitHub reported wire-parity, rename ratchet and runtime migrations successful. The next commit strengthens the validator to reject any extra local route or HTTP method even if a valid batch is also present; includes negative-control tests.
+- Local evidence: node --check and git diff --check passed on Windows. Full Node 26 SDK execution and exact-head CI remain required before merge. No deployment authorized.
+
+### 2026-11-12 Node wire guard DNS hardening (PR #41)
+- At f1a993f7522e, GitHub reported all three attached checks successful: wire-parity, rename ratchet, and runtime migrations. This does not substitute for independent review or additional applicable CI.
+- Removed hostname-based `localhost` allowance and implicit default-host allowance from the Node TCP guard. Only literal 127.0.0.1 or ::1 at the allocated test-server port may pass. Added negative controls for `localhost` and unspecified host to prevent DNS/hosts-file redirection.
+- Windows Node 24 `node --check` and `git diff --check` passed; Node 26 CI must run at the new exact SHA. No merge or release authorized.

@@ -1,0 +1,41 @@
+name: Flind Node SDK local capture wire test
+
+on:
+    push:
+        branches:
+            - 'flind-ci/node-sdk-wire-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-node-sdk-wire-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    wire-parity:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Install pinned compatibility dependencies in temporary isolated directory
+              run: |
+                  set -euo pipefail
+                  test_dir="$(mktemp -d)"
+                  echo "FLIND_WIRE_TEST_DIR=$test_dir" >> "$GITHUB_ENV"
+                  npm install --prefix "$test_dir" --ignore-scripts --no-audit --no-fund posthog-node@5.63.2
+                  mkdir -p "$test_dir/node_modules/@flind"
+                  cp -R packages/node-sdk "$test_dir/node_modules/@flind/node"
+                  cp tools/flind/flind-node-sdk-wire.test.mjs "$test_dir/"
+            - name: Verify real local HTTP capture and pinned protocol parity
+              run: |
+                  set -euo pipefail
+                  (cd "$FLIND_WIRE_TEST_DIR" && node --check flind-node-sdk-wire.test.mjs && node --test flind-node-sdk-wire.test.mjs)
+            - name: Remove isolated dependencies
+              if: always()
+              run: |
+                  if [ -n "${FLIND_WIRE_TEST_DIR:-}" ]; then rm -rf "$FLIND_WIRE_TEST_DIR"; fi
