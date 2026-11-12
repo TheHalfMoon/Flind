@@ -4,12 +4,10 @@ import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { LemonTag, LemonTagType } from 'lib/lemon-ui/LemonTag'
 import { Link } from 'lib/lemon-ui/Link'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'
+import { urls } from 'scenes/urls'
 import { userLogic } from 'scenes/userLogic'
 
 import { ReleaseStage, ReleaseStageProduct, releaseStage } from './releaseStage'
-
-// Flind's own feature flags live in this project, for every region.
-const POSTHOG_PROJECT_URL = 'https://us.posthog.com/project/2'
 
 const TAG_TYPES: Record<ReleaseStage, LemonTagType> = {
     alpha: 'completion',
@@ -59,7 +57,7 @@ export function ReleaseStageTag({
                                 People need the <code>{product.flag}</code> feature flag to see it.
                             </span>
                             <Link
-                                to={`${POSTHOG_PROJECT_URL}/feature_flags?search=${encodeURIComponent(product.flag)}`}
+                                to={`${urls.featureFlags()}?search=${encodeURIComponent(product.flag)}`}
                                 target="_blank"
                                 data-attr="release-stage-tag-feature-flag"
                             >

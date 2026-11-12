@@ -70,6 +70,28 @@ describe('payGateMiniLogic', () => {
         expect(logic.values).toMatchObject({ gateVariant: 'add-card', ...expected })
     })
 
+    it('disables inherited Cloud signup on self-hosted Flind instead of redirecting to a donor', async () => {
+        useMocks({
+            get: {
+                '/_preflight': [200, { ...preflightJson, cloud: false, is_debug: false }],
+                '/api/billing': [200, { ...billingJson, customer_id: '', subscription_level: 'free' }],
+            },
+        })
+        initKeaTests()
+        await expectLogic(preflightLogic).toFinishAllListeners()
+        billingLogic.mount()
+        await expectLogic(billingLogic, () => billingLogic.actions.loadBilling()).toFinishAllListeners()
+        const logic = payGateMiniLogic({ feature: AvailableFeature.SUBSCRIPTIONS })
+        logic.mount()
+
+        expect(logic.values).toMatchObject({
+            gateVariant: 'move-to-cloud',
+            ctaLink: undefined,
+            ctaLabel: 'Unavailable here',
+            ctaDisabledReason: 'Cloud upgrades are not available from this Flind deployment.',
+        })
+    })
+
     it('starts the payment entry flow for the gated product and the current page after the gate closes', async () => {
         useMocks({
             get: {

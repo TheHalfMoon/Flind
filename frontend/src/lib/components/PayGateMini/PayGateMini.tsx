@@ -286,7 +286,7 @@ const renderGateVariantMessage = (
     isAddonProduct?: boolean
 ): JSX.Element => {
     if (gateVariant === 'move-to-cloud') {
-        return <>This feature is only available on Flind Cloud.</>
+        return <>This feature is not available in this Flind deployment.</>
     } else if (isAddonProduct) {
         return (
             <>
