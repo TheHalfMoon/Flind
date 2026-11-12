@@ -6,6 +6,7 @@ import {
   LoggerProvider,
 } from "@opentelemetry/sdk-logs";
 import { ATTR_SERVICE_NAME } from "@opentelemetry/semantic-conventions";
+import { flindAnalyticsOrigin } from "@flind/shared";
 import {
   redactSecrets,
   secretHeaderReplacer,
@@ -41,8 +42,10 @@ export function formatBody(data: unknown[]): string {
 export function initOtelTransport(
   level: ElectronLog.LevelOption,
 ): ElectronLog.Transport {
-  const apiKey = process.env.VITE_POSTHOG_API_KEY;
-  const apiHost = process.env.VITE_POSTHOG_API_HOST;
+  const apiKey = process.env.VITE_FLIND_ANALYTICS_KEY?.trim();
+  const apiHost = flindAnalyticsOrigin(
+    process.env.VITE_FLIND_ANALYTICS_HOST,
+  );
 
   const noop: ElectronLog.Transport = Object.assign(
     (_message: ElectronLog.LogMessage) => {},
