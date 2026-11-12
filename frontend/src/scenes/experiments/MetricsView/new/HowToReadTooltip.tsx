@@ -5,7 +5,6 @@ import { IconTrending } from '@flind/icons'
 import { LemonDivider } from '@flind/lemon-ui'
 
 import { IconTrendingDown } from 'lib/lemon-ui/icons'
-import { Link } from 'lib/lemon-ui/Link'
 
 import { themeLogic } from '~/layout/navigation-3000/themeLogic'
 import { ExperimentStatsMethod } from '~/types'
@@ -40,14 +39,12 @@ export function HowToReadTooltip({ visible }: { visible?: boolean } = {}): JSX.E
                     delay={300}
                     closeDelay={100}
                     render={
-                        <Link
-                            to="https://posthog.com/docs/experiments/analyzing-results"
-                            target="_blank"
+                        <span
                             className="text-xs text-secondary cursor-help"
                             onClick={(e) => e.stopPropagation()}
                         >
                             How to read
-                        </Link>
+                        </span>
                     }
                 />
                 <BaseTooltip.Portal>
