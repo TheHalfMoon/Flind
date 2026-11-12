@@ -1,0 +1,41 @@
+name: Flind desktop telemetry Vitest and typecheck
+on:
+    push:
+        branches:
+            - 'flind-ci/desktop-analytics-owned-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-desktop-analytics-qa-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    desktop:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 45
+        defaults:
+            run:
+                working-directory: products/desktop
+        steps:
+            - uses: actions/checkout@v4
+            - uses: pnpm/action-setup@v6.0.9
+              with:
+                  package_json_file: products/desktop/package.json
+            - uses: actions/setup-node@v6.4.0
+              with:
+                  node-version-file: products/desktop/.node-version
+            - name: Install frozen desktop workspace without native postinstall
+              run: pnpm install --frozen-lockfile --ignore-scripts
+              env:
+                  NPM_CONFIG_AUDIT: 'false'
+                  NPM_CONFIG_FUND: 'false'
+            - name: Build shared analytics origin package
+              run: pnpm --filter @flind/shared build
+            - name: Verify desktop shared types
+              run: pnpm --filter @flind/shared typecheck
+            - name: Verify UI telemetry Vitest
+              run: pnpm --filter @flind/ui exec vitest run src/shell/posthogAnalyticsImpl.test.ts src/shell/posthogAnalyticsImpl.subscription-verify.test.ts
+            - name: Verify Electron main/OTLP telemetry Vitest
+              run: pnpm --filter @flind/code exec vitest run src/main/platform-adapters/posthog-analytics.test.ts src/main/utils/otel-log-transport.test.ts
+            - name: Verify edited desktop TypeScript formatting
+              run: pnpm exec biome check packages/shared/src/analyticsOrigin.ts packages/shared/src/index.ts packages/ui/src/shell/posthogAnalyticsImpl.ts packages/ui/src/shell/posthogAnalyticsImpl.test.ts packages/ui/src/shell/posthogAnalyticsImpl.subscription-verify.test.ts apps/code/src/main/platform-adapters/posthog-analytics.ts apps/code/src/main/platform-adapters/posthog-analytics.test.ts apps/code/src/main/utils/otel-log-transport.ts apps/code/src/main/utils/otel-log-transport.test.ts apps/code/electron.vite.config.ts apps/code/vite.main.config.mts apps/code/src/vite-env.d.ts
