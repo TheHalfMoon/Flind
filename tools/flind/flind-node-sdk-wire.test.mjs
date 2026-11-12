@@ -25,8 +25,9 @@ function restrictSocketsToLoopback(port) {
         const options = typeof first === 'object' && first !== null
             ? first
             : { port: first, host: typeof args[1] === 'string' ? args[1] : undefined }
-        const host = options.host ?? options.hostname ?? 'localhost'
-        if (Number(options.port) !== port || !['127.0.0.1', '::1', 'localhost'].includes(host)) {
+        // Never resolve a hostname: DNS/hosts-file changes could redirect it.
+        const host = options.host ?? options.hostname
+        if (Number(options.port) !== port || !['127.0.0.1', '::1'].includes(host)) {
             throw new Error('Flind wire test blocked outbound socket')
         }
         return original.apply(this, args)
@@ -116,6 +117,8 @@ test('socket guard rejects non-loopback and incorrect-port connections before di
         assert.throws(() => new Socket().connect(54322, '127.0.0.1'), /blocked outbound socket/)
         assert.throws(() => new Socket().connect([{ host: 'example.com', port: 54321 }]), /blocked outbound socket/)
         assert.throws(() => new Socket().connect([{ host: '127.0.0.1', port: 54322 }]), /blocked outbound socket/)
+        assert.throws(() => new Socket().connect([{ host: 'localhost', port: 54321 }]), /blocked outbound socket/)
+        assert.throws(() => new Socket().connect([{ port: 54321 }]), /blocked outbound socket/)
     } finally {
         restore()
     }

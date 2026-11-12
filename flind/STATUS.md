@@ -116,3 +116,8 @@ Last updated: 2026-11-12.
 ### 2026-11-12 Node wire capture strictness (PR #41)
 - At df6881851, GitHub reported wire-parity, rename ratchet and runtime migrations successful. The next commit strengthens the validator to reject any extra local route or HTTP method even if a valid batch is also present; includes negative-control tests.
 - Local evidence: node --check and git diff --check passed on Windows. Full Node 26 SDK execution and exact-head CI remain required before merge. No deployment authorized.
+
+### 2026-11-12 Node wire guard DNS hardening (PR #41)
+- At f1a993f7522e, GitHub reported all three attached checks successful: wire-parity, rename ratchet, and runtime migrations. This does not substitute for independent review or additional applicable CI.
+- Removed hostname-based `localhost` allowance and implicit default-host allowance from the Node TCP guard. Only literal 127.0.0.1 or ::1 at the allocated test-server port may pass. Added negative controls for `localhost` and unspecified host to prevent DNS/hosts-file redirection.
+- Windows Node 24 `node --check` and `git diff --check` passed; Node 26 CI must run at the new exact SHA. No merge or release authorized.
