@@ -97,8 +97,6 @@ const ICONS: Record<AppVariant, { png: string; adaptive: string; ios: string }> 
     production: { png: './assets/icon.png', adaptive: './assets/adaptive-icon.png', ios: './assets/app.icon' },
 }
 
-
-
 export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
     verifyPublishingIdentity()
     const appLinkHosts = configuredAppLinkHosts()
