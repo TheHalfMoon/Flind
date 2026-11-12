@@ -1,0 +1,22 @@
+name: Flind mobile analytics opt-in guard
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-analytics-opt-in-isolation-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-mobile-analytics-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    guard:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '26'
+            - name: Verify no inherited analytics collector can receive user data
+              run: node --test tools/flind/qualify_mobile_analytics_opt_in.mjs
