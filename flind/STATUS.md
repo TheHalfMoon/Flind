@@ -97,3 +97,8 @@ Last updated: 2026-11-12.
 - Removed the donor-hosted documentation link from the live destination template suggestion panel. Retained function suggestions, Hog/Liquid selection, and the third-party Liquid language reference.
 - Added dependency-free regression coverage to the existing Brand Audit suite. One focused test passed locally; complete CI and independent review are required before merge.
 - No deployment or public release authorized.
+
+### 2026-11-12: Node SDK ingestion path negative-control (PR #41 follow-up)
+- Added an independent /batch/ path assertion to the local HTTP wire validator and a synthetic negative-control packet at /unexpected/ that must be rejected. This supplements pinned SDK parity; it does not prove global outbound network isolation.
+- Windows Node 24 syntax check and git diff --check passed; full Node 26 workflow and independent review remain required before merging.
+- No public Flind release or deployment authorized.

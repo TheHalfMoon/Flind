@@ -69,12 +69,27 @@ function decodedEvent(packets) {
     }).filter(Boolean)
     const match = candidates.find((entry) => entry.json.batch?.some((event) => event.event === EVENT_NAME))
     assert.ok(match, `No synthetic event in local requests: ${JSON.stringify(posts.map((p) => ({ path: p.path, byteCount: p.body.length })))}`)
+    // The ingestion route is part of the public HTTP contract. Comparing two
+    // implementations alone would not catch the same route regression in both.
+    assert.equal(match.path, '/batch/', 'SDK capture must use the documented batch ingestion route')
     assert.equal(match.json.api_key, API_TOKEN)
     const event = match.json.batch.find((item) => item.event === EVENT_NAME)
     assert.equal(event.distinct_id, 'synthetic-local-user')
     assert.equal(event.properties.flind_wire_test, true)
     return { path: match.path, event: event.event, distinct_id: event.distinct_id, api_key: match.json.api_key }
 }
+
+test('wire validator rejects an event delivered to an incorrect ingestion path', () => {
+    const invalidPacket = {
+        method: 'POST',
+        path: '/unexpected/',
+        body: Buffer.from(JSON.stringify({
+            api_key: API_TOKEN,
+            batch: [{ event: EVENT_NAME, distinct_id: 'synthetic-local-user', properties: { flind_wire_test: true } }],
+        })),
+    }
+    assert.throws(() => decodedEvent([invalidPacket]), /documented batch ingestion route/)
+})
 
 test('private Flind Node SDK sends synthetic events to an explicitly local host', { timeout: 15000 }, async () => {
     decodedEvent(await captureLocally(FlindPostHog))
