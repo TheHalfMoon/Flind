@@ -93,3 +93,6 @@ jobs:
             # Dependency-free guard: fails if rebranded surfaces regress to donor text or links.
             - name: User-facing brand regression tests
               run: python tools/flind/test_user_facing_brand.py -v
+
+            - name: Project and experiment documentation isolation
+              run: python tools/flind/test_project_experiment_docs_isolation.py -v
