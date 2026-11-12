@@ -44,8 +44,8 @@ class IssueTrendDirection(LabeledStrEnum):
     STABLE = "stable"
 
 
-# Keep in sync with products/error_tracking/frontend/scenes/ErrorTrackingScene/banners/sourceMapsFixWizardLogic.ts.
-SOURCE_MAPS_DOCS_URL = "https://posthog.com/docs/error-tracking/upload-source-maps"
+# A Flind-owned source map guide has not been qualified yet. Do not expose donor SaaS URLs.
+SOURCE_MAPS_DOCS_URL: str | None = None
 
 
 @dataclass(frozen=True)

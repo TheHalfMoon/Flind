@@ -12,7 +12,7 @@ from posthog.clickhouse.query_tagging import tag_queries
 from posthog.models import Team
 from posthog.schema_enums import ProductKey
 
-from products.error_tracking.backend.facade.contracts import SOURCE_MAPS_DOCS_URL, CrashFreeSummary, ExceptionSummary
+from products.error_tracking.backend.facade.contracts import CrashFreeSummary, ExceptionSummary
 
 logger = structlog.get_logger(__name__)
 
@@ -397,13 +397,8 @@ def _daily_counts_to_sparkline(daily_counts: list[int]) -> list[dict]:
     return [{"height_percent": int((v / max_val) * 100) if max_val > 0 else 0} for v in daily_counts]
 
 
-def _source_maps_wizard_command() -> str:
-    """Source maps upload wizard command, mirroring sourceMapsFixWizardLogic on the frontend."""
-    return "npx -y @posthog/wizard@latest upload-source-maps"
-
-
 def get_source_maps_recommendation_for_team(team: Team) -> dict | None:
-    """Return wizard prompt data when the team has an active 'missing source maps' recommendation.
+    """Return safe prompt data when the team has an active 'missing source maps' recommendation.
 
     Mirrors the in-app banner: only surface it once the recommendation has been computed, while
     there's still a problem (not completed), and the user hasn't dismissed it. Returns ``None``
@@ -429,8 +424,12 @@ def get_source_maps_recommendation_for_team(team: Team) -> dict | None:
     return {
         "unresolved_percent": round((meta.get("unresolved_pct") or 0.0) * 100),
         "lookback_hours": meta.get("lookback_hours"),
-        "wizard_command": _source_maps_wizard_command(),
-        "docs_url": f"{SOURCE_MAPS_DOCS_URL}?utm_source=error_tracking_weekly_digest",
+        "wizard_command": None,
+        "docs_url": None,
+        "setup_guidance": (
+            "Ask your Flind administrator for a verified upload method for this instance; "
+            "do not send source maps to another analytics provider."
+        ),
     }
 
 
