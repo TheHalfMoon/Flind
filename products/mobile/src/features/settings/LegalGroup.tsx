@@ -13,21 +13,27 @@ export function LegalGroup({ accountHost }: { accountHost: string | null }): Rea
             footer={accountHost ? 'Delete account opens your Flind account settings in the browser.' : undefined}
             testID="settings-legal"
         >
-            <SettingsLinkRow
-                label="Privacy policy"
-                onPress={() => openLegalLink('privacy', PRIVACY_POLICY_URL, 'settings')}
-                testID="settings-privacy"
-            />
-            <SettingsLinkRow
-                label="Terms"
-                onPress={() => openLegalLink('terms', TERMS_URL, 'settings')}
-                testID="settings-terms"
-            />
-            <SettingsLinkRow
-                label="Support"
-                onPress={() => openLegalLink('support', SUPPORT_URL, 'settings')}
-                testID="settings-support"
-            />
+            {PRIVACY_POLICY_URL ? (
+                <SettingsLinkRow
+                    label="Privacy policy"
+                    onPress={() => openLegalLink('privacy', PRIVACY_POLICY_URL, 'settings')}
+                    testID="settings-privacy"
+                />
+            ) : null}
+            {TERMS_URL ? (
+                <SettingsLinkRow
+                    label="Terms"
+                    onPress={() => openLegalLink('terms', TERMS_URL, 'settings')}
+                    testID="settings-terms"
+                />
+            ) : null}
+            {SUPPORT_URL ? (
+                <SettingsLinkRow
+                    label="Support"
+                    onPress={() => openLegalLink('support', SUPPORT_URL, 'settings')}
+                    testID="settings-support"
+                />
+            ) : null}
             {accountHost ? (
                 <SettingsLinkRow
                     label="Delete account"
