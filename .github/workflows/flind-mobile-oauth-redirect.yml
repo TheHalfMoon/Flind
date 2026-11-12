@@ -1,0 +1,22 @@
+name: Flind mobile OAuth redirect isolation
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-oauth-no-redirect-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-oauth-redirect-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    check:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '26'
+            - name: Reject OAuth token redirect regression
+              run: node --test tools/flind/qualify_mobile_oauth_redirects.mjs

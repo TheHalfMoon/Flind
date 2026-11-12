@@ -124,7 +124,8 @@ async function fetchWithTimeout(url: string, init: RequestInit, timeoutMs: numbe
     const controller = new AbortController()
     const timer = setTimeout(() => controller.abort(), timeoutMs)
     try {
-        return await fetch(url, { ...init, signal: controller.signal })
+        // Token revocation must never follow cross-origin redirects.
+        return await fetch(url, { ...init, signal: controller.signal, redirect: 'error' })
     } catch (error) {
         throw new OAuthError('network', error instanceof Error ? error.message : undefined)
     } finally {
@@ -167,8 +168,13 @@ async function postToken<T>(
                         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
                         body: JSON.stringify(body),
                         signal,
+                        // OAuth authorization codes and refresh tokens must not be forwarded by redirects.
+                        redirect: 'error',
                     })
                 )
+                if (response.status >= 300 && response.status < 400) {
+                    throw new OAuthError('rejected', 'OAuth token endpoint attempted an unsupported redirect.')
+                }
                 return readResponse(response)
             },
             undefined,

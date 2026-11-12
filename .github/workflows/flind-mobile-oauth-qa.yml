@@ -1,0 +1,33 @@
+name: Flind mobile OAuth redirect implementation QA
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-oauth-no-redirect-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-oauth-redirect-qa-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    mobile:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 30
+        defaults:
+            run:
+                working-directory: products/mobile
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: products/mobile/.node-version
+            - name: Install pinned pnpm
+              run: npm install --global pnpm@10.29.3
+            - name: Install frozen mobile workspace
+              run: pnpm install --frozen-lockfile
+            - name: Mobile TypeScript
+              run: pnpm exec tsc --noEmit
+            - name: Mobile OAuth Jest
+              run: pnpm exec jest src/auth/tokenRefresh.test.ts --runInBand --ci
+            - name: Mobile OAuth formatting
+              run: pnpm exec biome check src/auth/oauth.ts src/auth/tokenRefresh.test.ts
