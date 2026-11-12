@@ -31,7 +31,7 @@ import {
 // OAuth provider before browser sign-in can succeed.
 
 export const OAUTH_CALLBACK_PATH = "/callback";
-const OAUTH_CALLBACK_CHANNEL = "posthog-code:oauth-callback";
+const OAUTH_CALLBACK_CHANNEL = "flind-web:oauth-callback";
 
 const FLOW_TIMEOUT_MS = 5 * 60 * 1000;
 const TOKEN_FETCH_TIMEOUT_MS = 30_000;
@@ -116,7 +116,7 @@ export class WebOAuthFlowService implements IAuthOAuthFlowService {
       // never fires and the shared channel only carries the other flow's state.
       const popup = window.open(
         target.toString(),
-        `posthog-code-oauth-${state}`,
+        `flind-web-oauth-${state}`,
         POPUP_FEATURES,
       );
       if (!popup) {
@@ -224,8 +224,16 @@ export class WebOAuthFlowService implements IAuthOAuthFlowService {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
         signal: AbortSignal.timeout(TOKEN_FETCH_TIMEOUT_MS),
+        // Authorization codes and refresh tokens must never follow redirects.
+        redirect: "error",
       },
     );
+    if (response.status >= 300 && response.status < 400) {
+      throw new HttpError(
+        response.status,
+        "Flind OAuth token endpoint attempted a prohibited redirect",
+      );
+    }
     if (!response.ok) {
       throw new HttpError(
         response.status,
