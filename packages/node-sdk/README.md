@@ -17,7 +17,7 @@ const client = new PostHog('synthetic-or-own-project-key', {
 })
 ```
 
-The option must be an HTTPS origin without embedded credentials, URL path, query or fragment. Local, isolated integration tests may explicitly use HTTP with a **numeric loopback address** (`127.0.0.1` or `[::1]`); HTTP remote hosts and `localhost` aliases are rejected. No private Flind cloud collector is provided or operated automatically by this patch. Successful `/batch/` wire parity against synthetic loopback does not prove production deployment or API ownership.
+The `host` option and any separately supplied `appHost` (for email APIs) must each be a safe HTTPS origin without embedded credentials, URL path, query or fragment. An owned event collector does **not** grant permission to send email API credentials to an unrelated `appHost`. Local, isolated integration tests may explicitly use HTTP with a **numeric loopback address** (`127.0.0.1` or `[::1]`); HTTP remote hosts and `localhost` aliases are rejected. No private Flind cloud collector is provided or operated automatically by this patch. Successful `/batch/` wire parity against synthetic loopback does not prove production deployment or API ownership.
 
 The source and committed `dist/client.js` (CJS) and `dist/client.mjs` (ESM) contain the same default-deny origin validator. Run the exact-head Node 26 wire regression workflow and CJS/ESM smoke checks when changing either form. The SDK is still private, not published, and must not be distributed until the Flind release gates are fully qualified and GREEN LIGHT FLIND is explicitly given.
 
