@@ -117,6 +117,25 @@ test('Flind Node SDK CJS and ESM both reject absent or inherited collector origi
     const EsmSDK = (await import('@flind/node')).PostHog
 
     for (const Implementation of [CjsSDK, EsmSDK]) {
+        for (const appHost of [
+            'https://us.posthog.com',
+            'https://app.posthog.com',
+            'https://eu.posthog.com',
+            'https://admin:token@collector.flind.example',
+            'http://collector.flind.example',
+            'https://collector.flind.example/private',
+        ]) {
+            assert.throws(
+                () => new Implementation(API_TOKEN, {
+                    host: 'https://collector.flind.example',
+                    appHost,
+                    flushInterval: 0,
+                    enableExceptionAutocapture: false,
+                }),
+                /explicit safe, non-donor HTTPS origin/,
+                `${Implementation.name}: unsafe appHost ${appHost}`
+            )
+        }
         for (const host of [
             undefined,
             '',
