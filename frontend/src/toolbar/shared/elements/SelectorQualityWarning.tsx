@@ -31,13 +31,7 @@ export function SelectorQualityWarning({ selector, compact = false }: SelectorQu
                 <strong>Fragile selector:</strong> {result.reason}{' '}
                 <code className="text-xs">{result.fragileSelector}</code>. <strong>Recommendation:</strong> Add a{' '}
                 <code className="text-xs">data-*</code> attribute (e.g. <code className="text-xs">data-analytics</code>)
-                for stable tracking.{' '}
-                <button
-                    onClick={() => window.open('https://posthog.com/docs/toolbar#2-element-filters', '_blank')}
-                    className="text-link underline cursor-pointer bg-transparent border-0 p-0"
-                >
-                    Learn more
-                </button>
+                for stable tracking.
             </div>
         </LemonBanner>
     )
