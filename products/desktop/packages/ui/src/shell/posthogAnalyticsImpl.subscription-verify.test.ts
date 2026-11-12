@@ -41,7 +41,8 @@ function captureEventsOnWire(
 
 describe("subscription analytics evidence", () => {
   beforeEach(() => {
-    vi.stubEnv("VITE_POSTHOG_API_KEY", "phc_test_key");
+    vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "phc_test_key");
+    vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
     vi.stubGlobal(
       "fetch",
       vi.fn(async () => new Response("1", { status: 200 })),
