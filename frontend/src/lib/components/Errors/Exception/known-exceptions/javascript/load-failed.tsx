@@ -1,5 +1,3 @@
-import { Link } from '@flind/lemon-ui'
-
 import { defineKnownException } from '../registry'
 import { KnownExceptionBanner } from './base'
 
@@ -16,10 +14,7 @@ defineKnownException({
                 complete. Because it is thrown from native code, no JavaScript stack trace is captured. Common causes
                 are network errors, CORS misconfiguration, the request being aborted, or a browser extension blocking
                 the request.{' '}
-                <Link to="https://posthog.com/docs/error-tracking/common-questions" target="_blank">
-                    Read our docs
-                </Link>{' '}
-                to learn how to add context to these errors.
+                Check your network connection, CORS configuration, request cancellation, and browser extensions.
             </KnownExceptionBanner>
         )
     },

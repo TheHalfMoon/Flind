@@ -16,9 +16,7 @@ export function EmptyStackTrace({
                 <div className="border-1 rounded">
                     <EmptyMessage
                         title="No stacktrace available"
-                        description="Make sure the SDK is set up correctly or contact support if problem persists"
-                        buttonText="Check documentation"
-                        buttonTo="https://posthog.com/docs/error-tracking/installation"
+                        description="Check the SDK error capture configuration and confirm that stack traces are available"
                         size="small"
                     />
                 </div>
