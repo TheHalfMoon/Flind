@@ -92,6 +92,27 @@ describe('payGateMiniLogic', () => {
         })
     })
 
+    it('disables unconfigured contact-sales actions without an inherited external destination', async () => {
+        useMocks({
+            get: {
+                '/_preflight': [200, { ...preflightJson, cloud: true }],
+                '/api/billing': [200, { ...billingJson, products: [], customer_id: '', subscription_level: 'free' }],
+            },
+        })
+        initKeaTests()
+        await expectLogic(preflightLogic).toFinishAllListeners()
+        billingLogic.mount()
+        await expectLogic(billingLogic, () => billingLogic.actions.loadBilling()).toFinishAllListeners()
+        const logic = payGateMiniLogic({ feature: AvailableFeature.SUBSCRIPTIONS })
+        logic.mount()
+
+        expect(logic.values).toMatchObject({
+            gateVariant: 'contact-sales',
+            ctaLink: undefined,
+            ctaDisabledReason: 'Flind sales contact is not configured for this deployment.',
+        })
+    })
+
     it('starts the payment entry flow for the gated product and the current page after the gate closes', async () => {
         useMocks({
             get: {

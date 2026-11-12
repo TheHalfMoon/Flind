@@ -18,6 +18,8 @@ test('unconfigured Cloud/sales actions cannot send Flind users to donor SaaS', (
     assert.match(gate, /return `\/organization\/billing/)
     assert.match(behavior, /disables inherited Cloud signup on self-hosted Flind/)
     assert.match(behavior, /ctaLink: undefined/)
+    assert.match(behavior, /disables unconfigured contact-sales actions without an inherited external destination/)
+    assert.match(behavior, /gateVariant: 'contact-sales'/)
 })
 
 test('self-hosted gate message is accurate and remains gated', () => {
