@@ -1,4 +1,6 @@
-import { buildVariant, isInternalBuild, isLoopbackHost } from '@/lib/environment'
+import { isInternalBuild, isLoopbackHost } from '@/lib/environment'
+
+import { isInheritedProviderHostname } from './hostSafety'
 
 export type RegionId = 'us' | 'eu' | 'custom'
 
@@ -14,34 +16,18 @@ export interface CloudRegion extends Region {
     flag: string
 }
 
-// Internal callback schemes require separate apps with consent enabled. Never fall back to a first-party app.
-export const US_CLIENT_ID =
-    buildVariant === 'production'
-        ? 'a5TY7w9IjFYfes6dkPgZe6envclWw3bm2UD8ZTlm'
-        : (process.env.EXPO_PUBLIC_OAUTH_US_CLIENT_ID?.trim() ?? '')
-export const EU_CLIENT_ID =
-    buildVariant === 'production'
-        ? '1A7vO138Fh5sYmJislicN4F5HnttI6urmFttxPDU'
-        : (process.env.EXPO_PUBLIC_OAUTH_EU_CLIENT_ID?.trim() ?? '')
-// The OAuth app that `setup_tasks_oauth` creates for a local stack, so a dev build signs in there without typing an id.
-export const DEV_CLIENT_ID = 'DC5uRLVbGI02YQ82grxgnK6Qn12SXWpCqdPb60oZ'
+// Flind-owned cloud choices exist only when explicitly configured at build time.
+export const US_CLIENT_ID = process.env.EXPO_PUBLIC_FLIND_US_CLIENT_ID?.trim() ?? ''
+export const EU_CLIENT_ID = process.env.EXPO_PUBLIC_FLIND_EU_CLIENT_ID?.trim() ?? ''
+export const DEV_CLIENT_ID = process.env.EXPO_PUBLIC_FLIND_DEV_CLIENT_ID?.trim() ?? ''
 
-export const CLOUD_REGIONS = [
-    {
-        id: 'us',
-        label: 'United States',
-        flag: '\u{1F1FA}\u{1F1F8}',
-        host: 'https://us.posthog.com',
-        clientId: US_CLIENT_ID,
-    },
-    {
-        id: 'eu',
-        label: 'European Union',
-        flag: '\u{1F1EA}\u{1F1FA}',
-        host: 'https://eu.posthog.com',
-        clientId: EU_CLIENT_ID,
-    },
-] as const satisfies readonly CloudRegion[]
+const configuredCloudRegions: readonly CloudRegion[] = [
+    { id: 'us', label: 'United States', flag: '🇺🇸', host: process.env.EXPO_PUBLIC_FLIND_US_HOST?.trim() ?? '', clientId: US_CLIENT_ID },
+    { id: 'eu', label: 'European Union', flag: '🇪🇺', host: process.env.EXPO_PUBLIC_FLIND_EU_HOST?.trim() ?? '', clientId: EU_CLIENT_ID },
+]
+export const CLOUD_REGIONS: readonly CloudRegion[] = configuredCloudRegions.filter(
+    (region) => Boolean(region.host && region.clientId) && validateHost(region.host, false).ok
+)
 
 // The id `custom` is persisted in AsyncStorage by the auth store, so it keeps its name while the label changes.
 export const REGIONS: readonly Region[] = [
@@ -148,21 +134,27 @@ export function validateHost(input: string, allowLoopbackHttp: boolean = isInter
     try {
         url = new URL(withScheme)
     } catch {
-        return { ok: false, error: "That doesn't look like a web address. Try something like posthog.example.com." }
+        return { ok: false, error: "That doesn't look like a web address. Try something like flind.example.com." }
     }
     if (!url.hostname) {
-        return { ok: false, error: "That doesn't look like a web address. Try something like posthog.example.com." }
+        return { ok: false, error: "That doesn't look like a web address. Try something like flind.example.com." }
+    }
+    if (isInheritedProviderHostname(url.hostname)) {
+        return { ok: false, error: 'Use an endpoint operated by your Flind deployment, not an inherited cloud service.' }
+    }
+    if (url.username || url.password) {
+        return { ok: false, error: 'Remove credentials from the Flind host address.' }
     }
     if (url.protocol === 'http:' && !(allowLoopbackHttp && isLoopbackHost(url.hostname))) {
         return {
             ok: false,
             error: allowLoopbackHttp
                 ? 'Use an https address. Plain http only works for localhost.'
-                : 'Use an https address, for example https://posthog.example.com.',
+                : 'Use an https address, for example https://flind.example.com.',
         }
     }
     if (url.protocol !== 'https:' && url.protocol !== 'http:') {
-        return { ok: false, error: 'Use an https address, for example https://posthog.example.com.' }
+        return { ok: false, error: 'Use an https address, for example https://flind.example.com.' }
     }
     return { ok: true, host: `${url.protocol}//${url.host}` }
 }
