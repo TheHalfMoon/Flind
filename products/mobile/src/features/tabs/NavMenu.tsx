@@ -156,7 +156,7 @@ export function NavMenu({
                                 <Pressable44
                                     accessibilityRole="link"
                                     accessibilityLabel={
-                                            statusUpdate
+                                        statusUpdate
                                             ? `Flind status: ${statusUpdate}`
                                             : indicatorColor
                                               ? 'Flind status: All systems operational'
@@ -169,7 +169,9 @@ export function NavMenu({
                                 >
                                     {indicatorColor ? (
                                         <View style={styles.statusIcon}>
-                                            <View style={[styles.statusDot, { backgroundColor: colors[indicatorColor] }]} />
+                                            <View
+                                                style={[styles.statusDot, { backgroundColor: colors[indicatorColor] }]}
+                                            />
                                         </View>
                                     ) : (
                                         <GlobeIcon size={iconSizes.control} />
