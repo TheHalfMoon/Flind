@@ -1,0 +1,44 @@
+name: Flind toolbar telemetry isolation
+
+on:
+    push:
+        branches:
+            - 'flind-ci/toolbar-telemetry-local-only-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-toolbar-telemetry-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    isolate:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            - name: Prepare pinned SDK and browser dependencies in isolated temp directory
+              run: |
+                  set -euo pipefail
+                  test_dir="$(mktemp -d)"
+                  echo "FLIND_TOOLBAR_TEST_DIR=$test_dir" >> "$GITHUB_ENV"
+                  npm install --prefix "$test_dir" --ignore-scripts --no-audit --no-fund --save-exact posthog-js@1.447.1 react@19.1.0 esbuild@0.25.12 playwright-core@1.55.1
+                  cp tools/flind/toolbar-telemetry-isolation.test.cjs "$test_dir/"
+
+            - name: Verify real toolbar module disables donor telemetry outside Flind
+              env:
+                  FLIND_TOOLBAR_SOURCE: ${{ github.workspace }}/frontend/src/toolbar/shared/toolbarPosthogJS.ts
+              run: |
+                  set -euo pipefail
+                  (cd "$FLIND_TOOLBAR_TEST_DIR" && node --check toolbar-telemetry-isolation.test.cjs && node --test toolbar-telemetry-isolation.test.cjs)
+
+            - name: Delete temporary test runtime
+              if: always()
+              run: |
+                  if [ -n "${FLIND_TOOLBAR_TEST_DIR:-}" ]; then rm -rf "$FLIND_TOOLBAR_TEST_DIR"; fi

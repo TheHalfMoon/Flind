@@ -3,19 +3,26 @@ import { useEffect, useState } from 'react'
 
 import { FeatureFlagKey } from 'lib/constants'
 
-const DEFAULT_API_KEY = 'sTMFPsFhdP1Ssg'
-
-const runningOnPosthog = !!window.POSTHOG_APP_CONTEXT
-const apiKey = runningOnPosthog ? window.JS_POSTHOG_API_KEY : DEFAULT_API_KEY
-const apiHost = runningOnPosthog ? window.JS_POSTHOG_HOST : 'https://internal-cf.posthog.com'
+// The toolbar is also imported on arbitrary customer pages and in the extension.
+// Never send their diagnostic events or flag requests to a donor-hosted project.
+// Only the Flind app itself can opt in using its own server-rendered project key.
+const runningOnFlind = !!window.POSTHOG_APP_CONTEXT && !!window.JS_POSTHOG_API_KEY
+const apiKey = runningOnFlind ? window.JS_POSTHOG_API_KEY : 'flind_toolbar_disabled'
+const apiHost = runningOnFlind ? window.JS_POSTHOG_HOST || window.location.origin : window.location.origin
+const telemetryDisabled = !runningOnFlind
 // Manifest V3 forbids remote code in an extension, and the browser stores reject it.
 const runningInBrowserExtension = !!(globalThis as { chrome?: { runtime?: { id?: string } } }).chrome?.runtime?.id
 
 const initResult = posthog.init(
-    apiKey || DEFAULT_API_KEY,
+    apiKey || 'flind_toolbar_disabled',
     {
         api_host: apiHost,
-        opt_out_capturing_by_default: true, // must call .opt_in_capturing() before any events are sent
+        // Extension and customer-page contexts have no Flind telemetry project.
+        // Even if a caller opts in later, before_send drops the event locally.
+        opt_out_capturing_by_default: true,
+        before_send: telemetryDisabled ? () => null : undefined,
+        advanced_disable_decide: telemetryDisabled,
+        advanced_disable_feature_flags: telemetryDisabled,
         persistence: 'memory', // We don't want to persist anything, all events are in-memory
         persistence_name: apiKey + '_toolbar', // We don't need this but it ensures we don't accidentally mess with the standard persistence
         bootstrap: {
@@ -34,7 +41,7 @@ const initResult = posthog.init(
         disable_scroll_properties: true,
         disable_product_tours: true,
         disable_session_recording: true,
-        disable_external_dependency_loading: runningInBrowserExtension,
+        disable_external_dependency_loading: runningInBrowserExtension || telemetryDisabled,
         session_recording: {
             // we want to capture the toolbar (which is marked with ph-no-capture
             // so customer sessions don't see it), but also respect the customer's
@@ -51,7 +58,7 @@ if (!initResult) {
 }
 export const toolbarPosthogJS = initResult
 
-if (runningOnPosthog && window.JS_POSTHOG_SELF_CAPTURE) {
+if (runningOnFlind && window.JS_POSTHOG_SELF_CAPTURE) {
     toolbarPosthogJS.debug()
 }
 
