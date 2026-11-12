@@ -40,15 +40,15 @@ describe('deepLinkKind', () => {
         ['flind://replay/0192-abc?from=push', null],
         [
             'https://us.flind.example/project/2/inbox/reports/0192-abc?link_source=slack',
-            '/report/0192-abc?from=slack&project=2&host=us.posthog.com',
+            '/report/0192-abc?from=slack&project=2&host=us.flind.example',
         ],
         [
             'https://us.flind.example/project/2/inbox/reports/0192-abc?link_source=slack_scout',
-            '/report/0192-abc?from=slack&project=2&host=us.posthog.com',
+            '/report/0192-abc?from=slack&project=2&host=us.flind.example',
         ],
         [
             'https://eu.flind.example/project/7/inbox/reports/0192-abc',
-            '/report/0192-abc?from=link&project=7&host=eu.posthog.com',
+            '/report/0192-abc?from=link&project=7&host=eu.flind.example',
         ],
         ['flind://project/7/inbox/reports/0192-abc', '/report/0192-abc?from=link&project=7'],
         ['https://us.flind.example/project/2/inbox/reports/triage', null],
