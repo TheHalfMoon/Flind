@@ -12,11 +12,13 @@ def verify_archive(archive: Path, icon_source: Path) -> None:
             raise ValueError("Duplicate ZIP entries")
         if any(n.startswith("/") or ".." in n.split("/") or "\\" in n for n in names):
             raise ValueError("Unsafe ZIP paths")
-        manifests = [n for n in names if n == "manifest.json" or n.endswith("/manifest.json")]
-        if len(manifests) != 1:
-            raise ValueError("Expected exactly one manifest.json")
-        prefix = manifests[0][:-len("manifest.json")]
-        manifest = json.loads(z.read(manifests[0]))
+        # Chrome expects manifest.json at ZIP root, not under a wrapper directory.
+        # A nested manifest can pass content checks yet produce an uninstallable ZIP.
+        if "manifest.json" not in names:
+            raise ValueError("Expected exactly one root manifest.json")
+        if any(n != "manifest.json" and n.endswith("/manifest.json") for n in names):
+            raise ValueError("Unexpected nested manifest.json")
+        manifest = json.loads(z.read("manifest.json"))
         if manifest.get("name") != "Flind":
             raise ValueError("Wrong extension identity")
         if "externally_connectable" in manifest:
@@ -25,7 +27,7 @@ def verify_archive(archive: Path, icon_source: Path) -> None:
         action = manifest.get("action", {}).get("default_icon", {})
         if icons.get("128") != "icons/flind-128x128.png" or action.get("128") != icons["128"]:
             raise ValueError("Wrong 128px icon mapping")
-        path = prefix + icons["128"]
+        path = icons["128"]
         if path not in names:
             raise ValueError("Branded icon missing from ZIP")
         icon = z.read(path)

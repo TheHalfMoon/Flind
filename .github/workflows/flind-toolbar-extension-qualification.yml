@@ -7,6 +7,7 @@ on:
         branches:
             - 'flind-ci/toolbar-extension-brand-icon-*'
             - 'flind-ci/brand-audit-toolbar-icon-*'
+            - 'flind-ci/toolbar-zip-integrity-*'
     workflow_dispatch:
 
 permissions:

@@ -50,3 +50,24 @@ class ZipIntegrityTests(unittest.TestCase):
             z.writestr("icons/flind-128x128.png", self.icon.read_bytes())
         with self.assertRaisesRegex(ValueError, "exactly one"):
             verify_archive(self.archive, self.icon)
+
+    def test_nested_manifest_is_not_a_distributable_chrome_extension(self):
+        with ZipFile(self.archive, "w") as z:
+            z.writestr("chrome/manifest.json", json.dumps(self.manifest))
+            z.writestr("chrome/icons/flind-128x128.png", self.icon.read_bytes())
+        with self.assertRaisesRegex(ValueError, "root manifest"):
+            verify_archive(self.archive, self.icon)
+
+    def test_extra_nested_manifest_denied(self):
+        self.make()
+        with ZipFile(self.archive, "a") as z:
+            z.writestr("nested/manifest.json", json.dumps(self.manifest))
+        with self.assertRaisesRegex(ValueError, "nested manifest"):
+            verify_archive(self.archive, self.icon)
+
+    def test_unsafe_zip_path_denied(self):
+        self.make()
+        with ZipFile(self.archive, "a") as z:
+            z.writestr("../escape.txt", "unsafe")
+        with self.assertRaisesRegex(ValueError, "Unsafe ZIP paths"):
+            verify_archive(self.archive, self.icon)
