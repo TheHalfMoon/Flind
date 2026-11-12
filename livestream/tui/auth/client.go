@@ -26,6 +26,28 @@ func validatedBaseHost(raw string) (string, error) {
 	return host, nil
 }
 
+ // Reported callback hosts are untrusted query parameters. Never transfer a
+ // browser-issued credential to an origin other than the Flind origin opened.
+func validatedCallbackHost(requestedHost, callbackHost string) (string, error) {
+    requested, err := validatedBaseHost(requestedHost)
+    if err != nil {
+        return "", err
+    }
+    if callbackHost == "" {
+        return requested, nil
+    }
+    actual, err := validatedBaseHost(callbackHost)
+    if err != nil {
+        return "", err
+    }
+    expectedURL, _ := url.Parse(requested)
+    actualURL, _ := url.Parse(actual)
+    if expectedURL.Scheme != actualURL.Scheme || !strings.EqualFold(expectedURL.Host, actualURL.Host) {
+        return "", fmt.Errorf("authorization callback reported an unexpected Flind origin")
+    }
+    return requested, nil
+}
+
 func isLoopback(hostname string) bool {
 	if hostname == "localhost" {
 		return true
