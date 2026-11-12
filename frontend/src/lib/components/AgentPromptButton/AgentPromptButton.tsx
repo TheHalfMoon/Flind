@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { IconChevronDown, IconCopy, IconLogomark, IconSparkles } from '@flind/icons'
 
-import { MCP_INSTALL_COMMAND } from 'lib/components/MCPHint/constants'
+import { FLIND_MCP_INSTALL_AVAILABLE, MCP_INSTALL_COMMAND } from 'lib/components/MCPHint/constants'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { LemonMenuOverlay } from 'lib/lemon-ui/LemonMenu'
 import { useKeyboardNavigation } from 'lib/lemon-ui/LemonMenu/useKeyboardNavigation'
@@ -283,7 +283,7 @@ export function buildAgentPrompt(
     const prompt = action.buildPrompt()
     // Flind AI reads Flind data directly, so it has no use for the MCP server.
     // Self-hosted instances have no Flind MCP server to connect to.
-    if (action.raw || agentKey === 'posthog-ai' || !isCloudOrDev) {
+    if (action.raw || agentKey === 'posthog-ai' || !isCloudOrDev || !FLIND_MCP_INSTALL_AVAILABLE) {
         return prompt
     }
     const project = projectId ? ` in Flind project ${projectId}` : ''

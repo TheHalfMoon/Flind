@@ -7,7 +7,7 @@ import * as wizardPng from '@posthog/brand/hoggies/png/wizard-1'
 import { pngHoggie } from 'lib/brand/hoggies'
 import { CommandBlock } from 'lib/components/CommandBlock/CommandBlock'
 import { agentConnectionLogic } from 'lib/components/MCPHint/agentConnectionLogic'
-import { MCP_INSTALL_COMMAND } from 'lib/components/MCPHint/constants'
+import { FLIND_MCP_INSTALL_AVAILABLE, MCP_INSTALL_COMMAND } from 'lib/components/MCPHint/constants'
 
 import { AdvertisementCard, NAV_PANEL_CARD_TYPE, ProductPushDisplay } from './navPanelAdShared'
 import { navPanelAdvertisementLogic } from './NavPanelAdvertisementLogic'
@@ -23,7 +23,7 @@ const MCP_HERO: ProductPushDisplay = {
 export function NavPanelMcpCard(): JSX.Element | null {
     const { hasConnectedAgent } = useValues(agentConnectionLogic)
     // `null` means no lookup has succeeded, which never counts as eligible.
-    const shouldShow = hasConnectedAgent === false
+    const shouldShow = FLIND_MCP_INSTALL_AVAILABLE && hasConnectedAgent === false
 
     useEffect(() => {
         if (shouldShow) {
