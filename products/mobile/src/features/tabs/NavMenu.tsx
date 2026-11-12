@@ -156,33 +156,33 @@ export function NavMenu({
                                 <Pressable44
                                     accessibilityRole="link"
                                     accessibilityLabel={
-                                        statusUpdate
-                                        ? `Flind status: ${statusUpdate}`
-                                        : indicatorColor
-                                          ? 'Flind status: All systems operational'
-                                          : 'Flind status'
-                                }
-                                pressedBackground={colors.sunken}
-                                style={styles.row}
-                                onPress={onOpenStatus}
-                                testID="nav-status"
-                            >
-                                {indicatorColor ? (
-                                    <View style={styles.statusIcon}>
-                                        <View style={[styles.statusDot, { backgroundColor: colors[indicatorColor] }]} />
+                                            statusUpdate
+                                            ? `Flind status: ${statusUpdate}`
+                                            : indicatorColor
+                                              ? 'Flind status: All systems operational'
+                                              : 'Flind status'
+                                    }
+                                    pressedBackground={colors.sunken}
+                                    style={styles.row}
+                                    onPress={onOpenStatus}
+                                    testID="nav-status"
+                                >
+                                    {indicatorColor ? (
+                                        <View style={styles.statusIcon}>
+                                            <View style={[styles.statusDot, { backgroundColor: colors[indicatorColor] }]} />
+                                        </View>
+                                    ) : (
+                                        <GlobeIcon size={iconSizes.control} />
+                                    )}
+                                    <View style={styles.statusBody}>
+                                        <Text style={styles.statusTitle}>Flind status</Text>
+                                        {statusUpdate ? (
+                                            <Text style={styles.statusSummary} numberOfLines={2}>
+                                                {statusUpdate}
+                                            </Text>
+                                        ) : null}
                                     </View>
-                                ) : (
-                                    <GlobeIcon size={iconSizes.control} />
-                                )}
-                                <View style={styles.statusBody}>
-                                    <Text style={styles.statusTitle}>Flind status</Text>
-                                    {statusUpdate ? (
-                                        <Text style={styles.statusSummary} numberOfLines={2}>
-                                            {statusUpdate}
-                                        </Text>
-                                    ) : null}
-                                </View>
-                                <ExternalLinkIcon size={iconSizes.small} color={colors.tertiary} />
+                                    <ExternalLinkIcon size={iconSizes.small} color={colors.tertiary} />
                                 </Pressable44>
                             ) : null}
                             {statusPageUrl ? <View style={[styles.divider, styles.sectionDivider]} /> : null}
