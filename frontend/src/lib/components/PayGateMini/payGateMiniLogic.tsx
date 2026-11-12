@@ -31,7 +31,7 @@ export interface payGateMiniLogicValues {
     addonTrialModalOpen: boolean
     bypassPaywall: boolean
     ctaDisabledReason: string | null
-    ctaLabel: 'Contact sales' | 'Move to Flind Cloud' | 'Upgrade now' | 'View plans'
+    ctaLabel: 'Contact sales' | 'Unavailable here' | 'Upgrade now' | 'View plans'
     ctaLink: string | undefined
     featureAvailableOnOrg: BillingFeatureType | null | undefined
     featureInfo: BillingFeatureType | undefined
@@ -96,20 +96,23 @@ export interface payGateMiniLogicMeta {
             arg2: any
         ) => 'add-card' | 'contact-sales' | 'move-to-cloud' | null
         ctaLink: (
-            gateVariant: 'add-card' | 'contact-sales' | 'move-to-cloud' | null,
-            productWithFeature: BillingProductV2AddonType | BillingProductV2Type | undefined,
-            featureInfo: BillingFeatureType | undefined
+            gateVariant: GateVariantType,
+            productWithFeature: BillingProductV2AddonType | BillingProductV2Type | undefined
         ) => string | undefined
         ctaLabel: (
             gateVariant: 'add-card' | 'contact-sales' | 'move-to-cloud' | null,
             isPaymentEntryFlow: boolean
-        ) => 'Contact sales' | 'Move to Flind Cloud' | 'Upgrade now' | 'View plans'
+        ) => 'Contact sales' | 'Unavailable here' | 'Upgrade now' | 'View plans'
         isPaymentEntryFlow: (
             gateVariant: 'add-card' | 'contact-sales' | 'move-to-cloud' | null,
             isAddonProduct: boolean | undefined,
             billing: BillingType | null
         ) => boolean
-        ctaDisabledReason: (isPaymentEntryFlow: boolean, selfServeBillingDisabledReason: string | null) => string | null
+        ctaDisabledReason: (
+            isPaymentEntryFlow: boolean,
+            selfServeBillingDisabledReason: string | null,
+            gateVariant: GateVariantType
+        ) => string | null
         isGated: (
             gateVariant: 'add-card' | 'contact-sales' | 'move-to-cloud' | null,
             productWithFeature: BillingProductV2AddonType | BillingProductV2Type | undefined,
@@ -267,20 +270,19 @@ export const payGateMiniLogic = kea<payGateMiniLogicType>([
             },
         ],
         ctaLink: [
-            (s) => [s.gateVariant, s.productWithFeature, s.featureInfo],
+            (s) => [s.gateVariant, s.productWithFeature],
             (
-                gateVariant: 'add-card' | 'contact-sales' | 'move-to-cloud' | null,
-                productWithFeature: BillingProductV2AddonType | BillingProductV2Type | undefined,
-                featureInfo: import('~/types').BillingFeatureType | undefined
+                gateVariant: GateVariantType,
+                productWithFeature: BillingProductV2AddonType | BillingProductV2Type | undefined
             ) => {
                 // product activation is already handled in the startPaymentEntryFlow,
                 // ctaLink is used only when isPaymentEntryFlow is false
                 if (gateVariant === 'add-card') {
                     return `/organization/billing${productWithFeature?.type ? `?products=${productWithFeature.type}` : ''}`
-                } else if (gateVariant === 'contact-sales') {
-                    return `mailto:sales@posthog.com?subject=Inquiring about ${featureInfo?.name}`
-                } else if (gateVariant === 'move-to-cloud') {
-                    return 'https://us.posthog.com/signup?utm_medium=in-product&utm_campaign=move-to-cloud'
+                } else if (gateVariant === 'contact-sales' || gateVariant === 'move-to-cloud') {
+                    // Flind has no configured sales or Cloud signup destination. Never send
+                    // self-hosted users to an inherited third-party SaaS or sales inbox.
+                    return undefined
                 }
                 return undefined
             },
@@ -292,7 +294,7 @@ export const payGateMiniLogic = kea<payGateMiniLogicType>([
                     return 'Contact sales'
                 }
                 if (gateVariant === 'move-to-cloud') {
-                    return 'Move to Flind Cloud'
+                    return 'Unavailable here'
                 }
                 if (isPaymentEntryFlow) {
                     return 'Upgrade now'
@@ -316,9 +318,20 @@ export const payGateMiniLogic = kea<payGateMiniLogicType>([
             },
         ],
         ctaDisabledReason: [
-            (s) => [s.isPaymentEntryFlow, s.selfServeBillingDisabledReason],
-            (isPaymentEntryFlow: boolean, selfServeBillingDisabledReason: string | null): string | null =>
-                isPaymentEntryFlow ? selfServeBillingDisabledReason : null,
+            (s) => [s.isPaymentEntryFlow, s.selfServeBillingDisabledReason, s.gateVariant],
+            (
+                isPaymentEntryFlow: boolean,
+                selfServeBillingDisabledReason: string | null,
+                gateVariant: GateVariantType
+            ): string | null => {
+                if (gateVariant === 'move-to-cloud') {
+                    return 'Cloud upgrades are not available from this Flind deployment.'
+                }
+                if (gateVariant === 'contact-sales') {
+                    return 'Flind sales contact is not configured for this deployment.'
+                }
+                return isPaymentEntryFlow ? selfServeBillingDisabledReason : null
+            },
         ],
         isGated: [
             (s) => [s.gateVariant, s.productWithFeature, s.featureInfo, s.bypassPaywall],

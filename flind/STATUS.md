@@ -121,3 +121,13 @@ Last updated: 2026-11-12.
 - At f1a993f7522e, GitHub reported all three attached checks successful: wire-parity, rename ratchet, and runtime migrations. This does not substitute for independent review or additional applicable CI.
 - Removed hostname-based `localhost` allowance and implicit default-host allowance from the Node TCP guard. Only literal 127.0.0.1 or ::1 at the allocated test-server port may pass. Added negative controls for `localhost` and unspecified host to prevent DNS/hosts-file redirection.
 - Windows Node 24 `node --check` and `git diff --check` passed; Node 26 CI must run at the new exact SHA. No merge or release authorized.
+
+### 2026-11-12: PR #45 contact-sales behavior coverage
+- Added a Kea logic regression test for Cloud preflight with no eligible billing plans: the contact-sales gate must expose no destination and must provide the Flind unconfigured-sales disabled reason. Extended the donor CTA guard to require this test.
+- Windows Node guard: 3 passed, 0 failed; git diff --check passed. Jest/TypeScript not run locally, and exact-head CI plus independent review are required before merge.
+- PR #45 remains draft. No public release or deployment authorized.
+
+### 2026-11-12: PR #45 disabled CTA button wiring guard
+- Added a static negative-regression guard for both PayGateButton and PayGateIcon: both must pass the Kea disabled reason into LemonButton and must not invent a fallback destination when ctaLink is undefined.
+- Windows node --test frontend/bin/flind-donor-cta-isolation.test.mjs: 4 passed, 0 failed. git diff --check passed. This source guard does not replace Jest/TypeScript or browser E2E.
+- Earlier exact-head GitHub CTA guard, rename ratchet and runtime migrations passed on 566993def; requalification is required after this change. PR remains draft; no deployment or release.
