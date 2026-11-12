@@ -129,6 +129,7 @@ class PostHogBackendClient extends core_namespaceObject.PostHogCoreStateless {
             maxQueueSize: options.maxQueueSize ?? 10000,
             flushInterval: options.flushInterval ?? 5000,
             host: normalizeHost(options.host),
+            appHost: options.appHost === void 0 ? void 0 : normalizeHost(options.appHost),
             personalApiKey: normalizePersonalApiKey(options.secretKey ?? options.personalApiKey)
         };
         super(normalizedApiKey, normalizedOptions), this._memoryStorage = new external_storage_memory_js_namespaceObject.PostHogMemoryStorage(), this._isShutdown = false, this._aiCaptureRouteActive = false, this._minimalFlagCalledEvents = false;
