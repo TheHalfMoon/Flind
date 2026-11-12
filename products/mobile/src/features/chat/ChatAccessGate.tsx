@@ -2,9 +2,9 @@ import { type ReactElement, type ReactNode, useEffect, useState } from 'react'
 import { Linking } from 'react-native'
 
 import { track } from '@/lib/analytics'
+import { openLegalLink, PRIVACY_POLICY_URL } from '@/lib/legalLinks'
 import { AiConsentSheet } from './AiConsentSheet'
 import { AiOrgNotice } from './AiOrgNotice'
-import { PRIVACY_POLICY_URL } from './aiAccess'
 import { useChatAccess } from './useChatAccess'
 
 interface ChatAccessGateProps {
@@ -68,9 +68,9 @@ export function ChatAccessGate({ onDecline, children }: ChatAccessGateProps): Re
                 visible={access.kind === 'needs_consent' && !declined}
                 onContinue={accepted}
                 onNotNow={decline}
-                onOpenPrivacyPolicy={() => {
-                    Linking.openURL(PRIVACY_POLICY_URL).catch(() => undefined)
-                }}
+                onOpenPrivacyPolicy={
+                    PRIVACY_POLICY_URL ? () => openLegalLink('privacy', PRIVACY_POLICY_URL, 'settings') : null
+                }
             />
         </>
     )

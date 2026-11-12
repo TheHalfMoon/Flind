@@ -249,29 +249,37 @@ export function SignInScreen(): ReactElement {
                     </Pressable44>
                 ) : null}
             </View>
-            <View style={styles.legal}>
-                <Pressable44
-                    onPress={() => openLegalLink('privacy', PRIVACY_POLICY_URL, 'sign_in')}
-                    accessibilityRole="link"
-                    pressedBackground={colors.pressed}
-                    style={styles.legalLink}
-                    testID="sign-in-privacy"
-                >
-                    <Text style={styles.legalText}>Privacy policy</Text>
-                </Pressable44>
-                <Text style={styles.legalText} importantForAccessibility="no" accessibilityElementsHidden>
-                    ·
-                </Text>
-                <Pressable44
-                    onPress={() => openLegalLink('terms', TERMS_URL, 'sign_in')}
-                    accessibilityRole="link"
-                    pressedBackground={colors.pressed}
-                    style={styles.legalLink}
-                    testID="sign-in-terms"
-                >
-                    <Text style={styles.legalText}>Terms</Text>
-                </Pressable44>
-            </View>
+            {PRIVACY_POLICY_URL || TERMS_URL ? (
+                <View style={styles.legal}>
+                    {PRIVACY_POLICY_URL ? (
+                        <Pressable44
+                            onPress={() => openLegalLink('privacy', PRIVACY_POLICY_URL, 'sign_in')}
+                            accessibilityRole="link"
+                            pressedBackground={colors.pressed}
+                            style={styles.legalLink}
+                            testID="sign-in-privacy"
+                        >
+                            <Text style={styles.legalText}>Privacy policy</Text>
+                        </Pressable44>
+                    ) : null}
+                    {PRIVACY_POLICY_URL && TERMS_URL ? (
+                        <Text style={styles.legalText} importantForAccessibility="no" accessibilityElementsHidden>
+                            ·
+                        </Text>
+                    ) : null}
+                    {TERMS_URL ? (
+                        <Pressable44
+                            onPress={() => openLegalLink('terms', TERMS_URL, 'sign_in')}
+                            accessibilityRole="link"
+                            pressedBackground={colors.pressed}
+                            style={styles.legalLink}
+                            testID="sign-in-terms"
+                        >
+                            <Text style={styles.legalText}>Terms</Text>
+                        </Pressable44>
+                    ) : null}
+                </View>
+            ) : null}
         </ScrollView>
     )
 }

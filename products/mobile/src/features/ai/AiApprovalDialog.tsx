@@ -4,7 +4,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import { AiConsentSheet } from '@/features/chat/AiConsentSheet'
 import { AiOrgNotice } from '@/features/chat/AiOrgNotice'
-import { PRIVACY_POLICY_URL } from '@/features/chat/aiAccess'
+import { openLegalLink, PRIVACY_POLICY_URL } from '@/lib/legalLinks'
 import { BottomSheet } from '@/ui/BottomSheet'
 import { OverlayHost } from '@/ui/OverlayPortal'
 import { createStyles } from '@/ui/theme'
@@ -28,7 +28,11 @@ export function AiApprovalDialog(): ReactElement | null {
                             pending={request.checking}
                             onContinue={() => void checkAiApproval(true)}
                             onNotNow={cancelAiApproval}
-                            onOpenPrivacyPolicy={() => void Linking.openURL(PRIVACY_POLICY_URL).catch(() => undefined)}
+                            onOpenPrivacyPolicy={
+                                PRIVACY_POLICY_URL
+                                    ? () => openLegalLink('privacy', PRIVACY_POLICY_URL, 'settings')
+                                    : null
+                            }
                         />
                     ) : (
                         <BottomSheet visible onClose={cancelAiApproval} accessibilityLabel="Flind AI access">

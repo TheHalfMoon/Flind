@@ -1,0 +1,33 @@
+name: Flind mobile legal and AI consent implementation QA
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-owned-legal-links-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-mobile-legal-qa-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    mobile:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 30
+        defaults:
+            run:
+                working-directory: products/mobile
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: products/mobile/.node-version
+            - name: Install pinned pnpm
+              run: npm install --global pnpm@10.29.3
+            - name: Install frozen mobile workspace
+              run: pnpm install --frozen-lockfile
+            - name: Verify TypeScript
+              run: pnpm exec tsc --noEmit
+            - name: Run AI consent and chat Jest regression tests
+              run: pnpm exec jest src/features/chat src/features/ai src/lib/legalLinks.test.ts --runInBand --ci --passWithNoTests
+            - name: Verify legal and AI consent source formatting
+              run: pnpm exec biome check src/lib/legalLinks.ts src/lib/legalLinks.test.ts src/features/settings/LegalGroup.tsx src/features/chat/ChatAccessGate.test.tsx src/auth/SignInScreen.tsx src/features/chat/aiAccess.ts src/features/chat/ChatAccessGate.tsx src/features/ai/AiApprovalDialog.tsx src/features/chat/AiConsentSheet.tsx
