@@ -1,6 +1,7 @@
 export * from "@flind/agent-contracts";
 export * from "./ai-gateway-blocked";
 export * from "./analytics-events";
+export { flindAnalyticsOrigin } from "./analyticsOrigin";
 export type { ArchivedTask } from "./archive-domain";
 export { withTimeout } from "./async";
 export {
