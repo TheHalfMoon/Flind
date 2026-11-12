@@ -1,4 +1,9 @@
 import os from "node:os";
+import {
+  redactSecrets,
+  secretHeaderReplacer,
+} from "@flind/agent/utils/redact-secrets";
+import { flindAnalyticsOrigin } from "@flind/shared";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
 import { resourceFromAttributes } from "@opentelemetry/resources";
 import {
@@ -6,11 +11,6 @@ import {
   LoggerProvider,
 } from "@opentelemetry/sdk-logs";
 import { ATTR_SERVICE_NAME } from "@opentelemetry/semantic-conventions";
-import { flindAnalyticsOrigin } from "@flind/shared";
-import {
-  redactSecrets,
-  secretHeaderReplacer,
-} from "@flind/agent/utils/redact-secrets";
 import type ElectronLog from "electron-log";
 import { getAppVersion } from "./env";
 
@@ -43,9 +43,7 @@ export function initOtelTransport(
   level: ElectronLog.LevelOption,
 ): ElectronLog.Transport {
   const apiKey = process.env.VITE_FLIND_ANALYTICS_KEY?.trim();
-  const apiHost = flindAnalyticsOrigin(
-    process.env.VITE_FLIND_ANALYTICS_HOST,
-  );
+  const apiHost = flindAnalyticsOrigin(process.env.VITE_FLIND_ANALYTICS_HOST);
 
   const noop: ElectronLog.Transport = Object.assign(
     (_message: ElectronLog.LogMessage) => {},
