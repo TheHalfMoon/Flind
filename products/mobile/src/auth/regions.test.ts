@@ -40,20 +40,26 @@ describe('regions', () => {
         jest.dontMock('@/lib/environment')
     })
 
-    test.each(['production', 'development', 'preview'] as const)('%s configures only Flind-owned OAuth endpoints', (variant) => {
-        jest.isolateModules(() => {
-            jest.doMock('@/lib/environment', () => ({ ...jest.requireActual('@/lib/environment'), buildVariant: variant }))
-            process.env.EXPO_PUBLIC_FLIND_US_HOST = 'https://us.flind.example'
-            process.env.EXPO_PUBLIC_FLIND_EU_HOST = 'https://eu.flind.example'
-            process.env.EXPO_PUBLIC_FLIND_US_CLIENT_ID = 'flind-us-client'
-            process.env.EXPO_PUBLIC_FLIND_EU_CLIENT_ID = 'flind-eu-client'
-            const { CLOUD_REGIONS } = jest.requireActual<typeof import('./regions')>('./regions')
-            expect(CLOUD_REGIONS.map((r) => [r.host, r.clientId])).toEqual([
-                ['https://us.flind.example', 'flind-us-client'],
-                ['https://eu.flind.example', 'flind-eu-client'],
-            ])
-        })
-    })
+    test.each(['production', 'development', 'preview'] as const)(
+        '%s configures only Flind-owned OAuth endpoints',
+        (variant) => {
+            jest.isolateModules(() => {
+                jest.doMock('@/lib/environment', () => ({
+                    ...jest.requireActual('@/lib/environment'),
+                    buildVariant: variant,
+                }))
+                process.env.EXPO_PUBLIC_FLIND_US_HOST = 'https://us.flind.example'
+                process.env.EXPO_PUBLIC_FLIND_EU_HOST = 'https://eu.flind.example'
+                process.env.EXPO_PUBLIC_FLIND_US_CLIENT_ID = 'flind-us-client'
+                process.env.EXPO_PUBLIC_FLIND_EU_CLIENT_ID = 'flind-eu-client'
+                const { CLOUD_REGIONS } = jest.requireActual<typeof import('./regions')>('./regions')
+                expect(CLOUD_REGIONS.map((r) => [r.host, r.clientId])).toEqual([
+                    ['https://us.flind.example', 'flind-us-client'],
+                    ['https://eu.flind.example', 'flind-eu-client'],
+                ])
+            })
+        }
+    )
 
     test.each([
         ['https://us.posthog.com', 'donor host'],
