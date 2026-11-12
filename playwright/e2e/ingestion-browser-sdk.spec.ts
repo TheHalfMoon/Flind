@@ -84,8 +84,8 @@ test.describe('Flind browser SDK ingestion', () => {
             .toBe(true)
 
         const configuredHost = await page.evaluate(() => {
-            const sdk = (window as unknown as { posthog: { get_config: (name: string) => string } }).posthog
-            return sdk.get_config('api_host')
+            const sdk = (window as unknown as { posthog: { config: { api_host: string } } }).posthog
+            return sdk.config.api_host
         })
         expect(new URL(configuredHost).origin).toBe(new URL(PROXY_BASE_URL).origin)
         // Capture only after the SDK's loaded callback, rather than racing its initialization.
