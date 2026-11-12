@@ -5,7 +5,46 @@ import type { ConfigContext, ExpoConfig } from 'expo/config'
 
 import variantTable from './src/lib/appVariants.json'
 
-const EAS_PROJECT_ID = '4eb57b2f-79f6-4ab0-ae2c-bbd82af2cef9'
+// There is no inherited Expo account, project, update feed, or store submission target.
+const expoOwner = process.env.FLIND_EXPO_OWNER?.trim() ?? ''
+const expoProjectId = process.env.FLIND_EXPO_PROJECT_ID?.trim() ?? ''
+
+function verifyPublishingIdentity(): void {
+    if ((expoOwner === '') !== (expoProjectId === '')) {
+        throw new Error('FLIND_EXPO_OWNER and FLIND_EXPO_PROJECT_ID must be configured together.')
+    }
+    if (expoOwner.toLowerCase() === 'posthog' || expoOwner.toLowerCase() === 'posthog-inc') {
+        throw new Error('Use an Expo account controlled by Flind, not the original application owner.')
+    }
+    if (expoProjectId && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(expoProjectId)) {
+        throw new Error('FLIND_EXPO_PROJECT_ID must be a real Expo project UUID.')
+    }
+}
+
+// Mobile deep-link claims must only name Flind-owned, HTTPS origins. Unconfigured
+// cloud environments do not register upstream associated domains.
+function configuredAppLinkHosts(): string[] {
+    const result: string[] = []
+    for (const name of ['EXPO_PUBLIC_FLIND_US_HOST', 'EXPO_PUBLIC_FLIND_EU_HOST']) {
+        const raw = process.env[name]?.trim()
+        if (!raw) continue
+        let parsed: URL
+        try {
+            parsed = new URL(raw)
+        } catch {
+            throw new Error(name + ' must be an absolute HTTPS origin.')
+        }
+        const host = parsed.hostname.toLowerCase()
+        if (parsed.protocol !== 'https:' || parsed.port || parsed.username || parsed.password ||
+            (parsed.pathname !== '/' && parsed.pathname !== '') || parsed.search || parsed.hash ||
+            host === 'posthog.com' || host.endsWith('.posthog.com') ||
+            host === 'posthog.dev' || host.endsWith('.posthog.dev')) {
+            throw new Error(name + ' must identify a Flind-owned HTTPS origin, without a path or credentials.')
+        }
+        result.push(host)
+    }
+    return [...new Set(result)]
+}
 
 type AppVariant = keyof typeof variantTable.variants
 
@@ -49,9 +88,11 @@ const ICONS: Record<AppVariant, { png: string; adaptive: string; ios: string }> 
     production: { png: './assets/icon.png', adaptive: './assets/adaptive-icon.png', ios: './assets/app.icon' },
 }
 
-const APP_LINK_HOSTS = ['us.posthog.com', 'eu.posthog.com']
+
 
 export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
+    verifyPublishingIdentity()
+    const appLinkHosts = configuredAppLinkHosts()
     const variant = readVariant()
     const { name, idSuffix, scheme } = variantTable.variants[variant]
     const appId = `${variantTable.productionAppIds.ios}${idSuffix}`
@@ -59,15 +100,12 @@ export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
     // The HedgehogWidget target and both Swift readers of the shared store derive the same name from the bundle id.
     const appGroup = `group.${appId}`
     const icons = ICONS[variant]
-    const otaCertificate = './releases/ota-certificate.pem'
-    // Local builds work before key provisioning; the hosted publisher refuses this unsigned configuration.
-    const hasOtaCertificate = existsSync(join(projectRoot, otaCertificate))
 
     return {
         ...config,
         name,
-        slug: 'posthog',
-        owner: 'posthog',
+        slug: 'flind',
+        ...(expoOwner ? { owner: expoOwner } : {}),
         scheme,
         version: '1.13.0',
         orientation: 'default',
@@ -77,7 +115,7 @@ export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
             icon: icons.ios,
             bundleIdentifier: appId,
             // The server lists the matching paths in posthog/mobile_app_links.py.
-            associatedDomains: APP_LINK_HOSTS.map((host) => `applinks:${host}`),
+            associatedDomains: appLinkHosts.map((host) => `applinks:${host}`),
             // Local device builds sign automatically with this team; EAS builds carry their own credentials.
             appleTeamId: process.env.APPLE_TEAM_ID,
             supportsTablet: false,
@@ -131,7 +169,7 @@ export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
                 {
                     action: 'VIEW',
                     autoVerify: true,
-                    data: APP_LINK_HOSTS.map((host) => ({
+                    data: appLinkHosts.map((host) => ({
                         scheme: 'https',
                         host,
                         pathPattern: '/project/.*/inbox/reports/.*-.*',
@@ -186,26 +224,16 @@ export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
             '@bacons/apple-targets',
             './plugins/withIosArchiveScheme',
         ],
-        updates: {
-            url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
-            ...(variant === 'production'
-                ? hasOtaCertificate
-                    ? {
-                          codeSigningCertificate: otaCertificate,
-                          codeSigningMetadata: { keyid: 'main', alg: 'rsa-v1_5-sha256' },
-                      }
-                    : { enabled: false }
-                : {}),
-        },
+        // Until an independent Flind OTA signing and publishing flow is reviewed,
+        // no mobile variant may fetch an inherited Expo update bundle.
+        updates: { enabled: false },
         runtimeVersion: {
             policy: 'appVersion',
         },
         extra: {
             router: {},
             appVariant: variant,
-            eas: {
-                projectId: EAS_PROJECT_ID,
-            },
+            ...(expoProjectId ? { eas: { projectId: expoProjectId } } : {}),
         },
     }
 }
