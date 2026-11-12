@@ -110,6 +110,40 @@ function decodedEvent(packets) {
     return { path: match.path, event: event.event, distinct_id: event.distinct_id, api_key: match.json.api_key }
 }
 
+test('Flind Node SDK CJS and ESM both reject absent or inherited collector origins before network use', async () => {
+    const { createRequire } = await import('node:module')
+    const require = createRequire(import.meta.url)
+    const CjsSDK = require('@flind/node').PostHog
+    const EsmSDK = (await import('@flind/node')).PostHog
+
+    for (const Implementation of [CjsSDK, EsmSDK]) {
+        for (const host of [
+            undefined,
+            '',
+            'https://us.i.posthog.com',
+            'https://us.posthog.com',
+            'https://eu.posthog.com',
+            'https://app.dev.posthog.dev',
+            'http://collector.flind.example',
+            'http://localhost:8010',
+            'https://user:secret@collector.flind.example',
+            'https://collector.flind.example/private',
+            'https://collector.flind.example/?token=secret',
+            'not-a-url',
+        ]) {
+            assert.throws(
+                () => new Implementation(API_TOKEN, {
+                    ...(host === undefined ? {} : { host }),
+                    flushInterval: 0,
+                    enableExceptionAutocapture: false,
+                }),
+                /explicit owned host|valid HTTPS origin|explicit safe, non-donor HTTPS origin/,
+                `${Implementation.name}: ${host}`
+            )
+        }
+    }
+})
+
 test('socket guard rejects non-loopback and incorrect-port connections before dialing', () => {
     const restore = restrictSocketsToLoopback(54321)
     try {
