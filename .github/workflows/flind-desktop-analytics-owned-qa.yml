@@ -18,12 +18,11 @@ jobs:
                 working-directory: products/desktop
         steps:
             - uses: actions/checkout@v4
-            - uses: pnpm/action-setup@v6.0.9
-              with:
-                  package_json_file: products/desktop/package.json
-            - uses: actions/setup-node@v6.4.0
+            - uses: actions/setup-node@v4
               with:
                   node-version-file: products/desktop/.node-version
+            - name: Install repository-pinned pnpm
+              run: npm install --global pnpm@11.28.5
             - name: Install frozen desktop workspace without native postinstall
               run: pnpm install --frozen-lockfile --ignore-scripts
               env:
