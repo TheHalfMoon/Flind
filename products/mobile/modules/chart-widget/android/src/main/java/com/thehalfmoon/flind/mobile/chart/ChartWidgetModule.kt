@@ -1,4 +1,4 @@
-package com.posthog.code.mobile.chart
+package com.thehalfmoon.flind.mobile.chart
 
 import expo.modules.kotlin.exception.Exceptions
 import expo.modules.kotlin.modules.Module
