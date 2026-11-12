@@ -51,7 +51,9 @@ export function SignInScreen(): ReactElement {
         )
         return CLOUD_REGIONS.some((item) => item.id === preferred) ? preferred : (CLOUD_REGIONS[0]?.id ?? 'us')
     })
-    const [selfHosted, setSelfHosted] = useState(() => CLOUD_REGIONS.length === 0 || useAuthStore.getState().region === 'custom')
+    const [selfHosted, setSelfHosted] = useState(
+        () => CLOUD_REGIONS.length === 0 || useAuthStore.getState().region === 'custom'
+    )
     const region: RegionId = selfHosted ? 'custom' : cloudRegion
     const [customHost, setCustomHost] = useState(() => {
         const { region: lastRegion, host } = useAuthStore.getState()
