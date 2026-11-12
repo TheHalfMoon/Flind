@@ -5,7 +5,7 @@ import { apiJson, NotSignedInError, projectPath } from '@/api/client'
 import { TransportError } from '@/api/transport'
 
 import { addSessionEndTask, addSignOutTask, installAuthProvider, useAuthStore } from './authStore'
-import { authorize, OAuthError, refreshTokens } from './oauth'
+import { authorize, OAuthError, refreshTokens, revokeToken } from './oauth'
 import {
     getSessionIdentity,
     getSessionTokens,
@@ -92,6 +92,41 @@ describe('token refresh through the API client', () => {
             },
             { host: HOST, clientId: 'test-client', method: 'oauth', userUuid: 'example-user' }
         )
+    })
+
+    test.each(['authorize', 'refresh'] as const)(
+        '%s token exchanges explicitly reject cross-origin redirects',
+        async (operation) => {
+            fetchMock.mockResolvedValueOnce(
+                new Response(null, {
+                    status: 307,
+                    headers: { Location: 'https://untrusted.example/collect' },
+                })
+            )
+            const promise =
+                operation === 'authorize'
+                    ? authorize({ host: HOST, clientId: 'test-client' })
+                    : refreshTokens({ host: HOST, clientId: 'test-client', refreshToken: 'example-refresh' })
+            await expect(promise).rejects.toMatchObject({
+                name: 'OAuthError',
+                kind: 'rejected',
+            })
+            expect(fetchMock).toHaveBeenCalledWith(
+                `${HOST}/oauth/token`,
+                expect.objectContaining({ method: 'POST', redirect: 'error' })
+            )
+            expect(fetchMock).toHaveBeenCalledTimes(1)
+        }
+    )
+
+    test('token revocation rejects redirects before the network adapter can follow them', async () => {
+        fetchMock.mockResolvedValueOnce(new Response(null, { status: 307, headers: { Location: 'https://untrusted.example' } }))
+        await revokeToken({ host: HOST, clientId: 'test-client', token: 'synthetic-refresh' })
+        expect(fetchMock).toHaveBeenCalledWith(
+            `${HOST}/oauth/revoke`,
+            expect.objectContaining({ method: 'POST', redirect: 'error' })
+        )
+        expect(fetchMock).toHaveBeenCalledTimes(1)
     })
 
     test('concurrent 401s share one refresh, store the rotated pair and retry with the new token', async () => {
