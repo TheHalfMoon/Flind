@@ -28,6 +28,6 @@ jobs:
             - name: Verify TypeScript
               run: pnpm exec tsc --noEmit
             - name: Run AI consent and chat Jest regression tests
-              run: pnpm exec jest src/features/chat src/features/ai --runInBand --ci --passWithNoTests
+              run: pnpm exec jest src/features/chat src/features/ai src/lib/legalLinks.test.ts --runInBand --ci --passWithNoTests
             - name: Verify legal and AI consent source formatting
-              run: pnpm exec biome check src/lib/legalLinks.ts src/features/settings/LegalGroup.tsx src/auth/SignInScreen.tsx src/features/chat/aiAccess.ts src/features/chat/ChatAccessGate.tsx src/features/ai/AiApprovalDialog.tsx src/features/chat/AiConsentSheet.tsx
+              run: pnpm exec biome check src/lib/legalLinks.ts src/lib/legalLinks.test.ts src/features/settings/LegalGroup.tsx src/features/chat/ChatAccessGate.test.tsx src/auth/SignInScreen.tsx src/features/chat/aiAccess.ts src/features/chat/ChatAccessGate.tsx src/features/ai/AiApprovalDialog.tsx src/features/chat/AiConsentSheet.tsx
