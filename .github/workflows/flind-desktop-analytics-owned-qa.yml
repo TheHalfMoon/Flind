@@ -28,8 +28,8 @@ jobs:
               env:
                   NPM_CONFIG_AUDIT: 'false'
                   NPM_CONFIG_FUND: 'false'
-            - name: Build shared analytics origin package
-              run: pnpm --filter @flind/shared build
+            - name: Build agent contracts and shared desktop dependencies
+              run: pnpm build:deps
             - name: Verify desktop shared types
               run: pnpm --filter @flind/shared typecheck
             - name: Verify UI telemetry Vitest
