@@ -2,8 +2,8 @@ import type {
   AnalyticsProperties,
   IAnalytics,
 } from "@flind/platform/analytics";
-import { PostHog } from "posthog-node";
 import { flindAnalyticsOrigin } from "@flind/shared";
+import { PostHog } from "posthog-node";
 import { getAppVersion } from "../utils/env";
 import { uuidv7 } from "../utils/uuidv7";
 
@@ -18,9 +18,7 @@ class PosthogNodeAnalytics implements IAnalytics {
     }
 
     const apiKey = process.env.VITE_FLIND_ANALYTICS_KEY?.trim();
-    const apiHost = flindAnalyticsOrigin(
-      process.env.VITE_FLIND_ANALYTICS_HOST,
-    );
+    const apiHost = flindAnalyticsOrigin(process.env.VITE_FLIND_ANALYTICS_HOST);
 
     if (!apiKey || !apiHost) {
       return;
