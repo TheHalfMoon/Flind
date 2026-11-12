@@ -1,0 +1,33 @@
+name: Flind mobile Tasks runtime implementation QA
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-task-runtime-ownership-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-mobile-task-host-qa-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    mobile:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 30
+        defaults:
+            run:
+                working-directory: products/mobile
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: products/mobile/.node-version
+            - name: Install pinned package manager
+              run: npm install --global pnpm@10.29.3
+            - name: Install frozen mobile workspace
+              run: pnpm install --frozen-lockfile
+            - name: Verify TypeScript
+              run: pnpm exec tsc --noEmit
+            - name: Test project-specific Chat runtime, stored history and no donor fallback
+              run: pnpm exec jest src/features/chat/ChatEntryScreen.test.tsx --runInBand --ci
+            - name: Verify formatting
+              run: pnpm exec biome check src/features/chat/taskRuntimeSelection.ts src/features/chat/ChatEntryScreen.tsx src/features/chat/ChatEntryScreen.test.tsx
