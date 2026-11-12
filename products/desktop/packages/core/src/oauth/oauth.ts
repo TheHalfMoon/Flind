@@ -222,7 +222,17 @@ export class OAuthService {
           client_id: getOauthClientIdFromRegion(region),
         }),
         signal: AbortSignal.timeout(TOKEN_FETCH_TIMEOUT_MS),
+        // A refresh token is a credential. Never follow an HTTP redirect.
+        redirect: "error",
       });
+
+      if (response.status >= 300 && response.status < 400) {
+        return {
+          success: false,
+          error: "Flind OAuth token endpoint attempted a prohibited redirect",
+          errorCode: "unknown_error",
+        };
+      }
 
       if (!response.ok) {
         // 401/403 are always auth failures. A 400 is only a dead refresh token
@@ -387,6 +397,8 @@ export class OAuthService {
           headers: { "Content-Type": "application/json" },
           body,
           signal: AbortSignal.timeout(TOKEN_FETCH_TIMEOUT_MS),
+          // Never forward a one-time authorization code to a redirected host.
+          redirect: "error",
         });
       } catch (error) {
         // fetch threw — DNS/TLS/socket failure. The raw message ("Failed to fetch",
@@ -400,6 +412,12 @@ export class OAuthService {
         if (attempt === TOKEN_FETCH_MAX_ATTEMPTS - 1) break;
         await sleepWithBackoff(attempt, TOKEN_FETCH_BACKOFF);
         continue;
+      }
+
+      if (response.status >= 300 && response.status < 400) {
+        // A native/server adapter that exposes the redirect must fail closed.
+        // Do not retry the same one-time code after an invalid redirect.
+        throw new Error("Flind OAuth token endpoint attempted a prohibited redirect");
       }
 
       if (response.ok) {
