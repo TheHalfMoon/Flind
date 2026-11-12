@@ -140,7 +140,7 @@ enum HogSelection {
 }
 
 enum ChoreographyLoader {
-    private static let logger = Logger(subsystem: "com.posthog.code.mobile.HedgehogWidget", category: "choreography")
+    private static let logger = Logger(subsystem: "com.thehalfmoon.flind.mobile.HedgehogWidget", category: "choreography")
 
     static func load() -> Choreography {
         guard let json = SharedStore.defaults?.string(forKey: SharedStore.choreographyKey) else {

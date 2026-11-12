@@ -3,7 +3,7 @@ import WidgetKit
 
 // The suite, keys and widget kind must match targets/HedgehogWidget and modules/hedgehog-widget/README.md.
 // app.config.ts names the App Group "group." plus the bundle id, so each app variant (dev, preview, store) has its own.
-private let suiteName = "group.\(Bundle.main.bundleIdentifier ?? "com.posthog.code.mobile")"
+private let suiteName = "group.\(Bundle.main.bundleIdentifier ?? "com.thehalfmoon.flind.mobile")"
 private let choreographyKey = "choreography"
 private let widgetKind = "HedgehogWidget"
 

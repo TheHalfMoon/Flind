@@ -5,7 +5,7 @@ import Security
 /// Foundation, CryptoKit and Security only, so scripts/check_chart_widget.swift can compile it.
 enum ChartStore {
     static let catalogKey = "chart.catalog"
-    static let keychainService = "com.posthog.code.mobile.chart-widget"
+    static let keychainService = "com.thehalfmoon.flind.mobile.chart-widget"
     static let keychainAccount = "credentials"
 
     static func snapshotKey(_ pinId: String) -> String { "chart.snapshot.\(pinId)" }
