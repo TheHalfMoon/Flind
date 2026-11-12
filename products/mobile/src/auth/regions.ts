@@ -25,9 +25,20 @@ const configuredCloudRegions: readonly CloudRegion[] = [
     { id: 'us', label: 'United States', flag: '🇺🇸', host: process.env.EXPO_PUBLIC_FLIND_US_HOST?.trim() ?? '', clientId: US_CLIENT_ID },
     { id: 'eu', label: 'European Union', flag: '🇪🇺', host: process.env.EXPO_PUBLIC_FLIND_EU_HOST?.trim() ?? '', clientId: EU_CLIENT_ID },
 ]
-export const CLOUD_REGIONS: readonly CloudRegion[] = configuredCloudRegions.filter(
-    (region) => Boolean(region.host && region.clientId) && validateHost(region.host, false).ok
-)
+export const CLOUD_REGIONS: readonly CloudRegion[] = configuredCloudRegions.flatMap((region) => {
+    const validation = validateHost(region.host, false)
+    // Build-time cloud configuration must be an explicit HTTPS origin, not a
+    // relative address, nested path, URL with credentials, or donor endpoint.
+    if (
+        !region.clientId ||
+        !region.host.startsWith('https://') ||
+        !validation.ok ||
+        validation.host !== region.host.replace(/\/+$/, '')
+    ) {
+        return []
+    }
+    return [{ ...region, host: validation.host }]
+})
 
 // The id `custom` is persisted in AsyncStorage by the auth store, so it keeps its name while the label changes.
 export const REGIONS: readonly Region[] = [
