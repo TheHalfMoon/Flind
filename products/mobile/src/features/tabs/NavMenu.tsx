@@ -77,7 +77,7 @@ export function NavMenu({
     navList,
     onClose,
     onSettings,
-    status: { summary: statusUpdate, indicatorColor },
+    status: { summary: statusUpdate, indicatorColor, pageUrl: statusPageUrl },
     onOpenStatus,
     onSignOut,
     confirmingSignOut,
@@ -152,10 +152,11 @@ export function NavMenu({
                         />
                     ) : (
                         <>
-                            <Pressable44
-                                accessibilityRole="link"
-                                accessibilityLabel={
-                                    statusUpdate
+                            {statusPageUrl ? (
+                                <Pressable44
+                                    accessibilityRole="link"
+                                    accessibilityLabel={
+                                        statusUpdate
                                         ? `Flind status: ${statusUpdate}`
                                         : indicatorColor
                                           ? 'Flind status: All systems operational'
@@ -182,8 +183,9 @@ export function NavMenu({
                                     ) : null}
                                 </View>
                                 <ExternalLinkIcon size={iconSizes.small} color={colors.tertiary} />
-                            </Pressable44>
-                            <View style={[styles.divider, styles.sectionDivider]} />
+                                </Pressable44>
+                            ) : null}
+                            {statusPageUrl ? <View style={[styles.divider, styles.sectionDivider]} /> : null}
                             {navList ? (
                                 <>
                                     <MenuRow
