@@ -1,4 +1,4 @@
-import { PostHog } from 'posthog-node'
+import { PostHog } from '@flind/node'
 
 import { Team } from '~/types'
 
