@@ -14,7 +14,6 @@ function groupExplainer(label: string): SidebarProductMeta {
     return {
         description: `Your project tracks ${plural} as a group type. Each one collects its own events, properties, and people, so you can look at usage above the level of a single person.`,
         example: `Find the ${plural} with the most activity this month.`,
-        docsHref: 'https://posthog.com/docs/product-analytics/group-analytics',
     }
 }
 
