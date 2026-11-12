@@ -1,14 +1,13 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { IconPauseFilled, IconPlayFilled, IconRefresh, IconTerminal } from '@flind/icons'
-import { LemonButton, Link } from '@flind/lemon-ui'
+import { IconPauseFilled, IconPlayFilled, IconRefresh } from '@flind/icons'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { LiveUserCount } from 'lib/components/LiveUserCount'
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 import { usePageVisibility } from 'lib/hooks/usePageVisibility'
-import { LemonBanner } from 'lib/lemon-ui/LemonBanner'
 import { ActivitySceneHeader } from 'scenes/activity/ActivitySceneHeader'
 import { sceneConfigurations } from 'scenes/scenes'
 import { Scene, SceneExport } from 'scenes/sceneTypes'
@@ -57,19 +56,7 @@ export function LiveEventsTable(): JSX.Element {
                 name={sceneConfigurations[Scene.Activity].name}
                 description={sceneConfigurations[Scene.Activity].description}
                 iconType={sceneConfigurations[Scene.LiveEvents].iconType}
-                banner={
-                    <LemonBanner
-                        type="info"
-                        className="mb-4"
-                        icon={<IconTerminal />}
-                        dismissKey="livestream-tui-banner"
-                    >
-                        Stream live events directly in your terminal with <code>posthog-live</code>.{' '}
-                        <Link to="https://posthog.com/docs/activity#terminal-live-events-posthog-live" target="_blank">
-                            Learn more
-                        </Link>
-                    </LemonBanner>
-                }
+
             />
             <div className="mb-4 flex w-full justify-between items-center">
                 <div className="flex gap-2">
