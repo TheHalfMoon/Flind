@@ -1,0 +1,39 @@
+name: Flind browser OAuth implementation QA
+on:
+    push:
+        branches:
+            - 'flind-ci/web-oauth-token-no-redirect-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-web-oauth-redirect-qa-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    web:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 40
+        defaults:
+            run:
+                working-directory: products/desktop
+        steps:
+            - uses: actions/checkout@v4
+            - uses: pnpm/action-setup@v6.0.9
+              with:
+                  package_json_file: products/desktop/package.json
+            - uses: actions/setup-node@v6.4.0
+              with:
+                  node-version-file: products/desktop/.node-version
+            - name: Install frozen workspace without native scripts
+              run: pnpm install --frozen-lockfile --ignore-scripts
+              env:
+                  NPM_CONFIG_AUDIT: 'false'
+                  NPM_CONFIG_FUND: 'false'
+            - name: Build reusable Flind dependencies
+              run: pnpm build:deps
+            - name: Run actual browser OAuth Vitest
+              run: pnpm exec vitest run --config apps/web/vitest.config.ts src/web-oauth-flow.test.ts
+            - name: Browser TypeScript verification
+              run: pnpm --filter @flind/web typecheck
+            - name: Style verification
+              run: pnpm exec biome check apps/web/src/web-oauth-flow.ts apps/web/src/web-oauth-flow.test.ts apps/web/vitest.config.ts
