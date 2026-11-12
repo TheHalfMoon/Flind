@@ -1,5 +1,3 @@
-import { Link } from '@flind/lemon-ui'
-
 import { defineKnownException } from '../registry'
 import { KnownExceptionBanner } from './base'
 
@@ -10,15 +8,9 @@ defineKnownException({
     render() {
         return (
             <KnownExceptionBanner>
-                This error occurs when JavaScript exceptions are thrown from a third-party script but details are hidden
-                due to cross-origin restrictions.{' '}
-                <Link
-                    to="https://posthog.com/docs/error-tracking/common-questions#what-is-a-script-error-with-no-stack-traces"
-                    target="_blank"
-                >
-                    Read our docs
-                </Link>{' '}
-                to learn how to get the full exception context.
+                Browsers can hide details of exceptions thrown in cross-origin scripts. Check the browser console and
+                configure the script's <code>crossorigin="anonymous"</code> attribute together with appropriate CORS
+                response headers, or serve the script from the same origin, to make stack details available.
             </KnownExceptionBanner>
         )
     },

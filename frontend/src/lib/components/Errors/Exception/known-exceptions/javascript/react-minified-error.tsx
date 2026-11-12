@@ -2,28 +2,24 @@ import { Link } from '@flind/lemon-ui'
 
 import { defineKnownException } from '../registry'
 import { KnownExceptionBanner } from './base'
+import { extractReactErrorCode } from './react-minified-error-code'
 
 defineKnownException({
     match(exception) {
-        return !!exception.value.match(/React(?:\.js)?(?: DOM)?(?: production)? error #(\d+)/i)
+        return extractReactErrorCode(exception.value) !== null
     },
     render(exception) {
-        const errorCode = exception.value.match(/React(?:\.js)?(?: DOM)?(?: production)? error #(\d+)/i)
+        const errorCode = extractReactErrorCode(exception.value)
         return (
             <KnownExceptionBanner>
-                React minifies error messages as part of its production build process to reduce bundle size, and does
-                not include a stack trace. You can visit the{' '}
-                <Link to={`https://react.dev/errors/${errorCode}`} target="_blank">
-                    React docs
-                </Link>{' '}
-                to see the full description of the error or{' '}
-                <Link
-                    to="https://posthog.com/docs/error-tracking/common-questions#what-is-a-minified-react-error-with-no-stack-traces"
-                    target="_blank"
-                >
-                    read our docs
-                </Link>{' '}
-                to learn how you might be able to debug this issue.
+                React shortens error messages in production builds.{' '}
+                {errorCode && (
+                    <Link to={'https://react.dev/errors/' + errorCode} target="_blank">
+                        Decode this error in the official React documentation
+                    </Link>
+                )}
+                {errorCode ? '. ' : ''}
+                Reproduce the issue with a development build to inspect a full error message and useful stack trace.
             </KnownExceptionBanner>
         )
     },
