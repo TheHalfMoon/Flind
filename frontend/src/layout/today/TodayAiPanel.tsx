@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
-import { IconExternal, IconLock } from '@flind/icons'
-import { Button, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@flind/quill'
+import { IconLock } from '@flind/icons'
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@flind/quill'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { PhaiSidePanelChat } from 'scenes/max/components/PhaiSidePanelChat'
@@ -34,23 +34,6 @@ export function TodayAiPanel(): JSX.Element {
                         instance and restart Flind to start chatting.
                     </EmptyDescription>
                 </EmptyHeader>
-                <EmptyContent>
-                    <Button
-                        variant="outline"
-                        render={
-                            // eslint-disable-next-line react/forbid-elements
-                            <a
-                                href="https://posthog.com/docs/self-host/configure/environment-variables?utm_medium=in-product&utm_campaign=max-not-configured"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                data-attr="max-not-configured-configure-key"
-                            />
-                        }
-                    >
-                        Configuring environment variables
-                        <IconExternal />
-                    </Button>
-                </EmptyContent>
             </Empty>
         )
     }
