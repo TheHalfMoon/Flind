@@ -1,0 +1,28 @@
+name: Flind exception guidance isolation
+
+on:
+    push:
+        branches:
+            - 'flind-ci/error-banners-local-guidance-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-error-banner-help-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    check:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Check four local exception guidance banners
+              run: |
+                  node --check frontend/bin/flind-error-banner-links.test.mjs
+                  node --test frontend/bin/flind-error-banner-links.test.mjs
