@@ -113,9 +113,12 @@ describe('mobile AI runtime selection', () => {
         ['https://tasks.flind.example', '42', 'https://tasks.flind.example', 7],
         ['https://user:secret@tasks.flind.example', '42', 'https://tasks.flind.example', 42],
         ['', '42', 'https://tasks.flind.example', 42],
-    ])('rejects absent, unsafe or mismatched Tasks assignment: host=%s project=%s', (configuredHost, configuredId, host, projectId) => {
-        expect(isTasksRuntimeProject({ host, projectId }, configuredHost, configuredId)).toBe(false)
-    })
+    ])(
+        'rejects absent, unsafe or mismatched Tasks assignment: host=%s project=%s',
+        (configuredHost, configuredId, host, projectId) => {
+            expect(isTasksRuntimeProject({ host, projectId }, configuredHost, configuredId)).toBe(false)
+        }
+    )
 
     test.each([
         'https://posthog.com',
