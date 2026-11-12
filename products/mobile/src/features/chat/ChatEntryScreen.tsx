@@ -13,6 +13,7 @@ import { iconSizes } from '@/ui/tokens'
 import { ChatHeader } from './ChatHeader'
 import { ChatScreen } from './ChatScreen'
 import { ClassicChatScreen } from './classic/ClassicChatScreen'
+import { isTasksRuntimeProject } from './taskRuntimeSelection'
 
 type ChatEntryScreenProps = ComponentProps<typeof ChatScreen> & { conversationId?: string }
 
@@ -85,7 +86,7 @@ export function ChatEntryScreen({ conversationId, ...props }: ChatEntryScreenPro
                 <ChatHeader webUrl={undefined} onBack={props.onBack} onNewChat={restart} />
             </View>
         )
-    return scope.host === 'https://us.posthog.com' && scope.projectId === 2 ? (
+    return isTasksRuntimeProject(scope) ? (
         <ChatScreen
             key={generation}
             {...props}
