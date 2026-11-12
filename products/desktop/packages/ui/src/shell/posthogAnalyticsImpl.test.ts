@@ -29,7 +29,8 @@ async function loadAnalytics() {
 
 beforeEach(() => {
   vi.clearAllMocks();
-  vi.stubEnv("VITE_POSTHOG_API_KEY", "test-key");
+  vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "test-key");
+  vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
 });
 
 afterEach(() => {
@@ -326,7 +327,7 @@ describe("metrics.network.attributes callback", () => {
   it.each(["https://us.posthog.com", "https://eu.posthog.com"])(
     "keeps API paths for %s with a separate analytics host",
     async (origin) => {
-      vi.stubEnv("VITE_POSTHOG_API_HOST", "https://internal-c.posthog.com");
+      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
       const { initializePostHog } = await loadAnalytics();
 
       initializePostHog();
@@ -358,6 +359,44 @@ describe("metrics.network.attributes callback", () => {
   });
 });
 
+describe("Flind analytics destination isolation", () => {
+  it.each([
+    "",
+    "https://internal-c.posthog.com",
+    "https://us.i.posthog.com",
+    "http://telemetry.flind.example",
+    "https://user:password@telemetry.flind.example",
+    "https://telemetry.flind.example/ingest",
+    "https://telemetry.flind.example/?token=synthetic",
+    "not-a-url",
+  ])("disables the renderer telemetry client for an unowned or unsafe host: %s", async (host) => {
+    vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", host);
+    const { initializePostHog } = await loadAnalytics();
+    initializePostHog();
+    expect(mockPosthog.init).not.toHaveBeenCalled();
+  });
+
+  it("uses Flind-owned API and UI endpoints without inherited defaults", async () => {
+    const { initializePostHog } = await loadAnalytics();
+    initializePostHog();
+    expect(mockPosthog.init).toHaveBeenCalledWith(
+      "test-key",
+      expect.objectContaining({
+        api_host: "https://telemetry.flind.example",
+        ui_host: "https://telemetry.flind.example",
+      }),
+    );
+  });
+
+  it("ignores inherited upstream credentials even when provided in a build", async () => {
+    vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "");
+    vi.stubEnv("VITE_POSTHOG_API_KEY", "legacy-key-not-for-Flind");
+    const { initializePostHog } = await loadAnalytics();
+    initializePostHog();
+    expect(mockPosthog.init).not.toHaveBeenCalled();
+  });
+});
+
 describe("initializePostHog", () => {
   it("is idempotent across repeat calls", async () => {
     const { initializePostHog } = await loadAnalytics();
@@ -369,7 +408,7 @@ describe("initializePostHog", () => {
   });
 
   it("does nothing when no API key is set", async () => {
-    vi.stubEnv("VITE_POSTHOG_API_KEY", "");
+    vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "");
     const { initializePostHog, onFeatureFlagsLoaded } = await loadAnalytics();
 
     const cb = vi.fn();
