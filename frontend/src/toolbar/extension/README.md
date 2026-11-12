@@ -13,12 +13,14 @@ pnpm build:toolbar-extension        # one build
 pnpm watch:toolbar-extension        # rebuild on change
 ```
 
-The build writes `dist/toolbar-extension/chrome/`, and zips it into `dist/toolbar-extension/posthog-toolbar-chrome-<version>.zip` for the Chrome Web Store.
+The build writes `dist/toolbar-extension/chrome/`, and zips it into `dist/toolbar-extension/flind-toolbar-chrome-<version>.zip` for the Chrome Web Store.
 
 A pull request that changes the extension runs the "Toolbar extension" workflow.
 Download the `toolbar-extension` artifact from the run to install that build without building it yourself.
 
 The extension needs Chrome 116 or later.
+
+The 128×128 Chrome extension icon is `frontend/public/icons/flind-128x128.png`, rendered from Flind's canonical `frontend/public/flind-icon.svg` mark. The extension must not ship the inherited upstream icon as its active identity. The existing legacy-named source asset is retained for compatibility until all historical references are migrated, but is not selected by the Flind extension build.
 
 ### Trusted Flind app origins
 
