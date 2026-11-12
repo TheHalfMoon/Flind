@@ -29,7 +29,9 @@ export function AiApprovalDialog(): ReactElement | null {
                             onContinue={() => void checkAiApproval(true)}
                             onNotNow={cancelAiApproval}
                             onOpenPrivacyPolicy={
-                                PRIVACY_POLICY_URL ? () => openLegalLink('privacy', PRIVACY_POLICY_URL, 'settings') : null
+                                PRIVACY_POLICY_URL
+                                    ? () => openLegalLink('privacy', PRIVACY_POLICY_URL, 'settings')
+                                    : null
                             }
                         />
                     ) : (
