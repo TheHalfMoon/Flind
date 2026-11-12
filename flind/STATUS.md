@@ -6,6 +6,13 @@ run or test result on that commit; anything else is marked as planned or unverif
 
 Last updated: 2026-11-12.
 
+## Activity UI rebrand checkpoint (2026-11-12)
+
+- **PR #30 (draft):** removes inherited upstream documentation destinations from Persons/Cohorts tooltips and person-property Event Details; removes promotion of the donor `posthog-live` CLI in Live Events. Internal navigation, property tables, stream controls and event feed remain. No Flind docs or CLI endpoint is invented.
+- **Local verification:** Windows isolated fetch of exact PR commit `9299c8b37f46a9f844a6d5db6c7ffd40c695f8a5`: Python test module syntax compiled and 7 focused source-level assertions passed. This is **not** a frontend runtime or browser E2E pass.
+- **CI requested:** brand-audit run 43144011412 and E2E run 43144015708 were dispatched for the PR branch; results pending when this checkpoint was written. After this ledger commit, those runs will target the earlier head, so exact-final-head requalification remains required.
+- **Merge/release:** independent review and all applicable exact-head checks required. No merge or public release authorized.
+
 ## Stage 3 qualification checkpoint (2026-11-12)
 
 - **Main:** PR #23 merged as `b9e66abbbec7581e073de1ba933e8f11eab4f1a2`. The `@flind/icons` workspace migration passed exact-head frontend, backend, upstream, E2E, brand-audit, rename-ratchet, and runtime-migration workflows; ESM and CommonJS React smoke tests also passed on Node 26.
