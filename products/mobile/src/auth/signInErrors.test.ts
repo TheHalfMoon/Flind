@@ -12,7 +12,7 @@ import {
 } from './signInErrors'
 
 jest.mock('expo/fetch', () => ({ fetch: jest.fn() }))
-jest.mock('expo-auth-session', () => ({ AuthRequest: jest.fn(), makeRedirectUri: () => 'posthog://callback' }))
+jest.mock('expo-auth-session', () => ({ AuthRequest: jest.fn(), makeRedirectUri: () => 'flind://callback' }))
 
 function accountError(cause: unknown): AccountLoadError {
     return new AccountLoadError(accountLoadKind(cause), 'Shown to the user')

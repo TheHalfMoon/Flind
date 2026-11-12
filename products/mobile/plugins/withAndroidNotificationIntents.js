@@ -4,7 +4,7 @@ const { withMainActivity } = require('expo/config-plugins')
 // notification queue before that delegate can drop them: https://github.com/expo/expo/issues/49254.
 const INTENT_HANDLER = `
   override fun onNewIntent(intent: android.content.Intent) {
-    com.posthog.mobile.notifications.NotificationIntentStore.handleIntent(this, intent, false)
+    com.thehalfmoon.flind.mobile.notifications.NotificationIntentStore.handleIntent(this, intent, false)
     setIntent(intent)
     super.onNewIntent(intent)
   }
@@ -12,7 +12,7 @@ const INTENT_HANDLER = `
 
 // Replay suppression and the pending tap have separate lifetimes: routing acknowledges only the pending tap.
 const INITIAL_INTENT = `
-    com.posthog.mobile.notifications.NotificationIntentStore.handleIntent(this, intent, true)
+    com.thehalfmoon.flind.mobile.notifications.NotificationIntentStore.handleIntent(this, intent, true)
 `
 
 const CREATE_ANCHOR = 'super.onCreate(null)'

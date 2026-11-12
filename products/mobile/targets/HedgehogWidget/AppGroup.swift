@@ -10,7 +10,7 @@ enum AppGroup {
     }
 
     static let appId: String = appId(
-        fromExtensionBundleId: Bundle.main.bundleIdentifier ?? "com.posthog.code.mobile\(extensionSuffix)"
+        fromExtensionBundleId: Bundle.main.bundleIdentifier ?? "com.thehalfmoon.flind.mobile\(extensionSuffix)"
     )
 
     static let suiteName = "group.\(appId)"

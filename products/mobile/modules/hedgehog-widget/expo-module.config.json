@@ -4,6 +4,6 @@
         "modules": ["HedgehogWidgetModule"]
     },
     "android": {
-        "modules": ["com.posthog.code.mobile.hedgehog.HedgehogWidgetModule"]
+        "modules": ["com.thehalfmoon.flind.mobile.hedgehog.HedgehogWidgetModule"]
     }
 }

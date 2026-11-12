@@ -4,6 +4,6 @@
         "modules": ["ChartWidgetModule"]
     },
     "android": {
-        "modules": ["com.posthog.code.mobile.chart.ChartWidgetModule"]
+        "modules": ["com.thehalfmoon.flind.mobile.chart.ChartWidgetModule"]
     }
 }

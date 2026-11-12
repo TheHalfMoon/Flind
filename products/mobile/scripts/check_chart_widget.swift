@@ -316,8 +316,8 @@ struct CheckChartWidget {
         let key = SymmetricKey(size: .bits256)
         let store = ChartStorage(defaults: raw, key: key)
         defer { raw.removePersistentDomain(forName: suite) }
-        check("app group from the extension id", AppGroup.appId(fromExtensionBundleId: "com.posthog.code.mobile.dev.HedgehogWidget") == "com.posthog.code.mobile.dev"
-              && AppGroup.appId(fromExtensionBundleId: "com.posthog.code.mobile") == "com.posthog.code.mobile")
+        check("app group from the extension id", AppGroup.appId(fromExtensionBundleId: "com.thehalfmoon.flind.mobile.dev.HedgehogWidget") == "com.thehalfmoon.flind.mobile.dev"
+              && AppGroup.appId(fromExtensionBundleId: "com.thehalfmoon.flind.mobile") == "com.thehalfmoon.flind.mobile")
         store.set(catalogJSON, forKey: ChartStore.catalogKey)
         let catalog = try require(ChartStore.catalog(store: store), "stored catalog")
         let pin = try require(catalog.pin(id: "pin-a"), "stored pin")
@@ -461,7 +461,7 @@ struct CheckChartWidget {
 
     static func checkState(now: Date) throws {
         let catalog = try require(ChartStore.decodeCatalog(catalogJSON), "catalog")
-        let links = ChartLinks(scheme: ChartLinks.scheme(forAppId: "com.posthog.code.mobile"), family: .medium)
+        let links = ChartLinks(scheme: ChartLinks.scheme(forAppId: "com.thehalfmoon.flind.mobile"), family: .medium)
         let signups = ChartSelection(id: "pin-a", name: "Signups")
         let nowMs = now.timeIntervalSince1970 * 1000
         func state(
@@ -570,8 +570,8 @@ struct CheckChartWidget {
         let dashboard = ChartResolver.content(primary: ChartSelection(id: "pin-b", name: "Product KPIs"), extras: [],
                                               store: state(snapshots: ["pin-b": cached]), links: links, now: now)
         check("link: dashboard pin", dashboard.primary.link.absoluteString == "posthog://views/dashboard/12?from=widget&family=medium")
-        check("link: scheme per variant", ChartLinks.scheme(forAppId: "com.posthog.code.mobile.dev") == "posthog-dev"
-              && ChartLinks.scheme(forAppId: "com.posthog.code.mobile.preview") == "posthog-preview")
+        check("link: scheme per variant", ChartLinks.scheme(forAppId: "com.thehalfmoon.flind.mobile.dev") == "posthog-dev"
+              && ChartLinks.scheme(forAppId: "com.thehalfmoon.flind.mobile.preview") == "posthog-preview")
 
         let fresh = ChartSample.snapshot(pinId: "pin-a", value: "1", delta: 0, deltaText: "No change", values: [1], now: now.addingTimeInterval(-60))
         let pins = ChartResolver.pinsToFetch(

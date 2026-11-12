@@ -3,11 +3,11 @@ plugins {
   id 'expo-module-gradle-plugin'
 }
 
-group = 'com.posthog.code.mobile'
+group = 'com.thehalfmoon.flind.mobile'
 version = '1.0.0'
 
 android {
-  namespace "com.posthog.code.mobile.chart"
+  namespace "com.thehalfmoon.flind.mobile.chart"
   defaultConfig {
     versionCode 1
     versionName '1.0.0'

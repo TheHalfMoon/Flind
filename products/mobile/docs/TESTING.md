@@ -35,8 +35,8 @@ Keep the returned project and object IDs for your native checks.
 An existing account with a custom password is preserved and needs its existing sign-in details.
 For another existing account, seed with `python manage.py seed_local_inbox_data --team-id <project-id> --user-id <user-id> --json`.
 
-The second command checks the default test account over HTTP: password login, normal CSRF-protected consent, PKCE code exchange for the registered `posthog-dev://callback`, bearer-authenticated account/project/Inbox/Chat reads, refresh, and revocation.
-Use `--callback posthog://callback` or `--callback posthog-preview://callback` to check another registered mobile scheme.
+The second command checks the default test account over HTTP: password login, normal CSRF-protected consent, PKCE code exchange for the registered `flind-dev://callback`, bearer-authenticated account/project/Inbox/Chat reads, refresh, and revocation.
+Use `--callback flind://callback` or `--callback flind-preview://callback` to check another registered mobile scheme.
 It prints a safe summary and revokes the temporary OAuth session.
 It does not exercise the native browser sheet, device callback delivery, app storage, or screen rendering.
 
@@ -100,7 +100,7 @@ Use Xcode 27.1 or newer with an iPhone Duo runtime. Capture matching native befo
 
 Use `.argent/flows/screenshot-capture.yaml` to capture Inbox, Report, Handoff, Chat with the keyboard,
 and Views from repository demo data. It launches the production app identity on either platform:
-`com.posthog.code.mobile` on iOS and `com.posthog.mobile` on Android. It leaves Views open.
+`com.thehalfmoon.flind.mobile` on iOS and `com.thehalfmoon.flind.mobile` on Android. It leaves Views open.
 `.argent/flows/screenshot-landscape.yaml` continues from there on iOS and captures the same surfaces after rotation.
 These flows collect review images; they do not perform pixel-diff assertions or replace the smoke flows.
 
@@ -303,8 +303,8 @@ without removing the task, substitute the installed variant's package in these c
 
 ```sh
 adb shell input keyevent KEYCODE_HOME
-adb shell am kill com.posthog.mobile
-adb shell pidof com.posthog.mobile # must print nothing
+adb shell am kill com.thehalfmoon.flind.mobile
+adb shell pidof com.thehalfmoon.flind.mobile # must print nothing
 ```
 
 Disconnect the debugger if it keeps the development build alive.
@@ -449,7 +449,7 @@ Argent's `argent-create-flow` skill describes the rules. Replay the whole flow b
   The dev client tried the Mac's network address. Open the local address instead:
 
   ```sh
-  xcrun simctl openurl booted "exp+posthog://expo-development-client/?url=http%3A%2F%2Flocalhost%3A8181"
+  xcrun simctl openurl booted "exp+flind://expo-development-client/?url=http%3A%2F%2Flocalhost%3A8181"
   ```
 
 - **The app closes at launch, and the log says "UIScene life cycle is required".**
@@ -532,11 +532,11 @@ recording: a correlation event does not prove that either session has a replay.
    `mobile_session_handoff_started`. Compare the events' SDK-assigned `$session_id` values:
    they are distinct, and neither identity has changed because of the link.
 3. To exercise web-to-native from a local test page in the running Flind web app, add a normal
-   anchor with `href="posthog-dev://inbox"` (or `posthog-preview://inbox`) using browser developer
+   anchor with `href="flind-dev://inbox"` (or `flind-preview://inbox`) using browser developer
    tools. Click it. The page's delegated click handler adds a marker and emits
    `web_session_handoff_started`. Native strips the marker and emits
    `mobile_session_handoff_received`, including on cold start. No new web navigation button
-   is shipped by this prototype. Production `posthog://` links are excluded.
+   is shipped by this prototype. Production `flind://` links are excluded.
 4. Return to the original client and confirm its own session continues within SDK timeouts.
    After expiration, confirm its SDK starts a new session. Log out and switch accounts;
    authentication and normal identity reset must remain independent of the handoff.

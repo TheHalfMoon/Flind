@@ -5,11 +5,11 @@ import WidgetKit
 // The suite, keys, keychain item and widget kind must match targets/HedgehogWidget/Chart*.swift and
 // modules/chart-widget/README.md.
 // app.config.ts names the App Group "group." plus the bundle id, so each app variant (dev, preview, store) has its own.
-private let suiteName = "group.\(Bundle.main.bundleIdentifier ?? "com.posthog.code.mobile")"
+private let suiteName = "group.\(Bundle.main.bundleIdentifier ?? "com.thehalfmoon.flind.mobile")"
 private let catalogKey = "chart.catalog"
 private let snapshotKeyPrefixes = ["chart.snapshot.", "chart.snapshotError.", "chart.pinProject."]
 private let widgetKind = "ChartWidget"
-private let keychainService = "com.posthog.code.mobile.chart-widget"
+private let keychainService = "com.thehalfmoon.flind.mobile.chart-widget"
 private let keychainAccount = "credentials"
 
 enum ChartWidgetKeychainError: Error, CustomStringConvertible {

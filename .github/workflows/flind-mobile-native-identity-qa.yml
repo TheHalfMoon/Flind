@@ -1,0 +1,33 @@
+name: Flind mobile native identity implementation QA
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-native-identity-migration-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-mobile-native-identity-qa-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    mobile:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 30
+        defaults:
+            run:
+                working-directory: products/mobile
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: products/mobile/.node-version
+            - name: Install pinned pnpm
+              run: npm install --global pnpm@10.29.3
+            - name: Install frozen mobile workspace
+              run: pnpm install --frozen-lockfile
+            - name: Verify TypeScript
+              run: pnpm exec tsc --noEmit
+            - name: Test independent app IDs, deep links and session handoff
+              run: pnpm exec jest src/lib/environment.test.ts src/lib/deepLinkKind.test.ts src/lib/sessionHandoff.test.ts --runInBand --ci
+            - name: Verify changed TS/JSON formatting
+              run: pnpm exec biome check src/lib/environment.ts src/lib/environment.test.ts src/lib/deepLinkKind.ts src/lib/deepLinkKind.test.ts src/lib/sessionHandoff.ts src/lib/sessionHandoff.test.ts src/lib/appVariants.json app/+native-intent.tsx shared/handoffProtocol.ts

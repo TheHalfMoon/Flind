@@ -8,9 +8,36 @@ export type { AppVariant } from './appVariants'
 
 export type HostKind = 'cloud-us' | 'cloud-eu' | 'local' | 'custom'
 
-const CLOUD_HOSTNAMES: Record<string, HostKind> = {
-    'us.posthog.com': 'cloud-us',
-    'eu.posthog.com': 'cloud-eu',
+// Never classify a third-party original-service host as Flind Cloud. Only
+// explicitly configured Flind HTTPS origins get a cloud badge.
+const CLOUD_HOSTNAMES: Record<string, HostKind> = {}
+for (const [origin, kind] of [
+    [process.env.EXPO_PUBLIC_FLIND_US_HOST, 'cloud-us'],
+    [process.env.EXPO_PUBLIC_FLIND_EU_HOST, 'cloud-eu'],
+] as const) {
+    if (!origin?.trim()) continue
+    try {
+        const url = new URL(origin.trim())
+        const host = url.hostname.toLowerCase()
+        if (
+            url.protocol !== 'https:' ||
+            url.port ||
+            url.username ||
+            url.password ||
+            url.pathname !== '/' ||
+            url.search ||
+            url.hash ||
+            host === 'posthog.com' ||
+            host.endsWith('.posthog.com') ||
+            host === 'posthog.dev' ||
+            host.endsWith('.posthog.dev')
+        ) {
+            continue
+        }
+        CLOUD_HOSTNAMES[host] = kind
+    } catch {
+        // Missing or invalid deployment configuration is not a Cloud identity.
+    }
 }
 
 /**

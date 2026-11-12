@@ -33,7 +33,7 @@ class TestSetupTasksOAuth(TestCase):
                     "authorization_grant_type": OAuthApplication.GRANT_AUTHORIZATION_CODE,
                     "redirect_uris": (
                         "http://localhost:8237/callback http://localhost:8239/callback "
-                        "posthog://callback posthog-dev://callback posthog-preview://callback"
+                        "flind://callback flind-dev://callback flind-preview://callback"
                     ),
                 },
             ),
@@ -128,5 +128,5 @@ class TestSetupTasksOAuth(TestCase):
         app = OAuthApplication.objects.get(client_id=ARRAY_APP_CLIENT_ID_DEV)
         assert app.redirect_uris == (
             "http://localhost:8237/callback http://localhost:9999/callback "
-            "http://localhost:8239/callback posthog://callback posthog-dev://callback posthog-preview://callback"
+            "http://localhost:8239/callback flind://callback flind-dev://callback flind-preview://callback"
         )

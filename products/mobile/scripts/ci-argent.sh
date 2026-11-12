@@ -20,7 +20,7 @@ if [[ $(argent --version) != '0.30.1' ]]; then
 fi
 
 bundle_id=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$binary/Info.plist")
-if [[ "$bundle_id" != 'com.posthog.code.mobile' || ! -f "$binary/main.jsbundle" ]]; then
+if [[ "$bundle_id" != 'com.thehalfmoon.flind.mobile' || ! -f "$binary/main.jsbundle" ]]; then
     echo 'Expected the bundled production-identity simulator app from ci-argent-build.sh.' >&2
     exit 1
 fi

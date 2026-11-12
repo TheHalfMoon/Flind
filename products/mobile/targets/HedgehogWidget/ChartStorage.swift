@@ -41,7 +41,7 @@ final class ChartStorage {
     private static func loadKey() -> SymmetricKey? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: "com.posthog.code.mobile.chart-widget",
+            kSecAttrService as String: "com.thehalfmoon.flind.mobile.chart-widget",
             kSecAttrAccount as String: "data-key",
             kSecAttrAccessGroup as String: AppGroup.suiteName,
         ]

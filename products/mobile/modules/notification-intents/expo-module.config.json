@@ -1,6 +1,6 @@
 {
     "platforms": ["android"],
     "android": {
-        "modules": ["com.posthog.mobile.notifications.NotificationIntentsModule"]
+        "modules": ["com.thehalfmoon.flind.mobile.notifications.NotificationIntentsModule"]
     }
 }

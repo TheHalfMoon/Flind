@@ -1,6 +1,6 @@
 # Fresh production-identity demo install, portrait orientation. See docs/TESTING.md.
 steps:
-    - launch: { ios: com.posthog.code.mobile, android: com.posthog.mobile }
+    - launch: { ios: com.thehalfmoon.flind.mobile, android: com.thehalfmoon.flind.mobile }
     - await: { visible: { id: try-demo }, timeout: 30000 }
     - tap: { id: try-demo }
     - await: { visible: { id: inbox-screen } }
