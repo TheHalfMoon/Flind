@@ -21,9 +21,9 @@ func main() {
 	)
 
 	rootCmd := &cobra.Command{
-		Use:   "posthog-live",
-		Short: "PostHog live events TUI",
-		Long:  "Stream live PostHog events in your terminal.",
+		Use:   "flind-live",
+		Short: "Flind live events TUI",
+		Long:  "Stream live Flind events from an explicitly configured deployment.",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if err := debug.Init(); err != nil {
 				fmt.Fprintf(os.Stderr, "Warning: could not init debug log: %v\n", err)
@@ -56,8 +56,8 @@ func main() {
 	}
 
 	rootCmd.Flags().StringVar(&token, "token", "", "JWT token (for scripting)")
-	rootCmd.Flags().StringVar(&host, "host", "", "PostHog app host (default: https://app.posthog.com, use http://localhost:8000 for local dev)")
-	rootCmd.Flags().StringVar(&livestreamHost, "livestream-host", "", "Livestream service host override (default: http://localhost:8010 for local dev)")
+	rootCmd.Flags().StringVar(&host, "host", "", "Flind app origin (required unless a Flind session is cached; use http://localhost:8000 for local dev)")
+	rootCmd.Flags().StringVar(&livestreamHost, "livestream-host", "", "Owned Flind livestream origin (required for remote deployments; local dev derives localhost:8010)")
 	rootCmd.Flags().StringVar(&eventType, "event-type", "", "Filter by event type(s), comma-separated")
 	rootCmd.Flags().StringVar(&distinctID, "distinct-id", "", "Filter by distinct ID")
 	rootCmd.Flags().BoolVar(&geoOnly, "geo", false, "Geo-only mode")
