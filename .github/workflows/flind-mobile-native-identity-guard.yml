@@ -1,0 +1,24 @@
+name: Flind independent mobile native identity guard
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-native-identity-migration-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-mobile-native-ids-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    identity:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '26'
+            - name: Verify native identities, module paths and OAuth/app-link parity
+              run: node --test tools/flind/qualify_mobile_native_identity.mjs
+            - name: Verify backend app-link and OAuth configuration Python parses
+              run: python -c "import ast; from pathlib import Path; [ast.parse(Path(p).read_text()) for p in ('posthog/mobile_app_links.py', 'products/tasks/backend/management/commands/setup_tasks_oauth.py')]"
