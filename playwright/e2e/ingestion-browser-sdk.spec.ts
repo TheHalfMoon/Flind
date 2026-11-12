@@ -16,6 +16,9 @@ function sdkHostPage(apiToken: string): string {
             posthog.init(${JSON.stringify(apiToken)}, {
                 api_host: window.location.origin,
                 autocapture: false,
+                // Playwright Chromium is a bot by definition; do not drop this synthetic E2E event.
+                // This applies only to the test page, not Flind's default SDK configuration.
+                opt_out_useragent_filter: true,
                 capture_pageview: false,
                 capture_pageleave: false,
                 disable_session_recording: true,
@@ -89,10 +92,24 @@ test.describe('Flind browser SDK ingestion', () => {
         })
         expect(new URL(configuredHost).origin).toBe(new URL(PROXY_BASE_URL).origin)
         // Capture only after the SDK's loaded callback, rather than racing its initialization.
-        await page.evaluate((name) => {
-            const sdk = (window as unknown as { posthog: { capture: (event: string, properties: Record<string, unknown>) => void } }).posthog
-            sdk.capture(name, { flind_sdk_ingestion_test: true })
+        const captureState = await page.evaluate((name) => {
+            const sdk = (window as unknown as {
+                posthog: {
+                    __loaded?: boolean
+                    is_capturing: () => boolean
+                    capture: (event: string, properties: Record<string, unknown>) => unknown
+                }
+            }).posthog
+            const isCapturing = sdk.is_capturing()
+            const result = sdk.capture(name, { flind_sdk_ingestion_test: true })
+            // Return only booleans; do not expose project tokens or event payloads in CI logs.
+            return { loaded: sdk.__loaded === true, isCapturing, accepted: result !== undefined }
         }, eventName)
+        expect(captureState, 'SDK refused the synthetic Playwright capture').toEqual({
+            loaded: true,
+            isCapturing: true,
+            accepted: true,
+        })
         try {
             await expect.poll(
                 () => captureResponses.some((r) => /: 2\d\d$/.test(r)) ? 1 : 0,
