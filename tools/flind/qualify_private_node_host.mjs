@@ -16,6 +16,7 @@ test('private Flind Node SDK source and both compiled entrypoints have no vendor
         assert.match(src, /url\.username/)
         assert.match(src, /url\.pathname !== '\/'/)
         assert.match(src, /return url\.origin/)
+        assert.match(src, /appHost: options\.appHost === (?:undefined|void 0) \? (?:undefined|void 0) : normalizeHost\(options\.appHost\)/)
     }
 })
 test('wire tests require CJS and ESM constructor negative controls and local-only capture', () => {
