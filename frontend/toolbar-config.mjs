@@ -1,6 +1,7 @@
 import { zipSync } from 'fflate'
 import * as fs from 'fs'
 import * as path from 'path'
+import { getFlindExternalConnectable } from './bin/flind-toolbar-trusted-hosts.mjs'
 
 import { commonConfig, copyRRWebWorkerFiles, createHashlessEntrypoints, esbuildBuild, isDev } from '@flind/esbuilder'
 
@@ -362,11 +363,9 @@ function buildToolbarExtensionManifest() {
         host_permissions: ['http://*/*', 'https://*/*'],
         web_accessible_resources: [{ resources: ['content.css', 'assets/*'], matches: ['http://*/*', 'https://*/*'] }],
         side_panel: { default_path: 'panel.html' },
-        // The Flind app asks whether the extension is installed, and asks it to open an authorized URL. Only the cloud
-        // app hosts, because a sender also sets the extension's Flind host.
-        externally_connectable: {
-            matches: ['https://us.posthog.com/*', 'https://eu.posthog.com/*', 'https://app.posthog.com/*'],
-        },
+        // Never grant inherited upstream domains access to a Flind extension. Only an explicit
+        // customer-managed allowlist can expose the external-messaging surface to web pages.
+        ...getFlindExternalConnectable(),
         // 116 is the first release with `sidePanel.setPanelBehavior`, which opens the panel from the toolbar button.
         minimum_chrome_version: '116',
         background: { service_worker: 'background.js' },

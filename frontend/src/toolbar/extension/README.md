@@ -20,6 +20,14 @@ Download the `toolbar-extension` artifact from the run to install that build wit
 
 The extension needs Chrome 116 or later.
 
+### Trusted Flind app origins
+
+The extension has **no externally connectable website origins by default**. This prevents inherited cloud domains from messaging a Flind-branded extension. The sidebar still opens manually.
+
+For a customer-operated Flind installation, the extension builder may explicitly set `FLIND_TOOLBAR_TRUSTED_ORIGINS` to a comma-separated list of exact HTTPS origins, for example `https://flind.example.org,https://team.example.org`. For local development only, `http://localhost` is permitted. Wildcards, ports, credentials, paths, and inherited PostHog domains are rejected. Chrome's origin match patterns cannot restrict a port, which is why the setting refuses custom ports. Review the resulting `manifest.json` before distributing the extension.
+
+This is **build-time** authorization, not a runtime setting. Do not configure a domain that you do not control. A public extension rollout is not authorized by this change.
+
 1. Open `chrome://extensions` and turn on **Developer mode**.
 2. Click **Load unpacked** and select `frontend/dist/toolbar-extension/chrome`, or the unzipped folder from the artifact.
 3. Pin the extension, then click its button to open the side panel.
