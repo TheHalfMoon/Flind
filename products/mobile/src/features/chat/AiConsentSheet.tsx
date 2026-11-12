@@ -14,7 +14,7 @@ interface AiConsentSheetProps {
     onContinue: () => void
     /** Also runs when the sheet is dragged down or the scrim is tapped. */
     onNotNow: () => void
-    onOpenPrivacyPolicy: () => void
+    onOpenPrivacyPolicy: (() => void) | null
 }
 
 /** The shared disclosure for chat, task handoff and replay summarization. */
@@ -46,16 +46,23 @@ export function AiConsentSheet({
                         Flind AI, which uses third-party model providers such as Anthropic and OpenAI to process it.
                     </Text>
                 </View>
-                <Pressable44
-                    onPress={onOpenPrivacyPolicy}
-                    accessibilityRole="link"
-                    pressedBackground={colors.sunken}
-                    style={styles.link}
-                    testID="chat-ai-consent-privacy"
-                >
-                    <Text style={styles.linkText}>Privacy policy</Text>
-                    <ExternalLinkIcon size={iconSizes.small} color={colors.blue} />
-                </Pressable44>
+                {onOpenPrivacyPolicy ? (
+                    <Pressable44
+                        onPress={onOpenPrivacyPolicy}
+                        accessibilityRole="link"
+                        pressedBackground={colors.sunken}
+                        style={styles.link}
+                        testID="chat-ai-consent-privacy"
+                    >
+                        <Text style={styles.linkText}>Privacy policy</Text>
+                        <ExternalLinkIcon size={iconSizes.small} color={colors.blue} />
+                    </Pressable44>
+                ) : (
+                    <Text style={styles.body} testID="chat-ai-policy-unconfigured">
+                        This Flind installation has no published privacy policy. AI access is unavailable until the
+                        operator configures one.
+                    </Text>
+                )}
                 <View style={styles.actions}>
                     <Pressable44
                         onPress={onNotNow}
@@ -70,8 +77,8 @@ export function AiConsentSheet({
                         pressedBackground={colors.inkHover}
                         style={[styles.button, styles.primary]}
                         testID="chat-ai-consent-continue"
-                        disabled={pending}
-                        accessibilityState={{ disabled: pending, busy: pending }}
+                        disabled={pending || !onOpenPrivacyPolicy}
+                        accessibilityState={{ disabled: pending || !onOpenPrivacyPolicy, busy: pending }}
                     >
                         {pending ? (
                             <ActivityIndicator color={colors.onInk} />
