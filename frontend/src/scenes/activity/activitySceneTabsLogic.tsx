@@ -132,7 +132,6 @@ export const activitySceneTabsLogic = kea<activitySceneTabsLogicType>([
                         label: 'Persons',
                         url: urls.persons(),
                         iconType: sceneConfigurations[Scene.Persons].iconType,
-                        tooltipDocLink: 'https://posthog.com/docs/data/persons',
                         dataAttr: 'persons-management-persons-tab',
                     },
                     {
@@ -140,7 +139,6 @@ export const activitySceneTabsLogic = kea<activitySceneTabsLogicType>([
                         label: 'Cohorts',
                         url: urls.cohorts(),
                         iconType: sceneConfigurations[Scene.Cohorts].iconType,
-                        tooltipDocLink: 'https://posthog.com/docs/data/cohorts',
                         dataAttr: 'persons-management-cohorts-tab',
                     },
                     ...groupTabs,
