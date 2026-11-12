@@ -84,12 +84,29 @@ describe('environment', () => {
         expect(environmentBadge(variant, host)).toEqual(expected)
     })
 
+    test('only explicitly configured Flind HTTPS origins get Cloud badges', () => {
+        const original = process.env.EXPO_PUBLIC_FLIND_US_HOST
+        try {
+            process.env.EXPO_PUBLIC_FLIND_US_HOST = 'https://us.flind.example'
+            const env = loadEnvironment({ applicationId: null, isDev: true })
+            expect(env.hostKind('https://us.flind.example')).toBe('cloud-us')
+            expect(env.hostKind('https://us.posthog.com')).toBe('custom')
+            expect(env.isCloudHost('https://us.posthog.com')).toBe(false)
+        } finally {
+            if (original === undefined) {
+                delete process.env.EXPO_PUBLIC_FLIND_US_HOST
+            } else {
+                process.env.EXPO_PUBLIC_FLIND_US_HOST = original
+            }
+        }
+    })
+
     test('a preview binary is internal and redirects to its own scheme', () => {
         const env = loadEnvironment({ applicationId: 'com.thehalfmoon.flind.mobile.preview', isDev: false })
         expect(env).toMatchObject({
             appVariant: 'preview',
             isInternalBuild: true,
-            appScheme: 'posthog-preview',
+            appScheme: 'flind-preview',
             updateChannel: 'preview',
             updateId: '0f9e8d7c-1111-4222-8333-944455556666',
         })
@@ -97,11 +114,11 @@ describe('environment', () => {
 
     test('a Metro bundle in a store-identity binary is internal but keeps the store scheme', () => {
         const env = loadEnvironment({ applicationId: 'com.thehalfmoon.flind.mobile', isDev: true })
-        expect(env).toMatchObject({ appVariant: 'development', isInternalBuild: true, appScheme: 'posthog' })
+        expect(env).toMatchObject({ appVariant: 'development', isInternalBuild: true, appScheme: 'flind' })
     })
 
     test('a store binary outside Metro is not internal', () => {
         const env = loadEnvironment({ applicationId: 'com.thehalfmoon.flind.mobile', isDev: false })
-        expect(env).toMatchObject({ appVariant: 'production', isInternalBuild: false, appScheme: 'posthog' })
+        expect(env).toMatchObject({ appVariant: 'production', isInternalBuild: false, appScheme: 'flind' })
     })
 })
