@@ -11,6 +11,7 @@ import type {
 import {
   type Adapter,
   CLOUD_REGIONS,
+  flindAnalyticsOrigin,
   getCloudUrlFromRegion,
   type ModelAccess,
 } from "@flind/shared";
@@ -176,13 +177,16 @@ export function networkMetricPath(
 }
 
 export function initializePostHog(sessionId?: string) {
-  const apiKey = import.meta.env.VITE_POSTHOG_API_KEY;
-  const apiHost =
-    import.meta.env.VITE_POSTHOG_API_HOST || "https://internal-c.posthog.com";
-  const uiHost =
-    import.meta.env.VITE_POSTHOG_UI_HOST || "https://us.i.posthog.com";
+  const apiKey = import.meta.env.VITE_FLIND_ANALYTICS_KEY?.trim();
+  const apiHost = flindAnalyticsOrigin(
+    import.meta.env.VITE_FLIND_ANALYTICS_HOST,
+  );
+  const explicitUiHost = import.meta.env.VITE_FLIND_ANALYTICS_UI_HOST?.trim();
+  const uiHost = explicitUiHost
+    ? flindAnalyticsOrigin(explicitUiHost)
+    : apiHost;
 
-  if (!apiKey) {
+  if (!apiKey || !apiHost || !uiHost) {
     // Settle the waiters instead of leaving them pending forever — a gate that
     // waits for "flags resolved" would never open in a keyless build.
     flagsUnavailable = true;
