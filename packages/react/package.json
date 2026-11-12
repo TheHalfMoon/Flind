@@ -1,0 +1,26 @@
+{
+    "name": "@flind/react",
+    "version": "1.11.3",
+    "private": true,
+    "description": "Flind React SDK integration compatibility package (vendored, staged)",
+    "license": "MIT",
+    "main": "dist/umd/index.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/types/index.d.ts",
+    "files": [
+        "dist",
+        "src",
+        "slim",
+        "surveys"
+    ],
+    "peerDependencies": {
+        "@types/react": ">=16.8.0",
+        "posthog-js": ">=1.257.2",
+        "react": ">=16.8.0"
+    },
+    "peerDependenciesMeta": {
+        "@types/react": {
+            "optional": true
+        }
+    }
+}
