@@ -120,7 +120,9 @@ describe('token refresh through the API client', () => {
     )
 
     test('token revocation rejects redirects before the network adapter can follow them', async () => {
-        fetchMock.mockResolvedValueOnce(new Response(null, { status: 307, headers: { Location: 'https://untrusted.example' } }))
+        fetchMock.mockResolvedValueOnce(
+            new Response(null, { status: 307, headers: { Location: 'https://untrusted.example' } })
+        )
         await revokeToken({ host: HOST, clientId: 'test-client', token: 'synthetic-refresh' })
         expect(fetchMock).toHaveBeenCalledWith(
             `${HOST}/oauth/revoke`,
