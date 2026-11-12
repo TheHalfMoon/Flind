@@ -8,8 +8,8 @@ import { type AnalyticsProperties, setAnalyticsClient } from './analytics'
 import { DEMO_REPLAY_CONFIG, DemoReplay } from './demoReplay'
 import { appVariant, hostKind, isInternalBuild, updateChannel } from './environment'
 import { setFeatureFlags } from './featureFlags'
+import { ownedAnalyticsHost } from './mobileAnalyticsHost'
 
-const DEFAULT_HOST = 'https://us.i.posthog.com'
 let initialized = false
 
 function definedProperties(
@@ -45,13 +45,16 @@ function superProperties(): Record<string, string | number | null> {
 
 // Expo inlines `EXPO_PUBLIC_*` variables at build time, so they must be read as literal `process.env` members.
 export function initAnalytics(): void {
-    const apiKey = process.env.EXPO_PUBLIC_POSTHOG_KEY
-    if (!apiKey || initialized) {
+    const apiKey = process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY?.trim()
+    const host = ownedAnalyticsHost(process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST)
+    // No default cloud endpoint: analytics is off unless explicitly configured
+    // for an HTTPS Flind-owned collector, including in production builds.
+    if (!apiKey || !host || initialized) {
         return
     }
     initialized = true
     const posthog = new PostHog(apiKey, {
-        host: process.env.EXPO_PUBLIC_POSTHOG_HOST || DEFAULT_HOST,
+        host,
         captureAppLifecycleEvents: true,
         before_send: (event) => {
             if (!event || event.event !== 'Application Opened') {
@@ -66,13 +69,13 @@ export function initAnalytics(): void {
         capturePushNotificationOpened: false,
         rageClickConfig: { enabled: false },
         enableSessionReplay: false,
-        enablePersistSessionIdAcrossRestart: isInternalBuild && process.env.EXPO_PUBLIC_POSTHOG_HANDOFF === '1',
+        enablePersistSessionIdAcrossRestart: isInternalBuild && process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HANDOFF === '1',
         sessionReplayConfig: DEMO_REPLAY_CONFIG,
     })
     const replay = new DemoReplay(posthog)
     const syncReplay = (): void => {
         replay.setAllowed(
-            process.env.EXPO_PUBLIC_POSTHOG_REPLAY === '1' &&
+            process.env.EXPO_PUBLIC_FLIND_ANALYTICS_REPLAY === '1' &&
                 isInternalBuild &&
                 (Platform.OS === 'ios' || Platform.OS === 'android') &&
                 useDemoMode.persist.hasHydrated() &&
