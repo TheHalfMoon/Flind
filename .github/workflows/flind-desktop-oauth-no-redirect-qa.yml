@@ -1,0 +1,39 @@
+name: Flind desktop OAuth token implementation QA
+on:
+    push:
+        branches:
+            - 'flind-ci/desktop-oauth-token-no-redirect-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-desktop-oauth-no-redirect-qa-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    core:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 45
+        defaults:
+            run:
+                working-directory: products/desktop
+        steps:
+            - uses: actions/checkout@v4
+            - uses: pnpm/action-setup@v6.0.9
+              with:
+                  package_json_file: products/desktop/package.json
+            - uses: actions/setup-node@v6.4.0
+              with:
+                  node-version-file: products/desktop/.node-version
+            - name: Install pinned workspace without native postinstall
+              run: pnpm install --frozen-lockfile --ignore-scripts
+              env:
+                  NPM_CONFIG_AUDIT: 'false'
+                  NPM_CONFIG_FUND: 'false'
+            - name: Build shared and desktop core dependencies
+              run: pnpm build:deps
+            - name: Run actual core OAuth Vitest
+              run: pnpm --filter @flind/core exec vitest run src/oauth/oauth.test.ts
+            - name: Core TypeScript
+              run: pnpm --filter @flind/core typecheck
+            - name: Source formatting
+              run: pnpm exec biome check packages/core/src/oauth/oauth.ts packages/core/src/oauth/oauth.test.ts
