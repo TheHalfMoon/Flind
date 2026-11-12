@@ -55,6 +55,22 @@ describe('regions', () => {
         })
     })
 
+    test.each([
+        ['https://us.posthog.com', 'donor host'],
+        ['http://us.flind.example', 'plain HTTP'],
+        ['https://us.flind.example/path', 'unexpected path'],
+        ['https://user:pass@us.flind.example', 'credentials in address'],
+    ])('rejects misconfigured cloud endpoint: %s (%s)', (host) => {
+        jest.isolateModules(() => {
+            process.env.EXPO_PUBLIC_FLIND_US_HOST = host
+            process.env.EXPO_PUBLIC_FLIND_US_CLIENT_ID = 'flind-owned-id'
+            delete process.env.EXPO_PUBLIC_FLIND_EU_HOST
+            delete process.env.EXPO_PUBLIC_FLIND_EU_CLIENT_ID
+            const { CLOUD_REGIONS } = jest.requireActual<typeof import('./regions')>('./regions')
+            expect(CLOUD_REGIONS).toEqual([])
+        })
+    })
+
     test('unconfigured Flind cloud exposes no inherited provider host or OAuth registration', () => {
         jest.isolateModules(() => {
             delete process.env.EXPO_PUBLIC_FLIND_US_HOST
