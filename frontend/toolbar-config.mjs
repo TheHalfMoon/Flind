@@ -1,6 +1,7 @@
 import { zipSync } from 'fflate'
 import * as fs from 'fs'
 import * as path from 'path'
+import { getFlindExternalConnectable } from './bin/flind-toolbar-trusted-hosts.mjs'
 
 import { commonConfig, copyRRWebWorkerFiles, createHashlessEntrypoints, esbuildBuild, isDev } from '@flind/esbuilder'
 
@@ -256,7 +257,7 @@ export async function finalizeToolbarBuild(dirname, buildResponse) {
 //   dist/toolbar-extension/chrome/manifest.json
 //   dist/toolbar-extension/chrome/panel.html, panel.js, panel.css, background.js, content.js, content.css,
 //   assets/, icons/
-//   dist/toolbar-extension/posthog-toolbar-chrome-<version>.zip
+//   dist/toolbar-extension/flind-toolbar-chrome-<version>.zip
 const TOOLBAR_EXTENSION_OUT_DIR = 'toolbar-extension'
 
 // The release workflow bumps this version from Sampo changesets. See "Releases" in src/toolbar/extension/README.md.
@@ -269,7 +270,7 @@ const TOOLBAR_EXTENSION_BUILD_DIR = 'toolbar-extension-build'
 const TOOLBAR_EXTENSION_ICONS = {
     16: 'icons/favicon-16x16.png',
     32: 'icons/favicon-32x32.png',
-    128: 'icons/posthog-128x128.png',
+    128: 'icons/flind-128x128.png',
     192: 'icons/android-chrome-192x192.png',
 }
 
@@ -362,11 +363,9 @@ function buildToolbarExtensionManifest() {
         host_permissions: ['http://*/*', 'https://*/*'],
         web_accessible_resources: [{ resources: ['content.css', 'assets/*'], matches: ['http://*/*', 'https://*/*'] }],
         side_panel: { default_path: 'panel.html' },
-        // The Flind app asks whether the extension is installed, and asks it to open an authorized URL. Only the cloud
-        // app hosts, because a sender also sets the extension's Flind host.
-        externally_connectable: {
-            matches: ['https://us.posthog.com/*', 'https://eu.posthog.com/*', 'https://app.posthog.com/*'],
-        },
+        // Never grant inherited upstream domains access to a Flind extension. Only an explicit
+        // customer-managed allowlist can expose the external-messaging surface to web pages.
+        ...getFlindExternalConnectable(),
         // 116 is the first release with `sidePanel.setPanelBehavior`, which opens the panel from the toolbar button.
         minimum_chrome_version: '116',
         background: { service_worker: 'background.js' },
@@ -389,7 +388,7 @@ export function finalizeToolbarExtensionBuild(dirname) {
         JSON.stringify(buildToolbarExtensionManifest(), null, 4) + '\n'
     )
     fs.writeFileSync(
-        path.resolve(extensionDir, `posthog-toolbar-chrome-${TOOLBAR_EXTENSION_VERSION}.zip`),
+        path.resolve(extensionDir, `flind-toolbar-chrome-${TOOLBAR_EXTENSION_VERSION}.zip`),
         zipSync(readDirectoryFiles(outDir))
     )
 }

@@ -33,3 +33,10 @@ jobs:
             # Packages vendored from PostHog's published ones (rename stage 3) keep their own tests.
             - name: Vendored package tests
               run: node packages/siphash/test/flind.test.js
+
+            - name: Flind toolbar origin policy
+              run: |
+                  node --check frontend/toolbar-config.mjs
+                  node --check frontend/bin/flind-toolbar-trusted-hosts.mjs
+                  node --test frontend/bin/flind-toolbar-trusted-hosts.test.mjs
+                  node --test frontend/bin/flind-toolbar-brand.test.mjs
