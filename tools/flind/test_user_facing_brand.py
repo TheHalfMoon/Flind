@@ -209,5 +209,13 @@ class FlindUserFacingBrandTests(unittest.TestCase):
         self.assertIn("Staff users of this Flind instance may need to log in as you", text)
         self.assertNotIn("Flind support staff", text)
 
+    def test_cyclotron_template_help_does_not_redirect_to_donor_docs(self) -> None:
+        source = read("frontend/src/lib/components/CyclotronJob/CyclotronJobTemplateSuggestions.tsx")
+        self.assertNotIn("posthog.com/docs", source)
+        self.assertIn("Available functions for templating your inputs", source)
+        self.assertIn("optionsFiltered.map", source)
+        self.assertIn("Liquid documentation", source)
+
+
 if __name__ == "__main__":
     unittest.main()

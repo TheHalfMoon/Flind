@@ -92,3 +92,8 @@ Last updated: 2026-11-12.
 - Scoped change: remove inherited PostHog documentation destinations from fetch failure banner, empty stack trace help, and fingerprint tooltip. Keep local explanations and fingerprint display behavior.
 - Local verification: source diff reviewed and `git diff --check`; full Jest/TypeScript/Playwright and independent review remain required on the exact PR SHA.
 - No deployment or release authorized. Do not merge without applicable green CI and review.
+
+### 2026-11-12: Cyclotron template help isolation (draft)
+- Removed the donor-hosted documentation link from the live destination template suggestion panel. Retained function suggestions, Hog/Liquid selection, and the third-party Liquid language reference.
+- Added dependency-free regression coverage to the existing Brand Audit suite. One focused test passed locally; complete CI and independent review are required before merge.
+- No deployment or public release authorized.
