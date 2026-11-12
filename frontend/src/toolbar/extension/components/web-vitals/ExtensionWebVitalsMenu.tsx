@@ -12,8 +12,6 @@ import { extensionPageToolbarConnectionLogic } from '../../logics/panel/extensio
 import { extensionPanelLogic } from '../../logics/panel/extensionPanelLogic'
 import { ExtensionToolLoading } from '../panel/ExtensionToolLoading'
 
-const WEB_VITALS_DOCS_URL = 'https://posthog.com/docs/web-analytics/web-vitals'
-
 export function ExtensionWebVitalsMenu(): JSX.Element {
     const { webVitals } = useValues(extensionPageToolbarConnectionLogic)
     const { sendCommand } = useActions(extensionPageToolbarConnectionLogic)
@@ -36,9 +34,6 @@ export function ExtensionWebVitalsMenu(): JSX.Element {
                 <div className="flex flex-wrap gap-x-3 text-xs">
                     <Link to={projectUrl(urls.webAnalyticsWebVitals())} target="_blank">
                         View all metrics
-                    </Link>
-                    <Link to={WEB_VITALS_DOCS_URL} target="_blank">
-                        Web vitals docs
                     </Link>
                 </div>
                 <LemonButton
