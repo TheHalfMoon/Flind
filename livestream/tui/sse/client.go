@@ -27,7 +27,14 @@ func NewClient(host, token, eventType, distinctID string, geoOnly bool) *Client 
 		eventType:  eventType,
 		distinctID: distinctID,
 		geoOnly:    geoOnly,
-		httpClient: &http.Client{Timeout: 0},
+		// A redirect can change recipients for a bearer token. Never follow it,
+		// even to a subdomain where Go might otherwise forward Authorization.
+		httpClient: &http.Client{
+			Timeout: 0,
+			CheckRedirect: func(_ *http.Request, _ []*http.Request) error {
+				return http.ErrUseLastResponse
+			},
+		},
 	}
 }
 
