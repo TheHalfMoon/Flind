@@ -162,5 +162,4 @@ describe('mobile replay integration', () => {
             expect(app.constructor).not.toHaveBeenCalled()
         }
     )
-
 })
