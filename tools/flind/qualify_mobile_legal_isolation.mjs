@@ -32,7 +32,7 @@ test('AI consent cannot proceed without a configured Flind-owned privacy policy'
     const aiAccess = read('products/mobile/src/features/chat/aiAccess.ts')
     assert.doesNotMatch(aiAccess, /https:\/\/posthog\.com\/privacy/)
     assert.match(gate, /PRIVACY_POLICY_URL \? \(\) => openLegalLink/)
-    assert.match(approval, /PRIVACY_POLICY_URL \? \(\) => openLegalLink/)
+    assert.match(approval, /PRIVACY_POLICY_URL\s+\? \(\) => openLegalLink/)
     assert.match(sheet, /disabled=\{pending \|\| !onOpenPrivacyPolicy\}/)
     assert.match(sheet, /chat-ai-policy-unconfigured/)
     assert.match(sheet, /\{onOpenPrivacyPolicy \? \(/)
