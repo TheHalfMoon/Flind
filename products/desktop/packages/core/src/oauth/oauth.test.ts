@@ -84,11 +84,16 @@ function jsonResponse(data: unknown, status = 200): Response {
 }
 
 beforeEach(() => {
+  // Independent, synthetic Flind cloud credentials: the runtime must never
+  // fall back to the inherited vendor's hosted OAuth endpoints.
+  vi.stubEnv("FLIND_US_CLOUD_URL", "https://us.flind.example");
+  vi.stubEnv("FLIND_US_OAUTH_CLIENT_ID", "flind-test-public-client");
   vi.stubGlobal("fetch", fetchMock);
   fetchMock.mockReset();
 });
 
 afterEach(() => {
+  vi.unstubAllEnvs();
   vi.unstubAllGlobals();
 });
 
