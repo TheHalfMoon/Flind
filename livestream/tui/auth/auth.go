@@ -99,11 +99,7 @@ func browserFlow(host, livestreamHostOverride string) (*config.Credentials, erro
 			return nil, result.Err
 		}
 
-		actualHost := result.APIHost
-		if actualHost == "" {
-			actualHost = host
-		}
-		actualHost, err = validatedBaseHost(actualHost)
+		actualHost, err := validatedCallbackHost(host, result.APIHost)
 		if err != nil {
 			return nil, err
 		}
