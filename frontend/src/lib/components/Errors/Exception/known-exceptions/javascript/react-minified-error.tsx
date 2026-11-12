@@ -16,14 +16,7 @@ defineKnownException({
                 <Link to={`https://react.dev/errors/${errorCode}`} target="_blank">
                     React docs
                 </Link>{' '}
-                to see the full description of the error or{' '}
-                <Link
-                    to="https://posthog.com/docs/error-tracking/common-questions#what-is-a-minified-react-error-with-no-stack-traces"
-                    target="_blank"
-                >
-                    read our docs
-                </Link>{' '}
-                to learn how you might be able to debug this issue.
+                to see the full description. Reproduce the issue in a development build to get a readable stack trace.
             </KnownExceptionBanner>
         )
     },

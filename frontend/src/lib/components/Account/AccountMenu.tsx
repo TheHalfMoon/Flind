@@ -10,7 +10,6 @@ import {
     IconGear,
     IconLaptop,
     IconLeave,
-    IconLive,
     IconNight,
     IconPalette,
     IconPeople,
@@ -303,21 +302,6 @@ export function AccountMenu({ trigger, ...props }: AccountMenuProps): JSX.Elemen
 
                     <ThemeMenu />
 
-                    <DropdownMenuItem asChild>
-                        <Link
-                            to="https://posthog.com/changelog"
-                            buttonProps={{
-                                menuItem: true,
-                            }}
-                            data-attr="whats-new-button"
-                            target="_blank"
-                            tooltip="View our changelog"
-                            tooltipPlacement="right"
-                        >
-                            <IconLive />
-                            What's new?
-                        </Link>
-                    </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                         <Link
                             to={urls.settings('user-feature-previews')}

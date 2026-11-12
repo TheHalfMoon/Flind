@@ -18,7 +18,6 @@ import { formatFunctionName, getInstructionAddress } from '../utils'
 import { FrameDropDownMenu } from './FrameDropDownMenu'
 
 const UNKNOWN_FRAME_LABEL = 'Unknown frame'
-const SYMBOL_SETS_DOC_LINK = 'https://posthog.com/docs/error-tracking/upload-source-maps'
 
 export function CollapsibleFrameHeader({
     frame,
@@ -170,8 +169,6 @@ function UnsymbolicatedIcon({
         <FrameWarningIcon
             title={UNKNOWN_FRAME_LABEL}
             severity={in_app ? 'error' : 'muted'}
-            // Symbol sets are only actionable when we have an address to match them against
-            docLink={instructionAddress ? SYMBOL_SETS_DOC_LINK : undefined}
             resolveFailure={resolve_failure}
         >
             {instructionAddress ? (
@@ -210,7 +207,6 @@ function UnresolvedIcon({ resolve_failure }: { resolve_failure: string | null })
         <FrameWarningIcon
             title="Unresolved frame"
             severity="muted"
-            docLink={SYMBOL_SETS_DOC_LINK}
             resolveFailure={resolve_failure}
         >
             <p>

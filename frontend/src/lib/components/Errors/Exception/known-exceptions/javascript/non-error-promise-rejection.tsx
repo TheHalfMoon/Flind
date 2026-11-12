@@ -1,5 +1,3 @@
-import { Link } from '@flind/lemon-ui'
-
 import { defineKnownException } from '../registry'
 import { KnownExceptionBanner } from './base'
 
@@ -11,14 +9,8 @@ defineKnownException({
         return (
             <KnownExceptionBanner>
                 This issue occurs when non Error objects are provided to Promise rejections. When you do this a stack
-                trace is not captured as part of the caught exception.{' '}
-                <Link
-                    to="https://posthog.com/docs/error-tracking/common-questions#what-is-a-non-error-promise-rejection-error-with-no-stack-traces"
-                    target="_blank"
-                >
-                    Read our docs
-                </Link>{' '}
-                to learn how to get the full exception context.
+                trace is not captured as part of the caught exception. Reject with an Error instance so the stack trace
+                and message can be recorded.
             </KnownExceptionBanner>
         )
     },

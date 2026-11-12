@@ -1,0 +1,19 @@
+name: Flind runtime help host isolation
+
+on:
+    push:
+        branches:
+            - 'flind-ui/runtime-help-isolation-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    help-host-contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - name: Verify live help links and preserved UI actions
+              run: python3 tools/flind/test_live_help_host_isolation.py
