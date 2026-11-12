@@ -69,8 +69,9 @@ function setup({
     authStore.getState.mockImplementation(() => auth)
     demoStore.getState.mockImplementation(() => demo)
     demoStore.persist.hasHydrated.mockReturnValue(hydrated)
-    process.env.EXPO_PUBLIC_POSTHOG_KEY = 'phc_example'
-    process.env.EXPO_PUBLIC_POSTHOG_REPLAY = replay
+    process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY = 'flind_test_project_key'
+    process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST = 'https://analytics.flind.example'
+    process.env.EXPO_PUBLIC_FLIND_ANALYTICS_REPLAY = replay
     const { initAnalytics } = jest.requireActual<typeof import('./posthogClient')>('./posthogClient')
     return {
         init: initAnalytics,
@@ -84,8 +85,11 @@ function setup({
 
 describe('mobile replay integration', () => {
     afterEach(() => {
+        delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY
+        delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST
+        delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_REPLAY
         delete process.env.EXPO_PUBLIC_POSTHOG_KEY
-        delete process.env.EXPO_PUBLIC_POSTHOG_REPLAY
+        delete process.env.EXPO_PUBLIC_POSTHOG_HOST
     })
 
     it.each<SetupOptions>([
@@ -107,8 +111,9 @@ describe('mobile replay integration', () => {
         app.init()
         const sdk = app.constructor.mock.results[0]?.value
         expect(app.constructor).toHaveBeenCalledWith(
-            'phc_example',
+            'flind_test_project_key',
             expect.objectContaining({
+                host: 'https://analytics.flind.example',
                 enableSessionReplay: false,
                 capturePushNotificationSubscriptions: false,
                 capturePushNotificationOpened: false,
@@ -138,4 +143,24 @@ describe('mobile replay integration', () => {
         app.init()
         expect(app.constructor).toHaveBeenCalledTimes(1)
     })
+    it('does not install upstream SDK when only inherited configuration exists', () => {
+        const app = setup()
+        delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY
+        delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST
+        process.env.EXPO_PUBLIC_POSTHOG_KEY = 'synthetic_legacy_key'
+        process.env.EXPO_PUBLIC_POSTHOG_HOST = 'https://us.i.posthog.com'
+        app.init()
+        expect(app.constructor).not.toHaveBeenCalled()
+    })
+
+    it.each(['https://us.i.posthog.com', 'https://eu.posthog.com', 'http://analytics.flind.example', 'not-a-url'])(
+        'does not initialize when analytics collector is not owned and HTTPS: %s',
+        (host) => {
+            const app = setup()
+            process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST = host
+            app.init()
+            expect(app.constructor).not.toHaveBeenCalled()
+        }
+    )
+
 })
