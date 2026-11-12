@@ -6,7 +6,7 @@ import posthog from 'posthog-js'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { IconCopy } from '@flind/icons'
-import { PostHogErrorBoundary, type PostHogErrorBoundaryFallbackProps } from '@posthog/react'
+import { PostHogErrorBoundary, type PostHogErrorBoundaryFallbackProps } from '@flind/react'
 
 import { SupportTicketExceptionEvent, supportLogic } from 'lib/components/Support/supportLogic'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'

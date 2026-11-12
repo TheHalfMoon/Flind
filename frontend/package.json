@@ -85,6 +85,7 @@
         "@flind/esbuilder": "workspace:*",
         "@posthog/hedgehog-mode": "^0.0.63",
         "@flind/icons": "workspace:*",
+        "@flind/react": "workspace:*",
         "@flind/query-parser": "workspace:*",
         "@flind/logicvm": "workspace:*",
         "@flind/llm-normalizer": "workspace:*",

@@ -895,6 +895,9 @@ importers:
       '@flind/icons':
         specifier: workspace:*
         version: link:../packages/icons
+      '@flind/react':
+        specifier: workspace:*
+        version: link:../packages/react
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.31)(posthog-js@1.447.1(@types/react@18.3.31)(react@18.3.1))(react@18.3.1)
@@ -2425,6 +2428,18 @@ importers:
       vite-plugin-dts:
         specifier: ^4.5.4
         version: 4.5.4(@types/node@26.6.6)(rollup@4.60.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.4(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(sass-embedded@1.70.0)(terser@5.46.0)(tsx@4.23.15)(yaml@2.9.1))
+
+  packages/react:
+    dependencies:
+      '@types/react':
+        specifier: 18.3.31
+        version: 18.3.31
+      posthog-js:
+        specifier: '>=1.257.2'
+        version: 1.447.1(@types/react@18.3.31)(react@18.3.1)
+      react:
+        specifier: 18.3.1
+        version: 18.3.1
 
   packages/siphash: {}
 

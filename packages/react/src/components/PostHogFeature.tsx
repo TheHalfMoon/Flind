@@ -1,0 +1,83 @@
+import { useFeatureFlagPayload, useFeatureFlagVariantKey, usePostHog } from '../hooks'
+import React, { ReactElement } from 'react'
+import { PostHog } from '../context'
+import { isFunction, isUndefined } from '../utils/type-utils'
+import { VisibilityAndClickTrackers } from './internal/VisibilityAndClickTrackers'
+
+export type PostHogFeatureProps = Omit<React.HTMLProps<HTMLDivElement>, 'children'> & {
+    flag: string
+    children: React.ReactNode | ((payload: any) => React.ReactNode)
+    fallback?: React.ReactNode
+    match?: string | boolean
+    visibilityObserverOptions?: IntersectionObserverInit
+    trackInteraction?: boolean
+    trackView?: boolean
+}
+
+export function PostHogFeature({
+    flag,
+    match,
+    children,
+    fallback,
+    visibilityObserverOptions,
+    trackInteraction,
+    trackView,
+    ...props
+}: PostHogFeatureProps): ReactElement<any, any> | null {
+    const payload = useFeatureFlagPayload(flag)
+    const variant = useFeatureFlagVariantKey(flag)
+    const posthog = usePostHog()
+
+    const shouldTrackInteraction = trackInteraction ?? true
+    const shouldTrackView = trackView ?? true
+
+    if (!isUndefined(variant)) {
+        // Without a match, any enabled value (true or a variant key) shows the feature. A flag that
+        // evaluated off is `false`, and must show the fallback like a missing flag does.
+        if (isUndefined(match) ? variant !== false : variant === match) {
+            const childNode: React.ReactNode = isFunction(children) ? children(payload) : children
+            return (
+                <VisibilityAndClickTrackers
+                    flag={flag}
+                    options={visibilityObserverOptions}
+                    trackInteraction={shouldTrackInteraction}
+                    trackView={shouldTrackView}
+                    onInteract={() => captureFeatureInteraction({ flag, posthog, flagVariant: variant })}
+                    onView={() => captureFeatureView({ flag, posthog, flagVariant: variant })}
+                    {...props}
+                >
+                    {childNode}
+                </VisibilityAndClickTrackers>
+            )
+        }
+    }
+    return <>{fallback}</>
+}
+
+type CaptureFeatureOptions = {
+    flag: string
+    posthog: PostHog
+    flagVariant?: string | boolean
+}
+
+function captureFeatureEvent(
+    event: '$feature_interaction' | '$feature_view',
+    { flag, posthog, flagVariant }: CaptureFeatureOptions
+) {
+    const properties: Record<string, any> = {
+        feature_flag: flag,
+        $set: { [`${event}/${flag}`]: flagVariant ?? true },
+    }
+    if (typeof flagVariant === 'string') {
+        properties.feature_flag_variant = flagVariant
+    }
+    posthog.capture(event, properties)
+}
+
+export function captureFeatureInteraction(options: CaptureFeatureOptions) {
+    captureFeatureEvent('$feature_interaction', options)
+}
+
+export function captureFeatureView(options: CaptureFeatureOptions) {
+    captureFeatureEvent('$feature_view', options)
+}
