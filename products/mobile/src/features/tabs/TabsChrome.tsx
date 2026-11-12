@@ -90,8 +90,10 @@ export function TabsChrome(): ReactElement {
                 status={status}
                 onOpenStatus={() => {
                     closeMenu()
-                    track('mobile_status_opened', { source: 'tabs_menu' })
-                    Linking.openURL(status.pageUrl).catch(() => toasts.show("Couldn't open Flind status."))
+                    if (status.pageUrl) {
+                        track('mobile_status_opened', { source: 'tabs_menu' })
+                        Linking.openURL(status.pageUrl).catch(() => toasts.show("Couldn't open Flind status."))
+                    }
                 }}
                 navList={navList}
                 editPins={

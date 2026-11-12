@@ -1,0 +1,33 @@
+name: Flind mobile owned-status implementation QA
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-owned-status-isolation-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-owned-status-qa-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    mobile:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 30
+        defaults:
+            run:
+                working-directory: products/mobile
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: products/mobile/.node-version
+            - name: Install pinned pnpm
+              run: npm install --global pnpm@10.29.3
+            - name: Install mobile frozen dependencies
+              run: pnpm install --frozen-lockfile
+            - name: Validate TypeScript
+              run: pnpm exec tsc --noEmit
+            - name: Verify status and navigation Jest coverage
+              run: pnpm exec jest src/features/status/usePostHogStatus.test.tsx --runInBand --ci
+            - name: Check mobile source style
+              run: pnpm exec biome check src/features/status/usePostHogStatus.ts src/features/status/usePostHogStatus.test.tsx src/features/tabs/NavMenu.tsx src/features/tabs/TabsChrome.tsx

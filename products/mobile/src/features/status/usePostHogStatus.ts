@@ -3,7 +3,37 @@ import { useQuery } from '@tanstack/react-query'
 import { type RegionId, regionForHost } from '@/auth/regions'
 import { useDataMode } from '@/demo/demoMode'
 
-const STATUS_PAGE = 'https://www.posthogstatus.com'
+/**
+ * Status pages must be configured by the Flind operator. A missing or invalid
+ * destination disables external status checks rather than showing a donor page.
+ */
+export function flindStatusOrigin(value: string | undefined): string | null {
+    if (!value?.trim()) return null
+    try {
+        const url = new URL(value.trim())
+        const host = url.hostname.toLowerCase().replace(/\.$/, '')
+        if (
+            url.protocol !== 'https:' ||
+            url.username ||
+            url.password ||
+            url.port ||
+            url.pathname !== '/' ||
+            url.search ||
+            url.hash ||
+            host === 'posthog.com' ||
+            host.endsWith('.posthog.com') ||
+            host === 'posthog.dev' ||
+            host.endsWith('.posthog.dev') ||
+            host === 'posthogstatus.com' ||
+            host.endsWith('.posthogstatus.com')
+        ) {
+            return null
+        }
+        return url.origin
+    } catch {
+        return null
+    }
+}
 const FIVE_MINUTES = 5 * 60_000
 
 // incident.io uses full_outage for the state the web app calls a major outage.
@@ -47,12 +77,16 @@ function incidentColor(impact: Component['current_status']): 'yellow' | 'diffRed
 
 export interface PostHogStatus {
     indicatorColor?: 'diffGreen' | ReturnType<typeof incidentColor>
-    pageUrl: string
+    pageUrl: string | null
     summary?: string
     aiIncident?: { title: string; url: string; status: IncidentPhase; color: ReturnType<typeof incidentColor> }
 }
 
-export function regionalStatus(summary: Summary, region: 'us' | 'eu'): PostHogStatus {
+export function regionalStatus(
+    summary: Summary,
+    region: 'us' | 'eu',
+    statusOrigin: string | null = flindStatusOrigin(process.env.EXPO_PUBLIC_FLIND_STATUS_URL)
+): PostHogStatus {
     const group = region === 'us' ? 'US Cloud' : 'EU Cloud'
     const inRegion = (component: Component): boolean =>
         component.group_name?.replace(/[^\p{L}\p{N}\s]/gu, '').trim() === group
@@ -72,35 +106,43 @@ export function regionalStatus(summary: Summary, region: 'us' | 'eu'): PostHogSt
     const impact = incident && impactLabels[incident.current_worst_impact]
     const count = incidents.length > 1 ? ` (${incidents.length} incidents)` : ''
     return {
-        pageUrl: `${STATUS_PAGE}/${region}`,
+        pageUrl: statusOrigin ? `${statusOrigin}/${region}` : null,
         indicatorColor: incident ? incidentColor(incident.current_worst_impact) : maintenance ? 'yellow' : 'diffGreen',
         summary: incident
             ? `${impact ?? 'Incident'}${count} · ${incident.name}`
             : maintenance && `Maintenance in progress · ${maintenance.name}`,
-        aiIncident: ai && {
-            title: ai.event.name,
-            color: incidentColor(ai.impact),
-            status: ai.event.status,
-            url: `${STATUS_PAGE}/incidents/${encodeURIComponent(ai.event.id)}`,
-        },
+        aiIncident:
+            ai && statusOrigin
+                ? {
+                      title: ai.event.name,
+                      color: incidentColor(ai.impact),
+                      status: ai.event.status,
+                      url: `${statusOrigin}/incidents/${encodeURIComponent(ai.event.id)}`,
+                  }
+                : undefined,
     }
 }
 
 export function usePostHogStatus(host: string | undefined): PostHogStatus {
     const mode = useDataMode()
-    const region: RegionId = mode === 'live' && host ? regionForHost(host) : 'custom'
+    const statusOrigin = flindStatusOrigin(process.env.EXPO_PUBLIC_FLIND_STATUS_URL)
+    const region: RegionId = mode === 'live' && statusOrigin && host ? regionForHost(host) : 'custom'
     const { data } = useQuery({
-        queryKey: ['posthog-status', region],
-        enabled: region !== 'custom',
+        queryKey: ['flind-status', statusOrigin, region],
+        enabled: Boolean(statusOrigin) && region !== 'custom',
         queryFn: async ({ signal }): Promise<PostHogStatus> => {
-            if (region === 'custom') return { pageUrl: STATUS_PAGE }
-            const response = await fetch(`${STATUS_PAGE}/api/v1/summary`, { signal, credentials: 'omit' })
+            if (!statusOrigin || region === 'custom') return { pageUrl: null }
+            const response = await fetch(`${statusOrigin}/api/v1/summary`, {
+                signal,
+                credentials: 'omit',
+                redirect: 'error',
+            })
             if (!response.ok) throw new Error(`Status page returned ${response.status}`)
-            return regionalStatus(await response.json(), region)
+            return regionalStatus(await response.json(), region, statusOrigin)
         },
         staleTime: FIVE_MINUTES,
         refetchInterval: FIVE_MINUTES,
         refetchOnWindowFocus: true,
     })
-    return data ?? { pageUrl: region === 'custom' ? STATUS_PAGE : `${STATUS_PAGE}/${region}` }
+    return data ?? { pageUrl: region === 'custom' ? null : `${statusOrigin}/${region}` }
 }
