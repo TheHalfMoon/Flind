@@ -16,7 +16,7 @@ from posthog.utils import get_instance_region
 # preview builds sign in with, since all of them use this client against a local stack.
 ARRAY_REDIRECT_URIS = (
     "http://localhost:8237/callback http://localhost:8239/callback "
-    "posthog://callback posthog-dev://callback posthog-preview://callback"
+    "flind://callback flind-dev://callback flind-preview://callback"
 )
 POSTHOG_AI_REDIRECT_URIS = "http://localhost:8000/authorize"
 # Server-minted only: no interactive grant is ever issued against the Signals app, so it has

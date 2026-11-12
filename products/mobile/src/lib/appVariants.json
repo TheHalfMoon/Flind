@@ -1,11 +1,11 @@
 {
     "productionAppIds": {
-        "ios": "com.posthog.code.mobile",
-        "android": "com.posthog.mobile"
+        "ios": "com.thehalfmoon.flind.mobile",
+        "android": "com.thehalfmoon.flind.mobile"
     },
     "variants": {
-        "development": { "name": "PostHog Dev", "idSuffix": ".dev", "scheme": "posthog-dev" },
-        "preview": { "name": "PostHog Preview", "idSuffix": ".preview", "scheme": "posthog-preview" },
-        "production": { "name": "PostHog", "idSuffix": "", "scheme": "posthog" }
+        "development": { "name": "Flind Dev", "idSuffix": ".dev", "scheme": "flind-dev" },
+        "preview": { "name": "Flind Preview", "idSuffix": ".preview", "scheme": "flind-preview" },
+        "production": { "name": "Flind", "idSuffix": "", "scheme": "flind" }
     }
 }

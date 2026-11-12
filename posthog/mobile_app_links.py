@@ -2,8 +2,8 @@ from django.conf import settings
 from django.http import HttpRequest, HttpResponse, HttpResponseNotFound, JsonResponse
 
 # Keep in sync with productionAppIds and the variant suffixes in products/mobile/src/lib/appVariants.json.
-IOS_BUNDLE_IDS = ("com.posthog.code.mobile", "com.posthog.code.mobile.preview", "com.posthog.code.mobile.dev")
-ANDROID_PACKAGE_NAMES = ("com.posthog.mobile", "com.posthog.mobile.preview", "com.posthog.mobile.dev")
+IOS_BUNDLE_IDS = ("com.thehalfmoon.flind.mobile", "com.thehalfmoon.flind.mobile.preview", "com.thehalfmoon.flind.mobile.dev")
+ANDROID_PACKAGE_NAMES = ("com.thehalfmoon.flind.mobile", "com.thehalfmoon.flind.mobile.preview", "com.thehalfmoon.flind.mobile.dev")
 # Keep in sync with the Android intent filter in products/mobile/app.config.ts and webLinkTarget() in
 # products/mobile/src/lib/deepLinkKind.ts. A path listed here that the app cannot route opens an empty screen.
 APP_LINK_PATHS = ("/project/*/inbox/reports/*",)

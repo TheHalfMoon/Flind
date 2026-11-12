@@ -7,7 +7,7 @@ import { track, trackWhenReady } from './analytics'
 import { isInternalBuild } from './environment'
 
 function enabled(): boolean {
-    return isInternalBuild && process.env.EXPO_PUBLIC_POSTHOG_HANDOFF === '1'
+    return isInternalBuild && process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HANDOFF === '1'
 }
 
 export function receiveSessionHandoff(path: string): string {

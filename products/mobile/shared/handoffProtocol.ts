@@ -1,4 +1,4 @@
-export const HANDOFF_PARAM = 'ph_mobile_handoff'
+export const HANDOFF_PARAM = 'flind_mobile_handoff'
 export const HANDOFF_FLAG = 'mobile-session-handoff'
 const MAX_AGE_MS = 120_000
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
@@ -31,7 +31,7 @@ export function takeHandoff(url: URL, now: number): string | null {
 
 export function isMobileHandoffUrl(url: URL): boolean {
     return (
-        ['posthog-dev:', 'posthog-preview:'].includes(url.protocol) &&
+        ['flind-dev:', 'flind-preview:'].includes(url.protocol) &&
         !url.username &&
         !url.password &&
         !url.port &&

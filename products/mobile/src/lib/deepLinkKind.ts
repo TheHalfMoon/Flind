@@ -33,7 +33,7 @@ const PROJECT_KINDS: Record<string, DeepLinkKind> = {
     replay: 'replay',
 }
 
-// `posthog://inbox` puts the screen where a host would be. An http(s) link has a real host, which is dropped.
+// `flind://inbox` puts the screen where a host would be. An http(s) link has a real host, which is dropped.
 function withoutOrigin(path: string): string {
     return path.replace(/^https?:\/\/[^/?#]*/i, '').replace(/^[a-z][a-z0-9+.-]*:\/\//i, '')
 }

@@ -56,12 +56,12 @@ describe('web handoff', () => {
     })
 
     it.each([
-        ['posthog-dev://report/example', true],
-        ['posthog-preview://inbox', true],
-        ['posthog-dev://callback?code=fake', false],
-        ['posthog://inbox', false],
+        ['flind-dev://report/example', true],
+        ['flind-preview://inbox', true],
+        ['flind-dev://callback?code=fake', false],
+        ['flind://inbox', false],
         ['https://example.com/inbox', false],
-        ['posthog-dev://inbox#tab=all', false],
+        ['flind-dev://inbox#tab=all', false],
     ])('instruments only internal navigation anchors: %s', (href, decorated) => {
         const client = { capture: jest.fn(), isFeatureEnabled: () => true, onFeatureFlags: () => () => undefined }
         const cleanup = installMobileHandoff(client, null)

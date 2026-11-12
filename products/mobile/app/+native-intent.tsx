@@ -2,8 +2,8 @@ import { trackWhenReady } from '@/lib/analytics'
 import { deepLinkKind, webLinkTarget } from '@/lib/deepLinkKind'
 import { receiveSessionHandoff } from '@/lib/sessionHandoff'
 
-// Internal builds register posthog-dev:// or posthog-preview://, see src/lib/appVariants.json.
-const AUTH_CALLBACK = /^(?:posthog(?:-dev|-preview)?:\/\/|\/)callback(?:[/?#]|$)/
+// Internal builds register flind-dev:// or flind-preview://, see src/lib/appVariants.json.
+const AUTH_CALLBACK = /^(?:flind(?:-dev|-preview)?:\/\/|\/)callback(?:[/?#]|$)/
 
 // On Android the OAuth redirect reaches the app as a deep link while the browser session also receives it. Without
 // this filter Expo Router would open an unmatched `/callback` screen on top of sign in. iOS never gets here.

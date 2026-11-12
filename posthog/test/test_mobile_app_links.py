@@ -13,7 +13,7 @@ def test_apple_app_site_association_is_served_without_login_or_redirect():
     assert response.status_code == 200
     assert response["Content-Type"] == "application/json"
     [detail] = response.json()["applinks"]["details"]
-    assert f"{TEAM_ID}.com.posthog.code.mobile" in detail["appIDs"]
+    assert f"{TEAM_ID}.com.thehalfmoon.flind.mobile" in detail["appIDs"]
     assert detail["components"] == [
         {"/": "/project/*/inbox/reports/triage", "exclude": True},
         {"/": "/project/*/inbox/reports/*"},
@@ -27,7 +27,7 @@ def test_android_asset_links_are_served_without_login_or_redirect():
     assert response.status_code == 200
     assert response["Content-Type"] == "application/json"
     statements = {statement["target"]["package_name"]: statement for statement in response.json()}
-    production = statements["com.posthog.mobile"]
+    production = statements["com.thehalfmoon.flind.mobile"]
     assert production["relation"] == ["delegate_permission/common.handle_all_urls"]
     assert production["target"]["sha256_cert_fingerprints"] == [FINGERPRINT]
 

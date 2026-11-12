@@ -19,23 +19,23 @@ describe('session handoff', () => {
     beforeEach(() => {
         jest.useFakeTimers().setSystemTime(NOW)
         jest.clearAllMocks()
-        process.env.EXPO_PUBLIC_POSTHOG_HANDOFF = '1'
+        process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HANDOFF = '1'
         setAnalyticsClient({ capture, identify, reset })
         jest.mocked(useAuthStore.getState).mockReturnValue({
             status: 'signed_in',
-            host: 'https://us.posthog.com',
+            host: 'https://us.flind.example',
             projectId: 2,
         } as ReturnType<typeof useAuthStore.getState>)
         jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined)
     })
     afterEach(() => {
         setAnalyticsClient(null)
-        delete process.env.EXPO_PUBLIC_POSTHOG_HANDOFF
+        delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HANDOFF
         jest.useRealTimers()
     })
 
     it('correlates a same-host project navigation without copying identity or session state', async () => {
-        await openPostHogUrl('https://us.posthog.com/project/2/insights/abc')
+        await openPostHogUrl('https://us.flind.example/project/2/insights/abc')
         const url = new URL(jest.mocked(Linking.openURL).mock.calls[0]?.[0] ?? 'https://example.com')
         expect(takeHandoff(url, NOW)).toBe(ID)
         expect(capture).toHaveBeenCalledWith('mobile_session_handoff_started', {
@@ -48,10 +48,10 @@ describe('session handoff', () => {
 
     it.each([
         'https://example.com/project/2/insights/abc',
-        'https://eu.posthog.com/project/2/insights/abc',
-        'https://us.posthog.com/project/3/insights/abc',
-        'https://us.posthog.com/oauth/authorize',
-        'https://us.posthog.com/project/2/insights/abc#tab=events',
+        'https://eu.flind.example/project/2/insights/abc',
+        'https://us.flind.example/project/3/insights/abc',
+        'https://us.flind.example/oauth/authorize',
+        'https://us.flind.example/project/2/insights/abc#tab=events',
         'https://name:password@us.posthog.com/project/2/insights/abc',
         'http://us.posthog.com/project/2/insights/abc',
         'invalid-url',
@@ -62,8 +62,8 @@ describe('session handoff', () => {
     })
 
     it('leaves navigation unchanged when disabled', async () => {
-        delete process.env.EXPO_PUBLIC_POSTHOG_HANDOFF
-        const url = 'https://us.posthog.com/project/2/insights/abc'
+        delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HANDOFF
+        const url = 'https://us.flind.example/project/2/insights/abc'
         await openPostHogUrl(url)
         expect(Linking.openURL).toHaveBeenCalledWith(url)
         expect(capture).not.toHaveBeenCalled()
@@ -71,10 +71,10 @@ describe('session handoff', () => {
 
     it('receives a native link, strips only the marker, and leaves authentication alone', () => {
         const url = redirectSystemPath({
-            path: `posthog-dev://inbox#tab=all&${HANDOFF_PARAM}=${handoffMarker(ID, NOW)}`,
+            path: `flind-dev://inbox#tab=all&${HANDOFF_PARAM}=${handoffMarker(ID, NOW)}`,
             initial: true,
         })
-        expect(url).toBe('posthog-dev://inbox#tab=all')
+        expect(url).toBe('flind-dev://inbox#tab=all')
         expect(capture).toHaveBeenCalledWith('mobile_session_handoff_received', {
             handoff_id: ID,
             session_continuity: 'correlated',
@@ -84,9 +84,9 @@ describe('session handoff', () => {
     })
 
     it.each([
-        ['https://us.posthog.com/project/2/replay/example-session?t=12', '/replay/example-session?source=link&t=12'],
-        ['https://us.posthog.com/project/2/error_tracking/example-issue', '/errors/example-issue?from=link'],
-        ['posthog-dev://callback?code=example-code', null],
+        ['https://us.flind.example/project/2/replay/example-session?t=12', '/replay/example-session?source=link&t=12'],
+        ['https://us.flind.example/project/2/error_tracking/example-issue', '/errors/example-issue?from=link'],
+        ['flind-dev://callback?code=example-code', null],
     ])('preserves native routing for %s', (path, target) => {
         expect(redirectSystemPath({ path, initial: false })).toBe(target)
         expect(capture).not.toHaveBeenCalledWith('mobile_session_handoff_received', expect.anything())
@@ -102,12 +102,12 @@ describe('session handoff', () => {
 
     it('rejects and removes duplicate markers', () => {
         const marker = handoffMarker(ID, NOW)
-        const url = new URL(`posthog-dev://inbox#${HANDOFF_PARAM}=${marker}&${HANDOFF_PARAM}=${marker}`)
+        const url = new URL(`flind-dev://inbox#${HANDOFF_PARAM}=${marker}&${HANDOFF_PARAM}=${marker}`)
         expect(takeHandoff(url, NOW)).toBeNull()
         expect(url.hash).toBe('')
     })
 
-    it.each(['posthog-dev://callback?code=fake', 'posthog://inbox', 'https://example.com/inbox'])(
+    it.each(['flind-dev://callback?code=fake', 'flind://inbox', 'https://example.com/inbox'])(
         'does not handle %s',
         (path) => {
             const url = `${path}#${HANDOFF_PARAM}=${handoffMarker(ID, NOW)}`
