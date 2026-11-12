@@ -1,4 +1,3 @@
-import { hostKind } from '@/lib/environment'
 import { isRecord } from '@/lib/records'
 
 import { apiJson, projectPath } from './client'
@@ -61,9 +60,10 @@ export interface LiveProjectApi {
     path_cleaning_filters?: unknown[] | null
 }
 
-export interface LiveStatsApi {
-    users_on_product?: number | null
-}
+// The optional live stats integration is disabled until Flind owns and verifies an endpoint.
+// The mobile Live view already has an authenticated, project-scoped HogQL fallback.
+export { liveStatsHost, fetchLiveStats, LiveStatsError } from './liveStatsHost'
+export type { LiveStatsApi } from './liveStatsHost'
 
 const WHERE_WINDOW = 'timestamp >= toDateTime({dateFrom}) AND timestamp <= toDateTime({dateTo})'
 const WHERE_VISIBLE_MINUTES =
@@ -218,48 +218,3 @@ export async function fetchLiveProject(signal?: AbortSignal): Promise<LiveProjec
     return isRecord(body) ? (body as LiveProjectApi) : {}
 }
 
-export function liveStatsHost(host: string): string | null {
-    switch (hostKind(host)) {
-        case 'cloud-us':
-            return 'https://live.us.posthog.com'
-        case 'cloud-eu':
-            return 'https://live.eu.posthog.com'
-        default:
-            return null
-    }
-}
-
-/** Shorter than the 10-second poll, so a hung request never overlaps the next one. */
-const LIVE_STATS_TIMEOUT_MS = 8000
-
-export class LiveStatsError extends Error {
-    constructor(status: number) {
-        super(`Live stats failed with status ${status}`)
-        this.name = 'LiveStatsError'
-    }
-}
-
-/**
- * Users online from the live events service. A plain `fetch`: the service is another host, takes the project's live
- * events token instead of the session's, and has no Flind API budget.
- */
-export async function fetchLiveStats(liveHost: string, token: string, signal?: AbortSignal): Promise<LiveStatsApi> {
-    const controller = new AbortController()
-    const abort = (): void => controller.abort()
-    signal?.addEventListener('abort', abort, { once: true })
-    const timer = setTimeout(abort, LIVE_STATS_TIMEOUT_MS)
-    try {
-        const response = await fetch(`${liveHost}/stats`, {
-            headers: { Accept: 'application/json', Authorization: `Bearer ${token}` },
-            signal: controller.signal,
-        })
-        if (!response.ok) {
-            throw new LiveStatsError(response.status)
-        }
-        const body: unknown = await response.json()
-        return isRecord(body) ? (body as LiveStatsApi) : {}
-    } finally {
-        clearTimeout(timer)
-        signal?.removeEventListener('abort', abort)
-    }
-}
