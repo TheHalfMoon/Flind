@@ -51,9 +51,7 @@ The `usersPageviews` query leaves out the web's bot column, because Live has no 
 Two more reads, outside the query budget:
 
 - `GET api/projects/{id}/` once per project and session, for `live_events_token` and `path_cleaning_filters`. The server sends the token only when the grant covers `query:read`.
-- `GET {live host}/stats` with `Authorization: Bearer <live_events_token>`, every 10 seconds, on US Cloud (`live.us.posthog.com`) and EU Cloud (`live.eu.posthog.com`). It is a plain `fetch` with an 8-second timeout. It answers `users_on_product`.
-
-Users online comes from the HogQL `usersOnline` job instead when the host is not Cloud, the project has no token, or two stats reads in a row fail. It then changes every 30 seconds.
+- **Flind security isolation:** an owned Live stats service has not yet been configured or qualified. Flind does not send `live_events_token` to inherited external cloud endpoints. `liveStatsHost()` always returns `null`, and `fetchLiveStats()` refuses all hosts before any network request. Users online is obtained from the existing authenticated, project-scoped HogQL `usersOnline` job every 30 seconds. The Live screen and chip remain functional without a separate service. The project metadata read is retained for path cleaning and compatibility.
 
 The Live chip on the Web analytics screen reads users online alone: the stats read every 30 seconds, or the `usersOnline` query alone every 30 seconds on the `live` budget when the stats read is off. It reads only while the Web analytics screen is focused and the app is in the foreground, and never runs the jobs above. If a read fails, the chip shows “Reconnecting…” until a fresh count is available. The chip and Live screen pause their pulses and clocks when their screens are hidden or the app leaves the foreground.
 
