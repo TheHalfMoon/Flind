@@ -6,6 +6,14 @@ run or test result on that commit; anything else is marked as planned or unverif
 
 Last updated: 2026-11-12.
 
+## Toolbar documentation isolation (2026-11-12)
+
+- **Branch:** `flind-ci/toolbar-doc-links-20261112`, based on `main` `4078a0debe69ea0f0a4bcb26aad7d54d1863c98c`.
+- Removed three inherited PostHog documentation destinations from the Chrome extension More menu, extension Web Vitals menu, and shared fragile-selector warning. Existing Flind project-local Web Vitals metrics link, reload action, screenshot/PII/debug controls, and inline selector guidance remain.
+- Added `frontend/bin/flind-toolbar-doc-links.test.mjs` and a rename-ratchet CI step. The Windows isolated exact-branch fetch plus `node --check` and `node --test` completed **2 passed, 0 failed** on 2026-11-12. This is **not** evidence that the full frontend/E2E suite passed.
+- **Not merged or released** pending exact-head CI and independent review. Other donor-hosted documentation references remain elsewhere; this PR intentionally scopes only three toolbar surfaces.
+
+
 ## Stage 3 qualification checkpoint (2026-11-12)
 
 - **Main:** PR #23 merged as `b9e66abbbec7581e073de1ba933e8f11eab4f1a2`. The `@flind/icons` workspace migration passed exact-head frontend, backend, upstream, E2E, brand-audit, rename-ratchet, and runtime-migration workflows; ESM and CommonJS React smoke tests also passed on Node 26.
