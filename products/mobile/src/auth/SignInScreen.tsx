@@ -44,13 +44,16 @@ export function SignInScreen(): ReactElement {
     const setDemo = useDemoMode((state) => state.setEnabled)
     const [cloudRegion, setCloudRegion] = useState<CloudRegion['id']>(() => {
         const { region, host } = useAuthStore.getState()
-        return defaultCloudRegion(
+        const preferred = defaultCloudRegion(
             getLocales()[0]?.regionCode ?? null,
             getCalendars()[0]?.timeZone ?? null,
             host ? region : undefined
         )
+        return CLOUD_REGIONS.some((item) => item.id === preferred) ? preferred : (CLOUD_REGIONS[0]?.id ?? 'us')
     })
-    const [selfHosted, setSelfHosted] = useState(() => useAuthStore.getState().region === 'custom')
+    const [selfHosted, setSelfHosted] = useState(
+        () => CLOUD_REGIONS.length === 0 || useAuthStore.getState().region === 'custom'
+    )
     const region: RegionId = selfHosted ? 'custom' : cloudRegion
     const [customHost, setCustomHost] = useState(() => {
         const { region: lastRegion, host } = useAuthStore.getState()
@@ -136,7 +139,7 @@ export function SignInScreen(): ReactElement {
                 <View style={styles.card}>
                     <View style={styles.titleRow}>
                         <Text style={styles.title}>Log in to </Text>
-                        <Text style={[styles.title, styles.titleChip]}>@PostHog</Text>
+                        <Text style={[styles.title, styles.titleChip]}>Flind</Text>
                     </View>
                     <Text style={styles.sub}>Let's go ship something.</Text>
                     <View style={styles.form}>
@@ -146,7 +149,7 @@ export function SignInScreen(): ReactElement {
                                     label="Host"
                                     value={customHost}
                                     onChangeText={setCustomHost}
-                                    placeholder="posthog.example.com"
+                                    placeholder="flind.example.com"
                                     keyboardType="url"
                                     editable={!submit.pending}
                                     testID="sign-in-host"
@@ -205,19 +208,21 @@ export function SignInScreen(): ReactElement {
                             )}
                         </Pressable44>
                     </View>
-                    <View style={styles.links}>
-                        <Pressable44
-                            onPress={() => changeRegion(selfHosted ? cloudRegion : 'custom')}
-                            disabled={submit.pending}
-                            pressedStyle={styles.linkPressed}
-                            style={styles.link}
-                            testID="sign-in-self-hosted"
-                        >
-                            <Text style={styles.linkText}>
-                                {selfHosted ? 'Use Flind Cloud instead' : 'Use a self-hosted instance'}
-                            </Text>
-                        </Pressable44>
-                    </View>
+                    {CLOUD_REGIONS.length > 0 ? (
+                        <View style={styles.links}>
+                            <Pressable44
+                                onPress={() => changeRegion(selfHosted ? cloudRegion : 'custom')}
+                                disabled={submit.pending}
+                                pressedStyle={styles.linkPressed}
+                                style={styles.link}
+                                testID="sign-in-self-hosted"
+                            >
+                                <Text style={styles.linkText}>
+                                    {selfHosted ? 'Use Flind Cloud instead' : 'Use a self-hosted instance'}
+                                </Text>
+                            </Pressable44>
+                        </View>
+                    ) : null}
                     <View style={styles.divider} />
                     <Pressable44
                         onPress={tryDemo}

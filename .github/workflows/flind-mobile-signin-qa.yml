@@ -1,0 +1,33 @@
+name: Flind mobile sign-in implementation QA
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-signin-owned-hosts-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-mobile-signin-qa-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    mobile:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 30
+        defaults:
+            run:
+                working-directory: products/mobile
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: products/mobile/.node-version
+            - name: Install pinned pnpm without third-party setup actions
+              run: npm install --global pnpm@10.29.3
+            - name: Install frozen mobile dependencies
+              run: pnpm install --frozen-lockfile
+            - name: Verify TypeScript
+              run: pnpm exec tsc --noEmit
+            - name: Run authentication region Jest regression suite
+              run: pnpm exec jest src/auth/regions.test.ts --runInBand --ci
+            - name: Verify changed TypeScript style
+              run: pnpm exec biome check src/auth/regions.ts src/auth/SignInScreen.tsx src/auth/RegionSelect.tsx src/auth/regions.test.ts src/auth/hostSafety.ts
