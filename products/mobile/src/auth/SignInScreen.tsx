@@ -209,15 +209,15 @@ export function SignInScreen(): ReactElement {
                     {CLOUD_REGIONS.length > 0 ? (
                         <View style={styles.links}>
                             <Pressable44
-                            onPress={() => changeRegion(selfHosted ? cloudRegion : 'custom')}
-                            disabled={submit.pending}
-                            pressedStyle={styles.linkPressed}
-                            style={styles.link}
-                            testID="sign-in-self-hosted"
-                        >
-                            <Text style={styles.linkText}>
-                                {selfHosted ? 'Use Flind Cloud instead' : 'Use a self-hosted instance'}
-                            </Text>
+                                onPress={() => changeRegion(selfHosted ? cloudRegion : 'custom')}
+                                disabled={submit.pending}
+                                pressedStyle={styles.linkPressed}
+                                style={styles.link}
+                                testID="sign-in-self-hosted"
+                            >
+                                <Text style={styles.linkText}>
+                                    {selfHosted ? 'Use Flind Cloud instead' : 'Use a self-hosted instance'}
+                                </Text>
                             </Pressable44>
                         </View>
                     ) : null}
