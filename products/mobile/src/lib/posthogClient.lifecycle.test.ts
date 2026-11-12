@@ -49,8 +49,10 @@ describe('mobile SDK analytics privacy', () => {
         'posthog://report/example-private-label?title=example-title',
         'posthog://callback?code=example-code&state=example-state',
     ])('omits the initial URL from the SDK queue for %s', async (url) => {
-        const originalKey = process.env.EXPO_PUBLIC_POSTHOG_KEY
-        process.env.EXPO_PUBLIC_POSTHOG_KEY = 'phc_example_mobile_test'
+        const originalKey = process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY
+        process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY = 'phc_example_mobile_test'
+        const originalHost = process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST
+        process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST = 'https://analytics.flind.example'
         const network = jest.spyOn(sdkPrototype, 'fetch').mockResolvedValue(new Response('{}', { status: 200 }))
         const initialURL = jest.spyOn(Linking, 'getInitialURL').mockResolvedValue(url)
         const authSubscribe = jest.spyOn(useAuthStore, 'subscribe').mockReturnValue(() => {})
@@ -79,9 +81,14 @@ describe('mobile SDK analytics privacy', () => {
             demoSubscribe.mockRestore()
             demoHydrate.mockRestore()
             if (originalKey === undefined) {
-                delete process.env.EXPO_PUBLIC_POSTHOG_KEY
+                delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY
             } else {
-                process.env.EXPO_PUBLIC_POSTHOG_KEY = originalKey
+                process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY = originalKey
+            }
+            if (originalHost === undefined) {
+                delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST
+            } else {
+                process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST = originalHost
             }
         }
     })
@@ -94,8 +101,10 @@ describe('mobile SDK analytics privacy', () => {
     ] as const)(
         'clears persisted email before SDK hydration loads flags ($status, privacy $preference)',
         async ({ status, preference }) => {
-            const originalKey = process.env.EXPO_PUBLIC_POSTHOG_KEY
-            process.env.EXPO_PUBLIC_POSTHOG_KEY = 'phc_example_mobile_test'
+            const originalKey = process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY
+            process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY = 'phc_example_mobile_test'
+            const originalHost = process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST
+            process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST = 'https://analytics.flind.example'
             const network = jest.spyOn(sdkPrototype, 'fetch').mockImplementation(async (input) => {
                 const url = String(input)
                 return new Response(
@@ -170,9 +179,14 @@ describe('mobile SDK analytics privacy', () => {
                 demoSubscribe.mockRestore()
                 demoHydrate.mockRestore()
                 if (originalKey === undefined) {
-                    delete process.env.EXPO_PUBLIC_POSTHOG_KEY
+                    delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY
                 } else {
-                    process.env.EXPO_PUBLIC_POSTHOG_KEY = originalKey
+                    process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY = originalKey
+                }
+                if (originalHost === undefined) {
+                    delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST
+                } else {
+                    process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST = originalHost
                 }
             }
         }
