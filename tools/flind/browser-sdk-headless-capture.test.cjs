@@ -19,6 +19,12 @@ const syntheticUA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, 
 test('headless browser SDK sends a local capture only when the synthetic bot filter is disabled', { timeout: 60000 }, async () => {
     assert.ok(browserPath && existsSync(browserPath), 'Chrome/Edge missing; set FLIND_HEADLESS_BROWSER')
     const received = []
+    let unexpectedPortRequests = 0
+    const forbiddenServer = createServer((_req, res) => {
+        unexpectedPortRequests++
+        res.writeHead(200, { 'Content-Type': 'text/plain' })
+        res.end('must not be reached')
+    })
     const server = createServer(async (req, res) => {
         const path = new URL(req.url, 'http://127.0.0.1').pathname
         if (path === '/static/array.js') {
@@ -49,18 +55,22 @@ test('headless browser SDK sends a local capture only when the synthetic bot fil
     })
     server.listen(0, '127.0.0.1')
     await once(server, 'listening')
+    forbiddenServer.listen(0, '127.0.0.1')
+    await once(forbiddenServer, 'listening')
     const origin = `http://127.0.0.1:${server.address().port}`
+    const forbiddenOrigin = `http://127.0.0.1:${forbiddenServer.address().port}`
+    assert.notEqual(origin, forbiddenOrigin)
     let browser
     try {
         browser = await chromium.launch({ executablePath: browserPath, headless: true, args: ['--no-sandbox'] })
         for (const allowBot of [false, true]) {
             received.length = 0
-            const context = await browser.newContext({ userAgent: syntheticUA })
+            const context = await browser.newContext({ userAgent: syntheticUA, serviceWorkers: 'block' })
             try {
                 const page = await context.newPage()
                 const blocked = []
                 await page.route('**/*', route => {
-                    if (new URL(route.request().url()).hostname !== '127.0.0.1') {
+                    if (new URL(route.request().url()).origin !== origin) {
                         blocked.push(new URL(route.request().url()).origin)
                         return route.abort()
                     }
@@ -86,13 +96,19 @@ test('headless browser SDK sends a local capture only when the synthetic bot fil
                     if (allowBot && received.includes('/e/')) break
                     await page.waitForTimeout(200)
                 }
-                assert.deepEqual(blocked, [], 'browser SDK attempted an external host')
+                assert.deepEqual(blocked, [], 'browser SDK attempted a request outside its exact instance origin')
                 if (allowBot) {
                     assert.ok(received.includes('/e/'), 'SDK accepted capture but sent no local /e/ event')
                 } else {
                     assert.deepEqual(received, [], 'SDK ignored bot filter and emitted a request')
                 }
-                console.log(`Headless SDK test: allowBot=${allowBot}, accepted=${result.accepted}, localPosts=${received.length}`)
+                // Negative control: a different port on the same loopback IP MUST be
+                // blocked at routing, not merely fail due to CORS after reaching it.
+                const probe = await page.evaluate(url => fetch(url).then(() => 'permitted', () => 'blocked'), forbiddenOrigin + '/probe')
+                assert.equal(probe, 'blocked')
+                assert.deepEqual(blocked, [forbiddenOrigin], 'the exact-origin route guard did not reject the other local port')
+                assert.equal(unexpectedPortRequests, 0, 'a forbidden same-host different-port request reached the server')
+                console.log(`Headless SDK test: allowBot=${allowBot}, accepted=${result.accepted}, localPosts=${received.length}, forbiddenPortBlocked=true`)
             } finally {
                 await context.close()
             }
@@ -100,6 +116,10 @@ test('headless browser SDK sends a local capture only when the synthetic bot fil
     } finally {
         if (browser) await browser.close()
         server.closeAllConnections()
-        await new Promise(resolve => server.close(resolve))
+        forbiddenServer.closeAllConnections()
+        await Promise.all([
+            new Promise(resolve => server.close(resolve)),
+            new Promise(resolve => forbiddenServer.close(resolve)),
+        ])
     }
 })

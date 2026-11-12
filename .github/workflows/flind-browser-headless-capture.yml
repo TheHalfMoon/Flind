@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - 'flind-test/browser-capture-fast-*'
+            - 'flind-test/browser-origin-guard-*'
     workflow_dispatch:
 
 permissions:
