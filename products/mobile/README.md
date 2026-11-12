@@ -1,4 +1,4 @@
-# Flind mobile
+> **Native rebrand in progress:** Flind's provisional iOS/Android identifier is `com.thehalfmoon.flind.mobile` and its schemes are `flind://`, `flind-dev://` and `flind-preview://`. New app signing and authentic mobile builds remain unverified; see `docs/FLIND_NATIVE_IDENTITIES.md` before attempting distribution.\n\n# Flind mobile
 
 A standalone Expo + React Native app for iOS and Android, named **Flind** on the stores.
 It is a quick-triage companion to the Flind home page:
@@ -49,12 +49,12 @@ Metro inlines `EXPO_PUBLIC_*` values when it bundles, so restart Metro with `--c
 Deep links open screens directly, for example in the simulator:
 
 ```sh
-xcrun simctl openurl booted "posthog://inbox"
-xcrun simctl openurl booted "posthog://report/demo-report-load-time"
-xcrun simctl openurl booted "posthog://report/demo-report-load-time/details"
+xcrun simctl openurl booted "flind://inbox"
+xcrun simctl openurl booted "flind://report/demo-report-load-time"
+xcrun simctl openurl booted "flind://report/demo-report-load-time/details"
 ```
 
-A build made with `APP_VARIANT=development` or `preview` uses the `posthog-dev://` or `posthog-preview://` scheme instead.
+A build made with `APP_VARIANT=development` or `preview` uses the `flind-dev://` or `flind-preview://` scheme instead.
 
 ### Sign in to the local backend
 
@@ -80,8 +80,8 @@ APP_VARIANT=development pnpm ios
 
 Leave demo mode, choose **Self-hosted**, and enter `http://localhost:8010`.
 Keep the prefilled local Client ID, then sign in as the usual test account and approve access.
-The browser returns through `posthog-dev://callback`.
-A production-identity local build uses `posthog://callback`; a preview build uses `posthog-preview://callback`.
+The browser returns through `flind-dev://callback`.
+A production-identity local build uses `flind://callback`; a preview build uses `flind-preview://callback`.
 All three callbacks are registered by `setup_tasks_oauth`.
 
 The iOS simulator can reach the Mac's loopback backend.

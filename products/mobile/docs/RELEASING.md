@@ -1,4 +1,4 @@
-# Releasing
+> **Flind release NO-GO:** This guide inherits procedures from another application. The new Flind app identity (`com.thehalfmoon.flind.mobile`) is provisional and not registered, signed, built, submitted, or verified with any store. It does not upgrade or replace an existing vendor app. Disable any inherited EAS release automation and validate Flind-owned Expo, certificates, URLs, backend and device journeys before adapting the procedures below. No release is authorized.\n\n# Releasing
 
 Use **Mobile Release** for native store builds and production OTA updates after a release request merges to `master`.
 Native releases stop at TestFlight and the Play internal track; public-store promotion follows testing.
@@ -146,15 +146,15 @@ These recovery operations require release access and are exceptional; routine pu
 ## Store records this app uses
 
 This app replaces the existing "Flind" iOS app and uses a new Google Play app record.
-The iOS store build keeps the existing identity, so an update replaces the old app on people's phones.
-Android uses `com.posthog.mobile`, which installs separately from the older `com.posthog.code.mobile` app.
+The Flind iOS build has a separate, provisional bundle identifier. It does not update the original application's installed user base.
+Flind's Android application identifier is independent of the original application and requires a new, verified store registration.
 Development and preview builds use their own identities, see [Build variants](#build-variants).
 
 | Field                             | Value                                  |
 | --------------------------------- | -------------------------------------- |
 | App name                          | Flind                                |
-| iOS bundle id                     | `com.posthog.code.mobile`              |
-| Android package                   | `com.posthog.mobile`                   |
+| iOS bundle id                     | `com.thehalfmoon.flind.mobile`              |
+| Android package                   | `com.thehalfmoon.flind.mobile`                   |
 | Expo owner and slug               | `posthog` / `posthog`                  |
 | EAS project id                    | `4eb57b2f-79f6-4ab0-ae2c-bbd82af2cef9` |
 | App Store Connect app id          | `6762366098`                           |
@@ -217,11 +217,11 @@ The names, id suffixes and schemes are in `src/lib/appVariants.json`.
 
 | Variant       | Profile       | App name        | iOS bundle id                     | Android package              | URL scheme        | iOS App Group                           | Icon                                           |
 | ------------- | ------------- | --------------- | --------------------------------- | ---------------------------- | ----------------- | --------------------------------------- | ---------------------------------------------- |
-| `development` | `development` | Flind Dev     | `com.posthog.code.mobile.dev`     | `com.posthog.mobile.dev`     | `posthog-dev`     | `group.com.posthog.code.mobile.dev`     | `app-dev.icon` on iOS, amber DEV band          |
-| `preview`     | `preview`     | Flind Preview | `com.posthog.code.mobile.preview` | `com.posthog.mobile.preview` | `posthog-preview` | `group.com.posthog.code.mobile.preview` | `app-preview.icon` on iOS, purple PREVIEW band |
-| `production`  | `production`  | Flind         | `com.posthog.code.mobile`         | `com.posthog.mobile`         | `posthog`         | `group.com.posthog.code.mobile`         | `app.icon` on iOS                              |
+| `development` | `development` | Flind Dev     | `com.thehalfmoon.flind.mobile.dev`     | `com.thehalfmoon.flind.mobile.dev`     | `posthog-dev`     | `group.com.thehalfmoon.flind.mobile.dev`     | `app-dev.icon` on iOS, amber DEV band          |
+| `preview`     | `preview`     | Flind Preview | `com.thehalfmoon.flind.mobile.preview` | `com.thehalfmoon.flind.mobile.preview` | `posthog-preview` | `group.com.thehalfmoon.flind.mobile.preview` | `app-preview.icon` on iOS, purple PREVIEW band |
+| `production`  | `production`  | Flind         | `com.thehalfmoon.flind.mobile`         | `com.thehalfmoon.flind.mobile`         | `posthog`         | `group.com.thehalfmoon.flind.mobile`         | `app.icon` on iOS                              |
 
-- The widget extension's bundle id is the app's id plus `.HedgehogWidget`, for example `com.posthog.code.mobile.dev.HedgehogWidget`.
+- The widget extension's bundle id is the app's id plus `.HedgehogWidget`, for example `com.thehalfmoon.flind.mobile.dev.HedgehogWidget`.
 - The production profile also sets `EXPO_PUBLIC_SIGNUP_LINK=0`, so store builds hide "Create an account".
 - After editing an iOS icon bundle, regenerate the native project with Expo prebuild and install a new build.
   Xcode compiles the Home Screen appearances and generates fallback images for older iOS versions.
@@ -258,11 +258,11 @@ Someone with these accounts does each step once. An agent cannot do them.
 
 4. Check the signing credentials with `eas credentials`.
    Reuse the existing iOS distribution certificate and provisioning profiles.
-   Set up an Android upload keystore for `com.posthog.mobile` before its first build.
+   Set up an Android upload keystore for `com.thehalfmoon.flind.mobile` before its first build.
    Reuse that keystore for subsequent releases: Google Play rejects bundles signed with a different upload key.
 5. Register the internal identities from [Build variants](#build-variants) in the Apple Developer account, under Certificates, Identifiers & Profiles:
-   - App IDs `com.posthog.code.mobile.dev`, `com.posthog.code.mobile.dev.HedgehogWidget`, `com.posthog.code.mobile.preview` and `com.posthog.code.mobile.preview.HedgehogWidget`.
-   - App Groups `group.com.posthog.code.mobile.dev` and `group.com.posthog.code.mobile.preview`.
+   - App IDs `com.thehalfmoon.flind.mobile.dev`, `com.thehalfmoon.flind.mobile.dev.HedgehogWidget`, `com.thehalfmoon.flind.mobile.preview` and `com.thehalfmoon.flind.mobile.preview.HedgehogWidget`.
+   - App Groups `group.com.thehalfmoon.flind.mobile.dev` and `group.com.thehalfmoon.flind.mobile.preview`.
    - Turn on the App Groups capability for all four App IDs and select the group of the same variant. Turn on Push Notifications for the two app ids.
 
    Configure the matching ad hoc provisioning profiles in EAS before starting the workflow.
@@ -283,7 +283,7 @@ Someone with these accounts does each step once. An agent cannot do them.
 
    Do not add `APP_VARIANT` or `EXPO_PUBLIC_SIGNUP_LINK` here. `eas.json` and the hosted publisher set them.
 
-9. Create separate non-first-party public OAuth applications in US and EU for `posthog-dev://callback` and `posthog-preview://callback`. Set their IDs as `EXPO_PUBLIC_OAUTH_US_CLIENT_ID` and `EXPO_PUBLIC_OAUTH_EU_CLIENT_ID` in both EAS internal environments. Production first-party applications must keep only `posthog://callback`; remove internal callback URIs if already added.
+9. Create separate non-first-party public OAuth applications in US and EU for `flind-dev://callback` and `flind-preview://callback`. Set their IDs as `EXPO_PUBLIC_OAUTH_US_CLIENT_ID` and `EXPO_PUBLIC_OAUTH_EU_CLIENT_ID` in both EAS internal environments. Production first-party applications must keep only `flind://callback`; remove internal callback URIs if already added.
 10. Complete the protected environments and separate token setup in [One-time hosted release setup](#one-time-hosted-release-setup). The desktop mobile workflows' shared `EXPO_TOKEN` is not used by these workflows.
 
 ## Install a development build on an iPhone
@@ -335,7 +335,7 @@ Only production builds can go to TestFlight. Preview builds use ad hoc signing, 
 Google Play also uses the `production` build profile: it creates an app bundle with the store package,
 while `preview` creates an APK with a separate package for direct installation.
 
-For the first Google Play release, create a free app record for `com.posthog.mobile` in Play Console.
+For the first Google Play release, create a free app record for `com.thehalfmoon.flind.mobile` in Play Console.
 An account owner must approve the policy, Play App Signing and export declarations.
 On **Testing > Internal testing**, create and select a tester email list, then upload the production `.aab`
 under **Create new release**. Review and publish to the internal track, then share the opt-in link from

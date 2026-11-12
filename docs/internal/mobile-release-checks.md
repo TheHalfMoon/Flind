@@ -1,4 +1,4 @@
-# Mobile app release checks
+> **Flind native release is blocked:** candidate package identifiers are not owned or validated until registered by the Flind operator. EAS and signing accounts from the prior app are not Flind credentials. Do not build or submit for distribution.\n\n# Mobile app release checks
 
 Use this checklist before sharing a build or publishing an update of the Expo + React Native app in
 `products/mobile` for iOS and Android. Production native builds, store submissions and OTA updates use
@@ -20,12 +20,12 @@ Development and preview builds use [Mobile Build](../../products/mobile/docs/CI.
 
   | Production identity | Value                     |
   | ------------------- | ------------------------- |
-  | iOS bundle ID       | `com.posthog.code.mobile` |
-  | Android package     | `com.posthog.mobile`      |
-  | EAS project         | `@posthog/posthog`        |
+  | iOS bundle ID       | `com.thehalfmoon.flind.mobile` |
+  | Android package     | `com.thehalfmoon.flind.mobile`      |
+  | EAS project         | `Not configured for Flind`        |
 
   iOS updates the existing store app. Android uses a new Play record and installs separately from the
-  older `com.posthog.code.mobile` app. Stop the old iOS build workflow before distributing the replacement.
+  older `com.thehalfmoon.flind.mobile` app. Stop the old iOS build workflow before distributing the replacement.
 
 - For native dependencies, config plugins or native configuration changes, raise `version` in
   `app.config.ts` and add a `native` release request. OTA requests keep the installed runtime version and

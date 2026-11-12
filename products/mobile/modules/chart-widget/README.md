@@ -63,7 +63,7 @@ A widget tap opens `/views/insight/<short_id>?from=widget&family=<family>` or `/
 
 | Data                  | iOS                                                                                                                                                                                                                | Android                                                                                                                    | Writer        |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| Credentials           | Keychain generic password: service `com.posthog.code.mobile.chart-widget`, account `credentials`, access group `group.<app bundle id>`, `kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly`; data is the UTF-8 JSON | `EncryptedSharedPreferences` file `chart_widget_secure` (MasterKey AES256_GCM), key `credentials`, written with `commit()` | App           |
+| Credentials           | Keychain generic password: service `com.thehalfmoon.flind.mobile.chart-widget`, account `credentials`, access group `group.<app bundle id>`, `kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly`; data is the UTF-8 JSON | `EncryptedSharedPreferences` file `chart_widget_secure` (MasterKey AES256_GCM), key `credentials`, written with `commit()` | App           |
 | Catalog               | AES-GCM encrypted `UserDefaults(suiteName: "group.<app bundle id>")`, key `chart.catalog`                                                                                                                          | `EncryptedSharedPreferences` file `chart_widget_secure`, key `chart.catalog`                                               | App           |
 | Snapshot of one pin   | same encrypted suite, key `chart.snapshot.<pinId>`                                                                                                                                                                 | `chart_widget_secure`, key `chart.snapshot.<pinId>`                                                                        | App or widget |
 | Last error of one pin | same encrypted suite, key `chart.snapshotError.<pinId>`                                                                                                                                                            | `chart_widget_secure`, key `chart.snapshotError.<pinId>`                                                                   | Widget        |
@@ -251,7 +251,7 @@ The scheme is `posthog`, `posthog-dev` or `posthog-preview` by build variant (`s
 |               | iOS                                                                     | Android                                                                |
 | ------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | Widget        | kind `ChartWidget`, in the `HedgehogWidget` extension target            | see "Chart widget (Android)"                                           |
-| Native module | `ChartWidget`, pod `PostHogChartWidget` (`ios/ChartWidgetModule.swift`) | `ChartWidget`, class `com.posthog.code.mobile.chart.ChartWidgetModule` |
+| Native module | `ChartWidget`, pod `PostHogChartWidget` (`ios/ChartWidgetModule.swift`) | `ChartWidget`, class `com.thehalfmoon.flind.mobile.chart.ChartWidgetModule` |
 | App Group     | `group.<app bundle id>`, shared with the hedgehog widget                | n/a                                                                    |
 
 The pod is not named `ChartWidget`, because the extension target owns the widget's Swift module names and a pod of the same name would shadow them.
@@ -293,8 +293,8 @@ RemoteViews only (no Glance, no Compose), API 24 and up. Code in `android/src/ma
 
 |                    | Android                                                                                                                                                                         |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Provider           | receiver `com.posthog.code.mobile.chart.ChartWidgetProvider`, info `res/xml/chart_widget_info.xml`                                                                              |
-| Configure activity | `com.posthog.code.mobile.chart.ChartWidgetConfigureActivity` (`APPWIDGET_CONFIGURE`, exported)                                                                                  |
+| Provider           | receiver `com.thehalfmoon.flind.mobile.chart.ChartWidgetProvider`, info `res/xml/chart_widget_info.xml`                                                                              |
+| Configure activity | `com.thehalfmoon.flind.mobile.chart.ChartWidgetConfigureActivity` (`APPWIDGET_CONFIGURE`, exported)                                                                                  |
 | Legacy preferences | `chart_widget`: cleared on access                                                                                                                                               |
 | Secure preferences | `chart_widget_secure` (`EncryptedSharedPreferences`, `MasterKey` AES256_GCM): credentials, catalog, snapshots, errors and widget configuration                                  |
 | Work               | unique `chart-widget-refresh` (REPLACE, network required), `chart-widget-keep-enabled`                                                                                          |
@@ -381,7 +381,7 @@ The SwiftUI, WidgetKit and AppIntents files do not compile there; `xcodebuild` c
 | Configuration | `ChartWidgetIntent` ("Chart"): `pin: PinEntity?`, `extraPins: [PinEntity]?` (large only)                                                                                          |
 | Picker entity | `PinEntity`, id = the catalog pin id; `PinQuery` lists eligible pins in Views order                                                                                               |
 | Store         | AES-GCM encrypted `UserDefaults(suiteName: "group.<app bundle id>")`, keys `chart.catalog`, `chart.snapshot.<pinId>`, `chart.snapshotError.<pinId>`, `chart.pinProject.<pinId>`   |
-| Credentials   | keychain generic password, service `com.posthog.code.mobile.chart-widget`, account `credentials`, access group `group.<app bundle id>`                                            |
+| Credentials   | keychain generic password, service `com.thehalfmoon.flind.mobile.chart-widget`, account `credentials`, access group `group.<app bundle id>`                                            |
 | Deep links    | `<scheme>://views/insight/<shortId>?from=widget&family=<small\|medium\|large>`, `<scheme>://views/dashboard/<dashboardId>?from=widget&family=...`; states open `<scheme>://views` |
 
 The scheme follows the bundle id's variant suffix, as in `src/lib/appVariants.json`: `posthog`, `posthog-dev` or `posthog-preview`.

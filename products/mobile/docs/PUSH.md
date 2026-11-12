@@ -1,4 +1,4 @@
-# Push notifications
+> **Flind push setup is not provisioned.** The new bundle/package identifier requires Flind-owned Firebase, APNs, entitlements and physical-device delivery tests. No inherited certificate, team, push token, or app ID is valid for Flind.\n\n# Push notifications
 
 Code: `src/features/notifications/`, `src/api/pushTokens.ts`. The root layout installs both hooks.
 
@@ -34,9 +34,9 @@ Someone with access to the Apple Developer team, the Firebase project and the `p
 
 | Variant              | iOS bundle id                     | Android package              |
 | -------------------- | --------------------------------- | ---------------------------- |
-| Store (`production`) | `com.posthog.code.mobile`         | `com.posthog.mobile`         |
-| `preview`            | `com.posthog.code.mobile.preview` | `com.posthog.mobile.preview` |
-| `development`        | `com.posthog.code.mobile.dev`     | `com.posthog.mobile.dev`     |
+| Store (`production`) | `com.thehalfmoon.flind.mobile`         | `com.thehalfmoon.flind.mobile`         |
+| `preview`            | `com.thehalfmoon.flind.mobile.preview` | `com.thehalfmoon.flind.mobile.preview` |
+| `development`        | `com.thehalfmoon.flind.mobile.dev`     | `com.thehalfmoon.flind.mobile.dev`     |
 
 **iOS: APNs key.**
 

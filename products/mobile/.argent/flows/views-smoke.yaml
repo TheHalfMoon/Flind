@@ -1,8 +1,8 @@
 # Views walkthrough in the demo. Starts and ends on the sign-in screen with demo mode off, so it can run
 # again right away. How to run it: products/mobile/docs/TESTING.md, with views-smoke in place of demo-smoke.
 steps:
-    - echo: Restart PostHog. Expect the sign-in screen with demo mode off
-    - launch: com.posthog.code.mobile
+    - echo: Restart Flind. Expect the sign-in screen with demo mode off
+    - launch: com.thehalfmoon.flind.mobile
     - await: { visible: { id: try-demo }, timeout: 25000 }
     - await: { idle: true }
 
