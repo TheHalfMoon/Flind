@@ -77,7 +77,6 @@ export const TODAY_PEOPLE_ROWS = {
             description:
                 'See how your customers use your product. Follow active users, sessions, and signups on one dashboard.',
             example: 'Check how many free users became paying customers this month.',
-            docsHref: 'https://posthog.com/docs/customer-analytics',
         },
         section: null,
         href: () => urls.customerAnalyticsDashboard(),
@@ -133,7 +132,7 @@ export const TODAY_PEOPLE_ROWS = {
         label: 'Cohorts',
         icon: <IconPeople />,
         iconColor: productColor('data-warehouse'),
-        explainer: { ...sidebarProductCopy('Cohorts'), docsHref: 'https://posthog.com/docs/data/cohorts' },
+        explainer: sidebarProductCopy('Cohorts'),
         section: null,
         href: () => urls.cohorts(),
         enabled: always,
@@ -190,7 +189,6 @@ export const TODAY_PEOPLE_ROWS = {
             description:
                 'Choose the events and group type that customer analytics uses for its dashboards and accounts.',
             example: 'Pick the event that counts as a signup.',
-            docsHref: 'https://posthog.com/docs/customer-analytics',
         },
         section: 'customer-analytics',
         href: () => urls.customerAnalyticsConfiguration(),
@@ -202,7 +200,6 @@ export const TODAY_PEOPLE_ROWS = {
         explainer: {
             description: 'Read and reply to the support tickets your customers send.',
             example: 'Reply to a customer who reported a bug.',
-            docsHref: 'https://posthog.com/docs/support',
         },
         section: null,
         href: () => urls.supportTickets(),
