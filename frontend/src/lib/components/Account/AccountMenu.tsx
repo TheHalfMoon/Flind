@@ -305,17 +305,17 @@ export function AccountMenu({ trigger, ...props }: AccountMenuProps): JSX.Elemen
 
                     <DropdownMenuItem asChild>
                         <Link
-                            to="https://posthog.com/changelog"
+                            to="https://github.com/TheHalfMoon/Flind/releases"
                             buttonProps={{
                                 menuItem: true,
                             }}
                             data-attr="whats-new-button"
                             target="_blank"
-                            tooltip="View our changelog"
+                            tooltip="View Flind releases on GitHub"
                             tooltipPlacement="right"
                         >
                             <IconLive />
-                            What's new?
+                            Release notes
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
