@@ -3,6 +3,7 @@ package auth
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/pkg/browser"
@@ -16,43 +17,66 @@ type Options struct {
 }
 
 func Authenticate(opts Options) (*config.Credentials, error) {
-	host := opts.Host
-	if host == "" {
-		host = "https://app.posthog.com"
+	host := strings.TrimRight(strings.TrimSpace(opts.Host), "/")
+	if host != "" {
+		if _, err := validatedBaseHost(host); err != nil {
+			return nil, err
+		}
 	}
 
-	// Priority 1: direct token flag
+	// Direct token flags must specify the Flind deployment explicitly.
 	if opts.Token != "" {
-		livestreamHost := opts.LivestreamHost
-		if livestreamHost == "" {
-			livestreamHost = DeriveStreamHost(host)
+		if host == "" {
+			return nil, fmt.Errorf("pass --host for your Flind deployment when using --token")
+		}
+		streamHost, err := resolveStreamHost(host, opts.LivestreamHost)
+		if err != nil {
+			return nil, err
 		}
 		return &config.Credentials{
 			Host:           host,
-			LivestreamHost: livestreamHost,
+			LivestreamHost: streamHost,
 			Token:          opts.Token,
 			ExpiresAt:      time.Now().Add(7 * 24 * time.Hour),
 		}, nil
 	}
 
-	// Priority 2: cached credentials
+	// Only read the Flind-owned cache, never reuse credentials at the old donor path.
 	cfg := config.Load()
 	if cfg.Credentials != nil && !cfg.Credentials.IsExpired() {
 		creds := cfg.Credentials
-		if opts.LivestreamHost != "" {
-			creds.LivestreamHost = opts.LivestreamHost
+		if host != "" && strings.TrimRight(creds.Host, "/") != host {
+			// An old token must never follow a changed app host.
+			return browserFlow(host, opts.LivestreamHost)
 		}
-		if opts.Host != "" {
-			creds.Host = opts.Host
+		if host == "" {
+			host = creds.Host
 		}
+		if _, err := validatedBaseHost(host); err != nil {
+			return nil, err
+		}
+		streamHost := opts.LivestreamHost
+		if streamHost == "" {
+			streamHost = creds.LivestreamHost
+		}
+		resolved, err := resolveStreamHost(host, streamHost)
+		if err != nil {
+			return nil, err
+		}
+		creds.Host, creds.LivestreamHost = host, resolved
 		return creds, nil
 	}
 
-	// Priority 3: browser flow
+	if host == "" {
+		return nil, fmt.Errorf("pass --host for your Flind deployment; no default third-party host is used")
+	}
 	return browserFlow(host, opts.LivestreamHost)
 }
 
 func browserFlow(host, livestreamHostOverride string) (*config.Credentials, error) {
+	if _, err := validatedBaseHost(host); err != nil {
+		return nil, err
+	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 	defer cancel()
 
@@ -75,20 +99,22 @@ func browserFlow(host, livestreamHostOverride string) (*config.Credentials, erro
 			return nil, result.Err
 		}
 
-		// Use the actual host the browser landed on (us/eu) to derive livestream host
 		actualHost := result.APIHost
 		if actualHost == "" {
 			actualHost = host
 		}
-
-		livestreamHost := livestreamHostOverride
-		if livestreamHost == "" {
-			livestreamHost = DeriveStreamHost(actualHost)
+		actualHost, err = validatedBaseHost(actualHost)
+		if err != nil {
+			return nil, err
+		}
+		streamHost, err := resolveStreamHost(actualHost, livestreamHostOverride)
+		if err != nil {
+			return nil, err
 		}
 
 		creds := &config.Credentials{
 			Host:           actualHost,
-			LivestreamHost: livestreamHost,
+			LivestreamHost: streamHost,
 			Token:          result.Token,
 			TeamID:         result.TeamID,
 			TeamName:       result.TeamName,
@@ -100,9 +126,7 @@ func browserFlow(host, livestreamHostOverride string) (*config.Credentials, erro
 		if err := config.Save(cfg); err != nil {
 			fmt.Printf("Warning: could not save credentials: %v\n", err)
 		}
-
 		return creds, nil
-
 	case <-ctx.Done():
 		return nil, fmt.Errorf("authorization timed out")
 	}
