@@ -91,7 +91,6 @@ const MAX_CACHE_SIZE = 50 * 1000
 
 const WAITUNTIL_DEBOUNCE_MS = 50
 const WAITUNTIL_MAX_WAIT_MS = 500
-const DEFAULT_NODE_HOST = 'https://us.i.posthog.com'
 
 // Process-wide dedup for deprecation warnings — without this, calling a deprecated
 // method in a loop would spam logs. Matches Python's `warnings.warn` default-dedup behavior.
@@ -121,9 +120,33 @@ function normalizePersonalApiKey(value?: unknown): string | undefined {
   return normalizedValue || undefined
 }
 
+/**
+ * The embedded Flind SDK is independent from the donor's cloud. An operator
+ * must explicitly supply their own endpoint, even when the key is synthetic.
+ * HTTP is permitted only for a numeric loopback IP for isolated local tests.
+ */
 function normalizeHost(value?: unknown): string {
-  const normalizedValue = typeof value === 'string' ? value.trim() : ''
-  return normalizedValue || DEFAULT_NODE_HOST
+  if (typeof value !== 'string' || !value.trim()) {
+    throw new Error('Flind Node SDK requires an explicit owned host; no default collector is configured')
+  }
+  let url: URL
+  try {
+    url = new URL(value.trim())
+  } catch {
+    throw new Error('Flind Node SDK host must be a valid HTTPS origin')
+  }
+  const hostname = url.hostname.toLowerCase().replace(/\.$/, '')
+  const donor = hostname === 'posthog.com' || hostname.endsWith('.posthog.com') ||
+    hostname === 'posthog.dev' || hostname.endsWith('.posthog.dev')
+  const loopback = hostname === '127.0.0.1' || hostname === '[::1]'
+  if (
+    donor || !hostname || url.username || url.password || url.search || url.hash ||
+    url.pathname !== '/' ||
+    (url.protocol !== 'https:' && !(loopback && url.protocol === 'http:'))
+  ) {
+    throw new Error('Flind Node SDK host must be an explicit safe, non-donor HTTPS origin')
+  }
+  return url.origin
 }
 
 function positiveNumberOr(value: unknown, fallback: number): number {
