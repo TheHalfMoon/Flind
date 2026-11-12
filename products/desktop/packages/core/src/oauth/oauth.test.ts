@@ -84,11 +84,16 @@ function jsonResponse(data: unknown, status = 200): Response {
 }
 
 beforeEach(() => {
+  // Independent, synthetic Flind cloud credentials: the runtime must never
+  // fall back to the inherited vendor's hosted OAuth endpoints.
+  vi.stubEnv("FLIND_US_CLOUD_URL", "https://us.flind.example");
+  vi.stubEnv("FLIND_US_OAUTH_CLIENT_ID", "flind-test-public-client");
   vi.stubGlobal("fetch", fetchMock);
   fetchMock.mockReset();
 });
 
 afterEach(() => {
+  vi.unstubAllEnvs();
   vi.unstubAllGlobals();
 });
 
@@ -102,6 +107,30 @@ describe("OAuthService.refreshToken", () => {
     expect(result.success).toBe(true);
     expect(result.data).toEqual(TOKEN_RESPONSE);
   });
+
+  it.each([301, 302, 303, 307, 308])(
+    "refuses %s redirects before a refresh token can leave the chosen Flind OAuth server",
+    async (status) => {
+      const { service } = createDeps();
+      fetchMock.mockResolvedValue(
+        new Response(null, {
+          status,
+          headers: { Location: "https://attacker.invalid/collect" },
+        }),
+      );
+      const result = await service.refreshToken("synthetic-refresh", "us");
+      expect(result.success).toBe(false);
+      expect(result.error).toContain("prohibited redirect");
+      expect(result.errorCode).toBe("unknown_error");
+      expect(fetchMock).toHaveBeenCalledOnce();
+      const [endpoint, init] = fetchMock.mock.calls[0];
+      expect(String(endpoint)).toMatch(/\/oauth\/token$/);
+      expect(init).toEqual(
+        expect.objectContaining({ method: "POST", redirect: "error" }),
+      );
+      expect(JSON.parse(init.body).refresh_token).toBe("synthetic-refresh");
+    },
+  );
 
   it("maps 401 to an auth_error", async () => {
     const { service } = createDeps();
@@ -227,6 +256,34 @@ describe("OAuthService deep-link callback handler", () => {
     expect(mainWindow.restore).toHaveBeenCalled();
     expect(mainWindow.focus).toHaveBeenCalled();
   });
+
+  it.each([301, 302, 303, 307, 308])(
+    "refuses %s redirects without forwarding an authorization code to a new host",
+    async (status) => {
+      const { service, getCallbackHandler } = createDeps();
+      fetchMock.mockResolvedValue(
+        new Response(null, {
+          status,
+          headers: { Location: "https://attacker.invalid/collect" },
+        }),
+      );
+      const login = service.startFlow("us");
+      getCallbackHandler()?.(
+        "callback",
+        new URLSearchParams("code=synthetic-code"),
+      );
+      const result = await login;
+      expect(result.success).toBe(false);
+      expect(result.error).toContain("prohibited redirect");
+      expect(fetchMock).toHaveBeenCalledOnce();
+      const [endpoint, init] = fetchMock.mock.calls[0];
+      expect(String(endpoint)).toMatch(/\/oauth\/token$/);
+      expect(init).toEqual(
+        expect.objectContaining({ method: "POST", redirect: "error" }),
+      );
+      expect(JSON.parse(init.body).code).toBe("synthetic-code");
+    },
+  );
 
   it("accepts a short-lived impersonated session without a refresh token", async () => {
     const { service, getCallbackHandler } = createDeps();
