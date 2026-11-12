@@ -27,8 +27,10 @@ jest.mock('posthog-react-native', () => ({ __esModule: true, default: jest.fn(()
 
 describe('mobile feature flag identity', () => {
     test('respects email privacy and discards flags from an earlier account or privacy context', async () => {
-        const originalKey = process.env.EXPO_PUBLIC_POSTHOG_KEY
-        process.env.EXPO_PUBLIC_POSTHOG_KEY = 'phc_example_mobile_test'
+        const originalKey = process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY
+        const originalHost = process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST
+        process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY = 'flind_mobile_test'
+        process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST = 'https://analytics.flind.example'
         let appChange!: (state: AppStateStatus) => void
         const listener = jest.spyOn(AppState, 'addEventListener').mockImplementation((_event, callback) => {
             appChange = callback
@@ -131,9 +133,14 @@ describe('mobile feature flag identity', () => {
             setAnalyticsClient(null)
             listener.mockRestore()
             if (originalKey === undefined) {
-                delete process.env.EXPO_PUBLIC_POSTHOG_KEY
+                delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY
             } else {
-                process.env.EXPO_PUBLIC_POSTHOG_KEY = originalKey
+                process.env.EXPO_PUBLIC_FLIND_ANALYTICS_KEY = originalKey
+            }
+            if (originalHost === undefined) {
+                delete process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST
+            } else {
+                process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST = originalHost
             }
         }
     })
