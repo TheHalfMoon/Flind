@@ -81,6 +81,12 @@ async function captureLocally(Implementation) {
 
 function decodedEvent(packets) {
     assert.ok(packets.length > 0, 'SDK did not POST to the local HTTP server')
+    // Reject extra local requests as well as missing capture requests. A valid
+    // batch must not conceal unexpected SDK traffic to other local endpoints.
+    for (const packet of packets) {
+        assert.equal(packet.method, 'POST', 'SDK must not issue unexpected HTTP methods')
+        assert.equal(packet.path, '/batch/', 'SDK must not contact unexpected local routes')
+    }
     const posts = packets.filter((p) => p.method === 'POST')
     assert.ok(posts.length > 0, 'SDK made no POST request')
     const candidates = posts.map((p) => {
@@ -124,7 +130,19 @@ test('wire validator rejects an event delivered to an incorrect ingestion path',
             batch: [{ event: EVENT_NAME, distinct_id: 'synthetic-local-user', properties: { flind_wire_test: true } }],
         })),
     }
-    assert.throws(() => decodedEvent([invalidPacket]), /documented batch ingestion route/)
+    assert.throws(() => decodedEvent([invalidPacket]), /unexpected local routes/)
+})
+
+test('wire validator rejects extra local traffic even when a valid batch exists', () => {
+    const validPacket = {
+        method: 'POST', path: '/batch/',
+        body: Buffer.from(JSON.stringify({
+            api_key: API_TOKEN,
+            batch: [{ event: EVENT_NAME, distinct_id: 'synthetic-local-user', properties: { flind_wire_test: true } }],
+        })),
+    }
+    assert.throws(() => decodedEvent([validPacket, { ...validPacket, path: '/unexpected/' }]), /unexpected local routes/)
+    assert.throws(() => decodedEvent([validPacket, { ...validPacket, method: 'GET' }]), /unexpected HTTP methods/)
 })
 
 test('private Flind Node SDK sends synthetic events to an explicitly local host', { timeout: 15000 }, async () => {
