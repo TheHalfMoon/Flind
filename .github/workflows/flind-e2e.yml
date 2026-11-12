@@ -1,7 +1,8 @@
 # Flind browser E2E: real Postgres, ClickHouse, Redpanda (Kafka API), Zookeeper and Redis, a real
 # Django/ASGI web server with the built frontend, and Playwright in Chromium. Covers the rebranded
-# journeys (onboarding, billing, settings and AI consent, integrations). Ingestion services are not
-# started; specs that need event ingestion are out of scope for this job.
+# journeys (onboarding, billing, settings and AI consent, integrations). An explicit
+# workflow_dispatch ingestion=true also starts capture/ingestion services and verifies
+# actual HTTP capture -> Kafka -> ClickHouse query. Normal E2E runs stay lean.
 # Read-only token, no secrets, nothing published.
 name: Flind E2E
 
@@ -11,6 +12,12 @@ on:
             - 'flind-ci/brand-audit-ui-**'
             - 'flind-ci/e2e-**'
     workflow_dispatch:
+        inputs:
+            ingestion:
+                description: 'Run real capture-to-query ingestion smoke (extra Docker services)'
+                required: false
+                type: boolean
+                default: false
 
 permissions:
     contents: read
@@ -44,6 +51,7 @@ env:
     OTEL_SDK_DISABLED: 'true'
     NPM_CONFIG_AUDIT: 'false'
     NPM_CONFIG_FUND: 'false'
+    FLIND_INGESTION_SMOKE: ${{ inputs.ingestion && 'true' || 'false' }}
 
 jobs:
     playwright:
@@ -187,6 +195,22 @@ jobs:
                   done
                   echo "web server did not become healthy"; tail -80 /tmp/server.log; exit 1
 
+            # The normal Flind E2E workflow intentionally excludes event ingestion. This
+            # opt-in path exercises existing real capture and Node ingestion services
+            # instead of mistaking a working Django page for an ingestion-ready product.
+            # These are transitional upstream container images, NOT a Flind-owned release.
+            - name: Start capture and ingestion (explicit opt-in only)
+              if: env.FLIND_INGESTION_SMOKE == 'true'
+              env:
+                  COMPOSE_PROFILES: capture,ingestion
+                  POSTHOG_DB_NAME: posthog_e2e_test
+                  POSTHOG_PERSONS_DB_NAME: posthog_persons_e2e_test
+              run: |
+                  set -euo pipefail
+                  docker compose -f docker-compose.dev.yml up -d --wait --wait-timeout 300 proxy capture ingestion-general
+                  curl -fsS http://localhost:3307/_liveness
+                  curl -fsS http://localhost:8010/_health
+
             - name: Install Chromium
               run: pnpm --filter=@flind/playwright exec playwright install chromium --with-deps 2>&1 | tail -3
 
@@ -197,6 +221,16 @@ jobs:
                   set -o pipefail
                   pnpm --filter=@flind/playwright exec playwright test e2e/flind-brand-journeys.spec.ts --workers=1 --retries=0 --reporter=list 2>&1 | tee playwright.log
                   { echo '## Flind E2E'; echo '```'; tail -40 playwright.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+            - name: Verify capture to ClickHouse query (explicit opt-in only)
+              if: env.FLIND_INGESTION_SMOKE == 'true'
+              env:
+                  CI: 'true'
+                  E2E_PROXY_URL: http://localhost:8010
+              run: |
+                  set -o pipefail
+                  pnpm --filter=@flind/playwright exec playwright test e2e/ingestion-capture.spec.ts --workers=1 --retries=0 --reporter=list 2>&1 | tee ingestion-playwright.log
+                  { echo '## Flind capture -> Kafka -> ClickHouse E2E'; echo '~~~'; tail -60 ingestion-playwright.log; echo '~~~'; } >> "$GITHUB_STEP_SUMMARY"
 
             # Playwright writes an accessibility snapshot of the page for each failed test; print the
             # URL and snapshot so a failure shows what the page actually rendered.
@@ -211,6 +245,15 @@ jobs:
               if: failure()
               run: tail -150 /tmp/server.log || true
 
+            - name: Capture and ingestion service logs on failure
+              if: failure() && env.FLIND_INGESTION_SMOKE == 'true'
+              env:
+                  COMPOSE_PROFILES: capture,ingestion
+              run: |
+                  docker compose -f docker-compose.dev.yml logs --tail=120 --no-color proxy capture ingestion-general personhog-router personhog-replica objectstorage || true
+
             - name: Tear down
               if: always()
+              env:
+                  COMPOSE_PROFILES: capture,ingestion
               run: docker compose -f docker-compose.dev.yml down -v --remove-orphans

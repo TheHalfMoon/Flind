@@ -1,0 +1,28 @@
+name: Flind ingestion workflow contract
+
+on:
+    push:
+        branches:
+            - 'flind-ci/e2e-ingestion-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-ingestion-contract-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Validate opt-in capture/query journey
+              run: |
+                  node --check frontend/bin/flind-ingestion-workflow.test.mjs
+                  node --test frontend/bin/flind-ingestion-workflow.test.mjs
