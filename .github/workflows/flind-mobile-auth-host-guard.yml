@@ -1,0 +1,22 @@
+name: Flind mobile authentication host guard
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-signin-owned-hosts-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-mobile-login-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    check:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '26'
+            - name: Block inherited OAuth destinations
+              run: node --test tools/flind/qualify_mobile_auth_hosts.mjs
