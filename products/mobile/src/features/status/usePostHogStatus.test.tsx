@@ -1,17 +1,3 @@
-test.each([
-    [undefined, null],
-    ['', null],
-    ['http://status.flind.example', null],
-    ['https://www.posthogstatus.com', null],
-    ['https://posthogstatus.com', null],
-    ['https://posthog.com', null],
-    ['https://admin:secret@status.flind.example', null],
-    ['https://status.flind.example/path', null],
-    ['https://status.flind.example', STATUS],
-])('accepts only explicitly configured non-donor HTTPS status origins: %s', (input, expected) => {
-    expect(flindStatusOrigin(input)).toBe(expected)
-})
-
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { act, renderHook, waitFor } from '@testing-library/react-native'
 import type { PropsWithChildren, ReactElement } from 'react'
@@ -27,6 +13,19 @@ jest.mock('@/auth/regions', () => ({
 
 const STATUS = 'https://status.flind.example'
 
+test.each([
+    [undefined, null],
+    ['', null],
+    ['http://status.flind.example', null],
+    ['https://www.posthogstatus.com', null],
+    ['https://posthogstatus.com', null],
+    ['https://posthog.com', null],
+    ['https://admin:secret@status.flind.example', null],
+    ['https://status.flind.example/path', null],
+    ['https://status.flind.example', STATUS],
+])('accepts only explicitly configured non-donor HTTPS status origins: %s', (input, expected) => {
+    expect(flindStatusOrigin(input)).toBe(expected)
+})
 
 const euAI = { current_status: 'degraded_performance' as const, name: 'Flind AI', group_name: 'EU Cloud 🇪🇺' }
 const usAPI = { current_status: 'degraded_performance' as const, name: 'API', group_name: 'US Cloud 🇺🇸' }
@@ -118,8 +117,8 @@ test('ranks the regional outage separately from the AI component and updates as 
     expect(regionalStatus(events, 'eu', STATUS).aiIncident?.title).toBe(partial.name)
     const monitoring = { ...partial, status: 'monitoring' as const }
     const remaining = { ...summary, ongoing_incidents: [monitoring] }
-    expect(regionalStatus(remaining, 'eu').indicatorColor).toBe('diffRed')
-    expect(regionalStatus(remaining, 'eu').summary).toBe('Partial outage · AI requests failing')
-    expect(regionalStatus(remaining, 'eu').aiIncident?.status).toBe('monitoring')
-    expect(regionalStatus(remaining, 'us').summary).toBeUndefined()
+    expect(regionalStatus(remaining, 'eu', STATUS).indicatorColor).toBe('diffRed')
+    expect(regionalStatus(remaining, 'eu', STATUS).summary).toBe('Partial outage · AI requests failing')
+    expect(regionalStatus(remaining, 'eu', STATUS).aiIncident?.status).toBe('monitoring')
+    expect(regionalStatus(remaining, 'us', STATUS).summary).toBeUndefined()
 })
