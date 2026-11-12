@@ -31,6 +31,10 @@ beforeEach(() => {
   vi.clearAllMocks();
   vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "test-key");
   vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+  vi.stubEnv("FLIND_US_CLOUD_URL", "https://us.flind.example");
+  vi.stubEnv("FLIND_US_OAUTH_CLIENT_ID", "flind-us-test-public");
+  vi.stubEnv("FLIND_EU_CLOUD_URL", "https://eu.flind.example");
+  vi.stubEnv("FLIND_EU_OAUTH_CLIENT_ID", "flind-eu-test-public");
 });
 
 afterEach(() => {
@@ -224,10 +228,9 @@ describe("track", () => {
 
 describe("networkMetricPath", () => {
   it.each([
-    "https://us.posthog.com",
-    "https://eu.posthog.com",
+    "https://us.flind.example",
+    "https://eu.flind.example",
     "http://localhost:8010",
-    "https://app.dev.posthog.dev",
   ])("keeps API paths for %s without authentication", async (origin) => {
     const { networkMetricPath } = await loadAnalytics();
 
@@ -259,9 +262,11 @@ describe("networkMetricPath", () => {
   });
 
   it.each([
-    "https://us.posthog.com.example.com/api/projects/1/tasks/",
-    "https://us.posthog.com:8443/api/projects/1/tasks/",
+    "https://us.flind.example.example.com/api/projects/1/tasks/",
+    "https://us.flind.example:8443/api/projects/1/tasks/",
     "https://internal-c.posthog.com/api/projects/1/tasks/",
+    "https://us.posthog.com/api/projects/1/tasks/",
+    "https://eu.posthog.com/api/projects/1/tasks/",
     "https://posthog.example.com/api/projects/1/tasks/",
   ])("redacts an unknown backend: %s", async (url) => {
     const { networkMetricPath } = await loadAnalytics();
@@ -290,17 +295,17 @@ describe("networkMetricPath", () => {
   it.each([
     {
       case: "a skill name",
-      url: "https://us.posthog.com/api/environments/1/llm_skills/name/incident-runbook",
+      url: "https://us.flind.example/api/environments/1/llm_skills/name/incident-runbook",
       expected: "/api/environments/:id/llm_skills/name/:id",
     },
     {
       case: "a nested skill file path",
-      url: "https://us.posthog.com/api/environments/1/llm_skills/name/incident-runbook/files/docs/readme.md",
+      url: "https://us.flind.example/api/environments/1/llm_skills/name/incident-runbook/files/docs/readme.md",
       expected: "/api/environments/:id/llm_skills/name/:id/files/:id",
     },
     {
       case: "an MCP tool name",
-      url: "https://us.posthog.com/api/environments/1/mcp_server_installations/0f8c2b1e-1111-4222-8333-444455556666/tools/lookup_customer_record/",
+      url: "https://us.flind.example/api/environments/1/mcp_server_installations/0f8c2b1e-1111-4222-8333-444455556666/tools/lookup_customer_record/",
       expected: "/api/environments/:id/mcp_server_installations/:id/tools/:id/",
     },
   ])("templates $case on the app's own backend", async ({ url, expected }) => {
@@ -315,7 +320,7 @@ describe("networkMetricPath", () => {
     const { networkMetricPath } = await loadAnalytics();
 
     const path = networkMetricPath({
-      url: "https://us.posthog.com/api/environments/1/mcp_server_installations/0f8c2b1e-1111-4222-8333-444455556666/tools/refresh/",
+      url: "https://us.flind.example/api/environments/1/mcp_server_installations/0f8c2b1e-1111-4222-8333-444455556666/tools/refresh/",
       method: "POST",
     });
 
@@ -324,7 +329,7 @@ describe("networkMetricPath", () => {
 });
 
 describe("metrics.network.attributes callback", () => {
-  it.each(["https://us.posthog.com", "https://eu.posthog.com"])(
+  it.each(["https://us.flind.example", "https://eu.flind.example"])(
     "keeps API paths for %s with a separate analytics host",
     async (origin) => {
       vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
