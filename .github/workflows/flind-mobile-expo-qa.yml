@@ -18,15 +18,11 @@ jobs:
                 working-directory: products/mobile
         steps:
             - uses: actions/checkout@v4
-            - uses: pnpm/action-setup@v4
-              with:
-                  version: '10.29.3'
-                  run_install: false
             - uses: actions/setup-node@v4
               with:
                   node-version-file: products/mobile/.node-version
-                  cache: pnpm
-                  cache-dependency-path: products/mobile/pnpm-lock.yaml
+            - name: Install pinned pnpm without third-party setup actions
+              run: npm install --global pnpm@10.29.3
             - name: Install frozen mobile dependencies
               run: pnpm install --frozen-lockfile
             - name: Verify TypeScript
