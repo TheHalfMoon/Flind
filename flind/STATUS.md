@@ -6,6 +6,14 @@ run or test result on that commit; anything else is marked as planned or unverif
 
 Last updated: 2026-11-12.
 
+## Project and experiment documentation isolation (2026-11-12)
+
+- **Branch:** `flind-ci/project-experiment-docs-isolation-20261112`, based on main `48def4f74f922ad3a90b4d695d253171bb78773c` at creation. Independent of active PR #29 toolbar, #32 source-map security, and #33 ingestion E2E. No SDK or runtime data schema changes.
+- **Changes:** project creation guidance no longer links to unowned donor documentation while preserving project-isolation and conversion advice; the experiment results 'How to read' tooltip remains a local help trigger, rather than navigating to an unowned donor site. Both features retain their existing actions and explanatory content.
+- **Verification:** exact-branch files fetched into a temporary Windows directory; `python tools/flind/test_project_experiment_docs_isolation.py -v` passed **2/2** assertions. This is source-level verification, not React runtime or browser E2E. Temporary files were removed. A dedicated CI brand-audit step was added; its outcome is not yet claimed.
+- **Required before merge:** exact-head CI brand audit, frontend typecheck/Jest and browser E2E where applicable; independent review, branch protection and source attribution preserved. No release or deployment.
+
+
 ## Activity UI rebrand checkpoint (2026-11-12)
 
 - **PR #30 (draft):** removes inherited upstream documentation destinations from Persons/Cohorts tooltips and person-property Event Details; removes promotion of the donor `posthog-live` CLI in Live Events. Internal navigation, property tables, stream controls and event feed remain. No Flind docs or CLI endpoint is invented.
