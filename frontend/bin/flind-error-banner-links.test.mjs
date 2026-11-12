@@ -26,7 +26,7 @@ test('promise rejection banner explains that Error instances preserve stack cont
 })
 
 test('React production error decoder uses the numeric capture group, not the whole regex match array', () => {
-    assert.match(files.react, /error #\(\\d\+\)\/i\)\?\.\[1\]/)
+    assert.match(files.react, /extractReactErrorCode\(exception\.value\)/)
     assert.match(files.react, /https:\/\/react\.dev\/errors\//)
     assert.match(files.react, /errorCode && \(/)
     assert.doesNotMatch(files.react, /to=\{\x60https:\/\/react\.dev\/errors\/\$\{errorCode\}\x60\}/)
