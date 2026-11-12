@@ -30,7 +30,10 @@ async function loadAnalytics() {
 beforeEach(() => {
   vi.clearAllMocks();
   vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "test-key");
-  vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+  vi.stubEnv(
+    "VITE_FLIND_ANALYTICS_HOST",
+    "https://telemetry.flind.example",
+  );
   vi.stubEnv("FLIND_US_CLOUD_URL", "https://us.flind.example");
   vi.stubEnv("FLIND_US_OAUTH_CLIENT_ID", "flind-us-test-public");
   vi.stubEnv("FLIND_EU_CLOUD_URL", "https://eu.flind.example");
@@ -332,7 +335,10 @@ describe("metrics.network.attributes callback", () => {
   it.each(["https://us.flind.example", "https://eu.flind.example"])(
     "keeps API paths for %s with a separate analytics host",
     async (origin) => {
-      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
       const { initializePostHog } = await loadAnalytics();
 
       initializePostHog();
@@ -374,12 +380,15 @@ describe("Flind analytics destination isolation", () => {
     "https://telemetry.flind.example/ingest",
     "https://telemetry.flind.example/?token=synthetic",
     "not-a-url",
-  ])("disables the renderer telemetry client for an unowned or unsafe host: %s", async (host) => {
-    vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", host);
-    const { initializePostHog } = await loadAnalytics();
-    initializePostHog();
-    expect(mockPosthog.init).not.toHaveBeenCalled();
-  });
+  ])(
+    "disables the renderer telemetry client for an unowned or unsafe host: %s",
+    async (host) => {
+      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", host);
+      const { initializePostHog } = await loadAnalytics();
+      initializePostHog();
+      expect(mockPosthog.init).not.toHaveBeenCalled();
+    },
+  );
 
   it("uses Flind-owned API and UI endpoints without inherited defaults", async () => {
     const { initializePostHog } = await loadAnalytics();
