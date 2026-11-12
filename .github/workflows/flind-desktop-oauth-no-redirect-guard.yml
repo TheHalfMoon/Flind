@@ -1,0 +1,22 @@
+name: Flind desktop OAuth token no-redirect guard
+on:
+    push:
+        branches:
+            - 'flind-ci/desktop-oauth-token-no-redirect-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-desktop-oauth-no-redirect-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    guard:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '26'
+            - name: Verify no desktop OAuth credential redirects
+              run: node --test tools/flind/qualify_desktop_oauth_no_redirect.mjs
