@@ -49,6 +49,7 @@ test.describe('Flind browser SDK ingestion', () => {
         expect(apiToken.length).toBeGreaterThan(0)
 
         const externalOrigins = new Set<string>()
+        const expectedOrigin = new URL(PROXY_BASE_URL).origin
         const captureResponses: string[] = []
         const captureFailures: string[] = []
         const isCaptureRequest = (url: string): boolean => /\/(e|batch|capture|i\/v0\/e)\/?$/.test(new URL(url).pathname)
@@ -66,7 +67,7 @@ test.describe('Flind browser SDK ingestion', () => {
         // Block off-instance traffic before it can carry credentials or event data.
         await page.route('**/*', async (route) => {
             const url = new URL(route.request().url())
-            if (!['localhost', '127.0.0.1'].includes(url.hostname)) {
+            if (url.origin !== expectedOrigin) {
                 externalOrigins.add(url.origin)
                 await route.abort()
                 return
