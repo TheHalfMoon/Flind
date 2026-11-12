@@ -12,6 +12,13 @@ import { ChatAccessGate } from './ChatAccessGate'
 
 jest.mock('@/api/users', () => ({ fetchOrganization: jest.fn() }))
 
+// These functional consent tests run with a synthetic, explicitly configured Flind policy.
+// The missing-policy case is tested independently in legalLinks.test.ts.
+jest.mock('@/lib/legalLinks', () => ({
+    ...jest.requireActual('@/lib/legalLinks'),
+    PRIVACY_POLICY_URL: 'https://privacy.flind.example',
+}))
+
 jest.mock('react-native-worklets', () => jest.requireActual('react-native-worklets/src/mock'))
 jest.mock('react-native-reanimated', () => ({
     ...jest.requireActual('react-native-reanimated/mock'),
@@ -165,7 +172,7 @@ describe('ChatAccessGate', () => {
         fireEvent.press(screen.getByTestId('chat-ai-org-settings'))
 
         expect(open).toHaveBeenCalledWith(`${HOST}/project/7/settings/organization-details#organization-ai-consent`)
-        expect(screen.getByTestId('chat-ai-org-notice')).toHaveTextContent(/PostHog AI is off for Hedgebox/)
+        expect(screen.getByTestId('chat-ai-org-notice')).toHaveTextContent(/Flind AI is off for Hedgebox/)
     })
 
     test.each([1, null])(
