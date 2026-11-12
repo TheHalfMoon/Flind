@@ -164,9 +164,15 @@ export function networkMetricPath(
 ): string | undefined {
   try {
     const requestUrl = new URL(request.url);
-    const isBackend = CLOUD_REGIONS.some(
-      (region) => getCloudUrlFromRegion(region) === requestUrl.origin,
-    );
+    const isBackend = CLOUD_REGIONS.some((region) => {
+      try {
+        // A Flind deployment may intentionally leave most hosted regions
+        // unconfigured. One missing region must not hide another owned backend.
+        return getCloudUrlFromRegion(region) === requestUrl.origin;
+      } catch {
+        return false;
+      }
+    });
     if (!isBackend) {
       return "external";
     }
