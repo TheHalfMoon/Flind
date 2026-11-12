@@ -8,11 +8,15 @@ Last updated: 2026-11-12.
 
 ## Toolbar documentation isolation (2026-11-12)
 
-- **Branch:** `flind-ci/toolbar-doc-links-20261112`, based on `main` `4078a0debe69ea0f0a4bcb26aad7d54d1863c98c`.
-- Removed three inherited PostHog documentation destinations from the Chrome extension More menu, extension Web Vitals menu, and shared fragile-selector warning. Existing Flind project-local Web Vitals metrics link, reload action, screenshot/PII/debug controls, and inline selector guidance remain.
-- Added `frontend/bin/flind-toolbar-doc-links.test.mjs` and a rename-ratchet CI step. The Windows isolated exact-branch fetch plus `node --check` and `node --test` completed **2 passed, 0 failed** on 2026-11-12. This is **not** evidence that the full frontend/E2E suite passed.
-- **Not merged or released** pending exact-head CI and independent review. Other donor-hosted documentation references remain elsewhere; this PR intentionally scopes only three toolbar surfaces.
+- **PR #29:** removes three inherited documentation links from Chrome extension menus and fragile-selector warnings; local metrics navigation, reload, screenshot/PII/debug controls, and inline selector guidance remain.
+- **Prior exact-head CI** on `70bce0470`: frontend, E2E, brand audit, rename ratchet and runtime migrations all passed. This merge commit still requires fresh CI qualification.
+- **No release** is authorized; other hosted donor links remain separate follow-ups.
 
+## Activity UI rebrand checkpoint (2026-11-12)
+
+- **PR #30 merged** into `main` as `76f95d7d426e9efde331fd30849b8add7747c619` after five CI paths passed on exact PR head `ea187e5d9ac033f24442e3a93e206d729c72f0d0`.
+- It removes inherited documentation links from Persons/Cohorts tooltips and Event Details and donor CLI promotion from Live Events. The event feed and navigation remain.
+- No Flind documentation endpoint or CLI is invented.
 
 ## Stage 3 qualification checkpoint (2026-11-12)
 

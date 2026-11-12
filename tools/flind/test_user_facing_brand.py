@@ -48,6 +48,26 @@ class FlindUserFacingBrandTests(unittest.TestCase):
             with self.subTest(file=rel):
                 self.assertNotIn("PostHog", read(rel))
 
+    def test_activity_tabs_do_not_link_to_donor_documentation(self) -> None:
+        source = read("frontend/src/scenes/activity/activitySceneTabsLogic.tsx")
+        self.assertNotIn("posthog.com/docs/", source)
+        self.assertIn("url: urls.persons()", source)
+        self.assertIn("url: urls.cohorts()", source)
+
+    def test_event_details_explain_property_semantics_without_donor_links(self) -> None:
+        source = read("frontend/src/scenes/activity/explore/EventDetails.tsx")
+        self.assertNotIn("posthog.com/docs/", source)
+        self.assertIn("Person properties sent with this event.", source)
+        self.assertIn('"Set once" person properties sent with this event.', source)
+        self.assertIn("<PropertiesTable", source)
+
+    def test_live_events_keep_stream_controls_without_unbranded_cli_promotion(self) -> None:
+        source = read("frontend/src/scenes/activity/live/LiveEventsTable.tsx")
+        self.assertNotIn("posthog.com/docs/", source)
+        self.assertNotIn("posthog-live", source)
+        self.assertIn("onClick={streamPaused ? resumeStream : pauseStream}", source)
+        self.assertIn("<LiveEventsFeed", source)
+
     def test_invite_emails_do_not_link_to_upstream_saas(self) -> None:
         for rel in EMAIL_FILES:
             with self.subTest(file=rel):
