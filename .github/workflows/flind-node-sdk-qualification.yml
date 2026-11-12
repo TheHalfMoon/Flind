@@ -1,0 +1,51 @@
+name: Flind Node SDK qualification
+
+on:
+    push:
+        branches:
+            - 'flind-ci/node-sdk-vendor-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-node-sdk-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    qualify:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 35
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            - name: Verify exact workspace dependency lock without installing the monorepo
+              env:
+                  CI: 'true'
+                  HUSKY: '0'
+              run: |
+                  set -euo pipefail
+                  npm install -g pnpm@11.28.5
+                  pnpm install --filter=@flind/node... --filter=@flind/nodejs... --frozen-lockfile --lockfile-only --ignore-scripts
+
+            - name: Check Node SDK CJS, ESM and preserved license on isolated dependencies
+              run: |
+                  set -euo pipefail
+                  test_dir="$(mktemp -d)"
+                  trap 'rm -rf "$test_dir"' EXIT
+                  npm install --prefix "$test_dir" --ignore-scripts --no-audit --no-fund posthog-node@5.63.2
+                  mkdir -p "$test_dir/node_modules/@flind"
+                  cp -R packages/node-sdk "$test_dir/node_modules/@flind/node"
+                  cp tools/flind/flind-node-sdk-compat.test.mjs "$test_dir/"
+                  (cd "$test_dir" && node --test flind-node-sdk-compat.test.mjs)
+
+            - name: Check staged server dependency and provenance
+              run: |
+                  test -f packages/node-sdk/LICENSE
+                  test -f packages/node-sdk/NOTICE.md
+                  grep -F "import { PostHog } from '@flind/node'" nodejs/src/common/utils/posthog.ts
+                  grep -F '"@flind/node": "workspace:*"' nodejs/package.json

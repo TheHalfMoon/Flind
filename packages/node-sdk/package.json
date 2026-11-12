@@ -1,0 +1,85 @@
+{
+  "name": "@flind/node",
+  "version": "5.63.2",
+  "private": true,
+  "description": "Private Flind Node SDK compatibility package, staged from a pinned published release",
+  "license": "MIT",
+  "engines": {
+    "node": "^20.20.0 || >=22.22.0"
+  },
+  "main": "dist/entrypoints/index.node.js",
+  "module": "dist/entrypoints/index.node.mjs",
+  "types": "dist/entrypoints/index.node.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/entrypoints/index.node.d.ts",
+      "edge": {
+        "import": "./dist/entrypoints/index.edge.mjs",
+        "require": "./dist/entrypoints/index.edge.js",
+        "default": "./dist/entrypoints/index.edge.js"
+      },
+      "node": {
+        "import": "./dist/entrypoints/index.node.mjs",
+        "require": "./dist/entrypoints/index.node.js",
+        "default": "./dist/entrypoints/index.node.js"
+      },
+      "edge-light": {
+        "import": "./dist/entrypoints/index.edge.mjs",
+        "require": "./dist/entrypoints/index.edge.js",
+        "default": "./dist/entrypoints/index.edge.js"
+      },
+      "workerd": {
+        "import": "./dist/entrypoints/index.edge.mjs",
+        "require": "./dist/entrypoints/index.edge.js",
+        "default": "./dist/entrypoints/index.edge.js"
+      },
+      "import": "./dist/entrypoints/index.node.mjs",
+      "require": "./dist/entrypoints/index.node.js"
+    },
+    "./edge": {
+      "types": "./dist/entrypoints/index.edge.d.ts",
+      "import": "./dist/entrypoints/index.edge.mjs",
+      "require": "./dist/entrypoints/index.edge.js",
+      "default": "./dist/entrypoints/index.edge.js"
+    },
+    "./nestjs": {
+      "types": "./dist/entrypoints/nestjs.d.ts",
+      "import": "./dist/entrypoints/nestjs.mjs",
+      "require": "./dist/entrypoints/nestjs.js"
+    },
+    "./experimental": {
+      "types": "./dist/experimental.d.ts",
+      "import": "./dist/experimental.mjs",
+      "require": "./dist/experimental.js",
+      "default": "./dist/experimental.js"
+    },
+    "./otel": {
+      "types": "./dist/entrypoints/otel.d.ts",
+      "import": "./dist/entrypoints/otel.mjs",
+      "require": "./dist/entrypoints/otel.js",
+      "default": "./dist/entrypoints/otel.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "NOTICE.md",
+    "README.md"
+  ],
+  "dependencies": {
+    "@posthog/core": "^1.64.1"
+  },
+  "peerDependencies": {
+    "@opentelemetry/api": "^1.2.0",
+    "rxjs": "^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@opentelemetry/api": {
+      "optional": true
+    },
+    "rxjs": {
+      "optional": true
+    }
+  }
+}

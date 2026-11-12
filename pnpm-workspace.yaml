@@ -12,6 +12,7 @@ packages:
     - packages/owners-yaml
     - packages/personhog-proto
     - packages/icons
+    - packages/node-sdk
     - packages/react
     - packages/siphash
     - packages/quill
