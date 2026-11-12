@@ -6,7 +6,7 @@ const SDK_HOST_PATH = '/flind-browser-sdk-ingestion-e2e'
 
 // This page uses the same locally served posthog-js snippet as the toolbar E2E.
 // The backend and capture consumer must be started via the opt-in ingestion workflow.
-function sdkHostPage(apiToken: string, eventName: string): string {
+function sdkHostPage(apiToken: string): string {
     return `<!doctype html>
 <html>
     <head><script src="/static/array.js"></script></head>
@@ -22,9 +22,8 @@ function sdkHostPage(apiToken: string, eventName: string): string {
                 advanced_disable_decide: true,
                 request_batching: false,
                 disable_persistence: true,
-                loaded: function(client) {
+                loaded: function() {
                     window.__flind_sdk_smoke_ready = true;
-                    client.capture(${JSON.stringify(eventName)}, { flind_sdk_ingestion_test: true });
                 }
             });
         </script>
@@ -47,6 +46,20 @@ test.describe('Flind browser SDK ingestion', () => {
         expect(apiToken.length).toBeGreaterThan(0)
 
         const externalOrigins = new Set<string>()
+        const captureResponses: string[] = []
+        const captureFailures: string[] = []
+        const isCaptureRequest = (url: string): boolean => /\/(e|batch|capture|i\/v0\/e)\/?$/.test(new URL(url).pathname)
+        // Diagnostics are intentionally restricted to method/path/status, never tokens or event payloads.
+        page.on('response', (resp) => {
+            if (isCaptureRequest(resp.url()) && resp.request().method() === 'POST') {
+                captureResponses.push(`${new URL(resp.url()).pathname}: ${resp.status()}`)
+            }
+        })
+        page.on('requestfailed', (req) => {
+            if (isCaptureRequest(req.url())) {
+                captureFailures.push(`${new URL(req.url()).pathname}: ${req.failure()?.errorText ?? 'unknown'}`)
+            }
+        })
         // Block off-instance traffic before it can carry credentials or event data.
         await page.route('**/*', async (route) => {
             const url = new URL(route.request().url())
@@ -59,7 +72,7 @@ test.describe('Flind browser SDK ingestion', () => {
         })
         await page.route(
             (url) => url.pathname === SDK_HOST_PATH,
-            (route) => route.fulfill({ contentType: 'text/html', body: sdkHostPage(apiToken, eventName) })
+            (route) => route.fulfill({ contentType: 'text/html', body: sdkHostPage(apiToken) })
         )
 
         await page.goto(`${PROXY_BASE_URL}${SDK_HOST_PATH}`)
@@ -69,6 +82,26 @@ test.describe('Flind browser SDK ingestion', () => {
                 { timeout: 30_000 }
             )
             .toBe(true)
+
+        const configuredHost = await page.evaluate(() => {
+            const sdk = (window as unknown as { posthog: { get_config: (name: string) => string } }).posthog
+            return sdk.get_config('api_host')
+        })
+        expect(new URL(configuredHost).origin).toBe(new URL(PROXY_BASE_URL).origin)
+        // Capture only after the SDK's loaded callback, rather than racing its initialization.
+        await page.evaluate((name) => {
+            const sdk = (window as unknown as { posthog: { capture: (event: string, properties: Record<string, unknown>) => void } }).posthog
+            sdk.capture(name, { flind_sdk_ingestion_test: true })
+        }, eventName)
+        try {
+            await expect.poll(
+                () => captureResponses.some((r) => /: 2\d\d$/.test(r)) ? 1 : 0,
+                { timeout: 25_000, intervals: [1_000, 2_000] }
+            ).toBeGreaterThan(0)
+        } catch {
+            throw new Error(`SDK capture did not return HTTP 2xx. Requests: ${JSON.stringify(captureResponses)}; failures: ${JSON.stringify(captureFailures)}; blocked origins: ${JSON.stringify([...externalOrigins])}`)
+        }
+        expect([...externalOrigins], 'browser SDK requested an external host').toEqual([])
 
         await expect
             .poll(

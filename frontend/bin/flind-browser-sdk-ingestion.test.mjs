@@ -11,7 +11,9 @@ test('browser SDK smoke uses locally hosted script and explicit instance origin'
     assert.match(spec, /autocapture: false/)
     assert.match(spec, /capture_pageview: false/)
     assert.match(spec, /disable_session_recording: true/)
-    assert.match(spec, /client\.capture\(/)
+    assert.match(spec, /sdk\.capture\(name,/)
+    assert.match(spec, /SDK capture did not return HTTP 2xx/)
+    assert.match(spec, /get_config\('api_host'\)/)
 })
 
 test('external browser traffic is blocked, never sent during the smoke', () => {
