@@ -74,3 +74,8 @@ Last updated: 2026-11-12.
 
 - Three commits on #20 are authored with a personal email address in this public repository. Rewriting them needs
   the owner's approval.
+
+### 2026-11-12: Error tracking UI documentation isolation (draft)
+- Scoped change: remove inherited PostHog documentation destinations from fetch failure banner, empty stack trace help, and fingerprint tooltip. Keep local explanations and fingerprint display behavior.
+- Local verification: source diff reviewed and `git diff --check`; full Jest/TypeScript/Playwright and independent review remain required on the exact PR SHA.
+- No deployment or release authorized. Do not merge without applicable green CI and review.
