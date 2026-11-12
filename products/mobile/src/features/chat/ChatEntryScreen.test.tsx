@@ -6,6 +6,7 @@ import { getConversation } from '@/api/conversations'
 import { useProjectScope } from '@/auth/useProjectScope'
 import { useDataMode } from '@/demo/demoMode'
 import { ChatEntryScreen } from './ChatEntryScreen'
+import { configuredTasksOrigin, isTasksRuntimeProject } from './taskRuntimeSelection'
 
 jest.mock('@/api/conversations', () => ({ getConversation: jest.fn() }))
 jest.mock('@/auth/useProjectScope', () => ({ useProjectScope: jest.fn() }))
@@ -72,6 +73,8 @@ function open(
 
 describe('mobile AI runtime selection', () => {
     beforeEach(() => {
+        delete process.env.EXPO_PUBLIC_FLIND_TASKS_HOST
+        delete process.env.EXPO_PUBLIC_FLIND_TASKS_PROJECT_ID
         jest.clearAllMocks()
         jest.mocked(getConversation).mockReset()
         jest.mocked(useDataMode).mockReturnValue('live')
@@ -79,7 +82,7 @@ describe('mobile AI runtime selection', () => {
     })
 
     test.each([
-        ['https://us.posthog.com', 2, 'sandbox'],
+        ['https://us.posthog.com', 2, 'classic'],
         ['https://us.posthog.com', 42, 'classic'],
         ['https://eu.posthog.com', 2, 'classic'],
         ['https://example.com', 2, 'classic'],
@@ -89,6 +92,41 @@ describe('mobile AI runtime selection', () => {
         open()
         expect(screen.getByTestId(runtime)).toBeTruthy()
         expect(getConversation).not.toHaveBeenCalled()
+    })
+
+    test('enables the Tasks runtime only for an explicit Flind-owned host and project', () => {
+        process.env.EXPO_PUBLIC_FLIND_TASKS_HOST = 'https://tasks.flind.example'
+        process.env.EXPO_PUBLIC_FLIND_TASKS_PROJECT_ID = '42'
+        jest.mocked(useProjectScope).mockReturnValue({ host: 'https://tasks.flind.example', projectId: 42 })
+        open()
+        expect(screen.getByTestId('sandbox')).toBeTruthy()
+        expect(getConversation).not.toHaveBeenCalled()
+    })
+
+    test.each([
+        ['https://tasks.flind.example', '7', 'https://tasks.flind.example', 42],
+        ['https://tasks.flind.example/path', '42', 'https://tasks.flind.example', 42],
+        ['http://tasks.flind.example', '42', 'http://tasks.flind.example', 42],
+        ['https://us.posthog.com', '2', 'https://us.posthog.com', 2],
+        ['https://tasks.flind.example', '0', 'https://tasks.flind.example', 0],
+        ['https://tasks.flind.example', '42', 'https://other.flind.example', 42],
+        ['https://tasks.flind.example', '42', 'https://tasks.flind.example', 7],
+        ['https://user:secret@tasks.flind.example', '42', 'https://tasks.flind.example', 42],
+        ['', '42', 'https://tasks.flind.example', 42],
+    ])('rejects absent, unsafe or mismatched Tasks assignment: host=%s project=%s', (configuredHost, configuredId, host, projectId) => {
+        expect(isTasksRuntimeProject({ host, projectId }, configuredHost, configuredId)).toBe(false)
+    })
+
+    test.each([
+        'https://posthog.com',
+        'https://eu.posthog.com',
+        'https://api.posthog.dev',
+        'http://tasks.flind.example',
+        'https://admin:token@tasks.flind.example',
+        'https://tasks.flind.example/path',
+        'https://tasks.flind.example/?foo=1',
+    ])('does not authorize a donor, non-HTTPS or malformed Tasks origin: %s', (host) => {
+        expect(configuredTasksOrigin(host)).toBeNull()
     })
 
     test('a new offline chat opens without waiting for a network lookup', () => {
