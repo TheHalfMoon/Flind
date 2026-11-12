@@ -268,7 +268,10 @@ describe("OAuthService deep-link callback handler", () => {
         }),
       );
       const login = service.startFlow("us");
-      getCallbackHandler()?.("callback", new URLSearchParams("code=synthetic-code"));
+      getCallbackHandler()?.(
+        "callback",
+        new URLSearchParams("code=synthetic-code"),
+      );
       const result = await login;
       expect(result.success).toBe(false);
       expect(result.error).toContain("prohibited redirect");
