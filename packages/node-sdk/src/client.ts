@@ -283,6 +283,7 @@ export abstract class PostHogBackendClient extends PostHogCoreStateless implemen
       maxQueueSize: options.maxQueueSize ?? 10000,
       flushInterval: options.flushInterval ?? 5000,
       host: normalizeHost(options.host),
+      appHost: options.appHost === undefined ? undefined : normalizeHost(options.appHost),
       personalApiKey: normalizePersonalApiKey(options.secretKey ?? options.personalApiKey),
     }
 
