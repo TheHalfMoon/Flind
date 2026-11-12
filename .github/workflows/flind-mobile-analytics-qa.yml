@@ -1,0 +1,33 @@
+name: Flind mobile analytics implementation QA
+on:
+    push:
+        branches:
+            - 'flind-ci/mobile-analytics-opt-in-isolation-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-mobile-analytics-qa-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    mobile:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 30
+        defaults:
+            run:
+                working-directory: products/mobile
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: products/mobile/.node-version
+            - name: Install pinned pnpm
+              run: npm install --global pnpm@10.29.3
+            - name: Install mobile dependencies from frozen lockfile
+              run: pnpm install --frozen-lockfile
+            - name: Verify TypeScript
+              run: pnpm exec tsc --noEmit
+            - name: Verify analytics and replay Jest regression tests
+              run: pnpm exec jest src/lib/posthogClient.test.ts --runInBand --ci
+            - name: Verify modified TypeScript formatting
+              run: pnpm exec biome check src/lib/posthogClient.ts src/lib/posthogClient.test.ts src/lib/mobileAnalyticsHost.ts
