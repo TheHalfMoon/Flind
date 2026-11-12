@@ -3,7 +3,7 @@ import type { IDisposable, editor } from 'monaco-editor'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { IconCode, IconExternal } from '@flind/icons'
-import { LemonButton, LemonDropdown, LemonInput, LemonSelect, Link } from '@flind/lemon-ui'
+import { LemonButton, LemonDropdown, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import {
     CyclotronJobTemplateOption,
@@ -118,10 +118,7 @@ export function CyclotronJobTemplateSuggestions({
                     ) : null}
                 </div>
                 <div className="text-xs text-secondary">
-                    Below are a list of available functions for templating your inputs using <b>{templating}</b>.{' '}
-                    <Link to="https://posthog.com/docs/cdp/destinations/customizing-destinations#customizing-payload">
-                        Learn more
-                    </Link>
+                    Available functions for templating your inputs using <b>{templating}</b> are listed below.
                 </div>
             </div>
             <ul className="flex overflow-y-auto flex-col flex-1 gap-px p-2 border-t max-w-100">
