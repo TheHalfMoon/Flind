@@ -35,7 +35,7 @@ func configPath() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(home, ".posthog", "livestream.json"), nil
+	return filepath.Join(home, ".flind", "livestream.json"), nil
 }
 
 func Load() *Config {
