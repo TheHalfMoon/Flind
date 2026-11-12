@@ -1,6 +1,6 @@
 # Independent Flind mobile native identity migration
 
-**State: NO-GO, staged engineering.** The candidate bundle/package identifier is `com.thehalfmoon.flind.mobile`. Its iOS and Android store registration **has not been performed, the identifier is not verified to be available or owned, and no certificate, provisioning profile, Firebase service, app-link domain or signing key has been created**. Do not submit this app or build a public release.
+**State: NO-GO, staged engineering.** The candidate bundle/package identifier is `com.thehalfmoon.flind.mobile`. Its iOS and Android store identifiers are **not registered**. Their registration **has not been performed, the identifier is not verified to be available or owned, and no certificate, provisioning profile, Firebase service, app-link domain or signing key has been created**. Do not submit this app or build a public release.
 
 ## Identity contracts
 
