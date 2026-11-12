@@ -37,4 +37,3 @@ export function orgAiSettingsUrl(scope: ProjectScope): string {
     return `${scope.host}/project/${scope.projectId}/settings/organization-details#organization-ai-consent`
 }
 
-export const PRIVACY_POLICY_URL = 'https://posthog.com/privacy'
