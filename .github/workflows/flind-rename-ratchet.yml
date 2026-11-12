@@ -40,3 +40,6 @@ jobs:
                   node --check frontend/bin/flind-toolbar-trusted-hosts.mjs
                   node --test frontend/bin/flind-toolbar-trusted-hosts.test.mjs
                   node --test frontend/bin/flind-toolbar-brand.test.mjs
+
+            - name: Flind Today external documentation guard
+              run: node --test frontend/bin/flind-today-outbound-docs.test.mjs
