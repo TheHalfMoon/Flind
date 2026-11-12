@@ -65,3 +65,21 @@ func TestDirectTokenAuthenticationFailsClosedWithoutHostOrForUpstream(t *testing
 	assert.Equal(t, "https://live.flind.example", creds.LivestreamHost)
 	assert.True(t, strings.HasPrefix(creds.Host, "https://"))
 }
+
+func TestCallbackHostIsBoundToRequestedFlindOrigin(t *testing.T) {
+    host, err := validatedCallbackHost("https://flind.example", "")
+    assert.NoError(t, err)
+    assert.Equal(t, "https://flind.example", host)
+    host, err = validatedCallbackHost("https://flind.example/", "https://FLIND.example/")
+    assert.NoError(t, err)
+    assert.Equal(t, "https://flind.example", host)
+    for _, bad := range []string{
+        "https://another.example", "https://live.us.posthog.com",
+        "http://flind.example", "https://flind.example.evil",
+        "https://flind.example:4443", "https://flind.example/path",
+        "https://user:pass@flind.example",
+    } {
+        _, err := validatedCallbackHost("https://flind.example", bad)
+        assert.Error(t, err, bad)
+    }
+}
