@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { Link } from '@flind/lemon-ui'
-
 import { CLICK_OUTSIDE_BLOCK_CLASS } from 'lib/hooks/useOutsideClickHandler'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { CodeEditorInline } from 'lib/monaco/CodeEditorInline'
@@ -107,9 +105,9 @@ export function HogQLEditor({
             </LemonButton>
             <div className="flex mt-1 gap-1">
                 <div className={`w-full text-right select-none ${CLICK_OUTSIDE_BLOCK_CLASS}`}>
-                    <Link to="https://posthog.com/docs/sql" target="_blank">
-                        Learn more about SQL
-                    </Link>
+                    <span>
+                        HogQL expressions run on this Flind instance
+                    </span>
                 </div>
             </div>
         </>

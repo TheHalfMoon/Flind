@@ -41,7 +41,7 @@ const FEATURE_PREVIEW_WARNINGS: Record<string, FeaturePreviewWarning> = {
 const hasPosthogJsFailedToLoadFeaturePreviews = (): boolean => !!window.POSTHOG_GLOBAL_ERRORS?.onFeatureFlagsLoadError
 
 // Feature previews can be linked to by using hash in the url
-// example external link: https://app.posthog.com/settings/user-feature-previews#llm-analytics
+// example local link: /settings/user-feature-previews#llm-analytics
 export function FeaturePreviews(): JSX.Element {
     const { filteredEarlyAccessFeatures, rawEarlyAccessFeaturesLoading, searchTerm } = useValues(featurePreviewsLogic)
     const { hasAvailableFeature } = useValues(userLogic)
@@ -78,12 +78,8 @@ export function FeaturePreviews(): JSX.Element {
                             running in your browser or due to a network issue (e.g. slow wifi).
                         </span>
                         <span className="italic">
-                            Note: If you use feature flags for your app, you can avoid this issue for your users by
-                            using a{' '}
-                            <Link to="https://posthog.com/docs/advanced/proxy" target="_blank">
-                                reverse proxy
-                            </Link>
-                            .
+                            When hosting Flind yourself, check that client feature-flag requests can reach
+                            your instance through an appropriately configured reverse proxy.
                         </span>
                     </div>
                 </LemonBanner>
