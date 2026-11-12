@@ -10,6 +10,6 @@
   android:updatePeriodMillis="1800000"
   android:initialLayout="@layout/chart_widget_state"
   android:previewLayout="@layout/chart_widget_preview"
-  android:configure="com.posthog.code.mobile.chart.ChartWidgetConfigureActivity"
+  android:configure="com.thehalfmoon.flind.mobile.chart.ChartWidgetConfigureActivity"
   android:widgetFeatures="reconfigurable"
   android:description="@string/chart_widget_description" />

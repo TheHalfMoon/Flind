@@ -6,8 +6,8 @@
       android:label="@string/hedgehog_widget_label">
       <intent-filter>
         <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-        <action android:name="com.posthog.code.mobile.HEDGEHOG_POKE" />
-        <action android:name="com.posthog.code.mobile.HEDGEHOG_ADVANCE" />
+        <action android:name="com.thehalfmoon.flind.mobile.HEDGEHOG_POKE" />
+        <action android:name="com.thehalfmoon.flind.mobile.HEDGEHOG_ADVANCE" />
       </intent-filter>
       <meta-data
         android:name="android.appwidget.provider"
