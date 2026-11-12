@@ -22,8 +22,20 @@ export const EU_CLIENT_ID = process.env.EXPO_PUBLIC_FLIND_EU_CLIENT_ID?.trim() ?
 export const DEV_CLIENT_ID = process.env.EXPO_PUBLIC_FLIND_DEV_CLIENT_ID?.trim() ?? ''
 
 const configuredCloudRegions: readonly CloudRegion[] = [
-    { id: 'us', label: 'United States', flag: '🇺🇸', host: process.env.EXPO_PUBLIC_FLIND_US_HOST?.trim() ?? '', clientId: US_CLIENT_ID },
-    { id: 'eu', label: 'European Union', flag: '🇪🇺', host: process.env.EXPO_PUBLIC_FLIND_EU_HOST?.trim() ?? '', clientId: EU_CLIENT_ID },
+    {
+        id: 'us',
+        label: 'United States',
+        flag: '🇺🇸',
+        host: process.env.EXPO_PUBLIC_FLIND_US_HOST?.trim() ?? '',
+        clientId: US_CLIENT_ID,
+    },
+    {
+        id: 'eu',
+        label: 'European Union',
+        flag: '🇪🇺',
+        host: process.env.EXPO_PUBLIC_FLIND_EU_HOST?.trim() ?? '',
+        clientId: EU_CLIENT_ID,
+    },
 ]
 export const CLOUD_REGIONS: readonly CloudRegion[] = configuredCloudRegions.flatMap((region) => {
     const validation = validateHost(region.host, false)
@@ -151,7 +163,10 @@ export function validateHost(input: string, allowLoopbackHttp: boolean = isInter
         return { ok: false, error: "That doesn't look like a web address. Try something like flind.example.com." }
     }
     if (isInheritedProviderHostname(url.hostname)) {
-        return { ok: false, error: 'Use an endpoint operated by your Flind deployment, not an inherited cloud service.' }
+        return {
+            ok: false,
+            error: 'Use an endpoint operated by your Flind deployment, not an inherited cloud service.',
+        }
     }
     if (url.username || url.password) {
         return { ok: false, error: 'Remove credentials from the Flind host address.' }
