@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
-import { LemonButton, LemonInput, LemonModal, Link } from '@flind/lemon-ui'
+import { LemonButton, LemonInput, LemonModal } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { eventUsageLogic } from 'lib/utils/eventUsageLogic'
@@ -81,10 +81,7 @@ export function CreateProjectModal({
                     </p>
                     <p>
                         <strong>Tip:</strong> We recommend using the same project for both your website and app to track
-                        conversion fully.{' '}
-                        <Link to="https://posthog.com/docs/settings/projects" target="_blank">
-                            Learn more in Flind docs.
-                        </Link>
+                        conversion fully.
                     </p>
                     {currentOrganization?.projects?.some(
                         (project) => project.name.toLowerCase() === 'default project'
