@@ -1,4 +1,4 @@
-package com.posthog.code.mobile.hedgehog
+package com.thehalfmoon.flind.mobile.hedgehog
 
 import android.util.Log
 import org.json.JSONArray

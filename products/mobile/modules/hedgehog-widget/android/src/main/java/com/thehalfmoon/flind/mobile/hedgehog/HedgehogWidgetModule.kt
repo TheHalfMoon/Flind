@@ -1,4 +1,4 @@
-package com.posthog.code.mobile.hedgehog
+package com.thehalfmoon.flind.mobile.hedgehog
 
 import expo.modules.kotlin.exception.Exceptions
 import expo.modules.kotlin.modules.Module

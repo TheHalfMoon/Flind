@@ -1,4 +1,4 @@
-package com.posthog.code.mobile.hedgehog
+package com.thehalfmoon.flind.mobile.hedgehog
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -18,8 +18,8 @@ import kotlin.math.roundToInt
 
 object HedgehogRenderer {
     const val TAG = "HedgehogWidget"
-    const val ACTION_POKE = "com.posthog.code.mobile.HEDGEHOG_POKE"
-    const val ACTION_ADVANCE = "com.posthog.code.mobile.HEDGEHOG_ADVANCE"
+    const val ACTION_POKE = "com.thehalfmoon.flind.mobile.HEDGEHOG_POKE"
+    const val ACTION_ADVANCE = "com.thehalfmoon.flind.mobile.HEDGEHOG_ADVANCE"
 
     private const val FALLBACK_SPRITE = "hog_idle_00"
     private const val REQUEST_OPEN = 2

@@ -1,4 +1,4 @@
-package com.posthog.code.mobile.chart
+package com.thehalfmoon.flind.mobile.chart
 
 import org.json.JSONArray
 import org.json.JSONObject
