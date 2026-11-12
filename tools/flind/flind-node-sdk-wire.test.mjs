@@ -18,7 +18,10 @@ const EVENT_NAME = 'flind_node_sdk_wire_e2e'
 function restrictSocketsToLoopback(port) {
     const original = Socket.prototype.connect
     Socket.prototype.connect = function (...args) {
-        const first = args[0]
+        // net.createConnection() passes normalized [options, callback] as the
+        // first argument to Socket.connect(); undici uses this form on Node 26.
+        // Validate the actual destination, not the wrapper array.
+        const first = Array.isArray(args[0]) ? args[0][0] : args[0]
         const options = typeof first === 'object' && first !== null
             ? first
             : { port: first, host: typeof args[1] === 'string' ? args[1] : undefined }
@@ -105,6 +108,8 @@ test('socket guard rejects non-loopback and incorrect-port connections before di
     try {
         assert.throws(() => new Socket().connect(443, 'example.com'), /blocked outbound socket/)
         assert.throws(() => new Socket().connect(54322, '127.0.0.1'), /blocked outbound socket/)
+        assert.throws(() => new Socket().connect([{ host: 'example.com', port: 54321 }]), /blocked outbound socket/)
+        assert.throws(() => new Socket().connect([{ host: '127.0.0.1', port: 54322 }]), /blocked outbound socket/)
     } finally {
         restore()
     }

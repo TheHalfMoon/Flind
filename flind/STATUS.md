@@ -107,3 +107,8 @@ Last updated: 2026-11-12.
 - Scoped Node wire test guard intercepts Node TCP socket connects during synthetic SDK capture and permits only the ephemeral 127.0.0.1 HTTP test-server port. Negative controls reject an external hostname and a wrong loopback port before dialing. The original Socket.connect is restored in finally.
 - This is a process-level Node socket guard, not OS-level network isolation; independent review must assess alternate transports and DNS behavior. Node 26 CI is the authoritative runtime qualification; Windows Node 24 syntax and git diff checks alone do not prove SDK E2E success.
 - No release, deployment, or merge until all applicable exact-SHA checks and review complete.
+
+### 2026-11-12: Node SDK socket normalization repair (PR #41)
+- Exact SHA 698ecafc9 CI wire-parity failed: both positive captures raised PostHogFetchNetworkError because the guard rejected Node net.createConnection normalized [options, callback] arguments. Negative controls passed; rename and migration checks passed.
+- Updated the guard to unwrap normalized connection arguments before validating host and ephemeral loopback port. Added negative controls for normalized external-host and incorrect-port destinations. This is a narrow test-harness fix, not a relaxation of permitted network destinations.
+- Windows Node 24 syntax and git diff --check passed; Node 26 CI and independent review are still required. No merge or public release.
