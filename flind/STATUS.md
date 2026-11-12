@@ -126,3 +126,8 @@ Last updated: 2026-11-12.
 - Added a Kea logic regression test for Cloud preflight with no eligible billing plans: the contact-sales gate must expose no destination and must provide the Flind unconfigured-sales disabled reason. Extended the donor CTA guard to require this test.
 - Windows Node guard: 3 passed, 0 failed; git diff --check passed. Jest/TypeScript not run locally, and exact-head CI plus independent review are required before merge.
 - PR #45 remains draft. No public release or deployment authorized.
+
+### 2026-11-12: PR #45 disabled CTA button wiring guard
+- Added a static negative-regression guard for both PayGateButton and PayGateIcon: both must pass the Kea disabled reason into LemonButton and must not invent a fallback destination when ctaLink is undefined.
+- Windows node --test frontend/bin/flind-donor-cta-isolation.test.mjs: 4 passed, 0 failed. git diff --check passed. This source guard does not replace Jest/TypeScript or browser E2E.
+- Earlier exact-head GitHub CTA guard, rename ratchet and runtime migrations passed on 566993def; requalification is required after this change. PR remains draft; no deployment or release.

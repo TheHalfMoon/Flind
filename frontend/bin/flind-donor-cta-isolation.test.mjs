@@ -8,6 +8,7 @@ const gate = read('frontend/src/lib/components/PayGateMini/payGateMiniLogic.tsx'
 const gateView = read('frontend/src/lib/components/PayGateMini/PayGateMini.tsx')
 const tag = read('frontend/src/lib/components/ReleaseStageTag/ReleaseStageTag.tsx')
 const behavior = read('frontend/src/lib/components/PayGateMini/payGateMiniLogic.test.ts')
+const gateButton = read('frontend/src/lib/components/PayGateMini/PayGateButton.tsx')
 
 test('unconfigured Cloud/sales actions cannot send Flind users to donor SaaS', () => {
     assert.doesNotMatch(gate, /(?:https:\/\/us\.posthog\.com\/signup|sales@posthog\.com)/)
@@ -20,6 +21,12 @@ test('unconfigured Cloud/sales actions cannot send Flind users to donor SaaS', (
     assert.match(behavior, /ctaLink: undefined/)
     assert.match(behavior, /disables unconfigured contact-sales actions without an inherited external destination/)
     assert.match(behavior, /gateVariant: 'contact-sales'/)
+})
+
+test('both pay-gate button variants preserve disabled reasons and do not invent a fallback destination', () => {
+    assert.match(gateButton, /: \{ to: ctaLink \}/)
+    assert.equal((gateButton.match(/disabledReason=\{ctaDisabledReason \|\| buttonProps\.disabledReason\}/g) || []).length, 2)
+    assert.doesNotMatch(gateButton, /(?:us\.posthog\.com|sales@posthog\.com|window\.location)/)
 })
 
 test('self-hosted gate message is accurate and remains gated', () => {
