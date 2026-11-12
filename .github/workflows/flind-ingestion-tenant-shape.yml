@@ -1,0 +1,29 @@
+name: Flind ingestion negative-control shape
+
+on:
+    push:
+        branches:
+            - 'flind-ci/ingestion-tenant-shape-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-ingestion-tenant-shape-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    validate:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Reject missing or malformed HogQL count responses
+              run: |
+                  node --check frontend/bin/flind-ingestion-tenant.test.mjs
+                  node --check frontend/bin/flind-ingestion-count-shape.test.mjs
+                  node --experimental-strip-types --test frontend/bin/flind-ingestion-tenant.test.mjs frontend/bin/flind-ingestion-count-shape.test.mjs

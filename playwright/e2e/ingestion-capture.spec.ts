@@ -1,4 +1,5 @@
 import { randomString } from '../utils'
+import { parseHogQLCount } from '../utils/parse-hogql-count'
 import { expect, test } from '../utils/workspace-test-base'
 
 // Capture and flags are served by separate Rust services fronted by the Caddy dev proxy,
@@ -76,8 +77,9 @@ test.describe('Event ingestion', () => {
                 },
             })
             expect(resp.ok(), `other-tenant query failed: ${resp.status()}`).toBe(true)
-            const body = await resp.json()
-            expect(Number(body.results?.[0]?.[0] ?? 0)).toBe(0)
+            // Missing/malformed HogQL results must not be mistaken for zero visible events.
+            const count = parseHogQLCount(await resp.json())
+            expect(count).toBe(0)
         })
     })
 })
