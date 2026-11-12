@@ -32,14 +32,23 @@ function configuredAppLinkHosts(): string[] {
         try {
             parsed = new URL(raw)
         } catch {
-            throw new Error(name + ' must be an absolute HTTPS origin.')
+            throw new Error(`${name} must be an absolute HTTPS origin.`)
         }
         const host = parsed.hostname.toLowerCase()
-        if (parsed.protocol !== 'https:' || parsed.port || parsed.username || parsed.password ||
-            (parsed.pathname !== '/' && parsed.pathname !== '') || parsed.search || parsed.hash ||
-            host === 'posthog.com' || host.endsWith('.posthog.com') ||
-            host === 'posthog.dev' || host.endsWith('.posthog.dev')) {
-            throw new Error(name + ' must identify a Flind-owned HTTPS origin, without a path or credentials.')
+        if (
+            parsed.protocol !== 'https:' ||
+            parsed.port ||
+            parsed.username ||
+            parsed.password ||
+            (parsed.pathname !== '/' && parsed.pathname !== '') ||
+            parsed.search ||
+            parsed.hash ||
+            host === 'posthog.com' ||
+            host.endsWith('.posthog.com') ||
+            host === 'posthog.dev' ||
+            host.endsWith('.posthog.dev')
+        ) {
+            throw new Error(`${name} must identify a Flind-owned HTTPS origin, without a path or credentials.`)
         }
         result.push(host)
     }
