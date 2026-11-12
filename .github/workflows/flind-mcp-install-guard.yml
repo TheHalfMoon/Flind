@@ -1,0 +1,28 @@
+name: Flind MCP installer safety
+
+on:
+    push:
+        branches:
+            - 'flind-ci/mcp-upstream-cli-guard-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-mcp-installer-safety-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    guard:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Prevent inherited MCP wizard promotion
+              run: |
+                  node --check frontend/bin/flind-mcp-install-guard.test.mjs
+                  node --test frontend/bin/flind-mcp-install-guard.test.mjs

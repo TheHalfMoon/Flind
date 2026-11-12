@@ -47,18 +47,17 @@ describe('AgentPromptButton', () => {
         expect(link.length).toBeGreaterThan(maxLength - 30)
     })
 
-    const MCP_LINE = `If working with Flind data would help with this task, use the Flind MCP server in Flind project 42. If the server is not connected, ask me to install it by running \`${MCP_INSTALL_COMMAND}\` in a terminal.`
 
     it.each([
-        ['an external agent', 'cursor', false, 42, true, `Fix it\n\n${MCP_LINE}`],
-        ['the clipboard', 'clipboard', false, 42, true, `Fix it\n\n${MCP_LINE}`],
+        ['an external agent', 'cursor', false, 42, true, 'Fix it\n'],
+        ['the clipboard', 'clipboard', false, 42, true, 'Fix it\n'],
         [
             'an unknown project',
             'cursor',
             false,
             null,
             true,
-            `Fix it\n\n${MCP_LINE.replace(' in Flind project 42', '')}`,
+            'Fix it\n',
         ],
         ['Flind AI', 'posthog-ai', false, 42, true, 'Fix it\n'],
         ['raw content', 'cursor', true, 42, true, 'Fix it\n'],
@@ -66,6 +65,13 @@ describe('AgentPromptButton', () => {
     ] as const)('builds the prompt for %s', (_, agentKey, raw, projectId, isCloudOrDev, expected) => {
         const action = { key: 'fix', label: 'Fix', buildPrompt: () => 'Fix it\n', raw }
         expect(buildAgentPrompt(action, agentKey, projectId, isCloudOrDev)).toBe(expected)
+    })
+
+    it('does not suggest the inherited installer for any external agent', () => {
+        const action = { key: 'inspect', label: 'Inspect', buildPrompt: () => 'Inspect' }
+        const prompt = buildAgentPrompt(action, 'cursor', 42, true)
+        expect(prompt).toBe('Inspect')
+        expect(MCP_INSTALL_COMMAND).toBe('')
     })
 
     it('does not split an emoji when it truncates a prompt at the cap', () => {

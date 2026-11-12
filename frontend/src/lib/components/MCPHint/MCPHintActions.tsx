@@ -4,7 +4,7 @@ import { AgentPromptButton } from 'lib/components/AgentPromptButton'
 import { CommandBlock } from 'lib/components/CommandBlock/CommandBlock'
 import { preflightLogic } from 'lib/logic/preflightLogic'
 
-import { MCP_INSTALL_COMMAND } from './constants'
+import { FLIND_MCP_INSTALL_AVAILABLE, MCP_INSTALL_COMMAND } from './constants'
 import { type MCPHintPlacement, mcpHintLogic } from './mcpHintLogic'
 import { stripDisplayQuotes, type SurfaceKey } from './prompts'
 
@@ -24,7 +24,7 @@ export function MCPHintActions({
     const { reportAgentOpened } = useActions(mcpHintLogic)
 
     // The Flind MCP server only serves cloud and dev instances, so a self-hosted user has nothing to connect to.
-    if (!isCloudOrDev) {
+    if (!FLIND_MCP_INSTALL_AVAILABLE || !isCloudOrDev) {
         return null
     }
 

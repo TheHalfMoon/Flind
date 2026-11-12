@@ -1,28 +1,12 @@
-import { Link } from '@flind/lemon-ui'
-
-import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
-
 const MCPServerSettings = (): JSX.Element => {
-    const codeSnippet = `npx @posthog/wizard mcp add`
-
     return (
         <div>
             <p className="pb-2">
-                MCP servers allow AI assistants to connect directly to your Flind instance, enabling them to retrieve
-                insights and perform actions on your behalf.
+                Flind does not yet provide a verified MCP installation command for this deployment.
             </p>
             <p>
-                You can install the Flind MCP server in Cursor, Claude Code, Claude Desktop, VS Code, and Zed by
-                running the following command:
-            </p>
-            <div className="pb-2">
-                <CodeSnippet language={Language.Bash}>{codeSnippet}</CodeSnippet>
-            </div>
-            <p>
-                You can learn more about what tools are available and other installation options{' '}
-                <Link to="https://posthog.com/docs/model-context-protocol" target="_blank">
-                    here
-                </Link>
+                If your Flind administrator has configured an MCP server, use the connection details they provided.
+                Do not run installation commands intended for another analytics service.
             </p>
         </div>
     )

@@ -6,7 +6,7 @@ import { LemonButton, LemonDropdown } from '@flind/lemon-ui'
 
 import { AgentPromptButton } from 'lib/components/AgentPromptButton'
 import { CommandBlock } from 'lib/components/CommandBlock/CommandBlock'
-import { MCP_INSTALL_COMMAND } from 'lib/components/MCPHint/constants'
+import { FLIND_MCP_INSTALL_AVAILABLE, MCP_INSTALL_COMMAND } from 'lib/components/MCPHint/constants'
 import { mcpHintLogic } from 'lib/components/MCPHint/mcpHintLogic'
 import { getSurfacePrompts, stripDisplayQuotes } from 'lib/components/MCPHint/prompts'
 import { preflightLogic } from 'lib/logic/preflightLogic'
@@ -18,7 +18,7 @@ export function EvaluationAgentActions(): JSX.Element | null {
     const { reportUseCaseCardShown, reportAgentOpened } = useActions(mcpHintLogic)
     const { isCloudOrDev } = useValues(preflightLogic)
     // The Flind MCP server only serves cloud and dev instances. Unknown while preflight loads, so only a known self-hosted instance hides the actions.
-    const visible = !effectiveOptOut && isCloudOrDev !== false
+    const visible = FLIND_MCP_INSTALL_AVAILABLE && !effectiveOptOut && isCloudOrDev !== false
 
     useEffect(() => {
         if (visible) {
