@@ -44,7 +44,7 @@ describe('Flind legal and data-handling copy', () => {
         render(<SDKSnippet sdk={sdk} sdkInstructions={() => <div />} />)
 
         expect(screen.getByRole('heading', { name: 'Send React data to Flind using the integration SDK' })).toBeTruthy()
-        const docsLink = screen.getByRole('link', { name: 'Read the SDK documentation' })
-        expect(docsLink.getAttribute('href')).toBe('https://example.test/docs/react')
+        expect(screen.queryByRole('link', { name: 'Read the Flind SDK documentation' })).toBeNull()
+        expect(screen.getByText('SDK documentation is not configured for this Flind instance.')).toBeTruthy()
     })
 })

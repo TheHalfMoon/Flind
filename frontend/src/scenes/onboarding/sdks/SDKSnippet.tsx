@@ -1,3 +1,4 @@
+import { isOwnedFlindDocsDestination } from 'lib/flindPublicLinks'
 import { Link } from 'lib/lemon-ui/Link'
 
 import { SDK } from '~/types'
@@ -12,7 +13,7 @@ export const SDKSnippet = ({ sdk, sdkInstructions }: SDKSnippetProps): JSX.Eleme
         <div>
             <div className="mb-8">
                 <h3 className="text-xl font-bold mb-2">Send {sdk.name} data to Flind using the integration SDK</h3>
-                {sdk.docsLink ? (
+                {isOwnedFlindDocsDestination(sdk.docsLink) ? (
                     <Link className="" to={sdk.docsLink} target="_blank" targetBlankIcon>
                         Read the Flind SDK documentation
                     </Link>

@@ -21,7 +21,7 @@ test('all 93 SDK catalog documentation destinations derive from Flind-owned HTTP
 })
 
 test('an absent Flind docs root renders guidance instead of a dead or donor navigation link', () => {
-    assert.match(snippet, /\{sdk\.docsLink \? \(/)
+    assert.match(snippet, /isOwnedFlindDocsDestination\(sdk\.docsLink\) \? \(/)
     assert.match(snippet, /SDK documentation is not configured for this Flind instance/)
     assert.match(snippet, /Read the Flind SDK documentation/)
     assert.match(docsHelper, /export function flindDocsUrl/)
