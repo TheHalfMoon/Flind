@@ -1,5 +1,6 @@
 import { PostHog } from '@flind/node'
 import { randomString } from '../utils'
+import { assertForeignPersonalKeyCannotQueryTeam } from '../utils/assert-foreign-team-query-denied'
 import { parseHogQLCount } from '../utils/parse-hogql-count'
 import { expect, test } from '../utils/workspace-test-base'
 
@@ -104,8 +105,12 @@ test.describe('Flind Node SDK ingestion', () => {
         await test.step('another organization has exactly zero matching events', async () => {
             const other = await playwrightSetup.createWorkspace({ skip_onboarding: true, no_demo_data: true })
             expect(other.team_id).not.toBe(workspace.team_id)
+            expect(other.organization_id).not.toBe(workspace.organization_id)
+            expect(other.user_id).not.toBe(workspace.user_id)
             const count = await queryCount(other.team_id, other.personal_api_key)
             expect(count).toBe(0)
+            await assertForeignPersonalKeyCannotQueryTeam(request, workspace.team_id, other.personal_api_key, eventName)
+            await assertForeignPersonalKeyCannotQueryTeam(request, other.team_id, workspace.personal_api_key, eventName)
         })
     })
 })
