@@ -97,7 +97,7 @@ export function PostHogProvider({
         const safeOptions = flindReactOwnedOptions(options)
         if (!safeOptions) {
             console.warn('[Flind React] An explicit owned api_host and safe ui_host are required; analytics disabled.')
-            if (previousInitializationRef.current) {
+            if (previousInitializationRef.current || defaultInstance.__loaded) {
                 defaultInstance.opt_out_capturing()
             }
             return

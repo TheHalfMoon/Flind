@@ -58,6 +58,7 @@ test('source and checked-in full ESM/UMD React packages enforce identical defaul
         assert.match(code, /flindReactOwnedOptions\(options\)/)
         assert.match(code, /analytics disabled/)
         assert.match(code, /opt_out_capturing\(\)/)
+        assert.match(code, /previousInitializationRef\.current \|\| defaultInstance\.__loaded/)
         assert.match(code, /\.init\(apiKey, safeOptions\)/)
         assert.match(code, /\.set_config\(safeOptions\)/)
         assert.doesNotMatch(code, /\.init\(apiKey, options\)/)

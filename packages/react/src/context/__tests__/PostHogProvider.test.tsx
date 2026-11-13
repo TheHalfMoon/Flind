@@ -179,6 +179,23 @@ describe('PostHogProvider component', () => {
             consoleSpy.mockRestore()
         })
 
+        it('opts out of a previously loaded global client when apiKey options are unsafe', () => {
+            const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+            ;(posthogJs as any).__loaded = true
+            try {
+                render(
+                    <PostHogProvider apiKey={apiKey} options={{ api_host: 'https://us.i.posthog.com' }}>
+                        <div>Test</div>
+                    </PostHogProvider>
+                )
+                expect(posthogJs.init).not.toHaveBeenCalled()
+                expect(posthogJs.opt_out_capturing).toHaveBeenCalledOnce()
+            } finally {
+                ;(posthogJs as any).__loaded = false
+                consoleSpy.mockRestore()
+            }
+        })
+
         it('warns if posthogJs has been loaded elsewhere', () => {
             ;(posthogJs as any).__loaded = true
 
