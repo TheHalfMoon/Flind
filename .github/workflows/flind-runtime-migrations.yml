@@ -52,6 +52,9 @@ jobs:
               if: startsWith(github.ref, 'refs/heads/flind-ci/postgres-recovery-') || inputs.postgres_restore == true
               run: python3 -m unittest tools.flind.test_qualify_postgres_backup_restore_synthetic -v
 
+            - name: Validate two-store migration preservation contract (no Docker)
+              run: python3 -m unittest tools.flind.test_migration_data_preservation -v
+
             - name: Record source identity
               run: |
                   mkdir -p "$EVIDENCE"
@@ -100,12 +103,29 @@ jobs:
                   bin/migrate --scope=clickhouse --scope=postgres --scope=persons 2>&1 | tee "$EVIDENCE/migrate-run1.log"
                   echo "run1_seconds=$(( $(date +%s) - start ))" | tee -a "$EVIDENCE/timing.txt"
 
+            # A pristine second run can hide destructive migrations. Seed distinct
+            # synthetic tenant records in both real stores, then rerun migrations.
+            - name: Seed synthetic tenant data before migration rerun
+              env:
+                  FLIND_SYNTHETIC_MIGRATION_CHECK: '1'
+              run: |
+                  set -euo pipefail
+                  bash -n tools/flind/qualify_migration_data_preservation.sh
+                  bash tools/flind/qualify_migration_data_preservation.sh seed
+
             - name: Second migration run (idempotency over existing state)
               run: |
                   set -o pipefail
                   start=$(date +%s)
                   bin/migrate --scope=clickhouse --scope=postgres --scope=persons 2>&1 | tee "$EVIDENCE/migrate-run2.log"
                   echo "run2_seconds=$(( $(date +%s) - start ))" | tee -a "$EVIDENCE/timing.txt"
+
+            - name: Verify synthetic tenant data survived migration rerun
+              env:
+                  FLIND_SYNTHETIC_MIGRATION_CHECK: '1'
+              run: |
+                  set -euo pipefail
+                  bash tools/flind/qualify_migration_data_preservation.sh verify
 
             - name: Verify applied state
               run: |
@@ -147,7 +167,7 @@ jobs:
               run: |
                   {
                     echo "## Flind migration evidence"
-                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt postgres-restore-smoke.txt; do
+                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt postgres-restore-smoke.txt migration-canary-summary.txt; do
                       [ -f "$EVIDENCE/$f" ] || continue
                       echo "### $f"; echo '```'; cat "$EVIDENCE/$f"; echo '```'
                     done
