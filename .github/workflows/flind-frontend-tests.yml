@@ -8,6 +8,7 @@ on:
         branches:
             - 'flind-ci/brand-audit-**'
             - 'flind-ci/health-doc-isolation-*'
+            - 'flind-ci/node-onboarding-fix-*'
             - 'flind-ci/integration-owned-docs-*'
             - 'flind-ci/sdk-catalog-owned-docs-*'
     workflow_dispatch:
