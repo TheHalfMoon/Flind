@@ -1,4 +1,4 @@
-use std::io;
+use std::io::{self, Write};
 use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::{env, fs};
@@ -154,10 +154,64 @@ fn materialize_embedded_script(
     let parent = path
         .parent()
         .expect("embedded bundle path always has a parent directory");
+    // Create and check the managed API directory *before* the version
+    // directory. Otherwise create_dir_all(version) could follow an existing
+    // API-directory symlink and create directories at an unrelated location.
+    let api_dir = parent.parent().expect("bundle version has a parent");
+    fs::create_dir_all(api_dir)
+        .map_err(|source| materialize_failed(MaterializeStep::CreateDir, source))?;
+    if fs::symlink_metadata(api_dir)
+        .map_err(|source| materialize_failed(MaterializeStep::CreateDir, source))?
+        .file_type()
+        .is_symlink()
+    {
+        return Err(materialize_failed(
+            MaterializeStep::CreateDir,
+            io::Error::new(
+                io::ErrorKind::InvalidData,
+                "embedded API bundle directory is a symlink",
+            ),
+        ));
+    }
     fs::create_dir_all(parent)
         .map_err(|source| materialize_failed(MaterializeStep::CreateDir, source))?;
-    fs::write(&path, bundle)
+    // Reject either version directory or the API bundle directory when
+    // symlinked. The designated CLI home can itself be user-approved,
+    // but neither of these newly managed descendants may redirect writes.
+    // Installation ownership still matters against directory-swap races.
+    for checked_dir in [
+        parent,
+        parent.parent().expect("bundle version has a parent"),
+    ] {
+        if fs::symlink_metadata(checked_dir)
+            .map_err(|source| materialize_failed(MaterializeStep::CreateDir, source))?
+            .file_type()
+            .is_symlink()
+        {
+            return Err(materialize_failed(
+                MaterializeStep::CreateDir,
+                io::Error::new(
+                    io::ErrorKind::InvalidData,
+                    "embedded API bundle directory is a symlink",
+                ),
+            ));
+        }
+    }
+    // Do not write a predictable final file: fs::write would follow a
+    // preexisting symlink, potentially truncating another file. Persisting
+    // a random same-directory temporary file replaces the directory entry.
+    let mut staging = tempfile::NamedTempFile::new_in(parent)
         .map_err(|source| materialize_failed(MaterializeStep::Write, source))?;
+    staging
+        .write_all(bundle)
+        .map_err(|source| materialize_failed(MaterializeStep::Write, source))?;
+    staging
+        .as_file()
+        .sync_all()
+        .map_err(|source| materialize_failed(MaterializeStep::Write, source))?;
+    staging
+        .persist(&path)
+        .map_err(|error| materialize_failed(MaterializeStep::Write, error.error))?;
     let resolved = dunce::canonicalize(&path)
         .map_err(|source| materialize_failed(MaterializeStep::Canonicalize, source))?;
     if !resolved.is_file() {
@@ -655,6 +709,95 @@ mod tests {
         assert_eq!(
             fs::read(resolved).expect("read materialized bundle"),
             b"embedded bundle"
+        );
+    }
+
+    #[test]
+    fn materialized_bundle_atomically_replaces_old_bytes_without_staging_leftovers() {
+        let dir = tempfile::tempdir().expect("bundle test dir");
+        let path = embedded_bundle_path(dir.path());
+        fs::create_dir_all(path.parent().unwrap()).expect("create parent");
+        fs::write(&path, b"stale script").expect("write stale version");
+        let result =
+            materialize_embedded_script(Some(b"approved embedded bytes"), Some(dir.path()))
+                .expect("replace stale script");
+        assert_eq!(result, dunce::canonicalize(&path).unwrap());
+        assert_eq!(fs::read(&path).unwrap(), b"approved embedded bytes");
+        let actual = fs::read_dir(path.parent().unwrap())
+            .unwrap()
+            .map(|entry| entry.unwrap().file_name())
+            .collect::<Vec<_>>();
+        assert_eq!(
+            actual,
+            vec![path.file_name().unwrap().to_os_string()],
+            "no temp file may survive"
+        );
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn materialized_bundle_replaces_file_symlink_without_touching_its_victim() {
+        use std::os::unix::fs::symlink;
+        let dir = tempfile::tempdir().expect("bundle test dir");
+        let victim = dir.path().join("unrelated-sensitive-file");
+        fs::write(&victim, b"preserve these bytes").expect("victim");
+        let path = embedded_bundle_path(dir.path());
+        fs::create_dir_all(path.parent().unwrap()).expect("version dir");
+        symlink(&victim, &path).expect("symlink final file to unrelated file");
+        let actual =
+            materialize_embedded_script(Some(b"approved embedded bytes"), Some(dir.path()))
+                .expect("install without following the symlink");
+        assert_eq!(fs::read(&victim).unwrap(), b"preserve these bytes");
+        assert_eq!(fs::read(actual).unwrap(), b"approved embedded bytes");
+        assert!(!fs::symlink_metadata(&path)
+            .unwrap()
+            .file_type()
+            .is_symlink());
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn materialized_bundle_refuses_symlinked_version_directory() {
+        use std::os::unix::fs::symlink;
+        let dir = tempfile::tempdir().expect("bundle test dir");
+        let target_dir = dir.path().join("other-location");
+        fs::create_dir_all(&target_dir).unwrap();
+        let path = embedded_bundle_path(dir.path());
+        fs::create_dir_all(path.parent().unwrap().parent().unwrap()).unwrap();
+        symlink(&target_dir, path.parent().unwrap()).unwrap();
+        let err = materialize_embedded_script(Some(b"approved embedded bytes"), Some(dir.path()))
+            .expect_err("symlinked directory must fail closed");
+        assert!(matches!(
+            err,
+            ApiProxyError::MaterializeFailed {
+                step: MaterializeStep::CreateDir,
+                ..
+            }
+        ));
+        assert!(!target_dir.join(API_CLI_BUNDLE).exists());
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn materialized_bundle_refuses_symlinked_api_bundle_parent() {
+        use std::os::unix::fs::symlink;
+        let dir = tempfile::tempdir().expect("bundle test dir");
+        let other = dir.path().join("external");
+        fs::create_dir_all(&other).unwrap();
+        let api_cli_parent = dir.path().join("api-cli");
+        symlink(&other, &api_cli_parent).unwrap();
+        let err = materialize_embedded_script(Some(b"approved embedded bytes"), Some(dir.path()))
+            .expect_err("the API bundle parent must not be symlinked");
+        assert!(matches!(
+            err,
+            ApiProxyError::MaterializeFailed {
+                step: MaterializeStep::CreateDir,
+                ..
+            }
+        ));
+        assert!(
+            !other.join(env!("CARGO_PKG_VERSION")).exists(),
+            "must not even create the redirected version directory"
         );
     }
 
