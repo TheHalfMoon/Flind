@@ -1,0 +1,47 @@
+# Staged SDK type definitions, not published and not yet wired into runtime.
+name: Flind staged types SDK full-source parity
+
+on:
+    push:
+        branches:
+            - 'flind-ci/**'
+        paths:
+            - 'packages/types/**'
+            - '.github/scripts/flind-types-parity.mjs'
+            - '.github/workflows/flind-types-sdk-qualification.yml'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    types:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '26'
+            - name: Verify the exact pinned npm archive
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  npm pack @posthog/types@1.421.0 --pack-destination "$RUNNER_TEMP" --silent
+                  echo "28fdf80aa811618ca9df053bece8b12f45116f68a574a33e43104e5ed43861869ad40453b77968a31927ff0f20c0aa3a816660d955bf0e04a8a805b85de0c03d  $RUNNER_TEMP/posthog-types-1.421.0.tgz" | sha512sum -c -
+                  tar -xzf "$RUNNER_TEMP/posthog-types-1.421.0.tgz" -C "$RUNNER_TEMP"
+            - name: Full source, license, metadata, and CJS/ESM parity
+              run: node .github/scripts/flind-types-parity.mjs "$RUNNER_TEMP/package"
+            - name: Ensure unpublished, unlinked staging
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  if grep -E -q '^[[:space:]]*-[[:space:]]*packages/types[[:space:]]*$' pnpm-workspace.yaml; then
+                      echo "Types staging must not yet be a production workspace package"
+                      exit 1
+                  fi
+                  if grep -E -q '^[[:space:]]*packages/types:' pnpm-lock.yaml; then
+                      echo "Types staging must not yet alter the production lockfile"
+                      exit 1
+                  fi
+                  test "$(node -p "require('./packages/types/package.json').private")" = true
