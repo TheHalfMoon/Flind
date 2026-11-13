@@ -1,0 +1,286 @@
+{
+  "purpose": "Runtime-free local SDK catalog logo image provenance; these are third-party marks, not owned Flind marks",
+  "count": 35,
+  "assets": [
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/autogen_a8c56d013e.svg",
+      "filename": "vendor_autogen_a8c56d013e_35f7cbb8.svg",
+      "sha256": "9a226252b45564f9f57dc1c88068a2d4aa55dc4c7a1147c8ba6c643c2c5b8b65",
+      "bytes": 1962,
+      "format": "svg",
+      "importName": "sdkVendorLogo1"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/azure_openai_884ba0124a.svg",
+      "filename": "vendor_azure_openai_884ba0124a_72239bdd.svg",
+      "sha256": "664d7558ee8496dd31891b7cd0bd8934b8576406dabc408d2eb5b73fe14a6df6",
+      "bytes": 344,
+      "format": "svg",
+      "importName": "sdkVendorLogo2"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/bedrock_5c06698148.png",
+      "filename": "vendor_bedrock_5c06698148_e0758f37.png",
+      "sha256": "1f78308db8bd8cb5662b8b33c440d149a23c249a805883f20c8e1778eeb79fb7",
+      "bytes": 10054,
+      "format": "png",
+      "importName": "sdkVendorLogo3"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/cerebras_4d953c1c2b.png",
+      "filename": "vendor_cerebras_4d953c1c2b_da9aaa6d.png",
+      "sha256": "380624f6b486fa43b31b8e2c1a08b31f03a3894473b7660cf5a60e34c508b0ed",
+      "bytes": 14401,
+      "format": "png",
+      "importName": "sdkVendorLogo4"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/cloudflare_logo_6572a9f441.svg",
+      "filename": "vendor_cloudflare_logo_6572a9f441_0b6ea2ee.svg",
+      "sha256": "bb907110340a561300434129cc20b91ca00fedf39bc25b06148e2455a134f65d",
+      "bytes": 2054,
+      "format": "svg",
+      "importName": "sdkVendorLogo5"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/cohere_0ddf02d545.svg",
+      "filename": "vendor_cohere_0ddf02d545_b0f743a9.svg",
+      "sha256": "f5bb2bfe608d22cab768486c88944fedc45099c1418e17e13cb6f9453773e45e",
+      "bytes": 797,
+      "format": "svg",
+      "importName": "sdkVendorLogo6"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/convex_d8dcddcd63.svg",
+      "filename": "vendor_convex_d8dcddcd63_0ca3df9c.svg",
+      "sha256": "28a5938ca7442727b3634c764e5b1a5f19718b31befd433f79ba63e339e33400",
+      "bytes": 890,
+      "format": "svg",
+      "importName": "sdkVendorLogo7"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/crewai_67ee9f5eb6.svg",
+      "filename": "vendor_crewai_67ee9f5eb6_42235c29.svg",
+      "sha256": "a2decd5968da4792968e7b1ca7151bc6c000731c8e54354f3a5b2757b4250c5d",
+      "bytes": 5963,
+      "format": "svg",
+      "importName": "sdkVendorLogo8"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/dedalus_labs_logo_e03bb97137.svg",
+      "filename": "vendor_dedalus_labs_logo_e03bb97137_45da41f8.svg",
+      "sha256": "3f95c4625fba79df00ecf9a2880a55473a151f8ddb5a5309ed99c0d9fd7fc820",
+      "bytes": 1504,
+      "format": "svg",
+      "importName": "sdkVendorLogo9"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/deepseek_df02608124.svg",
+      "filename": "vendor_deepseek_df02608124_9502b156.svg",
+      "sha256": "8f8e60db1f583d10dd6b8ddd010cdce2917ffb49fb7ba0051a228782c0e57eec",
+      "bytes": 2118,
+      "format": "svg",
+      "importName": "sdkVendorLogo10"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/dspy_548bc2f255.webp",
+      "filename": "vendor_dspy_548bc2f255_4bfba519.webp",
+      "sha256": "ea64c6db7018ba5f0e32b303d3a9e262306d8060dc8836c9d43c1275e0f6fa23",
+      "bytes": 2082,
+      "format": "webp",
+      "importName": "sdkVendorLogo11"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/fireworks_ai_a3d8a59e96.svg",
+      "filename": "vendor_fireworks_ai_a3d8a59e96_a3a4a24f.svg",
+      "sha256": "dccae9c0f67f39fe377167719bf9e4ca21c490f9ca54a76a79580cadd0647d74",
+      "bytes": 692,
+      "format": "svg",
+      "importName": "sdkVendorLogo12"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/groq_a0ed539e47.png",
+      "filename": "vendor_groq_a0ed539e47_bf4a73fa.png",
+      "sha256": "06fb6dbba394b3b74322ccbe195908ee03ff79c7307f4ccb9ec789a86cb557f5",
+      "bytes": 1213,
+      "format": "png",
+      "importName": "sdkVendorLogo13"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/helicone_7c41fa4c2d.svg",
+      "filename": "vendor_helicone_7c41fa4c2d_04dff6cb.svg",
+      "sha256": "5e440906ad754673908f0e6620edd18fd549af7df99cc7a68e317be694674596",
+      "bytes": 75852,
+      "format": "svg",
+      "importName": "sdkVendorLogo14"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/hugging_face_ae0a406f62.svg",
+      "filename": "vendor_hugging_face_ae0a406f62_c111ddab.svg",
+      "sha256": "942cad1ccda905ac5a659dfd2d78b344fccfb84a8a3ac3721e08f488205638a0",
+      "bytes": 35286,
+      "format": "svg",
+      "importName": "sdkVendorLogo15"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/instructor_b1982d9ce9.svg",
+      "filename": "vendor_instructor_b1982d9ce9_395d9925.svg",
+      "sha256": "527804549d6ebfa967546293a2e056264a4e8fe7b4017ee5e1b9d68b1ec29b74",
+      "bytes": 372,
+      "format": "svg",
+      "importName": "sdkVendorLogo16"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/posthog.com/contents/images/docs/integrate/kmp.svg",
+      "filename": "vendor_kmp_7d185d2b.svg",
+      "sha256": "ae0644c75aead4258347fd90c3b2dbc468b95d504f8de376f97d18c0fa12ab1d",
+      "bytes": 473,
+      "format": "svg",
+      "importName": "sdkVendorLogo17"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/langgraph_2f91869ac8.svg",
+      "filename": "vendor_langgraph_2f91869ac8_a07af6a3.svg",
+      "sha256": "c1d3c93de35d2206fb321ee2417e845dd2b50cab24c56105004363b145abd2eb",
+      "bytes": 3345,
+      "format": "svg",
+      "importName": "sdkVendorLogo18"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/litellmicon_a2805d75e5.png",
+      "filename": "vendor_litellmicon_a2805d75e5_4f00e46f.webp",
+      "sha256": "6e728d68a43d563b8eb26fc9b22ee0c6c19f074c7c8e2200f853930ebbd2ac06",
+      "bytes": 20052,
+      "format": "webp",
+      "importName": "sdkVendorLogo19"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/llamaindex_f831132d7c.svg",
+      "filename": "vendor_llamaindex_f831132d7c_253ea49a.svg",
+      "sha256": "949e52d2b44f9b2a0bba95f0d0f3c8452aeae72a86a285b2c4f3ae26be2efb3f",
+      "bytes": 2504,
+      "format": "svg",
+      "importName": "sdkVendorLogo20"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/mastra_7ea7df92ab.svg",
+      "filename": "vendor_mastra_7ea7df92ab_e12c81b1.svg",
+      "sha256": "8f334ec129b997ad283d133f852a63144865ba74714fa0e7c59aae67899fea63",
+      "bytes": 869,
+      "format": "svg",
+      "importName": "sdkVendorLogo21"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/mirascope_33f38e04ea.svg",
+      "filename": "vendor_mirascope_33f38e04ea_d6d7112f.svg",
+      "sha256": "69332f27e7e28e1da0f0c01bfd3549b124328d0f73d42408f3fee797f1050d53",
+      "bytes": 1607,
+      "format": "svg",
+      "importName": "sdkVendorLogo22"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/mistral_551c75e2dd.svg",
+      "filename": "vendor_mistral_551c75e2dd_57184110.svg",
+      "sha256": "f60f0fc7bc407b026493c80c1c7e879c1ad664e52e1c484099de7930ac9068ea",
+      "bytes": 610,
+      "format": "svg",
+      "importName": "sdkVendorLogo23"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/ollama_ff56896a1f.svg",
+      "filename": "vendor_ollama_ff56896a1f_648edce0.svg",
+      "sha256": "3c08423e4c5d0ec63dd5afe3a2c396559cd2555e7b8a1cd8d81fb449643d65a1",
+      "bytes": 3358,
+      "format": "svg",
+      "importName": "sdkVendorLogo24"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/opentelemetry_afb29df5ab.svg",
+      "filename": "vendor_opentelemetry_afb29df5ab_18f8dd86.svg",
+      "sha256": "445454dcc44d70962183300dd88b2893ff7a3cee7526a369074e7f1645052e24",
+      "bytes": 1204,
+      "format": "svg",
+      "importName": "sdkVendorLogo25"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/perplexity_7d451cb62c.svg",
+      "filename": "vendor_perplexity_7d451cb62c_c2a182ca.svg",
+      "sha256": "4b93e4ae50d63e89e7452795d84f009c85b42a57244c0ca36c88380192f6715a",
+      "bytes": 794,
+      "format": "svg",
+      "importName": "sdkVendorLogo26"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/portkey_15a83f0395.svg",
+      "filename": "vendor_portkey_15a83f0395_bd770b7c.svg",
+      "sha256": "21723f7a30100fcfbae3882c81c2b82cf68c5fd3e5b0f105a8a34c7bd18423a5",
+      "bytes": 1646,
+      "format": "svg",
+      "importName": "sdkVendorLogo27"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/pydantic_ai_55029bc39b.svg",
+      "filename": "vendor_pydantic_ai_55029bc39b_3e547f5b.svg",
+      "sha256": "454d91a6a14d37bd044ddf42e9c135519edf01d2a786492a43708d520e90371e",
+      "bytes": 361,
+      "format": "svg",
+      "importName": "sdkVendorLogo28"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/Roblox_Corporation_2025_logo_svg_301751b47c.png",
+      "filename": "vendor_roblox_corporation_2025_logo_svg_301751b47c_690ea5fc.webp",
+      "sha256": "d46c667d3cb9c336f0f467af59ef3c3470e93ee2ab8ebf8e2c2013716a9967bb",
+      "bytes": 4356,
+      "format": "webp",
+      "importName": "sdkVendorLogo29"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/w_200,c_limit,q_auto,f_auto/semantic_kernel_5102489978.png",
+      "filename": "vendor_semantic_kernel_5102489978_3715458d.webp",
+      "sha256": "ff38125c391e431e1841e758e893fe380e370d630e3338896697e4f57cc8c36a",
+      "bytes": 6476,
+      "format": "webp",
+      "importName": "sdkVendorLogo30"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/smolagents_logo_1_545072ae17.png",
+      "filename": "vendor_smolagents_logo_1_545072ae17_0920db57.webp",
+      "sha256": "66f8736b8b74ff9745c4182f52d996eaae523c477e0480b81b5adbfe6a66a5c6",
+      "bytes": 7906,
+      "format": "webp",
+      "importName": "sdkVendorLogo31"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/together_ai_49ac1a57fb.svg",
+      "filename": "vendor_together_ai_49ac1a57fb_b9fe3320.svg",
+      "sha256": "724051d28fdf6f188e4f7e806baff69c21a1dc801fb21627fad67ae27969d5a3",
+      "bytes": 536,
+      "format": "svg",
+      "importName": "sdkVendorLogo32"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/unity_9f9c332941.svg",
+      "filename": "vendor_unity_9f9c332941_714334c6.svg",
+      "sha256": "1b88e36644bf9107093dbe2ab0a0319c00a86f8093cf4ac3c0156a5202c1b2db",
+      "bytes": 22723,
+      "format": "svg",
+      "importName": "sdkVendorLogo33"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/vercel_373fa70879.svg",
+      "filename": "vendor_vercel_373fa70879_50d1ba95.svg",
+      "sha256": "264f2551ad2dca2967f0a7224b4f612ee2388b14fd30d863f0e8755f6fea9c42",
+      "bytes": 300,
+      "format": "svg",
+      "importName": "sdkVendorLogo34"
+    },
+    {
+      "url": "https://res.cloudinary.com/dmukukwp6/image/upload/xai_77b917714b.svg",
+      "filename": "vendor_xai_77b917714b_1137cefb.svg",
+      "sha256": "33851736c8974148233620f6a50ac386272188b4f87947e171b6183722d14488",
+      "bytes": 565,
+      "format": "svg",
+      "importName": "sdkVendorLogo35"
+    }
+  ]
+}

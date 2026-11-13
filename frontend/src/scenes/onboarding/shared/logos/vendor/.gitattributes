@@ -1,0 +1,3 @@
+# Vendor SDK assets have pinned byte-for-byte SHA256 provenance.
+# Never normalize downloaded source SVG line endings or binary image bytes.
+* -text whitespace=cr-at-eol

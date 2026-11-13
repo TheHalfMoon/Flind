@@ -14,6 +14,7 @@ on:
             - 'flind-ci/sdk-catalog-owned-docs-*'
             - 'flind-ci/sdk-health-owned-links-*'
             - 'flind-ci/source-map-cli-no-donor-egress-*'
+            - 'flind-security/sdk-logo-offline-assets-*'
     workflow_dispatch:
 
 permissions:
