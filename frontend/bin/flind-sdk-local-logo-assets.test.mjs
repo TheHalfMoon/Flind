@@ -54,6 +54,11 @@ test('all 35 local assets have exact byte, format and SHA-256 provenance, with n
     assert.deepEqual(new Set(vendorImports.map((x) => x[2])), paths)
 })
 
+test('WebP assets have a frontend TypeScript module declaration with string URL exports', () => {
+    const declarations = at('../src/custom.d.ts').toString('utf8')
+    assert.match(declarations, /declare module '\*\.webp' \{[\s\S]*?const content: string[\s\S]*?export default content/)
+})
+
 test('both SDK renderers consume the same locally resolved image imports without manual runtime URL loading', () => {
     const card = at('../src/scenes/onboarding/sdks/OnboardingInstallStep/SDKGrid.tsx').toString('utf8')
     const badge = at('../src/scenes/onboarding/sdks/skillBadge.tsx').toString('utf8')
