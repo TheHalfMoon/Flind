@@ -1,0 +1,25 @@
+name: Flind RN onboarding documentation ownership
+
+on:
+    push:
+        branches:
+            - 'flind-ci/rn-owned-docs-*'
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Check owned RN help and retained privacy configuration
+              run: |
+                  node --check frontend/bin/flind-rn-owned-docs.test.mjs
+                  node --test frontend/bin/flind-rn-owned-docs.test.mjs
