@@ -119,6 +119,7 @@ test('Flind Node SDK CJS and ESM both reject absent or inherited collector origi
     for (const Implementation of [CjsSDK, EsmSDK]) {
         for (const appHost of [
             'https://us.posthog.com',
+            'https://us.posthog.com..',
             'https://app.posthog.com',
             'https://eu.posthog.com',
             'https://admin:token@collector.flind.example',
@@ -140,6 +141,8 @@ test('Flind Node SDK CJS and ESM both reject absent or inherited collector origi
             undefined,
             '',
             'https://us.i.posthog.com',
+            'https://us.i.posthog.com..',
+            'https://posthog.com...',
             'https://us.posthog.com',
             'https://eu.posthog.com',
             'https://app.dev.posthog.dev',
