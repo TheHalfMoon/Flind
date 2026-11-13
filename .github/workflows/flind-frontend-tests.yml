@@ -8,6 +8,7 @@ on:
         branches:
             - 'flind-ci/brand-audit-**'
             - 'flind-ci/health-doc-isolation-*'
+            - 'flind-ci/rn-owned-docs-*'
             - 'flind-ci/node-onboarding-fix-*'
             - 'flind-ci/integration-owned-docs-*'
             - 'flind-ci/source-map-cli-no-donor-egress-*'

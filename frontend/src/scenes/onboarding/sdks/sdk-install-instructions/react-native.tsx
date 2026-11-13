@@ -3,6 +3,7 @@ import { useValues } from 'kea'
 import { Link } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
+import { flindDocsSectionUrl } from 'lib/flindPublicLinks'
 import { apiHostOrigin } from 'lib/utils/apiHost'
 import SetupWizardBanner from 'scenes/onboarding/shared/SetupWizardBanner'
 import { teamLogic } from 'scenes/teamLogic'
@@ -40,16 +41,19 @@ pod install`}
 function RNSetupSnippet({ includeReplay }: RNSetupProps): JSX.Element {
     const { currentTeam } = useValues(teamLogic)
     const url = apiHostOrigin()
+    const directSetupDocs = flindDocsSectionUrl('libraries/react-native', 'without-the-posthogprovider')
 
     return (
         <>
             <p>
                 Flind is most easily used via the <code>PostHogProvider</code> component but if you need to
                 instantiate it directly,{' '}
-                <Link to="https://posthog.com/docs/libraries/react-native#without-the-posthogprovider">
-                    check out the docs
-                </Link>{' '}
-                which explain how to do this correctly.
+                {directSetupDocs ? (
+                    <Link to={directSetupDocs}>read the Flind setup documentation</Link>
+                ) : (
+                    'consult the React Native configuration guidance for your Flind instance'
+                )}
+                .
             </p>
             <CodeSnippet language={Language.JSX}>
                 {`// App.(js|ts)
@@ -58,14 +62,13 @@ import { PostHogProvider } from 'posthog-react-native'
 
 export function MyApp() {
     return (
-        <PostHogProvider apiKey="${currentTeam?.api_token}" options={{
+        <PostHogProvider apiKey="${currentTeam?.api_token ?? 'YOUR_PROJECT_API_KEY'}" options={{
             host: "${url}",
             ${
                 includeReplay
                     ? `
-            // check https://posthog.com/docs/session-replay/installation?tab=React+Native
-            // for more config and to learn about how we capture sessions on mobile
-            // and what to expect
+            // Review your Flind instance's replay setup and privacy settings
+            // before enabling session recording in production.
             enableSessionReplay: true,
             sessionReplayConfig: {
                 // Whether text inputs are masked. Default is true.
@@ -73,22 +76,14 @@ export function MyApp() {
                 maskAllTextInputs: true,
                 // Whether images are masked. Default is true.
                 maskAllImages: true,
-                // Capture logs automatically. Default is true.
-                // Android only (Native Logcat only)
-                //
-                // Support for remote configuration 
-                // in the [session replay settings](https://app.posthog.com/settings/project-replay#replay-log-capture)
-                // requires SDK version 4.35.0 or higher.
-                captureLog: true,
-                // Whether network requests are captured in recordings. Default is true
-                // Only metric-like data like speed, size, and response code are captured.
-                // No data is captured from the request or response body.
-                // iOS only
-                //
-                // Support for remote configuration 
-                // in the [session replay settings](https://app.posthog.com/settings/project-replay#replay-network)
-                // requires SDK version 4.35.0 or higher.
-                captureNetworkTelemetry: true,
+                // Opt in to native Logcat capture only after a project privacy review.
+                // This copyable Flind setup keeps it disabled by default.
+                // The Flind replay settings may support remote configuration.
+                captureLog: false,
+                // Opt in to iOS network timing, size and status metadata only
+                // after privacy review; request/response bodies are not captured.
+                // Keep network metadata collection disabled in the sample.
+                captureNetworkTelemetry: false,
                 // Throttling delay used to reduce the number of snapshots captured and reduce performance impact
                 // The lower the number more snapshots will be captured but higher the performance impact
                 // Default is 1000ms
