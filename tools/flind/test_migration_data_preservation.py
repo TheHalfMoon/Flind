@@ -28,6 +28,26 @@ class MigrationPreservationWorkflowTests(unittest.TestCase):
         self.assertEqual(source.count("bash tools/flind/qualify_migration_data_preservation.sh seed"), 1)
         self.assertEqual(source.count("bash tools/flind/qualify_migration_data_preservation.sh verify"), 1)
 
+    def test_real_negative_controls_follow_positive_parity_and_precede_cleanup(self) -> None:
+        source = SCRIPT.read_text(encoding="utf-8")
+        steps = (
+            'cmp -s "$pg_before" "$pg_after"',
+            'cmp -s "$ch_before" "$ch_after"',
+            'UPDATE $pg_table SET marker=\'intentionally-tampered\'',
+            'Postgres comparator did not detect a modified tenant record',
+            'Postgres record did not recover after negative control',
+            'TRUNCATE TABLE $ch_table',
+            'ClickHouse comparator did not detect a deleted tenant record',
+            'ClickHouse records did not recover after negative control',
+            'DROP TABLE $pg_table',
+            'DROP TABLE $ch_table',
+        )
+        positions = [source.index(step) for step in steps]
+        self.assertEqual(positions, sorted(positions))
+        self.assertIn("postgres_modified_row_negative_control=pass", source)
+        self.assertIn("clickhouse_deleted_row_negative_control=pass", source)
+        self.assertIn("post_negative_control_repair_parity=pass", source)
+
     @unittest.skipUnless(os.name == "posix", "Bash preflight tests require Linux")
     def test_shell_syntax(self) -> None:
         result = subprocess.run(["bash", "-n", str(SCRIPT)], capture_output=True, text=True)

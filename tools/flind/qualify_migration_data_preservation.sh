@@ -53,12 +53,41 @@ else
     cmp -s "$pg_before" "$pg_after" || fail 'Postgres synthetic tenant records changed during rerun'
     cmp -s "$ch_before" "$ch_after" || fail 'ClickHouse synthetic tenant records changed during rerun'
     [[ "$(wc -l < "$pg_after")" -eq 2 && "$(wc -l < "$ch_after")" -eq 2 ]] || fail 'unexpected tenant count after migrations'
+
+    # Live negative control: mutate only a synthetic PostgreSQL row and prove
+    # the same comparator rejects it, then restore exactly the original value.
+    psql_db "UPDATE $pg_table SET marker='intentionally-tampered' WHERE tenant_id=202" >/dev/null
+    [[ "$(psql_db "SELECT marker FROM $pg_table WHERE tenant_id=202")" == 'intentionally-tampered' ]] || fail 'Postgres test mutation was not applied'
+    psql_db "$pg_rows" > "$EVIDENCE/migration-canary-pg-tampered.csv"
+    if cmp -s "$pg_before" "$EVIDENCE/migration-canary-pg-tampered.csv"; then
+        fail 'Postgres comparator did not detect a modified tenant record'
+    fi
+    psql_db "UPDATE $pg_table SET marker='local-tenant-two' WHERE tenant_id=202" >/dev/null
+    psql_db "$pg_rows" > "$EVIDENCE/migration-canary-pg-repaired.csv"
+    cmp -s "$pg_before" "$EVIDENCE/migration-canary-pg-repaired.csv" || fail 'Postgres record did not recover after negative control'
+
+    # Live negative control: remove a synthetic ClickHouse tenant row from this
+    # disposable table only, require a failed comparison, then restore it.
+    ch_query "TRUNCATE TABLE $ch_table"
+    ch_query "INSERT INTO $ch_table VALUES (101,'local-tenant-one',7)"
+    ch_query "$ch_rows" > "$EVIDENCE/migration-canary-clickhouse-tampered.tsv"
+    [[ "$(wc -l < "$EVIDENCE/migration-canary-clickhouse-tampered.tsv")" -eq 1 ]] || fail 'ClickHouse test row deletion was not applied'
+    if cmp -s "$ch_before" "$EVIDENCE/migration-canary-clickhouse-tampered.tsv"; then
+        fail 'ClickHouse comparator did not detect a deleted tenant record'
+    fi
+    ch_query "INSERT INTO $ch_table VALUES (202,'local-tenant-two',13)"
+    ch_query "$ch_rows" > "$EVIDENCE/migration-canary-clickhouse-repaired.tsv"
+    cmp -s "$ch_before" "$EVIDENCE/migration-canary-clickhouse-repaired.tsv" || fail 'ClickHouse records did not recover after negative control'
+
     psql_db "DROP TABLE $pg_table" >/dev/null
     ch_query "DROP TABLE $ch_table"
     {
         echo 'synthetic_migration_data_preserved=pass'
         echo 'datastores=postgres,clickhouse'
         echo 'tenants=2'
+        echo 'postgres_modified_row_negative_control=pass'
+        echo 'clickhouse_deleted_row_negative_control=pass'
+        echo 'post_negative_control_repair_parity=pass'
         echo "postgres_snapshot_sha256=$(sha256sum "$pg_before" | cut -d' ' -f1)"
         echo "clickhouse_snapshot_sha256=$(sha256sum "$ch_before" | cut -d' ' -f1)"
         echo 'upgrade_from_prior_release_qualified=false'
