@@ -11,6 +11,7 @@ on:
         branches:
             - 'flind-ci/brand-audit-ui-**'
             - 'flind-ci/e2e-**'
+            - 'flind-ci/dev-proxy-loopback-*'
     workflow_dispatch:
         inputs:
             ingestion:
@@ -70,6 +71,10 @@ jobs:
 
             - name: Free runner disk
               run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+
+            - name: Validate explicit dev loopback host contract
+              if: startsWith(github.ref, 'refs/heads/flind-ci/dev-proxy-loopback-')
+              run: node --test frontend/bin/flind-dev-proxy-loopback.test.mjs
 
             - name: Start real services
               run: |
@@ -200,6 +205,18 @@ jobs:
                       sleep 1
                   done
                   echo "web server did not become healthy"; tail -80 /tmp/server.log; exit 1
+
+            # This branch-only test proves actual HTTP routing through the local
+            # Caddy container for both loopback Host headers. No capture data,
+            # public ingress, external DNS, customer tokens or production traffic.
+            - name: Probe localhost and numeric-loopback dev proxy routes
+              if: startsWith(github.ref, 'refs/heads/flind-ci/dev-proxy-loopback-')
+              run: |
+                  set -euo pipefail
+                  docker compose -f docker-compose.dev.yml up -d --wait --wait-timeout 90 proxy
+                  curl --fail --silent --show-error --retry 10 --retry-delay 1 http://localhost:8010/_health >/dev/null
+                  curl --fail --silent --show-error --retry 10 --retry-delay 1 http://127.0.0.1:8010/_health >/dev/null
+                  echo 'dev_proxy_both_explicit_loopback_hosts=pass'
 
             # The normal Flind E2E workflow intentionally excludes event ingestion. This
             # opt-in path exercises existing real capture and Node ingestion services
