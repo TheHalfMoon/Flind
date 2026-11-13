@@ -27,6 +27,12 @@ This section supersedes the older release-gate table and dated PR descriptions b
 - **NO-GO for release:** no tag, GitHub Release, deployment, SDK publication, app-store submission or binary distribution without the founder's explicit `GREEN LIGHT FLIND`. No paid infrastructure, real customer data or secrets in engineering tests.
 
 
+## Cross-organization personal API-key authorization: scoped evidence (2026-11-13)
+
+- Draft [PR #83](https://github.com/TheHalfMoon/Flind/pull/83), head `75623997d02fff48fe12a7090dca65a931bab5f7`, adds bidirectional negative personal-key probes for real capture, Node SDK and browser SDK ingestion. A foreign organization's valid personal key must receive 401/403/404 on the target team's HogQL query endpoint; a 2xx empty result and 5xx both fail the test.
+- Previously recorded full-service [E2E run 43408588563](https://github.com/TheHalfMoon/Flind/actions/runs/43408588563) and [authorization contract run 43408588238](https://github.com/TheHalfMoon/Flind/actions/runs/43408588238) were reported successful on that head. **Current connector's commit-workflow lookup returned no runs**, so these links and their exact run/head association must be independently rechecked before qualification/merge. The PR description and its dedicated evidence document still describe full-service CI as pending; reconcile them with the verified run logs, not merely with this ledger.
+- This covers only the tested real-time query authorization endpoint, not all export, upload, administrative, role or cross-tenant routes. PR #83 remains draft; no release gate is cleared. **NO-GO** and `GREEN LIGHT FLIND` restrictions remain unchanged.
+
 ## Project and experiment documentation isolation (2026-11-12)
 
 - **Branch:** `flind-ci/project-experiment-docs-isolation-20261112`, based on main `48def4f74f922ad3a90b4d695d253171bb78773c` at creation. Independent of merged PR #29, #32 and #33 changes. No SDK or runtime data schema changes.
