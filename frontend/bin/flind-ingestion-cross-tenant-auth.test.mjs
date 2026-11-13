@@ -15,6 +15,7 @@ test('authorization probe rejects cross-tenant API access rather than assuming a
     assert.match(helper, /export async function assertForeignPersonalKeyCannotQueryTeam/)
     assert.match(helper, /\/api\/environments\/\$\{targetTeamId\}\/query\//)
     assert.match(helper, /Authorization: .*foreignPersonalApiKey/)
+    assert.match(helper, /maxRedirects:\s*0/, 'do not follow redirects to unrelated denial pages')
     assert.match(helper, /expect\(\[401, 403, 404\],/)
     assert.match(helper, /toContain\(response\.status\(\)\)/)
     assert.doesNotMatch(helper, /console\.(?:log|info|warn|error)/)
