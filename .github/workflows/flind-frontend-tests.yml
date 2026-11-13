@@ -10,6 +10,7 @@ on:
             - 'flind-ci/health-doc-isolation-*'
             - 'flind-ci/node-onboarding-fix-*'
             - 'flind-ci/integration-owned-docs-*'
+            - 'flind-ci/source-map-cli-no-donor-egress-*'
     workflow_dispatch:
 
 permissions:

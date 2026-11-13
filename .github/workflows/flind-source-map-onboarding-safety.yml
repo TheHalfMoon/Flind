@@ -1,0 +1,25 @@
+name: Flind private source-map CLI onboarding safety
+
+on:
+    push:
+        branches:
+            - 'flind-ci/source-map-cli-no-donor-egress-*'
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: No unowned symbol uploader or installer in Flind setup
+              run: |
+                  node --check frontend/bin/flind-source-map-onboarding-safe.test.mjs
+                  node --test frontend/bin/flind-source-map-onboarding-safe.test.mjs
