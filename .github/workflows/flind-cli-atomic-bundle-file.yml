@@ -1,0 +1,33 @@
+name: Flind CLI atomic embedded Node bundle file gate
+
+on:
+    push:
+        branches:
+            - 'flind-security/cli-bundle-atomic-materialize-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    bundle-file-security:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - name: Verify embedded bundle symlink and atomic-write safeguards
+              run: |
+                  python3 -m unittest tools.flind.test_cli_atomic_embedded_bundle tools.flind.test_cli_release_embedded_only tools.flind.test_cli_nested_host_and_node_hook -v
+            - name: Rust formatting
+              run: cargo fmt --manifest-path cli/Cargo.toml --all -- --check
+
+    rust-native:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 25
+        env:
+            CARGO_INCREMENTAL: '0'
+        steps:
+            - uses: actions/checkout@v4
+            - name: Test native Rust API proxy materializer against real Linux symlinks
+              run: |
+                  cargo test --locked --manifest-path cli/Cargo.toml --lib api_proxy::tests -- --test-threads=2
