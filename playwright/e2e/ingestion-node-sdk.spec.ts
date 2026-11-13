@@ -12,6 +12,15 @@ test.describe('Flind Node SDK ingestion', () => {
         const host = new URL(PROXY_BASE_URL)
         expect(host.protocol).toBe('http:')
         expect(['localhost', '127.0.0.1']).toContain(host.hostname)
+        expect(host.username).toBe('')
+        expect(host.password).toBe('')
+        expect(host.search).toBe('')
+        expect(host.hash).toBe('')
+        expect(host.pathname).toBe('/')
+        // The SDK deliberately permits local HTTP only for numeric loopback, not
+        // the hostname "localhost". Keep that security restriction intact while
+        // addressing the same local proxy as the browser E2E does.
+        host.hostname = '127.0.0.1'
 
         const workspace = await playwrightSetup.createWorkspace({ skip_onboarding: true, no_demo_data: true })
         const authHeaders = { Authorization: 'Bearer ' + workspace.personal_api_key }
@@ -24,7 +33,7 @@ test.describe('Flind Node SDK ingestion', () => {
 
         await test.step('send event through the real Node SDK on loopback', async () => {
             const sdk = new PostHog(apiToken as string, {
-                host: PROXY_BASE_URL,
+                host: host.origin,
                 flushAt: 1,
                 flushInterval: 0,
                 maxRetries: 0,

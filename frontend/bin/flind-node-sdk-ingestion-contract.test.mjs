@@ -20,6 +20,9 @@ test('opt-in ingestion executes Node SDK end-to-end alongside capture and browse
     assert.match(workflow, /if: env\.FLIND_INGESTION_SMOKE == 'true'/)
     assert.match(workflow, /ingestion-node-sdk\.spec\.ts/)
     assert.match(spec, /expect\(\['localhost', '127\.0\.0\.1'\]\)\.toContain\(host\.hostname\)/)
+    assert.match(spec, /host\.hostname = '127\.0\.0\.1'/)
+    assert.match(spec, /host: host\.origin/)
+    assert.doesNotMatch(spec, /host: PROXY_BASE_URL/)
 })
 
 test('positive ClickHouse proof precedes strict cross-tenant negative control', () => {

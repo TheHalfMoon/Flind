@@ -23,6 +23,11 @@ test('expensive ingestion journey is opt-in, not part of normal Flind E2E', () =
     }
 })
 
+test('manual ingestion proof does not cancel ordinary push-triggered browser E2E', () => {
+    assert.match(workflow, /group: flind-e2e-.*inputs\.ingestion && 'with-ingestion' \|\| 'standard'/)
+    assert.match(workflow, /cancel-in-progress: true/)
+})
+
 test('capture and ingestion use real services with test databases', () => {
     assert.match(workflow, /up -d --wait --wait-timeout 300 proxy capture ingestion-general/)
     assert.match(workflow, /POSTHOG_DB_NAME: posthog_e2e_test/)

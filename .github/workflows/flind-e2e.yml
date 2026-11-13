@@ -23,7 +23,9 @@ permissions:
     contents: read
 
 concurrency:
-    group: flind-e2e-${{ github.ref }}
+    # A manually opted-in real-ingestion proof must not cancel the normal
+    # push-triggered Flind browser regression run on the same commit.
+    group: flind-e2e-${{ github.ref }}-${{ inputs.ingestion && 'with-ingestion' || 'standard' }}
     cancel-in-progress: true
 
 env:
