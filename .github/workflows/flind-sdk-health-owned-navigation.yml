@@ -1,0 +1,24 @@
+name: Flind SDK health first-party navigation contract
+
+on:
+    push:
+        branches:
+            - 'flind-ci/sdk-health-owned-links-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    sdk-health-navigation:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Verify all SDK health links are first-party or hidden
+              run: |
+                  node --check frontend/bin/flind-sdk-health-owned-navigation.test.mjs
+                  node --test frontend/bin/flind-sdk-health-owned-navigation.test.mjs
