@@ -41,7 +41,7 @@ function AndroidSetupSnippet({ includeReplay }: AndroidSetupProps): JSX.Element 
         ${
             includeReplay
                 ? `
-        // check https://posthog.com/docs/session-replay/installation?tab=Android
+        // Consult the Flind Android session replay guide when configured
         // for more config and to learn about how we capture sessions on mobile
         // and what to expect
         config.sessionReplay = true

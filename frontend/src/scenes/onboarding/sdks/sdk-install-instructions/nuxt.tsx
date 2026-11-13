@@ -2,6 +2,7 @@ import { useValues } from 'kea'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { FEATURE_FLAGS } from 'lib/constants'
+import { flindDocsSectionUrl } from 'lib/flindPublicLinks'
 import { Link } from 'lib/lemon-ui/Link'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 import { apiHostOrigin } from 'lib/utils/apiHost'
@@ -62,11 +63,16 @@ export default defineNuxtPlugin(nuxtApp => {
 }
 
 export function SDKInstallNuxtJSInstructions(): JSX.Element {
+    const legacyNuxtDocs = flindDocsSectionUrl('libraries/nuxt-js', 'nuxt-v216-and-below')
     return (
         <>
             <p>
                 The below guide is for Nuxt v3.0 and above. For Nuxt v2.16 and below, see our{' '}
-                <Link to="https://posthog.com/docs/libraries/nuxt-js#nuxt-v216-and-below">Nuxt docs</Link>
+                {legacyNuxtDocs ? (
+                    <Link to={legacyNuxtDocs}>Flind Nuxt docs</Link>
+                ) : (
+                    <span className="text-muted-alt">Flind Nuxt documentation when configured</span>
+                )}
             </p>
             <h3>Install posthog-js using your package manager</h3>
             <JSInstallSnippet />

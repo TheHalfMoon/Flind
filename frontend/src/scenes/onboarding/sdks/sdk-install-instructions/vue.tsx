@@ -2,6 +2,7 @@ import { useValues } from 'kea'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { FEATURE_FLAGS } from 'lib/constants'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { Link } from 'lib/lemon-ui/Link'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 import { apiHostOrigin } from 'lib/utils/apiHost'
@@ -68,12 +69,17 @@ export default router`}
 }
 
 export function SDKInstallVueInstructions(): JSX.Element {
+    const legacyVueDocs = flindDocsUrl('libraries/vue-js')
     return (
         <>
             <p>
                 The below guide is for integrating using plugins in Vue versions 3 and above. For integrating Flind
                 using Provide/inject, Vue.prototype, or versions 2.7 and below, see our{' '}
-                <Link to="https://posthog.com/docs/libraries/vue-js">Vue docs</Link>
+                {legacyVueDocs ? (
+                    <Link to={legacyVueDocs}>Flind Vue docs</Link>
+                ) : (
+                    <span className="text-muted-alt">Flind Vue documentation when configured</span>
+                )}
             </p>
             <h3>Install posthog-js using your package manager</h3>
             <JSInstallSnippet />

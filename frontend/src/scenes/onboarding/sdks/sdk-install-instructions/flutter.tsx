@@ -4,6 +4,7 @@ import { Link } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { useJsSnippet } from 'lib/components/JSSnippet'
+import { flindDocsSectionUrl } from 'lib/flindPublicLinks'
 import { apiHostOrigin } from 'lib/utils/apiHost'
 import { teamLogic } from 'scenes/teamLogic'
 
@@ -24,7 +25,7 @@ function FlutterInstallSnippet(): JSX.Element {
 function FlutterDartSetup(props: FlutterSetupProps & FlutterInstallProps): JSX.Element {
     const configOptions = [
         props.includeReplay &&
-            `// check https://posthog.com/docs/session-replay/installation?tab=Flutter
+            `// See the Flind Flutter session replay guide when configured for your instance
   // for more config and to learn about how we capture sessions on mobile
   // and what to expect
   config.sessionReplay = true;
@@ -92,7 +93,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 // If you're using go_router, check this page to learn how to set up the PosthogObserver
-// https://posthog.com/docs/libraries/flutter#capturing-screen-views`}
+// Consult the Flind Flutter SDK documentation when configured`}
         </CodeSnippet>
     )
 }
@@ -129,7 +130,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 // If you're using go_router, check this page to learn how to set up the PosthogObserver
-// https://posthog.com/docs/libraries/flutter#capturing-screen-views
+// Consult the Flind Flutter SDK documentation when configured
 
 `}
         </CodeSnippet>
@@ -282,10 +283,17 @@ export function SDKInstallFlutterInstructions(props: FlutterSetupProps): JSX.Ele
 }
 
 export function SDKInstallFlutterTrackScreenInstructions(): JSX.Element {
+    const flutterObserverDocs = flindDocsSectionUrl('libraries/flutter', 'example')
     return (
         <>
             <p>
-                With the <Link to="https://posthog.com/docs/libraries/flutter#example">PosthogObserver</Link> Observer,
+                With the{' '}
+                {flutterObserverDocs ? (
+                    <Link to={flutterObserverDocs}>PosthogObserver</Link>
+                ) : (
+                    <code>PosthogObserver</code>
+                )}{' '}
+                observer,
                 Flind will try to record all screen changes automatically.
             </p>
             <p>

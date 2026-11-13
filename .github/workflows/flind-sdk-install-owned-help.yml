@@ -1,0 +1,24 @@
+name: Flind SDK install help first-party navigation gate
+
+on:
+    push:
+        branches:
+            - 'flind-ci/sdk-install-owned-help-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    help-navigation:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Reject inherited docs URLs in Flutter Vue Nuxt Android and iOS setup
+              run: |
+                  node --check frontend/bin/flind-sdk-install-owned-help.test.mjs
+                  node --test frontend/bin/flind-sdk-install-owned-help.test.mjs
