@@ -1,3 +1,5 @@
+import { flindDocsUrl } from 'lib/flindPublicLinks'
+
 import { SDKKey } from '~/types'
 
 import { ALL_SDKS } from '../allSDKs'
@@ -6,12 +8,12 @@ import { ErrorTrackingSDKDocsLinkOverrides, ErrorTrackingSDKInstructions } from 
 
 describe('ErrorTrackingSDKInstructions', () => {
     const newlySupportedSDKs: Array<[SDKKey, string]> = [
-        [SDKKey.RUST, 'https://posthog.com/docs/error-tracking/installation/rust'],
-        [SDKKey.UNITY, 'https://posthog.com/docs/error-tracking/installation/unity'],
-        [SDKKey.ROBLOX, 'https://posthog.com/docs/error-tracking/installation/roblox'],
-        [SDKKey.JAVA, 'https://posthog.com/docs/libraries/java'],
-        [SDKKey.KMP, 'https://posthog.com/docs/libraries/kmp'],
-        [SDKKey.CONVEX, 'https://posthog.com/docs/libraries/convex'],
+        [SDKKey.RUST, flindDocsUrl('error-tracking/installation/rust') ?? ''],
+        [SDKKey.UNITY, flindDocsUrl('error-tracking/installation/unity') ?? ''],
+        [SDKKey.ROBLOX, flindDocsUrl('error-tracking/installation/roblox') ?? ''],
+        [SDKKey.JAVA, flindDocsUrl('libraries/java') ?? ''],
+        [SDKKey.KMP, flindDocsUrl('libraries/kmp') ?? ''],
+        [SDKKey.CONVEX, flindDocsUrl('libraries/convex') ?? ''],
     ]
 
     it.each(newlySupportedSDKs)('makes %s selectable with working instructions and docs', (sdkKey, docsLink) => {
@@ -24,7 +26,7 @@ describe('ErrorTrackingSDKInstructions', () => {
 
     it('keeps the AI observability link in shared Convex metadata', () => {
         expect(ALL_SDKS.find(({ key }) => key === SDKKey.CONVEX)?.docsLink).toBe(
-            'https://posthog.com/docs/ai-observability/installation/convex'
+            flindDocsUrl('ai-observability/installation/convex') ?? ''
         )
     })
 })
