@@ -48,20 +48,20 @@ pub enum ApiProxyError {
     #[error("POSTHOG_API_CLI_PATH is set to `{path}`, but it is not a file.")]
     ConfiguredPathNotAFile { path: String },
     #[error(
-        "This posthog-cli build does not embed the PostHog API CLI bundle, and no previously \
-         installed bundle was found. Reinstall posthog-cli from an official release, or set \
-         POSTHOG_API_CLI_PATH to a trusted bundle."
+        "The Flind CLI was built without an independently qualified embedded API tool bundle. \
+         The `api` command is disabled in this build; external JavaScript bundle fallbacks are \
+         not permitted for releases."
     )]
     BundleNotEmbedded,
     #[error(
-        "Could not determine a home directory to install the PostHog API CLI bundle into. Set \
-         POSTHOG_HOME to a writable directory, or POSTHOG_API_CLI_PATH to a trusted bundle."
+        "The Flind CLI could not locate a local writable home directory for the embedded API \
+         tool bundle. Configure a secure CLI home directory; release builds cannot use \
+         external script fallbacks."
     )]
     HomeDirUnavailable,
     #[error(
-        "Failed to install the PostHog API CLI bundle to `{path}`. Make sure the directory is \
-         writable (sandboxed environments often block writes to the home directory), set \
-         POSTHOG_HOME to a writable directory, or set POSTHOG_API_CLI_PATH to a trusted bundle."
+        "Failed to materialize the Flind embedded API tool bundle at `{path}`. Make the CLI \
+         home directory writable. Release builds never fall back to an external script."
     )]
     MaterializeFailed {
         step: MaterializeStep,
@@ -210,6 +210,24 @@ fn resolve_script(
     Err(materialize_error)
 }
 
+/// Release binaries may only execute the API tool bundle embedded by the
+/// same build. Legacy install paths and a configured JS file are useful for
+/// isolated developer tests but are not a credential-safe release fallback.
+fn resolve_release_script(
+    bundle: Option<&[u8]>,
+    install_dir: Option<&Path>,
+) -> Result<PathBuf, ApiProxyError> {
+    materialize_embedded_script(bundle, install_dir)
+}
+
+#[cfg(not(debug_assertions))]
+fn find_script() -> Result<PathBuf, ApiProxyError> {
+    resolve_release_script(EMBEDDED_API_CLI_BUNDLE, default_install_dir().as_deref())
+}
+
+/// Debug builds support injecting synthetic Node programs in test fixtures.
+/// The release configuration above deliberately has no such code path.
+#[cfg(debug_assertions)]
 fn find_script() -> Result<PathBuf, ApiProxyError> {
     if let Some(path) = env::var_os("POSTHOG_API_CLI_PATH") {
         if path.is_empty() {
@@ -637,6 +655,32 @@ mod tests {
         assert_eq!(
             fs::read(resolved).expect("read materialized bundle"),
             b"embedded bundle"
+        );
+    }
+
+    #[test]
+    fn release_script_refuses_unembedded_legacy_files_even_when_a_fallback_exists() {
+        let dir = tempfile::tempdir().expect("release test dir");
+        let lib = dir.path().join("lib");
+        fs::create_dir_all(&lib).expect("create legacy lib");
+        fs::write(lib.join(API_CLI_BUNDLE), b"malicious inherited JavaScript")
+            .expect("legacy file");
+        assert!(matches!(
+            resolve_release_script(None, Some(dir.path())),
+            Err(ApiProxyError::BundleNotEmbedded)
+        ));
+    }
+
+    #[test]
+    fn release_script_uses_exact_build_embedded_bytes() {
+        let dir = tempfile::tempdir().expect("release test dir");
+        let wanted = b"synthetic first-party Node tool";
+        let resolved = resolve_release_script(Some(wanted), Some(dir.path()))
+            .expect("materialize build bundle");
+        assert_eq!(fs::read(&resolved).expect("read embedded tool"), wanted);
+        assert_eq!(
+            resolved,
+            dunce::canonicalize(embedded_bundle_path(dir.path())).unwrap()
         );
     }
 
