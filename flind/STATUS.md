@@ -4,7 +4,20 @@ The durable record of where Flind stands. Each milestone lists what changed, the
 (CI runs on the exact merged commit), legal and security notes, and what is next. **Verified** means shown by a CI
 run or test result on that commit; anything else is marked as planned or unverified.
 
-Last updated: 2026-11-12.
+Last updated: 2026-11-13 (current integration checkpoint; historical sections below).
+
+## Current integration checkpoint (2026-11-13; main `144eb76839e5eb6a5313c3c07e3c988efe22d4e3`)
+
+This section supersedes the older release-gate table and dated PR descriptions below wherever they conflict. Older entries are retained as historical engineering evidence, **not** current release readiness.
+
+- PRs #47–#63 have been reported merged in the repository's recent integration sequence. The recent stages cover mobile-owned OAuth/legal/telemetry/status, provisional native identity, desktop/web OAuth no-redirect, desktop telemetry, Node ingestion-host restrictions, and React SDK auto-init restrictions. Do not infer production E2E or public SDK readiness from these scoped changes.
+- PR #64 stages private `@flind/core`; #65 stages its Node integration; #66 stages private `@flind/types`. The latest observed main commit is the merge of #66. These staged packages do **not** authorize publication. Verify actual workspace linkage, generated bundles, SDK wire behavior and compatibility at the current main before treating ownership transfer as complete.
+- The GitHub PR search returned no open pull requests at this checkpoint. This is a point-in-time observation, not proof that all release gates are met. Each future PR requires fresh exact-head tests and independent review.
+- The prior ledger's claims that SDK ingestion E2E was entirely unverified, or that mobile had not been built in CI, are **historical** and no longer accurate as blanket statements: a scoped Node-to-capture-to-ClickHouse cross-tenant test and scoped Android compilation were reported in merged PRs. Production deployment, broad SDK matrix and native device QA remain unverified.
+- Release blockers: full browser/Node/React Native/Python/Rust SDK ownership and ingestion coverage; migration upgrades with preserved synthetic data, backup/restore and recovery; tenant-isolation security campaign; reproducible installation and performance; independently owned production service origins and policy URLs; registered mobile IDs, signing, iOS native/simulator and real-device OAuth/push testing; frontend branding and end-to-end user journeys.
+- Legal: retain required donor licenses, copyright notices and provenance, including private staged SDK packages. Do not rewrite signed fixtures.
+- **NO-GO for release:** no tag, GitHub Release, deployment, SDK publication, app-store submission or binary distribution without the founder's explicit `GREEN LIGHT FLIND`. No paid infrastructure, real customer data or secrets in this public repository.
+
 
 ## Project and experiment documentation isolation (2026-11-12)
 
