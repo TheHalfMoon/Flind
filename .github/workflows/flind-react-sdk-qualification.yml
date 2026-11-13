@@ -23,6 +23,9 @@ jobs:
               with:
                   node-version-file: .nvmrc
 
+            - name: Enforce owned React collector in source, ESM and CommonJS
+              run: node --test tools/flind/flind-react-owned-host.test.mjs
+
             - name: Validate exact workspace lockfile without installing full monorepo
               env:
                   HUSKY: '0'

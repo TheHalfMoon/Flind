@@ -10,6 +10,7 @@ vi.mock('posthog-js', () => ({
     default: {
         init: vi.fn(),
         set_config: vi.fn(),
+        opt_out_capturing: vi.fn(),
         __loaded: false,
     },
 }))
@@ -35,8 +36,8 @@ describe('PostHogProvider component', () => {
 
     describe('when using apiKey initialization', () => {
         const apiKey = 'test-api-key'
-        const initialOptions = { api_host: 'https://app.posthog.com' }
-        const updatedOptions = { api_host: 'https://eu.posthog.com' }
+        const initialOptions = { api_host: 'https://collector.flind.example' }
+        const updatedOptions = { api_host: 'https://other.flind.example' }
 
         beforeEach(() => {
             vi.clearAllMocks()
@@ -67,7 +68,7 @@ describe('PostHogProvider component', () => {
             )
 
             // First render should initialize
-            expect(posthogJs.init).toHaveBeenCalledWith(apiKey, initialOptions)
+            expect(posthogJs.init).toHaveBeenCalledWith(apiKey, { ...initialOptions, ui_host: initialOptions.api_host })
 
             // Rerender with new options
             act(() => {
@@ -79,7 +80,7 @@ describe('PostHogProvider component', () => {
             })
 
             // Should call set_config with new options
-            expect(posthogJs.set_config).toHaveBeenCalledWith(updatedOptions)
+            expect(posthogJs.set_config).toHaveBeenCalledWith({ ...updatedOptions, ui_host: updatedOptions.api_host })
         })
 
         it('should NOT call set_config when we pass new options that are the same as the previous options', () => {
@@ -90,7 +91,7 @@ describe('PostHogProvider component', () => {
             )
 
             // First render should initialize
-            expect(posthogJs.init).toHaveBeenCalledWith(apiKey, initialOptions)
+            expect(posthogJs.init).toHaveBeenCalledWith(apiKey, { ...initialOptions, ui_host: initialOptions.api_host })
 
             // Rerender with new options
             const sameOptionsButDifferentReference = { ...initialOptions }
@@ -117,7 +118,7 @@ describe('PostHogProvider component', () => {
             )
 
             // First render should initialize
-            expect(posthogJs.init).toHaveBeenCalledWith(apiKey, initialOptions)
+            expect(posthogJs.init).toHaveBeenCalledWith(apiKey, { ...initialOptions, ui_host: initialOptions.api_host })
 
             // Rerender with new apiKey
             act(() => {
@@ -129,12 +130,52 @@ describe('PostHogProvider component', () => {
             })
 
             expect(posthogJs.init).toHaveBeenCalledTimes(1)
-            expect(posthogJs.init).toHaveBeenLastCalledWith(apiKey, initialOptions)
+            expect(posthogJs.init).toHaveBeenLastCalledWith(apiKey, { ...initialOptions, ui_host: initialOptions.api_host })
             // Should warn about apiKey change
             expect(consoleSpy).toHaveBeenCalledWith(
                 expect.stringContaining('You have provided a different `apiKey` to `PostHogProvider`')
             )
 
+            consoleSpy.mockRestore()
+        })
+
+        it.each([
+            undefined,
+            '',
+            'https://us.i.posthog.com',
+            'https://app.posthog.com',
+            'http://collector.flind.example',
+            'https://collector.flind.example/path',
+            'https://user:secret@collector.flind.example',
+        ])('does not initialize the client without a safe Flind-owned collector: %s', (host) => {
+            const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+            render(
+                <PostHogProvider apiKey={apiKey} options={{ api_host: host as string }}>
+                    <div>Test</div>
+                </PostHogProvider>
+            )
+            expect(posthogJs.init).not.toHaveBeenCalled()
+            expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('analytics disabled'))
+            consoleSpy.mockRestore()
+        })
+
+        it('opts out rather than changing to an inherited host after initialization', () => {
+            const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+            const { rerender } = render(
+                <PostHogProvider apiKey={apiKey} options={initialOptions}>
+                    <div>Test</div>
+                </PostHogProvider>
+            )
+            expect(posthogJs.init).toHaveBeenCalledOnce()
+            act(() => {
+                rerender(
+                    <PostHogProvider apiKey={apiKey} options={{ api_host: 'https://eu.posthog.com' }}>
+                        <div>Test</div>
+                    </PostHogProvider>
+                )
+            })
+            expect(posthogJs.opt_out_capturing).toHaveBeenCalledOnce()
+            expect(posthogJs.set_config).not.toHaveBeenCalled()
             consoleSpy.mockRestore()
         })
 

@@ -4,6 +4,7 @@ import type { PostHogConfig } from 'posthog-js'
 import React, { ReactElement, useEffect, useMemo, useRef } from 'react'
 import { PostHog, PostHogContext } from './PostHogContext'
 import { getDefaultPostHogInstance } from './posthog-default'
+import { flindReactOwnedOptions } from './flindOwnedHost'
 import { isDeepEqual } from '../utils/object-utils'
 
 interface PreviousInitialization {
@@ -93,6 +94,14 @@ export function PostHogProvider({
         }
         // See comment in useMemo above for why this indirection exists.
         const defaultInstance = getDefaultPostHogInstance() as PostHog
+        const safeOptions = flindReactOwnedOptions(options)
+        if (!safeOptions) {
+            console.warn('[Flind React] An explicit owned api_host and safe ui_host are required; analytics disabled.')
+            if (previousInitializationRef.current) {
+                defaultInstance.opt_out_capturing()
+            }
+            return
+        }
         const previousInitialization = previousInitializationRef.current
 
         if (!previousInitialization) {
@@ -102,13 +111,13 @@ export function PostHogProvider({
             }
 
             // Init global client
-            defaultInstance.init(apiKey, options)
+            defaultInstance.init(apiKey, safeOptions)
 
             // Keep track of whether the client was already initialized
             // This is used to prevent double initialization when running under React.StrictMode, and to know when options change
             previousInitializationRef.current = {
                 apiKey: apiKey,
-                options: options ?? {},
+                options: safeOptions,
             }
         } else {
             // If the client was already initialized, we might still end up running the effect again for a few reasons:
@@ -125,16 +134,16 @@ export function PostHogProvider({
                 )
             }
 
-            // Changing options is better supported because we can just call `defaultInstance.set_config(options)`
+            // Changing approved options is supported through `defaultInstance.set_config(safeOptions)`
             // and they'll be good to go with their new config. The SDK will know how to handle the changes.
-            if (options && !isDeepEqual(options, previousInitialization.options)) {
-                defaultInstance.set_config(options)
+            if (!isDeepEqual(safeOptions, previousInitialization.options)) {
+                defaultInstance.set_config(safeOptions)
             }
 
             // Keep track of the possibly-new set of apiKey and options
             previousInitializationRef.current = {
                 apiKey: apiKey,
-                options: options ?? {},
+                options: safeOptions,
             }
         }
         // oxlint-disable-next-line react/exhaustive-deps
