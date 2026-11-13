@@ -273,6 +273,10 @@ fn inject_credentials(cmd: &mut Command, invocation_context: Option<&InvocationC
 /// embedded Node CLI. This is not an outbound-network guarantee: the Node
 /// bundle still needs an independent runtime egress audit before release.
 fn isolate_inherited_analytics(cmd: &mut Command) {
+    // A Node preload or alternate module search path can execute arbitrary
+    // inherited JavaScript before our approved script receives API keys.
+    cmd.env_remove("NODE_OPTIONS");
+    cmd.env_remove("NODE_PATH");
     cmd.env_remove("POSTHOG_ANALYTICS_API_KEY");
     cmd.env_remove("POSTHOG_ANALYTICS_HOST");
     cmd.env_remove("POSTHOG_CLI_INVOCATION_ID");
@@ -318,6 +322,30 @@ fn approved_proxy_host(
     Ok(chosen_origin.ascii_serialization())
 }
 
+/// Prevent the unqualified Node bundle's own command-line flags from
+/// overriding the verified parent-level server origin or loading another
+/// configuration file. The network egress of the bundle is still unqualified.
+fn reject_nested_host_overrides(args: &[String]) -> anyhow::Result<()> {
+    const FORBIDDEN: &[&str] = &[
+        "--host",
+        "--api-host",
+        "--api-url",
+        "--base-url",
+        "--server-url",
+        "--config",
+        "--config-file",
+    ];
+    for arg in args {
+        let flag = arg.split_once('=').map_or(arg.as_str(), |(name, _)| name);
+        if FORBIDDEN.iter().any(|name| flag.eq_ignore_ascii_case(name)) {
+            anyhow::bail!(
+                "Flind API proxy rejected a nested server/config override. Set --host on the Flind CLI before api."
+            );
+        }
+    }
+    Ok(())
+}
+
 /// Runs the embedded Node API CLI. A non-zero child exit is returned as
 /// `Ok(Some(code))` — not `process::exit` — so the caller can flush telemetry
 /// and honor `--no-fail` before terminating with the same code.
@@ -336,6 +364,7 @@ pub fn run(
         invocation_context.map(|ctx| ctx.config.host.as_str()),
     )
     .map_err(CapturedError::from)?;
+    reject_nested_host_overrides(&args).map_err(CapturedError::from)?;
     let script = find_script().map_err(|error| CapturedError::from(anyhow::Error::new(error)))?;
     let mut cmd = Command::new("node");
     cmd.arg("--");
@@ -474,8 +503,55 @@ mod tests {
     }
 
     #[test]
+    fn nested_node_transport_and_config_flags_are_rejected_before_credentials() {
+        for flag in [
+            "--host",
+            "--HOST=https://us.posthog.com",
+            "--api-host",
+            "--api-host=https://vendor.example",
+            "--api-url",
+            "--api-url=https://vendor.example",
+            "--base-url",
+            "--base-url=https://vendor.example",
+            "--server-url",
+            "--config",
+            "--config-file=./untrusted.json",
+        ] {
+            let args = vec!["call".to_owned(), "some-tool".to_owned(), flag.to_owned()];
+            assert!(
+                reject_nested_host_overrides(&args).is_err(),
+                "unqualified nested transport option: {flag}"
+            );
+        }
+    }
+
+    #[test]
+    fn normal_agent_tool_arguments_and_payloads_still_pass() {
+        for args in [
+            vec!["tools", "--json"],
+            vec!["info", "--json", "feature-flag-get-all"],
+            vec![
+                "call",
+                "--json",
+                "--dry-run",
+                "feature-flag-get-all",
+                r#"{"host":"https://my.flind.example"}"#,
+            ],
+            vec!["search", "host"],
+        ] {
+            let argv = args.iter().map(|s| s.to_string()).collect::<Vec<_>>();
+            assert!(
+                reject_nested_host_overrides(&argv).is_ok(),
+                "ordinary agent arguments should pass: {argv:?}"
+            );
+        }
+    }
+
+    #[test]
     fn analytics_settings_are_explicitly_removed_from_node_child() {
         let mut child = Command::new("node");
+        child.env("NODE_OPTIONS", "--require=/tmp/credential-hook.cjs");
+        child.env("NODE_PATH", "/tmp/untrusted-modules");
         child.env("POSTHOG_ANALYTICS_API_KEY", "inherited-token");
         child.env("POSTHOG_ANALYTICS_HOST", "https://example.invalid");
         child.env("POSTHOG_CLI_INVOCATION_ID", "linked-session");
@@ -484,6 +560,8 @@ mod tests {
 
         let entries: Vec<_> = child.get_envs().collect();
         for key in [
+            "NODE_OPTIONS",
+            "NODE_PATH",
             "POSTHOG_ANALYTICS_API_KEY",
             "POSTHOG_ANALYTICS_HOST",
             "POSTHOG_CLI_INVOCATION_ID",
