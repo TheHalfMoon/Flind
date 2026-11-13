@@ -50,3 +50,7 @@ hog/test/parity/bundles/** linguist-generated -text
 hog/test/parity/golden/** linguist-generated
 hog/test/parity/native/bin/** binary linguist-generated
 hog/test/parity/real/** -text linguist-generated
+
+# Preserve every byte of the pinned private SDK types source archive.
+packages/types/** -text
+packages/types/LICENSE whitespace=-trailing-space
