@@ -6,7 +6,7 @@ import type {
   SpanAttributes,
   SpanKind,
   SpanStatusCode,
-} from '@posthog/types'
+} from '@flind/types'
 import type { Logger } from '../types'
 import type { ResolvedTracesConfig, SpanRecord } from './types'
 import { nonNegativeCount } from './span'

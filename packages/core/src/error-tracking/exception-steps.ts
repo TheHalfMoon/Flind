@@ -16,7 +16,7 @@ export type ExceptionStep = {
   [key: string]: unknown
 }
 
-/** NOTE: This type is also defined in `@posthog/types` (posthog-config.ts). Keep both in sync. */
+/** NOTE: This type is also defined in `@flind/types` (posthog-config.ts). Keep both in sync. */
 export type ExceptionStepsConfig = {
   enabled?: boolean
   max_bytes?: number

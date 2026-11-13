@@ -2,7 +2,7 @@
 
 Private, in-repository Flind Node SDK compatibility package, staged from the published `posthog-node` 5.63.2 release.
 
-**Not for publication.** The pinned `@posthog/core` runtime dependency has been replaced in this staged private SDK by the source- and distribution-identical `@flind/core@1.64.1` package, preserving exported symbol ABI. `@flind/core` still depends on the published `@posthog/types`, and public symbol names remain temporarily for compatibility. Legal attribution remains in LICENSE, NOTICE.md and `packages/core/NOTICE.md`; this package does not independently qualify every SDK endpoint or protocol.
+**Not for publication.** The pinned `@posthog/core` runtime dependency has been replaced in this staged private SDK by the source- and distribution-identical `@flind/core@1.64.1` package, preserving exported symbol ABI. `@flind/core` now uses the private in-repository `@flind/types` package for TypeScript declarations; public compatibility symbols remain temporarily unchanged. Legal attribution remains in LICENSE, NOTICE.md and `packages/core/NOTICE.md`; this package does not independently qualify every SDK endpoint or protocol.
 
 ## Explicit Flind-owned collection host (no silent cloud fallback)
 

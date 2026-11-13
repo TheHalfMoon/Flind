@@ -1,4 +1,4 @@
-import type { OtlpLogsPayload, OtlpMetricsPayload, OtlpTracesPayload } from '@posthog/types';
+import type { OtlpLogsPayload, OtlpMetricsPayload, OtlpTracesPayload } from '@flind/types';
 import type { SendMetricsBatchOutcome } from './metrics/types';
 import type { SendTracesBatchOutcome } from './traces/types';
 import { SimpleEventEmitter } from './eventemitter';

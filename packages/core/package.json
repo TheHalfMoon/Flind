@@ -76,6 +76,6 @@
     }
   },
   "dependencies": {
-    "@posthog/types": "^1.421.0"
+    "@flind/types": "workspace:*"
   }
 }

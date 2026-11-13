@@ -1,4 +1,4 @@
-import type { CaptureLogOptions, LogSeverityLevel } from '@posthog/types'
+import type { CaptureLogOptions, LogSeverityLevel } from '@flind/types'
 import type { LogSdkContext } from './types'
 import { buildOtlpLogRecord, buildOtlpLogsPayload, getOtlpSeverityNumber, getOtlpSeverityText } from './logs-utils'
 

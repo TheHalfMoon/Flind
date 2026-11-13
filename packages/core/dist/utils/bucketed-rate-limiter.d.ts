@@ -1,4 +1,4 @@
-import type { ExceptionRateLimiterConfig } from '@posthog/types';
+import type { ExceptionRateLimiterConfig } from '@flind/types';
 import { Logger } from '../types';
 export declare const DEFAULT_EXCEPTION_RATE_LIMITER_REFILL_RATE = 1;
 export declare const DEFAULT_EXCEPTION_RATE_LIMITER_BUCKET_SIZE = 10;

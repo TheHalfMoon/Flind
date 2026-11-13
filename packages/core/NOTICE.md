@@ -16,7 +16,9 @@ files and components. Preserve the entire license text and any
 file-specific notices. No ownership or relicensing of the original
 copyrighted works is asserted.
 
-This core package is not published or integrated into production yet.
-`@posthog/types` remains an upstream type dependency until a separate
-qualified migration. Do not publish, deploy or claim full vendor
-independence without explicit GREEN LIGHT FLIND.
+This core is used by the private staged @flind/node SDK, not a fully
+independent or published production SDK. Its type imports are mechanically
+redirected to the private, byte-preserved @flind/types workspace package.
+Original upstream identity and licensing remain in UPSTREAM_PACKAGE.json,
+LICENSE and the pinned archive. No publish, deploy or full independence
+claim without explicit GREEN LIGHT FLIND.
