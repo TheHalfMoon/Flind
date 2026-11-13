@@ -78,6 +78,15 @@ export const workspaceAliases: Alias[] = [
     ),
   },
   {
+    // Explicit subpath alias must precede the bare package alias. Otherwise
+    // Vite appends /utils/... to index.ts and cannot resolve native test imports.
+    find: /^@flind\/agent\/(.+)$/,
+    replacement: path.resolve(
+      __dirname,
+      "../../../../packages/agent/packages/agent/src/$1.ts",
+    ),
+  },
+  {
     find: "@flind/agent",
     replacement: path.resolve(
       __dirname,

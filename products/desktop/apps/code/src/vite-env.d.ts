@@ -9,6 +9,9 @@ interface ImportMetaEnv {
   readonly VITE_POSTHOG_CUSTOM_CLOUD_BUILD?: string;
 
   // Flind Analytics
+  readonly VITE_FLIND_ANALYTICS_KEY?: string;
+  readonly VITE_FLIND_ANALYTICS_HOST?: string;
+  readonly VITE_FLIND_ANALYTICS_UI_HOST?: string;
   readonly VITE_POSTHOG_API_KEY?: string;
   readonly VITE_POSTHOG_API_HOST?: string;
   readonly VITE_POSTHOG_UI_HOST?: string;

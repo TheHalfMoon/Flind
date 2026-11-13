@@ -29,7 +29,12 @@ async function loadAnalytics() {
 
 beforeEach(() => {
   vi.clearAllMocks();
-  vi.stubEnv("VITE_POSTHOG_API_KEY", "test-key");
+  vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "test-key");
+  vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
+  vi.stubEnv("FLIND_US_CLOUD_URL", "https://us.flind.example");
+  vi.stubEnv("FLIND_US_OAUTH_CLIENT_ID", "flind-us-test-public");
+  vi.stubEnv("FLIND_EU_CLOUD_URL", "https://eu.flind.example");
+  vi.stubEnv("FLIND_EU_OAUTH_CLIENT_ID", "flind-eu-test-public");
 });
 
 afterEach(() => {
@@ -223,10 +228,9 @@ describe("track", () => {
 
 describe("networkMetricPath", () => {
   it.each([
-    "https://us.posthog.com",
-    "https://eu.posthog.com",
+    "https://us.flind.example",
+    "https://eu.flind.example",
     "http://localhost:8010",
-    "https://app.dev.posthog.dev",
   ])("keeps API paths for %s without authentication", async (origin) => {
     const { networkMetricPath } = await loadAnalytics();
 
@@ -258,9 +262,11 @@ describe("networkMetricPath", () => {
   });
 
   it.each([
-    "https://us.posthog.com.example.com/api/projects/1/tasks/",
-    "https://us.posthog.com:8443/api/projects/1/tasks/",
+    "https://us.flind.example.example.com/api/projects/1/tasks/",
+    "https://us.flind.example:8443/api/projects/1/tasks/",
     "https://internal-c.posthog.com/api/projects/1/tasks/",
+    "https://us.posthog.com/api/projects/1/tasks/",
+    "https://eu.posthog.com/api/projects/1/tasks/",
     "https://posthog.example.com/api/projects/1/tasks/",
   ])("redacts an unknown backend: %s", async (url) => {
     const { networkMetricPath } = await loadAnalytics();
@@ -289,17 +295,17 @@ describe("networkMetricPath", () => {
   it.each([
     {
       case: "a skill name",
-      url: "https://us.posthog.com/api/environments/1/llm_skills/name/incident-runbook",
+      url: "https://us.flind.example/api/environments/1/llm_skills/name/incident-runbook",
       expected: "/api/environments/:id/llm_skills/name/:id",
     },
     {
       case: "a nested skill file path",
-      url: "https://us.posthog.com/api/environments/1/llm_skills/name/incident-runbook/files/docs/readme.md",
+      url: "https://us.flind.example/api/environments/1/llm_skills/name/incident-runbook/files/docs/readme.md",
       expected: "/api/environments/:id/llm_skills/name/:id/files/:id",
     },
     {
       case: "an MCP tool name",
-      url: "https://us.posthog.com/api/environments/1/mcp_server_installations/0f8c2b1e-1111-4222-8333-444455556666/tools/lookup_customer_record/",
+      url: "https://us.flind.example/api/environments/1/mcp_server_installations/0f8c2b1e-1111-4222-8333-444455556666/tools/lookup_customer_record/",
       expected: "/api/environments/:id/mcp_server_installations/:id/tools/:id/",
     },
   ])("templates $case on the app's own backend", async ({ url, expected }) => {
@@ -314,7 +320,7 @@ describe("networkMetricPath", () => {
     const { networkMetricPath } = await loadAnalytics();
 
     const path = networkMetricPath({
-      url: "https://us.posthog.com/api/environments/1/mcp_server_installations/0f8c2b1e-1111-4222-8333-444455556666/tools/refresh/",
+      url: "https://us.flind.example/api/environments/1/mcp_server_installations/0f8c2b1e-1111-4222-8333-444455556666/tools/refresh/",
       method: "POST",
     });
 
@@ -323,10 +329,13 @@ describe("networkMetricPath", () => {
 });
 
 describe("metrics.network.attributes callback", () => {
-  it.each(["https://us.posthog.com", "https://eu.posthog.com"])(
+  it.each(["https://us.flind.example", "https://eu.flind.example"])(
     "keeps API paths for %s with a separate analytics host",
     async (origin) => {
-      vi.stubEnv("VITE_POSTHOG_API_HOST", "https://internal-c.posthog.com");
+      vi.stubEnv(
+        "VITE_FLIND_ANALYTICS_HOST",
+        "https://telemetry.flind.example",
+      );
       const { initializePostHog } = await loadAnalytics();
 
       initializePostHog();
@@ -358,6 +367,47 @@ describe("metrics.network.attributes callback", () => {
   });
 });
 
+describe("Flind analytics destination isolation", () => {
+  it.each([
+    "",
+    "https://internal-c.posthog.com",
+    "https://us.i.posthog.com",
+    "http://telemetry.flind.example",
+    "https://user:password@telemetry.flind.example",
+    "https://telemetry.flind.example/ingest",
+    "https://telemetry.flind.example/?token=synthetic",
+    "not-a-url",
+  ])(
+    "disables the renderer telemetry client for an unowned or unsafe host: %s",
+    async (host) => {
+      vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", host);
+      const { initializePostHog } = await loadAnalytics();
+      initializePostHog();
+      expect(mockPosthog.init).not.toHaveBeenCalled();
+    },
+  );
+
+  it("uses Flind-owned API and UI endpoints without inherited defaults", async () => {
+    const { initializePostHog } = await loadAnalytics();
+    initializePostHog();
+    expect(mockPosthog.init).toHaveBeenCalledWith(
+      "test-key",
+      expect.objectContaining({
+        api_host: "https://telemetry.flind.example",
+        ui_host: "https://telemetry.flind.example",
+      }),
+    );
+  });
+
+  it("ignores inherited upstream credentials even when provided in a build", async () => {
+    vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "");
+    vi.stubEnv("VITE_POSTHOG_API_KEY", "legacy-key-not-for-Flind");
+    const { initializePostHog } = await loadAnalytics();
+    initializePostHog();
+    expect(mockPosthog.init).not.toHaveBeenCalled();
+  });
+});
+
 describe("initializePostHog", () => {
   it("is idempotent across repeat calls", async () => {
     const { initializePostHog } = await loadAnalytics();
@@ -369,7 +419,7 @@ describe("initializePostHog", () => {
   });
 
   it("does nothing when no API key is set", async () => {
-    vi.stubEnv("VITE_POSTHOG_API_KEY", "");
+    vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "");
     const { initializePostHog, onFeatureFlagsLoaded } = await loadAnalytics();
 
     const cb = vi.fn();

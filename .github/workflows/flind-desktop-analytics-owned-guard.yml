@@ -1,0 +1,22 @@
+name: Flind desktop owned analytics guard
+on:
+    push:
+        branches:
+            - 'flind-ci/desktop-analytics-owned-*'
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: flind-owned-desktop-analytics-${{ github.ref }}
+    cancel-in-progress: true
+jobs:
+    guard:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '26'
+            - name: Prevent inherited desktop analytics egress
+              run: node --test tools/flind/qualify_desktop_analytics_owned.mjs

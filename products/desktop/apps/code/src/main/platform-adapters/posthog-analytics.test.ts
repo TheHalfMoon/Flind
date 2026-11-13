@@ -19,13 +19,32 @@ describe("posthog-analytics", () => {
       this.identify = mockIdentify;
       this.shutdown = mockShutdown;
     });
-    process.env.VITE_POSTHOG_API_KEY = "test-key";
+    process.env.VITE_FLIND_ANALYTICS_KEY = "test-key";
+    process.env.VITE_FLIND_ANALYTICS_HOST = "https://telemetry.flind.example";
     posthogNodeAnalytics.resetUser();
     posthogNodeAnalytics.initialize();
   });
 
   afterEach(async () => {
     await posthogNodeAnalytics.shutdown();
+    delete process.env.VITE_FLIND_ANALYTICS_KEY;
+    delete process.env.VITE_FLIND_ANALYTICS_HOST;
+  });
+
+  it("never initializes the Electron-main SDK from inherited credentials", async () => {
+    await posthogNodeAnalytics.shutdown();
+    MockPostHog.mockClear();
+    delete process.env.VITE_FLIND_ANALYTICS_KEY;
+    delete process.env.VITE_FLIND_ANALYTICS_HOST;
+    process.env.VITE_POSTHOG_API_KEY = "legacy-key";
+    process.env.VITE_POSTHOG_API_HOST = "https://internal-c.posthog.com";
+    try {
+      posthogNodeAnalytics.initialize();
+      expect(MockPostHog).not.toHaveBeenCalled();
+    } finally {
+      delete process.env.VITE_POSTHOG_API_KEY;
+      delete process.env.VITE_POSTHOG_API_HOST;
+    }
   });
 
   it("includes the app version on every tracked event", () => {

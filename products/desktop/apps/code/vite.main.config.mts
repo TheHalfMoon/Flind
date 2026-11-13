@@ -659,11 +659,11 @@ export default defineConfig(({ mode }) => {
     define: {
       __BUILD_COMMIT__: JSON.stringify(getGitCommit()),
       __BUILD_DATE__: JSON.stringify(getBuildDate()),
-      "process.env.VITE_POSTHOG_API_KEY": JSON.stringify(
-        env.VITE_POSTHOG_API_KEY || "",
+      "process.env.VITE_FLIND_ANALYTICS_KEY": JSON.stringify(
+        env.VITE_FLIND_ANALYTICS_KEY || "",
       ),
-      "process.env.VITE_POSTHOG_API_HOST": JSON.stringify(
-        env.VITE_POSTHOG_API_HOST || "",
+      "process.env.VITE_FLIND_ANALYTICS_HOST": JSON.stringify(
+        env.VITE_FLIND_ANALYTICS_HOST || "",
       ),
       "process.env.VITE_POSTHOG_ACCESS_TOKEN_OVERRIDE": JSON.stringify(
         env.VITE_POSTHOG_ACCESS_TOKEN_OVERRIDE || "",
