@@ -1,6 +1,7 @@
 # Flind Node SDK real-ingestion E2E: explicit numeric loopback
 
-Status: regression repair **pending new exact-head real-service CI**.
+Status: the second real-service ingestion run **failed** on positive Node SDK
+queryability; a revised direct-capture transport check awaits new CI.
 
 ## Original failure
 
@@ -16,20 +17,35 @@ validation**, before sending any event: the workflow intentionally used
 only for a *numeric* loopback address. This is an appropriate security
 restriction and must not be widened to support arbitrary hostnames.
 
-## Repair
+## Evidence from second run
 
-- Keep browser/direct capture using their existing local proxy setting.
-- On the Node SDK Playwright test, first validate that the configured
-  proxy is truly HTTP loopback with no credentials, query or fragment.
-- Set the validated URL's hostname to **127.0.0.1** and pass its
-  `origin` as the SDK host. This does not change the destination port,
-  URL scheme, SDK default, or public-host restrictions.
-- Add source regression tests asserting numeric loopback and rejecting
-  the previous `host: PROXY_BASE_URL` pattern.
-- Separate GitHub Actions concurrency groups for ordinary push-driven
-  browser E2E and explicitly opted-in real-ingestion E2E on the same
-  commit. Otherwise the optional proof cancels the normal CI check and
-  misleadingly appears as a failing Playwright run.
+The retry at `40f6e0f66650eec3a351ab7c19ff12b7f83a1200`,
+https://github.com/TheHalfMoon/Flind/actions/runs/43360778574,
+passed browser SDK and direct capture ingestion but failed the positive
+Node SDK count after 90 seconds. SDK host validation no longer failed.
+This means a successful local HTTP transport has **not** been established;
+there is insufficient evidence to say whether the dev proxy rejected the
+numeric-host request, or the SDK payload failed another ingestion check.
+
+## Next repair
+
+- Keep browser and direct capture coverage through the existing dev proxy.
+- Validate numeric loopback and absence of credentials/query/fragment.
+  The SDK's secure-origin policy remains untouched.
+- Send the Node SDK's batch request to the **actual Rust capture service**
+  at `http://127.0.0.1:3307`, the ephemeral ingestion workflow's already
+  health-checked local capture port. The dev proxy accepts a separately
+  configured host and is still covered by the other two Playwright tests.
+- Inject a test-only fail-closed fetch wrapper to reject any non-local
+  destination or unexpected `/batch/` path **before sending**. Record only
+  HTTP statuses, and assert an actual successful capture response and zero
+  SDK error events before attempting positive and cross-tenant queries.
+- Preserve distinct GitHub Actions concurrency groups for normal browser
+  E2E and explicitly opted-in full-service ingestion E2E; otherwise an
+  optional test may cancel ordinary PR checks.
+
+This deliberately avoids assuming that an SDK flush implies successful
+capture. It also does not prove an owned HTTPS production reverse proxy.
 
 ## Qualification
 
