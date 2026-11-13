@@ -13,6 +13,7 @@ packages:
     - packages/personhog-proto
     - packages/icons
     - packages/core
+    - packages/types
     - packages/node-sdk
     - packages/react
     - packages/siphash

@@ -1,5 +1,5 @@
-export type { MetricAttributeValue, MetricAttributes, MetricType, MetricsConfig, CaptureMetricOptions, HistogramOptions, MetricSample, BeforeSendMetricFn, Metrics, OtlpNumberDataPoint, OtlpHistogramDataPoint, OtlpMetric, OtlpMetricsPayload, OtlpExemplar, } from '@posthog/types';
-import type { BeforeSendMetricFn, MetricAttributeValue, OtlpMetricsPayload, Span } from '@posthog/types';
+export type { MetricAttributeValue, MetricAttributes, MetricType, MetricsConfig, CaptureMetricOptions, HistogramOptions, MetricSample, BeforeSendMetricFn, Metrics, OtlpNumberDataPoint, OtlpHistogramDataPoint, OtlpMetric, OtlpMetricsPayload, OtlpExemplar, } from '@flind/types';
+import type { BeforeSendMetricFn, MetricAttributeValue, OtlpMetricsPayload, Span } from '@flind/types';
 /** Same tagged outcome shape as `SendLogsBatchOutcome` — one policy for both signals. */
 export type SendMetricsBatchOutcome = {
     kind: 'ok';

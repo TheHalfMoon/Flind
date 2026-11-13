@@ -5,7 +5,7 @@
 // A value the server refuses doesn't fail on its own — it 400s the whole
 // request, taking every other record in the batch with it.
 
-import type { OtlpAnyValue, OtlpKeyValue } from '@posthog/types'
+import type { OtlpAnyValue, OtlpKeyValue } from '@flind/types'
 import type { Logger } from '../types'
 import { isArray, isBoolean, isNull, isNullish, isUndefined } from './type-utils'
 import {

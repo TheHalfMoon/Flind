@@ -1,4 +1,4 @@
-// Re-export OTLP/metric types from @posthog/types so the rest of the metrics
+// Re-export OTLP/metric types from @flind/types so the rest of the metrics
 // module can pull everything from one place.
 export type {
   MetricAttributeValue,
@@ -15,9 +15,9 @@ export type {
   OtlpMetric,
   OtlpMetricsPayload,
   OtlpExemplar,
-} from '@posthog/types'
+} from '@flind/types'
 
-import type { BeforeSendMetricFn, MetricAttributeValue, OtlpMetricsPayload, Span } from '@posthog/types'
+import type { BeforeSendMetricFn, MetricAttributeValue, OtlpMetricsPayload, Span } from '@flind/types'
 
 /** Same tagged outcome shape as `SendLogsBatchOutcome` — one policy for both signals. */
 export type SendMetricsBatchOutcome =

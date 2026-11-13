@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - 'flind-ci/core-sdk-vendor-*'
+            - 'flind-ci/types-core-integration-*'
     workflow_dispatch:
 
 permissions:
@@ -22,6 +23,8 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version-file: .nvmrc
+            - name: Validate private Flind core TypeScript declaration imports
+              run: npx --yes --package typescript@7.0.2 tsc -p tools/flind/tsconfig.core-types.json
             - name: Install pinned published core to isolated temporary location
               shell: bash
               run: |
@@ -31,6 +34,7 @@ jobs:
                   npm install --prefix "$temp_dir" --no-audit --no-fund --ignore-scripts @posthog/core@1.64.1
                   mkdir -p "$temp_dir/node_modules/@flind"
                   cp -R packages/core "$temp_dir/node_modules/@flind/core"
+                  cp -R packages/types "$temp_dir/node_modules/@flind/types"
                   cp tools/flind/flind-core-vendor.test.mjs "$temp_dir/"
             - name: Verify full vendored source, CJS/ESM ABI, license and provenance
               shell: bash

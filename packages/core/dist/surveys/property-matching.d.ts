@@ -1,4 +1,4 @@
-import type { Properties } from '@posthog/types';
+import type { Properties } from '@flind/types';
 import type { PropertyFilters, PropertyOperator } from '../types';
 export declare const isValidRegex: (pattern: string) => boolean;
 export declare const isMatchingRegex: (value: string, pattern: string) => boolean;

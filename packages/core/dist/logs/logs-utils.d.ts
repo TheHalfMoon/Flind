@@ -1,4 +1,4 @@
-import type { CaptureLogOptions, LogAttributeValue, LogSeverityLevel, OtlpLogRecord, OtlpLogsPayload, OtlpSeverityText } from '@posthog/types';
+import type { CaptureLogOptions, LogAttributeValue, LogSeverityLevel, OtlpLogRecord, OtlpLogsPayload, OtlpSeverityText } from '@flind/types';
 import type { Logger } from '../types';
 import type { LogSdkContext, ResolvedPostHogLogsConfig } from './types';
 export declare function getOtlpSeverityText(level: LogSeverityLevel): OtlpSeverityText;

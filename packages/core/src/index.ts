@@ -57,16 +57,16 @@ export type {
   PostHogLogsConfig,
   ResolvedPostHogLogsConfig,
 } from './logs/types'
-// Re-export the user-facing OTLP log types straight from `@posthog/types`
+// Re-export the user-facing OTLP log types straight from `@flind/types`
 // via the `logs/types` barrel so consumers don't have to import from two
 // packages to type their `captureLog` calls.
 export type { CaptureLogOptions, LogAttributeValue, LogAttributes, LogSeverityLevel } from './logs/types'
 // Re-export the shared error tracking rate-limiter config type so SDKs built on core
-// (e.g. posthog-node) don't have to depend on `@posthog/types` directly.
-export type { ExceptionRateLimiterConfig } from '@posthog/types'
+// (e.g. posthog-node) don't have to depend on `@flind/types` directly.
+export type { ExceptionRateLimiterConfig } from '@flind/types'
 // Re-export the shared `Properties` type for the same reason, so SDKs can type
-// person/group property bags consistently without importing `@posthog/types`.
-export type { Property, Properties } from '@posthog/types'
+// person/group property bags consistently without importing `@flind/types`.
+export type { Property, Properties } from '@flind/types'
 export {
   PostHogMetrics,
   buildOtlpMetricsPayload,
@@ -96,9 +96,9 @@ export { SyncSpanContextManager } from './traces/context'
 export { inertSpan, runWithActiveSpan } from './traces/span'
 export { resolveTracesConfig } from './traces/config'
 export type { ResolvedTracesConfig, SpanContextManager, TraceSdkContext } from './traces/types'
-// The `beforeSpanSend` shapes come straight from @posthog/types: hooks see the
+// The `beforeSpanSend` shapes come straight from @flind/types: hooks see the
 // public record, not core's internal one, which also carries `traceState`.
-export type { SpanRecord, BeforeSpanSendFn } from '@posthog/types'
+export type { SpanRecord, BeforeSpanSendFn } from '@flind/types'
 export type {
   Span,
   SpanAttributes,

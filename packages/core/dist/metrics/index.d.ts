@@ -1,4 +1,4 @@
-import type { CaptureMetricOptions, HistogramOptions, OtlpMetricsPayload } from '@posthog/types';
+import type { CaptureMetricOptions, HistogramOptions, OtlpMetricsPayload } from '@flind/types';
 import type { Logger } from '../types';
 import type { MetricsHost, ResolvedPostHogMetricsConfig } from './types';
 /**

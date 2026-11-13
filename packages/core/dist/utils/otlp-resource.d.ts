@@ -1,4 +1,4 @@
-import type { OtlpKeyValue } from '@posthog/types';
+import type { OtlpKeyValue } from '@flind/types';
 import type { Logger } from '../types';
 /**
  * Shape the logs, metrics and traces resolved configs share for resource

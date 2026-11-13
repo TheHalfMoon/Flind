@@ -1,4 +1,4 @@
-import type { Span } from '@posthog/types';
+import type { Span } from '@flind/types';
 import type { SpanContextManager } from './types';
 /**
  * Synchronous active-span tracking: restores the previous active span when the

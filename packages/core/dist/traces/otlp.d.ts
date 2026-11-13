@@ -1,4 +1,4 @@
-import type { OtlpSpan, OtlpTracesPayload, SpanAttributes, SpanKind } from '@posthog/types';
+import type { OtlpSpan, OtlpTracesPayload, SpanAttributes, SpanKind } from '@flind/types';
 import type { Logger } from '../types';
 import type { ResolvedTracesConfig, SpanRecord } from './types';
 export declare function spanKindToOtlp(kind: SpanKind | undefined): number;
