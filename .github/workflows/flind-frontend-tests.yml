@@ -7,6 +7,7 @@ on:
     push:
         branches:
             - 'flind-ci/brand-audit-**'
+            - 'flind-ci/health-doc-isolation-*'
     workflow_dispatch:
 
 permissions:
@@ -25,6 +26,8 @@ jobs:
             FLIND_JEST_TARGETS: >-
                 src/RootErrorBoundary.test.tsx
                 src/lib/flindBuildEnv.test.ts
+                src/lib/flindPublicLinks.test.ts
+                src/lib/components/ViewRecordingButton/ViewRecordingButton.test.tsx
                 src/scenes/settings/organization/flindLegalCopy.test.tsx
                 src/layout/today/todayPreviewCards.test.ts
                 src/index.test.tsx
