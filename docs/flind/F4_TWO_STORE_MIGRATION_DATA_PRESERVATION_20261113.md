@@ -1,7 +1,8 @@
 # Flind migration data-preservation canary (two stores)
 
-Status: **pending exact-head GitHub real-service CI**. This is a synthetic,
-ephemeral test for migration idempotence with *existing test data*.
+Status: the original positive-preservation run passed GitHub CI in merged PR #72.
+The added live negative controls require their own exact-head GitHub CI.
+This is a synthetic test for idempotence with *existing test data*.
 It is not qualification of an upgrade between released product versions.
 
 ## Motivation
@@ -27,9 +28,15 @@ In the same GitHub Ubuntu ephemeral runner already used for migrations:
 6. Fetch the same tenant records from both stores and require exact
    row-by-row equality, with no deleted/duplicated/mutated marker. Fail the
    workflow if either datastore differs.
-7. Drop the two owned marker tables only after a passing comparison; the
-   final unconditional Docker teardown removes all ephemeral databases.
-   Report only SHA-256 digests, pass/fail and synthetic tenant counts in
+7. Demonstrate that the **same** PostgreSQL row comparator rejects a real
+   mutation of tenant 202 inside the disposable test table, then restore the
+   original marker and require parity again. Independently demonstrate that
+   the ClickHouse comparator detects loss of tenant 202 from its disposable
+   test table, reinsert it and require parity again. These mutations affect
+   no customer or product domain tables.
+8. Drop the two owned marker tables only after all comparisons pass; the
+   final ephemeral runner teardown removes remaining test containers.
+   Report only digests, negative-control outcomes and synthetic counts in
    the job summary.
 
 The guard itself has dependency-free Python tests for step ordering,
