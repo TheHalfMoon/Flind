@@ -2,6 +2,7 @@ import { router } from 'kea-router'
 import { expectLogic } from 'kea-test-utils'
 
 import api from 'lib/api'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 
 import { initKeaTests } from '~/test/init'
 
@@ -47,6 +48,6 @@ describe('sdksLogic', () => {
             configureErrorTrackingSDKs()
         }
 
-        expect(logic.values.selectedSDK?.docsLink).toBe('https://posthog.com/docs/libraries/convex')
+        expect(logic.values.selectedSDK?.docsLink).toBe(flindDocsUrl('libraries/convex') ?? '')
     })
 })

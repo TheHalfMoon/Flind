@@ -1,0 +1,25 @@
+name: Flind onboarding SDK catalog documentation ownership
+
+on:
+    push:
+        branches:
+            - 'flind-ci/sdk-catalog-owned-docs-*'
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Check catalog links, optional help and override isolation
+              run: |
+                  node --check frontend/bin/flind-sdk-catalog-docs-owned.test.mjs
+                  node --test frontend/bin/flind-sdk-catalog-docs-owned.test.mjs

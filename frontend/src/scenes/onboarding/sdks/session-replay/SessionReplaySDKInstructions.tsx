@@ -23,6 +23,8 @@ import {
 
 import { JS_WEB_SNIPPETS } from 'scenes/onboarding/shared/jsWebSnippets'
 
+import { flindDocsUrl } from 'lib/flindPublicLinks'
+
 import { SDKDocsLinkOverrides, SDKInstructionsMap, SDKKey } from '~/types'
 
 import { withOnboardingDocsWrapper } from '../shared/onboardingWrappers'
@@ -36,7 +38,7 @@ const SNIPPETS = {
 }
 
 export const SessionReplaySDKDocsLinkOverrides: SDKDocsLinkOverrides = {
-    [SDKKey.UNITY]: 'https://posthog.com/docs/session-replay/installation/unity',
+    [SDKKey.UNITY]: flindDocsUrl('session-replay/installation/unity') ?? '',
 }
 
 // JS Web SDKs
