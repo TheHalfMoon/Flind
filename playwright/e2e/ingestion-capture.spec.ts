@@ -52,8 +52,9 @@ test.describe('Event ingestion', () => {
                         if (resp.status() >= 400 && resp.status() < 500 && resp.status() !== 429) {
                             throw new Error(`query endpoint returned ${resp.status()}: ${await resp.text()}`)
                         }
-                        const body = await resp.json()
-                        return Number(body.results?.[0]?.[0] ?? 0)
+                        // A successful count() always has exactly one row/column, including when zero.
+                        // A missing/malformed response is a query failure, not "no events yet".
+                        return parseHogQLCount(await resp.json())
                     },
                     { timeout: 90_000, intervals: [2_000, 5_000] }
                 )
