@@ -187,19 +187,9 @@ jobs:
                       echo "migrations_key=posthog-schema-mig-${SCHEMA_CACHE_EPOCH}-${MIG_HASH}" >> $GITHUB_OUTPUT
                   fi
 
-            # Never expose registry credentials to PR-controlled code. Keep the
-            # optional legacy login scoped to non-PR runs until the workflow
-            # is independently migrated to Flind-owned infrastructure.
-            - name: Log in to Docker Hub
-              continue-on-error: true
-              if: ${{ github.event_name != 'pull_request' && env.DOCKERHUB_USERNAME != '' && env.DOCKERHUB_TOKEN != '' }}
-              env:
-                  DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USER }}
-                  DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-              uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
-              with:
-                  username: ${{ env.DOCKERHUB_USERNAME }}
-                  password: ${{ env.DOCKERHUB_TOKEN }}
+            # No inherited Docker Hub login: Flind CI must not receive
+            # upstream registry credentials on pull requests or pushes.
+            # Public image pulls do not require a donor registry session.
 
             - name: Start Docker services
               env:
