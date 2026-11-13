@@ -1,6 +1,11 @@
 # Flind real-ingestion cross-tenant personal API key denial
 
-Status: **source contracts qualified locally; full real-service CI must execute on the exact PR head.**
+Status: **PR #83 merged after its exact-head full real-service E2E passed**
+([run 43408588563](https://github.com/TheHalfMoon/Flind/actions/runs/43408588563),
+commit `75623997d02fff48fe12a7090dca65a931bab5f7`, three ingestion
+suites and four general browser journeys). This follow-up PR #86 disables
+redirect following for the foreign personal-key probe. Re-qualify CI
+and real-service E2E on its **own** head before considering integration.
 
 ## Why existing ingestion isolation was necessary but not sufficient
 

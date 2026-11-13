@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - 'flind-security/ingestion-cross-tenant-auth-*'
+            - 'flind-security/foreign-key-no-redirect-*'
     workflow_dispatch:
 
 permissions:
