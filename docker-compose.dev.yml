@@ -38,7 +38,10 @@ services:
                         trusted_proxies static ${CADDY_TRUSTED_PROXIES:-127.0.0.1/32 ::1/128}
                     }
                 }
-                ${CADDY_HOST:-http://localhost:8000} {
+                # Local dev only: the browser SDK uses localhost, whereas the
+                # Node SDK permits plain HTTP only for numeric loopback. Both
+                # names must be explicit; never use an open host wildcard here.
+                ${CADDY_HOST:-http://localhost:8000, http://127.0.0.1:8000} {
                     @replay-capture {
                         path /s
                         path /s/*

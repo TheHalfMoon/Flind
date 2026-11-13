@@ -9,6 +9,7 @@ on:
             - 'flind-ci/brand-audit-**'
             - 'flind-ci/health-doc-isolation-*'
             - 'flind-ci/rn-owned-docs-*'
+            - 'flind-ci/node-onboarding-fix-*'
             - 'flind-ci/integration-owned-docs-*'
     workflow_dispatch:
 

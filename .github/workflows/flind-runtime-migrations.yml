@@ -20,6 +20,11 @@ on:
                 required: false
                 type: boolean
                 default: false
+            objectstorage_restore:
+                description: 'Test synthetic S3 object delete/export/restore with ephemeral SeaweedFS'
+                required: false
+                type: boolean
+                default: false
 
 permissions:
     contents: read
@@ -63,6 +68,10 @@ jobs:
             - name: Validate synthetic ClickHouse Native recovery preflight (no Docker)
               if: startsWith(github.ref, 'refs/heads/flind-ci/clickhouse-recovery-') || inputs.clickhouse_recovery == true
               run: python3 -m unittest tools.flind.test_clickhouse_native_recovery -v
+
+            - name: Validate synthetic objectstorage preflight (no network)
+              if: startsWith(github.ref, 'refs/heads/flind-ci/objectstorage-') || inputs.objectstorage_restore == true
+              run: python3 -m unittest tools.flind.test_qualify_objectstorage_synthetic_restore -v
 
             - name: Record source identity
               run: |
@@ -160,6 +169,16 @@ jobs:
                   bash -n tools/flind/qualify_clickhouse_native_recovery.sh
                   bash tools/flind/qualify_clickhouse_native_recovery.sh
 
+            - name: Verify synthetic SeaweedFS object export, deletion, and restore
+              if: startsWith(github.ref, 'refs/heads/flind-ci/objectstorage-') || inputs.objectstorage_restore == true
+              env:
+                  FLIND_SYNTHETIC_S3_RESTORE: '1'
+                  FLIND_S3_ENDPOINT: http://127.0.0.1:19000
+              run: |
+                  set -euo pipefail
+                  docker compose -f docker-compose.dev.yml up -d --wait --wait-timeout 240 objectstorage
+                  python tools/flind/qualify_objectstorage_synthetic_restore.py
+
             # This is an optional, runner-local synthetic recovery test. It never
             # connects to production or exports an actual database backup artifact.
             - name: Verify synthetic PostgreSQL backup and clean restore
@@ -175,17 +194,17 @@ jobs:
               if: always()
               run: |
                   mkdir -p "$EVIDENCE/services"
-                  for s in db clickhouse kafka zookeeper redis7; do
+                  for s in db clickhouse kafka zookeeper redis7 objectstorage; do
                     docker compose -f docker-compose.dev.yml logs --no-color "$s" > "$EVIDENCE/services/$s.log" 2>&1 || true
                   done
 
-            # Artifact storage is not used: evidence is printed here and committed to the repo.
+            # No artifact upload: a redacted, synthetic-only summary is printed in this GitHub Actions job.
             - name: Publish evidence to job summary
               if: always()
               run: |
                   {
                     echo "## Flind migration evidence"
-                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt postgres-restore-smoke.txt migration-canary-summary.txt clickhouse-native-recovery.txt; do
+                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt postgres-restore-smoke.txt migration-canary-summary.txt clickhouse-native-recovery.txt objectstorage-restore-smoke.txt; do
                       [ -f "$EVIDENCE/$f" ] || continue
                       echo "### $f"; echo '```'; cat "$EVIDENCE/$f"; echo '```'
                     done

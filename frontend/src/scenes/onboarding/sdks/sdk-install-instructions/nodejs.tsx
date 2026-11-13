@@ -31,14 +31,17 @@ export function NodeSetupSnippet({ enableExceptionAutocapture = false }: PostHog
 
     return (
         <CodeSnippet language={Language.JavaScript}>
-            {`import { Flind } from 'posthog-node'
+            {`import { PostHog } from 'posthog-node'
 
-const client = new Flind(
-    '${currentTeam?.api_token}',
+const client = new PostHog(
+    '${currentTeam?.api_token ?? 'YOUR_PROJECT_API_KEY'}',
     {
         ${options.join(',\n        ')}
     }
-)`}
+)
+
+// Before your Node process exits, flush any queued events:
+// await client.shutdown()`}
         </CodeSnippet>
     )
 }

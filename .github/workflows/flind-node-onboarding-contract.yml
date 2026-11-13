@@ -1,0 +1,26 @@
+# Regression guard for copy-pasteable Node SDK onboarding snippets.
+name: Flind Node onboarding compatibility
+
+on:
+    push:
+        branches:
+            - 'flind-ci/node-onboarding-fix-*'
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    snippet:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Check actual Node SDK export and owned capture origin
+              run: |
+                  node --check frontend/bin/flind-node-onboarding-contract.test.mjs
+                  node --test frontend/bin/flind-node-onboarding-contract.test.mjs
