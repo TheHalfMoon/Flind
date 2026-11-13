@@ -4,6 +4,7 @@ import { combineUrl, router } from 'kea-router'
 import { getMissingScopes } from 'lib/integrations/integrationScopes'
 import { IntegrationScopesWarning } from 'lib/integrations/IntegrationScopesWarning'
 import { OAUTH_INTEGRATION_ID_PARAM } from 'lib/integrations/integrationsLogic'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { ICONS } from 'lib/integrations/utils'
 import { urls } from 'scenes/urls'
 
@@ -71,7 +72,6 @@ export const Slack = defineIntegration(
         kind: 'slack',
         name: 'Slack',
         logo: ICONS.slack,
-        banner: 'https://res.cloudinary.com/dmukukwp6/image/upload/slack_app_update_docs_f0c917f70a',
         subtitle: 'Bring Flind into Slack — from scheduled reports to an AI agent that ships code',
         description:
             'Tag @Flind in any Slack thread to draft pull requests, ship code changes, ask data questions, and run SQL — all without leaving Slack. You also get insights, dashboards, and alerts delivered straight to your channels.',
@@ -82,7 +82,7 @@ export const Slack = defineIntegration(
             'Receive alerts and error-tracking notifications in your channels',
             'Manage feature flags, experiments, and surveys from Slack',
         ],
-        docsUrl: 'https://posthog.com/docs/libraries/slack',
+        docsUrl: flindDocsUrl('libraries/slack') ?? undefined,
         PostConnect: SlackPostConnect,
         useStatus: useSlackStatus,
         useSetupUrl: useSlackSetupUrl,

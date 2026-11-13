@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - 'flind-ci/ingestion-tenant-shape-*'
+            - 'flind-ci/e2e-ingestion-*'
     workflow_dispatch:
 
 permissions:
