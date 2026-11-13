@@ -10,6 +10,12 @@ declare module '*.png' {
     export default content
 }
 
+// WebP logo imports resolve to local asset URLs in the frontend bundler.
+declare module '*.webp' {
+    const content: string
+    export default content
+}
+
 // This fixes TS errors when importing a .gif file
 declare module '*.gif' {
     const content: any

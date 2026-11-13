@@ -1,9 +1,8 @@
 /**
- * SDK logos can be either:
- * - Cloudinary URLs (string) - preferred, for logos hosted on Cloudinary CDN
- * - SVG/PNG files (imported as images) - for logos not yet on Cloudinary
- * - TSX components (React.memo) - for logos that need Tailwind's `dark:fill-white` class to work,
- *   since CSS classes inside SVG files don't apply when rendered as <img> tags
+ * SDK logos are bundled with Flind. External vendor images are stored as
+ * static assets with source URLs and checksums in shared/logos/vendor/SOURCES.json.
+ * SDK selection must never fetch an unrelated image CDN when rendered.
+ * Local SVG/PNG/WebP imports and inline TSX components are both supported.
  */
 import { Logomark } from 'lib/brand'
 import { flindDocsUrl } from 'lib/flindPublicLinks'
@@ -61,6 +60,42 @@ import vueImage from '../shared/logos/vue.svg'
 import webflowImage from '../shared/logos/webflow.svg'
 import { WordpressLogo } from '../shared/logos/WordpressLogo'
 import zapierImage from '../shared/logos/zapier.svg'
+
+import sdkVendorLogo1 from '../shared/logos/vendor/vendor_autogen_a8c56d013e_35f7cbb8.svg'
+import sdkVendorLogo2 from '../shared/logos/vendor/vendor_azure_openai_884ba0124a_72239bdd.svg'
+import sdkVendorLogo3 from '../shared/logos/vendor/vendor_bedrock_5c06698148_e0758f37.png'
+import sdkVendorLogo4 from '../shared/logos/vendor/vendor_cerebras_4d953c1c2b_da9aaa6d.png'
+import sdkVendorLogo5 from '../shared/logos/vendor/vendor_cloudflare_logo_6572a9f441_0b6ea2ee.svg'
+import sdkVendorLogo6 from '../shared/logos/vendor/vendor_cohere_0ddf02d545_b0f743a9.svg'
+import sdkVendorLogo7 from '../shared/logos/vendor/vendor_convex_d8dcddcd63_0ca3df9c.svg'
+import sdkVendorLogo8 from '../shared/logos/vendor/vendor_crewai_67ee9f5eb6_42235c29.svg'
+import sdkVendorLogo9 from '../shared/logos/vendor/vendor_dedalus_labs_logo_e03bb97137_45da41f8.svg'
+import sdkVendorLogo10 from '../shared/logos/vendor/vendor_deepseek_df02608124_9502b156.svg'
+import sdkVendorLogo11 from '../shared/logos/vendor/vendor_dspy_548bc2f255_4bfba519.webp'
+import sdkVendorLogo12 from '../shared/logos/vendor/vendor_fireworks_ai_a3d8a59e96_a3a4a24f.svg'
+import sdkVendorLogo13 from '../shared/logos/vendor/vendor_groq_a0ed539e47_bf4a73fa.png'
+import sdkVendorLogo14 from '../shared/logos/vendor/vendor_helicone_7c41fa4c2d_04dff6cb.svg'
+import sdkVendorLogo15 from '../shared/logos/vendor/vendor_hugging_face_ae0a406f62_c111ddab.svg'
+import sdkVendorLogo16 from '../shared/logos/vendor/vendor_instructor_b1982d9ce9_395d9925.svg'
+import sdkVendorLogo17 from '../shared/logos/vendor/vendor_kmp_7d185d2b.svg'
+import sdkVendorLogo18 from '../shared/logos/vendor/vendor_langgraph_2f91869ac8_a07af6a3.svg'
+import sdkVendorLogo19 from '../shared/logos/vendor/vendor_litellmicon_a2805d75e5_4f00e46f.webp'
+import sdkVendorLogo20 from '../shared/logos/vendor/vendor_llamaindex_f831132d7c_253ea49a.svg'
+import sdkVendorLogo21 from '../shared/logos/vendor/vendor_mastra_7ea7df92ab_e12c81b1.svg'
+import sdkVendorLogo22 from '../shared/logos/vendor/vendor_mirascope_33f38e04ea_d6d7112f.svg'
+import sdkVendorLogo23 from '../shared/logos/vendor/vendor_mistral_551c75e2dd_57184110.svg'
+import sdkVendorLogo24 from '../shared/logos/vendor/vendor_ollama_ff56896a1f_648edce0.svg'
+import sdkVendorLogo25 from '../shared/logos/vendor/vendor_opentelemetry_afb29df5ab_18f8dd86.svg'
+import sdkVendorLogo26 from '../shared/logos/vendor/vendor_perplexity_7d451cb62c_c2a182ca.svg'
+import sdkVendorLogo27 from '../shared/logos/vendor/vendor_portkey_15a83f0395_bd770b7c.svg'
+import sdkVendorLogo28 from '../shared/logos/vendor/vendor_pydantic_ai_55029bc39b_3e547f5b.svg'
+import sdkVendorLogo29 from '../shared/logos/vendor/vendor_roblox_corporation_2025_logo_svg_301751b47c_690ea5fc.webp'
+import sdkVendorLogo30 from '../shared/logos/vendor/vendor_semantic_kernel_5102489978_3715458d.webp'
+import sdkVendorLogo31 from '../shared/logos/vendor/vendor_smolagents_logo_1_545072ae17_0920db57.webp'
+import sdkVendorLogo32 from '../shared/logos/vendor/vendor_together_ai_49ac1a57fb_b9fe3320.svg'
+import sdkVendorLogo33 from '../shared/logos/vendor/vendor_unity_9f9c332941_714334c6.svg'
+import sdkVendorLogo34 from '../shared/logos/vendor/vendor_vercel_373fa70879_50d1ba95.svg'
+import sdkVendorLogo35 from '../shared/logos/vendor/vendor_xai_77b917714b_1137cefb.svg'
 
 export const ALL_SDKS: SDK[] = [
     // Web
@@ -230,7 +265,7 @@ export const ALL_SDKS: SDK[] = [
         name: 'Vercel AI SDK',
         key: SDKKey.VERCEL_AI,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/vercel_373fa70879.svg',
+        image: sdkVendorLogo34,
         docsLink: flindDocsUrl('ai-observability/installation/vercel-ai') ?? '',
     },
     {
@@ -238,7 +273,7 @@ export const ALL_SDKS: SDK[] = [
         key: SDKKey.EVE,
         tags: [SDKTag.FRAMEWORK],
         searchTerms: ['Vercel Eve', 'agent'],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/vercel_373fa70879.svg',
+        image: sdkVendorLogo34,
         docsLink: flindDocsUrl('ai-observability/installation/eve') ?? '',
     },
     {
@@ -252,7 +287,7 @@ export const ALL_SDKS: SDK[] = [
         name: 'LiteLLM',
         key: SDKKey.LITELLM,
         tags: [SDKTag.FRAMEWORK, SDKTag.GATEWAY],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/litellmicon_a2805d75e5.png',
+        image: sdkVendorLogo19,
         docsLink: flindDocsUrl('ai-observability/installation/litellm') ?? '',
     },
     {
@@ -266,210 +301,210 @@ export const ALL_SDKS: SDK[] = [
         name: 'Cloudflare AI Gateway',
         key: SDKKey.CLOUDFLARE_AI_GATEWAY,
         tags: [SDKTag.GATEWAY],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/cloudflare_logo_6572a9f441.svg',
+        image: sdkVendorLogo5,
         docsLink: flindDocsUrl('ai-observability/installation/cloudflare-ai-gateway') ?? '',
     },
     {
         name: 'Dedalus Labs',
         key: SDKKey.DEDALUS,
         tags: [SDKTag.GATEWAY],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/dedalus_labs_logo_e03bb97137.svg',
+        image: sdkVendorLogo9,
         docsLink: flindDocsUrl('ai-observability/installation/dedalus') ?? '',
     },
     {
         name: 'DeepSeek',
         key: SDKKey.DEEPSEEK,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/deepseek_df02608124.svg',
+        image: sdkVendorLogo10,
         docsLink: flindDocsUrl('ai-observability/installation/deepseek') ?? '',
     },
     {
         name: 'LangGraph',
         key: SDKKey.LANGGRAPH,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/langgraph_2f91869ac8.svg',
+        image: sdkVendorLogo18,
         docsLink: flindDocsUrl('ai-observability/installation/langgraph') ?? '',
     },
     {
         name: 'Ollama',
         key: SDKKey.OLLAMA,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/ollama_ff56896a1f.svg',
+        image: sdkVendorLogo24,
         docsLink: flindDocsUrl('ai-observability/installation/ollama') ?? '',
     },
     {
         name: 'AWS Bedrock',
         key: SDKKey.AWS_BEDROCK,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/bedrock_5c06698148.png',
+        image: sdkVendorLogo3,
         docsLink: flindDocsUrl('ai-observability/installation/aws-bedrock') ?? '',
     },
     {
         name: 'Azure OpenAI',
         key: SDKKey.AZURE_OPENAI,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/azure_openai_884ba0124a.svg',
+        image: sdkVendorLogo2,
         docsLink: flindDocsUrl('ai-observability/installation/azure-openai') ?? '',
     },
     {
         name: 'Groq',
         key: SDKKey.GROQ,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/groq_a0ed539e47.png',
+        image: sdkVendorLogo13,
         docsLink: flindDocsUrl('ai-observability/installation/groq') ?? '',
     },
     {
         name: 'Mistral',
         key: SDKKey.MISTRAL,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/mistral_551c75e2dd.svg',
+        image: sdkVendorLogo23,
         docsLink: flindDocsUrl('ai-observability/installation/mistral') ?? '',
     },
     {
         name: 'LlamaIndex',
         key: SDKKey.LLAMAINDEX,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/llamaindex_f831132d7c.svg',
+        image: sdkVendorLogo20,
         docsLink: flindDocsUrl('ai-observability/installation/llamaindex') ?? '',
     },
     {
         name: 'CrewAI',
         key: SDKKey.CREWAI,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/crewai_67ee9f5eb6.svg',
+        image: sdkVendorLogo8,
         docsLink: flindDocsUrl('ai-observability/installation/crewai') ?? '',
     },
     {
         name: 'Instructor',
         key: SDKKey.INSTRUCTOR,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/instructor_b1982d9ce9.svg',
+        image: sdkVendorLogo16,
         docsLink: flindDocsUrl('ai-observability/installation/instructor') ?? '',
     },
     {
         name: 'Pydantic AI',
         key: SDKKey.PYDANTIC_AI,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/pydantic_ai_55029bc39b.svg',
+        image: sdkVendorLogo28,
         docsLink: flindDocsUrl('ai-observability/installation/pydantic-ai') ?? '',
     },
     {
         name: 'xAI',
         key: SDKKey.XAI,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/xai_77b917714b.svg',
+        image: sdkVendorLogo35,
         docsLink: flindDocsUrl('ai-observability/installation/xai') ?? '',
     },
     {
         name: 'Perplexity',
         key: SDKKey.PERPLEXITY,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/perplexity_7d451cb62c.svg',
+        image: sdkVendorLogo26,
         docsLink: flindDocsUrl('ai-observability/installation/perplexity') ?? '',
     },
     {
         name: 'Together AI',
         key: SDKKey.TOGETHER_AI,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/together_ai_49ac1a57fb.svg',
+        image: sdkVendorLogo32,
         docsLink: flindDocsUrl('ai-observability/installation/together-ai') ?? '',
     },
     {
         name: 'Fireworks AI',
         key: SDKKey.FIREWORKS_AI,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/fireworks_ai_a3d8a59e96.svg',
+        image: sdkVendorLogo12,
         docsLink: flindDocsUrl('ai-observability/installation/fireworks-ai') ?? '',
     },
     {
         name: 'Cohere',
         key: SDKKey.COHERE,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/cohere_0ddf02d545.svg',
+        image: sdkVendorLogo6,
         docsLink: flindDocsUrl('ai-observability/installation/cohere') ?? '',
     },
     {
         name: 'Hugging Face',
         key: SDKKey.HUGGING_FACE,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/hugging_face_ae0a406f62.svg',
+        image: sdkVendorLogo15,
         docsLink: flindDocsUrl('ai-observability/installation/hugging-face') ?? '',
     },
     {
         name: 'DSPy',
         key: SDKKey.DSPY,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/dspy_548bc2f255.webp',
+        image: sdkVendorLogo11,
         docsLink: flindDocsUrl('ai-observability/installation/dspy') ?? '',
     },
     {
         name: 'AutoGen',
         key: SDKKey.AUTOGEN,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/autogen_a8c56d013e.svg',
+        image: sdkVendorLogo1,
         docsLink: flindDocsUrl('ai-observability/installation/autogen') ?? '',
     },
     {
         name: 'Semantic Kernel',
         key: SDKKey.SEMANTIC_KERNEL,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/w_200,c_limit,q_auto,f_auto/semantic_kernel_5102489978.png',
+        image: sdkVendorLogo30,
         docsLink: flindDocsUrl('ai-observability/installation/semantic-kernel') ?? '',
     },
     {
         name: 'smolagents',
         key: SDKKey.SMOLAGENTS,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/smolagents_logo_1_545072ae17.png',
+        image: sdkVendorLogo31,
         docsLink: flindDocsUrl('ai-observability/installation/smolagents') ?? '',
     },
     {
         name: 'Mastra',
         key: SDKKey.MASTRA,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/mastra_7ea7df92ab.svg',
+        image: sdkVendorLogo21,
         docsLink: flindDocsUrl('ai-observability/installation/mastra') ?? '',
     },
     {
         name: 'Mirascope',
         key: SDKKey.MIRASCOPE,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/mirascope_33f38e04ea.svg',
+        image: sdkVendorLogo22,
         docsLink: flindDocsUrl('ai-observability/installation/mirascope') ?? '',
     },
     {
         name: 'Convex',
         key: SDKKey.CONVEX,
         tags: [SDKTag.FRAMEWORK],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/convex_d8dcddcd63.svg',
+        image: sdkVendorLogo7,
         docsLink: flindDocsUrl('ai-observability/installation/convex') ?? '',
     },
     {
         name: 'Cerebras',
         key: SDKKey.CEREBRAS,
         tags: [SDKTag.MODEL_PROVIDER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/cerebras_4d953c1c2b.png',
+        image: sdkVendorLogo4,
         docsLink: flindDocsUrl('ai-observability/installation/cerebras') ?? '',
     },
     {
         name: 'Vercel AI Gateway',
         key: SDKKey.VERCEL_AI_GATEWAY,
         tags: [SDKTag.GATEWAY],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/vercel_373fa70879.svg',
+        image: sdkVendorLogo34,
         docsLink: flindDocsUrl('ai-observability/installation/vercel-ai-gateway') ?? '',
     },
     {
         name: 'Portkey',
         key: SDKKey.PORTKEY,
         tags: [SDKTag.GATEWAY],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/portkey_15a83f0395.svg',
+        image: sdkVendorLogo27,
         docsLink: flindDocsUrl('ai-observability/installation/portkey') ?? '',
     },
     {
         name: 'Helicone',
         key: SDKKey.HELICONE,
         tags: [SDKTag.LLM, SDKTag.GATEWAY],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/helicone_7c41fa4c2d.svg',
+        image: sdkVendorLogo14,
         docsLink: flindDocsUrl('ai-observability/installation/helicone') ?? '',
     },
     {
@@ -487,7 +522,7 @@ export const ALL_SDKS: SDK[] = [
         name: 'OpenTelemetry',
         key: SDKKey.OPENTELEMETRY,
         tags: [SDKTag.INTEGRATION],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/opentelemetry_afb29df5ab.svg',
+        image: sdkVendorLogo25,
         docsLink: flindDocsUrl('ai-observability/installation/opentelemetry') ?? '',
     },
     {
@@ -508,7 +543,7 @@ export const ALL_SDKS: SDK[] = [
         name: 'Kotlin Multiplatform',
         key: SDKKey.KMP,
         tags: [SDKTag.MOBILE, SDKTag.WEB],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/posthog.com/contents/images/docs/integrate/kmp.svg',
+        image: sdkVendorLogo17,
         docsLink: flindDocsUrl('libraries/kmp') ?? '',
     },
     {
@@ -595,7 +630,7 @@ export const ALL_SDKS: SDK[] = [
         name: 'Roblox',
         key: SDKKey.ROBLOX,
         tags: [SDKTag.OTHER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/Roblox_Corporation_2025_logo_svg_301751b47c.png',
+        image: sdkVendorLogo29,
         docsLink: flindDocsUrl('error-tracking/installation/roblox') ?? '',
     },
     {
@@ -623,7 +658,7 @@ export const ALL_SDKS: SDK[] = [
         name: 'Unity',
         key: SDKKey.UNITY,
         tags: [SDKTag.OTHER],
-        image: 'https://res.cloudinary.com/dmukukwp6/image/upload/unity_9f9c332941.svg',
+        image: sdkVendorLogo33,
         docsLink: flindDocsUrl('error-tracking/installation/unity') ?? '',
     },
     {
