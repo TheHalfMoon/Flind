@@ -9,6 +9,12 @@ on:
         branches:
             - 'flind-ci/**'
     workflow_dispatch:
+        inputs:
+            postgres_restore:
+                description: 'Test synthetic PostgreSQL dump/restore after migrations (ephemeral only)'
+                required: false
+                type: boolean
+                default: false
 
 permissions:
     contents: read
@@ -41,6 +47,10 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 1
+
+            - name: Fail-closed synthetic recovery guard tests (no Docker)
+              if: startsWith(github.ref, 'refs/heads/flind-ci/postgres-recovery-') || inputs.postgres_restore == true
+              run: python3 -m unittest tools.flind.test_qualify_postgres_backup_restore_synthetic -v
 
             - name: Record source identity
               run: |
@@ -112,6 +122,17 @@ jobs:
                   python manage.py makemigrations --check --dry-run 2>&1 | tail -20 | tee "$EVIDENCE/django-makemigrations-check.txt"
                   test "$pending" = "0"
 
+            # This is an optional, runner-local synthetic recovery test. It never
+            # connects to production or exports an actual database backup artifact.
+            - name: Verify synthetic PostgreSQL backup and clean restore
+              if: startsWith(github.ref, 'refs/heads/flind-ci/postgres-recovery-') || inputs.postgres_restore == true
+              env:
+                  FLIND_SYNTHETIC_PG_RESTORE: '1'
+              run: |
+                  set -euo pipefail
+                  bash -n tools/flind/qualify_postgres_backup_restore_synthetic.sh
+                  bash tools/flind/qualify_postgres_backup_restore_synthetic.sh
+
             - name: Collect service logs
               if: always()
               run: |
@@ -126,7 +147,7 @@ jobs:
               run: |
                   {
                     echo "## Flind migration evidence"
-                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt; do
+                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt postgres-restore-smoke.txt; do
                       [ -f "$EVIDENCE/$f" ] || continue
                       echo "### $f"; echo '```'; cat "$EVIDENCE/$f"; echo '```'
                     done
