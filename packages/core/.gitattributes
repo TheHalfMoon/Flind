@@ -1,0 +1,4 @@
+# Keep the published core package byte-for-byte intact.
+# Its original LICENSE and declaration file contain upstream trailing whitespace.
+LICENSE whitespace=-trailing-space
+dist/traces/index.d.ts whitespace=-trailing-space
