@@ -62,7 +62,7 @@ const THIRTY_SECONDS = 30000;
 const MAX_CACHE_SIZE = 50000;
 const WAITUNTIL_DEBOUNCE_MS = 50;
 const WAITUNTIL_MAX_WAIT_MS = 500;
-const DEFAULT_NODE_HOST = 'https://us.i.posthog.com';
+
 const _emittedDeprecations = new Set();
 function emitDeprecationWarningOnce(id, message) {
     if (_emittedDeprecations.has(id)) return;
@@ -80,8 +80,20 @@ function normalizePersonalApiKey(value) {
     return normalizedValue || void 0;
 }
 function normalizeHost(value) {
-    const normalizedValue = 'string' == typeof value ? value.trim() : '';
-    return normalizedValue || DEFAULT_NODE_HOST;
+    if ('string' != typeof value || !value.trim()) throw new Error('Flind Node SDK requires an explicit owned host; no default collector is configured');
+    let url;
+    try {
+        url = new URL(value.trim());
+    } catch {
+        throw new Error('Flind Node SDK host must be a valid HTTPS origin');
+    }
+    const hostname = url.hostname.toLowerCase().replace(/\.+$/, '');
+    const donor = hostname === 'posthog.com' || hostname.endsWith('.posthog.com') || hostname === 'posthog.dev' || hostname.endsWith('.posthog.dev');
+    const loopback = hostname === '127.0.0.1' || hostname === '[::1]';
+    if (donor || !hostname || url.username || url.password || url.search || url.hash || url.pathname !== '/' || (url.protocol !== 'https:' && !(loopback && url.protocol === 'http:'))) {
+        throw new Error('Flind Node SDK host must be an explicit safe, non-donor HTTPS origin');
+    }
+    return url.origin;
 }
 function positiveNumberOr(value, fallback) {
     return 'number' == typeof value && Number.isFinite(value) && value > 0 ? value : fallback;
@@ -117,6 +129,7 @@ class PostHogBackendClient extends core_namespaceObject.PostHogCoreStateless {
             maxQueueSize: options.maxQueueSize ?? 10000,
             flushInterval: options.flushInterval ?? 5000,
             host: normalizeHost(options.host),
+            appHost: options.appHost === void 0 ? void 0 : normalizeHost(options.appHost),
             personalApiKey: normalizePersonalApiKey(options.secretKey ?? options.personalApiKey)
         };
         super(normalizedApiKey, normalizedOptions), this._memoryStorage = new external_storage_memory_js_namespaceObject.PostHogMemoryStorage(), this._isShutdown = false, this._aiCaptureRouteActive = false, this._minimalFlagCalledEvents = false;
