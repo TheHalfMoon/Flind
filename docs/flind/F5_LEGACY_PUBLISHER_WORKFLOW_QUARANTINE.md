@@ -1,6 +1,6 @@
 # Inherited publishing workflows quarantined before Flind release
 
-Status: **14 previously active upstream release/publish workflows have
+Status: **15 previously active upstream release/publish workflows have
 been moved verbatim out of GitHub's runnable workflow directory**.
 No Flind publication, deployment, tag or install artifact is authorized.
 
@@ -17,7 +17,7 @@ the wider Flind rename.
 
 ## This checkpoint
 
-The 14 explicit legacy release/publish workflows in
+The 15 explicit legacy release/publish workflows in
 `tools/flind/quarantined_release_workflows.json` have been moved
 **without altering their content** from `.github/workflows/*.yml`
 to `.github/quarantined-release-workflows/*.yml.disabled`.
@@ -31,7 +31,9 @@ workflows remain in the active folder.
 
 The quarantined set includes explicit releases for the Rust CLI,
 desktop apps, Python packages, npm packages, a Rust crate, parser
-build/publish flows, installer assets, and other inherited publishers.
+build/publish flows, installer assets, and other inherited publishers. The set also includes the **unguarded
+weekly Playwright image mirror**, which attempted to push directly to an
+upstream-owned GHCR namespace on its schedule or manual dispatch.
 Reactivation must be an independent PR with actual Flind package
 names, first-party destinations, ownership, provenance, reliable
 builds, security/egress reviews and owner approval.

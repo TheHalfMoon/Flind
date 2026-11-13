@@ -1,7 +1,7 @@
 {
     "status":  "QUARANTINED_NO_RELEASE_AUTHORIZED",
     "reason":  "Unqualified inherited release/publish workflow retained verbatim outside active .github/workflows",
-    "count":  14,
+    "count":  15,
     "workflows":  [
                       {
                           "source":  ".github/workflows/build-deltalite.yml",
@@ -72,6 +72,11 @@
                           "source":  ".github/workflows/release-cli.yml",
                           "quarantined":  ".github/quarantined-release-workflows/release-cli.yml.disabled",
                           "git_blob_sha1":  "f7a6da2aa1bf59946c7cdf61200831c7d14b9b09"
+                      },
+                      {
+                          "source":  ".github/workflows/ci-playwright-container.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/ci-playwright-container.yml.disabled",
+                          "git_blob_sha1":  "8abed1407f177e24c861822f0de9459d4d5ab40d"
                       }
                   ]
 }

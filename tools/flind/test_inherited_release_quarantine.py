@@ -24,6 +24,7 @@ EXPECTED_NAMES = {
     "build-hogql-parser.yml",
     "build-livestream-tui.yml",
     "build-phrocs.yml",
+    "ci-playwright-container.yml",
     "desktop-agent-release.yml",
     "desktop-release.yml",
     "publish-hogli.yml",
@@ -37,9 +38,9 @@ EXPECTED_NAMES = {
 class InheritedPublishWorkflowQuarantineTests(unittest.TestCase):
     def test_inventory_is_explicit_and_no_publish_workflow_is_active(self):
         self.assertEqual(MANIFEST["status"], "QUARANTINED_NO_RELEASE_AUTHORIZED")
-        self.assertEqual(MANIFEST["count"], 14)
+        self.assertEqual(MANIFEST["count"], 15)
         entries = MANIFEST["workflows"]
-        self.assertEqual(len(entries), 14)
+        self.assertEqual(len(entries), 15)
         names = set()
         for e in entries:
             source = e["source"]
