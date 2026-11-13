@@ -1,4 +1,5 @@
 import { randomString } from '../utils'
+import { assertForeignPersonalKeyCannotQueryTeam } from '../utils/assert-foreign-team-query-denied'
 import { parseHogQLCount } from '../utils/parse-hogql-count'
 import { expect, test } from '../utils/workspace-test-base'
 
@@ -67,6 +68,8 @@ test.describe('Event ingestion', () => {
             // A zero result is meaningful only after the original tenant can see it.
             const other = await playwrightSetup.createWorkspace({ skip_onboarding: true, no_demo_data: true })
             expect(other.team_id).not.toBe(workspace.team_id)
+            expect(other.organization_id).not.toBe(workspace.organization_id)
+            expect(other.user_id).not.toBe(workspace.user_id)
             const resp = await request.post(`/api/environments/${other.team_id}/query/`, {
                 headers: { Authorization: `Bearer ${other.personal_api_key}` },
                 data: {
@@ -81,6 +84,12 @@ test.describe('Event ingestion', () => {
             // Missing/malformed HogQL results must not be mistaken for zero visible events.
             const count = parseHogQLCount(await resp.json())
             expect(count).toBe(0)
+
+            // Both personal keys are known-good in their own organizations.
+            // The reverse pair of requests must be denied by the API itself,
+            // not merely return zero results from HogQL tenant filtering.
+            await assertForeignPersonalKeyCannotQueryTeam(request, workspace.team_id, other.personal_api_key, eventName)
+            await assertForeignPersonalKeyCannotQueryTeam(request, other.team_id, workspace.personal_api_key, eventName)
         })
     })
 })

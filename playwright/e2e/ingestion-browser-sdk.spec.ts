@@ -1,4 +1,6 @@
 import { randomString } from '../utils'
+import { assertForeignPersonalKeyCannotQueryTeam } from '../utils/assert-foreign-team-query-denied'
+import { parseHogQLCount } from '../utils/parse-hogql-count'
 import { expect, test } from '../utils/workspace-test-base'
 
 const PROXY_BASE_URL = process.env.E2E_PROXY_URL || 'http://localhost:8010'
@@ -137,12 +139,31 @@ test.describe('Flind browser SDK ingestion', () => {
                     if (!resp.ok()) {
                         throw new Error(`Flind browser SDK ingestion query returned ${resp.status()}: ${await resp.text()}`)
                     }
-                    const body = await resp.json()
-                    return Number(body.results?.[0]?.[0] ?? 0)
+                    return parseHogQLCount(await resp.json())
                 },
                 { timeout: 90_000, intervals: [2_000, 5_000] }
             )
             .toBeGreaterThan(0)
+        await test.step('another organization is blind to the captured event and cannot query with foreign credentials', async () => {
+            const other = await playwrightSetup.createWorkspace({ skip_onboarding: true, no_demo_data: true })
+            expect(other.team_id).not.toBe(workspace.team_id)
+            expect(other.organization_id).not.toBe(workspace.organization_id)
+            expect(other.user_id).not.toBe(workspace.user_id)
+            const resp = await request.post(`/api/environments/${other.team_id}/query/`, {
+                headers: { Authorization: `Bearer ${other.personal_api_key}` },
+                data: {
+                    refresh: 'force_blocking',
+                    query: {
+                        kind: 'HogQLQuery',
+                        query: `SELECT count() FROM events WHERE event = '${eventName}'`,
+                    },
+                },
+            })
+            expect(resp.ok(), 'independent team count query must succeed').toBe(true)
+            expect(parseHogQLCount(await resp.json())).toBe(0)
+            await assertForeignPersonalKeyCannotQueryTeam(request, workspace.team_id, other.personal_api_key, eventName)
+            await assertForeignPersonalKeyCannotQueryTeam(request, other.team_id, workspace.personal_api_key, eventName)
+        })
         expect(Array.from(externalOrigins), 'browser SDK requested an external host').toEqual([])
     })
 })
