@@ -1,0 +1,22 @@
+name: Flind release CLI embedded API bundle only
+
+on:
+    push:
+        branches:
+            - 'flind-security/cli-release-embedded-only-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    release-script-gate:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - name: Ensure release builds never execute inherited JS bundle paths
+              run: |
+                  python3 -m unittest tools.flind.test_cli_release_embedded_only tools.flind.test_cli_nested_host_and_node_hook tools.flind.test_cli_api_proxy_host_preflight -v
+            - name: Native Cargo formatting
+              run: cargo fmt --manifest-path cli/Cargo.toml --all -- --check
