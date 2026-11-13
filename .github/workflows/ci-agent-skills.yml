@@ -106,10 +106,6 @@ jobs:
         if: needs.changes.outputs.skills == 'true'
         permissions:
             contents: read
-        env:
-            DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USER }}
-            DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-
         steps:
             - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
               with:
@@ -191,13 +187,9 @@ jobs:
                       echo "migrations_key=posthog-schema-mig-${SCHEMA_CACHE_EPOCH}-${MIG_HASH}" >> $GITHUB_OUTPUT
                   fi
 
-            - name: Log in to Docker Hub
-              continue-on-error: true
-              if: ${{ env.DOCKERHUB_USERNAME != '' && env.DOCKERHUB_TOKEN != '' }}
-              uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
-              with:
-                  username: ${{ vars.DOCKERHUB_USER }}
-                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+            # No inherited Docker Hub login: Flind CI must not receive
+            # upstream registry credentials on pull requests or pushes.
+            # Public image pulls do not require a donor registry session.
 
             - name: Start Docker services
               env:
