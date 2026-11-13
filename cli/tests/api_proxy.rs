@@ -38,7 +38,7 @@ fn api_forwards_all_arguments_to_the_script() {
         .env("POSTHOG_HOME", dir.path())
         .env("POSTHOG_CLI_HOST", "http://127.0.0.1:8000")
         .env_remove("POSTHOG_HOST")
-        .env_remove("NODE_OPTIONS")
+        .env("NODE_OPTIONS", format!("--require={}", preload.display()))
         .status()
         .expect("run posthog-cli");
 
@@ -95,6 +95,42 @@ fn api_without_explicit_host_refuses_unqualified_embedded_defaults() {
     assert!(!output.status.success());
     assert!(String::from_utf8_lossy(&output.stderr)
         .contains("requires an explicit, approved instance host"));
+}
+
+#[test]
+fn api_nested_host_override_is_denied_before_embedded_node_starts() {
+    let dir = tempfile::tempdir().unwrap();
+    let marker = dir.path().join("node-started");
+    let script = dir.path().join("api-cli.mjs");
+    fs::write(
+        &script,
+        format!(
+            "import {{ writeFileSync }} from 'node:fs'\\nwriteFileSync({}, 'executed')\\n",
+            serde_json::to_string(marker.to_str().unwrap()).unwrap()
+        ),
+    )
+    .unwrap();
+
+    let output = Command::new(env!("CARGO_BIN_EXE_posthog-cli"))
+        .args([
+            "--host",
+            "http://127.0.0.1:8000",
+            "api",
+            "tools",
+            "--host=https://us.posthog.com",
+        ])
+        .env("POSTHOG_API_CLI_PATH", &script)
+        .env_remove("POSTHOG_HOST")
+        .env_remove("POSTHOG_CLI_HOST")
+        .output()
+        .unwrap();
+    assert!(!output.status.success());
+    assert!(
+        !marker.exists(),
+        "unqualified Node bundle must not execute on nested host override"
+    );
+    assert!(String::from_utf8_lossy(&output.stderr)
+        .contains("rejected a nested server/config override"));
 }
 
 #[test]

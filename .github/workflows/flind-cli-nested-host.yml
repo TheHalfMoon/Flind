@@ -1,0 +1,22 @@
+name: Flind CLI nested host and inherited Node preload isolation
+
+on:
+    push:
+        branches:
+            - 'flind-security/cli-nested-host-override-gate-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    nested-host-contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - name: Confirm Node API proxy host and Node preload fail-closed guards
+              run: |
+                  python3 -m unittest tools.flind.test_cli_nested_host_and_node_hook tools.flind.test_cli_api_proxy_host_preflight tools.flind.test_cli_proxy_analytics_isolation -v
+            - name: Rust format gate
+              run: cargo fmt --manifest-path cli/Cargo.toml --all -- --check
