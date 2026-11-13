@@ -1,0 +1,22 @@
+name: Flind native CLI diagnostic privacy gate
+
+on:
+    push:
+        branches:
+            - 'flind-security/cli-native-telemetry-disabled-*'
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    privacy-contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - name: Reject unqualified Rust CLI diagnostic egress
+              run: python3 -m unittest tools.flind.test_cli_no_unqualified_telemetry -v
+            - name: Validate native Rust formatting without fetching dependencies
+              run: cargo fmt --manifest-path cli/Cargo.toml --all -- --check
