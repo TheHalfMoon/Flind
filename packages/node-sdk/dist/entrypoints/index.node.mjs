@@ -2,7 +2,7 @@ import { createModulerModifier } from "../extensions/error-tracking/modifiers/mo
 import { addSourceContext } from "../extensions/error-tracking/modifiers/context-lines.node.mjs";
 import { createRelativePathModifier } from "../extensions/error-tracking/modifiers/relative-path.node.mjs";
 import { PostHogBackendClient } from "../client.mjs";
-import { ErrorTracking } from "@posthog/core";
+import { ErrorTracking } from "@flind/core";
 import { PostHogContext } from "../extensions/context/context.mjs";
 import { AsyncLocalStorageSpanContextManager } from "../extensions/context/span-context.node.mjs";
 import { gzipCompress } from "../gzip.node.mjs";

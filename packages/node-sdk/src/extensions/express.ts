@@ -1,6 +1,6 @@
 import ErrorTracking from './error-tracking'
 import { PostHogBackendClient } from '../client'
-import { ErrorTracking as CoreErrorTracking } from '@posthog/core'
+import { ErrorTracking as CoreErrorTracking } from '@flind/core'
 import {
   addProperty,
   getFirstHeaderValue,

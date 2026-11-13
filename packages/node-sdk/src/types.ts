@@ -12,7 +12,7 @@ import type {
   Span,
   StartSpanOptions,
   TracesConfig,
-} from '@posthog/core'
+} from '@flind/core'
 import { ContextData, ContextOptions } from './extensions/context/types'
 
 import type { Emails } from './emails/types'

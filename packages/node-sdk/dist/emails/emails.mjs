@@ -1,4 +1,4 @@
-import { parseRetryAfterMs, removeTrailingSlash, safeJsonStringify } from "@posthog/core";
+import { parseRetryAfterMs, removeTrailingSlash, safeJsonStringify } from "@flind/core";
 import { EmailError } from "./errors.mjs";
 const SEND_PATH = '/api/projects/@current/messaging/send/email/';
 const STATUS_PATH = '/api/projects/@current/messaging/emails/{messageId}/';

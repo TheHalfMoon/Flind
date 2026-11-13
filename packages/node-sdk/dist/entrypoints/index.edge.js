@@ -6,8 +6,8 @@ var __webpack_modules__ = {
     "../exports" (module) {
         module.exports = require("../exports.js");
     },
-    "@posthog/core" (module) {
-        module.exports = require("@posthog/core");
+    "@flind/core" (module) {
+        module.exports = require("@flind/core");
     }
 };
 var __webpack_module_cache__ = {};
@@ -65,7 +65,7 @@ var __webpack_exports__ = {};
     ].indexOf(__rspack_import_key) < 0) __rspack_reexport[__rspack_import_key] = ()=>_exports__rspack_import_0[__rspack_import_key];
     __webpack_require__.d(__webpack_exports__, __rspack_reexport);
     var _client__rspack_import_1 = __webpack_require__("../client");
-    var _posthog_core__rspack_import_2 = __webpack_require__("@posthog/core");
+    var _posthog_core__rspack_import_2 = __webpack_require__("@flind/core");
     class PostHog extends _client__rspack_import_1.PostHogBackendClient {
         getLibraryId() {
             return 'posthog-edge';

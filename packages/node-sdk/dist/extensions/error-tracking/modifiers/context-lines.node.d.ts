@@ -1,4 +1,4 @@
-import { ErrorTracking as CoreErrorTracking, type Logger } from '@posthog/core';
+import { ErrorTracking as CoreErrorTracking, type Logger } from '@flind/core';
 import { type FileHandle } from 'node:fs/promises';
 export declare const MAX_CONTEXTLINES_COLNO: number;
 export declare const MAX_CONTEXTLINES_LINENO: number;

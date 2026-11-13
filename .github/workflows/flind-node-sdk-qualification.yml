@@ -37,9 +37,10 @@ jobs:
                   set -euo pipefail
                   test_dir="$(mktemp -d)"
                   trap 'rm -rf "$test_dir"' EXIT
-                  npm install --prefix "$test_dir" --ignore-scripts --no-audit --no-fund posthog-node@5.63.2
+                  npm install --prefix "$test_dir" --ignore-scripts --no-audit --no-fund posthog-node@5.63.2 @posthog/core@1.64.1
                   mkdir -p "$test_dir/node_modules/@flind"
                   cp -R packages/node-sdk "$test_dir/node_modules/@flind/node"
+                  cp -R packages/core "$test_dir/node_modules/@flind/core"
                   cp tools/flind/flind-node-sdk-compat.test.mjs "$test_dir/"
                   (cd "$test_dir" && node --test flind-node-sdk-compat.test.mjs)
 

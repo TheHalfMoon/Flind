@@ -1,5 +1,5 @@
 import type { IncomingHttpHeaders } from 'node:http'
-import { cookieStoreFromHeader, getConsentCookieName, getPostHogCookieName, isNoLike, isYesLike } from '@posthog/core'
+import { cookieStoreFromHeader, getConsentCookieName, getPostHogCookieName, isNoLike, isYesLike } from '@flind/core'
 
 const TRACING_HEADER_MAX_LENGTH = 1000
 // posthog-js defaults. The browser starts a new session after this much inactivity or session length.

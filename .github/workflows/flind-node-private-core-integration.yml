@@ -1,0 +1,56 @@
+name: Flind Node SDK private core integration qualification
+
+on:
+    push:
+        branches:
+            - 'flind-ci/node-sdk-private-core-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-node-private-core-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    node:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 40
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Validate exact private core frozen workspace dependency
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  npm install --global pnpm@11.28.5
+                  pnpm install --filter=@flind/node... --frozen-lockfile --lockfile-only --ignore-scripts
+            - name: Ensure all source and compiled entrypoints depend only on private core
+              run: node --test tools/flind/qualify_node_private_core.mjs
+            - name: Install pinned original Node and core SDK dependencies without cloud contact
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  sdk_tmp="$(mktemp -d)"
+                  echo "FLIND_PRIVATE_CORE_QA=$sdk_tmp" >> "$GITHUB_ENV"
+                  npm install --prefix "$sdk_tmp" --ignore-scripts --no-audit --no-fund posthog-node@5.63.2 @posthog/core@1.64.1
+                  mkdir -p "$sdk_tmp/node_modules/@flind"
+                  cp -R packages/core "$sdk_tmp/node_modules/@flind/core"
+                  cp -R packages/node-sdk "$sdk_tmp/node_modules/@flind/node"
+                  cp tools/flind/flind-node-sdk-wire.test.mjs "$sdk_tmp/"
+                  cp tools/flind/flind-node-sdk-compat.test.mjs "$sdk_tmp/"
+                  cp tools/flind/flind-core-vendor.test.mjs "$sdk_tmp/"
+            - name: Verify pinned core byte parity, private Node ABI and synthetic loopback capture
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  cd "$FLIND_PRIVATE_CORE_QA"
+                  node --test flind-core-vendor.test.mjs flind-node-sdk-compat.test.mjs flind-node-sdk-wire.test.mjs
+            - name: Remove temporary SDK test data and dependencies
+              if: always()
+              shell: bash
+              run: |
+                  if [ -n "${FLIND_PRIVATE_CORE_QA:-}" ]; then rm -rf "$FLIND_PRIVATE_CORE_QA"; fi

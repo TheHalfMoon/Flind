@@ -30,7 +30,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
     hashSHA1: ()=>core_namespaceObject.hashSHA1
 });
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 exports.hashSHA1 = __webpack_exports__.hashSHA1;
 for(var __rspack_i in __webpack_exports__)if (-1 === [
     "hashSHA1"

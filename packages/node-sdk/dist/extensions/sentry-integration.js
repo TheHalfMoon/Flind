@@ -32,7 +32,7 @@ __webpack_require__.d(__webpack_exports__, {
     createEventProcessor: ()=>createEventProcessor,
     sentryIntegration: ()=>sentryIntegration
 });
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 const NAME = 'posthog-node';
 function createEventProcessor(_posthog, { organization, projectId, prefix, severityAllowList = [
     'error'

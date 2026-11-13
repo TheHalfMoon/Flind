@@ -36,7 +36,7 @@ __webpack_require__.d(__webpack_exports__, {
     getPostHogTracingHeaderValues: ()=>getPostHogTracingHeaderValues,
     sanitizeTracingHeaderValue: ()=>sanitizeTracingHeaderValue
 });
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 const TRACING_HEADER_MAX_LENGTH = 1000;
 const COOKIE_SESSION_IDLE_TIMEOUT_MS = 1800000;
 const COOKIE_SESSION_MAX_LENGTH_MS = 86400000;

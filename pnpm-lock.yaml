@@ -2432,14 +2432,20 @@ importers:
         specifier: ^4.5.4
         version: 4.5.4(@types/node@26.6.6)(rollup@4.60.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.4(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(sass-embedded@1.70.0)(terser@5.46.0)(tsx@4.23.15)(yaml@2.9.1))
 
+  packages/core:
+    dependencies:
+      '@posthog/types':
+        specifier: ^1.421.0
+        version: 1.421.0
+
   packages/node-sdk:
     dependencies:
       '@opentelemetry/api':
         specifier: ^1.2.0
         version: 1.9.1
-      '@posthog/core':
-        specifier: ^1.64.1
-        version: 1.64.1
+      '@flind/core':
+        specifier: workspace:*
+        version: link:../core
       rxjs:
         specifier: ^7.0.0
         version: 7.8.1

@@ -1,1 +1,1 @@
-export { hashSHA1 } from "@posthog/core";
+export { hashSHA1 } from "@flind/core";

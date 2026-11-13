@@ -4,10 +4,10 @@ import { createModulerModifier } from '../extensions/error-tracking/modifiers/mo
 import { addSourceContext } from '../extensions/error-tracking/modifiers/context-lines.node'
 import { createRelativePathModifier } from '../extensions/error-tracking/modifiers/relative-path.node'
 
-import type { PostHogFetchBodyBytes } from '@posthog/core'
+import type { PostHogFetchBodyBytes } from '@flind/core'
 import { PostHogBackendClient } from '../client'
-import { ErrorTracking as CoreErrorTracking } from '@posthog/core'
-import type { SpanContextManager } from '@posthog/core'
+import { ErrorTracking as CoreErrorTracking } from '@flind/core'
+import type { SpanContextManager } from '@flind/core'
 import { PostHogContext } from '../extensions/context/context'
 import { AsyncLocalStorageSpanContextManager } from '../extensions/context/span-context.node'
 import { gzipCompress } from '../gzip.node'

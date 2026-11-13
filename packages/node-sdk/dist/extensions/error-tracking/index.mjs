@@ -1,6 +1,6 @@
 import { capturePendingExceptions, claimExplicitCapture, startExceptionAutocapture } from "./autocapture.mjs";
 import { snapshotEventContext } from "../context/event-context.mjs";
-import { BucketedRateLimiter, ErrorTracking, isObject, resolveExceptionRateLimiterConfig } from "@posthog/core";
+import { BucketedRateLimiter, ErrorTracking, isObject, resolveExceptionRateLimiterConfig } from "@flind/core";
 const SHUTDOWN_TIMEOUT = 2000;
 class error_tracking_ErrorTracking {
     constructor(client, options, _logger){

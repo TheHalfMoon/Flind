@@ -1,4 +1,4 @@
-import type { JsonType, PostHogEventProperties } from '@posthog/core';
+import type { JsonType, PostHogEventProperties } from '@flind/core';
 import type { V1Batch, V1Event } from './types';
 /**
  * Coerce a value to a boolean the way the capture server does, or return

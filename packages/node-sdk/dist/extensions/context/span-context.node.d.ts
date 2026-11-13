@@ -1,4 +1,4 @@
-import type { Span, SpanContextManager } from '@posthog/core';
+import type { Span, SpanContextManager } from '@flind/core';
 /**
  * Active-span tracking backed by `AsyncLocalStorage`, so a span stays active
  * across `await` boundaries and through any async work its callback starts.

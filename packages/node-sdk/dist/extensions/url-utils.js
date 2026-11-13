@@ -31,7 +31,7 @@ __webpack_require__.d(__webpack_exports__, {
     normalizeRequestCurrentUrl: ()=>normalizeRequestCurrentUrl,
     normalizeRequestPath: ()=>normalizeRequestPath
 });
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 function normalizeRequestCurrentUrl(currentUrl, disableCaptureUrlHashes) {
     return disableCaptureUrlHashes ? (0, core_namespaceObject.stripUrlHash)(currentUrl) : currentUrl;
 }

@@ -1,4 +1,4 @@
-import type { PostHogFetchBodyBytes } from '@posthog/core'
+import type { PostHogFetchBodyBytes } from '@flind/core'
 import { gzip } from 'node:zlib'
 import { promisify } from 'node:util'
 

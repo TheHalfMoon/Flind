@@ -27,8 +27,8 @@ var __webpack_modules__ = {
     "../host-os.node" (module) {
         module.exports = require("../host-os.node.js");
     },
-    "@posthog/core" (module) {
-        module.exports = require("@posthog/core");
+    "@flind/core" (module) {
+        module.exports = require("@flind/core");
     }
 };
 var __webpack_module_cache__ = {};
@@ -89,7 +89,7 @@ var __webpack_exports__ = {};
     var _extensions_error_tracking_modifiers_context_lines_node__rspack_import_2 = __webpack_require__("../extensions/error-tracking/modifiers/context-lines.node");
     var _extensions_error_tracking_modifiers_relative_path_node__rspack_import_3 = __webpack_require__("../extensions/error-tracking/modifiers/relative-path.node");
     var _client__rspack_import_4 = __webpack_require__("../client");
-    var _posthog_core__rspack_import_5 = __webpack_require__("@posthog/core");
+    var _posthog_core__rspack_import_5 = __webpack_require__("@flind/core");
     var _extensions_context_context__rspack_import_6 = __webpack_require__("../extensions/context/context");
     var _extensions_context_span_context_node__rspack_import_7 = __webpack_require__("../extensions/context/span-context.node");
     var _gzip_node__rspack_import_8 = __webpack_require__("../gzip.node");

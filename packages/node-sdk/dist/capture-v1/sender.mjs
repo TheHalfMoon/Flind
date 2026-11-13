@@ -1,4 +1,4 @@
-import { gzipCompress, safeJsonStringify, safeSetTimeout, uuidv7 } from "@posthog/core";
+import { gzipCompress, safeJsonStringify, safeSetTimeout, uuidv7 } from "@flind/core";
 import { CaptureV1Error } from "./errors.mjs";
 import { buildV1Batch } from "./transform.mjs";
 const V1_ANALYTICS_PATH = '/i/v1/analytics/events';

@@ -1,4 +1,4 @@
-import { ErrorTracking as CoreErrorTracking } from '@posthog/core';
+import { ErrorTracking as CoreErrorTracking } from '@flind/core';
 import type { ContextData } from '../context/types';
 type UnhandledRejectionMode = 'throw' | 'strict' | 'warn' | 'warn-with-error-code' | 'none';
 export declare function getUnhandledRejectionMode(execArgv?: string[], nodeOptions?: string | undefined): UnhandledRejectionMode;

@@ -1,4 +1,4 @@
-import { PostHogPersistedProperty } from '@posthog/core';
+import { PostHogPersistedProperty } from '@flind/core';
 export declare class PostHogMemoryStorage {
     private _memoryStorage;
     getProperty(key: PostHogPersistedProperty): any | undefined;

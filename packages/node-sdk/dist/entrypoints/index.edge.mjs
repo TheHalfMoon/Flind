@@ -1,5 +1,5 @@
 import { PostHogBackendClient } from "../client.mjs";
-import { ErrorTracking } from "@posthog/core";
+import { ErrorTracking } from "@flind/core";
 export * from "../exports.mjs";
 class PostHog extends PostHogBackendClient {
     getLibraryId() {

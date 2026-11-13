@@ -1,4 +1,4 @@
-import { type FetchLike, type PostHogEventProperties, type PostHogFetchBodyBytes } from '@posthog/core';
+import { type FetchLike, type PostHogEventProperties, type PostHogFetchBodyBytes } from '@flind/core';
 export interface V1CaptureSenderConfig {
     host: string;
     apiKey: string;

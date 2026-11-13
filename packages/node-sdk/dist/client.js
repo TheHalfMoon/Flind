@@ -41,7 +41,7 @@ __webpack_require__.d(__webpack_exports__, {
     _resetDeprecationWarningsForTests: ()=>_resetDeprecationWarningsForTests
 });
 const external_version_js_namespaceObject = require("./version.js");
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 const external_types_js_namespaceObject = require("./types.js");
 const external_feature_flag_evaluations_js_namespaceObject = require("./feature-flag-evaluations.js");
 const feature_flags_js_namespaceObject = require("./extensions/feature-flags/feature-flags.js");

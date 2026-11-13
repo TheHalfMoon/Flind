@@ -31,7 +31,7 @@ __webpack_require__.d(__webpack_exports__, {
     hostOsResourceAttributes: ()=>hostOsResourceAttributes
 });
 const external_node_os_namespaceObject = require("node:os");
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 function hostOsResourceAttributes() {
     let osName;
     let osVersion;

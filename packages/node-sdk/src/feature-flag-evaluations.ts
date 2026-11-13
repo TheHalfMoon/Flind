@@ -1,4 +1,4 @@
-import { FeatureFlagValue, JsonType, UnresolvedFlagReason } from '@posthog/core'
+import { FeatureFlagValue, JsonType, UnresolvedFlagReason } from '@flind/core'
 
 import { FeatureFlagError } from './types'
 

@@ -2,7 +2,7 @@
 // Copyright (c) 2012 Functional Software, Inc. dba Sentry
 // Licensed under the MIT License: https://github.com/getsentry/sentry-javascript/blob/develop/LICENSE
 
-import { ErrorTracking as CoreErrorTracking, type Logger } from '@posthog/core'
+import { ErrorTracking as CoreErrorTracking, type Logger } from '@flind/core'
 import { constants, type ReadStream } from 'node:fs'
 import { open, type FileHandle } from 'node:fs/promises'
 import { isAbsolute } from 'node:path'

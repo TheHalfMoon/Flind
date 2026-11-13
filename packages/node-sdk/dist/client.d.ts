@@ -1,5 +1,5 @@
-import { FeatureFlagValue, JsonType, PostHogCaptureOptions, PostHogCoreStateless, PostHogEventProperties, PostHogFetchOptions, PostHogFetchResponse, PostHogFlagsAndPayloadsResponse, PostHogPersistedProperty, Properties, RetriableOptions } from '@posthog/core';
-import type { Metrics, PostHogFeatureFlagDetails, Span, SpanContextManager, StartSpanOptions } from '@posthog/core';
+import { FeatureFlagValue, JsonType, PostHogCaptureOptions, PostHogCoreStateless, PostHogEventProperties, PostHogFetchOptions, PostHogFetchResponse, PostHogFlagsAndPayloadsResponse, PostHogPersistedProperty, Properties, RetriableOptions } from '@flind/core';
+import type { Metrics, PostHogFeatureFlagDetails, Span, SpanContextManager, StartSpanOptions } from '@flind/core';
 import { AllFlagsOptions, EventMessage, FeatureFlagEvaluationRuntime, FeatureFlagResult, FlagEvaluationOptions, GroupIdentifyMessage, IdentifyMessage, IPostHog, OverrideFeatureFlagsOptions, PostHogOptions, SetPersonPropertiesMessage, UnsetPersonPropertiesMessage } from './types';
 import { FeatureFlagEvaluations, FlagCalledEventParams } from './feature-flag-evaluations';
 import ErrorTracking from './extensions/error-tracking';

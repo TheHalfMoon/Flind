@@ -5,7 +5,7 @@ import {
   parseRetryAfterMs,
   removeTrailingSlash,
   safeJsonStringify,
-} from '@posthog/core'
+} from '@flind/core'
 
 import { EmailError } from './errors'
 import type {

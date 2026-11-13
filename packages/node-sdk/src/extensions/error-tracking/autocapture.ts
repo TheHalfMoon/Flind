@@ -2,7 +2,7 @@
 // Copyright (c) 2012 Functional Software, Inc. dba Sentry
 // Licensed under the MIT License: https://github.com/getsentry/sentry-javascript/blob/develop/LICENSE
 
-import { ErrorTracking as CoreErrorTracking } from '@posthog/core'
+import { ErrorTracking as CoreErrorTracking } from '@flind/core'
 import type { ContextData } from '../context/types'
 
 type PostHogListener = { _posthogErrorHandler: boolean }

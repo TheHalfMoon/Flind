@@ -1,4 +1,4 @@
-import { stripUrlHash } from "@posthog/core";
+import { stripUrlHash } from "@flind/core";
 function normalizeRequestCurrentUrl(currentUrl, disableCaptureUrlHashes) {
     return disableCaptureUrlHashes ? stripUrlHash(currentUrl) : currentUrl;
 }

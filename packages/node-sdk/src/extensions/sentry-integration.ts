@@ -26,7 +26,7 @@
  * @param {boolean} [sendExceptionsToPostHog] Optional: capture exceptions as events in PostHog (default: true)
  */
 
-import { ErrorTracking as CoreErrorTracking } from '@posthog/core'
+import { ErrorTracking as CoreErrorTracking } from '@flind/core'
 import { type PostHogBackendClient } from '../client'
 
 // NOTE - we can't import from @sentry/types because it changes frequently and causes clashes

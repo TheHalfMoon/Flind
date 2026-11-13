@@ -29,15 +29,15 @@ export type {
 
 // Re-export FeatureFlagError from core for backwards compatibility.
 // These were originally defined in posthog-node and moved to core for reuse across SDKs.
-export { FeatureFlagError } from '@posthog/core'
-export type { FeatureFlagErrorType, UnresolvedFlagReason } from '@posthog/core'
+export { FeatureFlagError } from '@flind/core'
+export type { FeatureFlagErrorType, UnresolvedFlagReason } from '@flind/core'
 
 // Metrics types re-exported so consumers can name the `metrics` client option
-// and API surface without a direct @posthog/core dependency.
-export type { CaptureMetricOptions, HistogramOptions, Metrics, MetricsConfig } from '@posthog/core'
+// and API surface without a direct @flind/core dependency.
+export type { CaptureMetricOptions, HistogramOptions, Metrics, MetricsConfig } from '@flind/core'
 
 // Tracing types re-exported so consumers can name the `traces` client option and
-// the span API without a direct @posthog/core dependency.
+// the span API without a direct @flind/core dependency.
 export type {
   Span,
   SpanAttributes,
@@ -49,7 +49,7 @@ export type {
   SpanRecord,
   BeforeSpanSendFn,
   TracesConfig,
-} from '@posthog/core'
+} from '@flind/core'
 
 // Identity helpers re-exported from core for posthog-node consumers managing
 // distinct_id outside the browser SDK (e.g. Lambda functions handing out
@@ -62,5 +62,5 @@ export {
   readPostHogCookie,
   serializePostHogCookie,
   uuidv7,
-} from '@posthog/core'
-export type { CookieStore, PostHogCookieState } from '@posthog/core'
+} from '@flind/core'
+export type { CookieStore, PostHogCookieState } from '@flind/core'

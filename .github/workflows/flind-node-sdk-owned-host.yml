@@ -25,9 +25,10 @@ jobs:
                   set -euo pipefail
                   sdk_tmp="$(mktemp -d)"
                   echo "FLIND_NODE_HOST_QA_TMP=$sdk_tmp" >> "$GITHUB_ENV"
-                  npm install --prefix "$sdk_tmp" --ignore-scripts --no-audit --no-fund posthog-node@5.63.2
+                  npm install --prefix "$sdk_tmp" --ignore-scripts --no-audit --no-fund posthog-node@5.63.2 @posthog/core@1.64.1
                   mkdir -p "$sdk_tmp/node_modules/@flind"
                   cp -R packages/node-sdk "$sdk_tmp/node_modules/@flind/node"
+                  cp -R packages/core "$sdk_tmp/node_modules/@flind/core"
                   cp tools/flind/flind-node-sdk-wire.test.mjs "$sdk_tmp/"
                   cp tools/flind/flind-node-sdk-compat.test.mjs "$sdk_tmp/"
             - name: Assert CJS and ESM ABI and local-only capture (real Node)

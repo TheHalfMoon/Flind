@@ -1,8 +1,8 @@
 import { PostHogBackendClient } from '../../client';
 import type { ContextData } from '../context/types';
 import { EventMessage, PostHogOptions } from '../../types';
-import type { Logger } from '@posthog/core';
-import { ErrorTracking as CoreErrorTracking } from '@posthog/core';
+import type { Logger } from '@flind/core';
+import { ErrorTracking as CoreErrorTracking } from '@flind/core';
 export default class ErrorTracking {
     private client;
     private _exceptionAutocaptureEnabled;

@@ -1,4 +1,4 @@
-import type { PostHogEventProperties } from '@posthog/core'
+import type { PostHogEventProperties } from '@flind/core'
 
 /**
  * Typed `options` object on a Capture V1 event. Legacy `$`-prefixed sentinel

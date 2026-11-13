@@ -68,7 +68,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@posthog/core": "^1.64.1"
+    "@flind/core": "workspace:*"
   },
   "peerDependencies": {
     "@opentelemetry/api": "^1.2.0",

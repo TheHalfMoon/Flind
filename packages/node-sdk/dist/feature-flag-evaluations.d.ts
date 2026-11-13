@@ -1,4 +1,4 @@
-import { FeatureFlagValue, JsonType, UnresolvedFlagReason } from '@posthog/core';
+import { FeatureFlagValue, JsonType, UnresolvedFlagReason } from '@flind/core';
 /**
  * Internal per-flag record stored by a {@link FeatureFlagEvaluations} instance.
  * Not part of the public API.

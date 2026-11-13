@@ -1,4 +1,4 @@
-import { PostHogEventProperties, safeJsonStringify } from '@posthog/core'
+import { PostHogEventProperties, safeJsonStringify } from '@flind/core'
 
 import { AI_BATCH_TARGET_BYTES, AI_MAX_EVENT_BYTES } from './routing'
 

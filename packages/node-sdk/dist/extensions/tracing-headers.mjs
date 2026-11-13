@@ -1,4 +1,4 @@
-import { cookieStoreFromHeader, getConsentCookieName, getPostHogCookieName, isNoLike, isYesLike } from "@posthog/core";
+import { cookieStoreFromHeader, getConsentCookieName, getPostHogCookieName, isNoLike, isYesLike } from "@flind/core";
 const TRACING_HEADER_MAX_LENGTH = 1000;
 const COOKIE_SESSION_IDLE_TIMEOUT_MS = 1800000;
 const COOKIE_SESSION_MAX_LENGTH_MS = 86400000;

@@ -32,7 +32,7 @@ __webpack_require__.d(__webpack_exports__, {
     DEFAULT_EMAIL_REQUEST_TIMEOUT_MS: ()=>DEFAULT_EMAIL_REQUEST_TIMEOUT_MS,
     EmailSender: ()=>EmailSender
 });
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 const external_errors_js_namespaceObject = require("./errors.js");
 const SEND_PATH = '/api/projects/@current/messaging/send/email/';
 const STATUS_PATH = '/api/projects/@current/messaging/emails/{messageId}/';

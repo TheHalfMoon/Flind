@@ -1,5 +1,5 @@
 import { platform, release } from "node:os";
-import { osResourceAttributes } from "@posthog/core";
+import { osResourceAttributes } from "@flind/core";
 function hostOsResourceAttributes() {
     let osName;
     let osVersion;

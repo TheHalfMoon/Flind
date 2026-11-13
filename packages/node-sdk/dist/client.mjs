@@ -1,5 +1,5 @@
 import { version } from "./version.mjs";
-import { PostHogCoreStateless, PostHogMetrics, PostHogPersistedProperty, PostHogTraces, SyncSpanContextManager, allSettled, getEventUuid, inertSpan, isBlockedUA, isPlainObject, isPostHogFetchContentTooLargeError, minimizeFlagCalledEventProperties, raceWithTimeout, resolveMetricsConfig, resolveTracesConfig, runWithActiveSpan, safeSetTimeout, uuidv7 } from "@posthog/core";
+import { PostHogCoreStateless, PostHogMetrics, PostHogPersistedProperty, PostHogTraces, SyncSpanContextManager, allSettled, getEventUuid, inertSpan, isBlockedUA, isPlainObject, isPostHogFetchContentTooLargeError, minimizeFlagCalledEventProperties, raceWithTimeout, resolveMetricsConfig, resolveTracesConfig, runWithActiveSpan, safeSetTimeout, uuidv7 } from "@flind/core";
 import { FeatureFlagError } from "./types.mjs";
 import { FeatureFlagEvaluations } from "./feature-flag-evaluations.mjs";
 import { FeatureFlagsPoller, InconclusiveMatchError, RequiresServerEvaluation } from "./extensions/feature-flags/feature-flags.mjs";

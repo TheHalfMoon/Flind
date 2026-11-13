@@ -1,4 +1,4 @@
-import type { PostHogEventProperties } from '@posthog/core';
+import type { PostHogEventProperties } from '@flind/core';
 /**
  * Queue route for events eligible for Capture V1 (everything except `$ai_*`). Its queue is the
  * historical {@link PostHogPersistedProperty.Queue}, so v0 mode is byte-identical to before.

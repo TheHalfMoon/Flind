@@ -36,7 +36,7 @@ __webpack_require__.d(__webpack_exports__, {
     parseSemver: ()=>parseSemver,
     relativeDateParseForFeatureFlagMatching: ()=>core_namespaceObject.relativeDateParseForFeatureFlagMatching
 });
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 const SIXTY_SECONDS = 60000;
 function normalizeEvaluationRuntime(value) {
     return 'client' === value || 'server' === value ? value : 'all';

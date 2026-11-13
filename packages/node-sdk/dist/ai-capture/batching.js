@@ -31,7 +31,7 @@ __webpack_require__.d(__webpack_exports__, {
     eventByteSize: ()=>eventByteSize,
     partitionAiBatch: ()=>partitionAiBatch
 });
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 const external_routing_js_namespaceObject = require("./routing.js");
 const encoder = new TextEncoder();
 function eventByteSize(message) {

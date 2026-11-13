@@ -18,8 +18,8 @@ var __webpack_modules__ = {
     "./types" (module) {
         module.exports = require("./types.js");
     },
-    "@posthog/core" (module) {
-        module.exports = require("@posthog/core");
+    "@flind/core" (module) {
+        module.exports = require("@flind/core");
     }
 };
 var __webpack_module_cache__ = {};
@@ -123,7 +123,7 @@ var __webpack_exports__ = {};
     var _extensions_context_listeners__rspack_import_3 = __webpack_require__("./extensions/context/listeners");
     var _feature_flag_evaluations__rspack_import_4 = __webpack_require__("./feature-flag-evaluations");
     var _emails_errors__rspack_import_5 = __webpack_require__("./emails/errors");
-    var _posthog_core__rspack_import_6 = __webpack_require__("@posthog/core");
+    var _posthog_core__rspack_import_6 = __webpack_require__("@flind/core");
     __webpack_require__.d(__webpack_exports__, {
         EmailError: ()=>_emails_errors__rspack_import_5.EmailError,
         FeatureFlagError: ()=>_posthog_core__rspack_import_6.FeatureFlagError,

@@ -30,7 +30,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
     V1CaptureSender: ()=>V1CaptureSender
 });
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 const external_errors_js_namespaceObject = require("./errors.js");
 const external_transform_js_namespaceObject = require("./transform.js");
 const V1_ANALYTICS_PATH = '/i/v1/analytics/events';
