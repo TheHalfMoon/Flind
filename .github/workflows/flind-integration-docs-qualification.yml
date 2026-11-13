@@ -1,0 +1,30 @@
+# First-party documentation links in integration configuration surfaces.
+name: Flind integration docs ownership
+
+on:
+    push:
+        branches:
+            - 'flind-ci/integration-owned-docs-*'
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-integration-docs-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: No inherited documentation or donor marketing banner
+              run: |
+                  node --check frontend/bin/flind-integration-docs-owned.test.mjs
+                  node --test frontend/bin/flind-integration-docs-owned.test.mjs

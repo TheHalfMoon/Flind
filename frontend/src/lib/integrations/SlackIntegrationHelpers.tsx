@@ -14,6 +14,7 @@ import {
 import api from 'lib/api'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { OrganizationMembershipLevel } from 'lib/constants'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { usePeriodicRerender } from 'lib/hooks/usePeriodicRerender'
 import { IconSlackExternal } from 'lib/lemon-ui/icons'
 import { Spinner } from 'lib/lemon-ui/Spinner'
@@ -27,6 +28,9 @@ import { integrationsLogic } from './integrationsLogic'
 import { slackChannelId } from './slackChannel'
 import { slackConnectLogic } from './slackConnectLogic'
 import { slackIntegrationLogic } from './slackIntegrationLogic'
+
+const slackWebhookDocsUrl = flindDocsUrl('webhooks/slack')
+const slackDestinationDocsUrl = flindDocsUrl('cdp/destinations/slack')
 
 export type SlackNotConfiguredBannerProps = Partial<Pick<LemonBannerProps, 'type' | 'className'>> & {
     /** Replaces the lead sentence, so a caller can say what connecting Slack is for. */
@@ -406,9 +410,11 @@ function SlackChannelPickerNotices({
                                 ? 'The Flind Slack app is not in every selected channel. '
                                 : 'The Flind Slack app is not in this channel. '}
                             Invite it with <code>/invite @Flind</code> in Slack, then check again.{' '}
-                            <Link to="https://posthog.com/docs/webhooks/slack" target="_blank">
-                                See the docs for more information
-                            </Link>
+                            {slackWebhookDocsUrl && (
+                                <Link to={slackWebhookDocsUrl} target="_blank">
+                                    See the docs for more information
+                                </Link>
+                            )}
                         </span>
                         <LemonButton
                             type="secondary"
@@ -650,9 +656,11 @@ export function SlackChannelPicker(props: SlackChannelPickerProps): JSX.Element 
                     // and spill past the modal edge.
                     <p className="text-secondary italic p-1 max-w-sm">
                         No channels found. Make sure the Flind Slack App is installed in the channel.{' '}
-                        <Link to="https://posthog.com/docs/cdp/destinations/slack" target="_blank">
-                            See the docs for more information.
-                        </Link>
+                        {slackDestinationDocsUrl && (
+                            <Link to={slackDestinationDocsUrl} target="_blank">
+                                See the docs for more information.
+                            </Link>
+                        )}
                     </p>
                 }
                 options={options}

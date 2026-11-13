@@ -1,3 +1,4 @@
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { ICONS } from 'lib/integrations/utils'
 
 import { JiraIntegration } from '../components/Integrations'
@@ -16,7 +17,7 @@ export const Jira = defineIntegration(
             'Link existing Jira issues to Flind',
             'Keep your team in sync across tools',
         ],
-        docsUrl: 'https://posthog.com/docs/error-tracking/integrations',
+        docsUrl: flindDocsUrl('error-tracking/integrations') ?? undefined,
     },
     JiraIntegration
 )
