@@ -43,6 +43,13 @@ test('browser SDK positive and negative HogQL checks both reject missing or malf
     assert.doesNotMatch(browser, /Number\(body\.results\?\.\[0\]\?\.\[0\] \?\? 0\)/)
 })
 
+test('browser E2E onboarding copy follows fail-closed Flind-owned docs when no host is configured', () => {
+    const brand = readFileSync(new URL('e2e/flind-brand-journeys.spec.ts', root), 'utf8')
+    assert.match(brand, /SDK documentation is not configured for this Flind instance/)
+    assert.match(brand, /Read the Flind SDK documentation/)
+    assert.doesNotMatch(brand, /getByText\('Read the SDK documentation'\)/)
+})
+
 test('all three actual SDK/capture suites remain behind the opt-in full service E2E journey', () => {
     assert.match(workflow, /workflow_dispatch:\s+inputs:\s+ingestion:/)
     assert.match(workflow, /default: false/)

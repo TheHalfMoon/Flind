@@ -35,7 +35,10 @@ test.describe('Flind rebranded journeys', () => {
         await expect(
             page.getByRole('heading', { name: 'Send React data to Flind using the integration SDK' })
         ).toBeVisible()
-        await expect(page.getByText('Read the SDK documentation')).toBeVisible()
+        // Until the operator configures Flind-owned HTTPS documentation,
+        // show helpful setup guidance instead of a donor-hosted docs link.
+        await expect(page.getByText('SDK documentation is not configured for this Flind instance.')).toBeVisible()
+        await expect(page.getByRole('link', { name: 'Read the Flind SDK documentation' })).toHaveCount(0)
     })
 
     test('billing renders without legal claims attached to Flind', async ({ page }) => {
