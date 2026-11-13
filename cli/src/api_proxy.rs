@@ -3,10 +3,13 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::{env, fs};
 
+use inquire::validator::Validation;
+use reqwest::Url;
 use thiserror::Error;
 
 use crate::error::CapturedError;
 use crate::invocation_context::InvocationContext;
+use crate::utils::auth::host_validator;
 use crate::utils::homedir::posthog_home_dir_if_available;
 
 const API_CLI_BUNDLE: &str = "posthog-api-cli.mjs";
@@ -275,6 +278,46 @@ fn isolate_inherited_analytics(cmd: &mut Command) {
     cmd.env_remove("POSTHOG_CLI_INVOCATION_ID");
 }
 
+/// Validate every possible Node API host before forwarding personal keys.
+/// Resolve all aliases to a single origin to prevent the bundled Node tool
+/// from silently prioritizing a different inherited provider destination.
+/// No host means fail closed, including for metadata commands, because the
+/// staged Node bundle has not passed a no-egress runtime audit.
+fn approved_proxy_host(
+    explicit_host: Option<&str>,
+    legacy_host: Option<&str>,
+    cli_host: Option<&str>,
+    credential_host: Option<&str>,
+) -> anyhow::Result<String> {
+    let candidates = [
+        ("--host", explicit_host),
+        ("POSTHOG_HOST", legacy_host),
+        ("POSTHOG_CLI_HOST", cli_host),
+        ("stored CLI host", credential_host),
+    ];
+    for (label, value) in candidates {
+        if let Some(value) = value {
+            if !matches!(host_validator(value), Ok(Validation::Valid)) {
+                anyhow::bail!("Flind API proxy rejected invalid {label}; use an explicitly approved Flind HTTPS origin or loopback HTTP");
+            }
+        }
+    }
+    let chosen = explicit_host
+        .or(credential_host)
+        .or(cli_host)
+        .or(legacy_host)
+        .ok_or_else(|| anyhow::anyhow!("Flind API proxy requires an explicit, approved instance host; no cloud default is allowed"))?;
+    let chosen_origin = Url::parse(chosen)?.origin();
+    for (label, value) in candidates {
+        if let Some(value) = value {
+            if Url::parse(value)?.origin() != chosen_origin {
+                anyhow::bail!("Flind API proxy rejected conflicting {label}; remove conflicting host aliases before forwarding credentials");
+            }
+        }
+    }
+    Ok(chosen_origin.ascii_serialization())
+}
+
 /// Runs the embedded Node API CLI. A non-zero child exit is returned as
 /// `Ok(Some(code))` — not `process::exit` — so the caller can flush telemetry
 /// and honor `--no-fail` before terminating with the same code.
@@ -283,6 +326,16 @@ pub fn run(
     host_override: Option<String>,
     invocation_context: Option<&InvocationContext>,
 ) -> Result<Option<i32>, CapturedError> {
+    // Do this before bundle materialization, Node execution, or credential
+    // injection. In particular, the no-InvocationContext `api` route cannot
+    // bypass hostname, TLS, vendor-domain or conflict validation.
+    let approved_host = approved_proxy_host(
+        host_override.as_deref(),
+        env::var("POSTHOG_HOST").ok().as_deref(),
+        env::var("POSTHOG_CLI_HOST").ok().as_deref(),
+        invocation_context.map(|ctx| ctx.config.host.as_str()),
+    )
+    .map_err(CapturedError::from)?;
     let script = find_script().map_err(|error| CapturedError::from(anyhow::Error::new(error)))?;
     let mut cmd = Command::new("node");
     cmd.arg("--");
@@ -292,9 +345,10 @@ pub fn run(
     inject_credentials(&mut cmd, invocation_context);
     isolate_inherited_analytics(&mut cmd);
 
-    if let Some(host) = host_override {
-        cmd.env("POSTHOG_CLI_HOST", host);
-    }
+    // The embedded Node CLI sees one validated host, never a mixture of
+    // inherited alias/override values with ambiguous precedence.
+    cmd.env_remove("POSTHOG_HOST");
+    cmd.env("POSTHOG_CLI_HOST", approved_host);
 
     let status = cmd.status().map_err(|source| {
         CapturedError::from(anyhow::Error::new(ApiProxyError::NodeSpawnFailed {
@@ -339,6 +393,84 @@ mod tests {
                 None => env::remove_var(self.name),
             }
         }
+    }
+
+    #[test]
+    fn proxy_host_preflight_rejects_missing_unowned_and_conflicting_targets() {
+        for (override_host, legacy_host, cli_host, stored_host) in [
+            (None, None, None, None),
+            (Some("https://us.posthog.com"), None, None, None),
+            (None, None, Some("https://eu.posthog.com"), None),
+            (None, Some("http://example.com"), None, None),
+            (None, None, Some("http://localhost:8000/path"), None),
+            (None, None, Some("https://user:secret@flind.example"), None),
+            (
+                Some("https://flind.example"),
+                Some("https://other.example"),
+                None,
+                None,
+            ),
+            (
+                None,
+                Some("http://localhost:8010"),
+                Some("http://127.0.0.1:8010"),
+                None,
+            ),
+            (
+                None,
+                None,
+                Some("https://example.invalid"),
+                Some("http://localhost:8000"),
+            ),
+        ] {
+            assert!(
+                approved_proxy_host(override_host, legacy_host, cli_host, stored_host).is_err(),
+                "proxy must reject hostless, inherited or conflicted configuration"
+            );
+        }
+    }
+
+    #[test]
+    fn proxy_host_preflight_normalizes_matching_approved_origins() {
+        assert_eq!(
+            approved_proxy_host(
+                Some("https://flind.example/"),
+                None,
+                Some("https://flind.example"),
+                None
+            )
+            .unwrap(),
+            "https://flind.example"
+        );
+        assert_eq!(
+            approved_proxy_host(None, Some("http://127.0.0.1:8000"), None, None).unwrap(),
+            "http://127.0.0.1:8000"
+        );
+        assert_eq!(
+            approved_proxy_host(None, None, None, Some("https://my.flind.example:8443/")).unwrap(),
+            "https://my.flind.example:8443"
+        );
+    }
+
+    #[test]
+    fn proxy_child_is_forced_to_a_single_approved_host() {
+        let approved = approved_proxy_host(
+            None,
+            Some("https://flind.example"),
+            Some("https://flind.example"),
+            None,
+        )
+        .unwrap();
+        let mut child = Command::new("node");
+        child.env_remove("POSTHOG_HOST");
+        child.env("POSTHOG_CLI_HOST", approved);
+        let entries: Vec<_> = child.get_envs().collect();
+        assert!(entries
+            .iter()
+            .any(|(name, value)| *name == "POSTHOG_HOST" && value.is_none()));
+        assert!(entries.iter().any(|(name, value)| {
+            *name == "POSTHOG_CLI_HOST" && value.is_some_and(|host| host == "https://flind.example")
+        }));
     }
 
     #[test]
