@@ -1,0 +1,37 @@
+name: Flind inherited publisher quarantine regression
+
+on:
+    push:
+        branches:
+            - main
+            - 'flind-security/quarantine-unqualified-release-workflows-*'
+        paths:
+            - '.github/workflows/**'
+            - '.github/quarantined-release-workflows/**'
+            - 'tools/flind/quarantined_release_workflows.json'
+            - 'tools/flind/test_inherited_release_quarantine.py'
+    pull_request:
+        paths:
+            - '.github/workflows/**'
+            - '.github/quarantined-release-workflows/**'
+            - 'tools/flind/quarantined_release_workflows.json'
+            - 'tools/flind/test_inherited_release_quarantine.py'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    release-quarantine:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  sparse-checkout: |
+                      .github/workflows
+                      .github/quarantined-release-workflows
+                      tools/flind
+                  sparse-checkout-cone-mode: true
+            - name: Check inherited publishing remains unavailable until owned release review
+              run: python3 -m unittest tools.flind.test_inherited_release_quarantine -v
