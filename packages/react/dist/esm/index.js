@@ -93,6 +93,34 @@ function isDeepEqual(obj1, obj2, visited) {
     }
     return true;
 }
+
+function flindReactOwnedOrigin(value) {
+    if (typeof value !== "string" || !value.trim()) return null;
+    try {
+        var url = new URL(value.trim());
+        var hostname = url.hostname.toLowerCase().replace(/\.+$/, "");
+        var donor = hostname === "posthog.com" || hostname.endsWith(".posthog.com") ||
+            hostname === "posthog.dev" || hostname.endsWith(".posthog.dev") ||
+            hostname === "posthogstatus.com" || hostname.endsWith(".posthogstatus.com");
+        var loopback = hostname === "127.0.0.1" || hostname === "[::1]";
+        if (!hostname || donor || url.username || url.password || url.pathname !== "/" ||
+            url.search || url.hash ||
+            (url.protocol !== "https:" && !(url.protocol === "http:" && loopback))) {
+            return null;
+        }
+        return url.origin;
+    } catch {
+        return null;
+    }
+}
+function flindReactOwnedOptions(options) {
+    var apiHost = flindReactOwnedOrigin(options === null || options === void 0 ? void 0 : options.api_host);
+    if (!apiHost) return null;
+    var uiHost = (options === null || options === void 0 ? void 0 : options.ui_host) === void 0
+        ? apiHost : flindReactOwnedOrigin(options.ui_host);
+    if (!uiHost) return null;
+    return Object.assign({}, options, { api_host: apiHost, ui_host: uiHost });
+}
 function PostHogProvider(_b) {
     var _c, _d;
     var children = _b.children, client = _b.client, apiKey = _b.apiKey, options = _b.options;
@@ -119,24 +147,30 @@ function PostHogProvider(_b) {
         if (client || !apiKey)
             return;
         var defaultInstance = getDefaultPostHogInstance();
+        var safeOptions = flindReactOwnedOptions(options);
+        if (!safeOptions) {
+            console.warn("[Flind React] An explicit owned api_host and safe ui_host are required; analytics disabled.");
+            if (previousInitializationRef.current || defaultInstance.__loaded) defaultInstance.opt_out_capturing();
+            return;
+        }
         var previousInitialization = previousInitializationRef.current;
         if (!previousInitialization) {
             if (defaultInstance.__loaded)
                 console.warn("[PostHog.js] `posthog` was already loaded elsewhere. This may cause issues.");
-            defaultInstance.init(apiKey, options);
+            defaultInstance.init(apiKey, safeOptions);
             previousInitializationRef.current = {
                 apiKey: apiKey,
-                options: options !== null && options !== void 0 ? options : {}
+                options: safeOptions
             };
         }
         else {
             if (apiKey !== previousInitialization.apiKey)
                 console.warn("[PostHog.js] You have provided a different `apiKey` to `PostHogProvider` than the one that was already initialized. This is not supported by our provider and we'll keep using the previous key. If you need to toggle between API Keys you need to control the `client` yourself and pass it in as a prop rather than an `apiKey` prop.");
-            if (options && !isDeepEqual(options, previousInitialization.options))
-                defaultInstance.set_config(options);
+            if (!isDeepEqual(safeOptions, previousInitialization.options))
+                defaultInstance.set_config(safeOptions);
             previousInitializationRef.current = {
                 apiKey: apiKey,
-                options: options !== null && options !== void 0 ? options : {}
+                options: safeOptions
             };
         }
     }, [

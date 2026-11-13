@@ -1,0 +1,43 @@
+name: Flind React owned collector runtime integration
+
+on:
+    push:
+        branches:
+            - 'flind-ci/react-sdk-owned-origin-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-react-owned-host-qa-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    react:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 25
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            - name: Verify source and compiled collector rules on Node 26
+              run: node --test tools/flind/flind-react-owned-host.test.mjs
+
+            - name: Exercise actual React provider effects with synthetic clients
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  test_dir="$(mktemp -d)"
+                  trap 'rm -rf "$test_dir"' EXIT
+                  npm install --prefix "$test_dir" --ignore-scripts --no-audit --no-fund \
+                      react@18.3.1 react-dom@18.3.1 posthog-js@1.447.1 \
+                      @testing-library/react@16.3.0 vitest@3.2.4 jsdom@26.1.0
+                  mkdir -p "$test_dir/react"
+                  cp -R packages/react/src "$test_dir/react/src"
+                  cp packages/react/package.json "$test_dir/react/package.json"
+                  (cd "$test_dir" && ./node_modules/.bin/vitest run \
+                      react/src/context/__tests__/PostHogProvider.test.tsx \
+                      --globals --environment jsdom)
