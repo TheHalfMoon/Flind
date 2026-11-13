@@ -15,6 +15,11 @@ on:
                 required: false
                 type: boolean
                 default: false
+            clickhouse_recovery:
+                description: 'Test synthetic ClickHouse Native-format export/import (ephemeral only)'
+                required: false
+                type: boolean
+                default: false
 
 permissions:
     contents: read
@@ -54,6 +59,10 @@ jobs:
 
             - name: Validate two-store migration preservation contract (no Docker)
               run: python3 -m unittest tools.flind.test_migration_data_preservation -v
+
+            - name: Validate synthetic ClickHouse Native recovery preflight (no Docker)
+              if: startsWith(github.ref, 'refs/heads/flind-ci/clickhouse-recovery-') || inputs.clickhouse_recovery == true
+              run: python3 -m unittest tools.flind.test_clickhouse_native_recovery -v
 
             - name: Record source identity
               run: |
@@ -142,6 +151,15 @@ jobs:
                   python manage.py makemigrations --check --dry-run 2>&1 | tail -20 | tee "$EVIDENCE/django-makemigrations-check.txt"
                   test "$pending" = "0"
 
+            - name: Verify synthetic ClickHouse Native export/import and negative control
+              if: startsWith(github.ref, 'refs/heads/flind-ci/clickhouse-recovery-') || inputs.clickhouse_recovery == true
+              env:
+                  FLIND_SYNTHETIC_CLICKHOUSE_RECOVERY: '1'
+              run: |
+                  set -euo pipefail
+                  bash -n tools/flind/qualify_clickhouse_native_recovery.sh
+                  bash tools/flind/qualify_clickhouse_native_recovery.sh
+
             # This is an optional, runner-local synthetic recovery test. It never
             # connects to production or exports an actual database backup artifact.
             - name: Verify synthetic PostgreSQL backup and clean restore
@@ -167,7 +185,7 @@ jobs:
               run: |
                   {
                     echo "## Flind migration evidence"
-                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt postgres-restore-smoke.txt migration-canary-summary.txt; do
+                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt postgres-restore-smoke.txt migration-canary-summary.txt clickhouse-native-recovery.txt; do
                       [ -f "$EVIDENCE/$f" ] || continue
                       echo "### $f"; echo '```'; cat "$EVIDENCE/$f"; echo '```'
                     done
