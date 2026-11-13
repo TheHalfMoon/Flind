@@ -1,4 +1,4 @@
-import type { MetricAttributeValue, OtlpMetric, OtlpMetricsPayload } from '@posthog/types'
+import type { MetricAttributeValue, OtlpMetric, OtlpMetricsPayload } from '@flind/types'
 import { buildOtlpResourceAttributes, toOtlpResourceKeyValueList } from '../utils/otlp-resource'
 import type { ResolvedPostHogMetricsConfig } from './types'
 

@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "strict": true,
+        "noEmit": true,
+        "skipLibCheck": false,
+        "lib": [
+            "ES2022",
+            "DOM"
+        ],
+        "paths": {
+            "@flind/core": [
+                "../../packages/core"
+            ],
+            "@flind/types": [
+                "../../packages/types"
+            ]
+        }
+    },
+    "files": [
+        "flind-core-types-contract.ts"
+    ]
+}

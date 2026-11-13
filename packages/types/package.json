@@ -29,22 +29,5 @@
       "import": "./dist/index.mjs"
     }
   },
-  "devDependencies": {
-    "@rslib/core": "0.23.2",
-    "typescript": "7.0.2",
-    "vitest": "^1.6.1",
-    "typescript-legacy": "npm:typescript@5.8.2",
-    "@posthog-tooling/tsconfig-base": "1.1.1"
-  },
-  "scripts": {
-    "check-types": "tsc --noEmit --project tsconfig.build.json",
-    "clean": "rimraf dist",
-    "lint": "oxlint --report-unused-disable-directives-severity error src",
-    "lint:fix": "oxlint --report-unused-disable-directives-severity error src --fix",
-    "build": "rslib build",
-    "dev": "rslib build -w",
-    "test:unit": "vitest run",
-    "package": "pnpm pack --out $PACKAGE_DEST/%s.tgz"
-  },
   "private": true
 }

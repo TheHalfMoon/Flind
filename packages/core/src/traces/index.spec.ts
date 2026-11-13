@@ -10,7 +10,7 @@ import type {
   TraceSdkContext,
 } from './types'
 import type { Logger } from '../types'
-import type { Span } from '@posthog/types'
+import type { Span } from '@flind/types'
 import { createMockLogger } from '@/testing'
 
 const TRACE_ID = '4bf92f3577b34da6a3ce929d0e0e4736'

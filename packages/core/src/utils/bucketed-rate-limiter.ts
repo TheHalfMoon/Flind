@@ -1,4 +1,4 @@
-import type { ExceptionRateLimiterConfig } from '@posthog/types'
+import type { ExceptionRateLimiterConfig } from '@flind/types'
 import { Logger } from '../types'
 import { clampToRange } from './number-utils'
 

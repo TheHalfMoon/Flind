@@ -9,7 +9,7 @@ import type {
   OtlpMetric,
   OtlpMetricsPayload,
   OtlpNumberDataPoint,
-} from '@posthog/types'
+} from '@flind/types'
 import type { Logger } from '../types'
 import { isArray } from '../utils'
 import { FlushTimer } from '../utils/flush-timer'

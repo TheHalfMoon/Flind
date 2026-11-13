@@ -1,4 +1,4 @@
-import type { MetricsConfig } from '@posthog/types';
+import type { MetricsConfig } from '@flind/types';
 import type { ResolvedPostHogMetricsConfig } from './types';
 /**
  * Resolves the public `metrics` config into the shape `PostHogMetrics`

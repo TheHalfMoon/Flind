@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - 'flind-ci/node-sdk-private-core-*'
+            - 'flind-ci/types-core-integration-*'
     workflow_dispatch:
 
 permissions:
@@ -39,6 +40,7 @@ jobs:
                   npm install --prefix "$sdk_tmp" --ignore-scripts --no-audit --no-fund posthog-node@5.63.2 @posthog/core@1.64.1
                   mkdir -p "$sdk_tmp/node_modules/@flind"
                   cp -R packages/core "$sdk_tmp/node_modules/@flind/core"
+                  cp -R packages/types "$sdk_tmp/node_modules/@flind/types"
                   cp -R packages/node-sdk "$sdk_tmp/node_modules/@flind/node"
                   cp tools/flind/flind-node-sdk-wire.test.mjs "$sdk_tmp/"
                   cp tools/flind/flind-node-sdk-compat.test.mjs "$sdk_tmp/"

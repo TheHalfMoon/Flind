@@ -5,7 +5,7 @@
 // non-retriable, so one bad span destroys every other span in the batch.
 
 import type { Logger } from '../types'
-import type { SpanAttributes, SpanTimeInput } from '@posthog/types'
+import type { SpanAttributes, SpanTimeInput } from '@flind/types'
 
 const FALLBACK_SPAN_NAME = 'unknown'
 

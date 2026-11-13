@@ -1,4 +1,4 @@
-import type { MetricsConfig } from '@posthog/types'
+import type { MetricsConfig } from '@flind/types'
 import type { ResolvedPostHogMetricsConfig } from './types'
 
 const DEFAULT_FLUSH_INTERVAL_MS = 10000

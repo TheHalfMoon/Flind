@@ -47,9 +47,11 @@ assert.equal(flind.private, true)
 assert.equal(flind.version, donor.version)
 assert.equal(flind.license, donor.license)
 assert.equal(flind.repository.url, 'https://github.com/TheHalfMoon/Flind.git')
-for (const key of ['main', 'module', 'types', 'exports', 'devDependencies', 'scripts']) {
+for (const key of ['main', 'module', 'types', 'exports']) {
     assert.deepEqual(flind[key], donor[key], `Compatibility metadata drift: ${key}`)
 }
+assert.equal(flind.devDependencies, undefined, 'No dormant type-package build toolchain in production workspace')
+assert.equal(flind.scripts, undefined, 'No upstream release scripts in the private workspace package')
 for (const name of ['LICENSE', 'NOTICE.md', 'README.md', 'UPSTREAM_PACKAGE.json']) {
     assert.ok(flind.files.includes(name), `Provenance excluded from files manifest: ${name}`)
 }

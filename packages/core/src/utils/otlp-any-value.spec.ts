@@ -1,4 +1,4 @@
-import type { LogAttributeValue } from '@posthog/types'
+import type { LogAttributeValue } from '@flind/types'
 import { toOtlpAnyValue, toOtlpKeyValueList } from './otlp-any-value'
 
 describe('otlp-any-value', () => {

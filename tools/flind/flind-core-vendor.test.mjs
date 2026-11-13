@@ -25,23 +25,26 @@ test('published core package metadata, legal notices and Flind namespace are pre
     assert.equal(fork.private, true)
     assert.deepEqual(fork.exports, original.exports)
     assert.deepEqual(fork.typesVersions, original.typesVersions)
-    assert.deepEqual(fork.dependencies, original.dependencies)
+    const expectedDependencies = { ...original.dependencies }
+    delete expectedDependencies['@posthog/types']
+    expectedDependencies['@flind/types'] = 'workspace:*'
+    assert.deepEqual(fork.dependencies, expectedDependencies)
     assert.deepEqual(readFileSync(join(flindRoot, 'LICENSE')), readFileSync(join(donorRoot, 'LICENSE')))
     assert.match(readFileSync(join(flindRoot, 'NOTICE.md'), 'utf8'), /Apache-2.0 and MIT/)
 })
 
-test('full staged source and compiled distributions match pinned published package byte for byte', () => {
+test('core source and runtime match the pinned archive with only the approved type-namespace substitution', () => {
     for (const folder of ['src', 'dist', 'surveys']) {
         const left = join(donorRoot, folder)
         const right = join(flindRoot, folder)
         const files = allFiles(left)
         assert.deepEqual(allFiles(right), files, 'staged ' + folder + ' file inventory differs')
         for (const file of files) {
-            assert.deepEqual(
-                readFileSync(join(right, file)),
-                readFileSync(join(left, file)),
-                folder + '/' + file
-            )
+            const originalBytes = readFileSync(join(left, file))
+            const expectedBytes = file.endsWith('.ts')
+                ? Buffer.from(originalBytes.toString('utf8').replaceAll('@posthog/types', '@flind/types'), 'utf8')
+                : originalBytes
+            assert.deepEqual(readFileSync(join(right, file)), expectedBytes, folder + '/' + file)
         }
     }
 })

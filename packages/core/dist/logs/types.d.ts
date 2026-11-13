@@ -1,4 +1,4 @@
-export type { LogSeverityLevel, OtlpSeverityText, OtlpSeverityEntry, LogAttributeValue, LogAttributes, CaptureLogOptions, OtlpAnyValue, OtlpKeyValue, OtlpLogRecord, OtlpLogsPayload, BeforeSendLogFn, } from '@posthog/types';
+export type { LogSeverityLevel, OtlpSeverityText, OtlpSeverityEntry, LogAttributeValue, LogAttributes, CaptureLogOptions, OtlpAnyValue, OtlpKeyValue, OtlpLogRecord, OtlpLogsPayload, BeforeSendLogFn, } from '@flind/types';
 /**
  * SDK-internal context the host SDK passes to `buildOtlpLogRecord` at capture
  * time. Each SDK populates the fields that apply to it: browser fills
@@ -24,9 +24,9 @@ export interface LogSdkContext {
     appState?: 'foreground' | 'background';
     activeFeatureFlags?: string[];
 }
-import type { Logger as CaptureLoggerType } from '@posthog/types';
+import type { Logger as CaptureLoggerType } from '@flind/types';
 export type CaptureLogger = CaptureLoggerType;
-import type { LogAttributeValue, OtlpLogRecord, OtlpLogsPayload, BeforeSendLogFn } from '@posthog/types';
+import type { LogAttributeValue, OtlpLogRecord, OtlpLogsPayload, BeforeSendLogFn } from '@flind/types';
 import type { PostHogPersistedProperty } from '../types';
 import type { SendLogsBatchOutcome } from '../posthog-core-stateless';
 export interface BufferedLogEntry {

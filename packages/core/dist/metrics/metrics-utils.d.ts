@@ -1,4 +1,4 @@
-import type { MetricAttributeValue, OtlpMetric, OtlpMetricsPayload } from '@posthog/types';
+import type { MetricAttributeValue, OtlpMetric, OtlpMetricsPayload } from '@flind/types';
 import type { ResolvedPostHogMetricsConfig } from './types';
 /**
  * Default histogram bucket boundaries — the OpenTelemetry SDK defaults.

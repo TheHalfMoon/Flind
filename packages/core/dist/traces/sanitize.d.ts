@@ -1,5 +1,5 @@
 import type { Logger } from '../types';
-import type { SpanTimeInput } from '@posthog/types';
+import type { SpanTimeInput } from '@flind/types';
 /**
  * Span and event names must be non-empty. An empty or non-string name is
  * replaced rather than dropped, so a mis-instrumented call site loses its name,

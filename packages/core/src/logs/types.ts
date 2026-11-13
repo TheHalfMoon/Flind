@@ -1,4 +1,4 @@
-// Re-export OTLP/log types from @posthog/types so the rest of the logs module can
+// Re-export OTLP/log types from @flind/types so the rest of the logs module can
 // pull everything from one place.
 export type {
   LogSeverityLevel,
@@ -12,7 +12,7 @@ export type {
   OtlpLogRecord,
   OtlpLogsPayload,
   BeforeSendLogFn,
-} from '@posthog/types'
+} from '@flind/types'
 
 /**
  * SDK-internal context the host SDK passes to `buildOtlpLogRecord` at capture
@@ -40,10 +40,10 @@ export interface LogSdkContext {
   activeFeatureFlags?: string[]
 }
 
-// The public capture-logger interface lives in @posthog/types as `Logger`. Core
+// The public capture-logger interface lives in @flind/types as `Logger`. Core
 // also exports a `Logger` (the SDK's internal warn/info/error logger). Alias the
 // public one to avoid the name collision inside this package.
-import type { Logger as CaptureLoggerType } from '@posthog/types'
+import type { Logger as CaptureLoggerType } from '@flind/types'
 export type CaptureLogger = CaptureLoggerType
 
 import type {
@@ -52,7 +52,7 @@ import type {
   OtlpLogRecord,
   OtlpLogsPayload,
   BeforeSendLogFn,
-} from '@posthog/types'
+} from '@flind/types'
 import type { PostHogPersistedProperty } from '../types'
 import type { SendLogsBatchOutcome } from '../posthog-core-stateless'
 

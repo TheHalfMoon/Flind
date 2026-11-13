@@ -1,6 +1,6 @@
 import { assignUserAttributes } from '../utils/json-utils'
 import type { ResolvedTracesConfig } from './types'
-import type { BeforeSpanSendFn, TracesConfig } from '@posthog/types'
+import type { BeforeSpanSendFn, TracesConfig } from '@flind/types'
 import type { Logger } from '../types'
 
 // OpenTelemetry's BatchSpanProcessor defaults, which sit comfortably under the

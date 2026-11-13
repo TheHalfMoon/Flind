@@ -1,4 +1,4 @@
-import type { Span, StartSpanOptions } from '@posthog/types';
+import type { Span, StartSpanOptions } from '@flind/types';
 import type { Logger } from '../types';
 import type { ResolvedTracesConfig, SpanContextManager, TraceSdkContext, TracesHost } from './types';
 type SpanCallback<T> = (span: Span) => T;

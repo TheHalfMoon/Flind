@@ -1,4 +1,4 @@
-import type { OtlpKeyValue } from '@posthog/types'
+import type { OtlpKeyValue } from '@flind/types'
 import type { Logger } from '../types'
 import { assignUserAttributes } from './json-utils'
 import { toOtlpKeyValueList } from './otlp-any-value'

@@ -6,7 +6,7 @@ import type {
   OtlpLogsPayload,
   OtlpSeverityEntry,
   OtlpSeverityText,
-} from '@posthog/types'
+} from '@flind/types'
 import type { Logger } from '../types'
 import type { LogSdkContext, ResolvedPostHogLogsConfig } from './types'
 import { isNullish, isNumber, isUndefined } from '../utils'
