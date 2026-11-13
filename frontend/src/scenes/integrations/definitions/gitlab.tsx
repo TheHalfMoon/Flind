@@ -1,3 +1,4 @@
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { ICONS } from 'lib/integrations/utils'
 
 import { GitLabIntegration } from '../components/Integrations'
@@ -16,7 +17,7 @@ export const GitLab = defineIntegration(
             'Link existing GitLab issues to Flind',
             'Keep engineering work connected to product signals',
         ],
-        docsUrl: 'https://posthog.com/docs/error-tracking/integrations',
+        docsUrl: flindDocsUrl('error-tracking/integrations') ?? undefined,
     },
     GitLabIntegration
 )
