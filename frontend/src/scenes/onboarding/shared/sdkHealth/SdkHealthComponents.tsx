@@ -5,6 +5,7 @@ import { IconInfo } from '@flind/icons'
 import { LemonMenu, LemonTable, LemonTableColumns, LemonTag, LemonTagType, Link, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { newInternalTab } from 'lib/utils/newInternalTab'
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 import { urls } from 'scenes/urls'
@@ -135,6 +136,7 @@ export function SdkSection({ sdkType }: { sdkType: SdkType }): JSX.Element {
     const links = SDK_DOCS_LINKS[sdkType]
     const sdkName = SDK_TYPE_READABLE_NAME[sdkType]
     const migrationReason = sdk.migrationRequired ? sdk.allReleases[0]?.statusReason : undefined
+    const updatingDocs = flindDocsUrl('sdk-health/keeping-sdks-current')
 
     return (
         <div className="flex flex-col mb-4 p-2">
@@ -147,7 +149,7 @@ export function SdkSection({ sdkType }: { sdkType: SdkType }): JSX.Element {
                             <>
                                 Version number refreshed hourly.
                                 <br />
-                                Click 'Releases ↗' to check for any since.
+                                Flind-owned release links appear only when configured.
                             </>
                         }
                     >
@@ -157,19 +159,24 @@ export function SdkSection({ sdkType }: { sdkType: SdkType }): JSX.Element {
                 </div>
 
                 <div className="flex flex-row gap-2">
-                    <Link to={links.releases} target="_blank" targetBlankIcon>
-                        Releases
-                    </Link>
-                    <Link to={links.docs} target="_blank" targetBlankIcon>
-                        Docs
-                    </Link>
-                    <Link
-                        to="https://posthog.com/docs/sdk-doctor/keeping-sdks-current#ways-to-keep-sdk-versions-current"
-                        target="_blank"
-                        targetBlankIcon
-                    >
-                        Updating
-                    </Link>
+                    {links.releases && (
+                        <Link to={links.releases} target="_blank" targetBlankIcon>
+                            Releases
+                        </Link>
+                    )}
+                    {links.docs && (
+                        <Link to={links.docs} target="_blank" targetBlankIcon>
+                            Docs
+                        </Link>
+                    )}
+                    {updatingDocs && (
+                        <Link to={updatingDocs} target="_blank" targetBlankIcon>
+                            Updating
+                        </Link>
+                    )}
+                    {!links.releases && !links.docs && !updatingDocs && (
+                        <span className="text-muted-alt text-xs">Flind SDK documentation is not configured</span>
+                    )}
                 </div>
             </div>
 

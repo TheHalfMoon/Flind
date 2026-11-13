@@ -1,3 +1,5 @@
+import { flindDocsUrl, flindPublicUrl } from 'lib/flindPublicLinks'
+
 import type { SdkType } from './sdkHealthLogic'
 
 export const SDK_TYPE_READABLE_NAME: Record<SdkType, string> = {
@@ -34,129 +36,51 @@ export const SDK_TYPE_READABLE_NAME: Record<SdkType, string> = {
     js: 'JavaScript Lite',
 }
 
-export const SDK_DOCS_LINKS: Record<SdkType, { releases: string; docs: string }> = {
-    web: {
-        releases: 'https://github.com/PostHog/posthog-js/blob/main/packages/browser/CHANGELOG.md',
-        docs: 'https://posthog.com/docs/libraries/js',
-    },
-    'posthog-ios': {
-        releases: 'https://github.com/PostHog/posthog-ios/releases',
-        docs: 'https://posthog.com/docs/libraries/ios',
-    },
-    'posthog-android': {
-        releases: 'https://github.com/PostHog/posthog-android/releases',
-        docs: 'https://posthog.com/docs/libraries/android',
-    },
-    'posthog-java': {
-        releases: 'https://github.com/PostHog/posthog-java/releases',
-        docs: 'https://posthog.com/docs/libraries/java',
-    },
-    'posthog-server': {
-        releases: 'https://github.com/PostHog/posthog-android/releases',
-        docs: 'https://posthog.com/docs/libraries/java',
-    },
-    'posthog-node': {
-        releases: 'https://github.com/PostHog/posthog-js/blob/main/packages/node/CHANGELOG.md',
-        docs: 'https://posthog.com/docs/libraries/node',
-    },
-    'posthog-python': {
-        releases: 'https://github.com/PostHog/posthog-python/releases',
-        docs: 'https://posthog.com/docs/libraries/python',
-    },
-    'posthog-php': {
-        releases: 'https://github.com/PostHog/posthog-php/releases',
-        docs: 'https://posthog.com/docs/libraries/php',
-    },
-    'posthog-laravel': {
-        releases: 'https://github.com/PostHog/posthog-php/releases?q=laravel-v',
-        docs: 'https://posthog.com/docs/libraries/laravel',
-    },
-    'posthog-ruby': {
-        releases: 'https://github.com/PostHog/posthog-ruby/releases',
-        docs: 'https://posthog.com/docs/libraries/ruby',
-    },
-    'posthog-go': {
-        releases: 'https://github.com/PostHog/posthog-go/releases',
-        docs: 'https://posthog.com/docs/libraries/go',
-    },
-    'posthog-flutter': {
-        releases: 'https://github.com/PostHog/posthog-flutter/releases',
-        docs: 'https://posthog.com/docs/libraries/flutter',
-    },
-    'posthog-react-native': {
-        releases: 'https://github.com/PostHog/posthog-js/blob/main/packages/react-native/CHANGELOG.md',
-        docs: 'https://posthog.com/docs/libraries/react-native',
-    },
-    'posthog-kmp': {
-        releases: 'https://github.com/PostHog/posthog-kmp/releases',
-        docs: 'https://posthog.com/docs/libraries/kmp',
-    },
-    'posthog-dotnet': {
-        releases: 'https://github.com/PostHog/posthog-dotnet/releases',
-        docs: 'https://posthog.com/docs/libraries/dotnet',
-    },
-    'posthog-elixir': {
-        releases: 'https://github.com/PostHog/posthog-elixir/releases',
-        docs: 'https://posthog.com/docs/libraries/elixir',
-    },
-    'posthog-unity': {
-        releases: 'https://github.com/PostHog/posthog-unity/releases',
-        docs: 'https://posthog.com/docs/libraries/unity',
-    },
-    'posthog-node-mcp': {
-        releases: 'https://github.com/PostHog/posthog-js/blob/main/packages/mcp/CHANGELOG.md',
-        docs: 'https://posthog.com/docs/mcp-analytics',
-    },
-    'posthog-python-mcp': {
-        releases: 'https://github.com/PostHog/posthog-python/releases',
-        docs: 'https://posthog.com/docs/mcp-analytics',
-    },
-    'posthog-edge': {
-        releases: 'https://github.com/PostHog/posthog-js/blob/main/packages/node/CHANGELOG.md',
-        docs: 'https://posthog.com/docs/libraries/node',
-    },
-    'posthog-convex': {
-        releases: 'https://github.com/PostHog/posthog-js/blob/main/packages/convex/CHANGELOG.md',
-        docs: 'https://posthog.com/docs/libraries/convex',
-    },
-    'posthog-rails': {
-        releases: 'https://github.com/PostHog/posthog-ruby/releases',
-        docs: 'https://posthog.com/docs/libraries/ruby-on-rails',
-    },
-    'posthog-aspnetcore': {
-        releases: 'https://github.com/PostHog/posthog-dotnet/releases',
-        docs: 'https://posthog.com/docs/libraries/dotnet',
-    },
-    'posthog-rs': {
-        releases: 'https://github.com/PostHog/posthog-rs/releases',
-        docs: 'https://posthog.com/docs/libraries/rust',
-    },
-    'posthog-rs-mcp': {
-        releases: 'https://github.com/PostHog/posthog-rs/releases',
-        docs: 'https://posthog.com/docs/mcp-analytics',
-    },
-    'posthog-godot': {
-        releases: 'https://github.com/PostHog/posthog-godot/releases',
-        docs: 'https://github.com/PostHog/posthog-godot#readme',
-    },
-    'posthog-unreal': {
-        releases: 'https://github.com/PostHog/posthog-unreal/releases',
-        docs: 'https://github.com/PostHog/posthog-unreal#readme',
-    },
-    'posthog-go-mcp': {
-        releases: 'https://github.com/PostHog/posthog-go/releases',
-        docs: 'https://posthog.com/docs/mcp-analytics',
-    },
-    'posthog-ruby-mcp': {
-        releases: 'https://github.com/PostHog/posthog-ruby/releases',
-        docs: 'https://posthog.com/docs/mcp-analytics',
-    },
-    'posthog-roblox': {
-        releases: 'https://github.com/PostHog/posthog-roblox/releases',
-        docs: 'https://posthog.com/docs/libraries/roblox',
-    },
-    js: {
-        releases: 'https://github.com/PostHog/posthog-js/blob/main/packages/web/CHANGELOG.md',
-        docs: 'https://github.com/PostHog/posthog-js/blob/main/packages/web/README.md',
-    },
+// Local/owned SDK links only. The SDK report may identify upstream library
+// versions, but its UI must never navigate to an inherited vendor website.
+// Until the operator configures an owned HTTPS docs root, links remain hidden.
+// SDK identity names here are compatibility values supplied by existing events.
+const SDK_DOCS_PATHS: Record<SdkType, string> = {
+    web: 'libraries/js',
+    'posthog-ios': 'libraries/ios',
+    'posthog-android': 'libraries/android',
+    'posthog-java': 'libraries/java',
+    'posthog-server': 'libraries/java',
+    'posthog-node': 'libraries/node',
+    'posthog-python': 'libraries/python',
+    'posthog-php': 'libraries/php',
+    'posthog-laravel': 'libraries/laravel',
+    'posthog-ruby': 'libraries/ruby',
+    'posthog-go': 'libraries/go',
+    'posthog-flutter': 'libraries/flutter',
+    'posthog-react-native': 'libraries/react-native',
+    'posthog-kmp': 'libraries/kmp',
+    'posthog-dotnet': 'libraries/dotnet',
+    'posthog-elixir': 'libraries/elixir',
+    'posthog-unity': 'libraries/unity',
+    'posthog-node-mcp': 'mcp-analytics',
+    'posthog-python-mcp': 'mcp-analytics',
+    'posthog-edge': 'libraries/node',
+    'posthog-convex': 'libraries/convex',
+    'posthog-rails': 'libraries/ruby-on-rails',
+    'posthog-aspnetcore': 'libraries/dotnet',
+    'posthog-rs': 'libraries/rust',
+    'posthog-rs-mcp': 'mcp-analytics',
+    'posthog-godot': 'libraries/godot',
+    'posthog-unreal': 'libraries/unreal',
+    'posthog-go-mcp': 'mcp-analytics',
+    'posthog-ruby-mcp': 'mcp-analytics',
+    'posthog-roblox': 'libraries/roblox',
+    js: 'libraries/js-lite',
 }
+
+type SdkOwnedLinks = { releases: string | null; docs: string | null }
+
+// Keep the entire existing set of SDK choices, including mobile, MCP and
+// integrations; only replace navigation destinations with validated URLs.
+export const SDK_DOCS_LINKS: Record<SdkType, SdkOwnedLinks> = Object.fromEntries(
+    Object.entries(SDK_DOCS_PATHS).map(([sdkType, docsPath]) => [
+        sdkType,
+        { releases: flindPublicUrl('changelog'), docs: flindDocsUrl(docsPath) },
+    ])
+) as Record<SdkType, SdkOwnedLinks>
