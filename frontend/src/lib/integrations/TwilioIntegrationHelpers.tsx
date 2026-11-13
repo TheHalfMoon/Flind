@@ -3,11 +3,14 @@ import { useEffect, useMemo } from 'react'
 
 import { LemonInputSelect, LemonInputSelectOption, Link } from '@flind/lemon-ui'
 
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { usePeriodicRerender } from 'lib/hooks/usePeriodicRerender'
 
 import { IntegrationType, TwilioPhoneNumberType } from '~/types'
 
 import { twilioIntegrationLogic } from './twilioIntegrationLogic'
+
+const twilioDocsUrl = flindDocsUrl('cdp/destinations/twilio')
 
 const getTwilioPhoneNumberOptions = (
     twilioPhoneNumbers?: TwilioPhoneNumberType[] | null
@@ -91,9 +94,11 @@ export function TwilioPhoneNumberPicker({
                 emptyStateComponent={
                     <p className="text-secondary italic p-1">
                         No phone numbers found. Make sure your Twilio account has phone numbers configured.{' '}
-                        <Link to="https://posthog.com/docs/cdp/destinations/twilio" target="_blank">
-                            See the docs for more information.
-                        </Link>
+                        {twilioDocsUrl && (
+                            <Link to={twilioDocsUrl} target="_blank">
+                                See the docs for more information.
+                            </Link>
+                        )}
                     </p>
                 }
                 options={
