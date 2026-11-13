@@ -188,6 +188,9 @@ fn safe_api_error_code(body: &str) -> Option<String> {
 }
 
 fn capture_exception(metadata: ErrorTelemetryMetadata) {
+    if !crate::invocation_context::external_telemetry_allowed() {
+        return;
+    }
     let mut options = match CaptureExceptionOptions::new()
         .fingerprint(metadata.fingerprint())
         .property("error_kind", metadata.error_kind)
@@ -280,6 +283,14 @@ fn capture_exception(metadata: ErrorTelemetryMetadata) {
 mod tests {
     use super::*;
     use crate::api_proxy::{ApiProxyError, MaterializeStep};
+
+    #[test]
+    fn cli_failures_do_not_send_unqualified_exception_telemetry() {
+        assert!(!crate::invocation_context::external_telemetry_allowed());
+        let err = CapturedError::from(anyhow::anyhow!("synthetic local CLI error")).capture();
+        assert!(err.exception_id.is_none());
+        assert_eq!(err.inner.to_string(), "synthetic local CLI error");
+    }
 
     #[test]
     fn local_errors_produce_structured_telemetry() {
