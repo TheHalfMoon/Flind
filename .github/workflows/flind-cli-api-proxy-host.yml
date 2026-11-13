@@ -1,0 +1,22 @@
+name: Flind CLI Node API proxy host privacy gate
+
+on:
+    push:
+        branches:
+            - 'flind-security/cli-proxy-host-preflight-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    proxy-host-contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - name: Validate all proxy API host entrypoints and negative subprocess contract
+              run: |
+                  python3 -m unittest tools.flind.test_cli_api_proxy_host_preflight tools.flind.test_cli_proxy_analytics_isolation tools.flind.test_cli_runtime_no_inherited_telemetry -v
+            - name: Native Rust formatting
+              run: cargo fmt --manifest-path cli/Cargo.toml --all -- --check
