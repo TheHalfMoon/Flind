@@ -1,28 +1,23 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonCard } from '@flind/lemon-ui'
-
-import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { EditKeyModal } from 'scenes/settings/user/PersonalAPIKeys'
 
 import { OnboardingStepKey } from '~/types'
 
 import { OnboardingStepComponentType } from '../onboardingLogic'
 import { OnboardingStep } from '../OnboardingStep'
-import { SourceMapsInstructionsModal } from './OnboardingErrorTrackingSourceMapsModal'
 import { SourceMapOptionCard } from './source-maps/SourceMapOptionCard'
-import { automatedSourceMapsTechnologies } from './source-maps/SourceMapsSDKInstructionsMap'
 import { sourceMapsStepLogic } from './source-maps/sourceMapsStepLogic'
 import { SourceMapStatus } from './source-maps/SourceMapStatus'
 
+/**
+ * Do not offer executable installation, login, or symbol-upload commands until
+ * a Flind-owned CLI binary and its upload-host/tenant-isolation checks pass.
+ * The inherited installer targets another provider's distribution service.
+ */
 export const OnboardingErrorTrackingSourceMapsStep: OnboardingStepComponentType = () => {
-    const { selectedOption, instructionsModalOpen, shouldShowContinue, shouldShowSourceMapStatus } =
-        useValues(sourceMapsStepLogic)
-    const { setSelectedOption, setInstructionsModalOpen } = useActions(sourceMapsStepLogic)
-
-    const selectedSDK = selectedOption
-        ? automatedSourceMapsTechnologies.find((sdk) => sdk.key === selectedOption)
-        : null
+    const { selectedOption, shouldShowContinue, shouldShowSourceMapStatus } = useValues(sourceMapsStepLogic)
+    const { setSelectedOption } = useActions(sourceMapsStepLogic)
 
     return (
         <OnboardingStep
@@ -32,103 +27,47 @@ export const OnboardingErrorTrackingSourceMapsStep: OnboardingStepComponentType 
             showSkip={!shouldShowContinue}
         >
             <p>
-                Some languages, bundlers and frameworks obfuscate code making debugging difficult. Source maps are
-                essential to transform code back to the original source. Choose the option that matches your setup to
-                ensure stack traces are readable.
+                Source maps help transform minified stack traces into readable code. Choose the option that matches
+                your application. This optional setup must not send code, symbols or credentials to another provider.
             </p>
 
             <div className="space-y-3 mt-4">
                 <SourceMapOptionCard
                     title="Unminified code"
-                    description="Not all languages and frameworks are minified. For example Python and Node code often remains readable and there is no need to upload source maps."
+                    description="Unminified languages such as Python and Node.js can produce readable stack traces without uploading source maps."
                     optionKey="no-minification"
                     selectedOption={selectedOption}
                     onSelect={() => setSelectedOption('no-minification')}
                 />
-
                 <SourceMapOptionCard
                     title="Public source maps"
-                    description="If source maps are publicly available Flind can fetch and provide readable stack traces without any additional setup."
+                    description="If source maps are served by your own application, Flind may be able to retrieve them without a private upload."
                     optionKey="public-source-maps"
                     selectedOption={selectedOption}
                     onSelect={() => setSelectedOption('public-source-maps')}
                 />
-
                 <SourceMapOptionCard
-                    title="Upload source maps manually"
-                    description="Should you wish to keep your source maps private you will need to upload source maps during your build process to see unminified code in your stack traces."
+                    title="Private source maps (Flind CLI not yet available)"
+                    description="An independently built and tested Flind CLI is required for private source maps and native debug symbols."
                     optionKey="cli"
                     selectedOption={selectedOption}
                     onSelect={() => setSelectedOption('cli')}
                 >
-                    <div className="mt-4 space-y-4">
-                        <div>
-                            <p className="text-sm mb-2">
-                                The <code>posthog-cli</code> handles this process. You will need to install it.
-                            </p>
-                            <CodeSnippet language={Language.Bash}>
-                                {[
-                                    "curl --proto '=https' --tlsv1.2 -LsSf https://download.posthog.com/cli | sh",
-                                    'posthog-cli-update',
-                                ].join('\n')}
-                            </CodeSnippet>
-                            <p className="text-sm my-2">And complete the necessary authentication.</p>
-                            <CodeSnippet language={Language.Bash}>posthog-cli login</CodeSnippet>
-                        </div>
-                        <div>
-                            <p className="text-sm mb-2">
-                                Once you've built your application and have bundled assets that serve your site, inject
-                                the context required by Flind to associate the maps with the served code. You will
-                                then need to upload the modified assets to Flind. Both of these operations can be done
-                                by running the respective sourcemap commands.
-                            </p>
-                            <CodeSnippet language={Language.Bash}>
-                                posthog-cli sourcemap process --directory ./path/to/assets
-                            </CodeSnippet>
-                        </div>
-                    </div>
+                    <p className="mt-4 text-sm text-muted">
+                        Private source-map uploads are not yet available through this setup wizard. Installer,
+                        authentication and upload commands are intentionally withheld until the Flind CLI has passed
+                        owned-host, authorization, binary integrity and distribution checks. Do not install another
+                        provider's CLI or upload private source code to its service as part of Flind setup.
+                    </p>
                 </SourceMapOptionCard>
             </div>
 
-            <div className="mt-6">
-                <h3 className="text-lg font-semibold mb-4">Automatic source maps upload</h3>
-                <p className="mb-4">
-                    For some frameworks and languages, Flind can automatically upload source maps during your build
-                    process. Select your framework to see how to configure it.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    {automatedSourceMapsTechnologies.map((sdk) => (
-                        <LemonCard
-                            key={sdk.key}
-                            className={`p-4 cursor-pointer flex flex-col items-start justify-center border-2 ${selectedOption === sdk.key ? 'border-[var(--primary-3000-frame-bg-light)]' : 'border-transparent'}`}
-                            onClick={() => {
-                                setSelectedOption(sdk.key)
-                                setInstructionsModalOpen(true)
-                            }}
-                        >
-                            {typeof sdk.image === 'string' ? (
-                                <img src={sdk.image} className="w-8 h-8 mb-2" alt={`${sdk.name} logo`} />
-                            ) : typeof sdk.image === 'object' && 'default' in sdk.image ? (
-                                <img src={sdk.image.default} className="w-8 h-8 mb-2" alt={`${sdk.name} logo`} />
-                            ) : (
-                                sdk.image
-                            )}
-                            <strong>{sdk.name}</strong>
-                        </LemonCard>
-                    ))}
-                </div>
-            </div>
-
-            {selectedSDK && (
-                <SourceMapsInstructionsModal
-                    isOpen={instructionsModalOpen}
-                    onClose={() => setInstructionsModalOpen(false)}
-                    sdk={selectedSDK}
-                />
-            )}
+            <p className="mt-6 text-sm text-muted">
+                Automatic source-map and iOS dSYM uploads are also unavailable until the first-party Flind CLI is
+                qualified. You can select unminified code, use public source maps, or skip this optional step.
+            </p>
 
             {shouldShowSourceMapStatus && <SourceMapStatus />}
-
             <EditKeyModal zIndex="1162" />
         </OnboardingStep>
     )
