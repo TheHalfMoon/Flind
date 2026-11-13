@@ -135,7 +135,7 @@ function normalizeHost(value?: unknown): string {
   } catch {
     throw new Error('Flind Node SDK host must be a valid HTTPS origin')
   }
-  const hostname = url.hostname.toLowerCase().replace(/\.$/, '')
+  const hostname = url.hostname.toLowerCase().replace(/\.+$/, '')
   const donor = hostname === 'posthog.com' || hostname.endsWith('.posthog.com') ||
     hostname === 'posthog.dev' || hostname.endsWith('.posthog.dev')
   const loopback = hostname === '127.0.0.1' || hostname === '[::1]'
