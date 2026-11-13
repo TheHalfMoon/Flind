@@ -1,4 +1,4 @@
-import type { LogAttributeValue } from '@posthog/types'
+import type { LogAttributeValue } from '@flind/types'
 import { buildOtlpLogRecord, buildOtlpLogsPayload, buildResourceAttributes } from './logs-utils'
 import { Logger, PostHogPersistedProperty } from '../types'
 import { isArray, raceWithTimeout } from '../utils'

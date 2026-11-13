@@ -15,6 +15,16 @@ use std::{
 use tracing::debug;
 use uuid::Uuid;
 
+/**
+ * Flind has not qualified an independently owned CLI telemetry destination.
+ * Inherited posthog-rs defaults must never receive invocation IDs, API project
+ * identifiers, command usage or error metadata, including on a failed command.
+ * Keep this fail-closed until a separate reviewed, owned endpoint is available.
+ */
+pub fn external_telemetry_allowed() -> bool {
+    false
+}
+
 use crate::{
     api::client::PHClient,
     utils::auth::{env_id_validator, get_token, host_validator, token_validator},
@@ -131,6 +141,9 @@ pub fn current_invocation_id() -> String {
 /// it with no usage telemetry at all. Callers must join the handle before the
 /// process exits so the event reaches the queue ahead of the final flush.
 pub fn capture_command_run_without_context() -> JoinHandle<()> {
+    if !external_telemetry_allowed() {
+        return std::thread::spawn(|| {});
+    }
     std::thread::spawn(|| {
         debug!("Capturing command run event");
         posthog_rs::capture(Event::new_anon("posthog cli command run"));
@@ -265,6 +278,9 @@ impl InvocationContext {
     }
 
     pub fn capture_event(&self, event_name: &str, props: Vec<(&str, serde_json::Value)>) {
+        if !external_telemetry_allowed() {
+            return;
+        }
         let event_name = event_name.to_string();
         let props: Vec<(String, serde_json::Value)> =
             props.into_iter().map(|(k, v)| (k.to_string(), v)).collect();
@@ -308,6 +324,14 @@ mod tests {
             )
             .unwrap();
         event
+    }
+
+    #[test]
+    fn telemetry_stays_disabled_without_a_qualified_flind_endpoint() {
+        assert!(!external_telemetry_allowed());
+        // The API proxy has no InvocationContext, yet its usage hook must
+        // remain a no-op and must not instantiate an upstream telemetry client.
+        capture_command_run_without_context().join().unwrap();
     }
 
     #[test]

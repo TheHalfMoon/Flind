@@ -24,7 +24,7 @@ test('Node SDK consumes private core via an explicit pinned local workspace depe
     assert.equal(core.version, '1.64.1')
     assert.equal(core.private, true)
     assert.match(workspace, /- packages\/core/)
-    assert.match(lockfile, /  packages\/core:\s+dependencies:\s+'@posthog\/types':\s+specifier: \^1\.421\.0\s+version: 1\.421\.0/)
+    assert.match(lockfile, /  packages\/core:\s+dependencies:\s+'@flind\/types':\s+specifier: workspace:\*\s+version: link:\.\.\/types/)
     assert.match(lockfile, /  packages\/node-sdk:[\s\S]*?'@flind\/core':\s+specifier: workspace:\*\s+version: link:\.\.\/core/)
     assert.doesNotMatch(read('packages/node-sdk/README.md'), /runtime dependency and inherited/)
 })

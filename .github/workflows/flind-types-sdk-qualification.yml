@@ -9,6 +9,9 @@ on:
             - 'packages/types/**'
             - '.github/scripts/flind-types-parity.mjs'
             - '.github/workflows/flind-types-sdk-qualification.yml'
+            - 'packages/core/**'
+            - 'pnpm-lock.yaml'
+            - 'pnpm-workspace.yaml'
     workflow_dispatch:
 
 permissions:
@@ -32,16 +35,11 @@ jobs:
                   tar -xzf "$RUNNER_TEMP/posthog-types-1.421.0.tgz" -C "$RUNNER_TEMP"
             - name: Full source, license, metadata, and CJS/ESM parity
               run: node .github/scripts/flind-types-parity.mjs "$RUNNER_TEMP/package"
-            - name: Ensure unpublished, unlinked staging
+            - name: Ensure private owned types workspace and core linkage
               shell: bash
               run: |
                   set -euo pipefail
-                  if grep -E -q '^[[:space:]]*-[[:space:]]*packages/types[[:space:]]*$' pnpm-workspace.yaml; then
-                      echo "Types staging must not yet be a production workspace package"
-                      exit 1
-                  fi
-                  if grep -E -q '^[[:space:]]*packages/types:' pnpm-lock.yaml; then
-                      echo "Types staging must not yet alter the production lockfile"
-                      exit 1
-                  fi
-                  test "$(node -p "require('./packages/types/package.json').private")" = true
+                  grep -E -q '^[[:space:]]*-[[:space:]]*packages/types[[:space:]]*$' pnpm-workspace.yaml
+                  grep -E -q '^  packages/types: \{\}' pnpm-lock.yaml
+                  node -e "const p=require('./packages/types/package.json'); if(p.private!==true || p.name!=='@flind/types') process.exit(1)"
+                  node -e "const p=require('./packages/core/package.json'); if(p.dependencies['@flind/types']!=='workspace:*') process.exit(1)"

@@ -1,3 +1,5 @@
+import { flindDocsUrl } from 'lib/flindPublicLinks'
+
 import { SDK_CONFIGS } from 'scenes/settings/environment/SDKSetupInstructions'
 
 import { SDKInstructionsMap, SDKKey } from '~/types'
@@ -24,7 +26,7 @@ describe('Kotlin Multiplatform onboarding', () => {
         const sdk = getAvailableSDKs(instructions, {}, {}).find(({ key }) => key === SDKKey.KMP)
 
         expect(instructions[SDKKey.KMP]).not.toBeUndefined()
-        expect(sdk).toMatchObject({ key: SDKKey.KMP, docsLink: KMP_DOCS_LINK })
+        expect(sdk).toMatchObject({ key: SDKKey.KMP, docsLink: flindDocsUrl('libraries/kmp') ?? '' })
     })
 
     it('lists KMP as a mobile SDK in the SDK setup picker', () => {

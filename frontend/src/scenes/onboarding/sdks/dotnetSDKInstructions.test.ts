@@ -1,3 +1,5 @@
+import { flindDocsUrl } from 'lib/flindPublicLinks'
+
 import { SDKInstructionsMap, SDKKey } from '~/types'
 
 import { ExperimentsSDKInstructions } from './experiments/ExperimentsSDKInstructions'
@@ -16,6 +18,6 @@ describe('.NET onboarding', () => {
         const sdk = getAvailableSDKs(instructions, {}, {}).find(({ key }) => key === SDKKey.DOTNET)
 
         expect(instructions[SDKKey.DOTNET]).not.toBeUndefined()
-        expect(sdk).toMatchObject({ key: SDKKey.DOTNET, docsLink: 'https://posthog.com/docs/libraries/dotnet' })
+        expect(sdk).toMatchObject({ key: SDKKey.DOTNET, docsLink: flindDocsUrl('libraries/dotnet') ?? '' })
     })
 })

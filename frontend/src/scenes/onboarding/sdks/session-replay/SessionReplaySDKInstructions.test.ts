@@ -1,3 +1,5 @@
+import { flindDocsUrl } from 'lib/flindPublicLinks'
+
 import { SDKKey } from '~/types'
 
 import { getAvailableSDKs } from '../getAvailableSDKs'
@@ -11,7 +13,7 @@ describe('SessionReplaySDKInstructions', () => {
         expect(SessionReplaySDKInstructions[SDKKey.UNITY]).not.toBeUndefined()
         expect(unitySDK).toMatchObject({
             key: SDKKey.UNITY,
-            docsLink: 'https://posthog.com/docs/session-replay/installation/unity',
+            docsLink: flindDocsUrl('session-replay/installation/unity') ?? '',
         })
     })
 })

@@ -31,6 +31,8 @@ import { PythonEventCapture } from '@posthog/shared-onboarding/product-analytics
 
 import { JS_WEB_SNIPPETS as BASE_JS_WEB_SNIPPETS } from 'scenes/onboarding/shared/jsWebSnippets'
 
+import { flindDocsUrl } from 'lib/flindPublicLinks'
+
 import { SDKDocsLinkOverrides, SDKInstructionsMap, SDKKey } from '~/types'
 
 import { withOnboardingDocsWrapper } from '../shared/onboardingWrappers'
@@ -44,7 +46,7 @@ const PYTHON_SNIPPETS = {
 }
 
 export const ErrorTrackingSDKDocsLinkOverrides: SDKDocsLinkOverrides = {
-    [SDKKey.CONVEX]: 'https://posthog.com/docs/libraries/convex',
+    [SDKKey.CONVEX]: flindDocsUrl('libraries/convex') ?? '',
 }
 
 const ErrorTrackingAngularInstructionsWrapper = withOnboardingDocsWrapper({

@@ -9,7 +9,10 @@ test('a real captured event is queried before asserting another tenant sees none
     const confirmed = spec.indexOf("await test.step('poll until the event has been ingested and is queryable'")
     const denied = spec.indexOf("await test.step('another organization cannot query the captured event'")
     assert.ok(capture > -1 && confirmed > capture && denied > confirmed)
-    assert.match(spec.slice(confirmed, denied), /\.toBeGreaterThan\(0\)/)
+    const positive = spec.slice(confirmed, denied)
+    assert.match(positive, /\.toBeGreaterThan\(0\)/)
+    assert.match(positive, /return parseHogQLCount\(await resp\.json\(\)\)/)
+    assert.doesNotMatch(positive, /Number\(body\.results\?\.\[0\]\?\.\[0\] \?\? 0\)/)
 })
 
 test('negative control uses an independent organization and scoped HogQL query', () => {

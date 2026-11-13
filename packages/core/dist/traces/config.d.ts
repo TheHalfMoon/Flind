@@ -1,5 +1,5 @@
 import type { ResolvedTracesConfig } from './types';
-import type { TracesConfig } from '@posthog/types';
+import type { TracesConfig } from '@flind/types';
 import type { Logger } from '../types';
 /**
  * Resolves the public `traces` config into the shape core `PostHogTraces` consumes.

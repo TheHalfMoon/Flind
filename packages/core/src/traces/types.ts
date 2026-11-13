@@ -13,7 +13,7 @@ export type {
   OtlpSpanKeyValue,
   OtlpSpanStatus,
   OtlpTracesPayload,
-} from '@posthog/types'
+} from '@flind/types'
 
 import type {
   BeforeSpanSendFn,
@@ -24,7 +24,7 @@ import type {
   SpanRecord as HookSpanRecord,
   SpanStatusCode,
   TracesConfig,
-} from '@posthog/types'
+} from '@flind/types'
 
 /** Same tagged outcome shape as `SendLogsBatchOutcome` — one policy for all three signals. */
 export type SendTracesBatchOutcome =

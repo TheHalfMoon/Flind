@@ -2434,9 +2434,9 @@ importers:
 
   packages/core:
     dependencies:
-      '@posthog/types':
-        specifier: ^1.421.0
-        version: 1.421.0
+      '@flind/types':
+        specifier: workspace:*
+        version: link:../types
 
   packages/node-sdk:
     dependencies:
@@ -2463,6 +2463,8 @@ importers:
         version: 18.3.1
 
   packages/siphash: {}
+
+  packages/types: {}
 
   playwright:
     dependencies:

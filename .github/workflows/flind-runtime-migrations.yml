@@ -9,6 +9,22 @@ on:
         branches:
             - 'flind-ci/**'
     workflow_dispatch:
+        inputs:
+            postgres_restore:
+                description: 'Test synthetic PostgreSQL dump/restore after migrations (ephemeral only)'
+                required: false
+                type: boolean
+                default: false
+            clickhouse_recovery:
+                description: 'Test synthetic ClickHouse Native-format export/import (ephemeral only)'
+                required: false
+                type: boolean
+                default: false
+            objectstorage_restore:
+                description: 'Test synthetic S3 object delete/export/restore with ephemeral SeaweedFS'
+                required: false
+                type: boolean
+                default: false
 
 permissions:
     contents: read
@@ -41,6 +57,21 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 1
+
+            - name: Fail-closed synthetic recovery guard tests (no Docker)
+              if: startsWith(github.ref, 'refs/heads/flind-ci/postgres-recovery-') || inputs.postgres_restore == true
+              run: python3 -m unittest tools.flind.test_qualify_postgres_backup_restore_synthetic -v
+
+            - name: Validate two-store migration preservation contract (no Docker)
+              run: python3 -m unittest tools.flind.test_migration_data_preservation -v
+
+            - name: Validate synthetic ClickHouse Native recovery preflight (no Docker)
+              if: startsWith(github.ref, 'refs/heads/flind-ci/clickhouse-recovery-') || inputs.clickhouse_recovery == true
+              run: python3 -m unittest tools.flind.test_clickhouse_native_recovery -v
+
+            - name: Validate synthetic objectstorage preflight (no network)
+              if: startsWith(github.ref, 'refs/heads/flind-ci/objectstorage-') || inputs.objectstorage_restore == true
+              run: python3 -m unittest tools.flind.test_qualify_objectstorage_synthetic_restore -v
 
             - name: Record source identity
               run: |
@@ -90,12 +121,29 @@ jobs:
                   bin/migrate --scope=clickhouse --scope=postgres --scope=persons 2>&1 | tee "$EVIDENCE/migrate-run1.log"
                   echo "run1_seconds=$(( $(date +%s) - start ))" | tee -a "$EVIDENCE/timing.txt"
 
+            # A pristine second run can hide destructive migrations. Seed distinct
+            # synthetic tenant records in both real stores, then rerun migrations.
+            - name: Seed synthetic tenant data before migration rerun
+              env:
+                  FLIND_SYNTHETIC_MIGRATION_CHECK: '1'
+              run: |
+                  set -euo pipefail
+                  bash -n tools/flind/qualify_migration_data_preservation.sh
+                  bash tools/flind/qualify_migration_data_preservation.sh seed
+
             - name: Second migration run (idempotency over existing state)
               run: |
                   set -o pipefail
                   start=$(date +%s)
                   bin/migrate --scope=clickhouse --scope=postgres --scope=persons 2>&1 | tee "$EVIDENCE/migrate-run2.log"
                   echo "run2_seconds=$(( $(date +%s) - start ))" | tee -a "$EVIDENCE/timing.txt"
+
+            - name: Verify synthetic tenant data survived migration rerun
+              env:
+                  FLIND_SYNTHETIC_MIGRATION_CHECK: '1'
+              run: |
+                  set -euo pipefail
+                  bash tools/flind/qualify_migration_data_preservation.sh verify
 
             - name: Verify applied state
               run: |
@@ -112,21 +160,51 @@ jobs:
                   python manage.py makemigrations --check --dry-run 2>&1 | tail -20 | tee "$EVIDENCE/django-makemigrations-check.txt"
                   test "$pending" = "0"
 
+            - name: Verify synthetic ClickHouse Native export/import and negative control
+              if: startsWith(github.ref, 'refs/heads/flind-ci/clickhouse-recovery-') || inputs.clickhouse_recovery == true
+              env:
+                  FLIND_SYNTHETIC_CLICKHOUSE_RECOVERY: '1'
+              run: |
+                  set -euo pipefail
+                  bash -n tools/flind/qualify_clickhouse_native_recovery.sh
+                  bash tools/flind/qualify_clickhouse_native_recovery.sh
+
+            - name: Verify synthetic SeaweedFS object export, deletion, and restore
+              if: startsWith(github.ref, 'refs/heads/flind-ci/objectstorage-') || inputs.objectstorage_restore == true
+              env:
+                  FLIND_SYNTHETIC_S3_RESTORE: '1'
+                  FLIND_S3_ENDPOINT: http://127.0.0.1:19000
+              run: |
+                  set -euo pipefail
+                  docker compose -f docker-compose.dev.yml up -d --wait --wait-timeout 240 objectstorage
+                  python tools/flind/qualify_objectstorage_synthetic_restore.py
+
+            # This is an optional, runner-local synthetic recovery test. It never
+            # connects to production or exports an actual database backup artifact.
+            - name: Verify synthetic PostgreSQL backup and clean restore
+              if: startsWith(github.ref, 'refs/heads/flind-ci/postgres-recovery-') || inputs.postgres_restore == true
+              env:
+                  FLIND_SYNTHETIC_PG_RESTORE: '1'
+              run: |
+                  set -euo pipefail
+                  bash -n tools/flind/qualify_postgres_backup_restore_synthetic.sh
+                  bash tools/flind/qualify_postgres_backup_restore_synthetic.sh
+
             - name: Collect service logs
               if: always()
               run: |
                   mkdir -p "$EVIDENCE/services"
-                  for s in db clickhouse kafka zookeeper redis7; do
+                  for s in db clickhouse kafka zookeeper redis7 objectstorage; do
                     docker compose -f docker-compose.dev.yml logs --no-color "$s" > "$EVIDENCE/services/$s.log" 2>&1 || true
                   done
 
-            # Artifact storage is not used: evidence is printed here and committed to the repo.
+            # No artifact upload: a redacted, synthetic-only summary is printed in this GitHub Actions job.
             - name: Publish evidence to job summary
               if: always()
               run: |
                   {
                     echo "## Flind migration evidence"
-                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt; do
+                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt postgres-restore-smoke.txt migration-canary-summary.txt clickhouse-native-recovery.txt objectstorage-restore-smoke.txt; do
                       [ -f "$EVIDENCE/$f" ] || continue
                       echo "### $f"; echo '```'; cat "$EVIDENCE/$f"; echo '```'
                     done

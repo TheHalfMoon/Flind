@@ -1,4 +1,4 @@
-import type { Span, SpanAttributes, SpanRecord as HookSpanRecord, StartSpanOptions } from '@posthog/types'
+import type { Span, SpanAttributes, SpanRecord as HookSpanRecord, StartSpanOptions } from '@flind/types'
 import type { Logger } from '../types'
 import type {
   OtlpSpan,

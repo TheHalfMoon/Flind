@@ -1,0 +1,31 @@
+# First-party documentation-only health diagnostics contract.
+# Cheap deterministic regression guard; full Jest/typecheck in flind-frontend-tests.
+name: Flind health diagnostic documentation isolation
+
+on:
+    push:
+        branches:
+            - 'flind-ci/health-doc-isolation-*'
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-health-doc-isolation-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: No inherited help URLs on diagnostic surfaces
+              run: |
+                  node --check frontend/bin/flind-health-doc-isolation.test.mjs
+                  node --test frontend/bin/flind-health-doc-isolation.test.mjs

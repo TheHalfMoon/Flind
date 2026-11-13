@@ -1,4 +1,4 @@
-import type { Span, SpanAttributes, SpanAttributeValue, SpanKind, SpanStatusCode, SpanTimeInput } from '@posthog/types';
+import type { Span, SpanAttributes, SpanAttributeValue, SpanKind, SpanStatusCode, SpanTimeInput } from '@flind/types';
 import type { Logger } from '../types';
 import type { SpanContextManager, SpanRecord } from './types';
 /**

@@ -1,5 +1,5 @@
-export type { Span, SpanAttributes, SpanAttributeValue, SpanKind, SpanStatusCode, SpanTimeInput, StartSpanOptions, TracesConfig, BeforeSpanSendFn, OtlpSpan, OtlpSpanEvent, OtlpSpanKeyValue, OtlpSpanStatus, OtlpTracesPayload, } from '@posthog/types';
-import type { BeforeSpanSendFn, OtlpTracesPayload, Span, SpanAttributes, SpanRecord as HookSpanRecord, TracesConfig } from '@posthog/types';
+export type { Span, SpanAttributes, SpanAttributeValue, SpanKind, SpanStatusCode, SpanTimeInput, StartSpanOptions, TracesConfig, BeforeSpanSendFn, OtlpSpan, OtlpSpanEvent, OtlpSpanKeyValue, OtlpSpanStatus, OtlpTracesPayload, } from '@flind/types';
+import type { BeforeSpanSendFn, OtlpTracesPayload, Span, SpanAttributes, SpanRecord as HookSpanRecord, TracesConfig } from '@flind/types';
 /** Same tagged outcome shape as `SendLogsBatchOutcome` — one policy for all three signals. */
 export type SendTracesBatchOutcome = {
     kind: 'ok';

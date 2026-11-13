@@ -7,6 +7,12 @@ on:
     push:
         branches:
             - 'flind-ci/brand-audit-**'
+            - 'flind-ci/health-doc-isolation-*'
+            - 'flind-ci/rn-owned-docs-*'
+            - 'flind-ci/node-onboarding-fix-*'
+            - 'flind-ci/integration-owned-docs-*'
+            - 'flind-ci/sdk-catalog-owned-docs-*'
+            - 'flind-ci/source-map-cli-no-donor-egress-*'
     workflow_dispatch:
 
 permissions:
@@ -25,6 +31,8 @@ jobs:
             FLIND_JEST_TARGETS: >-
                 src/RootErrorBoundary.test.tsx
                 src/lib/flindBuildEnv.test.ts
+                src/lib/flindPublicLinks.test.ts
+                src/lib/components/ViewRecordingButton/ViewRecordingButton.test.tsx
                 src/scenes/settings/organization/flindLegalCopy.test.tsx
                 src/layout/today/todayPreviewCards.test.ts
                 src/index.test.tsx
