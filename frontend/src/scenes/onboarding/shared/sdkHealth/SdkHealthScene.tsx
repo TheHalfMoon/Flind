@@ -6,6 +6,7 @@ import { LemonBanner, LemonButton, LemonTag, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
@@ -40,6 +41,7 @@ export function SdkHealthScene(): JSX.Element {
 
     const { loadReport, snoozeSdkHealth, unsnooze } = useActions(sdkHealthLogic)
     const todayRailNav = useFeatureFlag('TODAY_RAIL_NAV')
+    const updatingDocs = flindDocsUrl('sdk-health/keeping-sdks-current')
 
     const trackAlertsClick = (): void => {
         posthog.capture('health_alerts_entry_point_clicked', { source: 'sdk_health' })
@@ -193,12 +195,18 @@ export function SdkHealthScene(): JSX.Element {
                                 An outdated SDK means you're missing out on bug fixes and enhancements.
                             </p>
                             <p className="text-sm mt-1">
-                                <Link to="https://posthog.com/docs/sdk-doctor/keeping-sdks-current" target="_blank">
-                                    Learn how
-                                </Link>{' '}
-                                to keep your SDK versions current.
+                                {updatingDocs ? (
+                                    <>
+                                        <Link to={updatingDocs} target="_blank">
+                                            Learn how
+                                        </Link>{' '}
+                                        to keep your SDK versions current.
+                                    </>
+                                ) : (
+                                    <>Flind SDK update guidance is not configured for this instance.</>
+                                )}
                             </p>
-                            <p className="text-sm mt-1">See the 'Releases' and 'Docs' links below for more info.</p>
+                            <p className="text-sm mt-1">Release and documentation links appear when Flind-owned pages are configured.</p>
                         </LemonBanner>
                     </section>
                 )}

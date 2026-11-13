@@ -84,15 +84,21 @@ export const SdkOutdatedRenderer = ({ issue }: { issue: HealthIssue }): JSX.Elem
                 <span className="font-medium">
                     {readableName} SDK — latest: <code className="text-xs">{latestVersion}</code>
                 </span>
-                {links && (
+                {(links?.releases || links?.docs) ? (
                     <div className="flex gap-2">
-                        <Link to={links.releases} target="_blank" targetBlankIcon className="text-xs">
-                            Releases
-                        </Link>
-                        <Link to={links.docs} target="_blank" targetBlankIcon className="text-xs">
-                            Docs
-                        </Link>
+                        {links.releases && (
+                            <Link to={links.releases} target="_blank" targetBlankIcon className="text-xs">
+                                Releases
+                            </Link>
+                        )}
+                        {links.docs && (
+                            <Link to={links.docs} target="_blank" targetBlankIcon className="text-xs">
+                                Docs
+                            </Link>
+                        )}
                     </div>
+                ) : (
+                    <span className="text-muted-alt text-xs">Flind SDK documentation is not configured</span>
                 )}
             </div>
             {reason && <div className="text-muted mb-2">{reason}</div>}

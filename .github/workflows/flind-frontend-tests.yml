@@ -12,6 +12,7 @@ on:
             - 'flind-ci/node-onboarding-fix-*'
             - 'flind-ci/integration-owned-docs-*'
             - 'flind-ci/sdk-catalog-owned-docs-*'
+            - 'flind-ci/sdk-health-owned-links-*'
             - 'flind-ci/sdk-install-owned-help-*'
             - 'flind-ci/source-map-cli-no-donor-egress-*'
             - 'flind-security/sdk-logo-offline-assets-*'

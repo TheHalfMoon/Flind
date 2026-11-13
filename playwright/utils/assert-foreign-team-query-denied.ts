@@ -19,6 +19,8 @@ export async function assertForeignPersonalKeyCannotQueryTeam(
     }
     const response = await request.post(`/api/environments/${targetTeamId}/query/`, {
         headers: { Authorization: `Bearer ${foreignPersonalApiKey}` },
+        // Do not accept a denial returned by an unrelated redirect target.
+        maxRedirects: 0,
         data: {
             refresh: 'force_blocking',
             query: {
