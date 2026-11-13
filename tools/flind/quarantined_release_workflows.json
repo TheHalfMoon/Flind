@@ -1,0 +1,82 @@
+{
+    "status":  "QUARANTINED_NO_RELEASE_AUTHORIZED",
+    "reason":  "Unqualified inherited release/publish workflow retained verbatim outside active .github/workflows",
+    "count":  15,
+    "workflows":  [
+                      {
+                          "source":  ".github/workflows/build-deltalite.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/build-deltalite.yml.disabled",
+                          "git_blob_sha1":  "42a55efbae9165976cfe50cb6e21b38fa711716a"
+                      },
+                      {
+                          "source":  ".github/workflows/build-hobby-installer.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/build-hobby-installer.yml.disabled",
+                          "git_blob_sha1":  "afacbcc9c4c6fdbf8f94a873f13cb8f2b8fefa72"
+                      },
+                      {
+                          "source":  ".github/workflows/build-hogql-parser-npm.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/build-hogql-parser-npm.yml.disabled",
+                          "git_blob_sha1":  "d16d3f1f4ba545d06a2b1e732602a1a8cf359ffb"
+                      },
+                      {
+                          "source":  ".github/workflows/build-hogql-parser-rs.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/build-hogql-parser-rs.yml.disabled",
+                          "git_blob_sha1":  "9db26f52ef8da31f3ca0b4516f44b80f7897f980"
+                      },
+                      {
+                          "source":  ".github/workflows/build-livestream-tui.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/build-livestream-tui.yml.disabled",
+                          "git_blob_sha1":  "dc215fd7d8af1febc30e75930b77361eba564bb9"
+                      },
+                      {
+                          "source":  ".github/workflows/build-hogql-parser.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/build-hogql-parser.yml.disabled",
+                          "git_blob_sha1":  "2816f44dfdd22c208acb574bc2878dbf31009887"
+                      },
+                      {
+                          "source":  ".github/workflows/build-phrocs.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/build-phrocs.yml.disabled",
+                          "git_blob_sha1":  "404bdd9524d1efe484ecbc356df7950059cb2374"
+                      },
+                      {
+                          "source":  ".github/workflows/desktop-agent-release.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/desktop-agent-release.yml.disabled",
+                          "git_blob_sha1":  "8bd5f80924d33c37db87c30c784f5fc970a0b351"
+                      },
+                      {
+                          "source":  ".github/workflows/desktop-release.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/desktop-release.yml.disabled",
+                          "git_blob_sha1":  "75064c2ed27e4a920723452c7f3e3fb873ac76be"
+                      },
+                      {
+                          "source":  ".github/workflows/publish-hogli.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/publish-hogli.yml.disabled",
+                          "git_blob_sha1":  "013878073cce6891fa3cb76272e761b0fab8a049"
+                      },
+                      {
+                          "source":  ".github/workflows/publish-owners-yaml.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/publish-owners-yaml.yml.disabled",
+                          "git_blob_sha1":  "8e9e6aeb4bd48b35a9c99f5cc7f0efc9d89033ab"
+                      },
+                      {
+                          "source":  ".github/workflows/publish-quill-npm.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/publish-quill-npm.yml.disabled",
+                          "git_blob_sha1":  "3b096348deb909926eff4bff5ef2f5be89bd8b0a"
+                      },
+                      {
+                          "source":  ".github/workflows/publish-replay-anonymizer-crate.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/publish-replay-anonymizer-crate.yml.disabled",
+                          "git_blob_sha1":  "06d3fe0af5cefe50eea04fb9cf0d4c57ace679b9"
+                      },
+                      {
+                          "source":  ".github/workflows/release-cli.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/release-cli.yml.disabled",
+                          "git_blob_sha1":  "f7a6da2aa1bf59946c7cdf61200831c7d14b9b09"
+                      },
+                      {
+                          "source":  ".github/workflows/ci-playwright-container.yml",
+                          "quarantined":  ".github/quarantined-release-workflows/ci-playwright-container.yml.disabled",
+                          "git_blob_sha1":  "8abed1407f177e24c861822f0de9459d4d5ab40d"
+                      }
+                  ]
+}
