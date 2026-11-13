@@ -1,6 +1,6 @@
 import { FeatureFlagCondition, FeatureFlagEvaluationRuntime, PostHogFeatureFlag, PropertyGroup } from '../../types';
-import type { FeatureFlagValue, JsonType, PostHogFetchOptions, PostHogFetchResponse, UnresolvedFlagReason } from '@posthog/core';
-import { InconclusiveMatchError, relativeDateParseForFeatureFlagMatching } from '@posthog/core';
+import type { FeatureFlagValue, JsonType, PostHogFetchOptions, PostHogFetchResponse, UnresolvedFlagReason } from '@flind/core';
+import { InconclusiveMatchError, relativeDateParseForFeatureFlagMatching } from '@flind/core';
 import { FlagDefinitionCacheProvider, FlagDefinitionCacheInput } from './cache';
 type ConditionMatchResult = 'match' | 'no_match' | 'out_of_rollout_bound';
 declare class ClientError extends Error {

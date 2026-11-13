@@ -1,4 +1,4 @@
-import { InconclusiveMatchError, assertFeatureFlagFilterSupported, getFeatureFlagHash, getFeatureFlagVariant, getFeatureFlagVariantLookupTable, getHoldoutVariant, matchFeatureFlagProperty, parseFeatureFlagSemver, raceWithTimeout, relativeDateParseForFeatureFlagMatching, resolveFeatureFlagPayload, safeSetTimeout } from "@posthog/core";
+import { InconclusiveMatchError, assertFeatureFlagFilterSupported, getFeatureFlagHash, getFeatureFlagVariant, getFeatureFlagVariantLookupTable, getHoldoutVariant, matchFeatureFlagProperty, parseFeatureFlagSemver, raceWithTimeout, relativeDateParseForFeatureFlagMatching, resolveFeatureFlagPayload, safeSetTimeout } from "@flind/core";
 const SIXTY_SECONDS = 60000;
 function normalizeEvaluationRuntime(value) {
     return 'client' === value || 'server' === value ? value : 'all';

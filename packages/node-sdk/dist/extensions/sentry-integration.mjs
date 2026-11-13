@@ -1,4 +1,4 @@
-import { ErrorTracking } from "@posthog/core";
+import { ErrorTracking } from "@flind/core";
 const NAME = 'posthog-node';
 function createEventProcessor(_posthog, { organization, projectId, prefix, severityAllowList = [
     'error'

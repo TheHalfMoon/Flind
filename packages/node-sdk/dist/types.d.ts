@@ -1,4 +1,4 @@
-import type { PostHogCoreOptions, ExceptionRateLimiterConfig, FeatureFlagValue, JsonType, Metrics, MetricsConfig, PostHogFetchOptions, PostHogFetchResponse, PostHogFlagsAndPayloadsResponse, Properties, Span, StartSpanOptions, TracesConfig } from '@posthog/core';
+import type { PostHogCoreOptions, ExceptionRateLimiterConfig, FeatureFlagValue, JsonType, Metrics, MetricsConfig, PostHogFetchOptions, PostHogFetchResponse, PostHogFlagsAndPayloadsResponse, Properties, Span, StartSpanOptions, TracesConfig } from '@flind/core';
 import { ContextData, ContextOptions } from './extensions/context/types';
 import type { Emails } from './emails/types';
 import type { FeatureFlagEvaluations } from './feature-flag-evaluations';

@@ -1,4 +1,4 @@
-import { safeJsonStringify } from "@posthog/core";
+import { safeJsonStringify } from "@flind/core";
 import { AI_BATCH_TARGET_BYTES, AI_MAX_EVENT_BYTES } from "./routing.mjs";
 const encoder = new TextEncoder();
 function eventByteSize(message) {

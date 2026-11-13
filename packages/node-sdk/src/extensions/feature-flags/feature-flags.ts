@@ -12,7 +12,7 @@ import type {
   PostHogFetchOptions,
   PostHogFetchResponse,
   UnresolvedFlagReason,
-} from '@posthog/core'
+} from '@flind/core'
 import {
   assertFeatureFlagFilterSupported,
   getFeatureFlagHash,
@@ -26,7 +26,7 @@ import {
   relativeDateParseForFeatureFlagMatching,
   resolveFeatureFlagPayload,
   safeSetTimeout,
-} from '@posthog/core'
+} from '@flind/core'
 import { FlagDefinitionCacheProvider, FlagDefinitionCacheData, FlagDefinitionCacheInput } from './cache'
 
 const SIXTY_SECONDS = 60 * 1000

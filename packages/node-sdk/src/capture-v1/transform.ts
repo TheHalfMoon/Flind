@@ -1,4 +1,4 @@
-import type { JsonType, PostHogEventProperties } from '@posthog/core'
+import type { JsonType, PostHogEventProperties } from '@flind/core'
 
 import type { V1Batch, V1Event, V1EventOptions } from './types'
 

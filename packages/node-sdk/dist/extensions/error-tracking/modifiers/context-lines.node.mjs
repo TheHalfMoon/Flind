@@ -1,4 +1,4 @@
-import { ErrorTracking } from "@posthog/core";
+import { ErrorTracking } from "@flind/core";
 import { constants } from "node:fs";
 import { open as promises_open } from "node:fs/promises";
 import { isAbsolute } from "node:path";

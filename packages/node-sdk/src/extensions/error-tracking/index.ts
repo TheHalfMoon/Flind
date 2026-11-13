@@ -3,11 +3,11 @@ import type { AutocaptureClient } from './autocapture'
 import { PostHogBackendClient } from '@/client'
 import type { ContextData } from '../context/types'
 import { snapshotEventContext } from '../context/event-context'
-import { isObject } from '@posthog/core'
+import { isObject } from '@flind/core'
 import { EventMessage, PostHogOptions } from '@/types'
-import type { Logger } from '@posthog/core'
-import { BucketedRateLimiter, resolveExceptionRateLimiterConfig } from '@posthog/core'
-import { ErrorTracking as CoreErrorTracking } from '@posthog/core'
+import type { Logger } from '@flind/core'
+import { BucketedRateLimiter, resolveExceptionRateLimiterConfig } from '@flind/core'
+import { ErrorTracking as CoreErrorTracking } from '@flind/core'
 
 const SHUTDOWN_TIMEOUT = 2000
 

@@ -8,7 +8,7 @@ import {
   safeJsonStringify,
   safeSetTimeout,
   uuidv7,
-} from '@posthog/core'
+} from '@flind/core'
 
 import { CaptureV1Error, type V1DroppedEvent } from './errors'
 import { buildV1Batch } from './transform'

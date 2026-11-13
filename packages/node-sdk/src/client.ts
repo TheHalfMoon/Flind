@@ -29,7 +29,7 @@ import {
   safeSetTimeout,
   SyncSpanContextManager,
   uuidv7,
-} from '@posthog/core'
+} from '@flind/core'
 import type {
   Metrics,
   PostHogFeatureFlagDetails,
@@ -38,7 +38,7 @@ import type {
   StartSpanOptions,
   TraceSdkContext,
   UnresolvedFlagReason,
-} from '@posthog/core'
+} from '@flind/core'
 import {
   AllFlagsOptions,
   EventMessage,

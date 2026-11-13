@@ -1,4 +1,4 @@
-import { PostHogEventProperties } from '@posthog/core';
+import { PostHogEventProperties } from '@flind/core';
 export type AiBatchPartition = {
     batches: PostHogEventProperties[][];
     dropped: {

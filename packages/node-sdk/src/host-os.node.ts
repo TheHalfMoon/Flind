@@ -1,5 +1,5 @@
 import { platform, release } from 'node:os'
-import { osResourceAttributes } from '@posthog/core'
+import { osResourceAttributes } from '@flind/core'
 
 /**
  * OTLP `os.name` / `os.version` for the machine running the SDK, so spans can

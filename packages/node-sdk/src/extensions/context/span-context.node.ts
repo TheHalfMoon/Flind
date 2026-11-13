@@ -1,5 +1,5 @@
 import { AsyncLocalStorage } from 'node:async_hooks'
-import type { Span, SpanContextManager } from '@posthog/core'
+import type { Span, SpanContextManager } from '@flind/core'
 
 /**
  * Active-span tracking backed by `AsyncLocalStorage`, so a span stays active

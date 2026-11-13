@@ -1,4 +1,4 @@
-import { type FetchLike, type Logger } from '@posthog/core';
+import { type FetchLike, type Logger } from '@flind/core';
 import type { Emails, GetEmailResponse, SendEmailOptions, SendEmailResponse } from './types';
 export declare const DEFAULT_EMAIL_REQUEST_TIMEOUT_MS = 15000;
 export declare const DEFAULT_EMAIL_REQUEST_MAX_RETRIES = 2;

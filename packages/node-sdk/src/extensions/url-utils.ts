@@ -1,4 +1,4 @@
-import { stripUrlHash } from '@posthog/core'
+import { stripUrlHash } from '@flind/core'
 
 export function normalizeRequestCurrentUrl(
   currentUrl: string | undefined,

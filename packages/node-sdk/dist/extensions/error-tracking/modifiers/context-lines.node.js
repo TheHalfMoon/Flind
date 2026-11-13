@@ -33,7 +33,7 @@ __webpack_require__.d(__webpack_exports__, {
     MAX_CONTEXTLINES_LINENO: ()=>MAX_CONTEXTLINES_LINENO,
     addSourceContext: ()=>addSourceContext
 });
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 const external_node_fs_namespaceObject = require("node:fs");
 const promises_namespaceObject = require("node:fs/promises");
 const external_node_path_namespaceObject = require("node:path");

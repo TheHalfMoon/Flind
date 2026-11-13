@@ -1,6 +1,6 @@
 export * from '../exports';
 import { PostHogBackendClient } from '../client';
-import { ErrorTracking as CoreErrorTracking } from '@posthog/core';
+import { ErrorTracking as CoreErrorTracking } from '@flind/core';
 export declare class PostHog extends PostHogBackendClient {
     getLibraryId(): string;
     protected initializeContext(): undefined;

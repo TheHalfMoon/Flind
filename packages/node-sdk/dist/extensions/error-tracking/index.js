@@ -32,7 +32,7 @@ __webpack_require__.d(__webpack_exports__, {
 });
 const external_autocapture_js_namespaceObject = require("./autocapture.js");
 const event_context_js_namespaceObject = require("../context/event-context.js");
-const core_namespaceObject = require("@posthog/core");
+const core_namespaceObject = require("@flind/core");
 const SHUTDOWN_TIMEOUT = 2000;
 class ErrorTracking {
     constructor(client, options, _logger){

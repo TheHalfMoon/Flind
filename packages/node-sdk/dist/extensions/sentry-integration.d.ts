@@ -25,7 +25,7 @@
  * @param {SeverityLevel[] | '*'} [severityAllowList] Optional: send events matching the provided levels. Use '*' to send all events (default: ['error'])
  * @param {boolean} [sendExceptionsToPostHog] Optional: capture exceptions as events in PostHog (default: true)
  */
-import { ErrorTracking as CoreErrorTracking } from '@posthog/core';
+import { ErrorTracking as CoreErrorTracking } from '@flind/core';
 import { type PostHogBackendClient } from '../client';
 type _SentryEvent = any;
 type _SentryEventProcessor = any;

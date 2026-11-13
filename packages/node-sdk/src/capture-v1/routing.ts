@@ -1,4 +1,4 @@
-import type { PostHogEventProperties } from '@posthog/core'
+import type { PostHogEventProperties } from '@flind/core'
 
 /** Event-name prefix for AI analytics events, which have no Capture V1 form yet. */
 const AI_EVENT_PREFIX = '$ai_'
