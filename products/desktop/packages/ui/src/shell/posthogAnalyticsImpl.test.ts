@@ -30,10 +30,7 @@ async function loadAnalytics() {
 beforeEach(() => {
   vi.clearAllMocks();
   vi.stubEnv("VITE_FLIND_ANALYTICS_KEY", "test-key");
-  vi.stubEnv(
-    "VITE_FLIND_ANALYTICS_HOST",
-    "https://telemetry.flind.example",
-  );
+  vi.stubEnv("VITE_FLIND_ANALYTICS_HOST", "https://telemetry.flind.example");
   vi.stubEnv("FLIND_US_CLOUD_URL", "https://us.flind.example");
   vi.stubEnv("FLIND_US_OAUTH_CLIENT_ID", "flind-us-test-public");
   vi.stubEnv("FLIND_EU_CLOUD_URL", "https://eu.flind.example");
