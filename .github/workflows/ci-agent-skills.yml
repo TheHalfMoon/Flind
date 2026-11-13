@@ -106,10 +106,6 @@ jobs:
         if: needs.changes.outputs.skills == 'true'
         permissions:
             contents: read
-        env:
-            DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USER }}
-            DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-
         steps:
             - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
               with:
@@ -191,13 +187,19 @@ jobs:
                       echo "migrations_key=posthog-schema-mig-${SCHEMA_CACHE_EPOCH}-${MIG_HASH}" >> $GITHUB_OUTPUT
                   fi
 
+            # Never expose registry credentials to PR-controlled code. Keep the
+            # optional legacy login scoped to non-PR runs until the workflow
+            # is independently migrated to Flind-owned infrastructure.
             - name: Log in to Docker Hub
               continue-on-error: true
-              if: ${{ env.DOCKERHUB_USERNAME != '' && env.DOCKERHUB_TOKEN != '' }}
+              if: ${{ github.event_name != 'pull_request' && env.DOCKERHUB_USERNAME != '' && env.DOCKERHUB_TOKEN != '' }}
+              env:
+                  DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USER }}
+                  DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
               uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
               with:
-                  username: ${{ vars.DOCKERHUB_USER }}
-                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+                  username: ${{ env.DOCKERHUB_USERNAME }}
+                  password: ${{ env.DOCKERHUB_TOKEN }}
 
             - name: Start Docker services
               env:
