@@ -1,0 +1,24 @@
+name: Flind ingestion cross-tenant personal API key authorization contract
+
+on:
+    push:
+        branches:
+            - 'flind-security/ingestion-cross-tenant-auth-*'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    authorization-contract:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+            - name: Verify key/team separation across capture and both SDK journeys
+              run: |
+                  node --check frontend/bin/flind-ingestion-cross-tenant-auth.test.mjs
+                  node --test frontend/bin/flind-ingestion-cross-tenant-auth.test.mjs frontend/bin/flind-ingestion-tenant.test.mjs frontend/bin/flind-node-sdk-ingestion-contract.test.mjs frontend/bin/flind-browser-sdk-ingestion.test.mjs
