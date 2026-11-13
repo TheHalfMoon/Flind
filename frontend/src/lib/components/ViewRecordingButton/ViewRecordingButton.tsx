@@ -6,6 +6,7 @@ import { IconWarning } from '@flind/icons'
 import { LemonButton, LemonButtonProps, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { Dayjs, dayjs } from 'lib/dayjs'
+import { flindDocsSectionUrl } from 'lib/flindPublicLinks'
 import { IconPlayCircle } from 'lib/lemon-ui/icons'
 import { newInternalTab } from 'lib/utils/newInternalTab'
 import { sessionPlayerModalLogic } from 'scenes/session-recordings/player/modal/sessionPlayerModalLogic'
@@ -205,6 +206,8 @@ export const recordingDisabledReason = (
     if (sessionId != null && typeof sessionId !== 'string') {
         return 'No recording for this event'
     }
+    const sessionDocsUrl = flindDocsSectionUrl('data/sessions', 'automatically-sending-session-ids')
+    const replayDocsUrl = flindDocsSectionUrl('session-replay/troubleshooting', 'recordings-are-not-being-captured')
     const isValidSessionId = typeof sessionId === 'string' && sessionId !== ''
     if (!isValidSessionId && hasRecording === false) {
         return 'No recording for this event'
@@ -212,18 +215,26 @@ export const recordingDisabledReason = (
         return (
             <>
                 No session ID associated with this event.{' '}
-                <Link to="https://posthog.com/docs/data/sessions#automatically-sending-session-ids">Learn how</Link> to
-                set it on all events.
+                {sessionDocsUrl ? (
+                    <>
+                        <Link to={sessionDocsUrl}>Learn how</Link> to set it on all events.
+                    </>
+                ) : (
+                    'Set a session ID on your events to associate them with recordings.'
+                )}
             </>
         )
     } else if (recordingStatus && !['active', 'sampled', 'buffering'].includes(recordingStatus)) {
         return (
             <>
                 Replay was not active when capturing this event.{' '}
-                <Link to="https://posthog.com/docs/session-replay/troubleshooting#recordings-are-not-being-captured">
-                    Learn why
-                </Link>{' '}
-                not all recordings are captured.
+                {replayDocsUrl ? (
+                    <>
+                        <Link to={replayDocsUrl}>Learn why</Link> not all recordings are captured.
+                    </>
+                ) : (
+                    'Not all recordings are captured.'
+                )}
             </>
         )
     } else if (hasRecording === false) {

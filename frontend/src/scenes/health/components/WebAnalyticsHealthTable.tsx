@@ -1,5 +1,6 @@
 import { Link } from '@flind/lemon-ui'
 
+import { flindDocsSectionUrl, flindDocsUrl } from 'lib/flindPublicLinks'
 import { LemonTable, LemonTableColumns } from 'lib/lemon-ui/LemonTable'
 import { urls } from 'scenes/urls'
 
@@ -17,17 +18,17 @@ const CHECK_META: Record<string, CheckMeta> = {
     no_live_events: {
         title: '$pageview',
         description: 'No pageview events detected recently. Complete the Flind installation to start seeing events.',
-        docsUrl: 'https://posthog.com/docs/product-analytics/capture-events',
+        docsUrl: flindDocsUrl('product-analytics/capture-events') ?? undefined,
     },
     no_pageleave_events: {
         title: '$pageleave',
         description: 'Without $pageleave events, bounce rate and session duration might be inaccurate.',
-        docsUrl: 'https://posthog.com/docs/web-analytics/dashboard#bounce-rate',
+        docsUrl: flindDocsSectionUrl('web-analytics/dashboard', 'bounce-rate') ?? undefined,
     },
     scroll_depth: {
         title: 'Scroll depth',
         description: 'Enable scroll depth to see how far users read your content before leaving.',
-        docsUrl: 'https://posthog.com/tutorials/scroll-depth',
+        docsUrl: flindDocsUrl('web-analytics/scroll-depth') ?? undefined,
     },
     authorized_urls: {
         title: 'Authorized URLs',
@@ -39,13 +40,13 @@ const CHECK_META: Record<string, CheckMeta> = {
         title: 'Reverse proxy',
         description:
             'A reverse proxy routes requests through your domain and helps prevent ad blockers from blocking tracking.',
-        docsUrl: 'https://posthog.com/docs/advanced/proxy',
+        docsUrl: flindDocsUrl('advanced/proxy') ?? undefined,
     },
     web_vitals: {
         title: '$web_vitals',
         description:
             'Core Web Vitals (LCP, INP, CLS) measure real user experience. Google uses these metrics for search ranking.',
-        docsUrl: 'https://posthog.com/docs/web-analytics/web-vitals',
+        docsUrl: flindDocsUrl('web-analytics/web-vitals') ?? undefined,
     },
     path_cleaning_suggestions: {
         title: 'Path cleaning',
