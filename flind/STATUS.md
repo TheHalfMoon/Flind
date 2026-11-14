@@ -4,7 +4,17 @@ The durable record of where Flind stands. Each milestone lists what changed, the
 (CI runs on the exact merged commit), legal and security notes, and what is next. **Verified** means shown by a CI
 run or test result on that commit; anything else is marked as planned or unverified.
 
-Last updated: 2026-11-13 (current integration checkpoint; historical sections below).
+Last updated: 2026-11-14 (current release-gate snapshot; historical sections below).
+
+## Current release-gate snapshot (2026-11-14; reviewed against main `7764ce54765842521b16ca8dec6814ed26772dc8`)
+
+This snapshot supersedes older open-PR and release-readiness statements below. It records a **source/PR inspection**, not newly completed CI or a release qualification.
+
+- Open **draft** PRs at inspection: [#93](https://github.com/TheHalfMoon/Flind/pull/93) (quarantine inherited publishers), [#94](https://github.com/TheHalfMoon/Flind/pull/94) (remove Docker Hub credentials from agent-skills CI), [#95](https://github.com/TheHalfMoon/Flind/pull/95) (stdlib regression guard, deliberately red until credential remediation), and [#96](https://github.com/TheHalfMoon/Flind/pull/96) (metrics-agent test-only workflow). These changes are **not on main**. Do not merge without exact-head CI, code review, and conflict/concurrency inspection.
+- On inspected `main`, `.github/workflows/ci-agent-skills.yml` still contains donor `DOCKERHUB_TOKEN`/login and `GH_APP_POSTHOG_*` token minting. PR #94 removes only the former. PR #95's guard is not yet wired into an enforced workflow. A condition restricting one token to the donor repository does not remove its dormant source path.
+- PR #96 proposes replacing inherited metrics-agent image/chart publishing with tests on GitHub-hosted `ubuntu-24.04`. At inspection, no PR-triggered workflow runs were returned for its head `59347353d4ab2cafc39510223893cbc437689996`; **not qualified**. Verify Helm availability, render and integration smoke, and non-publishing Docker build validation before merge.
+- **Unresolved:** other active CI/CD credentials and donor distribution paths, private SDK host/egress and artifact independence, broad cross-tenant security, real-data upgrade and cross-service restore, reproducible zero-cost installation/performance, owned HTTPS origins and legal pages, complete branding, and iOS/Android registration, signing, simulator/device and OAuth/push QA. Prior scoped CI successes do not establish these release gates.
+- **NO-GO**: no tag, GitHub Release, deployment, SDK publication, app-store submission, paid infrastructure, or binary distribution until explicit founder `GREEN LIGHT FLIND`. Keep donor licenses/attribution and synthetic-only public CI fixtures.
 
 ## Current integration checkpoint (2026-11-13; main `42ceee9173bd7bf68f74aea30b4cd70f3037c018`)
 
