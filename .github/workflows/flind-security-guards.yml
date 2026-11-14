@@ -4,20 +4,8 @@ name: Flind inherited credential and publishing guards
 # never execute repository code with pull_request_target or write permissions.
 on:
   pull_request:
-    paths:
-      - '.github/workflows/ci-agent-skills.yml'
-      - '.github/workflows/cd-metrics-agent-image.yml'
-      - '.github/workflows/flind-security-guards.yml'
-      - 'tools/flind/test_agent_skills_credentials.py'
-      - 'tools/flind/test_metrics_agent_no_publish.py'
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/ci-agent-skills.yml'
-      - '.github/workflows/cd-metrics-agent-image.yml'
-      - '.github/workflows/flind-security-guards.yml'
-      - 'tools/flind/test_agent_skills_credentials.py'
-      - 'tools/flind/test_metrics_agent_no_publish.py'
   workflow_dispatch:
 
 permissions:
@@ -41,10 +29,5 @@ jobs:
           persist-credentials: false
       - name: Test metrics publishing regression guard
         run: python3 -m unittest tools.flind.test_metrics_agent_no_publish -v
-      - name: Test agent-skills credential regression guard if present
-        run: |
-          if test -f tools/flind/test_agent_skills_credentials.py; then
-            python3 -m unittest tools.flind.test_agent_skills_credentials -v
-          else
-            echo 'Agent-skills guard not yet merged; follow-up #95 remains required.'
-          fi
+      - name: Test agent-skills credential regression guard (required)
+        run: python3 -m unittest tools.flind.test_agent_skills_credentials -v
