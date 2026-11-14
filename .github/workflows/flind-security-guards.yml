@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
-      - name: Test metrics publishing regression guard
-        run: python3 -m unittest tools.flind.test_metrics_agent_no_publish -v
-      - name: Test agent-skills credential regression guard (required)
-        run: python3 -m unittest tools.flind.test_agent_skills_credentials -v
+      # One unittest invocation reports both suites even when either fails.
+      # Any failing test or missing required module still fails the job.
+      - name: Test both inherited CI security guards (required)
+        run: python3 -m unittest -v tools.flind.test_metrics_agent_no_publish tools.flind.test_agent_skills_credentials
