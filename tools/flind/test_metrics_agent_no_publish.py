@@ -20,7 +20,7 @@ FORBIDDEN = (
     re.compile(r"(?im)\b(?:docker\s+push|helm\s+push|docker\s+login)\b"),
     re.compile(r"(?im)\b(?:DOCKERHUB_TOKEN|DOCKERHUB_USER(?:NAME)?|GHCR_TOKEN)\b"),
     re.compile(r"(?im)\b(?:depot-ubuntu-[\w.-]+|depot\.dev)\b"),
-    re.compile(r"(?im)^\s*(?:push|release|schedule|create|workflow_run)\s*:\s*(?:$|\S)"),
+    re.compile(r"(?im)^\s*(?:release|schedule|create|workflow_run)\s*:\s*(?:$|\S)"),
 )
 # workflow_dispatch is allowed only for manual test runs. A job must not
 # upload artifacts to any registry even if the owner-specific guard is false.
@@ -54,7 +54,10 @@ class MetricsAgentNoPublishTests(unittest.TestCase):
     def test_rejects_external_runner_and_automatic_publish_triggers(self):
         self.assertTrue(violations("runs-on: depot-ubuntu-24.04"))
         self.assertTrue(violations("schedule:\n  - cron: '0 1 * * *'"))
-        self.assertTrue(violations("push:\n  branches: [main]"))
+        self.assertTrue(violations("release:\n  types: [published]"))
+
+    def test_allows_push_trigger_for_read_only_tests(self):
+        self.assertEqual([], violations("on:\n  push:\n    branches: [main]\npermissions:\n  contents: read"))
 
     def test_allows_read_only_qualification(self):
         safe = """name: Flind metrics-agent tests
