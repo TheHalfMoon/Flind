@@ -1,0 +1,50 @@
+name: Flind inherited credential and publishing guards
+
+# Read-only source checks. This workflow must remain credential-free and must
+# never execute repository code with pull_request_target or write permissions.
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/ci-agent-skills.yml'
+      - '.github/workflows/cd-metrics-agent-image.yml'
+      - '.github/workflows/flind-security-guards.yml'
+      - 'tools/flind/test_agent_skills_credentials.py'
+      - 'tools/flind/test_metrics_agent_no_publish.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ci-agent-skills.yml'
+      - '.github/workflows/cd-metrics-agent-image.yml'
+      - '.github/workflows/flind-security-guards.yml'
+      - 'tools/flind/test_agent_skills_credentials.py'
+      - 'tools/flind/test_metrics_agent_no_publish.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: flind-security-guards-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-guards:
+    name: Read-only inherited CI security guards
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Check out unprivileged source
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Test metrics publishing regression guard
+        run: python3 -m unittest tools.flind.test_metrics_agent_no_publish -v
+      - name: Test agent-skills credential regression guard if present
+        run: |
+          if test -f tools/flind/test_agent_skills_credentials.py; then
+            python3 -m unittest tools.flind.test_agent_skills_credentials -v
+          else
+            echo 'Agent-skills guard not yet merged; follow-up #95 remains required.'
+          fi
