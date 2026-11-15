@@ -1,0 +1,49 @@
+name: Flind metrics agent runtime qualification (read-only)
+
+on:
+  pull_request:
+    paths:
+      - 'products/metrics/agent/**'
+      - '.github/workflows/flind-metrics-runtime-qualification.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    name: Metrics agent config render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Render golden fixtures
+        run: bash products/metrics/agent/tests/render/run.sh
+
+  helm:
+    name: Metrics agent Helm golden
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify Helm is installed
+        run: helm version --short
+      - name: Check Helm golden fixtures
+        run: bash products/metrics/agent/tests/helm/run.sh
+
+  integration:
+    name: Metrics agent integration smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify local Docker daemon
+        run: docker info --format '{{.ServerVersion}}'
+      - name: Run integration smoke
+        run: bash products/metrics/agent/tests/integration/run.sh
