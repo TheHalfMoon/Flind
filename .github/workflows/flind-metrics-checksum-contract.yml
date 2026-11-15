@@ -1,0 +1,52 @@
+name: Flind metrics checksum contract (no publish)
+
+on:
+  pull_request:
+    paths:
+      - 'products/metrics/agent/chart/**'
+      - 'products/metrics/agent/tests/helm/**'
+      - '.github/workflows/flind-metrics-checksum-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checksum:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify Helm
+        run: helm version --short
+      - name: Verify config checksum contract and golden
+        shell: bash
+        run: |
+          set -euo pipefail
+          chart=products/metrics/agent/chart/posthog-metrics-agent
+          golden=products/metrics/agent/tests/helm/golden/default.yaml
+          checksum() {
+            local output
+            output="$(helm template test-release "$chart" "$@")"
+            printf '%s\n' "$output" | sed -n 's/^[[:space:]]*checksum\/config:[[:space:]]*//p' | head -n 1
+          }
+          base="$(checksum --set posthog.apiKey=phc_a)"
+          repeat="$(checksum --set posthog.apiKey=phc_a)"
+          rotated="$(checksum --set posthog.apiKey=phc_b)"
+          changed="$(checksum --set posthog.apiKey=phc_a --set scrape.interval=47s)"
+          expected="$(sed -n 's/^[[:space:]]*checksum\/config:[[:space:]]*//p' "$golden" | head -n 1)"
+          test -n "$base" && test -n "$expected"
+          test "$base" = "$repeat" || { echo 'FAIL: nondeterministic config checksum'; exit 1; }
+          test "$base" = "$rotated" || { echo 'FAIL: secret rotation changed config checksum'; exit 1; }
+          test "$base" != "$changed" || { echo 'FAIL: scrape interval did not change config checksum'; exit 1; }
+          echo 'PASS: deterministic, secret-independent and configuration-sensitive'
+          if test "$expected" != "$base"; then
+            echo "FAIL: golden config checksum differs from rendered checksum"
+            echo "Golden:   $expected"
+            echo "Rendered: $base"
+            echo 'Do not regenerate golden without reviewing chart inputs and Helm version.'
+            exit 1
+          fi
+          echo 'PASS: golden config checksum'
