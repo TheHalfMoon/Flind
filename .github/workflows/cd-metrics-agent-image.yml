@@ -38,6 +38,15 @@ jobs:
             - name: Config render golden tests
               run: products/metrics/agent/tests/render/run.sh
 
+            - name: Helm checksum reproducibility diagnostics
+              run: |
+                  helm version --short
+                  chart=products/metrics/agent/chart/posthog-metrics-agent
+                  golden=products/metrics/agent/tests/helm/golden/default.yaml
+                  echo 'Golden config checksum:'
+                  grep -m1 'checksum/config:' "$golden"
+                  echo 'Rendered config checksum:'
+                  helm template test-release "$chart" --set posthog.apiKey=phc_test | grep -m1 'checksum/config:'
             - name: Helm chart tests
               run: products/metrics/agent/tests/helm/run.sh
 
