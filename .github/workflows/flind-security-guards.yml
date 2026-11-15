@@ -31,3 +31,30 @@ jobs:
       # Any failing test or missing required module still fails the job.
       - name: Test both inherited CI security guards (required)
         run: python3 -m unittest -v tools.flind.test_metrics_agent_no_publish tools.flind.test_agent_skills_credentials
+
+  # Manual, zero-cost runtime qualification. This does not publish images,
+  # charts or packages and is not a substitute for owned chart/host migration.
+  metrics-agent-runtime-qualification:
+    if: github.event_name == 'workflow_dispatch'
+    name: Metrics agent render, Helm and integration (manual)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Check out unprivileged source
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Verify required free-runner tools
+        run: |
+          command -v helm
+          helm version --short
+          command -v docker
+          docker info
+      - name: Config render golden tests
+        run: sh products/metrics/agent/tests/render/run.sh
+      - name: Helm chart tests
+        run: sh products/metrics/agent/tests/helm/run.sh
+      - name: Integration smoke test
+        run: sh products/metrics/agent/tests/integration/run.sh
