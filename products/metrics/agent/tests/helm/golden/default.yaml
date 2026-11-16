@@ -171,7 +171,7 @@ spec:
                 app.kubernetes.io/name: posthog-metrics-agent
                 app.kubernetes.io/instance: test-release
             annotations:
-                checksum/config: fb8d668241257723315f18c0fe4dd43a8d388a91d53d004a2b77075b8b5d1957
+                checksum/config: a482b04cae3f9aaba120cad1d78830579a7200c4aecebab767d8fbfa520823ec
                 # Covers the chart-managed Secret so an API key rotation rolls the pod.
                 checksum/secret: 7bd53dcd6d8870f80c69d246740a8b7c87ec21b6673c1de813e76271e941b928
         spec:
