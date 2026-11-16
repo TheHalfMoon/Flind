@@ -4,9 +4,18 @@ The durable record of where Flind stands. Each milestone lists what changed, the
 (CI runs on the exact merged commit), legal and security notes, and what is next. **Verified** means shown by a CI
 run or test result on that commit; anything else is marked as planned or unverified.
 
-Last updated: 2026-11-13 (current integration checkpoint; historical sections below).
+Last updated: 2026-11-16 (current integration checkpoint; historical sections below).
 
-## Current integration checkpoint (2026-11-13; main `42ceee9173bd7bf68f74aea30b4cd70f3037c018`)
+## Live integration checkpoint (2026-11-16; main `444b930d84301029ed891de1850252120c75e1eb`)
+
+This newer checkpoint supersedes the 2026-11-13 main SHA and release-gate wording below, which is retained as historical evidence.
+
+- **Merged:** [PR #112](https://github.com/TheHalfMoon/Flind/pull/112) at `444b930d84301029ed891de1850252120c75e1eb` integrated a pinned, SHA-256-verified Helm v3.22.1 checksum qualification workflow and the verified metrics-agent golden checksum correction. The PR's tested head was `a17f1096da93a667678586dedf5ca81c3a737c8f`. [Exact-head checksum workflow run 43819829425](https://github.com/TheHalfMoon/Flind/actions/runs/43819829425) completed successfully. This is scoped Helm checksum evidence; it does **not** establish full Helm/Docker integration, security, upgrade, recovery or production release qualification on the merge commit.
+- **Concurrent PR reconciliation:** #109 is merged. At this checkpoint #107, #108, #110 and #111 remain open drafts; #110's golden correction and #111's pinned Helm intent overlap the integrated #112. #111's proposed `azure/setup-helm` action is not the checksum-verified installation integrated by #112. Do not merge overlapping drafts without re-comparing their exact heads against current main, reviewing any remaining unique changes, and obtaining all applicable exact-head checks. Do not close another agent's branch or PR as part of this ledger update.
+- **Next qualification:** independently test the complete metrics-agent config-render, Helm behavior/golden and Docker integration suites on current main or a reviewed integration branch; preserve fail-closed source/security guards, rename ratchet and real migrations. Resolve donor image/host references before claiming independent runtime installation. Update this ledger with exact run URLs and SHA evidence, not assumptions.
+- **Release decision: NO-GO.** Scoped checksum CI and prior synthetic tests do not qualify production infrastructure, SDK publishing, native device signing, customer-data upgrades or full cross-service recovery. No release/tag/deployment/package distribution without explicit `GREEN LIGHT FLIND`. Preserve third-party licenses and notices; public repository must contain no credentials or customer data.
+
+## Historical integration checkpoint (2026-11-13; main `42ceee9173bd7bf68f74aea30b4cd70f3037c018`)
 
 This section supersedes the older release-gate table and dated PR descriptions below wherever they conflict. Older entries are retained as historical engineering evidence, **not** current release readiness.
 
