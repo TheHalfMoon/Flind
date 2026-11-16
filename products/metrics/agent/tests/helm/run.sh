@@ -215,6 +215,37 @@ assert_contains no-source-rejected 'gcp.projectId must be set' "$out"
 out=$(render --set posthog.apiKey=phc_test)
 assert_not_contains default-no-gcp 'googlecloudmonitoring' "$out"
 
+# --- config checksum contract: deterministic, sensitive to collector config,
+#     and independent of the API key stored in the chart-managed Secret ---
+config_sum() {
+    render "$@" | grep 'checksum/config:' | head -n 1
+}
+config_a=$(config_sum --set posthog.apiKey=phc_a)
+config_b=$(config_sum --set posthog.apiKey=phc_b)
+config_repeat=$(config_sum --set posthog.apiKey=phc_a)
+config_changed=$(config_sum --set posthog.apiKey=phc_a --set scrape.interval=47s)
+if [ -n "$config_a" ] && [ "$config_a" = "$config_repeat" ]; then
+    echo "PASS config-checksum-deterministic"
+    PASS=$((PASS + 1))
+else
+    echo "FAIL config-checksum-deterministic: identical input changed the checksum"
+    FAIL=$((FAIL + 1))
+fi
+if [ -n "$config_a" ] && [ "$config_a" = "$config_b" ]; then
+    echo "PASS config-checksum-excludes-secret"
+    PASS=$((PASS + 1))
+else
+    echo "FAIL config-checksum-excludes-secret: secret rotation changed config checksum"
+    FAIL=$((FAIL + 1))
+fi
+if [ -n "$config_a" ] && [ -n "$config_changed" ] && [ "$config_a" != "$config_changed" ]; then
+    echo "PASS config-checksum-tracks-scrape-interval"
+    PASS=$((PASS + 1))
+else
+    echo "FAIL config-checksum-tracks-scrape-interval: collector config change did not roll the pod"
+    FAIL=$((FAIL + 1))
+fi
+
 # --- golden drift guard for the fully default render ---
 # Blank lines are stripped before comparing: helm 3 and 4 disagree on
 # blank-line placement between documents, and that isn't drift we care about.
