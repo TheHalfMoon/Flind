@@ -19,10 +19,15 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Install pinned Helm
-        uses: azure/setup-helm@v4.3.1
-        with:
-          version: v3.22.1
+      - name: Install pinned Helm from verified official archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error --retry 3 --output /tmp/helm.tar.gz https://get.helm.sh/helm-v3.22.1-linux-amd64.tar.gz
+          echo '896cf63684a42a723d61c980369d6e588330927deb13676ca0d85006dd6da0ea  /tmp/helm.tar.gz' | sha256sum --check --status
+          mkdir -p /tmp/flind-helm
+          tar -xzf /tmp/helm.tar.gz -C /tmp/flind-helm linux-amd64/helm
+          echo '/tmp/flind-helm/linux-amd64' >> $GITHUB_PATH
       - name: Verify Helm version
         shell: bash
         run: |
