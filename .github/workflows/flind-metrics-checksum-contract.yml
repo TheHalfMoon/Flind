@@ -19,8 +19,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Verify Helm
-        run: helm version --short
+      - name: Install pinned Helm
+        uses: azure/setup-helm@v4.3.1
+        with:
+          version: v3.22.1
+      - name: Verify Helm version
+        shell: bash
+        run: |
+          set -euo pipefail
+          helm version --short
+          test "$(helm version --template '{{ .Version }}')" = v3.22.1
       - name: Verify config checksum contract and golden
         shell: bash
         run: |
